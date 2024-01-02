@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -42,6 +42,7 @@ class FulfillRewardsV2(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
       *  Returns : fulfillment result
+      *  rewards Item unsupported Type : SUBSCRIPTION
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []

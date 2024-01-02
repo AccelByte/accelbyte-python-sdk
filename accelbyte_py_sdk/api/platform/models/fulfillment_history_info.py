@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,20 @@ class StatusEnum(StrEnum):
     SUCCESS = "SUCCESS"
 
 
+class EntitlementOriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
+
+
 class FulfillmentHistoryInfo(Model):
     """Fulfillment history info (FulfillmentHistoryInfo)
 
@@ -59,6 +73,8 @@ class FulfillmentHistoryInfo(Model):
         code: (code) OPTIONAL str
 
         credit_summaries: (creditSummaries) OPTIONAL List[CreditSummary]
+
+        entitlement_origin: (entitlementOrigin) OPTIONAL Union[str, EntitlementOriginEnum]
 
         entitlement_summaries: (entitlementSummaries) OPTIONAL List[EntitlementSummary]
 
@@ -83,6 +99,7 @@ class FulfillmentHistoryInfo(Model):
     user_id: str  # REQUIRED
     code: str  # OPTIONAL
     credit_summaries: List[CreditSummary]  # OPTIONAL
+    entitlement_origin: Union[str, EntitlementOriginEnum]  # OPTIONAL
     entitlement_summaries: List[EntitlementSummary]  # OPTIONAL
     extension_fulfillment_summaries: List[ExtensionFulfillmentSummary]  # OPTIONAL
     fulfill_items: List[FulfillmentItem]  # OPTIONAL
@@ -126,6 +143,12 @@ class FulfillmentHistoryInfo(Model):
         self, value: List[CreditSummary]
     ) -> FulfillmentHistoryInfo:
         self.credit_summaries = value
+        return self
+
+    def with_entitlement_origin(
+        self, value: Union[str, EntitlementOriginEnum]
+    ) -> FulfillmentHistoryInfo:
+        self.entitlement_origin = value
         return self
 
     def with_entitlement_summaries(
@@ -198,6 +221,10 @@ class FulfillmentHistoryInfo(Model):
             ]
         elif include_empty:
             result["creditSummaries"] = []
+        if hasattr(self, "entitlement_origin"):
+            result["entitlementOrigin"] = str(self.entitlement_origin)
+        elif include_empty:
+            result["entitlementOrigin"] = Union[str, EntitlementOriginEnum]()
         if hasattr(self, "entitlement_summaries"):
             result["entitlementSummaries"] = [
                 i0.to_dict(include_empty=include_empty)
@@ -249,6 +276,7 @@ class FulfillmentHistoryInfo(Model):
         user_id: str,
         code: Optional[str] = None,
         credit_summaries: Optional[List[CreditSummary]] = None,
+        entitlement_origin: Optional[Union[str, EntitlementOriginEnum]] = None,
         entitlement_summaries: Optional[List[EntitlementSummary]] = None,
         extension_fulfillment_summaries: Optional[
             List[ExtensionFulfillmentSummary]
@@ -270,6 +298,8 @@ class FulfillmentHistoryInfo(Model):
             instance.code = code
         if credit_summaries is not None:
             instance.credit_summaries = credit_summaries
+        if entitlement_origin is not None:
+            instance.entitlement_origin = entitlement_origin
         if entitlement_summaries is not None:
             instance.entitlement_summaries = entitlement_summaries
         if extension_fulfillment_summaries is not None:
@@ -326,6 +356,10 @@ class FulfillmentHistoryInfo(Model):
             ]
         elif include_empty:
             instance.credit_summaries = []
+        if "entitlementOrigin" in dict_ and dict_["entitlementOrigin"] is not None:
+            instance.entitlement_origin = str(dict_["entitlementOrigin"])
+        elif include_empty:
+            instance.entitlement_origin = Union[str, EntitlementOriginEnum]()
         if (
             "entitlementSummaries" in dict_
             and dict_["entitlementSummaries"] is not None
@@ -420,6 +454,7 @@ class FulfillmentHistoryInfo(Model):
             "userId": "user_id",
             "code": "code",
             "creditSummaries": "credit_summaries",
+            "entitlementOrigin": "entitlement_origin",
             "entitlementSummaries": "entitlement_summaries",
             "extensionFulfillmentSummaries": "extension_fulfillment_summaries",
             "fulfillItems": "fulfill_items",
@@ -439,6 +474,7 @@ class FulfillmentHistoryInfo(Model):
             "userId": True,
             "code": False,
             "creditSummaries": False,
+            "entitlementOrigin": False,
             "entitlementSummaries": False,
             "extensionFulfillmentSummaries": False,
             "fulfillItems": False,
@@ -451,6 +487,19 @@ class FulfillmentHistoryInfo(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "status": ["FAIL", "SUCCESS"],
+            "entitlementOrigin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
         }
 
     # endregion static methods

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseError
 
 
 class PublicPartyJoin(Operation):
-    """Join a party. Requires NAMESPACE:{namespace}:SESSION:PARTY:PLAYER [CREATE] (publicPartyJoin)
+    """Join a party. (publicPartyJoin)
 
     Join a party. The user can either join a party they have been invited to, or any party with an "open" joinable setting.
 

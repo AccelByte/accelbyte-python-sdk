@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-ugc-service (2.19.0)
+# justice-ugc-service (2.19.1)
 
 from ._single_admin_get_channel import single_admin_get_channel
 from ._admin_create_channel import admin_create_channel
@@ -145,6 +145,9 @@ from ._admin_upload_content_screenshot_v2 import admin_upload_content_screenshot
 from ._admin_delete_content_screenshot_v2 import admin_delete_content_screenshot_v2
 from ._list_content_versions_v2 import list_content_versions_v2
 from ._admin_get_official_group_contents_v2 import admin_get_official_group_contents_v2
+from ._admin_list_staging_contents import admin_list_staging_contents
+from ._admin_get_staging_content_by_id import admin_get_staging_content_by_id
+from ._admin_approve_staging_content import admin_approve_staging_content
 from ._admin_update_content_by_share_code_v2 import (
     admin_update_content_by_share_code_v2,
 )
@@ -162,6 +165,7 @@ from ._admin_generate_user_content_upload_urlv2 import (
 from ._admin_get_content_by_user_idv2 import admin_get_content_by_user_idv2
 from ._admin_update_content_hide_status_v2 import admin_update_content_hide_status_v2
 from ._admin_get_user_group_contents_v2 import admin_get_user_group_contents_v2
+from ._admin_list_user_staging_contents import admin_list_user_staging_contents
 from ._public_get_content_by_channel_idv2 import public_get_content_by_channel_idv2
 from ._public_list_content_v2 import public_list_content_v2
 from ._public_bulk_get_content_by_idv2 import public_bulk_get_content_by_idv2
@@ -191,6 +195,10 @@ from ._update_screenshots_v2 import update_screenshots_v2
 from ._upload_content_screenshot_v2 import upload_content_screenshot_v2
 from ._delete_content_screenshot_v2 import delete_content_screenshot_v2
 from ._public_get_group_contents_v2 import public_get_group_contents_v2
+from ._list_user_staging_contents import list_user_staging_contents
+from ._get_user_staging_content_by_id import get_user_staging_content_by_id
+from ._update_staging_content import update_staging_content
+from ._delete_user_staging_content_by_id import delete_user_staging_content_by_id
 
 
 commands = [
@@ -313,6 +321,9 @@ commands = [
     admin_delete_content_screenshot_v2,
     list_content_versions_v2,
     admin_get_official_group_contents_v2,
+    admin_list_staging_contents,
+    admin_get_staging_content_by_id,
+    admin_approve_staging_content,
     admin_update_content_by_share_code_v2,
     admin_delete_content_by_share_code_v2,
     admin_delete_user_content_v2,
@@ -322,6 +333,7 @@ commands = [
     admin_get_content_by_user_idv2,
     admin_update_content_hide_status_v2,
     admin_get_user_group_contents_v2,
+    admin_list_user_staging_contents,
     public_get_content_by_channel_idv2,
     public_list_content_v2,
     public_bulk_get_content_by_idv2,
@@ -345,4 +357,8 @@ commands = [
     upload_content_screenshot_v2,
     delete_content_screenshot_v2,
     public_get_group_contents_v2,
+    list_user_staging_contents,
+    get_user_staging_content_by_id,
+    update_staging_content,
+    delete_user_staging_content_by_id,
 ]

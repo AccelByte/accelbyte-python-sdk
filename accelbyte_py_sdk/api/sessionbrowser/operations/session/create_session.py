@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Browser Service (1.17.0)
+# AccelByte Gaming Services Session Browser Service (1.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,17 +38,7 @@ from ...models import RestapiErrorResponseV2
 class CreateSession(Operation):
     """Register a new game session (CreateSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [CREATE]
-
-    Required scope: social
-
     This end point intended to be called directly by P2P game client host or by DSMC
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession

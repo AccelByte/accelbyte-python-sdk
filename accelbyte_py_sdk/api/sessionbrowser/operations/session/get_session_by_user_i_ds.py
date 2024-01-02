@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Browser Service (1.17.0)
+# AccelByte Gaming Services Session Browser Service (1.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,17 +36,7 @@ from ...models import ResponseError
 class GetSessionByUserIDs(Operation):
     """Query game sessions by comma separated user ids (GetSessionByUserIDs)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Query game sessions by comma separated user ids
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/bulk

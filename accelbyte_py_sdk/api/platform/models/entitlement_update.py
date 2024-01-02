@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,20 @@ from ....core import Model
 from ....core import StrEnum
 
 
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
+
+
 class StatusEnum(StrEnum):
     ACTIVE = "ACTIVE"
     CONSUMED = "CONSUMED"
@@ -45,6 +59,10 @@ class EntitlementUpdate(Model):
 
         null_field_list: (nullFieldList) OPTIONAL List[str]
 
+        origin: (origin) OPTIONAL Union[str, OriginEnum]
+
+        reason: (reason) OPTIONAL str
+
         start_date: (startDate) OPTIONAL str
 
         status: (status) OPTIONAL Union[str, StatusEnum]
@@ -56,6 +74,8 @@ class EntitlementUpdate(Model):
 
     end_date: str  # OPTIONAL
     null_field_list: List[str]  # OPTIONAL
+    origin: Union[str, OriginEnum]  # OPTIONAL
+    reason: str  # OPTIONAL
     start_date: str  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
     use_count: int  # OPTIONAL
@@ -70,6 +90,14 @@ class EntitlementUpdate(Model):
 
     def with_null_field_list(self, value: List[str]) -> EntitlementUpdate:
         self.null_field_list = value
+        return self
+
+    def with_origin(self, value: Union[str, OriginEnum]) -> EntitlementUpdate:
+        self.origin = value
+        return self
+
+    def with_reason(self, value: str) -> EntitlementUpdate:
+        self.reason = value
         return self
 
     def with_start_date(self, value: str) -> EntitlementUpdate:
@@ -98,6 +126,14 @@ class EntitlementUpdate(Model):
             result["nullFieldList"] = [str(i0) for i0 in self.null_field_list]
         elif include_empty:
             result["nullFieldList"] = []
+        if hasattr(self, "origin"):
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
+        if hasattr(self, "reason"):
+            result["reason"] = str(self.reason)
+        elif include_empty:
+            result["reason"] = ""
         if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
@@ -121,6 +157,8 @@ class EntitlementUpdate(Model):
         cls,
         end_date: Optional[str] = None,
         null_field_list: Optional[List[str]] = None,
+        origin: Optional[Union[str, OriginEnum]] = None,
+        reason: Optional[str] = None,
         start_date: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         use_count: Optional[int] = None,
@@ -131,6 +169,10 @@ class EntitlementUpdate(Model):
             instance.end_date = end_date
         if null_field_list is not None:
             instance.null_field_list = null_field_list
+        if origin is not None:
+            instance.origin = origin
+        if reason is not None:
+            instance.reason = reason
         if start_date is not None:
             instance.start_date = start_date
         if status is not None:
@@ -154,6 +196,14 @@ class EntitlementUpdate(Model):
             instance.null_field_list = [str(i0) for i0 in dict_["nullFieldList"]]
         elif include_empty:
             instance.null_field_list = []
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
+        if "reason" in dict_ and dict_["reason"] is not None:
+            instance.reason = str(dict_["reason"])
+        elif include_empty:
+            instance.reason = ""
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
@@ -209,6 +259,8 @@ class EntitlementUpdate(Model):
         return {
             "endDate": "end_date",
             "nullFieldList": "null_field_list",
+            "origin": "origin",
+            "reason": "reason",
             "startDate": "start_date",
             "status": "status",
             "useCount": "use_count",
@@ -219,6 +271,8 @@ class EntitlementUpdate(Model):
         return {
             "endDate": False,
             "nullFieldList": False,
+            "origin": False,
+            "reason": False,
             "startDate": False,
             "status": False,
             "useCount": False,
@@ -227,6 +281,19 @@ class EntitlementUpdate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
             "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED", "SOLD"],
         }
 

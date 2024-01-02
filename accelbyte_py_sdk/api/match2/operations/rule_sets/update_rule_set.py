@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Match Service V2 (2.13.0)
+# AccelByte Gaming Services Match Service V2 (2.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,19 +36,9 @@ from ...models import ResponseError
 class UpdateRuleSet(Operation):
     """Update a match rule set (UpdateRuleSet)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
-
-    Required Scope: social
-
     Updates an existing matchmaking rule set.
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}

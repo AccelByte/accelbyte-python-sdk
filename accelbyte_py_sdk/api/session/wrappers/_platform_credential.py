@@ -46,10 +46,7 @@ def admin_delete_platform_credentials(
 ):
     """Delete platform credentials. (adminDeletePlatformCredentials)
 
-    Delete platform credentials used for Native Session sync. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [DELETE]
+    Delete platform credentials used for Native Session sync.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials
@@ -97,10 +94,7 @@ async def admin_delete_platform_credentials_async(
 ):
     """Delete platform credentials. (adminDeletePlatformCredentials)
 
-    Delete platform credentials used for Native Session sync. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [DELETE]
+    Delete platform credentials used for Native Session sync.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials
@@ -148,7 +142,7 @@ def admin_get_platform_credentials(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get platform credentials. These are used to sync PSN sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [READ] (adminGetPlatformCredentials)
+    """Get platform credentials. These are used to sync PSN sessions. (adminGetPlatformCredentials)
 
     Get platform credentials used for Native Session sync.
     PSN:
@@ -203,7 +197,7 @@ async def admin_get_platform_credentials_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get platform credentials. These are used to sync PSN sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [READ] (adminGetPlatformCredentials)
+    """Get platform credentials. These are used to sync PSN sessions. (adminGetPlatformCredentials)
 
     Get platform credentials used for Native Session sync.
     PSN:
@@ -261,7 +255,7 @@ def admin_update_platform_credentials(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update platform credentials. Currently only used to sync PSN sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE] (adminUpdatePlatformCredentials)
+    """Update platform credentials. Currently only used to sync PSN sessions. (adminUpdatePlatformCredentials)
 
     Update platform credentials for Native Session sync. Currently supports PSN platform.
     Send an empty body to clear data.
@@ -321,7 +315,7 @@ async def admin_update_platform_credentials_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update platform credentials. Currently only used to sync PSN sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE] (adminUpdatePlatformCredentials)
+    """Update platform credentials. Currently only used to sync PSN sessions. (adminUpdatePlatformCredentials)
 
     Update platform credentials for Native Session sync. Currently supports PSN platform.
     Send an empty body to clear data.

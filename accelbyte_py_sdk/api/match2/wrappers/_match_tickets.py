@@ -50,10 +50,6 @@ def create_match_ticket(
 ):
     """Create a matchmaking ticket (CreateMatchTicket)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [CREATE]
-
-    Required Scope: social
-
     Creates a new request for matchmaking.
 
     Cross Platform: Allow player to play game with "any" registered platforms.
@@ -81,12 +77,6 @@ def create_match_ticket(
     2. Cross Platform can be disabled with specify only ONE cross_platform. Current matchmaking use this behavior. e.g. cross_platform:[xbox]
     3. Matchmaking will consider Party leader cross_platform preference or Session attribute cross_platform preference.
     4. This behavior only works for Default Matchmaker. Custom matchmaker (custom gRPC matchmaker) need to consider this on its own implementation.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:TICKET [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-tickets
@@ -140,10 +130,6 @@ async def create_match_ticket_async(
 ):
     """Create a matchmaking ticket (CreateMatchTicket)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [CREATE]
-
-    Required Scope: social
-
     Creates a new request for matchmaking.
 
     Cross Platform: Allow player to play game with "any" registered platforms.
@@ -171,12 +157,6 @@ async def create_match_ticket_async(
     2. Cross Platform can be disabled with specify only ONE cross_platform. Current matchmaking use this behavior. e.g. cross_platform:[xbox]
     3. Matchmaking will consider Party leader cross_platform preference or Session attribute cross_platform preference.
     4. This behavior only works for Default Matchmaker. Custom matchmaker (custom gRPC matchmaker) need to consider this on its own implementation.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:TICKET [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-tickets
@@ -232,17 +212,7 @@ def delete_match_ticket(
 ):
     """Delete a match ticket (DeleteMatchTicket)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [DELETE]
-
-    Required Scope: social
-
     Deletes an existing matchmaking ticket.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:TICKET [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-tickets/{ticketid}
@@ -292,17 +262,7 @@ async def delete_match_ticket_async(
 ):
     """Delete a match ticket (DeleteMatchTicket)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [DELETE]
-
-    Required Scope: social
-
     Deletes an existing matchmaking ticket.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:TICKET [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-tickets/{ticketid}
@@ -356,17 +316,7 @@ def get_my_match_tickets(
 ):
     """Get my match tickets (GetMyMatchTickets)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
-
-    Required Scope: social
-
     Get my match tickets.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-tickets/me
@@ -422,17 +372,7 @@ async def get_my_match_tickets_async(
 ):
     """Get my match tickets (GetMyMatchTickets)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
-
-    Required Scope: social
-
     Get my match tickets.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-tickets/me
@@ -488,17 +428,7 @@ def match_ticket_details(
 ):
     """Get details for a specific match ticket (MatchTicketDetails)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
-
-    Required Scope: social
-
     Get details for a specific match ticket
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-tickets/{ticketid}
@@ -548,17 +478,7 @@ async def match_ticket_details_async(
 ):
     """Get details for a specific match ticket (MatchTicketDetails)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
-
-    Required Scope: social
-
     Get details for a specific match ticket
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:TICKET [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-tickets/{ticketid}

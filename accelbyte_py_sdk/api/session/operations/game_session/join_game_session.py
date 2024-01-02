@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseError
 
 
 class JoinGameSession(Operation):
-    """Join a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (joinGameSession)
+    """Join a game session. (joinGameSession)
 
     Join a game session.
 

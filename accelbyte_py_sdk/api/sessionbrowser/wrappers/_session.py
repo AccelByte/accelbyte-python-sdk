@@ -81,17 +81,7 @@ def add_player_to_session(
 ):
     """Add player to game session (AddPlayerToSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required scope: social
-
     Add player to game session
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/player
@@ -143,17 +133,7 @@ async def add_player_to_session_async(
 ):
     """Add player to game session (AddPlayerToSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required scope: social
-
     Add player to game session
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/player
@@ -206,17 +186,7 @@ def admin_delete_session(
 ):
     """Admin delete specified session by session ID (AdminDeleteSession)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required scope: social
-
     Admin delete the session by session ID
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/{sessionID}
@@ -264,17 +234,7 @@ async def admin_delete_session_async(
 ):
     """Admin delete specified session by session ID (AdminDeleteSession)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required scope: social
-
     Admin delete the session by session ID
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/{sessionID}
@@ -324,17 +284,7 @@ def admin_get_session(
 ):
     """Admin get specified session by session ID (AdminGetSession)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Get the session by session ID for admin user
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/{sessionID}
@@ -380,17 +330,7 @@ async def admin_get_session_async(
 ):
     """Admin get specified session by session ID (AdminGetSession)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Get the session by session ID for admin user
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/{sessionID}
@@ -447,15 +387,7 @@ def admin_query_session(
 ):
     """Query to available game session (AdminQuerySession)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
+    Query to available game session
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession
@@ -537,15 +469,7 @@ async def admin_query_session_async(
 ):
     """Query to available game session (AdminQuerySession)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
+    Query to available game session
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession
@@ -628,18 +552,8 @@ def admin_search_sessions_v2(
 ):
     """Search sessions (AdminSearchSessionsV2)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:SESSION [Read]
-
-    Required Scope: social
-
     Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace & other filter (partyID, userID, matchID).
     Query with filter namespace only will not group whole session data while query with filter namespace & other filter will include session data.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSION [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/sessions/history/search
@@ -721,18 +635,8 @@ async def admin_search_sessions_v2_async(
 ):
     """Search sessions (AdminSearchSessionsV2)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:SESSION [Read]
-
-    Required Scope: social
-
     Search sessions. Optimize the query by differentiating query with filter namespace only and filter with namespace & other filter (partyID, userID, matchID).
     Query with filter namespace only will not group whole session data while query with filter namespace & other filter will include session data.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSION [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/sessions/history/search
@@ -808,17 +712,7 @@ def create_session(
 ):
     """Register a new game session (CreateSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [CREATE]
-
-    Required scope: social
-
     This end point intended to be called directly by P2P game client host or by DSMC
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession
@@ -868,17 +762,7 @@ async def create_session_async(
 ):
     """Register a new game session (CreateSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [CREATE]
-
-    Required scope: social
-
     This end point intended to be called directly by P2P game client host or by DSMC
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession
@@ -930,17 +814,7 @@ def delete_session(
 ):
     """Delete specified (p2p) session by session ID (DeleteSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required scope: social
-
     Delete the session (p2p) by session ID
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
@@ -988,17 +862,7 @@ async def delete_session_async(
 ):
     """Delete specified (p2p) session by session ID (DeleteSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required scope: social
-
     Delete the session (p2p) by session ID
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
@@ -1048,17 +912,7 @@ def delete_session_local_ds(
 ):
     """Only use for local DS entry, will error when calling non local DS entry (DeleteSessionLocalDS)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required scope: social
-
     Only use for local DS entry, will error when calling non local DS entry
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/localds
@@ -1106,17 +960,7 @@ async def delete_session_local_ds_async(
 ):
     """Only use for local DS entry, will error when calling non local DS entry (DeleteSessionLocalDS)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required scope: social
-
     Only use for local DS entry, will error when calling non local DS entry
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/localds
@@ -1169,15 +1013,7 @@ def get_active_custom_game_sessions(
 ):
     """Get all active session for custom game, this return only dedicated session type (GetActiveCustomGameSessions)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
+    Get all active session for custom game, this return only dedicated session type
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/active/custom-game
@@ -1235,15 +1071,7 @@ async def get_active_custom_game_sessions_async(
 ):
     """Get all active session for custom game, this return only dedicated session type (GetActiveCustomGameSessions)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
+    Get all active session for custom game, this return only dedicated session type
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/active/custom-game
@@ -1304,15 +1132,7 @@ def get_active_matchmaking_game_sessions(
 ):
     """Get all active session for matchmaking game, this return only dedicated session type (GetActiveMatchmakingGameSessions)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
+    Get all active session for matchmaking game, this return only dedicated session type
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/active/matchmaking-game
@@ -1374,15 +1194,7 @@ async def get_active_matchmaking_game_sessions_async(
 ):
     """Get all active session for matchmaking game, this return only dedicated session type (GetActiveMatchmakingGameSessions)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
+    Get all active session for matchmaking game, this return only dedicated session type
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/active/matchmaking-game
@@ -1442,17 +1254,7 @@ def get_recent_player(
 ):
     """Query recent players with given user id (GetRecentPlayer)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:RECENTPLAYER [READ]
-
-    Required scope: social
-
     Query recent player by user ID
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:RECENTPLAYER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/recentplayer/{userID}
@@ -1498,17 +1300,7 @@ async def get_recent_player_async(
 ):
     """Query recent players with given user id (GetRecentPlayer)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:RECENTPLAYER [READ]
-
-    Required scope: social
-
     Query recent player by user ID
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:RECENTPLAYER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/recentplayer/{userID}
@@ -1556,17 +1348,7 @@ def get_session(
 ):
     """Get specified session by session ID (GetSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Get the session by session ID
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
@@ -1612,17 +1394,7 @@ async def get_session_async(
 ):
     """Get specified session by session ID (GetSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Get the session by session ID
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
@@ -1670,17 +1442,7 @@ def get_session_by_user_i_ds(
 ):
     """Query game sessions by comma separated user ids (GetSessionByUserIDs)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Query game sessions by comma separated user ids
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/bulk
@@ -1726,17 +1488,7 @@ async def get_session_by_user_i_ds_async(
 ):
     """Query game sessions by comma separated user ids (GetSessionByUserIDs)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Query game sessions by comma separated user ids
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/bulk
@@ -1784,19 +1536,9 @@ def get_session_history_detailed(
 ):
     """Get session history detailed (GetSessionHistoryDetailed)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [Read]
-
-    Required Scope: social
-
     Get session history detailed.
 
     if party_id value empty/null, field will not show in response body.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed
@@ -1846,19 +1588,9 @@ async def get_session_history_detailed_async(
 ):
     """Get session history detailed (GetSessionHistoryDetailed)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [Read]
-
-    Required Scope: social
-
     Get session history detailed.
 
     if party_id value empty/null, field will not show in response body.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed
@@ -1910,15 +1642,7 @@ def get_total_active_session(
 ):
     """Get all active session (GetTotalActiveSession)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
+    Get all active session
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/active/count
@@ -1964,15 +1688,7 @@ async def get_total_active_session_async(
 ):
     """Get all active session (GetTotalActiveSession)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
+    Get all active session
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/active/count
@@ -2021,17 +1737,7 @@ def join_session(
 ):
     """Join specified session by session ID (JoinSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Join the specified session by session ID. Possible the game required a password to join
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/join
@@ -2085,17 +1791,7 @@ async def join_session_async(
 ):
     """Join specified session by session ID (JoinSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Join the specified session by session ID. Possible the game required a password to join
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/join
@@ -2151,17 +1847,7 @@ def remove_player_from_session(
 ):
     """remove player from game session (RemovePlayerFromSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required scope: social
-
     Remove player from game session
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/player/{userID}
@@ -2213,17 +1899,7 @@ async def remove_player_from_session_async(
 ):
     """remove player from game session (RemovePlayerFromSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required scope: social
-
     Remove player from game session
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/player/{userID}
@@ -2277,17 +1953,7 @@ def update_session(
 ):
     """Update session (UpdateSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required scope: social
-
     Update game session, used to update the current player
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
@@ -2339,17 +2005,7 @@ async def update_session_async(
 ):
     """Update session (UpdateSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required scope: social
-
     Update game session, used to update the current player
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}
@@ -2403,17 +2059,7 @@ def update_settings(
 ):
     """Update settings (UpdateSettings)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required scope: social
-
     Update game session, used to update OtherSettings
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/settings
@@ -2465,17 +2111,7 @@ async def update_settings_async(
 ):
     """Update settings (UpdateSettings)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required scope: social
-
     Update game session, used to update OtherSettings
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/settings
@@ -2537,17 +2173,7 @@ def user_query_session(
 ):
     """Query to available game session (UserQuerySession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Query available game session
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession
@@ -2629,17 +2255,7 @@ async def user_query_session_async(
 ):
     """Query to available game session (UserQuerySession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
     Query available game session
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession

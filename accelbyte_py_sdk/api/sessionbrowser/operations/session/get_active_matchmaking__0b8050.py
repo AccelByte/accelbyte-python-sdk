@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Browser Service (1.17.0)
+# AccelByte Gaming Services Session Browser Service (1.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,15 +36,7 @@ from ...models import RestapiErrorResponseV2
 class GetActiveMatchmakingGameSessions(Operation):
     """Get all active session for matchmaking game, this return only dedicated session type (GetActiveMatchmakingGameSessions)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required scope: social
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [READ]
-
-    Required Scope(s):
-        - social
+    Get all active session for matchmaking game, this return only dedicated session type
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/gamesession/active/matchmaking-game

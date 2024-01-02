@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class AppendTeamGameSession(Operation):
-    """Append new member or team to session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (appendTeamGameSession)
+    """Append new member or team to session. (appendTeamGameSession)
 
     Append new member or team to session
 

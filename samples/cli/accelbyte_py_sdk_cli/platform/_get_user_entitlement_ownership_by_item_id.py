@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.42.0)
+# AGS Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.platform.models import TimedOwnership
 @click.argument("user_id", type=str)
 @click.argument("item_id", type=str)
 @click.option("--entitlement_clazz", "entitlement_clazz", type=str)
+@click.option("--platform", "platform", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -48,6 +49,7 @@ def get_user_entitlement_ownership_by_item_id(
     user_id: str,
     item_id: str,
     entitlement_clazz: Optional[str] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -65,6 +67,7 @@ def get_user_entitlement_ownership_by_item_id(
         user_id=user_id,
         item_id=item_id,
         entitlement_clazz=entitlement_clazz,
+        platform=platform,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

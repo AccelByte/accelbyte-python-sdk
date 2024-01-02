@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,6 +30,20 @@ from ....core import StrEnum
 
 from ..models.credit_revocation import CreditRevocation
 from ..models.entitlement_revocation import EntitlementRevocation
+
+
+class EntitlementOriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
 
 
 class ItemTypeEnum(StrEnum):
@@ -59,6 +73,8 @@ class ItemRevocation(Model):
 
         custom_revocation: (customRevocation) OPTIONAL Dict[str, Any]
 
+        entitlement_origin: (entitlementOrigin) OPTIONAL Union[str, EntitlementOriginEnum]
+
         entitlement_revocations: (entitlementRevocations) OPTIONAL List[EntitlementRevocation]
 
         item_id: (itemId) OPTIONAL str
@@ -84,6 +100,7 @@ class ItemRevocation(Model):
 
     credit_revocations: List[CreditRevocation]  # OPTIONAL
     custom_revocation: Dict[str, Any]  # OPTIONAL
+    entitlement_origin: Union[str, EntitlementOriginEnum]  # OPTIONAL
     entitlement_revocations: List[EntitlementRevocation]  # OPTIONAL
     item_id: str  # OPTIONAL
     item_revocations: List[ItemRevocation]  # OPTIONAL
@@ -105,6 +122,12 @@ class ItemRevocation(Model):
 
     def with_custom_revocation(self, value: Dict[str, Any]) -> ItemRevocation:
         self.custom_revocation = value
+        return self
+
+    def with_entitlement_origin(
+        self, value: Union[str, EntitlementOriginEnum]
+    ) -> ItemRevocation:
+        self.entitlement_origin = value
         return self
 
     def with_entitlement_revocations(
@@ -168,6 +191,10 @@ class ItemRevocation(Model):
             }
         elif include_empty:
             result["customRevocation"] = {}
+        if hasattr(self, "entitlement_origin"):
+            result["entitlementOrigin"] = str(self.entitlement_origin)
+        elif include_empty:
+            result["entitlementOrigin"] = Union[str, EntitlementOriginEnum]()
         if hasattr(self, "entitlement_revocations"):
             result["entitlementRevocations"] = [
                 i0.to_dict(include_empty=include_empty)
@@ -224,6 +251,7 @@ class ItemRevocation(Model):
         cls,
         credit_revocations: Optional[List[CreditRevocation]] = None,
         custom_revocation: Optional[Dict[str, Any]] = None,
+        entitlement_origin: Optional[Union[str, EntitlementOriginEnum]] = None,
         entitlement_revocations: Optional[List[EntitlementRevocation]] = None,
         item_id: Optional[str] = None,
         item_revocations: Optional[List[ItemRevocation]] = None,
@@ -241,6 +269,8 @@ class ItemRevocation(Model):
             instance.credit_revocations = credit_revocations
         if custom_revocation is not None:
             instance.custom_revocation = custom_revocation
+        if entitlement_origin is not None:
+            instance.entitlement_origin = entitlement_origin
         if entitlement_revocations is not None:
             instance.entitlement_revocations = entitlement_revocations
         if item_id is not None:
@@ -283,6 +313,10 @@ class ItemRevocation(Model):
             }
         elif include_empty:
             instance.custom_revocation = {}
+        if "entitlementOrigin" in dict_ and dict_["entitlementOrigin"] is not None:
+            instance.entitlement_origin = str(dict_["entitlementOrigin"])
+        elif include_empty:
+            instance.entitlement_origin = Union[str, EntitlementOriginEnum]()
         if (
             "entitlementRevocations" in dict_
             and dict_["entitlementRevocations"] is not None
@@ -373,6 +407,7 @@ class ItemRevocation(Model):
         return {
             "creditRevocations": "credit_revocations",
             "customRevocation": "custom_revocation",
+            "entitlementOrigin": "entitlement_origin",
             "entitlementRevocations": "entitlement_revocations",
             "itemId": "item_id",
             "itemRevocations": "item_revocations",
@@ -390,6 +425,7 @@ class ItemRevocation(Model):
         return {
             "creditRevocations": False,
             "customRevocation": False,
+            "entitlementOrigin": False,
             "entitlementRevocations": False,
             "itemId": False,
             "itemRevocations": False,
@@ -405,6 +441,19 @@ class ItemRevocation(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "entitlementOrigin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
             "itemType": [
                 "APP",
                 "BUNDLE",

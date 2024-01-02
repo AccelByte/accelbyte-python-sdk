@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,20 @@ from ....core import Model
 from ....core import StrEnum
 
 from ..models.platform_reward import PlatformReward
+
+
+class EntitlementOriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
 
 
 class OriginEnum(StrEnum):
@@ -70,6 +84,8 @@ class RewardsRequest(Model):
     Properties:
         rewards: (rewards) REQUIRED List[PlatformReward]
 
+        entitlement_origin: (entitlementOrigin) OPTIONAL Union[str, EntitlementOriginEnum]
+
         metadata: (metadata) OPTIONAL Dict[str, Any]
 
         origin: (origin) OPTIONAL Union[str, OriginEnum]
@@ -82,6 +98,7 @@ class RewardsRequest(Model):
     # region fields
 
     rewards: List[PlatformReward]  # REQUIRED
+    entitlement_origin: Union[str, EntitlementOriginEnum]  # OPTIONAL
     metadata: Dict[str, Any]  # OPTIONAL
     origin: Union[str, OriginEnum]  # OPTIONAL
     source: Union[str, SourceEnum]  # OPTIONAL
@@ -93,6 +110,12 @@ class RewardsRequest(Model):
 
     def with_rewards(self, value: List[PlatformReward]) -> RewardsRequest:
         self.rewards = value
+        return self
+
+    def with_entitlement_origin(
+        self, value: Union[str, EntitlementOriginEnum]
+    ) -> RewardsRequest:
+        self.entitlement_origin = value
         return self
 
     def with_metadata(self, value: Dict[str, Any]) -> RewardsRequest:
@@ -123,6 +146,10 @@ class RewardsRequest(Model):
             ]
         elif include_empty:
             result["rewards"] = []
+        if hasattr(self, "entitlement_origin"):
+            result["entitlementOrigin"] = str(self.entitlement_origin)
+        elif include_empty:
+            result["entitlementOrigin"] = Union[str, EntitlementOriginEnum]()
         if hasattr(self, "metadata"):
             result["metadata"] = {str(k0): v0 for k0, v0 in self.metadata.items()}
         elif include_empty:
@@ -149,6 +176,7 @@ class RewardsRequest(Model):
     def create(
         cls,
         rewards: List[PlatformReward],
+        entitlement_origin: Optional[Union[str, EntitlementOriginEnum]] = None,
         metadata: Optional[Dict[str, Any]] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
         source: Optional[Union[str, SourceEnum]] = None,
@@ -157,6 +185,8 @@ class RewardsRequest(Model):
     ) -> RewardsRequest:
         instance = cls()
         instance.rewards = rewards
+        if entitlement_origin is not None:
+            instance.entitlement_origin = entitlement_origin
         if metadata is not None:
             instance.metadata = metadata
         if origin is not None:
@@ -181,6 +211,10 @@ class RewardsRequest(Model):
             ]
         elif include_empty:
             instance.rewards = []
+        if "entitlementOrigin" in dict_ and dict_["entitlementOrigin"] is not None:
+            instance.entitlement_origin = str(dict_["entitlementOrigin"])
+        elif include_empty:
+            instance.entitlement_origin = Union[str, EntitlementOriginEnum]()
         if "metadata" in dict_ and dict_["metadata"] is not None:
             instance.metadata = {str(k0): v0 for k0, v0 in dict_["metadata"].items()}
         elif include_empty:
@@ -237,6 +271,7 @@ class RewardsRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "rewards": "rewards",
+            "entitlementOrigin": "entitlement_origin",
             "metadata": "metadata",
             "origin": "origin",
             "source": "source",
@@ -247,6 +282,7 @@ class RewardsRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "rewards": True,
+            "entitlementOrigin": False,
             "metadata": False,
             "origin": False,
             "source": False,
@@ -256,6 +292,19 @@ class RewardsRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "entitlementOrigin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
             "origin": [
                 "Epic",
                 "GooglePlay",

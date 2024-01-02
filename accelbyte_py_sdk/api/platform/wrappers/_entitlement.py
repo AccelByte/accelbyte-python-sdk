@@ -30,12 +30,15 @@ from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
+from ..models import AdminEntitlementDecrement
+from ..models import AdminEntitlementSoldRequest
 from ..models import AppEntitlementInfo
 from ..models import AppEntitlementPagingSlicedResult
 from ..models import BulkEntitlementGrantRequest
 from ..models import BulkEntitlementGrantResult
 from ..models import BulkEntitlementRevokeResult
 from ..models import BulkOperationResult
+from ..models import EntitlementConfigInfo
 from ..models import EntitlementDecrement
 from ..models import EntitlementDecrementResult
 from ..models import EntitlementGrant
@@ -44,6 +47,8 @@ from ..models import EntitlementIfc
 from ..models import EntitlementInfo
 from ..models import EntitlementOwnership
 from ..models import EntitlementPagingSlicedResult
+from ..models import EntitlementPlatformConfigInfo
+from ..models import EntitlementPlatformConfigUpdate
 from ..models import EntitlementPrechekResult
 from ..models import EntitlementSoldRequest
 from ..models import EntitlementSoldResult
@@ -58,10 +63,14 @@ from ..models import ValidationErrorEntity
 
 from ..operations.entitlement import ConsumeUserEntitlement
 from ..operations.entitlement import DisableUserEntitlement
+from ..operations.entitlement import EnableEntitlementOriginFeature
 from ..operations.entitlement import EnableUserEntitlement
 from ..operations.entitlement import ExistsAnyUserActiveEntitlement
 from ..operations.entitlement import ExistsAnyUserActiveEntitlementByItemIds
 from ..operations.entitlement import GetEntitlement
+from ..operations.entitlement import GetEntitlementConfigInfo
+from ..operations.entitlement import GetPlatformEntitlementConfig
+from ..operations.entitlement import GetPlatformEntitlementConfigPlatformEnum
 from ..operations.entitlement import GetUserActiveEntitlementsByItemIds
 from ..operations.entitlement import GetUserAppEntitlementByAppId
 from ..operations.entitlement import GetUserAppEntitlementOwnershipByAppId
@@ -126,12 +135,14 @@ from ..operations.entitlement import QueryEntitlements
 from ..operations.entitlement import (
     QueryEntitlementsAppTypeEnum,
     QueryEntitlementsEntitlementClazzEnum,
+    QueryEntitlementsOriginEnum,
 )
 from ..operations.entitlement import QueryEntitlements1
 from ..operations.entitlement import QueryUserEntitlements
 from ..operations.entitlement import (
     QueryUserEntitlementsAppTypeEnum,
     QueryUserEntitlementsEntitlementClazzEnum,
+    QueryUserEntitlementsOriginEnum,
 )
 from ..operations.entitlement import QueryUserEntitlementsByAppType
 from ..operations.entitlement import QueryUserEntitlementsByAppTypeAppTypeEnum
@@ -142,36 +153,47 @@ from ..operations.entitlement import RevokeUserEntitlement
 from ..operations.entitlement import RevokeUserEntitlementByUseCount
 from ..operations.entitlement import RevokeUserEntitlements
 from ..operations.entitlement import SellUserEntitlement
+from ..operations.entitlement import UpdatePlatformEntitlementConfig
+from ..operations.entitlement import UpdatePlatformEntitlementConfigPlatformEnum
 from ..operations.entitlement import UpdateUserEntitlement
-from ..models import AppEntitlementInfoAppTypeEnum, AppEntitlementInfoStatusEnum
+from ..models import (
+    AppEntitlementInfoAppTypeEnum,
+    AppEntitlementInfoOriginEnum,
+    AppEntitlementInfoStatusEnum,
+)
 from ..models import BulkEntitlementGrantResultStatusEnum
 from ..models import BulkEntitlementRevokeResultStatusEnum
 from ..models import (
     EntitlementDecrementResultAppTypeEnum,
     EntitlementDecrementResultClazzEnum,
+    EntitlementDecrementResultOriginEnum,
     EntitlementDecrementResultSourceEnum,
     EntitlementDecrementResultStatusEnum,
     EntitlementDecrementResultTypeEnum,
 )
-from ..models import EntitlementGrantSourceEnum
-from ..models import EntitlementHistoryInfoActionEnum
+from ..models import EntitlementGrantOriginEnum, EntitlementGrantSourceEnum
+from ..models import EntitlementHistoryInfoActionEnum, EntitlementHistoryInfoOriginEnum
 from ..models import (
     EntitlementIfcAppTypeEnum,
     EntitlementIfcClazzEnum,
+    EntitlementIfcOriginEnum,
     EntitlementIfcStatusEnum,
     EntitlementIfcTypeEnum,
 )
 from ..models import (
     EntitlementInfoAppTypeEnum,
     EntitlementInfoClazzEnum,
+    EntitlementInfoOriginEnum,
     EntitlementInfoSourceEnum,
     EntitlementInfoStatusEnum,
     EntitlementInfoTypeEnum,
 )
-from ..models import EntitlementUpdateStatusEnum
+from ..models import EntitlementPlatformConfigUpdateAllowedPlatformOriginsEnum
+from ..models import EntitlementUpdateOriginEnum, EntitlementUpdateStatusEnum
 from ..models import (
     StackableEntitlementInfoAppTypeEnum,
     StackableEntitlementInfoClazzEnum,
+    StackableEntitlementInfoOriginEnum,
     StackableEntitlementInfoSourceEnum,
     StackableEntitlementInfoStatusEnum,
     StackableEntitlementInfoTypeEnum,
@@ -182,7 +204,7 @@ from ..models import (
 def consume_user_entitlement(
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementDecrement] = None,
+    body: Optional[AdminEntitlementDecrement] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -211,7 +233,7 @@ def consume_user_entitlement(
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementDecrement in body
+        body: (body) OPTIONAL AdminEntitlementDecrement in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -226,7 +248,7 @@ def consume_user_entitlement(
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}] | 20006: optimistic lock)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -245,7 +267,7 @@ def consume_user_entitlement(
 async def consume_user_entitlement_async(
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementDecrement] = None,
+    body: Optional[AdminEntitlementDecrement] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -274,7 +296,7 @@ async def consume_user_entitlement_async(
 
         securities: [BEARER_AUTH] or [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementDecrement in body
+        body: (body) OPTIONAL AdminEntitlementDecrement in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -289,7 +311,7 @@ async def consume_user_entitlement_async(
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}] | 20006: optimistic lock)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -424,6 +446,98 @@ async def disable_user_entitlement_async(
     )
 
 
+@same_doc_as(EnableEntitlementOriginFeature)
+def enable_entitlement_origin_feature(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Enable entitlement origin feature (enableEntitlementOriginFeature)
+
+    Enable Entitlement origin feature.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=4 (READ)
+      *  Returns : entitlement info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/entitlements/config/entitlementOrigin/enable
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = EnableEntitlementOriginFeature.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(EnableEntitlementOriginFeature)
+async def enable_entitlement_origin_feature_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Enable entitlement origin feature (enableEntitlementOriginFeature)
+
+    Enable Entitlement origin feature.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=4 (READ)
+      *  Returns : entitlement info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/entitlements/config/entitlementOrigin/enable
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = EnableEntitlementOriginFeature.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(EnableUserEntitlement)
 def enable_user_entitlement(
     entitlement_id: str,
@@ -545,6 +659,7 @@ def exists_any_user_active_entitlement(
     user_id: str,
     app_ids: Optional[List[str]] = None,
     item_ids: Optional[List[str]] = None,
+    platform: Optional[str] = None,
     skus: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -582,6 +697,8 @@ def exists_any_user_active_entitlement(
 
         item_ids: (itemIds) OPTIONAL List[str] in query
 
+        platform: (platform) OPTIONAL str in query
+
         skus: (skus) OPTIONAL List[str] in query
 
     Responses:
@@ -595,6 +712,7 @@ def exists_any_user_active_entitlement(
         user_id=user_id,
         app_ids=app_ids,
         item_ids=item_ids,
+        platform=platform,
         skus=skus,
         namespace=namespace,
     )
@@ -606,6 +724,7 @@ async def exists_any_user_active_entitlement_async(
     user_id: str,
     app_ids: Optional[List[str]] = None,
     item_ids: Optional[List[str]] = None,
+    platform: Optional[str] = None,
     skus: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -643,6 +762,8 @@ async def exists_any_user_active_entitlement_async(
 
         item_ids: (itemIds) OPTIONAL List[str] in query
 
+        platform: (platform) OPTIONAL str in query
+
         skus: (skus) OPTIONAL List[str] in query
 
     Responses:
@@ -656,6 +777,7 @@ async def exists_any_user_active_entitlement_async(
         user_id=user_id,
         app_ids=app_ids,
         item_ids=item_ids,
+        platform=platform,
         skus=skus,
         namespace=namespace,
     )
@@ -668,6 +790,7 @@ async def exists_any_user_active_entitlement_async(
 def exists_any_user_active_entitlement_by_item_ids(
     item_ids: List[str],
     user_id: str,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -700,6 +823,8 @@ def exists_any_user_active_entitlement_by_item_ids(
 
         user_id: (userId) REQUIRED str in path
 
+        platform: (platform) OPTIONAL str in query
+
         item_ids: (itemIds) REQUIRED List[str] in query
 
     Responses:
@@ -712,6 +837,7 @@ def exists_any_user_active_entitlement_by_item_ids(
     request = ExistsAnyUserActiveEntitlementByItemIds.create(
         item_ids=item_ids,
         user_id=user_id,
+        platform=platform,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -721,6 +847,7 @@ def exists_any_user_active_entitlement_by_item_ids(
 async def exists_any_user_active_entitlement_by_item_ids_async(
     item_ids: List[str],
     user_id: str,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -753,6 +880,8 @@ async def exists_any_user_active_entitlement_by_item_ids_async(
 
         user_id: (userId) REQUIRED str in path
 
+        platform: (platform) OPTIONAL str in query
+
         item_ids: (itemIds) REQUIRED List[str] in query
 
     Responses:
@@ -765,6 +894,7 @@ async def exists_any_user_active_entitlement_by_item_ids_async(
     request = ExistsAnyUserActiveEntitlementByItemIds.create(
         item_ids=item_ids,
         user_id=user_id,
+        platform=platform,
         namespace=namespace,
     )
     return await run_request_async(
@@ -878,10 +1008,211 @@ async def get_entitlement_async(
     )
 
 
+@same_doc_as(GetEntitlementConfigInfo)
+def get_entitlement_config_info(
+    without_cache: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get entitlement config info (getEntitlementConfigInfo)
+
+    Get entitlement config info.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=2 (READ)
+      *  Returns : entitlement info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/entitlements/config/info
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        without_cache: (withoutCache) OPTIONAL bool in query
+
+    Responses:
+        200: OK - EntitlementConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetEntitlementConfigInfo.create(
+        without_cache=without_cache,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetEntitlementConfigInfo)
+async def get_entitlement_config_info_async(
+    without_cache: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get entitlement config info (getEntitlementConfigInfo)
+
+    Get entitlement config info.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=2 (READ)
+      *  Returns : entitlement info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/entitlements/config/info
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        without_cache: (withoutCache) OPTIONAL bool in query
+
+    Responses:
+        200: OK - EntitlementConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetEntitlementConfigInfo.create(
+        without_cache=without_cache,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetPlatformEntitlementConfig)
+def get_platform_entitlement_config(
+    platform: Union[str, GetPlatformEntitlementConfigPlatformEnum],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get platform entitlement config list (getPlatformEntitlementConfig)
+
+    Get platform entitlement config list.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=2 (READ)
+      *  Returns : entitlement info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/platforms/{platform}/entitlement/config
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) REQUIRED Union[str, PlatformEnum] in path
+
+    Responses:
+        200: OK - EntitlementPlatformConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPlatformEntitlementConfig.create(
+        platform=platform,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetPlatformEntitlementConfig)
+async def get_platform_entitlement_config_async(
+    platform: Union[str, GetPlatformEntitlementConfigPlatformEnum],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get platform entitlement config list (getPlatformEntitlementConfig)
+
+    Get platform entitlement config list.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=2 (READ)
+      *  Returns : entitlement info
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/platforms/{platform}/entitlement/config
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) REQUIRED Union[str, PlatformEnum] in path
+
+    Responses:
+        200: OK - EntitlementPlatformConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPlatformEntitlementConfig.create(
+        platform=platform,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetUserActiveEntitlementsByItemIds)
 def get_user_active_entitlements_by_item_ids(
     user_id: str,
     ids: Optional[List[str]] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -916,6 +1247,8 @@ def get_user_active_entitlements_by_item_ids(
 
         ids: (ids) OPTIONAL List[str] in query
 
+        platform: (platform) OPTIONAL str in query
+
     Responses:
         200: OK - List[EntitlementInfo] (successful operation)
     """
@@ -926,6 +1259,7 @@ def get_user_active_entitlements_by_item_ids(
     request = GetUserActiveEntitlementsByItemIds.create(
         user_id=user_id,
         ids=ids,
+        platform=platform,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -935,6 +1269,7 @@ def get_user_active_entitlements_by_item_ids(
 async def get_user_active_entitlements_by_item_ids_async(
     user_id: str,
     ids: Optional[List[str]] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -969,6 +1304,8 @@ async def get_user_active_entitlements_by_item_ids_async(
 
         ids: (ids) OPTIONAL List[str] in query
 
+        platform: (platform) OPTIONAL str in query
+
     Responses:
         200: OK - List[EntitlementInfo] (successful operation)
     """
@@ -979,6 +1316,7 @@ async def get_user_active_entitlements_by_item_ids_async(
     request = GetUserActiveEntitlementsByItemIds.create(
         user_id=user_id,
         ids=ids,
+        platform=platform,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1336,6 +1674,7 @@ def get_user_entitlement_by_item_id(
     entitlement_clazz: Optional[
         Union[str, GetUserEntitlementByItemIdEntitlementClazzEnum]
     ] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1372,6 +1711,8 @@ def get_user_entitlement_by_item_id(
 
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
+        platform: (platform) OPTIONAL str in query
+
         item_id: (itemId) REQUIRED str in query
 
     Responses:
@@ -1388,6 +1729,7 @@ def get_user_entitlement_by_item_id(
         user_id=user_id,
         active_only=active_only,
         entitlement_clazz=entitlement_clazz,
+        platform=platform,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1401,6 +1743,7 @@ async def get_user_entitlement_by_item_id_async(
     entitlement_clazz: Optional[
         Union[str, GetUserEntitlementByItemIdEntitlementClazzEnum]
     ] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1437,6 +1780,8 @@ async def get_user_entitlement_by_item_id_async(
 
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
+        platform: (platform) OPTIONAL str in query
+
         item_id: (itemId) REQUIRED str in query
 
     Responses:
@@ -1453,6 +1798,7 @@ async def get_user_entitlement_by_item_id_async(
         user_id=user_id,
         active_only=active_only,
         entitlement_clazz=entitlement_clazz,
+        platform=platform,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1468,6 +1814,7 @@ def get_user_entitlement_by_sku(
     entitlement_clazz: Optional[
         Union[str, GetUserEntitlementBySkuEntitlementClazzEnum]
     ] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1504,6 +1851,8 @@ def get_user_entitlement_by_sku(
 
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
+        platform: (platform) OPTIONAL str in query
+
         sku: (sku) REQUIRED str in query
 
     Responses:
@@ -1520,6 +1869,7 @@ def get_user_entitlement_by_sku(
         user_id=user_id,
         active_only=active_only,
         entitlement_clazz=entitlement_clazz,
+        platform=platform,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1533,6 +1883,7 @@ async def get_user_entitlement_by_sku_async(
     entitlement_clazz: Optional[
         Union[str, GetUserEntitlementBySkuEntitlementClazzEnum]
     ] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1569,6 +1920,8 @@ async def get_user_entitlement_by_sku_async(
 
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
+        platform: (platform) OPTIONAL str in query
+
         sku: (sku) REQUIRED str in query
 
     Responses:
@@ -1585,6 +1938,7 @@ async def get_user_entitlement_by_sku_async(
         user_id=user_id,
         active_only=active_only,
         entitlement_clazz=entitlement_clazz,
+        platform=platform,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1709,6 +2063,7 @@ def get_user_entitlement_ownership_by_item_id(
     entitlement_clazz: Optional[
         Union[str, GetUserEntitlementOwnershipByItemIdEntitlementClazzEnum]
     ] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1743,6 +2098,8 @@ def get_user_entitlement_ownership_by_item_id(
 
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
+        platform: (platform) OPTIONAL str in query
+
         item_id: (itemId) REQUIRED str in query
 
     Responses:
@@ -1756,6 +2113,7 @@ def get_user_entitlement_ownership_by_item_id(
         item_id=item_id,
         user_id=user_id,
         entitlement_clazz=entitlement_clazz,
+        platform=platform,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1768,6 +2126,7 @@ async def get_user_entitlement_ownership_by_item_id_async(
     entitlement_clazz: Optional[
         Union[str, GetUserEntitlementOwnershipByItemIdEntitlementClazzEnum]
     ] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1802,6 +2161,8 @@ async def get_user_entitlement_ownership_by_item_id_async(
 
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
+        platform: (platform) OPTIONAL str in query
+
         item_id: (itemId) REQUIRED str in query
 
     Responses:
@@ -1815,6 +2176,7 @@ async def get_user_entitlement_ownership_by_item_id_async(
         item_id=item_id,
         user_id=user_id,
         entitlement_clazz=entitlement_clazz,
+        platform=platform,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1826,6 +2188,7 @@ async def get_user_entitlement_ownership_by_item_id_async(
 def get_user_entitlement_ownership_by_item_ids(
     user_id: str,
     ids: Optional[List[str]] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1860,6 +2223,8 @@ def get_user_entitlement_ownership_by_item_ids(
 
         ids: (ids) OPTIONAL List[str] in query
 
+        platform: (platform) OPTIONAL str in query
+
     Responses:
         200: OK - List[EntitlementOwnership] (successful operation)
     """
@@ -1870,6 +2235,7 @@ def get_user_entitlement_ownership_by_item_ids(
     request = GetUserEntitlementOwnershipByItemIds.create(
         user_id=user_id,
         ids=ids,
+        platform=platform,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1879,6 +2245,7 @@ def get_user_entitlement_ownership_by_item_ids(
 async def get_user_entitlement_ownership_by_item_ids_async(
     user_id: str,
     ids: Optional[List[str]] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1913,6 +2280,8 @@ async def get_user_entitlement_ownership_by_item_ids_async(
 
         ids: (ids) OPTIONAL List[str] in query
 
+        platform: (platform) OPTIONAL str in query
+
     Responses:
         200: OK - List[EntitlementOwnership] (successful operation)
     """
@@ -1923,6 +2292,7 @@ async def get_user_entitlement_ownership_by_item_ids_async(
     request = GetUserEntitlementOwnershipByItemIds.create(
         user_id=user_id,
         ids=ids,
+        platform=platform,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1937,6 +2307,7 @@ def get_user_entitlement_ownership_by_sku(
     entitlement_clazz: Optional[
         Union[str, GetUserEntitlementOwnershipBySkuEntitlementClazzEnum]
     ] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1971,6 +2342,8 @@ def get_user_entitlement_ownership_by_sku(
 
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
+        platform: (platform) OPTIONAL str in query
+
         sku: (sku) REQUIRED str in query
 
     Responses:
@@ -1984,6 +2357,7 @@ def get_user_entitlement_ownership_by_sku(
         sku=sku,
         user_id=user_id,
         entitlement_clazz=entitlement_clazz,
+        platform=platform,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1996,6 +2370,7 @@ async def get_user_entitlement_ownership_by_sku_async(
     entitlement_clazz: Optional[
         Union[str, GetUserEntitlementOwnershipBySkuEntitlementClazzEnum]
     ] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2030,6 +2405,8 @@ async def get_user_entitlement_ownership_by_sku_async(
 
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
+        platform: (platform) OPTIONAL str in query
+
         sku: (sku) REQUIRED str in query
 
     Responses:
@@ -2043,6 +2420,7 @@ async def get_user_entitlement_ownership_by_sku_async(
         sku=sku,
         user_id=user_id,
         entitlement_clazz=entitlement_clazz,
+        platform=platform,
         namespace=namespace,
     )
     return await run_request_async(
@@ -2438,7 +2816,7 @@ def public_consume_user_entitlement(
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}] | 31145: Option [{option}] doesn't exist in OptionBox entitlement [{entitlementId}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2501,7 +2879,7 @@ async def public_consume_user_entitlement_async(
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}] | 31145: Option [{option}] doesn't exist in OptionBox entitlement [{entitlementId}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31173: Entitlement [{entitlementId}] is not consumable | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 20006: optimistic lock | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -3696,6 +4074,7 @@ async def public_get_user_entitlement_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetUserEntitlementByItemId)
 def public_get_user_entitlement_by_item_id(
     item_id: str,
@@ -3757,6 +4136,7 @@ def public_get_user_entitlement_by_item_id(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetUserEntitlementByItemId)
 async def public_get_user_entitlement_by_item_id_async(
     item_id: str,
@@ -3820,6 +4200,7 @@ async def public_get_user_entitlement_by_item_id_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetUserEntitlementBySku)
 def public_get_user_entitlement_by_sku(
     sku: str,
@@ -3881,6 +4262,7 @@ def public_get_user_entitlement_by_sku(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetUserEntitlementBySku)
 async def public_get_user_entitlement_by_sku_async(
     sku: str,
@@ -4625,7 +5007,7 @@ def public_sell_user_entitlement(
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 20006: optimistic lock | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -4685,7 +5067,7 @@ async def public_sell_user_entitlement_async(
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 20006: optimistic lock | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -4713,6 +5095,7 @@ def query_entitlements(
     item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    origin: Optional[Union[str, QueryEntitlementsOriginEnum]] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -4759,6 +5142,8 @@ def query_entitlements(
 
         offset: (offset) OPTIONAL int in query
 
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
+
         user_id: (userId) OPTIONAL str in query
 
     Responses:
@@ -4776,6 +5161,7 @@ def query_entitlements(
         item_id=item_id,
         limit=limit,
         offset=offset,
+        origin=origin,
         user_id=user_id,
         namespace=namespace,
     )
@@ -4793,6 +5179,7 @@ async def query_entitlements_async(
     item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    origin: Optional[Union[str, QueryEntitlementsOriginEnum]] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -4839,6 +5226,8 @@ async def query_entitlements_async(
 
         offset: (offset) OPTIONAL int in query
 
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
+
         user_id: (userId) OPTIONAL str in query
 
     Responses:
@@ -4856,6 +5245,7 @@ async def query_entitlements_async(
         item_id=item_id,
         limit=limit,
         offset=offset,
+        origin=origin,
         user_id=user_id,
         namespace=namespace,
     )
@@ -5000,9 +5390,11 @@ def query_user_entitlements(
     ] = None,
     entitlement_name: Optional[str] = None,
     features: Optional[List[str]] = None,
+    fuzzy_match_name: Optional[bool] = None,
     item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    origin: Optional[Union[str, QueryUserEntitlementsOriginEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5046,11 +5438,15 @@ def query_user_entitlements(
 
         features: (features) OPTIONAL List[str] in query
 
+        fuzzy_match_name: (fuzzyMatchName) OPTIONAL bool in query
+
         item_id: (itemId) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
 
     Responses:
         200: OK - EntitlementPagingSlicedResult (successful operation)
@@ -5066,9 +5462,11 @@ def query_user_entitlements(
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
         features=features,
+        fuzzy_match_name=fuzzy_match_name,
         item_id=item_id,
         limit=limit,
         offset=offset,
+        origin=origin,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -5084,9 +5482,11 @@ async def query_user_entitlements_async(
     ] = None,
     entitlement_name: Optional[str] = None,
     features: Optional[List[str]] = None,
+    fuzzy_match_name: Optional[bool] = None,
     item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    origin: Optional[Union[str, QueryUserEntitlementsOriginEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5130,11 +5530,15 @@ async def query_user_entitlements_async(
 
         features: (features) OPTIONAL List[str] in query
 
+        fuzzy_match_name: (fuzzyMatchName) OPTIONAL bool in query
+
         item_id: (itemId) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
 
     Responses:
         200: OK - EntitlementPagingSlicedResult (successful operation)
@@ -5150,9 +5554,11 @@ async def query_user_entitlements_async(
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
         features=features,
+        fuzzy_match_name=fuzzy_match_name,
         item_id=item_id,
         limit=limit,
         offset=offset,
+        origin=origin,
         namespace=namespace,
     )
     return await run_request_async(
@@ -5964,7 +6370,7 @@ async def revoke_user_entitlements_async(
 def sell_user_entitlement(
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementSoldRequest] = None,
+    body: Optional[AdminEntitlementSoldRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5989,7 +6395,7 @@ def sell_user_entitlement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementSoldRequest in body
+        body: (body) OPTIONAL AdminEntitlementSoldRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6002,7 +6408,7 @@ def sell_user_entitlement(
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}] | 20006: optimistic lock)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -6021,7 +6427,7 @@ def sell_user_entitlement(
 async def sell_user_entitlement_async(
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementSoldRequest] = None,
+    body: Optional[AdminEntitlementSoldRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6046,7 +6452,7 @@ async def sell_user_entitlement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementSoldRequest in body
+        body: (body) OPTIONAL AdminEntitlementSoldRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6059,7 +6465,7 @@ async def sell_user_entitlement_async(
 
         404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31180: Duplicate request id: [{requestId}] | 31181: Entitlement [{entitlementId}] is not sellable | 31182: Entitlement [{entitlementId}] already sold | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}] | 20006: optimistic lock)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -6068,6 +6474,118 @@ async def sell_user_entitlement_async(
     request = SellUserEntitlement.create(
         entitlement_id=entitlement_id,
         user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdatePlatformEntitlementConfig)
+def update_platform_entitlement_config(
+    platform: Union[str, UpdatePlatformEntitlementConfigPlatformEnum],
+    body: Optional[EntitlementPlatformConfigUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update platform entitlement config (updatePlatformEntitlementConfig)
+
+    Update platform entitlement config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : platform entitlement config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/platforms/{platform}/entitlement/config
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementPlatformConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) REQUIRED Union[str, PlatformEnum] in path
+
+    Responses:
+        200: OK - EntitlementPlatformConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31147: Origin [Steam] and System need exist in allowPlatformOrigin)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePlatformEntitlementConfig.create(
+        platform=platform,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdatePlatformEntitlementConfig)
+async def update_platform_entitlement_config_async(
+    platform: Union[str, UpdatePlatformEntitlementConfigPlatformEnum],
+    body: Optional[EntitlementPlatformConfigUpdate] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update platform entitlement config (updatePlatformEntitlementConfig)
+
+    Update platform entitlement config.
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=4 (UPDATE)
+      *  Returns : platform entitlement config
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/platforms/{platform}/entitlement/config
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementPlatformConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform: (platform) REQUIRED Union[str, PlatformEnum] in path
+
+    Responses:
+        200: OK - EntitlementPlatformConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (31147: Origin [Steam] and System need exist in allowPlatformOrigin)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePlatformEntitlementConfig.create(
+        platform=platform,
         body=body,
         namespace=namespace,
     )

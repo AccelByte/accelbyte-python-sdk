@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.19.0"
+__version__ = "2.19.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -160,6 +160,15 @@ from ._admin_group import single_admin_get_group_contents
 from ._admin_group import single_admin_get_group_contents_async
 from ._admin_group import single_admin_update_group
 from ._admin_group import single_admin_update_group_async
+
+from ._admin_staging_content import admin_approve_staging_content
+from ._admin_staging_content import admin_approve_staging_content_async
+from ._admin_staging_content import admin_get_staging_content_by_id
+from ._admin_staging_content import admin_get_staging_content_by_id_async
+from ._admin_staging_content import admin_list_staging_contents
+from ._admin_staging_content import admin_list_staging_contents_async
+from ._admin_staging_content import admin_list_user_staging_contents
+from ._admin_staging_content import admin_list_user_staging_contents_async
 
 from ._admin_tag import admin_create_tag
 from ._admin_tag import admin_create_tag_async
@@ -329,6 +338,15 @@ from ._public_like_v2 import public_list_content_like_v2
 from ._public_like_v2 import public_list_content_like_v2_async
 from ._public_like_v2 import update_content_like_status_v2
 from ._public_like_v2 import update_content_like_status_v2_async
+
+from ._public_staging_content import delete_user_staging_content_by_id
+from ._public_staging_content import delete_user_staging_content_by_id_async
+from ._public_staging_content import get_user_staging_content_by_id
+from ._public_staging_content import get_user_staging_content_by_id_async
+from ._public_staging_content import list_user_staging_contents
+from ._public_staging_content import list_user_staging_contents_async
+from ._public_staging_content import update_staging_content
+from ._public_staging_content import update_staging_content_async
 
 from ._public_tag import get_tag
 from ._public_tag import get_tag_async

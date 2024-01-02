@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.42.0)
+# AGS Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.platform.models import Ownership
 @click.argument("user_id", type=str)
 @click.option("--app_ids", "app_ids", type=str)
 @click.option("--item_ids", "item_ids", type=str)
+@click.option("--platform", "platform", type=str)
 @click.option("--skus", "skus", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -49,6 +50,7 @@ def exists_any_user_active_entitlement(
     user_id: str,
     app_ids: Optional[str] = None,
     item_ids: Optional[str] = None,
+    platform: Optional[str] = None,
     skus: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -85,6 +87,7 @@ def exists_any_user_active_entitlement(
         user_id=user_id,
         app_ids=app_ids,
         item_ids=item_ids,
+        platform=platform,
         skus=skus,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

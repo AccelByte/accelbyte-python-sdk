@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -65,6 +65,8 @@ class ExistsAnyUserActiveEntitlement(Operation):
 
         item_ids: (itemIds) OPTIONAL List[str] in query
 
+        platform: (platform) OPTIONAL str in query
+
         skus: (skus) OPTIONAL List[str] in query
 
     Responses:
@@ -84,6 +86,7 @@ class ExistsAnyUserActiveEntitlement(Operation):
     user_id: str  # REQUIRED in [path]
     app_ids: List[str]  # OPTIONAL in [query]
     item_ids: List[str]  # OPTIONAL in [query]
+    platform: str  # OPTIONAL in [query]
     skus: List[str]  # OPTIONAL in [query]
 
     # endregion fields
@@ -142,6 +145,8 @@ class ExistsAnyUserActiveEntitlement(Operation):
             result["appIds"] = self.app_ids
         if hasattr(self, "item_ids"):
             result["itemIds"] = self.item_ids
+        if hasattr(self, "platform"):
+            result["platform"] = self.platform
         if hasattr(self, "skus"):
             result["skus"] = self.skus
         return result
@@ -170,6 +175,10 @@ class ExistsAnyUserActiveEntitlement(Operation):
         self.item_ids = value
         return self
 
+    def with_platform(self, value: str) -> ExistsAnyUserActiveEntitlement:
+        self.platform = value
+        return self
+
     def with_skus(self, value: List[str]) -> ExistsAnyUserActiveEntitlement:
         self.skus = value
         return self
@@ -196,6 +205,10 @@ class ExistsAnyUserActiveEntitlement(Operation):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
             result["itemIds"] = []
+        if hasattr(self, "platform") and self.platform:
+            result["platform"] = str(self.platform)
+        elif include_empty:
+            result["platform"] = ""
         if hasattr(self, "skus") and self.skus:
             result["skus"] = [str(i0) for i0 in self.skus]
         elif include_empty:
@@ -245,6 +258,7 @@ class ExistsAnyUserActiveEntitlement(Operation):
         user_id: str,
         app_ids: Optional[List[str]] = None,
         item_ids: Optional[List[str]] = None,
+        platform: Optional[str] = None,
         skus: Optional[List[str]] = None,
         **kwargs,
     ) -> ExistsAnyUserActiveEntitlement:
@@ -255,6 +269,8 @@ class ExistsAnyUserActiveEntitlement(Operation):
             instance.app_ids = app_ids
         if item_ids is not None:
             instance.item_ids = item_ids
+        if platform is not None:
+            instance.platform = platform
         if skus is not None:
             instance.skus = skus
         return instance
@@ -280,6 +296,10 @@ class ExistsAnyUserActiveEntitlement(Operation):
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
             instance.item_ids = []
+        if "platform" in dict_ and dict_["platform"] is not None:
+            instance.platform = str(dict_["platform"])
+        elif include_empty:
+            instance.platform = ""
         if "skus" in dict_ and dict_["skus"] is not None:
             instance.skus = [str(i0) for i0 in dict_["skus"]]
         elif include_empty:
@@ -293,6 +313,7 @@ class ExistsAnyUserActiveEntitlement(Operation):
             "userId": "user_id",
             "appIds": "app_ids",
             "itemIds": "item_ids",
+            "platform": "platform",
             "skus": "skus",
         }
 
@@ -303,6 +324,7 @@ class ExistsAnyUserActiveEntitlement(Operation):
             "userId": True,
             "appIds": False,
             "itemIds": False,
+            "platform": False,
             "skus": False,
         }
 

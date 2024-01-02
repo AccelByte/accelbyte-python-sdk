@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Ugc Service Index (2.19.0)
+# AccelByte Gaming Services Ugc Service Index (2.19.1)
 
 
 ## Operations
@@ -97,6 +97,14 @@
 | /ugc/v1/admin/namespaces/{namespace}/groups/{groupId} | GET | SingleAdminGetGroup | `false` | [SingleAdminGetGroup](../../accelbyte_py_sdk/api/ugc/operations/admin_group/single_admin_get_group.py) | [single_admin_get_group](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_group.py) | [accelbyte_py_sdk_cli ugc-single-admin-get-group](../../samples/cli/accelbyte_py_sdk_cli/ugc/_single_admin_get_group.py) |
 | /ugc/v1/admin/namespaces/{namespace}/groups/{groupId}/contents | GET | SingleAdminGetGroupContents | `false` | [SingleAdminGetGroupContents](../../accelbyte_py_sdk/api/ugc/operations/admin_group/single_admin_get_group__c6800e.py) | [single_admin_get_group_contents](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_group.py) | [accelbyte_py_sdk_cli ugc-single-admin-get-group-contents](../../samples/cli/accelbyte_py_sdk_cli/ugc/_single_admin_get_group_contents.py) |
 | /ugc/v1/admin/namespaces/{namespace}/groups/{groupId} | PUT | SingleAdminUpdateGroup | `false` | [SingleAdminUpdateGroup](../../accelbyte_py_sdk/api/ugc/operations/admin_group/single_admin_update_group.py) | [single_admin_update_group](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_group.py) | [accelbyte_py_sdk_cli ugc-single-admin-update-group](../../samples/cli/accelbyte_py_sdk_cli/ugc/_single_admin_update_group.py) |
+
+### Admin Staging Content
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /ugc/v2/admin/namespaces/{namespace}/staging-contents/{contentId}/approve | POST | AdminApproveStagingContent | `false` | [AdminApproveStagingContent](../../accelbyte_py_sdk/api/ugc/operations/admin_staging_content/admin_approve_staging_content.py) | [admin_approve_staging_content](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_staging_content.py) | [accelbyte_py_sdk_cli ugc-admin-approve-staging-content](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_approve_staging_content.py) |
+| /ugc/v2/admin/namespaces/{namespace}/staging-contents/{contentId} | GET | AdminGetStagingContentByID | `false` | [AdminGetStagingContentByID](../../accelbyte_py_sdk/api/ugc/operations/admin_staging_content/admin_get_staging_conte_7fe68e.py) | [admin_get_staging_content_by_id](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_staging_content.py) | [accelbyte_py_sdk_cli ugc-admin-get-staging-content-by-id](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_get_staging_content_by_id.py) |
+| /ugc/v2/admin/namespaces/{namespace}/staging-contents | GET | AdminListStagingContents | `false` | [AdminListStagingContents](../../accelbyte_py_sdk/api/ugc/operations/admin_staging_content/admin_list_staging_contents.py) | [admin_list_staging_contents](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_staging_content.py) | [accelbyte_py_sdk_cli ugc-admin-list-staging-contents](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_list_staging_contents.py) |
+| /ugc/v2/admin/namespaces/{namespace}/users/{userId}/staging-contents | GET | AdminListUserStagingContents | `false` | [AdminListUserStagingContents](../../accelbyte_py_sdk/api/ugc/operations/admin_staging_content/admin_list_user_staging_d2fe4e.py) | [admin_list_user_staging_contents](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_staging_content.py) | [accelbyte_py_sdk_cli ugc-admin-list-user-staging-contents](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_list_user_staging_contents.py) |
 
 ### Admin Tag
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -228,6 +236,14 @@
 | /ugc/v2/public/namespaces/{namespace}/contents/{contentId}/like | GET | PublicListContentLikeV2 | `false` | [PublicListContentLikeV2](../../accelbyte_py_sdk/api/ugc/operations/public_like_v2/public_list_content_like_v2.py) | [public_list_content_like_v2](../../accelbyte_py_sdk/api/ugc/wrappers/_public_like_v2.py) | [accelbyte_py_sdk_cli ugc-public-list-content-like-v2](../../samples/cli/accelbyte_py_sdk_cli/ugc/_public_list_content_like_v2.py) |
 | /ugc/v2/public/namespaces/{namespace}/contents/{contentId}/like | PUT | UpdateContentLikeStatusV2 | `false` | [UpdateContentLikeStatusV2](../../accelbyte_py_sdk/api/ugc/operations/public_like_v2/update_content_like_status_v2.py) | [update_content_like_status_v2](../../accelbyte_py_sdk/api/ugc/wrappers/_public_like_v2.py) | [accelbyte_py_sdk_cli ugc-update-content-like-status-v2](../../samples/cli/accelbyte_py_sdk_cli/ugc/_update_content_like_status_v2.py) |
 
+### Public Staging Content
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId} | DELETE | DeleteUserStagingContentByID | `false` | [DeleteUserStagingContentByID](../../accelbyte_py_sdk/api/ugc/operations/public_staging_content/delete_user_staging_con_254bae.py) | [delete_user_staging_content_by_id](../../accelbyte_py_sdk/api/ugc/wrappers/_public_staging_content.py) | [accelbyte_py_sdk_cli ugc-delete-user-staging-content-by-id](../../samples/cli/accelbyte_py_sdk_cli/ugc/_delete_user_staging_content_by_id.py) |
+| /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId} | GET | GetUserStagingContentByID | `false` | [GetUserStagingContentByID](../../accelbyte_py_sdk/api/ugc/operations/public_staging_content/get_user_staging_content_by_id.py) | [get_user_staging_content_by_id](../../accelbyte_py_sdk/api/ugc/wrappers/_public_staging_content.py) | [accelbyte_py_sdk_cli ugc-get-user-staging-content-by-id](../../samples/cli/accelbyte_py_sdk_cli/ugc/_get_user_staging_content_by_id.py) |
+| /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents | GET | ListUserStagingContents | `false` | [ListUserStagingContents](../../accelbyte_py_sdk/api/ugc/operations/public_staging_content/list_user_staging_contents.py) | [list_user_staging_contents](../../accelbyte_py_sdk/api/ugc/wrappers/_public_staging_content.py) | [accelbyte_py_sdk_cli ugc-list-user-staging-contents](../../samples/cli/accelbyte_py_sdk_cli/ugc/_list_user_staging_contents.py) |
+| /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId} | PUT | UpdateStagingContent | `false` | [UpdateStagingContent](../../accelbyte_py_sdk/api/ugc/operations/public_staging_content/update_staging_content.py) | [update_staging_content](../../accelbyte_py_sdk/api/ugc/wrappers/_public_staging_content.py) | [accelbyte_py_sdk_cli ugc-update-staging-content](../../samples/cli/accelbyte_py_sdk_cli/ugc/_update_staging_content.py) |
+
 ### Public Tag
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -247,6 +263,7 @@
 | models.AdminGetContentBulkRequest | [ModelsAdminGetContentBulkRequest](../../accelbyte_py_sdk/api/ugc/models/models_admin_get_content_bulk_request.py) |
 | models.AdminUpdateContentRequest | [ModelsAdminUpdateContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_admin_update_content_request.py) |
 | models.AdminUpdateContentRequestV2 | [ModelsAdminUpdateContentRequestV2](../../accelbyte_py_sdk/api/ugc/models/models_admin_update_content_request_v2.py) |
+| models.ApproveStagingContentRequest | [ModelsApproveStagingContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_approve_staging_content_request.py) |
 | models.ChannelRequest | [ModelsChannelRequest](../../accelbyte_py_sdk/api/ugc/models/models_channel_request.py) |
 | models.ChannelResponse | [ModelsChannelResponse](../../accelbyte_py_sdk/api/ugc/models/models_channel_response.py) |
 | models.ConfigResponse | [ModelsConfigResponse](../../accelbyte_py_sdk/api/ugc/models/models_config_response.py) |
@@ -292,6 +309,7 @@
 | models.PaginatedGetTagResponse | [ModelsPaginatedGetTagResponse](../../accelbyte_py_sdk/api/ugc/models/models_paginated_get_tag_response.py) |
 | models.PaginatedGetTypeResponse | [ModelsPaginatedGetTypeResponse](../../accelbyte_py_sdk/api/ugc/models/models_paginated_get_type_response.py) |
 | models.PaginatedGroupResponse | [ModelsPaginatedGroupResponse](../../accelbyte_py_sdk/api/ugc/models/models_paginated_group_response.py) |
+| models.PaginatedListStagingContentResponse | [ModelsPaginatedListStagingContentResponse](../../accelbyte_py_sdk/api/ugc/models/models_paginated_list_staging_content_response.py) |
 | models.PagingCursor | [ModelsPagingCursor](../../accelbyte_py_sdk/api/ugc/models/models_paging_cursor.py) |
 | models.PayloadURL | [ModelsPayloadURL](../../accelbyte_py_sdk/api/ugc/models/models_payload_url.py) |
 | models.previewMetadata | [ModelsPreviewMetadata](../../accelbyte_py_sdk/api/ugc/models/models_preview_metadata.py) |
@@ -300,6 +318,7 @@
 | models.PublicCreateContentRequestS3 | [ModelsPublicCreateContentRequestS3](../../accelbyte_py_sdk/api/ugc/models/models_public_create_content_request_s3.py) |
 | models.PublicGetContentBulkRequest | [ModelsPublicGetContentBulkRequest](../../accelbyte_py_sdk/api/ugc/models/models_public_get_content_bulk_request.py) |
 | models.ScreenshotResponse | [ModelsScreenshotResponse](../../accelbyte_py_sdk/api/ugc/models/models_screenshot_response.py) |
+| models.StagingContentResponse | [ModelsStagingContentResponse](../../accelbyte_py_sdk/api/ugc/models/models_staging_content_response.py) |
 | models.UpdateChannelRequest | [ModelsUpdateChannelRequest](../../accelbyte_py_sdk/api/ugc/models/models_update_channel_request.py) |
 | models.UpdateConfigRequest | [ModelsUpdateConfigRequest](../../accelbyte_py_sdk/api/ugc/models/models_update_config_request.py) |
 | models.UpdateContentRequest | [ModelsUpdateContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_update_content_request.py) |
@@ -310,6 +329,7 @@
 | models.updateScreenshot | [ModelsUpdateScreenshot](../../accelbyte_py_sdk/api/ugc/models/models_update_screenshot.py) |
 | models.UpdateScreenshotRequest | [ModelsUpdateScreenshotRequest](../../accelbyte_py_sdk/api/ugc/models/models_update_screenshot_request.py) |
 | models.UpdateScreenshotResponse | [ModelsUpdateScreenshotResponse](../../accelbyte_py_sdk/api/ugc/models/models_update_screenshot_response.py) |
+| models.UpdateStagingContentRequest | [ModelsUpdateStagingContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_update_staging_content_request.py) |
 | models.UserFollowRequest | [ModelsUserFollowRequest](../../accelbyte_py_sdk/api/ugc/models/models_user_follow_request.py) |
 | models.UserFollowResponse | [ModelsUserFollowResponse](../../accelbyte_py_sdk/api/ugc/models/models_user_follow_response.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/ugc/models/response_error.py) |

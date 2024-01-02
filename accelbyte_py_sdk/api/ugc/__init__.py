@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.19.0"
+__version__ = "2.19.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -165,6 +165,16 @@ from .wrappers import single_admin_get_group_contents
 from .wrappers import single_admin_get_group_contents_async
 from .wrappers import single_admin_update_group
 from .wrappers import single_admin_update_group_async
+
+# admin_staging_content
+from .wrappers import admin_approve_staging_content
+from .wrappers import admin_approve_staging_content_async
+from .wrappers import admin_get_staging_content_by_id
+from .wrappers import admin_get_staging_content_by_id_async
+from .wrappers import admin_list_staging_contents
+from .wrappers import admin_list_staging_contents_async
+from .wrappers import admin_list_user_staging_contents
+from .wrappers import admin_list_user_staging_contents_async
 
 # admin_tag
 from .wrappers import admin_create_tag
@@ -347,6 +357,16 @@ from .wrappers import public_list_content_like_v2
 from .wrappers import public_list_content_like_v2_async
 from .wrappers import update_content_like_status_v2
 from .wrappers import update_content_like_status_v2_async
+
+# public_staging_content
+from .wrappers import delete_user_staging_content_by_id
+from .wrappers import delete_user_staging_content_by_id_async
+from .wrappers import get_user_staging_content_by_id
+from .wrappers import get_user_staging_content_by_id_async
+from .wrappers import list_user_staging_contents
+from .wrappers import list_user_staging_contents_async
+from .wrappers import update_staging_content
+from .wrappers import update_staging_content_async
 
 # public_tag
 from .wrappers import get_tag

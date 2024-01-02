@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Match Service V2 (2.13.0)
+# AccelByte Gaming Services Match Service V2 (2.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,17 +37,7 @@ from ...models import ResponseError
 class AcceptBackfill(Operation):
     """Accept a backfill proposal (AcceptBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
-
-    Required Scope: social
-
-    Accept backfill proposal
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
-
-    Required Scope(s):
-        - social
+    Accept backfill proposal.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept

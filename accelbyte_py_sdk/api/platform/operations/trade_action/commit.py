@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -42,6 +42,7 @@ class Commit(Operation):
 
       * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=1 (CREATE)
       *  Returns : chain action history
+      *  FULFILL_ITEM operation supported item type : INGAMEITEM,LOOTBOX,OPTIONBOX
 
 
 

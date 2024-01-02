@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.7.0)
+# AccelByte Gaming Services Iam Service (7.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,6 +39,10 @@ class AdminTrustlyUpdateUserIdentity(Operation):
     This endpoint ONLY accept **Client Token**
     This endpoint is utilized for specific scenarios where **email notifications are disabled**
     The user's email will be marked as verified
+
+    Note:
+    - emailAddress or password field are optional
+    - request body can't be empty
 
     action code : 10103
 

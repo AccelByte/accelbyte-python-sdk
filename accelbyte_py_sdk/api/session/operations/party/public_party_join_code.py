@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class PublicPartyJoinCode(Operation):
-    """Join a party by code. Requires NAMESPACE:{namespace}:SESSION:PARTY:PLAYER [CREATE] (publicPartyJoinCode)
+    """Join a party by code. (publicPartyJoinCode)
 
     Join a party by code. The user can join a party as long as the code is valid
 

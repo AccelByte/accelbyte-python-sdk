@@ -65,6 +65,7 @@ from ..operations.public_content_legacy import UpdateContentS3
 from ..operations.public_content_legacy import UpdateContentShareCode
 from ..operations.public_content_legacy import UpdateScreenshots
 from ..operations.public_content_legacy import UploadContentScreenshot
+from ..models import ModelsCreateContentResponseContentStatusEnum
 
 
 @deprecated

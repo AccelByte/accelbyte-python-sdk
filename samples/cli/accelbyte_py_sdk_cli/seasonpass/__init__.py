@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-seasonpass-service (1.20.0)
+# justice-seasonpass-service (1.20.1)
 
 from ._export_season import export_season
 from ._query_seasons import query_seasons

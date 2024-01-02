@@ -669,6 +669,8 @@ def get_user_friends_updated(
 ):
     """get list of friends (getUserFriendsUpdated)
 
+    Get list of friends in a namespace.
+
     Properties:
         url: /friends/namespaces/{namespace}/me
 
@@ -722,6 +724,8 @@ async def get_user_friends_updated_async(
     **kwargs
 ):
     """get list of friends (getUserFriendsUpdated)
+
+    Get list of friends in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/me
@@ -779,6 +783,8 @@ def get_user_friends_with_platform(
 ):
     """get list of friends with platform data (getUserFriendsWithPlatform)
 
+    Get list of friends with platform data in a namespace.
+
     Properties:
         url: /friends/namespaces/{namespace}/me/platforms
 
@@ -832,6 +838,8 @@ async def get_user_friends_with_platform_async(
     **kwargs
 ):
     """get list of friends with platform data (getUserFriendsWithPlatform)
+
+    Get list of friends with platform data in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/platforms
@@ -889,6 +897,8 @@ def get_user_incoming_friends(
 ):
     """get list of incoming friends (getUserIncomingFriends)
 
+    Get list of incoming friends in a namespace.
+
     Properties:
         url: /friends/namespaces/{namespace}/me/incoming
 
@@ -942,6 +952,8 @@ async def get_user_incoming_friends_async(
     **kwargs
 ):
     """get list of incoming friends (getUserIncomingFriends)
+
+    Get list of incoming friends in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/incoming
@@ -999,6 +1011,8 @@ def get_user_incoming_friends_with_time(
 ):
     """get list of incoming friends with requested time info (getUserIncomingFriendsWithTime)
 
+    Get list of incoming friends with requested time info in a namespace.
+
     Properties:
         url: /friends/namespaces/{namespace}/me/incoming-time
 
@@ -1052,6 +1066,8 @@ async def get_user_incoming_friends_with_time_async(
     **kwargs
 ):
     """get list of incoming friends with requested time info (getUserIncomingFriendsWithTime)
+
+    Get list of incoming friends with requested time info in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/incoming-time
@@ -1109,6 +1125,8 @@ def get_user_outgoing_friends(
 ):
     """get list of outgoing friends (getUserOutgoingFriends)
 
+    Get list of outgoing friends in a namespace.
+
     Properties:
         url: /friends/namespaces/{namespace}/me/outgoing
 
@@ -1162,6 +1180,8 @@ async def get_user_outgoing_friends_async(
     **kwargs
 ):
     """get list of outgoing friends (getUserOutgoingFriends)
+
+    Get list of outgoing friends in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/outgoing
@@ -1219,6 +1239,8 @@ def get_user_outgoing_friends_with_time(
 ):
     """get list of outgoing friends with requested time info (getUserOutgoingFriendsWithTime)
 
+    Get list of outgoing friends with requested time info in a namespace.
+
     Properties:
         url: /friends/namespaces/{namespace}/me/outgoing-time
 
@@ -1272,6 +1294,8 @@ async def get_user_outgoing_friends_with_time_async(
     **kwargs
 ):
     """get list of outgoing friends with requested time info (getUserOutgoingFriendsWithTime)
+
+    Get list of outgoing friends with requested time info in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/outgoing-time
@@ -1442,6 +1466,8 @@ def user_accept_friend_request(
 ):
     """user accept friend (userAcceptFriendRequest)
 
+    User accept friend.
+
     Properties:
         url: /friends/namespaces/{namespace}/me/request/accept
 
@@ -1491,6 +1517,8 @@ async def user_accept_friend_request_async(
     **kwargs
 ):
     """user accept friend (userAcceptFriendRequest)
+
+    User accept friend.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/request/accept
@@ -1544,6 +1572,8 @@ def user_cancel_friend_request(
 ):
     """user cancel a friend request (userCancelFriendRequest)
 
+    User cancel a friend request.
+
     Properties:
         url: /friends/namespaces/{namespace}/me/request/cancel
 
@@ -1593,6 +1623,8 @@ async def user_cancel_friend_request_async(
     **kwargs
 ):
     """user cancel a friend request (userCancelFriendRequest)
+
+    User cancel a friend request.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/request/cancel
@@ -1646,6 +1678,8 @@ def user_get_friendship_status(
 ):
     """user get friendship status (userGetFriendshipStatus)
 
+    User get friendship status.
+
     Properties:
         url: /friends/namespaces/{namespace}/me/status/{friendId}
 
@@ -1693,6 +1727,8 @@ async def user_get_friendship_status_async(
     **kwargs
 ):
     """user get friendship status (userGetFriendshipStatus)
+
+    User get friendship status.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/status/{friendId}
@@ -1744,6 +1780,8 @@ def user_reject_friend_request(
 ):
     """user reject a friend request (userRejectFriendRequest)
 
+    User reject a friend request.
+
     Properties:
         url: /friends/namespaces/{namespace}/me/request/reject
 
@@ -1793,6 +1831,8 @@ async def user_reject_friend_request_async(
     **kwargs
 ):
     """user reject a friend request (userRejectFriendRequest)
+
+    User reject a friend request.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/request/reject
@@ -1958,6 +1998,8 @@ def user_unfriend_request(
 ):
     """user unfriend a friend (userUnfriendRequest)
 
+    User unfriend a friend.
+
     Properties:
         url: /friends/namespaces/{namespace}/me/unfriend
 
@@ -2007,6 +2049,8 @@ async def user_unfriend_request_async(
     **kwargs
 ):
     """user unfriend a friend (userUnfriendRequest)
+
+    User unfriend a friend.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/unfriend

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-lobby-server (3.32.5)
+# justice-lobby-server (3.33.0)
 
 from ._get_user_friends_updated import get_user_friends_updated
 from ._get_user_incoming_friends import get_user_incoming_friends

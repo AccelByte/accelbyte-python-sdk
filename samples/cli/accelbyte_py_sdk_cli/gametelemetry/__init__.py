@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# Analytics Game Telemetry (1.21.0)
+# Analytics Game Telemetry (1.22.0)
 
 from ._get_namespaces_game_telemetry_v1_admin_namespaces_get import (
     get_namespaces_game_telemetry_v1_admin_namespaces_get,

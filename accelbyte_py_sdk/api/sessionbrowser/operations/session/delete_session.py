@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Browser Service (1.17.0)
+# AccelByte Gaming Services Session Browser Service (1.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,17 +36,7 @@ from ...models import ResponseError
 class DeleteSession(Operation):
     """Delete specified (p2p) session by session ID (DeleteSession)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required scope: social
-
     Delete the session (p2p) by session ID
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}

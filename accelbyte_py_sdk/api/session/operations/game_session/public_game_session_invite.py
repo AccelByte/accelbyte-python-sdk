@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseError
 
 
 class PublicGameSessionInvite(Operation):
-    """Invite a user to a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (publicGameSessionInvite)
+    """Invite a user to a game session. (publicGameSessionInvite)
 
     Invite a user to a game session.
     platformID represents the native platform of the invitee. API will return the corresponding native platform's userID.

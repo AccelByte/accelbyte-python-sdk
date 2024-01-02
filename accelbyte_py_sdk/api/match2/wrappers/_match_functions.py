@@ -49,17 +49,7 @@ def create_match_function(
 ):
     """Create a match function (CreateMatchFunction)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [CREATE]
-
-    Required Scope: social
-
     Creates a new matchmaking function.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-functions
@@ -111,17 +101,7 @@ async def create_match_function_async(
 ):
     """Create a match function (CreateMatchFunction)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [CREATE]
-
-    Required Scope: social
-
     Creates a new matchmaking function.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-functions
@@ -175,17 +155,7 @@ def delete_match_function(
 ):
     """Delete a match function (DeleteMatchFunction)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [DELETE]
-
-    Required Scope: social
-
     Deletes an existing match function.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-functions/{name}
@@ -235,17 +205,7 @@ async def delete_match_function_async(
 ):
     """Delete a match function (DeleteMatchFunction)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [DELETE]
-
-    Required Scope: social
-
     Deletes an existing match function.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-functions/{name}
@@ -298,17 +258,7 @@ def match_function_list(
 ):
     """List existing match functions (MatchFunctionList)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [READ]
-
-    Required Scope: social
-
     List existing match functions.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-functions
@@ -360,17 +310,7 @@ async def match_function_list_async(
 ):
     """List existing match functions (MatchFunctionList)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [READ]
-
-    Required Scope: social
-
     List existing match functions.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-functions
@@ -424,17 +364,7 @@ def update_match_function(
 ):
     """Update a match function (UpdateMatchFunction)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [UPDATE]
-
-    Required Scope: social
-
     Update existing matchmaking function.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-functions/{name}
@@ -490,17 +420,7 @@ async def update_match_function_async(
 ):
     """Update a match function (UpdateMatchFunction)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [UPDATE]
-
-    Required Scope: social
-
     Update existing matchmaking function.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:FUNCTIONS [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-functions/{name}

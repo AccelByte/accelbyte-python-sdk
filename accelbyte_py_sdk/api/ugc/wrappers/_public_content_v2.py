@@ -65,6 +65,8 @@ from ..operations.public_content_v2 import PublicUpdateContentV2
 from ..operations.public_content_v2 import UpdateContentShareCodeV2
 from ..operations.public_content_v2 import UpdateScreenshotsV2
 from ..operations.public_content_v2 import UploadContentScreenshotV2
+from ..models import ModelsCreateContentResponseV2ContentStatusEnum
+from ..models import ModelsUpdateContentResponseV2ContentStatusEnum
 
 
 @same_doc_as(DeleteContentScreenshotV2)

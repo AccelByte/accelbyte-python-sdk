@@ -58,7 +58,7 @@ def admin_create_configuration_alert_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminCreateConfigurationAlertV1)
+    """Create configuration alert. (adminCreateConfigurationAlertV1)
 
     Create configuration alert
     configuration alert mandatory :
@@ -115,7 +115,7 @@ async def admin_create_configuration_alert_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminCreateConfigurationAlertV1)
+    """Create configuration alert. (adminCreateConfigurationAlertV1)
 
     Create configuration alert
     configuration alert mandatory :
@@ -174,7 +174,7 @@ def admin_create_configuration_template_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [CREATE] (adminCreateConfigurationTemplateV1)
+    """Create configuration template. (adminCreateConfigurationTemplateV1)
 
     Create template configuration to be applied across party and session.
     Session configuration mandatory :
@@ -214,7 +214,6 @@ def admin_create_configuration_template_v1(
     - DisableCodeGeneration (optional, default: false): If it is set to true, code will not be generated for party session automatically.
     - DSManualSetReady (optional, default: false): The DS need to call specific end point to flag the DS for game session is ready to accept client connection.
     - EnableSecret (optional, default: false): if configuration template is created with TypeDS and EnableSecret is True, A secret will be created
-    - LeaderElectionGracePeriod this is on second (optional, default:0) this is only use for party session, if value > 0 if leader disconnect will be wait until value reach and leader will be change after reach
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -264,7 +263,7 @@ async def admin_create_configuration_template_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [CREATE] (adminCreateConfigurationTemplateV1)
+    """Create configuration template. (adminCreateConfigurationTemplateV1)
 
     Create template configuration to be applied across party and session.
     Session configuration mandatory :
@@ -304,7 +303,6 @@ async def admin_create_configuration_template_v1_async(
     - DisableCodeGeneration (optional, default: false): If it is set to true, code will not be generated for party session automatically.
     - DSManualSetReady (optional, default: false): The DS need to call specific end point to flag the DS for game session is ready to accept client connection.
     - EnableSecret (optional, default: false): if configuration template is created with TypeDS and EnableSecret is True, A secret will be created
-    - LeaderElectionGracePeriod this is on second (optional, default:0) this is only use for party session, if value > 0 if leader disconnect will be wait until value reach and leader will be change after reach
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -355,7 +353,7 @@ def admin_delete_configuration_alert_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete configuration alert Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [DELETE] (adminDeleteConfigurationAlertV1)
+    """Delete configuration alert. (adminDeleteConfigurationAlertV1)
 
     Delete configuration alert.
 
@@ -401,7 +399,7 @@ async def admin_delete_configuration_alert_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete configuration alert Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [DELETE] (adminDeleteConfigurationAlertV1)
+    """Delete configuration alert. (adminDeleteConfigurationAlertV1)
 
     Delete configuration alert.
 
@@ -450,7 +448,7 @@ def admin_delete_configuration_template_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [DELETE] (adminDeleteConfigurationTemplateV1)
+    """Delete configuration template. (adminDeleteConfigurationTemplateV1)
 
     Delete a template configuration.
 
@@ -500,7 +498,7 @@ async def admin_delete_configuration_template_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [DELETE] (adminDeleteConfigurationTemplateV1)
+    """Delete configuration template. (adminDeleteConfigurationTemplateV1)
 
     Delete a template configuration.
 
@@ -556,7 +554,7 @@ def admin_get_all_configuration_templates_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get configuration templates. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetAllConfigurationTemplatesV1)
+    """Get configuration templates. (adminGetAllConfigurationTemplatesV1)
 
     Get all template configurations in specified namespace.
 
@@ -622,7 +620,7 @@ async def admin_get_all_configuration_templates_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get configuration templates. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetAllConfigurationTemplatesV1)
+    """Get configuration templates. (adminGetAllConfigurationTemplatesV1)
 
     Get all template configurations in specified namespace.
 
@@ -685,7 +683,7 @@ def admin_get_configuration_alert_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetConfigurationAlertV1)
+    """Get configuration alert. (adminGetConfigurationAlertV1)
 
     Get a configuration alert.
 
@@ -733,7 +731,7 @@ async def admin_get_configuration_alert_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetConfigurationAlertV1)
+    """Get configuration alert. (adminGetConfigurationAlertV1)
 
     Get a configuration alert.
 
@@ -784,7 +782,7 @@ def admin_get_configuration_template_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetConfigurationTemplateV1)
+    """Get configuration template. (adminGetConfigurationTemplateV1)
 
     Get a template configuration.
 
@@ -836,7 +834,7 @@ async def admin_get_configuration_template_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetConfigurationTemplateV1)
+    """Get configuration template. (adminGetConfigurationTemplateV1)
 
     Get a template configuration.
 
@@ -889,7 +887,7 @@ def admin_get_dsmc_configuration(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get dsmc configuration . Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetDSMCConfiguration)
+    """Get dsmc configuration . (adminGetDSMCConfiguration)
 
     Get a dsmc configuration.
 
@@ -937,7 +935,7 @@ async def admin_get_dsmc_configuration_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get dsmc configuration . Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetDSMCConfiguration)
+    """Get dsmc configuration . (adminGetDSMCConfiguration)
 
     Get a dsmc configuration.
 
@@ -987,7 +985,7 @@ def admin_sync_dsmc_configuration(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """sync dsmc configuration . Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminSyncDSMCConfiguration)
+    """sync dsmc configuration. (adminSyncDSMCConfiguration)
 
     sync dsmc configuration.
 
@@ -1035,7 +1033,7 @@ async def admin_sync_dsmc_configuration_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """sync dsmc configuration . Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminSyncDSMCConfiguration)
+    """sync dsmc configuration. (adminSyncDSMCConfiguration)
 
     sync dsmc configuration.
 
@@ -1086,7 +1084,7 @@ def admin_update_configuration_alert_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationAlertV1)
+    """Update configuration alert. (adminUpdateConfigurationAlertV1)
 
     Update configuration alert
     configuration alert mandatory :
@@ -1141,7 +1139,7 @@ async def admin_update_configuration_alert_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update configuration alert. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationAlertV1)
+    """Update configuration alert. (adminUpdateConfigurationAlertV1)
 
     Update configuration alert
     configuration alert mandatory :
@@ -1199,7 +1197,7 @@ def admin_update_configuration_template_v1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationTemplateV1)
+    """Update configuration template. (adminUpdateConfigurationTemplateV1)
 
     Modify template configuration
     Session configuration mandatory :
@@ -1292,7 +1290,7 @@ async def admin_update_configuration_template_v1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [UPDATE] (adminUpdateConfigurationTemplateV1)
+    """Update configuration template. (adminUpdateConfigurationTemplateV1)
 
     Modify template configuration
     Session configuration mandatory :

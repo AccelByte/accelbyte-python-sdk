@@ -45,7 +45,7 @@ def handle_upload_xbox_pfx_certificate(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upload certificates for xbox. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CERTIFICATES [UPDATE] (HandleUploadXboxPFXCertificate)
+    """Upload certificates for xbox. (HandleUploadXboxPFXCertificate)
 
     Upload certificates for xbox. Certificate must be in the valid form of PFX format.
 
@@ -109,7 +109,7 @@ async def handle_upload_xbox_pfx_certificate_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upload certificates for xbox. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CERTIFICATES [UPDATE] (HandleUploadXboxPFXCertificate)
+    """Upload certificates for xbox. (HandleUploadXboxPFXCertificate)
 
     Upload certificates for xbox. Certificate must be in the valid form of PFX format.
 

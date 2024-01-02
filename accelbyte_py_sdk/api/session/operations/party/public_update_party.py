@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class PublicUpdateParty(Operation):
-    """Update a party. Requires NAMESPACE:{namespace}:SESSION:PARTY [UPDATE] (publicUpdateParty)
+    """Update a party. (publicUpdateParty)
 
     Updates party blob, this endpoint will override stored party data.
 

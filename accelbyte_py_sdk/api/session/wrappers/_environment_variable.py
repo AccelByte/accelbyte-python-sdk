@@ -39,7 +39,7 @@ from ..operations.environment_variable import AdminListEnvironmentVariables
 def admin_list_environment_variables(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """List of environment variables. Requires ADMIN:SESSION:CONFIGURATION:ENVIRONMENTVARIABLE [READ] (adminListEnvironmentVariables)
+    """List of environment variables. (adminListEnvironmentVariables)
 
     List of environment variables.
 
@@ -71,7 +71,7 @@ def admin_list_environment_variables(
 async def admin_list_environment_variables_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """List of environment variables. Requires ADMIN:SESSION:CONFIGURATION:ENVIRONMENTVARIABLE [READ] (adminListEnvironmentVariables)
+    """List of environment variables. (adminListEnvironmentVariables)
 
     List of environment variables.
 

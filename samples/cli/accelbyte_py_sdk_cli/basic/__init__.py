@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-basic-service (2.15.0)
+# justice-basic-service (2.15.1)
 
 from ._get_namespaces import get_namespaces
 from ._create_namespace import create_namespace

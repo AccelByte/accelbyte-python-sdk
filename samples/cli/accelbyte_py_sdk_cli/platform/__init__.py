@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.42.0)
+# justice-platform-service (4.43.0)
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._get_fulfillment_script import get_fulfillment_script
@@ -67,6 +67,8 @@ from ._update_platform_dlc_config import update_platform_dlc_config
 from ._delete_platform_dlc_config import delete_platform_dlc_config
 from ._query_entitlements import query_entitlements
 from ._query_entitlements_1 import query_entitlements_1
+from ._enable_entitlement_origin_feature import enable_entitlement_origin_feature
+from ._get_entitlement_config_info import get_entitlement_config_info
 from ._grant_entitlements import grant_entitlements
 from ._revoke_entitlements import revoke_entitlements
 from ._get_entitlement import get_entitlement
@@ -162,6 +164,8 @@ from ._charge_payment_order import charge_payment_order
 from ._refund_payment_order_by_dedicated import refund_payment_order_by_dedicated
 from ._simulate_payment_order_notification import simulate_payment_order_notification
 from ._get_payment_order_charge_status import get_payment_order_charge_status
+from ._get_platform_entitlement_config import get_platform_entitlement_config
+from ._update_platform_entitlement_config import update_platform_entitlement_config
 from ._get_platform_wallet_config import get_platform_wallet_config
 from ._update_platform_wallet_config import update_platform_wallet_config
 from ._reset_platform_wallet_config import reset_platform_wallet_config
@@ -567,6 +571,8 @@ commands = [
     delete_platform_dlc_config,
     query_entitlements,
     query_entitlements_1,
+    enable_entitlement_origin_feature,
+    get_entitlement_config_info,
     grant_entitlements,
     revoke_entitlements,
     get_entitlement,
@@ -660,6 +666,8 @@ commands = [
     refund_payment_order_by_dedicated,
     simulate_payment_order_notification,
     get_payment_order_charge_status,
+    get_platform_entitlement_config,
+    update_platform_entitlement_config,
     get_platform_wallet_config,
     update_platform_wallet_config,
     reset_platform_wallet_config,

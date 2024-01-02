@@ -138,6 +138,7 @@ from ..operations.users import AdminCreateJusticeUser
 from ..operations.users import AdminCreateUserRolesV2
 from ..operations.users import AdminDeletePlatformLinkV2
 from ..operations.users import AdminDeleteUserInformationV3
+from ..operations.users import AdminDeleteUserLinkingHistoryByPlatformIDV3
 from ..operations.users import AdminDeleteUserPermissionBulkV3
 from ..operations.users import AdminDeleteUserPermissionV3
 from ..operations.users import AdminDeleteUserRoleV3
@@ -1682,6 +1683,120 @@ async def admin_delete_user_information_v3_async(
         if error:
             return None, error
     request = AdminDeleteUserInformationV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminDeleteUserLinkingHistoryByPlatformIDV3)
+def admin_delete_user_linking_history_by_platform_idv3(
+    platform_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin remove user's platform linking history. (AdminDeleteUserLinkingHistoryByPlatformIDV3)
+
+    This API is for admin to delete user's linking history with target platform id
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link/histories
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteUserLinkingHistoryByPlatformIDV3.create(
+        platform_id=platform_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminDeleteUserLinkingHistoryByPlatformIDV3)
+async def admin_delete_user_linking_history_by_platform_idv3_async(
+    platform_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin remove user's platform linking history. (AdminDeleteUserLinkingHistoryByPlatformIDV3)
+
+    This API is for admin to delete user's linking history with target platform id
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link/histories
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteUserLinkingHistoryByPlatformIDV3.create(
+        platform_id=platform_id,
         user_id=user_id,
         namespace=namespace,
     )
@@ -4181,7 +4296,7 @@ def admin_get_user_mapping(
     This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
     If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
+    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace. Will create game user id if not exists.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -4238,7 +4353,7 @@ async def admin_get_user_mapping_async(
     This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
     If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
+    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace. Will create game user id if not exists.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -6602,6 +6717,10 @@ def admin_trustly_update_user_identity(
     This endpoint is utilized for specific scenarios where **email notifications are disabled**
     The user's email will be marked as verified
 
+    Note:
+    - emailAddress or password field are optional
+    - request body can't be empty
+
     action code : 10103
 
     Properties:
@@ -6663,6 +6782,10 @@ async def admin_trustly_update_user_identity_async(
     This endpoint ONLY accept **Client Token**
     This endpoint is utilized for specific scenarios where **email notifications are disabled**
     The user's email will be marked as verified
+
+    Note:
+    - emailAddress or password field are optional
+    - request body can't be empty
 
     action code : 10103
 
@@ -11276,7 +11399,7 @@ def get_user_mapping(
     This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
     If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
+    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace. Will create game user id if not exists.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -11338,7 +11461,7 @@ async def get_user_mapping_async(
     This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
     If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace
+    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace. Will create game user id if not exists.
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}

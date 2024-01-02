@@ -47,8 +47,16 @@ from ..operations.fulfillment import QueryFulfillmentHistories
 from ..operations.fulfillment import QueryFulfillmentHistoriesStatusEnum
 from ..operations.fulfillment import RedeemCode
 from ..models import FulfillmentItemItemTypeEnum
-from ..models import FulfillmentRequestOriginEnum, FulfillmentRequestSourceEnum
-from ..models import RewardsRequestOriginEnum, RewardsRequestSourceEnum
+from ..models import (
+    FulfillmentRequestEntitlementOriginEnum,
+    FulfillmentRequestOriginEnum,
+    FulfillmentRequestSourceEnum,
+)
+from ..models import (
+    RewardsRequestEntitlementOriginEnum,
+    RewardsRequestOriginEnum,
+    RewardsRequestSourceEnum,
+)
 
 
 @same_doc_as(FulfillItem)
@@ -179,7 +187,7 @@ def fulfill_rewards(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Fulfill rewards (fulfillRewards)
+    """Fulfill rewards without content (fulfillRewards)
 
     [SERVICE COMMUNICATION ONLY] Fulfill rewards.
     Other detail info:
@@ -238,7 +246,7 @@ async def fulfill_rewards_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Fulfill rewards (fulfillRewards)
+    """Fulfill rewards without content (fulfillRewards)
 
     [SERVICE COMMUNICATION ONLY] Fulfill rewards.
     Other detail info:
@@ -306,6 +314,7 @@ def fulfill_rewards_v2(
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
       *  Returns : fulfillment result
+      *  rewards Item unsupported Type : SUBSCRIPTION
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
@@ -365,6 +374,7 @@ async def fulfill_rewards_v2_async(
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
       *  Returns : fulfillment result
+      *  rewards Item unsupported Type : SUBSCRIPTION
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []

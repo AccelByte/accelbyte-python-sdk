@@ -73,6 +73,8 @@ from ..operations.admin_content_v2 import AdminUpdateUserContentV2
 from ..operations.admin_content_v2 import AdminUploadContentScreenshotV2
 from ..operations.admin_content_v2 import ListContentVersionsV2
 from ..operations.admin_content_v2 import RollbackContentVersionV2
+from ..models import ModelsCreateContentResponseV2ContentStatusEnum
+from ..models import ModelsUpdateContentResponseV2ContentStatusEnum
 
 
 @same_doc_as(AdminBulkGetContentByIDsV2)

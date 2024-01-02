@@ -78,7 +78,7 @@ def admin_delete_bulk_game_sessions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete bulk game sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [DELETE] (adminDeleteBulkGameSessions)
+    """Delete bulk game sessions. (adminDeleteBulkGameSessions)
 
     Delete bulk game sessions.
 
@@ -128,7 +128,7 @@ async def admin_delete_bulk_game_sessions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete bulk game sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [DELETE] (adminDeleteBulkGameSessions)
+    """Delete bulk game sessions. (adminDeleteBulkGameSessions)
 
     Delete bulk game sessions.
 
@@ -198,10 +198,7 @@ def admin_query_game_sessions(
 ):
     """Get all game sessions. (adminQueryGameSessions)
 
-    Get all game sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSION:GAME [READ]
+    Get all game sessions.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions
@@ -315,10 +312,7 @@ async def admin_query_game_sessions_async(
 ):
     """Get all game sessions. (adminQueryGameSessions)
 
-    Get all game sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSION:GAME [READ]
+    Get all game sessions.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions
@@ -654,7 +648,7 @@ def admin_update_game_session_member(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update status of a game session member. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (adminUpdateGameSessionMember)
+    """Update status of a game session member. (adminUpdateGameSessionMember)
 
     Update a game session member status.
 
@@ -714,7 +708,7 @@ async def admin_update_game_session_member_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update status of a game session member. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (adminUpdateGameSessionMember)
+    """Update status of a game session member. (adminUpdateGameSessionMember)
 
     Update a game session member status.
 
@@ -775,7 +769,7 @@ def append_team_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Append new member or team to session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (appendTeamGameSession)
+    """Append new member or team to session. (appendTeamGameSession)
 
     Append new member or team to session
 
@@ -829,7 +823,7 @@ async def append_team_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Append new member or team to session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (appendTeamGameSession)
+    """Append new member or team to session. (appendTeamGameSession)
 
     Append new member or team to session
 
@@ -884,7 +878,7 @@ def create_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [CREATE] (createGameSession)
+    """Create a game session. (createGameSession)
 
     Create a game session.
     Session configuration name is mandatory, this API will refer following values from the session template if they're not provided in the request:
@@ -963,7 +957,7 @@ async def create_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [CREATE] (createGameSession)
+    """Create a game session. (createGameSession)
 
     Create a game session.
     Session configuration name is mandatory, this API will refer following values from the session template if they're not provided in the request:
@@ -1044,7 +1038,7 @@ def delete_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [DELETE] (deleteGameSession)
+    """Delete a game session. (deleteGameSession)
 
     Delete a game session.
 
@@ -1092,7 +1086,7 @@ async def delete_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [DELETE] (deleteGameSession)
+    """Delete a game session. (deleteGameSession)
 
     Delete a game session.
 
@@ -1142,7 +1136,7 @@ def game_session_generate_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Generate a game session code. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (gameSessionGenerateCode)
+    """Generate a game session code. (gameSessionGenerateCode)
 
     Generate a new code for the game session. Only leader can generate a code.
 
@@ -1194,7 +1188,7 @@ async def game_session_generate_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Generate a game session code. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (gameSessionGenerateCode)
+    """Generate a game session code. (gameSessionGenerateCode)
 
     Generate a new code for the game session. Only leader can generate a code.
 
@@ -1248,7 +1242,7 @@ def get_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSession)
+    """Get game session detail. (getGameSession)
 
     Get game session detail.
     Session will only be accessible from active players in the session, and client with the permission, except the joinability is set to OPEN.
@@ -1306,7 +1300,7 @@ async def get_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSession)
+    """Get game session detail. (getGameSession)
 
     Get game session detail.
     Session will only be accessible from active players in the session, and client with the permission, except the joinability is set to OPEN.
@@ -1366,7 +1360,7 @@ def get_game_session_by_pod_name(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSessionByPodName)
+    """Get game session detail. (getGameSessionByPodName)
 
     Get game session detail by podname.
     Session service has several DSInformation status to track DS request to DSMC:
@@ -1423,7 +1417,7 @@ async def get_game_session_by_pod_name_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSessionByPodName)
+    """Get game session detail. (getGameSessionByPodName)
 
     Get game session detail by podname.
     Session service has several DSInformation status to track DS request to DSMC:
@@ -1482,7 +1476,7 @@ def get_session_server_secret(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get Server Secret. Requires NAMESPACE:{namespace}:SESSION:GAME:SECRET [READ] (getSessionServerSecret)
+    """Get Server Secret. (getSessionServerSecret)
 
 
     Used by game Client to Get Secret
@@ -1552,7 +1546,7 @@ async def get_session_server_secret_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get Server Secret. Requires NAMESPACE:{namespace}:SESSION:GAME:SECRET [READ] (getSessionServerSecret)
+    """Get Server Secret. (getSessionServerSecret)
 
 
     Used by game Client to Get Secret
@@ -1624,7 +1618,7 @@ def join_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Join a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (joinGameSession)
+    """Join a game session. (joinGameSession)
 
     Join a game session.
 
@@ -1676,7 +1670,7 @@ async def join_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Join a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (joinGameSession)
+    """Join a game session. (joinGameSession)
 
     Join a game session.
 
@@ -1730,7 +1724,7 @@ def leave_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Leave a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [DELETE] (leaveGameSession)
+    """Leave a game session. (leaveGameSession)
 
     Leave a game session.
 
@@ -1782,7 +1776,7 @@ async def leave_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Leave a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [DELETE] (leaveGameSession)
+    """Leave a game session. (leaveGameSession)
 
     Leave a game session.
 
@@ -1837,7 +1831,7 @@ def patch_update_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Patch update a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (patchUpdateGameSession)
+    """Patch update a game session. (patchUpdateGameSession)
 
     Update specified fields from game session data.
 
@@ -1893,7 +1887,7 @@ async def patch_update_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Patch update a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (patchUpdateGameSession)
+    """Patch update a game session. (patchUpdateGameSession)
 
     Update specified fields from game session data.
 
@@ -1951,7 +1945,7 @@ def public_game_session_invite(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Invite a user to a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (publicGameSessionInvite)
+    """Invite a user to a game session. (publicGameSessionInvite)
 
     Invite a user to a game session.
     platformID represents the native platform of the invitee. API will return the corresponding native platform's userID.
@@ -2012,7 +2006,7 @@ async def public_game_session_invite_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Invite a user to a game session. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (publicGameSessionInvite)
+    """Invite a user to a game session. (publicGameSessionInvite)
 
     Invite a user to a game session.
     platformID represents the native platform of the invitee. API will return the corresponding native platform's userID.
@@ -2074,7 +2068,7 @@ def public_game_session_reject(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Reject a game session invitation. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [DELETE] (publicGameSessionReject)
+    """Reject a game session invitation. (publicGameSessionReject)
 
     Reject a game session invitation.
 
@@ -2126,7 +2120,7 @@ async def public_game_session_reject_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Reject a game session invitation. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [DELETE] (publicGameSessionReject)
+    """Reject a game session invitation. (publicGameSessionReject)
 
     Reject a game session invitation.
 
@@ -2181,7 +2175,7 @@ def public_promote_game_session_leader(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Promote new game session leader. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (publicPromoteGameSessionLeader)
+    """Promote new game session leader. (publicPromoteGameSessionLeader)
 
     Promote game session member to become the new game session leader.
 
@@ -2252,7 +2246,7 @@ async def public_promote_game_session_leader_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Promote new game session leader. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (publicPromoteGameSessionLeader)
+    """Promote new game session leader. (publicPromoteGameSessionLeader)
 
     Promote game session member to become the new game session leader.
 
@@ -2578,7 +2572,7 @@ def public_revoke_game_session_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Revoke game session code. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (publicRevokeGameSessionCode)
+    """Revoke game session code. (publicRevokeGameSessionCode)
 
     Revoke code of the game session. Only leader can revoke a code.
 
@@ -2630,7 +2624,7 @@ async def public_revoke_game_session_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Revoke game session code. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (publicRevokeGameSessionCode)
+    """Revoke game session code. (publicRevokeGameSessionCode)
 
     Revoke code of the game session. Only leader can revoke a code.
 
@@ -2684,7 +2678,7 @@ def public_session_join_code(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Join a session by code. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (publicSessionJoinCode)
+    """Join a session by code. (publicSessionJoinCode)
 
     Join a session by code. The user can join a session as long as the code is valid
 
@@ -2736,7 +2730,7 @@ async def public_session_join_code_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Join a session by code. Requires NAMESPACE:{namespace}:SESSION:GAME:PLAYER [CREATE] (publicSessionJoinCode)
+    """Join a session by code. (publicSessionJoinCode)
 
     Join a session by code. The user can join a session as long as the code is valid
 
@@ -2791,7 +2785,7 @@ def update_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (updateGameSession)
+    """Update a game session. (updateGameSession)
 
     Updates a game session, this endpoint will override stored gamesession data.
     To update only specified fields, please use following endpoint:
@@ -2852,7 +2846,7 @@ async def update_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (updateGameSession)
+    """Update a game session. (updateGameSession)
 
     Updates a game session, this endpoint will override stored gamesession data.
     To update only specified fields, please use following endpoint:
@@ -2915,7 +2909,7 @@ def update_game_session_backfill_ticket_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update game session backfill ticket id . Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (updateGameSessionBackfillTicketID)
+    """Update game session backfill ticket id . (updateGameSessionBackfillTicketID)
 
     Update game session backfill ticket id. Will override game session backfill ticket based on given request parameter
 
@@ -2969,7 +2963,7 @@ async def update_game_session_backfill_ticket_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update game session backfill ticket id . Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (updateGameSessionBackfillTicketID)
+    """Update game session backfill ticket id . (updateGameSessionBackfillTicketID)
 
     Update game session backfill ticket id. Will override game session backfill ticket based on given request parameter
 

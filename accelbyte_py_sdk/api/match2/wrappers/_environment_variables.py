@@ -41,17 +41,7 @@ def environment_variable_list(
 ):
     """List environment variables (EnvironmentVariableList)
 
-    Required Permission: ADMIN:MATCHMAKING:CONFIGURATION:ENVIRONMENTVARIABLE [READ]
-
-    Required Scope: social
-
     List environment variables.
-
-    Required Permission(s):
-        - ADMIN:MATCHMAKING:CONFIGURATION:ENVIRONMENTVARIABLE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/environment-variables
@@ -83,17 +73,7 @@ async def environment_variable_list_async(
 ):
     """List environment variables (EnvironmentVariableList)
 
-    Required Permission: ADMIN:MATCHMAKING:CONFIGURATION:ENVIRONMENTVARIABLE [READ]
-
-    Required Scope: social
-
     List environment variables.
-
-    Required Permission(s):
-        - ADMIN:MATCHMAKING:CONFIGURATION:ENVIRONMENTVARIABLE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/environment-variables

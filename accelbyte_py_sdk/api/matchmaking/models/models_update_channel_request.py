@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.27.2)
+# AccelByte Gaming Services Matchmaking Service (2.28.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,8 +26,15 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_update_ruleset import ModelsUpdateRuleset
+
+
+class BlockedPlayerOptionEnum(StrEnum):
+    BLOCKEDPLAYERCANMATCH = "blockedPlayerCanMatch"
+    BLOCKEDPLAYERCANMATCHONDIFFERENTTEAM = "blockedPlayerCanMatchOnDifferentTeam"
+    BLOCKEDPLAYERCANNOTMATCH = "blockedPlayerCannotMatch"
 
 
 class ModelsUpdateChannelRequest(Model):
@@ -52,6 +59,8 @@ class ModelsUpdateChannelRequest(Model):
 
         use_sub_gamemode: (use_sub_gamemode) REQUIRED bool
 
+        blocked_player_option: (blocked_player_option) OPTIONAL Union[str, BlockedPlayerOptionEnum]
+
         region_expansion_range_ms: (region_expansion_range_ms) OPTIONAL int
 
         region_expansion_rate_ms: (region_expansion_rate_ms) OPTIONAL int
@@ -74,6 +83,7 @@ class ModelsUpdateChannelRequest(Model):
     session_queue_timeout_seconds: int  # REQUIRED
     social_matchmaking: bool  # REQUIRED
     use_sub_gamemode: bool  # REQUIRED
+    blocked_player_option: Union[str, BlockedPlayerOptionEnum]  # OPTIONAL
     region_expansion_range_ms: int  # OPTIONAL
     region_expansion_rate_ms: int  # OPTIONAL
     region_latency_initial_range_ms: int  # OPTIONAL
@@ -120,6 +130,12 @@ class ModelsUpdateChannelRequest(Model):
 
     def with_use_sub_gamemode(self, value: bool) -> ModelsUpdateChannelRequest:
         self.use_sub_gamemode = value
+        return self
+
+    def with_blocked_player_option(
+        self, value: Union[str, BlockedPlayerOptionEnum]
+    ) -> ModelsUpdateChannelRequest:
+        self.blocked_player_option = value
         return self
 
     def with_region_expansion_range_ms(self, value: int) -> ModelsUpdateChannelRequest:
@@ -190,6 +206,10 @@ class ModelsUpdateChannelRequest(Model):
             result["use_sub_gamemode"] = bool(self.use_sub_gamemode)
         elif include_empty:
             result["use_sub_gamemode"] = False
+        if hasattr(self, "blocked_player_option"):
+            result["blocked_player_option"] = str(self.blocked_player_option)
+        elif include_empty:
+            result["blocked_player_option"] = Union[str, BlockedPlayerOptionEnum]()
         if hasattr(self, "region_expansion_range_ms"):
             result["region_expansion_range_ms"] = int(self.region_expansion_range_ms)
         elif include_empty:
@@ -232,6 +252,7 @@ class ModelsUpdateChannelRequest(Model):
         session_queue_timeout_seconds: int,
         social_matchmaking: bool,
         use_sub_gamemode: bool,
+        blocked_player_option: Optional[Union[str, BlockedPlayerOptionEnum]] = None,
         region_expansion_range_ms: Optional[int] = None,
         region_expansion_rate_ms: Optional[int] = None,
         region_latency_initial_range_ms: Optional[int] = None,
@@ -249,6 +270,8 @@ class ModelsUpdateChannelRequest(Model):
         instance.session_queue_timeout_seconds = session_queue_timeout_seconds
         instance.social_matchmaking = social_matchmaking
         instance.use_sub_gamemode = use_sub_gamemode
+        if blocked_player_option is not None:
+            instance.blocked_player_option = blocked_player_option
         if region_expansion_range_ms is not None:
             instance.region_expansion_range_ms = region_expansion_range_ms
         if region_expansion_rate_ms is not None:
@@ -314,6 +337,13 @@ class ModelsUpdateChannelRequest(Model):
             instance.use_sub_gamemode = bool(dict_["use_sub_gamemode"])
         elif include_empty:
             instance.use_sub_gamemode = False
+        if (
+            "blocked_player_option" in dict_
+            and dict_["blocked_player_option"] is not None
+        ):
+            instance.blocked_player_option = str(dict_["blocked_player_option"])
+        elif include_empty:
+            instance.blocked_player_option = Union[str, BlockedPlayerOptionEnum]()
         if (
             "region_expansion_range_ms" in dict_
             and dict_["region_expansion_range_ms"] is not None
@@ -405,6 +435,7 @@ class ModelsUpdateChannelRequest(Model):
             "sessionQueueTimeoutSeconds": "session_queue_timeout_seconds",
             "socialMatchmaking": "social_matchmaking",
             "use_sub_gamemode": "use_sub_gamemode",
+            "blocked_player_option": "blocked_player_option",
             "region_expansion_range_ms": "region_expansion_range_ms",
             "region_expansion_rate_ms": "region_expansion_rate_ms",
             "region_latency_initial_range_ms": "region_latency_initial_range_ms",
@@ -424,11 +455,22 @@ class ModelsUpdateChannelRequest(Model):
             "sessionQueueTimeoutSeconds": True,
             "socialMatchmaking": True,
             "use_sub_gamemode": True,
+            "blocked_player_option": False,
             "region_expansion_range_ms": False,
             "region_expansion_rate_ms": False,
             "region_latency_initial_range_ms": False,
             "region_latency_max_ms": False,
             "ticket_observability_enable": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "blocked_player_option": [
+                "blockedPlayerCanMatch",
+                "blockedPlayerCanMatchOnDifferentTeam",
+                "blockedPlayerCannotMatch",
+            ],
         }
 
     # endregion static methods

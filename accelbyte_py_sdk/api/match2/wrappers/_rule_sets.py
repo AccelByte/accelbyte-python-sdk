@@ -49,22 +49,12 @@ def create_rule_set(
 ):
     """Create a match rule set (CreateRuleSet)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
-
-    Required Scope: social
-
     Creates a new rules set.
 
     A rule set has a name and contains arbitrary data which is meaningful to some particular match function(s)
     The name is used for a match pool to select the ruleset data that should be sent to the match function when matchmaking in that pool.
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets
@@ -116,22 +106,12 @@ async def create_rule_set_async(
 ):
     """Create a match rule set (CreateRuleSet)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
-
-    Required Scope: social
-
     Creates a new rules set.
 
     A rule set has a name and contains arbitrary data which is meaningful to some particular match function(s)
     The name is used for a match pool to select the ruleset data that should be sent to the match function when matchmaking in that pool.
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets
@@ -185,17 +165,7 @@ def delete_rule_set(
 ):
     """Delete a rule set (DeleteRuleSet)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [DELETE]
-
-    Required Scope: social
-
     Deletes an existing rule set.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
@@ -245,17 +215,7 @@ async def delete_rule_set_async(
 ):
     """Delete a rule set (DeleteRuleSet)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [DELETE]
-
-    Required Scope: social
-
     Deletes an existing rule set.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
@@ -307,17 +267,7 @@ def rule_set_details(
 ):
     """Get details for a specific rule set (RuleSetDetails)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
-
-    Required Scope: social
-
     Get details for a specific rule set
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
@@ -365,17 +315,7 @@ async def rule_set_details_async(
 ):
     """Get details for a specific rule set (RuleSetDetails)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
-
-    Required Scope: social
-
     Get details for a specific rule set
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
@@ -427,17 +367,7 @@ def rule_set_list(
 ):
     """List existing rule sets (RuleSetList)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
-
-    Required Scope: social
-
     List rule sets.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets
@@ -493,17 +423,7 @@ async def rule_set_list_async(
 ):
     """List existing rule sets (RuleSetList)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
-
-    Required Scope: social
-
     List rule sets.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets
@@ -560,19 +480,9 @@ def update_rule_set(
 ):
     """Update a match rule set (UpdateRuleSet)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
-
-    Required Scope: social
-
     Updates an existing matchmaking rule set.
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
@@ -628,19 +538,9 @@ async def update_rule_set_async(
 ):
     """Update a match rule set (UpdateRuleSet)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
-
-    Required Scope: social
-
     Updates an existing matchmaking rule set.
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}

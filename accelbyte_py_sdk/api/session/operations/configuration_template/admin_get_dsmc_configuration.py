@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseError
 
 
 class AdminGetDSMCConfiguration(Operation):
-    """Get dsmc configuration . Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetDSMCConfiguration)
+    """Get dsmc configuration . (adminGetDSMCConfiguration)
 
     Get a dsmc configuration.
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminQueryGameSessions(Operation):
     """Get all game sessions. (adminQueryGameSessions)
 
-    Get all game sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:GAME [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSION:GAME [READ]
+    Get all game sessions.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions

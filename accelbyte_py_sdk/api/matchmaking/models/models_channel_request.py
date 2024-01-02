@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.27.2)
+# AccelByte Gaming Services Matchmaking Service (2.28.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,8 +26,15 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_rule_set import ModelsRuleSet
+
+
+class BlockedPlayerOptionEnum(StrEnum):
+    BLOCKEDPLAYERCANMATCH = "blockedPlayerCanMatch"
+    BLOCKEDPLAYERCANMATCHONDIFFERENTTEAM = "blockedPlayerCanMatchOnDifferentTeam"
+    BLOCKEDPLAYERCANNOTMATCH = "blockedPlayerCannotMatch"
 
 
 class ModelsChannelRequest(Model):
@@ -47,6 +54,8 @@ class ModelsChannelRequest(Model):
         rule_set: (rule_set) REQUIRED ModelsRuleSet
 
         session_queue_timeout_seconds: (session_queue_timeout_seconds) REQUIRED int
+
+        blocked_player_option: (blocked_player_option) OPTIONAL Union[str, BlockedPlayerOptionEnum]
 
         joinable: (joinable) OPTIONAL bool
 
@@ -74,6 +83,7 @@ class ModelsChannelRequest(Model):
     max_delay_ms: int  # REQUIRED
     rule_set: ModelsRuleSet  # REQUIRED
     session_queue_timeout_seconds: int  # REQUIRED
+    blocked_player_option: Union[str, BlockedPlayerOptionEnum]  # OPTIONAL
     joinable: bool  # OPTIONAL
     region_expansion_range_ms: int  # OPTIONAL
     region_expansion_rate_ms: int  # OPTIONAL
@@ -113,6 +123,12 @@ class ModelsChannelRequest(Model):
 
     def with_session_queue_timeout_seconds(self, value: int) -> ModelsChannelRequest:
         self.session_queue_timeout_seconds = value
+        return self
+
+    def with_blocked_player_option(
+        self, value: Union[str, BlockedPlayerOptionEnum]
+    ) -> ModelsChannelRequest:
+        self.blocked_player_option = value
         return self
 
     def with_joinable(self, value: bool) -> ModelsChannelRequest:
@@ -183,6 +199,10 @@ class ModelsChannelRequest(Model):
             )
         elif include_empty:
             result["session_queue_timeout_seconds"] = 0
+        if hasattr(self, "blocked_player_option"):
+            result["blocked_player_option"] = str(self.blocked_player_option)
+        elif include_empty:
+            result["blocked_player_option"] = Union[str, BlockedPlayerOptionEnum]()
         if hasattr(self, "joinable"):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
@@ -235,6 +255,7 @@ class ModelsChannelRequest(Model):
         max_delay_ms: int,
         rule_set: ModelsRuleSet,
         session_queue_timeout_seconds: int,
+        blocked_player_option: Optional[Union[str, BlockedPlayerOptionEnum]] = None,
         joinable: Optional[bool] = None,
         region_expansion_range_ms: Optional[int] = None,
         region_expansion_rate_ms: Optional[int] = None,
@@ -253,6 +274,8 @@ class ModelsChannelRequest(Model):
         instance.max_delay_ms = max_delay_ms
         instance.rule_set = rule_set
         instance.session_queue_timeout_seconds = session_queue_timeout_seconds
+        if blocked_player_option is not None:
+            instance.blocked_player_option = blocked_player_option
         if joinable is not None:
             instance.joinable = joinable
         if region_expansion_range_ms is not None:
@@ -318,6 +341,13 @@ class ModelsChannelRequest(Model):
             )
         elif include_empty:
             instance.session_queue_timeout_seconds = 0
+        if (
+            "blocked_player_option" in dict_
+            and dict_["blocked_player_option"] is not None
+        ):
+            instance.blocked_player_option = str(dict_["blocked_player_option"])
+        elif include_empty:
+            instance.blocked_player_option = Union[str, BlockedPlayerOptionEnum]()
         if "joinable" in dict_ and dict_["joinable"] is not None:
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
@@ -419,6 +449,7 @@ class ModelsChannelRequest(Model):
             "max_delay_ms": "max_delay_ms",
             "rule_set": "rule_set",
             "session_queue_timeout_seconds": "session_queue_timeout_seconds",
+            "blocked_player_option": "blocked_player_option",
             "joinable": "joinable",
             "region_expansion_range_ms": "region_expansion_range_ms",
             "region_expansion_rate_ms": "region_expansion_rate_ms",
@@ -439,6 +470,7 @@ class ModelsChannelRequest(Model):
             "max_delay_ms": True,
             "rule_set": True,
             "session_queue_timeout_seconds": True,
+            "blocked_player_option": False,
             "joinable": False,
             "region_expansion_range_ms": False,
             "region_expansion_rate_ms": False,
@@ -447,6 +479,16 @@ class ModelsChannelRequest(Model):
             "social_matchmaking": False,
             "ticket_observability_enable": False,
             "use_sub_gamemode": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "blocked_player_option": [
+                "blockedPlayerCanMatch",
+                "blockedPlayerCanMatchOnDifferentTeam",
+                "blockedPlayerCannotMatch",
+            ],
         }
 
     # endregion static methods

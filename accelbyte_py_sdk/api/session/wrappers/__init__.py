@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.12.3"
+__version__ = "3.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -106,6 +106,9 @@ from ._max_active import admin_get_member_active_session
 from ._max_active import admin_get_member_active_session_async
 from ._max_active import admin_reconcile_max_active_session
 from ._max_active import admin_reconcile_max_active_session_async
+
+from ._native_session import admin_get_list_native_session
+from ._native_session import admin_get_list_native_session_async
 
 from ._operations import get_healthcheck_info
 from ._operations import get_healthcheck_info_async

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class PublicPromotePartyLeader(Operation):
-    """Promote new party leader. Requires NAMESPACE:{namespace}:SESSION:PARTY [UPDATE] (publicPromotePartyLeader)
+    """Promote new party leader. (publicPromotePartyLeader)
 
     Promotes a party member to be a party leader. Only leader can promote a new leader.
 

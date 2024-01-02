@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseError
 
 
 class GetGameSession(Operation):
-    """Get game session detail. Requires NAMESPACE:{namespace}:SESSION:GAME [READ] (getGameSession)
+    """Get game session detail. (getGameSession)
 
     Get game session detail.
     Session will only be accessible from active players in the session, and client with the permission, except the joinability is set to OPEN.

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,8 @@ from ..api.platform.models import Action
 from ..api.platform.models import ActionRequest
 from ..api.platform.models import AdditionalData
 from ..api.platform.models import AdditionalDataEntitlement
+from ..api.platform.models import AdminEntitlementDecrement
+from ..api.platform.models import AdminEntitlementSoldRequest
 from ..api.platform.models import AdminOrderCreate
 from ..api.platform.models import AdyenConfig
 from ..api.platform.models import AliPayConfig
@@ -113,6 +115,7 @@ from ..api.platform.models import DeleteRewardConditionRequest
 from ..api.platform.models import DetailedWalletTransactionInfo
 from ..api.platform.models import DetailedWalletTransactionPagingSlicedResult
 from ..api.platform.models import DurableEntitlementRevocationConfig
+from ..api.platform.models import EntitlementConfigInfo
 from ..api.platform.models import EntitlementDecrement
 from ..api.platform.models import EntitlementDecrementResult
 from ..api.platform.models import EntitlementGrant
@@ -121,8 +124,11 @@ from ..api.platform.models import EntitlementHistoryInfo
 from ..api.platform.models import EntitlementIfc
 from ..api.platform.models import EntitlementInfo
 from ..api.platform.models import EntitlementLootBoxReward
+from ..api.platform.models import EntitlementOriginSyncResult
 from ..api.platform.models import EntitlementOwnership
 from ..api.platform.models import EntitlementPagingSlicedResult
+from ..api.platform.models import EntitlementPlatformConfigInfo
+from ..api.platform.models import EntitlementPlatformConfigUpdate
 from ..api.platform.models import EntitlementPrechekResult
 from ..api.platform.models import EntitlementRevocation
 from ..api.platform.models import EntitlementRevocationConfig
@@ -336,6 +342,7 @@ from ..api.platform.models import RewardCondition
 from ..api.platform.models import RewardCreate
 from ..api.platform.models import RewardInfo
 from ..api.platform.models import RewardItem
+from ..api.platform.models import RewardMigrationResult
 from ..api.platform.models import RewardPagingSlicedResult
 from ..api.platform.models import RewardUpdate
 from ..api.platform.models import RewardsRequest
@@ -462,6 +469,23 @@ def create_additional_data_entitlement_example() -> AdditionalDataEntitlement:
     return instance
 
 
+def create_admin_entitlement_decrement_example() -> AdminEntitlementDecrement:
+    instance = AdminEntitlementDecrement()
+    instance.options = [randomize()]
+    instance.platform = randomize()
+    instance.request_id = randomize()
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_admin_entitlement_sold_request_example() -> AdminEntitlementSoldRequest:
+    instance = AdminEntitlementSoldRequest()
+    instance.platform = randomize()
+    instance.request_id = randomize()
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_admin_order_create_example() -> AdminOrderCreate:
     instance = AdminOrderCreate()
     instance.currency_code = randomize()
@@ -525,6 +549,8 @@ def create_app_entitlement_info_example() -> AppEntitlementInfo:
     instance.end_date = randomize("date")
     instance.item_id = randomize()
     instance.item_snapshot = create_item_snapshot_example()
+    instance.no_origin = randomize("bool")
+    instance.origin = randomize()
     instance.sku = randomize("slug")
     instance.start_date = randomize("date")
     instance.store_id = randomize()
@@ -1380,6 +1406,10 @@ def create_dlc_item_config_update_example() -> DLCItemConfigUpdate:
 
 def create_dlc_record_example() -> DLCRecord:
     instance = DLCRecord()
+    instance.entitlement_origin_sync_result = [
+        create_entitlement_origin_sync_result_example()
+    ]
+    instance.entitlement_origin_sync_status = randomize()
     instance.id_ = randomize()
     instance.metadata = {randomize(): randomize()}
     instance.obtained_at = randomize("date")
@@ -1403,6 +1433,13 @@ def create_durable_entitlement_revocation_config_example() -> (
     return instance
 
 
+def create_entitlement_config_info_example() -> EntitlementConfigInfo:
+    instance = EntitlementConfigInfo()
+    instance.enable_entitlement_origin_feature = randomize("bool")
+    instance.namespace = randomize("slug")
+    return instance
+
+
 def create_entitlement_decrement_example() -> EntitlementDecrement:
     instance = EntitlementDecrement()
     instance.options = [randomize()]
@@ -1415,31 +1452,33 @@ def create_entitlement_decrement_result_example() -> EntitlementDecrementResult:
     instance = EntitlementDecrementResult()
     instance.clazz = randomize()
     instance.created_at = randomize("date")
-    instance.granted_at = randomize("date")
     instance.id_ = randomize()
     instance.item_id = randomize()
     instance.item_namespace = randomize("slug")
-    instance.name = randomize()
     instance.namespace = randomize("slug")
-    instance.source = randomize()
     instance.status = randomize()
-    instance.type_ = randomize()
     instance.updated_at = randomize("date")
-    instance.user_id = randomize("uid")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
     instance.end_date = randomize("date")
     instance.features = [randomize()]
+    instance.granted_at = randomize("date")
     instance.granted_code = randomize()
     instance.item_snapshot = create_item_snapshot_example()
+    instance.name = randomize()
+    instance.no_origin = randomize("bool")
+    instance.origin = randomize()
     instance.replayed = randomize("bool")
     instance.request_id = randomize()
     instance.rewards = [create_entitlement_loot_box_reward_example()]
     instance.sku = randomize("slug")
+    instance.source = randomize()
     instance.stackable = randomize("bool")
     instance.start_date = randomize("date")
     instance.store_id = randomize()
+    instance.type_ = randomize()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -1451,6 +1490,7 @@ def create_entitlement_grant_example() -> EntitlementGrant:
     instance.end_date = randomize("date")
     instance.granted_code = randomize()
     instance.language = randomize()
+    instance.origin = randomize()
     instance.region = randomize()
     instance.source = randomize()
     instance.start_date = randomize("date")
@@ -1475,6 +1515,7 @@ def create_entitlement_history_info_example() -> EntitlementHistoryInfo:
     instance.operator = randomize()
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
+    instance.origin = randomize()
     instance.reason = randomize()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     instance.use_count_change = randomize("int", min_val=1, max_val=1000)
@@ -1495,6 +1536,8 @@ def create_entitlement_ifc_example() -> EntitlementIfc:
     instance.item_namespace = randomize("slug")
     instance.name = randomize()
     instance.namespace = randomize("slug")
+    instance.no_origin = randomize("bool")
+    instance.origin = randomize()
     instance.sku = randomize("slug")
     instance.start_date = randomize("date")
     instance.status = randomize()
@@ -1510,28 +1553,30 @@ def create_entitlement_info_example() -> EntitlementInfo:
     instance = EntitlementInfo()
     instance.clazz = randomize()
     instance.created_at = randomize("date")
-    instance.granted_at = randomize("date")
     instance.id_ = randomize()
     instance.item_id = randomize()
     instance.item_namespace = randomize("slug")
-    instance.name = randomize()
     instance.namespace = randomize("slug")
-    instance.source = randomize()
     instance.status = randomize()
-    instance.type_ = randomize()
     instance.updated_at = randomize("date")
-    instance.user_id = randomize("uid")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
     instance.end_date = randomize("date")
     instance.features = [randomize()]
+    instance.granted_at = randomize("date")
     instance.granted_code = randomize()
     instance.item_snapshot = create_item_snapshot_example()
+    instance.name = randomize()
+    instance.no_origin = randomize("bool")
+    instance.origin = randomize()
     instance.sku = randomize("slug")
+    instance.source = randomize()
     instance.stackable = randomize("bool")
     instance.start_date = randomize("date")
     instance.store_id = randomize()
+    instance.type_ = randomize()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -1540,6 +1585,14 @@ def create_entitlement_loot_box_reward_example() -> EntitlementLootBoxReward:
     instance.count = randomize("int", min_val=1, max_val=1000)
     instance.item_id = randomize()
     instance.item_sku = randomize()
+    return instance
+
+
+def create_entitlement_origin_sync_result_example() -> EntitlementOriginSyncResult:
+    instance = EntitlementOriginSyncResult()
+    instance.reason = randomize()
+    instance.reward = create_platform_reward_example()
+    instance.summary = [create_reward_migration_result_example()]
     return instance
 
 
@@ -1554,6 +1607,25 @@ def create_entitlement_paging_sliced_result_example() -> EntitlementPagingSliced
     instance = EntitlementPagingSlicedResult()
     instance.data = [create_entitlement_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_entitlement_platform_config_info_example() -> EntitlementPlatformConfigInfo:
+    instance = EntitlementPlatformConfigInfo()
+    instance.allowed_platform_origins = [randomize()]
+    instance.namespace = randomize("slug")
+    instance.platform = randomize()
+    instance.created_at = randomize("date")
+    instance.id_ = randomize()
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_entitlement_platform_config_update_example() -> (
+    EntitlementPlatformConfigUpdate
+):
+    instance = EntitlementPlatformConfigUpdate()
+    instance.allowed_platform_origins = [randomize()]
     return instance
 
 
@@ -1621,6 +1693,8 @@ def create_entitlement_summary_example() -> EntitlementSummary:
     instance.granted_code = randomize()
     instance.item_id = randomize()
     instance.name = randomize()
+    instance.no_origin = randomize("bool")
+    instance.origin = randomize()
     instance.stackable = randomize("bool")
     instance.stacked_use_count = randomize("int", min_val=1, max_val=1000)
     instance.start_date = randomize("date")
@@ -1632,6 +1706,8 @@ def create_entitlement_update_example() -> EntitlementUpdate:
     instance = EntitlementUpdate()
     instance.end_date = randomize("date")
     instance.null_field_list = [randomize()]
+    instance.origin = randomize()
+    instance.reason = randomize()
     instance.start_date = randomize("date")
     instance.status = randomize()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
@@ -1774,6 +1850,7 @@ def create_ful_fill_item_payload_example() -> FulFillItemPayload:
     instance.count = randomize("int", min_val=1, max_val=1000)
     instance.item_identity = randomize()
     instance.item_identity_type = randomize()
+    instance.entitlement_origin = randomize()
     return instance
 
 
@@ -1803,6 +1880,7 @@ def create_fulfillment_history_info_example() -> FulfillmentHistoryInfo:
     instance.user_id = randomize("uid")
     instance.code = randomize()
     instance.credit_summaries = [create_credit_summary_example()]
+    instance.entitlement_origin = randomize()
     instance.entitlement_summaries = [create_entitlement_summary_example()]
     instance.extension_fulfillment_summaries = [
         create_extension_fulfillment_summary_example()
@@ -1840,6 +1918,7 @@ def create_fulfillment_request_example() -> FulfillmentRequest:
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.duration = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize("date")
+    instance.entitlement_origin = randomize()
     instance.item_id = randomize()
     instance.item_sku = randomize()
     instance.language = randomize()
@@ -2462,6 +2541,7 @@ def create_item_revocation_example() -> ItemRevocation:
     instance = ItemRevocation()
     instance.credit_revocations = [create_credit_revocation_example()]
     instance.custom_revocation = {randomize(): randomize()}
+    instance.entitlement_origin = randomize()
     instance.entitlement_revocations = [create_entitlement_revocation_example()]
     instance.item_id = randomize()
     instance.item_revocations = [create_item_revocation_example()]
@@ -3928,6 +4008,7 @@ def create_revoke_entry_example() -> RevokeEntry:
 
 def create_revoke_item_example() -> RevokeItem:
     instance = RevokeItem()
+    instance.entitlement_origin = randomize()
     instance.item_identity = randomize()
     instance.item_identity_type = randomize()
     instance.origin = randomize()
@@ -4006,6 +4087,18 @@ def create_reward_item_example() -> RewardItem:
     return instance
 
 
+def create_reward_migration_result_example() -> RewardMigrationResult:
+    instance = RewardMigrationResult()
+    instance.item_id = randomize()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.reason = randomize()
+    instance.sku = randomize("slug")
+    instance.status = randomize()
+    instance.synced_count = randomize("int", min_val=1, max_val=1000)
+    instance.synced_entitlement_ids = [randomize()]
+    return instance
+
+
 def create_reward_paging_sliced_result_example() -> RewardPagingSlicedResult:
     instance = RewardPagingSlicedResult()
     instance.data = [create_reward_info_example()]
@@ -4029,6 +4122,7 @@ def create_reward_update_example() -> RewardUpdate:
 def create_rewards_request_example() -> RewardsRequest:
     instance = RewardsRequest()
     instance.rewards = [create_platform_reward_example()]
+    instance.entitlement_origin = randomize()
     instance.metadata = {randomize(): randomize()}
     instance.origin = randomize()
     instance.source = randomize()
@@ -4160,29 +4254,31 @@ def create_stackable_entitlement_info_example() -> StackableEntitlementInfo:
     instance = StackableEntitlementInfo()
     instance.clazz = randomize()
     instance.created_at = randomize("date")
-    instance.granted_at = randomize("date")
     instance.id_ = randomize()
     instance.item_id = randomize()
     instance.item_namespace = randomize("slug")
-    instance.name = randomize()
     instance.namespace = randomize("slug")
-    instance.source = randomize()
     instance.status = randomize()
-    instance.type_ = randomize()
     instance.updated_at = randomize("date")
-    instance.user_id = randomize("uid")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
     instance.end_date = randomize("date")
     instance.features = [randomize()]
+    instance.granted_at = randomize("date")
     instance.granted_code = randomize()
     instance.item_snapshot = create_item_snapshot_example()
+    instance.name = randomize()
+    instance.no_origin = randomize("bool")
+    instance.origin = randomize()
     instance.sku = randomize("slug")
+    instance.source = randomize()
     instance.stackable = randomize("bool")
     instance.stacked_use_count = randomize("int", min_val=1, max_val=1000)
     instance.start_date = randomize("date")
     instance.store_id = randomize()
+    instance.type_ = randomize()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -4698,6 +4794,10 @@ def create_user_dlc_example() -> UserDLC:
 
 def create_user_dlc_record_example() -> UserDLCRecord:
     instance = UserDLCRecord()
+    instance.entitlement_origin_sync_result = [
+        create_entitlement_origin_sync_result_example()
+    ]
+    instance.entitlement_origin_sync_status = randomize()
     instance.id_ = randomize()
     instance.metadata = {randomize(): randomize()}
     instance.namespace = randomize("slug")

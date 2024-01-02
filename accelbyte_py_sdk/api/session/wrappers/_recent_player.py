@@ -37,18 +37,18 @@ from ..operations.recent_player import PublicGetRecentPlayer
 
 @same_doc_as(PublicGetRecentPlayer)
 def public_get_recent_player(
-    user_id: str,
     limit: Optional[int] = None,
+    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query recent player with given user id. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetRecentPlayer)
+    """Query recent player with given user id. (publicGetRecentPlayer)
 
     Query recent player with given user id.
 
     Properties:
-        url: /session/v1/public/namespaces/{namespace}/recent-player/{userId}
+        url: /session/v1/public/namespaces/{namespace}/recent-player
 
         method: GET
 
@@ -62,9 +62,9 @@ def public_get_recent_player(
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         limit: (limit) OPTIONAL int in query
+
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - ModelsRecentPlayerQueryResponse (OK)
@@ -82,8 +82,8 @@ def public_get_recent_player(
         if error:
             return None, error
     request = PublicGetRecentPlayer.create(
-        user_id=user_id,
         limit=limit,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -91,18 +91,18 @@ def public_get_recent_player(
 
 @same_doc_as(PublicGetRecentPlayer)
 async def public_get_recent_player_async(
-    user_id: str,
     limit: Optional[int] = None,
+    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query recent player with given user id. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetRecentPlayer)
+    """Query recent player with given user id. (publicGetRecentPlayer)
 
     Query recent player with given user id.
 
     Properties:
-        url: /session/v1/public/namespaces/{namespace}/recent-player/{userId}
+        url: /session/v1/public/namespaces/{namespace}/recent-player
 
         method: GET
 
@@ -116,9 +116,9 @@ async def public_get_recent_player_async(
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         limit: (limit) OPTIONAL int in query
+
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - ModelsRecentPlayerQueryResponse (OK)
@@ -136,8 +136,8 @@ async def public_get_recent_player_async(
         if error:
             return None, error
     request = PublicGetRecentPlayer.create(
-        user_id=user_id,
         limit=limit,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

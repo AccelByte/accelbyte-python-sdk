@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,6 +31,13 @@ from ....core import StrEnum
 from ..models.platform_reward import PlatformReward
 from ..models.revocation_result import RevocationResult
 from ..models.revoke_result import RevokeResult
+from ..models.entitlement_origin_sync_result import EntitlementOriginSyncResult
+
+
+class EntitlementOriginSyncStatusEnum(StrEnum):
+    NOT_SYNCED = "NOT_SYNCED"
+    SYNCED = "SYNCED"
+    SYNCED_FAILED = "SYNCED_FAILED"
 
 
 class StatusEnum(StrEnum):
@@ -43,6 +50,10 @@ class DLCRecord(Model):
     """DLC record (DLCRecord)
 
     Properties:
+        entitlement_origin_sync_result: (entitlementOriginSyncResult) OPTIONAL List[EntitlementOriginSyncResult]
+
+        entitlement_origin_sync_status: (entitlementOriginSyncStatus) OPTIONAL Union[str, EntitlementOriginSyncStatusEnum]
+
         id_: (id) OPTIONAL str
 
         metadata: (metadata) OPTIONAL Dict[str, Any]
@@ -68,6 +79,10 @@ class DLCRecord(Model):
 
     # region fields
 
+    entitlement_origin_sync_result: List[EntitlementOriginSyncResult]  # OPTIONAL
+    entitlement_origin_sync_status: Union[
+        str, EntitlementOriginSyncStatusEnum
+    ]  # OPTIONAL
     id_: str  # OPTIONAL
     metadata: Dict[str, Any]  # OPTIONAL
     obtained_at: str  # OPTIONAL
@@ -83,6 +98,18 @@ class DLCRecord(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_entitlement_origin_sync_result(
+        self, value: List[EntitlementOriginSyncResult]
+    ) -> DLCRecord:
+        self.entitlement_origin_sync_result = value
+        return self
+
+    def with_entitlement_origin_sync_status(
+        self, value: Union[str, EntitlementOriginSyncStatusEnum]
+    ) -> DLCRecord:
+        self.entitlement_origin_sync_status = value
+        return self
 
     def with_id(self, value: str) -> DLCRecord:
         self.id_ = value
@@ -134,6 +161,21 @@ class DLCRecord(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "entitlement_origin_sync_result"):
+            result["entitlementOriginSyncResult"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.entitlement_origin_sync_result
+            ]
+        elif include_empty:
+            result["entitlementOriginSyncResult"] = []
+        if hasattr(self, "entitlement_origin_sync_status"):
+            result["entitlementOriginSyncStatus"] = str(
+                self.entitlement_origin_sync_status
+            )
+        elif include_empty:
+            result["entitlementOriginSyncStatus"] = Union[
+                str, EntitlementOriginSyncStatusEnum
+            ]()
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -193,6 +235,12 @@ class DLCRecord(Model):
     @classmethod
     def create(
         cls,
+        entitlement_origin_sync_result: Optional[
+            List[EntitlementOriginSyncResult]
+        ] = None,
+        entitlement_origin_sync_status: Optional[
+            Union[str, EntitlementOriginSyncStatusEnum]
+        ] = None,
         id_: Optional[str] = None,
         metadata: Optional[Dict[str, Any]] = None,
         obtained_at: Optional[str] = None,
@@ -207,6 +255,10 @@ class DLCRecord(Model):
         **kwargs,
     ) -> DLCRecord:
         instance = cls()
+        if entitlement_origin_sync_result is not None:
+            instance.entitlement_origin_sync_result = entitlement_origin_sync_result
+        if entitlement_origin_sync_status is not None:
+            instance.entitlement_origin_sync_status = entitlement_origin_sync_status
         if id_ is not None:
             instance.id_ = id_
         if metadata is not None:
@@ -236,6 +288,29 @@ class DLCRecord(Model):
         instance = cls()
         if not dict_:
             return instance
+        if (
+            "entitlementOriginSyncResult" in dict_
+            and dict_["entitlementOriginSyncResult"] is not None
+        ):
+            instance.entitlement_origin_sync_result = [
+                EntitlementOriginSyncResult.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["entitlementOriginSyncResult"]
+            ]
+        elif include_empty:
+            instance.entitlement_origin_sync_result = []
+        if (
+            "entitlementOriginSyncStatus" in dict_
+            and dict_["entitlementOriginSyncStatus"] is not None
+        ):
+            instance.entitlement_origin_sync_status = str(
+                dict_["entitlementOriginSyncStatus"]
+            )
+        elif include_empty:
+            instance.entitlement_origin_sync_status = Union[
+                str, EntitlementOriginSyncStatusEnum
+            ]()
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -327,6 +402,8 @@ class DLCRecord(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "entitlementOriginSyncResult": "entitlement_origin_sync_result",
+            "entitlementOriginSyncStatus": "entitlement_origin_sync_status",
             "id": "id_",
             "metadata": "metadata",
             "obtainedAt": "obtained_at",
@@ -343,6 +420,8 @@ class DLCRecord(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "entitlementOriginSyncResult": False,
+            "entitlementOriginSyncStatus": False,
             "id": False,
             "metadata": False,
             "obtainedAt": False,
@@ -359,6 +438,7 @@ class DLCRecord(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "entitlementOriginSyncStatus": ["NOT_SYNCED", "SYNCED", "SYNCED_FAILED"],
             "status": ["FULFILLED", "REVOKED", "REVOKE_FAILED"],
         }
 

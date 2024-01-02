@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.42.0"
+__version__ = "4.43.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -181,6 +181,8 @@ from .wrappers import consume_user_entitlement
 from .wrappers import consume_user_entitlement_async
 from .wrappers import disable_user_entitlement
 from .wrappers import disable_user_entitlement_async
+from .wrappers import enable_entitlement_origin_feature
+from .wrappers import enable_entitlement_origin_feature_async
 from .wrappers import enable_user_entitlement
 from .wrappers import enable_user_entitlement_async
 from .wrappers import exists_any_user_active_entitlement
@@ -189,6 +191,10 @@ from .wrappers import exists_any_user_active_entitlement_by_item_ids
 from .wrappers import exists_any_user_active_entitlement_by_item_ids_async
 from .wrappers import get_entitlement
 from .wrappers import get_entitlement_async
+from .wrappers import get_entitlement_config_info
+from .wrappers import get_entitlement_config_info_async
+from .wrappers import get_platform_entitlement_config
+from .wrappers import get_platform_entitlement_config_async
 from .wrappers import get_user_active_entitlements_by_item_ids
 from .wrappers import get_user_active_entitlements_by_item_ids_async
 from .wrappers import get_user_app_entitlement_by_app_id
@@ -273,6 +279,8 @@ from .wrappers import revoke_user_entitlements
 from .wrappers import revoke_user_entitlements_async
 from .wrappers import sell_user_entitlement
 from .wrappers import sell_user_entitlement_async
+from .wrappers import update_platform_entitlement_config
+from .wrappers import update_platform_entitlement_config_async
 from .wrappers import update_user_entitlement
 from .wrappers import update_user_entitlement_async
 

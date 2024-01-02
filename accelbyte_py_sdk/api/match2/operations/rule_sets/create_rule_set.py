@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Match Service V2 (2.13.0)
+# AccelByte Gaming Services Match Service V2 (2.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,22 +36,12 @@ from ...models import ResponseError
 class CreateRuleSet(Operation):
     """Create a match rule set (CreateRuleSet)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
-
-    Required Scope: social
-
     Creates a new rules set.
 
     A rule set has a name and contains arbitrary data which is meaningful to some particular match function(s)
     The name is used for a match pool to select the ruleset data that should be sent to the match function when matchmaking in that pool.
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets

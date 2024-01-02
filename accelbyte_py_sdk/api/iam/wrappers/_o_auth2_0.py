@@ -89,7 +89,7 @@ def admin_retrieve_user_third_party_platform_token_v3(
     - epicgames
     - twitch
     - awscognito
-    -
+    - amazon
     - eaorigin
     - snapchat
     - twitch
@@ -158,7 +158,7 @@ async def admin_retrieve_user_third_party_platform_token_v3_async(
     - epicgames
     - twitch
     - awscognito
-    -
+    - amazon
     - eaorigin
     - snapchat
     - twitch
@@ -1224,7 +1224,7 @@ def revoke_user_v3(
 
         tags: ["OAuth2.0"]
 
-        consumes: ["application/json"]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 
@@ -1279,7 +1279,7 @@ async def revoke_user_v3_async(
 
         tags: ["OAuth2.0"]
 
-        consumes: ["application/json"]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 

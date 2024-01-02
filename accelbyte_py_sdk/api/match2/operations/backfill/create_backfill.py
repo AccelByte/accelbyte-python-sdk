@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Match Service V2 (2.13.0)
+# AccelByte Gaming Services Match Service V2 (2.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,17 +37,7 @@ from ...models import ResponseError
 class CreateBackfill(Operation):
     """Create a backfill ticket (CreateBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]
-
-    Required Scope: social
-
-    Create backfill ticket
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]
-
-    Required Scope(s):
-        - social
+    Create backfill ticket.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill

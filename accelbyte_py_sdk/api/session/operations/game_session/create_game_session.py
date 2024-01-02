@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class CreateGameSession(Operation):
-    """Create a game session. Requires NAMESPACE:{namespace}:SESSION:GAME [CREATE] (createGameSession)
+    """Create a game session. (createGameSession)
 
     Create a game session.
     Session configuration name is mandatory, this API will refer following values from the session template if they're not provided in the request:

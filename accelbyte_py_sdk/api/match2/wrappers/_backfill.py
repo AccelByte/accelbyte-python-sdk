@@ -56,17 +56,7 @@ def accept_backfill(
 ):
     """Accept a backfill proposal (AcceptBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
-
-    Required Scope: social
-
-    Accept backfill proposal
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
-
-    Required Scope(s):
-        - social
+    Accept backfill proposal.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept
@@ -122,17 +112,7 @@ async def accept_backfill_async(
 ):
     """Accept a backfill proposal (AcceptBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
-
-    Required Scope: social
-
-    Accept backfill proposal
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
-
-    Required Scope(s):
-        - social
+    Accept backfill proposal.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept
@@ -189,17 +169,7 @@ def create_backfill(
 ):
     """Create a backfill ticket (CreateBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]
-
-    Required Scope: social
-
-    Create backfill ticket
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]
-
-    Required Scope(s):
-        - social
+    Create backfill ticket.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill
@@ -253,17 +223,7 @@ async def create_backfill_async(
 ):
     """Create a backfill ticket (CreateBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]
-
-    Required Scope: social
-
-    Create backfill ticket
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [CREATE]
-
-    Required Scope(s):
-        - social
+    Create backfill ticket.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill
@@ -319,17 +279,7 @@ def delete_backfill(
 ):
     """Delete a backfill ticket (DeleteBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [DELETE]
-
-    Required Scope: social
-
-    Delete backfill ticket
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [DELETE]
-
-    Required Scope(s):
-        - social
+    Delete backfill ticket.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}
@@ -379,17 +329,7 @@ async def delete_backfill_async(
 ):
     """Delete a backfill ticket (DeleteBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [DELETE]
-
-    Required Scope: social
-
-    Delete backfill ticket
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [DELETE]
-
-    Required Scope(s):
-        - social
+    Delete backfill ticket.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}
@@ -441,17 +381,7 @@ def get_backfill(
 ):
     """Get a backfill ticket (GetBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [GET]
-
-    Required Scope: social
-
     Get backfill ticket by ID
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}
@@ -503,17 +433,7 @@ async def get_backfill_async(
 ):
     """Get a backfill ticket (GetBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [GET]
-
-    Required Scope: social
-
     Get backfill ticket by ID
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}
@@ -567,17 +487,7 @@ def get_backfill_proposal(
 ):
     """Get backfill proposal (GetBackfillProposal)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [GET]
-
-    Required Scope: social
-
     Get backfill proposal
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/proposal
@@ -629,17 +539,7 @@ async def get_backfill_proposal_async(
 ):
     """Get backfill proposal (GetBackfillProposal)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [GET]
-
-    Required Scope: social
-
     Get backfill proposal
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/proposal
@@ -694,17 +594,7 @@ def reject_backfill(
 ):
     """Reject a backfill proposal (RejectBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
-
-    Required Scope: social
-
     Reject backfill proposal
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/reject
@@ -760,17 +650,7 @@ async def reject_backfill_async(
 ):
     """Reject a backfill proposal (RejectBackfill)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
-
-    Required Scope: social
-
     Reject backfill proposal
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:BACKFILL [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/reject

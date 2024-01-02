@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.42.0)
+# AGS Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -75,4 +75,4 @@ def public_get_user_entitlement_by_sku(
 
 
 public_get_user_entitlement_by_sku.operation_id = "publicGetUserEntitlementBySku"
-public_get_user_entitlement_by_sku.is_deprecated = False
+public_get_user_entitlement_by_sku.is_deprecated = True

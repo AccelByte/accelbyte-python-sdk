@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (3.12.3)
+# justice-session-service (3.13.0)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
@@ -44,6 +44,7 @@ from ._admin_query_game_sessions_by_attributes import (
 from ._admin_delete_bulk_game_sessions import admin_delete_bulk_game_sessions
 from ._admin_set_ds_ready import admin_set_ds_ready
 from ._admin_update_game_session_member import admin_update_game_session_member
+from ._admin_get_list_native_session import admin_get_list_native_session
 from ._admin_query_parties import admin_query_parties
 from ._admin_get_platform_credentials import admin_get_platform_credentials
 from ._admin_update_platform_credentials import admin_update_platform_credentials
@@ -130,6 +131,7 @@ commands = [
     admin_delete_bulk_game_sessions,
     admin_set_ds_ready,
     admin_update_game_session_member,
+    admin_get_list_native_session,
     admin_query_parties,
     admin_get_platform_credentials,
     admin_update_platform_credentials,

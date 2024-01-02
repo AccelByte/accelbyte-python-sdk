@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseError
 
 
 class HandleUploadXboxPFXCertificate(Operation):
-    """Upload certificates for xbox. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CERTIFICATES [UPDATE] (HandleUploadXboxPFXCertificate)
+    """Upload certificates for xbox. (HandleUploadXboxPFXCertificate)
 
     Upload certificates for xbox. Certificate must be in the valid form of PFX format.
 

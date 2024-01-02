@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,6 +42,35 @@ class ClazzEnum(StrEnum):
     SUBSCRIPTION = "SUBSCRIPTION"
 
 
+class StatusEnum(StrEnum):
+    ACTIVE = "ACTIVE"
+    CONSUMED = "CONSUMED"
+    INACTIVE = "INACTIVE"
+    REVOKED = "REVOKED"
+    SOLD = "SOLD"
+
+
+class AppTypeEnum(StrEnum):
+    DEMO = "DEMO"
+    DLC = "DLC"
+    GAME = "GAME"
+    SOFTWARE = "SOFTWARE"
+
+
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
+
+
 class SourceEnum(StrEnum):
     ACHIEVEMENT = "ACHIEVEMENT"
     GIFT = "GIFT"
@@ -54,24 +83,9 @@ class SourceEnum(StrEnum):
     REWARD = "REWARD"
 
 
-class StatusEnum(StrEnum):
-    ACTIVE = "ACTIVE"
-    CONSUMED = "CONSUMED"
-    INACTIVE = "INACTIVE"
-    REVOKED = "REVOKED"
-    SOLD = "SOLD"
-
-
 class TypeEnum(StrEnum):
     CONSUMABLE = "CONSUMABLE"
     DURABLE = "DURABLE"
-
-
-class AppTypeEnum(StrEnum):
-    DEMO = "DEMO"
-    DLC = "DLC"
-    GAME = "GAME"
-    SOFTWARE = "SOFTWARE"
 
 
 class EntitlementDecrementResult(Model):
@@ -82,27 +96,17 @@ class EntitlementDecrementResult(Model):
 
         created_at: (createdAt) REQUIRED str
 
-        granted_at: (grantedAt) REQUIRED str
-
         id_: (id) REQUIRED str
 
         item_id: (itemId) REQUIRED str
 
         item_namespace: (itemNamespace) REQUIRED str
 
-        name: (name) REQUIRED str
-
         namespace: (namespace) REQUIRED str
-
-        source: (source) REQUIRED Union[str, SourceEnum]
 
         status: (status) REQUIRED Union[str, StatusEnum]
 
-        type_: (type) REQUIRED Union[str, TypeEnum]
-
         updated_at: (updatedAt) REQUIRED str
-
-        user_id: (userId) REQUIRED str
 
         app_id: (appId) OPTIONAL str
 
@@ -112,9 +116,17 @@ class EntitlementDecrementResult(Model):
 
         features: (features) OPTIONAL List[str]
 
+        granted_at: (grantedAt) OPTIONAL str
+
         granted_code: (grantedCode) OPTIONAL str
 
         item_snapshot: (itemSnapshot) OPTIONAL ItemSnapshot
+
+        name: (name) OPTIONAL str
+
+        no_origin: (noOrigin) OPTIONAL bool
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum]
 
         replayed: (replayed) OPTIONAL bool
 
@@ -124,44 +136,52 @@ class EntitlementDecrementResult(Model):
 
         sku: (sku) OPTIONAL str
 
+        source: (source) OPTIONAL Union[str, SourceEnum]
+
         stackable: (stackable) OPTIONAL bool
 
         start_date: (startDate) OPTIONAL str
 
         store_id: (storeId) OPTIONAL str
 
+        type_: (type) OPTIONAL Union[str, TypeEnum]
+
         use_count: (useCount) OPTIONAL int
+
+        user_id: (userId) OPTIONAL str
     """
 
     # region fields
 
     clazz: Union[str, ClazzEnum]  # REQUIRED
     created_at: str  # REQUIRED
-    granted_at: str  # REQUIRED
     id_: str  # REQUIRED
     item_id: str  # REQUIRED
     item_namespace: str  # REQUIRED
-    name: str  # REQUIRED
     namespace: str  # REQUIRED
-    source: Union[str, SourceEnum]  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
-    type_: Union[str, TypeEnum]  # REQUIRED
     updated_at: str  # REQUIRED
-    user_id: str  # REQUIRED
     app_id: str  # OPTIONAL
     app_type: Union[str, AppTypeEnum]  # OPTIONAL
     end_date: str  # OPTIONAL
     features: List[str]  # OPTIONAL
+    granted_at: str  # OPTIONAL
     granted_code: str  # OPTIONAL
     item_snapshot: ItemSnapshot  # OPTIONAL
+    name: str  # OPTIONAL
+    no_origin: bool  # OPTIONAL
+    origin: Union[str, OriginEnum]  # OPTIONAL
     replayed: bool  # OPTIONAL
     request_id: str  # OPTIONAL
     rewards: List[EntitlementLootBoxReward]  # OPTIONAL
     sku: str  # OPTIONAL
+    source: Union[str, SourceEnum]  # OPTIONAL
     stackable: bool  # OPTIONAL
     start_date: str  # OPTIONAL
     store_id: str  # OPTIONAL
+    type_: Union[str, TypeEnum]  # OPTIONAL
     use_count: int  # OPTIONAL
+    user_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -173,10 +193,6 @@ class EntitlementDecrementResult(Model):
 
     def with_created_at(self, value: str) -> EntitlementDecrementResult:
         self.created_at = value
-        return self
-
-    def with_granted_at(self, value: str) -> EntitlementDecrementResult:
-        self.granted_at = value
         return self
 
     def with_id(self, value: str) -> EntitlementDecrementResult:
@@ -191,32 +207,16 @@ class EntitlementDecrementResult(Model):
         self.item_namespace = value
         return self
 
-    def with_name(self, value: str) -> EntitlementDecrementResult:
-        self.name = value
-        return self
-
     def with_namespace(self, value: str) -> EntitlementDecrementResult:
         self.namespace = value
-        return self
-
-    def with_source(self, value: Union[str, SourceEnum]) -> EntitlementDecrementResult:
-        self.source = value
         return self
 
     def with_status(self, value: Union[str, StatusEnum]) -> EntitlementDecrementResult:
         self.status = value
         return self
 
-    def with_type(self, value: Union[str, TypeEnum]) -> EntitlementDecrementResult:
-        self.type_ = value
-        return self
-
     def with_updated_at(self, value: str) -> EntitlementDecrementResult:
         self.updated_at = value
-        return self
-
-    def with_user_id(self, value: str) -> EntitlementDecrementResult:
-        self.user_id = value
         return self
 
     def with_app_id(self, value: str) -> EntitlementDecrementResult:
@@ -237,12 +237,28 @@ class EntitlementDecrementResult(Model):
         self.features = value
         return self
 
+    def with_granted_at(self, value: str) -> EntitlementDecrementResult:
+        self.granted_at = value
+        return self
+
     def with_granted_code(self, value: str) -> EntitlementDecrementResult:
         self.granted_code = value
         return self
 
     def with_item_snapshot(self, value: ItemSnapshot) -> EntitlementDecrementResult:
         self.item_snapshot = value
+        return self
+
+    def with_name(self, value: str) -> EntitlementDecrementResult:
+        self.name = value
+        return self
+
+    def with_no_origin(self, value: bool) -> EntitlementDecrementResult:
+        self.no_origin = value
+        return self
+
+    def with_origin(self, value: Union[str, OriginEnum]) -> EntitlementDecrementResult:
+        self.origin = value
         return self
 
     def with_replayed(self, value: bool) -> EntitlementDecrementResult:
@@ -263,6 +279,10 @@ class EntitlementDecrementResult(Model):
         self.sku = value
         return self
 
+    def with_source(self, value: Union[str, SourceEnum]) -> EntitlementDecrementResult:
+        self.source = value
+        return self
+
     def with_stackable(self, value: bool) -> EntitlementDecrementResult:
         self.stackable = value
         return self
@@ -275,8 +295,16 @@ class EntitlementDecrementResult(Model):
         self.store_id = value
         return self
 
+    def with_type(self, value: Union[str, TypeEnum]) -> EntitlementDecrementResult:
+        self.type_ = value
+        return self
+
     def with_use_count(self, value: int) -> EntitlementDecrementResult:
         self.use_count = value
+        return self
+
+    def with_user_id(self, value: str) -> EntitlementDecrementResult:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -293,10 +321,6 @@ class EntitlementDecrementResult(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
-        if hasattr(self, "granted_at"):
-            result["grantedAt"] = str(self.granted_at)
-        elif include_empty:
-            result["grantedAt"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -309,34 +333,18 @@ class EntitlementDecrementResult(Model):
             result["itemNamespace"] = str(self.item_namespace)
         elif include_empty:
             result["itemNamespace"] = ""
-        if hasattr(self, "name"):
-            result["name"] = str(self.name)
-        elif include_empty:
-            result["name"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "source"):
-            result["source"] = str(self.source)
-        elif include_empty:
-            result["source"] = Union[str, SourceEnum]()
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = Union[str, StatusEnum]()
-        if hasattr(self, "type_"):
-            result["type"] = str(self.type_)
-        elif include_empty:
-            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
         if hasattr(self, "app_id"):
             result["appId"] = str(self.app_id)
         elif include_empty:
@@ -353,6 +361,10 @@ class EntitlementDecrementResult(Model):
             result["features"] = [str(i0) for i0 in self.features]
         elif include_empty:
             result["features"] = []
+        if hasattr(self, "granted_at"):
+            result["grantedAt"] = str(self.granted_at)
+        elif include_empty:
+            result["grantedAt"] = ""
         if hasattr(self, "granted_code"):
             result["grantedCode"] = str(self.granted_code)
         elif include_empty:
@@ -363,6 +375,18 @@ class EntitlementDecrementResult(Model):
             )
         elif include_empty:
             result["itemSnapshot"] = ItemSnapshot()
+        if hasattr(self, "name"):
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = ""
+        if hasattr(self, "no_origin"):
+            result["noOrigin"] = bool(self.no_origin)
+        elif include_empty:
+            result["noOrigin"] = False
+        if hasattr(self, "origin"):
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         if hasattr(self, "replayed"):
             result["replayed"] = bool(self.replayed)
         elif include_empty:
@@ -381,6 +405,10 @@ class EntitlementDecrementResult(Model):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = ""
+        if hasattr(self, "source"):
+            result["source"] = str(self.source)
+        elif include_empty:
+            result["source"] = Union[str, SourceEnum]()
         if hasattr(self, "stackable"):
             result["stackable"] = bool(self.stackable)
         elif include_empty:
@@ -393,10 +421,18 @@ class EntitlementDecrementResult(Model):
             result["storeId"] = str(self.store_id)
         elif include_empty:
             result["storeId"] = ""
+        if hasattr(self, "type_"):
+            result["type"] = str(self.type_)
+        elif include_empty:
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
             result["useCount"] = 0
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -408,47 +444,44 @@ class EntitlementDecrementResult(Model):
         cls,
         clazz: Union[str, ClazzEnum],
         created_at: str,
-        granted_at: str,
         id_: str,
         item_id: str,
         item_namespace: str,
-        name: str,
         namespace: str,
-        source: Union[str, SourceEnum],
         status: Union[str, StatusEnum],
-        type_: Union[str, TypeEnum],
         updated_at: str,
-        user_id: str,
         app_id: Optional[str] = None,
         app_type: Optional[Union[str, AppTypeEnum]] = None,
         end_date: Optional[str] = None,
         features: Optional[List[str]] = None,
+        granted_at: Optional[str] = None,
         granted_code: Optional[str] = None,
         item_snapshot: Optional[ItemSnapshot] = None,
+        name: Optional[str] = None,
+        no_origin: Optional[bool] = None,
+        origin: Optional[Union[str, OriginEnum]] = None,
         replayed: Optional[bool] = None,
         request_id: Optional[str] = None,
         rewards: Optional[List[EntitlementLootBoxReward]] = None,
         sku: Optional[str] = None,
+        source: Optional[Union[str, SourceEnum]] = None,
         stackable: Optional[bool] = None,
         start_date: Optional[str] = None,
         store_id: Optional[str] = None,
+        type_: Optional[Union[str, TypeEnum]] = None,
         use_count: Optional[int] = None,
+        user_id: Optional[str] = None,
         **kwargs,
     ) -> EntitlementDecrementResult:
         instance = cls()
         instance.clazz = clazz
         instance.created_at = created_at
-        instance.granted_at = granted_at
         instance.id_ = id_
         instance.item_id = item_id
         instance.item_namespace = item_namespace
-        instance.name = name
         instance.namespace = namespace
-        instance.source = source
         instance.status = status
-        instance.type_ = type_
         instance.updated_at = updated_at
-        instance.user_id = user_id
         if app_id is not None:
             instance.app_id = app_id
         if app_type is not None:
@@ -457,10 +490,18 @@ class EntitlementDecrementResult(Model):
             instance.end_date = end_date
         if features is not None:
             instance.features = features
+        if granted_at is not None:
+            instance.granted_at = granted_at
         if granted_code is not None:
             instance.granted_code = granted_code
         if item_snapshot is not None:
             instance.item_snapshot = item_snapshot
+        if name is not None:
+            instance.name = name
+        if no_origin is not None:
+            instance.no_origin = no_origin
+        if origin is not None:
+            instance.origin = origin
         if replayed is not None:
             instance.replayed = replayed
         if request_id is not None:
@@ -469,14 +510,20 @@ class EntitlementDecrementResult(Model):
             instance.rewards = rewards
         if sku is not None:
             instance.sku = sku
+        if source is not None:
+            instance.source = source
         if stackable is not None:
             instance.stackable = stackable
         if start_date is not None:
             instance.start_date = start_date
         if store_id is not None:
             instance.store_id = store_id
+        if type_ is not None:
+            instance.type_ = type_
         if use_count is not None:
             instance.use_count = use_count
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -494,10 +541,6 @@ class EntitlementDecrementResult(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
-        if "grantedAt" in dict_ and dict_["grantedAt"] is not None:
-            instance.granted_at = str(dict_["grantedAt"])
-        elif include_empty:
-            instance.granted_at = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -510,34 +553,18 @@ class EntitlementDecrementResult(Model):
             instance.item_namespace = str(dict_["itemNamespace"])
         elif include_empty:
             instance.item_namespace = ""
-        if "name" in dict_ and dict_["name"] is not None:
-            instance.name = str(dict_["name"])
-        elif include_empty:
-            instance.name = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "source" in dict_ and dict_["source"] is not None:
-            instance.source = str(dict_["source"])
-        elif include_empty:
-            instance.source = Union[str, SourceEnum]()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = Union[str, StatusEnum]()
-        if "type" in dict_ and dict_["type"] is not None:
-            instance.type_ = str(dict_["type"])
-        elif include_empty:
-            instance.type_ = Union[str, TypeEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
         if "appId" in dict_ and dict_["appId"] is not None:
             instance.app_id = str(dict_["appId"])
         elif include_empty:
@@ -554,6 +581,10 @@ class EntitlementDecrementResult(Model):
             instance.features = [str(i0) for i0 in dict_["features"]]
         elif include_empty:
             instance.features = []
+        if "grantedAt" in dict_ and dict_["grantedAt"] is not None:
+            instance.granted_at = str(dict_["grantedAt"])
+        elif include_empty:
+            instance.granted_at = ""
         if "grantedCode" in dict_ and dict_["grantedCode"] is not None:
             instance.granted_code = str(dict_["grantedCode"])
         elif include_empty:
@@ -564,6 +595,18 @@ class EntitlementDecrementResult(Model):
             )
         elif include_empty:
             instance.item_snapshot = ItemSnapshot()
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = ""
+        if "noOrigin" in dict_ and dict_["noOrigin"] is not None:
+            instance.no_origin = bool(dict_["noOrigin"])
+        elif include_empty:
+            instance.no_origin = False
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         if "replayed" in dict_ and dict_["replayed"] is not None:
             instance.replayed = bool(dict_["replayed"])
         elif include_empty:
@@ -585,6 +628,10 @@ class EntitlementDecrementResult(Model):
             instance.sku = str(dict_["sku"])
         elif include_empty:
             instance.sku = ""
+        if "source" in dict_ and dict_["source"] is not None:
+            instance.source = str(dict_["source"])
+        elif include_empty:
+            instance.source = Union[str, SourceEnum]()
         if "stackable" in dict_ and dict_["stackable"] is not None:
             instance.stackable = bool(dict_["stackable"])
         elif include_empty:
@@ -597,10 +644,18 @@ class EntitlementDecrementResult(Model):
             instance.store_id = str(dict_["storeId"])
         elif include_empty:
             instance.store_id = ""
+        if "type" in dict_ and dict_["type"] is not None:
+            instance.type_ = str(dict_["type"])
+        elif include_empty:
+            instance.type_ = Union[str, TypeEnum]()
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
             instance.use_count = 0
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @classmethod
@@ -646,31 +701,33 @@ class EntitlementDecrementResult(Model):
         return {
             "clazz": "clazz",
             "createdAt": "created_at",
-            "grantedAt": "granted_at",
             "id": "id_",
             "itemId": "item_id",
             "itemNamespace": "item_namespace",
-            "name": "name",
             "namespace": "namespace",
-            "source": "source",
             "status": "status",
-            "type": "type_",
             "updatedAt": "updated_at",
-            "userId": "user_id",
             "appId": "app_id",
             "appType": "app_type",
             "endDate": "end_date",
             "features": "features",
+            "grantedAt": "granted_at",
             "grantedCode": "granted_code",
             "itemSnapshot": "item_snapshot",
+            "name": "name",
+            "noOrigin": "no_origin",
+            "origin": "origin",
             "replayed": "replayed",
             "requestId": "request_id",
             "rewards": "rewards",
             "sku": "sku",
+            "source": "source",
             "stackable": "stackable",
             "startDate": "start_date",
             "storeId": "store_id",
+            "type": "type_",
             "useCount": "use_count",
+            "userId": "user_id",
         }
 
     @staticmethod
@@ -678,31 +735,33 @@ class EntitlementDecrementResult(Model):
         return {
             "clazz": True,
             "createdAt": True,
-            "grantedAt": True,
             "id": True,
             "itemId": True,
             "itemNamespace": True,
-            "name": True,
             "namespace": True,
-            "source": True,
             "status": True,
-            "type": True,
             "updatedAt": True,
-            "userId": True,
             "appId": False,
             "appType": False,
             "endDate": False,
             "features": False,
+            "grantedAt": False,
             "grantedCode": False,
             "itemSnapshot": False,
+            "name": False,
+            "noOrigin": False,
+            "origin": False,
             "replayed": False,
             "requestId": False,
             "rewards": False,
             "sku": False,
+            "source": False,
             "stackable": False,
             "startDate": False,
             "storeId": False,
+            "type": False,
             "useCount": False,
+            "userId": False,
         }
 
     @staticmethod
@@ -717,6 +776,21 @@ class EntitlementDecrementResult(Model):
                 "OPTIONBOX",
                 "SUBSCRIPTION",
             ],
+            "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED", "SOLD"],
+            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
             "source": [
                 "ACHIEVEMENT",
                 "GIFT",
@@ -728,9 +802,7 @@ class EntitlementDecrementResult(Model):
                 "REFERRAL_BONUS",
                 "REWARD",
             ],
-            "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED", "SOLD"],
             "type": ["CONSUMABLE", "DURABLE"],
-            "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
         }
 
     # endregion static methods

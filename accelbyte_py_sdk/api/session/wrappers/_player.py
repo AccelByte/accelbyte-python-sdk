@@ -50,7 +50,7 @@ def admin_get_player_attributes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get player attributes. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLAYER:{userId} [READ] (adminGetPlayerAttributes)
+    """Get player attributes. (adminGetPlayerAttributes)
 
     Admin get attributes of a player.
 
@@ -111,7 +111,7 @@ async def admin_get_player_attributes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get player attributes. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLAYER:{userId} [READ] (adminGetPlayerAttributes)
+    """Get player attributes. (adminGetPlayerAttributes)
 
     Admin get attributes of a player.
 
@@ -174,7 +174,7 @@ def admin_query_player_attributes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query player attributes. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLAYER:{userId} [READ] (adminQueryPlayerAttributes)
+    """Query player attributes. (adminQueryPlayerAttributes)
 
     Admin get attributes of players.
 
@@ -235,7 +235,7 @@ async def admin_query_player_attributes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query player attributes. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLAYER:{userId} [READ] (adminQueryPlayerAttributes)
+    """Query player attributes. (adminQueryPlayerAttributes)
 
     Admin get attributes of players.
 
@@ -297,7 +297,7 @@ def public_delete_player_attributes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Remove player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [DELETE] (publicDeletePlayerAttributes)
+    """Remove player attributes. (publicDeletePlayerAttributes)
 
     Reset player attributes.
 
@@ -343,7 +343,7 @@ async def public_delete_player_attributes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Remove player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [DELETE] (publicDeletePlayerAttributes)
+    """Remove player attributes. (publicDeletePlayerAttributes)
 
     Reset player attributes.
 
@@ -392,7 +392,7 @@ def public_get_bulk_player_current_platform(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get player current platform in bulk. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetBulkPlayerCurrentPlatform)
+    """Get player current platform in bulk. (publicGetBulkPlayerCurrentPlatform)
 
     Get bulk players current platform.
 
@@ -442,7 +442,7 @@ async def public_get_bulk_player_current_platform_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get player current platform in bulk. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetBulkPlayerCurrentPlatform)
+    """Get player current platform in bulk. (publicGetBulkPlayerCurrentPlatform)
 
     Get bulk players current platform.
 
@@ -493,7 +493,7 @@ def public_get_player_attributes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetPlayerAttributes)
+    """Get player attributes. (publicGetPlayerAttributes)
 
     Get player attributes.
 
@@ -550,7 +550,7 @@ async def public_get_player_attributes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetPlayerAttributes)
+    """Get player attributes. (publicGetPlayerAttributes)
 
     Get player attributes.
 
@@ -610,7 +610,7 @@ def public_store_player_attributes(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Store player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [CREATE] (publicStorePlayerAttributes)
+    """Store player attributes. (publicStorePlayerAttributes)
 
     This API behaves to upsert player's attributes.
 
@@ -669,7 +669,7 @@ async def public_store_player_attributes_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Store player attributes. Requires NAMESPACE:{namespace}:SESSION:PLAYER [CREATE] (publicStorePlayerAttributes)
+    """Store player attributes. (publicStorePlayerAttributes)
 
     This API behaves to upsert player's attributes.
 

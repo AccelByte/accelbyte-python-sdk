@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -77,6 +77,8 @@ class GetUserEntitlementByItemId(Operation):
 
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
+        platform: (platform) OPTIONAL str in query
+
         item_id: (itemId) REQUIRED str in query
 
     Responses:
@@ -100,6 +102,7 @@ class GetUserEntitlementByItemId(Operation):
     user_id: str  # REQUIRED in [path]
     active_only: bool  # OPTIONAL in [query]
     entitlement_clazz: Union[str, EntitlementClazzEnum]  # OPTIONAL in [query]
+    platform: str  # OPTIONAL in [query]
     item_id: str  # REQUIRED in [query]
 
     # endregion fields
@@ -158,6 +161,8 @@ class GetUserEntitlementByItemId(Operation):
             result["activeOnly"] = self.active_only
         if hasattr(self, "entitlement_clazz"):
             result["entitlementClazz"] = self.entitlement_clazz
+        if hasattr(self, "platform"):
+            result["platform"] = self.platform
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
         return result
@@ -188,6 +193,10 @@ class GetUserEntitlementByItemId(Operation):
         self.entitlement_clazz = value
         return self
 
+    def with_platform(self, value: str) -> GetUserEntitlementByItemId:
+        self.platform = value
+        return self
+
     def with_item_id(self, value: str) -> GetUserEntitlementByItemId:
         self.item_id = value
         return self
@@ -214,6 +223,10 @@ class GetUserEntitlementByItemId(Operation):
             result["entitlementClazz"] = str(self.entitlement_clazz)
         elif include_empty:
             result["entitlementClazz"] = Union[str, EntitlementClazzEnum]()
+        if hasattr(self, "platform") and self.platform:
+            result["platform"] = str(self.platform)
+        elif include_empty:
+            result["platform"] = ""
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -268,6 +281,7 @@ class GetUserEntitlementByItemId(Operation):
         item_id: str,
         active_only: Optional[bool] = None,
         entitlement_clazz: Optional[Union[str, EntitlementClazzEnum]] = None,
+        platform: Optional[str] = None,
         **kwargs,
     ) -> GetUserEntitlementByItemId:
         instance = cls()
@@ -278,6 +292,8 @@ class GetUserEntitlementByItemId(Operation):
             instance.active_only = active_only
         if entitlement_clazz is not None:
             instance.entitlement_clazz = entitlement_clazz
+        if platform is not None:
+            instance.platform = platform
         return instance
 
     @classmethod
@@ -301,6 +317,10 @@ class GetUserEntitlementByItemId(Operation):
             instance.entitlement_clazz = str(dict_["entitlementClazz"])
         elif include_empty:
             instance.entitlement_clazz = Union[str, EntitlementClazzEnum]()
+        if "platform" in dict_ and dict_["platform"] is not None:
+            instance.platform = str(dict_["platform"])
+        elif include_empty:
+            instance.platform = ""
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -314,6 +334,7 @@ class GetUserEntitlementByItemId(Operation):
             "userId": "user_id",
             "activeOnly": "active_only",
             "entitlementClazz": "entitlement_clazz",
+            "platform": "platform",
             "itemId": "item_id",
         }
 
@@ -324,6 +345,7 @@ class GetUserEntitlementByItemId(Operation):
             "userId": True,
             "activeOnly": False,
             "entitlementClazz": False,
+            "platform": False,
             "itemId": True,
         }
 

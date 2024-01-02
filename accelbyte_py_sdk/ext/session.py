@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -42,6 +42,7 @@ from ..api.session.models import ApimodelsGameSessionResponse
 from ..api.session.models import ApimodelsGlobalConfigurationResponse
 from ..api.session.models import ApimodelsJoinByCodeRequest
 from ..api.session.models import ApimodelsKickResponse
+from ..api.session.models import ApimodelsNativeSessionPagingResponse
 from ..api.session.models import ApimodelsPagination
 from ..api.session.models import ApimodelsPartyQueryResponse
 from ..api.session.models import ApimodelsPartySessionResponse
@@ -66,6 +67,8 @@ from ..api.session.models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..api.session.models import ApimodelsUpdateGameSessionRequest
 from ..api.session.models import ApimodelsUpdatePartyRequest
 from ..api.session.models import ApimodelsUserResponse
+from ..api.session.models import ModelNativeSession
+from ..api.session.models import ModelNativeSessionMember
 from ..api.session.models import ModelsDSMConfigRecord
 from ..api.session.models import ModelsDefaultDSMCConfig
 from ..api.session.models import ModelsGameServer
@@ -78,7 +81,7 @@ from ..api.session.models import ModelsPortConfigurationAMS
 from ..api.session.models import ModelsRecentPlayerQueryResponse
 from ..api.session.models import ModelsRequestReconcileMaxActiveSession
 from ..api.session.models import ModelsTeam
-from ..api.session.models import ModelsUserInfo
+from ..api.session.models import ModelsUserInfoResponse
 from ..api.session.models import ModelsUserPlatformInfo
 from ..api.session.models import ResponseError
 
@@ -339,6 +342,15 @@ def create_apimodels_kick_response_example() -> ApimodelsKickResponse:
     instance.leader_id = randomize()
     instance.members = [create_apimodels_user_response_example()]
     instance.party_id = randomize("uid")
+    return instance
+
+
+def create_apimodels_native_session_paging_response_example() -> (
+    ApimodelsNativeSessionPagingResponse
+):
+    instance = ApimodelsNativeSessionPagingResponse()
+    instance.data = [create_model_native_session_example()]
+    instance.paging = create_apimodels_pagination_example()
     return instance
 
 
@@ -626,6 +638,27 @@ def create_apimodels_user_response_example() -> ApimodelsUserResponse:
     return instance
 
 
+def create_model_native_session_example() -> ModelNativeSession:
+    instance = ModelNativeSession()
+    instance.created_at = randomize("date")
+    instance.deleted_at = randomize("date")
+    instance.id_ = randomize()
+    instance.members = [create_model_native_session_member_example()]
+    instance.namespace = randomize("slug")
+    instance.native_session_platforms = {randomize(): randomize()}
+    instance.persistent = randomize("bool")
+    instance.push_context_id = randomize()
+    return instance
+
+
+def create_model_native_session_member_example() -> ModelNativeSessionMember:
+    instance = ModelNativeSessionMember()
+    instance.platform_id = randomize()
+    instance.platform_user_id = randomize()
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_models_default_dsmc_config_example() -> ModelsDefaultDSMCConfig:
     instance = ModelsDefaultDSMCConfig()
     instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
@@ -728,7 +761,7 @@ def create_models_recent_player_query_response_example() -> (
     ModelsRecentPlayerQueryResponse
 ):
     instance = ModelsRecentPlayerQueryResponse()
-    instance.data = [create_models_user_info_example()]
+    instance.data = [create_models_user_info_response_example()]
     return instance
 
 
@@ -747,8 +780,9 @@ def create_models_team_example() -> ModelsTeam:
     return instance
 
 
-def create_models_user_info_example() -> ModelsUserInfo:
-    instance = ModelsUserInfo()
+def create_models_user_info_response_example() -> ModelsUserInfoResponse:
+    instance = ModelsUserInfoResponse()
+    instance.last_played_time = randomize("date")
     instance.namespace = randomize("slug")
     instance.platform_name = randomize()
     instance.user_id = randomize("uid")

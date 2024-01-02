@@ -39,7 +39,7 @@ from ..operations.dsmc_default_configuration import AdminGetDSMCConfigurationDef
 def admin_get_dsmc_configuration_default(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Get dsmc default configuration . Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetDSMCConfigurationDefault)
+    """Get dsmc default configuration. (adminGetDSMCConfigurationDefault)
 
     Get dsmc default configuration.
 
@@ -77,7 +77,7 @@ def admin_get_dsmc_configuration_default(
 async def admin_get_dsmc_configuration_default_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Get dsmc default configuration . Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetDSMCConfigurationDefault)
+    """Get dsmc default configuration. (adminGetDSMCConfigurationDefault)
 
     Get dsmc default configuration.
 

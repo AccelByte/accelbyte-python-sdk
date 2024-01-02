@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Match Service V2 (2.13.0)
+# AccelByte Gaming Services Match Service V2 (2.14.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,17 +36,7 @@ from ...models import ResponseError
 class RuleSetList(Operation):
     """List existing rule sets (RuleSetList)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
-
-    Required Scope: social
-
     List rule sets.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:RULES [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets

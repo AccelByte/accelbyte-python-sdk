@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.7.0)
+# AccelByte Gaming Services Iam Service (7.8.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -47,7 +47,7 @@ class RevokeUserV3(Operation):
 
         tags: ["OAuth2.0"]
 
-        consumes: ["application/json"]
+        consumes: ["*/*"]
 
         produces: ["application/json"]
 
@@ -73,7 +73,7 @@ class RevokeUserV3(Operation):
 
     _url: str = "/iam/v3/oauth/admin/namespaces/{namespace}/users/{userId}/revoke"
     _method: str = "POST"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = ["*/*"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None

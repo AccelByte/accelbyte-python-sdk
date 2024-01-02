@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.42.0"
+__version__ = "4.43.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,10 +16,16 @@ __email__ = "dev@accelbyte.net"
 
 from .consume_user_entitlement import ConsumeUserEntitlement
 from .disable_user_entitlement import DisableUserEntitlement
+from .enable_entitlement_orig_c90935 import EnableEntitlementOriginFeature
 from .enable_user_entitlement import EnableUserEntitlement
 from .exists_any_user_active__fca16a import ExistsAnyUserActiveEntitlement
 from .exists_any_user_active__9d3175 import ExistsAnyUserActiveEntitlementByItemIds
 from .get_entitlement import GetEntitlement
+from .get_entitlement_config_info import GetEntitlementConfigInfo
+from .get_platform_entitlemen_32e517 import GetPlatformEntitlementConfig
+from .get_platform_entitlemen_32e517 import (
+    PlatformEnum as GetPlatformEntitlementConfigPlatformEnum,
+)
 from .get_user_active_entitle_d52ca8 import GetUserActiveEntitlementsByItemIds
 from .get_user_app_entitlemen_2375db import GetUserAppEntitlementByAppId
 from .get_user_app_entitlemen_282639 import GetUserAppEntitlementOwnershipByAppId
@@ -92,12 +98,14 @@ from .query_entitlements import QueryEntitlements
 from .query_entitlements import (
     AppTypeEnum as QueryEntitlementsAppTypeEnum,
     EntitlementClazzEnum as QueryEntitlementsEntitlementClazzEnum,
+    OriginEnum as QueryEntitlementsOriginEnum,
 )
 from .query_entitlements_1 import QueryEntitlements1
 from .query_user_entitlements import QueryUserEntitlements
 from .query_user_entitlements import (
     AppTypeEnum as QueryUserEntitlementsAppTypeEnum,
     EntitlementClazzEnum as QueryUserEntitlementsEntitlementClazzEnum,
+    OriginEnum as QueryUserEntitlementsOriginEnum,
 )
 from .query_user_entitlements_22cea1 import QueryUserEntitlementsByAppType
 from .query_user_entitlements_22cea1 import (
@@ -110,4 +118,8 @@ from .revoke_user_entitlement import RevokeUserEntitlement
 from .revoke_user_entitlement_491388 import RevokeUserEntitlementByUseCount
 from .revoke_user_entitlements import RevokeUserEntitlements
 from .sell_user_entitlement import SellUserEntitlement
+from .update_platform_entitle_7fbd45 import UpdatePlatformEntitlementConfig
+from .update_platform_entitle_7fbd45 import (
+    PlatformEnum as UpdatePlatformEntitlementConfigPlatformEnum,
+)
 from .update_user_entitlement import UpdateUserEntitlement

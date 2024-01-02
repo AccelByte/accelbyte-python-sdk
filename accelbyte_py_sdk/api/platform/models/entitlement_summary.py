@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,6 +44,20 @@ class TypeEnum(StrEnum):
     DURABLE = "DURABLE"
 
 
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
+
+
 class EntitlementSummary(Model):
     """Entitlement summary (EntitlementSummary)
 
@@ -70,6 +84,10 @@ class EntitlementSummary(Model):
 
         name: (name) OPTIONAL str
 
+        no_origin: (noOrigin) OPTIONAL bool
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum]
+
         stackable: (stackable) OPTIONAL bool
 
         stacked_use_count: (stackedUseCount) OPTIONAL int
@@ -92,6 +110,8 @@ class EntitlementSummary(Model):
     granted_code: str  # OPTIONAL
     item_id: str  # OPTIONAL
     name: str  # OPTIONAL
+    no_origin: bool  # OPTIONAL
+    origin: Union[str, OriginEnum]  # OPTIONAL
     stackable: bool  # OPTIONAL
     stacked_use_count: int  # OPTIONAL
     start_date: str  # OPTIONAL
@@ -143,6 +163,14 @@ class EntitlementSummary(Model):
 
     def with_name(self, value: str) -> EntitlementSummary:
         self.name = value
+        return self
+
+    def with_no_origin(self, value: bool) -> EntitlementSummary:
+        self.no_origin = value
+        return self
+
+    def with_origin(self, value: Union[str, OriginEnum]) -> EntitlementSummary:
+        self.origin = value
         return self
 
     def with_stackable(self, value: bool) -> EntitlementSummary:
@@ -211,6 +239,14 @@ class EntitlementSummary(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "no_origin"):
+            result["noOrigin"] = bool(self.no_origin)
+        elif include_empty:
+            result["noOrigin"] = False
+        if hasattr(self, "origin"):
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         if hasattr(self, "stackable"):
             result["stackable"] = bool(self.stackable)
         elif include_empty:
@@ -247,6 +283,8 @@ class EntitlementSummary(Model):
         granted_code: Optional[str] = None,
         item_id: Optional[str] = None,
         name: Optional[str] = None,
+        no_origin: Optional[bool] = None,
+        origin: Optional[Union[str, OriginEnum]] = None,
         stackable: Optional[bool] = None,
         stacked_use_count: Optional[int] = None,
         start_date: Optional[str] = None,
@@ -269,6 +307,10 @@ class EntitlementSummary(Model):
             instance.item_id = item_id
         if name is not None:
             instance.name = name
+        if no_origin is not None:
+            instance.no_origin = no_origin
+        if origin is not None:
+            instance.origin = origin
         if stackable is not None:
             instance.stackable = stackable
         if stacked_use_count is not None:
@@ -330,6 +372,14 @@ class EntitlementSummary(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "noOrigin" in dict_ and dict_["noOrigin"] is not None:
+            instance.no_origin = bool(dict_["noOrigin"])
+        elif include_empty:
+            instance.no_origin = False
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         if "stackable" in dict_ and dict_["stackable"] is not None:
             instance.stackable = bool(dict_["stackable"])
         elif include_empty:
@@ -398,6 +448,8 @@ class EntitlementSummary(Model):
             "grantedCode": "granted_code",
             "itemId": "item_id",
             "name": "name",
+            "noOrigin": "no_origin",
+            "origin": "origin",
             "stackable": "stackable",
             "stackedUseCount": "stacked_use_count",
             "startDate": "start_date",
@@ -418,6 +470,8 @@ class EntitlementSummary(Model):
             "grantedCode": False,
             "itemId": False,
             "name": False,
+            "noOrigin": False,
+            "origin": False,
             "stackable": False,
             "stackedUseCount": False,
             "startDate": False,
@@ -437,6 +491,19 @@ class EntitlementSummary(Model):
                 "SUBSCRIPTION",
             ],
             "type": ["CONSUMABLE", "DURABLE"],
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
         }
 
     # endregion static methods

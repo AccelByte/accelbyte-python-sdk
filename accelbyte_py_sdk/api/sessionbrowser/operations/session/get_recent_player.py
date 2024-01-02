@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Browser Service (1.17.0)
+# AccelByte Gaming Services Session Browser Service (1.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,17 +36,7 @@ from ...models import ResponseError
 class GetRecentPlayer(Operation):
     """Query recent players with given user id (GetRecentPlayer)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:RECENTPLAYER [READ]
-
-    Required scope: social
-
     Query recent player by user ID
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:RECENTPLAYER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/recentplayer/{userID}

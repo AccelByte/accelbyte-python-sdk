@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,7 +33,7 @@ from ...models import ResponseError
 
 
 class PublicUpdateInsertSessionStorage(Operation):
-    """Update Insert Session Storage User . Requires NAMESPACE:{namespace}:SESSION:STORAGE [CREATE] (publicUpdateInsertSessionStorage)
+    """Update Insert Session Storage User. (publicUpdateInsertSessionStorage)
 
 
     Update Insert Session Storage User. user can only update or insert user session storage data itself.

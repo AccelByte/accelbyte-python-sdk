@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class AdminCreateConfigurationTemplateV1(Operation):
-    """Create configuration template. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [CREATE] (adminCreateConfigurationTemplateV1)
+    """Create configuration template. (adminCreateConfigurationTemplateV1)
 
     Create template configuration to be applied across party and session.
     Session configuration mandatory :
@@ -75,7 +75,6 @@ class AdminCreateConfigurationTemplateV1(Operation):
     - DisableCodeGeneration (optional, default: false): If it is set to true, code will not be generated for party session automatically.
     - DSManualSetReady (optional, default: false): The DS need to call specific end point to flag the DS for game session is ready to accept client connection.
     - EnableSecret (optional, default: false): if configuration template is created with TypeDS and EnableSecret is True, A secret will be created
-    - LeaderElectionGracePeriod this is on second (optional, default:0) this is only use for party session, if value > 0 if leader disconnect will be wait until value reach and leader will be change after reach
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration

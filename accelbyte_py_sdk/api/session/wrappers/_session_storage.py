@@ -45,7 +45,7 @@ def admin_delete_user_session_storage(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete Session Storage. Requires ADMIN:NAMESPACE:{namespace}:SESSION:STORAGE [DELETE] (adminDeleteUserSessionStorage)
+    """Delete Session Storage. (adminDeleteUserSessionStorage)
 
 
     Delete Session Storage.
@@ -96,7 +96,7 @@ async def admin_delete_user_session_storage_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete Session Storage. Requires ADMIN:NAMESPACE:{namespace}:SESSION:STORAGE [DELETE] (adminDeleteUserSessionStorage)
+    """Delete Session Storage. (adminDeleteUserSessionStorage)
 
 
     Delete Session Storage.
@@ -149,7 +149,7 @@ def admin_read_session_storage(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Read Session Storage . Requires ADMIN:NAMESPACE:{namespace}:SESSION:STORAGE [READ] (adminReadSessionStorage)
+    """Read Session Storage. (adminReadSessionStorage)
 
 
     Read Session Storage.
@@ -200,7 +200,7 @@ async def admin_read_session_storage_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Read Session Storage . Requires ADMIN:NAMESPACE:{namespace}:SESSION:STORAGE [READ] (adminReadSessionStorage)
+    """Read Session Storage. (adminReadSessionStorage)
 
 
     Read Session Storage.
@@ -254,7 +254,7 @@ def admin_read_user_session_storage(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Read Session Storage User. Requires ADMIN:NAMESPACE:{namespace}:SESSION:STORAGE [READ] (adminReadUserSessionStorage)
+    """Read Session Storage User. (adminReadUserSessionStorage)
 
 
     Read Session Storage User.
@@ -309,7 +309,7 @@ async def admin_read_user_session_storage_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Read Session Storage User. Requires ADMIN:NAMESPACE:{namespace}:SESSION:STORAGE [READ] (adminReadUserSessionStorage)
+    """Read Session Storage User. (adminReadUserSessionStorage)
 
 
     Read Session Storage User.
@@ -367,7 +367,7 @@ def public_update_insert_session_storage(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Insert Session Storage User . Requires NAMESPACE:{namespace}:SESSION:STORAGE [CREATE] (publicUpdateInsertSessionStorage)
+    """Update Insert Session Storage User. (publicUpdateInsertSessionStorage)
 
 
     Update Insert Session Storage User. user can only update or insert user session storage data itself.
@@ -436,7 +436,7 @@ async def public_update_insert_session_storage_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Insert Session Storage User . Requires NAMESPACE:{namespace}:SESSION:STORAGE [CREATE] (publicUpdateInsertSessionStorage)
+    """Update Insert Session Storage User. (publicUpdateInsertSessionStorage)
 
 
     Update Insert Session Storage User. user can only update or insert user session storage data itself.
@@ -506,7 +506,7 @@ def public_update_insert_session_storage_leader(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Insert Session Storage Leader . Requires NAMESPACE:{namespace}:SESSION:STORAGE [CREATE] (publicUpdateInsertSessionStorageLeader)
+    """Update Insert Session Storage Leader. (publicUpdateInsertSessionStorageLeader)
 
 
     Update Insert Session Storage Leader. only Leader can update or insert user session storage data Leader.
@@ -571,7 +571,7 @@ async def public_update_insert_session_storage_leader_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update Insert Session Storage Leader . Requires NAMESPACE:{namespace}:SESSION:STORAGE [CREATE] (publicUpdateInsertSessionStorageLeader)
+    """Update Insert Session Storage Leader. (publicUpdateInsertSessionStorageLeader)
 
 
     Update Insert Session Storage Leader. only Leader can update or insert user session storage data Leader.

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.19.0"
+__version__ = "2.19.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,7 @@ from .models_admin_content_request_v2 import ModelsAdminContentRequestV2
 from .models_admin_get_content_bulk_request import ModelsAdminGetContentBulkRequest
 from .models_admin_update_content_request import ModelsAdminUpdateContentRequest
 from .models_admin_update_content_request_v2 import ModelsAdminUpdateContentRequestV2
+from .models_approve_staging_content_request import ModelsApproveStagingContentRequest
 from .models_channel_request import ModelsChannelRequest
 from .models_channel_response import ModelsChannelResponse
 from .models_config_response import ModelsConfigResponse
@@ -34,7 +35,13 @@ from .models_content_version_response import ModelsContentVersionResponse
 from .models_create_content_request import ModelsCreateContentRequest
 from .models_create_content_request_s3 import ModelsCreateContentRequestS3
 from .models_create_content_response import ModelsCreateContentResponse
+from .models_create_content_response import (
+    ContentStatusEnum as ModelsCreateContentResponseContentStatusEnum,
+)
 from .models_create_content_response_v2 import ModelsCreateContentResponseV2
+from .models_create_content_response_v2 import (
+    ContentStatusEnum as ModelsCreateContentResponseV2ContentStatusEnum,
+)
 from .models_create_group_request import ModelsCreateGroupRequest
 from .models_create_group_response import ModelsCreateGroupResponse
 from .models_create_screenshot_request import ModelsCreateScreenshotRequest
@@ -83,6 +90,9 @@ from .models_paginated_get_configs_response import ModelsPaginatedGetConfigsResp
 from .models_paginated_get_tag_response import ModelsPaginatedGetTagResponse
 from .models_paginated_get_type_response import ModelsPaginatedGetTypeResponse
 from .models_paginated_group_response import ModelsPaginatedGroupResponse
+from .models_paginated_list_staging_content_response import (
+    ModelsPaginatedListStagingContentResponse,
+)
 from .models_paging_cursor import ModelsPagingCursor
 from .models_payload_url import ModelsPayloadURL
 from .models_preview_metadata import ModelsPreviewMetadata
@@ -91,11 +101,18 @@ from .models_public_channel_request import ModelsPublicChannelRequest
 from .models_public_create_content_request_s3 import ModelsPublicCreateContentRequestS3
 from .models_public_get_content_bulk_request import ModelsPublicGetContentBulkRequest
 from .models_screenshot_response import ModelsScreenshotResponse
+from .models_staging_content_response import ModelsStagingContentResponse
+from .models_staging_content_response import (
+    StatusEnum as ModelsStagingContentResponseStatusEnum,
+)
 from .models_update_channel_request import ModelsUpdateChannelRequest
 from .models_update_config_request import ModelsUpdateConfigRequest
 from .models_update_content_request import ModelsUpdateContentRequest
 from .models_update_content_request_v2 import ModelsUpdateContentRequestV2
 from .models_update_content_response_v2 import ModelsUpdateContentResponseV2
+from .models_update_content_response_v2 import (
+    ContentStatusEnum as ModelsUpdateContentResponseV2ContentStatusEnum,
+)
 from .models_update_content_share_code_request import (
     ModelsUpdateContentShareCodeRequest,
 )
@@ -103,6 +120,7 @@ from .models_update_file_location_request import ModelsUpdateFileLocationRequest
 from .models_update_screenshot import ModelsUpdateScreenshot
 from .models_update_screenshot_request import ModelsUpdateScreenshotRequest
 from .models_update_screenshot_response import ModelsUpdateScreenshotResponse
+from .models_update_staging_content_request import ModelsUpdateStagingContentRequest
 from .models_user_follow_request import ModelsUserFollowRequest
 from .models_user_follow_response import ModelsUserFollowResponse
 from .response_error import ResponseError

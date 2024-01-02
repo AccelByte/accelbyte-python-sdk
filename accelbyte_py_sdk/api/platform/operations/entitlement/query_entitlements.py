@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -48,6 +48,20 @@ class EntitlementClazzEnum(StrEnum):
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SUBSCRIPTION = "SUBSCRIPTION"
+
+
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
 
 
 class QueryEntitlements(Operation):
@@ -92,6 +106,8 @@ class QueryEntitlements(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
+
         user_id: (userId) OPTIONAL str in query
 
     Responses:
@@ -115,6 +131,7 @@ class QueryEntitlements(Operation):
     item_id: List[str]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    origin: Union[str, OriginEnum]  # OPTIONAL in [query]
     user_id: str  # OPTIONAL in [query]
 
     # endregion fields
@@ -181,6 +198,8 @@ class QueryEntitlements(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "origin"):
+            result["origin"] = self.origin
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
         return result
@@ -227,6 +246,10 @@ class QueryEntitlements(Operation):
         self.offset = value
         return self
 
+    def with_origin(self, value: Union[str, OriginEnum]) -> QueryEntitlements:
+        self.origin = value
+        return self
+
     def with_user_id(self, value: str) -> QueryEntitlements:
         self.user_id = value
         return self
@@ -269,6 +292,10 @@ class QueryEntitlements(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "origin") and self.origin:
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -322,6 +349,7 @@ class QueryEntitlements(Operation):
         item_id: Optional[List[str]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        origin: Optional[Union[str, OriginEnum]] = None,
         user_id: Optional[str] = None,
         **kwargs,
     ) -> QueryEntitlements:
@@ -341,6 +369,8 @@ class QueryEntitlements(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if origin is not None:
+            instance.origin = origin
         if user_id is not None:
             instance.user_id = user_id
         return instance
@@ -382,6 +412,10 @@ class QueryEntitlements(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -399,6 +433,7 @@ class QueryEntitlements(Operation):
             "itemId": "item_id",
             "limit": "limit",
             "offset": "offset",
+            "origin": "origin",
             "userId": "user_id",
         }
 
@@ -413,6 +448,7 @@ class QueryEntitlements(Operation):
             "itemId": False,
             "limit": False,
             "offset": False,
+            "origin": False,
             "userId": False,
         }
 
@@ -434,6 +470,19 @@ class QueryEntitlements(Operation):
                 "MEDIA",
                 "OPTIONBOX",
                 "SUBSCRIPTION",
+            ],  # in query
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
             ],  # in query
         }
 

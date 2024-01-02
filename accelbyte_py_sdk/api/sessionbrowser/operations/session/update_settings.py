@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Browser Service (1.17.0)
+# AccelByte Gaming Services Session Browser Service (1.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,17 +37,7 @@ from ...models import RestapiErrorResponseV2
 class UpdateSettings(Operation):
     """Update settings (UpdateSettings)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required scope: social
-
     Update game session, used to update OtherSettings
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/settings

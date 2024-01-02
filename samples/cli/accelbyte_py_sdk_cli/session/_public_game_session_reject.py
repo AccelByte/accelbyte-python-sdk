@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Service (3.12.3)
+# AGS Session Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Browser Service (1.17.0)
+# AccelByte Gaming Services Session Browser Service (1.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,17 +36,7 @@ from ...models import ResponseError
 class DeleteSessionLocalDS(Operation):
     """Only use for local DS entry, will error when calling non local DS entry (DeleteSessionLocalDS)
 
-    Required permission: NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required scope: social
-
     Only use for local DS entry, will error when calling non local DS entry
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/namespaces/{namespace}/gamesession/{sessionID}/localds

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -46,6 +46,20 @@ class AppTypeEnum(StrEnum):
     SOFTWARE = "SOFTWARE"
 
 
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
+
+
 class AppEntitlementInfo(Model):
     """App entitlement info (AppEntitlementInfo)
 
@@ -68,6 +82,10 @@ class AppEntitlementInfo(Model):
 
         item_snapshot: (itemSnapshot) OPTIONAL ItemSnapshot
 
+        no_origin: (noOrigin) OPTIONAL bool
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum]
+
         sku: (sku) OPTIONAL str
 
         start_date: (startDate) OPTIONAL str
@@ -86,6 +104,8 @@ class AppEntitlementInfo(Model):
     end_date: str  # OPTIONAL
     item_id: str  # OPTIONAL
     item_snapshot: ItemSnapshot  # OPTIONAL
+    no_origin: bool  # OPTIONAL
+    origin: Union[str, OriginEnum]  # OPTIONAL
     sku: str  # OPTIONAL
     start_date: str  # OPTIONAL
     store_id: str  # OPTIONAL
@@ -128,6 +148,14 @@ class AppEntitlementInfo(Model):
 
     def with_item_snapshot(self, value: ItemSnapshot) -> AppEntitlementInfo:
         self.item_snapshot = value
+        return self
+
+    def with_no_origin(self, value: bool) -> AppEntitlementInfo:
+        self.no_origin = value
+        return self
+
+    def with_origin(self, value: Union[str, OriginEnum]) -> AppEntitlementInfo:
+        self.origin = value
         return self
 
     def with_sku(self, value: str) -> AppEntitlementInfo:
@@ -186,6 +214,14 @@ class AppEntitlementInfo(Model):
             )
         elif include_empty:
             result["itemSnapshot"] = ItemSnapshot()
+        if hasattr(self, "no_origin"):
+            result["noOrigin"] = bool(self.no_origin)
+        elif include_empty:
+            result["noOrigin"] = False
+        if hasattr(self, "origin"):
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -216,6 +252,8 @@ class AppEntitlementInfo(Model):
         end_date: Optional[str] = None,
         item_id: Optional[str] = None,
         item_snapshot: Optional[ItemSnapshot] = None,
+        no_origin: Optional[bool] = None,
+        origin: Optional[Union[str, OriginEnum]] = None,
         sku: Optional[str] = None,
         start_date: Optional[str] = None,
         store_id: Optional[str] = None,
@@ -236,6 +274,10 @@ class AppEntitlementInfo(Model):
             instance.item_id = item_id
         if item_snapshot is not None:
             instance.item_snapshot = item_snapshot
+        if no_origin is not None:
+            instance.no_origin = no_origin
+        if origin is not None:
+            instance.origin = origin
         if sku is not None:
             instance.sku = sku
         if start_date is not None:
@@ -289,6 +331,14 @@ class AppEntitlementInfo(Model):
             )
         elif include_empty:
             instance.item_snapshot = ItemSnapshot()
+        if "noOrigin" in dict_ and dict_["noOrigin"] is not None:
+            instance.no_origin = bool(dict_["noOrigin"])
+        elif include_empty:
+            instance.no_origin = False
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -351,6 +401,8 @@ class AppEntitlementInfo(Model):
             "endDate": "end_date",
             "itemId": "item_id",
             "itemSnapshot": "item_snapshot",
+            "noOrigin": "no_origin",
+            "origin": "origin",
             "sku": "sku",
             "startDate": "start_date",
             "storeId": "store_id",
@@ -368,6 +420,8 @@ class AppEntitlementInfo(Model):
             "endDate": False,
             "itemId": False,
             "itemSnapshot": False,
+            "noOrigin": False,
+            "origin": False,
             "sku": False,
             "startDate": False,
             "storeId": False,
@@ -378,6 +432,19 @@ class AppEntitlementInfo(Model):
         return {
             "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED", "SOLD"],
             "appType": ["DEMO", "DLC", "GAME", "SOFTWARE"],
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
         }
 
     # endregion static methods

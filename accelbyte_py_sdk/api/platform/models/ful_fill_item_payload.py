@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,20 @@ class ItemIdentityTypeEnum(StrEnum):
     ITEM_SKU = "ITEM_SKU"
 
 
+class EntitlementOriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
+
+
 class FulFillItemPayload(Model):
     """Ful fill item payload (FulFillItemPayload)
 
@@ -43,6 +57,8 @@ class FulFillItemPayload(Model):
         item_identity: (itemIdentity) REQUIRED str
 
         item_identity_type: (itemIdentityType) REQUIRED Union[str, ItemIdentityTypeEnum]
+
+        entitlement_origin: (entitlementOrigin) OPTIONAL Union[str, EntitlementOriginEnum]
     """
 
     # region fields
@@ -50,6 +66,7 @@ class FulFillItemPayload(Model):
     count: int  # REQUIRED
     item_identity: str  # REQUIRED
     item_identity_type: Union[str, ItemIdentityTypeEnum]  # REQUIRED
+    entitlement_origin: Union[str, EntitlementOriginEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -67,6 +84,12 @@ class FulFillItemPayload(Model):
         self, value: Union[str, ItemIdentityTypeEnum]
     ) -> FulFillItemPayload:
         self.item_identity_type = value
+        return self
+
+    def with_entitlement_origin(
+        self, value: Union[str, EntitlementOriginEnum]
+    ) -> FulFillItemPayload:
+        self.entitlement_origin = value
         return self
 
     # endregion with_x methods
@@ -87,6 +110,10 @@ class FulFillItemPayload(Model):
             result["itemIdentityType"] = str(self.item_identity_type)
         elif include_empty:
             result["itemIdentityType"] = Union[str, ItemIdentityTypeEnum]()
+        if hasattr(self, "entitlement_origin"):
+            result["entitlementOrigin"] = str(self.entitlement_origin)
+        elif include_empty:
+            result["entitlementOrigin"] = Union[str, EntitlementOriginEnum]()
         return result
 
     # endregion to methods
@@ -99,12 +126,15 @@ class FulFillItemPayload(Model):
         count: int,
         item_identity: str,
         item_identity_type: Union[str, ItemIdentityTypeEnum],
+        entitlement_origin: Optional[Union[str, EntitlementOriginEnum]] = None,
         **kwargs,
     ) -> FulFillItemPayload:
         instance = cls()
         instance.count = count
         instance.item_identity = item_identity
         instance.item_identity_type = item_identity_type
+        if entitlement_origin is not None:
+            instance.entitlement_origin = entitlement_origin
         return instance
 
     @classmethod
@@ -126,6 +156,10 @@ class FulFillItemPayload(Model):
             instance.item_identity_type = str(dict_["itemIdentityType"])
         elif include_empty:
             instance.item_identity_type = Union[str, ItemIdentityTypeEnum]()
+        if "entitlementOrigin" in dict_ and dict_["entitlementOrigin"] is not None:
+            instance.entitlement_origin = str(dict_["entitlementOrigin"])
+        elif include_empty:
+            instance.entitlement_origin = Union[str, EntitlementOriginEnum]()
         return instance
 
     @classmethod
@@ -170,6 +204,7 @@ class FulFillItemPayload(Model):
             "count": "count",
             "itemIdentity": "item_identity",
             "itemIdentityType": "item_identity_type",
+            "entitlementOrigin": "entitlement_origin",
         }
 
     @staticmethod
@@ -178,12 +213,26 @@ class FulFillItemPayload(Model):
             "count": True,
             "itemIdentity": True,
             "itemIdentityType": True,
+            "entitlementOrigin": False,
         }
 
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "itemIdentityType": ["ITEM_ID", "ITEM_SKU"],
+            "entitlementOrigin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
         }
 
     # endregion static methods

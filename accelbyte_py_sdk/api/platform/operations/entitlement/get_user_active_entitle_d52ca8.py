@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -63,6 +63,8 @@ class GetUserActiveEntitlementsByItemIds(Operation):
 
         ids: (ids) OPTIONAL List[str] in query
 
+        platform: (platform) OPTIONAL str in query
+
     Responses:
         200: OK - List[EntitlementInfo] (successful operation)
     """
@@ -81,6 +83,7 @@ class GetUserActiveEntitlementsByItemIds(Operation):
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
     ids: List[str]  # OPTIONAL in [query]
+    platform: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -136,6 +139,8 @@ class GetUserActiveEntitlementsByItemIds(Operation):
         result = {}
         if hasattr(self, "ids"):
             result["ids"] = self.ids
+        if hasattr(self, "platform"):
+            result["platform"] = self.platform
         return result
 
     # endregion get_x_params methods
@@ -158,6 +163,10 @@ class GetUserActiveEntitlementsByItemIds(Operation):
         self.ids = value
         return self
 
+    def with_platform(self, value: str) -> GetUserActiveEntitlementsByItemIds:
+        self.platform = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -176,6 +185,10 @@ class GetUserActiveEntitlementsByItemIds(Operation):
             result["ids"] = [str(i0) for i0 in self.ids]
         elif include_empty:
             result["ids"] = []
+        if hasattr(self, "platform") and self.platform:
+            result["platform"] = str(self.platform)
+        elif include_empty:
+            result["platform"] = ""
         return result
 
     # endregion to methods
@@ -216,13 +229,20 @@ class GetUserActiveEntitlementsByItemIds(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, user_id: str, ids: Optional[List[str]] = None, **kwargs
+        cls,
+        namespace: str,
+        user_id: str,
+        ids: Optional[List[str]] = None,
+        platform: Optional[str] = None,
+        **kwargs,
     ) -> GetUserActiveEntitlementsByItemIds:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
         if ids is not None:
             instance.ids = ids
+        if platform is not None:
+            instance.platform = platform
         return instance
 
     @classmethod
@@ -242,6 +262,10 @@ class GetUserActiveEntitlementsByItemIds(Operation):
             instance.ids = [str(i0) for i0 in dict_["ids"]]
         elif include_empty:
             instance.ids = []
+        if "platform" in dict_ and dict_["platform"] is not None:
+            instance.platform = str(dict_["platform"])
+        elif include_empty:
+            instance.platform = ""
         return instance
 
     @staticmethod
@@ -250,6 +274,7 @@ class GetUserActiveEntitlementsByItemIds(Operation):
             "namespace": "namespace",
             "userId": "user_id",
             "ids": "ids",
+            "platform": "platform",
         }
 
     @staticmethod
@@ -258,6 +283,7 @@ class GetUserActiveEntitlementsByItemIds(Operation):
             "namespace": True,
             "userId": True,
             "ids": False,
+            "platform": False,
         }
 
     @staticmethod

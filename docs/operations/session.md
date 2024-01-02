@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.12.3)
+# AccelByte Gaming Services Session Service Index (3.13.0)
 
 
 ## Operations
@@ -78,6 +78,11 @@
 | /session/v1/admin/namespaces/{namespace}/configurations/{name}/memberactivesession/{userId} | GET | adminGetMemberActiveSession | `false` | [AdminGetMemberActiveSession](../../accelbyte_py_sdk/api/session/operations/max_active/admin_get_member_active_3765c4.py) | [admin_get_member_active_session](../../accelbyte_py_sdk/api/session/wrappers/_max_active.py) | [accelbyte_py_sdk_cli session-admin-get-member-active-session](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_member_active_session.py) |
 | /session/v1/admin/namespaces/{namespace}/configurations/{name}/reconcile | POST | adminReconcileMaxActiveSession | `false` | [AdminReconcileMaxActiveSession](../../accelbyte_py_sdk/api/session/operations/max_active/admin_reconcile_max_act_4f7653.py) | [admin_reconcile_max_active_session](../../accelbyte_py_sdk/api/session/wrappers/_max_active.py) | [accelbyte_py_sdk_cli session-admin-reconcile-max-active-session](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_reconcile_max_active_session.py) |
 
+### Native Session
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /session/v1/admin/namespaces/{namespace}/native-sessions | GET | adminGetListNativeSession | `false` | [AdminGetListNativeSession](../../accelbyte_py_sdk/api/session/operations/native_session/admin_get_list_native_session.py) | [admin_get_list_native_session](../../accelbyte_py_sdk/api/session/wrappers/_native_session.py) | [accelbyte_py_sdk_cli session-admin-get-list-native-session](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_list_native_session.py) |
+
 ### Operations
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -123,7 +128,7 @@
 ### Recent Player
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /session/v1/public/namespaces/{namespace}/recent-player/{userId} | GET | publicGetRecentPlayer | `false` | [PublicGetRecentPlayer](../../accelbyte_py_sdk/api/session/operations/recent_player/public_get_recent_player.py) | [public_get_recent_player](../../accelbyte_py_sdk/api/session/wrappers/_recent_player.py) | [accelbyte_py_sdk_cli session-public-get-recent-player](../../samples/cli/accelbyte_py_sdk_cli/session/_public_get_recent_player.py) |
+| /session/v1/public/namespaces/{namespace}/recent-player | GET | publicGetRecentPlayer | `false` | [PublicGetRecentPlayer](../../accelbyte_py_sdk/api/session/operations/recent_player/public_get_recent_player.py) | [public_get_recent_player](../../accelbyte_py_sdk/api/session/wrappers/_recent_player.py) | [accelbyte_py_sdk_cli session-public-get-recent-player](../../samples/cli/accelbyte_py_sdk_cli/session/_public_get_recent_player.py) |
 
 ### Session Storage
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -156,6 +161,7 @@
 | apimodels.GlobalConfigurationResponse | [ApimodelsGlobalConfigurationResponse](../../accelbyte_py_sdk/api/session/models/apimodels_global_configuration_response.py) |
 | apimodels.JoinByCodeRequest | [ApimodelsJoinByCodeRequest](../../accelbyte_py_sdk/api/session/models/apimodels_join_by_code_request.py) |
 | apimodels.KickResponse | [ApimodelsKickResponse](../../accelbyte_py_sdk/api/session/models/apimodels_kick_response.py) |
+| apimodels.NativeSessionPagingResponse | [ApimodelsNativeSessionPagingResponse](../../accelbyte_py_sdk/api/session/models/apimodels_native_session_paging_response.py) |
 | apimodels.Pagination | [ApimodelsPagination](../../accelbyte_py_sdk/api/session/models/apimodels_pagination.py) |
 | apimodels.PartyQueryResponse | [ApimodelsPartyQueryResponse](../../accelbyte_py_sdk/api/session/models/apimodels_party_query_response.py) |
 | apimodels.PartySessionResponse | [ApimodelsPartySessionResponse](../../accelbyte_py_sdk/api/session/models/apimodels_party_session_response.py) |
@@ -180,6 +186,8 @@
 | apimodels.UpdateGameSessionRequest | [ApimodelsUpdateGameSessionRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_game_session_request.py) |
 | apimodels.UpdatePartyRequest | [ApimodelsUpdatePartyRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_party_request.py) |
 | apimodels.UserResponse | [ApimodelsUserResponse](../../accelbyte_py_sdk/api/session/models/apimodels_user_response.py) |
+| model.NativeSession | [ModelNativeSession](../../accelbyte_py_sdk/api/session/models/model_native_session.py) |
+| model.NativeSessionMember | [ModelNativeSessionMember](../../accelbyte_py_sdk/api/session/models/model_native_session_member.py) |
 | models.DefaultDSMCConfig | [ModelsDefaultDSMCConfig](../../accelbyte_py_sdk/api/session/models/models_default_dsmc_config.py) |
 | models.DSMConfigRecord | [ModelsDSMConfigRecord](../../accelbyte_py_sdk/api/session/models/models_dsm_config_record.py) |
 | models.GameServer | [ModelsGameServer](../../accelbyte_py_sdk/api/session/models/models_game_server.py) |
@@ -192,6 +200,6 @@
 | models.RecentPlayerQueryResponse | [ModelsRecentPlayerQueryResponse](../../accelbyte_py_sdk/api/session/models/models_recent_player_query_response.py) |
 | models.RequestReconcileMaxActiveSession | [ModelsRequestReconcileMaxActiveSession](../../accelbyte_py_sdk/api/session/models/models_request_reconcile_max_active_session.py) |
 | models.Team | [ModelsTeam](../../accelbyte_py_sdk/api/session/models/models_team.py) |
-| models.UserInfo | [ModelsUserInfo](../../accelbyte_py_sdk/api/session/models/models_user_info.py) |
+| models.UserInfoResponse | [ModelsUserInfoResponse](../../accelbyte_py_sdk/api/session/models/models_user_info_response.py) |
 | models.UserPlatformInfo | [ModelsUserPlatformInfo](../../accelbyte_py_sdk/api/session/models/models_user_platform_info.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/session/models/response_error.py) |

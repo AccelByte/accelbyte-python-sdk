@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -48,6 +48,20 @@ class EntitlementClazzEnum(StrEnum):
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SUBSCRIPTION = "SUBSCRIPTION"
+
+
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
 
 
 class QueryUserEntitlements(Operation):
@@ -90,11 +104,15 @@ class QueryUserEntitlements(Operation):
 
         features: (features) OPTIONAL List[str] in query
 
+        fuzzy_match_name: (fuzzyMatchName) OPTIONAL bool in query
+
         item_id: (itemId) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
 
     Responses:
         200: OK - EntitlementPagingSlicedResult (successful operation)
@@ -116,9 +134,11 @@ class QueryUserEntitlements(Operation):
     entitlement_clazz: Union[str, EntitlementClazzEnum]  # OPTIONAL in [query]
     entitlement_name: str  # OPTIONAL in [query]
     features: List[str]  # OPTIONAL in [query]
+    fuzzy_match_name: bool  # OPTIONAL in [query]
     item_id: List[str]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    origin: Union[str, OriginEnum]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -182,12 +202,16 @@ class QueryUserEntitlements(Operation):
             result["entitlementName"] = self.entitlement_name
         if hasattr(self, "features"):
             result["features"] = self.features
+        if hasattr(self, "fuzzy_match_name"):
+            result["fuzzyMatchName"] = self.fuzzy_match_name
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "origin"):
+            result["origin"] = self.origin
         return result
 
     # endregion get_x_params methods
@@ -228,6 +252,10 @@ class QueryUserEntitlements(Operation):
         self.features = value
         return self
 
+    def with_fuzzy_match_name(self, value: bool) -> QueryUserEntitlements:
+        self.fuzzy_match_name = value
+        return self
+
     def with_item_id(self, value: List[str]) -> QueryUserEntitlements:
         self.item_id = value
         return self
@@ -238,6 +266,10 @@ class QueryUserEntitlements(Operation):
 
     def with_offset(self, value: int) -> QueryUserEntitlements:
         self.offset = value
+        return self
+
+    def with_origin(self, value: Union[str, OriginEnum]) -> QueryUserEntitlements:
+        self.origin = value
         return self
 
     # endregion with_x methods
@@ -274,6 +306,10 @@ class QueryUserEntitlements(Operation):
             result["features"] = [str(i0) for i0 in self.features]
         elif include_empty:
             result["features"] = []
+        if hasattr(self, "fuzzy_match_name") and self.fuzzy_match_name:
+            result["fuzzyMatchName"] = bool(self.fuzzy_match_name)
+        elif include_empty:
+            result["fuzzyMatchName"] = False
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = [str(i0) for i0 in self.item_id]
         elif include_empty:
@@ -286,6 +322,10 @@ class QueryUserEntitlements(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "origin") and self.origin:
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         return result
 
     # endregion to methods
@@ -334,9 +374,11 @@ class QueryUserEntitlements(Operation):
         entitlement_clazz: Optional[Union[str, EntitlementClazzEnum]] = None,
         entitlement_name: Optional[str] = None,
         features: Optional[List[str]] = None,
+        fuzzy_match_name: Optional[bool] = None,
         item_id: Optional[List[str]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        origin: Optional[Union[str, OriginEnum]] = None,
         **kwargs,
     ) -> QueryUserEntitlements:
         instance = cls()
@@ -352,12 +394,16 @@ class QueryUserEntitlements(Operation):
             instance.entitlement_name = entitlement_name
         if features is not None:
             instance.features = features
+        if fuzzy_match_name is not None:
+            instance.fuzzy_match_name = fuzzy_match_name
         if item_id is not None:
             instance.item_id = item_id
         if limit is not None:
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if origin is not None:
+            instance.origin = origin
         return instance
 
     @classmethod
@@ -393,6 +439,10 @@ class QueryUserEntitlements(Operation):
             instance.features = [str(i0) for i0 in dict_["features"]]
         elif include_empty:
             instance.features = []
+        if "fuzzyMatchName" in dict_ and dict_["fuzzyMatchName"] is not None:
+            instance.fuzzy_match_name = bool(dict_["fuzzyMatchName"])
+        elif include_empty:
+            instance.fuzzy_match_name = False
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = [str(i0) for i0 in dict_["itemId"]]
         elif include_empty:
@@ -405,6 +455,10 @@ class QueryUserEntitlements(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         return instance
 
     @staticmethod
@@ -417,9 +471,11 @@ class QueryUserEntitlements(Operation):
             "entitlementClazz": "entitlement_clazz",
             "entitlementName": "entitlement_name",
             "features": "features",
+            "fuzzyMatchName": "fuzzy_match_name",
             "itemId": "item_id",
             "limit": "limit",
             "offset": "offset",
+            "origin": "origin",
         }
 
     @staticmethod
@@ -432,9 +488,11 @@ class QueryUserEntitlements(Operation):
             "entitlementClazz": False,
             "entitlementName": False,
             "features": False,
+            "fuzzyMatchName": False,
             "itemId": False,
             "limit": False,
             "offset": False,
+            "origin": False,
         }
 
     @staticmethod
@@ -456,6 +514,19 @@ class QueryUserEntitlements(Operation):
                 "MEDIA",
                 "OPTIONBOX",
                 "SUBSCRIPTION",
+            ],  # in query
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
             ],  # in query
         }
 

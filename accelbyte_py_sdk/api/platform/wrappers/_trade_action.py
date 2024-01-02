@@ -55,6 +55,7 @@ def commit(
 
       * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=1 (CREATE)
       *  Returns : chain action history
+      *  FULFILL_ITEM operation supported item type : INGAMEITEM,LOOTBOX,OPTIONBOX
 
 
 
@@ -120,6 +121,7 @@ async def commit_async(
 
       * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=1 (CREATE)
       *  Returns : chain action history
+      *  FULFILL_ITEM operation supported item type : INGAMEITEM,LOOTBOX,OPTIONBOX
 
 
 

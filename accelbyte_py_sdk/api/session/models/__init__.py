@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.12.3"
+__version__ = "3.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -50,6 +50,9 @@ from .apimodels_global_configuration_response import (
 )
 from .apimodels_join_by_code_request import ApimodelsJoinByCodeRequest
 from .apimodels_kick_response import ApimodelsKickResponse
+from .apimodels_native_session_paging_response import (
+    ApimodelsNativeSessionPagingResponse,
+)
 from .apimodels_pagination import ApimodelsPagination
 from .apimodels_party_query_response import ApimodelsPartyQueryResponse
 from .apimodels_party_session_response import ApimodelsPartySessionResponse
@@ -94,6 +97,8 @@ from .apimodels_update_game_session_member_status_response import (
 from .apimodels_update_game_session_request import ApimodelsUpdateGameSessionRequest
 from .apimodels_update_party_request import ApimodelsUpdatePartyRequest
 from .apimodels_user_response import ApimodelsUserResponse
+from .model_native_session import ModelNativeSession
+from .model_native_session_member import ModelNativeSessionMember
 from .models_default_dsmc_config import ModelsDefaultDSMCConfig
 from .models_dsm_config_record import ModelsDSMConfigRecord
 from .models_game_server import ModelsGameServer
@@ -108,6 +113,6 @@ from .models_request_reconcile_max_active_session import (
     ModelsRequestReconcileMaxActiveSession,
 )
 from .models_team import ModelsTeam
-from .models_user_info import ModelsUserInfo
+from .models_user_info_response import ModelsUserInfoResponse
 from .models_user_platform_info import ModelsUserPlatformInfo
 from .response_error import ResponseError

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,12 +34,12 @@ from ...models import ResponseError
 
 
 class PublicGetRecentPlayer(Operation):
-    """Query recent player with given user id. Requires NAMESPACE:{namespace}:SESSION:PLAYER [READ] (publicGetRecentPlayer)
+    """Query recent player with given user id. (publicGetRecentPlayer)
 
     Query recent player with given user id.
 
     Properties:
-        url: /session/v1/public/namespaces/{namespace}/recent-player/{userId}
+        url: /session/v1/public/namespaces/{namespace}/recent-player
 
         method: GET
 
@@ -53,9 +53,9 @@ class PublicGetRecentPlayer(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        user_id: (userId) REQUIRED str in path
-
         limit: (limit) OPTIONAL int in query
+
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - ModelsRecentPlayerQueryResponse (OK)
@@ -71,7 +71,7 @@ class PublicGetRecentPlayer(Operation):
 
     # region fields
 
-    _url: str = "/session/v1/public/namespaces/{namespace}/recent-player/{userId}"
+    _url: str = "/session/v1/public/namespaces/{namespace}/recent-player"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
@@ -79,8 +79,8 @@ class PublicGetRecentPlayer(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
-    user_id: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
+    user_id: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -128,14 +128,14 @@ class PublicGetRecentPlayer(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         return result
 
     def get_query_params(self) -> dict:
         result = {}
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "user_id"):
+            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -150,12 +150,12 @@ class PublicGetRecentPlayer(Operation):
         self.namespace = value
         return self
 
-    def with_user_id(self, value: str) -> PublicGetRecentPlayer:
-        self.user_id = value
-        return self
-
     def with_limit(self, value: int) -> PublicGetRecentPlayer:
         self.limit = value
+        return self
+
+    def with_user_id(self, value: str) -> PublicGetRecentPlayer:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -168,14 +168,14 @@ class PublicGetRecentPlayer(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = 0
+        if hasattr(self, "user_id") and self.user_id:
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -235,13 +235,18 @@ class PublicGetRecentPlayer(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, user_id: str, limit: Optional[int] = None, **kwargs
+        cls,
+        namespace: str,
+        limit: Optional[int] = None,
+        user_id: Optional[str] = None,
+        **kwargs,
     ) -> PublicGetRecentPlayer:
         instance = cls()
         instance.namespace = namespace
-        instance.user_id = user_id
         if limit is not None:
             instance.limit = limit
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -253,30 +258,30 @@ class PublicGetRecentPlayer(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = 0
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "userId": "user_id",
             "limit": "limit",
+            "userId": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "userId": True,
             "limit": False,
+            "userId": False,
         }
 
     # endregion static methods

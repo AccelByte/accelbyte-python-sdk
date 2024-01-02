@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -44,6 +44,20 @@ class ClazzEnum(StrEnum):
     MEDIA = "MEDIA"
     OPTIONBOX = "OPTIONBOX"
     SUBSCRIPTION = "SUBSCRIPTION"
+
+
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
 
 
 class StatusEnum(StrEnum):
@@ -87,6 +101,10 @@ class EntitlementIfc(Model):
 
         namespace: (namespace) OPTIONAL str
 
+        no_origin: (noOrigin) OPTIONAL bool
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum]
+
         sku: (sku) OPTIONAL str
 
         start_date: (startDate) OPTIONAL str
@@ -118,6 +136,8 @@ class EntitlementIfc(Model):
     item_namespace: str  # OPTIONAL
     name: str  # OPTIONAL
     namespace: str  # OPTIONAL
+    no_origin: bool  # OPTIONAL
+    origin: Union[str, OriginEnum]  # OPTIONAL
     sku: str  # OPTIONAL
     start_date: str  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
@@ -177,6 +197,14 @@ class EntitlementIfc(Model):
 
     def with_namespace(self, value: str) -> EntitlementIfc:
         self.namespace = value
+        return self
+
+    def with_no_origin(self, value: bool) -> EntitlementIfc:
+        self.no_origin = value
+        return self
+
+    def with_origin(self, value: Union[str, OriginEnum]) -> EntitlementIfc:
+        self.origin = value
         return self
 
     def with_sku(self, value: str) -> EntitlementIfc:
@@ -265,6 +293,14 @@ class EntitlementIfc(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "no_origin"):
+            result["noOrigin"] = bool(self.no_origin)
+        elif include_empty:
+            result["noOrigin"] = False
+        if hasattr(self, "origin"):
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -318,6 +354,8 @@ class EntitlementIfc(Model):
         item_namespace: Optional[str] = None,
         name: Optional[str] = None,
         namespace: Optional[str] = None,
+        no_origin: Optional[bool] = None,
+        origin: Optional[Union[str, OriginEnum]] = None,
         sku: Optional[str] = None,
         start_date: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
@@ -353,6 +391,10 @@ class EntitlementIfc(Model):
             instance.name = name
         if namespace is not None:
             instance.namespace = namespace
+        if no_origin is not None:
+            instance.no_origin = no_origin
+        if origin is not None:
+            instance.origin = origin
         if sku is not None:
             instance.sku = sku
         if start_date is not None:
@@ -426,6 +468,14 @@ class EntitlementIfc(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "noOrigin" in dict_ and dict_["noOrigin"] is not None:
+            instance.no_origin = bool(dict_["noOrigin"])
+        elif include_empty:
+            instance.no_origin = False
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -509,6 +559,8 @@ class EntitlementIfc(Model):
             "itemNamespace": "item_namespace",
             "name": "name",
             "namespace": "namespace",
+            "noOrigin": "no_origin",
+            "origin": "origin",
             "sku": "sku",
             "startDate": "start_date",
             "status": "status",
@@ -534,6 +586,8 @@ class EntitlementIfc(Model):
             "itemNamespace": False,
             "name": False,
             "namespace": False,
+            "noOrigin": False,
+            "origin": False,
             "sku": False,
             "startDate": False,
             "status": False,
@@ -556,6 +610,19 @@ class EntitlementIfc(Model):
                 "MEDIA",
                 "OPTIONBOX",
                 "SUBSCRIPTION",
+            ],
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
             ],
             "status": ["ACTIVE", "CONSUMED", "INACTIVE", "REVOKED", "SOLD"],
             "type": ["CONSUMABLE", "DURABLE"],

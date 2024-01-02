@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class AdminUpdatePlatformCredentials(Operation):
-    """Update platform credentials. Currently only used to sync PSN sessions. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [UPDATE] (adminUpdatePlatformCredentials)
+    """Update platform credentials. Currently only used to sync PSN sessions. (adminUpdatePlatformCredentials)
 
     Update platform credentials for Native Session sync. Currently supports PSN platform.
     Send an empty body to clear data.

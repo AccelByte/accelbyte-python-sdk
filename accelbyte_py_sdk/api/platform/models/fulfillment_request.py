@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,20 @@ from ....core import Model
 from ....core import StrEnum
 
 from ..models.order_summary import OrderSummary
+
+
+class EntitlementOriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
 
 
 class OriginEnum(StrEnum):
@@ -74,6 +88,8 @@ class FulfillmentRequest(Model):
 
         end_date: (endDate) OPTIONAL str
 
+        entitlement_origin: (entitlementOrigin) OPTIONAL Union[str, EntitlementOriginEnum]
+
         item_id: (itemId) OPTIONAL str
 
         item_sku: (itemSku) OPTIONAL str
@@ -104,6 +120,7 @@ class FulfillmentRequest(Model):
     quantity: int  # REQUIRED
     duration: int  # OPTIONAL
     end_date: str  # OPTIONAL
+    entitlement_origin: Union[str, EntitlementOriginEnum]  # OPTIONAL
     item_id: str  # OPTIONAL
     item_sku: str  # OPTIONAL
     language: str  # OPTIONAL
@@ -131,6 +148,12 @@ class FulfillmentRequest(Model):
 
     def with_end_date(self, value: str) -> FulfillmentRequest:
         self.end_date = value
+        return self
+
+    def with_entitlement_origin(
+        self, value: Union[str, EntitlementOriginEnum]
+    ) -> FulfillmentRequest:
+        self.entitlement_origin = value
         return self
 
     def with_item_id(self, value: str) -> FulfillmentRequest:
@@ -201,6 +224,10 @@ class FulfillmentRequest(Model):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = ""
+        if hasattr(self, "entitlement_origin"):
+            result["entitlementOrigin"] = str(self.entitlement_origin)
+        elif include_empty:
+            result["entitlementOrigin"] = Union[str, EntitlementOriginEnum]()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -263,6 +290,7 @@ class FulfillmentRequest(Model):
         quantity: int,
         duration: Optional[int] = None,
         end_date: Optional[str] = None,
+        entitlement_origin: Optional[Union[str, EntitlementOriginEnum]] = None,
         item_id: Optional[str] = None,
         item_sku: Optional[str] = None,
         language: Optional[str] = None,
@@ -283,6 +311,8 @@ class FulfillmentRequest(Model):
             instance.duration = duration
         if end_date is not None:
             instance.end_date = end_date
+        if entitlement_origin is not None:
+            instance.entitlement_origin = entitlement_origin
         if item_id is not None:
             instance.item_id = item_id
         if item_sku is not None:
@@ -328,6 +358,10 @@ class FulfillmentRequest(Model):
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = ""
+        if "entitlementOrigin" in dict_ and dict_["entitlementOrigin"] is not None:
+            instance.entitlement_origin = str(dict_["entitlementOrigin"])
+        elif include_empty:
+            instance.entitlement_origin = Union[str, EntitlementOriginEnum]()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -427,6 +461,7 @@ class FulfillmentRequest(Model):
             "quantity": "quantity",
             "duration": "duration",
             "endDate": "end_date",
+            "entitlementOrigin": "entitlement_origin",
             "itemId": "item_id",
             "itemSku": "item_sku",
             "language": "language",
@@ -447,6 +482,7 @@ class FulfillmentRequest(Model):
             "quantity": True,
             "duration": False,
             "endDate": False,
+            "entitlementOrigin": False,
             "itemId": False,
             "itemSku": False,
             "language": False,
@@ -464,6 +500,19 @@ class FulfillmentRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "entitlementOrigin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
             "origin": [
                 "Epic",
                 "GooglePlay",

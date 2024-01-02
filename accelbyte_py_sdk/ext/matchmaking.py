@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.27.2)
+# AccelByte Gaming Services Matchmaking Service (2.28.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -151,6 +151,7 @@ def create_models_bucket_mmr_rule_example() -> ModelsBucketMMRRule:
 
 def create_models_channel_example() -> ModelsChannel:
     instance = ModelsChannel()
+    instance.blocked_player_option = randomize()
     instance.deployment = randomize()
     instance.description = randomize()
     instance.find_match_timeout_seconds = randomize("int", min_val=1, max_val=1000)
@@ -181,6 +182,7 @@ def create_models_channel_request_example() -> ModelsChannelRequest:
     instance.max_delay_ms = randomize("int", min_val=1, max_val=1000)
     instance.rule_set = create_models_rule_set_example()
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
+    instance.blocked_player_option = randomize()
     instance.joinable = randomize("bool")
     instance.region_expansion_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
@@ -194,6 +196,7 @@ def create_models_channel_request_example() -> ModelsChannelRequest:
 
 def create_models_channel_v1_example() -> ModelsChannelV1:
     instance = ModelsChannelV1()
+    instance.blocked_player_option = randomize()
     instance.deployment = randomize()
     instance.description = randomize()
     instance.find_match_timeout_seconds = randomize("int", min_val=1, max_val=1000)
@@ -227,6 +230,7 @@ def create_models_combination_example() -> ModelsCombination:
 
 def create_models_create_channel_response_example() -> ModelsCreateChannelResponse:
     instance = ModelsCreateChannelResponse()
+    instance.blocked_player_option = randomize()
     instance.deployment = randomize()
     instance.description = randomize()
     instance.find_match_timeout_seconds = randomize("int", min_val=1, max_val=1000)
@@ -637,6 +641,7 @@ def create_models_update_channel_request_example() -> ModelsUpdateChannelRequest
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.social_matchmaking = randomize("bool")
     instance.use_sub_gamemode = randomize("bool")
+    instance.blocked_player_option = randomize()
     instance.region_expansion_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)

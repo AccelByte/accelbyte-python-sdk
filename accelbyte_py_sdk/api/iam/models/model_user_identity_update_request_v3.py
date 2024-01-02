@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.7.0)
+# AccelByte Gaming Services Iam Service (7.8.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,15 +32,15 @@ class ModelUserIdentityUpdateRequestV3(Model):
     """Model user identity update request V3 (model.UserIdentityUpdateRequestV3)
 
     Properties:
-        email_address: (emailAddress) REQUIRED str
+        email_address: (emailAddress) OPTIONAL str
 
-        password: (password) REQUIRED str
+        password: (password) OPTIONAL str
     """
 
     # region fields
 
-    email_address: str  # REQUIRED
-    password: str  # REQUIRED
+    email_address: str  # OPTIONAL
+    password: str  # OPTIONAL
 
     # endregion fields
 
@@ -76,11 +76,16 @@ class ModelUserIdentityUpdateRequestV3(Model):
 
     @classmethod
     def create(
-        cls, email_address: str, password: str, **kwargs
+        cls,
+        email_address: Optional[str] = None,
+        password: Optional[str] = None,
+        **kwargs,
     ) -> ModelUserIdentityUpdateRequestV3:
         instance = cls()
-        instance.email_address = email_address
-        instance.password = password
+        if email_address is not None:
+            instance.email_address = email_address
+        if password is not None:
+            instance.password = password
         return instance
 
     @classmethod
@@ -148,8 +153,8 @@ class ModelUserIdentityUpdateRequestV3(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "emailAddress": True,
-            "password": True,
+            "emailAddress": False,
+            "password": False,
         }
 
     # endregion static methods

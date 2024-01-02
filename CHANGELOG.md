@@ -1,3 +1,9 @@
+<a name="v0.57.0"></a>
+## [v0.57.0]
+### ci
+- **coverity:** update coverity to 2023.6.2
+
+
 <a name="v0.56.0"></a>
 ## [v0.56.0]
 ### fix

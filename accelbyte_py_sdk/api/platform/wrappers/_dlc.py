@@ -64,7 +64,11 @@ from ..operations.dlc import UpdateDLCItemConfig
 from ..operations.dlc import UpdatePlatformDLCConfig
 from ..models import DLCConfigRewardShortInfoDlcTypeEnum
 from ..models import UserDLCPlatformEnum
-from ..models import UserDLCRecordPlatformEnum, UserDLCRecordStatusEnum
+from ..models import (
+    UserDLCRecordEntitlementOriginSyncStatusEnum,
+    UserDLCRecordPlatformEnum,
+    UserDLCRecordStatusEnum,
+)
 
 
 @same_doc_as(DeleteDLCItemConfig)

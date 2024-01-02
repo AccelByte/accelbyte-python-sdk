@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseError
 
 
 class AdminGetAllConfigurationTemplatesV1(Operation):
-    """Get configuration templates. Requires ADMIN:NAMESPACE:{namespace}:SESSION:CONFIGURATION [READ] (adminGetAllConfigurationTemplatesV1)
+    """Get configuration templates. (adminGetAllConfigurationTemplatesV1)
 
     Get all template configurations in specified namespace.
 

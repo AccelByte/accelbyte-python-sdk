@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.42.0)
+# AGS Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -43,9 +43,11 @@ from accelbyte_py_sdk.api.platform.models import EntitlementPagingSlicedResult
 @click.option("--entitlement_clazz", "entitlement_clazz", type=str)
 @click.option("--entitlement_name", "entitlement_name", type=str)
 @click.option("--features", "features", type=str)
+@click.option("--fuzzy_match_name", "fuzzy_match_name", type=bool)
 @click.option("--item_id", "item_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--origin", "origin", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -57,9 +59,11 @@ def query_user_entitlements(
     entitlement_clazz: Optional[str] = None,
     entitlement_name: Optional[str] = None,
     features: Optional[str] = None,
+    fuzzy_match_name: Optional[bool] = None,
     item_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    origin: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -92,9 +96,11 @@ def query_user_entitlements(
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
         features=features,
+        fuzzy_match_name=fuzzy_match_name,
         item_id=item_id,
         limit=limit,
         offset=offset,
+        origin=origin,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

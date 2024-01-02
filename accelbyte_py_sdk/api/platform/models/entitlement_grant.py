@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,6 +28,20 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 from ....core import StrEnum
+
+
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
 
 
 class SourceEnum(StrEnum):
@@ -58,6 +72,8 @@ class EntitlementGrant(Model):
 
         language: (language) OPTIONAL str
 
+        origin: (origin) OPTIONAL Union[str, OriginEnum]
+
         region: (region) OPTIONAL str
 
         source: (source) OPTIONAL Union[str, SourceEnum]
@@ -75,6 +91,7 @@ class EntitlementGrant(Model):
     end_date: str  # OPTIONAL
     granted_code: str  # OPTIONAL
     language: str  # OPTIONAL
+    origin: Union[str, OriginEnum]  # OPTIONAL
     region: str  # OPTIONAL
     source: Union[str, SourceEnum]  # OPTIONAL
     start_date: str  # OPTIONAL
@@ -106,6 +123,10 @@ class EntitlementGrant(Model):
 
     def with_language(self, value: str) -> EntitlementGrant:
         self.language = value
+        return self
+
+    def with_origin(self, value: Union[str, OriginEnum]) -> EntitlementGrant:
+        self.origin = value
         return self
 
     def with_region(self, value: str) -> EntitlementGrant:
@@ -154,6 +175,10 @@ class EntitlementGrant(Model):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = ""
+        if hasattr(self, "origin"):
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
@@ -185,6 +210,7 @@ class EntitlementGrant(Model):
         end_date: Optional[str] = None,
         granted_code: Optional[str] = None,
         language: Optional[str] = None,
+        origin: Optional[Union[str, OriginEnum]] = None,
         region: Optional[str] = None,
         source: Optional[Union[str, SourceEnum]] = None,
         start_date: Optional[str] = None,
@@ -201,6 +227,8 @@ class EntitlementGrant(Model):
             instance.granted_code = granted_code
         if language is not None:
             instance.language = language
+        if origin is not None:
+            instance.origin = origin
         if region is not None:
             instance.region = region
         if source is not None:
@@ -242,6 +270,10 @@ class EntitlementGrant(Model):
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = ""
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -303,6 +335,7 @@ class EntitlementGrant(Model):
             "endDate": "end_date",
             "grantedCode": "granted_code",
             "language": "language",
+            "origin": "origin",
             "region": "region",
             "source": "source",
             "startDate": "start_date",
@@ -318,6 +351,7 @@ class EntitlementGrant(Model):
             "endDate": False,
             "grantedCode": False,
             "language": False,
+            "origin": False,
             "region": False,
             "source": False,
             "startDate": False,
@@ -327,6 +361,19 @@ class EntitlementGrant(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
+            ],
             "source": [
                 "ACHIEVEMENT",
                 "GIFT",

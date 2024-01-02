@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Browser Service (1.17.0)
+# AccelByte Gaming Services Session Browser Service (1.18.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,19 +36,9 @@ from ...models import RestapiErrorV1
 class GetSessionHistoryDetailed(Operation):
     """Get session history detailed (GetSessionHistoryDetailed)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [Read]
-
-    Required Scope: social
-
     Get session history detailed.
 
     if party_id value empty/null, field will not show in response body.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSIONBROWSER:SESSION [Read]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /sessionbrowser/admin/namespaces/{namespace}/sessions/{matchID}/history/detailed

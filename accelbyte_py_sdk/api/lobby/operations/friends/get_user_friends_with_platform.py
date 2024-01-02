@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.5)
+# AccelByte Gaming Services Lobby Server (3.33.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,6 +35,8 @@ from ...models import RestapiErrorResponseV1
 
 class GetUserFriendsWithPlatform(Operation):
     """get list of friends with platform data (getUserFriendsWithPlatform)
+
+    Get list of friends with platform data in a namespace.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/platforms

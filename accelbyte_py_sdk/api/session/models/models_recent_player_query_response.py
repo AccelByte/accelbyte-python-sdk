@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,25 +27,27 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_user_info import ModelsUserInfo
+from ..models.models_user_info_response import ModelsUserInfoResponse
 
 
 class ModelsRecentPlayerQueryResponse(Model):
     """Models recent player query response (models.RecentPlayerQueryResponse)
 
     Properties:
-        data: (data) REQUIRED List[ModelsUserInfo]
+        data: (data) REQUIRED List[ModelsUserInfoResponse]
     """
 
     # region fields
 
-    data: List[ModelsUserInfo]  # REQUIRED
+    data: List[ModelsUserInfoResponse]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(self, value: List[ModelsUserInfo]) -> ModelsRecentPlayerQueryResponse:
+    def with_data(
+        self, value: List[ModelsUserInfoResponse]
+    ) -> ModelsRecentPlayerQueryResponse:
         self.data = value
         return self
 
@@ -69,7 +71,7 @@ class ModelsRecentPlayerQueryResponse(Model):
 
     @classmethod
     def create(
-        cls, data: List[ModelsUserInfo], **kwargs
+        cls, data: List[ModelsUserInfoResponse], **kwargs
     ) -> ModelsRecentPlayerQueryResponse:
         instance = cls()
         instance.data = data
@@ -84,7 +86,7 @@ class ModelsRecentPlayerQueryResponse(Model):
             return instance
         if "data" in dict_ and dict_["data"] is not None:
             instance.data = [
-                ModelsUserInfo.create_from_dict(i0, include_empty=include_empty)
+                ModelsUserInfoResponse.create_from_dict(i0, include_empty=include_empty)
                 for i0 in dict_["data"]
             ]
         elif include_empty:

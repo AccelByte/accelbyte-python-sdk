@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -61,6 +61,8 @@ class ExistsAnyUserActiveEntitlementByItemIds(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        platform: (platform) OPTIONAL str in query
+
         item_ids: (itemIds) REQUIRED List[str] in query
 
     Responses:
@@ -78,6 +80,7 @@ class ExistsAnyUserActiveEntitlementByItemIds(Operation):
 
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    platform: str  # OPTIONAL in [query]
     item_ids: List[str]  # REQUIRED in [query]
 
     # endregion fields
@@ -132,6 +135,8 @@ class ExistsAnyUserActiveEntitlementByItemIds(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "platform"):
+            result["platform"] = self.platform
         if hasattr(self, "item_ids"):
             result["itemIds"] = self.item_ids
         return result
@@ -150,6 +155,10 @@ class ExistsAnyUserActiveEntitlementByItemIds(Operation):
 
     def with_user_id(self, value: str) -> ExistsAnyUserActiveEntitlementByItemIds:
         self.user_id = value
+        return self
+
+    def with_platform(self, value: str) -> ExistsAnyUserActiveEntitlementByItemIds:
+        self.platform = value
         return self
 
     def with_item_ids(
@@ -172,6 +181,10 @@ class ExistsAnyUserActiveEntitlementByItemIds(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "platform") and self.platform:
+            result["platform"] = str(self.platform)
+        elif include_empty:
+            result["platform"] = ""
         if hasattr(self, "item_ids") and self.item_ids:
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
@@ -216,12 +229,19 @@ class ExistsAnyUserActiveEntitlementByItemIds(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, user_id: str, item_ids: List[str], **kwargs
+        cls,
+        namespace: str,
+        user_id: str,
+        item_ids: List[str],
+        platform: Optional[str] = None,
+        **kwargs,
     ) -> ExistsAnyUserActiveEntitlementByItemIds:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
         instance.item_ids = item_ids
+        if platform is not None:
+            instance.platform = platform
         return instance
 
     @classmethod
@@ -237,6 +257,10 @@ class ExistsAnyUserActiveEntitlementByItemIds(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "platform" in dict_ and dict_["platform"] is not None:
+            instance.platform = str(dict_["platform"])
+        elif include_empty:
+            instance.platform = ""
         if "itemIds" in dict_ and dict_["itemIds"] is not None:
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
@@ -248,6 +272,7 @@ class ExistsAnyUserActiveEntitlementByItemIds(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+            "platform": "platform",
             "itemIds": "item_ids",
         }
 
@@ -256,6 +281,7 @@ class ExistsAnyUserActiveEntitlementByItemIds(Operation):
         return {
             "namespace": True,
             "userId": True,
+            "platform": False,
             "itemIds": True,
         }
 

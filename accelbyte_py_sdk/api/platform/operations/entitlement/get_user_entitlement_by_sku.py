@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -77,6 +77,8 @@ class GetUserEntitlementBySku(Operation):
 
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
+        platform: (platform) OPTIONAL str in query
+
         sku: (sku) REQUIRED str in query
 
     Responses:
@@ -100,6 +102,7 @@ class GetUserEntitlementBySku(Operation):
     user_id: str  # REQUIRED in [path]
     active_only: bool  # OPTIONAL in [query]
     entitlement_clazz: Union[str, EntitlementClazzEnum]  # OPTIONAL in [query]
+    platform: str  # OPTIONAL in [query]
     sku: str  # REQUIRED in [query]
 
     # endregion fields
@@ -158,6 +161,8 @@ class GetUserEntitlementBySku(Operation):
             result["activeOnly"] = self.active_only
         if hasattr(self, "entitlement_clazz"):
             result["entitlementClazz"] = self.entitlement_clazz
+        if hasattr(self, "platform"):
+            result["platform"] = self.platform
         if hasattr(self, "sku"):
             result["sku"] = self.sku
         return result
@@ -188,6 +193,10 @@ class GetUserEntitlementBySku(Operation):
         self.entitlement_clazz = value
         return self
 
+    def with_platform(self, value: str) -> GetUserEntitlementBySku:
+        self.platform = value
+        return self
+
     def with_sku(self, value: str) -> GetUserEntitlementBySku:
         self.sku = value
         return self
@@ -214,6 +223,10 @@ class GetUserEntitlementBySku(Operation):
             result["entitlementClazz"] = str(self.entitlement_clazz)
         elif include_empty:
             result["entitlementClazz"] = Union[str, EntitlementClazzEnum]()
+        if hasattr(self, "platform") and self.platform:
+            result["platform"] = str(self.platform)
+        elif include_empty:
+            result["platform"] = ""
         if hasattr(self, "sku") and self.sku:
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -268,6 +281,7 @@ class GetUserEntitlementBySku(Operation):
         sku: str,
         active_only: Optional[bool] = None,
         entitlement_clazz: Optional[Union[str, EntitlementClazzEnum]] = None,
+        platform: Optional[str] = None,
         **kwargs,
     ) -> GetUserEntitlementBySku:
         instance = cls()
@@ -278,6 +292,8 @@ class GetUserEntitlementBySku(Operation):
             instance.active_only = active_only
         if entitlement_clazz is not None:
             instance.entitlement_clazz = entitlement_clazz
+        if platform is not None:
+            instance.platform = platform
         return instance
 
     @classmethod
@@ -301,6 +317,10 @@ class GetUserEntitlementBySku(Operation):
             instance.entitlement_clazz = str(dict_["entitlementClazz"])
         elif include_empty:
             instance.entitlement_clazz = Union[str, EntitlementClazzEnum]()
+        if "platform" in dict_ and dict_["platform"] is not None:
+            instance.platform = str(dict_["platform"])
+        elif include_empty:
+            instance.platform = ""
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -314,6 +334,7 @@ class GetUserEntitlementBySku(Operation):
             "userId": "user_id",
             "activeOnly": "active_only",
             "entitlementClazz": "entitlement_clazz",
+            "platform": "platform",
             "sku": "sku",
         }
 
@@ -324,6 +345,7 @@ class GetUserEntitlementBySku(Operation):
             "userId": True,
             "activeOnly": False,
             "entitlementClazz": False,
+            "platform": False,
             "sku": True,
         }
 

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.27.2)
+# AccelByte Gaming Services Matchmaking Service (2.28.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -34,6 +34,8 @@ class ModelsChannelV1(Model):
     """Models channel V1 (models.ChannelV1)
 
     Properties:
+        blocked_player_option: (blocked_player_option) REQUIRED str
+
         deployment: (deployment) REQUIRED str
 
         description: (description) REQUIRED str
@@ -73,6 +75,7 @@ class ModelsChannelV1(Model):
 
     # region fields
 
+    blocked_player_option: str  # REQUIRED
     deployment: str  # REQUIRED
     description: str  # REQUIRED
     find_match_timeout_seconds: int  # REQUIRED
@@ -95,6 +98,10 @@ class ModelsChannelV1(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_blocked_player_option(self, value: str) -> ModelsChannelV1:
+        self.blocked_player_option = value
+        return self
 
     def with_deployment(self, value: str) -> ModelsChannelV1:
         self.deployment = value
@@ -174,6 +181,10 @@ class ModelsChannelV1(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "blocked_player_option"):
+            result["blocked_player_option"] = str(self.blocked_player_option)
+        elif include_empty:
+            result["blocked_player_option"] = ""
         if hasattr(self, "deployment"):
             result["deployment"] = str(self.deployment)
         elif include_empty:
@@ -261,6 +272,7 @@ class ModelsChannelV1(Model):
     @classmethod
     def create(
         cls,
+        blocked_player_option: str,
         deployment: str,
         description: str,
         find_match_timeout_seconds: int,
@@ -282,6 +294,7 @@ class ModelsChannelV1(Model):
         **kwargs,
     ) -> ModelsChannelV1:
         instance = cls()
+        instance.blocked_player_option = blocked_player_option
         instance.deployment = deployment
         instance.description = description
         instance.find_match_timeout_seconds = find_match_timeout_seconds
@@ -310,6 +323,13 @@ class ModelsChannelV1(Model):
         instance = cls()
         if not dict_:
             return instance
+        if (
+            "blocked_player_option" in dict_
+            and dict_["blocked_player_option"] is not None
+        ):
+            instance.blocked_player_option = str(dict_["blocked_player_option"])
+        elif include_empty:
+            instance.blocked_player_option = ""
         if "deployment" in dict_ and dict_["deployment"] is not None:
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
@@ -450,6 +470,7 @@ class ModelsChannelV1(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "blocked_player_option": "blocked_player_option",
             "deployment": "deployment",
             "description": "description",
             "findMatchTimeoutSeconds": "find_match_timeout_seconds",
@@ -473,6 +494,7 @@ class ModelsChannelV1(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "blocked_player_option": True,
             "deployment": True,
             "description": True,
             "findMatchTimeoutSeconds": True,

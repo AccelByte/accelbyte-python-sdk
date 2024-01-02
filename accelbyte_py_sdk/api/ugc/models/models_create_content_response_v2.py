@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.19.0)
+# AccelByte Gaming Services Ugc Service (2.19.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,8 +26,14 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_payload_url import ModelsPayloadURL
+
+
+class ContentStatusEnum(StrEnum):
+    PUBLISHED = "PUBLISHED"
+    UNDER_REVIEW = "UNDER_REVIEW"
 
 
 class ModelsCreateContentResponseV2(Model):
@@ -35,6 +41,8 @@ class ModelsCreateContentResponseV2(Model):
 
     Properties:
         channel_id: (channelId) REQUIRED str
+
+        content_status: (contentStatus) REQUIRED Union[str, ContentStatusEnum]
 
         created_time: (createdTime) REQUIRED str
 
@@ -76,6 +84,7 @@ class ModelsCreateContentResponseV2(Model):
     # region fields
 
     channel_id: str  # REQUIRED
+    content_status: Union[str, ContentStatusEnum]  # REQUIRED
     created_time: str  # REQUIRED
     file_location: str  # REQUIRED
     id_: str  # REQUIRED
@@ -101,6 +110,12 @@ class ModelsCreateContentResponseV2(Model):
 
     def with_channel_id(self, value: str) -> ModelsCreateContentResponseV2:
         self.channel_id = value
+        return self
+
+    def with_content_status(
+        self, value: Union[str, ContentStatusEnum]
+    ) -> ModelsCreateContentResponseV2:
+        self.content_status = value
         return self
 
     def with_created_time(self, value: str) -> ModelsCreateContentResponseV2:
@@ -189,6 +204,10 @@ class ModelsCreateContentResponseV2(Model):
             result["channelId"] = str(self.channel_id)
         elif include_empty:
             result["channelId"] = ""
+        if hasattr(self, "content_status"):
+            result["contentStatus"] = str(self.content_status)
+        elif include_empty:
+            result["contentStatus"] = Union[str, ContentStatusEnum]()
         if hasattr(self, "created_time"):
             result["createdTime"] = str(self.created_time)
         elif include_empty:
@@ -275,6 +294,7 @@ class ModelsCreateContentResponseV2(Model):
     def create(
         cls,
         channel_id: str,
+        content_status: Union[str, ContentStatusEnum],
         created_time: str,
         file_location: str,
         id_: str,
@@ -297,6 +317,7 @@ class ModelsCreateContentResponseV2(Model):
     ) -> ModelsCreateContentResponseV2:
         instance = cls()
         instance.channel_id = channel_id
+        instance.content_status = content_status
         instance.created_time = created_time
         instance.file_location = file_location
         instance.id_ = id_
@@ -335,6 +356,10 @@ class ModelsCreateContentResponseV2(Model):
             instance.channel_id = str(dict_["channelId"])
         elif include_empty:
             instance.channel_id = ""
+        if "contentStatus" in dict_ and dict_["contentStatus"] is not None:
+            instance.content_status = str(dict_["contentStatus"])
+        elif include_empty:
+            instance.content_status = Union[str, ContentStatusEnum]()
         if "createdTime" in dict_ and dict_["createdTime"] is not None:
             instance.created_time = str(dict_["createdTime"])
         elif include_empty:
@@ -456,6 +481,7 @@ class ModelsCreateContentResponseV2(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "channelId": "channel_id",
+            "contentStatus": "content_status",
             "createdTime": "created_time",
             "fileLocation": "file_location",
             "id": "id_",
@@ -480,6 +506,7 @@ class ModelsCreateContentResponseV2(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "channelId": True,
+            "contentStatus": True,
             "createdTime": True,
             "fileLocation": True,
             "id": True,
@@ -498,6 +525,12 @@ class ModelsCreateContentResponseV2(Model):
             "subType": False,
             "type": False,
             "updatedTime": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "contentStatus": ["PUBLISHED", "UNDER_REVIEW"],
         }
 
     # endregion static methods

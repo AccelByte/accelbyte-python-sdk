@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.19.0)
+# AccelByte Gaming Services Ugc Service (2.19.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,7 @@ from ..api.ugc.models import ModelsAdminContentRequestV2
 from ..api.ugc.models import ModelsAdminGetContentBulkRequest
 from ..api.ugc.models import ModelsAdminUpdateContentRequest
 from ..api.ugc.models import ModelsAdminUpdateContentRequestV2
+from ..api.ugc.models import ModelsApproveStagingContentRequest
 from ..api.ugc.models import ModelsChannelRequest
 from ..api.ugc.models import ModelsChannelResponse
 from ..api.ugc.models import ModelsConfigResponse
@@ -74,6 +75,7 @@ from ..api.ugc.models import ModelsPaginatedGetConfigsResponse
 from ..api.ugc.models import ModelsPaginatedGetTagResponse
 from ..api.ugc.models import ModelsPaginatedGetTypeResponse
 from ..api.ugc.models import ModelsPaginatedGroupResponse
+from ..api.ugc.models import ModelsPaginatedListStagingContentResponse
 from ..api.ugc.models import ModelsPagingCursor
 from ..api.ugc.models import ModelsPayloadURL
 from ..api.ugc.models import ModelsPreviewMetadata
@@ -82,6 +84,7 @@ from ..api.ugc.models import ModelsPublicChannelRequest
 from ..api.ugc.models import ModelsPublicCreateContentRequestS3
 from ..api.ugc.models import ModelsPublicGetContentBulkRequest
 from ..api.ugc.models import ModelsScreenshotResponse
+from ..api.ugc.models import ModelsStagingContentResponse
 from ..api.ugc.models import ModelsUpdateChannelRequest
 from ..api.ugc.models import ModelsUpdateConfigRequest
 from ..api.ugc.models import ModelsUpdateContentRequest
@@ -92,6 +95,7 @@ from ..api.ugc.models import ModelsUpdateFileLocationRequest
 from ..api.ugc.models import ModelsUpdateScreenshot
 from ..api.ugc.models import ModelsUpdateScreenshotRequest
 from ..api.ugc.models import ModelsUpdateScreenshotResponse
+from ..api.ugc.models import ModelsUpdateStagingContentRequest
 from ..api.ugc.models import ModelsUserFollowRequest
 from ..api.ugc.models import ModelsUserFollowResponse
 from ..api.ugc.models import ResponseError
@@ -155,6 +159,15 @@ def create_models_admin_update_content_request_v2_example() -> (
     instance.sub_type = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
+    return instance
+
+
+def create_models_approve_staging_content_request_example() -> (
+    ModelsApproveStagingContentRequest
+):
+    instance = ModelsApproveStagingContentRequest()
+    instance.approved = randomize("bool")
+    instance.note = randomize()
     return instance
 
 
@@ -351,6 +364,7 @@ def create_models_create_content_response_example() -> ModelsCreateContentRespon
     instance.type_ = randomize()
     instance.updated_time = randomize()
     instance.user_id = randomize("uid")
+    instance.content_status = randomize()
     instance.content_type = randomize()
     instance.custom_attributes = {randomize(): randomize()}
     instance.payload_url = randomize("url")
@@ -361,6 +375,7 @@ def create_models_create_content_response_example() -> ModelsCreateContentRespon
 def create_models_create_content_response_v2_example() -> ModelsCreateContentResponseV2:
     instance = ModelsCreateContentResponseV2()
     instance.channel_id = randomize()
+    instance.content_status = randomize()
     instance.created_time = randomize()
     instance.file_location = randomize()
     instance.id_ = randomize()
@@ -630,6 +645,15 @@ def create_models_paginated_group_response_example() -> ModelsPaginatedGroupResp
     return instance
 
 
+def create_models_paginated_list_staging_content_response_example() -> (
+    ModelsPaginatedListStagingContentResponse
+):
+    instance = ModelsPaginatedListStagingContentResponse()
+    instance.data = [create_models_staging_content_response_example()]
+    instance.paging = create_models_paging_cursor_example()
+    return instance
+
+
 def create_models_paging_cursor_example() -> ModelsPagingCursor:
     instance = ModelsPagingCursor()
     instance.first = randomize()
@@ -701,6 +725,27 @@ def create_models_screenshot_response_example() -> ModelsScreenshotResponse:
     return instance
 
 
+def create_models_staging_content_response_example() -> ModelsStagingContentResponse:
+    instance = ModelsStagingContentResponse()
+    instance.channel_id = randomize()
+    instance.created_time = randomize("date")
+    instance.id_ = randomize()
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.status = randomize()
+    instance.tags = [randomize()]
+    instance.user_id = randomize("uid")
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.file_extension = randomize()
+    instance.note = randomize()
+    instance.payload_url = randomize("url")
+    instance.screenshots = [create_models_screenshot_response_example()]
+    instance.sub_type = randomize()
+    instance.type_ = randomize()
+    instance.updated_time = randomize("date")
+    return instance
+
+
 def create_models_update_channel_request_example() -> ModelsUpdateChannelRequest:
     instance = ModelsUpdateChannelRequest()
     instance.name = randomize()
@@ -742,6 +787,7 @@ def create_models_update_content_request_v2_example() -> ModelsUpdateContentRequ
 def create_models_update_content_response_v2_example() -> ModelsUpdateContentResponseV2:
     instance = ModelsUpdateContentResponseV2()
     instance.channel_id = randomize()
+    instance.content_status = randomize()
     instance.created_time = randomize()
     instance.file_location = randomize()
     instance.id_ = randomize()
@@ -798,6 +844,15 @@ def create_models_update_screenshot_response_example() -> (
 ):
     instance = ModelsUpdateScreenshotResponse()
     instance.screenshots = [create_models_update_screenshot_example()]
+    return instance
+
+
+def create_models_update_staging_content_request_example() -> (
+    ModelsUpdateStagingContentRequest
+):
+    instance = ModelsUpdateStagingContentRequest()
+    instance.file_location = randomize()
+    instance.file_extension = randomize()
     return instance
 
 

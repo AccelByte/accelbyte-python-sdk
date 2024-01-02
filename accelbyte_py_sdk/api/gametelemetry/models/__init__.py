@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Analytics Game Telemetry."""
 
-__version__ = "1.21.0"
+__version__ = "1.22.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

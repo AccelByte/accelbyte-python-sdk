@@ -78,6 +78,8 @@ from ..operations.matchmaking import SearchSessions
 from ..operations.matchmaking import SearchSessionsV2
 from ..operations.matchmaking import StoreMatchResults
 from ..operations.matchmaking import UpdateMatchmakingChannel
+from ..models import ModelsChannelRequestBlockedPlayerOptionEnum
+from ..models import ModelsUpdateChannelRequestBlockedPlayerOptionEnum
 
 
 @same_doc_as(AddUserIntoSessionInChannel)

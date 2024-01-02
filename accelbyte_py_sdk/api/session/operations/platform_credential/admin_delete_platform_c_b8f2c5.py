@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,10 +35,7 @@ from ...models import ResponseError
 class AdminDeletePlatformCredentials(Operation):
     """Delete platform credentials. (adminDeletePlatformCredentials)
 
-    Delete platform credentials used for Native Session sync. Requires ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SESSION:PLATFORMCREDENTIAL [DELETE]
+    Delete platform credentials used for Native Session sync.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials

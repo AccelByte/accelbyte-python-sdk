@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.12.3)
+# AccelByte Gaming Services Session Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,7 +33,7 @@ from ...models import ResponseError
 
 
 class PublicRevokeGameSessionCode(Operation):
-    """Revoke game session code. Requires NAMESPACE:{namespace}:SESSION:GAME [UPDATE] (publicRevokeGameSessionCode)
+    """Revoke game session code. (publicRevokeGameSessionCode)
 
     Revoke code of the game session. Only leader can revoke a code.
 

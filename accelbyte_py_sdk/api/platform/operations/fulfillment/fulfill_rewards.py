@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import RewardsRequest
 
 
 class FulfillRewards(Operation):
-    """Fulfill rewards (fulfillRewards)
+    """Fulfill rewards without content (fulfillRewards)
 
     [SERVICE COMMUNICATION ONLY] Fulfill rewards.
     Other detail info:

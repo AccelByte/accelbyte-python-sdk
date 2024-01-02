@@ -58,19 +58,9 @@ def admin_get_match_pool_tickets(
 ):
     """Get tickets in queue for a specific match pool (adminGetMatchPoolTickets)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:TICKETS [READ]
-
-    Required Scope: social
-
     Get tickets in queue for a specific match pool
 
     Result: number of tickets and list of ticket detail in a match pool.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:TICKETS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/tickets
@@ -128,19 +118,9 @@ async def admin_get_match_pool_tickets_async(
 ):
     """Get tickets in queue for a specific match pool (adminGetMatchPoolTickets)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:TICKETS [READ]
-
-    Required Scope: social
-
     Get tickets in queue for a specific match pool
 
     Result: number of tickets and list of ticket detail in a match pool.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:TICKETS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/tickets
@@ -198,10 +178,6 @@ def create_match_pool(
 ):
     """Create a match pool (CreateMatchPool)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL [CREATE]
-
-    Required Scope: social
-
     Creates a new matchmaking pool.
 
     A pool is isolated from other pools (i.e. tickets may be matched with other tickets in the same pool, but not with tickets in other pools).
@@ -221,12 +197,6 @@ def create_match_pool(
     "make_matches": "default",
     }
     }
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools
@@ -278,10 +248,6 @@ async def create_match_pool_async(
 ):
     """Create a match pool (CreateMatchPool)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL [CREATE]
-
-    Required Scope: social
-
     Creates a new matchmaking pool.
 
     A pool is isolated from other pools (i.e. tickets may be matched with other tickets in the same pool, but not with tickets in other pools).
@@ -301,12 +267,6 @@ async def create_match_pool_async(
     "make_matches": "default",
     }
     }
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools
@@ -360,17 +320,7 @@ def delete_match_pool(
 ):
     """Delete a match pool (DeleteMatchPool)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL [DELETE]
-
-    Required Scope: social
-
     Deletes an existing matchmaking pool.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}
@@ -420,17 +370,7 @@ async def delete_match_pool_async(
 ):
     """Delete a match pool (DeleteMatchPool)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL [DELETE]
-
-    Required Scope: social
-
     Deletes an existing matchmaking pool.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}
@@ -482,17 +422,7 @@ def get_player_metric(
 ):
     """Get metrics player for a specific match pool (GetPlayerMetric)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
-
-    Required Scope: social
-
     Get player metric for a specific match pool
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/player
@@ -542,17 +472,7 @@ async def get_player_metric_async(
 ):
     """Get metrics player for a specific match pool (GetPlayerMetric)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
-
-    Required Scope: social
-
     Get player metric for a specific match pool
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/player
@@ -604,17 +524,7 @@ def match_pool_details(
 ):
     """Get details for a specific match pool (MatchPoolDetails)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL [READ]
-
-    Required Scope: social
-
     Get details for a specific match pool
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}
@@ -662,17 +572,7 @@ async def match_pool_details_async(
 ):
     """Get details for a specific match pool (MatchPoolDetails)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL [READ]
-
-    Required Scope: social
-
     Get details for a specific match pool
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}
@@ -724,17 +624,7 @@ def match_pool_list(
 ):
     """List match pools (MatchPoolList)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL [READ]
-
-    Required Scope: social
-
     List matchmaking pools.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools
@@ -790,17 +680,7 @@ async def match_pool_list_async(
 ):
     """List match pools (MatchPoolList)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL [READ]
-
-    Required Scope: social
-
     List matchmaking pools.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools
@@ -856,19 +736,9 @@ def match_pool_metric(
 ):
     """Get metrics for a specific match pool (MatchPoolMetric)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
-
-    Required Scope: social
-
     Get metric for a specific match pool
 
     Result: queueTime in seconds
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics
@@ -918,19 +788,9 @@ async def match_pool_metric_async(
 ):
     """Get metrics for a specific match pool (MatchPoolMetric)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
-
-    Required Scope: social
-
     Get metric for a specific match pool
 
     Result: queueTime in seconds
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL:METRICS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics
@@ -983,10 +843,6 @@ def update_match_pool(
 ):
     """Update a match pool (UpdateMatchPool)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL [UPDATE]
-
-    Required Scope: social
-
     Updates an existing matchmaking pool.
 
     ticket_expiration_seconds and backfill_ticket_expiration_seconds will be set to 300 seconds (5 minutes) by default if not filled.
@@ -1003,12 +859,6 @@ def update_match_pool(
     "make_matches": "default",
     }
     }
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}
@@ -1064,10 +914,6 @@ async def update_match_pool_async(
 ):
     """Update a match pool (UpdateMatchPool)
 
-    Required Permission: NAMESPACE:{namespace}:MATCHMAKING:POOL [UPDATE]
-
-    Required Scope: social
-
     Updates an existing matchmaking pool.
 
     ticket_expiration_seconds and backfill_ticket_expiration_seconds will be set to 300 seconds (5 minutes) by default if not filled.
@@ -1084,12 +930,6 @@ async def update_match_pool_async(
     "make_matches": "default",
     }
     }
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:MATCHMAKING:POOL [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/match-pools/{pool}

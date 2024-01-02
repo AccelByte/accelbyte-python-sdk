@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.32.5)
+# AccelByte Gaming Services Lobby Server (3.33.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,6 +35,8 @@ from ...models import RestapiErrorResponseV1
 
 class UserUnfriendRequest(Operation):
     """user unfriend a friend (userUnfriendRequest)
+
+    User unfriend a friend.
 
     Properties:
         url: /friends/namespaces/{namespace}/me/unfriend

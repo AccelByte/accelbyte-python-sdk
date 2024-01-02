@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.42.0)
+# AccelByte Gaming Services Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -39,6 +39,20 @@ class ActionEnum(StrEnum):
     UPDATE = "UPDATE"
 
 
+class OriginEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    SYSTEM = "System"
+    TWITCH = "Twitch"
+    XBOX = "Xbox"
+
+
 class EntitlementHistoryInfo(Model):
     """Entitlement history info (EntitlementHistoryInfo)
 
@@ -57,6 +71,8 @@ class EntitlementHistoryInfo(Model):
 
         user_id: (userId) REQUIRED str
 
+        origin: (origin) OPTIONAL Union[str, OriginEnum]
+
         reason: (reason) OPTIONAL str
 
         use_count: (useCount) OPTIONAL int
@@ -73,6 +89,7 @@ class EntitlementHistoryInfo(Model):
     operator: str  # REQUIRED
     updated_at: str  # REQUIRED
     user_id: str  # REQUIRED
+    origin: Union[str, OriginEnum]  # OPTIONAL
     reason: str  # OPTIONAL
     use_count: int  # OPTIONAL
     use_count_change: int  # OPTIONAL
@@ -107,6 +124,10 @@ class EntitlementHistoryInfo(Model):
 
     def with_user_id(self, value: str) -> EntitlementHistoryInfo:
         self.user_id = value
+        return self
+
+    def with_origin(self, value: Union[str, OriginEnum]) -> EntitlementHistoryInfo:
+        self.origin = value
         return self
 
     def with_reason(self, value: str) -> EntitlementHistoryInfo:
@@ -155,6 +176,10 @@ class EntitlementHistoryInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "origin"):
+            result["origin"] = str(self.origin)
+        elif include_empty:
+            result["origin"] = Union[str, OriginEnum]()
         if hasattr(self, "reason"):
             result["reason"] = str(self.reason)
         elif include_empty:
@@ -183,6 +208,7 @@ class EntitlementHistoryInfo(Model):
         operator: str,
         updated_at: str,
         user_id: str,
+        origin: Optional[Union[str, OriginEnum]] = None,
         reason: Optional[str] = None,
         use_count: Optional[int] = None,
         use_count_change: Optional[int] = None,
@@ -196,6 +222,8 @@ class EntitlementHistoryInfo(Model):
         instance.operator = operator
         instance.updated_at = updated_at
         instance.user_id = user_id
+        if origin is not None:
+            instance.origin = origin
         if reason is not None:
             instance.reason = reason
         if use_count is not None:
@@ -239,6 +267,10 @@ class EntitlementHistoryInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "origin" in dict_ and dict_["origin"] is not None:
+            instance.origin = str(dict_["origin"])
+        elif include_empty:
+            instance.origin = Union[str, OriginEnum]()
         if "reason" in dict_ and dict_["reason"] is not None:
             instance.reason = str(dict_["reason"])
         elif include_empty:
@@ -301,6 +333,7 @@ class EntitlementHistoryInfo(Model):
             "operator": "operator",
             "updatedAt": "updated_at",
             "userId": "user_id",
+            "origin": "origin",
             "reason": "reason",
             "useCount": "use_count",
             "useCountChange": "use_count_change",
@@ -316,6 +349,7 @@ class EntitlementHistoryInfo(Model):
             "operator": True,
             "updatedAt": True,
             "userId": True,
+            "origin": False,
             "reason": False,
             "useCount": False,
             "useCountChange": False,
@@ -332,6 +366,19 @@ class EntitlementHistoryInfo(Model):
                 "REVOKE",
                 "SELL_BACK",
                 "UPDATE",
+            ],
+            "origin": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "System",
+                "Twitch",
+                "Xbox",
             ],
         }
 

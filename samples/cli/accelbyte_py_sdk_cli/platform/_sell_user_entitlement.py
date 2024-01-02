@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.42.0)
+# AGS Platform Service (4.43.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     sell_user_entitlement as sell_user_entitlement_internal,
 )
-from accelbyte_py_sdk.api.platform.models import EntitlementSoldRequest
+from accelbyte_py_sdk.api.platform.models import AdminEntitlementSoldRequest
 from accelbyte_py_sdk.api.platform.models import EntitlementSoldResult
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
@@ -66,7 +66,7 @@ def sell_user_entitlement(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = EntitlementSoldRequest.create_from_dict(body_json)
+            body = AdminEntitlementSoldRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = sell_user_entitlement_internal(

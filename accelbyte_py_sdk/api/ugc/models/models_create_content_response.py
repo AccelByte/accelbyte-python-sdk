@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ugc Service (2.19.0)
+# AccelByte Gaming Services Ugc Service (2.19.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,9 +26,15 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_payload_url import ModelsPayloadURL
 from ..models.models_preview_url import ModelsPreviewURL
+
+
+class ContentStatusEnum(StrEnum):
+    PUBLISHED = "PUBLISHED"
+    UNDER_REVIEW = "UNDER_REVIEW"
 
 
 class ModelsCreateContentResponse(Model):
@@ -69,6 +75,8 @@ class ModelsCreateContentResponse(Model):
 
         user_id: (userId) REQUIRED str
 
+        content_status: (contentStatus) OPTIONAL Union[str, ContentStatusEnum]
+
         content_type: (contentType) OPTIONAL str
 
         custom_attributes: (customAttributes) OPTIONAL Dict[str, Any]
@@ -97,6 +105,7 @@ class ModelsCreateContentResponse(Model):
     type_: str  # REQUIRED
     updated_time: str  # REQUIRED
     user_id: str  # REQUIRED
+    content_status: Union[str, ContentStatusEnum]  # OPTIONAL
     content_type: str  # OPTIONAL
     custom_attributes: Dict[str, Any]  # OPTIONAL
     payload_url: List[ModelsPayloadURL]  # OPTIONAL
@@ -172,6 +181,12 @@ class ModelsCreateContentResponse(Model):
 
     def with_user_id(self, value: str) -> ModelsCreateContentResponse:
         self.user_id = value
+        return self
+
+    def with_content_status(
+        self, value: Union[str, ContentStatusEnum]
+    ) -> ModelsCreateContentResponse:
+        self.content_status = value
         return self
 
     def with_content_type(self, value: str) -> ModelsCreateContentResponse:
@@ -270,6 +285,10 @@ class ModelsCreateContentResponse(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "content_status"):
+            result["contentStatus"] = str(self.content_status)
+        elif include_empty:
+            result["contentStatus"] = Union[str, ContentStatusEnum]()
         if hasattr(self, "content_type"):
             result["contentType"] = str(self.content_type)
         elif include_empty:
@@ -318,6 +337,7 @@ class ModelsCreateContentResponse(Model):
         type_: str,
         updated_time: str,
         user_id: str,
+        content_status: Optional[Union[str, ContentStatusEnum]] = None,
         content_type: Optional[str] = None,
         custom_attributes: Optional[Dict[str, Any]] = None,
         payload_url: Optional[List[ModelsPayloadURL]] = None,
@@ -342,6 +362,8 @@ class ModelsCreateContentResponse(Model):
         instance.type_ = type_
         instance.updated_time = updated_time
         instance.user_id = user_id
+        if content_status is not None:
+            instance.content_status = content_status
         if content_type is not None:
             instance.content_type = content_type
         if custom_attributes is not None:
@@ -427,6 +449,10 @@ class ModelsCreateContentResponse(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "contentStatus" in dict_ and dict_["contentStatus"] is not None:
+            instance.content_status = str(dict_["contentStatus"])
+        elif include_empty:
+            instance.content_status = Union[str, ContentStatusEnum]()
         if "contentType" in dict_ and dict_["contentType"] is not None:
             instance.content_type = str(dict_["contentType"])
         elif include_empty:
@@ -511,6 +537,7 @@ class ModelsCreateContentResponse(Model):
             "type": "type_",
             "updatedTime": "updated_time",
             "userId": "user_id",
+            "contentStatus": "content_status",
             "contentType": "content_type",
             "customAttributes": "custom_attributes",
             "payloadURL": "payload_url",
@@ -537,10 +564,17 @@ class ModelsCreateContentResponse(Model):
             "type": True,
             "updatedTime": True,
             "userId": True,
+            "contentStatus": False,
             "contentType": False,
             "customAttributes": False,
             "payloadURL": False,
             "previewURL": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "contentStatus": ["PUBLISHED", "UNDER_REVIEW"],
         }
 
     # endregion static methods
