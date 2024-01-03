@@ -275,6 +275,13 @@ class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
         if error:
             self.fail(msg=f"Failed to login as client. Error: {error}")
 
+    def login_user(self) -> None:
+        from accelbyte_py_sdk.services.auth import login_user
+
+        _, error = login_user(self.username, self.password)
+        if error:
+            self.fail(msg=f"Failed to login as user. Error: {error}")
+
     def skip_if_ags(self, reason: Optional[str] = None) -> bool:
         if self.using_ags_starter:
             reason = (
@@ -326,12 +333,26 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
         if error:
             self.fail(msg=f"Failed to login as client. Error: {error}")
 
+    def login_user(self) -> None:
+        from accelbyte_py_sdk.services.auth import login_user
+
+        _, error = login_user(self.username, self.password)
+        if error:
+            self.fail(msg=f"Failed to login as user. Error: {error}")
+
     async def login_client_async(self) -> None:
         from accelbyte_py_sdk.services.auth import login_client_async
 
         _, error = await login_client_async()
         if error:
             self.fail(msg=f"Failed to login as client. Error: {error}")
+
+    async def login_user_async(self) -> None:
+        from accelbyte_py_sdk.services.auth import login_user_async
+
+        _, error = await login_user_async(self.username, self.password)
+        if error:
+            self.fail(msg=f"Failed to login as user. Error: {error}")
 
     def skip_if_ags(self, reason: Optional[str] = None) -> bool:
         if self.using_ags_starter:

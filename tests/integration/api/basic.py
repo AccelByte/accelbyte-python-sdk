@@ -10,6 +10,18 @@ class BasicTestCase(IntegrationTestCase):
         UserProfilePrivateCreate.create(first_name="First", last_name="Last")
     )
 
+    @classmethod
+    def setUpClass(cls) -> None:
+        super().setUpClass()
+
+        from accelbyte_py_sdk.core import get_http_client
+        from accelbyte_py_sdk.core import ConstantHttpBackoffPolicy
+        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        http_client = get_http_client()
+        http_client.backoff_policy = ConstantHttpBackoffPolicy(1.0)
+        http_client.retry_policy = MaxRetriesHttpRetryPolicy(3)
+
     def do_create_my_profile(self, body: Optional[UserProfilePrivateCreate] = None):
         from accelbyte_py_sdk.api.basic import create_my_profile
 
@@ -31,6 +43,7 @@ class BasicTestCase(IntegrationTestCase):
                 msg=f"Failed to tear down user profile. {str(error)}",
                 condition=error is not None,
             )
+            self.login_user()  # re-login
 
     def tearDown(self) -> None:
         self.do_delete_my_profile()
