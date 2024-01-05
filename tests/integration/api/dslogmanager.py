@@ -52,8 +52,6 @@ class DSLogManagerTestCase(IntegrationTestCase):
         else:
             return []
 
-    # region test:check_server_logs
-
     def test_check_server_logs(self):
         from accelbyte_py_sdk.api.dslogmanager import check_server_logs
 
@@ -70,10 +68,6 @@ class DSLogManagerTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
-
-    # endregion test:check_server_logs
-
-    # region test:download_server_logs
 
     def test_download_server_logs(self):
         from accelbyte_py_sdk.api.dslogmanager import download_server_logs
@@ -99,10 +93,6 @@ class DSLogManagerTestCase(IntegrationTestCase):
         self.assertTrue(exported_file_path.exists())
         self.assertGreater(exported_file_path.stat().st_size, 0)
 
-    # endregion test:download_server_logs
-
-    # region test:list_terminated_servers
-
     def test_list_terminated_servers(self):
         from accelbyte_py_sdk.api.dslogmanager import list_terminated_servers
 
@@ -113,7 +103,5 @@ class DSLogManagerTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
-
-    # endregion test:list_terminated_servers
 
     # end of file

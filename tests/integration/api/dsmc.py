@@ -19,8 +19,6 @@ class DSMCTestCase(IntegrationTestCase):
 
         super().tearDown()
 
-    # region test:export_config
-
     def test_export_config_v1(self):
         from accelbyte_py_sdk.api.dsmc import export_config_v1
         from accelbyte_py_sdk.api.dsmc.models import ResponseError
@@ -47,10 +45,6 @@ class DSMCTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
         self.assertTrue(exported_file_path.exists())
         self.assertGreater(exported_file_path.stat().st_size, 0)
-
-    # endregion test:export_config
-
-    # region test:update_deployment
 
     def test_update_deployment(self):
         from accelbyte_py_sdk.api.dsmc import get_deployment
@@ -87,10 +81,6 @@ class DSMCTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
-
-    # endregion test:update_deployment
-
-    # region test:update_deployment_with_missing_image
 
     def test_update_deployment_with_missing_image(self):
         from accelbyte_py_sdk.api.dsmc import get_deployment
@@ -129,8 +119,6 @@ class DSMCTestCase(IntegrationTestCase):
         self.assertIsNotNone(error, error)
         self.assertEqual(720510, error.error_code)
         self.assertIn("DS image not found", error.error_message)
-
-    # endregion test:update_deployment_with_missing_image
 
 
 class DSMCSessionTestCase(IntegrationTestCase):
@@ -260,8 +248,6 @@ class DSMCSessionTestCase(IntegrationTestCase):
 
         super().tearDown()
 
-    # region test:claim_server
-
     def test_claim_server(self):
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
@@ -300,10 +286,6 @@ class DSMCSessionTestCase(IntegrationTestCase):
         else:
             self.assertIsNone(error, error)
 
-    # endregion test:claim_server
-
-    # region test:create_session
-
     def test_create_session(self):
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
@@ -323,10 +305,6 @@ class DSMCSessionTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
-
-    # endregion test:create_session
-
-    # region test:get_session
 
     def test_get_session(self):
         if self.using_ags_starter:
@@ -348,7 +326,5 @@ class DSMCSessionTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
-
-    # endregion test:get_session
 
     # end of file
