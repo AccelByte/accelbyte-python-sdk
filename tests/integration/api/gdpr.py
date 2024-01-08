@@ -63,6 +63,9 @@ class GDPRTestCase(IntegrationTestCase):
     # region test:admin_get_user_personal_data_requests
 
     def test_admin_get_user_personal_data_requests(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+        
         from accelbyte_py_sdk.api.gdpr import admin_get_user_personal_data_requests
 
         # arrange
@@ -87,6 +90,9 @@ class GDPRTestCase(IntegrationTestCase):
     # region test:admin_submit_user_account_deletion_request
 
     def test_admin_submit_user_account_deletion_request(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+        
         from accelbyte_py_sdk.api.gdpr import admin_submit_user_account_deletion_request
 
         # arrange
@@ -111,6 +117,9 @@ class GDPRTestCase(IntegrationTestCase):
     # region test:delete_admin_email_configuration
 
     def test_delete_admin_email_configuration(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+        
         from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
@@ -138,6 +147,9 @@ class GDPRTestCase(IntegrationTestCase):
     # region test:get_admin_email_configuration
 
     def test_get_admin_email_configuration(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+        
         from accelbyte_py_sdk.api.gdpr import get_admin_email_configuration
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
@@ -162,6 +174,9 @@ class GDPRTestCase(IntegrationTestCase):
     # region test:save_admin_email_configuration
 
     def test_save_admin_email_configuration(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+        
         from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
 
@@ -184,6 +199,9 @@ class GDPRTestCase(IntegrationTestCase):
     # region test:update_admin_email_configuration
 
     def test_update_admin_email_configuration(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+        
         from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
         from accelbyte_py_sdk.api.gdpr import update_admin_email_configuration
 
