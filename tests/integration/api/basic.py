@@ -1,3 +1,4 @@
+from datetime import timedelta
 from typing import Optional
 
 from tests.integration.test_case import IntegrationTestCase
@@ -14,13 +15,21 @@ class BasicTestCase(IntegrationTestCase):
     def setUpClass(cls) -> None:
         super().setUpClass()
 
+        from accelbyte_py_sdk.services.auth import login_user
         from accelbyte_py_sdk.core import get_http_client
         from accelbyte_py_sdk.core import ConstantHttpBackoffPolicy
-        from accelbyte_py_sdk.core import MaxRetriesHttpRetryPolicy
+
+        # re-logins whenever a request fails
+        def re_login_retry_policy(
+                request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs
+        ) -> bool:
+            if cls.username and cls.password:
+                login_user(cls.username, cls.password)
+            return retries < 3
 
         http_client = get_http_client()
         http_client.backoff_policy = ConstantHttpBackoffPolicy(1.0)
-        http_client.retry_policy = MaxRetriesHttpRetryPolicy(3)
+        http_client.retry_policy = re_login_retry_policy
 
     def do_create_my_profile(self, body: Optional[UserProfilePrivateCreate] = None):
         from accelbyte_py_sdk.api.basic import create_my_profile
@@ -43,7 +52,6 @@ class BasicTestCase(IntegrationTestCase):
                 msg=f"Failed to tear down user profile. {str(error)}",
                 condition=error is not None,
             )
-            self.login_user()  # re-login
 
     def tearDown(self) -> None:
         self.do_delete_my_profile()
@@ -53,6 +61,7 @@ class BasicTestCase(IntegrationTestCase):
 
     def test_create_my_profile(self):
         # arrange
+        self.login_user()  # force re-login: token is revoked
 
         # act
         _, error = self.do_create_my_profile(body=self.user_profile_private_create)
