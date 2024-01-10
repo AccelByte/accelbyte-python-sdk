@@ -292,6 +292,9 @@ class IAMTestCase(IntegrationTestCase):
     # region test:admin_download_my_backup_codes_v4
 
     def test_admin_download_my_backup_codes_v4(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+
         from accelbyte_py_sdk.api.iam import admin_download_my_backup_codes_v4
         from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
@@ -320,6 +323,9 @@ class IAMTestCase(IntegrationTestCase):
     # region test:public_download_my_backup_codes_v4
 
     def test_public_download_my_backup_codes_v4(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+
         from accelbyte_py_sdk.api.iam import public_download_my_backup_codes_v4
         from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
