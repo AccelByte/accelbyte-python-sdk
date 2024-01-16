@@ -104,6 +104,21 @@ class TestModel(Model):
         }
 
 
+class SimpleOperation(Operation):
+    def __init__(self):
+        self.url = "/foo"
+
+    def get_all_params(self) -> dict:
+        return {}
+
+    def parse_response(self, code: int, content_type: str, content: Any):
+        return None, None
+
+    @staticmethod
+    def get_field_info() -> Dict[str, str]:
+        return {}
+
+
 class RequestTestCase(TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -657,6 +672,134 @@ class RequestTestCase(TestCase):
         proto, error = create_proto_from_operation(**kwargs)
         self.assertIn("access_token=foo", proto.headers.get("Cookie"))
         self.assertIsNone(error, error)
+
+
+class SdkTestCase(TestCase):
+    def tearDown(self) -> None:
+        from accelbyte_py_sdk import reset
+
+        reset()
+
+    def test_default_header_x_flight_id_is_initialized(self):
+        from accelbyte_py_sdk import initialize
+        from accelbyte_py_sdk.core import get_default_flight_id
+
+        # arrange
+
+        # act
+        initialize()
+
+        # assert
+        self.assertTrue(get_default_flight_id())
+
+    def test_default_header_x_flight_id_is_added_to_request(self):
+        from accelbyte_py_sdk import initialize
+        from accelbyte_py_sdk.core import SDK, get_default_flight_id
+        from accelbyte_py_sdk.core._header import HEADER_X_FLIGHT_ID_KEY
+
+        # arrange
+        default_flight_id = get_default_flight_id()
+
+        initialize()
+
+        # act
+        proto_request, error, proto_kwargs = SDK._pre_run_request(SimpleOperation())
+
+        # assert
+        self.assertIsNone(error)
+        self.assertTrue(proto_request.headers.has_flight_id())
+        self.assertEqual(
+            default_flight_id, proto_request.headers[HEADER_X_FLIGHT_ID_KEY]
+        )
+
+    def test_sdk_header_x_flight_id_is_added_to_request(self):
+        from accelbyte_py_sdk import initialize
+        from accelbyte_py_sdk.core import SDK, get_default_flight_id
+        from accelbyte_py_sdk.core._header import HEADER_X_FLIGHT_ID_KEY
+
+        # arrange
+        default_flight_id = get_default_flight_id()
+        sdk_flight_id = "foo"
+
+        initialize()
+
+        # act
+        SDK.update_flight_id(sdk_flight_id)
+        proto_request, error, proto_kwargs = SDK._pre_run_request(SimpleOperation())
+
+        # assert
+        self.assertIsNone(error)
+        self.assertTrue(proto_request.headers.has_flight_id())
+        self.assertTrue(default_flight_id)  # there is a default flight id...
+        self.assertEqual(
+            sdk_flight_id, proto_request.headers[HEADER_X_FLIGHT_ID_KEY]
+        )  # but the SDK flight id is used
+
+    def test_operation_header_x_flight_id_is_added_to_request(self):
+        from accelbyte_py_sdk import initialize
+        from accelbyte_py_sdk.core import SDK, get_default_flight_id
+        from accelbyte_py_sdk.core._header import HEADER_X_FLIGHT_ID_KEY
+
+        # arrange
+        default_flight_id = get_default_flight_id()
+        sdk_flight_id = "foo"
+        operation_flight_id = "bar"
+
+        initialize()
+
+        SDK.update_flight_id(sdk_flight_id)
+
+        # act
+        operation = SimpleOperation()
+        operation.x_flight_id = operation_flight_id
+        proto_request, error, proto_kwargs = SDK._pre_run_request(operation)
+
+        # assert
+        self.assertIsNone(error)
+        self.assertTrue(proto_request.headers.has_flight_id())
+        self.assertTrue(default_flight_id)  # there is a default flight id...
+        self.assertEqual(
+            sdk_flight_id, SDK.get_flight_id()
+        )  # there is SDK flight id...
+        self.assertEqual(
+            operation_flight_id, proto_request.headers[HEADER_X_FLIGHT_ID_KEY]
+        )  # but the operation flight id is used
+
+    def test_wrapper_header_x_flight_id_is_added_to_request(self):
+        from accelbyte_py_sdk import initialize
+        from accelbyte_py_sdk.core import SDK, get_default_flight_id
+        from accelbyte_py_sdk.core._header import HEADER_X_FLIGHT_ID_KEY
+
+        # arrange
+        default_flight_id = get_default_flight_id()
+        sdk_flight_id = "foo"
+        operation_flight_id = "bar"
+        wrapper_flight_id = "baz"
+
+        initialize()
+
+        SDK.update_flight_id(sdk_flight_id)
+        operation = SimpleOperation()
+        operation.x_flight_id = operation_flight_id
+
+        # act
+        proto_request, error, proto_kwargs = SDK._pre_run_request(
+            operation, x_flight_id=wrapper_flight_id
+        )
+
+        # assert
+        self.assertIsNone(error)
+        self.assertTrue(proto_request.headers.has_flight_id())
+        self.assertTrue(default_flight_id)  # there is a default flight id...
+        self.assertEqual(
+            sdk_flight_id, SDK.get_flight_id()
+        )  # there is SDK flight id...
+        self.assertEqual(
+            operation_flight_id, operation.x_flight_id
+        )  # there is operation flight id...
+        self.assertEqual(
+            wrapper_flight_id, proto_request.headers[HEADER_X_FLIGHT_ID_KEY]
+        )  # but the wrapper flight id is used
 
 
 class HttpBinRequestTestCase(TestCase):
