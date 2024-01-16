@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Chat Service Index (0.4.15)
+# AccelByte Gaming Services Chat Service Index (0.4.16)
 
 
 ## Operations

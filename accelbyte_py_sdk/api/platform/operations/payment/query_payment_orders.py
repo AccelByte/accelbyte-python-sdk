@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -57,7 +57,7 @@ class StatusEnum(StrEnum):
 class QueryPaymentOrders(Operation):
     """Query payment orders (queryPaymentOrders)
 
-    Query payment orders.
+    [Not Supported Yet In Starter] Query payment orders.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)

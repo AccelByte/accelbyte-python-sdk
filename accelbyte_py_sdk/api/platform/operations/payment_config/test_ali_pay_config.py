@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestAliPayConfig(Operation):
     """Test Alipay configuration (testAliPayConfig)
 
-    Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    [Not Supported Yet In Starter] Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

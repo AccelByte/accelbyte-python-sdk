@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,8 +34,8 @@ from ...models import ApiAccountCreateResponse
 from ...models import ResponseErrorResponse
 
 
-class AccountCreate(Operation):
-    """Create a new AMS account (AccountCreate)
+class AdminAccountCreate(Operation):
+    """create a new AMS account (AdminAccountCreate)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
 
@@ -142,11 +142,11 @@ class AccountCreate(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ApiAccountCreateRequest) -> AccountCreate:
+    def with_body(self, value: ApiAccountCreateRequest) -> AdminAccountCreate:
         self.body = value
         return self
 
-    def with_namespace(self, value: str) -> AccountCreate:
+    def with_namespace(self, value: str) -> AdminAccountCreate:
         self.namespace = value
         return self
 
@@ -220,7 +220,7 @@ class AccountCreate(Operation):
     @classmethod
     def create(
         cls, body: ApiAccountCreateRequest, namespace: str, **kwargs
-    ) -> AccountCreate:
+    ) -> AdminAccountCreate:
         instance = cls()
         instance.body = body
         instance.namespace = namespace
@@ -229,7 +229,7 @@ class AccountCreate(Operation):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> AccountCreate:
+    ) -> AdminAccountCreate:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
             instance.body = ApiAccountCreateRequest.create_from_dict(

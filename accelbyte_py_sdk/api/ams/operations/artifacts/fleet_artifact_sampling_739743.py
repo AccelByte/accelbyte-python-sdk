@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseErrorResponse
 
 
 class FleetArtifactSamplingRulesGet(Operation):
-    """Get the sampling rules for a fleet (FleetArtifactSamplingRulesGet)
+    """get the sampling rules for a fleet (FleetArtifactSamplingRulesGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 

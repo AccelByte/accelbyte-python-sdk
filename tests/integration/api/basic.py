@@ -21,7 +21,13 @@ class BasicTestCase(IntegrationTestCase):
 
         # re-logins whenever a request fails
         def re_login_retry_policy(
-                request, response, /, *, retries: int = 0, elapsed: Optional[timedelta] = None, **kwargs
+            request,
+            response,
+            /,
+            *,
+            retries: int = 0,
+            elapsed: Optional[timedelta] = None,
+            **kwargs,
         ) -> bool:
             if cls.username and cls.password:
                 login_user(cls.username, cls.password)

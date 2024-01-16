@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,96 +36,47 @@ from ...models import ModelsResponseError
 class AdminPutGameRecordConcurrentHandlerV1(Operation):
     """Create or replace game record (adminPutGameRecordConcurrentHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    --------------------|---------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
-
-
-
     ## Description
-
-
 
     This endpoints will create new game record or replace the existing game record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Reserved Word
 
-
-
-    Reserved Word List: __META
+    Reserved Word List: **__META**
 
     The reserved word cannot be used as a field in record value,
     If still defining the field when creating or updating the record, it will be ignored.
 
 
-
-
     ## Parameters Notes
-
-
     1. set_by (default: CLIENT, type: string)
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
@@ -134,25 +85,15 @@ class AdminPutGameRecordConcurrentHandlerV1(Operation):
     Time format style: RFC3339
     3. value
     Json
-     Request Body Example:
-
-
-
-
-            {
-                "set_by": "SERVER",
-                "value": {},
-                "updatedAt": "2022-03-17T10:42:15.444Z"
-            }
-
-
-
-
-
-
+    **Request Body Example:**
+    ```
+    {
+    "set_by": "SERVER",
+    "value": {},
+    "updatedAt": "2022-03-17T10:42:15.444Z"
+    }
+    ```
     ## Optimistic Concurrency Control
-
-
 
     This endpoint implement optimistic concurrency control to avoid race condition.
     If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
@@ -160,12 +101,7 @@ class AdminPutGameRecordConcurrentHandlerV1(Operation):
     Otherwise, the server will process the request.
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-
         - CLIENT []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key}

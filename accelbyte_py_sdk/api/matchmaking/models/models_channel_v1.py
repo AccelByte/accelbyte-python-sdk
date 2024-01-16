@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.28.0)
+# AccelByte Gaming Services Matchmaking Service (2.29.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,6 +66,8 @@ class ModelsChannelV1(Model):
 
         social_matchmaking: (socialMatchmaking) REQUIRED bool
 
+        sub_gamemode_selection: (sub_gamemode_selection) REQUIRED str
+
         updated_at: (updatedAt) REQUIRED str
 
         use_sub_gamemode: (use_sub_gamemode) REQUIRED bool
@@ -91,6 +93,7 @@ class ModelsChannelV1(Model):
     session_queue_timeout_seconds: int  # REQUIRED
     slug: str  # REQUIRED
     social_matchmaking: bool  # REQUIRED
+    sub_gamemode_selection: str  # REQUIRED
     updated_at: str  # REQUIRED
     use_sub_gamemode: bool  # REQUIRED
     ticket_observability_enable: bool  # OPTIONAL
@@ -161,6 +164,10 @@ class ModelsChannelV1(Model):
 
     def with_social_matchmaking(self, value: bool) -> ModelsChannelV1:
         self.social_matchmaking = value
+        return self
+
+    def with_sub_gamemode_selection(self, value: str) -> ModelsChannelV1:
+        self.sub_gamemode_selection = value
         return self
 
     def with_updated_at(self, value: str) -> ModelsChannelV1:
@@ -249,6 +256,10 @@ class ModelsChannelV1(Model):
             result["socialMatchmaking"] = bool(self.social_matchmaking)
         elif include_empty:
             result["socialMatchmaking"] = False
+        if hasattr(self, "sub_gamemode_selection"):
+            result["sub_gamemode_selection"] = str(self.sub_gamemode_selection)
+        elif include_empty:
+            result["sub_gamemode_selection"] = ""
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -288,6 +299,7 @@ class ModelsChannelV1(Model):
         session_queue_timeout_seconds: int,
         slug: str,
         social_matchmaking: bool,
+        sub_gamemode_selection: str,
         updated_at: str,
         use_sub_gamemode: bool,
         ticket_observability_enable: Optional[bool] = None,
@@ -310,6 +322,7 @@ class ModelsChannelV1(Model):
         instance.session_queue_timeout_seconds = session_queue_timeout_seconds
         instance.slug = slug
         instance.social_matchmaking = social_matchmaking
+        instance.sub_gamemode_selection = sub_gamemode_selection
         instance.updated_at = updated_at
         instance.use_sub_gamemode = use_sub_gamemode
         if ticket_observability_enable is not None:
@@ -414,6 +427,13 @@ class ModelsChannelV1(Model):
             instance.social_matchmaking = bool(dict_["socialMatchmaking"])
         elif include_empty:
             instance.social_matchmaking = False
+        if (
+            "sub_gamemode_selection" in dict_
+            and dict_["sub_gamemode_selection"] is not None
+        ):
+            instance.sub_gamemode_selection = str(dict_["sub_gamemode_selection"])
+        elif include_empty:
+            instance.sub_gamemode_selection = ""
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -486,6 +506,7 @@ class ModelsChannelV1(Model):
             "sessionQueueTimeoutSeconds": "session_queue_timeout_seconds",
             "slug": "slug",
             "socialMatchmaking": "social_matchmaking",
+            "sub_gamemode_selection": "sub_gamemode_selection",
             "updatedAt": "updated_at",
             "use_sub_gamemode": "use_sub_gamemode",
             "ticket_observability_enable": "ticket_observability_enable",
@@ -510,6 +531,7 @@ class ModelsChannelV1(Model):
             "sessionQueueTimeoutSeconds": True,
             "slug": True,
             "socialMatchmaking": True,
+            "sub_gamemode_selection": True,
             "updatedAt": True,
             "use_sub_gamemode": True,
             "ticket_observability_enable": False,

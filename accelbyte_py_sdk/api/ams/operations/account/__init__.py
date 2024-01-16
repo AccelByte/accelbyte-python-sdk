@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.7.1"
+__version__ = "1.8.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-from .account_create import AccountCreate
 from .account_get import AccountGet
-from .account_link import AccountLink
-from .account_link_token_get import AccountLinkTokenGet
+from .admin_account_create import AdminAccountCreate
+from .admin_account_get import AdminAccountGet
+from .admin_account_link_token_get import AdminAccountLinkTokenGet
+from .admin_account_link_token_post import AdminAccountLinkTokenPost

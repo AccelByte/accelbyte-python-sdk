@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,8 +27,6 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.api_time import ApiTime
-
 
 class ApiQoSServer(Model):
     """Api qo S server (api.QoSServer)
@@ -38,7 +36,7 @@ class ApiQoSServer(Model):
 
         ip: (ip) REQUIRED str
 
-        last_update: (last_update) REQUIRED ApiTime
+        last_update: (last_update) REQUIRED str
 
         port: (port) REQUIRED int
 
@@ -51,7 +49,7 @@ class ApiQoSServer(Model):
 
     alias: str  # REQUIRED
     ip: str  # REQUIRED
-    last_update: ApiTime  # REQUIRED
+    last_update: str  # REQUIRED
     port: int  # REQUIRED
     region: str  # REQUIRED
     status: str  # REQUIRED
@@ -68,7 +66,7 @@ class ApiQoSServer(Model):
         self.ip = value
         return self
 
-    def with_last_update(self, value: ApiTime) -> ApiQoSServer:
+    def with_last_update(self, value: str) -> ApiQoSServer:
         self.last_update = value
         return self
 
@@ -99,11 +97,9 @@ class ApiQoSServer(Model):
         elif include_empty:
             result["ip"] = ""
         if hasattr(self, "last_update"):
-            result["last_update"] = self.last_update.to_dict(
-                include_empty=include_empty
-            )
+            result["last_update"] = str(self.last_update)
         elif include_empty:
-            result["last_update"] = ApiTime()
+            result["last_update"] = ""
         if hasattr(self, "port"):
             result["port"] = int(self.port)
         elif include_empty:
@@ -127,7 +123,7 @@ class ApiQoSServer(Model):
         cls,
         alias: str,
         ip: str,
-        last_update: ApiTime,
+        last_update: str,
         port: int,
         region: str,
         status: str,
@@ -156,11 +152,9 @@ class ApiQoSServer(Model):
         elif include_empty:
             instance.ip = ""
         if "last_update" in dict_ and dict_["last_update"] is not None:
-            instance.last_update = ApiTime.create_from_dict(
-                dict_["last_update"], include_empty=include_empty
-            )
+            instance.last_update = str(dict_["last_update"])
         elif include_empty:
-            instance.last_update = ApiTime()
+            instance.last_update = ""
         if "port" in dict_ and dict_["port"] is not None:
             instance.port = int(dict_["port"])
         elif include_empty:

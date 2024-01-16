@@ -66,21 +66,7 @@ def admin_bulk_get_admin_game_record_v1(
 ):
     """Bulk get admin game records (adminBulkGetAdminGameRecordV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Bulk get admin game records. Maximum key per request 20.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/bulk
@@ -132,21 +118,7 @@ async def admin_bulk_get_admin_game_record_v1_async(
 ):
     """Bulk get admin game records (adminBulkGetAdminGameRecordV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Bulk get admin game records. Maximum key per request 20.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/bulk
@@ -201,21 +173,7 @@ def admin_bulk_get_admin_player_record_v1(
 ):
     """Bulk get admin player records (adminBulkGetAdminPlayerRecordV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-    --------------------|---------------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Bulk get admin player records. Maximum key per request 20.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/bulk
@@ -271,21 +229,7 @@ async def admin_bulk_get_admin_player_record_v1_async(
 ):
     """Bulk get admin player records (adminBulkGetAdminPlayerRecordV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-    --------------------|---------------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Bulk get admin player records. Maximum key per request 20.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/bulk
@@ -342,17 +286,7 @@ def admin_delete_admin_game_record_v1(
 ):
     """Delete admin game record (adminDeleteAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
-
-    Required scope: `social`
-
     This endpoints delete game record in namespace-level
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -402,17 +336,7 @@ async def admin_delete_admin_game_record_v1_async(
 ):
     """Delete admin game record (adminDeleteAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
-
-    Required scope: `social`
-
     This endpoints delete game record in namespace-level
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -465,17 +389,7 @@ def admin_delete_admin_player_record_v1(
 ):
     """Delete admin player record (adminDeleteAdminPlayerRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
-
-    Required scope: `social`
-
     Delete a record (arbitrary JSON data) in user-level with given key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -529,17 +443,7 @@ async def admin_delete_admin_player_record_v1_async(
 ):
     """Delete admin player record (adminDeleteAdminPlayerRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
-
-    Required scope: `social`
-
     Delete a record (arbitrary JSON data) in user-level with given key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -594,17 +498,7 @@ def admin_get_admin_game_record_v1(
 ):
     """Get admin game record (adminGetAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a record by its key in namespace-level.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -654,17 +548,7 @@ async def admin_get_admin_game_record_v1_async(
 ):
     """Get admin game record (adminGetAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a record by its key in namespace-level.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -717,17 +601,7 @@ def admin_get_admin_player_record_v1(
 ):
     """Get admin player record (adminGetAdminPlayerRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a admin record in user-level (arbitrary JSON data) by its key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -781,17 +655,7 @@ async def admin_get_admin_player_record_v1_async(
 ):
     """Get admin player record (adminGetAdminPlayerRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a admin record in user-level (arbitrary JSON data) by its key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -848,17 +712,7 @@ def admin_list_admin_game_record_v1(
 ):
     """List key of admin game record (adminListAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Retrieve list of records key by namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords
@@ -916,17 +770,7 @@ async def admin_list_admin_game_record_v1_async(
 ):
     """List key of admin game record (adminListAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Retrieve list of records key by namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords
@@ -986,17 +830,7 @@ def admin_list_admin_user_records_v1(
 ):
     """List key of admin player record (adminListAdminUserRecordsV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Retrieve list of admin player records key and userID under given namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords
@@ -1054,17 +888,7 @@ async def admin_list_admin_user_records_v1_async(
 ):
     """List key of admin player record (adminListAdminUserRecordsV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Retrieve list of admin player records key and userID under given namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords
@@ -1123,97 +947,48 @@ def admin_post_admin_game_record_v1(
 ):
     """Create or append admin game record (adminPostAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new admin game record or append the existing admin game record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
+    - `{ "": "value" }`
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -1267,97 +1042,48 @@ async def admin_post_admin_game_record_v1_async(
 ):
     """Create or append admin game record (adminPostAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new admin game record or append the existing admin game record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
+    - `{ "": "value" }`
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -1414,97 +1140,48 @@ def admin_post_player_admin_record_v1(
 ):
     """Create or append admin player record (adminPostPlayerAdminRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new admin player record or append the existing admin game record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
+    - `{ "": "value" }`
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -1562,97 +1239,48 @@ async def admin_post_player_admin_record_v1_async(
 ):
     """Create or append admin player record (adminPostPlayerAdminRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new admin player record or append the existing admin game record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
+    - `{ "": "value" }`
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -1711,74 +1339,35 @@ def admin_put_admin_game_record_v1(
 ):
     """Create or replace admin game record (adminPutAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new admin game record or replace the existing admin game record.
 
-     Append example:
+    **Append example:**
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
+    - `{ "": "value" }`
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -1832,74 +1421,35 @@ async def admin_put_admin_game_record_v1_async(
 ):
     """Create or replace admin game record (adminPutAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new admin game record or replace the existing admin game record.
 
-     Append example:
+    **Append example:**
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
+    - `{ "": "value" }`
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -1956,75 +1506,36 @@ def admin_put_admin_player_record_v1(
 ):
     """Create or replace admin player record (adminPutAdminPlayerRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new admin player record or replace the existing admin player record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
+    - `{ "": "value" }`
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -2082,75 +1593,36 @@ async def admin_put_admin_player_record_v1_async(
 ):
     """Create or replace admin player record (adminPutAdminPlayerRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new admin player record or replace the existing admin player record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
+    - `{ "": "value" }`
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -2209,21 +1681,7 @@ def bulk_get_admin_player_record_by_user_ids_v1(
 ):
     """Bulk get admin player record by multiple user ID (bulkGetAdminPlayerRecordByUserIdsV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Bulk get admin player record by userIds, max allowed 20 at a time.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/adminrecords/{key}/bulk
@@ -2279,21 +1737,7 @@ async def bulk_get_admin_player_record_by_user_ids_v1_async(
 ):
     """Bulk get admin player record by multiple user ID (bulkGetAdminPlayerRecordByUserIdsV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Bulk get admin player record by userIds, max allowed 20 at a time.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/adminrecords/{key}/bulk

@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,9 +30,11 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.ams import account_create as account_create_internal
-from accelbyte_py_sdk.api.ams.models import ApiAccountCreateRequest
-from accelbyte_py_sdk.api.ams.models import ApiAccountCreateResponse
+from accelbyte_py_sdk.api.ams import (
+    admin_account_link_token_post as admin_account_link_token_post_internal,
+)
+from accelbyte_py_sdk.api.ams.models import ApiAccountLinkRequest
+from accelbyte_py_sdk.api.ams.models import ApiAccountLinkResponse
 from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 
@@ -42,7 +44,7 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def account_create(
+def admin_account_link_token_post(
     body: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -50,7 +52,7 @@ def account_create(
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(account_create_internal.__doc__)
+        click.echo(admin_account_link_token_post_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
@@ -60,18 +62,18 @@ def account_create(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ApiAccountCreateRequest.create_from_dict(body_json)
+            body = ApiAccountLinkRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = account_create_internal(
+    result, error = admin_account_link_token_post_internal(
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"AccountCreate failed: {str(error)}")
+        raise Exception(f"AdminAccountLinkTokenPost failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-account_create.operation_id = "AccountCreate"
-account_create.is_deprecated = False
+admin_account_link_token_post.operation_id = "AdminAccountLinkTokenPost"
+admin_account_link_token_post.is_deprecated = False

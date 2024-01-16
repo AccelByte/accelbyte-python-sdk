@@ -53,7 +53,7 @@ def fleet_server_history(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get history records of a specific dedicated server for a fleet (FleetServerHistory)
+    """get history records of a dedicated server in a fleet (FleetServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -134,7 +134,7 @@ async def fleet_server_history_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get history records of a specific dedicated server for a fleet (FleetServerHistory)
+    """get history records of a dedicated server in a fleet (FleetServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -210,7 +210,7 @@ def fleet_server_info(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get information about a specific dedicated server (FleetServerInfo)
+    """get information about a dedicated server (FleetServerInfo)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -263,7 +263,7 @@ async def fleet_server_info_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get information about a specific dedicated server (FleetServerInfo)
+    """get information about a dedicated server (FleetServerInfo)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -318,7 +318,7 @@ def server_history(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get history records of a specific dedicated server (ServerHistory)
+    """get history records of a dedicated server (ServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -371,7 +371,7 @@ async def server_history_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get history records of a specific dedicated server (ServerHistory)
+    """get history records of a dedicated server (ServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 

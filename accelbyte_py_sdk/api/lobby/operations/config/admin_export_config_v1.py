@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Lobby Server (3.33.0)
+# AccelByte Gaming Services Lobby Server (3.33.2)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -39,7 +39,111 @@ class AdminExportConfigV1(Operation):
         Export lobby configuration to a json file. The file can then be imported from the /import endpoint.
 
         JSON Schema of the exported file:
-        {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"int64"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"int64"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"int64"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"int64"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"int64"},"unregisterDelay":{"type":"integer","format":"int64"}}}
+        {
+        "required": [
+        "namespace",
+        "entitlementItemID",
+        "chatRateLimitDuration",
+        "unregisterDelay",
+        "generalRateLimitDuration",
+        "autoKickOnDisconnectDelay",
+        "chatRateLimitBurst",
+        "generalRateLimitBurst",
+        "maxPartyMember",
+        "autoKickOnDisconnect",
+        "profanityFilter",
+        "enableChat",
+        "entitlementCheck",
+        "cancelTicketOnDisconnect",
+        "concurrentUsersLimit",
+        "readyConsentTimeout",
+        "disableInvitationOnJoinParty",
+        "allowJoinPartyDuringMatchmaking",
+        "allowInviteNonConnectedUser",
+        "keepPresenceActivityOnDisconnect",
+        "maxDSWaitTime",
+        "maxFriendsLimit"
+        ],
+        "properties": {
+        "allowInviteNonConnectedUser": {
+        "type": "boolean"
+        },
+        "allowJoinPartyDuringMatchmaking": {
+        "type": "boolean"
+        },
+        "autoKickOnDisconnect": {
+        "type": "boolean"
+        },
+        "autoKickOnDisconnectDelay": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "cancelTicketOnDisconnect": {
+        "type": "boolean"
+        },
+        "chatRateLimitBurst": {
+        "type": "integer",
+        "format": "int32"
+        },
+        "chatRateLimitDuration": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "concurrentUsersLimit": {
+        "type": "integer",
+        "format": "int32"
+        },
+        "disableInvitationOnJoinParty": {
+        "type": "boolean"
+        },
+        "enableChat": {
+        "type": "boolean"
+        },
+        "entitlementCheck": {
+        "type": "boolean"
+        },
+        "entitlementItemID": {
+        "type": "string"
+        },
+        "generalRateLimitBurst": {
+        "type": "integer",
+        "format": "int32"
+        },
+        "generalRateLimitDuration": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "keepPresenceActivityOnDisconnect": {
+        "type": "boolean"
+        },
+        "maxDSWaitTime": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "maxFriendsLimit": {
+        "type": "integer",
+        "format": "int32"
+        },
+        "maxPartyMember": {
+        "type": "integer",
+        "format": "int32"
+        },
+        "namespace": {
+        "type": "string"
+        },
+        "profanityFilter": {
+        "type": "boolean"
+        },
+        "readyConsentTimeout": {
+        "type": "integer",
+        "format": "int64"
+        },
+        "unregisterDelay": {
+        "type": "integer",
+        "format": "int64"
+        }
+        }
+        }
 
         Properties:
             url: /lobby/v1/admin/config/namespaces/{namespace}/export
@@ -59,7 +163,111 @@ class AdminExportConfigV1(Operation):
         Responses:
             200: OK - Any (OK
     JSON Schema of the exported file:
-    {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"int64"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"int64"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"int64"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"int64"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"int64"},"unregisterDelay":{"type":"integer","format":"int64"}}})
+    {
+     "required": [
+      "namespace",
+      "entitlementItemID",
+      "chatRateLimitDuration",
+      "unregisterDelay",
+      "generalRateLimitDuration",
+      "autoKickOnDisconnectDelay",
+      "chatRateLimitBurst",
+      "generalRateLimitBurst",
+      "maxPartyMember",
+      "autoKickOnDisconnect",
+      "profanityFilter",
+      "enableChat",
+      "entitlementCheck",
+      "cancelTicketOnDisconnect",
+      "concurrentUsersLimit",
+      "readyConsentTimeout",
+      "disableInvitationOnJoinParty",
+      "allowJoinPartyDuringMatchmaking",
+      "allowInviteNonConnectedUser",
+      "keepPresenceActivityOnDisconnect",
+      "maxDSWaitTime",
+      "maxFriendsLimit"
+     ],
+     "properties": {
+      "allowInviteNonConnectedUser": {
+       "type": "boolean"
+      },
+      "allowJoinPartyDuringMatchmaking": {
+       "type": "boolean"
+      },
+      "autoKickOnDisconnect": {
+       "type": "boolean"
+      },
+      "autoKickOnDisconnectDelay": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "cancelTicketOnDisconnect": {
+       "type": "boolean"
+      },
+      "chatRateLimitBurst": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "chatRateLimitDuration": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "concurrentUsersLimit": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "disableInvitationOnJoinParty": {
+       "type": "boolean"
+      },
+      "enableChat": {
+       "type": "boolean"
+      },
+      "entitlementCheck": {
+       "type": "boolean"
+      },
+      "entitlementItemID": {
+       "type": "string"
+      },
+      "generalRateLimitBurst": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "generalRateLimitDuration": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "keepPresenceActivityOnDisconnect": {
+       "type": "boolean"
+      },
+      "maxDSWaitTime": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "maxFriendsLimit": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "maxPartyMember": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "namespace": {
+       "type": "string"
+      },
+      "profanityFilter": {
+       "type": "boolean"
+      },
+      "readyConsentTimeout": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "unregisterDelay": {
+       "type": "integer",
+       "format": "int64"
+      }
+     }
+    })
 
             401: Unauthorized - ResponseError (Unauthorized)
 
@@ -162,7 +370,111 @@ class AdminExportConfigV1(Operation):
 
                 200: OK - Any (OK
         JSON Schema of the exported file:
-        {"required":["namespace","entitlementItemID","chatRateLimitDuration","unregisterDelay","generalRateLimitDuration","autoKickOnDisconnectDelay","chatRateLimitBurst","generalRateLimitBurst","maxPartyMember","autoKickOnDisconnect","profanityFilter","enableChat","entitlementCheck","cancelTicketOnDisconnect","concurrentUsersLimit","readyConsentTimeout","disableInvitationOnJoinParty","allowJoinPartyDuringMatchmaking","allowInviteNonConnectedUser","keepPresenceActivityOnDisconnect","maxDSWaitTime","maxFriendsLimit"],"properties":{"allowInviteNonConnectedUser":{"type":"boolean"},"allowJoinPartyDuringMatchmaking":{"type":"boolean"},"autoKickOnDisconnect":{"type":"boolean"},"autoKickOnDisconnectDelay":{"type":"integer","format":"int64"},"cancelTicketOnDisconnect":{"type":"boolean"},"chatRateLimitBurst":{"type":"integer","format":"int32"},"chatRateLimitDuration":{"type":"integer","format":"int64"},"concurrentUsersLimit":{"type":"integer","format":"int32"},"disableInvitationOnJoinParty":{"type":"boolean"},"enableChat":{"type":"boolean"},"entitlementCheck":{"type":"boolean"},"entitlementItemID":{"type":"string"},"generalRateLimitBurst":{"type":"integer","format":"int32"},"generalRateLimitDuration":{"type":"integer","format":"int64"},"keepPresenceActivityOnDisconnect":{"type":"boolean"},"maxDSWaitTime":{"type":"integer","format":"int64"},"maxFriendsLimit":{"type":"integer","format":"int32"},"maxPartyMember":{"type":"integer","format":"int32"},"namespace":{"type":"string"},"profanityFilter":{"type":"boolean"},"readyConsentTimeout":{"type":"integer","format":"int64"},"unregisterDelay":{"type":"integer","format":"int64"}}})
+        {
+         "required": [
+          "namespace",
+          "entitlementItemID",
+          "chatRateLimitDuration",
+          "unregisterDelay",
+          "generalRateLimitDuration",
+          "autoKickOnDisconnectDelay",
+          "chatRateLimitBurst",
+          "generalRateLimitBurst",
+          "maxPartyMember",
+          "autoKickOnDisconnect",
+          "profanityFilter",
+          "enableChat",
+          "entitlementCheck",
+          "cancelTicketOnDisconnect",
+          "concurrentUsersLimit",
+          "readyConsentTimeout",
+          "disableInvitationOnJoinParty",
+          "allowJoinPartyDuringMatchmaking",
+          "allowInviteNonConnectedUser",
+          "keepPresenceActivityOnDisconnect",
+          "maxDSWaitTime",
+          "maxFriendsLimit"
+         ],
+         "properties": {
+          "allowInviteNonConnectedUser": {
+           "type": "boolean"
+          },
+          "allowJoinPartyDuringMatchmaking": {
+           "type": "boolean"
+          },
+          "autoKickOnDisconnect": {
+           "type": "boolean"
+          },
+          "autoKickOnDisconnectDelay": {
+           "type": "integer",
+           "format": "int64"
+          },
+          "cancelTicketOnDisconnect": {
+           "type": "boolean"
+          },
+          "chatRateLimitBurst": {
+           "type": "integer",
+           "format": "int32"
+          },
+          "chatRateLimitDuration": {
+           "type": "integer",
+           "format": "int64"
+          },
+          "concurrentUsersLimit": {
+           "type": "integer",
+           "format": "int32"
+          },
+          "disableInvitationOnJoinParty": {
+           "type": "boolean"
+          },
+          "enableChat": {
+           "type": "boolean"
+          },
+          "entitlementCheck": {
+           "type": "boolean"
+          },
+          "entitlementItemID": {
+           "type": "string"
+          },
+          "generalRateLimitBurst": {
+           "type": "integer",
+           "format": "int32"
+          },
+          "generalRateLimitDuration": {
+           "type": "integer",
+           "format": "int64"
+          },
+          "keepPresenceActivityOnDisconnect": {
+           "type": "boolean"
+          },
+          "maxDSWaitTime": {
+           "type": "integer",
+           "format": "int64"
+          },
+          "maxFriendsLimit": {
+           "type": "integer",
+           "format": "int32"
+          },
+          "maxPartyMember": {
+           "type": "integer",
+           "format": "int32"
+          },
+          "namespace": {
+           "type": "string"
+          },
+          "profanityFilter": {
+           "type": "boolean"
+          },
+          "readyConsentTimeout": {
+           "type": "integer",
+           "format": "int64"
+          },
+          "unregisterDelay": {
+           "type": "integer",
+           "format": "int64"
+          }
+         }
+        })
 
                 401: Unauthorized - ResponseError (Unauthorized)
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -43,6 +43,7 @@ class CreateReward(Operation):
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
       *  Returns : created reward data
+      *  Acceptable values for rewardItem's identityType are : ITEM_ID or ITEM_SKU
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
@@ -67,11 +68,11 @@ class CreateReward(Operation):
     Responses:
         200: OK - RewardInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (34023: Reward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate)
+        400: Bad Request - ErrorEntity (34023: Reward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate | 34027: Reward Item [{sku}] with item type [{itemType}] is not supported for duration or endDate)
 
-        404: Not Found - ErrorEntity (34042: Reward item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (34042: Reward item [{itemId}] does not exist in namespace [{namespace}] | 34044: Reward item [{sku}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (34071: Reward with code [{rewardCode}] already exists in namespace [{namespace}] | 34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}] | 34074: Reward Item [{itemId}] duration and end date can’t be set at the same time)
+        409: Conflict - ErrorEntity (34071: Reward with code [{rewardCode}] already exists in namespace [{namespace}] | 34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}] | 34074: Reward Item [{itemId}] duration and end date can’t be set at the same time | 34076: Reward Item [{sku}] duration and end date can’t be set at the same time)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -188,11 +189,11 @@ class CreateReward(Operation):
 
         200: OK - RewardInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (34023: Reward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate)
+        400: Bad Request - ErrorEntity (34023: Reward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate | 34027: Reward Item [{sku}] with item type [{itemType}] is not supported for duration or endDate)
 
-        404: Not Found - ErrorEntity (34042: Reward item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (34042: Reward item [{itemId}] does not exist in namespace [{namespace}] | 34044: Reward item [{sku}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (34071: Reward with code [{rewardCode}] already exists in namespace [{namespace}] | 34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}] | 34074: Reward Item [{itemId}] duration and end date can’t be set at the same time)
+        409: Conflict - ErrorEntity (34071: Reward with code [{rewardCode}] already exists in namespace [{namespace}] | 34072: Duplicate reward condition [{rewardConditionName}] found in reward [{rewardCode}] | 34074: Reward Item [{itemId}] duration and end date can’t be set at the same time | 34076: Reward Item [{sku}] duration and end date can’t be set at the same time)
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 

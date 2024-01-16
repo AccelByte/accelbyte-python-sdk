@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,9 @@ from ...models import ResponseErrorResponse
 
 
 class ImageList(Operation):
-    """Get a list of images which exist (uploaded, uploading, or building) in the linked account.  Fails if no account is linked (ImageList)
+    """get a list of existing images (ImageList)
+
+    Returns images which exist (uploaded, uploading, or building) in the linked account. This route fails if no account is linked
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 

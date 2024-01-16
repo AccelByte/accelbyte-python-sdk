@@ -57,7 +57,7 @@ def fleet_claim_by_id(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """claim a Dedicated Server from a specific fleet (FleetClaimByID)
+    """claim a dedicated server from a fleet (FleetClaimByID)
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
@@ -116,7 +116,7 @@ async def fleet_claim_by_id_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """claim a Dedicated Server from a specific fleet (FleetClaimByID)
+    """claim a dedicated server from a fleet (FleetClaimByID)
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
@@ -176,7 +176,9 @@ def fleet_claim_by_keys(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """claim a Dedicated Server from fleets with matching claim keys (FleetClaimByKeys)
+    """claim a dedicated server (FleetClaimByKeys)
+
+    Claim a dedicated server from fleets with matching claim keys
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
@@ -231,7 +233,9 @@ async def fleet_claim_by_keys_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """claim a Dedicated Server from fleets with matching claim keys (FleetClaimByKeys)
+    """claim a dedicated server (FleetClaimByKeys)
+
+    Claim a dedicated server from fleets with matching claim keys
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
@@ -288,7 +292,9 @@ def fleet_create(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a fleet. Optionally, sampling rules for the fleet can also be specified (FleetCreate)
+    """create a fleet (FleetCreate)
+
+    Optionally, sampling rules for the fleet can also be specified
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
@@ -341,7 +347,9 @@ async def fleet_create_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Create a fleet. Optionally, sampling rules for the fleet can also be specified (FleetCreate)
+    """create a fleet (FleetCreate)
+
+    Optionally, sampling rules for the fleet can also be specified
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
@@ -611,7 +619,7 @@ def fleet_list(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get a list of all fleets in the namespace (FleetList)
+    """list all fleets in a namespace (FleetList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -654,7 +662,7 @@ async def fleet_list_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get a list of all fleets in the namespace (FleetList)
+    """list all fleets in a namespace (FleetList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -700,7 +708,7 @@ def fleet_servers(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get server details and counts for a fleet (FleetServers)
+    """get server details & counts for a fleet (FleetServers)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -753,7 +761,7 @@ async def fleet_servers_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get server details and counts for a fleet (FleetServers)
+    """get server details & counts for a fleet (FleetServers)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -809,7 +817,9 @@ def fleet_update(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a fleet – overrides current data. Optionally, sampling rules for the fleet can also be updated (FleetUpdate)
+    """update a fleet -– overrides current data (FleetUpdate)
+
+    Optionally, sampling rules for the fleet can also be updated
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
 
@@ -868,7 +878,9 @@ async def fleet_update_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a fleet – overrides current data. Optionally, sampling rules for the fleet can also be updated (FleetUpdate)
+    """update a fleet -– overrides current data (FleetUpdate)
+
+    Optionally, sampling rules for the fleet can also be updated
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
 

@@ -57,6 +57,7 @@ from ..operations.public_player_binary_record import PostPlayerBinaryPresignedUR
 from ..operations.public_player_binary_record import PostPlayerBinaryRecordV1
 from ..operations.public_player_binary_record import PutPlayerBinaryRecorMetadataV1
 from ..operations.public_player_binary_record import PutPlayerBinaryRecordV1
+from ..models import ModelsPlayerBinaryRecordResponseSetByEnum
 
 
 @same_doc_as(BulkGetMyBinaryRecordV1)
@@ -68,14 +69,8 @@ def bulk_get_my_binary_record_v1(
 ):
     """Get player records bulk (bulkGetMyBinaryRecordV1)
 
-    Required valid user token
-    Required scope: `social`
-
     Retrieve player record key and payload in bulk under given namespace.
     Maximum bulk key limit per request 20
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/me/binaries/bulk
@@ -125,14 +120,8 @@ async def bulk_get_my_binary_record_v1_async(
 ):
     """Get player records bulk (bulkGetMyBinaryRecordV1)
 
-    Required valid user token
-    Required scope: `social`
-
     Retrieve player record key and payload in bulk under given namespace.
     Maximum bulk key limit per request 20
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/me/binaries/bulk
@@ -185,17 +174,8 @@ def bulk_get_other_player_public_binary_records_v1(
 ):
     """Bulk get other player public binary record (bulkGetOtherPlayerPublicBinaryRecordsV1)
 
-    Required Permission: `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    Required Scope: `social`
-
     Retrieve other player public binary record in bulk under given namespace.
     Maximum bulk key limit per request 20
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/public/bulk
@@ -249,17 +229,8 @@ async def bulk_get_other_player_public_binary_records_v1_async(
 ):
     """Bulk get other player public binary record (bulkGetOtherPlayerPublicBinaryRecordsV1)
 
-    Required Permission: `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    Required Scope: `social`
-
     Retrieve other player public binary record in bulk under given namespace.
     Maximum bulk key limit per request 20
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/public/bulk
@@ -315,17 +286,8 @@ def bulk_get_player_public_binary_records_v1(
 ):
     """Bulk get player public records (bulkGetPlayerPublicBinaryRecordsV1)
 
-    Required Permission: `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    Required Scope: `social`
-
     Bulk get other player's public binary record by userIds, max allowed 20 at a time. Only record with `isPublic=true` can be
     retrieved using this endpoint.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/bulk/binaries/{key}/public
@@ -379,17 +341,8 @@ async def bulk_get_player_public_binary_records_v1_async(
 ):
     """Bulk get player public records (bulkGetPlayerPublicBinaryRecordsV1)
 
-    Required Permission: `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    Required Scope: `social`
-
     Bulk get other player's public binary record by userIds, max allowed 20 at a time. Only record with `isPublic=true` can be
     retrieved using this endpoint.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/bulk/binaries/{key}/public
@@ -445,16 +398,7 @@ def delete_player_binary_record_v1(
 ):
     """Delete player binary record (deletePlayerBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
-    Required scope: `social`
-
     Delete a player binary record. Only player who own the record can delete it
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}
@@ -510,16 +454,7 @@ async def delete_player_binary_record_v1_async(
 ):
     """Delete player binary record (deletePlayerBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
-    Required scope: `social`
-
     Delete a player binary record. Only player who own the record can delete it
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}
@@ -577,16 +512,8 @@ def get_player_binary_record_v1(
 ):
     """Get player binary record (getPlayerBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-    Required scope: `social`
     Get a player binary record by its key.
-    Private Record: Only user who own the record could retrieve it.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
+    **Private Record**: Only user who own the record could retrieve it.
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}
@@ -640,16 +567,8 @@ async def get_player_binary_record_v1_async(
 ):
     """Get player binary record (getPlayerBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-    Required scope: `social`
     Get a player binary record by its key.
-    Private Record: Only user who own the record could retrieve it.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
+    **Private Record**: Only user who own the record could retrieve it.
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}
@@ -705,17 +624,8 @@ def get_player_public_binary_records_v1(
 ):
     """Get player public binary record (getPlayerPublicBinaryRecordsV1)
 
-    Required Permission: `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    Required Scope: `social`
-
     Get other player's public binary record. Only record with `isPublic=true` can be
     retrieved using this endpoint.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}/public
@@ -769,17 +679,8 @@ async def get_player_public_binary_records_v1_async(
 ):
     """Get player public binary record (getPlayerPublicBinaryRecordsV1)
 
-    Required Permission: `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    Required Scope: `social`
-
     Get other player's public binary record. Only record with `isPublic=true` can be
     retrieved using this endpoint.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}/public
@@ -836,13 +737,7 @@ def list_my_binary_records_v1(
 ):
     """Query my binary records (listMyBinaryRecordsV1)
 
-    Required valid user token
-    Required scope: `social`
-
     Retrieve list of my binary records by namespace.
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/me/binaries
@@ -900,13 +795,7 @@ async def list_my_binary_records_v1_async(
 ):
     """Query my binary records (listMyBinaryRecordsV1)
 
-    Required valid user token
-    Required scope: `social`
-
     Retrieve list of my binary records by namespace.
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/me/binaries
@@ -966,16 +855,7 @@ def list_other_player_public_binary_records_v1(
 ):
     """Query other player public binary record (listOtherPlayerPublicBinaryRecordsV1)
 
-    Required Permission: `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    Required Scope: `social`
-
     Retrieve list of other player public binary records under given namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/public
@@ -1033,16 +913,7 @@ async def list_other_player_public_binary_records_v1_async(
 ):
     """Query other player public binary record (listOtherPlayerPublicBinaryRecordsV1)
 
-    Required Permission: `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    Required Scope: `social`
-
     Retrieve list of other player public binary records under given namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/public
@@ -1102,23 +973,11 @@ def post_player_binary_presigned_urlv1(
 ):
     """Request presigned URL for upload player binary records (postPlayerBinaryPresignedURLV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Request presigned URL to upload the binary record to s3.
-
 
     Other detail info:
 
-
-
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}/presigned
@@ -1178,23 +1037,11 @@ async def post_player_binary_presigned_urlv1_async(
 ):
     """Request presigned URL for upload player binary records (postPlayerBinaryPresignedURLV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Request presigned URL to upload the binary record to s3.
-
 
     Other detail info:
 
-
-
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}/presigned
@@ -1255,30 +1102,18 @@ def post_player_binary_record_v1(
 ):
     """Create player binary record (postPlayerBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Create a player binary record.
-
 
     Other detail info:
 
-
-
     `key` should follow these rules:
-    1. support uppercase and lowercase letters, numbers, and separators "-" , "_" , "." are allowed
+    1. support uppercase and lowercase letters, numbers, and separators **"-"**, **"_"**, **"."** are allowed
     2. begin and end with letters or numbers
     3. spaces are not allowed
     4. separators must not appears twice in a row
 
 
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries
@@ -1334,30 +1169,18 @@ async def post_player_binary_record_v1_async(
 ):
     """Create player binary record (postPlayerBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Create a player binary record.
-
 
     Other detail info:
 
-
-
     `key` should follow these rules:
-    1. support uppercase and lowercase letters, numbers, and separators "-" , "_" , "." are allowed
+    1. support uppercase and lowercase letters, numbers, and separators **"-"**, **"_"**, **"."** are allowed
     2. begin and end with letters or numbers
     3. spaces are not allowed
     4. separators must not appears twice in a row
 
 
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries
@@ -1416,16 +1239,7 @@ def put_player_binary_recor_metadata_v1(
 ):
     """Update player binary record metadata (putPlayerBinaryRecorMetadataV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a player binary record metadata by its key
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}/metadata
@@ -1485,16 +1299,7 @@ async def put_player_binary_recor_metadata_v1_async(
 ):
     """Update player binary record metadata (putPlayerBinaryRecorMetadataV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a player binary record metadata by its key
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}/metadata
@@ -1556,16 +1361,7 @@ def put_player_binary_record_v1(
 ):
     """Update player binary record file (putPlayerBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a player binary record file by its key
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}
@@ -1625,16 +1421,7 @@ async def put_player_binary_record_v1_async(
 ):
     """Update player binary record file (putPlayerBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a player binary record file by its key
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/{key}

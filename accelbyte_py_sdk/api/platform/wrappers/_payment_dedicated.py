@@ -54,6 +54,8 @@ def create_payment_order_by_dedicated(
 ):
     """Create payment order by dedicated server (createPaymentOrderByDedicated)
 
+    [Not Supported Yet In Starter]
+
     This API is used to create payment order from non justice service. e.g. from dedicated server, the result contains the payment station url.
 
      Path Parameter:
@@ -274,6 +276,8 @@ async def create_payment_order_by_dedicated_async(
     **kwargs
 ):
     """Create payment order by dedicated server (createPaymentOrderByDedicated)
+
+    [Not Supported Yet In Starter]
 
     This API is used to create payment order from non justice service. e.g. from dedicated server, the result contains the payment station url.
 
@@ -499,6 +503,8 @@ def refund_payment_order_by_dedicated(
 ):
     """Refund payment order by dedicated server (refundPaymentOrderByDedicated)
 
+    [Not Supported Yet In Starter]
+
     This API is used to refund payment order by paymentOrderNo from non justice service. e.g. dedicated server.
 
       * if the status field of response json is "REFUNDED", usually wallet paid, it indicates payment order already refunded
@@ -697,6 +703,8 @@ async def refund_payment_order_by_dedicated_async(
     **kwargs
 ):
     """Refund payment order by dedicated server (refundPaymentOrderByDedicated)
+
+    [Not Supported Yet In Starter]
 
     This API is used to refund payment order by paymentOrderNo from non justice service. e.g. dedicated server.
 
@@ -899,7 +907,7 @@ def sync_payment_orders(
 ):
     """Sync payment orders (syncPaymentOrders)
 
-    Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
+    [Not Supported Yet In Starter] Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)
@@ -948,7 +956,7 @@ async def sync_payment_orders_async(
 ):
     """Sync payment orders (syncPaymentOrders)
 
-    Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
+    [Not Supported Yet In Starter] Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)

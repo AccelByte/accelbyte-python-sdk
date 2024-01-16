@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -31,7 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.ams import (
-    account_link_token_get as account_link_token_get_internal,
+    admin_account_link_token_get as admin_account_link_token_get_internal,
 )
 from accelbyte_py_sdk.api.ams.models import ApiAccountLinkTokenResponse
 from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
@@ -42,28 +42,28 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def account_link_token_get(
+def admin_account_link_token_get(
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(account_link_token_get_internal.__doc__)
+        click.echo(admin_account_link_token_get_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = account_link_token_get_internal(
+    result, error = admin_account_link_token_get_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"AccountLinkTokenGet failed: {str(error)}")
+        raise Exception(f"AdminAccountLinkTokenGet failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-account_link_token_get.operation_id = "AccountLinkTokenGet"
-account_link_token_get.is_deprecated = False
+admin_account_link_token_get.operation_id = "AdminAccountLinkTokenGet"
+admin_account_link_token_get.is_deprecated = False

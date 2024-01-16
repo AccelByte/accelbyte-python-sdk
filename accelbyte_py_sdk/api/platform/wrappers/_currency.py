@@ -89,7 +89,7 @@ def create_currency(
     Responses:
         200: OK - CurrencyInfo (successful operation)
 
-        409: Conflict - ErrorEntity (36171: Currency [{currencyCode}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (36171: Currency [{currencyCode}] already exists in namespace [{namespace}] | 36172: Real Currency [{currencyCode}] not allowed in game namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -142,7 +142,7 @@ async def create_currency_async(
     Responses:
         200: OK - CurrencyInfo (successful operation)
 
-        409: Conflict - ErrorEntity (36171: Currency [{currencyCode}] already exists in namespace [{namespace}])
+        409: Conflict - ErrorEntity (36171: Currency [{currencyCode}] already exists in namespace [{namespace}] | 36172: Real Currency [{currencyCode}] not allowed in game namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -704,7 +704,7 @@ def update_currency(
     Responses:
         200: OK - CurrencyInfo (successful operation)
 
-        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 36172: Real Currency [{currencyCode}] not allowed in game namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -761,7 +761,7 @@ async def update_currency_async(
     Responses:
         200: OK - CurrencyInfo (successful operation)
 
-        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 36172: Real Currency [{currencyCode}] not allowed in game namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """

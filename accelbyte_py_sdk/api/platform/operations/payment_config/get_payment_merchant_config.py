@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,7 +36,7 @@ from ...models import PaymentMerchantConfigInfo
 class GetPaymentMerchantConfig(Operation):
     """Get payment merchant config (getPaymentMerchantConfig)
 
-    Get payment merchant config by id.
+    [Not Supported Yet In Starter] Get payment merchant config by id.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)

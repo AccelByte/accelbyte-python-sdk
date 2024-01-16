@@ -1,3 +1,15 @@
+<a name="v0.58.0"></a>
+## [v0.58.0]
+### fix
+- **integration:** disable dslogmanager, dsmc, qosm
+- **integration:** fix basic tests - token revoked
+- **integration:** disable iam tests in starter
+### docs
+- **common use cases:** remove common use case marking
+### test
+- **integration:** disable gdpr for ags starter
+
+
 <a name="v0.57.0"></a>
 ## [v0.57.0]
 ### ci

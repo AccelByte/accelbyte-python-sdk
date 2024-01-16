@@ -50,7 +50,7 @@ def create_fulfillment_script(
 ):
     """Create fulfillment script (createFulfillmentScript)
 
-    [AGS Premium Feature] Create fulfillment script.
+    [Not Supported Yet In Starter] Create fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
@@ -100,7 +100,7 @@ async def create_fulfillment_script_async(
 ):
     """Create fulfillment script (createFulfillmentScript)
 
-    [AGS Premium Feature] Create fulfillment script.
+    [Not Supported Yet In Starter] Create fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
@@ -149,7 +149,7 @@ def delete_fulfillment_script(
 ):
     """Delete fulfillment script (deleteFulfillmentScript)
 
-    Delete fulfillment script.
+    [Not Supported Yet In Starter] Delete fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=8 (DELETE)
@@ -187,7 +187,7 @@ async def delete_fulfillment_script_async(
 ):
     """Delete fulfillment script (deleteFulfillmentScript)
 
-    Delete fulfillment script.
+    [Not Supported Yet In Starter] Delete fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=8 (DELETE)
@@ -227,7 +227,7 @@ def get_fulfillment_script(
 ):
     """Get fulfillment script by id (getFulfillmentScript)
 
-    Get fulfillment script by id.
+    [Not Supported Yet In Starter] Get fulfillment script by id.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
@@ -268,7 +268,7 @@ async def get_fulfillment_script_async(
 ):
     """Get fulfillment script by id (getFulfillmentScript)
 
-    Get fulfillment script by id.
+    [Not Supported Yet In Starter] Get fulfillment script by id.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
@@ -311,7 +311,7 @@ def list_fulfillment_scripts(
 ):
     """List all fulfillment scripts (listFulfillmentScripts)
 
-    List all fulfillment scripts.
+    [Not Supported Yet In Starter] List all fulfillment scripts.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
@@ -345,7 +345,7 @@ async def list_fulfillment_scripts_async(
 ):
     """List all fulfillment scripts (listFulfillmentScripts)
 
-    List all fulfillment scripts.
+    [Not Supported Yet In Starter] List all fulfillment scripts.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
@@ -384,7 +384,7 @@ def update_fulfillment_script(
 ):
     """Update fulfillment script (updateFulfillmentScript)
 
-    [AGS Premium Feature] Update fulfillment script.
+    [Not Supported Yet In Starter] Update fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=4 (UPDATE)
@@ -430,7 +430,7 @@ async def update_fulfillment_script_async(
 ):
     """Update fulfillment script (updateFulfillmentScript)
 
-    [AGS Premium Feature] Update fulfillment script.
+    [Not Supported Yet In Starter] Update fulfillment script.
     Other detail info:
 
       * Required permission : resource="ADMIN:FULFILLMENT", action=4 (UPDATE)

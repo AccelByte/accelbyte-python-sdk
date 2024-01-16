@@ -84,7 +84,7 @@ def charge_payment_order(
 ):
     """Charge payment order without payment flow (chargePaymentOrder)
 
-    [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
+    [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
@@ -143,7 +143,7 @@ async def charge_payment_order_async(
 ):
     """Charge payment order without payment flow (chargePaymentOrder)
 
-    [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
+    [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
@@ -204,7 +204,7 @@ def create_user_payment_order(
 ):
     """Create payment order (createUserPaymentOrder)
 
-    [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
+    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)
@@ -286,7 +286,7 @@ async def create_user_payment_order_async(
 ):
     """Create payment order (createUserPaymentOrder)
 
-    [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
+    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)
@@ -369,7 +369,7 @@ def get_payment_order(
 ):
     """Get payment order (getPaymentOrder)
 
-    Get payment order by paymentOrderNo.
+    [Not Supported Yet In Starter] Get payment order by paymentOrderNo.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
@@ -420,7 +420,7 @@ async def get_payment_order_async(
 ):
     """Get payment order (getPaymentOrder)
 
-    Get payment order by paymentOrderNo.
+    [Not Supported Yet In Starter] Get payment order by paymentOrderNo.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
@@ -473,7 +473,7 @@ def get_payment_order_charge_status(
 ):
     """Get payment order charge status (getPaymentOrderChargeStatus)
 
-    Get payment order charge status.
+    [Not Supported Yet In Starter] Get payment order charge status.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
@@ -524,7 +524,7 @@ async def get_payment_order_charge_status_async(
 ):
     """Get payment order charge status (getPaymentOrderChargeStatus)
 
-    Get payment order charge status.
+    [Not Supported Yet In Starter] Get payment order charge status.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
@@ -577,7 +577,7 @@ def list_ext_order_no_by_ext_tx_id(
 ):
     """List external order No by external transaction id (listExtOrderNoByExtTxId)
 
-    List external order No by external transaction id.
+    [Not Supported Yet In Starter] List external order No by external transaction id.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
@@ -626,7 +626,7 @@ async def list_ext_order_no_by_ext_tx_id_async(
 ):
     """List external order No by external transaction id (listExtOrderNoByExtTxId)
 
-    List external order No by external transaction id.
+    [Not Supported Yet In Starter] List external order No by external transaction id.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
@@ -687,7 +687,7 @@ def query_payment_notifications(
 ):
     """Query payment notifications (queryPaymentNotifications)
 
-    Query payment notifications.
+    [Not Supported Yet In Starter] Query payment notifications.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION", action=2 (READ)
@@ -770,7 +770,7 @@ async def query_payment_notifications_async(
 ):
     """Query payment notifications (queryPaymentNotifications)
 
-    Query payment notifications.
+    [Not Supported Yet In Starter] Query payment notifications.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION", action=2 (READ)
@@ -849,7 +849,7 @@ def query_payment_orders(
 ):
     """Query payment orders (queryPaymentOrders)
 
-    Query payment orders.
+    [Not Supported Yet In Starter] Query payment orders.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
@@ -914,7 +914,7 @@ async def query_payment_orders_async(
 ):
     """Query payment orders (queryPaymentOrders)
 
-    Query payment orders.
+    [Not Supported Yet In Starter] Query payment orders.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
@@ -979,7 +979,7 @@ def refund_user_payment_order(
 ):
     """Refund payment order (refundUserPaymentOrder)
 
-    [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
+    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=4 (UPDATE)
@@ -1041,7 +1041,7 @@ async def refund_user_payment_order_async(
 ):
     """Refund payment order (refundUserPaymentOrder)
 
-    [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
+    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=4 (UPDATE)
@@ -1104,7 +1104,7 @@ def simulate_payment_order_notification(
 ):
     """Simulate payment notification (simulatePaymentOrderNotification)
 
-    [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
+    [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
@@ -1161,7 +1161,7 @@ async def simulate_payment_order_notification_async(
 ):
     """Simulate payment notification (simulatePaymentOrderNotification)
 
-    [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
+    [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)

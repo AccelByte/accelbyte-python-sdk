@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,7 +38,7 @@ from ...models import ValidationErrorEntity
 class CreateUserPaymentOrder(Operation):
     """Create payment order (createUserPaymentOrder)
 
-    [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
+    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)

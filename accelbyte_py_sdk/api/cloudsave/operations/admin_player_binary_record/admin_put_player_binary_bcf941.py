@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,16 +37,7 @@ from ...models import ModelsResponseError
 class AdminPutPlayerBinaryRecorMetadataV1(Operation):
     """Update player binary record metadata (adminPutPlayerBinaryRecorMetadataV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a player binary record metadata by its key
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}/metadata

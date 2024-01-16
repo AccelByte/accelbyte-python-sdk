@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,15 +34,15 @@ from ...models import ResponseErrorResponse
 
 
 class AccountGet(Operation):
-    """Get the account associated with the namespace. (AccountGet)
+    """get the account associated with the namespace (AccountGet)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+    Required Permission: NAMESPACE:{namespace}:AMS:ACCOUNT [READ]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+        - NAMESPACE:{namespace}:AMS:ACCOUNT [READ]
 
     Properties:
-        url: /ams/v1/admin/namespaces/{namespace}/account
+        url: /ams/v1/namespaces/{namespace}/account
 
         method: GET
 
@@ -70,7 +70,7 @@ class AccountGet(Operation):
 
     # region fields
 
-    _url: str = "/ams/v1/admin/namespaces/{namespace}/account"
+    _url: str = "/ams/v1/namespaces/{namespace}/account"
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]

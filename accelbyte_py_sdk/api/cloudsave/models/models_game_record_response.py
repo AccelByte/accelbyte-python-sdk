@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SetByEnum(StrEnum):
+    CLIENT = "CLIENT"
+    SERVER = "SERVER"
 
 
 class ModelsGameRecordResponse(Model):
@@ -42,7 +48,7 @@ class ModelsGameRecordResponse(Model):
 
         value: (value) REQUIRED Dict[str, Any]
 
-        set_by: (set_by) OPTIONAL str
+        set_by: (set_by) OPTIONAL Union[str, SetByEnum]
     """
 
     # region fields
@@ -52,7 +58,7 @@ class ModelsGameRecordResponse(Model):
     namespace: str  # REQUIRED
     updated_at: str  # REQUIRED
     value: Dict[str, Any]  # REQUIRED
-    set_by: str  # OPTIONAL
+    set_by: Union[str, SetByEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -78,7 +84,7 @@ class ModelsGameRecordResponse(Model):
         self.value = value
         return self
 
-    def with_set_by(self, value: str) -> ModelsGameRecordResponse:
+    def with_set_by(self, value: Union[str, SetByEnum]) -> ModelsGameRecordResponse:
         self.set_by = value
         return self
 
@@ -111,7 +117,7 @@ class ModelsGameRecordResponse(Model):
         if hasattr(self, "set_by"):
             result["set_by"] = str(self.set_by)
         elif include_empty:
-            result["set_by"] = ""
+            result["set_by"] = Union[str, SetByEnum]()
         return result
 
     # endregion to methods
@@ -126,7 +132,7 @@ class ModelsGameRecordResponse(Model):
         namespace: str,
         updated_at: str,
         value: Dict[str, Any],
-        set_by: Optional[str] = None,
+        set_by: Optional[Union[str, SetByEnum]] = None,
         **kwargs,
     ) -> ModelsGameRecordResponse:
         instance = cls()
@@ -169,7 +175,7 @@ class ModelsGameRecordResponse(Model):
         if "set_by" in dict_ and dict_["set_by"] is not None:
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
-            instance.set_by = ""
+            instance.set_by = Union[str, SetByEnum]()
         return instance
 
     @classmethod
@@ -230,6 +236,12 @@ class ModelsGameRecordResponse(Model):
             "updated_at": True,
             "value": True,
             "set_by": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "set_by": ["CLIENT", "SERVER"],
         }
 
     # endregion static methods

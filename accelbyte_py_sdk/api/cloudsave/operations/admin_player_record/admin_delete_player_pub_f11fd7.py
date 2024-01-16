@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,33 +35,17 @@ from ...models import ModelsResponseError
 class AdminDeletePlayerPublicRecordHandlerV1(Operation):
     """Delete player public record (adminDeletePlayerPublicRecordHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]`
-    --------------------|------------------------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
     Delete player public record.
-
-
 
 
     ## Warning: This endpoint is going to deprecate
 
-
-
     This endpoint is going to deprecate in the future please don't use it.
 
     For alternative, please use these endpoints:
-    - POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
+    - **POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}**
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public

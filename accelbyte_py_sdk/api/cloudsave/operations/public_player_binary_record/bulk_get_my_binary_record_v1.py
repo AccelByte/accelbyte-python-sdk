@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,14 +37,8 @@ from ...models import ModelsResponseError
 class BulkGetMyBinaryRecordV1(Operation):
     """Get player records bulk (bulkGetMyBinaryRecordV1)
 
-    Required valid user token
-    Required scope: `social`
-
     Retrieve player record key and payload in bulk under given namespace.
     Maximum bulk key limit per request 20
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/me/binaries/bulk

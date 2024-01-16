@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,30 +37,18 @@ from ...models import ModelsUploadBinaryRecordResponse
 class PostPlayerBinaryRecordV1(Operation):
     """Create player binary record (postPlayerBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Create a player binary record.
-
 
     Other detail info:
 
-
-
     `key` should follow these rules:
-    1. support uppercase and lowercase letters, numbers, and separators "-" , "_" , "." are allowed
+    1. support uppercase and lowercase letters, numbers, and separators **"-"**, **"_"**, **"."** are allowed
     2. begin and end with letters or numbers
     3. spaces are not allowed
     4. separators must not appears twice in a row
 
 
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries

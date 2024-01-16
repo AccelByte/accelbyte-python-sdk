@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.28.0)
+# AccelByte Gaming Services Matchmaking Service (2.29.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -167,6 +167,7 @@ def create_models_channel_example() -> ModelsChannel:
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.slug = randomize()
     instance.social_matchmaking = randomize("bool")
+    instance.sub_gamemode_selection = randomize()
     instance.updated_at = randomize()
     instance.use_sub_gamemode = randomize("bool")
     instance.ticket_observability_enable = randomize("bool")
@@ -189,6 +190,7 @@ def create_models_channel_request_example() -> ModelsChannelRequest:
     instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_latency_max_ms = randomize("int", min_val=1, max_val=1000)
     instance.social_matchmaking = randomize("bool")
+    instance.sub_gamemode_selection = randomize()
     instance.ticket_observability_enable = randomize("bool")
     instance.use_sub_gamemode = randomize("bool")
     return instance
@@ -212,6 +214,7 @@ def create_models_channel_v1_example() -> ModelsChannelV1:
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.slug = randomize()
     instance.social_matchmaking = randomize("bool")
+    instance.sub_gamemode_selection = randomize()
     instance.updated_at = randomize()
     instance.use_sub_gamemode = randomize("bool")
     instance.ticket_observability_enable = randomize("bool")
@@ -246,6 +249,7 @@ def create_models_create_channel_response_example() -> ModelsCreateChannelRespon
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.slug = randomize()
     instance.social_matchmaking = randomize("bool")
+    instance.sub_gamemode_selection = randomize()
     instance.updated_at = randomize()
     instance.use_sub_gamemode = randomize("bool")
     instance.ticket_observability_enable = randomize("bool")
@@ -646,6 +650,7 @@ def create_models_update_channel_request_example() -> ModelsUpdateChannelRequest
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_latency_max_ms = randomize("int", min_val=1, max_val=1000)
+    instance.sub_gamemode_selection = randomize()
     instance.ticket_observability_enable = randomize("bool")
     return instance
 

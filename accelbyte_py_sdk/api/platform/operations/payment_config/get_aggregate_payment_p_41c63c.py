@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,7 +33,7 @@ from .....core import HttpResponse
 class GetAggregatePaymentProviders(Operation):
     """Get aggregate payment providers (getAggregatePaymentProviders)
 
-    Get aggregate payment providers, such as XSOLLA, ADYEN.
+    [Not Supported Yet In Starter] Get aggregate payment providers, such as XSOLLA, ADYEN.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)

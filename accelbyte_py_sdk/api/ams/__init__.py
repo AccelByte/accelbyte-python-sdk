@@ -8,27 +8,31 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.7.1"
+__version__ = "1.8.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 # account
-from .wrappers import account_create
-from .wrappers import account_create_async
 from .wrappers import account_get
 from .wrappers import account_get_async
-from .wrappers import account_link
-from .wrappers import account_link_async
-from .wrappers import account_link_token_get
-from .wrappers import account_link_token_get_async
+from .wrappers import admin_account_create
+from .wrappers import admin_account_create_async
+from .wrappers import admin_account_get
+from .wrappers import admin_account_get_async
+from .wrappers import admin_account_link_token_get
+from .wrappers import admin_account_link_token_get_async
+from .wrappers import admin_account_link_token_post
+from .wrappers import admin_account_link_token_post_async
 
 # ams_info
 from .wrappers import info_regions
 from .wrappers import info_regions_async
 from .wrappers import info_supported_instances
 from .wrappers import info_supported_instances_async
+from .wrappers import upload_url_get
+from .wrappers import upload_url_get_async
 
 # ams_qo_s
 from .wrappers import qo_s_regions_get

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ItemTypeConfigInfo
 class ListItemTypeConfigs(Operation):
     """Get all item type configs (listItemTypeConfigs)
 
-    This API is used to get all item type configs.
+    [Not Supported Yet In Starter] This API is used to get all item type configs.
 
     Other detail info:
 

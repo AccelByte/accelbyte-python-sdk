@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -45,7 +45,7 @@ class PaymentProviderEnum(StrEnum):
 class PublicNormalizePaymentReturnUrl(Operation):
     """Normalize payment return url (publicNormalizePaymentReturnUrl)
 
-    Normalize payment return url for payment provider
+    [Not Supported Yet In Starter] Normalize payment return url for payment provider
     Field                                                                                                                                                        | Type   | Required | Description
     -------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|----------|-----------------------
     orderNo                                                                                                                                                      | String | Yes      | order no

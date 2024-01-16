@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,48 +30,38 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.ams import account_link as account_link_internal
-from accelbyte_py_sdk.api.ams.models import ApiAccountLinkRequest
-from accelbyte_py_sdk.api.ams.models import ApiAccountLinkResponse
+from accelbyte_py_sdk.api.ams import admin_account_get as admin_account_get_internal
+from accelbyte_py_sdk.api.ams.models import ApiAccountResponse
 from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 
 @click.command()
-@click.argument("body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def account_link(
-    body: str,
+def admin_account_get(
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(account_link_internal.__doc__)
+        click.echo(admin_account_get_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if body is not None:
-        try:
-            body_json = json.loads(body)
-            body = ApiAccountLinkRequest.create_from_dict(body_json)
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = account_link_internal(
-        body=body,
+    result, error = admin_account_get_internal(
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"AccountLink failed: {str(error)}")
+        raise Exception(f"AdminAccountGet failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-account_link.operation_id = "AccountLink"
-account_link.is_deprecated = False
+admin_account_get.operation_id = "AdminAccountGet"
+admin_account_get.is_deprecated = False

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,7 +37,7 @@ from ...models import XsollaPaywallConfigRequest
 class UpdateXsollaUIConfig(Operation):
     """Update xsolla UI configuration (updateXsollaUIConfig)
 
-    Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
+    [Not Supported Yet In Starter] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

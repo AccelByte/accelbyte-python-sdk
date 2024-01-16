@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseErrorResponse
 
 
 class InfoRegions(Operation):
-    """Get the list of available AMS regions. (InfoRegions)
+    """get a list of the available AMS regions (InfoRegions)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,16 +37,7 @@ from ...models import ModelsResponseError
 class PutGameBinaryRecordV1(Operation):
     """Update game binary record file (putGameBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a game binary record file by its key
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/{key}

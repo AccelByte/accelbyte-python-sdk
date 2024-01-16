@@ -8,13 +8,16 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.12.9"
+__version__ = "3.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .models_admin_concurrent_record_request import ModelsAdminConcurrentRecordRequest
+from .models_admin_concurrent_record_request import (
+    SetByEnum as ModelsAdminConcurrentRecordRequestSetByEnum,
+)
 from .models_admin_game_concurrent_record_request import (
     ModelsAdminGameConcurrentRecordRequest,
 )
@@ -69,12 +72,22 @@ from .models_concurrent_record_request import ModelsConcurrentRecordRequest
 from .models_custom_config import ModelsCustomConfig
 from .models_custom_function import ModelsCustomFunction
 from .models_game_binary_record_create import ModelsGameBinaryRecordCreate
+from .models_game_binary_record_create import (
+    SetByEnum as ModelsGameBinaryRecordCreateSetByEnum,
+)
 from .models_game_binary_record_metadata_request import (
     ModelsGameBinaryRecordMetadataRequest,
 )
+from .models_game_binary_record_metadata_request import (
+    SetByEnum as ModelsGameBinaryRecordMetadataRequestSetByEnum,
+)
 from .models_game_binary_record_response import ModelsGameBinaryRecordResponse
+from .models_game_binary_record_response import (
+    SetByEnum as ModelsGameBinaryRecordResponseSetByEnum,
+)
 from .models_game_record_request import ModelsGameRecordRequest
 from .models_game_record_response import ModelsGameRecordResponse
+from .models_game_record_response import SetByEnum as ModelsGameRecordResponseSetByEnum
 from .models_list_admin_game_record_keys_response import (
     ModelsListAdminGameRecordKeysResponse,
 )
@@ -91,19 +104,31 @@ from .models_list_player_binary_records_response import (
 from .models_list_player_record_keys_response import ModelsListPlayerRecordKeysResponse
 from .models_pagination import ModelsPagination
 from .models_player_binary_record_create import ModelsPlayerBinaryRecordCreate
+from .models_player_binary_record_create import (
+    SetByEnum as ModelsPlayerBinaryRecordCreateSetByEnum,
+)
 from .models_player_binary_record_metadata_public_request import (
     ModelsPlayerBinaryRecordMetadataPublicRequest,
 )
 from .models_player_binary_record_metadata_request import (
     ModelsPlayerBinaryRecordMetadataRequest,
 )
+from .models_player_binary_record_metadata_request import (
+    SetByEnum as ModelsPlayerBinaryRecordMetadataRequestSetByEnum,
+)
 from .models_player_binary_record_response import ModelsPlayerBinaryRecordResponse
+from .models_player_binary_record_response import (
+    SetByEnum as ModelsPlayerBinaryRecordResponseSetByEnum,
+)
 from .models_player_record_concurrent_update_response import (
     ModelsPlayerRecordConcurrentUpdateResponse,
 )
 from .models_player_record_key_info import ModelsPlayerRecordKeyInfo
 from .models_player_record_request import ModelsPlayerRecordRequest
 from .models_player_record_response import ModelsPlayerRecordResponse
+from .models_player_record_response import (
+    SetByEnum as ModelsPlayerRecordResponseSetByEnum,
+)
 from .models_player_record_size_response import ModelsPlayerRecordSizeResponse
 from .models_plugin_request import ModelsPluginRequest
 from .models_plugin_request import ExtendTypeEnum as ModelsPluginRequestExtendTypeEnum

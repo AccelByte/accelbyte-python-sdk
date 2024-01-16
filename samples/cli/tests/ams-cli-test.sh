@@ -31,10 +31,10 @@ if [ "$BATCH" = true ] ; then
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 ams-auth-check --login_with_auth "Bearer foo"
 ams-portal-health-check --login_with_auth "Bearer foo"
-ams-account-get --login_with_auth "Bearer foo"
-ams-account-create '{"name": "EAxcVpFrttufHIRd"}' --login_with_auth "Bearer foo"
-ams-account-link-token-get --login_with_auth "Bearer foo"
-ams-account-link '{"token": "H9UzVRiXbqlAw7r6"}' --login_with_auth "Bearer foo"
+ams-admin-account-get --login_with_auth "Bearer foo"
+ams-admin-account-create '{"name": "EAxcVpFrttufHIRd"}' --login_with_auth "Bearer foo"
+ams-admin-account-link-token-get --login_with_auth "Bearer foo"
+ams-admin-account-link-token-post '{"token": "H9UzVRiXbqlAw7r6"}' --login_with_auth "Bearer foo"
 ams-artifact-get --login_with_auth "Bearer foo"
 ams-artifact-usage-get --login_with_auth "Bearer foo"
 ams-artifact-delete 'W2ktQG0h5JAav5kR' --login_with_auth "Bearer foo"
@@ -57,10 +57,12 @@ ams-info-regions --login_with_auth "Bearer foo"
 ams-fleet-server-info 'SQUhAEtrmjqU6YE3' --login_with_auth "Bearer foo"
 ams-server-history 'p4lSck0ZHn5GI39Y' --login_with_auth "Bearer foo"
 ams-info-supported-instances --login_with_auth "Bearer foo"
+ams-account-get --login_with_auth "Bearer foo"
 ams-fleet-claim-by-id '{"region": "BHqaTHeKtW18iGeU"}' 'lc9d9sogWa24CKNS' --login_with_auth "Bearer foo"
 ams-local-watchdog-connect '0GqVvUfHQvsHXNUN' --login_with_auth "Bearer foo"
 ams-fleet-claim-by-keys '{"claimKeys": ["e4mhgo5QB65lSAiY", "nNjkfZrQvGgbLdLs", "FzHkBMr1yrOMlNFS"], "regions": ["rUEirnjX9fDmIbeZ", "xzfTcyiuATus9hsf", "pFDcSDG8aMVGLiBN"]}' --login_with_auth "Bearer foo"
 ams-watchdog-connect 'rDjqoxcwgGLXpUL4' --login_with_auth "Bearer foo"
+ams-upload-url-get --login_with_auth "Bearer foo"
 ams-func1 --login_with_auth "Bearer foo"
 ams-basic-health-check --login_with_auth "Bearer foo"
 exit()
@@ -82,7 +84,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..35"
+echo "1..37"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -103,31 +105,31 @@ $PYTHON -m $MODULE 'ams-portal-health-check' \
     > test.out 2>&1
 eval_tap $? 3 'PortalHealthCheck' test.out
 
-#- 4 AccountGet
-$PYTHON -m $MODULE 'ams-account-get' \
+#- 4 AdminAccountGet
+$PYTHON -m $MODULE 'ams-admin-account-get' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 4 'AccountGet' test.out
+eval_tap $? 4 'AdminAccountGet' test.out
 
-#- 5 AccountCreate
-$PYTHON -m $MODULE 'ams-account-create' \
+#- 5 AdminAccountCreate
+$PYTHON -m $MODULE 'ams-admin-account-create' \
     '{"name": "pp2ncYAHdNzDmeIP"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 5 'AccountCreate' test.out
+eval_tap $? 5 'AdminAccountCreate' test.out
 
-#- 6 AccountLinkTokenGet
-$PYTHON -m $MODULE 'ams-account-link-token-get' \
+#- 6 AdminAccountLinkTokenGet
+$PYTHON -m $MODULE 'ams-admin-account-link-token-get' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 6 'AccountLinkTokenGet' test.out
+eval_tap $? 6 'AdminAccountLinkTokenGet' test.out
 
-#- 7 AccountLink
-$PYTHON -m $MODULE 'ams-account-link' \
+#- 7 AdminAccountLinkTokenPost
+$PYTHON -m $MODULE 'ams-admin-account-link-token-post' \
     '{"token": "6rOvDz9KOsb392k6"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 7 'AccountLink' test.out
+eval_tap $? 7 'AdminAccountLinkTokenPost' test.out
 
 #- 8 ArtifactGet
 $PYTHON -m $MODULE 'ams-artifact-get' \
@@ -280,46 +282,58 @@ $PYTHON -m $MODULE 'ams-info-supported-instances' \
     > test.out 2>&1
 eval_tap $? 29 'InfoSupportedInstances' test.out
 
-#- 30 FleetClaimByID
+#- 30 AccountGet
+$PYTHON -m $MODULE 'ams-account-get' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 30 'AccountGet' test.out
+
+#- 31 FleetClaimByID
 $PYTHON -m $MODULE 'ams-fleet-claim-by-id' \
     '{"region": "paXp5JMl5LL4bTxB"}' \
     'mZjdrrIxsB0NRsB1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 30 'FleetClaimByID' test.out
+eval_tap $? 31 'FleetClaimByID' test.out
 
-#- 31 LocalWatchdogConnect
+#- 32 LocalWatchdogConnect
 $PYTHON -m $MODULE 'ams-local-watchdog-connect' \
     'fPqqRRulpqpymDkQ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 31 'LocalWatchdogConnect' test.out
+eval_tap $? 32 'LocalWatchdogConnect' test.out
 
-#- 32 FleetClaimByKeys
+#- 33 FleetClaimByKeys
 $PYTHON -m $MODULE 'ams-fleet-claim-by-keys' \
     '{"claimKeys": ["htrHWwRVnwVBOqOH", "i8pWGd1juYhiqjRJ", "OqB5F93zFQbJndUD"], "regions": ["pdONneAczbBdHb2s", "lt71B1SmZp2JZp50", "CnPb71ORYcmQbTU5"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 32 'FleetClaimByKeys' test.out
+eval_tap $? 33 'FleetClaimByKeys' test.out
 
-#- 33 WatchdogConnect
+#- 34 WatchdogConnect
 $PYTHON -m $MODULE 'ams-watchdog-connect' \
     'JX8ccLjMXJRk0eaK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 33 'WatchdogConnect' test.out
+eval_tap $? 34 'WatchdogConnect' test.out
 
-#- 34 Func1
+#- 35 UploadURLGet
+$PYTHON -m $MODULE 'ams-upload-url-get' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 35 'UploadURLGet' test.out
+
+#- 36 Func1
 $PYTHON -m $MODULE 'ams-func1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 34 'Func1' test.out
+eval_tap $? 36 'Func1' test.out
 
-#- 35 BasicHealthCheck
+#- 37 BasicHealthCheck
 $PYTHON -m $MODULE 'ams-basic-health-check' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 35 'BasicHealthCheck' test.out
+eval_tap $? 37 'BasicHealthCheck' test.out
 
 
 fi

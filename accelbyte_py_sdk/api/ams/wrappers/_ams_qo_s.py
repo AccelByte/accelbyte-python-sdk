@@ -44,7 +44,7 @@ def qo_s_regions_get(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get the list of available AMS QoS regions. (QoSRegionsGet)
+    """get a list of available AMS QoS regions (QoSRegionsGet)
 
     ```
     Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
@@ -114,7 +114,7 @@ async def qo_s_regions_get_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get the list of available AMS QoS regions. (QoSRegionsGet)
+    """get a list of available AMS QoS regions (QoSRegionsGet)
 
     ```
     Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
@@ -187,7 +187,7 @@ def qo_s_regions_update(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update the status of a QoS region (QoSRegionsUpdate)
+    """update the status of a QoS region (QoSRegionsUpdate)
 
     ```
     Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
@@ -249,7 +249,7 @@ async def qo_s_regions_update_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update the status of a QoS region (QoSRegionsUpdate)
+    """update the status of a QoS region (QoSRegionsUpdate)
 
     ```
     Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -67,13 +67,9 @@ from ..api.ams.models import ApiQoSEndpointResponse
 from ..api.ams.models import ApiQoSServer
 from ..api.ams.models import ApiReferencingFleet
 from ..api.ams.models import ApiRegionConfig
-from ..api.ams.models import ApiTime
 from ..api.ams.models import ApiTimeout
 from ..api.ams.models import ApiUpdateServerRequest
 from ..api.ams.models import ResponseErrorResponse
-from ..api.ams.models import TimeLocation
-from ..api.ams.models import TimeZone
-from ..api.ams.models import TimeZoneTrans
 
 
 def create_api_account_create_request_example() -> ApiAccountCreateRequest:
@@ -137,16 +133,16 @@ def create_api_ams_regions_response_example() -> ApiAMSRegionsResponse:
 def create_api_artifact_response_example() -> ApiArtifactResponse:
     instance = ApiArtifactResponse()
     instance.artifact_type = randomize()
-    instance.created_on = create_api_time_example()
+    instance.created_on = randomize("date")
     instance.ds_id = randomize()
-    instance.expires_on = create_api_time_example()
+    instance.expires_on = randomize("date")
+    instance.filename = randomize()
     instance.fleet_id = randomize()
     instance.id_ = randomize()
     instance.image_id = randomize()
     instance.namespace = randomize("slug")
     instance.size_bytes = randomize("int", min_val=1, max_val=1000)
     instance.status = randomize()
-    instance.storage_path = randomize()
     return instance
 
 
@@ -445,7 +441,7 @@ def create_api_qo_s_server_example() -> ApiQoSServer:
     instance = ApiQoSServer()
     instance.alias = randomize()
     instance.ip = randomize()
-    instance.last_update = create_api_time_example()
+    instance.last_update = randomize("date")
     instance.port = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
     instance.status = randomize()
@@ -469,14 +465,6 @@ def create_api_region_config_example() -> ApiRegionConfig:
     return instance
 
 
-def create_api_time_example() -> ApiTime:
-    instance = ApiTime()
-    instance.ext = randomize("int", min_val=1, max_val=1000)
-    instance.loc = create_time_location_example()
-    instance.wall = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
 def create_api_timeout_example() -> ApiTimeout:
     instance = ApiTimeout()
     instance.creation = randomize("int", min_val=1, max_val=1000)
@@ -497,33 +485,4 @@ def create_response_error_response_example() -> ResponseErrorResponse:
     instance.error_message = randomize()
     instance.error_type = randomize()
     instance.trace_id = randomize()
-    return instance
-
-
-def create_time_location_example() -> TimeLocation:
-    instance = TimeLocation()
-    instance.cache_end = randomize("int", min_val=1, max_val=1000)
-    instance.cache_start = randomize("int", min_val=1, max_val=1000)
-    instance.cache_zone = create_time_zone_example()
-    instance.extend = randomize()
-    instance.name = randomize()
-    instance.tx = [create_time_zone_trans_example()]
-    instance.zone = [create_time_zone_example()]
-    return instance
-
-
-def create_time_zone_example() -> TimeZone:
-    instance = TimeZone()
-    instance.is_dst = randomize("bool")
-    instance.name = randomize()
-    instance.offset = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
-def create_time_zone_trans_example() -> TimeZoneTrans:
-    instance = TimeZoneTrans()
-    instance.index = randomize("int", min_val=1, max_val=1000)
-    instance.isstd = randomize("bool")
-    instance.isutc = randomize("bool")
-    instance.when = randomize("int", min_val=1, max_val=1000)
     return instance

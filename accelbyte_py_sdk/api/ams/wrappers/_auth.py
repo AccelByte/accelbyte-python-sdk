@@ -36,7 +36,9 @@ from ..operations.auth import AuthCheck
 
 @same_doc_as(AuthCheck)
 def auth_check(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
-    """Check if fleet commander is authorized to talk to AMS with this IAM (AuthCheck)
+    """checks if fleet commander can auth with AMS (AuthCheck)
+
+    Check if fleet commander is authorized to talk to AMS with this IAM
 
     Properties:
         url: /ams/auth
@@ -68,7 +70,9 @@ def auth_check(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
 async def auth_check_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Check if fleet commander is authorized to talk to AMS with this IAM (AuthCheck)
+    """checks if fleet commander can auth with AMS (AuthCheck)
+
+    Check if fleet commander is authorized to talk to AMS with this IAM
 
     Properties:
         url: /ams/auth

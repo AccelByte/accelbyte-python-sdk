@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,17 +36,7 @@ from ...models import ModelsResponseError
 class AdminGetAdminGameRecordV1(Operation):
     """Get admin game record (adminGetAdminGameRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a record by its key in namespace-level.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}

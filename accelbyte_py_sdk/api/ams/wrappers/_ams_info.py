@@ -35,6 +35,7 @@ from ..models import ResponseErrorResponse
 
 from ..operations.ams_info import InfoRegions
 from ..operations.ams_info import InfoSupportedInstances
+from ..operations.ams_info import UploadURLGet
 
 
 @same_doc_as(InfoRegions)
@@ -43,7 +44,7 @@ def info_regions(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get the list of available AMS regions. (InfoRegions)
+    """get a list of the available AMS regions (InfoRegions)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
 
@@ -90,7 +91,7 @@ async def info_regions_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get the list of available AMS regions. (InfoRegions)
+    """get a list of the available AMS regions (InfoRegions)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
 
@@ -139,7 +140,7 @@ def info_supported_instances(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get a list of available VM configurations (InfoSupportedInstances)
+    """get a list of available VM configurations (InfoSupportedInstances)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
 
@@ -186,7 +187,7 @@ async def info_supported_instances_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get a list of available VM configurations (InfoSupportedInstances)
+    """get a list of available VM configurations (InfoSupportedInstances)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
 
@@ -224,6 +225,58 @@ async def info_supported_instances_async(
     request = InfoSupportedInstances.create(
         namespace=namespace,
     )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UploadURLGet)
+def upload_url_get(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
+    """get an URL for uploading an image (UploadURLGet)
+
+    Properties:
+        url: /ams/v1/upload-url
+
+        method: GET
+
+        tags: ["AMS Info"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (success)
+    """
+    request = UploadURLGet.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UploadURLGet)
+async def upload_url_get_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """get an URL for uploading an image (UploadURLGet)
+
+    Properties:
+        url: /ams/v1/upload-url
+
+        method: GET
+
+        tags: ["AMS Info"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (success)
+    """
+    request = UploadURLGet.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

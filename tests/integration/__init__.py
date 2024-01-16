@@ -5,6 +5,7 @@ from .api.ams import AMSTestCase
 from .api.basic import BasicTestCase
 from .api.chat import ChatTestCase
 from .api.cloudsave import CloudSaveTestCase
+
 # from .api.dslogmanager import DSLogManagerTestCase
 # from .api.dsmc import DSMCTestCase, DSMCSessionTestCase
 from .api.eventlog import EventLogTestCase
@@ -18,6 +19,7 @@ from .api.lobby import AsyncLobbyTestCase, LobbyTestCase
 from .api.match2 import Match2TestCase
 from .api.matchmaking import MatchmakingTestCase
 from .api.platformx import PlatformTestCase
+
 # from .api.qosm import QosmTestCase
 from .api.reporting import ReportingTestCase
 from .api.seasonpass import SeasonPassTestCase

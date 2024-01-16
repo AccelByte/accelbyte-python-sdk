@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,7 +38,7 @@ from ...models import ValidationErrorEntity
 class UpdateItemTypeConfig(Operation):
     """Update an Item Type Config (updateItemTypeConfig)
 
-    This API is used to update an item type config.
+    [Not Supported Yet In Starter] This API is used to update an item type config.
 
     *  Required permission : resource="ADMIN:ITEM:CONFIG", action=4 (UPDATE)
     *  Returns : item type config data

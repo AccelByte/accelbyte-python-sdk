@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import PaymentAccount
 class PublicGetPaymentAccounts(Operation):
     """Get payment accounts (publicGetPaymentAccounts)
 
-    Get payment accounts.
+    [Not Supported Yet In Starter] Get payment accounts.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=2 (READ)

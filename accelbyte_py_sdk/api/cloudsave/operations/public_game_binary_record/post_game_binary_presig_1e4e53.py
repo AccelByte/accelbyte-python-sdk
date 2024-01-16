@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,23 +37,11 @@ from ...models import ModelsUploadBinaryRecordResponse
 class PostGameBinaryPresignedURLV1(Operation):
     """Request presigned URL for upload game binary records (postGameBinaryPresignedURLV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Request presigned URL to upload the binary record to s3.
-
 
     Other detail info:
 
-
-
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/{key}/presigned

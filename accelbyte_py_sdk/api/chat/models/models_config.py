@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Chat Service (0.4.15)
+# AccelByte Gaming Services Chat Service (0.4.16)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -64,9 +64,13 @@ class ModelsConfig(Model):
 
         spam_mute_duration: (SpamMuteDuration) REQUIRED int
 
+        default_dictionary_loaded: (defaultDictionaryLoaded) OPTIONAL bool
+
         enable_clan_chat: (enableClanChat) OPTIONAL bool
 
         enable_manual_topic_creation: (EnableManualTopicCreation) OPTIONAL bool
+
+        use_default_dictionary: (useDefaultDictionary) OPTIONAL bool
     """
 
     # region fields
@@ -87,8 +91,10 @@ class ModelsConfig(Model):
     spam_chat_burst: int  # REQUIRED
     spam_chat_duration: int  # REQUIRED
     spam_mute_duration: int  # REQUIRED
+    default_dictionary_loaded: bool  # OPTIONAL
     enable_clan_chat: bool  # OPTIONAL
     enable_manual_topic_creation: bool  # OPTIONAL
+    use_default_dictionary: bool  # OPTIONAL
 
     # endregion fields
 
@@ -158,12 +164,20 @@ class ModelsConfig(Model):
         self.spam_mute_duration = value
         return self
 
+    def with_default_dictionary_loaded(self, value: bool) -> ModelsConfig:
+        self.default_dictionary_loaded = value
+        return self
+
     def with_enable_clan_chat(self, value: bool) -> ModelsConfig:
         self.enable_clan_chat = value
         return self
 
     def with_enable_manual_topic_creation(self, value: bool) -> ModelsConfig:
         self.enable_manual_topic_creation = value
+        return self
+
+    def with_use_default_dictionary(self, value: bool) -> ModelsConfig:
+        self.use_default_dictionary = value
         return self
 
     # endregion with_x methods
@@ -236,6 +250,10 @@ class ModelsConfig(Model):
             result["SpamMuteDuration"] = int(self.spam_mute_duration)
         elif include_empty:
             result["SpamMuteDuration"] = 0
+        if hasattr(self, "default_dictionary_loaded"):
+            result["defaultDictionaryLoaded"] = bool(self.default_dictionary_loaded)
+        elif include_empty:
+            result["defaultDictionaryLoaded"] = False
         if hasattr(self, "enable_clan_chat"):
             result["enableClanChat"] = bool(self.enable_clan_chat)
         elif include_empty:
@@ -246,6 +264,10 @@ class ModelsConfig(Model):
             )
         elif include_empty:
             result["EnableManualTopicCreation"] = False
+        if hasattr(self, "use_default_dictionary"):
+            result["useDefaultDictionary"] = bool(self.use_default_dictionary)
+        elif include_empty:
+            result["useDefaultDictionary"] = False
         return result
 
     # endregion to methods
@@ -271,8 +293,10 @@ class ModelsConfig(Model):
         spam_chat_burst: int,
         spam_chat_duration: int,
         spam_mute_duration: int,
+        default_dictionary_loaded: Optional[bool] = None,
         enable_clan_chat: Optional[bool] = None,
         enable_manual_topic_creation: Optional[bool] = None,
+        use_default_dictionary: Optional[bool] = None,
         **kwargs,
     ) -> ModelsConfig:
         instance = cls()
@@ -292,10 +316,14 @@ class ModelsConfig(Model):
         instance.spam_chat_burst = spam_chat_burst
         instance.spam_chat_duration = spam_chat_duration
         instance.spam_mute_duration = spam_mute_duration
+        if default_dictionary_loaded is not None:
+            instance.default_dictionary_loaded = default_dictionary_loaded
         if enable_clan_chat is not None:
             instance.enable_clan_chat = enable_clan_chat
         if enable_manual_topic_creation is not None:
             instance.enable_manual_topic_creation = enable_manual_topic_creation
+        if use_default_dictionary is not None:
+            instance.use_default_dictionary = use_default_dictionary
         return instance
 
     @classmethod
@@ -384,6 +412,13 @@ class ModelsConfig(Model):
             instance.spam_mute_duration = int(dict_["SpamMuteDuration"])
         elif include_empty:
             instance.spam_mute_duration = 0
+        if (
+            "defaultDictionaryLoaded" in dict_
+            and dict_["defaultDictionaryLoaded"] is not None
+        ):
+            instance.default_dictionary_loaded = bool(dict_["defaultDictionaryLoaded"])
+        elif include_empty:
+            instance.default_dictionary_loaded = False
         if "enableClanChat" in dict_ and dict_["enableClanChat"] is not None:
             instance.enable_clan_chat = bool(dict_["enableClanChat"])
         elif include_empty:
@@ -397,6 +432,13 @@ class ModelsConfig(Model):
             )
         elif include_empty:
             instance.enable_manual_topic_creation = False
+        if (
+            "useDefaultDictionary" in dict_
+            and dict_["useDefaultDictionary"] is not None
+        ):
+            instance.use_default_dictionary = bool(dict_["useDefaultDictionary"])
+        elif include_empty:
+            instance.use_default_dictionary = False
         return instance
 
     @classmethod
@@ -452,8 +494,10 @@ class ModelsConfig(Model):
             "SpamChatBurst": "spam_chat_burst",
             "SpamChatDuration": "spam_chat_duration",
             "SpamMuteDuration": "spam_mute_duration",
+            "defaultDictionaryLoaded": "default_dictionary_loaded",
             "enableClanChat": "enable_clan_chat",
             "EnableManualTopicCreation": "enable_manual_topic_creation",
+            "useDefaultDictionary": "use_default_dictionary",
         }
 
     @staticmethod
@@ -475,8 +519,10 @@ class ModelsConfig(Model):
             "SpamChatBurst": True,
             "SpamChatDuration": True,
             "SpamMuteDuration": True,
+            "defaultDictionaryLoaded": False,
             "enableClanChat": False,
             "EnableManualTopicCreation": False,
+            "useDefaultDictionary": False,
         }
 
     # endregion static methods

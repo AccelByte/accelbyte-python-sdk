@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ErrorEntity
 class DeleteItemTypeConfig(Operation):
     """Delete an item type config (deleteItemTypeConfig)
 
-    This API is used to delete an item type config permanently.Other detail info:
+    [Not Supported Yet In Starter] This API is used to delete an item type config permanently.Other detail info:
 
       * Required permission : resource="ADMIN:ITEM:CONFIG", action=8 (DELETE)
 

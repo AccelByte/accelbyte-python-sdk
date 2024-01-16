@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,8 +27,6 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.api_time import ApiTime
-
 
 class ApiArtifactResponse(Model):
     """Api artifact response (api.ArtifactResponse)
@@ -36,11 +34,13 @@ class ApiArtifactResponse(Model):
     Properties:
         artifact_type: (artifactType) REQUIRED str
 
-        created_on: (createdOn) REQUIRED ApiTime
+        created_on: (createdOn) REQUIRED str
 
         ds_id: (dsId) REQUIRED str
 
-        expires_on: (expiresOn) REQUIRED ApiTime
+        expires_on: (expiresOn) REQUIRED str
+
+        filename: (filename) REQUIRED str
 
         fleet_id: (fleetId) REQUIRED str
 
@@ -53,23 +53,21 @@ class ApiArtifactResponse(Model):
         size_bytes: (sizeBytes) REQUIRED int
 
         status: (status) REQUIRED str
-
-        storage_path: (storagePath) REQUIRED str
     """
 
     # region fields
 
     artifact_type: str  # REQUIRED
-    created_on: ApiTime  # REQUIRED
+    created_on: str  # REQUIRED
     ds_id: str  # REQUIRED
-    expires_on: ApiTime  # REQUIRED
+    expires_on: str  # REQUIRED
+    filename: str  # REQUIRED
     fleet_id: str  # REQUIRED
     id_: str  # REQUIRED
     image_id: str  # REQUIRED
     namespace: str  # REQUIRED
     size_bytes: int  # REQUIRED
     status: str  # REQUIRED
-    storage_path: str  # REQUIRED
 
     # endregion fields
 
@@ -79,7 +77,7 @@ class ApiArtifactResponse(Model):
         self.artifact_type = value
         return self
 
-    def with_created_on(self, value: ApiTime) -> ApiArtifactResponse:
+    def with_created_on(self, value: str) -> ApiArtifactResponse:
         self.created_on = value
         return self
 
@@ -87,8 +85,12 @@ class ApiArtifactResponse(Model):
         self.ds_id = value
         return self
 
-    def with_expires_on(self, value: ApiTime) -> ApiArtifactResponse:
+    def with_expires_on(self, value: str) -> ApiArtifactResponse:
         self.expires_on = value
+        return self
+
+    def with_filename(self, value: str) -> ApiArtifactResponse:
+        self.filename = value
         return self
 
     def with_fleet_id(self, value: str) -> ApiArtifactResponse:
@@ -115,10 +117,6 @@ class ApiArtifactResponse(Model):
         self.status = value
         return self
 
-    def with_storage_path(self, value: str) -> ApiArtifactResponse:
-        self.storage_path = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
@@ -130,17 +128,21 @@ class ApiArtifactResponse(Model):
         elif include_empty:
             result["artifactType"] = ""
         if hasattr(self, "created_on"):
-            result["createdOn"] = self.created_on.to_dict(include_empty=include_empty)
+            result["createdOn"] = str(self.created_on)
         elif include_empty:
-            result["createdOn"] = ApiTime()
+            result["createdOn"] = ""
         if hasattr(self, "ds_id"):
             result["dsId"] = str(self.ds_id)
         elif include_empty:
             result["dsId"] = ""
         if hasattr(self, "expires_on"):
-            result["expiresOn"] = self.expires_on.to_dict(include_empty=include_empty)
+            result["expiresOn"] = str(self.expires_on)
         elif include_empty:
-            result["expiresOn"] = ApiTime()
+            result["expiresOn"] = ""
+        if hasattr(self, "filename"):
+            result["filename"] = str(self.filename)
+        elif include_empty:
+            result["filename"] = ""
         if hasattr(self, "fleet_id"):
             result["fleetId"] = str(self.fleet_id)
         elif include_empty:
@@ -165,10 +167,6 @@ class ApiArtifactResponse(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
-        if hasattr(self, "storage_path"):
-            result["storagePath"] = str(self.storage_path)
-        elif include_empty:
-            result["storagePath"] = ""
         return result
 
     # endregion to methods
@@ -179,16 +177,16 @@ class ApiArtifactResponse(Model):
     def create(
         cls,
         artifact_type: str,
-        created_on: ApiTime,
+        created_on: str,
         ds_id: str,
-        expires_on: ApiTime,
+        expires_on: str,
+        filename: str,
         fleet_id: str,
         id_: str,
         image_id: str,
         namespace: str,
         size_bytes: int,
         status: str,
-        storage_path: str,
         **kwargs,
     ) -> ApiArtifactResponse:
         instance = cls()
@@ -196,13 +194,13 @@ class ApiArtifactResponse(Model):
         instance.created_on = created_on
         instance.ds_id = ds_id
         instance.expires_on = expires_on
+        instance.filename = filename
         instance.fleet_id = fleet_id
         instance.id_ = id_
         instance.image_id = image_id
         instance.namespace = namespace
         instance.size_bytes = size_bytes
         instance.status = status
-        instance.storage_path = storage_path
         return instance
 
     @classmethod
@@ -217,21 +215,21 @@ class ApiArtifactResponse(Model):
         elif include_empty:
             instance.artifact_type = ""
         if "createdOn" in dict_ and dict_["createdOn"] is not None:
-            instance.created_on = ApiTime.create_from_dict(
-                dict_["createdOn"], include_empty=include_empty
-            )
+            instance.created_on = str(dict_["createdOn"])
         elif include_empty:
-            instance.created_on = ApiTime()
+            instance.created_on = ""
         if "dsId" in dict_ and dict_["dsId"] is not None:
             instance.ds_id = str(dict_["dsId"])
         elif include_empty:
             instance.ds_id = ""
         if "expiresOn" in dict_ and dict_["expiresOn"] is not None:
-            instance.expires_on = ApiTime.create_from_dict(
-                dict_["expiresOn"], include_empty=include_empty
-            )
+            instance.expires_on = str(dict_["expiresOn"])
         elif include_empty:
-            instance.expires_on = ApiTime()
+            instance.expires_on = ""
+        if "filename" in dict_ and dict_["filename"] is not None:
+            instance.filename = str(dict_["filename"])
+        elif include_empty:
+            instance.filename = ""
         if "fleetId" in dict_ and dict_["fleetId"] is not None:
             instance.fleet_id = str(dict_["fleetId"])
         elif include_empty:
@@ -256,10 +254,6 @@ class ApiArtifactResponse(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
-        if "storagePath" in dict_ and dict_["storagePath"] is not None:
-            instance.storage_path = str(dict_["storagePath"])
-        elif include_empty:
-            instance.storage_path = ""
         return instance
 
     @classmethod
@@ -305,13 +299,13 @@ class ApiArtifactResponse(Model):
             "createdOn": "created_on",
             "dsId": "ds_id",
             "expiresOn": "expires_on",
+            "filename": "filename",
             "fleetId": "fleet_id",
             "id": "id_",
             "imageId": "image_id",
             "namespace": "namespace",
             "sizeBytes": "size_bytes",
             "status": "status",
-            "storagePath": "storage_path",
         }
 
     @staticmethod
@@ -321,13 +315,13 @@ class ApiArtifactResponse(Model):
             "createdOn": True,
             "dsId": True,
             "expiresOn": True,
+            "filename": True,
             "fleetId": True,
             "id": True,
             "imageId": True,
             "namespace": True,
             "sizeBytes": True,
             "status": True,
-            "storagePath": True,
         }
 
     # endregion static methods

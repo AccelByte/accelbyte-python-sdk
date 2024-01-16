@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.7.1"
+__version__ = "1.8.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,3 +16,4 @@ __email__ = "dev@accelbyte.net"
 
 from .info_regions import InfoRegions
 from .info_supported_instances import InfoSupportedInstances
+from .upload_url_get import UploadURLGet

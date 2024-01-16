@@ -75,7 +75,7 @@ def get_payment_customization(
 ):
     """Get payment provider customization (getPaymentCustomization)
 
-    Get payment provider customization, at current only Adyen provide customization. This api has been deprecated, pls use /public/namespaces/{namespace}/payment/publicconfig to get adyen config
+    [Not Supported Yet In Starter] Get payment provider customization, at current only Adyen provide customization. This api has been deprecated, pls use /public/namespaces/{namespace}/payment/publicconfig to get adyen config
     Other detail info:
 
       * Returns : customization
@@ -129,7 +129,7 @@ async def get_payment_customization_async(
 ):
     """Get payment provider customization (getPaymentCustomization)
 
-    Get payment provider customization, at current only Adyen provide customization. This api has been deprecated, pls use /public/namespaces/{namespace}/payment/publicconfig to get adyen config
+    [Not Supported Yet In Starter] Get payment provider customization, at current only Adyen provide customization. This api has been deprecated, pls use /public/namespaces/{namespace}/payment/publicconfig to get adyen config
     Other detail info:
 
       * Returns : customization
@@ -184,7 +184,7 @@ def get_payment_public_config(
 ):
     """Get payment provider public config (getPaymentPublicConfig)
 
-    Get payment provider public config, at current only Strip provide public config.
+    [Not Supported Yet In Starter] Get payment provider public config, at current only Strip provide public config.
     Other detail info:
 
       * Returns : Public config
@@ -237,7 +237,7 @@ async def get_payment_public_config_async(
 ):
     """Get payment provider public config (getPaymentPublicConfig)
 
-    Get payment provider public config, at current only Strip provide public config.
+    [Not Supported Yet In Starter] Get payment provider public config, at current only Strip provide public config.
     Other detail info:
 
       * Returns : Public config
@@ -292,7 +292,7 @@ def get_payment_tax_value(
 ):
     """get tax result of a payment order (getPaymentTaxValue)
 
-    Check and get a payment order's should pay tax.
+    [Not Supported Yet In Starter] Check and get a payment order's should pay tax.
     Other detail info:
 
       * Returns : tax result
@@ -349,7 +349,7 @@ async def get_payment_tax_value_async(
 ):
     """get tax result of a payment order (getPaymentTaxValue)
 
-    Check and get a payment order's should pay tax.
+    [Not Supported Yet In Starter] Check and get a payment order's should pay tax.
     Other detail info:
 
       * Returns : tax result
@@ -409,7 +409,7 @@ def pay(
 ):
     """Do payment (pay)
 
-    Do payment(For now, this only support checkout.com).
+    [Not Supported Yet In Starter] Do payment(For now, this only support checkout.com).
     Other detail info:
 
       * Returns : Payment process result
@@ -472,7 +472,7 @@ async def pay_async(
 ):
     """Do payment (pay)
 
-    Do payment(For now, this only support checkout.com).
+    [Not Supported Yet In Starter] Do payment(For now, this only support checkout.com).
     Other detail info:
 
       * Returns : Payment process result
@@ -534,7 +534,7 @@ def public_check_payment_order_paid_status(
 ):
     """Check payment order paid status (publicCheckPaymentOrderPaidStatus)
 
-    Check payment order paid status.
+    [Not Supported Yet In Starter] Check payment order paid status.
     Other detail info:
 
       * Returns : Payment order paid result
@@ -581,7 +581,7 @@ async def public_check_payment_order_paid_status_async(
 ):
     """Check payment order paid status (publicCheckPaymentOrderPaidStatus)
 
-    Check payment order paid status.
+    [Not Supported Yet In Starter] Check payment order paid status.
     Other detail info:
 
       * Returns : Payment order paid result
@@ -630,7 +630,7 @@ def public_get_payment_methods(
 ):
     """Get payment methods (publicGetPaymentMethods)
 
-    Get payment methods.
+    [Not Supported Yet In Starter] Get payment methods.
     Other detail info:
 
       * Returns : Payment method list
@@ -677,7 +677,7 @@ async def public_get_payment_methods_async(
 ):
     """Get payment methods (publicGetPaymentMethods)
 
-    Get payment methods.
+    [Not Supported Yet In Starter] Get payment methods.
     Other detail info:
 
       * Returns : Payment method list
@@ -726,7 +726,7 @@ def public_get_payment_url(
 ):
     """Get payment url (publicGetPaymentUrl)
 
-    Get payment url.
+    [Not Supported Yet In Starter] Get payment url.
     Other detail info:
 
       * Returns : Get payment link
@@ -777,7 +777,7 @@ async def public_get_payment_url_async(
 ):
     """Get payment url (publicGetPaymentUrl)
 
-    Get payment url.
+    [Not Supported Yet In Starter] Get payment url.
     Other detail info:
 
       * Returns : Get payment link
@@ -830,7 +830,7 @@ def public_get_qr_code(
 ):
     """Get qrcode (publicGetQRCode)
 
-    Get qrcode.
+    [Not Supported Yet In Starter] Get qrcode.
     Other detail info:
 
       * Returns : QRCode image stream
@@ -875,7 +875,7 @@ async def public_get_qr_code_async(
 ):
     """Get qrcode (publicGetQRCode)
 
-    Get qrcode.
+    [Not Supported Yet In Starter] Get qrcode.
     Other detail info:
 
       * Returns : QRCode image stream
@@ -922,7 +922,7 @@ def public_get_unpaid_payment_order(
 ):
     """Get payment order info (publicGetUnpaidPaymentOrder)
 
-    Get payment order info.
+    [Not Supported Yet In Starter] Get payment order info.
     Other detail info:
 
       * Returns : Payment order details
@@ -971,7 +971,7 @@ async def public_get_unpaid_payment_order_async(
 ):
     """Get payment order info (publicGetUnpaidPaymentOrder)
 
-    Get payment order info.
+    [Not Supported Yet In Starter] Get payment order info.
     Other detail info:
 
       * Returns : Payment order details
@@ -1036,7 +1036,7 @@ def public_normalize_payment_return_url(
 ):
     """Normalize payment return url (publicNormalizePaymentReturnUrl)
 
-    Normalize payment return url for payment provider
+    [Not Supported Yet In Starter] Normalize payment return url for payment provider
     Field                                                                                                                                                        | Type   | Required | Description
     -------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|----------|-----------------------
     orderNo                                                                                                                                                      | String | Yes      | order no
@@ -1157,7 +1157,7 @@ async def public_normalize_payment_return_url_async(
 ):
     """Normalize payment return url (publicNormalizePaymentReturnUrl)
 
-    Normalize payment return url for payment provider
+    [Not Supported Yet In Starter] Normalize payment return url for payment provider
     Field                                                                                                                                                        | Type   | Required | Description
     -------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|----------|-----------------------
     orderNo                                                                                                                                                      | String | Yes      | order no

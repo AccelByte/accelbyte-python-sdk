@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.28.0)
+# AccelByte Gaming Services Matchmaking Service (2.29.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -35,6 +35,11 @@ class BlockedPlayerOptionEnum(StrEnum):
     BLOCKEDPLAYERCANMATCH = "blockedPlayerCanMatch"
     BLOCKEDPLAYERCANMATCHONDIFFERENTTEAM = "blockedPlayerCanMatchOnDifferentTeam"
     BLOCKEDPLAYERCANNOTMATCH = "blockedPlayerCannotMatch"
+
+
+class SubGamemodeSelectionEnum(StrEnum):
+    RANDOM = "random"
+    TICKETORDER = "ticketOrder"
 
 
 class ModelsUpdateChannelRequest(Model):
@@ -69,6 +74,8 @@ class ModelsUpdateChannelRequest(Model):
 
         region_latency_max_ms: (region_latency_max_ms) OPTIONAL int
 
+        sub_gamemode_selection: (sub_gamemode_selection) OPTIONAL Union[str, SubGamemodeSelectionEnum]
+
         ticket_observability_enable: (ticket_observability_enable) OPTIONAL bool
     """
 
@@ -88,6 +95,7 @@ class ModelsUpdateChannelRequest(Model):
     region_expansion_rate_ms: int  # OPTIONAL
     region_latency_initial_range_ms: int  # OPTIONAL
     region_latency_max_ms: int  # OPTIONAL
+    sub_gamemode_selection: Union[str, SubGamemodeSelectionEnum]  # OPTIONAL
     ticket_observability_enable: bool  # OPTIONAL
 
     # endregion fields
@@ -154,6 +162,12 @@ class ModelsUpdateChannelRequest(Model):
 
     def with_region_latency_max_ms(self, value: int) -> ModelsUpdateChannelRequest:
         self.region_latency_max_ms = value
+        return self
+
+    def with_sub_gamemode_selection(
+        self, value: Union[str, SubGamemodeSelectionEnum]
+    ) -> ModelsUpdateChannelRequest:
+        self.sub_gamemode_selection = value
         return self
 
     def with_ticket_observability_enable(
@@ -228,6 +242,10 @@ class ModelsUpdateChannelRequest(Model):
             result["region_latency_max_ms"] = int(self.region_latency_max_ms)
         elif include_empty:
             result["region_latency_max_ms"] = 0
+        if hasattr(self, "sub_gamemode_selection"):
+            result["sub_gamemode_selection"] = str(self.sub_gamemode_selection)
+        elif include_empty:
+            result["sub_gamemode_selection"] = Union[str, SubGamemodeSelectionEnum]()
         if hasattr(self, "ticket_observability_enable"):
             result["ticket_observability_enable"] = bool(
                 self.ticket_observability_enable
@@ -257,6 +275,7 @@ class ModelsUpdateChannelRequest(Model):
         region_expansion_rate_ms: Optional[int] = None,
         region_latency_initial_range_ms: Optional[int] = None,
         region_latency_max_ms: Optional[int] = None,
+        sub_gamemode_selection: Optional[Union[str, SubGamemodeSelectionEnum]] = None,
         ticket_observability_enable: Optional[bool] = None,
         **kwargs,
     ) -> ModelsUpdateChannelRequest:
@@ -280,6 +299,8 @@ class ModelsUpdateChannelRequest(Model):
             instance.region_latency_initial_range_ms = region_latency_initial_range_ms
         if region_latency_max_ms is not None:
             instance.region_latency_max_ms = region_latency_max_ms
+        if sub_gamemode_selection is not None:
+            instance.sub_gamemode_selection = sub_gamemode_selection
         if ticket_observability_enable is not None:
             instance.ticket_observability_enable = ticket_observability_enable
         return instance
@@ -375,6 +396,13 @@ class ModelsUpdateChannelRequest(Model):
         elif include_empty:
             instance.region_latency_max_ms = 0
         if (
+            "sub_gamemode_selection" in dict_
+            and dict_["sub_gamemode_selection"] is not None
+        ):
+            instance.sub_gamemode_selection = str(dict_["sub_gamemode_selection"])
+        elif include_empty:
+            instance.sub_gamemode_selection = Union[str, SubGamemodeSelectionEnum]()
+        if (
             "ticket_observability_enable" in dict_
             and dict_["ticket_observability_enable"] is not None
         ):
@@ -440,6 +468,7 @@ class ModelsUpdateChannelRequest(Model):
             "region_expansion_rate_ms": "region_expansion_rate_ms",
             "region_latency_initial_range_ms": "region_latency_initial_range_ms",
             "region_latency_max_ms": "region_latency_max_ms",
+            "sub_gamemode_selection": "sub_gamemode_selection",
             "ticket_observability_enable": "ticket_observability_enable",
         }
 
@@ -460,6 +489,7 @@ class ModelsUpdateChannelRequest(Model):
             "region_expansion_rate_ms": False,
             "region_latency_initial_range_ms": False,
             "region_latency_max_ms": False,
+            "sub_gamemode_selection": False,
             "ticket_observability_enable": False,
         }
 
@@ -471,6 +501,7 @@ class ModelsUpdateChannelRequest(Model):
                 "blockedPlayerCanMatchOnDifferentTeam",
                 "blockedPlayerCannotMatch",
             ],
+            "sub_gamemode_selection": ["random", "ticketOrder"],
         }
 
     # endregion static methods

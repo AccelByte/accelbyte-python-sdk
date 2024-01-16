@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,7 +37,7 @@ from ...models import PaymentMerchantConfigInfo
 class UpdateAdyenConfig(Operation):
     """Update adyen config (updateAdyenConfig)
 
-    Update adyen config.
+    [Not Supported Yet In Starter] Update adyen config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

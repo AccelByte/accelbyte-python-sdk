@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,7 +33,9 @@ from ...models import ResponseErrorResponse
 
 
 class AuthCheck(Operation):
-    """Check if fleet commander is authorized to talk to AMS with this IAM (AuthCheck)
+    """checks if fleet commander can auth with AMS (AuthCheck)
+
+    Check if fleet commander is authorized to talk to AMS with this IAM
 
     Properties:
         url: /ams/auth

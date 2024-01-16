@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -4082,8 +4082,10 @@ def create_reward_item_example() -> RewardItem:
     instance = RewardItem()
     instance.duration = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize("date")
+    instance.identity_type = randomize()
     instance.item_id = randomize()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.sku = randomize("slug")
     return instance
 
 

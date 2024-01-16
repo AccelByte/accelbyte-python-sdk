@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SetByEnum(StrEnum):
+    CLIENT = "CLIENT"
+    SERVER = "SERVER"
 
 
 class ModelsPlayerBinaryRecordCreate(Model):
@@ -36,7 +42,7 @@ class ModelsPlayerBinaryRecordCreate(Model):
 
         key: (key) REQUIRED str
 
-        set_by: (set_by) REQUIRED str
+        set_by: (set_by) REQUIRED Union[str, SetByEnum]
 
         is_public: (is_public) OPTIONAL bool
     """
@@ -45,7 +51,7 @@ class ModelsPlayerBinaryRecordCreate(Model):
 
     file_type: str  # REQUIRED
     key: str  # REQUIRED
-    set_by: str  # REQUIRED
+    set_by: Union[str, SetByEnum]  # REQUIRED
     is_public: bool  # OPTIONAL
 
     # endregion fields
@@ -60,7 +66,9 @@ class ModelsPlayerBinaryRecordCreate(Model):
         self.key = value
         return self
 
-    def with_set_by(self, value: str) -> ModelsPlayerBinaryRecordCreate:
+    def with_set_by(
+        self, value: Union[str, SetByEnum]
+    ) -> ModelsPlayerBinaryRecordCreate:
         self.set_by = value
         return self
 
@@ -85,7 +93,7 @@ class ModelsPlayerBinaryRecordCreate(Model):
         if hasattr(self, "set_by"):
             result["set_by"] = str(self.set_by)
         elif include_empty:
-            result["set_by"] = ""
+            result["set_by"] = Union[str, SetByEnum]()
         if hasattr(self, "is_public"):
             result["is_public"] = bool(self.is_public)
         elif include_empty:
@@ -101,7 +109,7 @@ class ModelsPlayerBinaryRecordCreate(Model):
         cls,
         file_type: str,
         key: str,
-        set_by: str,
+        set_by: Union[str, SetByEnum],
         is_public: Optional[bool] = None,
         **kwargs,
     ) -> ModelsPlayerBinaryRecordCreate:
@@ -131,7 +139,7 @@ class ModelsPlayerBinaryRecordCreate(Model):
         if "set_by" in dict_ and dict_["set_by"] is not None:
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
-            instance.set_by = ""
+            instance.set_by = Union[str, SetByEnum]()
         if "is_public" in dict_ and dict_["is_public"] is not None:
             instance.is_public = bool(dict_["is_public"])
         elif include_empty:
@@ -192,6 +200,12 @@ class ModelsPlayerBinaryRecordCreate(Model):
             "key": True,
             "set_by": True,
             "is_public": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "set_by": ["CLIENT", "SERVER"],
         }
 
     # endregion static methods

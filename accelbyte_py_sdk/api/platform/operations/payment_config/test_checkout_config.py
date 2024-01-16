@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestCheckoutConfig(Operation):
     """Test checkout.com configuration (testCheckoutConfig)
 
-    Test checkout.com configuration.
+    [Not Supported Yet In Starter] Test checkout.com configuration.
 
     #### Check List:
 

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,13 +26,19 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SetByEnum(StrEnum):
+    CLIENT = "CLIENT"
+    SERVER = "SERVER"
 
 
 class ModelsAdminConcurrentRecordRequest(Model):
     """Models admin concurrent record request (models.AdminConcurrentRecordRequest)
 
     Properties:
-        set_by: (set_by) REQUIRED str
+        set_by: (set_by) REQUIRED Union[str, SetByEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -41,7 +47,7 @@ class ModelsAdminConcurrentRecordRequest(Model):
 
     # region fields
 
-    set_by: str  # REQUIRED
+    set_by: Union[str, SetByEnum]  # REQUIRED
     updated_at: str  # REQUIRED
     value: Dict[str, Any]  # REQUIRED
 
@@ -49,7 +55,9 @@ class ModelsAdminConcurrentRecordRequest(Model):
 
     # region with_x methods
 
-    def with_set_by(self, value: str) -> ModelsAdminConcurrentRecordRequest:
+    def with_set_by(
+        self, value: Union[str, SetByEnum]
+    ) -> ModelsAdminConcurrentRecordRequest:
         self.set_by = value
         return self
 
@@ -70,7 +78,7 @@ class ModelsAdminConcurrentRecordRequest(Model):
         if hasattr(self, "set_by"):
             result["set_by"] = str(self.set_by)
         elif include_empty:
-            result["set_by"] = ""
+            result["set_by"] = Union[str, SetByEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -87,7 +95,11 @@ class ModelsAdminConcurrentRecordRequest(Model):
 
     @classmethod
     def create(
-        cls, set_by: str, updated_at: str, value: Dict[str, Any], **kwargs
+        cls,
+        set_by: Union[str, SetByEnum],
+        updated_at: str,
+        value: Dict[str, Any],
+        **kwargs,
     ) -> ModelsAdminConcurrentRecordRequest:
         instance = cls()
         instance.set_by = set_by
@@ -105,7 +117,7 @@ class ModelsAdminConcurrentRecordRequest(Model):
         if "set_by" in dict_ and dict_["set_by"] is not None:
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
-            instance.set_by = ""
+            instance.set_by = Union[str, SetByEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -168,6 +180,12 @@ class ModelsAdminConcurrentRecordRequest(Model):
             "set_by": True,
             "updatedAt": True,
             "value": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "set_by": ["CLIENT", "SERVER"],
         }
 
     # endregion static methods

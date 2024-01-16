@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,7 @@ from ...models import ResponseErrorResponse
 
 
 class ArtifactGetURL(Operation):
-    """Get a signed URL for a specific artifact (ArtifactGetURL)
+    """get a signed URL for a specific artifact (ArtifactGetURL)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
@@ -61,13 +61,13 @@ class ArtifactGetURL(Operation):
     Responses:
         200: OK - ApiArtifactURLResponse (success)
 
-        204: No Content - ResponseErrorResponse (no artifact found with specified ID)
-
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (no artifact with specifed artifactID)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -180,13 +180,13 @@ class ArtifactGetURL(Operation):
 
         200: OK - ApiArtifactURLResponse (success)
 
-        204: No Content - ResponseErrorResponse (no artifact found with specified ID)
-
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (no artifact with specifed artifactID)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
 
@@ -205,13 +205,13 @@ class ArtifactGetURL(Operation):
 
         if code == 200:
             return ApiArtifactURLResponse.create_from_dict(content), None
-        if code == 204:
-            return None, None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:
+            return None, ResponseErrorResponse.create_from_dict(content)
+        if code == 404:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)

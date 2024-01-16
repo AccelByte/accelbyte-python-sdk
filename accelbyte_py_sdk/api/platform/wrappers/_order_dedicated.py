@@ -44,7 +44,7 @@ def sync_orders(
 ):
     """Sync orders (syncOrders)
 
-    Sync orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
+    [Not Supported Yet In Starter] Sync orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
       * Required permission : resource="ADMIN:ORDER", action=2 (READ)
@@ -93,7 +93,7 @@ async def sync_orders_async(
 ):
     """Sync orders (syncOrders)
 
-    Sync orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
+    [Not Supported Yet In Starter] Sync orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
       * Required permission : resource="ADMIN:ORDER", action=2 (READ)

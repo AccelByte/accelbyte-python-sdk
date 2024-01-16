@@ -1164,7 +1164,7 @@ def create_item_type_config(
 ):
     """Create an Item Type Config (createItemTypeConfig)
 
-    This API is used to create an item type config.
+    [Not Supported Yet In Starter] This API is used to create an item type config.
 
     *  Required permission : resource="ADMIN:ITEM:CONFIG", action=1 (CREATE)
     *  Returns : item type config data
@@ -1210,7 +1210,7 @@ async def create_item_type_config_async(
 ):
     """Create an Item Type Config (createItemTypeConfig)
 
-    This API is used to create an item type config.
+    [Not Supported Yet In Starter] This API is used to create an item type config.
 
     *  Required permission : resource="ADMIN:ITEM:CONFIG", action=1 (CREATE)
     *  Returns : item type config data
@@ -1506,7 +1506,7 @@ def delete_item_type_config(
 ):
     """Delete an item type config (deleteItemTypeConfig)
 
-    This API is used to delete an item type config permanently.Other detail info:
+    [Not Supported Yet In Starter] This API is used to delete an item type config permanently.Other detail info:
 
       * Required permission : resource="ADMIN:ITEM:CONFIG", action=8 (DELETE)
 
@@ -1545,7 +1545,7 @@ async def delete_item_type_config_async(
 ):
     """Delete an item type config (deleteItemTypeConfig)
 
-    This API is used to delete an item type config permanently.Other detail info:
+    [Not Supported Yet In Starter] This API is used to delete an item type config permanently.Other detail info:
 
       * Required permission : resource="ADMIN:ITEM:CONFIG", action=8 (DELETE)
 
@@ -2966,7 +2966,7 @@ def get_item_type_config(
 ):
     """Get an item type config (getItemTypeConfig)
 
-    This API is used to get an item type config.
+    [Not Supported Yet In Starter] This API is used to get an item type config.
 
     Other detail info:
 
@@ -3008,7 +3008,7 @@ async def get_item_type_config_async(
 ):
     """Get an item type config (getItemTypeConfig)
 
-    This API is used to get an item type config.
+    [Not Supported Yet In Starter] This API is used to get an item type config.
 
     Other detail info:
 
@@ -3576,7 +3576,7 @@ def list_item_type_configs(
 ):
     """Get all item type configs (listItemTypeConfigs)
 
-    This API is used to get all item type configs.
+    [Not Supported Yet In Starter] This API is used to get all item type configs.
 
     Other detail info:
 
@@ -3612,7 +3612,7 @@ async def list_item_type_configs_async(
 ):
     """Get all item type configs (listItemTypeConfigs)
 
-    This API is used to get all item type configs.
+    [Not Supported Yet In Starter] This API is used to get all item type configs.
 
     Other detail info:
 
@@ -5707,7 +5707,7 @@ def search_item_type_config(
 ):
     """Get an item type config (searchItemTypeConfig)
 
-    This API is used to get an item type config.
+    [Not Supported Yet In Starter] This API is used to get an item type config.
 
     Other detail info:
 
@@ -5755,7 +5755,7 @@ async def search_item_type_config_async(
 ):
     """Get an item type config (searchItemTypeConfig)
 
-    This API is used to get an item type config.
+    [Not Supported Yet In Starter] This API is used to get an item type config.
 
     Other detail info:
 
@@ -5968,7 +5968,7 @@ def sync_in_game_item(
 ):
     """Sync an in game item (syncInGameItem)
 
-    This API is used to sync an in game item in game namespace to publisher namespace, only INGAMEITEM, CODE, COINS and SEASON are supported
+    [Not Supported Yet In Starter] This API is used to sync an in game item in game namespace to publisher namespace, only INGAMEITEM, CODE, COINS and SEASON are supported
 
     The synced item has an additional field targetItemId besides targetNamespace, mostly this item should not modified manually again.
 
@@ -6032,7 +6032,7 @@ async def sync_in_game_item_async(
 ):
     """Sync an in game item (syncInGameItem)
 
-    This API is used to sync an in game item in game namespace to publisher namespace, only INGAMEITEM, CODE, COINS and SEASON are supported
+    [Not Supported Yet In Starter] This API is used to sync an in game item in game namespace to publisher namespace, only INGAMEITEM, CODE, COINS and SEASON are supported
 
     The synced item has an additional field targetItemId besides targetNamespace, mostly this item should not modified manually again.
 
@@ -7119,7 +7119,7 @@ def update_item_type_config(
 ):
     """Update an Item Type Config (updateItemTypeConfig)
 
-    This API is used to update an item type config.
+    [Not Supported Yet In Starter] This API is used to update an item type config.
 
     *  Required permission : resource="ADMIN:ITEM:CONFIG", action=4 (UPDATE)
     *  Returns : item type config data
@@ -7169,7 +7169,7 @@ async def update_item_type_config_async(
 ):
     """Update an Item Type Config (updateItemTypeConfig)
 
-    This API is used to update an item type config.
+    [Not Supported Yet In Starter] This API is used to update an item type config.
 
     *  Required permission : resource="ADMIN:ITEM:CONFIG", action=4 (UPDATE)
     *  Returns : item type config data

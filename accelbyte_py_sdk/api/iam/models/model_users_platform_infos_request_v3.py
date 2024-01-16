@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Iam Service (7.8.0)
+# AccelByte Gaming Services Iam Service (7.8.3)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -32,26 +32,26 @@ class ModelUsersPlatformInfosRequestV3(Model):
     """Model users platform infos request V3 (model.UsersPlatformInfosRequestV3)
 
     Properties:
-        platform_id: (platformId) REQUIRED str
-
         user_ids: (userIds) REQUIRED List[str]
+
+        platform_id: (platformId) OPTIONAL str
     """
 
     # region fields
 
-    platform_id: str  # REQUIRED
     user_ids: List[str]  # REQUIRED
+    platform_id: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_platform_id(self, value: str) -> ModelUsersPlatformInfosRequestV3:
-        self.platform_id = value
-        return self
-
     def with_user_ids(self, value: List[str]) -> ModelUsersPlatformInfosRequestV3:
         self.user_ids = value
+        return self
+
+    def with_platform_id(self, value: str) -> ModelUsersPlatformInfosRequestV3:
+        self.platform_id = value
         return self
 
     # endregion with_x methods
@@ -60,14 +60,14 @@ class ModelUsersPlatformInfosRequestV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "platform_id"):
-            result["platformId"] = str(self.platform_id)
-        elif include_empty:
-            result["platformId"] = ""
         if hasattr(self, "user_ids"):
             result["userIds"] = [str(i0) for i0 in self.user_ids]
         elif include_empty:
             result["userIds"] = []
+        if hasattr(self, "platform_id"):
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = ""
         return result
 
     # endregion to methods
@@ -76,11 +76,12 @@ class ModelUsersPlatformInfosRequestV3(Model):
 
     @classmethod
     def create(
-        cls, platform_id: str, user_ids: List[str], **kwargs
+        cls, user_ids: List[str], platform_id: Optional[str] = None, **kwargs
     ) -> ModelUsersPlatformInfosRequestV3:
         instance = cls()
-        instance.platform_id = platform_id
         instance.user_ids = user_ids
+        if platform_id is not None:
+            instance.platform_id = platform_id
         return instance
 
     @classmethod
@@ -90,14 +91,14 @@ class ModelUsersPlatformInfosRequestV3(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "platformId" in dict_ and dict_["platformId"] is not None:
-            instance.platform_id = str(dict_["platformId"])
-        elif include_empty:
-            instance.platform_id = ""
         if "userIds" in dict_ and dict_["userIds"] is not None:
             instance.user_ids = [str(i0) for i0 in dict_["userIds"]]
         elif include_empty:
             instance.user_ids = []
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = ""
         return instance
 
     @classmethod
@@ -141,15 +142,15 @@ class ModelUsersPlatformInfosRequestV3(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "platformId": "platform_id",
             "userIds": "user_ids",
+            "platformId": "platform_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "platformId": True,
             "userIds": True,
+            "platformId": False,
         }
 
     # endregion static methods

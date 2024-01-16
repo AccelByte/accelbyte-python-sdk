@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,16 +35,7 @@ from ...models import ModelsResponseError
 class AdminDeleteGameBinaryRecordV1(Operation):
     """Delete game binary record (adminDeleteGameBinaryRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
-    Required scope: `social`
-
     Delete a game binary record.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/binaries/{key}

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,22 +35,8 @@ from ...models import ModelsResponseError
 class DeletePlayerRecordHandlerV1(Operation):
     """Delete player record (deletePlayerRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
-    --------------------|-----------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Delete player record by its key.
     Only user that own the player record could delete it.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}

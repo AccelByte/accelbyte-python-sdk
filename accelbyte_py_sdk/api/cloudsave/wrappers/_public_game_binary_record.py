@@ -46,6 +46,7 @@ from ..operations.public_game_binary_record import ListGameBinaryRecordsV1
 from ..operations.public_game_binary_record import PostGameBinaryPresignedURLV1
 from ..operations.public_game_binary_record import PostGameBinaryRecordV1
 from ..operations.public_game_binary_record import PutGameBinaryRecordV1
+from ..models import ModelsGameBinaryRecordResponseSetByEnum
 
 
 @same_doc_as(BulkGetGameBinaryRecordV1)
@@ -57,13 +58,7 @@ def bulk_get_game_binary_record_v1(
 ):
     """Bulk get game binary records (bulkGetGameBinaryRecordV1)
 
-    Required valid user token
-    Required scope: `social`
-
     Bulk get game binary records. Maximum key per request 20.
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/bulk
@@ -113,13 +108,7 @@ async def bulk_get_game_binary_record_v1_async(
 ):
     """Bulk get game binary records (bulkGetGameBinaryRecordV1)
 
-    Required valid user token
-    Required scope: `social`
-
     Bulk get game binary records. Maximum key per request 20.
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/bulk
@@ -171,16 +160,7 @@ def delete_game_binary_record_v1(
 ):
     """Delete game binary record (deleteGameBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
-    Required scope: `social`
-
     Delete a game binary record.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/{key}
@@ -232,16 +212,7 @@ async def delete_game_binary_record_v1_async(
 ):
     """Delete game binary record (deleteGameBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
-    Required scope: `social`
-
     Delete a game binary record.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/{key}
@@ -295,16 +266,7 @@ def get_game_binary_record_v1(
 ):
     """Get game binary record (getGameBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    Required scope: `social`
-
     Get a game binary record by its key.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/{key}
@@ -354,16 +316,7 @@ async def get_game_binary_record_v1_async(
 ):
     """Get game binary record (getGameBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    Required scope: `social`
-
     Get a game binary record by its key.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/{key}
@@ -417,16 +370,7 @@ def list_game_binary_records_v1(
 ):
     """Query game binary records (listGameBinaryRecordsV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    Required scope: `social`
-
     Retrieve list of binary records by namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries
@@ -484,16 +428,7 @@ async def list_game_binary_records_v1_async(
 ):
     """Query game binary records (listGameBinaryRecordsV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    Required scope: `social`
-
     Retrieve list of binary records by namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries
@@ -552,23 +487,11 @@ def post_game_binary_presigned_urlv1(
 ):
     """Request presigned URL for upload game binary records (postGameBinaryPresignedURLV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Request presigned URL to upload the binary record to s3.
-
 
     Other detail info:
 
-
-
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/{key}/presigned
@@ -624,23 +547,11 @@ async def post_game_binary_presigned_urlv1_async(
 ):
     """Request presigned URL for upload game binary records (postGameBinaryPresignedURLV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Request presigned URL to upload the binary record to s3.
-
 
     Other detail info:
 
-
-
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/{key}/presigned
@@ -697,30 +608,18 @@ def post_game_binary_record_v1(
 ):
     """Create game binary record (postGameBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Create a game binary record.
-
 
     Other detail info:
 
-
-
     `key` should follow these rules:
-    1. support uppercase and lowercase letters, numbers, and separators "-" , "_" , "." are allowed
+    1. support uppercase and lowercase letters, numbers, and separators **"-"**, **"_"**, **"."** are allowed
     2. begin and end with letters or numbers
     3. spaces are not allowed
     4. separators must not appears twice in a row
 
 
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries
@@ -772,30 +671,18 @@ async def post_game_binary_record_v1_async(
 ):
     """Create game binary record (postGameBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Create a game binary record.
-
 
     Other detail info:
 
-
-
     `key` should follow these rules:
-    1. support uppercase and lowercase letters, numbers, and separators "-" , "_" , "." are allowed
+    1. support uppercase and lowercase letters, numbers, and separators **"-"**, **"_"**, **"."** are allowed
     2. begin and end with letters or numbers
     3. spaces are not allowed
     4. separators must not appears twice in a row
 
 
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries
@@ -850,16 +737,7 @@ def put_game_binary_record_v1(
 ):
     """Update game binary record file (putGameBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a game binary record file by its key
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/{key}
@@ -915,16 +793,7 @@ async def put_game_binary_record_v1_async(
 ):
     """Update game binary record file (putGameBinaryRecordV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a game binary record file by its key
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/binaries/{key}

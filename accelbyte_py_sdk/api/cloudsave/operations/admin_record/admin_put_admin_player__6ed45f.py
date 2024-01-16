@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,75 +37,36 @@ from ...models import ModelsResponseError
 class AdminPutAdminPlayerRecordV1(Operation):
     """Create or replace admin player record (adminPutAdminPlayerRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new admin player record or replace the existing admin player record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
+    - `{ "": "value" }`
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}

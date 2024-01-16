@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,24 +26,32 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SetByEnum(StrEnum):
+    CLIENT = "CLIENT"
+    SERVER = "SERVER"
 
 
 class ModelsGameBinaryRecordMetadataRequest(Model):
     """Models game binary record metadata request (models.GameBinaryRecordMetadataRequest)
 
     Properties:
-        set_by: (set_by) REQUIRED str
+        set_by: (set_by) REQUIRED Union[str, SetByEnum]
     """
 
     # region fields
 
-    set_by: str  # REQUIRED
+    set_by: Union[str, SetByEnum]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_set_by(self, value: str) -> ModelsGameBinaryRecordMetadataRequest:
+    def with_set_by(
+        self, value: Union[str, SetByEnum]
+    ) -> ModelsGameBinaryRecordMetadataRequest:
         self.set_by = value
         return self
 
@@ -56,7 +64,7 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
         if hasattr(self, "set_by"):
             result["set_by"] = str(self.set_by)
         elif include_empty:
-            result["set_by"] = ""
+            result["set_by"] = Union[str, SetByEnum]()
         return result
 
     # endregion to methods
@@ -64,7 +72,9 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
     # region static methods
 
     @classmethod
-    def create(cls, set_by: str, **kwargs) -> ModelsGameBinaryRecordMetadataRequest:
+    def create(
+        cls, set_by: Union[str, SetByEnum], **kwargs
+    ) -> ModelsGameBinaryRecordMetadataRequest:
         instance = cls()
         instance.set_by = set_by
         return instance
@@ -79,7 +89,7 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
         if "set_by" in dict_ and dict_["set_by"] is not None:
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
-            instance.set_by = ""
+            instance.set_by = Union[str, SetByEnum]()
         return instance
 
     @classmethod
@@ -130,6 +140,12 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "set_by": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "set_by": ["CLIENT", "SERVER"],
         }
 
     # endregion static methods

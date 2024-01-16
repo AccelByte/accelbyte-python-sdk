@@ -40,6 +40,7 @@ from ..operations.public_game_record import GetGameRecordHandlerV1
 from ..operations.public_game_record import GetGameRecordsBulk
 from ..operations.public_game_record import PostGameRecordHandlerV1
 from ..operations.public_game_record import PutGameRecordHandlerV1
+from ..models import ModelsGameRecordResponseSetByEnum
 
 
 @same_doc_as(DeleteGameRecordHandlerV1)
@@ -51,21 +52,7 @@ def delete_game_record_handler_v1(
 ):
     """Delete game record (deleteGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
-    --------------------|---------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Delete records by its key
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
@@ -115,21 +102,7 @@ async def delete_game_record_handler_v1_async(
 ):
     """Delete game record (deleteGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
-    --------------------|---------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Delete records by its key
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
@@ -181,20 +154,7 @@ def get_game_record_handler_v1(
 ):
     """Get game record (getGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
     Get game record by its key.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
@@ -246,20 +206,7 @@ async def get_game_record_handler_v1_async(
 ):
     """Get game record (getGameRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
     Get game record by its key.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
@@ -313,21 +260,7 @@ def get_game_records_bulk(
 ):
     """Bulk get game records (getGameRecordsBulk)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Bulk get game records. Maximum key per request 20.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/bulk
@@ -379,21 +312,7 @@ async def get_game_records_bulk_async(
 ):
     """Bulk get game records (getGameRecordsBulk)
 
-    Required Permission | `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Bulk get game records. Maximum key per request 20.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/bulk
@@ -448,111 +367,56 @@ def post_game_record_handler_v1(
 ):
     """Create or append game record (postGameRecordHandlerV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new game record or append the existing game record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Reserved Word
 
-
-
-    Reserved Word List: __META
+    Reserved Word List: **__META**
 
     The reserved word cannot be used as a field in record value,
     If still defining the field when creating or updating the record, it will be ignored.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
@@ -606,111 +470,56 @@ async def post_game_record_handler_v1_async(
 ):
     """Create or append game record (postGameRecordHandlerV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new game record or append the existing game record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Reserved Word
 
-
-
-    Reserved Word List: __META
+    Reserved Word List: **__META**
 
     The reserved word cannot be used as a field in record value,
     If still defining the field when creating or updating the record, it will be ignored.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
@@ -766,89 +575,44 @@ def put_game_record_handler_v1(
 ):
     """Create or replace game record (putGameRecordHandlerV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new game record or replace the existing game record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Reserved Word
 
-
-
-    Reserved Word List: __META
+    Reserved Word List: **__META**
 
     The reserved word cannot be used as a field in record value,
     If still defining the field when creating or updating the record, it will be ignored.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}
@@ -902,89 +666,44 @@ async def put_game_record_handler_v1_async(
 ):
     """Create or replace game record (putGameRecordHandlerV1)
 
-    Required permission: `NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new game record or replace the existing game record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Reserved Word
 
-
-
-    Reserved Word List: __META
+    Reserved Word List: **__META**
 
     The reserved word cannot be used as a field in record value,
     If still defining the field when creating or updating the record, it will be ignored.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/records/{key}

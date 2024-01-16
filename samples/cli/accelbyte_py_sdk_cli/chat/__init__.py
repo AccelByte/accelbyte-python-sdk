@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-chat-service (0.4.15)
+# justice-chat-service (0.4.16)
 
 from ._admin_chat_history import admin_chat_history
 from ._admin_create_namespace_topic import admin_create_namespace_topic

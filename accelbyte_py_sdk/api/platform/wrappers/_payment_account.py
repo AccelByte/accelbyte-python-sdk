@@ -48,7 +48,7 @@ def public_delete_payment_account(
 ):
     """Delete payment account (publicDeletePaymentAccount)
 
-    Delete payment account.
+    [Not Supported Yet In Starter] Delete payment account.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8 (DELETE)
@@ -105,7 +105,7 @@ async def public_delete_payment_account_async(
 ):
     """Delete payment account (publicDeletePaymentAccount)
 
-    Delete payment account.
+    [Not Supported Yet In Starter] Delete payment account.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8 (DELETE)
@@ -162,7 +162,7 @@ def public_get_payment_accounts(
 ):
     """Get payment accounts (publicGetPaymentAccounts)
 
-    Get payment accounts.
+    [Not Supported Yet In Starter] Get payment accounts.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=2 (READ)
@@ -211,7 +211,7 @@ async def public_get_payment_accounts_async(
 ):
     """Get payment accounts (publicGetPaymentAccounts)
 
-    Get payment accounts.
+    [Not Supported Yet In Starter] Get payment accounts.
     Other detail info:
 
       * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=2 (READ)

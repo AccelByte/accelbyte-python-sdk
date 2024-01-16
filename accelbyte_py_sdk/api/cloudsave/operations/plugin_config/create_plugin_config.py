@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,22 +37,9 @@ from ...models import ModelsResponseError
 class CreatePluginConfig(Operation):
     """Create plugin configuration (createPluginConfig)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
 
-
-
     This endpoints will create new grpc plugins configuration per namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/plugins

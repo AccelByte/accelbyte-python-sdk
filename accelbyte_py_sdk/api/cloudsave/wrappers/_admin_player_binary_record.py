@@ -45,6 +45,9 @@ from ..operations.admin_player_binary_record import AdminPostPlayerBinaryPresign
 from ..operations.admin_player_binary_record import AdminPostPlayerBinaryRecordV1
 from ..operations.admin_player_binary_record import AdminPutPlayerBinaryRecorMetadataV1
 from ..operations.admin_player_binary_record import AdminPutPlayerBinaryRecordV1
+from ..models import ModelsPlayerBinaryRecordCreateSetByEnum
+from ..models import ModelsPlayerBinaryRecordMetadataRequestSetByEnum
+from ..models import ModelsPlayerBinaryRecordResponseSetByEnum
 
 
 @same_doc_as(AdminDeletePlayerBinaryRecordV1)
@@ -57,16 +60,7 @@ def admin_delete_player_binary_record_v1(
 ):
     """Delete player binary record (adminDeletePlayerBinaryRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
-    Required scope: `social`
-
     Delete a player binary record.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}
@@ -120,16 +114,7 @@ async def admin_delete_player_binary_record_v1_async(
 ):
     """Delete player binary record (adminDeletePlayerBinaryRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
-    Required scope: `social`
-
     Delete a player binary record.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}
@@ -185,15 +170,7 @@ def admin_get_player_binary_record_v1(
 ):
     """Get player binary record (adminGetPlayerBinaryRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-    Required scope: `social`
     Get a player binary record by its key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}
@@ -247,15 +224,7 @@ async def admin_get_player_binary_record_v1_async(
 ):
     """Get player binary record (adminGetPlayerBinaryRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-    Required scope: `social`
     Get a player binary record by its key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}
@@ -313,16 +282,7 @@ def admin_list_player_binary_records_v1(
 ):
     """Query player binary records (adminListPlayerBinaryRecordsV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-    Required scope: `social`
-
     Retrieve list of player binary records by namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries
@@ -384,16 +344,7 @@ async def admin_list_player_binary_records_v1_async(
 ):
     """Query player binary records (adminListPlayerBinaryRecordsV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-    Required scope: `social`
-
     Retrieve list of player binary records by namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries
@@ -456,23 +407,11 @@ def admin_post_player_binary_presigned_urlv1(
 ):
     """Request presigned URL for upload player binary records (adminPostPlayerBinaryPresignedURLV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Request presigned URL to upload the binary record to s3.
-
 
     Other detail info:
 
-
-
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}/presigned
@@ -532,23 +471,11 @@ async def admin_post_player_binary_presigned_urlv1_async(
 ):
     """Request presigned URL for upload player binary records (adminPostPlayerBinaryPresignedURLV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Request presigned URL to upload the binary record to s3.
-
 
     Other detail info:
 
-
-
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}/presigned
@@ -609,30 +536,18 @@ def admin_post_player_binary_record_v1(
 ):
     """Create player binary record (adminPostPlayerBinaryRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Create a player binary record.
-
 
     Other detail info:
 
-
-
     `key` should follow these rules:
-    1. support uppercase and lowercase letters, numbers, and separators "-" , "_" , "." are allowed
+    1. support uppercase and lowercase letters, numbers, and separators **"-"**, **"_"**, **"."** are allowed
     2. begin and end with letters or numbers
     3. spaces are not allowed
     4. separators must not appears twice in a row
 
 
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries
@@ -688,30 +603,18 @@ async def admin_post_player_binary_record_v1_async(
 ):
     """Create player binary record (adminPostPlayerBinaryRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
     Create a player binary record.
-
 
     Other detail info:
 
-
-
     `key` should follow these rules:
-    1. support uppercase and lowercase letters, numbers, and separators "-" , "_" , "." are allowed
+    1. support uppercase and lowercase letters, numbers, and separators **"-"**, **"_"**, **"."** are allowed
     2. begin and end with letters or numbers
     3. spaces are not allowed
     4. separators must not appears twice in a row
 
 
     Supported file types: jpeg, jpg, png, bmp, gif, mp3, webp, and bin.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries
@@ -770,16 +673,7 @@ def admin_put_player_binary_recor_metadata_v1(
 ):
     """Update player binary record metadata (adminPutPlayerBinaryRecorMetadataV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a player binary record metadata by its key
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}/metadata
@@ -839,16 +733,7 @@ async def admin_put_player_binary_recor_metadata_v1_async(
 ):
     """Update player binary record metadata (adminPutPlayerBinaryRecorMetadataV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a player binary record metadata by its key
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}/metadata
@@ -910,16 +795,7 @@ def admin_put_player_binary_record_v1(
 ):
     """Update player binary record file (adminPutPlayerBinaryRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a player binary record file by its key
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}
@@ -979,16 +855,7 @@ async def admin_put_player_binary_record_v1_async(
 ):
     """Update player binary record file (adminPutPlayerBinaryRecordV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
     Update a player binary record file by its key
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/binaries/{key}

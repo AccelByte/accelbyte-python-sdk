@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import PaymentOrderSyncResult
 class SyncPaymentOrders(Operation):
     """Sync payment orders (syncPaymentOrders)
 
-    Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
+    [Not Supported Yet In Starter] Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -323,13 +323,19 @@ def create_models_custom_config_example() -> ModelsCustomConfig:
 
 def create_models_custom_function_example() -> ModelsCustomFunction:
     instance = ModelsCustomFunction()
+    instance.after_bulk_read_game_binary_record = randomize("bool")
     instance.after_bulk_read_game_record = randomize("bool")
+    instance.after_bulk_read_player_binary_record = randomize("bool")
     instance.after_bulk_read_player_record = randomize("bool")
+    instance.after_read_game_binary_record = randomize("bool")
     instance.after_read_game_record = randomize("bool")
+    instance.after_read_player_binary_record = randomize("bool")
     instance.after_read_player_record = randomize("bool")
     instance.before_write_admin_game_record = randomize("bool")
     instance.before_write_admin_player_record = randomize("bool")
+    instance.before_write_game_binary_record = randomize("bool")
     instance.before_write_game_record = randomize("bool")
+    instance.before_write_player_binary_record = randomize("bool")
     instance.before_write_player_record = randomize("bool")
     return instance
 

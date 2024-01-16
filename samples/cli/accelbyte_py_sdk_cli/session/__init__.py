@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-service (3.13.0)
+# justice-session-service (3.13.3)
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,7 +36,7 @@ from ...models import WxPayConfigRequest
 class TestWxPayConfig(Operation):
     """Test wxPay configuration (testWxPayConfig)
 
-    Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not Supported Yet In Starter] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

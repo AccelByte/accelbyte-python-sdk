@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,17 +36,7 @@ from ...models import ModelsResponseError
 class ListGameRecordsHandlerV1(Operation):
     """Query game records (listGameRecordsHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Retrieve list of records key by namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records
@@ -72,7 +62,7 @@ class ListGameRecordsHandlerV1(Operation):
     Responses:
         200: OK - ModelsListGameRecordKeysResponse (Retrieve list of records key by namespace)
 
-        400: Bad Request - ModelsResponseError
+        400: Bad Request - ModelsResponseError (18004: unable to retrieve list of key records)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
@@ -216,7 +206,7 @@ class ListGameRecordsHandlerV1(Operation):
 
         200: OK - ModelsListGameRecordKeysResponse (Retrieve list of records key by namespace)
 
-        400: Bad Request - ModelsResponseError
+        400: Bad Request - ModelsResponseError (18004: unable to retrieve list of key records)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 

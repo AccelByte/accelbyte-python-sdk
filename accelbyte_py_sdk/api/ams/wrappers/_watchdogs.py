@@ -41,7 +41,9 @@ def local_watchdog_connect(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """connect a (local) watchdog to support local ds development scenarios (LocalWatchdogConnect)
+    """connect a local watchdog (LocalWatchdogConnect)
+
+    This is to support local ds development scenarios
 
     Required Permission: NAMESPACE:{namespace}:AMS:LOCALDS [CREATE]
 
@@ -86,7 +88,9 @@ async def local_watchdog_connect_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """connect a (local) watchdog to support local ds development scenarios (LocalWatchdogConnect)
+    """connect a local watchdog (LocalWatchdogConnect)
+
+    This is to support local ds development scenarios
 
     Required Permission: NAMESPACE:{namespace}:AMS:LOCALDS [CREATE]
 

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -48,7 +48,7 @@ class PaymentProviderEnum(StrEnum):
 class GetPaymentTaxValue(Operation):
     """get tax result of a payment order (getPaymentTaxValue)
 
-    Check and get a payment order's should pay tax.
+    [Not Supported Yet In Starter] Check and get a payment order's should pay tax.
     Other detail info:
 
       * Returns : tax result

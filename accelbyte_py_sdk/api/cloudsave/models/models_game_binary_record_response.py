@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,8 +26,14 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_binary_info_response import ModelsBinaryInfoResponse
+
+
+class SetByEnum(StrEnum):
+    CLIENT = "CLIENT"
+    SERVER = "SERVER"
 
 
 class ModelsGameBinaryRecordResponse(Model):
@@ -44,7 +50,7 @@ class ModelsGameBinaryRecordResponse(Model):
 
         binary_info: (binary_info) OPTIONAL ModelsBinaryInfoResponse
 
-        set_by: (set_by) OPTIONAL str
+        set_by: (set_by) OPTIONAL Union[str, SetByEnum]
     """
 
     # region fields
@@ -54,7 +60,7 @@ class ModelsGameBinaryRecordResponse(Model):
     namespace: str  # REQUIRED
     updated_at: str  # REQUIRED
     binary_info: ModelsBinaryInfoResponse  # OPTIONAL
-    set_by: str  # OPTIONAL
+    set_by: Union[str, SetByEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -82,7 +88,9 @@ class ModelsGameBinaryRecordResponse(Model):
         self.binary_info = value
         return self
 
-    def with_set_by(self, value: str) -> ModelsGameBinaryRecordResponse:
+    def with_set_by(
+        self, value: Union[str, SetByEnum]
+    ) -> ModelsGameBinaryRecordResponse:
         self.set_by = value
         return self
 
@@ -117,7 +125,7 @@ class ModelsGameBinaryRecordResponse(Model):
         if hasattr(self, "set_by"):
             result["set_by"] = str(self.set_by)
         elif include_empty:
-            result["set_by"] = ""
+            result["set_by"] = Union[str, SetByEnum]()
         return result
 
     # endregion to methods
@@ -132,7 +140,7 @@ class ModelsGameBinaryRecordResponse(Model):
         namespace: str,
         updated_at: str,
         binary_info: Optional[ModelsBinaryInfoResponse] = None,
-        set_by: Optional[str] = None,
+        set_by: Optional[Union[str, SetByEnum]] = None,
         **kwargs,
     ) -> ModelsGameBinaryRecordResponse:
         instance = cls()
@@ -178,7 +186,7 @@ class ModelsGameBinaryRecordResponse(Model):
         if "set_by" in dict_ and dict_["set_by"] is not None:
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
-            instance.set_by = ""
+            instance.set_by = Union[str, SetByEnum]()
         return instance
 
     @classmethod
@@ -239,6 +247,12 @@ class ModelsGameBinaryRecordResponse(Model):
             "updated_at": True,
             "binary_info": False,
             "set_by": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "set_by": ["CLIENT", "SERVER"],
         }
 
     # endregion static methods

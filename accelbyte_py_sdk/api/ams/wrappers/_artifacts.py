@@ -50,7 +50,7 @@ def artifact_delete(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Deletes the specified artifact (ArtifactDelete)
+    """delete a specified artifact (ArtifactDelete)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
 
@@ -77,13 +77,13 @@ def artifact_delete(
     Responses:
         202: Accepted - (delete received)
 
-        204: No Content - ResponseErrorResponse (no artifact with specifed artifactID)
-
         400: Bad Request - ResponseErrorResponse (bad request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (no artifact with specifed artifactID)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -105,7 +105,7 @@ async def artifact_delete_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Deletes the specified artifact (ArtifactDelete)
+    """delete a specified artifact (ArtifactDelete)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
 
@@ -132,13 +132,13 @@ async def artifact_delete_async(
     Responses:
         202: Accepted - (delete received)
 
-        204: No Content - ResponseErrorResponse (no artifact with specifed artifactID)
-
         400: Bad Request - ResponseErrorResponse (bad request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (no artifact with specifed artifactID)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -158,19 +158,24 @@ async def artifact_delete_async(
 @same_doc_as(ArtifactGet)
 def artifact_get(
     artifact_type: Optional[str] = None,
+    count: Optional[int] = None,
     end_date: Optional[str] = None,
     fleet_id: Optional[str] = None,
     image_id: Optional[str] = None,
     max_size: Optional[int] = None,
     min_size: Optional[int] = None,
+    offset: Optional[int] = None,
     region: Optional[str] = None,
+    server_id: Optional[str] = None,
     start_date: Optional[str] = None,
     status: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get all artifacts matching the provided criteria (ArtifactGet)
+    """get all artifacts matching the provided criteria (ArtifactGet)
+
+    Get all artifacts matching the provided search criteria. When criteria is not specified the data returned won't have been filtered on those parameters
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
@@ -194,6 +199,8 @@ def artifact_get(
 
         artifact_type: (artifactType) OPTIONAL str in query
 
+        count: (count) OPTIONAL int in query
+
         end_date: (endDate) OPTIONAL str in query
 
         fleet_id: (fleetID) OPTIONAL str in query
@@ -204,7 +211,11 @@ def artifact_get(
 
         min_size: (minSize) OPTIONAL int in query
 
+        offset: (offset) OPTIONAL int in query
+
         region: (region) OPTIONAL str in query
+
+        server_id: (serverId) OPTIONAL str in query
 
         start_date: (startDate) OPTIONAL str in query
 
@@ -212,8 +223,6 @@ def artifact_get(
 
     Responses:
         200: OK - List[ApiArtifactResponse] (success)
-
-        204: No Content - ResponseErrorResponse (no artifacts found with specified criteria)
 
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
@@ -229,12 +238,15 @@ def artifact_get(
             return None, error
     request = ArtifactGet.create(
         artifact_type=artifact_type,
+        count=count,
         end_date=end_date,
         fleet_id=fleet_id,
         image_id=image_id,
         max_size=max_size,
         min_size=min_size,
+        offset=offset,
         region=region,
+        server_id=server_id,
         start_date=start_date,
         status=status,
         namespace=namespace,
@@ -245,19 +257,24 @@ def artifact_get(
 @same_doc_as(ArtifactGet)
 async def artifact_get_async(
     artifact_type: Optional[str] = None,
+    count: Optional[int] = None,
     end_date: Optional[str] = None,
     fleet_id: Optional[str] = None,
     image_id: Optional[str] = None,
     max_size: Optional[int] = None,
     min_size: Optional[int] = None,
+    offset: Optional[int] = None,
     region: Optional[str] = None,
+    server_id: Optional[str] = None,
     start_date: Optional[str] = None,
     status: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get all artifacts matching the provided criteria (ArtifactGet)
+    """get all artifacts matching the provided criteria (ArtifactGet)
+
+    Get all artifacts matching the provided search criteria. When criteria is not specified the data returned won't have been filtered on those parameters
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
@@ -281,6 +298,8 @@ async def artifact_get_async(
 
         artifact_type: (artifactType) OPTIONAL str in query
 
+        count: (count) OPTIONAL int in query
+
         end_date: (endDate) OPTIONAL str in query
 
         fleet_id: (fleetID) OPTIONAL str in query
@@ -291,7 +310,11 @@ async def artifact_get_async(
 
         min_size: (minSize) OPTIONAL int in query
 
+        offset: (offset) OPTIONAL int in query
+
         region: (region) OPTIONAL str in query
+
+        server_id: (serverId) OPTIONAL str in query
 
         start_date: (startDate) OPTIONAL str in query
 
@@ -299,8 +322,6 @@ async def artifact_get_async(
 
     Responses:
         200: OK - List[ApiArtifactResponse] (success)
-
-        204: No Content - ResponseErrorResponse (no artifacts found with specified criteria)
 
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
@@ -316,12 +337,15 @@ async def artifact_get_async(
             return None, error
     request = ArtifactGet.create(
         artifact_type=artifact_type,
+        count=count,
         end_date=end_date,
         fleet_id=fleet_id,
         image_id=image_id,
         max_size=max_size,
         min_size=min_size,
+        offset=offset,
         region=region,
+        server_id=server_id,
         start_date=start_date,
         status=status,
         namespace=namespace,
@@ -338,7 +362,7 @@ def artifact_get_url(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get a signed URL for a specific artifact (ArtifactGetURL)
+    """get a signed URL for a specific artifact (ArtifactGetURL)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
@@ -365,13 +389,13 @@ def artifact_get_url(
     Responses:
         200: OK - ApiArtifactURLResponse (success)
 
-        204: No Content - ResponseErrorResponse (no artifact found with specified ID)
-
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (no artifact with specifed artifactID)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -393,7 +417,7 @@ async def artifact_get_url_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get a signed URL for a specific artifact (ArtifactGetURL)
+    """get a signed URL for a specific artifact (ArtifactGetURL)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
@@ -420,13 +444,13 @@ async def artifact_get_url_async(
     Responses:
         200: OK - ApiArtifactURLResponse (success)
 
-        204: No Content - ResponseErrorResponse (no artifact found with specified ID)
-
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (no artifact with specifed artifactID)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -449,7 +473,7 @@ def artifact_usage_get(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieves artifact storage usage for the namespace (ArtifactUsageGet)
+    """retrieve artifact storage usage for the namespace (ArtifactUsageGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
@@ -496,7 +520,7 @@ async def artifact_usage_get_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieves artifact storage usage for the namespace (ArtifactUsageGet)
+    """retrieve artifact storage usage for the namespace (ArtifactUsageGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
@@ -546,7 +570,7 @@ def fleet_artifact_sampling_rules_get(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get the sampling rules for a fleet (FleetArtifactSamplingRulesGet)
+    """get the sampling rules for a fleet (FleetArtifactSamplingRulesGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
@@ -601,7 +625,7 @@ async def fleet_artifact_sampling_rules_get_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get the sampling rules for a fleet (FleetArtifactSamplingRulesGet)
+    """get the sampling rules for a fleet (FleetArtifactSamplingRulesGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
@@ -659,7 +683,7 @@ def fleet_artifact_sampling_rules_set(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Set sampling rules for a fleet (FleetArtifactSamplingRulesSet)
+    """set sampling rules for a fleet (FleetArtifactSamplingRulesSet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
 
@@ -718,7 +742,7 @@ async def fleet_artifact_sampling_rules_set_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Set sampling rules for a fleet (FleetArtifactSamplingRulesSet)
+    """set sampling rules for a fleet (FleetArtifactSamplingRulesSet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
 

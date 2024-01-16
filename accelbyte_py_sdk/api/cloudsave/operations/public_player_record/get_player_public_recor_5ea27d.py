@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,22 +36,8 @@ from ...models import ModelsResponseError
 class GetPlayerPublicRecordHandlerV1(Operation):
     """Get player public record (getPlayerPublicRecordHandlerV1)
 
-    Required Permission | `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    --------------------|----------------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
     Get other player's record that is public. Only record with `isPublic=true` that can be
     retrieved using this endpoint.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}/public

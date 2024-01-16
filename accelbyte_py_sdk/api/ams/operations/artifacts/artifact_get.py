@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -34,7 +34,9 @@ from ...models import ResponseErrorResponse
 
 
 class ArtifactGet(Operation):
-    """Get all artifacts matching the provided criteria (ArtifactGet)
+    """get all artifacts matching the provided criteria (ArtifactGet)
+
+    Get all artifacts matching the provided search criteria. When criteria is not specified the data returned won't have been filtered on those parameters
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
@@ -58,6 +60,8 @@ class ArtifactGet(Operation):
 
         artifact_type: (artifactType) OPTIONAL str in query
 
+        count: (count) OPTIONAL int in query
+
         end_date: (endDate) OPTIONAL str in query
 
         fleet_id: (fleetID) OPTIONAL str in query
@@ -68,7 +72,11 @@ class ArtifactGet(Operation):
 
         min_size: (minSize) OPTIONAL int in query
 
+        offset: (offset) OPTIONAL int in query
+
         region: (region) OPTIONAL str in query
+
+        server_id: (serverId) OPTIONAL str in query
 
         start_date: (startDate) OPTIONAL str in query
 
@@ -76,8 +84,6 @@ class ArtifactGet(Operation):
 
     Responses:
         200: OK - List[ApiArtifactResponse] (success)
-
-        204: No Content - ResponseErrorResponse (no artifacts found with specified criteria)
 
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
@@ -99,12 +105,15 @@ class ArtifactGet(Operation):
 
     namespace: str  # REQUIRED in [path]
     artifact_type: str  # OPTIONAL in [query]
+    count: int  # OPTIONAL in [query]
     end_date: str  # OPTIONAL in [query]
     fleet_id: str  # OPTIONAL in [query]
     image_id: str  # OPTIONAL in [query]
     max_size: int  # OPTIONAL in [query]
     min_size: int  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
+    server_id: str  # OPTIONAL in [query]
     start_date: str  # OPTIONAL in [query]
     status: str  # OPTIONAL in [query]
 
@@ -160,6 +169,8 @@ class ArtifactGet(Operation):
         result = {}
         if hasattr(self, "artifact_type"):
             result["artifactType"] = self.artifact_type
+        if hasattr(self, "count"):
+            result["count"] = self.count
         if hasattr(self, "end_date"):
             result["endDate"] = self.end_date
         if hasattr(self, "fleet_id"):
@@ -170,8 +181,12 @@ class ArtifactGet(Operation):
             result["maxSize"] = self.max_size
         if hasattr(self, "min_size"):
             result["minSize"] = self.min_size
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         if hasattr(self, "region"):
             result["region"] = self.region
+        if hasattr(self, "server_id"):
+            result["serverId"] = self.server_id
         if hasattr(self, "start_date"):
             result["startDate"] = self.start_date
         if hasattr(self, "status"):
@@ -194,6 +209,10 @@ class ArtifactGet(Operation):
         self.artifact_type = value
         return self
 
+    def with_count(self, value: int) -> ArtifactGet:
+        self.count = value
+        return self
+
     def with_end_date(self, value: str) -> ArtifactGet:
         self.end_date = value
         return self
@@ -214,8 +233,16 @@ class ArtifactGet(Operation):
         self.min_size = value
         return self
 
+    def with_offset(self, value: int) -> ArtifactGet:
+        self.offset = value
+        return self
+
     def with_region(self, value: str) -> ArtifactGet:
         self.region = value
+        return self
+
+    def with_server_id(self, value: str) -> ArtifactGet:
+        self.server_id = value
         return self
 
     def with_start_date(self, value: str) -> ArtifactGet:
@@ -240,6 +267,10 @@ class ArtifactGet(Operation):
             result["artifactType"] = str(self.artifact_type)
         elif include_empty:
             result["artifactType"] = ""
+        if hasattr(self, "count") and self.count:
+            result["count"] = int(self.count)
+        elif include_empty:
+            result["count"] = 0
         if hasattr(self, "end_date") and self.end_date:
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -260,10 +291,18 @@ class ArtifactGet(Operation):
             result["minSize"] = int(self.min_size)
         elif include_empty:
             result["minSize"] = 0
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = ""
+        if hasattr(self, "server_id") and self.server_id:
+            result["serverId"] = str(self.server_id)
+        elif include_empty:
+            result["serverId"] = ""
         if hasattr(self, "start_date") and self.start_date:
             result["startDate"] = str(self.start_date)
         elif include_empty:
@@ -289,8 +328,6 @@ class ArtifactGet(Operation):
 
         200: OK - List[ApiArtifactResponse] (success)
 
-        204: No Content - ResponseErrorResponse (no artifacts found with specified criteria)
-
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
@@ -314,8 +351,6 @@ class ArtifactGet(Operation):
 
         if code == 200:
             return [ApiArtifactResponse.create_from_dict(i) for i in content], None
-        if code == 204:
-            return None, None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:
@@ -338,12 +373,15 @@ class ArtifactGet(Operation):
         cls,
         namespace: str,
         artifact_type: Optional[str] = None,
+        count: Optional[int] = None,
         end_date: Optional[str] = None,
         fleet_id: Optional[str] = None,
         image_id: Optional[str] = None,
         max_size: Optional[int] = None,
         min_size: Optional[int] = None,
+        offset: Optional[int] = None,
         region: Optional[str] = None,
+        server_id: Optional[str] = None,
         start_date: Optional[str] = None,
         status: Optional[str] = None,
         **kwargs,
@@ -352,6 +390,8 @@ class ArtifactGet(Operation):
         instance.namespace = namespace
         if artifact_type is not None:
             instance.artifact_type = artifact_type
+        if count is not None:
+            instance.count = count
         if end_date is not None:
             instance.end_date = end_date
         if fleet_id is not None:
@@ -362,8 +402,12 @@ class ArtifactGet(Operation):
             instance.max_size = max_size
         if min_size is not None:
             instance.min_size = min_size
+        if offset is not None:
+            instance.offset = offset
         if region is not None:
             instance.region = region
+        if server_id is not None:
+            instance.server_id = server_id
         if start_date is not None:
             instance.start_date = start_date
         if status is not None:
@@ -381,6 +425,10 @@ class ArtifactGet(Operation):
             instance.artifact_type = str(dict_["artifactType"])
         elif include_empty:
             instance.artifact_type = ""
+        if "count" in dict_ and dict_["count"] is not None:
+            instance.count = int(dict_["count"])
+        elif include_empty:
+            instance.count = 0
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -401,10 +449,18 @@ class ArtifactGet(Operation):
             instance.min_size = int(dict_["minSize"])
         elif include_empty:
             instance.min_size = 0
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = ""
+        if "serverId" in dict_ and dict_["serverId"] is not None:
+            instance.server_id = str(dict_["serverId"])
+        elif include_empty:
+            instance.server_id = ""
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
@@ -420,12 +476,15 @@ class ArtifactGet(Operation):
         return {
             "namespace": "namespace",
             "artifactType": "artifact_type",
+            "count": "count",
             "endDate": "end_date",
             "fleetID": "fleet_id",
             "imageID": "image_id",
             "maxSize": "max_size",
             "minSize": "min_size",
+            "offset": "offset",
             "region": "region",
+            "serverId": "server_id",
             "startDate": "start_date",
             "status": "status",
         }
@@ -435,12 +494,15 @@ class ArtifactGet(Operation):
         return {
             "namespace": True,
             "artifactType": False,
+            "count": False,
             "endDate": False,
             "fleetID": False,
             "imageID": False,
             "maxSize": False,
             "minSize": False,
+            "offset": False,
             "region": False,
+            "serverId": False,
             "startDate": False,
             "status": False,
         }

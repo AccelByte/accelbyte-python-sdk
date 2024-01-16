@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,23 +29,22 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApiAccountLinkRequest
-from ...models import ApiAccountLinkResponse
+from ...models import ApiAccountResponse
 from ...models import ResponseErrorResponse
 
 
-class AccountLink(Operation):
-    """Link an account to the namespace.  Will attempt to register the linkage in AMS shipyard.  Requires a valid link token for the account. Fails if an account is already linked (AccountLink)
+class AdminAccountGet(Operation):
+    """get the account associated with the namespace (AdminAccountGet)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
+    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
+        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
     Properties:
-        url: /ams/v1/admin/namespaces/{namespace}/account/link
+        url: /ams/v1/admin/namespaces/{namespace}/account
 
-        method: POST
+        method: GET
 
         tags: ["Account"]
 
@@ -55,30 +54,29 @@ class AccountLink(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApiAccountLinkRequest in body
-
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ApiAccountLinkResponse (success)
+        200: OK - ApiAccountResponse (success)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (account not linked)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
 
     # region fields
 
-    _url: str = "/ams/v1/admin/namespaces/{namespace}/account/link"
-    _method: str = "POST"
+    _url: str = "/ams/v1/admin/namespaces/{namespace}/account"
+    _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ApiAccountLinkRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -119,14 +117,8 @@ class AccountLink(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
-
-    def get_body_params(self) -> Any:
-        if not hasattr(self, "body") or self.body is None:
-            return None
-        return self.body.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
@@ -142,11 +134,7 @@ class AccountLink(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ApiAccountLinkRequest) -> AccountLink:
-        self.body = value
-        return self
-
-    def with_namespace(self, value: str) -> AccountLink:
+    def with_namespace(self, value: str) -> AdminAccountGet:
         self.namespace = value
         return self
 
@@ -156,10 +144,6 @@ class AccountLink(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "body") and self.body:
-            result["body"] = self.body.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["body"] = ApiAccountLinkRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -174,16 +158,18 @@ class AccountLink(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ApiAccountLinkResponse],
+        Union[None, ApiAccountResponse],
         Union[None, HttpResponse, ResponseErrorResponse],
     ]:
         """Parse the given response.
 
-        201: Created - ApiAccountLinkResponse (success)
+        200: OK - ApiAccountResponse (success)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (account not linked)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
 
@@ -200,11 +186,13 @@ class AccountLink(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 201:
-            return ApiAccountLinkResponse.create_from_dict(content), None
+        if code == 200:
+            return ApiAccountResponse.create_from_dict(content), None
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:
+            return None, ResponseErrorResponse.create_from_dict(content)
+        if code == 404:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)
@@ -218,23 +206,16 @@ class AccountLink(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls, body: ApiAccountLinkRequest, namespace: str, **kwargs
-    ) -> AccountLink:
+    def create(cls, namespace: str, **kwargs) -> AdminAccountGet:
         instance = cls()
-        instance.body = body
         instance.namespace = namespace
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> AccountLink:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> AdminAccountGet:
         instance = cls()
-        if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ApiAccountLinkRequest.create_from_dict(
-                dict_["body"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.body = ApiAccountLinkRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -244,14 +225,12 @@ class AccountLink(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "body": "body",
             "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": True,
             "namespace": True,
         }
 

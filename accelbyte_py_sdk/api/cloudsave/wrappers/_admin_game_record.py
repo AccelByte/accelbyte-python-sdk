@@ -39,6 +39,7 @@ from ..operations.admin_game_record import AdminGetGameRecordHandlerV1
 from ..operations.admin_game_record import AdminPostGameRecordHandlerV1
 from ..operations.admin_game_record import AdminPutGameRecordHandlerV1
 from ..operations.admin_game_record import ListGameRecordsHandlerV1
+from ..models import ModelsGameRecordResponseSetByEnum
 
 
 @same_doc_as(AdminDeleteGameRecordHandlerV1)
@@ -50,17 +51,7 @@ def admin_delete_game_record_handler_v1(
 ):
     """Delete game record (adminDeleteGameRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
-
-    Required scope: `social`
-
     This endpoints delete game record in namespace-level
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
@@ -110,17 +101,7 @@ async def admin_delete_game_record_handler_v1_async(
 ):
     """Delete game record (adminDeleteGameRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]`
-
-    Required scope: `social`
-
     This endpoints delete game record in namespace-level
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
@@ -172,17 +153,7 @@ def admin_get_game_record_handler_v1(
 ):
     """Get game record (adminGetGameRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a record by its key in namespace-level.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
@@ -232,17 +203,7 @@ async def admin_get_game_record_handler_v1_async(
 ):
     """Get game record (adminGetGameRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a record by its key in namespace-level.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
@@ -295,131 +256,75 @@ def admin_post_game_record_handler_v1(
 ):
     """Create or append game record (adminPostGameRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new game record or append the existing game record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Record Metadata
 
-
-
     Metadata allows user to define the behaviour of the record.
-    Metadata can be defined in request body with field name __META.
-    When creating record, if __META field is not defined, the metadata value will use the default value.
-    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+    Metadata can be defined in request body with field name **__META**.
+    When creating record, if **__META** field is not defined, the metadata value will use the default value.
+    When updating record, if **__META** field is not defined, the existing metadata value will stay as is.
 
-     Metadata List:
+    **Metadata List:**
     1. set_by (default: CLIENT, type: string)
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
     CLIENT: record can be modified by client and server.
 
-     Request Body Example:
-
-
-
-
-            {
-                "__META": {
-                    "set_by": "SERVER"
-                }
-                ...
-            }
+    **Request Body Example:**
+    ```
+    {
+    "__META": {
+    "set_by": "SERVER"
+    }
+    ...
+    }
+    ```
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
         - CLIENT []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
@@ -473,131 +378,75 @@ async def admin_post_game_record_handler_v1_async(
 ):
     """Create or append game record (adminPostGameRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new game record or append the existing game record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Record Metadata
 
-
-
     Metadata allows user to define the behaviour of the record.
-    Metadata can be defined in request body with field name __META.
-    When creating record, if __META field is not defined, the metadata value will use the default value.
-    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+    Metadata can be defined in request body with field name **__META**.
+    When creating record, if **__META** field is not defined, the metadata value will use the default value.
+    When updating record, if **__META** field is not defined, the existing metadata value will stay as is.
 
-     Metadata List:
+    **Metadata List:**
     1. set_by (default: CLIENT, type: string)
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
     CLIENT: record can be modified by client and server.
 
-     Request Body Example:
-
-
-
-
-            {
-                "__META": {
-                    "set_by": "SERVER"
-                }
-                ...
-            }
+    **Request Body Example:**
+    ```
+    {
+    "__META": {
+    "set_by": "SERVER"
+    }
+    ...
+    }
+    ```
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [CREATE]
-
         - CLIENT []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
@@ -653,109 +502,63 @@ def admin_put_game_record_handler_v1(
 ):
     """Create or replace game record (adminPutGameRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new game record or replace the existing game record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Record Metadata
 
-
-
     Metadata allows user to define the behaviour of the record.
-    Metadata can be defined in request body with field name __META.
-    When creating record, if __META field is not defined, the metadata value will use the default value.
-    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+    Metadata can be defined in request body with field name **__META**.
+    When creating record, if **__META** field is not defined, the metadata value will use the default value.
+    When updating record, if **__META** field is not defined, the existing metadata value will stay as is.
 
-     Metadata List:
+    **Metadata List:**
     1. set_by (default: CLIENT, type: string)
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
     CLIENT: record can be modified by client and server.
 
-     Request Body Example:
-
-
-
-
-            {
-                "__META": {
-                    "set_by": "SERVER"
-                }
-                ...
-            }
+    **Request Body Example:**
+    ```
+    {
+    "__META": {
+    "set_by": "SERVER"
+    }
+    ...
+    }
+    ```
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-
         - CLIENT []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
@@ -809,109 +612,63 @@ async def admin_put_game_record_handler_v1_async(
 ):
     """Create or replace game record (adminPutGameRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new game record or replace the existing game record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Record Metadata
 
-
-
     Metadata allows user to define the behaviour of the record.
-    Metadata can be defined in request body with field name __META.
-    When creating record, if __META field is not defined, the metadata value will use the default value.
-    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+    Metadata can be defined in request body with field name **__META**.
+    When creating record, if **__META** field is not defined, the metadata value will use the default value.
+    When updating record, if **__META** field is not defined, the existing metadata value will stay as is.
 
-     Metadata List:
+    **Metadata List:**
     1. set_by (default: CLIENT, type: string)
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
     CLIENT: record can be modified by client and server.
 
-     Request Body Example:
-
-
-
-
-            {
-                "__META": {
-                    "set_by": "SERVER"
-                }
-                ...
-            }
+    **Request Body Example:**
+    ```
+    {
+    "__META": {
+    "set_by": "SERVER"
+    }
+    ...
+    }
+    ```
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [UPDATE]
-
         - CLIENT []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
@@ -968,17 +725,7 @@ def list_game_records_handler_v1(
 ):
     """Query game records (listGameRecordsHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Retrieve list of records key by namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records
@@ -1004,7 +751,7 @@ def list_game_records_handler_v1(
     Responses:
         200: OK - ModelsListGameRecordKeysResponse (Retrieve list of records key by namespace)
 
-        400: Bad Request - ModelsResponseError
+        400: Bad Request - ModelsResponseError (18004: unable to retrieve list of key records)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
@@ -1036,17 +783,7 @@ async def list_game_records_handler_v1_async(
 ):
     """Query game records (listGameRecordsHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Retrieve list of records key by namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records
@@ -1072,7 +809,7 @@ async def list_game_records_handler_v1_async(
     Responses:
         200: OK - ModelsListGameRecordKeysResponse (Retrieve list of records key by namespace)
 
-        400: Bad Request - ModelsResponseError
+        400: Bad Request - ModelsResponseError (18004: unable to retrieve list of key records)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 

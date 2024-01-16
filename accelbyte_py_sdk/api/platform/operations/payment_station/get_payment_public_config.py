@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -45,7 +45,7 @@ class PaymentProviderEnum(StrEnum):
 class GetPaymentPublicConfig(Operation):
     """Get payment provider public config (getPaymentPublicConfig)
 
-    Get payment provider public config, at current only Strip provide public config.
+    [Not Supported Yet In Starter] Get payment provider public config, at current only Strip provide public config.
     Other detail info:
 
       * Returns : Public config

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.43.0"
+__version__ = "4.44.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -745,6 +745,7 @@ from .reward_condition import RewardCondition
 from .reward_create import RewardCreate
 from .reward_info import RewardInfo
 from .reward_item import RewardItem
+from .reward_item import IdentityTypeEnum as RewardItemIdentityTypeEnum
 from .reward_migration_result import RewardMigrationResult
 from .reward_migration_result import StatusEnum as RewardMigrationResultStatusEnum
 from .reward_paging_sliced_result import RewardPagingSlicedResult

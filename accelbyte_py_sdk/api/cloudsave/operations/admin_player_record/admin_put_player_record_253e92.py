@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,21 +37,8 @@ from ...models import ModelsResponseError
 class AdminPutPlayerRecordsHandlerV1(Operation):
     """Bulk update player records (adminPutPlayerRecordsHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [UPDATE]`
-    --------------------|----------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
     This endpoints will create new player record or replace the existing player record in bulk.
     Maximum bulk key limit per request 10.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk

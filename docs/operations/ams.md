@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.7.1)
+# Fleet Commander Index (1.8.1)
 
 
 ## Operations
@@ -10,16 +10,18 @@
 ### Account
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /ams/v1/admin/namespaces/{namespace}/account | POST | AccountCreate | `false` | [AccountCreate](../../accelbyte_py_sdk/api/ams/operations/account/account_create.py) | [account_create](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-account-create](../../samples/cli/accelbyte_py_sdk_cli/ams/_account_create.py) |
-| /ams/v1/admin/namespaces/{namespace}/account | GET | AccountGet | `false` | [AccountGet](../../accelbyte_py_sdk/api/ams/operations/account/account_get.py) | [account_get](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-account-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_account_get.py) |
-| /ams/v1/admin/namespaces/{namespace}/account/link | POST | AccountLink | `false` | [AccountLink](../../accelbyte_py_sdk/api/ams/operations/account/account_link.py) | [account_link](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-account-link](../../samples/cli/accelbyte_py_sdk_cli/ams/_account_link.py) |
-| /ams/v1/admin/namespaces/{namespace}/account/link | GET | AccountLinkTokenGet | `false` | [AccountLinkTokenGet](../../accelbyte_py_sdk/api/ams/operations/account/account_link_token_get.py) | [account_link_token_get](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-account-link-token-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_account_link_token_get.py) |
+| /ams/v1/namespaces/{namespace}/account | GET | AccountGet | `false` | [AccountGet](../../accelbyte_py_sdk/api/ams/operations/account/account_get.py) | [account_get](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-account-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_account_get.py) |
+| /ams/v1/admin/namespaces/{namespace}/account | POST | AdminAccountCreate | `false` | [AdminAccountCreate](../../accelbyte_py_sdk/api/ams/operations/account/admin_account_create.py) | [admin_account_create](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-admin-account-create](../../samples/cli/accelbyte_py_sdk_cli/ams/_admin_account_create.py) |
+| /ams/v1/admin/namespaces/{namespace}/account | GET | AdminAccountGet | `false` | [AdminAccountGet](../../accelbyte_py_sdk/api/ams/operations/account/admin_account_get.py) | [admin_account_get](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-admin-account-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_admin_account_get.py) |
+| /ams/v1/admin/namespaces/{namespace}/account/link | GET | AdminAccountLinkTokenGet | `false` | [AdminAccountLinkTokenGet](../../accelbyte_py_sdk/api/ams/operations/account/admin_account_link_token_get.py) | [admin_account_link_token_get](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-admin-account-link-token-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_admin_account_link_token_get.py) |
+| /ams/v1/admin/namespaces/{namespace}/account/link | POST | AdminAccountLinkTokenPost | `false` | [AdminAccountLinkTokenPost](../../accelbyte_py_sdk/api/ams/operations/account/admin_account_link_token_post.py) | [admin_account_link_token_post](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-admin-account-link-token-post](../../samples/cli/accelbyte_py_sdk_cli/ams/_admin_account_link_token_post.py) |
 
 ### AMS Info
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /ams/v1/admin/namespaces/{namespace}/regions | GET | InfoRegions | `false` | [InfoRegions](../../accelbyte_py_sdk/api/ams/operations/ams_info/info_regions.py) | [info_regions](../../accelbyte_py_sdk/api/ams/wrappers/_ams_info.py) | [accelbyte_py_sdk_cli ams-info-regions](../../samples/cli/accelbyte_py_sdk_cli/ams/_info_regions.py) |
 | /ams/v1/admin/namespaces/{namespace}/supported-instances | GET | InfoSupportedInstances | `false` | [InfoSupportedInstances](../../accelbyte_py_sdk/api/ams/operations/ams_info/info_supported_instances.py) | [info_supported_instances](../../accelbyte_py_sdk/api/ams/wrappers/_ams_info.py) | [accelbyte_py_sdk_cli ams-info-supported-instances](../../samples/cli/accelbyte_py_sdk_cli/ams/_info_supported_instances.py) |
+| /ams/v1/upload-url | GET | UploadURLGet | `false` | [UploadURLGet](../../accelbyte_py_sdk/api/ams/operations/ams_info/upload_url_get.py) | [upload_url_get](../../accelbyte_py_sdk/api/ams/wrappers/_ams_info.py) | [accelbyte_py_sdk_cli ams-upload-url-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_upload_url_get.py) |
 
 ### AMS QoS
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -128,10 +130,6 @@
 | api.QoSServer | [ApiQoSServer](../../accelbyte_py_sdk/api/ams/models/api_qo_s_server.py) |
 | api.ReferencingFleet | [ApiReferencingFleet](../../accelbyte_py_sdk/api/ams/models/api_referencing_fleet.py) |
 | api.RegionConfig | [ApiRegionConfig](../../accelbyte_py_sdk/api/ams/models/api_region_config.py) |
-| api.Time | [ApiTime](../../accelbyte_py_sdk/api/ams/models/api_time.py) |
 | api.Timeout | [ApiTimeout](../../accelbyte_py_sdk/api/ams/models/api_timeout.py) |
 | api.UpdateServerRequest | [ApiUpdateServerRequest](../../accelbyte_py_sdk/api/ams/models/api_update_server_request.py) |
 | response.ErrorResponse | [ResponseErrorResponse](../../accelbyte_py_sdk/api/ams/models/response_error_response.py) |
-| time.Location | [TimeLocation](../../accelbyte_py_sdk/api/ams/models/time_location.py) |
-| time.zone | [TimeZone](../../accelbyte_py_sdk/api/ams/models/time_zone.py) |
-| time.zoneTrans | [TimeZoneTrans](../../accelbyte_py_sdk/api/ams/models/time_zone_trans.py) |

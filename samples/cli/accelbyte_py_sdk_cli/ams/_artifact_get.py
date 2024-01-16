@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -37,12 +37,15 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 @click.command()
 @click.option("--artifact_type", "artifact_type", type=str)
+@click.option("--count", "count", type=int)
 @click.option("--end_date", "end_date", type=str)
 @click.option("--fleet_id", "fleet_id", type=str)
 @click.option("--image_id", "image_id", type=str)
 @click.option("--max_size", "max_size", type=int)
 @click.option("--min_size", "min_size", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--region", "region", type=str)
+@click.option("--server_id", "server_id", type=str)
 @click.option("--start_date", "start_date", type=str)
 @click.option("--status", "status", type=str)
 @click.option("--namespace", type=str)
@@ -51,12 +54,15 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 @click.option("--doc", type=bool)
 def artifact_get(
     artifact_type: Optional[str] = None,
+    count: Optional[int] = None,
     end_date: Optional[str] = None,
     fleet_id: Optional[str] = None,
     image_id: Optional[str] = None,
     max_size: Optional[int] = None,
     min_size: Optional[int] = None,
+    offset: Optional[int] = None,
     region: Optional[str] = None,
+    server_id: Optional[str] = None,
     start_date: Optional[str] = None,
     status: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -74,12 +80,15 @@ def artifact_get(
         login_as_internal(login_as)
     result, error = artifact_get_internal(
         artifact_type=artifact_type,
+        count=count,
         end_date=end_date,
         fleet_id=fleet_id,
         image_id=image_id,
         max_size=max_size,
         min_size=min_size,
+        offset=offset,
         region=region,
+        server_id=server_id,
         start_date=start_date,
         status=status,
         namespace=namespace,

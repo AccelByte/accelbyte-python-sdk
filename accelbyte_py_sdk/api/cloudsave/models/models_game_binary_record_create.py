@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SetByEnum(StrEnum):
+    CLIENT = "CLIENT"
+    SERVER = "SERVER"
 
 
 class ModelsGameBinaryRecordCreate(Model):
@@ -36,14 +42,14 @@ class ModelsGameBinaryRecordCreate(Model):
 
         key: (key) REQUIRED str
 
-        set_by: (set_by) REQUIRED str
+        set_by: (set_by) REQUIRED Union[str, SetByEnum]
     """
 
     # region fields
 
     file_type: str  # REQUIRED
     key: str  # REQUIRED
-    set_by: str  # REQUIRED
+    set_by: Union[str, SetByEnum]  # REQUIRED
 
     # endregion fields
 
@@ -57,7 +63,7 @@ class ModelsGameBinaryRecordCreate(Model):
         self.key = value
         return self
 
-    def with_set_by(self, value: str) -> ModelsGameBinaryRecordCreate:
+    def with_set_by(self, value: Union[str, SetByEnum]) -> ModelsGameBinaryRecordCreate:
         self.set_by = value
         return self
 
@@ -78,7 +84,7 @@ class ModelsGameBinaryRecordCreate(Model):
         if hasattr(self, "set_by"):
             result["set_by"] = str(self.set_by)
         elif include_empty:
-            result["set_by"] = ""
+            result["set_by"] = Union[str, SetByEnum]()
         return result
 
     # endregion to methods
@@ -87,7 +93,7 @@ class ModelsGameBinaryRecordCreate(Model):
 
     @classmethod
     def create(
-        cls, file_type: str, key: str, set_by: str, **kwargs
+        cls, file_type: str, key: str, set_by: Union[str, SetByEnum], **kwargs
     ) -> ModelsGameBinaryRecordCreate:
         instance = cls()
         instance.file_type = file_type
@@ -113,7 +119,7 @@ class ModelsGameBinaryRecordCreate(Model):
         if "set_by" in dict_ and dict_["set_by"] is not None:
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
-            instance.set_by = ""
+            instance.set_by = Union[str, SetByEnum]()
         return instance
 
     @classmethod
@@ -168,6 +174,12 @@ class ModelsGameBinaryRecordCreate(Model):
             "file_type": True,
             "key": True,
             "set_by": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "set_by": ["CLIENT", "SERVER"],
         }
 
     # endregion static methods

@@ -104,7 +104,7 @@ def create_payment_provider_config(
 ):
     """Create payment provider config (createPaymentProviderConfig)
 
-    Create payment provider config.
+    [Not Supported Yet In Starter] Create payment provider config.
 
 
 
@@ -172,7 +172,7 @@ async def create_payment_provider_config_async(
 ):
     """Create payment provider config (createPaymentProviderConfig)
 
-    Create payment provider config.
+    [Not Supported Yet In Starter] Create payment provider config.
 
 
 
@@ -243,7 +243,7 @@ def debug_matched_payment_merchant_config(
 ):
     """Debug matched payment merchant config(internal) (debugMatchedPaymentMerchantConfig)
 
-    Debug matched payment merchant config.
+    [Not Supported Yet In Starter] Debug matched payment merchant config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -290,7 +290,7 @@ async def debug_matched_payment_merchant_config_async(
 ):
     """Debug matched payment merchant config(internal) (debugMatchedPaymentMerchantConfig)
 
-    Debug matched payment merchant config.
+    [Not Supported Yet In Starter] Debug matched payment merchant config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -339,7 +339,7 @@ def debug_matched_payment_provider_config(
 ):
     """Debug matched payment provider config(internal) (debugMatchedPaymentProviderConfig)
 
-    Debug matched payment provider config.
+    [Not Supported Yet In Starter] Debug matched payment provider config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -386,7 +386,7 @@ async def debug_matched_payment_provider_config_async(
 ):
     """Debug matched payment provider config(internal) (debugMatchedPaymentProviderConfig)
 
-    Debug matched payment provider config.
+    [Not Supported Yet In Starter] Debug matched payment provider config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -432,7 +432,7 @@ def delete_payment_provider_config(
 ):
     """Delete payment provider config (deletePaymentProviderConfig)
 
-    Delete payment provider config.
+    [Not Supported Yet In Starter] Delete payment provider config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=8 (DELETE)
@@ -473,7 +473,7 @@ async def delete_payment_provider_config_async(
 ):
     """Delete payment provider config (deletePaymentProviderConfig)
 
-    Delete payment provider config.
+    [Not Supported Yet In Starter] Delete payment provider config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=8 (DELETE)
@@ -516,7 +516,7 @@ def get_aggregate_payment_providers(
 ):
     """Get aggregate payment providers (getAggregatePaymentProviders)
 
-    Get aggregate payment providers, such as XSOLLA, ADYEN.
+    [Not Supported Yet In Starter] Get aggregate payment providers, such as XSOLLA, ADYEN.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -551,7 +551,7 @@ async def get_aggregate_payment_providers_async(
 ):
     """Get aggregate payment providers (getAggregatePaymentProviders)
 
-    Get aggregate payment providers, such as XSOLLA, ADYEN.
+    [Not Supported Yet In Starter] Get aggregate payment providers, such as XSOLLA, ADYEN.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -588,7 +588,7 @@ def get_payment_merchant_config(
 ):
     """Get payment merchant config (getPaymentMerchantConfig)
 
-    Get payment merchant config by id.
+    [Not Supported Yet In Starter] Get payment merchant config by id.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -629,7 +629,7 @@ async def get_payment_merchant_config_async(
 ):
     """Get payment merchant config (getPaymentMerchantConfig)
 
-    Get payment merchant config by id.
+    [Not Supported Yet In Starter] Get payment merchant config by id.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -672,7 +672,7 @@ def get_payment_tax_config(
 ):
     """Get payment global tax config (getPaymentTaxConfig)
 
-    Get payment global tax config.
+    [Not Supported Yet In Starter] Get payment global tax config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -707,7 +707,7 @@ async def get_payment_tax_config_async(
 ):
     """Get payment global tax config (getPaymentTaxConfig)
 
-    Get payment global tax config.
+    [Not Supported Yet In Starter] Get payment global tax config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -744,7 +744,7 @@ def get_special_payment_providers(
 ):
     """Get special payment providers (getSpecialPaymentProviders)
 
-    Get special payment providers, such as ALIPAY, WXPAY.
+    [Not Supported Yet In Starter] Get special payment providers, such as ALIPAY, WXPAY.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -779,7 +779,7 @@ async def get_special_payment_providers_async(
 ):
     """Get special payment providers (getSpecialPaymentProviders)
 
-    Get special payment providers, such as ALIPAY, WXPAY.
+    [Not Supported Yet In Starter] Get special payment providers, such as ALIPAY, WXPAY.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -821,7 +821,7 @@ def query_payment_provider_config(
 ):
     """Query payment provider config (queryPaymentProviderConfig)
 
-    Query payment provider config.
+    [Not Supported Yet In Starter] Query payment provider config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -874,7 +874,7 @@ async def query_payment_provider_config_async(
 ):
     """Query payment provider config (queryPaymentProviderConfig)
 
-    Query payment provider config.
+    [Not Supported Yet In Starter] Query payment provider config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -927,7 +927,7 @@ def test_adyen_config(
 ):
     """Test adyen configuration (testAdyenConfig)
 
-    Test adyen configuration.
+    [Not Supported Yet In Starter] Test adyen configuration.
 
     #### Check List:
 
@@ -989,7 +989,7 @@ async def test_adyen_config_async(
 ):
     """Test adyen configuration (testAdyenConfig)
 
-    Test adyen configuration.
+    [Not Supported Yet In Starter] Test adyen configuration.
 
     #### Check List:
 
@@ -1053,7 +1053,7 @@ def test_adyen_config_by_id(
 ):
     """Test adyen configuration by id (testAdyenConfigById)
 
-    Test adyen configuration in payment merchant config. Other detail info:
+    [Not Supported Yet In Starter] Test adyen configuration in payment merchant config. Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test adyen config
@@ -1099,7 +1099,7 @@ async def test_adyen_config_by_id_async(
 ):
     """Test adyen configuration by id (testAdyenConfigById)
 
-    Test adyen configuration in payment merchant config. Other detail info:
+    [Not Supported Yet In Starter] Test adyen configuration in payment merchant config. Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test adyen config
@@ -1147,7 +1147,7 @@ def test_ali_pay_config(
 ):
     """Test Alipay configuration (testAliPayConfig)
 
-    Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    [Not Supported Yet In Starter] Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -1192,7 +1192,7 @@ async def test_ali_pay_config_async(
 ):
     """Test Alipay configuration (testAliPayConfig)
 
-    Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    [Not Supported Yet In Starter] Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -1239,7 +1239,7 @@ def test_ali_pay_config_by_id(
 ):
     """Test Alipay configuration by id (testAliPayConfigById)
 
-    Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    [Not Supported Yet In Starter] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -1286,7 +1286,7 @@ async def test_ali_pay_config_by_id_async(
 ):
     """Test Alipay configuration by id (testAliPayConfigById)
 
-    Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    [Not Supported Yet In Starter] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -1335,7 +1335,7 @@ def test_checkout_config(
 ):
     """Test checkout.com configuration (testCheckoutConfig)
 
-    Test checkout.com configuration.
+    [Not Supported Yet In Starter] Test checkout.com configuration.
 
     #### Check List:
 
@@ -1385,7 +1385,7 @@ async def test_checkout_config_async(
 ):
     """Test checkout.com configuration (testCheckoutConfig)
 
-    Test checkout.com configuration.
+    [Not Supported Yet In Starter] Test checkout.com configuration.
 
     #### Check List:
 
@@ -1437,7 +1437,7 @@ def test_checkout_config_by_id(
 ):
     """Test checkout.com configuration by id (testCheckoutConfigById)
 
-    Test checkout.com configuration in payment merchant config. Other detail info:
+    [Not Supported Yet In Starter] Test checkout.com configuration in payment merchant config. Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test result
@@ -1483,7 +1483,7 @@ async def test_checkout_config_by_id_async(
 ):
     """Test checkout.com configuration by id (testCheckoutConfigById)
 
-    Test checkout.com configuration in payment merchant config. Other detail info:
+    [Not Supported Yet In Starter] Test checkout.com configuration in payment merchant config. Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test result
@@ -1531,7 +1531,7 @@ def test_pay_pal_config(
 ):
     """Test PayPal configuration (testPayPalConfig)
 
-    Test PayPal configuration.
+    [Not Supported Yet In Starter] Test PayPal configuration.
 
     #### Check List:
 
@@ -1587,7 +1587,7 @@ async def test_pay_pal_config_async(
 ):
     """Test PayPal configuration (testPayPalConfig)
 
-    Test PayPal configuration.
+    [Not Supported Yet In Starter] Test PayPal configuration.
 
     #### Check List:
 
@@ -1645,7 +1645,7 @@ def test_pay_pal_config_by_id(
 ):
     """Test PayPal configuration by id (testPayPalConfigById)
 
-    Test PayPal configuration in payment merchant config. Other detail info:
+    [Not Supported Yet In Starter] Test PayPal configuration in payment merchant config. Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test result
@@ -1691,7 +1691,7 @@ async def test_pay_pal_config_by_id_async(
 ):
     """Test PayPal configuration by id (testPayPalConfigById)
 
-    Test PayPal configuration in payment merchant config. Other detail info:
+    [Not Supported Yet In Starter] Test PayPal configuration in payment merchant config. Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test result
@@ -1739,7 +1739,7 @@ def test_stripe_config(
 ):
     """Test stripe configuration (testStripeConfig)
 
-    Test stripe configuration.
+    [Not Supported Yet In Starter] Test stripe configuration.
 
     #### Check List:
 
@@ -1796,7 +1796,7 @@ async def test_stripe_config_async(
 ):
     """Test stripe configuration (testStripeConfig)
 
-    Test stripe configuration.
+    [Not Supported Yet In Starter] Test stripe configuration.
 
     #### Check List:
 
@@ -1855,7 +1855,7 @@ def test_stripe_config_by_id(
 ):
     """Test stripe configuration by id (testStripeConfigById)
 
-    Test stripe configuration in payment merchant config. Other detail info:
+    [Not Supported Yet In Starter] Test stripe configuration in payment merchant config. Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test adyen config
@@ -1901,7 +1901,7 @@ async def test_stripe_config_by_id_async(
 ):
     """Test stripe configuration by id (testStripeConfigById)
 
-    Test stripe configuration in payment merchant config. Other detail info:
+    [Not Supported Yet In Starter] Test stripe configuration in payment merchant config. Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
       *  Returns : test adyen config
@@ -1948,7 +1948,7 @@ def test_wx_pay_config(
 ):
     """Test wxPay configuration (testWxPayConfig)
 
-    Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not Supported Yet In Starter] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -1989,7 +1989,7 @@ async def test_wx_pay_config_async(
 ):
     """Test wxPay configuration (testWxPayConfig)
 
-    Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not Supported Yet In Starter] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -2030,7 +2030,7 @@ def test_wx_pay_config_by_id(
 ):
     """Test wxPay configuration by id (testWxPayConfigById)
 
-    Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not Supported Yet In Starter] Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -2071,7 +2071,7 @@ async def test_wx_pay_config_by_id_async(
 ):
     """Test wxPay configuration by id (testWxPayConfigById)
 
-    Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not Supported Yet In Starter] Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -2116,7 +2116,7 @@ def test_xsolla_config(
 ):
     """Test xsolla configuration (testXsollaConfig)
 
-    Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not Supported Yet In Starter] Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
 
     #### Check List:
 
@@ -2169,7 +2169,7 @@ async def test_xsolla_config_async(
 ):
     """Test xsolla configuration (testXsollaConfig)
 
-    Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not Supported Yet In Starter] Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
 
     #### Check List:
 
@@ -2222,7 +2222,7 @@ def test_xsolla_config_by_id(
 ):
     """Test xsolla configuration by id (testXsollaConfigById)
 
-    Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not Supported Yet In Starter] Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -2263,7 +2263,7 @@ async def test_xsolla_config_by_id_async(
 ):
     """Test xsolla configuration by id (testXsollaConfigById)
 
-    Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not Supported Yet In Starter] Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
@@ -2311,7 +2311,7 @@ def update_adyen_config(
 ):
     """Update adyen config (updateAdyenConfig)
 
-    Update adyen config.
+    [Not Supported Yet In Starter] Update adyen config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -2366,7 +2366,7 @@ async def update_adyen_config_async(
 ):
     """Update adyen config (updateAdyenConfig)
 
-    Update adyen config.
+    [Not Supported Yet In Starter] Update adyen config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -2423,7 +2423,7 @@ def update_ali_pay_config(
 ):
     """Update alipay configuration (updateAliPayConfig)
 
-    Update alipay configuration.
+    [Not Supported Yet In Starter] Update alipay configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -2478,7 +2478,7 @@ async def update_ali_pay_config_async(
 ):
     """Update alipay configuration (updateAliPayConfig)
 
-    Update alipay configuration.
+    [Not Supported Yet In Starter] Update alipay configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -2535,7 +2535,7 @@ def update_checkout_config(
 ):
     """Update checkout.com config (updateCheckoutConfig)
 
-    Update checkout.com config.
+    [Not Supported Yet In Starter] Update checkout.com config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -2590,7 +2590,7 @@ async def update_checkout_config_async(
 ):
     """Update checkout.com config (updateCheckoutConfig)
 
-    Update checkout.com config.
+    [Not Supported Yet In Starter] Update checkout.com config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -2647,7 +2647,7 @@ def update_pay_pal_config(
 ):
     """Update PayPal config (updatePayPalConfig)
 
-    Update PayPal config.
+    [Not Supported Yet In Starter] Update PayPal config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -2702,7 +2702,7 @@ async def update_pay_pal_config_async(
 ):
     """Update PayPal config (updatePayPalConfig)
 
-    Update PayPal config.
+    [Not Supported Yet In Starter] Update PayPal config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -2757,7 +2757,7 @@ def update_payment_provider_config(
 ):
     """Update payment provider config (updatePaymentProviderConfig)
 
-    Update payment provider config.
+    [Not Supported Yet In Starter] Update payment provider config.
 
 
 
@@ -2831,7 +2831,7 @@ async def update_payment_provider_config_async(
 ):
     """Update payment provider config (updatePaymentProviderConfig)
 
-    Update payment provider config.
+    [Not Supported Yet In Starter] Update payment provider config.
 
 
 
@@ -2906,7 +2906,7 @@ def update_payment_tax_config(
 ):
     """Update payment global tax config (updatePaymentTaxConfig)
 
-    Update payment tax config.
+    [Not Supported Yet In Starter] Update payment tax config.
 
 
 
@@ -2965,7 +2965,7 @@ async def update_payment_tax_config_async(
 ):
     """Update payment global tax config (updatePaymentTaxConfig)
 
-    Update payment tax config.
+    [Not Supported Yet In Starter] Update payment tax config.
 
 
 
@@ -3029,7 +3029,7 @@ def update_stripe_config(
 ):
     """Update stripe config (updateStripeConfig)
 
-    Update stripe config.
+    [Not Supported Yet In Starter] Update stripe config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -3084,7 +3084,7 @@ async def update_stripe_config_async(
 ):
     """Update stripe config (updateStripeConfig)
 
-    Update stripe config.
+    [Not Supported Yet In Starter] Update stripe config.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -3140,7 +3140,7 @@ def update_wx_pay_config(
 ):
     """Update wxpay configuration (updateWxPayConfig)
 
-    Update wxpay configuration.
+    [Not Supported Yet In Starter] Update wxpay configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -3191,7 +3191,7 @@ async def update_wx_pay_config_async(
 ):
     """Update wxpay configuration (updateWxPayConfig)
 
-    Update wxpay configuration.
+    [Not Supported Yet In Starter] Update wxpay configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -3243,7 +3243,7 @@ def update_wx_pay_config_cert(
 ):
     """Upload wxpay cert file (updateWxPayConfigCert)
 
-    Upload wxpay cert file.
+    [Not Supported Yet In Starter] Upload wxpay cert file.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -3290,7 +3290,7 @@ async def update_wx_pay_config_cert_async(
 ):
     """Upload wxpay cert file (updateWxPayConfigCert)
 
-    Upload wxpay cert file.
+    [Not Supported Yet In Starter] Upload wxpay cert file.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -3340,7 +3340,7 @@ def update_xsolla_config(
 ):
     """Update xsolla configuration (updateXsollaConfig)
 
-    Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not Supported Yet In Starter] Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -3391,7 +3391,7 @@ async def update_xsolla_config_async(
 ):
     """Update xsolla configuration (updateXsollaConfig)
 
-    Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not Supported Yet In Starter] Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -3443,7 +3443,7 @@ def update_xsolla_ui_config(
 ):
     """Update xsolla UI configuration (updateXsollaUIConfig)
 
-    Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
+    [Not Supported Yet In Starter] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -3490,7 +3490,7 @@ async def update_xsolla_ui_config_async(
 ):
     """Update xsolla UI configuration (updateXsollaUIConfig)
 
-    Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
+    [Not Supported Yet In Starter] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

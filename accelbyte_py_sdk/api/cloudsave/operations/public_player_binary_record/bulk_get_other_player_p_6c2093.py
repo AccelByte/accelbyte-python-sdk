@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,17 +37,8 @@ from ...models import ModelsResponseError
 class BulkGetOtherPlayerPublicBinaryRecordsV1(Operation):
     """Bulk get other player public binary record (bulkGetOtherPlayerPublicBinaryRecordsV1)
 
-    Required Permission: `NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-    Required Scope: `social`
-
     Retrieve other player public binary record in bulk under given namespace.
     Maximum bulk key limit per request 20
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/binaries/public/bulk

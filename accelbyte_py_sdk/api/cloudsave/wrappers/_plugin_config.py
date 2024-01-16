@@ -50,22 +50,9 @@ def create_plugin_config(
 ):
     """Create plugin configuration (createPluginConfig)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
 
-
-
     This endpoints will create new grpc plugins configuration per namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/plugins
@@ -117,22 +104,9 @@ async def create_plugin_config_async(
 ):
     """Create plugin configuration (createPluginConfig)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
 
-
-
     This endpoints will create new grpc plugins configuration per namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/plugins
@@ -185,22 +159,9 @@ def delete_plugin_config(
 ):
     """Delete plugin configuration (deletePluginConfig)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [DELETE]`
-    Required scope: `social`
-
-
-
     ## Description
 
-
-
     This endpoints will delete grpc plugins configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/plugins
@@ -246,22 +207,9 @@ async def delete_plugin_config_async(
 ):
     """Delete plugin configuration (deletePluginConfig)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [DELETE]`
-    Required scope: `social`
-
-
-
     ## Description
 
-
-
     This endpoints will delete grpc plugins configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/plugins
@@ -309,22 +257,9 @@ def get_plugin_config(
 ):
     """Get plugin configuration (getPluginConfig)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [READ]`
-    Required scope: `social`
-
-
-
     ## Description
 
-
-
     This endpoints will get grpc plugins configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/plugins
@@ -370,22 +305,9 @@ async def get_plugin_config_async(
 ):
     """Get plugin configuration (getPluginConfig)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [READ]`
-    Required scope: `social`
-
-
-
     ## Description
 
-
-
     This endpoints will get grpc plugins configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/plugins
@@ -434,22 +356,9 @@ def update_plugin_config(
 ):
     """Update plugin configuration (updatePluginConfig)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
 
-
-
     This endpoints will update grpc plugins configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/plugins
@@ -501,22 +410,9 @@ async def update_plugin_config_async(
 ):
     """Update plugin configuration (updatePluginConfig)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
 
-
-
     This endpoints will update grpc plugins configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/plugins

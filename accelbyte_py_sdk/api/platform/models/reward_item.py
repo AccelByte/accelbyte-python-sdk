@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class IdentityTypeEnum(StrEnum):
+    ITEM_ID = "ITEM_ID"
+    ITEM_SKU = "ITEM_SKU"
 
 
 class RewardItem(Model):
@@ -36,17 +42,23 @@ class RewardItem(Model):
 
         end_date: (endDate) OPTIONAL str
 
+        identity_type: (identityType) OPTIONAL Union[str, IdentityTypeEnum]
+
         item_id: (itemId) OPTIONAL str
 
         quantity: (quantity) OPTIONAL int
+
+        sku: (sku) OPTIONAL str
     """
 
     # region fields
 
     duration: int  # OPTIONAL
     end_date: str  # OPTIONAL
+    identity_type: Union[str, IdentityTypeEnum]  # OPTIONAL
     item_id: str  # OPTIONAL
     quantity: int  # OPTIONAL
+    sku: str  # OPTIONAL
 
     # endregion fields
 
@@ -60,12 +72,20 @@ class RewardItem(Model):
         self.end_date = value
         return self
 
+    def with_identity_type(self, value: Union[str, IdentityTypeEnum]) -> RewardItem:
+        self.identity_type = value
+        return self
+
     def with_item_id(self, value: str) -> RewardItem:
         self.item_id = value
         return self
 
     def with_quantity(self, value: int) -> RewardItem:
         self.quantity = value
+        return self
+
+    def with_sku(self, value: str) -> RewardItem:
+        self.sku = value
         return self
 
     # endregion with_x methods
@@ -82,6 +102,10 @@ class RewardItem(Model):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = ""
+        if hasattr(self, "identity_type"):
+            result["identityType"] = str(self.identity_type)
+        elif include_empty:
+            result["identityType"] = Union[str, IdentityTypeEnum]()
         if hasattr(self, "item_id"):
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -90,6 +114,10 @@ class RewardItem(Model):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = 0
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = ""
         return result
 
     # endregion to methods
@@ -101,8 +129,10 @@ class RewardItem(Model):
         cls,
         duration: Optional[int] = None,
         end_date: Optional[str] = None,
+        identity_type: Optional[Union[str, IdentityTypeEnum]] = None,
         item_id: Optional[str] = None,
         quantity: Optional[int] = None,
+        sku: Optional[str] = None,
         **kwargs,
     ) -> RewardItem:
         instance = cls()
@@ -110,10 +140,14 @@ class RewardItem(Model):
             instance.duration = duration
         if end_date is not None:
             instance.end_date = end_date
+        if identity_type is not None:
+            instance.identity_type = identity_type
         if item_id is not None:
             instance.item_id = item_id
         if quantity is not None:
             instance.quantity = quantity
+        if sku is not None:
+            instance.sku = sku
         return instance
 
     @classmethod
@@ -129,6 +163,10 @@ class RewardItem(Model):
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = ""
+        if "identityType" in dict_ and dict_["identityType"] is not None:
+            instance.identity_type = str(dict_["identityType"])
+        elif include_empty:
+            instance.identity_type = Union[str, IdentityTypeEnum]()
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -137,6 +175,10 @@ class RewardItem(Model):
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
             instance.quantity = 0
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = ""
         return instance
 
     @classmethod
@@ -178,8 +220,10 @@ class RewardItem(Model):
         return {
             "duration": "duration",
             "endDate": "end_date",
+            "identityType": "identity_type",
             "itemId": "item_id",
             "quantity": "quantity",
+            "sku": "sku",
         }
 
     @staticmethod
@@ -187,8 +231,16 @@ class RewardItem(Model):
         return {
             "duration": False,
             "endDate": False,
+            "identityType": False,
             "itemId": False,
             "quantity": False,
+            "sku": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "identityType": ["ITEM_ID", "ITEM_SKU"],
         }
 
     # endregion static methods

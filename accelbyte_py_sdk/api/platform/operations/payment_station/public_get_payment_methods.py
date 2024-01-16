@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -36,7 +36,7 @@ from ...models import PaymentMethod
 class PublicGetPaymentMethods(Operation):
     """Get payment methods (publicGetPaymentMethods)
 
-    Get payment methods.
+    [Not Supported Yet In Starter] Get payment methods.
     Other detail info:
 
       * Returns : Payment method list

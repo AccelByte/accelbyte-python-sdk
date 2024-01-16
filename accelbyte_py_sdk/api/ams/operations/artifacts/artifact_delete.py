@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,7 +33,7 @@ from ...models import ResponseErrorResponse
 
 
 class ArtifactDelete(Operation):
-    """Deletes the specified artifact (ArtifactDelete)
+    """delete a specified artifact (ArtifactDelete)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
 
@@ -60,13 +60,13 @@ class ArtifactDelete(Operation):
     Responses:
         202: Accepted - (delete received)
 
-        204: No Content - ResponseErrorResponse (no artifact with specifed artifactID)
-
         400: Bad Request - ResponseErrorResponse (bad request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (no artifact with specifed artifactID)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -178,13 +178,13 @@ class ArtifactDelete(Operation):
 
         202: Accepted - (delete received)
 
-        204: No Content - ResponseErrorResponse (no artifact with specifed artifactID)
-
         400: Bad Request - ResponseErrorResponse (bad request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (no artifact with specifed artifactID)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
 
@@ -203,13 +203,13 @@ class ArtifactDelete(Operation):
 
         if code == 202:
             return HttpResponse.create(code, "Accepted"), None
-        if code == 204:
-            return None, None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:
+            return None, ResponseErrorResponse.create_from_dict(content)
+        if code == 404:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)

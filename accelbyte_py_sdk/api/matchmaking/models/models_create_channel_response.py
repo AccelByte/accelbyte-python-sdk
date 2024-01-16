@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Matchmaking Service (2.28.0)
+# AccelByte Gaming Services Matchmaking Service (2.29.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,6 +66,8 @@ class ModelsCreateChannelResponse(Model):
 
         social_matchmaking: (social_matchmaking) REQUIRED bool
 
+        sub_gamemode_selection: (sub_gamemode_selection) REQUIRED str
+
         updated_at: (updated_at) REQUIRED str
 
         use_sub_gamemode: (use_sub_gamemode) REQUIRED bool
@@ -91,6 +93,7 @@ class ModelsCreateChannelResponse(Model):
     session_queue_timeout_seconds: int  # REQUIRED
     slug: str  # REQUIRED
     social_matchmaking: bool  # REQUIRED
+    sub_gamemode_selection: str  # REQUIRED
     updated_at: str  # REQUIRED
     use_sub_gamemode: bool  # REQUIRED
     ticket_observability_enable: bool  # OPTIONAL
@@ -167,6 +170,10 @@ class ModelsCreateChannelResponse(Model):
 
     def with_social_matchmaking(self, value: bool) -> ModelsCreateChannelResponse:
         self.social_matchmaking = value
+        return self
+
+    def with_sub_gamemode_selection(self, value: str) -> ModelsCreateChannelResponse:
+        self.sub_gamemode_selection = value
         return self
 
     def with_updated_at(self, value: str) -> ModelsCreateChannelResponse:
@@ -257,6 +264,10 @@ class ModelsCreateChannelResponse(Model):
             result["social_matchmaking"] = bool(self.social_matchmaking)
         elif include_empty:
             result["social_matchmaking"] = False
+        if hasattr(self, "sub_gamemode_selection"):
+            result["sub_gamemode_selection"] = str(self.sub_gamemode_selection)
+        elif include_empty:
+            result["sub_gamemode_selection"] = ""
         if hasattr(self, "updated_at"):
             result["updated_at"] = str(self.updated_at)
         elif include_empty:
@@ -296,6 +307,7 @@ class ModelsCreateChannelResponse(Model):
         session_queue_timeout_seconds: int,
         slug: str,
         social_matchmaking: bool,
+        sub_gamemode_selection: str,
         updated_at: str,
         use_sub_gamemode: bool,
         ticket_observability_enable: Optional[bool] = None,
@@ -318,6 +330,7 @@ class ModelsCreateChannelResponse(Model):
         instance.session_queue_timeout_seconds = session_queue_timeout_seconds
         instance.slug = slug
         instance.social_matchmaking = social_matchmaking
+        instance.sub_gamemode_selection = sub_gamemode_selection
         instance.updated_at = updated_at
         instance.use_sub_gamemode = use_sub_gamemode
         if ticket_observability_enable is not None:
@@ -424,6 +437,13 @@ class ModelsCreateChannelResponse(Model):
             instance.social_matchmaking = bool(dict_["social_matchmaking"])
         elif include_empty:
             instance.social_matchmaking = False
+        if (
+            "sub_gamemode_selection" in dict_
+            and dict_["sub_gamemode_selection"] is not None
+        ):
+            instance.sub_gamemode_selection = str(dict_["sub_gamemode_selection"])
+        elif include_empty:
+            instance.sub_gamemode_selection = ""
         if "updated_at" in dict_ and dict_["updated_at"] is not None:
             instance.updated_at = str(dict_["updated_at"])
         elif include_empty:
@@ -500,6 +520,7 @@ class ModelsCreateChannelResponse(Model):
             "session_queue_timeout_seconds": "session_queue_timeout_seconds",
             "slug": "slug",
             "social_matchmaking": "social_matchmaking",
+            "sub_gamemode_selection": "sub_gamemode_selection",
             "updated_at": "updated_at",
             "use_sub_gamemode": "use_sub_gamemode",
             "ticket_observability_enable": "ticket_observability_enable",
@@ -524,6 +545,7 @@ class ModelsCreateChannelResponse(Model):
             "session_queue_timeout_seconds": True,
             "slug": True,
             "social_matchmaking": True,
+            "sub_gamemode_selection": True,
             "updated_at": True,
             "use_sub_gamemode": True,
             "ticket_observability_enable": False,

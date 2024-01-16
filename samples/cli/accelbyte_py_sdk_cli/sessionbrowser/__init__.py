@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-session-browser-service (1.18.0)
+# justice-session-browser-service (1.18.1)
 
 from ._admin_query_session import admin_query_session
 from ._get_total_active_session import get_total_active_session

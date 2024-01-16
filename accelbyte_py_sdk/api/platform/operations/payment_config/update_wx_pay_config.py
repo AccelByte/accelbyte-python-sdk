@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,7 +37,7 @@ from ...models import WxPayConfigRequest
 class UpdateWxPayConfig(Operation):
     """Update wxpay configuration (updateWxPayConfig)
 
-    Update wxpay configuration.
+    [Not Supported Yet In Starter] Update wxpay configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SetByEnum(StrEnum):
+    CLIENT = "CLIENT"
+    SERVER = "SERVER"
 
 
 class ModelsPlayerBinaryRecordMetadataRequest(Model):
@@ -34,13 +40,13 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
     Properties:
         is_public: (is_public) OPTIONAL bool
 
-        set_by: (set_by) OPTIONAL str
+        set_by: (set_by) OPTIONAL Union[str, SetByEnum]
     """
 
     # region fields
 
     is_public: bool  # OPTIONAL
-    set_by: str  # OPTIONAL
+    set_by: Union[str, SetByEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -50,7 +56,9 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
         self.is_public = value
         return self
 
-    def with_set_by(self, value: str) -> ModelsPlayerBinaryRecordMetadataRequest:
+    def with_set_by(
+        self, value: Union[str, SetByEnum]
+    ) -> ModelsPlayerBinaryRecordMetadataRequest:
         self.set_by = value
         return self
 
@@ -67,7 +75,7 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
         if hasattr(self, "set_by"):
             result["set_by"] = str(self.set_by)
         elif include_empty:
-            result["set_by"] = ""
+            result["set_by"] = Union[str, SetByEnum]()
         return result
 
     # endregion to methods
@@ -76,7 +84,10 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
 
     @classmethod
     def create(
-        cls, is_public: Optional[bool] = None, set_by: Optional[str] = None, **kwargs
+        cls,
+        is_public: Optional[bool] = None,
+        set_by: Optional[Union[str, SetByEnum]] = None,
+        **kwargs,
     ) -> ModelsPlayerBinaryRecordMetadataRequest:
         instance = cls()
         if is_public is not None:
@@ -99,7 +110,7 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
         if "set_by" in dict_ and dict_["set_by"] is not None:
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
-            instance.set_by = ""
+            instance.set_by = Union[str, SetByEnum]()
         return instance
 
     @classmethod
@@ -152,6 +163,12 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
         return {
             "is_public": False,
             "set_by": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "set_by": ["CLIENT", "SERVER"],
         }
 
     # endregion static methods

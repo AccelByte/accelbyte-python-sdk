@@ -56,6 +56,7 @@ from ..operations.admin_player_record import AdminPutPlayerRecordsHandlerV1
 from ..operations.admin_player_record import AdminRetrievePlayerRecords
 from ..operations.admin_player_record import BulkGetPlayerRecordSizeHandlerV1
 from ..operations.admin_player_record import ListPlayerRecordHandlerV1
+from ..models import ModelsPlayerRecordResponseSetByEnum
 
 
 @same_doc_as(AdminDeletePlayerPublicRecordHandlerV1)
@@ -68,33 +69,17 @@ def admin_delete_player_public_record_handler_v1(
 ):
     """Delete player public record (adminDeletePlayerPublicRecordHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]`
-    --------------------|------------------------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
     Delete player public record.
-
-
 
 
     ## Warning: This endpoint is going to deprecate
 
-
-
     This endpoint is going to deprecate in the future please don't use it.
 
     For alternative, please use these endpoints:
-    - POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
+    - **POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}**
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
@@ -150,33 +135,17 @@ async def admin_delete_player_public_record_handler_v1_async(
 ):
     """Delete player public record (adminDeletePlayerPublicRecordHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]`
-    --------------------|------------------------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
     Delete player public record.
-
-
 
 
     ## Warning: This endpoint is going to deprecate
 
-
-
     This endpoint is going to deprecate in the future please don't use it.
 
     For alternative, please use these endpoints:
-    - POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
+    - **POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}**
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
@@ -234,17 +203,7 @@ def admin_delete_player_record_handler_v1(
 ):
     """Delete player record (adminDeletePlayerRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
-
-    Required scope: `social`
-
     Delete a record (arbitrary JSON data) in user-level with given key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -296,17 +255,7 @@ async def admin_delete_player_record_handler_v1_async(
 ):
     """Delete player record (adminDeletePlayerRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]`
-
-    Required scope: `social`
-
     Delete a record (arbitrary JSON data) in user-level with given key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -360,17 +309,7 @@ def admin_get_player_public_record_handler_v1(
 ):
     """Get player public record (adminGetPlayerPublicRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a record in user-level (arbitrary JSON data) by its key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
@@ -424,17 +363,7 @@ async def admin_get_player_public_record_handler_v1_async(
 ):
     """Get player public record (adminGetPlayerPublicRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a record in user-level (arbitrary JSON data) by its key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
@@ -490,17 +419,7 @@ def admin_get_player_record_handler_v1(
 ):
     """Get player record (adminGetPlayerRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a record in user-level (arbitrary JSON data) by its key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -554,17 +473,7 @@ async def admin_get_player_record_handler_v1_async(
 ):
     """Get player record (adminGetPlayerRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a record in user-level (arbitrary JSON data) by its key.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -620,17 +529,7 @@ def admin_get_player_record_size_handler_v1(
 ):
     """Get player record size (adminGetPlayerRecordSizeHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a size of the player record
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/size
@@ -684,17 +583,7 @@ async def admin_get_player_record_size_handler_v1_async(
 ):
     """Get player record size (adminGetPlayerRecordSizeHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]`
-
-    Required scope: `social`
-
     Get a size of the player record
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/size
@@ -750,21 +639,8 @@ def admin_get_player_records_handler_v1(
 ):
     """Bulk get player records by multiple record keys (adminGetPlayerRecordsHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [READ]`
-    --------------------|--------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
     Retrieve player record key and payload in bulk under given namespace.
     Maximum bulk key limit per request 20.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
@@ -820,21 +696,8 @@ async def admin_get_player_records_handler_v1_async(
 ):
     """Bulk get player records by multiple record keys (adminGetPlayerRecordsHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [READ]`
-    --------------------|--------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
     Retrieve player record key and payload in bulk under given namespace.
     Maximum bulk key limit per request 20.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
@@ -893,113 +756,58 @@ def admin_post_player_public_record_handler_v1(
 ):
     """Create or append player public record (adminPostPlayerPublicRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new player public record or append the existing player public record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
 
-
-
     This endpoint is going to deprecate in the future please don't use it.
 
     For alternative, please use these endpoints:
-    - POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
+    - **POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}**
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
@@ -1057,113 +865,58 @@ async def admin_post_player_public_record_handler_v1_async(
 ):
     """Create or append player public record (adminPostPlayerPublicRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new player public record or append the existing player public record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
 
-
-
     This endpoint is going to deprecate in the future please don't use it.
 
     For alternative, please use these endpoints:
-    - POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [CREATE]
-
-    Required Scope(s):
-        - social
+    - **POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}**
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
@@ -1223,107 +976,58 @@ def admin_post_player_record_handler_v1(
 ):
     """Create or append player record (adminPostPlayerRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new player record or append the existing player record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Record Metadata
 
-
-
     Metadata allows user to define the behaviour of the record.
-    Metadata can be defined in request body with field name __META.
-    When creating record, if __META field is not defined, the metadata value will use the default value.
-    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+    Metadata can be defined in request body with field name **__META**.
+    When creating record, if **__META** field is not defined, the metadata value will use the default value.
+    When updating record, if **__META** field is not defined, the existing metadata value will stay as is.
 
-     Metadata List:
+    **Metadata List:**
     1. set_by (default: CLIENT, type: string)
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
@@ -1331,26 +1035,19 @@ def admin_post_player_record_handler_v1(
     2. is_public (default: false, type: bool)
     Indicate whether the player record is a public record or not.
 
-     Request Body Example:
-
-
-
-
-            {
-                "__META": {
-                    "set_by": "SERVER",
-                    "is_public": true
-                }
-                ...
-            }
+    **Request Body Example:**
+    ```
+    {
+    "__META": {
+    "set_by": "SERVER",
+    "is_public": true
+    }
+    ...
+    }
+    ```
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
         - CLIENT []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -1408,107 +1105,58 @@ async def admin_post_player_record_handler_v1_async(
 ):
     """Create or append player record (adminPostPlayerRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new player record or append the existing player record.
 
-     Append example:
+    **Append example:**
 
     Example 1
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data1": "value", "data2": "new value" }
-
+    `{ "data1": "value", "data2": "new value" }`
 
 
     Example 2
     - Existing JSON:
 
-
-
-        { "data1": { "data2": "value" }
-
+    `{ "data1": { "data2": "value" }`
 
     - New JSON:
 
-
-
-        { "data1": { "data3": "new value" }
-
+    `{ "data1": { "data3": "new value" }`
 
     - Result:
 
-
-
-        { "data1": { "data2": "value", "data3": "new value" }
-
-
-
-
+    `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Record Metadata
 
-
-
     Metadata allows user to define the behaviour of the record.
-    Metadata can be defined in request body with field name __META.
-    When creating record, if __META field is not defined, the metadata value will use the default value.
-    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+    Metadata can be defined in request body with field name **__META**.
+    When creating record, if **__META** field is not defined, the metadata value will use the default value.
+    When updating record, if **__META** field is not defined, the existing metadata value will stay as is.
 
-     Metadata List:
+    **Metadata List:**
     1. set_by (default: CLIENT, type: string)
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
@@ -1516,26 +1164,19 @@ async def admin_post_player_record_handler_v1_async(
     2. is_public (default: false, type: bool)
     Indicate whether the player record is a public record or not.
 
-     Request Body Example:
-
-
-
-
-            {
-                "__META": {
-                    "set_by": "SERVER",
-                    "is_public": true
-                }
-                ...
-            }
+    **Request Body Example:**
+    ```
+    {
+    "__META": {
+    "set_by": "SERVER",
+    "is_public": true
+    }
+    ...
+    }
+    ```
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [CREATE]
-
         - CLIENT []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -1595,96 +1236,46 @@ def admin_put_player_public_record_handler_v1(
 ):
     """Create or replace player public record (adminPutPlayerPublicRecordHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
-    --------------------|------------------------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
-
-
     ## Description
-
-
 
     This endpoints will create new player public record or replace the existing player public record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
 
-
-
     This endpoint is going to deprecate in the future please don't use it.
 
     For alternative, please use these endpoints:
-    - POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
+    - **POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}**
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
@@ -1742,96 +1333,46 @@ async def admin_put_player_public_record_handler_v1_async(
 ):
     """Create or replace player public record (adminPutPlayerPublicRecordHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]`
-    --------------------|------------------------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
-
-
-
     ## Description
-
-
 
     This endpoints will create new player public record or replace the existing player public record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
 
-
-
     This endpoint is going to deprecate in the future please don't use it.
 
     For alternative, please use these endpoints:
-    - POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} and utilizing __META functionality
-    - DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PUBLIC:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
+    - **POST /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **PUT /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}** and utilizing **__META** functionality
+    - **DELETE /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}**
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public
@@ -1891,85 +1432,46 @@ def admin_put_player_record_handler_v1(
 ):
     """Create or replace player record (adminPutPlayerRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new player record or replace the existing player record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Record Metadata
 
-
-
     Metadata allows user to define the behaviour of the record.
-    Metadata can be defined in request body with field name __META.
-    When creating record, if __META field is not defined, the metadata value will use the default value.
-    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+    Metadata can be defined in request body with field name **__META**.
+    When creating record, if **__META** field is not defined, the metadata value will use the default value.
+    When updating record, if **__META** field is not defined, the existing metadata value will stay as is.
 
-     Metadata List:
+    **Metadata List:**
     1. set_by (default: CLIENT, type: string)
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
@@ -1977,26 +1479,19 @@ def admin_put_player_record_handler_v1(
     2. is_public (default: false, type: bool)
     Indicate whether the player record is a public record or not.
 
-     Request Body Example:
-
-
-
-
-            {
-                "__META": {
-                    "set_by": "SERVER",
-                    "is_public": true
-                }
-                ...
-            }
+    **Request Body Example:**
+    ```
+    {
+    "__META": {
+    "set_by": "SERVER",
+    "is_public": true
+    }
+    ...
+    }
+    ```
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
         - CLIENT []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -2054,85 +1549,46 @@ async def admin_put_player_record_handler_v1_async(
 ):
     """Create or replace player record (adminPutPlayerRecordHandlerV1)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]`
-    Required scope: `social`
-
-
-
     ## Description
-
-
 
     This endpoints will create new player record or replace the existing player record.
 
-     Replace behaviour:
+    **Replace behaviour:**
     The existing value will be replaced completely with the new value.
 
     Example
     - Existing JSON:
 
-
-
-        { "data1": "value" }
-
+    `{ "data1": "value" }`
 
     - New JSON:
 
-
-
-        { "data2": "new value" }
-
+    `{ "data2": "new value" }`
 
     - Result:
 
-
-
-        { "data2": "new value" }
-
-
-
+    `{ "data2": "new value" }`
 
 
 
     ## Restriction
-
-
     This is the restriction of Key Naming for the record:
-    1. Cannot use "." as the key name
-    -
-
-
-        { "data.2": "value" }
-
-
-    2. Cannot use "$" as the prefix in key names
-    -
-
-
-        { "$data": "value" }
-
-
+    1. Cannot use **"."** as the key name
+    - `{ "data.2": "value" }`
+    2. Cannot use **"$"** as the prefix in key names
+    - `{ "$data": "value" }`
     3. Cannot use empty string in key names
-    -
-
-
-        { "": "value" }
-
-
-
-
+    - `{ "": "value" }`
 
 
     ## Record Metadata
 
-
-
     Metadata allows user to define the behaviour of the record.
-    Metadata can be defined in request body with field name __META.
-    When creating record, if __META field is not defined, the metadata value will use the default value.
-    When updating record, if __META field is not defined, the existing metadata value will stay as is.
+    Metadata can be defined in request body with field name **__META**.
+    When creating record, if **__META** field is not defined, the metadata value will use the default value.
+    When updating record, if **__META** field is not defined, the existing metadata value will stay as is.
 
-     Metadata List:
+    **Metadata List:**
     1. set_by (default: CLIENT, type: string)
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
@@ -2140,26 +1596,19 @@ async def admin_put_player_record_handler_v1_async(
     2. is_public (default: false, type: bool)
     Indicate whether the player record is a public record or not.
 
-     Request Body Example:
-
-
-
-
-            {
-                "__META": {
-                    "set_by": "SERVER",
-                    "is_public": true
-                }
-                ...
-            }
+    **Request Body Example:**
+    ```
+    {
+    "__META": {
+    "set_by": "SERVER",
+    "is_public": true
+    }
+    ...
+    }
+    ```
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CLOUDSAVE:RECORD [UPDATE]
-
         - CLIENT []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -2218,21 +1667,8 @@ def admin_put_player_records_handler_v1(
 ):
     """Bulk update player records (adminPutPlayerRecordsHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [UPDATE]`
-    --------------------|----------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
     This endpoints will create new player record or replace the existing player record in bulk.
     Maximum bulk key limit per request 10.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
@@ -2284,21 +1720,8 @@ async def admin_put_player_records_handler_v1_async(
 ):
     """Bulk update player records (adminPutPlayerRecordsHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [UPDATE]`
-    --------------------|----------------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
     This endpoints will create new player record or replace the existing player record in bulk.
     Maximum bulk key limit per request 10.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CLOUDSAVE:RECORD [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
@@ -2353,17 +1776,7 @@ def admin_retrieve_player_records(
 ):
     """Query player records (AdminRetrievePlayerRecords)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]`
-
-    Required scope: `social`
-
     Retrieve list of player records key and userID under given namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records
@@ -2421,17 +1834,7 @@ async def admin_retrieve_player_records_async(
 ):
     """Query player records (AdminRetrievePlayerRecords)
 
-    Required permission: `ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]`
-
-    Required scope: `social`
-
     Retrieve list of player records key and userID under given namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records
@@ -2489,21 +1892,8 @@ def bulk_get_player_record_size_handler_v1(
 ):
     """Bulk get player records size (bulkGetPlayerRecordSizeHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
     Bulk get player's record size, max allowed 20 at a time, that can be
     retrieved using this endpoint.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/bulk/records/size
@@ -2525,13 +1915,13 @@ def bulk_get_player_record_size_handler_v1(
     Responses:
         200: OK - ModelsBulkGetPlayerRecordSizeResponse (Record retrieved)
 
-        400: Bad Request - ModelsResponseError (18342: invalid request body)
+        400: Bad Request - ModelsResponseError (18125: invalid request body)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
         403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (18343: unable to get record)
+        500: Internal Server Error - ModelsResponseError (18124: unable to get record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2553,21 +1943,8 @@ async def bulk_get_player_record_size_handler_v1_async(
 ):
     """Bulk get player records size (bulkGetPlayerRecordSizeHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
     Bulk get player's record size, max allowed 20 at a time, that can be
     retrieved using this endpoint.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/bulk/records/size
@@ -2589,13 +1966,13 @@ async def bulk_get_player_record_size_handler_v1_async(
     Responses:
         200: OK - ModelsBulkGetPlayerRecordSizeResponse (Record retrieved)
 
-        400: Bad Request - ModelsResponseError (18342: invalid request body)
+        400: Bad Request - ModelsResponseError (18125: invalid request body)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
         403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (18343: unable to get record)
+        500: Internal Server Error - ModelsResponseError (18124: unable to get record)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2622,17 +1999,7 @@ def list_player_record_handler_v1(
 ):
     """Retrieve list of public player records (listPlayerRecordHandlerV1)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required scope: `social`
-
     Retrieve list of player records key and userID under given namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/records
@@ -2691,17 +2058,7 @@ async def list_player_record_handler_v1_async(
 ):
     """Retrieve list of public player records (listPlayerRecordHandlerV1)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required scope: `social`
-
     Retrieve list of player records key and userID under given namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/records

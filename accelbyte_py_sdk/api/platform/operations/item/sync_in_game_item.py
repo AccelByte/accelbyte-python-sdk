@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.43.0)
+# AccelByte Gaming Services Platform Service (4.44.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -38,7 +38,7 @@ from ...models import ValidationErrorEntity
 class SyncInGameItem(Operation):
     """Sync an in game item (syncInGameItem)
 
-    This API is used to sync an in game item in game namespace to publisher namespace, only INGAMEITEM, CODE, COINS and SEASON are supported
+    [Not Supported Yet In Starter] This API is used to sync an in game item in game namespace to publisher namespace, only INGAMEITEM, CODE, COINS and SEASON are supported
 
     The synced item has an additional field targetItemId besides targetNamespace, mostly this item should not modified manually again.
 

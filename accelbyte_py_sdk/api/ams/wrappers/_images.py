@@ -46,7 +46,7 @@ def image_get(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get details about an image. (ImageGet)
+    """get image details. (ImageGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
@@ -99,7 +99,7 @@ async def image_get_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get details about an image. (ImageGet)
+    """get image details. (ImageGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
@@ -153,7 +153,9 @@ def image_list(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get a list of images which exist (uploaded, uploading, or building) in the linked account.  Fails if no account is linked (ImageList)
+    """get a list of existing images (ImageList)
+
+    Returns images which exist (uploaded, uploading, or building) in the linked account. This route fails if no account is linked
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
@@ -202,7 +204,9 @@ async def image_list_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get a list of images which exist (uploaded, uploading, or building) in the linked account.  Fails if no account is linked (ImageList)
+    """get a list of existing images (ImageList)
+
+    Returns images which exist (uploaded, uploading, or building) in the linked account. This route fails if no account is linked
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
@@ -255,7 +259,9 @@ def image_patch(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Edit the image name, toggle IsProtected, or add/remove tags (ImagePatch)
+    """edit the image (ImagePatch)
+
+    This allows editing of the image name, toggling `IsProtected`, or adding & removal of tags
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
 
@@ -312,7 +318,9 @@ async def image_patch_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Edit the image name, toggle IsProtected, or add/remove tags (ImagePatch)
+    """edit the image (ImagePatch)
+
+    This allows editing of the image name, toggling `IsProtected`, or adding & removal of tags
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
 

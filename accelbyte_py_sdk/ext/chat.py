@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Chat Service (0.4.15)
+# AccelByte Gaming Services Chat Service (0.4.16)
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -345,8 +345,10 @@ def create_models_config_example() -> ModelsConfig:
     instance.spam_chat_burst = randomize("int", min_val=1, max_val=1000)
     instance.spam_chat_duration = randomize("int", min_val=1, max_val=1000)
     instance.spam_mute_duration = randomize("int", min_val=1, max_val=1000)
+    instance.default_dictionary_loaded = randomize("bool")
     instance.enable_clan_chat = randomize("bool")
     instance.enable_manual_topic_creation = randomize("bool")
+    instance.use_default_dictionary = randomize("bool")
     return instance
 
 

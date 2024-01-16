@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Cloudsave Service (3.12.9)
+# AccelByte Gaming Services Cloudsave Service (3.13.0)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -37,21 +37,8 @@ from ...models import ModelsResponseError
 class BulkGetPlayerRecordSizeHandlerV1(Operation):
     """Bulk get player records size (bulkGetPlayerRecordSizeHandlerV1)
 
-    Required Permission | `ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]`
-    --------------------|-------------------------------------------------------
-    Required Scope      | `social`
-
-
-
-
     Bulk get player's record size, max allowed 20 at a time, that can be
     retrieved using this endpoint.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:RECORD [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/bulk/records/size
@@ -73,13 +60,13 @@ class BulkGetPlayerRecordSizeHandlerV1(Operation):
     Responses:
         200: OK - ModelsBulkGetPlayerRecordSizeResponse (Record retrieved)
 
-        400: Bad Request - ModelsResponseError (18342: invalid request body)
+        400: Bad Request - ModelsResponseError (18125: invalid request body)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
         403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (18343: unable to get record)
+        500: Internal Server Error - ModelsResponseError (18124: unable to get record)
     """
 
     # region fields
@@ -196,13 +183,13 @@ class BulkGetPlayerRecordSizeHandlerV1(Operation):
 
         200: OK - ModelsBulkGetPlayerRecordSizeResponse (Record retrieved)
 
-        400: Bad Request - ModelsResponseError (18342: invalid request body)
+        400: Bad Request - ModelsResponseError (18125: invalid request body)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
         403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        500: Internal Server Error - ModelsResponseError (18343: unable to get record)
+        500: Internal Server Error - ModelsResponseError (18124: unable to get record)
 
         ---: HttpResponse (Undocumented Response)
 

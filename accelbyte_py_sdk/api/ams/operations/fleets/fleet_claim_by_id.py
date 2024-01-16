@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,7 @@ from ...models import ResponseErrorResponse
 
 
 class FleetClaimByID(Operation):
-    """claim a Dedicated Server from a specific fleet (FleetClaimByID)
+    """claim a dedicated server from a fleet (FleetClaimByID)
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 

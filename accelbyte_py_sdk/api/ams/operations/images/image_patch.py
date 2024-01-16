@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -35,7 +35,9 @@ from ...models import ResponseErrorResponse
 
 
 class ImagePatch(Operation):
-    """Edit the image name, toggle IsProtected, or add/remove tags (ImagePatch)
+    """edit the image (ImagePatch)
+
+    This allows editing of the image name, toggling `IsProtected`, or adding & removal of tags
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
 

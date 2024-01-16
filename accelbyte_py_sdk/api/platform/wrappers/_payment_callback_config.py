@@ -45,7 +45,7 @@ def get_payment_callback_config(
 ):
     """Get payment callback configuration (getPaymentCallbackConfig)
 
-    Get payment callback configuration.
+    [Not Supported Yet In Starter] Get payment callback configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=2 (READ)
@@ -92,7 +92,7 @@ async def get_payment_callback_config_async(
 ):
     """Get payment callback configuration (getPaymentCallbackConfig)
 
-    Get payment callback configuration.
+    [Not Supported Yet In Starter] Get payment callback configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=2 (READ)
@@ -142,7 +142,7 @@ def update_payment_callback_config(
 ):
     """Update payment callback configuration (updatePaymentCallbackConfig)
 
-    Update payment callback configuration.
+    [Not Supported Yet In Starter] Update payment callback configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=4 (UPDATE)
@@ -191,7 +191,7 @@ async def update_payment_callback_config_async(
 ):
     """Update payment callback configuration (updatePaymentCallbackConfig)
 
-    Update payment callback configuration.
+    [Not Supported Yet In Starter] Update payment callback configuration.
     Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=4 (UPDATE)

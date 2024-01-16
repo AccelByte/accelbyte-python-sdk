@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Fleet Commander (1.7.1)
+# Fleet Commander (1.8.1)
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -33,8 +33,10 @@ from ...models import ApiAccountLinkTokenResponse
 from ...models import ResponseErrorResponse
 
 
-class AccountLinkTokenGet(Operation):
-    """Get a linking token for another namespace to use to link to the account to which this namespace is linked.  Fails if no account linked. (AccountLinkTokenGet)
+class AdminAccountLinkTokenGet(Operation):
+    """get a link to account token (AdminAccountLinkTokenGet)
+
+    The link token returned can be used to connect another namespace to the account in which the provided namespace is linked. This route fails if there is no account linked to the specified namespace.
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
 
@@ -134,7 +136,7 @@ class AccountLinkTokenGet(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> AccountLinkTokenGet:
+    def with_namespace(self, value: str) -> AdminAccountLinkTokenGet:
         self.namespace = value
         return self
 
@@ -206,7 +208,7 @@ class AccountLinkTokenGet(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> AccountLinkTokenGet:
+    def create(cls, namespace: str, **kwargs) -> AdminAccountLinkTokenGet:
         instance = cls()
         instance.namespace = namespace
         return instance
@@ -214,7 +216,7 @@ class AccountLinkTokenGet(Operation):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> AccountLinkTokenGet:
+    ) -> AdminAccountLinkTokenGet:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
