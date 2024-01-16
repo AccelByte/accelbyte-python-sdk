@@ -10,6 +10,7 @@ from os import PathLike as OSPathLike
 from typing import Any, Dict, Iterable, Optional, Protocol, Set, Tuple
 
 from ._config_repository import ConfigRepository, CONFIG_REPOS, DEFAULT_CONFIG_REPO
+from ._flight_id import add_flight_id
 from ._http_client import HttpClient, HTTP_CLIENTS, DEFAULT_HTTP_CLIENT
 from ._http_response import HttpResponse
 from ._operation import Operation
@@ -66,13 +67,16 @@ class AccelByteSDK:
         self._is_initialized: bool = False
         self._logger_names: Set[str] = {AccelByteSDK.LOGGER_NAME}
 
+        self._flight_id: Optional[str] = None
         self._config_repository: Optional[ConfigRepository] = None
         self._token_repository: Optional[TokenRepository] = None
         self._http_client: Optional[HttpClient] = None
 
         self.logger = logging.getLogger(AccelByteSDK.LOGGER_NAME)
         self.operation_preprocessors: Dict[str, OperationPreprocessor] = {}
-        self.request_preprocessors: Dict[str, RequestPreprocessor] = {}
+        self.request_preprocessors: Dict[str, RequestPreprocessor] = {
+            "add_flight_id": add_flight_id
+        }
         self.response_preprocessors: Dict[str, ResponsePreprocessor] = {
             "extract_redirect_query": extract_redirect_query
         }
@@ -238,6 +242,15 @@ class AccelByteSDK:
     # endregion Lifecycle
 
     # region Accessors
+
+    def get_flight_id(self) -> str:
+        return self._flight_id
+
+    def set_flight_id(self, flight_id: str) -> None:
+        self._flight_id = flight_id
+
+    def update_flight_id(self, flight_id: str) -> None:
+        self.set_flight_id(flight_id=flight_id)
 
     def get_config_repository(
         self, raise_when_none: bool = True
@@ -446,7 +459,7 @@ class AccelByteSDK:
             return None, error, kwargs
 
         for k, v in self.request_preprocessors.items():
-            proto, error = v(proto=proto, sdk=self)
+            proto, error = v(proto=proto, operation=operation, sdk=self, **kwargs)
             if error:
                 return None, error, kwargs
 

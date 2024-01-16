@@ -15,6 +15,7 @@ HEADER_AUTHORIZATION_KEY: str = "Authorization"
 HEADER_COOKIE_KEY: str = "Cookie"
 HEADER_USER_AGENT_KEY: str = "User-Agent"
 HEADER_X_AMAZON_TRACE_ID_KEY: str = "X-Amzn-Trace-Id"
+HEADER_X_FLIGHT_ID_KEY: str = "X-Flight-Id"
 
 
 class Header(dict):
@@ -37,6 +38,10 @@ class Header(dict):
         if amazon_xray_trace_id is None:
             amazon_xray_trace_id = generate_amazon_xray_trace_id()
         self[HEADER_X_AMAZON_TRACE_ID_KEY] = amazon_xray_trace_id
+        return self
+
+    def add_flight_id(self, flight_id: str) -> Header:
+        self[HEADER_X_FLIGHT_ID_KEY] = flight_id
         return self
 
     def add_cookie(
@@ -80,6 +85,9 @@ class Header(dict):
 
     def has_amazon_xray_trace_id(self) -> bool:
         return HEADER_X_AMAZON_TRACE_ID_KEY in self
+
+    def has_flight_id(self) -> bool:
+        return HEADER_X_FLIGHT_ID_KEY in self
 
     def has_authorization(self) -> bool:
         return HEADER_AUTHORIZATION_KEY in self

@@ -125,6 +125,8 @@ class Operation:
     location_query: Optional[str] = None
     authorization_override: Optional[str] = None
 
+    x_flight_id: Optional[str] = None
+
     def get_all_params(self) -> dict:
         result = {}
         if body := self.get_body_params():

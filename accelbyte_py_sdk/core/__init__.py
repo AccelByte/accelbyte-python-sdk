@@ -79,6 +79,10 @@ from ._utils import set_env_user_credentials
 from ._utils import set_logger_level
 from ._utils import try_convert_content_type
 
+from ._flight_id import get_default_flight_id
+from ._flight_id import set_default_flight_id
+from ._flight_id import update_default_flight_id
+
 from ._sdk import SDK
 from ._sdk import AccelByteSDK
 from ._sdk import OperationPreprocessor
