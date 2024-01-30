@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-basic-service (2.15.1)
+# justice-basic-service
 
 from ._get_namespaces import get_namespaces
 from ._create_namespace import create_namespace
@@ -19,10 +19,12 @@ from ._report_user import report_user
 from ._get_user_status import get_user_status
 from ._un_ban_users import un_ban_users
 from ._update_namespace import update_namespace
+from ._get_child_namespaces import get_child_namespaces
 from ._create_config import create_config
 from ._get_config_1 import get_config_1
 from ._delete_config_1 import delete_config_1
 from ._update_config_1 import update_config_1
+from ._get_namespace_context import get_namespace_context
 from ._get_config import get_config
 from ._delete_config import delete_config
 from ._update_config import update_config
@@ -105,10 +107,12 @@ commands = [
     get_user_status,
     un_ban_users,
     update_namespace,
+    get_child_namespaces,
     create_config,
     get_config_1,
     delete_config_1,
     update_config_1,
+    get_namespace_context,
     get_config,
     delete_config,
     update_config,

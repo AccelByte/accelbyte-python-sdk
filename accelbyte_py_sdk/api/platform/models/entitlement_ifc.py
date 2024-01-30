@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -83,6 +83,8 @@ class EntitlementIfc(Model):
 
         clazz: (clazz) OPTIONAL Union[str, ClazzEnum]
 
+        collection_id: (collectionId) OPTIONAL str
+
         created_at: (createdAt) OPTIONAL str
 
         end_date: (endDate) OPTIONAL str
@@ -127,6 +129,7 @@ class EntitlementIfc(Model):
     app_id: str  # OPTIONAL
     app_type: Union[str, AppTypeEnum]  # OPTIONAL
     clazz: Union[str, ClazzEnum]  # OPTIONAL
+    collection_id: str  # OPTIONAL
     created_at: str  # OPTIONAL
     end_date: str  # OPTIONAL
     features: List[str]  # OPTIONAL
@@ -161,6 +164,10 @@ class EntitlementIfc(Model):
 
     def with_clazz(self, value: Union[str, ClazzEnum]) -> EntitlementIfc:
         self.clazz = value
+        return self
+
+    def with_collection_id(self, value: str) -> EntitlementIfc:
+        self.collection_id = value
         return self
 
     def with_created_at(self, value: str) -> EntitlementIfc:
@@ -257,6 +264,10 @@ class EntitlementIfc(Model):
             result["clazz"] = str(self.clazz)
         elif include_empty:
             result["clazz"] = Union[str, ClazzEnum]()
+        if hasattr(self, "collection_id"):
+            result["collectionId"] = str(self.collection_id)
+        elif include_empty:
+            result["collectionId"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -345,6 +356,7 @@ class EntitlementIfc(Model):
         app_id: Optional[str] = None,
         app_type: Optional[Union[str, AppTypeEnum]] = None,
         clazz: Optional[Union[str, ClazzEnum]] = None,
+        collection_id: Optional[str] = None,
         created_at: Optional[str] = None,
         end_date: Optional[str] = None,
         features: Optional[List[str]] = None,
@@ -373,6 +385,8 @@ class EntitlementIfc(Model):
             instance.app_type = app_type
         if clazz is not None:
             instance.clazz = clazz
+        if collection_id is not None:
+            instance.collection_id = collection_id
         if created_at is not None:
             instance.created_at = created_at
         if end_date is not None:
@@ -432,6 +446,10 @@ class EntitlementIfc(Model):
             instance.clazz = str(dict_["clazz"])
         elif include_empty:
             instance.clazz = Union[str, ClazzEnum]()
+        if "collectionId" in dict_ and dict_["collectionId"] is not None:
+            instance.collection_id = str(dict_["collectionId"])
+        elif include_empty:
+            instance.collection_id = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -550,6 +568,7 @@ class EntitlementIfc(Model):
             "appId": "app_id",
             "appType": "app_type",
             "clazz": "clazz",
+            "collectionId": "collection_id",
             "createdAt": "created_at",
             "endDate": "end_date",
             "features": "features",
@@ -577,6 +596,7 @@ class EntitlementIfc(Model):
             "appId": False,
             "appType": False,
             "clazz": False,
+            "collectionId": False,
             "createdAt": False,
             "endDate": False,
             "features": False,

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.8.3"
+__version__ = "7.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -689,6 +689,8 @@ from .wrappers import admin_bulk_update_user_account_type_v4
 from .wrappers import admin_bulk_update_user_account_type_v4_async
 from .wrappers import admin_create_test_users_v4
 from .wrappers import admin_create_test_users_v4_async
+from .wrappers import admin_create_user_v4
+from .wrappers import admin_create_user_v4_async
 from .wrappers import admin_disable_my_authenticator_v4
 from .wrappers import admin_disable_my_authenticator_v4_async
 from .wrappers import admin_disable_my_backup_codes_v4

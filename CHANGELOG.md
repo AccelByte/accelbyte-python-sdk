@@ -1,3 +1,15 @@
+<a name="v0.59.0"></a>
+## [v0.59.0]
+### fix
+- **core:** fix RequestPreprocessor signature
+### feat
+- **core:** add flight id preprocessor
+### test
+- **core:** add tests for flight id
+### chore
+- **api:** removed all service version in file header
+
+
 <a name="v0.58.0"></a>
 ## [v0.58.0]
 ### fix

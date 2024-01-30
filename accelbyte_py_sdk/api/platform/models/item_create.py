@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,7 @@ from ....core import Model
 from ....core import StrEnum
 
 from ..models.image import Image
+from ..models.inventory_config import InventoryConfig
 from ..models.localization import Localization
 from ..models.loot_box_config import LootBoxConfig
 from ..models.option_box_config import OptionBoxConfig
@@ -111,6 +112,8 @@ class ItemCreate(Model):
 
         images: (images) OPTIONAL List[Image]
 
+        inventory_config: (inventoryConfig) OPTIONAL InventoryConfig
+
         item_ids: (itemIds) OPTIONAL List[str]
 
         item_qty: (itemQty) OPTIONAL Dict[str, int]
@@ -171,6 +174,7 @@ class ItemCreate(Model):
     features: List[str]  # OPTIONAL
     flexible: bool  # OPTIONAL
     images: List[Image]  # OPTIONAL
+    inventory_config: InventoryConfig  # OPTIONAL
     item_ids: List[str]  # OPTIONAL
     item_qty: Dict[str, int]  # OPTIONAL
     listable: bool  # OPTIONAL
@@ -264,6 +268,10 @@ class ItemCreate(Model):
 
     def with_images(self, value: List[Image]) -> ItemCreate:
         self.images = value
+        return self
+
+    def with_inventory_config(self, value: InventoryConfig) -> ItemCreate:
+        self.inventory_config = value
         return self
 
     def with_item_ids(self, value: List[str]) -> ItemCreate:
@@ -428,6 +436,12 @@ class ItemCreate(Model):
             ]
         elif include_empty:
             result["images"] = []
+        if hasattr(self, "inventory_config"):
+            result["inventoryConfig"] = self.inventory_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["inventoryConfig"] = InventoryConfig()
         if hasattr(self, "item_ids"):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
@@ -538,6 +552,7 @@ class ItemCreate(Model):
         features: Optional[List[str]] = None,
         flexible: Optional[bool] = None,
         images: Optional[List[Image]] = None,
+        inventory_config: Optional[InventoryConfig] = None,
         item_ids: Optional[List[str]] = None,
         item_qty: Optional[Dict[str, int]] = None,
         listable: Optional[bool] = None,
@@ -588,6 +603,8 @@ class ItemCreate(Model):
             instance.flexible = flexible
         if images is not None:
             instance.images = images
+        if inventory_config is not None:
+            instance.inventory_config = inventory_config
         if item_ids is not None:
             instance.item_ids = item_ids
         if item_qty is not None:
@@ -715,6 +732,12 @@ class ItemCreate(Model):
             ]
         elif include_empty:
             instance.images = []
+        if "inventoryConfig" in dict_ and dict_["inventoryConfig"] is not None:
+            instance.inventory_config = InventoryConfig.create_from_dict(
+                dict_["inventoryConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.inventory_config = InventoryConfig()
         if "itemIds" in dict_ and dict_["itemIds"] is not None:
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
@@ -861,6 +884,7 @@ class ItemCreate(Model):
             "features": "features",
             "flexible": "flexible",
             "images": "images",
+            "inventoryConfig": "inventory_config",
             "itemIds": "item_ids",
             "itemQty": "item_qty",
             "listable": "listable",
@@ -903,6 +927,7 @@ class ItemCreate(Model):
             "features": False,
             "flexible": False,
             "images": False,
+            "inventoryConfig": False,
             "itemIds": False,
             "itemQty": False,
             "listable": False,

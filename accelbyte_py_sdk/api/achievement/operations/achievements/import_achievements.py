@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Achievement Service (2.21.8)
+# AccelByte Gaming Services Achievement Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -261,6 +261,8 @@ class ImportAchievements(Operation):
             instance.file = file
         if strategy is not None:
             instance.strategy = strategy
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

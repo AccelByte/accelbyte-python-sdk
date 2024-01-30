@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (7.8.3)
+# AccelByte Gaming Services Iam Service Index (7.9.0)
 
 
 ## Operations
@@ -387,6 +387,7 @@
 | /iam/v4/admin/namespaces/{namespace}/users/bulk/validate | POST | AdminBulkCheckValidUserIDV4 | `false` | [AdminBulkCheckValidUserIDV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_bulk_check_valid__17860c.py) | [admin_bulk_check_valid_user_idv4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-bulk-check-valid-user-idv4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_bulk_check_valid_user_idv4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/bulk/accountType | PATCH | AdminBulkUpdateUserAccountTypeV4 | `false` | [AdminBulkUpdateUserAccountTypeV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_bulk_update_user__8f5f4a.py) | [admin_bulk_update_user_account_type_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-bulk-update-user-account-type-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_bulk_update_user_account_type_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/test_users | POST | AdminCreateTestUsersV4 | `false` | [AdminCreateTestUsersV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_create_test_users_v4.py) | [admin_create_test_users_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-create-test-users-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_create_test_users_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/users | POST | AdminCreateUserV4 | `false` | [AdminCreateUserV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_create_user_v4.py) | [admin_create_user_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-create-user-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_create_user_v4.py) |
 | /iam/v4/admin/users/me/mfa/authenticator/disable | DELETE | AdminDisableMyAuthenticatorV4 | `false` | [AdminDisableMyAuthenticatorV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_disable_my_authen_d71ec4.py) | [admin_disable_my_authenticator_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-disable-my-authenticator-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_disable_my_authenticator_v4.py) |
 | /iam/v4/admin/users/me/mfa/backupCode/disable | DELETE | AdminDisableMyBackupCodesV4 | `false` | [AdminDisableMyBackupCodesV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_disable_my_backup_727b56.py) | [admin_disable_my_backup_codes_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-disable-my-backup-codes-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_disable_my_backup_codes_v4.py) |
 | /iam/v4/admin/users/me/mfa/email/disable | POST | AdminDisableMyEmailV4 | `false` | [AdminDisableMyEmailV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_disable_my_email_v4.py) | [admin_disable_my_email_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-disable-my-email-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_disable_my_email_v4.py) |

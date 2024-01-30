@@ -61,6 +61,7 @@ from ..operations.users_v4 import AdminAddUserRoleV4
 from ..operations.users_v4 import AdminBulkCheckValidUserIDV4
 from ..operations.users_v4 import AdminBulkUpdateUserAccountTypeV4
 from ..operations.users_v4 import AdminCreateTestUsersV4
+from ..operations.users_v4 import AdminCreateUserV4
 from ..operations.users_v4 import AdminDisableMyAuthenticatorV4
 from ..operations.users_v4 import AdminDisableMyBackupCodesV4
 from ..operations.users_v4 import AdminDisableMyEmailV4
@@ -535,6 +536,138 @@ async def admin_create_test_users_v4_async(
         if error:
             return None, error
     request = AdminCreateTestUsersV4.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminCreateUserV4)
+def admin_create_user_v4(
+    body: AccountCreateUserRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin Create User (AdminCreateUserV4)
+
+    Create a new user with unique email address and username.
+    **Required attributes:**
+    - authType: possible value is EMAILPASSWD
+    - emailAddress: Please refer to the rule from /v3/public/inputValidations API.
+    - username: Please refer to the rule from /v3/public/inputValidations API.
+    - password: Please refer to the rule from /v3/public/inputValidations API.
+    - country: ISO3166-1 alpha-2 two letter, e.g. US.
+    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
+
+    **Not required attributes:**
+    - displayName: Please refer to the rule from /v3/public/inputValidations API.
+    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/users
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountCreateUserRequestV4 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - AccountCreateUserResponseV4 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 20003: forbidden access | 10213: country is blocked)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCreateUserV4.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminCreateUserV4)
+async def admin_create_user_v4_async(
+    body: AccountCreateUserRequestV4,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin Create User (AdminCreateUserV4)
+
+    Create a new user with unique email address and username.
+    **Required attributes:**
+    - authType: possible value is EMAILPASSWD
+    - emailAddress: Please refer to the rule from /v3/public/inputValidations API.
+    - username: Please refer to the rule from /v3/public/inputValidations API.
+    - password: Please refer to the rule from /v3/public/inputValidations API.
+    - country: ISO3166-1 alpha-2 two letter, e.g. US.
+    - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
+
+    **Not required attributes:**
+    - displayName: Please refer to the rule from /v3/public/inputValidations API.
+    This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/users
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountCreateUserRequestV4 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - AccountCreateUserResponseV4 (Created)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions | 20003: forbidden access | 10213: country is blocked)
+
+        404: Not Found - RestErrorResponse (10154: country not found)
+
+        409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCreateUserV4.create(
         body=body,
         namespace=namespace,
     )

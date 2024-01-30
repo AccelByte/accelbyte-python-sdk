@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Group Service (2.18.4)
+# AccelByte Gaming Services Group Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -262,6 +262,8 @@ class DeleteGroupConfigurationGlobalRuleAdminV1(Operation):
         instance.allowed_action = allowed_action
         instance.configuration_code = configuration_code
         instance.namespace = namespace
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

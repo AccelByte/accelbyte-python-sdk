@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Legal Service (1.35.0)
+# AccelByte Gaming Services Legal Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -66,7 +66,7 @@ class CreatePolicy1(Operation):
     Responses:
         201: Created - CreateBasePolicyResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.base_policy_namespace_not_match)
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.base_policy_namespace_not_match | 40026: errors.net.accelbyte.platform.legal.not_allow_create_studio_policy)
 
         409: Conflict - ErrorEntity (40030: errors.net.accelbyte.platform.legal.invalid_policy_type)
 
@@ -185,7 +185,7 @@ class CreatePolicy1(Operation):
 
         201: Created - CreateBasePolicyResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.base_policy_namespace_not_match)
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.base_policy_namespace_not_match | 40026: errors.net.accelbyte.platform.legal.not_allow_create_studio_policy)
 
         409: Conflict - ErrorEntity (40030: errors.net.accelbyte.platform.legal.invalid_policy_type)
 
@@ -229,6 +229,8 @@ class CreatePolicy1(Operation):
         instance.namespace = namespace
         if body is not None:
             instance.body = body
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

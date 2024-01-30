@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Leaderboard Service (2.26.7)
+# AccelByte Gaming Services Leaderboard Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -273,6 +273,8 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

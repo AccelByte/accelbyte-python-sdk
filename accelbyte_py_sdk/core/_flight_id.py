@@ -11,7 +11,12 @@ class FlightIdPreprocessor:
         self.flight_id = flight_id or str(uuid4())
 
     def __call__(
-        self, proto: ProtoHttpRequest, operation: Operation, sdk: "AccelByteSDK", *args, **kwargs
+        self,
+        proto: ProtoHttpRequest,
+        operation: Operation,
+        sdk: "AccelByteSDK",
+        *args,
+        **kwargs
     ) -> Tuple[ProtoHttpRequest, Optional[HttpResponse]]:
         if not proto.headers.has_flight_id():
             flight_id = self.get_flight_id(operation=operation, sdk=sdk, **kwargs)
@@ -39,7 +44,9 @@ FLIGHT_ID_PREPROCESSOR = FlightIdPreprocessor()
 def add_flight_id(
     proto: ProtoHttpRequest, operation: Operation, sdk: "AccelByteSDK", *args, **kwargs
 ) -> Tuple[ProtoHttpRequest, Optional[HttpResponse]]:
-    return FLIGHT_ID_PREPROCESSOR(proto=proto, operation=operation, sdk=sdk, *args, **kwargs)
+    return FLIGHT_ID_PREPROCESSOR(
+        proto=proto, operation=operation, sdk=sdk, *args, **kwargs
+    )
 
 
 def get_default_flight_id() -> str:

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.inventory_config import InventoryConfig
 from ..models.loot_box_config import LootBoxConfig
 from ..models.option_box_config import OptionBoxConfig
 from ..models.recurring import Recurring
@@ -102,6 +103,8 @@ class ItemSnapshot(Model):
 
         flexible: (flexible) OPTIONAL bool
 
+        inventory_config: (inventoryConfig) OPTIONAL InventoryConfig
+
         item_ids: (itemIds) OPTIONAL List[str]
 
         item_qty: (itemQty) OPTIONAL Dict[str, int]
@@ -165,6 +168,7 @@ class ItemSnapshot(Model):
     description: str  # OPTIONAL
     features: List[str]  # OPTIONAL
     flexible: bool  # OPTIONAL
+    inventory_config: InventoryConfig  # OPTIONAL
     item_ids: List[str]  # OPTIONAL
     item_qty: Dict[str, int]  # OPTIONAL
     listable: bool  # OPTIONAL
@@ -256,6 +260,10 @@ class ItemSnapshot(Model):
 
     def with_flexible(self, value: bool) -> ItemSnapshot:
         self.flexible = value
+        return self
+
+    def with_inventory_config(self, value: InventoryConfig) -> ItemSnapshot:
+        self.inventory_config = value
         return self
 
     def with_item_ids(self, value: List[str]) -> ItemSnapshot:
@@ -416,6 +424,12 @@ class ItemSnapshot(Model):
             result["flexible"] = bool(self.flexible)
         elif include_empty:
             result["flexible"] = False
+        if hasattr(self, "inventory_config"):
+            result["inventoryConfig"] = self.inventory_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["inventoryConfig"] = InventoryConfig()
         if hasattr(self, "item_ids"):
             result["itemIds"] = [str(i0) for i0 in self.item_ids]
         elif include_empty:
@@ -535,6 +549,7 @@ class ItemSnapshot(Model):
         description: Optional[str] = None,
         features: Optional[List[str]] = None,
         flexible: Optional[bool] = None,
+        inventory_config: Optional[InventoryConfig] = None,
         item_ids: Optional[List[str]] = None,
         item_qty: Optional[Dict[str, int]] = None,
         listable: Optional[bool] = None,
@@ -584,6 +599,8 @@ class ItemSnapshot(Model):
             instance.features = features
         if flexible is not None:
             instance.flexible = flexible
+        if inventory_config is not None:
+            instance.inventory_config = inventory_config
         if item_ids is not None:
             instance.item_ids = item_ids
         if item_qty is not None:
@@ -699,6 +716,12 @@ class ItemSnapshot(Model):
             instance.flexible = bool(dict_["flexible"])
         elif include_empty:
             instance.flexible = False
+        if "inventoryConfig" in dict_ and dict_["inventoryConfig"] is not None:
+            instance.inventory_config = InventoryConfig.create_from_dict(
+                dict_["inventoryConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.inventory_config = InventoryConfig()
         if "itemIds" in dict_ and dict_["itemIds"] is not None:
             instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
         elif include_empty:
@@ -854,6 +877,7 @@ class ItemSnapshot(Model):
             "description": "description",
             "features": "features",
             "flexible": "flexible",
+            "inventoryConfig": "inventory_config",
             "itemIds": "item_ids",
             "itemQty": "item_qty",
             "listable": "listable",
@@ -897,6 +921,7 @@ class ItemSnapshot(Model):
             "description": False,
             "features": False,
             "flexible": False,
+            "inventoryConfig": False,
             "itemIds": False,
             "itemQty": False,
             "listable": False,

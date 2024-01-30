@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -549,6 +549,8 @@ class QueryItems1(Operation):
             instance.target_namespace = target_namespace
         if with_total is not None:
             instance.with_total = with_total
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -55,6 +55,8 @@ class EntitlementUpdate(Model):
     """A DTO object for updating entitlement API call. Leave the field empty if don't want to update. (EntitlementUpdate)
 
     Properties:
+        collection_id: (collectionId) OPTIONAL str
+
         end_date: (endDate) OPTIONAL str
 
         null_field_list: (nullFieldList) OPTIONAL List[str]
@@ -72,6 +74,7 @@ class EntitlementUpdate(Model):
 
     # region fields
 
+    collection_id: str  # OPTIONAL
     end_date: str  # OPTIONAL
     null_field_list: List[str]  # OPTIONAL
     origin: Union[str, OriginEnum]  # OPTIONAL
@@ -83,6 +86,10 @@ class EntitlementUpdate(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_collection_id(self, value: str) -> EntitlementUpdate:
+        self.collection_id = value
+        return self
 
     def with_end_date(self, value: str) -> EntitlementUpdate:
         self.end_date = value
@@ -118,6 +125,10 @@ class EntitlementUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "collection_id"):
+            result["collectionId"] = str(self.collection_id)
+        elif include_empty:
+            result["collectionId"] = ""
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -155,6 +166,7 @@ class EntitlementUpdate(Model):
     @classmethod
     def create(
         cls,
+        collection_id: Optional[str] = None,
         end_date: Optional[str] = None,
         null_field_list: Optional[List[str]] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
@@ -165,6 +177,8 @@ class EntitlementUpdate(Model):
         **kwargs,
     ) -> EntitlementUpdate:
         instance = cls()
+        if collection_id is not None:
+            instance.collection_id = collection_id
         if end_date is not None:
             instance.end_date = end_date
         if null_field_list is not None:
@@ -188,6 +202,10 @@ class EntitlementUpdate(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "collectionId" in dict_ and dict_["collectionId"] is not None:
+            instance.collection_id = str(dict_["collectionId"])
+        elif include_empty:
+            instance.collection_id = ""
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -257,6 +275,7 @@ class EntitlementUpdate(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "collectionId": "collection_id",
             "endDate": "end_date",
             "nullFieldList": "null_field_list",
             "origin": "origin",
@@ -269,6 +288,7 @@ class EntitlementUpdate(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "collectionId": False,
             "endDate": False,
             "nullFieldList": False,
             "origin": False,

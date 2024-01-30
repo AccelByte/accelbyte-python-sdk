@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Achievement Service (2.21.8)
+# AGS Achievement Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

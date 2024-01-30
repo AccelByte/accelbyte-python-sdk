@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Seasonpass Service (1.20.2)
+# AccelByte Gaming Services Seasonpass Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.8.3)
+# AccelByte Gaming Services Iam Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -200,6 +200,8 @@ class GetRoles(Operation):
         instance = cls()
         if is_wildcard is not None:
             instance.is_wildcard = is_wildcard
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

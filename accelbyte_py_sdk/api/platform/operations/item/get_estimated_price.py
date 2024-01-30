@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -53,6 +53,8 @@ class GetEstimatedPrice(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        platform: (platform) OPTIONAL str in query
+
         region: (region) OPTIONAL str in query
 
         store_id: (storeId) OPTIONAL str in query
@@ -77,6 +79,7 @@ class GetEstimatedPrice(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    platform: str  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
     store_id: str  # OPTIONAL in [query]
     item_ids: str  # REQUIRED in [query]
@@ -132,6 +135,8 @@ class GetEstimatedPrice(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "platform"):
+            result["platform"] = self.platform
         if hasattr(self, "region"):
             result["region"] = self.region
         if hasattr(self, "store_id"):
@@ -152,6 +157,10 @@ class GetEstimatedPrice(Operation):
 
     def with_namespace(self, value: str) -> GetEstimatedPrice:
         self.namespace = value
+        return self
+
+    def with_platform(self, value: str) -> GetEstimatedPrice:
+        self.platform = value
         return self
 
     def with_region(self, value: str) -> GetEstimatedPrice:
@@ -180,6 +189,10 @@ class GetEstimatedPrice(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "platform") and self.platform:
+            result["platform"] = str(self.platform)
+        elif include_empty:
+            result["platform"] = ""
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
@@ -244,6 +257,7 @@ class GetEstimatedPrice(Operation):
         namespace: str,
         item_ids: str,
         user_id: str,
+        platform: Optional[str] = None,
         region: Optional[str] = None,
         store_id: Optional[str] = None,
         **kwargs,
@@ -252,10 +266,14 @@ class GetEstimatedPrice(Operation):
         instance.namespace = namespace
         instance.item_ids = item_ids
         instance.user_id = user_id
+        if platform is not None:
+            instance.platform = platform
         if region is not None:
             instance.region = region
         if store_id is not None:
             instance.store_id = store_id
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod
@@ -267,6 +285,10 @@ class GetEstimatedPrice(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "platform" in dict_ and dict_["platform"] is not None:
+            instance.platform = str(dict_["platform"])
+        elif include_empty:
+            instance.platform = ""
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -289,6 +311,7 @@ class GetEstimatedPrice(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "platform": "platform",
             "region": "region",
             "storeId": "store_id",
             "itemIds": "item_ids",
@@ -299,6 +322,7 @@ class GetEstimatedPrice(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "platform": False,
             "region": False,
             "storeId": False,
             "itemIds": True,

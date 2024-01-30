@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Lobby Server (3.33.2)
+# AGS Lobby Server
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# Analytics Game Telemetry (1.22.0)
+# Analytics Game Telemetry
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -156,6 +156,8 @@ class GetNamespacesGameTelemetryV1AdminNamespacesGet(Operation):
     @classmethod
     def create(cls, **kwargs) -> GetNamespacesGameTelemetryV1AdminNamespacesGet:
         instance = cls()
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

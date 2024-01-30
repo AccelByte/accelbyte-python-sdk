@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.13.3)
+# AccelByte Gaming Services Session Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -75,6 +75,8 @@ class AdminCreateConfigurationTemplateV1(Operation):
     - DisableCodeGeneration (optional, default: false): If it is set to true, code will not be generated for party session automatically.
     - DSManualSetReady (optional, default: false): The DS need to call specific end point to flag the DS for game session is ready to accept client connection.
     - EnableSecret (optional, default: false): if configuration template is created with TypeDS and EnableSecret is True, A secret will be created
+    - LeaderElectionGracePeriod this is on second (optional, default:0) this is only use for party session, if value > 0 if leader disconnect will be wait until value reach and leader will be change after reach
+    - ManualRejoin (optional, default: false): indicates if game client will handle manual rejoin upon websocket reconnection when enabled.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configuration
@@ -275,6 +277,8 @@ class AdminCreateConfigurationTemplateV1(Operation):
         instance = cls()
         instance.body = body
         instance.namespace = namespace
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

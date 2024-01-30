@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -98,6 +98,8 @@ class QueryUserEntitlements(Operation):
 
         app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
 
+        collection_id: (collectionId) OPTIONAL str in query
+
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
         entitlement_name: (entitlementName) OPTIONAL str in query
@@ -131,6 +133,7 @@ class QueryUserEntitlements(Operation):
     user_id: str  # REQUIRED in [path]
     active_only: bool  # OPTIONAL in [query]
     app_type: Union[str, AppTypeEnum]  # OPTIONAL in [query]
+    collection_id: str  # OPTIONAL in [query]
     entitlement_clazz: Union[str, EntitlementClazzEnum]  # OPTIONAL in [query]
     entitlement_name: str  # OPTIONAL in [query]
     features: List[str]  # OPTIONAL in [query]
@@ -196,6 +199,8 @@ class QueryUserEntitlements(Operation):
             result["activeOnly"] = self.active_only
         if hasattr(self, "app_type"):
             result["appType"] = self.app_type
+        if hasattr(self, "collection_id"):
+            result["collectionId"] = self.collection_id
         if hasattr(self, "entitlement_clazz"):
             result["entitlementClazz"] = self.entitlement_clazz
         if hasattr(self, "entitlement_name"):
@@ -236,6 +241,10 @@ class QueryUserEntitlements(Operation):
 
     def with_app_type(self, value: Union[str, AppTypeEnum]) -> QueryUserEntitlements:
         self.app_type = value
+        return self
+
+    def with_collection_id(self, value: str) -> QueryUserEntitlements:
+        self.collection_id = value
         return self
 
     def with_entitlement_clazz(
@@ -294,6 +303,10 @@ class QueryUserEntitlements(Operation):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = Union[str, AppTypeEnum]()
+        if hasattr(self, "collection_id") and self.collection_id:
+            result["collectionId"] = str(self.collection_id)
+        elif include_empty:
+            result["collectionId"] = ""
         if hasattr(self, "entitlement_clazz") and self.entitlement_clazz:
             result["entitlementClazz"] = str(self.entitlement_clazz)
         elif include_empty:
@@ -371,6 +384,7 @@ class QueryUserEntitlements(Operation):
         user_id: str,
         active_only: Optional[bool] = None,
         app_type: Optional[Union[str, AppTypeEnum]] = None,
+        collection_id: Optional[str] = None,
         entitlement_clazz: Optional[Union[str, EntitlementClazzEnum]] = None,
         entitlement_name: Optional[str] = None,
         features: Optional[List[str]] = None,
@@ -388,6 +402,8 @@ class QueryUserEntitlements(Operation):
             instance.active_only = active_only
         if app_type is not None:
             instance.app_type = app_type
+        if collection_id is not None:
+            instance.collection_id = collection_id
         if entitlement_clazz is not None:
             instance.entitlement_clazz = entitlement_clazz
         if entitlement_name is not None:
@@ -404,6 +420,8 @@ class QueryUserEntitlements(Operation):
             instance.offset = offset
         if origin is not None:
             instance.origin = origin
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod
@@ -427,6 +445,10 @@ class QueryUserEntitlements(Operation):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = Union[str, AppTypeEnum]()
+        if "collectionId" in dict_ and dict_["collectionId"] is not None:
+            instance.collection_id = str(dict_["collectionId"])
+        elif include_empty:
+            instance.collection_id = ""
         if "entitlementClazz" in dict_ and dict_["entitlementClazz"] is not None:
             instance.entitlement_clazz = str(dict_["entitlementClazz"])
         elif include_empty:
@@ -468,6 +490,7 @@ class QueryUserEntitlements(Operation):
             "userId": "user_id",
             "activeOnly": "active_only",
             "appType": "app_type",
+            "collectionId": "collection_id",
             "entitlementClazz": "entitlement_clazz",
             "entitlementName": "entitlement_name",
             "features": "features",
@@ -485,6 +508,7 @@ class QueryUserEntitlements(Operation):
             "userId": True,
             "activeOnly": False,
             "appType": False,
+            "collectionId": False,
             "entitlementClazz": False,
             "entitlementName": False,
             "features": False,

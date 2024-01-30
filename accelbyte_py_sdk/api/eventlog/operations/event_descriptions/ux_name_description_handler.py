@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Event Log Service (2.2.1)
+# AccelByte Gaming Services Event Log Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -156,6 +156,8 @@ class UXNameDescriptionHandler(Operation):
     @classmethod
     def create(cls, **kwargs) -> UXNameDescriptionHandler:
         instance = cls()
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

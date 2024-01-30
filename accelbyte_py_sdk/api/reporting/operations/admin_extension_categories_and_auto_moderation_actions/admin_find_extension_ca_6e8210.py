@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Reporting Service (0.1.30)
+# AccelByte Gaming Services Reporting Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -235,6 +235,8 @@ class AdminFindExtensionCategoryList(Operation):
             instance.order = order
         if sort_by is not None:
             instance.sort_by = sort_by
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

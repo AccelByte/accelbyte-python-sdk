@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Dsm Controller Service (6.4.7)
+# AccelByte Gaming Services Dsm Controller Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -310,6 +310,8 @@ class ListImages(Operation):
             instance.sort_by = sort_by
         if sort_direction is not None:
             instance.sort_direction = sort_direction
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

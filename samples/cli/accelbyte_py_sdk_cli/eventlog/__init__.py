@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-event-log-service (2.2.1)
+# justice-event-log-service
 
 from ._agent_type_description_handler import agent_type_description_handler
 from ._specific_agent_type_description_handler import (

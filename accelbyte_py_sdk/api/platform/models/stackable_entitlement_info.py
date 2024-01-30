@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -111,6 +111,8 @@ class StackableEntitlementInfo(Model):
 
         app_type: (appType) OPTIONAL Union[str, AppTypeEnum]
 
+        collection_id: (collectionId) OPTIONAL str
+
         end_date: (endDate) OPTIONAL str
 
         features: (features) OPTIONAL List[str]
@@ -126,6 +128,8 @@ class StackableEntitlementInfo(Model):
         no_origin: (noOrigin) OPTIONAL bool
 
         origin: (origin) OPTIONAL Union[str, OriginEnum]
+
+        platform_available: (platformAvailable) OPTIONAL bool
 
         sku: (sku) OPTIONAL str
 
@@ -158,6 +162,7 @@ class StackableEntitlementInfo(Model):
     updated_at: str  # REQUIRED
     app_id: str  # OPTIONAL
     app_type: Union[str, AppTypeEnum]  # OPTIONAL
+    collection_id: str  # OPTIONAL
     end_date: str  # OPTIONAL
     features: List[str]  # OPTIONAL
     granted_at: str  # OPTIONAL
@@ -166,6 +171,7 @@ class StackableEntitlementInfo(Model):
     name: str  # OPTIONAL
     no_origin: bool  # OPTIONAL
     origin: Union[str, OriginEnum]  # OPTIONAL
+    platform_available: bool  # OPTIONAL
     sku: str  # OPTIONAL
     source: Union[str, SourceEnum]  # OPTIONAL
     stackable: bool  # OPTIONAL
@@ -220,6 +226,10 @@ class StackableEntitlementInfo(Model):
         self.app_type = value
         return self
 
+    def with_collection_id(self, value: str) -> StackableEntitlementInfo:
+        self.collection_id = value
+        return self
+
     def with_end_date(self, value: str) -> StackableEntitlementInfo:
         self.end_date = value
         return self
@@ -250,6 +260,10 @@ class StackableEntitlementInfo(Model):
 
     def with_origin(self, value: Union[str, OriginEnum]) -> StackableEntitlementInfo:
         self.origin = value
+        return self
+
+    def with_platform_available(self, value: bool) -> StackableEntitlementInfo:
+        self.platform_available = value
         return self
 
     def with_sku(self, value: str) -> StackableEntitlementInfo:
@@ -334,6 +348,10 @@ class StackableEntitlementInfo(Model):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = Union[str, AppTypeEnum]()
+        if hasattr(self, "collection_id"):
+            result["collectionId"] = str(self.collection_id)
+        elif include_empty:
+            result["collectionId"] = ""
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -368,6 +386,10 @@ class StackableEntitlementInfo(Model):
             result["origin"] = str(self.origin)
         elif include_empty:
             result["origin"] = Union[str, OriginEnum]()
+        if hasattr(self, "platform_available"):
+            result["platformAvailable"] = bool(self.platform_available)
+        elif include_empty:
+            result["platformAvailable"] = False
         if hasattr(self, "sku"):
             result["sku"] = str(self.sku)
         elif include_empty:
@@ -423,6 +445,7 @@ class StackableEntitlementInfo(Model):
         updated_at: str,
         app_id: Optional[str] = None,
         app_type: Optional[Union[str, AppTypeEnum]] = None,
+        collection_id: Optional[str] = None,
         end_date: Optional[str] = None,
         features: Optional[List[str]] = None,
         granted_at: Optional[str] = None,
@@ -431,6 +454,7 @@ class StackableEntitlementInfo(Model):
         name: Optional[str] = None,
         no_origin: Optional[bool] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
+        platform_available: Optional[bool] = None,
         sku: Optional[str] = None,
         source: Optional[Union[str, SourceEnum]] = None,
         stackable: Optional[bool] = None,
@@ -455,6 +479,8 @@ class StackableEntitlementInfo(Model):
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
+        if collection_id is not None:
+            instance.collection_id = collection_id
         if end_date is not None:
             instance.end_date = end_date
         if features is not None:
@@ -471,6 +497,8 @@ class StackableEntitlementInfo(Model):
             instance.no_origin = no_origin
         if origin is not None:
             instance.origin = origin
+        if platform_available is not None:
+            instance.platform_available = platform_available
         if sku is not None:
             instance.sku = sku
         if source is not None:
@@ -538,6 +566,10 @@ class StackableEntitlementInfo(Model):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = Union[str, AppTypeEnum]()
+        if "collectionId" in dict_ and dict_["collectionId"] is not None:
+            instance.collection_id = str(dict_["collectionId"])
+        elif include_empty:
+            instance.collection_id = ""
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -572,6 +604,10 @@ class StackableEntitlementInfo(Model):
             instance.origin = str(dict_["origin"])
         elif include_empty:
             instance.origin = Union[str, OriginEnum]()
+        if "platformAvailable" in dict_ and dict_["platformAvailable"] is not None:
+            instance.platform_available = bool(dict_["platformAvailable"])
+        elif include_empty:
+            instance.platform_available = False
         if "sku" in dict_ and dict_["sku"] is not None:
             instance.sku = str(dict_["sku"])
         elif include_empty:
@@ -661,6 +697,7 @@ class StackableEntitlementInfo(Model):
             "updatedAt": "updated_at",
             "appId": "app_id",
             "appType": "app_type",
+            "collectionId": "collection_id",
             "endDate": "end_date",
             "features": "features",
             "grantedAt": "granted_at",
@@ -669,6 +706,7 @@ class StackableEntitlementInfo(Model):
             "name": "name",
             "noOrigin": "no_origin",
             "origin": "origin",
+            "platformAvailable": "platform_available",
             "sku": "sku",
             "source": "source",
             "stackable": "stackable",
@@ -693,6 +731,7 @@ class StackableEntitlementInfo(Model):
             "updatedAt": True,
             "appId": False,
             "appType": False,
+            "collectionId": False,
             "endDate": False,
             "features": False,
             "grantedAt": False,
@@ -701,6 +740,7 @@ class StackableEntitlementInfo(Model):
             "name": False,
             "noOrigin": False,
             "origin": False,
+            "platformAvailable": False,
             "sku": False,
             "source": False,
             "stackable": False,

@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -84,6 +84,8 @@ class RewardsRequest(Model):
     Properties:
         rewards: (rewards) REQUIRED List[PlatformReward]
 
+        entitlement_collection_id: (entitlementCollectionId) OPTIONAL str
+
         entitlement_origin: (entitlementOrigin) OPTIONAL Union[str, EntitlementOriginEnum]
 
         metadata: (metadata) OPTIONAL Dict[str, Any]
@@ -98,6 +100,7 @@ class RewardsRequest(Model):
     # region fields
 
     rewards: List[PlatformReward]  # REQUIRED
+    entitlement_collection_id: str  # OPTIONAL
     entitlement_origin: Union[str, EntitlementOriginEnum]  # OPTIONAL
     metadata: Dict[str, Any]  # OPTIONAL
     origin: Union[str, OriginEnum]  # OPTIONAL
@@ -110,6 +113,10 @@ class RewardsRequest(Model):
 
     def with_rewards(self, value: List[PlatformReward]) -> RewardsRequest:
         self.rewards = value
+        return self
+
+    def with_entitlement_collection_id(self, value: str) -> RewardsRequest:
+        self.entitlement_collection_id = value
         return self
 
     def with_entitlement_origin(
@@ -146,6 +153,10 @@ class RewardsRequest(Model):
             ]
         elif include_empty:
             result["rewards"] = []
+        if hasattr(self, "entitlement_collection_id"):
+            result["entitlementCollectionId"] = str(self.entitlement_collection_id)
+        elif include_empty:
+            result["entitlementCollectionId"] = ""
         if hasattr(self, "entitlement_origin"):
             result["entitlementOrigin"] = str(self.entitlement_origin)
         elif include_empty:
@@ -176,6 +187,7 @@ class RewardsRequest(Model):
     def create(
         cls,
         rewards: List[PlatformReward],
+        entitlement_collection_id: Optional[str] = None,
         entitlement_origin: Optional[Union[str, EntitlementOriginEnum]] = None,
         metadata: Optional[Dict[str, Any]] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
@@ -185,6 +197,8 @@ class RewardsRequest(Model):
     ) -> RewardsRequest:
         instance = cls()
         instance.rewards = rewards
+        if entitlement_collection_id is not None:
+            instance.entitlement_collection_id = entitlement_collection_id
         if entitlement_origin is not None:
             instance.entitlement_origin = entitlement_origin
         if metadata is not None:
@@ -211,6 +225,13 @@ class RewardsRequest(Model):
             ]
         elif include_empty:
             instance.rewards = []
+        if (
+            "entitlementCollectionId" in dict_
+            and dict_["entitlementCollectionId"] is not None
+        ):
+            instance.entitlement_collection_id = str(dict_["entitlementCollectionId"])
+        elif include_empty:
+            instance.entitlement_collection_id = ""
         if "entitlementOrigin" in dict_ and dict_["entitlementOrigin"] is not None:
             instance.entitlement_origin = str(dict_["entitlementOrigin"])
         elif include_empty:
@@ -271,6 +292,7 @@ class RewardsRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "rewards": "rewards",
+            "entitlementCollectionId": "entitlement_collection_id",
             "entitlementOrigin": "entitlement_origin",
             "metadata": "metadata",
             "origin": "origin",
@@ -282,6 +304,7 @@ class RewardsRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "rewards": True,
+            "entitlementCollectionId": False,
             "entitlementOrigin": False,
             "metadata": False,
             "origin": False,

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Gdpr Service (2.6.0)
+# AccelByte Gaming Services Gdpr Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -199,6 +199,8 @@ class GetAdminEmailConfiguration(Operation):
     def create(cls, namespace: str, **kwargs) -> GetAdminEmailConfiguration:
         instance = cls()
         instance.namespace = namespace
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

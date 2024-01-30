@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.44.0)
+# AGS Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     mock_play_station_stream_event as mock_play_station_stream_event_internal,
 )
+from accelbyte_py_sdk.api.platform.models import ClawbackInfo
 from accelbyte_py_sdk.api.platform.models import StreamEvent
 
 

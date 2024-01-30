@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.44.0)
+# AGS Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.platform.models import EntitlementPagingSlicedResult
 @click.argument("user_id", type=str)
 @click.option("--active_only", "active_only", type=bool)
 @click.option("--app_type", "app_type", type=str)
+@click.option("--collection_id", "collection_id", type=str)
 @click.option("--entitlement_clazz", "entitlement_clazz", type=str)
 @click.option("--entitlement_name", "entitlement_name", type=str)
 @click.option("--features", "features", type=str)
@@ -56,6 +57,7 @@ def query_user_entitlements(
     user_id: str,
     active_only: Optional[bool] = None,
     app_type: Optional[str] = None,
+    collection_id: Optional[str] = None,
     entitlement_clazz: Optional[str] = None,
     entitlement_name: Optional[str] = None,
     features: Optional[str] = None,
@@ -93,6 +95,7 @@ def query_user_entitlements(
         user_id=user_id,
         active_only=active_only,
         app_type=app_type,
+        collection_id=collection_id,
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
         features=features,

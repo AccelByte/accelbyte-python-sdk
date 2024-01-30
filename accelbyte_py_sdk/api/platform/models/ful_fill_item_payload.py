@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -58,6 +58,8 @@ class FulFillItemPayload(Model):
 
         item_identity_type: (itemIdentityType) REQUIRED Union[str, ItemIdentityTypeEnum]
 
+        entitlement_collection_id: (entitlementCollectionId) OPTIONAL str
+
         entitlement_origin: (entitlementOrigin) OPTIONAL Union[str, EntitlementOriginEnum]
     """
 
@@ -66,6 +68,7 @@ class FulFillItemPayload(Model):
     count: int  # REQUIRED
     item_identity: str  # REQUIRED
     item_identity_type: Union[str, ItemIdentityTypeEnum]  # REQUIRED
+    entitlement_collection_id: str  # OPTIONAL
     entitlement_origin: Union[str, EntitlementOriginEnum]  # OPTIONAL
 
     # endregion fields
@@ -84,6 +87,10 @@ class FulFillItemPayload(Model):
         self, value: Union[str, ItemIdentityTypeEnum]
     ) -> FulFillItemPayload:
         self.item_identity_type = value
+        return self
+
+    def with_entitlement_collection_id(self, value: str) -> FulFillItemPayload:
+        self.entitlement_collection_id = value
         return self
 
     def with_entitlement_origin(
@@ -110,6 +117,10 @@ class FulFillItemPayload(Model):
             result["itemIdentityType"] = str(self.item_identity_type)
         elif include_empty:
             result["itemIdentityType"] = Union[str, ItemIdentityTypeEnum]()
+        if hasattr(self, "entitlement_collection_id"):
+            result["entitlementCollectionId"] = str(self.entitlement_collection_id)
+        elif include_empty:
+            result["entitlementCollectionId"] = ""
         if hasattr(self, "entitlement_origin"):
             result["entitlementOrigin"] = str(self.entitlement_origin)
         elif include_empty:
@@ -126,6 +137,7 @@ class FulFillItemPayload(Model):
         count: int,
         item_identity: str,
         item_identity_type: Union[str, ItemIdentityTypeEnum],
+        entitlement_collection_id: Optional[str] = None,
         entitlement_origin: Optional[Union[str, EntitlementOriginEnum]] = None,
         **kwargs,
     ) -> FulFillItemPayload:
@@ -133,6 +145,8 @@ class FulFillItemPayload(Model):
         instance.count = count
         instance.item_identity = item_identity
         instance.item_identity_type = item_identity_type
+        if entitlement_collection_id is not None:
+            instance.entitlement_collection_id = entitlement_collection_id
         if entitlement_origin is not None:
             instance.entitlement_origin = entitlement_origin
         return instance
@@ -156,6 +170,13 @@ class FulFillItemPayload(Model):
             instance.item_identity_type = str(dict_["itemIdentityType"])
         elif include_empty:
             instance.item_identity_type = Union[str, ItemIdentityTypeEnum]()
+        if (
+            "entitlementCollectionId" in dict_
+            and dict_["entitlementCollectionId"] is not None
+        ):
+            instance.entitlement_collection_id = str(dict_["entitlementCollectionId"])
+        elif include_empty:
+            instance.entitlement_collection_id = ""
         if "entitlementOrigin" in dict_ and dict_["entitlementOrigin"] is not None:
             instance.entitlement_origin = str(dict_["entitlementOrigin"])
         elif include_empty:
@@ -204,6 +225,7 @@ class FulFillItemPayload(Model):
             "count": "count",
             "itemIdentity": "item_identity",
             "itemIdentityType": "item_identity_type",
+            "entitlementCollectionId": "entitlement_collection_id",
             "entitlementOrigin": "entitlement_origin",
         }
 
@@ -213,6 +235,7 @@ class FulFillItemPayload(Model):
             "count": True,
             "itemIdentity": True,
             "itemIdentityType": True,
+            "entitlementCollectionId": False,
             "entitlementOrigin": False,
         }
 

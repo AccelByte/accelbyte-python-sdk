@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -51,11 +51,11 @@ class ImportStoreItemInfo(Model):
     Properties:
         item_type: (itemType) REQUIRED Union[str, ItemTypeEnum]
 
-        localizations: (localizations) REQUIRED Dict[str, Localization]
-
         category_path: (categoryPath) OPTIONAL str
 
         item_id: (itemId) OPTIONAL str
+
+        localizations: (localizations) OPTIONAL Dict[str, Localization]
 
         name: (name) OPTIONAL str
 
@@ -65,9 +65,9 @@ class ImportStoreItemInfo(Model):
     # region fields
 
     item_type: Union[str, ItemTypeEnum]  # REQUIRED
-    localizations: Dict[str, Localization]  # REQUIRED
     category_path: str  # OPTIONAL
     item_id: str  # OPTIONAL
+    localizations: Dict[str, Localization]  # OPTIONAL
     name: str  # OPTIONAL
     sku: str  # OPTIONAL
 
@@ -79,16 +79,16 @@ class ImportStoreItemInfo(Model):
         self.item_type = value
         return self
 
-    def with_localizations(self, value: Dict[str, Localization]) -> ImportStoreItemInfo:
-        self.localizations = value
-        return self
-
     def with_category_path(self, value: str) -> ImportStoreItemInfo:
         self.category_path = value
         return self
 
     def with_item_id(self, value: str) -> ImportStoreItemInfo:
         self.item_id = value
+        return self
+
+    def with_localizations(self, value: Dict[str, Localization]) -> ImportStoreItemInfo:
+        self.localizations = value
         return self
 
     def with_name(self, value: str) -> ImportStoreItemInfo:
@@ -109,13 +109,6 @@ class ImportStoreItemInfo(Model):
             result["itemType"] = str(self.item_type)
         elif include_empty:
             result["itemType"] = Union[str, ItemTypeEnum]()
-        if hasattr(self, "localizations"):
-            result["localizations"] = {
-                str(k0): v0.to_dict(include_empty=include_empty)
-                for k0, v0 in self.localizations.items()
-            }
-        elif include_empty:
-            result["localizations"] = {}
         if hasattr(self, "category_path"):
             result["categoryPath"] = str(self.category_path)
         elif include_empty:
@@ -124,6 +117,13 @@ class ImportStoreItemInfo(Model):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = ""
+        if hasattr(self, "localizations"):
+            result["localizations"] = {
+                str(k0): v0.to_dict(include_empty=include_empty)
+                for k0, v0 in self.localizations.items()
+            }
+        elif include_empty:
+            result["localizations"] = {}
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -142,20 +142,21 @@ class ImportStoreItemInfo(Model):
     def create(
         cls,
         item_type: Union[str, ItemTypeEnum],
-        localizations: Dict[str, Localization],
         category_path: Optional[str] = None,
         item_id: Optional[str] = None,
+        localizations: Optional[Dict[str, Localization]] = None,
         name: Optional[str] = None,
         sku: Optional[str] = None,
         **kwargs,
     ) -> ImportStoreItemInfo:
         instance = cls()
         instance.item_type = item_type
-        instance.localizations = localizations
         if category_path is not None:
             instance.category_path = category_path
         if item_id is not None:
             instance.item_id = item_id
+        if localizations is not None:
+            instance.localizations = localizations
         if name is not None:
             instance.name = name
         if sku is not None:
@@ -173,13 +174,6 @@ class ImportStoreItemInfo(Model):
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
             instance.item_type = Union[str, ItemTypeEnum]()
-        if "localizations" in dict_ and dict_["localizations"] is not None:
-            instance.localizations = {
-                str(k0): Localization.create_from_dict(v0, include_empty=include_empty)
-                for k0, v0 in dict_["localizations"].items()
-            }
-        elif include_empty:
-            instance.localizations = {}
         if "categoryPath" in dict_ and dict_["categoryPath"] is not None:
             instance.category_path = str(dict_["categoryPath"])
         elif include_empty:
@@ -188,6 +182,13 @@ class ImportStoreItemInfo(Model):
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = ""
+        if "localizations" in dict_ and dict_["localizations"] is not None:
+            instance.localizations = {
+                str(k0): Localization.create_from_dict(v0, include_empty=include_empty)
+                for k0, v0 in dict_["localizations"].items()
+            }
+        elif include_empty:
+            instance.localizations = {}
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -238,9 +239,9 @@ class ImportStoreItemInfo(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "itemType": "item_type",
-            "localizations": "localizations",
             "categoryPath": "category_path",
             "itemId": "item_id",
+            "localizations": "localizations",
             "name": "name",
             "sku": "sku",
         }
@@ -249,9 +250,9 @@ class ImportStoreItemInfo(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "itemType": True,
-            "localizations": True,
             "categoryPath": False,
             "itemId": False,
+            "localizations": False,
             "name": False,
             "sku": False,
         }

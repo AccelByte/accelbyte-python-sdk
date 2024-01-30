@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.8.3)
+# AccelByte Gaming Services Iam Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -427,6 +427,8 @@ class PlatformAuthenticationV3(Operation):
             instance.openid_sig = openid_sig
         if openid_signed is not None:
             instance.openid_signed = openid_signed
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

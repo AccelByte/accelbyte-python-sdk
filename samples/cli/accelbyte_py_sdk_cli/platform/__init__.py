@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-platform-service (4.44.0)
+# justice-platform-service
 
 from ._list_fulfillment_scripts import list_fulfillment_scripts
 from ._get_fulfillment_script import get_fulfillment_script
@@ -194,6 +194,9 @@ from ._update_section import update_section
 from ._delete_section import delete_section
 from ._list_stores import list_stores
 from ._create_store import create_store
+from ._get_catalog_definition import get_catalog_definition
+from ._download_csv_templates import download_csv_templates
+from ._export_store_by_csv import export_store_by_csv
 from ._import_store import import_store
 from ._get_published_store import get_published_store
 from ._delete_published_store import delete_published_store
@@ -213,6 +216,8 @@ from ._select_record import select_record
 from ._unselect_record import unselect_record
 from ._clone_store import clone_store
 from ._export_store import export_store
+from ._query_import_history import query_import_history
+from ._import_store_by_csv import import_store_by_csv
 from ._query_subscriptions import query_subscriptions
 from ._recurring_charge_subscription import recurring_charge_subscription
 from ._get_ticket_dynamic import get_ticket_dynamic
@@ -446,6 +451,7 @@ from ._public_get_user_app_entitlement_by_app_id import (
 from ._public_query_user_entitlements_by_app_type import (
     public_query_user_entitlements_by_app_type,
 )
+from ._public_get_user_entitlements_by_ids import public_get_user_entitlements_by_ids
 from ._public_get_user_entitlement_by_item_id import (
     public_get_user_entitlement_by_item_id,
 )
@@ -468,6 +474,8 @@ from ._public_get_user_entitlement_ownership_by_sku import (
 from ._public_get_user_entitlement import public_get_user_entitlement
 from ._public_consume_user_entitlement import public_consume_user_entitlement
 from ._public_sell_user_entitlement import public_sell_user_entitlement
+from ._public_split_user_entitlement import public_split_user_entitlement
+from ._public_transfer_user_entitlement import public_transfer_user_entitlement
 from ._public_redeem_code import public_redeem_code
 from ._public_fulfill_apple_iap_item import public_fulfill_apple_iap_item
 from ._sync_epic_games_inventory import sync_epic_games_inventory
@@ -696,6 +704,9 @@ commands = [
     delete_section,
     list_stores,
     create_store,
+    get_catalog_definition,
+    download_csv_templates,
+    export_store_by_csv,
     import_store,
     get_published_store,
     delete_published_store,
@@ -715,6 +726,8 @@ commands = [
     unselect_record,
     clone_store,
     export_store,
+    query_import_history,
+    import_store_by_csv,
     query_subscriptions,
     recurring_charge_subscription,
     get_ticket_dynamic,
@@ -904,6 +917,7 @@ commands = [
     public_query_user_entitlements,
     public_get_user_app_entitlement_by_app_id,
     public_query_user_entitlements_by_app_type,
+    public_get_user_entitlements_by_ids,
     public_get_user_entitlement_by_item_id,
     public_get_user_entitlement_by_sku,
     public_exists_any_user_active_entitlement,
@@ -914,6 +928,8 @@ commands = [
     public_get_user_entitlement,
     public_consume_user_entitlement,
     public_sell_user_entitlement,
+    public_split_user_entitlement,
+    public_transfer_user_entitlement,
     public_redeem_code,
     public_fulfill_apple_iap_item,
     sync_epic_games_inventory,

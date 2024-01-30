@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.13.3)
+# AccelByte Gaming Services Session Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -74,7 +74,8 @@ class AdminUpdateConfigurationTemplateV1(Operation):
     - TieTeamsSessionLifetime: If it is set to true, the lifetime of any partyId session inside teams attribute will be tied to the game session. Only applies when the teams partyId is game session.
     - DisableCodeGeneration (optional, default: false): If it is set to true, code will not be generated for party session automatically.
     - DSManualSetReady (optional, default: false): The DS need to call specific end point to flag the DS for game session is ready to accept client connection.
-    - EnableSecret (optional, default: false): if configuration template is created with TypeDS and EnableSecret is True, A secret will be created
+    - EnableSecret (optional, default: false): if configuration template is created with TypeDS and EnableSecret is True, A secret will be created.
+    - ManualRejoin (optional, default: false): indicates if game client will handle manual rejoin upon websocket reconnection when enabled.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/configurations/{name}
@@ -293,6 +294,8 @@ class AdminUpdateConfigurationTemplateV1(Operation):
         instance.body = body
         instance.name = name
         instance.namespace = namespace
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

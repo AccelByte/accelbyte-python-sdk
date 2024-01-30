@@ -6,7 +6,7 @@
 
 # template_file: python-cli-init.j2
 
-# justice-iam-service (7.8.3)
+# justice-iam-service
 
 from ._get_bans_type import get_bans_type
 from ._get_list_ban_reason import get_list_ban_reason
@@ -395,6 +395,7 @@ from ._admin_decrypt_device_v4 import admin_decrypt_device_v4
 from ._admin_unban_device_v4 import admin_unban_device_v4
 from ._admin_get_users_by_device_v4 import admin_get_users_by_device_v4
 from ._admin_create_test_users_v4 import admin_create_test_users_v4
+from ._admin_create_user_v4 import admin_create_user_v4
 from ._admin_bulk_update_user_account_type_v4 import (
     admin_bulk_update_user_account_type_v4,
 )
@@ -774,6 +775,7 @@ commands = [
     admin_unban_device_v4,
     admin_get_users_by_device_v4,
     admin_create_test_users_v4,
+    admin_create_user_v4,
     admin_bulk_update_user_account_type_v4,
     admin_bulk_check_valid_user_idv4,
     admin_update_user_v4,

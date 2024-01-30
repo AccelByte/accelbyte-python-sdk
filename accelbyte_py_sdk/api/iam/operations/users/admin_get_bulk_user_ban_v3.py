@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.8.3)
+# AccelByte Gaming Services Iam Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -274,6 +274,8 @@ class AdminGetBulkUserBanV3(Operation):
             instance.active_only = active_only
         if ban_type is not None:
             instance.ban_type = ban_type
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

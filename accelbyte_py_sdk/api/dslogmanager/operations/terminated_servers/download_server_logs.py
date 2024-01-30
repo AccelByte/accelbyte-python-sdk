@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ds Log Manager Service (3.4.1)
+# AccelByte Gaming Services Ds Log Manager Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -214,6 +214,8 @@ class DownloadServerLogs(Operation):
         instance = cls()
         instance.namespace = namespace
         instance.pod_name = pod_name
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

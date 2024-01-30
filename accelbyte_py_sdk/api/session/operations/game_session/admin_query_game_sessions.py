@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.13.3)
+# AccelByte Gaming Services Session Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -487,6 +487,8 @@ class AdminQueryGameSessions(Operation):
             instance.status_v2 = status_v2
         if to_time is not None:
             instance.to_time = to_time
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

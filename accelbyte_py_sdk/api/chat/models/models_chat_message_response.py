@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Chat Service (0.4.16)
+# AccelByte Gaming Services Chat Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

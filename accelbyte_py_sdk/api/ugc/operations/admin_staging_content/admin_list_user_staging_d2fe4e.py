@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Ugc Service (2.19.3)
+# AccelByte Gaming Services Ugc Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -300,6 +300,8 @@ class AdminListUserStagingContents(Operation):
             instance.sort_by = sort_by
         if status is not None:
             instance.status = status
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

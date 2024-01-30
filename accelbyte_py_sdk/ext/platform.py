@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -73,6 +73,7 @@ from ..api.platform.models import CancelRequest
 from ..api.platform.models import CatalogChangeInfo
 from ..api.platform.models import CatalogChangePagingResult
 from ..api.platform.models import CatalogChangeStatistics
+from ..api.platform.models import CatalogDefinitionInfo
 from ..api.platform.models import CategoryCreate
 from ..api.platform.models import CategoryInfo
 from ..api.platform.models import CategoryUpdate
@@ -135,7 +136,11 @@ from ..api.platform.models import EntitlementRevocationConfig
 from ..api.platform.models import EntitlementRevokeResult
 from ..api.platform.models import EntitlementSoldRequest
 from ..api.platform.models import EntitlementSoldResult
+from ..api.platform.models import EntitlementSplitRequest
+from ..api.platform.models import EntitlementSplitResult
 from ..api.platform.models import EntitlementSummary
+from ..api.platform.models import EntitlementTransferRequest
+from ..api.platform.models import EntitlementTransferResult
 from ..api.platform.models import EntitlementUpdate
 from ..api.platform.models import EpicGamesDLCSyncRequest
 from ..api.platform.models import EpicGamesIAPConfigInfo
@@ -147,6 +152,7 @@ from ..api.platform.models import EstimatedPriceInfo
 from ..api.platform.models import EventAdditionalData
 from ..api.platform.models import EventPayload
 from ..api.platform.models import ExportStoreRequest
+from ..api.platform.models import ExportStoreToCSVRequest
 from ..api.platform.models import ExtensionFulfillmentSummary
 from ..api.platform.models import ExternalPaymentOrderCreate
 from ..api.platform.models import FieldValidationError
@@ -191,11 +197,14 @@ from ..api.platform.models import ImportErrorDetails
 from ..api.platform.models import ImportStoreAppInfo
 from ..api.platform.models import ImportStoreCategoryInfo
 from ..api.platform.models import ImportStoreError
+from ..api.platform.models import ImportStoreHistoryInfo
+from ..api.platform.models import ImportStoreHistoryPagingResult
 from ..api.platform.models import ImportStoreItemInfo
 from ..api.platform.models import ImportStoreResult
 from ..api.platform.models import ImportStoreSectionInfo
 from ..api.platform.models import ImportStoreViewInfo
 from ..api.platform.models import InGameItemSync
+from ..api.platform.models import InventoryConfig
 from ..api.platform.models import InvoiceCurrencySummary
 from ..api.platform.models import InvoiceSummary
 from ..api.platform.models import ItemAcquireRequest
@@ -494,6 +503,7 @@ def create_admin_order_create_example() -> AdminOrderCreate:
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
     instance.currency_namespace = randomize("slug")
+    instance.entitlement_platform = randomize()
     instance.ext = {randomize(): randomize()}
     instance.language = randomize()
     instance.options = create_order_creation_options_example()
@@ -546,6 +556,7 @@ def create_app_entitlement_info_example() -> AppEntitlementInfo:
     instance.user_id = randomize("uid")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
+    instance.collection_id = randomize()
     instance.end_date = randomize("date")
     instance.item_id = randomize()
     instance.item_snapshot = create_item_snapshot_example()
@@ -865,6 +876,7 @@ def create_bundled_item_info_example() -> BundledItemInfo:
     instance.flexible = randomize("bool")
     instance.fresh = randomize("bool")
     instance.images = [create_image_example()]
+    instance.inventory_config = create_inventory_config_example()
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
@@ -1022,6 +1034,15 @@ def create_catalog_change_statistics_example() -> CatalogChangeStatistics:
     instance = CatalogChangeStatistics()
     instance.count = randomize("int", min_val=1, max_val=1000)
     instance.selected_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_catalog_definition_info_example() -> CatalogDefinitionInfo:
+    instance = CatalogDefinitionInfo()
+    instance.field = randomize()
+    instance.name = randomize()
+    instance.required = randomize("bool")
+    instance.item_type = randomize()
     return instance
 
 
@@ -1460,6 +1481,7 @@ def create_entitlement_decrement_result_example() -> EntitlementDecrementResult:
     instance.updated_at = randomize("date")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
+    instance.collection_id = randomize()
     instance.end_date = randomize("date")
     instance.features = [randomize()]
     instance.granted_at = randomize("date")
@@ -1468,6 +1490,7 @@ def create_entitlement_decrement_result_example() -> EntitlementDecrementResult:
     instance.name = randomize()
     instance.no_origin = randomize("bool")
     instance.origin = randomize()
+    instance.platform_available = randomize("bool")
     instance.replayed = randomize("bool")
     instance.request_id = randomize()
     instance.rewards = [create_entitlement_loot_box_reward_example()]
@@ -1487,6 +1510,7 @@ def create_entitlement_grant_example() -> EntitlementGrant:
     instance.item_id = randomize()
     instance.item_namespace = randomize("slug")
     instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.collection_id = randomize()
     instance.end_date = randomize("date")
     instance.granted_code = randomize()
     instance.language = randomize()
@@ -1527,6 +1551,7 @@ def create_entitlement_ifc_example() -> EntitlementIfc:
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
     instance.clazz = randomize()
+    instance.collection_id = randomize()
     instance.created_at = randomize("date")
     instance.end_date = randomize("date")
     instance.features = [randomize()]
@@ -1561,6 +1586,7 @@ def create_entitlement_info_example() -> EntitlementInfo:
     instance.updated_at = randomize("date")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
+    instance.collection_id = randomize()
     instance.end_date = randomize("date")
     instance.features = [randomize()]
     instance.granted_at = randomize("date")
@@ -1569,6 +1595,7 @@ def create_entitlement_info_example() -> EntitlementInfo:
     instance.name = randomize()
     instance.no_origin = randomize("bool")
     instance.origin = randomize()
+    instance.platform_available = randomize("bool")
     instance.sku = randomize("slug")
     instance.source = randomize()
     instance.stackable = randomize("bool")
@@ -1680,6 +1707,19 @@ def create_entitlement_sold_result_example() -> EntitlementSoldResult:
     return instance
 
 
+def create_entitlement_split_request_example() -> EntitlementSplitRequest:
+    instance = EntitlementSplitRequest()
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_entitlement_split_result_example() -> EntitlementSplitResult:
+    instance = EntitlementSplitResult()
+    instance.source = create_entitlement_info_example()
+    instance.target = create_entitlement_info_example()
+    return instance
+
+
 def create_entitlement_summary_example() -> EntitlementSummary:
     instance = EntitlementSummary()
     instance.clazz = randomize()
@@ -1689,6 +1729,7 @@ def create_entitlement_summary_example() -> EntitlementSummary:
     instance.type_ = randomize()
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
+    instance.collection_id = randomize()
     instance.end_date = randomize("date")
     instance.granted_code = randomize()
     instance.item_id = randomize()
@@ -1702,8 +1743,23 @@ def create_entitlement_summary_example() -> EntitlementSummary:
     return instance
 
 
+def create_entitlement_transfer_request_example() -> EntitlementTransferRequest:
+    instance = EntitlementTransferRequest()
+    instance.entitlement_id = randomize()
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_entitlement_transfer_result_example() -> EntitlementTransferResult:
+    instance = EntitlementTransferResult()
+    instance.source = create_entitlement_info_example()
+    instance.target = create_entitlement_info_example()
+    return instance
+
+
 def create_entitlement_update_example() -> EntitlementUpdate:
     instance = EntitlementUpdate()
+    instance.collection_id = randomize()
     instance.end_date = randomize("date")
     instance.null_field_list = [randomize()]
     instance.origin = randomize()
@@ -1785,6 +1841,15 @@ def create_export_store_request_example() -> ExportStoreRequest:
     return instance
 
 
+def create_export_store_to_csv_request_example() -> ExportStoreToCSVRequest:
+    instance = ExportStoreToCSVRequest()
+    instance.catalog_type = randomize()
+    instance.fields_to_be_included = [randomize()]
+    instance.ids_to_be_exported = [randomize()]
+    instance.store_id = randomize()
+    return instance
+
+
 def create_extension_fulfillment_summary_example() -> ExtensionFulfillmentSummary:
     instance = ExtensionFulfillmentSummary()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
@@ -1850,6 +1915,7 @@ def create_ful_fill_item_payload_example() -> FulFillItemPayload:
     instance.count = randomize("int", min_val=1, max_val=1000)
     instance.item_identity = randomize()
     instance.item_identity_type = randomize()
+    instance.entitlement_collection_id = randomize()
     instance.entitlement_origin = randomize()
     return instance
 
@@ -1918,6 +1984,7 @@ def create_fulfillment_request_example() -> FulfillmentRequest:
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.duration = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize("date")
+    instance.entitlement_collection_id = randomize()
     instance.entitlement_origin = randomize()
     instance.item_id = randomize()
     instance.item_sku = randomize()
@@ -2019,6 +2086,7 @@ def create_full_item_info_example() -> FullItemInfo:
     instance.features = [randomize()]
     instance.flexible = randomize("bool")
     instance.images = [create_image_example()]
+    instance.inventory_config = create_inventory_config_example()
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
@@ -2305,12 +2373,36 @@ def create_import_store_error_example() -> ImportStoreError:
     return instance
 
 
+def create_import_store_history_info_example() -> ImportStoreHistoryInfo:
+    instance = ImportStoreHistoryInfo()
+    instance.created_at = randomize("date")
+    instance.id_ = randomize()
+    instance.import_file_format = randomize()
+    instance.initiated_by = randomize()
+    instance.namespace = randomize("slug")
+    instance.store_id = randomize()
+    instance.success = randomize("bool")
+    instance.errors = [create_import_store_error_example()]
+    instance.note = randomize()
+    return instance
+
+
+def create_import_store_history_paging_result_example() -> (
+    ImportStoreHistoryPagingResult
+):
+    instance = ImportStoreHistoryPagingResult()
+    instance.data = [create_import_store_history_info_example()]
+    instance.paging = create_paging_example()
+    instance.total = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_import_store_item_info_example() -> ImportStoreItemInfo:
     instance = ImportStoreItemInfo()
     instance.item_type = randomize()
-    instance.localizations = {}
     instance.category_path = randomize()
     instance.item_id = randomize()
+    instance.localizations = {}
     instance.name = randomize()
     instance.sku = randomize("slug")
     return instance
@@ -2343,6 +2435,14 @@ def create_in_game_item_sync_example() -> InGameItemSync:
     instance.category_path = randomize()
     instance.target_item_id = randomize()
     instance.target_namespace = randomize("slug")
+    return instance
+
+
+def create_inventory_config_example() -> InventoryConfig:
+    instance = InventoryConfig()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.server_custom_attributes = {randomize(): randomize()}
+    instance.slot_used = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2396,6 +2496,7 @@ def create_item_create_example() -> ItemCreate:
     instance.features = [randomize()]
     instance.flexible = randomize("bool")
     instance.images = [create_image_example()]
+    instance.inventory_config = create_inventory_config_example()
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
@@ -2464,6 +2565,7 @@ def create_item_info_example() -> ItemInfo:
     instance.flexible = randomize("bool")
     instance.fresh = randomize("bool")
     instance.images = [create_image_example()]
+    instance.inventory_config = create_inventory_config_example()
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
@@ -2573,6 +2675,7 @@ def create_item_snapshot_example() -> ItemSnapshot:
     instance.description = randomize()
     instance.features = [randomize()]
     instance.flexible = randomize("bool")
+    instance.inventory_config = create_inventory_config_example()
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
@@ -2645,6 +2748,7 @@ def create_item_update_example() -> ItemUpdate:
     instance.features = [randomize()]
     instance.flexible = randomize("bool")
     instance.images = [create_image_example()]
+    instance.inventory_config = create_inventory_config_example()
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.listable = randomize("bool")
@@ -3678,6 +3782,7 @@ def create_populated_item_info_example() -> PopulatedItemInfo:
     instance.flexible = randomize("bool")
     instance.fresh = randomize("bool")
     instance.images = [create_image_example()]
+    instance.inventory_config = create_inventory_config_example()
     instance.item_ids = [randomize()]
     instance.item_qty = {}
     instance.items = [create_bundled_item_info_example()]
@@ -4124,6 +4229,7 @@ def create_reward_update_example() -> RewardUpdate:
 def create_rewards_request_example() -> RewardsRequest:
     instance = RewardsRequest()
     instance.rewards = [create_platform_reward_example()]
+    instance.entitlement_collection_id = randomize()
     instance.entitlement_origin = randomize()
     instance.metadata = {randomize(): randomize()}
     instance.origin = randomize()
@@ -4264,6 +4370,7 @@ def create_stackable_entitlement_info_example() -> StackableEntitlementInfo:
     instance.updated_at = randomize("date")
     instance.app_id = randomize("uid")
     instance.app_type = randomize()
+    instance.collection_id = randomize()
     instance.end_date = randomize("date")
     instance.features = [randomize()]
     instance.granted_at = randomize("date")
@@ -4272,6 +4379,7 @@ def create_stackable_entitlement_info_example() -> StackableEntitlementInfo:
     instance.name = randomize()
     instance.no_origin = randomize("bool")
     instance.origin = randomize()
+    instance.platform_available = randomize("bool")
     instance.sku = randomize("slug")
     instance.source = randomize()
     instance.stackable = randomize("bool")

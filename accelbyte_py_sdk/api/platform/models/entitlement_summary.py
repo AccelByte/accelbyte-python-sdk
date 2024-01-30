@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,6 +76,8 @@ class EntitlementSummary(Model):
 
         user_id: (userId) REQUIRED str
 
+        collection_id: (collectionId) OPTIONAL str
+
         end_date: (endDate) OPTIONAL str
 
         granted_code: (grantedCode) OPTIONAL str
@@ -106,6 +108,7 @@ class EntitlementSummary(Model):
     type_: Union[str, TypeEnum]  # REQUIRED
     updated_at: str  # REQUIRED
     user_id: str  # REQUIRED
+    collection_id: str  # OPTIONAL
     end_date: str  # OPTIONAL
     granted_code: str  # OPTIONAL
     item_id: str  # OPTIONAL
@@ -147,6 +150,10 @@ class EntitlementSummary(Model):
 
     def with_user_id(self, value: str) -> EntitlementSummary:
         self.user_id = value
+        return self
+
+    def with_collection_id(self, value: str) -> EntitlementSummary:
+        self.collection_id = value
         return self
 
     def with_end_date(self, value: str) -> EntitlementSummary:
@@ -223,6 +230,10 @@ class EntitlementSummary(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "collection_id"):
+            result["collectionId"] = str(self.collection_id)
+        elif include_empty:
+            result["collectionId"] = ""
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -279,6 +290,7 @@ class EntitlementSummary(Model):
         type_: Union[str, TypeEnum],
         updated_at: str,
         user_id: str,
+        collection_id: Optional[str] = None,
         end_date: Optional[str] = None,
         granted_code: Optional[str] = None,
         item_id: Optional[str] = None,
@@ -299,6 +311,8 @@ class EntitlementSummary(Model):
         instance.type_ = type_
         instance.updated_at = updated_at
         instance.user_id = user_id
+        if collection_id is not None:
+            instance.collection_id = collection_id
         if end_date is not None:
             instance.end_date = end_date
         if granted_code is not None:
@@ -356,6 +370,10 @@ class EntitlementSummary(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "collectionId" in dict_ and dict_["collectionId"] is not None:
+            instance.collection_id = str(dict_["collectionId"])
+        elif include_empty:
+            instance.collection_id = ""
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -444,6 +462,7 @@ class EntitlementSummary(Model):
             "type": "type_",
             "updatedAt": "updated_at",
             "userId": "user_id",
+            "collectionId": "collection_id",
             "endDate": "end_date",
             "grantedCode": "granted_code",
             "itemId": "item_id",
@@ -466,6 +485,7 @@ class EntitlementSummary(Model):
             "type": True,
             "updatedAt": True,
             "userId": True,
+            "collectionId": False,
             "endDate": False,
             "grantedCode": False,
             "itemId": False,

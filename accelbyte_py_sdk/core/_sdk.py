@@ -31,7 +31,12 @@ class OperationPreprocessor(Protocol):
 
 class RequestPreprocessor(Protocol):
     def __call__(
-        self, proto: ProtoHttpRequest, operation: Operation, sdk: AccelByteSDK, *args, **kwargs
+        self,
+        proto: ProtoHttpRequest,
+        operation: Operation,
+        sdk: AccelByteSDK,
+        *args,
+        **kwargs,
     ) -> Tuple[ProtoHttpRequest, Optional[HttpResponse]]:
         ...
 

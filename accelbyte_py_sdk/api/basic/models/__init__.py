@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.15.1"
+__version__ = "2.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -30,6 +30,8 @@ from .equ8_config import Equ8Config
 from .error_entity import ErrorEntity
 from .field_validation_error import FieldValidationError
 from .file_upload_url_info import FileUploadUrlInfo
+from .namespace_context import NamespaceContext
+from .namespace_context import TypeEnum as NamespaceContextTypeEnum
 from .namespace_create import NamespaceCreate
 from .namespace_info import NamespaceInfo
 from .namespace_info import StatusEnum as NamespaceInfoStatusEnum

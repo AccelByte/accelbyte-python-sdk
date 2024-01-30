@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ClawbackInfo
 from ...models import StreamEvent
 
 
@@ -59,7 +60,7 @@ class MockPlayStationStreamEvent(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        default: (successful operation)
+        200: OK - ClawbackInfo (successful operation)
     """
 
     # region fields
@@ -166,10 +167,10 @@ class MockPlayStationStreamEvent(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, ClawbackInfo], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        default: (successful operation)
+        200: OK - ClawbackInfo (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -185,7 +186,7 @@ class MockPlayStationStreamEvent(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return ClawbackInfo.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -203,6 +204,8 @@ class MockPlayStationStreamEvent(Operation):
         instance.namespace = namespace
         if body is not None:
             instance.body = body
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

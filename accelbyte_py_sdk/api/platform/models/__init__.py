@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.44.0"
+__version__ = "4.45.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,7 +23,10 @@ from .additional_data_entitlement import AdditionalDataEntitlement
 from .admin_entitlement_decrement import AdminEntitlementDecrement
 from .admin_entitlement_sold_request import AdminEntitlementSoldRequest
 from .admin_order_create import AdminOrderCreate
-from .admin_order_create import PlatformEnum as AdminOrderCreatePlatformEnum
+from .admin_order_create import (
+    EntitlementPlatformEnum as AdminOrderCreateEntitlementPlatformEnum,
+    PlatformEnum as AdminOrderCreatePlatformEnum,
+)
 from .adyen_config import AdyenConfig
 from .ali_pay_config import AliPayConfig
 from .app_config import AppConfig
@@ -132,6 +135,8 @@ from .catalog_change_info import (
 )
 from .catalog_change_paging_result import CatalogChangePagingResult
 from .catalog_change_statistics import CatalogChangeStatistics
+from .catalog_definition_info import CatalogDefinitionInfo
+from .catalog_definition_info import ItemTypeEnum as CatalogDefinitionInfoItemTypeEnum
 from .category_create import CategoryCreate
 from .category_info import CategoryInfo
 from .category_update import CategoryUpdate
@@ -279,12 +284,16 @@ from .entitlement_revocation_config import EntitlementRevocationConfig
 from .entitlement_revoke_result import EntitlementRevokeResult
 from .entitlement_sold_request import EntitlementSoldRequest
 from .entitlement_sold_result import EntitlementSoldResult
+from .entitlement_split_request import EntitlementSplitRequest
+from .entitlement_split_result import EntitlementSplitResult
 from .entitlement_summary import EntitlementSummary
 from .entitlement_summary import (
     ClazzEnum as EntitlementSummaryClazzEnum,
     OriginEnum as EntitlementSummaryOriginEnum,
     TypeEnum as EntitlementSummaryTypeEnum,
 )
+from .entitlement_transfer_request import EntitlementTransferRequest
+from .entitlement_transfer_result import EntitlementTransferResult
 from .entitlement_update import EntitlementUpdate
 from .entitlement_update import (
     OriginEnum as EntitlementUpdateOriginEnum,
@@ -303,6 +312,10 @@ from .estimated_price_info import EstimatedPriceInfo
 from .event_additional_data import EventAdditionalData
 from .event_payload import EventPayload
 from .export_store_request import ExportStoreRequest
+from .export_store_to_csv_request import ExportStoreToCSVRequest
+from .export_store_to_csv_request import (
+    CatalogTypeEnum as ExportStoreToCSVRequestCatalogTypeEnum,
+)
 from .extension_fulfillment_summary import ExtensionFulfillmentSummary
 from .extension_fulfillment_summary import (
     ItemTypeEnum as ExtensionFulfillmentSummaryItemTypeEnum,
@@ -406,12 +419,18 @@ from .import_store_app_info import ImportStoreAppInfo
 from .import_store_category_info import ImportStoreCategoryInfo
 from .import_store_error import ImportStoreError
 from .import_store_error import TypeEnum as ImportStoreErrorTypeEnum
+from .import_store_history_info import ImportStoreHistoryInfo
+from .import_store_history_info import (
+    ImportFileFormatEnum as ImportStoreHistoryInfoImportFileFormatEnum,
+)
+from .import_store_history_paging_result import ImportStoreHistoryPagingResult
 from .import_store_item_info import ImportStoreItemInfo
 from .import_store_item_info import ItemTypeEnum as ImportStoreItemInfoItemTypeEnum
 from .import_store_result import ImportStoreResult
 from .import_store_section_info import ImportStoreSectionInfo
 from .import_store_view_info import ImportStoreViewInfo
 from .in_game_item_sync import InGameItemSync
+from .inventory_config import InventoryConfig
 from .invoice_currency_summary import InvoiceCurrencySummary
 from .invoice_summary import InvoiceSummary
 from .item_acquire_request import ItemAcquireRequest

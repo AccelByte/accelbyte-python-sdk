@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Session Service (3.13.3)
+# AccelByte Gaming Services Session Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -298,6 +298,8 @@ class AdminGetAllConfigurationTemplatesV1(Operation):
             instance.order = order
         if order_by is not None:
             instance.order_by = order_by
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

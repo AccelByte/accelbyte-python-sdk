@@ -81,7 +81,7 @@ def create_policy(
     Responses:
         201: Created - CreateBasePolicyResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id)
+        400: Bad Request - ErrorEntity (40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id | 40026: errors.net.accelbyte.platform.legal.not_allow_create_studio_policy)
 
         404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
 
@@ -127,7 +127,7 @@ async def create_policy_async(
     Responses:
         201: Created - CreateBasePolicyResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id)
+        400: Bad Request - ErrorEntity (40038: errors.net.accelbyte.platform.legal.invalid_affected_client_id | 40026: errors.net.accelbyte.platform.legal.not_allow_create_studio_policy)
 
         404: Not Found - ErrorEntity (40030: errors.net.accelbyte.platform.legal.policy_type_not_exist)
 

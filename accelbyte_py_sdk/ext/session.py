@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Session Service (3.13.3)
+# AccelByte Gaming Services Session Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -141,6 +141,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
     instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
+    instance.manual_rejoin = randomize("bool")
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
@@ -184,6 +185,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
     instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
+    instance.manual_rejoin = randomize("bool")
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
@@ -466,6 +468,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
     instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
+    instance.manual_rejoin = randomize("bool")
     instance.max_active_session = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
@@ -564,6 +567,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
     instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
+    instance.manual_rejoin = randomize("bool")
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]

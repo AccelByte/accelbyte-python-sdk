@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -88,6 +88,8 @@ class FulfillmentRequest(Model):
 
         end_date: (endDate) OPTIONAL str
 
+        entitlement_collection_id: (entitlementCollectionId) OPTIONAL str
+
         entitlement_origin: (entitlementOrigin) OPTIONAL Union[str, EntitlementOriginEnum]
 
         item_id: (itemId) OPTIONAL str
@@ -120,6 +122,7 @@ class FulfillmentRequest(Model):
     quantity: int  # REQUIRED
     duration: int  # OPTIONAL
     end_date: str  # OPTIONAL
+    entitlement_collection_id: str  # OPTIONAL
     entitlement_origin: Union[str, EntitlementOriginEnum]  # OPTIONAL
     item_id: str  # OPTIONAL
     item_sku: str  # OPTIONAL
@@ -148,6 +151,10 @@ class FulfillmentRequest(Model):
 
     def with_end_date(self, value: str) -> FulfillmentRequest:
         self.end_date = value
+        return self
+
+    def with_entitlement_collection_id(self, value: str) -> FulfillmentRequest:
+        self.entitlement_collection_id = value
         return self
 
     def with_entitlement_origin(
@@ -224,6 +231,10 @@ class FulfillmentRequest(Model):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = ""
+        if hasattr(self, "entitlement_collection_id"):
+            result["entitlementCollectionId"] = str(self.entitlement_collection_id)
+        elif include_empty:
+            result["entitlementCollectionId"] = ""
         if hasattr(self, "entitlement_origin"):
             result["entitlementOrigin"] = str(self.entitlement_origin)
         elif include_empty:
@@ -290,6 +301,7 @@ class FulfillmentRequest(Model):
         quantity: int,
         duration: Optional[int] = None,
         end_date: Optional[str] = None,
+        entitlement_collection_id: Optional[str] = None,
         entitlement_origin: Optional[Union[str, EntitlementOriginEnum]] = None,
         item_id: Optional[str] = None,
         item_sku: Optional[str] = None,
@@ -311,6 +323,8 @@ class FulfillmentRequest(Model):
             instance.duration = duration
         if end_date is not None:
             instance.end_date = end_date
+        if entitlement_collection_id is not None:
+            instance.entitlement_collection_id = entitlement_collection_id
         if entitlement_origin is not None:
             instance.entitlement_origin = entitlement_origin
         if item_id is not None:
@@ -358,6 +372,13 @@ class FulfillmentRequest(Model):
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = ""
+        if (
+            "entitlementCollectionId" in dict_
+            and dict_["entitlementCollectionId"] is not None
+        ):
+            instance.entitlement_collection_id = str(dict_["entitlementCollectionId"])
+        elif include_empty:
+            instance.entitlement_collection_id = ""
         if "entitlementOrigin" in dict_ and dict_["entitlementOrigin"] is not None:
             instance.entitlement_origin = str(dict_["entitlementOrigin"])
         elif include_empty:
@@ -461,6 +482,7 @@ class FulfillmentRequest(Model):
             "quantity": "quantity",
             "duration": "duration",
             "endDate": "end_date",
+            "entitlementCollectionId": "entitlement_collection_id",
             "entitlementOrigin": "entitlement_origin",
             "itemId": "item_id",
             "itemSku": "item_sku",
@@ -482,6 +504,7 @@ class FulfillmentRequest(Model):
             "quantity": True,
             "duration": False,
             "endDate": False,
+            "entitlementCollectionId": False,
             "entitlementOrigin": False,
             "itemId": False,
             "itemSku": False,

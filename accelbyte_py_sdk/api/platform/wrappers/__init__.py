@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.44.0"
+__version__ = "4.45.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -242,12 +242,18 @@ from ._entitlement import public_get_user_entitlement_ownership_by_item_ids
 from ._entitlement import public_get_user_entitlement_ownership_by_item_ids_async
 from ._entitlement import public_get_user_entitlement_ownership_by_sku
 from ._entitlement import public_get_user_entitlement_ownership_by_sku_async
+from ._entitlement import public_get_user_entitlements_by_ids
+from ._entitlement import public_get_user_entitlements_by_ids_async
 from ._entitlement import public_query_user_entitlements
 from ._entitlement import public_query_user_entitlements_async
 from ._entitlement import public_query_user_entitlements_by_app_type
 from ._entitlement import public_query_user_entitlements_by_app_type_async
 from ._entitlement import public_sell_user_entitlement
 from ._entitlement import public_sell_user_entitlement_async
+from ._entitlement import public_split_user_entitlement
+from ._entitlement import public_split_user_entitlement_async
+from ._entitlement import public_transfer_user_entitlement
+from ._entitlement import public_transfer_user_entitlement_async
 from ._entitlement import query_entitlements
 from ._entitlement import query_entitlements_async
 from ._entitlement import query_entitlements_1
@@ -778,10 +784,16 @@ from ._store import delete_published_store
 from ._store import delete_published_store_async
 from ._store import delete_store
 from ._store import delete_store_async
+from ._store import download_csv_templates
+from ._store import download_csv_templates_async
 from ._store import export_store
 from ._store import export_store_async
 from ._store import export_store_1
 from ._store import export_store_1_async
+from ._store import export_store_by_csv
+from ._store import export_store_by_csv_async
+from ._store import get_catalog_definition
+from ._store import get_catalog_definition_async
 from ._store import get_published_store
 from ._store import get_published_store_async
 from ._store import get_published_store_backup
@@ -792,10 +804,14 @@ from ._store import import_store
 from ._store import import_store_async
 from ._store import import_store_1
 from ._store import import_store_1_async
+from ._store import import_store_by_csv
+from ._store import import_store_by_csv_async
 from ._store import list_stores
 from ._store import list_stores_async
 from ._store import public_list_stores
 from ._store import public_list_stores_async
+from ._store import query_import_history
+from ._store import query_import_history_async
 from ._store import rollback_published_store
 from ._store import rollback_published_store_async
 from ._store import update_store

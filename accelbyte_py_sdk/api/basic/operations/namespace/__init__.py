@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.15.1"
+__version__ = "2.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -17,8 +17,10 @@ __email__ = "dev@accelbyte.net"
 from .change_namespace_status import ChangeNamespaceStatus
 from .create_namespace import CreateNamespace
 from .delete_namespace import DeleteNamespace
+from .get_child_namespaces import GetChildNamespaces
 from .get_game_namespaces import GetGameNamespaces
 from .get_namespace import GetNamespace
+from .get_namespace_context import GetNamespaceContext
 from .get_namespace_publisher import GetNamespacePublisher
 from .get_namespaces import GetNamespaces
 from .public_get_namespace_publisher import PublicGetNamespacePublisher

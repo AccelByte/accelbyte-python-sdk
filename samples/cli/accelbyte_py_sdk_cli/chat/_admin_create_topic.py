@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Chat Service (0.4.16)
+# AGS Chat Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

@@ -86,7 +86,7 @@ def create_policy_1(
     Responses:
         201: Created - CreateBasePolicyResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.base_policy_namespace_not_match)
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.base_policy_namespace_not_match | 40026: errors.net.accelbyte.platform.legal.not_allow_create_studio_policy)
 
         409: Conflict - ErrorEntity (40030: errors.net.accelbyte.platform.legal.invalid_policy_type)
 
@@ -140,7 +140,7 @@ async def create_policy_1_async(
     Responses:
         201: Created - CreateBasePolicyResponse (successful operation)
 
-        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.base_policy_namespace_not_match)
+        400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.base_policy_namespace_not_match | 40026: errors.net.accelbyte.platform.legal.not_allow_create_studio_policy)
 
         409: Conflict - ErrorEntity (40030: errors.net.accelbyte.platform.legal.invalid_policy_type)
 

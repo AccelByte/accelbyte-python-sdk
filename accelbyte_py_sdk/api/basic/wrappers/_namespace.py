@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
+from ..models import NamespaceContext
 from ..models import NamespaceCreate
 from ..models import NamespaceInfo
 from ..models import NamespacePublisherInfo
@@ -40,13 +41,16 @@ from ..models import ValidationErrorEntity
 from ..operations.namespace import ChangeNamespaceStatus
 from ..operations.namespace import CreateNamespace
 from ..operations.namespace import DeleteNamespace
+from ..operations.namespace import GetChildNamespaces
 from ..operations.namespace import GetGameNamespaces
 from ..operations.namespace import GetNamespace
+from ..operations.namespace import GetNamespaceContext
 from ..operations.namespace import GetNamespacePublisher
 from ..operations.namespace import GetNamespaces
 from ..operations.namespace import PublicGetNamespacePublisher
 from ..operations.namespace import PublicGetNamespaces
 from ..operations.namespace import UpdateNamespace
+from ..models import NamespaceContextTypeEnum
 from ..models import NamespaceInfoStatusEnum
 from ..models import NamespaceStatusUpdateStatusEnum
 
@@ -393,6 +397,118 @@ async def delete_namespace_async(
     )
 
 
+@same_doc_as(GetChildNamespaces)
+def get_child_namespaces(
+    active_only: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get child namespaces (getChildNamespaces)
+
+    Get child namespaces.
+    If input namespace is publisher namespace, then it will return its all studio namespace.
+    If input namespace is studio namespace, then it will return its all game namespace.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Returns : list of child namespaces
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/child
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[NamespaceInfo] (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetChildNamespaces.create(
+        active_only=active_only,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetChildNamespaces)
+async def get_child_namespaces_async(
+    active_only: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get child namespaces (getChildNamespaces)
+
+    Get child namespaces.
+    If input namespace is publisher namespace, then it will return its all studio namespace.
+    If input namespace is studio namespace, then it will return its all game namespace.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Returns : list of child namespaces
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/child
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        active_only: (activeOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - List[NamespaceInfo] (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetChildNamespaces.create(
+        active_only=active_only,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetGameNamespaces)
 def get_game_namespaces(
     active_only: Optional[bool] = None,
@@ -618,6 +734,106 @@ async def get_namespace_async(
             return None, error
     request = GetNamespace.create(
         active_only=active_only,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetNamespaceContext)
+def get_namespace_context(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get context of namespace (getNamespaceContext)
+
+    Get context of namespace.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Returns : context of namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/context
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceContext (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetNamespaceContext.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetNamespaceContext)
+async def get_namespace_context_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get context of namespace (getNamespaceContext)
+
+    Get context of namespace.
+    Other detail info:
+
+      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
+      *  Returns : context of namespace
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+
+    Properties:
+        url: /basic/v1/admin/namespaces/{namespace}/context
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceContext (Successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetNamespaceContext.create(
         namespace=namespace,
     )
     return await run_request_async(

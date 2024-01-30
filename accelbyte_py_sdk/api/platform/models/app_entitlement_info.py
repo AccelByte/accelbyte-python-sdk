@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -76,6 +76,8 @@ class AppEntitlementInfo(Model):
 
         app_type: (appType) OPTIONAL Union[str, AppTypeEnum]
 
+        collection_id: (collectionId) OPTIONAL str
+
         end_date: (endDate) OPTIONAL str
 
         item_id: (itemId) OPTIONAL str
@@ -101,6 +103,7 @@ class AppEntitlementInfo(Model):
     user_id: str  # REQUIRED
     app_id: str  # OPTIONAL
     app_type: Union[str, AppTypeEnum]  # OPTIONAL
+    collection_id: str  # OPTIONAL
     end_date: str  # OPTIONAL
     item_id: str  # OPTIONAL
     item_snapshot: ItemSnapshot  # OPTIONAL
@@ -136,6 +139,10 @@ class AppEntitlementInfo(Model):
 
     def with_app_type(self, value: Union[str, AppTypeEnum]) -> AppEntitlementInfo:
         self.app_type = value
+        return self
+
+    def with_collection_id(self, value: str) -> AppEntitlementInfo:
+        self.collection_id = value
         return self
 
     def with_end_date(self, value: str) -> AppEntitlementInfo:
@@ -200,6 +207,10 @@ class AppEntitlementInfo(Model):
             result["appType"] = str(self.app_type)
         elif include_empty:
             result["appType"] = Union[str, AppTypeEnum]()
+        if hasattr(self, "collection_id"):
+            result["collectionId"] = str(self.collection_id)
+        elif include_empty:
+            result["collectionId"] = ""
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -249,6 +260,7 @@ class AppEntitlementInfo(Model):
         user_id: str,
         app_id: Optional[str] = None,
         app_type: Optional[Union[str, AppTypeEnum]] = None,
+        collection_id: Optional[str] = None,
         end_date: Optional[str] = None,
         item_id: Optional[str] = None,
         item_snapshot: Optional[ItemSnapshot] = None,
@@ -268,6 +280,8 @@ class AppEntitlementInfo(Model):
             instance.app_id = app_id
         if app_type is not None:
             instance.app_type = app_type
+        if collection_id is not None:
+            instance.collection_id = collection_id
         if end_date is not None:
             instance.end_date = end_date
         if item_id is not None:
@@ -317,6 +331,10 @@ class AppEntitlementInfo(Model):
             instance.app_type = str(dict_["appType"])
         elif include_empty:
             instance.app_type = Union[str, AppTypeEnum]()
+        if "collectionId" in dict_ and dict_["collectionId"] is not None:
+            instance.collection_id = str(dict_["collectionId"])
+        elif include_empty:
+            instance.collection_id = ""
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -398,6 +416,7 @@ class AppEntitlementInfo(Model):
             "userId": "user_id",
             "appId": "app_id",
             "appType": "app_type",
+            "collectionId": "collection_id",
             "endDate": "end_date",
             "itemId": "item_id",
             "itemSnapshot": "item_snapshot",
@@ -417,6 +436,7 @@ class AppEntitlementInfo(Model):
             "userId": True,
             "appId": False,
             "appType": False,
+            "collectionId": False,
             "endDate": False,
             "itemId": False,
             "itemSnapshot": False,

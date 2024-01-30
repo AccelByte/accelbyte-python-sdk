@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -56,6 +56,8 @@ class ValidateItemPurchaseCondition(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        platform: (platform) OPTIONAL str in query
+
         user_id: (userId) REQUIRED str in query
 
     Responses:
@@ -77,6 +79,7 @@ class ValidateItemPurchaseCondition(Operation):
 
     body: ItemPurchaseConditionValidateRequest  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
+    platform: str  # OPTIONAL in [query]
     user_id: str  # REQUIRED in [query]
 
     # endregion fields
@@ -135,6 +138,8 @@ class ValidateItemPurchaseCondition(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "platform"):
+            result["platform"] = self.platform
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
         return result
@@ -157,6 +162,10 @@ class ValidateItemPurchaseCondition(Operation):
         self.namespace = value
         return self
 
+    def with_platform(self, value: str) -> ValidateItemPurchaseCondition:
+        self.platform = value
+        return self
+
     def with_user_id(self, value: str) -> ValidateItemPurchaseCondition:
         self.user_id = value
         return self
@@ -175,6 +184,10 @@ class ValidateItemPurchaseCondition(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "platform") and self.platform:
+            result["platform"] = str(self.platform)
+        elif include_empty:
+            result["platform"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -232,6 +245,7 @@ class ValidateItemPurchaseCondition(Operation):
         namespace: str,
         user_id: str,
         body: Optional[ItemPurchaseConditionValidateRequest] = None,
+        platform: Optional[str] = None,
         **kwargs,
     ) -> ValidateItemPurchaseCondition:
         instance = cls()
@@ -239,6 +253,10 @@ class ValidateItemPurchaseCondition(Operation):
         instance.user_id = user_id
         if body is not None:
             instance.body = body
+        if platform is not None:
+            instance.platform = platform
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod
@@ -256,6 +274,10 @@ class ValidateItemPurchaseCondition(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "platform" in dict_ and dict_["platform"] is not None:
+            instance.platform = str(dict_["platform"])
+        elif include_empty:
+            instance.platform = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -267,6 +289,7 @@ class ValidateItemPurchaseCondition(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
+            "platform": "platform",
             "userId": "user_id",
         }
 
@@ -275,6 +298,7 @@ class ValidateItemPurchaseCondition(Operation):
         return {
             "body": False,
             "namespace": True,
+            "platform": False,
             "userId": True,
         }
 

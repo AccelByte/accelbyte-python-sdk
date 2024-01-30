@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Iam Service (7.8.3)
+# AccelByte Gaming Services Iam Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -396,6 +396,8 @@ class AuthorizeV3(Operation):
             instance.use_redirect_uri_as_login_url_when_locked = (
                 use_redirect_uri_as_login_url_when_locked
             )
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

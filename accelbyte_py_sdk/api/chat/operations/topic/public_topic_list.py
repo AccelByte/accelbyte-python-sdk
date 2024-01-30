@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Chat Service (0.4.16)
+# AccelByte Gaming Services Chat Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -265,6 +265,8 @@ class PublicTopicList(Operation):
             instance.offset = offset
         if topic_type is not None:
             instance.topic_type = topic_type
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

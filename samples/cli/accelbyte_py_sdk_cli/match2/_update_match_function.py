@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Justice Match Service V2 (2.14.1)
+# Justice Match Service V2
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long

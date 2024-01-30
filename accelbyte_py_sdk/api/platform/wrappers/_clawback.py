@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ClawbackInfo
 from ..models import IAPClawbackPagingSlicedResult
 from ..models import StreamEvent
 
@@ -38,6 +39,7 @@ from ..operations.clawback import (
     QueryIAPClawbackHistoryEventTypeEnum,
     QueryIAPClawbackHistoryStatusEnum,
 )
+from ..models import ClawbackInfoFeedbackStatusEnum, ClawbackInfoStatusEnum
 
 
 @same_doc_as(MockPlayStationStreamEvent)
@@ -73,7 +75,7 @@ def mock_play_station_stream_event(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        default: (successful operation)
+        200: OK - ClawbackInfo (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -119,7 +121,7 @@ async def mock_play_station_stream_event_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        default: (successful operation)
+        200: OK - ClawbackInfo (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

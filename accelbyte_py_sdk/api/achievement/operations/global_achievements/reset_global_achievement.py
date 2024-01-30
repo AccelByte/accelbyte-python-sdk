@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Achievement Service (2.21.8)
+# AccelByte Gaming Services Achievement Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -224,6 +224,8 @@ class ResetGlobalAchievement(Operation):
         instance = cls()
         instance.achievement_code = achievement_code
         instance.namespace = namespace
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

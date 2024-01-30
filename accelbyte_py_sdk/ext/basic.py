@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Basic Service (2.15.1)
+# AccelByte Gaming Services Basic Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from ..api.basic.models import Equ8Config
 from ..api.basic.models import ErrorEntity
 from ..api.basic.models import FieldValidationError
 from ..api.basic.models import FileUploadUrlInfo
+from ..api.basic.models import NamespaceContext
 from ..api.basic.models import NamespaceCreate
 from ..api.basic.models import NamespaceInfo
 from ..api.basic.models import NamespacePublisherInfo
@@ -196,6 +197,15 @@ def create_file_upload_url_info_example() -> FileUploadUrlInfo:
     instance.content_type = randomize()
     instance.method = randomize()
     instance.url = randomize("url")
+    return instance
+
+
+def create_namespace_context_example() -> NamespaceContext:
+    instance = NamespaceContext()
+    instance.namespace = randomize("slug")
+    instance.publisher_namespace = randomize("slug")
+    instance.studio_namespace = randomize("slug")
+    instance.type_ = randomize()
     return instance
 
 

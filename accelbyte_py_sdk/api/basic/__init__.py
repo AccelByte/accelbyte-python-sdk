@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.15.1"
+__version__ = "2.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -79,10 +79,14 @@ from .wrappers import create_namespace
 from .wrappers import create_namespace_async
 from .wrappers import delete_namespace
 from .wrappers import delete_namespace_async
+from .wrappers import get_child_namespaces
+from .wrappers import get_child_namespaces_async
 from .wrappers import get_game_namespaces
 from .wrappers import get_game_namespaces_async
 from .wrappers import get_namespace
 from .wrappers import get_namespace_async
+from .wrappers import get_namespace_context
+from .wrappers import get_namespace_context_async
 from .wrappers import get_namespace_publisher
 from .wrappers import get_namespace_publisher_async
 from .wrappers import get_namespaces

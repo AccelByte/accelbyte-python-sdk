@@ -52,6 +52,10 @@ from ..models import EntitlementPlatformConfigUpdate
 from ..models import EntitlementPrechekResult
 from ..models import EntitlementSoldRequest
 from ..models import EntitlementSoldResult
+from ..models import EntitlementSplitRequest
+from ..models import EntitlementSplitResult
+from ..models import EntitlementTransferRequest
+from ..models import EntitlementTransferResult
 from ..models import EntitlementUpdate
 from ..models import ErrorEntity
 from ..models import Ownership
@@ -123,6 +127,7 @@ from ..operations.entitlement import PublicGetUserEntitlementOwnershipBySku
 from ..operations.entitlement import (
     PublicGetUserEntitlementOwnershipBySkuEntitlementClazzEnum,
 )
+from ..operations.entitlement import PublicGetUserEntitlementsByIds
 from ..operations.entitlement import PublicQueryUserEntitlements
 from ..operations.entitlement import (
     PublicQueryUserEntitlementsAppTypeEnum,
@@ -131,6 +136,8 @@ from ..operations.entitlement import (
 from ..operations.entitlement import PublicQueryUserEntitlementsByAppType
 from ..operations.entitlement import PublicQueryUserEntitlementsByAppTypeAppTypeEnum
 from ..operations.entitlement import PublicSellUserEntitlement
+from ..operations.entitlement import PublicSplitUserEntitlement
+from ..operations.entitlement import PublicTransferUserEntitlement
 from ..operations.entitlement import QueryEntitlements
 from ..operations.entitlement import (
     QueryEntitlementsAppTypeEnum,
@@ -4674,6 +4681,124 @@ async def public_get_user_entitlement_ownership_by_sku_async(
     )
 
 
+@same_doc_as(PublicGetUserEntitlementsByIds)
+def public_get_user_entitlements_by_ids(
+    user_id: str,
+    available_platform_only: Optional[bool] = None,
+    ids: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get user entitlements by ids. (publicGetUserEntitlementsByIds)
+
+    Get user entitlements by ids..
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement list
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byIds
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        available_platform_only: (availablePlatformOnly) OPTIONAL bool in query
+
+        ids: (ids) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[EntitlementInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserEntitlementsByIds.create(
+        user_id=user_id,
+        available_platform_only=available_platform_only,
+        ids=ids,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetUserEntitlementsByIds)
+async def public_get_user_entitlements_by_ids_async(
+    user_id: str,
+    available_platform_only: Optional[bool] = None,
+    ids: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get user entitlements by ids. (publicGetUserEntitlementsByIds)
+
+    Get user entitlements by ids..
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : entitlement list
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byIds
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        available_platform_only: (availablePlatformOnly) OPTIONAL bool in query
+
+        ids: (ids) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[EntitlementInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserEntitlementsByIds.create(
+        user_id=user_id,
+        available_platform_only=available_platform_only,
+        ids=ids,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicQueryUserEntitlements)
 def public_query_user_entitlements(
     user_id: str,
@@ -5084,6 +5209,250 @@ async def public_sell_user_entitlement_async(
     )
 
 
+@same_doc_as(PublicSplitUserEntitlement)
+def public_split_user_entitlement(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[EntitlementSplitRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Split user entitlement (publicSplitUserEntitlement)
+
+    Split a specified use count of entitlement and create a new entitlement with splitting use count.Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/split
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementSplitRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementSplitResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31182: Entitlement [{entitlementId}] already sold | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}] | 20006: optimistic lock)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSplitUserEntitlement.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicSplitUserEntitlement)
+async def public_split_user_entitlement_async(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[EntitlementSplitRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Split user entitlement (publicSplitUserEntitlement)
+
+    Split a specified use count of entitlement and create a new entitlement with splitting use count.Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/split
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementSplitRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementSplitResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31182: Entitlement [{entitlementId}] already sold | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}] | 20006: optimistic lock)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicSplitUserEntitlement.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicTransferUserEntitlement)
+def public_transfer_user_entitlement(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[EntitlementTransferRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Transfer user entitlement (publicTransferUserEntitlement)
+
+    Transfer a specified use count from entitlement A to B..Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/transfer
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementTransferRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementTransferResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31182: Entitlement [{entitlementId}] already sold | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}] | 31184: Source entitlement [{sourceEntitlementId}] and target entitlement [{targetEntitlementId}] should have same collectionId, timeRange, origin and itemId | 31185: Transferred source entitlement [{sourceEntitlementId}] and target entitlement [{targetEntitlementId}] can not be set to same | 20006: optimistic lock)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicTransferUserEntitlement.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicTransferUserEntitlement)
+async def public_transfer_user_entitlement_async(
+    entitlement_id: str,
+    user_id: str,
+    body: Optional[EntitlementTransferRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Transfer user entitlement (publicTransferUserEntitlement)
+
+    Transfer a specified use count from entitlement A to B..Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
+      *  Returns : entitlement
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/transfer
+
+        method: PUT
+
+        tags: ["Entitlement"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementTransferRequest in body
+
+        entitlement_id: (entitlementId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - EntitlementTransferResult (successful operation)
+
+        404: Not Found - ErrorEntity (31141: Entitlement [{entitlementId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (31171: Entitlement [{entitlementId}] already revoked | 31172: Entitlement [{entitlementId}] not active | 31174: Entitlement [{entitlementId}] already consumed | 31176: Entitlement [{entitlementId}] use count is insufficient | 31178: Entitlement [{entitlementId}] out of time range | 31182: Entitlement [{entitlementId}] already sold | 31183: Entitlement [{entitlementId}] origin [{origin}] not allowed be operated at [{platform}] | 31184: Source entitlement [{sourceEntitlementId}] and target entitlement [{targetEntitlementId}] should have same collectionId, timeRange, origin and itemId | 31185: Transferred source entitlement [{sourceEntitlementId}] and target entitlement [{targetEntitlementId}] can not be set to same | 20006: optimistic lock)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicTransferUserEntitlement.create(
+        entitlement_id=entitlement_id,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(QueryEntitlements)
 def query_entitlements(
     active_only: Optional[bool] = None,
@@ -5385,6 +5754,7 @@ def query_user_entitlements(
     user_id: str,
     active_only: Optional[bool] = None,
     app_type: Optional[Union[str, QueryUserEntitlementsAppTypeEnum]] = None,
+    collection_id: Optional[str] = None,
     entitlement_clazz: Optional[
         Union[str, QueryUserEntitlementsEntitlementClazzEnum]
     ] = None,
@@ -5432,6 +5802,8 @@ def query_user_entitlements(
 
         app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
 
+        collection_id: (collectionId) OPTIONAL str in query
+
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
         entitlement_name: (entitlementName) OPTIONAL str in query
@@ -5459,6 +5831,7 @@ def query_user_entitlements(
         user_id=user_id,
         active_only=active_only,
         app_type=app_type,
+        collection_id=collection_id,
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
         features=features,
@@ -5477,6 +5850,7 @@ async def query_user_entitlements_async(
     user_id: str,
     active_only: Optional[bool] = None,
     app_type: Optional[Union[str, QueryUserEntitlementsAppTypeEnum]] = None,
+    collection_id: Optional[str] = None,
     entitlement_clazz: Optional[
         Union[str, QueryUserEntitlementsEntitlementClazzEnum]
     ] = None,
@@ -5524,6 +5898,8 @@ async def query_user_entitlements_async(
 
         app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
 
+        collection_id: (collectionId) OPTIONAL str in query
+
         entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
 
         entitlement_name: (entitlementName) OPTIONAL str in query
@@ -5551,6 +5927,7 @@ async def query_user_entitlements_async(
         user_id=user_id,
         active_only=active_only,
         app_type=app_type,
+        collection_id=collection_id,
         entitlement_clazz=entitlement_clazz,
         entitlement_name=entitlement_name,
         features=features,

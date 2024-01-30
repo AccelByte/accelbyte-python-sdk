@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.44.0"
+__version__ = "4.45.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -251,12 +251,18 @@ from .wrappers import public_get_user_entitlement_ownership_by_item_ids
 from .wrappers import public_get_user_entitlement_ownership_by_item_ids_async
 from .wrappers import public_get_user_entitlement_ownership_by_sku
 from .wrappers import public_get_user_entitlement_ownership_by_sku_async
+from .wrappers import public_get_user_entitlements_by_ids
+from .wrappers import public_get_user_entitlements_by_ids_async
 from .wrappers import public_query_user_entitlements
 from .wrappers import public_query_user_entitlements_async
 from .wrappers import public_query_user_entitlements_by_app_type
 from .wrappers import public_query_user_entitlements_by_app_type_async
 from .wrappers import public_sell_user_entitlement
 from .wrappers import public_sell_user_entitlement_async
+from .wrappers import public_split_user_entitlement
+from .wrappers import public_split_user_entitlement_async
+from .wrappers import public_transfer_user_entitlement
+from .wrappers import public_transfer_user_entitlement_async
 from .wrappers import query_entitlements
 from .wrappers import query_entitlements_async
 from .wrappers import query_entitlements_1
@@ -809,10 +815,16 @@ from .wrappers import delete_published_store
 from .wrappers import delete_published_store_async
 from .wrappers import delete_store
 from .wrappers import delete_store_async
+from .wrappers import download_csv_templates
+from .wrappers import download_csv_templates_async
 from .wrappers import export_store
 from .wrappers import export_store_async
 from .wrappers import export_store_1
 from .wrappers import export_store_1_async
+from .wrappers import export_store_by_csv
+from .wrappers import export_store_by_csv_async
+from .wrappers import get_catalog_definition
+from .wrappers import get_catalog_definition_async
 from .wrappers import get_published_store
 from .wrappers import get_published_store_async
 from .wrappers import get_published_store_backup
@@ -823,10 +835,14 @@ from .wrappers import import_store
 from .wrappers import import_store_async
 from .wrappers import import_store_1
 from .wrappers import import_store_1_async
+from .wrappers import import_store_by_csv
+from .wrappers import import_store_by_csv_async
 from .wrappers import list_stores
 from .wrappers import list_stores_async
 from .wrappers import public_list_stores
 from .wrappers import public_list_stores_async
+from .wrappers import query_import_history
+from .wrappers import query_import_history_async
 from .wrappers import rollback_published_store
 from .wrappers import rollback_published_store_async
 from .wrappers import update_store

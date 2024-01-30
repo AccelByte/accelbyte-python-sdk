@@ -800,7 +800,7 @@ def create_item(
 
 
 
-    ## Restrictions for item extension and localization extension
+    ## Restrictions for item extension and localization extension and inventory config custom attributes
 
 
     1. Cannot use "." as the key name
@@ -1093,7 +1093,7 @@ async def create_item_async(
 
 
 
-    ## Restrictions for item extension and localization extension
+    ## Restrictions for item extension and localization extension and inventory config custom attributes
 
 
     1. Cannot use "." as the key name
@@ -2258,6 +2258,7 @@ async def get_bulk_item_id_by_skus_async(
 def get_estimated_price(
     item_ids: str,
     user_id: str,
+    platform: Optional[str] = None,
     region: Optional[str] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -2283,6 +2284,8 @@ def get_estimated_price(
 
         namespace: (namespace) REQUIRED str in path
 
+        platform: (platform) OPTIONAL str in query
+
         region: (region) OPTIONAL str in query
 
         store_id: (storeId) OPTIONAL str in query
@@ -2303,6 +2306,7 @@ def get_estimated_price(
     request = GetEstimatedPrice.create(
         item_ids=item_ids,
         user_id=user_id,
+        platform=platform,
         region=region,
         store_id=store_id,
         namespace=namespace,
@@ -2314,6 +2318,7 @@ def get_estimated_price(
 async def get_estimated_price_async(
     item_ids: str,
     user_id: str,
+    platform: Optional[str] = None,
     region: Optional[str] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -2339,6 +2344,8 @@ async def get_estimated_price_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        platform: (platform) OPTIONAL str in query
+
         region: (region) OPTIONAL str in query
 
         store_id: (storeId) OPTIONAL str in query
@@ -2359,6 +2366,7 @@ async def get_estimated_price_async(
     request = GetEstimatedPrice.create(
         item_ids=item_ids,
         user_id=user_id,
+        platform=platform,
         region=region,
         store_id=store_id,
         namespace=namespace,
@@ -7216,6 +7224,7 @@ async def update_item_type_config_async(
 def validate_item_purchase_condition(
     user_id: str,
     body: Optional[ItemPurchaseConditionValidateRequest] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -7241,6 +7250,8 @@ def validate_item_purchase_condition(
 
         namespace: (namespace) REQUIRED str in path
 
+        platform: (platform) OPTIONAL str in query
+
         user_id: (userId) REQUIRED str in query
 
     Responses:
@@ -7255,6 +7266,7 @@ def validate_item_purchase_condition(
     request = ValidateItemPurchaseCondition.create(
         user_id=user_id,
         body=body,
+        platform=platform,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -7264,6 +7276,7 @@ def validate_item_purchase_condition(
 async def validate_item_purchase_condition_async(
     user_id: str,
     body: Optional[ItemPurchaseConditionValidateRequest] = None,
+    platform: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -7289,6 +7302,8 @@ async def validate_item_purchase_condition_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        platform: (platform) OPTIONAL str in query
+
         user_id: (userId) REQUIRED str in query
 
     Responses:
@@ -7303,6 +7318,7 @@ async def validate_item_purchase_condition_async(
     request = ValidateItemPurchaseCondition.create(
         user_id=user_id,
         body=body,
+        platform=platform,
         namespace=namespace,
     )
     return await run_request_async(

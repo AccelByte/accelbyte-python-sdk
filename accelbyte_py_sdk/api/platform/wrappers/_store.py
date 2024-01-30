@@ -30,8 +30,11 @@ from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
+from ..models import CatalogDefinitionInfo
 from ..models import ErrorEntity
 from ..models import ExportStoreRequest
+from ..models import ExportStoreToCSVRequest
+from ..models import ImportStoreHistoryPagingResult
 from ..models import ImportStoreResult
 from ..models import StoreBackupInfo
 from ..models import StoreCreate
@@ -43,17 +46,25 @@ from ..operations.store import CloneStore
 from ..operations.store import CreateStore
 from ..operations.store import DeletePublishedStore
 from ..operations.store import DeleteStore
+from ..operations.store import DownloadCSVTemplates
 from ..operations.store import ExportStore
 from ..operations.store import ExportStore1
+from ..operations.store import ExportStoreByCSV
+from ..operations.store import GetCatalogDefinition
+from ..operations.store import GetCatalogDefinitionCatalogTypeEnum
 from ..operations.store import GetPublishedStore
 from ..operations.store import GetPublishedStoreBackup
 from ..operations.store import GetStore
 from ..operations.store import ImportStore
 from ..operations.store import ImportStore1
+from ..operations.store import ImportStoreByCSV
 from ..operations.store import ListStores
 from ..operations.store import PublicListStores
+from ..operations.store import QueryImportHistory
 from ..operations.store import RollbackPublishedStore
 from ..operations.store import UpdateStore
+from ..models import CatalogDefinitionInfoItemTypeEnum
+from ..models import ExportStoreToCSVRequestCatalogTypeEnum
 
 
 @same_doc_as(CloneStore)
@@ -492,6 +503,98 @@ async def delete_store_async(
     )
 
 
+@same_doc_as(DownloadCSVTemplates)
+def download_csv_templates(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Download store csv templates (downloadCSVTemplates)
+
+    This API is used to download store csv templates for store importing by CSV feature
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/downloadCSVTemplates
+
+        method: GET
+
+        tags: ["Store"]
+
+        consumes: []
+
+        produces: ["application/zip"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DownloadCSVTemplates.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DownloadCSVTemplates)
+async def download_csv_templates_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Download store csv templates (downloadCSVTemplates)
+
+    This API is used to download store csv templates for store importing by CSV feature
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/downloadCSVTemplates
+
+        method: GET
+
+        tags: ["Store"]
+
+        consumes: []
+
+        produces: ["application/zip"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DownloadCSVTemplates.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @deprecated
 @same_doc_as(ExportStore)
 def export_store(
@@ -705,6 +808,214 @@ async def export_store_1_async(
     request = ExportStore1.create(
         store_id=store_id,
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ExportStoreByCSV)
+def export_store_by_csv(
+    body: Optional[ExportStoreToCSVRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Export a store to CSV format (exportStoreByCSV)
+
+    This API is used to export a store to CSV format
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/exportByCSV
+
+        method: POST
+
+        tags: ["Store"]
+
+        consumes: ["application/json"]
+
+        produces: ["text/csv"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ExportStoreToCSVRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+
+        400: Bad Request - ErrorEntity (30025: [{header}] is required by CSV import/export for catalogType [{catalogType}])
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30076: CSV header [{headerName}] is not supported for CatalogType [{catalogType}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ExportStoreByCSV.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ExportStoreByCSV)
+async def export_store_by_csv_async(
+    body: Optional[ExportStoreToCSVRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Export a store to CSV format (exportStoreByCSV)
+
+    This API is used to export a store to CSV format
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/exportByCSV
+
+        method: POST
+
+        tags: ["Store"]
+
+        consumes: ["application/json"]
+
+        produces: ["text/csv"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL ExportStoreToCSVRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - Any (Successful operation)
+
+        400: Bad Request - ErrorEntity (30025: [{header}] is required by CSV import/export for catalogType [{catalogType}])
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30076: CSV header [{headerName}] is not supported for CatalogType [{catalogType}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ExportStoreByCSV.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetCatalogDefinition)
+def get_catalog_definition(
+    catalog_type: Union[str, GetCatalogDefinitionCatalogTypeEnum],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get catalog definition (getCatalogDefinition)
+
+    This API is used to get catalog definition for import/export store by CSV
+
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:STORE, action=2 (READ)
+      *  Returns : catalog definition
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/catalogDefinition
+
+        method: GET
+
+        tags: ["Store"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        catalog_type: (catalogType) REQUIRED Union[str, CatalogTypeEnum] in query
+
+    Responses:
+        200: OK - List[CatalogDefinitionInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetCatalogDefinition.create(
+        catalog_type=catalog_type,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetCatalogDefinition)
+async def get_catalog_definition_async(
+    catalog_type: Union[str, GetCatalogDefinitionCatalogTypeEnum],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get catalog definition (getCatalogDefinition)
+
+    This API is used to get catalog definition for import/export store by CSV
+
+    Other detail info:
+
+      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:STORE, action=2 (READ)
+      *  Returns : catalog definition
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/catalogDefinition
+
+        method: GET
+
+        tags: ["Store"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        catalog_type: (catalogType) REQUIRED Union[str, CatalogTypeEnum] in query
+
+    Responses:
+        200: OK - List[CatalogDefinitionInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetCatalogDefinition.create(
+        catalog_type=catalog_type,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1258,6 +1569,158 @@ async def import_store_1_async(
     )
 
 
+@same_doc_as(ImportStoreByCSV)
+def import_store_by_csv(
+    store_id: str,
+    category: Optional[Any] = None,
+    display: Optional[Any] = None,
+    item: Optional[Any] = None,
+    notes: Optional[str] = None,
+    section: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Import store using CSV format (importStoreByCSV)
+
+    This API is used to import a store by CSV format.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/importByCSV
+
+        method: POST
+
+        tags: ["Store"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        category: (category) OPTIONAL Any in form_data
+
+        display: (display) OPTIONAL Any in form_data
+
+        item: (item) OPTIONAL Any in form_data
+
+        notes: (notes) OPTIONAL str in form_data
+
+        section: (section) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        200: OK - ImportStoreResult (successful operation)
+
+        400: Bad Request - ErrorEntity (30024: Unable to parse CSV cell [{content}] | 30025: [{header}] is required by CSV import/export for catalogType [{catalogType}] | 30121: Store data is invalid)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30076: CSV header [{headerName}] is not supported for CatalogType [{catalogType}] | 30382: Duplicated Item sku [{sku}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImportStoreByCSV.create(
+        store_id=store_id,
+        category=category,
+        display=display,
+        item=item,
+        notes=notes,
+        section=section,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ImportStoreByCSV)
+async def import_store_by_csv_async(
+    store_id: str,
+    category: Optional[Any] = None,
+    display: Optional[Any] = None,
+    item: Optional[Any] = None,
+    notes: Optional[str] = None,
+    section: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Import store using CSV format (importStoreByCSV)
+
+    This API is used to import a store by CSV format.
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/importByCSV
+
+        method: POST
+
+        tags: ["Store"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        category: (category) OPTIONAL Any in form_data
+
+        display: (display) OPTIONAL Any in form_data
+
+        item: (item) OPTIONAL Any in form_data
+
+        notes: (notes) OPTIONAL str in form_data
+
+        section: (section) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+    Responses:
+        200: OK - ImportStoreResult (successful operation)
+
+        400: Bad Request - ErrorEntity (30024: Unable to parse CSV cell [{content}] | 30025: [{header}] is required by CSV import/export for catalogType [{catalogType}] | 30121: Store data is invalid)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (30076: CSV header [{headerName}] is not supported for CatalogType [{catalogType}] | 30382: Duplicated Item sku [{sku}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImportStoreByCSV.create(
+        store_id=store_id,
+        category=category,
+        display=display,
+        item=item,
+        notes=notes,
+        section=section,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(ListStores)
 def list_stores(
     namespace: Optional[str] = None,
@@ -1435,6 +1898,158 @@ async def public_list_stores_async(
         if error:
             return None, error
     request = PublicListStores.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(QueryImportHistory)
+def query_import_history(
+    store_id: str,
+    end: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    start: Optional[str] = None,
+    success: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query import store history (queryImportHistory)
+
+    This API is used to query import store history
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/import/history
+
+        method: GET
+
+        tags: ["Store"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+        end: (end) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        start: (start) OPTIONAL str in query
+
+        success: (success) OPTIONAL bool in query
+
+    Responses:
+        200: OK - ImportStoreHistoryPagingResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20027: Invalid time range)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryImportHistory.create(
+        store_id=store_id,
+        end=end,
+        limit=limit,
+        offset=offset,
+        sort_by=sort_by,
+        start=start,
+        success=success,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryImportHistory)
+async def query_import_history_async(
+    store_id: str,
+    end: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    start: Optional[str] = None,
+    success: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query import store history (queryImportHistory)
+
+    This API is used to query import store history
+
+    Other detail info:
+
+      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/stores/{storeId}/import/history
+
+        method: GET
+
+        tags: ["Store"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        store_id: (storeId) REQUIRED str in path
+
+        end: (end) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        start: (start) OPTIONAL str in query
+
+        success: (success) OPTIONAL bool in query
+
+    Responses:
+        200: OK - ImportStoreHistoryPagingResult (successful operation)
+
+        400: Bad Request - ErrorEntity (20027: Invalid time range)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryImportHistory.create(
+        store_id=store_id,
+        end=end,
+        limit=limit,
+        offset=offset,
+        sort_by=sort_by,
+        start=start,
+        success=success,
         namespace=namespace,
     )
     return await run_request_async(

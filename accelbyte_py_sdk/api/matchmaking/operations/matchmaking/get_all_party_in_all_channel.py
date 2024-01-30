@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Matchmaking Service (2.29.0)
+# AccelByte Gaming Services Matchmaking Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -215,6 +215,8 @@ class GetAllPartyInAllChannel(Operation):
     def create(cls, namespace: str, **kwargs) -> GetAllPartyInAllChannel:
         instance = cls()
         instance.namespace = namespace
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

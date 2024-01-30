@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -29,6 +29,18 @@ from ....core import Model
 from ....core import StrEnum
 
 from ..models.order_creation_options import OrderCreationOptions
+
+
+class EntitlementPlatformEnum(StrEnum):
+    EPIC = "Epic"
+    GOOGLEPLAY = "GooglePlay"
+    IOS = "IOS"
+    NINTENDO = "Nintendo"
+    OCULUS = "Oculus"
+    OTHER = "Other"
+    PLAYSTATION = "Playstation"
+    STEAM = "Steam"
+    XBOX = "Xbox"
 
 
 class PlatformEnum(StrEnum):
@@ -59,6 +71,8 @@ class AdminOrderCreate(Model):
 
         currency_namespace: (currencyNamespace) OPTIONAL str
 
+        entitlement_platform: (entitlementPlatform) OPTIONAL Union[str, EntitlementPlatformEnum]
+
         ext: (ext) OPTIONAL Dict[str, Any]
 
         language: (language) OPTIONAL str
@@ -84,6 +98,7 @@ class AdminOrderCreate(Model):
     quantity: int  # REQUIRED
     region: str  # REQUIRED
     currency_namespace: str  # OPTIONAL
+    entitlement_platform: Union[str, EntitlementPlatformEnum]  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     language: str  # OPTIONAL
     options: OrderCreationOptions  # OPTIONAL
@@ -119,6 +134,12 @@ class AdminOrderCreate(Model):
 
     def with_currency_namespace(self, value: str) -> AdminOrderCreate:
         self.currency_namespace = value
+        return self
+
+    def with_entitlement_platform(
+        self, value: Union[str, EntitlementPlatformEnum]
+    ) -> AdminOrderCreate:
+        self.entitlement_platform = value
         return self
 
     def with_ext(self, value: Dict[str, Any]) -> AdminOrderCreate:
@@ -183,6 +204,10 @@ class AdminOrderCreate(Model):
             result["currencyNamespace"] = str(self.currency_namespace)
         elif include_empty:
             result["currencyNamespace"] = ""
+        if hasattr(self, "entitlement_platform"):
+            result["entitlementPlatform"] = str(self.entitlement_platform)
+        elif include_empty:
+            result["entitlementPlatform"] = Union[str, EntitlementPlatformEnum]()
         if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
@@ -230,6 +255,7 @@ class AdminOrderCreate(Model):
         quantity: int,
         region: str,
         currency_namespace: Optional[str] = None,
+        entitlement_platform: Optional[Union[str, EntitlementPlatformEnum]] = None,
         ext: Optional[Dict[str, Any]] = None,
         language: Optional[str] = None,
         options: Optional[OrderCreationOptions] = None,
@@ -248,6 +274,8 @@ class AdminOrderCreate(Model):
         instance.region = region
         if currency_namespace is not None:
             instance.currency_namespace = currency_namespace
+        if entitlement_platform is not None:
+            instance.entitlement_platform = entitlement_platform
         if ext is not None:
             instance.ext = ext
         if language is not None:
@@ -297,6 +325,10 @@ class AdminOrderCreate(Model):
             instance.currency_namespace = str(dict_["currencyNamespace"])
         elif include_empty:
             instance.currency_namespace = ""
+        if "entitlementPlatform" in dict_ and dict_["entitlementPlatform"] is not None:
+            instance.entitlement_platform = str(dict_["entitlementPlatform"])
+        elif include_empty:
+            instance.entitlement_platform = Union[str, EntitlementPlatformEnum]()
         if "ext" in dict_ and dict_["ext"] is not None:
             instance.ext = {str(k0): v0 for k0, v0 in dict_["ext"].items()}
         elif include_empty:
@@ -376,6 +408,7 @@ class AdminOrderCreate(Model):
             "quantity": "quantity",
             "region": "region",
             "currencyNamespace": "currency_namespace",
+            "entitlementPlatform": "entitlement_platform",
             "ext": "ext",
             "language": "language",
             "options": "options",
@@ -395,6 +428,7 @@ class AdminOrderCreate(Model):
             "quantity": True,
             "region": True,
             "currencyNamespace": False,
+            "entitlementPlatform": False,
             "ext": False,
             "language": False,
             "options": False,
@@ -408,6 +442,17 @@ class AdminOrderCreate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "entitlementPlatform": [
+                "Epic",
+                "GooglePlay",
+                "IOS",
+                "Nintendo",
+                "Oculus",
+                "Other",
+                "Playstation",
+                "Steam",
+                "Xbox",
+            ],
             "platform": [
                 "Epic",
                 "GooglePlay",

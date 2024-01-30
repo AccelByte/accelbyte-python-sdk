@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Platform Service (4.44.0)
+# AGS Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.platform.models import EstimatedPriceInfo
 @click.command()
 @click.argument("item_ids", type=str)
 @click.argument("user_id", type=str)
+@click.option("--platform", "platform", type=str)
 @click.option("--region", "region", type=str)
 @click.option("--store_id", "store_id", type=str)
 @click.option("--namespace", type=str)
@@ -49,6 +50,7 @@ from accelbyte_py_sdk.api.platform.models import EstimatedPriceInfo
 def get_estimated_price(
     item_ids: str,
     user_id: str,
+    platform: Optional[str] = None,
     region: Optional[str] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -67,6 +69,7 @@ def get_estimated_price(
     result, error = get_estimated_price_internal(
         item_ids=item_ids,
         user_id=user_id,
+        platform=platform,
         region=region,
         store_id=store_id,
         namespace=namespace,

@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Seasonpass Service (1.20.2)
+# AccelByte Gaming Services Seasonpass Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -235,6 +235,8 @@ class GrantUserPass(Operation):
         instance.user_id = user_id
         if body is not None:
             instance.body = body
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

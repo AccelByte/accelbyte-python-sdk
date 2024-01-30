@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Chat Service (0.4.16)
+# AccelByte Gaming Services Chat Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -362,6 +362,8 @@ class AdminTopicChatHistory(Operation):
             instance.shard_id = shard_id
         if start_created_at is not None:
             instance.start_created_at = start_created_at
+        if x_flight_id := kwargs.get("x_flight_id", None):
+            instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod

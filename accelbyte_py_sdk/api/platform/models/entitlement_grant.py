@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Platform Service (4.44.0)
+# AccelByte Gaming Services Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -66,6 +66,8 @@ class EntitlementGrant(Model):
 
         quantity: (quantity) REQUIRED int
 
+        collection_id: (collectionId) OPTIONAL str
+
         end_date: (endDate) OPTIONAL str
 
         granted_code: (grantedCode) OPTIONAL str
@@ -88,6 +90,7 @@ class EntitlementGrant(Model):
     item_id: str  # REQUIRED
     item_namespace: str  # REQUIRED
     quantity: int  # REQUIRED
+    collection_id: str  # OPTIONAL
     end_date: str  # OPTIONAL
     granted_code: str  # OPTIONAL
     language: str  # OPTIONAL
@@ -111,6 +114,10 @@ class EntitlementGrant(Model):
 
     def with_quantity(self, value: int) -> EntitlementGrant:
         self.quantity = value
+        return self
+
+    def with_collection_id(self, value: str) -> EntitlementGrant:
+        self.collection_id = value
         return self
 
     def with_end_date(self, value: str) -> EntitlementGrant:
@@ -163,6 +170,10 @@ class EntitlementGrant(Model):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = 0
+        if hasattr(self, "collection_id"):
+            result["collectionId"] = str(self.collection_id)
+        elif include_empty:
+            result["collectionId"] = ""
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -207,6 +218,7 @@ class EntitlementGrant(Model):
         item_id: str,
         item_namespace: str,
         quantity: int,
+        collection_id: Optional[str] = None,
         end_date: Optional[str] = None,
         granted_code: Optional[str] = None,
         language: Optional[str] = None,
@@ -221,6 +233,8 @@ class EntitlementGrant(Model):
         instance.item_id = item_id
         instance.item_namespace = item_namespace
         instance.quantity = quantity
+        if collection_id is not None:
+            instance.collection_id = collection_id
         if end_date is not None:
             instance.end_date = end_date
         if granted_code is not None:
@@ -258,6 +272,10 @@ class EntitlementGrant(Model):
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
             instance.quantity = 0
+        if "collectionId" in dict_ and dict_["collectionId"] is not None:
+            instance.collection_id = str(dict_["collectionId"])
+        elif include_empty:
+            instance.collection_id = ""
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -332,6 +350,7 @@ class EntitlementGrant(Model):
             "itemId": "item_id",
             "itemNamespace": "item_namespace",
             "quantity": "quantity",
+            "collectionId": "collection_id",
             "endDate": "end_date",
             "grantedCode": "granted_code",
             "language": "language",
@@ -348,6 +367,7 @@ class EntitlementGrant(Model):
             "itemId": True,
             "itemNamespace": True,
             "quantity": True,
+            "collectionId": False,
             "endDate": False,
             "grantedCode": False,
             "language": False,
