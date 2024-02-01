@@ -6,6 +6,7 @@ from .api.basic import BasicTestCase
 from .api.chat import ChatTestCase
 from .api.cloudsave import CloudSaveTestCase
 
+# from .api.dsartifact import DSArtifactTestCase
 # from .api.dslogmanager import DSLogManagerTestCase
 # from .api.dsmc import DSMCTestCase, DSMCSessionTestCase
 from .api.eventlog import EventLogTestCase
