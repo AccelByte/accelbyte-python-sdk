@@ -82,6 +82,9 @@ class SessionTestCase(IntegrationTestCase):
     # region test:admin_delete_configuration_template_v1
 
     def test_admin_delete_configuration_template_v1(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test is temporarily disabled in AGS Starter due to issue in session service.")
+        
         from accelbyte_py_sdk.core import generate_id
         from accelbyte_py_sdk.api.session import admin_delete_configuration_template_v1
 
