@@ -1,18 +1,16 @@
 from typing import Optional, Protocol
 
-from ._ctypes import FetchValidationDataError
-from ._ctypes import FetchRoleError
-from ._ctypes import TokenValidationError
-from ._ctypes import InsufficientPermissionsError
-from ._ctypes import TokenRevokedError
-from ._ctypes import UserRevokedError
-
-from ._ctypes import PermissionAction
-from ._ctypes import PermissionStruct
-from ._ctypes import create_permission_struct
-
+from ._ctypes import (
+    PermissionAction,
+    PermissionStruct,
+    create_permission_struct,
+)
 from ._utils import replace_resource
-from ._utils import validate_permission
+from ._validation import (
+    validate_action,
+    validate_permission,
+    validate_resource,
+)
 
 
 class TokenValidatorProtocol(Protocol):
@@ -29,5 +27,12 @@ class TokenValidatorProtocol(Protocol):
 
 
 __all__ = [
+    "PermissionAction",
+    "PermissionStruct",
     "TokenValidatorProtocol",
+    "create_permission_struct",
+    "replace_resource",
+    "validate_action",
+    "validate_permission",
+    "validate_resource",
 ]

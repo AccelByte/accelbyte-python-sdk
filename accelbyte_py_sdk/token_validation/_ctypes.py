@@ -7,6 +7,10 @@ class FetchValidationDataError(Exception):
     pass
 
 
+class FetchNamespaceContextError(FetchValidationDataError):
+    pass
+
+
 class FetchRoleError(FetchValidationDataError):
     pass
 
