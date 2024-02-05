@@ -189,4 +189,121 @@ class TokenValidatorTestCase(IntegrationTestCase):
 
     # endregion test:test_parse_and_local_validate_access_token
 
+    # region test:validate_resource_of_studio_game_namespace
+
+    def test_validate_resource_of_studio_game_namespace(self):
+        from accelbyte_py_sdk.core import SDK
+        from accelbyte_py_sdk.api.basic.models import NamespaceContext
+        from accelbyte_py_sdk.token_validation import replace_resource
+        from accelbyte_py_sdk.token_validation import validate_resource
+        from accelbyte_py_sdk.token_validation._cache_types import NamespaceContextCache
+
+        # arrange 1
+        namespace = "studio1"
+        resource = "NAMESPACE:studio1-:CLIENT"
+        expected_resource = "NAMESPACE:{namespace}:CLIENT"
+
+        expected_resource = replace_resource(
+            resource=expected_resource,
+            namespace=namespace,
+        )
+
+        # act 1
+        is_valid = validate_resource(
+            resource=resource,
+            expected_resource=expected_resource
+        )
+
+        # assert 1
+        self.assertTrue(is_valid)
+
+        # arrange 2
+        namespace = "studio2"
+        resource = "NAMESPACE:studio1-:CLIENT"
+        expected_resource = "NAMESPACE:{namespace}:CLIENT"
+
+        expected_resource = replace_resource(
+            resource=expected_resource,
+            namespace=namespace,
+        )
+
+        # act 2
+        is_valid = validate_resource(
+            resource=resource,
+            expected_resource=expected_resource
+        )
+
+        # assert 2
+        self.assertFalse(is_valid)
+
+        # arrange 3
+        namespace = "studio1-game1"
+        resource = "NAMESPACE:studio1-:CLIENT"
+        expected_resource = "NAMESPACE:{namespace}:CLIENT"
+
+        expected_resource = replace_resource(
+            resource=expected_resource,
+            namespace=namespace,
+        )
+
+        # act 3
+        is_valid = validate_resource(
+            resource=resource,
+            expected_resource=expected_resource
+        )
+
+        # assert 3
+        self.assertTrue(is_valid)
+
+        # arrange 4
+        namespace = "game1"
+        resource = "NAMESPACE:studio1-:CLIENT"
+        expected_resource = "NAMESPACE:{namespace}:CLIENT"
+
+        namespace_context_cache = NamespaceContextCache(SDK, 3600)
+        namespace_context_cache._namespace_contexts[namespace] = NamespaceContext.create_from_dict({
+            "namespace": namespace,
+            "studioNamespace": "studio1",
+            "type": "Game",
+        })
+
+        expected_resource = replace_resource(
+            resource=expected_resource,
+            namespace=namespace,
+        )
+
+        # act 4
+        is_valid = validate_resource(
+            resource=resource,
+            expected_resource=expected_resource,
+            namespace_context_cache=namespace_context_cache
+        )
+
+        # assert 4
+        self.assertTrue(is_valid)
+
+        # arrange 5
+        namespace = "game2"
+        resource = "NAMESPACE:studio1-:CLIENT"
+        expected_resource = "NAMESPACE:{namespace}:CLIENT"
+
+        namespace_context_cache = NamespaceContextCache(SDK, 3600, raise_on_error=False)
+
+        expected_resource = replace_resource(
+            resource=expected_resource,
+            namespace=namespace,
+        )
+
+        # act 5
+        is_valid = validate_resource(
+            resource=resource,
+            expected_resource=expected_resource,
+            namespace_context_cache=namespace_context_cache
+        )
+
+        # assert 5
+        self.assertFalse(is_valid)
+
+    # endregion test:validate_resource_of_studio_game_namespace
+
     # end of file
