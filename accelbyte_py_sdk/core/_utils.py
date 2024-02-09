@@ -295,7 +295,10 @@ def get_query_from_http_redirect_response(
     return query_value, None
 
 
-def is_file(key: str, value: Any) -> bool:
+def is_file(key: Union[str, Tuple[str, str]], value: Any) -> bool:
+    if isinstance(key, tuple):
+        key_name, key_type = key
+        return key_type == "file"
     return key.casefold() == "file"
 
 

@@ -299,7 +299,10 @@ def extract_payload_from_operation(
         data, files, json_ = {}, {}, None
         for key, value in form_data_params.items():
             if is_file(key, value):
-                files[key] = convert_any_to_file_tuple(key, value)
+                key_name = key
+                if isinstance(key, tuple):
+                    key_name, key_type = key
+                files[key_name] = convert_any_to_file_tuple(key_name, value)
             else:
                 data[key] = value
         if not data:
