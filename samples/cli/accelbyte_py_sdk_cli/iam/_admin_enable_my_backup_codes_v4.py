@@ -63,4 +63,4 @@ def admin_enable_my_backup_codes_v4(
 
 
 admin_enable_my_backup_codes_v4.operation_id = "AdminEnableMyBackupCodesV4"
-admin_enable_my_backup_codes_v4.is_deprecated = False
+admin_enable_my_backup_codes_v4.is_deprecated = True

@@ -65,15 +65,15 @@ class DeleteBulkLeaderboardConfigurationAdminV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsDeleteBulkLeaderboardsResp (OK)
+        200: OK - ModelsDeleteBulkLeaderboardsResp (Leaderboards deleted)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -188,15 +188,15 @@ class DeleteBulkLeaderboardConfigurationAdminV1(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsDeleteBulkLeaderboardsResp (OK)
+        200: OK - ModelsDeleteBulkLeaderboardsResp (Leaderboards deleted)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 

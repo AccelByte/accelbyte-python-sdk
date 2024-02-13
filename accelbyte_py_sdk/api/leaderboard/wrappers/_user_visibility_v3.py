@@ -75,17 +75,15 @@ def get_hidden_users_v3(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetHiddenUserResponse (OK)
+        200: OK - ModelsGetHiddenUserResponse (Hidden user retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (71130: leaderboard config not found)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -135,17 +133,15 @@ async def get_hidden_users_v3_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetHiddenUserResponse (OK)
+        200: OK - ModelsGetHiddenUserResponse (Hidden user retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (71130: leaderboard config not found)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -194,17 +190,15 @@ def get_user_visibility_status_v3(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetUserVisibilityResponse (OK)
+        200: OK - ModelsGetUserVisibilityResponse (User visibility status retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -250,17 +244,15 @@ async def get_user_visibility_status_v3_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetUserVisibilityResponse (OK)
+        200: OK - ModelsGetUserVisibilityResponse (User visibility status retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -311,17 +303,15 @@ def set_user_leaderboard_visibility_v3(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetUserVisibilityResponse (OK)
+        200: OK - ModelsGetUserVisibilityResponse (User visibility status updated)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 71130: leaderboard config not found | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -371,17 +361,15 @@ async def set_user_leaderboard_visibility_v3_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetUserVisibilityResponse (OK)
+        200: OK - ModelsGetUserVisibilityResponse (User visibility status updated)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 71130: leaderboard config not found | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -430,17 +418,15 @@ def set_user_visibility_v3(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetUserVisibilityResponse (OK)
+        200: OK - ModelsGetUserVisibilityResponse (User visibility status updated)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 71130: leaderboard config not found | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -486,17 +472,15 @@ async def set_user_visibility_v3_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetUserVisibilityResponse (OK)
+        200: OK - ModelsGetUserVisibilityResponse (User visibility status updated)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 71130: leaderboard config not found | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

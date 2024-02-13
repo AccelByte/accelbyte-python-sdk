@@ -32,6 +32,7 @@ from ..api.ams.models import ApiAccountLinkRequest
 from ..api.ams.models import ApiAccountLinkResponse
 from ..api.ams.models import ApiAccountLinkTokenResponse
 from ..api.ams.models import ApiAccountResponse
+from ..api.ams.models import ApiArtifactListResponse
 from ..api.ams.models import ApiArtifactResponse
 from ..api.ams.models import ApiArtifactSamplingRule
 from ..api.ams.models import ApiArtifactTypeSamplingRules
@@ -130,6 +131,13 @@ def create_api_ams_regions_response_example() -> ApiAMSRegionsResponse:
     return instance
 
 
+def create_api_artifact_list_response_example() -> ApiArtifactListResponse:
+    instance = ApiArtifactListResponse()
+    instance.data = [create_api_artifact_response_example()]
+    instance.total_data = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_api_artifact_response_example() -> ApiArtifactResponse:
     instance = ApiArtifactResponse()
     instance.artifact_type = randomize()
@@ -141,6 +149,7 @@ def create_api_artifact_response_example() -> ApiArtifactResponse:
     instance.id_ = randomize()
     instance.image_id = randomize()
     instance.namespace = randomize("slug")
+    instance.region = randomize()
     instance.size_bytes = randomize("int", min_val=1, max_val=1000)
     instance.status = randomize()
     return instance
@@ -188,7 +197,6 @@ def create_api_ds_history_event_example() -> ApiDSHistoryEvent:
     instance = ApiDSHistoryEvent()
     instance.created_at = randomize("date")
     instance.exit_code = randomize("int", min_val=1, max_val=1000)
-    instance.game_session = randomize()
     instance.ip_address = randomize()
     instance.reason = randomize()
     instance.region = randomize()
@@ -223,12 +231,14 @@ def create_api_fleet_claim_by_keys_req_example() -> ApiFleetClaimByKeysReq:
     instance = ApiFleetClaimByKeysReq()
     instance.claim_keys = [randomize()]
     instance.regions = [randomize()]
+    instance.session_id = randomize("uid")
     return instance
 
 
 def create_api_fleet_claim_req_example() -> ApiFleetClaimReq:
     instance = ApiFleetClaimReq()
     instance.region = randomize()
+    instance.session_id = randomize("uid")
     return instance
 
 
@@ -333,6 +343,7 @@ def create_api_fleet_server_info_response_example() -> ApiFleetServerInfoRespons
     instance.ports = {}
     instance.region = randomize()
     instance.server_id = randomize()
+    instance.session_id = randomize("uid")
     instance.status = randomize()
     return instance
 
@@ -356,6 +367,7 @@ def create_api_image_deployment_profile_example() -> ApiImageDeploymentProfile:
 def create_api_image_details_example() -> ApiImageDetails:
     instance = ApiImageDetails()
     instance.created_at = randomize("date")
+    instance.executable = randomize()
     instance.id_ = randomize()
     instance.is_protected = randomize("bool")
     instance.name = randomize()
@@ -377,6 +389,7 @@ def create_api_image_list_example() -> ApiImageList:
 def create_api_image_list_item_example() -> ApiImageListItem:
     instance = ApiImageListItem()
     instance.created_at = randomize("date")
+    instance.executable = randomize()
     instance.id_ = randomize()
     instance.is_protected = randomize("bool")
     instance.name = randomize()

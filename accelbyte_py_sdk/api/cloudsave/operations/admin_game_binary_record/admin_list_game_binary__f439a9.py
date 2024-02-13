@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsListGameBinaryRecordsResponse
+from ...models import ModelsListGameBinaryRecordsAdminResponse
 from ...models import ModelsResponseError
 
 
@@ -60,7 +60,7 @@ class AdminListGameBinaryRecordsV1(Operation):
         query: (query) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsListGameBinaryRecordsResponse (Retrieve list of records by namespace)
+        200: OK - ModelsListGameBinaryRecordsAdminResponse (Retrieve list of records by namespace)
 
         400: Bad Request - ModelsResponseError (18304: invalid request body)
 
@@ -199,12 +199,12 @@ class AdminListGameBinaryRecordsV1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelsListGameBinaryRecordsResponse],
+        Union[None, ModelsListGameBinaryRecordsAdminResponse],
         Union[None, HttpResponse, ModelsResponseError],
     ]:
         """Parse the given response.
 
-        200: OK - ModelsListGameBinaryRecordsResponse (Retrieve list of records by namespace)
+        200: OK - ModelsListGameBinaryRecordsAdminResponse (Retrieve list of records by namespace)
 
         400: Bad Request - ModelsResponseError (18304: invalid request body)
 
@@ -228,7 +228,10 @@ class AdminListGameBinaryRecordsV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsListGameBinaryRecordsResponse.create_from_dict(content), None
+            return (
+                ModelsListGameBinaryRecordsAdminResponse.create_from_dict(content),
+                None,
+            )
         if code == 400:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 401:

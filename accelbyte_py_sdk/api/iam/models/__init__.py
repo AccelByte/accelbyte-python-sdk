@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.9.0"
+__version__ = "7.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -144,6 +144,7 @@ from .model_bulk_account_type_update_request_v4 import (
 from .model_bulk_ban_create_request_v3 import ModelBulkBanCreateRequestV3
 from .model_bulk_unban_create_request_v3 import ModelBulkUnbanCreateRequestV3
 from .model_check_valid_user_id_request_v4 import ModelCheckValidUserIDRequestV4
+from .model_config_value_response_v3 import ModelConfigValueResponseV3
 from .model_country import ModelCountry
 from .model_country_age_restriction_request import ModelCountryAgeRestrictionRequest
 from .model_country_age_restriction_v3_request import (
@@ -306,18 +307,6 @@ from .model_user_active_ban_response_v3 import ModelUserActiveBanResponseV3
 from .model_user_ban_response import ModelUserBanResponse
 from .model_user_ban_response_v3 import ModelUserBanResponseV3
 from .model_user_base_info import ModelUserBaseInfo
-from .model_user_create_from_invitation_request_v3 import (
-    ModelUserCreateFromInvitationRequestV3,
-)
-from .model_user_create_from_invitation_request_v3 import (
-    AuthTypeEnum as ModelUserCreateFromInvitationRequestV3AuthTypeEnum,
-)
-from .model_user_create_from_invitation_request_v4 import (
-    ModelUserCreateFromInvitationRequestV4,
-)
-from .model_user_create_from_invitation_request_v4 import (
-    AuthTypeEnum as ModelUserCreateFromInvitationRequestV4AuthTypeEnum,
-)
 from .model_user_create_request import ModelUserCreateRequest
 from .model_user_create_request_v3 import ModelUserCreateRequestV3
 from .model_user_create_response import ModelUserCreateResponse

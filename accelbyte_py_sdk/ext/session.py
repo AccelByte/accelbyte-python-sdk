@@ -465,6 +465,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
+    instance.enable_secret = randomize("bool")
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
     instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
@@ -548,7 +549,6 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance = ApimodelsUpdateConfigurationTemplateRequest()
     instance.client_version = randomize()
     instance.deployment = randomize()
-    instance.enable_secret = randomize("bool")
     instance.inactive_timeout = randomize("int", min_val=1, max_val=1000)
     instance.invite_timeout = randomize("int", min_val=1, max_val=1000)
     instance.joinability = randomize()
@@ -564,6 +564,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
+    instance.enable_secret = randomize("bool")
     instance.fallback_claim_keys = [randomize()]
     instance.immutable_storage = randomize("bool")
     instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)

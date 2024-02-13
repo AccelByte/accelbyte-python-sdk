@@ -65,15 +65,15 @@ class DeleteUserRankingAdminV1(Operation):
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User ranking deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -190,15 +190,15 @@ class DeleteUserRankingAdminV1(Operation):
     ) -> Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]:
         """Parse the given response.
 
-        204: No Content - (No Content)
+        204: No Content - (User ranking deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 

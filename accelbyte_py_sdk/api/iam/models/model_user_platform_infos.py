@@ -41,6 +41,8 @@ class ModelUserPlatformInfos(Model):
         avatar_url: (avatarUrl) OPTIONAL str
 
         display_name: (displayName) OPTIONAL str
+
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
     """
 
     # region fields
@@ -49,6 +51,7 @@ class ModelUserPlatformInfos(Model):
     user_id: str  # REQUIRED
     avatar_url: str  # OPTIONAL
     display_name: str  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -70,6 +73,10 @@ class ModelUserPlatformInfos(Model):
 
     def with_display_name(self, value: str) -> ModelUserPlatformInfos:
         self.display_name = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelUserPlatformInfos:
+        self.unique_display_name = value
         return self
 
     # endregion with_x methods
@@ -96,6 +103,10 @@ class ModelUserPlatformInfos(Model):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         return result
 
     # endregion to methods
@@ -109,6 +120,7 @@ class ModelUserPlatformInfos(Model):
         user_id: str,
         avatar_url: Optional[str] = None,
         display_name: Optional[str] = None,
+        unique_display_name: Optional[str] = None,
         **kwargs,
     ) -> ModelUserPlatformInfos:
         instance = cls()
@@ -118,6 +130,8 @@ class ModelUserPlatformInfos(Model):
             instance.avatar_url = avatar_url
         if display_name is not None:
             instance.display_name = display_name
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         return instance
 
     @classmethod
@@ -146,6 +160,10 @@ class ModelUserPlatformInfos(Model):
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
             instance.display_name = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         return instance
 
     @classmethod
@@ -193,6 +211,7 @@ class ModelUserPlatformInfos(Model):
             "userId": "user_id",
             "avatarUrl": "avatar_url",
             "displayName": "display_name",
+            "uniqueDisplayName": "unique_display_name",
         }
 
     @staticmethod
@@ -202,6 +221,7 @@ class ModelUserPlatformInfos(Model):
             "userId": True,
             "avatarUrl": False,
             "displayName": False,
+            "uniqueDisplayName": False,
         }
 
     # endregion static methods

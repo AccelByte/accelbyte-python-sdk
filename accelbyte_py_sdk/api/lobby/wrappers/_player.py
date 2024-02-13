@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsBlockPlayerRequest
 from ..models import ModelsGetAllPlayerBlockedByUsersResponse
 from ..models import ModelsGetAllPlayerBlockedUsersResponse
 from ..models import ModelsGetAllPlayerSessionAttributeResponse
@@ -38,6 +39,7 @@ from ..models import ModelsGetLobbyCcuResponse
 from ..models import ModelsGetPlayerSessionAttributeResponse
 from ..models import ModelsListBlockedPlayerRequest
 from ..models import ModelsSetPlayerSessionAttributeRequest
+from ..models import ModelsUnblockPlayerRequest
 from ..models import RestapiErrorResponseBody
 
 from ..operations.player import AdminBulkBlockPlayersV1
@@ -50,6 +52,8 @@ from ..operations.player import AdminGetPlayerSessionAttribute
 from ..operations.player import AdminSetPlayerSessionAttribute
 from ..operations.player import PublicGetPlayerBlockedByPlayersV1
 from ..operations.player import PublicGetPlayerBlockedPlayersV1
+from ..operations.player import PublicPlayerBlockPlayersV1
+from ..operations.player import PublicUnblockPlayerV1
 
 
 @same_doc_as(AdminBulkBlockPlayersV1)
@@ -1113,6 +1117,228 @@ async def public_get_player_blocked_players_v1_async(
         if error:
             return None, error
     request = PublicGetPlayerBlockedPlayersV1.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicPlayerBlockPlayersV1)
+def public_player_block_players_v1(
+    body: ModelsBlockPlayerRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """block player by user id (publicPlayerBlockPlayersV1)
+
+    Required valid user authorization
+
+
+    add blocked players in a namespace based on user id
+
+    Properties:
+        url: /lobby/v1/public/player/namespaces/{namespace}/users/me/block
+
+        method: POST
+
+        tags: ["player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBlockPlayerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicPlayerBlockPlayersV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicPlayerBlockPlayersV1)
+async def public_player_block_players_v1_async(
+    body: ModelsBlockPlayerRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """block player by user id (publicPlayerBlockPlayersV1)
+
+    Required valid user authorization
+
+
+    add blocked players in a namespace based on user id
+
+    Properties:
+        url: /lobby/v1/public/player/namespaces/{namespace}/users/me/block
+
+        method: POST
+
+        tags: ["player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBlockPlayerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - (Created)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicPlayerBlockPlayersV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicUnblockPlayerV1)
+def public_unblock_player_v1(
+    body: ModelsUnblockPlayerRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """unblock player by user id (publicUnblockPlayerV1)
+
+    Required valid user authorization
+
+    unblock player in a namespace based on user id
+
+    Properties:
+        url: /lobby/v1/public/player/namespaces/{namespace}/users/me/unblock
+
+        method: POST
+
+        tags: ["player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUnblockPlayerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUnblockPlayerV1.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUnblockPlayerV1)
+async def public_unblock_player_v1_async(
+    body: ModelsUnblockPlayerRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """unblock player by user id (publicUnblockPlayerV1)
+
+    Required valid user authorization
+
+    unblock player in a namespace based on user id
+
+    Properties:
+        url: /lobby/v1/public/player/namespaces/{namespace}/users/me/unblock
+
+        method: POST
+
+        tags: ["player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsUnblockPlayerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUnblockPlayerV1.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

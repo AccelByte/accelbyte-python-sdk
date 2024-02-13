@@ -71,7 +71,9 @@ class CachingTokenValidator:
             sdk, revocation_list_refresh_interval
         )
         self.roles_cache = RolesCache(sdk, role_cache_time)
-        self.namespace_context_cache = NamespaceContextCache(sdk, namespace_context_cache_time)
+        self.namespace_context_cache = NamespaceContextCache(
+            sdk, namespace_context_cache_time
+        )
 
         self.jwks_cache.update()
         self.revocation_list_cache.update()

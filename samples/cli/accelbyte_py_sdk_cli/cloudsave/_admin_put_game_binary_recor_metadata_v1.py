@@ -33,8 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.cloudsave import (
     admin_put_game_binary_recor_metadata_v1 as admin_put_game_binary_recor_metadata_v1_internal,
 )
+from accelbyte_py_sdk.api.cloudsave.models import ModelsGameBinaryRecordAdminResponse
 from accelbyte_py_sdk.api.cloudsave.models import ModelsGameBinaryRecordMetadataRequest
-from accelbyte_py_sdk.api.cloudsave.models import ModelsGameBinaryRecordResponse
 from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
 

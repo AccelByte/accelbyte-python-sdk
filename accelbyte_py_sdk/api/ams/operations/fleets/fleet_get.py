@@ -61,6 +61,8 @@ class FleetGet(Operation):
     Responses:
         200: OK - ApiFleetGetResponse (success)
 
+        400: Bad Request - ResponseErrorResponse (bad request)
+
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
@@ -178,6 +180,8 @@ class FleetGet(Operation):
 
         200: OK - ApiFleetGetResponse (success)
 
+        400: Bad Request - ResponseErrorResponse (bad request)
+
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
@@ -201,6 +205,8 @@ class FleetGet(Operation):
 
         if code == 200:
             return ApiFleetGetResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:

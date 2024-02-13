@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.models_ttl_config_dto import ModelsTTLConfigDTO
+
 
 class SetByEnum(StrEnum):
     CLIENT = "CLIENT"
@@ -39,11 +41,14 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
 
     Properties:
         set_by: (set_by) REQUIRED Union[str, SetByEnum]
+
+        ttl_config: (ttl_config) OPTIONAL ModelsTTLConfigDTO
     """
 
     # region fields
 
     set_by: Union[str, SetByEnum]  # REQUIRED
+    ttl_config: ModelsTTLConfigDTO  # OPTIONAL
 
     # endregion fields
 
@@ -53,6 +58,12 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
         self, value: Union[str, SetByEnum]
     ) -> ModelsGameBinaryRecordMetadataRequest:
         self.set_by = value
+        return self
+
+    def with_ttl_config(
+        self, value: ModelsTTLConfigDTO
+    ) -> ModelsGameBinaryRecordMetadataRequest:
+        self.ttl_config = value
         return self
 
     # endregion with_x methods
@@ -65,6 +76,10 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
             result["set_by"] = str(self.set_by)
         elif include_empty:
             result["set_by"] = Union[str, SetByEnum]()
+        if hasattr(self, "ttl_config"):
+            result["ttl_config"] = self.ttl_config.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["ttl_config"] = ModelsTTLConfigDTO()
         return result
 
     # endregion to methods
@@ -73,10 +88,15 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
 
     @classmethod
     def create(
-        cls, set_by: Union[str, SetByEnum], **kwargs
+        cls,
+        set_by: Union[str, SetByEnum],
+        ttl_config: Optional[ModelsTTLConfigDTO] = None,
+        **kwargs,
     ) -> ModelsGameBinaryRecordMetadataRequest:
         instance = cls()
         instance.set_by = set_by
+        if ttl_config is not None:
+            instance.ttl_config = ttl_config
         return instance
 
     @classmethod
@@ -90,6 +110,12 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
             instance.set_by = Union[str, SetByEnum]()
+        if "ttl_config" in dict_ and dict_["ttl_config"] is not None:
+            instance.ttl_config = ModelsTTLConfigDTO.create_from_dict(
+                dict_["ttl_config"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.ttl_config = ModelsTTLConfigDTO()
         return instance
 
     @classmethod
@@ -134,12 +160,14 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "set_by": "set_by",
+            "ttl_config": "ttl_config",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "set_by": True,
+            "ttl_config": False,
         }
 
     @staticmethod

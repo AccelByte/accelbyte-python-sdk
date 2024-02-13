@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 
 
 @click.command()
+@click.option("--is_soft_deleted", "is_soft_deleted", type=str)
 @click.option("--joinability", "joinability", type=str)
 @click.option("--key", "key", type=str)
 @click.option("--leader_id", "leader_id", type=str)
@@ -54,6 +55,7 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_query_parties(
+    is_soft_deleted: Optional[str] = None,
     joinability: Optional[str] = None,
     key: Optional[str] = None,
     leader_id: Optional[str] = None,
@@ -79,6 +81,7 @@ def admin_query_parties(
     else:
         login_as_internal(login_as)
     result, error = admin_query_parties_internal(
+        is_soft_deleted=is_soft_deleted,
         joinability=joinability,
         key=key,
         leader_id=leader_id,

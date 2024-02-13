@@ -57,6 +57,8 @@ class GetListOfFriends(Operation):
 
         friend_id: (friendId) OPTIONAL str in query
 
+        friend_ids: (friendIds) OPTIONAL List[str] in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -85,6 +87,7 @@ class GetListOfFriends(Operation):
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
     friend_id: str  # OPTIONAL in [query]
+    friend_ids: List[str]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
 
@@ -142,6 +145,8 @@ class GetListOfFriends(Operation):
         result = {}
         if hasattr(self, "friend_id"):
             result["friendId"] = self.friend_id
+        if hasattr(self, "friend_ids"):
+            result["friendIds"] = self.friend_ids
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -166,6 +171,10 @@ class GetListOfFriends(Operation):
 
     def with_friend_id(self, value: str) -> GetListOfFriends:
         self.friend_id = value
+        return self
+
+    def with_friend_ids(self, value: List[str]) -> GetListOfFriends:
+        self.friend_ids = value
         return self
 
     def with_limit(self, value: int) -> GetListOfFriends:
@@ -194,6 +203,10 @@ class GetListOfFriends(Operation):
             result["friendId"] = str(self.friend_id)
         elif include_empty:
             result["friendId"] = ""
+        if hasattr(self, "friend_ids") and self.friend_ids:
+            result["friendIds"] = [str(i0) for i0 in self.friend_ids]
+        elif include_empty:
+            result["friendIds"] = []
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -265,6 +278,7 @@ class GetListOfFriends(Operation):
         namespace: str,
         user_id: str,
         friend_id: Optional[str] = None,
+        friend_ids: Optional[List[str]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         **kwargs,
@@ -274,6 +288,8 @@ class GetListOfFriends(Operation):
         instance.user_id = user_id
         if friend_id is not None:
             instance.friend_id = friend_id
+        if friend_ids is not None:
+            instance.friend_ids = friend_ids
         if limit is not None:
             instance.limit = limit
         if offset is not None:
@@ -299,6 +315,10 @@ class GetListOfFriends(Operation):
             instance.friend_id = str(dict_["friendId"])
         elif include_empty:
             instance.friend_id = ""
+        if "friendIds" in dict_ and dict_["friendIds"] is not None:
+            instance.friend_ids = [str(i0) for i0 in dict_["friendIds"]]
+        elif include_empty:
+            instance.friend_ids = []
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -315,6 +335,7 @@ class GetListOfFriends(Operation):
             "namespace": "namespace",
             "userId": "user_id",
             "friendId": "friend_id",
+            "friendIds": "friend_ids",
             "limit": "limit",
             "offset": "offset",
         }
@@ -325,8 +346,15 @@ class GetListOfFriends(Operation):
             "namespace": True,
             "userId": True,
             "friendId": False,
+            "friendIds": False,
             "limit": False,
             "offset": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "friendIds": "csv",  # in query
         }
 
     # endregion static methods

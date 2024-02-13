@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ModelsGameBinaryRecordAdminResponse
 from ...models import ModelsGameBinaryRecordMetadataRequest
-from ...models import ModelsGameBinaryRecordResponse
 from ...models import ModelsResponseError
 
 
@@ -59,7 +59,7 @@ class AdminPutGameBinaryRecorMetadataV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameBinaryRecordResponse (Record saved)
+        200: OK - ModelsGameBinaryRecordAdminResponse (Record saved)
 
         400: Bad Request - ModelsResponseError (18316: invalid request body)
 
@@ -190,12 +190,12 @@ class AdminPutGameBinaryRecorMetadataV1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelsGameBinaryRecordResponse],
+        Union[None, ModelsGameBinaryRecordAdminResponse],
         Union[None, HttpResponse, ModelsResponseError],
     ]:
         """Parse the given response.
 
-        200: OK - ModelsGameBinaryRecordResponse (Record saved)
+        200: OK - ModelsGameBinaryRecordAdminResponse (Record saved)
 
         400: Bad Request - ModelsResponseError (18316: invalid request body)
 
@@ -221,7 +221,7 @@ class AdminPutGameBinaryRecorMetadataV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsGameBinaryRecordResponse.create_from_dict(content), None
+            return ModelsGameBinaryRecordAdminResponse.create_from_dict(content), None
         if code == 400:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 401:

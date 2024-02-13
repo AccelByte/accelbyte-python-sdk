@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApiArtifactResponse
+from ...models import ApiArtifactListResponse
 from ...models import ResponseErrorResponse
 
 
@@ -83,7 +83,7 @@ class ArtifactGet(Operation):
         status: (status) OPTIONAL str in query
 
     Responses:
-        200: OK - List[ApiArtifactResponse] (success)
+        200: OK - ApiArtifactListResponse (success)
 
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
@@ -321,12 +321,12 @@ class ArtifactGet(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[ApiArtifactResponse]],
+        Union[None, ApiArtifactListResponse],
         Union[None, HttpResponse, ResponseErrorResponse],
     ]:
         """Parse the given response.
 
-        200: OK - List[ApiArtifactResponse] (success)
+        200: OK - ApiArtifactListResponse (success)
 
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
@@ -350,7 +350,7 @@ class ArtifactGet(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ApiArtifactResponse.create_from_dict(i) for i in content], None
+            return ApiArtifactListResponse.create_from_dict(content), None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:

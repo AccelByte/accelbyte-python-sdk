@@ -29,8 +29,8 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsGameRecordAdminResponse
 from ..models import ModelsGameRecordRequest
-from ..models import ModelsGameRecordResponse
 from ..models import ModelsListGameRecordKeysResponse
 from ..models import ModelsResponseError
 
@@ -39,7 +39,7 @@ from ..operations.admin_game_record import AdminGetGameRecordHandlerV1
 from ..operations.admin_game_record import AdminPostGameRecordHandlerV1
 from ..operations.admin_game_record import AdminPutGameRecordHandlerV1
 from ..operations.admin_game_record import ListGameRecordsHandlerV1
-from ..models import ModelsGameRecordResponseSetByEnum
+from ..models import ModelsGameRecordAdminResponseSetByEnum
 
 
 @same_doc_as(AdminDeleteGameRecordHandlerV1)
@@ -173,7 +173,7 @@ def admin_get_game_record_handler_v1(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameRecordResponse (Record in namespace-level retrieved)
+        200: OK - ModelsGameRecordAdminResponse (Record in namespace-level retrieved)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
@@ -223,7 +223,7 @@ async def admin_get_game_record_handler_v1_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameRecordResponse (Record in namespace-level retrieved)
+        200: OK - ModelsGameRecordAdminResponse (Record in namespace-level retrieved)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
@@ -312,12 +312,20 @@ def admin_post_game_record_handler_v1(
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
     CLIENT: record can be modified by client and server.
+    2. ttl_config (default: *empty*, type: object)
+    Indicate the TTL configuration for the game record.
+    action:
+    - DELETE: record will be deleted after TTL is reached
 
     **Request Body Example:**
     ```
     {
     "__META": {
-    "set_by": "SERVER"
+    "set_by": "SERVER",
+    "ttl_config": {
+    "expires_at": "2026-01-02T15:04:05Z", // should be in RFC3339 format
+    "action": "DELETE"
+    }
     }
     ...
     }
@@ -346,7 +354,7 @@ def admin_post_game_record_handler_v1(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
+        201: Created - ModelsGameRecordAdminResponse (Record in namespace-level saved)
 
         400: Bad Request - ModelsResponseError (18011: invalid request body | 20002: validation error | 18015: invalid request body: size of the request body must be less than [%d]MB)
 
@@ -434,12 +442,20 @@ async def admin_post_game_record_handler_v1_async(
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
     CLIENT: record can be modified by client and server.
+    2. ttl_config (default: *empty*, type: object)
+    Indicate the TTL configuration for the game record.
+    action:
+    - DELETE: record will be deleted after TTL is reached
 
     **Request Body Example:**
     ```
     {
     "__META": {
-    "set_by": "SERVER"
+    "set_by": "SERVER",
+    "ttl_config": {
+    "expires_at": "2026-01-02T15:04:05Z", // should be in RFC3339 format
+    "action": "DELETE"
+    }
     }
     ...
     }
@@ -468,7 +484,7 @@ async def admin_post_game_record_handler_v1_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
+        201: Created - ModelsGameRecordAdminResponse (Record in namespace-level saved)
 
         400: Bad Request - ModelsResponseError (18011: invalid request body | 20002: validation error | 18015: invalid request body: size of the request body must be less than [%d]MB)
 
@@ -546,12 +562,20 @@ def admin_put_game_record_handler_v1(
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
     CLIENT: record can be modified by client and server.
+    2. ttl_config (default: *empty*, type: object)
+    Indicate the TTL configuration for the game record.
+    action:
+    - DELETE: record will be deleted after TTL is reached
 
     **Request Body Example:**
     ```
     {
     "__META": {
-    "set_by": "SERVER"
+    "set_by": "SERVER",
+    "ttl_config": {
+    "expires_at": "2026-01-02T15:04:05Z", // should be in RFC3339 format
+    "action": "DELETE"
+    }
     }
     ...
     }
@@ -580,7 +604,7 @@ def admin_put_game_record_handler_v1(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameRecordResponse (Record saved)
+        200: OK - ModelsGameRecordAdminResponse (Record saved)
 
         400: Bad Request - ModelsResponseError (18050: invalid request body | 20002: validation error | 18052: invalid request body: size of the request body must be less than [%d]MB)
 
@@ -656,12 +680,20 @@ async def admin_put_game_record_handler_v1_async(
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
     CLIENT: record can be modified by client and server.
+    2. ttl_config (default: *empty*, type: object)
+    Indicate the TTL configuration for the game record.
+    action:
+    - DELETE: record will be deleted after TTL is reached
 
     **Request Body Example:**
     ```
     {
     "__META": {
-    "set_by": "SERVER"
+    "set_by": "SERVER",
+    "ttl_config": {
+    "expires_at": "2026-01-02T15:04:05Z", // should be in RFC3339 format
+    "action": "DELETE"
+    }
     }
     ...
     }
@@ -690,7 +722,7 @@ async def admin_put_game_record_handler_v1_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameRecordResponse (Record saved)
+        200: OK - ModelsGameRecordAdminResponse (Record saved)
 
         400: Bad Request - ModelsResponseError (18050: invalid request body | 20002: validation error | 18052: invalid request body: size of the request body must be less than [%d]MB)
 

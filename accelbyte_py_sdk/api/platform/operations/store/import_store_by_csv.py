@@ -144,15 +144,15 @@ class ImportStoreByCSV(Operation):
     def get_form_data_params(self) -> dict:
         result = {}
         if hasattr(self, "category"):
-            result["category"] = self.category
+            result[("category", "file")] = self.category
         if hasattr(self, "display"):
-            result["display"] = self.display
+            result[("display", "file")] = self.display
         if hasattr(self, "item"):
-            result["item"] = self.item
+            result[("item", "file")] = self.item
         if hasattr(self, "notes"):
             result["notes"] = self.notes
         if hasattr(self, "section"):
-            result["section"] = self.section
+            result[("section", "file")] = self.section
         return result
 
     def get_path_params(self) -> dict:

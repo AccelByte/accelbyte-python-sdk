@@ -50,6 +50,8 @@ class ApiArtifactResponse(Model):
 
         namespace: (namespace) REQUIRED str
 
+        region: (region) REQUIRED str
+
         size_bytes: (sizeBytes) REQUIRED int
 
         status: (status) REQUIRED str
@@ -66,6 +68,7 @@ class ApiArtifactResponse(Model):
     id_: str  # REQUIRED
     image_id: str  # REQUIRED
     namespace: str  # REQUIRED
+    region: str  # REQUIRED
     size_bytes: int  # REQUIRED
     status: str  # REQUIRED
 
@@ -107,6 +110,10 @@ class ApiArtifactResponse(Model):
 
     def with_namespace(self, value: str) -> ApiArtifactResponse:
         self.namespace = value
+        return self
+
+    def with_region(self, value: str) -> ApiArtifactResponse:
+        self.region = value
         return self
 
     def with_size_bytes(self, value: int) -> ApiArtifactResponse:
@@ -159,6 +166,10 @@ class ApiArtifactResponse(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "region"):
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = ""
         if hasattr(self, "size_bytes"):
             result["sizeBytes"] = int(self.size_bytes)
         elif include_empty:
@@ -185,6 +196,7 @@ class ApiArtifactResponse(Model):
         id_: str,
         image_id: str,
         namespace: str,
+        region: str,
         size_bytes: int,
         status: str,
         **kwargs,
@@ -199,6 +211,7 @@ class ApiArtifactResponse(Model):
         instance.id_ = id_
         instance.image_id = image_id
         instance.namespace = namespace
+        instance.region = region
         instance.size_bytes = size_bytes
         instance.status = status
         return instance
@@ -246,6 +259,10 @@ class ApiArtifactResponse(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = ""
         if "sizeBytes" in dict_ and dict_["sizeBytes"] is not None:
             instance.size_bytes = int(dict_["sizeBytes"])
         elif include_empty:
@@ -304,6 +321,7 @@ class ApiArtifactResponse(Model):
             "id": "id_",
             "imageId": "image_id",
             "namespace": "namespace",
+            "region": "region",
             "sizeBytes": "size_bytes",
             "status": "status",
         }
@@ -320,6 +338,7 @@ class ApiArtifactResponse(Model):
             "id": True,
             "imageId": True,
             "namespace": True,
+            "region": True,
             "sizeBytes": True,
             "status": True,
         }

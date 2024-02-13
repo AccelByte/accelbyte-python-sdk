@@ -86,6 +86,8 @@ class ModelUserResponse(Model):
 
         platform_user_id: (PlatformUserId) OPTIONAL str
 
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
+
         username: (Username) OPTIONAL str
 
         xuid: (XUID) OPTIONAL str
@@ -118,6 +120,7 @@ class ModelUserResponse(Model):
     phone_number: str  # OPTIONAL
     platform_id: str  # OPTIONAL
     platform_user_id: str  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
     username: str  # OPTIONAL
     xuid: str  # OPTIONAL
 
@@ -227,6 +230,10 @@ class ModelUserResponse(Model):
 
     def with_platform_user_id(self, value: str) -> ModelUserResponse:
         self.platform_user_id = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelUserResponse:
+        self.unique_display_name = value
         return self
 
     def with_username(self, value: str) -> ModelUserResponse:
@@ -351,6 +358,10 @@ class ModelUserResponse(Model):
             result["PlatformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["PlatformUserId"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         if hasattr(self, "username"):
             result["Username"] = str(self.username)
         elif include_empty:
@@ -393,6 +404,7 @@ class ModelUserResponse(Model):
         phone_number: Optional[str] = None,
         platform_id: Optional[str] = None,
         platform_user_id: Optional[str] = None,
+        unique_display_name: Optional[str] = None,
         username: Optional[str] = None,
         xuid: Optional[str] = None,
         **kwargs,
@@ -429,6 +441,8 @@ class ModelUserResponse(Model):
             instance.platform_id = platform_id
         if platform_user_id is not None:
             instance.platform_user_id = platform_user_id
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         if username is not None:
             instance.username = username
         if xuid is not None:
@@ -565,6 +579,10 @@ class ModelUserResponse(Model):
             instance.platform_user_id = str(dict_["PlatformUserId"])
         elif include_empty:
             instance.platform_user_id = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "Username" in dict_ and dict_["Username"] is not None:
             instance.username = str(dict_["Username"])
         elif include_empty:
@@ -639,6 +657,7 @@ class ModelUserResponse(Model):
             "PhoneNumber": "phone_number",
             "PlatformId": "platform_id",
             "PlatformUserId": "platform_user_id",
+            "uniqueDisplayName": "unique_display_name",
             "Username": "username",
             "XUID": "xuid",
         }
@@ -671,6 +690,7 @@ class ModelUserResponse(Model):
             "PhoneNumber": False,
             "PlatformId": False,
             "PlatformUserId": False,
+            "uniqueDisplayName": False,
             "Username": False,
             "XUID": False,
         }

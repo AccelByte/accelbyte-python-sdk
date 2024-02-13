@@ -12,7 +12,7 @@ Definition: ApiCreateNamespaceTopicParams
 description: str
 name: str
 
-Example: '{"description": "FQVwtVWx4wXUcL42", "name": "2M6KpYcxaWkKM7lS"}'
+Example: '{"description": "TmuAMg4TyprFAdlU", "name": "L3f1n2yUyHDuh5ff"}'
 """
 
 result, error = admin_create_namespace_topic(

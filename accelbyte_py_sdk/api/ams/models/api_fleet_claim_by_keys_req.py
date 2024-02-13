@@ -35,12 +35,15 @@ class ApiFleetClaimByKeysReq(Model):
         claim_keys: (claimKeys) REQUIRED List[str]
 
         regions: (regions) REQUIRED List[str]
+
+        session_id: (sessionId) REQUIRED str
     """
 
     # region fields
 
     claim_keys: List[str]  # REQUIRED
     regions: List[str]  # REQUIRED
+    session_id: str  # REQUIRED
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class ApiFleetClaimByKeysReq(Model):
 
     def with_regions(self, value: List[str]) -> ApiFleetClaimByKeysReq:
         self.regions = value
+        return self
+
+    def with_session_id(self, value: str) -> ApiFleetClaimByKeysReq:
+        self.session_id = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class ApiFleetClaimByKeysReq(Model):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
             result["regions"] = []
+        if hasattr(self, "session_id"):
+            result["sessionId"] = str(self.session_id)
+        elif include_empty:
+            result["sessionId"] = ""
         return result
 
     # endregion to methods
@@ -76,11 +87,12 @@ class ApiFleetClaimByKeysReq(Model):
 
     @classmethod
     def create(
-        cls, claim_keys: List[str], regions: List[str], **kwargs
+        cls, claim_keys: List[str], regions: List[str], session_id: str, **kwargs
     ) -> ApiFleetClaimByKeysReq:
         instance = cls()
         instance.claim_keys = claim_keys
         instance.regions = regions
+        instance.session_id = session_id
         return instance
 
     @classmethod
@@ -98,6 +110,10 @@ class ApiFleetClaimByKeysReq(Model):
             instance.regions = [str(i0) for i0 in dict_["regions"]]
         elif include_empty:
             instance.regions = []
+        if "sessionId" in dict_ and dict_["sessionId"] is not None:
+            instance.session_id = str(dict_["sessionId"])
+        elif include_empty:
+            instance.session_id = ""
         return instance
 
     @classmethod
@@ -143,6 +159,7 @@ class ApiFleetClaimByKeysReq(Model):
         return {
             "claimKeys": "claim_keys",
             "regions": "regions",
+            "sessionId": "session_id",
         }
 
     @staticmethod
@@ -150,6 +167,7 @@ class ApiFleetClaimByKeysReq(Model):
         return {
             "claimKeys": True,
             "regions": True,
+            "sessionId": True,
         }
 
     # endregion static methods

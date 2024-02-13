@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.14.0"
+__version__ = "3.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -231,3 +231,17 @@ from ._public_player_record import put_player_record_handler_v1
 from ._public_player_record import put_player_record_handler_v1_async
 from ._public_player_record import retrieve_player_records
 from ._public_player_record import retrieve_player_records_async
+
+from ._tags import admin_delete_tag_handler_v1
+from ._tags import admin_delete_tag_handler_v1_async
+from ._tags import admin_list_tags_handler_v1
+from ._tags import admin_list_tags_handler_v1_async
+from ._tags import admin_post_tag_handler_v1
+from ._tags import admin_post_tag_handler_v1_async
+from ._tags import public_list_tags_handler_v1
+from ._tags import public_list_tags_handler_v1_async
+
+from ._ttl_config import delete_game_binary_record_ttl_config
+from ._ttl_config import delete_game_binary_record_ttl_config_async
+from ._ttl_config import delete_game_record_ttl_config
+from ._ttl_config import delete_game_record_ttl_config_async

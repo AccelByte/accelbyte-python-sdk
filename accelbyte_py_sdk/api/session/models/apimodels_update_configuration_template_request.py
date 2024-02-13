@@ -38,8 +38,6 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
 
         deployment: (deployment) REQUIRED str
 
-        enable_secret: (enableSecret) REQUIRED bool
-
         inactive_timeout: (inactiveTimeout) REQUIRED int
 
         invite_timeout: (inviteTimeout) REQUIRED int
@@ -70,6 +68,8 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
 
         ds_source: (dsSource) OPTIONAL str
 
+        enable_secret: (enableSecret) OPTIONAL bool
+
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
         immutable_storage: (immutableStorage) OPTIONAL bool
@@ -93,7 +93,6 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
 
     client_version: str  # REQUIRED
     deployment: str  # REQUIRED
-    enable_secret: bool  # REQUIRED
     inactive_timeout: int  # REQUIRED
     invite_timeout: int  # REQUIRED
     joinability: str  # REQUIRED
@@ -109,6 +108,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
     disable_code_generation: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
+    enable_secret: bool  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
     immutable_storage: bool  # OPTIONAL
     leader_election_grace_period: int  # OPTIONAL
@@ -133,12 +133,6 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         self, value: str
     ) -> ApimodelsUpdateConfigurationTemplateRequest:
         self.deployment = value
-        return self
-
-    def with_enable_secret(
-        self, value: bool
-    ) -> ApimodelsUpdateConfigurationTemplateRequest:
-        self.enable_secret = value
         return self
 
     def with_inactive_timeout(
@@ -225,6 +219,12 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         self.ds_source = value
         return self
 
+    def with_enable_secret(
+        self, value: bool
+    ) -> ApimodelsUpdateConfigurationTemplateRequest:
+        self.enable_secret = value
+        return self
+
     def with_fallback_claim_keys(
         self, value: List[str]
     ) -> ApimodelsUpdateConfigurationTemplateRequest:
@@ -293,10 +293,6 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = ""
-        if hasattr(self, "enable_secret"):
-            result["enableSecret"] = bool(self.enable_secret)
-        elif include_empty:
-            result["enableSecret"] = False
         if hasattr(self, "inactive_timeout"):
             result["inactiveTimeout"] = int(self.inactive_timeout)
         elif include_empty:
@@ -357,6 +353,10 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             result["dsSource"] = str(self.ds_source)
         elif include_empty:
             result["dsSource"] = ""
+        if hasattr(self, "enable_secret"):
+            result["enableSecret"] = bool(self.enable_secret)
+        elif include_empty:
+            result["enableSecret"] = False
         if hasattr(self, "fallback_claim_keys"):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
@@ -406,7 +406,6 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         cls,
         client_version: str,
         deployment: str,
-        enable_secret: bool,
         inactive_timeout: int,
         invite_timeout: int,
         joinability: str,
@@ -422,6 +421,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         disable_code_generation: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
         ds_source: Optional[str] = None,
+        enable_secret: Optional[bool] = None,
         fallback_claim_keys: Optional[List[str]] = None,
         immutable_storage: Optional[bool] = None,
         leader_election_grace_period: Optional[int] = None,
@@ -436,7 +436,6 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         instance = cls()
         instance.client_version = client_version
         instance.deployment = deployment
-        instance.enable_secret = enable_secret
         instance.inactive_timeout = inactive_timeout
         instance.invite_timeout = invite_timeout
         instance.joinability = joinability
@@ -457,6 +456,8 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             instance.ds_manual_set_ready = ds_manual_set_ready
         if ds_source is not None:
             instance.ds_source = ds_source
+        if enable_secret is not None:
+            instance.enable_secret = enable_secret
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
         if immutable_storage is not None:
@@ -492,10 +493,6 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = ""
-        if "enableSecret" in dict_ and dict_["enableSecret"] is not None:
-            instance.enable_secret = bool(dict_["enableSecret"])
-        elif include_empty:
-            instance.enable_secret = False
         if "inactiveTimeout" in dict_ and dict_["inactiveTimeout"] is not None:
             instance.inactive_timeout = int(dict_["inactiveTimeout"])
         elif include_empty:
@@ -561,6 +558,10 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             instance.ds_source = str(dict_["dsSource"])
         elif include_empty:
             instance.ds_source = ""
+        if "enableSecret" in dict_ and dict_["enableSecret"] is not None:
+            instance.enable_secret = bool(dict_["enableSecret"])
+        elif include_empty:
+            instance.enable_secret = False
         if "fallbackClaimKeys" in dict_ and dict_["fallbackClaimKeys"] is not None:
             instance.fallback_claim_keys = [
                 str(i0) for i0 in dict_["fallbackClaimKeys"]
@@ -661,7 +662,6 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         return {
             "clientVersion": "client_version",
             "deployment": "deployment",
-            "enableSecret": "enable_secret",
             "inactiveTimeout": "inactive_timeout",
             "inviteTimeout": "invite_timeout",
             "joinability": "joinability",
@@ -677,6 +677,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             "disableCodeGeneration": "disable_code_generation",
             "dsManualSetReady": "ds_manual_set_ready",
             "dsSource": "ds_source",
+            "enableSecret": "enable_secret",
             "fallbackClaimKeys": "fallback_claim_keys",
             "immutableStorage": "immutable_storage",
             "leaderElectionGracePeriod": "leader_election_grace_period",
@@ -693,7 +694,6 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         return {
             "clientVersion": True,
             "deployment": True,
-            "enableSecret": True,
             "inactiveTimeout": True,
             "inviteTimeout": True,
             "joinability": True,
@@ -709,6 +709,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             "disableCodeGeneration": False,
             "dsManualSetReady": False,
             "dsSource": False,
+            "enableSecret": False,
             "fallbackClaimKeys": False,
             "immutableStorage": False,
             "leaderElectionGracePeriod": False,

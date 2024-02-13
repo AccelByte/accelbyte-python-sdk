@@ -61,7 +61,7 @@ class FleetArtifactSamplingRulesSet(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - ApiFleetArtifactsSampleRules (success)
+        200: OK - ApiFleetArtifactsSampleRules (success)
 
         400: Bad Request - ResponseErrorResponse (invalid fleet ID)
 
@@ -193,10 +193,13 @@ class FleetArtifactSamplingRulesSet(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]:
+    ) -> Tuple[
+        Union[None, ApiFleetArtifactsSampleRules],
+        Union[None, HttpResponse, ResponseErrorResponse],
+    ]:
         """Parse the given response.
 
-        204: No Content - ApiFleetArtifactsSampleRules (success)
+        200: OK - ApiFleetArtifactsSampleRules (success)
 
         400: Bad Request - ResponseErrorResponse (invalid fleet ID)
 
@@ -221,8 +224,8 @@ class FleetArtifactSamplingRulesSet(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
+        if code == 200:
+            return ApiFleetArtifactsSampleRules.create_from_dict(content), None
         if code == 400:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:

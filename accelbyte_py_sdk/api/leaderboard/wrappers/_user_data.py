@@ -81,15 +81,13 @@ def get_user_leaderboard_rankings_admin_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetAllUserLeaderboardsResp (OK)
+        200: OK - ModelsGetAllUserLeaderboardsResp (User rankings retrieved)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -151,15 +149,13 @@ async def get_user_leaderboard_rankings_admin_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetAllUserLeaderboardsResp (OK)
+        200: OK - ModelsGetAllUserLeaderboardsResp (User rankings retrieved)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

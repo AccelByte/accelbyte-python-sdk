@@ -54,17 +54,21 @@ from ..api.cloudsave.models import ModelsBulkUserKeyRequest
 from ..api.cloudsave.models import ModelsConcurrentRecordRequest
 from ..api.cloudsave.models import ModelsCustomConfig
 from ..api.cloudsave.models import ModelsCustomFunction
+from ..api.cloudsave.models import ModelsGameBinaryRecordAdminResponse
 from ..api.cloudsave.models import ModelsGameBinaryRecordCreate
 from ..api.cloudsave.models import ModelsGameBinaryRecordMetadataRequest
 from ..api.cloudsave.models import ModelsGameBinaryRecordResponse
+from ..api.cloudsave.models import ModelsGameRecordAdminResponse
 from ..api.cloudsave.models import ModelsGameRecordRequest
 from ..api.cloudsave.models import ModelsGameRecordResponse
 from ..api.cloudsave.models import ModelsListAdminGameRecordKeysResponse
 from ..api.cloudsave.models import ModelsListAdminPlayerRecordKeysResponse
+from ..api.cloudsave.models import ModelsListGameBinaryRecordsAdminResponse
 from ..api.cloudsave.models import ModelsListGameBinaryRecordsResponse
 from ..api.cloudsave.models import ModelsListGameRecordKeysResponse
 from ..api.cloudsave.models import ModelsListPlayerBinaryRecordsResponse
 from ..api.cloudsave.models import ModelsListPlayerRecordKeysResponse
+from ..api.cloudsave.models import ModelsListTagsResponse
 from ..api.cloudsave.models import ModelsPagination
 from ..api.cloudsave.models import ModelsPlayerBinaryRecordCreate
 from ..api.cloudsave.models import ModelsPlayerBinaryRecordMetadataPublicRequest
@@ -80,6 +84,9 @@ from ..api.cloudsave.models import ModelsPluginResponse
 from ..api.cloudsave.models import ModelsPublicGameBinaryRecordCreate
 from ..api.cloudsave.models import ModelsPublicPlayerBinaryRecordCreate
 from ..api.cloudsave.models import ModelsResponseError
+from ..api.cloudsave.models import ModelsTTLConfigDTO
+from ..api.cloudsave.models import ModelsTagInfo
+from ..api.cloudsave.models import ModelsTagRequest
 from ..api.cloudsave.models import ModelsUploadBinaryRecordRequest
 from ..api.cloudsave.models import ModelsUploadBinaryRecordResponse
 from ..api.cloudsave.models import ModelsUserKeyRequest
@@ -92,6 +99,7 @@ def create_models_admin_concurrent_record_request_example() -> (
     instance.set_by = randomize()
     instance.updated_at = randomize()
     instance.value = {randomize(): randomize()}
+    instance.ttl_config = create_models_ttl_config_dto_example()
     return instance
 
 
@@ -340,11 +348,26 @@ def create_models_custom_function_example() -> ModelsCustomFunction:
     return instance
 
 
+def create_models_game_binary_record_admin_response_example() -> (
+    ModelsGameBinaryRecordAdminResponse
+):
+    instance = ModelsGameBinaryRecordAdminResponse()
+    instance.created_at = randomize("date")
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.binary_info = create_models_binary_info_response_example()
+    instance.set_by = randomize()
+    instance.ttl_config = create_models_ttl_config_dto_example()
+    return instance
+
+
 def create_models_game_binary_record_create_example() -> ModelsGameBinaryRecordCreate:
     instance = ModelsGameBinaryRecordCreate()
     instance.file_type = randomize()
     instance.key = randomize()
     instance.set_by = randomize()
+    instance.ttl_config = create_models_ttl_config_dto_example()
     return instance
 
 
@@ -353,6 +376,7 @@ def create_models_game_binary_record_metadata_request_example() -> (
 ):
     instance = ModelsGameBinaryRecordMetadataRequest()
     instance.set_by = randomize()
+    instance.ttl_config = create_models_ttl_config_dto_example()
     return instance
 
 
@@ -366,6 +390,18 @@ def create_models_game_binary_record_response_example() -> (
     instance.updated_at = randomize("date")
     instance.binary_info = create_models_binary_info_response_example()
     instance.set_by = randomize()
+    return instance
+
+
+def create_models_game_record_admin_response_example() -> ModelsGameRecordAdminResponse:
+    instance = ModelsGameRecordAdminResponse()
+    instance.created_at = randomize("date")
+    instance.key = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.value = {randomize(): randomize()}
+    instance.set_by = randomize()
+    instance.ttl_config = create_models_ttl_config_dto_example()
     return instance
 
 
@@ -403,6 +439,15 @@ def create_models_list_admin_player_record_keys_response_example() -> (
     return instance
 
 
+def create_models_list_game_binary_records_admin_response_example() -> (
+    ModelsListGameBinaryRecordsAdminResponse
+):
+    instance = ModelsListGameBinaryRecordsAdminResponse()
+    instance.data = [create_models_game_binary_record_admin_response_example()]
+    instance.paging = create_models_pagination_example()
+    return instance
+
+
 def create_models_list_game_binary_records_response_example() -> (
     ModelsListGameBinaryRecordsResponse
 ):
@@ -435,6 +480,13 @@ def create_models_list_player_record_keys_response_example() -> (
 ):
     instance = ModelsListPlayerRecordKeysResponse()
     instance.data = [create_models_player_record_key_info_example()]
+    instance.paging = create_models_pagination_example()
+    return instance
+
+
+def create_models_list_tags_response_example() -> ModelsListTagsResponse:
+    instance = ModelsListTagsResponse()
+    instance.data = [create_models_tag_info_example()]
     instance.paging = create_models_pagination_example()
     return instance
 
@@ -578,6 +630,26 @@ def create_models_response_error_example() -> ModelsResponseError:
     instance = ModelsResponseError()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
+    return instance
+
+
+def create_models_tag_info_example() -> ModelsTagInfo:
+    instance = ModelsTagInfo()
+    instance.created_at = randomize("date")
+    instance.tag = randomize()
+    return instance
+
+
+def create_models_tag_request_example() -> ModelsTagRequest:
+    instance = ModelsTagRequest()
+    instance.tag = randomize()
+    return instance
+
+
+def create_models_ttl_config_dto_example() -> ModelsTTLConfigDTO:
+    instance = ModelsTTLConfigDTO()
+    instance.action = randomize()
+    instance.expires_at = randomize("date")
     return instance
 
 

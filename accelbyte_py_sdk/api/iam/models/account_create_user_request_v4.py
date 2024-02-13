@@ -60,6 +60,8 @@ class AccountCreateUserRequestV4(Model):
         password_md5_sum: (passwordMD5Sum) OPTIONAL str
 
         reach_minimum_age: (reachMinimumAge) OPTIONAL bool
+
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
     """
 
     # region fields
@@ -75,6 +77,7 @@ class AccountCreateUserRequestV4(Model):
     password: str  # OPTIONAL
     password_md5_sum: str  # OPTIONAL
     reach_minimum_age: bool  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -126,6 +129,10 @@ class AccountCreateUserRequestV4(Model):
 
     def with_reach_minimum_age(self, value: bool) -> AccountCreateUserRequestV4:
         self.reach_minimum_age = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> AccountCreateUserRequestV4:
+        self.unique_display_name = value
         return self
 
     # endregion with_x methods
@@ -180,6 +187,10 @@ class AccountCreateUserRequestV4(Model):
             result["reachMinimumAge"] = bool(self.reach_minimum_age)
         elif include_empty:
             result["reachMinimumAge"] = False
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         return result
 
     # endregion to methods
@@ -200,6 +211,7 @@ class AccountCreateUserRequestV4(Model):
         password: Optional[str] = None,
         password_md5_sum: Optional[str] = None,
         reach_minimum_age: Optional[bool] = None,
+        unique_display_name: Optional[str] = None,
         **kwargs,
     ) -> AccountCreateUserRequestV4:
         instance = cls()
@@ -221,6 +233,8 @@ class AccountCreateUserRequestV4(Model):
             instance.password_md5_sum = password_md5_sum
         if reach_minimum_age is not None:
             instance.reach_minimum_age = reach_minimum_age
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         return instance
 
     @classmethod
@@ -279,6 +293,10 @@ class AccountCreateUserRequestV4(Model):
             instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
         elif include_empty:
             instance.reach_minimum_age = False
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         return instance
 
     @classmethod
@@ -333,6 +351,7 @@ class AccountCreateUserRequestV4(Model):
             "password": "password",
             "passwordMD5Sum": "password_md5_sum",
             "reachMinimumAge": "reach_minimum_age",
+            "uniqueDisplayName": "unique_display_name",
         }
 
     @staticmethod
@@ -349,6 +368,7 @@ class AccountCreateUserRequestV4(Model):
             "password": False,
             "passwordMD5Sum": False,
             "reachMinimumAge": False,
+            "uniqueDisplayName": False,
         }
 
     @staticmethod

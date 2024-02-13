@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.8.1)
+# Fleet Commander Index (1.10.0)
 
 
 ## Operations
@@ -95,6 +95,7 @@
 | api.AccountLinkTokenResponse | [ApiAccountLinkTokenResponse](../../accelbyte_py_sdk/api/ams/models/api_account_link_token_response.py) |
 | api.AccountResponse | [ApiAccountResponse](../../accelbyte_py_sdk/api/ams/models/api_account_response.py) |
 | api.AMSRegionsResponse | [ApiAMSRegionsResponse](../../accelbyte_py_sdk/api/ams/models/api_ams_regions_response.py) |
+| api.ArtifactListResponse | [ApiArtifactListResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_list_response.py) |
 | api.ArtifactResponse | [ApiArtifactResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_response.py) |
 | api.ArtifactSamplingRule | [ApiArtifactSamplingRule](../../accelbyte_py_sdk/api/ams/models/api_artifact_sampling_rule.py) |
 | api.ArtifactTypeSamplingRules | [ApiArtifactTypeSamplingRules](../../accelbyte_py_sdk/api/ams/models/api_artifact_type_sampling_rules.py) |

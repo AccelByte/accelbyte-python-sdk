@@ -65,4 +65,4 @@ def public_download_my_backup_codes_v4(
 
 
 public_download_my_backup_codes_v4.operation_id = "PublicDownloadMyBackupCodesV4"
-public_download_my_backup_codes_v4.is_deprecated = False
+public_download_my_backup_codes_v4.is_deprecated = True

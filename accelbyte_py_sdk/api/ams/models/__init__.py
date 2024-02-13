@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.8.1"
+__version__ = "1.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,6 +22,7 @@ from .api_account_link_response import ApiAccountLinkResponse
 from .api_account_link_token_response import ApiAccountLinkTokenResponse
 from .api_account_response import ApiAccountResponse
 from .api_ams_regions_response import ApiAMSRegionsResponse
+from .api_artifact_list_response import ApiArtifactListResponse
 from .api_artifact_response import ApiArtifactResponse
 from .api_artifact_sampling_rule import ApiArtifactSamplingRule
 from .api_artifact_type_sampling_rules import ApiArtifactTypeSamplingRules

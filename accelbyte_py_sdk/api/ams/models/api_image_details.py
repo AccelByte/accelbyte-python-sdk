@@ -36,6 +36,8 @@ class ApiImageDetails(Model):
     Properties:
         created_at: (createdAt) REQUIRED str
 
+        executable: (executable) REQUIRED str
+
         id_: (id) REQUIRED str
 
         is_protected: (isProtected) REQUIRED bool
@@ -58,6 +60,7 @@ class ApiImageDetails(Model):
     # region fields
 
     created_at: str  # REQUIRED
+    executable: str  # REQUIRED
     id_: str  # REQUIRED
     is_protected: bool  # REQUIRED
     name: str  # REQUIRED
@@ -74,6 +77,10 @@ class ApiImageDetails(Model):
 
     def with_created_at(self, value: str) -> ApiImageDetails:
         self.created_at = value
+        return self
+
+    def with_executable(self, value: str) -> ApiImageDetails:
+        self.executable = value
         return self
 
     def with_id(self, value: str) -> ApiImageDetails:
@@ -124,6 +131,10 @@ class ApiImageDetails(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
+        if hasattr(self, "executable"):
+            result["executable"] = str(self.executable)
+        elif include_empty:
+            result["executable"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -173,6 +184,7 @@ class ApiImageDetails(Model):
     def create(
         cls,
         created_at: str,
+        executable: str,
         id_: str,
         is_protected: bool,
         name: str,
@@ -186,6 +198,7 @@ class ApiImageDetails(Model):
     ) -> ApiImageDetails:
         instance = cls()
         instance.created_at = created_at
+        instance.executable = executable
         instance.id_ = id_
         instance.is_protected = is_protected
         instance.name = name
@@ -208,6 +221,10 @@ class ApiImageDetails(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
+        if "executable" in dict_ and dict_["executable"] is not None:
+            instance.executable = str(dict_["executable"])
+        elif include_empty:
+            instance.executable = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -287,6 +304,7 @@ class ApiImageDetails(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "createdAt": "created_at",
+            "executable": "executable",
             "id": "id_",
             "isProtected": "is_protected",
             "name": "name",
@@ -302,6 +320,7 @@ class ApiImageDetails(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "createdAt": True,
+            "executable": True,
             "id": True,
             "isProtected": True,
             "name": True,

@@ -196,6 +196,7 @@ Source: [basic.py](../tests/integration/api/basic.py)
 ```python
 def test_create_my_profile(self):
     # arrange
+    self.login_user()  # force re-login: token is revoked
 
     # act
     _, error = self.do_create_my_profile(body=self.user_profile_private_create)
@@ -369,257 +370,6 @@ def test_put_game_record_handler_v1(self):
     self.assertIn("foo", result.value)
     self.assertEqual("baz", result.value["foo"])
 ```
-## DS Log Manager
-
-Source: [dslogmanager.py](../tests/integration/api/dslogmanager.py)
-
-### Check Server Logs
-
-```python
-def test_check_server_logs(self):
-    from accelbyte_py_sdk.api.dslogmanager import check_server_logs
-
-    # arrange
-    pod_name = self.pre_fetch_pod_name()
-    if not pod_name:
-        self.skipTest(reason="Can't get a pod name to use.")
-
-    if not self.pre_fetch_terminated_servers():
-        self.skipTest(reason="No terminated servers to use.")
-
-    # act
-    _, error = check_server_logs(pod_name=self.pod_name)
-
-    # assert
-    self.assertIsNone(error, error)
-```
-### Download Server Logs
-
-```python
-def test_download_server_logs(self):
-    from accelbyte_py_sdk.api.dslogmanager import download_server_logs
-
-    # arrange
-    exported_file_path = Path(self.exported_filename)
-    exported_file_path.unlink(missing_ok=True)
-    pod_name = self.pre_fetch_pod_name()
-    if not pod_name:
-        self.skipTest(reason="Can't get a pod name to use.")
-
-    if not self.pre_fetch_terminated_servers():
-        self.skipTest(reason="No terminated servers to use.")
-
-    # act
-    result, error = download_server_logs(pod_name=self.pod_name)
-
-    if result is not None:
-        exported_file_path.write_bytes(result)
-
-    # assert
-    self.assertIsNone(error, error)
-    self.assertTrue(exported_file_path.exists())
-    self.assertGreater(exported_file_path.stat().st_size, 0)
-```
-### List Terminated Servers
-
-```python
-def test_list_terminated_servers(self):
-    from accelbyte_py_sdk.api.dslogmanager import list_terminated_servers
-
-    # arrange
-
-    # act
-    _, error = list_terminated_servers(limit=20)
-
-    # assert
-    self.assertIsNone(error, error)
-```
-## DSMC
-
-Source: [dsmc.py](../tests/integration/api/dsmc.py)
-
-### Export Config
-
-```python
-def test_export_config_v1(self):
-    from accelbyte_py_sdk.api.dsmc import export_config_v1
-
-    # arrange
-    exported_file_path = Path(self.exported_filename)
-    exported_file_path.unlink(missing_ok=True)
-
-    # act
-    result, error = export_config_v1()
-
-    if result is not None:
-        exported_file_path.write_bytes(result)
-
-    # assert
-    self.assertIsNone(error, error)
-    self.assertTrue(exported_file_path.exists())
-    self.assertGreater(exported_file_path.stat().st_size, 0)
-```
-### Update Deployment
-
-```python
-def test_update_deployment(self):
-    from accelbyte_py_sdk.api.dsmc import get_deployment
-    from accelbyte_py_sdk.api.dsmc import update_deployment
-    from accelbyte_py_sdk.api.dsmc.models import ModelsUpdateDeploymentRequest
-
-    # arrange
-    deployment_name = "default"
-    result, error = get_deployment(
-        deployment=deployment_name,
-    )
-    if error:
-        self.skipTest(reason="unable to get deployment")
-        return
-
-    # act
-    _, error = update_deployment(
-        body=ModelsUpdateDeploymentRequest.create(
-            allow_version_override=result.allow_version_override,
-            buffer_count=result.buffer_count,
-            buffer_percent=result.buffer_percent,
-            configuration=result.configuration,
-            enable_region_overrides=result.enable_region_overrides,
-            game_version=result.game_version,
-            max_count=result.max_count,
-            min_count=result.min_count,
-            regions=result.regions,
-            session_timeout=0,
-            unlimited=result.unlimited,
-            use_buffer_percent=result.use_buffer_percent,
-        ),
-        deployment=deployment_name,
-    )
-
-    # assert
-    self.assertIsNone(error, error)
-```
-### Update Deployment With Missing Image
-
-```python
-def test_update_deployment_with_missing_image(self):
-    from accelbyte_py_sdk.api.dsmc import get_deployment
-    from accelbyte_py_sdk.api.dsmc import update_deployment
-    from accelbyte_py_sdk.api.dsmc.models import ModelsUpdateDeploymentRequest
-
-    # arrange
-    deployment_name = "default"
-    result, error = get_deployment(
-        deployment=deployment_name,
-    )
-    if error:
-        self.skipTest(reason="unable to get deployment")
-        return
-
-    # act
-    _, error = update_deployment(
-        body=ModelsUpdateDeploymentRequest.create(
-            allow_version_override=result.allow_version_override,
-            buffer_count=result.buffer_count,
-            buffer_percent=result.buffer_percent,
-            configuration=result.configuration,
-            enable_region_overrides=result.enable_region_overrides,
-            game_version="xxx",
-            max_count=result.max_count,
-            min_count=result.min_count,
-            regions=result.regions,
-            session_timeout=0,
-            unlimited=result.unlimited,
-            use_buffer_percent=result.use_buffer_percent,
-        ),
-        deployment=deployment_name,
-    )
-
-    # assert
-    self.assertIsNotNone(error, error)
-    self.assertEqual(720510, error.error_code)
-    self.assertIn("DS image not found", error.error_message)
-```
-### Claim Server
-
-```python
-def test_claim_server(self):
-    from accelbyte_py_sdk.api.dsmc import claim_server
-    from accelbyte_py_sdk.api.dsmc import create_session
-    from accelbyte_py_sdk.api.dsmc.models import ModelsClaimSessionRequest
-    from accelbyte_py_sdk.api.dsmc.models import ResponseError
-
-    # arrange
-    _, error = create_session(
-        body=self.models_create_session_request,
-        namespace=self.models_create_session_request.namespace,
-    )
-    if error is not None:
-        self.skipTest(reason=f"Failed to set up DSMC session. {str(error)}")
-
-    time.sleep(5)
-
-    # act
-    _, error = claim_server(
-        body=ModelsClaimSessionRequest.create(
-            session_id=self.models_create_session_request.session_id
-        )
-    )
-
-    # assert
-    if error is not None and isinstance(error, ResponseError):
-        error_message = error.error_message.lower()
-        if "server is not ready" in error_message:
-            self.skipTest(reason=f"Server is not ready yet.")
-        elif "server is already claimed" in error_message:
-            self.skipTest(reason=f"Server was already claimed.")
-        else:
-            self.fail(msg=error)
-    else:
-        self.assertIsNone(error, error)
-```
-### Create Session
-
-```python
-def test_create_session(self):
-    from accelbyte_py_sdk.api.dsmc import create_session
-    from accelbyte_py_sdk.api.dsmc import delete_session
-
-    # arrange
-    if self.session_id is not None:
-        _, _ = delete_session(session_id=self.session_id)
-
-    # act
-    _, error = create_session(
-        body=self.models_create_session_request,
-        namespace=self.models_create_session_request.namespace,
-    )
-
-    # assert
-    self.assertIsNone(error, error)
-```
-### Get Session
-
-```python
-def test_get_session(self):
-    from accelbyte_py_sdk.api.dsmc import create_session
-    from accelbyte_py_sdk.api.dsmc import get_session
-
-    # arrange
-    _, error = create_session(
-        body=self.models_create_session_request,
-        namespace=self.models_create_session_request.namespace,
-    )
-    self.log_warning(
-        msg=f"Failed to set up DSMC session. {str(error)}",
-        condition=error is not None,
-    )
-
-    # act
-    _, error = get_session(session_id=self.models_create_session_request.session_id)
-
-    # assert
-    self.assertIsNone(error, error)
-```
 ## Game Telemetry
 
 Source: [gametelemetry.py](../tests/integration/api/gametelemetry.py)
@@ -710,6 +460,9 @@ Source: [gdpr.py](../tests/integration/api/gdpr.py)
 
 ```python
 def test_admin_get_user_personal_data_requests(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test not applicable to AGS Starter.")
+
     from accelbyte_py_sdk.api.gdpr import admin_get_user_personal_data_requests
 
     # arrange
@@ -733,6 +486,9 @@ def test_admin_get_user_personal_data_requests(self):
 
 ```python
 def test_admin_submit_user_account_deletion_request(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test not applicable to AGS Starter.")
+
     from accelbyte_py_sdk.api.gdpr import admin_submit_user_account_deletion_request
 
     # arrange
@@ -757,7 +513,7 @@ def test_admin_submit_user_account_deletion_request(self):
 ```python
 def test_delete_admin_email_configuration(self):
     if self.using_ags_starter:
-        self.login_client()
+        self.skipTest(reason="Test not applicable to AGS Starter.")
 
     from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
     from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
@@ -786,7 +542,7 @@ def test_delete_admin_email_configuration(self):
 ```python
 def test_get_admin_email_configuration(self):
     if self.using_ags_starter:
-        self.login_client()
+        self.skipTest(reason="Test not applicable to AGS Starter.")
 
     from accelbyte_py_sdk.api.gdpr import get_admin_email_configuration
     from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
@@ -812,7 +568,7 @@ def test_get_admin_email_configuration(self):
 ```python
 def test_save_admin_email_configuration(self):
     if self.using_ags_starter:
-        self.login_client()
+        self.skipTest(reason="Test not applicable to AGS Starter.")
 
     from accelbyte_py_sdk.api.gdpr import delete_admin_email_configuration
     from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
@@ -836,7 +592,7 @@ def test_save_admin_email_configuration(self):
 ```python
 def test_update_admin_email_configuration(self):
     if self.using_ags_starter:
-        self.login_client()
+        self.skipTest(reason="Test not applicable to AGS Starter.")
 
     from accelbyte_py_sdk.api.gdpr import save_admin_email_configuration
     from accelbyte_py_sdk.api.gdpr import update_admin_email_configuration
@@ -1205,6 +961,9 @@ def test_authorize_v3(self):
 
 ```python
 def test_admin_download_my_backup_codes_v4(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test not applicable to AGS Starter.")
+
     from accelbyte_py_sdk.api.iam import admin_download_my_backup_codes_v4
     from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
@@ -1232,6 +991,9 @@ def test_admin_download_my_backup_codes_v4(self):
 
 ```python
 def test_public_download_my_backup_codes_v4(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test not applicable to AGS Starter.")
+
     from accelbyte_py_sdk.api.iam import public_download_my_backup_codes_v4
     from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
@@ -2066,43 +1828,6 @@ def test_update_store(self):
     self.assertIsNotNone(result.title)
     self.assertEqual("JUDUL", result.title)
 ```
-## QOSM
-
-Source: [qosm.py](../tests/integration/api/qosm.py)
-
-### Heartbeat
-
-```python
-def test_heartbeat(self):
-    if self.using_ags_starter:
-        self.login_client()
-
-    from accelbyte_py_sdk.api.qosm import list_server
-    from accelbyte_py_sdk.api.qosm.models import ModelsHeartbeatRequest
-    from accelbyte_py_sdk.api.qosm import heartbeat
-
-    # arrange
-    result, error = list_server()
-    self.assertIsNone(error, error)
-
-    # act
-    if len(result.servers) > 0:
-        server = result.servers[0]
-        body = (
-            ModelsHeartbeatRequest()
-            .with_ip(server.ip)
-            .with_port(server.port)
-            .with_region(server.region)
-        )
-        result, error = heartbeat(body=body)
-
-    # assert
-    self.assertIsNone(error, error)
-```
-## Reporting
-
-Source: [reporting.py](../tests/integration/api/reporting.py)
-
 ## Season Pass
 
 Source: [seasonpass.py](../tests/integration/api/seasonpass.py)
@@ -2208,6 +1933,9 @@ def test_admin_create_configuration_template_v1(self):
 
 ```python
 def test_admin_delete_configuration_template_v1(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test is temporarily disabled in AGS Starter due to issue in session service.")
+    
     from accelbyte_py_sdk.core import generate_id
     from accelbyte_py_sdk.api.session import admin_delete_configuration_template_v1
 
@@ -2446,9 +2174,6 @@ def test_create_session(self):
 
 ```python
 def test_delete_session(self):
-    if self.using_ags_starter:
-        self.login_client()
-
     from accelbyte_py_sdk.api.sessionbrowser import admin_delete_session
 
     # arrange

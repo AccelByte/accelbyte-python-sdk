@@ -11,7 +11,7 @@ body:
 Definition: ApiAddMemberParams
 is_admin: bool
 
-Example: '{"isAdmin": true}'
+Example: '{"isAdmin": false}'
 """
 
 result, error = admin_add_topic_member(

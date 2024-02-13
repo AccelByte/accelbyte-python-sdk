@@ -59,15 +59,17 @@ class BulkGetUsersRankingPublicV3(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsBulkUserRankingResponseV3 (OK)
+        200: OK - ModelsBulkUserRankingResponseV3 (Users ranking retrieved)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -191,15 +193,17 @@ class BulkGetUsersRankingPublicV3(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsBulkUserRankingResponseV3 (OK)
+        200: OK - ModelsBulkUserRankingResponseV3 (Users ranking retrieved)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -216,6 +220,8 @@ class BulkGetUsersRankingPublicV3(Operation):
 
         if code == 200:
             return ModelsBulkUserRankingResponseV3.create_from_dict(content), None
+        if code == 400:
+            return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:

@@ -30,10 +30,10 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsBinaryRecordRequest
+from ..models import ModelsGameBinaryRecordAdminResponse
 from ..models import ModelsGameBinaryRecordCreate
 from ..models import ModelsGameBinaryRecordMetadataRequest
-from ..models import ModelsGameBinaryRecordResponse
-from ..models import ModelsListGameBinaryRecordsResponse
+from ..models import ModelsListGameBinaryRecordsAdminResponse
 from ..models import ModelsResponseError
 from ..models import ModelsUploadBinaryRecordRequest
 from ..models import ModelsUploadBinaryRecordResponse
@@ -45,9 +45,9 @@ from ..operations.admin_game_binary_record import AdminPostGameBinaryPresignedUR
 from ..operations.admin_game_binary_record import AdminPostGameBinaryRecordV1
 from ..operations.admin_game_binary_record import AdminPutGameBinaryRecorMetadataV1
 from ..operations.admin_game_binary_record import AdminPutGameBinaryRecordV1
+from ..models import ModelsGameBinaryRecordAdminResponseSetByEnum
 from ..models import ModelsGameBinaryRecordCreateSetByEnum
 from ..models import ModelsGameBinaryRecordMetadataRequestSetByEnum
-from ..models import ModelsGameBinaryRecordResponseSetByEnum
 
 
 @same_doc_as(AdminDeleteGameBinaryRecordV1)
@@ -185,7 +185,7 @@ def admin_get_game_binary_record_v1(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameBinaryRecordResponse (Record in namespace-level retrieved)
+        200: OK - ModelsGameBinaryRecordAdminResponse (Record in namespace-level retrieved)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
@@ -235,7 +235,7 @@ async def admin_get_game_binary_record_v1_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameBinaryRecordResponse (Record in namespace-level retrieved)
+        200: OK - ModelsGameBinaryRecordAdminResponse (Record in namespace-level retrieved)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
@@ -293,7 +293,7 @@ def admin_list_game_binary_records_v1(
         query: (query) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsListGameBinaryRecordsResponse (Retrieve list of records by namespace)
+        200: OK - ModelsListGameBinaryRecordsAdminResponse (Retrieve list of records by namespace)
 
         400: Bad Request - ModelsResponseError (18304: invalid request body)
 
@@ -351,7 +351,7 @@ async def admin_list_game_binary_records_v1_async(
         query: (query) OPTIONAL str in query
 
     Responses:
-        200: OK - ModelsListGameBinaryRecordsResponse (Retrieve list of records by namespace)
+        200: OK - ModelsListGameBinaryRecordsAdminResponse (Retrieve list of records by namespace)
 
         400: Bad Request - ModelsResponseError (18304: invalid request body)
 
@@ -658,7 +658,7 @@ def admin_put_game_binary_recor_metadata_v1(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameBinaryRecordResponse (Record saved)
+        200: OK - ModelsGameBinaryRecordAdminResponse (Record saved)
 
         400: Bad Request - ModelsResponseError (18316: invalid request body)
 
@@ -714,7 +714,7 @@ async def admin_put_game_binary_recor_metadata_v1_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameBinaryRecordResponse (Record saved)
+        200: OK - ModelsGameBinaryRecordAdminResponse (Record saved)
 
         400: Bad Request - ModelsResponseError (18316: invalid request body)
 
@@ -772,7 +772,7 @@ def admin_put_game_binary_record_v1(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameBinaryRecordResponse (Record saved)
+        200: OK - ModelsGameBinaryRecordAdminResponse (Record saved)
 
         400: Bad Request - ModelsResponseError (18316: invalid request body | 18201: invalid record operator, expect [%s] but actual [%s])
 
@@ -828,7 +828,7 @@ async def admin_put_game_binary_record_v1_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameBinaryRecordResponse (Record saved)
+        200: OK - ModelsGameBinaryRecordAdminResponse (Record saved)
 
         400: Bad Request - ModelsResponseError (18316: invalid request body | 18201: invalid record operator, expect [%s] but actual [%s])
 

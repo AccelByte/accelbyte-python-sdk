@@ -40,6 +40,8 @@ class ModelUserBaseInfo(Model):
 
         user_id: (userId) REQUIRED str
 
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
+
         username: (username) OPTIONAL str
     """
 
@@ -49,6 +51,7 @@ class ModelUserBaseInfo(Model):
     display_name: str  # REQUIRED
     platform_user_ids: Dict[str, str]  # REQUIRED
     user_id: str  # REQUIRED
+    unique_display_name: str  # OPTIONAL
     username: str  # OPTIONAL
 
     # endregion fields
@@ -69,6 +72,10 @@ class ModelUserBaseInfo(Model):
 
     def with_user_id(self, value: str) -> ModelUserBaseInfo:
         self.user_id = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelUserBaseInfo:
+        self.unique_display_name = value
         return self
 
     def with_username(self, value: str) -> ModelUserBaseInfo:
@@ -99,6 +106,10 @@ class ModelUserBaseInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
@@ -116,6 +127,7 @@ class ModelUserBaseInfo(Model):
         display_name: str,
         platform_user_ids: Dict[str, str],
         user_id: str,
+        unique_display_name: Optional[str] = None,
         username: Optional[str] = None,
         **kwargs,
     ) -> ModelUserBaseInfo:
@@ -124,6 +136,8 @@ class ModelUserBaseInfo(Model):
         instance.display_name = display_name
         instance.platform_user_ids = platform_user_ids
         instance.user_id = user_id
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         if username is not None:
             instance.username = username
         return instance
@@ -153,6 +167,10 @@ class ModelUserBaseInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
@@ -202,6 +220,7 @@ class ModelUserBaseInfo(Model):
             "displayName": "display_name",
             "platformUserIds": "platform_user_ids",
             "userId": "user_id",
+            "uniqueDisplayName": "unique_display_name",
             "username": "username",
         }
 
@@ -212,6 +231,7 @@ class ModelUserBaseInfo(Model):
             "displayName": True,
             "platformUserIds": True,
             "userId": True,
+            "uniqueDisplayName": False,
             "username": False,
         }
 

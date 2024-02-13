@@ -68,17 +68,17 @@ class GetAllTimeLeaderboardRankingAdminV3(Operation):
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (All time leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
 
     # region fields
@@ -214,17 +214,17 @@ class GetAllTimeLeaderboardRankingAdminV3(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (All time leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
 
         ---: HttpResponse (Undocumented Response)
 

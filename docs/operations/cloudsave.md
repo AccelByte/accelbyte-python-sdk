@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Cloudsave Service Index (3.14.0)
+# AccelByte Gaming Services Cloudsave Service Index (3.15.0)
 
 
 ## Operations
@@ -150,6 +150,20 @@
 | /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} | PUT | putPlayerRecordHandlerV1 | `false` | [PutPlayerRecordHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/put_player_record_handler_v1.py) | [put_player_record_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) | [accelbyte_py_sdk_cli cloudsave-put-player-record-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_put_player_record_handler_v1.py) |
 | /cloudsave/v1/namespaces/{namespace}/users/me/records | GET | RetrievePlayerRecords | `false` | [RetrievePlayerRecords](../../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/retrieve_player_records.py) | [retrieve_player_records](../../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) | [accelbyte_py_sdk_cli cloudsave-retrieve-player-records](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_retrieve_player_records.py) |
 
+### Tags
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /cloudsave/v1/admin/namespaces/{namespace}/tags/{tag} | DELETE | adminDeleteTagHandlerV1 | `false` | [AdminDeleteTagHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/tags/admin_delete_tag_handler_v1.py) | [admin_delete_tag_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_tags.py) | [accelbyte_py_sdk_cli cloudsave-admin-delete-tag-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_delete_tag_handler_v1.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/tags | GET | adminListTagsHandlerV1 | `false` | [AdminListTagsHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/tags/admin_list_tags_handler_v1.py) | [admin_list_tags_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_tags.py) | [accelbyte_py_sdk_cli cloudsave-admin-list-tags-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_list_tags_handler_v1.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/tags | POST | adminPostTagHandlerV1 | `false` | [AdminPostTagHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/tags/admin_post_tag_handler_v1.py) | [admin_post_tag_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_tags.py) | [accelbyte_py_sdk_cli cloudsave-admin-post-tag-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_post_tag_handler_v1.py) |
+| /cloudsave/v1/namespaces/{namespace}/tags | GET | publicListTagsHandlerV1 | `false` | [PublicListTagsHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/tags/public_list_tags_handler_v1.py) | [public_list_tags_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_tags.py) | [accelbyte_py_sdk_cli cloudsave-public-list-tags-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_public_list_tags_handler_v1.py) |
+
+### TTLConfig
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /cloudsave/v1/admin/namespaces/{namespace}/binaries/{key}/ttl | DELETE | deleteGameBinaryRecordTTLConfig | `false` | [DeleteGameBinaryRecordTTLConfig](../../accelbyte_py_sdk/api/cloudsave/operations/ttl_config/delete_game_binary_reco_40da6b.py) | [delete_game_binary_record_ttl_config](../../accelbyte_py_sdk/api/cloudsave/wrappers/_ttl_config.py) | [accelbyte_py_sdk_cli cloudsave-delete-game-binary-record-ttl-config](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_delete_game_binary_record_ttl_config.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/records/{key}/ttl | DELETE | deleteGameRecordTTLConfig | `false` | [DeleteGameRecordTTLConfig](../../accelbyte_py_sdk/api/cloudsave/operations/ttl_config/delete_game_record_ttl_config.py) | [delete_game_record_ttl_config](../../accelbyte_py_sdk/api/cloudsave/wrappers/_ttl_config.py) | [accelbyte_py_sdk_cli cloudsave-delete-game-record-ttl-config](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_delete_game_record_ttl_config.py) |
+
 
 ## Models
 | Model | Class |
@@ -184,17 +198,21 @@
 | models.ConcurrentRecordRequest | [ModelsConcurrentRecordRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_concurrent_record_request.py) |
 | models.CustomConfig | [ModelsCustomConfig](../../accelbyte_py_sdk/api/cloudsave/models/models_custom_config.py) |
 | models.CustomFunction | [ModelsCustomFunction](../../accelbyte_py_sdk/api/cloudsave/models/models_custom_function.py) |
+| models.GameBinaryRecordAdminResponse | [ModelsGameBinaryRecordAdminResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_game_binary_record_admin_response.py) |
 | models.GameBinaryRecordCreate | [ModelsGameBinaryRecordCreate](../../accelbyte_py_sdk/api/cloudsave/models/models_game_binary_record_create.py) |
 | models.GameBinaryRecordMetadataRequest | [ModelsGameBinaryRecordMetadataRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_game_binary_record_metadata_request.py) |
 | models.GameBinaryRecordResponse | [ModelsGameBinaryRecordResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_game_binary_record_response.py) |
+| models.GameRecordAdminResponse | [ModelsGameRecordAdminResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_game_record_admin_response.py) |
 | models.GameRecordRequest | [ModelsGameRecordRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_game_record_request.py) |
 | models.GameRecordResponse | [ModelsGameRecordResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_game_record_response.py) |
 | models.ListAdminGameRecordKeysResponse | [ModelsListAdminGameRecordKeysResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_list_admin_game_record_keys_response.py) |
 | models.ListAdminPlayerRecordKeysResponse | [ModelsListAdminPlayerRecordKeysResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_list_admin_player_record_keys_response.py) |
+| models.ListGameBinaryRecordsAdminResponse | [ModelsListGameBinaryRecordsAdminResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_list_game_binary_records_admin_response.py) |
 | models.ListGameBinaryRecordsResponse | [ModelsListGameBinaryRecordsResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_list_game_binary_records_response.py) |
 | models.ListGameRecordKeysResponse | [ModelsListGameRecordKeysResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_list_game_record_keys_response.py) |
 | models.ListPlayerBinaryRecordsResponse | [ModelsListPlayerBinaryRecordsResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_list_player_binary_records_response.py) |
 | models.ListPlayerRecordKeysResponse | [ModelsListPlayerRecordKeysResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_list_player_record_keys_response.py) |
+| models.ListTagsResponse | [ModelsListTagsResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_list_tags_response.py) |
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/cloudsave/models/models_pagination.py) |
 | models.PlayerBinaryRecordCreate | [ModelsPlayerBinaryRecordCreate](../../accelbyte_py_sdk/api/cloudsave/models/models_player_binary_record_create.py) |
 | models.PlayerBinaryRecordMetadataPublicRequest | [ModelsPlayerBinaryRecordMetadataPublicRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_player_binary_record_metadata_public_request.py) |
@@ -210,6 +228,9 @@
 | models.PublicGameBinaryRecordCreate | [ModelsPublicGameBinaryRecordCreate](../../accelbyte_py_sdk/api/cloudsave/models/models_public_game_binary_record_create.py) |
 | models.PublicPlayerBinaryRecordCreate | [ModelsPublicPlayerBinaryRecordCreate](../../accelbyte_py_sdk/api/cloudsave/models/models_public_player_binary_record_create.py) |
 | models.ResponseError | [ModelsResponseError](../../accelbyte_py_sdk/api/cloudsave/models/models_response_error.py) |
+| models.TagInfo | [ModelsTagInfo](../../accelbyte_py_sdk/api/cloudsave/models/models_tag_info.py) |
+| models.TagRequest | [ModelsTagRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_tag_request.py) |
+| models.TTLConfigDTO | [ModelsTTLConfigDTO](../../accelbyte_py_sdk/api/cloudsave/models/models_ttl_config_dto.py) |
 | models.UploadBinaryRecordRequest | [ModelsUploadBinaryRecordRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_upload_binary_record_request.py) |
 | models.UploadBinaryRecordResponse | [ModelsUploadBinaryRecordResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_upload_binary_record_response.py) |
 | models.UserKeyRequest | [ModelsUserKeyRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_user_key_request.py) |

@@ -66,4 +66,4 @@ def public_enable_my_backup_codes_v4(
 
 
 public_enable_my_backup_codes_v4.operation_id = "PublicEnableMyBackupCodesV4"
-public_enable_my_backup_codes_v4.is_deprecated = False
+public_enable_my_backup_codes_v4.is_deprecated = True

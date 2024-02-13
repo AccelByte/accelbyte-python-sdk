@@ -150,7 +150,7 @@ class PublicCreateUserNamespaceSlot(Operation):
         if hasattr(self, "custom_attribute"):
             result["customAttribute"] = self.custom_attribute
         if hasattr(self, "file"):
-            result["file"] = self.file
+            result[("file", "file")] = self.file
         return result
 
     def get_path_params(self) -> dict:

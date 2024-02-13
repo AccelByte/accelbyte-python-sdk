@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.33.2"
+__version__ = "3.35.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -57,6 +57,8 @@ from .wrappers import admin_update_config_v1_async
 # friends
 from .wrappers import add_friends_without_confirmation
 from .wrappers import add_friends_without_confirmation_async
+from .wrappers import admin_list_friends_of_friends
+from .wrappers import admin_list_friends_of_friends_async
 from .wrappers import bulk_delete_friends
 from .wrappers import bulk_delete_friends_async
 from .wrappers import get_incoming_friend_requests
@@ -189,6 +191,10 @@ from .wrappers import public_get_player_blocked_by_players_v1
 from .wrappers import public_get_player_blocked_by_players_v1_async
 from .wrappers import public_get_player_blocked_players_v1
 from .wrappers import public_get_player_blocked_players_v1_async
+from .wrappers import public_player_block_players_v1
+from .wrappers import public_player_block_players_v1_async
+from .wrappers import public_unblock_player_v1
+from .wrappers import public_unblock_player_v1_async
 
 # presence
 from .wrappers import users_presence_handler_v1

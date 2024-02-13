@@ -35,12 +35,15 @@ class ModelUserPublicInfoResponseV4(Model):
         display_name: (displayName) REQUIRED str
 
         user_id: (userId) REQUIRED str
+
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
     """
 
     # region fields
 
     display_name: str  # REQUIRED
     user_id: str  # REQUIRED
+    unique_display_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class ModelUserPublicInfoResponseV4(Model):
 
     def with_user_id(self, value: str) -> ModelUserPublicInfoResponseV4:
         self.user_id = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelUserPublicInfoResponseV4:
+        self.unique_display_name = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class ModelUserPublicInfoResponseV4(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         return result
 
     # endregion to methods
@@ -76,11 +87,17 @@ class ModelUserPublicInfoResponseV4(Model):
 
     @classmethod
     def create(
-        cls, display_name: str, user_id: str, **kwargs
+        cls,
+        display_name: str,
+        user_id: str,
+        unique_display_name: Optional[str] = None,
+        **kwargs,
     ) -> ModelUserPublicInfoResponseV4:
         instance = cls()
         instance.display_name = display_name
         instance.user_id = user_id
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         return instance
 
     @classmethod
@@ -98,6 +115,10 @@ class ModelUserPublicInfoResponseV4(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         return instance
 
     @classmethod
@@ -143,6 +164,7 @@ class ModelUserPublicInfoResponseV4(Model):
         return {
             "displayName": "display_name",
             "userId": "user_id",
+            "uniqueDisplayName": "unique_display_name",
         }
 
     @staticmethod
@@ -150,6 +172,7 @@ class ModelUserPublicInfoResponseV4(Model):
         return {
             "displayName": True,
             "userId": True,
+            "uniqueDisplayName": False,
         }
 
     # endregion static methods

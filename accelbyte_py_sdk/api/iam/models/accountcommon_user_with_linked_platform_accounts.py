@@ -42,6 +42,8 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
 
         namespace: (namespace) REQUIRED str
 
+        unique_display_name: (uniqueDisplayName) REQUIRED str
+
         user_id: (userId) REQUIRED str
     """
 
@@ -51,6 +53,7 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
     email_address: str  # REQUIRED
     linked_platforms: List[AccountcommonPlatformAccount]  # REQUIRED
     namespace: str  # REQUIRED
+    unique_display_name: str  # REQUIRED
     user_id: str  # REQUIRED
 
     # endregion fields
@@ -77,6 +80,12 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
 
     def with_namespace(self, value: str) -> AccountcommonUserWithLinkedPlatformAccounts:
         self.namespace = value
+        return self
+
+    def with_unique_display_name(
+        self, value: str
+    ) -> AccountcommonUserWithLinkedPlatformAccounts:
+        self.unique_display_name = value
         return self
 
     def with_user_id(self, value: str) -> AccountcommonUserWithLinkedPlatformAccounts:
@@ -107,6 +116,10 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -124,6 +137,7 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
         email_address: str,
         linked_platforms: List[AccountcommonPlatformAccount],
         namespace: str,
+        unique_display_name: str,
         user_id: str,
         **kwargs,
     ) -> AccountcommonUserWithLinkedPlatformAccounts:
@@ -132,6 +146,7 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
         instance.email_address = email_address
         instance.linked_platforms = linked_platforms
         instance.namespace = namespace
+        instance.unique_display_name = unique_display_name
         instance.user_id = user_id
         return instance
 
@@ -163,6 +178,10 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -214,6 +233,7 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
             "emailAddress": "email_address",
             "linkedPlatforms": "linked_platforms",
             "namespace": "namespace",
+            "uniqueDisplayName": "unique_display_name",
             "userId": "user_id",
         }
 
@@ -224,6 +244,7 @@ class AccountcommonUserWithLinkedPlatformAccounts(Model):
             "emailAddress": True,
             "linkedPlatforms": True,
             "namespace": True,
+            "uniqueDisplayName": True,
             "userId": True,
         }
 

@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import AccountCreateUserRequestV4
 from ...models import AccountCreateUserResponseV4
-from ...models import ModelUserCreateFromInvitationRequestV4
 from ...models import RestErrorResponse
 
 
@@ -42,6 +42,9 @@ class CreateUserFromInvitationV4(Operation):
     Available Authentication Types:
 
     EMAILPASSWD: an authentication type used for new user registration through email.
+
+    **Note**:
+    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
@@ -68,7 +71,7 @@ class CreateUserFromInvitationV4(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserCreateFromInvitationRequestV4 in body
+        body: (body) REQUIRED AccountCreateUserRequestV4 in body
 
         invitation_id: (invitationId) REQUIRED str in path
 
@@ -95,7 +98,7 @@ class CreateUserFromInvitationV4(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelUserCreateFromInvitationRequestV4  # REQUIRED in [body]
+    body: AccountCreateUserRequestV4  # REQUIRED in [body]
     invitation_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -163,7 +166,7 @@ class CreateUserFromInvitationV4(Operation):
     # region with_x methods
 
     def with_body(
-        self, value: ModelUserCreateFromInvitationRequestV4
+        self, value: AccountCreateUserRequestV4
     ) -> CreateUserFromInvitationV4:
         self.body = value
         return self
@@ -185,7 +188,7 @@ class CreateUserFromInvitationV4(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelUserCreateFromInvitationRequestV4()
+            result["body"] = AccountCreateUserRequestV4()
         if hasattr(self, "invitation_id") and self.invitation_id:
             result["invitationId"] = str(self.invitation_id)
         elif include_empty:
@@ -254,7 +257,7 @@ class CreateUserFromInvitationV4(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelUserCreateFromInvitationRequestV4,
+        body: AccountCreateUserRequestV4,
         invitation_id: str,
         namespace: str,
         **kwargs,
@@ -273,11 +276,11 @@ class CreateUserFromInvitationV4(Operation):
     ) -> CreateUserFromInvitationV4:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelUserCreateFromInvitationRequestV4.create_from_dict(
+            instance.body = AccountCreateUserRequestV4.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelUserCreateFromInvitationRequestV4()
+            instance.body = AccountCreateUserRequestV4()
         if "invitationId" in dict_ and dict_["invitationId"] is not None:
             instance.invitation_id = str(dict_["invitationId"])
         elif include_empty:

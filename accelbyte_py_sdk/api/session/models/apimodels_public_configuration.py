@@ -66,6 +66,8 @@ class ApimodelsPublicConfiguration(Model):
 
         ds_source: (dsSource) OPTIONAL str
 
+        enable_secret: (enableSecret) OPTIONAL bool
+
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
         immutable_storage: (immutableStorage) OPTIONAL bool
@@ -105,6 +107,7 @@ class ApimodelsPublicConfiguration(Model):
     disable_code_generation: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
+    enable_secret: bool  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
     immutable_storage: bool  # OPTIONAL
     leader_election_grace_period: int  # OPTIONAL
@@ -182,6 +185,10 @@ class ApimodelsPublicConfiguration(Model):
 
     def with_ds_source(self, value: str) -> ApimodelsPublicConfiguration:
         self.ds_source = value
+        return self
+
+    def with_enable_secret(self, value: bool) -> ApimodelsPublicConfiguration:
+        self.enable_secret = value
         return self
 
     def with_fallback_claim_keys(
@@ -304,6 +311,10 @@ class ApimodelsPublicConfiguration(Model):
             result["dsSource"] = str(self.ds_source)
         elif include_empty:
             result["dsSource"] = ""
+        if hasattr(self, "enable_secret"):
+            result["enableSecret"] = bool(self.enable_secret)
+        elif include_empty:
+            result["enableSecret"] = False
         if hasattr(self, "fallback_claim_keys"):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
@@ -371,6 +382,7 @@ class ApimodelsPublicConfiguration(Model):
         disable_code_generation: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
         ds_source: Optional[str] = None,
+        enable_secret: Optional[bool] = None,
         fallback_claim_keys: Optional[List[str]] = None,
         immutable_storage: Optional[bool] = None,
         leader_election_grace_period: Optional[int] = None,
@@ -404,6 +416,8 @@ class ApimodelsPublicConfiguration(Model):
             instance.ds_manual_set_ready = ds_manual_set_ready
         if ds_source is not None:
             instance.ds_source = ds_source
+        if enable_secret is not None:
+            instance.enable_secret = enable_secret
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
         if immutable_storage is not None:
@@ -502,6 +516,10 @@ class ApimodelsPublicConfiguration(Model):
             instance.ds_source = str(dict_["dsSource"])
         elif include_empty:
             instance.ds_source = ""
+        if "enableSecret" in dict_ and dict_["enableSecret"] is not None:
+            instance.enable_secret = bool(dict_["enableSecret"])
+        elif include_empty:
+            instance.enable_secret = False
         if "fallbackClaimKeys" in dict_ and dict_["fallbackClaimKeys"] is not None:
             instance.fallback_claim_keys = [
                 str(i0) for i0 in dict_["fallbackClaimKeys"]
@@ -620,6 +638,7 @@ class ApimodelsPublicConfiguration(Model):
             "disableCodeGeneration": "disable_code_generation",
             "dsManualSetReady": "ds_manual_set_ready",
             "dsSource": "ds_source",
+            "enableSecret": "enable_secret",
             "fallbackClaimKeys": "fallback_claim_keys",
             "immutableStorage": "immutable_storage",
             "leaderElectionGracePeriod": "leader_election_grace_period",
@@ -651,6 +670,7 @@ class ApimodelsPublicConfiguration(Model):
             "disableCodeGeneration": False,
             "dsManualSetReady": False,
             "dsSource": False,
+            "enableSecret": False,
             "fallbackClaimKeys": False,
             "immutableStorage": False,
             "leaderElectionGracePeriod": False,

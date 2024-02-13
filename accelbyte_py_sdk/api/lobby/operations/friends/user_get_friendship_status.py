@@ -37,6 +37,10 @@ class UserGetFriendshipStatus(Operation):
     """user get friendship status (userGetFriendshipStatus)
 
     User get friendship status.
+    Code: 0 - Message: "not friend"
+    Code: 1 - Message: "outgoing"
+    Code: 2 - Message: "incoming"
+    Code: 3 - Message: "friend"
 
     Properties:
         url: /friends/namespaces/{namespace}/me/status/{friendId}

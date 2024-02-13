@@ -325,7 +325,7 @@ def fleet_create(
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
-        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (exceeded quota)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -380,7 +380,7 @@ async def fleet_create_async(
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
-        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (exceeded quota)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -430,6 +430,8 @@ def fleet_delete(
 
     Responses:
         204: No Content - (no content)
+
+        400: Bad Request - ResponseErrorResponse (bad request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -483,6 +485,8 @@ async def fleet_delete_async(
 
     Responses:
         204: No Content - (no content)
+
+        400: Bad Request - ResponseErrorResponse (bad request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -539,6 +543,8 @@ def fleet_get(
     Responses:
         200: OK - ApiFleetGetResponse (success)
 
+        400: Bad Request - ResponseErrorResponse (bad request)
+
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
@@ -591,6 +597,8 @@ async def fleet_get_async(
 
     Responses:
         200: OK - ApiFleetGetResponse (success)
+
+        400: Bad Request - ResponseErrorResponse (bad request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -735,6 +743,8 @@ def fleet_servers(
     Responses:
         200: OK - ApiFleetServersResponse (success)
 
+        400: Bad Request - ResponseErrorResponse (bad request)
+
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
@@ -787,6 +797,8 @@ async def fleet_servers_async(
 
     Responses:
         200: OK - ApiFleetServersResponse (success)
+
+        400: Bad Request - ResponseErrorResponse (bad request)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 

@@ -36,6 +36,8 @@ from ..api.lobby.models import ModelCreateTopicRequestV1
 from ..api.lobby.models import ModelFreeFormNotificationRequest
 from ..api.lobby.models import ModelFreeFormNotificationRequestV1
 from ..api.lobby.models import ModelFriendWithPlatform
+from ..api.lobby.models import ModelFriendshipConnection
+from ..api.lobby.models import ModelFriendshipConnectionResponse
 from ..api.lobby.models import ModelGetAllNotificationTemplateSlugResp
 from ..api.lobby.models import ModelGetAllNotificationTopicsResponse
 from ..api.lobby.models import ModelGetFriendsResponse
@@ -84,6 +86,7 @@ from ..api.lobby.models import ModelsAdminSetProfanityRuleForNamespaceRequest
 from ..api.lobby.models import ModelsAdminUpdateProfanityList
 from ..api.lobby.models import ModelsAdminVerifyMessageProfanityRequest
 from ..api.lobby.models import ModelsAdminVerifyMessageProfanityResponse
+from ..api.lobby.models import ModelsBlockPlayerRequest
 from ..api.lobby.models import ModelsBlockedByPlayerData
 from ..api.lobby.models import ModelsBlockedPlayerData
 from ..api.lobby.models import ModelsConfig
@@ -108,6 +111,7 @@ from ..api.lobby.models import ModelsPartyPUTLimitSizeRequest
 from ..api.lobby.models import ModelsProfanityFilter
 from ..api.lobby.models import ModelsProfanityRule
 from ..api.lobby.models import ModelsSetPlayerSessionAttributeRequest
+from ..api.lobby.models import ModelsUnblockPlayerRequest
 from ..api.lobby.models import ModelsUpdateConfigRequest
 from ..api.lobby.models import ModelsUpdateConfigResponse
 from ..api.lobby.models import ResponseError
@@ -216,6 +220,22 @@ def create_model_friend_with_platform_example() -> ModelFriendWithPlatform:
     instance = ModelFriendWithPlatform()
     instance.platform_id = randomize()
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_model_friendship_connection_example() -> ModelFriendshipConnection:
+    instance = ModelFriendshipConnection()
+    instance.friend_id = randomize()
+    instance.subject_id = randomize()
+    return instance
+
+
+def create_model_friendship_connection_response_example() -> (
+    ModelFriendshipConnectionResponse
+):
+    instance = ModelFriendshipConnectionResponse()
+    instance.data = [create_model_friendship_connection_example()]
+    instance.paging = create_model_pagination_example()
     return instance
 
 
@@ -645,6 +665,12 @@ def create_models_admin_verify_message_profanity_response_example() -> (
     return instance
 
 
+def create_models_block_player_request_example() -> ModelsBlockPlayerRequest:
+    instance = ModelsBlockPlayerRequest()
+    instance.blocked_user_id = randomize()
+    return instance
+
+
 def create_models_blocked_by_player_data_example() -> ModelsBlockedByPlayerData:
     instance = ModelsBlockedByPlayerData()
     instance.blocked_at = randomize("date")
@@ -868,6 +894,12 @@ def create_models_set_player_session_attribute_request_example() -> (
 ):
     instance = ModelsSetPlayerSessionAttributeRequest()
     instance.attributes = {randomize(): randomize()}
+    return instance
+
+
+def create_models_unblock_player_request_example() -> ModelsUnblockPlayerRequest:
+    instance = ModelsUnblockPlayerRequest()
+    instance.user_id = randomize("uid")
     return instance
 
 

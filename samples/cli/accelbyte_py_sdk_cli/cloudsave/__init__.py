@@ -25,6 +25,7 @@ from ._admin_put_game_binary_recor_metadata_v1 import (
 from ._admin_post_game_binary_presigned_urlv1 import (
     admin_post_game_binary_presigned_urlv1,
 )
+from ._delete_game_binary_record_ttl_config import delete_game_binary_record_ttl_config
 from ._admin_put_admin_game_record_concurrent_handler_v1 import (
     admin_put_admin_game_record_concurrent_handler_v1,
 )
@@ -40,6 +41,10 @@ from ._admin_get_game_record_handler_v1 import admin_get_game_record_handler_v1
 from ._admin_put_game_record_handler_v1 import admin_put_game_record_handler_v1
 from ._admin_post_game_record_handler_v1 import admin_post_game_record_handler_v1
 from ._admin_delete_game_record_handler_v1 import admin_delete_game_record_handler_v1
+from ._delete_game_record_ttl_config import delete_game_record_ttl_config
+from ._admin_list_tags_handler_v1 import admin_list_tags_handler_v1
+from ._admin_post_tag_handler_v1 import admin_post_tag_handler_v1
+from ._admin_delete_tag_handler_v1 import admin_delete_tag_handler_v1
 from ._bulk_get_admin_player_record_by_user_ids_v1 import (
     bulk_get_admin_player_record_by_user_ids_v1,
 )
@@ -114,6 +119,7 @@ from ._get_game_record_handler_v1 import get_game_record_handler_v1
 from ._put_game_record_handler_v1 import put_game_record_handler_v1
 from ._post_game_record_handler_v1 import post_game_record_handler_v1
 from ._delete_game_record_handler_v1 import delete_game_record_handler_v1
+from ._public_list_tags_handler_v1 import public_list_tags_handler_v1
 from ._bulk_get_player_public_binary_records_v1 import (
     bulk_get_player_public_binary_records_v1,
 )
@@ -175,6 +181,7 @@ commands = [
     admin_delete_game_binary_record_v1,
     admin_put_game_binary_recor_metadata_v1,
     admin_post_game_binary_presigned_urlv1,
+    delete_game_binary_record_ttl_config,
     admin_put_admin_game_record_concurrent_handler_v1,
     admin_put_game_record_concurrent_handler_v1,
     get_plugin_config,
@@ -186,6 +193,10 @@ commands = [
     admin_put_game_record_handler_v1,
     admin_post_game_record_handler_v1,
     admin_delete_game_record_handler_v1,
+    delete_game_record_ttl_config,
+    admin_list_tags_handler_v1,
+    admin_post_tag_handler_v1,
+    admin_delete_tag_handler_v1,
     bulk_get_admin_player_record_by_user_ids_v1,
     bulk_get_player_record_size_handler_v1,
     list_player_record_handler_v1,
@@ -230,6 +241,7 @@ commands = [
     put_game_record_handler_v1,
     post_game_record_handler_v1,
     delete_game_record_handler_v1,
+    public_list_tags_handler_v1,
     bulk_get_player_public_binary_records_v1,
     bulk_get_player_public_record_handler_v1,
     list_my_binary_records_v1,

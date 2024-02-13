@@ -95,6 +95,7 @@ def create_models_deletion_data_example() -> ModelsDeletionData:
     instance.display_name = randomize("slug")
     instance.request_date = randomize("date")
     instance.status = randomize()
+    instance.unique_display_name = randomize()
     instance.user_id = randomize("uid")
     return instance
 

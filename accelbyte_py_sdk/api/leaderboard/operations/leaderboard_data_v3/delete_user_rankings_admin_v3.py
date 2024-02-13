@@ -63,15 +63,13 @@ class DeleteUserRankingsAdminV3(Operation):
         leaderboard_code: (leaderboardCode) REQUIRED List[str] in query
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User ranking deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -193,15 +191,13 @@ class DeleteUserRankingsAdminV3(Operation):
     ) -> Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]:
         """Parse the given response.
 
-        204: No Content - (No Content)
+        204: No Content - (User ranking deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -221,8 +217,6 @@ class DeleteUserRankingsAdminV3(Operation):
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, ResponseErrorResponse.create_from_dict(content)
-        if code == 404:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)

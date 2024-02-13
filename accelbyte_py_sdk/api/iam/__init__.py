@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.9.0"
+__version__ = "7.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -75,6 +75,12 @@ from .wrappers import update_client_permission
 from .wrappers import update_client_permission_async
 from .wrappers import update_client_secret
 from .wrappers import update_client_secret_async
+
+# config
+from .wrappers import admin_get_config_value_v3
+from .wrappers import admin_get_config_value_v3_async
+from .wrappers import public_get_config_value_v3
+from .wrappers import public_get_config_value_v3_async
 
 # country
 from .wrappers import admin_add_country_blacklist_v3
@@ -701,16 +707,22 @@ from .wrappers import admin_disable_user_mfav4
 from .wrappers import admin_disable_user_mfav4_async
 from .wrappers import admin_download_my_backup_codes_v4
 from .wrappers import admin_download_my_backup_codes_v4_async
+from .wrappers import admin_enable_backup_codes_v4
+from .wrappers import admin_enable_backup_codes_v4_async
 from .wrappers import admin_enable_my_authenticator_v4
 from .wrappers import admin_enable_my_authenticator_v4_async
 from .wrappers import admin_enable_my_backup_codes_v4
 from .wrappers import admin_enable_my_backup_codes_v4_async
 from .wrappers import admin_enable_my_email_v4
 from .wrappers import admin_enable_my_email_v4_async
+from .wrappers import admin_generate_backup_codes_v4
+from .wrappers import admin_generate_backup_codes_v4_async
 from .wrappers import admin_generate_my_authenticator_key_v4
 from .wrappers import admin_generate_my_authenticator_key_v4_async
 from .wrappers import admin_generate_my_backup_codes_v4
 from .wrappers import admin_generate_my_backup_codes_v4_async
+from .wrappers import admin_get_backup_codes_v4
+from .wrappers import admin_get_backup_codes_v4_async
 from .wrappers import admin_get_my_backup_codes_v4
 from .wrappers import admin_get_my_backup_codes_v4_async
 from .wrappers import admin_get_my_enabled_factors_v4
@@ -749,16 +761,22 @@ from .wrappers import public_disable_my_email_v4
 from .wrappers import public_disable_my_email_v4_async
 from .wrappers import public_download_my_backup_codes_v4
 from .wrappers import public_download_my_backup_codes_v4_async
+from .wrappers import public_enable_backup_codes_v4
+from .wrappers import public_enable_backup_codes_v4_async
 from .wrappers import public_enable_my_authenticator_v4
 from .wrappers import public_enable_my_authenticator_v4_async
 from .wrappers import public_enable_my_backup_codes_v4
 from .wrappers import public_enable_my_backup_codes_v4_async
 from .wrappers import public_enable_my_email_v4
 from .wrappers import public_enable_my_email_v4_async
+from .wrappers import public_generate_backup_codes_v4
+from .wrappers import public_generate_backup_codes_v4_async
 from .wrappers import public_generate_my_authenticator_key_v4
 from .wrappers import public_generate_my_authenticator_key_v4_async
 from .wrappers import public_generate_my_backup_codes_v4
 from .wrappers import public_generate_my_backup_codes_v4_async
+from .wrappers import public_get_backup_codes_v4
+from .wrappers import public_get_backup_codes_v4_async
 from .wrappers import public_get_my_backup_codes_v4
 from .wrappers import public_get_my_backup_codes_v4_async
 from .wrappers import public_get_my_enabled_factors_v4

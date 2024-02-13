@@ -30,6 +30,7 @@ from ._admin_export_config_v1 import admin_export_config_v1
 from ._admin_import_config_v1 import admin_import_config_v1
 from ._get_list_of_friends import get_list_of_friends
 from ._get_incoming_friend_requests import get_incoming_friend_requests
+from ._admin_list_friends_of_friends import admin_list_friends_of_friends
 from ._get_outgoing_friend_requests import get_outgoing_friend_requests
 from ._admin_get_global_config import admin_get_global_config
 from ._admin_update_global_config import admin_update_global_config
@@ -129,10 +130,12 @@ from ._public_get_messages import public_get_messages
 from ._public_get_party_data_v1 import public_get_party_data_v1
 from ._public_update_party_attributes_v1 import public_update_party_attributes_v1
 from ._public_set_party_limit_v1 import public_set_party_limit_v1
+from ._public_player_block_players_v1 import public_player_block_players_v1
 from ._public_get_player_blocked_players_v1 import public_get_player_blocked_players_v1
 from ._public_get_player_blocked_by_players_v1 import (
     public_get_player_blocked_by_players_v1,
 )
+from ._public_unblock_player_v1 import public_unblock_player_v1
 from ._users_presence_handler_v1 import users_presence_handler_v1
 from ._free_form_notification import free_form_notification
 from ._notification_with_template import notification_with_template
@@ -178,6 +181,7 @@ commands = [
     admin_import_config_v1,
     get_list_of_friends,
     get_incoming_friend_requests,
+    admin_list_friends_of_friends,
     get_outgoing_friend_requests,
     admin_get_global_config,
     admin_update_global_config,
@@ -235,8 +239,10 @@ commands = [
     public_get_party_data_v1,
     public_update_party_attributes_v1,
     public_set_party_limit_v1,
+    public_player_block_players_v1,
     public_get_player_blocked_players_v1,
     public_get_player_blocked_by_players_v1,
+    public_unblock_player_v1,
     users_presence_handler_v1,
     free_form_notification,
     notification_with_template,

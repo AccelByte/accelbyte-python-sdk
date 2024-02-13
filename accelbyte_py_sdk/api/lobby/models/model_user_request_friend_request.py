@@ -32,15 +32,15 @@ class ModelUserRequestFriendRequest(Model):
     """Model user request friend request (model.UserRequestFriendRequest)
 
     Properties:
-        friend_id: (friendId) REQUIRED str
+        friend_id: (friendId) OPTIONAL str
 
-        friend_public_id: (friendPublicId) REQUIRED str
+        friend_public_id: (friendPublicId) OPTIONAL str
     """
 
     # region fields
 
-    friend_id: str  # REQUIRED
-    friend_public_id: str  # REQUIRED
+    friend_id: str  # OPTIONAL
+    friend_public_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -76,11 +76,16 @@ class ModelUserRequestFriendRequest(Model):
 
     @classmethod
     def create(
-        cls, friend_id: str, friend_public_id: str, **kwargs
+        cls,
+        friend_id: Optional[str] = None,
+        friend_public_id: Optional[str] = None,
+        **kwargs,
     ) -> ModelUserRequestFriendRequest:
         instance = cls()
-        instance.friend_id = friend_id
-        instance.friend_public_id = friend_public_id
+        if friend_id is not None:
+            instance.friend_id = friend_id
+        if friend_public_id is not None:
+            instance.friend_public_id = friend_public_id
         return instance
 
     @classmethod
@@ -148,8 +153,8 @@ class ModelUserRequestFriendRequest(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "friendId": True,
-            "friendPublicId": True,
+            "friendId": False,
+            "friendPublicId": False,
         }
 
     # endregion static methods

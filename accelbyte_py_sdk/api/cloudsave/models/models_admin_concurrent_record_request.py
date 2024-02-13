@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.models_ttl_config_dto import ModelsTTLConfigDTO
+
 
 class SetByEnum(StrEnum):
     CLIENT = "CLIENT"
@@ -43,6 +45,8 @@ class ModelsAdminConcurrentRecordRequest(Model):
         updated_at: (updatedAt) REQUIRED str
 
         value: (value) REQUIRED Dict[str, Any]
+
+        ttl_config: (ttl_config) OPTIONAL ModelsTTLConfigDTO
     """
 
     # region fields
@@ -50,6 +54,7 @@ class ModelsAdminConcurrentRecordRequest(Model):
     set_by: Union[str, SetByEnum]  # REQUIRED
     updated_at: str  # REQUIRED
     value: Dict[str, Any]  # REQUIRED
+    ttl_config: ModelsTTLConfigDTO  # OPTIONAL
 
     # endregion fields
 
@@ -67,6 +72,12 @@ class ModelsAdminConcurrentRecordRequest(Model):
 
     def with_value(self, value: Dict[str, Any]) -> ModelsAdminConcurrentRecordRequest:
         self.value = value
+        return self
+
+    def with_ttl_config(
+        self, value: ModelsTTLConfigDTO
+    ) -> ModelsAdminConcurrentRecordRequest:
+        self.ttl_config = value
         return self
 
     # endregion with_x methods
@@ -87,6 +98,10 @@ class ModelsAdminConcurrentRecordRequest(Model):
             result["value"] = {str(k0): v0 for k0, v0 in self.value.items()}
         elif include_empty:
             result["value"] = {}
+        if hasattr(self, "ttl_config"):
+            result["ttl_config"] = self.ttl_config.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["ttl_config"] = ModelsTTLConfigDTO()
         return result
 
     # endregion to methods
@@ -99,12 +114,15 @@ class ModelsAdminConcurrentRecordRequest(Model):
         set_by: Union[str, SetByEnum],
         updated_at: str,
         value: Dict[str, Any],
+        ttl_config: Optional[ModelsTTLConfigDTO] = None,
         **kwargs,
     ) -> ModelsAdminConcurrentRecordRequest:
         instance = cls()
         instance.set_by = set_by
         instance.updated_at = updated_at
         instance.value = value
+        if ttl_config is not None:
+            instance.ttl_config = ttl_config
         return instance
 
     @classmethod
@@ -126,6 +144,12 @@ class ModelsAdminConcurrentRecordRequest(Model):
             instance.value = {str(k0): v0 for k0, v0 in dict_["value"].items()}
         elif include_empty:
             instance.value = {}
+        if "ttl_config" in dict_ and dict_["ttl_config"] is not None:
+            instance.ttl_config = ModelsTTLConfigDTO.create_from_dict(
+                dict_["ttl_config"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.ttl_config = ModelsTTLConfigDTO()
         return instance
 
     @classmethod
@@ -172,6 +196,7 @@ class ModelsAdminConcurrentRecordRequest(Model):
             "set_by": "set_by",
             "updatedAt": "updated_at",
             "value": "value",
+            "ttl_config": "ttl_config",
         }
 
     @staticmethod
@@ -180,6 +205,7 @@ class ModelsAdminConcurrentRecordRequest(Model):
             "set_by": True,
             "updatedAt": True,
             "value": True,
+            "ttl_config": False,
         }
 
     @staticmethod

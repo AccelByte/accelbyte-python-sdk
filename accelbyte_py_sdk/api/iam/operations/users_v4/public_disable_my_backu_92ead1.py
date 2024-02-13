@@ -35,7 +35,7 @@ from ...models import RestErrorResponse
 class PublicDisableMyBackupCodesV4(Operation):
     """Disable 2FA backup codes (PublicDisableMyBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    This endpoint is used to disable 2FA backup codes.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/disable

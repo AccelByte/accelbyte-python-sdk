@@ -42,6 +42,8 @@ class ModelUserWithPlatformInfo(Model):
 
         display_name: (displayName) OPTIONAL str
 
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
+
         username: (username) OPTIONAL str
 
         xuid: (xuid) OPTIONAL str
@@ -53,6 +55,7 @@ class ModelUserWithPlatformInfo(Model):
     user_id: str  # REQUIRED
     avatar_url: str  # OPTIONAL
     display_name: str  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
     username: str  # OPTIONAL
     xuid: str  # OPTIONAL
 
@@ -76,6 +79,10 @@ class ModelUserWithPlatformInfo(Model):
 
     def with_display_name(self, value: str) -> ModelUserWithPlatformInfo:
         self.display_name = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelUserWithPlatformInfo:
+        self.unique_display_name = value
         return self
 
     def with_username(self, value: str) -> ModelUserWithPlatformInfo:
@@ -110,6 +117,10 @@ class ModelUserWithPlatformInfo(Model):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
@@ -131,6 +142,7 @@ class ModelUserWithPlatformInfo(Model):
         user_id: str,
         avatar_url: Optional[str] = None,
         display_name: Optional[str] = None,
+        unique_display_name: Optional[str] = None,
         username: Optional[str] = None,
         xuid: Optional[str] = None,
         **kwargs,
@@ -142,6 +154,8 @@ class ModelUserWithPlatformInfo(Model):
             instance.avatar_url = avatar_url
         if display_name is not None:
             instance.display_name = display_name
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         if username is not None:
             instance.username = username
         if xuid is not None:
@@ -174,6 +188,10 @@ class ModelUserWithPlatformInfo(Model):
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
             instance.display_name = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
@@ -229,6 +247,7 @@ class ModelUserWithPlatformInfo(Model):
             "userId": "user_id",
             "avatarUrl": "avatar_url",
             "displayName": "display_name",
+            "uniqueDisplayName": "unique_display_name",
             "username": "username",
             "xuid": "xuid",
         }
@@ -240,6 +259,7 @@ class ModelUserWithPlatformInfo(Model):
             "userId": True,
             "avatarUrl": False,
             "displayName": False,
+            "uniqueDisplayName": False,
             "username": False,
             "xuid": False,
         }

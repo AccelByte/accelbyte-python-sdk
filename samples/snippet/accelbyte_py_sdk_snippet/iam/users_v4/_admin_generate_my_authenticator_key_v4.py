@@ -1,0 +1,11 @@
+import json
+import yaml
+
+from .._utils import to_dict
+from accelbyte_py_sdk.api.iam import admin_generate_my_authenticator_key_v4
+from accelbyte_py_sdk.api.iam.models import ModelAuthenticatorKeyResponseV4
+from accelbyte_py_sdk.api.iam.models import RestErrorResponse
+
+result, error = admin_generate_my_authenticator_key_v4(
+    x_additional_headers=x_additional_headers,
+)

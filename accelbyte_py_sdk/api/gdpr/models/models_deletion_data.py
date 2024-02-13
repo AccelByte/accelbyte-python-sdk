@@ -38,6 +38,8 @@ class ModelsDeletionData(Model):
 
         status: (Status) REQUIRED str
 
+        unique_display_name: (UniqueDisplayName) REQUIRED str
+
         user_id: (UserID) REQUIRED str
     """
 
@@ -46,6 +48,7 @@ class ModelsDeletionData(Model):
     display_name: str  # REQUIRED
     request_date: str  # REQUIRED
     status: str  # REQUIRED
+    unique_display_name: str  # REQUIRED
     user_id: str  # REQUIRED
 
     # endregion fields
@@ -62,6 +65,10 @@ class ModelsDeletionData(Model):
 
     def with_status(self, value: str) -> ModelsDeletionData:
         self.status = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelsDeletionData:
+        self.unique_display_name = value
         return self
 
     def with_user_id(self, value: str) -> ModelsDeletionData:
@@ -86,6 +93,10 @@ class ModelsDeletionData(Model):
             result["Status"] = str(self.status)
         elif include_empty:
             result["Status"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["UniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["UniqueDisplayName"] = ""
         if hasattr(self, "user_id"):
             result["UserID"] = str(self.user_id)
         elif include_empty:
@@ -98,12 +109,19 @@ class ModelsDeletionData(Model):
 
     @classmethod
     def create(
-        cls, display_name: str, request_date: str, status: str, user_id: str, **kwargs
+        cls,
+        display_name: str,
+        request_date: str,
+        status: str,
+        unique_display_name: str,
+        user_id: str,
+        **kwargs,
     ) -> ModelsDeletionData:
         instance = cls()
         instance.display_name = display_name
         instance.request_date = request_date
         instance.status = status
+        instance.unique_display_name = unique_display_name
         instance.user_id = user_id
         return instance
 
@@ -126,6 +144,10 @@ class ModelsDeletionData(Model):
             instance.status = str(dict_["Status"])
         elif include_empty:
             instance.status = ""
+        if "UniqueDisplayName" in dict_ and dict_["UniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["UniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "UserID" in dict_ and dict_["UserID"] is not None:
             instance.user_id = str(dict_["UserID"])
         elif include_empty:
@@ -174,6 +196,7 @@ class ModelsDeletionData(Model):
             "DisplayName": "display_name",
             "RequestDate": "request_date",
             "Status": "status",
+            "UniqueDisplayName": "unique_display_name",
             "UserID": "user_id",
         }
 
@@ -183,6 +206,7 @@ class ModelsDeletionData(Model):
             "DisplayName": True,
             "RequestDate": True,
             "Status": True,
+            "UniqueDisplayName": True,
             "UserID": True,
         }
 

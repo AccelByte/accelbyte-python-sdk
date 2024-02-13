@@ -146,6 +146,7 @@ from ._admin_update_client_v3 import admin_update_client_v3
 from ._admin_update_client_permission_v3 import admin_update_client_permission_v3
 from ._admin_add_client_permissions_v3 import admin_add_client_permissions_v3
 from ._admin_delete_client_permission_v3 import admin_delete_client_permission_v3
+from ._admin_get_config_value_v3 import admin_get_config_value_v3
 from ._admin_get_country_list_v3 import admin_get_country_list_v3
 from ._admin_get_country_blacklist_v3 import admin_get_country_blacklist_v3
 from ._admin_add_country_blacklist_v3 import admin_add_country_blacklist_v3
@@ -307,6 +308,7 @@ from ._public_get_input_validation_by_field import public_get_input_validation_b
 from ._public_get_country_age_restriction_v3 import (
     public_get_country_age_restriction_v3,
 )
+from ._public_get_config_value_v3 import public_get_config_value_v3
 from ._public_get_country_list_v3 import public_get_country_list_v3
 from ._retrieve_all_active_third_party_login_platform_credential_public_v3 import (
     retrieve_all_active_third_party_login_platform_credential_public_v3,
@@ -430,6 +432,9 @@ from ._admin_generate_my_backup_codes_v4 import admin_generate_my_backup_codes_v
 from ._admin_disable_my_backup_codes_v4 import admin_disable_my_backup_codes_v4
 from ._admin_download_my_backup_codes_v4 import admin_download_my_backup_codes_v4
 from ._admin_enable_my_backup_codes_v4 import admin_enable_my_backup_codes_v4
+from ._admin_get_backup_codes_v4 import admin_get_backup_codes_v4
+from ._admin_generate_backup_codes_v4 import admin_generate_backup_codes_v4
+from ._admin_enable_backup_codes_v4 import admin_enable_backup_codes_v4
 from ._admin_send_my_mfa_email_code_v4 import admin_send_my_mfa_email_code_v4
 from ._admin_disable_my_email_v4 import admin_disable_my_email_v4
 from ._admin_enable_my_email_v4 import admin_enable_my_email_v4
@@ -455,6 +460,9 @@ from ._public_generate_my_backup_codes_v4 import public_generate_my_backup_codes
 from ._public_disable_my_backup_codes_v4 import public_disable_my_backup_codes_v4
 from ._public_download_my_backup_codes_v4 import public_download_my_backup_codes_v4
 from ._public_enable_my_backup_codes_v4 import public_enable_my_backup_codes_v4
+from ._public_get_backup_codes_v4 import public_get_backup_codes_v4
+from ._public_generate_backup_codes_v4 import public_generate_backup_codes_v4
+from ._public_enable_backup_codes_v4 import public_enable_backup_codes_v4
 from ._public_remove_trusted_device_v4 import public_remove_trusted_device_v4
 from ._public_send_my_mfa_email_code_v4 import public_send_my_mfa_email_code_v4
 from ._public_disable_my_email_v4 import public_disable_my_email_v4
@@ -594,6 +602,7 @@ commands = [
     admin_update_client_permission_v3,
     admin_add_client_permissions_v3,
     admin_delete_client_permission_v3,
+    admin_get_config_value_v3,
     admin_get_country_list_v3,
     admin_get_country_blacklist_v3,
     admin_add_country_blacklist_v3,
@@ -707,6 +716,7 @@ commands = [
     public_get_input_validations,
     public_get_input_validation_by_field,
     public_get_country_age_restriction_v3,
+    public_get_config_value_v3,
     public_get_country_list_v3,
     retrieve_all_active_third_party_login_platform_credential_public_v3,
     retrieve_active_oidc_clients_public_v3,
@@ -806,6 +816,9 @@ commands = [
     admin_disable_my_backup_codes_v4,
     admin_download_my_backup_codes_v4,
     admin_enable_my_backup_codes_v4,
+    admin_get_backup_codes_v4,
+    admin_generate_backup_codes_v4,
+    admin_enable_backup_codes_v4,
     admin_send_my_mfa_email_code_v4,
     admin_disable_my_email_v4,
     admin_enable_my_email_v4,
@@ -827,6 +840,9 @@ commands = [
     public_disable_my_backup_codes_v4,
     public_download_my_backup_codes_v4,
     public_enable_my_backup_codes_v4,
+    public_get_backup_codes_v4,
+    public_generate_backup_codes_v4,
+    public_enable_backup_codes_v4,
     public_remove_trusted_device_v4,
     public_send_my_mfa_email_code_v4,
     public_disable_my_email_v4,

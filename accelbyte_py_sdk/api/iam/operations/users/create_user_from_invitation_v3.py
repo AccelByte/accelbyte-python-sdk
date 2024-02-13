@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelUserCreateFromInvitationRequestV3
+from ...models import ModelUserCreateRequestV3
 from ...models import ModelUserCreateResponseV3
 from ...models import RestErrorResponse
 
@@ -41,6 +41,10 @@ class CreateUserFromInvitationV3(Operation):
     User will be able to login after completing submitting the data through this endpoint.
     Available Authentication Types:
     EMAILPASSWD: an authentication type used for new user registration through email.
+
+    **Note**:
+    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
+
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
 
@@ -57,7 +61,7 @@ class CreateUserFromInvitationV3(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserCreateFromInvitationRequestV3 in body
+        body: (body) REQUIRED ModelUserCreateRequestV3 in body
 
         invitation_id: (invitationId) REQUIRED str in path
 
@@ -84,7 +88,7 @@ class CreateUserFromInvitationV3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelUserCreateFromInvitationRequestV3  # REQUIRED in [body]
+    body: ModelUserCreateRequestV3  # REQUIRED in [body]
     invitation_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -151,9 +155,7 @@ class CreateUserFromInvitationV3(Operation):
 
     # region with_x methods
 
-    def with_body(
-        self, value: ModelUserCreateFromInvitationRequestV3
-    ) -> CreateUserFromInvitationV3:
+    def with_body(self, value: ModelUserCreateRequestV3) -> CreateUserFromInvitationV3:
         self.body = value
         return self
 
@@ -174,7 +176,7 @@ class CreateUserFromInvitationV3(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelUserCreateFromInvitationRequestV3()
+            result["body"] = ModelUserCreateRequestV3()
         if hasattr(self, "invitation_id") and self.invitation_id:
             result["invitationId"] = str(self.invitation_id)
         elif include_empty:
@@ -243,7 +245,7 @@ class CreateUserFromInvitationV3(Operation):
     @classmethod
     def create(
         cls,
-        body: ModelUserCreateFromInvitationRequestV3,
+        body: ModelUserCreateRequestV3,
         invitation_id: str,
         namespace: str,
         **kwargs,
@@ -262,11 +264,11 @@ class CreateUserFromInvitationV3(Operation):
     ) -> CreateUserFromInvitationV3:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelUserCreateFromInvitationRequestV3.create_from_dict(
+            instance.body = ModelUserCreateRequestV3.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelUserCreateFromInvitationRequestV3()
+            instance.body = ModelUserCreateRequestV3()
         if "invitationId" in dict_ and dict_["invitationId"] is not None:
             instance.invitation_id = str(dict_["invitationId"])
         elif include_empty:

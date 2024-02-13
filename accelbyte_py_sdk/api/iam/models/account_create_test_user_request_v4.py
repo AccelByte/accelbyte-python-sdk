@@ -58,6 +58,8 @@ class AccountCreateTestUserRequestV4(Model):
         verified: (verified) REQUIRED bool
 
         accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
+
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
     """
 
     # region fields
@@ -72,6 +74,7 @@ class AccountCreateTestUserRequestV4(Model):
     username: str  # REQUIRED
     verified: bool  # REQUIRED
     accepted_policies: List[LegalAcceptedPoliciesRequest]  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -119,6 +122,10 @@ class AccountCreateTestUserRequestV4(Model):
         self, value: List[LegalAcceptedPoliciesRequest]
     ) -> AccountCreateTestUserRequestV4:
         self.accepted_policies = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> AccountCreateTestUserRequestV4:
+        self.unique_display_name = value
         return self
 
     # endregion with_x methods
@@ -169,6 +176,10 @@ class AccountCreateTestUserRequestV4(Model):
             ]
         elif include_empty:
             result["acceptedPolicies"] = []
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         return result
 
     # endregion to methods
@@ -188,6 +199,7 @@ class AccountCreateTestUserRequestV4(Model):
         username: str,
         verified: bool,
         accepted_policies: Optional[List[LegalAcceptedPoliciesRequest]] = None,
+        unique_display_name: Optional[str] = None,
         **kwargs,
     ) -> AccountCreateTestUserRequestV4:
         instance = cls()
@@ -202,6 +214,8 @@ class AccountCreateTestUserRequestV4(Model):
         instance.verified = verified
         if accepted_policies is not None:
             instance.accepted_policies = accepted_policies
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         return instance
 
     @classmethod
@@ -256,6 +270,10 @@ class AccountCreateTestUserRequestV4(Model):
             ]
         elif include_empty:
             instance.accepted_policies = []
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         return instance
 
     @classmethod
@@ -309,6 +327,7 @@ class AccountCreateTestUserRequestV4(Model):
             "username": "username",
             "verified": "verified",
             "acceptedPolicies": "accepted_policies",
+            "uniqueDisplayName": "unique_display_name",
         }
 
     @staticmethod
@@ -324,6 +343,7 @@ class AccountCreateTestUserRequestV4(Model):
             "username": True,
             "verified": True,
             "acceptedPolicies": False,
+            "uniqueDisplayName": False,
         }
 
     @staticmethod

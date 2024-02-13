@@ -62,13 +62,13 @@ class GetTodayLeaderboardRankingPublicV1(Operation):
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Today leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
 
     # region fields
@@ -215,13 +215,13 @@ class GetTodayLeaderboardRankingPublicV1(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Today leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
 
         ---: HttpResponse (Undocumented Response)
 

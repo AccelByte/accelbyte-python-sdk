@@ -39,6 +39,8 @@ class ModelUserInfoResponse(Model):
         namespace: (namespace) REQUIRED str
 
         user_id: (userId) REQUIRED str
+
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
     """
 
     # region fields
@@ -47,6 +49,7 @@ class ModelUserInfoResponse(Model):
     email_address: str  # REQUIRED
     namespace: str  # REQUIRED
     user_id: str  # REQUIRED
+    unique_display_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +69,10 @@ class ModelUserInfoResponse(Model):
 
     def with_user_id(self, value: str) -> ModelUserInfoResponse:
         self.user_id = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelUserInfoResponse:
+        self.unique_display_name = value
         return self
 
     # endregion with_x methods
@@ -90,6 +97,10 @@ class ModelUserInfoResponse(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         return result
 
     # endregion to methods
@@ -103,6 +114,7 @@ class ModelUserInfoResponse(Model):
         email_address: str,
         namespace: str,
         user_id: str,
+        unique_display_name: Optional[str] = None,
         **kwargs,
     ) -> ModelUserInfoResponse:
         instance = cls()
@@ -110,6 +122,8 @@ class ModelUserInfoResponse(Model):
         instance.email_address = email_address
         instance.namespace = namespace
         instance.user_id = user_id
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         return instance
 
     @classmethod
@@ -135,6 +149,10 @@ class ModelUserInfoResponse(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         return instance
 
     @classmethod
@@ -182,6 +200,7 @@ class ModelUserInfoResponse(Model):
             "emailAddress": "email_address",
             "namespace": "namespace",
             "userId": "user_id",
+            "uniqueDisplayName": "unique_display_name",
         }
 
     @staticmethod
@@ -191,6 +210,7 @@ class ModelUserInfoResponse(Model):
             "emailAddress": True,
             "namespace": True,
             "userId": True,
+            "uniqueDisplayName": False,
         }
 
     # endregion static methods

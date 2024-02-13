@@ -42,6 +42,8 @@ class ModelUserUpdateRequestV3(Model):
 
         language_tag: (languageTag) OPTIONAL str
 
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
+
         user_name: (userName) OPTIONAL str
     """
 
@@ -52,6 +54,7 @@ class ModelUserUpdateRequestV3(Model):
     date_of_birth: str  # OPTIONAL
     display_name: str  # OPTIONAL
     language_tag: str  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
     user_name: str  # OPTIONAL
 
     # endregion fields
@@ -76,6 +79,10 @@ class ModelUserUpdateRequestV3(Model):
 
     def with_language_tag(self, value: str) -> ModelUserUpdateRequestV3:
         self.language_tag = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelUserUpdateRequestV3:
+        self.unique_display_name = value
         return self
 
     def with_user_name(self, value: str) -> ModelUserUpdateRequestV3:
@@ -108,6 +115,10 @@ class ModelUserUpdateRequestV3(Model):
             result["languageTag"] = str(self.language_tag)
         elif include_empty:
             result["languageTag"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         if hasattr(self, "user_name"):
             result["userName"] = str(self.user_name)
         elif include_empty:
@@ -126,6 +137,7 @@ class ModelUserUpdateRequestV3(Model):
         date_of_birth: Optional[str] = None,
         display_name: Optional[str] = None,
         language_tag: Optional[str] = None,
+        unique_display_name: Optional[str] = None,
         user_name: Optional[str] = None,
         **kwargs,
     ) -> ModelUserUpdateRequestV3:
@@ -140,6 +152,8 @@ class ModelUserUpdateRequestV3(Model):
             instance.display_name = display_name
         if language_tag is not None:
             instance.language_tag = language_tag
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         if user_name is not None:
             instance.user_name = user_name
         return instance
@@ -171,6 +185,10 @@ class ModelUserUpdateRequestV3(Model):
             instance.language_tag = str(dict_["languageTag"])
         elif include_empty:
             instance.language_tag = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "userName" in dict_ and dict_["userName"] is not None:
             instance.user_name = str(dict_["userName"])
         elif include_empty:
@@ -223,6 +241,7 @@ class ModelUserUpdateRequestV3(Model):
             "dateOfBirth": "date_of_birth",
             "displayName": "display_name",
             "languageTag": "language_tag",
+            "uniqueDisplayName": "unique_display_name",
             "userName": "user_name",
         }
 
@@ -234,6 +253,7 @@ class ModelUserUpdateRequestV3(Model):
             "dateOfBirth": False,
             "displayName": False,
             "languageTag": False,
+            "uniqueDisplayName": False,
             "userName": False,
         }
 

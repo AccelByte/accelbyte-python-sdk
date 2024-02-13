@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     create_user_from_invitation_v3 as create_user_from_invitation_v3_internal,
 )
-from accelbyte_py_sdk.api.iam.models import ModelUserCreateFromInvitationRequestV3
+from accelbyte_py_sdk.api.iam.models import ModelUserCreateRequestV3
 from accelbyte_py_sdk.api.iam.models import ModelUserCreateResponseV3
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
@@ -64,7 +64,7 @@ def create_user_from_invitation_v3(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelUserCreateFromInvitationRequestV3.create_from_dict(body_json)
+            body = ModelUserCreateRequestV3.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = create_user_from_invitation_v3_internal(

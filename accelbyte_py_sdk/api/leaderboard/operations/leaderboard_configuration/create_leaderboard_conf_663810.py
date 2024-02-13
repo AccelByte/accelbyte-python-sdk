@@ -93,17 +93,17 @@ class CreateLeaderboardConfigurationAdminV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsLeaderboardConfigReq (Created)
+        201: Created - ModelsLeaderboardConfigReq (Leaderboard created)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error | 71242: stat code not found in namespace)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        409: Conflict - ResponseErrorResponse (Conflict)
+        409: Conflict - ResponseErrorResponse (71132: leaderboard configuration already exist)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -218,17 +218,17 @@ class CreateLeaderboardConfigurationAdminV1(Operation):
     ]:
         """Parse the given response.
 
-        201: Created - ModelsLeaderboardConfigReq (Created)
+        201: Created - ModelsLeaderboardConfigReq (Leaderboard created)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20019: unable to parse request body | 20002: validation error | 71242: stat code not found in namespace)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        409: Conflict - ResponseErrorResponse (Conflict)
+        409: Conflict - ResponseErrorResponse (71132: leaderboard configuration already exist)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 

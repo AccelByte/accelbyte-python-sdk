@@ -53,6 +53,8 @@ class AdminQueryParties(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
+
         joinability: (joinability) OPTIONAL str in query
 
         key: (key) OPTIONAL str in query
@@ -95,6 +97,7 @@ class AdminQueryParties(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    is_soft_deleted: str  # OPTIONAL in [query]
     joinability: str  # OPTIONAL in [query]
     key: str  # OPTIONAL in [query]
     leader_id: str  # OPTIONAL in [query]
@@ -157,6 +160,8 @@ class AdminQueryParties(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "is_soft_deleted"):
+            result["isSoftDeleted"] = self.is_soft_deleted
         if hasattr(self, "joinability"):
             result["joinability"] = self.joinability
         if hasattr(self, "key"):
@@ -191,6 +196,10 @@ class AdminQueryParties(Operation):
 
     def with_namespace(self, value: str) -> AdminQueryParties:
         self.namespace = value
+        return self
+
+    def with_is_soft_deleted(self, value: str) -> AdminQueryParties:
+        self.is_soft_deleted = value
         return self
 
     def with_joinability(self, value: str) -> AdminQueryParties:
@@ -247,6 +256,10 @@ class AdminQueryParties(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "is_soft_deleted") and self.is_soft_deleted:
+            result["isSoftDeleted"] = str(self.is_soft_deleted)
+        elif include_empty:
+            result["isSoftDeleted"] = ""
         if hasattr(self, "joinability") and self.joinability:
             result["joinability"] = str(self.joinability)
         elif include_empty:
@@ -348,6 +361,7 @@ class AdminQueryParties(Operation):
     def create(
         cls,
         namespace: str,
+        is_soft_deleted: Optional[str] = None,
         joinability: Optional[str] = None,
         key: Optional[str] = None,
         leader_id: Optional[str] = None,
@@ -363,6 +377,8 @@ class AdminQueryParties(Operation):
     ) -> AdminQueryParties:
         instance = cls()
         instance.namespace = namespace
+        if is_soft_deleted is not None:
+            instance.is_soft_deleted = is_soft_deleted
         if joinability is not None:
             instance.joinability = joinability
         if key is not None:
@@ -398,6 +414,10 @@ class AdminQueryParties(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "isSoftDeleted" in dict_ and dict_["isSoftDeleted"] is not None:
+            instance.is_soft_deleted = str(dict_["isSoftDeleted"])
+        elif include_empty:
+            instance.is_soft_deleted = ""
         if "joinability" in dict_ and dict_["joinability"] is not None:
             instance.joinability = str(dict_["joinability"])
         elif include_empty:
@@ -448,6 +468,7 @@ class AdminQueryParties(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "isSoftDeleted": "is_soft_deleted",
             "joinability": "joinability",
             "key": "key",
             "leaderID": "leader_id",
@@ -465,6 +486,7 @@ class AdminQueryParties(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "isSoftDeleted": False,
             "joinability": False,
             "key": False,
             "leaderID": False,

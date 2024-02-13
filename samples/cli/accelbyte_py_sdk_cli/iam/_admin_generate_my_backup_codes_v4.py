@@ -63,4 +63,4 @@ def admin_generate_my_backup_codes_v4(
 
 
 admin_generate_my_backup_codes_v4.operation_id = "AdminGenerateMyBackupCodesV4"
-admin_generate_my_backup_codes_v4.is_deprecated = False
+admin_generate_my_backup_codes_v4.is_deprecated = True

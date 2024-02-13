@@ -1,3 +1,19 @@
+<a name="v0.60.0"></a>
+## [v0.60.0]
+### ci
+- **nightly-starter:** separate from nightly
+### test
+- **integration:** temporarily disable test_admin_delete_configuration_template_v in ags starter
+- **integration:** add dsartifact integration tests
+- **token-validation:** add tests for namespace revamp
+### chore
+- **api:** add dsartifact service spec
+- **api:** generate dsartifact service package
+- **sdk:** generate python extend sdk (2024-02-12T23:29:00+00:00)
+### fix
+- **core:** fix multiple form data file uploads
+
+
 <a name="v0.59.0"></a>
 ## [v0.59.0]
 ### fix

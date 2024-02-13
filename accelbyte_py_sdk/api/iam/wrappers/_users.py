@@ -101,7 +101,6 @@ from ..models import ModelUpgradeHeadlessAccountWithVerificationCodeRequest
 from ..models import ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3
 from ..models import ModelUserBanResponse
 from ..models import ModelUserBanResponseV3
-from ..models import ModelUserCreateFromInvitationRequestV3
 from ..models import ModelUserCreateRequest
 from ..models import ModelUserCreateRequestV3
 from ..models import ModelUserCreateResponse
@@ -290,7 +289,6 @@ from ..operations.users import UpdateUserV3
 from ..operations.users import UpgradeHeadlessAccount
 from ..operations.users import UpgradeHeadlessAccountWithVerificationCode
 from ..operations.users import UserVerification
-from ..models import ModelUserCreateFromInvitationRequestV3AuthTypeEnum
 
 
 @deprecated
@@ -8460,6 +8458,7 @@ def check_user_availability(
     Check user's account availability.
     Available field :
     - displayName
+    - uniqueDisplayName
     - username
 
     If request include access token with user ID data, that user ID will be excluded from availability check.
@@ -8522,6 +8521,7 @@ async def check_user_availability_async(
     Check user's account availability.
     Available field :
     - displayName
+    - uniqueDisplayName
     - username
 
     If request include access token with user ID data, that user ID will be excluded from availability check.
@@ -8703,7 +8703,7 @@ async def create_user_async(
 
 @same_doc_as(CreateUserFromInvitationV3)
 def create_user_from_invitation_v3(
-    body: ModelUserCreateFromInvitationRequestV3,
+    body: ModelUserCreateRequestV3,
     invitation_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -8715,6 +8715,10 @@ def create_user_from_invitation_v3(
     User will be able to login after completing submitting the data through this endpoint.
     Available Authentication Types:
     EMAILPASSWD: an authentication type used for new user registration through email.
+
+    **Note**:
+    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
+
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
 
@@ -8731,7 +8735,7 @@ def create_user_from_invitation_v3(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserCreateFromInvitationRequestV3 in body
+        body: (body) REQUIRED ModelUserCreateRequestV3 in body
 
         invitation_id: (invitationId) REQUIRED str in path
 
@@ -8762,7 +8766,7 @@ def create_user_from_invitation_v3(
 
 @same_doc_as(CreateUserFromInvitationV3)
 async def create_user_from_invitation_v3_async(
-    body: ModelUserCreateFromInvitationRequestV3,
+    body: ModelUserCreateRequestV3,
     invitation_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -8774,6 +8778,10 @@ async def create_user_from_invitation_v3_async(
     User will be able to login after completing submitting the data through this endpoint.
     Available Authentication Types:
     EMAILPASSWD: an authentication type used for new user registration through email.
+
+    **Note**:
+    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
+
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
 
@@ -8790,7 +8798,7 @@ async def create_user_from_invitation_v3_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserCreateFromInvitationRequestV3 in body
+        body: (body) REQUIRED ModelUserCreateRequestV3 in body
 
         invitation_id: (invitationId) REQUIRED str in path
 
@@ -12845,6 +12853,9 @@ def public_create_user_v3(
     Available Authentication Types:
     1. **EMAILPASSWD**: an authentication type used for new user registration through email.
 
+    **Note**:
+    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
+
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
     This endpoint support accepting agreements for the created user. Supply the accepted agreements in acceptedPolicies attribute.
@@ -12901,6 +12912,9 @@ async def public_create_user_v3_async(
 
     Available Authentication Types:
     1. **EMAILPASSWD**: an authentication type used for new user registration through email.
+
+    **Note**:
+    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.

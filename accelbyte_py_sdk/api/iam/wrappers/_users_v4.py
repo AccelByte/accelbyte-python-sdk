@@ -51,7 +51,6 @@ from ..models import ModelListUserRolesV4Response
 from ..models import ModelListValidUserIDResponseV4
 from ..models import ModelPublicInviteUserRequestV4
 from ..models import ModelRemoveUserRoleV4Request
-from ..models import ModelUserCreateFromInvitationRequestV4
 from ..models import ModelUserPublicInfoResponseV4
 from ..models import ModelUserResponseV3
 from ..models import ModelUserUpdateRequestV3
@@ -67,11 +66,14 @@ from ..operations.users_v4 import AdminDisableMyBackupCodesV4
 from ..operations.users_v4 import AdminDisableMyEmailV4
 from ..operations.users_v4 import AdminDisableUserMFAV4
 from ..operations.users_v4 import AdminDownloadMyBackupCodesV4
+from ..operations.users_v4 import AdminEnableBackupCodesV4
 from ..operations.users_v4 import AdminEnableMyAuthenticatorV4
 from ..operations.users_v4 import AdminEnableMyBackupCodesV4
 from ..operations.users_v4 import AdminEnableMyEmailV4
+from ..operations.users_v4 import AdminGenerateBackupCodesV4
 from ..operations.users_v4 import AdminGenerateMyAuthenticatorKeyV4
 from ..operations.users_v4 import AdminGenerateMyBackupCodesV4
+from ..operations.users_v4 import AdminGetBackupCodesV4
 from ..operations.users_v4 import AdminGetMyBackupCodesV4
 from ..operations.users_v4 import AdminGetMyEnabledFactorsV4
 from ..operations.users_v4 import AdminInviteUserNewV4
@@ -91,11 +93,14 @@ from ..operations.users_v4 import PublicDisableMyAuthenticatorV4
 from ..operations.users_v4 import PublicDisableMyBackupCodesV4
 from ..operations.users_v4 import PublicDisableMyEmailV4
 from ..operations.users_v4 import PublicDownloadMyBackupCodesV4
+from ..operations.users_v4 import PublicEnableBackupCodesV4
 from ..operations.users_v4 import PublicEnableMyAuthenticatorV4
 from ..operations.users_v4 import PublicEnableMyBackupCodesV4
 from ..operations.users_v4 import PublicEnableMyEmailV4
+from ..operations.users_v4 import PublicGenerateBackupCodesV4
 from ..operations.users_v4 import PublicGenerateMyAuthenticatorKeyV4
 from ..operations.users_v4 import PublicGenerateMyBackupCodesV4
+from ..operations.users_v4 import PublicGetBackupCodesV4
 from ..operations.users_v4 import PublicGetMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyEnabledFactorsV4
 from ..operations.users_v4 import PublicGetUserPublicInfoByUserIdV4
@@ -109,7 +114,6 @@ from ..operations.users_v4 import PublicUpgradeHeadlessAccountV4
 from ..operations.users_v4 import PublicUpgradeHeadlessAccountWithVerificationCodeV4
 from ..models import AccountCreateTestUserRequestV4AuthTypeEnum
 from ..models import AccountCreateUserRequestV4AuthTypeEnum
-from ..models import ModelUserCreateFromInvitationRequestV4AuthTypeEnum
 
 
 @same_doc_as(AdminAddUserRoleV4)
@@ -561,6 +565,7 @@ def admin_create_user_v4(
     - password: Please refer to the rule from /v3/public/inputValidations API.
     - country: ISO3166-1 alpha-2 two letter, e.g. US.
     - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
+    - uniqueDisplayName: required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true, please refer to the rule from /v3/public/inputValidations API.
 
     **Not required attributes:**
     - displayName: Please refer to the rule from /v3/public/inputValidations API.
@@ -626,6 +631,7 @@ async def admin_create_user_v4_async(
     - password: Please refer to the rule from /v3/public/inputValidations API.
     - country: ISO3166-1 alpha-2 two letter, e.g. US.
     - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
+    - uniqueDisplayName: required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true, please refer to the rule from /v3/public/inputValidations API.
 
     **Not required attributes:**
     - displayName: Please refer to the rule from /v3/public/inputValidations API.
@@ -1016,6 +1022,7 @@ async def admin_disable_user_mfav4_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDownloadMyBackupCodesV4)
 def admin_download_my_backup_codes_v4(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -1054,6 +1061,7 @@ def admin_download_my_backup_codes_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDownloadMyBackupCodesV4)
 async def admin_download_my_backup_codes_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -1089,6 +1097,88 @@ async def admin_download_my_backup_codes_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     request = AdminDownloadMyBackupCodesV4.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminEnableBackupCodesV4)
+def admin_enable_backup_codes_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Enable 2FA backup codes (AdminEnableBackupCodesV4)
+
+    This endpoint is used to enable 2FA backup codes.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/backupCodes/enable
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (Backup codes enabled)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10194: factor already enabled | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10194: factor already enabled)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminEnableBackupCodesV4.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminEnableBackupCodesV4)
+async def admin_enable_backup_codes_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Enable 2FA backup codes (AdminEnableBackupCodesV4)
+
+    This endpoint is used to enable 2FA backup codes.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/backupCodes/enable
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (Backup codes enabled)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10194: factor already enabled | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10194: factor already enabled)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminEnableBackupCodesV4.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -1188,6 +1278,7 @@ async def admin_enable_my_authenticator_v4_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminEnableMyBackupCodesV4)
 def admin_enable_my_backup_codes_v4(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -1228,6 +1319,7 @@ def admin_enable_my_backup_codes_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminEnableMyBackupCodesV4)
 async def admin_enable_my_backup_codes_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -1360,6 +1452,86 @@ async def admin_enable_my_email_v4_async(
     )
 
 
+@same_doc_as(AdminGenerateBackupCodesV4)
+def admin_generate_backup_codes_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Generate backup codes (AdminGenerateBackupCodesV4)
+
+    This endpoint is used to generate 8-digits backup codes.
+    Each code is a one-time code and will be deleted once used.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/backupCodes
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (Backup codes generated)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminGenerateBackupCodesV4.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGenerateBackupCodesV4)
+async def admin_generate_backup_codes_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Generate backup codes (AdminGenerateBackupCodesV4)
+
+    This endpoint is used to generate 8-digits backup codes.
+    Each code is a one-time code and will be deleted once used.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/backupCodes
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - (Backup codes generated)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminGenerateBackupCodesV4.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminGenerateMyAuthenticatorKeyV4)
 def admin_generate_my_authenticator_key_v4(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -1440,6 +1612,7 @@ async def admin_generate_my_authenticator_key_v4_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGenerateMyBackupCodesV4)
 def admin_generate_my_backup_codes_v4(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -1479,6 +1652,7 @@ def admin_generate_my_backup_codes_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGenerateMyBackupCodesV4)
 async def admin_generate_my_backup_codes_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -1520,6 +1694,87 @@ async def admin_generate_my_backup_codes_v4_async(
     )
 
 
+@same_doc_as(AdminGetBackupCodesV4)
+def admin_get_backup_codes_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get backup codes and send to email (AdminGetBackupCodesV4)
+
+    This endpoint is used to get 8-digits backup codes.
+    Each code is a one-time code and will be deleted once used.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/backupCodes
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        204: No Content - (Get backup codes)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminGetBackupCodesV4.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetBackupCodesV4)
+async def admin_get_backup_codes_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get backup codes and send to email (AdminGetBackupCodesV4)
+
+    This endpoint is used to get 8-digits backup codes.
+    Each code is a one-time code and will be deleted once used.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/backupCodes
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        204: No Content - (Get backup codes)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminGetBackupCodesV4.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
 @same_doc_as(AdminGetMyBackupCodesV4)
 def admin_get_my_backup_codes_v4(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -1559,6 +1814,7 @@ def admin_get_my_backup_codes_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetMyBackupCodesV4)
 async def admin_get_my_backup_codes_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -2788,7 +3044,7 @@ async def admin_update_user_v4_async(
 
 @same_doc_as(CreateUserFromInvitationV4)
 def create_user_from_invitation_v4(
-    body: ModelUserCreateFromInvitationRequestV4,
+    body: AccountCreateUserRequestV4,
     invitation_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2801,6 +3057,9 @@ def create_user_from_invitation_v4(
     Available Authentication Types:
 
     EMAILPASSWD: an authentication type used for new user registration through email.
+
+    **Note**:
+    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
@@ -2827,7 +3086,7 @@ def create_user_from_invitation_v4(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserCreateFromInvitationRequestV4 in body
+        body: (body) REQUIRED AccountCreateUserRequestV4 in body
 
         invitation_id: (invitationId) REQUIRED str in path
 
@@ -2858,7 +3117,7 @@ def create_user_from_invitation_v4(
 
 @same_doc_as(CreateUserFromInvitationV4)
 async def create_user_from_invitation_v4_async(
-    body: ModelUserCreateFromInvitationRequestV4,
+    body: AccountCreateUserRequestV4,
     invitation_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2871,6 +3130,9 @@ async def create_user_from_invitation_v4_async(
     Available Authentication Types:
 
     EMAILPASSWD: an authentication type used for new user registration through email.
+
+    **Note**:
+    * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
 
@@ -2897,7 +3159,7 @@ async def create_user_from_invitation_v4_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserCreateFromInvitationRequestV4 in body
+        body: (body) REQUIRED AccountCreateUserRequestV4 in body
 
         invitation_id: (invitationId) REQUIRED str in path
 
@@ -3073,6 +3335,7 @@ def public_create_user_v4(
     - password: Please refer to the rule from /v3/public/inputValidations API.
     - country: ISO3166-1 alpha-2 two letter, e.g. US.
     - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
+    - uniqueDisplayName: required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true, please refer to the rule from /v3/public/inputValidations API.
 
     **Not required attributes:**
     - displayName: Please refer to the rule from /v3/public/inputValidations API.
@@ -3136,6 +3399,7 @@ async def public_create_user_v4_async(
     - password: Please refer to the rule from /v3/public/inputValidations API.
     - country: ISO3166-1 alpha-2 two letter, e.g. US.
     - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
+    - uniqueDisplayName: required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true, please refer to the rule from /v3/public/inputValidations API.
 
     **Not required attributes:**
     - displayName: Please refer to the rule from /v3/public/inputValidations API.
@@ -3290,7 +3554,7 @@ def public_disable_my_backup_codes_v4(
 ):
     """Disable 2FA backup codes (PublicDisableMyBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    This endpoint is used to disable 2FA backup codes.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/disable
@@ -3338,7 +3602,7 @@ async def public_disable_my_backup_codes_v4_async(
 ):
     """Disable 2FA backup codes (PublicDisableMyBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    This endpoint is used to disable 2FA backup codes.
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/disable
@@ -3478,6 +3742,7 @@ async def public_disable_my_email_v4_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicDownloadMyBackupCodesV4)
 def public_download_my_backup_codes_v4(
     namespace: Optional[str] = None,
@@ -3526,6 +3791,7 @@ def public_download_my_backup_codes_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicDownloadMyBackupCodesV4)
 async def public_download_my_backup_codes_v4_async(
     namespace: Optional[str] = None,
@@ -3569,6 +3835,108 @@ async def public_download_my_backup_codes_v4_async(
         if error:
             return None, error
     request = PublicDownloadMyBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicEnableBackupCodesV4)
+def public_enable_backup_codes_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Enable 2FA backup codes (PublicEnableBackupCodesV4)
+
+    This endpoint is used to enable 2FA backup codes.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCodes/enable
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Backup codes enabled and codes sent to email)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10194: factor already enabled)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicEnableBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicEnableBackupCodesV4)
+async def public_enable_backup_codes_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Enable 2FA backup codes (PublicEnableBackupCodesV4)
+
+    This endpoint is used to enable 2FA backup codes.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCodes/enable
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Backup codes enabled and codes sent to email)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        409: Conflict - RestErrorResponse (10194: factor already enabled)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicEnableBackupCodesV4.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -3686,6 +4054,7 @@ async def public_enable_my_authenticator_v4_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicEnableMyBackupCodesV4)
 def public_enable_my_backup_codes_v4(
     namespace: Optional[str] = None,
@@ -3736,6 +4105,7 @@ def public_enable_my_backup_codes_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicEnableMyBackupCodesV4)
 async def public_enable_my_backup_codes_v4_async(
     namespace: Optional[str] = None,
@@ -3898,6 +4268,108 @@ async def public_enable_my_email_v4_async(
     )
 
 
+@same_doc_as(PublicGenerateBackupCodesV4)
+def public_generate_backup_codes_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Generate backup codes (PublicGenerateBackupCodesV4)
+
+    This endpoint is used to generate 8-digits backup codes.
+    Each codes is a one-time code and will be deleted once used.
+    The codes will be sent through linked email.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCodes
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Backup codes sent to email)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGenerateBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGenerateBackupCodesV4)
+async def public_generate_backup_codes_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Generate backup codes (PublicGenerateBackupCodesV4)
+
+    This endpoint is used to generate 8-digits backup codes.
+    Each codes is a one-time code and will be deleted once used.
+    The codes will be sent through linked email.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCodes
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Backup codes sent to email)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGenerateBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGenerateMyAuthenticatorKeyV4)
 def public_generate_my_authenticator_key_v4(
     namespace: Optional[str] = None,
@@ -3998,6 +4470,7 @@ async def public_generate_my_authenticator_key_v4_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGenerateMyBackupCodesV4)
 def public_generate_my_backup_codes_v4(
     namespace: Optional[str] = None,
@@ -4047,6 +4520,7 @@ def public_generate_my_backup_codes_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGenerateMyBackupCodesV4)
 async def public_generate_my_backup_codes_v4_async(
     namespace: Optional[str] = None,
@@ -4098,6 +4572,109 @@ async def public_generate_my_backup_codes_v4_async(
     )
 
 
+@same_doc_as(PublicGetBackupCodesV4)
+def public_get_backup_codes_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get backup codes and send to email (PublicGetBackupCodesV4)
+
+    This endpoint is used to get existing 8-digits backup codes.
+    Each codes is a one-time code and will be deleted once used.
+    The codes will be sent through linked email.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCodes
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Backup codes sent to email)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetBackupCodesV4)
+async def public_get_backup_codes_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get backup codes and send to email (PublicGetBackupCodesV4)
+
+    This endpoint is used to get existing 8-digits backup codes.
+    Each codes is a one-time code and will be deleted once used.
+    The codes will be sent through linked email.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCodes
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Backup codes sent to email)
+
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10192: factor not enabled | 10171: email address not found)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetBackupCodesV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@deprecated
 @same_doc_as(PublicGetMyBackupCodesV4)
 def public_get_my_backup_codes_v4(
     namespace: Optional[str] = None,
@@ -4147,6 +4724,7 @@ def public_get_my_backup_codes_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetMyBackupCodesV4)
 async def public_get_my_backup_codes_v4_async(
     namespace: Optional[str] = None,

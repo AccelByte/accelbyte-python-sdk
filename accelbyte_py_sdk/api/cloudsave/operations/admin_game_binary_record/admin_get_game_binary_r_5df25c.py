@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsGameBinaryRecordResponse
+from ...models import ModelsGameBinaryRecordAdminResponse
 from ...models import ModelsResponseError
 
 
@@ -56,7 +56,7 @@ class AdminGetGameBinaryRecordV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGameBinaryRecordResponse (Record in namespace-level retrieved)
+        200: OK - ModelsGameBinaryRecordAdminResponse (Record in namespace-level retrieved)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
@@ -168,12 +168,12 @@ class AdminGetGameBinaryRecordV1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelsGameBinaryRecordResponse],
+        Union[None, ModelsGameBinaryRecordAdminResponse],
         Union[None, HttpResponse, ModelsResponseError],
     ]:
         """Parse the given response.
 
-        200: OK - ModelsGameBinaryRecordResponse (Record in namespace-level retrieved)
+        200: OK - ModelsGameBinaryRecordAdminResponse (Record in namespace-level retrieved)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
@@ -197,7 +197,7 @@ class AdminGetGameBinaryRecordV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsGameBinaryRecordResponse.create_from_dict(content), None
+            return ModelsGameBinaryRecordAdminResponse.create_from_dict(content), None
         if code == 401:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 403:

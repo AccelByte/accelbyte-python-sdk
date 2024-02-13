@@ -68,7 +68,7 @@ class FleetCreate(Operation):
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
-        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (exceeded quota)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
@@ -189,7 +189,7 @@ class FleetCreate(Operation):
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
-        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+        403: Forbidden - ResponseErrorResponse (exceeded quota)
 
         500: Internal Server Error - ResponseErrorResponse (internal server error)
 

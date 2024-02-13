@@ -29,7 +29,12 @@ Role = iam_models.ModelRoleResponseV3
 class JWKSCache(Timer):
     JWKS_KEYS_KEY: str = "keys"
 
-    def __init__(self, sdk: AccelByteSDK, interval: Optional[Union[int, float]] = None, raise_on_error: bool = False):
+    def __init__(
+        self,
+        sdk: AccelByteSDK,
+        interval: Optional[Union[int, float]] = None,
+        raise_on_error: bool = False,
+    ):
         self.sdk = sdk
         self._jwks: Dict[str, PublicPrivateKey] = {}
         self._lock = RLock()
@@ -73,7 +78,12 @@ class JWKSCache(Timer):
 
 
 class NamespaceContextCache(Timer):
-    def __init__(self, sdk: AccelByteSDK, interval: Union[int, float], raise_on_error: bool = True):
+    def __init__(
+        self,
+        sdk: AccelByteSDK,
+        interval: Union[int, float],
+        raise_on_error: bool = True,
+    ):
         self.sdk = sdk
         self._namespace_contexts: Dict[str, Any] = {}
         self._lock = RLock()
@@ -96,7 +106,9 @@ class NamespaceContextCache(Timer):
         pass
 
     def cache_namespace_context(self, namespace: str) -> Any:
-        namespace_context, error = basic_service.get_namespace_context(namespace=namespace, sdk=self.sdk)
+        namespace_context, error = basic_service.get_namespace_context(
+            namespace=namespace, sdk=self.sdk
+        )
         if error:
             return error
         with self._lock:
@@ -119,7 +131,12 @@ class NamespaceContextCache(Timer):
 
 
 class RevocationListCache(Timer):
-    def __init__(self, sdk: AccelByteSDK, interval: Union[int, float], raise_on_error: bool = True):
+    def __init__(
+        self,
+        sdk: AccelByteSDK,
+        interval: Union[int, float],
+        raise_on_error: bool = True,
+    ):
         self.sdk = sdk
         self._revoked_token_filter: Optional[BloomFilter] = None
         self._revoked_users: Dict[str, float] = {}
@@ -167,7 +184,12 @@ class RevocationListCache(Timer):
 
 
 class RolesCache(Timer):
-    def __init__(self, sdk: AccelByteSDK, interval: Union[int, float], raise_on_error: bool = True):
+    def __init__(
+        self,
+        sdk: AccelByteSDK,
+        interval: Union[int, float],
+        raise_on_error: bool = True,
+    ):
         self.sdk = sdk
         self._roles: Dict[str, Any] = {}
         self._lock = RLock()

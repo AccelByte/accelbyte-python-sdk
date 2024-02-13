@@ -124,17 +124,17 @@ def create_leaderboard_configuration_admin_v3(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsGetLeaderboardConfigRespV3 (Created)
+        201: Created - ModelsGetLeaderboardConfigRespV3 (Leaderboard created)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body | 71242: stat code not found in namespace | 71243: cycle doesn't belong to the stat code | 71244: cycle is already stopped)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        409: Conflict - ResponseErrorResponse (Conflict)
+        409: Conflict - ResponseErrorResponse (71132: leaderboard configuration already exist)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -207,17 +207,17 @@ async def create_leaderboard_configuration_admin_v3_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsGetLeaderboardConfigRespV3 (Created)
+        201: Created - ModelsGetLeaderboardConfigRespV3 (Leaderboard created)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body | 71242: stat code not found in namespace | 71243: cycle doesn't belong to the stat code | 71244: cycle is already stopped)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        409: Conflict - ResponseErrorResponse (Conflict)
+        409: Conflict - ResponseErrorResponse (71132: leaderboard configuration already exist)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -269,15 +269,15 @@ def delete_bulk_leaderboard_configuration_admin_v3(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsDeleteBulkLeaderboardsResp (OK)
+        200: OK - ModelsDeleteBulkLeaderboardsResp (Leaderboard deleted)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -327,15 +327,15 @@ async def delete_bulk_leaderboard_configuration_admin_v3_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsDeleteBulkLeaderboardsResp (OK)
+        200: OK - ModelsDeleteBulkLeaderboardsResp (Leaderboard deleted)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -387,17 +387,17 @@ def delete_leaderboard_configuration_admin_v3(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Leaderboard successfully deleted)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -447,17 +447,17 @@ async def delete_leaderboard_configuration_admin_v3_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Leaderboard successfully deleted)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -509,17 +509,17 @@ def get_leaderboard_configuration_admin_v3(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetLeaderboardConfigRespV3 (OK)
+        200: OK - ModelsGetLeaderboardConfigRespV3 (Leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -569,17 +569,17 @@ async def get_leaderboard_configuration_admin_v3_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetLeaderboardConfigRespV3 (OK)
+        200: OK - ModelsGetLeaderboardConfigRespV3 (Leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -623,17 +623,17 @@ def get_leaderboard_configuration_public_v3(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetLeaderboardConfigPublicRespV3 (OK)
+        200: OK - ModelsGetLeaderboardConfigPublicRespV3 (Leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -675,17 +675,17 @@ async def get_leaderboard_configuration_public_v3_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetLeaderboardConfigPublicRespV3 (OK)
+        200: OK - ModelsGetLeaderboardConfigPublicRespV3 (Leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -743,15 +743,15 @@ def get_leaderboard_configurations_admin_v3(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetAllLeaderboardConfigsRespV3 (OK)
+        200: OK - ModelsGetAllLeaderboardConfigsRespV3 (Leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -809,15 +809,15 @@ async def get_leaderboard_configurations_admin_v3_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetAllLeaderboardConfigsRespV3 (OK)
+        200: OK - ModelsGetAllLeaderboardConfigsRespV3 (Leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -869,15 +869,15 @@ def get_leaderboard_configurations_public_v3(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetAllLeaderboardConfigsPublicRespV3 (OK)
+        200: OK - ModelsGetAllLeaderboardConfigsPublicRespV3 (Leaderboards retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -927,15 +927,15 @@ async def get_leaderboard_configurations_public_v3_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetAllLeaderboardConfigsPublicRespV3 (OK)
+        200: OK - ModelsGetAllLeaderboardConfigsPublicRespV3 (Leaderboards retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -999,17 +999,17 @@ def hard_delete_leaderboard_admin_v3(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Leaderboard successfully deleted)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 71241: forbidden environment)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1069,17 +1069,17 @@ async def hard_delete_leaderboard_admin_v3_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Leaderboard successfully deleted)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 71241: forbidden environment)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1157,17 +1157,19 @@ def update_leaderboard_configuration_admin_v3(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetLeaderboardConfigRespV3 (OK)
+        200: OK - ModelsGetLeaderboardConfigRespV3 (Leaderboard updated)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body | 71243: cycle doesn't belong to the stat code | 71244: cycle is already stopped)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        409: Conflict - ResponseErrorResponse (71132: leaderboard configuration already exist)
+
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1244,17 +1246,19 @@ async def update_leaderboard_configuration_admin_v3_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsGetLeaderboardConfigRespV3 (OK)
+        200: OK - ModelsGetLeaderboardConfigRespV3 (Leaderboard updated)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body | 71243: cycle doesn't belong to the stat code | 71244: cycle is already stopped)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        409: Conflict - ResponseErrorResponse (71132: leaderboard configuration already exist)
+
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

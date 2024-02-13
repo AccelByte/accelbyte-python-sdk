@@ -48,6 +48,8 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
 
         reach_minimum_age: (reachMinimumAge) OPTIONAL bool
 
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
+
         validate_only: (validateOnly) OPTIONAL bool
     """
 
@@ -61,6 +63,7 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
     date_of_birth: str  # OPTIONAL
     display_name: str  # OPTIONAL
     reach_minimum_age: bool  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
     validate_only: bool  # OPTIONAL
 
     # endregion fields
@@ -115,6 +118,12 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         self.reach_minimum_age = value
         return self
 
+    def with_unique_display_name(
+        self, value: str
+    ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
+        self.unique_display_name = value
+        return self
+
     def with_validate_only(
         self, value: bool
     ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
@@ -159,6 +168,10 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             result["reachMinimumAge"] = bool(self.reach_minimum_age)
         elif include_empty:
             result["reachMinimumAge"] = False
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         if hasattr(self, "validate_only"):
             result["validateOnly"] = bool(self.validate_only)
         elif include_empty:
@@ -180,6 +193,7 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
         date_of_birth: Optional[str] = None,
         display_name: Optional[str] = None,
         reach_minimum_age: Optional[bool] = None,
+        unique_display_name: Optional[str] = None,
         validate_only: Optional[bool] = None,
         **kwargs,
     ) -> AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4:
@@ -196,6 +210,8 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             instance.display_name = display_name
         if reach_minimum_age is not None:
             instance.reach_minimum_age = reach_minimum_age
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         if validate_only is not None:
             instance.validate_only = validate_only
         return instance
@@ -239,6 +255,10 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             instance.reach_minimum_age = bool(dict_["reachMinimumAge"])
         elif include_empty:
             instance.reach_minimum_age = False
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "validateOnly" in dict_ and dict_["validateOnly"] is not None:
             instance.validate_only = bool(dict_["validateOnly"])
         elif include_empty:
@@ -294,6 +314,7 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             "dateOfBirth": "date_of_birth",
             "displayName": "display_name",
             "reachMinimumAge": "reach_minimum_age",
+            "uniqueDisplayName": "unique_display_name",
             "validateOnly": "validate_only",
         }
 
@@ -308,6 +329,7 @@ class AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4(Model):
             "dateOfBirth": False,
             "displayName": False,
             "reachMinimumAge": False,
+            "uniqueDisplayName": False,
             "validateOnly": False,
         }
 

@@ -56,6 +56,8 @@ class ApiFleetServerInfoResponse(Model):
 
         server_id: (serverId) REQUIRED str
 
+        session_id: (sessionId) REQUIRED str
+
         status: (status) REQUIRED str
     """
 
@@ -72,6 +74,7 @@ class ApiFleetServerInfoResponse(Model):
     ports: Dict[str, int]  # REQUIRED
     region: str  # REQUIRED
     server_id: str  # REQUIRED
+    session_id: str  # REQUIRED
     status: str  # REQUIRED
 
     # endregion fields
@@ -122,6 +125,10 @@ class ApiFleetServerInfoResponse(Model):
 
     def with_server_id(self, value: str) -> ApiFleetServerInfoResponse:
         self.server_id = value
+        return self
+
+    def with_session_id(self, value: str) -> ApiFleetServerInfoResponse:
+        self.session_id = value
         return self
 
     def with_status(self, value: str) -> ApiFleetServerInfoResponse:
@@ -181,6 +188,10 @@ class ApiFleetServerInfoResponse(Model):
             result["serverId"] = str(self.server_id)
         elif include_empty:
             result["serverId"] = ""
+        if hasattr(self, "session_id"):
+            result["sessionId"] = str(self.session_id)
+        elif include_empty:
+            result["sessionId"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -205,6 +216,7 @@ class ApiFleetServerInfoResponse(Model):
         ports: Dict[str, int],
         region: str,
         server_id: str,
+        session_id: str,
         status: str,
         **kwargs,
     ) -> ApiFleetServerInfoResponse:
@@ -220,6 +232,7 @@ class ApiFleetServerInfoResponse(Model):
         instance.ports = ports
         instance.region = region
         instance.server_id = server_id
+        instance.session_id = session_id
         instance.status = status
         return instance
 
@@ -277,6 +290,10 @@ class ApiFleetServerInfoResponse(Model):
             instance.server_id = str(dict_["serverId"])
         elif include_empty:
             instance.server_id = ""
+        if "sessionId" in dict_ and dict_["sessionId"] is not None:
+            instance.session_id = str(dict_["sessionId"])
+        elif include_empty:
+            instance.session_id = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -335,6 +352,7 @@ class ApiFleetServerInfoResponse(Model):
             "ports": "ports",
             "region": "region",
             "serverId": "server_id",
+            "sessionId": "session_id",
             "status": "status",
         }
 
@@ -352,6 +370,7 @@ class ApiFleetServerInfoResponse(Model):
             "ports": True,
             "region": True,
             "serverId": True,
+            "sessionId": True,
             "status": True,
         }
 

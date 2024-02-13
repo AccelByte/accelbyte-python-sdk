@@ -1,0 +1,12 @@
+import json
+import yaml
+
+from .._utils import to_dict
+from accelbyte_py_sdk.api.platform import get_item_type_config
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import ItemTypeConfigInfo
+
+result, error = get_item_type_config(
+    id_=id_,
+    x_additional_headers=x_additional_headers,
+)

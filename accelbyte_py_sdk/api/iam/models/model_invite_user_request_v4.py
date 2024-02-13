@@ -38,6 +38,8 @@ class ModelInviteUserRequestV4(Model):
 
         is_admin: (isAdmin) REQUIRED bool
 
+        is_new_studio: (isNewStudio) OPTIONAL bool
+
         namespace: (namespace) OPTIONAL str
 
         role_id: (roleId) OPTIONAL str
@@ -48,6 +50,7 @@ class ModelInviteUserRequestV4(Model):
     assigned_namespaces: List[str]  # REQUIRED
     email_addresses: List[str]  # REQUIRED
     is_admin: bool  # REQUIRED
+    is_new_studio: bool  # OPTIONAL
     namespace: str  # OPTIONAL
     role_id: str  # OPTIONAL
 
@@ -65,6 +68,10 @@ class ModelInviteUserRequestV4(Model):
 
     def with_is_admin(self, value: bool) -> ModelInviteUserRequestV4:
         self.is_admin = value
+        return self
+
+    def with_is_new_studio(self, value: bool) -> ModelInviteUserRequestV4:
+        self.is_new_studio = value
         return self
 
     def with_namespace(self, value: str) -> ModelInviteUserRequestV4:
@@ -93,6 +100,10 @@ class ModelInviteUserRequestV4(Model):
             result["isAdmin"] = bool(self.is_admin)
         elif include_empty:
             result["isAdmin"] = False
+        if hasattr(self, "is_new_studio"):
+            result["isNewStudio"] = bool(self.is_new_studio)
+        elif include_empty:
+            result["isNewStudio"] = False
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -113,6 +124,7 @@ class ModelInviteUserRequestV4(Model):
         assigned_namespaces: List[str],
         email_addresses: List[str],
         is_admin: bool,
+        is_new_studio: Optional[bool] = None,
         namespace: Optional[str] = None,
         role_id: Optional[str] = None,
         **kwargs,
@@ -121,6 +133,8 @@ class ModelInviteUserRequestV4(Model):
         instance.assigned_namespaces = assigned_namespaces
         instance.email_addresses = email_addresses
         instance.is_admin = is_admin
+        if is_new_studio is not None:
+            instance.is_new_studio = is_new_studio
         if namespace is not None:
             instance.namespace = namespace
         if role_id is not None:
@@ -148,6 +162,10 @@ class ModelInviteUserRequestV4(Model):
             instance.is_admin = bool(dict_["isAdmin"])
         elif include_empty:
             instance.is_admin = False
+        if "isNewStudio" in dict_ and dict_["isNewStudio"] is not None:
+            instance.is_new_studio = bool(dict_["isNewStudio"])
+        elif include_empty:
+            instance.is_new_studio = False
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -202,6 +220,7 @@ class ModelInviteUserRequestV4(Model):
             "assignedNamespaces": "assigned_namespaces",
             "emailAddresses": "email_addresses",
             "isAdmin": "is_admin",
+            "isNewStudio": "is_new_studio",
             "namespace": "namespace",
             "roleId": "role_id",
         }
@@ -212,6 +231,7 @@ class ModelInviteUserRequestV4(Model):
             "assignedNamespaces": True,
             "emailAddresses": True,
             "isAdmin": True,
+            "isNewStudio": False,
             "namespace": False,
             "roleId": False,
         }

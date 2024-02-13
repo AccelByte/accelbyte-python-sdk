@@ -31,7 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.ams import artifact_get as artifact_get_internal
-from accelbyte_py_sdk.api.ams.models import ApiArtifactResponse
+from accelbyte_py_sdk.api.ams.models import ApiArtifactListResponse
 from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 

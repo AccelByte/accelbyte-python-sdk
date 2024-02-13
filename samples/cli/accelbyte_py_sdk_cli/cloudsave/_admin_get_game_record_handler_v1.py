@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.cloudsave import (
     admin_get_game_record_handler_v1 as admin_get_game_record_handler_v1_internal,
 )
-from accelbyte_py_sdk.api.cloudsave.models import ModelsGameRecordResponse
+from accelbyte_py_sdk.api.cloudsave.models import ModelsGameRecordAdminResponse
 from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
 

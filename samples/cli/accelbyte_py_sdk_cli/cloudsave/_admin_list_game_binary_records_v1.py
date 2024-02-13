@@ -33,7 +33,9 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.cloudsave import (
     admin_list_game_binary_records_v1 as admin_list_game_binary_records_v1_internal,
 )
-from accelbyte_py_sdk.api.cloudsave.models import ModelsListGameBinaryRecordsResponse
+from accelbyte_py_sdk.api.cloudsave.models import (
+    ModelsListGameBinaryRecordsAdminResponse,
+)
 from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 
 

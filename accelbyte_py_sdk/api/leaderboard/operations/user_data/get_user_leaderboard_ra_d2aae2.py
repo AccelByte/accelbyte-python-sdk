@@ -70,15 +70,13 @@ class GetUserLeaderboardRankingsAdminV1(Operation):
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetAllUserLeaderboardsResp (OK)
+        200: OK - ModelsGetAllUserLeaderboardsResp (User rankings retrieved)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -227,15 +225,13 @@ class GetUserLeaderboardRankingsAdminV1(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - ModelsGetAllUserLeaderboardsResp (OK)
+        200: OK - ModelsGetAllUserLeaderboardsResp (User rankings retrieved)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -255,8 +251,6 @@ class GetUserLeaderboardRankingsAdminV1(Operation):
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, ResponseErrorResponse.create_from_dict(content)
-        if code == 404:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)

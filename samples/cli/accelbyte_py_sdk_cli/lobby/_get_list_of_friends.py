@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 @click.command()
 @click.argument("user_id", type=str)
 @click.option("--friend_id", "friend_id", type=str)
+@click.option("--friend_ids", "friend_ids", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
@@ -49,6 +50,7 @@ from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 def get_list_of_friends(
     user_id: str,
     friend_id: Optional[str] = None,
+    friend_ids: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -64,9 +66,16 @@ def get_list_of_friends(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if friend_ids is not None:
+        try:
+            friend_ids_json = json.loads(friend_ids)
+            friend_ids = [str(i0) for i0 in friend_ids_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'friendIds'. {str(e)}") from e
     result, error = get_list_of_friends_internal(
         user_id=user_id,
         friend_id=friend_id,
+        friend_ids=friend_ids,
         limit=limit,
         offset=offset,
         namespace=namespace,

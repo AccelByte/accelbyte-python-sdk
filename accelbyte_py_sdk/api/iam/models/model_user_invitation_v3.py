@@ -44,9 +44,13 @@ class ModelUserInvitationV3(Model):
 
         id_: (id) OPTIONAL str
 
+        is_new_studio: (isNewStudio) OPTIONAL bool
+
         namespace: (namespace) OPTIONAL str
 
         namespace_display_name: (namespaceDisplayName) OPTIONAL str
+
+        studio_namespace: (studioNamespace) OPTIONAL str
     """
 
     # region fields
@@ -56,8 +60,10 @@ class ModelUserInvitationV3(Model):
     roles: List[AccountcommonNamespaceRole]  # REQUIRED
     additional_data: str  # OPTIONAL
     id_: str  # OPTIONAL
+    is_new_studio: bool  # OPTIONAL
     namespace: str  # OPTIONAL
     namespace_display_name: str  # OPTIONAL
+    studio_namespace: str  # OPTIONAL
 
     # endregion fields
 
@@ -85,12 +91,20 @@ class ModelUserInvitationV3(Model):
         self.id_ = value
         return self
 
+    def with_is_new_studio(self, value: bool) -> ModelUserInvitationV3:
+        self.is_new_studio = value
+        return self
+
     def with_namespace(self, value: str) -> ModelUserInvitationV3:
         self.namespace = value
         return self
 
     def with_namespace_display_name(self, value: str) -> ModelUserInvitationV3:
         self.namespace_display_name = value
+        return self
+
+    def with_studio_namespace(self, value: str) -> ModelUserInvitationV3:
+        self.studio_namespace = value
         return self
 
     # endregion with_x methods
@@ -121,6 +135,10 @@ class ModelUserInvitationV3(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "is_new_studio"):
+            result["isNewStudio"] = bool(self.is_new_studio)
+        elif include_empty:
+            result["isNewStudio"] = False
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -129,6 +147,10 @@ class ModelUserInvitationV3(Model):
             result["namespaceDisplayName"] = str(self.namespace_display_name)
         elif include_empty:
             result["namespaceDisplayName"] = ""
+        if hasattr(self, "studio_namespace"):
+            result["studioNamespace"] = str(self.studio_namespace)
+        elif include_empty:
+            result["studioNamespace"] = ""
         return result
 
     # endregion to methods
@@ -143,8 +165,10 @@ class ModelUserInvitationV3(Model):
         roles: List[AccountcommonNamespaceRole],
         additional_data: Optional[str] = None,
         id_: Optional[str] = None,
+        is_new_studio: Optional[bool] = None,
         namespace: Optional[str] = None,
         namespace_display_name: Optional[str] = None,
+        studio_namespace: Optional[str] = None,
         **kwargs,
     ) -> ModelUserInvitationV3:
         instance = cls()
@@ -155,10 +179,14 @@ class ModelUserInvitationV3(Model):
             instance.additional_data = additional_data
         if id_ is not None:
             instance.id_ = id_
+        if is_new_studio is not None:
+            instance.is_new_studio = is_new_studio
         if namespace is not None:
             instance.namespace = namespace
         if namespace_display_name is not None:
             instance.namespace_display_name = namespace_display_name
+        if studio_namespace is not None:
+            instance.studio_namespace = studio_namespace
         return instance
 
     @classmethod
@@ -193,6 +221,10 @@ class ModelUserInvitationV3(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "isNewStudio" in dict_ and dict_["isNewStudio"] is not None:
+            instance.is_new_studio = bool(dict_["isNewStudio"])
+        elif include_empty:
+            instance.is_new_studio = False
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -204,6 +236,10 @@ class ModelUserInvitationV3(Model):
             instance.namespace_display_name = str(dict_["namespaceDisplayName"])
         elif include_empty:
             instance.namespace_display_name = ""
+        if "studioNamespace" in dict_ and dict_["studioNamespace"] is not None:
+            instance.studio_namespace = str(dict_["studioNamespace"])
+        elif include_empty:
+            instance.studio_namespace = ""
         return instance
 
     @classmethod
@@ -252,8 +288,10 @@ class ModelUserInvitationV3(Model):
             "roles": "roles",
             "additionalData": "additional_data",
             "id": "id_",
+            "isNewStudio": "is_new_studio",
             "namespace": "namespace",
             "namespaceDisplayName": "namespace_display_name",
+            "studioNamespace": "studio_namespace",
         }
 
     @staticmethod
@@ -264,8 +302,10 @@ class ModelUserInvitationV3(Model):
             "roles": True,
             "additionalData": False,
             "id": False,
+            "isNewStudio": False,
             "namespace": False,
             "namespaceDisplayName": False,
+            "studioNamespace": False,
         }
 
     # endregion static methods

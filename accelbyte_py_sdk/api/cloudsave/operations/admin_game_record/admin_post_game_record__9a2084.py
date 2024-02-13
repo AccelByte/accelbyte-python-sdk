@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ModelsGameRecordAdminResponse
 from ...models import ModelsGameRecordRequest
-from ...models import ModelsGameRecordResponse
 from ...models import ModelsResponseError
 
 
@@ -93,12 +93,20 @@ class AdminPostGameRecordHandlerV1(Operation):
     Indicate which party that could modify the game record.
     SERVER: record can be modified by server only.
     CLIENT: record can be modified by client and server.
+    2. ttl_config (default: *empty*, type: object)
+    Indicate the TTL configuration for the game record.
+    action:
+    - DELETE: record will be deleted after TTL is reached
 
     **Request Body Example:**
     ```
     {
     "__META": {
-    "set_by": "SERVER"
+    "set_by": "SERVER",
+    "ttl_config": {
+    "expires_at": "2026-01-02T15:04:05Z", // should be in RFC3339 format
+    "action": "DELETE"
+    }
     }
     ...
     }
@@ -127,7 +135,7 @@ class AdminPostGameRecordHandlerV1(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
+        201: Created - ModelsGameRecordAdminResponse (Record in namespace-level saved)
 
         400: Bad Request - ModelsResponseError (18011: invalid request body | 20002: validation error | 18015: invalid request body: size of the request body must be less than [%d]MB)
 
@@ -254,12 +262,12 @@ class AdminPostGameRecordHandlerV1(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelsGameRecordResponse],
+        Union[None, ModelsGameRecordAdminResponse],
         Union[None, HttpResponse, ModelsResponseError],
     ]:
         """Parse the given response.
 
-        201: Created - ModelsGameRecordResponse (Record in namespace-level saved)
+        201: Created - ModelsGameRecordAdminResponse (Record in namespace-level saved)
 
         400: Bad Request - ModelsResponseError (18011: invalid request body | 20002: validation error | 18015: invalid request body: size of the request body must be less than [%d]MB)
 
@@ -283,7 +291,7 @@ class AdminPostGameRecordHandlerV1(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 201:
-            return ModelsGameRecordResponse.create_from_dict(content), None
+            return ModelsGameRecordAdminResponse.create_from_dict(content), None
         if code == 400:
             return None, ModelsResponseError.create_from_dict(content)
         if code == 401:

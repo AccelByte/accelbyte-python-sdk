@@ -29,7 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import ApiArtifactResponse
+from ..models import ApiArtifactListResponse
 from ..models import ApiArtifactURLResponse
 from ..models import ApiArtifactUsageResponse
 from ..models import ApiFleetArtifactsSampleRules
@@ -222,7 +222,7 @@ def artifact_get(
         status: (status) OPTIONAL str in query
 
     Responses:
-        200: OK - List[ApiArtifactResponse] (success)
+        200: OK - ApiArtifactListResponse (success)
 
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
@@ -321,7 +321,7 @@ async def artifact_get_async(
         status: (status) OPTIONAL str in query
 
     Responses:
-        200: OK - List[ApiArtifactResponse] (success)
+        200: OK - ApiArtifactListResponse (success)
 
         400: Bad Request - ResponseErrorResponse (invalid data in request)
 
@@ -710,7 +710,7 @@ def fleet_artifact_sampling_rules_set(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - ApiFleetArtifactsSampleRules (success)
+        200: OK - ApiFleetArtifactsSampleRules (success)
 
         400: Bad Request - ResponseErrorResponse (invalid fleet ID)
 
@@ -769,7 +769,7 @@ async def fleet_artifact_sampling_rules_set_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - ApiFleetArtifactsSampleRules (success)
+        200: OK - ApiFleetArtifactsSampleRules (success)
 
         400: Bad Request - ResponseErrorResponse (invalid fleet ID)
 

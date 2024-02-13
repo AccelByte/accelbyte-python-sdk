@@ -45,6 +45,8 @@ class ModelUserCreateResponseV3(Model):
         namespace: (namespace) REQUIRED str
 
         user_id: (userId) REQUIRED str
+
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
     """
 
     # region fields
@@ -56,6 +58,7 @@ class ModelUserCreateResponseV3(Model):
     email_address: str  # REQUIRED
     namespace: str  # REQUIRED
     user_id: str  # REQUIRED
+    unique_display_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -87,6 +90,10 @@ class ModelUserCreateResponseV3(Model):
 
     def with_user_id(self, value: str) -> ModelUserCreateResponseV3:
         self.user_id = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelUserCreateResponseV3:
+        self.unique_display_name = value
         return self
 
     # endregion with_x methods
@@ -123,6 +130,10 @@ class ModelUserCreateResponseV3(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         return result
 
     # endregion to methods
@@ -139,6 +150,7 @@ class ModelUserCreateResponseV3(Model):
         email_address: str,
         namespace: str,
         user_id: str,
+        unique_display_name: Optional[str] = None,
         **kwargs,
     ) -> ModelUserCreateResponseV3:
         instance = cls()
@@ -149,6 +161,8 @@ class ModelUserCreateResponseV3(Model):
         instance.email_address = email_address
         instance.namespace = namespace
         instance.user_id = user_id
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         return instance
 
     @classmethod
@@ -186,6 +200,10 @@ class ModelUserCreateResponseV3(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         return instance
 
     @classmethod
@@ -236,6 +254,7 @@ class ModelUserCreateResponseV3(Model):
             "emailAddress": "email_address",
             "namespace": "namespace",
             "userId": "user_id",
+            "uniqueDisplayName": "unique_display_name",
         }
 
     @staticmethod
@@ -248,6 +267,7 @@ class ModelUserCreateResponseV3(Model):
             "emailAddress": True,
             "namespace": True,
             "userId": True,
+            "uniqueDisplayName": False,
         }
 
     # endregion static methods

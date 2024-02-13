@@ -51,6 +51,8 @@ class AccountCreateTestUserResponseV4(Model):
         username: (username) REQUIRED str
 
         verified: (verified) REQUIRED bool
+
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
     """
 
     # region fields
@@ -65,6 +67,7 @@ class AccountCreateTestUserResponseV4(Model):
     user_id: str  # REQUIRED
     username: str  # REQUIRED
     verified: bool  # REQUIRED
+    unique_display_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -108,6 +111,10 @@ class AccountCreateTestUserResponseV4(Model):
 
     def with_verified(self, value: bool) -> AccountCreateTestUserResponseV4:
         self.verified = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> AccountCreateTestUserResponseV4:
+        self.unique_display_name = value
         return self
 
     # endregion with_x methods
@@ -156,6 +163,10 @@ class AccountCreateTestUserResponseV4(Model):
             result["verified"] = bool(self.verified)
         elif include_empty:
             result["verified"] = False
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         return result
 
     # endregion to methods
@@ -175,6 +186,7 @@ class AccountCreateTestUserResponseV4(Model):
         user_id: str,
         username: str,
         verified: bool,
+        unique_display_name: Optional[str] = None,
         **kwargs,
     ) -> AccountCreateTestUserResponseV4:
         instance = cls()
@@ -188,6 +200,8 @@ class AccountCreateTestUserResponseV4(Model):
         instance.user_id = user_id
         instance.username = username
         instance.verified = verified
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         return instance
 
     @classmethod
@@ -237,6 +251,10 @@ class AccountCreateTestUserResponseV4(Model):
             instance.verified = bool(dict_["verified"])
         elif include_empty:
             instance.verified = False
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         return instance
 
     @classmethod
@@ -290,6 +308,7 @@ class AccountCreateTestUserResponseV4(Model):
             "userId": "user_id",
             "username": "username",
             "verified": "verified",
+            "uniqueDisplayName": "unique_display_name",
         }
 
     @staticmethod
@@ -305,6 +324,7 @@ class AccountCreateTestUserResponseV4(Model):
             "userId": True,
             "username": True,
             "verified": True,
+            "uniqueDisplayName": False,
         }
 
     # endregion static methods

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.9.0"
+__version__ = "7.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -73,6 +73,11 @@ from ._clients import update_client_permission
 from ._clients import update_client_permission_async
 from ._clients import update_client_secret
 from ._clients import update_client_secret_async
+
+from ._config import admin_get_config_value_v3
+from ._config import admin_get_config_value_v3_async
+from ._config import public_get_config_value_v3
+from ._config import public_get_config_value_v3_async
 
 from ._country import admin_add_country_blacklist_v3
 from ._country import admin_add_country_blacklist_v3_async
@@ -700,16 +705,22 @@ from ._users_v4 import admin_disable_user_mfav4
 from ._users_v4 import admin_disable_user_mfav4_async
 from ._users_v4 import admin_download_my_backup_codes_v4
 from ._users_v4 import admin_download_my_backup_codes_v4_async
+from ._users_v4 import admin_enable_backup_codes_v4
+from ._users_v4 import admin_enable_backup_codes_v4_async
 from ._users_v4 import admin_enable_my_authenticator_v4
 from ._users_v4 import admin_enable_my_authenticator_v4_async
 from ._users_v4 import admin_enable_my_backup_codes_v4
 from ._users_v4 import admin_enable_my_backup_codes_v4_async
 from ._users_v4 import admin_enable_my_email_v4
 from ._users_v4 import admin_enable_my_email_v4_async
+from ._users_v4 import admin_generate_backup_codes_v4
+from ._users_v4 import admin_generate_backup_codes_v4_async
 from ._users_v4 import admin_generate_my_authenticator_key_v4
 from ._users_v4 import admin_generate_my_authenticator_key_v4_async
 from ._users_v4 import admin_generate_my_backup_codes_v4
 from ._users_v4 import admin_generate_my_backup_codes_v4_async
+from ._users_v4 import admin_get_backup_codes_v4
+from ._users_v4 import admin_get_backup_codes_v4_async
 from ._users_v4 import admin_get_my_backup_codes_v4
 from ._users_v4 import admin_get_my_backup_codes_v4_async
 from ._users_v4 import admin_get_my_enabled_factors_v4
@@ -748,16 +759,22 @@ from ._users_v4 import public_disable_my_email_v4
 from ._users_v4 import public_disable_my_email_v4_async
 from ._users_v4 import public_download_my_backup_codes_v4
 from ._users_v4 import public_download_my_backup_codes_v4_async
+from ._users_v4 import public_enable_backup_codes_v4
+from ._users_v4 import public_enable_backup_codes_v4_async
 from ._users_v4 import public_enable_my_authenticator_v4
 from ._users_v4 import public_enable_my_authenticator_v4_async
 from ._users_v4 import public_enable_my_backup_codes_v4
 from ._users_v4 import public_enable_my_backup_codes_v4_async
 from ._users_v4 import public_enable_my_email_v4
 from ._users_v4 import public_enable_my_email_v4_async
+from ._users_v4 import public_generate_backup_codes_v4
+from ._users_v4 import public_generate_backup_codes_v4_async
 from ._users_v4 import public_generate_my_authenticator_key_v4
 from ._users_v4 import public_generate_my_authenticator_key_v4_async
 from ._users_v4 import public_generate_my_backup_codes_v4
 from ._users_v4 import public_generate_my_backup_codes_v4_async
+from ._users_v4 import public_get_backup_codes_v4
+from ._users_v4 import public_get_backup_codes_v4_async
 from ._users_v4 import public_get_my_backup_codes_v4
 from ._users_v4 import public_get_my_backup_codes_v4_async
 from ._users_v4 import public_get_my_enabled_factors_v4

@@ -59,6 +59,7 @@ from ..operations.party import PublicUpdateParty
 
 @same_doc_as(AdminQueryParties)
 def admin_query_parties(
+    is_soft_deleted: Optional[str] = None,
     joinability: Optional[str] = None,
     key: Optional[str] = None,
     leader_id: Optional[str] = None,
@@ -92,6 +93,8 @@ def admin_query_parties(
         securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
+
+        is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
         joinability: (joinability) OPTIONAL str in query
 
@@ -129,6 +132,7 @@ def admin_query_parties(
         if error:
             return None, error
     request = AdminQueryParties.create(
+        is_soft_deleted=is_soft_deleted,
         joinability=joinability,
         key=key,
         leader_id=leader_id,
@@ -147,6 +151,7 @@ def admin_query_parties(
 
 @same_doc_as(AdminQueryParties)
 async def admin_query_parties_async(
+    is_soft_deleted: Optional[str] = None,
     joinability: Optional[str] = None,
     key: Optional[str] = None,
     leader_id: Optional[str] = None,
@@ -180,6 +185,8 @@ async def admin_query_parties_async(
         securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
+
+        is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
         joinability: (joinability) OPTIONAL str in query
 
@@ -217,6 +224,7 @@ async def admin_query_parties_async(
         if error:
             return None, error
     request = AdminQueryParties.create(
+        is_soft_deleted=is_soft_deleted,
         joinability=joinability,
         key=key,
         leader_id=leader_id,

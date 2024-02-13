@@ -68,6 +68,8 @@ class OauthmodelTokenResponseV3(Model):
 
         roles: (roles) OPTIONAL List[str]
 
+        unique_display_name: (unique_display_name) OPTIONAL str
+
         user_id: (user_id) OPTIONAL str
 
         xuid: (xuid) OPTIONAL str
@@ -91,6 +93,7 @@ class OauthmodelTokenResponseV3(Model):
     refresh_expires_in: int  # OPTIONAL
     refresh_token: str  # OPTIONAL
     roles: List[str]  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
     user_id: str  # OPTIONAL
     xuid: str  # OPTIONAL
 
@@ -166,6 +169,10 @@ class OauthmodelTokenResponseV3(Model):
 
     def with_roles(self, value: List[str]) -> OauthmodelTokenResponseV3:
         self.roles = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> OauthmodelTokenResponseV3:
+        self.unique_display_name = value
         return self
 
     def with_user_id(self, value: str) -> OauthmodelTokenResponseV3:
@@ -252,6 +259,10 @@ class OauthmodelTokenResponseV3(Model):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
             result["roles"] = []
+        if hasattr(self, "unique_display_name"):
+            result["unique_display_name"] = str(self.unique_display_name)
+        elif include_empty:
+            result["unique_display_name"] = ""
         if hasattr(self, "user_id"):
             result["user_id"] = str(self.user_id)
         elif include_empty:
@@ -285,6 +296,7 @@ class OauthmodelTokenResponseV3(Model):
         refresh_expires_in: Optional[int] = None,
         refresh_token: Optional[str] = None,
         roles: Optional[List[str]] = None,
+        unique_display_name: Optional[str] = None,
         user_id: Optional[str] = None,
         xuid: Optional[str] = None,
         **kwargs,
@@ -316,6 +328,8 @@ class OauthmodelTokenResponseV3(Model):
             instance.refresh_token = refresh_token
         if roles is not None:
             instance.roles = roles
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         if user_id is not None:
             instance.user_id = user_id
         if xuid is not None:
@@ -406,6 +420,10 @@ class OauthmodelTokenResponseV3(Model):
             instance.roles = [str(i0) for i0 in dict_["roles"]]
         elif include_empty:
             instance.roles = []
+        if "unique_display_name" in dict_ and dict_["unique_display_name"] is not None:
+            instance.unique_display_name = str(dict_["unique_display_name"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "user_id" in dict_ and dict_["user_id"] is not None:
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
@@ -473,6 +491,7 @@ class OauthmodelTokenResponseV3(Model):
             "refresh_expires_in": "refresh_expires_in",
             "refresh_token": "refresh_token",
             "roles": "roles",
+            "unique_display_name": "unique_display_name",
             "user_id": "user_id",
             "xuid": "xuid",
         }
@@ -496,6 +515,7 @@ class OauthmodelTokenResponseV3(Model):
             "refresh_expires_in": False,
             "refresh_token": False,
             "roles": False,
+            "unique_display_name": False,
             "user_id": False,
             "xuid": False,
         }

@@ -44,6 +44,8 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
 
         display_name: (displayName) OPTIONAL str
 
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
+
         validate_only: (validateOnly) OPTIONAL bool
     """
 
@@ -55,6 +57,7 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
     country: str  # OPTIONAL
     date_of_birth: str  # OPTIONAL
     display_name: str  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
     validate_only: bool  # OPTIONAL
 
     # endregion fields
@@ -97,6 +100,12 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
         self.display_name = value
         return self
 
+    def with_unique_display_name(
+        self, value: str
+    ) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
+        self.unique_display_name = value
+        return self
+
     def with_validate_only(
         self, value: bool
     ) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
@@ -133,6 +142,10 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         if hasattr(self, "validate_only"):
             result["validateOnly"] = bool(self.validate_only)
         elif include_empty:
@@ -152,6 +165,7 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
         country: Optional[str] = None,
         date_of_birth: Optional[str] = None,
         display_name: Optional[str] = None,
+        unique_display_name: Optional[str] = None,
         validate_only: Optional[bool] = None,
         **kwargs,
     ) -> ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3:
@@ -165,6 +179,8 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             instance.date_of_birth = date_of_birth
         if display_name is not None:
             instance.display_name = display_name
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         if validate_only is not None:
             instance.validate_only = validate_only
         return instance
@@ -200,6 +216,10 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
             instance.display_name = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "validateOnly" in dict_ and dict_["validateOnly"] is not None:
             instance.validate_only = bool(dict_["validateOnly"])
         elif include_empty:
@@ -253,6 +273,7 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             "country": "country",
             "dateOfBirth": "date_of_birth",
             "displayName": "display_name",
+            "uniqueDisplayName": "unique_display_name",
             "validateOnly": "validate_only",
         }
 
@@ -265,6 +286,7 @@ class ModelUpgradeHeadlessAccountWithVerificationCodeRequestV3(Model):
             "country": False,
             "dateOfBirth": False,
             "displayName": False,
+            "uniqueDisplayName": False,
             "validateOnly": False,
         }
 

@@ -210,8 +210,7 @@ class TokenValidatorTestCase(IntegrationTestCase):
 
         # act 1
         is_valid = validate_resource(
-            resource=resource,
-            expected_resource=expected_resource
+            resource=resource, expected_resource=expected_resource
         )
 
         # assert 1
@@ -229,8 +228,7 @@ class TokenValidatorTestCase(IntegrationTestCase):
 
         # act 2
         is_valid = validate_resource(
-            resource=resource,
-            expected_resource=expected_resource
+            resource=resource, expected_resource=expected_resource
         )
 
         # assert 2
@@ -248,8 +246,7 @@ class TokenValidatorTestCase(IntegrationTestCase):
 
         # act 3
         is_valid = validate_resource(
-            resource=resource,
-            expected_resource=expected_resource
+            resource=resource, expected_resource=expected_resource
         )
 
         # assert 3
@@ -261,11 +258,15 @@ class TokenValidatorTestCase(IntegrationTestCase):
         expected_resource = "NAMESPACE:{namespace}:CLIENT"
 
         namespace_context_cache = NamespaceContextCache(SDK, 3600)
-        namespace_context_cache._namespace_contexts[namespace] = NamespaceContext.create_from_dict({
-            "namespace": namespace,
-            "studioNamespace": "studio1",
-            "type": "Game",
-        })
+        namespace_context_cache._namespace_contexts[
+            namespace
+        ] = NamespaceContext.create_from_dict(
+            {
+                "namespace": namespace,
+                "studioNamespace": "studio1",
+                "type": "Game",
+            }
+        )
 
         expected_resource = replace_resource(
             resource=expected_resource,
@@ -276,7 +277,7 @@ class TokenValidatorTestCase(IntegrationTestCase):
         is_valid = validate_resource(
             resource=resource,
             expected_resource=expected_resource,
-            namespace_context_cache=namespace_context_cache
+            namespace_context_cache=namespace_context_cache,
         )
 
         # assert 4
@@ -298,7 +299,7 @@ class TokenValidatorTestCase(IntegrationTestCase):
         is_valid = validate_resource(
             resource=resource,
             expected_resource=expected_resource,
-            namespace_context_cache=namespace_context_cache
+            namespace_context_cache=namespace_context_cache,
         )
 
         # assert 5

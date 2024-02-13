@@ -141,7 +141,7 @@ class HandleUploadXboxPFXCertificate(Operation):
         if hasattr(self, "certname"):
             result["certname"] = self.certname
         if hasattr(self, "file"):
-            result["file"] = self.file
+            result[("file", "file")] = self.file
         if hasattr(self, "password"):
             result["password"] = self.password
         return result

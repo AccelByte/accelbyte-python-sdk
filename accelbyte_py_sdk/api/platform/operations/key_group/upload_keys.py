@@ -131,7 +131,7 @@ class UploadKeys(Operation):
     def get_form_data_params(self) -> dict:
         result = {}
         if hasattr(self, "file"):
-            result["file"] = self.file
+            result[("file", "file")] = self.file
         return result
 
     def get_path_params(self) -> dict:

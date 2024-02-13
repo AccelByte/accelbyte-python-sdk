@@ -31,6 +31,7 @@ from ....core import same_doc_as
 
 from ..models import ModelBulkFriendsRequest
 from ..models import ModelBulkFriendsResponse
+from ..models import ModelFriendshipConnectionResponse
 from ..models import ModelGetFriendsResponse
 from ..models import ModelGetUserFriendsResponse
 from ..models import ModelGetUserIncomingFriendsResponse
@@ -50,6 +51,7 @@ from ..models import RestapiErrorResponseBody
 from ..models import RestapiErrorResponseV1
 
 from ..operations.friends import AddFriendsWithoutConfirmation
+from ..operations.friends import AdminListFriendsOfFriends
 from ..operations.friends import BulkDeleteFriends
 from ..operations.friends import GetIncomingFriendRequests
 from ..operations.friends import GetListOfFriends
@@ -172,6 +174,140 @@ async def add_friends_without_confirmation_async(
     request = AddFriendsWithoutConfirmation.create(
         body=body,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminListFriendsOfFriends)
+def admin_list_friends_of_friends(
+    user_id: str,
+    friend_id: Optional[str] = None,
+    limit: Optional[int] = None,
+    nopaging: Optional[bool] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Load list friends of friends (adminListFriendsOfFriends)
+
+    Load list friends and friends of friends in a namespace. Response subjectId will be different with requested userId if the user is not directly friend
+
+    Properties:
+        url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}/of-friends
+
+        method: GET
+
+        tags: ["friends"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        friend_id: (friendId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        nopaging: (nopaging) OPTIONAL bool in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelFriendshipConnectionResponse
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminListFriendsOfFriends.create(
+        user_id=user_id,
+        friend_id=friend_id,
+        limit=limit,
+        nopaging=nopaging,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminListFriendsOfFriends)
+async def admin_list_friends_of_friends_async(
+    user_id: str,
+    friend_id: Optional[str] = None,
+    limit: Optional[int] = None,
+    nopaging: Optional[bool] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Load list friends of friends (adminListFriendsOfFriends)
+
+    Load list friends and friends of friends in a namespace. Response subjectId will be different with requested userId if the user is not directly friend
+
+    Properties:
+        url: /lobby/v1/admin/friend/namespaces/{namespace}/users/{userId}/of-friends
+
+        method: GET
+
+        tags: ["friends"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        friend_id: (friendId) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        nopaging: (nopaging) OPTIONAL bool in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelFriendshipConnectionResponse
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminListFriendsOfFriends.create(
+        user_id=user_id,
+        friend_id=friend_id,
+        limit=limit,
+        nopaging=nopaging,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(
@@ -419,6 +555,7 @@ async def get_incoming_friend_requests_async(
 def get_list_of_friends(
     user_id: str,
     friend_id: Optional[str] = None,
+    friend_ids: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -448,6 +585,8 @@ def get_list_of_friends(
 
         friend_id: (friendId) OPTIONAL str in query
 
+        friend_ids: (friendIds) OPTIONAL List[str] in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -470,6 +609,7 @@ def get_list_of_friends(
     request = GetListOfFriends.create(
         user_id=user_id,
         friend_id=friend_id,
+        friend_ids=friend_ids,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -481,6 +621,7 @@ def get_list_of_friends(
 async def get_list_of_friends_async(
     user_id: str,
     friend_id: Optional[str] = None,
+    friend_ids: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     namespace: Optional[str] = None,
@@ -510,6 +651,8 @@ async def get_list_of_friends_async(
 
         friend_id: (friendId) OPTIONAL str in query
 
+        friend_ids: (friendIds) OPTIONAL List[str] in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -532,6 +675,7 @@ async def get_list_of_friends_async(
     request = GetListOfFriends.create(
         user_id=user_id,
         friend_id=friend_id,
+        friend_ids=friend_ids,
         limit=limit,
         offset=offset,
         namespace=namespace,
@@ -1679,6 +1823,10 @@ def user_get_friendship_status(
     """user get friendship status (userGetFriendshipStatus)
 
     User get friendship status.
+    Code: 0 - Message: "not friend"
+    Code: 1 - Message: "outgoing"
+    Code: 2 - Message: "incoming"
+    Code: 3 - Message: "friend"
 
     Properties:
         url: /friends/namespaces/{namespace}/me/status/{friendId}
@@ -1729,6 +1877,10 @@ async def user_get_friendship_status_async(
     """user get friendship status (userGetFriendshipStatus)
 
     User get friendship status.
+    Code: 0 - Message: "not friend"
+    Code: 1 - Message: "outgoing"
+    Code: 2 - Message: "incoming"
+    Code: 3 - Message: "friend"
 
     Properties:
         url: /friends/namespaces/{namespace}/me/status/{friendId}

@@ -116,6 +116,7 @@ from ..api.iam.models import ModelBulkAccountTypeUpdateRequestV4
 from ..api.iam.models import ModelBulkBanCreateRequestV3
 from ..api.iam.models import ModelBulkUnbanCreateRequestV3
 from ..api.iam.models import ModelCheckValidUserIDRequestV4
+from ..api.iam.models import ModelConfigValueResponseV3
 from ..api.iam.models import ModelCountry
 from ..api.iam.models import ModelCountryAgeRestrictionRequest
 from ..api.iam.models import ModelCountryAgeRestrictionV3Request
@@ -240,8 +241,6 @@ from ..api.iam.models import ModelUserActiveBanResponseV3
 from ..api.iam.models import ModelUserBanResponse
 from ..api.iam.models import ModelUserBanResponseV3
 from ..api.iam.models import ModelUserBaseInfo
-from ..api.iam.models import ModelUserCreateFromInvitationRequestV3
-from ..api.iam.models import ModelUserCreateFromInvitationRequestV4
 from ..api.iam.models import ModelUserCreateRequest
 from ..api.iam.models import ModelUserCreateRequestV3
 from ..api.iam.models import ModelUserCreateResponse
@@ -313,6 +312,7 @@ def create_account_create_test_user_request_v4_example() -> (
     instance.username = randomize("slug")
     instance.verified = randomize("bool")
     instance.accepted_policies = [create_legal_accepted_policies_request_example()]
+    instance.unique_display_name = randomize()
     return instance
 
 
@@ -330,6 +330,7 @@ def create_account_create_test_user_response_v4_example() -> (
     instance.user_id = randomize("uid")
     instance.username = randomize("slug")
     instance.verified = randomize("bool")
+    instance.unique_display_name = randomize()
     return instance
 
 
@@ -362,6 +363,7 @@ def create_account_create_user_request_v4_example() -> AccountCreateUserRequestV
     instance.password = randomize("password")
     instance.password_md5_sum = randomize()
     instance.reach_minimum_age = randomize("bool")
+    instance.unique_display_name = randomize()
     return instance
 
 
@@ -375,6 +377,7 @@ def create_account_create_user_response_v4_example() -> AccountCreateUserRespons
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
     instance.username = randomize("slug")
+    instance.unique_display_name = randomize()
     return instance
 
 
@@ -400,6 +403,7 @@ def create_account_upgrade_headless_account_with_verification_code_request_v4_ex
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
     instance.reach_minimum_age = randomize("bool")
+    instance.unique_display_name = randomize()
     instance.validate_only = randomize("bool")
     return instance
 
@@ -450,6 +454,7 @@ def create_account_user_response_v4_example() -> AccountUserResponseV4:
     instance.phone_number = randomize()
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
+    instance.unique_display_name = randomize()
     instance.username = randomize("slug")
     return instance
 
@@ -831,6 +836,7 @@ def create_accountcommon_user_information_v3_example() -> (
     instance.country = randomize("country")
     instance.display_name = randomize("slug")
     instance.phone_number = randomize()
+    instance.unique_display_name = randomize()
     instance.username = randomize("slug")
     instance.xbox_user_id = randomize()
     return instance
@@ -922,6 +928,7 @@ def create_accountcommon_user_with_linked_platform_accounts_example() -> (
     instance.email_address = randomize("email")
     instance.linked_platforms = [create_accountcommon_platform_account_example()]
     instance.namespace = randomize("slug")
+    instance.unique_display_name = randomize()
     instance.user_id = randomize("uid")
     return instance
 
@@ -1234,6 +1241,12 @@ def create_model_check_valid_user_id_request_v4_example() -> (
 ):
     instance = ModelCheckValidUserIDRequestV4()
     instance.user_ids = [randomize()]
+    return instance
+
+
+def create_model_config_value_response_v3_example() -> ModelConfigValueResponseV3:
+    instance = ModelConfigValueResponseV3()
+    instance.result = {randomize(): randomize()}
     return instance
 
 
@@ -1587,6 +1600,7 @@ def create_model_invite_user_request_v4_example() -> ModelInviteUserRequestV4:
     instance.assigned_namespaces = [randomize()]
     instance.email_addresses = [randomize()]
     instance.is_admin = randomize("bool")
+    instance.is_new_studio = randomize("bool")
     instance.namespace = randomize("slug")
     instance.role_id = randomize("uid")
     return instance
@@ -1837,6 +1851,7 @@ def create_model_public_user_information_v3_example() -> ModelPublicUserInformat
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
     instance.user_name = randomize("slug")
+    instance.unique_display_name = randomize()
     instance.user_platform_infos = [create_model_user_platform_info_example()]
     return instance
 
@@ -1881,6 +1896,7 @@ def create_model_public_user_response_v3_example() -> ModelPublicUserResponseV3:
     instance.permissions = [create_model_user_permissions_response_v3_example()]
     instance.phone_verified = randomize("bool")
     instance.roles = [randomize()]
+    instance.unique_display_name = randomize()
     instance.user_id = randomize("uid")
     instance.avatar_url = randomize("url")
     instance.platform_id = randomize()
@@ -2348,6 +2364,7 @@ def create_model_upgrade_headless_account_with_verification_code_request_v3_exam
     instance.country = randomize("country")
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
+    instance.unique_display_name = randomize()
     instance.validate_only = randomize("bool")
     return instance
 
@@ -2406,36 +2423,8 @@ def create_model_user_base_info_example() -> ModelUserBaseInfo:
     instance.display_name = randomize("slug")
     instance.platform_user_ids = {randomize(): randomize()}
     instance.user_id = randomize("uid")
+    instance.unique_display_name = randomize()
     instance.username = randomize("slug")
-    return instance
-
-
-def create_model_user_create_from_invitation_request_v3_example() -> (
-    ModelUserCreateFromInvitationRequestV3
-):
-    instance = ModelUserCreateFromInvitationRequestV3()
-    instance.auth_type = randomize()
-    instance.country = randomize("country")
-    instance.display_name = randomize("slug")
-    instance.password = randomize("password")
-    instance.reach_minimum_age = randomize("bool")
-    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
-    instance.date_of_birth = randomize()
-    return instance
-
-
-def create_model_user_create_from_invitation_request_v4_example() -> (
-    ModelUserCreateFromInvitationRequestV4
-):
-    instance = ModelUserCreateFromInvitationRequestV4()
-    instance.auth_type = randomize()
-    instance.country = randomize("country")
-    instance.display_name = randomize("slug")
-    instance.password = randomize("password")
-    instance.reach_minimum_age = randomize("bool")
-    instance.username = randomize("slug")
-    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
-    instance.date_of_birth = randomize()
     return instance
 
 
@@ -2462,6 +2451,7 @@ def create_model_user_create_request_v3_example() -> ModelUserCreateRequestV3:
     instance.accepted_policies = [create_legal_accepted_policies_request_example()]
     instance.date_of_birth = randomize()
     instance.password_md5_sum = randomize()
+    instance.unique_display_name = randomize()
     return instance
 
 
@@ -2486,6 +2476,7 @@ def create_model_user_create_response_v3_example() -> ModelUserCreateResponseV3:
     instance.email_address = randomize("email")
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
+    instance.unique_display_name = randomize()
     return instance
 
 
@@ -2518,6 +2509,7 @@ def create_model_user_info_response_example() -> ModelUserInfoResponse:
     instance.email_address = randomize("email")
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
+    instance.unique_display_name = randomize()
     return instance
 
 
@@ -2542,8 +2534,10 @@ def create_model_user_invitation_v3_example() -> ModelUserInvitationV3:
     instance.roles = [create_accountcommon_namespace_role_example()]
     instance.additional_data = randomize()
     instance.id_ = randomize()
+    instance.is_new_studio = randomize("bool")
     instance.namespace = randomize("slug")
     instance.namespace_display_name = randomize()
+    instance.studio_namespace = randomize("slug")
     return instance
 
 
@@ -2607,6 +2601,7 @@ def create_model_user_platform_infos_example() -> ModelUserPlatformInfos:
     instance.user_id = randomize("uid")
     instance.avatar_url = randomize("url")
     instance.display_name = randomize("slug")
+    instance.unique_display_name = randomize()
     return instance
 
 
@@ -2625,6 +2620,7 @@ def create_model_user_public_info_response_v4_example() -> (
     instance = ModelUserPublicInfoResponseV4()
     instance.display_name = randomize("slug")
     instance.user_id = randomize("uid")
+    instance.unique_display_name = randomize()
     return instance
 
 
@@ -2655,6 +2651,7 @@ def create_model_user_response_example() -> ModelUserResponse:
     instance.phone_number = randomize()
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
+    instance.unique_display_name = randomize()
     instance.username = randomize("slug")
     instance.xuid = randomize()
     return instance
@@ -2691,6 +2688,7 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.platform_infos = [create_model_user_platform_info_example()]
     instance.platform_user_id = randomize()
     instance.test_account = randomize("bool")
+    instance.unique_display_name = randomize()
     instance.user_name = randomize("slug")
     return instance
 
@@ -2728,6 +2726,7 @@ def create_model_user_update_request_v3_example() -> ModelUserUpdateRequestV3:
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
     instance.language_tag = randomize()
+    instance.unique_display_name = randomize()
     instance.user_name = randomize("slug")
     return instance
 
@@ -2758,6 +2757,7 @@ def create_model_user_with_platform_info_example() -> ModelUserWithPlatformInfo:
     instance.user_id = randomize("uid")
     instance.avatar_url = randomize("url")
     instance.display_name = randomize("slug")
+    instance.unique_display_name = randomize()
     instance.username = randomize("slug")
     instance.xuid = randomize()
     return instance
@@ -3010,6 +3010,7 @@ def create_oauthmodel_token_response_v3_example() -> OauthmodelTokenResponseV3:
     instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
     instance.refresh_token = randomize()
     instance.roles = [randomize()]
+    instance.unique_display_name = randomize()
     instance.user_id = randomize("uid")
     instance.xuid = randomize()
     return instance
@@ -3047,6 +3048,7 @@ def create_oauthmodel_token_with_device_cookie_response_v3_example() -> (
     instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
     instance.refresh_token = randomize()
     instance.roles = [randomize()]
+    instance.unique_display_name = randomize()
     instance.user_id = randomize("uid")
     instance.xuid = randomize()
     return instance

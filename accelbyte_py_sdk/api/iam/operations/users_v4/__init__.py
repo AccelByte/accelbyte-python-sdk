@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.9.0"
+__version__ = "7.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -24,11 +24,14 @@ from .admin_disable_my_backup_727b56 import AdminDisableMyBackupCodesV4
 from .admin_disable_my_email_v4 import AdminDisableMyEmailV4
 from .admin_disable_user_mfav4 import AdminDisableUserMFAV4
 from .admin_download_my_backu_29ee48 import AdminDownloadMyBackupCodesV4
+from .admin_enable_backup_codes_v4 import AdminEnableBackupCodesV4
 from .admin_enable_my_authent_263fb3 import AdminEnableMyAuthenticatorV4
 from .admin_enable_my_backup__1f7c71 import AdminEnableMyBackupCodesV4
 from .admin_enable_my_email_v4 import AdminEnableMyEmailV4
+from .admin_generate_backup_codes_v4 import AdminGenerateBackupCodesV4
 from .admin_generate_my_authe_b02d34 import AdminGenerateMyAuthenticatorKeyV4
 from .admin_generate_my_backu_fdd3aa import AdminGenerateMyBackupCodesV4
+from .admin_get_backup_codes_v4 import AdminGetBackupCodesV4
 from .admin_get_my_backup_codes_v4 import AdminGetMyBackupCodesV4
 from .admin_get_my_enabled_fa_206f77 import AdminGetMyEnabledFactorsV4
 from .admin_invite_user_new_v4 import AdminInviteUserNewV4
@@ -48,11 +51,14 @@ from .public_disable_my_authe_beac3e import PublicDisableMyAuthenticatorV4
 from .public_disable_my_backu_92ead1 import PublicDisableMyBackupCodesV4
 from .public_disable_my_email_v4 import PublicDisableMyEmailV4
 from .public_download_my_back_3f3640 import PublicDownloadMyBackupCodesV4
+from .public_enable_backup_codes_v4 import PublicEnableBackupCodesV4
 from .public_enable_my_authen_556050 import PublicEnableMyAuthenticatorV4
 from .public_enable_my_backup_e6b7c1 import PublicEnableMyBackupCodesV4
 from .public_enable_my_email_v4 import PublicEnableMyEmailV4
+from .public_generate_backup__538aee import PublicGenerateBackupCodesV4
 from .public_generate_my_auth_17372a import PublicGenerateMyAuthenticatorKeyV4
 from .public_generate_my_back_da569a import PublicGenerateMyBackupCodesV4
+from .public_get_backup_codes_v4 import PublicGetBackupCodesV4
 from .public_get_my_backup_codes_v4 import PublicGetMyBackupCodesV4
 from .public_get_my_enabled_f_a93b10 import PublicGetMyEnabledFactorsV4
 from .public_get_user_public__2645c4 import PublicGetUserPublicInfoByUserIdV4

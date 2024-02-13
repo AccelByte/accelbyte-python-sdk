@@ -33,11 +33,14 @@ class ApiFleetClaimReq(Model):
 
     Properties:
         region: (region) REQUIRED str
+
+        session_id: (sessionId) REQUIRED str
     """
 
     # region fields
 
     region: str  # REQUIRED
+    session_id: str  # REQUIRED
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class ApiFleetClaimReq(Model):
 
     def with_region(self, value: str) -> ApiFleetClaimReq:
         self.region = value
+        return self
+
+    def with_session_id(self, value: str) -> ApiFleetClaimReq:
+        self.session_id = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class ApiFleetClaimReq(Model):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = ""
+        if hasattr(self, "session_id"):
+            result["sessionId"] = str(self.session_id)
+        elif include_empty:
+            result["sessionId"] = ""
         return result
 
     # endregion to methods
@@ -64,9 +75,10 @@ class ApiFleetClaimReq(Model):
     # region static methods
 
     @classmethod
-    def create(cls, region: str, **kwargs) -> ApiFleetClaimReq:
+    def create(cls, region: str, session_id: str, **kwargs) -> ApiFleetClaimReq:
         instance = cls()
         instance.region = region
+        instance.session_id = session_id
         return instance
 
     @classmethod
@@ -80,6 +92,10 @@ class ApiFleetClaimReq(Model):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = ""
+        if "sessionId" in dict_ and dict_["sessionId"] is not None:
+            instance.session_id = str(dict_["sessionId"])
+        elif include_empty:
+            instance.session_id = ""
         return instance
 
     @classmethod
@@ -120,12 +136,14 @@ class ApiFleetClaimReq(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "region": "region",
+            "sessionId": "session_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "region": True,
+            "sessionId": True,
         }
 
     # endregion static methods

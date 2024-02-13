@@ -65,17 +65,15 @@ class CreateArchivedLeaderboardRankingDataV1Handler(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - (Created)
+        201: Created - (leaderboard data ranking archived)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -191,17 +189,15 @@ class CreateArchivedLeaderboardRankingDataV1Handler(Operation):
     ]:
         """Parse the given response.
 
-        201: Created - (Created)
+        201: Created - (leaderboard data ranking archived)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -223,8 +219,6 @@ class CreateArchivedLeaderboardRankingDataV1Handler(Operation):
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:
-            return None, ResponseErrorResponse.create_from_dict(content)
-        if code == 404:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseErrorResponse.create_from_dict(content)

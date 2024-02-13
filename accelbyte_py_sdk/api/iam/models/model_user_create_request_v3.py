@@ -53,6 +53,8 @@ class ModelUserCreateRequestV3(Model):
         date_of_birth: (dateOfBirth) OPTIONAL str
 
         password_md5_sum: (PasswordMD5Sum) OPTIONAL str
+
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
     """
 
     # region fields
@@ -67,6 +69,7 @@ class ModelUserCreateRequestV3(Model):
     accepted_policies: List[LegalAcceptedPoliciesRequest]  # OPTIONAL
     date_of_birth: str  # OPTIONAL
     password_md5_sum: str  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -112,6 +115,10 @@ class ModelUserCreateRequestV3(Model):
 
     def with_password_md5_sum(self, value: str) -> ModelUserCreateRequestV3:
         self.password_md5_sum = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelUserCreateRequestV3:
+        self.unique_display_name = value
         return self
 
     # endregion with_x methods
@@ -162,6 +169,10 @@ class ModelUserCreateRequestV3(Model):
             result["PasswordMD5Sum"] = str(self.password_md5_sum)
         elif include_empty:
             result["PasswordMD5Sum"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         return result
 
     # endregion to methods
@@ -181,6 +192,7 @@ class ModelUserCreateRequestV3(Model):
         accepted_policies: Optional[List[LegalAcceptedPoliciesRequest]] = None,
         date_of_birth: Optional[str] = None,
         password_md5_sum: Optional[str] = None,
+        unique_display_name: Optional[str] = None,
         **kwargs,
     ) -> ModelUserCreateRequestV3:
         instance = cls()
@@ -197,6 +209,8 @@ class ModelUserCreateRequestV3(Model):
             instance.date_of_birth = date_of_birth
         if password_md5_sum is not None:
             instance.password_md5_sum = password_md5_sum
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         return instance
 
     @classmethod
@@ -251,6 +265,10 @@ class ModelUserCreateRequestV3(Model):
             instance.password_md5_sum = str(dict_["PasswordMD5Sum"])
         elif include_empty:
             instance.password_md5_sum = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         return instance
 
     @classmethod
@@ -304,6 +322,7 @@ class ModelUserCreateRequestV3(Model):
             "acceptedPolicies": "accepted_policies",
             "dateOfBirth": "date_of_birth",
             "PasswordMD5Sum": "password_md5_sum",
+            "uniqueDisplayName": "unique_display_name",
         }
 
     @staticmethod
@@ -319,6 +338,7 @@ class ModelUserCreateRequestV3(Model):
             "acceptedPolicies": False,
             "dateOfBirth": False,
             "PasswordMD5Sum": False,
+            "uniqueDisplayName": False,
         }
 
     # endregion static methods

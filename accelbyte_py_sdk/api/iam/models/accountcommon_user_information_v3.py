@@ -46,6 +46,8 @@ class AccountcommonUserInformationV3(Model):
 
         phone_number: (phoneNumber) OPTIONAL str
 
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
+
         username: (username) OPTIONAL str
 
         xbox_user_id: (xboxUserId) OPTIONAL str
@@ -58,6 +60,7 @@ class AccountcommonUserInformationV3(Model):
     country: str  # OPTIONAL
     display_name: str  # OPTIONAL
     phone_number: str  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
     username: str  # OPTIONAL
     xbox_user_id: str  # OPTIONAL
 
@@ -85,6 +88,10 @@ class AccountcommonUserInformationV3(Model):
 
     def with_phone_number(self, value: str) -> AccountcommonUserInformationV3:
         self.phone_number = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> AccountcommonUserInformationV3:
+        self.unique_display_name = value
         return self
 
     def with_username(self, value: str) -> AccountcommonUserInformationV3:
@@ -123,6 +130,10 @@ class AccountcommonUserInformationV3(Model):
             result["phoneNumber"] = str(self.phone_number)
         elif include_empty:
             result["phoneNumber"] = ""
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         if hasattr(self, "username"):
             result["username"] = str(self.username)
         elif include_empty:
@@ -145,6 +156,7 @@ class AccountcommonUserInformationV3(Model):
         country: Optional[str] = None,
         display_name: Optional[str] = None,
         phone_number: Optional[str] = None,
+        unique_display_name: Optional[str] = None,
         username: Optional[str] = None,
         xbox_user_id: Optional[str] = None,
         **kwargs,
@@ -158,6 +170,8 @@ class AccountcommonUserInformationV3(Model):
             instance.display_name = display_name
         if phone_number is not None:
             instance.phone_number = phone_number
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         if username is not None:
             instance.username = username
         if xbox_user_id is not None:
@@ -196,6 +210,10 @@ class AccountcommonUserInformationV3(Model):
             instance.phone_number = str(dict_["phoneNumber"])
         elif include_empty:
             instance.phone_number = ""
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
@@ -252,6 +270,7 @@ class AccountcommonUserInformationV3(Model):
             "country": "country",
             "displayName": "display_name",
             "phoneNumber": "phone_number",
+            "uniqueDisplayName": "unique_display_name",
             "username": "username",
             "xboxUserId": "xbox_user_id",
         }
@@ -264,6 +283,7 @@ class AccountcommonUserInformationV3(Model):
             "country": False,
             "displayName": False,
             "phoneNumber": False,
+            "uniqueDisplayName": False,
             "username": False,
             "xboxUserId": False,
         }

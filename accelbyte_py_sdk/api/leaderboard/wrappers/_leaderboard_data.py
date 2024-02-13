@@ -95,17 +95,17 @@ def admin_get_archived_leaderboard_ranking_data_v1_handler(
         leaderboard_codes: (leaderboardCodes) REQUIRED str in query
 
     Responses:
-        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
+        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (leaderboard archive retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -151,17 +151,17 @@ async def admin_get_archived_leaderboard_ranking_data_v1_handler_async(
         leaderboard_codes: (leaderboardCodes) REQUIRED str in query
 
     Responses:
-        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
+        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (leaderboard archive retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -215,17 +215,15 @@ def create_archived_leaderboard_ranking_data_v1_handler(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - (Created)
+        201: Created - (leaderboard data ranking archived)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -276,17 +274,15 @@ async def create_archived_leaderboard_ranking_data_v1_handler_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        201: Created - (Created)
+        201: Created - (leaderboard data ranking archived)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -341,15 +337,15 @@ def delete_user_ranking_admin_v1(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User ranking deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -403,15 +399,15 @@ async def delete_user_ranking_admin_v1_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User ranking deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -474,15 +470,15 @@ def delete_user_ranking_by_leaderboard_code_admin_v1(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Leaderboard deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 71241: forbidden environment)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -542,15 +538,15 @@ async def delete_user_ranking_by_leaderboard_code_admin_v1_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (Leaderboard deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 71241: forbidden environment)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -605,15 +601,15 @@ def delete_user_ranking_public_v1(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User ranking deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -667,15 +663,15 @@ async def delete_user_ranking_public_v1_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User ranking deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -729,15 +725,13 @@ def delete_user_rankings_admin_v1(
         leaderboard_code: (leaderboardCode) REQUIRED List[str] in query
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User ranking deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -789,15 +783,13 @@ async def delete_user_rankings_admin_v1_async(
         leaderboard_code: (leaderboardCode) REQUIRED List[str] in query
 
     Responses:
-        204: No Content - (No Content)
+        204: No Content - (User ranking deleted)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
-
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -856,17 +848,17 @@ def get_all_time_leaderboard_ranking_admin_v1(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (All time leaderboard ranking data retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -924,17 +916,17 @@ async def get_all_time_leaderboard_ranking_admin_v1_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (All time leaderboard ranking data retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -986,13 +978,13 @@ def get_all_time_leaderboard_ranking_public_v1(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (All time leaderboard ranking data retrived)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1042,13 +1034,13 @@ async def get_all_time_leaderboard_ranking_public_v1_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (All time leaderboard ranking data retrived)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1100,17 +1092,17 @@ def get_all_time_leaderboard_ranking_public_v2(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - V2GetPublicLeaderboardRankingResponse (OK)
+        200: OK - V2GetPublicLeaderboardRankingResponse (All time leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1160,17 +1152,17 @@ async def get_all_time_leaderboard_ranking_public_v2_async(
         offset: (offset) OPTIONAL int in query
 
     Responses:
-        200: OK - V2GetPublicLeaderboardRankingResponse (OK)
+        200: OK - V2GetPublicLeaderboardRankingResponse (All time leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1222,17 +1214,17 @@ def get_archived_leaderboard_ranking_data_v1_handler(
         leaderboard_codes: (leaderboardCodes) REQUIRED str in query
 
     Responses:
-        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
+        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (Archived leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1282,17 +1274,17 @@ async def get_archived_leaderboard_ranking_data_v1_handler_async(
         leaderboard_codes: (leaderboardCodes) REQUIRED str in query
 
     Responses:
-        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
+        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (Archived leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1355,17 +1347,17 @@ def get_current_month_leaderboard_ranking_admin_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current month leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1427,17 +1419,17 @@ async def get_current_month_leaderboard_ranking_admin_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current month leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1493,13 +1485,13 @@ def get_current_month_leaderboard_ranking_public_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current month leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1553,13 +1545,13 @@ async def get_current_month_leaderboard_ranking_public_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current month leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1623,17 +1615,17 @@ def get_current_season_leaderboard_ranking_admin_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current season leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1695,17 +1687,17 @@ async def get_current_season_leaderboard_ranking_admin_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current season leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1761,13 +1753,13 @@ def get_current_season_leaderboard_ranking_public_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current season leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1821,13 +1813,13 @@ async def get_current_season_leaderboard_ranking_public_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current season leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1891,17 +1883,17 @@ def get_current_week_leaderboard_ranking_admin_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current week leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1963,17 +1955,17 @@ async def get_current_week_leaderboard_ranking_admin_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current week leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2029,13 +2021,13 @@ def get_current_week_leaderboard_ranking_public_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current week leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2089,13 +2081,13 @@ async def get_current_week_leaderboard_ranking_public_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Current week leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2159,17 +2151,17 @@ def get_today_leaderboard_ranking_admin_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Today leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2231,17 +2223,17 @@ async def get_today_leaderboard_ranking_admin_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Today leaderboard ranking retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2297,13 +2289,13 @@ def get_today_leaderboard_ranking_public_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Today leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2357,13 +2349,13 @@ async def get_today_leaderboard_ranking_public_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsGetLeaderboardRankingResp (OK)
+        200: OK - ModelsGetLeaderboardRankingResp (Today leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2424,15 +2416,15 @@ def get_user_ranking_admin_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsUserRankingResponse (OK)
+        200: OK - ModelsUserRankingResponse (User ranking retrieved)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2490,15 +2482,15 @@ async def get_user_ranking_admin_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsUserRankingResponse (OK)
+        200: OK - ModelsUserRankingResponse (User ranking retrieved)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2550,15 +2542,15 @@ def get_user_ranking_public_v1(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsUserRankingResponse (OK)
+        200: OK - ModelsUserRankingResponse (User ranking retrieved)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2608,15 +2600,15 @@ async def get_user_ranking_public_v1_async(
         previous_version: (previousVersion) OPTIONAL int in query
 
     Responses:
-        200: OK - ModelsUserRankingResponse (OK)
+        200: OK - ModelsUserRankingResponse (User ranking retrieved)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2683,17 +2675,17 @@ def update_user_point_admin_v1(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateUserPointAdminV1Response (OK)
+        200: OK - ModelsUpdateUserPointAdminV1Response (User point updated)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -2758,17 +2750,17 @@ async def update_user_point_admin_v1_async(
         user_id: (userId) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsUpdateUserPointAdminV1Response (OK)
+        200: OK - ModelsUpdateUserPointAdminV1Response (User point updated)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 20019: unable to parse request body)
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

@@ -66,4 +66,4 @@ def public_get_my_backup_codes_v4(
 
 
 public_get_my_backup_codes_v4.operation_id = "PublicGetMyBackupCodesV4"
-public_get_my_backup_codes_v4.is_deprecated = False
+public_get_my_backup_codes_v4.is_deprecated = True

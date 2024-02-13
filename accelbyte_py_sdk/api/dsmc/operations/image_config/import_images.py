@@ -142,7 +142,7 @@ class ImportImages(Operation):
     def get_form_data_params(self) -> dict:
         result = {}
         if hasattr(self, "file"):
-            result["file"] = self.file
+            result[("file", "file")] = self.file
         return result
 
     # endregion get_x_params methods

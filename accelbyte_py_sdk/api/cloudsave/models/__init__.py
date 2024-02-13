@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.14.0"
+__version__ = "3.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -71,6 +71,12 @@ from .models_bulk_user_key_request import ModelsBulkUserKeyRequest
 from .models_concurrent_record_request import ModelsConcurrentRecordRequest
 from .models_custom_config import ModelsCustomConfig
 from .models_custom_function import ModelsCustomFunction
+from .models_game_binary_record_admin_response import (
+    ModelsGameBinaryRecordAdminResponse,
+)
+from .models_game_binary_record_admin_response import (
+    SetByEnum as ModelsGameBinaryRecordAdminResponseSetByEnum,
+)
 from .models_game_binary_record_create import ModelsGameBinaryRecordCreate
 from .models_game_binary_record_create import (
     SetByEnum as ModelsGameBinaryRecordCreateSetByEnum,
@@ -85,6 +91,10 @@ from .models_game_binary_record_response import ModelsGameBinaryRecordResponse
 from .models_game_binary_record_response import (
     SetByEnum as ModelsGameBinaryRecordResponseSetByEnum,
 )
+from .models_game_record_admin_response import ModelsGameRecordAdminResponse
+from .models_game_record_admin_response import (
+    SetByEnum as ModelsGameRecordAdminResponseSetByEnum,
+)
 from .models_game_record_request import ModelsGameRecordRequest
 from .models_game_record_response import ModelsGameRecordResponse
 from .models_game_record_response import SetByEnum as ModelsGameRecordResponseSetByEnum
@@ -94,6 +104,9 @@ from .models_list_admin_game_record_keys_response import (
 from .models_list_admin_player_record_keys_response import (
     ModelsListAdminPlayerRecordKeysResponse,
 )
+from .models_list_game_binary_records_admin_response import (
+    ModelsListGameBinaryRecordsAdminResponse,
+)
 from .models_list_game_binary_records_response import (
     ModelsListGameBinaryRecordsResponse,
 )
@@ -102,6 +115,7 @@ from .models_list_player_binary_records_response import (
     ModelsListPlayerBinaryRecordsResponse,
 )
 from .models_list_player_record_keys_response import ModelsListPlayerRecordKeysResponse
+from .models_list_tags_response import ModelsListTagsResponse
 from .models_pagination import ModelsPagination
 from .models_player_binary_record_create import ModelsPlayerBinaryRecordCreate
 from .models_player_binary_record_create import (
@@ -139,6 +153,10 @@ from .models_public_player_binary_record_create import (
     ModelsPublicPlayerBinaryRecordCreate,
 )
 from .models_response_error import ModelsResponseError
+from .models_tag_info import ModelsTagInfo
+from .models_tag_request import ModelsTagRequest
+from .models_ttl_config_dto import ModelsTTLConfigDTO
+from .models_ttl_config_dto import ActionEnum as ModelsTTLConfigDTOActionEnum
 from .models_upload_binary_record_request import ModelsUploadBinaryRecordRequest
 from .models_upload_binary_record_response import ModelsUploadBinaryRecordResponse
 from .models_user_key_request import ModelsUserKeyRequest

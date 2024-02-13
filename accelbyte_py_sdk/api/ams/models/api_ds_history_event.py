@@ -36,8 +36,6 @@ class ApiDSHistoryEvent(Model):
 
         exit_code: (exitCode) REQUIRED int
 
-        game_session: (gameSession) REQUIRED str
-
         ip_address: (ipAddress) REQUIRED str
 
         reason: (reason) REQUIRED str
@@ -53,7 +51,6 @@ class ApiDSHistoryEvent(Model):
 
     created_at: str  # REQUIRED
     exit_code: int  # REQUIRED
-    game_session: str  # REQUIRED
     ip_address: str  # REQUIRED
     reason: str  # REQUIRED
     region: str  # REQUIRED
@@ -70,10 +67,6 @@ class ApiDSHistoryEvent(Model):
 
     def with_exit_code(self, value: int) -> ApiDSHistoryEvent:
         self.exit_code = value
-        return self
-
-    def with_game_session(self, value: str) -> ApiDSHistoryEvent:
-        self.game_session = value
         return self
 
     def with_ip_address(self, value: str) -> ApiDSHistoryEvent:
@@ -110,10 +103,6 @@ class ApiDSHistoryEvent(Model):
             result["exitCode"] = int(self.exit_code)
         elif include_empty:
             result["exitCode"] = 0
-        if hasattr(self, "game_session"):
-            result["gameSession"] = str(self.game_session)
-        elif include_empty:
-            result["gameSession"] = ""
         if hasattr(self, "ip_address"):
             result["ipAddress"] = str(self.ip_address)
         elif include_empty:
@@ -145,7 +134,6 @@ class ApiDSHistoryEvent(Model):
         cls,
         created_at: str,
         exit_code: int,
-        game_session: str,
         ip_address: str,
         reason: str,
         region: str,
@@ -156,7 +144,6 @@ class ApiDSHistoryEvent(Model):
         instance = cls()
         instance.created_at = created_at
         instance.exit_code = exit_code
-        instance.game_session = game_session
         instance.ip_address = ip_address
         instance.reason = reason
         instance.region = region
@@ -179,10 +166,6 @@ class ApiDSHistoryEvent(Model):
             instance.exit_code = int(dict_["exitCode"])
         elif include_empty:
             instance.exit_code = 0
-        if "gameSession" in dict_ and dict_["gameSession"] is not None:
-            instance.game_session = str(dict_["gameSession"])
-        elif include_empty:
-            instance.game_session = ""
         if "ipAddress" in dict_ and dict_["ipAddress"] is not None:
             instance.ip_address = str(dict_["ipAddress"])
         elif include_empty:
@@ -246,7 +229,6 @@ class ApiDSHistoryEvent(Model):
         return {
             "createdAt": "created_at",
             "exitCode": "exit_code",
-            "gameSession": "game_session",
             "ipAddress": "ip_address",
             "reason": "reason",
             "region": "region",
@@ -259,7 +241,6 @@ class ApiDSHistoryEvent(Model):
         return {
             "createdAt": True,
             "exitCode": True,
-            "gameSession": True,
             "ipAddress": True,
             "reason": True,
             "region": True,

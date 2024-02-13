@@ -38,19 +38,21 @@ def validate_resource(
                 prev_r_token = r_items[i - 1]
                 if prev_r_token == "NAMESPACE":
                     if (
-                        STUDIO_GAME_DELIMITER in e_token and
-                        len(e_token.split(STUDIO_GAME_DELIMITER)) == 2 and
-                        e_token.startswith(r_token)
+                        STUDIO_GAME_DELIMITER in e_token
+                        and len(e_token.split(STUDIO_GAME_DELIMITER)) == 2
+                        and e_token.startswith(r_token)
                     ):
                         continue
                     if r_token == f"{e_token}{STUDIO_GAME_DELIMITER}":
                         continue
                     if namespace_context_cache:
-                        context = namespace_context_cache.get_namespace_context(namespace=e_token)
+                        context = namespace_context_cache.get_namespace_context(
+                            namespace=e_token
+                        )
                         if (
-                            context is not None and
-                            context.type_ == "Game" and
-                            r_token.startswith(context.studio_namespace)
+                            context is not None
+                            and context.type_ == "Game"
+                            and r_token.startswith(context.studio_namespace)
                         ):
                             continue
             return False
@@ -93,9 +95,8 @@ def validate_permission(
     namespace_context_cache: Optional[NamespaceContextCache] = None,
 ) -> bool:
     for permission in permissions:
-        if (
-            validate_action(permission.action, target.action) and
-            validate_resource(permission.resource, target.resource, namespace_context_cache)
+        if validate_action(permission.action, target.action) and validate_resource(
+            permission.resource, target.resource, namespace_context_cache
         ):
             return True
 

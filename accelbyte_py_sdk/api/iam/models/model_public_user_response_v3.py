@@ -64,6 +64,8 @@ class ModelPublicUserResponseV3(Model):
 
         roles: (roles) REQUIRED List[str]
 
+        unique_display_name: (uniqueDisplayName) REQUIRED str
+
         user_id: (userId) REQUIRED str
 
         avatar_url: (avatarUrl) OPTIONAL str
@@ -91,6 +93,7 @@ class ModelPublicUserResponseV3(Model):
     permissions: List[ModelUserPermissionsResponseV3]  # REQUIRED
     phone_verified: bool  # REQUIRED
     roles: List[str]  # REQUIRED
+    unique_display_name: str  # REQUIRED
     user_id: str  # REQUIRED
     avatar_url: str  # OPTIONAL
     platform_id: str  # OPTIONAL
@@ -163,6 +166,10 @@ class ModelPublicUserResponseV3(Model):
 
     def with_roles(self, value: List[str]) -> ModelPublicUserResponseV3:
         self.roles = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelPublicUserResponseV3:
+        self.unique_display_name = value
         return self
 
     def with_user_id(self, value: str) -> ModelPublicUserResponseV3:
@@ -255,6 +262,10 @@ class ModelPublicUserResponseV3(Model):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
             result["roles"] = []
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -298,6 +309,7 @@ class ModelPublicUserResponseV3(Model):
         permissions: List[ModelUserPermissionsResponseV3],
         phone_verified: bool,
         roles: List[str],
+        unique_display_name: str,
         user_id: str,
         avatar_url: Optional[str] = None,
         platform_id: Optional[str] = None,
@@ -320,6 +332,7 @@ class ModelPublicUserResponseV3(Model):
         instance.permissions = permissions
         instance.phone_verified = phone_verified
         instance.roles = roles
+        instance.unique_display_name = unique_display_name
         instance.user_id = user_id
         if avatar_url is not None:
             instance.avatar_url = avatar_url
@@ -417,6 +430,10 @@ class ModelPublicUserResponseV3(Model):
             instance.roles = [str(i0) for i0 in dict_["roles"]]
         elif include_empty:
             instance.roles = []
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -494,6 +511,7 @@ class ModelPublicUserResponseV3(Model):
             "permissions": "permissions",
             "phoneVerified": "phone_verified",
             "roles": "roles",
+            "uniqueDisplayName": "unique_display_name",
             "userId": "user_id",
             "avatarUrl": "avatar_url",
             "platformId": "platform_id",
@@ -518,6 +536,7 @@ class ModelPublicUserResponseV3(Model):
             "permissions": True,
             "phoneVerified": True,
             "roles": True,
+            "uniqueDisplayName": True,
             "userId": True,
             "avatarUrl": False,
             "platformId": False,

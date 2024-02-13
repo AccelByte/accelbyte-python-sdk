@@ -58,17 +58,17 @@ class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
         leaderboard_codes: (leaderboardCodes) REQUIRED str in query
 
     Responses:
-        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
+        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (leaderboard archive retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
 
     # region fields
@@ -197,17 +197,17 @@ class AdminGetArchivedLeaderboardRankingDataV1Handler(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (OK)
+        200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (leaderboard archive retrieved)
 
-        400: Bad Request - ResponseErrorResponse (Bad Request)
+        400: Bad Request - ResponseErrorResponse
 
-        401: Unauthorized - ResponseErrorResponse (Unauthorized)
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (Forbidden)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse (Not Found)
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found)
 
-        500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
 

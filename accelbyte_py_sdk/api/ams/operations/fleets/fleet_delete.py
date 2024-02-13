@@ -60,6 +60,8 @@ class FleetDelete(Operation):
     Responses:
         204: No Content - (no content)
 
+        400: Bad Request - ResponseErrorResponse (bad request)
+
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
@@ -174,6 +176,8 @@ class FleetDelete(Operation):
 
         204: No Content - (no content)
 
+        400: Bad Request - ResponseErrorResponse (bad request)
+
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
         403: Forbidden - ResponseErrorResponse (insufficient permissions)
@@ -197,6 +201,8 @@ class FleetDelete(Operation):
 
         if code == 204:
             return None, None
+        if code == 400:
+            return None, ResponseErrorResponse.create_from_dict(content)
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:

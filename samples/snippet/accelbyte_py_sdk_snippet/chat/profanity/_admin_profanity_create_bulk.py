@@ -17,7 +17,7 @@ Definition: List[ModelsDictionaryInsertRequest]
     word: str
     word_type: str
 
-Example: '{"dictionaries": [{"falseNegative": ["FLedWT50GMa4p0rw", "r7BDfJsHQ3I9aFR9", "yL1rF2WC7PBo3U1a"], "falsePositive": ["AX2BMHBlO4PfruYE", "n0MC93AfO0qVXPM7", "47lDcgw6c0lVKv8r"], "word": "Fbw2dZSrvVdTlGYy", "wordType": "oZLjhgfumwizr2Pe"}, {"falseNegative": ["xr7xAtlGhSCzqjrb", "SXZaOil1AUzNP7HI", "J3l7PsXy4CAJN4SX"], "falsePositive": ["Q1zp86OaLu1DQ3T1", "T8kQ7e24h4ksOUnB", "kTzLQjUmhMcIrVG6"], "word": "YGWg3nb6lC5QBaRr", "wordType": "aZZPdy5h01MnbeDA"}, {"falseNegative": ["VY9Ab1AIv5NBA8hR", "T6rd4n7wcMVbIUcY", "5C8aVbF921AB2MBT"], "falsePositive": ["p4ZuJGVSBK0eC6M6", "utuoxPBr18HBBpJQ", "zf26Y0kTXtzoMNTj"], "word": "rcY6vMDeXo2q22oJ", "wordType": "uwxx2TNwTYbUhepN"}]}'
+Example: '{"dictionaries": [{"falseNegative": ["QwCWMax22qJkmXoT", "eHU8cJUMIOojWVyL", "csEGegeowhTIxzd3"], "falsePositive": ["LrnGRF76E2iqh36E", "KoxCjpB1dsDEZHe6", "hEXJaFcdSTaLyjHF"], "word": "y3VWnNWOPFmWJqHn", "wordType": "1KDOvXNr96uGYhng"}, {"falseNegative": ["n9jJqIE7HKVIItzR", "w8jkKL3Zg7jdykPd", "Kvuaya1gvrUQA2UE"], "falsePositive": ["up5W4xbb6xvyRa0p", "RWp5kItzIkDDBZGJ", "CYptW19UIvmrj3E3"], "word": "cLc8pLzlxeky8WRH", "wordType": "4Iidz7J2FJKGoKyw"}, {"falseNegative": ["Psx2s2jnLWybf7OS", "DLcGE877RJqt5qer", "T6g30gLn3i8TnvZz"], "falsePositive": ["IZlri2YaDYghvpRO", "yT2YFU3r0dAstm0W", "uYuVRj7frwuEk56c"], "word": "uQw8L6DgTUpysVhj", "wordType": "x9MbgjRtyOSho4gr"}]}'
 """
 
 result, error = admin_profanity_create_bulk(
