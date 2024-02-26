@@ -14,7 +14,7 @@ action_id: int
 comment: str
 user_ids: List[str]
 
-Example: '{"actionId": 70, "comment": "ob8N8rQg9RAJQdzA", "userIds": ["NEmnoN7JQGandZZL", "okjYZCrS2Q8VdRqq", "ERYOZTDEhDjyEv0n"]}'
+Example: '{"actionId": 70, "comment": "oMHYMaZzZ3KBfogA", "userIds": ["oW8elB5fFrr9VhVp", "hluto6ymOTZzPPRH", "1HUWDxbWcPzD06j6"]}'
 """
 
 result, error = ban_users(

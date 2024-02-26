@@ -12,7 +12,7 @@ body:
 Definition: ApiAccountCreateRequest
 name: str
 
-Example: '{"name": "C300H9cNlPd2I1ea"}'
+Example: '{"name": "I0sZg3boSd8VyCop"}'
 """
 
 result, error = admin_account_create(

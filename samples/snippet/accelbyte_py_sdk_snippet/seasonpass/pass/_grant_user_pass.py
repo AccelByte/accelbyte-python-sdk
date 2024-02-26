@@ -13,7 +13,7 @@ Definition: UserPassGrant
 pass_code: str
 pass_item_id: str
 
-Example: '{"passCode": "TvgxO5mtPCGVX7vh", "passItemId": "jXPbT9ppUgjr1PaD"}'
+Example: '{"passCode": "2gb4gCArM73ENO9O", "passItemId": "8wRqucJY8LS7H2uD"}'
 """
 
 result, error = grant_user_pass(

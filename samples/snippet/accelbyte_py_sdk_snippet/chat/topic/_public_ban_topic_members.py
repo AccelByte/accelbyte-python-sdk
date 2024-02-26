@@ -12,7 +12,7 @@ body:
 Definition: ModelsPublicBanTopicMembersRequest
 user_i_ds: List[str]
 
-Example: '{"userIDs": ["J3lfRnCo3BDPnx33", "ymxRJZCoxriIxm3l", "4MzGDvPoNY4X5vzt"]}'
+Example: '{"userIDs": ["vRbKkQIb62sI3ye5", "vuoTc9TG3X87JdXy", "4NblhmdxcG1CHmM1"]}'
 """
 
 result, error = public_ban_topic_members(

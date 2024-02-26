@@ -11,7 +11,7 @@ body:
 Definition: ModelSendVerificationLinkRequest
 language_tag: str
 
-Example: '{"languageTag": "sC4dNAHOE1uZBpp4"}'
+Example: '{"languageTag": "w39CspSwV8dgSbD4"}'
 """
 
 result, error = public_send_verification_link_v3(

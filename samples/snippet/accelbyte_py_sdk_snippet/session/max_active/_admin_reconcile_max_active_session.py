@@ -11,7 +11,7 @@ body:
 Definition: ModelsRequestReconcileMaxActiveSession
 user_id: str
 
-Example: '{"userID": "emq6Tmvtk8lZ9EZM"}'
+Example: '{"userID": "eQCMruRijVOI1H0z"}'
 """
 
 result, error = admin_reconcile_max_active_session(

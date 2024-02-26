@@ -17,7 +17,7 @@ max_instances_per_user: int
 max_upgrade_slots: int
 name: str
 
-Example: '{"code": "AD4yZqKUCaKnZsgq", "description": "RXkfpF60W1Xjc1T8", "initialMaxSlots": 70, "maxInstancesPerUser": 75, "maxUpgradeSlots": 100, "name": "0PnpMgnNBMh2kvPH"}'
+Example: '{"code": "r8wWGOOwZrWAmCAT", "description": "fJzcrAKqjCCd8etK", "initialMaxSlots": 59, "maxInstancesPerUser": 36, "maxUpgradeSlots": 94, "name": "eewQMwHMu9xuV8Gh"}'
 """
 
 result, error = admin_update_inventory_configuration(

@@ -15,7 +15,7 @@ price: float
 product_id: str
 xsts_token: str
 
-Example: '{"currencyCode": "RwvUHbOTc9dXYxae", "price": 0.3711221276464768, "productId": "ezvlX0BL89qTl5Oy", "xstsToken": "rE7iGRzjNo7OUpY9"}'
+Example: '{"currencyCode": "rlkcXRvLKbXq5yNu", "price": 0.8452300996432771, "productId": "a9FY4pOuP5fz3fVf", "xstsToken": "XmiFVh0TQiDVDmc9"}'
 """
 
 result, error = sync_xbox_inventory(

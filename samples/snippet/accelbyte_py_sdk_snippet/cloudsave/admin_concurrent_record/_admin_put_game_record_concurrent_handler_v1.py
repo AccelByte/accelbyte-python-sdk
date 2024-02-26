@@ -17,7 +17,7 @@ Definition: ModelsTTLConfigDTO
 updated_at: str
 value: Dict[str, Any]
 
-Example: '{"set_by": "SERVER", "ttl_config": {"action": "DELETE", "expires_at": "1990-02-25T00:00:00Z"}, "updatedAt": "MeQOrur3eUYC97rN", "value": {"yPFdxI5t03886aUw": {}, "mVvPqnC8ncihUenq": {}, "IhnSUyJZWWkUog0M": {}}}'
+Example: '{"set_by": "SERVER", "ttl_config": {"action": "DELETE", "expires_at": "1993-11-26T00:00:00Z"}, "updatedAt": "k7S70YiPwuRfQR52", "value": {"wZblViSgVFa3KgJj": {}, "l1vhrNyF1nskuVWS": {}, "E2IYNIMQBOVGRWB5": {}}}'
 """
 
 result, error = admin_put_game_record_concurrent_handler_v1(

@@ -11,7 +11,7 @@ body:
 Definition: PlayStationDLCSyncRequest
 service_label: int
 
-Example: '{"serviceLabel": 65}'
+Example: '{"serviceLabel": 87}'
 """
 
 result, error = public_sync_psn_dlc_inventory(

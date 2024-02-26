@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.10.0"
+__version__ = "7.11.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -35,6 +35,7 @@ from .account_upgrade_headless_account_with_verification_code_request_v4 import 
 from .account_user_active_ban_response_v4 import AccountUserActiveBanResponseV4
 from .account_user_permissions_response_v4 import AccountUserPermissionsResponseV4
 from .account_user_response_v4 import AccountUserResponseV4
+from .accountcommon_allowed_permission import AccountcommonAllowedPermission
 from .accountcommon_avatar_config import AccountcommonAvatarConfig
 from .accountcommon_ban import AccountcommonBan
 from .accountcommon_ban_reason import AccountcommonBanReason
@@ -45,10 +46,13 @@ from .accountcommon_ban_v3 import AccountcommonBanV3
 from .accountcommon_banned_by_v3 import AccountcommonBannedByV3
 from .accountcommon_bans import AccountcommonBans
 from .accountcommon_bans_v3 import AccountcommonBansV3
+from .accountcommon_client_module_permission import AccountcommonClientModulePermission
 from .accountcommon_client_permission import AccountcommonClientPermission
+from .accountcommon_client_permission_set import AccountcommonClientPermissionSet
 from .accountcommon_client_permission_v3 import AccountcommonClientPermissionV3
 from .accountcommon_client_permissions import AccountcommonClientPermissions
 from .accountcommon_client_permissions_v3 import AccountcommonClientPermissionsV3
+from .accountcommon_client_selected_group import AccountcommonClientSelectedGroup
 from .accountcommon_conflicted_user_platform_accounts import (
     AccountcommonConflictedUserPlatformAccounts,
 )
@@ -73,6 +77,7 @@ from .accountcommon_netflix_certificates import AccountcommonNetflixCertificates
 from .accountcommon_pagination import AccountcommonPagination
 from .accountcommon_pagination_v3 import AccountcommonPaginationV3
 from .accountcommon_permission import AccountcommonPermission
+from .accountcommon_permission_group import AccountcommonPermissionGroup
 from .accountcommon_permission_v3 import AccountcommonPermissionV3
 from .accountcommon_permissions import AccountcommonPermissions
 from .accountcommon_permissions_v3 import AccountcommonPermissionsV3
@@ -115,6 +120,7 @@ from .clientmodel_client_create_request import ClientmodelClientCreateRequest
 from .clientmodel_client_creation_response import ClientmodelClientCreationResponse
 from .clientmodel_client_creation_v3_request import ClientmodelClientCreationV3Request
 from .clientmodel_client_response import ClientmodelClientResponse
+from .clientmodel_client_template import ClientmodelClientTemplate
 from .clientmodel_client_update_request import ClientmodelClientUpdateRequest
 from .clientmodel_client_update_secret_request import (
     ClientmodelClientUpdateSecretRequest,
@@ -122,6 +128,17 @@ from .clientmodel_client_update_secret_request import (
 from .clientmodel_client_update_v3_request import ClientmodelClientUpdateV3Request
 from .clientmodel_client_v3_response import ClientmodelClientV3Response
 from .clientmodel_clients_v3_response import ClientmodelClientsV3Response
+from .clientmodel_default_field_value import ClientmodelDefaultFieldValue
+from .clientmodel_default_field_value_value import ClientmodelDefaultFieldValueValue
+from .clientmodel_list_client_permission_set import ClientmodelListClientPermissionSet
+from .clientmodel_list_templates_response import ClientmodelListTemplatesResponse
+from .clientmodel_list_upsert_modules_request import ClientmodelListUpsertModulesRequest
+from .clientmodel_permission_set_delete_group_request import (
+    ClientmodelPermissionSetDeleteGroupRequest,
+)
+from .clientmodel_permission_set_upsert_request import (
+    ClientmodelPermissionSetUpsertRequest,
+)
 from .clientmodel_v3_client_update_secret_request import (
     ClientmodelV3ClientUpdateSecretRequest,
 )
@@ -231,6 +248,7 @@ from .model_public_user_information_response_v3 import (
 from .model_public_user_information_v3 import ModelPublicUserInformationV3
 from .model_public_user_response import ModelPublicUserResponse
 from .model_public_user_response_v3 import ModelPublicUserResponseV3
+from .model_public_user_update_request_v3 import ModelPublicUserUpdateRequestV3
 from .model_public_users_response import ModelPublicUsersResponse
 from .model_remove_user_role_v4_request import ModelRemoveUserRoleV4Request
 from .model_reset_password_request import ModelResetPasswordRequest
@@ -348,6 +366,7 @@ from .oauthcommon_jwk_set import OauthcommonJWKSet
 from .oauthcommon_user_revocation_list_record import OauthcommonUserRevocationListRecord
 from .oauthmodel_country_location_response import OauthmodelCountryLocationResponse
 from .oauthmodel_error_response import OauthmodelErrorResponse
+from .oauthmodel_login_queue_ticket_response import OauthmodelLoginQueueTicketResponse
 from .oauthmodel_one_time_linking_code_response import (
     OauthmodelOneTimeLinkingCodeResponse,
 )
@@ -358,6 +377,7 @@ from .oauthmodel_platform_token_refresh_response_v3 import (
     OauthmodelPlatformTokenRefreshResponseV3,
 )
 from .oauthmodel_target_token_code_response import OauthmodelTargetTokenCodeResponse
+from .oauthmodel_ticket_endpoint_action import OauthmodelTicketEndpointAction
 from .oauthmodel_token_introspect_response import OauthmodelTokenIntrospectResponse
 from .oauthmodel_token_response import OauthmodelTokenResponse
 from .oauthmodel_token_response_v3 import OauthmodelTokenResponseV3

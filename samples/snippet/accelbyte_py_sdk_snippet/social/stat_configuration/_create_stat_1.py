@@ -14,6 +14,7 @@ Definition: StatCreate
 cycle_ids: List[str]
 default_value: float
 description: str
+global_aggregation_method: str
 ignore_additional_data_on_value_rejected: bool
 increment_only: bool
 is_public: bool
@@ -25,7 +26,7 @@ set_by: str
 stat_code: str
 tags: List[str]
 
-Example: '{"cycleIds": ["6cGCt4DmSwOW87Pj", "uOqZO9gtzDPlAba3", "UmPYah763tbglR46"], "defaultValue": 0.443187167108014, "description": "HRPXhGAFAvqUDM8b", "ignoreAdditionalDataOnValueRejected": true, "incrementOnly": true, "isPublic": true, "maximum": 0.23263034470112542, "minimum": 0.5727537444917388, "name": "u4FsRJPAeEIunDrq", "setAsGlobal": true, "setBy": "CLIENT", "statCode": "p5opvyOJ4S4gRHO4", "tags": ["5RAVK9lyA2HDbw2k", "AtUgqjsfAqCuEX25", "ynVL4Qzovk8BLP4f"]}'
+Example: '{"cycleIds": ["Z055NfPzBW52Saey", "ZjsW7jzwjTc4uvDx", "bSRyA6bEzf5Hs8xy"], "defaultValue": 0.8200542448830671, "description": "91ZCZpnJthMTePa9", "globalAggregationMethod": "TOTAL", "ignoreAdditionalDataOnValueRejected": false, "incrementOnly": false, "isPublic": false, "maximum": 0.5782030547679311, "minimum": 0.9172145069106837, "name": "2lzcbFTUsz9l9qZ0", "setAsGlobal": false, "setBy": "CLIENT", "statCode": "gqEsroz2XCCvi7hR", "tags": ["yhsL6sjEIEq2K90R", "LjDz9ki0Xe8BxNVa", "P3KaHtHTMRGHpTG2"]}'
 """
 
 result, error = create_stat_1(

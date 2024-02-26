@@ -12,7 +12,7 @@ Definition: UsersAgreementsRequest
 current_published_only: bool
 user_ids: List[str]
 
-Example: '{"currentPublishedOnly": false, "userIds": ["JhXsr1wMQRzaNY5P", "qKgfgF9Dtwc4Rp8A", "7xZcLcqI9RwRekyd"]}'
+Example: '{"currentPublishedOnly": true, "userIds": ["DglBaHSv9bJAlqHU", "XJjolFDSZ9DCRwmc", "BngzvbZoJIhc29l4"]}'
 """
 
 result, error = retrieve_accepted_agreements_for_multi_users(

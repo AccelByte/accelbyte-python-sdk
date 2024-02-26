@@ -17,7 +17,7 @@ Definition: List[AccountcommonPermissionV3]
     sched_cron: str
     sched_range: List[str]
 
-Example: '{"permissions": [{"action": 73, "resource": "wVNoiWt3e3lwfHhK", "schedAction": 70, "schedCron": "WfcvmbDIkGNamVAP", "schedRange": ["eskxqTUPwHI6B47w", "wREGwJnEh7F6m6GD", "DAgW0DPumuzdu6cD"]}, {"action": 94, "resource": "EGA6mwGErC4JH5mo", "schedAction": 24, "schedCron": "1aEjxfEBBrOW31xg", "schedRange": ["WuRgSQfGCLIUo60n", "IgOnNBLSVEcaSBe7", "HpcQuKO8EJyhT4nA"]}, {"action": 37, "resource": "MKNqsuSvtvLxELgM", "schedAction": 67, "schedCron": "9B0UVsh5l8hjeBtc", "schedRange": ["iwNNTl0ckLKLwfGI", "QWtTtrFwEBXXbVXP", "LhLEqgh0P9OZskUz"]}]}'
+Example: '{"permissions": [{"action": 65, "resource": "oMMtjR1HXEoWUQUN", "schedAction": 89, "schedCron": "0goKjB1w1gYLPCfh", "schedRange": ["NuyvAw4mKYDr95uQ", "DCDFJLd2YBCfqeDJ", "0Qj3Pv4j6T3zqH2g"]}, {"action": 92, "resource": "4SLp2W0sFNkwa8FK", "schedAction": 89, "schedCron": "dBUgSdLYgav3kqO0", "schedRange": ["AZlmDvnRi3vzTPMc", "PkFGev3cuHMX28QS", "SBAzNgjf13weZGU7"]}, {"action": 13, "resource": "7rOcWR1ZMDFBAP3h", "schedAction": 98, "schedCron": "Y6jmtbIWiHkjDUie", "schedRange": ["zncPcbCsyPzRrW1e", "bJUhaKWAuuJe94VM", "pOnpvijIRIZLeLeM"]}]}'
 """
 
 result, error = admin_add_role_permissions_v3(

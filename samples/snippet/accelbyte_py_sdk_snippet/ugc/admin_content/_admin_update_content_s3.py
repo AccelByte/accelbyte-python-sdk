@@ -26,7 +26,7 @@ tags: List[str]
 type_: str
 update_content_file: bool
 
-Example: '{"contentType": "x3bCphFIeZ9oX4Xx", "customAttributes": {"L2XlK6kp4i7TgMqz": {}, "A7GMoSwT82efl8Ys": {}, "pcyR04gVAzHSPSAe": {}}, "fileExtension": "HJmdyfgNZ0Wc1RNb", "name": "EjnDItxKLcpKzO0q", "payload": "Nh1rEmhBs67utl1L", "preview": "f1kyORslY6hLQpP4", "previewMetadata": {"previewContentType": "kMBTBXuyLYicI5Gk", "previewFileExtension": "WhvOuE8T2KO5YBZq"}, "shareCode": "GRbBRhFuYPkQ29Ig", "subType": "XoUCff3h2SxvTPbi", "tags": ["Ko8lsUrH63X30j8q", "YaXuqRgYf1oTVp3Z", "WwlXPWgOUNSO7bR4"], "type": "VueXED2KFnKXJtZl", "updateContentFile": true}'
+Example: '{"contentType": "txuTF9kdEPow7t86", "customAttributes": {"THNKv0GlXitjcgXr": {}, "1tG2NPVNGan6bPik": {}, "KBuUJjV35E8jTSvo": {}}, "fileExtension": "amSNgjOKH8Ac8GSP", "name": "ENfNSG1JMTF47fbE", "payload": "qgJOCsiY3iGZD5ov", "preview": "1HlenFakILn61gku", "previewMetadata": {"previewContentType": "GjUNqpgqoMNqYiyP", "previewFileExtension": "m82KNHOL9m9Bagf6"}, "shareCode": "fRUNF55uwIDnMbvy", "subType": "eS5twD2Wz1larjhF", "tags": ["mlKeME0VX1lNYmpo", "6OyVr9QGmzpOsrWg", "gVcLRajH1Bp9UgyZ"], "type": "SUWz9DbAYzRoTEiu", "updateContentFile": true}'
 """
 
 result, error = admin_update_content_s3(

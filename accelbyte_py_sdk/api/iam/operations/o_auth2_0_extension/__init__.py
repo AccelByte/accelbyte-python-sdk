@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.10.0"
+__version__ = "7.11.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,10 +20,12 @@ from .get_country_location_v3 import GetCountryLocationV3
 from .logout import Logout
 from .platform_authentication_v3 import PlatformAuthenticationV3
 from .platform_token_refresh_v3 import PlatformTokenRefreshV3
-from .platform_token_refresh__6ab177 import PlatformTokenRefreshV3Deprecate
 from .request_one_time_linkin_a9550a import RequestOneTimeLinkingCodeV3
 from .request_target_token_re_2a2d5b import RequestTargetTokenResponseV3
 from .request_token_by_one_ti_ace4f2 import RequestTokenByOneTimeLinkCodeResponseV3
 from .request_token_exchange_code_v3 import RequestTokenExchangeCodeV3
+from .request_token_exchange_code_v3 import (
+    CodeChallengeMethodEnum as RequestTokenExchangeCodeV3CodeChallengeMethodEnum,
+)
 from .user_authentication_v3 import UserAuthenticationV3
 from .validate_one_time_linki_84d856 import ValidateOneTimeLinkingCodeV3

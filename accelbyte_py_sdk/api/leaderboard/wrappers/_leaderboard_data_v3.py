@@ -207,7 +207,7 @@ def delete_user_ranking_admin_v3(
 
         403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71233: user ranking data not found)
 
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
@@ -269,7 +269,7 @@ async def delete_user_ranking_admin_v3_async(
 
         403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71233: user ranking data not found)
 
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
@@ -596,7 +596,7 @@ def get_all_time_leaderboard_ranking_admin_v3(
 
         404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -664,7 +664,7 @@ async def get_all_time_leaderboard_ranking_admin_v3_async(
 
         404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -722,7 +722,7 @@ def get_all_time_leaderboard_ranking_public_v3(
 
         404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -778,7 +778,7 @@ async def get_all_time_leaderboard_ranking_public_v3_async(
 
         404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -851,7 +851,7 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
 
         404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -923,7 +923,7 @@ async def get_current_cycle_leaderboard_ranking_admin_v3_async(
 
         404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -985,7 +985,7 @@ def get_current_cycle_leaderboard_ranking_public_v3(
 
         404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1045,7 +1045,7 @@ async def get_current_cycle_leaderboard_ranking_public_v3_async(
 
         404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1109,7 +1109,7 @@ def get_user_ranking_admin_v3(
 
         403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71233: user ranking data not found)
 
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
@@ -1171,7 +1171,7 @@ async def get_user_ranking_admin_v3_async(
 
         403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71233: user ranking data not found)
 
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
@@ -1227,7 +1227,7 @@ def get_user_ranking_public_v3(
 
         403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71233: user ranking data not found)
 
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
@@ -1281,7 +1281,7 @@ async def get_user_ranking_public_v3_async(
 
         403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71233: user ranking data not found)
 
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """

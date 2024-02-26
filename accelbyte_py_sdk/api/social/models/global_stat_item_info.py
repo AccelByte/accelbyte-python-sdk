@@ -26,6 +26,14 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class GlobalAggregationMethodEnum(StrEnum):
+    LAST = "LAST"
+    MAX = "MAX"
+    MIN = "MIN"
+    TOTAL = "TOTAL"
 
 
 class GlobalStatItemInfo(Model):
@@ -44,6 +52,8 @@ class GlobalStatItemInfo(Model):
 
         value: (value) REQUIRED float
 
+        global_aggregation_method: (globalAggregationMethod) OPTIONAL Union[str, GlobalAggregationMethodEnum]
+
         tags: (tags) OPTIONAL List[str]
     """
 
@@ -55,6 +65,7 @@ class GlobalStatItemInfo(Model):
     stat_name: str  # REQUIRED
     updated_at: str  # REQUIRED
     value: float  # REQUIRED
+    global_aggregation_method: Union[str, GlobalAggregationMethodEnum]  # OPTIONAL
     tags: List[str]  # OPTIONAL
 
     # endregion fields
@@ -83,6 +94,12 @@ class GlobalStatItemInfo(Model):
 
     def with_value(self, value: float) -> GlobalStatItemInfo:
         self.value = value
+        return self
+
+    def with_global_aggregation_method(
+        self, value: Union[str, GlobalAggregationMethodEnum]
+    ) -> GlobalStatItemInfo:
+        self.global_aggregation_method = value
         return self
 
     def with_tags(self, value: List[str]) -> GlobalStatItemInfo:
@@ -119,6 +136,12 @@ class GlobalStatItemInfo(Model):
             result["value"] = float(self.value)
         elif include_empty:
             result["value"] = 0.0
+        if hasattr(self, "global_aggregation_method"):
+            result["globalAggregationMethod"] = str(self.global_aggregation_method)
+        elif include_empty:
+            result["globalAggregationMethod"] = Union[
+                str, GlobalAggregationMethodEnum
+            ]()
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -138,6 +161,9 @@ class GlobalStatItemInfo(Model):
         stat_name: str,
         updated_at: str,
         value: float,
+        global_aggregation_method: Optional[
+            Union[str, GlobalAggregationMethodEnum]
+        ] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
     ) -> GlobalStatItemInfo:
@@ -148,6 +174,8 @@ class GlobalStatItemInfo(Model):
         instance.stat_name = stat_name
         instance.updated_at = updated_at
         instance.value = value
+        if global_aggregation_method is not None:
+            instance.global_aggregation_method = global_aggregation_method
         if tags is not None:
             instance.tags = tags
         return instance
@@ -183,6 +211,15 @@ class GlobalStatItemInfo(Model):
             instance.value = float(dict_["value"])
         elif include_empty:
             instance.value = 0.0
+        if (
+            "globalAggregationMethod" in dict_
+            and dict_["globalAggregationMethod"] is not None
+        ):
+            instance.global_aggregation_method = str(dict_["globalAggregationMethod"])
+        elif include_empty:
+            instance.global_aggregation_method = Union[
+                str, GlobalAggregationMethodEnum
+            ]()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -234,6 +271,7 @@ class GlobalStatItemInfo(Model):
             "statName": "stat_name",
             "updatedAt": "updated_at",
             "value": "value",
+            "globalAggregationMethod": "global_aggregation_method",
             "tags": "tags",
         }
 
@@ -246,7 +284,14 @@ class GlobalStatItemInfo(Model):
             "statName": True,
             "updatedAt": True,
             "value": True,
+            "globalAggregationMethod": False,
             "tags": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "globalAggregationMethod": ["LAST", "MAX", "MIN", "TOTAL"],
         }
 
     # endregion static methods

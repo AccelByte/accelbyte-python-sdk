@@ -32,11 +32,11 @@ from ....core import same_doc_as
 from ..models import ModelsListTerminatedServersResponse
 from ..models import ResponseError
 
-from ..operations.terminated_servers import ListTerminatedServers
+from ..operations.terminated_servers import ListTerminatedServersWithNamespace
 
 
-@same_doc_as(ListTerminatedServers)
-def list_terminated_servers(
+@same_doc_as(ListTerminatedServersWithNamespace)
+def list_terminated_servers_with_namespace(
     deployment: Optional[str] = None,
     game_mode: Optional[str] = None,
     limit: Optional[int] = None,
@@ -52,7 +52,7 @@ def list_terminated_servers(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve All Terminated Servers in a Namespace (listTerminatedServers)
+    """Retrieve All Terminated Servers in a Namespace (listTerminatedServersWithNamespace)
 
     ```
     Required permission: ADMIN:NAMESPACE:{namespace}:DSAM:SERVER [READ]
@@ -113,7 +113,7 @@ def list_terminated_servers(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = ListTerminatedServers.create(
+    request = ListTerminatedServersWithNamespace.create(
         deployment=deployment,
         game_mode=game_mode,
         limit=limit,
@@ -130,8 +130,8 @@ def list_terminated_servers(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(ListTerminatedServers)
-async def list_terminated_servers_async(
+@same_doc_as(ListTerminatedServersWithNamespace)
+async def list_terminated_servers_with_namespace_async(
     deployment: Optional[str] = None,
     game_mode: Optional[str] = None,
     limit: Optional[int] = None,
@@ -147,7 +147,7 @@ async def list_terminated_servers_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve All Terminated Servers in a Namespace (listTerminatedServers)
+    """Retrieve All Terminated Servers in a Namespace (listTerminatedServersWithNamespace)
 
     ```
     Required permission: ADMIN:NAMESPACE:{namespace}:DSAM:SERVER [READ]
@@ -208,7 +208,7 @@ async def list_terminated_servers_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = ListTerminatedServers.create(
+    request = ListTerminatedServersWithNamespace.create(
         deployment=deployment,
         game_mode=game_mode,
         limit=limit,

@@ -15,10 +15,11 @@ country: str
 date_of_birth: str
 display_name: str
 language_tag: str
+skip_login_queue: bool
 unique_display_name: str
 user_name: str
 
-Example: '{"avatarUrl": "8CIlsVj2YQXr2IhK", "country": "pjEkPCGh4JMEg0Fi", "dateOfBirth": "GcHjO6JuQZpyS69e", "displayName": "8YE0E0VYJwcoEkvB", "languageTag": "HEuTNezWkp69XDW3", "uniqueDisplayName": "qRBem4W8lVqXxNdI", "userName": "MQdlF0VF1CqCqZGb"}'
+Example: '{"avatarUrl": "0faqbSRpkBjpv76w", "country": "ZEOHu1W80phY3FSf", "dateOfBirth": "yX0WTlnpXO4lxCK0", "displayName": "bGYmFThCHZuE5sxG", "languageTag": "MQViXZl0SqSBOtJG", "skipLoginQueue": false, "uniqueDisplayName": "DLQdNdvoRMF6XlTf", "userName": "nN3VGnJJ0IpwF4W7"}'
 """
 
 result, error = admin_update_my_user_v4(

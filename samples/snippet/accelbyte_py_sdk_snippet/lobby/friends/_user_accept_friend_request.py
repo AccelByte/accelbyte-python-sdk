@@ -11,7 +11,7 @@ body:
 Definition: ModelUserAcceptFriendRequest
 friend_id: str
 
-Example: '{"friendId": "letXOHvEoZpmhPGa"}'
+Example: '{"friendId": "6FjpGruCYkFjgS8B"}'
 """
 
 result, error = user_accept_friend_request(

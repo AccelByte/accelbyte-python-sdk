@@ -14,7 +14,7 @@ body:
 Definition: ApimodelsDeleteBulkGameSessionRequest
 ids: List[str]
 
-Example: '{"ids": ["BscEKaYrunrAuXd2", "a6rtXIf8cZtF6L1D", "JNoyfw1OLyI1GIt8"]}'
+Example: '{"ids": ["kT2bLSTdQ0KUiM5E", "HcmXCNr9OhTFNeMv", "DwNRsJoylgElKqKI"]}'
 """
 
 result, error = admin_delete_bulk_game_sessions(

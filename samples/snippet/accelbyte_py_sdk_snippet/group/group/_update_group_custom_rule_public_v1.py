@@ -12,7 +12,7 @@ body:
 Definition: ModelsUpdateGroupCustomRuleRequestV1
 group_custom_rule: Dict[str, Any]
 
-Example: '{"groupCustomRule": {"4QD7zDOoczYW6Frx": {}, "e3hawkMCZYFelumT": {}, "u5Kr2fc2fSRLyveY": {}}}'
+Example: '{"groupCustomRule": {"Kpol0TC87gVgW2fT": {}, "n3bN3ICgTxrWNluH": {}, "O5uXILbXjkh0hmiB": {}}}'
 """
 
 result, error = update_group_custom_rule_public_v1(

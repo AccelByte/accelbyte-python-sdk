@@ -13,7 +13,7 @@ Definition: ModelsRegisterServerRequest
 custom_attribute: str
 pod_name: str
 
-Example: '{"custom_attribute": "La6VeBKJEYDEyD1g", "pod_name": "5FvEWEZYW0CbK8q9"}'
+Example: '{"custom_attribute": "x7IOWjY4X5F4pzbp", "pod_name": "xtgBa3aR4KkzZSkf"}'
 """
 
 result, error = register_server(

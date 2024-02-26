@@ -80,7 +80,7 @@ class GetCurrentMonthLeaderboardRankingAdminV1(Operation):
 
         404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
 
     # region fields
@@ -241,7 +241,7 @@ class GetCurrentMonthLeaderboardRankingAdminV1(Operation):
 
         404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71235: leaderboard ranking not found)
 
-        500: Internal Server Error - ResponseErrorResponse
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
 
         ---: HttpResponse (Undocumented Response)
 

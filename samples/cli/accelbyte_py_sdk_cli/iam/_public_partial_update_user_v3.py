@@ -33,8 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     public_partial_update_user_v3 as public_partial_update_user_v3_internal,
 )
+from accelbyte_py_sdk.api.iam.models import ModelPublicUserUpdateRequestV3
 from accelbyte_py_sdk.api.iam.models import ModelUserResponseV3
-from accelbyte_py_sdk.api.iam.models import ModelUserUpdateRequestV3
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
@@ -62,7 +62,7 @@ def public_partial_update_user_v3(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelUserUpdateRequestV3.create_from_dict(body_json)
+            body = ModelPublicUserUpdateRequestV3.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = public_partial_update_user_v3_internal(

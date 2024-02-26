@@ -14,7 +14,7 @@ Definition: List[BulkStatItemInc]
 inc: float
 stat_code: str
 
-Example: '[{"inc": 0.7319670009215219, "statCode": "vMkD4Ol8OG1BeS5I"}, {"inc": 0.4520764061149324, "statCode": "wXNAmNNAiQvRnKue"}, {"inc": 0.2842568494187808, "statCode": "cgSkHmFiuNRQoXuB"}]'
+Example: '[{"inc": 0.4189946777969492, "statCode": "tUff3Mbego2jyQHv"}, {"inc": 0.035738923781472476, "statCode": "AYC8O0G0Hs6DYfU4"}, {"inc": 0.39080975952889285, "statCode": "D65A26z1L2Of9Cqc"}]'
 """
 
 result, error = public_bulk_inc_user_stat_item_1(

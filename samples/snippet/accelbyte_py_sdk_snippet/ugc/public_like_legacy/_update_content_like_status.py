@@ -12,7 +12,7 @@ body:
 Definition: ModelsContentLikeRequest
 like_status: bool
 
-Example: '{"likeStatus": false}'
+Example: '{"likeStatus": true}'
 """
 
 result, error = update_content_like_status(

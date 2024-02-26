@@ -11,7 +11,7 @@ body:
 Definition: ModelsDequeueRequest
 match_id: str
 
-Example: '{"match_id": "H7Ge68aVbTbAiGeM"}'
+Example: '{"match_id": "zc92S7cghkb5DGAq"}'
 """
 
 result, error = dequeue_session_handler(

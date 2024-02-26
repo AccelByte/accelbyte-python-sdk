@@ -27,6 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.accountcommon_client_module_permission import (
+    AccountcommonClientModulePermission,
+)
 from ..models.accountcommon_permission_v3 import AccountcommonPermissionV3
 
 
@@ -42,8 +45,6 @@ class ClientmodelClientCreationV3Request(Model):
 
         client_name: (clientName) REQUIRED str
 
-        client_permissions: (clientPermissions) REQUIRED List[AccountcommonPermissionV3]
-
         client_platform: (clientPlatform) REQUIRED str
 
         description: (description) REQUIRED str
@@ -56,7 +57,13 @@ class ClientmodelClientCreationV3Request(Model):
 
         secret: (secret) REQUIRED str
 
+        skip_login_queue: (skipLoginQueue) REQUIRED bool
+
+        client_permissions: (clientPermissions) OPTIONAL List[AccountcommonPermissionV3]
+
         deletable: (deletable) OPTIONAL bool
+
+        module_permissions: (modulePermissions) OPTIONAL List[AccountcommonClientModulePermission]
 
         oauth_access_token_expiration: (oauthAccessTokenExpiration) OPTIONAL int
 
@@ -79,14 +86,16 @@ class ClientmodelClientCreationV3Request(Model):
     base_uri: str  # REQUIRED
     client_id: str  # REQUIRED
     client_name: str  # REQUIRED
-    client_permissions: List[AccountcommonPermissionV3]  # REQUIRED
     client_platform: str  # REQUIRED
     description: str  # REQUIRED
     namespace: str  # REQUIRED
     oauth_client_type: str  # REQUIRED
     redirect_uri: str  # REQUIRED
     secret: str  # REQUIRED
+    skip_login_queue: bool  # REQUIRED
+    client_permissions: List[AccountcommonPermissionV3]  # OPTIONAL
     deletable: bool  # OPTIONAL
+    module_permissions: List[AccountcommonClientModulePermission]  # OPTIONAL
     oauth_access_token_expiration: int  # OPTIONAL
     oauth_access_token_expiration_time_unit: str  # OPTIONAL
     oauth_refresh_token_expiration: int  # OPTIONAL
@@ -115,12 +124,6 @@ class ClientmodelClientCreationV3Request(Model):
         self.client_name = value
         return self
 
-    def with_client_permissions(
-        self, value: List[AccountcommonPermissionV3]
-    ) -> ClientmodelClientCreationV3Request:
-        self.client_permissions = value
-        return self
-
     def with_client_platform(self, value: str) -> ClientmodelClientCreationV3Request:
         self.client_platform = value
         return self
@@ -145,8 +148,24 @@ class ClientmodelClientCreationV3Request(Model):
         self.secret = value
         return self
 
+    def with_skip_login_queue(self, value: bool) -> ClientmodelClientCreationV3Request:
+        self.skip_login_queue = value
+        return self
+
+    def with_client_permissions(
+        self, value: List[AccountcommonPermissionV3]
+    ) -> ClientmodelClientCreationV3Request:
+        self.client_permissions = value
+        return self
+
     def with_deletable(self, value: bool) -> ClientmodelClientCreationV3Request:
         self.deletable = value
+        return self
+
+    def with_module_permissions(
+        self, value: List[AccountcommonClientModulePermission]
+    ) -> ClientmodelClientCreationV3Request:
+        self.module_permissions = value
         return self
 
     def with_oauth_access_token_expiration(
@@ -209,13 +228,6 @@ class ClientmodelClientCreationV3Request(Model):
             result["clientName"] = str(self.client_name)
         elif include_empty:
             result["clientName"] = ""
-        if hasattr(self, "client_permissions"):
-            result["clientPermissions"] = [
-                i0.to_dict(include_empty=include_empty)
-                for i0 in self.client_permissions
-            ]
-        elif include_empty:
-            result["clientPermissions"] = []
         if hasattr(self, "client_platform"):
             result["clientPlatform"] = str(self.client_platform)
         elif include_empty:
@@ -240,10 +252,28 @@ class ClientmodelClientCreationV3Request(Model):
             result["secret"] = str(self.secret)
         elif include_empty:
             result["secret"] = ""
+        if hasattr(self, "skip_login_queue"):
+            result["skipLoginQueue"] = bool(self.skip_login_queue)
+        elif include_empty:
+            result["skipLoginQueue"] = False
+        if hasattr(self, "client_permissions"):
+            result["clientPermissions"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.client_permissions
+            ]
+        elif include_empty:
+            result["clientPermissions"] = []
         if hasattr(self, "deletable"):
             result["deletable"] = bool(self.deletable)
         elif include_empty:
             result["deletable"] = False
+        if hasattr(self, "module_permissions"):
+            result["modulePermissions"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.module_permissions
+            ]
+        elif include_empty:
+            result["modulePermissions"] = []
         if hasattr(self, "oauth_access_token_expiration"):
             result["oauthAccessTokenExpiration"] = int(
                 self.oauth_access_token_expiration
@@ -293,14 +323,16 @@ class ClientmodelClientCreationV3Request(Model):
         base_uri: str,
         client_id: str,
         client_name: str,
-        client_permissions: List[AccountcommonPermissionV3],
         client_platform: str,
         description: str,
         namespace: str,
         oauth_client_type: str,
         redirect_uri: str,
         secret: str,
+        skip_login_queue: bool,
+        client_permissions: Optional[List[AccountcommonPermissionV3]] = None,
         deletable: Optional[bool] = None,
+        module_permissions: Optional[List[AccountcommonClientModulePermission]] = None,
         oauth_access_token_expiration: Optional[int] = None,
         oauth_access_token_expiration_time_unit: Optional[str] = None,
         oauth_refresh_token_expiration: Optional[int] = None,
@@ -315,15 +347,19 @@ class ClientmodelClientCreationV3Request(Model):
         instance.base_uri = base_uri
         instance.client_id = client_id
         instance.client_name = client_name
-        instance.client_permissions = client_permissions
         instance.client_platform = client_platform
         instance.description = description
         instance.namespace = namespace
         instance.oauth_client_type = oauth_client_type
         instance.redirect_uri = redirect_uri
         instance.secret = secret
+        instance.skip_login_queue = skip_login_queue
+        if client_permissions is not None:
+            instance.client_permissions = client_permissions
         if deletable is not None:
             instance.deletable = deletable
+        if module_permissions is not None:
+            instance.module_permissions = module_permissions
         if oauth_access_token_expiration is not None:
             instance.oauth_access_token_expiration = oauth_access_token_expiration
         if oauth_access_token_expiration_time_unit is not None:
@@ -367,15 +403,6 @@ class ClientmodelClientCreationV3Request(Model):
             instance.client_name = str(dict_["clientName"])
         elif include_empty:
             instance.client_name = ""
-        if "clientPermissions" in dict_ and dict_["clientPermissions"] is not None:
-            instance.client_permissions = [
-                AccountcommonPermissionV3.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["clientPermissions"]
-            ]
-        elif include_empty:
-            instance.client_permissions = []
         if "clientPlatform" in dict_ and dict_["clientPlatform"] is not None:
             instance.client_platform = str(dict_["clientPlatform"])
         elif include_empty:
@@ -400,10 +427,32 @@ class ClientmodelClientCreationV3Request(Model):
             instance.secret = str(dict_["secret"])
         elif include_empty:
             instance.secret = ""
+        if "skipLoginQueue" in dict_ and dict_["skipLoginQueue"] is not None:
+            instance.skip_login_queue = bool(dict_["skipLoginQueue"])
+        elif include_empty:
+            instance.skip_login_queue = False
+        if "clientPermissions" in dict_ and dict_["clientPermissions"] is not None:
+            instance.client_permissions = [
+                AccountcommonPermissionV3.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["clientPermissions"]
+            ]
+        elif include_empty:
+            instance.client_permissions = []
         if "deletable" in dict_ and dict_["deletable"] is not None:
             instance.deletable = bool(dict_["deletable"])
         elif include_empty:
             instance.deletable = False
+        if "modulePermissions" in dict_ and dict_["modulePermissions"] is not None:
+            instance.module_permissions = [
+                AccountcommonClientModulePermission.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["modulePermissions"]
+            ]
+        elif include_empty:
+            instance.module_permissions = []
         if (
             "oauthAccessTokenExpiration" in dict_
             and dict_["oauthAccessTokenExpiration"] is not None
@@ -499,14 +548,16 @@ class ClientmodelClientCreationV3Request(Model):
             "baseUri": "base_uri",
             "clientId": "client_id",
             "clientName": "client_name",
-            "clientPermissions": "client_permissions",
             "clientPlatform": "client_platform",
             "description": "description",
             "namespace": "namespace",
             "oauthClientType": "oauth_client_type",
             "redirectUri": "redirect_uri",
             "secret": "secret",
+            "skipLoginQueue": "skip_login_queue",
+            "clientPermissions": "client_permissions",
             "deletable": "deletable",
+            "modulePermissions": "module_permissions",
             "oauthAccessTokenExpiration": "oauth_access_token_expiration",
             "oauthAccessTokenExpirationTimeUnit": "oauth_access_token_expiration_time_unit",
             "oauthRefreshTokenExpiration": "oauth_refresh_token_expiration",
@@ -523,14 +574,16 @@ class ClientmodelClientCreationV3Request(Model):
             "baseUri": True,
             "clientId": True,
             "clientName": True,
-            "clientPermissions": True,
             "clientPlatform": True,
             "description": True,
             "namespace": True,
             "oauthClientType": True,
             "redirectUri": True,
             "secret": True,
+            "skipLoginQueue": True,
+            "clientPermissions": False,
             "deletable": False,
+            "modulePermissions": False,
             "oauthAccessTokenExpiration": False,
             "oauthAccessTokenExpirationTimeUnit": False,
             "oauthRefreshTokenExpiration": False,

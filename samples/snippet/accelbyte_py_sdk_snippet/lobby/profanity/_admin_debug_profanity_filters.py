@@ -12,7 +12,7 @@ body:
 Definition: ModelsDebugProfanityFilterRequest
 text: str
 
-Example: '{"text": "HeGYF4DnpXiWdQBH"}'
+Example: '{"text": "KFVlZt5d0Z95s4C8"}'
 """
 
 result, error = admin_debug_profanity_filters(

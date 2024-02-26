@@ -19,7 +19,7 @@ leaderboard_code: str
 name: str
 stat_code: str
 
-Example: '{"allTime": true, "cycleIds": ["YlXStAyax6uy02Wa", "7jH5On8K06X6qspo", "wnFWJvlX8uKe1psB"], "descending": true, "description": "A1I39BGFcAUsPePx", "iconURL": "mfdwjKVhPtlavtr4", "leaderboardCode": "bvU9YCA2wOnIk1nd", "name": "ZrBNLfFU05whfP3Y", "statCode": "h2mUIEm9hgNWIov3"}'
+Example: '{"allTime": true, "cycleIds": ["3b5sj2UhTaypEqhF", "yP9LcfJlJ70X9FXJ", "zE44KXpXTbbSMPvH"], "descending": false, "description": "1Xa9HRligL29z7t6", "iconURL": "6UMnwTTdxBMyVeOE", "leaderboardCode": "3gcZAEuOJeGhjpSu", "name": "OMIbWAbGlrXuWNky", "statCode": "An3kwK0wFjyckR47"}'
 """
 
 result, error = create_leaderboard_configuration_admin_v3(

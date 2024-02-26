@@ -18,7 +18,7 @@ Definition: List[ModelsRuleInformation]
     rule_criteria: str
     rule_value: float
 
-Example: '{"ruleDetail": [{"ruleAttribute": "ughqwxxYLdO2n1XJ", "ruleCriteria": "MINIMUM", "ruleValue": 0.0028560562576006587}, {"ruleAttribute": "rVDF3e5iACRAsgVr", "ruleCriteria": "EQUAL", "ruleValue": 0.5405713653027147}, {"ruleAttribute": "RGNpbUwRd8EOQCnE", "ruleCriteria": "EQUAL", "ruleValue": 0.01943902653825924}]}'
+Example: '{"ruleDetail": [{"ruleAttribute": "VKJXj3k0VjGlPELd", "ruleCriteria": "MINIMUM", "ruleValue": 0.9354137041393669}, {"ruleAttribute": "KE1fHpOOFd00bJ97", "ruleCriteria": "EQUAL", "ruleValue": 0.5258253863668038}, {"ruleAttribute": "bXMQN6J9WirOQIyZ", "ruleCriteria": "MAXIMUM", "ruleValue": 0.9561596679808206}]}'
 """
 
 result, error = update_group_configuration_global_rule_admin_v1(

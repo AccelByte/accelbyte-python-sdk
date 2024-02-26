@@ -15,7 +15,7 @@ platform: str
 request_id: str
 use_count: int
 
-Example: '{"options": ["gXD9I4F5QugxMw0T", "UtcJCbuqrjjJh6by", "735nf6CxJtkCWOtn"], "platform": "TYudPpBhbOgolclB", "requestId": "Eljbs3Vg6NcohCCj", "useCount": 76}'
+Example: '{"options": ["yJ6ISouNVmmqfXI5", "bQelqhq2wAGaND8S", "YB1yKi1arlSnm5C2"], "platform": "v8WZ9c9sRdzm5WE4", "requestId": "EAIC2WrbSrPEwJvx", "useCount": 56}'
 """
 
 result, error = consume_user_entitlement(

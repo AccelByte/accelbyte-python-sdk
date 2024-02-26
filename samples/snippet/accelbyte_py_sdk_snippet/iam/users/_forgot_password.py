@@ -13,7 +13,7 @@ context: str
 language_tag: str
 login_id: str
 
-Example: '{"Context": "vTLxeBYthWz6jyK7", "LanguageTag": "E6mgvsiQAsIaHPso", "LoginID": "YuhVfMMbO5VSpObM"}'
+Example: '{"Context": "wKaiQDV08SCJ2rck", "LanguageTag": "7MXqptXe3dGfV5X1", "LoginID": "qIvKUqxBH3sdXjmq"}'
 """
 
 result, error = forgot_password(

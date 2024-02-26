@@ -25,7 +25,7 @@ rule_set: str
 session_template: str
 ticket_expiration_seconds: int
 
-Example: '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 53, "backfill_ticket_expiration_seconds": 98, "match_function": "MTlvyxnbuaU5hdMh", "match_function_override": {"backfill_matches": "wwclaeI32yoi1atr", "enrichment": ["IrPcTjjAZ9JHGkDi", "DmiQTh4CLs9ktXVV", "xhroC2oUnwqYESu3"], "make_matches": "EJTt3O1DjiEPzSGP", "stat_codes": ["7lJT89EQEBvQz9sX", "iUm6OBU7IiBbyujd", "EuBJP6zfGjrISN3A"], "validation": ["nNntwgXaKl8EBB1t", "8xwZk61Agt9ySRT8", "LUJRP11a3Y3UVDFZ"]}, "rule_set": "Hu6V4hPol6KI6Mhg", "session_template": "oG3FidNCCY43NgzG", "ticket_expiration_seconds": 73}'
+Example: '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 55, "backfill_ticket_expiration_seconds": 15, "match_function": "dpOhWVsk7X9WsLz0", "match_function_override": {"backfill_matches": "chfJMNxoClzsYyIn", "enrichment": ["SDkwDQ60qjEweJ8U", "eqj2g3AE3C06Wwh8", "MU2MjSvoxkgRSO0U"], "make_matches": "XItb2mQIJYFWBBRj", "stat_codes": ["nXhhKdCAXdajNEau", "V9muBlVMlKlmYzYR", "LGcF3Vw8XJGITlCb"], "validation": ["O6uwXDQDM7EgsYVB", "g7W2QTd2qk704jre", "Xf3Ca3HHW3LtPIh5"]}, "rule_set": "AAQ32JfCrb60Kctc", "session_template": "1YLD2oL4PHuxBbWi", "ticket_expiration_seconds": 1}'
 """
 
 result, error = update_match_pool(

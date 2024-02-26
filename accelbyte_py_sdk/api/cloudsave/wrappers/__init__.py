@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.15.0"
+__version__ = "3.15.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -134,6 +134,13 @@ from ._admin_record import admin_put_admin_player_record_v1_async
 from ._admin_record import bulk_get_admin_player_record_by_user_ids_v1
 from ._admin_record import bulk_get_admin_player_record_by_user_ids_v1_async
 
+from ._admin_tags import admin_delete_tag_handler_v1
+from ._admin_tags import admin_delete_tag_handler_v1_async
+from ._admin_tags import admin_list_tags_handler_v1
+from ._admin_tags import admin_list_tags_handler_v1_async
+from ._admin_tags import admin_post_tag_handler_v1
+from ._admin_tags import admin_post_tag_handler_v1_async
+
 from ._concurrent_record import put_game_record_concurrent_handler_v1
 from ._concurrent_record import put_game_record_concurrent_handler_v1_async
 from ._concurrent_record import put_player_public_record_concurrent_handler_v1
@@ -232,14 +239,8 @@ from ._public_player_record import put_player_record_handler_v1_async
 from ._public_player_record import retrieve_player_records
 from ._public_player_record import retrieve_player_records_async
 
-from ._tags import admin_delete_tag_handler_v1
-from ._tags import admin_delete_tag_handler_v1_async
-from ._tags import admin_list_tags_handler_v1
-from ._tags import admin_list_tags_handler_v1_async
-from ._tags import admin_post_tag_handler_v1
-from ._tags import admin_post_tag_handler_v1_async
-from ._tags import public_list_tags_handler_v1
-from ._tags import public_list_tags_handler_v1_async
+from ._public_tags import public_list_tags_handler_v1
+from ._public_tags import public_list_tags_handler_v1_async
 
 from ._ttl_config import delete_game_binary_record_ttl_config
 from ._ttl_config import delete_game_binary_record_ttl_config_async

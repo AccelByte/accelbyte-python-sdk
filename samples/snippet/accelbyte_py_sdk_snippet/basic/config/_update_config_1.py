@@ -13,7 +13,7 @@ body:
 Definition: ConfigUpdate
 value: str
 
-Example: '{"value": "OwhrZQuIVLnC7Tea"}'
+Example: '{"value": "PmAxwWOdGW0EL9nl"}'
 """
 
 result, error = update_config_1(

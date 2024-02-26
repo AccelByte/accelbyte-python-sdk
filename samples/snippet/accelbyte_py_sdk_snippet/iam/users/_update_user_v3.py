@@ -3,13 +3,13 @@ import yaml
 
 from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import update_user_v3
+from accelbyte_py_sdk.api.iam.models import ModelPublicUserUpdateRequestV3
 from accelbyte_py_sdk.api.iam.models import ModelUserResponseV3
-from accelbyte_py_sdk.api.iam.models import ModelUserUpdateRequestV3
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 """
 body:
-Definition: ModelUserUpdateRequestV3
+Definition: ModelPublicUserUpdateRequestV3
 avatar_url: str
 country: str
 date_of_birth: str
@@ -18,7 +18,7 @@ language_tag: str
 unique_display_name: str
 user_name: str
 
-Example: '{"avatarUrl": "bvGDGZTGRhkUbQbM", "country": "Gdvfax7UjNMaa8Od", "dateOfBirth": "Qp0uVrS5s3iAPHtg", "displayName": "yGDC1Mz0EttnWMf5", "languageTag": "9xRnskG8Qx0NK4cA", "uniqueDisplayName": "2mkJ2vPKmMaJmLsQ", "userName": "GflmVzAsjRHAL8Ng"}'
+Example: '{"avatarUrl": "3FGDGMd6mdeVNMjD", "country": "fSnCPiUz03EszzDb", "dateOfBirth": "0DS2zCg4JsUhCE2U", "displayName": "GD5BdGJliMwt64TS", "languageTag": "94iDCNpMxsPabDw9", "uniqueDisplayName": "oKgstccjUBQCrCW6", "userName": "83RV6DwgYv5pubOL"}'
 """
 
 result, error = update_user_v3(

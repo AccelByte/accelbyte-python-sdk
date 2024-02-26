@@ -12,7 +12,7 @@ Definition: ModelCreateTopicRequestV1
 description: str
 topic_name: str
 
-Example: '{"description": "Es6JaBoR5HmaaofI", "topicName": "a7aKFDSnsYwyYJ6H"}'
+Example: '{"description": "nahUl0eO7dQ7IYrh", "topicName": "FyrFKoBDXlzJg66h"}'
 """
 
 result, error = create_notification_topic_v1_admin(

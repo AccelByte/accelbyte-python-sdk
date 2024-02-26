@@ -16,7 +16,7 @@ receipt_data: str
 region: str
 transaction_id: str
 
-Example: '{"excludeOldTransactions": false, "language": "jn-jYeh-773", "productId": "gzjd96HemvzmeBXy", "receiptData": "Ln9NGQmuvRLtAGNU", "region": "AhHY2HczMhAyMpdc", "transactionId": "liBxsutGLOFSKdbM"}'
+Example: '{"excludeOldTransactions": true, "language": "spyj", "productId": "V3mNDkQtWHZPul4C", "receiptData": "LvZE7nqMnW04xyMN", "region": "HyfdwbukCkHMka7B", "transactionId": "SimSI7ihfowPeSEt"}'
 """
 
 result, error = public_fulfill_apple_iap_item(

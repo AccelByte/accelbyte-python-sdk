@@ -39,7 +39,7 @@ class DeleteNodeByID(Operation):
 
     Required scope: social
 
-    This endpoint will delete a queue entry
+    This endpoint will delete a node by IP
 
     Required Permission(s):
         - ADMIN:DSAM:ARTIFACT:NODES [DELETE]

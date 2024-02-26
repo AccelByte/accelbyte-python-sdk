@@ -43,6 +43,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--client_type", "client_type", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--skip_login_queue", "skip_login_queue", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -53,6 +54,7 @@ def admin_get_clients_by_namespace_v3(
     client_type: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    skip_login_queue: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -72,6 +74,7 @@ def admin_get_clients_by_namespace_v3(
         client_type=client_type,
         limit=limit,
         offset=offset,
+        skip_login_queue=skip_login_queue,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

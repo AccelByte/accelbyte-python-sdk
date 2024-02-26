@@ -15,7 +15,7 @@ Definition: List[ModelUserUnbanCreateRequestV3]
     ban_id: str
     user_id: str
 
-Example: '{"bans": [{"banId": "f7VFiC5BqTXS4KkQ", "userId": "hVUwnpK12iOLjUOu"}, {"banId": "IMFMDNAbNdUxwkDg", "userId": "sh7P47oELiHqMcY2"}, {"banId": "MrUcNshy7nVoGsnl", "userId": "gB2I4Yenvb53pRpM"}]}'
+Example: '{"bans": [{"banId": "eK85IjXxoCMM9zD4", "userId": "kJHqmshgidAG1j0J"}, {"banId": "BMY5qBl37CsmodrJ", "userId": "z4SAiAgiNCrsxkDF"}, {"banId": "Ae1fwwnHFFvLY2mM", "userId": "TyDvyAHd7bFsGIXa"}]}'
 """
 
 result, error = admin_unban_user_bulk_v3(

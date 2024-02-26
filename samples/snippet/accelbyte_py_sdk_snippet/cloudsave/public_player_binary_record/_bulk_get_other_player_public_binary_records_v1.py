@@ -16,7 +16,7 @@ body:
 Definition: ModelsBulkGetPlayerRecordsRequest
 keys: List[str]
 
-Example: '{"keys": ["qnk7W5CdcT9icW6v", "sX7k2cHkltPqcdhi", "YuJ8Fjw8mGPF2biF"]}'
+Example: '{"keys": ["JHrEmWJaYrMY8MTb", "zVEWriAsWvcKH6HH", "aDnSdma0PvC8Cph5"]}'
 """
 
 result, error = bulk_get_other_player_public_binary_records_v1(

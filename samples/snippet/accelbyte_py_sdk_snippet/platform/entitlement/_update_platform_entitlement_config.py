@@ -12,7 +12,7 @@ body:
 Definition: EntitlementPlatformConfigUpdate
 allowed_platform_origins: List[str]
 
-Example: '{"allowedPlatformOrigins": ["IOS", "Other", "Other"]}'
+Example: '{"allowedPlatformOrigins": ["Xbox", "Epic", "System"]}'
 """
 
 result, error = update_platform_entitlement_config(

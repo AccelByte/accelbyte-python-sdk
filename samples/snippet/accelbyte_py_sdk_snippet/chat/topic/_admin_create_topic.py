@@ -18,7 +18,7 @@ name: str
 shard_limit: int
 type_: str
 
-Example: '{"admins": ["2tFnlUgbKFMNnRiu", "eGsfrborTqC6oGIe", "g0g0eIqASdf6vlNQ"], "description": "fSqe16FuyTFFqL5m", "isChannel": false, "isJoinable": true, "members": ["N0j2rWBMst1zQfjQ", "wt3LJFWx9A7K34fs", "rBG2jROJ36IIsY1j"], "name": "UewwkzwcYGjoikgy", "shardLimit": 87, "type": "mxh4KiBe8Hm02wb4"}'
+Example: '{"admins": ["udFlctF6fd45OA3u", "GbLO901SC8kbxU7n", "wqClakm2XulNAbw0"], "description": "ffvLr2C7eJ3L3DJ2", "isChannel": false, "isJoinable": false, "members": ["9FNtMtQxV87N1uC2", "dG9VZi8PkI0ioJAk", "Qx1WvnW3OVyobUeN"], "name": "QUkq3SWhvn5tgD1g", "shardLimit": 58, "type": "VvsVyvAsEtI1aTVp"}'
 """
 
 result, error = admin_create_topic(

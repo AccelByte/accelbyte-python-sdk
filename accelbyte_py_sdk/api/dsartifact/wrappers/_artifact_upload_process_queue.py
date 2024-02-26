@@ -152,7 +152,7 @@ def delete_node_by_id(
 
     Required scope: social
 
-    This endpoint will delete a queue entry
+    This endpoint will delete a node by IP
 
     Required Permission(s):
         - ADMIN:DSAM:ARTIFACT:NODES [DELETE]
@@ -204,7 +204,7 @@ async def delete_node_by_id_async(
 
     Required scope: social
 
-    This endpoint will delete a queue entry
+    This endpoint will delete a node by IP
 
     Required Permission(s):
         - ADMIN:DSAM:ARTIFACT:NODES [DELETE]

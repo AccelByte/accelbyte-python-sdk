@@ -38,12 +38,16 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTargetTokenCodeResponse
 
 @click.command()
 @click.argument("client_id", type=str)
+@click.option("--code_challenge", "code_challenge", type=str)
+@click.option("--code_challenge_method", "code_challenge_method", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def request_token_exchange_code_v3(
     client_id: str,
+    code_challenge: Optional[str] = None,
+    code_challenge_method: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -59,6 +63,8 @@ def request_token_exchange_code_v3(
         login_as_internal(login_as)
     result, error = request_token_exchange_code_v3_internal(
         client_id=client_id,
+        code_challenge=code_challenge,
+        code_challenge_method=code_challenge_method,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

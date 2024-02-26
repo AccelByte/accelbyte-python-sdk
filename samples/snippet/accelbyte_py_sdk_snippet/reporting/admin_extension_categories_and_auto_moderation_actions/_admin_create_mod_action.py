@@ -14,7 +14,7 @@ action_id: str
 action_name: str
 event_name: str
 
-Example: '{"actionId": "DwDXjCjurSQio0gF", "actionName": "yFapRHhazL5vQBNo", "eventName": "E52oJ1cHoQzlolis"}'
+Example: '{"actionId": "Bh2cMjTJi0oB7C2m", "actionName": "3pHTkHnFc4IO08If", "eventName": "vvuVIVJ2kK34xdAr"}'
 """
 
 result, error = admin_create_mod_action(

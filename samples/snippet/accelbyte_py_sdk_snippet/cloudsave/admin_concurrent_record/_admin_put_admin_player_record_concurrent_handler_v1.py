@@ -19,7 +19,7 @@ Definition: ModelsAdminPlayerConcurrentRecordRequest
 updated_at: str
 value: Dict[str, Any]
 
-Example: '{"updatedAt": "FtZRtwXHSYYM46R5", "value": {"aesvLHIbe7tOZ1xm": {}, "8nVydM8kUn7GQqOG": {}, "ueozrxA1eUP5uqbO": {}}}'
+Example: '{"updatedAt": "rXfTehmumqtLtjEm", "value": {"lzh6vPdpFGZf36Vl": {}, "CBdrBrE6SRiUcXHg": {}, "M9OoU36bk71lDZHP": {}}}'
 """
 
 result, error = admin_put_admin_player_record_concurrent_handler_v1(

@@ -17,7 +17,7 @@ login_id: str
 password: str
 password_md5_sum: str
 
-Example: '{"AuthType": "cVnc7QG6LArTsKdw", "Country": "HAKKNmhZSAoqeiHf", "DisplayName": "vN5TZ0FXQdNi42Xc", "LoginId": "xKRSq5fWy4wwMJJH", "Password": "T7q6Z8ENrGs2n72y", "PasswordMD5Sum": "Dj39XBSgIHY0Do0C"}'
+Example: '{"AuthType": "q2qAzhzzWzcyDCNR", "Country": "MwT0kjt7KYwCYYH1", "DisplayName": "XEdaj0BGCXr1choD", "LoginId": "vMBHH5AkidRzUCu9", "Password": "CRxPEoSuV4HS9khh", "PasswordMD5Sum": "k5hMO6hF1swma1IZ"}'
 """
 
 result, error = public_create_user_v2(

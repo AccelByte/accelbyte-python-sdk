@@ -37,6 +37,8 @@ class ModelUserActiveBanResponseV3(Model):
         ban_id: (banId) REQUIRED str
 
         end_date: (endDate) REQUIRED str
+
+        targeted_namespace: (targetedNamespace) REQUIRED str
     """
 
     # region fields
@@ -44,6 +46,7 @@ class ModelUserActiveBanResponseV3(Model):
     ban: str  # REQUIRED
     ban_id: str  # REQUIRED
     end_date: str  # REQUIRED
+    targeted_namespace: str  # REQUIRED
 
     # endregion fields
 
@@ -59,6 +62,10 @@ class ModelUserActiveBanResponseV3(Model):
 
     def with_end_date(self, value: str) -> ModelUserActiveBanResponseV3:
         self.end_date = value
+        return self
+
+    def with_targeted_namespace(self, value: str) -> ModelUserActiveBanResponseV3:
+        self.targeted_namespace = value
         return self
 
     # endregion with_x methods
@@ -79,6 +86,10 @@ class ModelUserActiveBanResponseV3(Model):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = ""
+        if hasattr(self, "targeted_namespace"):
+            result["targetedNamespace"] = str(self.targeted_namespace)
+        elif include_empty:
+            result["targetedNamespace"] = ""
         return result
 
     # endregion to methods
@@ -87,12 +98,13 @@ class ModelUserActiveBanResponseV3(Model):
 
     @classmethod
     def create(
-        cls, ban: str, ban_id: str, end_date: str, **kwargs
+        cls, ban: str, ban_id: str, end_date: str, targeted_namespace: str, **kwargs
     ) -> ModelUserActiveBanResponseV3:
         instance = cls()
         instance.ban = ban
         instance.ban_id = ban_id
         instance.end_date = end_date
+        instance.targeted_namespace = targeted_namespace
         return instance
 
     @classmethod
@@ -114,6 +126,10 @@ class ModelUserActiveBanResponseV3(Model):
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = ""
+        if "targetedNamespace" in dict_ and dict_["targetedNamespace"] is not None:
+            instance.targeted_namespace = str(dict_["targetedNamespace"])
+        elif include_empty:
+            instance.targeted_namespace = ""
         return instance
 
     @classmethod
@@ -160,6 +176,7 @@ class ModelUserActiveBanResponseV3(Model):
             "ban": "ban",
             "banId": "ban_id",
             "endDate": "end_date",
+            "targetedNamespace": "targeted_namespace",
         }
 
     @staticmethod
@@ -168,6 +185,7 @@ class ModelUserActiveBanResponseV3(Model):
             "ban": True,
             "banId": True,
             "endDate": True,
+            "targetedNamespace": True,
         }
 
     # endregion static methods

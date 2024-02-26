@@ -11,7 +11,7 @@ body:
 Definition: ModelsRemoveRoleFromMemberRequestV1
 user_id: str
 
-Example: '{"userId": "ED08Ix6nq00xRWEP"}'
+Example: '{"userId": "aTCalATcCM6ibVdQ"}'
 """
 
 result, error = delete_member_role_public_v2(

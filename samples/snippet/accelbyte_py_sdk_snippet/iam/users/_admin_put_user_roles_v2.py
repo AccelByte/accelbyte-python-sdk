@@ -9,7 +9,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 body:
 Definition: List[str]
 
-Example: '["y2F68r9nQiDrcVnJ", "sgwliUdLHcoNUDOm", "WEm4hspTHcyTWMUo"]'
+Example: '["z3CQSPA4rYXlsdjf", "zY1UQdJ2sEVpi4UO", "qnwDmuzWVlmlj3R2"]'
 """
 
 result, error = admin_put_user_roles_v2(

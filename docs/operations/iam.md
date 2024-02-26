@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (7.10.0)
+# AccelByte Gaming Services Iam Service Index (7.11.0)
 
 
 ## Operations
@@ -43,6 +43,14 @@
 | /iam/clients/{clientId} | PUT | UpdateClient | `true` | [UpdateClient](../../accelbyte_py_sdk/api/iam/operations/clients/update_client.py) | [update_client](../../accelbyte_py_sdk/api/iam/wrappers/_clients.py) | [accelbyte_py_sdk_cli iam-update-client](../../samples/cli/accelbyte_py_sdk_cli/iam/_update_client.py) |
 | /iam/clients/{clientId}/clientpermissions | POST | UpdateClientPermission | `true` | [UpdateClientPermission](../../accelbyte_py_sdk/api/iam/operations/clients/update_client_permission.py) | [update_client_permission](../../accelbyte_py_sdk/api/iam/wrappers/_clients.py) | [accelbyte_py_sdk_cli iam-update-client-permission](../../samples/cli/accelbyte_py_sdk_cli/iam/_update_client_permission.py) |
 | /iam/clients/{clientId}/secret | PUT | UpdateClientSecret | `true` | [UpdateClientSecret](../../accelbyte_py_sdk/api/iam/operations/clients/update_client_secret.py) | [update_client_secret](../../accelbyte_py_sdk/api/iam/wrappers/_clients.py) | [accelbyte_py_sdk_cli iam-update-client-secret](../../samples/cli/accelbyte_py_sdk_cli/iam/_update_client_secret.py) |
+
+### Clients Config V3
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /iam/v3/admin/clientConfig/permissions | DELETE | AdminDeleteConfigPermissionsByGroup | `false` | [AdminDeleteConfigPermissionsByGroup](../../accelbyte_py_sdk/api/iam/operations/clients_config_v3/admin_delete_config_per_4d40c6.py) | [admin_delete_config_permissions_by_group](../../accelbyte_py_sdk/api/iam/wrappers/_clients_config_v3.py) | [accelbyte_py_sdk_cli iam-admin-delete-config-permissions-by-group](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_delete_config_permissions_by_group.py) |
+| /iam/v3/admin/clientConfig/permissions | GET | AdminListClientAvailablePermissions | `false` | [AdminListClientAvailablePermissions](../../accelbyte_py_sdk/api/iam/operations/clients_config_v3/admin_list_client_avail_561e53.py) | [admin_list_client_available_permissions](../../accelbyte_py_sdk/api/iam/wrappers/_clients_config_v3.py) | [accelbyte_py_sdk_cli iam-admin-list-client-available-permissions](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_list_client_available_permissions.py) |
+| /iam/v3/admin/clientConfig/templates | GET | AdminListClientTemplates | `false` | [AdminListClientTemplates](../../accelbyte_py_sdk/api/iam/operations/clients_config_v3/admin_list_client_templates.py) | [admin_list_client_templates](../../accelbyte_py_sdk/api/iam/wrappers/_clients_config_v3.py) | [accelbyte_py_sdk_cli iam-admin-list-client-templates](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_list_client_templates.py) |
+| /iam/v3/admin/clientConfig/permissions | PUT | AdminUpdateAvailablePermissionsByModule | `false` | [AdminUpdateAvailablePermissionsByModule](../../accelbyte_py_sdk/api/iam/operations/clients_config_v3/admin_update_available__50a681.py) | [admin_update_available_permissions_by_module](../../accelbyte_py_sdk/api/iam/wrappers/_clients_config_v3.py) | [accelbyte_py_sdk_cli iam-admin-update-available-permissions-by-module](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_update_available_permissions_by_module.py) |
 
 ### Config
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -125,13 +133,23 @@
 | /iam/v3/logout | POST | Logout | `false` | [Logout](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/logout.py) | [logout](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-logout](../../samples/cli/accelbyte_py_sdk_cli/iam/_logout.py) |
 | /iam/v3/platforms/{platformId}/authenticate | GET | PlatformAuthenticationV3 | `false` | [PlatformAuthenticationV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/platform_authentication_v3.py) | [platform_authentication_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-platform-authentication-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_platform_authentication_v3.py) |
 | /iam/v3/platforms/{platformId}/token/verify | POST | PlatformTokenRefreshV3 | `false` | [PlatformTokenRefreshV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/platform_token_refresh_v3.py) | [platform_token_refresh_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-platform-token-refresh-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_platform_token_refresh_v3.py) |
-| /iam/v3/v3/platforms/{platformId}/token/verify | POST | PlatformTokenRefreshV3Deprecate | `true` | [PlatformTokenRefreshV3Deprecate](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/platform_token_refresh__6ab177.py) | [platform_token_refresh_v3_deprecate](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-platform-token-refresh-v3-deprecate](../../samples/cli/accelbyte_py_sdk_cli/iam/_platform_token_refresh_v3_deprecate.py) |
 | /iam/v3/link/code/request | POST | RequestOneTimeLinkingCodeV3 | `false` | [RequestOneTimeLinkingCodeV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/request_one_time_linkin_a9550a.py) | [request_one_time_linking_code_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-request-one-time-linking-code-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_request_one_time_linking_code_v3.py) |
 | /iam/v3/token/exchange | POST | RequestTargetTokenResponseV3 | `false` | [RequestTargetTokenResponseV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/request_target_token_re_2a2d5b.py) | [request_target_token_response_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-request-target-token-response-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_request_target_token_response_v3.py) |
 | /iam/v3/link/token/exchange | POST | RequestTokenByOneTimeLinkCodeResponseV3 | `false` | [RequestTokenByOneTimeLinkCodeResponseV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/request_token_by_one_ti_ace4f2.py) | [request_token_by_one_time_link_code_response_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-request-token-by-one-time-link-code-response-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_request_token_by_one_time_link_code_response_v3.py) |
 | /iam/v3/namespace/{namespace}/token/request | POST | RequestTokenExchangeCodeV3 | `false` | [RequestTokenExchangeCodeV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/request_token_exchange_code_v3.py) | [request_token_exchange_code_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-request-token-exchange-code-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_request_token_exchange_code_v3.py) |
 | /iam/v3/authenticate | POST | UserAuthenticationV3 | `false` | [UserAuthenticationV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/user_authentication_v3.py) | [user_authentication_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-user-authentication-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_user_authentication_v3.py) |
 | /iam/v3/link/code/validate | POST | ValidateOneTimeLinkingCodeV3 | `false` | [ValidateOneTimeLinkingCodeV3](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_extension/validate_one_time_linki_84d856.py) | [validate_one_time_linking_code_v3](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_extension.py) | [accelbyte_py_sdk_cli iam-validate-one-time-linking-code-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_validate_one_time_linking_code_v3.py) |
+
+### OAuth2.0 V4
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /iam/v4/oauth/authenticateWithLink | POST | AuthenticationWithPlatformLinkV4 | `false` | [AuthenticationWithPlatformLinkV4](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_v4/authentication_with_pla_7019e1.py) | [authentication_with_platform_link_v4](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_v4.py) | [accelbyte_py_sdk_cli iam-authentication-with-platform-link-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_authentication_with_platform_link_v4.py) |
+| /iam/v4/oauth/headless/token | POST | GenerateTokenByNewHeadlessAccountV4 | `false` | [GenerateTokenByNewHeadlessAccountV4](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_v4/generate_token_by_new_h_19fd22.py) | [generate_token_by_new_headless_account_v4](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_v4.py) | [accelbyte_py_sdk_cli iam-generate-token-by-new-headless-account-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_generate_token_by_new_headless_account_v4.py) |
+| /iam/v4/oauth/platforms/{platformId}/token | POST | PlatformTokenGrantV4 | `false` | [PlatformTokenGrantV4](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_v4/platform_token_grant_v4.py) | [platform_token_grant_v4](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_v4.py) | [accelbyte_py_sdk_cli iam-platform-token-grant-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_platform_token_grant_v4.py) |
+| /iam/v4/oauth/token/exchange | POST | RequestTargetTokenResponseV4 | `false` | [RequestTargetTokenResponseV4](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_v4/request_target_token_re_d18562.py) | [request_target_token_response_v4](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_v4.py) | [accelbyte_py_sdk_cli iam-request-target-token-response-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_request_target_token_response_v4.py) |
+| /iam/v4/oauth/simultaneousLogin | POST | SimultaneousLoginV4 | `false` | [SimultaneousLoginV4](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_v4/simultaneous_login_v4.py) | [simultaneous_login_v4](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_v4.py) | [accelbyte_py_sdk_cli iam-simultaneous-login-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_simultaneous_login_v4.py) |
+| /iam/v4/oauth/token | POST | TokenGrantV4 | `false` | [TokenGrantV4](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_v4/token_grant_v4.py) | [token_grant_v4](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_v4.py) | [accelbyte_py_sdk_cli iam-token-grant-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_token_grant_v4.py) |
+| /iam/v4/oauth/mfa/verify | POST | Verify2FACodeV4 | `false` | [Verify2faCodeV4](../../accelbyte_py_sdk/api/iam/operations/o_auth2_0_v4/verify2fa_code_v4.py) | [verify2fa_code_v4](../../accelbyte_py_sdk/api/iam/wrappers/_o_auth2_0_v4.py) | [accelbyte_py_sdk_cli iam-verify2fa-code-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_verify2fa_code_v4.py) |
 
 ### Roles
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -461,6 +479,7 @@
 | account.UserActiveBanResponseV4 | [AccountUserActiveBanResponseV4](../../accelbyte_py_sdk/api/iam/models/account_user_active_ban_response_v4.py) |
 | account.UserPermissionsResponseV4 | [AccountUserPermissionsResponseV4](../../accelbyte_py_sdk/api/iam/models/account_user_permissions_response_v4.py) |
 | account.UserResponseV4 | [AccountUserResponseV4](../../accelbyte_py_sdk/api/iam/models/account_user_response_v4.py) |
+| accountcommon.AllowedPermission | [AccountcommonAllowedPermission](../../accelbyte_py_sdk/api/iam/models/accountcommon_allowed_permission.py) |
 | accountcommon.AvatarConfig | [AccountcommonAvatarConfig](../../accelbyte_py_sdk/api/iam/models/accountcommon_avatar_config.py) |
 | accountcommon.Ban | [AccountcommonBan](../../accelbyte_py_sdk/api/iam/models/accountcommon_ban.py) |
 | accountcommon.BanReason | [AccountcommonBanReason](../../accelbyte_py_sdk/api/iam/models/accountcommon_ban_reason.py) |
@@ -471,10 +490,13 @@
 | accountcommon.BannedByV3 | [AccountcommonBannedByV3](../../accelbyte_py_sdk/api/iam/models/accountcommon_banned_by_v3.py) |
 | accountcommon.Bans | [AccountcommonBans](../../accelbyte_py_sdk/api/iam/models/accountcommon_bans.py) |
 | accountcommon.BansV3 | [AccountcommonBansV3](../../accelbyte_py_sdk/api/iam/models/accountcommon_bans_v3.py) |
+| accountcommon.ClientModulePermission | [AccountcommonClientModulePermission](../../accelbyte_py_sdk/api/iam/models/accountcommon_client_module_permission.py) |
 | accountcommon.ClientPermission | [AccountcommonClientPermission](../../accelbyte_py_sdk/api/iam/models/accountcommon_client_permission.py) |
+| accountcommon.ClientPermissionSet | [AccountcommonClientPermissionSet](../../accelbyte_py_sdk/api/iam/models/accountcommon_client_permission_set.py) |
 | accountcommon.ClientPermissionV3 | [AccountcommonClientPermissionV3](../../accelbyte_py_sdk/api/iam/models/accountcommon_client_permission_v3.py) |
 | accountcommon.ClientPermissions | [AccountcommonClientPermissions](../../accelbyte_py_sdk/api/iam/models/accountcommon_client_permissions.py) |
 | accountcommon.ClientPermissionsV3 | [AccountcommonClientPermissionsV3](../../accelbyte_py_sdk/api/iam/models/accountcommon_client_permissions_v3.py) |
+| accountcommon.ClientSelectedGroup | [AccountcommonClientSelectedGroup](../../accelbyte_py_sdk/api/iam/models/accountcommon_client_selected_group.py) |
 | accountcommon.ConflictedUserPlatformAccounts | [AccountcommonConflictedUserPlatformAccounts](../../accelbyte_py_sdk/api/iam/models/accountcommon_conflicted_user_platform_accounts.py) |
 | accountcommon.Country | [AccountcommonCountry](../../accelbyte_py_sdk/api/iam/models/accountcommon_country.py) |
 | accountcommon.CountryAgeRestriction | [AccountcommonCountryAgeRestriction](../../accelbyte_py_sdk/api/iam/models/accountcommon_country_age_restriction.py) |
@@ -489,6 +511,7 @@
 | accountcommon.Pagination | [AccountcommonPagination](../../accelbyte_py_sdk/api/iam/models/accountcommon_pagination.py) |
 | accountcommon.PaginationV3 | [AccountcommonPaginationV3](../../accelbyte_py_sdk/api/iam/models/accountcommon_pagination_v3.py) |
 | accountcommon.Permission | [AccountcommonPermission](../../accelbyte_py_sdk/api/iam/models/accountcommon_permission.py) |
+| accountcommon.PermissionGroup | [AccountcommonPermissionGroup](../../accelbyte_py_sdk/api/iam/models/accountcommon_permission_group.py) |
 | accountcommon.PermissionV3 | [AccountcommonPermissionV3](../../accelbyte_py_sdk/api/iam/models/accountcommon_permission_v3.py) |
 | accountcommon.Permissions | [AccountcommonPermissions](../../accelbyte_py_sdk/api/iam/models/accountcommon_permissions.py) |
 | accountcommon.PermissionsV3 | [AccountcommonPermissionsV3](../../accelbyte_py_sdk/api/iam/models/accountcommon_permissions_v3.py) |
@@ -519,11 +542,19 @@
 | clientmodel.ClientCreationResponse | [ClientmodelClientCreationResponse](../../accelbyte_py_sdk/api/iam/models/clientmodel_client_creation_response.py) |
 | clientmodel.ClientCreationV3Request | [ClientmodelClientCreationV3Request](../../accelbyte_py_sdk/api/iam/models/clientmodel_client_creation_v3_request.py) |
 | clientmodel.ClientResponse | [ClientmodelClientResponse](../../accelbyte_py_sdk/api/iam/models/clientmodel_client_response.py) |
+| clientmodel.ClientTemplate | [ClientmodelClientTemplate](../../accelbyte_py_sdk/api/iam/models/clientmodel_client_template.py) |
 | clientmodel.ClientUpdateRequest | [ClientmodelClientUpdateRequest](../../accelbyte_py_sdk/api/iam/models/clientmodel_client_update_request.py) |
 | clientmodel.ClientUpdateSecretRequest | [ClientmodelClientUpdateSecretRequest](../../accelbyte_py_sdk/api/iam/models/clientmodel_client_update_secret_request.py) |
 | clientmodel.ClientUpdateV3Request | [ClientmodelClientUpdateV3Request](../../accelbyte_py_sdk/api/iam/models/clientmodel_client_update_v3_request.py) |
 | clientmodel.ClientV3Response | [ClientmodelClientV3Response](../../accelbyte_py_sdk/api/iam/models/clientmodel_client_v3_response.py) |
 | clientmodel.ClientsV3Response | [ClientmodelClientsV3Response](../../accelbyte_py_sdk/api/iam/models/clientmodel_clients_v3_response.py) |
+| clientmodel.DefaultFieldValue | [ClientmodelDefaultFieldValue](../../accelbyte_py_sdk/api/iam/models/clientmodel_default_field_value.py) |
+| clientmodel.DefaultFieldValue.value | [ClientmodelDefaultFieldValueValue](../../accelbyte_py_sdk/api/iam/models/clientmodel_default_field_value_value.py) |
+| clientmodel.ListClientPermissionSet | [ClientmodelListClientPermissionSet](../../accelbyte_py_sdk/api/iam/models/clientmodel_list_client_permission_set.py) |
+| clientmodel.ListTemplatesResponse | [ClientmodelListTemplatesResponse](../../accelbyte_py_sdk/api/iam/models/clientmodel_list_templates_response.py) |
+| clientmodel.ListUpsertModulesRequest | [ClientmodelListUpsertModulesRequest](../../accelbyte_py_sdk/api/iam/models/clientmodel_list_upsert_modules_request.py) |
+| clientmodel.PermissionSetDeleteGroupRequest | [ClientmodelPermissionSetDeleteGroupRequest](../../accelbyte_py_sdk/api/iam/models/clientmodel_permission_set_delete_group_request.py) |
+| clientmodel.PermissionSetUpsertRequest | [ClientmodelPermissionSetUpsertRequest](../../accelbyte_py_sdk/api/iam/models/clientmodel_permission_set_upsert_request.py) |
 | clientmodel.V3ClientUpdateSecretRequest | [ClientmodelV3ClientUpdateSecretRequest](../../accelbyte_py_sdk/api/iam/models/clientmodel_v3_client_update_secret_request.py) |
 | legal.AcceptedPoliciesRequest | [LegalAcceptedPoliciesRequest](../../accelbyte_py_sdk/api/iam/models/legal_accepted_policies_request.py) |
 | model.AccountProgressionInfo | [ModelAccountProgressionInfo](../../accelbyte_py_sdk/api/iam/models/model_account_progression_info.py) |
@@ -615,6 +646,7 @@
 | model.PublicUserInformationV3 | [ModelPublicUserInformationV3](../../accelbyte_py_sdk/api/iam/models/model_public_user_information_v3.py) |
 | model.PublicUserResponse | [ModelPublicUserResponse](../../accelbyte_py_sdk/api/iam/models/model_public_user_response.py) |
 | model.PublicUserResponseV3 | [ModelPublicUserResponseV3](../../accelbyte_py_sdk/api/iam/models/model_public_user_response_v3.py) |
+| model.PublicUserUpdateRequestV3 | [ModelPublicUserUpdateRequestV3](../../accelbyte_py_sdk/api/iam/models/model_public_user_update_request_v3.py) |
 | model.PublicUsersResponse | [ModelPublicUsersResponse](../../accelbyte_py_sdk/api/iam/models/model_public_users_response.py) |
 | model.RemoveUserRoleV4Request | [ModelRemoveUserRoleV4Request](../../accelbyte_py_sdk/api/iam/models/model_remove_user_role_v4_request.py) |
 | model.ResetPasswordRequest | [ModelResetPasswordRequest](../../accelbyte_py_sdk/api/iam/models/model_reset_password_request.py) |
@@ -708,10 +740,12 @@
 | oauthcommon.UserRevocationListRecord | [OauthcommonUserRevocationListRecord](../../accelbyte_py_sdk/api/iam/models/oauthcommon_user_revocation_list_record.py) |
 | oauthmodel.CountryLocationResponse | [OauthmodelCountryLocationResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_country_location_response.py) |
 | oauthmodel.ErrorResponse | [OauthmodelErrorResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_error_response.py) |
+| oauthmodel.LoginQueueTicketResponse | [OauthmodelLoginQueueTicketResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_login_queue_ticket_response.py) |
 | oauthmodel.OneTimeLinkingCodeResponse | [OauthmodelOneTimeLinkingCodeResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_one_time_linking_code_response.py) |
 | oauthmodel.OneTimeLinkingCodeValidationResponse | [OauthmodelOneTimeLinkingCodeValidationResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_one_time_linking_code_validation_response.py) |
 | oauthmodel.PlatformTokenRefreshResponseV3 | [OauthmodelPlatformTokenRefreshResponseV3](../../accelbyte_py_sdk/api/iam/models/oauthmodel_platform_token_refresh_response_v3.py) |
 | oauthmodel.TargetTokenCodeResponse | [OauthmodelTargetTokenCodeResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_target_token_code_response.py) |
+| oauthmodel.TicketEndpointAction | [OauthmodelTicketEndpointAction](../../accelbyte_py_sdk/api/iam/models/oauthmodel_ticket_endpoint_action.py) |
 | oauthmodel.TokenIntrospectResponse | [OauthmodelTokenIntrospectResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_introspect_response.py) |
 | oauthmodel.TokenResponse | [OauthmodelTokenResponse](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_response.py) |
 | oauthmodel.TokenResponseV3 | [OauthmodelTokenResponseV3](../../accelbyte_py_sdk/api/iam/models/oauthmodel_token_response_v3.py) |

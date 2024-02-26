@@ -11,7 +11,7 @@ body:
 Definition: ModelsListBlockedPlayerRequest
 list_blocked_user_id: List[str]
 
-Example: '{"listBlockedUserId": ["TrEzqapyQiFrYn7U", "XtT1O8QqqolRT0WM", "Iha0T4WhtcKU7wK8"]}'
+Example: '{"listBlockedUserId": ["pmT77jGpkSgVlmCv", "JUvfbgT9uL9Dahhb", "7dSWm1Inu9Fmqhc3"]}'
 """
 
 result, error = admin_bulk_block_players_v1(

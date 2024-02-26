@@ -11,7 +11,7 @@ body:
 Definition: ModelUserCancelFriendRequest
 friend_id: str
 
-Example: '{"friendId": "dMkWSszCXgm7n2jx"}'
+Example: '{"friendId": "tg79x44s82PbkICH"}'
 """
 
 result, error = user_cancel_friend_request(

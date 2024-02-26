@@ -186,7 +186,7 @@ def admin_add_client_permissions_v3(
     """Add Client Permissions (AdminAddClientPermissionsV3)
 
     **Note for Multi Tenant Mode:**
-    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+    This is for super admin only.
     action code: 10303
 
     Properties:
@@ -242,7 +242,7 @@ async def admin_add_client_permissions_v3_async(
     """Add Client Permissions (AdminAddClientPermissionsV3)
 
     **Note for Multi Tenant Mode:**
-    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+    This is for super admin only.
     action code: 10303
 
     Properties:
@@ -301,12 +301,9 @@ def admin_create_client_v3(
     Add a new OAuth 2.0 client
     A new client automatically granted with these scopes: commerce, account, analytics, publishing, social.
 
-    **Note for Multi Tenant Mode:**
-    New Confidential Client will have Default Client Role assigned to it. The role will have all
-    permissions to access all APIs that's supported by game server SDK and DS uploader.
-    However if **Game Admin** create Confidential Client and the permission(s) are specified in request body,
-    then the Default Client Role will not be assigned.
-    But in this case, the assigned permissions will be restricted in the Default Client Permission collection only.
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module.
 
     action code: 10301
 
@@ -392,12 +389,9 @@ async def admin_create_client_v3_async(
     Add a new OAuth 2.0 client
     A new client automatically granted with these scopes: commerce, account, analytics, publishing, social.
 
-    **Note for Multi Tenant Mode:**
-    New Confidential Client will have Default Client Role assigned to it. The role will have all
-    permissions to access all APIs that's supported by game server SDK and DS uploader.
-    However if **Game Admin** create Confidential Client and the permission(s) are specified in request body,
-    then the Default Client Role will not be assigned.
-    But in this case, the assigned permissions will be restricted in the Default Client Permission collection only.
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module.
 
     action code: 10301
 
@@ -484,6 +478,8 @@ def admin_delete_client_permission_v3(
 ):
     """Delete Client Permission (AdminDeleteClientPermissionV3)
 
+    **Note for Multi Tenant Mode:**
+    This is for super admin only.
     action code : 10304
 
     Properties:
@@ -542,6 +538,8 @@ async def admin_delete_client_permission_v3_async(
 ):
     """Delete Client Permission (AdminDeleteClientPermissionV3)
 
+    **Note for Multi Tenant Mode:**
+    This is for super admin only.
     action code : 10304
 
     Properties:
@@ -704,6 +702,7 @@ def admin_get_clients_by_namespace_v3(
     client_type: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    skip_login_queue: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -737,6 +736,8 @@ def admin_get_clients_by_namespace_v3(
 
         offset: (offset) OPTIONAL int in query
 
+        skip_login_queue: (skipLoginQueue) OPTIONAL bool in query
+
     Responses:
         200: OK - ClientmodelClientsV3Response (OK)
 
@@ -756,6 +757,7 @@ def admin_get_clients_by_namespace_v3(
         client_type=client_type,
         limit=limit,
         offset=offset,
+        skip_login_queue=skip_login_queue,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -768,6 +770,7 @@ async def admin_get_clients_by_namespace_v3_async(
     client_type: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    skip_login_queue: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -801,6 +804,8 @@ async def admin_get_clients_by_namespace_v3_async(
 
         offset: (offset) OPTIONAL int in query
 
+        skip_login_queue: (skipLoginQueue) OPTIONAL bool in query
+
     Responses:
         200: OK - ClientmodelClientsV3Response (OK)
 
@@ -820,6 +825,7 @@ async def admin_get_clients_by_namespace_v3_async(
         client_type=client_type,
         limit=limit,
         offset=offset,
+        skip_login_queue=skip_login_queue,
         namespace=namespace,
     )
     return await run_request_async(
@@ -940,7 +946,7 @@ def admin_update_client_permission_v3(
     """Update Client Permissions (AdminUpdateClientPermissionV3)
 
     **Note for Multi Tenant Mode:**
-    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+    This is for super admin only.
     action code: 10307
 
     Properties:
@@ -996,7 +1002,7 @@ async def admin_update_client_permission_v3_async(
     """Update Client Permissions (AdminUpdateClientPermissionV3)
 
     **Note for Multi Tenant Mode:**
-    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+    This is for super admin only.
     action code: 10307
 
     Properties:
@@ -1166,8 +1172,9 @@ def admin_update_client_v3(
     Updates an OAuth 2.0 client.
     Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
 
-    **Note for Multi Tenant Mode:**
-    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module.
 
     action code: 10302
 
@@ -1193,6 +1200,7 @@ def admin_update_client_v3(
     - **oauthRefreshTokenExpiration**: a configurable expiration time for **refresh_token**, default value: 0 (mean fetch value from environment variable)
     - **oauthAccessTokenExpirationTimeUnit**: a configurable expiration time unit for **access_token**, will use previous value if not specified
     - **oauthRefreshTokenExpirationTimeUnit**: a configurable expiration time unit for **refresh_token**, will use previous value if not specified
+    - **skipLoginQueue**: a flag to indicate whether this client should be exempted from login queue or not
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}
@@ -1249,8 +1257,9 @@ async def admin_update_client_v3_async(
     Updates an OAuth 2.0 client.
     Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
 
-    **Note for Multi Tenant Mode:**
-    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module.
 
     action code: 10302
 
@@ -1276,6 +1285,7 @@ async def admin_update_client_v3_async(
     - **oauthRefreshTokenExpiration**: a configurable expiration time for **refresh_token**, default value: 0 (mean fetch value from environment variable)
     - **oauthAccessTokenExpirationTimeUnit**: a configurable expiration time unit for **access_token**, will use previous value if not specified
     - **oauthRefreshTokenExpirationTimeUnit**: a configurable expiration time unit for **refresh_token**, will use previous value if not specified
+    - **skipLoginQueue**: a flag to indicate whether this client should be exempted from login queue or not
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}

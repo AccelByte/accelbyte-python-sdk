@@ -11,7 +11,7 @@ body:
 Definition: ExportStoreRequest
 item_ids: List[str]
 
-Example: '{"itemIds": ["Pj8CijEruUqo0a3L", "2CV5zHCNij0cUzAT", "XeIk2lMGHw1fINcO"]}'
+Example: '{"itemIds": ["A8ObsZtmLdvp3X7Y", "mFkmFXBcUBYdABcx", "1KRUxdc8q8kK2aNX"]}'
 """
 
 result, error = export_store_1(

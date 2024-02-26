@@ -22,7 +22,7 @@ reset_time: str
 season_period: int
 start: str
 
-Example: '{"cycleType": "WEEKLY", "description": "xqlARFgqjgQkI7Ki", "end": "1989-04-09T00:00:00Z", "name": "75cdJe9CgoKczJZI", "resetDate": 76, "resetDay": 40, "resetMonth": 82, "resetTime": "NbpR9LaF68d1TY28", "seasonPeriod": 88, "start": "1988-06-21T00:00:00Z"}'
+Example: '{"cycleType": "WEEKLY", "description": "SH7bpgYxRqJZ7LUE", "end": "1971-11-26T00:00:00Z", "name": "QlFeSnRAEnc1ePG2", "resetDate": 63, "resetDay": 52, "resetMonth": 68, "resetTime": "M8u886yVIujHhHQn", "seasonPeriod": 10, "start": "1984-08-14T00:00:00Z"}'
 """
 
 result, error = create_stat_cycle(

@@ -27,6 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.accountcommon_client_module_permission import (
+    AccountcommonClientModulePermission,
+)
 from ..models.accountcommon_permission_v3 import AccountcommonPermissionV3
 
 
@@ -60,7 +63,11 @@ class ClientmodelClientV3Response(Model):
 
         scopes: (scopes) REQUIRED List[str]
 
+        skip_login_queue: (skipLoginQueue) REQUIRED bool
+
         two_factor_enabled: (twoFactorEnabled) REQUIRED bool
+
+        module_permissions: (modulePermissions) OPTIONAL List[AccountcommonClientModulePermission]
 
         oauth_access_token_expiration: (oauthAccessTokenExpiration) OPTIONAL int
 
@@ -90,7 +97,9 @@ class ClientmodelClientV3Response(Model):
     oauth_client_type: str  # REQUIRED
     redirect_uri: str  # REQUIRED
     scopes: List[str]  # REQUIRED
+    skip_login_queue: bool  # REQUIRED
     two_factor_enabled: bool  # REQUIRED
+    module_permissions: List[AccountcommonClientModulePermission]  # OPTIONAL
     oauth_access_token_expiration: int  # OPTIONAL
     oauth_access_token_expiration_time_unit: str  # OPTIONAL
     oauth_refresh_token_expiration: int  # OPTIONAL
@@ -156,8 +165,18 @@ class ClientmodelClientV3Response(Model):
         self.scopes = value
         return self
 
+    def with_skip_login_queue(self, value: bool) -> ClientmodelClientV3Response:
+        self.skip_login_queue = value
+        return self
+
     def with_two_factor_enabled(self, value: bool) -> ClientmodelClientV3Response:
         self.two_factor_enabled = value
+        return self
+
+    def with_module_permissions(
+        self, value: List[AccountcommonClientModulePermission]
+    ) -> ClientmodelClientV3Response:
+        self.module_permissions = value
         return self
 
     def with_oauth_access_token_expiration(
@@ -253,10 +272,21 @@ class ClientmodelClientV3Response(Model):
             result["scopes"] = [str(i0) for i0 in self.scopes]
         elif include_empty:
             result["scopes"] = []
+        if hasattr(self, "skip_login_queue"):
+            result["skipLoginQueue"] = bool(self.skip_login_queue)
+        elif include_empty:
+            result["skipLoginQueue"] = False
         if hasattr(self, "two_factor_enabled"):
             result["twoFactorEnabled"] = bool(self.two_factor_enabled)
         elif include_empty:
             result["twoFactorEnabled"] = False
+        if hasattr(self, "module_permissions"):
+            result["modulePermissions"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.module_permissions
+            ]
+        elif include_empty:
+            result["modulePermissions"] = []
         if hasattr(self, "oauth_access_token_expiration"):
             result["oauthAccessTokenExpiration"] = int(
                 self.oauth_access_token_expiration
@@ -311,7 +341,9 @@ class ClientmodelClientV3Response(Model):
         oauth_client_type: str,
         redirect_uri: str,
         scopes: List[str],
+        skip_login_queue: bool,
         two_factor_enabled: bool,
+        module_permissions: Optional[List[AccountcommonClientModulePermission]] = None,
         oauth_access_token_expiration: Optional[int] = None,
         oauth_access_token_expiration_time_unit: Optional[str] = None,
         oauth_refresh_token_expiration: Optional[int] = None,
@@ -334,7 +366,10 @@ class ClientmodelClientV3Response(Model):
         instance.oauth_client_type = oauth_client_type
         instance.redirect_uri = redirect_uri
         instance.scopes = scopes
+        instance.skip_login_queue = skip_login_queue
         instance.two_factor_enabled = two_factor_enabled
+        if module_permissions is not None:
+            instance.module_permissions = module_permissions
         if oauth_access_token_expiration is not None:
             instance.oauth_access_token_expiration = oauth_access_token_expiration
         if oauth_access_token_expiration_time_unit is not None:
@@ -417,10 +452,23 @@ class ClientmodelClientV3Response(Model):
             instance.scopes = [str(i0) for i0 in dict_["scopes"]]
         elif include_empty:
             instance.scopes = []
+        if "skipLoginQueue" in dict_ and dict_["skipLoginQueue"] is not None:
+            instance.skip_login_queue = bool(dict_["skipLoginQueue"])
+        elif include_empty:
+            instance.skip_login_queue = False
         if "twoFactorEnabled" in dict_ and dict_["twoFactorEnabled"] is not None:
             instance.two_factor_enabled = bool(dict_["twoFactorEnabled"])
         elif include_empty:
             instance.two_factor_enabled = False
+        if "modulePermissions" in dict_ and dict_["modulePermissions"] is not None:
+            instance.module_permissions = [
+                AccountcommonClientModulePermission.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["modulePermissions"]
+            ]
+        elif include_empty:
+            instance.module_permissions = []
         if (
             "oauthAccessTokenExpiration" in dict_
             and dict_["oauthAccessTokenExpiration"] is not None
@@ -521,7 +569,9 @@ class ClientmodelClientV3Response(Model):
             "oauthClientType": "oauth_client_type",
             "redirectUri": "redirect_uri",
             "scopes": "scopes",
+            "skipLoginQueue": "skip_login_queue",
             "twoFactorEnabled": "two_factor_enabled",
+            "modulePermissions": "module_permissions",
             "oauthAccessTokenExpiration": "oauth_access_token_expiration",
             "oauthAccessTokenExpirationTimeUnit": "oauth_access_token_expiration_time_unit",
             "oauthRefreshTokenExpiration": "oauth_refresh_token_expiration",
@@ -546,7 +596,9 @@ class ClientmodelClientV3Response(Model):
             "oauthClientType": True,
             "redirectUri": True,
             "scopes": True,
+            "skipLoginQueue": True,
             "twoFactorEnabled": True,
+            "modulePermissions": False,
             "oauthAccessTokenExpiration": False,
             "oauthAccessTokenExpirationTimeUnit": False,
             "oauthRefreshTokenExpiration": False,

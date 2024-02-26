@@ -12,7 +12,7 @@ body:
 Definition: ApimodelsPlayersCurrentPlatformRequest
 user_i_ds: List[str]
 
-Example: '{"userIDs": ["akurrDXhE08yyL4y", "MZ5LHn9krcJsIbid", "jOxm6TdvrrEsFBSc"]}'
+Example: '{"userIDs": ["KtRt6AvAuL43lqD6", "XNo3p9gawmY58yuo", "FEhRurC49exWpjTz"]}'
 """
 
 result, error = public_get_bulk_player_current_platform(

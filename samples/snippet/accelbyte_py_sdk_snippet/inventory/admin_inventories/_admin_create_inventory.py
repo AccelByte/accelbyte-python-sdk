@@ -13,7 +13,7 @@ Definition: ApimodelsCreateInventoryReq
 inventory_configuration_code: str
 user_id: str
 
-Example: '{"inventoryConfigurationCode": "r2HiTs1X8vdHdfEe", "userId": "Z9L9FvsbdWtRgTBF"}'
+Example: '{"inventoryConfigurationCode": "82AVz7dVumYUbRBI", "userId": "E3aTAO4OLwVMjQ17"}'
 """
 
 result, error = admin_create_inventory(

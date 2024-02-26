@@ -15,7 +15,7 @@ end: str
 name: str
 start: str
 
-Example: '{"end": "1977-04-17T00:00:00Z", "name": "B2MxtxUfIsxI4cgU", "start": "1989-01-23T00:00:00Z"}'
+Example: '{"end": "1984-07-09T00:00:00Z", "name": "gKmG5AXfYaVGhjzz", "start": "1987-01-28T00:00:00Z"}'
 """
 
 result, error = clone_season(

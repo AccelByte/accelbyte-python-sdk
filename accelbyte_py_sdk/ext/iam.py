@@ -35,6 +35,7 @@ from ..api.iam.models import AccountUpgradeHeadlessAccountWithVerificationCodeRe
 from ..api.iam.models import AccountUserActiveBanResponseV4
 from ..api.iam.models import AccountUserPermissionsResponseV4
 from ..api.iam.models import AccountUserResponseV4
+from ..api.iam.models import AccountcommonAllowedPermission
 from ..api.iam.models import AccountcommonAvatarConfig
 from ..api.iam.models import AccountcommonBan
 from ..api.iam.models import AccountcommonBanReason
@@ -45,10 +46,13 @@ from ..api.iam.models import AccountcommonBanV3
 from ..api.iam.models import AccountcommonBannedByV3
 from ..api.iam.models import AccountcommonBans
 from ..api.iam.models import AccountcommonBansV3
+from ..api.iam.models import AccountcommonClientModulePermission
 from ..api.iam.models import AccountcommonClientPermission
+from ..api.iam.models import AccountcommonClientPermissionSet
 from ..api.iam.models import AccountcommonClientPermissionV3
 from ..api.iam.models import AccountcommonClientPermissions
 from ..api.iam.models import AccountcommonClientPermissionsV3
+from ..api.iam.models import AccountcommonClientSelectedGroup
 from ..api.iam.models import AccountcommonConflictedUserPlatformAccounts
 from ..api.iam.models import AccountcommonCountry
 from ..api.iam.models import AccountcommonCountryAgeRestriction
@@ -63,6 +67,7 @@ from ..api.iam.models import AccountcommonNetflixCertificates
 from ..api.iam.models import AccountcommonPagination
 from ..api.iam.models import AccountcommonPaginationV3
 from ..api.iam.models import AccountcommonPermission
+from ..api.iam.models import AccountcommonPermissionGroup
 from ..api.iam.models import AccountcommonPermissionV3
 from ..api.iam.models import AccountcommonPermissions
 from ..api.iam.models import AccountcommonPermissionsV3
@@ -93,11 +98,19 @@ from ..api.iam.models import ClientmodelClientCreateRequest
 from ..api.iam.models import ClientmodelClientCreationResponse
 from ..api.iam.models import ClientmodelClientCreationV3Request
 from ..api.iam.models import ClientmodelClientResponse
+from ..api.iam.models import ClientmodelClientTemplate
 from ..api.iam.models import ClientmodelClientUpdateRequest
 from ..api.iam.models import ClientmodelClientUpdateSecretRequest
 from ..api.iam.models import ClientmodelClientUpdateV3Request
 from ..api.iam.models import ClientmodelClientV3Response
 from ..api.iam.models import ClientmodelClientsV3Response
+from ..api.iam.models import ClientmodelDefaultFieldValue
+from ..api.iam.models import ClientmodelDefaultFieldValueValue
+from ..api.iam.models import ClientmodelListClientPermissionSet
+from ..api.iam.models import ClientmodelListTemplatesResponse
+from ..api.iam.models import ClientmodelListUpsertModulesRequest
+from ..api.iam.models import ClientmodelPermissionSetDeleteGroupRequest
+from ..api.iam.models import ClientmodelPermissionSetUpsertRequest
 from ..api.iam.models import ClientmodelV3ClientUpdateSecretRequest
 from ..api.iam.models import LegalAcceptedPoliciesRequest
 from ..api.iam.models import ModelAccountProgressionInfo
@@ -189,6 +202,7 @@ from ..api.iam.models import ModelPublicUserInformationResponseV3
 from ..api.iam.models import ModelPublicUserInformationV3
 from ..api.iam.models import ModelPublicUserResponse
 from ..api.iam.models import ModelPublicUserResponseV3
+from ..api.iam.models import ModelPublicUserUpdateRequestV3
 from ..api.iam.models import ModelPublicUsersResponse
 from ..api.iam.models import ModelRemoveUserRoleV4Request
 from ..api.iam.models import ModelResetPasswordRequest
@@ -282,10 +296,12 @@ from ..api.iam.models import OauthcommonJWKSet
 from ..api.iam.models import OauthcommonUserRevocationListRecord
 from ..api.iam.models import OauthmodelCountryLocationResponse
 from ..api.iam.models import OauthmodelErrorResponse
+from ..api.iam.models import OauthmodelLoginQueueTicketResponse
 from ..api.iam.models import OauthmodelOneTimeLinkingCodeResponse
 from ..api.iam.models import OauthmodelOneTimeLinkingCodeValidationResponse
 from ..api.iam.models import OauthmodelPlatformTokenRefreshResponseV3
 from ..api.iam.models import OauthmodelTargetTokenCodeResponse
+from ..api.iam.models import OauthmodelTicketEndpointAction
 from ..api.iam.models import OauthmodelTokenIntrospectResponse
 from ..api.iam.models import OauthmodelTokenResponse
 from ..api.iam.models import OauthmodelTokenResponseV3
@@ -459,6 +475,13 @@ def create_account_user_response_v4_example() -> AccountUserResponseV4:
     return instance
 
 
+def create_accountcommon_allowed_permission_example() -> AccountcommonAllowedPermission:
+    instance = AccountcommonAllowedPermission()
+    instance.allowed_actions = [randomize("int", min_val=1, max_val=1000)]
+    instance.resource = randomize()
+    return instance
+
+
 def create_accountcommon_avatar_config_example() -> AccountcommonAvatarConfig:
     instance = AccountcommonAvatarConfig()
     instance.allowed_prefixes = [randomize()]
@@ -528,10 +551,30 @@ def create_accountcommon_bans_v3_example() -> AccountcommonBansV3:
     return instance
 
 
+def create_accountcommon_client_module_permission_example() -> (
+    AccountcommonClientModulePermission
+):
+    instance = AccountcommonClientModulePermission()
+    instance.module_id = randomize()
+    instance.selected_groups = [create_accountcommon_client_selected_group_example()]
+    return instance
+
+
 def create_accountcommon_client_permission_example() -> AccountcommonClientPermission:
     instance = AccountcommonClientPermission()
     instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource = randomize()
+    return instance
+
+
+def create_accountcommon_client_permission_set_example() -> (
+    AccountcommonClientPermissionSet
+):
+    instance = AccountcommonClientPermissionSet()
+    instance.doc_link = randomize()
+    instance.groups = [create_accountcommon_permission_group_example()]
+    instance.module = randomize()
+    instance.module_id = randomize()
     return instance
 
 
@@ -555,6 +598,15 @@ def create_accountcommon_client_permissions_v3_example() -> (
 ):
     instance = AccountcommonClientPermissionsV3()
     instance.permissions = [create_accountcommon_client_permission_v3_example()]
+    return instance
+
+
+def create_accountcommon_client_selected_group_example() -> (
+    AccountcommonClientSelectedGroup
+):
+    instance = AccountcommonClientSelectedGroup()
+    instance.group_id = randomize()
+    instance.selected_actions = [randomize("int", min_val=1, max_val=1000)]
     return instance
 
 
@@ -690,6 +742,14 @@ def create_accountcommon_permission_example() -> AccountcommonPermission:
     instance.sched_action = randomize("int", min_val=1, max_val=1000)
     instance.sched_cron = randomize()
     instance.sched_range = [randomize()]
+    return instance
+
+
+def create_accountcommon_permission_group_example() -> AccountcommonPermissionGroup:
+    instance = AccountcommonPermissionGroup()
+    instance.group = randomize()
+    instance.group_id = randomize()
+    instance.permissions = [create_accountcommon_allowed_permission_example()]
     return instance
 
 
@@ -993,14 +1053,18 @@ def create_clientmodel_client_creation_v3_request_example() -> (
     instance.base_uri = randomize()
     instance.client_id = randomize("uid")
     instance.client_name = randomize()
-    instance.client_permissions = [create_accountcommon_permission_v3_example()]
     instance.client_platform = randomize()
     instance.description = randomize()
     instance.namespace = randomize("slug")
     instance.oauth_client_type = randomize()
     instance.redirect_uri = randomize()
     instance.secret = randomize()
+    instance.skip_login_queue = randomize("bool")
+    instance.client_permissions = [create_accountcommon_permission_v3_example()]
     instance.deletable = randomize("bool")
+    instance.module_permissions = [
+        create_accountcommon_client_module_permission_example()
+    ]
     instance.oauth_access_token_expiration = randomize("int", min_val=1, max_val=1000)
     instance.oauth_access_token_expiration_time_unit = randomize()
     instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
@@ -1020,6 +1084,22 @@ def create_clientmodel_client_response_example() -> ClientmodelClientResponse:
     instance.namespace = randomize("slug")
     instance.redirect_uri = randomize()
     instance.two_factor_enabled = randomize("bool")
+    instance.module_permissions = [
+        create_accountcommon_client_module_permission_example()
+    ]
+    return instance
+
+
+def create_clientmodel_client_template_example() -> ClientmodelClientTemplate:
+    instance = ClientmodelClientTemplate()
+    instance.basic_required_permissions = [
+        create_accountcommon_client_module_permission_example()
+    ]
+    instance.default_values = [create_clientmodel_default_field_value_example()]
+    instance.description = randomize()
+    instance.id_ = randomize()
+    instance.required_fields = [randomize()]
+    instance.type_ = randomize()
     return instance
 
 
@@ -1047,11 +1127,15 @@ def create_clientmodel_client_update_v3_request_example() -> (
     instance = ClientmodelClientUpdateV3Request()
     instance.client_platform = randomize()
     instance.description = randomize()
+    instance.skip_login_queue = randomize("bool")
     instance.audiences = [randomize()]
     instance.base_uri = randomize()
     instance.client_name = randomize()
     instance.client_permissions = [create_accountcommon_permission_v3_example()]
     instance.deletable = randomize("bool")
+    instance.module_permissions = [
+        create_accountcommon_client_module_permission_example()
+    ]
     instance.namespace = randomize("slug")
     instance.oauth_access_token_expiration = randomize("int", min_val=1, max_val=1000)
     instance.oauth_access_token_expiration_time_unit = randomize()
@@ -1078,7 +1162,11 @@ def create_clientmodel_client_v3_response_example() -> ClientmodelClientV3Respon
     instance.oauth_client_type = randomize()
     instance.redirect_uri = randomize()
     instance.scopes = [randomize()]
+    instance.skip_login_queue = randomize("bool")
     instance.two_factor_enabled = randomize("bool")
+    instance.module_permissions = [
+        create_accountcommon_client_module_permission_example()
+    ]
     instance.oauth_access_token_expiration = randomize("int", min_val=1, max_val=1000)
     instance.oauth_access_token_expiration_time_unit = randomize()
     instance.oauth_refresh_token_expiration = randomize("int", min_val=1, max_val=1000)
@@ -1092,6 +1180,64 @@ def create_clientmodel_clients_v3_response_example() -> ClientmodelClientsV3Resp
     instance = ClientmodelClientsV3Response()
     instance.data = [create_clientmodel_client_v3_response_example()]
     instance.paging = create_accountcommon_pagination_v3_example()
+    return instance
+
+
+def create_clientmodel_default_field_value_example() -> ClientmodelDefaultFieldValue:
+    instance = ClientmodelDefaultFieldValue()
+    instance.field = randomize()
+    instance.value = create_clientmodel_default_field_value_value_example()
+    return instance
+
+
+def create_clientmodel_default_field_value_value_example() -> (
+    ClientmodelDefaultFieldValueValue
+):
+    instance = ClientmodelDefaultFieldValueValue()
+    return instance
+
+
+def create_clientmodel_list_client_permission_set_example() -> (
+    ClientmodelListClientPermissionSet
+):
+    instance = ClientmodelListClientPermissionSet()
+    instance.client_permissions = [create_accountcommon_client_permission_set_example()]
+    return instance
+
+
+def create_clientmodel_list_templates_response_example() -> (
+    ClientmodelListTemplatesResponse
+):
+    instance = ClientmodelListTemplatesResponse()
+    instance.client_templates = [create_clientmodel_client_template_example()]
+    return instance
+
+
+def create_clientmodel_list_upsert_modules_request_example() -> (
+    ClientmodelListUpsertModulesRequest
+):
+    instance = ClientmodelListUpsertModulesRequest()
+    instance.modules = [create_clientmodel_permission_set_upsert_request_example()]
+    return instance
+
+
+def create_clientmodel_permission_set_delete_group_request_example() -> (
+    ClientmodelPermissionSetDeleteGroupRequest
+):
+    instance = ClientmodelPermissionSetDeleteGroupRequest()
+    instance.group_id = randomize()
+    instance.module_id = randomize()
+    return instance
+
+
+def create_clientmodel_permission_set_upsert_request_example() -> (
+    ClientmodelPermissionSetUpsertRequest
+):
+    instance = ClientmodelPermissionSetUpsertRequest()
+    instance.doc_link = randomize()
+    instance.groups = [create_accountcommon_permission_group_example()]
+    instance.module = randomize()
+    instance.module_id = randomize()
     return instance
 
 
@@ -1905,6 +2051,20 @@ def create_model_public_user_response_v3_example() -> ModelPublicUserResponseV3:
     return instance
 
 
+def create_model_public_user_update_request_v3_example() -> (
+    ModelPublicUserUpdateRequestV3
+):
+    instance = ModelPublicUserUpdateRequestV3()
+    instance.avatar_url = randomize("url")
+    instance.country = randomize("country")
+    instance.date_of_birth = randomize()
+    instance.display_name = randomize("slug")
+    instance.language_tag = randomize()
+    instance.unique_display_name = randomize()
+    instance.user_name = randomize("slug")
+    return instance
+
+
 def create_model_public_users_response_example() -> ModelPublicUsersResponse:
     instance = ModelPublicUsersResponse()
     instance.users = [create_model_public_user_response_example()]
@@ -2382,6 +2542,7 @@ def create_model_user_active_ban_response_v3_example() -> ModelUserActiveBanResp
     instance.ban = randomize()
     instance.ban_id = randomize()
     instance.end_date = randomize("date")
+    instance.targeted_namespace = randomize("slug")
     return instance
 
 
@@ -2687,6 +2848,7 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.platform_id = randomize()
     instance.platform_infos = [create_model_user_platform_info_example()]
     instance.platform_user_id = randomize()
+    instance.skip_login_queue = randomize("bool")
     instance.test_account = randomize("bool")
     instance.unique_display_name = randomize()
     instance.user_name = randomize("slug")
@@ -2726,6 +2888,7 @@ def create_model_user_update_request_v3_example() -> ModelUserUpdateRequestV3:
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
     instance.language_tag = randomize()
+    instance.skip_login_queue = randomize("bool")
     instance.unique_display_name = randomize()
     instance.user_name = randomize("slug")
     return instance
@@ -2910,10 +3073,28 @@ def create_oauthmodel_error_response_example() -> OauthmodelErrorResponse:
     instance.error_uri = randomize()
     instance.factors = [randomize()]
     instance.linking_token = randomize()
+    instance.login_queue_ticket = (
+        create_oauthmodel_login_queue_ticket_response_example()
+    )
     instance.message_variables = {randomize(): randomize()}
     instance.mfa_token = randomize()
     instance.platform_id = randomize()
     instance.user_ban = create_oauthmodel_user_ban_example()
+    return instance
+
+
+def create_oauthmodel_login_queue_ticket_response_example() -> (
+    OauthmodelLoginQueueTicketResponse
+):
+    instance = OauthmodelLoginQueueTicketResponse()
+    instance.cancel = create_oauthmodel_ticket_endpoint_action_example()
+    instance.estimated_waiting_time_in_seconds = randomize(
+        "int", min_val=1, max_val=1000
+    )
+    instance.position = randomize("int", min_val=1, max_val=1000)
+    instance.reconnect_expired_at = randomize("int", min_val=1, max_val=1000)
+    instance.refresh = create_oauthmodel_ticket_endpoint_action_example()
+    instance.ticket = randomize()
     return instance
 
 
@@ -2953,6 +3134,15 @@ def create_oauthmodel_target_token_code_response_example() -> (
 ):
     instance = OauthmodelTargetTokenCodeResponse()
     instance.code = randomize()
+    return instance
+
+
+def create_oauthmodel_ticket_endpoint_action_example() -> (
+    OauthmodelTicketEndpointAction
+):
+    instance = OauthmodelTicketEndpointAction()
+    instance.action = randomize()
+    instance.href = randomize()
     return instance
 
 

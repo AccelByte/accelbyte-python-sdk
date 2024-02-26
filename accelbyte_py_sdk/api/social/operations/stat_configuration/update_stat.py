@@ -42,6 +42,7 @@ class UpdateStat(Operation):
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
       *  Returns : updated stat
+      *  Field globalAggregationMethod is not updatable when the stat status is TIED
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:STAT [UPDATE]

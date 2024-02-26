@@ -13,7 +13,7 @@ Definition: ModelsAddPlayerRequest
 as_spectator: bool
 user_id: str
 
-Example: '{"as_spectator": false, "user_id": "ZcXMzx2eCf4ALyCu"}'
+Example: '{"as_spectator": true, "user_id": "FTre3APVA1fRCrLA"}'
 """
 
 result, error = add_player_to_session(

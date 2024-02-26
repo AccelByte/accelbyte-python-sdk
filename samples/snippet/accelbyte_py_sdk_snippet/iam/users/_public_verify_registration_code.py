@@ -12,7 +12,7 @@ Definition: ModelVerifyRegistrationCode
 code: str
 email_address: str
 
-Example: '{"code": "63sYMeJROAyOdb39", "emailAddress": "noz9Daesn64Zmz1E"}'
+Example: '{"code": "ySKYBG8dqwZz41ts", "emailAddress": "3Iupe0wdg4S2zH5t"}'
 """
 
 result, error = public_verify_registration_code(

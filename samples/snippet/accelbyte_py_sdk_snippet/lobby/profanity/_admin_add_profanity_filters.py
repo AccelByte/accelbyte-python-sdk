@@ -14,7 +14,7 @@ Definition: List[ModelsAdminAddProfanityFiltersFilterRequest]
     filter_: str
     note: str
 
-Example: '{"filters": [{"filter": "vJXSLl3kFFryJWVn", "note": "snrtdK1zrQSGbJEE"}, {"filter": "oFQuwkMbZqWMBwIt", "note": "FtAkcOJ887GLCE59"}, {"filter": "6cPaIkfI46jZHuaG", "note": "Q1HUbio7XwVjvYdN"}]}'
+Example: '{"filters": [{"filter": "S84cVqFBBz4i1ymQ", "note": "9XgdbNXcdJG3yN5k"}, {"filter": "hqlfsPDRekaY64O9", "note": "34eeS2dSfh2GIOd4"}, {"filter": "icaM1OhuBom7YU8Z", "note": "b4HfKYIgggwiAzND"}]}'
 """
 
 result, error = admin_add_profanity_filters(

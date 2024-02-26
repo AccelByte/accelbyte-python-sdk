@@ -40,8 +40,9 @@ class AdminUpdateClientV3(Operation):
     Updates an OAuth 2.0 client.
     Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
 
-    **Note for Multi Tenant Mode:**
-    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module.
 
     action code: 10302
 
@@ -67,6 +68,7 @@ class AdminUpdateClientV3(Operation):
     - **oauthRefreshTokenExpiration**: a configurable expiration time for **refresh_token**, default value: 0 (mean fetch value from environment variable)
     - **oauthAccessTokenExpirationTimeUnit**: a configurable expiration time unit for **access_token**, will use previous value if not specified
     - **oauthRefreshTokenExpirationTimeUnit**: a configurable expiration time unit for **refresh_token**, will use previous value if not specified
+    - **skipLoginQueue**: a flag to indicate whether this client should be exempted from login queue or not
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/clients/{clientId}

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.10.0"
+__version__ = "7.11.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -73,6 +73,15 @@ from ._clients import update_client_permission
 from ._clients import update_client_permission_async
 from ._clients import update_client_secret
 from ._clients import update_client_secret_async
+
+from ._clients_config_v3 import admin_delete_config_permissions_by_group
+from ._clients_config_v3 import admin_delete_config_permissions_by_group_async
+from ._clients_config_v3 import admin_list_client_available_permissions
+from ._clients_config_v3 import admin_list_client_available_permissions_async
+from ._clients_config_v3 import admin_list_client_templates
+from ._clients_config_v3 import admin_list_client_templates_async
+from ._clients_config_v3 import admin_update_available_permissions_by_module
+from ._clients_config_v3 import admin_update_available_permissions_by_module_async
 
 from ._config import admin_get_config_value_v3
 from ._config import admin_get_config_value_v3_async
@@ -188,8 +197,6 @@ from ._o_auth2_0_extension import platform_authentication_v3
 from ._o_auth2_0_extension import platform_authentication_v3_async
 from ._o_auth2_0_extension import platform_token_refresh_v3
 from ._o_auth2_0_extension import platform_token_refresh_v3_async
-from ._o_auth2_0_extension import platform_token_refresh_v3_deprecate
-from ._o_auth2_0_extension import platform_token_refresh_v3_deprecate_async
 from ._o_auth2_0_extension import request_one_time_linking_code_v3
 from ._o_auth2_0_extension import request_one_time_linking_code_v3_async
 from ._o_auth2_0_extension import request_target_token_response_v3
@@ -202,6 +209,21 @@ from ._o_auth2_0_extension import user_authentication_v3
 from ._o_auth2_0_extension import user_authentication_v3_async
 from ._o_auth2_0_extension import validate_one_time_linking_code_v3
 from ._o_auth2_0_extension import validate_one_time_linking_code_v3_async
+
+from ._o_auth2_0_v4 import authentication_with_platform_link_v4
+from ._o_auth2_0_v4 import authentication_with_platform_link_v4_async
+from ._o_auth2_0_v4 import generate_token_by_new_headless_account_v4
+from ._o_auth2_0_v4 import generate_token_by_new_headless_account_v4_async
+from ._o_auth2_0_v4 import platform_token_grant_v4
+from ._o_auth2_0_v4 import platform_token_grant_v4_async
+from ._o_auth2_0_v4 import request_target_token_response_v4
+from ._o_auth2_0_v4 import request_target_token_response_v4_async
+from ._o_auth2_0_v4 import simultaneous_login_v4
+from ._o_auth2_0_v4 import simultaneous_login_v4_async
+from ._o_auth2_0_v4 import token_grant_v4
+from ._o_auth2_0_v4 import token_grant_v4_async
+from ._o_auth2_0_v4 import verify2fa_code_v4
+from ._o_auth2_0_v4 import verify2fa_code_v4_async
 
 from ._roles import add_role_managers
 from ._roles import add_role_managers_async

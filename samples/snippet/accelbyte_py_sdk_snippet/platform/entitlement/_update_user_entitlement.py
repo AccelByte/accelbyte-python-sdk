@@ -20,7 +20,7 @@ start_date: str
 status: str
 use_count: int
 
-Example: '{"collectionId": "TiuVdme5x2mBIYBc", "endDate": "1998-04-07T00:00:00Z", "nullFieldList": ["GfZuZ8G30mYNOvPI", "TNb0TMC5YmxwL7LA", "vISPU5NDb9vZ0Q37"], "origin": "Playstation", "reason": "7X0jhlAOqAEw8sWY", "startDate": "1977-10-19T00:00:00Z", "status": "INACTIVE", "useCount": 9}'
+Example: '{"collectionId": "Dp1cpzZZNo2pucUZ", "endDate": "1996-11-29T00:00:00Z", "nullFieldList": ["OjByohA9oYwGwgiV", "oxMb726QRqB9By6J", "btGKEiVUZprpTID3"], "origin": "Epic", "reason": "N0bQo76FlQtN8l5E", "startDate": "1989-08-20T00:00:00Z", "status": "SOLD", "useCount": 91}'
 """
 
 result, error = update_user_entitlement(

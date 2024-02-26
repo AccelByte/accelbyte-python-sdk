@@ -269,6 +269,7 @@ def create_global_stat_item_info_example() -> GlobalStatItemInfo:
     instance.stat_name = randomize()
     instance.updated_at = randomize("date")
     instance.value = randomize("int", min_val=1, max_val=1000)
+    instance.global_aggregation_method = randomize()
     instance.tags = [randomize()]
     return instance
 
@@ -339,6 +340,7 @@ def create_stat_create_example() -> StatCreate:
     instance.stat_code = randomize()
     instance.cycle_ids = [randomize()]
     instance.description = randomize()
+    instance.global_aggregation_method = randomize()
     instance.ignore_additional_data_on_value_rejected = randomize("bool")
     instance.increment_only = randomize("bool")
     instance.is_public = randomize("bool")
@@ -433,6 +435,7 @@ def create_stat_info_example() -> StatInfo:
     instance.updated_at = randomize("date")
     instance.cycle_ids = [randomize()]
     instance.description = randomize()
+    instance.global_aggregation_method = randomize()
     instance.maximum = randomize("int", min_val=1, max_val=1000)
     instance.minimum = randomize("int", min_val=1, max_val=1000)
     instance.tags = [randomize()]
@@ -495,6 +498,7 @@ def create_stat_update_example() -> StatUpdate:
     instance.cycle_ids = [randomize()]
     instance.default_value = randomize("int", min_val=1, max_val=1000)
     instance.description = randomize()
+    instance.global_aggregation_method = randomize()
     instance.ignore_additional_data_on_value_rejected = randomize("bool")
     instance.is_public = randomize("bool")
     instance.name = randomize()

@@ -27,6 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.accountcommon_client_module_permission import (
+    AccountcommonClientModulePermission,
+)
 from ..models.accountcommon_permission import AccountcommonPermission
 
 
@@ -47,6 +50,8 @@ class ClientmodelClientResponse(Model):
         redirect_uri: (RedirectUri) REQUIRED str
 
         two_factor_enabled: (TwoFactorEnabled) REQUIRED bool
+
+        module_permissions: (modulePermissions) OPTIONAL List[AccountcommonClientModulePermission]
     """
 
     # region fields
@@ -58,6 +63,7 @@ class ClientmodelClientResponse(Model):
     namespace: str  # REQUIRED
     redirect_uri: str  # REQUIRED
     two_factor_enabled: bool  # REQUIRED
+    module_permissions: List[AccountcommonClientModulePermission]  # OPTIONAL
 
     # endregion fields
 
@@ -91,6 +97,12 @@ class ClientmodelClientResponse(Model):
 
     def with_two_factor_enabled(self, value: bool) -> ClientmodelClientResponse:
         self.two_factor_enabled = value
+        return self
+
+    def with_module_permissions(
+        self, value: List[AccountcommonClientModulePermission]
+    ) -> ClientmodelClientResponse:
+        self.module_permissions = value
         return self
 
     # endregion with_x methods
@@ -130,6 +142,13 @@ class ClientmodelClientResponse(Model):
             result["TwoFactorEnabled"] = bool(self.two_factor_enabled)
         elif include_empty:
             result["TwoFactorEnabled"] = False
+        if hasattr(self, "module_permissions"):
+            result["modulePermissions"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.module_permissions
+            ]
+        elif include_empty:
+            result["modulePermissions"] = []
         return result
 
     # endregion to methods
@@ -146,6 +165,7 @@ class ClientmodelClientResponse(Model):
         namespace: str,
         redirect_uri: str,
         two_factor_enabled: bool,
+        module_permissions: Optional[List[AccountcommonClientModulePermission]] = None,
         **kwargs,
     ) -> ClientmodelClientResponse:
         instance = cls()
@@ -156,6 +176,8 @@ class ClientmodelClientResponse(Model):
         instance.namespace = namespace
         instance.redirect_uri = redirect_uri
         instance.two_factor_enabled = two_factor_enabled
+        if module_permissions is not None:
+            instance.module_permissions = module_permissions
         return instance
 
     @classmethod
@@ -198,6 +220,15 @@ class ClientmodelClientResponse(Model):
             instance.two_factor_enabled = bool(dict_["TwoFactorEnabled"])
         elif include_empty:
             instance.two_factor_enabled = False
+        if "modulePermissions" in dict_ and dict_["modulePermissions"] is not None:
+            instance.module_permissions = [
+                AccountcommonClientModulePermission.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["modulePermissions"]
+            ]
+        elif include_empty:
+            instance.module_permissions = []
         return instance
 
     @classmethod
@@ -248,6 +279,7 @@ class ClientmodelClientResponse(Model):
             "Namespace": "namespace",
             "RedirectUri": "redirect_uri",
             "TwoFactorEnabled": "two_factor_enabled",
+            "modulePermissions": "module_permissions",
         }
 
     @staticmethod
@@ -260,6 +292,7 @@ class ClientmodelClientResponse(Model):
             "Namespace": True,
             "RedirectUri": True,
             "TwoFactorEnabled": True,
+            "modulePermissions": False,
         }
 
     # endregion static methods

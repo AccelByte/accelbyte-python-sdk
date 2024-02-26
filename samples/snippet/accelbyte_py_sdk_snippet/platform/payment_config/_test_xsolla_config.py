@@ -15,7 +15,7 @@ merchant_id: int
 project_id: int
 project_secret_key: str
 
-Example: '{"apiKey": "zIrL9IkU3yWh2Gt4", "flowCompletionUrl": "oetzxiaSIjMuXwtl", "merchantId": 30, "projectId": 49, "projectSecretKey": "KG1UplAline0env7"}'
+Example: '{"apiKey": "7KI2HB5lZjpJKXAY", "flowCompletionUrl": "gsirUfQzQ4IuVGRS", "merchantId": 43, "projectId": 64, "projectSecretKey": "Zobqs7ALb39J0tiZ"}'
 """
 
 result, error = test_xsolla_config(

@@ -37,6 +37,7 @@ from ..operations.global_statistic import GetGlobalStatItemByStatCode
 from ..operations.global_statistic import GetGlobalStatItemByStatCode1
 from ..operations.global_statistic import GetGlobalStatItems
 from ..operations.global_statistic import GetGlobalStatItems1
+from ..models import GlobalStatItemInfoGlobalAggregationMethodEnum
 
 
 @same_doc_as(GetGlobalStatItemByStatCode)

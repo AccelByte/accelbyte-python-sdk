@@ -78,4 +78,4 @@ def indirect_bulk_accept_versioned_policy_1(
 indirect_bulk_accept_versioned_policy_1.operation_id = (
     "indirectBulkAcceptVersionedPolicy_1"
 )
-indirect_bulk_accept_versioned_policy_1.is_deprecated = False
+indirect_bulk_accept_versioned_policy_1.is_deprecated = True

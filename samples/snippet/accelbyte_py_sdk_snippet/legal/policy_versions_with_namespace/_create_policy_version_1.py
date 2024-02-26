@@ -14,7 +14,7 @@ description: str
 display_version: str
 is_committed: bool
 
-Example: '{"description": "o6luIW94FJdAom8d", "displayVersion": "ja1Hbx3vg4jjsrED", "isCommitted": false}'
+Example: '{"description": "Cpuh53rKSoM9pnuJ", "displayVersion": "ZOVdOetZTUTohwWM", "isCommitted": true}'
 """
 
 result, error = create_policy_version_1(

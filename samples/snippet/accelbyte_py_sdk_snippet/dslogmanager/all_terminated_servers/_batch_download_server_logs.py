@@ -15,7 +15,7 @@ Definition: List[ModelsDownloadLogsRequest]
     namespace: str
     pod_name: str
 
-Example: '{"Downloads": [{"alloc_id": "9wU2OkWIG7NDuNEN", "namespace": "vVYTSCrcLbRJ1fvn", "pod_name": "ZwOa4Ht0PaUp36Tf"}, {"alloc_id": "JZatDv1msLUyPW20", "namespace": "mG4VpRLVQJ6GC8CH", "pod_name": "O1CN6GlKY37HaIDQ"}, {"alloc_id": "i1nPcTyBj0VH3eWB", "namespace": "GnIYOqEJbcA6e8Wg", "pod_name": "TCEkhGYU0Dgx3XBg"}]}'
+Example: '{"Downloads": [{"alloc_id": "CyZ3iRM71SQ7dgUZ", "namespace": "7KCVJbRvIVCRuRl2", "pod_name": "KFIZ8aXjuTSoL573"}, {"alloc_id": "DRIpaiEexmDy5qlr", "namespace": "P12C4r4hzh9KLxuh", "pod_name": "3g91gPfvAIOmgEYT"}, {"alloc_id": "HsqZZHAjtKXJX2jd", "namespace": "GwOEf1oSFpWLLqND", "pod_name": "ozJIO2Tstx87CyLM"}]}'
 """
 
 result, error = batch_download_server_logs(

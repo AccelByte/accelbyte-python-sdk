@@ -21,7 +21,7 @@ language: str
 last_name: str
 time_zone: str
 
-Example: '{"avatarLargeUrl": "87sJEQiVrg5Cwu2n", "avatarSmallUrl": "sXxbzIfvHF9lH0n3", "avatarUrl": "nXHM8HpMv1UBaHDn", "customAttributes": {"192mXUqVEqJuHc2F": {}, "dtUOww7t1xHJGVMf": {}, "7uhascQhXkIOQGsd": {}}, "dateOfBirth": "1973-06-01", "firstName": "mIUu1MhH1f4SWpao", "language": "sany_Ztmy", "lastName": "Akj6bEXvC3hiX8s1", "timeZone": "ljPSBORqrP6rQDPZ"}'
+Example: '{"avatarLargeUrl": "7n6PXdkt2KtKLNGg", "avatarSmallUrl": "Q4JTKNKgnVy3RPES", "avatarUrl": "2xWpWKUF5xVaSfgH", "customAttributes": {"vIthTBnw52HmvA1v": {}, "9iEBW5IJ7T7UcDKl": {}, "fycpXB7n1FCmifDj": {}}, "dateOfBirth": "1990-11-26", "firstName": "32JdxSe91vFINmOM", "language": "kcUP-Fton", "lastName": "8JWPFN8CCxYGoADS", "timeZone": "FWq5Zx3HsHgxVgnr"}'
 """
 
 result, error = public_create_user_profile(

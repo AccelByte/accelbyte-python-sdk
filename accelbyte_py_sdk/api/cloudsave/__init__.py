@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.15.0"
+__version__ = "3.15.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -128,6 +128,14 @@ from .wrappers import admin_put_admin_player_record_v1_async
 from .wrappers import bulk_get_admin_player_record_by_user_ids_v1
 from .wrappers import bulk_get_admin_player_record_by_user_ids_v1_async
 
+# admin_tags
+from .wrappers import admin_delete_tag_handler_v1
+from .wrappers import admin_delete_tag_handler_v1_async
+from .wrappers import admin_list_tags_handler_v1
+from .wrappers import admin_list_tags_handler_v1_async
+from .wrappers import admin_post_tag_handler_v1
+from .wrappers import admin_post_tag_handler_v1_async
+
 # concurrent_record
 from .wrappers import put_game_record_concurrent_handler_v1
 from .wrappers import put_game_record_concurrent_handler_v1_async
@@ -228,13 +236,7 @@ from .wrappers import put_player_record_handler_v1_async
 from .wrappers import retrieve_player_records
 from .wrappers import retrieve_player_records_async
 
-# tags
-from .wrappers import admin_delete_tag_handler_v1
-from .wrappers import admin_delete_tag_handler_v1_async
-from .wrappers import admin_list_tags_handler_v1
-from .wrappers import admin_list_tags_handler_v1_async
-from .wrappers import admin_post_tag_handler_v1
-from .wrappers import admin_post_tag_handler_v1_async
+# public_tags
 from .wrappers import public_list_tags_handler_v1
 from .wrappers import public_list_tags_handler_v1_async
 

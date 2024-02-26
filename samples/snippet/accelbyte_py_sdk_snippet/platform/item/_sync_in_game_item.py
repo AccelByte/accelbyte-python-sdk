@@ -15,7 +15,7 @@ category_path: str
 target_item_id: str
 target_namespace: str
 
-Example: '{"categoryPath": "ohPLnJlqK0sqYZUJ", "targetItemId": "wvXq71RQ0OvDV6Y7", "targetNamespace": "CewOc6CMNu0eOnTq"}'
+Example: '{"categoryPath": "VyOK0MXXd8cYZMqo", "targetItemId": "HYFPJjl4KQvYcvhU", "targetNamespace": "jMrti92CQPVi2AwJ"}'
 """
 
 result, error = sync_in_game_item(

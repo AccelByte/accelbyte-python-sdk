@@ -16,7 +16,7 @@ test_game_mode: str
 test_region_url_mapping: List[str]
 test_target_user_i_ds: List[str]
 
-Example: '{"regionRetryMapping": {"51bmq8pZzlM2zw0q": ["vfh9c5UXlpt4P126", "YU1ZXEizmJ7WOTY7", "e3qVDCe8tjQoLJMO"], "1b3jTDNqZYnikKXu": ["Gr7FP4LoDAX5bV8c", "BO8sO6EZ6azsunIQ", "c61jzztCtpAzqPE7"], "shXFAtpvheAkntao": ["0exdoc5xIjRU7eDu", "x0TIFHChoZNg5J7X", "tDeSG372JwzDXz1j"]}, "regionURLMapping": ["mPHV4sWKWuJYhewY", "EBSYRyLTleTS3820", "gEGRj7j2EmUFEUGn"], "testGameMode": "viWvwkI0nanQIcU6", "testRegionURLMapping": ["EEriwUisCiNWmcD5", "0rIjqjkBbvZIVYMv", "fInoWN7uDCLML7rN"], "testTargetUserIDs": ["EZxkK3jf17Bu05Zp", "U47G3V9IYYHzniac", "64hUUrkk6tbtmx5g"]}'
+Example: '{"regionRetryMapping": {"SpbSDfRkMmOOMjqg": ["XpG4DzNpdsNZCcrp", "p5hwJINh8J8A43CU", "xBSxW01gCwBhjmRj"], "vExyGF4jSzqZteSF": ["OUDXplMPruxQmDrk", "JBpPxPRUHr8l8gi7", "b2GFqDPHw371cwxf"], "gbF45xRZ7WO9QdGH": ["NQRp1uM6pg0fbU4l", "GOhnzJtmZ0NRAkty", "GKfmxiThHzrRNIKP"]}, "regionURLMapping": ["GnpuAiXQInKHeutK", "vLTkiS3lQFz64qas", "xoBGAF5FpWG5BQSv"], "testGameMode": "ZMUUB0bvHwk4nG9o", "testRegionURLMapping": ["MU0NrNNOiqapJ5zy", "tjMXkq3kg7nXRm4q", "qc4OwTtunrDWRlkb"], "testTargetUserIDs": ["6VoHvaREFWgTHrYe", "FlrYHukr8deZmtp1", "Aoyn3qF75MTIk5b0"]}'
 """
 
 result, error = admin_update_global_config(

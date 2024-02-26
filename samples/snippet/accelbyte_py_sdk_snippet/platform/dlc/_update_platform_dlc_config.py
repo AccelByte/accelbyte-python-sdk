@@ -15,7 +15,7 @@ Definition: List[PlatformDlcEntry]
     platform: str
     platform_dlc_id_map: Dict[str, str]
 
-Example: '{"data": [{"platform": "OCULUS", "platformDlcIdMap": {"MMl7KTnfhMuXg0Yi": "FSMx6Uug6oUy9dMF", "f7rKMusEJ98klkb5": "E3km5cjFHYedYVMF", "YZ3aFOo1hcYpAZoH": "qTvr2KxsLE2BryU8"}}, {"platform": "EPICGAMES", "platformDlcIdMap": {"MGbXZnykVPoddMMa": "bhWpoKrhH3kabz6z", "21LDx7gn9i8fzG0T": "DSHA26efVvEoJTxs", "JFR7iQ5AwKb0Fm7q": "XRLbhIRqGTl27Si0"}}, {"platform": "XBOX", "platformDlcIdMap": {"4GHolPUUQKMdeNVq": "CrlUdbJb8IeeXFLZ", "bQPBrduJw2n2uBHk": "Qfsu2030IZM9g9bJ", "ldut9OXgbhbAZEqf": "1Hw9UxBijZCWMUjj"}}]}'
+Example: '{"data": [{"platform": "EPICGAMES", "platformDlcIdMap": {"Tl499cqgk7FTlKQh": "JmlBZLLw3mFM7MtM", "EwwFgHX5M74CwKXZ": "33f5K7GOCIEV1IL5", "F4iHhkAEfzyoNpL2": "JWr6it0WpteM0DRC"}}, {"platform": "PSN", "platformDlcIdMap": {"EGfR5SLq2630SJSj": "1nDFvcL91qbPgz5d", "XIDMZdypmSUbGutH": "kHbtfXCebxh50VHN", "BHOUgybzejh2h6P2": "le7OxWdr3RgRLmGf"}}, {"platform": "PSN", "platformDlcIdMap": {"7EBqE7WFBR724w9g": "sDjcWxnUe64h6A2A", "0BJwCwEyVIhwHyKr": "sXJuDaElpzSb3bAf", "k2YlyYfLOyGBsQJQ": "0WuqZrc4NUEnqLsG"}}]}'
 """
 
 result, error = update_platform_dlc_config(

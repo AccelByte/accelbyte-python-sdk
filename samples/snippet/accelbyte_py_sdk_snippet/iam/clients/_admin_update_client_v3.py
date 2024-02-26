@@ -23,6 +23,13 @@ Definition: List[AccountcommonPermissionV3]
 client_platform: str
 deletable: bool
 description: str
+module_permissions: List[AccountcommonClientModulePermission]
+Definition: List[AccountcommonClientModulePermission]
+    module_id: str
+    selected_groups: List[AccountcommonClientSelectedGroup]
+    Definition: List[AccountcommonClientSelectedGroup]
+        group_id: str
+        selected_actions: List[int]
 namespace: str
 oauth_access_token_expiration: int
 oauth_access_token_expiration_time_unit: str
@@ -30,9 +37,10 @@ oauth_refresh_token_expiration: int
 oauth_refresh_token_expiration_time_unit: str
 redirect_uri: str
 scopes: List[str]
+skip_login_queue: bool
 two_factor_enabled: bool
 
-Example: '{"audiences": ["OadEWpVDPIc5s3Zh", "1DmwNCo8emRwYrKc", "kqbmz2NuWFkK2Kmr"], "baseUri": "0KOFCp4frbANBdY9", "clientName": "nIpL7hGP7lWLiAla", "clientPermissions": [{"action": 76, "resource": "lMnJM0Uuow9C7307", "schedAction": 54, "schedCron": "pmujUXYMsIKdhyAG", "schedRange": ["O9qzhN1pmAdnlWHW", "lOGZZNL38ZJrv1Ls", "7hdkLDM6JspuhPxv"]}, {"action": 40, "resource": "pvpjFYuf0BRpb7Ex", "schedAction": 74, "schedCron": "W2PQS5R1ILbDPfeX", "schedRange": ["GwocijqaYuV56Jlr", "xJDq3JNZBibUFKSO", "zRYSNzzogeqAmGeS"]}, {"action": 36, "resource": "F9NGhk318xOM09T5", "schedAction": 59, "schedCron": "d0QwvshccIMm3Emu", "schedRange": ["jgc2ozp9H0frGd4r", "1PLWlly2LNf2C9T1", "az1QtAt5dzLEt5WH"]}], "clientPlatform": "Z27OWHeWn14vGcuW", "deletable": true, "description": "SmPyCcKT6F7HT0OP", "namespace": "j9SECaepEUVBdg0l", "oauthAccessTokenExpiration": 90, "oauthAccessTokenExpirationTimeUnit": "KCZE3iwLH1HeCoax", "oauthRefreshTokenExpiration": 15, "oauthRefreshTokenExpirationTimeUnit": "gN0BSsG0QGlD9kpg", "redirectUri": "4M7BomFAdEs8f9dQ", "scopes": ["Ub6sirsUThfcHV1n", "YqLPBS8AiR4RTb03", "TJzQjTFpsIUAjD82"], "twoFactorEnabled": false}'
+Example: '{"audiences": ["CNHfK5Qpyxj3R8t7", "Y0u1knzucKFRGSBP", "XAdIRLmrrmQi1yfb"], "baseUri": "W4ba7XtFHOGgYg8Z", "clientName": "PRyj8Jt0mIUDxhNg", "clientPermissions": [{"action": 32, "resource": "LzKj4UWbseNBDrkL", "schedAction": 43, "schedCron": "Ey4szTmn9TCRXYjb", "schedRange": ["92DAQOkBCqQzYDrX", "ecaNlhCwr4ksvGwh", "CFAJIFkY0xVvfM6C"]}, {"action": 34, "resource": "aKfmfMa9RYbB9zqw", "schedAction": 88, "schedCron": "wANWeJ5Ezx9dcPhQ", "schedRange": ["d4MxsdVjWG3k8QPF", "UPtrVuivYxOWaXu8", "CZ8plZr8M5Hny5Td"]}, {"action": 54, "resource": "BYZuxRKqheURFEwM", "schedAction": 47, "schedCron": "iPK1P0m9Z2vB8rbT", "schedRange": ["BAIIVTdsVEJR349e", "WttfU9VVND6qPdAF", "lJqrySq5PFig0zEd"]}], "clientPlatform": "98EHSzerHYTYiOmt", "deletable": false, "description": "q20Stea5trlAfNrB", "modulePermissions": [{"moduleId": "CYK12WNC9NwgI22Q", "selectedGroups": [{"groupId": "KvAkul0TlNJJUZnG", "selectedActions": [91, 43, 88]}, {"groupId": "67uQGL61V9lg0S60", "selectedActions": [89, 22, 95]}, {"groupId": "qFrJx18zVEh5iNj9", "selectedActions": [70, 29, 11]}]}, {"moduleId": "IoVWnQxPRzYTFXhz", "selectedGroups": [{"groupId": "2QFaARiUkpNoTOvk", "selectedActions": [6, 6, 7]}, {"groupId": "G5fsTIo9xvmvroMk", "selectedActions": [67, 6, 63]}, {"groupId": "uOv75auSNsGXd6ND", "selectedActions": [60, 81, 61]}]}, {"moduleId": "cytb0h6ZaLR4ZjDa", "selectedGroups": [{"groupId": "2iHiEZpiWiAlViC5", "selectedActions": [47, 60, 1]}, {"groupId": "fmtDPsQ1Rj3dR0jL", "selectedActions": [53, 74, 27]}, {"groupId": "kR1kZ8zP30uQnzu8", "selectedActions": [89, 74, 75]}]}], "namespace": "xaExwYHlKOc0SzDE", "oauthAccessTokenExpiration": 35, "oauthAccessTokenExpirationTimeUnit": "3760P3RAv0mutjF4", "oauthRefreshTokenExpiration": 10, "oauthRefreshTokenExpirationTimeUnit": "9Snc8U1RXbMZT35J", "redirectUri": "ViTwHZKheiQm3BVa", "scopes": ["brL1lyzNzrgyr6zD", "VGxRAMO3FgBgQb1l", "D25x39RMotw9xxi7"], "skipLoginQueue": false, "twoFactorEnabled": true}'
 """
 
 result, error = admin_update_client_v3(

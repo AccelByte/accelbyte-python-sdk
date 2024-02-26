@@ -14,7 +14,7 @@ Definition: List[AccountcommonClientPermission]
     action: int
     resource: str
 
-Example: '{"Permissions": [{"Action": 28, "Resource": "3ZZHbueosvg8LQNi"}, {"Action": 52, "Resource": "HBxMKLqPwMRoKUTd"}, {"Action": 61, "Resource": "EibnXYHWzCLugoFb"}]}'
+Example: '{"Permissions": [{"Action": 18, "Resource": "mmWDsBxm7n9yjgUb"}, {"Action": 44, "Resource": "6ZtFj1mBFWgyH0a9"}, {"Action": 65, "Resource": "ChDJ1hHrfr2c5vMh"}]}'
 """
 
 result, error = update_client_permission(

@@ -71,7 +71,7 @@ class DeleteUserRankingAdminV3(Operation):
 
         403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71233: user ranking data not found)
 
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
@@ -196,7 +196,7 @@ class DeleteUserRankingAdminV3(Operation):
 
         403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71233: user ranking data not found)
 
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
 

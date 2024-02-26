@@ -14,7 +14,7 @@ body:
 Definition: ModelsDeleteBulkLeaderboardsReq
 leaderboard_codes: List[str]
 
-Example: '{"leaderboardCodes": ["U4lJtX1D3PNVw7KI", "cx7CgDQLZu8AXSei", "EGCjuLIbiETaayhz"]}'
+Example: '{"leaderboardCodes": ["zt7Ka5p8fB1661g2", "ae1Jx2MjA8HCx9rz", "91odWiN0xhsE6ZPf"]}'
 """
 
 result, error = delete_bulk_leaderboard_configuration_admin_v3(

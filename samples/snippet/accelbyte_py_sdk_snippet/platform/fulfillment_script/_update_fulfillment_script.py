@@ -12,7 +12,7 @@ body:
 Definition: FulfillmentScriptUpdate
 grant_days: str
 
-Example: '{"grantDays": "UR6jqtQMrvzMW17W"}'
+Example: '{"grantDays": "s5WC3NuUJ3Ds2Spy"}'
 """
 
 result, error = update_fulfillment_script(

@@ -32,11 +32,11 @@ from ....core import same_doc_as
 from ..models import ModelsListTerminatedServersResponse
 from ..models import ResponseError
 
-from ..operations.all_terminated_servers import ListTerminatedServersInAllNamespaces
+from ..operations.all_terminated_servers import ListTerminatedServers
 
 
-@same_doc_as(ListTerminatedServersInAllNamespaces)
-def list_terminated_servers_in_all_namespaces(
+@same_doc_as(ListTerminatedServers)
+def list_terminated_servers(
     deployment: Optional[str] = None,
     game_mode: Optional[str] = None,
     limit: Optional[int] = None,
@@ -51,7 +51,7 @@ def list_terminated_servers_in_all_namespaces(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve All Terminated Servers (listTerminatedServersInAllNamespaces)
+    """Retrieve All Terminated Servers (listTerminatedServers)
 
     ```
     Required permission: ADMIN:NAMESPACE:{namespace}:DSAM:SERVER [READ]
@@ -106,7 +106,7 @@ def list_terminated_servers_in_all_namespaces(
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
-    request = ListTerminatedServersInAllNamespaces.create(
+    request = ListTerminatedServers.create(
         deployment=deployment,
         game_mode=game_mode,
         limit=limit,
@@ -122,8 +122,8 @@ def list_terminated_servers_in_all_namespaces(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(ListTerminatedServersInAllNamespaces)
-async def list_terminated_servers_in_all_namespaces_async(
+@same_doc_as(ListTerminatedServers)
+async def list_terminated_servers_async(
     deployment: Optional[str] = None,
     game_mode: Optional[str] = None,
     limit: Optional[int] = None,
@@ -138,7 +138,7 @@ async def list_terminated_servers_in_all_namespaces_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve All Terminated Servers (listTerminatedServersInAllNamespaces)
+    """Retrieve All Terminated Servers (listTerminatedServers)
 
     ```
     Required permission: ADMIN:NAMESPACE:{namespace}:DSAM:SERVER [READ]
@@ -193,7 +193,7 @@ async def list_terminated_servers_in_all_namespaces_async(
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
-    request = ListTerminatedServersInAllNamespaces.create(
+    request = ListTerminatedServers.create(
         deployment=deployment,
         game_mode=game_mode,
         limit=limit,

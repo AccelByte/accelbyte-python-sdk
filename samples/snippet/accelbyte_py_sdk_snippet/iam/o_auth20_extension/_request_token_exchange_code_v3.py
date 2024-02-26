@@ -7,6 +7,8 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTargetTokenCodeResponse
 
 result, error = request_token_exchange_code_v3(
     client_id=client_id,
+    code_challenge=code_challenge,
+    code_challenge_method=code_challenge_method,
     namespace=namespace,
     x_additional_headers=x_additional_headers,
 )

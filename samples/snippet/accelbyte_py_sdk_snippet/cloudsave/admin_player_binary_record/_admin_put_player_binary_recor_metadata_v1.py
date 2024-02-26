@@ -15,7 +15,7 @@ Definition: ModelsPlayerBinaryRecordMetadataRequest
 is_public: bool
 set_by: str
 
-Example: '{"is_public": false, "set_by": "CLIENT"}'
+Example: '{"is_public": true, "set_by": "SERVER"}'
 """
 
 result, error = admin_put_player_binary_recor_metadata_v1(

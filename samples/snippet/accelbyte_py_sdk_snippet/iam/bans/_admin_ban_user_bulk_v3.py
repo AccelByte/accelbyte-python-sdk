@@ -17,7 +17,7 @@ reason: str
 skip_notif: bool
 user_ids: List[str]
 
-Example: '{"ban": "TJBsI1zrP9dZAQwu", "comment": "QKLgz1tQYipzFNDi", "endDate": "WlaBa7tkcpbR3OLu", "reason": "ATNTrN7PsfU1dPnE", "skipNotif": false, "userIds": ["LIU4AYJDhy8c6GGU", "mF8s6ndtBY6OSFOM", "UGYJ4NWsLUBI1E4i"]}'
+Example: '{"ban": "ykWHf1UZJihYbgy7", "comment": "H32vASy1bAJza9Gg", "endDate": "MAlwKYTf71U2736A", "reason": "lB8Iy5YsFx0RTuGg", "skipNotif": false, "userIds": ["veYGjUCbVWFx4fLY", "Tc7siUuV2UBzzaE0", "1zoq5DSTDtz4lN0w"]}'
 """
 
 result, error = admin_ban_user_bulk_v3(

@@ -12,7 +12,7 @@ body:
 Definition: ModelCheckValidUserIDRequestV4
 user_ids: List[str]
 
-Example: '{"userIds": ["efM0obLjMJeFvGGS", "T6EdNmbN6oCWcbdg", "RV6sYLykaDk86LNh"]}'
+Example: '{"userIds": ["62GtndQ0uDILuRHK", "SpfHz8r46NqlZuhN", "YmPygj8YMSMDG6gc"]}'
 """
 
 result, error = admin_bulk_check_valid_user_idv4(

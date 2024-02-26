@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Cloudsave Service Index (3.15.0)
+# AccelByte Gaming Services Cloudsave Service Index (3.15.1)
 
 
 ## Operations
@@ -82,6 +82,13 @@
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key} | PUT | adminPutAdminPlayerRecordV1 | `false` | [AdminPutAdminPlayerRecordV1](../../accelbyte_py_sdk/api/cloudsave/operations/admin_record/admin_put_admin_player__6ed45f.py) | [admin_put_admin_player_record_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_record.py) | [accelbyte_py_sdk_cli cloudsave-admin-put-admin-player-record-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_put_admin_player_record_v1.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/adminrecords/{key}/bulk | POST | bulkGetAdminPlayerRecordByUserIdsV1 | `false` | [BulkGetAdminPlayerRecordByUserIdsV1](../../accelbyte_py_sdk/api/cloudsave/operations/admin_record/bulk_get_admin_player_r_e53570.py) | [bulk_get_admin_player_record_by_user_ids_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_record.py) | [accelbyte_py_sdk_cli cloudsave-bulk-get-admin-player-record-by-user-ids-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_bulk_get_admin_player_record_by_user_ids_v1.py) |
 
+### AdminTags
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /cloudsave/v1/admin/namespaces/{namespace}/tags/{tag} | DELETE | adminDeleteTagHandlerV1 | `false` | [AdminDeleteTagHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/admin_tags/admin_delete_tag_handler_v1.py) | [admin_delete_tag_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_tags.py) | [accelbyte_py_sdk_cli cloudsave-admin-delete-tag-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_delete_tag_handler_v1.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/tags | GET | adminListTagsHandlerV1 | `false` | [AdminListTagsHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/admin_tags/admin_list_tags_handler_v1.py) | [admin_list_tags_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_tags.py) | [accelbyte_py_sdk_cli cloudsave-admin-list-tags-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_list_tags_handler_v1.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/tags | POST | adminPostTagHandlerV1 | `false` | [AdminPostTagHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/admin_tags/admin_post_tag_handler_v1.py) | [admin_post_tag_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_tags.py) | [accelbyte_py_sdk_cli cloudsave-admin-post-tag-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_post_tag_handler_v1.py) |
+
 ### ConcurrentRecord
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -150,13 +157,10 @@
 | /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key} | PUT | putPlayerRecordHandlerV1 | `false` | [PutPlayerRecordHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/put_player_record_handler_v1.py) | [put_player_record_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) | [accelbyte_py_sdk_cli cloudsave-put-player-record-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_put_player_record_handler_v1.py) |
 | /cloudsave/v1/namespaces/{namespace}/users/me/records | GET | RetrievePlayerRecords | `false` | [RetrievePlayerRecords](../../accelbyte_py_sdk/api/cloudsave/operations/public_player_record/retrieve_player_records.py) | [retrieve_player_records](../../accelbyte_py_sdk/api/cloudsave/wrappers/_public_player_record.py) | [accelbyte_py_sdk_cli cloudsave-retrieve-player-records](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_retrieve_player_records.py) |
 
-### Tags
+### PublicTags
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /cloudsave/v1/admin/namespaces/{namespace}/tags/{tag} | DELETE | adminDeleteTagHandlerV1 | `false` | [AdminDeleteTagHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/tags/admin_delete_tag_handler_v1.py) | [admin_delete_tag_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_tags.py) | [accelbyte_py_sdk_cli cloudsave-admin-delete-tag-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_delete_tag_handler_v1.py) |
-| /cloudsave/v1/admin/namespaces/{namespace}/tags | GET | adminListTagsHandlerV1 | `false` | [AdminListTagsHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/tags/admin_list_tags_handler_v1.py) | [admin_list_tags_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_tags.py) | [accelbyte_py_sdk_cli cloudsave-admin-list-tags-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_list_tags_handler_v1.py) |
-| /cloudsave/v1/admin/namespaces/{namespace}/tags | POST | adminPostTagHandlerV1 | `false` | [AdminPostTagHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/tags/admin_post_tag_handler_v1.py) | [admin_post_tag_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_tags.py) | [accelbyte_py_sdk_cli cloudsave-admin-post-tag-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_post_tag_handler_v1.py) |
-| /cloudsave/v1/namespaces/{namespace}/tags | GET | publicListTagsHandlerV1 | `false` | [PublicListTagsHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/tags/public_list_tags_handler_v1.py) | [public_list_tags_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_tags.py) | [accelbyte_py_sdk_cli cloudsave-public-list-tags-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_public_list_tags_handler_v1.py) |
+| /cloudsave/v1/namespaces/{namespace}/tags | GET | publicListTagsHandlerV1 | `false` | [PublicListTagsHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/public_tags/public_list_tags_handler_v1.py) | [public_list_tags_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_public_tags.py) | [accelbyte_py_sdk_cli cloudsave-public-list-tags-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_public_list_tags_handler_v1.py) |
 
 ### TTLConfig
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |

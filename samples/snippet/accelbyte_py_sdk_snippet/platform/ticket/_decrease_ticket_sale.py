@@ -12,7 +12,7 @@ body:
 Definition: TicketSaleDecrementRequest
 order_no: str
 
-Example: '{"orderNo": "zePv2jH9ODMWYV8t"}'
+Example: '{"orderNo": "NNVvoMLMnkPg1Hjo"}'
 """
 
 result, error = decrease_ticket_sale(

@@ -28,8 +28,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import OauthmodelTargetTokenCodeResponse
+
+
+class CodeChallengeMethodEnum(StrEnum):
+    S256 = "S256"
+    PLAIN = "plain"
 
 
 class RequestTokenExchangeCodeV3(Operation):
@@ -59,6 +65,10 @@ class RequestTokenExchangeCodeV3(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        code_challenge: (code_challenge) OPTIONAL str in query
+
+        code_challenge_method: (code_challenge_method) OPTIONAL Union[str, CodeChallengeMethodEnum] in query
+
     Responses:
         200: OK - OauthmodelTargetTokenCodeResponse (Succeed to request token exchange code.)
     """
@@ -74,6 +84,8 @@ class RequestTokenExchangeCodeV3(Operation):
 
     client_id: str  # REQUIRED in [form_data]
     namespace: str  # REQUIRED in [path]
+    code_challenge: str  # OPTIONAL in [query]
+    code_challenge_method: Union[str, CodeChallengeMethodEnum]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -115,6 +127,7 @@ class RequestTokenExchangeCodeV3(Operation):
         return {
             "form_data": self.get_form_data_params(),
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_form_data_params(self) -> dict:
@@ -127,6 +140,14 @@ class RequestTokenExchangeCodeV3(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "code_challenge"):
+            result["code_challenge"] = self.code_challenge
+        if hasattr(self, "code_challenge_method"):
+            result["code_challenge_method"] = self.code_challenge_method
         return result
 
     # endregion get_x_params methods
@@ -145,6 +166,16 @@ class RequestTokenExchangeCodeV3(Operation):
         self.namespace = value
         return self
 
+    def with_code_challenge(self, value: str) -> RequestTokenExchangeCodeV3:
+        self.code_challenge = value
+        return self
+
+    def with_code_challenge_method(
+        self, value: Union[str, CodeChallengeMethodEnum]
+    ) -> RequestTokenExchangeCodeV3:
+        self.code_challenge_method = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -159,6 +190,14 @@ class RequestTokenExchangeCodeV3(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "code_challenge") and self.code_challenge:
+            result["code_challenge"] = str(self.code_challenge)
+        elif include_empty:
+            result["code_challenge"] = ""
+        if hasattr(self, "code_challenge_method") and self.code_challenge_method:
+            result["code_challenge_method"] = str(self.code_challenge_method)
+        elif include_empty:
+            result["code_challenge_method"] = Union[str, CodeChallengeMethodEnum]()
         return result
 
     # endregion to methods
@@ -201,11 +240,20 @@ class RequestTokenExchangeCodeV3(Operation):
 
     @classmethod
     def create(
-        cls, client_id: str, namespace: str, **kwargs
+        cls,
+        client_id: str,
+        namespace: str,
+        code_challenge: Optional[str] = None,
+        code_challenge_method: Optional[Union[str, CodeChallengeMethodEnum]] = None,
+        **kwargs,
     ) -> RequestTokenExchangeCodeV3:
         instance = cls()
         instance.client_id = client_id
         instance.namespace = namespace
+        if code_challenge is not None:
+            instance.code_challenge = code_challenge
+        if code_challenge_method is not None:
+            instance.code_challenge_method = code_challenge_method
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -223,6 +271,17 @@ class RequestTokenExchangeCodeV3(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "code_challenge" in dict_ and dict_["code_challenge"] is not None:
+            instance.code_challenge = str(dict_["code_challenge"])
+        elif include_empty:
+            instance.code_challenge = ""
+        if (
+            "code_challenge_method" in dict_
+            and dict_["code_challenge_method"] is not None
+        ):
+            instance.code_challenge_method = str(dict_["code_challenge_method"])
+        elif include_empty:
+            instance.code_challenge_method = Union[str, CodeChallengeMethodEnum]()
         return instance
 
     @staticmethod
@@ -230,6 +289,8 @@ class RequestTokenExchangeCodeV3(Operation):
         return {
             "client_id": "client_id",
             "namespace": "namespace",
+            "code_challenge": "code_challenge",
+            "code_challenge_method": "code_challenge_method",
         }
 
     @staticmethod
@@ -237,6 +298,14 @@ class RequestTokenExchangeCodeV3(Operation):
         return {
             "client_id": True,
             "namespace": True,
+            "code_challenge": False,
+            "code_challenge_method": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "code_challenge_method": ["S256", "plain"],  # in query
         }
 
     # endregion static methods

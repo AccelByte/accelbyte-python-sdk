@@ -13,7 +13,7 @@ description: str
 is_joinable: bool
 name: str
 
-Example: '{"description": "fOOWFAkoZ245wJMt", "isJoinable": true, "name": "D1QwOgCNCIfypOeW"}'
+Example: '{"description": "RjaQ1QBHotJxORAu", "isJoinable": true, "name": "DwBDBTPbbMMAQEj4"}'
 """
 
 result, error = admin_update_topic(

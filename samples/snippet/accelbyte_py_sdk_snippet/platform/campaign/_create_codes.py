@@ -13,7 +13,7 @@ body:
 Definition: CodeCreate
 quantity: int
 
-Example: '{"quantity": 37}'
+Example: '{"quantity": 34}'
 """
 
 result, error = create_codes(

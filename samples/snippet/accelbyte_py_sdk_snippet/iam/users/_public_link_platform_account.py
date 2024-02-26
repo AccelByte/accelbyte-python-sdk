@@ -12,7 +12,7 @@ Definition: ModelLinkPlatformAccountRequest
 platform_id: str
 platform_user_id: str
 
-Example: '{"platformId": "WCCxduv49XlURsFb", "platformUserId": "VuRPDdHliZMveoqW"}'
+Example: '{"platformId": "xfdLUlGd2XXIPmO5", "platformUserId": "qZ6UX1cinXQi8pM2"}'
 """
 
 result, error = public_link_platform_account(

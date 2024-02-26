@@ -18,12 +18,12 @@ from ._report_failed_upload import report_failed_upload
 from ._delete_queue import delete_queue
 from ._list_all_active_queue import list_all_active_queue
 from ._list_all_queue import list_all_queue
-from ._list_terminated_servers import list_terminated_servers
+from ._list_terminated_servers_with_namespace import (
+    list_terminated_servers_with_namespace,
+)
 from ._download_server_artifacts import download_server_artifacts
 from ._check_server_artifact import check_server_artifact
-from ._list_terminated_servers_in_all_namespaces import (
-    list_terminated_servers_in_all_namespaces,
-)
+from ._list_terminated_servers import list_terminated_servers
 from ._public_get_messages import public_get_messages
 
 
@@ -38,9 +38,9 @@ commands = [
     delete_queue,
     list_all_active_queue,
     list_all_queue,
-    list_terminated_servers,
+    list_terminated_servers_with_namespace,
     download_server_artifacts,
     check_server_artifact,
-    list_terminated_servers_in_all_namespaces,
+    list_terminated_servers,
     public_get_messages,
 ]

@@ -11,7 +11,7 @@ body:
 Definition: ApiUpdateServerRequest
 status: str
 
-Example: '{"status": "phfpQPu0geA5IdS2"}'
+Example: '{"status": "AxbkJF189RNB4EBT"}'
 """
 
 result, error = qo_s_regions_update(

@@ -27,6 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.oauthmodel_login_queue_ticket_response import (
+    OauthmodelLoginQueueTicketResponse,
+)
 from ..models.oauthmodel_user_ban import OauthmodelUserBan
 
 
@@ -50,6 +53,8 @@ class OauthmodelErrorResponse(Model):
 
         linking_token: (linkingToken) OPTIONAL str
 
+        login_queue_ticket: (login_queue_ticket) OPTIONAL OauthmodelLoginQueueTicketResponse
+
         message_variables: (messageVariables) OPTIONAL Dict[str, str]
 
         mfa_token: (mfa_token) OPTIONAL str
@@ -69,6 +74,7 @@ class OauthmodelErrorResponse(Model):
     error_uri: str  # OPTIONAL
     factors: List[str]  # OPTIONAL
     linking_token: str  # OPTIONAL
+    login_queue_ticket: OauthmodelLoginQueueTicketResponse  # OPTIONAL
     message_variables: Dict[str, str]  # OPTIONAL
     mfa_token: str  # OPTIONAL
     platform_id: str  # OPTIONAL
@@ -108,6 +114,12 @@ class OauthmodelErrorResponse(Model):
 
     def with_linking_token(self, value: str) -> OauthmodelErrorResponse:
         self.linking_token = value
+        return self
+
+    def with_login_queue_ticket(
+        self, value: OauthmodelLoginQueueTicketResponse
+    ) -> OauthmodelErrorResponse:
+        self.login_queue_ticket = value
         return self
 
     def with_message_variables(self, value: Dict[str, str]) -> OauthmodelErrorResponse:
@@ -164,6 +176,12 @@ class OauthmodelErrorResponse(Model):
             result["linkingToken"] = str(self.linking_token)
         elif include_empty:
             result["linkingToken"] = ""
+        if hasattr(self, "login_queue_ticket"):
+            result["login_queue_ticket"] = self.login_queue_ticket.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["login_queue_ticket"] = OauthmodelLoginQueueTicketResponse()
         if hasattr(self, "message_variables"):
             result["messageVariables"] = {
                 str(k0): str(v0) for k0, v0 in self.message_variables.items()
@@ -199,6 +217,7 @@ class OauthmodelErrorResponse(Model):
         error_uri: Optional[str] = None,
         factors: Optional[List[str]] = None,
         linking_token: Optional[str] = None,
+        login_queue_ticket: Optional[OauthmodelLoginQueueTicketResponse] = None,
         message_variables: Optional[Dict[str, str]] = None,
         mfa_token: Optional[str] = None,
         platform_id: Optional[str] = None,
@@ -221,6 +240,8 @@ class OauthmodelErrorResponse(Model):
             instance.factors = factors
         if linking_token is not None:
             instance.linking_token = linking_token
+        if login_queue_ticket is not None:
+            instance.login_queue_ticket = login_queue_ticket
         if message_variables is not None:
             instance.message_variables = message_variables
         if mfa_token is not None:
@@ -270,6 +291,14 @@ class OauthmodelErrorResponse(Model):
             instance.linking_token = str(dict_["linkingToken"])
         elif include_empty:
             instance.linking_token = ""
+        if "login_queue_ticket" in dict_ and dict_["login_queue_ticket"] is not None:
+            instance.login_queue_ticket = (
+                OauthmodelLoginQueueTicketResponse.create_from_dict(
+                    dict_["login_queue_ticket"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.login_queue_ticket = OauthmodelLoginQueueTicketResponse()
         if "messageVariables" in dict_ and dict_["messageVariables"] is not None:
             instance.message_variables = {
                 str(k0): str(v0) for k0, v0 in dict_["messageVariables"].items()
@@ -341,6 +370,7 @@ class OauthmodelErrorResponse(Model):
             "error_uri": "error_uri",
             "factors": "factors",
             "linkingToken": "linking_token",
+            "login_queue_ticket": "login_queue_ticket",
             "messageVariables": "message_variables",
             "mfa_token": "mfa_token",
             "platformId": "platform_id",
@@ -358,6 +388,7 @@ class OauthmodelErrorResponse(Model):
             "error_uri": False,
             "factors": False,
             "linkingToken": False,
+            "login_queue_ticket": False,
             "messageVariables": False,
             "mfa_token": False,
             "platformId": False,

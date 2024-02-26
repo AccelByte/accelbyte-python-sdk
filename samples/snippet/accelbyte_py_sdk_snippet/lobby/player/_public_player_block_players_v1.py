@@ -11,7 +11,7 @@ body:
 Definition: ModelsBlockPlayerRequest
 blocked_user_id: str
 
-Example: '{"blockedUserId": "g5hAFYUSTEFTodK8"}'
+Example: '{"blockedUserId": "CAI48pNVt9DX5fnp"}'
 """
 
 result, error = public_player_block_players_v1(

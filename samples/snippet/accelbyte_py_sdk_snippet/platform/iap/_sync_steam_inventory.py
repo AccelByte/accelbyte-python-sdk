@@ -17,7 +17,7 @@ product_id: str
 region: str
 steam_id: str
 
-Example: '{"appId": "NbGz6WMNUdVVKlDr", "currencyCode": "oiA0vpiMJVGvZdiD", "language": "VjTH_WPMy", "price": 0.3492472117351173, "productId": "Chrehhvqn5xbP9A8", "region": "KY3qmb90igeWWv4M", "steamId": "F97AcbrdNgfa8m9K"}'
+Example: '{"appId": "X3fYNljV4u84dkwN", "currencyCode": "HwxAjWshN6ZSnjDt", "language": "gRN-ceSQ", "price": 0.2018771512725045, "productId": "r7DttLqmXnuLS9Yb", "region": "SjYhU75cxbKoKj7r", "steamId": "mWuI76HYdmd8pDeb"}'
 """
 
 result, error = sync_steam_inventory(

@@ -16,7 +16,7 @@ template_language: str
 template_slug: str
 topic_name: str
 
-Example: '{"templateContext": {"4EjhYNhs4ZT1nLp6": "wqFQBdBwuTPF2yDP", "k0BhVyMkae026SsC": "SLpLexn93eLRJING", "6YeT4LghzWzJUgyi": "nvRA1jk3Z9STjM9u"}, "templateLanguage": "DHuXkwS2RFsiSSJB", "templateSlug": "0PZmRbTFTNbykbIh", "topicName": "V93nMwa69J43qrF8"}'
+Example: '{"templateContext": {"HrbEpWgsLdeXdDrR": "HikPsleB2WLUcBjY", "bjvc9zvlI96YePpz": "7TrJ4A5roN6iLHoZ", "aW6RJD69KKF64Cz1": "7U8e4DX8Srad7EBw"}, "templateLanguage": "sqxAz6LdzyEhGuZR", "templateSlug": "C4uiUfpZQYTP8AZq", "topicName": "Z75vhJHmhAhLSRpJ"}'
 """
 
 result, error = send_specific_user_templated_notification_v1_admin(

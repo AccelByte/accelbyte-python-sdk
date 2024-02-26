@@ -16,7 +16,7 @@ fulfillment_url: str
 item_type: str
 purchase_condition_url: str
 
-Example: '{"clazz": "NnGgS4ww4jnIqMQA", "dryRun": true, "fulfillmentUrl": "hGlwpxHwIwy5WlYw", "itemType": "EXTENSION", "purchaseConditionUrl": "umq6tIVKxDLR17IT"}'
+Example: '{"clazz": "ycNkf5UCa02H40ry", "dryRun": false, "fulfillmentUrl": "SgrlwtaXwPnCj2kc", "itemType": "LOOTBOX", "purchaseConditionUrl": "PlC4b0NbmPXxPKog"}'
 """
 
 result, error = create_item_type_config(

@@ -13,7 +13,7 @@ Definition: ApiBackFillAcceptRequest
 proposal_id: str
 stop: bool
 
-Example: '{"proposalId": "nnjwrbwhpsRVtHSI", "stop": false}'
+Example: '{"proposalId": "JMqpaer9dHsc59jx", "stop": true}'
 """
 
 result, error = accept_backfill(

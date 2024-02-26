@@ -88,6 +88,8 @@ class AdminSearchUserV3(Operation):
 
         query: (query) OPTIONAL str in query
 
+        skip_login_queue: (skipLoginQueue) OPTIONAL bool in query
+
         start_date: (startDate) OPTIONAL str in query
 
         test_account: (testAccount) OPTIONAL bool in query
@@ -122,6 +124,7 @@ class AdminSearchUserV3(Operation):
     platform_by: str  # OPTIONAL in [query]
     platform_id: str  # OPTIONAL in [query]
     query: str  # OPTIONAL in [query]
+    skip_login_queue: bool  # OPTIONAL in [query]
     start_date: str  # OPTIONAL in [query]
     test_account: bool  # OPTIONAL in [query]
 
@@ -191,6 +194,8 @@ class AdminSearchUserV3(Operation):
             result["platformId"] = self.platform_id
         if hasattr(self, "query"):
             result["query"] = self.query
+        if hasattr(self, "skip_login_queue"):
+            result["skipLoginQueue"] = self.skip_login_queue
         if hasattr(self, "start_date"):
             result["startDate"] = self.start_date
         if hasattr(self, "test_account"):
@@ -239,6 +244,10 @@ class AdminSearchUserV3(Operation):
 
     def with_query(self, value: str) -> AdminSearchUserV3:
         self.query = value
+        return self
+
+    def with_skip_login_queue(self, value: bool) -> AdminSearchUserV3:
+        self.skip_login_queue = value
         return self
 
     def with_start_date(self, value: str) -> AdminSearchUserV3:
@@ -291,6 +300,10 @@ class AdminSearchUserV3(Operation):
             result["query"] = str(self.query)
         elif include_empty:
             result["query"] = ""
+        if hasattr(self, "skip_login_queue") and self.skip_login_queue:
+            result["skipLoginQueue"] = bool(self.skip_login_queue)
+        elif include_empty:
+            result["skipLoginQueue"] = False
         if hasattr(self, "start_date") and self.start_date:
             result["startDate"] = str(self.start_date)
         elif include_empty:
@@ -371,6 +384,7 @@ class AdminSearchUserV3(Operation):
         platform_by: Optional[str] = None,
         platform_id: Optional[str] = None,
         query: Optional[str] = None,
+        skip_login_queue: Optional[bool] = None,
         start_date: Optional[str] = None,
         test_account: Optional[bool] = None,
         **kwargs,
@@ -393,6 +407,8 @@ class AdminSearchUserV3(Operation):
             instance.platform_id = platform_id
         if query is not None:
             instance.query = query
+        if skip_login_queue is not None:
+            instance.skip_login_queue = skip_login_queue
         if start_date is not None:
             instance.start_date = start_date
         if test_account is not None:
@@ -442,6 +458,10 @@ class AdminSearchUserV3(Operation):
             instance.query = str(dict_["query"])
         elif include_empty:
             instance.query = ""
+        if "skipLoginQueue" in dict_ and dict_["skipLoginQueue"] is not None:
+            instance.skip_login_queue = bool(dict_["skipLoginQueue"])
+        elif include_empty:
+            instance.skip_login_queue = False
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
@@ -464,6 +484,7 @@ class AdminSearchUserV3(Operation):
             "platformBy": "platform_by",
             "platformId": "platform_id",
             "query": "query",
+            "skipLoginQueue": "skip_login_queue",
             "startDate": "start_date",
             "testAccount": "test_account",
         }
@@ -480,6 +501,7 @@ class AdminSearchUserV3(Operation):
             "platformBy": False,
             "platformId": False,
             "query": False,
+            "skipLoginQueue": False,
             "startDate": False,
             "testAccount": False,
         }

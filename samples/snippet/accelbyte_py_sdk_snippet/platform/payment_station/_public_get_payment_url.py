@@ -16,7 +16,7 @@ return_url: str
 ui: str
 zip_code: str
 
-Example: '{"paymentOrderNo": "9f0ZXMGSJj3dFLJg", "paymentProvider": "CHECKOUT", "returnUrl": "QaQnWAg4HvqNLU0m", "ui": "Y71yUr3lVg6VyB9b", "zipCode": "rj31SRztATK7sd5W"}'
+Example: '{"paymentOrderNo": "dMmSbRTGunchUrrU", "paymentProvider": "CHECKOUT", "returnUrl": "M2QGsmczpkJ4iNdt", "ui": "RnmAI6gc5s7wmu2h", "zipCode": "33UcPU6TD987aQpx"}'
 """
 
 result, error = public_get_payment_url(

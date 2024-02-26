@@ -100,7 +100,7 @@ class UpdateLeaderboardConfigurationAdminV1(Operation):
 
         403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71133: leaderboard configuration deleted)
 
         409: Conflict - ResponseErrorResponse (71132: leaderboard configuration already exist)
 
@@ -242,7 +242,7 @@ class UpdateLeaderboardConfigurationAdminV1(Operation):
 
         403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
-        404: Not Found - ResponseErrorResponse
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found | 71133: leaderboard configuration deleted)
 
         409: Conflict - ResponseErrorResponse (71132: leaderboard configuration already exist)
 

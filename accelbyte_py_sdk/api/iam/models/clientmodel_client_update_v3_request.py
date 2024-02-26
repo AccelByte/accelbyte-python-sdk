@@ -27,6 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.accountcommon_client_module_permission import (
+    AccountcommonClientModulePermission,
+)
 from ..models.accountcommon_permission_v3 import AccountcommonPermissionV3
 
 
@@ -38,6 +41,8 @@ class ClientmodelClientUpdateV3Request(Model):
 
         description: (description) REQUIRED str
 
+        skip_login_queue: (skipLoginQueue) REQUIRED bool
+
         audiences: (audiences) OPTIONAL List[str]
 
         base_uri: (baseUri) OPTIONAL str
@@ -47,6 +52,8 @@ class ClientmodelClientUpdateV3Request(Model):
         client_permissions: (clientPermissions) OPTIONAL List[AccountcommonPermissionV3]
 
         deletable: (deletable) OPTIONAL bool
+
+        module_permissions: (modulePermissions) OPTIONAL List[AccountcommonClientModulePermission]
 
         namespace: (namespace) OPTIONAL str
 
@@ -69,11 +76,13 @@ class ClientmodelClientUpdateV3Request(Model):
 
     client_platform: str  # REQUIRED
     description: str  # REQUIRED
+    skip_login_queue: bool  # REQUIRED
     audiences: List[str]  # OPTIONAL
     base_uri: str  # OPTIONAL
     client_name: str  # OPTIONAL
     client_permissions: List[AccountcommonPermissionV3]  # OPTIONAL
     deletable: bool  # OPTIONAL
+    module_permissions: List[AccountcommonClientModulePermission]  # OPTIONAL
     namespace: str  # OPTIONAL
     oauth_access_token_expiration: int  # OPTIONAL
     oauth_access_token_expiration_time_unit: str  # OPTIONAL
@@ -93,6 +102,10 @@ class ClientmodelClientUpdateV3Request(Model):
 
     def with_description(self, value: str) -> ClientmodelClientUpdateV3Request:
         self.description = value
+        return self
+
+    def with_skip_login_queue(self, value: bool) -> ClientmodelClientUpdateV3Request:
+        self.skip_login_queue = value
         return self
 
     def with_audiences(self, value: List[str]) -> ClientmodelClientUpdateV3Request:
@@ -115,6 +128,12 @@ class ClientmodelClientUpdateV3Request(Model):
 
     def with_deletable(self, value: bool) -> ClientmodelClientUpdateV3Request:
         self.deletable = value
+        return self
+
+    def with_module_permissions(
+        self, value: List[AccountcommonClientModulePermission]
+    ) -> ClientmodelClientUpdateV3Request:
+        self.module_permissions = value
         return self
 
     def with_namespace(self, value: str) -> ClientmodelClientUpdateV3Request:
@@ -171,6 +190,10 @@ class ClientmodelClientUpdateV3Request(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "skip_login_queue"):
+            result["skipLoginQueue"] = bool(self.skip_login_queue)
+        elif include_empty:
+            result["skipLoginQueue"] = False
         if hasattr(self, "audiences"):
             result["audiences"] = [str(i0) for i0 in self.audiences]
         elif include_empty:
@@ -194,6 +217,13 @@ class ClientmodelClientUpdateV3Request(Model):
             result["deletable"] = bool(self.deletable)
         elif include_empty:
             result["deletable"] = False
+        if hasattr(self, "module_permissions"):
+            result["modulePermissions"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.module_permissions
+            ]
+        elif include_empty:
+            result["modulePermissions"] = []
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -245,11 +275,13 @@ class ClientmodelClientUpdateV3Request(Model):
         cls,
         client_platform: str,
         description: str,
+        skip_login_queue: bool,
         audiences: Optional[List[str]] = None,
         base_uri: Optional[str] = None,
         client_name: Optional[str] = None,
         client_permissions: Optional[List[AccountcommonPermissionV3]] = None,
         deletable: Optional[bool] = None,
+        module_permissions: Optional[List[AccountcommonClientModulePermission]] = None,
         namespace: Optional[str] = None,
         oauth_access_token_expiration: Optional[int] = None,
         oauth_access_token_expiration_time_unit: Optional[str] = None,
@@ -263,6 +295,7 @@ class ClientmodelClientUpdateV3Request(Model):
         instance = cls()
         instance.client_platform = client_platform
         instance.description = description
+        instance.skip_login_queue = skip_login_queue
         if audiences is not None:
             instance.audiences = audiences
         if base_uri is not None:
@@ -273,6 +306,8 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.client_permissions = client_permissions
         if deletable is not None:
             instance.deletable = deletable
+        if module_permissions is not None:
+            instance.module_permissions = module_permissions
         if namespace is not None:
             instance.namespace = namespace
         if oauth_access_token_expiration is not None:
@@ -310,6 +345,10 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "skipLoginQueue" in dict_ and dict_["skipLoginQueue"] is not None:
+            instance.skip_login_queue = bool(dict_["skipLoginQueue"])
+        elif include_empty:
+            instance.skip_login_queue = False
         if "audiences" in dict_ and dict_["audiences"] is not None:
             instance.audiences = [str(i0) for i0 in dict_["audiences"]]
         elif include_empty:
@@ -335,6 +374,15 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.deletable = bool(dict_["deletable"])
         elif include_empty:
             instance.deletable = False
+        if "modulePermissions" in dict_ and dict_["modulePermissions"] is not None:
+            instance.module_permissions = [
+                AccountcommonClientModulePermission.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["modulePermissions"]
+            ]
+        elif include_empty:
+            instance.module_permissions = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -432,11 +480,13 @@ class ClientmodelClientUpdateV3Request(Model):
         return {
             "clientPlatform": "client_platform",
             "description": "description",
+            "skipLoginQueue": "skip_login_queue",
             "audiences": "audiences",
             "baseUri": "base_uri",
             "clientName": "client_name",
             "clientPermissions": "client_permissions",
             "deletable": "deletable",
+            "modulePermissions": "module_permissions",
             "namespace": "namespace",
             "oauthAccessTokenExpiration": "oauth_access_token_expiration",
             "oauthAccessTokenExpirationTimeUnit": "oauth_access_token_expiration_time_unit",
@@ -452,11 +502,13 @@ class ClientmodelClientUpdateV3Request(Model):
         return {
             "clientPlatform": True,
             "description": True,
+            "skipLoginQueue": True,
             "audiences": False,
             "baseUri": False,
             "clientName": False,
             "clientPermissions": False,
             "deletable": False,
+            "modulePermissions": False,
             "namespace": False,
             "oauthAccessTokenExpiration": False,
             "oauthAccessTokenExpirationTimeUnit": False,

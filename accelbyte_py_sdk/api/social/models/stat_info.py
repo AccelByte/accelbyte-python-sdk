@@ -39,6 +39,13 @@ class StatusEnum(StrEnum):
     TIED = "TIED"
 
 
+class GlobalAggregationMethodEnum(StrEnum):
+    LAST = "LAST"
+    MAX = "MAX"
+    MIN = "MIN"
+    TOTAL = "TOTAL"
+
+
 class StatInfo(Model):
     """Stat info (StatInfo)
 
@@ -71,6 +78,8 @@ class StatInfo(Model):
 
         description: (description) OPTIONAL str
 
+        global_aggregation_method: (globalAggregationMethod) OPTIONAL Union[str, GlobalAggregationMethodEnum]
+
         maximum: (maximum) OPTIONAL float
 
         minimum: (minimum) OPTIONAL float
@@ -94,6 +103,7 @@ class StatInfo(Model):
     updated_at: str  # REQUIRED
     cycle_ids: List[str]  # OPTIONAL
     description: str  # OPTIONAL
+    global_aggregation_method: Union[str, GlobalAggregationMethodEnum]  # OPTIONAL
     maximum: float  # OPTIONAL
     minimum: float  # OPTIONAL
     tags: List[str]  # OPTIONAL
@@ -156,6 +166,12 @@ class StatInfo(Model):
 
     def with_description(self, value: str) -> StatInfo:
         self.description = value
+        return self
+
+    def with_global_aggregation_method(
+        self, value: Union[str, GlobalAggregationMethodEnum]
+    ) -> StatInfo:
+        self.global_aggregation_method = value
         return self
 
     def with_maximum(self, value: float) -> StatInfo:
@@ -234,6 +250,12 @@ class StatInfo(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "global_aggregation_method"):
+            result["globalAggregationMethod"] = str(self.global_aggregation_method)
+        elif include_empty:
+            result["globalAggregationMethod"] = Union[
+                str, GlobalAggregationMethodEnum
+            ]()
         if hasattr(self, "maximum"):
             result["maximum"] = float(self.maximum)
         elif include_empty:
@@ -269,6 +291,9 @@ class StatInfo(Model):
         updated_at: str,
         cycle_ids: Optional[List[str]] = None,
         description: Optional[str] = None,
+        global_aggregation_method: Optional[
+            Union[str, GlobalAggregationMethodEnum]
+        ] = None,
         maximum: Optional[float] = None,
         minimum: Optional[float] = None,
         tags: Optional[List[str]] = None,
@@ -293,6 +318,8 @@ class StatInfo(Model):
             instance.cycle_ids = cycle_ids
         if description is not None:
             instance.description = description
+        if global_aggregation_method is not None:
+            instance.global_aggregation_method = global_aggregation_method
         if maximum is not None:
             instance.maximum = maximum
         if minimum is not None:
@@ -367,6 +394,15 @@ class StatInfo(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if (
+            "globalAggregationMethod" in dict_
+            and dict_["globalAggregationMethod"] is not None
+        ):
+            instance.global_aggregation_method = str(dict_["globalAggregationMethod"])
+        elif include_empty:
+            instance.global_aggregation_method = Union[
+                str, GlobalAggregationMethodEnum
+            ]()
         if "maximum" in dict_ and dict_["maximum"] is not None:
             instance.maximum = float(dict_["maximum"])
         elif include_empty:
@@ -432,6 +468,7 @@ class StatInfo(Model):
             "updatedAt": "updated_at",
             "cycleIds": "cycle_ids",
             "description": "description",
+            "globalAggregationMethod": "global_aggregation_method",
             "maximum": "maximum",
             "minimum": "minimum",
             "tags": "tags",
@@ -454,6 +491,7 @@ class StatInfo(Model):
             "updatedAt": True,
             "cycleIds": False,
             "description": False,
+            "globalAggregationMethod": False,
             "maximum": False,
             "minimum": False,
             "tags": False,
@@ -464,6 +502,7 @@ class StatInfo(Model):
         return {
             "setBy": ["CLIENT", "SERVER"],
             "status": ["INIT", "TIED"],
+            "globalAggregationMethod": ["LAST", "MAX", "MIN", "TOTAL"],
         }
 
     # endregion static methods

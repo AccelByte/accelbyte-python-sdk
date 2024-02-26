@@ -16,7 +16,7 @@ code: str
 password: str
 login_id: str
 
-Example: '{"Code": "gt865KtZOOcSLh9j", "Password": "5GG6OdNenuoe6Udy", "loginId": "phQwBAHeiAvjhAHt"}'
+Example: '{"Code": "9CbuGYitq4irCdsn", "Password": "8V0BQPYUMaGVxBP5", "loginId": "jFdtvwdJfJShWlYk"}'
 """
 
 result, error = upgrade_headless_account_with_verification_code(

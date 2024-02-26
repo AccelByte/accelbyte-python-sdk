@@ -20,7 +20,7 @@ tax_jar_api_token: str
 tax_jar_enabled: bool
 use_global_tax_jar_api_token: bool
 
-Example: '{"aggregate": "XSOLLA", "namespace": "11J7aDfBG24h5ixH", "region": "WtN4JWi4uTBddkHv", "sandboxTaxJarApiToken": "LtEw5o0zFGwxpYbQ", "specials": ["CHECKOUT", "CHECKOUT", "XSOLLA"], "taxJarApiToken": "E0zWKNJZG80EizOE", "taxJarEnabled": true, "useGlobalTaxJarApiToken": false}'
+Example: '{"aggregate": "ADYEN", "namespace": "Et81kRiVNHU37AbT", "region": "pxEATxNv6IK8pKD8", "sandboxTaxJarApiToken": "XVsaIjqxERjAS3v3", "specials": ["STRIPE", "WALLET", "STRIPE"], "taxJarApiToken": "GlahzXhJ5x9i6ZRI", "taxJarEnabled": false, "useGlobalTaxJarApiToken": false}'
 """
 
 result, error = update_payment_provider_config(

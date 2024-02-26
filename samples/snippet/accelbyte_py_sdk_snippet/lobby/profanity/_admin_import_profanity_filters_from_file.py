@@ -9,7 +9,7 @@ from accelbyte_py_sdk.api.lobby.models import RestapiErrorResponseBody
 body:
 Definition: List[int]
 
-Example: '[21, 45, 46]'
+Example: '[66, 88, 80]'
 """
 
 result, error = admin_import_profanity_filters_from_file(

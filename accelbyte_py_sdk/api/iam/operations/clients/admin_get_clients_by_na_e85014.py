@@ -63,6 +63,8 @@ class AdminGetClientsByNamespaceV3(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        skip_login_queue: (skipLoginQueue) OPTIONAL bool in query
+
     Responses:
         200: OK - ClientmodelClientsV3Response (OK)
 
@@ -88,6 +90,7 @@ class AdminGetClientsByNamespaceV3(Operation):
     client_type: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    skip_login_queue: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -149,6 +152,8 @@ class AdminGetClientsByNamespaceV3(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "skip_login_queue"):
+            result["skipLoginQueue"] = self.skip_login_queue
         return result
 
     # endregion get_x_params methods
@@ -183,6 +188,10 @@ class AdminGetClientsByNamespaceV3(Operation):
         self.offset = value
         return self
 
+    def with_skip_login_queue(self, value: bool) -> AdminGetClientsByNamespaceV3:
+        self.skip_login_queue = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -213,6 +222,10 @@ class AdminGetClientsByNamespaceV3(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "skip_login_queue") and self.skip_login_queue:
+            result["skipLoginQueue"] = bool(self.skip_login_queue)
+        elif include_empty:
+            result["skipLoginQueue"] = False
         return result
 
     # endregion to methods
@@ -275,6 +288,7 @@ class AdminGetClientsByNamespaceV3(Operation):
         client_type: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        skip_login_queue: Optional[bool] = None,
         **kwargs,
     ) -> AdminGetClientsByNamespaceV3:
         instance = cls()
@@ -289,6 +303,8 @@ class AdminGetClientsByNamespaceV3(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if skip_login_queue is not None:
+            instance.skip_login_queue = skip_login_queue
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -322,6 +338,10 @@ class AdminGetClientsByNamespaceV3(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "skipLoginQueue" in dict_ and dict_["skipLoginQueue"] is not None:
+            instance.skip_login_queue = bool(dict_["skipLoginQueue"])
+        elif include_empty:
+            instance.skip_login_queue = False
         return instance
 
     @staticmethod
@@ -333,6 +353,7 @@ class AdminGetClientsByNamespaceV3(Operation):
             "clientType": "client_type",
             "limit": "limit",
             "offset": "offset",
+            "skipLoginQueue": "skip_login_queue",
         }
 
     @staticmethod
@@ -344,6 +365,7 @@ class AdminGetClientsByNamespaceV3(Operation):
             "clientType": False,
             "limit": False,
             "offset": False,
+            "skipLoginQueue": False,
         }
 
     # endregion static methods

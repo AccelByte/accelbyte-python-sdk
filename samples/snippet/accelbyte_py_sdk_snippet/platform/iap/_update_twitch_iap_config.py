@@ -13,7 +13,7 @@ client_id: str
 client_secret: str
 organization_id: str
 
-Example: '{"clientId": "vlUwtWfyt1y3SAbS", "clientSecret": "t1BeEpQtW1KFnXf9", "organizationId": "HYCSUwp6TuIJ9c9d"}'
+Example: '{"clientId": "ltDvtiHGLM5QgnB5", "clientSecret": "38xDiylSYkOWSQNb", "organizationId": "Q30wlgkQ6kWcjGS2"}'
 """
 
 result, error = update_twitch_iap_config(

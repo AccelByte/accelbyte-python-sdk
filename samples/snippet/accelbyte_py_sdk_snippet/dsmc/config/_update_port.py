@@ -13,7 +13,7 @@ Definition: ModelsUpdatePortRequest
 name: str
 port: int
 
-Example: '{"name": "AxbW4cLvUetIcdTo", "port": 53}'
+Example: '{"name": "aD5tOb9TZK6onunq", "port": 62}'
 """
 
 result, error = update_port(

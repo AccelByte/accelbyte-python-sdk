@@ -37,7 +37,7 @@ class AdminUpdateClientPermissionV3(Operation):
     """Update Client Permissions (AdminUpdateClientPermissionV3)
 
     **Note for Multi Tenant Mode:**
-    1. The assigned permission(s) should be restricted in the Default Client permission collection.
+    This is for super admin only.
     action code: 10307
 
     Properties:

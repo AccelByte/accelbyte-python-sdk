@@ -12,7 +12,7 @@ body:
 Definition: ModelsCreateTagRequest
 tag: str
 
-Example: '{"tag": "T9w8MbWMiNG7ShT9"}'
+Example: '{"tag": "OQDHSvmYDH3cVdxr"}'
 """
 
 result, error = admin_update_tag(

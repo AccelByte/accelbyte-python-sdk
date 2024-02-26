@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ModelPublicUserUpdateRequestV3
 from ...models import ModelUserResponseV3
-from ...models import ModelUserUpdateRequestV3
 from ...models import RestErrorResponse
 
 
@@ -62,7 +62,7 @@ class PublicUpdateUserV4(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+        body: (body) REQUIRED ModelPublicUserUpdateRequestV3 in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -89,7 +89,7 @@ class PublicUpdateUserV4(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelUserUpdateRequestV3  # REQUIRED in [body]
+    body: ModelPublicUserUpdateRequestV3  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -153,7 +153,7 @@ class PublicUpdateUserV4(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelUserUpdateRequestV3) -> PublicUpdateUserV4:
+    def with_body(self, value: ModelPublicUserUpdateRequestV3) -> PublicUpdateUserV4:
         self.body = value
         return self
 
@@ -170,7 +170,7 @@ class PublicUpdateUserV4(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelUserUpdateRequestV3()
+            result["body"] = ModelPublicUserUpdateRequestV3()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -237,7 +237,7 @@ class PublicUpdateUserV4(Operation):
 
     @classmethod
     def create(
-        cls, body: ModelUserUpdateRequestV3, namespace: str, **kwargs
+        cls, body: ModelPublicUserUpdateRequestV3, namespace: str, **kwargs
     ) -> PublicUpdateUserV4:
         instance = cls()
         instance.body = body
@@ -252,11 +252,11 @@ class PublicUpdateUserV4(Operation):
     ) -> PublicUpdateUserV4:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelUserUpdateRequestV3.create_from_dict(
+            instance.body = ModelPublicUserUpdateRequestV3.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelUserUpdateRequestV3()
+            instance.body = ModelPublicUserUpdateRequestV3()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

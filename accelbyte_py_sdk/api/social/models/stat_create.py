@@ -34,6 +34,13 @@ class SetByEnum(StrEnum):
     SERVER = "SERVER"
 
 
+class GlobalAggregationMethodEnum(StrEnum):
+    LAST = "LAST"
+    MAX = "MAX"
+    MIN = "MIN"
+    TOTAL = "TOTAL"
+
+
 class StatCreate(Model):
     """Stat create (StatCreate)
 
@@ -49,6 +56,8 @@ class StatCreate(Model):
         cycle_ids: (cycleIds) OPTIONAL List[str]
 
         description: (description) OPTIONAL str
+
+        global_aggregation_method: (globalAggregationMethod) OPTIONAL Union[str, GlobalAggregationMethodEnum]
 
         ignore_additional_data_on_value_rejected: (ignoreAdditionalDataOnValueRejected) OPTIONAL bool
 
@@ -73,6 +82,7 @@ class StatCreate(Model):
     stat_code: str  # REQUIRED
     cycle_ids: List[str]  # OPTIONAL
     description: str  # OPTIONAL
+    global_aggregation_method: Union[str, GlobalAggregationMethodEnum]  # OPTIONAL
     ignore_additional_data_on_value_rejected: bool  # OPTIONAL
     increment_only: bool  # OPTIONAL
     is_public: bool  # OPTIONAL
@@ -107,6 +117,12 @@ class StatCreate(Model):
 
     def with_description(self, value: str) -> StatCreate:
         self.description = value
+        return self
+
+    def with_global_aggregation_method(
+        self, value: Union[str, GlobalAggregationMethodEnum]
+    ) -> StatCreate:
+        self.global_aggregation_method = value
         return self
 
     def with_ignore_additional_data_on_value_rejected(self, value: bool) -> StatCreate:
@@ -167,6 +183,12 @@ class StatCreate(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "global_aggregation_method"):
+            result["globalAggregationMethod"] = str(self.global_aggregation_method)
+        elif include_empty:
+            result["globalAggregationMethod"] = Union[
+                str, GlobalAggregationMethodEnum
+            ]()
         if hasattr(self, "ignore_additional_data_on_value_rejected"):
             result["ignoreAdditionalDataOnValueRejected"] = bool(
                 self.ignore_additional_data_on_value_rejected
@@ -212,6 +234,9 @@ class StatCreate(Model):
         stat_code: str,
         cycle_ids: Optional[List[str]] = None,
         description: Optional[str] = None,
+        global_aggregation_method: Optional[
+            Union[str, GlobalAggregationMethodEnum]
+        ] = None,
         ignore_additional_data_on_value_rejected: Optional[bool] = None,
         increment_only: Optional[bool] = None,
         is_public: Optional[bool] = None,
@@ -230,6 +255,8 @@ class StatCreate(Model):
             instance.cycle_ids = cycle_ids
         if description is not None:
             instance.description = description
+        if global_aggregation_method is not None:
+            instance.global_aggregation_method = global_aggregation_method
         if ignore_additional_data_on_value_rejected is not None:
             instance.ignore_additional_data_on_value_rejected = (
                 ignore_additional_data_on_value_rejected
@@ -277,6 +304,15 @@ class StatCreate(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if (
+            "globalAggregationMethod" in dict_
+            and dict_["globalAggregationMethod"] is not None
+        ):
+            instance.global_aggregation_method = str(dict_["globalAggregationMethod"])
+        elif include_empty:
+            instance.global_aggregation_method = Union[
+                str, GlobalAggregationMethodEnum
+            ]()
         if (
             "ignoreAdditionalDataOnValueRejected" in dict_
             and dict_["ignoreAdditionalDataOnValueRejected"] is not None
@@ -355,6 +391,7 @@ class StatCreate(Model):
             "statCode": "stat_code",
             "cycleIds": "cycle_ids",
             "description": "description",
+            "globalAggregationMethod": "global_aggregation_method",
             "ignoreAdditionalDataOnValueRejected": "ignore_additional_data_on_value_rejected",
             "incrementOnly": "increment_only",
             "isPublic": "is_public",
@@ -373,6 +410,7 @@ class StatCreate(Model):
             "statCode": True,
             "cycleIds": False,
             "description": False,
+            "globalAggregationMethod": False,
             "ignoreAdditionalDataOnValueRejected": False,
             "incrementOnly": False,
             "isPublic": False,
@@ -386,6 +424,7 @@ class StatCreate(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "setBy": ["CLIENT", "SERVER"],
+            "globalAggregationMethod": ["LAST", "MAX", "MIN", "TOTAL"],
         }
 
     # endregion static methods

@@ -118,6 +118,16 @@ from ._public_platform_link_v2 import public_platform_link_v2
 from ._public_delete_platform_link_v2 import public_delete_platform_link_v2
 from ._admin_get_bans_type_v3 import admin_get_bans_type_v3
 from ._admin_get_list_ban_reason_v3 import admin_get_list_ban_reason_v3
+from ._admin_list_client_available_permissions import (
+    admin_list_client_available_permissions,
+)
+from ._admin_update_available_permissions_by_module import (
+    admin_update_available_permissions_by_module,
+)
+from ._admin_delete_config_permissions_by_group import (
+    admin_delete_config_permissions_by_group,
+)
+from ._admin_list_client_templates import admin_list_client_templates
 from ._admin_get_input_validations import admin_get_input_validations
 from ._admin_update_input_validations import admin_update_input_validations
 from ._admin_reset_input_validations import admin_reset_input_validations
@@ -383,7 +393,6 @@ from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
 from ._request_target_token_response_v3 import request_target_token_response_v3
-from ._platform_token_refresh_v3_deprecate import platform_token_refresh_v3_deprecate
 from ._admin_get_devices_by_user_v4 import admin_get_devices_by_user_v4
 from ._admin_get_banned_devices_v4 import admin_get_banned_devices_v4
 from ._admin_get_user_device_bans_v4 import admin_get_user_device_bans_v4
@@ -441,6 +450,15 @@ from ._admin_enable_my_email_v4 import admin_enable_my_email_v4
 from ._admin_get_my_enabled_factors_v4 import admin_get_my_enabled_factors_v4
 from ._admin_make_factor_my_default_v4 import admin_make_factor_my_default_v4
 from ._admin_invite_user_v4 import admin_invite_user_v4
+from ._authentication_with_platform_link_v4 import authentication_with_platform_link_v4
+from ._generate_token_by_new_headless_account_v4 import (
+    generate_token_by_new_headless_account_v4,
+)
+from ._verify2fa_code_v4 import verify2fa_code_v4
+from ._platform_token_grant_v4 import platform_token_grant_v4
+from ._simultaneous_login_v4 import simultaneous_login_v4
+from ._token_grant_v4 import token_grant_v4
+from ._request_target_token_response_v4 import request_target_token_response_v4
 from ._public_create_test_user_v4 import public_create_test_user_v4
 from ._public_create_user_v4 import public_create_user_v4
 from ._create_user_from_invitation_v4 import create_user_from_invitation_v4
@@ -582,6 +600,10 @@ commands = [
     public_delete_platform_link_v2,
     admin_get_bans_type_v3,
     admin_get_list_ban_reason_v3,
+    admin_list_client_available_permissions,
+    admin_update_available_permissions_by_module,
+    admin_delete_config_permissions_by_group,
+    admin_list_client_templates,
     admin_get_input_validations,
     admin_update_input_validations,
     admin_reset_input_validations,
@@ -771,7 +793,6 @@ commands = [
     login_sso_client,
     logout_sso_client,
     request_target_token_response_v3,
-    platform_token_refresh_v3_deprecate,
     admin_get_devices_by_user_v4,
     admin_get_banned_devices_v4,
     admin_get_user_device_bans_v4,
@@ -825,6 +846,13 @@ commands = [
     admin_get_my_enabled_factors_v4,
     admin_make_factor_my_default_v4,
     admin_invite_user_v4,
+    authentication_with_platform_link_v4,
+    generate_token_by_new_headless_account_v4,
+    verify2fa_code_v4,
+    platform_token_grant_v4,
+    simultaneous_login_v4,
+    token_grant_v4,
+    request_target_token_response_v4,
     public_create_test_user_v4,
     public_create_user_v4,
     create_user_from_invitation_v4,

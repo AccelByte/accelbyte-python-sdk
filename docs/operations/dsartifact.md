@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Ds Artifact Manager Index (1.8.0)
+# AccelByte Gaming Services Ds Artifact Manager Index (1.10.1)
 
 
 ## Operations
@@ -10,7 +10,7 @@
 ### All Terminated Servers
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /dsartifact/servers/search | GET | listTerminatedServersInAllNamespaces | `false` | [ListTerminatedServersInAllNamespaces](../../accelbyte_py_sdk/api/dsartifact/operations/all_terminated_servers/list_terminated_servers_e0a999.py) | [list_terminated_servers_in_all_namespaces](../../accelbyte_py_sdk/api/dsartifact/wrappers/_all_terminated_servers.py) | [accelbyte_py_sdk_cli dsartifact-list-terminated-servers-in-all-namespaces](../../samples/cli/accelbyte_py_sdk_cli/dsartifact/_list_terminated_servers_in_all_namespaces.py) |
+| /dsartifact/servers/search | GET | listTerminatedServers | `false` | [ListTerminatedServers](../../accelbyte_py_sdk/api/dsartifact/operations/all_terminated_servers/list_terminated_servers.py) | [list_terminated_servers](../../accelbyte_py_sdk/api/dsartifact/wrappers/_all_terminated_servers.py) | [accelbyte_py_sdk_cli dsartifact-list-terminated-servers](../../samples/cli/accelbyte_py_sdk_cli/dsartifact/_list_terminated_servers.py) |
 
 ### Artifact Upload Process Queue
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -40,7 +40,7 @@
 ### Terminated Servers
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /dsartifact/namespaces/{namespace}/servers/search | GET | listTerminatedServers | `false` | [ListTerminatedServers](../../accelbyte_py_sdk/api/dsartifact/operations/terminated_servers/list_terminated_servers.py) | [list_terminated_servers](../../accelbyte_py_sdk/api/dsartifact/wrappers/_terminated_servers.py) | [accelbyte_py_sdk_cli dsartifact-list-terminated-servers](../../samples/cli/accelbyte_py_sdk_cli/dsartifact/_list_terminated_servers.py) |
+| /dsartifact/namespaces/{namespace}/servers/search | GET | listTerminatedServersWithNamespace | `false` | [ListTerminatedServersWithNamespace](../../accelbyte_py_sdk/api/dsartifact/operations/terminated_servers/list_terminated_servers_e10383.py) | [list_terminated_servers_with_namespace](../../accelbyte_py_sdk/api/dsartifact/wrappers/_terminated_servers.py) | [accelbyte_py_sdk_cli dsartifact-list-terminated-servers-with-namespace](../../samples/cli/accelbyte_py_sdk_cli/dsartifact/_list_terminated_servers_with_namespace.py) |
 
 
 ## Models

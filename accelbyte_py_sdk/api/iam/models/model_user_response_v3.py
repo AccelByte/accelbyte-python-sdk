@@ -93,6 +93,8 @@ class ModelUserResponseV3(Model):
 
         platform_user_id: (platformUserId) OPTIONAL str
 
+        skip_login_queue: (skipLoginQueue) OPTIONAL bool
+
         test_account: (testAccount) OPTIONAL bool
 
         unique_display_name: (uniqueDisplayName) OPTIONAL str
@@ -130,6 +132,7 @@ class ModelUserResponseV3(Model):
     platform_id: str  # OPTIONAL
     platform_infos: List[ModelUserPlatformInfo]  # OPTIONAL
     platform_user_id: str  # OPTIONAL
+    skip_login_queue: bool  # OPTIONAL
     test_account: bool  # OPTIONAL
     unique_display_name: str  # OPTIONAL
     user_name: str  # OPTIONAL
@@ -256,6 +259,10 @@ class ModelUserResponseV3(Model):
 
     def with_platform_user_id(self, value: str) -> ModelUserResponseV3:
         self.platform_user_id = value
+        return self
+
+    def with_skip_login_queue(self, value: bool) -> ModelUserResponseV3:
+        self.skip_login_queue = value
         return self
 
     def with_test_account(self, value: bool) -> ModelUserResponseV3:
@@ -398,6 +405,10 @@ class ModelUserResponseV3(Model):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["platformUserId"] = ""
+        if hasattr(self, "skip_login_queue"):
+            result["skipLoginQueue"] = bool(self.skip_login_queue)
+        elif include_empty:
+            result["skipLoginQueue"] = False
         if hasattr(self, "test_account"):
             result["testAccount"] = bool(self.test_account)
         elif include_empty:
@@ -447,6 +458,7 @@ class ModelUserResponseV3(Model):
         platform_id: Optional[str] = None,
         platform_infos: Optional[List[ModelUserPlatformInfo]] = None,
         platform_user_id: Optional[str] = None,
+        skip_login_queue: Optional[bool] = None,
         test_account: Optional[bool] = None,
         unique_display_name: Optional[str] = None,
         user_name: Optional[str] = None,
@@ -492,6 +504,8 @@ class ModelUserResponseV3(Model):
             instance.platform_infos = platform_infos
         if platform_user_id is not None:
             instance.platform_user_id = platform_user_id
+        if skip_login_queue is not None:
+            instance.skip_login_queue = skip_login_queue
         if test_account is not None:
             instance.test_account = test_account
         if unique_display_name is not None:
@@ -645,6 +659,10 @@ class ModelUserResponseV3(Model):
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
             instance.platform_user_id = ""
+        if "skipLoginQueue" in dict_ and dict_["skipLoginQueue"] is not None:
+            instance.skip_login_queue = bool(dict_["skipLoginQueue"])
+        elif include_empty:
+            instance.skip_login_queue = False
         if "testAccount" in dict_ and dict_["testAccount"] is not None:
             instance.test_account = bool(dict_["testAccount"])
         elif include_empty:
@@ -726,6 +744,7 @@ class ModelUserResponseV3(Model):
             "platformId": "platform_id",
             "platformInfos": "platform_infos",
             "platformUserId": "platform_user_id",
+            "skipLoginQueue": "skip_login_queue",
             "testAccount": "test_account",
             "uniqueDisplayName": "unique_display_name",
             "userName": "user_name",
@@ -762,6 +781,7 @@ class ModelUserResponseV3(Model):
             "platformId": False,
             "platformInfos": False,
             "platformUserId": False,
+            "skipLoginQueue": False,
             "testAccount": False,
             "uniqueDisplayName": False,
             "userName": False,

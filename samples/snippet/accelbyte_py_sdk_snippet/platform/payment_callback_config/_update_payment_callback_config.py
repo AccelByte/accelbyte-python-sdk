@@ -13,7 +13,7 @@ dry_run: bool
 notify_url: str
 private_key: str
 
-Example: '{"dryRun": false, "notifyUrl": "beSuw2YO7CofffHk", "privateKey": "6Lfs0ADJih1lENuK"}'
+Example: '{"dryRun": false, "notifyUrl": "fEZnRHPZtxcT1E6T", "privateKey": "8ZgEYQzcZlcpWqiv"}'
 """
 
 result, error = update_payment_callback_config(

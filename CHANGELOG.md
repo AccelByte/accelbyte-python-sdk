@@ -1,3 +1,9 @@
+<a name="v0.61.0"></a>
+## [v0.61.0]
+### chore
+- **github:** update github creds
+
+
 <a name="v0.60.0"></a>
 ## [v0.60.0]
 ### ci

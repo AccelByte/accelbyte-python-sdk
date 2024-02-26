@@ -17,7 +17,7 @@ Definition: List[AccountcommonPermission]
     sched_cron: str
     sched_range: List[str]
 
-Example: '{"Permissions": [{"Action": 92, "Resource": "4thOMhDSdWDgy3Jp", "SchedAction": 21, "SchedCron": "56AMsXm4wlaJ4aZS", "SchedRange": ["kVXMxrq7OVCMIL6Y", "70WQASlJ4kJn5nJN", "bzYsgVxgfbCO0p1R"]}, {"Action": 49, "Resource": "MZF9GChIev7d8BCT", "SchedAction": 34, "SchedCron": "OArynH5LUxj83ReY", "SchedRange": ["biZ1k46Y1mmkliRS", "LgWFcCMB9qUjguIr", "aikWuJ9UaZbUYOai"]}, {"Action": 58, "Resource": "64n2tvr1CbHoa3gs", "SchedAction": 80, "SchedCron": "gE3h8LgEadNsTgn2", "SchedRange": ["r6rNDM7BebusoeTm", "PA3EKjYACyGjHCom", "hcUSdqLGz3shOLlQ"]}]}'
+Example: '{"Permissions": [{"Action": 98, "Resource": "xQCmIjCErSGPbOyl", "SchedAction": 85, "SchedCron": "UisRY5XUUK3ZyKKL", "SchedRange": ["Lm7PnpgIUKYigJcZ", "SkV6EyrZ7RYwSdEJ", "d1487EPwSP3h242u"]}, {"Action": 15, "Resource": "9nTBpLDIFNNSAmhj", "SchedAction": 82, "SchedCron": "pVsGV4634bvHVbmK", "SchedRange": ["Ph5zdv491mTcoL7Q", "SRJKjMub4xMHI26u", "e1mHgNcPoUiZJF9O"]}, {"Action": 20, "Resource": "S0B5fLZpaluXeOnG", "SchedAction": 40, "SchedCron": "MqhevvFwFTNdz9T9", "SchedRange": ["4dnFlUCGc4aGkOQo", "y6pQgOz2oR71xddU", "MEYw0QzDokp7eSXp"]}]}'
 """
 
 result, error = admin_update_user_permission_v3(

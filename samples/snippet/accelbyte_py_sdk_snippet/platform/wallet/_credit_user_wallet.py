@@ -18,7 +18,7 @@ origin: str
 reason: str
 source: str
 
-Example: '{"amount": 46, "expireAt": "1987-10-03T00:00:00Z", "metadata": {"XJtDrxge4zSAsFJQ": {}, "eIvcs2qB0AyudnYW": {}, "tEONjTnlJpM17zps": {}}, "origin": "Playstation", "reason": "fhr5nOcOhpgiiiio", "source": "TRADE"}'
+Example: '{"amount": 40, "expireAt": "1978-04-21T00:00:00Z", "metadata": {"8UyNZaw2wH3pfir3": {}, "RfMFaAP5nds9Bsth": {}, "FWoWnD96ogFoetNe": {}}, "origin": "Nintendo", "reason": "XxSM9sjeemIlWkaA", "source": "PURCHASE"}'
 """
 
 result, error = credit_user_wallet(

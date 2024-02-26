@@ -13,7 +13,7 @@ template_content: str
 template_language: str
 template_slug: str
 
-Example: '{"templateContent": "HKDh9TyQQ1Dc9SIC", "templateLanguage": "lMpowF0gcsHinn4q", "templateSlug": "Kt54n3zJeYtHdvkl"}'
+Example: '{"templateContent": "I2B2xi5SmkNfCT6U", "templateLanguage": "9ffG715CP7TZYc5k", "templateSlug": "hya7hyYdvgD8doLC"}'
 """
 
 result, error = create_notification_template_v1_admin(

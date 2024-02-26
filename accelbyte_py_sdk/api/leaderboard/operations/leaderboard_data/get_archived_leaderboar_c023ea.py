@@ -62,7 +62,7 @@ class GetArchivedLeaderboardRankingDataV1Handler(Operation):
     Responses:
         200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (Archived leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 71239: leaderboard is not archived)
 
         401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
@@ -212,7 +212,7 @@ class GetArchivedLeaderboardRankingDataV1Handler(Operation):
 
         200: OK - List[ModelsArchiveLeaderboardSignedURLResponse] (Archived leaderboard retrieved)
 
-        400: Bad Request - ResponseErrorResponse
+        400: Bad Request - ResponseErrorResponse (20002: validation error | 71239: leaderboard is not archived)
 
         401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 

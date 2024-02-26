@@ -24,7 +24,7 @@ redirect_uri: str
 secret: str
 two_factor_enabled: bool
 
-Example: '{"ClientId": "aBPChUEz21gKJ0RV", "ClientName": "278B3TJ3YPxr1REd", "ClientPermissions": [{"Action": 75, "Resource": "K9QwDYf63i5Ees6U", "SchedAction": 33, "SchedCron": "ntdzXu7tEZwjdfGG", "SchedRange": ["ssYoqKbkHkp4VW9r", "IGfE7zvNY9A8o8fd", "TIDhVDNOJyVNIh7y"]}, {"Action": 6, "Resource": "H3Bin1dm29Uj6pRa", "SchedAction": 51, "SchedCron": "TT9G6Pf1jaBIsPrN", "SchedRange": ["0fhM8x8OStiOq7QN", "OccFUh01WACn1EkO", "gLiwZd0hYgfet5HR"]}, {"Action": 33, "Resource": "mIJfcRskB83LTmtL", "SchedAction": 40, "SchedCron": "jpaqqv8xG5SGuHHe", "SchedRange": ["OrHUxqAyjgfAOmDB", "cOpwFGry2NNx3Glg", "0AzDupbofUQPYddY"]}], "Namespace": "BEMYm6IAU8bCEbgC", "RedirectUri": "1hxMydGbEH7f5PiB", "Secret": "krRQVsGey49D1QpF", "TwoFactorEnabled": true}'
+Example: '{"ClientId": "cn2mCtTYecQqfkqy", "ClientName": "v55CK8lOGZ4atEq3", "ClientPermissions": [{"Action": 92, "Resource": "rG4aFN4WtBXhCavK", "SchedAction": 43, "SchedCron": "eCiWu0IJNP9pNP48", "SchedRange": ["buipYEr1bkktU6UU", "vnazgYNyMF0fMxQZ", "HAiPehwAnSPVnPz9"]}, {"Action": 43, "Resource": "sOkaBQ3WHsElbRDU", "SchedAction": 57, "SchedCron": "o973eAJmA6zyleLr", "SchedRange": ["6bECu1PxeZK3sh2k", "tP61oZUmvmEzM6UP", "n0tP2PwpMoPOq3mM"]}, {"Action": 67, "Resource": "kC0Ngdf4xykLmsYz", "SchedAction": 66, "SchedCron": "BKhDHW8V4fVUD1V5", "SchedRange": ["Cugw0bQKAUBcfnme", "Uq0OGgVUQZG8tlHn", "UtzptI7LrAPWIquw"]}], "Namespace": "utvAGmJKOmQNiAo4", "RedirectUri": "a8aQdwz9Q3E7zJBy", "Secret": "dU9NHlS2XpDb1DKX", "TwoFactorEnabled": false}'
 """
 
 result, error = create_client_by_namespace(

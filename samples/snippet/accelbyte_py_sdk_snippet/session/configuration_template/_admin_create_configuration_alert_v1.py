@@ -12,7 +12,7 @@ body:
 Definition: ApimodelsConfigAlertRequestCreate
 duration_days: int
 
-Example: '{"durationDays": 90}'
+Example: '{"durationDays": 61}'
 """
 
 result, error = admin_create_configuration_alert_v1(

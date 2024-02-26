@@ -50,6 +50,7 @@ from ..models import ModelInviteUserResponseV3
 from ..models import ModelListUserRolesV4Response
 from ..models import ModelListValidUserIDResponseV4
 from ..models import ModelPublicInviteUserRequestV4
+from ..models import ModelPublicUserUpdateRequestV3
 from ..models import ModelRemoveUserRoleV4Request
 from ..models import ModelUserPublicInfoResponseV4
 from ..models import ModelUserResponseV3
@@ -5504,7 +5505,7 @@ async def public_update_user_email_address_v4_async(
 
 @same_doc_as(PublicUpdateUserV4)
 def public_update_user_v4(
-    body: ModelUserUpdateRequestV3,
+    body: ModelPublicUserUpdateRequestV3,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5536,7 +5537,7 @@ def public_update_user_v4(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+        body: (body) REQUIRED ModelPublicUserUpdateRequestV3 in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5566,7 +5567,7 @@ def public_update_user_v4(
 
 @same_doc_as(PublicUpdateUserV4)
 async def public_update_user_v4_async(
-    body: ModelUserUpdateRequestV3,
+    body: ModelPublicUserUpdateRequestV3,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5598,7 +5599,7 @@ async def public_update_user_v4_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+        body: (body) REQUIRED ModelPublicUserUpdateRequestV3 in body
 
         namespace: (namespace) REQUIRED str in path
 

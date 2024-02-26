@@ -13,12 +13,13 @@ Definition: StatUpdate
 cycle_ids: List[str]
 default_value: float
 description: str
+global_aggregation_method: str
 ignore_additional_data_on_value_rejected: bool
 is_public: bool
 name: str
 tags: List[str]
 
-Example: '{"cycleIds": ["8Od5OJbIVD8DLQMG", "uAPHsHa85bZmxrlO", "7ggZXqNSsZjxIu9a"], "defaultValue": 0.3428555021083374, "description": "yFgYj5tjrKvd59Tg", "ignoreAdditionalDataOnValueRejected": false, "isPublic": false, "name": "G6aZaqUajjd0k5Do", "tags": ["0BQsUfZAIs79VOhf", "irtM8E8uHzrqmlgp", "izGSEmnAzIPYsE42"]}'
+Example: '{"cycleIds": ["apYo27VXkQ0Xu2ez", "kmtCmJGLDhIEz9wI", "VPAD2mUO9XKaNpm3"], "defaultValue": 0.6223166988509438, "description": "ILuMwORF7wh1KImS", "globalAggregationMethod": "MAX", "ignoreAdditionalDataOnValueRejected": true, "isPublic": true, "name": "4EyyLgQIcmA8zJ4z", "tags": ["DMVKTJeahNBQkBNV", "9aiOOQCTQn5L7ruA", "czihdaIqUGGXucVB"]}'
 """
 
 result, error = update_stat(

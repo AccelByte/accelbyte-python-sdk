@@ -12,7 +12,7 @@ body:
 Definition: UserProfileBulkRequest
 user_ids: List[str]
 
-Example: '{"userIds": ["jWntrh17JsGlSzzT", "nvKLBEQcf2w5SHOG", "NAV8eFiNERjcrqbv"]}'
+Example: '{"userIds": ["GSKowGmB7QHWCRLO", "EfBShLDEVJ7r8e11", "znjDBt27UgkBzWRe"]}'
 """
 
 result, error = admin_get_user_profile_public_info_by_ids(

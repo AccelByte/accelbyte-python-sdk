@@ -12,7 +12,7 @@ Definition: ApiMuteUserRequest
 duration: int
 user_id: str
 
-Example: '{"duration": 36, "userId": "4vDATF3bOeW6cmGv"}'
+Example: '{"duration": 34, "userId": "7HUsFBwV9VDcPb4k"}'
 """
 
 result, error = public_mute_user(

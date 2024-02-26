@@ -8,15 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ds Artifact Manager."""
 
-__version__ = "1.8.0"
+__version__ = "1.10.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 # all_terminated_servers
-from .wrappers import list_terminated_servers_in_all_namespaces
-from .wrappers import list_terminated_servers_in_all_namespaces_async
+from .wrappers import list_terminated_servers
+from .wrappers import list_terminated_servers_async
 
 # artifact_upload_process_queue
 from .wrappers import delete_active_queue
@@ -51,5 +51,5 @@ from .wrappers import public_get_messages
 from .wrappers import public_get_messages_async
 
 # terminated_servers
-from .wrappers import list_terminated_servers
-from .wrappers import list_terminated_servers_async
+from .wrappers import list_terminated_servers_with_namespace
+from .wrappers import list_terminated_servers_with_namespace_async

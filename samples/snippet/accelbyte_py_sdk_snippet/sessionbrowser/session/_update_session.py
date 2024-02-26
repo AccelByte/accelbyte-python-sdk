@@ -12,7 +12,7 @@ body:
 Definition: ModelsUpdateSessionRequest
 game_max_player: int
 
-Example: '{"game_max_player": 46}'
+Example: '{"game_max_player": 77}'
 """
 
 result, error = update_session(

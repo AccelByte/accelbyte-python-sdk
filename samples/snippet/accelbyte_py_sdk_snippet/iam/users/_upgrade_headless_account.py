@@ -13,7 +13,7 @@ Definition: ModelUpgradeHeadlessAccountRequest
 login_id: str
 password: str
 
-Example: '{"LoginID": "KGqqsQA09FAgaCMe", "Password": "Phq9FRQMGhBIFxFv"}'
+Example: '{"LoginID": "k5proiZoFHKx6wA3", "Password": "5piWut7mKyQ0BWON"}'
 """
 
 result, error = upgrade_headless_account(

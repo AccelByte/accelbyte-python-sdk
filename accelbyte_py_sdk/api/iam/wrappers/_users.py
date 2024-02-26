@@ -80,6 +80,7 @@ from ..models import ModelPlatformUserIDRequest
 from ..models import ModelPublicUserInformationResponseV3
 from ..models import ModelPublicUserResponse
 from ..models import ModelPublicUserResponseV3
+from ..models import ModelPublicUserUpdateRequestV3
 from ..models import ModelPublicUsersResponse
 from ..models import ModelResetPasswordRequest
 from ..models import ModelResetPasswordRequestV3
@@ -6187,6 +6188,7 @@ def admin_search_user_v3(
     platform_by: Optional[str] = None,
     platform_id: Optional[str] = None,
     query: Optional[str] = None,
+    skip_login_queue: Optional[bool] = None,
     start_date: Optional[str] = None,
     test_account: Optional[bool] = None,
     namespace: Optional[str] = None,
@@ -6247,6 +6249,8 @@ def admin_search_user_v3(
 
         query: (query) OPTIONAL str in query
 
+        skip_login_queue: (skipLoginQueue) OPTIONAL bool in query
+
         start_date: (startDate) OPTIONAL str in query
 
         test_account: (testAccount) OPTIONAL bool in query
@@ -6275,6 +6279,7 @@ def admin_search_user_v3(
         platform_by=platform_by,
         platform_id=platform_id,
         query=query,
+        skip_login_queue=skip_login_queue,
         start_date=start_date,
         test_account=test_account,
         namespace=namespace,
@@ -6292,6 +6297,7 @@ async def admin_search_user_v3_async(
     platform_by: Optional[str] = None,
     platform_id: Optional[str] = None,
     query: Optional[str] = None,
+    skip_login_queue: Optional[bool] = None,
     start_date: Optional[str] = None,
     test_account: Optional[bool] = None,
     namespace: Optional[str] = None,
@@ -6352,6 +6358,8 @@ async def admin_search_user_v3_async(
 
         query: (query) OPTIONAL str in query
 
+        skip_login_queue: (skipLoginQueue) OPTIONAL bool in query
+
         start_date: (startDate) OPTIONAL str in query
 
         test_account: (testAccount) OPTIONAL bool in query
@@ -6380,6 +6388,7 @@ async def admin_search_user_v3_async(
         platform_by=platform_by,
         platform_id=platform_id,
         query=query,
+        skip_login_queue=skip_login_queue,
         start_date=start_date,
         test_account=test_account,
         namespace=namespace,
@@ -15759,7 +15768,7 @@ async def public_list_user_id_by_platform_user_i_ds_v3_async(
 
 @same_doc_as(PublicPartialUpdateUserV3)
 def public_partial_update_user_v3(
-    body: ModelUserUpdateRequestV3,
+    body: ModelPublicUserUpdateRequestV3,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -15790,7 +15799,7 @@ def public_partial_update_user_v3(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+        body: (body) REQUIRED ModelPublicUserUpdateRequestV3 in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -15820,7 +15829,7 @@ def public_partial_update_user_v3(
 
 @same_doc_as(PublicPartialUpdateUserV3)
 async def public_partial_update_user_v3_async(
-    body: ModelUserUpdateRequestV3,
+    body: ModelPublicUserUpdateRequestV3,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -15851,7 +15860,7 @@ async def public_partial_update_user_v3_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+        body: (body) REQUIRED ModelPublicUserUpdateRequestV3 in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -19571,7 +19580,7 @@ async def update_user_async(
 
 @same_doc_as(UpdateUserV3)
 def update_user_v3(
-    body: ModelUserUpdateRequestV3,
+    body: ModelPublicUserUpdateRequestV3,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -19606,7 +19615,7 @@ def update_user_v3(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+        body: (body) REQUIRED ModelPublicUserUpdateRequestV3 in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -19636,7 +19645,7 @@ def update_user_v3(
 
 @same_doc_as(UpdateUserV3)
 async def update_user_v3_async(
-    body: ModelUserUpdateRequestV3,
+    body: ModelPublicUserUpdateRequestV3,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -19671,7 +19680,7 @@ async def update_user_v3_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserUpdateRequestV3 in body
+        body: (body) REQUIRED ModelPublicUserUpdateRequestV3 in body
 
         namespace: (namespace) REQUIRED str in path
 

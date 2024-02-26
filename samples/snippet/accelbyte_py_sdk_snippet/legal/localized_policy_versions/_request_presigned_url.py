@@ -15,7 +15,7 @@ Definition: UploadPolicyVersionAttachmentRequest
 content_md5: str
 content_type: str
 
-Example: '{"contentMD5": "78VmTsu3C9WQuW0i", "contentType": "L9l6Hkj3IrfOIWQ0"}'
+Example: '{"contentMD5": "S8BJdnnBNjYJhpyW", "contentType": "99ExSzmc8k8x7D38"}'
 """
 
 result, error = request_presigned_url(

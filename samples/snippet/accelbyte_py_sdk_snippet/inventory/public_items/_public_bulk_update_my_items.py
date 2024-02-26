@@ -15,7 +15,7 @@ slot_id: str
 source_item_id: str
 tags: List[str]
 
-Example: '[{"customAttributes": {"5XxiGnCeTjkj9Me7": {}, "N7TwpRxQMmmHNsu9": {}, "t4V9OejBhTxsUf0N": {}}, "slotId": "75Yp2EuWPTgsd78f", "sourceItemId": "pRVGOiGVsMsUlcdp", "tags": ["qj0aLQwDf4z0sin7", "jHCsWWKpAJxs3Pch", "NZMk3zaFKKqNG2fj"]}, {"customAttributes": {"gtnypHffjw97yLgE": {}, "hC6PIJpsOlUePTvf": {}, "Ss06UdhOYCjNrB0U": {}}, "slotId": "lmiY3as2xFy3O48l", "sourceItemId": "9J3RsBbS4rRUirOl", "tags": ["cro8taXU1WnbHIVO", "Vz6K0ZF8le1v3p6K", "uBT3ToLRL4LD66yB"]}, {"customAttributes": {"729O0vsbh1qWX6KT": {}, "qrpeWuOYmeE6BJr2": {}, "FfKVzZlAjcypBujc": {}}, "slotId": "sbTU7XpXSLhjKMD5", "sourceItemId": "DBCVcaZjBY1IBaYd", "tags": ["9YqXuG36RFOvNa4t", "dM7huQu4RHNxgQrh", "3WC07HcJY29oxCJ2"]}]'
+Example: '[{"customAttributes": {"7lkJ3uLMpeBAx8IK": {}, "ZbmsxRsGGwBKnQBh": {}, "xJl9CfYA7Zn6RhQT": {}}, "slotId": "VGsupvVYyIPN3zW2", "sourceItemId": "ZnEuqfNkhzKSWleP", "tags": ["R5WekFBFtlxSuTBT", "RWzgISrX9LvxRMRs", "WLPKAC9T6wdSqQvz"]}, {"customAttributes": {"wX0KoIHNYkiYxOHB": {}, "5hlpNQSYcYePbMfH": {}, "xklN5a6BokTpmQu3": {}}, "slotId": "PSTGcf1hWZkex9N8", "sourceItemId": "KBQliGWHZq8FCjsb", "tags": ["SExWD4hlomTBPNBe", "cM3mvKHb1n4Ol2kp", "cbrGllVCrkegUOUO"]}, {"customAttributes": {"nyXR1tozD9Levw9W": {}, "cuv2qXEbpEIe40qD": {}, "VsRkcp0azHTQm1NT": {}}, "slotId": "FbWsFpCuKsoxUCn5", "sourceItemId": "FIToCSW53vKpETOi", "tags": ["Jog5rKhqwkLuKdIS", "zXUbbAj5NohNcB45", "jSYK6IOnB5Q4ezfK"]}]'
 """
 
 result, error = public_bulk_update_my_items(

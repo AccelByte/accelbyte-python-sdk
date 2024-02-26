@@ -13,7 +13,7 @@ Definition: ModelsChannelRequest
 id_: str
 name: str
 
-Example: '{"id": "T12OVfVOQ4RKMxzL", "name": "7Y7FZ7w6HerbGFcR"}'
+Example: '{"id": "cr2dYQU0Q8XwRxrz", "name": "4IIrucj7LndTliO0"}'
 """
 
 result, error = admin_create_channel(

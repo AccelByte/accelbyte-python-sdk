@@ -21,7 +21,7 @@ name: str
 save_inbox: bool
 send_notification: bool
 
-Example: '{"enabled": false, "expiresIn": 1, "hook": {"driver": "KAFKA", "params": "eG0A7nqUAhoiyF24"}, "jsonSchema": {"ZWFpfYcJEFi3AE4w": {}, "1GLSqY6RB8aArmBR": {}, "ATZwIAfe1QFUl8OU": {}}, "name": "uKH4vJWgNtfjngX5", "saveInbox": true, "sendNotification": true}'
+Example: '{"enabled": false, "expiresIn": 59, "hook": {"driver": "KAFKA", "params": "DR84TRyqLpzkzfVa"}, "jsonSchema": {"6zPM4YCVHVvGJJkD": {}, "oikgxLkdm5dvdk1q": {}, "Ob2rYcDzmefGxTDX": {}}, "name": "mY778B83CLkghJ5m", "saveInbox": true, "sendNotification": true}'
 """
 
 result, error = admin_add_inbox_category(

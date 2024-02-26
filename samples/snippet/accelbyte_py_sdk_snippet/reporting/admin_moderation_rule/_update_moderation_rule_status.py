@@ -11,7 +11,7 @@ body:
 Definition: RestapiModerationRuleActiveRequest
 active: bool
 
-Example: '{"active": true}'
+Example: '{"active": false}'
 """
 
 result, error = update_moderation_rule_status(

@@ -9,7 +9,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 body:
 Definition: List[str]
 
-Example: '["vwEEgtpJtkNc5aKC", "5Upcq860KhflleTd", "nChEjKvGPLyaI4Pm"]'
+Example: '["WBIm0lX9DKcDh2Oz", "6I0zf8CB7bDa9sKC", "Y18T7iFBMFZqyC8H"]'
 """
 
 result, error = admin_delete_role_permissions_v4(

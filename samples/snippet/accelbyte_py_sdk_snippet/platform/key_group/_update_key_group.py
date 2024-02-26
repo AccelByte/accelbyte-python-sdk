@@ -16,7 +16,7 @@ name: str
 status: str
 tags: List[str]
 
-Example: '{"description": "jliW5W9oIJLHzI6S", "name": "mZrl1g5OWianun5f", "status": "INACTIVE", "tags": ["VnHx0pzjApYSlMQL", "Q8zMuhGYfWS1TplI", "l62zjY7tFlZcU0Ev"]}'
+Example: '{"description": "5rQhzHiVkSlR4NY7", "name": "QDIFvJAWL28XeGim", "status": "ACTIVE", "tags": ["6eEtAmuoKY9aR5t8", "6BRYIygQiPsNxY2U", "YDvsMHjAUsqOGt7Q"]}'
 """
 
 result, error = update_key_group(

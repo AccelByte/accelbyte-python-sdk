@@ -39,10 +39,10 @@ dsartifact-report-failed-upload 'QVqGj6oDLjWjkY1a' 'XlFcDtgOjchIua5t' --login_wi
 dsartifact-delete-queue 'WEIC32ogW7olvbTg' 'rhRTcPiSuL0Sly6X' --login_with_auth "Bearer foo"
 dsartifact-list-all-active-queue --login_with_auth "Bearer foo"
 dsartifact-list-all-queue --login_with_auth "Bearer foo"
-dsartifact-list-terminated-servers --login_with_auth "Bearer foo"
+dsartifact-list-terminated-servers-with-namespace --login_with_auth "Bearer foo"
 dsartifact-download-server-artifacts 'M4OI18mAQLnzjMf8' --login_with_auth "Bearer foo"
 dsartifact-check-server-artifact 'GZ2WBZqxYG3aREAu' --login_with_auth "Bearer foo"
-dsartifact-list-terminated-servers-in-all-namespaces --login_with_auth "Bearer foo"
+dsartifact-list-terminated-servers --login_with_auth "Bearer foo"
 dsartifact-public-get-messages --login_with_auth "Bearer foo"
 exit()
 END
@@ -143,11 +143,11 @@ $PYTHON -m $MODULE 'dsartifact-list-all-queue' \
     > test.out 2>&1
 eval_tap $? 11 'ListAllQueue' test.out
 
-#- 12 ListTerminatedServers
-$PYTHON -m $MODULE 'dsartifact-list-terminated-servers' \
+#- 12 ListTerminatedServersWithNamespace
+$PYTHON -m $MODULE 'dsartifact-list-terminated-servers-with-namespace' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 12 'ListTerminatedServers' test.out
+eval_tap $? 12 'ListTerminatedServersWithNamespace' test.out
 
 #- 13 DownloadServerArtifacts
 $PYTHON -m $MODULE 'dsartifact-download-server-artifacts' \
@@ -163,11 +163,11 @@ $PYTHON -m $MODULE 'dsartifact-check-server-artifact' \
     > test.out 2>&1
 eval_tap $? 14 'CheckServerArtifact' test.out
 
-#- 15 ListTerminatedServersInAllNamespaces
-$PYTHON -m $MODULE 'dsartifact-list-terminated-servers-in-all-namespaces' \
+#- 15 ListTerminatedServers
+$PYTHON -m $MODULE 'dsartifact-list-terminated-servers' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 15 'ListTerminatedServersInAllNamespaces' test.out
+eval_tap $? 15 'ListTerminatedServers' test.out
 
 #- 16 PublicGetMessages
 $PYTHON -m $MODULE 'dsartifact-public-get-messages' \

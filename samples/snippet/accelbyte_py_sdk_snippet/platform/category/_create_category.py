@@ -14,7 +14,7 @@ Definition: CategoryCreate
 category_path: str
 localization_display_names: Dict[str, str]
 
-Example: '{"categoryPath": "rQ5p5KLJBdqIyJIs", "localizationDisplayNames": {"CwMHBPljlGgYzi64": "tOka4TMWEMGUc7rU", "Rl0YDvMHcP6HoKpR": "TWWiKLNJs6Ig3sld", "S18o8nolFeuzphSX": "1YhmijQwdwFBengr"}}'
+Example: '{"categoryPath": "L35cTcsE73KpfYhv", "localizationDisplayNames": {"slQ7DSxEo9NQXfWH": "UnlgsiCLhfu1rbYz", "h06PoFNkKkCp4nve": "OgINzdmOK4uD9yxl", "gBcCJG4NqhvwQZoy": "uEXXRuX7vdYIcIAL"}}'
 """
 
 result, error = create_category(

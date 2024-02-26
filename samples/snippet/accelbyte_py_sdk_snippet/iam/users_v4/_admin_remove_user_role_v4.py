@@ -12,7 +12,7 @@ Definition: ModelRemoveUserRoleV4Request
 assigned_namespaces: List[str]
 role_id: str
 
-Example: '{"assignedNamespaces": ["32sbL7ggWwGgbbSH", "GMlfBDhKHmCFMuwL", "zshPGsz46Y1PwScI"], "roleId": "c95VSAp33P0NACXe"}'
+Example: '{"assignedNamespaces": ["HgMLjq1aidEFPvL5", "eeGXP8wsLg3D7eqj", "XNzBZeYI4HGsUmCs"], "roleId": "5ZMrVa15vLOKblMs"}'
 """
 
 result, error = admin_remove_user_role_v4(
