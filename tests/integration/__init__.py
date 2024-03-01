@@ -3,6 +3,7 @@ from .docs import DocsTestCase
 from .api.achievement import AchievementTestCase
 from .api.ams import AMSTestCase
 from .api.basic import BasicTestCase
+from .api.challenge import ChallengeTestCase
 from .api.chat import ChatTestCase
 from .api.cloudsave import CloudSaveTestCase
 
