@@ -37,7 +37,7 @@ pipeline {
     }
     stage('Lint') {
       agent {
-        label "justice-codegen-sdk"
+        label "extend-builder-ci"
       }
       stages {
         stage('Lint Commits') {
@@ -73,7 +73,7 @@ pipeline {
     }
     stage('Test') {
       agent {
-        label "justice-codegen-sdk"
+        label "extend-builder-ci"
       }
       stages {
         stage('Core Tests') {
