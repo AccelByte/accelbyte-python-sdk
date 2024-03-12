@@ -10,7 +10,7 @@ from typing import Awaitable, Callable, Dict, List, Optional, Union
 
 import websockets
 
-from ._utils import create_basic_authentication
+from ._utils import create_basic_authentication, generate_websocket_message_id
 
 _LOGGER = logging.getLogger("accelbyte_py_sdk.ws")
 
@@ -51,6 +51,7 @@ class WebsocketsWSClient:
         access_token: Optional[str] = None,
         uri_prefix: Optional[str] = None,
         uri_suffix: Optional[str] = None,
+        **kwargs
     ) -> None:
         # pylint: disable=no-member
 
@@ -145,3 +146,12 @@ class WebsocketsWSClient:
                 if isinstance(message, bytes):
                     message = message.decode("utf-8")
                 await self._message_queue.put(message)
+
+    def on_access_token_changed(self, access_token: Optional[str]) -> None:
+        if not access_token:
+            return
+        message = f"type: refreshTokenRequest\n" \
+                  f"id: {generate_websocket_message_id()}\n" \
+                  f"token: {access_token}"
+        loop = asyncio.get_running_loop()
+        loop.create_task(self.send(message))
