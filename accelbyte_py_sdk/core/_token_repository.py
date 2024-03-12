@@ -5,10 +5,17 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from datetime import datetime, timedelta
-from typing import Any, Optional
+from typing import Any, List, Optional
+from typing import Protocol, runtime_checkable
 
 from ._utils import get_member
 from ._utils import clamp
+
+
+@runtime_checkable
+class TokenRepositoryObserver(Protocol):
+    def on_access_token_changed(self, access_token: Optional[str]) -> None:
+        ...
 
 
 class TokenRepository(ABC):
@@ -65,11 +72,20 @@ class TokenRepository(ABC):
         seconds_till_expiry = self.get_seconds_till_expiry()
         return seconds_till_expiry <= threshold
 
+    # noinspection PyMethodMayBeStatic
+    def register_observer(self, observer: TokenRepositoryObserver) -> bool:
+        return True
+
+    # noinspection PyMethodMayBeStatic
+    def unregister_observer(self, observer: TokenRepositoryObserver) -> bool:
+        return True
+
 
 class MyTokenRepository(TokenRepository):
     def __init__(self, token: Any):
-        self._token = None
-        self._token_issued_time = None
+        self._token: Any = None
+        self._token_issued_time: Optional[datetime] = None
+        self._observers: List[TokenRepositoryObserver] = []
 
         self.store_token(token)
 
@@ -83,19 +99,38 @@ class MyTokenRepository(TokenRepository):
         if self._token is not None:
             self._token = None
             self._token_issued_time = None
+            access_token = self.get_access_token()
+            for observer in self._observers:
+                observer.on_access_token_changed(access_token)
             return True
         return True
 
     def store_token(self, token: Any) -> bool:
         self._token = token
         self._token_issued_time = datetime.utcnow()
+        access_token = self.get_access_token()
+        for observer in self._observers:
+            observer.on_access_token_changed(access_token)
+        return True
+
+    def register_observer(self, observer: TokenRepositoryObserver) -> bool:
+        if observer in self._observers:
+            return False
+        self._observers.append(observer)
+        return True
+
+    def unregister_observer(self, observer: TokenRepositoryObserver) -> bool:
+        if observer not in self._observers:
+            return False
+        self._observers.remove(observer)
         return True
 
 
 class InMemoryTokenRepository(TokenRepository):
     def __init__(self):
-        self._token = None
-        self._token_issued_time = None
+        self._token: Any = None
+        self._token_issued_time: Optional[datetime] = None
+        self._observers: List[TokenRepositoryObserver] = []
 
     def get_token(self) -> Any:
         return self._token
@@ -107,12 +142,30 @@ class InMemoryTokenRepository(TokenRepository):
         if self._token is not None:
             self._token = None
             self._token_issued_time = None
+            access_token = self.get_access_token()
+            for observer in self._observers:
+                observer.on_access_token_changed(access_token)
             return True
         return True
 
     def store_token(self, token: Any) -> bool:
         self._token = token
         self._token_issued_time = datetime.utcnow()
+        access_token = self.get_access_token()
+        for observer in self._observers:
+            observer.on_access_token_changed(access_token)
+        return True
+
+    def register_observer(self, observer: TokenRepositoryObserver) -> bool:
+        if observer in self._observers:
+            return False
+        self._observers.append(observer)
+        return True
+
+    def unregister_observer(self, observer: TokenRepositoryObserver) -> bool:
+        if observer not in self._observers:
+            return False
+        self._observers.remove(observer)
         return True
 
 
