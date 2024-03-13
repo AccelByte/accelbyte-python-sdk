@@ -215,7 +215,7 @@ def create_namespace(
     Responses:
         201: Created - NamespaceInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: Unable to {action}: Namespace contains invalid character(s) | 11339: Unable to {action}: Display name contains invalid character(s))
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: Unable to {action}: Namespace contains invalid character(s) | 11339: Unable to {action}: Display name contains invalid character(s) | 11340: Unable to {action}: The maximum number of games namespace for studio:{studio} has been exceeded)
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 
@@ -267,7 +267,7 @@ async def create_namespace_async(
     Responses:
         201: Created - NamespaceInfo (Successful operation)
 
-        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: Unable to {action}: Namespace contains invalid character(s) | 11339: Unable to {action}: Display name contains invalid character(s))
+        400: Bad Request - ValidationErrorEntity (20002: validation error | 20019: unable to parse request body | 11338: Unable to {action}: Namespace contains invalid character(s) | 11339: Unable to {action}: Display name contains invalid character(s) | 11340: Unable to {action}: The maximum number of games namespace for studio:{studio} has been exceeded)
 
         401: Unauthorized - ErrorEntity (20001: unauthorized)
 

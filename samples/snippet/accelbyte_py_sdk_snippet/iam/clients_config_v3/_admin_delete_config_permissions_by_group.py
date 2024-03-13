@@ -12,7 +12,7 @@ Definition: ClientmodelPermissionSetDeleteGroupRequest
 group_id: str
 module_id: str
 
-Example: '{"groupId": "BUfXj6vTIG1DIcDl", "moduleId": "Pdmy0WhZnSZPx4K6"}'
+Example: '{"groupId": "4pN4YLgI1ud6EXRr", "moduleId": "peAG9WowbAiXZoNa"}'
 """
 
 result, error = admin_delete_config_permissions_by_group(

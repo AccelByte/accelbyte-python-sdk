@@ -30,9 +30,9 @@ if [ "$BATCH" = true ] ; then
 
 $PYTHON -m $MODULE 'start-interactive-session' --continue_on_error '--writer=tap' << END
 challenge-admin-get-challenges --login_with_auth "Bearer foo"
-challenge-admin-create-challenge '{"activeGoalsPerRotation": 62, "assignmentRule": "RANDOMIZED", "code": "AxcVpFrttufHIRdH", "description": "9UzVRiXbqlAw7r6W", "endDate": "1999-02-03T00:00:00Z", "goalsVisibility": "PERIODONLY", "name": "HpzSn3ZPUdc0qh4n", "rotation": "MONTHLY", "startDate": "1978-07-26T00:00:00Z"}' --login_with_auth "Bearer foo"
+challenge-admin-create-challenge '{"activeGoalsPerRotation": 62, "assignmentRule": "RANDOMIZED", "code": "AxcVpFrttufHIRdH", "description": "9UzVRiXbqlAw7r6W", "endAfter": 9, "endDate": "1976-10-04T00:00:00Z", "goalsVisibility": "SHOWALL", "name": "pzSn3ZPUdc0qh4n8", "rotation": "MONTHLY", "startDate": "1978-07-26T00:00:00Z"}' --login_with_auth "Bearer foo"
 challenge-admin-get-challenge 'pBJHPtcDs8bBZLCX' --login_with_auth "Bearer foo"
-challenge-admin-update-challenge '{"activeGoalsPerRotation": 77, "assignmentRule": "UNSCHEDULED", "description": "x8bbgorQeFbQ1g7q", "endDate": "1971-04-22T00:00:00Z", "goalsVisibility": "SHOWALL", "name": "ngUNB1vRodwpzS6D", "rotation": "DAILY", "startDate": "1974-08-30T00:00:00Z"}' 's21Jub74CUkNmKJf' --login_with_auth "Bearer foo"
+challenge-admin-update-challenge '{"activeGoalsPerRotation": 77, "assignmentRule": "UNSCHEDULED", "description": "x8bbgorQeFbQ1g7q", "endAfter": 2, "endDate": "1977-12-09T00:00:00Z", "goalsVisibility": "SHOWALL", "name": "ngUNB1vRodwpzS6D", "rotation": "DAILY", "startDate": "1974-08-30T00:00:00Z"}' 's21Jub74CUkNmKJf' --login_with_auth "Bearer foo"
 challenge-admin-delete-challenge 'h5pUkHODpoMF78NY' --login_with_auth "Bearer foo"
 challenge-admin-get-goals '4YkHs1cnz1JSDgY1' --login_with_auth "Bearer foo"
 challenge-admin-create-goal '{"code": "TXp38zsCTCrbCbPO", "description": "yNQkT7NvyE3cwyAL", "isActive": false, "name": "nzjMf8GZ2WBZqxYG", "requirementGroups": [{"operator": "AND", "predicates": [{"matcher": "LESS_THAN", "parameterName": "Os1PXhT5FvdiRilZ", "parameterType": "ACHIEVEMENT", "targetValue": 0.14128417150585826}, {"matcher": "EQUAL", "parameterName": "pKxR8dl0zRVW4EZG", "parameterType": "ACHIEVEMENT", "targetValue": 0.8304563451260242}, {"matcher": "EQUAL", "parameterName": "68su8XfqlqNiTvB6", "parameterType": "USERACCOUNT", "targetValue": 0.9669805024082485}]}, {"operator": "AND", "predicates": [{"matcher": "LESS_THAN", "parameterName": "orKsxwkosAVerXpc", "parameterType": "STATISTIC", "targetValue": 0.2857255039397766}, {"matcher": "EQUAL", "parameterName": "Ea1ysLEzth6mXhzk", "parameterType": "STATISTIC", "targetValue": 0.634717701187626}, {"matcher": "GREATER_THAN", "parameterName": "kFeZSoEAcBdW19m4", "parameterType": "ACHIEVEMENT", "targetValue": 0.9564883882594899}]}, {"operator": "AND", "predicates": [{"matcher": "GREATER_THAN", "parameterName": "d5tA5jUmiTqpyhPF", "parameterType": "ACHIEVEMENT", "targetValue": 0.26965850879764464}, {"matcher": "GREATER_THAN_EQUAL", "parameterName": "LzFQN05MYzYiKWe5", "parameterType": "ACHIEVEMENT", "targetValue": 0.04988102340579059}, {"matcher": "LESS_THAN_EQUAL", "parameterName": "Rljv7IPrDQQRgat0", "parameterType": "USERACCOUNT", "targetValue": 0.9341731747756056}]}], "rewards": [{"itemId": "KQ7KYnIuMBvaO35l", "itemName": "lzQRaT5kPxUfofvn", "qty": 0.2232956644546582, "type": "STATISTIC"}, {"itemId": "uB0y5WUlrMdI4sNv", "itemName": "eabntBSxTeIv53HG", "qty": 0.45923642317493263, "type": "ENTITLEMENT"}, {"itemId": "pD391C2qtPYokahF", "itemName": "jkQsfCaTmt1d67FX", "qty": 0.5312279082514675, "type": "ENTITLEMENT"}], "schedule": {"endTime": "1995-11-03T00:00:00Z", "order": 37, "startTime": "1975-05-30T00:00:00Z"}, "tags": ["Q0mPVo3twu0MesTC", "f9x4rt69lna7qxNe", "IxPz6MbwL6IY69z1"]}' 'UaLqYSYWytLPziZM' --login_with_auth "Bearer foo"
@@ -41,14 +41,15 @@ challenge-admin-update-goals '{"description": "HcUmLZZbSqb8RwNm", "isActive": fa
 challenge-admin-delete-goal 'SiZqan0nSBJroav9' '1GXlvPG6bFYReVHQ' --login_with_auth "Bearer foo"
 challenge-admin-get-periods 'ipcCx9Zw5D2L7vIY' --login_with_auth "Bearer foo"
 challenge-admin-randomize-challenge 'hGGSyEW4ZJJ42d3P' --login_with_auth "Bearer foo"
-challenge-admin-evaluate-progress '{"userIds": ["BddN8S48l9lyNApf", "lxqMrj3oZk03QXcK", "MDYDDxHSZjtqXyJ5"]}' --login_with_auth "Bearer foo"
-challenge-admin-get-user-rewards '8f7Gc26SaiGVkydw' --login_with_auth "Bearer foo"
+challenge-admin-delete-tied-challenge 'BddN8S48l9lyNApf' --login_with_auth "Bearer foo"
+challenge-admin-evaluate-progress '{"userIds": ["lxqMrj3oZk03QXcK", "MDYDDxHSZjtqXyJ5", "8f7Gc26SaiGVkydw"]}' --login_with_auth "Bearer foo"
+challenge-admin-get-user-rewards 'YWQG26yUZNmTBcvr' --login_with_auth "Bearer foo"
 challenge-get-challenges --login_with_auth "Bearer foo"
-challenge-public-get-scheduled-goals 'YWQG26yUZNmTBcvr' --login_with_auth "Bearer foo"
+challenge-public-get-scheduled-goals 'bYCwZtxFHyPLtI8i' --login_with_auth "Bearer foo"
 challenge-evaluate-my-progress --login_with_auth "Bearer foo"
-challenge-public-get-user-progression 'bYCwZtxFHyPLtI8i' --login_with_auth "Bearer foo"
+challenge-public-get-user-progression 'lbyDPUIj88cekdqC' --login_with_auth "Bearer foo"
 challenge-public-get-user-rewards --login_with_auth "Bearer foo"
-challenge-public-claim-user-rewards '{"rewardIDs": ["lbyDPUIj88cekdqC", "t81P1ktfIovmv9gs", "R5cJcHm3SZLxoRDF"]}' --login_with_auth "Bearer foo"
+challenge-public-claim-user-rewards '{"rewardIDs": ["t81P1ktfIovmv9gs", "R5cJcHm3SZLxoRDF", "uuuySj29a9LJE8Ho"]}' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -68,7 +69,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..21"
+echo "1..22"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -85,139 +86,146 @@ eval_tap $? 2 'AdminGetChallenges' test.out
 
 #- 3 AdminCreateChallenge
 $PYTHON -m $MODULE 'challenge-admin-create-challenge' \
-    '{"activeGoalsPerRotation": 42, "assignmentRule": "UNSCHEDULED", "code": "uuySj29a9LJE8HoR", "description": "S1X2PFAAMwzHPxB1", "endDate": "1995-12-26T00:00:00Z", "goalsVisibility": "SHOWALL", "name": "CnqntX9y1aZSWMiV", "rotation": "MONTHLY", "startDate": "1986-10-30T00:00:00Z"}' \
+    '{"activeGoalsPerRotation": 89, "assignmentRule": "UNSCHEDULED", "code": "k8T3GpAnkCmBUqg2", "description": "SCnqntX9y1aZSWMi", "endAfter": 98, "endDate": "1999-03-09T00:00:00Z", "goalsVisibility": "SHOWALL", "name": "10sG6vxkfUcmqRRb", "rotation": "DAILY", "startDate": "1995-02-06T00:00:00Z"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 3 'AdminCreateChallenge' test.out
 
 #- 4 AdminGetChallenge
 $PYTHON -m $MODULE 'challenge-admin-get-challenge' \
-    '0sG6vxkfUcmqRRbc' \
+    'BJCjfcnLRfxeCSz9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 4 'AdminGetChallenge' test.out
 
 #- 5 AdminUpdateChallenge
 $PYTHON -m $MODULE 'challenge-admin-update-challenge' \
-    '{"activeGoalsPerRotation": 10, "assignmentRule": "RANDOMIZED", "description": "J5i0EeDxOgBnhhqE", "endDate": "1977-09-11T00:00:00Z", "goalsVisibility": "PERIODONLY", "name": "aDml48wdNFLTm5T5", "rotation": "WEEKLY", "startDate": "1981-12-19T00:00:00Z"}' \
-    'WT0GfH2rtOa4EXsX' \
+    '{"activeGoalsPerRotation": 24, "assignmentRule": "RANDOMIZED", "description": "IaDml48wdNFLTm5T", "endAfter": 39, "endDate": "1997-07-08T00:00:00Z", "goalsVisibility": "SHOWALL", "name": "9WT0GfH2rtOa4EXs", "rotation": "NONE", "startDate": "1984-11-24T00:00:00Z"}' \
+    'yEkLgh3tIYt4SqYU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'AdminUpdateChallenge' test.out
 
 #- 6 AdminDeleteChallenge
 $PYTHON -m $MODULE 'challenge-admin-delete-challenge' \
-    'zOXQAk4mqrxzTtuL' \
+    'TLDx9gIiDandpGT2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'AdminDeleteChallenge' test.out
 
 #- 7 AdminGetGoals
 $PYTHON -m $MODULE 'challenge-admin-get-goals' \
-    'l4XlbGL8QOxtjzm8' \
+    't24aOMh5eC3IHeHS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'AdminGetGoals' test.out
 
 #- 8 AdminCreateGoal
 $PYTHON -m $MODULE 'challenge-admin-create-goal' \
-    '{"code": "y2wNhmwoYZyI4EFZ", "description": "KBcYrCEAE7WIsfmx", "isActive": true, "name": "LRc6m8heKnWhzfe2", "requirementGroups": [{"operator": "AND", "predicates": [{"matcher": "EQUAL", "parameterName": "Uj7fdgLA84Z8YYk6", "parameterType": "USERACCOUNT", "targetValue": 0.2541000432500037}, {"matcher": "GREATER_THAN", "parameterName": "gJjBbEDoNf3n0hEo", "parameterType": "USERACCOUNT", "targetValue": 0.17478063299070945}, {"matcher": "LESS_THAN_EQUAL", "parameterName": "Acf80zfFyabWAgIU", "parameterType": "USERACCOUNT", "targetValue": 0.1310438749696844}]}, {"operator": "AND", "predicates": [{"matcher": "GREATER_THAN", "parameterName": "7A68eaqC2J9jyEW6", "parameterType": "USERACCOUNT", "targetValue": 0.15898631216785641}, {"matcher": "LESS_THAN_EQUAL", "parameterName": "bc0NaKDUL3sa13lk", "parameterType": "STATISTIC", "targetValue": 0.05092744633132218}, {"matcher": "GREATER_THAN", "parameterName": "BHO86IlBhnetU4Rw", "parameterType": "USERACCOUNT", "targetValue": 0.6389108320475317}]}, {"operator": "AND", "predicates": [{"matcher": "GREATER_THAN_EQUAL", "parameterName": "XlTDBzOuYsaZA2yy", "parameterType": "ACHIEVEMENT", "targetValue": 0.9013268121624}, {"matcher": "GREATER_THAN_EQUAL", "parameterName": "mbqoOfADMMAXFaY9", "parameterType": "ACHIEVEMENT", "targetValue": 0.46361715035474116}, {"matcher": "EQUAL", "parameterName": "XIBudfZgrbHDIDm4", "parameterType": "ACHIEVEMENT", "targetValue": 0.007005852644861532}]}], "rewards": [{"itemId": "Mlu7WtjCtoYetOO8", "itemName": "47g8OudOfjnCuHZ3", "qty": 0.03663670778851047, "type": "STATISTIC"}, {"itemId": "6IjGa23YvYmmDg7V", "itemName": "YPXIuvUYTZBRujIU", "qty": 0.4940351395838205, "type": "STATISTIC"}, {"itemId": "9mCEHThUJkETAsSp", "itemName": "7gh4TeUTkOkAYfJB", "qty": 0.9780504164348797, "type": "STATISTIC"}], "schedule": {"endTime": "1985-02-21T00:00:00Z", "order": 41, "startTime": "1990-06-27T00:00:00Z"}, "tags": ["ZVJSPqJiwv1qlYB1", "RSKs6gQxC3Gb7S0o", "4zGYY7KQI1AeFgPq"]}' \
-    'aOkvo1aolB4lkKB4' \
+    '{"code": "KLCa3xreNDUWehwH", "description": "3q31A806DJgas4b6", "isActive": true, "name": "2NubeoKFeIaFQCYo", "requirementGroups": [{"operator": "AND", "predicates": [{"matcher": "GREATER_THAN", "parameterName": "ICpnduEEQlULdJz4", "parameterType": "ACHIEVEMENT", "targetValue": 0.12352299847260462}, {"matcher": "LESS_THAN", "parameterName": "RBkMNxvvKgAT8mJr", "parameterType": "ACHIEVEMENT", "targetValue": 0.25996647441765475}, {"matcher": "EQUAL", "parameterName": "XiI07A68eaqC2J9j", "parameterType": "STATISTIC", "targetValue": 0.9857080242354523}]}, {"operator": "AND", "predicates": [{"matcher": "GREATER_THAN", "parameterName": "GLbc0NaKDUL3sa13", "parameterType": "ACHIEVEMENT", "targetValue": 0.7716760051401861}, {"matcher": "LESS_THAN_EQUAL", "parameterName": "1dQBHO86IlBhnetU", "parameterType": "USERACCOUNT", "targetValue": 0.7018374785281746}, {"matcher": "GREATER_THAN_EQUAL", "parameterName": "DNxtXgeO3FgkXhjD", "parameterType": "STATISTIC", "targetValue": 0.875456951600817}]}, {"operator": "AND", "predicates": [{"matcher": "LESS_THAN", "parameterName": "Y3snn2ZkP7cFdP43", "parameterType": "ACHIEVEMENT", "targetValue": 0.8183472002687358}, {"matcher": "EQUAL", "parameterName": "eKa699bRVhyaKwwr", "parameterType": "STATISTIC", "targetValue": 0.19408973801885898}, {"matcher": "EQUAL", "parameterName": "aMlu7WtjCtoYetOO", "parameterType": "STATISTIC", "targetValue": 0.9067735355060624}]}], "rewards": [{"itemId": "7g8OudOfjnCuHZ3c", "itemName": "46IjGa23YvYmmDg7", "qty": 0.7698298189773561, "type": "STATISTIC"}, {"itemId": "PXIuvUYTZBRujIUE", "itemName": "1Tq5jyAZvkRCMNFI", "qty": 0.3292244055362745, "type": "STATISTIC"}, {"itemId": "p7gh4TeUTkOkAYfJ", "itemName": "B8AT9t4Tv207Y2QD", "qty": 0.8981095653681718, "type": "ENTITLEMENT"}], "schedule": {"endTime": "1982-09-03T00:00:00Z", "order": 34, "startTime": "1973-04-07T00:00:00Z"}, "tags": ["LCr3OOlXVv8ZGF7u", "YnGzpipNDigNJma1", "MbqqZtfNWql4nmwA"]}' \
+    'ft4gqkNNlWkD9eOz' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'AdminCreateGoal' test.out
 
 #- 9 AdminGetGoal
 $PYTHON -m $MODULE 'challenge-admin-get-goal' \
-    'EYOkQ1jMD3cym8xI' \
-    'fkOVW2grREOLx0KO' \
+    'iYRFOn0jJLHC9Lxh' \
+    'vNXTwGBCtohLtl9Z' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'AdminGetGoal' test.out
 
 #- 10 AdminUpdateGoals
 $PYTHON -m $MODULE 'challenge-admin-update-goals' \
-    '{"description": "ww3HICQLfl7MUBG7", "isActive": true, "name": "m5UDrT6QXCs5SPBb", "requirementGroups": [{"operator": "AND", "predicates": [{"matcher": "GREATER_THAN_EQUAL", "parameterName": "QAXVG7tnsZg5QgXj", "parameterType": "STATISTIC", "targetValue": 0.9018849610570491}, {"matcher": "LESS_THAN_EQUAL", "parameterName": "m7Ta1PsKc50Kv6ec", "parameterType": "ACHIEVEMENT", "targetValue": 0.2414510509760942}, {"matcher": "GREATER_THAN", "parameterName": "evcAx2K2zkRenmPZ", "parameterType": "ACHIEVEMENT", "targetValue": 0.7450867408797518}]}, {"operator": "AND", "predicates": [{"matcher": "LESS_THAN", "parameterName": "xBkF6wFPoJeQedio", "parameterType": "ACHIEVEMENT", "targetValue": 0.11591019098611921}, {"matcher": "EQUAL", "parameterName": "yZl5x4bRXBHUTrDz", "parameterType": "STATISTIC", "targetValue": 0.7111927738496974}, {"matcher": "LESS_THAN_EQUAL", "parameterName": "gxSmy1DN9LFkYW5D", "parameterType": "USERACCOUNT", "targetValue": 0.1445492386713232}]}, {"operator": "AND", "predicates": [{"matcher": "LESS_THAN_EQUAL", "parameterName": "4bj5Ro2ogaKt2ujQ", "parameterType": "USERACCOUNT", "targetValue": 0.5783830434322896}, {"matcher": "GREATER_THAN_EQUAL", "parameterName": "3Zdb65UXmy0Zp6iI", "parameterType": "ACHIEVEMENT", "targetValue": 0.11368011488929797}, {"matcher": "GREATER_THAN", "parameterName": "IKUkmkk9QM0NBMA9", "parameterType": "USERACCOUNT", "targetValue": 0.319893037481084}]}], "rewards": [{"itemId": "FkEORV3bu1bNCtX7", "itemName": "W40V6Do5sYadCCFr", "qty": 0.5400995635645865, "type": "STATISTIC"}, {"itemId": "ulIJzPyrVEiOG4Uc", "itemName": "qsuGKHhMRWLVd3Dl", "qty": 0.12898487348054244, "type": "ENTITLEMENT"}, {"itemId": "uIpomM8sm1MiaI1m", "itemName": "X2tJoARtdbBe7uds", "qty": 0.6266142360667261, "type": "STATISTIC"}], "schedule": {"endTime": "1983-04-29T00:00:00Z", "order": 74, "startTime": "1976-04-06T00:00:00Z"}, "tags": ["0WvGYYnx4V709xbn", "GezKsDwG2omOR2nv", "YI9TVqJdvzcWbfUp"]}' \
-    'aXp5JMl5LL4bTxBm' \
-    'ZjdrrIxsB0NRsB1f' \
+    '{"description": "uhytm5UDrT6QXCs5", "isActive": false, "name": "BbRPZTF6oQAXVG7t", "requirementGroups": [{"operator": "AND", "predicates": [{"matcher": "EQUAL", "parameterName": "sZg5QgXjvyGJPN4e", "parameterType": "STATISTIC", "targetValue": 0.02322000700641924}, {"matcher": "LESS_THAN_EQUAL", "parameterName": "c50Kv6ecnEevcAx2", "parameterType": "USERACCOUNT", "targetValue": 0.44148012165470363}, {"matcher": "LESS_THAN_EQUAL", "parameterName": "zkRenmPZnGBt4P7W", "parameterType": "ACHIEVEMENT", "targetValue": 0.515988595940881}]}, {"operator": "AND", "predicates": [{"matcher": "GREATER_THAN", "parameterName": "SJtjX7ZshZyZl5x4", "parameterType": "ACHIEVEMENT", "targetValue": 0.40395239514169357}, {"matcher": "LESS_THAN_EQUAL", "parameterName": "XBHUTrDzZSKscfOc", "parameterType": "STATISTIC", "targetValue": 0.32574485717629165}, {"matcher": "EQUAL", "parameterName": "LFkYW5DQyj4bj5Ro", "parameterType": "ACHIEVEMENT", "targetValue": 0.2401726092984704}]}, {"operator": "AND", "predicates": [{"matcher": "GREATER_THAN_EQUAL", "parameterName": "aKt2ujQSa3Zdb65U", "parameterType": "ACHIEVEMENT", "targetValue": 0.19835491899032331}, {"matcher": "LESS_THAN", "parameterName": "2iS5EpGhhvXYck0u", "parameterType": "STATISTIC", "targetValue": 0.6930474834723405}, {"matcher": "LESS_THAN", "parameterName": "0NBMA9ORxpzwLR2A", "parameterType": "USERACCOUNT", "targetValue": 0.8671652223648961}]}], "rewards": [{"itemId": "bNCtX7W40V6Do5sY", "itemName": "adCCFrHHC3DpZxkr", "qty": 0.6815841851690734, "type": "STATISTIC"}, {"itemId": "EiOG4UcqsuGKHhMR", "itemName": "WLVd3DlhLuIpomM8", "qty": 0.3041680906224914, "type": "ENTITLEMENT"}, {"itemId": "lwuUccE536ugBp3H", "itemName": "BvepnDCjgyJlXe36", "qty": 0.19888699664074383, "type": "ENTITLEMENT"}], "schedule": {"endTime": "1977-07-14T00:00:00Z", "order": 19, "startTime": "1990-02-11T00:00:00Z"}, "tags": ["709xbnGezKsDwG2o", "mOR2nvYI9TVqJdvz", "cWbfUpaXp5JMl5LL"]}' \
+    '4bTxBmZjdrrIxsB0' \
+    'NRsB1fPqqRRulpqp' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'AdminUpdateGoals' test.out
 
 #- 11 AdminDeleteGoal
 $PYTHON -m $MODULE 'challenge-admin-delete-goal' \
-    'PqqRRulpqpymDkQh' \
-    'trHWwRVnwVBOqOHi' \
+    'ymDkQhtrHWwRVnwV' \
+    'BOqOHi8pWGd1juYh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'AdminDeleteGoal' test.out
 
 #- 12 AdminGetPeriods
 $PYTHON -m $MODULE 'challenge-admin-get-periods' \
-    '8pWGd1juYhiqjRJO' \
+    'iqjRJOqB5F93zFQb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'AdminGetPeriods' test.out
 
 #- 13 AdminRandomizeChallenge
 $PYTHON -m $MODULE 'challenge-admin-randomize-challenge' \
-    'qB5F93zFQbJndUDp' \
+    'JndUDpdONneAczbB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'AdminRandomizeChallenge' test.out
 
-#- 14 AdminEvaluateProgress
+#- 14 AdminDeleteTiedChallenge
+$PYTHON -m $MODULE 'challenge-admin-delete-tied-challenge' \
+    'dHb2slt71B1SmZp2' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 14 'AdminDeleteTiedChallenge' test.out
+
+#- 15 AdminEvaluateProgress
 $PYTHON -m $MODULE 'challenge-admin-evaluate-progress' \
-    '{"userIds": ["dONneAczbBdHb2sl", "t71B1SmZp2JZp50C", "nPb71ORYcmQbTU5J"]}' \
+    '{"userIds": ["JZp50CnPb71ORYcm", "QbTU5JX8ccLjMXJR", "k0eaKQDOJvrTefgl"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 14 'AdminEvaluateProgress' test.out
+eval_tap $? 15 'AdminEvaluateProgress' test.out
 
-#- 15 AdminGetUserRewards
+#- 16 AdminGetUserRewards
 $PYTHON -m $MODULE 'challenge-admin-get-user-rewards' \
-    'X8ccLjMXJRk0eaKQ' \
+    'Ss6g4iY9u02aCNYI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 15 'AdminGetUserRewards' test.out
+eval_tap $? 16 'AdminGetUserRewards' test.out
 
-#- 16 GetChallenges
+#- 17 GetChallenges
 $PYTHON -m $MODULE 'challenge-get-challenges' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 16 'GetChallenges' test.out
+eval_tap $? 17 'GetChallenges' test.out
 
-#- 17 PublicGetScheduledGoals
+#- 18 PublicGetScheduledGoals
 $PYTHON -m $MODULE 'challenge-public-get-scheduled-goals' \
-    'DOJvrTefglSs6g4i' \
+    'Wekp18lOC3mNqF7B' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 17 'PublicGetScheduledGoals' test.out
+eval_tap $? 18 'PublicGetScheduledGoals' test.out
 
-#- 18 EvaluateMyProgress
+#- 19 EvaluateMyProgress
 $PYTHON -m $MODULE 'challenge-evaluate-my-progress' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 18 'EvaluateMyProgress' test.out
+eval_tap $? 19 'EvaluateMyProgress' test.out
 
-#- 19 PublicGetUserProgression
+#- 20 PublicGetUserProgression
 $PYTHON -m $MODULE 'challenge-public-get-user-progression' \
-    'Y9u02aCNYIWekp18' \
+    'l0LcghVHfPEspxwh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 19 'PublicGetUserProgression' test.out
+eval_tap $? 20 'PublicGetUserProgression' test.out
 
-#- 20 PublicGetUserRewards
+#- 21 PublicGetUserRewards
 $PYTHON -m $MODULE 'challenge-public-get-user-rewards' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 20 'PublicGetUserRewards' test.out
+eval_tap $? 21 'PublicGetUserRewards' test.out
 
-#- 21 PublicClaimUserRewards
+#- 22 PublicClaimUserRewards
 $PYTHON -m $MODULE 'challenge-public-claim-user-rewards' \
-    '{"rewardIDs": ["lOC3mNqF7Bl0Lcgh", "VHfPEspxwhRON0bc", "1eMbEIjowLqc3ecj"]}' \
+    '{"rewardIDs": ["RON0bc1eMbEIjowL", "qc3ecjXJbZDKKoxL", "E1Y3Dymtj3giPg4x"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 21 'PublicClaimUserRewards' test.out
+eval_tap $? 22 'PublicClaimUserRewards' test.out
 
 
 fi

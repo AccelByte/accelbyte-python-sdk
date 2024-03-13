@@ -22,7 +22,7 @@ session_timeout: int
 unlimited: bool
 use_buffer_percent: bool
 
-Example: '{"buffer_count": 41, "buffer_percent": 5, "configuration": "u3nSnw8987YNzTyB", "enable_region_overrides": false, "game_version": "GeJUwqPAKjYQt2Rd", "max_count": 92, "min_count": 3, "regions": ["PxZaU5GyZ6JXxHwK", "nlhLA0UXjXLcVjwM", "iKqSdCjoUVubV4ZF"], "session_timeout": 49, "unlimited": true, "use_buffer_percent": false}'
+Example: '{"buffer_count": 44, "buffer_percent": 48, "configuration": "fhL1W7FS7psJt8Di", "enable_region_overrides": true, "game_version": "tu8N5baXz9C4ZVw7", "max_count": 67, "min_count": 73, "regions": ["CrgCURptDrcwADTc", "mS6vI9TY4M5LcXxB", "kVe0pnlpozdwkulx"], "session_timeout": 88, "unlimited": false, "use_buffer_percent": true}'
 """
 
 result, error = update_deployment_override(

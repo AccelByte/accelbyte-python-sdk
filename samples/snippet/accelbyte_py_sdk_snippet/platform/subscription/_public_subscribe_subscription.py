@@ -17,7 +17,7 @@ region: str
 return_url: str
 source: str
 
-Example: '{"currencyCode": "FPDL1RoZwUSZHpew", "itemId": "4Xjrn0sduKdp2csY", "language": "gdwh", "region": "nhmn6Y12o6DN9kgO", "returnUrl": "fNRfS5NnXe431CId", "source": "kBnZ0jGmuleoAzjF"}'
+Example: '{"currencyCode": "P5g2sWdwi7GHZrjT", "itemId": "O4fdynBiUWbs3GgY", "language": "wEi_101", "region": "BglpgkhpFOhv71F6", "returnUrl": "6ZpLg3EMRcFSNxpa", "source": "Aw7tECneAH57UDzk"}'
 """
 
 result, error = public_subscribe_subscription(

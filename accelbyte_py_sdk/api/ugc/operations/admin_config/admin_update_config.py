@@ -36,13 +36,10 @@ from ...models import ResponseError
 class AdminUpdateConfig(Operation):
     """Update config (AdminUpdateConfig)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE].
-    It will create a new config if the key doesn't exist.
-    Allowed key value:
-    - contentReview : enabled , disabled
+    This endpoint will create a new config if the *key* doesn't exist.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    Allowed key value:
+    - *contentReview*: *enabled*,*disabled*
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/configs/{key}

@@ -29,7 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import HTTPValidationError
+from ...models import BaseErrorResponse
+from ...models import PlayTimeResponse
 
 
 class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut(
@@ -62,9 +63,13 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
         steam_id: (steamId) REQUIRED str in path
 
     Responses:
-        200: OK - (Successful Response)
+        200: OK - PlayTimeResponse (Successful Response)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        404: Not Found - BaseErrorResponse (User not found)
+
+        422: Unprocessable Entity - BaseErrorResponse (Unable to process request)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
     """
 
     # region fields
@@ -198,13 +203,17 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, HttpResponse], Union[None, HTTPValidationError, HttpResponse]
+        Union[None, PlayTimeResponse], Union[None, BaseErrorResponse, HttpResponse]
     ]:
         """Parse the given response.
 
-        200: OK - (Successful Response)
+        200: OK - PlayTimeResponse (Successful Response)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        404: Not Found - BaseErrorResponse (User not found)
+
+        422: Unprocessable Entity - BaseErrorResponse (Unable to process request)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -220,9 +229,13 @@ class ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlay
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return PlayTimeResponse.create_from_dict(content), None
+        if code == 404:
+            return None, BaseErrorResponse.create_from_dict(content)
         if code == 422:
-            return None, HTTPValidationError.create_from_dict(content)
+            return None, BaseErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, BaseErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

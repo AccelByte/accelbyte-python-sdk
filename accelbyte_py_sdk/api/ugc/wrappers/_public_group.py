@@ -55,10 +55,7 @@ def create_group(
 ):
     """Create groups (CreateGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
+    Create group
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
@@ -110,10 +107,7 @@ async def create_group_async(
 ):
     """Create groups (CreateGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
+    Create group
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
@@ -167,10 +161,7 @@ def delete_group(
 ):
     """Delete group (DeleteGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+    Delete user group by group ID
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
@@ -222,10 +213,7 @@ async def delete_group_async(
 ):
     """Delete group (DeleteGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+    Delete user group by group ID
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
@@ -279,10 +267,7 @@ def get_group(
 ):
     """Get user's groups (GetGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+    Get user groups by group ID
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
@@ -334,10 +319,7 @@ async def get_group_async(
 ):
     """Get user's groups (GetGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+    Get user groups by group ID
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
@@ -393,10 +375,7 @@ def get_group_content(
 ):
     """(Legacy) Get contents belong to a group (GetGroupContent)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get content that belong to a group
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents
@@ -458,10 +437,7 @@ async def get_group_content_async(
 ):
     """(Legacy) Get contents belong to a group (GetGroupContent)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get content that belong to a group
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents
@@ -524,10 +500,7 @@ def get_groups(
 ):
     """Get all user groups (GetGroups)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+    Get user groups paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
@@ -583,10 +556,7 @@ async def get_groups_async(
 ):
     """Get all user groups (GetGroups)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+    Get user groups paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
@@ -645,10 +615,7 @@ def public_get_group_contents_v2(
 ):
     """Get contents belong to a group (PublicGetGroupContentsV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get content belong to a group
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents
@@ -710,10 +677,7 @@ async def public_get_group_contents_v2_async(
 ):
     """Get contents belong to a group (PublicGetGroupContentsV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get content belong to a group
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents
@@ -776,11 +740,7 @@ def update_group(
 ):
     """Update group (UpdateGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
-    replace group name and contents with new ones
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
+    Replace group name and contents with new ones
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}
@@ -838,11 +798,7 @@ async def update_group_async(
 ):
     """Update group (UpdateGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
-    replace group name and contents with new ones
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
+    Replace group name and contents with new ones
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}

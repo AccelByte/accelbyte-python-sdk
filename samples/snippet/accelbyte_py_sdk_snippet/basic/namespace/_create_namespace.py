@@ -14,7 +14,7 @@ Definition: NamespaceCreate
 display_name: str
 namespace: str
 
-Example: '{"displayName": "EGtz3e37O0gvEnrT", "namespace": "86QqXGnOXed28HkD"}'
+Example: '{"displayName": "9TlLcIVrurHtjWI4", "namespace": "TIkg50dfwcsvtyVP"}'
 """
 
 result, error = create_namespace(

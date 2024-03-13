@@ -35,10 +35,7 @@ from ...models import ResponseError
 class DeleteAllUserGroup(Operation):
     """Delete all user group (DeleteAllUserGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+    Delete all user group
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups

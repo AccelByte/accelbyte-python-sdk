@@ -36,7 +36,7 @@ from ...models import ResponseError
 class GetTag(Operation):
     """Get tags (GetTag)
 
-    Publicly accessible
+    Get available tags paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/tags

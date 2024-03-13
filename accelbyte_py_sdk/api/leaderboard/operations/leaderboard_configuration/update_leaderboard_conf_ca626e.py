@@ -37,11 +37,6 @@ from ...models import ResponseErrorResponse
 class UpdateLeaderboardConfigurationAdminV1(Operation):
     """update leaderboard by leaderboardCode (updateLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]'
-
-
-
-
     Fields :
 
 
@@ -68,9 +63,6 @@ class UpdateLeaderboardConfigurationAdminV1(Operation):
 
 
       * Reset time must be hours:minutes in 24 hours format e.g. 01:30, 10:30, 15:30, 23:15.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}

@@ -17,7 +17,7 @@ end_date: str
 ext: Dict[str, Any]
 reason: str
 
-Example: '{"comment": "7cMywdRACvSwTkI0", "deviceId": "jVKTHCt2ILW4NKtv", "deviceType": "RxoSArA8cXYKbUVH", "enabled": false, "endDate": "flWtFWRSJMzHmVMN", "ext": {"q7LGSXX8Ds1EeiRR": {}, "Jfprcw4v7YYNdoMn": {}, "3LKWWMXnGROymgg0": {}}, "reason": "PLOYpMUK8tRNOAGQ"}'
+Example: '{"comment": "lx74gDM3W0b9KMWx", "deviceId": "Uyw2u1Qb5LePWV8o", "deviceType": "cXDCHjKa5id2aGx1", "enabled": false, "endDate": "4b5UMG7PdzpCYkiK", "ext": {"M7ba5ybk0AC9Xkro": {}, "AXzXWT3XeDryWbYz": {}, "reqF5JNS5ysYdyxh": {}}, "reason": "5WHCUdjVMLqMNgIv"}'
 """
 
 result, error = admin_ban_device_v4(

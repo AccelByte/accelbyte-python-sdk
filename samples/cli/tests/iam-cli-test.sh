@@ -223,6 +223,7 @@ iam-platform-authenticate-samlv3-handler 'q6JRHcn7KaoCEkRd' 'o6qHYIZWnXqQ1oHF' -
 iam-login-sso-client 'J9Q0vqsL9SomqWsG' --login_with_auth "Bearer foo"
 iam-logout-sso-client 'A76yxi0QzZWfmP2s' --login_with_auth "Bearer foo"
 iam-request-target-token-response-v3 'x0KO5bEJaPnAFjso' --login_with_auth "Bearer foo"
+iam-admin-list-invitation-histories-v4 --login_with_auth "Bearer foo"
 iam-admin-get-devices-by-user-v4 --login_with_auth "Bearer foo"
 iam-admin-get-banned-devices-v4 --login_with_auth "Bearer foo"
 iam-admin-get-user-device-bans-v4 'dyJQVVBrShGbIIuq' --login_with_auth "Bearer foo"
@@ -235,6 +236,8 @@ iam-admin-get-device-bans-v4 'YBixKJXCISQdwec1' --login_with_auth "Bearer foo"
 iam-admin-decrypt-device-v4 'm8BusV9tUh74KVo6' --login_with_auth "Bearer foo"
 iam-admin-unban-device-v4 'Xqjz2xUKLNWSmYyV' --login_with_auth "Bearer foo"
 iam-admin-get-users-by-device-v4 'vyelIJ8QgaLMqi83' --login_with_auth "Bearer foo"
+iam-admin-get-namespace-invitation-history-v4 --login_with_auth "Bearer foo"
+iam-admin-get-namespace-user-invitation-history-v4 --login_with_auth "Bearer foo"
 iam-admin-create-test-users-v4 '{"count": 13}' --login_with_auth "Bearer foo"
 iam-admin-create-user-v4 '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "a7cfZl4VuY6rsZyo", "policyId": "6CBRRnoOikIxXKKI", "policyVersionId": "R6kPmswm5TCAU1cK"}, {"isAccepted": true, "localizedPolicyVersionId": "3gNLIlTk3Bpclrk4", "policyId": "hIRn0znIKzAEAHQp", "policyVersionId": "BOgHEP5l94s7CbIJ"}, {"isAccepted": false, "localizedPolicyVersionId": "eHnVWOboMkyB7FTe", "policyId": "xsOZ0b2p3b63Krcw", "policyVersionId": "IcXMhGy83Xit6boO"}], "authType": "EMAILPASSWD", "code": "GCcg16DqwdQPQ9Hk", "country": "SSV8e1MgTTLS2Fga", "dateOfBirth": "rY903INGIyEfRBEj", "displayName": "7qms9AGQExPhgr9g", "emailAddress": "GfC0GjvpgJfuBs1V", "password": "pqn47GVghTH2wToO", "passwordMD5Sum": "nq9U5lyW89Xwt3wm", "reachMinimumAge": false, "uniqueDisplayName": "TrDCjhnKvsHezWTq", "username": "gYPixtHk6lWq6tEe"}' --login_with_auth "Bearer foo"
 iam-admin-bulk-update-user-account-type-v4 '{"testAccount": false, "userIds": ["a16Bw3JbUnUDh5yG", "jjv4Mwrv2vancmR6", "Z7rb21A2E9pX0BWC"]}' --login_with_auth "Bearer foo"
@@ -319,7 +322,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..386"
+echo "1..389"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -2057,356 +2060,374 @@ $PYTHON -m $MODULE 'iam-request-target-token-response-v3' \
     > test.out 2>&1
 eval_tap $? 300 'RequestTargetTokenResponseV3' test.out
 
-#- 301 AdminGetDevicesByUserV4
+#- 301 AdminListInvitationHistoriesV4
+$PYTHON -m $MODULE 'iam-admin-list-invitation-histories-v4' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 301 'AdminListInvitationHistoriesV4' test.out
+
+#- 302 AdminGetDevicesByUserV4
 $PYTHON -m $MODULE 'iam-admin-get-devices-by-user-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 301 'AdminGetDevicesByUserV4' test.out
+eval_tap $? 302 'AdminGetDevicesByUserV4' test.out
 
-#- 302 AdminGetBannedDevicesV4
+#- 303 AdminGetBannedDevicesV4
 $PYTHON -m $MODULE 'iam-admin-get-banned-devices-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 302 'AdminGetBannedDevicesV4' test.out
+eval_tap $? 303 'AdminGetBannedDevicesV4' test.out
 
-#- 303 AdminGetUserDeviceBansV4
+#- 304 AdminGetUserDeviceBansV4
 $PYTHON -m $MODULE 'iam-admin-get-user-device-bans-v4' \
     'uazAypgWhTED5YmP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 303 'AdminGetUserDeviceBansV4' test.out
+eval_tap $? 304 'AdminGetUserDeviceBansV4' test.out
 
-#- 304 AdminBanDeviceV4
+#- 305 AdminBanDeviceV4
 $PYTHON -m $MODULE 'iam-admin-ban-device-v4' \
     '{"comment": "TBUkm2FyvdguCYVq", "deviceId": "FyIKh1YtTY4AejyQ", "deviceType": "c5Dac7hSLldWx5Dy", "enabled": false, "endDate": "uLBZiVRYIyQLcslT", "ext": {"EqgVNG8AqktgvjwN": {}, "JAwIpEy2ZNpojZ24": {}, "I2n25smsrmJFHGiY": {}}, "reason": "nyhbqxLuTZIxgiUa"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 304 'AdminBanDeviceV4' test.out
+eval_tap $? 305 'AdminBanDeviceV4' test.out
 
-#- 305 AdminGetDeviceBanV4
+#- 306 AdminGetDeviceBanV4
 $PYTHON -m $MODULE 'iam-admin-get-device-ban-v4' \
     'iyy0aWrshpmb1C9A' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 305 'AdminGetDeviceBanV4' test.out
+eval_tap $? 306 'AdminGetDeviceBanV4' test.out
 
-#- 306 AdminUpdateDeviceBanV4
+#- 307 AdminUpdateDeviceBanV4
 $PYTHON -m $MODULE 'iam-admin-update-device-ban-v4' \
     '{"enabled": false}' \
     'mYdyge6DroOywOxI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 306 'AdminUpdateDeviceBanV4' test.out
+eval_tap $? 307 'AdminUpdateDeviceBanV4' test.out
 
-#- 307 AdminGenerateReportV4
+#- 308 AdminGenerateReportV4
 $PYTHON -m $MODULE 'iam-admin-generate-report-v4' \
     '4G6jZzoYIFAvYfT8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 307 'AdminGenerateReportV4' test.out
+eval_tap $? 308 'AdminGenerateReportV4' test.out
 
-#- 308 AdminGetDeviceTypesV4
+#- 309 AdminGetDeviceTypesV4
 $PYTHON -m $MODULE 'iam-admin-get-device-types-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 308 'AdminGetDeviceTypesV4' test.out
+eval_tap $? 309 'AdminGetDeviceTypesV4' test.out
 
-#- 309 AdminGetDeviceBansV4
+#- 310 AdminGetDeviceBansV4
 $PYTHON -m $MODULE 'iam-admin-get-device-bans-v4' \
     'XQw2EOq6BFjmN4Oq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 309 'AdminGetDeviceBansV4' test.out
+eval_tap $? 310 'AdminGetDeviceBansV4' test.out
 
-#- 310 AdminDecryptDeviceV4
+#- 311 AdminDecryptDeviceV4
 $PYTHON -m $MODULE 'iam-admin-decrypt-device-v4' \
     'KGLRpNWzKZtZnxgy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 310 'AdminDecryptDeviceV4' test.out
+eval_tap $? 311 'AdminDecryptDeviceV4' test.out
 
-#- 311 AdminUnbanDeviceV4
+#- 312 AdminUnbanDeviceV4
 $PYTHON -m $MODULE 'iam-admin-unban-device-v4' \
     'wmr4CYNGm7Tk1mMy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 311 'AdminUnbanDeviceV4' test.out
+eval_tap $? 312 'AdminUnbanDeviceV4' test.out
 
-#- 312 AdminGetUsersByDeviceV4
+#- 313 AdminGetUsersByDeviceV4
 $PYTHON -m $MODULE 'iam-admin-get-users-by-device-v4' \
     'eNRsjQuDEgO3MEQN' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 312 'AdminGetUsersByDeviceV4' test.out
+eval_tap $? 313 'AdminGetUsersByDeviceV4' test.out
 
-#- 313 AdminCreateTestUsersV4
+#- 314 AdminGetNamespaceInvitationHistoryV4
+$PYTHON -m $MODULE 'iam-admin-get-namespace-invitation-history-v4' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 314 'AdminGetNamespaceInvitationHistoryV4' test.out
+
+#- 315 AdminGetNamespaceUserInvitationHistoryV4
+$PYTHON -m $MODULE 'iam-admin-get-namespace-user-invitation-history-v4' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 315 'AdminGetNamespaceUserInvitationHistoryV4' test.out
+
+#- 316 AdminCreateTestUsersV4
 $PYTHON -m $MODULE 'iam-admin-create-test-users-v4' \
     '{"count": 77}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 313 'AdminCreateTestUsersV4' test.out
+eval_tap $? 316 'AdminCreateTestUsersV4' test.out
 
-#- 314 AdminCreateUserV4
+#- 317 AdminCreateUserV4
 $PYTHON -m $MODULE 'iam-admin-create-user-v4' \
     '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "6ijLRvQOgoaBooTa", "policyId": "wHLMxhx9nC3o6pXU", "policyVersionId": "5MDJLCB6WbXWIRpg"}, {"isAccepted": false, "localizedPolicyVersionId": "dTnGrwHeWoQXPFWF", "policyId": "aKbDgrGkv8SVwLyS", "policyVersionId": "4VbHJvD0lL7aZUY9"}, {"isAccepted": false, "localizedPolicyVersionId": "CYjCHniVSn1gYGal", "policyId": "5NrBtT0om9OlGzpF", "policyVersionId": "25qu98RhktX6qwkX"}], "authType": "EMAILPASSWD", "code": "qHHGlnAnEu6EKYce", "country": "TEqYudHlA4AxeEIf", "dateOfBirth": "UxJ2xMSNNBxCeN3p", "displayName": "Gn46fGvodt413MRd", "emailAddress": "G8qAPiANv2Ar8yXV", "password": "6qf6v5SgcJPZPUh2", "passwordMD5Sum": "nHQwpWi8HZ6C0VJ0", "reachMinimumAge": false, "uniqueDisplayName": "dEBVAU3rbkv8V98c", "username": "upW0L5WsiuITRMSP"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 314 'AdminCreateUserV4' test.out
+eval_tap $? 317 'AdminCreateUserV4' test.out
 
-#- 315 AdminBulkUpdateUserAccountTypeV4
+#- 318 AdminBulkUpdateUserAccountTypeV4
 $PYTHON -m $MODULE 'iam-admin-bulk-update-user-account-type-v4' \
     '{"testAccount": false, "userIds": ["UfWQwr4PYf48r66M", "aToxBiliy2vtRkpq", "L6KrVcNz83J57t6O"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 315 'AdminBulkUpdateUserAccountTypeV4' test.out
+eval_tap $? 318 'AdminBulkUpdateUserAccountTypeV4' test.out
 
-#- 316 AdminBulkCheckValidUserIDV4
+#- 319 AdminBulkCheckValidUserIDV4
 $PYTHON -m $MODULE 'iam-admin-bulk-check-valid-user-idv4' \
     '{"userIds": ["cYPQ5bk5IeuAi3zW", "FGorCbncoj5RvEtX", "iKyUGdNfMiwgSvsT"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 316 'AdminBulkCheckValidUserIDV4' test.out
+eval_tap $? 319 'AdminBulkCheckValidUserIDV4' test.out
 
-#- 317 AdminUpdateUserV4
+#- 320 AdminUpdateUserV4
 $PYTHON -m $MODULE 'iam-admin-update-user-v4' \
     '{"avatarUrl": "RmJsOm0wVFyHvFhR", "country": "MCFJuA0DEMgykqqj", "dateOfBirth": "oHTpIPMSRAuPI7mS", "displayName": "ZQ5UDm1q51PlW2HG", "languageTag": "8LAiIzuo321Ll90I", "skipLoginQueue": true, "uniqueDisplayName": "IxTIGI5EssYllIqj", "userName": "JzuQ8GglVgxjOGQG"}' \
     'lHm8VTN56tJKwD8O' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 317 'AdminUpdateUserV4' test.out
+eval_tap $? 320 'AdminUpdateUserV4' test.out
 
-#- 318 AdminUpdateUserEmailAddressV4
+#- 321 AdminUpdateUserEmailAddressV4
 $PYTHON -m $MODULE 'iam-admin-update-user-email-address-v4' \
     '{"code": "07L9GG1uenDihcea", "emailAddress": "LdgPZI0fKW8LeQxI"}' \
     'taK6s3Hha69MgxjG' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 318 'AdminUpdateUserEmailAddressV4' test.out
+eval_tap $? 321 'AdminUpdateUserEmailAddressV4' test.out
 
-#- 319 AdminDisableUserMFAV4
+#- 322 AdminDisableUserMFAV4
 $PYTHON -m $MODULE 'iam-admin-disable-user-mfav4' \
     'Jx62mkfVlu4bGB1p' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 319 'AdminDisableUserMFAV4' test.out
+eval_tap $? 322 'AdminDisableUserMFAV4' test.out
 
-#- 320 AdminListUserRolesV4
+#- 323 AdminListUserRolesV4
 $PYTHON -m $MODULE 'iam-admin-list-user-roles-v4' \
     'yk0PpxXZDy5Pmbu7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 320 'AdminListUserRolesV4' test.out
+eval_tap $? 323 'AdminListUserRolesV4' test.out
 
-#- 321 AdminUpdateUserRoleV4
+#- 324 AdminUpdateUserRoleV4
 $PYTHON -m $MODULE 'iam-admin-update-user-role-v4' \
     '{"assignedNamespaces": ["RrD9a5mdlXTCL467", "xHbAiD3Pr3mXZO1P", "nbSlfVRlAI8F2f3m"], "roleId": "Ev09kAA5hnQtd4bc"}' \
     'ivHGIEplRpcHDWcI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 321 'AdminUpdateUserRoleV4' test.out
+eval_tap $? 324 'AdminUpdateUserRoleV4' test.out
 
-#- 322 AdminAddUserRoleV4
+#- 325 AdminAddUserRoleV4
 $PYTHON -m $MODULE 'iam-admin-add-user-role-v4' \
     '{"assignedNamespaces": ["oJ45L0Ze3YamxKDS", "ZTl4UiJSCbG4UmG3", "TkMTzOcBIciiKwRs"], "roleId": "1E7sH2G9MJ6F7Rr7"}' \
     'O15jqeKssQpme6ey' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 322 'AdminAddUserRoleV4' test.out
+eval_tap $? 325 'AdminAddUserRoleV4' test.out
 
-#- 323 AdminRemoveUserRoleV4
+#- 326 AdminRemoveUserRoleV4
 $PYTHON -m $MODULE 'iam-admin-remove-user-role-v4' \
     '{"assignedNamespaces": ["M48tE7eJRsXNeveQ", "XqnFRYmEIX40XOUo", "LOa7oDz00gxcoaH6"], "roleId": "u9TVf4DvEzpoPRiC"}' \
     'lZ6rlwX99AHMLHqg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 323 'AdminRemoveUserRoleV4' test.out
+eval_tap $? 326 'AdminRemoveUserRoleV4' test.out
 
-#- 324 AdminGetRolesV4
+#- 327 AdminGetRolesV4
 $PYTHON -m $MODULE 'iam-admin-get-roles-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 324 'AdminGetRolesV4' test.out
+eval_tap $? 327 'AdminGetRolesV4' test.out
 
-#- 325 AdminCreateRoleV4
+#- 328 AdminCreateRoleV4
 $PYTHON -m $MODULE 'iam-admin-create-role-v4' \
     '{"adminRole": true, "deletable": true, "isWildcard": false, "roleName": "umFvPKqupHj72TlL"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 325 'AdminCreateRoleV4' test.out
+eval_tap $? 328 'AdminCreateRoleV4' test.out
 
-#- 326 AdminGetRoleV4
+#- 329 AdminGetRoleV4
 $PYTHON -m $MODULE 'iam-admin-get-role-v4' \
     's964iABOgTKtnaA7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 326 'AdminGetRoleV4' test.out
+eval_tap $? 329 'AdminGetRoleV4' test.out
 
-#- 327 AdminDeleteRoleV4
+#- 330 AdminDeleteRoleV4
 $PYTHON -m $MODULE 'iam-admin-delete-role-v4' \
     'O35Iaytd9CsAMTZC' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 327 'AdminDeleteRoleV4' test.out
+eval_tap $? 330 'AdminDeleteRoleV4' test.out
 
-#- 328 AdminUpdateRoleV4
+#- 331 AdminUpdateRoleV4
 $PYTHON -m $MODULE 'iam-admin-update-role-v4' \
     '{"adminRole": true, "deletable": true, "isWildcard": true, "roleName": "PXxnfggnZ3EZp6wS"}' \
     'AufwYirs9lwvPKd9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 328 'AdminUpdateRoleV4' test.out
+eval_tap $? 331 'AdminUpdateRoleV4' test.out
 
-#- 329 AdminUpdateRolePermissionsV4
+#- 332 AdminUpdateRolePermissionsV4
 $PYTHON -m $MODULE 'iam-admin-update-role-permissions-v4' \
     '{"permissions": [{"action": 0, "resource": "5u3fFLV0YeMrVaYS", "schedAction": 94, "schedCron": "OU0hHnsCl5k6Jxh5", "schedRange": ["mkmQzKg0jWCjpGwh", "7pLAi5JmzvM6JFKB", "8ikHpl3sNRaDEC2O"]}, {"action": 21, "resource": "gNfTHu3vkZt9FgWc", "schedAction": 21, "schedCron": "ibQNBz81zRPntxpg", "schedRange": ["i7tXIcNEcGJjOCXp", "uix5vnPeTu9evbRo", "v7Bm40CtZiAxk43D"]}, {"action": 66, "resource": "YCV8agvwOI2LlOQN", "schedAction": 89, "schedCron": "MtpRMWSQ8Szi1IrG", "schedRange": ["idRmR5BGRJhFwxmk", "GfPI3j4luXQuuLtY", "a86kvL6cBZQssUUX"]}]}' \
     'OsXMNdvW1hbvGenR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 329 'AdminUpdateRolePermissionsV4' test.out
+eval_tap $? 332 'AdminUpdateRolePermissionsV4' test.out
 
-#- 330 AdminAddRolePermissionsV4
+#- 333 AdminAddRolePermissionsV4
 $PYTHON -m $MODULE 'iam-admin-add-role-permissions-v4' \
     '{"permissions": [{"action": 3, "resource": "bcycXmBcrJLb7lab", "schedAction": 49, "schedCron": "YrmeMIHLS8egV8Xh", "schedRange": ["gDjbrum8UxcutmVg", "8APWKxoj6MF68VuK", "DoklYmkytCAH8Jiq"]}, {"action": 9, "resource": "y1PVriIyv9kjuiAG", "schedAction": 16, "schedCron": "Kgew2mHDksA6Mv9N", "schedRange": ["zs19eBq9a1L8S1yd", "uOwscICro6P8FWIP", "eqaBeD2uBAvIXEc2"]}, {"action": 58, "resource": "IALI8JNIII4jrzrP", "schedAction": 37, "schedCron": "bCOiBWdw2b031dm4", "schedRange": ["N41MOpmm04BlZUAl", "YnCT11qD03er5mdr", "aK47FdxXisVlo3aV"]}]}' \
     'OGARFDJcGWy826il' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 330 'AdminAddRolePermissionsV4' test.out
+eval_tap $? 333 'AdminAddRolePermissionsV4' test.out
 
-#- 331 AdminDeleteRolePermissionsV4
+#- 334 AdminDeleteRolePermissionsV4
 $PYTHON -m $MODULE 'iam-admin-delete-role-permissions-v4' \
     '["CxAxQUM5DyrPfBmp", "ZIzSFUZqVR5FWGfH", "66eFCMTsLA8vYVvr"]' \
     'IAEehUV0jsjAyVgx' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 331 'AdminDeleteRolePermissionsV4' test.out
+eval_tap $? 334 'AdminDeleteRolePermissionsV4' test.out
 
-#- 332 AdminListAssignedUsersV4
+#- 335 AdminListAssignedUsersV4
 $PYTHON -m $MODULE 'iam-admin-list-assigned-users-v4' \
     'S54NNs3XdhMbQX9D' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 332 'AdminListAssignedUsersV4' test.out
+eval_tap $? 335 'AdminListAssignedUsersV4' test.out
 
-#- 333 AdminAssignUserToRoleV4
+#- 336 AdminAssignUserToRoleV4
 $PYTHON -m $MODULE 'iam-admin-assign-user-to-role-v4' \
     '{"assignedNamespaces": ["1znEWw9p7g4UsQCT", "KDh5n9yc34xF8qFl", "lM1LTrl4MP3Nl4T3"], "namespace": "ujvV7W6ADLtn7oIn", "userId": "n1Bz3wM3BI51etn1"}' \
     '7OcmSVHZ6wtPVAwg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 333 'AdminAssignUserToRoleV4' test.out
+eval_tap $? 336 'AdminAssignUserToRoleV4' test.out
 
-#- 334 AdminRevokeUserFromRoleV4
+#- 337 AdminRevokeUserFromRoleV4
 $PYTHON -m $MODULE 'iam-admin-revoke-user-from-role-v4' \
     '{"namespace": "vxYxXJTduZp1nNYH", "userId": "REmm1cBuaRaGeM8y"}' \
     'xRfejqSbVgLd1Foy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 334 'AdminRevokeUserFromRoleV4' test.out
+eval_tap $? 337 'AdminRevokeUserFromRoleV4' test.out
 
-#- 335 AdminInviteUserNewV4
+#- 338 AdminInviteUserNewV4
 $PYTHON -m $MODULE 'iam-admin-invite-user-new-v4' \
     '{"assignedNamespaces": ["NFGpu5r2K0IvVg5L", "wUygH98dzTL8azKC", "CNBZpwRFNYxx2dr6"], "emailAddresses": ["DDuDHXcfvXPXJURX", "3XwhOlgcpcOIxqCM", "SpZxby2J9vGOUeSe"], "isAdmin": true, "isNewStudio": false, "namespace": "JtWPRteszMTd0R5F", "roleId": "srf9xbVfgvG617Gm"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 335 'AdminInviteUserNewV4' test.out
+eval_tap $? 338 'AdminInviteUserNewV4' test.out
 
-#- 336 AdminUpdateMyUserV4
+#- 339 AdminUpdateMyUserV4
 $PYTHON -m $MODULE 'iam-admin-update-my-user-v4' \
     '{"avatarUrl": "xzClkR3M6Twpwq3n", "country": "LwxnJKjOo9fvfXF1", "dateOfBirth": "VsikD3IphQQiRcOt", "displayName": "sthUwgQzNHUZ0l1F", "languageTag": "RfOjJUmCbi2llksf", "skipLoginQueue": true, "uniqueDisplayName": "mrSvQdsAdTUGpd8K", "userName": "FrXKFA2gdjQCYoE8"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 336 'AdminUpdateMyUserV4' test.out
+eval_tap $? 339 'AdminUpdateMyUserV4' test.out
 
-#- 337 AdminDisableMyAuthenticatorV4
+#- 340 AdminDisableMyAuthenticatorV4
 $PYTHON -m $MODULE 'iam-admin-disable-my-authenticator-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 337 'AdminDisableMyAuthenticatorV4' test.out
+eval_tap $? 340 'AdminDisableMyAuthenticatorV4' test.out
 
-#- 338 AdminEnableMyAuthenticatorV4
+#- 341 AdminEnableMyAuthenticatorV4
 $PYTHON -m $MODULE 'iam-admin-enable-my-authenticator-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 338 'AdminEnableMyAuthenticatorV4' test.out
+eval_tap $? 341 'AdminEnableMyAuthenticatorV4' test.out
 
-#- 339 AdminGenerateMyAuthenticatorKeyV4
+#- 342 AdminGenerateMyAuthenticatorKeyV4
 $PYTHON -m $MODULE 'iam-admin-generate-my-authenticator-key-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 339 'AdminGenerateMyAuthenticatorKeyV4' test.out
+eval_tap $? 342 'AdminGenerateMyAuthenticatorKeyV4' test.out
 
-#- 340 AdminGetMyBackupCodesV4
-eval_tap 0 340 'AdminGetMyBackupCodesV4 # SKIP deprecated' test.out
+#- 343 AdminGetMyBackupCodesV4
+eval_tap 0 343 'AdminGetMyBackupCodesV4 # SKIP deprecated' test.out
 
-#- 341 AdminGenerateMyBackupCodesV4
-eval_tap 0 341 'AdminGenerateMyBackupCodesV4 # SKIP deprecated' test.out
+#- 344 AdminGenerateMyBackupCodesV4
+eval_tap 0 344 'AdminGenerateMyBackupCodesV4 # SKIP deprecated' test.out
 
-#- 342 AdminDisableMyBackupCodesV4
+#- 345 AdminDisableMyBackupCodesV4
 $PYTHON -m $MODULE 'iam-admin-disable-my-backup-codes-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 342 'AdminDisableMyBackupCodesV4' test.out
+eval_tap $? 345 'AdminDisableMyBackupCodesV4' test.out
 
-#- 343 AdminDownloadMyBackupCodesV4
-eval_tap 0 343 'AdminDownloadMyBackupCodesV4 # SKIP deprecated' test.out
+#- 346 AdminDownloadMyBackupCodesV4
+eval_tap 0 346 'AdminDownloadMyBackupCodesV4 # SKIP deprecated' test.out
 
-#- 344 AdminEnableMyBackupCodesV4
-eval_tap 0 344 'AdminEnableMyBackupCodesV4 # SKIP deprecated' test.out
+#- 347 AdminEnableMyBackupCodesV4
+eval_tap 0 347 'AdminEnableMyBackupCodesV4 # SKIP deprecated' test.out
 
-#- 345 AdminGetBackupCodesV4
+#- 348 AdminGetBackupCodesV4
 $PYTHON -m $MODULE 'iam-admin-get-backup-codes-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 345 'AdminGetBackupCodesV4' test.out
+eval_tap $? 348 'AdminGetBackupCodesV4' test.out
 
-#- 346 AdminGenerateBackupCodesV4
+#- 349 AdminGenerateBackupCodesV4
 $PYTHON -m $MODULE 'iam-admin-generate-backup-codes-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 346 'AdminGenerateBackupCodesV4' test.out
+eval_tap $? 349 'AdminGenerateBackupCodesV4' test.out
 
-#- 347 AdminEnableBackupCodesV4
+#- 350 AdminEnableBackupCodesV4
 $PYTHON -m $MODULE 'iam-admin-enable-backup-codes-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 347 'AdminEnableBackupCodesV4' test.out
+eval_tap $? 350 'AdminEnableBackupCodesV4' test.out
 
-#- 348 AdminSendMyMFAEmailCodeV4
+#- 351 AdminSendMyMFAEmailCodeV4
 $PYTHON -m $MODULE 'iam-admin-send-my-mfa-email-code-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 348 'AdminSendMyMFAEmailCodeV4' test.out
+eval_tap $? 351 'AdminSendMyMFAEmailCodeV4' test.out
 
-#- 349 AdminDisableMyEmailV4
+#- 352 AdminDisableMyEmailV4
 $PYTHON -m $MODULE 'iam-admin-disable-my-email-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 349 'AdminDisableMyEmailV4' test.out
+eval_tap $? 352 'AdminDisableMyEmailV4' test.out
 
-#- 350 AdminEnableMyEmailV4
+#- 353 AdminEnableMyEmailV4
 $PYTHON -m $MODULE 'iam-admin-enable-my-email-v4' \
     'b0CZetLfpFNyp737' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 350 'AdminEnableMyEmailV4' test.out
+eval_tap $? 353 'AdminEnableMyEmailV4' test.out
 
-#- 351 AdminGetMyEnabledFactorsV4
+#- 354 AdminGetMyEnabledFactorsV4
 $PYTHON -m $MODULE 'iam-admin-get-my-enabled-factors-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 351 'AdminGetMyEnabledFactorsV4' test.out
+eval_tap $? 354 'AdminGetMyEnabledFactorsV4' test.out
 
-#- 352 AdminMakeFactorMyDefaultV4
+#- 355 AdminMakeFactorMyDefaultV4
 $PYTHON -m $MODULE 'iam-admin-make-factor-my-default-v4' \
     '5rhOmR4zFjoJZVKZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 352 'AdminMakeFactorMyDefaultV4' test.out
+eval_tap $? 355 'AdminMakeFactorMyDefaultV4' test.out
 
-#- 353 AdminInviteUserV4
-eval_tap 0 353 'AdminInviteUserV4 # SKIP deprecated' test.out
+#- 356 AdminInviteUserV4
+eval_tap 0 356 'AdminInviteUserV4 # SKIP deprecated' test.out
 
-#- 354 AuthenticationWithPlatformLinkV4
+#- 357 AuthenticationWithPlatformLinkV4
 $PYTHON -m $MODULE 'iam-authentication-with-platform-link-v4' \
     'jOD2ePKAKYjJMVnY' \
     'j2yKqavWpydepM3a' \
@@ -2414,16 +2435,16 @@ $PYTHON -m $MODULE 'iam-authentication-with-platform-link-v4' \
     'VoxPGOLVBIlFgTAs' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 354 'AuthenticationWithPlatformLinkV4' test.out
+eval_tap $? 357 'AuthenticationWithPlatformLinkV4' test.out
 
-#- 355 GenerateTokenByNewHeadlessAccountV4
+#- 358 GenerateTokenByNewHeadlessAccountV4
 $PYTHON -m $MODULE 'iam-generate-token-by-new-headless-account-v4' \
     'Xgqx3mfB5ZwV25N7' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 355 'GenerateTokenByNewHeadlessAccountV4' test.out
+eval_tap $? 358 'GenerateTokenByNewHeadlessAccountV4' test.out
 
-#- 356 Verify2faCodeV4
+#- 359 Verify2faCodeV4
 $PYTHON -m $MODULE 'iam-verify2fa-code-v4' \
     'NAvZdGuyYEYZE3Ka' \
     'GSdhEGKcp6g1A8O9' \
@@ -2431,192 +2452,192 @@ $PYTHON -m $MODULE 'iam-verify2fa-code-v4' \
     'true' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 356 'Verify2faCodeV4' test.out
+eval_tap $? 359 'Verify2faCodeV4' test.out
 
-#- 357 PlatformTokenGrantV4
+#- 360 PlatformTokenGrantV4
 $PYTHON -m $MODULE 'iam-platform-token-grant-v4' \
     '93AE1Toj5vygVvLS' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 357 'PlatformTokenGrantV4' test.out
+eval_tap $? 360 'PlatformTokenGrantV4' test.out
 
-#- 358 SimultaneousLoginV4
+#- 361 SimultaneousLoginV4
 $PYTHON -m $MODULE 'iam-simultaneous-login-v4' \
     'steam' \
     'rwQiU3DD0xZFH1fH' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 358 'SimultaneousLoginV4' test.out
+eval_tap $? 361 'SimultaneousLoginV4' test.out
 
-#- 359 TokenGrantV4
+#- 362 TokenGrantV4
 $PYTHON -m $MODULE 'iam-token-grant-v4' \
     'urn:ietf:params:oauth:grant-type:extend_client_credentials' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 359 'TokenGrantV4' test.out
+eval_tap $? 362 'TokenGrantV4' test.out
 
-#- 360 RequestTargetTokenResponseV4
+#- 363 RequestTargetTokenResponseV4
 $PYTHON -m $MODULE 'iam-request-target-token-response-v4' \
     'zffAL2DZ7gBhy77i' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 360 'RequestTargetTokenResponseV4' test.out
+eval_tap $? 363 'RequestTargetTokenResponseV4' test.out
 
-#- 361 PublicCreateTestUserV4
+#- 364 PublicCreateTestUserV4
 $PYTHON -m $MODULE 'iam-public-create-test-user-v4' \
     '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "fFvWenMNV00KVuLF", "policyId": "9WDnGO3bpQWmnS52", "policyVersionId": "ZuuuI7F1xpVrcoXz"}, {"isAccepted": true, "localizedPolicyVersionId": "OEGEDYfiGPYo2K3d", "policyId": "N3YBOJfvV6SuHovo", "policyVersionId": "Qlk5wL2oXDZ20Bw2"}, {"isAccepted": true, "localizedPolicyVersionId": "4tz6KUC4jXGj2G0G", "policyId": "Z3JBYi9bBKBRpdbL", "policyVersionId": "CiwxOx2XQn94xPqX"}], "authType": "EMAILPASSWD", "country": "ANBbEKQrgocpjGNe", "dateOfBirth": "nRlDORLvP7ynTuXz", "displayName": "afCqlMrrVIehVCf3", "emailAddress": "AwIzUdQ6sTrUg7Z0", "password": "SLrZraV3NLBUSrFn", "passwordMD5Sum": "zE6yR1wLTgjsnB2L", "uniqueDisplayName": "FVrZRrOntm2KjbfC", "username": "OuW3dBmFwUO7Y0xh", "verified": false}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 361 'PublicCreateTestUserV4' test.out
+eval_tap $? 364 'PublicCreateTestUserV4' test.out
 
-#- 362 PublicCreateUserV4
+#- 365 PublicCreateUserV4
 $PYTHON -m $MODULE 'iam-public-create-user-v4' \
     '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "DdmjU11QIZtkSn8Q", "policyId": "RbA5V4gjWv1W6cqn", "policyVersionId": "vSuKswQ7vH8GScnP"}, {"isAccepted": true, "localizedPolicyVersionId": "QzRBY1UrefgmVFBV", "policyId": "z4KRCU0p4jIt01gz", "policyVersionId": "H17IcfJyGulmByN5"}, {"isAccepted": true, "localizedPolicyVersionId": "sJ98WRjqYieXRthQ", "policyId": "ZvzRi7pqpajYEHs9", "policyVersionId": "TIkcnrJ64BOKqywS"}], "authType": "EMAILPASSWD", "code": "hASFlYMVJtE2dAeC", "country": "7pF73y9eALKWinUJ", "dateOfBirth": "7bAuUJ7Fxg5LijlQ", "displayName": "TVq8Bh1p0NCKWNkL", "emailAddress": "U5ty3uQa7Fl3ZhSM", "password": "LtrwnjTJVDlh112b", "passwordMD5Sum": "yTYCDBnAvf8JpFuJ", "reachMinimumAge": true, "uniqueDisplayName": "ZistM75544PDlVK8", "username": "taScpV0NtCxDDz5r"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 362 'PublicCreateUserV4' test.out
+eval_tap $? 365 'PublicCreateUserV4' test.out
 
-#- 363 CreateUserFromInvitationV4
+#- 366 CreateUserFromInvitationV4
 $PYTHON -m $MODULE 'iam-create-user-from-invitation-v4' \
     '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "0qhZath4b4HtwEYX", "policyId": "55pJNTX1sDjSWiSX", "policyVersionId": "sV5rJ8eZXZ1TLMZn"}, {"isAccepted": true, "localizedPolicyVersionId": "L3DQK45IAtbyUDDS", "policyId": "JSV8pzl1lfIR7jne", "policyVersionId": "tIJPGObyWCLyFPHa"}, {"isAccepted": true, "localizedPolicyVersionId": "XUT4fRbawD5yOvjg", "policyId": "OopQfbXmtF0WFH7F", "policyVersionId": "2InhxtynUjuBCxkb"}], "authType": "EMAILPASSWD", "code": "oF99xI1VVtVrVT6H", "country": "n8B2d1hZUnoQwg5u", "dateOfBirth": "qgoHaFyoczck0qJs", "displayName": "gZPfuelAiZBZcQGH", "emailAddress": "HGI7csI8ecZSvzXY", "password": "OytshBcKQytQagui", "passwordMD5Sum": "6lsKF28n7UC7y1MK", "reachMinimumAge": false, "uniqueDisplayName": "gsAj2Rmf1DXvAIkz", "username": "TRNRVyeEGu1ICOCm"}' \
     'LAmcaEFBKgy92LYq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 363 'CreateUserFromInvitationV4' test.out
+eval_tap $? 366 'CreateUserFromInvitationV4' test.out
 
-#- 364 PublicUpdateUserV4
+#- 367 PublicUpdateUserV4
 $PYTHON -m $MODULE 'iam-public-update-user-v4' \
     '{"avatarUrl": "tQcDN7OMCehk42ac", "country": "y8wsWaPyppR3ztPS", "dateOfBirth": "ALA8LlV2sccbVr6H", "displayName": "SiXVzrG4EdKn8eyp", "languageTag": "TzI497DG0ZNoJvvi", "uniqueDisplayName": "4Ys50iE7IjZoDzMm", "userName": "MgoMxZZ9AutWDfVO"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 364 'PublicUpdateUserV4' test.out
+eval_tap $? 367 'PublicUpdateUserV4' test.out
 
-#- 365 PublicUpdateUserEmailAddressV4
+#- 368 PublicUpdateUserEmailAddressV4
 $PYTHON -m $MODULE 'iam-public-update-user-email-address-v4' \
     '{"code": "INhql9CdDX4xiHpd", "emailAddress": "fKH35RWUUVEHCB5w"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 365 'PublicUpdateUserEmailAddressV4' test.out
+eval_tap $? 368 'PublicUpdateUserEmailAddressV4' test.out
 
-#- 366 PublicUpgradeHeadlessAccountWithVerificationCodeV4
+#- 369 PublicUpgradeHeadlessAccountWithVerificationCodeV4
 $PYTHON -m $MODULE 'iam-public-upgrade-headless-account-with-verification-code-v4' \
     '{"code": "zF6oLIrAwjAsgo51", "country": "XHJBG2PmyeFaBiT3", "dateOfBirth": "SyLHXZSyfjukWmkf", "displayName": "kiF2GZPuyWBVH66J", "emailAddress": "U1IICVNNRV4lBToT", "password": "cn1l44ebrKEKdeo7", "reachMinimumAge": true, "uniqueDisplayName": "5yCz9jVs1lYK1Mx9", "username": "rEFkDqb31AZzwiQB", "validateOnly": false}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 366 'PublicUpgradeHeadlessAccountWithVerificationCodeV4' test.out
+eval_tap $? 369 'PublicUpgradeHeadlessAccountWithVerificationCodeV4' test.out
 
-#- 367 PublicUpgradeHeadlessAccountV4
+#- 370 PublicUpgradeHeadlessAccountV4
 $PYTHON -m $MODULE 'iam-public-upgrade-headless-account-v4' \
     '{"emailAddress": "UJgh74tyxkTR8ZCV", "password": "JtkxjBJrNeQRsqkk", "username": "KK2qxqzy4KSA5UtS"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 367 'PublicUpgradeHeadlessAccountV4' test.out
+eval_tap $? 370 'PublicUpgradeHeadlessAccountV4' test.out
 
-#- 368 PublicDisableMyAuthenticatorV4
+#- 371 PublicDisableMyAuthenticatorV4
 $PYTHON -m $MODULE 'iam-public-disable-my-authenticator-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 368 'PublicDisableMyAuthenticatorV4' test.out
+eval_tap $? 371 'PublicDisableMyAuthenticatorV4' test.out
 
-#- 369 PublicEnableMyAuthenticatorV4
+#- 372 PublicEnableMyAuthenticatorV4
 $PYTHON -m $MODULE 'iam-public-enable-my-authenticator-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 369 'PublicEnableMyAuthenticatorV4' test.out
+eval_tap $? 372 'PublicEnableMyAuthenticatorV4' test.out
 
-#- 370 PublicGenerateMyAuthenticatorKeyV4
+#- 373 PublicGenerateMyAuthenticatorKeyV4
 $PYTHON -m $MODULE 'iam-public-generate-my-authenticator-key-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 370 'PublicGenerateMyAuthenticatorKeyV4' test.out
+eval_tap $? 373 'PublicGenerateMyAuthenticatorKeyV4' test.out
 
-#- 371 PublicGetMyBackupCodesV4
-eval_tap 0 371 'PublicGetMyBackupCodesV4 # SKIP deprecated' test.out
+#- 374 PublicGetMyBackupCodesV4
+eval_tap 0 374 'PublicGetMyBackupCodesV4 # SKIP deprecated' test.out
 
-#- 372 PublicGenerateMyBackupCodesV4
-eval_tap 0 372 'PublicGenerateMyBackupCodesV4 # SKIP deprecated' test.out
+#- 375 PublicGenerateMyBackupCodesV4
+eval_tap 0 375 'PublicGenerateMyBackupCodesV4 # SKIP deprecated' test.out
 
-#- 373 PublicDisableMyBackupCodesV4
+#- 376 PublicDisableMyBackupCodesV4
 $PYTHON -m $MODULE 'iam-public-disable-my-backup-codes-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 373 'PublicDisableMyBackupCodesV4' test.out
+eval_tap $? 376 'PublicDisableMyBackupCodesV4' test.out
 
-#- 374 PublicDownloadMyBackupCodesV4
-eval_tap 0 374 'PublicDownloadMyBackupCodesV4 # SKIP deprecated' test.out
+#- 377 PublicDownloadMyBackupCodesV4
+eval_tap 0 377 'PublicDownloadMyBackupCodesV4 # SKIP deprecated' test.out
 
-#- 375 PublicEnableMyBackupCodesV4
-eval_tap 0 375 'PublicEnableMyBackupCodesV4 # SKIP deprecated' test.out
+#- 378 PublicEnableMyBackupCodesV4
+eval_tap 0 378 'PublicEnableMyBackupCodesV4 # SKIP deprecated' test.out
 
-#- 376 PublicGetBackupCodesV4
+#- 379 PublicGetBackupCodesV4
 $PYTHON -m $MODULE 'iam-public-get-backup-codes-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 376 'PublicGetBackupCodesV4' test.out
+eval_tap $? 379 'PublicGetBackupCodesV4' test.out
 
-#- 377 PublicGenerateBackupCodesV4
+#- 380 PublicGenerateBackupCodesV4
 $PYTHON -m $MODULE 'iam-public-generate-backup-codes-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 377 'PublicGenerateBackupCodesV4' test.out
+eval_tap $? 380 'PublicGenerateBackupCodesV4' test.out
 
-#- 378 PublicEnableBackupCodesV4
+#- 381 PublicEnableBackupCodesV4
 $PYTHON -m $MODULE 'iam-public-enable-backup-codes-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 378 'PublicEnableBackupCodesV4' test.out
+eval_tap $? 381 'PublicEnableBackupCodesV4' test.out
 
-#- 379 PublicRemoveTrustedDeviceV4
+#- 382 PublicRemoveTrustedDeviceV4
 $PYTHON -m $MODULE 'iam-public-remove-trusted-device-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 379 'PublicRemoveTrustedDeviceV4' test.out
+eval_tap $? 382 'PublicRemoveTrustedDeviceV4' test.out
 
-#- 380 PublicSendMyMFAEmailCodeV4
+#- 383 PublicSendMyMFAEmailCodeV4
 $PYTHON -m $MODULE 'iam-public-send-my-mfa-email-code-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 380 'PublicSendMyMFAEmailCodeV4' test.out
+eval_tap $? 383 'PublicSendMyMFAEmailCodeV4' test.out
 
-#- 381 PublicDisableMyEmailV4
+#- 384 PublicDisableMyEmailV4
 $PYTHON -m $MODULE 'iam-public-disable-my-email-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 381 'PublicDisableMyEmailV4' test.out
+eval_tap $? 384 'PublicDisableMyEmailV4' test.out
 
-#- 382 PublicEnableMyEmailV4
+#- 385 PublicEnableMyEmailV4
 $PYTHON -m $MODULE 'iam-public-enable-my-email-v4' \
     'XWjANSWIT9TLnuML' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 382 'PublicEnableMyEmailV4' test.out
+eval_tap $? 385 'PublicEnableMyEmailV4' test.out
 
-#- 383 PublicGetMyEnabledFactorsV4
+#- 386 PublicGetMyEnabledFactorsV4
 $PYTHON -m $MODULE 'iam-public-get-my-enabled-factors-v4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 383 'PublicGetMyEnabledFactorsV4' test.out
+eval_tap $? 386 'PublicGetMyEnabledFactorsV4' test.out
 
-#- 384 PublicMakeFactorMyDefaultV4
+#- 387 PublicMakeFactorMyDefaultV4
 $PYTHON -m $MODULE 'iam-public-make-factor-my-default-v4' \
     'NJAEk3A6A6rYiIu8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 384 'PublicMakeFactorMyDefaultV4' test.out
+eval_tap $? 387 'PublicMakeFactorMyDefaultV4' test.out
 
-#- 385 PublicGetUserPublicInfoByUserIdV4
+#- 388 PublicGetUserPublicInfoByUserIdV4
 $PYTHON -m $MODULE 'iam-public-get-user-public-info-by-user-id-v4' \
     'eLdWykhBxLFnKnSY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 385 'PublicGetUserPublicInfoByUserIdV4' test.out
+eval_tap $? 388 'PublicGetUserPublicInfoByUserIdV4' test.out
 
-#- 386 PublicInviteUserV4
+#- 389 PublicInviteUserV4
 $PYTHON -m $MODULE 'iam-public-invite-user-v4' \
     '{"additionalData": "C9yyBYepIqtrikdA", "emailAddress": "bdOT6iSRdEg8NYuc", "namespace": "4q5sJVzaKGDOULJb", "namespaceDisplayName": "jHphqjHGGAhfWaXq"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 386 'PublicInviteUserV4' test.out
+eval_tap $? 389 'PublicInviteUserV4' test.out
 
 
 fi

@@ -37,9 +37,7 @@ from ...models import ResponseErrorResponse
 class UpdateLeaderboardConfigurationAdminV3(Operation):
     """update leaderboard by leaderboardCode (updateLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]'
-
-     Fields :
+    Fields :
 
 
 
@@ -66,9 +64,6 @@ class UpdateLeaderboardConfigurationAdminV3(Operation):
 
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}

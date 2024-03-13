@@ -35,10 +35,7 @@ from ...models import ResponseError
 class AdminDeleteChannel(Operation):
     """Delete Channel (AdminDeleteChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete user channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}

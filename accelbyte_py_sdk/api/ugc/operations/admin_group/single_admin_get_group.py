@@ -36,10 +36,7 @@ from ...models import ResponseError
 class SingleAdminGetGroup(Operation):
     """Get specific user group (SingleAdminGetGroup)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+    Get user group by group ID
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/groups/{groupId}

@@ -40,20 +40,12 @@ class HardDeleteLeaderboardAdminV1(Operation):
 
 
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint will delete leaderboard configuration and its data
 
 
 
 
     Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard

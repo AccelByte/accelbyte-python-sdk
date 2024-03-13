@@ -14,7 +14,7 @@ body:
 Definition: ModelsBulkUserIDsRequest
 user_ids: List[str]
 
-Example: '{"userIds": ["NapnDfRVguH2xQTd", "u9N6PdBPMFM2o1vM", "WGSV1cYTRTg8Ns78"]}'
+Example: '{"userIds": ["gjqRwZxydHj7vSzO", "lG4yf3LAu2ndiubj", "gy8nZnbcI4ASPAWC"]}'
 """
 
 result, error = bulk_get_player_public_binary_records_v1(

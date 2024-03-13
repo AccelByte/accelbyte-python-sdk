@@ -315,6 +315,7 @@ from ..api.platform.models import PreCheckFulfillmentRequest
 from ..api.platform.models import Predicate
 from ..api.platform.models import PredicateValidateResult
 from ..api.platform.models import PublicCustomConfigInfo
+from ..api.platform.models import PublicEntitlementHistoryInfo
 from ..api.platform.models import PurchaseCondition
 from ..api.platform.models import PurchaseConditionUpdate
 from ..api.platform.models import PurchasedItemCount
@@ -413,6 +414,7 @@ from ..api.platform.models import TwitchSyncRequest
 from ..api.platform.models import TwitchSyncResult
 from ..api.platform.models import UserDLC
 from ..api.platform.models import UserDLCRecord
+from ..api.platform.models import UserEntitlementHistoryPagingSlicedResult
 from ..api.platform.models import ValidationErrorEntity
 from ..api.platform.models import ViewCreate
 from ..api.platform.models import ViewInfo
@@ -1539,8 +1541,11 @@ def create_entitlement_history_info_example() -> EntitlementHistoryInfo:
     instance.operator = randomize()
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
+    instance.clazz = randomize()
+    instance.item_id = randomize()
     instance.origin = randomize()
     instance.reason = randomize()
+    instance.sku = randomize("slug")
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     instance.use_count_change = randomize("int", min_val=1, max_val=1000)
     return instance
@@ -3848,6 +3853,24 @@ def create_public_custom_config_info_example() -> PublicCustomConfigInfo:
     return instance
 
 
+def create_public_entitlement_history_info_example() -> PublicEntitlementHistoryInfo:
+    instance = PublicEntitlementHistoryInfo()
+    instance.action = randomize()
+    instance.created_at = randomize("date")
+    instance.entitlement_id = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.clazz = randomize()
+    instance.item_id = randomize()
+    instance.origin = randomize()
+    instance.reason = randomize()
+    instance.sku = randomize("slug")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    instance.use_count_change = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_purchase_condition_example() -> PurchaseCondition:
     instance = PurchaseCondition()
     instance.condition_groups = [create_condition_group_example()]
@@ -4925,6 +4948,15 @@ def create_user_dlc_record_example() -> UserDLCRecord:
     return instance
 
 
+def create_user_entitlement_history_paging_sliced_result_example() -> (
+    UserEntitlementHistoryPagingSlicedResult
+):
+    instance = UserEntitlementHistoryPagingSlicedResult()
+    instance.data = [create_public_entitlement_history_info_example()]
+    instance.paging = create_paging_example()
+    return instance
+
+
 def create_validation_error_entity_example() -> ValidationErrorEntity:
     instance = ValidationErrorEntity()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
@@ -5059,6 +5091,7 @@ def create_xbl_dlc_sync_request_example() -> XblDLCSyncRequest:
 def create_xbl_iap_config_info_example() -> XblIAPConfigInfo:
     instance = XblIAPConfigInfo()
     instance.namespace = randomize("slug")
+    instance.business_partner_cert_expired_time = randomize("date")
     instance.business_partner_cert_file_name = randomize()
     instance.password = randomize("password")
     instance.relying_party_cert = randomize()

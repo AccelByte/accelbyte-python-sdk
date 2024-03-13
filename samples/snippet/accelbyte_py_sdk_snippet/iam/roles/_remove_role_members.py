@@ -15,7 +15,7 @@ Definition: List[AccountcommonRoleMember]
     namespace: str
     user_id: str
 
-Example: '{"Members": [{"DisplayName": "XBY510BPHkiolTRp", "Namespace": "Jr4FHv0AHKbYgQdb", "UserId": "2FezaEJYWi4is65L"}, {"DisplayName": "GwZrhKklm6aqirfC", "Namespace": "7SmBzlvVHNf1kLR8", "UserId": "efhqotgbq2AMSWq1"}, {"DisplayName": "y4QBdW3hXlImTA6F", "Namespace": "1WVXX09SyAII36IV", "UserId": "GkkDL4hUPuHbQTqq"}]}'
+Example: '{"Members": [{"DisplayName": "YHpmuaM6gN49Q8Di", "Namespace": "4ZaweOLQGSmo52e8", "UserId": "dvN0MhUJ9WuqNiZa"}, {"DisplayName": "foYEHUXsAIrtmMWW", "Namespace": "dthMrMAGgayoG3Er", "UserId": "dY5ZwIznFHKA5s0v"}, {"DisplayName": "9fh5NbILjBbAbF2v", "Namespace": "iOdztD2hg3iXNIBe", "UserId": "FEGamxY3t5qz9m5L"}]}'
 """
 
 result, error = remove_role_members(

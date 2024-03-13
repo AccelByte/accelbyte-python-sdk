@@ -12,7 +12,7 @@ Definition: List[ModelPermissionDeleteRequest]
 action: int
 resource: str
 
-Example: '[{"Action": 14, "Resource": "r2tAcV1ncamop7IF"}, {"Action": 55, "Resource": "XtKCRLydkesH5A0W"}, {"Action": 13, "Resource": "GxluecjNuK1JiTVi"}]'
+Example: '[{"Action": 97, "Resource": "IlOd4F7bXVOHZFpZ"}, {"Action": 29, "Resource": "4Qxavta69814nSeS"}, {"Action": 67, "Resource": "pLKw9KEAePgs6IQP"}]'
 """
 
 result, error = admin_delete_user_permission_bulk_v3(

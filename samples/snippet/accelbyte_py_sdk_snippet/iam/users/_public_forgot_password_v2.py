@@ -12,7 +12,7 @@ context: str
 language_tag: str
 login_id: str
 
-Example: '{"Context": "EyzlhrnKQGgW148Y", "LanguageTag": "VVPf7VR4D3sgj2zg", "LoginID": "0RQzUmIllYiWVYdD"}'
+Example: '{"Context": "JSgQ8Huee1UjaDNi", "LanguageTag": "Yp81r3xP1THgt2Ze", "LoginID": "UTziBsYckDxMVRVt"}'
 """
 
 result, error = public_forgot_password_v2(

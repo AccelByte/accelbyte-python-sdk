@@ -49,9 +49,6 @@ class UpdateUserPointAdminV1(Operation):
 
 
 
-      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:(userId):LEADERBOARD", action=4 (UPDATE)
-
-
       * Returns: user ranking
 
     Properties:

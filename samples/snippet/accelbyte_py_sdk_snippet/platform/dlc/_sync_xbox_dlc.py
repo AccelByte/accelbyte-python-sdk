@@ -11,7 +11,7 @@ body:
 Definition: XblDLCSyncRequest
 xsts_token: str
 
-Example: '{"xstsToken": "7je6NjXkFtg9xLmM"}'
+Example: '{"xstsToken": "usWrz8EbWJLp81Tw"}'
 """
 
 result, error = sync_xbox_dlc(

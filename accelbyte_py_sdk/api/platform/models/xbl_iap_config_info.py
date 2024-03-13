@@ -34,6 +34,8 @@ class XblIAPConfigInfo(Model):
     Properties:
         namespace: (namespace) REQUIRED str
 
+        business_partner_cert_expired_time: (businessPartnerCertExpiredTime) OPTIONAL str
+
         business_partner_cert_file_name: (businessPartnerCertFileName) OPTIONAL str
 
         password: (password) OPTIONAL str
@@ -44,6 +46,7 @@ class XblIAPConfigInfo(Model):
     # region fields
 
     namespace: str  # REQUIRED
+    business_partner_cert_expired_time: str  # OPTIONAL
     business_partner_cert_file_name: str  # OPTIONAL
     password: str  # OPTIONAL
     relying_party_cert: str  # OPTIONAL
@@ -54,6 +57,10 @@ class XblIAPConfigInfo(Model):
 
     def with_namespace(self, value: str) -> XblIAPConfigInfo:
         self.namespace = value
+        return self
+
+    def with_business_partner_cert_expired_time(self, value: str) -> XblIAPConfigInfo:
+        self.business_partner_cert_expired_time = value
         return self
 
     def with_business_partner_cert_file_name(self, value: str) -> XblIAPConfigInfo:
@@ -78,6 +85,12 @@ class XblIAPConfigInfo(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "business_partner_cert_expired_time"):
+            result["businessPartnerCertExpiredTime"] = str(
+                self.business_partner_cert_expired_time
+            )
+        elif include_empty:
+            result["businessPartnerCertExpiredTime"] = ""
         if hasattr(self, "business_partner_cert_file_name"):
             result["businessPartnerCertFileName"] = str(
                 self.business_partner_cert_file_name
@@ -102,6 +115,7 @@ class XblIAPConfigInfo(Model):
     def create(
         cls,
         namespace: str,
+        business_partner_cert_expired_time: Optional[str] = None,
         business_partner_cert_file_name: Optional[str] = None,
         password: Optional[str] = None,
         relying_party_cert: Optional[str] = None,
@@ -109,6 +123,10 @@ class XblIAPConfigInfo(Model):
     ) -> XblIAPConfigInfo:
         instance = cls()
         instance.namespace = namespace
+        if business_partner_cert_expired_time is not None:
+            instance.business_partner_cert_expired_time = (
+                business_partner_cert_expired_time
+            )
         if business_partner_cert_file_name is not None:
             instance.business_partner_cert_file_name = business_partner_cert_file_name
         if password is not None:
@@ -128,6 +146,15 @@ class XblIAPConfigInfo(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if (
+            "businessPartnerCertExpiredTime" in dict_
+            and dict_["businessPartnerCertExpiredTime"] is not None
+        ):
+            instance.business_partner_cert_expired_time = str(
+                dict_["businessPartnerCertExpiredTime"]
+            )
+        elif include_empty:
+            instance.business_partner_cert_expired_time = ""
         if (
             "businessPartnerCertFileName" in dict_
             and dict_["businessPartnerCertFileName"] is not None
@@ -185,6 +212,7 @@ class XblIAPConfigInfo(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "businessPartnerCertExpiredTime": "business_partner_cert_expired_time",
             "businessPartnerCertFileName": "business_partner_cert_file_name",
             "password": "password",
             "relyingPartyCert": "relying_party_cert",
@@ -194,6 +222,7 @@ class XblIAPConfigInfo(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "businessPartnerCertExpiredTime": False,
             "businessPartnerCertFileName": False,
             "password": False,
             "relyingPartyCert": False,

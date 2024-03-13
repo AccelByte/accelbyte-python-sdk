@@ -172,14 +172,10 @@ def delete_user_ranking_admin_v3(
     """Delete user ranking (deleteUserRankingAdminV3)
 
     Delete user ranking
-    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Remove entry with provided userId from leaderboard.
     If leaderboard with given leaderboard code not found, it will return http status not found (404).
     If the leaderboard is found and no entry found in it, it will still return success (204)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
@@ -234,14 +230,10 @@ async def delete_user_ranking_admin_v3_async(
     """Delete user ranking (deleteUserRankingAdminV3)
 
     Delete user ranking
-    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Remove entry with provided userId from leaderboard.
     If leaderboard with given leaderboard code not found, it will return http status not found (404).
     If the leaderboard is found and no entry found in it, it will still return success (204)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
@@ -301,20 +293,12 @@ def delete_user_ranking_by_leaderboard_code_admin_v3(
 
 
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint will delete user ranking by leaderboard code
 
 
 
 
     Note: this endpoint only works on development environment.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset
@@ -369,20 +353,12 @@ async def delete_user_ranking_by_leaderboard_code_admin_v3_async(
 
 
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint will delete user ranking by leaderboard code
 
 
 
 
     Note: this endpoint only works on development environment.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset
@@ -436,12 +412,8 @@ def delete_user_rankings_admin_v3(
     """Delete user ranking across leaderboard(s) (deleteUserRankingsAdminV3)
 
     Delete user ranking across leaderboard
-    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Remove entry with provided userId from leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/users/{userId}
@@ -494,12 +466,8 @@ async def delete_user_rankings_admin_v3_async(
     """Delete user ranking across leaderboard(s) (deleteUserRankingsAdminV3)
 
     Delete user ranking across leaderboard
-    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Remove entry with provided userId from leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/users/{userId}
@@ -554,15 +522,7 @@ def get_all_time_leaderboard_ranking_admin_v3(
 ):
     """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in an all time leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
@@ -622,15 +582,7 @@ async def get_all_time_leaderboard_ranking_admin_v3_async(
 ):
     """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in an all time leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
@@ -807,15 +759,7 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
 ):
     """Get cycle leaderboard ranking data (GetCurrentCycleLeaderboardRankingAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in cycle leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/cycles/{cycleId}
@@ -879,15 +823,7 @@ async def get_current_cycle_leaderboard_ranking_admin_v3_async(
 ):
     """Get cycle leaderboard ranking data (GetCurrentCycleLeaderboardRankingAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in cycle leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/cycles/{cycleId}
@@ -1073,15 +1009,7 @@ def get_user_ranking_admin_v3(
 ):
     """Get user ranking (getUserRankingAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get user ranking in leaderboard
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
@@ -1135,15 +1063,7 @@ async def get_user_ranking_admin_v3_async(
 ):
     """Get user ranking (getUserRankingAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get user ranking in leaderboard
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}

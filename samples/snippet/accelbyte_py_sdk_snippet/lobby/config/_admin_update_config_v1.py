@@ -31,7 +31,7 @@ profanity_filter: bool
 ready_consent_timeout: int
 unregister_delay: int
 
-Example: '{"allowInviteNonConnectedUser": true, "allowJoinPartyDuringMatchmaking": false, "autoKickOnDisconnect": false, "autoKickOnDisconnectDelay": 95, "cancelTicketOnDisconnect": true, "chatRateLimitBurst": 18, "chatRateLimitDuration": 46, "concurrentUsersLimit": 44, "disableInvitationOnJoinParty": true, "enableChat": true, "entitlementCheck": true, "entitlementItemID": "2k1Cb9Df9HxEhnep", "generalRateLimitBurst": 66, "generalRateLimitDuration": 16, "keepPresenceActivityOnDisconnect": false, "maxDSWaitTime": 30, "maxFriendsLimit": 42, "maxPartyMember": 16, "profanityFilter": false, "readyConsentTimeout": 8, "unregisterDelay": 9}'
+Example: '{"allowInviteNonConnectedUser": false, "allowJoinPartyDuringMatchmaking": false, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 37, "cancelTicketOnDisconnect": true, "chatRateLimitBurst": 70, "chatRateLimitDuration": 66, "concurrentUsersLimit": 3, "disableInvitationOnJoinParty": false, "enableChat": true, "entitlementCheck": true, "entitlementItemID": "aEyArKKCWgpqQg5n", "generalRateLimitBurst": 85, "generalRateLimitDuration": 93, "keepPresenceActivityOnDisconnect": true, "maxDSWaitTime": 19, "maxFriendsLimit": 36, "maxPartyMember": 37, "profanityFilter": false, "readyConsentTimeout": 82, "unregisterDelay": 33}'
 """
 
 result, error = admin_update_config_v1(

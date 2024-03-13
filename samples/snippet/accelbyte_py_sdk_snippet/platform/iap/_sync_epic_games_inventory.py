@@ -12,7 +12,7 @@ body:
 Definition: EpicGamesReconcileRequest
 epic_games_jwt_token: str
 
-Example: '{"epicGamesJwtToken": "c2t0AnewjHGQo8GK"}'
+Example: '{"epicGamesJwtToken": "W9TCq6kSBrZScJJ0"}'
 """
 
 result, error = sync_epic_games_inventory(

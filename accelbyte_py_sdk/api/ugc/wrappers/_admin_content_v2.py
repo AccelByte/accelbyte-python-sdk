@@ -86,11 +86,7 @@ def admin_bulk_get_content_by_i_ds_v2(
 ):
     """Bulk get content by content IDs (AdminBulkGetContentByIDsV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
     Maximum contentId per request 100
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/bulk
@@ -140,11 +136,7 @@ async def admin_bulk_get_content_by_i_ds_v2_async(
 ):
     """Bulk get content by content IDs (AdminBulkGetContentByIDsV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
     Maximum contentId per request 100
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/bulk
@@ -197,10 +189,7 @@ def admin_create_content_v2(
 ):
     """Create a content (AdminCreateContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    Create official content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents
@@ -256,10 +245,7 @@ async def admin_create_content_v2_async(
 ):
     """Create a content (AdminCreateContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    Create official content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents
@@ -318,10 +304,7 @@ def admin_delete_content_by_share_code_v2(
 ):
     """Delete content by share code (AdminDeleteContentByShareCodeV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete content by share code
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
@@ -377,10 +360,7 @@ async def admin_delete_content_by_share_code_v2_async(
 ):
     """Delete content by share code (AdminDeleteContentByShareCodeV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete content by share code
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
@@ -437,10 +417,7 @@ def admin_delete_content_screenshot_v2(
 ):
     """Delete screenshots content (AdminDeleteContentScreenshotV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete screenshot from a content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/screenshots/{screenshotId}
@@ -496,10 +473,7 @@ async def admin_delete_content_screenshot_v2_async(
 ):
     """Delete screenshots content (AdminDeleteContentScreenshotV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete screenshot from a content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/screenshots/{screenshotId}
@@ -557,10 +531,7 @@ def admin_delete_official_content_v2(
 ):
     """Delete official content (AdminDeleteOfficialContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing official content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}
@@ -612,10 +583,7 @@ async def admin_delete_official_content_v2_async(
 ):
     """Delete official content (AdminDeleteOfficialContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing official content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}
@@ -670,10 +638,7 @@ def admin_delete_user_content_v2(
 ):
     """Delete user content (AdminDeleteUserContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete user content by content ID
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -729,10 +694,7 @@ async def admin_delete_user_content_v2_async(
 ):
     """Delete user content (AdminDeleteUserContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete user content by content ID
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -790,10 +752,7 @@ def admin_generate_official_content_upload_urlv2(
 ):
     """Generate official content upload URL (AdminGenerateOfficialContentUploadURLV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Generate official content upload URL
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}/uploadUrl
@@ -851,10 +810,7 @@ async def admin_generate_official_content_upload_urlv2_async(
 ):
     """Generate official content upload URL (AdminGenerateOfficialContentUploadURLV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Generate official content upload URL
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}/uploadUrl
@@ -915,10 +871,7 @@ def admin_generate_user_content_upload_urlv2(
 ):
     """Generate user content upload URL (AdminGenerateUserContentUploadURLV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    generate user content upload URL
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/uploadUrl
@@ -980,10 +933,7 @@ async def admin_generate_user_content_upload_urlv2_async(
 ):
     """Generate user content upload URL (AdminGenerateUserContentUploadURLV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    generate user content upload URL
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/uploadUrl
@@ -1044,11 +994,7 @@ def admin_get_content_bulk_by_share_codes_v2(
 ):
     """Bulk get content by content sharecodes (AdminGetContentBulkByShareCodesV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
     Maximum sharecodes per request 100
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/sharecodes/bulk
@@ -1098,11 +1044,7 @@ async def admin_get_content_bulk_by_share_codes_v2_async(
 ):
     """Bulk get content by content sharecodes (AdminGetContentBulkByShareCodesV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
     Maximum sharecodes per request 100
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/sharecodes/bulk
@@ -1158,10 +1100,7 @@ def admin_get_content_by_channel_idv2(
 ):
     """List contents specific to a channel (AdminGetContentByChannelIDV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List content specific to a channel
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents
@@ -1225,10 +1164,7 @@ async def admin_get_content_by_channel_idv2_async(
 ):
     """List contents specific to a channel (AdminGetContentByChannelIDV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List content specific to a channel
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents
@@ -1290,10 +1226,7 @@ def admin_get_content_by_content_idv2(
 ):
     """Get content by content ID (AdminGetContentByContentIDV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+    Get content by content ID
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}
@@ -1341,10 +1274,7 @@ async def admin_get_content_by_content_idv2_async(
 ):
     """Get content by content ID (AdminGetContentByContentIDV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+    Get content by content ID
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}
@@ -1394,10 +1324,7 @@ def admin_get_content_by_share_code_v2(
 ):
     """Get content by sharecode (AdminGetContentByShareCodeV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+    Get content by share code
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/sharecodes/{shareCode}
@@ -1445,10 +1372,7 @@ async def admin_get_content_by_share_code_v2_async(
 ):
     """Get content by sharecode (AdminGetContentByShareCodeV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+    Get content by share code
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/sharecodes/{shareCode}
@@ -1501,10 +1425,7 @@ def admin_get_content_by_user_idv2(
 ):
     """Get user's generated contents (AdminGetContentByUserIDV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get user cotent
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/contents
@@ -1564,10 +1485,7 @@ async def admin_get_content_by_user_idv2_async(
 ):
     """Get user's generated contents (AdminGetContentByUserIDV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get user cotent
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/contents
@@ -1633,25 +1551,23 @@ def admin_list_content_v2(
 ):
     """List contents (AdminListContentV2)
 
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses ( ) for priority. e.g:
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
 
-    `tags=red`
-    `tags=red&animal;`
-    `tags=red|animal`
-    `tags=red&animal;|wild`
-    `tags=red&(animal|wild)`
+    *tags=red*
+    *tags=red&animal;*
+    *tags=red|animal*
+    *tags=red&animal;|wild*
+    *tags=red&(animal|wild)*
 
     The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
 
-    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
-    Allowed character for operator: `&` `|` `(` `)`
+    Allowed character for operand: alphanumeric, underscore _ and dash -
 
-     Please note that value of tags query param should be URL encoded
+    Allowed character for operator: & | ( )
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+
+    **Please note that value of tags query param should be URL encoded**
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents
@@ -1727,25 +1643,23 @@ async def admin_list_content_v2_async(
 ):
     """List contents (AdminListContentV2)
 
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses ( ) for priority. e.g:
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
 
-    `tags=red`
-    `tags=red&animal;`
-    `tags=red|animal`
-    `tags=red&animal;|wild`
-    `tags=red&(animal|wild)`
+    *tags=red*
+    *tags=red&animal;*
+    *tags=red|animal*
+    *tags=red&animal;|wild*
+    *tags=red&(animal|wild)*
 
     The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
 
-    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
-    Allowed character for operator: `&` `|` `(` `)`
+    Allowed character for operand: alphanumeric, underscore _ and dash -
 
-     Please note that value of tags query param should be URL encoded
+    Allowed character for operator: & | ( )
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+
+    **Please note that value of tags query param should be URL encoded**
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents
@@ -1819,15 +1733,10 @@ def admin_update_content_by_share_code_v2(
 ):
     """Update content to S3 bucket by share code (AdminUpdateContentByShareCodeV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+    *shareCode* format should follows:
 
-    `shareCode` format should follows:
-
-    Max length: 7
-    Available characters: abcdefhkpqrstuxyz
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    "Max length: 7
+    "Available characters: abcdefhkpqrstuxyz
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
@@ -1893,15 +1802,10 @@ async def admin_update_content_by_share_code_v2_async(
 ):
     """Update content to S3 bucket by share code (AdminUpdateContentByShareCodeV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+    *shareCode* format should follows:
 
-    `shareCode` format should follows:
-
-    Max length: 7
-    Available characters: abcdefhkpqrstuxyz
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    "Max length: 7
+    "Available characters: abcdefhkpqrstuxyz
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
@@ -1968,10 +1872,7 @@ def admin_update_content_hide_status_v2(
 ):
     """Hide/Unhide user's generated contents (AdminUpdateContentHideStatusV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Hide/Unhide user's generated contents
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/contents/{contentId}/hide
@@ -2031,10 +1932,7 @@ async def admin_update_content_hide_status_v2_async(
 ):
     """Hide/Unhide user's generated contents (AdminUpdateContentHideStatusV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Hide/Unhide user's generated contents
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/contents/{contentId}/hide
@@ -2096,11 +1994,7 @@ def admin_update_official_content_file_location(
 ):
     """Update content file location (AdminUpdateOfficialContentFileLocation)
 
-    This endpoint should be used after calling generate official content upload url endpoint to commit the changes.
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    This endpoint should be used after calling generate official content upload url endpoint to commit the changes
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}/fileLocation
@@ -2160,11 +2054,7 @@ async def admin_update_official_content_file_location_async(
 ):
     """Update content file location (AdminUpdateOfficialContentFileLocation)
 
-    This endpoint should be used after calling generate official content upload url endpoint to commit the changes.
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    This endpoint should be used after calling generate official content upload url endpoint to commit the changes
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}/fileLocation
@@ -2226,10 +2116,7 @@ def admin_update_official_content_v2(
 ):
     """Update official content (AdminUpdateOfficialContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update existing official content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}
@@ -2289,10 +2176,7 @@ async def admin_update_official_content_v2_async(
 ):
     """Update official content (AdminUpdateOfficialContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update existing official content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}
@@ -2353,11 +2237,7 @@ def admin_update_screenshots_v2(
 ):
     """Update screenshot of content (AdminUpdateScreenshotsV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/screenshots
@@ -2413,11 +2293,7 @@ async def admin_update_screenshots_v2_async(
 ):
     """Update screenshot of content (AdminUpdateScreenshotsV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/screenshots
@@ -2477,11 +2353,7 @@ def admin_update_user_content_file_location(
 ):
     """Update user content file location (AdminUpdateUserContentFileLocation)
 
-    This endpoint should be used after calling generate user content upload url endpoint to commit the changes.
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    This endpoint should be used after calling generate user content upload url endpoint to commit the changes
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/fileLocation
@@ -2545,11 +2417,7 @@ async def admin_update_user_content_file_location_async(
 ):
     """Update user content file location (AdminUpdateUserContentFileLocation)
 
-    This endpoint should be used after calling generate user content upload url endpoint to commit the changes.
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    This endpoint should be used after calling generate user content upload url endpoint to commit the changes
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/fileLocation
@@ -2615,10 +2483,7 @@ def admin_update_user_content_v2(
 ):
     """Update user content (AdminUpdateUserContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update existing user content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -2682,10 +2547,7 @@ async def admin_update_user_content_v2_async(
 ):
     """Update user content (AdminUpdateUserContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update existing user content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -2749,15 +2611,10 @@ def admin_upload_content_screenshot_v2(
 ):
     """Upload screenshots for content (AdminUploadContentScreenshotV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-    All request body are required except for contentType field.
-    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
-    If not specified, it will use fileExtension value.
+    This endpoint used to request upload URL from content's screenshot.
+    If *contentType* is not specified, it will use *fileExtension* value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/screenshots
@@ -2813,15 +2670,10 @@ async def admin_upload_content_screenshot_v2_async(
 ):
     """Upload screenshots for content (AdminUploadContentScreenshotV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-    All request body are required except for contentType field.
-    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
-    If not specified, it will use fileExtension value.
+    This endpoint used to request upload URL from content's screenshot.
+    If *contentType* is not specified, it will use *fileExtension* value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/screenshots
@@ -2878,11 +2730,7 @@ def list_content_versions_v2(
 ):
     """List content's payload versions (ListContentVersionsV2)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
     Content's payload versions created when UGC is created or updated with `updateContentFile` set to true. Only list up to 10 latest versions.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/versions
@@ -2930,11 +2778,7 @@ async def list_content_versions_v2_async(
 ):
     """List content's payload versions (ListContentVersionsV2)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
     Content's payload versions created when UGC is created or updated with `updateContentFile` set to true. Only list up to 10 latest versions.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/versions
@@ -2985,11 +2829,7 @@ def rollback_content_version_v2(
 ):
     """Rollback content's payload version (RollbackContentVersionV2)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-    Rollback content's payload to specified version.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Rollback content's payload to specified version
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}
@@ -3043,11 +2883,7 @@ async def rollback_content_version_v2_async(
 ):
     """Rollback content's payload version (RollbackContentVersionV2)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-    Rollback content's payload to specified version.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Rollback content's payload to specified version
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}

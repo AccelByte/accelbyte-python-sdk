@@ -13,7 +13,7 @@ Definition: ModelsAdminVerifyMessageProfanityRequest
 message: str
 profanity_level: str
 
-Example: '{"message": "XDWc3Lai9MX9guHD", "profanityLevel": "GhYWahLKH6dzqnFE"}'
+Example: '{"message": "NHlV5pX4X45yg7pp", "profanityLevel": "REyCIjEJBdgRyHAo"}'
 """
 
 result, error = admin_verify_message_profanity_response(

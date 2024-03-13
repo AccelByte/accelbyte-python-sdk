@@ -22,7 +22,7 @@ region: str
 return_url: str
 section_id: str
 
-Example: '{"currencyCode": "69reaPGGAFa7R8tK", "discountedPrice": 52, "ext": {"Kuuq9FQ1ClvN6gVR": {}, "BCyUfTPneRKzL6UV": {}, "foggtRIOyeOQahD2": {}}, "itemId": "9JOuu3Jo7nWEszGu", "language": "AnKB", "price": 38, "quantity": 7, "region": "XktLO0rypTbS45QH", "returnUrl": "KIj6w3BX2eO43kPg", "sectionId": "6vcKIzGVqs7qmlrU"}'
+Example: '{"currencyCode": "qw59qZIsNyIsLHWy", "discountedPrice": 98, "ext": {"NL8nzdx7MEkP1bcF": {}, "cXx8NbqBnrrBDzcD": {}, "22gErzOVhuIkQoRS": {}}, "itemId": "dQ8JGiTdN4A5WjdP", "language": "tD_Wqez", "price": 40, "quantity": 72, "region": "u07etTMDmd2hmU8Q", "returnUrl": "EIhoeTLodCbYjXnH", "sectionId": "mtajYiZPxL4MDDf2"}'
 """
 
 result, error = public_create_user_order(

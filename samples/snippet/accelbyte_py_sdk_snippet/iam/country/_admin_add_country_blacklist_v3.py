@@ -11,7 +11,7 @@ body:
 Definition: ModelCountryBlacklistRequest
 blacklist: List[str]
 
-Example: '{"blacklist": ["wFq20zSJ6nFaEKmH", "lo0dJWHxHYH0j3LE", "AhVfAyI29OfBGk0Z"]}'
+Example: '{"blacklist": ["ljoBILASDRRdlTg7", "rtrYpqzQ5aQnsKaf", "TgrtD8Z1eRnRperD"]}'
 """
 
 result, error = admin_add_country_blacklist_v3(

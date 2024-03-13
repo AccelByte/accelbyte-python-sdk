@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminGetTag(Operation):
     """Get tags (AdminGetTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+    Get available tags paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags

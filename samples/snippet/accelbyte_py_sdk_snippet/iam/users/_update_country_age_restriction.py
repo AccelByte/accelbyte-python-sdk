@@ -12,7 +12,7 @@ body:
 Definition: ModelCountryAgeRestrictionRequest
 age_restriction: int
 
-Example: '{"AgeRestriction": 58}'
+Example: '{"AgeRestriction": 22}'
 """
 
 result, error = update_country_age_restriction(

@@ -37,11 +37,7 @@ from ...models import ResponseError
 class AdminBulkGetContentByIDsV2(Operation):
     """Bulk get content by content IDs (AdminBulkGetContentByIDsV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
     Maximum contentId per request 100
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/bulk

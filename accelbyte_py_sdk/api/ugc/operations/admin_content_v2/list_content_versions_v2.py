@@ -36,11 +36,7 @@ from ...models import ResponseError
 class ListContentVersionsV2(Operation):
     """List content's payload versions (ListContentVersionsV2)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
     Content's payload versions created when UGC is created or updated with `updateContentFile` set to true. Only list up to 10 latest versions.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/versions

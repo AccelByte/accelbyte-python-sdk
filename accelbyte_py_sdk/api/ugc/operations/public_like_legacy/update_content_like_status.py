@@ -37,7 +37,7 @@ from ...models import ResponseError
 class UpdateContentLikeStatus(Operation):
     """Update like/unlike status to a content (UpdateContentLikeStatus)
 
-    Requires valid user token
+    This endpoint will update like/unlike state from a content
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/like

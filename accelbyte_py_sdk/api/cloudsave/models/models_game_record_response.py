@@ -49,6 +49,8 @@ class ModelsGameRecordResponse(Model):
         value: (value) REQUIRED Dict[str, Any]
 
         set_by: (set_by) OPTIONAL Union[str, SetByEnum]
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
@@ -59,6 +61,7 @@ class ModelsGameRecordResponse(Model):
     updated_at: str  # REQUIRED
     value: Dict[str, Any]  # REQUIRED
     set_by: Union[str, SetByEnum]  # OPTIONAL
+    tags: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -86,6 +89,10 @@ class ModelsGameRecordResponse(Model):
 
     def with_set_by(self, value: Union[str, SetByEnum]) -> ModelsGameRecordResponse:
         self.set_by = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelsGameRecordResponse:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -118,6 +125,10 @@ class ModelsGameRecordResponse(Model):
             result["set_by"] = str(self.set_by)
         elif include_empty:
             result["set_by"] = Union[str, SetByEnum]()
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -133,6 +144,7 @@ class ModelsGameRecordResponse(Model):
         updated_at: str,
         value: Dict[str, Any],
         set_by: Optional[Union[str, SetByEnum]] = None,
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelsGameRecordResponse:
         instance = cls()
@@ -143,6 +155,8 @@ class ModelsGameRecordResponse(Model):
         instance.value = value
         if set_by is not None:
             instance.set_by = set_by
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -176,6 +190,10 @@ class ModelsGameRecordResponse(Model):
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
             instance.set_by = Union[str, SetByEnum]()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @classmethod
@@ -225,6 +243,7 @@ class ModelsGameRecordResponse(Model):
             "updated_at": "updated_at",
             "value": "value",
             "set_by": "set_by",
+            "tags": "tags",
         }
 
     @staticmethod
@@ -236,6 +255,7 @@ class ModelsGameRecordResponse(Model):
             "updated_at": True,
             "value": True,
             "set_by": False,
+            "tags": False,
         }
 
     @staticmethod

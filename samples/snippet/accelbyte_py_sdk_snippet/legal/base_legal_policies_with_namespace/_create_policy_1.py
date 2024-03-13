@@ -18,7 +18,7 @@ description: str
 tags: List[str]
 type_id: str
 
-Example: '{"affectedClientIds": ["K9qOUZEQSGUYSoly", "6iWQ0r8b9GetlwLn", "7cyIwveiW9COUiDC"], "affectedCountries": ["FQZoxzDZCT1Zhgbo", "qfQWl6P2Kn8yO55y", "MLx9VgOIascY5gmA"], "basePolicyName": "4FdnzQYeoMUeRcJK", "description": "ZM6YSdsp3MguyC0Y", "tags": ["PEMS8rCGIqvFVnUm", "xTPZPXEu2UV4hv7e", "xomNWGiv6Drt4J0F"], "typeId": "aFwr4ClUjGOJZ2Se"}'
+Example: '{"affectedClientIds": ["cP2eViMVhtij9hG6", "MvlHcly1RyA0P8TB", "7Ozd7Ng8j3b52c99"], "affectedCountries": ["puM0TTxY5tk7JIv5", "0L9mc1PudHwPS1bZ", "tEjsntqE2rCE8Cvd"], "basePolicyName": "x7d07ck9hr57K1K4", "description": "p1WQMajzgp1BbJ7Y", "tags": ["myRRLsLFD6ly5hhj", "fjY7Ku2B4xtEwuAx", "lDQpSIu7n1TNx7AS"], "typeId": "rvlUNcAD3VhGLHxb"}'
 """
 
 result, error = create_policy_1(

@@ -55,8 +55,6 @@ class ModelCreateChallengeRequest(Model):
 
         code: (code) REQUIRED str
 
-        end_date: (endDate) REQUIRED str
-
         goals_visibility: (goalsVisibility) REQUIRED Union[str, GoalsVisibilityEnum]
 
         name: (name) REQUIRED str
@@ -68,19 +66,24 @@ class ModelCreateChallengeRequest(Model):
         active_goals_per_rotation: (activeGoalsPerRotation) OPTIONAL int
 
         description: (description) OPTIONAL str
+
+        end_after: (endAfter) OPTIONAL int
+
+        end_date: (endDate) OPTIONAL str
     """
 
     # region fields
 
     assignment_rule: Union[str, AssignmentRuleEnum]  # REQUIRED
     code: str  # REQUIRED
-    end_date: str  # REQUIRED
     goals_visibility: Union[str, GoalsVisibilityEnum]  # REQUIRED
     name: str  # REQUIRED
     rotation: Union[str, RotationEnum]  # REQUIRED
     start_date: str  # REQUIRED
     active_goals_per_rotation: int  # OPTIONAL
     description: str  # OPTIONAL
+    end_after: int  # OPTIONAL
+    end_date: str  # OPTIONAL
 
     # endregion fields
 
@@ -94,10 +97,6 @@ class ModelCreateChallengeRequest(Model):
 
     def with_code(self, value: str) -> ModelCreateChallengeRequest:
         self.code = value
-        return self
-
-    def with_end_date(self, value: str) -> ModelCreateChallengeRequest:
-        self.end_date = value
         return self
 
     def with_goals_visibility(
@@ -128,6 +127,14 @@ class ModelCreateChallengeRequest(Model):
         self.description = value
         return self
 
+    def with_end_after(self, value: int) -> ModelCreateChallengeRequest:
+        self.end_after = value
+        return self
+
+    def with_end_date(self, value: str) -> ModelCreateChallengeRequest:
+        self.end_date = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -142,10 +149,6 @@ class ModelCreateChallengeRequest(Model):
             result["code"] = str(self.code)
         elif include_empty:
             result["code"] = ""
-        if hasattr(self, "end_date"):
-            result["endDate"] = str(self.end_date)
-        elif include_empty:
-            result["endDate"] = ""
         if hasattr(self, "goals_visibility"):
             result["goalsVisibility"] = str(self.goals_visibility)
         elif include_empty:
@@ -170,6 +173,14 @@ class ModelCreateChallengeRequest(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "end_after"):
+            result["endAfter"] = int(self.end_after)
+        elif include_empty:
+            result["endAfter"] = 0
+        if hasattr(self, "end_date"):
+            result["endDate"] = str(self.end_date)
+        elif include_empty:
+            result["endDate"] = ""
         return result
 
     # endregion to methods
@@ -181,19 +192,19 @@ class ModelCreateChallengeRequest(Model):
         cls,
         assignment_rule: Union[str, AssignmentRuleEnum],
         code: str,
-        end_date: str,
         goals_visibility: Union[str, GoalsVisibilityEnum],
         name: str,
         rotation: Union[str, RotationEnum],
         start_date: str,
         active_goals_per_rotation: Optional[int] = None,
         description: Optional[str] = None,
+        end_after: Optional[int] = None,
+        end_date: Optional[str] = None,
         **kwargs,
     ) -> ModelCreateChallengeRequest:
         instance = cls()
         instance.assignment_rule = assignment_rule
         instance.code = code
-        instance.end_date = end_date
         instance.goals_visibility = goals_visibility
         instance.name = name
         instance.rotation = rotation
@@ -202,6 +213,10 @@ class ModelCreateChallengeRequest(Model):
             instance.active_goals_per_rotation = active_goals_per_rotation
         if description is not None:
             instance.description = description
+        if end_after is not None:
+            instance.end_after = end_after
+        if end_date is not None:
+            instance.end_date = end_date
         return instance
 
     @classmethod
@@ -219,10 +234,6 @@ class ModelCreateChallengeRequest(Model):
             instance.code = str(dict_["code"])
         elif include_empty:
             instance.code = ""
-        if "endDate" in dict_ and dict_["endDate"] is not None:
-            instance.end_date = str(dict_["endDate"])
-        elif include_empty:
-            instance.end_date = ""
         if "goalsVisibility" in dict_ and dict_["goalsVisibility"] is not None:
             instance.goals_visibility = str(dict_["goalsVisibility"])
         elif include_empty:
@@ -250,6 +261,14 @@ class ModelCreateChallengeRequest(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "endAfter" in dict_ and dict_["endAfter"] is not None:
+            instance.end_after = int(dict_["endAfter"])
+        elif include_empty:
+            instance.end_after = 0
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
+        elif include_empty:
+            instance.end_date = ""
         return instance
 
     @classmethod
@@ -295,13 +314,14 @@ class ModelCreateChallengeRequest(Model):
         return {
             "assignmentRule": "assignment_rule",
             "code": "code",
-            "endDate": "end_date",
             "goalsVisibility": "goals_visibility",
             "name": "name",
             "rotation": "rotation",
             "startDate": "start_date",
             "activeGoalsPerRotation": "active_goals_per_rotation",
             "description": "description",
+            "endAfter": "end_after",
+            "endDate": "end_date",
         }
 
     @staticmethod
@@ -309,13 +329,14 @@ class ModelCreateChallengeRequest(Model):
         return {
             "assignmentRule": True,
             "code": True,
-            "endDate": True,
             "goalsVisibility": True,
             "name": True,
             "rotation": True,
             "startDate": True,
             "activeGoalsPerRotation": False,
             "description": False,
+            "endAfter": False,
+            "endDate": False,
         }
 
     @staticmethod

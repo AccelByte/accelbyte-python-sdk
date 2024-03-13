@@ -29,7 +29,7 @@ extension_category: str
 reason: str
 threshold: int
 
-Example: '{"action": "HideContent", "actions": {"banAccount": {"comment": "IEI2yWscTy11dlGH", "duration": 60, "reason": "tWvR5DyajO7gDFjL", "skipNotif": false, "type": "MfhIk7uFPeJkizJe"}, "deleteChat": false, "extensionActionIds": ["L4b6HiyxnT3c1C8o", "1k9aKHlUgstj8vfF", "Ng7n1Zu5Q0fkHlfr"], "hideContent": true}, "active": false, "category": "EXTENSION", "extensionCategory": "R1ejj52pOTAz6AZf", "reason": "3tKBOL5VKzMtUEyL", "threshold": 73}'
+Example: '{"action": "HideContent", "actions": {"banAccount": {"comment": "IxnHf50YFs2Rv1nz", "duration": 90, "reason": "tRuS3L8gYnEJblw6", "skipNotif": true, "type": "sM680StCVm7vF7P2"}, "deleteChat": true, "extensionActionIds": ["iq9ioDA1Fa9XVItu", "NJXgKBsq8Dix3Q5a", "fuW8FlsU66Oq5yQH"], "hideContent": true}, "active": false, "category": "EXTENSION", "extensionCategory": "G45P1M0yFTkCvkzO", "reason": "0P5YgvubrNBuVBGf", "threshold": 34}'
 """
 
 result, error = update_moderation_rule(

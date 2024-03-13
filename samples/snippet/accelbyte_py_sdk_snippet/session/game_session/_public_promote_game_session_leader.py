@@ -12,7 +12,7 @@ body:
 Definition: ApimodelsPromoteLeaderRequest
 leader_id: str
 
-Example: '{"leaderID": "Sl6kKrdlrweJFqsi"}'
+Example: '{"leaderID": "0DngrY2dQN5so0Yv"}'
 """
 
 result, error = public_promote_game_session_leader(

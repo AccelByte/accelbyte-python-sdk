@@ -5,7 +5,11 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.gametelemetry import (
     get_events_game_telemetry_v1_admin_namespaces_namespace_events_get,
 )
+from accelbyte_py_sdk.api.gametelemetry.models import BaseErrorResponse
 from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
+from accelbyte_py_sdk.api.gametelemetry.models import (
+    PagedResponseGetNamespaceEventResponse,
+)
 
 result, error = get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
     end_time=end_time,

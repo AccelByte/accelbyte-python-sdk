@@ -36,15 +36,7 @@ from ...models import ResponseErrorResponse
 class GetLeaderboardConfigurationAdminV1(Operation):
     """get leaderboard by leaderboardCode (getLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     This endpoint returns a leaderboard configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}

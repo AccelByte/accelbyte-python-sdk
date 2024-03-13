@@ -14,7 +14,7 @@ platform: str
 request_id: str
 use_count: int
 
-Example: '{"platform": "gs4kAxxzoNZ53qbB", "requestId": "tf0GidhdSkKvfrBD", "useCount": 34}'
+Example: '{"platform": "nwwCsz6ETKMvfUJb", "requestId": "iaN7tT9HSe4m4AdI", "useCount": 27}'
 """
 
 result, error = sell_user_entitlement(

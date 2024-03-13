@@ -27,6 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.model_goal_schedule import ModelGoalSchedule
 from ..models.model_requirement import ModelRequirement
 from ..models.model_reward import ModelReward
 
@@ -55,6 +56,8 @@ class ModelGoalResponse(Model):
 
         updated_at: (updatedAt) REQUIRED str
 
+        schedule: (schedule) OPTIONAL ModelGoalSchedule
+
         tags: (tags) OPTIONAL List[str]
     """
 
@@ -70,6 +73,7 @@ class ModelGoalResponse(Model):
     requirement_groups: List[ModelRequirement]  # REQUIRED
     rewards: List[ModelReward]  # REQUIRED
     updated_at: str  # REQUIRED
+    schedule: ModelGoalSchedule  # OPTIONAL
     tags: List[str]  # OPTIONAL
 
     # endregion fields
@@ -116,6 +120,10 @@ class ModelGoalResponse(Model):
 
     def with_updated_at(self, value: str) -> ModelGoalResponse:
         self.updated_at = value
+        return self
+
+    def with_schedule(self, value: ModelGoalSchedule) -> ModelGoalResponse:
+        self.schedule = value
         return self
 
     def with_tags(self, value: List[str]) -> ModelGoalResponse:
@@ -173,6 +181,10 @@ class ModelGoalResponse(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "schedule"):
+            result["schedule"] = self.schedule.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["schedule"] = ModelGoalSchedule()
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -196,6 +208,7 @@ class ModelGoalResponse(Model):
         requirement_groups: List[ModelRequirement],
         rewards: List[ModelReward],
         updated_at: str,
+        schedule: Optional[ModelGoalSchedule] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelGoalResponse:
@@ -210,6 +223,8 @@ class ModelGoalResponse(Model):
         instance.requirement_groups = requirement_groups
         instance.rewards = rewards
         instance.updated_at = updated_at
+        if schedule is not None:
+            instance.schedule = schedule
         if tags is not None:
             instance.tags = tags
         return instance
@@ -267,6 +282,12 @@ class ModelGoalResponse(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "schedule" in dict_ and dict_["schedule"] is not None:
+            instance.schedule = ModelGoalSchedule.create_from_dict(
+                dict_["schedule"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.schedule = ModelGoalSchedule()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -322,6 +343,7 @@ class ModelGoalResponse(Model):
             "requirementGroups": "requirement_groups",
             "rewards": "rewards",
             "updatedAt": "updated_at",
+            "schedule": "schedule",
             "tags": "tags",
         }
 
@@ -338,6 +360,7 @@ class ModelGoalResponse(Model):
             "requirementGroups": True,
             "rewards": True,
             "updatedAt": True,
+            "schedule": False,
             "tags": False,
         }
 

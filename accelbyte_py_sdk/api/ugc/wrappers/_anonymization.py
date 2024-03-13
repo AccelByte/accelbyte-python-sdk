@@ -50,10 +50,7 @@ def admin_delete_all_user_channels(
 ):
     """Delete all user channel (AdminDeleteAllUserChannels)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete all user channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels
@@ -101,10 +98,7 @@ async def admin_delete_all_user_channels_async(
 ):
     """Delete all user channel (AdminDeleteAllUserChannels)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete all user channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels
@@ -258,10 +252,7 @@ def admin_delete_all_user_group(
 ):
     """Delete all user group (AdminDeleteAllUserGroup)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+    Delete all user group
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/groups
@@ -309,10 +300,7 @@ async def admin_delete_all_user_group_async(
 ):
     """Delete all user group (AdminDeleteAllUserGroup)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+    Delete all user group
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/groups
@@ -466,10 +454,7 @@ def delete_all_user_channel(
 ):
     """Delete all user channel (DeleteAllUserChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete all user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
@@ -517,10 +502,7 @@ async def delete_all_user_channel_async(
 ):
     """Delete all user channel (DeleteAllUserChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete all user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
@@ -674,10 +656,7 @@ def delete_all_user_group(
 ):
     """Delete all user group (DeleteAllUserGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+    Delete all user group
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups
@@ -725,10 +704,7 @@ async def delete_all_user_group_async(
 ):
     """Delete all user group (DeleteAllUserGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+    Delete all user group
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups

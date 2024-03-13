@@ -170,7 +170,7 @@ def update_content_like_status_v2(
 ):
     """Update like/unlike status to a content (UpdateContentLikeStatusV2)
 
-    Requires valid user token
+    This endpoint will update like/unlike state from a content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/contents/{contentId}/like
@@ -226,7 +226,7 @@ async def update_content_like_status_v2_async(
 ):
     """Update like/unlike status to a content (UpdateContentLikeStatusV2)
 
-    Requires valid user token
+    This endpoint will update like/unlike state from a content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/contents/{contentId}/like

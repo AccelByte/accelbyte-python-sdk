@@ -12,7 +12,7 @@ Definition: ModelsShutdownServerRequest
 kill_me: bool
 pod_name: str
 
-Example: '{"kill_me": true, "pod_name": "1uXaUp8yloCqyfSz"}'
+Example: '{"kill_me": false, "pod_name": "1O7rNYHeorTWF7Rj"}'
 """
 
 result, error = shutdown_server(

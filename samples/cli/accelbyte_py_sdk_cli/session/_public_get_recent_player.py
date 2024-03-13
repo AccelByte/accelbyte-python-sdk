@@ -39,14 +39,12 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 
 @click.command()
 @click.option("--limit", "limit", type=int)
-@click.option("--user_id", "user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_get_recent_player(
     limit: Optional[int] = None,
-    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -62,7 +60,6 @@ def public_get_recent_player(
         login_as_internal(login_as)
     result, error = public_get_recent_player_internal(
         limit=limit,
-        user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

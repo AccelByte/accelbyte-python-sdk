@@ -15,7 +15,7 @@ platform_id: str
 platform_token: str
 psn_env: str
 
-Example: '[{"isLogin": true, "platformId": "jz0yFGVGfsQK0cF5", "platformToken": "T3fUi1wYNc1Bov7R", "psnEnv": "dcIJRskxevZm7LWf"}, {"isLogin": true, "platformId": "ekczr9PyUAxkSt8j", "platformToken": "jkG8P8ndhuMbjwVT", "psnEnv": "KqqA3dG8ZStuq6V2"}, {"isLogin": true, "platformId": "sjSiNvx3e0M0X6zR", "platformToken": "XU4JSVo7O9fxBGvV", "psnEnv": "RFmyN7FuI2tfbdru"}]'
+Example: '[{"isLogin": false, "platformId": "DyjPke1L9IkuZbaM", "platformToken": "RKWMewtdNQx2moJn", "psnEnv": "9l3TqhmzP3ONGhHV"}, {"isLogin": true, "platformId": "C8V5kJCe0LvW386D", "platformToken": "LUlRIkICnDLyTBxd", "psnEnv": "VTh7AVJTtEx0QlLe"}, {"isLogin": true, "platformId": "Ao7HIRbtR6bXYpSu", "platformToken": "hjY2iM4t8vMiqb7m", "psnEnv": "PZv3jfPg9P6w10vg"}]'
 """
 
 result, error = sync_native_friends(

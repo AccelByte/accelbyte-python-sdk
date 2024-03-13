@@ -30,7 +30,7 @@ class PartyChatRequest(WebSocketMessage):
     from_: str
     id_: str
     payload: str
-    received_at: int
+    received_at: str
     to: str
 
     # endregion fields

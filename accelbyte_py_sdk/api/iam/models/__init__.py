@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.11.0"
+__version__ = "7.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -210,6 +210,7 @@ from .model_input_validation_data_public import ModelInputValidationDataPublic
 from .model_input_validation_update_payload import ModelInputValidationUpdatePayload
 from .model_input_validations_public_response import ModelInputValidationsPublicResponse
 from .model_input_validations_response import ModelInputValidationsResponse
+from .model_invitation_history_response import ModelInvitationHistoryResponse
 from .model_invite_user_request_v3 import ModelInviteUserRequestV3
 from .model_invite_user_request_v4 import ModelInviteUserRequestV4
 from .model_invite_user_response_v3 import ModelInviteUserResponseV3
@@ -227,12 +228,18 @@ from .model_list_bulk_user_ban_response_v3 import ModelListBulkUserBanResponseV3
 from .model_list_bulk_user_platforms_response import ModelListBulkUserPlatformsResponse
 from .model_list_bulk_user_response import ModelListBulkUserResponse
 from .model_list_email_address_request import ModelListEmailAddressRequest
+from .model_list_invitation_histories_v4_response import (
+    ModelListInvitationHistoriesV4Response,
+)
 from .model_list_role_v4_response import ModelListRoleV4Response
 from .model_list_user_information_result import ModelListUserInformationResult
 from .model_list_user_response_v3 import ModelListUserResponseV3
 from .model_list_user_roles_v4_response import ModelListUserRolesV4Response
 from .model_list_valid_user_id_response_v4 import ModelListValidUserIDResponseV4
 from .model_login_histories_response import ModelLoginHistoriesResponse
+from .model_namespace_invitation_history_user_v4_response import (
+    ModelNamespaceInvitationHistoryUserV4Response,
+)
 from .model_namespace_role_request import ModelNamespaceRoleRequest
 from .model_permission_delete_request import ModelPermissionDeleteRequest
 from .model_platform_domain_delete_request import ModelPlatformDomainDeleteRequest
@@ -334,6 +341,7 @@ from .model_user_i_ds_request import ModelUserIDsRequest
 from .model_user_identity_update_request_v3 import ModelUserIdentityUpdateRequestV3
 from .model_user_info_response import ModelUserInfoResponse
 from .model_user_information import ModelUserInformation
+from .model_user_invitation_history import ModelUserInvitationHistory
 from .model_user_invitation_v3 import ModelUserInvitationV3
 from .model_user_login_history_response import ModelUserLoginHistoryResponse
 from .model_user_password_update_request import ModelUserPasswordUpdateRequest

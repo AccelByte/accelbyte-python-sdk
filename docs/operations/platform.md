@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.47.0)
+# AccelByte Gaming Services Platform Service Index (4.48.0)
 
 
 ## Operations
@@ -158,6 +158,7 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/sell | PUT | publicSellUserEntitlement | `false` | [PublicSellUserEntitlement](../../accelbyte_py_sdk/api/platform/operations/entitlement/public_sell_user_entitlement.py) | [public_sell_user_entitlement](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-public-sell-user-entitlement](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_sell_user_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/split | PUT | publicSplitUserEntitlement | `false` | [PublicSplitUserEntitlement](../../accelbyte_py_sdk/api/platform/operations/entitlement/public_split_user_entitlement.py) | [public_split_user_entitlement](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-public-split-user-entitlement](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_split_user_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/transfer | PUT | publicTransferUserEntitlement | `false` | [PublicTransferUserEntitlement](../../accelbyte_py_sdk/api/platform/operations/entitlement/public_transfer_user_en_c358c0.py) | [public_transfer_user_entitlement](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-public-transfer-user-entitlement](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_transfer_user_entitlement.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/entitlements/history | GET | publicUserEntitlementHistory | `false` | [PublicUserEntitlementHistory](../../accelbyte_py_sdk/api/platform/operations/entitlement/public_user_entitlement_741412.py) | [public_user_entitlement_history](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-public-user-entitlement-history](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_user_entitlement_history.py) |
 | /platform/admin/namespaces/{namespace}/entitlements | GET | queryEntitlements | `false` | [QueryEntitlements](../../accelbyte_py_sdk/api/platform/operations/entitlement/query_entitlements.py) | [query_entitlements](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-query-entitlements](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_entitlements.py) |
 | /platform/admin/namespaces/{namespace}/entitlements/byItemIds | GET | queryEntitlements_1 | `false` | [QueryEntitlements1](../../accelbyte_py_sdk/api/platform/operations/entitlement/query_entitlements_1.py) | [query_entitlements_1](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-query-entitlements-1](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_entitlements_1.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/entitlements | GET | queryUserEntitlements | `false` | [QueryUserEntitlements](../../accelbyte_py_sdk/api/platform/operations/entitlement/query_user_entitlements.py) | [query_user_entitlements](../../accelbyte_py_sdk/api/platform/wrappers/_entitlement.py) | [accelbyte_py_sdk_cli platform-query-user-entitlements](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_entitlements.py) |
@@ -691,7 +692,7 @@
 | EntitlementIfc | [EntitlementIfc](../../accelbyte_py_sdk/api/platform/models/entitlement_ifc.py) |
 | EntitlementInfo | [EntitlementInfo](../../accelbyte_py_sdk/api/platform/models/entitlement_info.py) |
 | EntitlementLootBoxReward | [EntitlementLootBoxReward](../../accelbyte_py_sdk/api/platform/models/entitlement_loot_box_reward.py) |
-| entitlement origin sync result | [EntitlementOriginSyncResult](../../accelbyte_py_sdk/api/platform/models/entitlement_origin_sync_result.py) |
+| EntitlementOriginSyncResult | [EntitlementOriginSyncResult](../../accelbyte_py_sdk/api/platform/models/entitlement_origin_sync_result.py) |
 | EntitlementOwnership | [EntitlementOwnership](../../accelbyte_py_sdk/api/platform/models/entitlement_ownership.py) |
 | EntitlementPagingSlicedResult | [EntitlementPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/entitlement_paging_sliced_result.py) |
 | EntitlementPlatformConfigInfo | [EntitlementPlatformConfigInfo](../../accelbyte_py_sdk/api/platform/models/entitlement_platform_config_info.py) |
@@ -881,6 +882,7 @@
 | Predicate | [Predicate](../../accelbyte_py_sdk/api/platform/models/predicate.py) |
 | PredicateValidateResult | [PredicateValidateResult](../../accelbyte_py_sdk/api/platform/models/predicate_validate_result.py) |
 | PublicCustomConfigInfo | [PublicCustomConfigInfo](../../accelbyte_py_sdk/api/platform/models/public_custom_config_info.py) |
+| PublicEntitlementHistoryInfo | [PublicEntitlementHistoryInfo](../../accelbyte_py_sdk/api/platform/models/public_entitlement_history_info.py) |
 | PurchaseCondition | [PurchaseCondition](../../accelbyte_py_sdk/api/platform/models/purchase_condition.py) |
 | PurchaseConditionUpdate | [PurchaseConditionUpdate](../../accelbyte_py_sdk/api/platform/models/purchase_condition_update.py) |
 | PurchasedItemCount | [PurchasedItemCount](../../accelbyte_py_sdk/api/platform/models/purchased_item_count.py) |
@@ -979,6 +981,7 @@
 | TwitchSyncResult | [TwitchSyncResult](../../accelbyte_py_sdk/api/platform/models/twitch_sync_result.py) |
 | UserDLC | [UserDLC](../../accelbyte_py_sdk/api/platform/models/user_dlc.py) |
 | UserDLCRecord | [UserDLCRecord](../../accelbyte_py_sdk/api/platform/models/user_dlc_record.py) |
+| UserEntitlementHistoryPagingSlicedResult | [UserEntitlementHistoryPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/user_entitlement_history_paging_sliced_result.py) |
 | ValidationErrorEntity | [ValidationErrorEntity](../../accelbyte_py_sdk/api/platform/models/validation_error_entity.py) |
 | ViewCreate | [ViewCreate](../../accelbyte_py_sdk/api/platform/models/view_create.py) |
 | ViewInfo | [ViewInfo](../../accelbyte_py_sdk/api/platform/models/view_info.py) |

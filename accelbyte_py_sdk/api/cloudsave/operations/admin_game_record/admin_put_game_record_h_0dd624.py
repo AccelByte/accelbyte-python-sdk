@@ -85,6 +85,8 @@ class AdminPutGameRecordHandlerV1(Operation):
     Indicate the TTL configuration for the game record.
     action:
     - DELETE: record will be deleted after TTL is reached
+    3. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
 
     **Request Body Example:**
     ```
@@ -94,7 +96,8 @@ class AdminPutGameRecordHandlerV1(Operation):
     "ttl_config": {
     "expires_at": "2026-01-02T15:04:05Z", // should be in RFC3339 format
     "action": "DELETE"
-    }
+    },
+    "tags": ["tag1", "tag2"]
     }
     ...
     }

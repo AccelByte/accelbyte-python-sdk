@@ -37,9 +37,7 @@ from ...models import ResponseErrorResponse
 class CreateLeaderboardConfigurationAdminV3(Operation):
     """create new leaderboard (createLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-     Fields :
+    Fields :
 
 
 
@@ -66,9 +64,6 @@ class CreateLeaderboardConfigurationAdminV3(Operation):
 
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards

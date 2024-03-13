@@ -37,11 +37,7 @@ from ...models import ResponseError
 class UpdateGroup(Operation):
     """Update group (UpdateGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
-    replace group name and contents with new ones
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
+    Replace group name and contents with new ones
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}

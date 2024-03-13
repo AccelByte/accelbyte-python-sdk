@@ -20,7 +20,7 @@ source_item_id: str
 tags: List[str]
 type_: str
 
-Example: '{"customAttributes": {"PT8z8sVmpavYQY02": {}, "ZiUGnpasgRHtkAsj": {}, "lI3YpV7Geex6Vo3u": {}}, "inventoryConfigurationCode": "cYY5RqRRJGQEsUAc", "qty": 50, "serverCustomAttributes": {"SriPGn0dpxkNQrTs": {}, "0wbBuWlL1FVzZGxC": {}, "WsPaLRHFtDJ3Lqzn": {}}, "slotId": "EEmUbmixo4Lget2i", "slotUsed": 89, "sourceItemId": "bud3GlwoGATboFjN", "tags": ["tvifqRjck8Tu9P8U", "UOEKtN06KWA9ESqx", "meicjGJjYQ47YIu1"], "type": "nGVIk3m8Htf5vMK6"}'
+Example: '{"customAttributes": {"36wkVYMvsCNwu5nZ": {}, "ediwrr0iYVnPUjhB": {}, "4i8cVOkBv5Kf5kpd": {}}, "inventoryConfigurationCode": "BRHPDhLWwQVVUNGL", "qty": 100, "serverCustomAttributes": {"IpaPrSryia0pf9b0": {}, "r87YOW6N2xd7Qfg1": {}, "3KgdFypg6R7TUcXi": {}}, "slotId": "n7HqRN55HY0sC3Lj", "slotUsed": 82, "sourceItemId": "IZusjY0Kf6mPtkm4", "tags": ["mxeepa1FquVy3O7z", "XJsx7tkwFezVG13d", "7Qop7hQRaGbB5slO"], "type": "o5Fw4HquQKunrHZP"}'
 """
 
 result, error = admin_save_item(

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.10.0"
+__version__ = "1.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -93,6 +93,8 @@ from .wrappers import image_patch
 from .wrappers import image_patch_async
 
 # servers
+from .wrappers import fleet_server_connection_info
+from .wrappers import fleet_server_connection_info_async
 from .wrappers import fleet_server_history
 from .wrappers import fleet_server_history_async
 from .wrappers import fleet_server_info

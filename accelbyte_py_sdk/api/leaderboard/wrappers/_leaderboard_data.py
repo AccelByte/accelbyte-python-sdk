@@ -186,16 +186,8 @@ def create_archived_leaderboard_ranking_data_v1_handler(
 ):
     """Archive a leadeboard data ranking (CreateArchivedLeaderboardRankingDataV1Handler)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-
-
-
     Archive leaderboard ranking data for specified leaderboard codes. NOTE: This will remove all data of the leaderboard on every slug,
     remove the leaderboard code on stat mapping, and remove the leaderboard on the queue reset. This will be a bulk endpoint
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived
@@ -245,16 +237,8 @@ async def create_archived_leaderboard_ranking_data_v1_handler_async(
 ):
     """Archive a leadeboard data ranking (CreateArchivedLeaderboardRankingDataV1Handler)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-
-
-
     Archive leaderboard ranking data for specified leaderboard codes. NOTE: This will remove all data of the leaderboard on every slug,
     remove the leaderboard code on stat mapping, and remove the leaderboard on the queue reset. This will be a bulk endpoint
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived
@@ -308,14 +292,10 @@ def delete_user_ranking_admin_v1(
     """Delete user ranking (deleteUserRankingAdminV1)
 
     Delete user ranking
-    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Remove entry with provided userId from leaderboard.
     If leaderboard with given leaderboard code not found, it will return http status not found (404).
     If the leaderboard is found and no entry found in it, it will still return success (204)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
@@ -370,14 +350,10 @@ async def delete_user_ranking_admin_v1_async(
     """Delete user ranking (deleteUserRankingAdminV1)
 
     Delete user ranking
-    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Remove entry with provided userId from leaderboard.
     If leaderboard with given leaderboard code not found, it will return http status not found (404).
     If the leaderboard is found and no entry found in it, it will still return success (204)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
@@ -437,20 +413,12 @@ def delete_user_ranking_by_leaderboard_code_admin_v1(
 
 
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint will delete user ranking by leaderboard code
 
 
 
 
     Note: this endpoint only works on development environment.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset
@@ -505,20 +473,12 @@ async def delete_user_ranking_by_leaderboard_code_admin_v1_async(
 
 
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint will delete user ranking by leaderboard code
 
 
 
 
     Note: this endpoint only works on development environment.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset
@@ -572,14 +532,10 @@ def delete_user_ranking_public_v1(
     """Delete user ranking (deleteUserRankingPublicV1)
 
     Delete user ranking
-    Required permission: NAMESPACE:{namespace}:LEADERBOARD:USER:{userId} [DELETE]
 
     Remove entry with provided userId from leaderboard.
     If leaderboard with given leaderboard code not found, it will return http status not found (404).
     If the leaderboard is found and no entry found in it, it will still return success (204)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEADERBOARD:USER:{userId} [DELETE]
 
     Properties:
         url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
@@ -634,14 +590,10 @@ async def delete_user_ranking_public_v1_async(
     """Delete user ranking (deleteUserRankingPublicV1)
 
     Delete user ranking
-    Required permission: NAMESPACE:{namespace}:LEADERBOARD:USER:{userId} [DELETE]
 
     Remove entry with provided userId from leaderboard.
     If leaderboard with given leaderboard code not found, it will return http status not found (404).
     If the leaderboard is found and no entry found in it, it will still return success (204)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEADERBOARD:USER:{userId} [DELETE]
 
     Properties:
         url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
@@ -698,12 +650,8 @@ def delete_user_rankings_admin_v1(
     """Delete user ranking across leaderboard(s) (deleteUserRankingsAdminV1)
 
     Delete user ranking across leaderboard
-    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Remove entry with provided userId from leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}
@@ -756,12 +704,8 @@ async def delete_user_rankings_admin_v1_async(
     """Delete user ranking across leaderboard(s) (deleteUserRankingsAdminV1)
 
     Delete user ranking across leaderboard
-    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Remove entry with provided userId from leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}
@@ -816,15 +760,7 @@ def get_all_time_leaderboard_ranking_admin_v1(
 ):
     """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in an all time leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
@@ -884,15 +820,7 @@ async def get_all_time_leaderboard_ranking_admin_v1_async(
 ):
     """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in an all time leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime
@@ -1313,15 +1241,7 @@ def get_current_month_leaderboard_ranking_admin_v1(
 ):
     """Get current month leaderboard ranking data (GetCurrentMonthLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in current month leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/month
@@ -1385,15 +1305,7 @@ async def get_current_month_leaderboard_ranking_admin_v1_async(
 ):
     """Get current month leaderboard ranking data (GetCurrentMonthLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in current month leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/month
@@ -1581,15 +1493,7 @@ def get_current_season_leaderboard_ranking_admin_v1(
 ):
     """Get current season leaderboard ranking data (GetCurrentSeasonLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in current season leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/season
@@ -1653,15 +1557,7 @@ async def get_current_season_leaderboard_ranking_admin_v1_async(
 ):
     """Get current season leaderboard ranking data (GetCurrentSeasonLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in current season leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/season
@@ -1849,15 +1745,7 @@ def get_current_week_leaderboard_ranking_admin_v1(
 ):
     """Get current week leaderboard ranking data (GetCurrentWeekLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in current week leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/week
@@ -1921,15 +1809,7 @@ async def get_current_week_leaderboard_ranking_admin_v1_async(
 ):
     """Get current week leaderboard ranking data (GetCurrentWeekLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in current week leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/week
@@ -2117,15 +1997,7 @@ def get_today_leaderboard_ranking_admin_v1(
 ):
     """Get today leaderboard ranking data (GetTodayLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in today leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/today
@@ -2189,15 +2061,7 @@ async def get_today_leaderboard_ranking_admin_v1_async(
 ):
     """Get today leaderboard ranking data (GetTodayLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in today leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/today
@@ -2384,15 +2248,7 @@ def get_user_ranking_admin_v1(
 ):
     """Get user ranking (getUserRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get user ranking in leaderboard
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
@@ -2450,15 +2306,7 @@ async def get_user_ranking_admin_v1_async(
 ):
     """Get user ranking (getUserRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get user ranking in leaderboard
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}
@@ -2648,9 +2496,6 @@ def update_user_point_admin_v1(
 
 
 
-      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:(userId):LEADERBOARD", action=4 (UPDATE)
-
-
       * Returns: user ranking
 
     Properties:
@@ -2721,9 +2566,6 @@ async def update_user_point_admin_v1_async(
 
 
 
-
-
-      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:(userId):LEADERBOARD", action=4 (UPDATE)
 
 
       * Returns: user ranking

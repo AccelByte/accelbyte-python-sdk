@@ -456,6 +456,7 @@ from ._public_get_user_entitlement_by_item_id import (
     public_get_user_entitlement_by_item_id,
 )
 from ._public_get_user_entitlement_by_sku import public_get_user_entitlement_by_sku
+from ._public_user_entitlement_history import public_user_entitlement_history
 from ._public_exists_any_user_active_entitlement import (
     public_exists_any_user_active_entitlement,
 )
@@ -920,6 +921,7 @@ commands = [
     public_get_user_entitlements_by_ids,
     public_get_user_entitlement_by_item_id,
     public_get_user_entitlement_by_sku,
+    public_user_entitlement_history,
     public_exists_any_user_active_entitlement,
     public_get_user_app_entitlement_ownership_by_app_id,
     public_get_user_entitlement_ownership_by_item_id,

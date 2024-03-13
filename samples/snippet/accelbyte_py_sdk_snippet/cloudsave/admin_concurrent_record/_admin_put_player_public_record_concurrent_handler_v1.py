@@ -15,6 +15,7 @@ from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 body:
 Definition: ModelsAdminConcurrentRecordRequest
 set_by: str
+tags: List[str]
 ttl_config: ModelsTTLConfigDTO
 Definition: ModelsTTLConfigDTO
     action: str
@@ -22,7 +23,7 @@ Definition: ModelsTTLConfigDTO
 updated_at: str
 value: Dict[str, Any]
 
-Example: '{"set_by": "CLIENT", "ttl_config": {"action": "DELETE", "expires_at": "1980-01-10T00:00:00Z"}, "updatedAt": "lYKpgbUJLklJpOfY", "value": {"ex0zZBBIRKzDRIsC": {}, "m6mJMGo2nhylQiZh": {}, "8UbUi8YDPVCRVA0B": {}}}'
+Example: '{"set_by": "SERVER", "tags": ["GogPpo6lLv7glm9O", "bMBPXR0eH3HbXaAk", "1FMTpw22Llp9G39f"], "ttl_config": {"action": "DELETE", "expires_at": "1981-03-26T00:00:00Z"}, "updatedAt": "UHw27izaiyNTosnf", "value": {"KsiiShtPTjKMtsy8": {}, "gThlyMhF8W8wH1t5": {}, "UUgZ097CcXofES42": {}}}'
 """
 
 result, error = admin_put_player_public_record_concurrent_handler_v1(

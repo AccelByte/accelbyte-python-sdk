@@ -11,7 +11,7 @@ body:
 Definition: ModelBulkFriendsRequest
 friend_ids: List[str]
 
-Example: '{"friendIds": ["rEktjc7HLwlyp9jg", "tJKAbjvuLqxqVV7G", "y5NlZ0q8yyDxmxKX"]}'
+Example: '{"friendIds": ["fbv92v864hJIB0xI", "4E2nERV3AAfTfpuf", "8QZ6GIGkOWhB8vaq"]}'
 """
 
 result, error = add_friends_without_confirmation(

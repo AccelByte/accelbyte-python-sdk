@@ -36,16 +36,8 @@ from ...models import ResponseErrorResponse
 class CreateArchivedLeaderboardRankingDataV1Handler(Operation):
     """Archive a leadeboard data ranking (CreateArchivedLeaderboardRankingDataV1Handler)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-
-
-
     Archive leaderboard ranking data for specified leaderboard codes. NOTE: This will remove all data of the leaderboard on every slug,
     remove the leaderboard code on stat mapping, and remove the leaderboard on the queue reset. This will be a bulk endpoint
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/archived

@@ -36,23 +36,23 @@ class ModelUserProgressionResponseMeta(Model):
 
         description: (description) REQUIRED str
 
-        end_date: (endDate) REQUIRED str
-
         name: (name) REQUIRED str
 
         start_date: (startDate) REQUIRED str
 
         user_id: (userId) REQUIRED str
+
+        end_date: (endDate) OPTIONAL str
     """
 
     # region fields
 
     code: str  # REQUIRED
     description: str  # REQUIRED
-    end_date: str  # REQUIRED
     name: str  # REQUIRED
     start_date: str  # REQUIRED
     user_id: str  # REQUIRED
+    end_date: str  # OPTIONAL
 
     # endregion fields
 
@@ -66,10 +66,6 @@ class ModelUserProgressionResponseMeta(Model):
         self.description = value
         return self
 
-    def with_end_date(self, value: str) -> ModelUserProgressionResponseMeta:
-        self.end_date = value
-        return self
-
     def with_name(self, value: str) -> ModelUserProgressionResponseMeta:
         self.name = value
         return self
@@ -80,6 +76,10 @@ class ModelUserProgressionResponseMeta(Model):
 
     def with_user_id(self, value: str) -> ModelUserProgressionResponseMeta:
         self.user_id = value
+        return self
+
+    def with_end_date(self, value: str) -> ModelUserProgressionResponseMeta:
+        self.end_date = value
         return self
 
     # endregion with_x methods
@@ -96,10 +96,6 @@ class ModelUserProgressionResponseMeta(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
-        if hasattr(self, "end_date"):
-            result["endDate"] = str(self.end_date)
-        elif include_empty:
-            result["endDate"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -112,6 +108,10 @@ class ModelUserProgressionResponseMeta(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "end_date"):
+            result["endDate"] = str(self.end_date)
+        elif include_empty:
+            result["endDate"] = ""
         return result
 
     # endregion to methods
@@ -123,19 +123,20 @@ class ModelUserProgressionResponseMeta(Model):
         cls,
         code: str,
         description: str,
-        end_date: str,
         name: str,
         start_date: str,
         user_id: str,
+        end_date: Optional[str] = None,
         **kwargs,
     ) -> ModelUserProgressionResponseMeta:
         instance = cls()
         instance.code = code
         instance.description = description
-        instance.end_date = end_date
         instance.name = name
         instance.start_date = start_date
         instance.user_id = user_id
+        if end_date is not None:
+            instance.end_date = end_date
         return instance
 
     @classmethod
@@ -153,10 +154,6 @@ class ModelUserProgressionResponseMeta(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
-        if "endDate" in dict_ and dict_["endDate"] is not None:
-            instance.end_date = str(dict_["endDate"])
-        elif include_empty:
-            instance.end_date = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -169,6 +166,10 @@ class ModelUserProgressionResponseMeta(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
+        elif include_empty:
+            instance.end_date = ""
         return instance
 
     @classmethod
@@ -214,10 +215,10 @@ class ModelUserProgressionResponseMeta(Model):
         return {
             "code": "code",
             "description": "description",
-            "endDate": "end_date",
             "name": "name",
             "startDate": "start_date",
             "userId": "user_id",
+            "endDate": "end_date",
         }
 
     @staticmethod
@@ -225,10 +226,10 @@ class ModelUserProgressionResponseMeta(Model):
         return {
             "code": True,
             "description": True,
-            "endDate": True,
             "name": True,
             "startDate": True,
             "userId": True,
+            "endDate": False,
         }
 
     # endregion static methods

@@ -55,6 +55,8 @@ class ModelsPlayerBinaryRecordResponse(Model):
         binary_info: (binary_info) OPTIONAL ModelsBinaryInfoResponse
 
         set_by: (set_by) OPTIONAL Union[str, SetByEnum]
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
@@ -67,6 +69,7 @@ class ModelsPlayerBinaryRecordResponse(Model):
     user_id: str  # REQUIRED
     binary_info: ModelsBinaryInfoResponse  # OPTIONAL
     set_by: Union[str, SetByEnum]  # OPTIONAL
+    tags: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -106,6 +109,10 @@ class ModelsPlayerBinaryRecordResponse(Model):
         self, value: Union[str, SetByEnum]
     ) -> ModelsPlayerBinaryRecordResponse:
         self.set_by = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelsPlayerBinaryRecordResponse:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -148,6 +155,10 @@ class ModelsPlayerBinaryRecordResponse(Model):
             result["set_by"] = str(self.set_by)
         elif include_empty:
             result["set_by"] = Union[str, SetByEnum]()
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -165,6 +176,7 @@ class ModelsPlayerBinaryRecordResponse(Model):
         user_id: str,
         binary_info: Optional[ModelsBinaryInfoResponse] = None,
         set_by: Optional[Union[str, SetByEnum]] = None,
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelsPlayerBinaryRecordResponse:
         instance = cls()
@@ -178,6 +190,8 @@ class ModelsPlayerBinaryRecordResponse(Model):
             instance.binary_info = binary_info
         if set_by is not None:
             instance.set_by = set_by
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -221,6 +235,10 @@ class ModelsPlayerBinaryRecordResponse(Model):
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
             instance.set_by = Union[str, SetByEnum]()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @classmethod
@@ -272,6 +290,7 @@ class ModelsPlayerBinaryRecordResponse(Model):
             "user_id": "user_id",
             "binary_info": "binary_info",
             "set_by": "set_by",
+            "tags": "tags",
         }
 
     @staticmethod
@@ -285,6 +304,7 @@ class ModelsPlayerBinaryRecordResponse(Model):
             "user_id": True,
             "binary_info": False,
             "set_by": False,
+            "tags": False,
         }
 
     @staticmethod

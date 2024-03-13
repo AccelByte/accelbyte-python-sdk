@@ -33,6 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.gametelemetry import (
     get_namespaces_game_telemetry_v1_admin_namespaces_get as get_namespaces_game_telemetry_v1_admin_namespaces_get_internal,
 )
+from accelbyte_py_sdk.api.gametelemetry.models import BaseErrorResponse
+from accelbyte_py_sdk.api.gametelemetry.models import ListBaseResponseStr
 
 
 @click.command()

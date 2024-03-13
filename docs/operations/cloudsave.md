@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Cloudsave Service Index (3.15.1)
+# AccelByte Gaming Services Cloudsave Service Index (3.16.0)
 
 
 ## Operations
@@ -50,6 +50,8 @@
 ### AdminPlayerRecord
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /cloudsave/v1/admin/namespaces/{namespace}/users/records/{key}/bulk | POST | adminBulkGetPlayerRecordsByUserIDsHandlerV1 | `false` | [AdminBulkGetPlayerRecordsByUserIDsHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_bulk_get_player_r_82c596.py) | [admin_bulk_get_player_records_by_user_i_ds_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) | [accelbyte_py_sdk_cli cloudsave-admin-bulk-get-player-records-by-user-i-ds-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_bulk_get_player_records_by_user_i_ds_handler_v1.py) |
+| /cloudsave/v1/admin/namespaces/{namespace}/users/records/{key}/bulk | PUT | adminBulkPutPlayerRecordsByKeyHandlerV1 | `false` | [AdminBulkPutPlayerRecordsByKeyHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_bulk_put_player_r_27d5a1.py) | [admin_bulk_put_player_records_by_key_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) | [accelbyte_py_sdk_cli cloudsave-admin-bulk-put-player-records-by-key-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_bulk_put_player_records_by_key_handler_v1.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public | DELETE | adminDeletePlayerPublicRecordHandlerV1 | `false` | [AdminDeletePlayerPublicRecordHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_delete_player_pub_f11fd7.py) | [admin_delete_player_public_record_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) | [accelbyte_py_sdk_cli cloudsave-admin-delete-player-public-record-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_delete_player_public_record_handler_v1.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key} | DELETE | adminDeletePlayerRecordHandlerV1 | `false` | [AdminDeletePlayerRecordHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_delete_player_rec_168241.py) | [admin_delete_player_record_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) | [accelbyte_py_sdk_cli cloudsave-admin-delete-player-record-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_delete_player_record_handler_v1.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}/public | GET | adminGetPlayerPublicRecordHandlerV1 | `false` | [AdminGetPlayerPublicRecordHandlerV1](../../accelbyte_py_sdk/api/cloudsave/operations/admin_player_record/admin_get_player_public_f015b6.py) | [admin_get_player_public_record_handler_v1](../../accelbyte_py_sdk/api/cloudsave/wrappers/_admin_player_record.py) | [accelbyte_py_sdk_cli cloudsave-admin-get-player-public-record-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_admin_get_player_public_record_handler_v1.py) |
@@ -194,8 +196,11 @@
 | models.BulkGetPlayerRecordResponse | [ModelsBulkGetPlayerRecordResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_get_player_record_response.py) |
 | models.BulkGetPlayerRecordSizeResponse | [ModelsBulkGetPlayerRecordSizeResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_get_player_record_size_response.py) |
 | models.BulkGetPlayerRecordsRequest | [ModelsBulkGetPlayerRecordsRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_get_player_records_request.py) |
+| models.BulkUpdatePlayerRecordByKeyRequestDetail | [ModelsBulkUpdatePlayerRecordByKeyRequestDetail](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_update_player_record_by_key_request_detail.py) |
+| models.BulkUpdatePlayerRecordByKeyResponse | [ModelsBulkUpdatePlayerRecordByKeyResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_update_player_record_by_key_response.py) |
 | models.BulkUpdatePlayerRecordRequestDetail | [ModelsBulkUpdatePlayerRecordRequestDetail](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_update_player_record_request_detail.py) |
 | models.BulkUpdatePlayerRecordResponse | [ModelsBulkUpdatePlayerRecordResponse](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_update_player_record_response.py) |
+| models.BulkUpdatePlayerRecordsByKeyRequest | [ModelsBulkUpdatePlayerRecordsByKeyRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_update_player_records_by_key_request.py) |
 | models.BulkUpdatePlayerRecordsRequest | [ModelsBulkUpdatePlayerRecordsRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_update_player_records_request.py) |
 | models.BulkUserIDsRequest | [ModelsBulkUserIDsRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_user_i_ds_request.py) |
 | models.BulkUserKeyRequest | [ModelsBulkUserKeyRequest](../../accelbyte_py_sdk/api/cloudsave/models/models_bulk_user_key_request.py) |

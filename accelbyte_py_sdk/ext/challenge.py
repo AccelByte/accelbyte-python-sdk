@@ -67,13 +67,14 @@ def create_model_challenge_response_example() -> ModelChallengeResponse:
     instance.code = randomize()
     instance.created_at = randomize()
     instance.description = randomize()
-    instance.end_date = randomize()
     instance.goals_visibility = randomize()
     instance.name = randomize()
     instance.rotation = randomize()
     instance.start_date = randomize()
     instance.status = randomize()
     instance.updated_at = randomize()
+    instance.end_after = randomize("int", min_val=1, max_val=1000)
+    instance.end_date = randomize()
     return instance
 
 
@@ -87,13 +88,14 @@ def create_model_create_challenge_request_example() -> ModelCreateChallengeReque
     instance = ModelCreateChallengeRequest()
     instance.assignment_rule = randomize()
     instance.code = randomize()
-    instance.end_date = randomize("date")
     instance.goals_visibility = randomize()
     instance.name = randomize()
     instance.rotation = randomize()
     instance.start_date = randomize("date")
     instance.active_goals_per_rotation = randomize("int", min_val=1, max_val=1000)
     instance.description = randomize()
+    instance.end_after = randomize("int", min_val=1, max_val=1000)
+    instance.end_date = randomize("date")
     return instance
 
 
@@ -134,6 +136,7 @@ def create_model_goal_order_example() -> ModelGoalOrder:
 
 def create_model_goal_progression_response_example() -> ModelGoalProgressionResponse:
     instance = ModelGoalProgressionResponse()
+    instance.challenge_code = randomize()
     instance.goal_code = randomize()
     instance.goal_progression_id = randomize()
     instance.requirement_progressions = [
@@ -155,15 +158,16 @@ def create_model_goal_response_example() -> ModelGoalResponse:
     instance.requirement_groups = [create_model_requirement_example()]
     instance.rewards = [create_model_reward_example()]
     instance.updated_at = randomize()
+    instance.schedule = create_model_goal_schedule_example()
     instance.tags = [randomize()]
     return instance
 
 
 def create_model_goal_schedule_example() -> ModelGoalSchedule:
     instance = ModelGoalSchedule()
-    instance.end_time = randomize("date")
     instance.order = randomize("int", min_val=1, max_val=1000)
     instance.start_time = randomize("date")
+    instance.end_time = randomize("date")
     return instance
 
 
@@ -270,15 +274,16 @@ def create_model_user_progression_response_meta_example() -> (
     instance = ModelUserProgressionResponseMeta()
     instance.code = randomize()
     instance.description = randomize()
-    instance.end_date = randomize()
     instance.name = randomize()
     instance.start_date = randomize()
     instance.user_id = randomize("uid")
+    instance.end_date = randomize()
     return instance
 
 
 def create_model_user_reward_example() -> ModelUserReward:
     instance = ModelUserReward()
+    instance.challenge_code = randomize()
     instance.created_at = randomize()
     instance.goal_code = randomize()
     instance.id_ = randomize()
@@ -305,6 +310,7 @@ def create_models_update_challenge_request_example() -> ModelsUpdateChallengeReq
     instance.active_goals_per_rotation = randomize("int", min_val=1, max_val=1000)
     instance.assignment_rule = randomize()
     instance.description = randomize()
+    instance.end_after = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize("date")
     instance.goals_visibility = randomize()
     instance.name = randomize()

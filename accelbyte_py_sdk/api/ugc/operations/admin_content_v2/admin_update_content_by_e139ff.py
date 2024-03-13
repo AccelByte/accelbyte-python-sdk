@@ -37,15 +37,10 @@ from ...models import ResponseError
 class AdminUpdateContentByShareCodeV2(Operation):
     """Update content to S3 bucket by share code (AdminUpdateContentByShareCodeV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
+    *shareCode* format should follows:
 
-    `shareCode` format should follows:
-
-    Max length: 7
-    Available characters: abcdefhkpqrstuxyz
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    "Max length: 7
+    "Available characters: abcdefhkpqrstuxyz
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}

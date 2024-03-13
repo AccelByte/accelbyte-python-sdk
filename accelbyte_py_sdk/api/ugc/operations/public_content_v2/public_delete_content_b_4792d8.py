@@ -35,10 +35,7 @@ from ...models import ResponseError
 class PublicDeleteContentByShareCodeV2(Operation):
     """Delete content by share code (PublicDeleteContentByShareCodeV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing content by share code
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}

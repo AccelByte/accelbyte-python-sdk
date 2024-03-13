@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Challenge Service Index (1.1.0)
+# AccelByte Gaming Services Challenge Service Index (1.2.0)
 
 
 ## Operations
@@ -12,6 +12,7 @@
 |---|---|---|---|---|---|---|
 | /challenge/v1/admin/namespaces/{namespace}/challenges | POST | adminCreateChallenge | `false` | [AdminCreateChallenge](../../accelbyte_py_sdk/api/challenge/operations/challenge_configuration/admin_create_challenge.py) | [admin_create_challenge](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-create-challenge](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_create_challenge.py) |
 | /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode} | DELETE | adminDeleteChallenge | `false` | [AdminDeleteChallenge](../../accelbyte_py_sdk/api/challenge/operations/challenge_configuration/admin_delete_challenge.py) | [admin_delete_challenge](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-delete-challenge](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_delete_challenge.py) |
+| /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/tied | DELETE | adminDeleteTiedChallenge | `false` | [AdminDeleteTiedChallenge](../../accelbyte_py_sdk/api/challenge/operations/challenge_configuration/admin_delete_tied_challenge.py) | [admin_delete_tied_challenge](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-delete-tied-challenge](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_delete_tied_challenge.py) |
 | /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode} | GET | adminGetChallenge | `false` | [AdminGetChallenge](../../accelbyte_py_sdk/api/challenge/operations/challenge_configuration/admin_get_challenge.py) | [admin_get_challenge](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-get-challenge](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_get_challenge.py) |
 | /challenge/v1/admin/namespaces/{namespace}/challenges | GET | adminGetChallenges | `false` | [AdminGetChallenges](../../accelbyte_py_sdk/api/challenge/operations/challenge_configuration/admin_get_challenges.py) | [admin_get_challenges](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-get-challenges](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_get_challenges.py) |
 | /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/periods | GET | adminGetPeriods | `false` | [AdminGetPeriods](../../accelbyte_py_sdk/api/challenge/operations/challenge_configuration/admin_get_periods.py) | [admin_get_periods](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_configuration.py) | [accelbyte_py_sdk_cli challenge-admin-get-periods](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_get_periods.py) |

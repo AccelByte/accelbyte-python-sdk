@@ -23,7 +23,7 @@ private_custom_attributes: Dict[str, Any]
 time_zone: str
 zip_code: str
 
-Example: '{"avatarLargeUrl": "dMrmO18FqUZ1H435", "avatarSmallUrl": "DQhHCwbyiR8dWtX8", "avatarUrl": "V6nYIIu8ivIv87Rg", "customAttributes": {"KimrhYrelkA1SAfM": {}, "u6r87oEJWkFcaVhI": {}, "byoXCgjidYkqphjX": {}}, "dateOfBirth": "1982-09-11", "firstName": "KMTIxr1b8tyeKmwY", "language": "pKcY", "lastName": "v4CK4t9sRq8Gm61u", "privateCustomAttributes": {"zxWh7sBHtX8qldNZ": {}, "qsZiaccSou91dFsq": {}, "zpT5Fza3iz1W5Tma": {}}, "timeZone": "NMeMJqrBhyrSDzcl", "zipCode": "2PlSx6d5caz1N0qi"}'
+Example: '{"avatarLargeUrl": "GWqcm7OoDmPP15bo", "avatarSmallUrl": "cBKMPm3F41f3UUMv", "avatarUrl": "9yMyWICDTXA0Nrkp", "customAttributes": {"B8KBDw2wHmvkZwlT": {}, "DJtdVrDvH6mkOzdH": {}, "9PWM1aubjLcd3AgG": {}}, "dateOfBirth": "1974-03-15", "firstName": "a0vaskQV54yirzvc", "language": "Ef-kxOz-yW", "lastName": "wPdsEwfGL8AUZLxS", "privateCustomAttributes": {"AoSwuP3zjhgNu6Ye": {}, "XlsXn1qF5bTARcIu": {}, "1oo40OhUU7V5kipR": {}}, "timeZone": "9NNdHBGj7GEldnzS", "zipCode": "AtHLR074osGlrnAZ"}'
 """
 
 result, error = update_my_profile(

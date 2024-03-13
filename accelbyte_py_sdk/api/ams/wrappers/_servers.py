@@ -30,13 +30,123 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ApiDSHistoryList
+from ..models import ApiFleetServerConnectionInfoResponse
 from ..models import ApiFleetServerHistoryResponse
 from ..models import ApiFleetServerInfoResponse
 from ..models import ResponseErrorResponse
 
+from ..operations.servers import FleetServerConnectionInfo
 from ..operations.servers import FleetServerHistory
 from ..operations.servers import FleetServerInfo
 from ..operations.servers import ServerHistory
+
+
+@same_doc_as(FleetServerConnectionInfo)
+def fleet_server_connection_info(
+    server_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """get connection info for a dedicated server (FleetServerConnectionInfo)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/connectioninfo
+
+        method: GET
+
+        tags: ["Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        server_id: (serverID) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiFleetServerConnectionInfoResponse (success)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (dedicated server not found)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = FleetServerConnectionInfo.create(
+        server_id=server_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(FleetServerConnectionInfo)
+async def fleet_server_connection_info_async(
+    server_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """get connection info for a dedicated server (FleetServerConnectionInfo)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/connectioninfo
+
+        method: GET
+
+        tags: ["Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        server_id: (serverID) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiFleetServerConnectionInfoResponse (success)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (dedicated server not found)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = FleetServerConnectionInfo.create(
+        server_id=server_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(FleetServerHistory)

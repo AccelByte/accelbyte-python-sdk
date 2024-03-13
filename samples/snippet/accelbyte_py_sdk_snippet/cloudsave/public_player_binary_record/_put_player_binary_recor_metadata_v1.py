@@ -14,7 +14,7 @@ body:
 Definition: ModelsPlayerBinaryRecordMetadataPublicRequest
 is_public: bool
 
-Example: '{"is_public": false}'
+Example: '{"is_public": true}'
 """
 
 result, error = put_player_binary_recor_metadata_v1(

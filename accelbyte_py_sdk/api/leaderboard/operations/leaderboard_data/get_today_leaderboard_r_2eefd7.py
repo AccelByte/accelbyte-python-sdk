@@ -36,15 +36,7 @@ from ...models import ResponseErrorResponse
 class GetTodayLeaderboardRankingAdminV1(Operation):
     """Get today leaderboard ranking data (GetTodayLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in today leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/today

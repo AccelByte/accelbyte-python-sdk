@@ -37,11 +37,7 @@ from ...models import ResponseError
 class AdminGetContentBulkByShareCodesV2(Operation):
     """Bulk get content by content sharecodes (AdminGetContentBulkByShareCodesV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
     Maximum sharecodes per request 100
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/sharecodes/bulk

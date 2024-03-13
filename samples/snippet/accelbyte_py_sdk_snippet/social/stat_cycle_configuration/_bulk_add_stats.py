@@ -13,7 +13,7 @@ body:
 Definition: BulkCycleStatsAdd
 stat_codes: List[str]
 
-Example: '{"statCodes": ["LQk9e6py9Z6JG8Hb", "SCplzhCN51DMtVbC", "AIzzQNV1EFPN58I8"]}'
+Example: '{"statCodes": ["QisqFr6Z8QOnf47e", "8PJ3oa725nMyhpgw", "6QCbaR9CYpyY8j7j"]}'
 """
 
 result, error = bulk_add_stats(

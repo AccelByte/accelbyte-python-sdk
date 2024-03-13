@@ -35,10 +35,7 @@ from ...models import ResponseError
 class DeleteContentScreenshotV2(Operation):
     """Delete screenshots content (DeleteContentScreenshotV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete screenshot from a content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots/{screenshotId}

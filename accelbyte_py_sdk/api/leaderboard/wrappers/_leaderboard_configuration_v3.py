@@ -73,9 +73,7 @@ def create_leaderboard_configuration_admin_v3(
 ):
     """create new leaderboard (createLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-     Fields :
+    Fields :
 
 
 
@@ -102,9 +100,6 @@ def create_leaderboard_configuration_admin_v3(
 
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards
@@ -156,9 +151,7 @@ async def create_leaderboard_configuration_admin_v3_async(
 ):
     """create new leaderboard (createLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-     Fields :
+    Fields :
 
 
 
@@ -185,9 +178,6 @@ async def create_leaderboard_configuration_admin_v3_async(
 
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards
@@ -241,15 +231,7 @@ def delete_bulk_leaderboard_configuration_admin_v3(
 ):
     """delete bulk leaderboards. response body will contains failed leaderboard with the reason why it's failed to delete (deleteBulkLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint delete multiple leaderboards configuration in one request
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/delete
@@ -299,15 +281,7 @@ async def delete_bulk_leaderboard_configuration_admin_v3_async(
 ):
     """delete bulk leaderboards. response body will contains failed leaderboard with the reason why it's failed to delete (deleteBulkLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint delete multiple leaderboards configuration in one request
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/delete
@@ -359,15 +333,7 @@ def delete_leaderboard_configuration_admin_v3(
 ):
     """delete leaderboard by leaderboardCode (deleteLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint delete a leaderboard configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
@@ -419,15 +385,7 @@ async def delete_leaderboard_configuration_admin_v3_async(
 ):
     """delete leaderboard by leaderboardCode (deleteLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint delete a leaderboard configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
@@ -481,15 +439,7 @@ def get_leaderboard_configuration_admin_v3(
 ):
     """get leaderboard by leaderboardCode (getLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     This endpoint returns a leaderboard configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
@@ -541,15 +491,7 @@ async def get_leaderboard_configuration_admin_v3_async(
 ):
     """get leaderboard by leaderboardCode (getLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     This endpoint returns a leaderboard configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
@@ -711,15 +653,7 @@ def get_leaderboard_configurations_admin_v3(
 ):
     """list all leaderboards by given namespace (getLeaderboardConfigurationsAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     This endpoint return all leaderboard configurations
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards
@@ -777,15 +711,7 @@ async def get_leaderboard_configurations_admin_v3_async(
 ):
     """list all leaderboards by given namespace (getLeaderboardConfigurationsAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     This endpoint return all leaderboard configurations
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards
@@ -966,20 +892,12 @@ def hard_delete_leaderboard_admin_v3(
 
 
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint will delete leaderboard configuration and its data
 
 
 
 
     Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard
@@ -1036,20 +954,12 @@ async def hard_delete_leaderboard_admin_v3_async(
 
 
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint will delete leaderboard configuration and its data
 
 
 
 
     Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard
@@ -1104,9 +1014,7 @@ def update_leaderboard_configuration_admin_v3(
 ):
     """update leaderboard by leaderboardCode (updateLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]'
-
-     Fields :
+    Fields :
 
 
 
@@ -1133,9 +1041,6 @@ def update_leaderboard_configuration_admin_v3(
 
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
@@ -1193,9 +1098,7 @@ async def update_leaderboard_configuration_admin_v3_async(
 ):
     """update leaderboard by leaderboardCode (updateLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]'
-
-     Fields :
+    Fields :
 
 
 
@@ -1222,9 +1125,6 @@ async def update_leaderboard_configuration_admin_v3_async(
 
 
       * cycleIds: Statistic cycle ids that will be tracked in the leaderboard. (required).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}

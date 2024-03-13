@@ -11,7 +11,7 @@ body:
 Definition: ModelsAchievementOrderUpdateRequest
 target_order: int
 
-Example: '{"targetOrder": 64}'
+Example: '{"targetOrder": 19}'
 """
 
 result, error = admin_update_achievement_list_order(

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,6 +16,7 @@ __email__ = "dev@accelbyte.net"
 
 from .admin_create_challenge import AdminCreateChallenge
 from .admin_delete_challenge import AdminDeleteChallenge
+from .admin_delete_tied_challenge import AdminDeleteTiedChallenge
 from .admin_get_challenge import AdminGetChallenge
 from .admin_get_challenges import AdminGetChallenges
 from .admin_get_challenges import StatusEnum as AdminGetChallengesStatusEnum

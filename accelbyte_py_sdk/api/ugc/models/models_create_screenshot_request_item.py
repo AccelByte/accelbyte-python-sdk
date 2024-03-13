@@ -42,26 +42,22 @@ class ModelsCreateScreenshotRequestItem(Model):
     """Models create screenshot request item (models.createScreenshotRequestItem)
 
     Properties:
-        content_type: (contentType) REQUIRED str
-
         description: (description) REQUIRED str
 
         file_extension: (fileExtension) REQUIRED Union[str, FileExtensionEnum]
+
+        content_type: (contentType) OPTIONAL str
     """
 
     # region fields
 
-    content_type: str  # REQUIRED
     description: str  # REQUIRED
     file_extension: Union[str, FileExtensionEnum]  # REQUIRED
+    content_type: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_content_type(self, value: str) -> ModelsCreateScreenshotRequestItem:
-        self.content_type = value
-        return self
 
     def with_description(self, value: str) -> ModelsCreateScreenshotRequestItem:
         self.description = value
@@ -73,16 +69,16 @@ class ModelsCreateScreenshotRequestItem(Model):
         self.file_extension = value
         return self
 
+    def with_content_type(self, value: str) -> ModelsCreateScreenshotRequestItem:
+        self.content_type = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "content_type"):
-            result["contentType"] = str(self.content_type)
-        elif include_empty:
-            result["contentType"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -91,6 +87,10 @@ class ModelsCreateScreenshotRequestItem(Model):
             result["fileExtension"] = str(self.file_extension)
         elif include_empty:
             result["fileExtension"] = Union[str, FileExtensionEnum]()
+        if hasattr(self, "content_type"):
+            result["contentType"] = str(self.content_type)
+        elif include_empty:
+            result["contentType"] = ""
         return result
 
     # endregion to methods
@@ -100,15 +100,16 @@ class ModelsCreateScreenshotRequestItem(Model):
     @classmethod
     def create(
         cls,
-        content_type: str,
         description: str,
         file_extension: Union[str, FileExtensionEnum],
+        content_type: Optional[str] = None,
         **kwargs,
     ) -> ModelsCreateScreenshotRequestItem:
         instance = cls()
-        instance.content_type = content_type
         instance.description = description
         instance.file_extension = file_extension
+        if content_type is not None:
+            instance.content_type = content_type
         return instance
 
     @classmethod
@@ -118,10 +119,6 @@ class ModelsCreateScreenshotRequestItem(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "contentType" in dict_ and dict_["contentType"] is not None:
-            instance.content_type = str(dict_["contentType"])
-        elif include_empty:
-            instance.content_type = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -130,6 +127,10 @@ class ModelsCreateScreenshotRequestItem(Model):
             instance.file_extension = str(dict_["fileExtension"])
         elif include_empty:
             instance.file_extension = Union[str, FileExtensionEnum]()
+        if "contentType" in dict_ and dict_["contentType"] is not None:
+            instance.content_type = str(dict_["contentType"])
+        elif include_empty:
+            instance.content_type = ""
         return instance
 
     @classmethod
@@ -173,17 +174,17 @@ class ModelsCreateScreenshotRequestItem(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "contentType": "content_type",
             "description": "description",
             "fileExtension": "file_extension",
+            "contentType": "content_type",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "contentType": True,
             "description": True,
             "fileExtension": True,
+            "contentType": False,
         }
 
     @staticmethod

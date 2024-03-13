@@ -35,15 +35,7 @@ from ...models import ResponseErrorResponse
 class DeleteLeaderboardConfigurationAdminV3(Operation):
     """delete leaderboard by leaderboardCode (deleteLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint delete a leaderboard configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}

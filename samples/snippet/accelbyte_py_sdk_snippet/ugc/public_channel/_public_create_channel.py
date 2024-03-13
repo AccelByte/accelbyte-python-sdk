@@ -12,7 +12,7 @@ body:
 Definition: ModelsPublicChannelRequest
 name: str
 
-Example: '{"name": "QhqzRYetQ7frylBX"}'
+Example: '{"name": "vOJ6VNfzP9zvTj5U"}'
 """
 
 result, error = public_create_channel(

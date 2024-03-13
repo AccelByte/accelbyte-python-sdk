@@ -11,7 +11,7 @@ body:
 Definition: ModelsClaimSessionRequest
 session_id: str
 
-Example: '{"session_id": "WDJqOPDDrHjZCjBt"}'
+Example: '{"session_id": "jZAfdacbScNVB1yx"}'
 """
 
 result, error = claim_server(

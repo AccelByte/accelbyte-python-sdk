@@ -12,7 +12,7 @@ Definition: ModelSendRegisterVerificationCodeRequest
 email_address: str
 language_tag: str
 
-Example: '{"emailAddress": "nR421GRpalbRLzw3", "languageTag": "qBK58JniSlMMInKu"}'
+Example: '{"emailAddress": "60jhSUjEGUn4N81N", "languageTag": "W6fs2T7luQIZAwg7"}'
 """
 
 result, error = public_send_registration_code(

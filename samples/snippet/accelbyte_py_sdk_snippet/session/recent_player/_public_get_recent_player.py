@@ -8,7 +8,6 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 
 result, error = public_get_recent_player(
     limit=limit,
-    user_id=user_id,
     namespace=namespace,
     x_additional_headers=x_additional_headers,
 )

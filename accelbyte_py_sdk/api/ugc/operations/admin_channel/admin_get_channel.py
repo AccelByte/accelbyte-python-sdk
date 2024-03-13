@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminGetChannel(Operation):
     """Get Channels (AdminGetChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+    Get user channel paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels

@@ -43,6 +43,8 @@ class ModelGoalProgressionResponse(Model):
     """Model goal progression response (model.GoalProgressionResponse)
 
     Properties:
+        challenge_code: (challengeCode) REQUIRED str
+
         goal_code: (goalCode) REQUIRED str
 
         goal_progression_id: (goalProgressionId) REQUIRED str
@@ -54,6 +56,7 @@ class ModelGoalProgressionResponse(Model):
 
     # region fields
 
+    challenge_code: str  # REQUIRED
     goal_code: str  # REQUIRED
     goal_progression_id: str  # REQUIRED
     requirement_progressions: List[ModelRequirementProgressionResponse]  # REQUIRED
@@ -62,6 +65,10 @@ class ModelGoalProgressionResponse(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_challenge_code(self, value: str) -> ModelGoalProgressionResponse:
+        self.challenge_code = value
+        return self
 
     def with_goal_code(self, value: str) -> ModelGoalProgressionResponse:
         self.goal_code = value
@@ -89,6 +96,10 @@ class ModelGoalProgressionResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "challenge_code"):
+            result["challengeCode"] = str(self.challenge_code)
+        elif include_empty:
+            result["challengeCode"] = ""
         if hasattr(self, "goal_code"):
             result["goalCode"] = str(self.goal_code)
         elif include_empty:
@@ -117,6 +128,7 @@ class ModelGoalProgressionResponse(Model):
     @classmethod
     def create(
         cls,
+        challenge_code: str,
         goal_code: str,
         goal_progression_id: str,
         requirement_progressions: List[ModelRequirementProgressionResponse],
@@ -124,6 +136,7 @@ class ModelGoalProgressionResponse(Model):
         **kwargs,
     ) -> ModelGoalProgressionResponse:
         instance = cls()
+        instance.challenge_code = challenge_code
         instance.goal_code = goal_code
         instance.goal_progression_id = goal_progression_id
         instance.requirement_progressions = requirement_progressions
@@ -137,6 +150,10 @@ class ModelGoalProgressionResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "challengeCode" in dict_ and dict_["challengeCode"] is not None:
+            instance.challenge_code = str(dict_["challengeCode"])
+        elif include_empty:
+            instance.challenge_code = ""
         if "goalCode" in dict_ and dict_["goalCode"] is not None:
             instance.goal_code = str(dict_["goalCode"])
         elif include_empty:
@@ -204,6 +221,7 @@ class ModelGoalProgressionResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "challengeCode": "challenge_code",
             "goalCode": "goal_code",
             "goalProgressionId": "goal_progression_id",
             "requirementProgressions": "requirement_progressions",
@@ -213,6 +231,7 @@ class ModelGoalProgressionResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "challengeCode": True,
             "goalCode": True,
             "goalProgressionId": True,
             "requirementProgressions": True,

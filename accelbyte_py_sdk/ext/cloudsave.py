@@ -46,8 +46,11 @@ from ..api.cloudsave.models import ModelsBulkGetPlayerBinaryRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordSizeResponse
 from ..api.cloudsave.models import ModelsBulkGetPlayerRecordsRequest
+from ..api.cloudsave.models import ModelsBulkUpdatePlayerRecordByKeyRequestDetail
+from ..api.cloudsave.models import ModelsBulkUpdatePlayerRecordByKeyResponse
 from ..api.cloudsave.models import ModelsBulkUpdatePlayerRecordRequestDetail
 from ..api.cloudsave.models import ModelsBulkUpdatePlayerRecordResponse
+from ..api.cloudsave.models import ModelsBulkUpdatePlayerRecordsByKeyRequest
 from ..api.cloudsave.models import ModelsBulkUpdatePlayerRecordsRequest
 from ..api.cloudsave.models import ModelsBulkUserIDsRequest
 from ..api.cloudsave.models import ModelsBulkUserKeyRequest
@@ -99,6 +102,7 @@ def create_models_admin_concurrent_record_request_example() -> (
     instance.set_by = randomize()
     instance.updated_at = randomize()
     instance.value = {randomize(): randomize()}
+    instance.tags = [randomize()]
     instance.ttl_config = create_models_ttl_config_dto_example()
     return instance
 
@@ -109,6 +113,7 @@ def create_models_admin_game_concurrent_record_request_example() -> (
     instance = ModelsAdminGameConcurrentRecordRequest()
     instance.updated_at = randomize()
     instance.value = {randomize(): randomize()}
+    instance.tags = [randomize()]
     return instance
 
 
@@ -124,6 +129,7 @@ def create_models_admin_game_record_response_example() -> ModelsAdminGameRecordR
     instance.namespace = randomize("slug")
     instance.updated_at = randomize("date")
     instance.value = {randomize(): randomize()}
+    instance.tags = [randomize()]
     return instance
 
 
@@ -133,6 +139,7 @@ def create_models_admin_player_concurrent_record_request_example() -> (
     instance = ModelsAdminPlayerConcurrentRecordRequest()
     instance.updated_at = randomize()
     instance.value = {randomize(): randomize()}
+    instance.tags = [randomize()]
     return instance
 
 
@@ -162,6 +169,7 @@ def create_models_admin_player_record_response_example() -> (
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
     instance.value = {randomize(): randomize()}
+    instance.tags = [randomize()]
     return instance
 
 
@@ -277,6 +285,25 @@ def create_models_bulk_get_player_records_request_example() -> (
     return instance
 
 
+def create_models_bulk_update_player_record_by_key_request_detail_example() -> (
+    ModelsBulkUpdatePlayerRecordByKeyRequestDetail
+):
+    instance = ModelsBulkUpdatePlayerRecordByKeyRequestDetail()
+    instance.user_id = randomize("uid")
+    instance.value = {randomize(): randomize()}
+    return instance
+
+
+def create_models_bulk_update_player_record_by_key_response_example() -> (
+    ModelsBulkUpdatePlayerRecordByKeyResponse
+):
+    instance = ModelsBulkUpdatePlayerRecordByKeyResponse()
+    instance.detail = {randomize(): randomize()}
+    instance.success = randomize("bool")
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_models_bulk_update_player_record_request_detail_example() -> (
     ModelsBulkUpdatePlayerRecordRequestDetail
 ):
@@ -293,6 +320,16 @@ def create_models_bulk_update_player_record_response_example() -> (
     instance.detail = {randomize(): randomize()}
     instance.key = randomize()
     instance.success = randomize("bool")
+    return instance
+
+
+def create_models_bulk_update_player_records_by_key_request_example() -> (
+    ModelsBulkUpdatePlayerRecordsByKeyRequest
+):
+    instance = ModelsBulkUpdatePlayerRecordsByKeyRequest()
+    instance.data = [
+        create_models_bulk_update_player_record_by_key_request_detail_example()
+    ]
     return instance
 
 
@@ -358,6 +395,7 @@ def create_models_game_binary_record_admin_response_example() -> (
     instance.updated_at = randomize("date")
     instance.binary_info = create_models_binary_info_response_example()
     instance.set_by = randomize()
+    instance.tags = [randomize()]
     instance.ttl_config = create_models_ttl_config_dto_example()
     return instance
 
@@ -376,6 +414,7 @@ def create_models_game_binary_record_metadata_request_example() -> (
 ):
     instance = ModelsGameBinaryRecordMetadataRequest()
     instance.set_by = randomize()
+    instance.tags = [randomize()]
     instance.ttl_config = create_models_ttl_config_dto_example()
     return instance
 
@@ -401,6 +440,7 @@ def create_models_game_record_admin_response_example() -> ModelsGameRecordAdminR
     instance.updated_at = randomize("date")
     instance.value = {randomize(): randomize()}
     instance.set_by = randomize()
+    instance.tags = [randomize()]
     instance.ttl_config = create_models_ttl_config_dto_example()
     return instance
 
@@ -418,6 +458,7 @@ def create_models_game_record_response_example() -> ModelsGameRecordResponse:
     instance.updated_at = randomize("date")
     instance.value = {randomize(): randomize()}
     instance.set_by = randomize()
+    instance.tags = [randomize()]
     return instance
 
 
@@ -525,6 +566,7 @@ def create_models_player_binary_record_metadata_request_example() -> (
     instance = ModelsPlayerBinaryRecordMetadataRequest()
     instance.is_public = randomize("bool")
     instance.set_by = randomize()
+    instance.tags = [randomize()]
     return instance
 
 
@@ -540,6 +582,7 @@ def create_models_player_binary_record_response_example() -> (
     instance.user_id = randomize("uid")
     instance.binary_info = create_models_binary_info_response_example()
     instance.set_by = randomize()
+    instance.tags = [randomize()]
     return instance
 
 
@@ -573,6 +616,7 @@ def create_models_player_record_response_example() -> ModelsPlayerRecordResponse
     instance.user_id = randomize("uid")
     instance.value = {randomize(): randomize()}
     instance.set_by = randomize()
+    instance.tags = [randomize()]
     return instance
 
 

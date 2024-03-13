@@ -38,7 +38,11 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.command()
 @click.option("--after", "after", type=str)
 @click.option("--before", "before", type=str)
+@click.option("--end_date", "end_date", type=str)
 @click.option("--limit", "limit", type=int)
+@click.option("--query", "query", type=str)
+@click.option("--role_id", "role_id", type=str)
+@click.option("--start_date", "start_date", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -46,7 +50,11 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 def list_admins_v3(
     after: Optional[str] = None,
     before: Optional[str] = None,
+    end_date: Optional[str] = None,
     limit: Optional[int] = None,
+    query: Optional[str] = None,
+    role_id: Optional[str] = None,
+    start_date: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -63,7 +71,11 @@ def list_admins_v3(
     result, error = list_admins_v3_internal(
         after=after,
         before=before,
+        end_date=end_date,
         limit=limit,
+        query=query,
+        role_id=role_id,
+        start_date=start_date,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

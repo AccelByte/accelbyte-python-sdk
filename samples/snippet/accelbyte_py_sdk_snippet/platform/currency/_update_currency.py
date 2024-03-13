@@ -13,7 +13,7 @@ body:
 Definition: CurrencyUpdate
 localization_descriptions: Dict[str, str]
 
-Example: '{"localizationDescriptions": {"iYiZlNZRgFXQsten": "fucHj2v5W6oTiNHe", "Y4uauaDuLbakNNYp": "BtlDR2rfXeD75J6V", "yfEDSRZkArmBzX1W": "CeExebIJpsR6oKvq"}}'
+Example: '{"localizationDescriptions": {"xtXVcKA64kuo5RDu": "N4ivscJRVoKMzPCb", "RF59dzEm6xVWuRwy": "ibS9cABMAImcbtNC", "QqL5ohM8SJ1rUSaT": "NZe6zg2dwWxnF1Ug"}}'
 """
 
 result, error = update_currency(

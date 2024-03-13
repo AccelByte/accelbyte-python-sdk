@@ -40,20 +40,12 @@ class DeleteUserRankingByLeaderboardCodeAdminV1(Operation):
 
 
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint will delete user ranking by leaderboard code
 
 
 
 
     Note: this endpoint only works on development environment.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset

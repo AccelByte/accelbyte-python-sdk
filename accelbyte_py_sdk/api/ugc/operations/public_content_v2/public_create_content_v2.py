@@ -37,10 +37,7 @@ from ...models import ResponseError
 class PublicCreateContentV2(Operation):
     """Create a content (PublicCreateContentV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    Create a new content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents

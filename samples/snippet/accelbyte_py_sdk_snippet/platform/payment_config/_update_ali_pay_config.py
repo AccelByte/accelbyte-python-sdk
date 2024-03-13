@@ -15,7 +15,7 @@ private_key: str
 public_key: str
 return_url: str
 
-Example: '{"appId": "1BnWldizmdM4mTGU", "privateKey": "MQW7K2M8QAhKNVqS", "publicKey": "gIkqapxa3aFMKjRe", "returnUrl": "7SjhOQMv24ZNMgNm"}'
+Example: '{"appId": "iVmX9TvwKo0vWNiM", "privateKey": "0A1aKO2gNNTdTTyT", "publicKey": "C8fw7oIRptJyAmPs", "returnUrl": "ZIIJ19mlLRwFpGrv"}'
 """
 
 result, error = update_ali_pay_config(

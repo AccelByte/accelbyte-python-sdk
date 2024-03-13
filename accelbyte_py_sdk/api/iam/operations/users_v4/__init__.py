@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.11.0"
+__version__ = "7.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -34,8 +34,11 @@ from .admin_generate_my_backu_fdd3aa import AdminGenerateMyBackupCodesV4
 from .admin_get_backup_codes_v4 import AdminGetBackupCodesV4
 from .admin_get_my_backup_codes_v4 import AdminGetMyBackupCodesV4
 from .admin_get_my_enabled_fa_206f77 import AdminGetMyEnabledFactorsV4
+from .admin_get_namespace_inv_117873 import AdminGetNamespaceInvitationHistoryV4
+from .admin_get_namespace_use_b6aedf import AdminGetNamespaceUserInvitationHistoryV4
 from .admin_invite_user_new_v4 import AdminInviteUserNewV4
 from .admin_invite_user_v4 import AdminInviteUserV4
+from .admin_list_invitation_h_840d46 import AdminListInvitationHistoriesV4
 from .admin_list_user_roles_v4 import AdminListUserRolesV4
 from .admin_make_factor_my_de_88728e import AdminMakeFactorMyDefaultV4
 from .admin_remove_user_role_v4 import AdminRemoveUserRoleV4

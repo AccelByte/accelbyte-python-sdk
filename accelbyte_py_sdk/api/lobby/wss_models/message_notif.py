@@ -30,7 +30,7 @@ class MessageNotif(WebSocketMessage):
     from_: str
     id_: str
     payload: str
-    sent_at: int
+    sent_at: str
     to: str
     topic: str
 

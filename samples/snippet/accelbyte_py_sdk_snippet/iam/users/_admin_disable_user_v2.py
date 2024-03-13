@@ -11,7 +11,7 @@ body:
 Definition: ModelDisableUserRequest
 reason: str
 
-Example: '{"Reason": "dB9HPeInSi58zeBM"}'
+Example: '{"Reason": "nMFxVp0lxy4kMSqG"}'
 """
 
 result, error = admin_disable_user_v2(

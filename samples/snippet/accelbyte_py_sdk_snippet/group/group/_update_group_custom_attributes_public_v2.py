@@ -12,7 +12,7 @@ body:
 Definition: ModelsUpdateGroupCustomAttributesRequestV1
 custom_attributes: Dict[str, Any]
 
-Example: '{"customAttributes": {"8cV9ikIp5r9LZYmy": {}, "cZPEpkWHzBEiccaH": {}, "9lwqc4aooNFuRhc9": {}}}'
+Example: '{"customAttributes": {"NaAxF09d1lTiNpBU": {}, "wtOgnYWLfQMZcGNc": {}, "0bBPQ3Si24wTap8a": {}}}'
 """
 
 result, error = update_group_custom_attributes_public_v2(

@@ -37,10 +37,7 @@ from ...models import ResponseError
 class PublicGenerateContentUploadURLV2(Operation):
     """Generate content upload URL (PublicGenerateContentUploadURLV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Generate content upload URL
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/uploadUrl

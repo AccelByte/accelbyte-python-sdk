@@ -52,6 +52,12 @@ from ._bulk_get_player_record_size_handler_v1 import (
     bulk_get_player_record_size_handler_v1,
 )
 from ._list_player_record_handler_v1 import list_player_record_handler_v1
+from ._admin_bulk_put_player_records_by_key_handler_v1 import (
+    admin_bulk_put_player_records_by_key_handler_v1,
+)
+from ._admin_bulk_get_player_records_by_user_i_ds_handler_v1 import (
+    admin_bulk_get_player_records_by_user_i_ds_handler_v1,
+)
 from ._admin_list_admin_user_records_v1 import admin_list_admin_user_records_v1
 from ._admin_bulk_get_admin_player_record_v1 import (
     admin_bulk_get_admin_player_record_v1,
@@ -200,6 +206,8 @@ commands = [
     bulk_get_admin_player_record_by_user_ids_v1,
     bulk_get_player_record_size_handler_v1,
     list_player_record_handler_v1,
+    admin_bulk_put_player_records_by_key_handler_v1,
+    admin_bulk_get_player_records_by_user_i_ds_handler_v1,
     admin_list_admin_user_records_v1,
     admin_bulk_get_admin_player_record_v1,
     admin_get_admin_player_record_v1,

@@ -17,7 +17,7 @@ sub_type: str
 tags: List[str]
 type_: str
 
-Example: '{"customAttributes": {"QDPM6yjEsjeXjlV6": {}, "8eXCE2TBKveevzyt": {}, "HueV6xLA8XuUuhRB": {}}, "name": "3cbXodbb3aUsFhib", "shareCode": "oT4sPpSoGkBPAQIA", "subType": "Tap2WSBRoBchepxp", "tags": ["RR9ctSpkhu66iwe7", "p7LYBm2FzyOq4LSP", "BSiJ3rG1oH355EKO"], "type": "qbv0aFsRc5GxRSkT"}'
+Example: '{"customAttributes": {"X2kzxWhB80Q0BuzR": {}, "r1V2pz4XSEWkD90D": {}, "8cSaOetjPdAe1swg": {}}, "name": "akV9wQDExQyeSpKe", "shareCode": "KTM8gvsCglfAbD01", "subType": "hpW9wvLUxyeYEDRC", "tags": ["7D7SzKP4D9dZgJXw", "R7IZI0RiQ2E0vjpO", "AtADZdwyTQPBfY9b"], "type": "Gwf41Touk9r1wJ5F"}'
 """
 
 result, error = admin_update_user_content_v2(

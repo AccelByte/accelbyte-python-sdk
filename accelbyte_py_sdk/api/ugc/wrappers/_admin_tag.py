@@ -49,11 +49,7 @@ def admin_create_tag(
 ):
     """Create tags (AdminCreateTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
-    creates a new tag
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+    Creates a new tag
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags
@@ -103,11 +99,7 @@ async def admin_create_tag_async(
 ):
     """Create tags (AdminCreateTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
-    creates a new tag
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+    Creates a new tag
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags
@@ -159,10 +151,7 @@ def admin_delete_tag(
 ):
     """Delete tags (AdminDeleteTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+    Delete existing tag
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}
@@ -210,10 +199,7 @@ async def admin_delete_tag_async(
 ):
     """Delete tags (AdminDeleteTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+    Delete existing tag
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}
@@ -264,10 +250,7 @@ def admin_get_tag(
 ):
     """Get tags (AdminGetTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+    Get available tags paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags
@@ -319,10 +302,7 @@ async def admin_get_tag_async(
 ):
     """Get tags (AdminGetTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+    Get available tags paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags
@@ -376,11 +356,7 @@ def admin_update_tag(
 ):
     """Update tag (AdminUpdateTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
-    updates a tag
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    Update existing tag
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}
@@ -436,11 +412,7 @@ async def admin_update_tag_async(
 ):
     """Update tag (AdminUpdateTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
-    updates a tag
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    Update existing tag
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}

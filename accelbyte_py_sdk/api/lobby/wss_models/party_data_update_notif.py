@@ -33,7 +33,7 @@ class PartyDataUpdateNotif(WebSocketMessage):
     members: List[str]
     namespace: str
     party_id: str
-    updated_at: int
+    updated_at: str
 
     # endregion fields
 

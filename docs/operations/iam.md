@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (7.11.0)
+# AccelByte Gaming Services Iam Service Index (7.12.0)
 
 
 ## Operations
@@ -427,8 +427,11 @@
 | /iam/v4/admin/users/me/mfa/backupCodes | GET | AdminGetBackupCodesV4 | `false` | [AdminGetBackupCodesV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_get_backup_codes_v4.py) | [admin_get_backup_codes_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-backup-codes-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_backup_codes_v4.py) |
 | /iam/v4/admin/users/me/mfa/backupCode | GET | AdminGetMyBackupCodesV4 | `true` | [AdminGetMyBackupCodesV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_get_my_backup_codes_v4.py) | [admin_get_my_backup_codes_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-my-backup-codes-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_my_backup_codes_v4.py) |
 | /iam/v4/admin/users/me/mfa/factor | GET | AdminGetMyEnabledFactorsV4 | `false` | [AdminGetMyEnabledFactorsV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_get_my_enabled_fa_206f77.py) | [admin_get_my_enabled_factors_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-my-enabled-factors-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_my_enabled_factors_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/invitationHistories | GET | AdminGetNamespaceInvitationHistoryV4 | `false` | [AdminGetNamespaceInvitationHistoryV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_get_namespace_inv_117873.py) | [admin_get_namespace_invitation_history_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-namespace-invitation-history-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_namespace_invitation_history_v4.py) |
+| /iam/v4/admin/namespaces/{namespace}/invitationHistories/users | GET | AdminGetNamespaceUserInvitationHistoryV4 | `false` | [AdminGetNamespaceUserInvitationHistoryV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_get_namespace_use_b6aedf.py) | [admin_get_namespace_user_invitation_history_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-get-namespace-user-invitation-history-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_namespace_user_invitation_history_v4.py) |
 | /iam/v4/admin/users/invite | POST | AdminInviteUserNewV4 | `false` | [AdminInviteUserNewV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_invite_user_new_v4.py) | [admin_invite_user_new_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-invite-user-new-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_invite_user_new_v4.py) |
 | /iam/v4/admin/users/users/invite | POST | AdminInviteUserV4 | `true` | [AdminInviteUserV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_invite_user_v4.py) | [admin_invite_user_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-invite-user-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_invite_user_v4.py) |
+| /iam/v4/admin/invitationHistories | GET | AdminListInvitationHistoriesV4 | `false` | [AdminListInvitationHistoriesV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_list_invitation_h_840d46.py) | [admin_list_invitation_histories_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-list-invitation-histories-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_list_invitation_histories_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | GET | AdminListUserRolesV4 | `false` | [AdminListUserRolesV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_list_user_roles_v4.py) | [admin_list_user_roles_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-list-user-roles-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_list_user_roles_v4.py) |
 | /iam/v4/admin/users/me/mfa/factor | POST | AdminMakeFactorMyDefaultV4 | `false` | [AdminMakeFactorMyDefaultV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_make_factor_my_de_88728e.py) | [admin_make_factor_my_default_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-make-factor-my-default-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_make_factor_my_default_v4.py) |
 | /iam/v4/admin/namespaces/{namespace}/users/{userId}/roles | DELETE | AdminRemoveUserRoleV4 | `false` | [AdminRemoveUserRoleV4](../../accelbyte_py_sdk/api/iam/operations/users_v4/admin_remove_user_role_v4.py) | [admin_remove_user_role_v4](../../accelbyte_py_sdk/api/iam/wrappers/_users_v4.py) | [accelbyte_py_sdk_cli iam-admin-remove-user-role-v4](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_remove_user_role_v4.py) |
@@ -614,6 +617,7 @@
 | model.InputValidationUpdatePayload | [ModelInputValidationUpdatePayload](../../accelbyte_py_sdk/api/iam/models/model_input_validation_update_payload.py) |
 | model.InputValidationsPublicResponse | [ModelInputValidationsPublicResponse](../../accelbyte_py_sdk/api/iam/models/model_input_validations_public_response.py) |
 | model.InputValidationsResponse | [ModelInputValidationsResponse](../../accelbyte_py_sdk/api/iam/models/model_input_validations_response.py) |
+| model.InvitationHistoryResponse | [ModelInvitationHistoryResponse](../../accelbyte_py_sdk/api/iam/models/model_invitation_history_response.py) |
 | model.InviteUserRequestV3 | [ModelInviteUserRequestV3](../../accelbyte_py_sdk/api/iam/models/model_invite_user_request_v3.py) |
 | model.InviteUserRequestV4 | [ModelInviteUserRequestV4](../../accelbyte_py_sdk/api/iam/models/model_invite_user_request_v4.py) |
 | model.InviteUserResponseV3 | [ModelInviteUserResponseV3](../../accelbyte_py_sdk/api/iam/models/model_invite_user_response_v3.py) |
@@ -627,12 +631,14 @@
 | model.ListBulkUserPlatformsResponse | [ModelListBulkUserPlatformsResponse](../../accelbyte_py_sdk/api/iam/models/model_list_bulk_user_platforms_response.py) |
 | model.ListBulkUserResponse | [ModelListBulkUserResponse](../../accelbyte_py_sdk/api/iam/models/model_list_bulk_user_response.py) |
 | model.ListEmailAddressRequest | [ModelListEmailAddressRequest](../../accelbyte_py_sdk/api/iam/models/model_list_email_address_request.py) |
+| model.ListInvitationHistoriesV4Response | [ModelListInvitationHistoriesV4Response](../../accelbyte_py_sdk/api/iam/models/model_list_invitation_histories_v4_response.py) |
 | model.ListRoleV4Response | [ModelListRoleV4Response](../../accelbyte_py_sdk/api/iam/models/model_list_role_v4_response.py) |
 | model.ListUserInformationResult | [ModelListUserInformationResult](../../accelbyte_py_sdk/api/iam/models/model_list_user_information_result.py) |
 | model.ListUserResponseV3 | [ModelListUserResponseV3](../../accelbyte_py_sdk/api/iam/models/model_list_user_response_v3.py) |
 | model.ListUserRolesV4Response | [ModelListUserRolesV4Response](../../accelbyte_py_sdk/api/iam/models/model_list_user_roles_v4_response.py) |
 | model.ListValidUserIDResponseV4 | [ModelListValidUserIDResponseV4](../../accelbyte_py_sdk/api/iam/models/model_list_valid_user_id_response_v4.py) |
 | model.LoginHistoriesResponse | [ModelLoginHistoriesResponse](../../accelbyte_py_sdk/api/iam/models/model_login_histories_response.py) |
+| model.NamespaceInvitationHistoryUserV4Response | [ModelNamespaceInvitationHistoryUserV4Response](../../accelbyte_py_sdk/api/iam/models/model_namespace_invitation_history_user_v4_response.py) |
 | model.NamespaceRoleRequest | [ModelNamespaceRoleRequest](../../accelbyte_py_sdk/api/iam/models/model_namespace_role_request.py) |
 | model.PermissionDeleteRequest | [ModelPermissionDeleteRequest](../../accelbyte_py_sdk/api/iam/models/model_permission_delete_request.py) |
 | model.PlatformDomainDeleteRequest | [ModelPlatformDomainDeleteRequest](../../accelbyte_py_sdk/api/iam/models/model_platform_domain_delete_request.py) |
@@ -708,6 +714,7 @@
 | model.UserIdentityUpdateRequestV3 | [ModelUserIdentityUpdateRequestV3](../../accelbyte_py_sdk/api/iam/models/model_user_identity_update_request_v3.py) |
 | model.UserInfoResponse | [ModelUserInfoResponse](../../accelbyte_py_sdk/api/iam/models/model_user_info_response.py) |
 | model.UserInformation | [ModelUserInformation](../../accelbyte_py_sdk/api/iam/models/model_user_information.py) |
+| model.UserInvitationHistory | [ModelUserInvitationHistory](../../accelbyte_py_sdk/api/iam/models/model_user_invitation_history.py) |
 | model.UserInvitationV3 | [ModelUserInvitationV3](../../accelbyte_py_sdk/api/iam/models/model_user_invitation_v3.py) |
 | model.UserLoginHistoryResponse | [ModelUserLoginHistoryResponse](../../accelbyte_py_sdk/api/iam/models/model_user_login_history_response.py) |
 | model.UserPasswordUpdateRequest | [ModelUserPasswordUpdateRequest](../../accelbyte_py_sdk/api/iam/models/model_user_password_update_request.py) |

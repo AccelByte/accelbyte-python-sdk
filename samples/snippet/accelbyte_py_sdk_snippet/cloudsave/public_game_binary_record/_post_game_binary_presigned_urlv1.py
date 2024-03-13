@@ -12,7 +12,7 @@ body:
 Definition: ModelsUploadBinaryRecordRequest
 file_type: str
 
-Example: '{"file_type": "DWxsF4iXL3tUPLbl"}'
+Example: '{"file_type": "7k1RAnxfKJUaxhwc"}'
 """
 
 result, error = post_game_binary_presigned_urlv1(

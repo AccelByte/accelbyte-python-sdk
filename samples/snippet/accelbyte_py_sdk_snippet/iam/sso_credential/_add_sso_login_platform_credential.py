@@ -19,7 +19,7 @@ redirect_uri: str
 secret: str
 sso_url: str
 
-Example: '{"acsUrl": "PejGI7z1uuOkjM8j", "apiKey": "bzMFCKXTLK6dRN4t", "appId": "3BAlpGf7qkjD9VkX", "federationMetadataUrl": "6n8hXAI9xQd4eZsc", "isActive": false, "redirectUri": "9MtF4XEGPhEY91D4", "secret": "PEicKbTKCIocqKrq", "ssoUrl": "45T89dE20DWeYiHI"}'
+Example: '{"acsUrl": "RSCvkzTbZJKsWuS6", "apiKey": "Qk0hTRRIBKc6cTjd", "appId": "9ibQwE5TCjmioWzH", "federationMetadataUrl": "xVXTEIygirYu3xRk", "isActive": true, "redirectUri": "VDFUBvW1BxUnGmur", "secret": "W2umBiFGP1nhDp9q", "ssoUrl": "hG2cHXoxVjCXOaQD"}'
 """
 
 result, error = add_sso_login_platform_credential(

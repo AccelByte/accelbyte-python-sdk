@@ -12,7 +12,7 @@ body:
 Definition: ModelsBulkGetPlayerRecordsRequest
 keys: List[str]
 
-Example: '{"keys": ["TSmXu3sCH1X6czR4", "Sq9K9HHBTnzCVWFo", "jpCh2fwiD9wyLDZE"]}'
+Example: '{"keys": ["fiXR8qgRsbAtxOtD", "eD6VfogJ9M5w7Xj7", "B933pyaFkM4E0uxz"]}'
 """
 
 result, error = get_other_player_public_record_handler_v1(

@@ -45,15 +45,6 @@ def admin_anonymize_user_leaderboard_admin_v1(
 
     This API will delete specified user leaderboard
 
-
-
-
-    Required permission
-    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
-
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/leaderboards
 
@@ -101,15 +92,6 @@ async def admin_anonymize_user_leaderboard_admin_v1_async(
     """Anonymize user's leaderboard (adminAnonymizeUserLeaderboardAdminV1)
 
     This API will delete specified user leaderboard
-
-
-
-
-    Required permission
-    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/leaderboards

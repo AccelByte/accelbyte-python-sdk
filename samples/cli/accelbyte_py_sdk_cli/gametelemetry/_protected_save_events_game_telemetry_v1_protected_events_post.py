@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.gametelemetry import (
     protected_save_events_game_telemetry_v1_protected_events_post as protected_save_events_game_telemetry_v1_protected_events_post_internal,
 )
-from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
+from accelbyte_py_sdk.api.gametelemetry.models import BaseErrorResponse
 from accelbyte_py_sdk.api.gametelemetry.models import TelemetryBody
 
 

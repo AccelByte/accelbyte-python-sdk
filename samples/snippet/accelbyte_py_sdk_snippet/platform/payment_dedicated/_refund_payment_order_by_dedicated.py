@@ -13,7 +13,7 @@ body:
 Definition: PaymentOrderRefund
 description: str
 
-Example: '{"description": "Vo4fQ0014M09aMOg"}'
+Example: '{"description": "B39NpF913BJZH4Pv"}'
 """
 
 result, error = refund_payment_order_by_dedicated(

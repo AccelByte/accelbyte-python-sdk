@@ -32,26 +32,22 @@ class ModelGoalSchedule(Model):
     """Model goal schedule (model.GoalSchedule)
 
     Properties:
-        end_time: (endTime) REQUIRED str
-
         order: (order) REQUIRED int
 
         start_time: (startTime) REQUIRED str
+
+        end_time: (endTime) OPTIONAL str
     """
 
     # region fields
 
-    end_time: str  # REQUIRED
     order: int  # REQUIRED
     start_time: str  # REQUIRED
+    end_time: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_end_time(self, value: str) -> ModelGoalSchedule:
-        self.end_time = value
-        return self
 
     def with_order(self, value: int) -> ModelGoalSchedule:
         self.order = value
@@ -61,16 +57,16 @@ class ModelGoalSchedule(Model):
         self.start_time = value
         return self
 
+    def with_end_time(self, value: str) -> ModelGoalSchedule:
+        self.end_time = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "end_time"):
-            result["endTime"] = str(self.end_time)
-        elif include_empty:
-            result["endTime"] = ""
         if hasattr(self, "order"):
             result["order"] = int(self.order)
         elif include_empty:
@@ -79,6 +75,10 @@ class ModelGoalSchedule(Model):
             result["startTime"] = str(self.start_time)
         elif include_empty:
             result["startTime"] = ""
+        if hasattr(self, "end_time"):
+            result["endTime"] = str(self.end_time)
+        elif include_empty:
+            result["endTime"] = ""
         return result
 
     # endregion to methods
@@ -87,12 +87,13 @@ class ModelGoalSchedule(Model):
 
     @classmethod
     def create(
-        cls, end_time: str, order: int, start_time: str, **kwargs
+        cls, order: int, start_time: str, end_time: Optional[str] = None, **kwargs
     ) -> ModelGoalSchedule:
         instance = cls()
-        instance.end_time = end_time
         instance.order = order
         instance.start_time = start_time
+        if end_time is not None:
+            instance.end_time = end_time
         return instance
 
     @classmethod
@@ -102,10 +103,6 @@ class ModelGoalSchedule(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "endTime" in dict_ and dict_["endTime"] is not None:
-            instance.end_time = str(dict_["endTime"])
-        elif include_empty:
-            instance.end_time = ""
         if "order" in dict_ and dict_["order"] is not None:
             instance.order = int(dict_["order"])
         elif include_empty:
@@ -114,6 +111,10 @@ class ModelGoalSchedule(Model):
             instance.start_time = str(dict_["startTime"])
         elif include_empty:
             instance.start_time = ""
+        if "endTime" in dict_ and dict_["endTime"] is not None:
+            instance.end_time = str(dict_["endTime"])
+        elif include_empty:
+            instance.end_time = ""
         return instance
 
     @classmethod
@@ -155,17 +156,17 @@ class ModelGoalSchedule(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "endTime": "end_time",
             "order": "order",
             "startTime": "start_time",
+            "endTime": "end_time",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "endTime": True,
             "order": True,
             "startTime": True,
+            "endTime": False,
         }
 
     # endregion static methods

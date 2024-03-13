@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.13.14"
+__version__ = "3.14.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -166,6 +166,8 @@ from ._player import public_get_player_attributes_async
 from ._player import public_store_player_attributes
 from ._player import public_store_player_attributes_async
 
+from ._recent_player import admin_get_recent_player
+from ._recent_player import admin_get_recent_player_async
 from ._recent_player import public_get_recent_player
 from ._recent_player import public_get_recent_player_async
 

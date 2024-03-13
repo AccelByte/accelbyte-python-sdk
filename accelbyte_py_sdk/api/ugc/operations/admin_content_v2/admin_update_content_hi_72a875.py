@@ -37,10 +37,7 @@ from ...models import ResponseError
 class AdminUpdateContentHideStatusV2(Operation):
     """Hide/Unhide user's generated contents (AdminUpdateContentHideStatusV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Hide/Unhide user's generated contents
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/contents/{contentId}/hide

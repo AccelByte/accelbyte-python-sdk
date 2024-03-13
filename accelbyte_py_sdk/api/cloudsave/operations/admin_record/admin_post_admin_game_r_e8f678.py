@@ -80,6 +80,28 @@ class AdminPostAdminGameRecordV1(Operation):
     3. Cannot use empty string in key names
     - `{ "": "value" }`
 
+
+    ## Record Metadata
+
+    Metadata allows user to define the behaviour of the record.
+    Metadata can be defined in request body with field name **__META**.
+    When creating record, if **__META** field is not defined, the metadata value will use the default value.
+    When updating record, if **__META** field is not defined, the existing metadata value will stay as is.
+
+    **Metadata List:**
+    1. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the admin record.
+
+    **Request Body Example:**
+    ```
+    {
+    "__META": {
+    "tags": ["tag1", "tag2"]
+    }
+    ...
+    }
+    ```
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
 

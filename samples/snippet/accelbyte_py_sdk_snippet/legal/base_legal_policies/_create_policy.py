@@ -19,7 +19,7 @@ namespace: str
 tags: List[str]
 type_id: str
 
-Example: '{"affectedClientIds": ["FlTcgkPraM831vwJ", "7XeS3WcadH2F9u2H", "cjKoQ4gKypmBGR2D"], "affectedCountries": ["ZrFZP2Lp1aFahJ0n", "9alSE6LLHHUtChRx", "uv975cmqEmvgy3io"], "basePolicyName": "IPWvTEWrkg8vCxNz", "description": "0oIZO64vCQJcbro4", "namespace": "zCW7JIDi31I29poI", "tags": ["V1GGxP1OzSXku7uZ", "cQPj6dlTODJ6VO4q", "J49QKSiU2HVxIoeN"], "typeId": "QPhy8ZqzljvnBx3j"}'
+Example: '{"affectedClientIds": ["gGwcEelLw9cmTyO5", "9jQoV5ldtcfEGpua", "IFLtKFEKEtLg1YlB"], "affectedCountries": ["lTUaj2bBLMd7VRmU", "KCIiJm6sm55bacx5", "WM2iMWa3SLxK4FtH"], "basePolicyName": "fwVOl9OmZXGMrQ1P", "description": "3cdFjuUWS6FxDXS9", "namespace": "9PCSapqCQsU9o5Pd", "tags": ["uUN6tHcllfHHP2se", "hdrgujgp2iRMDU0e", "AqRS8JIPCBNNfUr8"], "typeId": "NDqaKX7AlmCYuPez"}'
 """
 
 result, error = create_policy(

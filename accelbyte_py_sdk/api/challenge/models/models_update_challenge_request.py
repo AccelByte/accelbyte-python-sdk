@@ -57,6 +57,8 @@ class ModelsUpdateChallengeRequest(Model):
 
         description: (description) OPTIONAL str
 
+        end_after: (endAfter) OPTIONAL int
+
         end_date: (endDate) OPTIONAL str
 
         goals_visibility: (goalsVisibility) OPTIONAL Union[str, GoalsVisibilityEnum]
@@ -73,6 +75,7 @@ class ModelsUpdateChallengeRequest(Model):
     active_goals_per_rotation: int  # OPTIONAL
     assignment_rule: Union[str, AssignmentRuleEnum]  # OPTIONAL
     description: str  # OPTIONAL
+    end_after: int  # OPTIONAL
     end_date: str  # OPTIONAL
     goals_visibility: Union[str, GoalsVisibilityEnum]  # OPTIONAL
     name: str  # OPTIONAL
@@ -97,6 +100,10 @@ class ModelsUpdateChallengeRequest(Model):
 
     def with_description(self, value: str) -> ModelsUpdateChallengeRequest:
         self.description = value
+        return self
+
+    def with_end_after(self, value: int) -> ModelsUpdateChallengeRequest:
+        self.end_after = value
         return self
 
     def with_end_date(self, value: str) -> ModelsUpdateChallengeRequest:
@@ -141,6 +148,10 @@ class ModelsUpdateChallengeRequest(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "end_after"):
+            result["endAfter"] = int(self.end_after)
+        elif include_empty:
+            result["endAfter"] = 0
         if hasattr(self, "end_date"):
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -173,6 +184,7 @@ class ModelsUpdateChallengeRequest(Model):
         active_goals_per_rotation: Optional[int] = None,
         assignment_rule: Optional[Union[str, AssignmentRuleEnum]] = None,
         description: Optional[str] = None,
+        end_after: Optional[int] = None,
         end_date: Optional[str] = None,
         goals_visibility: Optional[Union[str, GoalsVisibilityEnum]] = None,
         name: Optional[str] = None,
@@ -187,6 +199,8 @@ class ModelsUpdateChallengeRequest(Model):
             instance.assignment_rule = assignment_rule
         if description is not None:
             instance.description = description
+        if end_after is not None:
+            instance.end_after = end_after
         if end_date is not None:
             instance.end_date = end_date
         if goals_visibility is not None:
@@ -221,6 +235,10 @@ class ModelsUpdateChallengeRequest(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "endAfter" in dict_ and dict_["endAfter"] is not None:
+            instance.end_after = int(dict_["endAfter"])
+        elif include_empty:
+            instance.end_after = 0
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -287,6 +305,7 @@ class ModelsUpdateChallengeRequest(Model):
             "activeGoalsPerRotation": "active_goals_per_rotation",
             "assignmentRule": "assignment_rule",
             "description": "description",
+            "endAfter": "end_after",
             "endDate": "end_date",
             "goalsVisibility": "goals_visibility",
             "name": "name",
@@ -300,6 +319,7 @@ class ModelsUpdateChallengeRequest(Model):
             "activeGoalsPerRotation": False,
             "assignmentRule": False,
             "description": False,
+            "endAfter": False,
             "endDate": False,
             "goalsVisibility": False,
             "name": False,

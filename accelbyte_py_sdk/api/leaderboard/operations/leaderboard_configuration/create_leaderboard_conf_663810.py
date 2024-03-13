@@ -36,11 +36,6 @@ from ...models import ResponseErrorResponse
 class CreateLeaderboardConfigurationAdminV1(Operation):
     """create new leaderboard (createLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-
-
-
     Fields :
 
 
@@ -71,9 +66,6 @@ class CreateLeaderboardConfigurationAdminV1(Operation):
 
 
       * Stat Code is related with statistic code in statistic service. (required).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards

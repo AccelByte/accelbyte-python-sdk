@@ -51,10 +51,7 @@ def admin_approve_staging_content(
 ):
     """Approve or reject content (AdminApproveStagingContent)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:CONTENT:APPROVAL [CREATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONTENT:APPROVAL [CREATE]
+    Approved content will shown to public player. Rejected content stays in staging area and couldn't be seen by other player
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/staging-contents/{contentId}/approve
@@ -110,10 +107,7 @@ async def admin_approve_staging_content_async(
 ):
     """Approve or reject content (AdminApproveStagingContent)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:CONTENT:APPROVAL [CREATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONTENT:APPROVAL [CREATE]
+    Approved content will shown to public player. Rejected content stays in staging area and couldn't be seen by other player
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/staging-contents/{contentId}/approve
@@ -170,10 +164,7 @@ def admin_get_staging_content_by_id(
 ):
     """Get staging content by id (AdminGetStagingContentByID)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get staging content by ID
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/staging-contents/{contentId}
@@ -223,10 +214,7 @@ async def admin_get_staging_content_by_id_async(
 ):
     """Get staging content by id (AdminGetStagingContentByID)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get staging content by ID
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/staging-contents/{contentId}
@@ -281,10 +269,7 @@ def admin_list_staging_contents(
 ):
     """List staging contents (AdminListStagingContents)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List content that need admin's approval
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/staging-contents
@@ -346,10 +331,7 @@ async def admin_list_staging_contents_async(
 ):
     """List staging contents (AdminListStagingContents)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List content that need admin's approval
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/staging-contents
@@ -414,10 +396,7 @@ def admin_list_user_staging_contents(
 ):
     """List user staging contents (AdminListUserStagingContents)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List user content's that need admin approval
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/staging-contents
@@ -483,10 +462,7 @@ async def admin_list_user_staging_contents_async(
 ):
     """List user staging contents (AdminListUserStagingContents)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List user content's that need admin approval
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/staging-contents

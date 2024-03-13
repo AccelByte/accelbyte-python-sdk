@@ -37,10 +37,7 @@ from ...models import ResponseError
 class AdminApproveStagingContent(Operation):
     """Approve or reject content (AdminApproveStagingContent)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:CONTENT:APPROVAL [CREATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CONTENT:APPROVAL [CREATE]
+    Approved content will shown to public player. Rejected content stays in staging area and couldn't be seen by other player
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/staging-contents/{contentId}/approve

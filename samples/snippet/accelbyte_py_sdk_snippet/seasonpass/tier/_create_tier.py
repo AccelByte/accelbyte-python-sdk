@@ -18,7 +18,7 @@ Definition: TierInput
     required_exp: int
     rewards: Dict[str, List[str]]
 
-Example: '{"index": 89, "quantity": 80, "tier": {"requiredExp": 41, "rewards": {"kNnmGrmg2HFgCiCt": ["2BJWJ8cLiaLDUFrE", "BEtATRRIyx0BOQFm", "Nom8dOZasC9c3SHm"], "nYS3a5nqizNrG4Yd": ["ljwR6oDiIHqYGTMB", "djGvlWW0kqu6mg8L", "BKlTgmGvC64mdYic"], "P4z2LA4KLb04uHAi": ["gBWgzP3fAbEx90xH", "FqJUkbUvXzhSlCob", "69HQhcB83Fi8YAxX"]}}}'
+Example: '{"index": 30, "quantity": 72, "tier": {"requiredExp": 94, "rewards": {"yr4RbOAfaQggwbM9": ["zZS9vg15REelQ10K", "B6KTd4pCKIIyGKGW", "RtvSqJDfZLLqaX8T"], "AdmBkbhaRCx2BySw": ["qFs6pTPwO63Q7ZM9", "4x9eCwP32Lh2sLzp", "7mzTdJLRRFDWNT3J"], "GLZtK7ANeGEBZ91c": ["uRKSYwmU5bRT4oRp", "iUJqrQN4AVMFXqci", "cVbTHBpU1rUN1ShZ"]}}}'
 """
 
 result, error = create_tier(

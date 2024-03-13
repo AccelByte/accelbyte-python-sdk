@@ -14,7 +14,7 @@ Definition: List[ADTOObjectForResettingUserStatItems]
 additional_data: Dict[str, Any]
 stat_code: str
 
-Example: '[{"additionalData": {"WYAhpdiE7zvOVCNp": {}, "TYhTcq3Jiw13aT08": {}, "8b36qmClR2qJT4mv": {}}, "statCode": "kGQalKxfmEqMF3ba"}, {"additionalData": {"U7Nq6G7xY2Guariz": {}, "QAST69rXGHxZlxgy": {}, "Fx0CTf3Gq7Pan2L5": {}}, "statCode": "rLfDQR0lebzDWEZk"}, {"additionalData": {"yQow5RI7fgsqbTAn": {}, "OTmFmhTPY9jtpS9a": {}, "B1HunEVwyxKSpixC": {}}, "statCode": "fea4ldExG5AabtUa"}]'
+Example: '[{"additionalData": {"WXbJFGM3CZKWtAer": {}, "JdQqXfmRNHob1hHI": {}, "eJJGd2dvcMVYLoaC": {}}, "statCode": "H19rV3jOX4WGq2Ih"}, {"additionalData": {"qxIGsJHXZaiinjeF": {}, "fygm958dI2C5p0YY": {}, "UQYUSx8in9Wr8HTH": {}}, "statCode": "g1Kpr9KptihoCpkx"}, {"additionalData": {"rOF8tqndRPbJ5wIL": {}, "Js8UUwD5RVq3YyZy": {}, "gLsuT6fHpktQjN9N": {}}, "statCode": "zUUvCb4mPiq0kiW1"}]'
 """
 
 result, error = bulk_reset_user_stat_item_values(

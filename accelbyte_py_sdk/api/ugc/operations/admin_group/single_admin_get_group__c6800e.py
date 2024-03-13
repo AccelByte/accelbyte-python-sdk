@@ -36,10 +36,7 @@ from ...models import ResponseError
 class SingleAdminGetGroupContents(Operation):
     """(Legacy) Get contents belong to a group (SingleAdminGetGroupContents)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get content belong to a group
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/groups/{groupId}/contents

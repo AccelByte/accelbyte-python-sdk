@@ -37,16 +37,11 @@ from ...models import ResponseError
 class UpdateContentShareCodeV2(Operation):
     """Update content share code (UpdateContentShareCodeV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE].
-
     This endpoint is used to modify the shareCode of a content. However, this operation is restricted by default and requires the above permission to be granted to the User role.
 
     `shareCode` format should follows:
     Max length: 7
     Available characters: abcdefhkpqrstuxyz
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE]
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/sharecode

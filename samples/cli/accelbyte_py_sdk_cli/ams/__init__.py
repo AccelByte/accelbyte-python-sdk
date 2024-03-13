@@ -34,6 +34,7 @@ from ._qo_s_regions_get import qo_s_regions_get
 from ._qo_s_regions_update import qo_s_regions_update
 from ._info_regions import info_regions
 from ._fleet_server_info import fleet_server_info
+from ._fleet_server_connection_info import fleet_server_connection_info
 from ._server_history import server_history
 from ._info_supported_instances import info_supported_instances
 from ._account_get import account_get
@@ -73,6 +74,7 @@ commands = [
     qo_s_regions_update,
     info_regions,
     fleet_server_info,
+    fleet_server_connection_info,
     server_history,
     info_supported_instances,
     account_get,

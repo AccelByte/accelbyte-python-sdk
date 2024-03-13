@@ -28,10 +28,10 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.entitlement_origin_sync_result import EntitlementOriginSyncResult
 from ..models.platform_reward import PlatformReward
 from ..models.revocation_result import RevocationResult
 from ..models.revoke_result import RevokeResult
-from ..models.entitlement_origin_sync_result import EntitlementOriginSyncResult
 
 
 class EntitlementOriginSyncStatusEnum(StrEnum):

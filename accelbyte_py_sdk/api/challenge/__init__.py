@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,8 @@ from .wrappers import admin_create_challenge
 from .wrappers import admin_create_challenge_async
 from .wrappers import admin_delete_challenge
 from .wrappers import admin_delete_challenge_async
+from .wrappers import admin_delete_tied_challenge
+from .wrappers import admin_delete_tied_challenge_async
 from .wrappers import admin_get_challenge
 from .wrappers import admin_get_challenge_async
 from .wrappers import admin_get_challenges

@@ -393,6 +393,7 @@ from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
 from ._request_target_token_response_v3 import request_target_token_response_v3
+from ._admin_list_invitation_histories_v4 import admin_list_invitation_histories_v4
 from ._admin_get_devices_by_user_v4 import admin_get_devices_by_user_v4
 from ._admin_get_banned_devices_v4 import admin_get_banned_devices_v4
 from ._admin_get_user_device_bans_v4 import admin_get_user_device_bans_v4
@@ -405,6 +406,12 @@ from ._admin_get_device_bans_v4 import admin_get_device_bans_v4
 from ._admin_decrypt_device_v4 import admin_decrypt_device_v4
 from ._admin_unban_device_v4 import admin_unban_device_v4
 from ._admin_get_users_by_device_v4 import admin_get_users_by_device_v4
+from ._admin_get_namespace_invitation_history_v4 import (
+    admin_get_namespace_invitation_history_v4,
+)
+from ._admin_get_namespace_user_invitation_history_v4 import (
+    admin_get_namespace_user_invitation_history_v4,
+)
 from ._admin_create_test_users_v4 import admin_create_test_users_v4
 from ._admin_create_user_v4 import admin_create_user_v4
 from ._admin_bulk_update_user_account_type_v4 import (
@@ -793,6 +800,7 @@ commands = [
     login_sso_client,
     logout_sso_client,
     request_target_token_response_v3,
+    admin_list_invitation_histories_v4,
     admin_get_devices_by_user_v4,
     admin_get_banned_devices_v4,
     admin_get_user_device_bans_v4,
@@ -805,6 +813,8 @@ commands = [
     admin_decrypt_device_v4,
     admin_unban_device_v4,
     admin_get_users_by_device_v4,
+    admin_get_namespace_invitation_history_v4,
+    admin_get_namespace_user_invitation_history_v4,
     admin_create_test_users_v4,
     admin_create_user_v4,
     admin_bulk_update_user_account_type_v4,

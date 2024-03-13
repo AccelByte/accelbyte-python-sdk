@@ -63,6 +63,7 @@ from ..models import OwnershipToken
 from ..models import RevokeUseCountRequest
 from ..models import StackableEntitlementInfo
 from ..models import TimedOwnership
+from ..models import UserEntitlementHistoryPagingSlicedResult
 from ..models import ValidationErrorEntity
 
 from ..operations.entitlement import ConsumeUserEntitlement
@@ -138,6 +139,8 @@ from ..operations.entitlement import PublicQueryUserEntitlementsByAppTypeAppType
 from ..operations.entitlement import PublicSellUserEntitlement
 from ..operations.entitlement import PublicSplitUserEntitlement
 from ..operations.entitlement import PublicTransferUserEntitlement
+from ..operations.entitlement import PublicUserEntitlementHistory
+from ..operations.entitlement import PublicUserEntitlementHistoryEntitlementClazzEnum
 from ..operations.entitlement import QueryEntitlements
 from ..operations.entitlement import (
     QueryEntitlementsAppTypeEnum,
@@ -179,7 +182,11 @@ from ..models import (
     EntitlementDecrementResultTypeEnum,
 )
 from ..models import EntitlementGrantOriginEnum, EntitlementGrantSourceEnum
-from ..models import EntitlementHistoryInfoActionEnum, EntitlementHistoryInfoOriginEnum
+from ..models import (
+    EntitlementHistoryInfoActionEnum,
+    EntitlementHistoryInfoClazzEnum,
+    EntitlementHistoryInfoOriginEnum,
+)
 from ..models import (
     EntitlementIfcAppTypeEnum,
     EntitlementIfcClazzEnum,
@@ -2445,8 +2452,20 @@ def grant_entitlements(
     """Grant entitlements to different users (grantEntitlements)
 
     Grant entitlements to multiple users, skipped granting will be treated as fail.
-    Other detail info:
 
+    Notes:
+
+    Support Item Types:
+
+      *  APP
+      *  INGAMEITEM
+      *  CODE
+      *  SUBSCRIPTION
+      *  MEDIA
+      *  OPTIONBOX
+      *  LOOTBOX
+
+    Other detail info:
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=4 (UPDATE)
       *  Returns : bulk grant entitlements result
 
@@ -2496,8 +2515,20 @@ async def grant_entitlements_async(
     """Grant entitlements to different users (grantEntitlements)
 
     Grant entitlements to multiple users, skipped granting will be treated as fail.
-    Other detail info:
 
+    Notes:
+
+    Support Item Types:
+
+      *  APP
+      *  INGAMEITEM
+      *  CODE
+      *  SUBSCRIPTION
+      *  MEDIA
+      *  OPTIONBOX
+      *  LOOTBOX
+
+    Other detail info:
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=4 (UPDATE)
       *  Returns : bulk grant entitlements result
 
@@ -2550,8 +2581,22 @@ def grant_user_entitlement(
     """Grant user entitlement (grantUserEntitlement)
 
     Grant user entitlement.
-    Other detail info:
 
+    Notes:
+
+    will skip un-supported item if input un-supported item types, please use /admin/namespaces/{namespace}/users/{userId}/fulfillment endpoint if want to fulfill other item type, like coin item
+
+    Support Item Types:
+
+      *  APP
+      *  INGAMEITEM
+      *  CODE
+      *  SUBSCRIPTION
+      *  MEDIA
+      *  OPTIONBOX
+      *  LOOTBOX
+
+    Other detail info:
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (CREATE)
       *  Returns : granted entitlement
 
@@ -2607,8 +2652,22 @@ async def grant_user_entitlement_async(
     """Grant user entitlement (grantUserEntitlement)
 
     Grant user entitlement.
-    Other detail info:
 
+    Notes:
+
+    will skip un-supported item if input un-supported item types, please use /admin/namespaces/{namespace}/users/{userId}/fulfillment endpoint if want to fulfill other item type, like coin item
+
+    Support Item Types:
+
+      *  APP
+      *  INGAMEITEM
+      *  CODE
+      *  SUBSCRIPTION
+      *  MEDIA
+      *  OPTIONBOX
+      *  LOOTBOX
+
+    Other detail info:
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (CREATE)
       *  Returns : granted entitlement
 
@@ -5446,6 +5505,152 @@ async def public_transfer_user_entitlement_async(
         entitlement_id=entitlement_id,
         user_id=user_id,
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicUserEntitlementHistory)
+def public_user_entitlement_history(
+    user_id: str,
+    end_date: Optional[str] = None,
+    entitlement_clazz: Optional[
+        Union[str, PublicUserEntitlementHistoryEntitlementClazzEnum]
+    ] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_date: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get user entitlements histories. (publicUserEntitlementHistory)
+
+    Get user entitlement history
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : user entitlement history list
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/history
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[UserEntitlementHistoryPagingSlicedResult] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUserEntitlementHistory.create(
+        user_id=user_id,
+        end_date=end_date,
+        entitlement_clazz=entitlement_clazz,
+        limit=limit,
+        offset=offset,
+        start_date=start_date,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUserEntitlementHistory)
+async def public_user_entitlement_history_async(
+    user_id: str,
+    end_date: Optional[str] = None,
+    entitlement_clazz: Optional[
+        Union[str, PublicUserEntitlementHistoryEntitlementClazzEnum]
+    ] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_date: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get user entitlements histories. (publicUserEntitlementHistory)
+
+    Get user entitlement history
+
+    Other detail info:
+
+      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
+      *  Returns : user entitlement history list
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/history
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        end_date: (endDate) OPTIONAL str in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_date: (startDate) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[UserEntitlementHistoryPagingSlicedResult] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUserEntitlementHistory.create(
+        user_id=user_id,
+        end_date=end_date,
+        entitlement_clazz=entitlement_clazz,
+        limit=limit,
+        offset=offset,
+        start_date=start_date,
         namespace=namespace,
     )
     return await run_request_async(

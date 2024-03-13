@@ -36,15 +36,7 @@ from ...models import ResponseErrorResponse
 class GetAllTimeLeaderboardRankingAdminV3(Operation):
     """Get all time leaderboard ranking data (GetAllTimeLeaderboardRankingAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in an all time leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/alltime

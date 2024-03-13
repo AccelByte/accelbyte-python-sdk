@@ -37,11 +37,7 @@ from ...models import ResponseError
 class AdminUpdateScreenshotsV2(Operation):
     """Update screenshot of content (AdminUpdateScreenshotsV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/screenshots

@@ -49,11 +49,7 @@ def admin_create_type(
 ):
     """Create types (AdminCreateType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
-    creates a new type and subtype
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+    Creates a new type and subtype
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types
@@ -103,11 +99,7 @@ async def admin_create_type_async(
 ):
     """Create types (AdminCreateType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
-    creates a new type and subtype
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+    Creates a new type and subtype
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types
@@ -157,12 +149,9 @@ def admin_delete_type(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete types (AdminDeleteType)
+    """Delete type (AdminDeleteType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+    Delete existing type
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types/{typeId}
@@ -208,12 +197,9 @@ async def admin_delete_type_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete types (AdminDeleteType)
+    """Delete type (AdminDeleteType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+    Delete existing type
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types/{typeId}
@@ -264,10 +250,7 @@ def admin_get_type(
 ):
     """Get types (AdminGetType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+    Get available types paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types
@@ -319,10 +302,7 @@ async def admin_get_type_async(
 ):
     """Get types (AdminGetType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+    Get available types paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types
@@ -376,11 +356,7 @@ def admin_update_type(
 ):
     """Update types (AdminUpdateType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
-    updates a type and subtype
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    Updates a type and subtype
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types/{typeId}
@@ -436,11 +412,7 @@ async def admin_update_type_async(
 ):
     """Update types (AdminUpdateType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
-    updates a type and subtype
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    Updates a type and subtype
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types/{typeId}

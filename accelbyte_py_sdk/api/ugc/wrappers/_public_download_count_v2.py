@@ -46,7 +46,7 @@ def public_add_download_count_v2(
 ):
     """Add unique download count to a content (PublicAddDownloadCountV2)
 
-    Requires valid user token
+    This endpoint can be used to count how many the ugc downloaded
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/contents/{contentId}/downloadcount
@@ -96,7 +96,7 @@ async def public_add_download_count_v2_async(
 ):
     """Add unique download count to a content (PublicAddDownloadCountV2)
 
-    Requires valid user token
+    This endpoint can be used to count how many the ugc downloaded
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/contents/{contentId}/downloadcount

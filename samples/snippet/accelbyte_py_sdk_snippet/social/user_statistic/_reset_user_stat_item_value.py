@@ -13,7 +13,7 @@ body:
 Definition: StatResetInfo
 additional_data: Dict[str, Any]
 
-Example: '{"additionalData": {"CCXFzsiDh885Gubm": {}, "sKRYBJamcnS2DTxS": {}, "LLUwW0PjXNQkzYyZ": {}}}'
+Example: '{"additionalData": {"WBSrnW3flSDpr1qm": {}, "2r1VxZKhNMK6PgXe": {}, "6r8eHU7CAhJ4zcfo": {}}}'
 """
 
 result, error = reset_user_stat_item_value(

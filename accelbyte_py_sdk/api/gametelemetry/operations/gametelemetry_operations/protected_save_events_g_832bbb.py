@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import HTTPValidationError
+from ...models import BaseErrorResponse
 from ...models import TelemetryBody
 
 
@@ -107,7 +107,11 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     Responses:
         204: No Content - (Successful Response)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        422: Unprocessable Entity - BaseErrorResponse (Unable to process request)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
+
+        507: Insufficient Storage - BaseErrorResponse (Insufficient space)
     """
 
     # region fields
@@ -228,12 +232,16 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HTTPValidationError, HttpResponse]]:
+    ) -> Tuple[None, Union[None, BaseErrorResponse, HttpResponse]]:
         """Parse the given response.
 
         204: No Content - (Successful Response)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        422: Unprocessable Entity - BaseErrorResponse (Unable to process request)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
+
+        507: Insufficient Storage - BaseErrorResponse (Insufficient space)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -251,7 +259,11 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
         if code == 204:
             return None, None
         if code == 422:
-            return None, HTTPValidationError.create_from_dict(content)
+            return None, BaseErrorResponse.create_from_dict(content)
+        if code == 500:
+            return None, BaseErrorResponse.create_from_dict(content)
+        if code == 507:
+            return None, BaseErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

@@ -37,11 +37,7 @@ from ...models import ResponseError
 class AdminUpdateTag(Operation):
     """Update tag (AdminUpdateTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
-    updates a tag
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    Update existing tag
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}

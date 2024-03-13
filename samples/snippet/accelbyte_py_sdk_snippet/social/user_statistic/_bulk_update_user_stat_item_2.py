@@ -16,7 +16,7 @@ stat_code: str
 update_strategy: str
 value: float
 
-Example: '[{"additionalData": {"H9eQr6gaKkFssVeC": {}, "UQu4jGyKYWvmtm0F": {}, "40lyzO0zviQISJeZ": {}}, "statCode": "eXqKs76G5IKs3KkP", "updateStrategy": "MAX", "value": 0.23765177662225345}, {"additionalData": {"8MDLwkJ2jAvisQXi": {}, "efCiVY4t2Ew6BkYP": {}, "NUdhbQBZpZq0o74A": {}}, "statCode": "f2tYO6Pa52YNhOYh", "updateStrategy": "OVERRIDE", "value": 0.08197610740533012}, {"additionalData": {"BX829YCKboZr0akf": {}, "rKg9n8FkVD5THiKm": {}, "BhQPpoxkd1kPla1Y": {}}, "statCode": "3h55CwKqYWUQt2pa", "updateStrategy": "INCREMENT", "value": 0.6471578321362721}]'
+Example: '[{"additionalData": {"2RqOupVAPA0q1e0q": {}, "Q2QI5Tt0XXdNOekY": {}, "POzfGaHuZNJLibdE": {}}, "statCode": "KMFpVY2IWWHvA55o", "updateStrategy": "INCREMENT", "value": 0.546588715048972}, {"additionalData": {"BVrdinGsoRw61zn5": {}, "pb4sUhNmUAxOkxCE": {}, "g9JAh37LYlxklKf5": {}}, "statCode": "tYNviy02hVmcOOOM", "updateStrategy": "MAX", "value": 0.4678510870935705}, {"additionalData": {"szJkhaQOwEl5xcL3": {}, "fjldTF7QUefvUd2A": {}, "x1CTDtmEjUgDVJ99": {}}, "statCode": "biCZeCVdeTwZAC6p", "updateStrategy": "MIN", "value": 0.6192244326130097}]'
 """
 
 result, error = bulk_update_user_stat_item_2(

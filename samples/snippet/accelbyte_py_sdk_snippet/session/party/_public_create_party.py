@@ -25,7 +25,7 @@ min_players: int
 text_chat: bool
 type_: str
 
-Example: '{"attributes": {"XwLnrpK8aVrtooSS": {}, "wiGP379mBYSPQgyP": {}, "t84VeS5vG1NEkA96": {}}, "configurationName": "gynwZDz5RK5eggm0", "inactiveTimeout": 84, "inviteTimeout": 64, "joinability": "3o3dfsHOlqHmDIwL", "maxPlayers": 40, "members": [{"ID": "hFK8HKUBODrv8JAm", "PlatformID": "egnXzFWrNifYOlSx", "PlatformUserID": "50ft9BEHCZoHOjU2"}, {"ID": "oD053u3DHqf7M4QJ", "PlatformID": "BuOPIcsCrqlaDAFA", "PlatformUserID": "aSwdoSTwC2Pr13A5"}, {"ID": "ZTx9AAfFAHXQ9nl1", "PlatformID": "O90zpavCZUC9fici", "PlatformUserID": "MRXt0SWbCw9zyFPk"}], "minPlayers": 3, "textChat": true, "type": "BL6v72xei6c3Qhwh"}'
+Example: '{"attributes": {"09BV6w3nKDQvTnB7": {}, "FdPZxy7gMVLOfccA": {}, "UkDecjzVJQeVJqRi": {}}, "configurationName": "ps8eWtpAEBp8KlSu", "inactiveTimeout": 88, "inviteTimeout": 26, "joinability": "hc6Ca10h4HR6zDWt", "maxPlayers": 58, "members": [{"ID": "ZIy3XLIuHFlnVmmS", "PlatformID": "AmzFRkj8u5kWCqgi", "PlatformUserID": "VKIhhvgmsEHCuwkx"}, {"ID": "lQaphpvLI8CgMH4g", "PlatformID": "f5AUCYkw5I31x5bg", "PlatformUserID": "Ya0geasZsz4nAThD"}, {"ID": "yzloSwDLgP1mByST", "PlatformID": "Zq12YbpAul7CNREc", "PlatformUserID": "Ko0naeEkByz32Zak"}], "minPlayers": 23, "textChat": false, "type": "EEubOXV08GBTaYLW"}'
 """
 
 result, error = public_create_party(

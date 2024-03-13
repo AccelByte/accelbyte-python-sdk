@@ -16,7 +16,7 @@ dry_run: bool
 fulfillment_url: str
 purchase_condition_url: str
 
-Example: '{"clazz": "MFgHn4WyI5nAlGKY", "dryRun": true, "fulfillmentUrl": "hekhWkliIXXL5sQj", "purchaseConditionUrl": "IIJImFBCKHrcgocw"}'
+Example: '{"clazz": "XUU7VLe009lUWt2k", "dryRun": true, "fulfillmentUrl": "OScKojVJLwtVL2hT", "purchaseConditionUrl": "ifI0l7LNRMpfzSnt"}'
 """
 
 result, error = update_item_type_config(

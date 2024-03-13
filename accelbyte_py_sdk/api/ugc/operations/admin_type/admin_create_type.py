@@ -37,11 +37,7 @@ from ...models import ResponseError
 class AdminCreateType(Operation):
     """Create types (AdminCreateType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
-    creates a new type and subtype
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+    Creates a new type and subtype
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types

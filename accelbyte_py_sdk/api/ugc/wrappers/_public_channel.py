@@ -51,10 +51,7 @@ def delete_channel(
 ):
     """Delete Channel (DeleteChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}
@@ -106,10 +103,7 @@ async def delete_channel_async(
 ):
     """Delete Channel (DeleteChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}
@@ -165,10 +159,7 @@ def get_channels(
 ):
     """Get Channels (GetChannels)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+    Get user channel paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
@@ -228,10 +219,7 @@ async def get_channels_async(
 ):
     """Get Channels (GetChannels)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+    Get user channel paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
@@ -291,10 +279,7 @@ def public_create_channel(
 ):
     """Create Channel (PublicCreateChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+    Create user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
@@ -346,10 +331,7 @@ async def public_create_channel_async(
 ):
     """Create Channel (PublicCreateChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+    Create user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels
@@ -404,10 +386,7 @@ def update_channel(
 ):
     """Update Channel (UpdateChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+    Update user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}
@@ -465,10 +444,7 @@ async def update_channel_async(
 ):
     """Update Channel (UpdateChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+    Update user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}

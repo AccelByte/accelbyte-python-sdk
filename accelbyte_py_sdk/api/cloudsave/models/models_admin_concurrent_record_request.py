@@ -46,6 +46,8 @@ class ModelsAdminConcurrentRecordRequest(Model):
 
         value: (value) REQUIRED Dict[str, Any]
 
+        tags: (tags) OPTIONAL List[str]
+
         ttl_config: (ttl_config) OPTIONAL ModelsTTLConfigDTO
     """
 
@@ -54,6 +56,7 @@ class ModelsAdminConcurrentRecordRequest(Model):
     set_by: Union[str, SetByEnum]  # REQUIRED
     updated_at: str  # REQUIRED
     value: Dict[str, Any]  # REQUIRED
+    tags: List[str]  # OPTIONAL
     ttl_config: ModelsTTLConfigDTO  # OPTIONAL
 
     # endregion fields
@@ -72,6 +75,10 @@ class ModelsAdminConcurrentRecordRequest(Model):
 
     def with_value(self, value: Dict[str, Any]) -> ModelsAdminConcurrentRecordRequest:
         self.value = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelsAdminConcurrentRecordRequest:
+        self.tags = value
         return self
 
     def with_ttl_config(
@@ -98,6 +105,10 @@ class ModelsAdminConcurrentRecordRequest(Model):
             result["value"] = {str(k0): v0 for k0, v0 in self.value.items()}
         elif include_empty:
             result["value"] = {}
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         if hasattr(self, "ttl_config"):
             result["ttl_config"] = self.ttl_config.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -114,6 +125,7 @@ class ModelsAdminConcurrentRecordRequest(Model):
         set_by: Union[str, SetByEnum],
         updated_at: str,
         value: Dict[str, Any],
+        tags: Optional[List[str]] = None,
         ttl_config: Optional[ModelsTTLConfigDTO] = None,
         **kwargs,
     ) -> ModelsAdminConcurrentRecordRequest:
@@ -121,6 +133,8 @@ class ModelsAdminConcurrentRecordRequest(Model):
         instance.set_by = set_by
         instance.updated_at = updated_at
         instance.value = value
+        if tags is not None:
+            instance.tags = tags
         if ttl_config is not None:
             instance.ttl_config = ttl_config
         return instance
@@ -144,6 +158,10 @@ class ModelsAdminConcurrentRecordRequest(Model):
             instance.value = {str(k0): v0 for k0, v0 in dict_["value"].items()}
         elif include_empty:
             instance.value = {}
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         if "ttl_config" in dict_ and dict_["ttl_config"] is not None:
             instance.ttl_config = ModelsTTLConfigDTO.create_from_dict(
                 dict_["ttl_config"], include_empty=include_empty
@@ -196,6 +214,7 @@ class ModelsAdminConcurrentRecordRequest(Model):
             "set_by": "set_by",
             "updatedAt": "updated_at",
             "value": "value",
+            "tags": "tags",
             "ttl_config": "ttl_config",
         }
 
@@ -205,6 +224,7 @@ class ModelsAdminConcurrentRecordRequest(Model):
             "set_by": True,
             "updatedAt": True,
             "value": True,
+            "tags": False,
             "ttl_config": False,
         }
 

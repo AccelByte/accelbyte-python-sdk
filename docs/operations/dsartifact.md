@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Ds Artifact Manager Index (1.10.1)
+# AccelByte Gaming Services Ds Artifact Manager Index (1.11.0)
 
 
 ## Operations

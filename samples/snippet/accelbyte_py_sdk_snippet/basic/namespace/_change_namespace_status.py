@@ -13,7 +13,7 @@ body:
 Definition: NamespaceStatusUpdate
 status: str
 
-Example: '{"status": "INACTIVE"}'
+Example: '{"status": "ACTIVE"}'
 """
 
 result, error = change_namespace_status(

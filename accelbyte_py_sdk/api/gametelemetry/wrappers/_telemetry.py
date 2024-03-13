@@ -29,7 +29,10 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import BaseErrorResponse
 from ..models import HTTPValidationError
+from ..models import ListBaseResponseStr
+from ..models import PagedResponseGetNamespaceEventResponse
 
 from ..operations.telemetry import (
     GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet,
@@ -91,7 +94,9 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
         user_id: (userId) OPTIONAL str in query
 
     Responses:
-        200: OK - (Successful Response)
+        200: OK - PagedResponseGetNamespaceEventResponse (Successful Response)
+
+        400: Bad Request - BaseErrorResponse (Bad Request)
 
         422: Unprocessable Entity - HTTPValidationError (Validation Error)
     """
@@ -168,7 +173,9 @@ async def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_asy
         user_id: (userId) OPTIONAL str in query
 
     Responses:
-        200: OK - (Successful Response)
+        200: OK - PagedResponseGetNamespaceEventResponse (Successful Response)
+
+        400: Bad Request - BaseErrorResponse (Bad Request)
 
         422: Unprocessable Entity - HTTPValidationError (Validation Error)
     """
@@ -216,7 +223,9 @@ def get_namespaces_game_telemetry_v1_admin_namespaces_get(
         securities: [COOKIE_AUTH] or [BEARER_AUTH]
 
     Responses:
-        200: OK - (Successful Response)
+        200: OK - ListBaseResponseStr (Successful Response)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
     """
     request = GetNamespacesGameTelemetryV1AdminNamespacesGet.create()
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -245,7 +254,9 @@ async def get_namespaces_game_telemetry_v1_admin_namespaces_get_async(
         securities: [COOKIE_AUTH] or [BEARER_AUTH]
 
     Responses:
-        200: OK - (Successful Response)
+        200: OK - ListBaseResponseStr (Successful Response)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
     """
     request = GetNamespacesGameTelemetryV1AdminNamespacesGet.create()
     return await run_request_async(

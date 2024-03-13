@@ -35,10 +35,7 @@ from ...models import ResponseError
 class AdminDeleteOfficialContentV2(Operation):
     """Delete official content (AdminDeleteOfficialContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing official content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}

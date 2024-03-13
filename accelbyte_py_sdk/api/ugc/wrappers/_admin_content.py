@@ -203,12 +203,9 @@ def admin_delete_content_screenshot(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete screenshots content (AdminDeleteContentScreenshot)
+    """Delete content's screenshot (AdminDeleteContentScreenshot)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing screenshot from a content
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots/{screenshotId}
@@ -262,12 +259,9 @@ async def admin_delete_content_screenshot_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete screenshots content (AdminDeleteContentScreenshot)
+    """Delete content's screenshot (AdminDeleteContentScreenshot)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing screenshot from a content
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots/{screenshotId}
@@ -2071,11 +2065,7 @@ def admin_update_screenshots(
 ):
     """Update screenshot of content (AdminUpdateScreenshots)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots
@@ -2131,11 +2121,7 @@ async def admin_update_screenshots_async(
 ):
     """Update screenshot of content (AdminUpdateScreenshots)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots
@@ -2465,17 +2451,13 @@ def admin_upload_content_screenshot(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upload screenshots for content (AdminUploadContentScreenshot)
+    """Upload screenshots for official content (AdminUploadContentScreenshot)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-    All request body are required except for contentType field.
-    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
-    If not specified, it will use fileExtension value.
-    Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    All request body are required except for *contentType* field.
+    *contentType* values is used to enforce the *Content-Type* header needed by the client to upload the content using the presigned URL.
+    If not specified, it will use *fileExtension* value.
+    Supported file extensions: *pjp*, *jpg*, *jpeg*, *jfif*, *bmp*, *png*.
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots
@@ -2529,17 +2511,13 @@ async def admin_upload_content_screenshot_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upload screenshots for content (AdminUploadContentScreenshot)
+    """Upload screenshots for official content (AdminUploadContentScreenshot)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-    All request body are required except for contentType field.
-    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
-    If not specified, it will use fileExtension value.
-    Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    All request body are required except for *contentType* field.
+    *contentType* values is used to enforce the *Content-Type* header needed by the client to upload the content using the presigned URL.
+    If not specified, it will use *fileExtension* value.
+    Supported file extensions: *pjp*, *jpg*, *jpeg*, *jfif*, *bmp*, *png*.
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots

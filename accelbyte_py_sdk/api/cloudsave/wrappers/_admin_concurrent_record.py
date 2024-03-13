@@ -104,11 +104,14 @@ def admin_put_admin_game_record_concurrent_handler_v1(
     Time format style: RFC3339
     2. value
     Json
+    3. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the admin record.
     **Request Body Example:**
     ```
     {
     "value": {},
-    "updatedAt": "2022-03-17T10:42:15.444Z"
+    "updatedAt": "2022-03-17T10:42:15.444Z",
+    "tags": ["tag1", "tag2"]
     }
     ```
     ## Optimistic Concurrency Control
@@ -217,11 +220,14 @@ async def admin_put_admin_game_record_concurrent_handler_v1_async(
     Time format style: RFC3339
     2. value
     Json
+    3. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the admin record.
     **Request Body Example:**
     ```
     {
     "value": {},
-    "updatedAt": "2022-03-17T10:42:15.444Z"
+    "updatedAt": "2022-03-17T10:42:15.444Z",
+    "tags": ["tag1", "tag2"]
     }
     ```
     ## Optimistic Concurrency Control
@@ -334,11 +340,14 @@ def admin_put_admin_player_record_concurrent_handler_v1(
     Time format style: RFC3339
     2. value
     Json
+    3. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the admin record.
     **Request Body Example:**
     ```
     {
     "value": {},
-    "updatedAt": "2022-03-17T10:42:15.444Z"
+    "updatedAt": "2022-03-17T10:42:15.444Z",
+    "tags": ["tag1", "tag2"]
     }
     ```
 
@@ -458,11 +467,14 @@ async def admin_put_admin_player_record_concurrent_handler_v1_async(
     Time format style: RFC3339
     2. value
     Json
+    3. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the admin record.
     **Request Body Example:**
     ```
     {
     "value": {},
-    "updatedAt": "2022-03-17T10:42:15.444Z"
+    "updatedAt": "2022-03-17T10:42:15.444Z",
+    "tags": ["tag1", "tag2"]
     }
     ```
 
@@ -586,12 +598,15 @@ def admin_put_game_record_concurrent_handler_v1(
     Time format style: RFC3339
     3. value
     Json
+    4. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
     **Request Body Example:**
     ```
     {
     "set_by": "SERVER",
     "value": {},
-    "updatedAt": "2022-03-17T10:42:15.444Z"
+    "updatedAt": "2022-03-17T10:42:15.444Z",
+    "tags": ["tag1", "tag2"]
     }
     ```
     ## Optimistic Concurrency Control
@@ -707,12 +722,15 @@ async def admin_put_game_record_concurrent_handler_v1_async(
     Time format style: RFC3339
     3. value
     Json
+    4. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
     **Request Body Example:**
     ```
     {
     "set_by": "SERVER",
     "value": {},
-    "updatedAt": "2022-03-17T10:42:15.444Z"
+    "updatedAt": "2022-03-17T10:42:15.444Z",
+    "tags": ["tag1", "tag2"]
     }
     ```
     ## Optimistic Concurrency Control
@@ -832,12 +850,15 @@ def admin_put_player_public_record_concurrent_handler_v1(
     Time format style: RFC3339
     3. value
     Json
+    4. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
     **Request Body Example:**
     ```
     {
     "set_by": "SERVER",
     "value": {},
-    "updatedAt": "2022-03-17T10:42:15.444Z"
+    "updatedAt": "2022-03-17T10:42:15.444Z",
+    "tags": ["tag1", "tag2"]
     }
     ```
 
@@ -964,12 +985,15 @@ async def admin_put_player_public_record_concurrent_handler_v1_async(
     Time format style: RFC3339
     3. value
     Json
+    4. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
     **Request Body Example:**
     ```
     {
     "set_by": "SERVER",
     "value": {},
-    "updatedAt": "2022-03-17T10:42:15.444Z"
+    "updatedAt": "2022-03-17T10:42:15.444Z",
+    "tags": ["tag1", "tag2"]
     }
     ```
 
@@ -1098,12 +1122,15 @@ def admin_put_player_record_concurrent_handler_v1(
     Time format style: RFC3339
     3. value
     Json
+    4. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
     **Request Body Example:**
     ```
     {
     "set_by": "SERVER",
     "value": {},
-    "updatedAt": "2022-03-17T10:42:15.444Z"
+    "updatedAt": "2022-03-17T10:42:15.444Z",
+    "tags": ["tag1", "tag2"]
     }
     ```
 
@@ -1230,12 +1257,15 @@ async def admin_put_player_record_concurrent_handler_v1_async(
     Time format style: RFC3339
     3. value
     Json
+    4. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
     **Request Body Example:**
     ```
     {
     "set_by": "SERVER",
     "value": {},
-    "updatedAt": "2022-03-17T10:42:15.444Z"
+    "updatedAt": "2022-03-17T10:42:15.444Z",
+    "tags": ["tag1", "tag2"]
     }
     ```
 

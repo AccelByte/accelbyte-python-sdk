@@ -13,7 +13,7 @@ code: str
 email_address: str
 new_password: str
 
-Example: '{"code": "rfVyXIa8kAgEXTqL", "emailAddress": "q5Uj5PeAQWkmTEZj", "newPassword": "R7V7sd3eE95dN761"}'
+Example: '{"code": "A7duI5Ig5KzXlMZr", "emailAddress": "U7GW2QbSTDaLCac5", "newPassword": "7Fvn46dxtAcRpwEC"}'
 """
 
 result, error = reset_password_v3(

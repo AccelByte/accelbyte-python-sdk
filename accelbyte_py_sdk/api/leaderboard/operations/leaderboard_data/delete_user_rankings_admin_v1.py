@@ -36,12 +36,8 @@ class DeleteUserRankingsAdminV1(Operation):
     """Delete user ranking across leaderboard(s) (deleteUserRankingsAdminV1)
 
     Delete user ranking across leaderboard
-    Required permission: ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Remove entry with provided userId from leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:USER [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}

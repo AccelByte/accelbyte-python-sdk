@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminGetContentByUserIDV2(Operation):
     """Get user's generated contents (AdminGetContentByUserIDV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get user cotent
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/contents

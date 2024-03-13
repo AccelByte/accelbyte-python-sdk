@@ -37,11 +37,7 @@ from ...models import ResponseError
 class SingleAdminUpdateGroup(Operation):
     """Update group (SingleAdminUpdateGroup)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
-    replace group name and contents with new ones.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [UPDATE]
+    Replace group name and contents with new ones.
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/groups/{groupId}

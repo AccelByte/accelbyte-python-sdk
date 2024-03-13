@@ -37,15 +37,7 @@ from ...models import ResponseErrorResponse
 class DeleteBulkLeaderboardConfigurationAdminV3(Operation):
     """delete bulk leaderboards. response body will contains failed leaderboard with the reason why it's failed to delete (deleteBulkLeaderboardConfigurationAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint delete multiple leaderboards configuration in one request
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/delete

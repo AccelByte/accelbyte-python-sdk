@@ -32,23 +32,24 @@ from ....core import same_doc_as
 from ..models import ModelsRecentPlayerQueryResponse
 from ..models import ResponseError
 
+from ..operations.recent_player import AdminGetRecentPlayer
 from ..operations.recent_player import PublicGetRecentPlayer
 
 
-@same_doc_as(PublicGetRecentPlayer)
-def public_get_recent_player(
+@same_doc_as(AdminGetRecentPlayer)
+def admin_get_recent_player(
     limit: Optional[int] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query recent player with given user id. (publicGetRecentPlayer)
+    """Query recent player with given user id. (adminGetRecentPlayer)
 
     Query recent player with given user id.
 
     Properties:
-        url: /session/v1/public/namespaces/{namespace}/recent-player
+        url: /session/v1/admin/namespaces/{namespace}/recent-player
 
         method: GET
 
@@ -81,9 +82,115 @@ def public_get_recent_player(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = PublicGetRecentPlayer.create(
+    request = AdminGetRecentPlayer.create(
         limit=limit,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetRecentPlayer)
+async def admin_get_recent_player_async(
+    limit: Optional[int] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query recent player with given user id. (adminGetRecentPlayer)
+
+    Query recent player with given user id.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/recent-player
+
+        method: GET
+
+        tags: ["Recent Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsRecentPlayerQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetRecentPlayer.create(
+        limit=limit,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetRecentPlayer)
+def public_get_recent_player(
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query recent player with given user id. (publicGetRecentPlayer)
+
+    Query recent player with given user id.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/recent-player
+
+        method: GET
+
+        tags: ["Recent Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsRecentPlayerQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetRecentPlayer.create(
+        limit=limit,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -92,7 +199,6 @@ def public_get_recent_player(
 @same_doc_as(PublicGetRecentPlayer)
 async def public_get_recent_player_async(
     limit: Optional[int] = None,
-    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -118,8 +224,6 @@ async def public_get_recent_player_async(
 
         limit: (limit) OPTIONAL int in query
 
-        user_id: (userId) OPTIONAL str in query
-
     Responses:
         200: OK - ModelsRecentPlayerQueryResponse (OK)
 
@@ -137,7 +241,6 @@ async def public_get_recent_player_async(
             return None, error
     request = PublicGetRecentPlayer.create(
         limit=limit,
-        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

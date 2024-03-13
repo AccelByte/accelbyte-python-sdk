@@ -37,10 +37,7 @@ from ...models import ResponseError
 class UpdateStagingContent(Operation):
     """Update staging content (UpdateStagingContent)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update staging content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId}

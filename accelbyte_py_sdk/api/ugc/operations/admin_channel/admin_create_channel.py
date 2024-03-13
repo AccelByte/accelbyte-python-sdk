@@ -37,10 +37,7 @@ from ...models import ResponseError
 class AdminCreateChannel(Operation):
     """Create Channel (AdminCreateChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+    Create official channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels

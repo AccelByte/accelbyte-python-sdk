@@ -36,7 +36,7 @@ from ...models import ResponseError
 class GetType(Operation):
     """Get types (GetType)
 
-    Requires valid user token
+    Get available types paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/types

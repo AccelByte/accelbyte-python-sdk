@@ -27,7 +27,7 @@ spam_chat_burst: int
 spam_chat_duration: int
 spam_mute_duration: int
 
-Example: '{"chatRateLimitBurst": 60, "chatRateLimitDuration": 47, "concurrentUsersLimit": 37, "enableClanChat": true, "enableManualTopicCreation": false, "enableProfanityFilter": true, "filterAppName": "4UkAp6HzdiUmtBXp", "filterParam": "2BXJXuWD7u4GRaPs", "filterType": "Ul4TLJ0w9LEx6S6o", "generalRateLimitBurst": 74, "generalRateLimitDuration": 75, "shardCapacityLimit": 56, "shardDefaultLimit": 45, "shardHardLimit": 90, "spamChatBurst": 54, "spamChatDuration": 72, "spamMuteDuration": 19}'
+Example: '{"chatRateLimitBurst": 90, "chatRateLimitDuration": 34, "concurrentUsersLimit": 96, "enableClanChat": true, "enableManualTopicCreation": false, "enableProfanityFilter": true, "filterAppName": "JpQ52OBfe0pVPSTA", "filterParam": "zXFiDweoz6kxD98U", "filterType": "R5XofaVjc1wZLBHN", "generalRateLimitBurst": 5, "generalRateLimitDuration": 27, "shardCapacityLimit": 45, "shardDefaultLimit": 49, "shardHardLimit": 63, "spamChatBurst": 97, "spamChatDuration": 24, "spamMuteDuration": 54}'
 """
 
 result, error = admin_update_config_v1(

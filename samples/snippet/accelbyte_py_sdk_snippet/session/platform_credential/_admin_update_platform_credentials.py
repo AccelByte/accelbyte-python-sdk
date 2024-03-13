@@ -16,7 +16,7 @@ Definition: ModelsPSNAppServerCredentials
     client_secret: str
     scope: str
 
-Example: '{"psn": {"clientId": "xMG9DYpk20Dmg41P", "clientSecret": "K1FItDYAXF5bGlg7", "scope": "M9Jn2i5ZErD7Vye2"}}'
+Example: '{"psn": {"clientId": "cPZulOvJuNZ65jmk", "clientSecret": "zjSyvhIdnzIa33Jg", "scope": "w0e06asC13BSmFUz"}}'
 """
 
 result, error = admin_update_platform_credentials(

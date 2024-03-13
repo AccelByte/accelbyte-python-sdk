@@ -37,11 +37,7 @@ from ...models import ResponseError
 class PublicUpdateContentFileLocation(Operation):
     """Update content file location (PublicUpdateContentFileLocation)
 
-    This endpoint should be used after calling generate upload url endpoint to commit the changes.
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    This endpoint should be used after calling generate upload url endpoint to commit the changes
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/fileLocation

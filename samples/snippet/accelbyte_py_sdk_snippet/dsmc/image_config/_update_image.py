@@ -18,7 +18,7 @@ patch_version: str
 persistent: bool
 version: str
 
-Example: '{"artifactPath": "YPerT79L8LWfIEG9", "coreDumpEnabled": true, "image": "ZY1tCjb57jj5kwWq", "imageReplicationsMap": {"KF6ukVfLAR3gWR98": {"failure_code": "PBDT7vZCyQOmH3xq", "region": "xGMm13WRqgkfSndw", "status": "4cxtvvLfamEoN2bC", "uri": "6nhhmZYJdDI3y6MH"}, "Tg1la0T8c1Q4K296": {"failure_code": "vtn9eNCR6dL7KTeF", "region": "zsP2duVRtGL8mwRU", "status": "A1pqMbWlaixOlUEp", "uri": "KymYsQUZxjaWBwTE"}, "GYMbDpIrUuekdATD": {"failure_code": "ciQPpm47kuZ3nNc3", "region": "r5YVqCd7jkutSNcq", "status": "PVMm5Vd98n6ysUN5", "uri": "uwpEeN3rF9birjsg"}}, "namespace": "vyIWVj7Pl8SB8xLb", "patchVersion": "LmrgCdDZkazAEavV", "persistent": false, "version": "Sx4UTb4NcbpiX28T"}'
+Example: '{"artifactPath": "q46eM9TdOHyBO9mD", "coreDumpEnabled": true, "image": "QT7dueAucIAaRJFH", "imageReplicationsMap": {"FSWbp61VmqWmEYdD": {"failure_code": "Gp6zk0o3J3hgjBt6", "region": "4AnL7b0eqy17iOUS", "status": "N2l5Xaq2V4H2IdNr", "uri": "0GXRjb6uEBdzu3dF"}, "oVybMzcm9nwEcbTu": {"failure_code": "001xASClG4wBkHdO", "region": "egtSMHzxIGZ9Km7W", "status": "mlcYeZxXnqzUNaJP", "uri": "yyFX9j1toAjOco4Q"}, "2LBoIxhvoCWV39lb": {"failure_code": "rYzvKEsHIipCkgHe", "region": "zPqgIFkHhXwzL6Jo", "status": "bCO7mrZ8I0ybcVt1", "uri": "9VAgJNe77LvNDmC5"}}, "namespace": "L7ZpyOQZZYEcaNrZ", "patchVersion": "g4vUcZy6NfOS6UY8", "persistent": true, "version": "k3SxLXMz5TcZc4J5"}'
 """
 
 result, error = update_image(

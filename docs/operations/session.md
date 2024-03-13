@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.13.14)
+# AccelByte Gaming Services Session Service Index (3.14.0)
 
 
 ## Operations
@@ -128,6 +128,7 @@
 ### Recent Player
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /session/v1/admin/namespaces/{namespace}/recent-player | GET | adminGetRecentPlayer | `false` | [AdminGetRecentPlayer](../../accelbyte_py_sdk/api/session/operations/recent_player/admin_get_recent_player.py) | [admin_get_recent_player](../../accelbyte_py_sdk/api/session/wrappers/_recent_player.py) | [accelbyte_py_sdk_cli session-admin-get-recent-player](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_recent_player.py) |
 | /session/v1/public/namespaces/{namespace}/recent-player | GET | publicGetRecentPlayer | `false` | [PublicGetRecentPlayer](../../accelbyte_py_sdk/api/session/operations/recent_player/public_get_recent_player.py) | [public_get_recent_player](../../accelbyte_py_sdk/api/session/wrappers/_recent_player.py) | [accelbyte_py_sdk_cli session-public-get-recent-player](../../samples/cli/accelbyte_py_sdk_cli/session/_public_get_recent_player.py) |
 
 ### Session Storage

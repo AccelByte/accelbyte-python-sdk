@@ -42,12 +42,15 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
     Properties:
         set_by: (set_by) REQUIRED Union[str, SetByEnum]
 
+        tags: (tags) OPTIONAL List[str]
+
         ttl_config: (ttl_config) OPTIONAL ModelsTTLConfigDTO
     """
 
     # region fields
 
     set_by: Union[str, SetByEnum]  # REQUIRED
+    tags: List[str]  # OPTIONAL
     ttl_config: ModelsTTLConfigDTO  # OPTIONAL
 
     # endregion fields
@@ -58,6 +61,10 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
         self, value: Union[str, SetByEnum]
     ) -> ModelsGameBinaryRecordMetadataRequest:
         self.set_by = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelsGameBinaryRecordMetadataRequest:
+        self.tags = value
         return self
 
     def with_ttl_config(
@@ -76,6 +83,10 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
             result["set_by"] = str(self.set_by)
         elif include_empty:
             result["set_by"] = Union[str, SetByEnum]()
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         if hasattr(self, "ttl_config"):
             result["ttl_config"] = self.ttl_config.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -90,11 +101,14 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
     def create(
         cls,
         set_by: Union[str, SetByEnum],
+        tags: Optional[List[str]] = None,
         ttl_config: Optional[ModelsTTLConfigDTO] = None,
         **kwargs,
     ) -> ModelsGameBinaryRecordMetadataRequest:
         instance = cls()
         instance.set_by = set_by
+        if tags is not None:
+            instance.tags = tags
         if ttl_config is not None:
             instance.ttl_config = ttl_config
         return instance
@@ -110,6 +124,10 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
             instance.set_by = Union[str, SetByEnum]()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         if "ttl_config" in dict_ and dict_["ttl_config"] is not None:
             instance.ttl_config = ModelsTTLConfigDTO.create_from_dict(
                 dict_["ttl_config"], include_empty=include_empty
@@ -160,6 +178,7 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "set_by": "set_by",
+            "tags": "tags",
             "ttl_config": "ttl_config",
         }
 
@@ -167,6 +186,7 @@ class ModelsGameBinaryRecordMetadataRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "set_by": True,
+            "tags": False,
             "ttl_config": False,
         }
 

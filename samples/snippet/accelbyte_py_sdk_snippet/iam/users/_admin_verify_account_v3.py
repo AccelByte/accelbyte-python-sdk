@@ -14,7 +14,7 @@ contact_type: str
 language_tag: str
 validate_only: bool
 
-Example: '{"Code": "POxcBlUlOEgU7C6d", "ContactType": "PVMsJZjrJ7VXp6aG", "LanguageTag": "9pntWNXBx9r2ATMP", "validateOnly": true}'
+Example: '{"Code": "kINpo0GuioMQUDDV", "ContactType": "TcDPxWcaHjqPSULZ", "LanguageTag": "eXisPYueRUNZC5Z5", "validateOnly": true}'
 """
 
 result, error = admin_verify_account_v3(

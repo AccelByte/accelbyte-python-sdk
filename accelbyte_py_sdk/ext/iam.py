@@ -170,6 +170,7 @@ from ..api.iam.models import ModelInputValidationDataPublic
 from ..api.iam.models import ModelInputValidationUpdatePayload
 from ..api.iam.models import ModelInputValidationsPublicResponse
 from ..api.iam.models import ModelInputValidationsResponse
+from ..api.iam.models import ModelInvitationHistoryResponse
 from ..api.iam.models import ModelInviteUserRequestV3
 from ..api.iam.models import ModelInviteUserRequestV4
 from ..api.iam.models import ModelInviteUserResponseV3
@@ -183,12 +184,14 @@ from ..api.iam.models import ModelListBulkUserBanResponseV3
 from ..api.iam.models import ModelListBulkUserPlatformsResponse
 from ..api.iam.models import ModelListBulkUserResponse
 from ..api.iam.models import ModelListEmailAddressRequest
+from ..api.iam.models import ModelListInvitationHistoriesV4Response
 from ..api.iam.models import ModelListRoleV4Response
 from ..api.iam.models import ModelListUserInformationResult
 from ..api.iam.models import ModelListUserResponseV3
 from ..api.iam.models import ModelListUserRolesV4Response
 from ..api.iam.models import ModelListValidUserIDResponseV4
 from ..api.iam.models import ModelLoginHistoriesResponse
+from ..api.iam.models import ModelNamespaceInvitationHistoryUserV4Response
 from ..api.iam.models import ModelNamespaceRoleRequest
 from ..api.iam.models import ModelPermissionDeleteRequest
 from ..api.iam.models import ModelPlatformDomainDeleteRequest
@@ -264,6 +267,7 @@ from ..api.iam.models import ModelUserIDsRequest
 from ..api.iam.models import ModelUserIdentityUpdateRequestV3
 from ..api.iam.models import ModelUserInfoResponse
 from ..api.iam.models import ModelUserInformation
+from ..api.iam.models import ModelUserInvitationHistory
 from ..api.iam.models import ModelUserInvitationV3
 from ..api.iam.models import ModelUserLoginHistoryResponse
 from ..api.iam.models import ModelUserPasswordUpdateRequest
@@ -1732,6 +1736,18 @@ def create_model_input_validations_response_example() -> ModelInputValidationsRe
     return instance
 
 
+def create_model_invitation_history_response_example() -> (
+    ModelInvitationHistoryResponse
+):
+    instance = ModelInvitationHistoryResponse()
+    instance.accepted = randomize("bool")
+    instance.created_at = randomize("date")
+    instance.inviter = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    return instance
+
+
 def create_model_invite_user_request_v3_example() -> ModelInviteUserRequestV3:
     instance = ModelInviteUserRequestV3()
     instance.email_addresses = [randomize()]
@@ -1857,6 +1873,15 @@ def create_model_list_email_address_request_example() -> ModelListEmailAddressRe
     return instance
 
 
+def create_model_list_invitation_histories_v4_response_example() -> (
+    ModelListInvitationHistoriesV4Response
+):
+    instance = ModelListInvitationHistoriesV4Response()
+    instance.data = [create_model_invitation_history_response_example()]
+    instance.paging = create_accountcommon_pagination_v3_example()
+    return instance
+
+
 def create_model_list_role_v4_response_example() -> ModelListRoleV4Response:
     instance = ModelListRoleV4Response()
     instance.data = [create_model_role_v4_response_example()]
@@ -1897,6 +1922,15 @@ def create_model_login_histories_response_example() -> ModelLoginHistoriesRespon
     instance = ModelLoginHistoriesResponse()
     instance.data = [create_model_user_login_history_response_example()]
     instance.paging = create_accountcommon_pagination_example()
+    return instance
+
+
+def create_model_namespace_invitation_history_user_v4_response_example() -> (
+    ModelNamespaceInvitationHistoryUserV4Response
+):
+    instance = ModelNamespaceInvitationHistoryUserV4Response()
+    instance.data = [create_model_user_invitation_history_example()]
+    instance.paging = create_accountcommon_pagination_v3_example()
     return instance
 
 
@@ -2685,6 +2719,14 @@ def create_model_user_information_example() -> ModelUserInformation:
     instance.phone_number = randomize()
     instance.username = randomize("slug")
     instance.xuid = randomize()
+    return instance
+
+
+def create_model_user_invitation_history_example() -> ModelUserInvitationHistory:
+    instance = ModelUserInvitationHistory()
+    instance.accepted = randomize("bool")
+    instance.invitee = randomize()
+    instance.updated_at = randomize("date")
     return instance
 
 

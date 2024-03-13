@@ -37,10 +37,7 @@ from ...models import ResponseError
 class AdminUpdateOfficialContentV2(Operation):
     """Update official content (AdminUpdateOfficialContentV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update existing official content
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}

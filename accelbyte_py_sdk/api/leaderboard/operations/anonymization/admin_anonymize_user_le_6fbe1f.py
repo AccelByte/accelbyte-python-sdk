@@ -37,15 +37,6 @@ class AdminAnonymizeUserLeaderboardAdminV1(Operation):
 
     This API will delete specified user leaderboard
 
-
-
-
-    Required permission
-    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
-
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/leaderboards
 

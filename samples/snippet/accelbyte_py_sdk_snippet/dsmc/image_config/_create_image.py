@@ -19,7 +19,7 @@ persistent: bool
 ulimit_file_size: int
 version: str
 
-Example: '{"artifactPath": "lneg8u4WXM9cFM7u", "coreDumpEnabled": false, "dockerPath": "7j8dLZCeLNjHGiJF", "image": "2e5ienk1xYQ49Xcd", "imageSize": 84, "namespace": "7Gy7vWfP4F3BXy9d", "persistent": true, "ulimitFileSize": 57, "version": "XVWz7XVq9qKOLA4r"}'
+Example: '{"artifactPath": "mwXTB4E9xvH8JzQw", "coreDumpEnabled": false, "dockerPath": "53WMwJAAwpjofwoz", "image": "Q1vn1aMR2zWC0Swo", "imageSize": 45, "namespace": "fivBINDlKGyJuLhY", "persistent": false, "ulimitFileSize": 31, "version": "SQTspiUIwHp8EP0r"}'
 """
 
 result, error = create_image(

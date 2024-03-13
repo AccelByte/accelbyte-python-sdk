@@ -35,10 +35,7 @@ from ...models import ResponseError
 class DeleteChannel(Operation):
     """Delete Channel (DeleteChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}

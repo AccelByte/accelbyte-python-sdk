@@ -36,10 +36,7 @@ from ...models import ResponseError
 class GetGroupContent(Operation):
     """(Legacy) Get contents belong to a group (GetGroupContent)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get content that belong to a group
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/contents

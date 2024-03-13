@@ -45,10 +45,13 @@ from ..models import ModelBulkAccountTypeUpdateRequestV4
 from ..models import ModelCheckValidUserIDRequestV4
 from ..models import ModelEmailUpdateRequestV4
 from ..models import ModelEnabledFactorsResponseV4
+from ..models import ModelInvitationHistoryResponse
 from ..models import ModelInviteUserRequestV4
 from ..models import ModelInviteUserResponseV3
+from ..models import ModelListInvitationHistoriesV4Response
 from ..models import ModelListUserRolesV4Response
 from ..models import ModelListValidUserIDResponseV4
+from ..models import ModelNamespaceInvitationHistoryUserV4Response
 from ..models import ModelPublicInviteUserRequestV4
 from ..models import ModelPublicUserUpdateRequestV3
 from ..models import ModelRemoveUserRoleV4Request
@@ -77,8 +80,11 @@ from ..operations.users_v4 import AdminGenerateMyBackupCodesV4
 from ..operations.users_v4 import AdminGetBackupCodesV4
 from ..operations.users_v4 import AdminGetMyBackupCodesV4
 from ..operations.users_v4 import AdminGetMyEnabledFactorsV4
+from ..operations.users_v4 import AdminGetNamespaceInvitationHistoryV4
+from ..operations.users_v4 import AdminGetNamespaceUserInvitationHistoryV4
 from ..operations.users_v4 import AdminInviteUserNewV4
 from ..operations.users_v4 import AdminInviteUserV4
+from ..operations.users_v4 import AdminListInvitationHistoriesV4
 from ..operations.users_v4 import AdminListUserRolesV4
 from ..operations.users_v4 import AdminMakeFactorMyDefaultV4
 from ..operations.users_v4 import AdminRemoveUserRoleV4
@@ -1935,6 +1941,228 @@ async def admin_get_my_enabled_factors_v4_async(
     )
 
 
+@same_doc_as(AdminGetNamespaceInvitationHistoryV4)
+def admin_get_namespace_invitation_history_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin Get Invitation History for specific namespace V4 (AdminGetNamespaceInvitationHistoryV4)
+
+    This endpoint is to Invitation Historiy for specific new studio namespace in multi tenant mode.
+    It will return error if the service multi tenant mode is set to false.
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/invitationHistories
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelInvitationHistoryResponse (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+
+        501: Not Implemented - RestErrorResponse (20024: not implemented)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetNamespaceInvitationHistoryV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetNamespaceInvitationHistoryV4)
+async def admin_get_namespace_invitation_history_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin Get Invitation History for specific namespace V4 (AdminGetNamespaceInvitationHistoryV4)
+
+    This endpoint is to Invitation Historiy for specific new studio namespace in multi tenant mode.
+    It will return error if the service multi tenant mode is set to false.
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/invitationHistories
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelInvitationHistoryResponse (Operation succeeded)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+
+        501: Not Implemented - RestErrorResponse (20024: not implemented)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetNamespaceInvitationHistoryV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetNamespaceUserInvitationHistoryV4)
+def admin_get_namespace_user_invitation_history_v4(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin Get Users Invitation History for specific namespace V4 (AdminGetNamespaceUserInvitationHistoryV4)
+
+    This endpoint is to Get list of users Invitation History for specific new studio namespace in multi tenant mode.
+    It will return error if the service multi tenant mode is set to false.
+    Accepted Query:
+    - offset
+    - limit
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/invitationHistories/users
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelNamespaceInvitationHistoryUserV4Response (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+
+        501: Not Implemented - RestErrorResponse (20024: not implemented)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetNamespaceUserInvitationHistoryV4.create(
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetNamespaceUserInvitationHistoryV4)
+async def admin_get_namespace_user_invitation_history_v4_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin Get Users Invitation History for specific namespace V4 (AdminGetNamespaceUserInvitationHistoryV4)
+
+    This endpoint is to Get list of users Invitation History for specific new studio namespace in multi tenant mode.
+    It will return error if the service multi tenant mode is set to false.
+    Accepted Query:
+    - offset
+    - limit
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/invitationHistories/users
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelNamespaceInvitationHistoryUserV4Response (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+
+        501: Not Implemented - RestErrorResponse (20024: not implemented)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetNamespaceUserInvitationHistoryV4.create(
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminInviteUserNewV4)
 def admin_invite_user_new_v4(
     body: ModelInviteUserRequestV4,
@@ -2179,6 +2407,122 @@ async def admin_invite_user_v4_async(
     """
     request = AdminInviteUserV4.create(
         body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminListInvitationHistoriesV4)
+def admin_list_invitation_histories_v4(
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    offset: Optional[int] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin List Invitation Histories V4 (AdminListInvitationHistoriesV4)
+
+    This endpoint is to list all Invitation Histories for new studio namespace in multi tenant mode.
+    It will return error if the service multi tenant mode is set to false.
+    Accepted Query:
+    - namespace
+    - offset
+    - limit
+
+    Properties:
+        url: /iam/v4/admin/invitationHistories
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        limit: (limit) OPTIONAL int in query
+
+        namespace: (namespace) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelListInvitationHistoriesV4Response (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+
+        501: Not Implemented - RestErrorResponse (20024: not implemented)
+    """
+    request = AdminListInvitationHistoriesV4.create(
+        limit=limit,
+        namespace=namespace,
+        offset=offset,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminListInvitationHistoriesV4)
+async def admin_list_invitation_histories_v4_async(
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    offset: Optional[int] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin List Invitation Histories V4 (AdminListInvitationHistoriesV4)
+
+    This endpoint is to list all Invitation Histories for new studio namespace in multi tenant mode.
+    It will return error if the service multi tenant mode is set to false.
+    Accepted Query:
+    - namespace
+    - offset
+    - limit
+
+    Properties:
+        url: /iam/v4/admin/invitationHistories
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        limit: (limit) OPTIONAL int in query
+
+        namespace: (namespace) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelListInvitationHistoriesV4Response (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+
+        501: Not Implemented - RestErrorResponse (20024: not implemented)
+    """
+    request = AdminListInvitationHistoriesV4.create(
+        limit=limit,
+        namespace=namespace,
+        offset=offset,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

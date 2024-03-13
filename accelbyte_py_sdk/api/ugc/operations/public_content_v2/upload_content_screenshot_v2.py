@@ -37,15 +37,10 @@ from ...models import ResponseError
 class UploadContentScreenshotV2(Operation):
     """Upload screenshots for content (UploadContentScreenshotV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-    All request body are required except for contentType field.
-    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
-    If not specified, it will use fileExtension value.
+    This endpoint used to request upload URL from content's screenshot.
+    If *contentType* is not specified, it will use *fileExtension* value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots

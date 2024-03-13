@@ -12,7 +12,7 @@ body:
 Definition: ModelGetBulkUserBansRequest
 bulk_user_id: List[str]
 
-Example: '{"bulkUserId": ["qW8zGETpwXBaznKy", "GBoqCGnEhLB9dh3G", "tzP6TpFWDhV1UK43"]}'
+Example: '{"bulkUserId": ["tvR7ciJe0XJvo12j", "W6Wo5IeAnuGzORRF", "Z4Lmrl7jaohhMD3h"]}'
 """
 
 result, error = admin_get_bulk_user_ban_v3(

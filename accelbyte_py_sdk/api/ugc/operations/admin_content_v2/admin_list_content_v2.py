@@ -36,25 +36,23 @@ from ...models import ResponseError
 class AdminListContentV2(Operation):
     """List contents (AdminListContentV2)
 
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses ( ) for priority. e.g:
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
 
-    `tags=red`
-    `tags=red&animal;`
-    `tags=red|animal`
-    `tags=red&animal;|wild`
-    `tags=red&(animal|wild)`
+    *tags=red*
+    *tags=red&animal;*
+    *tags=red|animal*
+    *tags=red&animal;|wild*
+    *tags=red&(animal|wild)*
 
     The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
 
-    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
-    Allowed character for operator: `&` `|` `(` `)`
+    Allowed character for operand: alphanumeric, underscore _ and dash -
 
-     Please note that value of tags query param should be URL encoded
+    Allowed character for operator: & | ( )
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+
+    **Please note that value of tags query param should be URL encoded**
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents

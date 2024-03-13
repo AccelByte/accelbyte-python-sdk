@@ -13,7 +13,7 @@ context: str
 email_address: str
 language_tag: str
 
-Example: '{"context": "KjkBa4vqsxIA5ibU", "emailAddress": "GJ2LEIkfUpGXVfi9", "languageTag": "WeWfLHFvcW4zFBHN"}'
+Example: '{"context": "5Eyr8J803lvhRprk", "emailAddress": "BqdzrGtgbMJyLtpc", "languageTag": "2Adw8HZVRiq8IWZt"}'
 """
 
 result, error = public_send_verification_code_v3(

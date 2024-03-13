@@ -36,10 +36,7 @@ from ...models import ResponseError
 class ListUserStagingContents(Operation):
     """List user staging contents (ListUserStagingContents)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List user staging contents
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents

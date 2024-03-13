@@ -39,6 +39,16 @@ class ActionEnum(StrEnum):
     UPDATE = "UPDATE"
 
 
+class ClazzEnum(StrEnum):
+    APP = "APP"
+    CODE = "CODE"
+    ENTITLEMENT = "ENTITLEMENT"
+    LOOTBOX = "LOOTBOX"
+    MEDIA = "MEDIA"
+    OPTIONBOX = "OPTIONBOX"
+    SUBSCRIPTION = "SUBSCRIPTION"
+
+
 class OriginEnum(StrEnum):
     EPIC = "Epic"
     GOOGLEPLAY = "GooglePlay"
@@ -71,9 +81,15 @@ class EntitlementHistoryInfo(Model):
 
         user_id: (userId) REQUIRED str
 
+        clazz: (clazz) OPTIONAL Union[str, ClazzEnum]
+
+        item_id: (itemId) OPTIONAL str
+
         origin: (origin) OPTIONAL Union[str, OriginEnum]
 
         reason: (reason) OPTIONAL str
+
+        sku: (sku) OPTIONAL str
 
         use_count: (useCount) OPTIONAL int
 
@@ -89,8 +105,11 @@ class EntitlementHistoryInfo(Model):
     operator: str  # REQUIRED
     updated_at: str  # REQUIRED
     user_id: str  # REQUIRED
+    clazz: Union[str, ClazzEnum]  # OPTIONAL
+    item_id: str  # OPTIONAL
     origin: Union[str, OriginEnum]  # OPTIONAL
     reason: str  # OPTIONAL
+    sku: str  # OPTIONAL
     use_count: int  # OPTIONAL
     use_count_change: int  # OPTIONAL
 
@@ -126,12 +145,24 @@ class EntitlementHistoryInfo(Model):
         self.user_id = value
         return self
 
+    def with_clazz(self, value: Union[str, ClazzEnum]) -> EntitlementHistoryInfo:
+        self.clazz = value
+        return self
+
+    def with_item_id(self, value: str) -> EntitlementHistoryInfo:
+        self.item_id = value
+        return self
+
     def with_origin(self, value: Union[str, OriginEnum]) -> EntitlementHistoryInfo:
         self.origin = value
         return self
 
     def with_reason(self, value: str) -> EntitlementHistoryInfo:
         self.reason = value
+        return self
+
+    def with_sku(self, value: str) -> EntitlementHistoryInfo:
+        self.sku = value
         return self
 
     def with_use_count(self, value: int) -> EntitlementHistoryInfo:
@@ -176,6 +207,14 @@ class EntitlementHistoryInfo(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "clazz"):
+            result["clazz"] = str(self.clazz)
+        elif include_empty:
+            result["clazz"] = Union[str, ClazzEnum]()
+        if hasattr(self, "item_id"):
+            result["itemId"] = str(self.item_id)
+        elif include_empty:
+            result["itemId"] = ""
         if hasattr(self, "origin"):
             result["origin"] = str(self.origin)
         elif include_empty:
@@ -184,6 +223,10 @@ class EntitlementHistoryInfo(Model):
             result["reason"] = str(self.reason)
         elif include_empty:
             result["reason"] = ""
+        if hasattr(self, "sku"):
+            result["sku"] = str(self.sku)
+        elif include_empty:
+            result["sku"] = ""
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
@@ -208,8 +251,11 @@ class EntitlementHistoryInfo(Model):
         operator: str,
         updated_at: str,
         user_id: str,
+        clazz: Optional[Union[str, ClazzEnum]] = None,
+        item_id: Optional[str] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
         reason: Optional[str] = None,
+        sku: Optional[str] = None,
         use_count: Optional[int] = None,
         use_count_change: Optional[int] = None,
         **kwargs,
@@ -222,10 +268,16 @@ class EntitlementHistoryInfo(Model):
         instance.operator = operator
         instance.updated_at = updated_at
         instance.user_id = user_id
+        if clazz is not None:
+            instance.clazz = clazz
+        if item_id is not None:
+            instance.item_id = item_id
         if origin is not None:
             instance.origin = origin
         if reason is not None:
             instance.reason = reason
+        if sku is not None:
+            instance.sku = sku
         if use_count is not None:
             instance.use_count = use_count
         if use_count_change is not None:
@@ -267,6 +319,14 @@ class EntitlementHistoryInfo(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "clazz" in dict_ and dict_["clazz"] is not None:
+            instance.clazz = str(dict_["clazz"])
+        elif include_empty:
+            instance.clazz = Union[str, ClazzEnum]()
+        if "itemId" in dict_ and dict_["itemId"] is not None:
+            instance.item_id = str(dict_["itemId"])
+        elif include_empty:
+            instance.item_id = ""
         if "origin" in dict_ and dict_["origin"] is not None:
             instance.origin = str(dict_["origin"])
         elif include_empty:
@@ -275,6 +335,10 @@ class EntitlementHistoryInfo(Model):
             instance.reason = str(dict_["reason"])
         elif include_empty:
             instance.reason = ""
+        if "sku" in dict_ and dict_["sku"] is not None:
+            instance.sku = str(dict_["sku"])
+        elif include_empty:
+            instance.sku = ""
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
@@ -333,8 +397,11 @@ class EntitlementHistoryInfo(Model):
             "operator": "operator",
             "updatedAt": "updated_at",
             "userId": "user_id",
+            "clazz": "clazz",
+            "itemId": "item_id",
             "origin": "origin",
             "reason": "reason",
+            "sku": "sku",
             "useCount": "use_count",
             "useCountChange": "use_count_change",
         }
@@ -349,8 +416,11 @@ class EntitlementHistoryInfo(Model):
             "operator": True,
             "updatedAt": True,
             "userId": True,
+            "clazz": False,
+            "itemId": False,
             "origin": False,
             "reason": False,
+            "sku": False,
             "useCount": False,
             "useCountChange": False,
         }
@@ -366,6 +436,15 @@ class EntitlementHistoryInfo(Model):
                 "REVOKE",
                 "SELL_BACK",
                 "UPDATE",
+            ],
+            "clazz": [
+                "APP",
+                "CODE",
+                "ENTITLEMENT",
+                "LOOTBOX",
+                "MEDIA",
+                "OPTIONBOX",
+                "SUBSCRIPTION",
             ],
             "origin": [
                 "Epic",

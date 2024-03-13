@@ -36,14 +36,10 @@ class DeleteUserRankingPublicV1(Operation):
     """Delete user ranking (deleteUserRankingPublicV1)
 
     Delete user ranking
-    Required permission: NAMESPACE:{namespace}:LEADERBOARD:USER:{userId} [DELETE]
 
     Remove entry with provided userId from leaderboard.
     If leaderboard with given leaderboard code not found, it will return http status not found (404).
     If the leaderboard is found and no entry found in it, it will still return success (204)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEADERBOARD:USER:{userId} [DELETE]
 
     Properties:
         url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/users/{userId}

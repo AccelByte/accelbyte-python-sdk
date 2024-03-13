@@ -12,7 +12,7 @@ body:
 Definition: ModelsAssignRoleToMemberRequestV1
 user_id: str
 
-Example: '{"userId": "ZWfTTf3wwfXvmLqd"}'
+Example: '{"userId": "lnHDx0ekwGpFup6W"}'
 """
 
 result, error = update_member_role_public_v1(

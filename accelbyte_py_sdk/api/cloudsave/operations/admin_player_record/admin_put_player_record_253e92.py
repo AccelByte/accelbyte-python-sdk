@@ -62,7 +62,7 @@ class AdminPutPlayerRecordsHandlerV1(Operation):
     Responses:
         200: OK - List[ModelsBulkUpdatePlayerRecordResponse] (OK)
 
-        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body | 18355: unable to marshal request body)
+        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
@@ -194,7 +194,7 @@ class AdminPutPlayerRecordsHandlerV1(Operation):
 
         200: OK - List[ModelsBulkUpdatePlayerRecordResponse] (OK)
 
-        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body | 18355: unable to marshal request body)
+        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 

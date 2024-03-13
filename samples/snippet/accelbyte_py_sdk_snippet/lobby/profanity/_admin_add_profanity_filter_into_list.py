@@ -14,7 +14,7 @@ Definition: ModelsAdminAddProfanityFilterIntoListRequest
 filter_: str
 note: str
 
-Example: '{"filter": "NmyOqfAqzU8aCVql", "note": "w2SvG4odlSgecRBB"}'
+Example: '{"filter": "87quKEkh6z3PPRVC", "note": "eeqkmyYidBRVpGPN"}'
 """
 
 result, error = admin_add_profanity_filter_into_list(

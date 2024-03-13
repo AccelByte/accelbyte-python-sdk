@@ -35,10 +35,7 @@ from ...models import ResponseError
 class AdminDeleteContentByShareCodeV2(Operation):
     """Delete content by share code (AdminDeleteContentByShareCodeV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete content by share code
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}

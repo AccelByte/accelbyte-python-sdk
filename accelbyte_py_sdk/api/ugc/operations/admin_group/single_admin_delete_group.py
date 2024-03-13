@@ -35,10 +35,7 @@ from ...models import ResponseError
 class SingleAdminDeleteGroup(Operation):
     """Delete group (SingleAdminDeleteGroup)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [DELETE]
+    Delete group by group ID
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/groups/{groupId}

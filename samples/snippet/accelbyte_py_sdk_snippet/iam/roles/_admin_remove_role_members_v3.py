@@ -15,7 +15,7 @@ Definition: List[AccountcommonRoleMemberV3]
     namespace: str
     user_id: str
 
-Example: '{"members": [{"displayName": "AgJBZ8LG2Kzp07tz", "namespace": "esfW5dALBZjBuLLb", "userId": "VHgaiLqKdRUPltaM"}, {"displayName": "J6tkZ0oM185WKaWg", "namespace": "TtSCQBH3p6RxmnFA", "userId": "djw0f1ozHBceDocK"}, {"displayName": "8WU1YNyem4S24c7j", "namespace": "TBwgHfrdmBvVCOth", "userId": "TQUrtiD5W1Oqj2zf"}]}'
+Example: '{"members": [{"displayName": "a8y9cdLIgMdRI5ur", "namespace": "gvFtLhy1hWbCXrgK", "userId": "zX0Q0xaDRtOHrPHC"}, {"displayName": "yg4wvF0FyMJS4Eyt", "namespace": "GCSqme3qIkuiY4Eb", "userId": "3xTUQC6Xmj2BRmkB"}, {"displayName": "FGNBRcDPWo990kyu", "namespace": "8FyQH2fJlVJbvEye", "userId": "b2oBlFHgPZGrOPCC"}]}'
 """
 
 result, error = admin_remove_role_members_v3(

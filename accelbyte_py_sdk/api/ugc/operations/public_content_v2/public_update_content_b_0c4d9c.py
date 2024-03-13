@@ -37,10 +37,7 @@ from ...models import ResponseError
 class PublicUpdateContentByShareCodeV2(Operation):
     """Update content to S3 bucket by share code (PublicUpdateContentByShareCodeV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update content by share code
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}

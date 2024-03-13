@@ -51,10 +51,7 @@ def delete_user_staging_content_by_id(
 ):
     """Delete user staging content by id (DeleteUserStagingContentByID)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete user staging content by ID
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId}
@@ -108,10 +105,7 @@ async def delete_user_staging_content_by_id_async(
 ):
     """Delete user staging content by id (DeleteUserStagingContentByID)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete user staging content by ID
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId}
@@ -167,10 +161,7 @@ def get_user_staging_content_by_id(
 ):
     """Get user staging content by id (GetUserStagingContentByID)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get user staging content by ID
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId}
@@ -224,10 +215,7 @@ async def get_user_staging_content_by_id_async(
 ):
     """Get user staging content by id (GetUserStagingContentByID)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    Get user staging content by ID
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId}
@@ -286,10 +274,7 @@ def list_user_staging_contents(
 ):
     """List user staging contents (ListUserStagingContents)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List user staging contents
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents
@@ -355,10 +340,7 @@ async def list_user_staging_contents_async(
 ):
     """List user staging contents (ListUserStagingContents)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List user staging contents
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents
@@ -424,10 +406,7 @@ def update_staging_content(
 ):
     """Update staging content (UpdateStagingContent)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update staging content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId}
@@ -487,10 +466,7 @@ async def update_staging_content_async(
 ):
     """Update staging content (UpdateStagingContent)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update staging content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId}

@@ -29,6 +29,9 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import BaseErrorResponse
+from ...models import ListBaseResponseStr
+
 
 class GetNamespacesGameTelemetryV1AdminNamespacesGet(Operation):
     """Get Namespaces (get_namespaces_game_telemetry_v1_admin_namespaces_get)
@@ -50,7 +53,9 @@ class GetNamespacesGameTelemetryV1AdminNamespacesGet(Operation):
         securities: [COOKIE_AUTH] or [BEARER_AUTH]
 
     Responses:
-        200: OK - (Successful Response)
+        200: OK - ListBaseResponseStr (Successful Response)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
     """
 
     # region fields
@@ -124,10 +129,14 @@ class GetNamespacesGameTelemetryV1AdminNamespacesGet(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, HttpResponse], Union[None, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, ListBaseResponseStr], Union[None, BaseErrorResponse, HttpResponse]
+    ]:
         """Parse the given response.
 
-        200: OK - (Successful Response)
+        200: OK - ListBaseResponseStr (Successful Response)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -143,7 +152,9 @@ class GetNamespacesGameTelemetryV1AdminNamespacesGet(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return ListBaseResponseStr.create_from_dict(content), None
+        if code == 500:
+            return None, BaseErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

@@ -15,7 +15,7 @@ assigned_namespaces: List[str]
 domain: str
 role_id: str
 
-Example: '{"affectedClientIDs": ["F6XNq8Uk8EwR940Z", "G3cvm4srNA7JEvRy", "oXLIR9QjVNcgF1mw"], "assignedNamespaces": ["nMZvA9dQbZwhdZX8", "1fBReO1m8zhVeXeq", "0P2iJORMhmmFzR7M"], "domain": "HEJ6uPTgOyGErHkG", "roleId": "78sU1d2P0HSyIcnF"}'
+Example: '{"affectedClientIDs": ["H86BkhDWzLDfoh94", "40gk88xnwM9yqf28", "q5SQYG10ayHHRyId"], "assignedNamespaces": ["F7OnzdUs6mrceWox", "gnV0Xe2YxjVc4MC7", "9RI6sC206gO6r4Sb"], "domain": "AFtAkjKM1Y0oGnc1", "roleId": "BfPI5bzzJli9TJ17"}'
 """
 
 result, error = update_third_party_login_platform_domain_v3(

@@ -19,7 +19,7 @@ Definition: List[ModelsUserPlatformInfo]
     user_id: str
 roles: List[str]
 
-Example: '{"crossplayEnabled": false, "currentPlatform": "hhatsAiKs2tEDaeQ", "data": {"3RLRukqjVXYqi1cu": {}, "gLnEIsfkL5xF48ru": {}, "EwvXRAPw4Y0bNRhz": {}}, "platforms": [{"name": "pZPbBI2Yjg7BkwZo", "userID": "JGFyZqEk3dlpcTiL"}, {"name": "0zizBPV4goLTFQfS", "userID": "xBoLHcyUlUYASKYK"}, {"name": "beT0EI1sZy72q4jA", "userID": "3RNJjM8fssVP5mY6"}], "roles": ["0sUimFsCI65sWQwS", "Pa0rkKIkXyVtXMkF", "5rHeCumGUflaQX4Z"]}'
+Example: '{"crossplayEnabled": false, "currentPlatform": "iS3XZef4zz5Yl5nj", "data": {"vsLDlMXOMzlZV64e": {}, "wMiez8RFjaRQRapr": {}, "cimODqX5QiYpKA1U": {}}, "platforms": [{"name": "dUmKONIZTvRQkqGL", "userID": "q982A8d5a0MJWAPQ"}, {"name": "I3HYFOamPPyTnUlu", "userID": "orRfmrLt7ExMDG0D"}, {"name": "GESKwZoqqFMCEbcK", "userID": "dMqijGghPHYvoyJ2"}], "roles": ["nElplE3SyFOBEics", "Pn6UsBJixDghkEy9", "wMVYljdNlBHZxXR6"]}'
 """
 
 result, error = public_store_player_attributes(

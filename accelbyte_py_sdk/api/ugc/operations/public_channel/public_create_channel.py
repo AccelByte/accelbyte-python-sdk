@@ -37,10 +37,7 @@ from ...models import ResponseError
 class PublicCreateChannel(Operation):
     """Create Channel (PublicCreateChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+    Create user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels

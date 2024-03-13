@@ -8,12 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.15.1"
+__version__ = "3.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .admin_bulk_get_player_r_82c596 import AdminBulkGetPlayerRecordsByUserIDsHandlerV1
+from .admin_bulk_put_player_r_27d5a1 import AdminBulkPutPlayerRecordsByKeyHandlerV1
 from .admin_delete_player_pub_f11fd7 import AdminDeletePlayerPublicRecordHandlerV1
 from .admin_delete_player_rec_168241 import AdminDeletePlayerRecordHandlerV1
 from .admin_get_player_public_f015b6 import AdminGetPlayerPublicRecordHandlerV1

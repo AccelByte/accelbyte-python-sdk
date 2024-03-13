@@ -67,8 +67,6 @@ class ModelChallengeResponse(Model):
 
         description: (description) REQUIRED str
 
-        end_date: (endDate) REQUIRED str
-
         goals_visibility: (goalsVisibility) REQUIRED Union[str, GoalsVisibilityEnum]
 
         name: (name) REQUIRED str
@@ -80,6 +78,10 @@ class ModelChallengeResponse(Model):
         status: (status) REQUIRED Union[str, StatusEnum]
 
         updated_at: (updatedAt) REQUIRED str
+
+        end_after: (endAfter) OPTIONAL int
+
+        end_date: (endDate) OPTIONAL str
     """
 
     # region fields
@@ -89,13 +91,14 @@ class ModelChallengeResponse(Model):
     code: str  # REQUIRED
     created_at: str  # REQUIRED
     description: str  # REQUIRED
-    end_date: str  # REQUIRED
     goals_visibility: Union[str, GoalsVisibilityEnum]  # REQUIRED
     name: str  # REQUIRED
     rotation: Union[str, RotationEnum]  # REQUIRED
     start_date: str  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
     updated_at: str  # REQUIRED
+    end_after: int  # OPTIONAL
+    end_date: str  # OPTIONAL
 
     # endregion fields
 
@@ -121,10 +124,6 @@ class ModelChallengeResponse(Model):
 
     def with_description(self, value: str) -> ModelChallengeResponse:
         self.description = value
-        return self
-
-    def with_end_date(self, value: str) -> ModelChallengeResponse:
-        self.end_date = value
         return self
 
     def with_goals_visibility(
@@ -153,6 +152,14 @@ class ModelChallengeResponse(Model):
         self.updated_at = value
         return self
 
+    def with_end_after(self, value: int) -> ModelChallengeResponse:
+        self.end_after = value
+        return self
+
+    def with_end_date(self, value: str) -> ModelChallengeResponse:
+        self.end_date = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -179,10 +186,6 @@ class ModelChallengeResponse(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
-        if hasattr(self, "end_date"):
-            result["endDate"] = str(self.end_date)
-        elif include_empty:
-            result["endDate"] = ""
         if hasattr(self, "goals_visibility"):
             result["goalsVisibility"] = str(self.goals_visibility)
         elif include_empty:
@@ -207,6 +210,14 @@ class ModelChallengeResponse(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "end_after"):
+            result["endAfter"] = int(self.end_after)
+        elif include_empty:
+            result["endAfter"] = 0
+        if hasattr(self, "end_date"):
+            result["endDate"] = str(self.end_date)
+        elif include_empty:
+            result["endDate"] = ""
         return result
 
     # endregion to methods
@@ -221,13 +232,14 @@ class ModelChallengeResponse(Model):
         code: str,
         created_at: str,
         description: str,
-        end_date: str,
         goals_visibility: Union[str, GoalsVisibilityEnum],
         name: str,
         rotation: Union[str, RotationEnum],
         start_date: str,
         status: Union[str, StatusEnum],
         updated_at: str,
+        end_after: Optional[int] = None,
+        end_date: Optional[str] = None,
         **kwargs,
     ) -> ModelChallengeResponse:
         instance = cls()
@@ -236,13 +248,16 @@ class ModelChallengeResponse(Model):
         instance.code = code
         instance.created_at = created_at
         instance.description = description
-        instance.end_date = end_date
         instance.goals_visibility = goals_visibility
         instance.name = name
         instance.rotation = rotation
         instance.start_date = start_date
         instance.status = status
         instance.updated_at = updated_at
+        if end_after is not None:
+            instance.end_after = end_after
+        if end_date is not None:
+            instance.end_date = end_date
         return instance
 
     @classmethod
@@ -275,10 +290,6 @@ class ModelChallengeResponse(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
-        if "endDate" in dict_ and dict_["endDate"] is not None:
-            instance.end_date = str(dict_["endDate"])
-        elif include_empty:
-            instance.end_date = ""
         if "goalsVisibility" in dict_ and dict_["goalsVisibility"] is not None:
             instance.goals_visibility = str(dict_["goalsVisibility"])
         elif include_empty:
@@ -303,6 +314,14 @@ class ModelChallengeResponse(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "endAfter" in dict_ and dict_["endAfter"] is not None:
+            instance.end_after = int(dict_["endAfter"])
+        elif include_empty:
+            instance.end_after = 0
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
+        elif include_empty:
+            instance.end_date = ""
         return instance
 
     @classmethod
@@ -351,13 +370,14 @@ class ModelChallengeResponse(Model):
             "code": "code",
             "createdAt": "created_at",
             "description": "description",
-            "endDate": "end_date",
             "goalsVisibility": "goals_visibility",
             "name": "name",
             "rotation": "rotation",
             "startDate": "start_date",
             "status": "status",
             "updatedAt": "updated_at",
+            "endAfter": "end_after",
+            "endDate": "end_date",
         }
 
     @staticmethod
@@ -368,13 +388,14 @@ class ModelChallengeResponse(Model):
             "code": True,
             "createdAt": True,
             "description": True,
-            "endDate": True,
             "goalsVisibility": True,
             "name": True,
             "rotation": True,
             "startDate": True,
             "status": True,
             "updatedAt": True,
+            "endAfter": False,
+            "endDate": False,
         }
 
     @staticmethod

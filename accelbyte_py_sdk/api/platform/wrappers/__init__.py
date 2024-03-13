@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.47.0"
+__version__ = "4.48.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -254,6 +254,8 @@ from ._entitlement import public_split_user_entitlement
 from ._entitlement import public_split_user_entitlement_async
 from ._entitlement import public_transfer_user_entitlement
 from ._entitlement import public_transfer_user_entitlement_async
+from ._entitlement import public_user_entitlement_history
+from ._entitlement import public_user_entitlement_history_async
 from ._entitlement import query_entitlements
 from ._entitlement import query_entitlements_async
 from ._entitlement import query_entitlements_1

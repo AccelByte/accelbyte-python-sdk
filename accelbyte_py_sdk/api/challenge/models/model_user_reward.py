@@ -32,6 +32,8 @@ class ModelUserReward(Model):
     """Model user reward (model.UserReward)
 
     Properties:
+        challenge_code: (challengeCode) REQUIRED str
+
         created_at: (createdAt) REQUIRED str
 
         goal_code: (goalCode) REQUIRED str
@@ -55,6 +57,7 @@ class ModelUserReward(Model):
 
     # region fields
 
+    challenge_code: str  # REQUIRED
     created_at: str  # REQUIRED
     goal_code: str  # REQUIRED
     id_: str  # REQUIRED
@@ -69,6 +72,10 @@ class ModelUserReward(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_challenge_code(self, value: str) -> ModelUserReward:
+        self.challenge_code = value
+        return self
 
     def with_created_at(self, value: str) -> ModelUserReward:
         self.created_at = value
@@ -116,6 +123,10 @@ class ModelUserReward(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "challenge_code"):
+            result["challengeCode"] = str(self.challenge_code)
+        elif include_empty:
+            result["challengeCode"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -165,6 +176,7 @@ class ModelUserReward(Model):
     @classmethod
     def create(
         cls,
+        challenge_code: str,
         created_at: str,
         goal_code: str,
         id_: str,
@@ -178,6 +190,7 @@ class ModelUserReward(Model):
         **kwargs,
     ) -> ModelUserReward:
         instance = cls()
+        instance.challenge_code = challenge_code
         instance.created_at = created_at
         instance.goal_code = goal_code
         instance.id_ = id_
@@ -197,6 +210,10 @@ class ModelUserReward(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "challengeCode" in dict_ and dict_["challengeCode"] is not None:
+            instance.challenge_code = str(dict_["challengeCode"])
+        elif include_empty:
+            instance.challenge_code = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -276,6 +293,7 @@ class ModelUserReward(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "challengeCode": "challenge_code",
             "createdAt": "created_at",
             "goalCode": "goal_code",
             "id": "id_",
@@ -291,6 +309,7 @@ class ModelUserReward(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "challengeCode": True,
             "createdAt": True,
             "goalCode": True,
             "id": True,

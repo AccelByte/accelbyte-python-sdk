@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.11.0"
+__version__ = "7.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -751,10 +751,16 @@ from .wrappers import admin_get_my_backup_codes_v4
 from .wrappers import admin_get_my_backup_codes_v4_async
 from .wrappers import admin_get_my_enabled_factors_v4
 from .wrappers import admin_get_my_enabled_factors_v4_async
+from .wrappers import admin_get_namespace_invitation_history_v4
+from .wrappers import admin_get_namespace_invitation_history_v4_async
+from .wrappers import admin_get_namespace_user_invitation_history_v4
+from .wrappers import admin_get_namespace_user_invitation_history_v4_async
 from .wrappers import admin_invite_user_new_v4
 from .wrappers import admin_invite_user_new_v4_async
 from .wrappers import admin_invite_user_v4
 from .wrappers import admin_invite_user_v4_async
+from .wrappers import admin_list_invitation_histories_v4
+from .wrappers import admin_list_invitation_histories_v4_async
 from .wrappers import admin_list_user_roles_v4
 from .wrappers import admin_list_user_roles_v4_async
 from .wrappers import admin_make_factor_my_default_v4

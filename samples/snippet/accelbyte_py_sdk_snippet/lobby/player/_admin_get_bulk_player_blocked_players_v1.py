@@ -12,7 +12,7 @@ body:
 Definition: ModelsGetBulkAllPlayerBlockedUsersRequest
 list_blocked_user_id: List[str]
 
-Example: '{"listBlockedUserId": ["3oevm9GEWnW9SwFC", "jecoHWpYEZsFktU8", "CHlkNEmhkksenGrZ"]}'
+Example: '{"listBlockedUserId": ["rh6hQsKhmEaCgnRr", "LoQcoFVMy4oTCBsa", "qT3T0GPtz9icu9JM"]}'
 """
 
 result, error = admin_get_bulk_player_blocked_players_v1(

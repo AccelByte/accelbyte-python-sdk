@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminGetConfigs(Operation):
     """Get configs (AdminGetConfigs)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+    Get config paginated
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/configs

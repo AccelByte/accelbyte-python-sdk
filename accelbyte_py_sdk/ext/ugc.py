@@ -426,9 +426,9 @@ def create_models_create_screenshot_request_item_example() -> (
     ModelsCreateScreenshotRequestItem
 ):
     instance = ModelsCreateScreenshotRequestItem()
-    instance.content_type = randomize()
     instance.description = randomize()
     instance.file_extension = randomize()
+    instance.content_type = randomize()
     return instance
 
 

@@ -13,7 +13,7 @@ Definition: ModelUpgradeHeadlessAccountV3Request
 email_address: str
 password: str
 
-Example: '{"emailAddress": "vrfoNsqtFvwC3viW", "password": "C5o1Zg5zp8bYeFjT"}'
+Example: '{"emailAddress": "cqOfm1uB5vnDgUS2", "password": "SSC5N4FDLIOL4vJl"}'
 """
 
 result, error = public_verify_headless_account_v3(

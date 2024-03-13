@@ -35,10 +35,7 @@ from ...models import ResponseError
 class AdminDeleteTag(Operation):
     """Delete tags (AdminDeleteTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+    Delete existing tag
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags/{tagId}

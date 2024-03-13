@@ -36,10 +36,7 @@ from ...models import ResponseError
 class GetGroup(Operation):
     """Get user's groups (GetGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+    Get user groups by group ID
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups/{groupId}

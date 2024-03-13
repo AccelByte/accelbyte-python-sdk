@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminGetContentByShareCodeV2(Operation):
     """Get content by sharecode (AdminGetContentByShareCodeV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+    Get content by share code
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/sharecodes/{shareCode}

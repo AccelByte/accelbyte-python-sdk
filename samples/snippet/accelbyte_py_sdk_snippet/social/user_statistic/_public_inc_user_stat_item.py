@@ -13,7 +13,7 @@ body:
 Definition: StatItemInc
 inc: float
 
-Example: '{"inc": 0.748178627007615}'
+Example: '{"inc": 0.3333069948184063}'
 """
 
 result, error = public_inc_user_stat_item(

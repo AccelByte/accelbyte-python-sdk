@@ -32,7 +32,7 @@ from ..models.reward_migration_result import RewardMigrationResult
 
 
 class EntitlementOriginSyncResult(Model):
-    """Entitlement origin sync result (entitlement origin sync result)
+    """entitlement origin sync result (EntitlementOriginSyncResult)
 
     Properties:
         reason: (reason) OPTIONAL str

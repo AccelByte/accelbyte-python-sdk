@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminGetType(Operation):
     """Get types (AdminGetType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+    Get available types paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types

@@ -11,7 +11,7 @@ body:
 Definition: ModelsPartyPUTLimitSizeRequest
 limit: int
 
-Example: '{"limit": 47}'
+Example: '{"limit": 99}'
 """
 
 result, error = public_set_party_limit_v1(

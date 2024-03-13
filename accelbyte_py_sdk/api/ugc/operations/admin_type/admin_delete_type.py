@@ -33,12 +33,9 @@ from ...models import ResponseError
 
 
 class AdminDeleteType(Operation):
-    """Delete types (AdminDeleteType)
+    """Delete type (AdminDeleteType)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [DELETE]
+    Delete existing type
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/types/{typeId}

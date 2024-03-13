@@ -13,7 +13,7 @@ body:
 Definition: BulkStatCycleRequest
 cycle_ids: List[str]
 
-Example: '{"cycleIds": ["62Qzn7bgER0B116e", "gFCtXq4iY6tXGcZi", "ySSio8a7Tr9eP4kG"]}'
+Example: '{"cycleIds": ["pWy6q9iOKdXWXcji", "ukviasjXa7tPIgqg", "dJ13B0WxFLLbFwgW"]}'
 """
 
 result, error = bulk_get_stat_cycle(

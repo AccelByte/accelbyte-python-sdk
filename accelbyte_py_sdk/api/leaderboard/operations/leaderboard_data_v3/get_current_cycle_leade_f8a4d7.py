@@ -36,15 +36,7 @@ from ...models import ResponseErrorResponse
 class GetCurrentCycleLeaderboardRankingAdminV3(Operation):
     """Get cycle leaderboard ranking data (GetCurrentCycleLeaderboardRankingAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in cycle leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/cycles/{cycleId}

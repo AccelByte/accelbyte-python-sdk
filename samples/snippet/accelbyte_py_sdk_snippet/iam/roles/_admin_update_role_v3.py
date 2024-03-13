@@ -14,7 +14,7 @@ deletable: bool
 is_wildcard: bool
 role_name: str
 
-Example: '{"deletable": true, "isWildcard": true, "roleName": "3yfkCFhc1RsVuZq9"}'
+Example: '{"deletable": false, "isWildcard": true, "roleName": "Jw24qICwpQyORhUu"}'
 """
 
 result, error = admin_update_role_v3(

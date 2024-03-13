@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminGetContentByChannelIDV2(Operation):
     """List contents specific to a channel (AdminGetContentByChannelIDV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List content specific to a channel
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents

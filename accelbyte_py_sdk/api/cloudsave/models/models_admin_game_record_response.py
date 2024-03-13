@@ -41,6 +41,8 @@ class ModelsAdminGameRecordResponse(Model):
         updated_at: (updated_at) REQUIRED str
 
         value: (value) REQUIRED Dict[str, Any]
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
@@ -50,6 +52,7 @@ class ModelsAdminGameRecordResponse(Model):
     namespace: str  # REQUIRED
     updated_at: str  # REQUIRED
     value: Dict[str, Any]  # REQUIRED
+    tags: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -73,6 +76,10 @@ class ModelsAdminGameRecordResponse(Model):
 
     def with_value(self, value: Dict[str, Any]) -> ModelsAdminGameRecordResponse:
         self.value = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelsAdminGameRecordResponse:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -101,6 +108,10 @@ class ModelsAdminGameRecordResponse(Model):
             result["value"] = {str(k0): v0 for k0, v0 in self.value.items()}
         elif include_empty:
             result["value"] = {}
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -115,6 +126,7 @@ class ModelsAdminGameRecordResponse(Model):
         namespace: str,
         updated_at: str,
         value: Dict[str, Any],
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelsAdminGameRecordResponse:
         instance = cls()
@@ -123,6 +135,8 @@ class ModelsAdminGameRecordResponse(Model):
         instance.namespace = namespace
         instance.updated_at = updated_at
         instance.value = value
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -152,6 +166,10 @@ class ModelsAdminGameRecordResponse(Model):
             instance.value = {str(k0): v0 for k0, v0 in dict_["value"].items()}
         elif include_empty:
             instance.value = {}
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @classmethod
@@ -200,6 +218,7 @@ class ModelsAdminGameRecordResponse(Model):
             "namespace": "namespace",
             "updated_at": "updated_at",
             "value": "value",
+            "tags": "tags",
         }
 
     @staticmethod
@@ -210,6 +229,7 @@ class ModelsAdminGameRecordResponse(Model):
             "namespace": True,
             "updated_at": True,
             "value": True,
+            "tags": False,
         }
 
     # endregion static methods

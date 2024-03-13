@@ -64,11 +64,6 @@ def create_leaderboard_configuration_admin_v1(
 ):
     """create new leaderboard (createLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-
-
-
     Fields :
 
 
@@ -99,9 +94,6 @@ def create_leaderboard_configuration_admin_v1(
 
 
       * Stat Code is related with statistic code in statistic service. (required).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards
@@ -153,11 +145,6 @@ async def create_leaderboard_configuration_admin_v1_async(
 ):
     """create new leaderboard (createLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-
-
-
     Fields :
 
 
@@ -188,9 +175,6 @@ async def create_leaderboard_configuration_admin_v1_async(
 
 
       * Stat Code is related with statistic code in statistic service. (required).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards
@@ -248,11 +232,6 @@ def create_leaderboard_configuration_public_v1(
 
 
 
-    Required permission 'NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-
-
-
      Fields :
 
 
@@ -283,9 +262,6 @@ def create_leaderboard_configuration_public_v1(
 
 
       * Stat Code is related with statistic code in statistic service. (required).
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards
@@ -341,11 +317,6 @@ async def create_leaderboard_configuration_public_v1_async(
 
 
 
-    Required permission 'NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-
-
-
      Fields :
 
 
@@ -376,9 +347,6 @@ async def create_leaderboard_configuration_public_v1_async(
 
 
       * Stat Code is related with statistic code in statistic service. (required).
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards
@@ -432,15 +400,7 @@ def delete_bulk_leaderboard_configuration_admin_v1(
 ):
     """delete bulk leaderboards. response body will contains failed leaderboard with the reason why it's failed to delete (deleteBulkLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint delete multiple leaderboards configuration in one request
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/delete
@@ -490,15 +450,7 @@ async def delete_bulk_leaderboard_configuration_admin_v1_async(
 ):
     """delete bulk leaderboards. response body will contains failed leaderboard with the reason why it's failed to delete (deleteBulkLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint delete multiple leaderboards configuration in one request
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/delete
@@ -550,15 +502,7 @@ def delete_leaderboard_configuration_admin_v1(
 ):
     """delete leaderboard by leaderboardCode (deleteLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint delete a leaderboard configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
@@ -610,15 +554,7 @@ async def delete_leaderboard_configuration_admin_v1_async(
 ):
     """delete leaderboard by leaderboardCode (deleteLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint delete a leaderboard configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
@@ -672,15 +608,7 @@ def get_leaderboard_configuration_admin_v1(
 ):
     """get leaderboard by leaderboardCode (getLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     This endpoint returns a leaderboard configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
@@ -732,15 +660,7 @@ async def get_leaderboard_configuration_admin_v1_async(
 ):
     """get leaderboard by leaderboardCode (getLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     This endpoint returns a leaderboard configuration
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
@@ -797,15 +717,7 @@ def get_leaderboard_configurations_admin_v1(
 ):
     """list all leaderboards by given namespace (getLeaderboardConfigurationsAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     This endpoint return all leaderboard configurations
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards
@@ -867,15 +779,7 @@ async def get_leaderboard_configurations_admin_v1_async(
 ):
     """list all leaderboards by given namespace (getLeaderboardConfigurationsAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     This endpoint return all leaderboard configurations
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards
@@ -1177,20 +1081,12 @@ def hard_delete_leaderboard_admin_v1(
 
 
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint will delete leaderboard configuration and its data
 
 
 
 
     Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard
@@ -1247,20 +1143,12 @@ async def hard_delete_leaderboard_admin_v1_async(
 
 
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]'
-
-
-
-
     This endpoint will delete leaderboard configuration and its data
 
 
 
 
     Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard
@@ -1315,11 +1203,6 @@ def update_leaderboard_configuration_admin_v1(
 ):
     """update leaderboard by leaderboardCode (updateLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]'
-
-
-
-
     Fields :
 
 
@@ -1346,9 +1229,6 @@ def update_leaderboard_configuration_admin_v1(
 
 
       * Reset time must be hours:minutes in 24 hours format e.g. 01:30, 10:30, 15:30, 23:15.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}
@@ -1406,11 +1286,6 @@ async def update_leaderboard_configuration_admin_v1_async(
 ):
     """update leaderboard by leaderboardCode (updateLeaderboardConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]'
-
-
-
-
     Fields :
 
 
@@ -1437,9 +1312,6 @@ async def update_leaderboard_configuration_admin_v1_async(
 
 
       * Reset time must be hours:minutes in 24 hours format e.g. 01:30, 10:30, 15:30, 23:15.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [UPDATE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}

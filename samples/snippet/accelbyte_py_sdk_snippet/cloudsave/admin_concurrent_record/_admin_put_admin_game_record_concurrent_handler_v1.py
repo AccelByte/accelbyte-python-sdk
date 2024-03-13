@@ -11,10 +11,11 @@ from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 """
 body:
 Definition: ModelsAdminGameConcurrentRecordRequest
+tags: List[str]
 updated_at: str
 value: Dict[str, Any]
 
-Example: '{"updatedAt": "ZQXXhhXqXWUjMCYf", "value": {"0u8eU4JGpVCOAIt0": {}, "qJOGR6fAHN1KZliW": {}, "GrhwiWf1jrp97Ka0": {}}}'
+Example: '{"tags": ["pKe6ivs3Wdc57Aeo", "J1B81zFxy9kjXFtk", "52CdfLjKbdthwOzp"], "updatedAt": "YaPCw9obinMwNUmk", "value": {"nnnGPKS9yKCH52SN": {}, "lgKj7Ciojwt9h3b8": {}, "WwXilV8AKzYasA2B": {}}}'
 """
 
 result, error = admin_put_admin_game_record_concurrent_handler_v1(

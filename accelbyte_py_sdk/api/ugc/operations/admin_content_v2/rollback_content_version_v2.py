@@ -36,11 +36,7 @@ from ...models import ResponseError
 class RollbackContentVersionV2(Operation):
     """Rollback content's payload version (RollbackContentVersionV2)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-    Rollback content's payload to specified version.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Rollback content's payload to specified version
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}

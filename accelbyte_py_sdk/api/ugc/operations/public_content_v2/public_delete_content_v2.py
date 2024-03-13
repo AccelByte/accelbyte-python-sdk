@@ -35,10 +35,7 @@ from ...models import ResponseError
 class PublicDeleteContentV2(Operation):
     """Delete content (PublicDeleteContentV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}

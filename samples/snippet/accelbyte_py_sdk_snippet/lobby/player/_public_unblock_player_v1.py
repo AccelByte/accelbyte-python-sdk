@@ -11,7 +11,7 @@ body:
 Definition: ModelsUnblockPlayerRequest
 user_id: str
 
-Example: '{"userId": "I63dUr21CSF00U1N"}'
+Example: '{"userId": "jVMnGONx1a0ofswd"}'
 """
 
 result, error = public_unblock_player_v1(

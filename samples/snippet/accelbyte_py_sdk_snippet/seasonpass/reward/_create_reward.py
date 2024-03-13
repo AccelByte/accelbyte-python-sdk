@@ -28,7 +28,7 @@ item_id: str
 quantity: int
 type_: str
 
-Example: '{"code": "69zggJ7BMZvyyR9k", "currency": {"currencyCode": "85AeJXeK8a6oi433", "namespace": "5T05laU511FCO6eL"}, "image": {"as": "xTJEEiykAn9VAcTv", "caption": "vgYirwCBWE3nImdB", "height": 86, "imageUrl": "iHRgdmTylGLSkuah", "smallImageUrl": "qZtw9g2TCMNV4KrU", "width": 63}, "itemId": "73yL1aTvaaI1EQL3", "quantity": 44, "type": "CURRENCY"}'
+Example: '{"code": "5MjHDukkuMv861iT", "currency": {"currencyCode": "TkLQdg2vb9Xmmnqk", "namespace": "tZ3W6riNEX9IpguU"}, "image": {"as": "PxkKKHl84r1Y6exT", "caption": "4zNNqqdDYuTAYi0V", "height": 31, "imageUrl": "vSDe9eZhwx8636jF", "smallImageUrl": "pLp27CQRQUFCaATG", "width": 84}, "itemId": "kQDSuDcXgOJSHYoC", "quantity": 18, "type": "CURRENCY"}'
 """
 
 result, error = create_reward(

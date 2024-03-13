@@ -12,7 +12,7 @@ body:
 Definition: ModelsHideContentRequest
 is_hidden: bool
 
-Example: '{"isHidden": true}'
+Example: '{"isHidden": false}'
 """
 
 result, error = admin_hide_user_content(

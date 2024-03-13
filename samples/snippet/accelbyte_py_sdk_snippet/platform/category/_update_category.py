@@ -13,7 +13,7 @@ body:
 Definition: CategoryUpdate
 localization_display_names: Dict[str, str]
 
-Example: '{"localizationDisplayNames": {"WKtqTuD1CmQ7hB1p": "2t2YrfbGLuc5775f", "ab5bJurWfBBaOBzm": "t1lwGjeVqkKhHT2a", "8G98pu0sqhqaq8gF": "dHl8QLCYKEZEiGha"}}'
+Example: '{"localizationDisplayNames": {"i1smA7J2cxSDH3ll": "lroRDahuDauOP2J3", "mvDW6dLbV1DWAftJ": "mWfmVunyqBXUOMyP", "uFU5S1jJrslYKjPG": "c5vDQujeFPPZqNZ1"}}'
 """
 
 result, error = update_category(

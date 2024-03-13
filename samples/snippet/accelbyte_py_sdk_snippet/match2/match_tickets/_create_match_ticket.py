@@ -15,7 +15,7 @@ latencies: Dict[str, int]
 match_pool: str
 session_id: str
 
-Example: '{"attributes": {"vX2NSYTDXCgOAUNr": {}, "VraqBAN3i4jXtqWR": {}, "fvm8FcVQZSh7p7mB": {}}, "latencies": {"eMNvT2BrRLRD5QVt": 9, "Z80D0UNGUBVebZM1": 36, "6NUBPBptCBteaYIi": 12}, "matchPool": "Ehc4fU9YtaERskAC", "sessionID": "ipKBGNn771YuWZGe"}'
+Example: '{"attributes": {"VbXHxDTxDghsJBpt": {}, "lPI0yRlOcdHuaLM7": {}, "8wwcINc932HEa7i3": {}}, "latencies": {"TbwlPdLrzWksUH9f": 51, "MbK1Lv133OSuOMAY": 8, "7H9LbwNHmo8kLuO1": 80}, "matchPool": "CrbJnpSf46e60BI2", "sessionID": "UWCX4kYfGUS15esT"}'
 """
 
 result, error = create_match_ticket(

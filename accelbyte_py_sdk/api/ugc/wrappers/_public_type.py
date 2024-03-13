@@ -45,7 +45,7 @@ def get_type(
 ):
     """Get types (GetType)
 
-    Requires valid user token
+    Get available types paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/types
@@ -97,7 +97,7 @@ async def get_type_async(
 ):
     """Get types (GetType)
 
-    Requires valid user token
+    Get available types paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/types

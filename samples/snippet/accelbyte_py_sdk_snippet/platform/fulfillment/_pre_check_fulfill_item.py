@@ -14,7 +14,7 @@ item_id: str
 item_sku: str
 quantity: int
 
-Example: '{"itemId": "oELHyJMkSB3Zbsaz", "itemSku": "dPrBuGNbOZbGunfn", "quantity": 72}'
+Example: '{"itemId": "lCTIc3zngrmBiR99", "itemSku": "blTknAysnuSTcBKQ", "quantity": 90}'
 """
 
 result, error = pre_check_fulfill_item(

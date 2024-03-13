@@ -53,10 +53,7 @@ def admin_create_channel(
 ):
     """Create Channel (AdminCreateChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+    Create official channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels
@@ -106,10 +103,7 @@ async def admin_create_channel_async(
 ):
     """Create Channel (AdminCreateChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [CREATE]
+    Create official channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels
@@ -162,10 +156,7 @@ def admin_delete_channel(
 ):
     """Delete Channel (AdminDeleteChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete user channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}
@@ -217,10 +208,7 @@ async def admin_delete_channel_async(
 ):
     """Delete Channel (AdminDeleteChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete user channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}
@@ -276,10 +264,7 @@ def admin_get_channel(
 ):
     """Get Channels (AdminGetChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+    Get user channel paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels
@@ -339,10 +324,7 @@ async def admin_get_channel_async(
 ):
     """Get Channels (AdminGetChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+    Get user channel paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels
@@ -403,10 +385,7 @@ def admin_update_channel(
 ):
     """Update Channel (AdminUpdateChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+    Update user channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}
@@ -464,10 +443,7 @@ async def admin_update_channel_async(
 ):
     """Update Channel (AdminUpdateChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+    Update user channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}
@@ -525,10 +501,7 @@ def single_admin_delete_channel(
 ):
     """Delete Channel (SingleAdminDeleteChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete official channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}
@@ -576,10 +549,7 @@ async def single_admin_delete_channel_async(
 ):
     """Delete Channel (SingleAdminDeleteChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [DELETE]
+    Delete official channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}
@@ -630,10 +600,7 @@ def single_admin_get_channel(
 ):
     """Get Channels (SingleAdminGetChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+    Get official channel paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels
@@ -685,10 +652,7 @@ async def single_admin_get_channel_async(
 ):
     """Get Channels (SingleAdminGetChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+    Get official channel paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels
@@ -742,10 +706,7 @@ def single_admin_update_channel(
 ):
     """Update Channel (SingleAdminUpdateChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+    Update official channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}
@@ -799,10 +760,7 @@ async def single_admin_update_channel_async(
 ):
     """Update Channel (SingleAdminUpdateChannel)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+    Update official channel
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}

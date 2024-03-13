@@ -12,7 +12,7 @@ body:
 Definition: ModelsGetGroupListRequestV2
 group_i_ds: List[str]
 
-Example: '{"groupIDs": ["3sX4nDxVemEHwmR2", "zCmMxYGmSFuSastN", "hmocmCM797BbjuOW"]}'
+Example: '{"groupIDs": ["iOnGlBbKMS3O9WzM", "ENRpbihNL3Rl7cGJ", "0vIK2yKxknHAatCm"]}'
 """
 
 result, error = get_list_group_by_i_ds_v2(

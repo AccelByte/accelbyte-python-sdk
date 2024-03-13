@@ -13,7 +13,7 @@ Definition: ModelBanUpdateRequest
 enabled: bool
 skip_notif: bool
 
-Example: '{"enabled": true, "skipNotif": true}'
+Example: '{"enabled": false, "skipNotif": true}'
 """
 
 result, error = admin_update_user_ban_v3(

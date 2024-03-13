@@ -1,3 +1,14 @@
+<a name="v0.62.0"></a>
+## [v0.62.0]
+### chore
+- **api:** add challenge service spec
+- **api:** generate challenge service package
+### test
+- **integration:** add challenge integration tests
+### ci
+- **:** switch to extend-builder-ci
+
+
 <a name="v0.61.0"></a>
 ## [v0.61.0]
 ### chore

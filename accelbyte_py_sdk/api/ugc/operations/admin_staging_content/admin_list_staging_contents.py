@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminListStagingContents(Operation):
     """List staging contents (AdminListStagingContents)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
+    List content that need admin's approval
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/staging-contents

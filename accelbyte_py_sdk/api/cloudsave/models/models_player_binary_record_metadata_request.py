@@ -41,12 +41,15 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
         is_public: (is_public) OPTIONAL bool
 
         set_by: (set_by) OPTIONAL Union[str, SetByEnum]
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
 
     is_public: bool  # OPTIONAL
     set_by: Union[str, SetByEnum]  # OPTIONAL
+    tags: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -60,6 +63,10 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
         self, value: Union[str, SetByEnum]
     ) -> ModelsPlayerBinaryRecordMetadataRequest:
         self.set_by = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelsPlayerBinaryRecordMetadataRequest:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -76,6 +83,10 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
             result["set_by"] = str(self.set_by)
         elif include_empty:
             result["set_by"] = Union[str, SetByEnum]()
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -87,6 +98,7 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
         cls,
         is_public: Optional[bool] = None,
         set_by: Optional[Union[str, SetByEnum]] = None,
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelsPlayerBinaryRecordMetadataRequest:
         instance = cls()
@@ -94,6 +106,8 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
             instance.is_public = is_public
         if set_by is not None:
             instance.set_by = set_by
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -111,6 +125,10 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
             instance.set_by = str(dict_["set_by"])
         elif include_empty:
             instance.set_by = Union[str, SetByEnum]()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @classmethod
@@ -156,6 +174,7 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
         return {
             "is_public": "is_public",
             "set_by": "set_by",
+            "tags": "tags",
         }
 
     @staticmethod
@@ -163,6 +182,7 @@ class ModelsPlayerBinaryRecordMetadataRequest(Model):
         return {
             "is_public": False,
             "set_by": False,
+            "tags": False,
         }
 
     @staticmethod

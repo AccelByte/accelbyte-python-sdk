@@ -49,6 +49,7 @@ from ._admin_query_parties import admin_query_parties
 from ._admin_get_platform_credentials import admin_get_platform_credentials
 from ._admin_update_platform_credentials import admin_update_platform_credentials
 from ._admin_delete_platform_credentials import admin_delete_platform_credentials
+from ._admin_get_recent_player import admin_get_recent_player
 from ._admin_read_session_storage import admin_read_session_storage
 from ._admin_delete_user_session_storage import admin_delete_user_session_storage
 from ._admin_read_user_session_storage import admin_read_user_session_storage
@@ -136,6 +137,7 @@ commands = [
     admin_get_platform_credentials,
     admin_update_platform_credentials,
     admin_delete_platform_credentials,
+    admin_get_recent_player,
     admin_read_session_storage,
     admin_delete_user_session_storage,
     admin_read_user_session_storage,

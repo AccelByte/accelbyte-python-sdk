@@ -55,27 +55,23 @@ def get_liked_content(
 ):
     """Get liked contents (GetLikedContent)
 
-    Requires valid user token.
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses ( ) for priority. e.g:
 
-    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
 
-    `tags=red`
-
-    `tags=red&animal;`
-
-    `tags=red|animal`
-
-    `tags=red&animal;|wild`
-
-    `tags=red&(animal|wild)`
+    *tags=red*
+    *tags=red&animal;*
+    *tags=red|animal*
+    *tags=red&animal;|wild*
+    *tags=red&(animal|wild)*
 
     The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
 
-    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
+    Allowed character for operand: alphanumeric, underscore _ and dash -
 
-    Allowed character for operator: `&` `|` `(` `)`
+    Allowed character for operator: & | ( )
 
-     Please note that value of tags query param should be URL encoded
+
+    **Please note that value of tags query param should be URL encoded**
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/contents/liked
@@ -155,27 +151,23 @@ async def get_liked_content_async(
 ):
     """Get liked contents (GetLikedContent)
 
-    Requires valid user token.
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses ( ) for priority. e.g:
 
-    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
 
-    `tags=red`
-
-    `tags=red&animal;`
-
-    `tags=red|animal`
-
-    `tags=red&animal;|wild`
-
-    `tags=red&(animal|wild)`
+    *tags=red*
+    *tags=red&animal;*
+    *tags=red|animal*
+    *tags=red&animal;|wild*
+    *tags=red&(animal|wild)*
 
     The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
 
-    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
+    Allowed character for operand: alphanumeric, underscore _ and dash -
 
-    Allowed character for operator: `&` `|` `(` `)`
+    Allowed character for operator: & | ( )
 
-     Please note that value of tags query param should be URL encoded
+
+    **Please note that value of tags query param should be URL encoded**
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/contents/liked
@@ -250,7 +242,7 @@ def update_content_like_status(
 ):
     """Update like/unlike status to a content (UpdateContentLikeStatus)
 
-    Requires valid user token
+    This endpoint will update like/unlike state from a content
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/like
@@ -304,7 +296,7 @@ async def update_content_like_status_async(
 ):
     """Update like/unlike status to a content (UpdateContentLikeStatus)
 
-    Requires valid user token
+    This endpoint will update like/unlike state from a content
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/contents/{contentId}/like

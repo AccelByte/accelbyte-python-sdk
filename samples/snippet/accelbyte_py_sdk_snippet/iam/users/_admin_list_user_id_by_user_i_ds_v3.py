@@ -12,7 +12,7 @@ body:
 Definition: ModelUserIDsRequest
 user_ids: List[str]
 
-Example: '{"userIds": ["W5VNnhMJhTHcpVf5", "D1ozV4xou9wSG3hQ", "Y4FGqjPoWkTWiV7u"]}'
+Example: '{"userIds": ["6bO17NmNvzfhjYGj", "g9npWf8EfnhlKOes", "dxZpITlTHIZ4XjJN"]}'
 """
 
 result, error = admin_list_user_id_by_user_i_ds_v3(

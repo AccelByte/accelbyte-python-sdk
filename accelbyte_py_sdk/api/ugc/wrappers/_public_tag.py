@@ -45,7 +45,7 @@ def get_tag(
 ):
     """Get tags (GetTag)
 
-    Publicly accessible
+    Get available tags paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/tags
@@ -97,7 +97,7 @@ async def get_tag_async(
 ):
     """Get tags (GetTag)
 
-    Publicly accessible
+    Get available tags paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/tags

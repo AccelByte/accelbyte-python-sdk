@@ -4469,6 +4469,8 @@ def update_xbl_bp_cert_file(
 
     Responses:
         200: OK - XblIAPConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39221: Invalid Xbox Business Partner Certificate or password: [{message}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -4522,6 +4524,8 @@ async def update_xbl_bp_cert_file_async(
 
     Responses:
         200: OK - XblIAPConfigInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39221: Invalid Xbox Business Partner Certificate or password: [{message}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()

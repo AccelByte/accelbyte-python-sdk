@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminGetContentByContentIDV2(Operation):
     """Get content by content ID (AdminGetContentByContentIDV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
+    Get content by content ID
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}

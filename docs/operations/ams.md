@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.10.0)
+# Fleet Commander Index (1.12.0)
 
 
 ## Operations
@@ -73,6 +73,7 @@
 ### Servers
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/connectioninfo | GET | FleetServerConnectionInfo | `false` | [FleetServerConnectionInfo](../../accelbyte_py_sdk/api/ams/operations/servers/fleet_server_connection_info.py) | [fleet_server_connection_info](../../accelbyte_py_sdk/api/ams/wrappers/_servers.py) | [accelbyte_py_sdk_cli ams-fleet-server-connection-info](../../samples/cli/accelbyte_py_sdk_cli/ams/_fleet_server_connection_info.py) |
 | /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers/history | GET | FleetServerHistory | `false` | [FleetServerHistory](../../accelbyte_py_sdk/api/ams/operations/servers/fleet_server_history.py) | [fleet_server_history](../../accelbyte_py_sdk/api/ams/wrappers/_servers.py) | [accelbyte_py_sdk_cli ams-fleet-server-history](../../samples/cli/accelbyte_py_sdk_cli/ams/_fleet_server_history.py) |
 | /ams/v1/admin/namespaces/{namespace}/servers/{serverID} | GET | FleetServerInfo | `false` | [FleetServerInfo](../../accelbyte_py_sdk/api/ams/operations/servers/fleet_server_info.py) | [fleet_server_info](../../accelbyte_py_sdk/api/ams/wrappers/_servers.py) | [accelbyte_py_sdk_cli ams-fleet-server-info](../../samples/cli/accelbyte_py_sdk_cli/ams/_fleet_server_info.py) |
 | /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/history | GET | ServerHistory | `false` | [ServerHistory](../../accelbyte_py_sdk/api/ams/operations/servers/server_history.py) | [server_history](../../accelbyte_py_sdk/api/ams/wrappers/_servers.py) | [accelbyte_py_sdk_cli ams-server-history](../../samples/cli/accelbyte_py_sdk_cli/ams/_server_history.py) |
@@ -115,6 +116,7 @@
 | api.FleetListResponse | [ApiFleetListResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_list_response.py) |
 | api.FleetParameters | [ApiFleetParameters](../../accelbyte_py_sdk/api/ams/models/api_fleet_parameters.py) |
 | api.FleetRegionalServerCounts | [ApiFleetRegionalServerCounts](../../accelbyte_py_sdk/api/ams/models/api_fleet_regional_server_counts.py) |
+| api.FleetServerConnectionInfoResponse | [ApiFleetServerConnectionInfoResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_server_connection_info_response.py) |
 | api.FleetServerHistoryEventResponse | [ApiFleetServerHistoryEventResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_server_history_event_response.py) |
 | api.FleetServerHistoryResponse | [ApiFleetServerHistoryResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_server_history_response.py) |
 | api.FleetServerInfoResponse | [ApiFleetServerInfoResponse](../../accelbyte_py_sdk/api/ams/models/api_fleet_server_info_response.py) |
@@ -131,6 +133,10 @@
 | api.QoSServer | [ApiQoSServer](../../accelbyte_py_sdk/api/ams/models/api_qo_s_server.py) |
 | api.ReferencingFleet | [ApiReferencingFleet](../../accelbyte_py_sdk/api/ams/models/api_referencing_fleet.py) |
 | api.RegionConfig | [ApiRegionConfig](../../accelbyte_py_sdk/api/ams/models/api_region_config.py) |
+| api.Time | [ApiTime](../../accelbyte_py_sdk/api/ams/models/api_time.py) |
 | api.Timeout | [ApiTimeout](../../accelbyte_py_sdk/api/ams/models/api_timeout.py) |
 | api.UpdateServerRequest | [ApiUpdateServerRequest](../../accelbyte_py_sdk/api/ams/models/api_update_server_request.py) |
 | response.ErrorResponse | [ResponseErrorResponse](../../accelbyte_py_sdk/api/ams/models/response_error_response.py) |
+| time.Location | [TimeLocation](../../accelbyte_py_sdk/api/ams/models/time_location.py) |
+| time.zone | [TimeZone](../../accelbyte_py_sdk/api/ams/models/time_zone.py) |
+| time.zoneTrans | [TimeZoneTrans](../../accelbyte_py_sdk/api/ams/models/time_zone_trans.py) |

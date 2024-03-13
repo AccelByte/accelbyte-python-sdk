@@ -46,15 +46,7 @@ def get_user_leaderboard_rankings_admin_v3(
 ):
     """Get user rankings (getUserLeaderboardRankingsAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get user leaderboard rankings
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/users/{userId}/leaderboards
@@ -110,15 +102,7 @@ async def get_user_leaderboard_rankings_admin_v3_async(
 ):
     """Get user rankings (getUserLeaderboardRankingsAdminV3)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get user leaderboard rankings
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/users/{userId}/leaderboards

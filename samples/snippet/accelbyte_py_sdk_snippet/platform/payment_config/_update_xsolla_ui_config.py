@@ -15,7 +15,7 @@ show_close_button: bool
 size: str
 theme: str
 
-Example: '{"device": "MOBILE", "showCloseButton": true, "size": "LARGE", "theme": "DEFAULT"}'
+Example: '{"device": "MOBILE", "showCloseButton": true, "size": "SMALL", "theme": "DARK"}'
 """
 
 result, error = update_xsolla_ui_config(

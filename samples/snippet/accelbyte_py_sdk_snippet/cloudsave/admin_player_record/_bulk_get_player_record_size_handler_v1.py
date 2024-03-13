@@ -15,7 +15,7 @@ Definition: List[ModelsUserKeyRequest]
     keys: List[str]
     user_id: str
 
-Example: '{"data": [{"keys": ["sUPSBfN78SquaawV", "yR3z4tt5rIrG2Fxb", "vDhzpzc1PfZn1EFk"], "user_id": "JywXAztlp975a7Ih"}, {"keys": ["tibj9a3xT1SFT9v4", "gXu44Bm0kJ4cjKgA", "eznQLUqw6Y5MDjc5"], "user_id": "n0FYMOeOXvBhk3r4"}, {"keys": ["Igl3Tu8FPgwznqTS", "Ni0QgwiHE4HdTlep", "W19vhTwGvSAQJgnK"], "user_id": "mf4UUrL6Cqp3xEwt"}]}'
+Example: '{"data": [{"keys": ["xuEWG2Eyz9NhZdlz", "xZctMLr0q9aKLNwI", "9xxH23OIJQyx2pPD"], "user_id": "rzMTCMYyP5IV2EeV"}, {"keys": ["2AFcmr15TauEh7M5", "9vw5rnFZvNZw1TvN", "sHTWzcNtwpwGJib2"], "user_id": "nD6fKl2TIE37iKoK"}, {"keys": ["09pGZl4zxTpKbFCo", "TwueizcexKimUxBS", "LlTX6H6w02Pqb4PF"], "user_id": "nW1ZlGoqp89mm1Kc"}]}'
 """
 
 result, error = bulk_get_player_record_size_handler_v1(

@@ -17,7 +17,7 @@ scope: str
 status: str
 user_ids: List[str]
 
-Example: '{"category": "s1ah0ZSoJ9Ox4Dcz", "expiredAt": 35, "message": {"pbmWDorieFtxtHd3": {}, "Krvn0Nr3KHKdY21b": {}, "VyjhEkfyZyIKq46X": {}}, "scope": "NAMESPACE", "status": "DRAFT", "userIds": ["2txPPzJTr4RujMsA", "Y00ozqwK6zivwiNE", "12Oq3NNMmRGlb7Ft"]}'
+Example: '{"category": "upk9KL5nG2PLsMIB", "expiredAt": 71, "message": {"50SUF0KKNU8e3p1o": {}, "DnoQ5DmEcyoheJeS": {}, "NXFyHw5ZoxCmDuVa": {}}, "scope": "NAMESPACE", "status": "DRAFT", "userIds": ["GClAcCX56oiiT2zr", "wzapyPz2uACz2jmm", "n0Jx6SDody2gPSuU"]}'
 """
 
 result, error = admin_save_inbox_message(

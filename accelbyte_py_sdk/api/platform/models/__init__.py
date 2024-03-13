@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.47.0"
+__version__ = "4.48.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -249,6 +249,7 @@ from .entitlement_grant_result import EntitlementGrantResult
 from .entitlement_history_info import EntitlementHistoryInfo
 from .entitlement_history_info import (
     ActionEnum as EntitlementHistoryInfoActionEnum,
+    ClazzEnum as EntitlementHistoryInfoClazzEnum,
     OriginEnum as EntitlementHistoryInfoOriginEnum,
 )
 from .entitlement_ifc import EntitlementIfc
@@ -703,6 +704,12 @@ from .public_custom_config_info import PublicCustomConfigInfo
 from .public_custom_config_info import (
     ConnectionTypeEnum as PublicCustomConfigInfoConnectionTypeEnum,
 )
+from .public_entitlement_history_info import PublicEntitlementHistoryInfo
+from .public_entitlement_history_info import (
+    ActionEnum as PublicEntitlementHistoryInfoActionEnum,
+    ClazzEnum as PublicEntitlementHistoryInfoClazzEnum,
+    OriginEnum as PublicEntitlementHistoryInfoOriginEnum,
+)
 from .purchase_condition import PurchaseCondition
 from .purchase_condition_update import PurchaseConditionUpdate
 from .purchased_item_count import PurchasedItemCount
@@ -884,6 +891,9 @@ from .user_dlc_record import (
     EntitlementOriginSyncStatusEnum as UserDLCRecordEntitlementOriginSyncStatusEnum,
     PlatformEnum as UserDLCRecordPlatformEnum,
     StatusEnum as UserDLCRecordStatusEnum,
+)
+from .user_entitlement_history_paging_sliced_result import (
+    UserEntitlementHistoryPagingSlicedResult,
 )
 from .validation_error_entity import ValidationErrorEntity
 from .view_create import ViewCreate

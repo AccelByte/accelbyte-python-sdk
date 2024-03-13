@@ -36,10 +36,7 @@ from ...models import ResponseError
 class AdminGetAllGroups(Operation):
     """Get all user groups (AdminGetAllGroups)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [READ]
+    Get user group paginated
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/groups

@@ -40,11 +40,6 @@ class CreateLeaderboardConfigurationPublicV1(Operation):
 
 
 
-    Required permission 'NAMESPACE:{namespace}:LEADERBOARD [CREATE]'
-
-
-
-
      Fields :
 
 
@@ -75,9 +70,6 @@ class CreateLeaderboardConfigurationPublicV1(Operation):
 
 
       * Stat Code is related with statistic code in statistic service. (required).
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEADERBOARD [CREATE]
 
     Properties:
         url: /leaderboard/v1/public/namespaces/{namespace}/leaderboards

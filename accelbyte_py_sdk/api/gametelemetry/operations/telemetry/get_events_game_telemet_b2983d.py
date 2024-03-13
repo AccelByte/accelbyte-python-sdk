@@ -29,7 +29,9 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import BaseErrorResponse
 from ...models import HTTPValidationError
+from ...models import PagedResponseGetNamespaceEventResponse
 
 
 class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
@@ -72,7 +74,9 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
         user_id: (userId) OPTIONAL str in query
 
     Responses:
-        200: OK - (Successful Response)
+        200: OK - PagedResponseGetNamespaceEventResponse (Successful Response)
+
+        400: Bad Request - BaseErrorResponse (Bad Request)
 
         422: Unprocessable Entity - HTTPValidationError (Validation Error)
     """
@@ -291,11 +295,14 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, HttpResponse], Union[None, HTTPValidationError, HttpResponse]
+        Union[None, PagedResponseGetNamespaceEventResponse],
+        Union[None, BaseErrorResponse, HTTPValidationError, HttpResponse],
     ]:
         """Parse the given response.
 
-        200: OK - (Successful Response)
+        200: OK - PagedResponseGetNamespaceEventResponse (Successful Response)
+
+        400: Bad Request - BaseErrorResponse (Bad Request)
 
         422: Unprocessable Entity - HTTPValidationError (Validation Error)
 
@@ -313,7 +320,12 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return HttpResponse.create(code, "OK"), None
+            return (
+                PagedResponseGetNamespaceEventResponse.create_from_dict(content),
+                None,
+            )
+        if code == 400:
+            return None, BaseErrorResponse.create_from_dict(content)
         if code == 422:
             return None, HTTPValidationError.create_from_dict(content)
 

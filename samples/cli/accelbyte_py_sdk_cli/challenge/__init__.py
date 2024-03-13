@@ -20,6 +20,7 @@ from ._admin_update_goals import admin_update_goals
 from ._admin_delete_goal import admin_delete_goal
 from ._admin_get_periods import admin_get_periods
 from ._admin_randomize_challenge import admin_randomize_challenge
+from ._admin_delete_tied_challenge import admin_delete_tied_challenge
 from ._admin_evaluate_progress import admin_evaluate_progress
 from ._admin_get_user_rewards import admin_get_user_rewards
 from ._get_challenges import get_challenges
@@ -43,6 +44,7 @@ commands = [
     admin_delete_goal,
     admin_get_periods,
     admin_randomize_challenge,
+    admin_delete_tied_challenge,
     admin_evaluate_progress,
     admin_get_user_rewards,
     get_challenges,

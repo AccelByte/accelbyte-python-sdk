@@ -36,15 +36,7 @@ from ...models import ResponseErrorResponse
 class GetUserLeaderboardRankingsAdminV1(Operation):
     """Get user rankings (getUserLeaderboardRankingsAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get user leaderboard rankings
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/users/{userId}/leaderboards

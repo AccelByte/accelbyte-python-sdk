@@ -17,7 +17,7 @@ Definition: List[IAPItemEntry]
     item_identity_type: str
     platform_product_id_map: Dict[str, str]
 
-Example: '{"data": [{"itemIdentity": "KgeONnrLdeyXnO3K", "itemIdentityType": "ITEM_SKU", "platformProductIdMap": {"Qcqs4a9IViJL9KIs": "eyeLOpYXyX7RkDXs", "i18u5YUsXnfv4VbH": "KI8xYVFsXZhc5Pn4", "UvcpPBkkg0Zx1R8f": "OZDFYVGr0gh7OSZ8"}}, {"itemIdentity": "itLhmJdlbs1PBcLl", "itemIdentityType": "ITEM_SKU", "platformProductIdMap": {"UdhvAFObU2RN1QMY": "eSeaGdbqJY3CkQXK", "hqQ52i1mYyh6Fist": "yJHCQnI1w3Yb8GoI", "JijRn2266I6pTGM6": "EetXVfA3cVyUf21b"}}, {"itemIdentity": "ysuXMFNsVpah3Uou", "itemIdentityType": "ITEM_ID", "platformProductIdMap": {"KYTc5sOBn6scgMhO": "t2H6eKvw85ga9WVx", "DcOH4khSkIKKnB5j": "0M5G7qtqEywh2o4J", "mTxTqtien1rpz0C0": "vk3y9no7nfFD3uNw"}}]}'
+Example: '{"data": [{"itemIdentity": "BK0xcKaUXM1Edfgq", "itemIdentityType": "ITEM_ID", "platformProductIdMap": {"O30VqvXiu4zQdjyu": "hm3HTnH4BZvZU9k5", "o8oJyrasEGseTMQK": "Eq2iPU1w1EeQWdeL", "uvFsE8Y1XTxeRDlG": "oGDjZLe0OCbA3t7k"}}, {"itemIdentity": "Ml79NhMdNBicNPJo", "itemIdentityType": "ITEM_SKU", "platformProductIdMap": {"aeUG90npwSENNCJj": "BnGQiPEcVAHDo7vt", "eykZX6thmZQ66knc": "SsiL753AhNMM8wo7", "6bP6lQMBVvX5TTyV": "RsXBlF7Pu6CAsGkJ"}}, {"itemIdentity": "D1yLUCUlvFxnRTEb", "itemIdentityType": "ITEM_ID", "platformProductIdMap": {"zC72rvkSR9Kfl6Bu": "idjVwkz9AWioAOBs", "8jPIiVMEgIrXU148": "jWaT79tOrDGIF5wF", "DysTk4zHUP4Evsak": "FTg8YRVA5zoN3Hek"}}]}'
 """
 
 result, error = update_iap_item_config(

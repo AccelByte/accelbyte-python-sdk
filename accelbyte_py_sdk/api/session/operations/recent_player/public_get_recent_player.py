@@ -55,8 +55,6 @@ class PublicGetRecentPlayer(Operation):
 
         limit: (limit) OPTIONAL int in query
 
-        user_id: (userId) OPTIONAL str in query
-
     Responses:
         200: OK - ModelsRecentPlayerQueryResponse (OK)
 
@@ -80,7 +78,6 @@ class PublicGetRecentPlayer(Operation):
 
     namespace: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
-    user_id: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -134,8 +131,6 @@ class PublicGetRecentPlayer(Operation):
         result = {}
         if hasattr(self, "limit"):
             result["limit"] = self.limit
-        if hasattr(self, "user_id"):
-            result["userId"] = self.user_id
         return result
 
     # endregion get_x_params methods
@@ -154,10 +149,6 @@ class PublicGetRecentPlayer(Operation):
         self.limit = value
         return self
 
-    def with_user_id(self, value: str) -> PublicGetRecentPlayer:
-        self.user_id = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
@@ -172,10 +163,6 @@ class PublicGetRecentPlayer(Operation):
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = 0
-        if hasattr(self, "user_id") and self.user_id:
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -235,18 +222,12 @@ class PublicGetRecentPlayer(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        limit: Optional[int] = None,
-        user_id: Optional[str] = None,
-        **kwargs,
+        cls, namespace: str, limit: Optional[int] = None, **kwargs
     ) -> PublicGetRecentPlayer:
         instance = cls()
         instance.namespace = namespace
         if limit is not None:
             instance.limit = limit
-        if user_id is not None:
-            instance.user_id = user_id
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -264,10 +245,6 @@ class PublicGetRecentPlayer(Operation):
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = 0
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
         return instance
 
     @staticmethod
@@ -275,7 +252,6 @@ class PublicGetRecentPlayer(Operation):
         return {
             "namespace": "namespace",
             "limit": "limit",
-            "userId": "user_id",
         }
 
     @staticmethod
@@ -283,7 +259,6 @@ class PublicGetRecentPlayer(Operation):
         return {
             "namespace": True,
             "limit": False,
-            "userId": False,
         }
 
     # endregion static methods

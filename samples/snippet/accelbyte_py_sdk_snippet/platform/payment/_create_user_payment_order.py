@@ -32,7 +32,7 @@ sku: str
 subscription_id: str
 title: str
 
-Example: '{"currencyCode": "TEqp1I6rWESP4RbJ", "currencyNamespace": "tMr5H9hfh3HEgh14", "customParameters": {"x14lHljZJTdCXfmj": {}, "4lkDyJiBnibm2O49": {}, "vFRWtQwNewSJ1ft9": {}}, "description": "5J5kJ1WQi8MXsh2t", "extOrderNo": "vxdEsHJDskeHWJ7W", "extUserId": "9bMtL3L7kTKH92Un", "itemType": "INGAMEITEM", "language": "wd", "metadata": {"MXwtCqR48J8Jhxc2": "BMqo8tJb0yCkitUE", "oTTK7mTO0XxUroOF": "tiUp81xrPYaTGz4k", "Rd1wM8YDJyR3i671": "bnHYLwhyOVBpUkTD"}, "notifyUrl": "UhkgRuOHuDtzPRyX", "omitNotification": false, "platform": "sNnP3viMHakYLbth", "price": 94, "recurringPaymentOrderNo": "VIhVLvIuJlibVmoe", "region": "Bu2mXvVWCjqsidEp", "returnUrl": "IibB5StpOM6KJ8lY", "sandbox": true, "sku": "hu4YdlrtHeQoOXst", "subscriptionId": "5nzmvqzygJ9mqNmZ", "title": "ZUK9jLOnBa47o6eX"}'
+Example: '{"currencyCode": "oq4F0x1v2txuL8us", "currencyNamespace": "78fGDCH24rfHlMkp", "customParameters": {"BtIggnD1rnwOTEx9": {}, "YUPaHfaaZDBwfBvX": {}, "IY9QQfCxVfEqfPLX": {}}, "description": "e23CWGbwP9apzyS6", "extOrderNo": "hua7ylcQZmfaYFK2", "extUserId": "lPgYKq38s0NDJjcr", "itemType": "SUBSCRIPTION", "language": "FGNk-XVLc_Yq", "metadata": {"N3eNCJtwH2PRR5NZ": "hglqHWlCRIEgaobC", "IQN1Lzj4bYmqIW2F": "o90MBcF2koN7MmEr", "CNqyhrAKzgYQH18a": "zaW3LmiylJ9xNwG6"}, "notifyUrl": "4wei2KVIbp2eZYI0", "omitNotification": true, "platform": "nvlRvxD2M1BESJYY", "price": 95, "recurringPaymentOrderNo": "Csfu2HoflBNM08cN", "region": "XXEgvoJ4IczRoSt6", "returnUrl": "9UjkBlFpDQpIfPGy", "sandbox": false, "sku": "gubPAY4ozaF5FBeO", "subscriptionId": "xGjd2lgRJafQuU8V", "title": "FAi9mFWQloByG2Uh"}'
 """
 
 result, error = create_user_payment_order(

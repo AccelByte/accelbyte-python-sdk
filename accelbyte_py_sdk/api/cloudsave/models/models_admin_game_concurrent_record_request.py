@@ -35,12 +35,15 @@ class ModelsAdminGameConcurrentRecordRequest(Model):
         updated_at: (updatedAt) REQUIRED str
 
         value: (value) REQUIRED Dict[str, Any]
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
 
     updated_at: str  # REQUIRED
     value: Dict[str, Any]  # REQUIRED
+    tags: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -54,6 +57,10 @@ class ModelsAdminGameConcurrentRecordRequest(Model):
         self, value: Dict[str, Any]
     ) -> ModelsAdminGameConcurrentRecordRequest:
         self.value = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelsAdminGameConcurrentRecordRequest:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -70,6 +77,10 @@ class ModelsAdminGameConcurrentRecordRequest(Model):
             result["value"] = {str(k0): v0 for k0, v0 in self.value.items()}
         elif include_empty:
             result["value"] = {}
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -78,11 +89,17 @@ class ModelsAdminGameConcurrentRecordRequest(Model):
 
     @classmethod
     def create(
-        cls, updated_at: str, value: Dict[str, Any], **kwargs
+        cls,
+        updated_at: str,
+        value: Dict[str, Any],
+        tags: Optional[List[str]] = None,
+        **kwargs,
     ) -> ModelsAdminGameConcurrentRecordRequest:
         instance = cls()
         instance.updated_at = updated_at
         instance.value = value
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -100,6 +117,10 @@ class ModelsAdminGameConcurrentRecordRequest(Model):
             instance.value = {str(k0): v0 for k0, v0 in dict_["value"].items()}
         elif include_empty:
             instance.value = {}
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @classmethod
@@ -145,6 +166,7 @@ class ModelsAdminGameConcurrentRecordRequest(Model):
         return {
             "updatedAt": "updated_at",
             "value": "value",
+            "tags": "tags",
         }
 
     @staticmethod
@@ -152,6 +174,7 @@ class ModelsAdminGameConcurrentRecordRequest(Model):
         return {
             "updatedAt": True,
             "value": True,
+            "tags": False,
         }
 
     # endregion static methods

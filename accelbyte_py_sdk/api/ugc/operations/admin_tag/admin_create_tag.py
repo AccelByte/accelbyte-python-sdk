@@ -37,11 +37,7 @@ from ...models import ResponseError
 class AdminCreateTag(Operation):
     """Create tags (AdminCreateTag)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
-    creates a new tag
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [CREATE]
+    Creates a new tag
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/tags

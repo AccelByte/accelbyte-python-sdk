@@ -33,12 +33,9 @@ from ...models import ResponseError
 
 
 class AdminDeleteContentScreenshot(Operation):
-    """Delete screenshots content (AdminDeleteContentScreenshot)
+    """Delete content's screenshot (AdminDeleteContentScreenshot)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing screenshot from a content
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/screenshots/{screenshotId}

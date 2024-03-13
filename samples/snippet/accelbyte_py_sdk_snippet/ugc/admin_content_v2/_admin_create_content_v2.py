@@ -19,7 +19,7 @@ sub_type: str
 tags: List[str]
 type_: str
 
-Example: '{"contentType": "5WAdSPK2C9oYuo8O", "customAttributes": {"R2PVnYGPs0sKF2vu": {}, "5pZyvPJDsfNLY5Du": {}, "XbkAdgZXY7OW1MQa": {}}, "fileExtension": "0bB07CPPVph8XTwv", "name": "QEXY4CNzQdyS1gGB", "shareCode": "0rt7ECvg3bfgcULc", "subType": "4M3cxHzLyJpEHEh8", "tags": ["m9RpWoePNIevBYds", "Q90IVuln66C6affD", "1ulXZzJAW2wnlBc6"], "type": "sN933P92MMqsMAS6"}'
+Example: '{"contentType": "fMGP80HOrSLKag0G", "customAttributes": {"m4F5lJgKtuq17dLS": {}, "kOCpu0CfCwlRD7Zd": {}, "FyrB6aH9XRHETMSW": {}}, "fileExtension": "CKQ6VRE5RRRltlF2", "name": "VfJsx6xn31T3HPKB", "shareCode": "jesJhamBPGBdHPnU", "subType": "2Y7GNKd01XgVcMNM", "tags": ["Og16wiVqOw3cuZW0", "TmnoUc8MKqxWkafq", "AF0CVcAIWGGWwL4A"], "type": "Oo9A4P1ukyTS4iJ9"}'
 """
 
 result, error = admin_create_content_v2(

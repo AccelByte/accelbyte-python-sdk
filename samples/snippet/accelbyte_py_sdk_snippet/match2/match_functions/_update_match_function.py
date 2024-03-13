@@ -14,7 +14,7 @@ match_function: str
 service_app_name: str
 url: str
 
-Example: '{"match_function": "kSe3S0kHLa7K1Y1x", "serviceAppName": "UqOZGRwEDqUUhY50", "url": "mnSTtlNQlEw06zG3"}'
+Example: '{"match_function": "JAqXX8HLPz7X5SQ3", "serviceAppName": "v8oH4LnuBPMapWfI", "url": "17C1h7pmP97WOGcE"}'
 """
 
 result, error = update_match_function(

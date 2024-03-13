@@ -33,7 +33,11 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.gametelemetry import (
     get_events_game_telemetry_v1_admin_namespaces_namespace_events_get as get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_internal,
 )
+from accelbyte_py_sdk.api.gametelemetry.models import BaseErrorResponse
 from accelbyte_py_sdk.api.gametelemetry.models import HTTPValidationError
+from accelbyte_py_sdk.api.gametelemetry.models import (
+    PagedResponseGetNamespaceEventResponse,
+)
 
 
 @click.command()

@@ -36,15 +36,7 @@ from ...models import ResponseErrorResponse
 class GetCurrentWeekLeaderboardRankingAdminV1(Operation):
     """Get current week leaderboard ranking data (GetCurrentWeekLeaderboardRankingAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]'
-
-
-
-
     Get rankings in current week leaderboard.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD [READ]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/week

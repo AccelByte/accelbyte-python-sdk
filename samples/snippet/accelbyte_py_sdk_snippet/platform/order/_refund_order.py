@@ -13,7 +13,7 @@ body:
 Definition: OrderRefundCreate
 description: str
 
-Example: '{"description": "pv9Sb0fLHAeFtGxU"}'
+Example: '{"description": "RqwOnCWxiWccpoD0"}'
 """
 
 result, error = refund_order(

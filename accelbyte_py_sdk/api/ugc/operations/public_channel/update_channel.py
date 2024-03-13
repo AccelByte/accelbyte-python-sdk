@@ -37,10 +37,7 @@ from ...models import ResponseError
 class UpdateChannel(Operation):
     """Update Channel (UpdateChannel)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [UPDATE]
+    Update user channel
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}

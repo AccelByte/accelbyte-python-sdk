@@ -12,7 +12,7 @@ body:
 Definition: ModelListEmailAddressRequest
 list_email_address_request: List[str]
 
-Example: '{"listEmailAddressRequest": ["SNpPik2zeLFO9ybX", "QI0hUc7T4F6pjxEi", "oxpOcVbhswN3SUHn"]}'
+Example: '{"listEmailAddressRequest": ["vi2Xow3lHpz2kPnJ", "vnlzG9ZDkiJH7bxm", "ybRu1bCBvLeg1qYz"]}'
 """
 
 result, error = admin_get_bulk_user_by_email_address_v3(

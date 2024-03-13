@@ -47,10 +47,7 @@ def admin_get_configs(
 ):
     """Get configs (AdminGetConfigs)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+    Get config paginated
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/configs
@@ -104,10 +101,7 @@ async def admin_get_configs_async(
 ):
     """Get configs (AdminGetConfigs)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [READ]
+    Get config paginated
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/configs
@@ -163,13 +157,10 @@ def admin_update_config(
 ):
     """Update config (AdminUpdateConfig)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE].
-    It will create a new config if the key doesn't exist.
-    Allowed key value:
-    - contentReview : enabled , disabled
+    This endpoint will create a new config if the *key* doesn't exist.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    Allowed key value:
+    - *contentReview*: *enabled*,*disabled*
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/configs/{key}
@@ -223,13 +214,10 @@ async def admin_update_config_async(
 ):
     """Update config (AdminUpdateConfig)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE].
-    It will create a new config if the key doesn't exist.
-    Allowed key value:
-    - contentReview : enabled , disabled
+    This endpoint will create a new config if the *key* doesn't exist.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:UGCCONFIG [UPDATE]
+    Allowed key value:
+    - *contentReview*: *enabled*,*disabled*
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/configs/{key}

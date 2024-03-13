@@ -35,10 +35,7 @@ from ...models import ResponseError
 class DeleteUserStagingContentByID(Operation):
     """Delete user staging content by id (DeleteUserStagingContentByID)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete user staging content by ID
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/staging-contents/{contentId}

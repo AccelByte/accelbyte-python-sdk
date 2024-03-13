@@ -28,7 +28,7 @@ null_fields: List[str]
 quantity: int
 type_: str
 
-Example: '{"currency": {"currencyCode": "X4Zh3FFu3jSKEj0x", "namespace": "K0nJ5eG7NSwecrTz"}, "image": {"as": "T33cBVnkCLHbsH2f", "caption": "hn60KV7P4M6h0aM1", "height": 64, "imageUrl": "lQ6ZAC5geWWBEUaJ", "smallImageUrl": "cFU9EGmiVswpf6GK", "width": 88}, "itemId": "RSMLNlvRmGs1OpGu", "nullFields": ["uBgOwa9aJ1NW8LFI", "JUUQn97Yi3Oxedmf", "BwDtVCgR5Pc0z1HQ"], "quantity": 89, "type": "ITEM"}'
+Example: '{"currency": {"currencyCode": "cV5qjHfJLNYn7wZg", "namespace": "qav4lqfD1jePDKXG"}, "image": {"as": "1vSYvirAze7LDcRs", "caption": "uqep0oVu2TADxky9", "height": 37, "imageUrl": "PD7vE74o1JJ0xR18", "smallImageUrl": "AMsCvxfXBd8mCqxB", "width": 81}, "itemId": "JrbYZI3ccsyzmfOu", "nullFields": ["8We365xkJRzrhM8R", "bdnLHF6pDXEYRj0h", "DcNQjJ2IXApYN89S"], "quantity": 45, "type": "CURRENCY"}'
 """
 
 result, error = update_reward(

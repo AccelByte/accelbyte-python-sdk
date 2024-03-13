@@ -11,7 +11,7 @@ body:
 Definition: ModelsDSHeartbeatRequest
 pod_name: str
 
-Example: '{"podName": "fDJ8ooWoZTNWCkbG"}'
+Example: '{"podName": "uARn86CPU8mdgX5b"}'
 """
 
 result, error = server_heartbeat(

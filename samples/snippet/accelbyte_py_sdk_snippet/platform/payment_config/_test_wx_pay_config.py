@@ -14,7 +14,7 @@ key: str
 mchid: str
 return_url: str
 
-Example: '{"appId": "qMs7FIvSjrEfqnsg", "key": "lfptab4cOIwz0VjS", "mchid": "3MuKg7wvof7liE3Y", "returnUrl": "VfsqNWtfB5LocZet"}'
+Example: '{"appId": "jpbL6dUSzQZydnwd", "key": "QDDHfih3q1Wmauso", "mchid": "h8FAORdn93ysCgbq", "returnUrl": "IyaPUYjqO8a7I3jv"}'
 """
 
 result, error = test_wx_pay_config(

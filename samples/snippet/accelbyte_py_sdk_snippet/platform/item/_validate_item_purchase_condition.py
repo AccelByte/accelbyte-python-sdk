@@ -12,7 +12,7 @@ body:
 Definition: ItemPurchaseConditionValidateRequest
 item_ids: List[str]
 
-Example: '{"itemIds": ["1rlc71HYY7ImsBt1", "xbS13SG00xOyi97I", "JEwoz5F77RKZVz8h"]}'
+Example: '{"itemIds": ["J5akuvuGBsD0nUVw", "dGQOvuHkbf09DoQ1", "YxjJp2qJaseJNRpu"]}'
 """
 
 result, error = validate_item_purchase_condition(

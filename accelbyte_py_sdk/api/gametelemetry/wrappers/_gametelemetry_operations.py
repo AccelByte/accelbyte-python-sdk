@@ -29,7 +29,8 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
-from ..models import HTTPValidationError
+from ..models import BaseErrorResponse
+from ..models import PlayTimeResponse
 from ..models import TelemetryBody
 
 from ..operations.gametelemetry_operations import (
@@ -77,9 +78,13 @@ def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playti
         steam_id: (steamId) REQUIRED str in path
 
     Responses:
-        200: OK - Dict[str, Any] (Successful Response)
+        200: OK - PlayTimeResponse (Successful Response)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        404: Not Found - BaseErrorResponse (User not found)
+
+        422: Unprocessable Entity - BaseErrorResponse (Unable to process request)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
     """
     request = (
         ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.create(
@@ -124,9 +129,13 @@ async def protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_
         steam_id: (steamId) REQUIRED str in path
 
     Responses:
-        200: OK - Dict[str, Any] (Successful Response)
+        200: OK - PlayTimeResponse (Successful Response)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        404: Not Found - BaseErrorResponse (User not found)
+
+        422: Unprocessable Entity - BaseErrorResponse (Unable to process request)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
     """
     request = (
         ProtectedGetPlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimeGet.create(
@@ -219,7 +228,11 @@ def protected_save_events_game_telemetry_v1_protected_events_post(
     Responses:
         204: No Content - (Successful Response)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        422: Unprocessable Entity - BaseErrorResponse (Unable to process request)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
+
+        507: Insufficient Storage - BaseErrorResponse (Insufficient space)
     """
     request = ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost.create(
         body=body,
@@ -308,7 +321,11 @@ async def protected_save_events_game_telemetry_v1_protected_events_post_async(
     Responses:
         204: No Content - (Successful Response)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        422: Unprocessable Entity - BaseErrorResponse (Unable to process request)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
+
+        507: Insufficient Storage - BaseErrorResponse (Insufficient space)
     """
     request = ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost.create(
         body=body,
@@ -356,9 +373,13 @@ def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_pla
         steam_id: (steamId) REQUIRED str in path
 
     Responses:
-        200: OK - (Successful Response)
+        200: OK - PlayTimeResponse (Successful Response)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        404: Not Found - BaseErrorResponse (User not found)
+
+        422: Unprocessable Entity - BaseErrorResponse (Unable to process request)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
     """
     request = ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut.create(
         playtime=playtime,
@@ -405,9 +426,13 @@ async def protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_
         steam_id: (steamId) REQUIRED str in path
 
     Responses:
-        200: OK - (Successful Response)
+        200: OK - PlayTimeResponse (Successful Response)
 
-        422: Unprocessable Entity - HTTPValidationError (Validation Error)
+        404: Not Found - BaseErrorResponse (User not found)
+
+        422: Unprocessable Entity - BaseErrorResponse (Unable to process request)
+
+        500: Internal Server Error - BaseErrorResponse (Internal Server Error)
     """
     request = ProtectedUpdatePlaytimeGameTelemetryV1ProtectedSteamIdsSteamIdPlaytimePlaytimePut.create(
         playtime=playtime,

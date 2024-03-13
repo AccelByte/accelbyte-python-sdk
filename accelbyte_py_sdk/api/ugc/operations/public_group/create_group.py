@@ -37,10 +37,7 @@ from ...models import ResponseError
 class CreateGroup(Operation):
     """Create groups (CreateGroup)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENTGROUP [CREATE]
+    Create group
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/groups

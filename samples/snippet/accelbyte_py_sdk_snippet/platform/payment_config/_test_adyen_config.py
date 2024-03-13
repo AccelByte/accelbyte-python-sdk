@@ -23,7 +23,7 @@ notification_username: str
 return_url: str
 settings: str
 
-Example: '{"allowedPaymentMethods": ["z4l2H9UHGbbM9u6q", "zEg0r3i16mW2tMbv", "qUOK9ERsSIBptUbk"], "apiKey": "Lf7YyC33ebCnzYOE", "authoriseAsCapture": true, "blockedPaymentMethods": ["YEqss7mdOzBzVhHa", "fulySI1urVul4v24", "xnEd7Bd4ORidrBAd"], "clientKey": "BnHvGBWqAtjQODd8", "dropInSettings": "Ov8xStOpWEfr1tNq", "liveEndpointUrlPrefix": "UUxRTONoyd9FFaG4", "merchantAccount": "7vicTzAQ5JufIFGb", "notificationHmacKey": "MBAPofGNAfb0sNs2", "notificationPassword": "83fncrlQUjllrSs7", "notificationUsername": "osO7oqKrccMEMi0N", "returnUrl": "qpWRYTmr17JNZbMv", "settings": "WeAX4jRRdgjg6Pc2"}'
+Example: '{"allowedPaymentMethods": ["ysOgqhtXftq10Js6", "HRjLJSDN2X2Jwu9b", "7wj84sYfYpdr2zZH"], "apiKey": "ilnpRBUBQkU4jwE6", "authoriseAsCapture": false, "blockedPaymentMethods": ["jxkt07xjgpah3hkl", "CnlXy0EARQdNVqHN", "wk3kGsGFK7iXmO2u"], "clientKey": "xO7mGsFQT6Mpaw6q", "dropInSettings": "co0QUP1OpUaBGXbc", "liveEndpointUrlPrefix": "Z3Mceuw4t1QUmotq", "merchantAccount": "NifglJf01SIT8d4S", "notificationHmacKey": "FlLh7qFOoNuAbqDc", "notificationPassword": "HriVUM4aYDVIUJBi", "notificationUsername": "3GjTW9YfaKtTfQrb", "returnUrl": "OAsXJkgE6UoJl0h9", "settings": "6bE8O0wHGpVT9Tev"}'
 """
 
 result, error = test_adyen_config(

@@ -31,10 +31,14 @@ from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsBulkGetAdminPlayerRecordResponse
+from ..models import ModelsBulkGetPlayerRecordResponse
 from ..models import ModelsBulkGetPlayerRecordSizeResponse
 from ..models import ModelsBulkGetPlayerRecordsRequest
+from ..models import ModelsBulkUpdatePlayerRecordByKeyResponse
 from ..models import ModelsBulkUpdatePlayerRecordResponse
+from ..models import ModelsBulkUpdatePlayerRecordsByKeyRequest
 from ..models import ModelsBulkUpdatePlayerRecordsRequest
+from ..models import ModelsBulkUserIDsRequest
 from ..models import ModelsBulkUserKeyRequest
 from ..models import ModelsListPlayerRecordKeysResponse
 from ..models import ModelsPlayerRecordRequest
@@ -42,6 +46,8 @@ from ..models import ModelsPlayerRecordResponse
 from ..models import ModelsPlayerRecordSizeResponse
 from ..models import ModelsResponseError
 
+from ..operations.admin_player_record import AdminBulkGetPlayerRecordsByUserIDsHandlerV1
+from ..operations.admin_player_record import AdminBulkPutPlayerRecordsByKeyHandlerV1
 from ..operations.admin_player_record import AdminDeletePlayerPublicRecordHandlerV1
 from ..operations.admin_player_record import AdminDeletePlayerRecordHandlerV1
 from ..operations.admin_player_record import AdminGetPlayerPublicRecordHandlerV1
@@ -57,6 +63,232 @@ from ..operations.admin_player_record import AdminRetrievePlayerRecords
 from ..operations.admin_player_record import BulkGetPlayerRecordSizeHandlerV1
 from ..operations.admin_player_record import ListPlayerRecordHandlerV1
 from ..models import ModelsPlayerRecordResponseSetByEnum
+
+
+@same_doc_as(AdminBulkGetPlayerRecordsByUserIDsHandlerV1)
+def admin_bulk_get_player_records_by_user_i_ds_handler_v1(
+    body: ModelsBulkUserIDsRequest,
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get player records by multiple user ids (adminBulkGetPlayerRecordsByUserIDsHandlerV1)
+
+    Retrieve player record key and payload in bulk under given namespace.
+    Maximum number of user ids per request is 20.
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/records/{key}/bulk
+
+        method: POST
+
+        tags: ["AdminPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUserIDsRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkGetPlayerRecordResponse (OK)
+
+        400: Bad Request - ModelsResponseError (18125: invalid request body | 18126: request record keys list exceed max size [%d])
+
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18124: unable to get record | 18006: unable to decode record)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkGetPlayerRecordsByUserIDsHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBulkGetPlayerRecordsByUserIDsHandlerV1)
+async def admin_bulk_get_player_records_by_user_i_ds_handler_v1_async(
+    body: ModelsBulkUserIDsRequest,
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get player records by multiple user ids (adminBulkGetPlayerRecordsByUserIDsHandlerV1)
+
+    Retrieve player record key and payload in bulk under given namespace.
+    Maximum number of user ids per request is 20.
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/records/{key}/bulk
+
+        method: POST
+
+        tags: ["AdminPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUserIDsRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsBulkGetPlayerRecordResponse (OK)
+
+        400: Bad Request - ModelsResponseError (18125: invalid request body | 18126: request record keys list exceed max size [%d])
+
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (18124: unable to get record | 18006: unable to decode record)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkGetPlayerRecordsByUserIDsHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminBulkPutPlayerRecordsByKeyHandlerV1)
+def admin_bulk_put_player_records_by_key_handler_v1(
+    body: ModelsBulkUpdatePlayerRecordsByKeyRequest,
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk update player records by key (adminBulkPutPlayerRecordsByKeyHandlerV1)
+
+    This endpoints will create new player record or replace the existing player record in bulk.
+    Maximum number of user ids per request is 10.
+    Maximum total size of the request payload is 5 MB.
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/records/{key}/bulk
+
+        method: PUT
+
+        tags: ["AdminPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUpdatePlayerRecordsByKeyRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsBulkUpdatePlayerRecordByKeyResponse] (OK)
+
+        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body)
+
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkPutPlayerRecordsByKeyHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBulkPutPlayerRecordsByKeyHandlerV1)
+async def admin_bulk_put_player_records_by_key_handler_v1_async(
+    body: ModelsBulkUpdatePlayerRecordsByKeyRequest,
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk update player records by key (adminBulkPutPlayerRecordsByKeyHandlerV1)
+
+    This endpoints will create new player record or replace the existing player record in bulk.
+    Maximum number of user ids per request is 10.
+    Maximum total size of the request payload is 5 MB.
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/users/records/{key}/bulk
+
+        method: PUT
+
+        tags: ["AdminPlayerRecord"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUpdatePlayerRecordsByKeyRequest in body
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsBulkUpdatePlayerRecordByKeyResponse] (OK)
+
+        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body)
+
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        500: Internal Server Error - ModelsResponseError (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkPutPlayerRecordsByKeyHandlerV1.create(
+        body=body,
+        key=key,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminDeletePlayerPublicRecordHandlerV1)
@@ -1034,13 +1266,16 @@ def admin_post_player_record_handler_v1(
     CLIENT: record can be modified by client and server.
     2. is_public (default: false, type: bool)
     Indicate whether the player record is a public record or not.
+    3. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
 
     **Request Body Example:**
     ```
     {
     "__META": {
     "set_by": "SERVER",
-    "is_public": true
+    "is_public": true,
+    "tags": ["tag1", "tag2"]
     }
     ...
     }
@@ -1163,13 +1398,16 @@ async def admin_post_player_record_handler_v1_async(
     CLIENT: record can be modified by client and server.
     2. is_public (default: false, type: bool)
     Indicate whether the player record is a public record or not.
+    3. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
 
     **Request Body Example:**
     ```
     {
     "__META": {
     "set_by": "SERVER",
-    "is_public": true
+    "is_public": true,
+    "tags": ["tag1", "tag2"]
     }
     ...
     }
@@ -1478,13 +1716,16 @@ def admin_put_player_record_handler_v1(
     CLIENT: record can be modified by client and server.
     2. is_public (default: false, type: bool)
     Indicate whether the player record is a public record or not.
+    3. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
 
     **Request Body Example:**
     ```
     {
     "__META": {
     "set_by": "SERVER",
-    "is_public": true
+    "is_public": true,
+    "tags": ["tag1", "tag2"]
     }
     ...
     }
@@ -1595,13 +1836,16 @@ async def admin_put_player_record_handler_v1_async(
     CLIENT: record can be modified by client and server.
     2. is_public (default: false, type: bool)
     Indicate whether the player record is a public record or not.
+    3. tags (default: *empty array*, type: array of string)
+    Indicate the tagging for the game record.
 
     **Request Body Example:**
     ```
     {
     "__META": {
     "set_by": "SERVER",
-    "is_public": true
+    "is_public": true,
+    "tags": ["tag1", "tag2"]
     }
     ...
     }
@@ -1692,7 +1936,7 @@ def admin_put_player_records_handler_v1(
     Responses:
         200: OK - List[ModelsBulkUpdatePlayerRecordResponse] (OK)
 
-        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body | 18355: unable to marshal request body)
+        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 
@@ -1745,7 +1989,7 @@ async def admin_put_player_records_handler_v1_async(
     Responses:
         200: OK - List[ModelsBulkUpdatePlayerRecordResponse] (OK)
 
-        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body | 18355: unable to marshal request body)
+        400: Bad Request - ModelsResponseError (18353: invalid request body | 18356: invalid request body: size of the request body must be less than [%d]MB | 18354: records amount exceeded max limit | 18355: unable to marshal request body)
 
         401: Unauthorized - ModelsResponseError (20001: unauthorized access)
 

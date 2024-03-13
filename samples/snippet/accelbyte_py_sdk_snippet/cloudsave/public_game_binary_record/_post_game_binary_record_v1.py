@@ -13,7 +13,7 @@ Definition: ModelsPublicGameBinaryRecordCreate
 file_type: str
 key: str
 
-Example: '{"file_type": "HAkWzTqczWXnr2Oy", "key": "FeCnaQCW1Cmlgert"}'
+Example: '{"file_type": "iQLiNEeiEu8ibVcY", "key": "Qj7xwDg6TyEbyPBC"}'
 """
 
 result, error = post_game_binary_record_v1(

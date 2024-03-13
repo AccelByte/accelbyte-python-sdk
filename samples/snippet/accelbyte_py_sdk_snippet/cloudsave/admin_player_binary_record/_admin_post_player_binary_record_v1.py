@@ -15,7 +15,7 @@ is_public: bool
 key: str
 set_by: str
 
-Example: '{"file_type": "cvXapatz8frqnrEu", "is_public": true, "key": "VI8mMrRkXftHMHYa", "set_by": "SERVER"}'
+Example: '{"file_type": "fFy1IoWBFhhXW2cK", "is_public": true, "key": "QYWf3Qt93R0FFpiP", "set_by": "CLIENT"}'
 """
 
 result, error = admin_post_player_binary_record_v1(

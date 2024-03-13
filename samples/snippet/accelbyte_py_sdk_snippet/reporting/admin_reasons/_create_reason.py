@@ -14,7 +14,7 @@ description: str
 group_ids: List[str]
 title: str
 
-Example: '{"description": "MazLwV7oEhQEiusp", "groupIds": ["4ONUOkX0DOAr4IKe", "1hPsyMRZ9xUiSjiN", "sZhIMZVF0Lq0qfMt"], "title": "lT14MFYNuJqaULHg"}'
+Example: '{"description": "BE6pllDT2kmReQx3", "groupIds": ["wKzxtsEmvtOgs3K0", "Q97geUIMfNhnPkWz", "wOztHa2FCGh4ZSqh"], "title": "T5HyMJJQwiCf9ih6"}'
 """
 
 result, error = create_reason(

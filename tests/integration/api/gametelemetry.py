@@ -62,7 +62,7 @@ class GametelemetryTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.gametelemetry import (
             protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put,
         )
-        from accelbyte_py_sdk.core import HttpResponse
+        from accelbyte_py_sdk.api.gametelemetry.models import BaseErrorResponse
 
         # act
         (
@@ -76,8 +76,8 @@ class GametelemetryTestCase(IntegrationTestCase):
         # assert
         if (
             error is not None
-            and isinstance(error, HttpResponse)
-            and "user not found" in str(error.content).lower()
+            and isinstance(error, BaseErrorResponse)
+            and "user not found" in str(error.error_message).lower()
         ):
             self.skipTest(reason="User was not found.")
         else:

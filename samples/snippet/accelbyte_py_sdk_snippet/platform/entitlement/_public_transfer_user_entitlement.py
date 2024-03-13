@@ -13,7 +13,7 @@ Definition: EntitlementTransferRequest
 entitlement_id: str
 use_count: int
 
-Example: '{"entitlementId": "oJ0NYcrai8h9RhMw", "useCount": 64}'
+Example: '{"entitlementId": "akoTbjLNnNAU2nnp", "useCount": 49}'
 """
 
 result, error = public_transfer_user_entitlement(

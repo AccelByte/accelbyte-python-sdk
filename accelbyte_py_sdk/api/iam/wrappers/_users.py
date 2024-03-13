@@ -11952,7 +11952,11 @@ async def link_headless_account_to_my_account_v3_async(
 def list_admins_v3(
     after: Optional[str] = None,
     before: Optional[str] = None,
+    end_date: Optional[str] = None,
     limit: Optional[int] = None,
+    query: Optional[str] = None,
+    role_id: Optional[str] = None,
+    start_date: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -11960,6 +11964,17 @@ def list_admins_v3(
     """List User Admins (ListAdminsV3)
 
     List all users that has admin role (role that has admin_role attribute set to true).
+    Endpoint behavior :
+    - if query parameter is defined, endpoint will search users whose email address and display name match with the query
+    - if roleId parameter is defined, endpoint will search users that have the defined roleId
+    - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
+    - if startDate parameter is defined, endpoint will search users that created start from the defined date
+    - if endDate parameter is defined, endpoint will search users that created until the defined date
+
+    In multi tenant mode :
+    - if super admin search in super admin namespace, the result will be all admin users
+    - if super admin search in game studio namespace, the result will be all admin users under the game studio namespace
+    - if studio admin search in their studio namespace, the result will be all admin user in the game studio namespace
 
     The endpoint will return all admin from all namespace when called from publisher namespace.
     When not called from publisher namespace, the endpoint will return all admin from the path namespace.
@@ -11983,7 +11998,15 @@ def list_admins_v3(
 
         before: (before) OPTIONAL str in query
 
+        end_date: (endDate) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
+
+        query: (query) OPTIONAL str in query
+
+        role_id: (roleId) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
 
     Responses:
         200: OK - ModelGetUsersResponseWithPaginationV3 (Operation succeeded)
@@ -12001,7 +12024,11 @@ def list_admins_v3(
     request = ListAdminsV3.create(
         after=after,
         before=before,
+        end_date=end_date,
         limit=limit,
+        query=query,
+        role_id=role_id,
+        start_date=start_date,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -12011,7 +12038,11 @@ def list_admins_v3(
 async def list_admins_v3_async(
     after: Optional[str] = None,
     before: Optional[str] = None,
+    end_date: Optional[str] = None,
     limit: Optional[int] = None,
+    query: Optional[str] = None,
+    role_id: Optional[str] = None,
+    start_date: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -12019,6 +12050,17 @@ async def list_admins_v3_async(
     """List User Admins (ListAdminsV3)
 
     List all users that has admin role (role that has admin_role attribute set to true).
+    Endpoint behavior :
+    - if query parameter is defined, endpoint will search users whose email address and display name match with the query
+    - if roleId parameter is defined, endpoint will search users that have the defined roleId
+    - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
+    - if startDate parameter is defined, endpoint will search users that created start from the defined date
+    - if endDate parameter is defined, endpoint will search users that created until the defined date
+
+    In multi tenant mode :
+    - if super admin search in super admin namespace, the result will be all admin users
+    - if super admin search in game studio namespace, the result will be all admin users under the game studio namespace
+    - if studio admin search in their studio namespace, the result will be all admin user in the game studio namespace
 
     The endpoint will return all admin from all namespace when called from publisher namespace.
     When not called from publisher namespace, the endpoint will return all admin from the path namespace.
@@ -12042,7 +12084,15 @@ async def list_admins_v3_async(
 
         before: (before) OPTIONAL str in query
 
+        end_date: (endDate) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
+
+        query: (query) OPTIONAL str in query
+
+        role_id: (roleId) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
 
     Responses:
         200: OK - ModelGetUsersResponseWithPaginationV3 (Operation succeeded)
@@ -12060,7 +12110,11 @@ async def list_admins_v3_async(
     request = ListAdminsV3.create(
         after=after,
         before=before,
+        end_date=end_date,
         limit=limit,
+        query=query,
+        role_id=role_id,
+        start_date=start_date,
         namespace=namespace,
     )
     return await run_request_async(

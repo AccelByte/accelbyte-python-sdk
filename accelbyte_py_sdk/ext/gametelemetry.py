@@ -24,14 +24,60 @@
 
 from .utils import randomize
 
+from ..api.gametelemetry.models import BaseErrorResponse
+from ..api.gametelemetry.models import GetNamespaceEventResponse
 from ..api.gametelemetry.models import HTTPValidationError
+from ..api.gametelemetry.models import ListBaseResponseStr
+from ..api.gametelemetry.models import PagedResponseGetNamespaceEventResponse
+from ..api.gametelemetry.models import PlayTimeResponse
 from ..api.gametelemetry.models import TelemetryBody
 from ..api.gametelemetry.models import ValidationError
+
+
+def create_base_error_response_example() -> BaseErrorResponse:
+    instance = BaseErrorResponse()
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
+    instance.error_message = randomize()
+    return instance
+
+
+def create_get_namespace_event_response_example() -> GetNamespaceEventResponse:
+    instance = GetNamespaceEventResponse()
+    instance.event_id = randomize()
+    instance.event_name = randomize()
+    instance.event_namespace = randomize("slug")
+    instance.event_time_stamp = randomize()
+    instance.flight_id = randomize()
+    instance.user_id = randomize("uid")
+    instance.user_namespace = randomize("slug")
+    instance.payload = {randomize(): randomize()}
+    return instance
 
 
 def create_http_validation_error_example() -> HTTPValidationError:
     instance = HTTPValidationError()
     instance.detail = [create_validation_error_example()]
+    return instance
+
+
+def create_list_base_response_str_example() -> ListBaseResponseStr:
+    instance = ListBaseResponseStr()
+    instance.data = [randomize()]
+    return instance
+
+
+def create_paged_response_get_namespace_event_response_example() -> (
+    PagedResponseGetNamespaceEventResponse
+):
+    instance = PagedResponseGetNamespaceEventResponse()
+    instance.data = [create_get_namespace_event_response_example()]
+    instance.paging = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_play_time_response_example() -> PlayTimeResponse:
+    instance = PlayTimeResponse()
+    instance.total_playtime = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

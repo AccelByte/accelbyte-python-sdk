@@ -37,10 +37,7 @@ from ...models import ResponseError
 class AdminGenerateOfficialContentUploadURLV2(Operation):
     """Generate official content upload URL (AdminGenerateOfficialContentUploadURLV2)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Generate official content upload URL
 
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}/uploadUrl

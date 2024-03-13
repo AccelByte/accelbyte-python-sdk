@@ -36,10 +36,7 @@ from ...models import ResponseError
 class GetChannels(Operation):
     """Get Channels (GetChannels)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CHANNEL [READ]
+    Get user channel paginated
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels

@@ -80,10 +80,7 @@ def delete_content_screenshot_v2(
 ):
     """Delete screenshots content (DeleteContentScreenshotV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete screenshot from a content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots/{screenshotId}
@@ -143,10 +140,7 @@ async def delete_content_screenshot_v2_async(
 ):
     """Delete screenshots content (DeleteContentScreenshotV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete screenshot from a content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots/{screenshotId}
@@ -308,10 +302,7 @@ def public_create_content_v2(
 ):
     """Create a content (PublicCreateContentV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    Create a new content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents
@@ -369,10 +360,7 @@ async def public_create_content_v2_async(
 ):
     """Create a content (PublicCreateContentV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    Create a new content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents
@@ -432,10 +420,7 @@ def public_delete_content_by_share_code_v2(
 ):
     """Delete content by share code (PublicDeleteContentByShareCodeV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing content by share code
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
@@ -491,10 +476,7 @@ async def public_delete_content_by_share_code_v2_async(
 ):
     """Delete content by share code (PublicDeleteContentByShareCodeV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing content by share code
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
@@ -552,10 +534,7 @@ def public_delete_content_v2(
 ):
     """Delete content (PublicDeleteContentV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -611,10 +590,7 @@ async def public_delete_content_v2_async(
 ):
     """Delete content (PublicDeleteContentV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
+    Delete existing content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -673,10 +649,7 @@ def public_generate_content_upload_urlv2(
 ):
     """Generate content upload URL (PublicGenerateContentUploadURLV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Generate content upload URL
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/uploadUrl
@@ -740,10 +713,7 @@ async def public_generate_content_upload_urlv2_async(
 ):
     """Generate content upload URL (PublicGenerateContentUploadURLV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Generate content upload URL
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/uploadUrl
@@ -1371,21 +1341,23 @@ def public_list_content_v2(
 ):
     """List contents (PublicListContentV2)
 
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses ( ) for priority. e.g:
 
-    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
 
-    `tags=red`
-    `tags=red&animal;`
-    `tags=red|animal`
-    `tags=red&animal;|wild`
-    `tags=red&(animal|wild)`
+    *tags=red*
+    *tags=red&animal;*
+    *tags=red|animal*
+    *tags=red&animal;|wild*
+    *tags=red&(animal|wild)*
 
     The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
 
-    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
-    Allowed character for operator: `&` `|` `(` `)`
+    Allowed character for operand: alphanumeric, underscore _ and dash -
 
-     Please note that value of tags query param should be URL encoded
+    Allowed character for operator: & | ( )
+
+
+    **Please note that value of tags query param should be URL encoded**
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/contents
@@ -1461,21 +1433,23 @@ async def public_list_content_v2_async(
 ):
     """List contents (PublicListContentV2)
 
+    For advance tag filtering supports & as AND operator and | as OR operator and parentheses ( ) for priority. e.g:
 
-    For advance tag filtering supports & as AND operator and | as OR operator and parentheses () for priority. e.g:
 
-    `tags=red`
-    `tags=red&animal;`
-    `tags=red|animal`
-    `tags=red&animal;|wild`
-    `tags=red&(animal|wild)`
+    *tags=red*
+    *tags=red&animal;*
+    *tags=red|animal*
+    *tags=red&animal;|wild*
+    *tags=red&(animal|wild)*
 
     The precedence of logical operator is AND > OR, so if no parentheses, AND logical operator will be executed first.
 
-    Allowed character for operand: alphanumeric, underscore `_` and dash `-`
-    Allowed character for operator: `&` `|` `(` `)`
+    Allowed character for operand: alphanumeric, underscore _ and dash -
 
-     Please note that value of tags query param should be URL encoded
+    Allowed character for operator: & | ( )
+
+
+    **Please note that value of tags query param should be URL encoded**
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/contents
@@ -1549,10 +1523,7 @@ def public_update_content_by_share_code_v2(
 ):
     """Update content to S3 bucket by share code (PublicUpdateContentByShareCodeV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update content by share code
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
@@ -1618,10 +1589,7 @@ async def public_update_content_by_share_code_v2_async(
 ):
     """Update content to S3 bucket by share code (PublicUpdateContentByShareCodeV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update content by share code
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
@@ -1689,11 +1657,7 @@ def public_update_content_file_location(
 ):
     """Update content file location (PublicUpdateContentFileLocation)
 
-    This endpoint should be used after calling generate upload url endpoint to commit the changes.
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    This endpoint should be used after calling generate upload url endpoint to commit the changes
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/fileLocation
@@ -1757,11 +1721,7 @@ async def public_update_content_file_location_async(
 ):
     """Update content file location (PublicUpdateContentFileLocation)
 
-    This endpoint should be used after calling generate upload url endpoint to commit the changes.
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    This endpoint should be used after calling generate upload url endpoint to commit the changes
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/fileLocation
@@ -1827,10 +1787,7 @@ def public_update_content_v2(
 ):
     """Update content (PublicUpdateContentV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update existing content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -1894,10 +1851,7 @@ async def public_update_content_v2_async(
 ):
     """Update content (PublicUpdateContentV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Update existing content
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -1963,16 +1917,11 @@ def update_content_share_code_v2(
 ):
     """Update content share code (UpdateContentShareCodeV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE].
-
     This endpoint is used to modify the shareCode of a content. However, this operation is restricted by default and requires the above permission to be granted to the User role.
 
     `shareCode` format should follows:
     Max length: 7
     Available characters: abcdefhkpqrstuxyz
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE]
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/sharecode
@@ -2038,16 +1987,11 @@ async def update_content_share_code_v2_async(
 ):
     """Update content share code (UpdateContentShareCodeV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE].
-
     This endpoint is used to modify the shareCode of a content. However, this operation is restricted by default and requires the above permission to be granted to the User role.
 
     `shareCode` format should follows:
     Max length: 7
     Available characters: abcdefhkpqrstuxyz
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE]
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/sharecode
@@ -2114,11 +2058,7 @@ def update_screenshots_v2(
 ):
     """Update screenshot of content (UpdateScreenshotsV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots
@@ -2178,11 +2118,7 @@ async def update_screenshots_v2_async(
 ):
     """Update screenshot of content (UpdateScreenshotsV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots
@@ -2244,15 +2180,10 @@ def upload_content_screenshot_v2(
 ):
     """Upload screenshots for content (UploadContentScreenshotV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-    All request body are required except for contentType field.
-    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
-    If not specified, it will use fileExtension value.
+    This endpoint used to request upload URL from content's screenshot.
+    If *contentType* is not specified, it will use *fileExtension* value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots
@@ -2310,15 +2241,10 @@ async def upload_content_screenshot_v2_async(
 ):
     """Upload screenshots for content (UploadContentScreenshotV2)
 
-    Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
-    All request body are required except for contentType field.
-    contentType values is used to enforce the Content-Type header needed by the client to upload the content using the presigned URL.
-    If not specified, it will use fileExtension value.
+    This endpoint used to request upload URL from content's screenshot.
+    If *contentType* is not specified, it will use *fileExtension* value.
     Supported file extensions: pjp, jpg, jpeg, jfif, bmp, png.
-    Maximum description length: 1024.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
+    Maximum description length: 1024
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/contents/{contentId}/screenshots
