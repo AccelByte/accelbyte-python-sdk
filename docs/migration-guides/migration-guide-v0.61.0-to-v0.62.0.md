@@ -12,4 +12,11 @@ Following changes in AccelByte Gaming Services OpenAPI specification:
 - `gametelemetry`: Operation `protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put` had its response changed from `Dict[str, Any]` into`PlayTimeResponse`.
 - `gametelemetry`: Operation `protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put` had its error response also return `BaseErrorResponse`.
 
+- `lobby`: Model `MessageNotif` field `sent_at` had its type change from `int` to `str`.
+- `lobby`: Model `PartyChatNotif` field `received_at` had its type change from `int` to `str`.
+- `lobby`: Model `PartyChatRequest` field `received_at` had its type change from `int` to `str`.
+- `lobby`: Model `PartyDataUpdateNotif` field `updated_at` had its type change from `int` to `str`.
+- `lobby`: Model `PersonalChatNotif` field `received_at` had its type change from `int` to `str`.
+- `lobby`: Model `PersonalChatRequest` field `received_at` had its type change from `int` to `str`.
+
 [v0.62.0]: https://github.com/AccelByte/accelbyte-python-sdk/compare/v0.61.0..v0.62.0
