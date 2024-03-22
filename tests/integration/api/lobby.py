@@ -97,4 +97,58 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
 
     # endregion test:send_and_receive_notifications
 
+    # region test:refresh_token_request
+
+    async def test_refresh_token_request(self):
+        from accelbyte_py_sdk.core import get_token_repository
+        from accelbyte_py_sdk.services.auth import refresh_login_async
+        from accelbyte_py_sdk.api.lobby.wss_models import parse_wsm
+
+        # arrange
+        token_repo = get_token_repository()
+
+        token_repo.register_observer(self.ws_client)
+
+        old_access_token = token_repo.get_access_token()
+        refresh_token = token_repo.get_refresh_token()
+        self.assertTrue(old_access_token)
+        self.assertTrue(refresh_token)
+
+        # act
+        result, error = await refresh_login_async(refresh_token)
+        if error:
+            self.fail(error)
+
+        await asyncio.sleep(1)
+
+        new_access_token = token_repo.get_access_token()
+
+        elapsed = 0.0
+        interval = 0.016
+        timeout = 10.0
+        wsm = None
+        wsm_type = None
+        while True:
+            await asyncio.sleep(interval)
+            elapsed += interval
+            if not self.messages.empty():
+                message = self.messages.get_nowait()
+                if message is not None:
+                    wsm, error = parse_wsm(message)
+                    self.assertIsNone(error, error)
+                    wsm_type = wsm.get_type()
+                    if wsm_type == "refreshTokenResponse":
+                        break
+            if elapsed > timeout:
+                break
+
+        # assert
+        self.assertTrue(new_access_token)
+        self.assertNotEqual(old_access_token, new_access_token)
+        self.assertIsNotNone(wsm)
+        self.assertIsNotNone(wsm_type)
+        self.assertEqual("refreshTokenResponse", wsm_type)
+
+    # endregion test:refresh_token_request
+
     # end of file
