@@ -1,5 +1,8 @@
 import asyncio
 from pathlib import Path
+from typing import List, Optional
+
+from accelbyte_py_sdk import AccelByteSDK
 
 from tests.integration.test_case import IntegrationTestCase
 from tests.integration.test_case import AsyncIntegrationTestCase
@@ -58,6 +61,20 @@ class LobbyTestCase(IntegrationTestCase):
 
 
 class AsyncLobbyTestCase(AsyncIntegrationTestCase):
+    sdks: List[AccelByteSDK] = []
+    user_id: Optional[str] = None
+
+    async def asyncTearDown(self) -> None:
+        if self.user_id:
+            self.delete_user(user_id=self.user_id)
+            self.user_id = None
+
+        for sdk in self.sdks:
+            sdk.reset()
+        self.sdks = []
+
+        await super().asyncTearDown()
+
     # region test:send_and_receive_notifications
 
     async def test_send_and_receive_notifications(self):
@@ -100,12 +117,29 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
     # region test:refresh_token_request
 
     async def test_refresh_token_request(self):
-        from accelbyte_py_sdk.core import get_token_repository
+        from accelbyte_py_sdk.core import SDK, get_token_repository
         from accelbyte_py_sdk.services.auth import refresh_login_async
         from accelbyte_py_sdk.api.lobby.wss_models import parse_wsm
 
         # arrange
-        token_repo = get_token_repository()
+        generate_user_result, error = self.generate_user()
+        if error:
+            self.skipTest(reason=f"unable to create user: {error}")
+
+        username, password, user_id = generate_user_result
+        self.user_id = user_id
+
+        user_sdk, error = self.create_user_sdk(
+            username=username,
+            password=password,
+            existing_sdk=SDK,
+        )
+        if error:
+            self.skipTest(reason=f"unable to create user sdk: {error}")
+        else:
+            self.sdks.append(user_sdk)
+
+        token_repo = user_sdk.get_token_repository()
 
         token_repo.register_observer(self.ws_client)
 
@@ -115,7 +149,7 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
         self.assertTrue(refresh_token)
 
         # act
-        result, error = await refresh_login_async(refresh_token)
+        result, error = await refresh_login_async(refresh_token, sdk=user_sdk)
         if error:
             self.fail(error)
 
