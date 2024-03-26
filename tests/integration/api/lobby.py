@@ -183,6 +183,9 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
         self.assertIsNotNone(wsm_type)
         self.assertEqual("refreshTokenResponse", wsm_type)
 
+        # clean up
+        token_repo.unregister_observer(self.ws_client)
+
     # endregion test:refresh_token_request
 
     # end of file

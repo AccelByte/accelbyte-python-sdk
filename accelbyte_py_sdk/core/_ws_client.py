@@ -153,5 +153,8 @@ class WebsocketsWSClient:
         message = f"type: refreshTokenRequest\n" \
                   f"id: {generate_websocket_message_id()}\n" \
                   f"token: {access_token}"
-        loop = asyncio.get_running_loop()
-        loop.create_task(self.send(message))
+        try:
+            loop = asyncio.get_running_loop()
+            loop.create_task(self.send(message))
+        except RuntimeError as error:
+            _LOGGER.warning(f"Failed to send 'refreshTokenRequest'. {str(error)}")
