@@ -22,7 +22,7 @@ last_name: str
 private_custom_attributes: Dict[str, Any]
 time_zone: str
 
-Example: '{"avatarLargeUrl": "vcvWyShLJQxb7hSt", "avatarSmallUrl": "AyE7YxQJAn9exH4v", "avatarUrl": "2N7ANSsAa04QSmJC", "customAttributes": {"0AR9egry7QxWjwVf": {}, "PZRBcc0miIfk1pc2": {}, "oNuxs1hD48AvahEQ": {}}, "dateOfBirth": "1982-08-16", "firstName": "w7cknTqEa7CTf1hr", "language": "yR", "lastName": "6iSw8Q0HT5frgfcQ", "privateCustomAttributes": {"dRH6VKTOGsQMfl17": {}, "wa2BthXGLp3Xamo1": {}, "l9dnU321AY0e3g5r": {}}, "timeZone": "Thlgr355k1W1uJ44"}'
+Example: '{"avatarLargeUrl": "Mujem9gW6IVCI9uU", "avatarSmallUrl": "wecCXitVYQ4FUq8q", "avatarUrl": "jM33OdVHt0xkbrFC", "customAttributes": {"nB7k8v7xtbtkjbiL": {}, "6FaU8A282wsyRmD9": {}, "V3M3xws2joeo6M4T": {}}, "dateOfBirth": "1983-04-25", "firstName": "W0Zn5N3BAYeINTAZ", "language": "Gbtn-WIYD-ID", "lastName": "l1rAQnBY8cs76saE", "privateCustomAttributes": {"QQRDe3y6Ba2Av6YI": {}, "M9sv9KNUg6kPxP8Y": {}, "ugAS8cYfLEHOl8X1": {}}, "timeZone": "Ho9CjuVz1FXqk41f"}'
 """
 
 result, error = create_my_profile(

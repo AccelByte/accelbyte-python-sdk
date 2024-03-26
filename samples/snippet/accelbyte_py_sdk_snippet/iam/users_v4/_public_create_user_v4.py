@@ -28,7 +28,7 @@ reach_minimum_age: bool
 unique_display_name: str
 username: str
 
-Example: '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "GD2b1BvmVnznSYDu", "policyId": "A95xrVtKre4Ixtfe", "policyVersionId": "spOnBO4rOwSWxdTo"}, {"isAccepted": true, "localizedPolicyVersionId": "13ghGJfRQUAFs1yO", "policyId": "XNxf5bzHjhbft4Uj", "policyVersionId": "XNlpvHRcWQki7h56"}, {"isAccepted": true, "localizedPolicyVersionId": "BeaTlTQCcXo0EizS", "policyId": "E5w4zxI6wHudVJSA", "policyVersionId": "fVqWYCmHxcddg2m7"}], "authType": "EMAILPASSWD", "code": "rDANVuOvTDbckMkx", "country": "4d1rbdn3HClyLyUj", "dateOfBirth": "SusYf6xsGfmTOYsw", "displayName": "R4SWZ7Uji2q6enGH", "emailAddress": "lo3sx5COTpBSPoSb", "password": "E84YCXayjzLf7UVc", "passwordMD5Sum": "k5m1PSeOiSyXjnV9", "reachMinimumAge": true, "uniqueDisplayName": "suOwl5jhoWd1Fysf", "username": "JgbgCAtbDaDiqNiO"}'
+Example: '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "wMibQbTLWED7Bkfk", "policyId": "xAPqiolGZDuU8XPa", "policyVersionId": "OtL2X53L4xEAS4Mn"}, {"isAccepted": false, "localizedPolicyVersionId": "pxNtEHv1tnTrC3Qr", "policyId": "rhGMFO9NTTU2y2AR", "policyVersionId": "PpnhzUjXqAjDQSsv"}, {"isAccepted": false, "localizedPolicyVersionId": "YZmUWsfBbjkUFbhs", "policyId": "rpoJfHwXV5ZiDSFG", "policyVersionId": "6zYt8IwcsrLZtI1E"}], "authType": "EMAILPASSWD", "code": "s6vuEufq4VallM5b", "country": "X70cVZdZPWe0DbJL", "dateOfBirth": "JFKqkl1GcmrruaBZ", "displayName": "frLx7mlepOV7HDEM", "emailAddress": "l0pYqonkVBul2Pg8", "password": "nfuqYyCIQwJxOeEF", "passwordMD5Sum": "0N0xxFJT5zOBgiKN", "reachMinimumAge": false, "uniqueDisplayName": "Rd57zf6k838CkEMu", "username": "TDI9jVY12lw2EDrT"}'
 """
 
 result, error = public_create_user_v4(

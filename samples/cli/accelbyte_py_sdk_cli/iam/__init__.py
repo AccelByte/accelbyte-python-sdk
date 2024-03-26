@@ -149,6 +149,7 @@ from ._admin_get_bans_type_with_namespace_v3 import (
     admin_get_bans_type_with_namespace_v3,
 )
 from ._admin_get_clients_by_namespace_v3 import admin_get_clients_by_namespace_v3
+from ._admin_bulk_update_clients_v3 import admin_bulk_update_clients_v3
 from ._admin_create_client_v3 import admin_create_client_v3
 from ._admin_get_clientsby_namespaceby_idv3 import admin_get_clientsby_namespaceby_idv3
 from ._admin_delete_client_v3 import admin_delete_client_v3
@@ -201,6 +202,7 @@ from ._admin_list_user_id_by_platform_user_i_ds_v3 import (
 from ._admin_get_user_by_platform_user_idv3 import admin_get_user_by_platform_user_idv3
 from ._get_admin_users_by_role_id_v3 import get_admin_users_by_role_id_v3
 from ._admin_get_user_by_email_address_v3 import admin_get_user_by_email_address_v3
+from ._admin_bulk_update_users_v3 import admin_bulk_update_users_v3
 from ._admin_get_bulk_user_ban_v3 import admin_get_bulk_user_ban_v3
 from ._admin_list_user_id_by_user_i_ds_v3 import admin_list_user_id_by_user_i_ds_v3
 from ._admin_bulk_get_users_platform import admin_bulk_get_users_platform
@@ -223,6 +225,9 @@ from ._admin_verify_account_v3 import admin_verify_account_v3
 from ._get_user_verification_code import get_user_verification_code
 from ._admin_get_user_deletion_status_v3 import admin_get_user_deletion_status_v3
 from ._admin_update_user_deletion_status_v3 import admin_update_user_deletion_status_v3
+from ._admin_list_user_all_platform_accounts_distinct_v3 import (
+    admin_list_user_all_platform_accounts_distinct_v3,
+)
 from ._admin_upgrade_headless_account_v3 import admin_upgrade_headless_account_v3
 from ._admin_delete_user_information_v3 import admin_delete_user_information_v3
 from ._admin_get_user_login_histories_v3 import admin_get_user_login_histories_v3
@@ -239,6 +244,7 @@ from ._admin_get_user_mapping import admin_get_user_mapping
 from ._admin_create_justice_user import admin_create_justice_user
 from ._admin_link_platform_account import admin_link_platform_account
 from ._admin_platform_unlink_v3 import admin_platform_unlink_v3
+from ._admin_platform_unlink_all_v3 import admin_platform_unlink_all_v3
 from ._admin_platform_link_v3 import admin_platform_link_v3
 from ._admin_delete_user_linking_history_by_platform_idv3 import (
     admin_delete_user_linking_history_by_platform_idv3,
@@ -259,6 +265,9 @@ from ._admin_verify_user_without_verification_code_v3 import (
     admin_verify_user_without_verification_code_v3,
 )
 from ._admin_update_client_secret_v3 import admin_update_client_secret_v3
+from ._admin_check_third_party_login_platform_availability_v3 import (
+    admin_check_third_party_login_platform_availability_v3,
+)
 from ._admin_get_roles_v3 import admin_get_roles_v3
 from ._admin_create_role_v3 import admin_create_role_v3
 from ._admin_get_role_v3 import admin_get_role_v3
@@ -624,6 +633,7 @@ commands = [
     admin_unban_user_bulk_v3,
     admin_get_bans_type_with_namespace_v3,
     admin_get_clients_by_namespace_v3,
+    admin_bulk_update_clients_v3,
     admin_create_client_v3,
     admin_get_clientsby_namespaceby_idv3,
     admin_delete_client_v3,
@@ -652,6 +662,7 @@ commands = [
     admin_get_user_by_platform_user_idv3,
     get_admin_users_by_role_id_v3,
     admin_get_user_by_email_address_v3,
+    admin_bulk_update_users_v3,
     admin_get_bulk_user_ban_v3,
     admin_list_user_id_by_user_i_ds_v3,
     admin_bulk_get_users_platform,
@@ -670,6 +681,7 @@ commands = [
     get_user_verification_code,
     admin_get_user_deletion_status_v3,
     admin_update_user_deletion_status_v3,
+    admin_list_user_all_platform_accounts_distinct_v3,
     admin_upgrade_headless_account_v3,
     admin_delete_user_information_v3,
     admin_get_user_login_histories_v3,
@@ -684,6 +696,7 @@ commands = [
     admin_create_justice_user,
     admin_link_platform_account,
     admin_platform_unlink_v3,
+    admin_platform_unlink_all_v3,
     admin_platform_link_v3,
     admin_delete_user_linking_history_by_platform_idv3,
     admin_get_third_party_platform_token_link_status_v3,
@@ -696,6 +709,7 @@ commands = [
     admin_trustly_update_user_identity,
     admin_verify_user_without_verification_code_v3,
     admin_update_client_secret_v3,
+    admin_check_third_party_login_platform_availability_v3,
     admin_get_roles_v3,
     admin_create_role_v3,
     admin_get_role_v3,

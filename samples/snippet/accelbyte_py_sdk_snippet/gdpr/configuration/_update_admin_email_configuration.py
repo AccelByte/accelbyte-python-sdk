@@ -9,7 +9,7 @@ from accelbyte_py_sdk.api.gdpr.models import ResponseError
 body:
 Definition: List[str]
 
-Example: '["nkluaNB2ZK12Ztpw", "PeThqg60xcyMq9UY", "CmQem25ilJBNUH0Z"]'
+Example: '["7nt8isZoiPIFGfjG", "aRH32EHqpUuKkg9o", "TM34suS3dDeezaiT"]'
 """
 
 result, error = update_admin_email_configuration(

@@ -34,6 +34,7 @@ from ..models import RetrievePolicyPublicResponse
 from ..models import RetrievePolicyResponse
 from ..models import UpdatePolicyRequest
 
+from ..operations.policies import RetrieveCountryListWithPolicies
 from ..operations.policies import RetrieveLatestPolicies
 from ..operations.policies import RetrieveLatestPoliciesPolicyTypeEnum
 from ..operations.policies import RetrieveLatestPoliciesByNamespaceAndCountryPublic
@@ -45,6 +46,64 @@ from ..operations.policies import RetrieveLatestPoliciesPublicPolicyTypeEnum
 from ..operations.policies import RetrievePolicies
 from ..operations.policies import SetDefaultPolicy2
 from ..operations.policies import UpdatePolicy
+
+
+@same_doc_as(RetrieveCountryListWithPolicies)
+def retrieve_country_list_with_policies(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Retrieve List of Countries that have Active Legal Policies (retrieveCountryListWithPolicies)
+
+    Retrieve List of Countries that have Active Legal Policies.
+
+    Properties:
+        url: /agreement/public/policies/countries/list
+
+        method: GET
+
+        tags: ["Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[str] (successful operation)
+    """
+    request = RetrieveCountryListWithPolicies.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RetrieveCountryListWithPolicies)
+async def retrieve_country_list_with_policies_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Retrieve List of Countries that have Active Legal Policies (retrieveCountryListWithPolicies)
+
+    Retrieve List of Countries that have Active Legal Policies.
+
+    Properties:
+        url: /agreement/public/policies/countries/list
+
+        method: GET
+
+        tags: ["Policies"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - List[str] (successful operation)
+    """
+    request = RetrieveCountryListWithPolicies.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(RetrieveLatestPolicies)

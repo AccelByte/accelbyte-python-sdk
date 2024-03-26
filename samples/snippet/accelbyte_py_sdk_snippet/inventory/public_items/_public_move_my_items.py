@@ -17,7 +17,7 @@ Definition: List[ApimodelsTradeItem]
     source_item_id: str
 src_inventory_id: str
 
-Example: '{"items": [{"qty": 15, "slotId": "Hk2xYYSAlvAUKpO8", "sourceItemId": "iUAThyG7KMwj3SIw"}, {"qty": 43, "slotId": "9CFVYjjb76BZ93Cq", "sourceItemId": "NqctEMXVEJIpVSCx"}, {"qty": 2, "slotId": "ur4Ru4dZz51HDdq6", "sourceItemId": "KgbnzHLCvzixqtxY"}], "srcInventoryId": "X71C0HeBNfC78s86"}'
+Example: '{"items": [{"qty": 85, "slotId": "i2QDbxetExVBrOfP", "sourceItemId": "YxEGw8HVCB3tyy49"}, {"qty": 86, "slotId": "5035GiRYL2B35ypr", "sourceItemId": "n37j22RpeLc3y8md"}, {"qty": 1, "slotId": "2V3RnRthgda9a6XI", "sourceItemId": "z34qAEyDfV9ygNeK"}], "srcInventoryId": "FlMYMyso1Bww1SxB"}'
 """
 
 result, error = public_move_my_items(

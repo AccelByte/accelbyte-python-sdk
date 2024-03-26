@@ -13,7 +13,7 @@ pass_item_id: str
 tier_item_count: int
 tier_item_id: str
 
-Example: '{"passItemId": "y8pv2Pn6pqJhzafJ", "tierItemCount": 71, "tierItemId": "6iMGEvyaPk4oUVCh"}'
+Example: '{"passItemId": "CosJ3jcnhJgjCiA2", "tierItemCount": 24, "tierItemId": "LLdvxXsGJOxfB7Uz"}'
 """
 
 result, error = check_season_purchasable(

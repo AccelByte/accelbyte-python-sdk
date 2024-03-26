@@ -12,7 +12,7 @@ body:
 Definition: ModelsCreatePortRequest
 port: int
 
-Example: '{"port": 57}'
+Example: '{"port": 24}'
 """
 
 result, error = add_port(

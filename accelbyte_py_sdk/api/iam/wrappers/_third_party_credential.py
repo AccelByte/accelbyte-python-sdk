@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelCheckAvailabilityResponse
 from ..models import ModelPlatformDomainDeleteRequest
 from ..models import ModelPlatformDomainResponse
 from ..models import ModelPlatformDomainUpdateRequest
@@ -38,6 +39,9 @@ from ..models import ModelThirdPartyLoginPlatformCredentialResponse
 from ..models import RestErrorResponse
 
 from ..operations.third_party_credential import AddThirdPartyLoginPlatformCredentialV3
+from ..operations.third_party_credential import (
+    AdminCheckThirdPartyLoginPlatformAvailabilityV3,
+)
 from ..operations.third_party_credential import (
     DeleteThirdPartyLoginPlatformCredentialV3,
 )
@@ -207,6 +211,92 @@ async def add_third_party_login_platform_credential_v3_async(
         body=body,
         platform_id=platform_id,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminCheckThirdPartyLoginPlatformAvailabilityV3)
+def admin_check_third_party_login_platform_availability_v3(
+    platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Check 3rd party platform availability (AdminCheckThirdPartyLoginPlatformAvailabilityV3)
+
+    This is the API to check specific 3rd party platform availability.
+    supported platform:
+    - (psn) ps4web
+    - (psn) ps4
+    - (psn) ps5
+
+    Properties:
+        url: /iam/v3/admin/platforms/{platformId}/availability
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelCheckAvailabilityResponse (Platform Availability Check Retrieved)
+
+        400: Bad Request - RestErrorResponse (10226: third party platform is not supported)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
+    request = AdminCheckThirdPartyLoginPlatformAvailabilityV3.create(
+        platform_id=platform_id,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminCheckThirdPartyLoginPlatformAvailabilityV3)
+async def admin_check_third_party_login_platform_availability_v3_async(
+    platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Check 3rd party platform availability (AdminCheckThirdPartyLoginPlatformAvailabilityV3)
+
+    This is the API to check specific 3rd party platform availability.
+    supported platform:
+    - (psn) ps4web
+    - (psn) ps4
+    - (psn) ps5
+
+    Properties:
+        url: /iam/v3/admin/platforms/{platformId}/availability
+
+        method: GET
+
+        tags: ["Third Party Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelCheckAvailabilityResponse (Platform Availability Check Retrieved)
+
+        400: Bad Request - RestErrorResponse (10226: third party platform is not supported)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+    """
+    request = AdminCheckThirdPartyLoginPlatformAvailabilityV3.create(
+        platform_id=platform_id,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

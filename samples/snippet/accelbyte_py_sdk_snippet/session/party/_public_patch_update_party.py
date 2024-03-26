@@ -19,7 +19,7 @@ min_players: int
 type_: str
 version: int
 
-Example: '{"attributes": {"oS1wKgrouIQLCudY": {}, "0rzYrPjBNxRxqJ6l": {}, "MGh8ufllKZmbnewo": {}}, "inactiveTimeout": 97, "inviteTimeout": 75, "joinability": "ql1ZhDEPCU5oOqgk", "maxPlayers": 74, "minPlayers": 44, "type": "gsnqlwwBVkFFw3EJ", "version": 56}'
+Example: '{"attributes": {"zFjxuVa4DvM6YezD": {}, "9Bo15KSHg3NfJmMI": {}, "avrvzWQWDsAKggDS": {}}, "inactiveTimeout": 30, "inviteTimeout": 24, "joinability": "Vjy7AHE0gbGIeOO0", "maxPlayers": 68, "minPlayers": 75, "type": "ijarp74LMSyaU88c", "version": 53}'
 """
 
 result, error = public_patch_update_party(

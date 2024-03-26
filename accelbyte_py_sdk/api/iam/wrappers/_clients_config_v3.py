@@ -44,6 +44,7 @@ from ..operations.clients_config_v3 import AdminUpdateAvailablePermissionsByModu
 @same_doc_as(AdminDeleteConfigPermissionsByGroup)
 def admin_delete_config_permissions_by_group(
     body: ClientmodelPermissionSetDeleteGroupRequest,
+    force_delete: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -66,6 +67,8 @@ def admin_delete_config_permissions_by_group(
 
         body: (body) REQUIRED ClientmodelPermissionSetDeleteGroupRequest in body
 
+        force_delete: (forceDelete) OPTIONAL bool in query
+
     Responses:
         204: No Content - (Operation succeeded)
 
@@ -75,6 +78,7 @@ def admin_delete_config_permissions_by_group(
     """
     request = AdminDeleteConfigPermissionsByGroup.create(
         body=body,
+        force_delete=force_delete,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -82,6 +86,7 @@ def admin_delete_config_permissions_by_group(
 @same_doc_as(AdminDeleteConfigPermissionsByGroup)
 async def admin_delete_config_permissions_by_group_async(
     body: ClientmodelPermissionSetDeleteGroupRequest,
+    force_delete: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -104,6 +109,8 @@ async def admin_delete_config_permissions_by_group_async(
 
         body: (body) REQUIRED ClientmodelPermissionSetDeleteGroupRequest in body
 
+        force_delete: (forceDelete) OPTIONAL bool in query
+
     Responses:
         204: No Content - (Operation succeeded)
 
@@ -113,6 +120,7 @@ async def admin_delete_config_permissions_by_group_async(
     """
     request = AdminDeleteConfigPermissionsByGroup.create(
         body=body,
+        force_delete=force_delete,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -266,6 +274,7 @@ async def admin_list_client_templates_async(
 @same_doc_as(AdminUpdateAvailablePermissionsByModule)
 def admin_update_available_permissions_by_module(
     body: ClientmodelListUpsertModulesRequest,
+    force_delete: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -288,6 +297,8 @@ def admin_update_available_permissions_by_module(
 
         body: (body) REQUIRED ClientmodelListUpsertModulesRequest in body
 
+        force_delete: (forceDelete) OPTIONAL bool in query
+
     Responses:
         204: No Content - (Operation succeeded)
 
@@ -297,6 +308,7 @@ def admin_update_available_permissions_by_module(
     """
     request = AdminUpdateAvailablePermissionsByModule.create(
         body=body,
+        force_delete=force_delete,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -304,6 +316,7 @@ def admin_update_available_permissions_by_module(
 @same_doc_as(AdminUpdateAvailablePermissionsByModule)
 async def admin_update_available_permissions_by_module_async(
     body: ClientmodelListUpsertModulesRequest,
+    force_delete: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -326,6 +339,8 @@ async def admin_update_available_permissions_by_module_async(
 
         body: (body) REQUIRED ClientmodelListUpsertModulesRequest in body
 
+        force_delete: (forceDelete) OPTIONAL bool in query
+
     Responses:
         204: No Content - (Operation succeeded)
 
@@ -335,6 +350,7 @@ async def admin_update_available_permissions_by_module_async(
     """
     request = AdminUpdateAvailablePermissionsByModule.create(
         body=body,
+        force_delete=force_delete,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

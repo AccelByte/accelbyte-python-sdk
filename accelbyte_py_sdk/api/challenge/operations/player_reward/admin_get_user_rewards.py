@@ -41,7 +41,7 @@ class StatusEnum(StrEnum):
 
 
 class AdminGetUserRewards(Operation):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetUserRewards)
+    """List User's Rewards (adminGetUserRewards)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 

@@ -12,7 +12,7 @@ Definition: SteamDLCSyncRequest
 app_id: str
 steam_id: str
 
-Example: '{"appId": "WFKrkudUke3gvsOy", "steamId": "vmZF0d66j4P1nxGe"}'
+Example: '{"appId": "C7xZtyyrXM7GJavr", "steamId": "W6NrX0TQyebJU3Mw"}'
 """
 
 result, error = sync_steam_dlc(

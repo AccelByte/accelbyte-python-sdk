@@ -39,11 +39,13 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 @click.command()
 @click.argument("body", type=str)
+@click.option("--force_delete", "force_delete", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_update_available_permissions_by_module(
     body: str,
+    force_delete: Optional[bool] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -64,6 +66,7 @@ def admin_update_available_permissions_by_module(
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = admin_update_available_permissions_by_module_internal(
         body=body,
+        force_delete=force_delete,
         x_additional_headers=x_additional_headers,
     )
     if error:

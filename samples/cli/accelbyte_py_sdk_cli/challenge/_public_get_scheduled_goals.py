@@ -34,7 +34,7 @@ from accelbyte_py_sdk.api.challenge import (
     public_get_scheduled_goals as public_get_scheduled_goals_internal,
 )
 from accelbyte_py_sdk.api.challenge.models import IamErrorResponse
-from accelbyte_py_sdk.api.challenge.models import ModelGoalResponse
+from accelbyte_py_sdk.api.challenge.models import ModelGetGoalsResponse
 from accelbyte_py_sdk.api.challenge.models import ResponseError
 
 

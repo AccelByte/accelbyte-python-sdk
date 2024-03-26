@@ -21,7 +21,7 @@ password: str
 unique_display_name: str
 validate_only: bool
 
-Example: '{"code": "154giu9IXl6onEnS", "country": "r0on9p8e8VYIRjYP", "dateOfBirth": "j18HMIpDrSIrO0jy", "displayName": "SRSaqkJdRCq089x0", "emailAddress": "VtyKHzTRUTfDayWi", "password": "nMDK922Yvvfhah8j", "uniqueDisplayName": "s8C8vdX2FXbk9AzG", "validateOnly": false}'
+Example: '{"code": "0dSA6IQR85xmEBvi", "country": "XdWS1w5TltIeOU8I", "dateOfBirth": "pvbclE1vyIg0EwMf", "displayName": "cYOF8OLor71mtMfi", "emailAddress": "JWfLtF2juo01kP4a", "password": "DOKOYHtoTW2KUqX9", "uniqueDisplayName": "WBqaOgJgpX4wsuCH", "validateOnly": false}'
 """
 
 result, error = admin_upgrade_headless_account_v3(

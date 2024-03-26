@@ -11,7 +11,7 @@ body:
 Definition: PlatformWalletConfigUpdate
 allowed_balance_origins: List[str]
 
-Example: '{"allowedBalanceOrigins": ["Steam", "Steam", "Nintendo"]}'
+Example: '{"allowedBalanceOrigins": ["GooglePlay", "Xbox", "Other"]}'
 """
 
 result, error = update_platform_wallet_config(

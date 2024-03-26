@@ -12,7 +12,7 @@ body:
 Definition: ModelPlatformUserIDRequest
 platform_user_ids: List[str]
 
-Example: '{"platformUserIds": ["pDphf4mkEihaubHx", "7VrSBNtiYhTgIUmy", "iDFdUDUV18cwzoPN"]}'
+Example: '{"platformUserIds": ["TCkEi7ghg3g3Ax1D", "o6ZNoql7dJt3q7r3", "hLzH4ejYLAMwfqlQ"]}'
 """
 
 result, error = admin_list_user_id_by_platform_user_i_ds_v3(

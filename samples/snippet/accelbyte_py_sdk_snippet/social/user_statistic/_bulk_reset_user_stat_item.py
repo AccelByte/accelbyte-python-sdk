@@ -14,7 +14,7 @@ Definition: List[BulkUserStatItemReset]
 stat_code: str
 user_id: str
 
-Example: '[{"statCode": "nVLcYbOGzFTCcc36", "userId": "chdHAImrvsW3OeG0"}, {"statCode": "SezqGWxj8FBdanNy", "userId": "Faz9OcAElOGcjzdh"}, {"statCode": "KergnJ4wBp34iClp", "userId": "d5A1WoojJUBjkXKq"}]'
+Example: '[{"statCode": "MHIEmZ1MwLuhoxyZ", "userId": "j13h8paNRsxmfmsR"}, {"statCode": "EsWF4K45RT0COgHY", "userId": "Lmvh2XP1iMuFzInS"}, {"statCode": "8LfwZB9sln7O9Xjp", "userId": "uFUNKUv5VbXc4xC0"}]'
 """
 
 result, error = bulk_reset_user_stat_item(

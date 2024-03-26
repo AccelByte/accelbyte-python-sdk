@@ -32,26 +32,26 @@ class ModelsPartyMember(Model):
     """Models party member (models.PartyMember)
 
     Properties:
-        extra_attributes: (extra_attributes) REQUIRED Dict[str, Any]
-
         user_id: (user_id) REQUIRED str
+
+        extra_attributes: (extra_attributes) OPTIONAL Dict[str, Any]
     """
 
     # region fields
 
-    extra_attributes: Dict[str, Any]  # REQUIRED
     user_id: str  # REQUIRED
+    extra_attributes: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_extra_attributes(self, value: Dict[str, Any]) -> ModelsPartyMember:
-        self.extra_attributes = value
-        return self
-
     def with_user_id(self, value: str) -> ModelsPartyMember:
         self.user_id = value
+        return self
+
+    def with_extra_attributes(self, value: Dict[str, Any]) -> ModelsPartyMember:
+        self.extra_attributes = value
         return self
 
     # endregion with_x methods
@@ -60,16 +60,16 @@ class ModelsPartyMember(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "user_id"):
+            result["user_id"] = str(self.user_id)
+        elif include_empty:
+            result["user_id"] = ""
         if hasattr(self, "extra_attributes"):
             result["extra_attributes"] = {
                 str(k0): v0 for k0, v0 in self.extra_attributes.items()
             }
         elif include_empty:
             result["extra_attributes"] = {}
-        if hasattr(self, "user_id"):
-            result["user_id"] = str(self.user_id)
-        elif include_empty:
-            result["user_id"] = ""
         return result
 
     # endregion to methods
@@ -78,11 +78,12 @@ class ModelsPartyMember(Model):
 
     @classmethod
     def create(
-        cls, extra_attributes: Dict[str, Any], user_id: str, **kwargs
+        cls, user_id: str, extra_attributes: Optional[Dict[str, Any]] = None, **kwargs
     ) -> ModelsPartyMember:
         instance = cls()
-        instance.extra_attributes = extra_attributes
         instance.user_id = user_id
+        if extra_attributes is not None:
+            instance.extra_attributes = extra_attributes
         return instance
 
     @classmethod
@@ -92,16 +93,16 @@ class ModelsPartyMember(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "user_id" in dict_ and dict_["user_id"] is not None:
+            instance.user_id = str(dict_["user_id"])
+        elif include_empty:
+            instance.user_id = ""
         if "extra_attributes" in dict_ and dict_["extra_attributes"] is not None:
             instance.extra_attributes = {
                 str(k0): v0 for k0, v0 in dict_["extra_attributes"].items()
             }
         elif include_empty:
             instance.extra_attributes = {}
-        if "user_id" in dict_ and dict_["user_id"] is not None:
-            instance.user_id = str(dict_["user_id"])
-        elif include_empty:
-            instance.user_id = ""
         return instance
 
     @classmethod
@@ -143,15 +144,15 @@ class ModelsPartyMember(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "extra_attributes": "extra_attributes",
             "user_id": "user_id",
+            "extra_attributes": "extra_attributes",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "extra_attributes": True,
             "user_id": True,
+            "extra_attributes": False,
         }
 
     # endregion static methods

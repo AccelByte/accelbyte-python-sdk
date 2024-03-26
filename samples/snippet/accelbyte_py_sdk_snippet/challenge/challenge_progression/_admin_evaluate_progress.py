@@ -12,7 +12,7 @@ body:
 Definition: ModelEvaluatePlayerProgressionRequest
 user_ids: List[str]
 
-Example: '{"userIds": ["vMgn7VsUUWuwmMFW", "qwNQnk7892Q19ecw", "WuuKSCdcuYGJWXla"]}'
+Example: '{"userIds": ["18DLEoHZ2T33hTrD", "Ec0Ta87tSjOfAS20", "CQoBkdz9NURrzzDU"]}'
 """
 
 result, error = admin_evaluate_progress(

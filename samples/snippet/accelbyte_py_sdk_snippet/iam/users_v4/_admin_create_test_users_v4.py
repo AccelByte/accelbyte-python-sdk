@@ -12,7 +12,7 @@ body:
 Definition: AccountCreateTestUsersRequestV4
 count: int
 
-Example: '{"count": 72}'
+Example: '{"count": 16}'
 """
 
 result, error = admin_create_test_users_v4(

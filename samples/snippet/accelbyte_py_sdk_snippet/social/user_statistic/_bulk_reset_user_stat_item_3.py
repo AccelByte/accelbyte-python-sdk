@@ -13,7 +13,7 @@ body:
 Definition: List[BulkStatItemReset]
 stat_code: str
 
-Example: '[{"statCode": "sybJToHdrfTkaPH2"}, {"statCode": "zEBuRk25GtEPIjyr"}, {"statCode": "nkoYUluXLWV66cFH"}]'
+Example: '[{"statCode": "C0w8nduWObtV8aaP"}, {"statCode": "jl0gVpoTcPfSDf3h"}, {"statCode": "kHDlaiGJWVnaCEwC"}]'
 """
 
 result, error = bulk_reset_user_stat_item_3(

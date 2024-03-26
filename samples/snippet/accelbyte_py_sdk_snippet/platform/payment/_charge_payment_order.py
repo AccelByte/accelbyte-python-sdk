@@ -14,7 +14,7 @@ ext_tx_id: str
 payment_method: str
 payment_provider: str
 
-Example: '{"extTxId": "wovtB3YJBgR757JA", "paymentMethod": "ELG3IjPNIGuHf55j", "paymentProvider": "WALLET"}'
+Example: '{"extTxId": "lv5tvUxv50yGm31K", "paymentMethod": "uXs0wEu1tEqVv1vy", "paymentProvider": "ADYEN"}'
 """
 
 result, error = charge_payment_order(

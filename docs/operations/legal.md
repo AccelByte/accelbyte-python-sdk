@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Legal Service Index (1.38.0)
+# AccelByte Gaming Services Legal Service Index (1.39.0)
 
 
 ## Operations
@@ -93,6 +93,7 @@
 ### Policies
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /agreement/public/policies/countries/list | GET | retrieveCountryListWithPolicies | `false` | [RetrieveCountryListWithPolicies](../../accelbyte_py_sdk/api/legal/operations/policies/retrieve_country_list_w_8c69ff.py) | [retrieve_country_list_with_policies](../../accelbyte_py_sdk/api/legal/wrappers/_policies.py) | [accelbyte_py_sdk_cli legal-retrieve-country-list-with-policies](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_country_list_with_policies.py) |
 | /agreement/public/policies/countries/{countryCode} | GET | retrieveLatestPolicies | `false` | [RetrieveLatestPolicies](../../accelbyte_py_sdk/api/legal/operations/policies/retrieve_latest_policies.py) | [retrieve_latest_policies](../../accelbyte_py_sdk/api/legal/wrappers/_policies.py) | [accelbyte_py_sdk_cli legal-retrieve-latest-policies](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_latest_policies.py) |
 | /agreement/public/policies/namespaces/{namespace}/countries/{countryCode} | GET | retrieveLatestPoliciesByNamespaceAndCountryPublic | `false` | [RetrieveLatestPoliciesByNamespaceAndCountryPublic](../../accelbyte_py_sdk/api/legal/operations/policies/retrieve_latest_policie_95ffb6.py) | [retrieve_latest_policies_by_namespace_and_country_public](../../accelbyte_py_sdk/api/legal/wrappers/_policies.py) | [accelbyte_py_sdk_cli legal-retrieve-latest-policies-by-namespace-and-country-public](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_latest_policies_by_namespace_and_country_public.py) |
 | /agreement/public/policies/namespaces/{namespace} | GET | retrieveLatestPoliciesPublic | `false` | [RetrieveLatestPoliciesPublic](../../accelbyte_py_sdk/api/legal/operations/policies/retrieve_latest_policie_29f65f.py) | [retrieve_latest_policies_public](../../accelbyte_py_sdk/api/legal/wrappers/_policies.py) | [accelbyte_py_sdk_cli legal-retrieve-latest-policies-public](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_latest_policies_public.py) |

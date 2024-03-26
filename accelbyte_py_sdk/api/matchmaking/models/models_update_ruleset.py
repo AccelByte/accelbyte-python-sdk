@@ -26,7 +26,6 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
-from ....core import StrEnum
 
 from ..models.models_alliance_flexing_rule import ModelsAllianceFlexingRule
 from ..models.models_bucket_mmr_rule import ModelsBucketMMRRule
@@ -40,13 +39,6 @@ from ..models.models_update_alliance_rule import ModelsUpdateAllianceRule
 from ..models.models_update_ruleset_sub_game_modes import (
     ModelsUpdateRulesetSubGameModes,
 )
-
-
-class TicketFlexingSelectionEnum(StrEnum):
-    NEWEST = "newest"
-    OLDEST = "oldest"
-    PIVOT = "pivot"
-    RANDOM = "random"
 
 
 class ModelsUpdateRuleset(Model):
@@ -63,7 +55,7 @@ class ModelsUpdateRuleset(Model):
 
         sort_tickets: (sort_tickets) REQUIRED List[ModelsSortTicketRule]
 
-        ticket_flexing_selection: (ticket_flexing_selection) REQUIRED Union[str, TicketFlexingSelectionEnum]
+        ticket_flexing_selection: (ticket_flexing_selection) REQUIRED str
 
         ticket_flexing_selections: (ticket_flexing_selections) REQUIRED List[ModelsSelectionRule]
 
@@ -87,7 +79,7 @@ class ModelsUpdateRuleset(Model):
     batch_size: int  # REQUIRED
     sort_ticket: ModelsSortTicket  # REQUIRED
     sort_tickets: List[ModelsSortTicketRule]  # REQUIRED
-    ticket_flexing_selection: Union[str, TicketFlexingSelectionEnum]  # REQUIRED
+    ticket_flexing_selection: str  # REQUIRED
     ticket_flexing_selections: List[ModelsSelectionRule]  # REQUIRED
     bucket_mmr_rule: ModelsBucketMMRRule  # OPTIONAL
     flexing_rules: List[ModelsFlexingRule]  # OPTIONAL
@@ -124,9 +116,7 @@ class ModelsUpdateRuleset(Model):
         self.sort_tickets = value
         return self
 
-    def with_ticket_flexing_selection(
-        self, value: Union[str, TicketFlexingSelectionEnum]
-    ) -> ModelsUpdateRuleset:
+    def with_ticket_flexing_selection(self, value: str) -> ModelsUpdateRuleset:
         self.ticket_flexing_selection = value
         return self
 
@@ -200,9 +190,7 @@ class ModelsUpdateRuleset(Model):
         if hasattr(self, "ticket_flexing_selection"):
             result["ticket_flexing_selection"] = str(self.ticket_flexing_selection)
         elif include_empty:
-            result["ticket_flexing_selection"] = Union[
-                str, TicketFlexingSelectionEnum
-            ]()
+            result["ticket_flexing_selection"] = ""
         if hasattr(self, "ticket_flexing_selections"):
             result["ticket_flexing_selections"] = [
                 i0.to_dict(include_empty=include_empty)
@@ -260,7 +248,7 @@ class ModelsUpdateRuleset(Model):
         batch_size: int,
         sort_ticket: ModelsSortTicket,
         sort_tickets: List[ModelsSortTicketRule],
-        ticket_flexing_selection: Union[str, TicketFlexingSelectionEnum],
+        ticket_flexing_selection: str,
         ticket_flexing_selections: List[ModelsSelectionRule],
         bucket_mmr_rule: Optional[ModelsBucketMMRRule] = None,
         flexing_rules: Optional[List[ModelsFlexingRule]] = None,
@@ -340,7 +328,7 @@ class ModelsUpdateRuleset(Model):
         ):
             instance.ticket_flexing_selection = str(dict_["ticket_flexing_selection"])
         elif include_empty:
-            instance.ticket_flexing_selection = Union[str, TicketFlexingSelectionEnum]()
+            instance.ticket_flexing_selection = ""
         if (
             "ticket_flexing_selections" in dict_
             and dict_["ticket_flexing_selections"] is not None
@@ -464,12 +452,6 @@ class ModelsUpdateRuleset(Model):
             "matchingRules": False,
             "sub_game_modes": False,
             "use_newest_ticket_for_flexing": False,
-        }
-
-    @staticmethod
-    def get_enum_map() -> Dict[str, List[Any]]:
-        return {
-            "ticket_flexing_selection": ["newest", "oldest", "pivot", "random"],
         }
 
     # endregion static methods

@@ -30,12 +30,12 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import IamErrorResponse
-from ...models import ModelGoalResponse
+from ...models import ModelGetGoalsResponse
 from ...models import ResponseError
 
 
 class PublicGetScheduledGoals(Operation):
-    """&lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (publicGetScheduledGoals)
+    """List Goals of a Challenge (publicGetScheduledGoals)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -66,7 +66,7 @@ class PublicGetScheduledGoals(Operation):
         tags: (tags) OPTIONAL List[str] in query
 
     Responses:
-        200: OK - List[ModelGoalResponse] (OK)
+        200: OK - ModelGetGoalsResponse (OK)
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -216,12 +216,12 @@ class PublicGetScheduledGoals(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[ModelGoalResponse]],
+        Union[None, ModelGetGoalsResponse],
         Union[None, HttpResponse, IamErrorResponse, ResponseError],
     ]:
         """Parse the given response.
 
-        200: OK - List[ModelGoalResponse] (OK)
+        200: OK - ModelGetGoalsResponse (OK)
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -243,7 +243,7 @@ class PublicGetScheduledGoals(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ModelGoalResponse.create_from_dict(i) for i in content], None
+            return ModelGetGoalsResponse.create_from_dict(content), None
         if code == 401:
             return None, IamErrorResponse.create_from_dict(content)
         if code == 403:

@@ -58,8 +58,6 @@ class ModelsChannel(Model):
 
         region_latency_max_ms: (region_latency_max_ms) REQUIRED int
 
-        ruleset: (ruleset) REQUIRED ModelsRuleSet
-
         session_queue_timeout_seconds: (session_queue_timeout_seconds) REQUIRED int
 
         slug: (slug) REQUIRED str
@@ -71,6 +69,8 @@ class ModelsChannel(Model):
         updated_at: (updated_at) REQUIRED str
 
         use_sub_gamemode: (use_sub_gamemode) REQUIRED bool
+
+        ruleset: (ruleset) OPTIONAL ModelsRuleSet
 
         ticket_observability_enable: (ticket_observability_enable) OPTIONAL bool
     """
@@ -89,13 +89,13 @@ class ModelsChannel(Model):
     region_expansion_rate_ms: int  # REQUIRED
     region_latency_initial_range_ms: int  # REQUIRED
     region_latency_max_ms: int  # REQUIRED
-    ruleset: ModelsRuleSet  # REQUIRED
     session_queue_timeout_seconds: int  # REQUIRED
     slug: str  # REQUIRED
     social_matchmaking: bool  # REQUIRED
     sub_gamemode_selection: str  # REQUIRED
     updated_at: str  # REQUIRED
     use_sub_gamemode: bool  # REQUIRED
+    ruleset: ModelsRuleSet  # OPTIONAL
     ticket_observability_enable: bool  # OPTIONAL
 
     # endregion fields
@@ -150,10 +150,6 @@ class ModelsChannel(Model):
         self.region_latency_max_ms = value
         return self
 
-    def with_ruleset(self, value: ModelsRuleSet) -> ModelsChannel:
-        self.ruleset = value
-        return self
-
     def with_session_queue_timeout_seconds(self, value: int) -> ModelsChannel:
         self.session_queue_timeout_seconds = value
         return self
@@ -176,6 +172,10 @@ class ModelsChannel(Model):
 
     def with_use_sub_gamemode(self, value: bool) -> ModelsChannel:
         self.use_sub_gamemode = value
+        return self
+
+    def with_ruleset(self, value: ModelsRuleSet) -> ModelsChannel:
+        self.ruleset = value
         return self
 
     def with_ticket_observability_enable(self, value: bool) -> ModelsChannel:
@@ -238,10 +238,6 @@ class ModelsChannel(Model):
             result["region_latency_max_ms"] = int(self.region_latency_max_ms)
         elif include_empty:
             result["region_latency_max_ms"] = 0
-        if hasattr(self, "ruleset"):
-            result["ruleset"] = self.ruleset.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["ruleset"] = ModelsRuleSet()
         if hasattr(self, "session_queue_timeout_seconds"):
             result["session_queue_timeout_seconds"] = int(
                 self.session_queue_timeout_seconds
@@ -268,6 +264,10 @@ class ModelsChannel(Model):
             result["use_sub_gamemode"] = bool(self.use_sub_gamemode)
         elif include_empty:
             result["use_sub_gamemode"] = False
+        if hasattr(self, "ruleset"):
+            result["ruleset"] = self.ruleset.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["ruleset"] = ModelsRuleSet()
         if hasattr(self, "ticket_observability_enable"):
             result["ticket_observability_enable"] = bool(
                 self.ticket_observability_enable
@@ -295,13 +295,13 @@ class ModelsChannel(Model):
         region_expansion_rate_ms: int,
         region_latency_initial_range_ms: int,
         region_latency_max_ms: int,
-        ruleset: ModelsRuleSet,
         session_queue_timeout_seconds: int,
         slug: str,
         social_matchmaking: bool,
         sub_gamemode_selection: str,
         updated_at: str,
         use_sub_gamemode: bool,
+        ruleset: Optional[ModelsRuleSet] = None,
         ticket_observability_enable: Optional[bool] = None,
         **kwargs,
     ) -> ModelsChannel:
@@ -318,13 +318,14 @@ class ModelsChannel(Model):
         instance.region_expansion_rate_ms = region_expansion_rate_ms
         instance.region_latency_initial_range_ms = region_latency_initial_range_ms
         instance.region_latency_max_ms = region_latency_max_ms
-        instance.ruleset = ruleset
         instance.session_queue_timeout_seconds = session_queue_timeout_seconds
         instance.slug = slug
         instance.social_matchmaking = social_matchmaking
         instance.sub_gamemode_selection = sub_gamemode_selection
         instance.updated_at = updated_at
         instance.use_sub_gamemode = use_sub_gamemode
+        if ruleset is not None:
+            instance.ruleset = ruleset
         if ticket_observability_enable is not None:
             instance.ticket_observability_enable = ticket_observability_enable
         return instance
@@ -406,12 +407,6 @@ class ModelsChannel(Model):
             instance.region_latency_max_ms = int(dict_["region_latency_max_ms"])
         elif include_empty:
             instance.region_latency_max_ms = 0
-        if "ruleset" in dict_ and dict_["ruleset"] is not None:
-            instance.ruleset = ModelsRuleSet.create_from_dict(
-                dict_["ruleset"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.ruleset = ModelsRuleSet()
         if (
             "session_queue_timeout_seconds" in dict_
             and dict_["session_queue_timeout_seconds"] is not None
@@ -444,6 +439,12 @@ class ModelsChannel(Model):
             instance.use_sub_gamemode = bool(dict_["use_sub_gamemode"])
         elif include_empty:
             instance.use_sub_gamemode = False
+        if "ruleset" in dict_ and dict_["ruleset"] is not None:
+            instance.ruleset = ModelsRuleSet.create_from_dict(
+                dict_["ruleset"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.ruleset = ModelsRuleSet()
         if (
             "ticket_observability_enable" in dict_
             and dict_["ticket_observability_enable"] is not None
@@ -504,13 +505,13 @@ class ModelsChannel(Model):
             "region_expansion_rate_ms": "region_expansion_rate_ms",
             "region_latency_initial_range_ms": "region_latency_initial_range_ms",
             "region_latency_max_ms": "region_latency_max_ms",
-            "ruleset": "ruleset",
             "session_queue_timeout_seconds": "session_queue_timeout_seconds",
             "slug": "slug",
             "social_matchmaking": "social_matchmaking",
             "sub_gamemode_selection": "sub_gamemode_selection",
             "updated_at": "updated_at",
             "use_sub_gamemode": "use_sub_gamemode",
+            "ruleset": "ruleset",
             "ticket_observability_enable": "ticket_observability_enable",
         }
 
@@ -529,13 +530,13 @@ class ModelsChannel(Model):
             "region_expansion_rate_ms": True,
             "region_latency_initial_range_ms": True,
             "region_latency_max_ms": True,
-            "ruleset": True,
             "session_queue_timeout_seconds": True,
             "slug": True,
             "social_matchmaking": True,
             "sub_gamemode_selection": True,
             "updated_at": True,
             "use_sub_gamemode": True,
+            "ruleset": False,
             "ticket_observability_enable": False,
         }
 

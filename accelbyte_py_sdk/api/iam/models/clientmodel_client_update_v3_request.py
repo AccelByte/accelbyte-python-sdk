@@ -41,8 +41,6 @@ class ClientmodelClientUpdateV3Request(Model):
 
         description: (description) REQUIRED str
 
-        skip_login_queue: (skipLoginQueue) REQUIRED bool
-
         audiences: (audiences) OPTIONAL List[str]
 
         base_uri: (baseUri) OPTIONAL str
@@ -69,6 +67,8 @@ class ClientmodelClientUpdateV3Request(Model):
 
         scopes: (scopes) OPTIONAL List[str]
 
+        skip_login_queue: (skipLoginQueue) OPTIONAL bool
+
         two_factor_enabled: (twoFactorEnabled) OPTIONAL bool
     """
 
@@ -76,7 +76,6 @@ class ClientmodelClientUpdateV3Request(Model):
 
     client_platform: str  # REQUIRED
     description: str  # REQUIRED
-    skip_login_queue: bool  # REQUIRED
     audiences: List[str]  # OPTIONAL
     base_uri: str  # OPTIONAL
     client_name: str  # OPTIONAL
@@ -90,6 +89,7 @@ class ClientmodelClientUpdateV3Request(Model):
     oauth_refresh_token_expiration_time_unit: str  # OPTIONAL
     redirect_uri: str  # OPTIONAL
     scopes: List[str]  # OPTIONAL
+    skip_login_queue: bool  # OPTIONAL
     two_factor_enabled: bool  # OPTIONAL
 
     # endregion fields
@@ -102,10 +102,6 @@ class ClientmodelClientUpdateV3Request(Model):
 
     def with_description(self, value: str) -> ClientmodelClientUpdateV3Request:
         self.description = value
-        return self
-
-    def with_skip_login_queue(self, value: bool) -> ClientmodelClientUpdateV3Request:
-        self.skip_login_queue = value
         return self
 
     def with_audiences(self, value: List[str]) -> ClientmodelClientUpdateV3Request:
@@ -172,6 +168,10 @@ class ClientmodelClientUpdateV3Request(Model):
         self.scopes = value
         return self
 
+    def with_skip_login_queue(self, value: bool) -> ClientmodelClientUpdateV3Request:
+        self.skip_login_queue = value
+        return self
+
     def with_two_factor_enabled(self, value: bool) -> ClientmodelClientUpdateV3Request:
         self.two_factor_enabled = value
         return self
@@ -190,10 +190,6 @@ class ClientmodelClientUpdateV3Request(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
-        if hasattr(self, "skip_login_queue"):
-            result["skipLoginQueue"] = bool(self.skip_login_queue)
-        elif include_empty:
-            result["skipLoginQueue"] = False
         if hasattr(self, "audiences"):
             result["audiences"] = [str(i0) for i0 in self.audiences]
         elif include_empty:
@@ -260,6 +256,10 @@ class ClientmodelClientUpdateV3Request(Model):
             result["scopes"] = [str(i0) for i0 in self.scopes]
         elif include_empty:
             result["scopes"] = []
+        if hasattr(self, "skip_login_queue"):
+            result["skipLoginQueue"] = bool(self.skip_login_queue)
+        elif include_empty:
+            result["skipLoginQueue"] = False
         if hasattr(self, "two_factor_enabled"):
             result["twoFactorEnabled"] = bool(self.two_factor_enabled)
         elif include_empty:
@@ -275,7 +275,6 @@ class ClientmodelClientUpdateV3Request(Model):
         cls,
         client_platform: str,
         description: str,
-        skip_login_queue: bool,
         audiences: Optional[List[str]] = None,
         base_uri: Optional[str] = None,
         client_name: Optional[str] = None,
@@ -289,13 +288,13 @@ class ClientmodelClientUpdateV3Request(Model):
         oauth_refresh_token_expiration_time_unit: Optional[str] = None,
         redirect_uri: Optional[str] = None,
         scopes: Optional[List[str]] = None,
+        skip_login_queue: Optional[bool] = None,
         two_factor_enabled: Optional[bool] = None,
         **kwargs,
     ) -> ClientmodelClientUpdateV3Request:
         instance = cls()
         instance.client_platform = client_platform
         instance.description = description
-        instance.skip_login_queue = skip_login_queue
         if audiences is not None:
             instance.audiences = audiences
         if base_uri is not None:
@@ -326,6 +325,8 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.redirect_uri = redirect_uri
         if scopes is not None:
             instance.scopes = scopes
+        if skip_login_queue is not None:
+            instance.skip_login_queue = skip_login_queue
         if two_factor_enabled is not None:
             instance.two_factor_enabled = two_factor_enabled
         return instance
@@ -345,10 +346,6 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
-        if "skipLoginQueue" in dict_ and dict_["skipLoginQueue"] is not None:
-            instance.skip_login_queue = bool(dict_["skipLoginQueue"])
-        elif include_empty:
-            instance.skip_login_queue = False
         if "audiences" in dict_ and dict_["audiences"] is not None:
             instance.audiences = [str(i0) for i0 in dict_["audiences"]]
         elif include_empty:
@@ -431,6 +428,10 @@ class ClientmodelClientUpdateV3Request(Model):
             instance.scopes = [str(i0) for i0 in dict_["scopes"]]
         elif include_empty:
             instance.scopes = []
+        if "skipLoginQueue" in dict_ and dict_["skipLoginQueue"] is not None:
+            instance.skip_login_queue = bool(dict_["skipLoginQueue"])
+        elif include_empty:
+            instance.skip_login_queue = False
         if "twoFactorEnabled" in dict_ and dict_["twoFactorEnabled"] is not None:
             instance.two_factor_enabled = bool(dict_["twoFactorEnabled"])
         elif include_empty:
@@ -480,7 +481,6 @@ class ClientmodelClientUpdateV3Request(Model):
         return {
             "clientPlatform": "client_platform",
             "description": "description",
-            "skipLoginQueue": "skip_login_queue",
             "audiences": "audiences",
             "baseUri": "base_uri",
             "clientName": "client_name",
@@ -494,6 +494,7 @@ class ClientmodelClientUpdateV3Request(Model):
             "oauthRefreshTokenExpirationTimeUnit": "oauth_refresh_token_expiration_time_unit",
             "redirectUri": "redirect_uri",
             "scopes": "scopes",
+            "skipLoginQueue": "skip_login_queue",
             "twoFactorEnabled": "two_factor_enabled",
         }
 
@@ -502,7 +503,6 @@ class ClientmodelClientUpdateV3Request(Model):
         return {
             "clientPlatform": True,
             "description": True,
-            "skipLoginQueue": True,
             "audiences": False,
             "baseUri": False,
             "clientName": False,
@@ -516,6 +516,7 @@ class ClientmodelClientUpdateV3Request(Model):
             "oauthRefreshTokenExpirationTimeUnit": False,
             "redirectUri": False,
             "scopes": False,
+            "skipLoginQueue": False,
             "twoFactorEnabled": False,
         }
 

@@ -15,7 +15,7 @@ is_admin: bool
 namespace: str
 roles: List[str]
 
-Example: '{"emailAddresses": ["6Fc8q3ZpOdEECJR7", "ELtEJL6WG3sCFrwG", "JEtFmtgsH7ZNvO3E"], "isAdmin": true, "namespace": "j5BYWWk7yzvLUmcs", "roles": ["3gCFJbhn6lOO6pIa", "J4stYj0LDQ960nf7", "iUGjAdNQRTMjfzmq"]}'
+Example: '{"emailAddresses": ["Jx7vzvB61UDJKnJP", "o9iNCkMmzkoMBiLk", "kPxJ9w0nemgNOMjV"], "isAdmin": true, "namespace": "lKABR1j7WUwanBdl", "roles": ["lpqQU7eiGfU2yqlP", "iLtVEdsZP6droXv9", "uhz1QzRlS5wObPfS"]}'
 """
 
 result, error = admin_invite_user_v3(

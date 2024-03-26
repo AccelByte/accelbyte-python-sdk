@@ -89,6 +89,7 @@ from ._retrieve_single_localized_policy_version_2 import (
 from ._retrieve_single_localized_policy_version_3 import (
     retrieve_single_localized_policy_version_3,
 )
+from ._retrieve_country_list_with_policies import retrieve_country_list_with_policies
 from ._retrieve_latest_policies import retrieve_latest_policies
 from ._retrieve_latest_policies_public import retrieve_latest_policies_public
 from ._retrieve_latest_policies_by_namespace_and_country_public import (
@@ -157,6 +158,7 @@ commands = [
     retrieve_eligibilities_public_indirect,
     retrieve_single_localized_policy_version_2,
     retrieve_single_localized_policy_version_3,
+    retrieve_country_list_with_policies,
     retrieve_latest_policies,
     retrieve_latest_policies_public,
     retrieve_latest_policies_by_namespace_and_country_public,

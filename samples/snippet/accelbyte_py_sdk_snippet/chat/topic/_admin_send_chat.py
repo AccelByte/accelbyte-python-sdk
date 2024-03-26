@@ -12,7 +12,7 @@ body:
 Definition: ApiSendChatParams
 message: str
 
-Example: '{"message": "sfkDaXep8WVXtKY3"}'
+Example: '{"message": "8Ut3FPAAo9HmthJe"}'
 """
 
 result, error = admin_send_chat(

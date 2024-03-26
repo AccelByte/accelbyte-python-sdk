@@ -45,6 +45,8 @@ class PublicUpdateInsertSessionStorage(Operation):
     },
     "data": 123
     }
+    game Admin can update or insert session storage
+    Session Storage feature only available for Gamesession
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}

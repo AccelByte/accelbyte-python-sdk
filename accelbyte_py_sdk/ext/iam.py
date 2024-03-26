@@ -103,6 +103,7 @@ from ..api.iam.models import ClientmodelClientUpdateRequest
 from ..api.iam.models import ClientmodelClientUpdateSecretRequest
 from ..api.iam.models import ClientmodelClientUpdateV3Request
 from ..api.iam.models import ClientmodelClientV3Response
+from ..api.iam.models import ClientmodelClientsUpdateRequestV3
 from ..api.iam.models import ClientmodelClientsV3Response
 from ..api.iam.models import ClientmodelDefaultFieldValue
 from ..api.iam.models import ClientmodelDefaultFieldValueValue
@@ -128,6 +129,7 @@ from ..api.iam.models import ModelBanUpdateRequest
 from ..api.iam.models import ModelBulkAccountTypeUpdateRequestV4
 from ..api.iam.models import ModelBulkBanCreateRequestV3
 from ..api.iam.models import ModelBulkUnbanCreateRequestV3
+from ..api.iam.models import ModelCheckAvailabilityResponse
 from ..api.iam.models import ModelCheckValidUserIDRequestV4
 from ..api.iam.models import ModelConfigValueResponseV3
 from ..api.iam.models import ModelCountry
@@ -258,6 +260,7 @@ from ..api.iam.models import ModelUserActiveBanResponseV3
 from ..api.iam.models import ModelUserBanResponse
 from ..api.iam.models import ModelUserBanResponseV3
 from ..api.iam.models import ModelUserBaseInfo
+from ..api.iam.models import ModelUserBulkUpdateRequestV3
 from ..api.iam.models import ModelUserCreateRequest
 from ..api.iam.models import ModelUserCreateRequestV3
 from ..api.iam.models import ModelUserCreateResponse
@@ -288,6 +291,7 @@ from ..api.iam.models import ModelUserVerificationRequestV3
 from ..api.iam.models import ModelUserWithPlatformInfo
 from ..api.iam.models import ModelUsersPlatformInfosRequestV3
 from ..api.iam.models import ModelUsersPlatformInfosResponse
+from ..api.iam.models import ModelUsersUpdateRequestV3
 from ..api.iam.models import ModelValidUserIDResponseV4
 from ..api.iam.models import ModelValidationDetail
 from ..api.iam.models import ModelValidationDetailPublic
@@ -659,6 +663,7 @@ def create_accountcommon_distinct_linked_platform_v3_example() -> (
     instance = AccountcommonDistinctLinkedPlatformV3()
     instance.details = [create_accountcommon_simple_user_platform_info_v3_example()]
     instance.linked_at = randomize()
+    instance.platform_group = randomize()
     instance.platform_name = randomize()
     instance.platform_user_id = randomize()
     return instance
@@ -1131,7 +1136,6 @@ def create_clientmodel_client_update_v3_request_example() -> (
     instance = ClientmodelClientUpdateV3Request()
     instance.client_platform = randomize()
     instance.description = randomize()
-    instance.skip_login_queue = randomize("bool")
     instance.audiences = [randomize()]
     instance.base_uri = randomize()
     instance.client_name = randomize()
@@ -1147,6 +1151,7 @@ def create_clientmodel_client_update_v3_request_example() -> (
     instance.oauth_refresh_token_expiration_time_unit = randomize()
     instance.redirect_uri = randomize()
     instance.scopes = [randomize()]
+    instance.skip_login_queue = randomize("bool")
     instance.two_factor_enabled = randomize("bool")
     return instance
 
@@ -1177,6 +1182,17 @@ def create_clientmodel_client_v3_response_example() -> ClientmodelClientV3Respon
     instance.oauth_refresh_token_expiration_time_unit = randomize()
     instance.parent_namespace = randomize("slug")
     instance.roles = [randomize()]
+    return instance
+
+
+def create_clientmodel_clients_update_request_v3_example() -> (
+    ClientmodelClientsUpdateRequestV3
+):
+    instance = ClientmodelClientsUpdateRequestV3()
+    instance.client_ids = [randomize()]
+    instance.client_update_request = (
+        create_clientmodel_client_update_v3_request_example()
+    )
     return instance
 
 
@@ -1383,6 +1399,15 @@ def create_model_bulk_unban_create_request_v3_example() -> (
 ):
     instance = ModelBulkUnbanCreateRequestV3()
     instance.bans = [create_model_user_unban_create_request_v3_example()]
+    return instance
+
+
+def create_model_check_availability_response_example() -> (
+    ModelCheckAvailabilityResponse
+):
+    instance = ModelCheckAvailabilityResponse()
+    instance.accessible = randomize("bool")
+    instance.platform_error_message = {randomize(): randomize()}
     return instance
 
 
@@ -2623,6 +2648,12 @@ def create_model_user_base_info_example() -> ModelUserBaseInfo:
     return instance
 
 
+def create_model_user_bulk_update_request_v3_example() -> ModelUserBulkUpdateRequestV3:
+    instance = ModelUserBulkUpdateRequestV3()
+    instance.skip_login_queue = randomize("bool")
+    return instance
+
+
 def create_model_user_create_request_example() -> ModelUserCreateRequest:
     instance = ModelUserCreateRequest()
     instance.auth_type = randomize()
@@ -2982,6 +3013,13 @@ def create_model_users_platform_infos_response_example() -> (
 ):
     instance = ModelUsersPlatformInfosResponse()
     instance.data = [create_model_user_platform_infos_example()]
+    return instance
+
+
+def create_model_users_update_request_v3_example() -> ModelUsersUpdateRequestV3:
+    instance = ModelUsersUpdateRequestV3()
+    instance.update_request = create_model_user_bulk_update_request_v3_example()
+    instance.user_ids = [randomize()]
     return instance
 
 

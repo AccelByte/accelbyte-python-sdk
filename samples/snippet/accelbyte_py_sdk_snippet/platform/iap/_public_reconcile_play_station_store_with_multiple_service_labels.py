@@ -19,7 +19,7 @@ price: float
 product_id: str
 service_labels: List[int]
 
-Example: '{"currencyCode": "M5Z1deuUxKkCTymU", "price": 0.6440594638419749, "productId": "YQopcuA0lOyGGrbF", "serviceLabels": [1, 44, 62]}'
+Example: '{"currencyCode": "HBuzTs1jVCgVNiFw", "price": 0.6833813052904596, "productId": "g3HJkltO0nv0qK26", "serviceLabels": [11, 3, 69]}'
 """
 
 result, error = public_reconcile_play_station_store_with_multiple_service_labels(

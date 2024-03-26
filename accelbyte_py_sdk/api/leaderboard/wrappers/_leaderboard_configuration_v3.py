@@ -892,12 +892,20 @@ def hard_delete_leaderboard_admin_v3(
 
 
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD:HARDDELETE [DELETE]'
+
+
+
+
     This endpoint will delete leaderboard configuration and its data
 
 
 
 
     Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:HARDDELETE [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard
@@ -923,7 +931,7 @@ def hard_delete_leaderboard_admin_v3(
 
         401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 71241: forbidden environment)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
         404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 
@@ -954,12 +962,20 @@ async def hard_delete_leaderboard_admin_v3_async(
 
 
 
+    Required permission 'ADMIN:NAMESPACE:{namespace}:LEADERBOARD:HARDDELETE [DELETE]'
+
+
+
+
     This endpoint will delete leaderboard configuration and its data
 
 
 
 
     Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:HARDDELETE [DELETE]
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard
@@ -985,7 +1001,7 @@ async def hard_delete_leaderboard_admin_v3_async(
 
         401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
-        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 71241: forbidden environment)
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
 
         404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
 

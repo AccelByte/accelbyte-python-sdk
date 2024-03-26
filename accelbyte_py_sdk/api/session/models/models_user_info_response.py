@@ -34,9 +34,13 @@ class ModelsUserInfoResponse(Model):
     Properties:
         last_played_time: (lastPlayedTime) OPTIONAL str
 
+        match_pool: (matchPool) OPTIONAL str
+
         namespace: (namespace) OPTIONAL str
 
         platform_name: (platformName) OPTIONAL str
+
+        session_template: (sessionTemplate) OPTIONAL str
 
         user_id: (userID) OPTIONAL str
     """
@@ -44,8 +48,10 @@ class ModelsUserInfoResponse(Model):
     # region fields
 
     last_played_time: str  # OPTIONAL
+    match_pool: str  # OPTIONAL
     namespace: str  # OPTIONAL
     platform_name: str  # OPTIONAL
+    session_template: str  # OPTIONAL
     user_id: str  # OPTIONAL
 
     # endregion fields
@@ -56,12 +62,20 @@ class ModelsUserInfoResponse(Model):
         self.last_played_time = value
         return self
 
+    def with_match_pool(self, value: str) -> ModelsUserInfoResponse:
+        self.match_pool = value
+        return self
+
     def with_namespace(self, value: str) -> ModelsUserInfoResponse:
         self.namespace = value
         return self
 
     def with_platform_name(self, value: str) -> ModelsUserInfoResponse:
         self.platform_name = value
+        return self
+
+    def with_session_template(self, value: str) -> ModelsUserInfoResponse:
+        self.session_template = value
         return self
 
     def with_user_id(self, value: str) -> ModelsUserInfoResponse:
@@ -78,6 +92,10 @@ class ModelsUserInfoResponse(Model):
             result["lastPlayedTime"] = str(self.last_played_time)
         elif include_empty:
             result["lastPlayedTime"] = ""
+        if hasattr(self, "match_pool"):
+            result["matchPool"] = str(self.match_pool)
+        elif include_empty:
+            result["matchPool"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -86,6 +104,10 @@ class ModelsUserInfoResponse(Model):
             result["platformName"] = str(self.platform_name)
         elif include_empty:
             result["platformName"] = ""
+        if hasattr(self, "session_template"):
+            result["sessionTemplate"] = str(self.session_template)
+        elif include_empty:
+            result["sessionTemplate"] = ""
         if hasattr(self, "user_id"):
             result["userID"] = str(self.user_id)
         elif include_empty:
@@ -100,18 +122,24 @@ class ModelsUserInfoResponse(Model):
     def create(
         cls,
         last_played_time: Optional[str] = None,
+        match_pool: Optional[str] = None,
         namespace: Optional[str] = None,
         platform_name: Optional[str] = None,
+        session_template: Optional[str] = None,
         user_id: Optional[str] = None,
         **kwargs,
     ) -> ModelsUserInfoResponse:
         instance = cls()
         if last_played_time is not None:
             instance.last_played_time = last_played_time
+        if match_pool is not None:
+            instance.match_pool = match_pool
         if namespace is not None:
             instance.namespace = namespace
         if platform_name is not None:
             instance.platform_name = platform_name
+        if session_template is not None:
+            instance.session_template = session_template
         if user_id is not None:
             instance.user_id = user_id
         return instance
@@ -127,6 +155,10 @@ class ModelsUserInfoResponse(Model):
             instance.last_played_time = str(dict_["lastPlayedTime"])
         elif include_empty:
             instance.last_played_time = ""
+        if "matchPool" in dict_ and dict_["matchPool"] is not None:
+            instance.match_pool = str(dict_["matchPool"])
+        elif include_empty:
+            instance.match_pool = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -135,6 +167,10 @@ class ModelsUserInfoResponse(Model):
             instance.platform_name = str(dict_["platformName"])
         elif include_empty:
             instance.platform_name = ""
+        if "sessionTemplate" in dict_ and dict_["sessionTemplate"] is not None:
+            instance.session_template = str(dict_["sessionTemplate"])
+        elif include_empty:
+            instance.session_template = ""
         if "userID" in dict_ and dict_["userID"] is not None:
             instance.user_id = str(dict_["userID"])
         elif include_empty:
@@ -183,8 +219,10 @@ class ModelsUserInfoResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "lastPlayedTime": "last_played_time",
+            "matchPool": "match_pool",
             "namespace": "namespace",
             "platformName": "platform_name",
+            "sessionTemplate": "session_template",
             "userID": "user_id",
         }
 
@@ -192,8 +230,10 @@ class ModelsUserInfoResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "lastPlayedTime": False,
+            "matchPool": False,
             "namespace": False,
             "platformName": False,
+            "sessionTemplate": False,
             "userID": False,
         }
 

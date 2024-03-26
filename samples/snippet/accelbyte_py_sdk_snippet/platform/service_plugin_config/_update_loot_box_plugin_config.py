@@ -19,7 +19,7 @@ Definition: BaseCustomConfig
     grpc_server_address: str
 extend_type: str
 
-Example: '{"appConfig": {"appName": "vl21oau015EVjpfW"}, "customConfig": {"connectionType": "INSECURE", "grpcServerAddress": "Na7EVchx42b38XIr"}, "extendType": "APP"}'
+Example: '{"appConfig": {"appName": "DtBjApm3L5P0xjyl"}, "customConfig": {"connectionType": "TLS", "grpcServerAddress": "rBysOt3VZuzCRZ3r"}, "extendType": "CUSTOM"}'
 """
 
 result, error = update_loot_box_plugin_config(

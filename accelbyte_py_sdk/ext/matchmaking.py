@@ -163,13 +163,13 @@ def create_models_channel_example() -> ModelsChannel:
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_latency_max_ms = randomize("int", min_val=1, max_val=1000)
-    instance.ruleset = create_models_rule_set_example()
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.slug = randomize()
     instance.social_matchmaking = randomize("bool")
     instance.sub_gamemode_selection = randomize()
     instance.updated_at = randomize()
     instance.use_sub_gamemode = randomize("bool")
+    instance.ruleset = create_models_rule_set_example()
     instance.ticket_observability_enable = randomize("bool")
     return instance
 
@@ -210,24 +210,24 @@ def create_models_channel_v1_example() -> ModelsChannelV1:
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_latency_max_ms = randomize("int", min_val=1, max_val=1000)
-    instance.rule_set = create_models_rule_set_v1_example()
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.slug = randomize()
     instance.social_matchmaking = randomize("bool")
     instance.sub_gamemode_selection = randomize()
     instance.updated_at = randomize()
     instance.use_sub_gamemode = randomize("bool")
+    instance.rule_set = create_models_rule_set_v1_example()
     instance.ticket_observability_enable = randomize("bool")
     return instance
 
 
 def create_models_combination_example() -> ModelsCombination:
     instance = ModelsCombination()
-    instance.alliances = [[create_models_role_example()]]
     instance.has_combination = randomize("bool")
     instance.role_flexing_enable = randomize("bool")
     instance.role_flexing_player = randomize("int", min_val=1, max_val=1000)
     instance.role_flexing_second = randomize("int", min_val=1, max_val=1000)
+    instance.alliances = [[create_models_role_example()]]
     return instance
 
 
@@ -245,13 +245,13 @@ def create_models_create_channel_response_example() -> ModelsCreateChannelRespon
     instance.region_expansion_rate_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_latency_initial_range_ms = randomize("int", min_val=1, max_val=1000)
     instance.region_latency_max_ms = randomize("int", min_val=1, max_val=1000)
-    instance.ruleset = create_models_rule_set_example()
     instance.session_queue_timeout_seconds = randomize("int", min_val=1, max_val=1000)
     instance.slug = randomize()
     instance.social_matchmaking = randomize("bool")
     instance.sub_gamemode_selection = randomize()
     instance.updated_at = randomize()
     instance.use_sub_gamemode = randomize("bool")
+    instance.ruleset = create_models_rule_set_example()
     instance.ticket_observability_enable = randomize("bool")
     return instance
 
@@ -371,8 +371,8 @@ def create_models_matching_party_example() -> ModelsMatchingParty:
     instance.party_attributes = {randomize(): randomize()}
     instance.party_id = randomize("uid")
     instance.party_members = [create_models_party_member_example()]
-    instance.ticket_created_at = randomize("int", min_val=1, max_val=1000)
     instance.ticket_id = randomize()
+    instance.ticket_created_at = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -539,37 +539,37 @@ def create_models_role_example() -> ModelsRole:
 
 def create_models_rule_set_example() -> ModelsRuleSet:
     instance = ModelsRuleSet()
-    instance.alliance = create_models_alliance_rule_example()
     instance.batch_size = randomize("int", min_val=1, max_val=1000)
+    instance.rebalance_enable = randomize("bool")
+    instance.ticket_flexing_selection = randomize()
+    instance.alliance = create_models_alliance_rule_example()
+    instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
+    instance.bucket_mmr_rule = create_models_bucket_mmr_rule_example()
     instance.flexing_rule = [create_models_flexing_rule_example()]
     instance.match_options = create_models_match_option_rule_example()
     instance.matching_rule = [create_models_matching_rule_example()]
-    instance.rebalance_enable = randomize("bool")
     instance.sort_ticket = create_models_sort_ticket_example()
     instance.sort_tickets = [create_models_sort_ticket_rule_example()]
-    instance.ticket_flexing_selection = randomize()
-    instance.ticket_flexing_selections = [create_models_selection_rule_example()]
-    instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
-    instance.bucket_mmr_rule = create_models_bucket_mmr_rule_example()
     instance.sub_game_modes = {}
+    instance.ticket_flexing_selections = [create_models_selection_rule_example()]
     instance.use_newest_ticket_for_flexing = randomize("bool")
     return instance
 
 
 def create_models_rule_set_v1_example() -> ModelsRuleSetV1:
     instance = ModelsRuleSetV1()
+    instance.batch_size = randomize("int", min_val=1, max_val=1000)
+    instance.ticket_flexing_selection = randomize()
     instance.alliance = create_models_alliance_rule_v1_example()
     instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
-    instance.batch_size = randomize("int", min_val=1, max_val=1000)
+    instance.bucket_mmr_rule = create_models_bucket_mmr_rule_example()
     instance.flexing_rules = [create_models_flexing_rule_example()]
     instance.match_options = create_models_match_option_rule_example()
     instance.matching_rules = [create_models_matching_rule_example()]
     instance.sort_ticket = create_models_sort_ticket_example()
     instance.sort_tickets = [create_models_sort_ticket_rule_example()]
     instance.sub_game_modes = {}
-    instance.ticket_flexing_selection = randomize()
     instance.ticket_flexing_selections = [create_models_selection_rule_example()]
-    instance.bucket_mmr_rule = create_models_bucket_mmr_rule_example()
     instance.use_newest_ticket_for_flexing = randomize("bool")
     return instance
 
@@ -611,8 +611,8 @@ def create_models_stat_resume_response_example() -> ModelsStatResumeResponse:
 def create_models_sub_game_mode_example() -> ModelsSubGameMode:
     instance = ModelsSubGameMode()
     instance.alliance = create_models_alliance_rule_example()
-    instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
     instance.name = randomize()
+    instance.alliance_flexing_rule = [create_models_alliance_flexing_rule_example()]
     return instance
 
 

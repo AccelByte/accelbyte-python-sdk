@@ -12,7 +12,7 @@ body:
 Definition: ModelUserIDsRequest
 user_ids: List[str]
 
-Example: '{"userIds": ["0lV8YhXHH2gQx75B", "SHMNG0KzbXJ8RIPR", "CobLXaYrtmZc756f"]}'
+Example: '{"userIds": ["Y5KvxObSTMbspErp", "sOp3sk2oTB8FhF4m", "raRj3pRfAvJQJBNl"]}'
 """
 
 result, error = admin_bulk_get_users_platform(

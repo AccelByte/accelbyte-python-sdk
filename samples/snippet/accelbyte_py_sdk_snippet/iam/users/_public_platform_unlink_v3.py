@@ -11,7 +11,7 @@ body:
 Definition: ModelUnlinkUserPlatformRequest
 platform_namespace: str
 
-Example: '{"platformNamespace": "uFDr2VIUulJn4RWT"}'
+Example: '{"platformNamespace": "7jw5Z3pxHRtzlQQq"}'
 """
 
 result, error = public_platform_unlink_v3(

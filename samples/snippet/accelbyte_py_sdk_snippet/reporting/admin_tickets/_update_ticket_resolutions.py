@@ -13,7 +13,7 @@ Definition: RestapiUpdateTicketResolutionsRequest
 notes: str
 status: str
 
-Example: '{"notes": "g98JnOm3BxNw6GRK", "status": "UNKNOWN"}'
+Example: '{"notes": "YAQMPdrediohLBHO", "status": "OPEN"}'
 """
 
 result, error = update_ticket_resolutions(

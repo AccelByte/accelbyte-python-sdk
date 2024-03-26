@@ -42,7 +42,7 @@ class StatusEnum(StrEnum):
 
 
 class GetChallenges(Operation):
-    """&lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (GetChallenges)
+    """List Challenges (GetChallenges)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 

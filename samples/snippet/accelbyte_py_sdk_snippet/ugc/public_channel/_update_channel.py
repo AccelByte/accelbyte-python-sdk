@@ -12,7 +12,7 @@ body:
 Definition: ModelsUpdateChannelRequest
 name: str
 
-Example: '{"name": "024YhtPDZupsaGwm"}'
+Example: '{"name": "b5NLHoGKvXOOFQuA"}'
 """
 
 result, error = update_channel(

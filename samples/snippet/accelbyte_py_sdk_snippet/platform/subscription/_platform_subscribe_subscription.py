@@ -18,7 +18,7 @@ reason: str
 region: str
 source: str
 
-Example: '{"grantDays": 31, "itemId": "S9FDklGTX82S6sPh", "language": "EsZ3PidxIxOEQBo1", "reason": "y6ETpzwDmUG0YWuV", "region": "bGjV2zc6DfQNqTuL", "source": "V2OZbWj5NITOH8J1"}'
+Example: '{"grantDays": 34, "itemId": "GADeYSkKbejBGNP6", "language": "BSGh7lQKjg8b77a6", "reason": "nbbCao9wZIPzQoD7", "region": "hqqsPWEsZ3JIq2dK", "source": "Zeu5CNJP6HN777Di"}'
 """
 
 result, error = platform_subscribe_subscription(

@@ -14,7 +14,7 @@ description: str
 group_max_member: int
 name: str
 
-Example: '{"description": "vkQv5DKV2YZFAkQs", "groupMaxMember": 16, "name": "yO8bHrZyYBiILrAh"}'
+Example: '{"description": "E7fa0eJqy2czL66D", "groupMaxMember": 9, "name": "NlsyULnzOx2OrHNz"}'
 """
 
 result, error = update_group_configuration_admin_v1(

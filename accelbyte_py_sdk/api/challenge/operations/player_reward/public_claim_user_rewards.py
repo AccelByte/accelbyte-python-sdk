@@ -36,7 +36,12 @@ from ...models import ResponseError
 
 
 class PublicClaimUserRewards(Operation):
-    """Public claim user rewards (publicClaimUserRewards)
+    """Claim User's Rewards (publicClaimUserRewards)
+
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD:CLAIM [UPDATE]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:CHALLENGE:REWARD:CLAIM [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards/claim

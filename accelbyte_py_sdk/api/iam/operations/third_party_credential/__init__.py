@@ -8,13 +8,16 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.12.0"
+__version__ = "7.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .add_third_party_login_p_99d6dd import AddThirdPartyLoginPlatformCredentialV3
+from .admin_check_third_party_1ad946 import (
+    AdminCheckThirdPartyLoginPlatformAvailabilityV3,
+)
 from .delete_third_party_logi_e29526 import DeleteThirdPartyLoginPlatformCredentialV3
 from .delete_third_party_logi_e59b10 import DeleteThirdPartyLoginPlatformDomainV3
 from .retrieve_active_oidc_cl_08c243 import RetrieveActiveOIDCClientsPublicV3

@@ -29,7 +29,7 @@ return_url: str
 sandbox: bool
 section_id: str
 
-Example: '{"currencyCode": "lmP7qnBSiZOUuarx", "currencyNamespace": "s24PgeoToGkXGXWY", "discountedPrice": 70, "entitlementPlatform": "Oculus", "ext": {"RUkhVeybkoT8Oo21": {}, "33XHM7fynJKY25Pv": {}, "2JKqzvnlx3xcHl0o": {}}, "itemId": "woNaqGWHkqpulOlV", "language": "wZWtXk1pN4NEHcrR", "options": {"skipPriceValidation": true}, "platform": "Oculus", "price": 38, "quantity": 17, "region": "6eySdkF8UKFNeK6D", "returnUrl": "wdkSQ1tP2b26EHSs", "sandbox": false, "sectionId": "GCtjsH8BWbMSVKMS"}'
+Example: '{"currencyCode": "xBWxdGrxyq8CnEK0", "currencyNamespace": "qPOt5O10puwNYXAb", "discountedPrice": 59, "entitlementPlatform": "Steam", "ext": {"V0ipR1GSzeQqjiqF": {}, "Jx2JNqeXIIhM3LX3": {}, "ScVEBWu8ZPuOPVjz": {}}, "itemId": "bsTMuX8AuYjT98pB", "language": "xhorQBtmpz5drbOo", "options": {"skipPriceValidation": true}, "platform": "Steam", "price": 33, "quantity": 73, "region": "gQLBk2FEdA49Yrck", "returnUrl": "CReAkxhHvabtAOPI", "sandbox": true, "sectionId": "LytZhPaVsXBVKmhP"}'
 """
 
 result, error = admin_create_user_order(

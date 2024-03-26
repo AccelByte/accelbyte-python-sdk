@@ -11,7 +11,7 @@ body:
 Definition: ModelsDeregisterLocalServerRequest
 name: str
 
-Example: '{"name": "vtKMVNKzvLYK9n0Z"}'
+Example: '{"name": "3LYCyfks1XEkceAD"}'
 """
 
 result, error = deregister_local_server(

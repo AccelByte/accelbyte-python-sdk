@@ -16,7 +16,7 @@ Definition: List[ModelsCreateScreenshotRequestItem]
     description: str
     file_extension: str
 
-Example: '{"screenshots": [{"contentType": "DjNHTkyBsqbmvgPC", "description": "UJ9fWaeGjrH1LGy9", "fileExtension": "jfif"}, {"contentType": "J29SDc3XPPAs5012", "description": "WlJWjzTzn4yvT5Cz", "fileExtension": "pjp"}, {"contentType": "AZZVBM3bOyC2xcDa", "description": "N33VPD6vZ5sQhWNM", "fileExtension": "jpg"}]}'
+Example: '{"screenshots": [{"contentType": "zGiBtbaj4acIfBSI", "description": "0u02D8AFQaG2eo3z", "fileExtension": "jpg"}, {"contentType": "PJSxTdT10iovF7mJ", "description": "GJFOpdN8iSWtAnYz", "fileExtension": "jpg"}, {"contentType": "oTd8pYatB3MAeDPM", "description": "R34oCSEQDGCaIg6B", "fileExtension": "pjp"}]}'
 """
 
 result, error = admin_upload_content_screenshot_v2(

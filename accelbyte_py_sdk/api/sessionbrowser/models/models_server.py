@@ -36,8 +36,6 @@ class ModelsServer(Model):
     Properties:
         allocation_id: (allocation_id) REQUIRED str
 
-        alternate_ips: (alternate_ips) REQUIRED List[str]
-
         cpu_limit: (cpu_limit) REQUIRED int
 
         cpu_request: (cpu_request) REQUIRED str
@@ -66,8 +64,6 @@ class ModelsServer(Model):
 
         port: (port) REQUIRED int
 
-        ports: (ports) REQUIRED Dict[str, int]
-
         provider: (provider) REQUIRED str
 
         region: (region) REQUIRED str
@@ -76,13 +72,16 @@ class ModelsServer(Model):
 
         status: (status) REQUIRED str
 
-        status_history: (status_history) REQUIRED List[ModelsStatusHistory]
+        alternate_ips: (alternate_ips) OPTIONAL List[str]
+
+        ports: (ports) OPTIONAL Dict[str, int]
+
+        status_history: (status_history) OPTIONAL List[ModelsStatusHistory]
     """
 
     # region fields
 
     allocation_id: str  # REQUIRED
-    alternate_ips: List[str]  # REQUIRED
     cpu_limit: int  # REQUIRED
     cpu_request: str  # REQUIRED
     deployment: str  # REQUIRED
@@ -97,12 +96,13 @@ class ModelsServer(Model):
     params: str  # REQUIRED
     pod_name: str  # REQUIRED
     port: int  # REQUIRED
-    ports: Dict[str, int]  # REQUIRED
     provider: str  # REQUIRED
     region: str  # REQUIRED
     session_id: str  # REQUIRED
     status: str  # REQUIRED
-    status_history: List[ModelsStatusHistory]  # REQUIRED
+    alternate_ips: List[str]  # OPTIONAL
+    ports: Dict[str, int]  # OPTIONAL
+    status_history: List[ModelsStatusHistory]  # OPTIONAL
 
     # endregion fields
 
@@ -110,10 +110,6 @@ class ModelsServer(Model):
 
     def with_allocation_id(self, value: str) -> ModelsServer:
         self.allocation_id = value
-        return self
-
-    def with_alternate_ips(self, value: List[str]) -> ModelsServer:
-        self.alternate_ips = value
         return self
 
     def with_cpu_limit(self, value: int) -> ModelsServer:
@@ -172,10 +168,6 @@ class ModelsServer(Model):
         self.port = value
         return self
 
-    def with_ports(self, value: Dict[str, int]) -> ModelsServer:
-        self.ports = value
-        return self
-
     def with_provider(self, value: str) -> ModelsServer:
         self.provider = value
         return self
@@ -192,6 +184,14 @@ class ModelsServer(Model):
         self.status = value
         return self
 
+    def with_alternate_ips(self, value: List[str]) -> ModelsServer:
+        self.alternate_ips = value
+        return self
+
+    def with_ports(self, value: Dict[str, int]) -> ModelsServer:
+        self.ports = value
+        return self
+
     def with_status_history(self, value: List[ModelsStatusHistory]) -> ModelsServer:
         self.status_history = value
         return self
@@ -206,10 +206,6 @@ class ModelsServer(Model):
             result["allocation_id"] = str(self.allocation_id)
         elif include_empty:
             result["allocation_id"] = ""
-        if hasattr(self, "alternate_ips"):
-            result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
-        elif include_empty:
-            result["alternate_ips"] = []
         if hasattr(self, "cpu_limit"):
             result["cpu_limit"] = int(self.cpu_limit)
         elif include_empty:
@@ -266,10 +262,6 @@ class ModelsServer(Model):
             result["port"] = int(self.port)
         elif include_empty:
             result["port"] = 0
-        if hasattr(self, "ports"):
-            result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
-        elif include_empty:
-            result["ports"] = {}
         if hasattr(self, "provider"):
             result["provider"] = str(self.provider)
         elif include_empty:
@@ -286,6 +278,14 @@ class ModelsServer(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "alternate_ips"):
+            result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
+        elif include_empty:
+            result["alternate_ips"] = []
+        if hasattr(self, "ports"):
+            result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
+        elif include_empty:
+            result["ports"] = {}
         if hasattr(self, "status_history"):
             result["status_history"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.status_history
@@ -302,7 +302,6 @@ class ModelsServer(Model):
     def create(
         cls,
         allocation_id: str,
-        alternate_ips: List[str],
         cpu_limit: int,
         cpu_request: str,
         deployment: str,
@@ -317,17 +316,17 @@ class ModelsServer(Model):
         params: str,
         pod_name: str,
         port: int,
-        ports: Dict[str, int],
         provider: str,
         region: str,
         session_id: str,
         status: str,
-        status_history: List[ModelsStatusHistory],
+        alternate_ips: Optional[List[str]] = None,
+        ports: Optional[Dict[str, int]] = None,
+        status_history: Optional[List[ModelsStatusHistory]] = None,
         **kwargs,
     ) -> ModelsServer:
         instance = cls()
         instance.allocation_id = allocation_id
-        instance.alternate_ips = alternate_ips
         instance.cpu_limit = cpu_limit
         instance.cpu_request = cpu_request
         instance.deployment = deployment
@@ -342,12 +341,16 @@ class ModelsServer(Model):
         instance.params = params
         instance.pod_name = pod_name
         instance.port = port
-        instance.ports = ports
         instance.provider = provider
         instance.region = region
         instance.session_id = session_id
         instance.status = status
-        instance.status_history = status_history
+        if alternate_ips is not None:
+            instance.alternate_ips = alternate_ips
+        if ports is not None:
+            instance.ports = ports
+        if status_history is not None:
+            instance.status_history = status_history
         return instance
 
     @classmethod
@@ -359,10 +362,6 @@ class ModelsServer(Model):
             instance.allocation_id = str(dict_["allocation_id"])
         elif include_empty:
             instance.allocation_id = ""
-        if "alternate_ips" in dict_ and dict_["alternate_ips"] is not None:
-            instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
-        elif include_empty:
-            instance.alternate_ips = []
         if "cpu_limit" in dict_ and dict_["cpu_limit"] is not None:
             instance.cpu_limit = int(dict_["cpu_limit"])
         elif include_empty:
@@ -422,10 +421,6 @@ class ModelsServer(Model):
             instance.port = int(dict_["port"])
         elif include_empty:
             instance.port = 0
-        if "ports" in dict_ and dict_["ports"] is not None:
-            instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
-        elif include_empty:
-            instance.ports = {}
         if "provider" in dict_ and dict_["provider"] is not None:
             instance.provider = str(dict_["provider"])
         elif include_empty:
@@ -442,6 +437,14 @@ class ModelsServer(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "alternate_ips" in dict_ and dict_["alternate_ips"] is not None:
+            instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
+        elif include_empty:
+            instance.alternate_ips = []
+        if "ports" in dict_ and dict_["ports"] is not None:
+            instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
+        elif include_empty:
+            instance.ports = {}
         if "status_history" in dict_ and dict_["status_history"] is not None:
             instance.status_history = [
                 ModelsStatusHistory.create_from_dict(i0, include_empty=include_empty)
@@ -489,7 +492,6 @@ class ModelsServer(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "allocation_id": "allocation_id",
-            "alternate_ips": "alternate_ips",
             "cpu_limit": "cpu_limit",
             "cpu_request": "cpu_request",
             "deployment": "deployment",
@@ -504,11 +506,12 @@ class ModelsServer(Model):
             "params": "params",
             "pod_name": "pod_name",
             "port": "port",
-            "ports": "ports",
             "provider": "provider",
             "region": "region",
             "session_id": "session_id",
             "status": "status",
+            "alternate_ips": "alternate_ips",
+            "ports": "ports",
             "status_history": "status_history",
         }
 
@@ -516,7 +519,6 @@ class ModelsServer(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "allocation_id": True,
-            "alternate_ips": True,
             "cpu_limit": True,
             "cpu_request": True,
             "deployment": True,
@@ -531,12 +533,13 @@ class ModelsServer(Model):
             "params": True,
             "pod_name": True,
             "port": True,
-            "ports": True,
             "provider": True,
             "region": True,
             "session_id": True,
             "status": True,
-            "status_history": True,
+            "alternate_ips": False,
+            "ports": False,
+            "status_history": False,
         }
 
     # endregion static methods

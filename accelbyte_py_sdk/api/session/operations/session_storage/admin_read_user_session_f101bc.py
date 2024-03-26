@@ -36,7 +36,8 @@ class AdminReadUserSessionStorage(Operation):
     """Read Session Storage User. (adminReadUserSessionStorage)
 
 
-    Read Session Storage User.
+    Read Session Storage by sessionID and userID
+    Session Storage feature only available for Gamesession
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/sessions/{sessionId}/storage/users/{userId}

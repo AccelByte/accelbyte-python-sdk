@@ -14,7 +14,7 @@ Definition: TierInput
 required_exp: int
 rewards: Dict[str, List[str]]
 
-Example: '{"requiredExp": 72, "rewards": {"mJtOHQaN2f1WFx7z": ["3xslinG1snMRNG5r", "5PZ23cw2Asz9xN1P", "jofRQkMehySfKFSa"], "XS47rgsMbLkoUa37": ["dNm4MK5xUvyXfTOi", "Gl3IdXnt6WumDHWS", "vgdonEWVpO8ckxPz"], "ny2RdWSNgDdSJDAe": ["ttej7f557clJhFfx", "6yjHcjnTGkOethbe", "e08LFUixdkPqLfUW"]}}'
+Example: '{"requiredExp": 73, "rewards": {"PhOh2A7TyRiDkR4x": ["iu24JppvtDBug5Dv", "gHXDHq0T34MCtevB", "lwTq4DgTAqqLKqru"], "CiZ1mKSVZ9GNo9d7": ["ArRpkF0mcDQHAGky", "44n9tVFWprleFZwe", "rhlr2TWztJ5PcfXR"], "f9io6dx6VNVpPNYM": ["ja3sgUsx8QESLmBV", "8wna7dyJRl0wVms8", "2ZP86inoaKMkNtOS"]}}'
 """
 
 result, error = update_tier(

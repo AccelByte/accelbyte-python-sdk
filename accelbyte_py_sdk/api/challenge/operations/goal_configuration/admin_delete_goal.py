@@ -33,7 +33,7 @@ from ...models import ResponseError
 
 
 class AdminDeleteGoal(Operation):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]&lt;/li&gt;&lt;/ul&gt; (adminDeleteGoal)
+    """Delete Goal (adminDeleteGoal)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 

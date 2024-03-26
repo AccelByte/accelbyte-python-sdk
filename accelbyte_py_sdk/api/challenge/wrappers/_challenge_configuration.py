@@ -72,7 +72,7 @@ def admin_create_challenge(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]&lt;/li&gt;&lt;/ul&gt;Challenge is a collection of goals that can be completed by players. Challenge can have rules that specify what and when goals will be available for players to be taken.&lt;p&gt;Request body:&lt;ul&gt;&lt;li&gt;code: only lowercase letters, numbers, and the separator - are allowed; must start and end with letter&lt;/li&gt;&lt;li&gt;name: name of the challenge&lt;/li&gt;&lt;li&gt;description: text describing about the challenge (optional)&lt;/li&gt;&lt;li&gt;startDate: timestamp of when the challenge is started&lt;/li&gt;&lt;li&gt;endDate: timestamp of when the challenge is ended (optional)&lt;/li&gt;&lt;li&gt;endAfter: describe number of period challenge will be retired after (optional)&lt;/li&gt;To configure challenge that never end, leave the endDate and endAfter field null/empty.&lt;li&gt;rotation: describe how long goals in a challenge will be available for players to progress before rotated with another goals. (DAILY|WEEKLY|MONTHLY|NONE)&lt;/li&gt;&lt;li&gt;activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)&lt;/li&gt;&lt;li&gt;assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED)&lt;/li&gt;&lt;li&gt;goalsVisibility: describe whether users can see all goals under challenge, or only active goal in one rotation period only. (SHOWALL|PERIODONLY)&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt; (adminCreateChallenge)
+    """Create New Challenge (adminCreateChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
 
@@ -143,7 +143,7 @@ async def admin_create_challenge_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]&lt;/li&gt;&lt;/ul&gt;Challenge is a collection of goals that can be completed by players. Challenge can have rules that specify what and when goals will be available for players to be taken.&lt;p&gt;Request body:&lt;ul&gt;&lt;li&gt;code: only lowercase letters, numbers, and the separator - are allowed; must start and end with letter&lt;/li&gt;&lt;li&gt;name: name of the challenge&lt;/li&gt;&lt;li&gt;description: text describing about the challenge (optional)&lt;/li&gt;&lt;li&gt;startDate: timestamp of when the challenge is started&lt;/li&gt;&lt;li&gt;endDate: timestamp of when the challenge is ended (optional)&lt;/li&gt;&lt;li&gt;endAfter: describe number of period challenge will be retired after (optional)&lt;/li&gt;To configure challenge that never end, leave the endDate and endAfter field null/empty.&lt;li&gt;rotation: describe how long goals in a challenge will be available for players to progress before rotated with another goals. (DAILY|WEEKLY|MONTHLY|NONE)&lt;/li&gt;&lt;li&gt;activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)&lt;/li&gt;&lt;li&gt;assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED)&lt;/li&gt;&lt;li&gt;goalsVisibility: describe whether users can see all goals under challenge, or only active goal in one rotation period only. (SHOWALL|PERIODONLY)&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt; (adminCreateChallenge)
+    """Create New Challenge (adminCreateChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
 
@@ -216,7 +216,7 @@ def admin_delete_challenge(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]&lt;/li&gt;&lt;/ul&gt; (adminDeleteChallenge)
+    """Delete a Challenge (adminDeleteChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
@@ -271,7 +271,7 @@ async def admin_delete_challenge_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]&lt;/li&gt;&lt;/ul&gt; (adminDeleteChallenge)
+    """Delete a Challenge (adminDeleteChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
@@ -328,7 +328,7 @@ def admin_delete_tied_challenge(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]&lt;/li&gt;&lt;li&gt;This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS&lt;/li&gt;&lt;/ul&gt; (adminDeleteTiedChallenge)
+    """Delete Tied Challenge (adminDeleteTiedChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
       * This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS
@@ -384,7 +384,7 @@ async def admin_delete_tied_challenge_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]&lt;/li&gt;&lt;li&gt;This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS&lt;/li&gt;&lt;/ul&gt; (adminDeleteTiedChallenge)
+    """Delete Tied Challenge (adminDeleteTiedChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
       * This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS
@@ -442,7 +442,7 @@ def admin_get_challenge(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetChallenge)
+    """Get a Challenge (adminGetChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -495,7 +495,7 @@ async def admin_get_challenge_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetChallenge)
+    """Get a Challenge (adminGetChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -553,7 +553,7 @@ def admin_get_challenges(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetChallenges)
+    """List Challenges (adminGetChallenges)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -616,7 +616,7 @@ async def admin_get_challenges_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetChallenges)
+    """List Challenges (adminGetChallenges)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -680,7 +680,7 @@ def admin_get_periods(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetPeriods)
+    """Get Challenge's Periods (adminGetPeriods)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -741,7 +741,7 @@ async def admin_get_periods_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetPeriods)
+    """Get Challenge's Periods (adminGetPeriods)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -802,7 +802,7 @@ def admin_randomize_challenge(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]&lt;/li&gt;&lt;/ul&gt;This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED. (adminRandomizeChallenge)
+    """Randomize Goals of a Challenge (adminRandomizeChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 
@@ -857,7 +857,7 @@ async def admin_randomize_challenge_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]&lt;/li&gt;&lt;/ul&gt;This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED. (adminRandomizeChallenge)
+    """Randomize Goals of a Challenge (adminRandomizeChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 
@@ -915,7 +915,7 @@ def admin_update_challenge(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Request body:&lt;ul&gt;&lt;li&gt;name: name of the challenge&lt;/li&gt;&lt;li&gt;description: text describing about the challenge (optional)&lt;/li&gt;&lt;li&gt;startDate: timestamp of when the challenge is started&lt;/li&gt;&lt;li&gt;endDate: timestamp of when the challenge is ended (optional)&lt;/li&gt;&lt;li&gt;endAfter: describe number of period challenge will be retired after (optional)&lt;/li&gt;To configure challenge that never end, leave the endDate and endAfter field null/empty.&lt;/ul&gt;&lt;/p&gt; (adminUpdateChallenge)
+    """Update a Challenge (adminUpdateChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 
@@ -985,7 +985,7 @@ async def admin_update_challenge_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Request body:&lt;ul&gt;&lt;li&gt;name: name of the challenge&lt;/li&gt;&lt;li&gt;description: text describing about the challenge (optional)&lt;/li&gt;&lt;li&gt;startDate: timestamp of when the challenge is started&lt;/li&gt;&lt;li&gt;endDate: timestamp of when the challenge is ended (optional)&lt;/li&gt;&lt;li&gt;endAfter: describe number of period challenge will be retired after (optional)&lt;/li&gt;To configure challenge that never end, leave the endDate and endAfter field null/empty.&lt;/ul&gt;&lt;/p&gt; (adminUpdateChallenge)
+    """Update a Challenge (adminUpdateChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 

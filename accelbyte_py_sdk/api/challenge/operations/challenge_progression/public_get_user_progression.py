@@ -35,7 +35,12 @@ from ...models import ResponseError
 
 
 class PublicGetUserProgression(Operation):
-    """Public get user progression (publicGetUserProgression)
+    """List User's Progressions (publicGetUserProgression)
+
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}

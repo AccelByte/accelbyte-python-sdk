@@ -13,7 +13,7 @@ Definition: ADTOForUnbanUserAPICall
 comment: str
 user_ids: List[str]
 
-Example: '{"comment": "eqPQDaI9B9kzlKjO", "userIds": ["9XJFLq6lAV2HFhPz", "TqlCuqYUKnnQMl8j", "520R5mehYmJdYLqI"]}'
+Example: '{"comment": "mW99Z59FYJn90kra", "userIds": ["MsaQFiWTs0mXEFS2", "OBh5TKwRz6VfAh69", "Mr9Qe4bmO8yvcze2"]}'
 """
 
 result, error = un_ban_users(

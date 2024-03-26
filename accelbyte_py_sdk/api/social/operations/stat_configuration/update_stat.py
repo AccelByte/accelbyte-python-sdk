@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service
+# AccelByte Gaming Services Statistics Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -42,6 +42,7 @@ class UpdateStat(Operation):
 
       *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
       *  Returns : updated stat
+      *  Field globalAggregationMethod will be ignored when the stat is not set as global
       *  Field globalAggregationMethod is not updatable when the stat status is TIED
 
     Required Permission(s):

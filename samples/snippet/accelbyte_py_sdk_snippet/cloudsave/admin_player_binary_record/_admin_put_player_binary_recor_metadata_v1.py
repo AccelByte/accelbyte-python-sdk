@@ -16,7 +16,7 @@ is_public: bool
 set_by: str
 tags: List[str]
 
-Example: '{"is_public": true, "set_by": "SERVER", "tags": ["5Ju05CmSlRnPjXR9", "dL3bY2T9lPMVi46c", "kBECc2MLeZpPIaEs"]}'
+Example: '{"is_public": true, "set_by": "CLIENT", "tags": ["94dsRVdPEWmCTK5A", "M7YKNMfAwrrYHhNx", "LHEu0jmo64GxlKwN"]}'
 """
 
 result, error = admin_put_player_binary_recor_metadata_v1(

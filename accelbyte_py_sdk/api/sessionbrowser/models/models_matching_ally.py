@@ -34,12 +34,12 @@ class ModelsMatchingAlly(Model):
     """Models matching ally (models.MatchingAlly)
 
     Properties:
-        matching_parties: (matching_parties) REQUIRED List[ModelsMatchingParty]
+        matching_parties: (matching_parties) OPTIONAL List[ModelsMatchingParty]
     """
 
     # region fields
 
-    matching_parties: List[ModelsMatchingParty]  # REQUIRED
+    matching_parties: List[ModelsMatchingParty]  # OPTIONAL
 
     # endregion fields
 
@@ -71,10 +71,11 @@ class ModelsMatchingAlly(Model):
 
     @classmethod
     def create(
-        cls, matching_parties: List[ModelsMatchingParty], **kwargs
+        cls, matching_parties: Optional[List[ModelsMatchingParty]] = None, **kwargs
     ) -> ModelsMatchingAlly:
         instance = cls()
-        instance.matching_parties = matching_parties
+        if matching_parties is not None:
+            instance.matching_parties = matching_parties
         return instance
 
     @classmethod
@@ -138,7 +139,7 @@ class ModelsMatchingAlly(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "matching_parties": True,
+            "matching_parties": False,
         }
 
     # endregion static methods

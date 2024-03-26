@@ -52,15 +52,9 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
 
         joinable: (joinable) REQUIRED bool
 
-        joining: (joining) REQUIRED List[ModelsSessionPlayerJoining]
-
         match_id: (match_id) REQUIRED str
 
-        matching_allies: (matching_allies) REQUIRED List[ModelsMatchingAlly]
-
         namespace: (namespace) REQUIRED str
-
-        players: (players) REQUIRED List[ModelsSessionPlayerHistory]
 
         region: (region) REQUIRED str
 
@@ -74,7 +68,13 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
 
         user_id: (user_id) REQUIRED str
 
+        joining: (joining) OPTIONAL List[ModelsSessionPlayerJoining]
+
+        matching_allies: (matching_allies) OPTIONAL List[ModelsMatchingAlly]
+
         party_id: (party_id) OPTIONAL str
+
+        players: (players) OPTIONAL List[ModelsSessionPlayerHistory]
     """
 
     # region fields
@@ -87,18 +87,18 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
     game_mode: str  # REQUIRED
     id_: str  # REQUIRED
     joinable: bool  # REQUIRED
-    joining: List[ModelsSessionPlayerJoining]  # REQUIRED
     match_id: str  # REQUIRED
-    matching_allies: List[ModelsMatchingAlly]  # REQUIRED
     namespace: str  # REQUIRED
-    players: List[ModelsSessionPlayerHistory]  # REQUIRED
     region: str  # REQUIRED
     removed_reason: str  # REQUIRED
     server_name: str  # REQUIRED
     session_type: str  # REQUIRED
     status: str  # REQUIRED
     user_id: str  # REQUIRED
+    joining: List[ModelsSessionPlayerJoining]  # OPTIONAL
+    matching_allies: List[ModelsMatchingAlly]  # OPTIONAL
     party_id: str  # OPTIONAL
+    players: List[ModelsSessionPlayerHistory]  # OPTIONAL
 
     # endregion fields
 
@@ -144,30 +144,12 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
         self.joinable = value
         return self
 
-    def with_joining(
-        self, value: List[ModelsSessionPlayerJoining]
-    ) -> ModelsGetSessionHistoryDetailedResponseItem:
-        self.joining = value
-        return self
-
     def with_match_id(self, value: str) -> ModelsGetSessionHistoryDetailedResponseItem:
         self.match_id = value
         return self
 
-    def with_matching_allies(
-        self, value: List[ModelsMatchingAlly]
-    ) -> ModelsGetSessionHistoryDetailedResponseItem:
-        self.matching_allies = value
-        return self
-
     def with_namespace(self, value: str) -> ModelsGetSessionHistoryDetailedResponseItem:
         self.namespace = value
-        return self
-
-    def with_players(
-        self, value: List[ModelsSessionPlayerHistory]
-    ) -> ModelsGetSessionHistoryDetailedResponseItem:
-        self.players = value
         return self
 
     def with_region(self, value: str) -> ModelsGetSessionHistoryDetailedResponseItem:
@@ -200,8 +182,26 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
         self.user_id = value
         return self
 
+    def with_joining(
+        self, value: List[ModelsSessionPlayerJoining]
+    ) -> ModelsGetSessionHistoryDetailedResponseItem:
+        self.joining = value
+        return self
+
+    def with_matching_allies(
+        self, value: List[ModelsMatchingAlly]
+    ) -> ModelsGetSessionHistoryDetailedResponseItem:
+        self.matching_allies = value
+        return self
+
     def with_party_id(self, value: str) -> ModelsGetSessionHistoryDetailedResponseItem:
         self.party_id = value
+        return self
+
+    def with_players(
+        self, value: List[ModelsSessionPlayerHistory]
+    ) -> ModelsGetSessionHistoryDetailedResponseItem:
+        self.players = value
         return self
 
     # endregion with_x methods
@@ -242,32 +242,14 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
             result["joinable"] = False
-        if hasattr(self, "joining"):
-            result["joining"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.joining
-            ]
-        elif include_empty:
-            result["joining"] = []
         if hasattr(self, "match_id"):
             result["match_id"] = str(self.match_id)
         elif include_empty:
             result["match_id"] = ""
-        if hasattr(self, "matching_allies"):
-            result["matching_allies"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
-            ]
-        elif include_empty:
-            result["matching_allies"] = []
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "players"):
-            result["players"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.players
-            ]
-        elif include_empty:
-            result["players"] = []
         if hasattr(self, "region"):
             result["region"] = str(self.region)
         elif include_empty:
@@ -292,10 +274,28 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
             result["user_id"] = str(self.user_id)
         elif include_empty:
             result["user_id"] = ""
+        if hasattr(self, "joining"):
+            result["joining"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.joining
+            ]
+        elif include_empty:
+            result["joining"] = []
+        if hasattr(self, "matching_allies"):
+            result["matching_allies"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
+            ]
+        elif include_empty:
+            result["matching_allies"] = []
         if hasattr(self, "party_id"):
             result["party_id"] = str(self.party_id)
         elif include_empty:
             result["party_id"] = ""
+        if hasattr(self, "players"):
+            result["players"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.players
+            ]
+        elif include_empty:
+            result["players"] = []
         return result
 
     # endregion to methods
@@ -313,18 +313,18 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
         game_mode: str,
         id_: str,
         joinable: bool,
-        joining: List[ModelsSessionPlayerJoining],
         match_id: str,
-        matching_allies: List[ModelsMatchingAlly],
         namespace: str,
-        players: List[ModelsSessionPlayerHistory],
         region: str,
         removed_reason: str,
         server_name: str,
         session_type: str,
         status: str,
         user_id: str,
+        joining: Optional[List[ModelsSessionPlayerJoining]] = None,
+        matching_allies: Optional[List[ModelsMatchingAlly]] = None,
         party_id: Optional[str] = None,
+        players: Optional[List[ModelsSessionPlayerHistory]] = None,
         **kwargs,
     ) -> ModelsGetSessionHistoryDetailedResponseItem:
         instance = cls()
@@ -336,19 +336,22 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
         instance.game_mode = game_mode
         instance.id_ = id_
         instance.joinable = joinable
-        instance.joining = joining
         instance.match_id = match_id
-        instance.matching_allies = matching_allies
         instance.namespace = namespace
-        instance.players = players
         instance.region = region
         instance.removed_reason = removed_reason
         instance.server_name = server_name
         instance.session_type = session_type
         instance.status = status
         instance.user_id = user_id
+        if joining is not None:
+            instance.joining = joining
+        if matching_allies is not None:
+            instance.matching_allies = matching_allies
         if party_id is not None:
             instance.party_id = party_id
+        if players is not None:
+            instance.players = players
         return instance
 
     @classmethod
@@ -390,39 +393,14 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
             instance.joinable = False
-        if "joining" in dict_ and dict_["joining"] is not None:
-            instance.joining = [
-                ModelsSessionPlayerJoining.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["joining"]
-            ]
-        elif include_empty:
-            instance.joining = []
         if "match_id" in dict_ and dict_["match_id"] is not None:
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
             instance.match_id = ""
-        if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
-            instance.matching_allies = [
-                ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["matching_allies"]
-            ]
-        elif include_empty:
-            instance.matching_allies = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "players" in dict_ and dict_["players"] is not None:
-            instance.players = [
-                ModelsSessionPlayerHistory.create_from_dict(
-                    i0, include_empty=include_empty
-                )
-                for i0 in dict_["players"]
-            ]
-        elif include_empty:
-            instance.players = []
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -447,10 +425,35 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
             instance.user_id = str(dict_["user_id"])
         elif include_empty:
             instance.user_id = ""
+        if "joining" in dict_ and dict_["joining"] is not None:
+            instance.joining = [
+                ModelsSessionPlayerJoining.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["joining"]
+            ]
+        elif include_empty:
+            instance.joining = []
+        if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
+            instance.matching_allies = [
+                ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["matching_allies"]
+            ]
+        elif include_empty:
+            instance.matching_allies = []
         if "party_id" in dict_ and dict_["party_id"] is not None:
             instance.party_id = str(dict_["party_id"])
         elif include_empty:
             instance.party_id = ""
+        if "players" in dict_ and dict_["players"] is not None:
+            instance.players = [
+                ModelsSessionPlayerHistory.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["players"]
+            ]
+        elif include_empty:
+            instance.players = []
         return instance
 
     @classmethod
@@ -502,18 +505,18 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
             "game_mode": "game_mode",
             "_id": "id_",
             "joinable": "joinable",
-            "joining": "joining",
             "match_id": "match_id",
-            "matching_allies": "matching_allies",
             "namespace": "namespace",
-            "players": "players",
             "region": "region",
             "removed_reason": "removed_reason",
             "server_name": "server_name",
             "session_type": "session_type",
             "status": "status",
             "user_id": "user_id",
+            "joining": "joining",
+            "matching_allies": "matching_allies",
             "party_id": "party_id",
+            "players": "players",
         }
 
     @staticmethod
@@ -527,18 +530,18 @@ class ModelsGetSessionHistoryDetailedResponseItem(Model):
             "game_mode": True,
             "_id": True,
             "joinable": True,
-            "joining": True,
             "match_id": True,
-            "matching_allies": True,
             "namespace": True,
-            "players": True,
             "region": True,
             "removed_reason": True,
             "server_name": True,
             "session_type": True,
             "status": True,
             "user_id": True,
+            "joining": False,
+            "matching_allies": False,
             "party_id": False,
+            "players": False,
         }
 
     # endregion static methods

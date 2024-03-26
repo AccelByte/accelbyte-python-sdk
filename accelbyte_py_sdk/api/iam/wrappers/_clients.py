@@ -40,12 +40,14 @@ from ..models import ClientmodelClientUpdateRequest
 from ..models import ClientmodelClientUpdateSecretRequest
 from ..models import ClientmodelClientUpdateV3Request
 from ..models import ClientmodelClientV3Response
+from ..models import ClientmodelClientsUpdateRequestV3
 from ..models import ClientmodelClientsV3Response
 from ..models import ClientmodelV3ClientUpdateSecretRequest
 from ..models import RestErrorResponse
 
 from ..operations.clients import AddClientPermission
 from ..operations.clients import AdminAddClientPermissionsV3
+from ..operations.clients import AdminBulkUpdateClientsV3
 from ..operations.clients import AdminCreateClientV3
 from ..operations.clients import AdminDeleteClientPermissionV3
 from ..operations.clients import AdminDeleteClientV3
@@ -282,6 +284,170 @@ async def admin_add_client_permissions_v3_async(
     request = AdminAddClientPermissionsV3.create(
         body=body,
         client_id=client_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminBulkUpdateClientsV3)
+def admin_bulk_update_clients_v3(
+    body: ClientmodelClientsUpdateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk Update Clients (AdminBulkUpdateClientsV3)
+
+    Updates multiple OAuth 2.0 clients.
+    Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
+
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module.
+
+    action code: 10302
+
+    **Fields Description:**
+    - **clientName** : The client name. It should not be empty if the field exists in the body. e.g E-commerce
+    - **namespace** : The namespace where the client lives. e.g sample-game
+    - **redirectUri** : Contains the redirect URI used in OAuth callback. It should not be empty if the field exists in the body. e.g https://example.net/platform
+    - **audiences** : List of target client IDs who is intended to receive the token. e.g ["eaaa65618fe24293b00a61454182b435", "40073ee9bc3446d3a051a71b48509a5d"]
+    - **baseUri** : A base URI of the application. It is used in the audience checking for making sure the token is used by the right resource server. Required if the application type is a server. e.g https://example.net/platform
+    - **clientPermissions** : Contains the client's permissions
+    - **deletable** : The flag to identify whether client is deletable (optional). e.g. true
+    - **clientPlatform** : available client platform (optional). default value: "".
+    - Playstation
+    - Xbox
+    - Steam
+    - Epic
+    - IOS
+    - GooglePlay
+    - Nintendo
+    - Oculus
+    - **twoFactorEnabled**: The flag to indicate whether 2FA validation is enable for this client. default value: false
+    - **oauthAccessTokenExpiration**: a configurable expiration time for **access_token**, default value: 0 (mean fetch value from environment variable)
+    - **oauthRefreshTokenExpiration**: a configurable expiration time for **refresh_token**, default value: 0 (mean fetch value from environment variable)
+    - **oauthAccessTokenExpirationTimeUnit**: a configurable expiration time unit for **access_token**, will use previous value if not specified
+    - **oauthRefreshTokenExpirationTimeUnit**: a configurable expiration time unit for **refresh_token**, will use previous value if not specified
+    - **skipLoginQueue**: a flag to indicate whether this client should be exempted from login queue or not
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/clients
+
+        method: PUT
+
+        tags: ["Clients"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ClientmodelClientsUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10365: client not found)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkUpdateClientsV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBulkUpdateClientsV3)
+async def admin_bulk_update_clients_v3_async(
+    body: ClientmodelClientsUpdateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk Update Clients (AdminBulkUpdateClientsV3)
+
+    Updates multiple OAuth 2.0 clients.
+    Specify only the fields you want to update in the request payload, e.g. {"ClientName":"E-commerce", "BaseUri":"https://example.net"}
+
+    **Note for Multi Tenant Mode (Confidential Client):**
+    Only Super admin can set permission with resource & action.
+    Studio admin & game admin need set permission with permission module.
+
+    action code: 10302
+
+    **Fields Description:**
+    - **clientName** : The client name. It should not be empty if the field exists in the body. e.g E-commerce
+    - **namespace** : The namespace where the client lives. e.g sample-game
+    - **redirectUri** : Contains the redirect URI used in OAuth callback. It should not be empty if the field exists in the body. e.g https://example.net/platform
+    - **audiences** : List of target client IDs who is intended to receive the token. e.g ["eaaa65618fe24293b00a61454182b435", "40073ee9bc3446d3a051a71b48509a5d"]
+    - **baseUri** : A base URI of the application. It is used in the audience checking for making sure the token is used by the right resource server. Required if the application type is a server. e.g https://example.net/platform
+    - **clientPermissions** : Contains the client's permissions
+    - **deletable** : The flag to identify whether client is deletable (optional). e.g. true
+    - **clientPlatform** : available client platform (optional). default value: "".
+    - Playstation
+    - Xbox
+    - Steam
+    - Epic
+    - IOS
+    - GooglePlay
+    - Nintendo
+    - Oculus
+    - **twoFactorEnabled**: The flag to indicate whether 2FA validation is enable for this client. default value: false
+    - **oauthAccessTokenExpiration**: a configurable expiration time for **access_token**, default value: 0 (mean fetch value from environment variable)
+    - **oauthRefreshTokenExpiration**: a configurable expiration time for **refresh_token**, default value: 0 (mean fetch value from environment variable)
+    - **oauthAccessTokenExpirationTimeUnit**: a configurable expiration time unit for **access_token**, will use previous value if not specified
+    - **oauthRefreshTokenExpirationTimeUnit**: a configurable expiration time unit for **refresh_token**, will use previous value if not specified
+    - **skipLoginQueue**: a flag to indicate whether this client should be exempted from login queue or not
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/clients
+
+        method: PUT
+
+        tags: ["Clients"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ClientmodelClientsUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10365: client not found)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkUpdateClientsV3.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

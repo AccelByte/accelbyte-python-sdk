@@ -15,7 +15,7 @@ Definition: List[AccountcommonRoleMemberV3]
     namespace: str
     user_id: str
 
-Example: '{"members": [{"displayName": "Z4TA2cW5DiGjezUf", "namespace": "iePVHyURlI5GgAIO", "userId": "ij76WkfiQjcs2ueB"}, {"displayName": "gfHQj0jjWPBLvuvh", "namespace": "YVOlKJds7POWhKeN", "userId": "9iRjVp0rKPMze6wq"}, {"displayName": "JA919VSGkT9WybH3", "namespace": "KIKRKHvgRtzrYdPc", "userId": "gHEZQ5UfdLrKCpT9"}]}'
+Example: '{"members": [{"displayName": "kFENvZp14pIgK4Pe", "namespace": "9k1LafWpws3vnmFW", "userId": "Kyu12YTpWHIslGmV"}, {"displayName": "DY0t4eC1cK1BeR54", "namespace": "8mTJpBf1KLUnsBzY", "userId": "ufsiJOhCvqprGXCb"}, {"displayName": "McQmbiXo3fel8WJ4", "namespace": "1Q6pdlF1OGlzg17V", "userId": "oTGWu3ArUM4ULNHd"}]}'
 """
 
 result, error = admin_add_role_members_v3(

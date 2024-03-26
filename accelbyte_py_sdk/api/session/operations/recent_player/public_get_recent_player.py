@@ -34,9 +34,9 @@ from ...models import ResponseError
 
 
 class PublicGetRecentPlayer(Operation):
-    """Query recent player with given user id. (publicGetRecentPlayer)
+    """Query user's recent player (publicGetRecentPlayer)
 
-    Query recent player with given user id.
+    Query user's recent player.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/recent-player

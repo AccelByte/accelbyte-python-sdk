@@ -44,7 +44,6 @@ from ..operations.o_auth2_0_v4 import SimultaneousLoginV4
 from ..operations.o_auth2_0_v4 import (
     SimultaneousLoginV4CodeChallengeMethodEnum,
     SimultaneousLoginV4NativePlatformEnum,
-    SimultaneousLoginV4SimultaneousPlatformEnum,
 )
 from ..operations.o_auth2_0_v4 import TokenGrantV4
 from ..operations.o_auth2_0_v4 import (
@@ -678,14 +677,14 @@ def simultaneous_login_v4(
     code_challenge_method: Optional[
         Union[str, SimultaneousLoginV4CodeChallengeMethodEnum]
     ] = None,
-    simultaneous_platform: Optional[
-        Union[str, SimultaneousLoginV4SimultaneousPlatformEnum]
-    ] = None,
+    simultaneous_platform: Optional[str] = None,
     simultaneous_ticket: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Simultaneous login (SimultaneousLoginV4)
+
+    # This endpoint is in ALPHA, avoid using this endpoint fow now, reach out to AB support for inquiries
 
     Simultaneous login flow.
 
@@ -725,7 +724,7 @@ def simultaneous_login_v4(
 
         securities: [BEARER_AUTH]
 
-        simultaneous_platform: (simultaneousPlatform) OPTIONAL Union[str, SimultaneousPlatformEnum] in form_data
+        simultaneous_platform: (simultaneousPlatform) OPTIONAL str in form_data
 
         simultaneous_ticket: (simultaneousTicket) OPTIONAL str in form_data
 
@@ -769,14 +768,14 @@ async def simultaneous_login_v4_async(
     code_challenge_method: Optional[
         Union[str, SimultaneousLoginV4CodeChallengeMethodEnum]
     ] = None,
-    simultaneous_platform: Optional[
-        Union[str, SimultaneousLoginV4SimultaneousPlatformEnum]
-    ] = None,
+    simultaneous_platform: Optional[str] = None,
     simultaneous_ticket: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Simultaneous login (SimultaneousLoginV4)
+
+    # This endpoint is in ALPHA, avoid using this endpoint fow now, reach out to AB support for inquiries
 
     Simultaneous login flow.
 
@@ -816,7 +815,7 @@ async def simultaneous_login_v4_async(
 
         securities: [BEARER_AUTH]
 
-        simultaneous_platform: (simultaneousPlatform) OPTIONAL Union[str, SimultaneousPlatformEnum] in form_data
+        simultaneous_platform: (simultaneousPlatform) OPTIONAL str in form_data
 
         simultaneous_ticket: (simultaneousTicket) OPTIONAL str in form_data
 

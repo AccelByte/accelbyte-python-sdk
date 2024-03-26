@@ -15,6 +15,7 @@ result, error = admin_search_user_v3(
     platform_by=platform_by,
     platform_id=platform_id,
     query=query,
+    role_ids=role_ids,
     skip_login_queue=skip_login_queue,
     start_date=start_date,
     test_account=test_account,

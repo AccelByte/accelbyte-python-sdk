@@ -18,7 +18,7 @@ group_name: str
 group_region: str
 group_type: str
 
-Example: '{"customAttributes": {}, "groupDescription": "m6gXRilgg2SBnB9Y", "groupIcon": "lPuv7FNLObZQ8tsX", "groupName": "ZVDCrIYAzP3YVkhG", "groupRegion": "GuSaJWBGShTis3Qx", "groupType": "PUBLIC"}'
+Example: '{"customAttributes": {}, "groupDescription": "AuNzWKy0rqV8l5XP", "groupIcon": "Bcz9xFjIylfO9rXe", "groupName": "wSuOQGfCBsdB8Ors", "groupRegion": "FtOvdiQWXzOUrvj8", "groupType": "PUBLIC"}'
 """
 
 result, error = update_patch_single_group_public_v2(

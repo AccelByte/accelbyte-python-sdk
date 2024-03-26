@@ -19,7 +19,7 @@ object_type: str
 reason: str
 user_id: str
 
-Example: '{"additionalInfo": {"NnPVJeIgK6d76wi6": {}, "RJ30oZosEqudAiRH": {}, "EixiERyoYrKmue30": {}}, "category": "USER", "comment": "M94oTG5CpoZNbdxq", "extensionCategory": "DQWAMaDggreqRxn5", "objectId": "rC8GW49whnWMlv1Y", "objectType": "sycgS5bNGzaKoz4D", "reason": "JpB8tLsa7e8DSq4n", "userId": "OrvzXoBgjbIymxg1"}'
+Example: '{"additionalInfo": {"tOYyDE66aD6DBPlB": {}, "sigddNbpUOLAB7FO": {}, "ZggiT1gbXskAYRgj": {}}, "category": "USER", "comment": "lKrffutQdNTvML5g", "extensionCategory": "etSUCjtZB5bhbpgt", "objectId": "UUb0YsuTcvZOfBDE", "objectType": "TVWhwfSvwUursTr1", "reason": "AdV4gyOqMMtreA5h", "userId": "LFWkOVKzriBkq5Dz"}'
 """
 
 result, error = submit_report(

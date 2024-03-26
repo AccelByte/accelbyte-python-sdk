@@ -16,7 +16,7 @@ region: str
 transaction_id: str
 type_: str
 
-Example: '{"itemIdentityType": "ITEM_SKU", "language": "LIwz-CkSd_Th", "productId": "CmfkKNFOYeSrbkyy", "region": "YIMjNlMmS5cjvQWx", "transactionId": "jHs0FF3W8HDEF7cB", "type": "GOOGLE"}'
+Example: '{"itemIdentityType": "ITEM_ID", "language": "rwL_pbjd", "productId": "q3sBccpy2xXsr7rB", "region": "ObQHBuTz6qH8wyZu", "transactionId": "Uy9gCU2k05HplV8D", "type": "STEAM"}'
 """
 
 result, error = mock_fulfill_iap_item(

@@ -26,35 +26,27 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
-from ....core import StrEnum
-
-
-class SelectionEnum(StrEnum):
-    NEWEST = "newest"
-    OLDEST = "oldest"
-    PIVOT = "pivot"
-    RANDOM = "random"
 
 
 class ModelsSelectionRule(Model):
     """Models selection rule (models.SelectionRule)
 
     Properties:
-        selection: (selection) REQUIRED Union[str, SelectionEnum]
+        selection: (selection) REQUIRED str
 
         threshold: (threshold) REQUIRED int
     """
 
     # region fields
 
-    selection: Union[str, SelectionEnum]  # REQUIRED
+    selection: str  # REQUIRED
     threshold: int  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_selection(self, value: Union[str, SelectionEnum]) -> ModelsSelectionRule:
+    def with_selection(self, value: str) -> ModelsSelectionRule:
         self.selection = value
         return self
 
@@ -71,7 +63,7 @@ class ModelsSelectionRule(Model):
         if hasattr(self, "selection"):
             result["selection"] = str(self.selection)
         elif include_empty:
-            result["selection"] = Union[str, SelectionEnum]()
+            result["selection"] = ""
         if hasattr(self, "threshold"):
             result["threshold"] = int(self.threshold)
         elif include_empty:
@@ -83,9 +75,7 @@ class ModelsSelectionRule(Model):
     # region static methods
 
     @classmethod
-    def create(
-        cls, selection: Union[str, SelectionEnum], threshold: int, **kwargs
-    ) -> ModelsSelectionRule:
+    def create(cls, selection: str, threshold: int, **kwargs) -> ModelsSelectionRule:
         instance = cls()
         instance.selection = selection
         instance.threshold = threshold
@@ -101,7 +91,7 @@ class ModelsSelectionRule(Model):
         if "selection" in dict_ and dict_["selection"] is not None:
             instance.selection = str(dict_["selection"])
         elif include_empty:
-            instance.selection = Union[str, SelectionEnum]()
+            instance.selection = ""
         if "threshold" in dict_ and dict_["threshold"] is not None:
             instance.threshold = int(dict_["threshold"])
         elif include_empty:
@@ -156,12 +146,6 @@ class ModelsSelectionRule(Model):
         return {
             "selection": True,
             "threshold": True,
-        }
-
-    @staticmethod
-    def get_enum_map() -> Dict[str, List[Any]]:
-        return {
-            "selection": ["newest", "oldest", "pivot", "random"],
         }
 
     # endregion static methods

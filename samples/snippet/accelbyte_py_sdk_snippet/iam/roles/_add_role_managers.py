@@ -15,7 +15,7 @@ Definition: List[AccountcommonRoleManager]
     namespace: str
     user_id: str
 
-Example: '{"Managers": [{"DisplayName": "PdE1MKPL9wKXLA0N", "Namespace": "jGTyJwSugJpoQ6oN", "UserId": "Tp84d464hn8TFjAc"}, {"DisplayName": "fBkvDAiHwDO9jf2w", "Namespace": "sG1pNFUNCWj7gpX9", "UserId": "SThGX85aKioZ94WW"}, {"DisplayName": "yKuzfUpG0pdpkEc0", "Namespace": "ETUR9Z2F86SZKhXu", "UserId": "3QEl24lCrQSODTwq"}]}'
+Example: '{"Managers": [{"DisplayName": "SWA1vI2cj8tqKIU5", "Namespace": "uVCKy70jiySxtvwq", "UserId": "ka0xw9iN6wgQlFX8"}, {"DisplayName": "l5VJRJAXrlZRLM8i", "Namespace": "j9Fl27zlrY12YqTl", "UserId": "ot68uHKC09VC1Hc5"}, {"DisplayName": "eGyIb4VTv5VidoTp", "Namespace": "QF3TjXC7tD8r598i", "UserId": "9lhLbx76vrkGwbsf"}]}'
 """
 
 result, error = add_role_managers(

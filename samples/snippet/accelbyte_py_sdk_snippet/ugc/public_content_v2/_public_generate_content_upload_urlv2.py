@@ -13,7 +13,7 @@ Definition: ModelsGenerateContentUploadURLRequest
 content_type: str
 file_extension: str
 
-Example: '{"contentType": "xAzKwkwa3oKzkSr7", "fileExtension": "E5v9rcl4xw8OXUA6"}'
+Example: '{"contentType": "FLr57toA7l7wKXun", "fileExtension": "4MIcNAKAREoe8mdY"}'
 """
 
 result, error = public_generate_content_upload_urlv2(

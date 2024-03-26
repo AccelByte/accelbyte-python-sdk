@@ -14,7 +14,7 @@ file_type: str
 is_public: bool
 key: str
 
-Example: '{"file_type": "65CpQJA4ZfWAZOH2", "is_public": false, "key": "xLDEQoCCG2lVSeWq"}'
+Example: '{"file_type": "LE19HZGuwfaZvYOy", "is_public": true, "key": "QDEwMW465pmEaOyQ"}'
 """
 
 result, error = post_player_binary_record_v1(

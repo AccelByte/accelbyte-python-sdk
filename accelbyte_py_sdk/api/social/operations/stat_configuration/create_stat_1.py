@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Social Service
+# AccelByte Gaming Services Statistics Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -45,6 +45,7 @@ class CreateStat1(Operation):
       *  Returns : created stat template
       * default minimum value is 0
       * default maximum value is 1.7976931348623157e+308
+      * Field globalAggregationMethod will be ignored when setAsGlobal field is false
 
     Required Permission(s):
         - NAMESPACE:{namespace}:STAT [CREATE]

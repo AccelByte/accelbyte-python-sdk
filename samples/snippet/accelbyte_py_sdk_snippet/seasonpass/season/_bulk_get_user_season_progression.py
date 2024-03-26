@@ -12,7 +12,7 @@ body:
 Definition: BulkUserProgressionRequest
 user_ids: List[str]
 
-Example: '{"userIds": ["jRN4O2dcjaDIkphT", "0oNRgrFtGG6h0IEk", "yW7gp8ukaYAOlxFc"]}'
+Example: '{"userIds": ["RUjbmYVu8Og56xys", "QyFwG4A1S9MV0Duh", "eOePXCCDbmivSgER"]}'
 """
 
 result, error = bulk_get_user_season_progression(

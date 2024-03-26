@@ -15,7 +15,7 @@ price: float
 product_id: str
 service_label: int
 
-Example: '{"currencyCode": "Y2Jn1JGZ4ur2hloi", "price": 0.7072380485641865, "productId": "JQ1DdZ43xirqkege", "serviceLabel": 64}'
+Example: '{"currencyCode": "5yDdzlKu0ieiC1nv", "price": 0.8685176799899521, "productId": "k9nwdMrFQGQbfbEk", "serviceLabel": 22}'
 """
 
 result, error = public_reconcile_play_station_store(

@@ -38,8 +38,6 @@ class ModelsDictionaryWithChildren(Model):
 
         namespace: (namespace) REQUIRED str
 
-        parent_id: (parentId) REQUIRED str
-
         word: (word) REQUIRED str
 
         word_type: (wordType) REQUIRED str
@@ -47,17 +45,19 @@ class ModelsDictionaryWithChildren(Model):
         false_negatives: (falseNegatives) OPTIONAL List[ModelsDictionaryChild]
 
         false_positives: (falsePositives) OPTIONAL List[ModelsDictionaryChild]
+
+        parent_id: (parentId) OPTIONAL str
     """
 
     # region fields
 
     id_: str  # REQUIRED
     namespace: str  # REQUIRED
-    parent_id: str  # REQUIRED
     word: str  # REQUIRED
     word_type: str  # REQUIRED
     false_negatives: List[ModelsDictionaryChild]  # OPTIONAL
     false_positives: List[ModelsDictionaryChild]  # OPTIONAL
+    parent_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -69,10 +69,6 @@ class ModelsDictionaryWithChildren(Model):
 
     def with_namespace(self, value: str) -> ModelsDictionaryWithChildren:
         self.namespace = value
-        return self
-
-    def with_parent_id(self, value: str) -> ModelsDictionaryWithChildren:
-        self.parent_id = value
         return self
 
     def with_word(self, value: str) -> ModelsDictionaryWithChildren:
@@ -95,6 +91,10 @@ class ModelsDictionaryWithChildren(Model):
         self.false_positives = value
         return self
 
+    def with_parent_id(self, value: str) -> ModelsDictionaryWithChildren:
+        self.parent_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -109,10 +109,6 @@ class ModelsDictionaryWithChildren(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "parent_id"):
-            result["parentId"] = str(self.parent_id)
-        elif include_empty:
-            result["parentId"] = ""
         if hasattr(self, "word"):
             result["word"] = str(self.word)
         elif include_empty:
@@ -133,6 +129,10 @@ class ModelsDictionaryWithChildren(Model):
             ]
         elif include_empty:
             result["falsePositives"] = []
+        if hasattr(self, "parent_id"):
+            result["parentId"] = str(self.parent_id)
+        elif include_empty:
+            result["parentId"] = ""
         return result
 
     # endregion to methods
@@ -144,23 +144,24 @@ class ModelsDictionaryWithChildren(Model):
         cls,
         id_: str,
         namespace: str,
-        parent_id: str,
         word: str,
         word_type: str,
         false_negatives: Optional[List[ModelsDictionaryChild]] = None,
         false_positives: Optional[List[ModelsDictionaryChild]] = None,
+        parent_id: Optional[str] = None,
         **kwargs,
     ) -> ModelsDictionaryWithChildren:
         instance = cls()
         instance.id_ = id_
         instance.namespace = namespace
-        instance.parent_id = parent_id
         instance.word = word
         instance.word_type = word_type
         if false_negatives is not None:
             instance.false_negatives = false_negatives
         if false_positives is not None:
             instance.false_positives = false_positives
+        if parent_id is not None:
+            instance.parent_id = parent_id
         return instance
 
     @classmethod
@@ -178,10 +179,6 @@ class ModelsDictionaryWithChildren(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "parentId" in dict_ and dict_["parentId"] is not None:
-            instance.parent_id = str(dict_["parentId"])
-        elif include_empty:
-            instance.parent_id = ""
         if "word" in dict_ and dict_["word"] is not None:
             instance.word = str(dict_["word"])
         elif include_empty:
@@ -204,6 +201,10 @@ class ModelsDictionaryWithChildren(Model):
             ]
         elif include_empty:
             instance.false_positives = []
+        if "parentId" in dict_ and dict_["parentId"] is not None:
+            instance.parent_id = str(dict_["parentId"])
+        elif include_empty:
+            instance.parent_id = ""
         return instance
 
     @classmethod
@@ -249,11 +250,11 @@ class ModelsDictionaryWithChildren(Model):
         return {
             "id": "id_",
             "namespace": "namespace",
-            "parentId": "parent_id",
             "word": "word",
             "wordType": "word_type",
             "falseNegatives": "false_negatives",
             "falsePositives": "false_positives",
+            "parentId": "parent_id",
         }
 
     @staticmethod
@@ -261,11 +262,11 @@ class ModelsDictionaryWithChildren(Model):
         return {
             "id": True,
             "namespace": True,
-            "parentId": True,
             "word": True,
             "wordType": True,
             "falseNegatives": False,
             "falsePositives": False,
+            "parentId": False,
         }
 
     # endregion static methods

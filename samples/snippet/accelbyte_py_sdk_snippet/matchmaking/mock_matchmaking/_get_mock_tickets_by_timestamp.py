@@ -12,7 +12,7 @@ body:
 Definition: ModelsQueryMockBy
 timestamp_after: int
 
-Example: '{"timestamp_after": 78}'
+Example: '{"timestamp_after": 67}'
 """
 
 result, error = get_mock_tickets_by_timestamp(

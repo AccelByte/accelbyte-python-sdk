@@ -33,7 +33,7 @@ from ...models import ResponseError
 
 
 class AdminDeleteTiedChallenge(Operation):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]&lt;/li&gt;&lt;li&gt;This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS&lt;/li&gt;&lt;/ul&gt; (adminDeleteTiedChallenge)
+    """Delete Tied Challenge (adminDeleteTiedChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
       * This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS

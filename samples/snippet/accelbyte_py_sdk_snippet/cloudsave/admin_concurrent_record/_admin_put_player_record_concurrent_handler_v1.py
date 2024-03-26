@@ -21,7 +21,7 @@ Definition: ModelsTTLConfigDTO
 updated_at: str
 value: Dict[str, Any]
 
-Example: '{"set_by": "CLIENT", "tags": ["VWhJu63XS8BarsZP", "n5QIfFyEQDA1CK8q", "IbbRxMTDLS5VY5c8"], "ttl_config": {"action": "DELETE", "expires_at": "1998-12-07T00:00:00Z"}, "updatedAt": "KT2nPak07wlL2hxu", "value": {"7cPRuTcyPHljSuME": {}, "ggoNbKqGUJcgZdeG": {}, "OGcCnvlurfuNl0Wv": {}}}'
+Example: '{"set_by": "CLIENT", "tags": ["w3eq3BHXlToPbXCB", "2OppO93wiDL1IlZb", "OWVDac2FKxAgXW2b"], "ttl_config": {"action": "DELETE", "expires_at": "1974-03-29T00:00:00Z"}, "updatedAt": "p00NDwbNhYcQGagF", "value": {"5rK6KiMs9igXfMWp": {}, "RwWTS1MSjDKBcDxS": {}, "TOVOKMtSupxosfRY": {}}}'
 """
 
 result, error = admin_put_player_record_concurrent_handler_v1(

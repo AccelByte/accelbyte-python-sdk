@@ -50,13 +50,13 @@ class ModelsSaveInboxMessageResponse(Model):
 
         id_: (id) REQUIRED str
 
-        message: (message) REQUIRED Dict[str, Any]
-
         scope: (scope) REQUIRED Union[str, ScopeEnum]
 
         status: (status) REQUIRED Union[str, StatusEnum]
 
-        user_i_ds: (userIDs) REQUIRED List[str]
+        message: (message) OPTIONAL Dict[str, Any]
+
+        user_i_ds: (userIDs) OPTIONAL List[str]
     """
 
     # region fields
@@ -64,10 +64,10 @@ class ModelsSaveInboxMessageResponse(Model):
     category: str  # REQUIRED
     expired_at: int  # REQUIRED
     id_: str  # REQUIRED
-    message: Dict[str, Any]  # REQUIRED
     scope: Union[str, ScopeEnum]  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
-    user_i_ds: List[str]  # REQUIRED
+    message: Dict[str, Any]  # OPTIONAL
+    user_i_ds: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -85,10 +85,6 @@ class ModelsSaveInboxMessageResponse(Model):
         self.id_ = value
         return self
 
-    def with_message(self, value: Dict[str, Any]) -> ModelsSaveInboxMessageResponse:
-        self.message = value
-        return self
-
     def with_scope(
         self, value: Union[str, ScopeEnum]
     ) -> ModelsSaveInboxMessageResponse:
@@ -99,6 +95,10 @@ class ModelsSaveInboxMessageResponse(Model):
         self, value: Union[str, StatusEnum]
     ) -> ModelsSaveInboxMessageResponse:
         self.status = value
+        return self
+
+    def with_message(self, value: Dict[str, Any]) -> ModelsSaveInboxMessageResponse:
+        self.message = value
         return self
 
     def with_user_i_ds(self, value: List[str]) -> ModelsSaveInboxMessageResponse:
@@ -123,10 +123,6 @@ class ModelsSaveInboxMessageResponse(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
-        if hasattr(self, "message"):
-            result["message"] = {str(k0): v0 for k0, v0 in self.message.items()}
-        elif include_empty:
-            result["message"] = {}
         if hasattr(self, "scope"):
             result["scope"] = str(self.scope)
         elif include_empty:
@@ -135,6 +131,10 @@ class ModelsSaveInboxMessageResponse(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = Union[str, StatusEnum]()
+        if hasattr(self, "message"):
+            result["message"] = {str(k0): v0 for k0, v0 in self.message.items()}
+        elif include_empty:
+            result["message"] = {}
         if hasattr(self, "user_i_ds"):
             result["userIDs"] = [str(i0) for i0 in self.user_i_ds]
         elif include_empty:
@@ -151,20 +151,22 @@ class ModelsSaveInboxMessageResponse(Model):
         category: str,
         expired_at: int,
         id_: str,
-        message: Dict[str, Any],
         scope: Union[str, ScopeEnum],
         status: Union[str, StatusEnum],
-        user_i_ds: List[str],
+        message: Optional[Dict[str, Any]] = None,
+        user_i_ds: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelsSaveInboxMessageResponse:
         instance = cls()
         instance.category = category
         instance.expired_at = expired_at
         instance.id_ = id_
-        instance.message = message
         instance.scope = scope
         instance.status = status
-        instance.user_i_ds = user_i_ds
+        if message is not None:
+            instance.message = message
+        if user_i_ds is not None:
+            instance.user_i_ds = user_i_ds
         return instance
 
     @classmethod
@@ -186,10 +188,6 @@ class ModelsSaveInboxMessageResponse(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
-        if "message" in dict_ and dict_["message"] is not None:
-            instance.message = {str(k0): v0 for k0, v0 in dict_["message"].items()}
-        elif include_empty:
-            instance.message = {}
         if "scope" in dict_ and dict_["scope"] is not None:
             instance.scope = str(dict_["scope"])
         elif include_empty:
@@ -198,6 +196,10 @@ class ModelsSaveInboxMessageResponse(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = Union[str, StatusEnum]()
+        if "message" in dict_ and dict_["message"] is not None:
+            instance.message = {str(k0): v0 for k0, v0 in dict_["message"].items()}
+        elif include_empty:
+            instance.message = {}
         if "userIDs" in dict_ and dict_["userIDs"] is not None:
             instance.user_i_ds = [str(i0) for i0 in dict_["userIDs"]]
         elif include_empty:
@@ -248,9 +250,9 @@ class ModelsSaveInboxMessageResponse(Model):
             "category": "category",
             "expiredAt": "expired_at",
             "id": "id_",
-            "message": "message",
             "scope": "scope",
             "status": "status",
+            "message": "message",
             "userIDs": "user_i_ds",
         }
 
@@ -260,10 +262,10 @@ class ModelsSaveInboxMessageResponse(Model):
             "category": True,
             "expiredAt": True,
             "id": True,
-            "message": True,
             "scope": True,
             "status": True,
-            "userIDs": True,
+            "message": False,
+            "userIDs": False,
         }
 
     @staticmethod

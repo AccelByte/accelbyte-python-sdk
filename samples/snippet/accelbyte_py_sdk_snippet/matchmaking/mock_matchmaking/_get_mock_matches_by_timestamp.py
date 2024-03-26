@@ -12,7 +12,7 @@ body:
 Definition: ModelsQueryMockBy
 timestamp_after: int
 
-Example: '{"timestamp_after": 51}'
+Example: '{"timestamp_after": 6}'
 """
 
 result, error = get_mock_matches_by_timestamp(

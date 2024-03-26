@@ -50,8 +50,6 @@ class ModelsGetInboxMessagesResponseData(Model):
 
         id_: (id) REQUIRED str
 
-        message: (message) REQUIRED Dict[str, Any]
-
         scope: (scope) REQUIRED Union[str, ScopeEnum]
 
         sender_id: (senderId) REQUIRED str
@@ -60,9 +58,11 @@ class ModelsGetInboxMessagesResponseData(Model):
 
         updated_at: (updatedAt) REQUIRED int
 
-        user_ids: (userIds) REQUIRED List[str]
-
         category: (category) OPTIONAL str
+
+        message: (message) OPTIONAL Dict[str, Any]
+
+        user_ids: (userIds) OPTIONAL List[str]
     """
 
     # region fields
@@ -70,13 +70,13 @@ class ModelsGetInboxMessagesResponseData(Model):
     created_at: int  # REQUIRED
     expired_at: int  # REQUIRED
     id_: str  # REQUIRED
-    message: Dict[str, Any]  # REQUIRED
     scope: Union[str, ScopeEnum]  # REQUIRED
     sender_id: str  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
     updated_at: int  # REQUIRED
-    user_ids: List[str]  # REQUIRED
     category: str  # OPTIONAL
+    message: Dict[str, Any]  # OPTIONAL
+    user_ids: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -92,10 +92,6 @@ class ModelsGetInboxMessagesResponseData(Model):
 
     def with_id(self, value: str) -> ModelsGetInboxMessagesResponseData:
         self.id_ = value
-        return self
-
-    def with_message(self, value: Dict[str, Any]) -> ModelsGetInboxMessagesResponseData:
-        self.message = value
         return self
 
     def with_scope(
@@ -118,12 +114,16 @@ class ModelsGetInboxMessagesResponseData(Model):
         self.updated_at = value
         return self
 
-    def with_user_ids(self, value: List[str]) -> ModelsGetInboxMessagesResponseData:
-        self.user_ids = value
-        return self
-
     def with_category(self, value: str) -> ModelsGetInboxMessagesResponseData:
         self.category = value
+        return self
+
+    def with_message(self, value: Dict[str, Any]) -> ModelsGetInboxMessagesResponseData:
+        self.message = value
+        return self
+
+    def with_user_ids(self, value: List[str]) -> ModelsGetInboxMessagesResponseData:
+        self.user_ids = value
         return self
 
     # endregion with_x methods
@@ -144,10 +144,6 @@ class ModelsGetInboxMessagesResponseData(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
-        if hasattr(self, "message"):
-            result["message"] = {str(k0): v0 for k0, v0 in self.message.items()}
-        elif include_empty:
-            result["message"] = {}
         if hasattr(self, "scope"):
             result["scope"] = str(self.scope)
         elif include_empty:
@@ -164,14 +160,18 @@ class ModelsGetInboxMessagesResponseData(Model):
             result["updatedAt"] = int(self.updated_at)
         elif include_empty:
             result["updatedAt"] = 0
-        if hasattr(self, "user_ids"):
-            result["userIds"] = [str(i0) for i0 in self.user_ids]
-        elif include_empty:
-            result["userIds"] = []
         if hasattr(self, "category"):
             result["category"] = str(self.category)
         elif include_empty:
             result["category"] = ""
+        if hasattr(self, "message"):
+            result["message"] = {str(k0): v0 for k0, v0 in self.message.items()}
+        elif include_empty:
+            result["message"] = {}
+        if hasattr(self, "user_ids"):
+            result["userIds"] = [str(i0) for i0 in self.user_ids]
+        elif include_empty:
+            result["userIds"] = []
         return result
 
     # endregion to methods
@@ -184,27 +184,29 @@ class ModelsGetInboxMessagesResponseData(Model):
         created_at: int,
         expired_at: int,
         id_: str,
-        message: Dict[str, Any],
         scope: Union[str, ScopeEnum],
         sender_id: str,
         status: Union[str, StatusEnum],
         updated_at: int,
-        user_ids: List[str],
         category: Optional[str] = None,
+        message: Optional[Dict[str, Any]] = None,
+        user_ids: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelsGetInboxMessagesResponseData:
         instance = cls()
         instance.created_at = created_at
         instance.expired_at = expired_at
         instance.id_ = id_
-        instance.message = message
         instance.scope = scope
         instance.sender_id = sender_id
         instance.status = status
         instance.updated_at = updated_at
-        instance.user_ids = user_ids
         if category is not None:
             instance.category = category
+        if message is not None:
+            instance.message = message
+        if user_ids is not None:
+            instance.user_ids = user_ids
         return instance
 
     @classmethod
@@ -226,10 +228,6 @@ class ModelsGetInboxMessagesResponseData(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
-        if "message" in dict_ and dict_["message"] is not None:
-            instance.message = {str(k0): v0 for k0, v0 in dict_["message"].items()}
-        elif include_empty:
-            instance.message = {}
         if "scope" in dict_ and dict_["scope"] is not None:
             instance.scope = str(dict_["scope"])
         elif include_empty:
@@ -246,14 +244,18 @@ class ModelsGetInboxMessagesResponseData(Model):
             instance.updated_at = int(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = 0
-        if "userIds" in dict_ and dict_["userIds"] is not None:
-            instance.user_ids = [str(i0) for i0 in dict_["userIds"]]
-        elif include_empty:
-            instance.user_ids = []
         if "category" in dict_ and dict_["category"] is not None:
             instance.category = str(dict_["category"])
         elif include_empty:
             instance.category = ""
+        if "message" in dict_ and dict_["message"] is not None:
+            instance.message = {str(k0): v0 for k0, v0 in dict_["message"].items()}
+        elif include_empty:
+            instance.message = {}
+        if "userIds" in dict_ and dict_["userIds"] is not None:
+            instance.user_ids = [str(i0) for i0 in dict_["userIds"]]
+        elif include_empty:
+            instance.user_ids = []
         return instance
 
     @classmethod
@@ -300,13 +302,13 @@ class ModelsGetInboxMessagesResponseData(Model):
             "createdAt": "created_at",
             "expiredAt": "expired_at",
             "id": "id_",
-            "message": "message",
             "scope": "scope",
             "senderId": "sender_id",
             "status": "status",
             "updatedAt": "updated_at",
-            "userIds": "user_ids",
             "category": "category",
+            "message": "message",
+            "userIds": "user_ids",
         }
 
     @staticmethod
@@ -315,13 +317,13 @@ class ModelsGetInboxMessagesResponseData(Model):
             "createdAt": True,
             "expiredAt": True,
             "id": True,
-            "message": True,
             "scope": True,
             "senderId": True,
             "status": True,
             "updatedAt": True,
-            "userIds": True,
             "category": False,
+            "message": False,
+            "userIds": False,
         }
 
     @staticmethod

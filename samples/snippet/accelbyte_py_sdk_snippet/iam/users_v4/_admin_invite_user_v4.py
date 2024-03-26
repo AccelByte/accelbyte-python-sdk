@@ -17,7 +17,7 @@ is_new_studio: bool
 namespace: str
 role_id: str
 
-Example: '{"assignedNamespaces": ["9A9F4vysTpAjY02d", "CbTZ9FT0BcWoL9K1", "b5qqvvBeEKttHQEU"], "emailAddresses": ["dIoFNQpPRgM7h14H", "mEwnEwgSHYbansOz", "68ogJhHYKvdZ8NpU"], "isAdmin": true, "isNewStudio": true, "namespace": "OkVepfX6sYdbsEKD", "roleId": "3bUZy9zODerXBvQX"}'
+Example: '{"assignedNamespaces": ["AEBaRLBfD3DJYn4G", "ABIxhatpHChbnbMQ", "9HbOIKwz4kVk220P"], "emailAddresses": ["8QBRCFfVKFWROqk7", "qYUQeYa4MX63dtKW", "UKiE4sOMjY17lAnL"], "isAdmin": true, "isNewStudio": false, "namespace": "KABPnCyzDvaqQ6K3", "roleId": "pDrn8Fuhq77srcMN"}'
 """
 
 result, error = admin_invite_user_v4(

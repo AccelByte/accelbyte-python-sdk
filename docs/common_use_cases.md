@@ -431,7 +431,7 @@ def test_update_playtime_v1(self):
     from accelbyte_py_sdk.api.gametelemetry import (
         protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put,
     )
-    from accelbyte_py_sdk.core import HttpResponse
+    from accelbyte_py_sdk.api.gametelemetry.models import BaseErrorResponse
 
     # act
     (
@@ -445,8 +445,8 @@ def test_update_playtime_v1(self):
     # assert
     if (
         error is not None
-        and isinstance(error, HttpResponse)
-        and "user not found" in str(error.content).lower()
+        and isinstance(error, BaseErrorResponse)
+        and "user not found" in str(error.error_message).lower()
     ):
         self.skipTest(reason="User was not found.")
     else:
@@ -1345,6 +1345,79 @@ async def test_send_and_receive_notifications(self):
     self.assertIsNotNone(wsm)
     self.assertIsNotNone(wsm_type)
     self.assertEqual("partyCreateResponse", wsm_type)
+```
+### Refresh Token Request
+
+```python
+async def test_refresh_token_request(self):
+    from accelbyte_py_sdk.core import SDK, get_token_repository
+    from accelbyte_py_sdk.services.auth import refresh_login_async
+    from accelbyte_py_sdk.api.lobby.wss_models import parse_wsm
+
+    # arrange
+    generate_user_result, error = self.generate_user()
+    if error:
+        self.skipTest(reason=f"unable to create user: {error}")
+
+    username, password, user_id = generate_user_result
+    self.user_id = user_id
+
+    user_sdk, error = self.create_user_sdk(
+        username=username,
+        password=password,
+        existing_sdk=SDK,
+    )
+    if error:
+        self.skipTest(reason=f"unable to create user sdk: {error}")
+    else:
+        self.sdks.append(user_sdk)
+
+    token_repo = user_sdk.get_token_repository()
+
+    token_repo.register_observer(self.ws_client)
+
+    old_access_token = token_repo.get_access_token()
+    refresh_token = token_repo.get_refresh_token()
+    self.assertTrue(old_access_token)
+    self.assertTrue(refresh_token)
+
+    # act
+    result, error = await refresh_login_async(refresh_token, sdk=user_sdk)
+    if error:
+        self.fail(error)
+
+    await asyncio.sleep(1)
+
+    new_access_token = token_repo.get_access_token()
+
+    elapsed = 0.0
+    interval = 0.016
+    timeout = 10.0
+    wsm = None
+    wsm_type = None
+    while True:
+        await asyncio.sleep(interval)
+        elapsed += interval
+        if not self.messages.empty():
+            message = self.messages.get_nowait()
+            if message is not None:
+                wsm, error = parse_wsm(message)
+                self.assertIsNone(error, error)
+                wsm_type = wsm.get_type()
+                if wsm_type == "refreshTokenResponse":
+                    break
+        if elapsed > timeout:
+            break
+
+    # assert
+    self.assertTrue(new_access_token)
+    self.assertNotEqual(old_access_token, new_access_token)
+    self.assertIsNotNone(wsm)
+    self.assertIsNotNone(wsm_type)
+    self.assertEqual("refreshTokenResponse", wsm_type)
+
+    # clean up
+    token_repo.unregister_observer(self.ws_client)
 ```
 ## Match V2
 

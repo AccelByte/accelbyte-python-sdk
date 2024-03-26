@@ -51,6 +51,8 @@ class ModelsGameSession(Model):
 
         id_: (id) REQUIRED str
 
+        is_full: (IsFull) REQUIRED bool
+
         join_type: (JoinType) REQUIRED str
 
         leader_id: (leaderID) REQUIRED str
@@ -77,6 +79,7 @@ class ModelsGameSession(Model):
     ds_information: ModelsDSInformation  # REQUIRED
     game_mode: str  # REQUIRED
     id_: str  # REQUIRED
+    is_full: bool  # REQUIRED
     join_type: str  # REQUIRED
     leader_id: str  # REQUIRED
     match_pool: str  # REQUIRED
@@ -116,6 +119,10 @@ class ModelsGameSession(Model):
 
     def with_id(self, value: str) -> ModelsGameSession:
         self.id_ = value
+        return self
+
+    def with_is_full(self, value: bool) -> ModelsGameSession:
+        self.is_full = value
         return self
 
     def with_join_type(self, value: str) -> ModelsGameSession:
@@ -188,6 +195,10 @@ class ModelsGameSession(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "is_full"):
+            result["IsFull"] = bool(self.is_full)
+        elif include_empty:
+            result["IsFull"] = False
         if hasattr(self, "join_type"):
             result["JoinType"] = str(self.join_type)
         elif include_empty:
@@ -240,6 +251,7 @@ class ModelsGameSession(Model):
         ds_information: ModelsDSInformation,
         game_mode: str,
         id_: str,
+        is_full: bool,
         join_type: str,
         leader_id: str,
         match_pool: str,
@@ -258,6 +270,7 @@ class ModelsGameSession(Model):
         instance.ds_information = ds_information
         instance.game_mode = game_mode
         instance.id_ = id_
+        instance.is_full = is_full
         instance.join_type = join_type
         instance.leader_id = leader_id
         instance.match_pool = match_pool
@@ -309,6 +322,10 @@ class ModelsGameSession(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "IsFull" in dict_ and dict_["IsFull"] is not None:
+            instance.is_full = bool(dict_["IsFull"])
+        elif include_empty:
+            instance.is_full = False
         if "JoinType" in dict_ and dict_["JoinType"] is not None:
             instance.join_type = str(dict_["JoinType"])
         elif include_empty:
@@ -395,6 +412,7 @@ class ModelsGameSession(Model):
             "DSInformation": "ds_information",
             "GameMode": "game_mode",
             "id": "id_",
+            "IsFull": "is_full",
             "JoinType": "join_type",
             "leaderID": "leader_id",
             "matchPool": "match_pool",
@@ -415,6 +433,7 @@ class ModelsGameSession(Model):
             "DSInformation": True,
             "GameMode": True,
             "id": True,
+            "IsFull": True,
             "JoinType": True,
             "leaderID": True,
             "matchPool": True,

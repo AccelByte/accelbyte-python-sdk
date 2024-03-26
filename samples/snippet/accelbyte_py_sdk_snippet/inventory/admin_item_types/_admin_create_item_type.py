@@ -12,7 +12,7 @@ body:
 Definition: ApimodelsCreateItemTypeReq
 name: str
 
-Example: '{"name": "nlOVpkERT2ZJmmSW"}'
+Example: '{"name": "R7amsExjwTzRCZiq"}'
 """
 
 result, error = admin_create_item_type(

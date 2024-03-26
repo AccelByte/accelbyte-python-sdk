@@ -40,6 +40,8 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
 
         linked_at: (linkedAt) REQUIRED str
 
+        platform_group: (platformGroup) REQUIRED str
+
         platform_name: (platformName) REQUIRED str
 
         platform_user_id: (platformUserId) OPTIONAL str
@@ -49,6 +51,7 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
 
     details: List[AccountcommonSimpleUserPlatformInfoV3]  # REQUIRED
     linked_at: str  # REQUIRED
+    platform_group: str  # REQUIRED
     platform_name: str  # REQUIRED
     platform_user_id: str  # OPTIONAL
 
@@ -64,6 +67,10 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
 
     def with_linked_at(self, value: str) -> AccountcommonDistinctLinkedPlatformV3:
         self.linked_at = value
+        return self
+
+    def with_platform_group(self, value: str) -> AccountcommonDistinctLinkedPlatformV3:
+        self.platform_group = value
         return self
 
     def with_platform_name(self, value: str) -> AccountcommonDistinctLinkedPlatformV3:
@@ -92,6 +99,10 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
             result["linkedAt"] = str(self.linked_at)
         elif include_empty:
             result["linkedAt"] = ""
+        if hasattr(self, "platform_group"):
+            result["platformGroup"] = str(self.platform_group)
+        elif include_empty:
+            result["platformGroup"] = ""
         if hasattr(self, "platform_name"):
             result["platformName"] = str(self.platform_name)
         elif include_empty:
@@ -111,6 +122,7 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
         cls,
         details: List[AccountcommonSimpleUserPlatformInfoV3],
         linked_at: str,
+        platform_group: str,
         platform_name: str,
         platform_user_id: Optional[str] = None,
         **kwargs,
@@ -118,6 +130,7 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
         instance = cls()
         instance.details = details
         instance.linked_at = linked_at
+        instance.platform_group = platform_group
         instance.platform_name = platform_name
         if platform_user_id is not None:
             instance.platform_user_id = platform_user_id
@@ -143,6 +156,10 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
             instance.linked_at = str(dict_["linkedAt"])
         elif include_empty:
             instance.linked_at = ""
+        if "platformGroup" in dict_ and dict_["platformGroup"] is not None:
+            instance.platform_group = str(dict_["platformGroup"])
+        elif include_empty:
+            instance.platform_group = ""
         if "platformName" in dict_ and dict_["platformName"] is not None:
             instance.platform_name = str(dict_["platformName"])
         elif include_empty:
@@ -196,6 +213,7 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
         return {
             "details": "details",
             "linkedAt": "linked_at",
+            "platformGroup": "platform_group",
             "platformName": "platform_name",
             "platformUserId": "platform_user_id",
         }
@@ -205,6 +223,7 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
         return {
             "details": True,
             "linkedAt": True,
+            "platformGroup": True,
             "platformName": True,
             "platformUserId": False,
         }

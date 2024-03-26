@@ -13,7 +13,7 @@ body:
 Definition: TierReorder
 new_index: int
 
-Example: '{"newIndex": 84}'
+Example: '{"newIndex": 94}'
 """
 
 result, error = reorder_tier(

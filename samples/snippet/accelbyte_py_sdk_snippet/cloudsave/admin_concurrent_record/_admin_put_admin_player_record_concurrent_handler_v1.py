@@ -20,7 +20,7 @@ tags: List[str]
 updated_at: str
 value: Dict[str, Any]
 
-Example: '{"tags": ["Fqoyqz1tr4AOfzoz", "JHJHujIL7vRGekl8", "AWJ9t4YOXAWCiShR"], "updatedAt": "cCs0tJG3kKUF0vlI", "value": {"EsVXuN3byvAT8dqt": {}, "3KF0ufnABoEDwFP3": {}, "jfFwV8nfbvlQWYpA": {}}}'
+Example: '{"tags": ["b7dj7XlvgX8m7fId", "XcBHA8JmWQD4DDrg", "eJ98jVAp41JbqhB9"], "updatedAt": "b138HWDi7SOy8T7T", "value": {"xN1pSRvgJYHkhZXE": {}, "lbi9kaqpVdUuIR0X": {}, "x8xuYu1a6XwT2vws": {}}}'
 """
 
 result, error = admin_put_admin_player_record_concurrent_handler_v1(

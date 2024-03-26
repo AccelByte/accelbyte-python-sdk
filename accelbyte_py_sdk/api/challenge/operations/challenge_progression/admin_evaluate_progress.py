@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class AdminEvaluateProgress(Operation):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]&lt;/li&gt;&lt;/ul&gt; (adminEvaluateProgress)
+    """Evaluate User's Progressions (adminEvaluateProgress)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
 

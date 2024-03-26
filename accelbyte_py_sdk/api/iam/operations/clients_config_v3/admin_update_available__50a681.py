@@ -53,6 +53,8 @@ class AdminUpdateAvailablePermissionsByModule(Operation):
 
         body: (body) REQUIRED ClientmodelListUpsertModulesRequest in body
 
+        force_delete: (forceDelete) OPTIONAL bool in query
+
     Responses:
         204: No Content - (Operation succeeded)
 
@@ -71,6 +73,7 @@ class AdminUpdateAvailablePermissionsByModule(Operation):
     _location_query: str = None
 
     body: ClientmodelListUpsertModulesRequest  # REQUIRED in [body]
+    force_delete: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -111,12 +114,19 @@ class AdminUpdateAvailablePermissionsByModule(Operation):
     def get_all_params(self) -> dict:
         return {
             "body": self.get_body_params(),
+            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
         if not hasattr(self, "body") or self.body is None:
             return None
         return self.body.to_dict()
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "force_delete"):
+            result["forceDelete"] = self.force_delete
+        return result
 
     # endregion get_x_params methods
 
@@ -132,6 +142,10 @@ class AdminUpdateAvailablePermissionsByModule(Operation):
         self.body = value
         return self
 
+    def with_force_delete(self, value: bool) -> AdminUpdateAvailablePermissionsByModule:
+        self.force_delete = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -142,6 +156,10 @@ class AdminUpdateAvailablePermissionsByModule(Operation):
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
             result["body"] = ClientmodelListUpsertModulesRequest()
+        if hasattr(self, "force_delete") and self.force_delete:
+            result["forceDelete"] = bool(self.force_delete)
+        elif include_empty:
+            result["forceDelete"] = False
         return result
 
     # endregion to methods
@@ -190,10 +208,15 @@ class AdminUpdateAvailablePermissionsByModule(Operation):
 
     @classmethod
     def create(
-        cls, body: ClientmodelListUpsertModulesRequest, **kwargs
+        cls,
+        body: ClientmodelListUpsertModulesRequest,
+        force_delete: Optional[bool] = None,
+        **kwargs,
     ) -> AdminUpdateAvailablePermissionsByModule:
         instance = cls()
         instance.body = body
+        if force_delete is not None:
+            instance.force_delete = force_delete
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -209,18 +232,24 @@ class AdminUpdateAvailablePermissionsByModule(Operation):
             )
         elif include_empty:
             instance.body = ClientmodelListUpsertModulesRequest()
+        if "forceDelete" in dict_ and dict_["forceDelete"] is not None:
+            instance.force_delete = bool(dict_["forceDelete"])
+        elif include_empty:
+            instance.force_delete = False
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "body": "body",
+            "forceDelete": "force_delete",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "body": True,
+            "forceDelete": False,
         }
 
     # endregion static methods

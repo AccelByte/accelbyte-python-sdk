@@ -17,7 +17,7 @@ message: str
 topic_name: str
 user_ids: List[str]
 
-Example: '{"message": "ASM2mkc9w69Mnamp", "topicName": "fQcj1hWJ6uM4ZLyA", "userIds": ["gSeO5SQed0nOFRZ6", "HSn3ArD6PjdJKjQ9", "PM0DkQLCTtfyv1Zo"]}'
+Example: '{"message": "MJtZ74kn1IVbtnAw", "topicName": "owz5dkbvMBcp6syS", "userIds": ["YgKa2DDMzcuQATqx", "YHCaPzWrsrzTVwRM", "Dzv2mjsxR4PS3hWC"]}'
 """
 
 result, error = send_multiple_users_freeform_notification_v1_admin(

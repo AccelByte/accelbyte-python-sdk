@@ -15,7 +15,7 @@ additional_data: Dict[str, Any]
 update_strategy: str
 value: float
 
-Example: '{"additionalData": {"v1oKMU8PGZVLAtks": {}, "w7PIPT8sCUD2Ksnl": {}, "8b55DTqPxMMoLIDI": {}}, "updateStrategy": "INCREMENT", "value": 0.9378033788448884}'
+Example: '{"additionalData": {"AvcyLyGsWpLiiMd2": {}, "0E3L89oihyIhehJB": {}, "cCdtu9Nt8K79O4Fq": {}}, "updateStrategy": "OVERRIDE", "value": 0.38897496356834305}'
 """
 
 result, error = update_user_stat_item_value_1(

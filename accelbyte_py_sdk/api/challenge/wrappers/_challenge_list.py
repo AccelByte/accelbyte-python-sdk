@@ -30,7 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import IamErrorResponse
-from ..models import ModelGoalResponse
+from ..models import ModelGetGoalsResponse
 from ..models import ModelListChallengeResponse
 from ..models import ResponseError
 
@@ -49,7 +49,7 @@ def get_challenges(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (GetChallenges)
+    """List Challenges (GetChallenges)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -112,7 +112,7 @@ async def get_challenges_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (GetChallenges)
+    """List Challenges (GetChallenges)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -177,7 +177,7 @@ def public_get_scheduled_goals(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (publicGetScheduledGoals)
+    """List Goals of a Challenge (publicGetScheduledGoals)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -208,7 +208,7 @@ def public_get_scheduled_goals(
         tags: (tags) OPTIONAL List[str] in query
 
     Responses:
-        200: OK - List[ModelGoalResponse] (OK)
+        200: OK - ModelGetGoalsResponse (OK)
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -240,7 +240,7 @@ async def public_get_scheduled_goals_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (publicGetScheduledGoals)
+    """List Goals of a Challenge (publicGetScheduledGoals)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -271,7 +271,7 @@ async def public_get_scheduled_goals_async(
         tags: (tags) OPTIONAL List[str] in query
 
     Responses:
-        200: OK - List[ModelGoalResponse] (OK)
+        200: OK - ModelGetGoalsResponse (OK)
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 

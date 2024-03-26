@@ -14,7 +14,7 @@ Definition: TicketAcquireRequest
 count: int
 order_no: str
 
-Example: '{"count": 54, "orderNo": "QdmUKkQ8LvCnLkjs"}'
+Example: '{"count": 75, "orderNo": "Eg5LwHQ8nEKvZEP6"}'
 """
 
 result, error = acquire_user_ticket(

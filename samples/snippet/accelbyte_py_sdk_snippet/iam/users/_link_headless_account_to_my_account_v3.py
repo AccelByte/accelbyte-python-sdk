@@ -12,7 +12,7 @@ Definition: ModelLinkHeadlessAccountRequest
 chosen_namespaces: List[str]
 one_time_link_code: str
 
-Example: '{"chosenNamespaces": ["6OVcKfNpkSgMGb0C", "96LrAcOaN3hy5a8o", "ITEqdoxgGq9i5yav"], "oneTimeLinkCode": "6fSXFCLSlGVSAWvU"}'
+Example: '{"chosenNamespaces": ["5lIuyOcTCflq2w0D", "3P5sqX6eaMHIhMI3", "cNIZtNerHIWMMsS7"], "oneTimeLinkCode": "BiP8jUSV4ZRC2cm8"}'
 """
 
 result, error = link_headless_account_to_my_account_v3(

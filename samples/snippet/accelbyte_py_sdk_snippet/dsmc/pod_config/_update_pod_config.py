@@ -15,7 +15,7 @@ mem_limit: int
 name: str
 params: str
 
-Example: '{"cpu_limit": 15, "mem_limit": 87, "name": "1JVayOUPZa9rJsyC", "params": "UeTXI77ftKeHx823"}'
+Example: '{"cpu_limit": 55, "mem_limit": 49, "name": "528fd1bdNQjsrtyF", "params": "cWOY59TiAtytKfvL"}'
 """
 
 result, error = update_pod_config(

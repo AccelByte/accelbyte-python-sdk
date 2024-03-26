@@ -34,8 +34,6 @@ class ModelsCombination(Model):
     """Models combination (models.Combination)
 
     Properties:
-        alliances: (alliances) REQUIRED List[List[ModelsRole]]
-
         has_combination: (has_combination) REQUIRED bool
 
         role_flexing_enable: (role_flexing_enable) REQUIRED bool
@@ -43,23 +41,21 @@ class ModelsCombination(Model):
         role_flexing_player: (role_flexing_player) REQUIRED int
 
         role_flexing_second: (role_flexing_second) REQUIRED int
+
+        alliances: (alliances) OPTIONAL List[List[ModelsRole]]
     """
 
     # region fields
 
-    alliances: List[List[ModelsRole]]  # REQUIRED
     has_combination: bool  # REQUIRED
     role_flexing_enable: bool  # REQUIRED
     role_flexing_player: int  # REQUIRED
     role_flexing_second: int  # REQUIRED
+    alliances: List[List[ModelsRole]]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_alliances(self, value: List[List[ModelsRole]]) -> ModelsCombination:
-        self.alliances = value
-        return self
 
     def with_has_combination(self, value: bool) -> ModelsCombination:
         self.has_combination = value
@@ -77,19 +73,16 @@ class ModelsCombination(Model):
         self.role_flexing_second = value
         return self
 
+    def with_alliances(self, value: List[List[ModelsRole]]) -> ModelsCombination:
+        self.alliances = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "alliances"):
-            result["alliances"] = [
-                [i1.to_dict(include_empty=include_empty) for i1 in i0]
-                for i0 in self.alliances
-            ]
-        elif include_empty:
-            result["alliances"] = []
         if hasattr(self, "has_combination"):
             result["has_combination"] = bool(self.has_combination)
         elif include_empty:
@@ -106,6 +99,13 @@ class ModelsCombination(Model):
             result["role_flexing_second"] = int(self.role_flexing_second)
         elif include_empty:
             result["role_flexing_second"] = 0
+        if hasattr(self, "alliances"):
+            result["alliances"] = [
+                [i1.to_dict(include_empty=include_empty) for i1 in i0]
+                for i0 in self.alliances
+            ]
+        elif include_empty:
+            result["alliances"] = []
         return result
 
     # endregion to methods
@@ -115,19 +115,20 @@ class ModelsCombination(Model):
     @classmethod
     def create(
         cls,
-        alliances: List[List[ModelsRole]],
         has_combination: bool,
         role_flexing_enable: bool,
         role_flexing_player: int,
         role_flexing_second: int,
+        alliances: Optional[List[List[ModelsRole]]] = None,
         **kwargs,
     ) -> ModelsCombination:
         instance = cls()
-        instance.alliances = alliances
         instance.has_combination = has_combination
         instance.role_flexing_enable = role_flexing_enable
         instance.role_flexing_player = role_flexing_player
         instance.role_flexing_second = role_flexing_second
+        if alliances is not None:
+            instance.alliances = alliances
         return instance
 
     @classmethod
@@ -137,16 +138,6 @@ class ModelsCombination(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "alliances" in dict_ and dict_["alliances"] is not None:
-            instance.alliances = [
-                [
-                    ModelsRole.create_from_dict(i1, include_empty=include_empty)
-                    for i1 in i0
-                ]
-                for i0 in dict_["alliances"]
-            ]
-        elif include_empty:
-            instance.alliances = []
         if "has_combination" in dict_ and dict_["has_combination"] is not None:
             instance.has_combination = bool(dict_["has_combination"])
         elif include_empty:
@@ -163,6 +154,16 @@ class ModelsCombination(Model):
             instance.role_flexing_second = int(dict_["role_flexing_second"])
         elif include_empty:
             instance.role_flexing_second = 0
+        if "alliances" in dict_ and dict_["alliances"] is not None:
+            instance.alliances = [
+                [
+                    ModelsRole.create_from_dict(i1, include_empty=include_empty)
+                    for i1 in i0
+                ]
+                for i0 in dict_["alliances"]
+            ]
+        elif include_empty:
+            instance.alliances = []
         return instance
 
     @classmethod
@@ -204,21 +205,21 @@ class ModelsCombination(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "alliances": "alliances",
             "has_combination": "has_combination",
             "role_flexing_enable": "role_flexing_enable",
             "role_flexing_player": "role_flexing_player",
             "role_flexing_second": "role_flexing_second",
+            "alliances": "alliances",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "alliances": True,
             "has_combination": True,
             "role_flexing_enable": True,
             "role_flexing_player": True,
             "role_flexing_second": True,
+            "alliances": False,
         }
 
     # endregion static methods

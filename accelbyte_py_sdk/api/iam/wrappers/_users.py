@@ -122,6 +122,7 @@ from ..models import ModelUserVerificationRequest
 from ..models import ModelUserVerificationRequestV3
 from ..models import ModelUsersPlatformInfosRequestV3
 from ..models import ModelUsersPlatformInfosResponse
+from ..models import ModelUsersUpdateRequestV3
 from ..models import ModelVerificationCodeResponse
 from ..models import ModelVerifyRegistrationCode
 from ..models import ModelWebLinkingResponse
@@ -134,6 +135,7 @@ from ..operations.users import AdminAddUserRoleV3
 from ..operations.users import AdminBanUserV2
 from ..operations.users import AdminBanUserV3
 from ..operations.users import AdminBulkGetUsersPlatform
+from ..operations.users import AdminBulkUpdateUsersV3
 from ..operations.users import AdminCreateJusticeUser
 from ..operations.users import AdminCreateUserRolesV2
 from ..operations.users import AdminDeletePlatformLinkV2
@@ -166,10 +168,12 @@ from ..operations.users import AdminGetUserPlatformAccountsV3
 from ..operations.users import AdminGetUserSinglePlatformAccount
 from ..operations.users import AdminInviteUserV3
 from ..operations.users import AdminLinkPlatformAccount
+from ..operations.users import AdminListUserAllPlatformAccountsDistinctV3
 from ..operations.users import AdminListUserIDByPlatformUserIDsV3
 from ..operations.users import AdminListUserIDByUserIDsV3
 from ..operations.users import AdminListUsersV3
 from ..operations.users import AdminPlatformLinkV3
+from ..operations.users import AdminPlatformUnlinkAllV3
 from ..operations.users import AdminPlatformUnlinkV3
 from ..operations.users import AdminPutUserRolesV2
 from ..operations.users import AdminQueryThirdPlatformLinkHistoryV3
@@ -1192,6 +1196,118 @@ async def admin_bulk_get_users_platform_async(
         if error:
             return None, error
     request = AdminBulkGetUsersPlatform.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminBulkUpdateUsersV3)
+def admin_bulk_update_users_v3(
+    body: ModelUsersUpdateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Users (AdminBulkUpdateUsersV3)
+
+    This endpoint support to bulk update users based on given data.
+    ------
+    Supported fields:
+    * skipLoginQueue
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUsersUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkUpdateUsersV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBulkUpdateUsersV3)
+async def admin_bulk_update_users_v3_async(
+    body: ModelUsersUpdateRequestV3,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Users (AdminBulkUpdateUsersV3)
+
+    This endpoint support to bulk update users based on given data.
+    ------
+    Supported fields:
+    * skipLoginQueue
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users
+
+        method: PUT
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUsersUpdateRequestV3 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkUpdateUsersV3.create(
         body=body,
         namespace=namespace,
     )
@@ -4918,6 +5034,114 @@ async def admin_link_platform_account_async(
     )
 
 
+@same_doc_as(AdminListUserAllPlatformAccountsDistinctV3)
+def admin_list_user_all_platform_accounts_distinct_v3(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin get distinct platform accounts linked to the user (AdminListUserAllPlatformAccountsDistinctV3)
+
+    This endpoint retrieves platform accounts linked to user.
+    It will query all linked platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/distinctPlatforms
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonDistinctPlatformResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminListUserAllPlatformAccountsDistinctV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminListUserAllPlatformAccountsDistinctV3)
+async def admin_list_user_all_platform_accounts_distinct_v3_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin get distinct platform accounts linked to the user (AdminListUserAllPlatformAccountsDistinctV3)
+
+    This endpoint retrieves platform accounts linked to user.
+    It will query all linked platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/distinctPlatforms
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - AccountcommonDistinctPlatformResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminListUserAllPlatformAccountsDistinctV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminListUserIDByPlatformUserIDsV3)
 def admin_list_user_id_by_platform_user_i_ds_v3(
     body: ModelPlatformUserIDRequest,
@@ -5410,6 +5634,132 @@ async def admin_platform_link_v3_async(
     request = AdminPlatformLinkV3.create(
         platform_id=platform_id,
         ticket=ticket,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminPlatformUnlinkAllV3)
+def admin_platform_unlink_all_v3(
+    platform_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Unlink user's account from specific platform (AdminPlatformUnlinkAllV3)
+
+    Unlink user's account from third platform in all namespaces.
+
+    This API support to handling platform group use case:
+    i.e.
+    1. Steam group: steam, steamopenid
+    2. PSN group: ps4, ps5, psnweb
+    3. XBOX group: live, xblweb
+
+    Example: if user unlink from ps4, the API logic will unlink ps5 and psnweb as well.
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/all
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminPlatformUnlinkAllV3.create(
+        platform_id=platform_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminPlatformUnlinkAllV3)
+async def admin_platform_unlink_all_v3_async(
+    platform_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Unlink user's account from specific platform (AdminPlatformUnlinkAllV3)
+
+    Unlink user's account from third platform in all namespaces.
+
+    This API support to handling platform group use case:
+    i.e.
+    1. Steam group: steam, steamopenid
+    2. PSN group: ps4, ps5, psnweb
+    3. XBOX group: live, xblweb
+
+    Example: if user unlink from ps4, the API logic will unlink ps5 and psnweb as well.
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/all
+
+        method: DELETE
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminPlatformUnlinkAllV3.create(
+        platform_id=platform_id,
         user_id=user_id,
         namespace=namespace,
     )
@@ -6188,6 +6538,7 @@ def admin_search_user_v3(
     platform_by: Optional[str] = None,
     platform_id: Optional[str] = None,
     query: Optional[str] = None,
+    role_ids: Optional[str] = None,
     skip_login_queue: Optional[bool] = None,
     start_date: Optional[str] = None,
     test_account: Optional[bool] = None,
@@ -6249,6 +6600,8 @@ def admin_search_user_v3(
 
         query: (query) OPTIONAL str in query
 
+        role_ids: (roleIds) OPTIONAL str in query
+
         skip_login_queue: (skipLoginQueue) OPTIONAL bool in query
 
         start_date: (startDate) OPTIONAL str in query
@@ -6279,6 +6632,7 @@ def admin_search_user_v3(
         platform_by=platform_by,
         platform_id=platform_id,
         query=query,
+        role_ids=role_ids,
         skip_login_queue=skip_login_queue,
         start_date=start_date,
         test_account=test_account,
@@ -6297,6 +6651,7 @@ async def admin_search_user_v3_async(
     platform_by: Optional[str] = None,
     platform_id: Optional[str] = None,
     query: Optional[str] = None,
+    role_ids: Optional[str] = None,
     skip_login_queue: Optional[bool] = None,
     start_date: Optional[str] = None,
     test_account: Optional[bool] = None,
@@ -6358,6 +6713,8 @@ async def admin_search_user_v3_async(
 
         query: (query) OPTIONAL str in query
 
+        role_ids: (roleIds) OPTIONAL str in query
+
         skip_login_queue: (skipLoginQueue) OPTIONAL bool in query
 
         start_date: (startDate) OPTIONAL str in query
@@ -6388,6 +6745,7 @@ async def admin_search_user_v3_async(
         platform_by=platform_by,
         platform_id=platform_id,
         query=query,
+        role_ids=role_ids,
         skip_login_queue=skip_login_queue,
         start_date=start_date,
         test_account=test_account,

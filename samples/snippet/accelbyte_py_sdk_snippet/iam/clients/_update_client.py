@@ -14,7 +14,7 @@ client_name: str
 redirect_uri: str
 two_factor_enabled: bool
 
-Example: '{"ClientName": "ohFnDcJfk3rBraOO", "RedirectUri": "LOwNoFXz6aHIcIi2", "TwoFactorEnabled": true}'
+Example: '{"ClientName": "rZ5FG0szqfADAsPu", "RedirectUri": "IJH18aj9M4TO3Jdt", "TwoFactorEnabled": true}'
 """
 
 result, error = update_client(

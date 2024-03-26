@@ -24,7 +24,7 @@ status: str
 time_zone: str
 zip_code: str
 
-Example: '{"avatarLargeUrl": "v28mYNYMsUWoO0W6", "avatarSmallUrl": "eDHNnGPldXvD3k2r", "avatarUrl": "M23h5Ek81ErfLvXl", "customAttributes": {"7gfgov2JfOCZJoXv": {}, "ePOK2dLm3Bo8cBey": {}, "5JkAsfMOHSomhFFY": {}}, "dateOfBirth": "1975-07-20", "firstName": "7G2O2ULUiOdTqwS7", "language": "eAl", "lastName": "fop6rLpyEIrPWhKM", "privateCustomAttributes": {"cvQpT5X7Gm1a6odY": {}, "bzpGlV55v0wXNaCg": {}, "KgpzI7Z9oZtyDJ57": {}}, "status": "INACTIVE", "timeZone": "cyzxDralod08fCul", "zipCode": "QJ5FSQsevyux2qE5"}'
+Example: '{"avatarLargeUrl": "J6y4k3rGua5Qb6jr", "avatarSmallUrl": "6QH2mj4dwO4Ic7Iq", "avatarUrl": "sBbpx7F5TzXRHs2h", "customAttributes": {"0BfRp7QUrVqxmjs7": {}, "guZ3ukYTVRRLpKdG": {}, "Cto9Durq1IYyTBrp": {}}, "dateOfBirth": "1998-06-23", "firstName": "bz23tbC0WTpZfSPC", "language": "iu-yGLJ-kF", "lastName": "2DE4YFjkAlKhIHqs", "privateCustomAttributes": {"stMhAXiIAOulMpIQ": {}, "85jUaND9pbtpjNuR": {}, "e9kYnkSOaI3060zP": {}}, "status": "ACTIVE", "timeZone": "LlnHLmczLTsKV2JG", "zipCode": "6TenX79WhpACqbVL"}'
 """
 
 result, error = update_user_profile(

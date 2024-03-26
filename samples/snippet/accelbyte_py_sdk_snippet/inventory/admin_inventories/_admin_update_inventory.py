@@ -12,7 +12,7 @@ body:
 Definition: ApimodelsUpdateInventoryReq
 inc_max_slots: int
 
-Example: '{"incMaxSlots": 13}'
+Example: '{"incMaxSlots": 31}'
 """
 
 result, error = admin_update_inventory(

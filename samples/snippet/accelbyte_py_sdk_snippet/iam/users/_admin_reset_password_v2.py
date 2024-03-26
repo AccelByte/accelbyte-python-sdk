@@ -13,7 +13,7 @@ language_tag: str
 new_password: str
 old_password: str
 
-Example: '{"LanguageTag": "0Yg7LTlgqoQ5UOzW", "NewPassword": "FwOHtodJ8JjxPYAr", "OldPassword": "BXcgsuy7J9qVQWm2"}'
+Example: '{"LanguageTag": "Qolq0ErsbcRkkgGY", "NewPassword": "0svpspOLscpXzgfb", "OldPassword": "rQ4foTRAHhXWHSKd"}'
 """
 
 result, error = admin_reset_password_v2(

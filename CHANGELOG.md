@@ -1,3 +1,19 @@
+<a name="v0.63.0"></a>
+## [v0.63.0]
+### docs
+- **migration-guides:** add lobby changes
+### feat
+- **core:** add token repo observer
+- **core:** add on_access_token_changed in WebsocketsWSClient
+- **samples:** add sample for WSClient token refresh
+### test
+- **lobby:** add refresh token test
+### fix
+- **integration:** fix async lobby tests
+- **integration:** fix group tests
+- **core:** handle runtime error in ws client
+
+
 <a name="v0.62.0"></a>
 ## [v0.62.0]
 ### chore

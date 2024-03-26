@@ -14,7 +14,7 @@ claim_keys: List[str]
 regions: List[str]
 session_id: str
 
-Example: '{"claimKeys": ["aMcDM47XkX9e7pIM", "cd76VN3tEnwgn880", "zLQqlgdemfZCOD3u"], "regions": ["TVxaz1jIzIaXuv5N", "EV3B37Hh5qVC6RuU", "u0dkGNWnGYUJzo74"], "sessionId": "fY6KG5GwPNM0GHQl"}'
+Example: '{"claimKeys": ["3gnAxh47XeuRg9vf", "Nqczh3bOsv2YjJHH", "g2dAOvXjJnzuTCUW"], "regions": ["a62m6cGzJoekytVz", "WjBAyaRVrGQqodZp", "jX381OAYz7Vi3E3r"], "sessionId": "NanA8XDrcit08FTe"}'
 """
 
 result, error = fleet_claim_by_keys(

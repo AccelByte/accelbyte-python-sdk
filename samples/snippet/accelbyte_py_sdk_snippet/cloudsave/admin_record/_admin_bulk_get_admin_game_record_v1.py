@@ -12,7 +12,7 @@ body:
 Definition: ModelsBulkGetAdminGameRecordRequest
 keys: List[str]
 
-Example: '{"keys": ["dCdBA8PNoqPcnZoY", "1jf0M4o0JRn1Gmxt", "QqVEi2tD4GbtA34U"]}'
+Example: '{"keys": ["GZPV9a41bTFjGHOI", "z15iGpdt82fzNuM7", "ciRu9HYqwgoGcuKk"]}'
 """
 
 result, error = admin_bulk_get_admin_game_record_v1(

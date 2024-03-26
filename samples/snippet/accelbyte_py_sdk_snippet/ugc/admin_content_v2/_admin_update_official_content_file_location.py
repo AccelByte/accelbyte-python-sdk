@@ -13,7 +13,7 @@ Definition: ModelsUpdateFileLocationRequest
 file_extension: str
 file_location: str
 
-Example: '{"fileExtension": "nbNhNN7CRoYSzGLR", "fileLocation": "zshTGnj3MOeb4sFq"}'
+Example: '{"fileExtension": "u6FYeaWYGhKxISHg", "fileLocation": "SUGKbse2HHQolb9l"}'
 """
 
 result, error = admin_update_official_content_file_location(

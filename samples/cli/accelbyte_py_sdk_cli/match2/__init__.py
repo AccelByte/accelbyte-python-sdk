@@ -10,6 +10,9 @@
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
+from ._admin_get_all_config_v1 import admin_get_all_config_v1
+from ._admin_get_config_v1 import admin_get_config_v1
+from ._admin_patch_config_v1 import admin_patch_config_v1
 from ._environment_variable_list import environment_variable_list
 from ._create_backfill import create_backfill
 from ._get_backfill_proposal import get_backfill_proposal
@@ -44,6 +47,9 @@ from ._version_check_handler import version_check_handler
 commands = [
     get_healthcheck_info,
     get_healthcheck_info_v1,
+    admin_get_all_config_v1,
+    admin_get_config_v1,
+    admin_patch_config_v1,
     environment_variable_list,
     create_backfill,
     get_backfill_proposal,

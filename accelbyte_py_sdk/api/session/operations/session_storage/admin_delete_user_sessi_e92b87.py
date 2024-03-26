@@ -36,7 +36,8 @@ class AdminDeleteUserSessionStorage(Operation):
     """Delete Session Storage. (adminDeleteUserSessionStorage)
 
 
-    Delete Session Storage.
+    Delete Session Storage By sessionID
+    Session Storage feature only available for Gamesession
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/sessions/{sessionId}/storage

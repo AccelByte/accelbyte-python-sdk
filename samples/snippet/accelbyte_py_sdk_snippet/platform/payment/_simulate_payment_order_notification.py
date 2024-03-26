@@ -17,7 +17,7 @@ payment_provider: str
 sales_tax: int
 vat: int
 
-Example: '{"amount": 79, "currencyCode": "bcDyHuiFJrTdIO9e", "notifyType": "REFUND", "paymentProvider": "STRIPE", "salesTax": 61, "vat": 12}'
+Example: '{"amount": 33, "currencyCode": "VjdtkSHUG6VLISUE", "notifyType": "CHARGE", "paymentProvider": "CHECKOUT", "salesTax": 19, "vat": 23}'
 """
 
 result, error = simulate_payment_order_notification(

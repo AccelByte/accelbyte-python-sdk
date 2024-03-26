@@ -17,7 +17,7 @@ trace_id: str
 user_id: str
 version: int
 
-Example: '{"clientId": "YXDBECb5GZ4RBMIz", "eventName": "YvwB3OhB4wRtsRa0", "payloadQuery": {"gd9SwNdBlVys6rZy": {}, "xAPDpAi3ohVHndPO": {}, "kTUajcbZ0RH1g0Gu": {}}, "sessionId": "eIv5lH0ZhjxP9Rkl", "traceId": "xmYK1eu4ZwxgEr9y", "userId": "kqu9BvR9JQ8dwt6S", "version": 75}'
+Example: '{"clientId": "VAnbI1Jx8sQVnfND", "eventName": "cQvgRxNCwmqJ4QFi", "payloadQuery": {"M1C40J4bIq46AOKp": {}, "EDdxtVtYDwCv5dt7": {}, "vzP1wkci8xXCIeYj": {}}, "sessionId": "VUCu9shx7Opbfs4T", "traceId": "iBGJ8uGRd34NPx2L", "userId": "bY4j7qUR7XAmlYxU", "version": 39}'
 """
 
 result, error = query_event_stream_handler(

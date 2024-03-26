@@ -50,7 +50,7 @@ class ModelsGameSessionSetting(Model):
 
         password: (password) REQUIRED str
 
-        settings: (settings) REQUIRED Dict[str, Any]
+        settings: (settings) OPTIONAL Dict[str, Any]
     """
 
     # region fields
@@ -64,7 +64,7 @@ class ModelsGameSessionSetting(Model):
     mode: str  # REQUIRED
     num_bot: int  # REQUIRED
     password: str  # REQUIRED
-    settings: Dict[str, Any]  # REQUIRED
+    settings: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
 
@@ -174,7 +174,7 @@ class ModelsGameSessionSetting(Model):
         mode: str,
         num_bot: int,
         password: str,
-        settings: Dict[str, Any],
+        settings: Optional[Dict[str, Any]] = None,
         **kwargs,
     ) -> ModelsGameSessionSetting:
         instance = cls()
@@ -187,7 +187,8 @@ class ModelsGameSessionSetting(Model):
         instance.mode = mode
         instance.num_bot = num_bot
         instance.password = password
-        instance.settings = settings
+        if settings is not None:
+            instance.settings = settings
         return instance
 
     @classmethod
@@ -310,7 +311,7 @@ class ModelsGameSessionSetting(Model):
             "mode": True,
             "num_bot": True,
             "password": True,
-            "settings": True,
+            "settings": False,
         }
 
     # endregion static methods

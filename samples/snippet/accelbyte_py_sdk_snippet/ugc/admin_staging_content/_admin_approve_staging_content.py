@@ -13,7 +13,7 @@ Definition: ModelsApproveStagingContentRequest
 approved: bool
 note: str
 
-Example: '{"approved": false, "note": "MGPIj0rf2RHwrZn0"}'
+Example: '{"approved": true, "note": "AJSr3tg5NjcT2XGp"}'
 """
 
 result, error = admin_approve_staging_content(

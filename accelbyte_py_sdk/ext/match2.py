@@ -46,7 +46,9 @@ from ..api.match2.models import ApiMatchTicketRequest
 from ..api.match2.models import ApiMatchTicketResponse
 from ..api.match2.models import ApiMatchTicketStatus
 from ..api.match2.models import ApiMatchTicketStatuses
+from ..api.match2.models import ApiNamespaceConfigList
 from ..api.match2.models import ApiParty
+from ..api.match2.models import ApiPatchNamespaceConfigRequest
 from ..api.match2.models import ApiPlayerData
 from ..api.match2.models import ApiPlayerMetricRecord
 from ..api.match2.models import ApiProposedProposal
@@ -55,6 +57,7 @@ from ..api.match2.models import ApiTeam
 from ..api.match2.models import ApiTicket
 from ..api.match2.models import ApiTicketMetricResultRecord
 from ..api.match2.models import ConfigEnvironmentVariable
+from ..api.match2.models import ConfigmodelsNamespaceConfig
 from ..api.match2.models import MatchmakerMatchTicketRecord
 from ..api.match2.models import MatchmakerParty
 from ..api.match2.models import MatchmakerProposedProposal
@@ -212,6 +215,8 @@ def create_api_match_pool_example() -> ApiMatchPool:
     instance.rule_set = randomize()
     instance.session_template = randomize()
     instance.ticket_expiration_seconds = randomize("int", min_val=1, max_val=1000)
+    instance.crossplay_disabled = randomize("bool")
+    instance.platfrom_group_enabled = randomize("bool")
     return instance
 
 
@@ -229,6 +234,8 @@ def create_api_match_pool_config_example() -> ApiMatchPoolConfig:
     instance.rule_set = randomize()
     instance.session_template = randomize()
     instance.ticket_expiration_seconds = randomize("int", min_val=1, max_val=1000)
+    instance.crossplay_disabled = randomize("bool")
+    instance.platfrom_group_enabled = randomize("bool")
     return instance
 
 
@@ -271,10 +278,24 @@ def create_api_match_ticket_statuses_example() -> ApiMatchTicketStatuses:
     return instance
 
 
+def create_api_namespace_config_list_example() -> ApiNamespaceConfigList:
+    instance = ApiNamespaceConfigList()
+    instance.configs = [create_configmodels_namespace_config_example()]
+    return instance
+
+
 def create_api_party_example() -> ApiParty:
     instance = ApiParty()
     instance.party_id = randomize("uid")
     instance.user_i_ds = [randomize()]
+    return instance
+
+
+def create_api_patch_namespace_config_request_example() -> (
+    ApiPatchNamespaceConfigRequest
+):
+    instance = ApiPatchNamespaceConfigRequest()
+    instance.platform_group = {}
     return instance
 
 
@@ -340,6 +361,13 @@ def create_config_environment_variable_example() -> ConfigEnvironmentVariable:
     instance.actual_value = randomize()
     instance.default_value = randomize()
     instance.description = randomize()
+    return instance
+
+
+def create_configmodels_namespace_config_example() -> ConfigmodelsNamespaceConfig:
+    instance = ConfigmodelsNamespaceConfig()
+    instance.namespace = randomize("slug")
+    instance.platform_group = {}
     return instance
 
 
@@ -426,6 +454,7 @@ def create_models_game_session_example() -> ModelsGameSession:
     instance.ds_information = create_models_ds_information_example()
     instance.game_mode = randomize()
     instance.id_ = randomize()
+    instance.is_full = randomize("bool")
     instance.join_type = randomize()
     instance.leader_id = randomize()
     instance.match_pool = randomize()
@@ -482,6 +511,7 @@ def create_player_player_data_example() -> PlayerPlayerData:
     instance = PlayerPlayerData()
     instance.attributes = {randomize(): randomize()}
     instance.party_id = randomize("uid")
+    instance.platform_id = randomize()
     instance.player_id = randomize()
     return instance
 

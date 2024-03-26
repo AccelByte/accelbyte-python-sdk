@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class AdminGetChallenge(Operation):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetChallenge)
+    """Get a Challenge (adminGetChallenge)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 

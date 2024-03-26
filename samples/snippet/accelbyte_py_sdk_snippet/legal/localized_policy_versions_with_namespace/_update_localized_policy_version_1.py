@@ -16,7 +16,7 @@ attachment_version_identifier: str
 content_type: str
 description: str
 
-Example: '{"attachmentChecksum": "MNhM3zmuh7y1rLdb", "attachmentLocation": "JzsqaGNe3Mj3D0HN", "attachmentVersionIdentifier": "X5PRCNVb7ronOC5z", "contentType": "fUhgAMq6Lr6O9lUr", "description": "gKR2kzMJOt86xv2P"}'
+Example: '{"attachmentChecksum": "Sd7ne8ivykUdH59j", "attachmentLocation": "ANDxrjY85Mq0qEEe", "attachmentVersionIdentifier": "VoMrzVugaNViONoT", "contentType": "4PTKJPRuBGJ2I0st", "description": "XY2hLwvjqNIMEPFS"}'
 """
 
 result, error = update_localized_policy_version_1(

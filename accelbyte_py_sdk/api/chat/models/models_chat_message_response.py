@@ -38,11 +38,11 @@ class ModelsChatMessageResponse(Model):
 
         message: (message) REQUIRED str
 
-        read_at: (readAt) REQUIRED int
-
-        received_at: (receivedAt) REQUIRED int
-
         topic_id: (topicId) REQUIRED str
+
+        read_at: (readAt) OPTIONAL int
+
+        received_at: (receivedAt) OPTIONAL int
     """
 
     # region fields
@@ -50,9 +50,9 @@ class ModelsChatMessageResponse(Model):
     from_: str  # REQUIRED
     id_: str  # REQUIRED
     message: str  # REQUIRED
-    read_at: int  # REQUIRED
-    received_at: int  # REQUIRED
     topic_id: str  # REQUIRED
+    read_at: int  # OPTIONAL
+    received_at: int  # OPTIONAL
 
     # endregion fields
 
@@ -70,16 +70,16 @@ class ModelsChatMessageResponse(Model):
         self.message = value
         return self
 
+    def with_topic_id(self, value: str) -> ModelsChatMessageResponse:
+        self.topic_id = value
+        return self
+
     def with_read_at(self, value: int) -> ModelsChatMessageResponse:
         self.read_at = value
         return self
 
     def with_received_at(self, value: int) -> ModelsChatMessageResponse:
         self.received_at = value
-        return self
-
-    def with_topic_id(self, value: str) -> ModelsChatMessageResponse:
-        self.topic_id = value
         return self
 
     # endregion with_x methods
@@ -100,6 +100,10 @@ class ModelsChatMessageResponse(Model):
             result["message"] = str(self.message)
         elif include_empty:
             result["message"] = ""
+        if hasattr(self, "topic_id"):
+            result["topicId"] = str(self.topic_id)
+        elif include_empty:
+            result["topicId"] = ""
         if hasattr(self, "read_at"):
             result["readAt"] = int(self.read_at)
         elif include_empty:
@@ -108,10 +112,6 @@ class ModelsChatMessageResponse(Model):
             result["receivedAt"] = int(self.received_at)
         elif include_empty:
             result["receivedAt"] = 0
-        if hasattr(self, "topic_id"):
-            result["topicId"] = str(self.topic_id)
-        elif include_empty:
-            result["topicId"] = ""
         return result
 
     # endregion to methods
@@ -124,18 +124,20 @@ class ModelsChatMessageResponse(Model):
         from_: str,
         id_: str,
         message: str,
-        read_at: int,
-        received_at: int,
         topic_id: str,
+        read_at: Optional[int] = None,
+        received_at: Optional[int] = None,
         **kwargs,
     ) -> ModelsChatMessageResponse:
         instance = cls()
         instance.from_ = from_
         instance.id_ = id_
         instance.message = message
-        instance.read_at = read_at
-        instance.received_at = received_at
         instance.topic_id = topic_id
+        if read_at is not None:
+            instance.read_at = read_at
+        if received_at is not None:
+            instance.received_at = received_at
         return instance
 
     @classmethod
@@ -157,6 +159,10 @@ class ModelsChatMessageResponse(Model):
             instance.message = str(dict_["message"])
         elif include_empty:
             instance.message = ""
+        if "topicId" in dict_ and dict_["topicId"] is not None:
+            instance.topic_id = str(dict_["topicId"])
+        elif include_empty:
+            instance.topic_id = ""
         if "readAt" in dict_ and dict_["readAt"] is not None:
             instance.read_at = int(dict_["readAt"])
         elif include_empty:
@@ -165,10 +171,6 @@ class ModelsChatMessageResponse(Model):
             instance.received_at = int(dict_["receivedAt"])
         elif include_empty:
             instance.received_at = 0
-        if "topicId" in dict_ and dict_["topicId"] is not None:
-            instance.topic_id = str(dict_["topicId"])
-        elif include_empty:
-            instance.topic_id = ""
         return instance
 
     @classmethod
@@ -215,9 +217,9 @@ class ModelsChatMessageResponse(Model):
             "from": "from_",
             "id": "id_",
             "message": "message",
+            "topicId": "topic_id",
             "readAt": "read_at",
             "receivedAt": "received_at",
-            "topicId": "topic_id",
         }
 
     @staticmethod
@@ -226,9 +228,9 @@ class ModelsChatMessageResponse(Model):
             "from": True,
             "id": True,
             "message": True,
-            "readAt": True,
-            "receivedAt": True,
             "topicId": True,
+            "readAt": False,
+            "receivedAt": False,
         }
 
     # endregion static methods

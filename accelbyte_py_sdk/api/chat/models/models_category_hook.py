@@ -37,15 +37,15 @@ class ModelsCategoryHook(Model):
     """Models category hook (models.CategoryHook)
 
     Properties:
-        driver: (driver) REQUIRED Union[str, DriverEnum]
+        driver: (driver) OPTIONAL Union[str, DriverEnum]
 
-        params: (params) REQUIRED str
+        params: (params) OPTIONAL Dict[str, Any]
     """
 
     # region fields
 
-    driver: Union[str, DriverEnum]  # REQUIRED
-    params: str  # REQUIRED
+    driver: Union[str, DriverEnum]  # OPTIONAL
+    params: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
 
@@ -55,7 +55,7 @@ class ModelsCategoryHook(Model):
         self.driver = value
         return self
 
-    def with_params(self, value: str) -> ModelsCategoryHook:
+    def with_params(self, value: Dict[str, Any]) -> ModelsCategoryHook:
         self.params = value
         return self
 
@@ -70,9 +70,9 @@ class ModelsCategoryHook(Model):
         elif include_empty:
             result["driver"] = Union[str, DriverEnum]()
         if hasattr(self, "params"):
-            result["params"] = str(self.params)
+            result["params"] = {str(k0): v0 for k0, v0 in self.params.items()}
         elif include_empty:
-            result["params"] = ""
+            result["params"] = {}
         return result
 
     # endregion to methods
@@ -81,11 +81,16 @@ class ModelsCategoryHook(Model):
 
     @classmethod
     def create(
-        cls, driver: Union[str, DriverEnum], params: str, **kwargs
+        cls,
+        driver: Optional[Union[str, DriverEnum]] = None,
+        params: Optional[Dict[str, Any]] = None,
+        **kwargs,
     ) -> ModelsCategoryHook:
         instance = cls()
-        instance.driver = driver
-        instance.params = params
+        if driver is not None:
+            instance.driver = driver
+        if params is not None:
+            instance.params = params
         return instance
 
     @classmethod
@@ -100,9 +105,9 @@ class ModelsCategoryHook(Model):
         elif include_empty:
             instance.driver = Union[str, DriverEnum]()
         if "params" in dict_ and dict_["params"] is not None:
-            instance.params = str(dict_["params"])
+            instance.params = {str(k0): v0 for k0, v0 in dict_["params"].items()}
         elif include_empty:
-            instance.params = ""
+            instance.params = {}
         return instance
 
     @classmethod
@@ -151,8 +156,8 @@ class ModelsCategoryHook(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "driver": True,
-            "params": True,
+            "driver": False,
+            "params": False,
         }
 
     @staticmethod

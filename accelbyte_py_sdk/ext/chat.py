@@ -222,10 +222,10 @@ def create_models_add_inbox_category_response_example() -> (
     instance = ModelsAddInboxCategoryResponse()
     instance.enabled = randomize("bool")
     instance.expires_in = randomize("int", min_val=1, max_val=1000)
-    instance.hook = create_models_category_hook_example()
     instance.name = randomize()
     instance.save_inbox = randomize("bool")
     instance.send_notification = randomize("bool")
+    instance.hook = create_models_category_hook_example()
     instance.json_schema = {randomize(): randomize()}
     return instance
 
@@ -245,7 +245,7 @@ def create_models_ban_topic_member_result_example() -> ModelsBanTopicMemberResul
 def create_models_category_hook_example() -> ModelsCategoryHook:
     instance = ModelsCategoryHook()
     instance.driver = randomize()
-    instance.params = randomize()
+    instance.params = {randomize(): randomize()}
     return instance
 
 
@@ -289,9 +289,9 @@ def create_models_chat_message_response_example() -> ModelsChatMessageResponse:
     instance.from_ = randomize()
     instance.id_ = randomize()
     instance.message = randomize()
+    instance.topic_id = randomize()
     instance.read_at = randomize("int", min_val=1, max_val=1000)
     instance.received_at = randomize("int", min_val=1, max_val=1000)
-    instance.topic_id = randomize()
     return instance
 
 
@@ -407,9 +407,9 @@ def create_models_dictionary_example() -> ModelsDictionary:
     instance = ModelsDictionary()
     instance.id_ = randomize()
     instance.namespace = randomize("slug")
-    instance.parent_id = randomize()
     instance.word = randomize()
     instance.word_type = randomize()
+    instance.parent_id = randomize()
     return instance
 
 
@@ -485,11 +485,11 @@ def create_models_dictionary_with_children_example() -> ModelsDictionaryWithChil
     instance = ModelsDictionaryWithChildren()
     instance.id_ = randomize()
     instance.namespace = randomize("slug")
-    instance.parent_id = randomize()
     instance.word = randomize()
     instance.word_type = randomize()
     instance.false_negatives = [create_models_dictionary_child_example()]
     instance.false_positives = [create_models_dictionary_child_example()]
+    instance.parent_id = randomize()
     return instance
 
 
@@ -534,13 +534,13 @@ def create_models_get_inbox_messages_response_data_example() -> (
     instance.created_at = randomize("int", min_val=1, max_val=1000)
     instance.expired_at = randomize("int", min_val=1, max_val=1000)
     instance.id_ = randomize()
-    instance.message = {randomize(): randomize()}
     instance.scope = randomize()
     instance.sender_id = randomize()
     instance.status = randomize()
     instance.updated_at = randomize("int", min_val=1, max_val=1000)
-    instance.user_ids = [randomize()]
     instance.category = randomize()
+    instance.message = {randomize(): randomize()}
+    instance.user_ids = [randomize()]
     return instance
 
 
@@ -638,9 +638,9 @@ def create_models_save_inbox_message_response_example() -> (
     instance.category = randomize()
     instance.expired_at = randomize("int", min_val=1, max_val=1000)
     instance.id_ = randomize()
-    instance.message = {randomize(): randomize()}
     instance.scope = randomize()
     instance.status = randomize()
+    instance.message = {randomize(): randomize()}
     instance.user_i_ds = [randomize()]
     return instance
 

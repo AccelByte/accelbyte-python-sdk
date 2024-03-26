@@ -16,7 +16,7 @@ Definition: List[ModelsRuleInformation]
     rule_criteria: str
     rule_value: float
 
-Example: '{"ruleDetail": [{"ruleAttribute": "bF5rucoFzwFp8lgT", "ruleCriteria": "MINIMUM", "ruleValue": 0.34003263575862763}, {"ruleAttribute": "14XD6M0dG1pSM2wf", "ruleCriteria": "MAXIMUM", "ruleValue": 0.5572791725294415}, {"ruleAttribute": "cAk4PZpova76Pa19", "ruleCriteria": "MINIMUM", "ruleValue": 0.5466105246469469}]}'
+Example: '{"ruleDetail": [{"ruleAttribute": "h2XWdTCeJeJzh5bb", "ruleCriteria": "MAXIMUM", "ruleValue": 0.5912477053082782}, {"ruleAttribute": "hII5AWRaKYYY0wGC", "ruleCriteria": "EQUAL", "ruleValue": 0.007758112202144507}, {"ruleAttribute": "GZafT3uUqHRDLQ3U", "ruleCriteria": "MINIMUM", "ruleValue": 0.6741991294329481}]}'
 """
 
 result, error = update_group_predefined_rule_public_v2(

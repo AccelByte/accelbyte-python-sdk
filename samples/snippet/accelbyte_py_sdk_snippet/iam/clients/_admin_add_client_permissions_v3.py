@@ -14,7 +14,7 @@ Definition: List[AccountcommonClientPermissionV3]
     action: int
     resource: str
 
-Example: '{"permissions": [{"action": 84, "resource": "jWtG1VPxstRK0JY4"}, {"action": 20, "resource": "TxGdgXSJzTS6ZYGl"}, {"action": 47, "resource": "eSeZkrzd5pPRgW6D"}]}'
+Example: '{"permissions": [{"action": 17, "resource": "koXanH5ktj78lYSp"}, {"action": 34, "resource": "0bf1yZMuzDr3msvJ"}, {"action": 50, "resource": "71O6bekxdZGV8ZgP"}]}'
 """
 
 result, error = admin_add_client_permissions_v3(

@@ -34,6 +34,8 @@ class ApiFleetListItemResponse(Model):
     """Api fleet list item response (api.FleetListItemResponse)
 
     Properties:
+        active: (active) REQUIRED bool
+
         counts: (counts) REQUIRED List[ApiFleetRegionalServerCounts]
 
         id_: (id) REQUIRED str
@@ -49,6 +51,7 @@ class ApiFleetListItemResponse(Model):
 
     # region fields
 
+    active: bool  # REQUIRED
     counts: List[ApiFleetRegionalServerCounts]  # REQUIRED
     id_: str  # REQUIRED
     image: str  # REQUIRED
@@ -59,6 +62,10 @@ class ApiFleetListItemResponse(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_active(self, value: bool) -> ApiFleetListItemResponse:
+        self.active = value
+        return self
 
     def with_counts(
         self, value: List[ApiFleetRegionalServerCounts]
@@ -92,6 +99,10 @@ class ApiFleetListItemResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "active"):
+            result["active"] = bool(self.active)
+        elif include_empty:
+            result["active"] = False
         if hasattr(self, "counts"):
             result["counts"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.counts
@@ -127,6 +138,7 @@ class ApiFleetListItemResponse(Model):
     @classmethod
     def create(
         cls,
+        active: bool,
         counts: List[ApiFleetRegionalServerCounts],
         id_: str,
         image: str,
@@ -136,6 +148,7 @@ class ApiFleetListItemResponse(Model):
         **kwargs,
     ) -> ApiFleetListItemResponse:
         instance = cls()
+        instance.active = active
         instance.counts = counts
         instance.id_ = id_
         instance.image = image
@@ -151,6 +164,10 @@ class ApiFleetListItemResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "active" in dict_ and dict_["active"] is not None:
+            instance.active = bool(dict_["active"])
+        elif include_empty:
+            instance.active = False
         if "counts" in dict_ and dict_["counts"] is not None:
             instance.counts = [
                 ApiFleetRegionalServerCounts.create_from_dict(
@@ -223,6 +240,7 @@ class ApiFleetListItemResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "active": "active",
             "counts": "counts",
             "id": "id_",
             "image": "image",
@@ -234,6 +252,7 @@ class ApiFleetListItemResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "active": True,
             "counts": True,
             "id": True,
             "image": True,

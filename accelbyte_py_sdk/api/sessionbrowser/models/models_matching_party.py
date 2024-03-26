@@ -35,25 +35,29 @@ class ModelsMatchingParty(Model):
     """Models matching party (models.MatchingParty)
 
     Properties:
-        match_attributes: (match_attributes) REQUIRED ModelsMatchAttributes
-
-        party_attributes: (party_attributes) REQUIRED Dict[str, Any]
-
         party_id: (party_id) REQUIRED str
 
-        party_members: (party_members) REQUIRED List[ModelsPartyMember]
+        match_attributes: (match_attributes) OPTIONAL ModelsMatchAttributes
+
+        party_attributes: (party_attributes) OPTIONAL Dict[str, Any]
+
+        party_members: (party_members) OPTIONAL List[ModelsPartyMember]
     """
 
     # region fields
 
-    match_attributes: ModelsMatchAttributes  # REQUIRED
-    party_attributes: Dict[str, Any]  # REQUIRED
     party_id: str  # REQUIRED
-    party_members: List[ModelsPartyMember]  # REQUIRED
+    match_attributes: ModelsMatchAttributes  # OPTIONAL
+    party_attributes: Dict[str, Any]  # OPTIONAL
+    party_members: List[ModelsPartyMember]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_party_id(self, value: str) -> ModelsMatchingParty:
+        self.party_id = value
+        return self
 
     def with_match_attributes(
         self, value: ModelsMatchAttributes
@@ -63,10 +67,6 @@ class ModelsMatchingParty(Model):
 
     def with_party_attributes(self, value: Dict[str, Any]) -> ModelsMatchingParty:
         self.party_attributes = value
-        return self
-
-    def with_party_id(self, value: str) -> ModelsMatchingParty:
-        self.party_id = value
         return self
 
     def with_party_members(self, value: List[ModelsPartyMember]) -> ModelsMatchingParty:
@@ -79,6 +79,10 @@ class ModelsMatchingParty(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "party_id"):
+            result["party_id"] = str(self.party_id)
+        elif include_empty:
+            result["party_id"] = ""
         if hasattr(self, "match_attributes"):
             result["match_attributes"] = self.match_attributes.to_dict(
                 include_empty=include_empty
@@ -91,10 +95,6 @@ class ModelsMatchingParty(Model):
             }
         elif include_empty:
             result["party_attributes"] = {}
-        if hasattr(self, "party_id"):
-            result["party_id"] = str(self.party_id)
-        elif include_empty:
-            result["party_id"] = ""
         if hasattr(self, "party_members"):
             result["party_members"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.party_members
@@ -110,17 +110,20 @@ class ModelsMatchingParty(Model):
     @classmethod
     def create(
         cls,
-        match_attributes: ModelsMatchAttributes,
-        party_attributes: Dict[str, Any],
         party_id: str,
-        party_members: List[ModelsPartyMember],
+        match_attributes: Optional[ModelsMatchAttributes] = None,
+        party_attributes: Optional[Dict[str, Any]] = None,
+        party_members: Optional[List[ModelsPartyMember]] = None,
         **kwargs,
     ) -> ModelsMatchingParty:
         instance = cls()
-        instance.match_attributes = match_attributes
-        instance.party_attributes = party_attributes
         instance.party_id = party_id
-        instance.party_members = party_members
+        if match_attributes is not None:
+            instance.match_attributes = match_attributes
+        if party_attributes is not None:
+            instance.party_attributes = party_attributes
+        if party_members is not None:
+            instance.party_members = party_members
         return instance
 
     @classmethod
@@ -130,6 +133,10 @@ class ModelsMatchingParty(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "party_id" in dict_ and dict_["party_id"] is not None:
+            instance.party_id = str(dict_["party_id"])
+        elif include_empty:
+            instance.party_id = ""
         if "match_attributes" in dict_ and dict_["match_attributes"] is not None:
             instance.match_attributes = ModelsMatchAttributes.create_from_dict(
                 dict_["match_attributes"], include_empty=include_empty
@@ -142,10 +149,6 @@ class ModelsMatchingParty(Model):
             }
         elif include_empty:
             instance.party_attributes = {}
-        if "party_id" in dict_ and dict_["party_id"] is not None:
-            instance.party_id = str(dict_["party_id"])
-        elif include_empty:
-            instance.party_id = ""
         if "party_members" in dict_ and dict_["party_members"] is not None:
             instance.party_members = [
                 ModelsPartyMember.create_from_dict(i0, include_empty=include_empty)
@@ -194,19 +197,19 @@ class ModelsMatchingParty(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "party_id": "party_id",
             "match_attributes": "match_attributes",
             "party_attributes": "party_attributes",
-            "party_id": "party_id",
             "party_members": "party_members",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "match_attributes": True,
-            "party_attributes": True,
             "party_id": True,
-            "party_members": True,
+            "match_attributes": False,
+            "party_attributes": False,
+            "party_members": False,
         }
 
     # endregion static methods

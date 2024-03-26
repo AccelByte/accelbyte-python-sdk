@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class AdminUpdateGoals(Operation):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]&lt;/li&gt;&lt;/ul&gt; (adminUpdateGoals)
+    """Update Goal (adminUpdateGoals)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 

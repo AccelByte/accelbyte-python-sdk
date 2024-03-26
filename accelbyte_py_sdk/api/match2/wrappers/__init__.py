@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.16.0"
+__version__ = "2.18.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -26,6 +26,13 @@ from ._backfill import get_backfill_proposal
 from ._backfill import get_backfill_proposal_async
 from ._backfill import reject_backfill
 from ._backfill import reject_backfill_async
+
+from ._config import admin_get_all_config_v1
+from ._config import admin_get_all_config_v1_async
+from ._config import admin_get_config_v1
+from ._config import admin_get_config_v1_async
+from ._config import admin_patch_config_v1
+from ._config import admin_patch_config_v1_async
 
 from ._environment_variables import environment_variable_list
 from ._environment_variables import environment_variable_list_async

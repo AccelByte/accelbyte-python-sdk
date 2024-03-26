@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Matchmaking Service."""
 
-__version__ = "2.30.1"
+__version__ = "2.30.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -60,25 +60,10 @@ from .models_result_attribute_request import ModelsResultAttributeRequest
 from .models_result_attribute_response import ModelsResultAttributeResponse
 from .models_role import ModelsRole
 from .models_rule_set import ModelsRuleSet
-from .models_rule_set import (
-    TicketFlexingSelectionEnum as ModelsRuleSetTicketFlexingSelectionEnum,
-)
 from .models_rule_set_v1 import ModelsRuleSetV1
-from .models_rule_set_v1 import (
-    TicketFlexingSelectionEnum as ModelsRuleSetV1TicketFlexingSelectionEnum,
-)
 from .models_selection_rule import ModelsSelectionRule
-from .models_selection_rule import SelectionEnum as ModelsSelectionRuleSelectionEnum
 from .models_sort_ticket import ModelsSortTicket
-from .models_sort_ticket import (
-    SearchResultEnum as ModelsSortTicketSearchResultEnum,
-    TicketQueueEnum as ModelsSortTicketTicketQueueEnum,
-)
 from .models_sort_ticket_rule import ModelsSortTicketRule
-from .models_sort_ticket_rule import (
-    SearchResultEnum as ModelsSortTicketRuleSearchResultEnum,
-    TicketQueueEnum as ModelsSortTicketRuleTicketQueueEnum,
-)
 from .models_stat_resume_response import ModelsStatResumeResponse
 from .models_sub_game_mode import ModelsSubGameMode
 from .models_ticket_metric_result_record import ModelsTicketMetricResultRecord
@@ -93,9 +78,6 @@ from .models_update_player_playtime_weight_response import (
     ModelsUpdatePlayerPlaytimeWeightResponse,
 )
 from .models_update_ruleset import ModelsUpdateRuleset
-from .models_update_ruleset import (
-    TicketFlexingSelectionEnum as ModelsUpdateRulesetTicketFlexingSelectionEnum,
-)
 from .models_update_ruleset_sub_game_modes import ModelsUpdateRulesetSubGameModes
 from .response_error import ResponseError
 from .response_error_v1 import ResponseErrorV1

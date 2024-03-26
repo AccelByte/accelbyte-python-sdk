@@ -27,6 +27,7 @@ Definition: ModelsNativeSessionSetting
 psn_base_url: str
 attributes: Dict[str, Any]
 auto_join: bool
+auto_leave_session: bool
 client_version: str
 deployment: str
 disable_code_generation: bool
@@ -51,7 +52,7 @@ text_chat: bool
 tie_teams_session_lifetime: bool
 type_: str
 
-Example: '{"NativeSessionSetting": {"PSNServiceLabel": 84, "PSNSupportedPlatforms": ["l6DgRiHqQhEFum8j", "N7C7vWeJ05JUDInL", "zXS50Num9EAAl06b"], "SessionTitle": "a3Pn44Ve6kGqJbzb", "ShouldSync": true, "XboxAllowCrossPlatform": false, "XboxSandboxID": "SQIVAX97icC35CkW", "XboxServiceConfigID": "AcX7xhgn05AIop1T", "XboxSessionTemplateName": "LMZbATKbU6PJ48nV", "XboxTitleID": "3RtGExKxUJOKZ0Xh", "localizedSessionName": {"cfpKSCK9bPs5ZJ7E": {}, "MlqvgUbNt9Ack9Dc": {}, "TMfHxXuhEkvea28M": {}}}, "PSNBaseUrl": "9M0d1ftNXkMfjy8M", "attributes": {"6A1nZ3P3oZ0FmkE6": {}, "2brc1x97qwCvFOqz": {}, "8ge66xIJcafz9Fqy": {}}, "autoJoin": false, "clientVersion": "RObuD86McYqM5Ri2", "deployment": "OyGQgbqbI857h3Jn", "disableCodeGeneration": false, "dsManualSetReady": true, "dsSource": "UaOmOp9kIsqy77GV", "enableSecret": true, "fallbackClaimKeys": ["vnQFqoOa0MFFeEDk", "JFi41zIYbRkcOEGR", "KSq3CtL0p68stOSk"], "immutableStorage": true, "inactiveTimeout": 62, "inviteTimeout": 4, "joinability": "YA4h89QrNckuRMql", "leaderElectionGracePeriod": 98, "manualRejoin": false, "maxActiveSessions": 64, "maxPlayers": 70, "minPlayers": 20, "name": "2mHspMz30LBNd0e8", "persistent": false, "preferredClaimKeys": ["GJwtATXoass6aByy", "h7hd2IIPLa9wrL94", "rQIaL4XTlYv6Bile"], "requestedRegions": ["g8B4DZJIBcHOMqAe", "nOTAvTHX0g9VIOe6", "dA08XLZdw5sVPuKO"], "textChat": false, "tieTeamsSessionLifetime": true, "type": "s8osoCcYXi7A1fGb"}'
+Example: '{"NativeSessionSetting": {"PSNServiceLabel": 98, "PSNSupportedPlatforms": ["Jo0vMejbnW8o4X25", "LCyrCngMWYbHcvJC", "XdyZnuvUGEDB3SXt"], "SessionTitle": "CSlRAO9ri7An7JOa", "ShouldSync": false, "XboxAllowCrossPlatform": true, "XboxSandboxID": "C7eX2m70DT5LVfVJ", "XboxServiceConfigID": "6Qtgw5DG0fL2gLlU", "XboxSessionTemplateName": "N1EgSNcAXshVar7I", "XboxTitleID": "9cETq0SKP8IQYFwV", "localizedSessionName": {"6VBt0VNvWPyqtdI5": {}, "OU5TFuHLBoi2EI04": {}, "X1lmhmqr2V5UXaJn": {}}}, "PSNBaseUrl": "EysloZoYsVOAkKYm", "attributes": {"ggHHZsNvQXT6lWWv": {}, "PuQCikiTobZrBRbB": {}, "BYyFQcY41DsEdJdn": {}}, "autoJoin": false, "autoLeaveSession": true, "clientVersion": "TBrLcxpl1M7PHsey", "deployment": "bXsZJTJzWyGE2Cv9", "disableCodeGeneration": true, "dsManualSetReady": true, "dsSource": "6xDsqlkLas35Yhe5", "enableSecret": false, "fallbackClaimKeys": ["4l9xiguqGynMcJqy", "bg2Ah5jsP0dsIDVx", "tkyAnExAVEr4unqu"], "immutableStorage": true, "inactiveTimeout": 62, "inviteTimeout": 83, "joinability": "ILDA4U0HfWYKz9xj", "leaderElectionGracePeriod": 11, "manualRejoin": false, "maxActiveSessions": 84, "maxPlayers": 63, "minPlayers": 87, "name": "Mc0wIqgjObmEf1ae", "persistent": true, "preferredClaimKeys": ["pkvFohBWPqnbIk8L", "ClMOTn4vQyURSuUg", "i9XSmRLl0dOFSCAh"], "requestedRegions": ["4ENX0MSN49IDZQF9", "1VZrpB45De4AAB3U", "N6Wgm7vbl5ROQm6s"], "textChat": false, "tieTeamsSessionLifetime": false, "type": "B2vQwtx5FLjR8pNe"}'
 """
 
 result, error = admin_create_configuration_template_v1(

@@ -16,7 +16,7 @@ tax_jar_api_token: str
 tax_jar_enabled: bool
 tax_jar_product_codes_mapping: Dict[str, str]
 
-Example: '{"sandboxTaxJarApiToken": "HwizCgJ1jdCKqbAp", "taxJarApiToken": "UqK30off7XAvuaZW", "taxJarEnabled": false, "taxJarProductCodesMapping": {"ouLtExd8GJ5NaIAg": "rb3Hrp8X9P60kvKU", "f3u8q6cb8Ho9ipDD": "LcUZDcB8CNRCJsfJ", "yKylMioFaWc8TE4c": "Dtoel9DfhvYbR3f5"}}'
+Example: '{"sandboxTaxJarApiToken": "tbijWr9oqjLkToGb", "taxJarApiToken": "Pi0wnvqJvrndHsrb", "taxJarEnabled": true, "taxJarProductCodesMapping": {"tl42QWh4ISinO1jj": "frbNsom2TSQ7dyV3", "cxcLI32lcGOB86QM": "d4iqA05WPCb45DgJ", "rjgJqwkbYQxCM3nT": "xezP5ERP0K1HaaL0"}}'
 """
 
 result, error = update_payment_tax_config(

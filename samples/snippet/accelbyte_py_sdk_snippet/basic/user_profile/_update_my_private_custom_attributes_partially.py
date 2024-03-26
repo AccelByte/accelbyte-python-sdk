@@ -10,7 +10,7 @@ from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 body:
 Definition: Dict[str, Any]
 
-Example: '{"qDQbU3andQHGTIkk": {}, "YJ5lF100ruFRppOg": {}, "2NMk0lpsuVyvgs9R": {}}'
+Example: '{"uOzG9H273UzrLpBI": {}, "nIwAoAIpbkFyw8HD": {}, "3zE53PRZlo7oK3Jr": {}}'
 """
 
 result, error = update_my_private_custom_attributes_partially(

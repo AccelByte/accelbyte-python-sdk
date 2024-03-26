@@ -13,7 +13,7 @@ Definition: RevokeUseCountRequest
 reason: str
 use_count: int
 
-Example: '{"reason": "23z77WYyGwVpg18F", "useCount": 22}'
+Example: '{"reason": "Ykgt8fffpDnWMaI6", "useCount": 97}'
 """
 
 result, error = revoke_user_entitlement_by_use_count(

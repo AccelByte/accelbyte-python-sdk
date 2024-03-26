@@ -14,7 +14,7 @@ cpu_limit: int
 mem_limit: int
 params: str
 
-Example: '{"cpu_limit": 56, "mem_limit": 39, "params": "MEXwM046Eqs2hDMb"}'
+Example: '{"cpu_limit": 12, "mem_limit": 50, "params": "mBTI4MRU79TCRUVy"}'
 """
 
 result, error = create_pod_config_client(

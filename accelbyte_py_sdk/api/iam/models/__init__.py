@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.12.0"
+__version__ = "7.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -127,6 +127,7 @@ from .clientmodel_client_update_secret_request import (
 )
 from .clientmodel_client_update_v3_request import ClientmodelClientUpdateV3Request
 from .clientmodel_client_v3_response import ClientmodelClientV3Response
+from .clientmodel_clients_update_request_v3 import ClientmodelClientsUpdateRequestV3
 from .clientmodel_clients_v3_response import ClientmodelClientsV3Response
 from .clientmodel_default_field_value import ClientmodelDefaultFieldValue
 from .clientmodel_default_field_value_value import ClientmodelDefaultFieldValueValue
@@ -160,6 +161,7 @@ from .model_bulk_account_type_update_request_v4 import (
 )
 from .model_bulk_ban_create_request_v3 import ModelBulkBanCreateRequestV3
 from .model_bulk_unban_create_request_v3 import ModelBulkUnbanCreateRequestV3
+from .model_check_availability_response import ModelCheckAvailabilityResponse
 from .model_check_valid_user_id_request_v4 import ModelCheckValidUserIDRequestV4
 from .model_config_value_response_v3 import ModelConfigValueResponseV3
 from .model_country import ModelCountry
@@ -332,6 +334,7 @@ from .model_user_active_ban_response_v3 import ModelUserActiveBanResponseV3
 from .model_user_ban_response import ModelUserBanResponse
 from .model_user_ban_response_v3 import ModelUserBanResponseV3
 from .model_user_base_info import ModelUserBaseInfo
+from .model_user_bulk_update_request_v3 import ModelUserBulkUpdateRequestV3
 from .model_user_create_request import ModelUserCreateRequest
 from .model_user_create_request_v3 import ModelUserCreateRequestV3
 from .model_user_create_response import ModelUserCreateResponse
@@ -362,6 +365,7 @@ from .model_user_verification_request_v3 import ModelUserVerificationRequestV3
 from .model_user_with_platform_info import ModelUserWithPlatformInfo
 from .model_users_platform_infos_request_v3 import ModelUsersPlatformInfosRequestV3
 from .model_users_platform_infos_response import ModelUsersPlatformInfosResponse
+from .model_users_update_request_v3 import ModelUsersUpdateRequestV3
 from .model_valid_user_id_response_v4 import ModelValidUserIDResponseV4
 from .model_validation_detail import ModelValidationDetail
 from .model_validation_detail_public import ModelValidationDetailPublic

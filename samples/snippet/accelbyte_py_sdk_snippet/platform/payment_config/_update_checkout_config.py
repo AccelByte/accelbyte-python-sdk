@@ -13,7 +13,7 @@ Definition: CheckoutConfig
 public_key: str
 secret_key: str
 
-Example: '{"publicKey": "3FA7p8wn4CiCmZnt", "secretKey": "HMRKN0EmT3YIwqGl"}'
+Example: '{"publicKey": "ktYOSm9d85S4uHwq", "secretKey": "v52O4DfpLBT3F1j3"}'
 """
 
 result, error = update_checkout_config(

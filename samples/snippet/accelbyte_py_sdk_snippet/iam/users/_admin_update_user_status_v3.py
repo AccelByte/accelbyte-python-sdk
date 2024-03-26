@@ -12,7 +12,7 @@ Definition: ModelUpdateUserStatusRequest
 enabled: bool
 reason: str
 
-Example: '{"enabled": true, "reason": "QzKFntA7AFJ4yvdW"}'
+Example: '{"enabled": false, "reason": "Dh6uieLtNESyQU8e"}'
 """
 
 result, error = admin_update_user_status_v3(

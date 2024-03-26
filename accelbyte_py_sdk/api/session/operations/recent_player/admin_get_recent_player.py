@@ -38,6 +38,10 @@ class AdminGetRecentPlayer(Operation):
 
     Query recent player with given user id.
 
+    If user id parameter is empty:
+    1. Using User Token : It will get the user id from the token
+    2. Using client token : it will throw an error
+
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/recent-player
 

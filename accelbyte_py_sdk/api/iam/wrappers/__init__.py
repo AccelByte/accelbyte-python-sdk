@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.12.0"
+__version__ = "7.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -35,6 +35,8 @@ from ._clients import add_client_permission
 from ._clients import add_client_permission_async
 from ._clients import admin_add_client_permissions_v3
 from ._clients import admin_add_client_permissions_v3_async
+from ._clients import admin_bulk_update_clients_v3
+from ._clients import admin_bulk_update_clients_v3_async
 from ._clients import admin_create_client_v3
 from ._clients import admin_create_client_v3_async
 from ._clients import admin_delete_client_permission_v3
@@ -343,6 +345,12 @@ from ._sso_saml_2_0 import platform_authenticate_samlv3_handler_async
 
 from ._third_party_credential import add_third_party_login_platform_credential_v3
 from ._third_party_credential import add_third_party_login_platform_credential_v3_async
+from ._third_party_credential import (
+    admin_check_third_party_login_platform_availability_v3,
+)
+from ._third_party_credential import (
+    admin_check_third_party_login_platform_availability_v3_async,
+)
 from ._third_party_credential import delete_third_party_login_platform_credential_v3
 from ._third_party_credential import (
     delete_third_party_login_platform_credential_v3_async,
@@ -394,6 +402,8 @@ from ._users import admin_ban_user_v3
 from ._users import admin_ban_user_v3_async
 from ._users import admin_bulk_get_users_platform
 from ._users import admin_bulk_get_users_platform_async
+from ._users import admin_bulk_update_users_v3
+from ._users import admin_bulk_update_users_v3_async
 from ._users import admin_create_justice_user
 from ._users import admin_create_justice_user_async
 from ._users import admin_create_user_roles_v2
@@ -458,6 +468,8 @@ from ._users import admin_invite_user_v3
 from ._users import admin_invite_user_v3_async
 from ._users import admin_link_platform_account
 from ._users import admin_link_platform_account_async
+from ._users import admin_list_user_all_platform_accounts_distinct_v3
+from ._users import admin_list_user_all_platform_accounts_distinct_v3_async
 from ._users import admin_list_user_id_by_platform_user_i_ds_v3
 from ._users import admin_list_user_id_by_platform_user_i_ds_v3_async
 from ._users import admin_list_user_id_by_user_i_ds_v3
@@ -466,6 +478,8 @@ from ._users import admin_list_users_v3
 from ._users import admin_list_users_v3_async
 from ._users import admin_platform_link_v3
 from ._users import admin_platform_link_v3_async
+from ._users import admin_platform_unlink_all_v3
+from ._users import admin_platform_unlink_all_v3_async
 from ._users import admin_platform_unlink_v3
 from ._users import admin_platform_unlink_v3_async
 from ._users import admin_put_user_roles_v2

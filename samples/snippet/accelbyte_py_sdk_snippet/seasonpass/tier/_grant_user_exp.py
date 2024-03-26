@@ -14,7 +14,7 @@ exp: int
 source: str
 tags: List[str]
 
-Example: '{"exp": 96, "source": "PAID_FOR", "tags": ["GOA0mxM1IypgyUOV", "SoY7otpVYcOdAkue", "4dHEOl3RWFSNRFQo"]}'
+Example: '{"exp": 2, "source": "PAID_FOR", "tags": ["EgTbYJoPao42V0q4", "coOPiNNNDDiB0cTe", "DqwI6HjgASL9HpdN"]}'
 """
 
 result, error = grant_user_exp(

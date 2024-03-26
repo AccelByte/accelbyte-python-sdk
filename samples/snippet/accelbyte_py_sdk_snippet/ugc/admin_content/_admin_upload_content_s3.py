@@ -24,7 +24,7 @@ sub_type: str
 tags: List[str]
 type_: str
 
-Example: '{"contentType": "qdxATwNSfNoHey6D", "customAttributes": {"dn6yaxRDTyHhuJCM": {}, "s3WFKACWqtg2HAJk": {}, "V0iXgrhA9AejW9Pe": {}}, "fileExtension": "aepg3VjenZs1zhCV", "name": "l2kFIysswsVOq1PX", "preview": "SXh18tENbUqPZdTJ", "previewMetadata": {"previewContentType": "z0VzHpJZlz75tiQf", "previewFileExtension": "8G0gC2IQ4EdnN52n"}, "shareCode": "GkxZqmo1ZbFoQdYc", "subType": "nMBQ8En4uDwi5xwX", "tags": ["E0hQghQ0ZxA9INvK", "U6aNHsQiAVVzD7hZ", "nNiWQ3mXHE7ic7GG"], "type": "Rp6hDjM1Vd9TcO8Z"}'
+Example: '{"contentType": "UZdtw8ckypkkFql8", "customAttributes": {"z09mge3hIbn9eX46": {}, "7EMcb6hScUcLeinw": {}, "vF9xBdWVOYovlFJV": {}}, "fileExtension": "ZvLDQYRmtPbHYG6l", "name": "a3xQmTzq9OGMsqFk", "preview": "Pp8SvmgOvgzHZ8KF", "previewMetadata": {"previewContentType": "hqVpxaOffe5nv3kW", "previewFileExtension": "RXvRIsARXrwJy341"}, "shareCode": "aEm320OUz4FGBhvX", "subType": "hTJFiJKD3JsRQXVs", "tags": ["j1pcw4gClECIE16h", "4fgZVUJveOvWcNpP", "jsqXZ0qI8CbPyiPe"], "type": "bSQ86dvgwO8d1AEJ"}'
 """
 
 result, error = admin_upload_content_s3(

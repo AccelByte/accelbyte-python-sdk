@@ -41,7 +41,12 @@ class StatusEnum(StrEnum):
 
 
 class PublicGetUserRewards(Operation):
-    """Public get user rewards (publicGetUserRewards)
+    """List User's Rewards (publicGetUserRewards)
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards

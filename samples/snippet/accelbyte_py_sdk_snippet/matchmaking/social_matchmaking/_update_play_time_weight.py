@@ -17,7 +17,7 @@ playtime: int
 user_id: str
 weight: float
 
-Example: '{"playtime": 61, "userID": "C4lr4y8wHlOsQkxx", "weight": 0.7331870488721328}'
+Example: '{"playtime": 10, "userID": "MQun99TehGabP2S5", "weight": 0.5233761808988039}'
 """
 
 result, error = update_play_time_weight(

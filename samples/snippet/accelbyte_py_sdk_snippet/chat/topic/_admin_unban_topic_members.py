@@ -12,7 +12,7 @@ body:
 Definition: ModelsUnbanTopicMemberParam
 user_ids: List[str]
 
-Example: '{"userIds": ["28z6CNaC535mkiGB", "enImqAxnadt5zpRM", "mHLxvUGzxPhgJO0O"]}'
+Example: '{"userIds": ["dofSS4ljp3tsUykp", "0Yb3efSAsQnOIItX", "el5m0sXKNFLfXpKE"]}'
 """
 
 result, error = admin_unban_topic_members(

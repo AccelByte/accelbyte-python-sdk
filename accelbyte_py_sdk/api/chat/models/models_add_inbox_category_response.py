@@ -38,13 +38,13 @@ class ModelsAddInboxCategoryResponse(Model):
 
         expires_in: (expiresIn) REQUIRED int
 
-        hook: (hook) REQUIRED ModelsCategoryHook
-
         name: (name) REQUIRED str
 
         save_inbox: (saveInbox) REQUIRED bool
 
         send_notification: (sendNotification) REQUIRED bool
+
+        hook: (hook) OPTIONAL ModelsCategoryHook
 
         json_schema: (jsonSchema) OPTIONAL Dict[str, Any]
     """
@@ -53,10 +53,10 @@ class ModelsAddInboxCategoryResponse(Model):
 
     enabled: bool  # REQUIRED
     expires_in: int  # REQUIRED
-    hook: ModelsCategoryHook  # REQUIRED
     name: str  # REQUIRED
     save_inbox: bool  # REQUIRED
     send_notification: bool  # REQUIRED
+    hook: ModelsCategoryHook  # OPTIONAL
     json_schema: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
@@ -71,10 +71,6 @@ class ModelsAddInboxCategoryResponse(Model):
         self.expires_in = value
         return self
 
-    def with_hook(self, value: ModelsCategoryHook) -> ModelsAddInboxCategoryResponse:
-        self.hook = value
-        return self
-
     def with_name(self, value: str) -> ModelsAddInboxCategoryResponse:
         self.name = value
         return self
@@ -85,6 +81,10 @@ class ModelsAddInboxCategoryResponse(Model):
 
     def with_send_notification(self, value: bool) -> ModelsAddInboxCategoryResponse:
         self.send_notification = value
+        return self
+
+    def with_hook(self, value: ModelsCategoryHook) -> ModelsAddInboxCategoryResponse:
+        self.hook = value
         return self
 
     def with_json_schema(self, value: Dict[str, Any]) -> ModelsAddInboxCategoryResponse:
@@ -105,10 +105,6 @@ class ModelsAddInboxCategoryResponse(Model):
             result["expiresIn"] = int(self.expires_in)
         elif include_empty:
             result["expiresIn"] = 0
-        if hasattr(self, "hook"):
-            result["hook"] = self.hook.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["hook"] = ModelsCategoryHook()
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -121,6 +117,10 @@ class ModelsAddInboxCategoryResponse(Model):
             result["sendNotification"] = bool(self.send_notification)
         elif include_empty:
             result["sendNotification"] = False
+        if hasattr(self, "hook"):
+            result["hook"] = self.hook.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["hook"] = ModelsCategoryHook()
         if hasattr(self, "json_schema"):
             result["jsonSchema"] = {str(k0): v0 for k0, v0 in self.json_schema.items()}
         elif include_empty:
@@ -136,20 +136,21 @@ class ModelsAddInboxCategoryResponse(Model):
         cls,
         enabled: bool,
         expires_in: int,
-        hook: ModelsCategoryHook,
         name: str,
         save_inbox: bool,
         send_notification: bool,
+        hook: Optional[ModelsCategoryHook] = None,
         json_schema: Optional[Dict[str, Any]] = None,
         **kwargs,
     ) -> ModelsAddInboxCategoryResponse:
         instance = cls()
         instance.enabled = enabled
         instance.expires_in = expires_in
-        instance.hook = hook
         instance.name = name
         instance.save_inbox = save_inbox
         instance.send_notification = send_notification
+        if hook is not None:
+            instance.hook = hook
         if json_schema is not None:
             instance.json_schema = json_schema
         return instance
@@ -169,12 +170,6 @@ class ModelsAddInboxCategoryResponse(Model):
             instance.expires_in = int(dict_["expiresIn"])
         elif include_empty:
             instance.expires_in = 0
-        if "hook" in dict_ and dict_["hook"] is not None:
-            instance.hook = ModelsCategoryHook.create_from_dict(
-                dict_["hook"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.hook = ModelsCategoryHook()
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -187,6 +182,12 @@ class ModelsAddInboxCategoryResponse(Model):
             instance.send_notification = bool(dict_["sendNotification"])
         elif include_empty:
             instance.send_notification = False
+        if "hook" in dict_ and dict_["hook"] is not None:
+            instance.hook = ModelsCategoryHook.create_from_dict(
+                dict_["hook"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.hook = ModelsCategoryHook()
         if "jsonSchema" in dict_ and dict_["jsonSchema"] is not None:
             instance.json_schema = {
                 str(k0): v0 for k0, v0 in dict_["jsonSchema"].items()
@@ -238,10 +239,10 @@ class ModelsAddInboxCategoryResponse(Model):
         return {
             "enabled": "enabled",
             "expiresIn": "expires_in",
-            "hook": "hook",
             "name": "name",
             "saveInbox": "save_inbox",
             "sendNotification": "send_notification",
+            "hook": "hook",
             "jsonSchema": "json_schema",
         }
 
@@ -250,10 +251,10 @@ class ModelsAddInboxCategoryResponse(Model):
         return {
             "enabled": True,
             "expiresIn": True,
-            "hook": True,
             "name": True,
             "saveInbox": True,
             "sendNotification": True,
+            "hook": False,
             "jsonSchema": False,
         }
 

@@ -51,7 +51,7 @@ class WebsocketsWSClient:
         access_token: Optional[str] = None,
         uri_prefix: Optional[str] = None,
         uri_suffix: Optional[str] = None,
-        **kwargs
+        **kwargs,
     ) -> None:
         # pylint: disable=no-member
 
@@ -150,9 +150,11 @@ class WebsocketsWSClient:
     def on_access_token_changed(self, access_token: Optional[str]) -> None:
         if not access_token:
             return
-        message = f"type: refreshTokenRequest\n" \
-                  f"id: {generate_websocket_message_id()}\n" \
-                  f"token: {access_token}"
+        message = (
+            f"type: refreshTokenRequest\n"
+            f"id: {generate_websocket_message_id()}\n"
+            f"token: {access_token}"
+        )
         try:
             loop = asyncio.get_running_loop()
             loop.create_task(self.send(message))

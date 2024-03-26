@@ -15,7 +15,7 @@ Definition: List[ModelsUpdateScreenshot]
     description: str
     screenshot_id: str
 
-Example: '{"screenshots": [{"description": "DEigS3a2hOsfLqyl", "screenshotId": "TnTVUp0kIEPFBR5n"}, {"description": "eW3MrcT8jAukwcZh", "screenshotId": "TdPXV7O0GTjnYt6O"}, {"description": "MkZB5OB3C0iqnAmn", "screenshotId": "y00Ml1bNF3w5PJwt"}]}'
+Example: '{"screenshots": [{"description": "pxwrVTMOtcwFxrDs", "screenshotId": "jlCcWNLMTxySxk8z"}, {"description": "N04lwSL0S2E9ZGON", "screenshotId": "FseMeOvfAua5V2aJ"}, {"description": "mXa2QWVnN3nKwQkg", "screenshotId": "cZK6XQG5k8RKfu9Z"}]}'
 """
 
 result, error = update_screenshots_v2(

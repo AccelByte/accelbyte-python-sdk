@@ -18,7 +18,7 @@ supported_languages: List[str]
 supported_regions: List[str]
 title: str
 
-Example: '{"defaultLanguage": "MWhLAkpYeu1Ws4QF", "defaultRegion": "VLwPBxIEhzfZjzAo", "description": "3A1JSgZQb9R4jz36", "supportedLanguages": ["hcf71lLbAVLlG10X", "BJ1P7N1A9c1HdMyV", "zBRAuVvaYnHMR4Hf"], "supportedRegions": ["pnkCgICJ6HjC5B6O", "hZSJBMRvmFuDw8mC", "88HJH0TAt3c872cR"], "title": "HGa23ww903a7aGYM"}'
+Example: '{"defaultLanguage": "YGzA5iCMgAqmg5FK", "defaultRegion": "7VvvmiOGnZMGKUK0", "description": "z7z7bS2SZhZd46Am", "supportedLanguages": ["b8dtvONIVSk2kX2B", "kyL5he0xvizjtTtg", "GQSt2tHY7p77uUrC"], "supportedRegions": ["lmoVsocdXFdbugOJ", "7svfKyCO91Ai2kA5", "kXDIc2UGEKYwvCAT"], "title": "r9qtlbA1WamC0g5O"}'
 """
 
 result, error = update_store(

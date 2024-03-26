@@ -16,7 +16,7 @@ Definition: List[SteamAchievement]
     value: int
 steam_user_id: str
 
-Example: '{"achievements": [{"id": "tEVXfMRinPDJfFbN", "value": 79}, {"id": "cqlbiMH8LnFAiNdW", "value": 9}, {"id": "V9ccRgVUXHlx8ahI", "value": 8}], "steamUserId": "CSBcUcjmqFCpur7Y"}'
+Example: '{"achievements": [{"id": "N4edQJONBOpjpnzN", "value": 89}, {"id": "NVbr1hDEfBZ2KU2M", "value": 72}, {"id": "JLf04weCat6hHCXt", "value": 25}], "steamUserId": "86DXohhGiyRtt19B"}'
 """
 
 result, error = unlock_steam_user_achievement(

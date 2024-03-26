@@ -36,20 +36,20 @@ class ModelsDictionary(Model):
 
         namespace: (namespace) REQUIRED str
 
-        parent_id: (parentId) REQUIRED str
-
         word: (word) REQUIRED str
 
         word_type: (wordType) REQUIRED str
+
+        parent_id: (parentId) OPTIONAL str
     """
 
     # region fields
 
     id_: str  # REQUIRED
     namespace: str  # REQUIRED
-    parent_id: str  # REQUIRED
     word: str  # REQUIRED
     word_type: str  # REQUIRED
+    parent_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -63,16 +63,16 @@ class ModelsDictionary(Model):
         self.namespace = value
         return self
 
-    def with_parent_id(self, value: str) -> ModelsDictionary:
-        self.parent_id = value
-        return self
-
     def with_word(self, value: str) -> ModelsDictionary:
         self.word = value
         return self
 
     def with_word_type(self, value: str) -> ModelsDictionary:
         self.word_type = value
+        return self
+
+    def with_parent_id(self, value: str) -> ModelsDictionary:
+        self.parent_id = value
         return self
 
     # endregion with_x methods
@@ -89,10 +89,6 @@ class ModelsDictionary(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "parent_id"):
-            result["parentId"] = str(self.parent_id)
-        elif include_empty:
-            result["parentId"] = ""
         if hasattr(self, "word"):
             result["word"] = str(self.word)
         elif include_empty:
@@ -101,6 +97,10 @@ class ModelsDictionary(Model):
             result["wordType"] = str(self.word_type)
         elif include_empty:
             result["wordType"] = ""
+        if hasattr(self, "parent_id"):
+            result["parentId"] = str(self.parent_id)
+        elif include_empty:
+            result["parentId"] = ""
         return result
 
     # endregion to methods
@@ -112,17 +112,18 @@ class ModelsDictionary(Model):
         cls,
         id_: str,
         namespace: str,
-        parent_id: str,
         word: str,
         word_type: str,
+        parent_id: Optional[str] = None,
         **kwargs,
     ) -> ModelsDictionary:
         instance = cls()
         instance.id_ = id_
         instance.namespace = namespace
-        instance.parent_id = parent_id
         instance.word = word
         instance.word_type = word_type
+        if parent_id is not None:
+            instance.parent_id = parent_id
         return instance
 
     @classmethod
@@ -140,10 +141,6 @@ class ModelsDictionary(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "parentId" in dict_ and dict_["parentId"] is not None:
-            instance.parent_id = str(dict_["parentId"])
-        elif include_empty:
-            instance.parent_id = ""
         if "word" in dict_ and dict_["word"] is not None:
             instance.word = str(dict_["word"])
         elif include_empty:
@@ -152,6 +149,10 @@ class ModelsDictionary(Model):
             instance.word_type = str(dict_["wordType"])
         elif include_empty:
             instance.word_type = ""
+        if "parentId" in dict_ and dict_["parentId"] is not None:
+            instance.parent_id = str(dict_["parentId"])
+        elif include_empty:
+            instance.parent_id = ""
         return instance
 
     @classmethod
@@ -193,9 +194,9 @@ class ModelsDictionary(Model):
         return {
             "id": "id_",
             "namespace": "namespace",
-            "parentId": "parent_id",
             "word": "word",
             "wordType": "word_type",
+            "parentId": "parent_id",
         }
 
     @staticmethod
@@ -203,9 +204,9 @@ class ModelsDictionary(Model):
         return {
             "id": True,
             "namespace": True,
-            "parentId": True,
             "word": True,
             "wordType": True,
+            "parentId": False,
         }
 
     # endregion static methods

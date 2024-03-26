@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "1.38.0"
+__version__ = "1.39.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .retrieve_country_list_w_8c69ff import RetrieveCountryListWithPolicies
 from .retrieve_latest_policies import RetrieveLatestPolicies
 from .retrieve_latest_policies import (
     PolicyTypeEnum as RetrieveLatestPoliciesPolicyTypeEnum,

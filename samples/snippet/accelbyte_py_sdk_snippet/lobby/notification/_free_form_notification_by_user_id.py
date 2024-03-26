@@ -12,7 +12,7 @@ Definition: ModelFreeFormNotificationRequest
 message: str
 topic: str
 
-Example: '{"message": "AQ3UmGE2XHCWCjE7", "topic": "2DFjgoPyfJDliPa0"}'
+Example: '{"message": "Z11Yl8dy40lzbF31", "topic": "6UKcU3X8f8WX3n1f"}'
 """
 
 result, error = free_form_notification_by_user_id(

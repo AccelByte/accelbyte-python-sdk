@@ -51,10 +51,18 @@ def admin_create_goal(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]&lt;/li&gt;&lt;/ul&gt;Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.The requirement will have target value and a operator that will evaluate that against an observable player’s attribute (e.g. statistic, entitlement). Goal belongs to a challenge. (adminCreateGoal)
+    """Create New Goal (adminCreateGoal)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
 
+    Request body:
+        * code: unique within a challenge
+        * name: name of the goal
+        * description: text describing the goal (optional)
+        * schedule: a time range that indicated the availability of a goal within a timeframe. used in fixed assignment rule
+        * requirementGroups: list of conditions that conform with the goal progressions.
+        * rewards: list of rewards that will be claimable once a goal is complete
+        * tag: goal's labels
     Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
 
     Required Permission(s):
@@ -112,10 +120,18 @@ async def admin_create_goal_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]&lt;/li&gt;&lt;/ul&gt;Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.The requirement will have target value and a operator that will evaluate that against an observable player’s attribute (e.g. statistic, entitlement). Goal belongs to a challenge. (adminCreateGoal)
+    """Create New Goal (adminCreateGoal)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
 
+    Request body:
+        * code: unique within a challenge
+        * name: name of the goal
+        * description: text describing the goal (optional)
+        * schedule: a time range that indicated the availability of a goal within a timeframe. used in fixed assignment rule
+        * requirementGroups: list of conditions that conform with the goal progressions.
+        * rewards: list of rewards that will be claimable once a goal is complete
+        * tag: goal's labels
     Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
 
     Required Permission(s):
@@ -175,7 +191,7 @@ def admin_delete_goal(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]&lt;/li&gt;&lt;/ul&gt; (adminDeleteGoal)
+    """Delete Goal (adminDeleteGoal)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
@@ -230,7 +246,7 @@ async def admin_delete_goal_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]&lt;/li&gt;&lt;/ul&gt; (adminDeleteGoal)
+    """Delete Goal (adminDeleteGoal)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
@@ -287,7 +303,7 @@ def admin_get_goal(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetGoal)
+    """Get Goal (adminGetGoal)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -344,7 +360,7 @@ async def admin_get_goal_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetGoal)
+    """Get Goal (adminGetGoal)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -405,7 +421,7 @@ def admin_get_goals(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetGoals)
+    """List Goals of a Challenge (adminGetGoals)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -470,7 +486,7 @@ async def admin_get_goals_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetGoals)
+    """List Goals of a Challenge (adminGetGoals)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
@@ -536,7 +552,7 @@ def admin_update_goals(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]&lt;/li&gt;&lt;/ul&gt; (adminUpdateGoals)
+    """Update Goal (adminUpdateGoals)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 
@@ -593,7 +609,7 @@ async def admin_update_goals_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]&lt;/li&gt;&lt;/ul&gt; (adminUpdateGoals)
+    """Update Goal (adminUpdateGoals)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 

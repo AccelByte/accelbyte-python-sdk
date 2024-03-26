@@ -48,6 +48,10 @@ def admin_get_recent_player(
 
     Query recent player with given user id.
 
+    If user id parameter is empty:
+    1. Using User Token : It will get the user id from the token
+    2. Using client token : it will throw an error
+
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/recent-player
 
@@ -102,6 +106,10 @@ async def admin_get_recent_player_async(
 
     Query recent player with given user id.
 
+    If user id parameter is empty:
+    1. Using User Token : It will get the user id from the token
+    2. Using client token : it will throw an error
+
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/recent-player
 
@@ -153,9 +161,9 @@ def public_get_recent_player(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query recent player with given user id. (publicGetRecentPlayer)
+    """Query user's recent player (publicGetRecentPlayer)
 
-    Query recent player with given user id.
+    Query user's recent player.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/recent-player
@@ -203,9 +211,9 @@ async def public_get_recent_player_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query recent player with given user id. (publicGetRecentPlayer)
+    """Query user's recent player (publicGetRecentPlayer)
 
-    Query recent player with given user id.
+    Query user's recent player.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/recent-player

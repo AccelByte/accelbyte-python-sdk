@@ -15,7 +15,7 @@ amount: int
 metadata: Dict[str, Any]
 wallet_platform: str
 
-Example: '{"amount": 65, "metadata": {"swHS2ZyGyL5WCSVN": {}, "UQGrbRQMxpjSXsZo": {}, "0An3NwxHuqiP5zDP": {}}, "walletPlatform": "GooglePlay"}'
+Example: '{"amount": 37, "metadata": {"vthuahEJHhSHOpjU": {}, "5Y0HVHZUTfdVbONT": {}, "W07nDkukks27Cbb6": {}}, "walletPlatform": "Xbox"}'
 """
 
 result, error = pay_with_user_wallet(

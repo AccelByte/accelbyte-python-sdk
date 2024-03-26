@@ -48,8 +48,6 @@ class ModelsMatchMaking(Model):
 
         match_id: (match_id) REQUIRED str
 
-        matching_allies: (matching_allies) REQUIRED List[ModelsMatchingAlly]
-
         namespace: (namespace) REQUIRED str
 
         party_attributes: (party_attributes) REQUIRED Dict[str, Any]
@@ -62,11 +60,13 @@ class ModelsMatchMaking(Model):
 
         status: (status) REQUIRED str
 
-        sub_game_mode: (sub_game_mode) REQUIRED List[str]
-
         joinable: (joinable) OPTIONAL bool
 
+        matching_allies: (matching_allies) OPTIONAL List[ModelsMatchingAlly]
+
         party_id: (party_id) OPTIONAL str
+
+        sub_game_mode: (sub_game_mode) OPTIONAL List[str]
     """
 
     # region fields
@@ -78,16 +78,16 @@ class ModelsMatchMaking(Model):
     event: str  # REQUIRED
     game_mode: str  # REQUIRED
     match_id: str  # REQUIRED
-    matching_allies: List[ModelsMatchingAlly]  # REQUIRED
     namespace: str  # REQUIRED
     party_attributes: Dict[str, Any]  # REQUIRED
     queued_at: int  # REQUIRED
     region: str  # REQUIRED
     server_name: str  # REQUIRED
     status: str  # REQUIRED
-    sub_game_mode: List[str]  # REQUIRED
     joinable: bool  # OPTIONAL
+    matching_allies: List[ModelsMatchingAlly]  # OPTIONAL
     party_id: str  # OPTIONAL
+    sub_game_mode: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -121,12 +121,6 @@ class ModelsMatchMaking(Model):
         self.match_id = value
         return self
 
-    def with_matching_allies(
-        self, value: List[ModelsMatchingAlly]
-    ) -> ModelsMatchMaking:
-        self.matching_allies = value
-        return self
-
     def with_namespace(self, value: str) -> ModelsMatchMaking:
         self.namespace = value
         return self
@@ -151,16 +145,22 @@ class ModelsMatchMaking(Model):
         self.status = value
         return self
 
-    def with_sub_game_mode(self, value: List[str]) -> ModelsMatchMaking:
-        self.sub_game_mode = value
-        return self
-
     def with_joinable(self, value: bool) -> ModelsMatchMaking:
         self.joinable = value
         return self
 
+    def with_matching_allies(
+        self, value: List[ModelsMatchingAlly]
+    ) -> ModelsMatchMaking:
+        self.matching_allies = value
+        return self
+
     def with_party_id(self, value: str) -> ModelsMatchMaking:
         self.party_id = value
+        return self
+
+    def with_sub_game_mode(self, value: List[str]) -> ModelsMatchMaking:
+        self.sub_game_mode = value
         return self
 
     # endregion with_x methods
@@ -197,12 +197,6 @@ class ModelsMatchMaking(Model):
             result["match_id"] = str(self.match_id)
         elif include_empty:
             result["match_id"] = ""
-        if hasattr(self, "matching_allies"):
-            result["matching_allies"] = [
-                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
-            ]
-        elif include_empty:
-            result["matching_allies"] = []
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -229,18 +223,24 @@ class ModelsMatchMaking(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
-        if hasattr(self, "sub_game_mode"):
-            result["sub_game_mode"] = [str(i0) for i0 in self.sub_game_mode]
-        elif include_empty:
-            result["sub_game_mode"] = []
         if hasattr(self, "joinable"):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
             result["joinable"] = False
+        if hasattr(self, "matching_allies"):
+            result["matching_allies"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.matching_allies
+            ]
+        elif include_empty:
+            result["matching_allies"] = []
         if hasattr(self, "party_id"):
             result["party_id"] = str(self.party_id)
         elif include_empty:
             result["party_id"] = ""
+        if hasattr(self, "sub_game_mode"):
+            result["sub_game_mode"] = [str(i0) for i0 in self.sub_game_mode]
+        elif include_empty:
+            result["sub_game_mode"] = []
         return result
 
     # endregion to methods
@@ -257,16 +257,16 @@ class ModelsMatchMaking(Model):
         event: str,
         game_mode: str,
         match_id: str,
-        matching_allies: List[ModelsMatchingAlly],
         namespace: str,
         party_attributes: Dict[str, Any],
         queued_at: int,
         region: str,
         server_name: str,
         status: str,
-        sub_game_mode: List[str],
         joinable: Optional[bool] = None,
+        matching_allies: Optional[List[ModelsMatchingAlly]] = None,
         party_id: Optional[str] = None,
+        sub_game_mode: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelsMatchMaking:
         instance = cls()
@@ -277,18 +277,20 @@ class ModelsMatchMaking(Model):
         instance.event = event
         instance.game_mode = game_mode
         instance.match_id = match_id
-        instance.matching_allies = matching_allies
         instance.namespace = namespace
         instance.party_attributes = party_attributes
         instance.queued_at = queued_at
         instance.region = region
         instance.server_name = server_name
         instance.status = status
-        instance.sub_game_mode = sub_game_mode
         if joinable is not None:
             instance.joinable = joinable
+        if matching_allies is not None:
+            instance.matching_allies = matching_allies
         if party_id is not None:
             instance.party_id = party_id
+        if sub_game_mode is not None:
+            instance.sub_game_mode = sub_game_mode
         return instance
 
     @classmethod
@@ -326,13 +328,6 @@ class ModelsMatchMaking(Model):
             instance.match_id = str(dict_["match_id"])
         elif include_empty:
             instance.match_id = ""
-        if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
-            instance.matching_allies = [
-                ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty)
-                for i0 in dict_["matching_allies"]
-            ]
-        elif include_empty:
-            instance.matching_allies = []
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -359,18 +354,25 @@ class ModelsMatchMaking(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
-        if "sub_game_mode" in dict_ and dict_["sub_game_mode"] is not None:
-            instance.sub_game_mode = [str(i0) for i0 in dict_["sub_game_mode"]]
-        elif include_empty:
-            instance.sub_game_mode = []
         if "joinable" in dict_ and dict_["joinable"] is not None:
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
             instance.joinable = False
+        if "matching_allies" in dict_ and dict_["matching_allies"] is not None:
+            instance.matching_allies = [
+                ModelsMatchingAlly.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["matching_allies"]
+            ]
+        elif include_empty:
+            instance.matching_allies = []
         if "party_id" in dict_ and dict_["party_id"] is not None:
             instance.party_id = str(dict_["party_id"])
         elif include_empty:
             instance.party_id = ""
+        if "sub_game_mode" in dict_ and dict_["sub_game_mode"] is not None:
+            instance.sub_game_mode = [str(i0) for i0 in dict_["sub_game_mode"]]
+        elif include_empty:
+            instance.sub_game_mode = []
         return instance
 
     @classmethod
@@ -419,16 +421,16 @@ class ModelsMatchMaking(Model):
             "event": "event",
             "game_mode": "game_mode",
             "match_id": "match_id",
-            "matching_allies": "matching_allies",
             "namespace": "namespace",
             "party_attributes": "party_attributes",
             "queued_at": "queued_at",
             "region": "region",
             "server_name": "server_name",
             "status": "status",
-            "sub_game_mode": "sub_game_mode",
             "joinable": "joinable",
+            "matching_allies": "matching_allies",
             "party_id": "party_id",
+            "sub_game_mode": "sub_game_mode",
         }
 
     @staticmethod
@@ -441,16 +443,16 @@ class ModelsMatchMaking(Model):
             "event": True,
             "game_mode": True,
             "match_id": True,
-            "matching_allies": True,
             "namespace": True,
             "party_attributes": True,
             "queued_at": True,
             "region": True,
             "server_name": True,
             "status": True,
-            "sub_game_mode": True,
             "joinable": False,
+            "matching_allies": False,
             "party_id": False,
+            "sub_game_mode": False,
         }
 
     # endregion static methods

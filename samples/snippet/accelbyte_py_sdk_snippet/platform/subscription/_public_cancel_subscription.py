@@ -13,7 +13,7 @@ Definition: CancelRequest
 immediate: bool
 reason: str
 
-Example: '{"immediate": true, "reason": "PhiW90qED8Stn9Pm"}'
+Example: '{"immediate": true, "reason": "faF6bOJKKnVSYOPx"}'
 """
 
 result, error = public_cancel_subscription(

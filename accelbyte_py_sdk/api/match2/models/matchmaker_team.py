@@ -34,15 +34,15 @@ class MatchmakerTeam(Model):
     """Matchmaker team (matchmaker.Team)
 
     Properties:
-        parties: (Parties) REQUIRED List[MatchmakerParty]
+        parties: (Parties) OPTIONAL List[MatchmakerParty]
 
-        user_i_ds: (UserIDs) REQUIRED List[str]
+        user_i_ds: (UserIDs) OPTIONAL List[str]
     """
 
     # region fields
 
-    parties: List[MatchmakerParty]  # REQUIRED
-    user_i_ds: List[str]  # REQUIRED
+    parties: List[MatchmakerParty]  # OPTIONAL
+    user_i_ds: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -80,11 +80,16 @@ class MatchmakerTeam(Model):
 
     @classmethod
     def create(
-        cls, parties: List[MatchmakerParty], user_i_ds: List[str], **kwargs
+        cls,
+        parties: Optional[List[MatchmakerParty]] = None,
+        user_i_ds: Optional[List[str]] = None,
+        **kwargs,
     ) -> MatchmakerTeam:
         instance = cls()
-        instance.parties = parties
-        instance.user_i_ds = user_i_ds
+        if parties is not None:
+            instance.parties = parties
+        if user_i_ds is not None:
+            instance.user_i_ds = user_i_ds
         return instance
 
     @classmethod
@@ -151,8 +156,8 @@ class MatchmakerTeam(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "Parties": True,
-            "UserIDs": True,
+            "Parties": False,
+            "UserIDs": False,
         }
 
     # endregion static methods

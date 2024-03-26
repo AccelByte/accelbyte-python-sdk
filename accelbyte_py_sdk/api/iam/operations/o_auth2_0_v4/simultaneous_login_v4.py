@@ -35,10 +35,6 @@ from ...models import OauthmodelTokenResponseV3
 from ...models import RestErrorResponse
 
 
-class SimultaneousPlatformEnum(StrEnum):
-    PSPC = "pspc"
-
-
 class NativePlatformEnum(StrEnum):
     EPICGAMES = "epicgames"
     STEAM = "steam"
@@ -51,6 +47,8 @@ class CodeChallengeMethodEnum(StrEnum):
 
 class SimultaneousLoginV4(Operation):
     """Simultaneous login (SimultaneousLoginV4)
+
+    # This endpoint is in ALPHA, avoid using this endpoint fow now, reach out to AB support for inquiries
 
     Simultaneous login flow.
 
@@ -90,7 +88,7 @@ class SimultaneousLoginV4(Operation):
 
         securities: [BEARER_AUTH]
 
-        simultaneous_platform: (simultaneousPlatform) OPTIONAL Union[str, SimultaneousPlatformEnum] in form_data
+        simultaneous_platform: (simultaneousPlatform) OPTIONAL str in form_data
 
         simultaneous_ticket: (simultaneousTicket) OPTIONAL str in form_data
 
@@ -125,9 +123,7 @@ class SimultaneousLoginV4(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    simultaneous_platform: Union[
-        str, SimultaneousPlatformEnum
-    ]  # OPTIONAL in [form_data]
+    simultaneous_platform: str  # OPTIONAL in [form_data]
     simultaneous_ticket: str  # OPTIONAL in [form_data]
     native_platform: Union[str, NativePlatformEnum]  # REQUIRED in [form_data]
     native_platform_ticket: str  # REQUIRED in [form_data]
@@ -204,9 +200,7 @@ class SimultaneousLoginV4(Operation):
 
     # region with_x methods
 
-    def with_simultaneous_platform(
-        self, value: Union[str, SimultaneousPlatformEnum]
-    ) -> SimultaneousLoginV4:
+    def with_simultaneous_platform(self, value: str) -> SimultaneousLoginV4:
         self.simultaneous_platform = value
         return self
 
@@ -243,7 +237,7 @@ class SimultaneousLoginV4(Operation):
         if hasattr(self, "simultaneous_platform") and self.simultaneous_platform:
             result["simultaneousPlatform"] = str(self.simultaneous_platform)
         elif include_empty:
-            result["simultaneousPlatform"] = Union[str, SimultaneousPlatformEnum]()
+            result["simultaneousPlatform"] = ""
         if hasattr(self, "simultaneous_ticket") and self.simultaneous_ticket:
             result["simultaneousTicket"] = str(self.simultaneous_ticket)
         elif include_empty:
@@ -330,7 +324,7 @@ class SimultaneousLoginV4(Operation):
         cls,
         native_platform: Union[str, NativePlatformEnum],
         native_platform_ticket: str,
-        simultaneous_platform: Optional[Union[str, SimultaneousPlatformEnum]] = None,
+        simultaneous_platform: Optional[str] = None,
         simultaneous_ticket: Optional[str] = None,
         code_challenge: Optional[str] = None,
         code_challenge_method: Optional[Union[str, CodeChallengeMethodEnum]] = None,
@@ -362,7 +356,7 @@ class SimultaneousLoginV4(Operation):
         ):
             instance.simultaneous_platform = str(dict_["simultaneousPlatform"])
         elif include_empty:
-            instance.simultaneous_platform = Union[str, SimultaneousPlatformEnum]()
+            instance.simultaneous_platform = ""
         if "simultaneousTicket" in dict_ and dict_["simultaneousTicket"] is not None:
             instance.simultaneous_ticket = str(dict_["simultaneousTicket"])
         elif include_empty:
@@ -416,7 +410,6 @@ class SimultaneousLoginV4(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "simultaneousPlatform": ["pspc"],  # in form_data
             "nativePlatform": ["epicgames", "steam"],  # in form_data
             "code_challenge_method": ["S256", "plain"],  # in query
         }

@@ -26,49 +26,30 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
-from ....core import StrEnum
-
-
-class SearchResultEnum(StrEnum):
-    DISTANCE = "distance"
-    LARGESTPARTYSIZE = "largestPartySize"
-    NONE = "none"
-    OLDESTTICKETAGE = "oldestTicketAge"
-    RANDOM = "random"
-
-
-class TicketQueueEnum(StrEnum):
-    DISTANCE = "distance"
-    LARGESTPARTYSIZE = "largestPartySize"
-    NONE = "none"
-    OLDESTTICKETAGE = "oldestTicketAge"
-    RANDOM = "random"
 
 
 class ModelsSortTicketRule(Model):
     """Models sort ticket rule (models.SortTicketRule)
 
     Properties:
-        search_result: (search_result) REQUIRED Union[str, SearchResultEnum]
+        search_result: (search_result) REQUIRED str
 
         threshold: (threshold) REQUIRED int
 
-        ticket_queue: (ticket_queue) REQUIRED Union[str, TicketQueueEnum]
+        ticket_queue: (ticket_queue) REQUIRED str
     """
 
     # region fields
 
-    search_result: Union[str, SearchResultEnum]  # REQUIRED
+    search_result: str  # REQUIRED
     threshold: int  # REQUIRED
-    ticket_queue: Union[str, TicketQueueEnum]  # REQUIRED
+    ticket_queue: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_search_result(
-        self, value: Union[str, SearchResultEnum]
-    ) -> ModelsSortTicketRule:
+    def with_search_result(self, value: str) -> ModelsSortTicketRule:
         self.search_result = value
         return self
 
@@ -76,9 +57,7 @@ class ModelsSortTicketRule(Model):
         self.threshold = value
         return self
 
-    def with_ticket_queue(
-        self, value: Union[str, TicketQueueEnum]
-    ) -> ModelsSortTicketRule:
+    def with_ticket_queue(self, value: str) -> ModelsSortTicketRule:
         self.ticket_queue = value
         return self
 
@@ -91,7 +70,7 @@ class ModelsSortTicketRule(Model):
         if hasattr(self, "search_result"):
             result["search_result"] = str(self.search_result)
         elif include_empty:
-            result["search_result"] = Union[str, SearchResultEnum]()
+            result["search_result"] = ""
         if hasattr(self, "threshold"):
             result["threshold"] = int(self.threshold)
         elif include_empty:
@@ -99,7 +78,7 @@ class ModelsSortTicketRule(Model):
         if hasattr(self, "ticket_queue"):
             result["ticket_queue"] = str(self.ticket_queue)
         elif include_empty:
-            result["ticket_queue"] = Union[str, TicketQueueEnum]()
+            result["ticket_queue"] = ""
         return result
 
     # endregion to methods
@@ -108,11 +87,7 @@ class ModelsSortTicketRule(Model):
 
     @classmethod
     def create(
-        cls,
-        search_result: Union[str, SearchResultEnum],
-        threshold: int,
-        ticket_queue: Union[str, TicketQueueEnum],
-        **kwargs,
+        cls, search_result: str, threshold: int, ticket_queue: str, **kwargs
     ) -> ModelsSortTicketRule:
         instance = cls()
         instance.search_result = search_result
@@ -130,7 +105,7 @@ class ModelsSortTicketRule(Model):
         if "search_result" in dict_ and dict_["search_result"] is not None:
             instance.search_result = str(dict_["search_result"])
         elif include_empty:
-            instance.search_result = Union[str, SearchResultEnum]()
+            instance.search_result = ""
         if "threshold" in dict_ and dict_["threshold"] is not None:
             instance.threshold = int(dict_["threshold"])
         elif include_empty:
@@ -138,7 +113,7 @@ class ModelsSortTicketRule(Model):
         if "ticket_queue" in dict_ and dict_["ticket_queue"] is not None:
             instance.ticket_queue = str(dict_["ticket_queue"])
         elif include_empty:
-            instance.ticket_queue = Union[str, TicketQueueEnum]()
+            instance.ticket_queue = ""
         return instance
 
     @classmethod
@@ -193,25 +168,6 @@ class ModelsSortTicketRule(Model):
             "search_result": True,
             "threshold": True,
             "ticket_queue": True,
-        }
-
-    @staticmethod
-    def get_enum_map() -> Dict[str, List[Any]]:
-        return {
-            "search_result": [
-                "distance",
-                "largestPartySize",
-                "none",
-                "oldestTicketAge",
-                "random",
-            ],
-            "ticket_queue": [
-                "distance",
-                "largestPartySize",
-                "none",
-                "oldestTicketAge",
-                "random",
-            ],
         }
 
     # endregion static methods

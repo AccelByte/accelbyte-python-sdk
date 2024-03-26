@@ -62,6 +62,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
 
         auto_join: (autoJoin) OPTIONAL bool
 
+        auto_leave_session: (autoLeaveSession) OPTIONAL bool
+
         disable_code_generation: (disableCodeGeneration) OPTIONAL bool
 
         ds_manual_set_ready: (dsManualSetReady) OPTIONAL bool
@@ -105,6 +107,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
     type_: str  # REQUIRED
     attributes: Dict[str, Any]  # OPTIONAL
     auto_join: bool  # OPTIONAL
+    auto_leave_session: bool  # OPTIONAL
     disable_code_generation: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
@@ -201,6 +204,12 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         self, value: bool
     ) -> ApimodelsCreateConfigurationTemplateRequest:
         self.auto_join = value
+        return self
+
+    def with_auto_leave_session(
+        self, value: bool
+    ) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.auto_leave_session = value
         return self
 
     def with_disable_code_generation(
@@ -341,6 +350,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             result["autoJoin"] = bool(self.auto_join)
         elif include_empty:
             result["autoJoin"] = False
+        if hasattr(self, "auto_leave_session"):
+            result["autoLeaveSession"] = bool(self.auto_leave_session)
+        elif include_empty:
+            result["autoLeaveSession"] = False
         if hasattr(self, "disable_code_generation"):
             result["disableCodeGeneration"] = bool(self.disable_code_generation)
         elif include_empty:
@@ -418,6 +431,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         type_: str,
         attributes: Optional[Dict[str, Any]] = None,
         auto_join: Optional[bool] = None,
+        auto_leave_session: Optional[bool] = None,
         disable_code_generation: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
         ds_source: Optional[str] = None,
@@ -450,6 +464,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.attributes = attributes
         if auto_join is not None:
             instance.auto_join = auto_join
+        if auto_leave_session is not None:
+            instance.auto_leave_session = auto_leave_session
         if disable_code_generation is not None:
             instance.disable_code_generation = disable_code_generation
         if ds_manual_set_ready is not None:
@@ -543,6 +559,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.auto_join = bool(dict_["autoJoin"])
         elif include_empty:
             instance.auto_join = False
+        if "autoLeaveSession" in dict_ and dict_["autoLeaveSession"] is not None:
+            instance.auto_leave_session = bool(dict_["autoLeaveSession"])
+        elif include_empty:
+            instance.auto_leave_session = False
         if (
             "disableCodeGeneration" in dict_
             and dict_["disableCodeGeneration"] is not None
@@ -674,6 +694,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "type": "type_",
             "attributes": "attributes",
             "autoJoin": "auto_join",
+            "autoLeaveSession": "auto_leave_session",
             "disableCodeGeneration": "disable_code_generation",
             "dsManualSetReady": "ds_manual_set_ready",
             "dsSource": "ds_source",
@@ -706,6 +727,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "type": True,
             "attributes": False,
             "autoJoin": False,
+            "autoLeaveSession": False,
             "disableCodeGeneration": False,
             "dsManualSetReady": False,
             "dsSource": False,

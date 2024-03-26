@@ -42,6 +42,9 @@ from ..api.ams.models import ApiAvailableInstanceTypesResponse
 from ..api.ams.models import ApiDSHistoryEvent
 from ..api.ams.models import ApiDSHistoryList
 from ..api.ams.models import ApiDSHostConfiguration
+from ..api.ams.models import ApiDevelopmentServerConfigurationCreateRequest
+from ..api.ams.models import ApiDevelopmentServerConfigurationCreateResponse
+from ..api.ams.models import ApiDevelopmentServerConfigurationGetResponse
 from ..api.ams.models import ApiFleetArtifactsSampleRules
 from ..api.ams.models import ApiFleetClaimByKeysReq
 from ..api.ams.models import ApiFleetClaimReq
@@ -201,6 +204,34 @@ def create_api_available_instance_types_response_example() -> (
     return instance
 
 
+def create_api_development_server_configuration_create_request_example() -> (
+    ApiDevelopmentServerConfigurationCreateRequest
+):
+    instance = ApiDevelopmentServerConfigurationCreateRequest()
+    instance.command_line = randomize()
+    instance.image_id = randomize()
+    instance.name = randomize()
+    return instance
+
+
+def create_api_development_server_configuration_create_response_example() -> (
+    ApiDevelopmentServerConfigurationCreateResponse
+):
+    instance = ApiDevelopmentServerConfigurationCreateResponse()
+    instance.name = randomize()
+    return instance
+
+
+def create_api_development_server_configuration_get_response_example() -> (
+    ApiDevelopmentServerConfigurationGetResponse
+):
+    instance = ApiDevelopmentServerConfigurationGetResponse()
+    instance.command_line = randomize()
+    instance.image_id = randomize()
+    instance.name = randomize()
+    return instance
+
+
 def create_api_ds_history_event_example() -> ApiDSHistoryEvent:
     instance = ApiDSHistoryEvent()
     instance.created_at = randomize("date")
@@ -280,6 +311,7 @@ def create_api_fleet_get_response_example() -> ApiFleetGetResponse:
 
 def create_api_fleet_list_item_response_example() -> ApiFleetListItemResponse:
     instance = ApiFleetListItemResponse()
+    instance.active = randomize("bool")
     instance.counts = [create_api_fleet_regional_server_counts_example()]
     instance.id_ = randomize()
     instance.image = randomize()

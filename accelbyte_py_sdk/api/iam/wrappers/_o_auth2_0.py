@@ -54,10 +54,7 @@ from ..operations.o_auth2_0 import RetrieveUserThirdPartyPlatformTokenV3
 from ..operations.o_auth2_0 import RevokeUserV3
 from ..operations.o_auth2_0 import SendMFAAuthenticationCode
 from ..operations.o_auth2_0 import SimultaneousLoginV3
-from ..operations.o_auth2_0 import (
-    SimultaneousLoginV3NativePlatformEnum,
-    SimultaneousLoginV3SimultaneousPlatformEnum,
-)
+from ..operations.o_auth2_0 import SimultaneousLoginV3NativePlatformEnum
 from ..operations.o_auth2_0 import TokenGrantV3
 from ..operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
 from ..operations.o_auth2_0 import TokenIntrospectionV3
@@ -1426,14 +1423,14 @@ async def send_mfa_authentication_code_async(
 def simultaneous_login_v3(
     native_platform: Union[str, SimultaneousLoginV3NativePlatformEnum],
     native_platform_ticket: str,
-    simultaneous_platform: Optional[
-        Union[str, SimultaneousLoginV3SimultaneousPlatformEnum]
-    ] = None,
+    simultaneous_platform: Optional[str] = None,
     simultaneous_ticket: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Simultaneous login (SimultaneousLoginV3)
+
+    # This endpoint is in ALPHA, avoid using this endpoint fow now, reach out to AB support for inquiries
 
     Simultaneous login flow.
 
@@ -1473,7 +1470,7 @@ def simultaneous_login_v3(
 
         securities: [BEARER_AUTH]
 
-        simultaneous_platform: (simultaneousPlatform) OPTIONAL Union[str, SimultaneousPlatformEnum] in form_data
+        simultaneous_platform: (simultaneousPlatform) OPTIONAL str in form_data
 
         simultaneous_ticket: (simultaneousTicket) OPTIONAL str in form_data
 
@@ -1505,14 +1502,14 @@ def simultaneous_login_v3(
 async def simultaneous_login_v3_async(
     native_platform: Union[str, SimultaneousLoginV3NativePlatformEnum],
     native_platform_ticket: str,
-    simultaneous_platform: Optional[
-        Union[str, SimultaneousLoginV3SimultaneousPlatformEnum]
-    ] = None,
+    simultaneous_platform: Optional[str] = None,
     simultaneous_ticket: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Simultaneous login (SimultaneousLoginV3)
+
+    # This endpoint is in ALPHA, avoid using this endpoint fow now, reach out to AB support for inquiries
 
     Simultaneous login flow.
 
@@ -1552,7 +1549,7 @@ async def simultaneous_login_v3_async(
 
         securities: [BEARER_AUTH]
 
-        simultaneous_platform: (simultaneousPlatform) OPTIONAL Union[str, SimultaneousPlatformEnum] in form_data
+        simultaneous_platform: (simultaneousPlatform) OPTIONAL str in form_data
 
         simultaneous_ticket: (simultaneousTicket) OPTIONAL str in form_data
 

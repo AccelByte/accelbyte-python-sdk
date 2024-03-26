@@ -15,7 +15,7 @@ false_positive: List[str]
 word: str
 word_type: str
 
-Example: '{"falseNegative": ["EysULKQAqTcutz7C", "fPzMILuAFevXSvsZ", "bYl4GWOLkYU2QoHM"], "falsePositive": ["890JtnSHWBEIWZvB", "rWVtmaOclvclbE4B", "yG4Rwzb4Y9EBFx1i"], "word": "PUHP2bOsZv3eGl4j", "wordType": "9UeZBvZqwHu7HB3T"}'
+Example: '{"falseNegative": ["teYuFN9Wnhg53lLQ", "KKraLMbudJFLQWNU", "ypHRNxxNM3rCzvFt"], "falsePositive": ["FkFvxJRWGwGNcDSy", "8kdhS0Xkn2Azj3TE", "i7aQc3PqRfIki56D"], "word": "V5oMWuUZYPEKEL9W", "wordType": "zEa9dSNrrtHrcWE6"}'
 """
 
 result, error = admin_profanity_update(

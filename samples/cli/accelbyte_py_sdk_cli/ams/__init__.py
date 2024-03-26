@@ -18,6 +18,16 @@ from ._artifact_get import artifact_get
 from ._artifact_usage_get import artifact_usage_get
 from ._artifact_delete import artifact_delete
 from ._artifact_get_url import artifact_get_url
+from ._development_server_configuration_list import (
+    development_server_configuration_list,
+)
+from ._development_server_configuration_create import (
+    development_server_configuration_create,
+)
+from ._development_server_configuration_get import development_server_configuration_get
+from ._development_server_configuration_delete import (
+    development_server_configuration_delete,
+)
 from ._fleet_list import fleet_list
 from ._fleet_create import fleet_create
 from ._fleet_get import fleet_get
@@ -58,6 +68,10 @@ commands = [
     artifact_usage_get,
     artifact_delete,
     artifact_get_url,
+    development_server_configuration_list,
+    development_server_configuration_create,
+    development_server_configuration_get,
+    development_server_configuration_delete,
     fleet_list,
     fleet_create,
     fleet_get,

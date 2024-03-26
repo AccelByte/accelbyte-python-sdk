@@ -40,13 +40,9 @@ class ModelsAdminSessionResponse(Model):
 
         created_at: (created_at) REQUIRED str
 
-        game_session_setting: (game_session_setting) REQUIRED ModelsGameSessionSetting
-
         game_version: (game_version) REQUIRED str
 
         joinable: (joinable) REQUIRED bool
-
-        match: (match) REQUIRED ModelsMatchMaking
 
         namespace: (namespace) REQUIRED str
 
@@ -63,16 +59,18 @@ class ModelsAdminSessionResponse(Model):
         user_id: (user_id) REQUIRED str
 
         username: (username) REQUIRED str
+
+        game_session_setting: (game_session_setting) OPTIONAL ModelsGameSessionSetting
+
+        match: (match) OPTIONAL ModelsMatchMaking
     """
 
     # region fields
 
     all_players: List[str]  # REQUIRED
     created_at: str  # REQUIRED
-    game_session_setting: ModelsGameSessionSetting  # REQUIRED
     game_version: str  # REQUIRED
     joinable: bool  # REQUIRED
-    match: ModelsMatchMaking  # REQUIRED
     namespace: str  # REQUIRED
     players: List[str]  # REQUIRED
     server: ModelsServer  # REQUIRED
@@ -81,6 +79,8 @@ class ModelsAdminSessionResponse(Model):
     spectators: List[str]  # REQUIRED
     user_id: str  # REQUIRED
     username: str  # REQUIRED
+    game_session_setting: ModelsGameSessionSetting  # OPTIONAL
+    match: ModelsMatchMaking  # OPTIONAL
 
     # endregion fields
 
@@ -94,22 +94,12 @@ class ModelsAdminSessionResponse(Model):
         self.created_at = value
         return self
 
-    def with_game_session_setting(
-        self, value: ModelsGameSessionSetting
-    ) -> ModelsAdminSessionResponse:
-        self.game_session_setting = value
-        return self
-
     def with_game_version(self, value: str) -> ModelsAdminSessionResponse:
         self.game_version = value
         return self
 
     def with_joinable(self, value: bool) -> ModelsAdminSessionResponse:
         self.joinable = value
-        return self
-
-    def with_match(self, value: ModelsMatchMaking) -> ModelsAdminSessionResponse:
-        self.match = value
         return self
 
     def with_namespace(self, value: str) -> ModelsAdminSessionResponse:
@@ -144,6 +134,16 @@ class ModelsAdminSessionResponse(Model):
         self.username = value
         return self
 
+    def with_game_session_setting(
+        self, value: ModelsGameSessionSetting
+    ) -> ModelsAdminSessionResponse:
+        self.game_session_setting = value
+        return self
+
+    def with_match(self, value: ModelsMatchMaking) -> ModelsAdminSessionResponse:
+        self.match = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -158,12 +158,6 @@ class ModelsAdminSessionResponse(Model):
             result["created_at"] = str(self.created_at)
         elif include_empty:
             result["created_at"] = ""
-        if hasattr(self, "game_session_setting"):
-            result["game_session_setting"] = self.game_session_setting.to_dict(
-                include_empty=include_empty
-            )
-        elif include_empty:
-            result["game_session_setting"] = ModelsGameSessionSetting()
         if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
@@ -172,10 +166,6 @@ class ModelsAdminSessionResponse(Model):
             result["joinable"] = bool(self.joinable)
         elif include_empty:
             result["joinable"] = False
-        if hasattr(self, "match"):
-            result["match"] = self.match.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["match"] = ModelsMatchMaking()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -208,6 +198,16 @@ class ModelsAdminSessionResponse(Model):
             result["username"] = str(self.username)
         elif include_empty:
             result["username"] = ""
+        if hasattr(self, "game_session_setting"):
+            result["game_session_setting"] = self.game_session_setting.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["game_session_setting"] = ModelsGameSessionSetting()
+        if hasattr(self, "match"):
+            result["match"] = self.match.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["match"] = ModelsMatchMaking()
         return result
 
     # endregion to methods
@@ -219,10 +219,8 @@ class ModelsAdminSessionResponse(Model):
         cls,
         all_players: List[str],
         created_at: str,
-        game_session_setting: ModelsGameSessionSetting,
         game_version: str,
         joinable: bool,
-        match: ModelsMatchMaking,
         namespace: str,
         players: List[str],
         server: ModelsServer,
@@ -231,15 +229,15 @@ class ModelsAdminSessionResponse(Model):
         spectators: List[str],
         user_id: str,
         username: str,
+        game_session_setting: Optional[ModelsGameSessionSetting] = None,
+        match: Optional[ModelsMatchMaking] = None,
         **kwargs,
     ) -> ModelsAdminSessionResponse:
         instance = cls()
         instance.all_players = all_players
         instance.created_at = created_at
-        instance.game_session_setting = game_session_setting
         instance.game_version = game_version
         instance.joinable = joinable
-        instance.match = match
         instance.namespace = namespace
         instance.players = players
         instance.server = server
@@ -248,6 +246,10 @@ class ModelsAdminSessionResponse(Model):
         instance.spectators = spectators
         instance.user_id = user_id
         instance.username = username
+        if game_session_setting is not None:
+            instance.game_session_setting = game_session_setting
+        if match is not None:
+            instance.match = match
         return instance
 
     @classmethod
@@ -265,15 +267,6 @@ class ModelsAdminSessionResponse(Model):
             instance.created_at = str(dict_["created_at"])
         elif include_empty:
             instance.created_at = ""
-        if (
-            "game_session_setting" in dict_
-            and dict_["game_session_setting"] is not None
-        ):
-            instance.game_session_setting = ModelsGameSessionSetting.create_from_dict(
-                dict_["game_session_setting"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.game_session_setting = ModelsGameSessionSetting()
         if "game_version" in dict_ and dict_["game_version"] is not None:
             instance.game_version = str(dict_["game_version"])
         elif include_empty:
@@ -282,12 +275,6 @@ class ModelsAdminSessionResponse(Model):
             instance.joinable = bool(dict_["joinable"])
         elif include_empty:
             instance.joinable = False
-        if "match" in dict_ and dict_["match"] is not None:
-            instance.match = ModelsMatchMaking.create_from_dict(
-                dict_["match"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.match = ModelsMatchMaking()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -322,6 +309,21 @@ class ModelsAdminSessionResponse(Model):
             instance.username = str(dict_["username"])
         elif include_empty:
             instance.username = ""
+        if (
+            "game_session_setting" in dict_
+            and dict_["game_session_setting"] is not None
+        ):
+            instance.game_session_setting = ModelsGameSessionSetting.create_from_dict(
+                dict_["game_session_setting"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.game_session_setting = ModelsGameSessionSetting()
+        if "match" in dict_ and dict_["match"] is not None:
+            instance.match = ModelsMatchMaking.create_from_dict(
+                dict_["match"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.match = ModelsMatchMaking()
         return instance
 
     @classmethod
@@ -367,10 +369,8 @@ class ModelsAdminSessionResponse(Model):
         return {
             "all_players": "all_players",
             "created_at": "created_at",
-            "game_session_setting": "game_session_setting",
             "game_version": "game_version",
             "joinable": "joinable",
-            "match": "match",
             "namespace": "namespace",
             "players": "players",
             "server": "server",
@@ -379,6 +379,8 @@ class ModelsAdminSessionResponse(Model):
             "spectators": "spectators",
             "user_id": "user_id",
             "username": "username",
+            "game_session_setting": "game_session_setting",
+            "match": "match",
         }
 
     @staticmethod
@@ -386,10 +388,8 @@ class ModelsAdminSessionResponse(Model):
         return {
             "all_players": True,
             "created_at": True,
-            "game_session_setting": True,
             "game_version": True,
             "joinable": True,
-            "match": True,
             "namespace": True,
             "players": True,
             "server": True,
@@ -398,6 +398,8 @@ class ModelsAdminSessionResponse(Model):
             "spectators": True,
             "user_id": True,
             "username": True,
+            "game_session_setting": False,
+            "match": False,
         }
 
     # endregion static methods

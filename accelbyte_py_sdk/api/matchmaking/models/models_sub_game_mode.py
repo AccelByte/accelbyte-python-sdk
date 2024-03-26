@@ -37,16 +37,16 @@ class ModelsSubGameMode(Model):
     Properties:
         alliance: (alliance) REQUIRED ModelsAllianceRule
 
-        alliance_flexing_rule: (alliance_flexing_rule) REQUIRED List[ModelsAllianceFlexingRule]
-
         name: (name) REQUIRED str
+
+        alliance_flexing_rule: (alliance_flexing_rule) OPTIONAL List[ModelsAllianceFlexingRule]
     """
 
     # region fields
 
     alliance: ModelsAllianceRule  # REQUIRED
-    alliance_flexing_rule: List[ModelsAllianceFlexingRule]  # REQUIRED
     name: str  # REQUIRED
+    alliance_flexing_rule: List[ModelsAllianceFlexingRule]  # OPTIONAL
 
     # endregion fields
 
@@ -56,14 +56,14 @@ class ModelsSubGameMode(Model):
         self.alliance = value
         return self
 
+    def with_name(self, value: str) -> ModelsSubGameMode:
+        self.name = value
+        return self
+
     def with_alliance_flexing_rule(
         self, value: List[ModelsAllianceFlexingRule]
     ) -> ModelsSubGameMode:
         self.alliance_flexing_rule = value
-        return self
-
-    def with_name(self, value: str) -> ModelsSubGameMode:
-        self.name = value
         return self
 
     # endregion with_x methods
@@ -76,6 +76,10 @@ class ModelsSubGameMode(Model):
             result["alliance"] = self.alliance.to_dict(include_empty=include_empty)
         elif include_empty:
             result["alliance"] = ModelsAllianceRule()
+        if hasattr(self, "name"):
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = ""
         if hasattr(self, "alliance_flexing_rule"):
             result["alliance_flexing_rule"] = [
                 i0.to_dict(include_empty=include_empty)
@@ -83,10 +87,6 @@ class ModelsSubGameMode(Model):
             ]
         elif include_empty:
             result["alliance_flexing_rule"] = []
-        if hasattr(self, "name"):
-            result["name"] = str(self.name)
-        elif include_empty:
-            result["name"] = ""
         return result
 
     # endregion to methods
@@ -97,14 +97,15 @@ class ModelsSubGameMode(Model):
     def create(
         cls,
         alliance: ModelsAllianceRule,
-        alliance_flexing_rule: List[ModelsAllianceFlexingRule],
         name: str,
+        alliance_flexing_rule: Optional[List[ModelsAllianceFlexingRule]] = None,
         **kwargs,
     ) -> ModelsSubGameMode:
         instance = cls()
         instance.alliance = alliance
-        instance.alliance_flexing_rule = alliance_flexing_rule
         instance.name = name
+        if alliance_flexing_rule is not None:
+            instance.alliance_flexing_rule = alliance_flexing_rule
         return instance
 
     @classmethod
@@ -120,6 +121,10 @@ class ModelsSubGameMode(Model):
             )
         elif include_empty:
             instance.alliance = ModelsAllianceRule()
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = ""
         if (
             "alliance_flexing_rule" in dict_
             and dict_["alliance_flexing_rule"] is not None
@@ -132,10 +137,6 @@ class ModelsSubGameMode(Model):
             ]
         elif include_empty:
             instance.alliance_flexing_rule = []
-        if "name" in dict_ and dict_["name"] is not None:
-            instance.name = str(dict_["name"])
-        elif include_empty:
-            instance.name = ""
         return instance
 
     @classmethod
@@ -178,16 +179,16 @@ class ModelsSubGameMode(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "alliance": "alliance",
-            "alliance_flexing_rule": "alliance_flexing_rule",
             "name": "name",
+            "alliance_flexing_rule": "alliance_flexing_rule",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "alliance": True,
-            "alliance_flexing_rule": True,
             "name": True,
+            "alliance_flexing_rule": False,
         }
 
     # endregion static methods

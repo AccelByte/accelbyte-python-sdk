@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Match Service V2 Index (2.16.0)
+# AccelByte Gaming Services Match Service V2 Index (2.18.1)
 
 
 ## Operations
@@ -16,6 +16,13 @@
 | /match2/v1/namespaces/{namespace}/backfill/{backfillID} | GET | GetBackfill | `false` | [GetBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/get_backfill.py) | [get_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-get-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_get_backfill.py) |
 | /match2/v1/namespaces/{namespace}/backfill/proposal | GET | GetBackfillProposal | `false` | [GetBackfillProposal](../../accelbyte_py_sdk/api/match2/operations/backfill/get_backfill_proposal.py) | [get_backfill_proposal](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-get-backfill-proposal](../../samples/cli/accelbyte_py_sdk_cli/match2/_get_backfill_proposal.py) |
 | /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/reject | PUT | RejectBackfill | `false` | [RejectBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/reject_backfill.py) | [reject_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-reject-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_reject_backfill.py) |
+
+### Config
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /match2/v1/config | GET | adminGetAllConfigV1 | `false` | [AdminGetAllConfigV1](../../accelbyte_py_sdk/api/match2/operations/config/admin_get_all_config_v1.py) | [admin_get_all_config_v1](../../accelbyte_py_sdk/api/match2/wrappers/_config.py) | [accelbyte_py_sdk_cli match2-admin-get-all-config-v1](../../samples/cli/accelbyte_py_sdk_cli/match2/_admin_get_all_config_v1.py) |
+| /match2/v1/config/namespaces/{namespace} | GET | adminGetConfigV1 | `false` | [AdminGetConfigV1](../../accelbyte_py_sdk/api/match2/operations/config/admin_get_config_v1.py) | [admin_get_config_v1](../../accelbyte_py_sdk/api/match2/wrappers/_config.py) | [accelbyte_py_sdk_cli match2-admin-get-config-v1](../../samples/cli/accelbyte_py_sdk_cli/match2/_admin_get_config_v1.py) |
+| /match2/v1/config/namespaces/{namespace} | PATCH | adminPatchConfigV1 | `false` | [AdminPatchConfigV1](../../accelbyte_py_sdk/api/match2/operations/config/admin_patch_config_v1.py) | [admin_patch_config_v1](../../accelbyte_py_sdk/api/match2/wrappers/_config.py) | [accelbyte_py_sdk_cli match2-admin-patch-config-v1](../../samples/cli/accelbyte_py_sdk_cli/match2/_admin_patch_config_v1.py) |
 
 ### Environment-Variables
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -92,7 +99,9 @@
 | api.MatchTicketResponse | [ApiMatchTicketResponse](../../accelbyte_py_sdk/api/match2/models/api_match_ticket_response.py) |
 | api.MatchTicketStatus | [ApiMatchTicketStatus](../../accelbyte_py_sdk/api/match2/models/api_match_ticket_status.py) |
 | api.MatchTicketStatuses | [ApiMatchTicketStatuses](../../accelbyte_py_sdk/api/match2/models/api_match_ticket_statuses.py) |
+| api.NamespaceConfigList | [ApiNamespaceConfigList](../../accelbyte_py_sdk/api/match2/models/api_namespace_config_list.py) |
 | api.Party | [ApiParty](../../accelbyte_py_sdk/api/match2/models/api_party.py) |
+| api.PatchNamespaceConfigRequest | [ApiPatchNamespaceConfigRequest](../../accelbyte_py_sdk/api/match2/models/api_patch_namespace_config_request.py) |
 | api.PlayerData | [ApiPlayerData](../../accelbyte_py_sdk/api/match2/models/api_player_data.py) |
 | api.PlayerMetricRecord | [ApiPlayerMetricRecord](../../accelbyte_py_sdk/api/match2/models/api_player_metric_record.py) |
 | api.ProposedProposal | [ApiProposedProposal](../../accelbyte_py_sdk/api/match2/models/api_proposed_proposal.py) |
@@ -101,6 +110,7 @@
 | api.Ticket | [ApiTicket](../../accelbyte_py_sdk/api/match2/models/api_ticket.py) |
 | api.TicketMetricResultRecord | [ApiTicketMetricResultRecord](../../accelbyte_py_sdk/api/match2/models/api_ticket_metric_result_record.py) |
 | config.EnvironmentVariable | [ConfigEnvironmentVariable](../../accelbyte_py_sdk/api/match2/models/config_environment_variable.py) |
+| configmodels.NamespaceConfig | [ConfigmodelsNamespaceConfig](../../accelbyte_py_sdk/api/match2/models/configmodels_namespace_config.py) |
 | matchmaker.MatchTicketRecord | [MatchmakerMatchTicketRecord](../../accelbyte_py_sdk/api/match2/models/matchmaker_match_ticket_record.py) |
 | matchmaker.Party | [MatchmakerParty](../../accelbyte_py_sdk/api/match2/models/matchmaker_party.py) |
 | matchmaker.ProposedProposal | [MatchmakerProposedProposal](../../accelbyte_py_sdk/api/match2/models/matchmaker_proposed_proposal.py) |

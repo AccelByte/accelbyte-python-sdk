@@ -38,6 +38,8 @@ class ApimodelsUserResponse(Model):
 
         platform_user_id: (platformUserID) REQUIRED str
 
+        previous_status: (previousStatus) REQUIRED str
+
         status: (status) REQUIRED str
 
         status_v2: (statusV2) REQUIRED str
@@ -50,6 +52,7 @@ class ApimodelsUserResponse(Model):
     id_: str  # REQUIRED
     platform_id: str  # REQUIRED
     platform_user_id: str  # REQUIRED
+    previous_status: str  # REQUIRED
     status: str  # REQUIRED
     status_v2: str  # REQUIRED
     updated_at: str  # REQUIRED
@@ -68,6 +71,10 @@ class ApimodelsUserResponse(Model):
 
     def with_platform_user_id(self, value: str) -> ApimodelsUserResponse:
         self.platform_user_id = value
+        return self
+
+    def with_previous_status(self, value: str) -> ApimodelsUserResponse:
+        self.previous_status = value
         return self
 
     def with_status(self, value: str) -> ApimodelsUserResponse:
@@ -100,6 +107,10 @@ class ApimodelsUserResponse(Model):
             result["platformUserID"] = str(self.platform_user_id)
         elif include_empty:
             result["platformUserID"] = ""
+        if hasattr(self, "previous_status"):
+            result["previousStatus"] = str(self.previous_status)
+        elif include_empty:
+            result["previousStatus"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -124,6 +135,7 @@ class ApimodelsUserResponse(Model):
         id_: str,
         platform_id: str,
         platform_user_id: str,
+        previous_status: str,
         status: str,
         status_v2: str,
         updated_at: str,
@@ -133,6 +145,7 @@ class ApimodelsUserResponse(Model):
         instance.id_ = id_
         instance.platform_id = platform_id
         instance.platform_user_id = platform_user_id
+        instance.previous_status = previous_status
         instance.status = status
         instance.status_v2 = status_v2
         instance.updated_at = updated_at
@@ -157,6 +170,10 @@ class ApimodelsUserResponse(Model):
             instance.platform_user_id = str(dict_["platformUserID"])
         elif include_empty:
             instance.platform_user_id = ""
+        if "previousStatus" in dict_ and dict_["previousStatus"] is not None:
+            instance.previous_status = str(dict_["previousStatus"])
+        elif include_empty:
+            instance.previous_status = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -215,6 +232,7 @@ class ApimodelsUserResponse(Model):
             "id": "id_",
             "platformID": "platform_id",
             "platformUserID": "platform_user_id",
+            "previousStatus": "previous_status",
             "status": "status",
             "statusV2": "status_v2",
             "updatedAt": "updated_at",
@@ -226,6 +244,7 @@ class ApimodelsUserResponse(Model):
             "id": True,
             "platformID": True,
             "platformUserID": True,
+            "previousStatus": True,
             "status": True,
             "statusV2": True,
             "updatedAt": True,

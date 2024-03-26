@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "1.38.0"
+__version__ = "1.39.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -121,6 +121,8 @@ from .wrappers import update_localized_policy_version_1
 from .wrappers import update_localized_policy_version_1_async
 
 # policies
+from .wrappers import retrieve_country_list_with_policies
+from .wrappers import retrieve_country_list_with_policies_async
 from .wrappers import retrieve_latest_policies
 from .wrappers import retrieve_latest_policies_async
 from .wrappers import retrieve_latest_policies_by_namespace_and_country_public

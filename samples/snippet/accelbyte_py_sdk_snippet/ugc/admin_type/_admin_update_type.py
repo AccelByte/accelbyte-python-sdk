@@ -13,7 +13,7 @@ Definition: ModelsCreateTypeRequest
 subtype: List[str]
 type_: str
 
-Example: '{"subtype": ["bv5GlNeYbqo9P8aj", "w5k8Ro969EFvxEIi", "ziWi546kJcfxr5X6"], "type": "KrVqnq2yJgsMOFyR"}'
+Example: '{"subtype": ["rqk4VA0CwR4b1208", "X9HbOdskIbbjRbfk", "BnCKCppXAX4SEOfW"], "type": "XK8U9kWMAacRlYAM"}'
 """
 
 result, error = admin_update_type(

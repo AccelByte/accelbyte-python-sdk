@@ -15,7 +15,7 @@ leaderboard_codes: List[str]
 limit: int
 slug: str
 
-Example: '{"leaderboardCodes": ["QregJHwOvvPrPLkC", "6nmXPcNdSyAVv45r", "gKMXOAQHB78QNoS3"], "limit": 83, "slug": "VUng5IyZaOItrrah"}'
+Example: '{"leaderboardCodes": ["QXs91KYfxDZ8P773", "lUk8FlRWJfCj7ea3", "10acgoPtGiEaUfvS"], "limit": 11, "slug": "T44ffbIvafWXiOS1"}'
 """
 
 result, error = create_archived_leaderboard_ranking_data_v1_handler(

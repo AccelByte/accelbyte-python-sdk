@@ -37,13 +37,13 @@ class ModelsActiveMatchmakingGameResponse(Model):
     Properties:
         pagination: (pagination) REQUIRED ModelsPagingCursor
 
-        sessions: (sessions) REQUIRED List[ModelsGameSession]
+        sessions: (sessions) OPTIONAL List[ModelsGameSession]
     """
 
     # region fields
 
     pagination: ModelsPagingCursor  # REQUIRED
-    sessions: List[ModelsGameSession]  # REQUIRED
+    sessions: List[ModelsGameSession]  # OPTIONAL
 
     # endregion fields
 
@@ -85,11 +85,15 @@ class ModelsActiveMatchmakingGameResponse(Model):
 
     @classmethod
     def create(
-        cls, pagination: ModelsPagingCursor, sessions: List[ModelsGameSession], **kwargs
+        cls,
+        pagination: ModelsPagingCursor,
+        sessions: Optional[List[ModelsGameSession]] = None,
+        **kwargs,
     ) -> ModelsActiveMatchmakingGameResponse:
         instance = cls()
         instance.pagination = pagination
-        instance.sessions = sessions
+        if sessions is not None:
+            instance.sessions = sessions
         return instance
 
     @classmethod
@@ -163,7 +167,7 @@ class ModelsActiveMatchmakingGameResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "pagination": True,
-            "sessions": True,
+            "sessions": False,
         }
 
     # endregion static methods

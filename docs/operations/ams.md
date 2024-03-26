@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.12.0)
+# Fleet Commander Index (1.13.0)
 
 
 ## Operations
@@ -43,6 +43,14 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /ams/auth | GET | AuthCheck | `false` | [AuthCheck](../../accelbyte_py_sdk/api/ams/operations/auth/auth_check.py) | [auth_check](../../accelbyte_py_sdk/api/ams/wrappers/_auth.py) | [accelbyte_py_sdk_cli ams-auth-check](../../samples/cli/accelbyte_py_sdk_cli/ams/_auth_check.py) |
+
+### Development
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /ams/v1/admin/namespaces/{namespace}/development/server-configurations | POST | DevelopmentServerConfigurationCreate | `false` | [DevelopmentServerConfigurationCreate](../../accelbyte_py_sdk/api/ams/operations/development/development_server_conf_a8e4dd.py) | [development_server_configuration_create](../../accelbyte_py_sdk/api/ams/wrappers/_development.py) | [accelbyte_py_sdk_cli ams-development-server-configuration-create](../../samples/cli/accelbyte_py_sdk_cli/ams/_development_server_configuration_create.py) |
+| /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID} | DELETE | DevelopmentServerConfigurationDelete | `false` | [DevelopmentServerConfigurationDelete](../../accelbyte_py_sdk/api/ams/operations/development/development_server_conf_2194f5.py) | [development_server_configuration_delete](../../accelbyte_py_sdk/api/ams/wrappers/_development.py) | [accelbyte_py_sdk_cli ams-development-server-configuration-delete](../../samples/cli/accelbyte_py_sdk_cli/ams/_development_server_configuration_delete.py) |
+| /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID} | GET | DevelopmentServerConfigurationGet | `false` | [DevelopmentServerConfigurationGet](../../accelbyte_py_sdk/api/ams/operations/development/development_server_conf_282185.py) | [development_server_configuration_get](../../accelbyte_py_sdk/api/ams/wrappers/_development.py) | [accelbyte_py_sdk_cli ams-development-server-configuration-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_development_server_configuration_get.py) |
+| /ams/v1/admin/namespaces/{namespace}/development/server-configurations | GET | DevelopmentServerConfigurationList | `false` | [DevelopmentServerConfigurationList](../../accelbyte_py_sdk/api/ams/operations/development/development_server_conf_7b687b.py) | [development_server_configuration_list](../../accelbyte_py_sdk/api/ams/wrappers/_development.py) | [accelbyte_py_sdk_cli ams-development-server-configuration-list](../../samples/cli/accelbyte_py_sdk_cli/ams/_development_server_configuration_list.py) |
 
 ### Fleet Commander
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -103,6 +111,9 @@
 | api.ArtifactURLResponse | [ApiArtifactURLResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_url_response.py) |
 | api.ArtifactUsageResponse | [ApiArtifactUsageResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_usage_response.py) |
 | api.AvailableInstanceTypesResponse | [ApiAvailableInstanceTypesResponse](../../accelbyte_py_sdk/api/ams/models/api_available_instance_types_response.py) |
+| api.DevelopmentServerConfigurationCreateRequest | [ApiDevelopmentServerConfigurationCreateRequest](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_create_request.py) |
+| api.DevelopmentServerConfigurationCreateResponse | [ApiDevelopmentServerConfigurationCreateResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_create_response.py) |
+| api.DevelopmentServerConfigurationGetResponse | [ApiDevelopmentServerConfigurationGetResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_get_response.py) |
 | api.DSHistoryEvent | [ApiDSHistoryEvent](../../accelbyte_py_sdk/api/ams/models/api_ds_history_event.py) |
 | api.DSHistoryList | [ApiDSHistoryList](../../accelbyte_py_sdk/api/ams/models/api_ds_history_list.py) |
 | api.DSHostConfiguration | [ApiDSHostConfiguration](../../accelbyte_py_sdk/api/ams/models/api_ds_host_configuration.py) |

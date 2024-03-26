@@ -13,7 +13,7 @@ body:
 Definition: UserProfileStatusUpdate
 status: str
 
-Example: '{"status": "ACTIVE"}'
+Example: '{"status": "INACTIVE"}'
 """
 
 result, error = public_update_user_profile_status(

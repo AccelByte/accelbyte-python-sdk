@@ -12,7 +12,7 @@ Definition: ModelUserIdentityUpdateRequestV3
 email_address: str
 password: str
 
-Example: '{"emailAddress": "W39NbqfqPk5zqURd", "password": "eght4V2mRRTlSuj6"}'
+Example: '{"emailAddress": "p1cpgW3s2T4sEQzD", "password": "lfx4bnDPhUHpLYq4"}'
 """
 
 result, error = admin_trustly_update_user_identity(

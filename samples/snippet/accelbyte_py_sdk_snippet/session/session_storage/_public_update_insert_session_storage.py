@@ -9,7 +9,7 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 body:
 Definition: Dict[str, Any]
 
-Example: '{"XtvidgvpWGuM6Ph2": {}, "yx4iYrfXLNjFmNsY": {}, "ZcnoG2nfw0JXKOet": {}}'
+Example: '{"pm7ogutpEdSP2iB9": {}, "mg7uKvDwIXBWUgnT": {}, "ZwZQJWXwEP3Mchwa": {}}'
 """
 
 result, error = public_update_insert_session_storage(

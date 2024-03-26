@@ -11,7 +11,7 @@ body:
 Definition: ModelsSetAliasRequest
 alias: str
 
-Example: '{"alias": "A6qvysD78ox8H1vS"}'
+Example: '{"alias": "XdjCFGEJJ97p3K2P"}'
 """
 
 result, error = set_server_alias(

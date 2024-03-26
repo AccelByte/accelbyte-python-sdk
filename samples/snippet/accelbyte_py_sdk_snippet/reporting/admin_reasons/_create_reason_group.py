@@ -13,7 +13,7 @@ Definition: RestapiCreateReasonGroupRequest
 reason_ids: List[str]
 title: str
 
-Example: '{"reasonIds": ["PXbQOBvenqOiAi5c", "duCFuAaUQeP0vyhd", "ZDxwmJjdqfZvunMG"], "title": "pbCAzCNqwR9ZZcvG"}'
+Example: '{"reasonIds": ["ZPbLDeEkmBDE1PD9", "Z45l2y5Gu6JRp4sV", "yZ0t4j8CNSkOOuyW"], "title": "6VgzLu8u0frOBw2h"}'
 """
 
 result, error = create_reason_group(

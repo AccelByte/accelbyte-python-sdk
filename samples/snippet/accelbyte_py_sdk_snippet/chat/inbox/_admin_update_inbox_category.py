@@ -14,12 +14,12 @@ expires_in: int
 hook: ModelsCategoryHook
 Definition: ModelsCategoryHook
     driver: str
-    params: str
+    params: Dict[str, Any]
 json_schema: Dict[str, Any]
 save_inbox: bool
 send_notification: bool
 
-Example: '{"enabled": true, "expiresIn": 42, "hook": {"driver": "KAFKA", "params": "3uni9ReRkyJSFpLN"}, "jsonSchema": {"xvnGBFKzFNQPPUMX": {}, "bs3lG8r5KbxNmrdH": {}, "aipG0RzA76pVZN5e": {}}, "saveInbox": true, "sendNotification": false}'
+Example: '{"enabled": false, "expiresIn": 58, "hook": {"driver": "KAFKA", "params": {"kRtXuYULAnmRc0lF": {}, "YPtKulChlLQDD0d8": {}, "cOCRTehTTBZIBMKE": {}}}, "jsonSchema": {"M3hj1PG5VnaWvXZq": {}, "Tigiz1r9wuTCryZm": {}, "j3awoWYlD5pqcUUc": {}}, "saveInbox": false, "sendNotification": false}'
 """
 
 result, error = admin_update_inbox_category(

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.12.0"
+__version__ = "1.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -52,6 +52,15 @@ from ._artifacts import fleet_artifact_sampling_rules_set_async
 
 from ._auth import auth_check
 from ._auth import auth_check_async
+
+from ._development import development_server_configuration_create
+from ._development import development_server_configuration_create_async
+from ._development import development_server_configuration_delete
+from ._development import development_server_configuration_delete_async
+from ._development import development_server_configuration_get
+from ._development import development_server_configuration_get_async
+from ._development import development_server_configuration_list
+from ._development import development_server_configuration_list_async
 
 from ._fleet_commander import basic_health_check
 from ._fleet_commander import basic_health_check_async

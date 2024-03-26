@@ -12,7 +12,7 @@ body:
 Definition: ModelsBulkUserIDsRequest
 user_ids: List[str]
 
-Example: '{"userIds": ["YeQ1ijF2f0qJs1CP", "KvAxMQOinm51Gmuv", "XA3dV9URWcjKLcSS"]}'
+Example: '{"userIds": ["r14vhUFDzqJV9VM9", "n5JihkBrOOelsilC", "hLkzCgyBxSju6Ebi"]}'
 """
 
 result, error = bulk_get_users_ranking_public_v3(

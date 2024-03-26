@@ -35,7 +35,7 @@ from ...models import ResponseError
 
 
 class AdminGetPeriods(Operation):
-    """&lt;ul&gt;&lt;li&gt;Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]&lt;/li&gt;&lt;/ul&gt; (adminGetPeriods)
+    """Get Challenge's Periods (adminGetPeriods)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 

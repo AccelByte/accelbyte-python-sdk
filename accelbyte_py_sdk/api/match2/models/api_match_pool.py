@@ -51,6 +51,10 @@ class ApiMatchPool(Model):
         session_template: (session_template) REQUIRED str
 
         ticket_expiration_seconds: (ticket_expiration_seconds) REQUIRED int
+
+        crossplay_disabled: (crossplay_disabled) OPTIONAL bool
+
+        platfrom_group_enabled: (platfrom_group_enabled) OPTIONAL bool
     """
 
     # region fields
@@ -64,6 +68,8 @@ class ApiMatchPool(Model):
     rule_set: str  # REQUIRED
     session_template: str  # REQUIRED
     ticket_expiration_seconds: int  # REQUIRED
+    crossplay_disabled: bool  # OPTIONAL
+    platfrom_group_enabled: bool  # OPTIONAL
 
     # endregion fields
 
@@ -105,6 +111,14 @@ class ApiMatchPool(Model):
 
     def with_ticket_expiration_seconds(self, value: int) -> ApiMatchPool:
         self.ticket_expiration_seconds = value
+        return self
+
+    def with_crossplay_disabled(self, value: bool) -> ApiMatchPool:
+        self.crossplay_disabled = value
+        return self
+
+    def with_platfrom_group_enabled(self, value: bool) -> ApiMatchPool:
+        self.platfrom_group_enabled = value
         return self
 
     # endregion with_x methods
@@ -157,6 +171,14 @@ class ApiMatchPool(Model):
             result["ticket_expiration_seconds"] = int(self.ticket_expiration_seconds)
         elif include_empty:
             result["ticket_expiration_seconds"] = 0
+        if hasattr(self, "crossplay_disabled"):
+            result["crossplay_disabled"] = bool(self.crossplay_disabled)
+        elif include_empty:
+            result["crossplay_disabled"] = False
+        if hasattr(self, "platfrom_group_enabled"):
+            result["platfrom_group_enabled"] = bool(self.platfrom_group_enabled)
+        elif include_empty:
+            result["platfrom_group_enabled"] = False
         return result
 
     # endregion to methods
@@ -175,6 +197,8 @@ class ApiMatchPool(Model):
         rule_set: str,
         session_template: str,
         ticket_expiration_seconds: int,
+        crossplay_disabled: Optional[bool] = None,
+        platfrom_group_enabled: Optional[bool] = None,
         **kwargs,
     ) -> ApiMatchPool:
         instance = cls()
@@ -189,6 +213,10 @@ class ApiMatchPool(Model):
         instance.rule_set = rule_set
         instance.session_template = session_template
         instance.ticket_expiration_seconds = ticket_expiration_seconds
+        if crossplay_disabled is not None:
+            instance.crossplay_disabled = crossplay_disabled
+        if platfrom_group_enabled is not None:
+            instance.platfrom_group_enabled = platfrom_group_enabled
         return instance
 
     @classmethod
@@ -257,6 +285,17 @@ class ApiMatchPool(Model):
             instance.ticket_expiration_seconds = int(dict_["ticket_expiration_seconds"])
         elif include_empty:
             instance.ticket_expiration_seconds = 0
+        if "crossplay_disabled" in dict_ and dict_["crossplay_disabled"] is not None:
+            instance.crossplay_disabled = bool(dict_["crossplay_disabled"])
+        elif include_empty:
+            instance.crossplay_disabled = False
+        if (
+            "platfrom_group_enabled" in dict_
+            and dict_["platfrom_group_enabled"] is not None
+        ):
+            instance.platfrom_group_enabled = bool(dict_["platfrom_group_enabled"])
+        elif include_empty:
+            instance.platfrom_group_enabled = False
         return instance
 
     @classmethod
@@ -305,6 +344,8 @@ class ApiMatchPool(Model):
             "rule_set": "rule_set",
             "session_template": "session_template",
             "ticket_expiration_seconds": "ticket_expiration_seconds",
+            "crossplay_disabled": "crossplay_disabled",
+            "platfrom_group_enabled": "platfrom_group_enabled",
         }
 
     @staticmethod
@@ -319,6 +360,8 @@ class ApiMatchPool(Model):
             "rule_set": True,
             "session_template": True,
             "ticket_expiration_seconds": True,
+            "crossplay_disabled": False,
+            "platfrom_group_enabled": False,
         }
 
     # endregion static methods

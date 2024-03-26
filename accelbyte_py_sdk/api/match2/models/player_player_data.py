@@ -36,6 +36,8 @@ class PlayerPlayerData(Model):
 
         party_id: (PartyID) REQUIRED str
 
+        platform_id: (PlatformID) REQUIRED str
+
         player_id: (PlayerID) REQUIRED str
     """
 
@@ -43,6 +45,7 @@ class PlayerPlayerData(Model):
 
     attributes: Dict[str, Any]  # REQUIRED
     party_id: str  # REQUIRED
+    platform_id: str  # REQUIRED
     player_id: str  # REQUIRED
 
     # endregion fields
@@ -55,6 +58,10 @@ class PlayerPlayerData(Model):
 
     def with_party_id(self, value: str) -> PlayerPlayerData:
         self.party_id = value
+        return self
+
+    def with_platform_id(self, value: str) -> PlayerPlayerData:
+        self.platform_id = value
         return self
 
     def with_player_id(self, value: str) -> PlayerPlayerData:
@@ -75,6 +82,10 @@ class PlayerPlayerData(Model):
             result["PartyID"] = str(self.party_id)
         elif include_empty:
             result["PartyID"] = ""
+        if hasattr(self, "platform_id"):
+            result["PlatformID"] = str(self.platform_id)
+        elif include_empty:
+            result["PlatformID"] = ""
         if hasattr(self, "player_id"):
             result["PlayerID"] = str(self.player_id)
         elif include_empty:
@@ -87,11 +98,17 @@ class PlayerPlayerData(Model):
 
     @classmethod
     def create(
-        cls, attributes: Dict[str, Any], party_id: str, player_id: str, **kwargs
+        cls,
+        attributes: Dict[str, Any],
+        party_id: str,
+        platform_id: str,
+        player_id: str,
+        **kwargs,
     ) -> PlayerPlayerData:
         instance = cls()
         instance.attributes = attributes
         instance.party_id = party_id
+        instance.platform_id = platform_id
         instance.player_id = player_id
         return instance
 
@@ -112,6 +129,10 @@ class PlayerPlayerData(Model):
             instance.party_id = str(dict_["PartyID"])
         elif include_empty:
             instance.party_id = ""
+        if "PlatformID" in dict_ and dict_["PlatformID"] is not None:
+            instance.platform_id = str(dict_["PlatformID"])
+        elif include_empty:
+            instance.platform_id = ""
         if "PlayerID" in dict_ and dict_["PlayerID"] is not None:
             instance.player_id = str(dict_["PlayerID"])
         elif include_empty:
@@ -157,6 +178,7 @@ class PlayerPlayerData(Model):
         return {
             "Attributes": "attributes",
             "PartyID": "party_id",
+            "PlatformID": "platform_id",
             "PlayerID": "player_id",
         }
 
@@ -165,6 +187,7 @@ class PlayerPlayerData(Model):
         return {
             "Attributes": True,
             "PartyID": True,
+            "PlatformID": True,
             "PlayerID": True,
         }
 

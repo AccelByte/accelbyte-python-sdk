@@ -134,6 +134,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.updated_at = randomize()
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
+    instance.auto_leave_session = randomize("bool")
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
@@ -178,6 +179,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.type_ = randomize()
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
+    instance.auto_leave_session = randomize("bool")
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
@@ -400,6 +402,7 @@ def create_apimodels_player_attributes_request_body_example() -> (
     instance.current_platform = randomize()
     instance.data = {randomize(): randomize()}
     instance.platforms = [create_models_user_platform_info_example()]
+    instance.simultaneous_platform = randomize()
     instance.roles = [randomize()]
     return instance
 
@@ -561,6 +564,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.type_ = randomize()
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
+    instance.auto_leave_session = randomize("bool")
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
@@ -637,6 +641,7 @@ def create_apimodels_user_response_example() -> ApimodelsUserResponse:
     instance.id_ = randomize()
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
+    instance.previous_status = randomize()
     instance.status = randomize()
     instance.status_v2 = randomize()
     instance.updated_at = randomize()
@@ -788,8 +793,10 @@ def create_models_team_example() -> ModelsTeam:
 def create_models_user_info_response_example() -> ModelsUserInfoResponse:
     instance = ModelsUserInfoResponse()
     instance.last_played_time = randomize("date")
+    instance.match_pool = randomize()
     instance.namespace = randomize("slug")
     instance.platform_name = randomize()
+    instance.session_template = randomize()
     instance.user_id = randomize("uid")
     return instance
 

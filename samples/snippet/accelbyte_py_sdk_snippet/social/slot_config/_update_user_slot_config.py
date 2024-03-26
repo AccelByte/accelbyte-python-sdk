@@ -12,7 +12,7 @@ Definition: SlotConfigUpdate
 max_slot_size: int
 max_slots: int
 
-Example: '{"maxSlotSize": 49, "maxSlots": 47}'
+Example: '{"maxSlotSize": 56, "maxSlots": 70}'
 """
 
 result, error = update_user_slot_config(
