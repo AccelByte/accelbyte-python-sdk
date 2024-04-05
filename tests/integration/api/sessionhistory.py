@@ -36,7 +36,10 @@ class SessionHistoryTestCase(IntegrationTestCase):
 
     # region test:query_total_matchmaking_match
 
-    def test_admin_query_party_detail(self):
+    def test_query_total_matchmaking_match(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not yet ready for AGS Starter.")
+
         from accelbyte_py_sdk.api.sessionhistory import query_total_matchmaking_match
 
         # arrange
@@ -52,7 +55,7 @@ class SessionHistoryTestCase(IntegrationTestCase):
         )
 
         # assert
-        self.assertIsNone(error, f"{error} {start_date} - {end_date}")
+        self.assertIsNone(error, error)
 
     # endregion test:query_total_matchmaking_match
 
