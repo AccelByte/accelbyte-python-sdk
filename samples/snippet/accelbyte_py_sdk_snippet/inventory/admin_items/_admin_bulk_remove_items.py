@@ -13,7 +13,7 @@ Definition: List[ApimodelsRemoveInventoryItemReq]
 slot_id: str
 source_item_id: str
 
-Example: '[{"slotId": "fx68WH2buqELwKtj", "sourceItemId": "ZP8oZp3GeHzL10DE"}, {"slotId": "oecjsrTb6A2FnAno", "sourceItemId": "kwCTyJiGs29HmRNa"}, {"slotId": "Adfl8lNhhov8Gk9b", "sourceItemId": "vOyrDqPKHDnkPnZn"}]'
+Example: '[{"slotId": "CypPz1zA3gJTvWmg", "sourceItemId": "EgMSZ5YhIPdvqbwd"}, {"slotId": "pHFEp1P0fKOHxDlZ", "sourceItemId": "9l3zbYecQ7cQypB7"}, {"slotId": "FN3Vsvgn4TbRxkRX", "sourceItemId": "0aOPIWqx1o5XsYUt"}]'
 """
 
 result, error = admin_bulk_remove_items(

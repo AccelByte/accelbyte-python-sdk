@@ -90,6 +90,8 @@ def admin_create_goal(
     Responses:
         201: Created - ModelGoalResponse (Created)
 
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
+
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
         403: Forbidden - IamErrorResponse (20013: insufficient permission)
@@ -158,6 +160,8 @@ async def admin_create_goal_async(
 
     Responses:
         201: Created - ModelGoalResponse (Created)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 

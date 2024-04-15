@@ -43,6 +43,8 @@ class CreateRuleSet(Operation):
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
 
+    When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
+
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets
 

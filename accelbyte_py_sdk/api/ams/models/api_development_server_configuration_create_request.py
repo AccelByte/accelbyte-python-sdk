@@ -32,7 +32,7 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
     """Api development server configuration create request (api.DevelopmentServerConfigurationCreateRequest)
 
     Properties:
-        command_line: (commandLine) REQUIRED str
+        command_line_arguments: (commandLineArguments) REQUIRED str
 
         image_id: (imageId) REQUIRED str
 
@@ -41,7 +41,7 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
 
     # region fields
 
-    command_line: str  # REQUIRED
+    command_line_arguments: str  # REQUIRED
     image_id: str  # REQUIRED
     name: str  # REQUIRED
 
@@ -49,10 +49,10 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
 
     # region with_x methods
 
-    def with_command_line(
+    def with_command_line_arguments(
         self, value: str
     ) -> ApiDevelopmentServerConfigurationCreateRequest:
-        self.command_line = value
+        self.command_line_arguments = value
         return self
 
     def with_image_id(
@@ -71,10 +71,10 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "command_line"):
-            result["commandLine"] = str(self.command_line)
+        if hasattr(self, "command_line_arguments"):
+            result["commandLineArguments"] = str(self.command_line_arguments)
         elif include_empty:
-            result["commandLine"] = ""
+            result["commandLineArguments"] = ""
         if hasattr(self, "image_id"):
             result["imageId"] = str(self.image_id)
         elif include_empty:
@@ -91,10 +91,10 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
 
     @classmethod
     def create(
-        cls, command_line: str, image_id: str, name: str, **kwargs
+        cls, command_line_arguments: str, image_id: str, name: str, **kwargs
     ) -> ApiDevelopmentServerConfigurationCreateRequest:
         instance = cls()
-        instance.command_line = command_line
+        instance.command_line_arguments = command_line_arguments
         instance.image_id = image_id
         instance.name = name
         return instance
@@ -106,10 +106,13 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "commandLine" in dict_ and dict_["commandLine"] is not None:
-            instance.command_line = str(dict_["commandLine"])
+        if (
+            "commandLineArguments" in dict_
+            and dict_["commandLineArguments"] is not None
+        ):
+            instance.command_line_arguments = str(dict_["commandLineArguments"])
         elif include_empty:
-            instance.command_line = ""
+            instance.command_line_arguments = ""
         if "imageId" in dict_ and dict_["imageId"] is not None:
             instance.image_id = str(dict_["imageId"])
         elif include_empty:
@@ -161,7 +164,7 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "commandLine": "command_line",
+            "commandLineArguments": "command_line_arguments",
             "imageId": "image_id",
             "name": "name",
         }
@@ -169,7 +172,7 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "commandLine": True,
+            "commandLineArguments": True,
             "imageId": True,
             "name": True,
         }

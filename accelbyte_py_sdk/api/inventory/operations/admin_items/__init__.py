@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Inventory Service."""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,3 +22,4 @@ from .admin_list_items import AdminListItems
 from .admin_list_items import SortByEnum as AdminListItemsSortByEnum
 from .admin_save_item import AdminSaveItem
 from .admin_save_item_to_inventory import AdminSaveItemToInventory
+from .admin_sync_user_entitlements import AdminSyncUserEntitlements

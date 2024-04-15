@@ -36,20 +36,9 @@ from ...models import ResponseErrorResponse
 class DeleteGroupConfigurationGlobalRuleAdminV1(Operation):
     """delete existing configuration global rule based on allowed action (deleteGroupConfigurationGlobalRuleAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
-
-
-
-
     This endpoint is used to delete existing global rule configuration based on the allowed action. It will not give any error if the allowed action is not existed in the global rule
 
-
-
-
     Action Code: 73105
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}

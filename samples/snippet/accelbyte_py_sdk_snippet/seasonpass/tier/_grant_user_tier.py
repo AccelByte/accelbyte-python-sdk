@@ -14,7 +14,7 @@ count: int
 source: str
 tags: List[str]
 
-Example: '{"count": 86, "source": "SWEAT", "tags": ["xDPHKWtf7wYWfYsJ", "wPNGtrtUmUJa24Ma", "DMc72LoHcHzywj0P"]}'
+Example: '{"count": 96, "source": "PAID_FOR", "tags": ["IBM0mFUB89tsYdKP", "Riw5bWscQTRQZWbv", "pSsIOOvgwMQc8DF5"]}'
 """
 
 result, error = grant_user_tier(

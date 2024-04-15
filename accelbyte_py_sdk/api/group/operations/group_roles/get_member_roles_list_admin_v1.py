@@ -36,20 +36,9 @@ from ...models import ResponseErrorResponse
 class GetMemberRolesListAdminV1(Operation):
     """get all list of member roles (getMemberRolesListAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
-
-
-
-
     This endpoint is used to get list of member roles
 
-
-
-
     Action Code: 73201
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles

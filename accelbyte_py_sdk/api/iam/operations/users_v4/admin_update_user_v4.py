@@ -79,7 +79,7 @@ class AdminUpdateUserV4(Operation):
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -214,7 +214,7 @@ class AdminUpdateUserV4(Operation):
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

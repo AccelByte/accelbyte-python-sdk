@@ -12,7 +12,7 @@ Definition: ModelCreateTopicRequest
 description: str
 topic: str
 
-Example: '{"description": "26rQEiBkz2grYul5", "topic": "rfeV8U62JY3DlJhv"}'
+Example: '{"description": "tLWYhGX68O3BHkQY", "topic": "6RQAZFybkLhNG68H"}'
 """
 
 result, error = create_topic(

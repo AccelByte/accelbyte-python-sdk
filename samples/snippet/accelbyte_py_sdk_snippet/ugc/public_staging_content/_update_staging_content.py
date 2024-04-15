@@ -13,7 +13,7 @@ Definition: ModelsUpdateStagingContentRequest
 file_extension: str
 file_location: str
 
-Example: '{"fileExtension": "nOxbVepmkrtfORtw", "fileLocation": "3GvcPBRvJ1wzrRp6"}'
+Example: '{"fileExtension": "iE8ScE4k108p1Cbu", "fileLocation": "hvnCGQ17PdIq5kOE"}'
 """
 
 result, error = update_staging_content(

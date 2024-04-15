@@ -14,7 +14,7 @@ Definition: TicketSaleIncrementRequest
 count: int
 order_no: str
 
-Example: '{"count": 68, "orderNo": "GOvRExY9a9DoHGGT"}'
+Example: '{"count": 96, "orderNo": "6rVIsiHZ0670rJHF"}'
 """
 
 result, error = increase_ticket_sale(

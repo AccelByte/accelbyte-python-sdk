@@ -38,13 +38,7 @@ class GetGroupListPublicV1(Operation):
 
     Required valid user authentication
 
-
-
-
     Get list of groups. This endpoint will only show OPEN and PUBLIC group type. This endpoint can search based on the group name by filling the "groupName" query parameter
-
-
-
 
     Action Code: 73303
 

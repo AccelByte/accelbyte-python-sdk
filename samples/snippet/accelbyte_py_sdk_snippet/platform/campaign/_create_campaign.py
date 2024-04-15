@@ -30,7 +30,7 @@ status: str
 tags: List[str]
 type_: str
 
-Example: '{"description": "n4AQFj8dYvwdiCXD", "items": [{"extraSubscriptionDays": 61, "itemId": "fod7XKPMNvk1W0BF", "itemName": "HrbpgmUnalx3gFb3", "quantity": 88}, {"extraSubscriptionDays": 58, "itemId": "fWerE3NpHwtE6m10", "itemName": "ivQCE2EXtFR9LFpS", "quantity": 8}, {"extraSubscriptionDays": 1, "itemId": "hxo8VzVoq81DB98y", "itemName": "Usz7CgLe3WJvZem0", "quantity": 66}], "maxRedeemCountPerCampaignPerUser": 10, "maxRedeemCountPerCode": 89, "maxRedeemCountPerCodePerUser": 45, "maxSaleCount": 98, "name": "3jNKehEZu95gElus", "redeemEnd": "1999-07-17T00:00:00Z", "redeemStart": "1987-10-03T00:00:00Z", "redeemType": "ITEM", "status": "ACTIVE", "tags": ["FHMaeJstKo0eDmvb", "Gge2PY6kuEoEUGIQ", "WTfwupIppYEJnW4K"], "type": "REDEMPTION"}'
+Example: '{"description": "WHjfemo5slDl4qi8", "items": [{"extraSubscriptionDays": 37, "itemId": "J3Fi0duPArhBdTGI", "itemName": "MsLG9OriIzOb6coY", "quantity": 86}, {"extraSubscriptionDays": 73, "itemId": "yfB7AcZIpXaU0URI", "itemName": "Ov7aykXFLR5bjK9K", "quantity": 30}, {"extraSubscriptionDays": 93, "itemId": "Sbv76hAcZCfJ9eiI", "itemName": "vZgUwRzP0pHPE7JF", "quantity": 62}], "maxRedeemCountPerCampaignPerUser": 79, "maxRedeemCountPerCode": 95, "maxRedeemCountPerCodePerUser": 53, "maxSaleCount": 3, "name": "HnhPBmOrNlmx82Rg", "redeemEnd": "1978-03-15T00:00:00Z", "redeemStart": "1998-02-20T00:00:00Z", "redeemType": "ITEM", "status": "ACTIVE", "tags": ["dwUlmBsfX4D2WfnM", "YauogjDAuptSvLPY", "UdzXoaF7NVIXcB20"], "type": "REDEMPTION"}'
 """
 
 result, error = create_campaign(

@@ -16,7 +16,7 @@ game_session_id: str
 subcategory: str
 user_id: str
 
-Example: '{"category": "tjjmHnaFbmSh0KvQ", "description": "GmD6OJTmW0mIuf5l", "gameSessionId": "Cn5ccGdjPmabb1X4", "subcategory": "hE9zTThGzVqjU5Dx", "userId": "oPnMIPE9VGX3O1Zv"}'
+Example: '{"category": "1NHWm0tr1DN9WAn5", "description": "QptXVHitXVOxhCs8", "gameSessionId": "xs6foAqsYCPM0OiZ", "subcategory": "N5UkIRNM2XgpoICD", "userId": "dkkHIMKx7gqFcQyD"}'
 """
 
 result, error = public_report_user(

@@ -14,7 +14,7 @@ template_language: str
 template_slug: str
 topic: str
 
-Example: '{"templateContext": {"BBjIhubMoOMO3QTF": "IuIGRJtn6kDBuEl9", "u0GUjbp2wEao6BKf": "SYeuxNsDfOe0huCc", "gDKYhy4UFXY9gIyy": "gkwAsbGO1AqD4Fmw"}, "templateLanguage": "4Ql7vjGV9QQb5vaU", "templateSlug": "Ff3XOQ81mhPfoJC8", "topic": "TaQnNbYFkV3R9DUa"}'
+Example: '{"templateContext": {"0zKJKH00AmP5e4fS": "FggKADKEj8nYrniM", "AhFSYCGRWJNYAzO5": "PVnTlMubihQcZBGE", "VpUbYQ4wRz9sYOxR": "AxuVXwJvF1FunjMW"}, "templateLanguage": "QNYqzOPCMt1JT26M", "templateSlug": "Oo6M8Y36iRHxhUqc", "topic": "ejH3evvj6pHzDbTR"}'
 """
 
 result, error = notification_with_template_by_user_id(

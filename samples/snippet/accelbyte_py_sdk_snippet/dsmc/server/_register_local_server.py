@@ -15,7 +15,7 @@ ip: str
 name: str
 port: int
 
-Example: '{"custom_attribute": "bpWOUP9XMyjWJti9", "ip": "xgihtOdkYYP2Xy90", "name": "GfLzpElFv3BURW2S", "port": 79}'
+Example: '{"custom_attribute": "ooAuD0EBim7HMurf", "ip": "s5hN6lpsh1TeOJVO", "name": "LSIG71qQ5I0Rqqpj", "port": 31}'
 """
 
 result, error = register_local_server(

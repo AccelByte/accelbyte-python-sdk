@@ -36,20 +36,9 @@ from ...models import ResponseErrorResponse
 class GetGroupListAdminV1(Operation):
     """get list of groups (getGroupListAdminV1)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP [READ]"
-
-
-
-
     Get list of groups. This endpoint will show any types of group
 
-
-
-
     Action Code: 73301
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups

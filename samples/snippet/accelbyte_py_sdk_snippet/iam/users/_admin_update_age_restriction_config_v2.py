@@ -13,7 +13,7 @@ Definition: ModelAgeRestrictionRequest
 age_restriction: int
 enable: bool
 
-Example: '{"AgeRestriction": 25, "Enable": false}'
+Example: '{"AgeRestriction": 36, "Enable": false}'
 """
 
 result, error = admin_update_age_restriction_config_v2(

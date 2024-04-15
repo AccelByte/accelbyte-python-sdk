@@ -14,7 +14,7 @@ game_id: str
 language: str
 region: str
 
-Example: '{"gameId": "7YCkpwwPcuosUgHG", "language": "gd", "region": "dzBiVwyWEPeHWFa1"}'
+Example: '{"gameId": "RraTN98XbFUeWGTP", "language": "SS-qZYB", "region": "PC4jqIyy2f1FyPHK"}'
 """
 
 result, error = sync_twitch_drops_entitlement(

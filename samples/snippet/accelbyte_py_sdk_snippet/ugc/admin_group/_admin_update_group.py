@@ -13,7 +13,7 @@ Definition: ModelsCreateGroupRequest
 contents: List[str]
 name: str
 
-Example: '{"contents": ["bW3lb67ue71pSRSy", "sCECHpdCvyuOxUG4", "gz3Dr10C4fMHeH70"], "name": "Ko7rW6ErQp0DipaX"}'
+Example: '{"contents": ["7MfKK0PVsapWfHSe", "xexMTKZ1Z6XWo4GB", "cFV09Bq8HLIGkhli"], "name": "QWaGRgFqLpYFyN68"}'
 """
 
 result, error = admin_update_group(

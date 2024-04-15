@@ -29,12 +29,12 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApiDevelopmentServerConfigurationGetResponse
+from ...models import ApiDevelopmentServerConfigurationListResponse
 from ...models import ResponseErrorResponse
 
 
 class DevelopmentServerConfigurationList(Operation):
-    """lists all development server configurations (DevelopmentServerConfigurationList)
+    """lists development server configurations with pagination (DevelopmentServerConfigurationList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -46,7 +46,7 @@ class DevelopmentServerConfigurationList(Operation):
 
         method: GET
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 
@@ -56,8 +56,12 @@ class DevelopmentServerConfigurationList(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        count: (count) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
-        200: OK - List[ApiDevelopmentServerConfigurationGetResponse] (development server configurations)
+        200: OK - ApiDevelopmentServerConfigurationListResponse (development server configurations)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -76,6 +80,8 @@ class DevelopmentServerConfigurationList(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    count: int  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -116,12 +122,21 @@ class DevelopmentServerConfigurationList(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "count"):
+            result["count"] = self.count
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -136,6 +151,14 @@ class DevelopmentServerConfigurationList(Operation):
         self.namespace = value
         return self
 
+    def with_count(self, value: int) -> DevelopmentServerConfigurationList:
+        self.count = value
+        return self
+
+    def with_offset(self, value: int) -> DevelopmentServerConfigurationList:
+        self.offset = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -146,6 +169,14 @@ class DevelopmentServerConfigurationList(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "count") and self.count:
+            result["count"] = int(self.count)
+        elif include_empty:
+            result["count"] = 0
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -156,12 +187,12 @@ class DevelopmentServerConfigurationList(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[ApiDevelopmentServerConfigurationGetResponse]],
+        Union[None, ApiDevelopmentServerConfigurationListResponse],
         Union[None, HttpResponse, ResponseErrorResponse],
     ]:
         """Parse the given response.
 
-        200: OK - List[ApiDevelopmentServerConfigurationGetResponse] (development server configurations)
+        200: OK - ApiDevelopmentServerConfigurationListResponse (development server configurations)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -183,10 +214,10 @@ class DevelopmentServerConfigurationList(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [
-                ApiDevelopmentServerConfigurationGetResponse.create_from_dict(i)
-                for i in content
-            ], None
+            return (
+                ApiDevelopmentServerConfigurationListResponse.create_from_dict(content),
+                None,
+            )
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:
@@ -203,9 +234,19 @@ class DevelopmentServerConfigurationList(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> DevelopmentServerConfigurationList:
+    def create(
+        cls,
+        namespace: str,
+        count: Optional[int] = None,
+        offset: Optional[int] = None,
+        **kwargs,
+    ) -> DevelopmentServerConfigurationList:
         instance = cls()
         instance.namespace = namespace
+        if count is not None:
+            instance.count = count
+        if offset is not None:
+            instance.offset = offset
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -219,18 +260,30 @@ class DevelopmentServerConfigurationList(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "count" in dict_ and dict_["count"] is not None:
+            instance.count = int(dict_["count"])
+        elif include_empty:
+            instance.count = 0
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "count": "count",
+            "offset": "offset",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "count": False,
+            "offset": False,
         }
 
     # endregion static methods

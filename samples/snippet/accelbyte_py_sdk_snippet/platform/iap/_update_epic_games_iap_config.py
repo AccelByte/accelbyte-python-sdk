@@ -11,7 +11,7 @@ body:
 Definition: EpicGamesIAPConfigRequest
 sandbox_id: str
 
-Example: '{"sandboxId": "aJFN4BC6ygbzIHY1"}'
+Example: '{"sandboxId": "lXNS3rDpa2XN10ah"}'
 """
 
 result, error = update_epic_games_iap_config(

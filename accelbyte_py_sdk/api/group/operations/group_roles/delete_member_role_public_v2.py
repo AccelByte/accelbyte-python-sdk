@@ -38,13 +38,7 @@ class DeleteMemberRolePublicV2(Operation):
 
     Required Member Role Permission: "GROUP:ROLE [UPDATE]"
 
-
-
-
     This endpoint is used to remove role from group member
-
-
-
 
     Action Code: 73204
 

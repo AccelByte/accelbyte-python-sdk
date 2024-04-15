@@ -36,7 +36,8 @@ from ...models import ErrorEntity
 class ChangePreferenceConsent(Operation):
     """Change Preference Consent (changePreferenceConsent)
 
-    This API will Update Preference Consent. Other detail info:
+    This API will Update Preference Consent.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
 

@@ -11,7 +11,7 @@ body:
 Definition: ModelsUpdateServerRequest
 status: str
 
-Example: '{"status": "vFXPQq4BYxioh3gB"}'
+Example: '{"status": "z55kXHe6dQ0iPU3i"}'
 """
 
 result, error = update_server_config(

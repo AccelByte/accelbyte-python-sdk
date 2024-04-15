@@ -38,8 +38,8 @@ class AdminGetUserMapping(Operation):
 
     This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
-    If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace. Will create game user id if not exists.
+    If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace.
+    If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}

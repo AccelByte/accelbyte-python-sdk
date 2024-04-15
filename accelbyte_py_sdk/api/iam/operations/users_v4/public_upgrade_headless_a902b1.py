@@ -79,7 +79,7 @@ class PublicUpgradeHeadlessAccountWithVerificationCodeV4(Operation):
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
-        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -209,7 +209,7 @@ class PublicUpgradeHeadlessAccountWithVerificationCodeV4(Operation):
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
-        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

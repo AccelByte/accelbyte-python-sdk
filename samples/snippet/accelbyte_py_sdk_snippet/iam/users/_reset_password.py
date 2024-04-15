@@ -12,7 +12,7 @@ code: str
 login_id: str
 new_password: str
 
-Example: '{"Code": "1ZdJX1B305QU2lC8", "LoginID": "sMu9RxGsa0bKSPAu", "NewPassword": "a0ZoYzxfZBlU2XGp"}'
+Example: '{"Code": "Jo9kSPkeBWgLQgvX", "LoginID": "4xMPtLbvugg3MY6t", "NewPassword": "qmE6t34GJRRQEUjq"}'
 """
 
 result, error = reset_password(

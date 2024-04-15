@@ -77,7 +77,7 @@ class PublicCreateUserV4(Operation):
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -200,7 +200,7 @@ class PublicCreateUserV4(Operation):
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

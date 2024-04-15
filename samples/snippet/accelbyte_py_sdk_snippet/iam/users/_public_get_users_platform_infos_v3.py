@@ -13,7 +13,7 @@ Definition: ModelUsersPlatformInfosRequestV3
 platform_id: str
 user_ids: List[str]
 
-Example: '{"platformId": "6CrsOs2qcaRMlarO", "userIds": ["mbVtIzkjurlZxX4k", "mQDlCduqM8McDqj7", "VmA5vym5Obn3JCMp"]}'
+Example: '{"platformId": "LgwpRLcOcwhg21ki", "userIds": ["ZIIDCYR43PmQDW1d", "lyhRp3jn825BHdDL", "XIHwnF6SZxjV3rhF"]}'
 """
 
 result, error = public_get_users_platform_infos_v3(

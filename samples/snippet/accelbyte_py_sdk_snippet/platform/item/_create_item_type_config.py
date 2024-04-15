@@ -16,7 +16,7 @@ fulfillment_url: str
 item_type: str
 purchase_condition_url: str
 
-Example: '{"clazz": "UVy0vC0SpKH4jf87", "dryRun": true, "fulfillmentUrl": "Na55oTV5IeUwgWx7", "itemType": "SUBSCRIPTION", "purchaseConditionUrl": "4LBvzYliDeHLjfkN"}'
+Example: '{"clazz": "U62XfaMx9fcKMmlW", "dryRun": false, "fulfillmentUrl": "jzdkXEdAPGM687ZC", "itemType": "INGAMEITEM", "purchaseConditionUrl": "ZTnZh4htO7mb8B4H"}'
 """
 
 result, error = create_item_type_config(

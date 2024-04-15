@@ -12,7 +12,7 @@ body:
 Definition: ModelBulkFriendsRequest
 friend_ids: List[str]
 
-Example: '{"friendIds": ["Hvaxd7auqlRmGM3m", "iOua5RDsGZMJdceZ", "iU90BupzWW1c1gi6"]}'
+Example: '{"friendIds": ["dYJLNNgOVtBPfouh", "yOxGANhhlrASR1DL", "LbXT7S3lD1f7NAWG"]}'
 """
 
 result, error = bulk_delete_friends(

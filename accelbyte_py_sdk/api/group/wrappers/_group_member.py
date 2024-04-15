@@ -77,33 +77,15 @@ def accept_group_invitation_public_v1(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to accept group invitation.
-
-
-
 
     Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
 
-
-
-
     This endpoint will also check if the user who access this endpoint is already joined to specific group
-
-
-
 
     Accessing this endpoint will make all requests (invite / join request) will be deleted for the user who access this endpoint
 
-
-
-
     Existing members will receive notification of newly accepted member.
-
-
-
 
     Action Code: 73401
 
@@ -161,33 +143,15 @@ async def accept_group_invitation_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to accept group invitation.
-
-
-
 
     Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
 
-
-
-
     This endpoint will also check if the user who access this endpoint is already joined to specific group
-
-
-
 
     Accessing this endpoint will make all requests (invite / join request) will be deleted for the user who access this endpoint
 
-
-
-
     Existing members will receive notification of newly accepted member.
-
-
-
 
     Action Code: 73401
 
@@ -247,33 +211,15 @@ def accept_group_invitation_public_v2(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to accept group invitation.
-
-
-
 
     Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
 
-
-
-
     This endpoint will also check if the user who access this endpoint is already joined to specific group
-
-
-
 
     Accessing this endpoint will make all requests (invite / join request) will be deleted for the user who access this endpoint
 
-
-
-
     Existing members will receive notification of newly accepted member.
-
-
-
 
     Action Code: 73401
 
@@ -331,33 +277,15 @@ async def accept_group_invitation_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to accept group invitation.
-
-
-
 
     Accept group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
 
-
-
-
     This endpoint will also check if the user who access this endpoint is already joined to specific group
-
-
-
 
     Accessing this endpoint will make all requests (invite / join request) will be deleted for the user who access this endpoint
 
-
-
-
     Existing members will receive notification of newly accepted member.
-
-
-
 
     Action Code: 73401
 
@@ -417,28 +345,13 @@ def accept_group_join_request_public_v1(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [CREATE]"
-
-
-
 
     This endpoint is used to accept group join request.
 
-
-
-
     Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
 
-
-
-
     This endpoint will also check if the specific user is already joined to specific group
-
-
-
 
     Action Code: 73407
 
@@ -496,28 +409,13 @@ async def accept_group_join_request_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [CREATE]"
-
-
-
 
     This endpoint is used to accept group join request.
 
-
-
-
     Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
 
-
-
-
     This endpoint will also check if the specific user is already joined to specific group
-
-
-
 
     Action Code: 73407
 
@@ -578,28 +476,13 @@ def accept_group_join_request_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [CREATE]"
-
-
-
 
     This endpoint is used to accept group join request.
 
-
-
-
     Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
 
-
-
-
     This endpoint will also check if the specific user is already joined to specific group
-
-
-
 
     Action Code: 73407
 
@@ -661,28 +544,13 @@ async def accept_group_join_request_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [CREATE]"
-
-
-
 
     This endpoint is used to accept group join request.
 
-
-
-
     Accept group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
 
-
-
-
     This endpoint will also check if the specific user is already joined to specific group
-
-
-
 
     Action Code: 73407
 
@@ -744,15 +612,7 @@ def admin_get_user_group_status_information_v2(
 ):
     """User Group Status Information (AdminGetUserGroupStatusInformationV2)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]"
-
-
-
-
     This endpoint is used to get user group status information.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
 
     Properties:
         url: /group/v2/admin/namespaces/{namespace}/users/{userId}/groups/{groupId}/status
@@ -806,15 +666,7 @@ async def admin_get_user_group_status_information_v2_async(
 ):
     """User Group Status Information (AdminGetUserGroupStatusInformationV2)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]"
-
-
-
-
     This endpoint is used to get user group status information.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
 
     Properties:
         url: /group/v2/admin/namespaces/{namespace}/users/{userId}/groups/{groupId}/status
@@ -871,13 +723,7 @@ def cancel_group_join_request_v1(
 
     Requires valid user authentication
 
-
-
-
     This endpoint allows user to cancel request to join specific group.
-
-
-
 
     Action Code: 73411
 
@@ -933,13 +779,7 @@ async def cancel_group_join_request_v1_async(
 
     Requires valid user authentication
 
-
-
-
     This endpoint allows user to cancel request to join specific group.
-
-
-
 
     Action Code: 73411
 
@@ -998,23 +838,11 @@ def cancel_invitation_group_member_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:INVITE [DELETE]"
-
-
-
 
     This endpoint is used to cancel invitation group member.
 
-
-
-
     cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the the user who accesses this endpoint
-
-
-
 
     Action Code: 73409
 
@@ -1077,23 +905,11 @@ async def cancel_invitation_group_member_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:INVITE [DELETE]"
-
-
-
 
     This endpoint is used to cancel invitation group member.
 
-
-
-
     cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the the user who accesses this endpoint
-
-
-
 
     Action Code: 73409
 
@@ -1158,20 +974,9 @@ def get_group_members_list_admin_v1(
 ):
     """Get list of group members (getGroupMembersListAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
-
-
-
-
     This endpoint is used to get list of group members.
 
-
-
-
     Action Code: 73410
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}/members
@@ -1235,20 +1040,9 @@ async def get_group_members_list_admin_v1_async(
 ):
     """Get list of group members (getGroupMembersListAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
-
-
-
-
     This endpoint is used to get list of group members.
 
-
-
-
     Action Code: 73410
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}/members
@@ -1316,13 +1110,7 @@ def get_group_members_list_public_v1(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to get list of group members.
-
-
-
 
     Action Code: 73410
 
@@ -1390,13 +1178,7 @@ async def get_group_members_list_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to get list of group members.
-
-
-
 
     Action Code: 73410
 
@@ -1463,37 +1245,15 @@ def get_user_group_information_public_v1(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to get user group information.
-
-
-
 
     Get user group information. If user does not belong to any group, it will return warning to give information about it
 
-
-
-
     Group Member Status:
 
-
-
-
-
-
-      * JOIN : status of user requested to join group
-
-
-      * INVITE: status of user invited to a group
-
-
-      * JOINED: status of user already joined to a group
-
-
-
-
+    * JOIN : status of user requested to join group
+    * INVITE: status of user invited to a group
+    * JOINED: status of user already joined to a group
 
     Action Code: 73405
 
@@ -1549,37 +1309,15 @@ async def get_user_group_information_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to get user group information.
-
-
-
 
     Get user group information. If user does not belong to any group, it will return warning to give information about it
 
-
-
-
     Group Member Status:
 
-
-
-
-
-
-      * JOIN : status of user requested to join group
-
-
-      * INVITE: status of user invited to a group
-
-
-      * JOINED: status of user already joined to a group
-
-
-
-
+    * JOIN : status of user requested to join group
+    * INVITE: status of user invited to a group
+    * JOINED: status of user already joined to a group
 
     Action Code: 73405
 
@@ -1638,31 +1376,13 @@ def get_user_group_information_public_v2(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to get user joined group information.
-
-
-
 
     Get user group joined information. If user does not belong to any group, it will return warning to give information about it
 
-
-
-
     Group Member Status:
 
-
-
-
-
-
-      * JOINED: status of user already joined to a group
-
-
-
-
+    * JOINED: status of user already joined to a group
 
     Action Code: 73405
 
@@ -1722,31 +1442,13 @@ async def get_user_group_information_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to get user joined group information.
-
-
-
 
     Get user group joined information. If user does not belong to any group, it will return warning to give information about it
 
-
-
-
     Group Member Status:
 
-
-
-
-
-
-      * JOINED: status of user already joined to a group
-
-
-
-
+    * JOINED: status of user already joined to a group
 
     Action Code: 73405
 
@@ -1808,23 +1510,11 @@ def get_user_group_status_information_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [READ]"
-
-
-
 
     This endpoint is used to get user group status information.
 
-
-
-
     get user group status information. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
-
-
-
 
     Action Code: 73409
 
@@ -1885,23 +1575,11 @@ async def get_user_group_status_information_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [READ]"
-
-
-
 
     This endpoint is used to get user group status information.
 
-
-
-
     get user group status information. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
-
-
-
 
     Action Code: 73409
 
@@ -1965,27 +1643,13 @@ def get_user_joined_group_information_public_v2(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to get user joined group information.
-
-
-
 
     Get user group joined information. If user does not belong to any group, it will return warning to give information about it
 
-
-
-
     Group Member Status:
 
-
-
-
-
-
-      * JOINED: status of user already joined to a group
+    * JOINED: status of user already joined to a group
 
     Properties:
         url: /group/v2/admin/namespaces/{namespace}/users/{userId}/groups
@@ -2047,27 +1711,13 @@ async def get_user_joined_group_information_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to get user joined group information.
-
-
-
 
     Get user group joined information. If user does not belong to any group, it will return warning to give information about it
 
-
-
-
     Group Member Status:
 
-
-
-
-
-
-      * JOINED: status of user already joined to a group
+    * JOINED: status of user already joined to a group
 
     Properties:
         url: /group/v2/admin/namespaces/{namespace}/users/{userId}/groups
@@ -2129,50 +1779,23 @@ def invite_group_public_v1(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:INVITE [CREATE]"
-
-
-
 
     This endpoint is used to invite specific user to the group.
 
-
-
-
     invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
 
-
-
-
     Invited user will receive notification through lobby.
-
-
-
 
     Action Code: 73406
 
 
 
-
-
-
     memberRolePermissions example value :
-
-
-
 
     "action": 1
 
-
-
-
     "resourceName": "GROUP:INVITE"
-
-
-
 
     The invited user will have a permission to invite another user to the group
 
@@ -2233,50 +1856,23 @@ async def invite_group_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:INVITE [CREATE]"
-
-
-
 
     This endpoint is used to invite specific user to the group.
 
-
-
-
     invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
 
-
-
-
     Invited user will receive notification through lobby.
-
-
-
 
     Action Code: 73406
 
 
 
-
-
-
     memberRolePermissions example value :
-
-
-
 
     "action": 1
 
-
-
-
     "resourceName": "GROUP:INVITE"
-
-
-
 
     The invited user will have a permission to invite another user to the group
 
@@ -2340,50 +1936,23 @@ def invite_group_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:INVITE [CREATE]"
-
-
-
 
     This endpoint is used to invite specific user to the group.
 
-
-
-
     invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
 
-
-
-
     Invited user will receive notification through lobby.
-
-
-
 
     Action Code: 73406
 
 
 
-
-
-
     memberRolePermissions example value :
-
-
-
 
     "action": 1
 
-
-
-
     "resourceName": "GROUP:INVITE"
-
-
-
 
     The invited user will have a permission to invite another user to the group
 
@@ -2448,50 +2017,23 @@ async def invite_group_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:INVITE [CREATE]"
-
-
-
 
     This endpoint is used to invite specific user to the group.
 
-
-
-
     invite specific user to the group. If specific user is already have the join request to the group, this endpoint will notify if this user already have join request that needs to be accepted / rejected
 
-
-
-
     Invited user will receive notification through lobby.
-
-
-
 
     Action Code: 73406
 
 
 
-
-
-
     memberRolePermissions example value :
-
-
-
 
     "action": 1
 
-
-
-
     "resourceName": "GROUP:INVITE"
-
-
-
 
     The invited user will have a permission to invite another user to the group
 
@@ -2557,42 +2099,17 @@ def join_group_v1(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to join as group member
-
-
-
 
     Join to the group. This endpoint will check the the the type of the group based on the groupID.
 
-
-
-
     Additional Information:
 
-
-
-
-
-
-      * User cannot join to the group with PRIVATE type
-
-
-      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
-
-
-      * Joining OPEN group type will make this user become member of that group immediately
-
-
-
-
+    * User cannot join to the group with PRIVATE type
+    * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+    * Joining OPEN group type will make this user become member of that group immediately
 
     This endpoint will return status field to give information whether the user is JOINED or REQUESTED to join to the specific group
-
-
-
 
     Action Code: 73403
 
@@ -2648,42 +2165,17 @@ async def join_group_v1_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to join as group member
-
-
-
 
     Join to the group. This endpoint will check the the the type of the group based on the groupID.
 
-
-
-
     Additional Information:
 
-
-
-
-
-
-      * User cannot join to the group with PRIVATE type
-
-
-      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
-
-
-      * Joining OPEN group type will make this user become member of that group immediately
-
-
-
-
+    * User cannot join to the group with PRIVATE type
+    * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+    * Joining OPEN group type will make this user become member of that group immediately
 
     This endpoint will return status field to give information whether the user is JOINED or REQUESTED to join to the specific group
-
-
-
 
     Action Code: 73403
 
@@ -2741,42 +2233,17 @@ def join_group_v2(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to join as group member
-
-
-
 
     Join to the group. This endpoint will check the the the type of the group based on the groupID.
 
-
-
-
     Additional Information:
 
-
-
-
-
-
-      * User cannot join to the group with PRIVATE type
-
-
-      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
-
-
-      * Joining OPEN group type will make this user become member of that group immediately
-
-
-
-
+    * User cannot join to the group with PRIVATE type
+    * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+    * Joining OPEN group type will make this user become member of that group immediately
 
     This endpoint will return status field to give information whether the user is JOINED or REQUESTED to join to the specific group
-
-
-
 
     Action Code: 73403
 
@@ -2832,42 +2299,17 @@ async def join_group_v2_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to join as group member
-
-
-
 
     Join to the group. This endpoint will check the the the type of the group based on the groupID.
 
-
-
-
     Additional Information:
 
-
-
-
-
-
-      * User cannot join to the group with PRIVATE type
-
-
-      * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
-
-
-      * Joining OPEN group type will make this user become member of that group immediately
-
-
-
-
+    * User cannot join to the group with PRIVATE type
+    * Joining PUBLIC group type will create join request and need approval from the privileged group member to accept the request to become the member
+    * Joining OPEN group type will make this user become member of that group immediately
 
     This endpoint will return status field to give information whether the user is JOINED or REQUESTED to join to the specific group
-
-
-
 
     Action Code: 73403
 
@@ -2925,23 +2367,11 @@ def kick_group_member_public_v1(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:KICK [CREATE]"
-
-
-
 
     This endpoint is used to kick group member.
 
-
-
-
     Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
-
-
-
 
     Action Code: 73409
 
@@ -2997,23 +2427,11 @@ async def kick_group_member_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:KICK [CREATE]"
-
-
-
 
     This endpoint is used to kick group member.
 
-
-
-
     Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
-
-
-
 
     Action Code: 73409
 
@@ -3072,23 +2490,11 @@ def kick_group_member_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:KICK [CREATE]"
-
-
-
 
     This endpoint is used to kick group member.
 
-
-
-
     Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
-
-
-
 
     Action Code: 73409
 
@@ -3148,23 +2554,11 @@ async def kick_group_member_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:KICK [CREATE]"
-
-
-
 
     This endpoint is used to kick group member.
 
-
-
-
     Kick group member. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
-
-
-
 
     Action Code: 73409
 
@@ -3224,18 +2618,9 @@ def leave_group_public_v1(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to leave from group.
 
-
-
-
     leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
-
-
-
 
     Action Code: 73404
 
@@ -3287,18 +2672,9 @@ async def leave_group_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to leave from group.
 
-
-
-
     leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
-
-
-
 
     Action Code: 73404
 
@@ -3353,18 +2729,9 @@ def leave_group_public_v2(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to leave from group.
 
-
-
-
     leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
-
-
-
 
     Action Code: 73404
 
@@ -3420,18 +2787,9 @@ async def leave_group_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to leave from group.
 
-
-
-
     leave from group. Admin is not allowed to leave the group. This endpoint will also give response if the user does not belong to any group.
-
-
-
 
     Action Code: 73404
 
@@ -3489,18 +2847,9 @@ def reject_group_invitation_public_v1(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to reject group invitation.
 
-
-
-
     Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
-
-
-
 
     Action Code: 73402
 
@@ -3558,18 +2907,9 @@ async def reject_group_invitation_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to reject group invitation.
 
-
-
-
     Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
-
-
-
 
     Action Code: 73402
 
@@ -3629,18 +2969,9 @@ def reject_group_invitation_public_v2(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to reject group invitation.
 
-
-
-
     Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
-
-
-
 
     Action Code: 73402
 
@@ -3698,18 +3029,9 @@ async def reject_group_invitation_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to reject group invitation.
 
-
-
-
     Reject group invitation. If specific user is not invited in the specific group ID, it will show the the error to show if the user is not invited yet.
-
-
-
 
     Action Code: 73402
 
@@ -3769,28 +3091,13 @@ def reject_group_join_request_public_v1(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [CREATE]"
-
-
-
 
     This endpoint is used to reject group join request.
 
-
-
-
     Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
 
-
-
-
     This endpoint will also check if the specific user is already joined to specific group
-
-
-
 
     Action Code: 73408
 
@@ -3848,28 +3155,13 @@ async def reject_group_join_request_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [CREATE]"
-
-
-
 
     This endpoint is used to reject group join request.
 
-
-
-
     Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
 
-
-
-
     This endpoint will also check if the specific user is already joined to specific group
-
-
-
 
     Action Code: 73408
 
@@ -3930,28 +3222,13 @@ def reject_group_join_request_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [CREATE]"
-
-
-
 
     This endpoint is used to reject group join request.
 
-
-
-
     Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
 
-
-
-
     This endpoint will also check if the specific user is already joined to specific group
-
-
-
 
     Action Code: 73408
 
@@ -4013,28 +3290,13 @@ async def reject_group_join_request_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [CREATE]"
-
-
-
 
     This endpoint is used to reject group join request.
 
-
-
-
     Reject group join request. If specific user is not asked to join the specific group ID, it will show the the error to show if the user is not asked to join yet.
 
-
-
-
     This endpoint will also check if the specific user is already joined to specific group
-
-
-
 
     Action Code: 73408
 

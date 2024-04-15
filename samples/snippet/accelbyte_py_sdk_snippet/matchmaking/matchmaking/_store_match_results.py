@@ -19,7 +19,7 @@ Definition: List[ModelsPlayerResultRequest]
         value: float
     user_id: str
 
-Example: '{"match_id": "n0znnKkXixvfJ3nP", "players": [{"results": [{"attribute": "zKRV1QXjfKXJXWGa", "value": 0.8629175962444293}, {"attribute": "wcMHzoFRtiYcAURn", "value": 0.8432370977131782}, {"attribute": "hW9SDdy34W6h719T", "value": 0.836116220813859}], "user_id": "PqMhV5Sadom5p0R2"}, {"results": [{"attribute": "1IGsIvkIlZv3JeFI", "value": 0.4409787879862548}, {"attribute": "p9RVvV47Vi56CZ60", "value": 0.027063410935076915}, {"attribute": "sH1WmvaV1PIpzn6g", "value": 0.2400772013157605}], "user_id": "zs6NZScEvrySY51E"}, {"results": [{"attribute": "8pu9mhsuompPNkeK", "value": 0.9835094142501111}, {"attribute": "xAVlgRB9yJB3InFb", "value": 0.058915163344053334}, {"attribute": "s83HVRm2fNOTCUM7", "value": 0.6658146420188776}], "user_id": "1q9Sz9KwdOrqCxLu"}]}'
+Example: '{"match_id": "F1KeDXIEISaJKymW", "players": [{"results": [{"attribute": "Ax1lVBsOadGIp5vV", "value": 0.29790414028420986}, {"attribute": "x3pA0dSGbC0dSAaE", "value": 0.6480522236483317}, {"attribute": "vL4BqvGCa1eJwFVt", "value": 0.18090237373746654}], "user_id": "AUxF9zqEkjoiE1MN"}, {"results": [{"attribute": "NXDqYFIkypzOpqAr", "value": 0.12578986642791823}, {"attribute": "JlDijsQfvr1VI9qo", "value": 0.13425379512017743}, {"attribute": "A0l55Telr3S6dF3t", "value": 0.07285711707622466}], "user_id": "AQHhvkaq8zVI6kpL"}, {"results": [{"attribute": "uZlRWZleHvOivBt6", "value": 0.9125151580702469}, {"attribute": "hXyCVnXnVo5dV8aw", "value": 0.22386344102979072}, {"attribute": "IHivAcFHhfEoI6J8", "value": 0.1537999859811765}], "user_id": "Y8n3RZToWv7YMBh6"}]}'
 """
 
 result, error = store_match_results(

@@ -11,7 +11,7 @@ body:
 Definition: ApimodelsSetDSReadyRequest
 ready: bool
 
-Example: '{"ready": true}'
+Example: '{"ready": false}'
 """
 
 result, error = admin_set_ds_ready(

@@ -13,7 +13,7 @@ Definition: SteamIAPConfigRequest
 app_id: str
 publisher_authentication_key: str
 
-Example: '{"appId": "uYbGJ7DwXty6jAI8", "publisherAuthenticationKey": "dce9S28sPAiFGHWl"}'
+Example: '{"appId": "k94dg8SGNsuoDP0s", "publisherAuthenticationKey": "eZPQDodmWnlH3TzP"}'
 """
 
 result, error = update_steam_iap_config(

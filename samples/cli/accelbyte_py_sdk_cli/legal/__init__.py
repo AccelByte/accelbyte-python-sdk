@@ -31,6 +31,8 @@ from ._retrieve_accepted_agreements_1 import retrieve_accepted_agreements_1
 from ._retrieve_all_users_by_policy_version_1 import (
     retrieve_all_users_by_policy_version_1,
 )
+from ._download_exported_agreements_in_csv import download_exported_agreements_in_csv
+from ._initiate_export_agreements_to_csv import initiate_export_agreements_to_csv
 from ._retrieve_all_legal_policies_by_namespace import (
     retrieve_all_legal_policies_by_namespace,
 )
@@ -116,6 +118,8 @@ commands = [
     retrieve_accepted_agreements_for_multi_users,
     retrieve_accepted_agreements_1,
     retrieve_all_users_by_policy_version_1,
+    download_exported_agreements_in_csv,
+    initiate_export_agreements_to_csv,
     retrieve_all_legal_policies_by_namespace,
     create_policy_1,
     retrieve_single_policy_1,

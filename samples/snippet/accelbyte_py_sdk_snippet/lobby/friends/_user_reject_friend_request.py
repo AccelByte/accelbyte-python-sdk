@@ -11,7 +11,7 @@ body:
 Definition: ModelUserRejectFriendRequest
 friend_id: str
 
-Example: '{"friendId": "7Q0REPH3OLHIp6Ce"}'
+Example: '{"friendId": "We8iOcj8pLajzJjX"}'
 """
 
 result, error = user_reject_friend_request(

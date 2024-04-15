@@ -41,6 +41,7 @@ from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 @click.argument("limit", type=int)
 @click.argument("offset", type=int)
 @click.option("--query", "query", type=str)
+@click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -49,6 +50,7 @@ def list_game_records_handler_v1(
     limit: int,
     offset: int,
     query: Optional[str] = None,
+    tags: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -62,10 +64,17 @@ def list_game_records_handler_v1(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = list_game_records_handler_v1_internal(
         limit=limit,
         offset=offset,
         query=query,
+        tags=tags,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

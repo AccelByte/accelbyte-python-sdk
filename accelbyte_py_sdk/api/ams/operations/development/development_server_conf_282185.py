@@ -46,7 +46,7 @@ class DevelopmentServerConfigurationGet(Operation):
 
         method: GET
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 

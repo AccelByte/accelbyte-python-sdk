@@ -51,18 +51,9 @@ def get_group_invitation_request_public_v1(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to Get Group Invitation Request List
 
-
-
-
     Get Group Invitation Request List for the user calling this endpoint. It will check any group invitation for this user
-
-
-
 
     Action Code: 73502
 
@@ -120,18 +111,9 @@ async def get_group_invitation_request_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to Get Group Invitation Request List
 
-
-
-
     Get Group Invitation Request List for the user calling this endpoint. It will check any group invitation for this user
-
-
-
 
     Action Code: 73502
 
@@ -192,23 +174,11 @@ def get_group_invite_request_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [READ]"
-
-
-
 
     This endpoint is used to Get Group Invite Request List
 
-
-
-
     Get Group Invite Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
-
-
-
 
     Action Code: 73501
 
@@ -270,23 +240,11 @@ async def get_group_invite_request_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [READ]"
-
-
-
 
     This endpoint is used to Get Group Invite Request List
 
-
-
-
     Get Group Invite Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
-
-
-
 
     Action Code: 73501
 
@@ -350,23 +308,11 @@ def get_group_join_request_public_v1(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [READ]"
-
-
-
 
     This endpoint is used to Get Group Join Request List
 
-
-
-
     Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
-
-
-
 
     Action Code: 73501
 
@@ -428,23 +374,11 @@ async def get_group_join_request_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [READ]"
-
-
-
 
     This endpoint is used to Get Group Join Request List
 
-
-
-
     Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
-
-
-
 
     Action Code: 73501
 
@@ -508,23 +442,11 @@ def get_group_join_request_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [READ]"
-
-
-
 
     This endpoint is used to Get Group Join Request List
 
-
-
-
     Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
-
-
-
 
     Action Code: 73501
 
@@ -586,23 +508,11 @@ async def get_group_join_request_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [READ]"
-
-
-
 
     This endpoint is used to Get Group Join Request List
 
-
-
-
     Get Group Join Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
-
-
-
 
     Action Code: 73501
 
@@ -665,18 +575,9 @@ def get_my_group_join_request_v2(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to Get My Join Request To The Groups
 
-
-
-
     Get My Join Request To The Groups for the user calling this endpoint. It will check any join request group for this user
-
-
-
 
     Action Code: 73502
 
@@ -734,18 +635,9 @@ async def get_my_group_join_request_v2_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to Get My Join Request To The Groups
 
-
-
-
     Get My Join Request To The Groups for the user calling this endpoint. It will check any join request group for this user
-
-
-
 
     Action Code: 73502
 

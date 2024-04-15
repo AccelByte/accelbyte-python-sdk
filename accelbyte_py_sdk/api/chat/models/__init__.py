@@ -31,7 +31,6 @@ from .models_add_inbox_category_response import ModelsAddInboxCategoryResponse
 from .models_ban_topic_member_param import ModelsBanTopicMemberParam
 from .models_ban_topic_member_result import ModelsBanTopicMemberResult
 from .models_category_hook import ModelsCategoryHook
-from .models_category_hook import DriverEnum as ModelsCategoryHookDriverEnum
 from .models_channel_topic_response import ModelsChannelTopicResponse
 from .models_channel_topic_summary_response import ModelsChannelTopicSummaryResponse
 from .models_channel_topic_with_pagination_response import (

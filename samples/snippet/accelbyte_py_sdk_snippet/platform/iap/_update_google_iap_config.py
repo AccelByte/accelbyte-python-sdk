@@ -12,7 +12,7 @@ Definition: GoogleIAPConfigRequest
 application_name: str
 service_account_id: str
 
-Example: '{"applicationName": "1wRRyaclci1wLPvf", "serviceAccountId": "dkxnUhDqvoyWMLt7"}'
+Example: '{"applicationName": "cRGNuVc1uyeTOB08", "serviceAccountId": "Oc5mqwomTvh67mnT"}'
 """
 
 result, error = update_google_iap_config(

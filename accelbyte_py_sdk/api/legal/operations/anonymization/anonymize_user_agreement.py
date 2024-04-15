@@ -35,7 +35,8 @@ from ...models import ErrorEntity
 class AnonymizeUserAgreement(Operation):
     """Anonymize user's agreement record (anonymizeUserAgreement)
 
-    This API will anonymize agreement record for specified user. Other detail info:
+    This API will anonymize agreement record for specified user.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
 

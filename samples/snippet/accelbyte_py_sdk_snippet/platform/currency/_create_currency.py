@@ -17,7 +17,7 @@ currency_type: str
 decimals: int
 localization_descriptions: Dict[str, str]
 
-Example: '{"currencyCode": "7OnidmIow4ypHqFw", "currencySymbol": "jOT3lQQp7nMFnAbc", "currencyType": "VIRTUAL", "decimals": 60, "localizationDescriptions": {"D6c2Q4kwdB3EYakM": "wVqg7UTnp5kaNDgm", "ZSlaI4HzNdpOwvCI": "pd4VSQHPgXsksiwF", "Er5sJ5x9oMaKcare": "exx5tD9MOh1b9VYB"}}'
+Example: '{"currencyCode": "1jI7E8bXCQT9K5c7", "currencySymbol": "vM4OxtuNrxmnEeq3", "currencyType": "REAL", "decimals": 10, "localizationDescriptions": {"jZLDl1uOERy9R8Vw": "SxRIkiTgwkGME8XN", "hfQRtUo6X78G18bh": "PqhZKA2g1JbnmaZb", "rbJjx79lyznTgZVL": "VDMYkhvu1WEVaLL1"}}'
 """
 
 result, error = create_currency(

@@ -12,7 +12,7 @@ body:
 Definition: ModelsUserFollowRequest
 follow_status: bool
 
-Example: '{"followStatus": false}'
+Example: '{"followStatus": true}'
 """
 
 result, error = update_user_follow_status(

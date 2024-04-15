@@ -13,7 +13,7 @@ is_enabled: bool
 is_mandatory: bool
 new_name: str
 
-Example: '{"isEnabled": true, "isMandatory": false, "newName": "erRBvExMCcQTAirD"}'
+Example: '{"isEnabled": false, "isMandatory": true, "newName": "twSTr2xYU7DTFywO"}'
 """
 
 result, error = admin_update_profanity_list(

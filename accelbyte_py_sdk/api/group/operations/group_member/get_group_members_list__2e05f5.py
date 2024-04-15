@@ -36,20 +36,9 @@ from ...models import ResponseErrorResponse
 class GetGroupMembersListAdminV1(Operation):
     """Get list of group members (getGroupMembersListAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
-
-
-
-
     This endpoint is used to get list of group members.
 
-
-
-
     Action Code: 73410
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}/members

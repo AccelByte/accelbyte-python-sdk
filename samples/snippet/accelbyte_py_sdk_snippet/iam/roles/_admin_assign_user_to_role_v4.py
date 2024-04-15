@@ -14,7 +14,7 @@ assigned_namespaces: List[str]
 namespace: str
 user_id: str
 
-Example: '{"assignedNamespaces": ["6ev4r007zHpHJGLX", "VggIX4xHBjlMEGgG", "hlyzUSwLXUXc5Kfb"], "namespace": "Z8D4IbxvWX8vOY7m", "userId": "I6NGJDFiuuYUL6aL"}'
+Example: '{"assignedNamespaces": ["6b3EQ6ZEOgNaabQ5", "JeVEx0HwLNmTXwVJ", "nLyRNPAlokSuSVpp"], "namespace": "ABWs8uMqRSnKQC6L", "userId": "yNha0Ez02hfXjo1x"}'
 """
 
 result, error = admin_assign_user_to_role_v4(

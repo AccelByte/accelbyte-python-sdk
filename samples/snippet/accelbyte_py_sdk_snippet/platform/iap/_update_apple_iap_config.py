@@ -12,7 +12,7 @@ Definition: AppleIAPConfigRequest
 bundle_id: str
 password: str
 
-Example: '{"bundleId": "4dUV6HIDJtPRoKUZ", "password": "mIBbRCBTCP1FiRjh"}'
+Example: '{"bundleId": "0wRPmrCBL9i84Cge", "password": "KptnPOqHB0nRtkbt"}'
 """
 
 result, error = update_apple_iap_config(

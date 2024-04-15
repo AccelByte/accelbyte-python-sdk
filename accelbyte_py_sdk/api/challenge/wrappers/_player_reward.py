@@ -187,10 +187,10 @@ def public_claim_user_rewards(
 ):
     """Claim User's Rewards (publicClaimUserRewards)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD:CLAIM [UPDATE]
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:REWARD:CLAIM [UPDATE]
+        - NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards/claim
@@ -240,10 +240,10 @@ async def public_claim_user_rewards_async(
 ):
     """Claim User's Rewards (publicClaimUserRewards)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD:CLAIM [UPDATE]
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:REWARD:CLAIM [UPDATE]
+        - NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards/claim
@@ -298,10 +298,10 @@ def public_get_user_rewards(
 ):
     """List User's Rewards (publicGetUserRewards)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+        - NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards
@@ -361,10 +361,10 @@ async def public_get_user_rewards_async(
 ):
     """List User's Rewards (publicGetUserRewards)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+        - NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards

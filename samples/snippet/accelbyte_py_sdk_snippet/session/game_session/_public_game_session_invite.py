@@ -12,7 +12,7 @@ Definition: ApimodelsSessionInviteRequest
 platform_id: str
 user_id: str
 
-Example: '{"platformID": "8BV6wlcZZ6kmvlqp", "userID": "1tk3AjqM9l3tYWVj"}'
+Example: '{"platformID": "jphrFY1fy8mKJgj5", "userID": "ZeywIFYwJ2PfNUSK"}'
 """
 
 result, error = public_game_session_invite(

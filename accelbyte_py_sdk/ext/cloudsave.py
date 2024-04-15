@@ -429,6 +429,7 @@ def create_models_game_binary_record_response_example() -> (
     instance.updated_at = randomize("date")
     instance.binary_info = create_models_binary_info_response_example()
     instance.set_by = randomize()
+    instance.tags = [randomize()]
     return instance
 
 

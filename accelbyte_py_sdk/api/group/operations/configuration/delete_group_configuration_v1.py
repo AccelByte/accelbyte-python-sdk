@@ -35,20 +35,9 @@ from ...models import ResponseErrorResponse
 class DeleteGroupConfigurationV1(Operation):
     """Delete group configuration (deleteGroupConfigurationV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]'
-
-
-
-
     This endpoint is used to delete group configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
-
-
-
     Action Code: 73101
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}

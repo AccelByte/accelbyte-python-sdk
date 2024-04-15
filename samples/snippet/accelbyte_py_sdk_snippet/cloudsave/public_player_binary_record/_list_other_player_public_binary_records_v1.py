@@ -10,6 +10,7 @@ result, error = list_other_player_public_binary_records_v1(
     user_id=user_id,
     limit=limit,
     offset=offset,
+    tags=tags,
     namespace=namespace,
     x_additional_headers=x_additional_headers,
 )

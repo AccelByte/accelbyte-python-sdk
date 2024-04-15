@@ -16,7 +16,7 @@ Definition: List[ModelsRolePermission]
     action: int
     resource_name: str
 
-Example: '{"memberRoleName": "ZelHQEkOzimqIjLu", "memberRolePermissions": [{"action": 76, "resourceName": "TNHpo8jAtfcoigGA"}, {"action": 48, "resourceName": "YLSokNlbw9sCIRlW"}, {"action": 18, "resourceName": "j9qun5ciXvUvjaKj"}]}'
+Example: '{"memberRoleName": "DMs3TuVKJOR7h7uE", "memberRolePermissions": [{"action": 33, "resourceName": "7esowwXlU5cXJw9T"}, {"action": 51, "resourceName": "B6gtAWIqqBFyXZBp"}, {"action": 3, "resourceName": "IxEhBXfmJhNnOIzE"}]}'
 """
 
 result, error = create_member_role_admin_v1(

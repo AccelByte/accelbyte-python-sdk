@@ -12,7 +12,7 @@ Definition: List[ModelNamespaceRoleRequest]
 namespace: str
 role_id: str
 
-Example: '[{"namespace": "ivPcqWuUQLbl76Xu", "roleId": "A3y4cMayV6AlPqIX"}, {"namespace": "HUeO1drJfWnIEdUR", "roleId": "PCzjfw7ruxAZVchd"}, {"namespace": "o8291JSBWOxT3sC4", "roleId": "1qa3alPyuFj0lDrP"}]'
+Example: '[{"namespace": "tJWw0qxn6VOpgHAP", "roleId": "BczZsmJTWcWx3UXG"}, {"namespace": "RgPXTFchefkETB75", "roleId": "5lm3FQIxL9bp5BVI"}, {"namespace": "8GqLNJ7WwjNbvyYJ", "roleId": "C5Yklv63HuQetY00"}]'
 """
 
 result, error = admin_save_user_role_v3(

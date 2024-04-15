@@ -13,7 +13,7 @@ data: Dict[str, Any]
 enable_custom_match_function: bool
 name: str
 
-Example: '{"data": {"7NWcrlnldebetnSL": {}, "neEDnaypl7H6CEIO": {}, "9LltsrMKJqTQxzU3": {}}, "enable_custom_match_function": true, "name": "iDWHIDkDNlGuoI0S"}'
+Example: '{"data": {"TabGMLUS675NXL6K": {}, "KiYJGjxyk4Kmwau9": {}, "3jajjIaWE02gvP3o": {}}, "enable_custom_match_function": true, "name": "SGIcNQ2lMUHfXDdH"}'
 """
 
 result, error = update_rule_set(

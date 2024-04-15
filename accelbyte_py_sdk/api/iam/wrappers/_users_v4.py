@@ -2954,7 +2954,7 @@ def admin_update_my_user_v4(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        409: Conflict - RestErrorResponse (10177: username already used)
+        409: Conflict - RestErrorResponse (10177: username already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -3001,7 +3001,7 @@ async def admin_update_my_user_v4_async(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        409: Conflict - RestErrorResponse (10177: username already used)
+        409: Conflict - RestErrorResponse (10177: username already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -3301,7 +3301,7 @@ def admin_update_user_v4(
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -3369,7 +3369,7 @@ async def admin_update_user_v4_async(
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -3446,6 +3446,8 @@ def create_user_from_invitation_v4(
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
+        409: Conflict - RestErrorResponse (10222: unique display name already exists)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
@@ -3518,6 +3520,8 @@ async def create_user_from_invitation_v4_async(
         403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
+
+        409: Conflict - RestErrorResponse (10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -3712,7 +3716,7 @@ def public_create_user_v4(
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -3776,7 +3780,7 @@ async def public_create_user_v4_async(
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -5894,7 +5898,7 @@ def public_update_user_v4(
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -5956,7 +5960,7 @@ async def public_update_user_v4_async(
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -6132,7 +6136,7 @@ def public_upgrade_headless_account_with_verification_code_v4(
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
-        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -6198,7 +6202,7 @@ async def public_upgrade_headless_account_with_verification_code_v4_async(
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
-        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """

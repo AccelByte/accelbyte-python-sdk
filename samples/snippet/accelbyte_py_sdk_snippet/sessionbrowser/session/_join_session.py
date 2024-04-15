@@ -12,7 +12,7 @@ body:
 Definition: ModelsJoinGameSessionRequest
 password: str
 
-Example: '{"password": "Xs7uq4eOB0Cql12j"}'
+Example: '{"password": "xMQfxNQWIlsanPUg"}'
 """
 
 result, error = join_session(

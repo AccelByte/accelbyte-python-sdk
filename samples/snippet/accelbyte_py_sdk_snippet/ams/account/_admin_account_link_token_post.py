@@ -12,7 +12,7 @@ body:
 Definition: ApiAccountLinkRequest
 token: str
 
-Example: '{"token": "6FrD94cK2PPJYpvc"}'
+Example: '{"token": "ZvAxkWAmPCUVUXNm"}'
 """
 
 result, error = admin_account_link_token_post(

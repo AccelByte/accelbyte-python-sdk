@@ -23,7 +23,7 @@ session_timeout: int
 unreachable_timeout: int
 updated_at: str
 
-Example: '{"claim_timeout": 33, "createdAt": "1983-03-09T00:00:00Z", "creation_timeout": 5, "default_version": "D9fIvuqXHea7hR0a", "modifiedBy": "KecbmN1itMHH4OfC", "namespace": "slNKcW6EA7nJAv1n", "port": 28, "ports": {"rFoP3raM7mzFGEC6": 45, "UGoJ5CeS1EFJC2Zv": 73, "Ey8vS0tEedk5r7zr": 19}, "protocol": "65xLm2Asqwc81jZX", "providers": ["LLcNNZSntOZodINj", "gowVIOFSopJsuLbc", "2TIGkjv4kuasEePJ"], "session_timeout": 64, "unreachable_timeout": 19, "updatedAt": "1977-08-03T00:00:00Z"}'
+Example: '{"claim_timeout": 53, "createdAt": "1975-10-04T00:00:00Z", "creation_timeout": 98, "default_version": "isb9NFKllAXr0281", "modifiedBy": "pHfAeN3Abm5X11tO", "namespace": "7u6vjyRiOthKor6s", "port": 95, "ports": {"fm8mwxwkBlnLCPtL": 73, "yWN6wtwlNzp0HTbI": 82, "3Jd43K3qLGvEPORR": 17}, "protocol": "zmkAyl2vw8jPQg6f", "providers": ["8NPiqzq20eNHjjrS", "klCkAnWQOLaXEeiR", "ODVxLEUnxZBEU2cZ"], "session_timeout": 15, "unreachable_timeout": 23, "updatedAt": "1983-03-02T00:00:00Z"}'
 """
 
 result, error = save_config(

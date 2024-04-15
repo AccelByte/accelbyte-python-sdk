@@ -32,6 +32,7 @@ from ....core import same_doc_as
 from ..models import ApiDevelopmentServerConfigurationCreateRequest
 from ..models import ApiDevelopmentServerConfigurationCreateResponse
 from ..models import ApiDevelopmentServerConfigurationGetResponse
+from ..models import ApiDevelopmentServerConfigurationListResponse
 from ..models import ResponseErrorResponse
 
 from ..operations.development import DevelopmentServerConfigurationCreate
@@ -49,6 +50,8 @@ def development_server_configuration_create(
 ):
     """create a new development server configuration (DevelopmentServerConfigurationCreate)
 
+    Configuration name can be up to 128 characters and must conform to ^[.a-zA-Z0-9_-]+$
+
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
     Required Permission(s):
@@ -59,7 +62,7 @@ def development_server_configuration_create(
 
         method: POST
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 
@@ -102,6 +105,8 @@ async def development_server_configuration_create_async(
 ):
     """create a new development server configuration (DevelopmentServerConfigurationCreate)
 
+    Configuration name can be up to 128 characters and must conform to ^[.a-zA-Z0-9_-]+$
+
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
     Required Permission(s):
@@ -112,7 +117,7 @@ async def development_server_configuration_create_async(
 
         method: POST
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 
@@ -167,7 +172,7 @@ def development_server_configuration_delete(
 
         method: DELETE
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 
@@ -220,7 +225,7 @@ async def development_server_configuration_delete_async(
 
         method: DELETE
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 
@@ -275,7 +280,7 @@ def development_server_configuration_get(
 
         method: GET
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 
@@ -328,7 +333,7 @@ async def development_server_configuration_get_async(
 
         method: GET
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 
@@ -366,11 +371,13 @@ async def development_server_configuration_get_async(
 
 @same_doc_as(DevelopmentServerConfigurationList)
 def development_server_configuration_list(
+    count: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """lists all development server configurations (DevelopmentServerConfigurationList)
+    """lists development server configurations with pagination (DevelopmentServerConfigurationList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -382,7 +389,7 @@ def development_server_configuration_list(
 
         method: GET
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 
@@ -392,8 +399,12 @@ def development_server_configuration_list(
 
         namespace: (namespace) REQUIRED str in path
 
+        count: (count) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
-        200: OK - List[ApiDevelopmentServerConfigurationGetResponse] (development server configurations)
+        200: OK - ApiDevelopmentServerConfigurationListResponse (development server configurations)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -406,6 +417,8 @@ def development_server_configuration_list(
         if error:
             return None, error
     request = DevelopmentServerConfigurationList.create(
+        count=count,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -413,11 +426,13 @@ def development_server_configuration_list(
 
 @same_doc_as(DevelopmentServerConfigurationList)
 async def development_server_configuration_list_async(
+    count: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """lists all development server configurations (DevelopmentServerConfigurationList)
+    """lists development server configurations with pagination (DevelopmentServerConfigurationList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
@@ -429,7 +444,7 @@ async def development_server_configuration_list_async(
 
         method: GET
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 
@@ -439,8 +454,12 @@ async def development_server_configuration_list_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        count: (count) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
     Responses:
-        200: OK - List[ApiDevelopmentServerConfigurationGetResponse] (development server configurations)
+        200: OK - ApiDevelopmentServerConfigurationListResponse (development server configurations)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -453,6 +472,8 @@ async def development_server_configuration_list_async(
         if error:
             return None, error
     request = DevelopmentServerConfigurationList.create(
+        count=count,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(

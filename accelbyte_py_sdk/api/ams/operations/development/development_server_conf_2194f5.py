@@ -45,7 +45,7 @@ class DevelopmentServerConfigurationDelete(Operation):
 
         method: DELETE
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 

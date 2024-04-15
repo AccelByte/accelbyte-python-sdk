@@ -11,7 +11,7 @@ body:
 Definition: ModelDeviceBanUpdateRequestV4
 enabled: bool
 
-Example: '{"enabled": false}'
+Example: '{"enabled": true}'
 """
 
 result, error = admin_update_device_ban_v4(

@@ -48,7 +48,8 @@ def indirect_bulk_accept_versioned_policy(
 ):
     """Admin bulk accept Policy Versions (indirectBulkAcceptVersionedPolicy)
 
-    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. Other detail info:
+    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=1 (CREATE)
 
@@ -111,7 +112,8 @@ async def indirect_bulk_accept_versioned_policy_async(
 ):
     """Admin bulk accept Policy Versions (indirectBulkAcceptVersionedPolicy)
 
-    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. Other detail info:
+    Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=1 (CREATE)
 

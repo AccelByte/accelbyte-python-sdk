@@ -38,9 +38,6 @@ class GetMemberRolesListPublicV2(Operation):
 
     This endpoint is used to get list of member roles
 
-
-
-
     Action Code: 73201
 
     Properties:

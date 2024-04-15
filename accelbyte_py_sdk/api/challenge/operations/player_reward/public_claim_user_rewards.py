@@ -38,10 +38,10 @@ from ...models import ResponseError
 class PublicClaimUserRewards(Operation):
     """Claim User's Rewards (publicClaimUserRewards)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD:CLAIM [UPDATE]
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:REWARD:CLAIM [UPDATE]
+        - NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards/claim

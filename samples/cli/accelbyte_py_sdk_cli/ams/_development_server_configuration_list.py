@@ -33,16 +33,22 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.ams import (
     development_server_configuration_list as development_server_configuration_list_internal,
 )
-from accelbyte_py_sdk.api.ams.models import ApiDevelopmentServerConfigurationGetResponse
+from accelbyte_py_sdk.api.ams.models import (
+    ApiDevelopmentServerConfigurationListResponse,
+)
 from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 
 @click.command()
+@click.option("--count", "count", type=int)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def development_server_configuration_list(
+    count: Optional[int] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -57,6 +63,8 @@ def development_server_configuration_list(
     else:
         login_as_internal(login_as)
     result, error = development_server_configuration_list_internal(
+        count=count,
+        offset=offset,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

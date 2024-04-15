@@ -37,42 +37,19 @@ from ...models import ResponseErrorResponse
 class UpdateMemberRolePermissionAdminV1(Operation):
     """update member role permission (updateMemberRolePermissionAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
-
-
-
-
     This endpoint is used to update member role permission. It will replace the existing permission based on the request from this endpoint
-
-
-
 
     Action Code: 73205
 
 
 
-
-
-
     memberRolePermissions example value :
-
-
-
 
     "action": 2
 
-
-
-
     "resourceName": "GROUP:ROLE"
 
-
-
-
     The changes will update user role to be able to read a role of other member
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}/permissions

@@ -45,6 +45,8 @@ class ApiFleetParameters(Model):
 
         name: (name) REQUIRED str
 
+        on_demand: (onDemand) REQUIRED bool
+
         regions: (regions) REQUIRED List[ApiRegionConfig]
 
         claim_keys: (claimKeys) OPTIONAL List[str]
@@ -58,6 +60,7 @@ class ApiFleetParameters(Model):
     ds_host_configuration: ApiDSHostConfiguration  # REQUIRED
     image_deployment_profile: ApiImageDeploymentProfile  # REQUIRED
     name: str  # REQUIRED
+    on_demand: bool  # REQUIRED
     regions: List[ApiRegionConfig]  # REQUIRED
     claim_keys: List[str]  # OPTIONAL
     sampling_rules: ApiFleetArtifactsSampleRules  # OPTIONAL
@@ -84,6 +87,10 @@ class ApiFleetParameters(Model):
 
     def with_name(self, value: str) -> ApiFleetParameters:
         self.name = value
+        return self
+
+    def with_on_demand(self, value: bool) -> ApiFleetParameters:
+        self.on_demand = value
         return self
 
     def with_regions(self, value: List[ApiRegionConfig]) -> ApiFleetParameters:
@@ -126,6 +133,10 @@ class ApiFleetParameters(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "on_demand"):
+            result["onDemand"] = bool(self.on_demand)
+        elif include_empty:
+            result["onDemand"] = False
         if hasattr(self, "regions"):
             result["regions"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.regions
@@ -155,6 +166,7 @@ class ApiFleetParameters(Model):
         ds_host_configuration: ApiDSHostConfiguration,
         image_deployment_profile: ApiImageDeploymentProfile,
         name: str,
+        on_demand: bool,
         regions: List[ApiRegionConfig],
         claim_keys: Optional[List[str]] = None,
         sampling_rules: Optional[ApiFleetArtifactsSampleRules] = None,
@@ -165,6 +177,7 @@ class ApiFleetParameters(Model):
         instance.ds_host_configuration = ds_host_configuration
         instance.image_deployment_profile = image_deployment_profile
         instance.name = name
+        instance.on_demand = on_demand
         instance.regions = regions
         if claim_keys is not None:
             instance.claim_keys = claim_keys
@@ -204,6 +217,10 @@ class ApiFleetParameters(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "onDemand" in dict_ and dict_["onDemand"] is not None:
+            instance.on_demand = bool(dict_["onDemand"])
+        elif include_empty:
+            instance.on_demand = False
         if "regions" in dict_ and dict_["regions"] is not None:
             instance.regions = [
                 ApiRegionConfig.create_from_dict(i0, include_empty=include_empty)
@@ -266,6 +283,7 @@ class ApiFleetParameters(Model):
             "dsHostConfiguration": "ds_host_configuration",
             "imageDeploymentProfile": "image_deployment_profile",
             "name": "name",
+            "onDemand": "on_demand",
             "regions": "regions",
             "claimKeys": "claim_keys",
             "samplingRules": "sampling_rules",
@@ -278,6 +296,7 @@ class ApiFleetParameters(Model):
             "dsHostConfiguration": True,
             "imageDeploymentProfile": True,
             "name": True,
+            "onDemand": True,
             "regions": True,
             "claimKeys": False,
             "samplingRules": False,

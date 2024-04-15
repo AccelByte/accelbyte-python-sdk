@@ -16,7 +16,7 @@ end_date: str
 reason: str
 skip_notif: bool
 
-Example: '{"ban": "2S4dRDtZvg4qBIgD", "comment": "k0F2hZ5e7YTTyM72", "endDate": "QR0hJ2zgRZDcbjJO", "reason": "2oQiidyum3TmuMiV", "skipNotif": true}'
+Example: '{"ban": "3NBsQzjX24ZzU9ae", "comment": "jrxSXaBsPt2pHHdv", "endDate": "yOaDIk9Tg8F1gN5u", "reason": "6oHNKPyPCz1jTSIN", "skipNotif": false}'
 """
 
 result, error = ban_user(

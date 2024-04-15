@@ -3280,6 +3280,8 @@ def create_oauthmodel_token_response_v3_example() -> OauthmodelTokenResponseV3:
     instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
     instance.refresh_token = randomize()
     instance.roles = [randomize()]
+    instance.simultaneous_platform_id = randomize()
+    instance.simultaneous_platform_user_id = randomize()
     instance.unique_display_name = randomize()
     instance.user_id = randomize("uid")
     instance.xuid = randomize()
@@ -3318,6 +3320,8 @@ def create_oauthmodel_token_with_device_cookie_response_v3_example() -> (
     instance.refresh_expires_in = randomize("int", min_val=1, max_val=1000)
     instance.refresh_token = randomize()
     instance.roles = [randomize()]
+    instance.simultaneous_platform_id = randomize()
+    instance.simultaneous_platform_user_id = randomize()
     instance.unique_display_name = randomize()
     instance.user_id = randomize("uid")
     instance.xuid = randomize()

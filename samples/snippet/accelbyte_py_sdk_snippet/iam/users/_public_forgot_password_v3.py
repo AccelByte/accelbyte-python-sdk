@@ -12,7 +12,7 @@ Definition: ModelForgotPasswordRequestV3
 email_address: str
 language_tag: str
 
-Example: '{"emailAddress": "UeCEk6toeiWEh5T5", "languageTag": "pk2oSxb4Tcl3K02z"}'
+Example: '{"emailAddress": "pgyKXPchlKSnS0rk", "languageTag": "HhtkUKWOZuFAoVNB"}'
 """
 
 result, error = public_forgot_password_v3(

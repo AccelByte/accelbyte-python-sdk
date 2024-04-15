@@ -62,42 +62,19 @@ def create_member_role_admin_v1(
 ):
     """create new member role (createMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
-
-
-
-
     This endpoint is used to create new member role
-
-
-
 
     Action Code: 73202
 
 
 
-
-
-
     memberRolePermissions example value :
-
-
-
 
     "action": 1
 
-
-
-
     "resourceName": "GROUP:ROLE"
 
-
-
-
     The changes will give user with that role have a permission to create a role for new group member
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles
@@ -147,42 +124,19 @@ async def create_member_role_admin_v1_async(
 ):
     """create new member role (createMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
-
-
-
-
     This endpoint is used to create new member role
-
-
-
 
     Action Code: 73202
 
 
 
-
-
-
     memberRolePermissions example value :
-
-
-
 
     "action": 1
 
-
-
-
     "resourceName": "GROUP:ROLE"
 
-
-
-
     The changes will give user with that role have a permission to create a role for new group member
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [CREATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles
@@ -234,20 +188,9 @@ def delete_member_role_admin_v1(
 ):
     """delete member role (deleteMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
-
-
-
-
     This endpoint is used to delete member role. Any member role can't be deleted if the specific role is applied to the configuration (admin and member role)
 
-
-
-
     Action Code: 73207
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
@@ -299,20 +242,9 @@ async def delete_member_role_admin_v1_async(
 ):
     """delete member role (deleteMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
-
-
-
-
     This endpoint is used to delete member role. Any member role can't be deleted if the specific role is applied to the configuration (admin and member role)
 
-
-
-
     Action Code: 73207
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [DELETE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
@@ -369,13 +301,7 @@ def delete_member_role_public_v1(
 
     Required Member Role Permission: "GROUP:ROLE [UPDATE]"
 
-
-
-
     This endpoint is used to remove role from group member
-
-
-
 
     Action Code: 73204
 
@@ -437,13 +363,7 @@ async def delete_member_role_public_v1_async(
 
     Required Member Role Permission: "GROUP:ROLE [UPDATE]"
 
-
-
-
     This endpoint is used to remove role from group member
-
-
-
 
     Action Code: 73204
 
@@ -508,13 +428,7 @@ def delete_member_role_public_v2(
 
     Required Member Role Permission: "GROUP:ROLE [UPDATE]"
 
-
-
-
     This endpoint is used to remove role from group member
-
-
-
 
     Action Code: 73204
 
@@ -580,13 +494,7 @@ async def delete_member_role_public_v2_async(
 
     Required Member Role Permission: "GROUP:ROLE [UPDATE]"
 
-
-
-
     This endpoint is used to remove role from group member
-
-
-
 
     Action Code: 73204
 
@@ -651,20 +559,9 @@ def get_member_roles_list_admin_v1(
 ):
     """get all list of member roles (getMemberRolesListAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
-
-
-
-
     This endpoint is used to get list of member roles
 
-
-
-
     Action Code: 73201
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles
@@ -718,20 +615,9 @@ async def get_member_roles_list_admin_v1_async(
 ):
     """get all list of member roles (getMemberRolesListAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
-
-
-
-
     This endpoint is used to get list of member roles
 
-
-
-
     Action Code: 73201
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles
@@ -789,13 +675,7 @@ def get_member_roles_list_public_v1(
 
     Required Member Role Permission: "GROUP:ROLE [READ]"
 
-
-
-
     This endpoint is used to get list of member roles
-
-
-
 
     Action Code: 73201
 
@@ -853,13 +733,7 @@ async def get_member_roles_list_public_v1_async(
 
     Required Member Role Permission: "GROUP:ROLE [READ]"
 
-
-
-
     This endpoint is used to get list of member roles
-
-
-
 
     Action Code: 73201
 
@@ -919,9 +793,6 @@ def get_member_roles_list_public_v2(
 
     This endpoint is used to get list of member roles
 
-
-
-
     Action Code: 73201
 
     Properties:
@@ -978,9 +849,6 @@ async def get_member_roles_list_public_v2_async(
 
     This endpoint is used to get list of member roles
 
-
-
-
     Action Code: 73201
 
     Properties:
@@ -1036,20 +904,9 @@ def get_single_member_role_admin_v1(
 ):
     """get member role (getSingleMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
-
-
-
-
     This endpoint is used to get member role based on the role ID
 
-
-
-
     Action Code: 73203
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
@@ -1101,20 +958,9 @@ async def get_single_member_role_admin_v1_async(
 ):
     """get member role (getSingleMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
-
-
-
-
     This endpoint is used to get member role based on the role ID
 
-
-
-
     Action Code: 73203
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
@@ -1169,20 +1015,9 @@ def update_member_role_admin_v1(
 ):
     """update member role (updateMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
-
-
-
-
     This endpoint is used to update member role
 
-
-
-
     Action Code: 73204
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
@@ -1238,20 +1073,9 @@ async def update_member_role_admin_v1_async(
 ):
     """update member role (updateMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
-
-
-
-
     This endpoint is used to update member role
 
-
-
-
     Action Code: 73204
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}
@@ -1309,42 +1133,19 @@ def update_member_role_permission_admin_v1(
 ):
     """update member role permission (updateMemberRolePermissionAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
-
-
-
-
     This endpoint is used to update member role permission. It will replace the existing permission based on the request from this endpoint
-
-
-
 
     Action Code: 73205
 
 
 
-
-
-
     memberRolePermissions example value :
-
-
-
 
     "action": 2
 
-
-
-
     "resourceName": "GROUP:ROLE"
 
-
-
-
     The changes will update user role to be able to read a role of other member
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}/permissions
@@ -1400,42 +1201,19 @@ async def update_member_role_permission_admin_v1_async(
 ):
     """update member role permission (updateMemberRolePermissionAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
-
-
-
-
     This endpoint is used to update member role permission. It will replace the existing permission based on the request from this endpoint
-
-
-
 
     Action Code: 73205
 
 
 
-
-
-
     memberRolePermissions example value :
-
-
-
 
     "action": 2
 
-
-
-
     "resourceName": "GROUP:ROLE"
 
-
-
-
     The changes will update user role to be able to read a role of other member
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}/permissions
@@ -1495,13 +1273,7 @@ def update_member_role_public_v1(
 
     Required Member Role Permission: "GROUP:ROLE [UPDATE]
 
-
-
-
     This endpoint is used to assign role to group member
-
-
-
 
     Action Code: 73204
 
@@ -1561,13 +1333,7 @@ async def update_member_role_public_v1_async(
 
     Required Member Role Permission: "GROUP:ROLE [UPDATE]
 
-
-
-
     This endpoint is used to assign role to group member
-
-
-
 
     Action Code: 73204
 
@@ -1630,13 +1396,7 @@ def update_member_role_public_v2(
 
     Required Member Role Permission: "GROUP:ROLE [UPDATE]
 
-
-
-
     This endpoint is used to assign role to group member
-
-
-
 
     Action Code: 73204
 
@@ -1700,13 +1460,7 @@ async def update_member_role_public_v2_async(
 
     Required Member Role Permission: "GROUP:ROLE [UPDATE]
 
-
-
-
     This endpoint is used to assign role to group member
-
-
-
 
     Action Code: 73204
 

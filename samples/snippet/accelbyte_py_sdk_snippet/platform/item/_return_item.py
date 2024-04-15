@@ -12,7 +12,7 @@ body:
 Definition: ItemReturnRequest
 order_no: str
 
-Example: '{"orderNo": "84fHvjvVEGIJ2xE4"}'
+Example: '{"orderNo": "7agxkjh2UXlvmDpa"}'
 """
 
 result, error = return_item(

@@ -14,7 +14,7 @@ content_type: str
 description: str
 locale_code: str
 
-Example: '{"contentType": "GxWXG4XU5IOui8ri", "description": "R68UgPXNTgudyzwJ", "localeCode": "5yZqcaOoqLaBKV89"}'
+Example: '{"contentType": "WDDSl9SZqpRliM4h", "description": "0bLfzeIwxNm4Iseb", "localeCode": "XaxSuIL4XBKgh7FR"}'
 """
 
 result, error = create_localized_policy_version_1(

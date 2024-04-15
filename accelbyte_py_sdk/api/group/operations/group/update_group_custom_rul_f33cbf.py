@@ -39,15 +39,7 @@ class UpdateGroupCustomRulePublicV2(Operation):
 
     Required valid user authentication
 
-
-
-
-    Update group custom rule. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based
-    on the access token
-
-
-
+    Update group custom rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73308
 

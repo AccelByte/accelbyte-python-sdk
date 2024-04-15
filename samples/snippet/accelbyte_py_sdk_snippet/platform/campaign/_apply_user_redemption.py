@@ -14,7 +14,7 @@ Definition: RedeemRequest
 code: str
 order_no: str
 
-Example: '{"code": "rIYEJTPtKIfxGfyY", "orderNo": "ehPDjfXU5wpxJvpd"}'
+Example: '{"code": "scyU79gMScNTCki7", "orderNo": "KzTRdhLZIIdCDDJ5"}'
 """
 
 result, error = apply_user_redemption(

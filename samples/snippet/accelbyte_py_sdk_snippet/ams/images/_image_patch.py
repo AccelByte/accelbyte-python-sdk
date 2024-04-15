@@ -15,7 +15,7 @@ is_protected: bool
 name: str
 removed_tags: List[str]
 
-Example: '{"addedTags": ["lICg4Bz4iywXDrcm", "bcPJCmmdKAtcdgK0", "GbZOs25oDOLuNhDW"], "isProtected": false, "name": "VJCXIZZSWJAH2kDA", "removedTags": ["P7dc6PoSyb6XJlaH", "wp2Dl3HtEGeHpRCQ", "9g12N7MSituJAubP"]}'
+Example: '{"addedTags": ["w1ZaeZuJhHy5unak", "OvYjwIHRLyKzXql4", "CVCe9LAxhnwEFVj1"], "isProtected": false, "name": "4VMZt1tVi9Pn9oXa", "removedTags": ["YukQ30WowbWY7MTe", "ZofpxXsqRdYSPZxo", "n1U2CU0UZgcMeixt"]}'
 """
 
 result, error = image_patch(

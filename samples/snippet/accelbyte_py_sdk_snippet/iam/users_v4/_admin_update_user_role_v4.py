@@ -13,7 +13,7 @@ Definition: ModelAddUserRoleV4Request
 assigned_namespaces: List[str]
 role_id: str
 
-Example: '{"assignedNamespaces": ["d80SxzDpg0OxbOIQ", "D7zZNOkZgunlZ3jm", "gkSuBv4WFnZlloCr"], "roleId": "26q2nTbaJ7aaT78z"}'
+Example: '{"assignedNamespaces": ["nzbMktehoF300XaJ", "66Y0Q5RVudT0VEop", "BCp6Pzc5xO6snZ9r"], "roleId": "SZszZ7YUtwW3IlYX"}'
 """
 
 result, error = admin_update_user_role_v4(

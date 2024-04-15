@@ -14,7 +14,7 @@ Definition: ModelLinkPlatformAccountWithProgressionRequest
 chosen_namespaces: List[str]
 request_id: str
 
-Example: '{"chosenNamespaces": ["0pUjx1uRIUAtDrnA", "x3oQaJ0L6YdT5Zh8", "QgDDyVhFcqGON59S"], "requestId": "sfQahLctYmgg1rsU"}'
+Example: '{"chosenNamespaces": ["PMY7zzT2dF9WugpA", "EH3wybBXadeue50T", "KRJUTVRf71Sx5rOm"], "requestId": "0cziTZ6sm4npwmgC"}'
 """
 
 result, error = public_force_link_platform_with_progression(

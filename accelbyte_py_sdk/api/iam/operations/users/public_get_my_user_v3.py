@@ -41,14 +41,18 @@ class PublicGetMyUserV3(Operation):
     __Supported 3rd platforms:__
 
     * __PSN(ps4web, ps4, ps5)__
+    * account id
     * display name
     * avatar
     * __Xbox(live, xblweb)__
+    * xuid or pxuid
     * display name
     * __Steam(steam, steamopenid)__
+    * steam id
     * display name
     * avatar
     * __EpicGames(epicgames)__
+    * epic account id
     * display name
 
     action code : 10147

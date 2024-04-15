@@ -14,7 +14,7 @@ body:
 Definition: ApimodelsUpdateGameSessionBackfillRequest
 backfill_ticket_id: str
 
-Example: '{"backfillTicketID": "f09iXuAn7Qrknde0"}'
+Example: '{"backfillTicketID": "FXK5SQi9scBdFCrF"}'
 """
 
 result, error = update_game_session_backfill_ticket_id(

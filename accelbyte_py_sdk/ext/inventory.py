@@ -29,6 +29,7 @@ from ..api.inventory.models import ApimodelsChainingOperationReq
 from ..api.inventory.models import ApimodelsChainingOperationResp
 from ..api.inventory.models import ApimodelsConsumeItem
 from ..api.inventory.models import ApimodelsConsumeItemReq
+from ..api.inventory.models import ApimodelsCreateIntegrationConfigurationReq
 from ..api.inventory.models import ApimodelsCreateInventoryConfigurationReq
 from ..api.inventory.models import ApimodelsCreateInventoryReq
 from ..api.inventory.models import ApimodelsCreateItem
@@ -38,10 +39,13 @@ from ..api.inventory.models import ApimodelsCreateTagReq
 from ..api.inventory.models import ApimodelsCreateTagResp
 from ..api.inventory.models import ApimodelsDeleteInventoryReq
 from ..api.inventory.models import ApimodelsErrorResponse
+from ..api.inventory.models import ApimodelsIntegrationConfigurationResp
+from ..api.inventory.models import ApimodelsInventoryConfig
 from ..api.inventory.models import ApimodelsInventoryConfigurationReq
 from ..api.inventory.models import ApimodelsInventoryConfigurationResp
 from ..api.inventory.models import ApimodelsInventoryResp
 from ..api.inventory.models import ApimodelsItemResp
+from ..api.inventory.models import ApimodelsListIntegrationConfigurationsResp
 from ..api.inventory.models import ApimodelsListInventoryConfigurationsResp
 from ..api.inventory.models import ApimodelsListInventoryResp
 from ..api.inventory.models import ApimodelsListItemResp
@@ -51,16 +55,20 @@ from ..api.inventory.models import ApimodelsMoveItemsReq
 from ..api.inventory.models import ApimodelsMoveItemsResp
 from ..api.inventory.models import ApimodelsOperation
 from ..api.inventory.models import ApimodelsPaging
+from ..api.inventory.models import ApimodelsPurchaseValidationItemReq
+from ..api.inventory.models import ApimodelsPurchaseValidationReq
 from ..api.inventory.models import ApimodelsRemoveInventoryItemReq
 from ..api.inventory.models import ApimodelsRemoveItem
 from ..api.inventory.models import ApimodelsSaveItemReq
 from ..api.inventory.models import ApimodelsSaveItemToInventoryReq
 from ..api.inventory.models import ApimodelsTradeItem
 from ..api.inventory.models import ApimodelsTradeItemResp
+from ..api.inventory.models import ApimodelsUpdateIntegrationConfigurationReq
 from ..api.inventory.models import ApimodelsUpdateInventoryReq
 from ..api.inventory.models import ApimodelsUpdateItem
 from ..api.inventory.models import ApimodelsUpdateItemReq
 from ..api.inventory.models import ApimodelsUpdateItemResp
+from ..api.inventory.models import ApimodelsUpdateStatusIntegrationConfigurationReq
 
 
 def create_apimodels_admin_update_item_req_example() -> ApimodelsAdminUpdateItemReq:
@@ -107,6 +115,16 @@ def create_apimodels_consume_item_req_example() -> ApimodelsConsumeItemReq:
     instance.qty = randomize("int", min_val=1, max_val=1000)
     instance.slot_id = randomize()
     instance.source_item_id = randomize()
+    return instance
+
+
+def create_apimodels_create_integration_configuration_req_example() -> (
+    ApimodelsCreateIntegrationConfigurationReq
+):
+    instance = ApimodelsCreateIntegrationConfigurationReq()
+    instance.service_name = randomize()
+    instance.target_inventory_code = randomize()
+    instance.map_item_type = [randomize()]
     return instance
 
 
@@ -189,6 +207,27 @@ def create_apimodels_error_response_example() -> ApimodelsErrorResponse:
     return instance
 
 
+def create_apimodels_integration_configuration_resp_example() -> (
+    ApimodelsIntegrationConfigurationResp
+):
+    instance = ApimodelsIntegrationConfigurationResp()
+    instance.created_at = randomize("date")
+    instance.id_ = randomize()
+    instance.item_types = [randomize()]
+    instance.namespace = randomize("slug")
+    instance.service_name = randomize()
+    instance.status = randomize()
+    instance.target_inventory_code = randomize()
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_apimodels_inventory_config_example() -> ApimodelsInventoryConfig:
+    instance = ApimodelsInventoryConfig()
+    instance.slot_used = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_apimodels_inventory_configuration_req_example() -> (
     ApimodelsInventoryConfigurationReq
 ):
@@ -252,6 +291,16 @@ def create_apimodels_item_resp_example() -> ApimodelsItemResp:
     instance.type_ = randomize()
     instance.updated_at = randomize("date")
     instance.user_id = randomize("uid")
+    instance.platform_available = randomize("bool")
+    return instance
+
+
+def create_apimodels_list_integration_configurations_resp_example() -> (
+    ApimodelsListIntegrationConfigurationsResp
+):
+    instance = ApimodelsListIntegrationConfigurationsResp()
+    instance.data = [create_apimodels_integration_configuration_resp_example()]
+    instance.paging = create_apimodels_paging_example()
     return instance
 
 
@@ -328,6 +377,35 @@ def create_apimodels_paging_example() -> ApimodelsPaging:
     return instance
 
 
+def create_apimodels_purchase_validation_item_req_example() -> (
+    ApimodelsPurchaseValidationItemReq
+):
+    instance = ApimodelsPurchaseValidationItemReq()
+    instance.bundled_qty = randomize("int", min_val=1, max_val=1000)
+    instance.entitlement_type = randomize()
+    instance.inventory_config = create_apimodels_inventory_config_example()
+    instance.item_id = randomize()
+    instance.item_type = randomize()
+    instance.sku = randomize("slug")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_apimodels_purchase_validation_req_example() -> (
+    ApimodelsPurchaseValidationReq
+):
+    instance = ApimodelsPurchaseValidationReq()
+    instance.item_id = randomize()
+    instance.item_type = randomize()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.sku = randomize("slug")
+    instance.entitlement_type = randomize()
+    instance.inventory_config = create_apimodels_inventory_config_example()
+    instance.items = [create_apimodels_purchase_validation_item_req_example()]
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_apimodels_remove_inventory_item_req_example() -> (
     ApimodelsRemoveInventoryItemReq
 ):
@@ -353,6 +431,7 @@ def create_apimodels_save_item_req_example() -> ApimodelsSaveItemReq:
     instance.server_custom_attributes = {randomize(): randomize()}
     instance.slot_id = randomize()
     instance.slot_used = randomize("int", min_val=1, max_val=1000)
+    instance.source = randomize()
     instance.source_item_id = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
@@ -368,6 +447,7 @@ def create_apimodels_save_item_to_inventory_req_example() -> (
     instance.server_custom_attributes = {randomize(): randomize()}
     instance.slot_id = randomize()
     instance.slot_used = randomize("int", min_val=1, max_val=1000)
+    instance.source = randomize()
     instance.source_item_id = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
@@ -387,6 +467,16 @@ def create_apimodels_trade_item_resp_example() -> ApimodelsTradeItemResp:
     instance.qty = randomize("int", min_val=1, max_val=1000)
     instance.slot_id = randomize()
     instance.source_item_id = randomize()
+    return instance
+
+
+def create_apimodels_update_integration_configuration_req_example() -> (
+    ApimodelsUpdateIntegrationConfigurationReq
+):
+    instance = ApimodelsUpdateIntegrationConfigurationReq()
+    instance.service_name = randomize()
+    instance.target_inventory_code = randomize()
+    instance.map_item_type = [randomize()]
     return instance
 
 
@@ -423,4 +513,12 @@ def create_apimodels_update_item_resp_example() -> ApimodelsUpdateItemResp:
     instance.source_item_id = randomize()
     instance.success = randomize("bool")
     instance.error_details = create_apimodels_error_response_example()
+    return instance
+
+
+def create_apimodels_update_status_integration_configuration_req_example() -> (
+    ApimodelsUpdateStatusIntegrationConfigurationReq
+):
+    instance = ApimodelsUpdateStatusIntegrationConfigurationReq()
+    instance.status = randomize()
     return instance

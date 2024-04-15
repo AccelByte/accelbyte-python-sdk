@@ -10,6 +10,7 @@ result, error = list_game_records_handler_v1(
     limit=limit,
     offset=offset,
     query=query,
+    tags=tags,
     namespace=namespace,
     x_additional_headers=x_additional_headers,
 )

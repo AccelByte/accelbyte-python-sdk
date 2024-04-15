@@ -38,13 +38,7 @@ class GetMemberRolesListPublicV1(Operation):
 
     Required Member Role Permission: "GROUP:ROLE [READ]"
 
-
-
-
     This endpoint is used to get list of member roles
-
-
-
 
     Action Code: 73201
 

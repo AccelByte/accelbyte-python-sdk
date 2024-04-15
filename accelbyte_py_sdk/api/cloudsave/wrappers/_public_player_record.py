@@ -396,6 +396,7 @@ def get_other_player_public_record_key_handler_v1(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -425,6 +426,8 @@ def get_other_player_public_record_key_handler_v1(
 
         offset: (offset) OPTIONAL int in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelsListPlayerRecordKeysResponse (Successful operation)
 
@@ -444,6 +447,7 @@ def get_other_player_public_record_key_handler_v1(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -454,6 +458,7 @@ async def get_other_player_public_record_key_handler_v1_async(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -483,6 +488,8 @@ async def get_other_player_public_record_key_handler_v1_async(
 
         offset: (offset) OPTIONAL int in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelsListPlayerRecordKeysResponse (Successful operation)
 
@@ -502,6 +509,7 @@ async def get_other_player_public_record_key_handler_v1_async(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1893,6 +1901,7 @@ async def put_player_record_handler_v1_async(
 def retrieve_player_records(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1920,6 +1929,8 @@ def retrieve_player_records(
 
         offset: (offset) OPTIONAL int in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelsListPlayerRecordKeysResponse (Successful operation)
 
@@ -1938,6 +1949,7 @@ def retrieve_player_records(
     request = RetrievePlayerRecords.create(
         limit=limit,
         offset=offset,
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1947,6 +1959,7 @@ def retrieve_player_records(
 async def retrieve_player_records_async(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1974,6 +1987,8 @@ async def retrieve_player_records_async(
 
         offset: (offset) OPTIONAL int in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelsListPlayerRecordKeysResponse (Successful operation)
 
@@ -1992,6 +2007,7 @@ async def retrieve_player_records_async(
     request = RetrievePlayerRecords.create(
         limit=limit,
         offset=offset,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(

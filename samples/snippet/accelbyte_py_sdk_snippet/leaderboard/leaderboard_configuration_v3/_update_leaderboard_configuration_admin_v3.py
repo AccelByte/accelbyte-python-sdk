@@ -17,7 +17,7 @@ description: str
 icon_url: str
 name: str
 
-Example: '{"allTime": true, "cycleIds": ["mFq1T7EmMMEA8dgS", "SFufUpEkTSfEa1dG", "i1NEAfCv1W4xA3Up"], "descending": true, "description": "UKHwEXt4Wpmt8aBJ", "iconURL": "QH1XfDB2vAJxnOTh", "name": "HYPFrOGJcVtWuj85"}'
+Example: '{"allTime": false, "cycleIds": ["NZoRro6GU33pDm29", "qcEMly9HIQlGIg95", "9p4pDCbjxQ91Livq"], "descending": false, "description": "YS75Ok5cEvOCElI2", "iconURL": "ueKzN2ZRQCocJPRx", "name": "9SQiM5XXKduYgQVg"}'
 """
 
 result, error = update_leaderboard_configuration_admin_v3(

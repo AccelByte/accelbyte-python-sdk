@@ -45,6 +45,7 @@ from ..api.ams.models import ApiDSHostConfiguration
 from ..api.ams.models import ApiDevelopmentServerConfigurationCreateRequest
 from ..api.ams.models import ApiDevelopmentServerConfigurationCreateResponse
 from ..api.ams.models import ApiDevelopmentServerConfigurationGetResponse
+from ..api.ams.models import ApiDevelopmentServerConfigurationListResponse
 from ..api.ams.models import ApiFleetArtifactsSampleRules
 from ..api.ams.models import ApiFleetClaimByKeysReq
 from ..api.ams.models import ApiFleetClaimReq
@@ -208,7 +209,7 @@ def create_api_development_server_configuration_create_request_example() -> (
     ApiDevelopmentServerConfigurationCreateRequest
 ):
     instance = ApiDevelopmentServerConfigurationCreateRequest()
-    instance.command_line = randomize()
+    instance.command_line_arguments = randomize()
     instance.image_id = randomize()
     instance.name = randomize()
     return instance
@@ -226,9 +227,18 @@ def create_api_development_server_configuration_get_response_example() -> (
     ApiDevelopmentServerConfigurationGetResponse
 ):
     instance = ApiDevelopmentServerConfigurationGetResponse()
-    instance.command_line = randomize()
+    instance.command_line_arguments = randomize()
     instance.image_id = randomize()
     instance.name = randomize()
+    return instance
+
+
+def create_api_development_server_configuration_list_response_example() -> (
+    ApiDevelopmentServerConfigurationListResponse
+):
+    instance = ApiDevelopmentServerConfigurationListResponse()
+    instance.data = [create_api_development_server_configuration_get_response_example()]
+    instance.total_data = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -305,6 +315,7 @@ def create_api_fleet_get_response_example() -> ApiFleetGetResponse:
     instance.image_deployment_profile = create_api_image_deployment_profile_example()
     instance.is_local = randomize("bool")
     instance.name = randomize()
+    instance.on_demand = randomize("bool")
     instance.regions = [create_api_region_config_example()]
     return instance
 
@@ -317,6 +328,7 @@ def create_api_fleet_list_item_response_example() -> ApiFleetListItemResponse:
     instance.image = randomize()
     instance.is_local = randomize("bool")
     instance.name = randomize()
+    instance.on_demand = randomize("bool")
     instance.regions = [randomize()]
     return instance
 
@@ -333,6 +345,7 @@ def create_api_fleet_parameters_example() -> ApiFleetParameters:
     instance.ds_host_configuration = create_api_ds_host_configuration_example()
     instance.image_deployment_profile = create_api_image_deployment_profile_example()
     instance.name = randomize()
+    instance.on_demand = randomize("bool")
     instance.regions = [create_api_region_config_example()]
     instance.claim_keys = [randomize()]
     instance.sampling_rules = create_api_fleet_artifacts_sample_rules_example()

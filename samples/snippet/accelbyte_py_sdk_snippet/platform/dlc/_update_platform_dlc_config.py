@@ -15,7 +15,7 @@ Definition: List[PlatformDlcEntry]
     platform: str
     platform_dlc_id_map: Dict[str, str]
 
-Example: '{"data": [{"platform": "PSN", "platformDlcIdMap": {"waRxYRd4SrJjVc1S": "MaVufs9hk9o3K4X4", "XXu2kj7Eq6XPV2np": "b75QMovfsN1PddW3", "chTIhZZ2qOYhFOEq": "gHtWkIHJAsMdsFfo"}}, {"platform": "XBOX", "platformDlcIdMap": {"G8Lshrekch4aS7En": "Jo5ubDFHzY1ULIbQ", "CnPGCakWabvUOCiZ": "lXm6hPCdypDqwuy0", "df8MYw7fipSWdeNS": "osheWTirbR2ZIo3y"}}, {"platform": "PSN", "platformDlcIdMap": {"xpWONOICXMpxFBW4": "mB8l2O60VqHmWyPg", "EPmd26SiaKQZXZ1A": "4x4CNI1EREwNsxPn", "sZcALy19N4QBWxSv": "EujoR0h9oOXIMrvB"}}]}'
+Example: '{"data": [{"platform": "STEAM", "platformDlcIdMap": {"hRHo116umU7pKT8V": "Nwa7u7ICR9KNbAn3", "kHhkOGoa0SkBnaJs": "mjuU0ltAnAkrbBsg", "bXbS3Bdcd7ICsKxT": "rZMynyKX4KnvML09"}}, {"platform": "OCULUS", "platformDlcIdMap": {"OlJE7IbaCpyxNjA5": "dojULtxTtbLu8sqp", "NEPmYyLEHgzhpeKo": "b0D0EaafJhGUHvEG", "HmGGheJuMxG9lNjF": "CseKfERyVMbf6VM8"}}, {"platform": "STEAM", "platformDlcIdMap": {"7CNBynlnNzfxgbiA": "C76jSbxGhPQiF68G", "1bKiCK92auoKTChv": "szd6mCeTyxdoJYBM", "a63coQdFLVeWAVWV": "qjO9PMmkeBUE55GK"}}]}'
 """
 
 result, error = update_platform_dlc_config(

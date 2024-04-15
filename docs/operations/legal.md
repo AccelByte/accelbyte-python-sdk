@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Legal Service Index (1.39.0)
+# AccelByte Gaming Services Legal Service Index (1.40.0)
 
 
 ## Operations
@@ -33,6 +33,8 @@
 ### Agreement With Namespace
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /agreement/admin/namespaces/{namespace}/agreements/policy-versions/users/export-csv/download | GET | downloadExportedAgreementsInCSV | `false` | [DownloadExportedAgreementsInCSV](../../accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/download_exported_agree_a56e5b.py) | [download_exported_agreements_in_csv](../../accelbyte_py_sdk/api/legal/wrappers/_agreement_with_namespace.py) | [accelbyte_py_sdk_cli legal-download-exported-agreements-in-csv](../../samples/cli/accelbyte_py_sdk_cli/legal/_download_exported_agreements_in_csv.py) |
+| /agreement/admin/namespaces/{namespace}/agreements/policy-versions/users/export-csv/initiate | POST | initiateExportAgreementsToCSV | `false` | [InitiateExportAgreementsToCSV](../../accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/initiate_export_agreeme_d92c31.py) | [initiate_export_agreements_to_csv](../../accelbyte_py_sdk/api/legal/wrappers/_agreement_with_namespace.py) | [accelbyte_py_sdk_cli legal-initiate-export-agreements-to-csv](../../samples/cli/accelbyte_py_sdk_cli/legal/_initiate_export_agreements_to_csv.py) |
 | /agreement/admin/namespaces/{namespace}/agreements/policies/users/{userId} | GET | retrieveAcceptedAgreements_1 | `false` | [RetrieveAcceptedAgreements1](../../accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/retrieve_accepted_agreements_1.py) | [retrieve_accepted_agreements_1](../../accelbyte_py_sdk/api/legal/wrappers/_agreement_with_namespace.py) | [accelbyte_py_sdk_cli legal-retrieve-accepted-agreements-1](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_accepted_agreements_1.py) |
 | /agreement/admin/namespaces/{namespace}/agreements | POST | retrieveAcceptedAgreementsForMultiUsers | `false` | [RetrieveAcceptedAgreementsForMultiUsers](../../accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/retrieve_accepted_agree_8c230d.py) | [retrieve_accepted_agreements_for_multi_users](../../accelbyte_py_sdk/api/legal/wrappers/_agreement_with_namespace.py) | [accelbyte_py_sdk_cli legal-retrieve-accepted-agreements-for-multi-users](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_accepted_agreements_for_multi_users.py) |
 | /agreement/admin/namespaces/{namespace}/agreements/policy-versions/users | GET | retrieveAllUsersByPolicyVersion_1 | `false` | [RetrieveAllUsersByPolicyVersion1](../../accelbyte_py_sdk/api/legal/operations/agreement_with_namespace/retrieve_all_users_by_p_3f6faa.py) | [retrieve_all_users_by_policy_version_1](../../accelbyte_py_sdk/api/legal/wrappers/_agreement_with_namespace.py) | [accelbyte_py_sdk_cli legal-retrieve-all-users-by-policy-version-1](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_all_users_by_policy_version_1.py) |
@@ -148,8 +150,10 @@
 | CreateLocalizedPolicyVersionResponse | [CreateLocalizedPolicyVersionResponse](../../accelbyte_py_sdk/api/legal/models/create_localized_policy_version_response.py) |
 | CreatePolicyVersionRequest | [CreatePolicyVersionRequest](../../accelbyte_py_sdk/api/legal/models/create_policy_version_request.py) |
 | CreatePolicyVersionResponse | [CreatePolicyVersionResponse](../../accelbyte_py_sdk/api/legal/models/create_policy_version_response.py) |
+| DownloadExportedAgreementsInCSVResponse | [DownloadExportedAgreementsInCSVResponse](../../accelbyte_py_sdk/api/legal/models/download_exported_agreements_in_csv_response.py) |
 | ErrorEntity | [ErrorEntity](../../accelbyte_py_sdk/api/legal/models/error_entity.py) |
 | FieldValidationError | [FieldValidationError](../../accelbyte_py_sdk/api/legal/models/field_validation_error.py) |
+| InitiateExportAgreementsToCSVResponse | [InitiateExportAgreementsToCSVResponse](../../accelbyte_py_sdk/api/legal/models/initiate_export_agreements_to_csv_response.py) |
 | LegalReadinessStatusResponse | [LegalReadinessStatusResponse](../../accelbyte_py_sdk/api/legal/models/legal_readiness_status_response.py) |
 | LocalizedPolicyVersionObject | [LocalizedPolicyVersionObject](../../accelbyte_py_sdk/api/legal/models/localized_policy_version_object.py) |
 | PagedRetrieveUserAcceptedAgreementResponse | [PagedRetrieveUserAcceptedAgreementResponse](../../accelbyte_py_sdk/api/legal/models/paged_retrieve_user_accepted_agreement_response.py) |

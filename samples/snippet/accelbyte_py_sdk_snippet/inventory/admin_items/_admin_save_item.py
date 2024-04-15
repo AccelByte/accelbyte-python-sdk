@@ -16,11 +16,12 @@ qty: int
 server_custom_attributes: Dict[str, Any]
 slot_id: str
 slot_used: int
+source: str
 source_item_id: str
 tags: List[str]
 type_: str
 
-Example: '{"customAttributes": {"YMzWJRNB03Zuep9i": {}, "M7Y8yRIIXnvyJSeq": {}, "bU7VVgMsT2CIL8Lw": {}}, "inventoryConfigurationCode": "XYMLcZ1T6AgGy8A0", "qty": 75, "serverCustomAttributes": {"tTrlL0EKxg7wDVYN": {}, "c23a90Y7WHR1nE5Y": {}, "ePZ0NjDQWv7LhSx2": {}}, "slotId": "3TbzUsjPXdFzkIOv", "slotUsed": 41, "sourceItemId": "qOvedCmSf34zZ2Gg", "tags": ["ldqaWjj8s0IeFW1E", "GSA4z41ZbpBvsmsl", "X445oUnXG61B6fz1"], "type": "LscJLcKGksuZ5GDQ"}'
+Example: '{"customAttributes": {"Xrd3WM7tTo4Az6ud": {}, "M7fR2j0I2C9n8h57": {}, "wGyURqT2JWYVWecz": {}}, "inventoryConfigurationCode": "gGjYE4JyO9Vy8Me8", "qty": 13, "serverCustomAttributes": {"jCZITcWtDQmuKcYe": {}, "j44Vz6JDxW4euTd6": {}, "cAAaBAglyWXYUNi8": {}}, "slotId": "P1sovhjKwWqYiv9Y", "slotUsed": 95, "source": "ECOMMERCE", "sourceItemId": "CRlY9rfBSIHsSYgd", "tags": ["7BUF9ZUix0MtXYO4", "QVMny0YYpAV7uPzI", "A7AB771AHYiJ85vz"], "type": "eRKprgxMGK6cD4Bu"}'
 """
 
 result, error = admin_save_item(

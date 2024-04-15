@@ -12,7 +12,7 @@ Definition: ModelRevokeUserV4Request
 namespace: str
 user_id: str
 
-Example: '{"namespace": "1enYVF5KEBO6r00S", "userId": "jsHUAbeuyDkh1BqF"}'
+Example: '{"namespace": "gNYgRUexO5EGrwEc", "userId": "sQH0WdcpgdCKNFT5"}'
 """
 
 result, error = admin_revoke_user_from_role_v4(

@@ -11,7 +11,7 @@ Definition: DeleteRewardConditionRequest
 condition_name: str
 user_id: str
 
-Example: '{"conditionName": "b3MqH8cPZB47ANlD", "userId": "ATVwv9VqtlTJdn65"}'
+Example: '{"conditionName": "2mTx9cNRMGBtJcKy", "userId": "wTlDiuA1h8q1afY6"}'
 """
 
 result, error = delete_reward_condition_record(

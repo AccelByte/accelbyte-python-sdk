@@ -11,7 +11,7 @@ body:
 Definition: ApimodelsDeleteInventoryReq
 message: str
 
-Example: '{"message": "nqzslmFfL20nOzMY"}'
+Example: '{"message": "oH3eiKRnzBRBJYVb"}'
 """
 
 result, error = delete_inventory(

@@ -11,7 +11,7 @@ body:
 Definition: ModelsSetPlayerSessionAttributeRequest
 attributes: Dict[str, str]
 
-Example: '{"attributes": {"6nofaEbrfmzAirgJ": "v1CJxgunM4FqUfO5", "eEv6Vp9FfvNzTXrp": "EvEilWEoLoH6Wbv2", "Z37LSidIFK3V8pE3": "Cbj7wkVjzvdnHPSh"}}'
+Example: '{"attributes": {"gnAkj5BGxAXomWg6": "IrqLWgmWS9nU5Wk9", "WT968nzSTW05AtUZ": "vYlPuigmicClmOKU", "n7zeO03bc2ROTVhi": "owwRmbEHlzlejvgX"}}'
 """
 
 result, error = admin_set_player_session_attribute(

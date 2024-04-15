@@ -15,7 +15,7 @@ body:
 Definition: PlayStationDLCSyncMultiServiceLabelsRequest
 service_labels: List[int]
 
-Example: '{"serviceLabels": [66, 44, 86]}'
+Example: '{"serviceLabels": [46, 34, 6]}'
 """
 
 result, error = public_sync_psn_dlc_inventory_with_multiple_service_labels(

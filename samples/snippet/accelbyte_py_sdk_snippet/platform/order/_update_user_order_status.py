@@ -14,7 +14,7 @@ Definition: OrderUpdate
 status: str
 status_reason: str
 
-Example: '{"status": "REFUNDING", "statusReason": "t5NjsdGIpJY813tQ"}'
+Example: '{"status": "REFUNDING", "statusReason": "44MZEF4sRMk18g3q"}'
 """
 
 result, error = update_user_order_status(

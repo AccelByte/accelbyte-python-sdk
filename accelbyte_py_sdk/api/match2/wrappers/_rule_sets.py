@@ -56,6 +56,8 @@ def create_rule_set(
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
 
+    When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
+
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets
 
@@ -112,6 +114,8 @@ async def create_rule_set_async(
     The name is used for a match pool to select the ruleset data that should be sent to the match function when matchmaking in that pool.
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
+
+    When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets
@@ -484,6 +488,8 @@ def update_rule_set(
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
 
+    When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
+
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}
 
@@ -541,6 +547,8 @@ async def update_rule_set_async(
     Updates an existing matchmaking rule set.
 
     To use custom rules set please set enable_custom_match_function=true. Default (false).
+
+    When custom enable_custom_match_function=true, the ruleset will only validate if the rule is valid json.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/rulesets/{ruleset}

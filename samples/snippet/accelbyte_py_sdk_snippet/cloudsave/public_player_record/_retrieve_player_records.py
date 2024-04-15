@@ -9,6 +9,7 @@ from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 result, error = retrieve_player_records(
     limit=limit,
     offset=offset,
+    tags=tags,
     namespace=namespace,
     x_additional_headers=x_additional_headers,
 )

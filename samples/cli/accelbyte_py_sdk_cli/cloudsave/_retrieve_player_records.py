@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 @click.command()
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 def retrieve_player_records(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    tags: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -60,9 +62,16 @@ def retrieve_player_records(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = retrieve_player_records_internal(
         limit=limit,
         offset=offset,
+        tags=tags,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

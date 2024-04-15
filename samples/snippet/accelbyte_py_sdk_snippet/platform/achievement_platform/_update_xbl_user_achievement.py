@@ -17,7 +17,7 @@ service_config_id: str
 title_id: str
 xbox_user_id: str
 
-Example: '{"achievements": [{"id": "WLWuGwwEDKnVL7sI", "percentComplete": 73}, {"id": "zvmRw9QFyfG4HCqV", "percentComplete": 80}, {"id": "U3imDFCzpG48yhkn", "percentComplete": 91}], "serviceConfigId": "QqDJtW1cw89ouYxn", "titleId": "Amp7HbmxBflqH3cE", "xboxUserId": "6OMiOYhlZBxJ4cAe"}'
+Example: '{"achievements": [{"id": "7CCDSyEcoeWiaRSU", "percentComplete": 77}, {"id": "zeIPYgwb9OHiaW2q", "percentComplete": 22}, {"id": "vO3kfLj8cv0ApyN3", "percentComplete": 18}], "serviceConfigId": "BCrBo44qkcQHIPqy", "titleId": "UwuBaqQIIqS8iNKq", "xboxUserId": "ixIdxv9YYzqmA4c4"}'
 """
 
 result, error = update_xbl_user_achievement(

@@ -11,7 +11,7 @@ body:
 Definition: ModelsUpdateConfigRequest
 value: str
 
-Example: '{"value": "2vtJSMkXZOS3CEMS"}'
+Example: '{"value": "iaVj4bNZhw0oo9Ub"}'
 """
 
 result, error = admin_update_config(

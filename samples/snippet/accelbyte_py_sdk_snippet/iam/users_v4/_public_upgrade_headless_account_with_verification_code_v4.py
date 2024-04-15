@@ -25,7 +25,7 @@ unique_display_name: str
 username: str
 validate_only: bool
 
-Example: '{"code": "IBa0UWKQyoCZKe4Z", "country": "0d0dKDhyZpY1lOaT", "dateOfBirth": "qsrIfYsAOKYrf9LX", "displayName": "Q7vdRn5ptQguUEQR", "emailAddress": "MND1EyqS4x8mRlyJ", "password": "sRBC7qYNBPCuiskO", "reachMinimumAge": true, "uniqueDisplayName": "CTypHXPSTYPDJOr1", "username": "8xfTy8aZgudxX5Mw", "validateOnly": false}'
+Example: '{"code": "G4t9BfGHmdXpOnlw", "country": "3x6huCr6CYxIuhHb", "dateOfBirth": "mQ0pd5KlK4jrifox", "displayName": "f49eol3D3cyDEZ4l", "emailAddress": "hihlH5MxehKhYXEj", "password": "KLEjbSfGYLO1TiLN", "reachMinimumAge": true, "uniqueDisplayName": "BwX1k3V5F5Ak201o", "username": "IJeTwSGUGi8CXcjb", "validateOnly": false}'
 """
 
 result, error = public_upgrade_headless_account_with_verification_code_v4(

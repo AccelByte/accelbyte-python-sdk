@@ -19,7 +19,7 @@ providers: List[str]
 session_timeout: int
 unreachable_timeout: int
 
-Example: '{"claim_timeout": 9, "creation_timeout": 1, "default_version": "SabAIz4Vj1BaJPGQ", "port": 5, "protocol": "cC3ILNIPRJTuUcUf", "providers": ["zXW6mLfd6zywXTry", "isGu5sEmehzZWyRH", "gTs3xXrjvXMskoFT"], "session_timeout": 44, "unreachable_timeout": 43}'
+Example: '{"claim_timeout": 61, "creation_timeout": 30, "default_version": "Htf0hTjEHy26kuzH", "port": 34, "protocol": "Cqq1qaHwDi3KSjay", "providers": ["n4SScNAVpJXFtqJf", "tD8v6JvLAHI4s2F3", "QT17ObQrGu1oA5Qh"], "session_timeout": 35, "unreachable_timeout": 17}'
 """
 
 result, error = update_config(

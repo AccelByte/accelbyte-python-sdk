@@ -12,7 +12,7 @@ body:
 Definition: ADTOForUpdateEqu8ConfigAPICall
 api_key: str
 
-Example: '{"apiKey": "dSpCgrZ3wnzi1Y5y"}'
+Example: '{"apiKey": "mraGPunfL5qNJVMR"}'
 """
 
 result, error = update_config(

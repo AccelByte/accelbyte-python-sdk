@@ -4410,8 +4410,8 @@ def admin_get_user_mapping(
 
     This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
-    If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace. Will create game user id if not exists.
+    If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace.
+    If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -4467,8 +4467,8 @@ async def admin_get_user_mapping_async(
 
     This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
-    If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace. Will create game user id if not exists.
+    If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace.
+    If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -8236,7 +8236,7 @@ def admin_update_user_v3(
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -8304,7 +8304,7 @@ async def admin_update_user_v3_async(
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -8375,7 +8375,7 @@ def admin_upgrade_headless_account_v3(
 
         404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10154: country not found)
 
-        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -8444,7 +8444,7 @@ async def admin_upgrade_headless_account_v3_async(
 
         404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found | 10154: country not found)
 
-        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -9117,6 +9117,8 @@ def create_user_from_invitation_v3(
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
+        409: Conflict - RestErrorResponse (10222: unique display name already exists)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
@@ -9179,6 +9181,8 @@ async def create_user_from_invitation_v3_async(
         403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
+
+        409: Conflict - RestErrorResponse (10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -11773,8 +11777,8 @@ def get_user_mapping(
 
     This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
-    If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace. Will create game user id if not exists.
+    If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace.
+    If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace. **Will create game user id if not exists.**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -11835,8 +11839,8 @@ async def get_user_mapping_async(
 
     This endpoint requires the client access token as the bearer token
     This endpoint will support publisher access to game and game access to publisher
-    If targetNamespace filled with publisher namespace then this endpoint will return its game user id and game namespace
-    If targetNamespace filled with game namespace then this endpoint will return its publisher user id and publisher namespace. Will create game user id if not exists.
+    If targetNamespace filled with publisher namespace then this endpoint will return its publisher user id and publisher namespace.
+    If targetNamespace filled with game namespace then this endpoint will return its game user id and game namespace. **Will create game user id if not exists.**
 
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms/justice/{targetNamespace}
@@ -13307,7 +13311,7 @@ def public_create_user_v3(
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -13367,7 +13371,7 @@ async def public_create_user_v3_async(
 
         404: Not Found - RestErrorResponse (10154: country not found)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -14443,14 +14447,18 @@ def public_get_my_user_v3(
     __Supported 3rd platforms:__
 
     * __PSN(ps4web, ps4, ps5)__
+    * account id
     * display name
     * avatar
     * __Xbox(live, xblweb)__
+    * xuid or pxuid
     * display name
     * __Steam(steam, steamopenid)__
+    * steam id
     * display name
     * avatar
     * __EpicGames(epicgames)__
+    * epic account id
     * display name
 
     action code : 10147
@@ -14496,14 +14504,18 @@ async def public_get_my_user_v3_async(
     __Supported 3rd platforms:__
 
     * __PSN(ps4web, ps4, ps5)__
+    * account id
     * display name
     * avatar
     * __Xbox(live, xblweb)__
+    * xuid or pxuid
     * display name
     * __Steam(steam, steamopenid)__
+    * steam id
     * display name
     * avatar
     * __EpicGames(epicgames)__
+    * epic account id
     * display name
 
     action code : 10147
@@ -15607,14 +15619,18 @@ def public_get_users_platform_infos_v3(
     __Supported 3rd platforms:__
 
     * __PSN(ps4web, ps4, ps5)__
+    * account id
     * display name
     * avatar
     * __Xbox(live, xblweb)__
+    * xuid or pxuid
     * display name
     * __Steam(steam, steamopenid)__
+    * steam id
     * display name
     * avatar
     * __EpicGames(epicgames)__
+    * epic account id
     * display name
 
     Properties:
@@ -15671,14 +15687,18 @@ async def public_get_users_platform_infos_v3_async(
     __Supported 3rd platforms:__
 
     * __PSN(ps4web, ps4, ps5)__
+    * account id
     * display name
     * avatar
     * __Xbox(live, xblweb)__
+    * xuid or pxuid
     * display name
     * __Steam(steam, steamopenid)__
+    * steam id
     * display name
     * avatar
     * __EpicGames(epicgames)__
+    * epic account id
     * display name
 
     Properties:
@@ -16224,7 +16244,7 @@ def public_partial_update_user_v3(
 
         403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -16285,7 +16305,7 @@ async def public_partial_update_user_v3_async(
 
         403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -17134,16 +17154,20 @@ def public_search_user_v3(
 ):
     """Search User (PublicSearchUserV3)
 
-    This endpoint search all users on the specified namespace that match the query on these fields: display name, and username or by 3rd party display name.
-    The query length should greater than 2ï¼otherwise will not query the database. The default limit value is 100.
-    **Note: searching by 3rd party platform display name is exact query**
-    ---
-    When searching by 3rd party platform display name:
+    This endpoint search all users on the specified namespace that match the query on these fields: display name, unique display name, username or by 3rd party display name.
+    The query length should between 3-20, otherwise will not query the database.
+    The default limit value is 20.
+
+    ## Searching by 3rd party platform
+
+    **Note: searching by 3rd party platform display name will use exact query.**
+
+    Step when searching by 3rd party platform display name:
     1. set __by__ to __thirdPartyPlatform__
     2. set __platformId__ to the supported platform id
     3. set __platformBy__ to __platformDisplayName__
-    ---
-    Supported platform id:
+
+    ### Supported platform id:
 
     * steam
     * steamopenid
@@ -17237,16 +17261,20 @@ async def public_search_user_v3_async(
 ):
     """Search User (PublicSearchUserV3)
 
-    This endpoint search all users on the specified namespace that match the query on these fields: display name, and username or by 3rd party display name.
-    The query length should greater than 2ï¼otherwise will not query the database. The default limit value is 100.
-    **Note: searching by 3rd party platform display name is exact query**
-    ---
-    When searching by 3rd party platform display name:
+    This endpoint search all users on the specified namespace that match the query on these fields: display name, unique display name, username or by 3rd party display name.
+    The query length should between 3-20, otherwise will not query the database.
+    The default limit value is 20.
+
+    ## Searching by 3rd party platform
+
+    **Note: searching by 3rd party platform display name will use exact query.**
+
+    Step when searching by 3rd party platform display name:
     1. set __by__ to __thirdPartyPlatform__
     2. set __platformId__ to the supported platform id
     3. set __platformBy__ to __platformDisplayName__
-    ---
-    Supported platform id:
+
+    ### Supported platform id:
 
     * steam
     * steamopenid
@@ -18048,7 +18076,7 @@ def public_upgrade_headless_account_v3(
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
-        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -18113,7 +18141,7 @@ async def public_upgrade_headless_account_v3_async(
 
         404: Not Found - RestErrorResponse (10139: platform account not found | 10154: country not found)
 
-        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account)
+        409: Conflict - RestErrorResponse (10153: user exist | 10170: account is already a full account | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -20040,7 +20068,7 @@ def update_user_v3(
 
         403: Forbidden - RestErrorResponse (10213: country is blocked)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -20105,7 +20133,7 @@ async def update_user_v3_async(
 
         403: Forbidden - RestErrorResponse (10213: country is blocked)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """

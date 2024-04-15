@@ -12,7 +12,7 @@ body:
 Definition: ApimodelsJoinByCodeRequest
 code: str
 
-Example: '{"code": "ZbuEqkRlw1BilHJg"}'
+Example: '{"code": "ULNRVxTovu6bS7jP"}'
 """
 
 result, error = public_party_join_code(

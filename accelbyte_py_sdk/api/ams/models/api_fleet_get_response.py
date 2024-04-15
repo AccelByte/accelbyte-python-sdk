@@ -50,6 +50,8 @@ class ApiFleetGetResponse(Model):
 
         name: (name) REQUIRED str
 
+        on_demand: (onDemand) REQUIRED bool
+
         regions: (regions) REQUIRED List[ApiRegionConfig]
     """
 
@@ -62,6 +64,7 @@ class ApiFleetGetResponse(Model):
     image_deployment_profile: ApiImageDeploymentProfile  # REQUIRED
     is_local: bool  # REQUIRED
     name: str  # REQUIRED
+    on_demand: bool  # REQUIRED
     regions: List[ApiRegionConfig]  # REQUIRED
 
     # endregion fields
@@ -98,6 +101,10 @@ class ApiFleetGetResponse(Model):
 
     def with_name(self, value: str) -> ApiFleetGetResponse:
         self.name = value
+        return self
+
+    def with_on_demand(self, value: bool) -> ApiFleetGetResponse:
+        self.on_demand = value
         return self
 
     def with_regions(self, value: List[ApiRegionConfig]) -> ApiFleetGetResponse:
@@ -142,6 +149,10 @@ class ApiFleetGetResponse(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "on_demand"):
+            result["onDemand"] = bool(self.on_demand)
+        elif include_empty:
+            result["onDemand"] = False
         if hasattr(self, "regions"):
             result["regions"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.regions
@@ -164,6 +175,7 @@ class ApiFleetGetResponse(Model):
         image_deployment_profile: ApiImageDeploymentProfile,
         is_local: bool,
         name: str,
+        on_demand: bool,
         regions: List[ApiRegionConfig],
         **kwargs,
     ) -> ApiFleetGetResponse:
@@ -175,6 +187,7 @@ class ApiFleetGetResponse(Model):
         instance.image_deployment_profile = image_deployment_profile
         instance.is_local = is_local
         instance.name = name
+        instance.on_demand = on_demand
         instance.regions = regions
         return instance
 
@@ -222,6 +235,10 @@ class ApiFleetGetResponse(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "onDemand" in dict_ and dict_["onDemand"] is not None:
+            instance.on_demand = bool(dict_["onDemand"])
+        elif include_empty:
+            instance.on_demand = False
         if "regions" in dict_ and dict_["regions"] is not None:
             instance.regions = [
                 ApiRegionConfig.create_from_dict(i0, include_empty=include_empty)
@@ -277,6 +294,7 @@ class ApiFleetGetResponse(Model):
             "imageDeploymentProfile": "image_deployment_profile",
             "isLocal": "is_local",
             "name": "name",
+            "onDemand": "on_demand",
             "regions": "regions",
         }
 
@@ -290,6 +308,7 @@ class ApiFleetGetResponse(Model):
             "imageDeploymentProfile": True,
             "isLocal": True,
             "name": True,
+            "onDemand": True,
             "regions": True,
         }
 

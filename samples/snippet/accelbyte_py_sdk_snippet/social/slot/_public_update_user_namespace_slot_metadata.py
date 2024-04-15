@@ -14,7 +14,7 @@ custom_attribute: str
 label: str
 tags: List[str]
 
-Example: '{"customAttribute": "ZV5iKPcge7GVOiqt", "label": "sPdXw8LfogD9Lz5f", "tags": ["zDDi80ZXKTAbGYBH", "HD5NUW3Pa4Qmsrjr", "r4y7SwUZjD1m33rf"]}'
+Example: '{"customAttribute": "bJNWTyzkpcx3lnwH", "label": "7yTSc2Y9er6x65Ns", "tags": ["YYviGeYBUf7beRWF", "GN58p1n0cXlJK1b6", "SzzG6FvJeGNYkPul"]}'
 """
 
 result, error = public_update_user_namespace_slot_metadata(

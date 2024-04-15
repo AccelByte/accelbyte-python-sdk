@@ -12,7 +12,7 @@ body:
 Definition: ModelsSetUserVisibilityRequest
 visibility: bool
 
-Example: '{"visibility": true}'
+Example: '{"visibility": false}'
 """
 
 result, error = set_user_visibility_v3(

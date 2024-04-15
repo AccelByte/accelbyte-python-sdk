@@ -15,7 +15,7 @@ Definition: List[ModelsUserKeyRequest]
     keys: List[str]
     user_id: str
 
-Example: '{"data": [{"keys": ["srpUDJqGLJq0awNu", "dXKkE6gpuJbZ21bv", "2j2pahNva9ARcm5q"], "user_id": "PCyiCtdhiG6wz7F4"}, {"keys": ["Mrs8wOEuTbCSIxof", "8m4mo46ADeduOLw1", "UhdoXOCk2eAUKoFA"], "user_id": "RksQMMvMPdtAzeZU"}, {"keys": ["YItSxTDRfWyXPwhp", "G6jz71CLlCj42OtK", "l9FZ4NNjQXpCQcsv"], "user_id": "8ysuAtvd3afbiYeZ"}]}'
+Example: '{"data": [{"keys": ["JS1i9WcTTORXtcB2", "goFBOVRykV0KhVCk", "QQSHzWW5SEs2JxZk"], "user_id": "6dg0SwwDDWuJyAXD"}, {"keys": ["xFAltUd2CLsZiBpv", "OpSDZ9xzvLlwovbv", "0RNEMnpGCcTpcoaD"], "user_id": "mHhYqMNnBq2ZRZiy"}, {"keys": ["g8cHFgqp6EHhjhco", "ey8tcSRQJGbvxgrD", "ngqmatYwXiMvMG7e"], "user_id": "aiHNSEDqqKmUeVPF"}]}'
 """
 
 result, error = bulk_get_player_record_size_handler_v1(

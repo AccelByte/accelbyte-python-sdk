@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.13.0)
+# Fleet Commander Index (1.15.0)
 
 
 ## Operations
@@ -114,6 +114,7 @@
 | api.DevelopmentServerConfigurationCreateRequest | [ApiDevelopmentServerConfigurationCreateRequest](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_create_request.py) |
 | api.DevelopmentServerConfigurationCreateResponse | [ApiDevelopmentServerConfigurationCreateResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_create_response.py) |
 | api.DevelopmentServerConfigurationGetResponse | [ApiDevelopmentServerConfigurationGetResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_get_response.py) |
+| api.DevelopmentServerConfigurationListResponse | [ApiDevelopmentServerConfigurationListResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_list_response.py) |
 | api.DSHistoryEvent | [ApiDSHistoryEvent](../../accelbyte_py_sdk/api/ams/models/api_ds_history_event.py) |
 | api.DSHistoryList | [ApiDSHistoryList](../../accelbyte_py_sdk/api/ams/models/api_ds_history_list.py) |
 | api.DSHostConfiguration | [ApiDSHostConfiguration](../../accelbyte_py_sdk/api/ams/models/api_ds_host_configuration.py) |

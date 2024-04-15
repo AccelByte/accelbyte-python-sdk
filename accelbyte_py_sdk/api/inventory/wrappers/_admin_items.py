@@ -47,6 +47,9 @@ from ..operations.admin_items import AdminListItems
 from ..operations.admin_items import AdminListItemsSortByEnum
 from ..operations.admin_items import AdminSaveItem
 from ..operations.admin_items import AdminSaveItemToInventory
+from ..operations.admin_items import AdminSyncUserEntitlements
+from ..models import ApimodelsSaveItemReqSourceEnum
+from ..models import ApimodelsSaveItemToInventoryReqSourceEnum
 
 
 @same_doc_as(AdminBulkRemoveItems)
@@ -732,6 +735,9 @@ def admin_save_item(
     Tags will be auto-created.
     ItemType will be auto-created.
 
+    For Ecommerce item, this fields will be override by ecommerce configuration
+    (slotUsed, serverCustomAttributes, customAttributes, type)
+
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
     Required Permission(s):
@@ -795,6 +801,9 @@ async def admin_save_item_async(
 
     Tags will be auto-created.
     ItemType will be auto-created.
+
+    For Ecommerce item, this fields will be override by ecommerce configuration
+    (slotUsed, serverCustomAttributes, customAttributes, type)
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
@@ -969,6 +978,120 @@ async def admin_save_item_to_inventory_async(
     request = AdminSaveItemToInventory.create(
         body=body,
         inventory_id=inventory_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminSyncUserEntitlements)
+def admin_sync_user_entitlements(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """To sync user's entitlements to e-commerce (AdminSyncUserEntitlements)
+
+
+    Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+
+    Properties:
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/items/entitlements/sync
+
+        method: PUT
+
+        tags: ["Admin Items"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ApimodelsErrorResponse (Bad Request)
+
+        401: Unauthorized - ApimodelsErrorResponse (Unauthorized)
+
+        403: Forbidden - ApimodelsErrorResponse (Forbidden)
+
+        404: Not Found - ApimodelsErrorResponse (Not Found)
+
+        500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminSyncUserEntitlements.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminSyncUserEntitlements)
+async def admin_sync_user_entitlements_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """To sync user's entitlements to e-commerce (AdminSyncUserEntitlements)
+
+
+    Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
+
+    Properties:
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/items/entitlements/sync
+
+        method: PUT
+
+        tags: ["Admin Items"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ApimodelsErrorResponse (Bad Request)
+
+        401: Unauthorized - ApimodelsErrorResponse (Unauthorized)
+
+        403: Forbidden - ApimodelsErrorResponse (Forbidden)
+
+        404: Not Found - ApimodelsErrorResponse (Not Found)
+
+        500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminSyncUserEntitlements.create(
         user_id=user_id,
         namespace=namespace,
     )

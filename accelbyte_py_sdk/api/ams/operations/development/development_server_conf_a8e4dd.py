@@ -37,6 +37,8 @@ from ...models import ResponseErrorResponse
 class DevelopmentServerConfigurationCreate(Operation):
     """create a new development server configuration (DevelopmentServerConfigurationCreate)
 
+    Configuration name can be up to 128 characters and must conform to ^[.a-zA-Z0-9_-]+$
+
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
     Required Permission(s):
@@ -47,7 +49,7 @@ class DevelopmentServerConfigurationCreate(Operation):
 
         method: POST
 
-        tags: ["Development", "Fleets", "Images"]
+        tags: ["Development"]
 
         consumes: ["application/json"]
 

@@ -14,7 +14,7 @@ blocked_players: List[str]
 party_id: str
 user_id: str
 
-Example: '{"blocked_players": ["phhaeOqnyGjfFsG6", "jwXKRTQLFzUdH4H1", "iYtgei678OJCDsJs"], "party_id": "FdVO0AQzlAKfifYY", "user_id": "QXfmqko10AZxagOo"}'
+Example: '{"blocked_players": ["bj4AdL0gUMbWoTiB", "W0QrdNgslupXsgkH", "yrTieYPg2BmbLb4v"], "party_id": "WJMKrACEADxBx8gO", "user_id": "6fulf6bk2JSkuScW"}'
 """
 
 result, error = add_user_into_session_in_channel(

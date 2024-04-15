@@ -26,32 +26,27 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
-from ....core import StrEnum
-
-
-class DriverEnum(StrEnum):
-    KAFKA = "KAFKA"
 
 
 class ModelsCategoryHook(Model):
     """Models category hook (models.CategoryHook)
 
     Properties:
-        driver: (driver) OPTIONAL Union[str, DriverEnum]
+        driver: (driver) OPTIONAL str
 
         params: (params) OPTIONAL Dict[str, Any]
     """
 
     # region fields
 
-    driver: Union[str, DriverEnum]  # OPTIONAL
+    driver: str  # OPTIONAL
     params: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_driver(self, value: Union[str, DriverEnum]) -> ModelsCategoryHook:
+    def with_driver(self, value: str) -> ModelsCategoryHook:
         self.driver = value
         return self
 
@@ -68,7 +63,7 @@ class ModelsCategoryHook(Model):
         if hasattr(self, "driver"):
             result["driver"] = str(self.driver)
         elif include_empty:
-            result["driver"] = Union[str, DriverEnum]()
+            result["driver"] = ""
         if hasattr(self, "params"):
             result["params"] = {str(k0): v0 for k0, v0 in self.params.items()}
         elif include_empty:
@@ -82,7 +77,7 @@ class ModelsCategoryHook(Model):
     @classmethod
     def create(
         cls,
-        driver: Optional[Union[str, DriverEnum]] = None,
+        driver: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
         **kwargs,
     ) -> ModelsCategoryHook:
@@ -103,7 +98,7 @@ class ModelsCategoryHook(Model):
         if "driver" in dict_ and dict_["driver"] is not None:
             instance.driver = str(dict_["driver"])
         elif include_empty:
-            instance.driver = Union[str, DriverEnum]()
+            instance.driver = ""
         if "params" in dict_ and dict_["params"] is not None:
             instance.params = {str(k0): v0 for k0, v0 in dict_["params"].items()}
         elif include_empty:
@@ -158,12 +153,6 @@ class ModelsCategoryHook(Model):
         return {
             "driver": False,
             "params": False,
-        }
-
-    @staticmethod
-    def get_enum_map() -> Dict[str, List[Any]]:
-        return {
-            "driver": ["KAFKA"],
         }
 
     # endregion static methods

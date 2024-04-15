@@ -14,7 +14,7 @@ email_address: str
 password: str
 username: str
 
-Example: '{"emailAddress": "j3i4ISIvgOAitMyP", "password": "kdgxNil2uNWM9XLJ", "username": "xgNQH4FikFRMqxzH"}'
+Example: '{"emailAddress": "tBmX9HGm8LMDSCrj", "password": "PeESm7Wggc0Rle5Y", "username": "rwCQEu8b29ti8L9d"}'
 """
 
 result, error = public_upgrade_headless_account_v4(

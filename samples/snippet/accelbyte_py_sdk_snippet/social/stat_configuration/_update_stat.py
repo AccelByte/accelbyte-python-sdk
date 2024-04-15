@@ -19,7 +19,7 @@ is_public: bool
 name: str
 tags: List[str]
 
-Example: '{"cycleIds": ["W1xlPp2PTbuvXoTw", "sVpYivK850WeiHkn", "H4G97xdNt3wtFfVv"], "defaultValue": 0.9913063638289469, "description": "JgXEcFWvKqCSk4Nx", "globalAggregationMethod": "MIN", "ignoreAdditionalDataOnValueRejected": true, "isPublic": true, "name": "mzmN73EeC0lnEQim", "tags": ["nyVz4yKNcGNYxNyu", "WH8HjKevh1sEccZq", "T1aFXmrYZxUK5gNb"]}'
+Example: '{"cycleIds": ["IQ3TFsyHDgTWKvsB", "km5lg4kvKgVQtEhc", "awN7gCSrwbtuzd4O"], "defaultValue": 0.8824071665742637, "description": "tbspTr17cXAu0ZPe", "globalAggregationMethod": "MIN", "ignoreAdditionalDataOnValueRejected": true, "isPublic": false, "name": "OwBSdA8bFFFzBg7b", "tags": ["e8ABY85aGwvjpKdj", "CBEhSIdjAHX2L80l", "X0iGU6JHMGE1ZkHZ"]}'
 """
 
 result, error = update_stat(

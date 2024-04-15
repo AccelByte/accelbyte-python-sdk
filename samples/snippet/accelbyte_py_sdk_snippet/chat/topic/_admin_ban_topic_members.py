@@ -12,7 +12,7 @@ body:
 Definition: ModelsBanTopicMemberParam
 user_ids: List[str]
 
-Example: '{"userIds": ["XV9weZsgYy8vB46o", "1ID0EMtj7kfu5lSa", "E8YI5AbttOZE3C7E"]}'
+Example: '{"userIds": ["NvZxzKQyhfqhEr2G", "bVAk9pBvGl9nEirw", "r8n1odmUrEY1uf0v"]}'
 """
 
 result, error = admin_ban_topic_members(

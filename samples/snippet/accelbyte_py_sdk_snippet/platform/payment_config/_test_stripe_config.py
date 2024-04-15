@@ -14,7 +14,7 @@ publishable_key: str
 secret_key: str
 webhook_secret: str
 
-Example: '{"allowedPaymentMethodTypes": ["hGmXX2WRcFnVpVzp", "S2mMip2WadKmXyEL", "PqHUtuOA1AqJWRQV"], "publishableKey": "WrWnLiiG6NPSV2kq", "secretKey": "NcNNGO0AgP7jkDOh", "webhookSecret": "1Ozda0PWqCTC6oRk"}'
+Example: '{"allowedPaymentMethodTypes": ["NX7PmjzecHQ0GfH6", "KmnYmtY82m5QKwlr", "AgBs3nzTklCEFqJb"], "publishableKey": "Qa6Kiq06haUiJenD", "secretKey": "eHOd0Obj8M47HkRM", "webhookSecret": "rsCDLrNOKLKDDYKf"}'
 """
 
 result, error = test_stripe_config(

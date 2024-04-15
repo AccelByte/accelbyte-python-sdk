@@ -59,6 +59,8 @@ class AdminListAdminUserRecordsV1(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelsListAdminPlayerRecordKeysResponse (Successful operation)
 
@@ -84,6 +86,7 @@ class AdminListAdminUserRecordsV1(Operation):
     user_id: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    tags: List[str]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -141,6 +144,8 @@ class AdminListAdminUserRecordsV1(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "tags"):
+            result["tags"] = self.tags
         return result
 
     # endregion get_x_params methods
@@ -167,6 +172,10 @@ class AdminListAdminUserRecordsV1(Operation):
         self.offset = value
         return self
 
+    def with_tags(self, value: List[str]) -> AdminListAdminUserRecordsV1:
+        self.tags = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -189,6 +198,10 @@ class AdminListAdminUserRecordsV1(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "tags") and self.tags:
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -256,6 +269,7 @@ class AdminListAdminUserRecordsV1(Operation):
         user_id: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> AdminListAdminUserRecordsV1:
         instance = cls()
@@ -265,6 +279,8 @@ class AdminListAdminUserRecordsV1(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if tags is not None:
+            instance.tags = tags
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -290,6 +306,10 @@ class AdminListAdminUserRecordsV1(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @staticmethod
@@ -299,6 +319,7 @@ class AdminListAdminUserRecordsV1(Operation):
             "userId": "user_id",
             "limit": "limit",
             "offset": "offset",
+            "tags": "tags",
         }
 
     @staticmethod
@@ -308,6 +329,13 @@ class AdminListAdminUserRecordsV1(Operation):
             "userId": True,
             "limit": False,
             "offset": False,
+            "tags": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "tags": "csv",  # in query
         }
 
     # endregion static methods

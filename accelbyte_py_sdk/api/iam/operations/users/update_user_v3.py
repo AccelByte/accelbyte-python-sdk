@@ -78,7 +78,7 @@ class UpdateUserV3(Operation):
 
         403: Forbidden - RestErrorResponse (10213: country is blocked)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -200,7 +200,7 @@ class UpdateUserV3(Operation):
 
         403: Forbidden - RestErrorResponse (10213: country is blocked)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

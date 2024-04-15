@@ -61,6 +61,8 @@ class ApimodelsItemResp(Model):
         updated_at: (updatedAt) REQUIRED str
 
         user_id: (userId) REQUIRED str
+
+        platform_available: (platformAvailable) OPTIONAL bool
     """
 
     # region fields
@@ -80,6 +82,7 @@ class ApimodelsItemResp(Model):
     type_: str  # REQUIRED
     updated_at: str  # REQUIRED
     user_id: str  # REQUIRED
+    platform_available: bool  # OPTIONAL
 
     # endregion fields
 
@@ -143,6 +146,10 @@ class ApimodelsItemResp(Model):
 
     def with_user_id(self, value: str) -> ApimodelsItemResp:
         self.user_id = value
+        return self
+
+    def with_platform_available(self, value: bool) -> ApimodelsItemResp:
+        self.platform_available = value
         return self
 
     # endregion with_x methods
@@ -215,6 +222,10 @@ class ApimodelsItemResp(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "platform_available"):
+            result["platformAvailable"] = bool(self.platform_available)
+        elif include_empty:
+            result["platformAvailable"] = False
         return result
 
     # endregion to methods
@@ -239,6 +250,7 @@ class ApimodelsItemResp(Model):
         type_: str,
         updated_at: str,
         user_id: str,
+        platform_available: Optional[bool] = None,
         **kwargs,
     ) -> ApimodelsItemResp:
         instance = cls()
@@ -257,6 +269,8 @@ class ApimodelsItemResp(Model):
         instance.type_ = type_
         instance.updated_at = updated_at
         instance.user_id = user_id
+        if platform_available is not None:
+            instance.platform_available = platform_available
         return instance
 
     @classmethod
@@ -333,6 +347,10 @@ class ApimodelsItemResp(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "platformAvailable" in dict_ and dict_["platformAvailable"] is not None:
+            instance.platform_available = bool(dict_["platformAvailable"])
+        elif include_empty:
+            instance.platform_available = False
         return instance
 
     @classmethod
@@ -389,6 +407,7 @@ class ApimodelsItemResp(Model):
             "type": "type_",
             "updatedAt": "updated_at",
             "userId": "user_id",
+            "platformAvailable": "platform_available",
         }
 
     @staticmethod
@@ -409,6 +428,7 @@ class ApimodelsItemResp(Model):
             "type": True,
             "updatedAt": True,
             "userId": True,
+            "platformAvailable": False,
         }
 
     # endregion static methods

@@ -12,7 +12,7 @@ body:
 Definition: ModelsUpdateContentShareCodeRequest
 share_code: str
 
-Example: '{"shareCode": "5jXCdwxqB194nIx4"}'
+Example: '{"shareCode": "bGgYaHipXTJUD2i6"}'
 """
 
 result, error = update_content_share_code(

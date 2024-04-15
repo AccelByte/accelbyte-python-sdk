@@ -32,6 +32,7 @@ Definition: ApiImageDeploymentProfile
         session: int
         unresponsive: int
 name: str
+on_demand: bool
 regions: List[ApiRegionConfig]
 Definition: List[ApiRegionConfig]
     buffer_size: int
@@ -61,7 +62,7 @@ Definition: ApiFleetArtifactsSampleRules
             collect: bool
             percentage: int
 
-Example: '{"active": true, "claimKeys": ["aokbamHn72VgGwWw", "ZB4Pn3Eu3VGzabN1", "k3DIfLHLHWjWdJfi"], "dsHostConfiguration": {"instanceId": "MUqTq3Kz7YXan4Fh", "instanceType": "vqsWbBpBLwvjj69e", "serversPerVm": 40}, "imageDeploymentProfile": {"commandLine": "8SKYBEkzRYCirQEp", "imageId": "wyyGhic45Ekeo4Iz", "portConfigurations": [{"name": "43NbUYd8Ncnwl2Lr", "protocol": "G2Vyj3CkHlh6jKTq"}, {"name": "WB7IZ4BmtF3mdgVH", "protocol": "O2b6Xs0ivCBvhkQH"}, {"name": "3TxNmD0vsSqGz8db", "protocol": "etAnpYcZzcdkbaVs"}], "timeout": {"creation": 98, "drain": 89, "session": 19, "unresponsive": 18}}, "name": "Z0Zez6RVnakAzzXZ", "regions": [{"bufferSize": 86, "maxServerCount": 19, "minServerCount": 76, "region": "HwvtEdItt8NTXdD8"}, {"bufferSize": 96, "maxServerCount": 43, "minServerCount": 12, "region": "IQnPN5TQho98xAuy"}, {"bufferSize": 46, "maxServerCount": 15, "minServerCount": 78, "region": "eDFFv06QC1gnICIK"}], "samplingRules": {"coredumps": {"crashed": {"collect": false, "percentage": 19}, "success": {"collect": true, "percentage": 85}}, "logs": {"crashed": {"collect": false, "percentage": 71}, "success": {"collect": false, "percentage": 44}}}}'
+Example: '{"active": false, "claimKeys": ["aOo4FDURYEuCP4LG", "OwwoUzhwp1niyk59", "qf5gGPrAE6R4F9IE"], "dsHostConfiguration": {"instanceId": "uSVbaQ7MG6Q9IP8i", "instanceType": "Ii7cqaTSr32vwoJ3", "serversPerVm": 84}, "imageDeploymentProfile": {"commandLine": "xDiN1LCL2C2z5mVj", "imageId": "BPlU9IXPngxGLieU", "portConfigurations": [{"name": "2QVkKmB1m6L7oYAH", "protocol": "WPijRwsYi9MNNXSn"}, {"name": "vYl4ThHHBPnqJNb1", "protocol": "Dhqa466c0XresCTX"}, {"name": "llZ0nUgpPQqdAtPr", "protocol": "wl2aMabre7NGiuUs"}], "timeout": {"creation": 73, "drain": 46, "session": 88, "unresponsive": 97}}, "name": "AdNNQxOX2xO63Hdj", "onDemand": true, "regions": [{"bufferSize": 51, "maxServerCount": 12, "minServerCount": 59, "region": "Rfqd69TYlAcuWtHb"}, {"bufferSize": 100, "maxServerCount": 64, "minServerCount": 29, "region": "D9iisBJ7EH4qThzm"}, {"bufferSize": 53, "maxServerCount": 30, "minServerCount": 82, "region": "gvE3l656fXQR4Yaf"}], "samplingRules": {"coredumps": {"crashed": {"collect": true, "percentage": 95}, "success": {"collect": true, "percentage": 27}}, "logs": {"crashed": {"collect": false, "percentage": 85}, "success": {"collect": true, "percentage": 36}}}}'
 """
 
 result, error = fleet_create(

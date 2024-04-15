@@ -13,7 +13,7 @@ Definition: ModelsUpdateUserPointAdminV1Request
 inc: float
 latest_value: float
 
-Example: '{"inc": 0.5770973990182761, "latestValue": 0.7119510331482977}'
+Example: '{"inc": 0.9080011329028849, "latestValue": 0.35894894783116493}'
 """
 
 result, error = update_user_point_admin_v1(

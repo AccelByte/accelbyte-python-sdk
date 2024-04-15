@@ -11,7 +11,7 @@ body:
 Definition: XblIAPConfigRequest
 relying_party_cert: str
 
-Example: '{"relyingPartyCert": "b9Nw03D3po84AXev"}'
+Example: '{"relyingPartyCert": "wvhyWdbCy2YBfOwG"}'
 """
 
 result, error = update_xbl_iap_config(

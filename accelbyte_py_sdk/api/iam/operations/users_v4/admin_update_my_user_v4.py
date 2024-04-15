@@ -66,7 +66,7 @@ class AdminUpdateMyUserV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        409: Conflict - RestErrorResponse (10177: username already used)
+        409: Conflict - RestErrorResponse (10177: username already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -170,7 +170,7 @@ class AdminUpdateMyUserV4(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        409: Conflict - RestErrorResponse (10177: username already used)
+        409: Conflict - RestErrorResponse (10177: username already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

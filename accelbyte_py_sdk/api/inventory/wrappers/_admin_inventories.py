@@ -34,12 +34,14 @@ from ..models import ApimodelsDeleteInventoryReq
 from ..models import ApimodelsErrorResponse
 from ..models import ApimodelsInventoryResp
 from ..models import ApimodelsListInventoryResp
+from ..models import ApimodelsPurchaseValidationReq
 from ..models import ApimodelsUpdateInventoryReq
 
 from ..operations.admin_inventories import AdminCreateInventory
 from ..operations.admin_inventories import AdminGetInventory
 from ..operations.admin_inventories import AdminListInventories
 from ..operations.admin_inventories import AdminListInventoriesSortByEnum
+from ..operations.admin_inventories import AdminPurchasable
 from ..operations.admin_inventories import AdminUpdateInventory
 from ..operations.admin_inventories import DeleteInventory
 
@@ -398,6 +400,128 @@ async def admin_list_inventories_async(
         limit=limit,
         offset=offset,
         sort_by=sort_by,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminPurchasable)
+def admin_purchasable(
+    body: ApimodelsPurchaseValidationReq,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """To validate user inventory capacity when purchase ecommerce item (AdminPurchasable)
+
+
+    Validate purchase ecommerce item.
+
+    Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+
+    Properties:
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/purchaseable
+
+        method: POST
+
+        tags: ["Admin Inventories"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsPurchaseValidationReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ApimodelsErrorResponse (Bad Request)
+
+        404: Not Found - ApimodelsErrorResponse (Not Found)
+
+        409: Conflict - ApimodelsErrorResponse (Conflict)
+
+        500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminPurchasable.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminPurchasable)
+async def admin_purchasable_async(
+    body: ApimodelsPurchaseValidationReq,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """To validate user inventory capacity when purchase ecommerce item (AdminPurchasable)
+
+
+    Validate purchase ecommerce item.
+
+    Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [UPDATE]
+
+    Properties:
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/purchaseable
+
+        method: POST
+
+        tags: ["Admin Inventories"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsPurchaseValidationReq in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ApimodelsErrorResponse (Bad Request)
+
+        404: Not Found - ApimodelsErrorResponse (Not Found)
+
+        409: Conflict - ApimodelsErrorResponse (Conflict)
+
+        500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminPurchasable.create(
+        body=body,
         user_id=user_id,
         namespace=namespace,
     )

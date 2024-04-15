@@ -13,7 +13,7 @@ Definition: ModelsBinaryRecordRequest
 content_type: str
 file_location: str
 
-Example: '{"content_type": "Vce8xK5t1AHrlkz2", "file_location": "IPt6KJnGbDR1Kqym"}'
+Example: '{"content_type": "rqeukMtJ4TPXnqCg", "file_location": "bVWLNP7i6AXIgoPe"}'
 """
 
 result, error = admin_put_game_binary_record_v1(

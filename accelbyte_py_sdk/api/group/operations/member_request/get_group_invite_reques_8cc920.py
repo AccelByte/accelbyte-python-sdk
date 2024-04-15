@@ -38,23 +38,11 @@ class GetGroupInviteRequestPublicV2(Operation):
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP:JOIN [READ]"
-
-
-
 
     This endpoint is used to Get Group Invite Request List
 
-
-
-
     Get Group Invite Request List for specific group. Group members needs to have permission and also belong to the group to access this endpoint
-
-
-
 
     Action Code: 73501
 

@@ -36,20 +36,9 @@ from ...models import ResponseErrorResponse
 class GetSingleMemberRoleAdminV1(Operation):
     """get member role (getSingleMemberRoleAdminV1)
 
-    Required permission ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
-
-
-
-
     This endpoint is used to get member role based on the role ID
 
-
-
-
     Action Code: 73203
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:ROLE [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/roles/{memberRoleId}

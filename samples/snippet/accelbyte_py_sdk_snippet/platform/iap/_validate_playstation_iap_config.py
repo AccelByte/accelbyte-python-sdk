@@ -16,7 +16,7 @@ environment: str
 stream_name: str
 stream_partner_name: str
 
-Example: '{"backOfficeServerClientId": "wNsliD1P2ZiXrIWK", "backOfficeServerClientSecret": "9HklEUYnd0HZnn6I", "enableStreamJob": true, "environment": "gSelaTbRNzD7ahzH", "streamName": "5zUy9pif5c8QbTvb", "streamPartnerName": "GsJeY0KDf84eeBtz"}'
+Example: '{"backOfficeServerClientId": "YgXENzfSr3p5lqym", "backOfficeServerClientSecret": "ISMCYVbkB4H4LEjo", "enableStreamJob": false, "environment": "wjyCPDhf7QcCgpea", "streamName": "W1WBMqhkf89POram", "streamPartnerName": "Ac9h5hfh5frFKE7t"}'
 """
 
 result, error = validate_playstation_iap_config(

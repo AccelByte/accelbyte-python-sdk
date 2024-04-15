@@ -13,7 +13,7 @@ body:
 Definition: ModelsAdminSetProfanityRuleForNamespaceRequest
 rule: str
 
-Example: '{"rule": "d6tsQ7HSJNvAiYVk"}'
+Example: '{"rule": "Jay3Qk6onbdmyscf"}'
 """
 
 result, error = admin_set_profanity_rule_for_namespace(

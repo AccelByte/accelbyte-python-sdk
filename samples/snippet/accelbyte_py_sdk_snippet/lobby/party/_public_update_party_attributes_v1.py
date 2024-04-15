@@ -13,7 +13,7 @@ Definition: ModelsPartyPUTCustomAttributesRequest
 custom_attribute: Dict[str, Any]
 updated_at: int
 
-Example: '{"custom_attribute": {"BycfCUwPlrS8tc0W": {}, "fFmviKkqfqDI1M7i": {}, "uhpez1ytT2LE5uX2": {}}, "updatedAt": 20}'
+Example: '{"custom_attribute": {"z7ZhioCKKiCipBDd": {}, "g2Px0yfeLCdmCfz5": {}, "R4hfAEtLvfI9BFyI": {}}, "updatedAt": 80}'
 """
 
 result, error = public_update_party_attributes_v1(

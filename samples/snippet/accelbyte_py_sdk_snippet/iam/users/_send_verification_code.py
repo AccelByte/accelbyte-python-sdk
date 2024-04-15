@@ -13,7 +13,7 @@ context: str
 language_tag: str
 login_id: str
 
-Example: '{"Context": "bV8qgSVndJmmMi2X", "LanguageTag": "gvRplwWO5Qy11S7Z", "LoginID": "D7xUC3Cn0YOUJPfb"}'
+Example: '{"Context": "niEvXnvu2adSaVzy", "LanguageTag": "lLYhAhCo5l2relCv", "LoginID": "BTrumnbuGjFwZmQK"}'
 """
 
 result, error = send_verification_code(

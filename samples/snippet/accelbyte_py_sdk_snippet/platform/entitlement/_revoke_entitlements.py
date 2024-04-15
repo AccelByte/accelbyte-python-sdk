@@ -10,7 +10,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 body:
 Definition: List[str]
 
-Example: '["sbOX9jVYptPQbVdK", "Qxx9W85SZeJf19wf", "yhDHTeQf6Nhpwgqf"]'
+Example: '["vfByMFX7pseOx8yx", "REf5nwz1hdKes8Hg", "gHV6OYXSpmuBnyn2"]'
 """
 
 result, error = revoke_entitlements(

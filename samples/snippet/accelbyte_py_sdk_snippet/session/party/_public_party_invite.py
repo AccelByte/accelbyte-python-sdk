@@ -13,7 +13,7 @@ Definition: ApimodelsSessionInviteRequest
 platform_id: str
 user_id: str
 
-Example: '{"platformID": "VG4Ld89ptgGXmZXf", "userID": "lp4TLkwGo6DERP0m"}'
+Example: '{"platformID": "APqfTq5eVBiKbTDo", "userID": "beK4YpttKaZIDskW"}'
 """
 
 result, error = public_party_invite(

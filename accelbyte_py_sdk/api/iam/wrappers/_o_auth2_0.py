@@ -1614,7 +1614,7 @@ def token_grant_v3(
     It generates a token by checking the client credentials provided through Authorization header.
     5. Grant Type == `urn:ietf:params:oauth:grant-type:extend_client_credentials`:
     It generates a token by checking the client credentials provided through Authorization header.
-    It only allow publisher/studio namespace client.
+    It only allows publisher/studio namespace client.
     In generated token:
     1. There wil be no roles, namespace_roles & permission.
     2. The scope will be fixed as 'extend'.
@@ -1757,7 +1757,7 @@ async def token_grant_v3_async(
     It generates a token by checking the client credentials provided through Authorization header.
     5. Grant Type == `urn:ietf:params:oauth:grant-type:extend_client_credentials`:
     It generates a token by checking the client credentials provided through Authorization header.
-    It only allow publisher/studio namespace client.
+    It only allows publisher/studio namespace client.
     In generated token:
     1. There wil be no roles, namespace_roles & permission.
     2. The scope will be fixed as 'extend'.

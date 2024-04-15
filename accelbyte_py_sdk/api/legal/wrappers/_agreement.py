@@ -217,7 +217,8 @@ def change_preference_consent(
 ):
     """Change Preference Consent (changePreferenceConsent)
 
-    This API will Update Preference Consent. Other detail info:
+    This API will Update Preference Consent.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
 
@@ -270,7 +271,8 @@ async def change_preference_consent_async(
 ):
     """Change Preference Consent (changePreferenceConsent)
 
-    This API will Update Preference Consent. Other detail info:
+    This API will Update Preference Consent.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
 
@@ -615,7 +617,8 @@ def retrieve_accepted_agreements(
 ):
     """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
 
-    This API will return all accepted Legal Agreements for specified user. Other detail info:
+    This API will return all accepted Legal Agreements for specified user.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
 
@@ -652,7 +655,8 @@ async def retrieve_accepted_agreements_async(
 ):
     """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
 
-    This API will return all accepted Legal Agreements for specified user. Other detail info:
+    This API will return all accepted Legal Agreements for specified user.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
 
@@ -762,9 +766,10 @@ def retrieve_all_users_by_policy_version(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve All Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
+    """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
 
-    This API will return all users who has accepted a specific policy version.Other detail info:
+    This API will return users who has accepted a specific policy version.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
 
@@ -815,9 +820,10 @@ async def retrieve_all_users_by_policy_version_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Retrieve All Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
+    """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
 
-    This API will return all users who has accepted a specific policy version.Other detail info:
+    This API will return users who has accepted a specific policy version.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
 

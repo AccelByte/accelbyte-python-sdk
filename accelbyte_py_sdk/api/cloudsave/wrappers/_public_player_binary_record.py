@@ -731,6 +731,7 @@ def list_my_binary_records_v1(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     query: Optional[str] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -760,6 +761,8 @@ def list_my_binary_records_v1(
 
         query: (query) OPTIONAL str in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelsListPlayerBinaryRecordsResponse (Retrieve list of player records by namespace)
 
@@ -779,6 +782,7 @@ def list_my_binary_records_v1(
         limit=limit,
         offset=offset,
         query=query,
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -789,6 +793,7 @@ async def list_my_binary_records_v1_async(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     query: Optional[str] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -818,6 +823,8 @@ async def list_my_binary_records_v1_async(
 
         query: (query) OPTIONAL str in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelsListPlayerBinaryRecordsResponse (Retrieve list of player records by namespace)
 
@@ -837,6 +844,7 @@ async def list_my_binary_records_v1_async(
         limit=limit,
         offset=offset,
         query=query,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(
@@ -849,6 +857,7 @@ def list_other_player_public_binary_records_v1(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -878,6 +887,8 @@ def list_other_player_public_binary_records_v1(
 
         offset: (offset) OPTIONAL int in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelsListPlayerBinaryRecordsResponse (Successful operation)
 
@@ -897,6 +908,7 @@ def list_other_player_public_binary_records_v1(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -907,6 +919,7 @@ async def list_other_player_public_binary_records_v1_async(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -936,6 +949,8 @@ async def list_other_player_public_binary_records_v1_async(
 
         offset: (offset) OPTIONAL int in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelsListPlayerBinaryRecordsResponse (Successful operation)
 
@@ -955,6 +970,7 @@ async def list_other_player_public_binary_records_v1_async(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(

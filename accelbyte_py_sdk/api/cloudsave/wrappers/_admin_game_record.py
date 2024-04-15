@@ -763,6 +763,7 @@ def list_game_records_handler_v1(
     limit: int,
     offset: int,
     query: Optional[str] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -788,6 +789,8 @@ def list_game_records_handler_v1(
 
         query: (query) OPTIONAL str in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
         limit: (limit) REQUIRED int in query
 
         offset: (offset) REQUIRED int in query
@@ -811,6 +814,7 @@ def list_game_records_handler_v1(
         limit=limit,
         offset=offset,
         query=query,
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -821,6 +825,7 @@ async def list_game_records_handler_v1_async(
     limit: int,
     offset: int,
     query: Optional[str] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -846,6 +851,8 @@ async def list_game_records_handler_v1_async(
 
         query: (query) OPTIONAL str in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
         limit: (limit) REQUIRED int in query
 
         offset: (offset) REQUIRED int in query
@@ -869,6 +876,7 @@ async def list_game_records_handler_v1_async(
         limit=limit,
         offset=offset,
         query=query,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(

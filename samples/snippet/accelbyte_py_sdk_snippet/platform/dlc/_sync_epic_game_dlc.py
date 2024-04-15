@@ -11,7 +11,7 @@ body:
 Definition: EpicGamesDLCSyncRequest
 epic_games_jwt_token: str
 
-Example: '{"epicGamesJwtToken": "ywy8IqZ8t2ERcYbk"}'
+Example: '{"epicGamesJwtToken": "BQ3EuGZp8Dabw1mv"}'
 """
 
 result, error = sync_epic_game_dlc(

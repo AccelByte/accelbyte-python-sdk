@@ -36,15 +36,7 @@ from ...models import ResponseErrorResponse
 class AdminGetUserGroupStatusInformationV2(Operation):
     """User Group Status Information (AdminGetUserGroupStatusInformationV2)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]"
-
-
-
-
     This endpoint is used to get user group status information.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:MEMBER [READ]
 
     Properties:
         url: /group/v2/admin/namespaces/{namespace}/users/{userId}/groups/{groupId}/status

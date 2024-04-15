@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Inventory Service."""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,6 +18,16 @@ __email__ = "dev@accelbyte.net"
 from .wrappers import admin_create_chaining_operations
 from .wrappers import admin_create_chaining_operations_async
 
+# admin_integration_configurations
+from .wrappers import admin_create_integration_configuration
+from .wrappers import admin_create_integration_configuration_async
+from .wrappers import admin_list_integration_configurations
+from .wrappers import admin_list_integration_configurations_async
+from .wrappers import admin_update_integration_configuration
+from .wrappers import admin_update_integration_configuration_async
+from .wrappers import admin_update_status_integration_configuration
+from .wrappers import admin_update_status_integration_configuration_async
+
 # admin_inventories
 from .wrappers import admin_create_inventory
 from .wrappers import admin_create_inventory_async
@@ -25,6 +35,8 @@ from .wrappers import admin_get_inventory
 from .wrappers import admin_get_inventory_async
 from .wrappers import admin_list_inventories
 from .wrappers import admin_list_inventories_async
+from .wrappers import admin_purchasable
+from .wrappers import admin_purchasable_async
 from .wrappers import admin_update_inventory
 from .wrappers import admin_update_inventory_async
 from .wrappers import delete_inventory
@@ -65,6 +77,8 @@ from .wrappers import admin_save_item
 from .wrappers import admin_save_item_async
 from .wrappers import admin_save_item_to_inventory
 from .wrappers import admin_save_item_to_inventory_async
+from .wrappers import admin_sync_user_entitlements
+from .wrappers import admin_sync_user_entitlements_async
 
 # admin_tags
 from .wrappers import admin_create_tag

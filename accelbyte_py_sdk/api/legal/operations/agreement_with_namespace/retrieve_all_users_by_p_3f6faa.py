@@ -34,9 +34,10 @@ from ...models import PagedRetrieveUserAcceptedAgreementResponse
 
 
 class RetrieveAllUsersByPolicyVersion1(Operation):
-    """Retrieve All Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion_1)
+    """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion_1)
 
-    This API will return all users who has accepted a specific policy version.Other detail info:
+    This API will return all users who has accepted a specific policy version.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
 

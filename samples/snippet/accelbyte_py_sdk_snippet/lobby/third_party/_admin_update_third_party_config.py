@@ -12,7 +12,7 @@ body:
 Definition: ModelsUpdateConfigRequest
 api_key: str
 
-Example: '{"apiKey": "B4Iou2zsUB3zSBOs"}'
+Example: '{"apiKey": "JG7XGPxuJVLE0sAD"}'
 """
 
 result, error = admin_update_third_party_config(

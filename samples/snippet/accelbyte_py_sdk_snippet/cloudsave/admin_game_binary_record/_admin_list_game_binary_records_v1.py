@@ -12,6 +12,7 @@ result, error = admin_list_game_binary_records_v1(
     limit=limit,
     offset=offset,
     query=query,
+    tags=tags,
     namespace=namespace,
     x_additional_headers=x_additional_headers,
 )

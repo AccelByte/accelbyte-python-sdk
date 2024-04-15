@@ -1,3 +1,14 @@
+<a name="v0.64.0"></a>
+## [v0.64.0]
+### chore
+- **api:** add sessionhistory
+- **api:** generate sessionhistory
+### test
+- **integration:** add sessionhistory integration tests
+### fix
+- **integration:** fix sessionhistory tests in starter
+
+
 <a name="v0.63.0"></a>
 ## [v0.63.0]
 ### docs

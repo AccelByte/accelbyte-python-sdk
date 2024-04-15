@@ -12,7 +12,7 @@ body:
 Definition: ModelsHideContentRequest
 is_hidden: bool
 
-Example: '{"isHidden": false}'
+Example: '{"isHidden": true}'
 """
 
 result, error = admin_update_content_hide_status_v2(

@@ -57,44 +57,17 @@ def create_group_configuration_admin_v1(
 ):
     """create new configuration (createGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]'
-
-
-
-
     This endpoint is used to create new configuration. Before creating the configuration, make sure that member role for admin and group member are already created before.
-
-
-
 
     For each of the global rule, it will be the rule detail that consists of these fields:
 
+    * **ruleAttribute**: attribute of the player that needs to be checked
+    * **ruleCriteria**: criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+    * **ruleValue**: value that needs to be checked
 
-
-
-
-
-      * ruleAttribute : attribute of the player that needs to be checked
-
-
-      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
-
-
-      * ruleValue : value that needs to be checked
-
-
-
-
-
-    Allowed Action can only be filled with any available action in the Group Service. For the configuration, the only value is "createGroup"
-
-
-
+    Allowed Action can only be filled with any available action in the Group Service. For the configuration, the only value is **"createGroup"**
 
     Action Code: 73103
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration
@@ -146,44 +119,17 @@ async def create_group_configuration_admin_v1_async(
 ):
     """create new configuration (createGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]'
-
-
-
-
     This endpoint is used to create new configuration. Before creating the configuration, make sure that member role for admin and group member are already created before.
-
-
-
 
     For each of the global rule, it will be the rule detail that consists of these fields:
 
+    * **ruleAttribute**: attribute of the player that needs to be checked
+    * **ruleCriteria**: criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+    * **ruleValue**: value that needs to be checked
 
-
-
-
-
-      * ruleAttribute : attribute of the player that needs to be checked
-
-
-      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
-
-
-      * ruleValue : value that needs to be checked
-
-
-
-
-
-    Allowed Action can only be filled with any available action in the Group Service. For the configuration, the only value is "createGroup"
-
-
-
+    Allowed Action can only be filled with any available action in the Group Service. For the configuration, the only value is **"createGroup"**
 
     Action Code: 73103
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration
@@ -238,20 +184,9 @@ def delete_group_configuration_global_rule_admin_v1(
 ):
     """delete existing configuration global rule based on allowed action (deleteGroupConfigurationGlobalRuleAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
-
-
-
-
     This endpoint is used to delete existing global rule configuration based on the allowed action. It will not give any error if the allowed action is not existed in the global rule
 
-
-
-
     Action Code: 73105
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}
@@ -307,20 +242,9 @@ async def delete_group_configuration_global_rule_admin_v1_async(
 ):
     """delete existing configuration global rule based on allowed action (deleteGroupConfigurationGlobalRuleAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
-
-
-
-
     This endpoint is used to delete existing global rule configuration based on the allowed action. It will not give any error if the allowed action is not existed in the global rule
 
-
-
-
     Action Code: 73105
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}
@@ -377,20 +301,9 @@ def delete_group_configuration_v1(
 ):
     """Delete group configuration (deleteGroupConfigurationV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]'
-
-
-
-
     This endpoint is used to delete group configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
-
-
-
     Action Code: 73101
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
@@ -442,20 +355,9 @@ async def delete_group_configuration_v1_async(
 ):
     """Delete group configuration (deleteGroupConfigurationV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]'
-
-
-
-
     This endpoint is used to delete group configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
-
-
-
     Action Code: 73101
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [DELETE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
@@ -509,20 +411,9 @@ def get_group_configuration_admin_v1(
 ):
     """get existing configuration (getGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]'
-
-
-
-
     This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
-
-
-
     Action Code: 73101
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
@@ -574,20 +465,9 @@ async def get_group_configuration_admin_v1_async(
 ):
     """get existing configuration (getGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]'
-
-
-
-
     This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
-
-
-
     Action Code: 73101
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
@@ -640,44 +520,15 @@ def initiate_group_configuration_admin_v1(
 ):
     """initiate configuration (initiateGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]'
-
-
-
-
-    This endpoint is used to initiate configuration. This endpoint will automatically create default configuration and member roles with default permission
-
-
-
-
+    This endpoint is used to initiate configuration.
+    This endpoint will automatically create default configuration and member roles with default permission
     Default Permission for admin role will cover these permission:
-
-
-
-
-
-
-      * Permission to invite user to group
-
-
-      * Permission to accept or reject join request
-
-
-      * Permission to kick group member
-
-
-
-
+    - Permission to invite user to group
+    - Permission to accept or reject join request
+    - Permission to kick group member
 
     Default max member value will be 50 and global rules will be empty
-
-
-
-
     Action Code: 73104
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/initiate
@@ -723,44 +574,15 @@ async def initiate_group_configuration_admin_v1_async(
 ):
     """initiate configuration (initiateGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]'
-
-
-
-
-    This endpoint is used to initiate configuration. This endpoint will automatically create default configuration and member roles with default permission
-
-
-
-
+    This endpoint is used to initiate configuration.
+    This endpoint will automatically create default configuration and member roles with default permission
     Default Permission for admin role will cover these permission:
-
-
-
-
-
-
-      * Permission to invite user to group
-
-
-      * Permission to accept or reject join request
-
-
-      * Permission to kick group member
-
-
-
-
+    - Permission to invite user to group
+    - Permission to accept or reject join request
+    - Permission to kick group member
 
     Default max member value will be 50 and global rules will be empty
-
-
-
-
     Action Code: 73104
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [CREATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/initiate
@@ -810,20 +632,9 @@ def list_group_configuration_admin_v1(
 ):
     """List Group Configuration (listGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]'
-
-
-
-
     This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
-
-
-
     Action Code: 73101
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration
@@ -879,20 +690,9 @@ async def list_group_configuration_admin_v1_async(
 ):
     """List Group Configuration (listGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]'
-
-
-
-
     This endpoint is used to get existing configuration. This Configuration is used as the main rule of the service. Each namespace will have its own configuration
 
-
-
-
     Action Code: 73101
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration
@@ -950,20 +750,9 @@ def update_group_configuration_admin_v1(
 ):
     """update existing configuration (updateGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
-
-
-
-
     This endpoint is used to update existing configuration. groupAdminRoleId and groupMemberRoleId won't be able to be updated. User can try to change the member role permission instead for each of those member role
 
-
-
-
     Action Code: 73102
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
@@ -1019,20 +808,9 @@ async def update_group_configuration_admin_v1_async(
 ):
     """update existing configuration (updateGroupConfigurationAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
-
-
-
-
     This endpoint is used to update existing configuration. groupAdminRoleId and groupMemberRoleId won't be able to be updated. User can try to change the member role permission instead for each of those member role
 
-
-
-
     Action Code: 73102
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}
@@ -1091,20 +869,9 @@ def update_group_configuration_global_rule_admin_v1(
 ):
     """update existing configuration global rule (updateGroupConfigurationGlobalRuleAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
-
-
-
-
     This endpoint is used to update existing global rule configuration based on the allowed action. It will replace the permission with the request
 
-
-
-
     Action Code: 73106
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}
@@ -1164,20 +931,9 @@ async def update_group_configuration_global_rule_admin_v1_async(
 ):
     """update existing configuration global rule (updateGroupConfigurationGlobalRuleAdminV1)
 
-    Required permission 'ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]'
-
-
-
-
     This endpoint is used to update existing global rule configuration based on the allowed action. It will replace the permission with the request
 
-
-
-
     Action Code: 73106
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:CONFIGURATION [UPDATE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/configuration/{configurationCode}/rules/{allowedAction}

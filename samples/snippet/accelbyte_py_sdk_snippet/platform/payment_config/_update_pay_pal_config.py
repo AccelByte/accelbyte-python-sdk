@@ -15,7 +15,7 @@ client_secret: str
 return_url: str
 web_hook_id: str
 
-Example: '{"clientID": "fOHpKOWkqI7V3h3g", "clientSecret": "1wQC805O2KH9q4s0", "returnUrl": "jSrMPZ23cdvtOFyO", "webHookId": "khJvsK1dRJz5bupe"}'
+Example: '{"clientID": "DgUyGH5NXI8Tl467", "clientSecret": "HRmUWhRGvuK8kZuf", "returnUrl": "AmvItksCa4ZVgQub", "webHookId": "9re73BFXgbnoCM0z"}'
 """
 
 result, error = update_pay_pal_config(

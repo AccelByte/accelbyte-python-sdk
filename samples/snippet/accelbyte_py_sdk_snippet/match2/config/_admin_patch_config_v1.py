@@ -12,7 +12,7 @@ body:
 Definition: ApiPatchNamespaceConfigRequest
 platform_group: Dict[str, List[str]]
 
-Example: '{"platformGroup": {"qFX3nPWdS9xDvbQn": ["lzIKLy3RPcUBBlmJ", "Q1qDTagwp2pV2UWX", "28M1zrBNc1iztISk"], "r4b1hbjIysneNxy1": ["PLVruu8ldiJ4MiiT", "PAMkZov5xr0xzRU1", "J9VFbQTbZ5p2P4L4"], "LU13sNGA63WVxNiw": ["8jQCYFaSw3ipUuns", "TgeY2KJx1hXtTSlu", "wJulZZPkU79ywcS8"]}}'
+Example: '{"platformGroup": {"9GTthGB5P2Mkuq6Q": ["HSLiydaN5yo8nZMR", "Vy68RbqUYFeKrOrU", "Blxu5xGKIP8l5yxQ"], "OTgNMU3uPw614x0L": ["q7FKDS3XZ6esJzcv", "hBG6d46vL7KCHm9W", "DOyCvmdPyKYOuu0O"], "3DxM9nFKdSWBLuIx": ["dTd62Mh6KOLIFfZv", "GuZPF3O469R565ye", "LaBkhsQ1lBVrfm9i"]}}'
 """
 
 result, error = admin_patch_config_v1(

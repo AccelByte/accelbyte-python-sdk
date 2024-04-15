@@ -10,7 +10,7 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 body:
 Definition: Dict[str, Any]
 
-Example: '{"KM3WmnaU10uulMXa": {}, "e1ycLGHauFLgTWZ9": {}, "BknnYcqoNaVXreLh": {}}'
+Example: '{"rZnpNwpbYs6btqfA": {}, "gWeZYBetAhRqRUCx": {}, "T15IPvSzfI5qGwUL": {}}'
 """
 
 result, error = public_query_game_sessions_by_attributes(

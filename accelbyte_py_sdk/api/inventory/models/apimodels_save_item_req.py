@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SourceEnum(StrEnum):
+    ECOMMERCE = "ECOMMERCE"
+    OTHER = "OTHER"
 
 
 class ApimodelsSaveItemReq(Model):
@@ -44,6 +50,8 @@ class ApimodelsSaveItemReq(Model):
 
         slot_used: (slotUsed) REQUIRED int
 
+        source: (source) REQUIRED Union[str, SourceEnum]
+
         source_item_id: (sourceItemId) REQUIRED str
 
         tags: (tags) REQUIRED List[str]
@@ -59,6 +67,7 @@ class ApimodelsSaveItemReq(Model):
     server_custom_attributes: Dict[str, Any]  # REQUIRED
     slot_id: str  # REQUIRED
     slot_used: int  # REQUIRED
+    source: Union[str, SourceEnum]  # REQUIRED
     source_item_id: str  # REQUIRED
     tags: List[str]  # REQUIRED
     type_: str  # REQUIRED
@@ -91,6 +100,10 @@ class ApimodelsSaveItemReq(Model):
 
     def with_slot_used(self, value: int) -> ApimodelsSaveItemReq:
         self.slot_used = value
+        return self
+
+    def with_source(self, value: Union[str, SourceEnum]) -> ApimodelsSaveItemReq:
+        self.source = value
         return self
 
     def with_source_item_id(self, value: str) -> ApimodelsSaveItemReq:
@@ -141,6 +154,10 @@ class ApimodelsSaveItemReq(Model):
             result["slotUsed"] = int(self.slot_used)
         elif include_empty:
             result["slotUsed"] = 0
+        if hasattr(self, "source"):
+            result["source"] = str(self.source)
+        elif include_empty:
+            result["source"] = Union[str, SourceEnum]()
         if hasattr(self, "source_item_id"):
             result["sourceItemId"] = str(self.source_item_id)
         elif include_empty:
@@ -168,6 +185,7 @@ class ApimodelsSaveItemReq(Model):
         server_custom_attributes: Dict[str, Any],
         slot_id: str,
         slot_used: int,
+        source: Union[str, SourceEnum],
         source_item_id: str,
         tags: List[str],
         type_: str,
@@ -180,6 +198,7 @@ class ApimodelsSaveItemReq(Model):
         instance.server_custom_attributes = server_custom_attributes
         instance.slot_id = slot_id
         instance.slot_used = slot_used
+        instance.source = source
         instance.source_item_id = source_item_id
         instance.tags = tags
         instance.type_ = type_
@@ -228,6 +247,10 @@ class ApimodelsSaveItemReq(Model):
             instance.slot_used = int(dict_["slotUsed"])
         elif include_empty:
             instance.slot_used = 0
+        if "source" in dict_ and dict_["source"] is not None:
+            instance.source = str(dict_["source"])
+        elif include_empty:
+            instance.source = Union[str, SourceEnum]()
         if "sourceItemId" in dict_ and dict_["sourceItemId"] is not None:
             instance.source_item_id = str(dict_["sourceItemId"])
         elif include_empty:
@@ -289,6 +312,7 @@ class ApimodelsSaveItemReq(Model):
             "serverCustomAttributes": "server_custom_attributes",
             "slotId": "slot_id",
             "slotUsed": "slot_used",
+            "source": "source",
             "sourceItemId": "source_item_id",
             "tags": "tags",
             "type": "type_",
@@ -303,9 +327,16 @@ class ApimodelsSaveItemReq(Model):
             "serverCustomAttributes": True,
             "slotId": True,
             "slotUsed": True,
+            "source": True,
             "sourceItemId": True,
             "tags": True,
             "type": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "source": ["ECOMMERCE", "OTHER"],
         }
 
     # endregion static methods

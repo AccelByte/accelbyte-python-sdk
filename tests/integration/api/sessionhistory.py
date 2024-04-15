@@ -50,8 +50,7 @@ class SessionHistoryTestCase(IntegrationTestCase):
         end_date = now.strftime(fmt)
         start_date = (now - timedelta(days=10)).strftime(fmt)
         response, error = query_total_matchmaking_match(
-            end_date=end_date,
-            start_date=start_date
+            end_date=end_date, start_date=start_date
         )
 
         # assert

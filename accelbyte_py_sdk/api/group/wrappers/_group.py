@@ -79,53 +79,20 @@ def create_new_group_public_v1(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to create new group
-
-
-
 
     There are some fields that needs to be fulfilled
 
-
-
-
-
-
-      * groupDescription : the description of the group (optional)
-
-
-      * groupIcon : group icon URL link (optional)
-
-
-      * groupName : name of the group
-
-
-      * groupRegion : region of the group
-
-
-      * groupRules : rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
-
-
-      * allowedAction : available action in group service. It consist of joinGroup and inviteGroup
-
-
-      * ruleAttribute : attribute of the player that needs to be checked
-
-
-      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
-
-
-      * ruleValue : value that needs to be checked
-
-
-      * customAttributes : additional custom group attributes (optional)
-
-
-
-
+    * **groupDescription**: the description of the group (optional)
+    * **groupIcon**: group icon URL link (optional)
+    * **groupName**: name of the group
+    * **groupRegion**: region of the group
+    * **groupRules**: rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
+    * **allowedAction**: available action in group service. It consist of joinGroup and inviteGroup
+    * **ruleAttribute**: attribute of the player that needs to be checked
+    * **ruleCriteria**: criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+    * **ruleValue**: value that needs to be checked
+    * **customAttributes**: additional custom group attributes (optional)
 
     Action Code: 73304
 
@@ -181,53 +148,20 @@ async def create_new_group_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to create new group
-
-
-
 
     There are some fields that needs to be fulfilled
 
-
-
-
-
-
-      * groupDescription : the description of the group (optional)
-
-
-      * groupIcon : group icon URL link (optional)
-
-
-      * groupName : name of the group
-
-
-      * groupRegion : region of the group
-
-
-      * groupRules : rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
-
-
-      * allowedAction : available action in group service. It consist of joinGroup and inviteGroup
-
-
-      * ruleAttribute : attribute of the player that needs to be checked
-
-
-      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
-
-
-      * ruleValue : value that needs to be checked
-
-
-      * customAttributes : additional custom group attributes (optional)
-
-
-
-
+    * **groupDescription**: the description of the group (optional)
+    * **groupIcon**: group icon URL link (optional)
+    * **groupName**: name of the group
+    * **groupRegion**: region of the group
+    * **groupRules**: rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
+    * **allowedAction**: available action in group service. It consist of joinGroup and inviteGroup
+    * **ruleAttribute**: attribute of the player that needs to be checked
+    * **ruleCriteria**: criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+    * **ruleValue**: value that needs to be checked
+    * **customAttributes**: additional custom group attributes (optional)
 
     Action Code: 73304
 
@@ -285,53 +219,20 @@ def create_new_group_public_v2(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to create new group
-
-
-
 
     There are some fields that needs to be fulfilled
 
-
-
-
-
-
-      * groupDescription : the description of the group (optional)
-
-
-      * groupIcon : group icon URL link (optional)
-
-
-      * groupName : name of the group
-
-
-      * groupRegion : region of the group
-
-
-      * groupRules : rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
-
-
-      * allowedAction : available action in group service. It consist of joinGroup and inviteGroup
-
-
-      * ruleAttribute : attribute of the player that needs to be checked
-
-
-      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
-
-
-      * ruleValue : value that needs to be checked
-
-
-      * customAttributes : additional custom group attributes (optional)
-
-
-
-
+    * **groupDescription**: the description of the group (optional)
+    * **groupIcon**: group icon URL link (optional)
+    * **groupName**: name of the group
+    * **groupRegion**: region of the group
+    * **groupRules**: rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
+    * **allowedAction**: available action in group service. It consist of joinGroup and inviteGroup
+    * **ruleAttribute**: attribute of the player that needs to be checked
+    * **ruleCriteria**: criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+    * **ruleValue**: value that needs to be checked
+    * **customAttributes**: additional custom group attributes (optional)
 
     Action Code: 73304
 
@@ -387,53 +288,20 @@ async def create_new_group_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     This endpoint is used to create new group
-
-
-
 
     There are some fields that needs to be fulfilled
 
-
-
-
-
-
-      * groupDescription : the description of the group (optional)
-
-
-      * groupIcon : group icon URL link (optional)
-
-
-      * groupName : name of the group
-
-
-      * groupRegion : region of the group
-
-
-      * groupRules : rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
-
-
-      * allowedAction : available action in group service. It consist of joinGroup and inviteGroup
-
-
-      * ruleAttribute : attribute of the player that needs to be checked
-
-
-      * ruleCriteria : criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
-
-
-      * ruleValue : value that needs to be checked
-
-
-      * customAttributes : additional custom group attributes (optional)
-
-
-
-
+    * **groupDescription**: the description of the group (optional)
+    * **groupIcon**: group icon URL link (optional)
+    * **groupName**: name of the group
+    * **groupRegion**: region of the group
+    * **groupRules**: rules for specific group. It consists of groupCustomRule that can be used to save custom rule, and groupPredefinedRules that has similar usage with configuration, but this rule only works in specific group
+    * **allowedAction**: available action in group service. It consist of joinGroup and inviteGroup
+    * **ruleAttribute**: attribute of the player that needs to be checked
+    * **ruleCriteria**: criteria of the value. The value will be in enum of EQUAL, MINIMUM, MAXIMUM
+    * **ruleValue**: value that needs to be checked
+    * **customAttributes**: additional custom group attributes (optional)
 
     Action Code: 73304
 
@@ -489,20 +357,9 @@ def delete_group_admin_v1(
 ):
     """Delete existing group (deleteGroupAdminV1)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:{groupId} [DELETE]"
-
-
-
-
     Delete existing group. It will check whether the groupID is exist before doing the process to delete the group.
 
-
-
-
     Action Code: 73302
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:{groupId} [DELETE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}
@@ -554,20 +411,9 @@ async def delete_group_admin_v1_async(
 ):
     """Delete existing group (deleteGroupAdminV1)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP:{groupId} [DELETE]"
-
-
-
-
     Delete existing group. It will check whether the groupID is exist before doing the process to delete the group.
 
-
-
-
     Action Code: 73302
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP:{groupId} [DELETE]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}
@@ -624,20 +470,9 @@ def delete_group_predefined_rule_public_v1(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73309
 
@@ -700,20 +535,9 @@ async def delete_group_predefined_rule_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73309
 
@@ -778,20 +602,9 @@ def delete_group_predefined_rule_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73309
 
@@ -854,20 +667,9 @@ async def delete_group_predefined_rule_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73309
 
@@ -931,20 +733,9 @@ def delete_group_public_v1(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [DELETE]"
 
-
-
-
-    Delete existing group. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Delete existing group. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73305
 
@@ -1003,20 +794,9 @@ async def delete_group_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [DELETE]"
 
-
-
-
-    Delete existing group. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Delete existing group. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73305
 
@@ -1077,20 +857,9 @@ def delete_group_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [DELETE]"
 
-
-
-
-    Delete existing group. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Delete existing group. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73305
 
@@ -1149,20 +918,9 @@ async def delete_group_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [DELETE]"
 
-
-
-
-    Delete existing group. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Delete existing group. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73305
 
@@ -1225,20 +983,9 @@ def get_group_list_admin_v1(
 ):
     """get list of groups (getGroupListAdminV1)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP [READ]"
-
-
-
-
     Get list of groups. This endpoint will show any types of group
 
-
-
-
     Action Code: 73301
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups
@@ -1304,20 +1051,9 @@ async def get_group_list_admin_v1_async(
 ):
     """get list of groups (getGroupListAdminV1)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP [READ]"
-
-
-
-
     Get list of groups. This endpoint will show any types of group
 
-
-
-
     Action Code: 73301
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups
@@ -1386,13 +1122,7 @@ def get_group_list_public_v1(
 
     Required valid user authentication
 
-
-
-
     Get list of groups. This endpoint will only show OPEN and PUBLIC group type. This endpoint can search based on the group name by filling the "groupName" query parameter
-
-
-
 
     Action Code: 73303
 
@@ -1458,13 +1188,7 @@ async def get_group_list_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Get list of groups. This endpoint will only show OPEN and PUBLIC group type. This endpoint can search based on the group name by filling the "groupName" query parameter
-
-
-
 
     Action Code: 73303
 
@@ -1529,13 +1253,7 @@ def get_list_group_by_i_ds_admin_v2(
 
     Required valid user authentication
 
-
-
-
     Get list of groups by group Ids.
-
-
-
 
     Action Code: 73303
 
@@ -1589,13 +1307,7 @@ async def get_list_group_by_i_ds_admin_v2_async(
 
     Required valid user authentication
 
-
-
-
     Get list of groups by group Ids.
-
-
-
 
     Action Code: 73303
 
@@ -1651,13 +1363,7 @@ def get_list_group_by_i_ds_v2(
 
     Required valid user authentication
 
-
-
-
     Get list of groups by group Ids.
-
-
-
 
     Action Code: 73303
 
@@ -1711,13 +1417,7 @@ async def get_list_group_by_i_ds_v2_async(
 
     Required valid user authentication
 
-
-
-
     Get list of groups by group Ids.
-
-
-
 
     Action Code: 73303
 
@@ -1771,20 +1471,9 @@ def get_single_group_admin_v1(
 ):
     """get single group (getSingleGroupAdminV1)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP [READ]"
-
-
-
-
     Get single group information. This endpoint will show the group information by the groupId
 
-
-
-
     Action Code: 73306
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}
@@ -1836,20 +1525,9 @@ async def get_single_group_admin_v1_async(
 ):
     """get single group (getSingleGroupAdminV1)
 
-    Required Permission: "ADMIN:NAMESPACE:{namespace}:GROUP [READ]"
-
-
-
-
     Get single group information. This endpoint will show the group information by the groupId
 
-
-
-
     Action Code: 73306
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GROUP [READ]
 
     Properties:
         url: /group/v1/admin/namespaces/{namespace}/groups/{groupId}
@@ -1905,13 +1583,7 @@ def get_single_group_public_v1(
 
     Required valid user authentication
 
-
-
-
     Get single group information. This endpoint will show the group information by the groupId
-
-
-
 
     Action Code: 73306
 
@@ -1967,13 +1639,7 @@ async def get_single_group_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Get single group information. This endpoint will show the group information by the groupId
-
-
-
 
     Action Code: 73306
 
@@ -2032,20 +1698,9 @@ def update_group_custom_attributes_public_v1(
 
     Requires valid user authentication
 
+    Required Member Role Permission: "GROUP [UPDATE]
 
-
-
-    Required Member Role Permission: "GROUP [UPDATE]"
-
-
-
-
-    This endpoint replaces current group custom attributes entirely.
-    This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    This endpoint replaces current group custom attributes entirely. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73311
 
@@ -2108,20 +1763,9 @@ async def update_group_custom_attributes_public_v1_async(
 
     Requires valid user authentication
 
+    Required Member Role Permission: "GROUP [UPDATE]
 
-
-
-    Required Member Role Permission: "GROUP [UPDATE]"
-
-
-
-
-    This endpoint replaces current group custom attributes entirely.
-    This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    This endpoint replaces current group custom attributes entirely. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73311
 
@@ -2186,20 +1830,9 @@ def update_group_custom_attributes_public_v2(
 
     Requires valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    This endpoint replaces current group custom attributes entirely.
-    This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    This endpoint replaces current group custom attributes entirely. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73311
 
@@ -2262,20 +1895,9 @@ async def update_group_custom_attributes_public_v2_async(
 
     Requires valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    This endpoint replaces current group custom attributes entirely.
-    This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    This endpoint replaces current group custom attributes entirely. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73311
 
@@ -2340,15 +1962,7 @@ def update_group_custom_rule_public_v1(
 
     Required valid user authentication
 
-
-
-
-    Update group custom rule. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based
-    on the access token
-
-
-
+    Update group custom rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73308
 
@@ -2408,15 +2022,7 @@ async def update_group_custom_rule_public_v1_async(
 
     Required valid user authentication
 
-
-
-
-    Update group custom rule. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based
-    on the access token
-
-
-
+    Update group custom rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73308
 
@@ -2478,15 +2084,7 @@ def update_group_custom_rule_public_v2(
 
     Required valid user authentication
 
-
-
-
-    Update group custom rule. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based
-    on the access token
-
-
-
+    Update group custom rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73308
 
@@ -2546,15 +2144,7 @@ async def update_group_custom_rule_public_v2_async(
 
     Required valid user authentication
 
-
-
-
-    Update group custom rule. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based
-    on the access token
-
-
-
+    Update group custom rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73308
 
@@ -2617,25 +2207,11 @@ def update_group_predefined_rule_public_v1(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update predefined group rule. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Update predefined group rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     If the rule action is not defined in the group, it will be added immediately to the predefined group rule
-
-
-
 
     Action Code: 73310
 
@@ -2702,25 +2278,11 @@ async def update_group_predefined_rule_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update predefined group rule. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Update predefined group rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     If the rule action is not defined in the group, it will be added immediately to the predefined group rule
-
-
-
 
     Action Code: 73310
 
@@ -2789,25 +2351,11 @@ def update_group_predefined_rule_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update predefined group rule. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Update predefined group rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     If the rule action is not defined in the group, it will be added immediately to the predefined group rule
-
-
-
 
     Action Code: 73310
 
@@ -2874,25 +2422,11 @@ async def update_group_predefined_rule_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update predefined group rule. This endpoint will check the group ID of the user based on the access token
-    and compare it with the group ID in path parameter. It will also check the member role of the user based on
-    the access token
-
-
-
+    Update predefined group rule. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     If the rule action is not defined in the group, it will be added immediately to the predefined group rule
-
-
-
 
     Action Code: 73310
 
@@ -2960,19 +2494,9 @@ def update_patch_single_group_public_v1(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
 
@@ -3035,19 +2559,9 @@ async def update_patch_single_group_public_v1_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
 
@@ -3112,19 +2626,9 @@ def update_patch_single_group_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
 
@@ -3187,19 +2691,9 @@ async def update_patch_single_group_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
 
@@ -3264,19 +2758,9 @@ def update_put_single_group_public_v2(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
 
@@ -3339,19 +2823,9 @@ async def update_put_single_group_public_v2_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
 
@@ -3416,19 +2890,9 @@ def update_single_group_v1(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
 
@@ -3491,19 +2955,9 @@ async def update_single_group_v1_async(
 
     Required valid user authentication
 
-
-
-
     Required Member Role Permission: "GROUP [UPDATE]"
 
-
-
-
-    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter.
-    It will also check the member role of the user based on the access token
-
-
-
+    Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
 

@@ -38,13 +38,7 @@ class GetSingleGroupPublicV1(Operation):
 
     Required valid user authentication
 
-
-
-
     Get single group information. This endpoint will show the group information by the groupId
-
-
-
 
     Action Code: 73306
 

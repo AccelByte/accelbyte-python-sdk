@@ -40,7 +40,8 @@ def anonymize_user_agreement(
 ):
     """Anonymize user's agreement record (anonymizeUserAgreement)
 
-    This API will anonymize agreement record for specified user. Other detail info:
+    This API will anonymize agreement record for specified user.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
 
@@ -79,7 +80,8 @@ async def anonymize_user_agreement_async(
 ):
     """Anonymize user's agreement record (anonymizeUserAgreement)
 
-    This API will anonymize agreement record for specified user. Other detail info:
+    This API will anonymize agreement record for specified user.
+    Other detail info:
 
       * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
 

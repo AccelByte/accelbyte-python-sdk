@@ -13,7 +13,7 @@ template_content: str
 template_language: str
 template_slug: str
 
-Example: '{"templateContent": "KDXuHtO3cNch6oNG", "templateLanguage": "IaqI3cVSoLRGunEV", "templateSlug": "BxhmmHFEhmp6Xvxj"}'
+Example: '{"templateContent": "5XkS702KlG8tBHf9", "templateLanguage": "pFbceSVWG4iWgoXh", "templateSlug": "aTn5vS6wVkUbDhgZ"}'
 """
 
 result, error = create_template(

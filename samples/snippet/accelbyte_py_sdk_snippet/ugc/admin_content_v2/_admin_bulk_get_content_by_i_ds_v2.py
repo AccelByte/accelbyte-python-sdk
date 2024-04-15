@@ -12,7 +12,7 @@ body:
 Definition: ModelsAdminGetContentBulkRequest
 content_ids: List[str]
 
-Example: '{"contentIds": ["jNTxMKEgisUFQFUy", "aGV6zGLnNuLVbg2x", "cgQemSzTEbEtSrzI"]}'
+Example: '{"contentIds": ["50eI8xy6YJ0SCqHp", "LuuorKPOS1BESuqz", "5vZee6NfovoPaJLy"]}'
 """
 
 result, error = admin_bulk_get_content_by_i_ds_v2(

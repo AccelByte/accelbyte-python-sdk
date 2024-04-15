@@ -76,6 +76,8 @@ class CreateUserFromInvitationV3(Operation):
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
+        409: Conflict - RestErrorResponse (10222: unique display name already exists)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
@@ -208,6 +210,8 @@ class CreateUserFromInvitationV3(Operation):
 
         404: Not Found - RestErrorResponse (10180: admin invitation not found or expired | 10154: country not found)
 
+        409: Conflict - RestErrorResponse (10222: unique display name already exists)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
@@ -230,6 +234,8 @@ class CreateUserFromInvitationV3(Operation):
         if code == 403:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 409:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)

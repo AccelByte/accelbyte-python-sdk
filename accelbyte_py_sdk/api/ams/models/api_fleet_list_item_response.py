@@ -46,6 +46,8 @@ class ApiFleetListItemResponse(Model):
 
         name: (name) REQUIRED str
 
+        on_demand: (onDemand) REQUIRED bool
+
         regions: (regions) REQUIRED List[str]
     """
 
@@ -57,6 +59,7 @@ class ApiFleetListItemResponse(Model):
     image: str  # REQUIRED
     is_local: bool  # REQUIRED
     name: str  # REQUIRED
+    on_demand: bool  # REQUIRED
     regions: List[str]  # REQUIRED
 
     # endregion fields
@@ -87,6 +90,10 @@ class ApiFleetListItemResponse(Model):
 
     def with_name(self, value: str) -> ApiFleetListItemResponse:
         self.name = value
+        return self
+
+    def with_on_demand(self, value: bool) -> ApiFleetListItemResponse:
+        self.on_demand = value
         return self
 
     def with_regions(self, value: List[str]) -> ApiFleetListItemResponse:
@@ -125,6 +132,10 @@ class ApiFleetListItemResponse(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "on_demand"):
+            result["onDemand"] = bool(self.on_demand)
+        elif include_empty:
+            result["onDemand"] = False
         if hasattr(self, "regions"):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
@@ -144,6 +155,7 @@ class ApiFleetListItemResponse(Model):
         image: str,
         is_local: bool,
         name: str,
+        on_demand: bool,
         regions: List[str],
         **kwargs,
     ) -> ApiFleetListItemResponse:
@@ -154,6 +166,7 @@ class ApiFleetListItemResponse(Model):
         instance.image = image
         instance.is_local = is_local
         instance.name = name
+        instance.on_demand = on_demand
         instance.regions = regions
         return instance
 
@@ -193,6 +206,10 @@ class ApiFleetListItemResponse(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "onDemand" in dict_ and dict_["onDemand"] is not None:
+            instance.on_demand = bool(dict_["onDemand"])
+        elif include_empty:
+            instance.on_demand = False
         if "regions" in dict_ and dict_["regions"] is not None:
             instance.regions = [str(i0) for i0 in dict_["regions"]]
         elif include_empty:
@@ -246,6 +263,7 @@ class ApiFleetListItemResponse(Model):
             "image": "image",
             "isLocal": "is_local",
             "name": "name",
+            "onDemand": "on_demand",
             "regions": "regions",
         }
 
@@ -258,6 +276,7 @@ class ApiFleetListItemResponse(Model):
             "image": True,
             "isLocal": True,
             "name": True,
+            "onDemand": True,
             "regions": True,
         }
 

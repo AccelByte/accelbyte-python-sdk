@@ -39,13 +39,7 @@ class UpdateMemberRolePublicV2(Operation):
 
     Required Member Role Permission: "GROUP:ROLE [UPDATE]
 
-
-
-
     This endpoint is used to assign role to group member
-
-
-
 
     Action Code: 73204
 

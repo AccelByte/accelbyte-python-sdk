@@ -14,11 +14,11 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 """
 body:
 Definition: ApiDevelopmentServerConfigurationCreateRequest
-command_line: str
+command_line_arguments: str
 image_id: str
 name: str
 
-Example: '{"commandLine": "z92RCoT2Gr5jusWi", "imageId": "ByTXIGOku4UK42lB", "name": "5wacD8WTNedrxRzr"}'
+Example: '{"commandLineArguments": "34kDFKEvvs7j4wiU", "imageId": "TTLJ8N8lgkjOsCqK", "name": "rk1Dk7dcX4PV5VWO"}'
 """
 
 result, error = development_server_configuration_create(

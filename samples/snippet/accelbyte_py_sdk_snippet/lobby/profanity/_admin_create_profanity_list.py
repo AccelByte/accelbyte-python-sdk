@@ -13,7 +13,7 @@ is_enabled: bool
 is_mandatory: bool
 name: str
 
-Example: '{"isEnabled": false, "isMandatory": true, "name": "NA2xmPeeipAnne2o"}'
+Example: '{"isEnabled": true, "isMandatory": true, "name": "hQBWciFfkgFA7PSH"}'
 """
 
 result, error = admin_create_profanity_list(

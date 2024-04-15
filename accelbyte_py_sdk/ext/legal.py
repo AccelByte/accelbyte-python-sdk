@@ -33,8 +33,10 @@ from ..api.legal.models import CreateLocalizedPolicyVersionRequest
 from ..api.legal.models import CreateLocalizedPolicyVersionResponse
 from ..api.legal.models import CreatePolicyVersionRequest
 from ..api.legal.models import CreatePolicyVersionResponse
+from ..api.legal.models import DownloadExportedAgreementsInCSVResponse
 from ..api.legal.models import ErrorEntity
 from ..api.legal.models import FieldValidationError
+from ..api.legal.models import InitiateExportAgreementsToCSVResponse
 from ..api.legal.models import LegalReadinessStatusResponse
 from ..api.legal.models import LocalizedPolicyVersionObject
 from ..api.legal.models import PagedRetrieveUserAcceptedAgreementResponse
@@ -167,6 +169,15 @@ def create_create_policy_version_response_example() -> CreatePolicyVersionRespon
     return instance
 
 
+def create_download_exported_agreements_in_csv_response_example() -> (
+    DownloadExportedAgreementsInCSVResponse
+):
+    instance = DownloadExportedAgreementsInCSVResponse()
+    instance.done = randomize("bool")
+    instance.download_url = randomize("url")
+    return instance
+
+
 def create_error_entity_example() -> ErrorEntity:
     instance = ErrorEntity()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
@@ -183,6 +194,14 @@ def create_field_validation_error_example() -> FieldValidationError:
     instance.error_message = randomize()
     instance.error_value = randomize()
     instance.message_variables = {randomize(): randomize()}
+    return instance
+
+
+def create_initiate_export_agreements_to_csv_response_example() -> (
+    InitiateExportAgreementsToCSVResponse
+):
+    instance = InitiateExportAgreementsToCSVResponse()
+    instance.processing = randomize("bool")
     return instance
 
 

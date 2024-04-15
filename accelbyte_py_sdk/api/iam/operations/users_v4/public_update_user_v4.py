@@ -75,7 +75,7 @@ class PublicUpdateUserV4(Operation):
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -197,7 +197,7 @@ class PublicUpdateUserV4(Operation):
 
         403: Forbidden - RestErrorResponse (20003: forbidden access)
 
-        409: Conflict - RestErrorResponse (10133: email already used)
+        409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 

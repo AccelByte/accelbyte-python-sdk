@@ -16,7 +16,7 @@ policy_name: str
 readable_id: str
 should_notify_on_update: bool
 
-Example: '{"description": "7DvejHsX1lPROajl", "isDefaultOpted": false, "isMandatory": true, "policyName": "1ct4ThYkEE1DrtwY", "readableId": "rzf2hoIHpCWrI8TS", "shouldNotifyOnUpdate": true}'
+Example: '{"description": "A3kGRpWmJGVwFNWr", "isDefaultOpted": false, "isMandatory": true, "policyName": "NxLnOyPTwZKuP0NZ", "readableId": "GlY84U7KcmdgKLh2", "shouldNotifyOnUpdate": true}'
 """
 
 result, error = update_policy(

@@ -14,7 +14,7 @@ code: str
 language: str
 region: str
 
-Example: '{"code": "JiPDlcepCOb1gWB1", "language": "ft", "region": "PbwtukgLQUgCzxzN"}'
+Example: '{"code": "Qnmvlx9cw5rTAuqD", "language": "nOz-FdOQ", "region": "yN0hE9t7cY4uVWGN"}'
 """
 
 result, error = redeem_code(

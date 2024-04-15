@@ -39,13 +39,7 @@ class GetListGroupByIDsV2(Operation):
 
     Required valid user authentication
 
-
-
-
     Get list of groups by group Ids.
-
-
-
 
     Action Code: 73303
 

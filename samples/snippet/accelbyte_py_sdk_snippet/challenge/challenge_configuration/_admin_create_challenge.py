@@ -22,7 +22,7 @@ name: str
 rotation: str
 start_date: str
 
-Example: '{"activeGoalsPerRotation": 53, "assignmentRule": "RANDOMIZED", "code": "XbdYBg0VQNAeoxf0", "description": "RJFUhUxUV8ozLAAc", "endAfter": 68, "endDate": "1987-12-19T00:00:00Z", "goalsVisibility": "PERIODONLY", "name": "B1Iak0vaw9KaAxW5", "rotation": "MONTHLY", "startDate": "1987-09-18T00:00:00Z"}'
+Example: '{"activeGoalsPerRotation": 28, "assignmentRule": "RANDOMIZED", "code": "azgeG6rGM5QClgzq", "description": "Jkb6dkOS70IeAxpn", "endAfter": 90, "endDate": "1973-09-07T00:00:00Z", "goalsVisibility": "SHOWALL", "name": "deSJ4Rc6kaNM5wC6", "rotation": "MONTHLY", "startDate": "1984-01-30T00:00:00Z"}'
 """
 
 result, error = admin_create_challenge(

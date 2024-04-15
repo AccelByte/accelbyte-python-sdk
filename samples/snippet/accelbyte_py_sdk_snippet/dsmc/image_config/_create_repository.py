@@ -12,7 +12,7 @@ Definition: ModelsCreateRepositoryRequest
 namespace: str
 repository: str
 
-Example: '{"namespace": "J5FhckeNHCc2uDTD", "repository": "9Ahb3WuZuAUBVai2"}'
+Example: '{"namespace": "aPEYW7jU3DTkZXgP", "repository": "WY4BIePOeETNAEI4"}'
 """
 
 result, error = create_repository(

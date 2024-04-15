@@ -12,7 +12,7 @@ body:
 Definition: ModelsUnsendInboxMessageRequest
 user_ids: List[str]
 
-Example: '{"userIds": ["fMprBNm8cg9Upd5R", "HxyzBJYJu4V7zv8R", "f2ol7cYwTLx1xrnq"]}'
+Example: '{"userIds": ["7DkG66X2fsmITxG2", "gEcFKDaFthMrKmDK", "A6cJ7QZnVnCAhe8x"]}'
 """
 
 result, error = admin_unsend_inbox_message(

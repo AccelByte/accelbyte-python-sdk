@@ -28,7 +28,7 @@ namespace: str
 session_type: str
 username: str
 
-Example: '{"game_session_setting": {"allow_join_in_progress": true, "current_internal_player": 14, "current_player": 24, "map_name": "fogTPlS2FAxgn7di", "max_internal_player": 51, "max_player": 56, "mode": "ElxNrKqHMpWsopPo", "num_bot": 53, "password": "aGdwJrzdci2RosJz", "settings": {"5d0HtzurKwdeLLwE": {}, "t3HnTgGrMsfF0e1Y": {}, "Ar1yQ8FIHN6120Om": {}}}, "game_version": "4rvWasqX6ebwWfnR", "namespace": "oygZkIESPOmbaB7Y", "session_type": "q82zHt6xfSL5jiWE", "username": "SecEwcO0IaJyFOsZ"}'
+Example: '{"game_session_setting": {"allow_join_in_progress": true, "current_internal_player": 91, "current_player": 53, "map_name": "8UHJJifz8M1uFmEC", "max_internal_player": 36, "max_player": 14, "mode": "wgXXHCYZlpLXe9A1", "num_bot": 18, "password": "DI6Y9IB8QINesAcD", "settings": {"SKKY0gbopxLLsO3u": {}, "hsdPa1RJfoTKMBlr": {}, "ik11ztr7SK3Uo09k": {}}}, "game_version": "aN54T6gG8bmkQEk3", "namespace": "5sZ937MZlYGEevVP", "session_type": "5RfXBbchskUjs2im", "username": "Ni0HqUITlfyggHnI"}'
 """
 
 result, error = create_session(
