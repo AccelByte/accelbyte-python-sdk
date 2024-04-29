@@ -208,6 +208,9 @@ class SessionTestCase(IntegrationTestCase):
     # region test:party_flow
 
     def test_party_flow(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+
         from accelbyte_py_sdk.core import SDK, generate_id
         import accelbyte_py_sdk.api.session as session_service
         import accelbyte_py_sdk.api.session.models as session_models
