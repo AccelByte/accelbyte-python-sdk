@@ -38,11 +38,7 @@ class GetXblIAPConfig(Operation):
     Get xbox iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : xbox iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : xbox iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl
@@ -55,7 +51,7 @@ class GetXblIAPConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -69,7 +65,7 @@ class GetXblIAPConfig(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

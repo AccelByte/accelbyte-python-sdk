@@ -56,10 +56,8 @@ def admin_cancel_user_account_deletion_request(
 ):
     """Cancel user's account deletion request (AdminCancelUserAccountDeletionRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    Cancel user's account deletion request
+    Scope: account
 
     Required Scope(s):
         - account
@@ -114,10 +112,8 @@ async def admin_cancel_user_account_deletion_request_async(
 ):
     """Cancel user's account deletion request (AdminCancelUserAccountDeletionRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    Cancel user's account deletion request
+    Scope: account
 
     Required Scope(s):
         - account
@@ -178,7 +174,8 @@ def admin_get_list_deletion_data_request(
 ):
     """Retrieve all user's account deletion requests in specified date (AdminGetListDeletionDataRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER[READ]` and scope `account`
+    Retrieve all user's account deletion requests in specified date
+    Scope: account
 
     Required Scope(s):
         - account
@@ -249,7 +246,8 @@ async def admin_get_list_deletion_data_request_async(
 ):
     """Retrieve all user's account deletion requests in specified date (AdminGetListDeletionDataRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER[READ]` and scope `account`
+    Retrieve all user's account deletion requests in specified date
+    Scope: account
 
     Required Scope(s):
         - account
@@ -318,7 +316,8 @@ def admin_get_user_account_deletion_request(
 ):
     """Retrieve specific user's account deletion request (AdminGetUserAccountDeletionRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId}[READ]` and scope `account`
+    Retrieve specific user's account deletion request
+    Scope: account
 
     Required Scope(s):
         - account
@@ -371,7 +370,8 @@ async def admin_get_user_account_deletion_request_async(
 ):
     """Retrieve specific user's account deletion request (AdminGetUserAccountDeletionRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId}[READ]` and scope `account`
+    Retrieve specific user's account deletion request
+    Scope: account
 
     Required Scope(s):
         - account
@@ -426,10 +426,8 @@ def admin_submit_user_account_deletion_request(
 ):
     """Submit user's account deletion requests (AdminSubmitUserAccountDeletionRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]
+    Submit user's account deletion requests
+    Scope: account
 
     Required Scope(s):
         - account
@@ -484,10 +482,8 @@ async def admin_submit_user_account_deletion_request_async(
 ):
     """Submit user's account deletion requests (AdminSubmitUserAccountDeletionRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]
+    Submit user's account deletion requests
+    Scope: account
 
     Required Scope(s):
         - account
@@ -541,6 +537,7 @@ def public_cancel_my_account_deletion_request(
 ):
     """Cancel my account deletion request (PublicCancelMyAccountDeletionRequest)
 
+    Cancel my account deletion request
     Requires valid user access token
 
     Properties:
@@ -577,6 +574,7 @@ async def public_cancel_my_account_deletion_request_async(
 ):
     """Cancel my account deletion request (PublicCancelMyAccountDeletionRequest)
 
+    Cancel my account deletion request
     Requires valid user access token
 
     Properties:
@@ -618,7 +616,12 @@ def public_cancel_user_account_deletion_request(
 ):
     """Cancel user's account deletion request (PublicCancelUserAccountDeletionRequest)
 
+    Cancel user's account deletion request
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
@@ -668,7 +671,12 @@ async def public_cancel_user_account_deletion_request_async(
 ):
     """Cancel user's account deletion request (PublicCancelUserAccountDeletionRequest)
 
+    Cancel user's account deletion request
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
@@ -717,6 +725,7 @@ def public_get_my_account_deletion_status(
 ):
     """Retrieve my account deletion status (PublicGetMyAccountDeletionStatus)
 
+    Retrieve my account deletion status
     Requires valid user access token
 
     Properties:
@@ -751,6 +760,7 @@ async def public_get_my_account_deletion_status_async(
 ):
     """Retrieve my account deletion status (PublicGetMyAccountDeletionStatus)
 
+    Retrieve my account deletion status
     Requires valid user access token
 
     Properties:
@@ -790,7 +800,12 @@ def public_get_user_account_deletion_status(
 ):
     """Retrieve specific user's account deletion status (PublicGetUserAccountDeletionStatus)
 
+    Retrieve specific user's account deletion status
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions/status
@@ -838,7 +853,12 @@ async def public_get_user_account_deletion_status_async(
 ):
     """Retrieve specific user's account deletion status (PublicGetUserAccountDeletionStatus)
 
+    Retrieve specific user's account deletion status
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions/status
@@ -888,9 +908,9 @@ def public_submit_my_account_deletion_request(
 ):
     """Submit my account deletion requests. (PublicSubmitMyAccountDeletionRequest)
 
+    Submit my account deletion requests.
     Requires valid user access token
-
-    This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
+    This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
 
     Properties:
         url: /gdpr/public/users/me/deletions
@@ -938,9 +958,9 @@ async def public_submit_my_account_deletion_request_async(
 ):
     """Submit my account deletion requests. (PublicSubmitMyAccountDeletionRequest)
 
+    Submit my account deletion requests.
     Requires valid user access token
-
-    This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
+    This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
 
     Properties:
         url: /gdpr/public/users/me/deletions
@@ -991,7 +1011,12 @@ def public_submit_user_account_deletion_request(
 ):
     """Submit user's account deletion requests (PublicSubmitUserAccountDeletionRequest)
 
+    Submit user's account deletion requests
     Requires valid user access token and password
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
@@ -1047,7 +1072,12 @@ async def public_submit_user_account_deletion_request_async(
 ):
     """Submit user's account deletion requests (PublicSubmitUserAccountDeletionRequest)
 
+    Submit user's account deletion requests
     Requires valid user access token and password
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions

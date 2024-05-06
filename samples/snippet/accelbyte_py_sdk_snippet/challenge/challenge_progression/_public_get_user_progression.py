@@ -10,6 +10,9 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 result, error = public_get_user_progression(
     challenge_code=challenge_code,
     goal_code=goal_code,
+    limit=limit,
+    offset=offset,
+    tags=tags,
     namespace=namespace,
     x_additional_headers=x_additional_headers,
 )

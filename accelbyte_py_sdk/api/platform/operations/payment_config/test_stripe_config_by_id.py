@@ -38,11 +38,7 @@ class TestStripeConfigById(Operation):
 
     [Not Supported Yet In Starter] Test stripe configuration in payment merchant config. Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test adyen config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test adyen config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/stripeconfig/test
@@ -55,7 +51,7 @@ class TestStripeConfigById(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -73,7 +69,7 @@ class TestStripeConfigById(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     id_: str  # REQUIRED in [path]

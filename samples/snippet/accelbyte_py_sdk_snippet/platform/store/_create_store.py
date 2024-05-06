@@ -18,7 +18,7 @@ supported_languages: List[str]
 supported_regions: List[str]
 title: str
 
-Example: '{"defaultLanguage": "R6Tz9RxhNuYgAhga", "defaultRegion": "uKpwdvbmlYhK344h", "description": "kLzdOUkDoD3S0n9s", "supportedLanguages": ["LHGb0Aa1IcOVr7ou", "x7MtgMnA3DB8a5xE", "MFJv8C5pgK1A7ORj"], "supportedRegions": ["09ZHIxXajpgxnIoB", "evNEKco43rNC9Pac", "K05kdIuLpnJ0fR8N"], "title": "bsI5y9KodQgnYs8V"}'
+Example: '{"defaultLanguage": "CXvoFgdcKpD2xn2F", "defaultRegion": "PlRRTvYRXFrvlQZb", "description": "p7XA81wMgSZqbmK8", "supportedLanguages": ["DIKSnmlmgqdCO4qe", "3uPK00LILGPWpsyK", "YRXtukRqcF17COsE"], "supportedRegions": ["Hl5udG1rV7f7ftBO", "P9fDwxTmW2wPN4tP", "z0Tvme4KckWyQd2U"], "title": "UNZ1fKCLgkeQoS0X"}'
 """
 
 result, error = create_store(

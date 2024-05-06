@@ -13,7 +13,7 @@ language_tag: str
 new_password: str
 old_password: str
 
-Example: '{"languageTag": "U6KwO6MYgDR72XlV", "newPassword": "SJMmrWoLVN0tV7fY", "oldPassword": "uxkQF7i51N8rma6v"}'
+Example: '{"languageTag": "MA01TwqzX0Ww8mlT", "newPassword": "60kYAYACZ7VJILGU", "oldPassword": "G6iqLM5KkRVSB95q"}'
 """
 
 result, error = public_update_password_v3(

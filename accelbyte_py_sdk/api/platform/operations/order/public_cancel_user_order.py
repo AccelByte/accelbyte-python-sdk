@@ -39,11 +39,7 @@ class PublicCancelUserOrder(Operation):
     Cancel user order.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
-      *  Returns : cancelled order
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+      * Returns : cancelled order
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/cancel
@@ -56,7 +52,7 @@ class PublicCancelUserOrder(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -80,7 +76,7 @@ class PublicCancelUserOrder(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

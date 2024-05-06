@@ -194,8 +194,7 @@ def create_my_profile(
      Client with user token can create user profile in target namespace
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=1 (CREATE)
-      *  Action code : 11401
+      * Action code : 11401
       *  Returns : Created user profile
       *  Path's namespace :
         * can be filled with publisher namespace in order to create publisher user profile
@@ -203,9 +202,6 @@ def create_my_profile(
       *  Language : allowed format: en, en-US
       *  Country : ISO3166-1 alpha-2 two letter, e.g. US
       * Timezone : IANA time zone, e.g. Asia/Shanghai
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
@@ -218,7 +214,7 @@ def create_my_profile(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfilePrivateCreate in body
 
@@ -261,8 +257,7 @@ async def create_my_profile_async(
      Client with user token can create user profile in target namespace
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=1 (CREATE)
-      *  Action code : 11401
+      * Action code : 11401
       *  Returns : Created user profile
       *  Path's namespace :
         * can be filled with publisher namespace in order to create publisher user profile
@@ -270,9 +265,6 @@ async def create_my_profile_async(
       *  Language : allowed format: en, en-US
       *  Country : ISO3166-1 alpha-2 two letter, e.g. US
       * Timezone : IANA time zone, e.g. Asia/Shanghai
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
@@ -285,7 +277,7 @@ async def create_my_profile_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfilePrivateCreate in body
 
@@ -329,12 +321,8 @@ def delete_user_profile(
     Delete user profile.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=8 (DELETE)
-      *  Action code : 11407
+      * Action code : 11407
       *  Returns : Delete user profile
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
@@ -347,7 +335,7 @@ def delete_user_profile(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -387,12 +375,8 @@ async def delete_user_profile_async(
     Delete user profile.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=8 (DELETE)
-      *  Action code : 11407
+      * Action code : 11407
       *  Returns : Delete user profile
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
@@ -405,7 +389,7 @@ async def delete_user_profile_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -447,12 +431,8 @@ def get_custom_attributes_info(
     Get user custom attributes.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Returns : custom attributes
+      * Returns : custom attributes
       *  Action code : 11403
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
@@ -465,7 +445,7 @@ def get_custom_attributes_info(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -503,12 +483,8 @@ async def get_custom_attributes_info_async(
     Get user custom attributes.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Returns : custom attributes
+      * Returns : custom attributes
       *  Action code : 11403
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
@@ -521,7 +497,7 @@ async def get_custom_attributes_info_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -560,12 +536,8 @@ def get_my_private_custom_attributes_info(
     Get my private custom attributes.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
-      *  Returns : custom attributes
+      * Returns : custom attributes
       *  Action code : 11403
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/privateCustomAttributes
@@ -578,7 +550,7 @@ def get_my_private_custom_attributes_info(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -612,12 +584,8 @@ async def get_my_private_custom_attributes_info_async(
     Get my private custom attributes.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
-      *  Returns : custom attributes
+      * Returns : custom attributes
       *  Action code : 11403
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/privateCustomAttributes
@@ -630,7 +598,7 @@ async def get_my_private_custom_attributes_info_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -667,17 +635,13 @@ def get_my_profile_info(
      Client with user token can get user profile in target namespace
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
-      *  Action code : 11403
+      * Action code : 11403
       *  Returns : user profile
       *  Path's namespace :
         * can be filled with publisher namespace in order to get publisher user profile
         * can be filled with game namespace in order to get game user profile
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
@@ -690,7 +654,7 @@ def get_my_profile_info(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -727,17 +691,13 @@ async def get_my_profile_info_async(
      Client with user token can get user profile in target namespace
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
-      *  Action code : 11403
+      * Action code : 11403
       *  Returns : user profile
       *  Path's namespace :
         * can be filled with publisher namespace in order to get publisher user profile
         * can be filled with game namespace in order to get game user profile
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
@@ -750,7 +710,7 @@ async def get_my_profile_info_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -788,12 +748,8 @@ def get_my_zip_code(
     Get my zip code.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
-      *  Action code : 11407
+      * Action code : 11407
       *  Returns : user zip code
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
@@ -806,7 +762,7 @@ def get_my_zip_code(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -838,12 +794,8 @@ async def get_my_zip_code_async(
     Get my zip code.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
-      *  Action code : 11407
+      * Action code : 11407
       *  Returns : user zip code
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
@@ -856,7 +808,7 @@ async def get_my_zip_code_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -891,12 +843,8 @@ def get_private_custom_attributes_info(
     Get user private custom attributes.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Returns : custom attributes
+      * Returns : custom attributes
       *  Action code : 11403
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes
@@ -909,7 +857,7 @@ def get_private_custom_attributes_info(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -947,12 +895,8 @@ async def get_private_custom_attributes_info_async(
     Get user private custom attributes.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Returns : custom attributes
+      * Returns : custom attributes
       *  Action code : 11403
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes
@@ -965,7 +909,7 @@ async def get_private_custom_attributes_info_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1005,12 +949,8 @@ def get_user_profile_info(
     Get user profile.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Returns : user profile
+      * Returns : user profile
       *  Action code : 11403
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
@@ -1023,7 +963,7 @@ def get_user_profile_info(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1063,12 +1003,8 @@ async def get_user_profile_info_async(
     Get user profile.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Returns : user profile
+      * Returns : user profile
       *  Action code : 11403
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
@@ -1081,7 +1017,7 @@ async def get_user_profile_info_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1123,11 +1059,7 @@ def get_user_profile_info_by_public_id(
     Get user profile by public id.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
-      *  Returns : user profile info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFILE [READ]
+      * Returns : user profile info
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/profiles/byPublicId
@@ -1140,7 +1072,7 @@ def get_user_profile_info_by_public_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1180,11 +1112,7 @@ async def get_user_profile_info_by_public_id_async(
     Get user profile by public id.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
-      *  Returns : user profile info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFILE [READ]
+      * Returns : user profile info
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/profiles/byPublicId
@@ -1197,7 +1125,7 @@ async def get_user_profile_info_by_public_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1240,14 +1168,10 @@ def public_create_user_profile(
     Create user profile.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=1 (CREATE)
-      *  Action code : 11401
+      * Action code : 11401
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
       *  Returns : Created user profile
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
@@ -1260,7 +1184,7 @@ def public_create_user_profile(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileCreate in body
 
@@ -1304,14 +1228,10 @@ async def public_create_user_profile_async(
     Create user profile.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=1 (CREATE)
-      *  Action code : 11401
+      * Action code : 11401
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
       *  Returns : Created user profile
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
@@ -1324,7 +1244,7 @@ async def public_create_user_profile_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileCreate in body
 
@@ -1467,12 +1387,8 @@ def public_get_user_profile_info(
     Get user profile.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Action code : 11403
+      * Action code : 11403
       *  Returns : user profile
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
@@ -1485,7 +1401,7 @@ def public_get_user_profile_info(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1525,12 +1441,8 @@ async def public_get_user_profile_info_async(
     Get user profile.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Action code : 11403
+      * Action code : 11403
       *  Returns : user profile
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
@@ -1543,7 +1455,7 @@ async def public_get_user_profile_info_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1886,13 +1798,9 @@ def public_update_custom_attributes_partially(
     Update partially custom attributes tied to user id.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes
@@ -1905,7 +1813,7 @@ def public_update_custom_attributes_partially(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Dict[str, Any] in body
 
@@ -1949,13 +1857,9 @@ async def public_update_custom_attributes_partially_async(
     Update partially custom attributes tied to user id.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/customAttributes
@@ -1968,7 +1872,7 @@ async def public_update_custom_attributes_partially_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Dict[str, Any] in body
 
@@ -2014,14 +1918,10 @@ def public_update_user_profile(
     Update user profile.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
       *  Returns : Updated user profile
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
@@ -2034,7 +1934,7 @@ def public_update_user_profile(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileUpdate in body
 
@@ -2078,14 +1978,10 @@ async def public_update_user_profile_async(
     Update user profile.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
       *  Returns : Updated user profile
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
@@ -2098,7 +1994,7 @@ async def public_update_user_profile_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileUpdate in body
 
@@ -2144,12 +2040,8 @@ def public_update_user_profile_status(
     Update user profile status.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11406
+      * Action code : 11406
       *  Returns : user profile
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/status
@@ -2162,7 +2054,7 @@ def public_update_user_profile_status(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileStatusUpdate in body
 
@@ -2206,12 +2098,8 @@ async def public_update_user_profile_status_async(
     Update user profile status.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11406
+      * Action code : 11406
       *  Returns : user profile
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles/status
@@ -2224,7 +2112,7 @@ async def public_update_user_profile_status_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileStatusUpdate in body
 
@@ -2270,13 +2158,9 @@ def update_custom_attributes_partially(
     Update partially custom attributes tied to the user id.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
@@ -2289,7 +2173,7 @@ def update_custom_attributes_partially(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Dict[str, Any] in body
 
@@ -2333,13 +2217,9 @@ async def update_custom_attributes_partially_async(
     Update partially custom attributes tied to the user id.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
@@ -2352,7 +2232,7 @@ async def update_custom_attributes_partially_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Dict[str, Any] in body
 
@@ -2397,13 +2277,9 @@ def update_my_private_custom_attributes_partially(
     Update partially private custom attributes tied to me.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/privateCustomAttributes
@@ -2416,7 +2292,7 @@ def update_my_private_custom_attributes_partially(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Dict[str, Any] in body
 
@@ -2456,13 +2332,9 @@ async def update_my_private_custom_attributes_partially_async(
     Update partially private custom attributes tied to me.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/privateCustomAttributes
@@ -2475,7 +2347,7 @@ async def update_my_private_custom_attributes_partially_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Dict[str, Any] in body
 
@@ -2518,17 +2390,13 @@ def update_my_profile(
     Updates user profile in the target namespace (namespace in the path). If token's namespace doesn't match the target namespace, the service automatically maps the token's user ID into the user ID in the target namespace. The endpoint returns the updated user profile on a successful call.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Returns : user profile
       *  Path's namespace :
         * can be filled with publisher namespace in order to update publisher user profile
         * can be filled with game namespace in order to update game user profile
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
@@ -2541,7 +2409,7 @@ def update_my_profile(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileUpdate in body
 
@@ -2582,17 +2450,13 @@ async def update_my_profile_async(
     Updates user profile in the target namespace (namespace in the path). If token's namespace doesn't match the target namespace, the service automatically maps the token's user ID into the user ID in the target namespace. The endpoint returns the updated user profile on a successful call.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Returns : user profile
       *  Path's namespace :
         * can be filled with publisher namespace in order to update publisher user profile
         * can be filled with game namespace in order to update game user profile
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
@@ -2605,7 +2469,7 @@ async def update_my_profile_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileUpdate in body
 
@@ -2647,12 +2511,8 @@ def update_my_zip_code(
     Update my zip code.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11408
+      * Action code : 11408
       *  Returns : user zip code
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
@@ -2665,7 +2525,7 @@ def update_my_zip_code(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         user_zip_code_update: (userZipCodeUpdate) REQUIRED UserZipCodeUpdate in body
 
@@ -2703,12 +2563,8 @@ async def update_my_zip_code_async(
     Update my zip code.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11408
+      * Action code : 11408
       *  Returns : user zip code
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
@@ -2721,7 +2577,7 @@ async def update_my_zip_code_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         user_zip_code_update: (userZipCodeUpdate) REQUIRED UserZipCodeUpdate in body
 
@@ -2762,13 +2618,9 @@ def update_private_custom_attributes_partially(
     Update partially private custom attributes tied to the user id.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes
@@ -2781,7 +2633,7 @@ def update_private_custom_attributes_partially(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Dict[str, Any] in body
 
@@ -2825,13 +2677,9 @@ async def update_private_custom_attributes_partially_async(
     Update partially private custom attributes tied to the user id.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes
@@ -2844,7 +2692,7 @@ async def update_private_custom_attributes_partially_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Dict[str, Any] in body
 
@@ -2890,12 +2738,8 @@ def update_user_profile(
     Update user profile.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Returns : Updated user profile
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
@@ -2908,7 +2752,7 @@ def update_user_profile(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileAdmin in body
 
@@ -2952,12 +2796,8 @@ async def update_user_profile_async(
     Update user profile.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Returns : Updated user profile
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
@@ -2970,7 +2810,7 @@ async def update_user_profile_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileAdmin in body
 
@@ -3016,12 +2856,8 @@ def update_user_profile_status(
     Update user profile status.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11406
+      * Action code : 11406
       *  Returns : user profile
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/status
@@ -3034,7 +2870,7 @@ def update_user_profile_status(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileStatusUpdate in body
 
@@ -3078,12 +2914,8 @@ async def update_user_profile_status_async(
     Update user profile status.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11406
+      * Action code : 11406
       *  Returns : user profile
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/status
@@ -3096,7 +2928,7 @@ async def update_user_profile_status_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileStatusUpdate in body
 

@@ -33,7 +33,9 @@ from ..models import ModelsRecentPlayerQueryResponse
 from ..models import ResponseError
 
 from ..operations.recent_player import AdminGetRecentPlayer
+from ..operations.recent_player import AdminGetRecentTeamPlayer
 from ..operations.recent_player import PublicGetRecentPlayer
+from ..operations.recent_player import PublicGetRecentTeamPlayer
 
 
 @same_doc_as(AdminGetRecentPlayer)
@@ -51,6 +53,8 @@ def admin_get_recent_player(
     If user id parameter is empty:
     1. Using User Token : It will get the user id from the token
     2. Using client token : it will throw an error
+
+    Please ensure environment variable "RECENT_PLAYER_ENABLED" is set to "TRUE" to use this feature.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/recent-player
@@ -110,6 +114,8 @@ async def admin_get_recent_player_async(
     1. Using User Token : It will get the user id from the token
     2. Using client token : it will throw an error
 
+    Please ensure environment variable "RECENT_PLAYER_ENABLED" is set to "TRUE" to use this feature.
+
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/recent-player
 
@@ -154,6 +160,128 @@ async def admin_get_recent_player_async(
     )
 
 
+@same_doc_as(AdminGetRecentTeamPlayer)
+def admin_get_recent_team_player(
+    limit: Optional[int] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query recent player who were on the same team with given user id. (adminGetRecentTeamPlayer)
+
+    Query recent player who were on the same team with given user id.
+
+    If user id parameter is empty:
+    1. Using User Token : It will get the user id from the token
+    2. Using client token : it will throw an error
+
+    Please ensure environment variable "RECENT_TEAM_PLAYER_ENABLED" is set to "TRUE" to use this feature.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/recent-team-player
+
+        method: GET
+
+        tags: ["Recent Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsRecentPlayerQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetRecentTeamPlayer.create(
+        limit=limit,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetRecentTeamPlayer)
+async def admin_get_recent_team_player_async(
+    limit: Optional[int] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query recent player who were on the same team with given user id. (adminGetRecentTeamPlayer)
+
+    Query recent player who were on the same team with given user id.
+
+    If user id parameter is empty:
+    1. Using User Token : It will get the user id from the token
+    2. Using client token : it will throw an error
+
+    Please ensure environment variable "RECENT_TEAM_PLAYER_ENABLED" is set to "TRUE" to use this feature.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/recent-team-player
+
+        method: GET
+
+        tags: ["Recent Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsRecentPlayerQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetRecentTeamPlayer.create(
+        limit=limit,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGetRecentPlayer)
 def public_get_recent_player(
     limit: Optional[int] = None,
@@ -164,6 +292,8 @@ def public_get_recent_player(
     """Query user's recent player (publicGetRecentPlayer)
 
     Query user's recent player.
+
+    Please ensure environment variable "RECENT_PLAYER_ENABLED" is set to "TRUE" to use this feature.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/recent-player
@@ -215,6 +345,8 @@ async def public_get_recent_player_async(
 
     Query user's recent player.
 
+    Please ensure environment variable "RECENT_PLAYER_ENABLED" is set to "TRUE" to use this feature.
+
     Properties:
         url: /session/v1/public/namespaces/{namespace}/recent-player
 
@@ -248,6 +380,112 @@ async def public_get_recent_player_async(
         if error:
             return None, error
     request = PublicGetRecentPlayer.create(
+        limit=limit,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetRecentTeamPlayer)
+def public_get_recent_team_player(
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query user's recent player who were on the same team. (publicGetRecentTeamPlayer)
+
+    Query user's recent player who were on the same team.
+
+    Please ensure environment variable "RECENT_TEAM_PLAYER_ENABLED" is set to "TRUE" to use this feature.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/recent-team-player
+
+        method: GET
+
+        tags: ["Recent Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsRecentPlayerQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetRecentTeamPlayer.create(
+        limit=limit,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetRecentTeamPlayer)
+async def public_get_recent_team_player_async(
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query user's recent player who were on the same team. (publicGetRecentTeamPlayer)
+
+    Query user's recent player who were on the same team.
+
+    Please ensure environment variable "RECENT_TEAM_PLAYER_ENABLED" is set to "TRUE" to use this feature.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/recent-team-player
+
+        method: GET
+
+        tags: ["Recent Player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelsRecentPlayerQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetRecentTeamPlayer.create(
         limit=limit,
         namespace=namespace,
     )

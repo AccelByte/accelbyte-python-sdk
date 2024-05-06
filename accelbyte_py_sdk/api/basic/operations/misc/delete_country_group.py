@@ -37,12 +37,6 @@ class DeleteCountryGroup(Operation):
     """Delete a country group (deleteCountryGroup)
 
     Delete a country groups by its country group code. This endpoint usually used for testing purpose to cleanup test data.
-    Other detail info:
-
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
@@ -55,7 +49,7 @@ class DeleteCountryGroup(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         country_group_code: (countryGroupCode) REQUIRED str in path
 
@@ -81,7 +75,7 @@ class DeleteCountryGroup(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     country_group_code: str  # REQUIRED in [path]

@@ -19,7 +19,7 @@ purchase_time: int
 purchase_token: str
 region: str
 
-Example: '{"autoAck": true, "language": "FQ-pwSc-605", "orderId": "2kQ141Jr90Idinpq", "packageName": "IEjzS3KGPKv8aAKv", "productId": "nAekKSkjd6HnIVr2", "purchaseTime": 58, "purchaseToken": "kkYvSfMjMdBFrpwR", "region": "ON9CO9RzzLHj7XMf"}'
+Example: '{"autoAck": false, "language": "LjQ_VKrB-864", "orderId": "PmQNgymxcOqka1wp", "packageName": "PQauMOy538PCo0sS", "productId": "0Hp4z43roLNibVdZ", "purchaseTime": 35, "purchaseToken": "ndfe31Tb3ey6gEOV", "region": "PNylru1O9M5INfPX"}'
 """
 
 result, error = public_fulfill_google_iap_item(

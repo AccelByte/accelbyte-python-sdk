@@ -14,7 +14,7 @@ Definition: Attribute
 name: str
 value: str
 
-Example: '{"name": "0w5H8o3b4yPtOaO2", "value": "ANOsIrDI29N0pRuw"}'
+Example: '{"name": "l3jCXmlKG2CYUwRP", "value": "ys24QFCBiVHStoYG"}'
 """
 
 result, error = public_update_attribute(

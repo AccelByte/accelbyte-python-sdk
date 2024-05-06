@@ -38,12 +38,6 @@ class UpdateLocalizedPolicyVersion(Operation):
     """Update a Localized Version from Country-Specific Policy (updateLocalizedPolicyVersion)
 
     Update a version of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}
@@ -56,7 +50,7 @@ class UpdateLocalizedPolicyVersion(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdateLocalizedPolicyVersionRequest in body
 
@@ -74,7 +68,7 @@ class UpdateLocalizedPolicyVersion(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UpdateLocalizedPolicyVersionRequest  # OPTIONAL in [body]

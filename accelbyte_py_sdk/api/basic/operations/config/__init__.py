@@ -8,14 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.19.2"
+__version__ = "2.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .create_config import CreateConfig
-from .delete_config_1 import DeleteConfig1
-from .get_config_1 import GetConfig1
+from .delete_config import DeleteConfig
+from .get_config import GetConfig
 from .get_publisher_config import GetPublisherConfig
-from .update_config_1 import UpdateConfig1
+from .update_config import UpdateConfig

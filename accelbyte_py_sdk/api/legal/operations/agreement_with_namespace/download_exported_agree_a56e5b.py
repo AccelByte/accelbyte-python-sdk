@@ -39,13 +39,6 @@ class DownloadExportedAgreementsInCSV(Operation):
     This API will check the status of export process.
     If the export process has been completed, the response body will include the download url.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
-
     Properties:
         url: /agreement/admin/namespaces/{namespace}/agreements/policy-versions/users/export-csv/download
 
@@ -57,16 +50,16 @@ class DownloadExportedAgreementsInCSV(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
-        policy_version_id: (policyVersionId) REQUIRED str in query
+        export_id: (exportId) REQUIRED str in query
 
     Responses:
         200: OK - DownloadExportedAgreementsInCSVResponse (successful operation)
 
-        404: Not Found - ErrorEntity (40035: Policy version with id: [{policyVersionId}] not found | 40047: Exported agreements for policyVersionId [{policyVersionId}] not found)
+        404: Not Found - ErrorEntity (40047: Exported agreements for exportId [{exportId}] not found)
     """
 
     # region fields
@@ -75,11 +68,11 @@ class DownloadExportedAgreementsInCSV(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
-    policy_version_id: str  # REQUIRED in [query]
+    export_id: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -131,8 +124,8 @@ class DownloadExportedAgreementsInCSV(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "policy_version_id"):
-            result["policyVersionId"] = self.policy_version_id
+        if hasattr(self, "export_id"):
+            result["exportId"] = self.export_id
         return result
 
     # endregion get_x_params methods
@@ -147,8 +140,8 @@ class DownloadExportedAgreementsInCSV(Operation):
         self.namespace = value
         return self
 
-    def with_policy_version_id(self, value: str) -> DownloadExportedAgreementsInCSV:
-        self.policy_version_id = value
+    def with_export_id(self, value: str) -> DownloadExportedAgreementsInCSV:
+        self.export_id = value
         return self
 
     # endregion with_x methods
@@ -161,10 +154,10 @@ class DownloadExportedAgreementsInCSV(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "policy_version_id") and self.policy_version_id:
-            result["policyVersionId"] = str(self.policy_version_id)
+        if hasattr(self, "export_id") and self.export_id:
+            result["exportId"] = str(self.export_id)
         elif include_empty:
-            result["policyVersionId"] = ""
+            result["exportId"] = ""
         return result
 
     # endregion to methods
@@ -182,7 +175,7 @@ class DownloadExportedAgreementsInCSV(Operation):
 
         200: OK - DownloadExportedAgreementsInCSVResponse (successful operation)
 
-        404: Not Found - ErrorEntity (40035: Policy version with id: [{policyVersionId}] not found | 40047: Exported agreements for policyVersionId [{policyVersionId}] not found)
+        404: Not Found - ErrorEntity (40047: Exported agreements for exportId [{exportId}] not found)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -215,11 +208,11 @@ class DownloadExportedAgreementsInCSV(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, policy_version_id: str, **kwargs
+        cls, namespace: str, export_id: str, **kwargs
     ) -> DownloadExportedAgreementsInCSV:
         instance = cls()
         instance.namespace = namespace
-        instance.policy_version_id = policy_version_id
+        instance.export_id = export_id
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -233,24 +226,24 @@ class DownloadExportedAgreementsInCSV(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "policyVersionId" in dict_ and dict_["policyVersionId"] is not None:
-            instance.policy_version_id = str(dict_["policyVersionId"])
+        if "exportId" in dict_ and dict_["exportId"] is not None:
+            instance.export_id = str(dict_["exportId"])
         elif include_empty:
-            instance.policy_version_id = ""
+            instance.export_id = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "policyVersionId": "policy_version_id",
+            "exportId": "export_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "policyVersionId": True,
+            "exportId": True,
         }
 
     # endregion static methods

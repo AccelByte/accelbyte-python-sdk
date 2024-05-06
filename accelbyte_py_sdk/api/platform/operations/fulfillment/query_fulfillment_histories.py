@@ -44,11 +44,7 @@ class QueryFulfillmentHistories(Operation):
     Query fulfillment histories in a namespace.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:FULFILLMENT", action=2 (READ)
-      *  Returns : query fulfillment history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:FULFILLMENT [READ]
+      * Returns : query fulfillment history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/fulfillment/history
@@ -61,7 +57,7 @@ class QueryFulfillmentHistories(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -83,7 +79,7 @@ class QueryFulfillmentHistories(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

@@ -39,12 +39,16 @@ from accelbyte_py_sdk.api.legal.models import InitiateExportAgreementsToCSVRespo
 
 @click.command()
 @click.argument("policy_version_id", type=str)
+@click.argument("start", type=str)
+@click.option("--end", "end", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def initiate_export_agreements_to_csv(
     policy_version_id: str,
+    start: str,
+    end: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -60,6 +64,8 @@ def initiate_export_agreements_to_csv(
         login_as_internal(login_as)
     result, error = initiate_export_agreements_to_csv_internal(
         policy_version_id=policy_version_id,
+        start=start,
+        end=end,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

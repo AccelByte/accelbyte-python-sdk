@@ -40,11 +40,7 @@ class DeleteReward(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
-      *  Returns : the deleted reward data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+      * Returns : the deleted reward data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
@@ -57,7 +53,7 @@ class DeleteReward(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -75,7 +71,7 @@ class DeleteReward(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

@@ -15,7 +15,7 @@ inc: float
 stat_code: str
 user_id: str
 
-Example: '[{"inc": 0.32081380684546723, "statCode": "lmI9rKF72Vfm0FGQ", "userId": "uvS5MGe6WPBzNajn"}, {"inc": 0.6779731699115152, "statCode": "wSYk9dx9bNqTdL89", "userId": "yaeISc5zbgnQlS1t"}, {"inc": 0.05121055492567461, "statCode": "4OioWuJNOIacPuGb", "userId": "nGVyCxteepixKiUP"}]'
+Example: '[{"inc": 0.916993528030057, "statCode": "SYUkuAhMChofwHHS", "userId": "sb57YSyXPG2UiX6k"}, {"inc": 0.7053645970709671, "statCode": "Oy4E4JGNAiShvwFy", "userId": "eAvakJlgD7dirQrU"}, {"inc": 0.4675699492306201, "statCode": "PJ7T1bz9kRTDXO6v", "userId": "CnX4bSFU6ar8gQwg"}]'
 """
 
 result, error = public_bulk_inc_user_stat_item_value(

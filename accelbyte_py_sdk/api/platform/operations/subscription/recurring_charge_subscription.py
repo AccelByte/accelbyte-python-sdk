@@ -38,11 +38,7 @@ class RecurringChargeSubscription(Operation):
     [TEST FACILITY ONLY] Forbidden in live environment. Recurring charge subscription, it will trigger recurring charge if the USER subscription status is ACTIVE, nextBillingDate is before now and no fail recurring charge within X(default 12) hours.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : recurring charge result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [UPDATE]
+      * Returns : recurring charge result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/subscriptions/{subscriptionId}/recurring
@@ -55,7 +51,7 @@ class RecurringChargeSubscription(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -71,7 +67,7 @@ class RecurringChargeSubscription(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

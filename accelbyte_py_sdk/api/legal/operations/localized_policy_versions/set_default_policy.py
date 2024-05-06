@@ -36,12 +36,6 @@ class SetDefaultPolicy(Operation):
     """Set Default Localized Policy (setDefaultPolicy)
 
     Update a localized version policy to be the default.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}/default
@@ -54,7 +48,7 @@ class SetDefaultPolicy(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
 
@@ -72,7 +66,7 @@ class SetDefaultPolicy(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     localized_policy_version_id: str  # REQUIRED in [path]

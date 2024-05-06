@@ -41,12 +41,8 @@ class ChangeNamespaceStatus(Operation):
     Change a namespace status.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
       * Action code : 11306
       *  Returns : updated namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/status
@@ -59,7 +55,7 @@ class ChangeNamespaceStatus(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL NamespaceStatusUpdate in body
 
@@ -85,7 +81,7 @@ class ChangeNamespaceStatus(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: NamespaceStatusUpdate  # OPTIONAL in [body]

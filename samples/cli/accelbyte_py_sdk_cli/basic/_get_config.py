@@ -31,16 +31,19 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import get_config as get_config_internal
-from accelbyte_py_sdk.api.basic.models import Equ8Config
+from accelbyte_py_sdk.api.basic.models import ConfigInfo
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 
 
 @click.command()
+@click.argument("config_key", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_config(
+    config_key: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -55,6 +58,7 @@ def get_config(
     else:
         login_as_internal(login_as)
     result, error = get_config_internal(
+        config_key=config_key,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

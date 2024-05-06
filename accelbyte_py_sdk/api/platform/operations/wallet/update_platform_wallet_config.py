@@ -52,11 +52,7 @@ class UpdatePlatformWalletConfig(Operation):
     Update platform wallet config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG", action=4 (UPDATE)
-      *  Returns : platform wallet config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [UPDATE]
+      * Returns : platform wallet config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config
@@ -69,7 +65,7 @@ class UpdatePlatformWalletConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlatformWalletConfigUpdate in body
 
@@ -89,7 +85,7 @@ class UpdatePlatformWalletConfig(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: PlatformWalletConfigUpdate  # OPTIONAL in [body]

@@ -71,10 +71,13 @@ from ..api.chat.models import ModelsGetInboxStatsResponse
 from ..api.chat.models import ModelsGetInboxUsersResponse
 from ..api.chat.models import ModelsImportConfigResponse
 from ..api.chat.models import ModelsJSONSchemaType
+from ..api.chat.models import ModelsMessageRequest
+from ..api.chat.models import ModelsMessageResultWithAttributes
 from ..api.chat.models import ModelsMessageStats
 from ..api.chat.models import ModelsPagination
 from ..api.chat.models import ModelsPublicBanTopicMembersRequest
 from ..api.chat.models import ModelsPublicBanTopicMembersResponse
+from ..api.chat.models import ModelsPublicConfigResponse
 from ..api.chat.models import ModelsPublicUnbanTopicMembersRequest
 from ..api.chat.models import ModelsPublicUnbanTopicMembersResponse
 from ..api.chat.models import ModelsSaveInboxMessageRequest
@@ -348,6 +351,7 @@ def create_models_config_example() -> ModelsConfig:
     instance.default_dictionary_loaded = randomize("bool")
     instance.enable_clan_chat = randomize("bool")
     instance.enable_manual_topic_creation = randomize("bool")
+    instance.max_chat_message_length = randomize("int", min_val=1, max_val=1000)
     instance.use_default_dictionary = randomize("bool")
     return instance
 
@@ -394,6 +398,7 @@ def create_models_config_response_example() -> ModelsConfigResponse:
     instance.filter_type = randomize()
     instance.general_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
     instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
+    instance.max_chat_message_length = randomize("int", min_val=1, max_val=1000)
     instance.shard_capacity_limit = randomize("int", min_val=1, max_val=1000)
     instance.shard_default_limit = randomize("int", min_val=1, max_val=1000)
     instance.shard_hard_limit = randomize("int", min_val=1, max_val=1000)
@@ -572,6 +577,31 @@ def create_models_json_schema_type_example() -> ModelsJSONSchemaType:
     return instance
 
 
+def create_models_message_request_example() -> ModelsMessageRequest:
+    instance = ModelsMessageRequest()
+    instance.message = randomize()
+    instance.timestamp = randomize("int", min_val=1, max_val=1000)
+    instance.topic_id = randomize()
+    instance.topic_type = randomize()
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_message_result_with_attributes_example() -> (
+    ModelsMessageResultWithAttributes
+):
+    instance = ModelsMessageResultWithAttributes()
+    instance.action = randomize()
+    instance.final_message = randomize()
+    instance.id_ = randomize()
+    instance.timestamp = randomize("int", min_val=1, max_val=1000)
+    instance.attributes = {randomize(): randomize()}
+    instance.cencored_words = [randomize()]
+    instance.classifications = [randomize()]
+    instance.reference_id = randomize()
+    return instance
+
+
 def create_models_message_stats_example() -> ModelsMessageStats:
     instance = ModelsMessageStats()
     instance.id_ = randomize()
@@ -601,6 +631,19 @@ def create_models_public_ban_topic_members_response_example() -> (
 ):
     instance = ModelsPublicBanTopicMembersResponse()
     instance.user_i_ds = [randomize()]
+    return instance
+
+
+def create_models_public_config_response_example() -> ModelsPublicConfigResponse:
+    instance = ModelsPublicConfigResponse()
+    instance.chat_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
+    instance.chat_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
+    instance.general_rate_limit_burst = randomize("int", min_val=1, max_val=1000)
+    instance.general_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
+    instance.max_chat_message_length = randomize("int", min_val=1, max_val=1000)
+    instance.spam_chat_burst = randomize("int", min_val=1, max_val=1000)
+    instance.spam_chat_duration = randomize("int", min_val=1, max_val=1000)
+    instance.spam_mute_duration = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

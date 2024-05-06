@@ -41,12 +41,8 @@ class UpdateUserProfile(Operation):
     Update user profile.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Returns : Updated user profile
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
@@ -59,7 +55,7 @@ class UpdateUserProfile(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileAdmin in body
 
@@ -85,7 +81,7 @@ class UpdateUserProfile(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UserProfileAdmin  # OPTIONAL in [body]

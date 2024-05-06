@@ -34,12 +34,6 @@ class DeletePlatformDLCConfig(Operation):
     """delete a Platform DLC config (deletePlatformDLCConfig)
 
     delete a Platform DLC config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
@@ -52,7 +46,7 @@ class DeletePlatformDLCConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -66,7 +60,7 @@ class DeletePlatformDLCConfig(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

@@ -49,12 +49,6 @@ def indirect_bulk_accept_versioned_policy(
     """Admin bulk accept Policy Versions (indirectBulkAcceptVersionedPolicy)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/users/{userId}/agreements/policies
@@ -67,7 +61,7 @@ def indirect_bulk_accept_versioned_policy(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 
@@ -113,12 +107,6 @@ async def indirect_bulk_accept_versioned_policy_async(
     """Admin bulk accept Policy Versions (indirectBulkAcceptVersionedPolicy)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/users/{userId}/agreements/policies
@@ -131,7 +119,7 @@ async def indirect_bulk_accept_versioned_policy_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 

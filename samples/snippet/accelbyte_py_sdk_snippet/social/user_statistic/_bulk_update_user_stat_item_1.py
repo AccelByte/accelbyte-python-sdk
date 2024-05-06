@@ -18,7 +18,7 @@ update_strategy: str
 user_id: str
 value: float
 
-Example: '[{"additionalData": {"6N0JCnrpFiYN7Mlr": {}, "05FfOEg79eCKiGXD": {}, "vubt5bi45oTuBnNy": {}}, "additionalKey": "oSu82v6AqydimT0E", "statCode": "K5aZ5E1FSmIPYeBl", "updateStrategy": "INCREMENT", "userId": "9NRvfd2kMXxXSnOr", "value": 0.625412284199123}, {"additionalData": {"XuEjVIioST4AVlNk": {}, "3JSs0Ymd3bhzmln7": {}, "sf0Lz11Tl3mg4Z27": {}}, "additionalKey": "y6O7jpwSMmdqNqU1", "statCode": "WDwFjXVkEZN6mNl3", "updateStrategy": "MIN", "userId": "rvT55Rj5ctcZVS6p", "value": 0.9464228780772425}, {"additionalData": {"HVyU8ydTmWWOGloc": {}, "SIfDvIGItzivAzqH": {}, "gWMSAz0MrkarISnf": {}}, "additionalKey": "Q5WD85xaQk4hdNky", "statCode": "0O97ILCH9MRx2jIY", "updateStrategy": "MIN", "userId": "y4ZzVamOUEnSnyVm", "value": 0.9001295575683518}]'
+Example: '[{"additionalData": {"pYxXwvnFbUvBL0kA": {}, "8cAk87BliUE1OdLL": {}, "DLZ8Wy5nO7wLV3qT": {}}, "additionalKey": "4Y021k2FnbeOPgTq", "statCode": "tuWB7DdpHw6B27Da", "updateStrategy": "INCREMENT", "userId": "g4Ytd03xcQZBiAux", "value": 0.21635345164555242}, {"additionalData": {"vjSvFelb2iJrHC0l": {}, "gXATGThidU1PGtsX": {}, "PDEdUBJEKQ3E5goo": {}}, "additionalKey": "T5gD3AIfaogQBq8V", "statCode": "KwafiYG66Oe3jsrC", "updateStrategy": "OVERRIDE", "userId": "vvLhU27xej2G34wO", "value": 0.7383740442415512}, {"additionalData": {"TsVZ96NYzRyDoP1J": {}, "wBgKprhHiJpDLfOW": {}, "w1TH5u7XJv5PFzJk": {}}, "additionalKey": "6Szw1nXX9jXlxf5M", "statCode": "uSi80NlNQLilcSEp", "updateStrategy": "MAX", "userId": "jPt0MaP89WEDJ64S", "value": 0.7981465311110467}]'
 """
 
 result, error = bulk_update_user_stat_item_1(

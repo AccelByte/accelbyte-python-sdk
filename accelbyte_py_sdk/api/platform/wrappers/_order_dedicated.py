@@ -47,11 +47,7 @@ def sync_orders(
     [Not Supported Yet In Starter] Sync orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
-      * Required permission : resource="ADMIN:ORDER", action=2 (READ)
-      *  Returns : sync orders
-
-    Required Permission(s):
-        - ADMIN:ORDER [READ]
+      * Returns : sync orders
 
     Properties:
         url: /platform/admin/orders
@@ -64,7 +60,7 @@ def sync_orders(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         next_evaluated_key: (nextEvaluatedKey) OPTIONAL str in query
 
@@ -96,11 +92,7 @@ async def sync_orders_async(
     [Not Supported Yet In Starter] Sync orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
-      * Required permission : resource="ADMIN:ORDER", action=2 (READ)
-      *  Returns : sync orders
-
-    Required Permission(s):
-        - ADMIN:ORDER [READ]
+      * Returns : sync orders
 
     Properties:
         url: /platform/admin/orders
@@ -113,7 +105,7 @@ async def sync_orders_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         next_evaluated_key: (nextEvaluatedKey) OPTIONAL str in query
 

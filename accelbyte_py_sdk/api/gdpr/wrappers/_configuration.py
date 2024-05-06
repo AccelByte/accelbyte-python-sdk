@@ -51,12 +51,7 @@ def admin_get_services_configuration(
     """Get Registered Services Configuration (AdminGetServicesConfiguration)
 
     Get Registered Services Configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [READ]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -104,12 +99,7 @@ async def admin_get_services_configuration_async(
     """Get Registered Services Configuration (AdminGetServicesConfiguration)
 
     Get Registered Services Configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [READ]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -158,14 +148,9 @@ def admin_reset_services_configuration(
 ):
     """Reset Registered Services Configuration (AdminResetServicesConfiguration)
 
-    [TEST FACILITY ONLY]
+    **[TEST FACILITY ONLY]**
     Reset Registered Services Configuration to use the default configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [DELETE]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -210,14 +195,9 @@ async def admin_reset_services_configuration_async(
 ):
     """Reset Registered Services Configuration (AdminResetServicesConfiguration)
 
-    [TEST FACILITY ONLY]
+    **[TEST FACILITY ONLY]**
     Reset Registered Services Configuration to use the default configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [DELETE]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -266,12 +246,7 @@ def admin_update_services_configuration(
     """Update Registered Services Configuration (AdminUpdateServicesConfiguration)
 
     Update Registered Services Configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [UPDATE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [UPDATE]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -323,12 +298,7 @@ async def admin_update_services_configuration_async(
     """Update Registered Services Configuration (AdminUpdateServicesConfiguration)
 
     Update Registered Services Configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [UPDATE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [UPDATE]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -382,12 +352,7 @@ def delete_admin_email_configuration(
     """Delete admin emails configurations (DeleteAdminEmailConfiguration)
 
     Delete a list of admin email addresses to stop receiving personal data request notification.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [DELETE]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -443,12 +408,7 @@ async def delete_admin_email_configuration_async(
     """Delete admin emails configurations (DeleteAdminEmailConfiguration)
 
     Delete a list of admin email addresses to stop receiving personal data request notification.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [DELETE]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -505,12 +465,7 @@ def get_admin_email_configuration(
     """Get admin email addresses configuration (GetAdminEmailConfiguration)
 
     Get list of admin email address configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -556,12 +511,7 @@ async def get_admin_email_configuration_async(
     """Get admin email addresses configuration (GetAdminEmailConfiguration)
 
     Get list of admin email address configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [READ]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -610,12 +560,7 @@ def save_admin_email_configuration(
     """Add admin email address configuration (SaveAdminEmailConfiguration)
 
     Add admin email address for receiving personal data request notification.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -667,12 +612,7 @@ async def save_admin_email_configuration_async(
     """Add admin email address configuration (SaveAdminEmailConfiguration)
 
     Add admin email address for receiving personal data request notification.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [CREATE]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -726,11 +666,10 @@ def update_admin_email_configuration(
     """Update admin email address configuration (UpdateAdminEmailConfiguration)
 
     Update admin email address for receiving personal data request notification.
+    Scope: account
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [UPDATE]`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [UPDATE]
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
@@ -779,11 +718,10 @@ async def update_admin_email_configuration_async(
     """Update admin email address configuration (UpdateAdminEmailConfiguration)
 
     Update admin email address for receiving personal data request notification.
+    Scope: account
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [UPDATE]`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [UPDATE]
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations

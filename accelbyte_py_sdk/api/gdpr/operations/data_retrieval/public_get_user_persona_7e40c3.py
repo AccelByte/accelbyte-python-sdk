@@ -36,7 +36,12 @@ from ...models import ResponseError
 class PublicGetUserPersonalDataRequests(Operation):
     """Get user's personal data requests (PublicGetUserPersonalDataRequests)
 
+    Get user's personal data requests
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests

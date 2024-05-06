@@ -34,7 +34,7 @@ from ...models import RestErrorResponse
 
 
 class PublicPlatformUnlinkV3(Operation):
-    """Unlink user's account from specific platform (PublicPlatformUnlinkV3)
+    """Public unlink user's account from specific platform (PublicPlatformUnlinkV3)
 
     ## Supported platforms:
     - **steam**

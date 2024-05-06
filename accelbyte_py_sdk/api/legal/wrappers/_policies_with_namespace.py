@@ -46,12 +46,6 @@ def set_default_policy_3(
     """Set Default Policy (setDefaultPolicy_3)
 
     Update a policy to be the default.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/policies/{policyId}/default
@@ -64,7 +58,7 @@ def set_default_policy_3(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -96,12 +90,6 @@ async def set_default_policy_3_async(
     """Set Default Policy (setDefaultPolicy_3)
 
     Update a policy to be the default.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/policies/{policyId}/default
@@ -114,7 +102,7 @@ async def set_default_policy_3_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -149,12 +137,6 @@ def update_policy_1(
     """Update Country-Specific Policy (updatePolicy_1)
 
     Update country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/policies/{policyId}
@@ -167,7 +149,7 @@ def update_policy_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdatePolicyRequest in body
 
@@ -203,12 +185,6 @@ async def update_policy_1_async(
     """Update Country-Specific Policy (updatePolicy_1)
 
     Update country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/policies/{policyId}
@@ -221,7 +197,7 @@ async def update_policy_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdatePolicyRequest in body
 

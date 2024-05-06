@@ -12,7 +12,7 @@ Definition: ModelUserRequestFriendRequest
 friend_id: str
 friend_public_id: str
 
-Example: '{"friendId": "04YzWIaDGstesx1H", "friendPublicId": "nqtNEQgevS3wDQXB"}'
+Example: '{"friendId": "ee97mCFd2Pj4mLfq", "friendPublicId": "RDkBAjRu7K0YSGJm"}'
 """
 
 result, error = user_request_friend(

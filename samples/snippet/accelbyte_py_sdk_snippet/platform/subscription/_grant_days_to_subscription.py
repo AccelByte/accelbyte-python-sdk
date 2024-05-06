@@ -13,7 +13,7 @@ Definition: GrantSubscriptionDaysRequest
 grant_days: int
 reason: str
 
-Example: '{"grantDays": 79, "reason": "0PbRMYHe6zyIMytM"}'
+Example: '{"grantDays": 88, "reason": "GFkAv0HrVk1ELCKq"}'
 """
 
 result, error = grant_days_to_subscription(

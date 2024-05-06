@@ -11,7 +11,7 @@ body:
 Definition: ModelUpdateTemplateRequest
 template_content: str
 
-Example: '{"templateContent": "KyKuW7X01ktBm74y"}'
+Example: '{"templateContent": "BMTb9weU6nES4QAW"}'
 """
 
 result, error = update_localization_template(

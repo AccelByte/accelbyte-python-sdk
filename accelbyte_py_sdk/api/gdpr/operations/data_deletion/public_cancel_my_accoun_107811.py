@@ -35,6 +35,7 @@ from ...models import ResponseError
 class PublicCancelMyAccountDeletionRequest(Operation):
     """Cancel my account deletion request (PublicCancelMyAccountDeletionRequest)
 
+    Cancel my account deletion request
     Requires valid user access token
 
     Properties:

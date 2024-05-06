@@ -8,6 +8,7 @@
 
 # justice-chat-service
 
+from ._admin_filter_chat_message import admin_filter_chat_message
 from ._admin_chat_history import admin_chat_history
 from ._admin_create_namespace_topic import admin_create_namespace_topic
 from ._admin_topic_list import admin_topic_list
@@ -66,10 +67,12 @@ from ._admin_profanity_import import admin_profanity_import
 from ._admin_profanity_update import admin_profanity_update
 from ._admin_profanity_delete import admin_profanity_delete
 from ._public_get_messages import public_get_messages
+from ._public_get_config_v1 import public_get_config_v1
 from ._public_get_chat_snapshot import public_get_chat_snapshot
 
 
 commands = [
+    admin_filter_chat_message,
     admin_chat_history,
     admin_create_namespace_topic,
     admin_topic_list,
@@ -128,5 +131,6 @@ commands = [
     admin_profanity_update,
     admin_profanity_delete,
     public_get_messages,
+    public_get_config_v1,
     public_get_chat_snapshot,
 ]

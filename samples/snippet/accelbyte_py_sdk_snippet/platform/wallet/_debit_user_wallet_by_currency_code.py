@@ -18,7 +18,7 @@ balance_source: str
 metadata: Dict[str, Any]
 reason: str
 
-Example: '{"allowOverdraft": true, "amount": 26, "balanceOrigin": "System", "balanceSource": "TRADE", "metadata": {"voigG8gkjAzRFFKL": {}, "bSjiy2Ca9BBkMsLY": {}, "rnTVLNSsdwTu72M7": {}}, "reason": "nWu98Xpma2KgPjaN"}'
+Example: '{"allowOverdraft": false, "amount": 71, "balanceOrigin": "Nintendo", "balanceSource": "DLC_REVOCATION", "metadata": {"eCqUFl4DOGA2saIb": {}, "rYw2f4aTAlnya67O": {}, "gffVDNcRy1oarafr": {}}, "reason": "MZBfSL8PAW1B1U7P"}'
 """
 
 result, error = debit_user_wallet_by_currency_code(

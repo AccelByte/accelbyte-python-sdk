@@ -66,12 +66,8 @@ def add_country_group(
     Country code must follow ISO3166-1 alpha-2.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=1 (CREATE)
-      *  Action code : 11201
+      * Action code : 11201
       *  Returns : newly created country group
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
@@ -84,7 +80,7 @@ def add_country_group(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AddCountryGroupRequest in body
 
@@ -125,12 +121,8 @@ async def add_country_group_async(
     Country code must follow ISO3166-1 alpha-2.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=1 (CREATE)
-      *  Action code : 11201
+      * Action code : 11201
       *  Returns : newly created country group
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
@@ -143,7 +135,7 @@ async def add_country_group_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AddCountryGroupRequest in body
 
@@ -183,12 +175,6 @@ def delete_country_group(
     """Delete a country group (deleteCountryGroup)
 
     Delete a country groups by its country group code. This endpoint usually used for testing purpose to cleanup test data.
-    Other detail info:
-
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
@@ -201,7 +187,7 @@ def delete_country_group(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         country_group_code: (countryGroupCode) REQUIRED str in path
 
@@ -239,12 +225,6 @@ async def delete_country_group_async(
     """Delete a country group (deleteCountryGroup)
 
     Delete a country groups by its country group code. This endpoint usually used for testing purpose to cleanup test data.
-    Other detail info:
-
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
@@ -257,7 +237,7 @@ async def delete_country_group_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         country_group_code: (countryGroupCode) REQUIRED str in path
 
@@ -300,8 +280,7 @@ def get_countries(
     List countries.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11204
+      * Action code : 11204
       *  Returns : country code list
 
     Properties:
@@ -352,8 +331,7 @@ async def get_countries_async(
     List countries.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11204
+      * Action code : 11204
       *  Returns : country code list
 
     Properties:
@@ -405,12 +383,8 @@ def get_country_groups(
     List country groups. Will return all available country groups if the query param is not specified
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=2 (READ)
-      *  Action code : 11203
+      * Action code : 11203
       *  Returns : list of country groups
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
@@ -423,7 +397,7 @@ def get_country_groups(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -463,12 +437,8 @@ async def get_country_groups_async(
     List country groups. Will return all available country groups if the query param is not specified
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=2 (READ)
-      *  Action code : 11203
+      * Action code : 11203
       *  Returns : list of country groups
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
@@ -481,7 +451,7 @@ async def get_country_groups_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -522,8 +492,7 @@ def get_languages(
     List languages.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11206
+      * Action code : 11206
       *  Returns : language list
 
     Properties:
@@ -569,8 +538,7 @@ async def get_languages_async(
     List languages.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11206
+      * Action code : 11206
       *  Returns : language list
 
     Properties:
@@ -618,8 +586,7 @@ def get_time_zones(
     List time zones.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11205
+      * Action code : 11205
       *  Returns : time zones
 
     Properties:
@@ -665,8 +632,7 @@ async def get_time_zones_async(
     List time zones.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11205
+      * Action code : 11205
       *  Returns : time zones
 
     Properties:
@@ -1049,12 +1015,8 @@ def update_country_group(
     - To update countries only, do not include countryGroupName key or just specify it with blank value.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=4 (UPDATE)
-      *  Action code : 11202
+      * Action code : 11202
       *  Returns : updated country group
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
@@ -1067,7 +1029,7 @@ def update_country_group(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdateCountryGroupRequest in body
 
@@ -1114,12 +1076,8 @@ async def update_country_group_async(
     - To update countries only, do not include countryGroupName key or just specify it with blank value.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=4 (UPDATE)
-      *  Action code : 11202
+      * Action code : 11202
       *  Returns : updated country group
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
@@ -1132,7 +1090,7 @@ async def update_country_group_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdateCountryGroupRequest in body
 

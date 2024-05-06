@@ -12,7 +12,7 @@ body:
 Definition: ModelsPublicGetContentBulkRequest
 content_ids: List[str]
 
-Example: '{"contentIds": ["ZkKqUZ0SFjJ3LzHu", "BpMgsksMCCnmPF3y", "bxtrD2LkCNXAmbFD"]}'
+Example: '{"contentIds": ["bHquQ7MidgKdYOaj", "5r6sRxZbd5uyYZT3", "4b6cLStEuKhjd3tt"]}'
 """
 
 result, error = public_get_content_bulk(

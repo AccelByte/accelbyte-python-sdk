@@ -38,12 +38,6 @@ class CreateLocalizedPolicyVersion(Operation):
     """Create a Localized Version from Country-Specific Policy (createLocalizedPolicyVersion)
 
     Create a version of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [CREATE]
 
     Properties:
         url: /agreement/admin/localized-policy-versions/versions/{policyVersionId}
@@ -56,7 +50,7 @@ class CreateLocalizedPolicyVersion(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CreateLocalizedPolicyVersionRequest in body
 
@@ -76,7 +70,7 @@ class CreateLocalizedPolicyVersion(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: CreateLocalizedPolicyVersionRequest  # OPTIONAL in [body]

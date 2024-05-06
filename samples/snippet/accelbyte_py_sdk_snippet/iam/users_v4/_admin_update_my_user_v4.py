@@ -19,7 +19,7 @@ skip_login_queue: bool
 unique_display_name: str
 user_name: str
 
-Example: '{"avatarUrl": "dy5p9t5QTuhukkb2", "country": "3TGcvjwFhAP7wRIt", "dateOfBirth": "xtD55bM3NzheZQuy", "displayName": "9cN7tDhNQr5ubr0a", "languageTag": "aDSpbu8qNo6y65Af", "skipLoginQueue": true, "uniqueDisplayName": "9wDjSlwgxOpFOACr", "userName": "jNsO5BZMs6WIAzNQ"}'
+Example: '{"avatarUrl": "zvlUz1yliTetOi6r", "country": "MXUzQwO9Gh57FacG", "dateOfBirth": "CCorZGmo5ohqTiXN", "displayName": "m7whXNiQE8titG9H", "languageTag": "d6VdNG5AhD4X7rfn", "skipLoginQueue": true, "uniqueDisplayName": "eLmHxebb8QmAxMf2", "userName": "RGd8T8WP27JeVRPx"}'
 """
 
 result, error = admin_update_my_user_v4(

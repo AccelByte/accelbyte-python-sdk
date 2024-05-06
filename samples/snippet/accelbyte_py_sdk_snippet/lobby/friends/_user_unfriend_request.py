@@ -11,7 +11,7 @@ body:
 Definition: ModelUserUnfriendRequest
 friend_id: str
 
-Example: '{"friendId": "PX7oi54wTkkAGDF1"}'
+Example: '{"friendId": "CYtW0r9WvzzCfEuM"}'
 """
 
 result, error = user_unfriend_request(

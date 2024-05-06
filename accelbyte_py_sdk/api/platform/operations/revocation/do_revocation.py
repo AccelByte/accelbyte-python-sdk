@@ -39,8 +39,7 @@ class DoRevocation(Operation):
     Do revocation.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:REVOCATION, action=4 (UPDATE)
-      *  Returns : revocation results
+      * Returns : revocation results
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/revocation

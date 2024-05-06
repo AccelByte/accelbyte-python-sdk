@@ -81,11 +81,7 @@ def get_statistic(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : catalog changes statistics changes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : catalog changes statistics changes
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/statistics
@@ -98,7 +94,7 @@ def get_statistic(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -155,11 +151,7 @@ async def get_statistic_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : catalog changes statistics changes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : catalog changes statistics changes
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/statistics
@@ -172,7 +164,7 @@ async def get_statistic_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -225,11 +217,7 @@ def publish_all(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : no content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+      * Returns : no content
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishAll
@@ -242,7 +230,7 @@ def publish_all(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -279,11 +267,7 @@ async def publish_all_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : no content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+      * Returns : no content
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishAll
@@ -296,7 +280,7 @@ async def publish_all_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -335,11 +319,7 @@ def publish_selected(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : no content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+      * Returns : no content
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishSelected
@@ -352,7 +332,7 @@ def publish_selected(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -391,11 +371,7 @@ async def publish_selected_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : no content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+      * Returns : no content
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/publishSelected
@@ -408,7 +384,7 @@ async def publish_selected_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -461,11 +437,7 @@ def query_changes(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : the pagination of changes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : the pagination of changes
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/byCriteria
@@ -478,7 +450,7 @@ def query_changes(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -559,11 +531,7 @@ async def query_changes_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : the pagination of changes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : the pagination of changes
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/byCriteria
@@ -576,7 +544,7 @@ async def query_changes_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -644,12 +612,6 @@ def select_all_records(
     """Select all changes (selectAllRecords)
 
     Select all changes.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAll
@@ -662,7 +624,7 @@ def select_all_records(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -694,12 +656,6 @@ async def select_all_records_async(
     """Select all changes (selectAllRecords)
 
     Select all changes.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAll
@@ -712,7 +668,7 @@ async def select_all_records_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -753,12 +709,6 @@ def select_all_records_by_criteria(
     """Select all changes by criteria (selectAllRecordsByCriteria)
 
     Select all changes by criteria
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAllByCriteria
@@ -771,7 +721,7 @@ def select_all_records_by_criteria(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -831,12 +781,6 @@ async def select_all_records_by_criteria_async(
     """Select all changes by criteria (selectAllRecordsByCriteria)
 
     Select all changes by criteria
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAllByCriteria
@@ -849,7 +793,7 @@ async def select_all_records_by_criteria_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -905,12 +849,6 @@ def select_record(
     """Select a change (selectRecord)
 
     Select a change, it will be included when partial publish.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/select
@@ -923,7 +861,7 @@ def select_record(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         change_id: (changeId) REQUIRED str in path
 
@@ -959,12 +897,6 @@ async def select_record_async(
     """Select a change (selectRecord)
 
     Select a change, it will be included when partial publish.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/select
@@ -977,7 +909,7 @@ async def select_record_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         change_id: (changeId) REQUIRED str in path
 
@@ -1014,12 +946,6 @@ def unselect_all_records(
     """Unselect all changes (unselectAllRecords)
 
     Unselect all change.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/unselectAll
@@ -1032,7 +958,7 @@ def unselect_all_records(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1064,12 +990,6 @@ async def unselect_all_records_async(
     """Unselect all changes (unselectAllRecords)
 
     Unselect all change.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/unselectAll
@@ -1082,7 +1002,7 @@ async def unselect_all_records_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1117,12 +1037,6 @@ def unselect_record(
     """Unselect a change (unselectRecord)
 
     Unselect a change, it will not be included when partial publish.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/unselect
@@ -1135,7 +1049,7 @@ def unselect_record(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         change_id: (changeId) REQUIRED str in path
 
@@ -1173,12 +1087,6 @@ async def unselect_record_async(
     """Unselect a change (unselectRecord)
 
     Unselect a change, it will not be included when partial publish.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/unselect
@@ -1191,7 +1099,7 @@ async def unselect_record_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         change_id: (changeId) REQUIRED str in path
 

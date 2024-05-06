@@ -38,11 +38,7 @@ class ProcessUserSubscriptionNotification(Operation):
     [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment notification from justice payment service.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : Process result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : Process result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/notifications
@@ -55,7 +51,7 @@ class ProcessUserSubscriptionNotification(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TradeNotification in body
 
@@ -77,7 +73,7 @@ class ProcessUserSubscriptionNotification(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: TradeNotification  # OPTIONAL in [body]

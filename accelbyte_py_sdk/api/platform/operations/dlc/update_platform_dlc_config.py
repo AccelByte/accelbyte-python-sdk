@@ -39,8 +39,7 @@ class UpdatePlatformDLCConfig(Operation):
 
     Update Platform DLC config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
-      *  Returns : updated Platform DLC config
+      * Returns : updated Platform DLC config
 
 
 
@@ -60,9 +59,6 @@ class UpdatePlatformDLCConfig(Operation):
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
 
@@ -74,7 +70,7 @@ class UpdatePlatformDLCConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlatformDLCConfigUpdate in body
 
@@ -92,7 +88,7 @@ class UpdatePlatformDLCConfig(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: PlatformDLCConfigUpdate  # OPTIONAL in [body]

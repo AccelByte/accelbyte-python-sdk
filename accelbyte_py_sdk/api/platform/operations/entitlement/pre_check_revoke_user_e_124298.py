@@ -39,11 +39,7 @@ class PreCheckRevokeUserEntitlementByUseCount(Operation):
     Checks if specified use count of user entitlement can be revoked without actually revoking it.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (READ)
-      *  Returns : true if revokable, false otherwise
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+      * Returns : true if revokable, false otherwise
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke/byUseCount/preCheck
@@ -56,7 +52,7 @@ class PreCheckRevokeUserEntitlementByUseCount(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -78,7 +74,7 @@ class PreCheckRevokeUserEntitlementByUseCount(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     entitlement_id: str  # REQUIRED in [path]

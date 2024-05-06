@@ -36,12 +36,6 @@ class PublishPolicyVersion1(Operation):
     """Manually Publish a Version from Country-Specific Policy (publishPolicyVersion_1)
 
     Manually publish a version of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/policies/versions/{policyVersionId}/latest
@@ -54,7 +48,7 @@ class PublishPolicyVersion1(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -76,7 +70,7 @@ class PublishPolicyVersion1(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

@@ -38,11 +38,7 @@ class UpdateGoogleP12File(Operation):
     Upload google play p12 file.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated google iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated google iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/google/cert
@@ -55,7 +51,7 @@ class UpdateGoogleP12File(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -71,7 +67,7 @@ class UpdateGoogleP12File(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     file: Any  # OPTIONAL in [form_data]

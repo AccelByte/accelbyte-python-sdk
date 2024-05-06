@@ -36,10 +36,8 @@ from ...models import ResponseError
 class AdminGetUserPersonalDataRequests(Operation):
     """Get user's personal data requests (AdminGetUserPersonalDataRequests)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    Get user's personal data requests
+    Scope: account
 
     Required Scope(s):
         - account

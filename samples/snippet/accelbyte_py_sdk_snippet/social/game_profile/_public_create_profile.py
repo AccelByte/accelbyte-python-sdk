@@ -19,7 +19,7 @@ profile_name: str
 statistics: List[str]
 tags: List[str]
 
-Example: '{"achievements": ["tNkM8pztZpYNdRFL", "HiH8OMxU2OU7oGFx", "yDAFg1xpsDlzKJwS"], "attributes": {"4stwahhCwtkHHU9b": "lcJqX50t1zDzjXe7", "8J3hf9lZGtXOovNa": "SEZq7UbfNAmqAIkp", "03pjm4YpCPLN45Dn": "3cmCzmXjcKroTDZo"}, "avatarUrl": "4BaPnFtN56BCsD0J", "inventories": ["9kV1SiU7gunNUJez", "yq4YqdVtBD2dJmx4", "VIH1W1IfGeed1atc"], "label": "VZ4GjRLd05lv0nEF", "profileName": "WQklC2Qhev4VeQP5", "statistics": ["tBiTqmIiHTdH7vD0", "PvSO3LCgr75CcPc1", "iZt3DvjJvPULGKd3"], "tags": ["J1Kd0uQTImQFfEnP", "CEsM3nPYDfyNBtKD", "0ONQu6s0S5Ocu3X3"]}'
+Example: '{"achievements": ["sk7pSWe3zfQw4FMk", "cHfMvSasAcxhddWm", "DBhKARNXj43Mt3Xe"], "attributes": {"F4as84VqHgODTmBi": "e3Y3YD6Qn8ZdGuAr", "44GposG6myb4g4B8": "Ut88g2ZKzVphaQOO", "eoF3zAmqqnC1meWo": "LQ586dTmxqlIpNKh"}, "avatarUrl": "DGnOmQJrmEp1TEuU", "inventories": ["t68esoasJHor8PPZ", "Dj7jA9GiiR96Dg0d", "jHxMdDkNJXOMLFQS"], "label": "0Ienm2rpmJaFKEdG", "profileName": "BbpENrN7NX6brkD2", "statistics": ["aMe4o8vP9DgxhlAC", "noELe855gT1eRk9l", "pzSgxS1NEsQXQRjv"], "tags": ["oEr4ZlMAjdZ8tPxQ", "3gB9qx1kB9m80bai", "nK0RvlT31qGJMmGl"]}'
 """
 
 result, error = public_create_profile(

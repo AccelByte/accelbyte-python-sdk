@@ -13,7 +13,7 @@ Definition: EntitlementSoldRequest
 request_id: str
 use_count: int
 
-Example: '{"requestId": "kgnFfv7LC5vI8uaF", "useCount": 43}'
+Example: '{"requestId": "CweU65qgciw0tPNQ", "useCount": 7}'
 """
 
 result, error = public_sell_user_entitlement(

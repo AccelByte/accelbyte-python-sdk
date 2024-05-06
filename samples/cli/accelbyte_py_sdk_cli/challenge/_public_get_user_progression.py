@@ -41,6 +41,9 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 @click.command()
 @click.argument("challenge_code", type=str)
 @click.option("--goal_code", "goal_code", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -48,6 +51,9 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 def public_get_user_progression(
     challenge_code: str,
     goal_code: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    tags: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -61,9 +67,18 @@ def public_get_user_progression(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = public_get_user_progression_internal(
         challenge_code=challenge_code,
         goal_code=goal_code,
+        limit=limit,
+        offset=offset,
+        tags=tags,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

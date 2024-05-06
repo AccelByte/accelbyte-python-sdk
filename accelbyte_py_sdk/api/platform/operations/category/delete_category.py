@@ -40,11 +40,7 @@ class DeleteCategory(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=8 (DELETE)
-      *  Returns : the deleted category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [DELETE]
+      * Returns : the deleted category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
@@ -57,7 +53,7 @@ class DeleteCategory(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -79,7 +75,7 @@ class DeleteCategory(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     category_path: str  # REQUIRED in [path]

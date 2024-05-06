@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Achievement Service."""
 
-__version__ = "2.21.14"
+__version__ = "2.22.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -54,6 +54,9 @@ from ._global_achievements import public_list_global_achievements
 from ._global_achievements import public_list_global_achievements_async
 from ._global_achievements import reset_global_achievement
 from ._global_achievements import reset_global_achievement_async
+
+from ._platform_achievement import bulk_create_psn_event
+from ._platform_achievement import bulk_create_psn_event_async
 
 from ._tags import admin_list_tags
 from ._tags import admin_list_tags_async

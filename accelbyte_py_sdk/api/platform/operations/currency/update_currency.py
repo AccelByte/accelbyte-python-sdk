@@ -41,11 +41,7 @@ class UpdateCurrency(Operation):
     Update a currency by currency code.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=4 (UPDATE)
-      *  Returns : updated currency
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CURRENCY [UPDATE]
+      * Returns : updated currency
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/currencies/{currencyCode}
@@ -58,7 +54,7 @@ class UpdateCurrency(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CurrencyUpdate in body
 
@@ -80,7 +76,7 @@ class UpdateCurrency(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: CurrencyUpdate  # OPTIONAL in [body]

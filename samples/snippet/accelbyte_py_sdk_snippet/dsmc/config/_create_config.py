@@ -20,7 +20,7 @@ providers: List[str]
 session_timeout: int
 unreachable_timeout: int
 
-Example: '{"claim_timeout": 7, "creation_timeout": 43, "default_version": "j1IlYLCLSZGUJqTq", "port": 65, "ports": {"c0CfySmNpw26daf5": 40, "xc8YOJ2sDaC7BaJu": 4, "61pQflQZg8VL1loi": 24}, "protocol": "1CCtu4bRcpBijsoh", "providers": ["AMwJhNyzuOmP8kCn", "9kACGRuMdvk0Zae3", "TeEv9oshqOQNbstO"], "session_timeout": 19, "unreachable_timeout": 42}'
+Example: '{"claim_timeout": 61, "creation_timeout": 57, "default_version": "CmmSR6U7Igh1qS15", "port": 4, "ports": {"4X7SRHQqEb9iQ8at": 88, "V840lYPd7uoqNxGf": 89, "L1kNttCg6TNWG1Mr": 75}, "protocol": "59NdCNRQtFBgN785", "providers": ["0jOJTGJRCdzPmimQ", "meIHcjlo4tNCbSKv", "rIYY1txMTkF00Nlt"], "session_timeout": 77, "unreachable_timeout": 40}'
 """
 
 result, error = create_config(

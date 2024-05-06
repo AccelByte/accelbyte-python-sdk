@@ -61,11 +61,7 @@ def acquire_user_ticket(
     [SERVICE COMMUNICATION ONLY] Acquire ticket(code/key) based on booth name.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET", action=1 (CREATE)
-      *  Returns : acquire result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET [CREATE]
+      * Returns : acquire result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/tickets/{boothName}
@@ -78,7 +74,7 @@ def acquire_user_ticket(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TicketAcquireRequest in body
 
@@ -124,11 +120,7 @@ async def acquire_user_ticket_async(
     [SERVICE COMMUNICATION ONLY] Acquire ticket(code/key) based on booth name.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET", action=1 (CREATE)
-      *  Returns : acquire result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:TICKET [CREATE]
+      * Returns : acquire result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/tickets/{boothName}
@@ -141,7 +133,7 @@ async def acquire_user_ticket_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TicketAcquireRequest in body
 
@@ -186,12 +178,6 @@ def decrease_ticket_sale(
     """Decrease ticket sale (decreaseTicketSale)
 
     [SERVICE COMMUNICATION ONLY] Decrease ticket(code/key) sale if requested orderNo is already increased.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/decrement
@@ -204,7 +190,7 @@ def decrease_ticket_sale(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TicketSaleDecrementRequest in body
 
@@ -242,12 +228,6 @@ async def decrease_ticket_sale_async(
     """Decrease ticket sale (decreaseTicketSale)
 
     [SERVICE COMMUNICATION ONLY] Decrease ticket(code/key) sale if requested orderNo is already increased.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/decrement
@@ -260,7 +240,7 @@ async def decrease_ticket_sale_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TicketSaleDecrementRequest in body
 
@@ -301,11 +281,7 @@ def get_ticket_booth_id(
     Get ticket(code/key) booth ID.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
-      *  Returns : ticket booth id
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+      * Returns : ticket booth id
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/id
@@ -318,7 +294,7 @@ def get_ticket_booth_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -352,11 +328,7 @@ async def get_ticket_booth_id_async(
     Get ticket(code/key) booth ID.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
-      *  Returns : ticket booth id
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+      * Returns : ticket booth id
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/id
@@ -369,7 +341,7 @@ async def get_ticket_booth_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -405,11 +377,7 @@ def get_ticket_dynamic(
     [SERVICE COMMUNICATION ONLY] Get ticket(code/key) dynamic based on booth name.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
-      *  Returns : ticket dynamic
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+      * Returns : ticket dynamic
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}
@@ -422,7 +390,7 @@ def get_ticket_dynamic(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -456,11 +424,7 @@ async def get_ticket_dynamic_async(
     [SERVICE COMMUNICATION ONLY] Get ticket(code/key) dynamic based on booth name.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
-      *  Returns : ticket dynamic
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+      * Returns : ticket dynamic
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}
@@ -473,7 +437,7 @@ async def get_ticket_dynamic_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -510,11 +474,7 @@ def increase_ticket_sale(
     [SERVICE COMMUNICATION ONLY] increase ticket(code/key) sale.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
-      *  Returns : Ticket sale increment result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+      * Returns : Ticket sale increment result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/increment
@@ -527,7 +487,7 @@ def increase_ticket_sale(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TicketSaleIncrementRequest in body
 
@@ -567,11 +527,7 @@ async def increase_ticket_sale_async(
     [SERVICE COMMUNICATION ONLY] increase ticket(code/key) sale.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
-      *  Returns : Ticket sale increment result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+      * Returns : Ticket sale increment result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/increment
@@ -584,7 +540,7 @@ async def increase_ticket_sale_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TicketSaleIncrementRequest in body
 

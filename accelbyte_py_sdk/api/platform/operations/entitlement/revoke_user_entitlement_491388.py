@@ -40,11 +40,7 @@ class RevokeUserEntitlementByUseCount(Operation):
     Revoke specified count of user entitlement.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : The revoked entitlement
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+      * Returns : The revoked entitlement
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke/byUseCount
@@ -57,7 +53,7 @@ class RevokeUserEntitlementByUseCount(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RevokeUseCountRequest in body
 
@@ -79,7 +75,7 @@ class RevokeUserEntitlementByUseCount(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: RevokeUseCountRequest  # OPTIONAL in [body]

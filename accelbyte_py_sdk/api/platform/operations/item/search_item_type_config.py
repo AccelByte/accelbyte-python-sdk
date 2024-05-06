@@ -55,11 +55,7 @@ class SearchItemTypeConfig(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:ITEM:CONFIG", action=2 (READ)
-      *  Returns : item type config data
-
-    Required Permission(s):
-        - ADMIN:ITEM:CONFIG [READ]
+      * Returns : item type config data
 
     Properties:
         url: /platform/admin/items/configs/search
@@ -72,7 +68,7 @@ class SearchItemTypeConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         clazz: (clazz) OPTIONAL str in query
 
@@ -90,7 +86,7 @@ class SearchItemTypeConfig(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     clazz: str  # OPTIONAL in [query]

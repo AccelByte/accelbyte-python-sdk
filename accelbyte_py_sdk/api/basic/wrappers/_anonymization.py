@@ -47,11 +47,7 @@ def anonymize_user_profile(
     Anonymize user profile.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION" , action=8 (DELETE)
-      *  Action code : 11501
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+      * Action code : 11501
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/profiles
@@ -64,7 +60,7 @@ def anonymize_user_profile(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -102,11 +98,7 @@ async def anonymize_user_profile_async(
     Anonymize user profile.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION" , action=8 (DELETE)
-      *  Action code : 11501
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
+      * Action code : 11501
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/profiles
@@ -119,7 +111,7 @@ async def anonymize_user_profile_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 

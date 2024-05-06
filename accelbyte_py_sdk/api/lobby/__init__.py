@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.35.0"
+__version__ = "3.35.5"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -41,6 +41,10 @@ from .wrappers import publish_template
 from .wrappers import publish_template_async
 from .wrappers import update_localization_template
 from .wrappers import update_localization_template_async
+
+# blocks
+from .wrappers import sync_native_blocked_user
+from .wrappers import sync_native_blocked_user_async
 
 # config
 from .wrappers import admin_export_config_v1
@@ -123,6 +127,8 @@ from .wrappers import get_all_notification_templates_v1_admin
 from .wrappers import get_all_notification_templates_v1_admin_async
 from .wrappers import get_all_notification_topics_v1_admin
 from .wrappers import get_all_notification_topics_v1_admin_async
+from .wrappers import get_my_notifications
+from .wrappers import get_my_notifications_async
 from .wrappers import get_notification_topic_v1_admin
 from .wrappers import get_notification_topic_v1_admin_async
 from .wrappers import get_single_template_localization_v1_admin

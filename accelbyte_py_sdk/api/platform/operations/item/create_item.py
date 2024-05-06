@@ -255,8 +255,7 @@ class CreateItem(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=1 (CREATE)
-      *  Returns : created item data
+      * Returns : created item data
 
 
 
@@ -276,9 +275,6 @@ class CreateItem(Operation):
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ITEM [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/items
 
@@ -290,7 +286,7 @@ class CreateItem(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ItemCreate in body
 
@@ -316,7 +312,7 @@ class CreateItem(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ItemCreate  # OPTIONAL in [body]

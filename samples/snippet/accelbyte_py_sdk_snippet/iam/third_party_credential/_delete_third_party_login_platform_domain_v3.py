@@ -11,7 +11,7 @@ body:
 Definition: ModelPlatformDomainDeleteRequest
 domain: str
 
-Example: '{"domain": "4wYzKFeHBkJ6JdRB"}'
+Example: '{"domain": "FFeJhmGNrckfqQBm"}'
 """
 
 result, error = delete_third_party_login_platform_domain_v3(

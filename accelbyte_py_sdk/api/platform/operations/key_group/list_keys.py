@@ -44,11 +44,7 @@ class ListKeys(Operation):
     This API is used to list keys of a key group.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
-      *  Returns : keys
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+      * Returns : keys
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/keys
@@ -61,7 +57,7 @@ class ListKeys(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         key_group_id: (keyGroupId) REQUIRED str in path
 
@@ -83,7 +79,7 @@ class ListKeys(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     key_group_id: str  # REQUIRED in [path]

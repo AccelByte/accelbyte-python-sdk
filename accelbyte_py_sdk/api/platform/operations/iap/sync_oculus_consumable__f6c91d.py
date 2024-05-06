@@ -36,15 +36,9 @@ from ...models import OculusReconcileResult
 class SyncOculusConsumableEntitlements(Operation):
     """Sync Oculus entitlements. (syncOculusConsumableEntitlements)
 
-    Sync Oculus entitlements.
+    Sync Oculus entitlements.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/oculus/sync
@@ -57,7 +51,7 @@ class SyncOculusConsumableEntitlements(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -75,7 +69,7 @@ class SyncOculusConsumableEntitlements(Operation):
     _method: str = "PUT"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

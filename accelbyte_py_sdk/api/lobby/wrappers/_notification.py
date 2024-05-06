@@ -38,6 +38,7 @@ from ..models import ModelFreeFormNotificationRequestV1
 from ..models import ModelGetAllNotificationTemplateSlugResp
 from ..models import ModelGetAllNotificationTopicsResponse
 from ..models import ModelLocalization
+from ..models import ModelNotificationResponse
 from ..models import ModelNotificationTemplateResponse
 from ..models import ModelNotificationTopicResponse
 from ..models import ModelNotificationTopicResponseV1
@@ -59,6 +60,7 @@ from ..operations.notification import DeleteTopicByTopicName
 from ..operations.notification import FreeFormNotificationByUserID
 from ..operations.notification import GetAllNotificationTemplatesV1Admin
 from ..operations.notification import GetAllNotificationTopicsV1Admin
+from ..operations.notification import GetMyNotifications
 from ..operations.notification import GetNotificationTopicV1Admin
 from ..operations.notification import GetSingleTemplateLocalizationV1Admin
 from ..operations.notification import GetTemplateSlugLocalizationsTemplateV1Admin
@@ -1179,6 +1181,140 @@ async def get_all_notification_topics_v1_admin_async(
         after=after,
         before=before,
         limit=limit,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetMyNotifications)
+def get_my_notifications(
+    end_time: Optional[int] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_time: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get list of notifications (getMyNotifications)
+
+    Get list of notifications in a namespace.
+    The query parameters **startTime** and **endTime** can be filled with the **sequenceID** value in the notification, where the value is an epoch timestamp.
+    Example **sequenceID** or epoch timestamp value: **1706595813**
+
+    Properties:
+        url: /notification/namespaces/{namespace}/me
+
+        method: GET
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL int in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_time: (startTime) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelNotificationResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMyNotifications.create(
+        end_time=end_time,
+        limit=limit,
+        offset=offset,
+        start_time=start_time,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetMyNotifications)
+async def get_my_notifications_async(
+    end_time: Optional[int] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_time: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get list of notifications (getMyNotifications)
+
+    Get list of notifications in a namespace.
+    The query parameters **startTime** and **endTime** can be filled with the **sequenceID** value in the notification, where the value is an epoch timestamp.
+    Example **sequenceID** or epoch timestamp value: **1706595813**
+
+    Properties:
+        url: /notification/namespaces/{namespace}/me
+
+        method: GET
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL int in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_time: (startTime) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelNotificationResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetMyNotifications.create(
+        end_time=end_time,
+        limit=limit,
+        offset=offset,
+        start_time=start_time,
         namespace=namespace,
     )
     return await run_request_async(

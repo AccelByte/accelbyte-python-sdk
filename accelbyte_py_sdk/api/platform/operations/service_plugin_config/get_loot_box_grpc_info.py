@@ -36,9 +36,6 @@ class GetLootBoxGrpcInfo(Operation):
     """Get lootbox plugin gRPC info (getLootBoxGrpcInfo)
 
     Get lootbox plugin gRPC info.
-    Other detail info:
-
-      * Required permission : resource= ADMIN:NAMESPACE:{namespace}:PLUGIN:CATALOG , action=2 (READ)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/catalog/plugins/lootbox/grpcInfo

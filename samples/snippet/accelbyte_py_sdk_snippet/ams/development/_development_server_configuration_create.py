@@ -18,7 +18,7 @@ command_line_arguments: str
 image_id: str
 name: str
 
-Example: '{"commandLineArguments": "34kDFKEvvs7j4wiU", "imageId": "TTLJ8N8lgkjOsCqK", "name": "rk1Dk7dcX4PV5VWO"}'
+Example: '{"commandLineArguments": "lVvuX2XRWXPgANGn", "imageId": "ecDsd2PHjbLZroo1", "name": "MosQyAm52QDv8KMV"}'
 """
 
 result, error = development_server_configuration_create(

@@ -43,6 +43,7 @@ from accelbyte_py_sdk.api.cloudsave.models import ModelsResponseError
 @click.argument("user_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--query", "query", type=str)
 @click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -52,6 +53,7 @@ def admin_list_admin_user_records_v1(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    query: Optional[str] = None,
     tags: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -76,6 +78,7 @@ def admin_list_admin_user_records_v1(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        query=query,
         tags=tags,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

@@ -7,6 +7,7 @@ from accelbyte_py_sdk.api.platform.models import OrderPagingSlicedResult
 
 result, error = public_query_user_orders(
     user_id=user_id,
+    discounted=discounted,
     item_id=item_id,
     limit=limit,
     offset=offset,

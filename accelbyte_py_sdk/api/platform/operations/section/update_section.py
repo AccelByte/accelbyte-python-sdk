@@ -42,8 +42,7 @@ class UpdateSection(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-      *  Returns : updated section data
+      * Returns : updated section data
 
 
 
@@ -63,9 +62,6 @@ class UpdateSection(Operation):
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
 
@@ -77,7 +73,7 @@ class UpdateSection(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SectionUpdate in body
 
@@ -105,7 +101,7 @@ class UpdateSection(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: SectionUpdate  # OPTIONAL in [body]

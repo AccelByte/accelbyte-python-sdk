@@ -12,7 +12,7 @@ body:
 Definition: EventPayload
 payload: Dict[str, Any]
 
-Example: '{"payload": {"LA0PAmsoZnWnNrep": {}, "rU7Mg5pUIYHwngCq": {}, "sPdROF28K27OfxBD": {}}}'
+Example: '{"payload": {"Irb6sDt4CuEkx3O1": {}, "djphm8PI8f43uKA3": {}, "FYNAj3rhpTaCSerY": {}}}'
 """
 
 result, error = check_event_condition(

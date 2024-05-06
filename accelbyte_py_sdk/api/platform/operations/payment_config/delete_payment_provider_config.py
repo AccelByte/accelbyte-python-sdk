@@ -38,11 +38,7 @@ class DeletePaymentProviderConfig(Operation):
     [Not Supported Yet In Starter] Delete payment provider config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=8 (DELETE)
-      *  Returns : payment provider config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [DELETE]
+      * Returns : payment provider config
 
     Properties:
         url: /platform/admin/payment/config/provider/{id}
@@ -55,7 +51,7 @@ class DeletePaymentProviderConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -71,7 +67,7 @@ class DeletePaymentProviderConfig(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     id_: str  # REQUIRED in [path]

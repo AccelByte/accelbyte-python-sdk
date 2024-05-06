@@ -14,7 +14,7 @@ pass_code: str
 reward_code: str
 tier_index: int
 
-Example: '{"passCode": "xlFtQO3ErQltVXJ4", "rewardCode": "h4quR1uKZkObNScR", "tierIndex": 15}'
+Example: '{"passCode": "059PiGceTVtOjitd", "rewardCode": "YuqMmggz5pBdOME3", "tierIndex": 78}'
 """
 
 result, error = public_claim_user_reward(

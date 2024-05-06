@@ -41,11 +41,7 @@ class GrantDaysToSubscription(Operation):
     if the grantDays is negative or zero, it only apply to active/cancelled subscription, remove days will decrease current period end, and move the next billing date closer.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : updated subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : updated subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/grant
@@ -58,7 +54,7 @@ class GrantDaysToSubscription(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL GrantSubscriptionDaysRequest in body
 
@@ -80,7 +76,7 @@ class GrantDaysToSubscription(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: GrantSubscriptionDaysRequest  # OPTIONAL in [body]

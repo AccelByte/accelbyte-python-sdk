@@ -39,11 +39,7 @@ class PublicSplitUserEntitlement(Operation):
 
     Split a specified use count of entitlement and create a new entitlement with splitting use count.Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : entitlement
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+      * Returns : entitlement
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/split
@@ -56,7 +52,7 @@ class PublicSplitUserEntitlement(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EntitlementSplitRequest in body
 
@@ -80,7 +76,7 @@ class PublicSplitUserEntitlement(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: EntitlementSplitRequest  # OPTIONAL in [body]

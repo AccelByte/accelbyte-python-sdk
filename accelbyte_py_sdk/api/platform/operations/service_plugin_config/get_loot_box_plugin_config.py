@@ -36,9 +36,6 @@ class GetLootBoxPluginConfig(Operation):
     """Get lootbox plugin config (getLootBoxPluginConfig)
 
     Get lootbox plugin config.
-    Other detail info:
-
-      * Required permission : resource= ADMIN:NAMESPACE:{namespace}:PLUGIN:CATALOG , action=2 (READ)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/catalog/plugins/lootbox

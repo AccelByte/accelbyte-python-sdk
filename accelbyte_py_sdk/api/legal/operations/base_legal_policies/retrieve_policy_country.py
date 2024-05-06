@@ -37,12 +37,6 @@ class RetrievePolicyCountry(Operation):
     """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry)
 
     Retrieve a Base Legal Policy based on a Particular Country.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/base-policies/{basePolicyId}/countries/{countryCode}
@@ -55,7 +49,7 @@ class RetrievePolicyCountry(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         base_policy_id: (basePolicyId) REQUIRED str in path
 
@@ -73,7 +67,7 @@ class RetrievePolicyCountry(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     base_policy_id: str  # REQUIRED in [path]

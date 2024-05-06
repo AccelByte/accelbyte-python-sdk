@@ -37,7 +37,31 @@ class AdminGetUserSinglePlatformAccount(Operation):
     """Admin get user single platform account metadata (AdminGetUserSinglePlatformAccount)
 
     This endpoint gets user single platform account metadata.
-    Supported platforms are same with the supported login platforms.
+    Supported Platform:
+    - Steam group(steamnetwork):
+    - steam
+    - steamopenid
+    - PSN group(psn)
+    - ps4web
+    - ps4
+    - ps5
+    - XBOX group(xbox)
+    - live
+    - xblweb
+    - Oculus group(oculusgroup)
+    - oculus
+    - oculusweb
+    - epicgames
+    - nintendo
+    - aws cognito
+    - facebook
+    - google
+    - discord
+    - twitch
+    - snapchat
+    - amazon
+
+    Note: you can use either platform ID or platform group as platformId query parameter
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/metadata

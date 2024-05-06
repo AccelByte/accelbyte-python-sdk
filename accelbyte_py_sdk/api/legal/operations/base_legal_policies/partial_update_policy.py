@@ -38,12 +38,6 @@ class PartialUpdatePolicy(Operation):
     """Update Base Legal Policy (partialUpdatePolicy)
 
     Update an existing base policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/base-policies/{basePolicyId}
@@ -56,7 +50,7 @@ class PartialUpdatePolicy(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdateBasePolicyRequest in body
 
@@ -76,7 +70,7 @@ class PartialUpdatePolicy(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UpdateBasePolicyRequest  # OPTIONAL in [body]

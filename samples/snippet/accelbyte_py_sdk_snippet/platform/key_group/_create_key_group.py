@@ -16,7 +16,7 @@ name: str
 status: str
 tags: List[str]
 
-Example: '{"description": "bkxGIQW3albYc62s", "name": "32z6JzGDCRcPJJGj", "status": "ACTIVE", "tags": ["Nj95gMbXeolZiZgW", "lJva8mBIhbiEzVPx", "IQQW4nj3ypjitTZh"]}'
+Example: '{"description": "ac5FBK3dNKvZyZkm", "name": "uRoIsa9DLN2pcpqP", "status": "INACTIVE", "tags": ["VPkVpewAY5S6U4Sc", "6WOzMwEDvgAqbx8f", "FwKuqwhGEXGD8JyM"]}'
 """
 
 result, error = create_key_group(

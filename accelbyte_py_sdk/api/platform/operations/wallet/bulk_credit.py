@@ -40,11 +40,7 @@ class BulkCredit(Operation):
     Credit different users' wallets.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=4 (UPDATE)
-      *  Returns : bulk credit result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WALLET [UPDATE]
+      * Returns : bulk credit result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/wallets/credit
@@ -57,7 +53,7 @@ class BulkCredit(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkCreditRequest] in body
 
@@ -75,7 +71,7 @@ class BulkCredit(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[BulkCreditRequest]  # OPTIONAL in [body]

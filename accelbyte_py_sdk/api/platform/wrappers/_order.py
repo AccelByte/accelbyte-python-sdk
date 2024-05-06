@@ -27,11 +27,14 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import AdminOrderCreate
 from ..models import ErrorEntity
 from ..models import OrderCreate
+from ..models import OrderDiscountPreviewRequest
+from ..models import OrderDiscountPreviewResponse
 from ..models import OrderGrantInfo
 from ..models import OrderHistoryInfo
 from ..models import OrderInfo
@@ -59,6 +62,7 @@ from ..operations.order import PublicCreateUserOrder
 from ..operations.order import PublicDownloadUserOrderReceipt
 from ..operations.order import PublicGetUserOrder
 from ..operations.order import PublicGetUserOrderHistories
+from ..operations.order import PublicPreviewOrderPrice
 from ..operations.order import PublicQueryUserOrders
 from ..operations.order import PublicQueryUserOrdersStatusEnum
 from ..operations.order import QueryOrders
@@ -90,7 +94,6 @@ def admin_create_user_order(
     Admin Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
       * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
       * sandbox default value is false
       * platform default value is Other
@@ -114,9 +117,6 @@ def admin_create_user_order(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders
 
@@ -128,7 +128,7 @@ def admin_create_user_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AdminOrderCreate in body
 
@@ -139,13 +139,13 @@ def admin_create_user_order(
     Responses:
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 32126: Section ID is required for placing this order | 38121: Duplicate permanent item exists | 32124: Invalid currency namespace)
+        400: Bad Request - ErrorEntity (20018: ecommerce item type not supported | 32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 32126: Section ID is required for placing this order | 38121: Duplicate permanent item exists | 32124: Invalid currency namespace | 32127: Discount code [{code}] can't be used on this item: {tips} | 32128: Discount code [{code}] can not be used with other code together | 32129: Can't use discount code on free order | 32130: The total discount amount cannot exceed the order price)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist | 1100001: record not found: inventory | 37142: Code [{code}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 31177: Permanent item already owned | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (20024: insufficient inventory capacity (max. slots) | 32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 31177: Permanent item already owned | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock | 37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 37179: Exceeded max redeem count per campaign per user [{maxCount}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -174,7 +174,6 @@ async def admin_create_user_order_async(
     Admin Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
       * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
       * sandbox default value is false
       * platform default value is Other
@@ -198,9 +197,6 @@ async def admin_create_user_order_async(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders
 
@@ -212,7 +208,7 @@ async def admin_create_user_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AdminOrderCreate in body
 
@@ -223,13 +219,13 @@ async def admin_create_user_order_async(
     Responses:
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 32126: Section ID is required for placing this order | 38121: Duplicate permanent item exists | 32124: Invalid currency namespace)
+        400: Bad Request - ErrorEntity (20018: ecommerce item type not supported | 32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 32126: Section ID is required for placing this order | 38121: Duplicate permanent item exists | 32124: Invalid currency namespace | 32127: Discount code [{code}] can't be used on this item: {tips} | 32128: Discount code [{code}] can not be used with other code together | 32129: Can't use discount code on free order | 32130: The total discount amount cannot exceed the order price)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist | 1100001: record not found: inventory | 37142: Code [{code}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 31177: Permanent item already owned | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (20024: insufficient inventory capacity (max. slots) | 32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 31177: Permanent item already owned | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock | 37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 37179: Exceeded max redeem count per campaign per user [{maxCount}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -260,11 +256,7 @@ def count_of_purchased_item(
     This API is used to get the count of purchased item which is the order target.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : Item purchased count
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : Item purchased count
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/countOfItem
@@ -277,7 +269,7 @@ def count_of_purchased_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -313,11 +305,7 @@ async def count_of_purchased_item_async(
     This API is used to get the count of purchased item which is the order target.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : Item purchased count
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : Item purchased count
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/countOfItem
@@ -330,7 +318,7 @@ async def count_of_purchased_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -368,11 +356,7 @@ def download_user_order_receipt(
     Download user order receipt by orderNo.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : order receipt pdf
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : order receipt pdf
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf
@@ -385,7 +369,7 @@ def download_user_order_receipt(
 
         produces: ["application/pdf"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -425,11 +409,7 @@ async def download_user_order_receipt_async(
     Download user order receipt by orderNo.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : order receipt pdf
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : order receipt pdf
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf
@@ -442,7 +422,7 @@ async def download_user_order_receipt_async(
 
         produces: ["application/pdf"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -484,11 +464,7 @@ def fulfill_user_order(
     Fulfill an order if the order is charged but fulfill failed.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
-      *  Returns : fulfilled order
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+      * Returns : fulfilled order
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/fulfill
@@ -501,7 +477,7 @@ def fulfill_user_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -543,11 +519,7 @@ async def fulfill_user_order_async(
     Fulfill an order if the order is charged but fulfill failed.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
-      *  Returns : fulfilled order
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+      * Returns : fulfilled order
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/fulfill
@@ -560,7 +532,7 @@ async def fulfill_user_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -603,11 +575,7 @@ def get_order(
     Get order by orderNo.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
-      *  Returns : order instance
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+      * Returns : order instance
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/{orderNo}
@@ -620,7 +588,7 @@ def get_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -654,11 +622,7 @@ async def get_order_async(
     Get order by orderNo.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
-      *  Returns : order instance
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+      * Returns : order instance
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/{orderNo}
@@ -671,7 +635,7 @@ async def get_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -706,11 +670,7 @@ def get_order_statistics(
     Get Order Statistics.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
-      *  Returns : order statistics
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+      * Returns : order statistics
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/stats
@@ -723,7 +683,7 @@ def get_order_statistics(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -751,11 +711,7 @@ async def get_order_statistics_async(
     Get Order Statistics.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
-      *  Returns : order statistics
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+      * Returns : order statistics
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/stats
@@ -768,7 +724,7 @@ async def get_order_statistics_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -800,11 +756,7 @@ def get_user_order(
     Get an order.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}
@@ -817,7 +769,7 @@ def get_user_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -855,11 +807,7 @@ async def get_user_order_async(
     Get an order.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}
@@ -872,7 +820,7 @@ async def get_user_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -899,6 +847,7 @@ async def get_user_order_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserOrderGrant)
 def get_user_order_grant(
     order_no: str,
@@ -912,11 +861,7 @@ def get_user_order_grant(
     Get user order grant that fulfilled by this order.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order grant
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order grant
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/grant
@@ -929,7 +874,7 @@ def get_user_order_grant(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -952,6 +897,7 @@ def get_user_order_grant(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserOrderGrant)
 async def get_user_order_grant_async(
     order_no: str,
@@ -965,11 +911,7 @@ async def get_user_order_grant_async(
     Get user order grant that fulfilled by this order.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order grant
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order grant
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/grant
@@ -982,7 +924,7 @@ async def get_user_order_grant_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1020,11 +962,7 @@ def get_user_order_histories(
     Get user order history.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
@@ -1037,7 +975,7 @@ def get_user_order_histories(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1073,11 +1011,7 @@ async def get_user_order_histories_async(
     Get user order history.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
@@ -1090,7 +1024,7 @@ async def get_user_order_histories_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1129,11 +1063,7 @@ def process_user_order_notification(
     [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment notification from justice payment service.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
-      *  Returns : Process result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+      * Returns : Process result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/notifications
@@ -1146,7 +1076,7 @@ def process_user_order_notification(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TradeNotification in body
 
@@ -1188,11 +1118,7 @@ async def process_user_order_notification_async(
     [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment notification from justice payment service.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
-      *  Returns : Process result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+      * Returns : Process result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/notifications
@@ -1205,7 +1131,7 @@ async def process_user_order_notification_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TradeNotification in body
 
@@ -1248,11 +1174,7 @@ def public_cancel_user_order(
     Cancel user order.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
-      *  Returns : cancelled order
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+      * Returns : cancelled order
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/cancel
@@ -1265,7 +1187,7 @@ def public_cancel_user_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1305,11 +1227,7 @@ async def public_cancel_user_order_async(
     Cancel user order.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
-      *  Returns : cancelled order
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+      * Returns : cancelled order
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/cancel
@@ -1322,7 +1240,7 @@ async def public_cancel_user_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1364,8 +1282,7 @@ def public_create_user_order(
     Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
-      *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
+      * Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
       * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created order
 
@@ -1387,9 +1304,6 @@ def public_create_user_order(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
-
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders
 
@@ -1401,7 +1315,7 @@ def public_create_user_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL OrderCreate in body
 
@@ -1412,13 +1326,13 @@ def public_create_user_order(
     Responses:
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
+        400: Bad Request - ErrorEntity (20018: ecommerce item type not supported | 32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists | 32127: Discount code [{code}] can't be used on this item: {tips} | 32128: Discount code [{code}] can not be used with other code together | 32129: Can't use discount code on free order | 32130: The total discount amount cannot exceed the order price)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist | 1100001: record not found: inventory | 37142: Code [{code}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (20024: insufficient inventory capacity (max. slots) | 32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock | 37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 37179: Exceeded max redeem count per campaign per user [{maxCount}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -1447,8 +1361,7 @@ async def public_create_user_order_async(
     Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
-      *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
+      * Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
       * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created order
 
@@ -1470,9 +1383,6 @@ async def public_create_user_order_async(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
-
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders
 
@@ -1484,7 +1394,7 @@ async def public_create_user_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL OrderCreate in body
 
@@ -1495,13 +1405,13 @@ async def public_create_user_order_async(
     Responses:
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
+        400: Bad Request - ErrorEntity (20018: ecommerce item type not supported | 32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists | 32127: Discount code [{code}] can't be used on this item: {tips} | 32128: Discount code [{code}] can not be used with other code together | 32129: Can't use discount code on free order | 32130: The total discount amount cannot exceed the order price)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist | 1100001: record not found: inventory | 37142: Code [{code}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (20024: insufficient inventory capacity (max. slots) | 32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock | 37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 37179: Exceeded max redeem count per campaign per user [{maxCount}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -1532,11 +1442,7 @@ def public_download_user_order_receipt(
     Download user order receipt by orderNo.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : order receipt pdf
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : order receipt pdf
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf
@@ -1549,7 +1455,7 @@ def public_download_user_order_receipt(
 
         produces: ["application/pdf"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1589,11 +1495,7 @@ async def public_download_user_order_receipt_async(
     Download user order receipt by orderNo.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : order receipt pdf
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : order receipt pdf
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf
@@ -1606,7 +1508,7 @@ async def public_download_user_order_receipt_async(
 
         produces: ["application/pdf"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1648,11 +1550,7 @@ def public_get_user_order(
     Get user order.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}
@@ -1665,7 +1563,7 @@ def public_get_user_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1703,11 +1601,7 @@ async def public_get_user_order_async(
     Get user order.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}
@@ -1720,7 +1614,7 @@ async def public_get_user_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1760,11 +1654,7 @@ def public_get_user_order_histories(
     Get user order histories.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order history
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order history
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
@@ -1777,7 +1667,7 @@ def public_get_user_order_histories(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1813,11 +1703,7 @@ async def public_get_user_order_histories_async(
     Get user order histories.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order history
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order history
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
@@ -1830,7 +1716,7 @@ async def public_get_user_order_histories_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1855,9 +1741,128 @@ async def public_get_user_order_histories_async(
     )
 
 
+@same_doc_as(PublicPreviewOrderPrice)
+def public_preview_order_price(
+    user_id: str,
+    body: Optional[OrderDiscountPreviewRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Preview order price with discount code. (publicPreviewOrderPrice)
+
+    Preview order price with discount code, this api is used to auto calc order price with discount code.Notes: this api don't do full order validation, only check discount code and calc final order price.Other detail info:
+
+      * Returns : previewed order
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders/discount/preview
+
+        method: POST
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL OrderDiscountPreviewRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderDiscountPreviewResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (32127: Discount code [{code}] can't be used on this item: {tips} | 32128: Discount code [{code}] can not be used with other code together | 32129: Can't use discount code on free order | 32130: The total discount amount cannot exceed the order price)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 37142: Code [{code}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 37179: Exceeded max redeem count per campaign per user [{maxCount}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicPreviewOrderPrice.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicPreviewOrderPrice)
+async def public_preview_order_price_async(
+    user_id: str,
+    body: Optional[OrderDiscountPreviewRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Preview order price with discount code. (publicPreviewOrderPrice)
+
+    Preview order price with discount code, this api is used to auto calc order price with discount code.Notes: this api don't do full order validation, only check discount code and calc final order price.Other detail info:
+
+      * Returns : previewed order
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/orders/discount/preview
+
+        method: POST
+
+        tags: ["Order"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL OrderDiscountPreviewRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - OrderDiscountPreviewResponse (successful operation)
+
+        400: Bad Request - ErrorEntity (32127: Discount code [{code}] can't be used on this item: {tips} | 32128: Discount code [{code}] can not be used with other code together | 32129: Can't use discount code on free order | 32130: The total discount amount cannot exceed the order price)
+
+        403: Forbidden - ErrorEntity (20016: action is banned)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 37142: Code [{code}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 37179: Exceeded max redeem count per campaign per user [{maxCount}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicPreviewOrderPrice.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicQueryUserOrders)
 def public_query_user_orders(
     user_id: str,
+    discounted: Optional[bool] = None,
     item_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -1871,11 +1876,7 @@ def public_query_user_orders(
     Query user orders.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders
@@ -1888,11 +1889,13 @@ def public_query_user_orders(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
+
+        discounted: (discounted) OPTIONAL bool in query
 
         item_id: (itemId) OPTIONAL str in query
 
@@ -1911,6 +1914,7 @@ def public_query_user_orders(
             return None, error
     request = PublicQueryUserOrders.create(
         user_id=user_id,
+        discounted=discounted,
         item_id=item_id,
         limit=limit,
         offset=offset,
@@ -1923,6 +1927,7 @@ def public_query_user_orders(
 @same_doc_as(PublicQueryUserOrders)
 async def public_query_user_orders_async(
     user_id: str,
+    discounted: Optional[bool] = None,
     item_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -1936,11 +1941,7 @@ async def public_query_user_orders_async(
     Query user orders.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders
@@ -1953,11 +1954,13 @@ async def public_query_user_orders_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
+
+        discounted: (discounted) OPTIONAL bool in query
 
         item_id: (itemId) OPTIONAL str in query
 
@@ -1976,6 +1979,7 @@ async def public_query_user_orders_async(
             return None, error
     request = PublicQueryUserOrders.create(
         user_id=user_id,
+        discounted=discounted,
         item_id=item_id,
         limit=limit,
         offset=offset,
@@ -2006,11 +2010,7 @@ def query_orders(
     Query orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
-      *  Returns : query orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+      * Returns : query orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders
@@ -2023,7 +2023,7 @@ def query_orders(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2085,11 +2085,7 @@ async def query_orders_async(
     Query orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
-      *  Returns : query orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+      * Returns : query orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders
@@ -2102,7 +2098,7 @@ async def query_orders_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2150,6 +2146,7 @@ async def query_orders_async(
 @same_doc_as(QueryUserOrders)
 def query_user_orders(
     user_id: str,
+    discounted: Optional[bool] = None,
     item_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -2163,11 +2160,7 @@ def query_user_orders(
     Query user orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders
@@ -2180,11 +2173,13 @@ def query_user_orders(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
+
+        discounted: (discounted) OPTIONAL bool in query
 
         item_id: (itemId) OPTIONAL str in query
 
@@ -2203,6 +2198,7 @@ def query_user_orders(
             return None, error
     request = QueryUserOrders.create(
         user_id=user_id,
+        discounted=discounted,
         item_id=item_id,
         limit=limit,
         offset=offset,
@@ -2215,6 +2211,7 @@ def query_user_orders(
 @same_doc_as(QueryUserOrders)
 async def query_user_orders_async(
     user_id: str,
+    discounted: Optional[bool] = None,
     item_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -2228,11 +2225,7 @@ async def query_user_orders_async(
     Query user orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders
@@ -2245,11 +2238,13 @@ async def query_user_orders_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
+
+        discounted: (discounted) OPTIONAL bool in query
 
         item_id: (itemId) OPTIONAL str in query
 
@@ -2268,6 +2263,7 @@ async def query_user_orders_async(
             return None, error
     request = QueryUserOrders.create(
         user_id=user_id,
+        discounted=discounted,
         item_id=item_id,
         limit=limit,
         offset=offset,
@@ -2290,12 +2286,6 @@ def refund_order(
     """Refund order (refundOrder)
 
     Refund order by orderNo.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/{orderNo}/refund
@@ -2308,7 +2298,7 @@ def refund_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL OrderRefundCreate in body
 
@@ -2348,12 +2338,6 @@ async def refund_order_async(
     """Refund order (refundOrder)
 
     Refund order by orderNo.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/{orderNo}/refund
@@ -2366,7 +2350,7 @@ async def refund_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL OrderRefundCreate in body
 
@@ -2411,11 +2395,7 @@ def update_user_order_status(
     Update order status.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
-      *  Returns : updated order
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+      * Returns : updated order
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}
@@ -2428,7 +2408,7 @@ def update_user_order_status(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL OrderUpdate in body
 
@@ -2474,11 +2454,7 @@ async def update_user_order_status_async(
     Update order status.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=4 (UPDATE)
-      *  Returns : updated order
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [UPDATE]
+      * Returns : updated order
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}
@@ -2491,7 +2467,7 @@ async def update_user_order_status_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL OrderUpdate in body
 

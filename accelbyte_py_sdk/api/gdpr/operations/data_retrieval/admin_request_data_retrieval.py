@@ -36,15 +36,9 @@ from ...models import ResponseError
 class AdminRequestDataRetrieval(Operation):
     """Submit user personal data retrieval request (AdminRequestDataRetrieval)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]` and scope `account`
-
-
-
-
+    Submit user personal data retrieval request
     If admin request data for themselves, password is need to be set
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]
+    Scope: account
 
     Required Scope(s):
         - account

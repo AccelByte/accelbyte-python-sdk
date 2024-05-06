@@ -641,10 +641,10 @@ def create_apimodels_user_response_example() -> ApimodelsUserResponse:
     instance.id_ = randomize()
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
-    instance.previous_status = randomize()
     instance.status = randomize()
     instance.status_v2 = randomize()
     instance.updated_at = randomize()
+    instance.previous_status = randomize()
     return instance
 
 

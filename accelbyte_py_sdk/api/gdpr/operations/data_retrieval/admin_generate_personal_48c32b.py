@@ -36,10 +36,8 @@ from ...models import ResponseError
 class AdminGeneratePersonalDataURL(Operation):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    Generate personal data download url
+    Scope: account
 
     Required Scope(s):
         - account

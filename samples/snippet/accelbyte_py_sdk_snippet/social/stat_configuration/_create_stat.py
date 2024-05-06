@@ -26,7 +26,7 @@ set_by: str
 stat_code: str
 tags: List[str]
 
-Example: '{"cycleIds": ["uWmEPigNrMoKhQVa", "fNn139oOIIed0ZQg", "sJq6oBj247c8C6kk"], "defaultValue": 0.057496219256409686, "description": "9LfgR33eLZO8d9FU", "globalAggregationMethod": "TOTAL", "ignoreAdditionalDataOnValueRejected": false, "incrementOnly": true, "isPublic": true, "maximum": 0.24892766509931186, "minimum": 0.9590631580364638, "name": "jE6l7qVmlHcshRXD", "setAsGlobal": true, "setBy": "CLIENT", "statCode": "fbYaSRdDriaEYT17", "tags": ["R3Zy5AWpdHRMGTYb", "dLQEWaSn81KSbH0v", "JEv2q7d8UhMyFmiO"]}'
+Example: '{"cycleIds": ["dOdaKZZRWdtt15mN", "Z5pNGdKc0LBjtyaU", "DyOYl4dlZ06nWwCe"], "defaultValue": 0.18600946748754577, "description": "sDl8hKSwVAmiLBNG", "globalAggregationMethod": "LAST", "ignoreAdditionalDataOnValueRejected": true, "incrementOnly": false, "isPublic": true, "maximum": 0.4122685196449114, "minimum": 0.2489203836117273, "name": "zWCDdHVJ70uSoABl", "setAsGlobal": true, "setBy": "SERVER", "statCode": "0sHWFXYZvIBgR2v8", "tags": ["kDBEpoL4P6gI5yOw", "SEm2BVE9oP7UNu6p", "DEq3AvDtMsXO6tjd"]}'
 """
 
 result, error = create_stat(

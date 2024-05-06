@@ -32,16 +32,23 @@ class InitiateExportAgreementsToCSVResponse(Model):
     """Initiate export agreements to CSV response (InitiateExportAgreementsToCSVResponse)
 
     Properties:
+        export_id: (exportId) REQUIRED str
+
         processing: (processing) REQUIRED bool
     """
 
     # region fields
 
+    export_id: str  # REQUIRED
     processing: bool  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
+
+    def with_export_id(self, value: str) -> InitiateExportAgreementsToCSVResponse:
+        self.export_id = value
+        return self
 
     def with_processing(self, value: bool) -> InitiateExportAgreementsToCSVResponse:
         self.processing = value
@@ -53,6 +60,10 @@ class InitiateExportAgreementsToCSVResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "export_id"):
+            result["exportId"] = str(self.export_id)
+        elif include_empty:
+            result["exportId"] = ""
         if hasattr(self, "processing"):
             result["processing"] = bool(self.processing)
         elif include_empty:
@@ -65,9 +76,10 @@ class InitiateExportAgreementsToCSVResponse(Model):
 
     @classmethod
     def create(
-        cls, processing: bool, **kwargs
+        cls, export_id: str, processing: bool, **kwargs
     ) -> InitiateExportAgreementsToCSVResponse:
         instance = cls()
+        instance.export_id = export_id
         instance.processing = processing
         return instance
 
@@ -78,6 +90,10 @@ class InitiateExportAgreementsToCSVResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "exportId" in dict_ and dict_["exportId"] is not None:
+            instance.export_id = str(dict_["exportId"])
+        elif include_empty:
+            instance.export_id = ""
         if "processing" in dict_ and dict_["processing"] is not None:
             instance.processing = bool(dict_["processing"])
         elif include_empty:
@@ -125,12 +141,14 @@ class InitiateExportAgreementsToCSVResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "exportId": "export_id",
             "processing": "processing",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "exportId": True,
             "processing": True,
         }
 

@@ -39,11 +39,7 @@ class CreateItemTypeConfig(Operation):
 
     [Not Supported Yet In Starter] This API is used to create an item type config.
 
-    *  Required permission : resource="ADMIN:ITEM:CONFIG", action=1 (CREATE)
     *  Returns : item type config data
-
-    Required Permission(s):
-        - ADMIN:ITEM:CONFIG [CREATE]
 
     Properties:
         url: /platform/admin/items/configs
@@ -56,7 +52,7 @@ class CreateItemTypeConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ItemTypeConfigCreate in body
 
@@ -76,7 +72,7 @@ class CreateItemTypeConfig(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ItemTypeConfigCreate  # OPTIONAL in [body]

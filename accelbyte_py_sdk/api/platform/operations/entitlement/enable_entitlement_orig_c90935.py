@@ -38,11 +38,7 @@ class EnableEntitlementOriginFeature(Operation):
     Enable Entitlement origin feature.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=4 (READ)
-      *  Returns : entitlement info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [READ]
+      * Returns : entitlement info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/entitlements/config/entitlementOrigin/enable
@@ -55,7 +51,7 @@ class EnableEntitlementOriginFeature(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -69,7 +65,7 @@ class EnableEntitlementOriginFeature(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

@@ -42,21 +42,29 @@ class PublicSearchUserV3(Operation):
 
     ## Searching by 3rd party platform
 
-    **Note: searching by 3rd party platform display name will use exact query.**
+    **Note: searching by 3rd party platform display name will use exact query, not fuzzy query.**
 
     Step when searching by 3rd party platform display name:
     1. set __by__ to __thirdPartyPlatform__
-    2. set __platformId__ to the supported platform id
+    2. set __platformId__ to the _supported platform id_
     3. set __platformBy__ to __platformDisplayName__
 
     ### Supported platform id:
-
+    * Steam group(steamnetwork)
     * steam
     * steamopenid
-    * facebook
-    * google
+    * PSN group(psn)
+    * ps4web
+    * ps4
+    * ps5
+    * XBOX group(xbox)
+    * live
+    * xblweb
+    * Oculus group(oculusgroup)
     * oculus
     * oculusweb
+    * facebook
+    * google
     * twitch
     * discord
     * android
@@ -64,16 +72,13 @@ class PublicSearchUserV3(Operation):
     * apple
     * device
     * epicgames
-    * ps4
-    * ps5
-    * ps4web
     * nintendo
     * awscognito
-    * live
-    * xblweb
     * netflix
     * snapchat
-    * oidc platform id
+    * _oidc platform id_
+
+    Note: you can use either platform ID or platform group as __platformId__ query parameter.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users
@@ -110,6 +115,8 @@ class PublicSearchUserV3(Operation):
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
         404: Not Found - RestErrorResponse (20008: user not found)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -288,6 +295,8 @@ class PublicSearchUserV3(Operation):
 
         404: Not Found - RestErrorResponse (20008: user not found)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
@@ -310,6 +319,8 @@ class PublicSearchUserV3(Operation):
         if code == 401:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 429:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)

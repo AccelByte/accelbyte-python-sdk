@@ -18,7 +18,7 @@ Definition: List[RestapiCategoryLimit]
 time_interval: int
 user_max_report_per_time_interval: int
 
-Example: '{"categoryLimits": [{"extensionCategory": "dxcVRTnFeburUCrL", "maxReportPerTicket": 16, "name": "uQAoo2dyPP0qotpF"}, {"extensionCategory": "SuL1OvthaWHYh5pj", "maxReportPerTicket": 49, "name": "fJ9aL4105mCuGUMU"}, {"extensionCategory": "BJZBiZnx0jJJqc7V", "maxReportPerTicket": 19, "name": "ESto0SeQCZlO91Kt"}], "timeInterval": 83, "userMaxReportPerTimeInterval": 30}'
+Example: '{"categoryLimits": [{"extensionCategory": "CNU5qv6AeIxSzaXT", "maxReportPerTicket": 90, "name": "twXp8cWM3msqvLa3"}, {"extensionCategory": "bUJXvs8LIrjUJTqK", "maxReportPerTicket": 1, "name": "k7OOtFsrBFB83T9r"}, {"extensionCategory": "Yvra6L2rG0O7KU2s", "maxReportPerTicket": 66, "name": "9eeSI8hbmYWA8jiQ"}], "timeInterval": 25, "userMaxReportPerTimeInterval": 32}'
 """
 
 result, error = upsert(

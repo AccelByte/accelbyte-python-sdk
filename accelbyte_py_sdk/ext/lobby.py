@@ -52,6 +52,9 @@ from ..api.lobby.models import ModelLoadOutgoingFriendsWithTimeResponse
 from ..api.lobby.models import ModelLocalization
 from ..api.lobby.models import ModelNativeFriendRequest
 from ..api.lobby.models import ModelNativeFriendSyncResponse
+from ..api.lobby.models import ModelNativeUserBlockRequest
+from ..api.lobby.models import ModelNativeUserBlockResponse
+from ..api.lobby.models import ModelNotificationResponse
 from ..api.lobby.models import ModelNotificationTemplateResponse
 from ..api.lobby.models import ModelNotificationTopicResponse
 from ..api.lobby.models import ModelNotificationTopicResponseV1
@@ -361,6 +364,38 @@ def create_model_native_friend_sync_response_example() -> ModelNativeFriendSyncR
     instance.platform_id = randomize()
     instance.status = randomize()
     instance.detail = randomize()
+    return instance
+
+
+def create_model_native_user_block_request_example() -> ModelNativeUserBlockRequest:
+    instance = ModelNativeUserBlockRequest()
+    instance.platform_id = randomize()
+    instance.psn_env = randomize()
+    return instance
+
+
+def create_model_native_user_block_response_example() -> ModelNativeUserBlockResponse:
+    instance = ModelNativeUserBlockResponse()
+    instance.platform_id = randomize()
+    instance.status = randomize()
+    instance.detail = randomize()
+    return instance
+
+
+def create_model_notification_response_example() -> ModelNotificationResponse:
+    instance = ModelNotificationResponse()
+    instance.sequence_id = randomize("int", min_val=1, max_val=1000)
+    instance.sequence_number = randomize("int", min_val=1, max_val=1000)
+    instance.type_ = randomize()
+    instance.from_ = randomize()
+    instance.id_ = randomize()
+    instance.lobby_session_id = randomize()
+    instance.login_type = randomize()
+    instance.payload = randomize()
+    instance.reconnect_from_code = randomize("int", min_val=1, max_val=1000)
+    instance.sent_at = randomize()
+    instance.to = randomize()
+    instance.topic = randomize()
     return instance
 
 

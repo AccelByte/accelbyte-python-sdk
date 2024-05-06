@@ -38,11 +38,7 @@ class QueryPaymentProviderConfig(Operation):
     [Not Supported Yet In Starter] Query payment provider config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider config list
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider config list
 
     Properties:
         url: /platform/admin/payment/config/provider
@@ -55,7 +51,7 @@ class QueryPaymentProviderConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         limit: (limit) OPTIONAL int in query
 
@@ -75,7 +71,7 @@ class QueryPaymentProviderConfig(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     limit: int  # OPTIONAL in [query]

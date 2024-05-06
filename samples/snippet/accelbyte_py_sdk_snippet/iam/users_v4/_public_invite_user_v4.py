@@ -15,7 +15,7 @@ email_address: str
 namespace: str
 namespace_display_name: str
 
-Example: '{"additionalData": "Wv7lRzoXelul4nvr", "emailAddress": "PvPo0URgtxvNxSLW", "namespace": "jZesLjo9HmYdD8Wn", "namespaceDisplayName": "ccDn8wNQrw2C9SiW"}'
+Example: '{"additionalData": "S3ztrFvErCcrxlKU", "emailAddress": "OO2fvBA29LtnhYZI", "namespace": "KA45HCCYX3QUQXKY", "namespaceDisplayName": "OSWlqSM2qoxHyX4c"}'
 """
 
 result, error = public_invite_user_v4(

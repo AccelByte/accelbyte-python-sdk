@@ -28,10 +28,13 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.campaign_ifc import CampaignIfc
+from ..models.discount_config import DiscountConfig
 from ..models.redeemable_item import RedeemableItem
 
 
 class RedeemTypeEnum(StrEnum):
+    DISCOUNT = "DISCOUNT"
     ITEM = "ITEM"
 
 
@@ -82,6 +85,10 @@ class CodeInfo(Model):
 
         acquire_user_id: (acquireUserId) OPTIONAL str
 
+        campaign: (campaign) OPTIONAL CampaignIfc
+
+        discount_config: (discountConfig) OPTIONAL DiscountConfig
+
         items: (items) OPTIONAL List[RedeemableItem]
 
         redeem_end: (redeemEnd) OPTIONAL str
@@ -108,6 +115,8 @@ class CodeInfo(Model):
     value: str  # REQUIRED
     acquire_order_no: str  # OPTIONAL
     acquire_user_id: str  # OPTIONAL
+    campaign: CampaignIfc  # OPTIONAL
+    discount_config: DiscountConfig  # OPTIONAL
     items: List[RedeemableItem]  # OPTIONAL
     redeem_end: str  # OPTIONAL
     redeem_start: str  # OPTIONAL
@@ -182,6 +191,14 @@ class CodeInfo(Model):
 
     def with_acquire_user_id(self, value: str) -> CodeInfo:
         self.acquire_user_id = value
+        return self
+
+    def with_campaign(self, value: CampaignIfc) -> CodeInfo:
+        self.campaign = value
+        return self
+
+    def with_discount_config(self, value: DiscountConfig) -> CodeInfo:
+        self.discount_config = value
         return self
 
     def with_items(self, value: List[RedeemableItem]) -> CodeInfo:
@@ -274,6 +291,16 @@ class CodeInfo(Model):
             result["acquireUserId"] = str(self.acquire_user_id)
         elif include_empty:
             result["acquireUserId"] = ""
+        if hasattr(self, "campaign"):
+            result["campaign"] = self.campaign.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["campaign"] = CampaignIfc()
+        if hasattr(self, "discount_config"):
+            result["discountConfig"] = self.discount_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["discountConfig"] = DiscountConfig()
         if hasattr(self, "items"):
             result["items"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.items
@@ -314,6 +341,8 @@ class CodeInfo(Model):
         value: str,
         acquire_order_no: Optional[str] = None,
         acquire_user_id: Optional[str] = None,
+        campaign: Optional[CampaignIfc] = None,
+        discount_config: Optional[DiscountConfig] = None,
         items: Optional[List[RedeemableItem]] = None,
         redeem_end: Optional[str] = None,
         redeem_start: Optional[str] = None,
@@ -341,6 +370,10 @@ class CodeInfo(Model):
             instance.acquire_order_no = acquire_order_no
         if acquire_user_id is not None:
             instance.acquire_user_id = acquire_user_id
+        if campaign is not None:
+            instance.campaign = campaign
+        if discount_config is not None:
+            instance.discount_config = discount_config
         if items is not None:
             instance.items = items
         if redeem_end is not None:
@@ -435,6 +468,18 @@ class CodeInfo(Model):
             instance.acquire_user_id = str(dict_["acquireUserId"])
         elif include_empty:
             instance.acquire_user_id = ""
+        if "campaign" in dict_ and dict_["campaign"] is not None:
+            instance.campaign = CampaignIfc.create_from_dict(
+                dict_["campaign"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.campaign = CampaignIfc()
+        if "discountConfig" in dict_ and dict_["discountConfig"] is not None:
+            instance.discount_config = DiscountConfig.create_from_dict(
+                dict_["discountConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.discount_config = DiscountConfig()
         if "items" in dict_ and dict_["items"] is not None:
             instance.items = [
                 RedeemableItem.create_from_dict(i0, include_empty=include_empty)
@@ -506,6 +551,8 @@ class CodeInfo(Model):
             "value": "value",
             "acquireOrderNo": "acquire_order_no",
             "acquireUserId": "acquire_user_id",
+            "campaign": "campaign",
+            "discountConfig": "discount_config",
             "items": "items",
             "redeemEnd": "redeem_end",
             "redeemStart": "redeem_start",
@@ -531,6 +578,8 @@ class CodeInfo(Model):
             "value": True,
             "acquireOrderNo": False,
             "acquireUserId": False,
+            "campaign": False,
+            "discountConfig": False,
             "items": False,
             "redeemEnd": False,
             "redeemStart": False,
@@ -539,7 +588,7 @@ class CodeInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "redeemType": ["ITEM"],
+            "redeemType": ["DISCOUNT", "ITEM"],
             "status": ["ACTIVE", "INACTIVE"],
             "type": ["REDEMPTION"],
         }

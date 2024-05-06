@@ -40,11 +40,7 @@ class UpdateIAPItemConfig(Operation):
 
     Update iap item config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated iap item config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated iap item config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/item
@@ -57,7 +53,7 @@ class UpdateIAPItemConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL IAPItemConfigUpdate in body
 
@@ -79,7 +75,7 @@ class UpdateIAPItemConfig(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: IAPItemConfigUpdate  # OPTIONAL in [body]

@@ -37,13 +37,6 @@ class ExistsAnyUserActiveEntitlement(Operation):
 
     Exists any user active entitlement of specified itemIds, skus and appIds
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/ownership/any
 
@@ -55,7 +48,7 @@ class ExistsAnyUserActiveEntitlement(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -79,7 +72,7 @@ class ExistsAnyUserActiveEntitlement(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

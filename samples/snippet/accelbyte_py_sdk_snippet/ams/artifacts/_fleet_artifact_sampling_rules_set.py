@@ -30,7 +30,7 @@ Definition: ApiArtifactTypeSamplingRules
         collect: bool
         percentage: int
 
-Example: '{"coredumps": {"crashed": {"collect": false, "percentage": 71}, "success": {"collect": true, "percentage": 70}}, "logs": {"crashed": {"collect": true, "percentage": 92}, "success": {"collect": false, "percentage": 80}}}'
+Example: '{"coredumps": {"crashed": {"collect": false, "percentage": 62}, "success": {"collect": false, "percentage": 8}}, "logs": {"crashed": {"collect": false, "percentage": 76}, "success": {"collect": true, "percentage": 47}}}'
 """
 
 result, error = fleet_artifact_sampling_rules_set(

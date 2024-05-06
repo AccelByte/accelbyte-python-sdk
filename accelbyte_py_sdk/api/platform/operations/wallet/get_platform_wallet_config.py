@@ -51,11 +51,7 @@ class GetPlatformWalletConfig(Operation):
     Get platform wallet config list.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG", action=2 (READ)
-      *  Returns : wallet info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [READ]
+      * Returns : wallet info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config
@@ -68,7 +64,7 @@ class GetPlatformWalletConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -86,7 +82,7 @@ class GetPlatformWalletConfig(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

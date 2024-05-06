@@ -14,7 +14,7 @@ qty: int
 slot_id: str
 source_item_id: str
 
-Example: '{"qty": 65, "slotId": "ZQoGorop3lkUeJx6", "sourceItemId": "riMd3eJs5o0aIhsn"}'
+Example: '{"qty": 27, "slotId": "AV3QltQI65rwmVPR", "sourceItemId": "S0pL36LHyZw8DXHJ"}'
 """
 
 result, error = admin_consume_user_item(

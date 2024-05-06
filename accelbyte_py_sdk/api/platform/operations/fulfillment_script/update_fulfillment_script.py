@@ -38,12 +38,6 @@ class UpdateFulfillmentScript(Operation):
     """Update fulfillment script (updateFulfillmentScript)
 
     [Not Supported Yet In Starter] Update fulfillment script.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [UPDATE]
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -56,7 +50,7 @@ class UpdateFulfillmentScript(Operation):
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL FulfillmentScriptUpdate in body
 
@@ -74,7 +68,7 @@ class UpdateFulfillmentScript(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = []
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: FulfillmentScriptUpdate  # OPTIONAL in [body]

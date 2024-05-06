@@ -39,11 +39,7 @@ class GetPaymentCallbackConfig(Operation):
     [Not Supported Yet In Starter] Get payment callback configuration.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : Payment callback config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [READ]
+      * Returns : Payment callback config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/config/callback
@@ -56,7 +52,7 @@ class GetPaymentCallbackConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -72,7 +68,7 @@ class GetPaymentCallbackConfig(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

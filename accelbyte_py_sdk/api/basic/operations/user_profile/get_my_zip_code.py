@@ -39,12 +39,8 @@ class GetMyZipCode(Operation):
     Get my zip code.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=2 (READ)
-      *  Action code : 11407
+      * Action code : 11407
       *  Returns : user zip code
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/zipCode
@@ -57,7 +53,7 @@ class GetMyZipCode(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -75,7 +71,7 @@ class GetMyZipCode(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

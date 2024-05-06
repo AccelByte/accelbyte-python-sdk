@@ -78,11 +78,7 @@ def create_category(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=1 (CREATE)
-      *  Returns : created category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [CREATE]
+      * Returns : created category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories
@@ -95,7 +91,7 @@ def create_category(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CategoryCreate in body
 
@@ -151,11 +147,7 @@ async def create_category_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=1 (CREATE)
-      *  Returns : created category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [CREATE]
+      * Returns : created category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories
@@ -168,7 +160,7 @@ async def create_category_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CategoryCreate in body
 
@@ -215,11 +207,7 @@ def delete_category(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=8 (DELETE)
-      *  Returns : the deleted category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [DELETE]
+      * Returns : the deleted category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
@@ -232,7 +220,7 @@ def delete_category(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -273,11 +261,7 @@ async def delete_category_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=8 (DELETE)
-      *  Returns : the deleted category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [DELETE]
+      * Returns : the deleted category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
@@ -290,7 +274,7 @@ async def delete_category_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -443,11 +427,7 @@ def get_category(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+      * Returns : category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
@@ -460,7 +440,7 @@ def get_category(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -499,11 +479,7 @@ async def get_category_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+      * Returns : category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
@@ -516,7 +492,7 @@ async def get_category_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -557,11 +533,7 @@ def get_child_categories(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : list of child categories data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+      * Returns : list of child categories data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}/children
@@ -574,7 +546,7 @@ def get_child_categories(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -611,11 +583,7 @@ async def get_child_categories_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : list of child categories data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+      * Returns : list of child categories data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}/children
@@ -628,7 +596,7 @@ async def get_child_categories_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -667,11 +635,7 @@ def get_descendant_categories(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : list of descendant categories data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+      * Returns : list of descendant categories data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}/descendants
@@ -684,7 +648,7 @@ def get_descendant_categories(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -721,11 +685,7 @@ async def get_descendant_categories_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : list of descendant categories data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+      * Returns : list of descendant categories data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}/descendants
@@ -738,7 +698,7 @@ async def get_descendant_categories_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -776,11 +736,7 @@ def get_root_categories(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : root category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+      * Returns : root category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories
@@ -793,7 +749,7 @@ def get_root_categories(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -826,11 +782,7 @@ async def get_root_categories_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : root category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+      * Returns : root category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories
@@ -843,7 +795,7 @@ async def get_root_categories_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -878,11 +830,7 @@ def list_categories_basic(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : list of categories' paths
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+      * Returns : list of categories' paths
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/basic
@@ -895,7 +843,7 @@ def list_categories_basic(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -928,11 +876,7 @@ async def list_categories_basic_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=2 (READ)
-      *  Returns : list of categories' paths
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [READ]
+      * Returns : list of categories' paths
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/basic
@@ -945,7 +889,7 @@ async def list_categories_basic_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1445,11 +1389,7 @@ def update_category(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=4 (UPDATE)
-      *  Returns : the updated category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [UPDATE]
+      * Returns : the updated category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
@@ -1462,7 +1402,7 @@ def update_category(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CategoryUpdate in body
 
@@ -1522,11 +1462,7 @@ async def update_category_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=4 (UPDATE)
-      *  Returns : the updated category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [UPDATE]
+      * Returns : the updated category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
@@ -1539,7 +1475,7 @@ async def update_category_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CategoryUpdate in body
 

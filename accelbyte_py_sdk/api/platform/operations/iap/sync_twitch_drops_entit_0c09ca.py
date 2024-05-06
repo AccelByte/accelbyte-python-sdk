@@ -36,15 +36,9 @@ from ...models import TwitchSyncRequest
 class SyncTwitchDropsEntitlement1(Operation):
     """Sync twitch drops entitlements. (syncTwitchDropsEntitlement_1)
 
-    Sync twitch drops entitlements.
+    Sync twitch drops entitlements.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/twitch/sync
@@ -57,7 +51,7 @@ class SyncTwitchDropsEntitlement1(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TwitchSyncRequest in body
 
@@ -77,7 +71,7 @@ class SyncTwitchDropsEntitlement1(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: TwitchSyncRequest  # OPTIONAL in [body]

@@ -39,11 +39,7 @@ class DefeatureItem(Operation):
     Remove a feature from an item.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
-      *  Returns : updated item
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+      * Returns : updated item
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}/features/{feature}
@@ -56,7 +52,7 @@ class DefeatureItem(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         feature: (feature) REQUIRED str in path
 
@@ -82,7 +78,7 @@ class DefeatureItem(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     feature: str  # REQUIRED in [path]

@@ -54,6 +54,8 @@ class ModelsConfigResponse(Model):
 
         general_rate_limit_duration: (generalRateLimitDuration) OPTIONAL int
 
+        max_chat_message_length: (maxChatMessageLength) OPTIONAL int
+
         shard_capacity_limit: (shardCapacityLimit) OPTIONAL int
 
         shard_default_limit: (shardDefaultLimit) OPTIONAL int
@@ -80,6 +82,7 @@ class ModelsConfigResponse(Model):
     filter_type: str  # OPTIONAL
     general_rate_limit_burst: int  # OPTIONAL
     general_rate_limit_duration: int  # OPTIONAL
+    max_chat_message_length: int  # OPTIONAL
     shard_capacity_limit: int  # OPTIONAL
     shard_default_limit: int  # OPTIONAL
     shard_hard_limit: int  # OPTIONAL
@@ -133,6 +136,10 @@ class ModelsConfigResponse(Model):
 
     def with_general_rate_limit_duration(self, value: int) -> ModelsConfigResponse:
         self.general_rate_limit_duration = value
+        return self
+
+    def with_max_chat_message_length(self, value: int) -> ModelsConfigResponse:
+        self.max_chat_message_length = value
         return self
 
     def with_shard_capacity_limit(self, value: int) -> ModelsConfigResponse:
@@ -211,6 +218,10 @@ class ModelsConfigResponse(Model):
             result["generalRateLimitDuration"] = int(self.general_rate_limit_duration)
         elif include_empty:
             result["generalRateLimitDuration"] = 0
+        if hasattr(self, "max_chat_message_length"):
+            result["maxChatMessageLength"] = int(self.max_chat_message_length)
+        elif include_empty:
+            result["maxChatMessageLength"] = 0
         if hasattr(self, "shard_capacity_limit"):
             result["shardCapacityLimit"] = int(self.shard_capacity_limit)
         elif include_empty:
@@ -255,6 +266,7 @@ class ModelsConfigResponse(Model):
         filter_type: Optional[str] = None,
         general_rate_limit_burst: Optional[int] = None,
         general_rate_limit_duration: Optional[int] = None,
+        max_chat_message_length: Optional[int] = None,
         shard_capacity_limit: Optional[int] = None,
         shard_default_limit: Optional[int] = None,
         shard_hard_limit: Optional[int] = None,
@@ -286,6 +298,8 @@ class ModelsConfigResponse(Model):
             instance.general_rate_limit_burst = general_rate_limit_burst
         if general_rate_limit_duration is not None:
             instance.general_rate_limit_duration = general_rate_limit_duration
+        if max_chat_message_length is not None:
+            instance.max_chat_message_length = max_chat_message_length
         if shard_capacity_limit is not None:
             instance.shard_capacity_limit = shard_capacity_limit
         if shard_default_limit is not None:
@@ -373,6 +387,13 @@ class ModelsConfigResponse(Model):
             )
         elif include_empty:
             instance.general_rate_limit_duration = 0
+        if (
+            "maxChatMessageLength" in dict_
+            and dict_["maxChatMessageLength"] is not None
+        ):
+            instance.max_chat_message_length = int(dict_["maxChatMessageLength"])
+        elif include_empty:
+            instance.max_chat_message_length = 0
         if "shardCapacityLimit" in dict_ and dict_["shardCapacityLimit"] is not None:
             instance.shard_capacity_limit = int(dict_["shardCapacityLimit"])
         elif include_empty:
@@ -451,6 +472,7 @@ class ModelsConfigResponse(Model):
             "filterType": "filter_type",
             "generalRateLimitBurst": "general_rate_limit_burst",
             "generalRateLimitDuration": "general_rate_limit_duration",
+            "maxChatMessageLength": "max_chat_message_length",
             "shardCapacityLimit": "shard_capacity_limit",
             "shardDefaultLimit": "shard_default_limit",
             "shardHardLimit": "shard_hard_limit",
@@ -473,6 +495,7 @@ class ModelsConfigResponse(Model):
             "filterType": False,
             "generalRateLimitBurst": False,
             "generalRateLimitDuration": False,
+            "maxChatMessageLength": False,
             "shardCapacityLimit": False,
             "shardDefaultLimit": False,
             "shardHardLimit": False,

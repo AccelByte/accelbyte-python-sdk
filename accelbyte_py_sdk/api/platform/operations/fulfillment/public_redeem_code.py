@@ -40,11 +40,7 @@ class PublicRedeemCode(Operation):
     Redeem campaign code, this api have rate limit, default: only allow request once per user in 2 seconds
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT", action=1 (CREATED)
-      *  Returns : fulfillment result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FULFILLMENT []
+      * Returns : fulfillment result
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/fulfillment/code
@@ -57,7 +53,7 @@ class PublicRedeemCode(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL FulfillCodeRequest in body
 
@@ -85,7 +81,7 @@ class PublicRedeemCode(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: FulfillCodeRequest  # OPTIONAL in [body]

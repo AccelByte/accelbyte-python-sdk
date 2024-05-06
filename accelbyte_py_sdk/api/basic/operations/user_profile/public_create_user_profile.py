@@ -41,14 +41,10 @@ class PublicCreateUserProfile(Operation):
     Create user profile.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=1 (CREATE)
-      *  Action code : 11401
+      * Action code : 11401
       *  Language : allowed format: en, en-US
       *  Timezone : IANA time zone, e.g. Asia/Shanghai
       *  Returns : Created user profile
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
@@ -61,7 +57,7 @@ class PublicCreateUserProfile(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileCreate in body
 
@@ -87,7 +83,7 @@ class PublicCreateUserProfile(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UserProfileCreate  # OPTIONAL in [body]

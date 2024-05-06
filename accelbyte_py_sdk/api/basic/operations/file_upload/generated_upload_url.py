@@ -40,12 +40,8 @@ class GeneratedUploadUrl(Operation):
     Generate an upload URL. It's valid for 10 minutes.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11101
+      * Action code : 11101
       *  Returns : URL data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/folders/{folder}/files
@@ -58,7 +54,7 @@ class GeneratedUploadUrl(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         folder: (folder) REQUIRED str in path
 
@@ -84,7 +80,7 @@ class GeneratedUploadUrl(Operation):
     _method: str = "POST"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     folder: str  # REQUIRED in [path]

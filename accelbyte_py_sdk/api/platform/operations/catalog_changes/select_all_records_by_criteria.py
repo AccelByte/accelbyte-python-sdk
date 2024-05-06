@@ -65,12 +65,6 @@ class SelectAllRecordsByCriteria(Operation):
     """Select all changes by criteria (selectAllRecordsByCriteria)
 
     Select all changes by criteria
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/selectAllByCriteria
@@ -83,7 +77,7 @@ class SelectAllRecordsByCriteria(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -115,7 +109,7 @@ class SelectAllRecordsByCriteria(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

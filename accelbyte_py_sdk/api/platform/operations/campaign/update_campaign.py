@@ -41,11 +41,7 @@ class UpdateCampaign(Operation):
     Update campaign.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : updated campaign
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : updated campaign
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}
@@ -58,7 +54,7 @@ class UpdateCampaign(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CampaignUpdate in body
 
@@ -82,7 +78,7 @@ class UpdateCampaign(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: CampaignUpdate  # OPTIONAL in [body]

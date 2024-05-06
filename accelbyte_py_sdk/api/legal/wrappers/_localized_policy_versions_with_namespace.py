@@ -69,12 +69,6 @@ def create_localized_policy_version_1(
     """Create a Localized Version from Country-Specific Policy (createLocalizedPolicyVersion_1)
 
     Create a version of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}
@@ -87,7 +81,7 @@ def create_localized_policy_version_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CreateLocalizedPolicyVersionRequest in body
 
@@ -125,12 +119,6 @@ async def create_localized_policy_version_1_async(
     """Create a Localized Version from Country-Specific Policy (createLocalizedPolicyVersion_1)
 
     Create a version of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}
@@ -143,7 +131,7 @@ async def create_localized_policy_version_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CreateLocalizedPolicyVersionRequest in body
 
@@ -183,12 +171,6 @@ def request_presigned_url_1(
     """Request Presigned URL for Upload Document (requestPresignedURL_1)
 
     Request presigned URL for upload attachment for a particular localized version of base policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/attachments
@@ -201,7 +183,7 @@ def request_presigned_url_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UploadPolicyVersionAttachmentRequest in body
 
@@ -237,12 +219,6 @@ async def request_presigned_url_1_async(
     """Request Presigned URL for Upload Document (requestPresignedURL_1)
 
     Request presigned URL for upload attachment for a particular localized version of base policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/attachments
@@ -255,7 +231,7 @@ async def request_presigned_url_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UploadPolicyVersionAttachmentRequest in body
 
@@ -292,12 +268,6 @@ def retrieve_localized_policy_versions_1(
     """Retrieve Versions from Country-Specific Policy (retrieveLocalizedPolicyVersions_1)
 
     Retrieve versions of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}
@@ -310,7 +280,7 @@ def retrieve_localized_policy_versions_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -340,12 +310,6 @@ async def retrieve_localized_policy_versions_1_async(
     """Retrieve Versions from Country-Specific Policy (retrieveLocalizedPolicyVersions_1)
 
     Retrieve versions of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{policyVersionId}
@@ -358,7 +322,7 @@ async def retrieve_localized_policy_versions_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -390,12 +354,6 @@ def retrieve_single_localized_policy_version_1(
     """Retrieve a Localized Version from Country-Specific Policy (retrieveSingleLocalizedPolicyVersion_1)
 
     Retrieve a version of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}
@@ -408,7 +366,7 @@ def retrieve_single_localized_policy_version_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
 
@@ -440,12 +398,6 @@ async def retrieve_single_localized_policy_version_1_async(
     """Retrieve a Localized Version from Country-Specific Policy (retrieveSingleLocalizedPolicyVersion_1)
 
     Retrieve a version of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}
@@ -458,7 +410,7 @@ async def retrieve_single_localized_policy_version_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
 
@@ -584,12 +536,6 @@ def set_default_policy_1(
     """Set Default Localized Policy (setDefaultPolicy_1)
 
     Update a localized version policy to be the default.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/default
@@ -602,7 +548,7 @@ def set_default_policy_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
 
@@ -632,12 +578,6 @@ async def set_default_policy_1_async(
     """Set Default Localized Policy (setDefaultPolicy_1)
 
     Update a localized version policy to be the default.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}/default
@@ -650,7 +590,7 @@ async def set_default_policy_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
 
@@ -683,12 +623,6 @@ def update_localized_policy_version_1(
     """Update a Localized Version from Country-Specific Policy (updateLocalizedPolicyVersion_1)
 
     Update a version of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}
@@ -701,7 +635,7 @@ def update_localized_policy_version_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdateLocalizedPolicyVersionRequest in body
 
@@ -737,12 +671,6 @@ async def update_localized_policy_version_1_async(
     """Update a Localized Version from Country-Specific Policy (updateLocalizedPolicyVersion_1)
 
     Update a version of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/{localizedPolicyVersionId}
@@ -755,7 +683,7 @@ async def update_localized_policy_version_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdateLocalizedPolicyVersionRequest in body
 

@@ -39,11 +39,7 @@ class DebugMatchedPaymentMerchantConfig(Operation):
     [Not Supported Yet In Starter] Debug matched payment merchant config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment merchant config info
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment merchant config info
 
     Properties:
         url: /platform/admin/payment/config/merchant/matched
@@ -56,7 +52,7 @@ class DebugMatchedPaymentMerchantConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) OPTIONAL str in query
 
@@ -74,7 +70,7 @@ class DebugMatchedPaymentMerchantConfig(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # OPTIONAL in [query]

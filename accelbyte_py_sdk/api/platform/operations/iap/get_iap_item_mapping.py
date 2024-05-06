@@ -50,7 +50,6 @@ class GetIAPItemMapping(Operation):
     """Get iap item mapping (getIAPItemMapping)
 
     Get iap item mapping.
-    Other detail info:
 
     Properties:
         url: /platform/public/namespaces/{namespace}/iap/item/mapping

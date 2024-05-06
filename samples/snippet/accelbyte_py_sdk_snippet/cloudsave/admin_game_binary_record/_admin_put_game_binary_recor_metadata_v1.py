@@ -17,7 +17,7 @@ Definition: ModelsTTLConfigDTO
     action: str
     expires_at: str
 
-Example: '{"set_by": "CLIENT", "tags": ["49MW8AKQi3vxIE7m", "1tEwg150iom6BLGc", "buqgzq9q5p6WFFQ3"], "ttl_config": {"action": "DELETE", "expires_at": "1982-09-25T00:00:00Z"}}'
+Example: '{"set_by": "SERVER", "tags": ["GmmWQOVivXbDLZ5o", "FjDRlhvh6becbB3D", "r7vLA2U6jh3OojhU"], "ttl_config": {"action": "DELETE", "expires_at": "1976-03-19T00:00:00Z"}}'
 """
 
 result, error = admin_put_game_binary_recor_metadata_v1(

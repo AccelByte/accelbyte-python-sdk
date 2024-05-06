@@ -71,4 +71,4 @@ def get_user_order_grant(
 
 
 get_user_order_grant.operation_id = "getUserOrderGrant"
-get_user_order_grant.is_deprecated = False
+get_user_order_grant.is_deprecated = True

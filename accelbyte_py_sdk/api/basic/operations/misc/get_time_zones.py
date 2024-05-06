@@ -39,8 +39,7 @@ class GetTimeZones(Operation):
     List time zones.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11205
+      * Action code : 11205
       *  Returns : time zones
 
     Properties:

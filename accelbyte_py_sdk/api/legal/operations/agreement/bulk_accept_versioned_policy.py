@@ -38,9 +38,6 @@ class BulkAcceptVersionedPolicy(Operation):
     """Bulk Accept Policy Versions (bulkAcceptVersionedPolicy)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id to accept an agreement.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/policies

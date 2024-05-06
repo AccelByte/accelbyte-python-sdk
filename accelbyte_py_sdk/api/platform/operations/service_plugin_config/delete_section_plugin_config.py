@@ -34,9 +34,6 @@ class DeleteSectionPluginConfig(Operation):
     """Delete section plugin config (deleteSectionPluginConfig)
 
     Delete section plugin config.
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:PLUGIN:CATALOG, action=8 (DELETE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/catalog/plugins/section

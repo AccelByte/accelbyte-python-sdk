@@ -41,11 +41,7 @@ class GetPublisherConfig(Operation):
     It will return a publisher namespace config of the given namespace and key.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=2 (READ)
-      *  Returns : config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [READ]
+      * Returns : config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/publisher/configs/{configKey}
@@ -58,7 +54,7 @@ class GetPublisherConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         config_key: (configKey) REQUIRED str in path
 
@@ -82,7 +78,7 @@ class GetPublisherConfig(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     config_key: str  # REQUIRED in [path]

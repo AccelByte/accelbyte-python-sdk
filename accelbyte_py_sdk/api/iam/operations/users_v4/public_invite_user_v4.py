@@ -72,6 +72,8 @@ class PublicInviteUserV4(Operation):
 
         422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
@@ -177,6 +179,8 @@ class PublicInviteUserV4(Operation):
 
         422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
@@ -199,6 +203,8 @@ class PublicInviteUserV4(Operation):
         if code == 409:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 422:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 429:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)

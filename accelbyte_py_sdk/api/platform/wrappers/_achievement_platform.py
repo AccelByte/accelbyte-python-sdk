@@ -52,10 +52,6 @@ def get_xbl_user_achievements(
 
     This API is used to get xbox live user achievements(Only for test).
 
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=2 (READ)
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl
 
@@ -103,10 +99,6 @@ async def get_xbl_user_achievements_async(
     """Get xbox live user achievements. (getXblUserAchievements)
 
     This API is used to get xbox live user achievements(Only for test).
-
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=2 (READ)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl
@@ -158,10 +150,6 @@ def unlock_steam_user_achievement(
 
     This API is used to unlock steam achievement.
 
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=4 (UPDATE)
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/steam
 
@@ -211,10 +199,6 @@ async def unlock_steam_user_achievement_async(
     """Unlock steam achievement. (unlockSteamUserAchievement)
 
     This API is used to unlock steam achievement.
-
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=4 (UPDATE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/steam
@@ -268,10 +252,6 @@ def update_xbl_user_achievement(
 
     This API is used to update xbox live achievements.
 
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=4 (UPDATE)
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl
 
@@ -319,10 +299,6 @@ async def update_xbl_user_achievement_async(
     """Update xbox live achievements. (updateXblUserAchievement)
 
     This API is used to update xbox live achievements.
-
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT, action=4 (UPDATE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/achievement/xbl

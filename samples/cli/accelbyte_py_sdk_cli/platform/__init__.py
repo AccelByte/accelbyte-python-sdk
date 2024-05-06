@@ -24,6 +24,8 @@ from ._create_campaign import create_campaign
 from ._get_campaign import get_campaign
 from ._update_campaign import update_campaign
 from ._get_campaign_dynamic import get_campaign_dynamic
+from ._get_catalog_config import get_catalog_config
+from ._update_catalog_config import update_catalog_config
 from ._get_loot_box_plugin_config import get_loot_box_plugin_config
 from ._update_loot_box_plugin_config import update_loot_box_plugin_config
 from ._delete_loot_box_plugin_config import delete_loot_box_plugin_config
@@ -491,6 +493,7 @@ from ._sync_twitch_drops_entitlement_1 import sync_twitch_drops_entitlement_1
 from ._sync_xbox_inventory import sync_xbox_inventory
 from ._public_query_user_orders import public_query_user_orders
 from ._public_create_user_order import public_create_user_order
+from ._public_preview_order_price import public_preview_order_price
 from ._public_get_user_order import public_get_user_order
 from ._public_cancel_user_order import public_cancel_user_order
 from ._public_get_user_order_histories import public_get_user_order_histories
@@ -537,6 +540,8 @@ commands = [
     get_campaign,
     update_campaign,
     get_campaign_dynamic,
+    get_catalog_config,
+    update_catalog_config,
     get_loot_box_plugin_config,
     update_loot_box_plugin_config,
     delete_loot_box_plugin_config,
@@ -944,6 +949,7 @@ commands = [
     sync_xbox_inventory,
     public_query_user_orders,
     public_create_user_order,
+    public_preview_order_price,
     public_get_user_order,
     public_cancel_user_order,
     public_get_user_order_histories,

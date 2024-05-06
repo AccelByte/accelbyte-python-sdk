@@ -37,15 +37,9 @@ from ...models import ErrorEntity
 class SyncEpicGamesInventory(Operation):
     """Sync epic games inventory. (syncEpicGamesInventory)
 
-    Sync epic games inventory's items.
+    Sync epic games inventory's items.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/epicgames/sync
@@ -58,7 +52,7 @@ class SyncEpicGamesInventory(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EpicGamesReconcileRequest in body
 
@@ -80,7 +74,7 @@ class SyncEpicGamesInventory(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: EpicGamesReconcileRequest  # OPTIONAL in [body]

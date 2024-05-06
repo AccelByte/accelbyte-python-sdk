@@ -19,7 +19,7 @@ Definition: BaseCustomConfig
     grpc_server_address: str
 extend_type: str
 
-Example: '{"appConfig": {"appName": "8o2S58nBD7G9qnYY"}, "customConfig": {"connectionType": "TLS", "grpcServerAddress": "f4esX8dpRP6zR23w"}, "extendType": "CUSTOM"}'
+Example: '{"appConfig": {"appName": "3y6f5E0HPKF4IYgA"}, "customConfig": {"connectionType": "TLS", "grpcServerAddress": "kDdufpeiWl2bT8oh"}, "extendType": "CUSTOM"}'
 """
 
 result, error = update_section_plugin_config(

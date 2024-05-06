@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenThirdPartyResponse
 @click.command()
 @click.argument("platform_id", type=str)
 @click.argument("user_id", type=str)
+@click.option("--platform_user_id", "platform_user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenThirdPartyResponse
 def admin_retrieve_user_third_party_platform_token_v3(
     platform_id: str,
     user_id: str,
+    platform_user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -63,6 +65,7 @@ def admin_retrieve_user_third_party_platform_token_v3(
     result, error = admin_retrieve_user_third_party_platform_token_v3_internal(
         platform_id=platform_id,
         user_id=user_id,
+        platform_user_id=platform_user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

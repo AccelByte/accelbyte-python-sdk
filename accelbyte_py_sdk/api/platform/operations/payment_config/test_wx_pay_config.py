@@ -39,11 +39,7 @@ class TestWxPayConfig(Operation):
     [Not Supported Yet In Starter] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test WxPay config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test WxPay config
 
     Properties:
         url: /platform/admin/payment/config/merchant/wxpayconfig/test
@@ -56,7 +52,7 @@ class TestWxPayConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL WxPayConfigRequest in body
 
@@ -70,7 +66,7 @@ class TestWxPayConfig(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: WxPayConfigRequest  # OPTIONAL in [body]

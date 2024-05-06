@@ -38,15 +38,15 @@ class GetNamespaceEventResponse(Model):
 
         event_namespace: (EventNamespace) REQUIRED str
 
-        event_time_stamp: (EventTimeStamp) REQUIRED str
+        event_timestamp: (EventTimestamp) REQUIRED str
 
-        flight_id: (FlightId) REQUIRED str
-
-        user_id: (UserId) REQUIRED str
-
-        user_namespace: (UserNamespace) REQUIRED str
+        flight_id: (FlightId) OPTIONAL str
 
         payload: (Payload) OPTIONAL Dict[str, Any]
+
+        user_id: (UserId) OPTIONAL str
+
+        user_namespace: (UserNamespace) OPTIONAL str
     """
 
     # region fields
@@ -54,11 +54,11 @@ class GetNamespaceEventResponse(Model):
     event_id: str  # REQUIRED
     event_name: str  # REQUIRED
     event_namespace: str  # REQUIRED
-    event_time_stamp: str  # REQUIRED
-    flight_id: str  # REQUIRED
-    user_id: str  # REQUIRED
-    user_namespace: str  # REQUIRED
+    event_timestamp: str  # REQUIRED
+    flight_id: str  # OPTIONAL
     payload: Dict[str, Any]  # OPTIONAL
+    user_id: str  # OPTIONAL
+    user_namespace: str  # OPTIONAL
 
     # endregion fields
 
@@ -76,12 +76,16 @@ class GetNamespaceEventResponse(Model):
         self.event_namespace = value
         return self
 
-    def with_event_time_stamp(self, value: str) -> GetNamespaceEventResponse:
-        self.event_time_stamp = value
+    def with_event_timestamp(self, value: str) -> GetNamespaceEventResponse:
+        self.event_timestamp = value
         return self
 
     def with_flight_id(self, value: str) -> GetNamespaceEventResponse:
         self.flight_id = value
+        return self
+
+    def with_payload(self, value: Dict[str, Any]) -> GetNamespaceEventResponse:
+        self.payload = value
         return self
 
     def with_user_id(self, value: str) -> GetNamespaceEventResponse:
@@ -90,10 +94,6 @@ class GetNamespaceEventResponse(Model):
 
     def with_user_namespace(self, value: str) -> GetNamespaceEventResponse:
         self.user_namespace = value
-        return self
-
-    def with_payload(self, value: Dict[str, Any]) -> GetNamespaceEventResponse:
-        self.payload = value
         return self
 
     # endregion with_x methods
@@ -114,14 +114,18 @@ class GetNamespaceEventResponse(Model):
             result["EventNamespace"] = str(self.event_namespace)
         elif include_empty:
             result["EventNamespace"] = ""
-        if hasattr(self, "event_time_stamp"):
-            result["EventTimeStamp"] = str(self.event_time_stamp)
+        if hasattr(self, "event_timestamp"):
+            result["EventTimestamp"] = str(self.event_timestamp)
         elif include_empty:
-            result["EventTimeStamp"] = ""
+            result["EventTimestamp"] = ""
         if hasattr(self, "flight_id"):
             result["FlightId"] = str(self.flight_id)
         elif include_empty:
             result["FlightId"] = ""
+        if hasattr(self, "payload"):
+            result["Payload"] = {str(k0): v0 for k0, v0 in self.payload.items()}
+        elif include_empty:
+            result["Payload"] = {}
         if hasattr(self, "user_id"):
             result["UserId"] = str(self.user_id)
         elif include_empty:
@@ -130,10 +134,6 @@ class GetNamespaceEventResponse(Model):
             result["UserNamespace"] = str(self.user_namespace)
         elif include_empty:
             result["UserNamespace"] = ""
-        if hasattr(self, "payload"):
-            result["Payload"] = {str(k0): v0 for k0, v0 in self.payload.items()}
-        elif include_empty:
-            result["Payload"] = {}
         return result
 
     # endregion to methods
@@ -146,23 +146,26 @@ class GetNamespaceEventResponse(Model):
         event_id: str,
         event_name: str,
         event_namespace: str,
-        event_time_stamp: str,
-        flight_id: str,
-        user_id: str,
-        user_namespace: str,
+        event_timestamp: str,
+        flight_id: Optional[str] = None,
         payload: Optional[Dict[str, Any]] = None,
+        user_id: Optional[str] = None,
+        user_namespace: Optional[str] = None,
         **kwargs,
     ) -> GetNamespaceEventResponse:
         instance = cls()
         instance.event_id = event_id
         instance.event_name = event_name
         instance.event_namespace = event_namespace
-        instance.event_time_stamp = event_time_stamp
-        instance.flight_id = flight_id
-        instance.user_id = user_id
-        instance.user_namespace = user_namespace
+        instance.event_timestamp = event_timestamp
+        if flight_id is not None:
+            instance.flight_id = flight_id
         if payload is not None:
             instance.payload = payload
+        if user_id is not None:
+            instance.user_id = user_id
+        if user_namespace is not None:
+            instance.user_namespace = user_namespace
         return instance
 
     @classmethod
@@ -184,14 +187,18 @@ class GetNamespaceEventResponse(Model):
             instance.event_namespace = str(dict_["EventNamespace"])
         elif include_empty:
             instance.event_namespace = ""
-        if "EventTimeStamp" in dict_ and dict_["EventTimeStamp"] is not None:
-            instance.event_time_stamp = str(dict_["EventTimeStamp"])
+        if "EventTimestamp" in dict_ and dict_["EventTimestamp"] is not None:
+            instance.event_timestamp = str(dict_["EventTimestamp"])
         elif include_empty:
-            instance.event_time_stamp = ""
+            instance.event_timestamp = ""
         if "FlightId" in dict_ and dict_["FlightId"] is not None:
             instance.flight_id = str(dict_["FlightId"])
         elif include_empty:
             instance.flight_id = ""
+        if "Payload" in dict_ and dict_["Payload"] is not None:
+            instance.payload = {str(k0): v0 for k0, v0 in dict_["Payload"].items()}
+        elif include_empty:
+            instance.payload = {}
         if "UserId" in dict_ and dict_["UserId"] is not None:
             instance.user_id = str(dict_["UserId"])
         elif include_empty:
@@ -200,10 +207,6 @@ class GetNamespaceEventResponse(Model):
             instance.user_namespace = str(dict_["UserNamespace"])
         elif include_empty:
             instance.user_namespace = ""
-        if "Payload" in dict_ and dict_["Payload"] is not None:
-            instance.payload = {str(k0): v0 for k0, v0 in dict_["Payload"].items()}
-        elif include_empty:
-            instance.payload = {}
         return instance
 
     @classmethod
@@ -250,11 +253,11 @@ class GetNamespaceEventResponse(Model):
             "EventId": "event_id",
             "EventName": "event_name",
             "EventNamespace": "event_namespace",
-            "EventTimeStamp": "event_time_stamp",
+            "EventTimestamp": "event_timestamp",
             "FlightId": "flight_id",
+            "Payload": "payload",
             "UserId": "user_id",
             "UserNamespace": "user_namespace",
-            "Payload": "payload",
         }
 
     @staticmethod
@@ -263,11 +266,11 @@ class GetNamespaceEventResponse(Model):
             "EventId": True,
             "EventName": True,
             "EventNamespace": True,
-            "EventTimeStamp": True,
-            "FlightId": True,
-            "UserId": True,
-            "UserNamespace": True,
+            "EventTimestamp": True,
+            "FlightId": False,
             "Payload": False,
+            "UserId": False,
+            "UserNamespace": False,
         }
 
     # endregion static methods

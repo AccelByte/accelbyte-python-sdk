@@ -35,13 +35,7 @@ from ...models import RetrieveAcceptedAgreementResponse
 class RetrieveAcceptedAgreements(Operation):
     """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
 
-    This API will return all accepted Legal Agreements for specified user.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
+    This API will return all accepted Legal Agreements for specified user
 
     Properties:
         url: /agreement/admin/agreements/policies/users/{userId}
@@ -54,7 +48,7 @@ class RetrieveAcceptedAgreements(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         user_id: (userId) REQUIRED str in path
 
@@ -68,7 +62,7 @@ class RetrieveAcceptedAgreements(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     user_id: str  # REQUIRED in [path]

@@ -47,11 +47,7 @@ class PublicQueryUserEntitlementsByAppType(Operation):
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
-      *  Returns : app entitlement pagination
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
+      * Returns : app entitlement pagination
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/byAppType
@@ -64,7 +60,7 @@ class PublicQueryUserEntitlementsByAppType(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -88,7 +84,7 @@ class PublicQueryUserEntitlementsByAppType(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

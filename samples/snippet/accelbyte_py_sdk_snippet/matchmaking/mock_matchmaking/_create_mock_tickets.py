@@ -17,7 +17,7 @@ mmr_mean: float
 mmr_min: float
 mmr_std_dev: float
 
-Example: '{"attribute_name": "HAwTrEP6HbesBl8k", "count": 14, "mmrMax": 0.546655170974945, "mmrMean": 0.5110798608932695, "mmrMin": 0.0016795969001609512, "mmrStdDev": 0.49115456110796907}'
+Example: '{"attribute_name": "dF9AsY0V0NCkgbgb", "count": 2, "mmrMax": 0.32003231808742416, "mmrMean": 0.24735164378904806, "mmrMin": 0.5269820040848485, "mmrStdDev": 0.9318064181755085}'
 """
 
 result, error = create_mock_tickets(

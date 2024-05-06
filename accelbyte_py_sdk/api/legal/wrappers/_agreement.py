@@ -55,10 +55,7 @@ def accept_versioned_policy(
 ):
     """Accept a Policy Version (acceptVersionedPolicy)
 
-    Accepts a legal policy version. Supply with localized version policy id to accept an agreement.
-    Other detail info:
-
-      * Required permission : login user
+    Accepts a legal policy version. Supply with localized version policy id to accept an agreement
 
     Properties:
         url: /agreement/public/agreements/localized-policy-versions/{localizedPolicyVersionId}
@@ -94,10 +91,7 @@ async def accept_versioned_policy_async(
 ):
     """Accept a Policy Version (acceptVersionedPolicy)
 
-    Accepts a legal policy version. Supply with localized version policy id to accept an agreement.
-    Other detail info:
-
-      * Required permission : login user
+    Accepts a legal policy version. Supply with localized version policy id to accept an agreement
 
     Properties:
         url: /agreement/public/agreements/localized-policy-versions/{localizedPolicyVersionId}
@@ -136,9 +130,6 @@ def bulk_accept_versioned_policy(
     """Bulk Accept Policy Versions (bulkAcceptVersionedPolicy)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id to accept an agreement.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/policies
@@ -175,9 +166,6 @@ async def bulk_accept_versioned_policy_async(
     """Bulk Accept Policy Versions (bulkAcceptVersionedPolicy)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id to accept an agreement.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/policies
@@ -217,13 +205,7 @@ def change_preference_consent(
 ):
     """Change Preference Consent (changePreferenceConsent)
 
-    This API will Update Preference Consent.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
+    This API will Update Preference Consent
 
     Properties:
         url: /agreement/admin/agreements/localized-policy-versions/preferences/namespaces/{namespace}/userId/{userId}
@@ -236,7 +218,7 @@ def change_preference_consent(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 
@@ -271,13 +253,7 @@ async def change_preference_consent_async(
 ):
     """Change Preference Consent (changePreferenceConsent)
 
-    This API will Update Preference Consent.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
+    This API will Update Preference Consent
 
     Properties:
         url: /agreement/admin/agreements/localized-policy-versions/preferences/namespaces/{namespace}/userId/{userId}
@@ -290,7 +266,7 @@ async def change_preference_consent_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 
@@ -326,9 +302,6 @@ def change_preference_consent_1(
     """Accept/Revoke Marketing Preference Consent (changePreferenceConsent_1)
 
     Change marketing preference consent.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/localized-policy-versions/preferences
@@ -365,9 +338,6 @@ async def change_preference_consent_1_async(
     """Accept/Revoke Marketing Preference Consent (changePreferenceConsent_1)
 
     Change marketing preference consent.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/localized-policy-versions/preferences
@@ -408,9 +378,6 @@ def indirect_bulk_accept_versioned_policy_1(
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy_1)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/policies/users/{userId}
@@ -452,9 +419,6 @@ async def indirect_bulk_accept_versioned_policy_1_async(
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy_1)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/policies/users/{userId}
@@ -501,12 +465,6 @@ def indirect_bulk_accept_versioned_policy_v2(
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicyV2)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}
@@ -519,7 +477,7 @@ def indirect_bulk_accept_versioned_policy_v2(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 
@@ -562,12 +520,6 @@ async def indirect_bulk_accept_versioned_policy_v2_async(
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicyV2)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}
@@ -580,7 +532,7 @@ async def indirect_bulk_accept_versioned_policy_v2_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 
@@ -617,13 +569,7 @@ def retrieve_accepted_agreements(
 ):
     """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
 
-    This API will return all accepted Legal Agreements for specified user.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
+    This API will return all accepted Legal Agreements for specified user
 
     Properties:
         url: /agreement/admin/agreements/policies/users/{userId}
@@ -636,7 +582,7 @@ def retrieve_accepted_agreements(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         user_id: (userId) REQUIRED str in path
 
@@ -655,13 +601,7 @@ async def retrieve_accepted_agreements_async(
 ):
     """Retrieve Accepted Legal Agreements (retrieveAcceptedAgreements)
 
-    This API will return all accepted Legal Agreements for specified user.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
+    This API will return all accepted Legal Agreements for specified user
 
     Properties:
         url: /agreement/admin/agreements/policies/users/{userId}
@@ -674,7 +614,7 @@ async def retrieve_accepted_agreements_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         user_id: (userId) REQUIRED str in path
 
@@ -696,9 +636,6 @@ def retrieve_agreements_public(
     """Retrieve the accepted Legal Agreements (retrieveAgreementsPublic)
 
     Retrieve accepted Legal Agreements.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/policies
@@ -729,9 +666,6 @@ async def retrieve_agreements_public_async(
     """Retrieve the accepted Legal Agreements (retrieveAgreementsPublic)
 
     Retrieve accepted Legal Agreements.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/policies
@@ -769,12 +703,6 @@ def retrieve_all_users_by_policy_version(
     """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
 
     This API will return users who has accepted a specific policy version.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/agreements/policy-versions/users
@@ -787,7 +715,7 @@ def retrieve_all_users_by_policy_version(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         keyword: (keyword) OPTIONAL str in query
 
@@ -823,12 +751,6 @@ async def retrieve_all_users_by_policy_version_async(
     """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
 
     This API will return users who has accepted a specific policy version.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/agreements/policy-versions/users
@@ -841,7 +763,7 @@ async def retrieve_all_users_by_policy_version_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         keyword: (keyword) OPTIONAL str in query
 

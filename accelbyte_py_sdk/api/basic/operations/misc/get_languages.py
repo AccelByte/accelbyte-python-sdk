@@ -39,8 +39,7 @@ class GetLanguages(Operation):
     List languages.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11206
+      * Action code : 11206
       *  Returns : language list
 
     Properties:

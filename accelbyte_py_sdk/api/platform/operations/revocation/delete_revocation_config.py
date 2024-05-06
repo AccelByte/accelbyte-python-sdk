@@ -34,9 +34,6 @@ class DeleteRevocationConfig(Operation):
     """Delete revocation config (deleteRevocationConfig)
 
     Delete revocation config.
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=8 (DELETE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/config

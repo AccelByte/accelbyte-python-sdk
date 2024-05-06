@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Chat Service Index (0.4.23)
+# AccelByte Gaming Services Chat Service Index (0.4.28)
 
 
 ## Operations
@@ -15,6 +15,7 @@
 | /chat/v1/admin/config/namespaces/{namespace} | PUT | adminUpdateConfigV1 | `false` | [AdminUpdateConfigV1](../../accelbyte_py_sdk/api/chat/operations/config/admin_update_config_v1.py) | [admin_update_config_v1](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-admin-update-config-v1](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_update_config_v1.py) |
 | /chat/v1/admin/config/namespaces/{namespace}/export | GET | ExportConfig | `false` | [ExportConfig](../../accelbyte_py_sdk/api/chat/operations/config/export_config.py) | [export_config](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-export-config](../../samples/cli/accelbyte_py_sdk_cli/chat/_export_config.py) |
 | /chat/v1/admin/config/namespaces/{namespace}/import | POST | ImportConfig | `false` | [ImportConfig](../../accelbyte_py_sdk/api/chat/operations/config/import_config.py) | [import_config](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-import-config](../../samples/cli/accelbyte_py_sdk_cli/chat/_import_config.py) |
+| /chat/v1/public/config/namespaces/{namespace} | GET | publicGetConfigV1 | `false` | [PublicGetConfigV1](../../accelbyte_py_sdk/api/chat/operations/config/public_get_config_v1.py) | [public_get_config_v1](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-public-get-config-v1](../../samples/cli/accelbyte_py_sdk_cli/chat/_public_get_config_v1.py) |
 
 ### inbox
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -70,6 +71,7 @@
 | /chat/admin/namespaces/{namespace}/topic | POST | adminCreateTopic | `false` | [AdminCreateTopic](../../accelbyte_py_sdk/api/chat/operations/topic/admin_create_topic.py) | [admin_create_topic](../../accelbyte_py_sdk/api/chat/wrappers/_topic.py) | [accelbyte_py_sdk_cli chat-admin-create-topic](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_create_topic.py) |
 | /chat/admin/namespaces/{namespace}/topic/{topic}/chats/{chatId} | DELETE | adminDeleteChat | `false` | [AdminDeleteChat](../../accelbyte_py_sdk/api/chat/operations/topic/admin_delete_chat.py) | [admin_delete_chat](../../accelbyte_py_sdk/api/chat/wrappers/_topic.py) | [accelbyte_py_sdk_cli chat-admin-delete-chat](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_delete_chat.py) |
 | /chat/admin/namespaces/{namespace}/topic/{topic} | DELETE | adminDeleteTopic | `false` | [AdminDeleteTopic](../../accelbyte_py_sdk/api/chat/operations/topic/admin_delete_topic.py) | [admin_delete_topic](../../accelbyte_py_sdk/api/chat/wrappers/_topic.py) | [accelbyte_py_sdk_cli chat-admin-delete-topic](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_delete_topic.py) |
+| /chat/admin/namespaces/{namespace}/chat/filter | POST | adminFilterChatMessage | `false` | [AdminFilterChatMessage](../../accelbyte_py_sdk/api/chat/operations/topic/admin_filter_chat_message.py) | [admin_filter_chat_message](../../accelbyte_py_sdk/api/chat/wrappers/_topic.py) | [accelbyte_py_sdk_cli chat-admin-filter-chat-message](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_filter_chat_message.py) |
 | /chat/admin/namespaces/{namespace}/topics | GET | adminQueryTopic | `false` | [AdminQueryTopic](../../accelbyte_py_sdk/api/chat/operations/topic/admin_query_topic.py) | [admin_query_topic](../../accelbyte_py_sdk/api/chat/wrappers/_topic.py) | [accelbyte_py_sdk_cli chat-admin-query-topic](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_query_topic.py) |
 | /chat/admin/namespaces/{namespace}/topic/log | GET | adminQueryTopicLog | `false` | [AdminQueryTopicLog](../../accelbyte_py_sdk/api/chat/operations/topic/admin_query_topic_log.py) | [admin_query_topic_log](../../accelbyte_py_sdk/api/chat/wrappers/_topic.py) | [accelbyte_py_sdk_cli chat-admin-query-topic-log](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_query_topic_log.py) |
 | /chat/admin/namespaces/{namespace}/users/{userId}/topics | GET | adminQueryUsersTopic | `false` | [AdminQueryUsersTopic](../../accelbyte_py_sdk/api/chat/operations/topic/admin_query_users_topic.py) | [admin_query_users_topic](../../accelbyte_py_sdk/api/chat/wrappers/_topic.py) | [accelbyte_py_sdk_cli chat-admin-query-users-topic](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_query_users_topic.py) |
@@ -141,10 +143,13 @@
 | models.GetInboxUsersResponse | [ModelsGetInboxUsersResponse](../../accelbyte_py_sdk/api/chat/models/models_get_inbox_users_response.py) |
 | models.ImportConfigResponse | [ModelsImportConfigResponse](../../accelbyte_py_sdk/api/chat/models/models_import_config_response.py) |
 | models.JSONSchemaType | [ModelsJSONSchemaType](../../accelbyte_py_sdk/api/chat/models/models_json_schema_type.py) |
+| models.MessageRequest | [ModelsMessageRequest](../../accelbyte_py_sdk/api/chat/models/models_message_request.py) |
+| models.MessageResultWithAttributes | [ModelsMessageResultWithAttributes](../../accelbyte_py_sdk/api/chat/models/models_message_result_with_attributes.py) |
 | models.MessageStats | [ModelsMessageStats](../../accelbyte_py_sdk/api/chat/models/models_message_stats.py) |
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/chat/models/models_pagination.py) |
 | models.PublicBanTopicMembersRequest | [ModelsPublicBanTopicMembersRequest](../../accelbyte_py_sdk/api/chat/models/models_public_ban_topic_members_request.py) |
 | models.PublicBanTopicMembersResponse | [ModelsPublicBanTopicMembersResponse](../../accelbyte_py_sdk/api/chat/models/models_public_ban_topic_members_response.py) |
+| models.PublicConfigResponse | [ModelsPublicConfigResponse](../../accelbyte_py_sdk/api/chat/models/models_public_config_response.py) |
 | models.PublicUnbanTopicMembersRequest | [ModelsPublicUnbanTopicMembersRequest](../../accelbyte_py_sdk/api/chat/models/models_public_unban_topic_members_request.py) |
 | models.PublicUnbanTopicMembersResponse | [ModelsPublicUnbanTopicMembersResponse](../../accelbyte_py_sdk/api/chat/models/models_public_unban_topic_members_response.py) |
 | models.SaveInboxMessageRequest | [ModelsSaveInboxMessageRequest](../../accelbyte_py_sdk/api/chat/models/models_save_inbox_message_request.py) |

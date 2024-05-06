@@ -38,8 +38,6 @@ class ModelUpdateGoalRequest(Model):
     Properties:
         description: (description) REQUIRED str
 
-        is_active: (isActive) REQUIRED bool
-
         name: (name) REQUIRED str
 
         requirement_groups: (requirementGroups) REQUIRED List[ModelRequirement]
@@ -48,17 +46,19 @@ class ModelUpdateGoalRequest(Model):
 
         tags: (tags) REQUIRED List[str]
 
+        is_active: (isActive) OPTIONAL bool
+
         schedule: (schedule) OPTIONAL ModelGoalSchedule
     """
 
     # region fields
 
     description: str  # REQUIRED
-    is_active: bool  # REQUIRED
     name: str  # REQUIRED
     requirement_groups: List[ModelRequirement]  # REQUIRED
     rewards: List[ModelReward]  # REQUIRED
     tags: List[str]  # REQUIRED
+    is_active: bool  # OPTIONAL
     schedule: ModelGoalSchedule  # OPTIONAL
 
     # endregion fields
@@ -67,10 +67,6 @@ class ModelUpdateGoalRequest(Model):
 
     def with_description(self, value: str) -> ModelUpdateGoalRequest:
         self.description = value
-        return self
-
-    def with_is_active(self, value: bool) -> ModelUpdateGoalRequest:
-        self.is_active = value
         return self
 
     def with_name(self, value: str) -> ModelUpdateGoalRequest:
@@ -91,6 +87,10 @@ class ModelUpdateGoalRequest(Model):
         self.tags = value
         return self
 
+    def with_is_active(self, value: bool) -> ModelUpdateGoalRequest:
+        self.is_active = value
+        return self
+
     def with_schedule(self, value: ModelGoalSchedule) -> ModelUpdateGoalRequest:
         self.schedule = value
         return self
@@ -105,10 +105,6 @@ class ModelUpdateGoalRequest(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
-        if hasattr(self, "is_active"):
-            result["isActive"] = bool(self.is_active)
-        elif include_empty:
-            result["isActive"] = False
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -130,6 +126,10 @@ class ModelUpdateGoalRequest(Model):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
+        if hasattr(self, "is_active"):
+            result["isActive"] = bool(self.is_active)
+        elif include_empty:
+            result["isActive"] = False
         if hasattr(self, "schedule"):
             result["schedule"] = self.schedule.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -144,21 +144,22 @@ class ModelUpdateGoalRequest(Model):
     def create(
         cls,
         description: str,
-        is_active: bool,
         name: str,
         requirement_groups: List[ModelRequirement],
         rewards: List[ModelReward],
         tags: List[str],
+        is_active: Optional[bool] = None,
         schedule: Optional[ModelGoalSchedule] = None,
         **kwargs,
     ) -> ModelUpdateGoalRequest:
         instance = cls()
         instance.description = description
-        instance.is_active = is_active
         instance.name = name
         instance.requirement_groups = requirement_groups
         instance.rewards = rewards
         instance.tags = tags
+        if is_active is not None:
+            instance.is_active = is_active
         if schedule is not None:
             instance.schedule = schedule
         return instance
@@ -174,10 +175,6 @@ class ModelUpdateGoalRequest(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
-        if "isActive" in dict_ and dict_["isActive"] is not None:
-            instance.is_active = bool(dict_["isActive"])
-        elif include_empty:
-            instance.is_active = False
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -200,6 +197,10 @@ class ModelUpdateGoalRequest(Model):
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
             instance.tags = []
+        if "isActive" in dict_ and dict_["isActive"] is not None:
+            instance.is_active = bool(dict_["isActive"])
+        elif include_empty:
+            instance.is_active = False
         if "schedule" in dict_ and dict_["schedule"] is not None:
             instance.schedule = ModelGoalSchedule.create_from_dict(
                 dict_["schedule"], include_empty=include_empty
@@ -250,11 +251,11 @@ class ModelUpdateGoalRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "description": "description",
-            "isActive": "is_active",
             "name": "name",
             "requirementGroups": "requirement_groups",
             "rewards": "rewards",
             "tags": "tags",
+            "isActive": "is_active",
             "schedule": "schedule",
         }
 
@@ -262,11 +263,11 @@ class ModelUpdateGoalRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "description": True,
-            "isActive": True,
             "name": True,
             "requirementGroups": True,
             "rewards": True,
             "tags": True,
+            "isActive": False,
             "schedule": False,
         }
 

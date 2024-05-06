@@ -82,6 +82,8 @@ class ModelChallengeResponse(Model):
         end_after: (endAfter) OPTIONAL int
 
         end_date: (endDate) OPTIONAL str
+
+        repeat_after: (repeatAfter) OPTIONAL int
     """
 
     # region fields
@@ -99,6 +101,7 @@ class ModelChallengeResponse(Model):
     updated_at: str  # REQUIRED
     end_after: int  # OPTIONAL
     end_date: str  # OPTIONAL
+    repeat_after: int  # OPTIONAL
 
     # endregion fields
 
@@ -160,6 +163,10 @@ class ModelChallengeResponse(Model):
         self.end_date = value
         return self
 
+    def with_repeat_after(self, value: int) -> ModelChallengeResponse:
+        self.repeat_after = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -218,6 +225,10 @@ class ModelChallengeResponse(Model):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = ""
+        if hasattr(self, "repeat_after"):
+            result["repeatAfter"] = int(self.repeat_after)
+        elif include_empty:
+            result["repeatAfter"] = 0
         return result
 
     # endregion to methods
@@ -240,6 +251,7 @@ class ModelChallengeResponse(Model):
         updated_at: str,
         end_after: Optional[int] = None,
         end_date: Optional[str] = None,
+        repeat_after: Optional[int] = None,
         **kwargs,
     ) -> ModelChallengeResponse:
         instance = cls()
@@ -258,6 +270,8 @@ class ModelChallengeResponse(Model):
             instance.end_after = end_after
         if end_date is not None:
             instance.end_date = end_date
+        if repeat_after is not None:
+            instance.repeat_after = repeat_after
         return instance
 
     @classmethod
@@ -322,6 +336,10 @@ class ModelChallengeResponse(Model):
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = ""
+        if "repeatAfter" in dict_ and dict_["repeatAfter"] is not None:
+            instance.repeat_after = int(dict_["repeatAfter"])
+        elif include_empty:
+            instance.repeat_after = 0
         return instance
 
     @classmethod
@@ -378,6 +396,7 @@ class ModelChallengeResponse(Model):
             "updatedAt": "updated_at",
             "endAfter": "end_after",
             "endDate": "end_date",
+            "repeatAfter": "repeat_after",
         }
 
     @staticmethod
@@ -396,6 +415,7 @@ class ModelChallengeResponse(Model):
             "updatedAt": True,
             "endAfter": False,
             "endDate": False,
+            "repeatAfter": False,
         }
 
     @staticmethod

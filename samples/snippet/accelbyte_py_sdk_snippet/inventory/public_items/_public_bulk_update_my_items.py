@@ -15,7 +15,7 @@ slot_id: str
 source_item_id: str
 tags: List[str]
 
-Example: '[{"customAttributes": {"LrbfyVwciU0H7YZ9": {}, "MfrJWfMzTzKguqgT": {}, "V8rKk65At67Q3JXK": {}}, "slotId": "or7OxeTrAK1bdEVl", "sourceItemId": "MnqBwaEqLy1Yx4qw", "tags": ["skRmiDWLFXSTizbf", "AfjiOkf5nUYtttc2", "UQ8YxzoJ0gZBTxP9"]}, {"customAttributes": {"UFADcDEWIBeVbCIZ": {}, "EWIesh5GxLqVPXbq": {}, "JQALvFvDA1jm8vJF": {}}, "slotId": "t1AtrPVmkcAEoWYG", "sourceItemId": "AIyF8fMENveul5Dp", "tags": ["z91u8VTBwLz8SccR", "5ZR9VCslvMOCkMT7", "4SpkHhaRhMLZ6D42"]}, {"customAttributes": {"LiC6Z8R6VqkUAjIc": {}, "IBr1wSmsoz1tW6BU": {}, "OTQOrbs1ovG0lqKH": {}}, "slotId": "fMB1IxJPIidu2YQ7", "sourceItemId": "sYbMmh37BG6yKTez", "tags": ["AJFfenImjpnkOiKF", "8xbvOFz7PgpHFzGf", "7xRPr6LfsxxwA06K"]}]'
+Example: '[{"customAttributes": {"GFloV0j8rMrS5JLA": {}, "Ls1WwOR4JbhqPhuc": {}, "w6JOZIvkoIfXEAfs": {}}, "slotId": "4daMCWiB2Rn74QN3", "sourceItemId": "kFPc4U2BoItZIUid", "tags": ["aF7dEliEARz24XpJ", "L8nFUCjpQgfew4kQ", "eGXYoUBzZFCvFimR"]}, {"customAttributes": {"LZSKT3nwvAtEYrQz": {}, "K8tOgt04Wai1By4C": {}, "AK9eHq9ZEnZbJsrf": {}}, "slotId": "dhSwbA3VmtYrinTT", "sourceItemId": "nvmiAeBGNzZjcTQm", "tags": ["y7zreIV49TxMBLKG", "ao8zre60x6Ua2LvG", "itCCfNZ0AeIYj7eC"]}, {"customAttributes": {"fFPFrkGxR3c1HHLf": {}, "kir3h2f2Yak9t1KM": {}, "WWNKXR4bbWVkPRTe": {}}, "slotId": "g3FgmWmLKi1lP99s", "sourceItemId": "X8RyJm3X7zUbhGwW", "tags": ["i3i3WABUdaLN8lBj", "jPUh38nbacmgcVXs", "a8B5upUjpgLErGaT"]}]'
 """
 
 result, error = public_bulk_update_my_items(

@@ -15,7 +15,7 @@ date_of_birth: str
 display_name: str
 language_tag: str
 
-Example: '{"Country": "B4koCTlh8fqOP0ma", "DateOfBirth": "9RNd37qWaLFd5YDB", "DisplayName": "I80NlIO8XcG8NATR", "LanguageTag": "yoFx7YAHUxOu9xO0"}'
+Example: '{"Country": "Y1mrpGdkYP5rIy3r", "DateOfBirth": "2SO2faMbbO4MZKjn", "DisplayName": "o5bCvhi4Q3jeBPey", "LanguageTag": "lXCyjhsV159QwmhD"}'
 """
 
 result, error = update_user(

@@ -29,6 +29,7 @@ from ..api.gametelemetry.models import GetNamespaceEventResponse
 from ..api.gametelemetry.models import HTTPValidationError
 from ..api.gametelemetry.models import ListBaseResponseStr
 from ..api.gametelemetry.models import PagedResponseGetNamespaceEventResponse
+from ..api.gametelemetry.models import Paging
 from ..api.gametelemetry.models import PlayTimeResponse
 from ..api.gametelemetry.models import TelemetryBody
 from ..api.gametelemetry.models import ValidationError
@@ -46,11 +47,11 @@ def create_get_namespace_event_response_example() -> GetNamespaceEventResponse:
     instance.event_id = randomize()
     instance.event_name = randomize()
     instance.event_namespace = randomize("slug")
-    instance.event_time_stamp = randomize()
+    instance.event_timestamp = randomize()
     instance.flight_id = randomize()
+    instance.payload = {randomize(): randomize()}
     instance.user_id = randomize("uid")
     instance.user_namespace = randomize("slug")
-    instance.payload = {randomize(): randomize()}
     return instance
 
 
@@ -71,7 +72,14 @@ def create_paged_response_get_namespace_event_response_example() -> (
 ):
     instance = PagedResponseGetNamespaceEventResponse()
     instance.data = [create_get_namespace_event_response_example()]
-    instance.paging = randomize("int", min_val=1, max_val=1000)
+    instance.paging = create_paging_example()
+    return instance
+
+
+def create_paging_example() -> Paging:
+    instance = Paging()
+    instance.next_ = randomize()
+    instance.previous = randomize()
     return instance
 
 

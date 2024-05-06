@@ -12,7 +12,7 @@ body:
 Definition: PaymentToken
 token: str
 
-Example: '{"token": "u2kXgc0e3i2xNDRj"}'
+Example: '{"token": "GgV9wY2rjVV9Bds7"}'
 """
 
 result, error = pay(

@@ -40,11 +40,7 @@ class GetKeyGroupByBoothName(Operation):
     Get key group.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=2 (READ)
-      *  Returns : key group info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [READ]
+      * Returns : key group info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/keygroups/byBoothName
@@ -57,7 +53,7 @@ class GetKeyGroupByBoothName(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -75,7 +71,7 @@ class GetKeyGroupByBoothName(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

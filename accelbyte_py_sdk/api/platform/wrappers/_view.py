@@ -59,8 +59,7 @@ def create_view(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : created a view
+      * Returns : created a view
 
 
 
@@ -80,9 +79,6 @@ def create_view(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/views
 
@@ -94,7 +90,7 @@ def create_view(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ViewCreate in body
 
@@ -139,8 +135,7 @@ async def create_view_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : created a view
+      * Returns : created a view
 
 
 
@@ -160,9 +155,6 @@ async def create_view_async(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/views
 
@@ -174,7 +166,7 @@ async def create_view_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ViewCreate in body
 
@@ -219,13 +211,6 @@ def delete_view(
 
     This API is used to delete a view.It will also delete all the related sections
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/views/{viewId}
 
@@ -237,7 +222,7 @@ def delete_view(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -276,13 +261,6 @@ async def delete_view_async(
 
     This API is used to delete a view.It will also delete all the related sections
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/views/{viewId}
 
@@ -294,7 +272,7 @@ async def delete_view_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -337,11 +315,7 @@ def get_view(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : view data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : view data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/views/{viewId}
@@ -354,7 +328,7 @@ def get_view(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -393,11 +367,7 @@ async def get_view_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : view data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : view data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/views/{viewId}
@@ -410,7 +380,7 @@ async def get_view_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -450,11 +420,7 @@ def list_views(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : the list of views
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : the list of views
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/views
@@ -467,7 +433,7 @@ def list_views(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -504,11 +470,7 @@ async def list_views_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : the list of views
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : the list of views
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/views
@@ -521,7 +483,7 @@ async def list_views_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -562,8 +524,7 @@ def public_list_views(
 
     Other detail info:
 
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:STORE, action=2 (READ)
-      *  Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store views)
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store views)
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store views)
       *  Returns : all views
 
@@ -619,8 +580,7 @@ async def public_list_views_async(
 
     Other detail info:
 
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:STORE, action=2 (READ)
-      *  Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store views)
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store views)
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store views)
       *  Returns : all views
 
@@ -678,8 +638,7 @@ def update_view(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-      *  Returns : updated view data
+      * Returns : updated view data
 
 
 
@@ -699,9 +658,6 @@ def update_view(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/views/{viewId}
 
@@ -713,7 +669,7 @@ def update_view(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ViewUpdate in body
 
@@ -762,8 +718,7 @@ async def update_view_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-      *  Returns : updated view data
+      * Returns : updated view data
 
 
 
@@ -783,9 +738,6 @@ async def update_view_async(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/views/{viewId}
 
@@ -797,7 +749,7 @@ async def update_view_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ViewUpdate in body
 

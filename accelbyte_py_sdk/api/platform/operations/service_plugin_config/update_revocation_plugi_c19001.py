@@ -39,8 +39,7 @@ class UpdateRevocationPluginConfig(Operation):
 
     Update revocation plugin config. Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION, action=4 (UPDATE)
-      *  Returns : updated service plugin config
+      * Returns : updated service plugin config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/plugins/revocation

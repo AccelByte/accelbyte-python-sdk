@@ -42,11 +42,7 @@ class UpdateStore(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-      *  Returns : updated store data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
+      * Returns : updated store data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}
@@ -59,7 +55,7 @@ class UpdateStore(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StoreUpdate in body
 
@@ -83,7 +79,7 @@ class UpdateStore(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: StoreUpdate  # OPTIONAL in [body]

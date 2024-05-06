@@ -8,6 +8,14 @@
 
 # justice-group-service
 
+from ._index_handler import index_handler
+from ._block_handler import block_handler
+from ._cmdline_handler import cmdline_handler
+from ._goroutine_handler import goroutine_handler
+from ._heap_handler import heap_handler
+from ._profile import profile
+from ._symbol_handler import symbol_handler
+from ._threadcreate_handler import threadcreate_handler
 from ._list_group_configuration_admin_v1 import list_group_configuration_admin_v1
 from ._create_group_configuration_admin_v1 import create_group_configuration_admin_v1
 from ._initiate_group_configuration_admin_v1 import (
@@ -110,6 +118,14 @@ from ._get_user_group_status_information_v2 import get_user_group_status_informa
 
 
 commands = [
+    index_handler,
+    block_handler,
+    cmdline_handler,
+    goroutine_handler,
+    heap_handler,
+    profile,
+    symbol_handler,
+    threadcreate_handler,
     list_group_configuration_admin_v1,
     create_group_configuration_admin_v1,
     initiate_group_configuration_admin_v1,

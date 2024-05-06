@@ -41,11 +41,7 @@ class CreateKeyGroup(Operation):
     Create key group.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=1 (CREATE)
-      *  Returns : created key group
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [CREATE]
+      * Returns : created key group
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/keygroups
@@ -58,7 +54,7 @@ class CreateKeyGroup(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL KeyGroupCreate in body
 
@@ -78,7 +74,7 @@ class CreateKeyGroup(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: KeyGroupCreate  # OPTIONAL in [body]

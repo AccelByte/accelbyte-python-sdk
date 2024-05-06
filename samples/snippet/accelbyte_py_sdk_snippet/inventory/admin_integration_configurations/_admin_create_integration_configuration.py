@@ -16,7 +16,7 @@ map_item_type: List[str]
 service_name: str
 target_inventory_code: str
 
-Example: '{"mapItemType": ["fj9W5SB3g49dipGV", "wzaEGbY437KTzkV1", "1SfLibPMXEBynJ0v"], "serviceName": "UgkybloHX3Xg9uLv", "targetInventoryCode": "1io09KjbaooAUOvJ"}'
+Example: '{"mapItemType": ["Y0o3huMmXDAfseQF", "J6SDyzx9G50enkKo", "qebtmREhkLXzUtOa"], "serviceName": "DrEnejsaPYzoAPRv", "targetInventoryCode": "QYMorFnIYDbn9HpR"}'
 """
 
 result, error = admin_create_integration_configuration(

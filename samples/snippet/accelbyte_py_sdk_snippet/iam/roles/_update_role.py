@@ -12,7 +12,7 @@ body:
 Definition: ModelRoleUpdateRequest
 role_name: str
 
-Example: '{"RoleName": "5dNlCd9fLhH5WDYG"}'
+Example: '{"RoleName": "gDkEINpqfZNbTwm7"}'
 """
 
 result, error = update_role(

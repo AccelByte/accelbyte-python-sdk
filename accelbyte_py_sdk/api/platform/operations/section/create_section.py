@@ -42,8 +42,7 @@ class CreateSection(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : created a section
+      * Returns : created a section
 
 
 
@@ -63,9 +62,6 @@ class CreateSection(Operation):
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections
 
@@ -77,7 +73,7 @@ class CreateSection(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SectionCreate in body
 
@@ -103,7 +99,7 @@ class CreateSection(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: SectionCreate  # OPTIONAL in [body]

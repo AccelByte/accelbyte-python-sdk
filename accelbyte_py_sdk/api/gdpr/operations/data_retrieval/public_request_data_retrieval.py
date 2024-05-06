@@ -36,7 +36,11 @@ from ...models import ResponseError
 class PublicRequestDataRetrieval(Operation):
     """Submit personal data retrieval request (PublicRequestDataRetrieval)
 
-    Requires valid user access token
+    Submit personal data retrieval request.
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests

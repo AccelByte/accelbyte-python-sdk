@@ -39,11 +39,7 @@ class GetReward1(Operation):
     This API is used to get reward by reward Id.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : reward instance
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : reward instance
 
     Properties:
         url: /platform/public/namespaces/{namespace}/rewards/{rewardId}
@@ -56,7 +52,7 @@ class GetReward1(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -74,7 +70,7 @@ class GetReward1(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

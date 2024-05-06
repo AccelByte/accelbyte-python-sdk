@@ -41,11 +41,7 @@ class CreateCurrency(Operation):
     Create a currency.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CURRENCY", action=1 (CREATE)
-      *  Returns : created currency
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CURRENCY [CREATE]
+      * Returns : created currency
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/currencies
@@ -58,7 +54,7 @@ class CreateCurrency(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CurrencyCreate in body
 
@@ -78,7 +74,7 @@ class CreateCurrency(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: CurrencyCreate  # OPTIONAL in [body]

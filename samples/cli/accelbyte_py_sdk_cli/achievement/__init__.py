@@ -21,6 +21,7 @@ from ._admin_list_global_achievement_contributors import (
     admin_list_global_achievement_contributors,
 )
 from ._reset_global_achievement import reset_global_achievement
+from ._bulk_create_psn_event import bulk_create_psn_event
 from ._admin_list_tags import admin_list_tags
 from ._admin_list_user_achievements import admin_list_user_achievements
 from ._admin_reset_achievement import admin_reset_achievement
@@ -50,6 +51,7 @@ commands = [
     admin_list_global_achievements,
     admin_list_global_achievement_contributors,
     reset_global_achievement,
+    bulk_create_psn_event,
     admin_list_tags,
     admin_list_user_achievements,
     admin_reset_achievement,

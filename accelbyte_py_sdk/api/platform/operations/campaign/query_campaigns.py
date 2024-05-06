@@ -38,11 +38,7 @@ class QueryCampaigns(Operation):
     Query campaigns, if name is presented, it's fuzzy match.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
-      *  Returns : slice of campaigns
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : slice of campaigns
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns
@@ -55,7 +51,7 @@ class QueryCampaigns(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -77,7 +73,7 @@ class QueryCampaigns(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

@@ -17,7 +17,7 @@ environment: str
 stream_name: str
 stream_partner_name: str
 
-Example: '{"backOfficeServerClientId": "feTl8i0WfAAa5iMh", "backOfficeServerClientSecret": "Ku4R8c1yjXiwqh69", "enableStreamJob": false, "environment": "DyTMtatZsLq2Cpi7", "streamName": "vBhstvwqelvgroHO", "streamPartnerName": "Wi929jErjo9mgJes"}'
+Example: '{"backOfficeServerClientId": "8sarWVKMLj9gxbw0", "backOfficeServerClientSecret": "mduIwSLsnDmk7kwn", "enableStreamJob": false, "environment": "OsILYWkkw6qlUhQ9", "streamName": "UfTDx2UyW0IlC2i2", "streamPartnerName": "ZHC2XRpNxjEEQVty"}'
 """
 
 result, error = update_playstation_iap_config(

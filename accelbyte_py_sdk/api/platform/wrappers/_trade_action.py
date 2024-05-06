@@ -53,8 +53,7 @@ def commit(
 
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=1 (CREATE)
-      *  Returns : chain action history
+      * Returns : chain action history
       *  FULFILL_ITEM operation supported item type : INGAMEITEM,LOOTBOX,OPTIONBOX
 
 
@@ -119,8 +118,7 @@ async def commit_async(
 
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=1 (CREATE)
-      *  Returns : chain action history
+      * Returns : chain action history
       *  FULFILL_ITEM operation supported item type : INGAMEITEM,LOOTBOX,OPTIONBOX
 
 
@@ -191,8 +189,7 @@ def get_trade_history_by_criteria(
 
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=2 (REDA)
-      *  Returns : trade history list based on criteria
+      * Returns : trade history list based on criteria
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/trade/history/byCriteria
@@ -254,8 +251,7 @@ async def get_trade_history_by_criteria_async(
 
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=2 (REDA)
-      *  Returns : trade history list based on criteria
+      * Returns : trade history list based on criteria
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/trade/history/byCriteria
@@ -315,8 +311,7 @@ def get_trade_history_by_transaction_id(
 
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=2 (REDA)
-      *  Returns : trade history based on transaction ID
+      * Returns : trade history based on transaction ID
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/trade/{transactionId}
@@ -362,8 +357,7 @@ async def get_trade_history_by_transaction_id_async(
 
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=2 (REDA)
-      *  Returns : trade history based on transaction ID
+      * Returns : trade history based on transaction ID
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/trade/{transactionId}

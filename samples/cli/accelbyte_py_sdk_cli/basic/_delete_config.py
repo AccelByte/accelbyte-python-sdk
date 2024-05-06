@@ -31,14 +31,18 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import delete_config as delete_config_internal
+from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 
 
 @click.command()
+@click.argument("config_key", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def delete_config(
+    config_key: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -53,6 +57,7 @@ def delete_config(
     else:
         login_as_internal(login_as)
     result, error = delete_config_internal(
+        config_key=config_key,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

@@ -35,14 +35,9 @@ from ...models import ResponseError
 class AdminResetServicesConfiguration(Operation):
     """Reset Registered Services Configuration (AdminResetServicesConfiguration)
 
-    [TEST FACILITY ONLY]
+    **[TEST FACILITY ONLY]**
     Reset Registered Services Configuration to use the default configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [DELETE]
+    Scope: account
 
     Required Scope(s):
         - account

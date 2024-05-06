@@ -58,9 +58,6 @@ def delete_revocation_config(
     """Delete revocation config (deleteRevocationConfig)
 
     Delete revocation config.
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=8 (DELETE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/config
@@ -99,9 +96,6 @@ async def delete_revocation_config_async(
     """Delete revocation config (deleteRevocationConfig)
 
     Delete revocation config.
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=8 (DELETE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/config
@@ -146,8 +140,7 @@ def do_revocation(
     Do revocation.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:REVOCATION, action=4 (UPDATE)
-      *  Returns : revocation results
+      * Returns : revocation results
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/revocation
@@ -196,8 +189,7 @@ async def do_revocation_async(
     Do revocation.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:REVOCATION, action=4 (UPDATE)
-      *  Returns : revocation results
+      * Returns : revocation results
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/revocation
@@ -246,8 +238,7 @@ def get_revocation_config(
     Get revocation configuration.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
-      *  Returns : Revocation config
+      * Returns : Revocation config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/config
@@ -290,8 +281,7 @@ async def get_revocation_config_async(
     Get revocation configuration.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
-      *  Returns : Revocation config
+      * Returns : Revocation config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/config
@@ -344,8 +334,7 @@ def query_revocation_histories(
     Query revocation histories in a namespace.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
-      *  Returns : query revocation history
+      * Returns : query revocation history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/history
@@ -418,8 +407,7 @@ async def query_revocation_histories_async(
     Query revocation histories in a namespace.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
-      *  Returns : query revocation history
+      * Returns : query revocation history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/history
@@ -487,8 +475,7 @@ def update_revocation_config(
     Update revocation configuration.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=4 (UPDATE)
-      *  Returns : Revocation config
+      * Returns : Revocation config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/config
@@ -533,8 +520,7 @@ async def update_revocation_config_async(
     Update revocation configuration.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=4 (UPDATE)
-      *  Returns : Revocation config
+      * Returns : Revocation config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/config

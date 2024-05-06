@@ -41,6 +41,8 @@ class OrderCreate(Model):
 
         quantity: (quantity) REQUIRED int
 
+        discount_codes: (discountCodes) OPTIONAL List[str]
+
         ext: (ext) OPTIONAL Dict[str, Any]
 
         language: (language) OPTIONAL str
@@ -60,6 +62,7 @@ class OrderCreate(Model):
     discounted_price: int  # REQUIRED
     item_id: str  # REQUIRED
     quantity: int  # REQUIRED
+    discount_codes: List[str]  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     language: str  # OPTIONAL
     price: int  # OPTIONAL
@@ -85,6 +88,10 @@ class OrderCreate(Model):
 
     def with_quantity(self, value: int) -> OrderCreate:
         self.quantity = value
+        return self
+
+    def with_discount_codes(self, value: List[str]) -> OrderCreate:
+        self.discount_codes = value
         return self
 
     def with_ext(self, value: Dict[str, Any]) -> OrderCreate:
@@ -133,6 +140,10 @@ class OrderCreate(Model):
             result["quantity"] = int(self.quantity)
         elif include_empty:
             result["quantity"] = 0
+        if hasattr(self, "discount_codes"):
+            result["discountCodes"] = [str(i0) for i0 in self.discount_codes]
+        elif include_empty:
+            result["discountCodes"] = []
         if hasattr(self, "ext"):
             result["ext"] = {str(k0): v0 for k0, v0 in self.ext.items()}
         elif include_empty:
@@ -170,6 +181,7 @@ class OrderCreate(Model):
         discounted_price: int,
         item_id: str,
         quantity: int,
+        discount_codes: Optional[List[str]] = None,
         ext: Optional[Dict[str, Any]] = None,
         language: Optional[str] = None,
         price: Optional[int] = None,
@@ -183,6 +195,8 @@ class OrderCreate(Model):
         instance.discounted_price = discounted_price
         instance.item_id = item_id
         instance.quantity = quantity
+        if discount_codes is not None:
+            instance.discount_codes = discount_codes
         if ext is not None:
             instance.ext = ext
         if language is not None:
@@ -218,6 +232,10 @@ class OrderCreate(Model):
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
             instance.quantity = 0
+        if "discountCodes" in dict_ and dict_["discountCodes"] is not None:
+            instance.discount_codes = [str(i0) for i0 in dict_["discountCodes"]]
+        elif include_empty:
+            instance.discount_codes = []
         if "ext" in dict_ and dict_["ext"] is not None:
             instance.ext = {str(k0): v0 for k0, v0 in dict_["ext"].items()}
         elif include_empty:
@@ -285,6 +303,7 @@ class OrderCreate(Model):
             "discountedPrice": "discounted_price",
             "itemId": "item_id",
             "quantity": "quantity",
+            "discountCodes": "discount_codes",
             "ext": "ext",
             "language": "language",
             "price": "price",
@@ -300,6 +319,7 @@ class OrderCreate(Model):
             "discountedPrice": True,
             "itemId": True,
             "quantity": True,
+            "discountCodes": False,
             "ext": False,
             "language": False,
             "price": False,

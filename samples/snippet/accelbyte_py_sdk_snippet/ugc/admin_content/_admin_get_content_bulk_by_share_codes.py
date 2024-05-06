@@ -12,7 +12,7 @@ body:
 Definition: ModelsGetContentBulkByShareCodesRequest
 share_codes: List[str]
 
-Example: '{"shareCodes": ["Wjv0TfaKV88gWcMM", "aExMBk6I7xFk6iih", "5SU1XT00SlCJdhMB"]}'
+Example: '{"shareCodes": ["eAwpfNb36JjyuU5R", "hGatIHvEBy6WULy2", "Ev91RUTIduwyKtmf"]}'
 """
 
 result, error = admin_get_content_bulk_by_share_codes(

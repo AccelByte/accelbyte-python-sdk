@@ -38,6 +38,8 @@ class PublicGetRecentPlayer(Operation):
 
     Query user's recent player.
 
+    Please ensure environment variable "RECENT_PLAYER_ENABLED" is set to "TRUE" to use this feature.
+
     Properties:
         url: /session/v1/public/namespaces/{namespace}/recent-player
 

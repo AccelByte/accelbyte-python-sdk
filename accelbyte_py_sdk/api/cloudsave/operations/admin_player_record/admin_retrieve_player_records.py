@@ -59,6 +59,8 @@ class AdminRetrievePlayerRecords(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        query: (query) OPTIONAL str in query
+
         tags: (tags) OPTIONAL List[str] in query
 
     Responses:
@@ -86,6 +88,7 @@ class AdminRetrievePlayerRecords(Operation):
     user_id: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    query: str  # OPTIONAL in [query]
     tags: List[str]  # OPTIONAL in [query]
 
     # endregion fields
@@ -144,6 +147,8 @@ class AdminRetrievePlayerRecords(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "query"):
+            result["query"] = self.query
         if hasattr(self, "tags"):
             result["tags"] = self.tags
         return result
@@ -172,6 +177,10 @@ class AdminRetrievePlayerRecords(Operation):
         self.offset = value
         return self
 
+    def with_query(self, value: str) -> AdminRetrievePlayerRecords:
+        self.query = value
+        return self
+
     def with_tags(self, value: List[str]) -> AdminRetrievePlayerRecords:
         self.tags = value
         return self
@@ -198,6 +207,10 @@ class AdminRetrievePlayerRecords(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "query") and self.query:
+            result["query"] = str(self.query)
+        elif include_empty:
+            result["query"] = ""
         if hasattr(self, "tags") and self.tags:
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -266,6 +279,7 @@ class AdminRetrievePlayerRecords(Operation):
         user_id: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        query: Optional[str] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
     ) -> AdminRetrievePlayerRecords:
@@ -276,6 +290,8 @@ class AdminRetrievePlayerRecords(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if query is not None:
+            instance.query = query
         if tags is not None:
             instance.tags = tags
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -303,6 +319,10 @@ class AdminRetrievePlayerRecords(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "query" in dict_ and dict_["query"] is not None:
+            instance.query = str(dict_["query"])
+        elif include_empty:
+            instance.query = ""
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -316,6 +336,7 @@ class AdminRetrievePlayerRecords(Operation):
             "userId": "user_id",
             "limit": "limit",
             "offset": "offset",
+            "query": "query",
             "tags": "tags",
         }
 
@@ -326,6 +347,7 @@ class AdminRetrievePlayerRecords(Operation):
             "userId": True,
             "limit": False,
             "offset": False,
+            "query": False,
             "tags": False,
         }
 

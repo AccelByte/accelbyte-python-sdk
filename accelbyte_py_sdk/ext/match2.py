@@ -216,7 +216,7 @@ def create_api_match_pool_example() -> ApiMatchPool:
     instance.session_template = randomize()
     instance.ticket_expiration_seconds = randomize("int", min_val=1, max_val=1000)
     instance.crossplay_disabled = randomize("bool")
-    instance.platfrom_group_enabled = randomize("bool")
+    instance.platform_group_enabled = randomize("bool")
     return instance
 
 
@@ -235,7 +235,7 @@ def create_api_match_pool_config_example() -> ApiMatchPoolConfig:
     instance.session_template = randomize()
     instance.ticket_expiration_seconds = randomize("int", min_val=1, max_val=1000)
     instance.crossplay_disabled = randomize("bool")
-    instance.platfrom_group_enabled = randomize("bool")
+    instance.platform_group_enabled = randomize("bool")
     return instance
 
 

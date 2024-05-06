@@ -15,7 +15,7 @@ deletable: bool
 is_wildcard: bool
 role_name: str
 
-Example: '{"adminRole": false, "deletable": false, "isWildcard": true, "roleName": "bS7iaSqZ5S8drGOz"}'
+Example: '{"adminRole": false, "deletable": true, "isWildcard": true, "roleName": "JI1MWOkdzerQcMVL"}'
 """
 
 result, error = admin_create_role_v4(

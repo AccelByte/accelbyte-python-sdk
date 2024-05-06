@@ -12,7 +12,7 @@ body:
 Definition: EntitlementSplitRequest
 use_count: int
 
-Example: '{"useCount": 6}'
+Example: '{"useCount": 22}'
 """
 
 result, error = public_split_user_entitlement(

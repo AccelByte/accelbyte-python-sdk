@@ -21,7 +21,7 @@ ulimit_file_size: int
 uploader_flag: str
 version: str
 
-Example: '{"artifactPath": "Yqx4qMSXObeN501J", "coreDumpEnabled": true, "dockerPath": "ubJ9k7ZBjD0K9S6x", "image": "n7wuod2ADPCg6EEk", "imageSize": 88, "namespace": "CwCOej6NVooOPnMj", "patchVersion": "4E8Ape2h2qhf5fcd", "persistent": false, "ulimitFileSize": 45, "uploaderFlag": "BTlraRVilnVyHPix", "version": "EcgGIYD3A4CAiLY0"}'
+Example: '{"artifactPath": "XlMcCujn7gLaWVNf", "coreDumpEnabled": false, "dockerPath": "vEQO3fNNdt5h4Iyn", "image": "JyAlzjkPJDE5OFjP", "imageSize": 76, "namespace": "Ih8pyZVm0GlDC4v2", "patchVersion": "45DKkKh7PaGx9SU8", "persistent": true, "ulimitFileSize": 72, "uploaderFlag": "y54ozdUypxwUX47N", "version": "ZaJDJQnOCdSD3Wnz"}'
 """
 
 result, error = create_image_patch(

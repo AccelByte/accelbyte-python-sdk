@@ -32,16 +32,23 @@ class CodeCreate(Model):
     """A DTO object for creating codes API call. (CodeCreate)
 
     Properties:
-        quantity: (quantity) REQUIRED int
+        code_value: (codeValue) OPTIONAL str
+
+        quantity: (quantity) OPTIONAL int
     """
 
     # region fields
 
-    quantity: int  # REQUIRED
+    code_value: str  # OPTIONAL
+    quantity: int  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_code_value(self, value: str) -> CodeCreate:
+        self.code_value = value
+        return self
 
     def with_quantity(self, value: int) -> CodeCreate:
         self.quantity = value
@@ -53,6 +60,10 @@ class CodeCreate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "code_value"):
+            result["codeValue"] = str(self.code_value)
+        elif include_empty:
+            result["codeValue"] = ""
         if hasattr(self, "quantity"):
             result["quantity"] = int(self.quantity)
         elif include_empty:
@@ -64,9 +75,14 @@ class CodeCreate(Model):
     # region static methods
 
     @classmethod
-    def create(cls, quantity: int, **kwargs) -> CodeCreate:
+    def create(
+        cls, code_value: Optional[str] = None, quantity: Optional[int] = None, **kwargs
+    ) -> CodeCreate:
         instance = cls()
-        instance.quantity = quantity
+        if code_value is not None:
+            instance.code_value = code_value
+        if quantity is not None:
+            instance.quantity = quantity
         return instance
 
     @classmethod
@@ -74,6 +90,10 @@ class CodeCreate(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "codeValue" in dict_ and dict_["codeValue"] is not None:
+            instance.code_value = str(dict_["codeValue"])
+        elif include_empty:
+            instance.code_value = ""
         if "quantity" in dict_ and dict_["quantity"] is not None:
             instance.quantity = int(dict_["quantity"])
         elif include_empty:
@@ -117,13 +137,15 @@ class CodeCreate(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "codeValue": "code_value",
             "quantity": "quantity",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "quantity": True,
+            "codeValue": False,
+            "quantity": False,
         }
 
     # endregion static methods

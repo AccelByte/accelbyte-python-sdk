@@ -12,22 +12,13 @@ from ._get_namespaces import get_namespaces
 from ._create_namespace import create_namespace
 from ._get_namespace import get_namespace
 from ._delete_namespace import delete_namespace
-from ._get_actions import get_actions
-from ._ban_users import ban_users
-from ._get_banned_users import get_banned_users
-from ._report_user import report_user
-from ._get_user_status import get_user_status
-from ._un_ban_users import un_ban_users
 from ._update_namespace import update_namespace
 from ._get_child_namespaces import get_child_namespaces
 from ._create_config import create_config
-from ._get_config_1 import get_config_1
-from ._delete_config_1 import delete_config_1
-from ._update_config_1 import update_config_1
-from ._get_namespace_context import get_namespace_context
 from ._get_config import get_config
 from ._delete_config import delete_config
 from ._update_config import update_config
+from ._get_namespace_context import get_namespace_context
 from ._generated_upload_url import generated_upload_url
 from ._get_game_namespaces import get_game_namespaces
 from ._get_countries import get_countries
@@ -58,6 +49,7 @@ from ._update_private_custom_attributes_partially import (
 from ._update_user_profile_status import update_user_profile_status
 from ._public_get_time import public_get_time
 from ._public_get_namespaces import public_get_namespaces
+from ._get_namespace_1 import get_namespace_1
 from ._public_generated_upload_url import public_generated_upload_url
 from ._public_get_countries import public_get_countries
 from ._public_get_languages import public_get_languages
@@ -80,7 +72,6 @@ from ._update_my_private_custom_attributes_partially import (
 )
 from ._get_my_zip_code import get_my_zip_code
 from ._update_my_zip_code import update_my_zip_code
-from ._public_report_user import public_report_user
 from ._public_generated_user_upload_content_url import (
     public_generated_user_upload_content_url,
 )
@@ -100,22 +91,13 @@ commands = [
     create_namespace,
     get_namespace,
     delete_namespace,
-    get_actions,
-    ban_users,
-    get_banned_users,
-    report_user,
-    get_user_status,
-    un_ban_users,
     update_namespace,
     get_child_namespaces,
     create_config,
-    get_config_1,
-    delete_config_1,
-    update_config_1,
-    get_namespace_context,
     get_config,
     delete_config,
     update_config,
+    get_namespace_context,
     generated_upload_url,
     get_game_namespaces,
     get_countries,
@@ -142,6 +124,7 @@ commands = [
     update_user_profile_status,
     public_get_time,
     public_get_namespaces,
+    get_namespace_1,
     public_generated_upload_url,
     public_get_countries,
     public_get_languages,
@@ -156,7 +139,6 @@ commands = [
     update_my_private_custom_attributes_partially,
     get_my_zip_code,
     update_my_zip_code,
-    public_report_user,
     public_generated_user_upload_content_url,
     public_get_user_profile_info,
     public_update_user_profile,

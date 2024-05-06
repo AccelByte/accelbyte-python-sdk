@@ -22,7 +22,7 @@ Definition: List[DtoServiceConfigurationDTO]
         url: str
     type_: str
 
-Example: '{"services": [{"extendConfig": {"appName": "68qZDruGEyzPIhql", "namespace": "rekUXHSZ5r7lecTd"}, "id": "DsYQpxfGbQhGDaH7", "serviceConfig": {"protocol": "GRPC", "url": "LpHCD0yZXlN9Pl2Z"}, "type": "SERVICE"}, {"extendConfig": {"appName": "AIxB87Z2baCi6eIx", "namespace": "0C12FbjISaFlHPDN"}, "id": "eIkf3Hhm6DBkguWn", "serviceConfig": {"protocol": "GRPC", "url": "wkIhmvvJLBkvNIS2"}, "type": "EXTEND"}, {"extendConfig": {"appName": "HHM180pOQy7W2hAa", "namespace": "lymO3axKgrJBs1Kr"}, "id": "M6SEGwud7Sj8UxnE", "serviceConfig": {"protocol": "GRPC", "url": "EGMpkCLachOPAYNX"}, "type": "SERVICE"}]}'
+Example: '{"services": [{"extendConfig": {"appName": "WeAuSIXa2i1GA7hT", "namespace": "kCu8ZZQR34XrVTmr"}, "id": "hlkUFMsfORz3o3og", "serviceConfig": {"protocol": "GRPC", "url": "OQazBYMeZOWuPF9V"}, "type": "EXTEND"}, {"extendConfig": {"appName": "AyYbxbehDZ9uUCMd", "namespace": "a9FJQI76bcYx2wBS"}, "id": "vaE5GZwnzt1NPHKd", "serviceConfig": {"protocol": "GRPC", "url": "Qx3GCciDJqimePRq"}, "type": "SERVICE"}, {"extendConfig": {"appName": "rdgetL9DeueGVqgY", "namespace": "I5KtY2EGMuruo51r"}, "id": "TewrGaOqcPvDs3Zf", "serviceConfig": {"protocol": "GRPC", "url": "MjJtK2uyTbdOyiSa"}, "type": "SERVICE"}]}'
 """
 
 result, error = admin_update_services_configuration(

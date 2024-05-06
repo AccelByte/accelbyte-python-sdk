@@ -35,7 +35,34 @@ from ...models import RestErrorResponse
 class AdminDeleteUserLinkingHistoryByPlatformIDV3(Operation):
     """Admin remove user's platform linking history. (AdminDeleteUserLinkingHistoryByPlatformIDV3)
 
-    This API is for admin to delete user's linking history with target platform id
+    This API is for admin to delete user's linking history with target platform id.
+    Supported platform:
+    - Steam group(steamnetwork)
+    - steam
+    - steamopenid
+    - PSN group(psn)
+    - ps4web
+    - ps4
+    - ps5
+    - XBOX group(xbox)
+    - live
+    - xblweb
+    - Oculus group(oculusgroup)
+    - oculus
+    - oculusweb
+    - facebook
+    - google
+    - twitch
+    - discord
+    - apple
+    - epicgames
+    - nintendo
+    - awscognito
+    - netflix
+    - snapchat
+    - oidc platform id
+
+    Note: you can use either platform ID or platform group as platformId query parameter
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/link/histories

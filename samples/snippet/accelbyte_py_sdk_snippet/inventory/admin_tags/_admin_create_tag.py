@@ -13,7 +13,7 @@ Definition: ApimodelsCreateTagReq
 name: str
 owner: str
 
-Example: '{"name": "3nq9QSMVwqCiogm3", "owner": "SERVER"}'
+Example: '{"name": "F6g8RXNgzWd4EEiw", "owner": "CLIENT"}'
 """
 
 result, error = admin_create_tag(

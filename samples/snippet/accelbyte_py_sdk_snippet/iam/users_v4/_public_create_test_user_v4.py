@@ -27,7 +27,7 @@ unique_display_name: str
 username: str
 verified: bool
 
-Example: '{"acceptedPolicies": [{"isAccepted": false, "localizedPolicyVersionId": "SYK8f7RAS7puQc6i", "policyId": "urU5NH3dkJoBrCb7", "policyVersionId": "jtx7tFeR2LhA0nbN"}, {"isAccepted": true, "localizedPolicyVersionId": "03UEbkQeTDQMBDD7", "policyId": "84O5AtdMokYUvBU7", "policyVersionId": "MCiQFOfHGUbK7zR4"}, {"isAccepted": true, "localizedPolicyVersionId": "gVFdTvmiBKR1yMyO", "policyId": "oJbqn4WLQojCy6tI", "policyVersionId": "znQr2s8i8gR29THl"}], "authType": "EMAILPASSWD", "country": "HIz5scA51Fn3ECWM", "dateOfBirth": "SRDpH76ZOZuSTchr", "displayName": "BA9nZ2z3iHpArcXM", "emailAddress": "qCMhOluqSgGT86Ob", "password": "e4Ur3EgK24NHTvld", "passwordMD5Sum": "KDjGW3mzRCcUANkz", "uniqueDisplayName": "qheK9FTp5cYrM9Qx", "username": "SaiT2Tc5WmALd81B", "verified": false}'
+Example: '{"acceptedPolicies": [{"isAccepted": true, "localizedPolicyVersionId": "rJAJVbg8es98vF39", "policyId": "a9XS3AEGx3nCSsUd", "policyVersionId": "EYVbw9qVjFWsUVJg"}, {"isAccepted": false, "localizedPolicyVersionId": "8gOe7Bf9G0p98JAr", "policyId": "PIsEWRQt0wyKW6Xd", "policyVersionId": "w4nZEzSwzXfoy8f1"}, {"isAccepted": false, "localizedPolicyVersionId": "pY85Kpi26wLzaMeh", "policyId": "7nZ6ICXpb85i2eSC", "policyVersionId": "FcVu8T0qvlRxksrF"}], "authType": "EMAILPASSWD", "country": "gPeMw5Eovh0LMXyJ", "dateOfBirth": "VEFd9VoCoe5YarGR", "displayName": "f97ke0NwCTllezhi", "emailAddress": "HG6vI9zjqtCrpc3h", "password": "Bthe51s5BFokNXSf", "passwordMD5Sum": "dDbDIDzVwz96TM0w", "uniqueDisplayName": "mx4qwqtxK8BCOOAt", "username": "V9Iquo0EVBYEcUr0", "verified": true}'
 """
 
 result, error = public_create_test_user_v4(

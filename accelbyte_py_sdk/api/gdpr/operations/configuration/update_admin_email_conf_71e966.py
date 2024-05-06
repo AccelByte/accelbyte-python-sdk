@@ -36,11 +36,10 @@ class UpdateAdminEmailConfiguration(Operation):
     """Update admin email address configuration (UpdateAdminEmailConfiguration)
 
     Update admin email address for receiving personal data request notification.
+    Scope: account
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [UPDATE]`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EMAIL:CONFIGURATION [UPDATE]
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations

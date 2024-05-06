@@ -13,7 +13,7 @@ sched_action: int
 sched_cron: str
 sched_range: List[str]
 
-Example: '{"SchedAction": 46, "SchedCron": "KkrEYe8rH29ALvXk", "SchedRange": ["PkUus185HyjDIi2r", "NLHACDgLJkGSxET6", "K3VsciVMcXg5MjLB"]}'
+Example: '{"SchedAction": 91, "SchedCron": "hdCeljLGbZz1Pvfb", "SchedRange": ["FH9nwrAb83XVLcBA", "qzRl5KMzXZoNO0TU", "mxMEpeAnGaRWXHCG"]}'
 """
 
 result, error = add_role_permission(

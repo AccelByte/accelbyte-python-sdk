@@ -40,12 +40,8 @@ class DeleteNamespace(Operation):
     Delete a namespace.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=8 (DELETE)
-      *  Action code : 11307
+      * Action code : 11307
       *  Returns : deleted namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}
@@ -58,7 +54,7 @@ class DeleteNamespace(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -82,7 +78,7 @@ class DeleteNamespace(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

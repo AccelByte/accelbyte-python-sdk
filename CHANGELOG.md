@@ -1,3 +1,11 @@
+<a name="v0.65.0"></a>
+## [v0.65.0]
+### ci
+- **:** do not use jenkins master
+### test
+- **session:** skip party flow in starter
+
+
 <a name="v0.64.0"></a>
 ## [v0.64.0]
 ### chore

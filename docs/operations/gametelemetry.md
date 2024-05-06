@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Analytics Game Telemetry Index (1.24.1)
+# Analytics Game Telemetry Index (1.24.2)
 
 
 ## Operations
@@ -29,6 +29,7 @@
 | HTTPValidationError | [HTTPValidationError](../../accelbyte_py_sdk/api/gametelemetry/models/http_validation_error.py) |
 | ListBaseResponse_str_ | [ListBaseResponseStr](../../accelbyte_py_sdk/api/gametelemetry/models/list_base_response_str.py) |
 | PagedResponse_GetNamespaceEventResponse_ | [PagedResponseGetNamespaceEventResponse](../../accelbyte_py_sdk/api/gametelemetry/models/paged_response_get_namespace_event_response.py) |
+| Paging | [Paging](../../accelbyte_py_sdk/api/gametelemetry/models/paging.py) |
 | PlayTimeResponse | [PlayTimeResponse](../../accelbyte_py_sdk/api/gametelemetry/models/play_time_response.py) |
 | TelemetryBody | [TelemetryBody](../../accelbyte_py_sdk/api/gametelemetry/models/telemetry_body.py) |
 | ValidationError | [ValidationError](../../accelbyte_py_sdk/api/gametelemetry/models/validation_error.py) |

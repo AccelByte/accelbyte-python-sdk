@@ -38,11 +38,7 @@ class PublicGetUserOrderHistories(Operation):
     Get user order histories.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order history
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order history
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history
@@ -55,7 +51,7 @@ class PublicGetUserOrderHistories(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -73,7 +69,7 @@ class PublicGetUserOrderHistories(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

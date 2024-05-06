@@ -40,14 +40,10 @@ class CreateFulfillmentScript(Operation):
     [Not Supported Yet In Starter] Create fulfillment script.
     Other detail info:
 
-      * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
 
     Fulfillment scripts are used for adding custom fulfillment logic based on ITEM_TYPE : [MEDIA,INGAMEITEM] for now, and the custom scripts only cover grantDays.
     Example for grantDays:
     `order && ((order.currency && order.currency.currencyCode) == 'LP' || order.isFree) ? 30 : -1`
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [CREATE]
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -60,7 +56,7 @@ class CreateFulfillmentScript(Operation):
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL FulfillmentScriptCreate in body
 
@@ -78,7 +74,7 @@ class CreateFulfillmentScript(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = []
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: FulfillmentScriptCreate  # OPTIONAL in [body]

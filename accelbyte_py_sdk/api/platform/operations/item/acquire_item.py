@@ -40,11 +40,7 @@ class AcquireItem(Operation):
     [SERVICE COMMUNICATION ONLY] This api is used for acquiring a published item while the item is maxCount limited, it will decrease the sale available count.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
-      *  Returns : acquire result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+      * Returns : acquire result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}/acquire
@@ -57,7 +53,7 @@ class AcquireItem(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ItemAcquireRequest in body
 
@@ -77,7 +73,7 @@ class AcquireItem(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ItemAcquireRequest  # OPTIONAL in [body]

@@ -40,12 +40,8 @@ class DeleteUserProfile(Operation):
     Delete user profile.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=8 (DELETE)
-      *  Action code : 11407
+      * Action code : 11407
       *  Returns : Delete user profile
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles
@@ -58,7 +54,7 @@ class DeleteUserProfile(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -82,7 +78,7 @@ class DeleteUserProfile(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

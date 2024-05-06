@@ -38,12 +38,6 @@ class BulkUpdateRegionData(Operation):
     """Update item's region data in bulk (bulkUpdateRegionData)
 
     This API is used to update region data of items in bulk
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/regiondata
@@ -56,7 +50,7 @@ class BulkUpdateRegionData(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL BulkRegionDataChangeRequest in body
 
@@ -82,7 +76,7 @@ class BulkUpdateRegionData(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: BulkRegionDataChangeRequest  # OPTIONAL in [body]

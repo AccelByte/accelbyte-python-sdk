@@ -46,8 +46,7 @@ class GetTradeHistoryByCriteria(Operation):
 
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=2 (REDA)
-      *  Returns : trade history list based on criteria
+      * Returns : trade history list based on criteria
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/trade/history/byCriteria

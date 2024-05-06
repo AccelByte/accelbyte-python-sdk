@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.19.2"
+__version__ = "2.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,20 +21,12 @@ from .wrappers import anonymize_user_profile_async
 # config
 from .wrappers import create_config
 from .wrappers import create_config_async
-from .wrappers import delete_config_1
-from .wrappers import delete_config_1_async
-from .wrappers import get_config_1
-from .wrappers import get_config_1_async
-from .wrappers import get_publisher_config
-from .wrappers import get_publisher_config_async
-from .wrappers import update_config_1
-from .wrappers import update_config_1_async
-
-# equ8_config
 from .wrappers import delete_config
 from .wrappers import delete_config_async
 from .wrappers import get_config
 from .wrappers import get_config_async
+from .wrappers import get_publisher_config
+from .wrappers import get_publisher_config_async
 from .wrappers import update_config
 from .wrappers import update_config_async
 
@@ -85,6 +77,8 @@ from .wrappers import get_game_namespaces
 from .wrappers import get_game_namespaces_async
 from .wrappers import get_namespace
 from .wrappers import get_namespace_async
+from .wrappers import get_namespace_1
+from .wrappers import get_namespace_1_async
 from .wrappers import get_namespace_context
 from .wrappers import get_namespace_context_async
 from .wrappers import get_namespace_publisher
@@ -97,22 +91,6 @@ from .wrappers import public_get_namespaces
 from .wrappers import public_get_namespaces_async
 from .wrappers import update_namespace
 from .wrappers import update_namespace_async
-
-# user_action
-from .wrappers import ban_users
-from .wrappers import ban_users_async
-from .wrappers import get_actions
-from .wrappers import get_actions_async
-from .wrappers import get_banned_users
-from .wrappers import get_banned_users_async
-from .wrappers import get_user_status
-from .wrappers import get_user_status_async
-from .wrappers import public_report_user
-from .wrappers import public_report_user_async
-from .wrappers import report_user
-from .wrappers import report_user_async
-from .wrappers import un_ban_users
-from .wrappers import un_ban_users_async
 
 # user_profile
 from .wrappers import admin_get_user_profile_public_info_by_ids

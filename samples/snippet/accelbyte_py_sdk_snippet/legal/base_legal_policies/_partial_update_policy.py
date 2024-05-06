@@ -17,7 +17,7 @@ description: str
 namespace: str
 tags: List[str]
 
-Example: '{"affectedClientIds": ["uxSflMGySOaYBsUS", "VftRc1RtzeG15cBZ", "KQ3HWAYzgknYtgwE"], "affectedCountries": ["PwoxM5hWKP8dY4zN", "R9q0AeBajfivqkID", "1F9WMr4DLcYZm3md"], "basePolicyName": "wxTKUPYczGwAwMo5", "description": "svNRWGj1p4hBkzZc", "namespace": "L09xppvBEFcrMJoM", "tags": ["6vYVRk1XdNQDdu4W", "pw2KsFQKJjIe6pdF", "XvF4ULqXeDe5uw2K"]}'
+Example: '{"affectedClientIds": ["bQADvT0hZl7HfK97", "VUG78P5I14XG9Irg", "7J5Vjre5Oc1kNX6i"], "affectedCountries": ["66t8G7txzmHmr3wt", "Cqmj0i7EWEfqgUvL", "fSAKxO0rNWmpn2Aq"], "basePolicyName": "1FPFvlxrxhCzIc6D", "description": "PgUJd7Xfmh9JgDij", "namespace": "bYuyF2uh0mxXj0te", "tags": ["bosGV4TuXWh9C8Qa", "4hC8udGhW3TyK298", "wrgcyOEBY2k8y3bW"]}'
 """
 
 result, error = partial_update_policy(

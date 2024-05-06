@@ -36,12 +36,6 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
     """Retrieve All Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
 
     Retrieve all base policies in the namespace.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies
@@ -54,7 +48,7 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -68,7 +62,7 @@ class RetrieveAllLegalPoliciesByNamespace(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

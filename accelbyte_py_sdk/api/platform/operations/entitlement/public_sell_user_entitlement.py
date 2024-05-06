@@ -39,11 +39,7 @@ class PublicSellUserEntitlement(Operation):
 
     Sell user entitlement. If the entitlement is consumable, useCount is 0, the status will be CONSUMED. If the entitlement is durable, the status will be SOLD. Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : entitlement
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+      * Returns : entitlement
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/sell
@@ -56,7 +52,7 @@ class PublicSellUserEntitlement(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EntitlementSoldRequest in body
 
@@ -80,7 +76,7 @@ class PublicSellUserEntitlement(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: EntitlementSoldRequest  # OPTIONAL in [body]

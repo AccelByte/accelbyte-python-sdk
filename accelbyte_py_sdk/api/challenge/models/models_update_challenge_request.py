@@ -65,6 +65,8 @@ class ModelsUpdateChallengeRequest(Model):
 
         name: (name) OPTIONAL str
 
+        repeat_after: (repeatAfter) OPTIONAL int
+
         rotation: (rotation) OPTIONAL Union[str, RotationEnum]
 
         start_date: (startDate) OPTIONAL str
@@ -79,6 +81,7 @@ class ModelsUpdateChallengeRequest(Model):
     end_date: str  # OPTIONAL
     goals_visibility: Union[str, GoalsVisibilityEnum]  # OPTIONAL
     name: str  # OPTIONAL
+    repeat_after: int  # OPTIONAL
     rotation: Union[str, RotationEnum]  # OPTIONAL
     start_date: str  # OPTIONAL
 
@@ -118,6 +121,10 @@ class ModelsUpdateChallengeRequest(Model):
 
     def with_name(self, value: str) -> ModelsUpdateChallengeRequest:
         self.name = value
+        return self
+
+    def with_repeat_after(self, value: int) -> ModelsUpdateChallengeRequest:
+        self.repeat_after = value
         return self
 
     def with_rotation(
@@ -164,6 +171,10 @@ class ModelsUpdateChallengeRequest(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "repeat_after"):
+            result["repeatAfter"] = int(self.repeat_after)
+        elif include_empty:
+            result["repeatAfter"] = 0
         if hasattr(self, "rotation"):
             result["rotation"] = str(self.rotation)
         elif include_empty:
@@ -188,6 +199,7 @@ class ModelsUpdateChallengeRequest(Model):
         end_date: Optional[str] = None,
         goals_visibility: Optional[Union[str, GoalsVisibilityEnum]] = None,
         name: Optional[str] = None,
+        repeat_after: Optional[int] = None,
         rotation: Optional[Union[str, RotationEnum]] = None,
         start_date: Optional[str] = None,
         **kwargs,
@@ -207,6 +219,8 @@ class ModelsUpdateChallengeRequest(Model):
             instance.goals_visibility = goals_visibility
         if name is not None:
             instance.name = name
+        if repeat_after is not None:
+            instance.repeat_after = repeat_after
         if rotation is not None:
             instance.rotation = rotation
         if start_date is not None:
@@ -251,6 +265,10 @@ class ModelsUpdateChallengeRequest(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "repeatAfter" in dict_ and dict_["repeatAfter"] is not None:
+            instance.repeat_after = int(dict_["repeatAfter"])
+        elif include_empty:
+            instance.repeat_after = 0
         if "rotation" in dict_ and dict_["rotation"] is not None:
             instance.rotation = str(dict_["rotation"])
         elif include_empty:
@@ -309,6 +327,7 @@ class ModelsUpdateChallengeRequest(Model):
             "endDate": "end_date",
             "goalsVisibility": "goals_visibility",
             "name": "name",
+            "repeatAfter": "repeat_after",
             "rotation": "rotation",
             "startDate": "start_date",
         }
@@ -323,6 +342,7 @@ class ModelsUpdateChallengeRequest(Model):
             "endDate": False,
             "goalsVisibility": False,
             "name": False,
+            "repeatAfter": False,
             "rotation": False,
             "startDate": False,
         }

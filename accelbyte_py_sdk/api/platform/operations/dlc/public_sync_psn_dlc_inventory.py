@@ -36,12 +36,9 @@ from ...models import PlayStationDLCSyncRequest
 class PublicSyncPsnDlcInventory(Operation):
     """Synchronize with dlc entitlements in PSN Store. (publicSyncPsnDlcInventory)
 
-    Synchronize with dlc entitlements in PSN Store.
+    Synchronize with dlc entitlements in PSN Store.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns : result of synchronization
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync

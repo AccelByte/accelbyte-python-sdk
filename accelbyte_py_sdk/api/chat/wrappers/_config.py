@@ -33,6 +33,7 @@ from ..models import ModelsConfigExport
 from ..models import ModelsConfigList
 from ..models import ModelsConfigResponse
 from ..models import ModelsImportConfigResponse
+from ..models import ModelsPublicConfigResponse
 from ..models import ResponseError
 from ..models import RestapiErrorResponseBody
 
@@ -41,6 +42,7 @@ from ..operations.config import AdminGetConfigV1
 from ..operations.config import AdminUpdateConfigV1
 from ..operations.config import ExportConfig
 from ..operations.config import ImportConfig
+from ..operations.config import PublicGetConfigV1
 
 
 @same_doc_as(AdminGetAllConfigV1)
@@ -516,6 +518,104 @@ async def import_config_async(
             return None, error
     request = ImportConfig.create(
         file=file,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetConfigV1)
+def public_get_config_v1(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """public get namespace config (publicGetConfigV1)
+
+    Get chat config of a namespace.
+
+    Properties:
+        url: /chat/v1/public/config/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPublicConfigResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetConfigV1.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetConfigV1)
+async def public_get_config_v1_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """public get namespace config (publicGetConfigV1)
+
+    Get chat config of a namespace.
+
+    Properties:
+        url: /chat/v1/public/config/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsPublicConfigResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        404: Not Found - RestapiErrorResponseBody (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetConfigV1.create(
         namespace=namespace,
     )
     return await run_request_async(

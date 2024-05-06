@@ -40,11 +40,7 @@ class SimulatePaymentOrderNotification(Operation):
     [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
-      *  Returns : notification process result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+      * Returns : notification process result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/simulate-notification
@@ -57,7 +53,7 @@ class SimulatePaymentOrderNotification(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderNotifySimulation in body
 
@@ -79,7 +75,7 @@ class SimulatePaymentOrderNotification(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: PaymentOrderNotifySimulation  # OPTIONAL in [body]

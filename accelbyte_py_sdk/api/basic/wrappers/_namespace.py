@@ -34,6 +34,7 @@ from ..models import NamespaceContext
 from ..models import NamespaceCreate
 from ..models import NamespaceInfo
 from ..models import NamespacePublisherInfo
+from ..models import NamespaceSimpleInfo
 from ..models import NamespaceStatusUpdate
 from ..models import NamespaceUpdate
 from ..models import ValidationErrorEntity
@@ -44,6 +45,7 @@ from ..operations.namespace import DeleteNamespace
 from ..operations.namespace import GetChildNamespaces
 from ..operations.namespace import GetGameNamespaces
 from ..operations.namespace import GetNamespace
+from ..operations.namespace import GetNamespace1
 from ..operations.namespace import GetNamespaceContext
 from ..operations.namespace import GetNamespacePublisher
 from ..operations.namespace import GetNamespaces
@@ -67,12 +69,8 @@ def change_namespace_status(
     Change a namespace status.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
       * Action code : 11306
       *  Returns : updated namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/status
@@ -85,7 +83,7 @@ def change_namespace_status(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL NamespaceStatusUpdate in body
 
@@ -127,12 +125,8 @@ async def change_namespace_status_async(
     Change a namespace status.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
       * Action code : 11306
       *  Returns : updated namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/status
@@ -145,7 +139,7 @@ async def change_namespace_status_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL NamespaceStatusUpdate in body
 
@@ -190,12 +184,8 @@ def create_namespace(
     In multi tenant mode, parentNamespace will be automatically filled with requester namespace if the requester is using studio or publisher token, and it will be filled with studio namespace if the requester uses game token. An oauth client will also be created and the id will be returned.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE" , action=1 (CREATE)
-      *  Action code : 11301
+      * Action code : 11301
       *  Returns : created namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces
@@ -208,7 +198,7 @@ def create_namespace(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL NamespaceCreate in body
 
@@ -242,12 +232,8 @@ async def create_namespace_async(
     In multi tenant mode, parentNamespace will be automatically filled with requester namespace if the requester is using studio or publisher token, and it will be filled with studio namespace if the requester uses game token. An oauth client will also be created and the id will be returned.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE" , action=1 (CREATE)
-      *  Action code : 11301
+      * Action code : 11301
       *  Returns : created namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces
@@ -260,7 +246,7 @@ async def create_namespace_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL NamespaceCreate in body
 
@@ -294,12 +280,8 @@ def delete_namespace(
     Delete a namespace.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=8 (DELETE)
-      *  Action code : 11307
+      * Action code : 11307
       *  Returns : deleted namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}
@@ -312,7 +294,7 @@ def delete_namespace(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -350,12 +332,8 @@ async def delete_namespace_async(
     Delete a namespace.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=8 (DELETE)
-      *  Action code : 11307
+      * Action code : 11307
       *  Returns : deleted namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [DELETE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}
@@ -368,7 +346,7 @@ async def delete_namespace_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -411,11 +389,7 @@ def get_child_namespaces(
     If input namespace is studio namespace, then it will return its all game namespace.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Returns : list of child namespaces
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+      * Returns : list of child namespaces
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/child
@@ -428,7 +402,7 @@ def get_child_namespaces(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -466,11 +440,7 @@ async def get_child_namespaces_async(
     If input namespace is studio namespace, then it will return its all game namespace.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Returns : list of child namespaces
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+      * Returns : list of child namespaces
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/child
@@ -483,7 +453,7 @@ async def get_child_namespaces_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -522,12 +492,8 @@ def get_game_namespaces(
     In multi tenant mode, a given super admin namespace will return all game namespaces of studio namespaces
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11308
+      * Action code : 11308
       *  Returns : list of namespaces
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/game
@@ -540,7 +506,7 @@ def get_game_namespaces(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -577,12 +543,8 @@ async def get_game_namespaces_async(
     In multi tenant mode, a given super admin namespace will return all game namespaces of studio namespaces
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11308
+      * Action code : 11308
       *  Returns : list of namespaces
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/game
@@ -595,7 +557,7 @@ async def get_game_namespaces_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -634,12 +596,8 @@ def get_namespace(
     In multi tenant mode, parentNamespace will be returned.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11304
+      * Action code : 11304
       *  Returns : namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}
@@ -652,7 +610,7 @@ def get_namespace(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -693,12 +651,8 @@ async def get_namespace_async(
     In multi tenant mode, parentNamespace will be returned.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11304
+      * Action code : 11304
       *  Returns : namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}
@@ -711,7 +665,7 @@ async def get_namespace_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -741,6 +695,94 @@ async def get_namespace_async(
     )
 
 
+@same_doc_as(GetNamespace1)
+def get_namespace_1(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get a namespace info (getNamespace_1)
+
+    Get a namespace info.
+    Other detail info:
+
+      * Returns : namespace info
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceSimpleInfo (Successful operation)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetNamespace1.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetNamespace1)
+async def get_namespace_1_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get a namespace info (getNamespace_1)
+
+    Get a namespace info.
+    Other detail info:
+
+      * Returns : namespace info
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}
+
+        method: GET
+
+        tags: ["Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - NamespaceSimpleInfo (Successful operation)
+
+        404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetNamespace1.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(GetNamespaceContext)
 def get_namespace_context(
     namespace: Optional[str] = None,
@@ -752,11 +794,7 @@ def get_namespace_context(
     Get context of namespace.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Returns : context of namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+      * Returns : context of namespace
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/context
@@ -769,7 +807,7 @@ def get_namespace_context(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -801,11 +839,7 @@ async def get_namespace_context_async(
     Get context of namespace.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Returns : context of namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
+      * Returns : context of namespace
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/context
@@ -818,7 +852,7 @@ async def get_namespace_context_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -852,12 +886,8 @@ def get_namespace_publisher(
     Get namespace info related publisher namespace.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11305
+      * Action code : 11305
       *  Returns : Namespace info related publisher namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/publisher
@@ -870,7 +900,7 @@ def get_namespace_publisher(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -906,12 +936,8 @@ async def get_namespace_publisher_async(
     Get namespace info related publisher namespace.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11305
+      * Action code : 11305
       *  Returns : Namespace info related publisher namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/publisher
@@ -924,7 +950,7 @@ async def get_namespace_publisher_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -962,12 +988,8 @@ def get_namespaces(
     Get all namespaces.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE" , action=2 (READ)
-      *  Action code : 11303
+      * Action code : 11303
       *  Returns : list of namespaces
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces
@@ -980,7 +1002,7 @@ def get_namespaces(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         active_only: (activeOnly) OPTIONAL bool in query
 
@@ -1008,12 +1030,8 @@ async def get_namespaces_async(
     Get all namespaces.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE" , action=2 (READ)
-      *  Action code : 11303
+      * Action code : 11303
       *  Returns : list of namespaces
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces
@@ -1026,7 +1044,7 @@ async def get_namespaces_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         active_only: (activeOnly) OPTIONAL bool in query
 
@@ -1056,12 +1074,8 @@ def public_get_namespace_publisher(
     Get namespace info related publisher namespace.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11305
+      * Action code : 11305
       *  Returns : Namespace info related publisher namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/publisher
@@ -1074,7 +1088,7 @@ def public_get_namespace_publisher(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1110,12 +1124,8 @@ async def public_get_namespace_publisher_async(
     Get namespace info related publisher namespace.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11305
+      * Action code : 11305
       *  Returns : Namespace info related publisher namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/publisher
@@ -1128,7 +1138,7 @@ async def public_get_namespace_publisher_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1166,8 +1176,7 @@ def public_get_namespaces(
     Get all namespaces.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11303
+      * Action code : 11303
       *  Returns : list of namespaces
 
     Properties:
@@ -1207,8 +1216,7 @@ async def public_get_namespaces_async(
     Get all namespaces.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11303
+      * Action code : 11303
       *  Returns : list of namespaces
 
     Properties:
@@ -1251,12 +1259,8 @@ def update_namespace(
     Update namespace basic info.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
-      *  Action code : 11302
+      * Action code : 11302
       *  Returns : updated namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/basic
@@ -1269,7 +1273,7 @@ def update_namespace(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL NamespaceUpdate in body
 
@@ -1311,12 +1315,8 @@ async def update_namespace_async(
     Update namespace basic info.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=4 (UPDATE)
-      *  Action code : 11302
+      * Action code : 11302
       *  Returns : updated namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/basic
@@ -1329,7 +1329,7 @@ async def update_namespace_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL NamespaceUpdate in body
 

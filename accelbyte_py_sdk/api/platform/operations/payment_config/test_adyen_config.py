@@ -56,11 +56,7 @@ class TestAdyenConfig(Operation):
       * settings
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test adyen config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test adyen config
 
     Properties:
         url: /platform/admin/payment/config/merchant/adyenconfig/test
@@ -73,7 +69,7 @@ class TestAdyenConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AdyenConfig in body
 
@@ -89,7 +85,7 @@ class TestAdyenConfig(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: AdyenConfig  # OPTIONAL in [body]

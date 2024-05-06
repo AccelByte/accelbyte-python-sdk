@@ -39,12 +39,8 @@ class PublicGetMyAppEntitlementOwnershipByAppId(Operation):
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
-      *  Path's namespace :
+      * Path's namespace :
         * can be filled with publisher namespace in order to get publisher namespace app entitlement ownership
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/byAppId
@@ -57,7 +53,7 @@ class PublicGetMyAppEntitlementOwnershipByAppId(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -73,7 +69,7 @@ class PublicGetMyAppEntitlementOwnershipByAppId(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

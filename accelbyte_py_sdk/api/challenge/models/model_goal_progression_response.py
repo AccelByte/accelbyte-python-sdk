@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.model_goal_meta import ModelGoalMeta
 from ..models.model_requirement_progression_response import (
     ModelRequirementProgressionResponse,
 )
@@ -36,6 +37,7 @@ from ..models.model_requirement_progression_response import (
 class StatusEnum(StrEnum):
     ACTIVE = "ACTIVE"
     COMPLETED = "COMPLETED"
+    NOT_STARTED = "NOT_STARTED"
     RETIRED = "RETIRED"
 
 
@@ -44,6 +46,8 @@ class ModelGoalProgressionResponse(Model):
 
     Properties:
         challenge_code: (challengeCode) REQUIRED str
+
+        goal: (goal) REQUIRED ModelGoalMeta
 
         goal_code: (goalCode) REQUIRED str
 
@@ -57,6 +61,7 @@ class ModelGoalProgressionResponse(Model):
     # region fields
 
     challenge_code: str  # REQUIRED
+    goal: ModelGoalMeta  # REQUIRED
     goal_code: str  # REQUIRED
     goal_progression_id: str  # REQUIRED
     requirement_progressions: List[ModelRequirementProgressionResponse]  # REQUIRED
@@ -68,6 +73,10 @@ class ModelGoalProgressionResponse(Model):
 
     def with_challenge_code(self, value: str) -> ModelGoalProgressionResponse:
         self.challenge_code = value
+        return self
+
+    def with_goal(self, value: ModelGoalMeta) -> ModelGoalProgressionResponse:
+        self.goal = value
         return self
 
     def with_goal_code(self, value: str) -> ModelGoalProgressionResponse:
@@ -100,6 +109,10 @@ class ModelGoalProgressionResponse(Model):
             result["challengeCode"] = str(self.challenge_code)
         elif include_empty:
             result["challengeCode"] = ""
+        if hasattr(self, "goal"):
+            result["goal"] = self.goal.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["goal"] = ModelGoalMeta()
         if hasattr(self, "goal_code"):
             result["goalCode"] = str(self.goal_code)
         elif include_empty:
@@ -129,6 +142,7 @@ class ModelGoalProgressionResponse(Model):
     def create(
         cls,
         challenge_code: str,
+        goal: ModelGoalMeta,
         goal_code: str,
         goal_progression_id: str,
         requirement_progressions: List[ModelRequirementProgressionResponse],
@@ -137,6 +151,7 @@ class ModelGoalProgressionResponse(Model):
     ) -> ModelGoalProgressionResponse:
         instance = cls()
         instance.challenge_code = challenge_code
+        instance.goal = goal
         instance.goal_code = goal_code
         instance.goal_progression_id = goal_progression_id
         instance.requirement_progressions = requirement_progressions
@@ -154,6 +169,12 @@ class ModelGoalProgressionResponse(Model):
             instance.challenge_code = str(dict_["challengeCode"])
         elif include_empty:
             instance.challenge_code = ""
+        if "goal" in dict_ and dict_["goal"] is not None:
+            instance.goal = ModelGoalMeta.create_from_dict(
+                dict_["goal"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.goal = ModelGoalMeta()
         if "goalCode" in dict_ and dict_["goalCode"] is not None:
             instance.goal_code = str(dict_["goalCode"])
         elif include_empty:
@@ -222,6 +243,7 @@ class ModelGoalProgressionResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "challengeCode": "challenge_code",
+            "goal": "goal",
             "goalCode": "goal_code",
             "goalProgressionId": "goal_progression_id",
             "requirementProgressions": "requirement_progressions",
@@ -232,6 +254,7 @@ class ModelGoalProgressionResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "challengeCode": True,
+            "goal": True,
             "goalCode": True,
             "goalProgressionId": True,
             "requirementProgressions": True,
@@ -241,7 +264,7 @@ class ModelGoalProgressionResponse(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["ACTIVE", "COMPLETED", "RETIRED"],
+            "status": ["ACTIVE", "COMPLETED", "NOT_STARTED", "RETIRED"],
         }
 
     # endregion static methods

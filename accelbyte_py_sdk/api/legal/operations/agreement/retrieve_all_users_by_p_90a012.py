@@ -37,12 +37,6 @@ class RetrieveAllUsersByPolicyVersion(Operation):
     """Retrieve Users Accepting Legal Agreements (retrieveAllUsersByPolicyVersion)
 
     This API will return users who has accepted a specific policy version.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/agreements/policy-versions/users
@@ -55,7 +49,7 @@ class RetrieveAllUsersByPolicyVersion(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         keyword: (keyword) OPTIONAL str in query
 
@@ -77,7 +71,7 @@ class RetrieveAllUsersByPolicyVersion(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     keyword: str  # OPTIONAL in [query]

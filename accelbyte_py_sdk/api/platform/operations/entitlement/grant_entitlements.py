@@ -52,11 +52,7 @@ class GrantEntitlements(Operation):
       *  LOOTBOX
 
     Other detail info:
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : bulk grant entitlements result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [UPDATE]
+      * Returns : bulk grant entitlements result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/entitlements/grant
@@ -69,7 +65,7 @@ class GrantEntitlements(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL BulkEntitlementGrantRequest in body
 
@@ -87,7 +83,7 @@ class GrantEntitlements(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: BulkEntitlementGrantRequest  # OPTIONAL in [body]

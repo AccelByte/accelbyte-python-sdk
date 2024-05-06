@@ -36,12 +36,9 @@ from ...models import PlayStationDLCSyncMultiServiceLabelsRequest
 class PublicSyncPsnDlcInventoryWithMultipleServiceLabels(Operation):
     """Synchronize with dlc entitlements in PSN Store with multiple service labels. (publicSyncPsnDlcInventoryWithMultipleServiceLabels)
 
-    Synchronize with dlc entitlements in PSN Store with multiple service labels.
+    Synchronize with dlc entitlements in PSN Store with multiple service labels.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns : result of synchronization
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync/multiServiceLabels

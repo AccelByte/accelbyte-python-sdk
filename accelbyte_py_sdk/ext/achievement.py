@@ -29,9 +29,16 @@ from ..api.achievement.models import ModelsAchievementRequest
 from ..api.achievement.models import ModelsAchievementResponse
 from ..api.achievement.models import ModelsAchievementUpdateRequest
 from ..api.achievement.models import ModelsAdditionalInfo
+from ..api.achievement.models import ModelsBulkCreatePSNEventResponse
+from ..api.achievement.models import ModelsBulkCreatePSNEvents
 from ..api.achievement.models import ModelsContributorResponse
+from ..api.achievement.models import ModelsCreatePSNEvent
+from ..api.achievement.models import ModelsErrorDetails
 from ..api.achievement.models import ModelsGlobalAchievementResponse
 from ..api.achievement.models import ModelsIcon
+from ..api.achievement.models import ModelsPSNEvent
+from ..api.achievement.models import ModelsPSNEventData
+from ..api.achievement.models import ModelsPSNEventResult
 from ..api.achievement.models import ModelsPaginatedAchievementResponse
 from ..api.achievement.models import ModelsPaginatedContributorResponse
 from ..api.achievement.models import ModelsPaginatedGlobalAchievementResponse
@@ -124,6 +131,20 @@ def create_models_additional_info_example() -> ModelsAdditionalInfo:
     return instance
 
 
+def create_models_bulk_create_psn_event_response_example() -> (
+    ModelsBulkCreatePSNEventResponse
+):
+    instance = ModelsBulkCreatePSNEventResponse()
+    instance.data = [create_models_psn_event_result_example()]
+    return instance
+
+
+def create_models_bulk_create_psn_events_example() -> ModelsBulkCreatePSNEvents:
+    instance = ModelsBulkCreatePSNEvents()
+    instance.data = [create_models_create_psn_event_example()]
+    return instance
+
+
 def create_models_contributor_response_example() -> ModelsContributorResponse:
     instance = ModelsContributorResponse()
     instance.achievement_code = randomize()
@@ -133,6 +154,21 @@ def create_models_contributor_response_example() -> ModelsContributorResponse:
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
     instance.updated_at = randomize("date")
+    return instance
+
+
+def create_models_create_psn_event_example() -> ModelsCreatePSNEvent:
+    instance = ModelsCreatePSNEvent()
+    instance.events = [create_models_psn_event_example()]
+    instance.third_party_user_id = randomize()
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_error_details_example() -> ModelsErrorDetails:
+    instance = ModelsErrorDetails()
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
+    instance.error_message = randomize()
     return instance
 
 
@@ -216,6 +252,30 @@ def create_models_pagination_example() -> ModelsPagination:
     instance = ModelsPagination()
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_models_psn_event_example() -> ModelsPSNEvent:
+    instance = ModelsPSNEvent()
+    instance.date_time = randomize()
+    instance.event_data = create_models_psn_event_data_example()
+    instance.event_id = randomize()
+    instance.version = randomize("version")
+    return instance
+
+
+def create_models_psn_event_data_example() -> ModelsPSNEventData:
+    instance = ModelsPSNEventData()
+    instance.event_name = randomize()
+    instance.properties = {randomize(): randomize()}
+    return instance
+
+
+def create_models_psn_event_result_example() -> ModelsPSNEventResult:
+    instance = ModelsPSNEventResult()
+    instance.is_success = randomize("bool")
+    instance.third_party_user_id = randomize()
+    instance.error_detail = create_models_error_details_example()
     return instance
 
 

@@ -13,7 +13,7 @@ Definition: ApiFleetClaimReq
 region: str
 session_id: str
 
-Example: '{"region": "1TQj13AIauFBWhRC", "sessionId": "Vs5eSBCqaOnnJsvF"}'
+Example: '{"region": "5JGoEZPeXmpe1PTH", "sessionId": "ClE36d7ixBIssDmf"}'
 """
 
 result, error = fleet_claim_by_id(

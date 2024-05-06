@@ -37,15 +37,9 @@ from ...models import PlayStationReconcileResult
 class PublicReconcilePlayStationStoreWithMultipleServiceLabels(Operation):
     """Synchronize with entitlements in PSN Store with multiple service labels. (publicReconcilePlayStationStoreWithMultipleServiceLabels)
 
-    Synchronize with entitlements in PSN Store with multiple service labels.
+    Synchronize with entitlements in PSN Store with multiple service labels.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns : result of synchronization
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync/multiServiceLabels
@@ -58,7 +52,7 @@ class PublicReconcilePlayStationStoreWithMultipleServiceLabels(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlayStationMultiServiceLabelsReconcileRequest in body
 
@@ -78,7 +72,7 @@ class PublicReconcilePlayStationStoreWithMultipleServiceLabels(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: PlayStationMultiServiceLabelsReconcileRequest  # OPTIONAL in [body]

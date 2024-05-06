@@ -48,13 +48,6 @@ class PublicGetUserEntitlementOwnershipByItemId(Operation):
 
     Get user entitlement ownership by itemId.
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=2 (READ)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [READ]
-
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/ownership/byItemId
 
@@ -66,7 +59,7 @@ class PublicGetUserEntitlementOwnershipByItemId(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -86,7 +79,7 @@ class PublicGetUserEntitlementOwnershipByItemId(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

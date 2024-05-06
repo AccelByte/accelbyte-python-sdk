@@ -87,11 +87,7 @@ def apply_user_redemption(
     [SERVICE COMMUNICATION ONLY] Redeem code. If the campaign which the code belongs to is INACTIVE, the code couldn't be redeemed even if its status is ACTIVE.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION", action=1 (CREATE)
-      *  Returns : Redeem result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION [CREATE]
+      * Returns : Redeem result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/redemption
@@ -104,7 +100,7 @@ def apply_user_redemption(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RedeemRequest in body
 
@@ -146,11 +142,7 @@ async def apply_user_redemption_async(
     [SERVICE COMMUNICATION ONLY] Redeem code. If the campaign which the code belongs to is INACTIVE, the code couldn't be redeemed even if its status is ACTIVE.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION", action=1 (CREATE)
-      *  Returns : Redeem result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:REDEMPTION [CREATE]
+      * Returns : Redeem result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/redemption
@@ -163,7 +155,7 @@ async def apply_user_redemption_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RedeemRequest in body
 
@@ -209,11 +201,7 @@ def bulk_disable_codes(
     Bulk disable campaign codes, all matched codes will be disabled except those have already been redeemed.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : the number of code actually disabled
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : the number of code actually disabled
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/disable/bulk
@@ -226,7 +214,7 @@ def bulk_disable_codes(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -264,11 +252,7 @@ async def bulk_disable_codes_async(
     Bulk disable campaign codes, all matched codes will be disabled except those have already been redeemed.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : the number of code actually disabled
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : the number of code actually disabled
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/disable/bulk
@@ -281,7 +265,7 @@ async def bulk_disable_codes_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -319,11 +303,7 @@ def bulk_enable_codes(
     Bulk enable campaign codes.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : the number of code actually enabled
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : the number of code actually enabled
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/enable/bulk
@@ -336,7 +316,7 @@ def bulk_enable_codes(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -372,11 +352,7 @@ async def bulk_enable_codes_async(
     Bulk enable campaign codes.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : the number of code actually enabled
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : the number of code actually enabled
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/enable/bulk
@@ -389,7 +365,7 @@ async def bulk_enable_codes_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -426,11 +402,7 @@ def create_campaign(
     Create campaign.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
-      *  Returns : created campaign
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
+      * Returns : created campaign
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns
@@ -443,7 +415,7 @@ def create_campaign(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CampaignCreate in body
 
@@ -451,6 +423,8 @@ def create_campaign(
 
     Responses:
         201: Created - CampaignInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (37121: Invalid currency namespace [{namespace}] in discount config: {tips})
 
         409: Conflict - ErrorEntity (37171: Campaign [{name}] already exists in namespace [{namespace}])
 
@@ -479,11 +453,7 @@ async def create_campaign_async(
     Create campaign.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
-      *  Returns : created campaign
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
+      * Returns : created campaign
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns
@@ -496,7 +466,7 @@ async def create_campaign_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CampaignCreate in body
 
@@ -504,6 +474,8 @@ async def create_campaign_async(
 
     Responses:
         201: Created - CampaignInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (37121: Invalid currency namespace [{namespace}] in discount config: {tips})
 
         409: Conflict - ErrorEntity (37171: Campaign [{name}] already exists in namespace [{namespace}])
 
@@ -535,11 +507,7 @@ def create_codes(
     This API is used to create campaign codes, it will increase the batch No. based on last creation.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
-      *  Returns : number of codes created
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
+      * Returns : number of codes created
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
@@ -552,7 +520,7 @@ def create_codes(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CodeCreate in body
 
@@ -564,6 +532,8 @@ def create_codes(
         201: Created - CodeCreateResult (successful operation)
 
         404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37180: Code [{code}] already exists in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -592,11 +562,7 @@ async def create_codes_async(
     This API is used to create campaign codes, it will increase the batch No. based on last creation.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=1 (CREATE)
-      *  Returns : number of codes created
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [CREATE]
+      * Returns : number of codes created
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
@@ -609,7 +575,7 @@ async def create_codes_async(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CodeCreate in body
 
@@ -621,6 +587,8 @@ async def create_codes_async(
         201: Created - CodeCreateResult (successful operation)
 
         404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (37180: Code [{code}] already exists in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -652,11 +620,7 @@ def disable_code(
     Disable an active code, the code can't be disabled if it has already been redeemed.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : disabled code
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : disabled code
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/{code}/disable
@@ -669,7 +633,7 @@ def disable_code(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -705,11 +669,7 @@ async def disable_code_async(
     Disable an active code, the code can't be disabled if it has already been redeemed.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : disabled code
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : disabled code
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/{code}/disable
@@ -722,7 +682,7 @@ async def disable_code_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -759,11 +719,7 @@ def download(
     Download all or a batch of campaign's codes as a csv file.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-      *  Returns : codes csv file
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : codes csv file
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/codes.csv
@@ -776,7 +732,7 @@ def download(
 
         produces: ["text/csv"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -812,11 +768,7 @@ async def download_async(
     Download all or a batch of campaign's codes as a csv file.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-      *  Returns : codes csv file
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : codes csv file
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/codes.csv
@@ -829,7 +781,7 @@ async def download_async(
 
         produces: ["text/csv"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -866,11 +818,7 @@ def enable_code(
     Enable code.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : enabled code
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : enabled code
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/{code}/enable
@@ -883,7 +831,7 @@ def enable_code(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -917,11 +865,7 @@ async def enable_code_async(
     Enable code.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : enabled code
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : enabled code
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/{code}/enable
@@ -934,7 +878,7 @@ async def enable_code_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -970,11 +914,7 @@ def get_campaign(
     Get campaign info.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-      *  Returns : campaign info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : campaign info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}
@@ -987,7 +927,7 @@ def get_campaign(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -1021,11 +961,7 @@ async def get_campaign_async(
     Get campaign info.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-      *  Returns : campaign info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : campaign info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}
@@ -1038,7 +974,7 @@ async def get_campaign_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -1074,11 +1010,7 @@ def get_campaign_dynamic(
     Get campaign dynamic.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-      *  Returns : campaign dynamic
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : campaign dynamic
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/dynamic
@@ -1091,7 +1023,7 @@ def get_campaign_dynamic(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -1125,11 +1057,7 @@ async def get_campaign_dynamic_async(
     Get campaign dynamic.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-      *  Returns : campaign dynamic
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : campaign dynamic
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/dynamic
@@ -1142,7 +1070,7 @@ async def get_campaign_dynamic_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -1179,11 +1107,7 @@ def get_code(
     Get campaign code, it will check code whether available to redeem if redeemable true.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
-      *  Returns : code info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : code info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/{code}
@@ -1196,7 +1120,7 @@ def get_code(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -1236,11 +1160,7 @@ async def get_code_async(
     Get campaign code, it will check code whether available to redeem if redeemable true.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
-      *  Returns : code info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : code info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/{code}
@@ -1253,7 +1173,7 @@ async def get_code_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -1297,11 +1217,7 @@ def query_campaigns(
     Query campaigns, if name is presented, it's fuzzy match.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
-      *  Returns : slice of campaigns
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : slice of campaigns
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns
@@ -1314,7 +1230,7 @@ def query_campaigns(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1358,11 +1274,7 @@ async def query_campaigns_async(
     Query campaigns, if name is presented, it's fuzzy match.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
-      *  Returns : slice of campaigns
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : slice of campaigns
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns
@@ -1375,7 +1287,7 @@ async def query_campaigns_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1423,11 +1335,7 @@ def query_codes(
     Query campaign codes.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
-      *  Returns : list of codes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : list of codes
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
@@ -1440,7 +1348,7 @@ def query_codes(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -1492,11 +1400,7 @@ async def query_codes_async(
     Query campaign codes.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ) (READ)
-      *  Returns : list of codes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : list of codes
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
@@ -1509,7 +1413,7 @@ async def query_codes_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -1562,11 +1466,7 @@ def query_redeem_history(
     Query redeem history.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-      *  Returns : slice of redeem history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : slice of redeem history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/history
@@ -1579,7 +1479,7 @@ def query_redeem_history(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -1627,11 +1527,7 @@ async def query_redeem_history_async(
     Query redeem history.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=2 (READ)
-      *  Returns : slice of redeem history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [READ]
+      * Returns : slice of redeem history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/history
@@ -1644,7 +1540,7 @@ async def query_redeem_history_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -1691,11 +1587,7 @@ def update_campaign(
     Update campaign.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : updated campaign
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : updated campaign
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}
@@ -1708,7 +1600,7 @@ def update_campaign(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CampaignUpdate in body
 
@@ -1750,11 +1642,7 @@ async def update_campaign_async(
     Update campaign.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : updated campaign
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : updated campaign
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}
@@ -1767,7 +1655,7 @@ async def update_campaign_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CampaignUpdate in body
 

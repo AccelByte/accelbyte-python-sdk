@@ -22,12 +22,12 @@ Definition: ApiMatchFunctionOverride
     make_matches: str
     stat_codes: List[str]
     validation: List[str]
-platfrom_group_enabled: bool
+platform_group_enabled: bool
 rule_set: str
 session_template: str
 ticket_expiration_seconds: int
 
-Example: '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 37, "backfill_ticket_expiration_seconds": 19, "crossplay_disabled": true, "match_function": "8mX9OFzwLyxpauuB", "match_function_override": {"backfill_matches": "5rIrWSXXqQq4ykKU", "enrichment": ["wHkHA5O8xWPKDx4f", "vt2x69ldO17m5keS", "h0JpOBasgtVf1s6Q"], "make_matches": "31HmZV29KDOpUoSQ", "stat_codes": ["nhvfqgwSXSxjyKBF", "MQS4q9pLkhZw5e4S", "gKESWROyspPaytF2"], "validation": ["9QVtkyky6l2gi4Qj", "z64FsAGfuytsf0lG", "QZxCEHkMVSKtilAa"]}, "platfrom_group_enabled": false, "rule_set": "GqdKFlFekKPGyCN6", "session_template": "1f37Gqw0YpYDhOn1", "ticket_expiration_seconds": 40}'
+Example: '{"auto_accept_backfill_proposal": false, "backfill_proposal_expiration_seconds": 53, "backfill_ticket_expiration_seconds": 16, "crossplay_disabled": true, "match_function": "ivok7GpLp4ZyzDte", "match_function_override": {"backfill_matches": "4ozXlPTplXqb0vpO", "enrichment": ["Et2NrPwWhwz6TO9e", "JXh5PRbPivNP1iBq", "m0Zj9C3e7UtjSzZi"], "make_matches": "LJUL12debUm3RAKn", "stat_codes": ["LYpiiFPinz1yiNCB", "RGLZO9TE694tGR2W", "4nL0LgTqMoCEuseI"], "validation": ["zrfFHzrjDFLdsdha", "YWLeuoSHGtSiCDC7", "tcn9yvxrn0mfRNUQ"]}, "platform_group_enabled": false, "rule_set": "1Zc1e7K2IrgQRKvv", "session_template": "5cnbUTB0qMcFsqNj", "ticket_expiration_seconds": 93}'
 """
 
 result, error = update_match_pool(

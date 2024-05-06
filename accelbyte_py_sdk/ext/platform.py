@@ -66,6 +66,7 @@ from ..api.platform.models import BulkRegionDataChangeRequest
 from ..api.platform.models import BundledItemInfo
 from ..api.platform.models import CampaignCreate
 from ..api.platform.models import CampaignDynamicInfo
+from ..api.platform.models import CampaignIfc
 from ..api.platform.models import CampaignInfo
 from ..api.platform.models import CampaignPagingSlicedResult
 from ..api.platform.models import CampaignUpdate
@@ -73,6 +74,8 @@ from ..api.platform.models import CancelRequest
 from ..api.platform.models import CatalogChangeInfo
 from ..api.platform.models import CatalogChangePagingResult
 from ..api.platform.models import CatalogChangeStatistics
+from ..api.platform.models import CatalogConfigInfo
+from ..api.platform.models import CatalogConfigUpdate
 from ..api.platform.models import CatalogDefinitionInfo
 from ..api.platform.models import CategoryCreate
 from ..api.platform.models import CategoryInfo
@@ -112,9 +115,15 @@ from ..api.platform.models import DebitByWalletPlatformRequest
 from ..api.platform.models import DebitPayload
 from ..api.platform.models import DebitRequest
 from ..api.platform.models import DebitResult
+from ..api.platform.models import DeductionDetail
 from ..api.platform.models import DeleteRewardConditionRequest
 from ..api.platform.models import DetailedWalletTransactionInfo
 from ..api.platform.models import DetailedWalletTransactionPagingSlicedResult
+from ..api.platform.models import DiscountCategory
+from ..api.platform.models import DiscountCodeDeductionDetail
+from ..api.platform.models import DiscountCodeInfo
+from ..api.platform.models import DiscountConfig
+from ..api.platform.models import DiscountItem
 from ..api.platform.models import DurableEntitlementRevocationConfig
 from ..api.platform.models import EntitlementConfigInfo
 from ..api.platform.models import EntitlementDecrement
@@ -249,6 +258,8 @@ from ..api.platform.models import Order
 from ..api.platform.models import OrderBundleItemInfo
 from ..api.platform.models import OrderCreate
 from ..api.platform.models import OrderCreationOptions
+from ..api.platform.models import OrderDiscountPreviewRequest
+from ..api.platform.models import OrderDiscountPreviewResponse
 from ..api.platform.models import OrderGrantInfo
 from ..api.platform.models import OrderHistoryInfo
 from ..api.platform.models import OrderInfo
@@ -293,6 +304,7 @@ from ..api.platform.models import PaymentTaxConfigInfo
 from ..api.platform.models import PaymentToken
 from ..api.platform.models import PaymentUrl
 from ..api.platform.models import PaymentUrlCreate
+from ..api.platform.models import Permission
 from ..api.platform.models import PlatformDLCConfigInfo
 from ..api.platform.models import PlatformDLCConfigUpdate
 from ..api.platform.models import PlatformDlcEntry
@@ -505,6 +517,7 @@ def create_admin_order_create_example() -> AdminOrderCreate:
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
     instance.currency_namespace = randomize("slug")
+    instance.discount_codes = [randomize()]
     instance.entitlement_platform = randomize()
     instance.ext = {randomize(): randomize()}
     instance.language = randomize()
@@ -911,6 +924,7 @@ def create_campaign_create_example() -> CampaignCreate:
     instance = CampaignCreate()
     instance.name = randomize()
     instance.description = randomize()
+    instance.discount_config = create_discount_config_example()
     instance.items = [create_redeemable_item_example()]
     instance.max_redeem_count_per_campaign_per_user = randomize(
         "int", min_val=1, max_val=1000
@@ -939,6 +953,13 @@ def create_campaign_dynamic_info_example() -> CampaignDynamicInfo:
     return instance
 
 
+def create_campaign_ifc_example() -> CampaignIfc:
+    instance = CampaignIfc()
+    instance.id_ = randomize()
+    instance.name = randomize()
+    return instance
+
+
 def create_campaign_info_example() -> CampaignInfo:
     instance = CampaignInfo()
     instance.booth_name = randomize()
@@ -959,6 +980,7 @@ def create_campaign_info_example() -> CampaignInfo:
     instance.type_ = randomize()
     instance.updated_at = randomize("date")
     instance.description = randomize()
+    instance.discount_config = create_discount_config_example()
     instance.items = [create_redeemable_item_example()]
     instance.redeem_end = randomize("date")
     instance.redeem_start = randomize("date")
@@ -977,6 +999,7 @@ def create_campaign_update_example() -> CampaignUpdate:
     instance = CampaignUpdate()
     instance.name = randomize()
     instance.description = randomize()
+    instance.discount_config = create_discount_config_example()
     instance.items = [create_redeemable_item_example()]
     instance.max_redeem_count_per_campaign_per_user = randomize(
         "int", min_val=1, max_val=1000
@@ -1036,6 +1059,18 @@ def create_catalog_change_statistics_example() -> CatalogChangeStatistics:
     instance = CatalogChangeStatistics()
     instance.count = randomize("int", min_val=1, max_val=1000)
     instance.selected_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_catalog_config_info_example() -> CatalogConfigInfo:
+    instance = CatalogConfigInfo()
+    instance.enable_inventory_check = randomize("bool")
+    return instance
+
+
+def create_catalog_config_update_example() -> CatalogConfigUpdate:
+    instance = CatalogConfigUpdate()
+    instance.enable_inventory_check = randomize("bool")
     return instance
 
 
@@ -1120,6 +1155,7 @@ def create_client_transaction_example() -> ClientTransaction:
 
 def create_code_create_example() -> CodeCreate:
     instance = CodeCreate()
+    instance.code_value = randomize()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -1153,6 +1189,8 @@ def create_code_info_example() -> CodeInfo:
     instance.value = randomize()
     instance.acquire_order_no = randomize()
     instance.acquire_user_id = randomize()
+    instance.campaign = create_campaign_ifc_example()
+    instance.discount_config = create_discount_config_example()
     instance.items = [create_redeemable_item_example()]
     instance.redeem_end = randomize("date")
     instance.redeem_start = randomize("date")
@@ -1369,6 +1407,15 @@ def create_debit_result_example() -> DebitResult:
     return instance
 
 
+def create_deduction_detail_example() -> DeductionDetail:
+    instance = DeductionDetail()
+    instance.deduction_type = randomize()
+    instance.discount_code_deduction_detail = (
+        create_discount_code_deduction_detail_example()
+    )
+    return instance
+
+
 def create_delete_reward_condition_request_example() -> DeleteRewardConditionRequest:
     instance = DeleteRewardConditionRequest()
     instance.condition_name = randomize()
@@ -1398,6 +1445,54 @@ def create_detailed_wallet_transaction_paging_sliced_result_example() -> (
     instance = DetailedWalletTransactionPagingSlicedResult()
     instance.data = [create_detailed_wallet_transaction_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_discount_category_example() -> DiscountCategory:
+    instance = DiscountCategory()
+    instance.category_path = randomize()
+    instance.include_sub_categories = randomize("bool")
+    return instance
+
+
+def create_discount_code_deduction_detail_example() -> DiscountCodeDeductionDetail:
+    instance = DiscountCodeDeductionDetail()
+    instance.discount_amount_codes = [create_discount_code_info_example()]
+    instance.discount_percentage_codes = [create_discount_code_info_example()]
+    instance.total_amount_deduction = randomize("int", min_val=1, max_val=1000)
+    instance.total_deduction = randomize("int", min_val=1, max_val=1000)
+    instance.total_percentage_deduction = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_discount_code_info_example() -> DiscountCodeInfo:
+    instance = DiscountCodeInfo()
+    instance.campaign_id = randomize()
+    instance.campaign_name = randomize()
+    instance.code = randomize()
+    instance.deduction = randomize("int", min_val=1, max_val=1000)
+    instance.discount_config = create_discount_config_example()
+    return instance
+
+
+def create_discount_config_example() -> DiscountConfig:
+    instance = DiscountConfig()
+    instance.categories = [create_discount_category_example()]
+    instance.currency_code = randomize()
+    instance.currency_namespace = randomize("slug")
+    instance.discount_amount = randomize("int", min_val=1, max_val=1000)
+    instance.discount_percentage = randomize("int", min_val=1, max_val=1000)
+    instance.discount_type = randomize()
+    instance.items = [create_discount_item_example()]
+    instance.restrict_type = randomize()
+    instance.stackable = randomize("bool")
+    return instance
+
+
+def create_discount_item_example() -> DiscountItem:
+    instance = DiscountItem()
+    instance.item_id = randomize()
+    instance.item_name = randomize()
     return instance
 
 
@@ -1816,6 +1911,7 @@ def create_error_entity_example() -> ErrorEntity:
     instance.error_message = randomize()
     instance.dev_stack_trace = randomize()
     instance.message_variables = {randomize(): randomize()}
+    instance.required_permission = create_permission_example()
     return instance
 
 
@@ -2992,9 +3088,12 @@ def create_order_example() -> Order:
     instance.created_time = randomize("date")
     instance.creation_options = create_order_creation_options_example()
     instance.currency = create_currency_summary_example()
+    instance.deduction = randomize("int", min_val=1, max_val=1000)
+    instance.deduction_details = [create_deduction_detail_example()]
     instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.expire_time = randomize("date")
     instance.ext = {randomize(): randomize()}
+    instance.final_price = randomize("int", min_val=1, max_val=1000)
     instance.free = randomize("bool")
     instance.fulfilled_time = randomize("date")
     instance.item_id = randomize()
@@ -3048,6 +3147,7 @@ def create_order_create_example() -> OrderCreate:
     instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.item_id = randomize()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.discount_codes = [randomize()]
     instance.ext = {randomize(): randomize()}
     instance.language = randomize()
     instance.price = randomize("int", min_val=1, max_val=1000)
@@ -3060,6 +3160,29 @@ def create_order_create_example() -> OrderCreate:
 def create_order_creation_options_example() -> OrderCreationOptions:
     instance = OrderCreationOptions()
     instance.skip_price_validation = randomize("bool")
+    return instance
+
+
+def create_order_discount_preview_request_example() -> OrderDiscountPreviewRequest:
+    instance = OrderDiscountPreviewRequest()
+    instance.currency_code = randomize()
+    instance.discounted_price = randomize("int", min_val=1, max_val=1000)
+    instance.item_id = randomize()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.discount_codes = [randomize()]
+    instance.price = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_order_discount_preview_response_example() -> OrderDiscountPreviewResponse:
+    instance = OrderDiscountPreviewResponse()
+    instance.deduction = randomize("int", min_val=1, max_val=1000)
+    instance.discounted_price = randomize("int", min_val=1, max_val=1000)
+    instance.item_id = randomize()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.deduction_details = [create_deduction_detail_example()]
+    instance.final_price = randomize("int", min_val=1, max_val=1000)
+    instance.price = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -3087,6 +3210,7 @@ def create_order_info_example() -> OrderInfo:
     instance = OrderInfo()
     instance.created_at = randomize("date")
     instance.currency = create_currency_summary_example()
+    instance.deduction = randomize("int", min_val=1, max_val=1000)
     instance.discounted_price = randomize("int", min_val=1, max_val=1000)
     instance.item_id = randomize()
     instance.namespace = randomize("slug")
@@ -3103,6 +3227,7 @@ def create_order_info_example() -> OrderInfo:
     instance.charged_time = randomize("date")
     instance.created_time = randomize("date")
     instance.creation_options = create_order_creation_options_example()
+    instance.deduction_details = [create_deduction_detail_example()]
     instance.expire_time = randomize("date")
     instance.ext = {randomize(): randomize()}
     instance.fulfilled_time = randomize("date")
@@ -3605,6 +3730,13 @@ def create_payment_url_create_example() -> PaymentUrlCreate:
     instance.return_url = randomize("url")
     instance.ui = randomize()
     instance.zip_code = randomize("zip_code")
+    return instance
+
+
+def create_permission_example() -> Permission:
+    instance = Permission()
+    instance.action = randomize("int", min_val=1, max_val=1000)
+    instance.resource = randomize()
     return instance
 
 

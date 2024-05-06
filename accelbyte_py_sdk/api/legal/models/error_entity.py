@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.permission import Permission
+
 
 class ErrorEntity(Model):
     """Error entity (ErrorEntity)
@@ -39,6 +41,8 @@ class ErrorEntity(Model):
         dev_stack_trace: (devStackTrace) OPTIONAL str
 
         message_variables: (messageVariables) OPTIONAL Dict[str, str]
+
+        required_permission: (requiredPermission) OPTIONAL Permission
     """
 
     # region fields
@@ -47,6 +51,7 @@ class ErrorEntity(Model):
     error_message: str  # REQUIRED
     dev_stack_trace: str  # OPTIONAL
     message_variables: Dict[str, str]  # OPTIONAL
+    required_permission: Permission  # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +71,10 @@ class ErrorEntity(Model):
 
     def with_message_variables(self, value: Dict[str, str]) -> ErrorEntity:
         self.message_variables = value
+        return self
+
+    def with_required_permission(self, value: Permission) -> ErrorEntity:
+        self.required_permission = value
         return self
 
     # endregion with_x methods
@@ -92,6 +101,12 @@ class ErrorEntity(Model):
             }
         elif include_empty:
             result["messageVariables"] = {}
+        if hasattr(self, "required_permission"):
+            result["requiredPermission"] = self.required_permission.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["requiredPermission"] = Permission()
         return result
 
     # endregion to methods
@@ -105,6 +120,7 @@ class ErrorEntity(Model):
         error_message: str,
         dev_stack_trace: Optional[str] = None,
         message_variables: Optional[Dict[str, str]] = None,
+        required_permission: Optional[Permission] = None,
         **kwargs,
     ) -> ErrorEntity:
         instance = cls()
@@ -114,6 +130,8 @@ class ErrorEntity(Model):
             instance.dev_stack_trace = dev_stack_trace
         if message_variables is not None:
             instance.message_variables = message_variables
+        if required_permission is not None:
+            instance.required_permission = required_permission
         return instance
 
     @classmethod
@@ -139,6 +157,12 @@ class ErrorEntity(Model):
             }
         elif include_empty:
             instance.message_variables = {}
+        if "requiredPermission" in dict_ and dict_["requiredPermission"] is not None:
+            instance.required_permission = Permission.create_from_dict(
+                dict_["requiredPermission"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.required_permission = Permission()
         return instance
 
     @classmethod
@@ -182,6 +206,7 @@ class ErrorEntity(Model):
             "errorMessage": "error_message",
             "devStackTrace": "dev_stack_trace",
             "messageVariables": "message_variables",
+            "requiredPermission": "required_permission",
         }
 
     @staticmethod
@@ -191,6 +216,7 @@ class ErrorEntity(Model):
             "errorMessage": True,
             "devStackTrace": False,
             "messageVariables": False,
+            "requiredPermission": False,
         }
 
     # endregion static methods

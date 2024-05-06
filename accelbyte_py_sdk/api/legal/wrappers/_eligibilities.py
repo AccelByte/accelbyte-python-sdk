@@ -48,10 +48,6 @@ def retrieve_eligibilities_public(
     Retrieve the active policies and its conformance status by user.
     This process supports cross-namespace checking, that means if the active policy already accepted by the same user in other namespace, then it will be considered as eligible.
 
-    Other detail info:
-
-      * Required permission : login user
-
     Properties:
         url: /agreement/public/eligibilities/namespaces/{namespace}
 
@@ -94,10 +90,6 @@ async def retrieve_eligibilities_public_async(
 
     Retrieve the active policies and its conformance status by user.
     This process supports cross-namespace checking, that means if the active policy already accepted by the same user in other namespace, then it will be considered as eligible.
-
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/eligibilities/namespaces/{namespace}
@@ -146,10 +138,6 @@ def retrieve_eligibilities_public_indirect(
 
     Retrieve the active policies and its conformance status by user.
     This process only supports cross-namespace checking between game namespace and publisher namespace , that means if the active policy already accepted by the same user in publisher namespace, then it will also be considered as eligible in non-publisher namespace.
-
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/eligibilities/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}
@@ -203,10 +191,6 @@ async def retrieve_eligibilities_public_indirect_async(
 
     Retrieve the active policies and its conformance status by user.
     This process only supports cross-namespace checking between game namespace and publisher namespace , that means if the active policy already accepted by the same user in publisher namespace, then it will also be considered as eligible in non-publisher namespace.
-
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/eligibilities/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}

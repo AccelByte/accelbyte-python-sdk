@@ -55,11 +55,7 @@ class QueryWallets(Operation):
     Query wallets.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET", action=2 (READ)
-      *  Returns : paginated wallets info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WALLET [READ]
+      * Returns : paginated wallets info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/wallets
@@ -72,7 +68,7 @@ class QueryWallets(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -96,7 +92,7 @@ class QueryWallets(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

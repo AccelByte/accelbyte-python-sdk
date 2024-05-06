@@ -62,6 +62,8 @@ class PublicUpdatePasswordV3(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
@@ -180,6 +182,8 @@ class PublicUpdatePasswordV3(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
@@ -200,6 +204,8 @@ class PublicUpdatePasswordV3(Operation):
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 429:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)

@@ -64,6 +64,8 @@ class PublicSendRegistrationCode(Operation):
         400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
         409: Conflict - RestErrorResponse (10133: email already used)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
     """
 
     # region fields
@@ -181,6 +183,8 @@ class PublicSendRegistrationCode(Operation):
 
         409: Conflict - RestErrorResponse (10133: email already used)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -199,6 +203,8 @@ class PublicSendRegistrationCode(Operation):
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 409:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 429:
             return None, RestErrorResponse.create_from_dict(content)
 
         return self.handle_undocumented_response(

@@ -50,6 +50,7 @@ from ._admin_get_platform_credentials import admin_get_platform_credentials
 from ._admin_update_platform_credentials import admin_update_platform_credentials
 from ._admin_delete_platform_credentials import admin_delete_platform_credentials
 from ._admin_get_recent_player import admin_get_recent_player
+from ._admin_get_recent_team_player import admin_get_recent_team_player
 from ._admin_read_session_storage import admin_read_session_storage
 from ._admin_delete_user_session_storage import admin_delete_user_session_storage
 from ._admin_read_user_session_storage import admin_read_user_session_storage
@@ -91,6 +92,7 @@ from ._public_party_reject import public_party_reject
 from ._public_party_kick import public_party_kick
 from ._public_create_party import public_create_party
 from ._public_get_recent_player import public_get_recent_player
+from ._public_get_recent_team_player import public_get_recent_team_player
 from ._public_update_insert_session_storage_leader import (
     public_update_insert_session_storage_leader,
 )
@@ -138,6 +140,7 @@ commands = [
     admin_update_platform_credentials,
     admin_delete_platform_credentials,
     admin_get_recent_player,
+    admin_get_recent_team_player,
     admin_read_session_storage,
     admin_delete_user_session_storage,
     admin_read_user_session_storage,
@@ -175,6 +178,7 @@ commands = [
     public_party_kick,
     public_create_party,
     public_get_recent_player,
+    public_get_recent_team_player,
     public_update_insert_session_storage_leader,
     public_update_insert_session_storage,
     public_get_bulk_player_current_platform,

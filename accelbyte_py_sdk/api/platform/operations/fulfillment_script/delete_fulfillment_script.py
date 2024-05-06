@@ -34,12 +34,6 @@ class DeleteFulfillmentScript(Operation):
     """Delete fulfillment script (deleteFulfillmentScript)
 
     [Not Supported Yet In Starter] Delete fulfillment script.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [DELETE]
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -52,7 +46,7 @@ class DeleteFulfillmentScript(Operation):
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -66,7 +60,7 @@ class DeleteFulfillmentScript(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = []
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     id_: str  # REQUIRED in [path]

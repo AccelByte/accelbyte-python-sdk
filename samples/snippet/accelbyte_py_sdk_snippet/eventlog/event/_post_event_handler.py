@@ -23,7 +23,7 @@ time: str
 ux: int
 user_id: str
 
-Example: '{"AgentType": 80, "ClientID": "sbNgiRU6tZVeOESZ", "ComponentID": 75, "EventID": 53, "EventLevel": 88, "EventType": 75, "IPAddress": "f7ZKJNNvngmuHp5y", "Namespace": "OxRzaBdLDAu5ZVXN", "Realm": "25NgAq4L8yNdqJVO", "TargetNamespace": "evL2k8uNoHYnekmb", "TargetUserID": "vEzXqnKK3lNWW5SY", "Time": "YucLuXnkjMFdrGMA", "UX": 71, "UserID": "vKLVGKjH7zAKouqO"}'
+Example: '{"AgentType": 70, "ClientID": "bLERf1hQzs2XWyqS", "ComponentID": 11, "EventID": 23, "EventLevel": 95, "EventType": 11, "IPAddress": "dGpuLuDMxuu3snRN", "Namespace": "sc7fkoJlYIcm6KlQ", "Realm": "Yl2SfKO7MsIqd8lc", "TargetNamespace": "0Qdp6GPvCF3Kos6m", "TargetUserID": "j9wmEYobKN8TKGs5", "Time": "K0pQM6lOLBuZtXZH", "UX": 97, "UserID": "V13jgym603l1bfKj"}'
 """
 
 result, error = post_event_handler(

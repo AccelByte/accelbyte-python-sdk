@@ -13,7 +13,7 @@ Definition: RestapiUpdateReasonGroupRequest
 reason_ids: List[str]
 title: str
 
-Example: '{"reasonIds": ["ozHVYEw1Z3NkzRHr", "eZAmKWB6uEWuU6kG", "V72kk2uVMRi4pBHN"], "title": "GlTySYFgdwFYTVCb"}'
+Example: '{"reasonIds": ["IZqB0lrpaZjZXcTH", "txzQQd51CEBLvasO", "66cdykbNj1H7j1J0"], "title": "e3vQHCRiwWNAb8Eh"}'
 """
 
 result, error = update_reason_group(

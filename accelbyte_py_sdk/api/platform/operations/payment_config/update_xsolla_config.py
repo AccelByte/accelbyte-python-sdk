@@ -40,11 +40,7 @@ class UpdateXsollaConfig(Operation):
     [Not Supported Yet In Starter] Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/xsollaconfig
@@ -57,7 +53,7 @@ class UpdateXsollaConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XsollaConfig in body
 
@@ -77,7 +73,7 @@ class UpdateXsollaConfig(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: XsollaConfig  # OPTIONAL in [body]

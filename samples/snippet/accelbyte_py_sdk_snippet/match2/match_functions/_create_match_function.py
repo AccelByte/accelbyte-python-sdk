@@ -13,7 +13,7 @@ match_function: str
 service_app_name: str
 url: str
 
-Example: '{"match_function": "8GViyOPHzgPobN75", "serviceAppName": "FU1dLmu2hztAMifB", "url": "kmKd1junfcTeZcHm"}'
+Example: '{"match_function": "Dqz0dNWprU1WDgXc", "serviceAppName": "9vY3u4efK9Cy2jQX", "url": "ReJHA0LWzVvV65w2"}'
 """
 
 result, error = create_match_function(

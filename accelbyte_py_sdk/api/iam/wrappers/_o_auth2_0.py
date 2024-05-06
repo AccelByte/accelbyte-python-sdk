@@ -67,6 +67,7 @@ from ..operations.o_auth2_0 import VerifyTokenV3
 def admin_retrieve_user_third_party_platform_token_v3(
     platform_id: str,
     user_id: str,
+    platform_user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -77,6 +78,7 @@ def admin_retrieve_user_third_party_platform_token_v3(
     This endpoint used for retrieving third party platform token for user that login using third party,
     if user have not link requested platform in game namespace, will try to retrieving third party platform token from publisher namespace.
     Passing platform group name or it's member will return same access token that can be used across the platform members.
+    If platformUserId provided, IAM will prefer to get platform token by platform user id.
 
     Notes:
     The third party platform and platform group covered for this is:
@@ -111,6 +113,8 @@ def admin_retrieve_user_third_party_platform_token_v3(
 
         user_id: (userId) REQUIRED str in path
 
+        platform_user_id: (platformUserId) OPTIONAL str in query
+
     Responses:
         200: OK - OauthmodelTokenThirdPartyResponse (Token returned)
 
@@ -127,6 +131,7 @@ def admin_retrieve_user_third_party_platform_token_v3(
     request = AdminRetrieveUserThirdPartyPlatformTokenV3.create(
         platform_id=platform_id,
         user_id=user_id,
+        platform_user_id=platform_user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -136,6 +141,7 @@ def admin_retrieve_user_third_party_platform_token_v3(
 async def admin_retrieve_user_third_party_platform_token_v3_async(
     platform_id: str,
     user_id: str,
+    platform_user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -146,6 +152,7 @@ async def admin_retrieve_user_third_party_platform_token_v3_async(
     This endpoint used for retrieving third party platform token for user that login using third party,
     if user have not link requested platform in game namespace, will try to retrieving third party platform token from publisher namespace.
     Passing platform group name or it's member will return same access token that can be used across the platform members.
+    If platformUserId provided, IAM will prefer to get platform token by platform user id.
 
     Notes:
     The third party platform and platform group covered for this is:
@@ -180,6 +187,8 @@ async def admin_retrieve_user_third_party_platform_token_v3_async(
 
         user_id: (userId) REQUIRED str in path
 
+        platform_user_id: (platformUserId) OPTIONAL str in query
+
     Responses:
         200: OK - OauthmodelTokenThirdPartyResponse (Token returned)
 
@@ -196,6 +205,7 @@ async def admin_retrieve_user_third_party_platform_token_v3_async(
     request = AdminRetrieveUserThirdPartyPlatformTokenV3.create(
         platform_id=platform_id,
         user_id=user_id,
+        platform_user_id=platform_user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -385,6 +395,9 @@ def authorize_v3(
     redirects to the given redirect uri with the following information:
     ?error={error_code}&error;_description={error description}
 
+    For Public Client case, it's mandatory to fill **code_challenge** to avoid authorization code interception attack.
+    Please refer to the RFC for more information about Proof Key for Code Exchange(PKCE): https://datatracker.ietf.org/doc/html/rfc7636
+
     Following are the error code based on the specification:
     - invalid_request: The request is missing a required parameter,
     includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.
@@ -486,6 +499,9 @@ async def authorize_v3_async(
     - **Authorize failure**:
     redirects to the given redirect uri with the following information:
     ?error={error_code}&error;_description={error description}
+
+    For Public Client case, it's mandatory to fill **code_challenge** to avoid authorization code interception attack.
+    Please refer to the RFC for more information about Proof Key for Code Exchange(PKCE): https://datatracker.ietf.org/doc/html/rfc7636
 
     Following are the error code based on the specification:
     - invalid_request: The request is missing a required parameter,
@@ -848,9 +864,19 @@ def platform_token_grant_v3(
     Several platforms are grouped under account groups. The accounts on these platforms have the same platform user id.
     Login using one of these platform will returns the same IAM user.
     Following is the current registered account grouping:
-    - (psn) ps4web
-    - (psn) ps4
-    - (psn) ps5
+    - Steam group(steamnetwork):
+    - steam
+    - steamopenid
+    - PSN group(psn)
+    - ps4web
+    - ps4
+    - ps5
+    - XBOX group(xbox)
+    - live
+    - xblweb
+    - Oculus group(oculusgroup)
+    - oculus
+    - oculusweb
 
     ## Access Token Content
     Following is the access tokenâs content:
@@ -979,9 +1005,19 @@ async def platform_token_grant_v3_async(
     Several platforms are grouped under account groups. The accounts on these platforms have the same platform user id.
     Login using one of these platform will returns the same IAM user.
     Following is the current registered account grouping:
-    - (psn) ps4web
-    - (psn) ps4
-    - (psn) ps5
+    - Steam group(steamnetwork):
+    - steam
+    - steamopenid
+    - PSN group(psn)
+    - ps4web
+    - ps4
+    - ps5
+    - XBOX group(xbox)
+    - live
+    - xblweb
+    - Oculus group(oculusgroup)
+    - oculus
+    - oculusweb
 
     ## Access Token Content
     Following is the access tokenâs content:

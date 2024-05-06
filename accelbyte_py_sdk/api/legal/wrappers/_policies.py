@@ -383,7 +383,6 @@ def retrieve_latest_policies_public(
         * User: Region UA
         * Query: alwaysIncludeDefault: true
         * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
-      *  Required permission: login user
 
     Properties:
         url: /agreement/public/policies/namespaces/{namespace}
@@ -454,7 +453,6 @@ async def retrieve_latest_policies_public_async(
         * User: Region UA
         * Query: alwaysIncludeDefault: true
         * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
-      *  Required permission: login user
 
     Properties:
         url: /agreement/public/policies/namespaces/{namespace}
@@ -507,12 +505,6 @@ def retrieve_policies(
     """Retrieve Policies by Country (retrievePolicies)
 
     Retrieve all active policies based on a country.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/policies/countries/{countryCode}
@@ -525,7 +517,7 @@ def retrieve_policies(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         country_code: (countryCode) REQUIRED str in path
 
@@ -545,12 +537,6 @@ async def retrieve_policies_async(
     """Retrieve Policies by Country (retrievePolicies)
 
     Retrieve all active policies based on a country.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/policies/countries/{countryCode}
@@ -563,7 +549,7 @@ async def retrieve_policies_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         country_code: (countryCode) REQUIRED str in path
 
@@ -585,12 +571,6 @@ def set_default_policy_2(
     """Set Default Policy (setDefaultPolicy_2)
 
     Update a policy to be the default.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/policies/{policyId}/default
@@ -603,7 +583,7 @@ def set_default_policy_2(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         policy_id: (policyId) REQUIRED str in path
 
@@ -625,12 +605,6 @@ async def set_default_policy_2_async(
     """Set Default Policy (setDefaultPolicy_2)
 
     Update a policy to be the default.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/policies/{policyId}/default
@@ -643,7 +617,7 @@ async def set_default_policy_2_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         policy_id: (policyId) REQUIRED str in path
 
@@ -670,12 +644,6 @@ def update_policy(
     """Update Country-Specific Policy (updatePolicy)
 
     Update country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/policies/{policyId}
@@ -688,7 +656,7 @@ def update_policy(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdatePolicyRequest in body
 
@@ -716,12 +684,6 @@ async def update_policy_async(
     """Update Country-Specific Policy (updatePolicy)
 
     Update country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/policies/{policyId}
@@ -734,7 +696,7 @@ async def update_policy_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdatePolicyRequest in body
 

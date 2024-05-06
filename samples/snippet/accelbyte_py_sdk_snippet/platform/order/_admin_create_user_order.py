@@ -13,6 +13,7 @@ body:
 Definition: AdminOrderCreate
 currency_code: str
 currency_namespace: str
+discount_codes: List[str]
 discounted_price: int
 entitlement_platform: str
 ext: Dict[str, Any]
@@ -29,7 +30,7 @@ return_url: str
 sandbox: bool
 section_id: str
 
-Example: '{"currencyCode": "p882co5osQYIWs6J", "currencyNamespace": "Dc6Iv7ARj1AiFkUU", "discountedPrice": 30, "entitlementPlatform": "IOS", "ext": {"OAvlcTg864aA5nuS": {}, "LkKmRw97jLTEKag4": {}, "HpUJxzgV4rwCy3p7": {}}, "itemId": "DiSUNdKTQ2onB083", "language": "6CVTzUeMaEZMEcLO", "options": {"skipPriceValidation": true}, "platform": "Other", "price": 54, "quantity": 32, "region": "nMGYg4OjjHUpWdlZ", "returnUrl": "yfbkIIXadrkhHj58", "sandbox": false, "sectionId": "NnkMk3O0h1QjaYHj"}'
+Example: '{"currencyCode": "VFrFgBpTZO4a1NVx", "currencyNamespace": "PYRatlHWGvAJqjpK", "discountCodes": ["CXGD63TX0nlD4e0m", "Og3LHNZ5Q8quFAeL", "7n2LkLvWVyQdJO7c"], "discountedPrice": 86, "entitlementPlatform": "Xbox", "ext": {"KJpjuAEZ3i5SSoE2": {}, "S2pnbibdwYrYHbxQ": {}, "kR7BirGLMLJkeyV7": {}}, "itemId": "NuUfGRoOqaiiA5KN", "language": "LlZfgjWhox3JpA62", "options": {"skipPriceValidation": true}, "platform": "Xbox", "price": 69, "quantity": 54, "region": "cAqG1yBEvi69nCEz", "returnUrl": "wWD3Pp2vST3Dm0QT", "sandbox": true, "sectionId": "jEbiTOKoli7kKH9w"}'
 """
 
 result, error = admin_create_user_order(

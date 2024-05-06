@@ -17,7 +17,7 @@ min_count: int
 unlimited: bool
 use_buffer_percent: bool
 
-Example: '{"buffer_count": 1, "buffer_percent": 16, "max_count": 27, "min_count": 64, "unlimited": true, "use_buffer_percent": true}'
+Example: '{"buffer_count": 51, "buffer_percent": 78, "max_count": 19, "min_count": 45, "unlimited": true, "use_buffer_percent": true}'
 """
 
 result, error = update_root_region_override(

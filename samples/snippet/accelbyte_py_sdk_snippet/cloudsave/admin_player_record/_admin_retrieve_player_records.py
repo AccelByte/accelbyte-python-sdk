@@ -10,6 +10,7 @@ result, error = admin_retrieve_player_records(
     user_id=user_id,
     limit=limit,
     offset=offset,
+    query=query,
     tags=tags,
     namespace=namespace,
     x_additional_headers=x_additional_headers,

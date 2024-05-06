@@ -38,14 +38,10 @@ class PublicGetMyWallet(Operation):
     get my wallet by currency code and namespace.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:WALLET", action=2 (READ)
-      *  Returns : wallet info
+      * Returns : wallet info
       *  Path's namespace :
         * can be filled with publisher namespace in order to get publisher user wallet
         * can be filled with game namespace in order to get game user wallet
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:WALLET [READ]
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/wallets/{currencyCode}
@@ -58,7 +54,7 @@ class PublicGetMyWallet(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         currency_code: (currencyCode) REQUIRED str in path
 
@@ -76,7 +72,7 @@ class PublicGetMyWallet(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     currency_code: str  # REQUIRED in [path]

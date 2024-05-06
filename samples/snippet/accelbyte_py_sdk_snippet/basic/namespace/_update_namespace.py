@@ -13,7 +13,7 @@ body:
 Definition: NamespaceUpdate
 display_name: str
 
-Example: '{"displayName": "wg8MiEkRtHATRkTY"}'
+Example: '{"displayName": "XjTOl9VOqlyRo38D"}'
 """
 
 result, error = update_namespace(

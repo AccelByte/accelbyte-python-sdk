@@ -55,7 +55,6 @@ class RetrieveLatestPoliciesPublic(Operation):
         * User: Region UA
         * Query: alwaysIncludeDefault: true
         * Response: Document 1 (UA), Document 2 (US), Document 3 (US)
-      *  Required permission: login user
 
     Properties:
         url: /agreement/public/policies/namespaces/{namespace}

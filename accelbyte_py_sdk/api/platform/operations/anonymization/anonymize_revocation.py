@@ -34,9 +34,6 @@ class AnonymizeRevocation(Operation):
     """anonymize revocation (anonymizeRevocation)
 
     Anonymize revocation. At current it will only anonymize revocation history.
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION, action=8 (DELETE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/revocation

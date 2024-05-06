@@ -12,7 +12,7 @@ Definition: ModelUpdateUserDeletionStatusRequest
 deletion_date: int
 enabled: bool
 
-Example: '{"deletionDate": 20, "enabled": false}'
+Example: '{"deletionDate": 21, "enabled": false}'
 """
 
 result, error = admin_update_user_deletion_status_v3(

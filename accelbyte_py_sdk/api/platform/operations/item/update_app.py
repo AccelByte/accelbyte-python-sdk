@@ -129,11 +129,7 @@ class UpdateApp(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
-      *  Returns : updated app data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
+      * Returns : updated app data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}/app
@@ -146,7 +142,7 @@ class UpdateApp(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AppUpdate in body
 
@@ -172,7 +168,7 @@ class UpdateApp(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: AppUpdate  # OPTIONAL in [body]

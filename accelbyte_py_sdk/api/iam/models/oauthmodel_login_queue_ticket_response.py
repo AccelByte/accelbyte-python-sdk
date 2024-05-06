@@ -38,6 +38,8 @@ class OauthmodelLoginQueueTicketResponse(Model):
 
         estimated_waiting_time_in_seconds: (estimatedWaitingTimeInSeconds) REQUIRED int
 
+        player_polling_time_in_seconds: (playerPollingTimeInSeconds) REQUIRED int
+
         position: (position) REQUIRED int
 
         reconnect_expired_at: (reconnectExpiredAt) REQUIRED int
@@ -51,6 +53,7 @@ class OauthmodelLoginQueueTicketResponse(Model):
 
     cancel: OauthmodelTicketEndpointAction  # REQUIRED
     estimated_waiting_time_in_seconds: int  # REQUIRED
+    player_polling_time_in_seconds: int  # REQUIRED
     position: int  # REQUIRED
     reconnect_expired_at: int  # REQUIRED
     refresh: OauthmodelTicketEndpointAction  # REQUIRED
@@ -70,6 +73,12 @@ class OauthmodelLoginQueueTicketResponse(Model):
         self, value: int
     ) -> OauthmodelLoginQueueTicketResponse:
         self.estimated_waiting_time_in_seconds = value
+        return self
+
+    def with_player_polling_time_in_seconds(
+        self, value: int
+    ) -> OauthmodelLoginQueueTicketResponse:
+        self.player_polling_time_in_seconds = value
         return self
 
     def with_position(self, value: int) -> OauthmodelLoginQueueTicketResponse:
@@ -108,6 +117,12 @@ class OauthmodelLoginQueueTicketResponse(Model):
             )
         elif include_empty:
             result["estimatedWaitingTimeInSeconds"] = 0
+        if hasattr(self, "player_polling_time_in_seconds"):
+            result["playerPollingTimeInSeconds"] = int(
+                self.player_polling_time_in_seconds
+            )
+        elif include_empty:
+            result["playerPollingTimeInSeconds"] = 0
         if hasattr(self, "position"):
             result["position"] = int(self.position)
         elif include_empty:
@@ -135,6 +150,7 @@ class OauthmodelLoginQueueTicketResponse(Model):
         cls,
         cancel: OauthmodelTicketEndpointAction,
         estimated_waiting_time_in_seconds: int,
+        player_polling_time_in_seconds: int,
         position: int,
         reconnect_expired_at: int,
         refresh: OauthmodelTicketEndpointAction,
@@ -144,6 +160,7 @@ class OauthmodelLoginQueueTicketResponse(Model):
         instance = cls()
         instance.cancel = cancel
         instance.estimated_waiting_time_in_seconds = estimated_waiting_time_in_seconds
+        instance.player_polling_time_in_seconds = player_polling_time_in_seconds
         instance.position = position
         instance.reconnect_expired_at = reconnect_expired_at
         instance.refresh = refresh
@@ -172,6 +189,15 @@ class OauthmodelLoginQueueTicketResponse(Model):
             )
         elif include_empty:
             instance.estimated_waiting_time_in_seconds = 0
+        if (
+            "playerPollingTimeInSeconds" in dict_
+            and dict_["playerPollingTimeInSeconds"] is not None
+        ):
+            instance.player_polling_time_in_seconds = int(
+                dict_["playerPollingTimeInSeconds"]
+            )
+        elif include_empty:
+            instance.player_polling_time_in_seconds = 0
         if "position" in dict_ and dict_["position"] is not None:
             instance.position = int(dict_["position"])
         elif include_empty:
@@ -235,6 +261,7 @@ class OauthmodelLoginQueueTicketResponse(Model):
         return {
             "cancel": "cancel",
             "estimatedWaitingTimeInSeconds": "estimated_waiting_time_in_seconds",
+            "playerPollingTimeInSeconds": "player_polling_time_in_seconds",
             "position": "position",
             "reconnectExpiredAt": "reconnect_expired_at",
             "refresh": "refresh",
@@ -246,6 +273,7 @@ class OauthmodelLoginQueueTicketResponse(Model):
         return {
             "cancel": True,
             "estimatedWaitingTimeInSeconds": True,
+            "playerPollingTimeInSeconds": True,
             "position": True,
             "reconnectExpiredAt": True,
             "refresh": True,

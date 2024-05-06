@@ -2014,6 +2014,7 @@ def admin_retrieve_player_records(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    query: Optional[str] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2044,6 +2045,8 @@ def admin_retrieve_player_records(
 
         offset: (offset) OPTIONAL int in query
 
+        query: (query) OPTIONAL str in query
+
         tags: (tags) OPTIONAL List[str] in query
 
     Responses:
@@ -2065,6 +2068,7 @@ def admin_retrieve_player_records(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        query=query,
         tags=tags,
         namespace=namespace,
     )
@@ -2076,6 +2080,7 @@ async def admin_retrieve_player_records_async(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    query: Optional[str] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2106,6 +2111,8 @@ async def admin_retrieve_player_records_async(
 
         offset: (offset) OPTIONAL int in query
 
+        query: (query) OPTIONAL str in query
+
         tags: (tags) OPTIONAL List[str] in query
 
     Responses:
@@ -2127,6 +2134,7 @@ async def admin_retrieve_player_records_async(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        query=query,
         tags=tags,
         namespace=namespace,
     )

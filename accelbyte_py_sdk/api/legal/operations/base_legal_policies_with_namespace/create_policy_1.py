@@ -39,12 +39,6 @@ class CreatePolicy1(Operation):
     """Create a Base Legal Policy (createPolicy_1)
 
     Create a legal policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies
@@ -57,7 +51,7 @@ class CreatePolicy1(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CreateBasePolicyRequestV2 in body
 
@@ -79,7 +73,7 @@ class CreatePolicy1(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: CreateBasePolicyRequestV2  # OPTIONAL in [body]

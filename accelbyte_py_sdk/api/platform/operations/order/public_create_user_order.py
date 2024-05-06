@@ -41,8 +41,7 @@ class PublicCreateUserOrder(Operation):
     Create an order. The result contains the checkout link and payment token. User with permission SANDBOX will create sandbox order that not real paid for xsolla/alipay and not validate price for wxpay.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ORDER", action=1 (CREATE)
-      *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
+      * Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
       * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created order
 
@@ -64,9 +63,6 @@ class PublicCreateUserOrder(Operation):
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ORDER [CREATE]
-
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/orders
 
@@ -78,7 +74,7 @@ class PublicCreateUserOrder(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL OrderCreate in body
 
@@ -89,13 +85,13 @@ class PublicCreateUserOrder(Operation):
     Responses:
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
+        400: Bad Request - ErrorEntity (20018: ecommerce item type not supported | 32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists | 32127: Discount code [{code}] can't be used on this item: {tips} | 32128: Discount code [{code}] can not be used with other code together | 32129: Can't use discount code on free order | 32130: The total discount amount cannot exceed the order price)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist | 1100001: record not found: inventory | 37142: Code [{code}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (20024: insufficient inventory capacity (max. slots) | 32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock | 37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 37179: Exceeded max redeem count per campaign per user [{maxCount}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
@@ -106,7 +102,7 @@ class PublicCreateUserOrder(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: OrderCreate  # OPTIONAL in [body]
@@ -223,13 +219,13 @@ class PublicCreateUserOrder(Operation):
 
         201: Created - OrderInfo (successful operation)
 
-        400: Bad Request - ErrorEntity (32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists)
+        400: Bad Request - ErrorEntity (20018: ecommerce item type not supported | 32121: Order price mismatch | 32122: Item type [{itemType}] does not support | 32123: Item is not purchasable | 32125: The user does not meet the purchase conditions | 32126: Section ID is required for placing this order | 35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance | 38121: Duplicate permanent item exists | 32127: Discount code [{code}] can't be used on this item: {tips} | 32128: Discount code [{code}] can not be used with other code together | 32129: Can't use discount code on free order | 32130: The total discount amount cannot exceed the order price)
 
         403: Forbidden - ErrorEntity (20016: action is banned)
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30141: Store [{storeId}] does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist)
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 36141: Currency [{currencyCode}] does not exist in namespace [{namespace}] | 49147: Published season does not exist | 1100001: record not found: inventory | 37142: Code [{code}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock)
+        409: Conflict - ErrorEntity (20024: insufficient inventory capacity (max. slots) | 32175: Exceed item [{itemId}] max count [{maxCount}] per user | 32176: Exceed item [{itemId}] max count [{maxCount}] | 31177: Permanent item already owned | 32178: User [{userId}] already owned all durable items in flexible bundle [{bundleId}], namespace: [{namespace}] | 49183: Pass item does not match published season pass | 49184: Tier item does not match published season tier | 49185: Season has not started | 49186: Pass already owned | 49187: Exceed max tier count | 20006: optimistic lock | 37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 37179: Exceeded max redeem count per campaign per user [{maxCount}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 

@@ -14,7 +14,7 @@ fields_to_be_included: List[str]
 ids_to_be_exported: List[str]
 store_id: str
 
-Example: '{"catalogType": "VIEW", "fieldsToBeIncluded": ["jxj4q40qGKKrR2hB", "43rUyUxvqlGhxT5c", "gft1Z9L3slRprmmz"], "idsToBeExported": ["AqsqkOjYdVVgKb3c", "tOmKuAbCcHnYk5A6", "f97NkqYeFenlfM6S"], "storeId": "cb3RCXHzFXZ9vVsK"}'
+Example: '{"catalogType": "CATEGORY", "fieldsToBeIncluded": ["u8uLhTFhjdFJoddy", "SkpSyNtdS15VJ0RL", "aJEGNvF06GdCqPFf"], "idsToBeExported": ["1s7D926jKCycRCh8", "wWarB1J8TACwtl5F", "wOi2RZRw2EU7ddWd"], "storeId": "6ouhb4xgaYg922Ff"}'
 """
 
 result, error = export_store_by_csv(

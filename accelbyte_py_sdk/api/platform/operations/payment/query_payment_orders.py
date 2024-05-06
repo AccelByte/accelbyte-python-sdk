@@ -60,11 +60,7 @@ class QueryPaymentOrders(Operation):
     [Not Supported Yet In Starter] Query payment orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
-      *  Returns : query payment orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+      * Returns : query payment orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders
@@ -77,7 +73,7 @@ class QueryPaymentOrders(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -101,7 +97,7 @@ class QueryPaymentOrders(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

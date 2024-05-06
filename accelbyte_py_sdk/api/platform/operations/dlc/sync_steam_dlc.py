@@ -36,12 +36,7 @@ from ...models import SteamDLCSyncRequest
 class SyncSteamDLC(Operation):
     """Sync steam dlc. (syncSteamDLC)
 
-    Sync steam dlc.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync steam dlc
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/steam/sync

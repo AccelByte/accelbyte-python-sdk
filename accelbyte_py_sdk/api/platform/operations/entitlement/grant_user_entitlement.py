@@ -55,11 +55,7 @@ class GrantUserEntitlement(Operation):
       *  LOOTBOX
 
     Other detail info:
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=1 (CREATE)
-      *  Returns : granted entitlement
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [CREATE]
+      * Returns : granted entitlement
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements
@@ -72,7 +68,7 @@ class GrantUserEntitlement(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[EntitlementGrant] in body
 
@@ -94,7 +90,7 @@ class GrantUserEntitlement(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[EntitlementGrant]  # OPTIONAL in [body]

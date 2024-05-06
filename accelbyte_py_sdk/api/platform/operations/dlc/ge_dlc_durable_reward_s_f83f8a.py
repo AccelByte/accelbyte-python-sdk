@@ -45,10 +45,7 @@ class DlcTypeEnum(StrEnum):
 class GeDLCDurableRewardShortMap(Operation):
     """Get dlc durable reward simple map (geDLCDurableRewardShortMap)
 
-    Get dlc reward simple map, only return the sku of durable item reward
-    Other detail info:
-
-      * Required permission : Authorized user
+    Get dlc reward simple map, only return the sku of durable item reward.
 
     Properties:
         url: /platform/public/namespaces/{namespace}/dlc/rewards/durable/map

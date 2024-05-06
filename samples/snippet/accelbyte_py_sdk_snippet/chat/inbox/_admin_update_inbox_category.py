@@ -19,7 +19,7 @@ json_schema: Dict[str, Any]
 save_inbox: bool
 send_notification: bool
 
-Example: '{"enabled": false, "expiresIn": 48, "hook": {"driver": "UzHLEyal9hmAU01j", "params": {"BUjU3IpfzYQh9bye": {}, "uXvCgwtpX6HtJBYy": {}, "I4K0AcUdkmQ2vd0X": {}}}, "jsonSchema": {"NFNfLs5n4H3kUmRX": {}, "AqvaK78wvNOOiyTG": {}, "SgdXJPR3LPn940Lu": {}}, "saveInbox": true, "sendNotification": true}'
+Example: '{"enabled": false, "expiresIn": 12, "hook": {"driver": "3PioCE6e17XVFOtU", "params": {"E5ueeM4Ibwg64pu0": {}, "NAWOurEi4GF60GIK": {}, "B9zPs5WbUkev45HG": {}}}, "jsonSchema": {"wgrkksqZ7xdqFBqR": {}, "0Mbt7MgVpYTXYb41": {}, "hpYs6XV7jltoW01v": {}}, "saveInbox": false, "sendNotification": true}'
 """
 
 result, error = admin_update_inbox_category(

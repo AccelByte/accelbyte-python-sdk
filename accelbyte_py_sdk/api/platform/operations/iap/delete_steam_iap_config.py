@@ -34,12 +34,6 @@ class DeleteSteamIAPConfig(Operation):
     """Delete steam iap config (deleteSteamIAPConfig)
 
     Delete steam iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/steam
@@ -52,7 +46,7 @@ class DeleteSteamIAPConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -66,7 +60,7 @@ class DeleteSteamIAPConfig(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

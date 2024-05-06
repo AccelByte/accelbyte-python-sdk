@@ -67,11 +67,7 @@ def check_event_condition(
 
     [TEST FACILITY ONLY] Forbidden in live environment. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : match result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : match result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}/match
@@ -84,7 +80,7 @@ def check_event_condition(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EventPayload in body
 
@@ -121,11 +117,7 @@ async def check_event_condition_async(
 
     [TEST FACILITY ONLY] Forbidden in live environment. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : match result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : match result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}/match
@@ -138,7 +130,7 @@ async def check_event_condition_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EventPayload in body
 
@@ -177,12 +169,8 @@ def create_reward(
     This API is used to create a reward.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
-      *  Returns : created reward data
+      * Returns : created reward data
       *  Acceptable values for rewardItem's identityType are : ITEM_ID or ITEM_SKU
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards
@@ -195,7 +183,7 @@ def create_reward(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RewardCreate in body
 
@@ -235,12 +223,8 @@ async def create_reward_async(
     This API is used to create a reward.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
-      *  Returns : created reward data
+      * Returns : created reward data
       *  Acceptable values for rewardItem's identityType are : ITEM_ID or ITEM_SKU
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards
@@ -253,7 +237,7 @@ async def create_reward_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RewardCreate in body
 
@@ -296,11 +280,7 @@ def delete_reward(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
-      *  Returns : the deleted reward data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+      * Returns : the deleted reward data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
@@ -313,7 +293,7 @@ def delete_reward(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -348,11 +328,7 @@ async def delete_reward_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
-      *  Returns : the deleted reward data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+      * Returns : the deleted reward data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
@@ -365,7 +341,7 @@ async def delete_reward_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -403,11 +379,7 @@ def delete_reward_condition_record(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
-      *  Returns : 204 No Content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+      * Returns : 204 No Content
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}/record
@@ -420,7 +392,7 @@ def delete_reward_condition_record(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL DeleteRewardConditionRequest in body
 
@@ -457,11 +429,7 @@ async def delete_reward_condition_record_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
-      *  Returns : 204 No Content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+      * Returns : 204 No Content
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}/record
@@ -474,7 +442,7 @@ async def delete_reward_condition_record_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL DeleteRewardConditionRequest in body
 
@@ -509,13 +477,6 @@ def export_rewards(
 
     Export reward configurations for a given namespace into file. At current, only JSON file is supported.
 
-    Other detail info:
-
-      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/export
 
@@ -527,7 +488,7 @@ def export_rewards(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -554,13 +515,6 @@ async def export_rewards_async(
 
     Export reward configurations for a given namespace into file. At current, only JSON file is supported.
 
-    Other detail info:
-
-      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/export
 
@@ -572,7 +526,7 @@ async def export_rewards_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -603,11 +557,7 @@ def get_reward(
     This API is used to get reward by reward Id.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : reward instance
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : reward instance
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
@@ -620,7 +570,7 @@ def get_reward(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -654,11 +604,7 @@ async def get_reward_async(
     This API is used to get reward by reward Id.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : reward instance
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : reward instance
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
@@ -671,7 +617,7 @@ async def get_reward_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -707,11 +653,7 @@ def get_reward_1(
     This API is used to get reward by reward Id.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : reward instance
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : reward instance
 
     Properties:
         url: /platform/public/namespaces/{namespace}/rewards/{rewardId}
@@ -724,7 +666,7 @@ def get_reward_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -758,11 +700,7 @@ async def get_reward_1_async(
     This API is used to get reward by reward Id.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : reward instance
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : reward instance
 
     Properties:
         url: /platform/public/namespaces/{namespace}/rewards/{rewardId}
@@ -775,7 +713,7 @@ async def get_reward_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -811,11 +749,7 @@ def get_reward_by_code(
     This API is used to get reward by reward code.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : reward instance
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : reward instance
 
     Properties:
         url: /platform/public/namespaces/{namespace}/rewards/byCode
@@ -828,7 +762,7 @@ def get_reward_by_code(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -862,11 +796,7 @@ async def get_reward_by_code_async(
     This API is used to get reward by reward code.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : reward instance
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : reward instance
 
     Properties:
         url: /platform/public/namespaces/{namespace}/rewards/byCode
@@ -879,7 +809,7 @@ async def get_reward_by_code_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -915,13 +845,6 @@ def import_rewards(
 
     Import reward configurations for a given namespace from file. At current, only JSON file is supported.
 
-    Other detail info:
-
-      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/import
 
@@ -933,7 +856,7 @@ def import_rewards(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -972,13 +895,6 @@ async def import_rewards_async(
 
     Import reward configurations for a given namespace from file. At current, only JSON file is supported.
 
-    Other detail info:
-
-      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/import
 
@@ -990,7 +906,7 @@ async def import_rewards_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -1035,11 +951,7 @@ def query_rewards(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : the list of rewards
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : the list of rewards
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/byCriteria
@@ -1052,7 +964,7 @@ def query_rewards(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1099,11 +1011,7 @@ async def query_rewards_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : the list of rewards
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : the list of rewards
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/byCriteria
@@ -1116,7 +1024,7 @@ async def query_rewards_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1165,11 +1073,7 @@ def query_rewards_1(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : the list of rewards
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : the list of rewards
 
     Properties:
         url: /platform/public/namespaces/{namespace}/rewards/byCriteria
@@ -1182,7 +1086,7 @@ def query_rewards_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1229,11 +1133,7 @@ async def query_rewards_1_async(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:REWARD", action=2 (READ)
-      *  Returns : the list of rewards
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:REWARD [READ]
+      * Returns : the list of rewards
 
     Properties:
         url: /platform/public/namespaces/{namespace}/rewards/byCriteria
@@ -1246,7 +1146,7 @@ async def query_rewards_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1292,12 +1192,8 @@ def update_reward(
     This API is used to update a reward.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=4 (UPDATE)
-      *  Returns : reward instance
+      * Returns : reward instance
       *  Acceptable values for rewardItem's identityType are : ITEM_ID or ITEM_SKU
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
@@ -1310,7 +1206,7 @@ def update_reward(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RewardUpdate in body
 
@@ -1352,12 +1248,8 @@ async def update_reward_async(
     This API is used to update a reward.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=4 (UPDATE)
-      *  Returns : reward instance
+      * Returns : reward instance
       *  Acceptable values for rewardItem's identityType are : ITEM_ID or ITEM_SKU
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
@@ -1370,7 +1262,7 @@ async def update_reward_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RewardUpdate in body
 

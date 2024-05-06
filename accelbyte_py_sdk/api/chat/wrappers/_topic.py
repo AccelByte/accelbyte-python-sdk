@@ -48,6 +48,8 @@ from ..models import ModelsChannelTopicSummaryResponse
 from ..models import ModelsChannelTopicWithPaginationResponse
 from ..models import ModelsChatMessageResponse
 from ..models import ModelsChatMessageWithPaginationResponse
+from ..models import ModelsMessageRequest
+from ..models import ModelsMessageResultWithAttributes
 from ..models import ModelsPublicBanTopicMembersRequest
 from ..models import ModelsPublicBanTopicMembersResponse
 from ..models import ModelsPublicUnbanTopicMembersRequest
@@ -70,6 +72,7 @@ from ..operations.topic import AdminCreateNamespaceTopic
 from ..operations.topic import AdminCreateTopic
 from ..operations.topic import AdminDeleteChat
 from ..operations.topic import AdminDeleteTopic
+from ..operations.topic import AdminFilterChatMessage
 from ..operations.topic import AdminQueryTopic
 from ..operations.topic import (
     AdminQueryTopicTopicSubTypeEnum,
@@ -97,6 +100,7 @@ from ..operations.topic import PublicMuteUser
 from ..operations.topic import PublicTopicList
 from ..operations.topic import PublicUnbanTopicMembers
 from ..operations.topic import PublicUnmuteUser
+from ..models import ModelsMessageRequestTopicTypeEnum
 
 
 @same_doc_as(AdminAddTopicMember)
@@ -1164,6 +1168,116 @@ async def admin_delete_topic_async(
             return None, error
     request = AdminDeleteTopic.create(
         topic=topic,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminFilterChatMessage)
+def admin_filter_chat_message(
+    body: ModelsMessageRequest,
+    detail: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Return filtered chat message (adminFilterChatMessage)
+
+    For testing purpose, doesn't send any message to the topic. Always do filter regardless of enableProfanityFilter configuration.
+
+    Properties:
+        url: /chat/admin/namespaces/{namespace}/chat/filter
+
+        method: POST
+
+        tags: ["topic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsMessageRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        detail: (detail) OPTIONAL bool in query
+
+    Responses:
+        200: OK - ModelsMessageResultWithAttributes (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminFilterChatMessage.create(
+        body=body,
+        detail=detail,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminFilterChatMessage)
+async def admin_filter_chat_message_async(
+    body: ModelsMessageRequest,
+    detail: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Return filtered chat message (adminFilterChatMessage)
+
+    For testing purpose, doesn't send any message to the topic. Always do filter regardless of enableProfanityFilter configuration.
+
+    Properties:
+        url: /chat/admin/namespaces/{namespace}/chat/filter
+
+        method: POST
+
+        tags: ["topic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsMessageRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        detail: (detail) OPTIONAL bool in query
+
+    Responses:
+        200: OK - ModelsMessageResultWithAttributes (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminFilterChatMessage.create(
+        body=body,
+        detail=detail,
         namespace=namespace,
     )
     return await run_request_async(

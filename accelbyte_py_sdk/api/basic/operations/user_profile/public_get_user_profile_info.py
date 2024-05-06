@@ -40,12 +40,8 @@ class PublicGetUserProfileInfo(Operation):
     Get user profile.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Action code : 11403
+      * Action code : 11403
       *  Returns : user profile
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
@@ -58,7 +54,7 @@ class PublicGetUserProfileInfo(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -82,7 +78,7 @@ class PublicGetUserProfileInfo(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

@@ -36,10 +36,8 @@ from ...models import ResponseError
 class AdminSubmitUserAccountDeletionRequest(Operation):
     """Submit user's account deletion requests (AdminSubmitUserAccountDeletionRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]
+    Submit user's account deletion requests
+    Scope: account
 
     Required Scope(s):
         - account

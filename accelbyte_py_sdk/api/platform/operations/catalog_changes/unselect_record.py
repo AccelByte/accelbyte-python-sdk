@@ -36,12 +36,6 @@ class UnselectRecord(Operation):
     """Unselect a change (unselectRecord)
 
     Unselect a change, it will not be included when partial publish.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/catalogChanges/{changeId}/unselect
@@ -54,7 +48,7 @@ class UnselectRecord(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         change_id: (changeId) REQUIRED str in path
 
@@ -76,7 +70,7 @@ class UnselectRecord(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     change_id: str  # REQUIRED in [path]

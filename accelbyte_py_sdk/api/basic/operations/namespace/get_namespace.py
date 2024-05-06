@@ -41,12 +41,8 @@ class GetNamespace(Operation):
     In multi tenant mode, parentNamespace will be returned.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11304
+      * Action code : 11304
       *  Returns : namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}
@@ -59,7 +55,7 @@ class GetNamespace(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -83,7 +79,7 @@ class GetNamespace(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

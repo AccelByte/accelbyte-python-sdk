@@ -12,6 +12,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 body:
 Definition: OrderCreate
 currency_code: str
+discount_codes: List[str]
 discounted_price: int
 ext: Dict[str, Any]
 item_id: str
@@ -22,7 +23,7 @@ region: str
 return_url: str
 section_id: str
 
-Example: '{"currencyCode": "Sv6fGhvtu7yHI7AD", "discountedPrice": 98, "ext": {"5RoOSF4fwcDruuSq": {}, "J4IXG3KJ5zsThT9b": {}, "w7WmO3gyxOOgZ7Tb": {}}, "itemId": "NBPOau81iBTmmxZ5", "language": "Fq-DVwI_779", "price": 30, "quantity": 95, "region": "mYmNKkJx8Y6zxC3N", "returnUrl": "jsAtZwl5couZE0kz", "sectionId": "06qhxa4UloNGHtXm"}'
+Example: '{"currencyCode": "Gs215EFC4zuMGlTP", "discountCodes": ["zHFQFr64fkei5wEB", "Net73SbfvGVAC2KF", "9RWifYOkhikC0rM7"], "discountedPrice": 73, "ext": {"K0uxEcnYdj3oK2PL": {}, "aSyJe4LY39coqn43": {}, "oA9mjcxAg7D2npJg": {}}, "itemId": "EncDskydm5G59suL", "language": "jC_Zu", "price": 4, "quantity": 74, "region": "uBjGDh7FNn1CsrzB", "returnUrl": "w5PxbijGzseaJKpr", "sectionId": "wcs3w2S71jlZbl2t"}'
 """
 
 result, error = public_create_user_order(

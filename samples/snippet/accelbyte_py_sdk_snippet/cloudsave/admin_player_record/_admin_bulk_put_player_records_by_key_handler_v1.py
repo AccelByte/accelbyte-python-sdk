@@ -21,7 +21,7 @@ Definition: List[ModelsBulkUpdatePlayerRecordByKeyRequestDetail]
     user_id: str
     value: Dict[str, Any]
 
-Example: '{"data": [{"user_id": "j9JJpRmYoqz1Vywz", "value": {"Wj7UNTCW8fP6j2Oi": {}, "qc9I6lJXFuh8UtKk": {}, "NVsvQJXqAzQkQdDr": {}}}, {"user_id": "t1sVojIzct7nDxFz", "value": {"QIYy04IIVLyYKRxm": {}, "AXpAmKjJy6jxS0YJ": {}, "78tsTSjSUFTGv2Zo": {}}}, {"user_id": "39ZajH05umReWlEl", "value": {"ndyRwNaTBbS4DuIY": {}, "3oRCJL1eVATS6J2R": {}, "8esdWJjgmnt8isKh": {}}}]}'
+Example: '{"data": [{"user_id": "KGG62FaWODi4Luyv", "value": {"wJtmLFD48LJDV6gx": {}, "L6JUecPfjPm9MgJA": {}, "hqVmMmnqKB8hQNJg": {}}}, {"user_id": "KkTrGRuOhtOqJQ7w", "value": {"595VvNwZmgNY7b9a": {}, "js6gCgz3jK9zOxw9": {}, "2guODAGpByn4RIC8": {}}}, {"user_id": "WXNH5K6eWxysAK0Q", "value": {"78Hdmre49ACdOOFH": {}, "dg9l8n0ppeIdmPXl": {}, "MqzxeQ9gNiwbTCcJ": {}}}]}'
 """
 
 result, error = admin_bulk_put_player_records_by_key_handler_v1(

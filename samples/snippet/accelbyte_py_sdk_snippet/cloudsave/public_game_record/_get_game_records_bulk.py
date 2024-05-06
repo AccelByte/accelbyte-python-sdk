@@ -12,7 +12,7 @@ body:
 Definition: ModelsBulkGetGameRecordRequest
 keys: List[str]
 
-Example: '{"keys": ["AQEgx9HZuNdgQSGL", "kqjPCc5mLbi3iklZ", "XLFtLJU8ySW5ehLv"]}'
+Example: '{"keys": ["Kz9R0whyJmOdlmlB", "JLy2AeknEs2wbPas", "ya5BH2qlf6h9VvFV"]}'
 """
 
 result, error = get_game_records_bulk(

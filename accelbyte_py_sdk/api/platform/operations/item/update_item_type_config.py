@@ -40,11 +40,7 @@ class UpdateItemTypeConfig(Operation):
 
     [Not Supported Yet In Starter] This API is used to update an item type config.
 
-    *  Required permission : resource="ADMIN:ITEM:CONFIG", action=4 (UPDATE)
     *  Returns : item type config data
-
-    Required Permission(s):
-        - ADMIN:ITEM:CONFIG [UPDATE]
 
     Properties:
         url: /platform/admin/items/configs/{id}
@@ -57,7 +53,7 @@ class UpdateItemTypeConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ItemTypeConfigUpdate in body
 
@@ -79,7 +75,7 @@ class UpdateItemTypeConfig(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ItemTypeConfigUpdate  # OPTIONAL in [body]

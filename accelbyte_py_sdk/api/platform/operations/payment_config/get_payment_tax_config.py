@@ -38,11 +38,7 @@ class GetPaymentTaxConfig(Operation):
     [Not Supported Yet In Starter] Get payment global tax config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider list
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider list
 
     Properties:
         url: /platform/admin/payment/config/tax
@@ -55,7 +51,7 @@ class GetPaymentTaxConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - PaymentTaxConfigInfo (successful operation)
@@ -67,7 +63,7 @@ class GetPaymentTaxConfig(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     # endregion fields

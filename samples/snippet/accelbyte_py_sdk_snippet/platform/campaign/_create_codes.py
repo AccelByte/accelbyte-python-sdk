@@ -11,9 +11,10 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 """
 body:
 Definition: CodeCreate
+code_value: str
 quantity: int
 
-Example: '{"quantity": 76}'
+Example: '{"codeValue": "PquJlsUwnDSiXaXV", "quantity": 20}'
 """
 
 result, error = create_codes(

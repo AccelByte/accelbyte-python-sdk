@@ -53,14 +53,10 @@ def create_fulfillment_script(
     [Not Supported Yet In Starter] Create fulfillment script.
     Other detail info:
 
-      * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
 
     Fulfillment scripts are used for adding custom fulfillment logic based on ITEM_TYPE : [MEDIA,INGAMEITEM] for now, and the custom scripts only cover grantDays.
     Example for grantDays:
     `order && ((order.currency && order.currency.currencyCode) == 'LP' || order.isFree) ? 30 : -1`
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [CREATE]
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -73,7 +69,7 @@ def create_fulfillment_script(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL FulfillmentScriptCreate in body
 
@@ -103,14 +99,10 @@ async def create_fulfillment_script_async(
     [Not Supported Yet In Starter] Create fulfillment script.
     Other detail info:
 
-      * Required permission : resource="ADMIN:FULFILLMENT", action=1 (CREATE)
 
     Fulfillment scripts are used for adding custom fulfillment logic based on ITEM_TYPE : [MEDIA,INGAMEITEM] for now, and the custom scripts only cover grantDays.
     Example for grantDays:
     `order && ((order.currency && order.currency.currencyCode) == 'LP' || order.isFree) ? 30 : -1`
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [CREATE]
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -123,7 +115,7 @@ async def create_fulfillment_script_async(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL FulfillmentScriptCreate in body
 
@@ -150,12 +142,6 @@ def delete_fulfillment_script(
     """Delete fulfillment script (deleteFulfillmentScript)
 
     [Not Supported Yet In Starter] Delete fulfillment script.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [DELETE]
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -168,7 +154,7 @@ def delete_fulfillment_script(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -188,12 +174,6 @@ async def delete_fulfillment_script_async(
     """Delete fulfillment script (deleteFulfillmentScript)
 
     [Not Supported Yet In Starter] Delete fulfillment script.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [DELETE]
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -206,7 +186,7 @@ async def delete_fulfillment_script_async(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -230,11 +210,7 @@ def get_fulfillment_script(
     [Not Supported Yet In Starter] Get fulfillment script by id.
     Other detail info:
 
-      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
-      *  Returns : get fulfillment script
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [READ]
+      * Returns : get fulfillment script
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -247,7 +223,7 @@ def get_fulfillment_script(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -271,11 +247,7 @@ async def get_fulfillment_script_async(
     [Not Supported Yet In Starter] Get fulfillment script by id.
     Other detail info:
 
-      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
-      *  Returns : get fulfillment script
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [READ]
+      * Returns : get fulfillment script
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -288,7 +260,7 @@ async def get_fulfillment_script_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -312,12 +284,6 @@ def list_fulfillment_scripts(
     """List all fulfillment scripts (listFulfillmentScripts)
 
     [Not Supported Yet In Starter] List all fulfillment scripts.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [READ]
 
     Properties:
         url: /platform/admin/fulfillment/scripts
@@ -330,7 +296,7 @@ def list_fulfillment_scripts(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - List[FulfillmentScriptInfo] (successful operation)
@@ -346,12 +312,6 @@ async def list_fulfillment_scripts_async(
     """List all fulfillment scripts (listFulfillmentScripts)
 
     [Not Supported Yet In Starter] List all fulfillment scripts.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [READ]
 
     Properties:
         url: /platform/admin/fulfillment/scripts
@@ -364,7 +324,7 @@ async def list_fulfillment_scripts_async(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - List[FulfillmentScriptInfo] (successful operation)
@@ -385,12 +345,6 @@ def update_fulfillment_script(
     """Update fulfillment script (updateFulfillmentScript)
 
     [Not Supported Yet In Starter] Update fulfillment script.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [UPDATE]
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -403,7 +357,7 @@ def update_fulfillment_script(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL FulfillmentScriptUpdate in body
 
@@ -431,12 +385,6 @@ async def update_fulfillment_script_async(
     """Update fulfillment script (updateFulfillmentScript)
 
     [Not Supported Yet In Starter] Update fulfillment script.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [UPDATE]
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -449,7 +397,7 @@ async def update_fulfillment_script_async(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL FulfillmentScriptUpdate in body
 

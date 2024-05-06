@@ -13,7 +13,7 @@ body:
 Definition: List[BulkStatItemCreate]
 stat_code: str
 
-Example: '[{"statCode": "yC7lGGwkhfSKAUJc"}, {"statCode": "wvGhsJjtjb2ud8RN"}, {"statCode": "NeFs8o046n0t9U6Y"}]'
+Example: '[{"statCode": "7gdgbE5OlUiJg0EM"}, {"statCode": "q64hqJrQDmHYslsT"}, {"statCode": "u1StjDV2nUZ9iMkr"}]'
 """
 
 result, error = bulk_create_user_stat_items(

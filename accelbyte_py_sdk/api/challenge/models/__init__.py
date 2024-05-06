@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -34,6 +34,7 @@ from .model_evaluate_player_progression_request import (
     ModelEvaluatePlayerProgressionRequest,
 )
 from .model_get_goals_response import ModelGetGoalsResponse
+from .model_goal_meta import ModelGoalMeta
 from .model_goal_order import ModelGoalOrder
 from .model_goal_progression_response import ModelGoalProgressionResponse
 from .model_goal_progression_response import (

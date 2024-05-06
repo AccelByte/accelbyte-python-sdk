@@ -39,8 +39,7 @@ class GetTradeHistoryByTransactionId(Operation):
 
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:TRADE, action=2 (REDA)
-      *  Returns : trade history based on transaction ID
+      * Returns : trade history based on transaction ID
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/trade/{transactionId}

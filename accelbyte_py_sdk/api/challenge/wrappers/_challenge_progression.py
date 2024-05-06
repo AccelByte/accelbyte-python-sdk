@@ -247,6 +247,9 @@ async def evaluate_my_progress_async(
 def public_get_user_progression(
     challenge_code: str,
     goal_code: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -277,6 +280,12 @@ def public_get_user_progression(
 
         goal_code: (goalCode) OPTIONAL str in query
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelUserProgressionResponse (OK)
 
@@ -295,6 +304,9 @@ def public_get_user_progression(
     request = PublicGetUserProgression.create(
         challenge_code=challenge_code,
         goal_code=goal_code,
+        limit=limit,
+        offset=offset,
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -304,6 +316,9 @@ def public_get_user_progression(
 async def public_get_user_progression_async(
     challenge_code: str,
     goal_code: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -334,6 +349,12 @@ async def public_get_user_progression_async(
 
         goal_code: (goalCode) OPTIONAL str in query
 
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelUserProgressionResponse (OK)
 
@@ -352,6 +373,9 @@ async def public_get_user_progression_async(
     request = PublicGetUserProgression.create(
         challenge_code=challenge_code,
         goal_code=goal_code,
+        limit=limit,
+        offset=offset,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(

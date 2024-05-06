@@ -39,8 +39,7 @@ class UpdateSectionPluginConfig(Operation):
 
     Update section config. Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:PLUGIN:CATALOG, action=4 (UPDATE)
-      *  Returns : updated service plugin config
+      * Returns : updated service plugin config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/catalog/plugins/section

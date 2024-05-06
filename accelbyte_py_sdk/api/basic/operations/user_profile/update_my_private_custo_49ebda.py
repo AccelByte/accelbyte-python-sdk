@@ -39,13 +39,9 @@ class UpdateMyPrivateCustomAttributesPartially(Operation):
     Update partially private custom attributes tied to me.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles/privateCustomAttributes
@@ -58,7 +54,7 @@ class UpdateMyPrivateCustomAttributesPartially(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Dict[str, Any] in body
 
@@ -82,7 +78,7 @@ class UpdateMyPrivateCustomAttributesPartially(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: Dict[str, Any]  # OPTIONAL in [body]

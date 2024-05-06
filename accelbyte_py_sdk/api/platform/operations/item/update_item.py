@@ -257,8 +257,7 @@ class UpdateItem(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=4 (UPDATE)
-      *  Returns : updated item data
+      * Returns : updated item data
 
 
 
@@ -278,9 +277,6 @@ class UpdateItem(Operation):
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ITEM [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}
 
@@ -292,7 +288,7 @@ class UpdateItem(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ItemUpdate in body
 
@@ -320,7 +316,7 @@ class UpdateItem(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ItemUpdate  # OPTIONAL in [body]

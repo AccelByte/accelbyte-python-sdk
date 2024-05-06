@@ -11,7 +11,7 @@ body:
 Definition: ModelUpdateTopicRequest
 description: str
 
-Example: '{"description": "ipfDzCpbSJcJIzCf"}'
+Example: '{"description": "We0evUFD3wbdJQ5z"}'
 """
 
 result, error = update_notification_topic_v1_admin(

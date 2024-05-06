@@ -36,12 +36,6 @@ class AnonymizeUserAgreement(Operation):
     """Anonymize user's agreement record (anonymizeUserAgreement)
 
     This API will anonymize agreement record for specified user.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
 
     Properties:
         url: /agreement/admin/users/{userId}/anonymization/agreements
@@ -54,7 +48,7 @@ class AnonymizeUserAgreement(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         user_id: (userId) REQUIRED str in path
 
@@ -70,7 +64,7 @@ class AnonymizeUserAgreement(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     user_id: str  # REQUIRED in [path]

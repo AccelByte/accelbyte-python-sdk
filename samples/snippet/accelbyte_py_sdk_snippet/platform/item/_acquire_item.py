@@ -13,7 +13,7 @@ Definition: ItemAcquireRequest
 count: int
 order_no: str
 
-Example: '{"count": 78, "orderNo": "iLMQIOpBEkEs60Ee"}'
+Example: '{"count": 60, "orderNo": "FACOPBamnVBllGga"}'
 """
 
 result, error = acquire_item(

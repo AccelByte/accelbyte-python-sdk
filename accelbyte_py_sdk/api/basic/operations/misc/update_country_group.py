@@ -44,12 +44,8 @@ class UpdateCountryGroup(Operation):
     - To update countries only, do not include countryGroupName key or just specify it with blank value.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=4 (UPDATE)
-      *  Action code : 11202
+      * Action code : 11202
       *  Returns : updated country group
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups/{countryGroupCode}
@@ -62,7 +58,7 @@ class UpdateCountryGroup(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdateCountryGroupRequest in body
 
@@ -90,7 +86,7 @@ class UpdateCountryGroup(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UpdateCountryGroupRequest  # OPTIONAL in [body]

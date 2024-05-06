@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.get_namespace_event_response import GetNamespaceEventResponse
+from ..models.paging import Paging
 
 
 class PagedResponseGetNamespaceEventResponse(Model):
@@ -36,13 +37,13 @@ class PagedResponseGetNamespaceEventResponse(Model):
     Properties:
         data: (data) REQUIRED List[GetNamespaceEventResponse]
 
-        paging: (paging) REQUIRED int
+        paging: (paging) REQUIRED Paging
     """
 
     # region fields
 
     data: List[GetNamespaceEventResponse]  # REQUIRED
-    paging: int  # REQUIRED
+    paging: Paging  # REQUIRED
 
     # endregion fields
 
@@ -54,7 +55,7 @@ class PagedResponseGetNamespaceEventResponse(Model):
         self.data = value
         return self
 
-    def with_paging(self, value: int) -> PagedResponseGetNamespaceEventResponse:
+    def with_paging(self, value: Paging) -> PagedResponseGetNamespaceEventResponse:
         self.paging = value
         return self
 
@@ -71,9 +72,9 @@ class PagedResponseGetNamespaceEventResponse(Model):
         elif include_empty:
             result["data"] = []
         if hasattr(self, "paging"):
-            result["paging"] = int(self.paging)
+            result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["paging"] = 0
+            result["paging"] = Paging()
         return result
 
     # endregion to methods
@@ -82,7 +83,7 @@ class PagedResponseGetNamespaceEventResponse(Model):
 
     @classmethod
     def create(
-        cls, data: List[GetNamespaceEventResponse], paging: int, **kwargs
+        cls, data: List[GetNamespaceEventResponse], paging: Paging, **kwargs
     ) -> PagedResponseGetNamespaceEventResponse:
         instance = cls()
         instance.data = data
@@ -106,9 +107,11 @@ class PagedResponseGetNamespaceEventResponse(Model):
         elif include_empty:
             instance.data = []
         if "paging" in dict_ and dict_["paging"] is not None:
-            instance.paging = int(dict_["paging"])
+            instance.paging = Paging.create_from_dict(
+                dict_["paging"], include_empty=include_empty
+            )
         elif include_empty:
-            instance.paging = 0
+            instance.paging = Paging()
         return instance
 
     @classmethod

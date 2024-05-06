@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Chat Service."""
 
-__version__ = "0.4.23"
+__version__ = "0.4.28"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -24,6 +24,7 @@ from .admin_create_namespace_topic import AdminCreateNamespaceTopic
 from .admin_create_topic import AdminCreateTopic
 from .admin_delete_chat import AdminDeleteChat
 from .admin_delete_topic import AdminDeleteTopic
+from .admin_filter_chat_message import AdminFilterChatMessage
 from .admin_query_topic import AdminQueryTopic
 from .admin_query_topic import (
     TopicSubTypeEnum as AdminQueryTopicTopicSubTypeEnum,

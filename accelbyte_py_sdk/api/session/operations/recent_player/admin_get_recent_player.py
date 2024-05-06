@@ -42,6 +42,8 @@ class AdminGetRecentPlayer(Operation):
     1. Using User Token : It will get the user id from the token
     2. Using client token : it will throw an error
 
+    Please ensure environment variable "RECENT_PLAYER_ENABLED" is set to "TRUE" to use this feature.
+
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/recent-player
 

@@ -36,7 +36,8 @@ from ...models import ResponseError
 class AdminGetUserAccountDeletionRequest(Operation):
     """Retrieve specific user's account deletion request (AdminGetUserAccountDeletionRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId}[READ]` and scope `account`
+    Retrieve specific user's account deletion request
+    Scope: account
 
     Required Scope(s):
         - account

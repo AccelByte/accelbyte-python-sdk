@@ -35,10 +35,8 @@ from ...models import ResponseError
 class AdminCancelUserAccountDeletionRequest(Operation):
     """Cancel user's account deletion request (AdminCancelUserAccountDeletionRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    Cancel user's account deletion request
+    Scope: account
 
     Required Scope(s):
         - account

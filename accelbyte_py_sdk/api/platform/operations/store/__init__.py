@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.50.0"
+__version__ = "4.51.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,6 +22,7 @@ from .download_csv_templates import DownloadCSVTemplates
 from .export_store import ExportStore
 from .export_store_1 import ExportStore1
 from .export_store_by_csv import ExportStoreByCSV
+from .get_catalog_config import GetCatalogConfig
 from .get_catalog_definition import GetCatalogDefinition
 from .get_catalog_definition import (
     CatalogTypeEnum as GetCatalogDefinitionCatalogTypeEnum,
@@ -36,4 +37,5 @@ from .list_stores import ListStores
 from .public_list_stores import PublicListStores
 from .query_import_history import QueryImportHistory
 from .rollback_published_store import RollbackPublishedStore
+from .update_catalog_config import UpdateCatalogConfig
 from .update_store import UpdateStore

@@ -41,13 +41,6 @@ class InitiateExportAgreementsToCSV(Operation):
 
     This Initiate API is not allow multiple export worker running for the same namespace, it will return 409 http error if so.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
-
     Properties:
         url: /agreement/admin/namespaces/{namespace}/agreements/policy-versions/users/export-csv/initiate
 
@@ -59,18 +52,24 @@ class InitiateExportAgreementsToCSV(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
+        end: (end) OPTIONAL str in query
+
         policy_version_id: (policyVersionId) REQUIRED str in query
+
+        start: (start) REQUIRED str in query
 
     Responses:
         200: OK - InitiateExportAgreementsToCSVResponse (successful operation)
 
-        404: Not Found - ErrorEntity (40035: Policy version with id: [{policyVersionId}] not found)
+        400: Bad Request - ErrorEntity (40027: Too many export running currently)
 
-        409: Conflict - ErrorEntity (40071: Previous export still running for namespace [{namespace}] and policyVersionId [{policyVersionId}])
+        404: Not Found - ErrorEntity (40045: Policy version with id: [{policyVersionId}] not found on namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (40071: Previous export still running for namespace [{namespace}] with exportId [{exportId}])
     """
 
     # region fields
@@ -79,11 +78,13 @@ class InitiateExportAgreementsToCSV(Operation):
     _method: str = "POST"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    end: str  # OPTIONAL in [query]
     policy_version_id: str  # REQUIRED in [query]
+    start: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -135,8 +136,12 @@ class InitiateExportAgreementsToCSV(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "end"):
+            result["end"] = self.end
         if hasattr(self, "policy_version_id"):
             result["policyVersionId"] = self.policy_version_id
+        if hasattr(self, "start"):
+            result["start"] = self.start
         return result
 
     # endregion get_x_params methods
@@ -151,8 +156,16 @@ class InitiateExportAgreementsToCSV(Operation):
         self.namespace = value
         return self
 
+    def with_end(self, value: str) -> InitiateExportAgreementsToCSV:
+        self.end = value
+        return self
+
     def with_policy_version_id(self, value: str) -> InitiateExportAgreementsToCSV:
         self.policy_version_id = value
+        return self
+
+    def with_start(self, value: str) -> InitiateExportAgreementsToCSV:
+        self.start = value
         return self
 
     # endregion with_x methods
@@ -165,10 +178,18 @@ class InitiateExportAgreementsToCSV(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "end") and self.end:
+            result["end"] = str(self.end)
+        elif include_empty:
+            result["end"] = ""
         if hasattr(self, "policy_version_id") and self.policy_version_id:
             result["policyVersionId"] = str(self.policy_version_id)
         elif include_empty:
             result["policyVersionId"] = ""
+        if hasattr(self, "start") and self.start:
+            result["start"] = str(self.start)
+        elif include_empty:
+            result["start"] = ""
         return result
 
     # endregion to methods
@@ -186,9 +207,11 @@ class InitiateExportAgreementsToCSV(Operation):
 
         200: OK - InitiateExportAgreementsToCSVResponse (successful operation)
 
-        404: Not Found - ErrorEntity (40035: Policy version with id: [{policyVersionId}] not found)
+        400: Bad Request - ErrorEntity (40027: Too many export running currently)
 
-        409: Conflict - ErrorEntity (40071: Previous export still running for namespace [{namespace}] and policyVersionId [{policyVersionId}])
+        404: Not Found - ErrorEntity (40045: Policy version with id: [{policyVersionId}] not found on namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (40071: Previous export still running for namespace [{namespace}] with exportId [{exportId}])
 
         ---: HttpResponse (Undocumented Response)
 
@@ -205,6 +228,8 @@ class InitiateExportAgreementsToCSV(Operation):
 
         if code == 200:
             return InitiateExportAgreementsToCSVResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
@@ -220,11 +245,19 @@ class InitiateExportAgreementsToCSV(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, policy_version_id: str, **kwargs
+        cls,
+        namespace: str,
+        policy_version_id: str,
+        start: str,
+        end: Optional[str] = None,
+        **kwargs,
     ) -> InitiateExportAgreementsToCSV:
         instance = cls()
         instance.namespace = namespace
         instance.policy_version_id = policy_version_id
+        instance.start = start
+        if end is not None:
+            instance.end = end
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -238,24 +271,36 @@ class InitiateExportAgreementsToCSV(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "end" in dict_ and dict_["end"] is not None:
+            instance.end = str(dict_["end"])
+        elif include_empty:
+            instance.end = ""
         if "policyVersionId" in dict_ and dict_["policyVersionId"] is not None:
             instance.policy_version_id = str(dict_["policyVersionId"])
         elif include_empty:
             instance.policy_version_id = ""
+        if "start" in dict_ and dict_["start"] is not None:
+            instance.start = str(dict_["start"])
+        elif include_empty:
+            instance.start = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "end": "end",
             "policyVersionId": "policy_version_id",
+            "start": "start",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "end": False,
             "policyVersionId": True,
+            "start": True,
         }
 
     # endregion static methods

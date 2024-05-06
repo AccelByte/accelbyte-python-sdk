@@ -14,7 +14,7 @@ options: List[str]
 request_id: str
 use_count: int
 
-Example: '{"options": ["hBVIr7dZkgKubOlI", "zePT8awHhZdDAii5", "TZkY9HWI6rV65QPX"], "requestId": "Gr6hhV6nCRbLiaqQ", "useCount": 20}'
+Example: '{"options": ["lkpjggi8mInL0cnn", "gpQN9JuoLJeaegIX", "Efx0PsKo4UohOFGr"], "requestId": "KcoJhNugDmKTAG4v", "useCount": 89}'
 """
 
 result, error = public_consume_user_entitlement(

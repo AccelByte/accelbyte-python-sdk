@@ -34,10 +34,7 @@ from .....core import deprecated
 class DeleteServicePluginConfig(Operation):
     """Delete service plugin config (deleteServicePluginConfig)
 
-    Delete service plugin config.
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:CONFIG:SERVICEPLUGIN, action=8 (DELETE)
+    Delete service plugin config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/configs/servicePlugin

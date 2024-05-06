@@ -37,12 +37,7 @@ class AdminUpdateServicesConfiguration(Operation):
     """Update Registered Services Configuration (AdminUpdateServicesConfiguration)
 
     Update Registered Services Configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [UPDATE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [UPDATE]
+    Scope: account
 
     Required Scope(s):
         - account

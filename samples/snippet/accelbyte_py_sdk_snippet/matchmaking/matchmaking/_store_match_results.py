@@ -19,7 +19,7 @@ Definition: List[ModelsPlayerResultRequest]
         value: float
     user_id: str
 
-Example: '{"match_id": "F1KeDXIEISaJKymW", "players": [{"results": [{"attribute": "Ax1lVBsOadGIp5vV", "value": 0.29790414028420986}, {"attribute": "x3pA0dSGbC0dSAaE", "value": 0.6480522236483317}, {"attribute": "vL4BqvGCa1eJwFVt", "value": 0.18090237373746654}], "user_id": "AUxF9zqEkjoiE1MN"}, {"results": [{"attribute": "NXDqYFIkypzOpqAr", "value": 0.12578986642791823}, {"attribute": "JlDijsQfvr1VI9qo", "value": 0.13425379512017743}, {"attribute": "A0l55Telr3S6dF3t", "value": 0.07285711707622466}], "user_id": "AQHhvkaq8zVI6kpL"}, {"results": [{"attribute": "uZlRWZleHvOivBt6", "value": 0.9125151580702469}, {"attribute": "hXyCVnXnVo5dV8aw", "value": 0.22386344102979072}, {"attribute": "IHivAcFHhfEoI6J8", "value": 0.1537999859811765}], "user_id": "Y8n3RZToWv7YMBh6"}]}'
+Example: '{"match_id": "BqP3NoYWzd4ua10i", "players": [{"results": [{"attribute": "pFoli3EilVmzgCuO", "value": 0.8643425402403792}, {"attribute": "26g8nUzRZzZiQ3UY", "value": 0.21036173839640349}, {"attribute": "D0K8UIMg4Vs4icxz", "value": 0.6314820886995336}], "user_id": "LOR8fzPmvh1R9fZo"}, {"results": [{"attribute": "Z7XqLKaeFWJm6P9X", "value": 0.8041059593393456}, {"attribute": "jMINgPGX8GYF0Kyk", "value": 0.71636832968318}, {"attribute": "Da16tb5B2CrMJQai", "value": 0.2935538274908637}], "user_id": "PMrZtB73clVWi1Ei"}, {"results": [{"attribute": "tYsTvMaohqMU8wOR", "value": 0.31158599280316335}, {"attribute": "tUaN7uHKu3xhjWse", "value": 0.7726851537976517}, {"attribute": "u0q2aQ2ncl9UYi7X", "value": 0.7744259500263043}], "user_id": "ItsKvXeFCsBM9CsI"}]}'
 """
 
 result, error = store_match_results(

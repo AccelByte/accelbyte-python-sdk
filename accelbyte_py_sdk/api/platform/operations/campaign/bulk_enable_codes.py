@@ -38,11 +38,7 @@ class BulkEnableCodes(Operation):
     Bulk enable campaign codes.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : the number of code actually enabled
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : the number of code actually enabled
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/enable/bulk
@@ -55,7 +51,7 @@ class BulkEnableCodes(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -73,7 +69,7 @@ class BulkEnableCodes(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     campaign_id: str  # REQUIRED in [path]

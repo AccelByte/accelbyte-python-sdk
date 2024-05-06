@@ -318,6 +318,7 @@ from ..api.iam.models import OauthmodelTokenWithDeviceCookieResponseV3
 from ..api.iam.models import OauthmodelUserBan
 from ..api.iam.models import RestErrorResponse
 from ..api.iam.models import RestErrorResponseWithConflictedUserPlatformAccounts
+from ..api.iam.models import RestPermission
 from ..api.iam.models import Validation
 from ..api.iam.models import ValidationDescription
 
@@ -2037,6 +2038,7 @@ def create_model_public_third_party_platform_info_example() -> (
     instance.is_active = randomize("bool")
     instance.platform_id = randomize()
     instance.platform_name = randomize()
+    instance.token_authentication_type = randomize()
     return instance
 
 
@@ -3171,6 +3173,7 @@ def create_oauthmodel_login_queue_ticket_response_example() -> (
     instance.estimated_waiting_time_in_seconds = randomize(
         "int", min_val=1, max_val=1000
     )
+    instance.player_polling_time_in_seconds = randomize("int", min_val=1, max_val=1000)
     instance.position = randomize("int", min_val=1, max_val=1000)
     instance.reconnect_expired_at = randomize("int", min_val=1, max_val=1000)
     instance.refresh = create_oauthmodel_ticket_endpoint_action_example()
@@ -3341,6 +3344,7 @@ def create_rest_error_response_example() -> RestErrorResponse:
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.message_variables = {randomize(): randomize()}
+    instance.required_permission = create_rest_permission_example()
     return instance
 
 
@@ -3356,6 +3360,13 @@ def create_rest_error_response_with_conflicted_user_platform_accounts_example() 
     instance.previous_linked_platform_account = (
         create_accountcommon_platform_linking_history_example()
     )
+    return instance
+
+
+def create_rest_permission_example() -> RestPermission:
+    instance = RestPermission()
+    instance.action = randomize("int", min_val=1, max_val=1000)
+    instance.resource = randomize()
     return instance
 
 

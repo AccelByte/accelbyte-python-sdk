@@ -34,9 +34,6 @@ class DeleteRevocationPluginConfig(Operation):
     """Delete revocation plugin config (deleteRevocationPluginConfig)
 
     Delete service plugin config.
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION, action=8 (DELETE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/plugins/revocation

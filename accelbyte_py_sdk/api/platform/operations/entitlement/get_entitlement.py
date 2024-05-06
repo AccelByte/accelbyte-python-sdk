@@ -40,11 +40,7 @@ class GetEntitlement(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
-      *  Returns : entitlement
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [READ]
+      * Returns : entitlement
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/entitlements/{entitlementId}
@@ -57,7 +53,7 @@ class GetEntitlement(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -75,7 +71,7 @@ class GetEntitlement(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     entitlement_id: str  # REQUIRED in [path]

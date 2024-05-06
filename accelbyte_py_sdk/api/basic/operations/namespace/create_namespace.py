@@ -43,12 +43,8 @@ class CreateNamespace(Operation):
     In multi tenant mode, parentNamespace will be automatically filled with requester namespace if the requester is using studio or publisher token, and it will be filled with studio namespace if the requester uses game token. An oauth client will also be created and the id will be returned.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE" , action=1 (CREATE)
-      *  Action code : 11301
+      * Action code : 11301
       *  Returns : created namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces
@@ -61,7 +57,7 @@ class CreateNamespace(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL NamespaceCreate in body
 
@@ -83,7 +79,7 @@ class CreateNamespace(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: NamespaceCreate  # OPTIONAL in [body]

@@ -38,13 +38,6 @@ class ExportStore1(Operation):
 
     This API is used to export a whole or partial store.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
-
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/stores/{storeId}/export
 
@@ -56,7 +49,7 @@ class ExportStore1(Operation):
 
         produces: ["application/zip"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ExportStoreRequest in body
 
@@ -76,7 +69,7 @@ class ExportStore1(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/zip"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ExportStoreRequest  # OPTIONAL in [body]

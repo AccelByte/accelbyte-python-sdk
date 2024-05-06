@@ -36,7 +36,12 @@ from ...models import ResponseError
 class PublicGetUserAccountDeletionStatus(Operation):
     """Retrieve specific user's account deletion status (PublicGetUserAccountDeletionStatus)
 
+    Retrieve specific user's account deletion status
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions/status

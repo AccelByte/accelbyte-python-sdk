@@ -41,12 +41,6 @@ def anonymize_user_agreement(
     """Anonymize user's agreement record (anonymizeUserAgreement)
 
     This API will anonymize agreement record for specified user.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
 
     Properties:
         url: /agreement/admin/users/{userId}/anonymization/agreements
@@ -59,7 +53,7 @@ def anonymize_user_agreement(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         user_id: (userId) REQUIRED str in path
 
@@ -81,12 +75,6 @@ async def anonymize_user_agreement_async(
     """Anonymize user's agreement record (anonymizeUserAgreement)
 
     This API will anonymize agreement record for specified user.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
 
     Properties:
         url: /agreement/admin/users/{userId}/anonymization/agreements
@@ -99,7 +87,7 @@ async def anonymize_user_agreement_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         user_id: (userId) REQUIRED str in path
 

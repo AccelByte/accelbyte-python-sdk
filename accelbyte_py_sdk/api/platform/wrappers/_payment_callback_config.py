@@ -48,11 +48,7 @@ def get_payment_callback_config(
     [Not Supported Yet In Starter] Get payment callback configuration.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : Payment callback config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [READ]
+      * Returns : Payment callback config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/config/callback
@@ -65,7 +61,7 @@ def get_payment_callback_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -95,11 +91,7 @@ async def get_payment_callback_config_async(
     [Not Supported Yet In Starter] Get payment callback configuration.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : Payment callback config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [READ]
+      * Returns : Payment callback config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/config/callback
@@ -112,7 +104,7 @@ async def get_payment_callback_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -145,11 +137,7 @@ def update_payment_callback_config(
     [Not Supported Yet In Starter] Update payment callback configuration.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : Payment callback config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [UPDATE]
+      * Returns : Payment callback config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/config/callback
@@ -162,7 +150,7 @@ def update_payment_callback_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentCallbackConfigUpdate in body
 
@@ -194,11 +182,7 @@ async def update_payment_callback_config_async(
     [Not Supported Yet In Starter] Update payment callback configuration.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : Payment callback config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT:CONFIG [UPDATE]
+      * Returns : Payment callback config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/config/callback
@@ -211,7 +195,7 @@ async def update_payment_callback_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentCallbackConfigUpdate in body
 

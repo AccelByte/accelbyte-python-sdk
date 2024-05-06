@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Chat Service."""
 
-__version__ = "0.4.23"
+__version__ = "0.4.28"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -25,6 +25,8 @@ from .wrappers import export_config
 from .wrappers import export_config_async
 from .wrappers import import_config
 from .wrappers import import_config_async
+from .wrappers import public_get_config_v1
+from .wrappers import public_get_config_v1_async
 
 # inbox
 from .wrappers import admin_add_inbox_category
@@ -105,6 +107,8 @@ from .wrappers import admin_delete_chat
 from .wrappers import admin_delete_chat_async
 from .wrappers import admin_delete_topic
 from .wrappers import admin_delete_topic_async
+from .wrappers import admin_filter_chat_message
+from .wrappers import admin_filter_chat_message_async
 from .wrappers import admin_query_topic
 from .wrappers import admin_query_topic_async
 from .wrappers import admin_query_topic_log

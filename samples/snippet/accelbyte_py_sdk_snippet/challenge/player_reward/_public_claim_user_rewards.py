@@ -13,7 +13,7 @@ body:
 Definition: ModelClaimUserRewardsReq
 reward_i_ds: List[str]
 
-Example: '{"rewardIDs": ["JkjN2r5BPFBzEcjs", "eB6babnBsERSSiQ6", "9bu83gEPQsfYznwC"]}'
+Example: '{"rewardIDs": ["unN8zizmoHcWJ1LP", "nmAO9mPRvPiKvzFB", "0iAzdGPgv9utgdd5"]}'
 """
 
 result, error = public_claim_user_rewards(

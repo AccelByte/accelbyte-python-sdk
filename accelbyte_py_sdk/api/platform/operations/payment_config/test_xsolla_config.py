@@ -51,11 +51,7 @@ class TestXsollaConfig(Operation):
       * projectSecretKey
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/xsollaconfig/test
@@ -68,7 +64,7 @@ class TestXsollaConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XsollaConfig in body
 
@@ -82,7 +78,7 @@ class TestXsollaConfig(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: XsollaConfig  # OPTIONAL in [body]

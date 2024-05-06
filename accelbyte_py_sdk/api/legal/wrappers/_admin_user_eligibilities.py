@@ -50,13 +50,6 @@ def admin_retrieve_eligibilities(
     Retrieve the active policies and its conformance status by user.
     This process only supports cross-namespace checking between game namespace and publisher namespace , that means if the active policy already accepted by the same user in publisher namespace, then it will also be considered as eligible in non-publisher namespace.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [READ]
-
     Properties:
         url: /agreement/admin/namespaces/{namespace}/users/{userId}/eligibilities
 
@@ -68,7 +61,7 @@ def admin_retrieve_eligibilities(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -114,13 +107,6 @@ async def admin_retrieve_eligibilities_async(
     Retrieve the active policies and its conformance status by user.
     This process only supports cross-namespace checking between game namespace and publisher namespace , that means if the active policy already accepted by the same user in publisher namespace, then it will also be considered as eligible in non-publisher namespace.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:LEGAL [READ]
-
     Properties:
         url: /agreement/admin/namespaces/{namespace}/users/{userId}/eligibilities
 
@@ -132,7 +118,7 @@ async def admin_retrieve_eligibilities_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 

@@ -28,7 +28,7 @@ Definition: ModelsWeeklyConfig
     reset_day: int
     reset_time: str
 
-Example: '{"daily": {"resetTime": "TvG22N15FDJajTOT"}, "descending": false, "iconURL": "kYstiAdmCHQMjyCm", "leaderboardCode": "YCQYdZQmfZwFSVzI", "monthly": {"resetDate": 18, "resetTime": "SiRMg2NITVC3IDVy"}, "name": "Y692fmvWshFwn8Iw", "seasonPeriod": 2, "startTime": "FcjpUqOOytxPVhjU", "statCode": "1RDV9sXW0JfHXCyl", "weekly": {"resetDay": 38, "resetTime": "FvyLVg7lZohyaStv"}}'
+Example: '{"daily": {"resetTime": "vSQxST7hSzM07INT"}, "descending": true, "iconURL": "ReKbqxxeYCOMi72x", "leaderboardCode": "zcvg0JLhtDCuzlxO", "monthly": {"resetDate": 98, "resetTime": "oWYKEsxgmTBiTAYo"}, "name": "LznlbSTRFyrPf449", "seasonPeriod": 100, "startTime": "YsC6J53Ttl5MYL7j", "statCode": "3CX5qkiIxkfsYQbj", "weekly": {"resetDay": 31, "resetTime": "25ImABs0vkKxRiqv"}}'
 """
 
 result, error = create_leaderboard_configuration_public_v1(

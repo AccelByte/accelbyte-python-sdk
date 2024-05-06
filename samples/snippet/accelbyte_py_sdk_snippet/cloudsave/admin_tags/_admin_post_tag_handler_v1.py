@@ -11,7 +11,7 @@ body:
 Definition: ModelsTagRequest
 tag: str
 
-Example: '{"tag": "LHakQemNWv1TtTbJ"}'
+Example: '{"tag": "NnRmJo2aRlIahIdr"}'
 """
 
 result, error = admin_post_tag_handler_v1(

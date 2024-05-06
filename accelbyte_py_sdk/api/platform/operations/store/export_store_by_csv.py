@@ -38,13 +38,6 @@ class ExportStoreByCSV(Operation):
 
     This API is used to export a store to CSV format
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/exportByCSV
 
@@ -56,7 +49,7 @@ class ExportStoreByCSV(Operation):
 
         produces: ["text/csv"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ExportStoreToCSVRequest in body
 
@@ -78,7 +71,7 @@ class ExportStoreByCSV(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["text/csv"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ExportStoreToCSVRequest  # OPTIONAL in [body]

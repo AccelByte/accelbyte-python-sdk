@@ -59,12 +59,6 @@ def create_policy_1(
     """Create a Base Legal Policy (createPolicy_1)
 
     Create a legal policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies
@@ -77,7 +71,7 @@ def create_policy_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CreateBasePolicyRequestV2 in body
 
@@ -113,12 +107,6 @@ async def create_policy_1_async(
     """Create a Base Legal Policy (createPolicy_1)
 
     Create a legal policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies
@@ -131,7 +119,7 @@ async def create_policy_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CreateBasePolicyRequestV2 in body
 
@@ -170,12 +158,6 @@ def partial_update_policy_1(
     """Update Base Legal Policy (partialUpdatePolicy_1)
 
     Update an existing base policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}
@@ -188,7 +170,7 @@ def partial_update_policy_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdateBasePolicyRequestV2 in body
 
@@ -224,12 +206,6 @@ async def partial_update_policy_1_async(
     """Update Base Legal Policy (partialUpdatePolicy_1)
 
     Update an existing base policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}
@@ -242,7 +218,7 @@ async def partial_update_policy_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UpdateBasePolicyRequestV2 in body
 
@@ -278,12 +254,6 @@ def retrieve_all_legal_policies_by_namespace(
     """Retrieve All Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
 
     Retrieve all base policies in the namespace.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies
@@ -296,7 +266,7 @@ def retrieve_all_legal_policies_by_namespace(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -322,12 +292,6 @@ async def retrieve_all_legal_policies_by_namespace_async(
     """Retrieve All Base Legal Policy in the namespace (retrieveAllLegalPoliciesByNamespace)
 
     Retrieve all base policies in the namespace.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies
@@ -340,7 +304,7 @@ async def retrieve_all_legal_policies_by_namespace_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -370,12 +334,6 @@ def retrieve_all_policy_types_1(
     """Retrieve All Policy Type (retrieveAllPolicyTypes_1)
 
     Retrieve all supported policy types.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/policy-types
@@ -388,7 +346,7 @@ def retrieve_all_policy_types_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -422,12 +380,6 @@ async def retrieve_all_policy_types_1_async(
     """Retrieve All Policy Type (retrieveAllPolicyTypes_1)
 
     Retrieve all supported policy types.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/policy-types
@@ -440,7 +392,7 @@ async def retrieve_all_policy_types_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -476,12 +428,6 @@ def retrieve_policy_country_1(
     """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry_1)
 
     Retrieve a Base Legal Policy based on a Particular Country.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}/countries/{countryCode}
@@ -494,7 +440,7 @@ def retrieve_policy_country_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         base_policy_id: (basePolicyId) REQUIRED str in path
 
@@ -530,12 +476,6 @@ async def retrieve_policy_country_1_async(
     """Retrieve a Base Legal Policy based on a Particular Country (retrievePolicyCountry_1)
 
     Retrieve a Base Legal Policy based on a Particular Country.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}/countries/{countryCode}
@@ -548,7 +488,7 @@ async def retrieve_policy_country_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         base_policy_id: (basePolicyId) REQUIRED str in path
 
@@ -585,12 +525,6 @@ def retrieve_single_policy_1(
     """Retrieve a Base Legal Policy (retrieveSinglePolicy_1)
 
     Retrieve a base policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}
@@ -603,7 +537,7 @@ def retrieve_single_policy_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         base_policy_id: (basePolicyId) REQUIRED str in path
 
@@ -635,12 +569,6 @@ async def retrieve_single_policy_1_async(
     """Retrieve a Base Legal Policy (retrieveSinglePolicy_1)
 
     Retrieve a base policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}
@@ -653,7 +581,7 @@ async def retrieve_single_policy_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         base_policy_id: (basePolicyId) REQUIRED str in path
 

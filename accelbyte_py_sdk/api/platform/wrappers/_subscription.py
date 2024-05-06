@@ -102,11 +102,7 @@ def cancel_subscription(
     Set force true, will ignore the error if subscription is during recurring charging.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : cancelled subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : cancelled subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/cancel
@@ -119,7 +115,7 @@ def cancel_subscription(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CancelRequest in body
 
@@ -169,11 +165,7 @@ async def cancel_subscription_async(
     Set force true, will ignore the error if subscription is during recurring charging.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : cancelled subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : cancelled subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/cancel
@@ -186,7 +178,7 @@ async def cancel_subscription_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CancelRequest in body
 
@@ -235,11 +227,7 @@ def check_user_subscription_subscribable_by_item_id(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : subscribable info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : subscribable info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/subscribable/byItemId
@@ -252,7 +240,7 @@ def check_user_subscription_subscribable_by_item_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -289,11 +277,7 @@ async def check_user_subscription_subscribable_by_item_id_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : subscribable info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : subscribable info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/subscribable/byItemId
@@ -306,7 +290,7 @@ async def check_user_subscription_subscribable_by_item_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -342,12 +326,6 @@ def delete_user_subscription(
     """Delete user subscription (deleteUserSubscription)
 
     [TEST FACILITY ONLY] Forbidden in live environment. Delete user subscription.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
@@ -360,7 +338,7 @@ def delete_user_subscription(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -394,12 +372,6 @@ async def delete_user_subscription_async(
     """Delete user subscription (deleteUserSubscription)
 
     [TEST FACILITY ONLY] Forbidden in live environment. Delete user subscription.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
@@ -412,7 +384,7 @@ async def delete_user_subscription_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -450,11 +422,7 @@ def get_user_subscription(
     Get user subscription.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
@@ -467,7 +435,7 @@ def get_user_subscription(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -505,11 +473,7 @@ async def get_user_subscription_async(
     Get user subscription.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
@@ -522,7 +486,7 @@ async def get_user_subscription_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -565,11 +529,7 @@ def get_user_subscription_activities(
     Get user subscription activity.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription activity
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription activity
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/activities
@@ -582,7 +542,7 @@ def get_user_subscription_activities(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -630,11 +590,7 @@ async def get_user_subscription_activities_async(
     Get user subscription activity.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription activity
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription activity
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/activities
@@ -647,7 +603,7 @@ async def get_user_subscription_activities_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -697,11 +653,7 @@ def get_user_subscription_billing_histories(
     Get user subscription billing histories.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription billing history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription billing history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history
@@ -714,7 +666,7 @@ def get_user_subscription_billing_histories(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -762,11 +714,7 @@ async def get_user_subscription_billing_histories_async(
     Get user subscription billing histories.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription billing history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription billing history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history
@@ -779,7 +727,7 @@ async def get_user_subscription_billing_histories_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -828,11 +776,7 @@ def grant_days_to_subscription(
     if the grantDays is negative or zero, it only apply to active/cancelled subscription, remove days will decrease current period end, and move the next billing date closer.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : updated subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : updated subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/grant
@@ -845,7 +789,7 @@ def grant_days_to_subscription(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL GrantSubscriptionDaysRequest in body
 
@@ -888,11 +832,7 @@ async def grant_days_to_subscription_async(
     if the grantDays is negative or zero, it only apply to active/cancelled subscription, remove days will decrease current period end, and move the next billing date closer.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : updated subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : updated subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/grant
@@ -905,7 +845,7 @@ async def grant_days_to_subscription_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL GrantSubscriptionDaysRequest in body
 
@@ -948,11 +888,7 @@ def platform_subscribe_subscription(
     Free subscribe by platform, can used by other justice service to redeem/reward the subscription.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
-      *  Returns : result subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
+      * Returns : result subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/platformSubscribe
@@ -965,7 +901,7 @@ def platform_subscribe_subscription(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlatformSubscribeRequest in body
 
@@ -1009,11 +945,7 @@ async def platform_subscribe_subscription_async(
     Free subscribe by platform, can used by other justice service to redeem/reward the subscription.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
-      *  Returns : result subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
+      * Returns : result subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/platformSubscribe
@@ -1026,7 +958,7 @@ async def platform_subscribe_subscription_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlatformSubscribeRequest in body
 
@@ -1073,11 +1005,7 @@ def process_user_subscription_notification(
     [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment notification from justice payment service.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : Process result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : Process result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/notifications
@@ -1090,7 +1018,7 @@ def process_user_subscription_notification(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TradeNotification in body
 
@@ -1132,11 +1060,7 @@ async def process_user_subscription_notification_async(
     [SERVICE COMMUNICATION ONLY] This API is used as a web hook for payment notification from justice payment service.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : Process result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : Process result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/notifications
@@ -1149,7 +1073,7 @@ async def process_user_subscription_notification_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TradeNotification in body
 
@@ -1194,11 +1118,7 @@ def public_cancel_subscription(
     Set immediate true, the subscription will be terminated immediately, otherwise till the end of current billing cycle.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : cancelled subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : cancelled subscription
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/cancel
@@ -1211,7 +1131,7 @@ def public_cancel_subscription(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CancelRequest in body
 
@@ -1256,11 +1176,7 @@ async def public_cancel_subscription_async(
     Set immediate true, the subscription will be terminated immediately, otherwise till the end of current billing cycle.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : cancelled subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : cancelled subscription
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/cancel
@@ -1273,7 +1189,7 @@ async def public_cancel_subscription_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CancelRequest in body
 
@@ -1319,11 +1235,7 @@ def public_change_subscription_billing_account(
     Only ACTIVE USER subscription with real currency billing account can be changed.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : updated subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : updated subscription
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/billingAccount
@@ -1336,7 +1248,7 @@ def public_change_subscription_billing_account(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1379,11 +1291,7 @@ async def public_change_subscription_billing_account_async(
     Only ACTIVE USER subscription with real currency billing account can be changed.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : updated subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [UPDATE]
+      * Returns : updated subscription
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/billingAccount
@@ -1396,7 +1304,7 @@ async def public_change_subscription_billing_account_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1441,11 +1349,7 @@ def public_check_user_subscription_subscribable_by_item_id(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : subscribable info
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : subscribable info
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/subscribable/byItemId
@@ -1458,7 +1362,7 @@ def public_check_user_subscription_subscribable_by_item_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1495,11 +1399,7 @@ async def public_check_user_subscription_subscribable_by_item_id_async(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : subscribable info
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : subscribable info
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/subscribable/byItemId
@@ -1512,7 +1412,7 @@ async def public_check_user_subscription_subscribable_by_item_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1550,11 +1450,7 @@ def public_get_user_subscription(
     Get user subscription.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : subscription
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
@@ -1567,7 +1463,7 @@ def public_get_user_subscription(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1605,11 +1501,7 @@ async def public_get_user_subscription_async(
     Get user subscription.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : subscription
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}
@@ -1622,7 +1514,7 @@ async def public_get_user_subscription_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1665,11 +1557,7 @@ def public_get_user_subscription_billing_histories(
     Get user subscription billing histories.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription history
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription history
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history
@@ -1682,7 +1570,7 @@ def public_get_user_subscription_billing_histories(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1730,11 +1618,7 @@ async def public_get_user_subscription_billing_histories_async(
     Get user subscription billing histories.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription history
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription history
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history
@@ -1747,7 +1631,7 @@ async def public_get_user_subscription_billing_histories_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1804,11 +1688,7 @@ def public_query_user_subscriptions(
     Query user subscriptions.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
@@ -1821,7 +1701,7 @@ def public_query_user_subscriptions(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1885,11 +1765,7 @@ async def public_query_user_subscriptions_async(
     Query user subscriptions.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
@@ -1902,7 +1778,7 @@ async def public_query_user_subscriptions_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1961,13 +1837,9 @@ def public_subscribe_subscription(
     User with permission SANDBOX will create sandbox subscription that not real paid.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
-      *  Optional permission(user with this permission will create sandbox subscription) : resource="SANDBOX", action=1 (CREATE)
+      * Optional permission(user with this permission will create sandbox subscription) : resource="SANDBOX", action=1 (CREATE)
       * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
@@ -1980,7 +1852,7 @@ def public_subscribe_subscription(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SubscribeRequest in body
 
@@ -2029,13 +1901,9 @@ async def public_subscribe_subscription_async(
     User with permission SANDBOX will create sandbox subscription that not real paid.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
-      *  Optional permission(user with this permission will create sandbox subscription) : resource="SANDBOX", action=1 (CREATE)
+      * Optional permission(user with this permission will create sandbox subscription) : resource="SANDBOX", action=1 (CREATE)
       * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
@@ -2048,7 +1916,7 @@ async def public_subscribe_subscription_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SubscribeRequest in body
 
@@ -2102,11 +1970,7 @@ def query_subscriptions(
     Query subscriptions.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscriptions
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [READ]
+      * Returns : paginated subscriptions
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/subscriptions
@@ -2119,7 +1983,7 @@ def query_subscriptions(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2179,11 +2043,7 @@ async def query_subscriptions_async(
     Query subscriptions.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscriptions
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [READ]
+      * Returns : paginated subscriptions
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/subscriptions
@@ -2196,7 +2056,7 @@ async def query_subscriptions_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2258,11 +2118,7 @@ def query_user_subscriptions(
     Query user subscriptions.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions
@@ -2275,7 +2131,7 @@ def query_user_subscriptions(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2335,11 +2191,7 @@ async def query_user_subscriptions_async(
     Query user subscriptions.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions
@@ -2352,7 +2204,7 @@ async def query_user_subscriptions_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2407,11 +2259,7 @@ def recurring_charge_subscription(
     [TEST FACILITY ONLY] Forbidden in live environment. Recurring charge subscription, it will trigger recurring charge if the USER subscription status is ACTIVE, nextBillingDate is before now and no fail recurring charge within X(default 12) hours.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : recurring charge result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [UPDATE]
+      * Returns : recurring charge result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/subscriptions/{subscriptionId}/recurring
@@ -2424,7 +2272,7 @@ def recurring_charge_subscription(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2456,11 +2304,7 @@ async def recurring_charge_subscription_async(
     [TEST FACILITY ONLY] Forbidden in live environment. Recurring charge subscription, it will trigger recurring charge if the USER subscription status is ACTIVE, nextBillingDate is before now and no fail recurring charge within X(default 12) hours.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION", action=4 (UPDATE)
-      *  Returns : recurring charge result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SUBSCRIPTION [UPDATE]
+      * Returns : recurring charge result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/subscriptions/{subscriptionId}/recurring
@@ -2473,7 +2317,7 @@ async def recurring_charge_subscription_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 

@@ -12,7 +12,7 @@ Definition: ModelBulkAccountTypeUpdateRequestV4
 test_account: bool
 user_ids: List[str]
 
-Example: '{"testAccount": false, "userIds": ["Du5m0IqI7yfrigWp", "VkPHZJGIngnNja0M", "IVINXpKhuzd1GT7j"]}'
+Example: '{"testAccount": true, "userIds": ["TcZ2nXozQroFPE6l", "r7XMEgWmyAfLyb9j", "18Y1LIP3a0y6Zngb"]}'
 """
 
 result, error = admin_bulk_update_user_account_type_v4(

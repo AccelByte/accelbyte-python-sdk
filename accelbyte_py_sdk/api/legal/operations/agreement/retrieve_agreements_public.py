@@ -37,9 +37,6 @@ class RetrieveAgreementsPublic(Operation):
     """Retrieve the accepted Legal Agreements (retrieveAgreementsPublic)
 
     Retrieve accepted Legal Agreements.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/policies

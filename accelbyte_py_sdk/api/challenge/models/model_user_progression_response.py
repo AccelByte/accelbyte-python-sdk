@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.model_goal_progression_response import ModelGoalProgressionResponse
+from ..models.model_pagination import ModelPagination
 from ..models.model_user_progression_response_meta import (
     ModelUserProgressionResponseMeta,
 )
@@ -40,12 +41,15 @@ class ModelUserProgressionResponse(Model):
         data: (data) REQUIRED List[ModelGoalProgressionResponse]
 
         meta: (meta) REQUIRED ModelUserProgressionResponseMeta
+
+        paging: (paging) REQUIRED ModelPagination
     """
 
     # region fields
 
     data: List[ModelGoalProgressionResponse]  # REQUIRED
     meta: ModelUserProgressionResponseMeta  # REQUIRED
+    paging: ModelPagination  # REQUIRED
 
     # endregion fields
 
@@ -61,6 +65,10 @@ class ModelUserProgressionResponse(Model):
         self, value: ModelUserProgressionResponseMeta
     ) -> ModelUserProgressionResponse:
         self.meta = value
+        return self
+
+    def with_paging(self, value: ModelPagination) -> ModelUserProgressionResponse:
+        self.paging = value
         return self
 
     # endregion with_x methods
@@ -79,6 +87,10 @@ class ModelUserProgressionResponse(Model):
             result["meta"] = self.meta.to_dict(include_empty=include_empty)
         elif include_empty:
             result["meta"] = ModelUserProgressionResponseMeta()
+        if hasattr(self, "paging"):
+            result["paging"] = self.paging.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["paging"] = ModelPagination()
         return result
 
     # endregion to methods
@@ -90,11 +102,13 @@ class ModelUserProgressionResponse(Model):
         cls,
         data: List[ModelGoalProgressionResponse],
         meta: ModelUserProgressionResponseMeta,
+        paging: ModelPagination,
         **kwargs,
     ) -> ModelUserProgressionResponse:
         instance = cls()
         instance.data = data
         instance.meta = meta
+        instance.paging = paging
         return instance
 
     @classmethod
@@ -119,6 +133,12 @@ class ModelUserProgressionResponse(Model):
             )
         elif include_empty:
             instance.meta = ModelUserProgressionResponseMeta()
+        if "paging" in dict_ and dict_["paging"] is not None:
+            instance.paging = ModelPagination.create_from_dict(
+                dict_["paging"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.paging = ModelPagination()
         return instance
 
     @classmethod
@@ -164,6 +184,7 @@ class ModelUserProgressionResponse(Model):
         return {
             "data": "data",
             "meta": "meta",
+            "paging": "paging",
         }
 
     @staticmethod
@@ -171,6 +192,7 @@ class ModelUserProgressionResponse(Model):
         return {
             "data": True,
             "meta": True,
+            "paging": True,
         }
 
     # endregion static methods

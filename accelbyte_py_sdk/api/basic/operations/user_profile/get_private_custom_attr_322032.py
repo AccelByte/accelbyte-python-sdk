@@ -38,12 +38,8 @@ class GetPrivateCustomAttributesInfo(Operation):
     Get user private custom attributes.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=2 (READ)
-      *  Returns : custom attributes
+      * Returns : custom attributes
       *  Action code : 11403
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/privateCustomAttributes
@@ -56,7 +52,7 @@ class GetPrivateCustomAttributesInfo(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +74,7 @@ class GetPrivateCustomAttributesInfo(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

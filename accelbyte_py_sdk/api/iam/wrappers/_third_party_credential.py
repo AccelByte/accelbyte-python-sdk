@@ -224,10 +224,12 @@ def admin_check_third_party_login_platform_availability_v3(
     """Check 3rd party platform availability (AdminCheckThirdPartyLoginPlatformAvailabilityV3)
 
     This is the API to check specific 3rd party platform availability.
-    supported platform:
-    - (psn) ps4web
-    - (psn) ps4
-    - (psn) ps5
+    Passing platform group name or it's member will return same platform availability data
+    Supported third party platform and platform group:
+    - PSN group(psn)
+    - ps4web
+    - ps4
+    - ps5
 
     Properties:
         url: /iam/v3/admin/platforms/{platformId}/availability
@@ -266,10 +268,12 @@ async def admin_check_third_party_login_platform_availability_v3_async(
     """Check 3rd party platform availability (AdminCheckThirdPartyLoginPlatformAvailabilityV3)
 
     This is the API to check specific 3rd party platform availability.
-    supported platform:
-    - (psn) ps4web
-    - (psn) ps4
-    - (psn) ps5
+    Passing platform group name or it's member will return same platform availability data
+    Supported third party platform and platform group:
+    - PSN group(psn)
+    - ps4web
+    - ps4
+    - ps5
 
     Properties:
         url: /iam/v3/admin/platforms/{platformId}/availability

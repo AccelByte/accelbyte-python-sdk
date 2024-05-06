@@ -42,8 +42,7 @@ class UpdateView(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-      *  Returns : updated view data
+      * Returns : updated view data
 
 
 
@@ -63,9 +62,6 @@ class UpdateView(Operation):
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/views/{viewId}
 
@@ -77,7 +73,7 @@ class UpdateView(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ViewUpdate in body
 
@@ -105,7 +101,7 @@ class UpdateView(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ViewUpdate  # OPTIONAL in [body]

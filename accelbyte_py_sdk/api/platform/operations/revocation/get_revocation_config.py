@@ -39,8 +39,7 @@ class GetRevocationConfig(Operation):
     Get revocation configuration.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
-      *  Returns : Revocation config
+      * Returns : Revocation config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/config

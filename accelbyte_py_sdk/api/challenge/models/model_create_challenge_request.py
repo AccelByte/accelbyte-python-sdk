@@ -70,6 +70,8 @@ class ModelCreateChallengeRequest(Model):
         end_after: (endAfter) OPTIONAL int
 
         end_date: (endDate) OPTIONAL str
+
+        repeat_after: (repeatAfter) OPTIONAL int
     """
 
     # region fields
@@ -84,6 +86,7 @@ class ModelCreateChallengeRequest(Model):
     description: str  # OPTIONAL
     end_after: int  # OPTIONAL
     end_date: str  # OPTIONAL
+    repeat_after: int  # OPTIONAL
 
     # endregion fields
 
@@ -135,6 +138,10 @@ class ModelCreateChallengeRequest(Model):
         self.end_date = value
         return self
 
+    def with_repeat_after(self, value: int) -> ModelCreateChallengeRequest:
+        self.repeat_after = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -181,6 +188,10 @@ class ModelCreateChallengeRequest(Model):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = ""
+        if hasattr(self, "repeat_after"):
+            result["repeatAfter"] = int(self.repeat_after)
+        elif include_empty:
+            result["repeatAfter"] = 0
         return result
 
     # endregion to methods
@@ -200,6 +211,7 @@ class ModelCreateChallengeRequest(Model):
         description: Optional[str] = None,
         end_after: Optional[int] = None,
         end_date: Optional[str] = None,
+        repeat_after: Optional[int] = None,
         **kwargs,
     ) -> ModelCreateChallengeRequest:
         instance = cls()
@@ -217,6 +229,8 @@ class ModelCreateChallengeRequest(Model):
             instance.end_after = end_after
         if end_date is not None:
             instance.end_date = end_date
+        if repeat_after is not None:
+            instance.repeat_after = repeat_after
         return instance
 
     @classmethod
@@ -269,6 +283,10 @@ class ModelCreateChallengeRequest(Model):
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = ""
+        if "repeatAfter" in dict_ and dict_["repeatAfter"] is not None:
+            instance.repeat_after = int(dict_["repeatAfter"])
+        elif include_empty:
+            instance.repeat_after = 0
         return instance
 
     @classmethod
@@ -322,6 +340,7 @@ class ModelCreateChallengeRequest(Model):
             "description": "description",
             "endAfter": "end_after",
             "endDate": "end_date",
+            "repeatAfter": "repeat_after",
         }
 
     @staticmethod
@@ -337,6 +356,7 @@ class ModelCreateChallengeRequest(Model):
             "description": False,
             "endAfter": False,
             "endDate": False,
+            "repeatAfter": False,
         }
 
     @staticmethod

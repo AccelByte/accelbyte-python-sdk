@@ -36,12 +36,7 @@ from ...models import XblDLCSyncRequest
 class SyncXboxDLC(Operation):
     """Sync Xbox dlc items. (syncXboxDLC)
 
-    Sync Xbox inventory's dlc items.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync Xbox inventory's dlc items
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/xbl/sync

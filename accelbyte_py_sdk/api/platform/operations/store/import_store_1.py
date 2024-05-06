@@ -38,13 +38,6 @@ class ImportStore1(Operation):
 
     This API is used to import a store.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
-
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/stores/import
 
@@ -56,7 +49,7 @@ class ImportStore1(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -80,7 +73,7 @@ class ImportStore1(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     file: Any  # OPTIONAL in [form_data]

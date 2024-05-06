@@ -11,7 +11,7 @@ body:
 Definition: ClientmodelV3ClientUpdateSecretRequest
 new_secret: str
 
-Example: '{"newSecret": "WKyGV0N0cIGvZTu1"}'
+Example: '{"newSecret": "yE6zvbOkc9CMlQsj"}'
 """
 
 result, error = admin_update_client_secret_v3(

@@ -39,11 +39,7 @@ class DeleteRewardConditionRecord(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=8 (DELETE)
-      *  Returns : 204 No Content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [DELETE]
+      * Returns : 204 No Content
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}/record
@@ -56,7 +52,7 @@ class DeleteRewardConditionRecord(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL DeleteRewardConditionRequest in body
 
@@ -74,7 +70,7 @@ class DeleteRewardConditionRecord(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: DeleteRewardConditionRequest  # OPTIONAL in [body]

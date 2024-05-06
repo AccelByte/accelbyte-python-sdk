@@ -63,8 +63,7 @@ def create_section(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : created a section
+      * Returns : created a section
 
 
 
@@ -84,9 +83,6 @@ def create_section(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections
 
@@ -98,7 +94,7 @@ def create_section(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SectionCreate in body
 
@@ -143,8 +139,7 @@ async def create_section_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : created a section
+      * Returns : created a section
 
 
 
@@ -164,9 +159,6 @@ async def create_section_async(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections
 
@@ -178,7 +170,7 @@ async def create_section_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SectionCreate in body
 
@@ -223,13 +215,6 @@ def delete_section(
 
     This API is used to delete s section.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
 
@@ -241,7 +226,7 @@ def delete_section(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -280,13 +265,6 @@ async def delete_section_async(
 
     This API is used to delete s section.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
 
@@ -298,7 +276,7 @@ async def delete_section_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -341,11 +319,7 @@ def get_section(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : section data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : section data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
@@ -358,7 +332,7 @@ def get_section(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -397,11 +371,7 @@ async def get_section_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : section data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : section data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
@@ -414,7 +384,7 @@ async def get_section_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -459,8 +429,7 @@ def public_list_active_sections(
 
     Other detail info:
 
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:STORE, action=2 (READ)
-      *  Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store sections)
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store sections)
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store sections)
       *  Returns : active section contents
 
@@ -530,8 +499,7 @@ async def public_list_active_sections_async(
 
     Other detail info:
 
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:STORE, action=2 (READ)
-      *  Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store sections)
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store sections)
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store sections)
       *  Returns : active section contents
 
@@ -596,13 +564,6 @@ def purge_expired_section(
 
     This API is used to purge expired section.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections/purge/expired
 
@@ -614,7 +575,7 @@ def purge_expired_section(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -647,13 +608,6 @@ async def purge_expired_section_async(
 
     This API is used to purge expired section.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections/purge/expired
 
@@ -665,7 +619,7 @@ async def purge_expired_section_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -707,11 +661,7 @@ def query_sections(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : paginated sections
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : paginated sections
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections
@@ -724,7 +674,7 @@ def query_sections(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -781,11 +731,7 @@ async def query_sections_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-      *  Returns : paginated sections
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
+      * Returns : paginated sections
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections
@@ -798,7 +744,7 @@ async def query_sections_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -854,8 +800,7 @@ def update_section(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-      *  Returns : updated section data
+      * Returns : updated section data
 
 
 
@@ -875,9 +820,6 @@ def update_section(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
 
@@ -889,7 +831,7 @@ def update_section(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SectionUpdate in body
 
@@ -938,8 +880,7 @@ async def update_section_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-      *  Returns : updated section data
+      * Returns : updated section data
 
 
 
@@ -959,9 +900,6 @@ async def update_section_async(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/sections/{sectionId}
 
@@ -973,7 +911,7 @@ async def update_section_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SectionUpdate in body
 

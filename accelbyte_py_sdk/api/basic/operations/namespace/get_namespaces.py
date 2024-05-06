@@ -39,12 +39,8 @@ class GetNamespaces(Operation):
     Get all namespaces.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE" , action=2 (READ)
-      *  Action code : 11303
+      * Action code : 11303
       *  Returns : list of namespaces
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces
@@ -57,7 +53,7 @@ class GetNamespaces(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         active_only: (activeOnly) OPTIONAL bool in query
 
@@ -75,7 +71,7 @@ class GetNamespaces(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     active_only: bool  # OPTIONAL in [query]

@@ -37,6 +37,19 @@ class PublicWebLinkPlatform(Operation):
     """Create Public Web Linking (PublicWebLinkPlatform)
 
     This endpoint is used to generate third party login page which will redirected to establish endpoint.
+    Supported platforms:
+    - ps4web
+    - xblweb
+    - steamopenid
+    - epicgames
+    - facebook
+    - twitch
+    - google
+    - apple
+    - snapchat
+    - discord
+    - amazon
+    - oculusweb
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/me/platforms/{platformId}/web/link

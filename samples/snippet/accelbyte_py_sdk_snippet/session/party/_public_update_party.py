@@ -19,7 +19,7 @@ min_players: int
 type_: str
 version: int
 
-Example: '{"attributes": {"PU6CjS37G7Y9TZWi": {}, "omj9c4V6HbLUJMQ6": {}, "ofTHuwq4aHSdrFHn": {}}, "inactiveTimeout": 30, "inviteTimeout": 34, "joinability": "lWPxQXQpXGw8v6iz", "maxPlayers": 93, "minPlayers": 92, "type": "4WRApnywEwSazN5g", "version": 64}'
+Example: '{"attributes": {"B5GTJGfCIIi08I3W": {}, "qFyOEYK4JCKBNLao": {}, "P1KuByAfQDytlJCt": {}}, "inactiveTimeout": 25, "inviteTimeout": 20, "joinability": "BTceLMCprS4wsre9", "maxPlayers": 30, "minPlayers": 26, "type": "5a5Q8kzcHLAEJAAw", "version": 21}'
 """
 
 result, error = public_update_party(

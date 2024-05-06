@@ -37,12 +37,6 @@ class GetPlatformDLCConfig(Operation):
     """Get Platform DLC config (getPlatformDLCConfig)
 
     Get Platform DLC config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
@@ -55,7 +49,7 @@ class GetPlatformDLCConfig(Operation):
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -71,7 +65,7 @@ class GetPlatformDLCConfig(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = []
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

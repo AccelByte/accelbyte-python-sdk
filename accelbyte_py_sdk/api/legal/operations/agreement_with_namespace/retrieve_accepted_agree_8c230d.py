@@ -37,12 +37,6 @@ class RetrieveAcceptedAgreementsForMultiUsers(Operation):
     """Retrieve Accepted Legal Agreements For Multi Users (retrieveAcceptedAgreementsForMultiUsers)
 
     This API will return all accepted Legal Agreements for each user, including agreements of game users if publisher user has corresponding game account.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/agreements
@@ -55,7 +49,7 @@ class RetrieveAcceptedAgreementsForMultiUsers(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UsersAgreementsRequest in body
 
@@ -71,7 +65,7 @@ class RetrieveAcceptedAgreementsForMultiUsers(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UsersAgreementsRequest  # OPTIONAL in [body]

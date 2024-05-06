@@ -39,12 +39,6 @@ class ExportStore(Operation):
     This API is used to export a store.
 
     This api has been deprecated, pls use /v2/admin/namespaces/{namespace}/stores/export to export store.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [READ]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/export
@@ -57,7 +51,7 @@ class ExportStore(Operation):
 
         produces: ["application/zip"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -75,7 +69,7 @@ class ExportStore(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/zip"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

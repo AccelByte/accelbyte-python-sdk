@@ -406,6 +406,7 @@ def create_api_fleet_server_info_response_example() -> ApiFleetServerInfoRespons
     instance.port_configuration = [create_api_port_configuration_example()]
     instance.ports = {}
     instance.region = randomize()
+    instance.server_configuration = randomize()
     instance.server_id = randomize()
     instance.session_id = randomize("uid")
     instance.status = randomize()

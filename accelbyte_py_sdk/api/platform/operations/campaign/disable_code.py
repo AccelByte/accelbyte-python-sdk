@@ -41,11 +41,7 @@ class DisableCode(Operation):
     Disable an active code, the code can't be disabled if it has already been redeemed.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : disabled code
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : disabled code
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/{code}/disable
@@ -58,7 +54,7 @@ class DisableCode(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -76,7 +72,7 @@ class DisableCode(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     code: str  # REQUIRED in [path]

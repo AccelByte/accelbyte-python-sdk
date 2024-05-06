@@ -39,11 +39,7 @@ class PublicTransferUserEntitlement(Operation):
 
     Transfer a specified use count from entitlement A to B..Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : entitlement
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ENTITLEMENT [UPDATE]
+      * Returns : entitlement
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/transfer
@@ -56,7 +52,7 @@ class PublicTransferUserEntitlement(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EntitlementTransferRequest in body
 
@@ -80,7 +76,7 @@ class PublicTransferUserEntitlement(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: EntitlementTransferRequest  # OPTIONAL in [body]

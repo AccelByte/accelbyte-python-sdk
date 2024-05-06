@@ -51,11 +51,7 @@ def public_delete_payment_account(
     [Not Supported Yet In Starter] Delete payment account.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8 (DELETE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [DELETE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts/{type}/{id}
@@ -68,7 +64,7 @@ def public_delete_payment_account(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -108,11 +104,7 @@ async def public_delete_payment_account_async(
     [Not Supported Yet In Starter] Delete payment account.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=8 (DELETE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [DELETE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts/{type}/{id}
@@ -125,7 +117,7 @@ async def public_delete_payment_account_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -165,11 +157,7 @@ def public_get_payment_accounts(
     [Not Supported Yet In Starter] Get payment accounts.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=2 (READ)
-      *  Returns : Payment account list
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [READ]
+      * Returns : Payment account list
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts
@@ -182,7 +170,7 @@ def public_get_payment_accounts(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -214,11 +202,7 @@ async def public_get_payment_accounts_async(
     [Not Supported Yet In Starter] Get payment accounts.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT", action=2 (READ)
-      *  Returns : Payment account list
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:PAYMENT:ACCOUNT [READ]
+      * Returns : Payment account list
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/payment/accounts
@@ -231,7 +215,7 @@ async def public_get_payment_accounts_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 

@@ -14,7 +14,7 @@ message: Dict[str, Any]
 scope: str
 user_ids: List[str]
 
-Example: '{"expiredAt": 47, "message": {"4Qyenie4NEj1pWsx": {}, "DVgyJs16K40Obcvj": {}, "slPpHrMH8OXz4jXN": {}}, "scope": "USER", "userIds": ["L4m7CTk8O6iH23s3", "6tT6LzB5VV6ZTfti", "z21cMKsGVMnXPNaP"]}'
+Example: '{"expiredAt": 4, "message": {"6azaf9W4bHw3c1Fn": {}, "6i05S1JC5BkVLN8l": {}, "rzgp2RXTgmGPCFCL": {}}, "scope": "USER", "userIds": ["u7nDBKwjAdRTNISB", "bm9nIBdKMtMPCAGu", "47zjjR6W5Sk4Jdan"]}'
 """
 
 result, error = admin_update_inbox_message(

@@ -53,11 +53,7 @@ class UpdateCategory(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CATEGORY", action=4 (UPDATE)
-      *  Returns : the updated category data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CATEGORY [UPDATE]
+      * Returns : the updated category data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/categories/{categoryPath}
@@ -70,7 +66,7 @@ class UpdateCategory(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CategoryUpdate in body
 
@@ -98,7 +94,7 @@ class UpdateCategory(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: CategoryUpdate  # OPTIONAL in [body]

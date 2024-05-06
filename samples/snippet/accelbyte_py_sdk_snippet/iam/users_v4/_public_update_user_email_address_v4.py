@@ -12,7 +12,7 @@ Definition: ModelEmailUpdateRequestV4
 code: str
 email_address: str
 
-Example: '{"code": "3PSIyyBYesGV3Xhh", "emailAddress": "3mVoAjKOiec6ERfB"}'
+Example: '{"code": "9UE5QJkOCLWsCHdd", "emailAddress": "VgbK6rseX3FprZiW"}'
 """
 
 result, error = public_update_user_email_address_v4(

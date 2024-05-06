@@ -51,12 +51,6 @@ def anonymize_campaign(
     """Anonymize campaign (anonymizeCampaign)
 
     Anonymize campaign. At current it will only anonymize redeem history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/campaign
@@ -69,7 +63,7 @@ def anonymize_campaign(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -99,12 +93,6 @@ async def anonymize_campaign_async(
     """Anonymize campaign (anonymizeCampaign)
 
     Anonymize campaign. At current it will only anonymize redeem history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/campaign
@@ -117,7 +105,7 @@ async def anonymize_campaign_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -149,12 +137,6 @@ def anonymize_entitlement(
     """anonymize entitlement (anonymizeEntitlement)
 
     Anonymize entitlement. At current it will only anonymize entitlement, entitlement history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/entitlements
@@ -167,7 +149,7 @@ def anonymize_entitlement(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -197,12 +179,6 @@ async def anonymize_entitlement_async(
     """anonymize entitlement (anonymizeEntitlement)
 
     Anonymize entitlement. At current it will only anonymize entitlement, entitlement history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/entitlements
@@ -215,7 +191,7 @@ async def anonymize_entitlement_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -247,12 +223,6 @@ def anonymize_fulfillment(
     """anonymize fulfillment (anonymizeFulfillment)
 
     Anonymize fulfillment. At current it will only anonymize fulfillment history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/fulfillment
@@ -265,7 +235,7 @@ def anonymize_fulfillment(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -295,12 +265,6 @@ async def anonymize_fulfillment_async(
     """anonymize fulfillment (anonymizeFulfillment)
 
     Anonymize fulfillment. At current it will only anonymize fulfillment history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/fulfillment
@@ -313,7 +277,7 @@ async def anonymize_fulfillment_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -345,12 +309,6 @@ def anonymize_integration(
     """anonymize integrations (anonymizeIntegration)
 
     Anonymize integrations. At current it will only anonymize iap histories.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/integrations
@@ -363,7 +321,7 @@ def anonymize_integration(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -393,12 +351,6 @@ async def anonymize_integration_async(
     """anonymize integrations (anonymizeIntegration)
 
     Anonymize integrations. At current it will only anonymize iap histories.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/integrations
@@ -411,7 +363,7 @@ async def anonymize_integration_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -443,12 +395,6 @@ def anonymize_order(
     """anonymize order (anonymizeOrder)
 
     Anonymize order. At current it will only anonymize order, order history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/orders
@@ -461,7 +407,7 @@ def anonymize_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -491,12 +437,6 @@ async def anonymize_order_async(
     """anonymize order (anonymizeOrder)
 
     Anonymize order. At current it will only anonymize order, order history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/orders
@@ -509,7 +449,7 @@ async def anonymize_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -541,12 +481,6 @@ def anonymize_payment(
     """anonymize payment (anonymizePayment)
 
     Anonymize payment. At current it will only anonymize payment order, payment order history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/payment
@@ -559,7 +493,7 @@ def anonymize_payment(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -589,12 +523,6 @@ async def anonymize_payment_async(
     """anonymize payment (anonymizePayment)
 
     Anonymize payment. At current it will only anonymize payment order, payment order history.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/payment
@@ -607,7 +535,7 @@ async def anonymize_payment_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -639,9 +567,6 @@ def anonymize_revocation(
     """anonymize revocation (anonymizeRevocation)
 
     Anonymize revocation. At current it will only anonymize revocation history.
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION, action=8 (DELETE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/revocation
@@ -684,9 +609,6 @@ async def anonymize_revocation_async(
     """anonymize revocation (anonymizeRevocation)
 
     Anonymize revocation. At current it will only anonymize revocation history.
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION, action=8 (DELETE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/revocation
@@ -731,12 +653,6 @@ def anonymize_subscription(
     """anonymize subscription (anonymizeSubscription)
 
     Anonymize subscription. At current it will anonymize subscription, billing history and subscription activity.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/subscriptions
@@ -749,7 +665,7 @@ def anonymize_subscription(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -779,12 +695,6 @@ async def anonymize_subscription_async(
     """anonymize subscription (anonymizeSubscription)
 
     Anonymize subscription. At current it will anonymize subscription, billing history and subscription activity.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/subscriptions
@@ -797,7 +707,7 @@ async def anonymize_subscription_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -829,12 +739,6 @@ def anonymize_wallet(
     """anonymize wallet (anonymizeWallet)
 
     Anonymize wallet. At current it will only anonymize wallet, wallet transaction.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/wallets
@@ -847,7 +751,7 @@ def anonymize_wallet(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -877,12 +781,6 @@ async def anonymize_wallet_async(
     """anonymize wallet (anonymizeWallet)
 
     Anonymize wallet. At current it will only anonymize wallet, wallet transaction.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/anonymization/wallets
@@ -895,7 +793,7 @@ async def anonymize_wallet_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 

@@ -40,6 +40,7 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
     This endpoint used for retrieving third party platform token for user that login using third party,
     if user have not link requested platform in game namespace, will try to retrieving third party platform token from publisher namespace.
     Passing platform group name or it's member will return same access token that can be used across the platform members.
+    If platformUserId provided, IAM will prefer to get platform token by platform user id.
 
     Notes:
     The third party platform and platform group covered for this is:
@@ -74,6 +75,8 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        platform_user_id: (platformUserId) OPTIONAL str in query
+
     Responses:
         200: OK - OauthmodelTokenThirdPartyResponse (Token returned)
 
@@ -96,6 +99,7 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
     namespace: str  # REQUIRED in [path]
     platform_id: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    platform_user_id: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -136,6 +140,7 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -146,6 +151,12 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
             result["platformId"] = self.platform_id
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "platform_user_id"):
+            result["platformUserId"] = self.platform_user_id
         return result
 
     # endregion get_x_params methods
@@ -170,6 +181,12 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
         self.user_id = value
         return self
 
+    def with_platform_user_id(
+        self, value: str
+    ) -> AdminRetrieveUserThirdPartyPlatformTokenV3:
+        self.platform_user_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -188,6 +205,10 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "platform_user_id") and self.platform_user_id:
+            result["platformUserId"] = str(self.platform_user_id)
+        elif include_empty:
+            result["platformUserId"] = ""
         return result
 
     # endregion to methods
@@ -243,12 +264,19 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, platform_id: str, user_id: str, **kwargs
+        cls,
+        namespace: str,
+        platform_id: str,
+        user_id: str,
+        platform_user_id: Optional[str] = None,
+        **kwargs,
     ) -> AdminRetrieveUserThirdPartyPlatformTokenV3:
         instance = cls()
         instance.namespace = namespace
         instance.platform_id = platform_id
         instance.user_id = user_id
+        if platform_user_id is not None:
+            instance.platform_user_id = platform_user_id
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -270,6 +298,10 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
+            instance.platform_user_id = str(dict_["platformUserId"])
+        elif include_empty:
+            instance.platform_user_id = ""
         return instance
 
     @staticmethod
@@ -278,6 +310,7 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
             "namespace": "namespace",
             "platformId": "platform_id",
             "userId": "user_id",
+            "platformUserId": "platform_user_id",
         }
 
     @staticmethod
@@ -286,6 +319,7 @@ class AdminRetrieveUserThirdPartyPlatformTokenV3(Operation):
             "namespace": True,
             "platformId": True,
             "userId": True,
+            "platformUserId": False,
         }
 
     # endregion static methods

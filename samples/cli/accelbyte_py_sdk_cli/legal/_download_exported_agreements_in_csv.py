@@ -38,13 +38,13 @@ from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()
-@click.argument("policy_version_id", type=str)
+@click.argument("export_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def download_exported_agreements_in_csv(
-    policy_version_id: str,
+    export_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -59,7 +59,7 @@ def download_exported_agreements_in_csv(
     else:
         login_as_internal(login_as)
     result, error = download_exported_agreements_in_csv_internal(
-        policy_version_id=policy_version_id,
+        export_id=export_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

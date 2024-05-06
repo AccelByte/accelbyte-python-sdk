@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Statistics Service Index (2.12.5)
+# AccelByte Gaming Services Statistics Service Index (2.13.0)
 
 
 ## Operations

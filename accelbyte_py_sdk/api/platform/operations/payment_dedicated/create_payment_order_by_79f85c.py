@@ -202,14 +202,10 @@ class CreatePaymentOrderByDedicated(Operation):
     #### Other detail info:
 
       * Token type : client token
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=1 (CREATE)
       *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
       * It will be forbidden while the target user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
       *  cross namespace allowed
       *  Returns : created payment order info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [CREATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders
@@ -222,7 +218,7 @@ class CreatePaymentOrderByDedicated(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ExternalPaymentOrderCreate in body
 
@@ -248,7 +244,7 @@ class CreatePaymentOrderByDedicated(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: ExternalPaymentOrderCreate  # OPTIONAL in [body]

@@ -3718,6 +3718,8 @@ def public_create_user_v4(
 
         409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used | 10222: unique display name already exists)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
@@ -3781,6 +3783,8 @@ async def public_create_user_v4_async(
         404: Not Found - RestErrorResponse (10154: country not found)
 
         409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used | 10222: unique display name already exists)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
@@ -5366,6 +5370,8 @@ def public_invite_user_v4(
 
         422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     request = PublicInviteUserV4.create(
@@ -5416,6 +5422,8 @@ async def public_invite_user_v4_async(
         409: Conflict - RestErrorResponse (10133: email already used | 10207: user namespace is not available)
 
         422: Unprocessable Entity - RestErrorResponse (10183: unprocessable entity)
+
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """

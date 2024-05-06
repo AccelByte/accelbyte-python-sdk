@@ -43,6 +43,8 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         platform_id: (PlatformId) REQUIRED str
 
         platform_name: (PlatformName) REQUIRED str
+
+        token_authentication_type: (TokenAuthenticationType) REQUIRED str
     """
 
     # region fields
@@ -53,6 +55,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
     is_active: bool  # REQUIRED
     platform_id: str  # REQUIRED
     platform_name: str  # REQUIRED
+    token_authentication_type: str  # REQUIRED
 
     # endregion fields
 
@@ -80,6 +83,12 @@ class ModelPublicThirdPartyPlatformInfo(Model):
 
     def with_platform_name(self, value: str) -> ModelPublicThirdPartyPlatformInfo:
         self.platform_name = value
+        return self
+
+    def with_token_authentication_type(
+        self, value: str
+    ) -> ModelPublicThirdPartyPlatformInfo:
+        self.token_authentication_type = value
         return self
 
     # endregion with_x methods
@@ -112,6 +121,10 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             result["PlatformName"] = str(self.platform_name)
         elif include_empty:
             result["PlatformName"] = ""
+        if hasattr(self, "token_authentication_type"):
+            result["TokenAuthenticationType"] = str(self.token_authentication_type)
+        elif include_empty:
+            result["TokenAuthenticationType"] = ""
         return result
 
     # endregion to methods
@@ -127,6 +140,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         is_active: bool,
         platform_id: str,
         platform_name: str,
+        token_authentication_type: str,
         **kwargs,
     ) -> ModelPublicThirdPartyPlatformInfo:
         instance = cls()
@@ -136,6 +150,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         instance.is_active = is_active
         instance.platform_id = platform_id
         instance.platform_name = platform_name
+        instance.token_authentication_type = token_authentication_type
         return instance
 
     @classmethod
@@ -169,6 +184,13 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             instance.platform_name = str(dict_["PlatformName"])
         elif include_empty:
             instance.platform_name = ""
+        if (
+            "TokenAuthenticationType" in dict_
+            and dict_["TokenAuthenticationType"] is not None
+        ):
+            instance.token_authentication_type = str(dict_["TokenAuthenticationType"])
+        elif include_empty:
+            instance.token_authentication_type = ""
         return instance
 
     @classmethod
@@ -218,6 +240,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             "IsActive": "is_active",
             "PlatformId": "platform_id",
             "PlatformName": "platform_name",
+            "TokenAuthenticationType": "token_authentication_type",
         }
 
     @staticmethod
@@ -229,6 +252,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             "IsActive": True,
             "PlatformId": True,
             "PlatformName": True,
+            "TokenAuthenticationType": True,
         }
 
     # endregion static methods

@@ -53,11 +53,7 @@ class QueryUserOrders(Operation):
     Query user orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER", action=2 (READ)
-      *  Returns : get order
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ORDER [READ]
+      * Returns : get order
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/orders
@@ -70,11 +66,13 @@ class QueryUserOrders(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
         user_id: (userId) REQUIRED str in path
+
+        discounted: (discounted) OPTIONAL bool in query
 
         item_id: (itemId) OPTIONAL str in query
 
@@ -94,11 +92,12 @@ class QueryUserOrders(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    discounted: bool  # OPTIONAL in [query]
     item_id: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
@@ -156,6 +155,8 @@ class QueryUserOrders(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "discounted"):
+            result["discounted"] = self.discounted
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
         if hasattr(self, "limit"):
@@ -180,6 +181,10 @@ class QueryUserOrders(Operation):
 
     def with_user_id(self, value: str) -> QueryUserOrders:
         self.user_id = value
+        return self
+
+    def with_discounted(self, value: bool) -> QueryUserOrders:
+        self.discounted = value
         return self
 
     def with_item_id(self, value: str) -> QueryUserOrders:
@@ -212,6 +217,10 @@ class QueryUserOrders(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "discounted") and self.discounted:
+            result["discounted"] = bool(self.discounted)
+        elif include_empty:
+            result["discounted"] = False
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = str(self.item_id)
         elif include_empty:
@@ -271,6 +280,7 @@ class QueryUserOrders(Operation):
         cls,
         namespace: str,
         user_id: str,
+        discounted: Optional[bool] = None,
         item_id: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -280,6 +290,8 @@ class QueryUserOrders(Operation):
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
+        if discounted is not None:
+            instance.discounted = discounted
         if item_id is not None:
             instance.item_id = item_id
         if limit is not None:
@@ -305,6 +317,10 @@ class QueryUserOrders(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "discounted" in dict_ and dict_["discounted"] is not None:
+            instance.discounted = bool(dict_["discounted"])
+        elif include_empty:
+            instance.discounted = False
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
@@ -328,6 +344,7 @@ class QueryUserOrders(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+            "discounted": "discounted",
             "itemId": "item_id",
             "limit": "limit",
             "offset": "offset",
@@ -339,6 +356,7 @@ class QueryUserOrders(Operation):
         return {
             "namespace": True,
             "userId": True,
+            "discounted": False,
             "itemId": False,
             "limit": False,
             "offset": False,

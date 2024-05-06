@@ -14,7 +14,7 @@ Definition: ModelUserBulkUpdateRequestV3
     skip_login_queue: bool
 user_ids: List[str]
 
-Example: '{"updateRequest": {"skipLoginQueue": true}, "userIds": ["sf8lkYdV0YnFvFVY", "mfZCMRyMLz8WZBKG", "iNaAHndUxIWaIzoC"]}'
+Example: '{"updateRequest": {"skipLoginQueue": true}, "userIds": ["4FWSIAZu2Znj7dmw", "ZQmkNnLILqr2s71m", "odBRXvv8SD9af5Ti"]}'
 """
 
 result, error = admin_bulk_update_users_v3(

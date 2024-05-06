@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.50.0)
+# AccelByte Gaming Services Platform Service Index (4.51.0)
 
 
 ## Operations
@@ -323,7 +323,7 @@
 | /platform/admin/namespaces/{namespace}/orders/{orderNo} | GET | getOrder | `false` | [GetOrder](../../accelbyte_py_sdk/api/platform/operations/order/get_order.py) | [get_order](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-get-order](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_order.py) |
 | /platform/admin/namespaces/{namespace}/orders/stats | GET | getOrderStatistics | `false` | [GetOrderStatistics](../../accelbyte_py_sdk/api/platform/operations/order/get_order_statistics.py) | [get_order_statistics](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-get-order-statistics](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_order_statistics.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo} | GET | getUserOrder | `false` | [GetUserOrder](../../accelbyte_py_sdk/api/platform/operations/order/get_user_order.py) | [get_user_order](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-get-user-order](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_user_order.py) |
-| /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/grant | GET | getUserOrderGrant | `false` | [GetUserOrderGrant](../../accelbyte_py_sdk/api/platform/operations/order/get_user_order_grant.py) | [get_user_order_grant](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-get-user-order-grant](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_user_order_grant.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/grant | GET | getUserOrderGrant | `true` | [GetUserOrderGrant](../../accelbyte_py_sdk/api/platform/operations/order/get_user_order_grant.py) | [get_user_order_grant](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-get-user-order-grant](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_user_order_grant.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history | GET | getUserOrderHistories | `false` | [GetUserOrderHistories](../../accelbyte_py_sdk/api/platform/operations/order/get_user_order_histories.py) | [get_user_order_histories](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-get-user-order-histories](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_user_order_histories.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/orders/{orderNo}/notifications | POST | processUserOrderNotification | `false` | [ProcessUserOrderNotification](../../accelbyte_py_sdk/api/platform/operations/order/process_user_order_noti_fdd9f8.py) | [process_user_order_notification](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-process-user-order-notification](../../samples/cli/accelbyte_py_sdk_cli/platform/_process_user_order_notification.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/cancel | PUT | publicCancelUserOrder | `false` | [PublicCancelUserOrder](../../accelbyte_py_sdk/api/platform/operations/order/public_cancel_user_order.py) | [public_cancel_user_order](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-public-cancel-user-order](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_cancel_user_order.py) |
@@ -331,6 +331,7 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/receipt.pdf | GET | publicDownloadUserOrderReceipt | `false` | [PublicDownloadUserOrderReceipt](../../accelbyte_py_sdk/api/platform/operations/order/public_download_user_or_6ea3e8.py) | [public_download_user_order_receipt](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-public-download-user-order-receipt](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_download_user_order_receipt.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo} | GET | publicGetUserOrder | `false` | [PublicGetUserOrder](../../accelbyte_py_sdk/api/platform/operations/order/public_get_user_order.py) | [public_get_user_order](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-public-get-user-order](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_user_order.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/orders/{orderNo}/history | GET | publicGetUserOrderHistories | `false` | [PublicGetUserOrderHistories](../../accelbyte_py_sdk/api/platform/operations/order/public_get_user_order_h_063753.py) | [public_get_user_order_histories](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-public-get-user-order-histories](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_user_order_histories.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/orders/discount/preview | POST | publicPreviewOrderPrice | `false` | [PublicPreviewOrderPrice](../../accelbyte_py_sdk/api/platform/operations/order/public_preview_order_price.py) | [public_preview_order_price](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-public-preview-order-price](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_preview_order_price.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/orders | GET | publicQueryUserOrders | `false` | [PublicQueryUserOrders](../../accelbyte_py_sdk/api/platform/operations/order/public_query_user_orders.py) | [public_query_user_orders](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-public-query-user-orders](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_query_user_orders.py) |
 | /platform/admin/namespaces/{namespace}/orders | GET | queryOrders | `false` | [QueryOrders](../../accelbyte_py_sdk/api/platform/operations/order/query_orders.py) | [query_orders](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-query-orders](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_orders.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/orders | GET | queryUserOrders | `false` | [QueryUserOrders](../../accelbyte_py_sdk/api/platform/operations/order/query_user_orders.py) | [query_user_orders](../../accelbyte_py_sdk/api/platform/wrappers/_order.py) | [accelbyte_py_sdk_cli platform-query-user-orders](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_orders.py) |
@@ -498,6 +499,7 @@
 | /platform/admin/namespaces/{namespace}/stores/{storeId}/export | GET | exportStore | `true` | [ExportStore](../../accelbyte_py_sdk/api/platform/operations/store/export_store.py) | [export_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-export-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_export_store.py) |
 | /platform/v2/admin/namespaces/{namespace}/stores/{storeId}/export | POST | exportStore_1 | `false` | [ExportStore1](../../accelbyte_py_sdk/api/platform/operations/store/export_store_1.py) | [export_store_1](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-export-store-1](../../samples/cli/accelbyte_py_sdk_cli/platform/_export_store_1.py) |
 | /platform/admin/namespaces/{namespace}/stores/exportByCSV | POST | exportStoreByCSV | `false` | [ExportStoreByCSV](../../accelbyte_py_sdk/api/platform/operations/store/export_store_by_csv.py) | [export_store_by_csv](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-export-store-by-csv](../../samples/cli/accelbyte_py_sdk_cli/platform/_export_store_by_csv.py) |
+| /platform/admin/namespaces/{namespace}/catalog/configs | GET | getCatalogConfig | `false` | [GetCatalogConfig](../../accelbyte_py_sdk/api/platform/operations/store/get_catalog_config.py) | [get_catalog_config](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-get-catalog-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_catalog_config.py) |
 | /platform/admin/namespaces/{namespace}/stores/catalogDefinition | GET | getCatalogDefinition | `false` | [GetCatalogDefinition](../../accelbyte_py_sdk/api/platform/operations/store/get_catalog_definition.py) | [get_catalog_definition](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-get-catalog-definition](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_catalog_definition.py) |
 | /platform/admin/namespaces/{namespace}/stores/published | GET | getPublishedStore | `false` | [GetPublishedStore](../../accelbyte_py_sdk/api/platform/operations/store/get_published_store.py) | [get_published_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-get-published-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_published_store.py) |
 | /platform/admin/namespaces/{namespace}/stores/published/backup | GET | getPublishedStoreBackup | `false` | [GetPublishedStoreBackup](../../accelbyte_py_sdk/api/platform/operations/store/get_published_store_backup.py) | [get_published_store_backup](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-get-published-store-backup](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_published_store_backup.py) |
@@ -509,6 +511,7 @@
 | /platform/public/namespaces/{namespace}/stores | GET | publicListStores | `false` | [PublicListStores](../../accelbyte_py_sdk/api/platform/operations/store/public_list_stores.py) | [public_list_stores](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-public-list-stores](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_list_stores.py) |
 | /platform/admin/namespaces/{namespace}/stores/{storeId}/import/history | GET | queryImportHistory | `false` | [QueryImportHistory](../../accelbyte_py_sdk/api/platform/operations/store/query_import_history.py) | [query_import_history](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-query-import-history](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_import_history.py) |
 | /platform/admin/namespaces/{namespace}/stores/published/rollback | PUT | rollbackPublishedStore | `false` | [RollbackPublishedStore](../../accelbyte_py_sdk/api/platform/operations/store/rollback_published_store.py) | [rollback_published_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-rollback-published-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_rollback_published_store.py) |
+| /platform/admin/namespaces/{namespace}/catalog/configs | PUT | updateCatalogConfig | `false` | [UpdateCatalogConfig](../../accelbyte_py_sdk/api/platform/operations/store/update_catalog_config.py) | [update_catalog_config](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-update-catalog-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_catalog_config.py) |
 | /platform/admin/namespaces/{namespace}/stores/{storeId} | PUT | updateStore | `false` | [UpdateStore](../../accelbyte_py_sdk/api/platform/operations/store/update_store.py) | [update_store](../../accelbyte_py_sdk/api/platform/wrappers/_store.py) | [accelbyte_py_sdk_cli platform-update-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_store.py) |
 
 ### Subscription
@@ -633,6 +636,7 @@
 | BundledItemInfo | [BundledItemInfo](../../accelbyte_py_sdk/api/platform/models/bundled_item_info.py) |
 | CampaignCreate | [CampaignCreate](../../accelbyte_py_sdk/api/platform/models/campaign_create.py) |
 | CampaignDynamicInfo | [CampaignDynamicInfo](../../accelbyte_py_sdk/api/platform/models/campaign_dynamic_info.py) |
+| CampaignIfc | [CampaignIfc](../../accelbyte_py_sdk/api/platform/models/campaign_ifc.py) |
 | CampaignInfo | [CampaignInfo](../../accelbyte_py_sdk/api/platform/models/campaign_info.py) |
 | CampaignPagingSlicedResult | [CampaignPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/campaign_paging_sliced_result.py) |
 | CampaignUpdate | [CampaignUpdate](../../accelbyte_py_sdk/api/platform/models/campaign_update.py) |
@@ -640,6 +644,8 @@
 | CatalogChangeInfo | [CatalogChangeInfo](../../accelbyte_py_sdk/api/platform/models/catalog_change_info.py) |
 | CatalogChangePagingResult | [CatalogChangePagingResult](../../accelbyte_py_sdk/api/platform/models/catalog_change_paging_result.py) |
 | CatalogChangeStatistics | [CatalogChangeStatistics](../../accelbyte_py_sdk/api/platform/models/catalog_change_statistics.py) |
+| CatalogConfigInfo | [CatalogConfigInfo](../../accelbyte_py_sdk/api/platform/models/catalog_config_info.py) |
+| CatalogConfigUpdate | [CatalogConfigUpdate](../../accelbyte_py_sdk/api/platform/models/catalog_config_update.py) |
 | CatalogDefinitionInfo | [CatalogDefinitionInfo](../../accelbyte_py_sdk/api/platform/models/catalog_definition_info.py) |
 | CategoryCreate | [CategoryCreate](../../accelbyte_py_sdk/api/platform/models/category_create.py) |
 | CategoryInfo | [CategoryInfo](../../accelbyte_py_sdk/api/platform/models/category_info.py) |
@@ -674,9 +680,15 @@
 | DebitPayload | [DebitPayload](../../accelbyte_py_sdk/api/platform/models/debit_payload.py) |
 | DebitRequest | [DebitRequest](../../accelbyte_py_sdk/api/platform/models/debit_request.py) |
 | DebitResult | [DebitResult](../../accelbyte_py_sdk/api/platform/models/debit_result.py) |
+| DeductionDetail | [DeductionDetail](../../accelbyte_py_sdk/api/platform/models/deduction_detail.py) |
 | DeleteRewardConditionRequest | [DeleteRewardConditionRequest](../../accelbyte_py_sdk/api/platform/models/delete_reward_condition_request.py) |
 | DetailedWalletTransactionInfo | [DetailedWalletTransactionInfo](../../accelbyte_py_sdk/api/platform/models/detailed_wallet_transaction_info.py) |
 | DetailedWalletTransactionPagingSlicedResult | [DetailedWalletTransactionPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/detailed_wallet_transaction_paging_sliced_result.py) |
+| DiscountCategory | [DiscountCategory](../../accelbyte_py_sdk/api/platform/models/discount_category.py) |
+| DiscountCodeDeductionDetail | [DiscountCodeDeductionDetail](../../accelbyte_py_sdk/api/platform/models/discount_code_deduction_detail.py) |
+| DiscountCodeInfo | [DiscountCodeInfo](../../accelbyte_py_sdk/api/platform/models/discount_code_info.py) |
+| DiscountConfig | [DiscountConfig](../../accelbyte_py_sdk/api/platform/models/discount_config.py) |
+| DiscountItem | [DiscountItem](../../accelbyte_py_sdk/api/platform/models/discount_item.py) |
 | DLCConfigRewardShortInfo | [DLCConfigRewardShortInfo](../../accelbyte_py_sdk/api/platform/models/dlc_config_reward_short_info.py) |
 | DLCItem | [DLCItem](../../accelbyte_py_sdk/api/platform/models/dlc_item.py) |
 | DLCItemConfigInfo | [DLCItemConfigInfo](../../accelbyte_py_sdk/api/platform/models/dlc_item_config_info.py) |
@@ -816,6 +828,8 @@
 | OrderBundleItemInfo | [OrderBundleItemInfo](../../accelbyte_py_sdk/api/platform/models/order_bundle_item_info.py) |
 | OrderCreate | [OrderCreate](../../accelbyte_py_sdk/api/platform/models/order_create.py) |
 | OrderCreationOptions | [OrderCreationOptions](../../accelbyte_py_sdk/api/platform/models/order_creation_options.py) |
+| OrderDiscountPreviewRequest | [OrderDiscountPreviewRequest](../../accelbyte_py_sdk/api/platform/models/order_discount_preview_request.py) |
+| OrderDiscountPreviewResponse | [OrderDiscountPreviewResponse](../../accelbyte_py_sdk/api/platform/models/order_discount_preview_response.py) |
 | OrderGrantInfo | [OrderGrantInfo](../../accelbyte_py_sdk/api/platform/models/order_grant_info.py) |
 | OrderHistoryInfo | [OrderHistoryInfo](../../accelbyte_py_sdk/api/platform/models/order_history_info.py) |
 | OrderInfo | [OrderInfo](../../accelbyte_py_sdk/api/platform/models/order_info.py) |
@@ -860,6 +874,7 @@
 | PaymentToken | [PaymentToken](../../accelbyte_py_sdk/api/platform/models/payment_token.py) |
 | PaymentUrl | [PaymentUrl](../../accelbyte_py_sdk/api/platform/models/payment_url.py) |
 | PaymentUrlCreate | [PaymentUrlCreate](../../accelbyte_py_sdk/api/platform/models/payment_url_create.py) |
+| Permission | [Permission](../../accelbyte_py_sdk/api/platform/models/permission.py) |
 | PlatformDLCConfigInfo | [PlatformDLCConfigInfo](../../accelbyte_py_sdk/api/platform/models/platform_dlc_config_info.py) |
 | PlatformDLCConfigUpdate | [PlatformDLCConfigUpdate](../../accelbyte_py_sdk/api/platform/models/platform_dlc_config_update.py) |
 | PlatformDlcEntry | [PlatformDlcEntry](../../accelbyte_py_sdk/api/platform/models/platform_dlc_entry.py) |

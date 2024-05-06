@@ -12,7 +12,7 @@ body:
 Definition: ModelsAdminDeleteProfanityFilterRequest
 filter_: str
 
-Example: '{"filter": "Uy3CKGbEbJenY11v"}'
+Example: '{"filter": "bRlS5scgQlLklod6"}'
 """
 
 result, error = admin_delete_profanity_filter(

@@ -36,6 +36,7 @@ from ...models import ResponseError
 class PublicGetMyAccountDeletionStatus(Operation):
     """Retrieve my account deletion status (PublicGetMyAccountDeletionStatus)
 
+    Retrieve my account deletion status
     Requires valid user access token
 
     Properties:

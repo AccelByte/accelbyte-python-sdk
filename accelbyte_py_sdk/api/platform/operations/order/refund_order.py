@@ -39,12 +39,6 @@ class RefundOrder(Operation):
     """Refund order (refundOrder)
 
     Refund order by orderNo.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/orders/{orderNo}/refund
@@ -57,7 +51,7 @@ class RefundOrder(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL OrderRefundCreate in body
 
@@ -81,7 +75,7 @@ class RefundOrder(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: OrderRefundCreate  # OPTIONAL in [body]

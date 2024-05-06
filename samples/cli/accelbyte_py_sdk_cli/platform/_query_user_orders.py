@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.platform.models import OrderPagingSlicedResult
 
 @click.command()
 @click.argument("user_id", type=str)
+@click.option("--discounted", "discounted", type=bool)
 @click.option("--item_id", "item_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
@@ -48,6 +49,7 @@ from accelbyte_py_sdk.api.platform.models import OrderPagingSlicedResult
 @click.option("--doc", type=bool)
 def query_user_orders(
     user_id: str,
+    discounted: Optional[bool] = None,
     item_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -67,6 +69,7 @@ def query_user_orders(
         login_as_internal(login_as)
     result, error = query_user_orders_internal(
         user_id=user_id,
+        discounted=discounted,
         item_id=item_id,
         limit=limit,
         offset=offset,

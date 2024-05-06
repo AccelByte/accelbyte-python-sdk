@@ -40,11 +40,7 @@ class UploadKeys(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=4 (UPDATE)
-      *  Returns : item data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [UPDATE]
+      * Returns : item data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}/keys
@@ -57,7 +53,7 @@ class UploadKeys(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -79,7 +75,7 @@ class UploadKeys(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     file: Any  # OPTIONAL in [form_data]

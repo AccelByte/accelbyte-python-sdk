@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.19.2"
+__version__ = "2.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,21 +19,14 @@ from ._anonymization import anonymize_user_profile_async
 
 from ._config import create_config
 from ._config import create_config_async
-from ._config import delete_config_1
-from ._config import delete_config_1_async
-from ._config import get_config_1
-from ._config import get_config_1_async
+from ._config import delete_config
+from ._config import delete_config_async
+from ._config import get_config
+from ._config import get_config_async
 from ._config import get_publisher_config
 from ._config import get_publisher_config_async
-from ._config import update_config_1
-from ._config import update_config_1_async
-
-from ._equ8_config import delete_config
-from ._equ8_config import delete_config_async
-from ._equ8_config import get_config
-from ._equ8_config import get_config_async
-from ._equ8_config import update_config
-from ._equ8_config import update_config_async
+from ._config import update_config
+from ._config import update_config_async
 
 from ._file_upload import generated_upload_url
 from ._file_upload import generated_upload_url_async
@@ -79,6 +72,8 @@ from ._namespace import get_game_namespaces
 from ._namespace import get_game_namespaces_async
 from ._namespace import get_namespace
 from ._namespace import get_namespace_async
+from ._namespace import get_namespace_1
+from ._namespace import get_namespace_1_async
 from ._namespace import get_namespace_context
 from ._namespace import get_namespace_context_async
 from ._namespace import get_namespace_publisher
@@ -91,21 +86,6 @@ from ._namespace import public_get_namespaces
 from ._namespace import public_get_namespaces_async
 from ._namespace import update_namespace
 from ._namespace import update_namespace_async
-
-from ._user_action import ban_users
-from ._user_action import ban_users_async
-from ._user_action import get_actions
-from ._user_action import get_actions_async
-from ._user_action import get_banned_users
-from ._user_action import get_banned_users_async
-from ._user_action import get_user_status
-from ._user_action import get_user_status_async
-from ._user_action import public_report_user
-from ._user_action import public_report_user_async
-from ._user_action import report_user
-from ._user_action import report_user_async
-from ._user_action import un_ban_users
-from ._user_action import un_ban_users_async
 
 from ._user_profile import admin_get_user_profile_public_info_by_ids
 from ._user_profile import admin_get_user_profile_public_info_by_ids_async

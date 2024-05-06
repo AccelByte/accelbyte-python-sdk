@@ -12,7 +12,7 @@ body:
 Definition: ModelsCreateConfigRequest
 api_key: str
 
-Example: '{"apiKey": "4p6lQfr5nnlIz8KW"}'
+Example: '{"apiKey": "I0lcsA0lgbcJy2Qs"}'
 """
 
 result, error = admin_create_third_party_config(

@@ -35,12 +35,7 @@ from ...models import ErrorEntity
 class SyncOculusDLC(Operation):
     """Sync oculus dlc. (syncOculusDLC)
 
-    Sync oculus dlc.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync oculus dlc
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/oculus/sync

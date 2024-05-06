@@ -218,14 +218,10 @@ def create_payment_order_by_dedicated(
     #### Other detail info:
 
       * Token type : client token
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=1 (CREATE)
       *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
       * It will be forbidden while the target user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
       *  cross namespace allowed
       *  Returns : created payment order info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [CREATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders
@@ -238,7 +234,7 @@ def create_payment_order_by_dedicated(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ExternalPaymentOrderCreate in body
 
@@ -441,14 +437,10 @@ async def create_payment_order_by_dedicated_async(
     #### Other detail info:
 
       * Token type : client token
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=1 (CREATE)
       *  Optional permission(user with this permission will create sandbox order) : resource="SANDBOX", action=1 (CREATE)
       * It will be forbidden while the target user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
       *  cross namespace allowed
       *  Returns : created payment order info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [CREATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders
@@ -461,7 +453,7 @@ async def create_payment_order_by_dedicated_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ExternalPaymentOrderCreate in body
 
@@ -646,11 +638,7 @@ def refund_payment_order_by_dedicated(
     #### Other detail info:
 
       * Token type : client token
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
       *  cross namespace allowed
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/refund
@@ -663,7 +651,7 @@ def refund_payment_order_by_dedicated(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderRefund in body
 
@@ -847,11 +835,7 @@ async def refund_payment_order_by_dedicated_async(
     #### Other detail info:
 
       * Token type : client token
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
       *  cross namespace allowed
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/refund
@@ -864,7 +848,7 @@ async def refund_payment_order_by_dedicated_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderRefund in body
 
@@ -910,11 +894,7 @@ def sync_payment_orders(
     [Not Supported Yet In Starter] Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)
-      *  Returns : sync payment orders
-
-    Required Permission(s):
-        - ADMIN:PAYMENT [READ]
+      * Returns : sync payment orders
 
     Properties:
         url: /platform/admin/payment/orders
@@ -927,7 +907,7 @@ def sync_payment_orders(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         next_evaluated_key: (nextEvaluatedKey) OPTIONAL str in query
 
@@ -959,11 +939,7 @@ async def sync_payment_orders_async(
     [Not Supported Yet In Starter] Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)
-      *  Returns : sync payment orders
-
-    Required Permission(s):
-        - ADMIN:PAYMENT [READ]
+      * Returns : sync payment orders
 
     Properties:
         url: /platform/admin/payment/orders
@@ -976,7 +952,7 @@ async def sync_payment_orders_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         next_evaluated_key: (nextEvaluatedKey) OPTIONAL str in query
 

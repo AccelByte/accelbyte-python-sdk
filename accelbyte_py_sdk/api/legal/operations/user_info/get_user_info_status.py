@@ -38,12 +38,6 @@ class GetUserInfoStatus(Operation):
     Get user info cache last updated time per namespace.
     The query parameter namespaces can be a list of namespace separated by comma.
     If query parameter namespaces is empty, user info cache status for all available namespaces will be returned.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/userInfo
@@ -56,7 +50,7 @@ class GetUserInfoStatus(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespaces: (namespaces) OPTIONAL str in query
 
@@ -70,7 +64,7 @@ class GetUserInfoStatus(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespaces: str  # OPTIONAL in [query]

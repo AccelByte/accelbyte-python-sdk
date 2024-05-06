@@ -87,11 +87,7 @@ def charge_payment_order(
     [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
-      *  Returns : payment order instance
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+      * Returns : payment order instance
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}
@@ -104,7 +100,7 @@ def charge_payment_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderChargeRequest in body
 
@@ -146,11 +142,7 @@ async def charge_payment_order_async(
     [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
-      *  Returns : payment order instance
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+      * Returns : payment order instance
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}
@@ -163,7 +155,7 @@ async def charge_payment_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderChargeRequest in body
 
@@ -207,7 +199,6 @@ def create_user_payment_order(
     [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)
       * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created order
 
@@ -229,9 +220,6 @@ def create_user_payment_order(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders
 
@@ -243,7 +231,7 @@ def create_user_payment_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderCreate in body
 
@@ -289,7 +277,6 @@ async def create_user_payment_order_async(
     [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=1 (CREATE)
       * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created order
 
@@ -311,9 +298,6 @@ async def create_user_payment_order_async(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [CREATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders
 
@@ -325,7 +309,7 @@ async def create_user_payment_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderCreate in body
 
@@ -372,11 +356,7 @@ def get_payment_order(
     [Not Supported Yet In Starter] Get payment order by paymentOrderNo.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
-      *  Returns : payment order instance
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+      * Returns : payment order instance
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}
@@ -389,7 +369,7 @@ def get_payment_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -423,11 +403,7 @@ async def get_payment_order_async(
     [Not Supported Yet In Starter] Get payment order by paymentOrderNo.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
-      *  Returns : payment order instance
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+      * Returns : payment order instance
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}
@@ -440,7 +416,7 @@ async def get_payment_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -476,11 +452,7 @@ def get_payment_order_charge_status(
     [Not Supported Yet In Starter] Get payment order charge status.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
-      *  Returns : payment order charge status
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+      * Returns : payment order charge status
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status
@@ -493,7 +465,7 @@ def get_payment_order_charge_status(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -527,11 +499,7 @@ async def get_payment_order_charge_status_async(
     [Not Supported Yet In Starter] Get payment order charge status.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
-      *  Returns : payment order charge status
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+      * Returns : payment order charge status
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/status
@@ -544,7 +512,7 @@ async def get_payment_order_charge_status_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -580,11 +548,7 @@ def list_ext_order_no_by_ext_tx_id(
     [Not Supported Yet In Starter] List external order No by external transaction id.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
-      *  Returns : payment orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+      * Returns : payment orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/byExtTxId
@@ -597,7 +561,7 @@ def list_ext_order_no_by_ext_tx_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -629,11 +593,7 @@ async def list_ext_order_no_by_ext_tx_id_async(
     [Not Supported Yet In Starter] List external order No by external transaction id.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
-      *  Returns : payment orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+      * Returns : payment orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/byExtTxId
@@ -646,7 +606,7 @@ async def list_ext_order_no_by_ext_tx_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -690,11 +650,7 @@ def query_payment_notifications(
     [Not Supported Yet In Starter] Query payment notifications.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION", action=2 (READ)
-      *  Returns : Payment notifications
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION [READ]
+      * Returns : Payment notifications
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/notifications
@@ -707,7 +663,7 @@ def query_payment_notifications(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -773,11 +729,7 @@ async def query_payment_notifications_async(
     [Not Supported Yet In Starter] Query payment notifications.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION", action=2 (READ)
-      *  Returns : Payment notifications
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT:NOTIFICATION [READ]
+      * Returns : Payment notifications
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/notifications
@@ -790,7 +742,7 @@ async def query_payment_notifications_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -852,11 +804,7 @@ def query_payment_orders(
     [Not Supported Yet In Starter] Query payment orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
-      *  Returns : query payment orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+      * Returns : query payment orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders
@@ -869,7 +817,7 @@ def query_payment_orders(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -917,11 +865,7 @@ async def query_payment_orders_async(
     [Not Supported Yet In Starter] Query payment orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
-      *  Returns : query payment orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+      * Returns : query payment orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders
@@ -934,7 +878,7 @@ async def query_payment_orders_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -980,12 +924,6 @@ def refund_user_payment_order(
     """Refund payment order (refundUserPaymentOrder)
 
     [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund
@@ -998,7 +936,7 @@ def refund_user_payment_order(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderRefund in body
 
@@ -1042,12 +980,6 @@ async def refund_user_payment_order_async(
     """Refund payment order (refundUserPaymentOrder)
 
     [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PAYMENT [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund
@@ -1060,7 +992,7 @@ async def refund_user_payment_order_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderRefund in body
 
@@ -1107,11 +1039,7 @@ def simulate_payment_order_notification(
     [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
-      *  Returns : notification process result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+      * Returns : notification process result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/simulate-notification
@@ -1124,7 +1052,7 @@ def simulate_payment_order_notification(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderNotifySimulation in body
 
@@ -1164,11 +1092,7 @@ async def simulate_payment_order_notification_async(
     [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
-      *  Returns : notification process result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
+      * Returns : notification process result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/simulate-notification
@@ -1181,7 +1105,7 @@ async def simulate_payment_order_notification_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderNotifySimulation in body
 

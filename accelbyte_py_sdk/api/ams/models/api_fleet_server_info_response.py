@@ -54,6 +54,8 @@ class ApiFleetServerInfoResponse(Model):
 
         region: (region) REQUIRED str
 
+        server_configuration: (serverConfiguration) REQUIRED str
+
         server_id: (serverId) REQUIRED str
 
         session_id: (sessionId) REQUIRED str
@@ -73,6 +75,7 @@ class ApiFleetServerInfoResponse(Model):
     port_configuration: List[ApiPortConfiguration]  # REQUIRED
     ports: Dict[str, int]  # REQUIRED
     region: str  # REQUIRED
+    server_configuration: str  # REQUIRED
     server_id: str  # REQUIRED
     session_id: str  # REQUIRED
     status: str  # REQUIRED
@@ -121,6 +124,10 @@ class ApiFleetServerInfoResponse(Model):
 
     def with_region(self, value: str) -> ApiFleetServerInfoResponse:
         self.region = value
+        return self
+
+    def with_server_configuration(self, value: str) -> ApiFleetServerInfoResponse:
+        self.server_configuration = value
         return self
 
     def with_server_id(self, value: str) -> ApiFleetServerInfoResponse:
@@ -184,6 +191,10 @@ class ApiFleetServerInfoResponse(Model):
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = ""
+        if hasattr(self, "server_configuration"):
+            result["serverConfiguration"] = str(self.server_configuration)
+        elif include_empty:
+            result["serverConfiguration"] = ""
         if hasattr(self, "server_id"):
             result["serverId"] = str(self.server_id)
         elif include_empty:
@@ -215,6 +226,7 @@ class ApiFleetServerInfoResponse(Model):
         port_configuration: List[ApiPortConfiguration],
         ports: Dict[str, int],
         region: str,
+        server_configuration: str,
         server_id: str,
         session_id: str,
         status: str,
@@ -231,6 +243,7 @@ class ApiFleetServerInfoResponse(Model):
         instance.port_configuration = port_configuration
         instance.ports = ports
         instance.region = region
+        instance.server_configuration = server_configuration
         instance.server_id = server_id
         instance.session_id = session_id
         instance.status = status
@@ -286,6 +299,10 @@ class ApiFleetServerInfoResponse(Model):
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = ""
+        if "serverConfiguration" in dict_ and dict_["serverConfiguration"] is not None:
+            instance.server_configuration = str(dict_["serverConfiguration"])
+        elif include_empty:
+            instance.server_configuration = ""
         if "serverId" in dict_ and dict_["serverId"] is not None:
             instance.server_id = str(dict_["serverId"])
         elif include_empty:
@@ -351,6 +368,7 @@ class ApiFleetServerInfoResponse(Model):
             "portConfiguration": "port_configuration",
             "ports": "ports",
             "region": "region",
+            "serverConfiguration": "server_configuration",
             "serverId": "server_id",
             "sessionId": "session_id",
             "status": "status",
@@ -369,6 +387,7 @@ class ApiFleetServerInfoResponse(Model):
             "portConfiguration": True,
             "ports": True,
             "region": True,
+            "serverConfiguration": True,
             "serverId": True,
             "sessionId": True,
             "status": True,

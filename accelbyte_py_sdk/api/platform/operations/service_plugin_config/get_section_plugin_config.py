@@ -36,9 +36,6 @@ class GetSectionPluginConfig(Operation):
     """Get section plugin config (getSectionPluginConfig)
 
     Get section plugin config.
-    Other detail info:
-
-      * Required permission : resource= ADMIN:NAMESPACE:{namespace}:PLUGIN:CATALOG , action=2 (READ)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/catalog/plugins/section

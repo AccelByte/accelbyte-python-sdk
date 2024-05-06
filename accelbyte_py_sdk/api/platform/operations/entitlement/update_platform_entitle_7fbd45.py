@@ -53,11 +53,7 @@ class UpdatePlatformEntitlementConfig(Operation):
     Update platform entitlement config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : platform entitlement config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [UPDATE]
+      * Returns : platform entitlement config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/platforms/{platform}/entitlement/config
@@ -70,7 +66,7 @@ class UpdatePlatformEntitlementConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EntitlementPlatformConfigUpdate in body
 
@@ -92,7 +88,7 @@ class UpdatePlatformEntitlementConfig(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: EntitlementPlatformConfigUpdate  # OPTIONAL in [body]

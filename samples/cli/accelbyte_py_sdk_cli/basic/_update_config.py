@@ -31,18 +31,21 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.basic import update_config as update_config_internal
-from accelbyte_py_sdk.api.basic.models import ADTOForUpdateEqu8ConfigAPICall
-from accelbyte_py_sdk.api.basic.models import Equ8Config
+from accelbyte_py_sdk.api.basic.models import ConfigInfo
+from accelbyte_py_sdk.api.basic.models import ConfigUpdate
 from accelbyte_py_sdk.api.basic.models import ErrorEntity
+from accelbyte_py_sdk.api.basic.models import ValidationErrorEntity
 
 
 @click.command()
+@click.argument("config_key", type=str)
 @click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_config(
+    config_key: str,
     body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -60,10 +63,11 @@ def update_config(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ADTOForUpdateEqu8ConfigAPICall.create_from_dict(body_json)
+            body = ConfigUpdate.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = update_config_internal(
+        config_key=config_key,
         body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

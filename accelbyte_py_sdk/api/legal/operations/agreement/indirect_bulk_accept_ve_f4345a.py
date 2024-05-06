@@ -39,9 +39,6 @@ class IndirectBulkAcceptVersionedPolicy1(Operation):
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicy_1)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id and userId to accept an agreement. This endpoint used by Authentication Service during new user registration.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/policies/users/{userId}

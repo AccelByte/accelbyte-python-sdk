@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.35.0"
+__version__ = "3.35.5"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -56,6 +56,9 @@ from .model_load_outgoing_friends_with_time_response import (
 from .model_localization import ModelLocalization
 from .model_native_friend_request import ModelNativeFriendRequest
 from .model_native_friend_sync_response import ModelNativeFriendSyncResponse
+from .model_native_user_block_request import ModelNativeUserBlockRequest
+from .model_native_user_block_response import ModelNativeUserBlockResponse
+from .model_notification_response import ModelNotificationResponse
 from .model_notification_template_response import ModelNotificationTemplateResponse
 from .model_notification_topic_response import ModelNotificationTopicResponse
 from .model_notification_topic_response_v1 import ModelNotificationTopicResponseV1

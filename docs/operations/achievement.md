@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Achievement Service Index (2.21.14)
+# AccelByte Gaming Services Achievement Service Index (2.22.0)
 
 
 ## Operations
@@ -38,6 +38,11 @@
 | /achievement/v1/public/namespaces/{namespace}/global/achievements | GET | PublicListGlobalAchievements | `false` | [PublicListGlobalAchievements](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/public_list_global_achi_9c838b.py) | [public_list_global_achievements](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-public-list-global-achievements](../../samples/cli/accelbyte_py_sdk_cli/achievement/_public_list_global_achievements.py) |
 | /achievement/v1/admin/namespaces/{namespace}/global/achievements/{achievementCode}/reset | DELETE | ResetGlobalAchievement | `false` | [ResetGlobalAchievement](../../accelbyte_py_sdk/api/achievement/operations/global_achievements/reset_global_achievement.py) | [reset_global_achievement](../../accelbyte_py_sdk/api/achievement/wrappers/_global_achievements.py) | [accelbyte_py_sdk_cli achievement-reset-global-achievement](../../samples/cli/accelbyte_py_sdk_cli/achievement/_reset_global_achievement.py) |
 
+### Platform Achievement
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /achievement/v1/admin/namespaces/{namespace}/platforms/psn/bulk | POST | BulkCreatePSNEvent | `false` | [BulkCreatePSNEvent](../../accelbyte_py_sdk/api/achievement/operations/platform_achievement/bulk_create_psn_event.py) | [bulk_create_psn_event](../../accelbyte_py_sdk/api/achievement/wrappers/_platform_achievement.py) | [accelbyte_py_sdk_cli achievement-bulk-create-psn-event](../../samples/cli/accelbyte_py_sdk_cli/achievement/_bulk_create_psn_event.py) |
+
 ### Tags
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -62,7 +67,11 @@
 | models.AchievementResponse | [ModelsAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_achievement_response.py) |
 | models.AchievementUpdateRequest | [ModelsAchievementUpdateRequest](../../accelbyte_py_sdk/api/achievement/models/models_achievement_update_request.py) |
 | models.AdditionalInfo | [ModelsAdditionalInfo](../../accelbyte_py_sdk/api/achievement/models/models_additional_info.py) |
+| models.BulkCreatePSNEventResponse | [ModelsBulkCreatePSNEventResponse](../../accelbyte_py_sdk/api/achievement/models/models_bulk_create_psn_event_response.py) |
+| models.BulkCreatePSNEvents | [ModelsBulkCreatePSNEvents](../../accelbyte_py_sdk/api/achievement/models/models_bulk_create_psn_events.py) |
 | models.ContributorResponse | [ModelsContributorResponse](../../accelbyte_py_sdk/api/achievement/models/models_contributor_response.py) |
+| models.CreatePSNEvent | [ModelsCreatePSNEvent](../../accelbyte_py_sdk/api/achievement/models/models_create_psn_event.py) |
+| models.ErrorDetails | [ModelsErrorDetails](../../accelbyte_py_sdk/api/achievement/models/models_error_details.py) |
 | models.GlobalAchievementResponse | [ModelsGlobalAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_global_achievement_response.py) |
 | models.Icon | [ModelsIcon](../../accelbyte_py_sdk/api/achievement/models/models_icon.py) |
 | models.PaginatedAchievementResponse | [ModelsPaginatedAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_achievement_response.py) |
@@ -72,6 +81,9 @@
 | models.PaginatedUserAchievementResponse | [ModelsPaginatedUserAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_user_achievement_response.py) |
 | models.PaginatedUserContributionResponse | [ModelsPaginatedUserContributionResponse](../../accelbyte_py_sdk/api/achievement/models/models_paginated_user_contribution_response.py) |
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/achievement/models/models_pagination.py) |
+| models.PSNEvent | [ModelsPSNEvent](../../accelbyte_py_sdk/api/achievement/models/models_psn_event.py) |
+| models.PSNEventData | [ModelsPSNEventData](../../accelbyte_py_sdk/api/achievement/models/models_psn_event_data.py) |
+| models.PSNEventResult | [ModelsPSNEventResult](../../accelbyte_py_sdk/api/achievement/models/models_psn_event_result.py) |
 | models.PublicAchievementResponse | [ModelsPublicAchievementResponse](../../accelbyte_py_sdk/api/achievement/models/models_public_achievement_response.py) |
 | models.PublicAchievementsResponse | [ModelsPublicAchievementsResponse](../../accelbyte_py_sdk/api/achievement/models/models_public_achievements_response.py) |
 | models.TagResponse | [ModelsTagResponse](../../accelbyte_py_sdk/api/achievement/models/models_tag_response.py) |

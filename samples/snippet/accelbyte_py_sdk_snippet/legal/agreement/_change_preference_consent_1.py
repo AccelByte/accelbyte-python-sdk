@@ -15,7 +15,7 @@ localized_policy_version_id: str
 policy_id: str
 policy_version_id: str
 
-Example: '[{"isAccepted": true, "isNeedToSendEventMarketing": false, "localizedPolicyVersionId": "HALeRrdyAajIPBpa", "policyId": "6K2d1FpFur5AB8Tk", "policyVersionId": "MEFwzZB0grym1AG8"}, {"isAccepted": false, "isNeedToSendEventMarketing": true, "localizedPolicyVersionId": "ZKgTOU18lBx3RBec", "policyId": "rRvOrWW8HP8Wewd7", "policyVersionId": "XinuI6GCWWnT72ls"}, {"isAccepted": false, "isNeedToSendEventMarketing": true, "localizedPolicyVersionId": "PZ5AIOARrKOi9vQE", "policyId": "I0Q4sviIXPAVGKLP", "policyVersionId": "snzI1fjLVqxb2czP"}]'
+Example: '[{"isAccepted": false, "isNeedToSendEventMarketing": false, "localizedPolicyVersionId": "E28qz0sKvVDJVtyv", "policyId": "RbFGvHkNudKbju3n", "policyVersionId": "fnwP5OtAhEqqjKkS"}, {"isAccepted": true, "isNeedToSendEventMarketing": true, "localizedPolicyVersionId": "Y1woVhkWBqC08XiZ", "policyId": "BFiNzysf7rMzyWFH", "policyVersionId": "7ym0USKF8QFclISB"}, {"isAccepted": false, "isNeedToSendEventMarketing": false, "localizedPolicyVersionId": "HragKzami7Gy6WU5", "policyId": "N2jNWWyNzUh5ovQv", "policyVersionId": "sXw3Li1cTHMqS2gq"}]'
 """
 
 result, error = change_preference_consent_1(

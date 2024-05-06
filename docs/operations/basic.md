@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Basic Service Index (2.19.2)
+# AccelByte Gaming Services Basic Service Index (2.20.0)
 
 
 ## Operations
@@ -16,17 +16,10 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /basic/v1/admin/namespaces/{namespace}/configs | POST | createConfig | `false` | [CreateConfig](../../accelbyte_py_sdk/api/basic/operations/config/create_config.py) | [create_config](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-create-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_create_config.py) |
-| /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | DELETE | deleteConfig_1 | `false` | [DeleteConfig1](../../accelbyte_py_sdk/api/basic/operations/config/delete_config_1.py) | [delete_config_1](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-delete-config-1](../../samples/cli/accelbyte_py_sdk_cli/basic/_delete_config_1.py) |
-| /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | GET | getConfig_1 | `false` | [GetConfig1](../../accelbyte_py_sdk/api/basic/operations/config/get_config_1.py) | [get_config_1](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-get-config-1](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_config_1.py) |
+| /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | DELETE | deleteConfig | `false` | [DeleteConfig](../../accelbyte_py_sdk/api/basic/operations/config/delete_config.py) | [delete_config](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-delete-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_delete_config.py) |
+| /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | GET | getConfig | `false` | [GetConfig](../../accelbyte_py_sdk/api/basic/operations/config/get_config.py) | [get_config](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-get-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_config.py) |
 | /basic/v1/admin/namespaces/{namespace}/publisher/configs/{configKey} | GET | getPublisherConfig | `false` | [GetPublisherConfig](../../accelbyte_py_sdk/api/basic/operations/config/get_publisher_config.py) | [get_publisher_config](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-get-publisher-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_publisher_config.py) |
-| /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | PATCH | updateConfig_1 | `false` | [UpdateConfig1](../../accelbyte_py_sdk/api/basic/operations/config/update_config_1.py) | [update_config_1](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-update-config-1](../../samples/cli/accelbyte_py_sdk_cli/basic/_update_config_1.py) |
-
-### EQU8Config
-| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
-|---|---|---|---|---|---|---|
-| /basic/v1/admin/namespaces/{namespace}/equ8/config | DELETE | deleteConfig | `false` | [DeleteConfig](../../accelbyte_py_sdk/api/basic/operations/equ8_config/delete_config.py) | [delete_config](../../accelbyte_py_sdk/api/basic/wrappers/_equ8_config.py) | [accelbyte_py_sdk_cli basic-delete-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_delete_config.py) |
-| /basic/v1/admin/namespaces/{namespace}/equ8/config | GET | getConfig | `false` | [GetConfig](../../accelbyte_py_sdk/api/basic/operations/equ8_config/get_config.py) | [get_config](../../accelbyte_py_sdk/api/basic/wrappers/_equ8_config.py) | [accelbyte_py_sdk_cli basic-get-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_config.py) |
-| /basic/v1/admin/namespaces/{namespace}/equ8/config | PATCH | updateConfig | `false` | [UpdateConfig](../../accelbyte_py_sdk/api/basic/operations/equ8_config/update_config.py) | [update_config](../../accelbyte_py_sdk/api/basic/wrappers/_equ8_config.py) | [accelbyte_py_sdk_cli basic-update-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_update_config.py) |
+| /basic/v1/admin/namespaces/{namespace}/configs/{configKey} | PATCH | updateConfig | `false` | [UpdateConfig](../../accelbyte_py_sdk/api/basic/operations/config/update_config.py) | [update_config](../../accelbyte_py_sdk/api/basic/wrappers/_config.py) | [accelbyte_py_sdk_cli basic-update-config](../../samples/cli/accelbyte_py_sdk_cli/basic/_update_config.py) |
 
 ### FileUpload
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -60,23 +53,13 @@
 | /basic/v1/admin/namespaces/{namespace}/child | GET | getChildNamespaces | `false` | [GetChildNamespaces](../../accelbyte_py_sdk/api/basic/operations/namespace/get_child_namespaces.py) | [get_child_namespaces](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-child-namespaces](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_child_namespaces.py) |
 | /basic/v1/admin/namespaces/{namespace}/game | GET | getGameNamespaces | `false` | [GetGameNamespaces](../../accelbyte_py_sdk/api/basic/operations/namespace/get_game_namespaces.py) | [get_game_namespaces](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-game-namespaces](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_game_namespaces.py) |
 | /basic/v1/admin/namespaces/{namespace} | GET | getNamespace | `false` | [GetNamespace](../../accelbyte_py_sdk/api/basic/operations/namespace/get_namespace.py) | [get_namespace](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-namespace](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_namespace.py) |
+| /basic/v1/public/namespaces/{namespace} | GET | getNamespace_1 | `false` | [GetNamespace1](../../accelbyte_py_sdk/api/basic/operations/namespace/get_namespace_1.py) | [get_namespace_1](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-namespace-1](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_namespace_1.py) |
 | /basic/v1/admin/namespaces/{namespace}/context | GET | getNamespaceContext | `false` | [GetNamespaceContext](../../accelbyte_py_sdk/api/basic/operations/namespace/get_namespace_context.py) | [get_namespace_context](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-namespace-context](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_namespace_context.py) |
 | /basic/v1/admin/namespaces/{namespace}/publisher | GET | getNamespacePublisher | `false` | [GetNamespacePublisher](../../accelbyte_py_sdk/api/basic/operations/namespace/get_namespace_publisher.py) | [get_namespace_publisher](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-namespace-publisher](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_namespace_publisher.py) |
 | /basic/v1/admin/namespaces | GET | getNamespaces | `false` | [GetNamespaces](../../accelbyte_py_sdk/api/basic/operations/namespace/get_namespaces.py) | [get_namespaces](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-get-namespaces](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_namespaces.py) |
 | /basic/v1/public/namespaces/{namespace}/publisher | GET | publicGetNamespacePublisher | `false` | [PublicGetNamespacePublisher](../../accelbyte_py_sdk/api/basic/operations/namespace/public_get_namespace_publisher.py) | [public_get_namespace_publisher](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-public-get-namespace-publisher](../../samples/cli/accelbyte_py_sdk_cli/basic/_public_get_namespace_publisher.py) |
 | /basic/v1/public/namespaces | GET | publicGetNamespaces | `false` | [PublicGetNamespaces](../../accelbyte_py_sdk/api/basic/operations/namespace/public_get_namespaces.py) | [public_get_namespaces](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-public-get-namespaces](../../samples/cli/accelbyte_py_sdk_cli/basic/_public_get_namespaces.py) |
 | /basic/v1/admin/namespaces/{namespace}/basic | PATCH | updateNamespace | `false` | [UpdateNamespace](../../accelbyte_py_sdk/api/basic/operations/namespace/update_namespace.py) | [update_namespace](../../accelbyte_py_sdk/api/basic/wrappers/_namespace.py) | [accelbyte_py_sdk_cli basic-update-namespace](../../samples/cli/accelbyte_py_sdk_cli/basic/_update_namespace.py) |
-
-### UserAction
-| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
-|---|---|---|---|---|---|---|
-| /basic/v1/admin/namespaces/{namespace}/actions/ban | POST | banUsers | `false` | [BanUsers](../../accelbyte_py_sdk/api/basic/operations/user_action/ban_users.py) | [ban_users](../../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) | [accelbyte_py_sdk_cli basic-ban-users](../../samples/cli/accelbyte_py_sdk_cli/basic/_ban_users.py) |
-| /basic/v1/admin/namespaces/{namespace}/actions | GET | getActions | `false` | [GetActions](../../accelbyte_py_sdk/api/basic/operations/user_action/get_actions.py) | [get_actions](../../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) | [accelbyte_py_sdk_cli basic-get-actions](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_actions.py) |
-| /basic/v1/admin/namespaces/{namespace}/actions/banned | GET | getBannedUsers | `false` | [GetBannedUsers](../../accelbyte_py_sdk/api/basic/operations/user_action/get_banned_users.py) | [get_banned_users](../../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) | [accelbyte_py_sdk_cli basic-get-banned-users](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_banned_users.py) |
-| /basic/v1/admin/namespaces/{namespace}/actions/status | GET | getUserStatus | `false` | [GetUserStatus](../../accelbyte_py_sdk/api/basic/operations/user_action/get_user_status.py) | [get_user_status](../../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) | [accelbyte_py_sdk_cli basic-get-user-status](../../samples/cli/accelbyte_py_sdk_cli/basic/_get_user_status.py) |
-| /basic/v1/public/namespaces/{namespace}/users/{userId}/actions/report | POST | publicReportUser | `false` | [PublicReportUser](../../accelbyte_py_sdk/api/basic/operations/user_action/public_report_user.py) | [public_report_user](../../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) | [accelbyte_py_sdk_cli basic-public-report-user](../../samples/cli/accelbyte_py_sdk_cli/basic/_public_report_user.py) |
-| /basic/v1/admin/namespaces/{namespace}/actions/report | POST | reportUser | `false` | [ReportUser](../../accelbyte_py_sdk/api/basic/operations/user_action/report_user.py) | [report_user](../../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) | [accelbyte_py_sdk_cli basic-report-user](../../samples/cli/accelbyte_py_sdk_cli/basic/_report_user.py) |
-| /basic/v1/admin/namespaces/{namespace}/actions/unban | POST | unBanUsers | `false` | [UnBanUsers](../../accelbyte_py_sdk/api/basic/operations/user_action/un_ban_users.py) | [un_ban_users](../../accelbyte_py_sdk/api/basic/wrappers/_user_action.py) | [accelbyte_py_sdk_cli basic-un-ban-users](../../samples/cli/accelbyte_py_sdk_cli/basic/_un_ban_users.py) |
 
 ### UserProfile
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -112,11 +95,6 @@
 ## Models
 | Model | Class |
 |---|---|
-| A DTO for unban user API call. | [ADTOForUnbanUserAPICall](../../accelbyte_py_sdk/api/basic/models/a_dto_for_unban_user_api_call.py) |
-| A DTO for update equ8 config API call. | [ADTOForUpdateEqu8ConfigAPICall](../../accelbyte_py_sdk/api/basic/models/a_dto_for_update_equ8_config_api_call.py) |
-| A DTO object for equ8 user ban status | [ADTOObjectForEqu8UserBanStatus](../../accelbyte_py_sdk/api/basic/models/a_dto_object_for_equ8_user_ban_status.py) |
-| A DTO object for equ8 user status | [ADTOObjectForEqu8UserStatus](../../accelbyte_py_sdk/api/basic/models/a_dto_object_for_equ8_user_status.py) |
-| Action | [Action](../../accelbyte_py_sdk/api/basic/models/action.py) |
 | AddCountryGroupRequest | [AddCountryGroupRequest](../../accelbyte_py_sdk/api/basic/models/add_country_group_request.py) |
 | AddCountryGroupResponse | [AddCountryGroupResponse](../../accelbyte_py_sdk/api/basic/models/add_country_group_response.py) |
 | ConfigCreate | [ConfigCreate](../../accelbyte_py_sdk/api/basic/models/config_create.py) |
@@ -124,7 +102,6 @@
 | ConfigUpdate | [ConfigUpdate](../../accelbyte_py_sdk/api/basic/models/config_update.py) |
 | CountryGroupObject | [CountryGroupObject](../../accelbyte_py_sdk/api/basic/models/country_group_object.py) |
 | CountryObject | [CountryObject](../../accelbyte_py_sdk/api/basic/models/country_object.py) |
-| Equ8Config | [Equ8Config](../../accelbyte_py_sdk/api/basic/models/equ8_config.py) |
 | ErrorEntity | [ErrorEntity](../../accelbyte_py_sdk/api/basic/models/error_entity.py) |
 | FieldValidationError | [FieldValidationError](../../accelbyte_py_sdk/api/basic/models/field_validation_error.py) |
 | FileUploadUrlInfo | [FileUploadUrlInfo](../../accelbyte_py_sdk/api/basic/models/file_upload_url_info.py) |
@@ -132,12 +109,13 @@
 | NamespaceCreate | [NamespaceCreate](../../accelbyte_py_sdk/api/basic/models/namespace_create.py) |
 | NamespaceInfo | [NamespaceInfo](../../accelbyte_py_sdk/api/basic/models/namespace_info.py) |
 | NamespacePublisherInfo | [NamespacePublisherInfo](../../accelbyte_py_sdk/api/basic/models/namespace_publisher_info.py) |
+| NamespaceSimpleInfo | [NamespaceSimpleInfo](../../accelbyte_py_sdk/api/basic/models/namespace_simple_info.py) |
 | NamespaceStatusUpdate | [NamespaceStatusUpdate](../../accelbyte_py_sdk/api/basic/models/namespace_status_update.py) |
 | NamespaceUpdate | [NamespaceUpdate](../../accelbyte_py_sdk/api/basic/models/namespace_update.py) |
+| Permission | [Permission](../../accelbyte_py_sdk/api/basic/models/permission.py) |
 | RetrieveCountryGroupResponse | [RetrieveCountryGroupResponse](../../accelbyte_py_sdk/api/basic/models/retrieve_country_group_response.py) |
 | RetrieveTimeResponse | [RetrieveTimeResponse](../../accelbyte_py_sdk/api/basic/models/retrieve_time_response.py) |
 | UpdateCountryGroupRequest | [UpdateCountryGroupRequest](../../accelbyte_py_sdk/api/basic/models/update_country_group_request.py) |
-| UserBanRequest | [UserBanRequest](../../accelbyte_py_sdk/api/basic/models/user_ban_request.py) |
 | UserProfileAdmin | [UserProfileAdmin](../../accelbyte_py_sdk/api/basic/models/user_profile_admin.py) |
 | UserProfileBulkRequest | [UserProfileBulkRequest](../../accelbyte_py_sdk/api/basic/models/user_profile_bulk_request.py) |
 | UserProfileCreate | [UserProfileCreate](../../accelbyte_py_sdk/api/basic/models/user_profile_create.py) |
@@ -147,7 +125,6 @@
 | UserProfilePublicInfo | [UserProfilePublicInfo](../../accelbyte_py_sdk/api/basic/models/user_profile_public_info.py) |
 | UserProfileStatusUpdate | [UserProfileStatusUpdate](../../accelbyte_py_sdk/api/basic/models/user_profile_status_update.py) |
 | UserProfileUpdate | [UserProfileUpdate](../../accelbyte_py_sdk/api/basic/models/user_profile_update.py) |
-| UserReportRequest | [UserReportRequest](../../accelbyte_py_sdk/api/basic/models/user_report_request.py) |
 | UserZipCode | [UserZipCode](../../accelbyte_py_sdk/api/basic/models/user_zip_code.py) |
 | UserZipCodeUpdate | [UserZipCodeUpdate](../../accelbyte_py_sdk/api/basic/models/user_zip_code_update.py) |
 | ValidationErrorEntity | [ValidationErrorEntity](../../accelbyte_py_sdk/api/basic/models/validation_error_entity.py) |

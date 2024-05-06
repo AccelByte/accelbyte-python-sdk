@@ -40,8 +40,7 @@ class PublicListActiveSections(Operation):
 
     Other detail info:
 
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:STORE, action=2 (READ)
-      *  Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store sections)
+      * Optional permission : resource="PREVIEW", action=1(CREATE) (user with this permission can view draft store sections)
       *  Optional permission : resource="SANDBOX", action=1(CREATE) (user with this permission can view draft store sections)
       *  Returns : active section contents
 

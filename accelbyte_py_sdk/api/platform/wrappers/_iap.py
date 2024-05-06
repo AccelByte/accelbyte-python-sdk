@@ -142,12 +142,6 @@ def delete_apple_iap_config(
     """Delete apple iap config (deleteAppleIAPConfig)
 
     Delete apple iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/apple
@@ -160,7 +154,7 @@ def delete_apple_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -186,12 +180,6 @@ async def delete_apple_iap_config_async(
     """Delete apple iap config (deleteAppleIAPConfig)
 
     Delete apple iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/apple
@@ -204,7 +192,7 @@ async def delete_apple_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -232,12 +220,6 @@ def delete_epic_games_iap_config(
     """Delete epic games iap config (deleteEpicGamesIAPConfig)
 
     Delete epic games iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/epicgames
@@ -250,7 +232,7 @@ def delete_epic_games_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -276,12 +258,6 @@ async def delete_epic_games_iap_config_async(
     """Delete epic games iap config (deleteEpicGamesIAPConfig)
 
     Delete epic games iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/epicgames
@@ -294,7 +270,7 @@ async def delete_epic_games_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -322,12 +298,6 @@ def delete_google_iap_config(
     """Delete google iap config (deleteGoogleIAPConfig)
 
     Delete google iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/google
@@ -340,7 +310,7 @@ def delete_google_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -366,12 +336,6 @@ async def delete_google_iap_config_async(
     """Delete google iap config (deleteGoogleIAPConfig)
 
     Delete google iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/google
@@ -384,7 +348,7 @@ async def delete_google_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -412,12 +376,6 @@ def delete_iap_item_config(
     """delete a iap item config (deleteIAPItemConfig)
 
     delete a iap item config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG" , action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/item
@@ -430,7 +388,7 @@ def delete_iap_item_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -456,12 +414,6 @@ async def delete_iap_item_config_async(
     """delete a iap item config (deleteIAPItemConfig)
 
     delete a iap item config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG" , action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/item
@@ -474,7 +426,7 @@ async def delete_iap_item_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -502,12 +454,6 @@ def delete_oculus_iap_config(
     """Delete oculus iap config (deleteOculusIAPConfig)
 
     Delete oculus iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/oculus
@@ -520,7 +466,7 @@ def delete_oculus_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -546,12 +492,6 @@ async def delete_oculus_iap_config_async(
     """Delete oculus iap config (deleteOculusIAPConfig)
 
     Delete oculus iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/oculus
@@ -564,7 +504,7 @@ async def delete_oculus_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -592,12 +532,6 @@ def delete_playstation_iap_config(
     """Delete playstation iap config (deletePlaystationIAPConfig)
 
     Delete playstation iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation
@@ -610,7 +544,7 @@ def delete_playstation_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -636,12 +570,6 @@ async def delete_playstation_iap_config_async(
     """Delete playstation iap config (deletePlaystationIAPConfig)
 
     Delete playstation iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation
@@ -654,7 +582,7 @@ async def delete_playstation_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -682,12 +610,6 @@ def delete_steam_iap_config(
     """Delete steam iap config (deleteSteamIAPConfig)
 
     Delete steam iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/steam
@@ -700,7 +622,7 @@ def delete_steam_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -726,12 +648,6 @@ async def delete_steam_iap_config_async(
     """Delete steam iap config (deleteSteamIAPConfig)
 
     Delete steam iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/steam
@@ -744,7 +660,7 @@ async def delete_steam_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -772,12 +688,6 @@ def delete_twitch_iap_config(
     """Delete twitch iap config (deleteTwitchIAPConfig)
 
     Delete twitch iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/twitch
@@ -790,7 +700,7 @@ def delete_twitch_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -816,12 +726,6 @@ async def delete_twitch_iap_config_async(
     """Delete twitch iap config (deleteTwitchIAPConfig)
 
     Delete twitch iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/twitch
@@ -834,7 +738,7 @@ async def delete_twitch_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -862,12 +766,6 @@ def delete_xbl_ap_config(
     """Delete xbl iap config (deleteXblAPConfig)
 
     Delete xbl iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl
@@ -880,7 +778,7 @@ def delete_xbl_ap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -906,12 +804,6 @@ async def delete_xbl_ap_config_async(
     """Delete xbl iap config (deleteXblAPConfig)
 
     Delete xbl iap config.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl
@@ -924,7 +816,7 @@ async def delete_xbl_ap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -954,11 +846,7 @@ def get_apple_iap_config(
     Get apple iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : apple iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : apple iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/apple
@@ -971,7 +859,7 @@ def get_apple_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -999,11 +887,7 @@ async def get_apple_iap_config_async(
     Get apple iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : apple iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : apple iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/apple
@@ -1016,7 +900,7 @@ async def get_apple_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1046,11 +930,7 @@ def get_epic_games_iap_config(
     Get epic games iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : epic games iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : epic games iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/epicgames
@@ -1063,7 +943,7 @@ def get_epic_games_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1091,11 +971,7 @@ async def get_epic_games_iap_config_async(
     Get epic games iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : epic games iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : epic games iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/epicgames
@@ -1108,7 +984,7 @@ async def get_epic_games_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1138,11 +1014,7 @@ def get_google_iap_config(
     Get google iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : google iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : google iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/google
@@ -1155,7 +1027,7 @@ def get_google_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1183,11 +1055,7 @@ async def get_google_iap_config_async(
     Get google iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : google iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : google iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/google
@@ -1200,7 +1068,7 @@ async def get_google_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1228,12 +1096,6 @@ def get_iap_item_config(
     """Get iap item config (getIAPItemConfig)
 
     Get iap item config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG" , action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/item
@@ -1246,7 +1108,7 @@ def get_iap_item_config(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1274,12 +1136,6 @@ async def get_iap_item_config_async(
     """Get iap item config (getIAPItemConfig)
 
     Get iap item config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:IAP:CONFIG" , action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/item
@@ -1292,7 +1148,7 @@ async def get_iap_item_config_async(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1323,7 +1179,6 @@ def get_iap_item_mapping(
     """Get iap item mapping (getIAPItemMapping)
 
     Get iap item mapping.
-    Other detail info:
 
     Properties:
         url: /platform/public/namespaces/{namespace}/iap/item/mapping
@@ -1368,7 +1223,6 @@ async def get_iap_item_mapping_async(
     """Get iap item mapping (getIAPItemMapping)
 
     Get iap item mapping.
-    Other detail info:
 
     Properties:
         url: /platform/public/namespaces/{namespace}/iap/item/mapping
@@ -1416,11 +1270,7 @@ def get_oculus_iap_config(
     Get oculus iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : steam iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : steam iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/oculus
@@ -1433,7 +1283,7 @@ def get_oculus_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1461,11 +1311,7 @@ async def get_oculus_iap_config_async(
     Get oculus iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : steam iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : steam iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/oculus
@@ -1478,7 +1324,7 @@ async def get_oculus_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1508,11 +1354,7 @@ def get_play_station_iap_config(
     Get playstation iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : playstation iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : playstation iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation
@@ -1525,7 +1367,7 @@ def get_play_station_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1553,11 +1395,7 @@ async def get_play_station_iap_config_async(
     Get playstation iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : playstation iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : playstation iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation
@@ -1570,7 +1408,7 @@ async def get_play_station_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1600,11 +1438,7 @@ def get_steam_iap_config(
     Get steam iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : steam iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : steam iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/steam
@@ -1617,7 +1451,7 @@ def get_steam_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1645,11 +1479,7 @@ async def get_steam_iap_config_async(
     Get steam iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : steam iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : steam iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/steam
@@ -1662,7 +1492,7 @@ async def get_steam_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1692,11 +1522,7 @@ def get_twitch_iap_config(
     Get twitch iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : twitch iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : twitch iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/twitch
@@ -1709,7 +1535,7 @@ def get_twitch_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1737,11 +1563,7 @@ async def get_twitch_iap_config_async(
     Get twitch iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : twitch iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : twitch iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/twitch
@@ -1754,7 +1576,7 @@ async def get_twitch_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1784,11 +1606,7 @@ def get_xbl_iap_config(
     Get xbox iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : xbox iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : xbox iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl
@@ -1801,7 +1619,7 @@ def get_xbl_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1829,11 +1647,7 @@ async def get_xbl_iap_config_async(
     Get xbox iap config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : xbox iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : xbox iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl
@@ -1846,7 +1660,7 @@ async def get_xbl_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1875,15 +1689,9 @@ def mock_fulfill_iap_item(
 ):
     """Mock fulfill iap item. (mockFulfillIAPItem)
 
-    [TEST FACILITY ONLY] Forbidden in live environment. Mock fulfill iap item without validate receipt.
+    [TEST FACILITY ONLY] Forbidden in live environment. Mock fulfill iap item without validate receipt.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/mock/receipt
@@ -1896,7 +1704,7 @@ def mock_fulfill_iap_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL MockIAPReceipt in body
 
@@ -1935,15 +1743,9 @@ async def mock_fulfill_iap_item_async(
 ):
     """Mock fulfill iap item. (mockFulfillIAPItem)
 
-    [TEST FACILITY ONLY] Forbidden in live environment. Mock fulfill iap item without validate receipt.
+    [TEST FACILITY ONLY] Forbidden in live environment. Mock fulfill iap item without validate receipt.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/mock/receipt
@@ -1956,7 +1758,7 @@ async def mock_fulfill_iap_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL MockIAPReceipt in body
 
@@ -1997,15 +1799,9 @@ def public_fulfill_apple_iap_item(
 ):
     """Fulfill apple iap item. (publicFulfillAppleIAPItem)
 
-    Verify apple iap receipt and fulfill item.
+    Verify apple iap receipt and fulfill item.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt
@@ -2018,7 +1814,7 @@ def public_fulfill_apple_iap_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AppleIAPReceipt in body
 
@@ -2057,15 +1853,9 @@ async def public_fulfill_apple_iap_item_async(
 ):
     """Fulfill apple iap item. (publicFulfillAppleIAPItem)
 
-    Verify apple iap receipt and fulfill item.
+    Verify apple iap receipt and fulfill item.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt
@@ -2078,7 +1868,7 @@ async def public_fulfill_apple_iap_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AppleIAPReceipt in body
 
@@ -2119,15 +1909,9 @@ def public_fulfill_google_iap_item(
 ):
     """Fulfill google iap item. (publicFulfillGoogleIAPItem)
 
-    Verify google iap receipt and fulfill item.
+    Verify google iap receipt and fulfill item.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/google/receipt
@@ -2140,7 +1924,7 @@ def public_fulfill_google_iap_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL GoogleIAPReceipt in body
 
@@ -2179,15 +1963,9 @@ async def public_fulfill_google_iap_item_async(
 ):
     """Fulfill google iap item. (publicFulfillGoogleIAPItem)
 
-    Verify google iap receipt and fulfill item.
+    Verify google iap receipt and fulfill item.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/google/receipt
@@ -2200,7 +1978,7 @@ async def public_fulfill_google_iap_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL GoogleIAPReceipt in body
 
@@ -2241,15 +2019,9 @@ def public_reconcile_play_station_store(
 ):
     """Synchronize with entitlements in PSN Store. (publicReconcilePlayStationStore)
 
-    Synchronize with entitlements in PSN Store.
+    Synchronize with entitlements in PSN Store.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns : result of synchronization
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync
@@ -2262,7 +2034,7 @@ def public_reconcile_play_station_store(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlayStationReconcileRequest in body
 
@@ -2297,15 +2069,9 @@ async def public_reconcile_play_station_store_async(
 ):
     """Synchronize with entitlements in PSN Store. (publicReconcilePlayStationStore)
 
-    Synchronize with entitlements in PSN Store.
+    Synchronize with entitlements in PSN Store.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns : result of synchronization
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync
@@ -2318,7 +2084,7 @@ async def public_reconcile_play_station_store_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlayStationReconcileRequest in body
 
@@ -2355,15 +2121,9 @@ def public_reconcile_play_station_store_with_multiple_service_labels(
 ):
     """Synchronize with entitlements in PSN Store with multiple service labels. (publicReconcilePlayStationStoreWithMultipleServiceLabels)
 
-    Synchronize with entitlements in PSN Store with multiple service labels.
+    Synchronize with entitlements in PSN Store with multiple service labels.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns : result of synchronization
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync/multiServiceLabels
@@ -2376,7 +2136,7 @@ def public_reconcile_play_station_store_with_multiple_service_labels(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlayStationMultiServiceLabelsReconcileRequest in body
 
@@ -2411,15 +2171,9 @@ async def public_reconcile_play_station_store_with_multiple_service_labels_async
 ):
     """Synchronize with entitlements in PSN Store with multiple service labels. (publicReconcilePlayStationStoreWithMultipleServiceLabels)
 
-    Synchronize with entitlements in PSN Store with multiple service labels.
+    Synchronize with entitlements in PSN Store with multiple service labels.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns : result of synchronization
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync/multiServiceLabels
@@ -2432,7 +2186,7 @@ async def public_reconcile_play_station_store_with_multiple_service_labels_async
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlayStationMultiServiceLabelsReconcileRequest in body
 
@@ -2471,11 +2225,7 @@ def query_all_user_iap_orders(
     Query all user IAP orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : list of iap orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+      * Returns : list of iap orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/all
@@ -2488,7 +2238,7 @@ def query_all_user_iap_orders(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2520,11 +2270,7 @@ async def query_all_user_iap_orders_async(
     Query all user IAP orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : list of iap orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+      * Returns : list of iap orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/all
@@ -2537,7 +2283,7 @@ async def query_all_user_iap_orders_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2577,11 +2323,7 @@ def query_user_iap_consume_history(
     Query IAP consume history.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : paginated iap consume history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+      * Returns : paginated iap consume history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/consume/history
@@ -2594,7 +2336,7 @@ def query_user_iap_consume_history(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2650,11 +2392,7 @@ async def query_user_iap_consume_history_async(
     Query IAP consume history.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : paginated iap consume history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+      * Returns : paginated iap consume history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/consume/history
@@ -2667,7 +2405,7 @@ async def query_user_iap_consume_history_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2726,11 +2464,7 @@ def query_user_iap_orders(
     Query IAP orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : paginated iap orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+      * Returns : paginated iap orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap
@@ -2743,7 +2477,7 @@ def query_user_iap_orders(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2803,11 +2537,7 @@ async def query_user_iap_orders_async(
     Query IAP orders.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : paginated iap orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+      * Returns : paginated iap orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/iap
@@ -2820,7 +2550,7 @@ async def query_user_iap_orders_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2873,15 +2603,9 @@ def sync_epic_games_inventory(
 ):
     """Sync epic games inventory. (syncEpicGamesInventory)
 
-    Sync epic games inventory's items.
+    Sync epic games inventory's items.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/epicgames/sync
@@ -2894,7 +2618,7 @@ def sync_epic_games_inventory(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EpicGamesReconcileRequest in body
 
@@ -2929,15 +2653,9 @@ async def sync_epic_games_inventory_async(
 ):
     """Sync epic games inventory. (syncEpicGamesInventory)
 
-    Sync epic games inventory's items.
+    Sync epic games inventory's items.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/epicgames/sync
@@ -2950,7 +2668,7 @@ async def sync_epic_games_inventory_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EpicGamesReconcileRequest in body
 
@@ -2986,15 +2704,9 @@ def sync_oculus_consumable_entitlements(
 ):
     """Sync Oculus entitlements. (syncOculusConsumableEntitlements)
 
-    Sync Oculus entitlements.
+    Sync Oculus entitlements.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/oculus/sync
@@ -3007,7 +2719,7 @@ def sync_oculus_consumable_entitlements(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -3038,15 +2750,9 @@ async def sync_oculus_consumable_entitlements_async(
 ):
     """Sync Oculus entitlements. (syncOculusConsumableEntitlements)
 
-    Sync Oculus entitlements.
+    Sync Oculus entitlements.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/oculus/sync
@@ -3059,7 +2765,7 @@ async def sync_oculus_consumable_entitlements_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -3093,15 +2799,9 @@ def sync_steam_inventory(
 ):
     """Sync steam inventory. (syncSteamInventory)
 
-    Sync steam inventory's items.
+    Sync steam inventory's items.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/steam/sync
@@ -3114,7 +2814,7 @@ def sync_steam_inventory(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SteamSyncRequest in body
 
@@ -3149,15 +2849,9 @@ async def sync_steam_inventory_async(
 ):
     """Sync steam inventory. (syncSteamInventory)
 
-    Sync steam inventory's items.
+    Sync steam inventory's items.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/steam/sync
@@ -3170,7 +2864,7 @@ async def sync_steam_inventory_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SteamSyncRequest in body
 
@@ -3207,11 +2901,6 @@ def sync_twitch_drops_entitlement(
     """Sync my game twitch drops entitlements. (syncTwitchDropsEntitlement)
 
     Sync my game twitch drops entitlements.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:IAP, action=4 (UPDATE)
-      *  Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/iap/twitch/sync
@@ -3256,11 +2945,6 @@ async def sync_twitch_drops_entitlement_async(
     """Sync my game twitch drops entitlements. (syncTwitchDropsEntitlement)
 
     Sync my game twitch drops entitlements.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:IAP, action=4 (UPDATE)
-      *  Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/iap/twitch/sync
@@ -3307,15 +2991,9 @@ def sync_twitch_drops_entitlement_1(
 ):
     """Sync twitch drops entitlements. (syncTwitchDropsEntitlement_1)
 
-    Sync twitch drops entitlements.
+    Sync twitch drops entitlements.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/twitch/sync
@@ -3328,7 +3006,7 @@ def sync_twitch_drops_entitlement_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TwitchSyncRequest in body
 
@@ -3363,15 +3041,9 @@ async def sync_twitch_drops_entitlement_1_async(
 ):
     """Sync twitch drops entitlements. (syncTwitchDropsEntitlement_1)
 
-    Sync twitch drops entitlements.
+    Sync twitch drops entitlements.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/twitch/sync
@@ -3384,7 +3056,7 @@ async def sync_twitch_drops_entitlement_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TwitchSyncRequest in body
 
@@ -3421,15 +3093,9 @@ def sync_xbox_inventory(
 ):
     """Sync Xbox inventory. (syncXboxInventory)
 
-    Sync Xbox inventory's items.
+    Sync Xbox inventory's items.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/xbl/sync
@@ -3442,7 +3108,7 @@ def sync_xbox_inventory(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XblReconcileRequest in body
 
@@ -3477,15 +3143,9 @@ async def sync_xbox_inventory_async(
 ):
     """Sync Xbox inventory. (syncXboxInventory)
 
-    Sync Xbox inventory's items.
+    Sync Xbox inventory's items.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/xbl/sync
@@ -3498,7 +3158,7 @@ async def sync_xbox_inventory_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XblReconcileRequest in body
 
@@ -3536,11 +3196,7 @@ def update_apple_iap_config(
 
     Update apple iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated apple iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated apple iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/apple
@@ -3553,7 +3209,7 @@ def update_apple_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AppleIAPConfigRequest in body
 
@@ -3584,11 +3240,7 @@ async def update_apple_iap_config_async(
 
     Update apple iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated apple iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated apple iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/apple
@@ -3601,7 +3253,7 @@ async def update_apple_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AppleIAPConfigRequest in body
 
@@ -3634,11 +3286,7 @@ def update_epic_games_iap_config(
 
     Update epic games iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated epic games iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated epic games iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/epicgames
@@ -3651,7 +3299,7 @@ def update_epic_games_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EpicGamesIAPConfigRequest in body
 
@@ -3682,11 +3330,7 @@ async def update_epic_games_iap_config_async(
 
     Update epic games iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated epic games iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated epic games iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/epicgames
@@ -3699,7 +3343,7 @@ async def update_epic_games_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL EpicGamesIAPConfigRequest in body
 
@@ -3732,11 +3376,7 @@ def update_google_iap_config(
 
     Update google iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated google iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated google iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/google
@@ -3749,7 +3389,7 @@ def update_google_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL GoogleIAPConfigRequest in body
 
@@ -3780,11 +3420,7 @@ async def update_google_iap_config_async(
 
     Update google iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated google iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated google iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/google
@@ -3797,7 +3433,7 @@ async def update_google_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL GoogleIAPConfigRequest in body
 
@@ -3831,11 +3467,7 @@ def update_google_p12_file(
     Upload google play p12 file.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated google iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated google iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/google/cert
@@ -3848,7 +3480,7 @@ def update_google_p12_file(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -3880,11 +3512,7 @@ async def update_google_p12_file_async(
     Upload google play p12 file.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated google iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated google iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/google/cert
@@ -3897,7 +3525,7 @@ async def update_google_p12_file_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -3930,11 +3558,7 @@ def update_iap_item_config(
 
     Update iap item config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated iap item config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated iap item config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/item
@@ -3947,7 +3571,7 @@ def update_iap_item_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL IAPItemConfigUpdate in body
 
@@ -3984,11 +3608,7 @@ async def update_iap_item_config_async(
 
     Update iap item config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated iap item config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated iap item config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/item
@@ -4001,7 +3621,7 @@ async def update_iap_item_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL IAPItemConfigUpdate in body
 
@@ -4040,11 +3660,7 @@ def update_oculus_iap_config(
 
     Update oculus iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated steam iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated steam iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/oculus
@@ -4057,7 +3673,7 @@ def update_oculus_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL OculusIAPConfigRequest in body
 
@@ -4088,11 +3704,7 @@ async def update_oculus_iap_config_async(
 
     Update oculus iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated steam iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated steam iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/oculus
@@ -4105,7 +3717,7 @@ async def update_oculus_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL OculusIAPConfigRequest in body
 
@@ -4138,11 +3750,7 @@ def update_playstation_iap_config(
 
     Update playstation iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated playstation iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated playstation iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation
@@ -4155,7 +3763,7 @@ def update_playstation_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlaystationIAPConfigRequest in body
 
@@ -4188,11 +3796,7 @@ async def update_playstation_iap_config_async(
 
     Update playstation iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated playstation iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated playstation iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation
@@ -4205,7 +3809,7 @@ async def update_playstation_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlaystationIAPConfigRequest in body
 
@@ -4240,11 +3844,7 @@ def update_steam_iap_config(
 
     Update steam iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated steam iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated steam iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/steam
@@ -4257,7 +3857,7 @@ def update_steam_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SteamIAPConfigRequest in body
 
@@ -4290,11 +3890,7 @@ async def update_steam_iap_config_async(
 
     Update steam iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated steam iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated steam iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/steam
@@ -4307,7 +3903,7 @@ async def update_steam_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SteamIAPConfigRequest in body
 
@@ -4342,11 +3938,7 @@ def update_twitch_iap_config(
 
     Update twitch iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated twitch iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated twitch iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/twitch
@@ -4359,7 +3951,7 @@ def update_twitch_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TwitchIAPConfigRequest in body
 
@@ -4390,11 +3982,7 @@ async def update_twitch_iap_config_async(
 
     Update twitch iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated twitch iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated twitch iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/twitch
@@ -4407,7 +3995,7 @@ async def update_twitch_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TwitchIAPConfigRequest in body
 
@@ -4442,11 +4030,7 @@ def update_xbl_bp_cert_file(
     Upload xbl business partner cert file.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated xbl iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated xbl iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl/cert
@@ -4459,7 +4043,7 @@ def update_xbl_bp_cert_file(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -4497,11 +4081,7 @@ async def update_xbl_bp_cert_file_async(
     Upload xbl business partner cert file.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated xbl iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated xbl iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl/cert
@@ -4514,7 +4094,7 @@ async def update_xbl_bp_cert_file_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -4552,11 +4132,7 @@ def update_xbl_iap_config(
 
     Update xbl iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated xbl iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated xbl iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl
@@ -4569,7 +4145,7 @@ def update_xbl_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XblIAPConfigRequest in body
 
@@ -4600,11 +4176,7 @@ async def update_xbl_iap_config_async(
 
     Update xbl iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated xbl iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated xbl iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/xbl
@@ -4617,7 +4189,7 @@ async def update_xbl_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XblIAPConfigRequest in body
 
@@ -4649,11 +4221,7 @@ def validate_existed_playstation_iap_config(
 
     Validate playstation iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : Test Results
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : Test Results
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation/validate
@@ -4666,7 +4234,7 @@ def validate_existed_playstation_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -4693,11 +4261,7 @@ async def validate_existed_playstation_iap_config_async(
 
     Validate playstation iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=2 (READ)
-      *  Returns : Test Results
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [READ]
+      * Returns : Test Results
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation/validate
@@ -4710,7 +4274,7 @@ async def validate_existed_playstation_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -4740,11 +4304,7 @@ def validate_playstation_iap_config(
 
     Validate playstation iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : Test Results
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : Test Results
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation/validate
@@ -4757,7 +4317,7 @@ def validate_playstation_iap_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlaystationIAPConfigRequest in body
 
@@ -4788,11 +4348,7 @@ async def validate_playstation_iap_config_async(
 
     Validate playstation iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : Test Results
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : Test Results
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation/validate
@@ -4805,7 +4361,7 @@ async def validate_playstation_iap_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlaystationIAPConfigRequest in body
 

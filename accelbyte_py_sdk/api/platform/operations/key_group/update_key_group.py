@@ -41,11 +41,7 @@ class UpdateKeyGroup(Operation):
     Update key group.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:KEYGROUP", action=4 (UPDATE)
-      *  Returns : updated key group
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:KEYGROUP [UPDATE]
+      * Returns : updated key group
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/keygroups/{keyGroupId}
@@ -58,7 +54,7 @@ class UpdateKeyGroup(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL KeyGroupUpdate in body
 
@@ -82,7 +78,7 @@ class UpdateKeyGroup(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: KeyGroupUpdate  # OPTIONAL in [body]

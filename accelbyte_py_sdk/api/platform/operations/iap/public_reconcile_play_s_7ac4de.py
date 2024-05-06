@@ -37,15 +37,9 @@ from ...models import PlayStationReconcileResult
 class PublicReconcilePlayStationStore(Operation):
     """Synchronize with entitlements in PSN Store. (publicReconcilePlayStationStore)
 
-    Synchronize with entitlements in PSN Store.
+    Synchronize with entitlements in PSN Store.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns : result of synchronization
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync
@@ -58,7 +52,7 @@ class PublicReconcilePlayStationStore(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlayStationReconcileRequest in body
 
@@ -78,7 +72,7 @@ class PublicReconcilePlayStationStore(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: PlayStationReconcileRequest  # OPTIONAL in [body]

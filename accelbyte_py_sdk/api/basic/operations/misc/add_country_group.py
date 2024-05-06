@@ -41,12 +41,8 @@ class AddCountryGroup(Operation):
     Country code must follow ISO3166-1 alpha-2.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:MISC" , action=1 (CREATE)
-      *  Action code : 11201
+      * Action code : 11201
       *  Returns : newly created country group
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:MISC [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/misc/countrygroups
@@ -59,7 +55,7 @@ class AddCountryGroup(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AddCountryGroupRequest in body
 
@@ -83,7 +79,7 @@ class AddCountryGroup(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: AddCountryGroupRequest  # OPTIONAL in [body]

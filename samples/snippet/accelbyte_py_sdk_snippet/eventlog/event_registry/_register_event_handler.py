@@ -13,7 +13,7 @@ event_level: int
 event_type: int
 ux: int
 
-Example: '{"EventID": 97, "EventLevel": 5, "EventType": 15, "UX": 29}'
+Example: '{"EventID": 98, "EventLevel": 17, "EventType": 68, "UX": 24}'
 """
 
 result, error = register_event_handler(

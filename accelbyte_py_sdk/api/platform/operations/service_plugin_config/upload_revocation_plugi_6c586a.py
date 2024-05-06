@@ -38,8 +38,7 @@ class UploadRevocationPluginConfigCert(Operation):
 
     Upload revocation plugin custom config tls cert.Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION, action=4 (UPDATE)
-      *  Returns : updated service plugin config
+      * Returns : updated service plugin config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/plugins/revocation/revocation/customConfig/cert

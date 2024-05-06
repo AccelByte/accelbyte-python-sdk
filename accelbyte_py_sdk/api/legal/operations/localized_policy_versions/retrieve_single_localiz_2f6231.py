@@ -37,12 +37,6 @@ class RetrieveSingleLocalizedPolicyVersion(Operation):
     """Retrieve a Localized Version from Country-Specific Policy (retrieveSingleLocalizedPolicyVersion)
 
     Retrieve a version of a particular country-specific policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/localized-policy-versions/{localizedPolicyVersionId}
@@ -55,7 +49,7 @@ class RetrieveSingleLocalizedPolicyVersion(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
 
@@ -71,7 +65,7 @@ class RetrieveSingleLocalizedPolicyVersion(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     localized_policy_version_id: str  # REQUIRED in [path]

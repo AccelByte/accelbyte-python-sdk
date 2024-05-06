@@ -40,12 +40,6 @@ class DeleteItem(Operation):
     force: the default value should be: false. When the value is:
     * false: only the items in the draft store that have never been published yet can be removed.
     *  true: the item in the draft store(even been published before) can be removed.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ITEM [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/items/{itemId}
@@ -58,7 +52,7 @@ class DeleteItem(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         item_id: (itemId) REQUIRED str in path
 
@@ -80,7 +74,7 @@ class DeleteItem(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     item_id: str  # REQUIRED in [path]

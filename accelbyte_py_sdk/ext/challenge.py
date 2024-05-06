@@ -31,6 +31,7 @@ from ..api.challenge.models import ModelCreateChallengeRequest
 from ..api.challenge.models import ModelCreateGoalRequest
 from ..api.challenge.models import ModelEvaluatePlayerProgressionRequest
 from ..api.challenge.models import ModelGetGoalsResponse
+from ..api.challenge.models import ModelGoalMeta
 from ..api.challenge.models import ModelGoalOrder
 from ..api.challenge.models import ModelGoalProgressionResponse
 from ..api.challenge.models import ModelGoalResponse
@@ -75,6 +76,7 @@ def create_model_challenge_response_example() -> ModelChallengeResponse:
     instance.updated_at = randomize()
     instance.end_after = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize()
+    instance.repeat_after = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -96,6 +98,7 @@ def create_model_create_challenge_request_example() -> ModelCreateChallengeReque
     instance.description = randomize()
     instance.end_after = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize("date")
+    instance.repeat_after = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -127,6 +130,17 @@ def create_model_get_goals_response_example() -> ModelGetGoalsResponse:
     return instance
 
 
+def create_model_goal_meta_example() -> ModelGoalMeta:
+    instance = ModelGoalMeta()
+    instance.code = randomize()
+    instance.description = randomize()
+    instance.name = randomize()
+    instance.requirement_groups = [create_model_requirement_example()]
+    instance.rewards = [create_model_reward_example()]
+    instance.tags = [randomize()]
+    return instance
+
+
 def create_model_goal_order_example() -> ModelGoalOrder:
     instance = ModelGoalOrder()
     instance.goal = create_model_goal_response_example()
@@ -137,6 +151,7 @@ def create_model_goal_order_example() -> ModelGoalOrder:
 def create_model_goal_progression_response_example() -> ModelGoalProgressionResponse:
     instance = ModelGoalProgressionResponse()
     instance.challenge_code = randomize()
+    instance.goal = create_model_goal_meta_example()
     instance.goal_code = randomize()
     instance.goal_progression_id = randomize()
     instance.requirement_progressions = [
@@ -221,10 +236,13 @@ def create_model_requirement_progression_response_example() -> (
     ModelRequirementProgressionResponse
 ):
     instance = ModelRequirementProgressionResponse()
+    instance.current_value = randomize("int", min_val=1, max_val=1000)
     instance.id_ = randomize()
+    instance.matcher = randomize()
+    instance.parameter_name = randomize()
+    instance.parameter_type = randomize()
     instance.target_value = randomize("int", min_val=1, max_val=1000)
     instance.completed_at = randomize()
-    instance.currrent_value = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -252,11 +270,11 @@ def create_model_schedule_example() -> ModelSchedule:
 def create_model_update_goal_request_example() -> ModelUpdateGoalRequest:
     instance = ModelUpdateGoalRequest()
     instance.description = randomize()
-    instance.is_active = randomize("bool")
     instance.name = randomize()
     instance.requirement_groups = [create_model_requirement_example()]
     instance.rewards = [create_model_reward_example()]
     instance.tags = [randomize()]
+    instance.is_active = randomize("bool")
     instance.schedule = create_model_goal_schedule_example()
     return instance
 
@@ -265,6 +283,7 @@ def create_model_user_progression_response_example() -> ModelUserProgressionResp
     instance = ModelUserProgressionResponse()
     instance.data = [create_model_goal_progression_response_example()]
     instance.meta = create_model_user_progression_response_meta_example()
+    instance.paging = create_model_pagination_example()
     return instance
 
 
@@ -314,6 +333,7 @@ def create_models_update_challenge_request_example() -> ModelsUpdateChallengeReq
     instance.end_date = randomize("date")
     instance.goals_visibility = randomize()
     instance.name = randomize()
+    instance.repeat_after = randomize("int", min_val=1, max_val=1000)
     instance.rotation = randomize()
     instance.start_date = randomize("date")
     return instance

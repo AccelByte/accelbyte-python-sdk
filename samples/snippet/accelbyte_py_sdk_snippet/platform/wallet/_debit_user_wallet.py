@@ -16,7 +16,7 @@ balance_source: str
 metadata: Dict[str, Any]
 reason: str
 
-Example: '{"amount": 16, "balanceSource": "DLC_REVOCATION", "metadata": {"pUTMnkJ4rA1TA6g4": {}, "f0BjFBUIZKz00yj9": {}, "fxURkXPePHenRwEU": {}}, "reason": "8sYjY0ccxABcqIH0"}'
+Example: '{"amount": 2, "balanceSource": "PAYMENT", "metadata": {"i1f1wqzR6tjTNvDv": {}, "4V8JXA4RRkUINdrd": {}, "zg2ffjnSkbEemDS5": {}}, "reason": "0GHrqLeGxFvAVr4K"}'
 """
 
 result, error = debit_user_wallet(

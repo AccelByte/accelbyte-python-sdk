@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.50.0"
+__version__ = "4.51.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -29,6 +29,7 @@ from .public_create_user_order import PublicCreateUserOrder
 from .public_download_user_or_6ea3e8 import PublicDownloadUserOrderReceipt
 from .public_get_user_order import PublicGetUserOrder
 from .public_get_user_order_h_063753 import PublicGetUserOrderHistories
+from .public_preview_order_price import PublicPreviewOrderPrice
 from .public_query_user_orders import PublicQueryUserOrders
 from .public_query_user_orders import StatusEnum as PublicQueryUserOrdersStatusEnum
 from .query_orders import QueryOrders

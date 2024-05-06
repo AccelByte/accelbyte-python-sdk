@@ -39,11 +39,7 @@ class TestAliPayConfigById(Operation):
     [Not Supported Yet In Starter] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test alipay config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test alipay config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/alipayconfig/test
@@ -56,7 +52,7 @@ class TestAliPayConfigById(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -74,7 +70,7 @@ class TestAliPayConfigById(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     id_: str  # REQUIRED in [path]

@@ -36,15 +36,9 @@ from ...models import ErrorEntity
 class PublicFulfillAppleIAPItem(Operation):
     """Fulfill apple iap item. (publicFulfillAppleIAPItem)
 
-    Verify apple iap receipt and fulfill item.
+    Verify apple iap receipt and fulfill item.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:IAP", action=4 (UPDATE)
-      *  Returns :
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:IAP [UPDATE]
+      * Returns :
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt
@@ -57,7 +51,7 @@ class PublicFulfillAppleIAPItem(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AppleIAPReceipt in body
 
@@ -83,7 +77,7 @@ class PublicFulfillAppleIAPItem(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: AppleIAPReceipt  # OPTIONAL in [body]

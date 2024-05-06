@@ -36,7 +36,12 @@ from ...models import ResponseError
 class PublicGeneratePersonalDataURL(Operation):
     """Generate personal data download url (PublicGeneratePersonalDataURL)
 
+    Generate personal data download url
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate

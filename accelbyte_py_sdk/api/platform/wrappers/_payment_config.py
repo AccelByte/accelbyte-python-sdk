@@ -128,11 +128,7 @@ def create_payment_provider_config(
       4. namespace and region are *
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=1 (CREATE)
-      *  Returns : payment provider config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [CREATE]
+      * Returns : payment provider config
 
     Properties:
         url: /platform/admin/payment/config/provider
@@ -145,7 +141,7 @@ def create_payment_provider_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentProviderConfigEdit in body
 
@@ -196,11 +192,7 @@ async def create_payment_provider_config_async(
       4. namespace and region are *
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=1 (CREATE)
-      *  Returns : payment provider config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [CREATE]
+      * Returns : payment provider config
 
     Properties:
         url: /platform/admin/payment/config/provider
@@ -213,7 +205,7 @@ async def create_payment_provider_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentProviderConfigEdit in body
 
@@ -246,11 +238,7 @@ def debug_matched_payment_merchant_config(
     [Not Supported Yet In Starter] Debug matched payment merchant config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment merchant config info
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment merchant config info
 
     Properties:
         url: /platform/admin/payment/config/merchant/matched
@@ -263,7 +251,7 @@ def debug_matched_payment_merchant_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) OPTIONAL str in query
 
@@ -293,11 +281,7 @@ async def debug_matched_payment_merchant_config_async(
     [Not Supported Yet In Starter] Debug matched payment merchant config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment merchant config info
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment merchant config info
 
     Properties:
         url: /platform/admin/payment/config/merchant/matched
@@ -310,7 +294,7 @@ async def debug_matched_payment_merchant_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) OPTIONAL str in query
 
@@ -342,11 +326,7 @@ def debug_matched_payment_provider_config(
     [Not Supported Yet In Starter] Debug matched payment provider config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider config
 
     Properties:
         url: /platform/admin/payment/config/provider/matched
@@ -359,7 +339,7 @@ def debug_matched_payment_provider_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) OPTIONAL str in query
 
@@ -389,11 +369,7 @@ async def debug_matched_payment_provider_config_async(
     [Not Supported Yet In Starter] Debug matched payment provider config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider config
 
     Properties:
         url: /platform/admin/payment/config/provider/matched
@@ -406,7 +382,7 @@ async def debug_matched_payment_provider_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) OPTIONAL str in query
 
@@ -435,11 +411,7 @@ def delete_payment_provider_config(
     [Not Supported Yet In Starter] Delete payment provider config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=8 (DELETE)
-      *  Returns : payment provider config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [DELETE]
+      * Returns : payment provider config
 
     Properties:
         url: /platform/admin/payment/config/provider/{id}
@@ -452,7 +424,7 @@ def delete_payment_provider_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -476,11 +448,7 @@ async def delete_payment_provider_config_async(
     [Not Supported Yet In Starter] Delete payment provider config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=8 (DELETE)
-      *  Returns : payment provider config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [DELETE]
+      * Returns : payment provider config
 
     Properties:
         url: /platform/admin/payment/config/provider/{id}
@@ -493,7 +461,7 @@ async def delete_payment_provider_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -519,11 +487,7 @@ def get_aggregate_payment_providers(
     [Not Supported Yet In Starter] Get aggregate payment providers, such as XSOLLA, ADYEN.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider list
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider list
 
     Properties:
         url: /platform/admin/payment/config/provider/aggregate
@@ -536,7 +500,7 @@ def get_aggregate_payment_providers(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - List[Union[str, ResponseEnum]] (successful operation)
@@ -554,11 +518,7 @@ async def get_aggregate_payment_providers_async(
     [Not Supported Yet In Starter] Get aggregate payment providers, such as XSOLLA, ADYEN.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider list
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider list
 
     Properties:
         url: /platform/admin/payment/config/provider/aggregate
@@ -571,7 +531,7 @@ async def get_aggregate_payment_providers_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - List[Union[str, ResponseEnum]] (successful operation)
@@ -591,11 +551,7 @@ def get_payment_merchant_config(
     [Not Supported Yet In Starter] Get payment merchant config by id.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment merchant config info
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment merchant config info
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}
@@ -608,7 +564,7 @@ def get_payment_merchant_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -632,11 +588,7 @@ async def get_payment_merchant_config_async(
     [Not Supported Yet In Starter] Get payment merchant config by id.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment merchant config info
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment merchant config info
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}
@@ -649,7 +601,7 @@ async def get_payment_merchant_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -675,11 +627,7 @@ def get_payment_tax_config(
     [Not Supported Yet In Starter] Get payment global tax config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider list
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider list
 
     Properties:
         url: /platform/admin/payment/config/tax
@@ -692,7 +640,7 @@ def get_payment_tax_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - PaymentTaxConfigInfo (successful operation)
@@ -710,11 +658,7 @@ async def get_payment_tax_config_async(
     [Not Supported Yet In Starter] Get payment global tax config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider list
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider list
 
     Properties:
         url: /platform/admin/payment/config/tax
@@ -727,7 +671,7 @@ async def get_payment_tax_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - PaymentTaxConfigInfo (successful operation)
@@ -747,11 +691,7 @@ def get_special_payment_providers(
     [Not Supported Yet In Starter] Get special payment providers, such as ALIPAY, WXPAY.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider list
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider list
 
     Properties:
         url: /platform/admin/payment/config/provider/special
@@ -764,7 +704,7 @@ def get_special_payment_providers(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - List[Union[str, ResponseEnum]] (successful operation)
@@ -782,11 +722,7 @@ async def get_special_payment_providers_async(
     [Not Supported Yet In Starter] Get special payment providers, such as ALIPAY, WXPAY.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider list
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider list
 
     Properties:
         url: /platform/admin/payment/config/provider/special
@@ -799,7 +735,7 @@ async def get_special_payment_providers_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - List[Union[str, ResponseEnum]] (successful operation)
@@ -824,11 +760,7 @@ def query_payment_provider_config(
     [Not Supported Yet In Starter] Query payment provider config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider config list
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider config list
 
     Properties:
         url: /platform/admin/payment/config/provider
@@ -841,7 +773,7 @@ def query_payment_provider_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         limit: (limit) OPTIONAL int in query
 
@@ -877,11 +809,7 @@ async def query_payment_provider_config_async(
     [Not Supported Yet In Starter] Query payment provider config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : payment provider config list
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : payment provider config list
 
     Properties:
         url: /platform/admin/payment/config/provider
@@ -894,7 +822,7 @@ async def query_payment_provider_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         limit: (limit) OPTIONAL int in query
 
@@ -947,11 +875,7 @@ def test_adyen_config(
       * settings
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test adyen config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test adyen config
 
     Properties:
         url: /platform/admin/payment/config/merchant/adyenconfig/test
@@ -964,7 +888,7 @@ def test_adyen_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AdyenConfig in body
 
@@ -1009,11 +933,7 @@ async def test_adyen_config_async(
       * settings
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test adyen config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test adyen config
 
     Properties:
         url: /platform/admin/payment/config/merchant/adyenconfig/test
@@ -1026,7 +946,7 @@ async def test_adyen_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AdyenConfig in body
 
@@ -1055,11 +975,7 @@ def test_adyen_config_by_id(
 
     [Not Supported Yet In Starter] Test adyen configuration in payment merchant config. Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test adyen config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test adyen config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/adyenconfig/test
@@ -1072,7 +988,7 @@ def test_adyen_config_by_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -1101,11 +1017,7 @@ async def test_adyen_config_by_id_async(
 
     [Not Supported Yet In Starter] Test adyen configuration in payment merchant config. Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test adyen config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test adyen config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/adyenconfig/test
@@ -1118,7 +1030,7 @@ async def test_adyen_config_by_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -1150,11 +1062,7 @@ def test_ali_pay_config(
     [Not Supported Yet In Starter] Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/alipayconfig/test
@@ -1167,7 +1075,7 @@ def test_ali_pay_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AliPayConfig in body
 
@@ -1195,11 +1103,7 @@ async def test_ali_pay_config_async(
     [Not Supported Yet In Starter] Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/alipayconfig/test
@@ -1212,7 +1116,7 @@ async def test_ali_pay_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AliPayConfig in body
 
@@ -1242,11 +1146,7 @@ def test_ali_pay_config_by_id(
     [Not Supported Yet In Starter] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test alipay config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test alipay config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/alipayconfig/test
@@ -1259,7 +1159,7 @@ def test_ali_pay_config_by_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -1289,11 +1189,7 @@ async def test_ali_pay_config_by_id_async(
     [Not Supported Yet In Starter] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test alipay config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test alipay config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/alipayconfig/test
@@ -1306,7 +1202,7 @@ async def test_ali_pay_config_by_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -1343,11 +1239,7 @@ def test_checkout_config(
       * secretKey
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/checkoutconfig/test
@@ -1360,7 +1252,7 @@ def test_checkout_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CheckoutConfig in body
 
@@ -1393,11 +1285,7 @@ async def test_checkout_config_async(
       * secretKey
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/checkoutconfig/test
@@ -1410,7 +1298,7 @@ async def test_checkout_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CheckoutConfig in body
 
@@ -1439,11 +1327,7 @@ def test_checkout_config_by_id(
 
     [Not Supported Yet In Starter] Test checkout.com configuration in payment merchant config. Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/checkoutconfig/test
@@ -1456,7 +1340,7 @@ def test_checkout_config_by_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -1485,11 +1369,7 @@ async def test_checkout_config_by_id_async(
 
     [Not Supported Yet In Starter] Test checkout.com configuration in payment merchant config. Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/checkoutconfig/test
@@ -1502,7 +1382,7 @@ async def test_checkout_config_by_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -1545,11 +1425,7 @@ def test_pay_pal_config(
       * webHookId
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/paypalconfig/test
@@ -1562,7 +1438,7 @@ def test_pay_pal_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PayPalConfig in body
 
@@ -1601,11 +1477,7 @@ async def test_pay_pal_config_async(
       * webHookId
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/paypalconfig/test
@@ -1618,7 +1490,7 @@ async def test_pay_pal_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PayPalConfig in body
 
@@ -1647,11 +1519,7 @@ def test_pay_pal_config_by_id(
 
     [Not Supported Yet In Starter] Test PayPal configuration in payment merchant config. Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/paypalconfig/test
@@ -1664,7 +1532,7 @@ def test_pay_pal_config_by_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -1693,11 +1561,7 @@ async def test_pay_pal_config_by_id_async(
 
     [Not Supported Yet In Starter] Test PayPal configuration in payment merchant config. Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/paypalconfig/test
@@ -1710,7 +1574,7 @@ async def test_pay_pal_config_by_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -1754,11 +1618,7 @@ def test_stripe_config(
       * webhookSecret
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test adyen config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test adyen config
 
     Properties:
         url: /platform/admin/payment/config/merchant/stripeconfig/test
@@ -1771,7 +1631,7 @@ def test_stripe_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StripeConfig in body
 
@@ -1811,11 +1671,7 @@ async def test_stripe_config_async(
       * webhookSecret
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test adyen config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test adyen config
 
     Properties:
         url: /platform/admin/payment/config/merchant/stripeconfig/test
@@ -1828,7 +1684,7 @@ async def test_stripe_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StripeConfig in body
 
@@ -1857,11 +1713,7 @@ def test_stripe_config_by_id(
 
     [Not Supported Yet In Starter] Test stripe configuration in payment merchant config. Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test adyen config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test adyen config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/stripeconfig/test
@@ -1874,7 +1726,7 @@ def test_stripe_config_by_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -1903,11 +1755,7 @@ async def test_stripe_config_by_id_async(
 
     [Not Supported Yet In Starter] Test stripe configuration in payment merchant config. Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test adyen config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test adyen config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/stripeconfig/test
@@ -1920,7 +1768,7 @@ async def test_stripe_config_by_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -1951,11 +1799,7 @@ def test_wx_pay_config(
     [Not Supported Yet In Starter] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test WxPay config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test WxPay config
 
     Properties:
         url: /platform/admin/payment/config/merchant/wxpayconfig/test
@@ -1968,7 +1812,7 @@ def test_wx_pay_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL WxPayConfigRequest in body
 
@@ -1992,11 +1836,7 @@ async def test_wx_pay_config_async(
     [Not Supported Yet In Starter] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test WxPay config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test WxPay config
 
     Properties:
         url: /platform/admin/payment/config/merchant/wxpayconfig/test
@@ -2009,7 +1849,7 @@ async def test_wx_pay_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL WxPayConfigRequest in body
 
@@ -2033,11 +1873,7 @@ def test_wx_pay_config_by_id(
     [Not Supported Yet In Starter] Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test WxPay config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test WxPay config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/wxpayconfig/test
@@ -2050,7 +1886,7 @@ def test_wx_pay_config_by_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -2074,11 +1910,7 @@ async def test_wx_pay_config_by_id_async(
     [Not Supported Yet In Starter] Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test WxPay config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test WxPay config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/wxpayconfig/test
@@ -2091,7 +1923,7 @@ async def test_wx_pay_config_by_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -2131,11 +1963,7 @@ def test_xsolla_config(
       * projectSecretKey
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/xsollaconfig/test
@@ -2148,7 +1976,7 @@ def test_xsolla_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XsollaConfig in body
 
@@ -2184,11 +2012,7 @@ async def test_xsolla_config_async(
       * projectSecretKey
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : test result
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : test result
 
     Properties:
         url: /platform/admin/payment/config/merchant/xsollaconfig/test
@@ -2201,7 +2025,7 @@ async def test_xsolla_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XsollaConfig in body
 
@@ -2225,11 +2049,7 @@ def test_xsolla_config_by_id(
     [Not Supported Yet In Starter] Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test xsolla config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test xsolla config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/xsollaconfig/test
@@ -2242,7 +2062,7 @@ def test_xsolla_config_by_id(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -2266,11 +2086,7 @@ async def test_xsolla_config_by_id_async(
     [Not Supported Yet In Starter] Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=2 (READ)
-      *  Returns : test xsolla config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [READ]
+      * Returns : test xsolla config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/xsollaconfig/test
@@ -2283,7 +2099,7 @@ async def test_xsolla_config_by_id_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -2314,11 +2130,7 @@ def update_adyen_config(
     [Not Supported Yet In Starter] Update adyen config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/adyenconfig
@@ -2331,7 +2143,7 @@ def update_adyen_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AdyenConfig in body
 
@@ -2369,11 +2181,7 @@ async def update_adyen_config_async(
     [Not Supported Yet In Starter] Update adyen config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/adyenconfig
@@ -2386,7 +2194,7 @@ async def update_adyen_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AdyenConfig in body
 
@@ -2426,11 +2234,7 @@ def update_ali_pay_config(
     [Not Supported Yet In Starter] Update alipay configuration.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/alipayconfig
@@ -2443,7 +2247,7 @@ def update_ali_pay_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AliPayConfig in body
 
@@ -2481,11 +2285,7 @@ async def update_ali_pay_config_async(
     [Not Supported Yet In Starter] Update alipay configuration.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/alipayconfig
@@ -2498,7 +2298,7 @@ async def update_ali_pay_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL AliPayConfig in body
 
@@ -2538,11 +2338,7 @@ def update_checkout_config(
     [Not Supported Yet In Starter] Update checkout.com config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/checkoutconfig
@@ -2555,7 +2351,7 @@ def update_checkout_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CheckoutConfig in body
 
@@ -2593,11 +2389,7 @@ async def update_checkout_config_async(
     [Not Supported Yet In Starter] Update checkout.com config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/checkoutconfig
@@ -2610,7 +2402,7 @@ async def update_checkout_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL CheckoutConfig in body
 
@@ -2650,11 +2442,7 @@ def update_pay_pal_config(
     [Not Supported Yet In Starter] Update PayPal config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/paypalconfig
@@ -2667,7 +2455,7 @@ def update_pay_pal_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PayPalConfig in body
 
@@ -2705,11 +2493,7 @@ async def update_pay_pal_config_async(
     [Not Supported Yet In Starter] Update PayPal config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/paypalconfig
@@ -2722,7 +2506,7 @@ async def update_pay_pal_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PayPalConfig in body
 
@@ -2781,11 +2565,7 @@ def update_payment_provider_config(
       4. namespace and region are *
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : payment provider config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : payment provider config
 
     Properties:
         url: /platform/admin/payment/config/provider/{id}
@@ -2798,7 +2578,7 @@ def update_payment_provider_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentProviderConfigEdit in body
 
@@ -2855,11 +2635,7 @@ async def update_payment_provider_config_async(
       4. namespace and region are *
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : payment provider config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : payment provider config
 
     Properties:
         url: /platform/admin/payment/config/provider/{id}
@@ -2872,7 +2648,7 @@ async def update_payment_provider_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentProviderConfigEdit in body
 
@@ -2923,11 +2699,7 @@ def update_payment_tax_config(
 
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : payment global tax config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : payment global tax config
 
     Properties:
         url: /platform/admin/payment/config/tax
@@ -2940,7 +2712,7 @@ def update_payment_tax_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentTaxConfigEdit in body
 
@@ -2982,11 +2754,7 @@ async def update_payment_tax_config_async(
 
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : payment global tax config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : payment global tax config
 
     Properties:
         url: /platform/admin/payment/config/tax
@@ -2999,7 +2767,7 @@ async def update_payment_tax_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentTaxConfigEdit in body
 
@@ -3032,11 +2800,7 @@ def update_stripe_config(
     [Not Supported Yet In Starter] Update stripe config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/stripeconfig
@@ -3049,7 +2813,7 @@ def update_stripe_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StripeConfig in body
 
@@ -3087,11 +2851,7 @@ async def update_stripe_config_async(
     [Not Supported Yet In Starter] Update stripe config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/stripeconfig
@@ -3104,7 +2864,7 @@ async def update_stripe_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StripeConfig in body
 
@@ -3143,11 +2903,7 @@ def update_wx_pay_config(
     [Not Supported Yet In Starter] Update wxpay configuration.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/wxpayconfig
@@ -3160,7 +2916,7 @@ def update_wx_pay_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL WxPayConfigRequest in body
 
@@ -3194,11 +2950,7 @@ async def update_wx_pay_config_async(
     [Not Supported Yet In Starter] Update wxpay configuration.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/wxpayconfig
@@ -3211,7 +2963,7 @@ async def update_wx_pay_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL WxPayConfigRequest in body
 
@@ -3246,11 +2998,7 @@ def update_wx_pay_config_cert(
     [Not Supported Yet In Starter] Upload wxpay cert file.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/wxpayconfig/cert
@@ -3263,7 +3011,7 @@ def update_wx_pay_config_cert(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -3293,11 +3041,7 @@ async def update_wx_pay_config_cert_async(
     [Not Supported Yet In Starter] Upload wxpay cert file.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/wxpayconfig/cert
@@ -3310,7 +3054,7 @@ async def update_wx_pay_config_cert_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -3343,11 +3087,7 @@ def update_xsolla_config(
     [Not Supported Yet In Starter] Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/xsollaconfig
@@ -3360,7 +3100,7 @@ def update_xsolla_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XsollaConfig in body
 
@@ -3394,11 +3134,7 @@ async def update_xsolla_config_async(
     [Not Supported Yet In Starter] Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/xsollaconfig
@@ -3411,7 +3147,7 @@ async def update_xsolla_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XsollaConfig in body
 
@@ -3446,11 +3182,7 @@ def update_xsolla_ui_config(
     [Not Supported Yet In Starter] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/xsollauiconfig
@@ -3463,7 +3195,7 @@ def update_xsolla_ui_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XsollaPaywallConfigRequest in body
 
@@ -3493,11 +3225,7 @@ async def update_xsolla_ui_config_async(
     [Not Supported Yet In Starter] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : updated payment merchant config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : updated payment merchant config
 
     Properties:
         url: /platform/admin/payment/config/merchant/{id}/xsollauiconfig
@@ -3510,7 +3238,7 @@ async def update_xsolla_ui_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL XsollaPaywallConfigRequest in body
 

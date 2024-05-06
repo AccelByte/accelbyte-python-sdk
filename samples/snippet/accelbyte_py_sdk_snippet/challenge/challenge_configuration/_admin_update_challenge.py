@@ -17,10 +17,11 @@ end_after: int
 end_date: str
 goals_visibility: str
 name: str
+repeat_after: int
 rotation: str
 start_date: str
 
-Example: '{"activeGoalsPerRotation": 7, "assignmentRule": "RANDOMIZED", "description": "TB9B2FoBkYvgo1KX", "endAfter": 75, "endDate": "1997-07-20T00:00:00Z", "goalsVisibility": "SHOWALL", "name": "WPm0VgdPRWQwZrIR", "rotation": "MONTHLY", "startDate": "1974-04-06T00:00:00Z"}'
+Example: '{"activeGoalsPerRotation": 74, "assignmentRule": "RANDOMIZED", "description": "u6nMezbjEEK1gLft", "endAfter": 48, "endDate": "1982-01-23T00:00:00Z", "goalsVisibility": "PERIODONLY", "name": "JJpYCLjgFjdMtbpg", "repeatAfter": 18, "rotation": "WEEKLY", "startDate": "1992-05-06T00:00:00Z"}'
 """
 
 result, error = admin_update_challenge(

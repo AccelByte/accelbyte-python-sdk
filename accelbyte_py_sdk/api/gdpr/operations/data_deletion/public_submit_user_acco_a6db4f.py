@@ -36,7 +36,12 @@ from ...models import ResponseError
 class PublicSubmitUserAccountDeletionRequest(Operation):
     """Submit user's account deletion requests (PublicSubmitUserAccountDeletionRequest)
 
+    Submit user's account deletion requests
     Requires valid user access token and password
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions

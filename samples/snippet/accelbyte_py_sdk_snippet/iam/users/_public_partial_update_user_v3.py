@@ -18,7 +18,7 @@ language_tag: str
 unique_display_name: str
 user_name: str
 
-Example: '{"avatarUrl": "DyV0zqWLCfvysRqb", "country": "Ie1HbSQTnvOWzh7U", "dateOfBirth": "ygrwHzOAa9eoECHZ", "displayName": "XP0Emp2hclmwy5Xy", "languageTag": "gfo2gHTu9NEPbehV", "uniqueDisplayName": "562FrKE8ipYZtH7X", "userName": "41o6Fnwo3V4UeyI7"}'
+Example: '{"avatarUrl": "Vk4vP5UujdPKdVy3", "country": "WTe1O4xbK2XS8jv1", "dateOfBirth": "ou7RRck7WYmS9FAl", "displayName": "VUiOPJdFrhcgDWV0", "languageTag": "rpjUdDyTCakappD0", "uniqueDisplayName": "wIc9gXfMidHZsDyr", "userName": "gozuvCCYvC2lBDs5"}'
 """
 
 result, error = public_partial_update_user_v3(

@@ -29,6 +29,7 @@ from ....core import Model
 from ....core import StrEnum
 
 from ..models.currency_summary import CurrencySummary
+from ..models.deduction_detail import DeductionDetail
 from ..models.item_snapshot import ItemSnapshot
 from ..models.order_bundle_item_info import OrderBundleItemInfo
 from ..models.order_creation_options import OrderCreationOptions
@@ -67,6 +68,8 @@ class OrderInfo(Model):
 
         currency: (currency) REQUIRED CurrencySummary
 
+        deduction: (deduction) REQUIRED int
+
         discounted_price: (discountedPrice) REQUIRED int
 
         item_id: (itemId) REQUIRED str
@@ -98,6 +101,8 @@ class OrderInfo(Model):
         created_time: (createdTime) OPTIONAL str
 
         creation_options: (creationOptions) OPTIONAL OrderCreationOptions
+
+        deduction_details: (deductionDetails) OPTIONAL List[DeductionDetail]
 
         expire_time: (expireTime) OPTIONAL str
 
@@ -146,6 +151,7 @@ class OrderInfo(Model):
 
     created_at: str  # REQUIRED
     currency: CurrencySummary  # REQUIRED
+    deduction: int  # REQUIRED
     discounted_price: int  # REQUIRED
     item_id: str  # REQUIRED
     namespace: str  # REQUIRED
@@ -162,6 +168,7 @@ class OrderInfo(Model):
     charged_time: str  # OPTIONAL
     created_time: str  # OPTIONAL
     creation_options: OrderCreationOptions  # OPTIONAL
+    deduction_details: List[DeductionDetail]  # OPTIONAL
     expire_time: str  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     fulfilled_time: str  # OPTIONAL
@@ -194,6 +201,10 @@ class OrderInfo(Model):
 
     def with_currency(self, value: CurrencySummary) -> OrderInfo:
         self.currency = value
+        return self
+
+    def with_deduction(self, value: int) -> OrderInfo:
+        self.deduction = value
         return self
 
     def with_discounted_price(self, value: int) -> OrderInfo:
@@ -258,6 +269,10 @@ class OrderInfo(Model):
 
     def with_creation_options(self, value: OrderCreationOptions) -> OrderInfo:
         self.creation_options = value
+        return self
+
+    def with_deduction_details(self, value: List[DeductionDetail]) -> OrderInfo:
+        self.deduction_details = value
         return self
 
     def with_expire_time(self, value: str) -> OrderInfo:
@@ -362,6 +377,10 @@ class OrderInfo(Model):
             result["currency"] = self.currency.to_dict(include_empty=include_empty)
         elif include_empty:
             result["currency"] = CurrencySummary()
+        if hasattr(self, "deduction"):
+            result["deduction"] = int(self.deduction)
+        elif include_empty:
+            result["deduction"] = 0
         if hasattr(self, "discounted_price"):
             result["discountedPrice"] = int(self.discounted_price)
         elif include_empty:
@@ -428,6 +447,12 @@ class OrderInfo(Model):
             )
         elif include_empty:
             result["creationOptions"] = OrderCreationOptions()
+        if hasattr(self, "deduction_details"):
+            result["deductionDetails"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.deduction_details
+            ]
+        elif include_empty:
+            result["deductionDetails"] = []
         if hasattr(self, "expire_time"):
             result["expireTime"] = str(self.expire_time)
         elif include_empty:
@@ -528,6 +553,7 @@ class OrderInfo(Model):
         cls,
         created_at: str,
         currency: CurrencySummary,
+        deduction: int,
         discounted_price: int,
         item_id: str,
         namespace: str,
@@ -544,6 +570,7 @@ class OrderInfo(Model):
         charged_time: Optional[str] = None,
         created_time: Optional[str] = None,
         creation_options: Optional[OrderCreationOptions] = None,
+        deduction_details: Optional[List[DeductionDetail]] = None,
         expire_time: Optional[str] = None,
         ext: Optional[Dict[str, Any]] = None,
         fulfilled_time: Optional[str] = None,
@@ -570,6 +597,7 @@ class OrderInfo(Model):
         instance = cls()
         instance.created_at = created_at
         instance.currency = currency
+        instance.deduction = deduction
         instance.discounted_price = discounted_price
         instance.item_id = item_id
         instance.namespace = namespace
@@ -591,6 +619,8 @@ class OrderInfo(Model):
             instance.created_time = created_time
         if creation_options is not None:
             instance.creation_options = creation_options
+        if deduction_details is not None:
+            instance.deduction_details = deduction_details
         if expire_time is not None:
             instance.expire_time = expire_time
         if ext is not None:
@@ -650,6 +680,10 @@ class OrderInfo(Model):
             )
         elif include_empty:
             instance.currency = CurrencySummary()
+        if "deduction" in dict_ and dict_["deduction"] is not None:
+            instance.deduction = int(dict_["deduction"])
+        elif include_empty:
+            instance.deduction = 0
         if "discountedPrice" in dict_ and dict_["discountedPrice"] is not None:
             instance.discounted_price = int(dict_["discountedPrice"])
         elif include_empty:
@@ -722,6 +756,13 @@ class OrderInfo(Model):
             )
         elif include_empty:
             instance.creation_options = OrderCreationOptions()
+        if "deductionDetails" in dict_ and dict_["deductionDetails"] is not None:
+            instance.deduction_details = [
+                DeductionDetail.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["deductionDetails"]
+            ]
+        elif include_empty:
+            instance.deduction_details = []
         if "expireTime" in dict_ and dict_["expireTime"] is not None:
             instance.expire_time = str(dict_["expireTime"])
         elif include_empty:
@@ -855,6 +896,7 @@ class OrderInfo(Model):
         return {
             "createdAt": "created_at",
             "currency": "currency",
+            "deduction": "deduction",
             "discountedPrice": "discounted_price",
             "itemId": "item_id",
             "namespace": "namespace",
@@ -871,6 +913,7 @@ class OrderInfo(Model):
             "chargedTime": "charged_time",
             "createdTime": "created_time",
             "creationOptions": "creation_options",
+            "deductionDetails": "deduction_details",
             "expireTime": "expire_time",
             "ext": "ext",
             "fulfilledTime": "fulfilled_time",
@@ -899,6 +942,7 @@ class OrderInfo(Model):
         return {
             "createdAt": True,
             "currency": True,
+            "deduction": True,
             "discountedPrice": True,
             "itemId": True,
             "namespace": True,
@@ -915,6 +959,7 @@ class OrderInfo(Model):
             "chargedTime": False,
             "createdTime": False,
             "creationOptions": False,
+            "deductionDetails": False,
             "expireTime": False,
             "ext": False,
             "fulfilledTime": False,

@@ -87,11 +87,7 @@ class QueryItems1(Operation):
     * Not provided: show both ACTIVE and INACTIVE items
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ITEM", action=2 (READ)
-      *  Returns : the list of items
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ITEM [READ]
+      * Returns : the list of items
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/items/byCriteria
@@ -104,7 +100,7 @@ class QueryItems1(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -158,7 +154,7 @@ class QueryItems1(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

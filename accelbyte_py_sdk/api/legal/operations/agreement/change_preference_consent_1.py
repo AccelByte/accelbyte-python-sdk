@@ -37,9 +37,6 @@ class ChangePreferenceConsent1(Operation):
     """Accept/Revoke Marketing Preference Consent (changePreferenceConsent_1)
 
     Change marketing preference consent.
-    Other detail info:
-
-      * Required permission : login user
 
     Properties:
         url: /agreement/public/agreements/localized-policy-versions/preferences

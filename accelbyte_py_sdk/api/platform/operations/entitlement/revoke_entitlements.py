@@ -39,11 +39,7 @@ class RevokeEntitlements(Operation):
     Revoke entitlements, skipped revocation will be treated as fail.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT", action=4 (UPDATE)
-      *  Returns : bulk revoke entitlements result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT [UPDATE]
+      * Returns : bulk revoke entitlements result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/entitlements/revoke
@@ -56,7 +52,7 @@ class RevokeEntitlements(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[str] in body
 
@@ -74,7 +70,7 @@ class RevokeEntitlements(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[str]  # OPTIONAL in [body]

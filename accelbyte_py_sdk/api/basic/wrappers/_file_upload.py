@@ -52,12 +52,8 @@ def generated_upload_url(
     Generate an upload URL. It's valid for 10 minutes.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11101
+      * Action code : 11101
       *  Returns : URL data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/folders/{folder}/files
@@ -70,7 +66,7 @@ def generated_upload_url(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         folder: (folder) REQUIRED str in path
 
@@ -114,12 +110,8 @@ async def generated_upload_url_async(
     Generate an upload URL. It's valid for 10 minutes.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11101
+      * Action code : 11101
       *  Returns : URL data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/folders/{folder}/files
@@ -132,7 +124,7 @@ async def generated_upload_url_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         folder: (folder) REQUIRED str in path
 
@@ -179,14 +171,10 @@ def generated_user_upload_content_url(
     Generate an upload URL for user content. It's valid for 10 minutes.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11102
+      * Action code : 11102
       *  Default maximum file count per user : 10 files
       *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/files
@@ -199,7 +187,7 @@ def generated_user_upload_content_url(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -249,14 +237,10 @@ async def generated_user_upload_content_url_async(
     Generate an upload URL for user content. It's valid for 10 minutes.
     Other detail info:
 
-      * Required permission : resource = "ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11102
+      * Action code : 11102
       *  Default maximum file count per user : 10 files
       *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/files
@@ -269,7 +253,7 @@ async def generated_user_upload_content_url_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -320,12 +304,8 @@ def public_generated_upload_url(
     Generate an upload URL. It's valid for 10 minutes.
     Other detail info:
 
-      * Required permission : resource = "NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11101
+      * Action code : 11101
       *  Returns : URL data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/folders/{folder}/files
@@ -338,7 +318,7 @@ def public_generated_upload_url(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         folder: (folder) REQUIRED str in path
 
@@ -382,12 +362,8 @@ async def public_generated_upload_url_async(
     Generate an upload URL. It's valid for 10 minutes.
     Other detail info:
 
-      * Required permission : resource = "NAMESPACE:{namespace}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11101
+      * Action code : 11101
       *  Returns : URL data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:FILEUPLOAD [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/folders/{folder}/files
@@ -400,7 +376,7 @@ async def public_generated_upload_url_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         folder: (folder) REQUIRED str in path
 
@@ -449,14 +425,10 @@ def public_generated_user_upload_content_url(
     The threshold of those limitations is different between upload category that is used.
     Other detail info:
 
-      * Required permission : resource = "NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11102
+      * Action code : 11102
       *  Default maximum file count per user : 10 files
       *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/files
@@ -469,7 +441,7 @@ def public_generated_user_upload_content_url(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -521,14 +493,10 @@ async def public_generated_user_upload_content_url_async(
     The threshold of those limitations is different between upload category that is used.
     Other detail info:
 
-      * Required permission : resource = "NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11102
+      * Action code : 11102
       *  Default maximum file count per user : 10 files
       *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/files
@@ -541,7 +509,7 @@ async def public_generated_user_upload_content_url_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 

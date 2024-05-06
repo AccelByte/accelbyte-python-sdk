@@ -37,12 +37,7 @@ class AdminGetServicesConfiguration(Operation):
     """Get Registered Services Configuration (AdminGetServicesConfiguration)
 
     Get Registered Services Configuration.
-
-
-    Required permission `ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:GDPR:CONFIGURATION [READ]
+    Scope: account
 
     Required Scope(s):
         - account

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Analytics Game Telemetry."""
 
-__version__ = "1.24.1"
+__version__ = "1.24.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,6 +21,7 @@ from .list_base_response_str import ListBaseResponseStr
 from .paged_response_get_namespace_event_response import (
     PagedResponseGetNamespaceEventResponse,
 )
+from .paging import Paging
 from .play_time_response import PlayTimeResponse
 from .telemetry_body import TelemetryBody
 from .validation_error import ValidationError

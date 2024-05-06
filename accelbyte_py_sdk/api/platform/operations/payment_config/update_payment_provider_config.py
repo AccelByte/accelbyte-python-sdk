@@ -62,11 +62,7 @@ class UpdatePaymentProviderConfig(Operation):
       4. namespace and region are *
 
     Other detail info:
-      * Required permission : resource="ADMIN:PAYMENT:CONFIG", action=4 (UPDATE)
-      *  Returns : payment provider config
-
-    Required Permission(s):
-        - ADMIN:PAYMENT:CONFIG [UPDATE]
+      * Returns : payment provider config
 
     Properties:
         url: /platform/admin/payment/config/provider/{id}
@@ -79,7 +75,7 @@ class UpdatePaymentProviderConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentProviderConfigEdit in body
 
@@ -103,7 +99,7 @@ class UpdatePaymentProviderConfig(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: PaymentProviderConfigEdit  # OPTIONAL in [body]

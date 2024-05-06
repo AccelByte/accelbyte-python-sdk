@@ -40,12 +40,8 @@ class PublicGetNamespacePublisher(Operation):
     Get namespace info related publisher namespace.
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11305
+      * Action code : 11305
       *  Returns : Namespace info related publisher namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/publisher
@@ -58,7 +54,7 @@ class PublicGetNamespacePublisher(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -80,7 +76,7 @@ class PublicGetNamespacePublisher(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

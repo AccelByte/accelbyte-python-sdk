@@ -36,12 +36,6 @@ class ListFulfillmentScripts(Operation):
     """List all fulfillment scripts (listFulfillmentScripts)
 
     [Not Supported Yet In Starter] List all fulfillment scripts.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:FULFILLMENT", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:FULFILLMENT [READ]
 
     Properties:
         url: /platform/admin/fulfillment/scripts
@@ -54,7 +48,7 @@ class ListFulfillmentScripts(Operation):
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - List[FulfillmentScriptInfo] (successful operation)
@@ -66,7 +60,7 @@ class ListFulfillmentScripts(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = []
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     # endregion fields

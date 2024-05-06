@@ -42,11 +42,7 @@ class CreateStore(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=1 (CREATE)
-      *  Returns : created store data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [CREATE]
+      * Returns : created store data
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores
@@ -59,7 +55,7 @@ class CreateStore(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StoreCreate in body
 
@@ -79,7 +75,7 @@ class CreateStore(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: StoreCreate  # OPTIONAL in [body]

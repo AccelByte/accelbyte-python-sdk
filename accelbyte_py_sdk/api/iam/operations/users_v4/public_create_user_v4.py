@@ -79,6 +79,8 @@ class PublicCreateUserV4(Operation):
 
         409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used | 10222: unique display name already exists)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
 
@@ -202,6 +204,8 @@ class PublicCreateUserV4(Operation):
 
         409: Conflict - RestErrorResponse (10133: email already used | 10177: username already used | 10222: unique display name already exists)
 
+        429: Too Many Requests - RestErrorResponse (20007: too many requests)
+
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
 
         ---: HttpResponse (Undocumented Response)
@@ -226,6 +230,8 @@ class PublicCreateUserV4(Operation):
         if code == 404:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 409:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 429:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 500:
             return None, RestErrorResponse.create_from_dict(content)

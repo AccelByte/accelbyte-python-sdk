@@ -51,8 +51,7 @@ class QueryRevocationHistories(Operation):
     Query revocation histories in a namespace.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:REVOCATION, action=2 (READ)
-      *  Returns : query revocation history
+      * Returns : query revocation history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/history

@@ -40,11 +40,7 @@ class BulkDisableCodes(Operation):
     Bulk disable campaign codes, all matched codes will be disabled except those have already been redeemed.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:CAMPAIGN", action=4 (UPDATE)
-      *  Returns : the number of code actually disabled
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CAMPAIGN [UPDATE]
+      * Returns : the number of code actually disabled
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/disable/bulk
@@ -57,7 +53,7 @@ class BulkDisableCodes(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -75,7 +71,7 @@ class BulkDisableCodes(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     campaign_id: str  # REQUIRED in [path]

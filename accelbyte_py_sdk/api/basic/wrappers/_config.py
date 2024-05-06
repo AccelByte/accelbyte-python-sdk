@@ -36,10 +36,10 @@ from ..models import ErrorEntity
 from ..models import ValidationErrorEntity
 
 from ..operations.config import CreateConfig
-from ..operations.config import DeleteConfig1
-from ..operations.config import GetConfig1
+from ..operations.config import DeleteConfig
+from ..operations.config import GetConfig
 from ..operations.config import GetPublisherConfig
-from ..operations.config import UpdateConfig1
+from ..operations.config import UpdateConfig
 
 
 @same_doc_as(CreateConfig)
@@ -54,11 +54,7 @@ def create_config(
     Create a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=1 (CREATE)
-      *  Returns : created config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [CREATE]
+      * Returns : created config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs
@@ -71,7 +67,7 @@ def create_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ConfigCreate in body
 
@@ -111,11 +107,7 @@ async def create_config_async(
     Create a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=1 (CREATE)
-      *  Returns : created config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [CREATE]
+      * Returns : created config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs
@@ -128,7 +120,7 @@ async def create_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ConfigCreate in body
 
@@ -158,23 +150,19 @@ async def create_config_async(
     )
 
 
-@same_doc_as(DeleteConfig1)
-def delete_config_1(
+@same_doc_as(DeleteConfig)
+def delete_config(
     config_key: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete a config (deleteConfig_1)
+    """Delete a config (deleteConfig)
 
     Delete a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=8 (DELETE)
-      *  Returns : created config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [DELETE]
+      * Returns : created config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -187,7 +175,7 @@ def delete_config_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         config_key: (configKey) REQUIRED str in path
 
@@ -208,30 +196,26 @@ def delete_config_1(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = DeleteConfig1.create(
+    request = DeleteConfig.create(
         config_key=config_key,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(DeleteConfig1)
-async def delete_config_1_async(
+@same_doc_as(DeleteConfig)
+async def delete_config_async(
     config_key: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Delete a config (deleteConfig_1)
+    """Delete a config (deleteConfig)
 
     Delete a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=8 (DELETE)
-      *  Returns : created config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [DELETE]
+      * Returns : created config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -244,7 +228,7 @@ async def delete_config_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         config_key: (configKey) REQUIRED str in path
 
@@ -265,7 +249,7 @@ async def delete_config_1_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = DeleteConfig1.create(
+    request = DeleteConfig.create(
         config_key=config_key,
         namespace=namespace,
     )
@@ -274,23 +258,19 @@ async def delete_config_1_async(
     )
 
 
-@same_doc_as(GetConfig1)
-def get_config_1(
+@same_doc_as(GetConfig)
+def get_config(
     config_key: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get a config (getConfig_1)
+    """Get a config (getConfig)
 
     Get a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=2 (READ)
-      *  Returns : config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [READ]
+      * Returns : config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -303,7 +283,7 @@ def get_config_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         config_key: (configKey) REQUIRED str in path
 
@@ -324,30 +304,26 @@ def get_config_1(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetConfig1.create(
+    request = GetConfig.create(
         config_key=config_key,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(GetConfig1)
-async def get_config_1_async(
+@same_doc_as(GetConfig)
+async def get_config_async(
     config_key: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Get a config (getConfig_1)
+    """Get a config (getConfig)
 
     Get a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=2 (READ)
-      *  Returns : config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [READ]
+      * Returns : config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -360,7 +336,7 @@ async def get_config_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         config_key: (configKey) REQUIRED str in path
 
@@ -381,7 +357,7 @@ async def get_config_1_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = GetConfig1.create(
+    request = GetConfig.create(
         config_key=config_key,
         namespace=namespace,
     )
@@ -403,11 +379,7 @@ def get_publisher_config(
     It will return a publisher namespace config of the given namespace and key.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=2 (READ)
-      *  Returns : config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [READ]
+      * Returns : config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/publisher/configs/{configKey}
@@ -420,7 +392,7 @@ def get_publisher_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         config_key: (configKey) REQUIRED str in path
 
@@ -461,11 +433,7 @@ async def get_publisher_config_async(
     It will return a publisher namespace config of the given namespace and key.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=2 (READ)
-      *  Returns : config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [READ]
+      * Returns : config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/publisher/configs/{configKey}
@@ -478,7 +446,7 @@ async def get_publisher_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         config_key: (configKey) REQUIRED str in path
 
@@ -508,24 +476,20 @@ async def get_publisher_config_async(
     )
 
 
-@same_doc_as(UpdateConfig1)
-def update_config_1(
+@same_doc_as(UpdateConfig)
+def update_config(
     config_key: str,
     body: Optional[ConfigUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a config (updateConfig_1)
+    """Update a config (updateConfig)
 
     Update a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=4 (UPDATE)
-      *  Returns : created config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [UPDATE]
+      * Returns : created config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -538,7 +502,7 @@ def update_config_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ConfigUpdate in body
 
@@ -561,7 +525,7 @@ def update_config_1(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = UpdateConfig1.create(
+    request = UpdateConfig.create(
         config_key=config_key,
         body=body,
         namespace=namespace,
@@ -569,24 +533,20 @@ def update_config_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(UpdateConfig1)
-async def update_config_1_async(
+@same_doc_as(UpdateConfig)
+async def update_config_async(
     config_key: str,
     body: Optional[ConfigUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Update a config (updateConfig_1)
+    """Update a config (updateConfig)
 
     Update a config.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG" , action=4 (UPDATE)
-      *  Returns : created config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:BASIC:CONFIG [UPDATE]
+      * Returns : created config
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/configs/{configKey}
@@ -599,7 +559,7 @@ async def update_config_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL ConfigUpdate in body
 
@@ -622,7 +582,7 @@ async def update_config_1_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = UpdateConfig1.create(
+    request = UpdateConfig.create(
         config_key=config_key,
         body=body,
         namespace=namespace,

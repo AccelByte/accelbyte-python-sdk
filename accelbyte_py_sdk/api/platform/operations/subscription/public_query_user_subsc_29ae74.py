@@ -59,11 +59,7 @@ class PublicQueryUserSubscriptions(Operation):
     Query user subscriptions.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
@@ -76,7 +72,7 @@ class PublicQueryUserSubscriptions(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -106,7 +102,7 @@ class PublicQueryUserSubscriptions(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

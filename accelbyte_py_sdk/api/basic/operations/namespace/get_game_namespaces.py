@@ -40,12 +40,8 @@ class GetGameNamespaces(Operation):
     In multi tenant mode, a given super admin namespace will return all game namespaces of studio namespaces
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:NAMESPACE" , action=2 (READ)
-      *  Action code : 11308
+      * Action code : 11308
       *  Returns : list of namespaces
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:NAMESPACE [READ]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/game
@@ -58,7 +54,7 @@ class GetGameNamespaces(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +74,7 @@ class GetGameNamespaces(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

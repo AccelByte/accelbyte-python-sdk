@@ -40,8 +40,7 @@ class UpdateServicePluginConfig(Operation):
 
     Update catalog config. Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:CONFIG:SERVICEPLUGIN, action=4 (UPDATE)
-      *  Returns : updated service plugin config
+      * Returns : updated service plugin config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/configs/servicePlugin

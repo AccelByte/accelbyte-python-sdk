@@ -30,7 +30,7 @@ quantity: int
 sku: str
 use_count: int
 
-Example: '{"entitlementType": "F6ilJ7Yk0x55pL71", "inventoryConfig": {"slotUsed": 48}, "itemId": "dcqZD3xI7A3K3jZU", "itemType": "yax3ukeeceIcOR7A", "items": [{"bundledQty": 14, "entitlementType": "fy16EH4SbDZETUob", "inventoryConfig": {"slotUsed": 54}, "itemId": "Z3NcYxd0rg0rk9mF", "itemType": "7yblx67aPFxT3AJx", "sku": "1VdrcSgZDSwVGocd", "useCount": 60}, {"bundledQty": 96, "entitlementType": "Ccm1gmZ1s5MzyUf0", "inventoryConfig": {"slotUsed": 90}, "itemId": "kA9sOyxQvVWqzpn5", "itemType": "gS0jwzdqJgldoic8", "sku": "NtuepaPp0MocvKVu", "useCount": 66}, {"bundledQty": 43, "entitlementType": "VNzKhiX2yyK9MtIr", "inventoryConfig": {"slotUsed": 9}, "itemId": "rrv1ce6hZC7ypDfd", "itemType": "4vClUMMelaGoC823", "sku": "2N6ZQ8syXcP0z4RH", "useCount": 38}], "quantity": 59, "sku": "8ri5VUFmKe15vrIt", "useCount": 56}'
+Example: '{"entitlementType": "q6OHNyJI2P3beqmY", "inventoryConfig": {"slotUsed": 5}, "itemId": "KlwLoetjJ9P1D006", "itemType": "VXrSnkc9RNDEpurS", "items": [{"bundledQty": 36, "entitlementType": "iNud0EUzmzOo8Byj", "inventoryConfig": {"slotUsed": 62}, "itemId": "hyrnvnbQeFANQAKc", "itemType": "1UxoZvXXTqA2JzLv", "sku": "gudpafytGcyIuKwX", "useCount": 37}, {"bundledQty": 93, "entitlementType": "7hTliZfWR0mAQ1om", "inventoryConfig": {"slotUsed": 77}, "itemId": "jWtxmRv0572PvZQc", "itemType": "udhAAIA94crjLaiW", "sku": "UgqUs4HgAWz1VAst", "useCount": 3}, {"bundledQty": 95, "entitlementType": "Kn06gSKlXdQ4YvUS", "inventoryConfig": {"slotUsed": 26}, "itemId": "9OSatvA637htSPnV", "itemType": "rhoM4MbIcm4PSy4M", "sku": "sxb8zlMgCvCo8ule", "useCount": 94}], "quantity": 89, "sku": "v6J2f5eMVewNGXt8", "useCount": 72}'
 """
 
 result, error = admin_purchasable(

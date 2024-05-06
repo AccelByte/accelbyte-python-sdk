@@ -36,9 +36,6 @@ class GetRevocationPluginConfig(Operation):
     """Get revocation plugin config (getRevocationPluginConfig)
 
     Get revocation plugin config.
-    Other detail info:
-
-      * Required permission : resource= ADMIN:NAMESPACE:{namespace}:PLUGIN:REVOCATION , action=2 (READ)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/revocation/plugins/revocation

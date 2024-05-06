@@ -39,11 +39,7 @@ class GetTicketBoothID(Operation):
     Get ticket(code/key) booth ID.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=2 (READ)
-      *  Returns : ticket booth id
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
+      * Returns : ticket booth id
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/id
@@ -56,7 +52,7 @@ class GetTicketBoothID(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -74,7 +70,7 @@ class GetTicketBoothID(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     booth_name: str  # REQUIRED in [path]

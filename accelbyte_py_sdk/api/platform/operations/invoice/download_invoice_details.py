@@ -51,11 +51,7 @@ class DownloadInvoiceDetails(Operation):
     Download invoice details as a csv file.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
-      *  Returns : invoice details csv file
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+      * Returns : invoice details csv file
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/invoice/details.csv
@@ -68,7 +64,7 @@ class DownloadInvoiceDetails(Operation):
 
         produces: ["text/csv"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -92,7 +88,7 @@ class DownloadInvoiceDetails(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["text/csv"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

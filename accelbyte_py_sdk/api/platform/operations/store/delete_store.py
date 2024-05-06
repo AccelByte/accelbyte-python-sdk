@@ -39,11 +39,7 @@ class DeleteStore(Operation):
     This API is used to delete a store. Only non published store can be deleted.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=8 (DELETE)
-      *  Returns : store
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [DELETE]
+      * Returns : store
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}
@@ -56,7 +52,7 @@ class DeleteStore(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -76,7 +72,7 @@ class DeleteStore(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

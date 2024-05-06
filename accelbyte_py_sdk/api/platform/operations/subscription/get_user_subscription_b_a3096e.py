@@ -38,11 +38,7 @@ class GetUserSubscriptionBillingHistories(Operation):
     Get user subscription billing histories.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=2 (READ)
-      *  Returns : paginated subscription billing history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [READ]
+      * Returns : paginated subscription billing history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/{subscriptionId}/history
@@ -55,7 +51,7 @@ class GetUserSubscriptionBillingHistories(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -79,7 +75,7 @@ class GetUserSubscriptionBillingHistories(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

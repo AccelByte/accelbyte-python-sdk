@@ -43,13 +43,9 @@ class PublicSubscribeSubscription(Operation):
     User with permission SANDBOX will create sandbox subscription that not real paid.
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
-      *  Optional permission(user with this permission will create sandbox subscription) : resource="SANDBOX", action=1 (CREATE)
+      * Optional permission(user with this permission will create sandbox subscription) : resource="SANDBOX", action=1 (CREATE)
       * It will be forbidden while the user is banned: ORDER_INITIATE or ORDER_AND_PAYMENT
       *  Returns : created subscription
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/subscriptions
@@ -62,7 +58,7 @@ class PublicSubscribeSubscription(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SubscribeRequest in body
 
@@ -90,7 +86,7 @@ class PublicSubscribeSubscription(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: SubscribeRequest  # OPTIONAL in [body]

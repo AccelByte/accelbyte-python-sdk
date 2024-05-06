@@ -36,11 +36,7 @@ class ListExtOrderNoByExtTxId(Operation):
     [Not Supported Yet In Starter] List external order No by external transaction id.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=2 (READ)
-      *  Returns : payment orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [READ]
+      * Returns : payment orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/byExtTxId
@@ -53,7 +49,7 @@ class ListExtOrderNoByExtTxId(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -69,7 +65,7 @@ class ListExtOrderNoByExtTxId(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

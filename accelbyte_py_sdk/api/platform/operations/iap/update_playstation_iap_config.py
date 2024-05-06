@@ -39,11 +39,7 @@ class UpdatePlaystationIAPConfig(Operation):
 
     Update playstation iap config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:IAP:CONFIG", action=4 (UPDATE)
-      *  Returns : updated playstation iap config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:IAP:CONFIG [UPDATE]
+      * Returns : updated playstation iap config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/config/playstation
@@ -56,7 +52,7 @@ class UpdatePlaystationIAPConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlaystationIAPConfigRequest in body
 
@@ -74,7 +70,7 @@ class UpdatePlaystationIAPConfig(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: PlaystationIAPConfigRequest  # OPTIONAL in [body]

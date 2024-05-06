@@ -51,11 +51,7 @@ class ResetPlatformWalletConfig(Operation):
     Reset platform wallet config to default config.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG", action=4 (UPDATE)
-      *  Returns : platform wallet config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WALLET:CONFIG [UPDATE]
+      * Returns : platform wallet config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/platforms/{platform}/wallet/config/reset
@@ -68,7 +64,7 @@ class ResetPlatformWalletConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -84,7 +80,7 @@ class ResetPlatformWalletConfig(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

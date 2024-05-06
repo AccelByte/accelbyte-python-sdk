@@ -17,7 +17,7 @@ Definition: List[CountryObject]
 country_group_code: str
 country_group_name: str
 
-Example: '{"countries": [{"code": "9omp9ZkgUdrH6d7X", "name": "jX4kpkSO8exYmyqX"}, {"code": "f0iadDCAQHB9mBNT", "name": "pvQAuQ9BJkRXXK4T"}, {"code": "REy15XMM1CnLVPfB", "name": "xzb981agtYLhb8vL"}], "countryGroupCode": "msKXZjXZLnR8LZAT", "countryGroupName": "gNzI4orFb0whkztq"}'
+Example: '{"countries": [{"code": "A48F2wPevZZxz1EN", "name": "VpbwqZcVP6TqndkO"}, {"code": "SwzXXABgG347UAyS", "name": "9Kas87PgqRFYEphy"}, {"code": "5lFckWFHTYijMJk5", "name": "xmvN54aXRQqljOI7"}], "countryGroupCode": "N9B5u9Tl2aMJsI9O", "countryGroupName": "Vzoa8IzkxrbrGBYH"}'
 """
 
 result, error = add_country_group(

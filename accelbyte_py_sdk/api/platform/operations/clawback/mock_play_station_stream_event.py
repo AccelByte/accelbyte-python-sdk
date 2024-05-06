@@ -38,10 +38,6 @@ class MockPlayStationStreamEvent(Operation):
 
     Mock Sync PlayStation Clawback event..
 
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:IAP:CLAWBACK, action=1(CREATE)
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/clawback/playstation/mock
 

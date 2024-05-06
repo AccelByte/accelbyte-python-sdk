@@ -40,11 +40,7 @@ class UpdateDLCItemConfig(Operation):
 
     Update DLC item config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
-      *  Returns : updated DLC item config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
+      * Returns : updated DLC item config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/item
@@ -57,7 +53,7 @@ class UpdateDLCItemConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL DLCItemConfigUpdate in body
 
@@ -79,7 +75,7 @@ class UpdateDLCItemConfig(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: DLCItemConfigUpdate  # OPTIONAL in [body]

@@ -39,11 +39,7 @@ class CheckBalance(Operation):
     Checks if the user has enough balance based on the provided criteria.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET", action=2 (READ)
-      *  Returns : boolean value indicating if the user has enough balance
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:WALLET [READ]
+      * Returns : boolean value indicating if the user has enough balance
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}/balanceCheck
@@ -56,7 +52,7 @@ class CheckBalance(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         request: (request) REQUIRED DebitByWalletPlatformRequest in body
 
@@ -78,7 +74,7 @@ class CheckBalance(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     request: DebitByWalletPlatformRequest  # REQUIRED in [body]

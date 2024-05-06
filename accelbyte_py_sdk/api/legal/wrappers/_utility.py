@@ -39,12 +39,6 @@ def check_readiness(x_additional_headers: Optional[Dict[str, str]] = None, **kwa
     """Check Legal Data Readiness (checkReadiness)
 
     Readiness status defined as at least one legal basePolicy is present and having active basePolicy.
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/public/readiness
@@ -57,7 +51,7 @@ def check_readiness(x_additional_headers: Optional[Dict[str, str]] = None, **kwa
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - LegalReadinessStatusResponse (successful operation)
@@ -73,12 +67,6 @@ async def check_readiness_async(
     """Check Legal Data Readiness (checkReadiness)
 
     Readiness status defined as at least one legal basePolicy is present and having active basePolicy.
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/public/readiness
@@ -91,7 +79,7 @@ async def check_readiness_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
     Responses:
         200: OK - LegalReadinessStatusResponse (successful operation)

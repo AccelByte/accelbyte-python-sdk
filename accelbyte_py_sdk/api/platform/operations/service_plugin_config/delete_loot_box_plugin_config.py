@@ -34,9 +34,6 @@ class DeleteLootBoxPluginConfig(Operation):
     """Delete lootbox plugin config (deleteLootBoxPluginConfig)
 
     Delete service plugin config.
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:PLUGIN:CATALOG, action=8 (DELETE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/catalog/plugins/lootbox

@@ -36,12 +36,6 @@ class RetrieveAllPolicyTypes(Operation):
     """Retrieve All Policy Type (retrieveAllPolicyTypes)
 
     Retrieve all supported policy types.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/policy-types
@@ -54,7 +48,7 @@ class RetrieveAllPolicyTypes(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         offset: (offset) OPTIONAL int in query
 
@@ -70,7 +64,7 @@ class RetrieveAllPolicyTypes(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     offset: int  # OPTIONAL in [query]

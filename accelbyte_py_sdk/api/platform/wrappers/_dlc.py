@@ -80,12 +80,6 @@ def delete_dlc_item_config(
     """delete a DLC item config (deleteDLCItemConfig)
 
     delete a DLC item config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/item
@@ -98,7 +92,7 @@ def delete_dlc_item_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -124,12 +118,6 @@ async def delete_dlc_item_config_async(
     """delete a DLC item config (deleteDLCItemConfig)
 
     delete a DLC item config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/item
@@ -142,7 +130,7 @@ async def delete_dlc_item_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -170,12 +158,6 @@ def delete_platform_dlc_config(
     """delete a Platform DLC config (deletePlatformDLCConfig)
 
     delete a Platform DLC config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
@@ -188,7 +170,7 @@ def delete_platform_dlc_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -214,12 +196,6 @@ async def delete_platform_dlc_config_async(
     """delete a Platform DLC config (deletePlatformDLCConfig)
 
     delete a Platform DLC config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [DELETE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
@@ -232,7 +208,7 @@ async def delete_platform_dlc_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -260,10 +236,7 @@ def ge_dlc_durable_reward_short_map(
 ):
     """Get dlc durable reward simple map (geDLCDurableRewardShortMap)
 
-    Get dlc reward simple map, only return the sku of durable item reward
-    Other detail info:
-
-      * Required permission : Authorized user
+    Get dlc reward simple map, only return the sku of durable item reward.
 
     Properties:
         url: /platform/public/namespaces/{namespace}/dlc/rewards/durable/map
@@ -307,10 +280,7 @@ async def ge_dlc_durable_reward_short_map_async(
 ):
     """Get dlc durable reward simple map (geDLCDurableRewardShortMap)
 
-    Get dlc reward simple map, only return the sku of durable item reward
-    Other detail info:
-
-      * Required permission : Authorized user
+    Get dlc reward simple map, only return the sku of durable item reward.
 
     Properties:
         url: /platform/public/namespaces/{namespace}/dlc/rewards/durable/map
@@ -356,12 +326,6 @@ def get_dlc_item_config(
     """Get DLC item config (getDLCItemConfig)
 
     Get DLC item config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/item
@@ -374,7 +338,7 @@ def get_dlc_item_config(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -402,12 +366,6 @@ async def get_dlc_item_config_async(
     """Get DLC item config (getDLCItemConfig)
 
     Get DLC item config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/item
@@ -420,7 +378,7 @@ async def get_dlc_item_config_async(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -450,12 +408,6 @@ def get_platform_dlc_config(
     """Get Platform DLC config (getPlatformDLCConfig)
 
     Get Platform DLC config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
@@ -468,7 +420,7 @@ def get_platform_dlc_config(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -496,12 +448,6 @@ async def get_platform_dlc_config_async(
     """Get Platform DLC config (getPlatformDLCConfig)
 
     Get Platform DLC config.
-    Other detail info:
-
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:DLC:CONFIG" , action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [READ]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
@@ -514,7 +460,7 @@ async def get_platform_dlc_config_async(
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -548,11 +494,7 @@ def get_user_dlc(
     Get user dlc records.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : user dlc
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+      * Returns : user dlc
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/dlc/records
@@ -565,7 +507,7 @@ def get_user_dlc(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -601,11 +543,7 @@ async def get_user_dlc_async(
     Get user dlc records.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : user dlc
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+      * Returns : user dlc
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/dlc/records
@@ -618,7 +556,7 @@ async def get_user_dlc_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -656,11 +594,7 @@ def get_user_dlc_by_platform(
     Get user dlc by platform.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : user dlc
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+      * Returns : user dlc
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/dlc
@@ -673,7 +607,7 @@ def get_user_dlc_by_platform(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -709,11 +643,7 @@ async def get_user_dlc_by_platform_async(
     Get user dlc by platform.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP", action=2 (READ)
-      *  Returns : user dlc
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:IAP [READ]
+      * Returns : user dlc
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/dlc
@@ -726,7 +656,7 @@ async def get_user_dlc_by_platform_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -761,12 +691,9 @@ def public_sync_psn_dlc_inventory(
 ):
     """Synchronize with dlc entitlements in PSN Store. (publicSyncPsnDlcInventory)
 
-    Synchronize with dlc entitlements in PSN Store.
+    Synchronize with dlc entitlements in PSN Store.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns : result of synchronization
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync
@@ -814,12 +741,9 @@ async def public_sync_psn_dlc_inventory_async(
 ):
     """Synchronize with dlc entitlements in PSN Store. (publicSyncPsnDlcInventory)
 
-    Synchronize with dlc entitlements in PSN Store.
+    Synchronize with dlc entitlements in PSN Store.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns : result of synchronization
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync
@@ -869,12 +793,9 @@ def public_sync_psn_dlc_inventory_with_multiple_service_labels(
 ):
     """Synchronize with dlc entitlements in PSN Store with multiple service labels. (publicSyncPsnDlcInventoryWithMultipleServiceLabels)
 
-    Synchronize with dlc entitlements in PSN Store with multiple service labels.
+    Synchronize with dlc entitlements in PSN Store with multiple service labels.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns : result of synchronization
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync/multiServiceLabels
@@ -922,12 +843,9 @@ async def public_sync_psn_dlc_inventory_with_multiple_service_labels_async(
 ):
     """Synchronize with dlc entitlements in PSN Store with multiple service labels. (publicSyncPsnDlcInventoryWithMultipleServiceLabels)
 
-    Synchronize with dlc entitlements in PSN Store with multiple service labels.
+    Synchronize with dlc entitlements in PSN Store with multiple service labels.Other detail info:
 
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns : result of synchronization
+      * Returns : result of synchronization
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync/multiServiceLabels
@@ -977,12 +895,7 @@ def sync_epic_game_dlc(
 ):
     """Sync epic games dlc items (syncEpicGameDLC)
 
-    Sync epic games dlc items.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync epic games dlc items
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/epicgames/sync
@@ -1030,12 +943,7 @@ async def sync_epic_game_dlc_async(
 ):
     """Sync epic games dlc items (syncEpicGameDLC)
 
-    Sync epic games dlc items.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync epic games dlc items
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/epicgames/sync
@@ -1084,12 +992,7 @@ def sync_oculus_dlc(
 ):
     """Sync oculus dlc. (syncOculusDLC)
 
-    Sync oculus dlc.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync oculus dlc
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/oculus/sync
@@ -1133,12 +1036,7 @@ async def sync_oculus_dlc_async(
 ):
     """Sync oculus dlc. (syncOculusDLC)
 
-    Sync oculus dlc.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync oculus dlc
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/oculus/sync
@@ -1185,12 +1083,7 @@ def sync_steam_dlc(
 ):
     """Sync steam dlc. (syncSteamDLC)
 
-    Sync steam dlc.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync steam dlc
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/steam/sync
@@ -1238,12 +1131,7 @@ async def sync_steam_dlc_async(
 ):
     """Sync steam dlc. (syncSteamDLC)
 
-    Sync steam dlc.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync steam dlc
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/steam/sync
@@ -1293,12 +1181,7 @@ def sync_xbox_dlc(
 ):
     """Sync Xbox dlc items. (syncXboxDLC)
 
-    Sync Xbox inventory's dlc items.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync Xbox inventory's dlc items
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/xbl/sync
@@ -1346,12 +1229,7 @@ async def sync_xbox_dlc_async(
 ):
     """Sync Xbox dlc items. (syncXboxDLC)
 
-    Sync Xbox inventory's dlc items.
-
-    Other detail info:
-
-      * Required permission : resource=NAMESPACE:{namespace}:USER:{userId}:DLC, action=4 (UPDATE)
-      *  Returns :
+    Sync Xbox inventory's dlc items
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/{userId}/dlc/xbl/sync
@@ -1402,11 +1280,7 @@ def update_dlc_item_config(
 
     Update DLC item config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
-      *  Returns : updated DLC item config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
+      * Returns : updated DLC item config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/item
@@ -1419,7 +1293,7 @@ def update_dlc_item_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL DLCItemConfigUpdate in body
 
@@ -1456,11 +1330,7 @@ async def update_dlc_item_config_async(
 
     Update DLC item config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
-      *  Returns : updated DLC item config
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
+      * Returns : updated DLC item config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/item
@@ -1473,7 +1343,7 @@ async def update_dlc_item_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL DLCItemConfigUpdate in body
 
@@ -1512,8 +1382,7 @@ def update_platform_dlc_config(
 
     Update Platform DLC config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
-      *  Returns : updated Platform DLC config
+      * Returns : updated Platform DLC config
 
 
 
@@ -1533,9 +1402,6 @@ def update_platform_dlc_config(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
 
@@ -1547,7 +1413,7 @@ def update_platform_dlc_config(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlatformDLCConfigUpdate in body
 
@@ -1580,8 +1446,7 @@ async def update_platform_dlc_config_async(
 
     Update Platform DLC config. Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:DLC:CONFIG", action=4 (UPDATE)
-      *  Returns : updated Platform DLC config
+      * Returns : updated Platform DLC config
 
 
 
@@ -1601,9 +1466,6 @@ async def update_platform_dlc_config_async(
 
         { "$data": "value" }
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DLC:CONFIG [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/dlc/config/platformMap
 
@@ -1615,7 +1477,7 @@ async def update_platform_dlc_config_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlatformDLCConfigUpdate in body
 

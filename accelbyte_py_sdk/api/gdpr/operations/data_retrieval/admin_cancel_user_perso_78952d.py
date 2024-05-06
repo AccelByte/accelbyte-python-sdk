@@ -35,10 +35,8 @@ from ...models import ResponseError
 class AdminCancelUserPersonalDataRequest(Operation):
     """Cancel user's personal data requests (AdminCancelUserPersonalDataRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    Cancel user's personal data requests
+    Scope: account
 
     Required Scope(s):
         - account

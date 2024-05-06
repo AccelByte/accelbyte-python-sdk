@@ -40,12 +40,6 @@ class ImportStore(Operation):
     This API is used to import a store.
 
     This api has been deprecated, pls use /v2/admin/namespaces/{namespace}/stores/import to import store.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/import
@@ -58,7 +52,7 @@ class ImportStore(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -80,7 +74,7 @@ class ImportStore(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     file: Any  # OPTIONAL in [form_data]

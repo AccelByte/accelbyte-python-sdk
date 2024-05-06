@@ -13,7 +13,7 @@ ip: str
 port: int
 region: str
 
-Example: '{"ip": "pF7tnBbbd50xHgUf", "port": 39, "region": "bw26aF3AuG1FzWd9"}'
+Example: '{"ip": "HGPIjiWyClMEG8cZ", "port": 9, "region": "V874qvfQQHi5JpYU"}'
 """
 
 result, error = heartbeat(

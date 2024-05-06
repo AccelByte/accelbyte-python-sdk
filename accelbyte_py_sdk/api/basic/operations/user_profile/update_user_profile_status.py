@@ -41,12 +41,8 @@ class UpdateUserProfileStatus(Operation):
     Update user profile status.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11406
+      * Action code : 11406
       *  Returns : user profile
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/status
@@ -59,7 +55,7 @@ class UpdateUserProfileStatus(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileStatusUpdate in body
 
@@ -85,7 +81,7 @@ class UpdateUserProfileStatus(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UserProfileStatusUpdate  # OPTIONAL in [body]

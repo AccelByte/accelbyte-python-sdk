@@ -11,7 +11,7 @@ body:
 Definition: ApiUnmuteUserRequest
 user_id: str
 
-Example: '{"userId": "jnMrTDBtLoDKWgpn"}'
+Example: '{"userId": "4JclXGyTTSFN1H6g"}'
 """
 
 result, error = public_unmute_user(

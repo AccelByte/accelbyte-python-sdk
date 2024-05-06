@@ -15,7 +15,7 @@ display_order: int
 localizations: Dict[str, Localization]
 name: str
 
-Example: '{"displayOrder": 77, "localizations": {"71cv4ACL66bCz6a4": {"description": "GECDCKWovyb7PzK2", "localExt": {"Nga03lhGVld0n6IH": {}, "nyaJQTkm30wCnZ46": {}, "PhZQ64gcji4P2KFy": {}}, "longDescription": "reUHMuAChuFyIotd", "title": "vnO7DJYPSPoIC8bC"}, "pNkNnqhkK9rk524R": {"description": "bkXeFNmAV5DfDV0h", "localExt": {"6na7iugnJQjR7IBa": {}, "ODUnUxPnQbpE8Rsu": {}, "4a5C0pvu2HOPz32Q": {}}, "longDescription": "mxN6UyID5OFHbWTW", "title": "MCrMkaAsrIq3P2Qd"}, "h8IkpHQKd96Hpunf": {"description": "flTM6qWOmaYw8wa0", "localExt": {"fBJzUpM61COb7A5r": {}, "aDe4CpeuW3GItCnV": {}, "JqtOOF1uBhLwGr28": {}}, "longDescription": "iyJMfzUeTvDUyJsC", "title": "UYRcOja0PPva4JZP"}}, "name": "NHGeMY8yd7vaGEUF"}'
+Example: '{"displayOrder": 10, "localizations": {"YIOtj9bI5FG1AQJY": {"description": "nx92jUst4NWtoB5L", "localExt": {"7BkmFI3UanA8kHIl": {}, "FbZm4TGBg6Ytv90X": {}, "GSOm0x8NLVSbYun3": {}}, "longDescription": "5S7kC8OIq6Dous4x", "title": "Wm5zJrWhGgsMFrP1"}, "TqjXJydGqUAjJfOy": {"description": "NXI7w4Mn7orBx16d", "localExt": {"L6LZuwx91V0rGmk0": {}, "INpqqvSsZ5fHYOkw": {}, "4hLKsCDmyoNTbFWo": {}}, "longDescription": "osSfQbLDSVBG8us1", "title": "j7XHOkKPk20xa0ik"}, "ivRJdYudGKZM3gMe": {"description": "wYXfr2o4VvlFuv3J", "localExt": {"SzrLtS834rNb7yh8": {}, "B0faZGpPjmse0eAo": {}, "2yKPTCvpJ2J6lVzU": {}}, "longDescription": "cygyUDXhpoEfZiOT", "title": "sqgLoGfopabPHHTM"}}, "name": "JpuZUy5czESOA7en"}'
 """
 
 result, error = update_view(

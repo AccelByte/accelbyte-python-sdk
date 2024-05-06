@@ -8,6 +8,8 @@ from accelbyte_py_sdk.api.legal.models import InitiateExportAgreementsToCSVRespo
 
 result, error = initiate_export_agreements_to_csv(
     policy_version_id=policy_version_id,
+    start=start,
+    end=end,
     namespace=namespace,
     x_additional_headers=x_additional_headers,
 )

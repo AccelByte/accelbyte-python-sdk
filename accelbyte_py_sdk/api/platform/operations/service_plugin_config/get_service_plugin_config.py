@@ -36,10 +36,7 @@ from ...models import ServicePluginConfigInfo
 class GetServicePluginConfig(Operation):
     """Get service plugin config (getServicePluginConfig)
 
-    Get service plugin config.
-    Other detail info:
-
-      * Required permission : resource= ADMIN:NAMESPACE:{namespace}:CONFIG:SERVICEPLUGIN , action=2 (READ)
+    Get service plugin config
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/configs/servicePlugin

@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.rest_permission import RestPermission
+
 
 class RestErrorResponse(Model):
     """Rest error response (rest.ErrorResponse)
@@ -37,6 +39,8 @@ class RestErrorResponse(Model):
         error_message: (errorMessage) REQUIRED str
 
         message_variables: (messageVariables) OPTIONAL Dict[str, str]
+
+        required_permission: (requiredPermission) OPTIONAL RestPermission
     """
 
     # region fields
@@ -44,6 +48,7 @@ class RestErrorResponse(Model):
     error_code: int  # REQUIRED
     error_message: str  # REQUIRED
     message_variables: Dict[str, str]  # OPTIONAL
+    required_permission: RestPermission  # OPTIONAL
 
     # endregion fields
 
@@ -59,6 +64,10 @@ class RestErrorResponse(Model):
 
     def with_message_variables(self, value: Dict[str, str]) -> RestErrorResponse:
         self.message_variables = value
+        return self
+
+    def with_required_permission(self, value: RestPermission) -> RestErrorResponse:
+        self.required_permission = value
         return self
 
     # endregion with_x methods
@@ -81,6 +90,12 @@ class RestErrorResponse(Model):
             }
         elif include_empty:
             result["messageVariables"] = {}
+        if hasattr(self, "required_permission"):
+            result["requiredPermission"] = self.required_permission.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["requiredPermission"] = RestPermission()
         return result
 
     # endregion to methods
@@ -93,6 +108,7 @@ class RestErrorResponse(Model):
         error_code: int,
         error_message: str,
         message_variables: Optional[Dict[str, str]] = None,
+        required_permission: Optional[RestPermission] = None,
         **kwargs,
     ) -> RestErrorResponse:
         instance = cls()
@@ -100,6 +116,8 @@ class RestErrorResponse(Model):
         instance.error_message = error_message
         if message_variables is not None:
             instance.message_variables = message_variables
+        if required_permission is not None:
+            instance.required_permission = required_permission
         return instance
 
     @classmethod
@@ -123,6 +141,12 @@ class RestErrorResponse(Model):
             }
         elif include_empty:
             instance.message_variables = {}
+        if "requiredPermission" in dict_ and dict_["requiredPermission"] is not None:
+            instance.required_permission = RestPermission.create_from_dict(
+                dict_["requiredPermission"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.required_permission = RestPermission()
         return instance
 
     @classmethod
@@ -167,6 +191,7 @@ class RestErrorResponse(Model):
             "errorCode": "error_code",
             "errorMessage": "error_message",
             "messageVariables": "message_variables",
+            "requiredPermission": "required_permission",
         }
 
     @staticmethod
@@ -175,6 +200,7 @@ class RestErrorResponse(Model):
             "errorCode": True,
             "errorMessage": True,
             "messageVariables": False,
+            "requiredPermission": False,
         }
 
     # endregion static methods

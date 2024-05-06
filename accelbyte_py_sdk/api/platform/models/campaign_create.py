@@ -28,10 +28,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.discount_config import DiscountConfig
 from ..models.redeemable_item import RedeemableItem
 
 
 class RedeemTypeEnum(StrEnum):
+    DISCOUNT = "DISCOUNT"
     ITEM = "ITEM"
 
 
@@ -51,6 +53,8 @@ class CampaignCreate(Model):
         name: (name) REQUIRED str
 
         description: (description) OPTIONAL str
+
+        discount_config: (discountConfig) OPTIONAL DiscountConfig
 
         items: (items) OPTIONAL List[RedeemableItem]
 
@@ -79,6 +83,7 @@ class CampaignCreate(Model):
 
     name: str  # REQUIRED
     description: str  # OPTIONAL
+    discount_config: DiscountConfig  # OPTIONAL
     items: List[RedeemableItem]  # OPTIONAL
     max_redeem_count_per_campaign_per_user: int  # OPTIONAL
     max_redeem_count_per_code: int  # OPTIONAL
@@ -101,6 +106,10 @@ class CampaignCreate(Model):
 
     def with_description(self, value: str) -> CampaignCreate:
         self.description = value
+        return self
+
+    def with_discount_config(self, value: DiscountConfig) -> CampaignCreate:
+        self.discount_config = value
         return self
 
     def with_items(self, value: List[RedeemableItem]) -> CampaignCreate:
@@ -161,6 +170,12 @@ class CampaignCreate(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "discount_config"):
+            result["discountConfig"] = self.discount_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["discountConfig"] = DiscountConfig()
         if hasattr(self, "items"):
             result["items"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.items
@@ -222,6 +237,7 @@ class CampaignCreate(Model):
         cls,
         name: str,
         description: Optional[str] = None,
+        discount_config: Optional[DiscountConfig] = None,
         items: Optional[List[RedeemableItem]] = None,
         max_redeem_count_per_campaign_per_user: Optional[int] = None,
         max_redeem_count_per_code: Optional[int] = None,
@@ -239,6 +255,8 @@ class CampaignCreate(Model):
         instance.name = name
         if description is not None:
             instance.description = description
+        if discount_config is not None:
+            instance.discount_config = discount_config
         if items is not None:
             instance.items = items
         if max_redeem_count_per_campaign_per_user is not None:
@@ -282,6 +300,12 @@ class CampaignCreate(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "discountConfig" in dict_ and dict_["discountConfig"] is not None:
+            instance.discount_config = DiscountConfig.create_from_dict(
+                dict_["discountConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.discount_config = DiscountConfig()
         if "items" in dict_ and dict_["items"] is not None:
             instance.items = [
                 RedeemableItem.create_from_dict(i0, include_empty=include_empty)
@@ -383,6 +407,7 @@ class CampaignCreate(Model):
         return {
             "name": "name",
             "description": "description",
+            "discountConfig": "discount_config",
             "items": "items",
             "maxRedeemCountPerCampaignPerUser": "max_redeem_count_per_campaign_per_user",
             "maxRedeemCountPerCode": "max_redeem_count_per_code",
@@ -401,6 +426,7 @@ class CampaignCreate(Model):
         return {
             "name": True,
             "description": False,
+            "discountConfig": False,
             "items": False,
             "maxRedeemCountPerCampaignPerUser": False,
             "maxRedeemCountPerCode": False,
@@ -417,7 +443,7 @@ class CampaignCreate(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "redeemType": ["ITEM"],
+            "redeemType": ["DISCOUNT", "ITEM"],
             "status": ["ACTIVE", "INACTIVE"],
             "type": ["REDEMPTION"],
         }

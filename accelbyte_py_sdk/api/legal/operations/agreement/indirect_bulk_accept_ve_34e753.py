@@ -38,12 +38,6 @@ class IndirectBulkAcceptVersionedPolicyV2(Operation):
     """Bulk Accept Policy Versions (Indirect) (indirectBulkAcceptVersionedPolicyV2)
 
     Accepts many legal policy versions all at once. Supply with localized version policy id, version policy id, policy id, userId, namespace, country code and client id to accept an agreement. This endpoint used by APIGateway during new user registration.
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:LEGAL", action=1 (CREATE)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:LEGAL [CREATE]
 
     Properties:
         url: /agreement/public/agreements/policies/namespaces/{namespace}/countries/{countryCode}/clients/{clientId}/users/{userId}
@@ -56,7 +50,7 @@ class IndirectBulkAcceptVersionedPolicyV2(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[AcceptAgreementRequest] in body
 
@@ -78,7 +72,7 @@ class IndirectBulkAcceptVersionedPolicyV2(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[AcceptAgreementRequest]  # OPTIONAL in [body]

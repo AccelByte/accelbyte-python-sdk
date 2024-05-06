@@ -14,7 +14,7 @@ Definition: ConfigCreate
 key: str
 value: str
 
-Example: '{"key": "3siW054aXu5ANxIe", "value": "Kakfob7QsnN5GiYY"}'
+Example: '{"key": "xJdLEWldVzu5Z9PF", "value": "fIGRfy3a6ITA8eqc"}'
 """
 
 result, error = create_config(

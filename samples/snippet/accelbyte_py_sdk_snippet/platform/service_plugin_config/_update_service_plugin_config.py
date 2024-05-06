@@ -12,7 +12,7 @@ body:
 Definition: ServicePluginConfigUpdate
 grpc_server_address: str
 
-Example: '{"grpcServerAddress": "IE0rFIgxOoOKuQJn"}'
+Example: '{"grpcServerAddress": "BrF2x1jHd0ELhhrU"}'
 """
 
 result, error = update_service_plugin_config(

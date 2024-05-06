@@ -12,7 +12,7 @@ body:
 Definition: ModelsRebalanceRequest
 match_id: str
 
-Example: '{"match_id": "BVlzmn3CSeWM46TR"}'
+Example: '{"match_id": "jCZ0jzPk6omk7ecH"}'
 """
 
 result, error = rebalance(

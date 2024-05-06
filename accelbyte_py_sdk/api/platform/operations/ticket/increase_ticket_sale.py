@@ -41,11 +41,7 @@ class IncreaseTicketSale(Operation):
     [SERVICE COMMUNICATION ONLY] increase ticket(code/key) sale.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:TICKET", action=4 (UPDATE)
-      *  Returns : Ticket sale increment result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [UPDATE]
+      * Returns : Ticket sale increment result
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/tickets/{boothName}/increment
@@ -58,7 +54,7 @@ class IncreaseTicketSale(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TicketSaleIncrementRequest in body
 
@@ -80,7 +76,7 @@ class IncreaseTicketSale(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: TicketSaleIncrementRequest  # OPTIONAL in [body]

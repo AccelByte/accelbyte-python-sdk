@@ -56,10 +56,8 @@ def admin_cancel_user_personal_data_request(
 ):
     """Cancel user's personal data requests (AdminCancelUserPersonalDataRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    Cancel user's personal data requests
+    Scope: account
 
     Required Scope(s):
         - account
@@ -116,10 +114,8 @@ async def admin_cancel_user_personal_data_request_async(
 ):
     """Cancel user's personal data requests (AdminCancelUserPersonalDataRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [DELETE]
+    Cancel user's personal data requests
+    Scope: account
 
     Required Scope(s):
         - account
@@ -179,10 +175,8 @@ def admin_generate_personal_data_url(
 ):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    Generate personal data download url
+    Scope: account
 
     Required Scope(s):
         - account
@@ -243,10 +237,8 @@ async def admin_generate_personal_data_url_async(
 ):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    Generate personal data download url
+    Scope: account
 
     Required Scope(s):
         - account
@@ -309,10 +301,8 @@ def admin_get_list_personal_data_request(
 ):
     """Get list personal data requests (AdminGetListPersonalDataRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER [READ]
+    Get list personal data requests
+    Scope: account
 
     Required Scope(s):
         - account
@@ -375,10 +365,8 @@ async def admin_get_list_personal_data_request_async(
 ):
     """Get list personal data requests (AdminGetListPersonalDataRequest)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER [READ]
+    Get list personal data requests
+    Scope: account
 
     Required Scope(s):
         - account
@@ -443,10 +431,8 @@ def admin_get_user_personal_data_requests(
 ):
     """Get user's personal data requests (AdminGetUserPersonalDataRequests)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    Get user's personal data requests
+    Scope: account
 
     Required Scope(s):
         - account
@@ -505,10 +491,8 @@ async def admin_get_user_personal_data_requests_async(
 ):
     """Get user's personal data requests (AdminGetUserPersonalDataRequests)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]
+    Get user's personal data requests
+    Scope: account
 
     Required Scope(s):
         - account
@@ -568,15 +552,9 @@ def admin_request_data_retrieval(
 ):
     """Submit user personal data retrieval request (AdminRequestDataRetrieval)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]` and scope `account`
-
-
-
-
+    Submit user personal data retrieval request
     If admin request data for themselves, password is need to be set
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -631,15 +609,9 @@ async def admin_request_data_retrieval_async(
 ):
     """Submit user personal data retrieval request (AdminRequestDataRetrieval)
 
-    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]` and scope `account`
-
-
-
-
+    Submit user personal data retrieval request
     If admin request data for themselves, password is need to be set
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [CREATE]
+    Scope: account
 
     Required Scope(s):
         - account
@@ -696,7 +668,12 @@ def public_cancel_user_personal_data_request(
 ):
     """Cancel user's personal data requests (PublicCancelUserPersonalDataRequest)
 
+    Cancel user's personal data requests
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}
@@ -750,7 +727,12 @@ async def public_cancel_user_personal_data_request_async(
 ):
     """Cancel user's personal data requests (PublicCancelUserPersonalDataRequest)
 
+    Cancel user's personal data requests
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}
@@ -807,7 +789,12 @@ def public_generate_personal_data_url(
 ):
     """Generate personal data download url (PublicGeneratePersonalDataURL)
 
+    Generate personal data download url
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
@@ -865,7 +852,12 @@ async def public_generate_personal_data_url_async(
 ):
     """Generate personal data download url (PublicGeneratePersonalDataURL)
 
+    Generate personal data download url
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
@@ -925,7 +917,12 @@ def public_get_user_personal_data_requests(
 ):
     """Get user's personal data requests (PublicGetUserPersonalDataRequests)
 
+    Get user's personal data requests
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests
@@ -981,7 +978,12 @@ async def public_get_user_personal_data_requests_async(
 ):
     """Get user's personal data requests (PublicGetUserPersonalDataRequests)
 
+    Get user's personal data requests
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests
@@ -1038,7 +1040,11 @@ def public_request_data_retrieval(
 ):
     """Submit personal data retrieval request (PublicRequestDataRetrieval)
 
-    Requires valid user access token
+    Submit personal data retrieval request.
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests
@@ -1090,7 +1096,11 @@ async def public_request_data_retrieval_async(
 ):
     """Submit personal data retrieval request (PublicRequestDataRetrieval)
 
-    Requires valid user access token
+    Submit personal data retrieval request.
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests

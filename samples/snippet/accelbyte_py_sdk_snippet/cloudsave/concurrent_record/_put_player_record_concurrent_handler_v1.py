@@ -15,7 +15,7 @@ Definition: ModelsConcurrentRecordRequest
 updated_at: str
 value: Dict[str, Any]
 
-Example: '{"updatedAt": "izUeW84fwz3FNC92", "value": {"eVmXrGOerWSZe6WA": {}, "10NGvuq9a7pZPXI4": {}, "WzoY4tfD6yi7riho": {}}}'
+Example: '{"updatedAt": "6gFa90PK7QgKFH4s", "value": {"ZuV6j8gom9Kj4iC6": {}, "VAM3FUqvSvuQwYYU": {}, "iPbYy9pwt7Ohavi8": {}}}'
 """
 
 result, error = put_player_record_concurrent_handler_v1(

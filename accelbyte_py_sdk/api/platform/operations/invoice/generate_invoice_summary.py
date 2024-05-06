@@ -54,11 +54,7 @@ class GenerateInvoiceSummary(Operation):
     Generate invoice summary.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ORDER", action=2 (READ)
-      *  Returns : query orders
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ORDER [READ]
+      * Returns : query orders
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/invoice/summary
@@ -71,7 +67,7 @@ class GenerateInvoiceSummary(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -97,7 +93,7 @@ class GenerateInvoiceSummary(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

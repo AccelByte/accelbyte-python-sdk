@@ -50,13 +50,9 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
-      *  Path's namespace :
+      * Path's namespace :
         * can be filled with publisher namespace in order to get publisher namespace entitlement ownership by sku
         * can be filled with game namespace in order to get game namespace entitlement ownership by sku
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
 
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownership/bySku
@@ -69,7 +65,7 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -89,7 +85,7 @@ class PublicGetMyEntitlementOwnershipBySku(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

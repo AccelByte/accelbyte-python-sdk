@@ -28,10 +28,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.discount_config import DiscountConfig
 from ..models.redeemable_item import RedeemableItem
 
 
 class RedeemTypeEnum(StrEnum):
+    DISCOUNT = "DISCOUNT"
     ITEM = "ITEM"
 
 
@@ -76,6 +78,8 @@ class CampaignInfo(Model):
 
         description: (description) OPTIONAL str
 
+        discount_config: (discountConfig) OPTIONAL DiscountConfig
+
         items: (items) OPTIONAL List[RedeemableItem]
 
         redeem_end: (redeemEnd) OPTIONAL str
@@ -101,6 +105,7 @@ class CampaignInfo(Model):
     type_: Union[str, TypeEnum]  # REQUIRED
     updated_at: str  # REQUIRED
     description: str  # OPTIONAL
+    discount_config: DiscountConfig  # OPTIONAL
     items: List[RedeemableItem]  # OPTIONAL
     redeem_end: str  # OPTIONAL
     redeem_start: str  # OPTIONAL
@@ -164,6 +169,10 @@ class CampaignInfo(Model):
 
     def with_description(self, value: str) -> CampaignInfo:
         self.description = value
+        return self
+
+    def with_discount_config(self, value: DiscountConfig) -> CampaignInfo:
+        self.discount_config = value
         return self
 
     def with_items(self, value: List[RedeemableItem]) -> CampaignInfo:
@@ -248,6 +257,12 @@ class CampaignInfo(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "discount_config"):
+            result["discountConfig"] = self.discount_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["discountConfig"] = DiscountConfig()
         if hasattr(self, "items"):
             result["items"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.items
@@ -289,6 +304,7 @@ class CampaignInfo(Model):
         type_: Union[str, TypeEnum],
         updated_at: str,
         description: Optional[str] = None,
+        discount_config: Optional[DiscountConfig] = None,
         items: Optional[List[RedeemableItem]] = None,
         redeem_end: Optional[str] = None,
         redeem_start: Optional[str] = None,
@@ -313,6 +329,8 @@ class CampaignInfo(Model):
         instance.updated_at = updated_at
         if description is not None:
             instance.description = description
+        if discount_config is not None:
+            instance.discount_config = discount_config
         if items is not None:
             instance.items = items
         if redeem_end is not None:
@@ -397,6 +415,12 @@ class CampaignInfo(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "discountConfig" in dict_ and dict_["discountConfig"] is not None:
+            instance.discount_config = DiscountConfig.create_from_dict(
+                dict_["discountConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.discount_config = DiscountConfig()
         if "items" in dict_ and dict_["items"] is not None:
             instance.items = [
                 RedeemableItem.create_from_dict(i0, include_empty=include_empty)
@@ -469,6 +493,7 @@ class CampaignInfo(Model):
             "type": "type_",
             "updatedAt": "updated_at",
             "description": "description",
+            "discountConfig": "discount_config",
             "items": "items",
             "redeemEnd": "redeem_end",
             "redeemStart": "redeem_start",
@@ -492,6 +517,7 @@ class CampaignInfo(Model):
             "type": True,
             "updatedAt": True,
             "description": False,
+            "discountConfig": False,
             "items": False,
             "redeemEnd": False,
             "redeemStart": False,
@@ -501,7 +527,7 @@ class CampaignInfo(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "redeemType": ["ITEM"],
+            "redeemType": ["DISCOUNT", "ITEM"],
             "status": ["ACTIVE", "INACTIVE"],
             "type": ["REDEMPTION"],
         }

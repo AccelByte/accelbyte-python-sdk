@@ -41,8 +41,7 @@ class GetCountries(Operation):
     List countries.
     Other detail info:
 
-      * Required permission : login user
-      *  Action code : 11204
+      * Action code : 11204
       *  Returns : country code list
 
     Properties:

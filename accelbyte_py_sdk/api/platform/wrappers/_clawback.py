@@ -53,10 +53,6 @@ def mock_play_station_stream_event(
 
     Mock Sync PlayStation Clawback event..
 
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:IAP:CLAWBACK, action=1(CREATE)
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/clawback/playstation/mock
 
@@ -98,10 +94,6 @@ async def mock_play_station_stream_event_async(
     """Mock Sync PlayStation Clawback event. (mockPlayStationStreamEvent)
 
     Mock Sync PlayStation Clawback event..
-
-    Other detail info:
-
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:IAP:CLAWBACK, action=1(CREATE)
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/clawback/playstation/mock
@@ -155,8 +147,7 @@ def query_iap_clawback_history(
     Query clawback history.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:IAP:CLAWBACK, action=2 (READ)
-      *  Returns : paginated clawback history
+      * Returns : paginated clawback history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/clawback/histories
@@ -229,8 +220,7 @@ async def query_iap_clawback_history_async(
     Query clawback history.
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:IAP:CLAWBACK, action=2 (READ)
-      *  Returns : paginated clawback history
+      * Returns : paginated clawback history
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/iap/clawback/histories

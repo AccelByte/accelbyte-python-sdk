@@ -111,13 +111,6 @@ class PublicGetEntitlementOwnershipToken(Operation):
 
     if there's no active entitlement for the specific params, the entitlements section will be omitted.
 
-    Other detail info:
-
-      * Required permission : resource="NAMESPACE:{namespace}:ENTITLEMENT", action=2 (READ)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ENTITLEMENT [READ]
-
     Properties:
         url: /platform/public/namespaces/{namespace}/users/me/entitlements/ownershipToken
 
@@ -129,7 +122,7 @@ class PublicGetEntitlementOwnershipToken(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -151,7 +144,7 @@ class PublicGetEntitlementOwnershipToken(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

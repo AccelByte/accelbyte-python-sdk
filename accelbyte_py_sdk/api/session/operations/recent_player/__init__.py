@@ -8,11 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.14.1"
+__version__ = "3.14.5"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .admin_get_recent_player import AdminGetRecentPlayer
+from .admin_get_recent_team_player import AdminGetRecentTeamPlayer
 from .public_get_recent_player import PublicGetRecentPlayer
+from .public_get_recent_team_player import PublicGetRecentTeamPlayer

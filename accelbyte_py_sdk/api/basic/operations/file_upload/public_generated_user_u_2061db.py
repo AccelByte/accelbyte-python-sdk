@@ -42,14 +42,10 @@ class PublicGeneratedUserUploadContentUrl(Operation):
     The threshold of those limitations is different between upload category that is used.
     Other detail info:
 
-      * Required permission : resource = "NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD" , action=1 (CREATE)
-      *  Action code : 11102
+      * Action code : 11102
       *  Default maximum file count per user : 10 files
       *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:FILEUPLOAD [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/{userId}/files
@@ -62,7 +58,7 @@ class PublicGeneratedUserUploadContentUrl(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -92,7 +88,7 @@ class PublicGeneratedUserUploadContentUrl(Operation):
     _method: str = "POST"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

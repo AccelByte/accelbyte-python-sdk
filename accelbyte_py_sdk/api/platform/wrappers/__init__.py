@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.50.0"
+__version__ = "4.51.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -551,6 +551,8 @@ from ._order import public_get_user_order
 from ._order import public_get_user_order_async
 from ._order import public_get_user_order_histories
 from ._order import public_get_user_order_histories_async
+from ._order import public_preview_order_price
+from ._order import public_preview_order_price_async
 from ._order import public_query_user_orders
 from ._order import public_query_user_orders_async
 from ._order import query_orders
@@ -794,6 +796,8 @@ from ._store import export_store_1
 from ._store import export_store_1_async
 from ._store import export_store_by_csv
 from ._store import export_store_by_csv_async
+from ._store import get_catalog_config
+from ._store import get_catalog_config_async
 from ._store import get_catalog_definition
 from ._store import get_catalog_definition_async
 from ._store import get_published_store
@@ -816,6 +820,8 @@ from ._store import query_import_history
 from ._store import query_import_history_async
 from ._store import rollback_published_store
 from ._store import rollback_published_store_async
+from ._store import update_catalog_config
+from ._store import update_catalog_config_async
 from ._store import update_store
 from ._store import update_store_async
 

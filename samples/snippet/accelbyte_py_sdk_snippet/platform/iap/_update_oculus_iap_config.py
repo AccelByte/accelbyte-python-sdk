@@ -12,7 +12,7 @@ Definition: OculusIAPConfigRequest
 app_id: str
 app_secret: str
 
-Example: '{"appId": "ZMlFZxle3v6QCw4i", "appSecret": "07zY015ie7dswdij"}'
+Example: '{"appId": "IRN0m5arjPXSDz7w", "appSecret": "NNLb4qugjCXGcIU5"}'
 """
 
 result, error = update_oculus_iap_config(

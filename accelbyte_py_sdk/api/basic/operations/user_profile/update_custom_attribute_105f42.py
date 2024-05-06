@@ -39,13 +39,9 @@ class UpdateCustomAttributesPartially(Operation):
     Update partially custom attributes tied to the user id.
     Other detail info:
 
-      * Required permission : resource= "ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE" , action=4 (UPDATE)
-      *  Action code : 11402
+      * Action code : 11402
       *  Request body : allowed format: JSON object
       *  Returns : Updated custom attributes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:PROFILE [UPDATE]
 
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/users/{userId}/profiles/customAttributes
@@ -58,7 +54,7 @@ class UpdateCustomAttributesPartially(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Dict[str, Any] in body
 
@@ -84,7 +80,7 @@ class UpdateCustomAttributesPartially(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: Dict[str, Any]  # OPTIONAL in [body]

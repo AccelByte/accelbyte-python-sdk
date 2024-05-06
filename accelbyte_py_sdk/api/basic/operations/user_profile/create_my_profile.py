@@ -42,8 +42,7 @@ class CreateMyProfile(Operation):
      Client with user token can create user profile in target namespace
     Other detail info:
 
-      * Required permission : resource= "NAMESPACE:{namespace}:PROFILE" , action=1 (CREATE)
-      *  Action code : 11401
+      * Action code : 11401
       *  Returns : Created user profile
       *  Path's namespace :
         * can be filled with publisher namespace in order to create publisher user profile
@@ -51,9 +50,6 @@ class CreateMyProfile(Operation):
       *  Language : allowed format: en, en-US
       *  Country : ISO3166-1 alpha-2 two letter, e.g. US
       * Timezone : IANA time zone, e.g. Asia/Shanghai
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:PROFILE [CREATE]
 
     Properties:
         url: /basic/v1/public/namespaces/{namespace}/users/me/profiles
@@ -66,7 +62,7 @@ class CreateMyProfile(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfilePrivateCreate in body
 
@@ -92,7 +88,7 @@ class CreateMyProfile(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UserProfilePrivateCreate  # OPTIONAL in [body]

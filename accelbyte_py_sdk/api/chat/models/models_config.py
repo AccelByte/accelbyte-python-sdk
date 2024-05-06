@@ -70,6 +70,8 @@ class ModelsConfig(Model):
 
         enable_manual_topic_creation: (EnableManualTopicCreation) OPTIONAL bool
 
+        max_chat_message_length: (maxChatMessageLength) OPTIONAL int
+
         use_default_dictionary: (useDefaultDictionary) OPTIONAL bool
     """
 
@@ -94,6 +96,7 @@ class ModelsConfig(Model):
     default_dictionary_loaded: bool  # OPTIONAL
     enable_clan_chat: bool  # OPTIONAL
     enable_manual_topic_creation: bool  # OPTIONAL
+    max_chat_message_length: int  # OPTIONAL
     use_default_dictionary: bool  # OPTIONAL
 
     # endregion fields
@@ -174,6 +177,10 @@ class ModelsConfig(Model):
 
     def with_enable_manual_topic_creation(self, value: bool) -> ModelsConfig:
         self.enable_manual_topic_creation = value
+        return self
+
+    def with_max_chat_message_length(self, value: int) -> ModelsConfig:
+        self.max_chat_message_length = value
         return self
 
     def with_use_default_dictionary(self, value: bool) -> ModelsConfig:
@@ -264,6 +271,10 @@ class ModelsConfig(Model):
             )
         elif include_empty:
             result["EnableManualTopicCreation"] = False
+        if hasattr(self, "max_chat_message_length"):
+            result["maxChatMessageLength"] = int(self.max_chat_message_length)
+        elif include_empty:
+            result["maxChatMessageLength"] = 0
         if hasattr(self, "use_default_dictionary"):
             result["useDefaultDictionary"] = bool(self.use_default_dictionary)
         elif include_empty:
@@ -296,6 +307,7 @@ class ModelsConfig(Model):
         default_dictionary_loaded: Optional[bool] = None,
         enable_clan_chat: Optional[bool] = None,
         enable_manual_topic_creation: Optional[bool] = None,
+        max_chat_message_length: Optional[int] = None,
         use_default_dictionary: Optional[bool] = None,
         **kwargs,
     ) -> ModelsConfig:
@@ -322,6 +334,8 @@ class ModelsConfig(Model):
             instance.enable_clan_chat = enable_clan_chat
         if enable_manual_topic_creation is not None:
             instance.enable_manual_topic_creation = enable_manual_topic_creation
+        if max_chat_message_length is not None:
+            instance.max_chat_message_length = max_chat_message_length
         if use_default_dictionary is not None:
             instance.use_default_dictionary = use_default_dictionary
         return instance
@@ -433,6 +447,13 @@ class ModelsConfig(Model):
         elif include_empty:
             instance.enable_manual_topic_creation = False
         if (
+            "maxChatMessageLength" in dict_
+            and dict_["maxChatMessageLength"] is not None
+        ):
+            instance.max_chat_message_length = int(dict_["maxChatMessageLength"])
+        elif include_empty:
+            instance.max_chat_message_length = 0
+        if (
             "useDefaultDictionary" in dict_
             and dict_["useDefaultDictionary"] is not None
         ):
@@ -497,6 +518,7 @@ class ModelsConfig(Model):
             "defaultDictionaryLoaded": "default_dictionary_loaded",
             "enableClanChat": "enable_clan_chat",
             "EnableManualTopicCreation": "enable_manual_topic_creation",
+            "maxChatMessageLength": "max_chat_message_length",
             "useDefaultDictionary": "use_default_dictionary",
         }
 
@@ -522,6 +544,7 @@ class ModelsConfig(Model):
             "defaultDictionaryLoaded": False,
             "enableClanChat": False,
             "EnableManualTopicCreation": False,
+            "maxChatMessageLength": False,
             "useDefaultDictionary": False,
         }
 

@@ -12,7 +12,7 @@ body:
 Definition: ModelsPublicUnbanTopicMembersRequest
 user_i_ds: List[str]
 
-Example: '{"userIDs": ["dXUjgUfLffgyVRzY", "sgecpRGiGxNXVT1R", "aXgIwYa8k7YifrNq"]}'
+Example: '{"userIDs": ["JloTYZ3TrrwnhFTI", "JLvbvZt0YoBVV5fs", "JRhzAuFqhCabjfCj"]}'
 """
 
 result, error = public_unban_topic_members(

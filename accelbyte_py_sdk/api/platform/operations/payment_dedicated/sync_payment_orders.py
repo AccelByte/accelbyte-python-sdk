@@ -38,11 +38,7 @@ class SyncPaymentOrders(Operation):
     [Not Supported Yet In Starter] Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
-      * Required permission : resource="ADMIN:PAYMENT", action=2 (READ)
-      *  Returns : sync payment orders
-
-    Required Permission(s):
-        - ADMIN:PAYMENT [READ]
+      * Returns : sync payment orders
 
     Properties:
         url: /platform/admin/payment/orders
@@ -55,7 +51,7 @@ class SyncPaymentOrders(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         next_evaluated_key: (nextEvaluatedKey) OPTIONAL str in query
 
@@ -73,7 +69,7 @@ class SyncPaymentOrders(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     next_evaluated_key: str  # OPTIONAL in [query]

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.50.0"
+__version__ = "4.51.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -569,6 +569,8 @@ from .wrappers import public_get_user_order
 from .wrappers import public_get_user_order_async
 from .wrappers import public_get_user_order_histories
 from .wrappers import public_get_user_order_histories_async
+from .wrappers import public_preview_order_price
+from .wrappers import public_preview_order_price_async
 from .wrappers import public_query_user_orders
 from .wrappers import public_query_user_orders_async
 from .wrappers import query_orders
@@ -825,6 +827,8 @@ from .wrappers import export_store_1
 from .wrappers import export_store_1_async
 from .wrappers import export_store_by_csv
 from .wrappers import export_store_by_csv_async
+from .wrappers import get_catalog_config
+from .wrappers import get_catalog_config_async
 from .wrappers import get_catalog_definition
 from .wrappers import get_catalog_definition_async
 from .wrappers import get_published_store
@@ -847,6 +851,8 @@ from .wrappers import query_import_history
 from .wrappers import query_import_history_async
 from .wrappers import rollback_published_store
 from .wrappers import rollback_published_store_async
+from .wrappers import update_catalog_config
+from .wrappers import update_catalog_config_async
 from .wrappers import update_store
 from .wrappers import update_store_async
 

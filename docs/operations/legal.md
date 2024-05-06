@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Legal Service Index (1.40.0)
+# AccelByte Gaming Services Legal Service Index (1.41.0)
 
 
 ## Operations
@@ -158,6 +158,7 @@
 | LocalizedPolicyVersionObject | [LocalizedPolicyVersionObject](../../accelbyte_py_sdk/api/legal/models/localized_policy_version_object.py) |
 | PagedRetrieveUserAcceptedAgreementResponse | [PagedRetrieveUserAcceptedAgreementResponse](../../accelbyte_py_sdk/api/legal/models/paged_retrieve_user_accepted_agreement_response.py) |
 | Paging | [Paging](../../accelbyte_py_sdk/api/legal/models/paging.py) |
+| Permission | [Permission](../../accelbyte_py_sdk/api/legal/models/permission.py) |
 | PolicyObject | [PolicyObject](../../accelbyte_py_sdk/api/legal/models/policy_object.py) |
 | PolicyVersionObject | [PolicyVersionObject](../../accelbyte_py_sdk/api/legal/models/policy_version_object.py) |
 | PolicyVersionWithLocalizedVersionObject | [PolicyVersionWithLocalizedVersionObject](../../accelbyte_py_sdk/api/legal/models/policy_version_with_localized_version_object.py) |

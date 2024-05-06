@@ -37,12 +37,6 @@ class RetrieveSinglePolicy1(Operation):
     """Retrieve a Base Legal Policy (retrieveSinglePolicy_1)
 
     Retrieve a base policy.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/base-policies/{basePolicyId}
@@ -55,7 +49,7 @@ class RetrieveSinglePolicy1(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         base_policy_id: (basePolicyId) REQUIRED str in path
 
@@ -73,7 +67,7 @@ class RetrieveSinglePolicy1(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     base_policy_id: str  # REQUIRED in [path]

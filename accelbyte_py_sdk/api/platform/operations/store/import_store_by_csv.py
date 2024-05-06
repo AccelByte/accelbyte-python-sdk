@@ -38,13 +38,6 @@ class ImportStoreByCSV(Operation):
 
     This API is used to import a store by CSV format.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:STORE", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STORE [UPDATE]
-
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/importByCSV
 
@@ -56,7 +49,7 @@ class ImportStoreByCSV(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         category: (category) OPTIONAL Any in form_data
 
@@ -88,7 +81,7 @@ class ImportStoreByCSV(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     category: Any  # OPTIONAL in [form_data]

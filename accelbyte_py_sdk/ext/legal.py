@@ -41,6 +41,7 @@ from ..api.legal.models import LegalReadinessStatusResponse
 from ..api.legal.models import LocalizedPolicyVersionObject
 from ..api.legal.models import PagedRetrieveUserAcceptedAgreementResponse
 from ..api.legal.models import Paging
+from ..api.legal.models import Permission
 from ..api.legal.models import PolicyObject
 from ..api.legal.models import PolicyVersionObject
 from ..api.legal.models import PolicyVersionWithLocalizedVersionObject
@@ -184,6 +185,7 @@ def create_error_entity_example() -> ErrorEntity:
     instance.error_message = randomize()
     instance.dev_stack_trace = randomize()
     instance.message_variables = {randomize(): randomize()}
+    instance.required_permission = create_permission_example()
     return instance
 
 
@@ -201,6 +203,7 @@ def create_initiate_export_agreements_to_csv_response_example() -> (
     InitiateExportAgreementsToCSVResponse
 ):
     instance = InitiateExportAgreementsToCSVResponse()
+    instance.export_id = randomize()
     instance.processing = randomize("bool")
     return instance
 
@@ -241,6 +244,13 @@ def create_paging_example() -> Paging:
     instance = Paging()
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_permission_example() -> Permission:
+    instance = Permission()
+    instance.action = randomize("int", min_val=1, max_val=1000)
+    instance.resource = randomize()
     return instance
 
 

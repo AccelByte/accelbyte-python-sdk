@@ -14,7 +14,7 @@ extension_category: str
 extension_category_name: str
 service_source: str
 
-Example: '{"extensionCategory": "Fx3g46Cb7M4U5nAM", "extensionCategoryName": "U0O3CDWVNo99GfAA", "serviceSource": "ues8SIkBa7nji8a2"}'
+Example: '{"extensionCategory": "xSstF6yYKh5Iei1P", "extensionCategoryName": "VP4Oes5bC2jlT6MR", "serviceSource": "l71IrpAUr42iB9Jt"}'
 """
 
 result, error = admin_create_extension_category(

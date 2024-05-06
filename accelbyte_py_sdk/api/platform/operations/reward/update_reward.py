@@ -40,12 +40,8 @@ class UpdateReward(Operation):
     This API is used to update a reward.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:REWARD", action=4 (UPDATE)
-      *  Returns : reward instance
+      * Returns : reward instance
       *  Acceptable values for rewardItem's identityType are : ITEM_ID or ITEM_SKU
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:REWARD [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/rewards/{rewardId}
@@ -58,7 +54,7 @@ class UpdateReward(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RewardUpdate in body
 
@@ -82,7 +78,7 @@ class UpdateReward(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: RewardUpdate  # OPTIONAL in [body]

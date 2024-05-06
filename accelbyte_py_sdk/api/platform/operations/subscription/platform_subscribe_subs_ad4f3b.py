@@ -41,11 +41,7 @@ class PlatformSubscribeSubscription(Operation):
     Free subscribe by platform, can used by other justice service to redeem/reward the subscription.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION", action=1 (CREATE)
-      *  Returns : result subscription
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SUBSCRIPTION [CREATE]
+      * Returns : result subscription
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/subscriptions/platformSubscribe
@@ -58,7 +54,7 @@ class PlatformSubscribeSubscription(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PlatformSubscribeRequest in body
 
@@ -84,7 +80,7 @@ class PlatformSubscribeSubscription(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: PlatformSubscribeRequest  # OPTIONAL in [body]

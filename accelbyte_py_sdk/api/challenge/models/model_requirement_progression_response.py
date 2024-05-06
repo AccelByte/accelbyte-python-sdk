@@ -32,28 +32,53 @@ class ModelRequirementProgressionResponse(Model):
     """Model requirement progression response (model.RequirementProgressionResponse)
 
     Properties:
+        current_value: (currentValue) REQUIRED float
+
         id_: (id) REQUIRED str
+
+        matcher: (matcher) REQUIRED str
+
+        parameter_name: (parameterName) REQUIRED str
+
+        parameter_type: (parameterType) REQUIRED str
 
         target_value: (targetValue) REQUIRED float
 
         completed_at: (completedAt) OPTIONAL str
-
-        currrent_value: (currrentValue) OPTIONAL float
     """
 
     # region fields
 
+    current_value: float  # REQUIRED
     id_: str  # REQUIRED
+    matcher: str  # REQUIRED
+    parameter_name: str  # REQUIRED
+    parameter_type: str  # REQUIRED
     target_value: float  # REQUIRED
     completed_at: str  # OPTIONAL
-    currrent_value: float  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
+    def with_current_value(self, value: float) -> ModelRequirementProgressionResponse:
+        self.current_value = value
+        return self
+
     def with_id(self, value: str) -> ModelRequirementProgressionResponse:
         self.id_ = value
+        return self
+
+    def with_matcher(self, value: str) -> ModelRequirementProgressionResponse:
+        self.matcher = value
+        return self
+
+    def with_parameter_name(self, value: str) -> ModelRequirementProgressionResponse:
+        self.parameter_name = value
+        return self
+
+    def with_parameter_type(self, value: str) -> ModelRequirementProgressionResponse:
+        self.parameter_type = value
         return self
 
     def with_target_value(self, value: float) -> ModelRequirementProgressionResponse:
@@ -64,20 +89,32 @@ class ModelRequirementProgressionResponse(Model):
         self.completed_at = value
         return self
 
-    def with_currrent_value(self, value: float) -> ModelRequirementProgressionResponse:
-        self.currrent_value = value
-        return self
-
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "current_value"):
+            result["currentValue"] = float(self.current_value)
+        elif include_empty:
+            result["currentValue"] = 0.0
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "matcher"):
+            result["matcher"] = str(self.matcher)
+        elif include_empty:
+            result["matcher"] = ""
+        if hasattr(self, "parameter_name"):
+            result["parameterName"] = str(self.parameter_name)
+        elif include_empty:
+            result["parameterName"] = ""
+        if hasattr(self, "parameter_type"):
+            result["parameterType"] = str(self.parameter_type)
+        elif include_empty:
+            result["parameterType"] = ""
         if hasattr(self, "target_value"):
             result["targetValue"] = float(self.target_value)
         elif include_empty:
@@ -86,10 +123,6 @@ class ModelRequirementProgressionResponse(Model):
             result["completedAt"] = str(self.completed_at)
         elif include_empty:
             result["completedAt"] = ""
-        if hasattr(self, "currrent_value"):
-            result["currrentValue"] = float(self.currrent_value)
-        elif include_empty:
-            result["currrentValue"] = 0.0
         return result
 
     # endregion to methods
@@ -99,19 +132,24 @@ class ModelRequirementProgressionResponse(Model):
     @classmethod
     def create(
         cls,
+        current_value: float,
         id_: str,
+        matcher: str,
+        parameter_name: str,
+        parameter_type: str,
         target_value: float,
         completed_at: Optional[str] = None,
-        currrent_value: Optional[float] = None,
         **kwargs,
     ) -> ModelRequirementProgressionResponse:
         instance = cls()
+        instance.current_value = current_value
         instance.id_ = id_
+        instance.matcher = matcher
+        instance.parameter_name = parameter_name
+        instance.parameter_type = parameter_type
         instance.target_value = target_value
         if completed_at is not None:
             instance.completed_at = completed_at
-        if currrent_value is not None:
-            instance.currrent_value = currrent_value
         return instance
 
     @classmethod
@@ -121,10 +159,26 @@ class ModelRequirementProgressionResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "currentValue" in dict_ and dict_["currentValue"] is not None:
+            instance.current_value = float(dict_["currentValue"])
+        elif include_empty:
+            instance.current_value = 0.0
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "matcher" in dict_ and dict_["matcher"] is not None:
+            instance.matcher = str(dict_["matcher"])
+        elif include_empty:
+            instance.matcher = ""
+        if "parameterName" in dict_ and dict_["parameterName"] is not None:
+            instance.parameter_name = str(dict_["parameterName"])
+        elif include_empty:
+            instance.parameter_name = ""
+        if "parameterType" in dict_ and dict_["parameterType"] is not None:
+            instance.parameter_type = str(dict_["parameterType"])
+        elif include_empty:
+            instance.parameter_type = ""
         if "targetValue" in dict_ and dict_["targetValue"] is not None:
             instance.target_value = float(dict_["targetValue"])
         elif include_empty:
@@ -133,10 +187,6 @@ class ModelRequirementProgressionResponse(Model):
             instance.completed_at = str(dict_["completedAt"])
         elif include_empty:
             instance.completed_at = ""
-        if "currrentValue" in dict_ and dict_["currrentValue"] is not None:
-            instance.currrent_value = float(dict_["currrentValue"])
-        elif include_empty:
-            instance.currrent_value = 0.0
         return instance
 
     @classmethod
@@ -180,19 +230,25 @@ class ModelRequirementProgressionResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "currentValue": "current_value",
             "id": "id_",
+            "matcher": "matcher",
+            "parameterName": "parameter_name",
+            "parameterType": "parameter_type",
             "targetValue": "target_value",
             "completedAt": "completed_at",
-            "currrentValue": "currrent_value",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "currentValue": True,
             "id": True,
+            "matcher": True,
+            "parameterName": True,
+            "parameterType": True,
             "targetValue": True,
             "completedAt": False,
-            "currrentValue": False,
         }
 
     # endregion static methods

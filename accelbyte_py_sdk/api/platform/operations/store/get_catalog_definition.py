@@ -48,8 +48,7 @@ class GetCatalogDefinition(Operation):
 
     Other detail info:
 
-      * Required permission : resource=ADMIN:NAMESPACE:{namespace}:STORE, action=2 (READ)
-      *  Returns : catalog definition
+      * Returns : catalog definition
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/catalogDefinition

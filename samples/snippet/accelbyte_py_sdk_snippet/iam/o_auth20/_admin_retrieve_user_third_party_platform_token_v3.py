@@ -9,6 +9,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenThirdPartyResponse
 result, error = admin_retrieve_user_third_party_platform_token_v3(
     platform_id=platform_id,
     user_id=user_id,
+    platform_user_id=platform_user_id,
     namespace=namespace,
     x_additional_headers=x_additional_headers,
 )

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Chat Service."""
 
-__version__ = "0.4.23"
+__version__ = "0.4.28"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -71,12 +71,16 @@ from .models_get_inbox_stats_response import ModelsGetInboxStatsResponse
 from .models_get_inbox_users_response import ModelsGetInboxUsersResponse
 from .models_import_config_response import ModelsImportConfigResponse
 from .models_json_schema_type import ModelsJSONSchemaType
+from .models_message_request import ModelsMessageRequest
+from .models_message_request import TopicTypeEnum as ModelsMessageRequestTopicTypeEnum
+from .models_message_result_with_attributes import ModelsMessageResultWithAttributes
 from .models_message_stats import ModelsMessageStats
 from .models_pagination import ModelsPagination
 from .models_public_ban_topic_members_request import ModelsPublicBanTopicMembersRequest
 from .models_public_ban_topic_members_response import (
     ModelsPublicBanTopicMembersResponse,
 )
+from .models_public_config_response import ModelsPublicConfigResponse
 from .models_public_unban_topic_members_request import (
     ModelsPublicUnbanTopicMembersRequest,
 )

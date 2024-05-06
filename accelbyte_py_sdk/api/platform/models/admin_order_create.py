@@ -71,6 +71,8 @@ class AdminOrderCreate(Model):
 
         currency_namespace: (currencyNamespace) OPTIONAL str
 
+        discount_codes: (discountCodes) OPTIONAL List[str]
+
         entitlement_platform: (entitlementPlatform) OPTIONAL Union[str, EntitlementPlatformEnum]
 
         ext: (ext) OPTIONAL Dict[str, Any]
@@ -98,6 +100,7 @@ class AdminOrderCreate(Model):
     quantity: int  # REQUIRED
     region: str  # REQUIRED
     currency_namespace: str  # OPTIONAL
+    discount_codes: List[str]  # OPTIONAL
     entitlement_platform: Union[str, EntitlementPlatformEnum]  # OPTIONAL
     ext: Dict[str, Any]  # OPTIONAL
     language: str  # OPTIONAL
@@ -134,6 +137,10 @@ class AdminOrderCreate(Model):
 
     def with_currency_namespace(self, value: str) -> AdminOrderCreate:
         self.currency_namespace = value
+        return self
+
+    def with_discount_codes(self, value: List[str]) -> AdminOrderCreate:
+        self.discount_codes = value
         return self
 
     def with_entitlement_platform(
@@ -204,6 +211,10 @@ class AdminOrderCreate(Model):
             result["currencyNamespace"] = str(self.currency_namespace)
         elif include_empty:
             result["currencyNamespace"] = ""
+        if hasattr(self, "discount_codes"):
+            result["discountCodes"] = [str(i0) for i0 in self.discount_codes]
+        elif include_empty:
+            result["discountCodes"] = []
         if hasattr(self, "entitlement_platform"):
             result["entitlementPlatform"] = str(self.entitlement_platform)
         elif include_empty:
@@ -255,6 +266,7 @@ class AdminOrderCreate(Model):
         quantity: int,
         region: str,
         currency_namespace: Optional[str] = None,
+        discount_codes: Optional[List[str]] = None,
         entitlement_platform: Optional[Union[str, EntitlementPlatformEnum]] = None,
         ext: Optional[Dict[str, Any]] = None,
         language: Optional[str] = None,
@@ -274,6 +286,8 @@ class AdminOrderCreate(Model):
         instance.region = region
         if currency_namespace is not None:
             instance.currency_namespace = currency_namespace
+        if discount_codes is not None:
+            instance.discount_codes = discount_codes
         if entitlement_platform is not None:
             instance.entitlement_platform = entitlement_platform
         if ext is not None:
@@ -325,6 +339,10 @@ class AdminOrderCreate(Model):
             instance.currency_namespace = str(dict_["currencyNamespace"])
         elif include_empty:
             instance.currency_namespace = ""
+        if "discountCodes" in dict_ and dict_["discountCodes"] is not None:
+            instance.discount_codes = [str(i0) for i0 in dict_["discountCodes"]]
+        elif include_empty:
+            instance.discount_codes = []
         if "entitlementPlatform" in dict_ and dict_["entitlementPlatform"] is not None:
             instance.entitlement_platform = str(dict_["entitlementPlatform"])
         elif include_empty:
@@ -408,6 +426,7 @@ class AdminOrderCreate(Model):
             "quantity": "quantity",
             "region": "region",
             "currencyNamespace": "currency_namespace",
+            "discountCodes": "discount_codes",
             "entitlementPlatform": "entitlement_platform",
             "ext": "ext",
             "language": "language",
@@ -428,6 +447,7 @@ class AdminOrderCreate(Model):
             "quantity": True,
             "region": True,
             "currencyNamespace": False,
+            "discountCodes": False,
             "entitlementPlatform": False,
             "ext": False,
             "language": False,

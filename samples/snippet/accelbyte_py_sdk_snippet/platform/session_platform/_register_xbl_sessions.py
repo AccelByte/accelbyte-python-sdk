@@ -14,7 +14,7 @@ payload: Dict[str, Any]
 scid: str
 session_template_name: str
 
-Example: '{"gameSessionId": "ZTWWvu6QU36fw6IC", "payload": {"zaWIXSRrwQoIy3Je": {}, "5Cdp7bdRSXvYeMgz": {}, "1aQgACOBlPWYA5dv": {}}, "scid": "n9qC9iTfDq5x0Vud", "sessionTemplateName": "vemyPSoiHUNJ11Gz"}'
+Example: '{"gameSessionId": "y78f5Qnw190mQUfD", "payload": {"82HE6oNxPWAhIdlq": {}, "X62dLKSS27IRmEWE": {}, "WyPjXZzfDMGZCOea": {}}, "scid": "GQ0yMz4r8VrrR3PC", "sessionTemplateName": "KgceV3wnQd9zkJ4k"}'
 """
 
 result, error = register_xbl_sessions(

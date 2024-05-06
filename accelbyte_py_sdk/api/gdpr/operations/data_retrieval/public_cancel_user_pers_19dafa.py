@@ -35,7 +35,12 @@ from ...models import ResponseError
 class PublicCancelUserPersonalDataRequest(Operation):
     """Cancel user's personal data requests (PublicCancelUserPersonalDataRequest)
 
+    Cancel user's personal data requests
     Requires valid user access token
+    Scope: account
+
+    Required Scope(s):
+        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}

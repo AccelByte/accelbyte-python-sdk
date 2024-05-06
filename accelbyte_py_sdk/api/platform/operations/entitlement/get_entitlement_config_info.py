@@ -38,11 +38,7 @@ class GetEntitlementConfigInfo(Operation):
     Get entitlement config info.
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG", action=2 (READ)
-      *  Returns : entitlement info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ENTITLEMENT:CONFIG [READ]
+      * Returns : entitlement info
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/entitlements/config/info
@@ -55,7 +51,7 @@ class GetEntitlementConfigInfo(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -71,7 +67,7 @@ class GetEntitlementConfigInfo(Operation):
     _method: str = "GET"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

@@ -181,11 +181,7 @@ class RefundPaymentOrderByDedicated(Operation):
     #### Other detail info:
 
       * Token type : client token
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:PAYMENT", action=4 (UPDATE)
       *  cross namespace allowed
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PAYMENT [UPDATE]
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/payment/orders/{paymentOrderNo}/refund
@@ -198,7 +194,7 @@ class RefundPaymentOrderByDedicated(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PaymentOrderRefund in body
 
@@ -226,7 +222,7 @@ class RefundPaymentOrderByDedicated(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: PaymentOrderRefund  # OPTIONAL in [body]

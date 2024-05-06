@@ -48,12 +48,6 @@ def get_user_info_status(
     Get user info cache last updated time per namespace.
     The query parameter namespaces can be a list of namespace separated by comma.
     If query parameter namespaces is empty, user info cache status for all available namespaces will be returned.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/userInfo
@@ -66,7 +60,7 @@ def get_user_info_status(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespaces: (namespaces) OPTIONAL str in query
 
@@ -90,12 +84,6 @@ async def get_user_info_status_async(
     Get user info cache last updated time per namespace.
     The query parameter namespaces can be a list of namespace separated by comma.
     If query parameter namespaces is empty, user info cache status for all available namespaces will be returned.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [READ]
 
     Properties:
         url: /agreement/admin/userInfo
@@ -108,7 +96,7 @@ async def get_user_info_status_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespaces: (namespaces) OPTIONAL str in query
 
@@ -133,12 +121,6 @@ def invalidate_user_info_cache(
     """Invalidate user info cache (invalidateUserInfoCache)
 
     Invalidate user info cache in agreement service.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
 
     Properties:
         url: /agreement/admin/userInfo
@@ -151,7 +133,7 @@ def invalidate_user_info_cache(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) OPTIONAL str in query
 
@@ -174,12 +156,6 @@ async def invalidate_user_info_cache_async(
     """Invalidate user info cache (invalidateUserInfoCache)
 
     Invalidate user info cache in agreement service.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [DELETE]
 
     Properties:
         url: /agreement/admin/userInfo
@@ -192,7 +168,7 @@ async def invalidate_user_info_cache_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) OPTIONAL str in query
 
@@ -217,12 +193,6 @@ def sync_user_info(
     """Sync user info with iam service  (syncUserInfo)
 
     Sync user info cache in agreement service with iam service.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/userInfo
@@ -235,7 +205,7 @@ def sync_user_info(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in query
 
@@ -262,12 +232,6 @@ async def sync_user_info_async(
     """Sync user info with iam service  (syncUserInfo)
 
     Sync user info cache in agreement service with iam service.
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:*:LEGAL", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:LEGAL [UPDATE]
 
     Properties:
         url: /agreement/admin/userInfo
@@ -280,7 +244,7 @@ async def sync_user_info_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in query
 

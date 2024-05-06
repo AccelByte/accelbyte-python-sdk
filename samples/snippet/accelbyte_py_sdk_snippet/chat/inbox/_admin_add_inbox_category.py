@@ -21,7 +21,7 @@ name: str
 save_inbox: bool
 send_notification: bool
 
-Example: '{"enabled": true, "expiresIn": 10, "hook": {"driver": "ppjFMaSE613q9OSl", "params": {"RlGmqTxfQcpxmzIl": {}, "RRggSHlfLNxYFlaa": {}, "29wma6XIOOIfDj0N": {}}}, "jsonSchema": {"373moOMkNTfkclmY": {}, "Uo3M7XjUln50Uama": {}, "IIDTzknyklZhFaCn": {}}, "name": "eKaTm5hxV2z3USqn", "saveInbox": true, "sendNotification": false}'
+Example: '{"enabled": true, "expiresIn": 17, "hook": {"driver": "LXCLqupSbO7UTfFD", "params": {"vl1X36uTRU2yezDj": {}, "My8GFQTtwHew7d6u": {}, "0iupC0OcgzgWMl9p": {}}}, "jsonSchema": {"TEaCNFMWF8k1eHHo": {}, "tOZT7QdJmjXNYvDh": {}, "VFIQFz3CPBrICGaT": {}}, "name": "dlfgmm94ewYJr6rW", "saveInbox": true, "sendNotification": true}'
 """
 
 result, error = admin_add_inbox_category(

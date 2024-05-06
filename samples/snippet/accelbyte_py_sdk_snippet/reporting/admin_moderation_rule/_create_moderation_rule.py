@@ -28,7 +28,7 @@ extension_category: str
 reason: str
 threshold: int
 
-Example: '{"action": "HideContent", "actions": {"banAccount": {"comment": "TapBtA3ZzaV3xuyi", "duration": 19, "reason": "LZx5LBuZ61IsVdNo", "skipNotif": true, "type": "SVi9gRFSSPf3vNno"}, "deleteChat": false, "extensionActionIds": ["bUKTLQVQNE79iGYN", "Lom1nrn3b6xmhTVZ", "W1bUQqVyKW4hSOZK"], "hideContent": false}, "active": false, "category": "USER", "extensionCategory": "tm5nBRwsFEFNP1Ka", "reason": "84ry3y4USGGgZ5IF", "threshold": 52}'
+Example: '{"action": "HideContent", "actions": {"banAccount": {"comment": "wo4Mf1mKjFZaFkPl", "duration": 22, "reason": "VRchN6CmtVIr5Rjw", "skipNotif": true, "type": "m37xmJt106G9PulQ"}, "deleteChat": false, "extensionActionIds": ["YuO4niU3LX5GyHY3", "3eU6pXxGMx7fn7PB", "Yk9mYkZgldM2MR45"], "hideContent": true}, "active": true, "category": "USER", "extensionCategory": "2aEEkVLQEjy0mhad", "reason": "SW7PyZTL1vd85cVR", "threshold": 62}'
 """
 
 result, error = create_moderation_rule(

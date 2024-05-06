@@ -15,7 +15,7 @@ Definition: List[ModelsBulkUpdatePlayerRecordRequestDetail]
     key: str
     value: Dict[str, Any]
 
-Example: '{"data": [{"key": "vxoPZ9iYfByHaBfq", "value": {"d6S9pfXOFqw3hSPl": {}, "fZvVMyv9oU2NUp4W": {}, "in1GA5KL3DwXKc1Q": {}}}, {"key": "CyFYgpIIQpEsnSBM", "value": {"sOz78mwzrbenJSV5": {}, "AmCPBkxfFYXrQVLh": {}, "XdZ2cZaGNAYyG8cM": {}}}, {"key": "oTQoY2T4REXj0Zis", "value": {"kFil2QNZBBVEBAdt": {}, "oLlVUlhw8lxXwR3R": {}, "a0YuBEEgayneEuyh": {}}}]}'
+Example: '{"data": [{"key": "AEZGDmZUsSzBdJnr", "value": {"5brfgZRSE50OGsIE": {}, "skBuJ11KcehgDI23": {}, "tGgXY0vRYojScZsu": {}}}, {"key": "VKO7FmEI9yJf9D5B", "value": {"rqf1FKfJ5EZ3Xwnf": {}, "EGWp8QeAJ1wpZdXF": {}, "3QAN0CyciB942KQA": {}}}, {"key": "FHoF9HLG849E7t6x", "value": {"JQPcgV0vk4cePiM5": {}, "C5wraHN3ODHJbmdI": {}, "nxcOpbSdOGLD0Veg": {}}}]}'
 """
 
 result, error = admin_put_player_records_handler_v1(
