@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Gdpr Service Index (2.9.0)
+# AccelByte Gaming Services Gdpr Service Index (2.10.0)
 
 
 ## Operations
@@ -10,8 +10,11 @@
 ### Configuration
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config | GET | AdminGetPlatformAccountClosureServicesConfiguration | `false` | [AdminGetPlatformAccountClosureServicesConfiguration](../../accelbyte_py_sdk/api/gdpr/operations/configuration/admin_get_platform_acco_c23147.py) | [admin_get_platform_account_closure_services_configuration](../../accelbyte_py_sdk/api/gdpr/wrappers/_configuration.py) | [accelbyte_py_sdk_cli gdpr-admin-get-platform-account-closure-services-configuration](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_get_platform_account_closure_services_configuration.py) |
 | /gdpr/admin/namespaces/{namespace}/services/configurations | GET | AdminGetServicesConfiguration | `false` | [AdminGetServicesConfiguration](../../accelbyte_py_sdk/api/gdpr/operations/configuration/admin_get_services_conf_be46ef.py) | [admin_get_services_configuration](../../accelbyte_py_sdk/api/gdpr/wrappers/_configuration.py) | [accelbyte_py_sdk_cli gdpr-admin-get-services-configuration](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_get_services_configuration.py) |
+| /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config | DELETE | AdminResetPlatformAccountClosureServicesConfiguration | `false` | [AdminResetPlatformAccountClosureServicesConfiguration](../../accelbyte_py_sdk/api/gdpr/operations/configuration/admin_reset_platform_ac_c4b31b.py) | [admin_reset_platform_account_closure_services_configuration](../../accelbyte_py_sdk/api/gdpr/wrappers/_configuration.py) | [accelbyte_py_sdk_cli gdpr-admin-reset-platform-account-closure-services-configuration](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_reset_platform_account_closure_services_configuration.py) |
 | /gdpr/admin/namespaces/{namespace}/services/configurations/reset | DELETE | AdminResetServicesConfiguration | `false` | [AdminResetServicesConfiguration](../../accelbyte_py_sdk/api/gdpr/operations/configuration/admin_reset_services_co_abf06c.py) | [admin_reset_services_configuration](../../accelbyte_py_sdk/api/gdpr/wrappers/_configuration.py) | [accelbyte_py_sdk_cli gdpr-admin-reset-services-configuration](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_reset_services_configuration.py) |
+| /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config | PUT | AdminUpdatePlatformAccountClosureServicesConfiguration | `false` | [AdminUpdatePlatformAccountClosureServicesConfiguration](../../accelbyte_py_sdk/api/gdpr/operations/configuration/admin_update_platform_a_1f24aa.py) | [admin_update_platform_account_closure_services_configuration](../../accelbyte_py_sdk/api/gdpr/wrappers/_configuration.py) | [accelbyte_py_sdk_cli gdpr-admin-update-platform-account-closure-services-configuration](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_update_platform_account_closure_services_configuration.py) |
 | /gdpr/admin/namespaces/{namespace}/services/configurations | PUT | AdminUpdateServicesConfiguration | `false` | [AdminUpdateServicesConfiguration](../../accelbyte_py_sdk/api/gdpr/operations/configuration/admin_update_services_c_ea010e.py) | [admin_update_services_configuration](../../accelbyte_py_sdk/api/gdpr/wrappers/_configuration.py) | [accelbyte_py_sdk_cli gdpr-admin-update-services-configuration](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_update_services_configuration.py) |
 | /gdpr/admin/namespaces/{namespace}/emails/configurations | DELETE | DeleteAdminEmailConfiguration | `false` | [DeleteAdminEmailConfiguration](../../accelbyte_py_sdk/api/gdpr/operations/configuration/delete_admin_email_conf_009cca.py) | [delete_admin_email_configuration](../../accelbyte_py_sdk/api/gdpr/wrappers/_configuration.py) | [accelbyte_py_sdk_cli gdpr-delete-admin-email-configuration](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_delete_admin_email_configuration.py) |
 | /gdpr/admin/namespaces/{namespace}/emails/configurations | GET | GetAdminEmailConfiguration | `false` | [GetAdminEmailConfiguration](../../accelbyte_py_sdk/api/gdpr/operations/configuration/get_admin_email_configuration.py) | [get_admin_email_configuration](../../accelbyte_py_sdk/api/gdpr/wrappers/_configuration.py) | [accelbyte_py_sdk_cli gdpr-get-admin-email-configuration](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_get_admin_email_configuration.py) |
@@ -45,15 +48,31 @@
 | /gdpr/public/namespaces/{namespace}/users/{userId}/requests | GET | PublicGetUserPersonalDataRequests | `false` | [PublicGetUserPersonalDataRequests](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval/public_get_user_persona_7e40c3.py) | [public_get_user_personal_data_requests](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval.py) | [accelbyte_py_sdk_cli gdpr-public-get-user-personal-data-requests](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_public_get_user_personal_data_requests.py) |
 | /gdpr/public/namespaces/{namespace}/users/{userId}/requests | POST | PublicRequestDataRetrieval | `false` | [PublicRequestDataRetrieval](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval/public_request_data_retrieval.py) | [public_request_data_retrieval](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval.py) | [accelbyte_py_sdk_cli gdpr-public-request-data-retrieval](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_public_request_data_retrieval.py) |
 
+### Platform Account Closure Client
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client | DELETE | AdminDeletePlatformAccountClosureClient | `false` | [AdminDeletePlatformAccountClosureClient](../../accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_delete_platform_a_6b01ab.py) | [admin_delete_platform_account_closure_client](../../accelbyte_py_sdk/api/gdpr/wrappers/_platform_account_closure_client.py) | [accelbyte_py_sdk_cli gdpr-admin-delete-platform-account-closure-client](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_delete_platform_account_closure_client.py) |
+| /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client | GET | AdminGetPlatformAccountClosureClient | `false` | [AdminGetPlatformAccountClosureClient](../../accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_get_platform_acco_4a3f07.py) | [admin_get_platform_account_closure_client](../../accelbyte_py_sdk/api/gdpr/wrappers/_platform_account_closure_client.py) | [accelbyte_py_sdk_cli gdpr-admin-get-platform-account-closure-client](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_get_platform_account_closure_client.py) |
+| /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client | POST | AdminUpdatePlatformAccountClosureClient | `false` | [AdminUpdatePlatformAccountClosureClient](../../accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_update_platform_a_818a23.py) | [admin_update_platform_account_closure_client](../../accelbyte_py_sdk/api/gdpr/wrappers/_platform_account_closure_client.py) | [accelbyte_py_sdk_cli gdpr-admin-update-platform-account-closure-client](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_update_platform_account_closure_client.py) |
+
+### Platform Account Closure History
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /gdpr/admin/namespaces/{namespace}/users/platforms/closure/histories | GET | AdminGetUserPlatformAccountClosureHistories | `false` | [AdminGetUserPlatformAccountClosureHistories](../../accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_history/admin_get_user_platform_8a8aa4.py) | [admin_get_user_platform_account_closure_histories](../../accelbyte_py_sdk/api/gdpr/wrappers/_platform_account_closure_history.py) | [accelbyte_py_sdk_cli gdpr-admin-get-user-platform-account-closure-histories](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_get_user_platform_account_closure_histories.py) |
+
 
 ## Models
 | Model | Class |
 |---|---|
 | dto.ExtendConfigDTO | [DtoExtendConfigDTO](../../accelbyte_py_sdk/api/gdpr/models/dto_extend_config_dto.py) |
+| dto.PlatformAccountClosureClientRequest | [DtoPlatformAccountClosureClientRequest](../../accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_client_request.py) |
+| dto.PlatformAccountClosureClientResponse | [DtoPlatformAccountClosureClientResponse](../../accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_client_response.py) |
 | dto.ServiceConfigDTO | [DtoServiceConfigDTO](../../accelbyte_py_sdk/api/gdpr/models/dto_service_config_dto.py) |
 | dto.ServiceConfigurationDTO | [DtoServiceConfigurationDTO](../../accelbyte_py_sdk/api/gdpr/models/dto_service_configuration_dto.py) |
 | dto.ServiceConfigurationUpdateRequest | [DtoServiceConfigurationUpdateRequest](../../accelbyte_py_sdk/api/gdpr/models/dto_service_configuration_update_request.py) |
 | dto.ServicesConfigurationResponse | [DtoServicesConfigurationResponse](../../accelbyte_py_sdk/api/gdpr/models/dto_services_configuration_response.py) |
+| dto.UserPlatformAccountClosureHistoriesResponse | [DtoUserPlatformAccountClosureHistoriesResponse](../../accelbyte_py_sdk/api/gdpr/models/dto_user_platform_account_closure_histories_response.py) |
+| dto.UserPlatformAccountClosureHistory | [DtoUserPlatformAccountClosureHistory](../../accelbyte_py_sdk/api/gdpr/models/dto_user_platform_account_closure_history.py) |
 | models.DataRetrievalResponse | [ModelsDataRetrievalResponse](../../accelbyte_py_sdk/api/gdpr/models/models_data_retrieval_response.py) |
 | models.DeletionData | [ModelsDeletionData](../../accelbyte_py_sdk/api/gdpr/models/models_deletion_data.py) |
 | models.DeletionStatus | [ModelsDeletionStatus](../../accelbyte_py_sdk/api/gdpr/models/models_deletion_status.py) |

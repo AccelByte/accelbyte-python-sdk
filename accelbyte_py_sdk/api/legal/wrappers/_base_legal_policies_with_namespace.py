@@ -247,6 +247,7 @@ async def partial_update_policy_1_async(
 
 @same_doc_as(RetrieveAllLegalPoliciesByNamespace)
 def retrieve_all_legal_policies_by_namespace(
+    visible_only: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -270,6 +271,8 @@ def retrieve_all_legal_policies_by_namespace(
 
         namespace: (namespace) REQUIRED str in path
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrieveBasePolicyResponse] (successful operation)
     """
@@ -278,6 +281,7 @@ def retrieve_all_legal_policies_by_namespace(
         if error:
             return None, error
     request = RetrieveAllLegalPoliciesByNamespace.create(
+        visible_only=visible_only,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -285,6 +289,7 @@ def retrieve_all_legal_policies_by_namespace(
 
 @same_doc_as(RetrieveAllLegalPoliciesByNamespace)
 async def retrieve_all_legal_policies_by_namespace_async(
+    visible_only: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -308,6 +313,8 @@ async def retrieve_all_legal_policies_by_namespace_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrieveBasePolicyResponse] (successful operation)
     """
@@ -316,6 +323,7 @@ async def retrieve_all_legal_policies_by_namespace_async(
         if error:
             return None, error
     request = RetrieveAllLegalPoliciesByNamespace.create(
+        visible_only=visible_only,
         namespace=namespace,
     )
     return await run_request_async(

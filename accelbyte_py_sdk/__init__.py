@@ -5,7 +5,7 @@
 """The top-level package for the AccelByte Python SDK."""
 
 __product__ = "AccelBytePythonSDK"
-__version__ = "0.65.0"
+__version__ = "0.66.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

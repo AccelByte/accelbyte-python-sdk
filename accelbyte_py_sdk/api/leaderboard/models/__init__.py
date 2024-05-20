@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Leaderboard Service."""
 
-__version__ = "2.29.1"
+__version__ = "2.29.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -83,4 +83,4 @@ from .v2_get_leaderboard_config_public_resp import V2GetLeaderboardConfigPublicR
 from .v2_get_public_leaderboard_ranking_response import (
     V2GetPublicLeaderboardRankingResponse,
 )
-from .v2_pagination import V2Pagination
+from .v2_pagination_v2 import V2PaginationV2

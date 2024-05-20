@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.14.5"
+__version__ = "3.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -17,6 +17,12 @@ __email__ = "dev@accelbyte.net"
 # certificate
 from .wrappers import handle_upload_xbox_pfx_certificate
 from .wrappers import handle_upload_xbox_pfx_certificate_async
+
+# config
+from .wrappers import admin_get_log_config
+from .wrappers import admin_get_log_config_async
+from .wrappers import admin_patch_update_log_config
+from .wrappers import admin_patch_update_log_config_async
 
 # configuration_template
 from .wrappers import admin_create_configuration_alert_v1

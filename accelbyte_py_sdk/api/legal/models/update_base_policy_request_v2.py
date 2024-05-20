@@ -40,6 +40,8 @@ class UpdateBasePolicyRequestV2(Model):
 
         description: (description) OPTIONAL str
 
+        is_hidden: (isHidden) OPTIONAL bool
+
         tags: (tags) OPTIONAL List[str]
     """
 
@@ -49,6 +51,7 @@ class UpdateBasePolicyRequestV2(Model):
     affected_countries: List[str]  # OPTIONAL
     base_policy_name: str  # OPTIONAL
     description: str  # OPTIONAL
+    is_hidden: bool  # OPTIONAL
     tags: List[str]  # OPTIONAL
 
     # endregion fields
@@ -69,6 +72,10 @@ class UpdateBasePolicyRequestV2(Model):
 
     def with_description(self, value: str) -> UpdateBasePolicyRequestV2:
         self.description = value
+        return self
+
+    def with_is_hidden(self, value: bool) -> UpdateBasePolicyRequestV2:
+        self.is_hidden = value
         return self
 
     def with_tags(self, value: List[str]) -> UpdateBasePolicyRequestV2:
@@ -97,6 +104,10 @@ class UpdateBasePolicyRequestV2(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "is_hidden"):
+            result["isHidden"] = bool(self.is_hidden)
+        elif include_empty:
+            result["isHidden"] = False
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -114,6 +125,7 @@ class UpdateBasePolicyRequestV2(Model):
         affected_countries: Optional[List[str]] = None,
         base_policy_name: Optional[str] = None,
         description: Optional[str] = None,
+        is_hidden: Optional[bool] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
     ) -> UpdateBasePolicyRequestV2:
@@ -126,6 +138,8 @@ class UpdateBasePolicyRequestV2(Model):
             instance.base_policy_name = base_policy_name
         if description is not None:
             instance.description = description
+        if is_hidden is not None:
+            instance.is_hidden = is_hidden
         if tags is not None:
             instance.tags = tags
         return instance
@@ -155,6 +169,10 @@ class UpdateBasePolicyRequestV2(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "isHidden" in dict_ and dict_["isHidden"] is not None:
+            instance.is_hidden = bool(dict_["isHidden"])
+        elif include_empty:
+            instance.is_hidden = False
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -206,6 +224,7 @@ class UpdateBasePolicyRequestV2(Model):
             "affectedCountries": "affected_countries",
             "basePolicyName": "base_policy_name",
             "description": "description",
+            "isHidden": "is_hidden",
             "tags": "tags",
         }
 
@@ -216,6 +235,7 @@ class UpdateBasePolicyRequestV2(Model):
             "affectedCountries": False,
             "basePolicyName": False,
             "description": False,
+            "isHidden": False,
             "tags": False,
         }
 

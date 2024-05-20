@@ -40,12 +40,15 @@ class DtoServiceConfigDTO(Model):
         protocol: (protocol) REQUIRED Union[str, ProtocolEnum]
 
         url: (url) REQUIRED str
+
+        skip_ack: (skipAck) OPTIONAL bool
     """
 
     # region fields
 
     protocol: Union[str, ProtocolEnum]  # REQUIRED
     url: str  # REQUIRED
+    skip_ack: bool  # OPTIONAL
 
     # endregion fields
 
@@ -57,6 +60,10 @@ class DtoServiceConfigDTO(Model):
 
     def with_url(self, value: str) -> DtoServiceConfigDTO:
         self.url = value
+        return self
+
+    def with_skip_ack(self, value: bool) -> DtoServiceConfigDTO:
+        self.skip_ack = value
         return self
 
     # endregion with_x methods
@@ -73,6 +80,10 @@ class DtoServiceConfigDTO(Model):
             result["url"] = str(self.url)
         elif include_empty:
             result["url"] = ""
+        if hasattr(self, "skip_ack"):
+            result["skipAck"] = bool(self.skip_ack)
+        elif include_empty:
+            result["skipAck"] = False
         return result
 
     # endregion to methods
@@ -81,11 +92,17 @@ class DtoServiceConfigDTO(Model):
 
     @classmethod
     def create(
-        cls, protocol: Union[str, ProtocolEnum], url: str, **kwargs
+        cls,
+        protocol: Union[str, ProtocolEnum],
+        url: str,
+        skip_ack: Optional[bool] = None,
+        **kwargs,
     ) -> DtoServiceConfigDTO:
         instance = cls()
         instance.protocol = protocol
         instance.url = url
+        if skip_ack is not None:
+            instance.skip_ack = skip_ack
         return instance
 
     @classmethod
@@ -103,6 +120,10 @@ class DtoServiceConfigDTO(Model):
             instance.url = str(dict_["url"])
         elif include_empty:
             instance.url = ""
+        if "skipAck" in dict_ and dict_["skipAck"] is not None:
+            instance.skip_ack = bool(dict_["skipAck"])
+        elif include_empty:
+            instance.skip_ack = False
         return instance
 
     @classmethod
@@ -146,6 +167,7 @@ class DtoServiceConfigDTO(Model):
         return {
             "protocol": "protocol",
             "url": "url",
+            "skipAck": "skip_ack",
         }
 
     @staticmethod
@@ -153,6 +175,7 @@ class DtoServiceConfigDTO(Model):
         return {
             "protocol": True,
             "url": True,
+            "skipAck": False,
         }
 
     @staticmethod

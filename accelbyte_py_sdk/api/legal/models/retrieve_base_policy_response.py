@@ -46,6 +46,8 @@ class RetrieveBasePolicyResponse(Model):
 
         description: (description) OPTIONAL str
 
+        is_hidden: (isHidden) OPTIONAL bool
+
         policies: (policies) OPTIONAL List[PolicyObject]
 
         policy_type_id: (policyTypeId) OPTIONAL str
@@ -65,6 +67,7 @@ class RetrieveBasePolicyResponse(Model):
     affected_client_ids: List[str]  # OPTIONAL
     created_at: str  # OPTIONAL
     description: str  # OPTIONAL
+    is_hidden: bool  # OPTIONAL
     policies: List[PolicyObject]  # OPTIONAL
     policy_type_id: str  # OPTIONAL
     policy_type_name: str  # OPTIONAL
@@ -97,6 +100,10 @@ class RetrieveBasePolicyResponse(Model):
 
     def with_description(self, value: str) -> RetrieveBasePolicyResponse:
         self.description = value
+        return self
+
+    def with_is_hidden(self, value: bool) -> RetrieveBasePolicyResponse:
+        self.is_hidden = value
         return self
 
     def with_policies(self, value: List[PolicyObject]) -> RetrieveBasePolicyResponse:
@@ -149,6 +156,10 @@ class RetrieveBasePolicyResponse(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "is_hidden"):
+            result["isHidden"] = bool(self.is_hidden)
+        elif include_empty:
+            result["isHidden"] = False
         if hasattr(self, "policies"):
             result["policies"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.policies
@@ -186,6 +197,7 @@ class RetrieveBasePolicyResponse(Model):
         affected_client_ids: Optional[List[str]] = None,
         created_at: Optional[str] = None,
         description: Optional[str] = None,
+        is_hidden: Optional[bool] = None,
         policies: Optional[List[PolicyObject]] = None,
         policy_type_id: Optional[str] = None,
         policy_type_name: Optional[str] = None,
@@ -203,6 +215,8 @@ class RetrieveBasePolicyResponse(Model):
             instance.created_at = created_at
         if description is not None:
             instance.description = description
+        if is_hidden is not None:
+            instance.is_hidden = is_hidden
         if policies is not None:
             instance.policies = policies
         if policy_type_id is not None:
@@ -248,6 +262,10 @@ class RetrieveBasePolicyResponse(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "isHidden" in dict_ and dict_["isHidden"] is not None:
+            instance.is_hidden = bool(dict_["isHidden"])
+        elif include_empty:
+            instance.is_hidden = False
         if "policies" in dict_ and dict_["policies"] is not None:
             instance.policies = [
                 PolicyObject.create_from_dict(i0, include_empty=include_empty)
@@ -320,6 +338,7 @@ class RetrieveBasePolicyResponse(Model):
             "affectedClientIds": "affected_client_ids",
             "createdAt": "created_at",
             "description": "description",
+            "isHidden": "is_hidden",
             "policies": "policies",
             "policyTypeId": "policy_type_id",
             "policyTypeName": "policy_type_name",
@@ -336,6 +355,7 @@ class RetrieveBasePolicyResponse(Model):
             "affectedClientIds": False,
             "createdAt": False,
             "description": False,
+            "isHidden": False,
             "policies": False,
             "policyTypeId": False,
             "policyTypeName": False,

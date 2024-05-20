@@ -303,6 +303,9 @@ from ._process_user_order_notification import process_user_order_notification
 from ._download_user_order_receipt import download_user_order_receipt
 from ._create_user_payment_order import create_user_payment_order
 from ._refund_user_payment_order import refund_user_payment_order
+from ._get_user_platform_account_closure_histories import (
+    get_user_platform_account_closure_histories,
+)
 from ._apply_user_redemption import apply_user_redemption
 from ._do_revocation import do_revocation
 from ._register_xbl_sessions import register_xbl_sessions
@@ -803,6 +806,7 @@ commands = [
     download_user_order_receipt,
     create_user_payment_order,
     refund_user_payment_order,
+    get_user_platform_account_closure_histories,
     apply_user_redemption,
     do_revocation,
     register_xbl_sessions,

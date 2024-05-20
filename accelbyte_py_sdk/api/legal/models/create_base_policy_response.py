@@ -44,6 +44,8 @@ class CreateBasePolicyResponse(Model):
 
         global_policy_name: (globalPolicyName) OPTIONAL str
 
+        is_hidden: (isHidden) OPTIONAL bool
+
         namespace: (namespace) OPTIONAL str
 
         policy_id: (policyId) OPTIONAL str
@@ -63,6 +65,7 @@ class CreateBasePolicyResponse(Model):
     created_at: str  # OPTIONAL
     description: str  # OPTIONAL
     global_policy_name: str  # OPTIONAL
+    is_hidden: bool  # OPTIONAL
     namespace: str  # OPTIONAL
     policy_id: str  # OPTIONAL
     tags: List[str]  # OPTIONAL
@@ -95,6 +98,10 @@ class CreateBasePolicyResponse(Model):
 
     def with_global_policy_name(self, value: str) -> CreateBasePolicyResponse:
         self.global_policy_name = value
+        return self
+
+    def with_is_hidden(self, value: bool) -> CreateBasePolicyResponse:
+        self.is_hidden = value
         return self
 
     def with_namespace(self, value: str) -> CreateBasePolicyResponse:
@@ -147,6 +154,10 @@ class CreateBasePolicyResponse(Model):
             result["globalPolicyName"] = str(self.global_policy_name)
         elif include_empty:
             result["globalPolicyName"] = ""
+        if hasattr(self, "is_hidden"):
+            result["isHidden"] = bool(self.is_hidden)
+        elif include_empty:
+            result["isHidden"] = False
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -182,6 +193,7 @@ class CreateBasePolicyResponse(Model):
         created_at: Optional[str] = None,
         description: Optional[str] = None,
         global_policy_name: Optional[str] = None,
+        is_hidden: Optional[bool] = None,
         namespace: Optional[str] = None,
         policy_id: Optional[str] = None,
         tags: Optional[List[str]] = None,
@@ -201,6 +213,8 @@ class CreateBasePolicyResponse(Model):
             instance.description = description
         if global_policy_name is not None:
             instance.global_policy_name = global_policy_name
+        if is_hidden is not None:
+            instance.is_hidden = is_hidden
         if namespace is not None:
             instance.namespace = namespace
         if policy_id is not None:
@@ -246,6 +260,10 @@ class CreateBasePolicyResponse(Model):
             instance.global_policy_name = str(dict_["globalPolicyName"])
         elif include_empty:
             instance.global_policy_name = ""
+        if "isHidden" in dict_ and dict_["isHidden"] is not None:
+            instance.is_hidden = bool(dict_["isHidden"])
+        elif include_empty:
+            instance.is_hidden = False
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -315,6 +333,7 @@ class CreateBasePolicyResponse(Model):
             "createdAt": "created_at",
             "description": "description",
             "globalPolicyName": "global_policy_name",
+            "isHidden": "is_hidden",
             "namespace": "namespace",
             "policyId": "policy_id",
             "tags": "tags",
@@ -331,6 +350,7 @@ class CreateBasePolicyResponse(Model):
             "createdAt": False,
             "description": False,
             "globalPolicyName": False,
+            "isHidden": False,
             "namespace": False,
             "policyId": False,
             "tags": False,

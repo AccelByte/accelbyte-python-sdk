@@ -13,10 +13,31 @@ from ._get_admin_email_configuration import get_admin_email_configuration
 from ._update_admin_email_configuration import update_admin_email_configuration
 from ._save_admin_email_configuration import save_admin_email_configuration
 from ._delete_admin_email_configuration import delete_admin_email_configuration
+from ._admin_get_platform_account_closure_client import (
+    admin_get_platform_account_closure_client,
+)
+from ._admin_update_platform_account_closure_client import (
+    admin_update_platform_account_closure_client,
+)
+from ._admin_delete_platform_account_closure_client import (
+    admin_delete_platform_account_closure_client,
+)
 from ._admin_get_list_personal_data_request import admin_get_list_personal_data_request
 from ._admin_get_services_configuration import admin_get_services_configuration
 from ._admin_update_services_configuration import admin_update_services_configuration
 from ._admin_reset_services_configuration import admin_reset_services_configuration
+from ._admin_get_platform_account_closure_services_configuration import (
+    admin_get_platform_account_closure_services_configuration,
+)
+from ._admin_update_platform_account_closure_services_configuration import (
+    admin_update_platform_account_closure_services_configuration,
+)
+from ._admin_reset_platform_account_closure_services_configuration import (
+    admin_reset_platform_account_closure_services_configuration,
+)
+from ._admin_get_user_platform_account_closure_histories import (
+    admin_get_user_platform_account_closure_histories,
+)
 from ._admin_get_user_account_deletion_request import (
     admin_get_user_account_deletion_request,
 )
@@ -68,10 +89,17 @@ commands = [
     update_admin_email_configuration,
     save_admin_email_configuration,
     delete_admin_email_configuration,
+    admin_get_platform_account_closure_client,
+    admin_update_platform_account_closure_client,
+    admin_delete_platform_account_closure_client,
     admin_get_list_personal_data_request,
     admin_get_services_configuration,
     admin_update_services_configuration,
     admin_reset_services_configuration,
+    admin_get_platform_account_closure_services_configuration,
+    admin_update_platform_account_closure_services_configuration,
+    admin_reset_platform_account_closure_services_configuration,
+    admin_get_user_platform_account_closure_histories,
     admin_get_user_account_deletion_request,
     admin_submit_user_account_deletion_request,
     admin_cancel_user_account_deletion_request,

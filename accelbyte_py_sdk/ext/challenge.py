@@ -126,6 +126,7 @@ def create_model_evaluate_player_progression_request_example() -> (
 def create_model_get_goals_response_example() -> ModelGetGoalsResponse:
     instance = ModelGetGoalsResponse()
     instance.data = [create_model_goal_response_example()]
+    instance.meta = create_model_challenge_response_example()
     instance.paging = create_model_pagination_example()
     return instance
 
@@ -222,6 +223,7 @@ def create_model_predicate_example() -> ModelPredicate:
     instance.parameter_name = randomize()
     instance.parameter_type = randomize()
     instance.target_value = randomize("int", min_val=1, max_val=1000)
+    instance.stat_cycle_id = randomize()
     return instance
 
 
@@ -243,6 +245,7 @@ def create_model_requirement_progression_response_example() -> (
     instance.parameter_type = randomize()
     instance.target_value = randomize("int", min_val=1, max_val=1000)
     instance.completed_at = randomize()
+    instance.stat_cycle_id = randomize()
     return instance
 
 

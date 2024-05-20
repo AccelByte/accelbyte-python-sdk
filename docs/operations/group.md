@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Group Service Index (2.20.0)
+# AccelByte Gaming Services Group Service Index (2.20.1)
 
 
 ## Operations
@@ -99,18 +99,6 @@
 | /group/v1/public/namespaces/{namespace}/groups/{groupId}/join/request | GET | getGroupJoinRequestPublicV1 | `false` | [GetGroupJoinRequestPublicV1](../../accelbyte_py_sdk/api/group/operations/member_request/get_group_join_request__0b96ac.py) | [get_group_join_request_public_v1](../../accelbyte_py_sdk/api/group/wrappers/_member_request.py) | [accelbyte_py_sdk_cli group-get-group-join-request-public-v1](../../samples/cli/accelbyte_py_sdk_cli/group/_get_group_join_request_public_v1.py) |
 | /group/v2/public/namespaces/{namespace}/groups/{groupId}/join/request | GET | getGroupJoinRequestPublicV2 | `false` | [GetGroupJoinRequestPublicV2](../../accelbyte_py_sdk/api/group/operations/member_request/get_group_join_request__01154d.py) | [get_group_join_request_public_v2](../../accelbyte_py_sdk/api/group/wrappers/_member_request.py) | [accelbyte_py_sdk_cli group-get-group-join-request-public-v2](../../samples/cli/accelbyte_py_sdk_cli/group/_get_group_join_request_public_v2.py) |
 | /group/v2/public/namespaces/{namespace}/users/me/join/request | GET | GetMyGroupJoinRequestV2 | `false` | [GetMyGroupJoinRequestV2](../../accelbyte_py_sdk/api/group/operations/member_request/get_my_group_join_request_v2.py) | [get_my_group_join_request_v2](../../accelbyte_py_sdk/api/group/wrappers/_member_request.py) | [accelbyte_py_sdk_cli group-get-my-group-join-request-v2](../../samples/cli/accelbyte_py_sdk_cli/group/_get_my_group_join_request_v2.py) |
-
-### Operations
-| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
-|---|---|---|---|---|---|---|
-| /group/debug/pprof/block | GET | blockHandler | `false` | [BlockHandler](../../accelbyte_py_sdk/api/group/operations/operations/block_handler.py) | [block_handler](../../accelbyte_py_sdk/api/group/wrappers/_operations.py) | [accelbyte_py_sdk_cli group-block-handler](../../samples/cli/accelbyte_py_sdk_cli/group/_block_handler.py) |
-| /group/debug/pprof/cmdline | GET | cmdlineHandler | `false` | [CmdlineHandler](../../accelbyte_py_sdk/api/group/operations/operations/cmdline_handler.py) | [cmdline_handler](../../accelbyte_py_sdk/api/group/wrappers/_operations.py) | [accelbyte_py_sdk_cli group-cmdline-handler](../../samples/cli/accelbyte_py_sdk_cli/group/_cmdline_handler.py) |
-| /group/debug/pprof/goroutine | GET | goroutineHandler | `false` | [GoroutineHandler](../../accelbyte_py_sdk/api/group/operations/operations/goroutine_handler.py) | [goroutine_handler](../../accelbyte_py_sdk/api/group/wrappers/_operations.py) | [accelbyte_py_sdk_cli group-goroutine-handler](../../samples/cli/accelbyte_py_sdk_cli/group/_goroutine_handler.py) |
-| /group/debug/pprof/heap | GET | heapHandler | `false` | [HeapHandler](../../accelbyte_py_sdk/api/group/operations/operations/heap_handler.py) | [heap_handler](../../accelbyte_py_sdk/api/group/wrappers/_operations.py) | [accelbyte_py_sdk_cli group-heap-handler](../../samples/cli/accelbyte_py_sdk_cli/group/_heap_handler.py) |
-| /group/debug/pprof | GET | indexHandler | `false` | [IndexHandler](../../accelbyte_py_sdk/api/group/operations/operations/index_handler.py) | [index_handler](../../accelbyte_py_sdk/api/group/wrappers/_operations.py) | [accelbyte_py_sdk_cli group-index-handler](../../samples/cli/accelbyte_py_sdk_cli/group/_index_handler.py) |
-| /group/debug/pprof/profile | GET | profile | `false` | [Profile](../../accelbyte_py_sdk/api/group/operations/operations/profile.py) | [profile](../../accelbyte_py_sdk/api/group/wrappers/_operations.py) | [accelbyte_py_sdk_cli group-profile](../../samples/cli/accelbyte_py_sdk_cli/group/_profile.py) |
-| /group/debug/pprof/symbol | GET | symbolHandler | `false` | [SymbolHandler](../../accelbyte_py_sdk/api/group/operations/operations/symbol_handler.py) | [symbol_handler](../../accelbyte_py_sdk/api/group/wrappers/_operations.py) | [accelbyte_py_sdk_cli group-symbol-handler](../../samples/cli/accelbyte_py_sdk_cli/group/_symbol_handler.py) |
-| /group/debug/pprof/threadcreate | GET | threadcreateHandler | `false` | [ThreadcreateHandler](../../accelbyte_py_sdk/api/group/operations/operations/threadcreate_handler.py) | [threadcreate_handler](../../accelbyte_py_sdk/api/group/wrappers/_operations.py) | [accelbyte_py_sdk_cli group-threadcreate-handler](../../samples/cli/accelbyte_py_sdk_cli/group/_threadcreate_handler.py) |
 
 
 ## Models

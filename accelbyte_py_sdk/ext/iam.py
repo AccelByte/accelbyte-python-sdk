@@ -161,6 +161,7 @@ from ..api.iam.models import ModelGetAdminUsersResponse
 from ..api.iam.models import ModelGetBulkUserBansRequest
 from ..api.iam.models import ModelGetLinkHeadlessAccountConflictResponse
 from ..api.iam.models import ModelGetPublisherUserResponse
+from ..api.iam.models import ModelGetUserBanSummaryV3
 from ..api.iam.models import ModelGetUserBanV3Response
 from ..api.iam.models import ModelGetUserJusticePlatformAccountResponse
 from ..api.iam.models import ModelGetUserMapping
@@ -259,6 +260,7 @@ from ..api.iam.models import ModelUserActiveBanResponse
 from ..api.iam.models import ModelUserActiveBanResponseV3
 from ..api.iam.models import ModelUserBanResponse
 from ..api.iam.models import ModelUserBanResponseV3
+from ..api.iam.models import ModelUserBanWithStatus
 from ..api.iam.models import ModelUserBaseInfo
 from ..api.iam.models import ModelUserBulkUpdateRequestV3
 from ..api.iam.models import ModelUserCreateRequest
@@ -1657,6 +1659,15 @@ def create_model_get_publisher_user_response_example() -> ModelGetPublisherUserR
     return instance
 
 
+def create_model_get_user_ban_summary_v3_example() -> ModelGetUserBanSummaryV3:
+    instance = ModelGetUserBanSummaryV3()
+    instance.active_count = randomize("int", min_val=1, max_val=1000)
+    instance.data = [create_model_user_ban_with_status_example()]
+    instance.inactive_count = randomize("int", min_val=1, max_val=1000)
+    instance.total_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_model_get_user_ban_v3_response_example() -> ModelGetUserBanV3Response:
     instance = ModelGetUserBanV3Response()
     instance.data = [create_model_user_ban_response_v3_example()]
@@ -2039,6 +2050,7 @@ def create_model_public_third_party_platform_info_example() -> (
     instance.platform_id = randomize()
     instance.platform_name = randomize()
     instance.token_authentication_type = randomize()
+    instance.logo_url = randomize("url")
     return instance
 
 
@@ -2463,6 +2475,7 @@ def create_model_third_party_login_platform_credential_request_example() -> (
     instance.user_info_endpoint = randomize()
     instance.user_info_http_method = randomize()
     instance.allowed_clients = [randomize()]
+    instance.logo_url = randomize("url")
     instance.token_claims_mapping = {randomize(): randomize()}
     return instance
 
@@ -2493,6 +2506,7 @@ def create_model_third_party_login_platform_credential_response_example() -> (
     instance.token_authentication_type = randomize()
     instance.allowed_clients = [randomize()]
     instance.authorization_endpoint = randomize()
+    instance.logo_url = randomize("url")
     instance.netflix_certificates = create_accountcommon_netflix_certificates_example()
     instance.registered_domains = [create_accountcommon_registered_domain_example()]
     instance.scopes = [randomize()]
@@ -2625,6 +2639,23 @@ def create_model_user_ban_response_example() -> ModelUserBanResponse:
 
 def create_model_user_ban_response_v3_example() -> ModelUserBanResponseV3:
     instance = ModelUserBanResponseV3()
+    instance.ban = randomize()
+    instance.ban_id = randomize()
+    instance.banned_by = create_accountcommon_banned_by_v3_example()
+    instance.comment = randomize()
+    instance.created_at = randomize("date")
+    instance.disabled_date = randomize("date")
+    instance.enabled = randomize("bool")
+    instance.end_date = randomize("date")
+    instance.namespace = randomize("slug")
+    instance.reason = randomize()
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_model_user_ban_with_status_example() -> ModelUserBanWithStatus:
+    instance = ModelUserBanWithStatus()
+    instance.active = randomize("bool")
     instance.ban = randomize()
     instance.ban_id = randomize()
     instance.banned_by = create_accountcommon_banned_by_v3_example()

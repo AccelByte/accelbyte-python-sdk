@@ -43,8 +43,6 @@ class ModelsSaveInboxMessageRequest(Model):
     """Models save inbox message request (models.SaveInboxMessageRequest)
 
     Properties:
-        category: (category) REQUIRED str
-
         expired_at: (expiredAt) REQUIRED int
 
         message: (message) REQUIRED Dict[str, Any]
@@ -54,24 +52,22 @@ class ModelsSaveInboxMessageRequest(Model):
         status: (status) REQUIRED Union[str, StatusEnum]
 
         user_ids: (userIds) REQUIRED List[str]
+
+        category: (category) OPTIONAL str
     """
 
     # region fields
 
-    category: str  # REQUIRED
     expired_at: int  # REQUIRED
     message: Dict[str, Any]  # REQUIRED
     scope: Union[str, ScopeEnum]  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
     user_ids: List[str]  # REQUIRED
+    category: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_category(self, value: str) -> ModelsSaveInboxMessageRequest:
-        self.category = value
-        return self
 
     def with_expired_at(self, value: int) -> ModelsSaveInboxMessageRequest:
         self.expired_at = value
@@ -95,16 +91,16 @@ class ModelsSaveInboxMessageRequest(Model):
         self.user_ids = value
         return self
 
+    def with_category(self, value: str) -> ModelsSaveInboxMessageRequest:
+        self.category = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "category"):
-            result["category"] = str(self.category)
-        elif include_empty:
-            result["category"] = ""
         if hasattr(self, "expired_at"):
             result["expiredAt"] = int(self.expired_at)
         elif include_empty:
@@ -125,6 +121,10 @@ class ModelsSaveInboxMessageRequest(Model):
             result["userIds"] = [str(i0) for i0 in self.user_ids]
         elif include_empty:
             result["userIds"] = []
+        if hasattr(self, "category"):
+            result["category"] = str(self.category)
+        elif include_empty:
+            result["category"] = ""
         return result
 
     # endregion to methods
@@ -134,21 +134,22 @@ class ModelsSaveInboxMessageRequest(Model):
     @classmethod
     def create(
         cls,
-        category: str,
         expired_at: int,
         message: Dict[str, Any],
         scope: Union[str, ScopeEnum],
         status: Union[str, StatusEnum],
         user_ids: List[str],
+        category: Optional[str] = None,
         **kwargs,
     ) -> ModelsSaveInboxMessageRequest:
         instance = cls()
-        instance.category = category
         instance.expired_at = expired_at
         instance.message = message
         instance.scope = scope
         instance.status = status
         instance.user_ids = user_ids
+        if category is not None:
+            instance.category = category
         return instance
 
     @classmethod
@@ -158,10 +159,6 @@ class ModelsSaveInboxMessageRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "category" in dict_ and dict_["category"] is not None:
-            instance.category = str(dict_["category"])
-        elif include_empty:
-            instance.category = ""
         if "expiredAt" in dict_ and dict_["expiredAt"] is not None:
             instance.expired_at = int(dict_["expiredAt"])
         elif include_empty:
@@ -182,6 +179,10 @@ class ModelsSaveInboxMessageRequest(Model):
             instance.user_ids = [str(i0) for i0 in dict_["userIds"]]
         elif include_empty:
             instance.user_ids = []
+        if "category" in dict_ and dict_["category"] is not None:
+            instance.category = str(dict_["category"])
+        elif include_empty:
+            instance.category = ""
         return instance
 
     @classmethod
@@ -225,23 +226,23 @@ class ModelsSaveInboxMessageRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "category": "category",
             "expiredAt": "expired_at",
             "message": "message",
             "scope": "scope",
             "status": "status",
             "userIds": "user_ids",
+            "category": "category",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "category": True,
             "expiredAt": True,
             "message": True,
             "scope": True,
             "status": True,
             "userIds": True,
+            "category": False,
         }
 
     @staticmethod

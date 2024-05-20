@@ -34,9 +34,6 @@ class Logout(Operation):
     """Logout (Logout)
 
     This endpoint is used to remove **access_token**, **refresh_token** from cookie and revoke token from usage.
-    Supported methods:
-    - VerifyToken to verify token from header
-    - AddTokenToRevocationList to revoke token with TTL
 
     Properties:
         url: /iam/v3/logout

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.51.0"
+__version__ = "4.52.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -717,6 +717,10 @@ from .wrappers import public_get_unpaid_payment_order
 from .wrappers import public_get_unpaid_payment_order_async
 from .wrappers import public_normalize_payment_return_url
 from .wrappers import public_normalize_payment_return_url_async
+
+# platform_account_closure
+from .wrappers import get_user_platform_account_closure_histories
+from .wrappers import get_user_platform_account_closure_histories_async
 
 # revocation
 from .wrappers import delete_revocation_config

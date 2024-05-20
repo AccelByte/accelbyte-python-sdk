@@ -79,6 +79,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
         authorization_endpoint: (AuthorizationEndpoint) OPTIONAL str
 
+        logo_url: (LogoURL) OPTIONAL str
+
         netflix_certificates: (NetflixCertificates) OPTIONAL AccountcommonNetflixCertificates
 
         registered_domains: (registeredDomains) OPTIONAL List[AccountcommonRegisteredDomain]
@@ -118,6 +120,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     token_authentication_type: str  # REQUIRED
     allowed_clients: List[str]  # OPTIONAL
     authorization_endpoint: str  # OPTIONAL
+    logo_url: str  # OPTIONAL
     netflix_certificates: AccountcommonNetflixCertificates  # OPTIONAL
     registered_domains: List[AccountcommonRegisteredDomain]  # OPTIONAL
     scopes: List[str]  # OPTIONAL
@@ -250,6 +253,12 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self, value: str
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.authorization_endpoint = value
+        return self
+
+    def with_logo_url(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.logo_url = value
         return self
 
     def with_netflix_certificates(
@@ -388,6 +397,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["AuthorizationEndpoint"] = str(self.authorization_endpoint)
         elif include_empty:
             result["AuthorizationEndpoint"] = ""
+        if hasattr(self, "logo_url"):
+            result["LogoURL"] = str(self.logo_url)
+        elif include_empty:
+            result["LogoURL"] = ""
         if hasattr(self, "netflix_certificates"):
             result["NetflixCertificates"] = self.netflix_certificates.to_dict(
                 include_empty=include_empty
@@ -454,6 +467,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         token_authentication_type: str,
         allowed_clients: Optional[List[str]] = None,
         authorization_endpoint: Optional[str] = None,
+        logo_url: Optional[str] = None,
         netflix_certificates: Optional[AccountcommonNetflixCertificates] = None,
         registered_domains: Optional[List[AccountcommonRegisteredDomain]] = None,
         scopes: Optional[List[str]] = None,
@@ -488,6 +502,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.allowed_clients = allowed_clients
         if authorization_endpoint is not None:
             instance.authorization_endpoint = authorization_endpoint
+        if logo_url is not None:
+            instance.logo_url = logo_url
         if netflix_certificates is not None:
             instance.netflix_certificates = netflix_certificates
         if registered_domains is not None:
@@ -608,6 +624,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.authorization_endpoint = str(dict_["AuthorizationEndpoint"])
         elif include_empty:
             instance.authorization_endpoint = ""
+        if "LogoURL" in dict_ and dict_["LogoURL"] is not None:
+            instance.logo_url = str(dict_["LogoURL"])
+        elif include_empty:
+            instance.logo_url = ""
         if "NetflixCertificates" in dict_ and dict_["NetflixCertificates"] is not None:
             instance.netflix_certificates = (
                 AccountcommonNetflixCertificates.create_from_dict(
@@ -712,6 +732,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "TokenAuthenticationType": "token_authentication_type",
             "AllowedClients": "allowed_clients",
             "AuthorizationEndpoint": "authorization_endpoint",
+            "LogoURL": "logo_url",
             "NetflixCertificates": "netflix_certificates",
             "registeredDomains": "registered_domains",
             "scopes": "scopes",
@@ -746,6 +767,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "TokenAuthenticationType": True,
             "AllowedClients": False,
             "AuthorizationEndpoint": False,
+            "LogoURL": False,
             "NetflixCertificates": False,
             "registeredDomains": False,
             "scopes": False,

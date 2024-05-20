@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.15.0"
+__version__ = "7.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -441,6 +441,8 @@ from .wrappers import admin_get_my_user_v3
 from .wrappers import admin_get_my_user_v3_async
 from .wrappers import admin_get_third_party_platform_token_link_status_v3
 from .wrappers import admin_get_third_party_platform_token_link_status_v3_async
+from .wrappers import admin_get_user_ban_summary_v3
+from .wrappers import admin_get_user_ban_summary_v3_async
 from .wrappers import admin_get_user_ban_v2
 from .wrappers import admin_get_user_ban_v2_async
 from .wrappers import admin_get_user_ban_v3

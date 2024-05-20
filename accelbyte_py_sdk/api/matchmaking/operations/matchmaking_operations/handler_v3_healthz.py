@@ -42,7 +42,7 @@ class HandlerV3Healthz(Operation):
 
         consumes: []
 
-        produces: []
+        produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
@@ -55,7 +55,7 @@ class HandlerV3Healthz(Operation):
     _url: str = "/matchmaking/healthz"
     _method: str = "GET"
     _consumes: List[str] = []
-    _produces: List[str] = []
+    _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 

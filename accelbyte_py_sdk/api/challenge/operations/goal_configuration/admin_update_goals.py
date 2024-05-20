@@ -80,6 +80,8 @@ class AdminUpdateGoals(Operation):
     Responses:
         200: OK - ModelGoalResponse (OK)
 
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
+
         404: Not Found - ResponseError (Not Found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -218,6 +220,8 @@ class AdminUpdateGoals(Operation):
 
         200: OK - ModelGoalResponse (OK)
 
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
+
         404: Not Found - ResponseError (Not Found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -237,6 +241,8 @@ class AdminUpdateGoals(Operation):
 
         if code == 200:
             return ModelGoalResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ResponseError.create_from_dict(content)
         if code == 404:
             return None, ResponseError.create_from_dict(content)
         if code == 500:

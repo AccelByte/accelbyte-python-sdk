@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Analytics Game Telemetry Index (1.24.2)
+# Analytics Game Telemetry Index (1.25.1)
 
 
 ## Operations

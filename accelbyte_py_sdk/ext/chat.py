@@ -665,12 +665,12 @@ def create_models_public_unban_topic_members_response_example() -> (
 
 def create_models_save_inbox_message_request_example() -> ModelsSaveInboxMessageRequest:
     instance = ModelsSaveInboxMessageRequest()
-    instance.category = randomize()
     instance.expired_at = randomize("int", min_val=1, max_val=1000)
     instance.message = {randomize(): randomize()}
     instance.scope = randomize()
     instance.status = randomize()
     instance.user_ids = [randomize()]
+    instance.category = randomize()
     return instance
 
 
@@ -678,11 +678,11 @@ def create_models_save_inbox_message_response_example() -> (
     ModelsSaveInboxMessageResponse
 ):
     instance = ModelsSaveInboxMessageResponse()
-    instance.category = randomize()
     instance.expired_at = randomize("int", min_val=1, max_val=1000)
     instance.id_ = randomize()
     instance.scope = randomize()
     instance.status = randomize()
+    instance.category = randomize()
     instance.message = {randomize(): randomize()}
     instance.user_i_ds = [randomize()]
     return instance

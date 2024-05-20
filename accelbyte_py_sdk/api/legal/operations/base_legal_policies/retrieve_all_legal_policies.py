@@ -50,6 +50,8 @@ class RetrieveAllLegalPolicies(Operation):
 
         securities: [BEARER_AUTH]
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrieveBasePolicyResponse] (successful operation)
     """
@@ -62,6 +64,8 @@ class RetrieveAllLegalPolicies(Operation):
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
+
+    visible_only: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -100,7 +104,15 @@ class RetrieveAllLegalPolicies(Operation):
     # region get_x_params methods
 
     def get_all_params(self) -> dict:
-        return {}
+        return {
+            "query": self.get_query_params(),
+        }
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "visible_only"):
+            result["visibleOnly"] = self.visible_only
+        return result
 
     # endregion get_x_params methods
 
@@ -110,12 +122,20 @@ class RetrieveAllLegalPolicies(Operation):
 
     # region with_x methods
 
+    def with_visible_only(self, value: bool) -> RetrieveAllLegalPolicies:
+        self.visible_only = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "visible_only") and self.visible_only:
+            result["visibleOnly"] = bool(self.visible_only)
+        elif include_empty:
+            result["visibleOnly"] = False
         return result
 
     # endregion to methods
@@ -159,8 +179,12 @@ class RetrieveAllLegalPolicies(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, **kwargs) -> RetrieveAllLegalPolicies:
+    def create(
+        cls, visible_only: Optional[bool] = None, **kwargs
+    ) -> RetrieveAllLegalPolicies:
         instance = cls()
+        if visible_only is not None:
+            instance.visible_only = visible_only
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -170,14 +194,22 @@ class RetrieveAllLegalPolicies(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> RetrieveAllLegalPolicies:
         instance = cls()
+        if "visibleOnly" in dict_ and dict_["visibleOnly"] is not None:
+            instance.visible_only = bool(dict_["visibleOnly"])
+        elif include_empty:
+            instance.visible_only = False
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {}
+        return {
+            "visibleOnly": "visible_only",
+        }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
-        return {}
+        return {
+            "visibleOnly": False,
+        }
 
     # endregion static methods

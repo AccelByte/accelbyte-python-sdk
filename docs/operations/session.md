@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.14.5)
+# AccelByte Gaming Services Session Service Index (3.15.0)
 
 
 ## Operations
@@ -11,6 +11,12 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl | PUT | HandleUploadXboxPFXCertificate | `false` | [HandleUploadXboxPFXCertificate](../../accelbyte_py_sdk/api/session/operations/certificate/handle_upload_xbox_pfx__ac7973.py) | [handle_upload_xbox_pfx_certificate](../../accelbyte_py_sdk/api/session/wrappers/_certificate.py) | [accelbyte_py_sdk_cli session-handle-upload-xbox-pfx-certificate](../../samples/cli/accelbyte_py_sdk_cli/session/_handle_upload_xbox_pfx_certificate.py) |
+
+### Config
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /session/v1/admin/config/log | GET | adminGetLogConfig | `false` | [AdminGetLogConfig](../../accelbyte_py_sdk/api/session/operations/config/admin_get_log_config.py) | [admin_get_log_config](../../accelbyte_py_sdk/api/session/wrappers/_config.py) | [accelbyte_py_sdk_cli session-admin-get-log-config](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_get_log_config.py) |
+| /session/v1/admin/config/log | PATCH | adminPatchUpdateLogConfig | `false` | [AdminPatchUpdateLogConfig](../../accelbyte_py_sdk/api/session/operations/config/admin_patch_update_log_config.py) | [admin_patch_update_log_config](../../accelbyte_py_sdk/api/session/wrappers/_config.py) | [accelbyte_py_sdk_cli session-admin-patch-update-log-config](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_patch_update_log_config.py) |
 
 ### Configuration Template
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -189,6 +195,7 @@
 | apimodels.UpdateGameSessionRequest | [ApimodelsUpdateGameSessionRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_game_session_request.py) |
 | apimodels.UpdatePartyRequest | [ApimodelsUpdatePartyRequest](../../accelbyte_py_sdk/api/session/models/apimodels_update_party_request.py) |
 | apimodels.UserResponse | [ApimodelsUserResponse](../../accelbyte_py_sdk/api/session/models/apimodels_user_response.py) |
+| logconfig.Configuration | [LogconfigConfiguration](../../accelbyte_py_sdk/api/session/models/logconfig_configuration.py) |
 | model.NativeSession | [ModelNativeSession](../../accelbyte_py_sdk/api/session/models/model_native_session.py) |
 | model.NativeSessionMember | [ModelNativeSessionMember](../../accelbyte_py_sdk/api/session/models/model_native_session_member.py) |
 | models.DefaultDSMCConfig | [ModelsDefaultDSMCConfig](../../accelbyte_py_sdk/api/session/models/models_default_dsmc_config.py) |

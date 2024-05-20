@@ -45,6 +45,8 @@ class ModelRequirementProgressionResponse(Model):
         target_value: (targetValue) REQUIRED float
 
         completed_at: (completedAt) OPTIONAL str
+
+        stat_cycle_id: (statCycleId) OPTIONAL str
     """
 
     # region fields
@@ -56,6 +58,7 @@ class ModelRequirementProgressionResponse(Model):
     parameter_type: str  # REQUIRED
     target_value: float  # REQUIRED
     completed_at: str  # OPTIONAL
+    stat_cycle_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -87,6 +90,10 @@ class ModelRequirementProgressionResponse(Model):
 
     def with_completed_at(self, value: str) -> ModelRequirementProgressionResponse:
         self.completed_at = value
+        return self
+
+    def with_stat_cycle_id(self, value: str) -> ModelRequirementProgressionResponse:
+        self.stat_cycle_id = value
         return self
 
     # endregion with_x methods
@@ -123,6 +130,10 @@ class ModelRequirementProgressionResponse(Model):
             result["completedAt"] = str(self.completed_at)
         elif include_empty:
             result["completedAt"] = ""
+        if hasattr(self, "stat_cycle_id"):
+            result["statCycleId"] = str(self.stat_cycle_id)
+        elif include_empty:
+            result["statCycleId"] = ""
         return result
 
     # endregion to methods
@@ -139,6 +150,7 @@ class ModelRequirementProgressionResponse(Model):
         parameter_type: str,
         target_value: float,
         completed_at: Optional[str] = None,
+        stat_cycle_id: Optional[str] = None,
         **kwargs,
     ) -> ModelRequirementProgressionResponse:
         instance = cls()
@@ -150,6 +162,8 @@ class ModelRequirementProgressionResponse(Model):
         instance.target_value = target_value
         if completed_at is not None:
             instance.completed_at = completed_at
+        if stat_cycle_id is not None:
+            instance.stat_cycle_id = stat_cycle_id
         return instance
 
     @classmethod
@@ -187,6 +201,10 @@ class ModelRequirementProgressionResponse(Model):
             instance.completed_at = str(dict_["completedAt"])
         elif include_empty:
             instance.completed_at = ""
+        if "statCycleId" in dict_ and dict_["statCycleId"] is not None:
+            instance.stat_cycle_id = str(dict_["statCycleId"])
+        elif include_empty:
+            instance.stat_cycle_id = ""
         return instance
 
     @classmethod
@@ -237,6 +255,7 @@ class ModelRequirementProgressionResponse(Model):
             "parameterType": "parameter_type",
             "targetValue": "target_value",
             "completedAt": "completed_at",
+            "statCycleId": "stat_cycle_id",
         }
 
     @staticmethod
@@ -249,6 +268,7 @@ class ModelRequirementProgressionResponse(Model):
             "parameterType": True,
             "targetValue": True,
             "completedAt": False,
+            "statCycleId": False,
         }
 
     # endregion static methods

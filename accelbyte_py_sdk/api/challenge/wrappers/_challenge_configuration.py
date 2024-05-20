@@ -116,6 +116,8 @@ def admin_create_challenge(
     Responses:
         201: Created - ModelChallengeResponse (Created)
 
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
+
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
         403: Forbidden - IamErrorResponse (20013: insufficient permission)
@@ -187,6 +189,8 @@ async def admin_create_challenge_async(
 
     Responses:
         201: Created - ModelChallengeResponse (Created)
+
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -957,6 +961,8 @@ def admin_update_challenge(
     Responses:
         200: OK - ModelChallengeResponse (OK)
 
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
+
         401: Unauthorized - ResponseError (Unauthorized)
 
         403: Forbidden - ResponseError (Forbidden)
@@ -1026,6 +1032,8 @@ async def admin_update_challenge_async(
 
     Responses:
         200: OK - ModelChallengeResponse (OK)
+
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
 
         401: Unauthorized - ResponseError (Unauthorized)
 

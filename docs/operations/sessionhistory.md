@@ -2,10 +2,16 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session History Service Index (1.9.4)
+# AccelByte Gaming Services Session History Service Index (1.10.1)
 
 
 ## Operations
+
+### Config
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /sessionhistory/v1/admin/config/log | GET | adminGetLogConfig | `false` | [AdminGetLogConfig](../../accelbyte_py_sdk/api/sessionhistory/operations/config/admin_get_log_config.py) | [admin_get_log_config](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_config.py) | [accelbyte_py_sdk_cli sessionhistory-admin-get-log-config](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_admin_get_log_config.py) |
+| /sessionhistory/v1/admin/config/log | PATCH | adminPatchUpdateLogConfig | `false` | [AdminPatchUpdateLogConfig](../../accelbyte_py_sdk/api/sessionhistory/operations/config/admin_patch_update_log_config.py) | [admin_patch_update_log_config](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_config.py) | [accelbyte_py_sdk_cli sessionhistory-admin-patch-update-log-config](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_admin_patch_update_log_config.py) |
 
 ### Game Session Detail
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -101,6 +107,7 @@
 | apimodels.XRayTicketResult | [ApimodelsXRayTicketResult](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_ticket_result.py) |
 | apimodels.XRayTotalActiveSessionQueryResponse | [ApimodelsXRayTotalActiveSessionQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_total_active_session_query_response.py) |
 | apimodels.XRayTotalPlayerPersessionAVGQueryResponse | [ApimodelsXRayTotalPlayerPersessionAVGQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_total_player_persession_avg_query_response.py) |
+| logconfig.Configuration | [LogconfigConfiguration](../../accelbyte_py_sdk/api/sessionhistory/models/logconfig_configuration.py) |
 | models.AllianceRule | [ModelsAllianceRule](../../accelbyte_py_sdk/api/sessionhistory/models/models_alliance_rule.py) |
 | models.BackfillProposal | [ModelsBackfillProposal](../../accelbyte_py_sdk/api/sessionhistory/models/models_backfill_proposal.py) |
 | models.BackfillTicket | [ModelsBackfillTicket](../../accelbyte_py_sdk/api/sessionhistory/models/models_backfill_ticket.py) |

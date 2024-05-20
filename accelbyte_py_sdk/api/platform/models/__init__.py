@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.51.0"
+__version__ = "4.52.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -669,6 +669,10 @@ from .payment_url_create import (
     PaymentProviderEnum as PaymentUrlCreatePaymentProviderEnum,
 )
 from .permission import Permission
+from .platform_account_closure_history_info import PlatformAccountClosureHistoryInfo
+from .platform_account_closure_history_info import (
+    ProgressionEnum as PlatformAccountClosureHistoryInfoProgressionEnum,
+)
 from .platform_dlc_config_info import PlatformDLCConfigInfo
 from .platform_dlc_config_update import PlatformDLCConfigUpdate
 from .platform_dlc_entry import PlatformDlcEntry
@@ -817,6 +821,9 @@ from .section_update import SectionUpdate
 from .section_update import RotationTypeEnum as SectionUpdateRotationTypeEnum
 from .service_plugin_config_info import ServicePluginConfigInfo
 from .service_plugin_config_update import ServicePluginConfigUpdate
+from .simple_entitlement import SimpleEntitlement
+from .simple_user_dlc import SimpleUserDLC
+from .simple_wallet import SimpleWallet
 from .slide import Slide
 from .slide import TypeEnum as SlideTypeEnum, VideoSourceEnum as SlideVideoSourceEnum
 from .stackable_entitlement_info import StackableEntitlementInfo

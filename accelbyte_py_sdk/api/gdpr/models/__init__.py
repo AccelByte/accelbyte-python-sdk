@@ -8,13 +8,19 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "2.9.0"
+__version__ = "2.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .dto_extend_config_dto import DtoExtendConfigDTO
+from .dto_platform_account_closure_client_request import (
+    DtoPlatformAccountClosureClientRequest,
+)
+from .dto_platform_account_closure_client_response import (
+    DtoPlatformAccountClosureClientResponse,
+)
 from .dto_service_config_dto import DtoServiceConfigDTO
 from .dto_service_config_dto import ProtocolEnum as DtoServiceConfigDTOProtocolEnum
 from .dto_service_configuration_dto import DtoServiceConfigurationDTO
@@ -25,6 +31,12 @@ from .dto_service_configuration_update_request import (
     DtoServiceConfigurationUpdateRequest,
 )
 from .dto_services_configuration_response import DtoServicesConfigurationResponse
+from .dto_user_platform_account_closure_histories_response import (
+    DtoUserPlatformAccountClosureHistoriesResponse,
+)
+from .dto_user_platform_account_closure_history import (
+    DtoUserPlatformAccountClosureHistory,
+)
 from .models_data_retrieval_response import ModelsDataRetrievalResponse
 from .models_deletion_data import ModelsDeletionData
 from .models_deletion_status import ModelsDeletionStatus

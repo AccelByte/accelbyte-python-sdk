@@ -30,7 +30,7 @@ from ....core import Model
 from ..models.v2_get_leaderboard_config_public_resp import (
     V2GetLeaderboardConfigPublicResp,
 )
-from ..models.v2_pagination import V2Pagination
+from ..models.v2_pagination_v2 import V2PaginationV2
 
 
 class V2GetAllLeaderboardConfigsPublicResp(Model):
@@ -39,13 +39,13 @@ class V2GetAllLeaderboardConfigsPublicResp(Model):
     Properties:
         data: (data) REQUIRED List[V2GetLeaderboardConfigPublicResp]
 
-        paging: (paging) REQUIRED V2Pagination
+        paging: (paging) REQUIRED V2PaginationV2
     """
 
     # region fields
 
     data: List[V2GetLeaderboardConfigPublicResp]  # REQUIRED
-    paging: V2Pagination  # REQUIRED
+    paging: V2PaginationV2  # REQUIRED
 
     # endregion fields
 
@@ -57,7 +57,9 @@ class V2GetAllLeaderboardConfigsPublicResp(Model):
         self.data = value
         return self
 
-    def with_paging(self, value: V2Pagination) -> V2GetAllLeaderboardConfigsPublicResp:
+    def with_paging(
+        self, value: V2PaginationV2
+    ) -> V2GetAllLeaderboardConfigsPublicResp:
         self.paging = value
         return self
 
@@ -76,7 +78,7 @@ class V2GetAllLeaderboardConfigsPublicResp(Model):
         if hasattr(self, "paging"):
             result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["paging"] = V2Pagination()
+            result["paging"] = V2PaginationV2()
         return result
 
     # endregion to methods
@@ -87,7 +89,7 @@ class V2GetAllLeaderboardConfigsPublicResp(Model):
     def create(
         cls,
         data: List[V2GetLeaderboardConfigPublicResp],
-        paging: V2Pagination,
+        paging: V2PaginationV2,
         **kwargs,
     ) -> V2GetAllLeaderboardConfigsPublicResp:
         instance = cls()
@@ -112,11 +114,11 @@ class V2GetAllLeaderboardConfigsPublicResp(Model):
         elif include_empty:
             instance.data = []
         if "paging" in dict_ and dict_["paging"] is not None:
-            instance.paging = V2Pagination.create_from_dict(
+            instance.paging = V2PaginationV2.create_from_dict(
                 dict_["paging"], include_empty=include_empty
             )
         elif include_empty:
-            instance.paging = V2Pagination()
+            instance.paging = V2PaginationV2()
         return instance
 
     @classmethod

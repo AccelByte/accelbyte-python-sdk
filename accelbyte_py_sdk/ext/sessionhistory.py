@@ -79,6 +79,7 @@ from ..api.sessionhistory.models import ApimodelsXRayTotalActiveSessionQueryResp
 from ..api.sessionhistory.models import (
     ApimodelsXRayTotalPlayerPersessionAVGQueryResponse,
 )
+from ..api.sessionhistory.models import LogconfigConfiguration
 from ..api.sessionhistory.models import ModelsAllianceRule
 from ..api.sessionhistory.models import ModelsBackfillProposal
 from ..api.sessionhistory.models import ModelsBackfillTicket
@@ -584,6 +585,12 @@ def create_apimodels_x_ray_total_player_persession_avg_query_response_example() 
 ):
     instance = ApimodelsXRayTotalPlayerPersessionAVGQueryResponse()
     instance.data = [create_apimodels_total_player_persession_example()]
+    return instance
+
+
+def create_logconfig_configuration_example() -> LogconfigConfiguration:
+    instance = LogconfigConfiguration()
+    instance.log_level = randomize()
     return instance
 
 

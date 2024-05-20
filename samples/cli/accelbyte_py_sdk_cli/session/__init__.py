@@ -10,6 +10,8 @@
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
+from ._admin_get_log_config import admin_get_log_config
+from ._admin_patch_update_log_config import admin_patch_update_log_config
 from ._admin_get_dsmc_configuration_default import admin_get_dsmc_configuration_default
 from ._admin_list_environment_variables import admin_list_environment_variables
 from ._admin_list_global_configuration import admin_list_global_configuration
@@ -110,6 +112,8 @@ from ._public_query_my_parties import public_query_my_parties
 commands = [
     get_healthcheck_info,
     get_healthcheck_info_v1,
+    admin_get_log_config,
+    admin_patch_update_log_config,
     admin_get_dsmc_configuration_default,
     admin_list_environment_variables,
     admin_list_global_configuration,

@@ -56,6 +56,7 @@ from ..models import ModelGetAdminUsersResponse
 from ..models import ModelGetBulkUserBansRequest
 from ..models import ModelGetLinkHeadlessAccountConflictResponse
 from ..models import ModelGetPublisherUserResponse
+from ..models import ModelGetUserBanSummaryV3
 from ..models import ModelGetUserBanV3Response
 from ..models import ModelGetUserJusticePlatformAccountResponse
 from ..models import ModelGetUserMapping
@@ -155,6 +156,7 @@ from ..operations.users import AdminGetListCountryAgeRestrictionV3
 from ..operations.users import AdminGetListJusticePlatformAccounts
 from ..operations.users import AdminGetMyUserV3
 from ..operations.users import AdminGetThirdPartyPlatformTokenLinkStatusV3
+from ..operations.users import AdminGetUserBanSummaryV3
 from ..operations.users import AdminGetUserBanV2
 from ..operations.users import AdminGetUserBanV3
 from ..operations.users import AdminGetUserByEmailAddressV3
@@ -3528,6 +3530,112 @@ async def admin_get_third_party_platform_token_link_status_v3_async(
     request = AdminGetThirdPartyPlatformTokenLinkStatusV3.create(
         platform_id=platform_id,
         platform_token=platform_token,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetUserBanSummaryV3)
+def admin_get_user_ban_summary_v3(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get user's bans summary (AdminGetUserBanSummaryV3)
+
+    This endpoint get user's bans summary'
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/summary
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetUserBanSummaryV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserBanSummaryV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetUserBanSummaryV3)
+async def admin_get_user_ban_summary_v3_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get user's bans summary (AdminGetUserBanSummaryV3)
+
+    This endpoint get user's bans summary'
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/summary
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelGetUserBanSummaryV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserBanSummaryV3.create(
         user_id=user_id,
         namespace=namespace,
     )
@@ -18000,6 +18108,8 @@ def public_send_verification_code_v3(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
+        403: Forbidden - RestErrorResponse (10146: userID not match)
+
         404: Not Found - RestErrorResponse (10171: email address not found | 10139: platform account not found)
 
         409: Conflict - RestErrorResponse (10140: user verified | 10133: email already used)
@@ -18062,6 +18172,8 @@ async def public_send_verification_code_v3_async(
         400: Bad Request - RestErrorResponse (20002: validation error | 20019: unable to parse request body)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (10146: userID not match)
 
         404: Not Found - RestErrorResponse (10171: email address not found | 10139: platform account not found)
 

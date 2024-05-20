@@ -27,6 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.model_challenge_response import ModelChallengeResponse
 from ..models.model_goal_response import ModelGoalResponse
 from ..models.model_pagination import ModelPagination
 
@@ -37,12 +38,15 @@ class ModelGetGoalsResponse(Model):
     Properties:
         data: (data) REQUIRED List[ModelGoalResponse]
 
+        meta: (meta) REQUIRED ModelChallengeResponse
+
         paging: (paging) REQUIRED ModelPagination
     """
 
     # region fields
 
     data: List[ModelGoalResponse]  # REQUIRED
+    meta: ModelChallengeResponse  # REQUIRED
     paging: ModelPagination  # REQUIRED
 
     # endregion fields
@@ -51,6 +55,10 @@ class ModelGetGoalsResponse(Model):
 
     def with_data(self, value: List[ModelGoalResponse]) -> ModelGetGoalsResponse:
         self.data = value
+        return self
+
+    def with_meta(self, value: ModelChallengeResponse) -> ModelGetGoalsResponse:
+        self.meta = value
         return self
 
     def with_paging(self, value: ModelPagination) -> ModelGetGoalsResponse:
@@ -69,6 +77,10 @@ class ModelGetGoalsResponse(Model):
             ]
         elif include_empty:
             result["data"] = []
+        if hasattr(self, "meta"):
+            result["meta"] = self.meta.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["meta"] = ModelChallengeResponse()
         if hasattr(self, "paging"):
             result["paging"] = self.paging.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -81,10 +93,15 @@ class ModelGetGoalsResponse(Model):
 
     @classmethod
     def create(
-        cls, data: List[ModelGoalResponse], paging: ModelPagination, **kwargs
+        cls,
+        data: List[ModelGoalResponse],
+        meta: ModelChallengeResponse,
+        paging: ModelPagination,
+        **kwargs,
     ) -> ModelGetGoalsResponse:
         instance = cls()
         instance.data = data
+        instance.meta = meta
         instance.paging = paging
         return instance
 
@@ -102,6 +119,12 @@ class ModelGetGoalsResponse(Model):
             ]
         elif include_empty:
             instance.data = []
+        if "meta" in dict_ and dict_["meta"] is not None:
+            instance.meta = ModelChallengeResponse.create_from_dict(
+                dict_["meta"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.meta = ModelChallengeResponse()
         if "paging" in dict_ and dict_["paging"] is not None:
             instance.paging = ModelPagination.create_from_dict(
                 dict_["paging"], include_empty=include_empty
@@ -152,6 +175,7 @@ class ModelGetGoalsResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "data": "data",
+            "meta": "meta",
             "paging": "paging",
         }
 
@@ -159,6 +183,7 @@ class ModelGetGoalsResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "data": True,
+            "meta": True,
             "paging": True,
         }
 

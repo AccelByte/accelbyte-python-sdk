@@ -217,7 +217,9 @@ async def partial_update_policy_async(
 
 @same_doc_as(RetrieveAllLegalPolicies)
 def retrieve_all_legal_policies(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    visible_only: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Retrieve All Base Legal Policy (retrieveAllLegalPolicies)
 
@@ -236,16 +238,22 @@ def retrieve_all_legal_policies(
 
         securities: [BEARER_AUTH]
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrieveBasePolicyResponse] (successful operation)
     """
-    request = RetrieveAllLegalPolicies.create()
+    request = RetrieveAllLegalPolicies.create(
+        visible_only=visible_only,
+    )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RetrieveAllLegalPolicies)
 async def retrieve_all_legal_policies_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    visible_only: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Retrieve All Base Legal Policy (retrieveAllLegalPolicies)
 
@@ -264,10 +272,14 @@ async def retrieve_all_legal_policies_async(
 
         securities: [BEARER_AUTH]
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrieveBasePolicyResponse] (successful operation)
     """
-    request = RetrieveAllLegalPolicies.create()
+    request = RetrieveAllLegalPolicies.create(
+        visible_only=visible_only,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

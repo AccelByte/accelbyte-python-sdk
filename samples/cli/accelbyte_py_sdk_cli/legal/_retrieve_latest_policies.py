@@ -41,6 +41,7 @@ from accelbyte_py_sdk.api.legal.models import RetrievePolicyPublicResponse
 @click.option("--default_on_empty", "default_on_empty", type=bool)
 @click.option("--policy_type", "policy_type", type=str)
 @click.option("--tags", "tags", type=str)
+@click.option("--visible_only", "visible_only", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
@@ -49,6 +50,7 @@ def retrieve_latest_policies(
     default_on_empty: Optional[bool] = None,
     policy_type: Optional[str] = None,
     tags: Optional[str] = None,
+    visible_only: Optional[bool] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -66,6 +68,7 @@ def retrieve_latest_policies(
         default_on_empty=default_on_empty,
         policy_type=policy_type,
         tags=tags,
+        visible_only=visible_only,
         x_additional_headers=x_additional_headers,
     )
     if error:

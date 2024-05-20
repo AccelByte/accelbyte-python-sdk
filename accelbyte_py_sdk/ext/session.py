@@ -67,6 +67,7 @@ from ..api.session.models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..api.session.models import ApimodelsUpdateGameSessionRequest
 from ..api.session.models import ApimodelsUpdatePartyRequest
 from ..api.session.models import ApimodelsUserResponse
+from ..api.session.models import LogconfigConfiguration
 from ..api.session.models import ModelNativeSession
 from ..api.session.models import ModelNativeSessionMember
 from ..api.session.models import ModelsDSMConfigRecord
@@ -645,6 +646,12 @@ def create_apimodels_user_response_example() -> ApimodelsUserResponse:
     instance.status_v2 = randomize()
     instance.updated_at = randomize()
     instance.previous_status = randomize()
+    return instance
+
+
+def create_logconfig_configuration_example() -> LogconfigConfiguration:
+    instance = LogconfigConfiguration()
+    instance.log_level = randomize()
     return instance
 
 

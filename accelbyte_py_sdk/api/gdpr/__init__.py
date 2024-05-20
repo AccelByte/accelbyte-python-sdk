@@ -8,17 +8,23 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "2.9.0"
+__version__ = "2.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 # configuration
+from .wrappers import admin_get_platform_account_closure_services_configuration
+from .wrappers import admin_get_platform_account_closure_services_configuration_async
 from .wrappers import admin_get_services_configuration
 from .wrappers import admin_get_services_configuration_async
+from .wrappers import admin_reset_platform_account_closure_services_configuration
+from .wrappers import admin_reset_platform_account_closure_services_configuration_async
 from .wrappers import admin_reset_services_configuration
 from .wrappers import admin_reset_services_configuration_async
+from .wrappers import admin_update_platform_account_closure_services_configuration
+from .wrappers import admin_update_platform_account_closure_services_configuration_async
 from .wrappers import admin_update_services_configuration
 from .wrappers import admin_update_services_configuration_async
 from .wrappers import delete_admin_email_configuration
@@ -71,3 +77,15 @@ from .wrappers import public_get_user_personal_data_requests
 from .wrappers import public_get_user_personal_data_requests_async
 from .wrappers import public_request_data_retrieval
 from .wrappers import public_request_data_retrieval_async
+
+# platform_account_closure_client
+from .wrappers import admin_delete_platform_account_closure_client
+from .wrappers import admin_delete_platform_account_closure_client_async
+from .wrappers import admin_get_platform_account_closure_client
+from .wrappers import admin_get_platform_account_closure_client_async
+from .wrappers import admin_update_platform_account_closure_client
+from .wrappers import admin_update_platform_account_closure_client_async
+
+# platform_account_closure_history
+from .wrappers import admin_get_user_platform_account_closure_histories
+from .wrappers import admin_get_user_platform_account_closure_histories_async

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Group Service."""
 
-__version__ = "2.20.0"
+__version__ = "2.20.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -169,21 +169,3 @@ from .wrappers import get_group_join_request_public_v2
 from .wrappers import get_group_join_request_public_v2_async
 from .wrappers import get_my_group_join_request_v2
 from .wrappers import get_my_group_join_request_v2_async
-
-# operations
-from .wrappers import block_handler
-from .wrappers import block_handler_async
-from .wrappers import cmdline_handler
-from .wrappers import cmdline_handler_async
-from .wrappers import goroutine_handler
-from .wrappers import goroutine_handler_async
-from .wrappers import heap_handler
-from .wrappers import heap_handler_async
-from .wrappers import index_handler
-from .wrappers import index_handler_async
-from .wrappers import profile
-from .wrappers import profile_async
-from .wrappers import symbol_handler
-from .wrappers import symbol_handler_async
-from .wrappers import threadcreate_handler
-from .wrappers import threadcreate_handler_async

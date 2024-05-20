@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.51.0)
+# AccelByte Gaming Services Platform Service Index (4.52.0)
 
 
 ## Operations
@@ -426,6 +426,11 @@
 | /platform/public/namespaces/{namespace}/payment/qrcode | GET | publicGetQRCode | `false` | [PublicGetQRCode](../../accelbyte_py_sdk/api/platform/operations/payment_station/public_get_qr_code.py) | [public_get_qr_code](../../accelbyte_py_sdk/api/platform/wrappers/_payment_station.py) | [accelbyte_py_sdk_cli platform-public-get-qr-code](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_qr_code.py) |
 | /platform/public/namespaces/{namespace}/payment/orders/{paymentOrderNo}/info | GET | publicGetUnpaidPaymentOrder | `false` | [PublicGetUnpaidPaymentOrder](../../accelbyte_py_sdk/api/platform/operations/payment_station/public_get_unpaid_payme_26d8dd.py) | [public_get_unpaid_payment_order](../../accelbyte_py_sdk/api/platform/wrappers/_payment_station.py) | [accelbyte_py_sdk_cli platform-public-get-unpaid-payment-order](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_unpaid_payment_order.py) |
 | /platform/public/namespaces/{namespace}/payment/returnurl | GET | publicNormalizePaymentReturnUrl | `false` | [PublicNormalizePaymentReturnUrl](../../accelbyte_py_sdk/api/platform/operations/payment_station/public_normalize_paymen_6657a5.py) | [public_normalize_payment_return_url](../../accelbyte_py_sdk/api/platform/wrappers/_payment_station.py) | [accelbyte_py_sdk_cli platform-public-normalize-payment-return-url](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_normalize_payment_return_url.py) |
+
+### Platform Account Closure
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/users/{userId}/platform/closure/history | GET | getUserPlatformAccountClosureHistories | `false` | [GetUserPlatformAccountClosureHistories](../../accelbyte_py_sdk/api/platform/operations/platform_account_closure/get_user_platform_accou_940394.py) | [get_user_platform_account_closure_histories](../../accelbyte_py_sdk/api/platform/wrappers/_platform_account_closure.py) | [accelbyte_py_sdk_cli platform-get-user-platform-account-closure-histories](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_user_platform_account_closure_histories.py) |
 
 ### Revocation
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -875,6 +880,7 @@
 | PaymentUrl | [PaymentUrl](../../accelbyte_py_sdk/api/platform/models/payment_url.py) |
 | PaymentUrlCreate | [PaymentUrlCreate](../../accelbyte_py_sdk/api/platform/models/payment_url_create.py) |
 | Permission | [Permission](../../accelbyte_py_sdk/api/platform/models/permission.py) |
+| PlatformAccountClosureHistoryInfo | [PlatformAccountClosureHistoryInfo](../../accelbyte_py_sdk/api/platform/models/platform_account_closure_history_info.py) |
 | PlatformDLCConfigInfo | [PlatformDLCConfigInfo](../../accelbyte_py_sdk/api/platform/models/platform_dlc_config_info.py) |
 | PlatformDLCConfigUpdate | [PlatformDLCConfigUpdate](../../accelbyte_py_sdk/api/platform/models/platform_dlc_config_update.py) |
 | PlatformDlcEntry | [PlatformDlcEntry](../../accelbyte_py_sdk/api/platform/models/platform_dlc_entry.py) |
@@ -948,6 +954,9 @@
 | SectionUpdate | [SectionUpdate](../../accelbyte_py_sdk/api/platform/models/section_update.py) |
 | ServicePluginConfigInfo | [ServicePluginConfigInfo](../../accelbyte_py_sdk/api/platform/models/service_plugin_config_info.py) |
 | ServicePluginConfigUpdate | [ServicePluginConfigUpdate](../../accelbyte_py_sdk/api/platform/models/service_plugin_config_update.py) |
+| SimpleEntitlement | [SimpleEntitlement](../../accelbyte_py_sdk/api/platform/models/simple_entitlement.py) |
+| SimpleUserDLC | [SimpleUserDLC](../../accelbyte_py_sdk/api/platform/models/simple_user_dlc.py) |
+| SimpleWallet | [SimpleWallet](../../accelbyte_py_sdk/api/platform/models/simple_wallet.py) |
 | Slide | [Slide](../../accelbyte_py_sdk/api/platform/models/slide.py) |
 | StackableEntitlementInfo | [StackableEntitlementInfo](../../accelbyte_py_sdk/api/platform/models/stackable_entitlement_info.py) |
 | SteamAchievement | [SteamAchievement](../../accelbyte_py_sdk/api/platform/models/steam_achievement.py) |

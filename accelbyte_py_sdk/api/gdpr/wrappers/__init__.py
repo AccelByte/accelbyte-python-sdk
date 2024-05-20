@@ -8,16 +8,28 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "2.9.0"
+__version__ = "2.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from ._configuration import admin_get_platform_account_closure_services_configuration
+from ._configuration import (
+    admin_get_platform_account_closure_services_configuration_async,
+)
 from ._configuration import admin_get_services_configuration
 from ._configuration import admin_get_services_configuration_async
+from ._configuration import admin_reset_platform_account_closure_services_configuration
+from ._configuration import (
+    admin_reset_platform_account_closure_services_configuration_async,
+)
 from ._configuration import admin_reset_services_configuration
 from ._configuration import admin_reset_services_configuration_async
+from ._configuration import admin_update_platform_account_closure_services_configuration
+from ._configuration import (
+    admin_update_platform_account_closure_services_configuration_async,
+)
 from ._configuration import admin_update_services_configuration
 from ._configuration import admin_update_services_configuration_async
 from ._configuration import delete_admin_email_configuration
@@ -68,3 +80,27 @@ from ._data_retrieval import public_get_user_personal_data_requests
 from ._data_retrieval import public_get_user_personal_data_requests_async
 from ._data_retrieval import public_request_data_retrieval
 from ._data_retrieval import public_request_data_retrieval_async
+
+from ._platform_account_closure_client import (
+    admin_delete_platform_account_closure_client,
+)
+from ._platform_account_closure_client import (
+    admin_delete_platform_account_closure_client_async,
+)
+from ._platform_account_closure_client import admin_get_platform_account_closure_client
+from ._platform_account_closure_client import (
+    admin_get_platform_account_closure_client_async,
+)
+from ._platform_account_closure_client import (
+    admin_update_platform_account_closure_client,
+)
+from ._platform_account_closure_client import (
+    admin_update_platform_account_closure_client_async,
+)
+
+from ._platform_account_closure_history import (
+    admin_get_user_platform_account_closure_histories,
+)
+from ._platform_account_closure_history import (
+    admin_get_user_platform_account_closure_histories_async,
+)

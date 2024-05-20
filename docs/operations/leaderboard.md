@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Leaderboard Service Index (2.29.1)
+# AccelByte Gaming Services Leaderboard Service Index (2.29.2)
 
 
 ## Operations
@@ -153,4 +153,4 @@
 | v2.GetAllLeaderboardConfigsPublicResp | [V2GetAllLeaderboardConfigsPublicResp](../../accelbyte_py_sdk/api/leaderboard/models/v2_get_all_leaderboard_configs_public_resp.py) |
 | v2.GetLeaderboardConfigPublicResp | [V2GetLeaderboardConfigPublicResp](../../accelbyte_py_sdk/api/leaderboard/models/v2_get_leaderboard_config_public_resp.py) |
 | v2.GetPublicLeaderboardRankingResponse | [V2GetPublicLeaderboardRankingResponse](../../accelbyte_py_sdk/api/leaderboard/models/v2_get_public_leaderboard_ranking_response.py) |
-| v2.Pagination | [V2Pagination](../../accelbyte_py_sdk/api/leaderboard/models/v2_pagination.py) |
+| v2.PaginationV2 | [V2PaginationV2](../../accelbyte_py_sdk/api/leaderboard/models/v2_pagination_v2.py) |

@@ -69,7 +69,7 @@ from ..api.leaderboard.models import V2Entry
 from ..api.leaderboard.models import V2GetAllLeaderboardConfigsPublicResp
 from ..api.leaderboard.models import V2GetLeaderboardConfigPublicResp
 from ..api.leaderboard.models import V2GetPublicLeaderboardRankingResponse
-from ..api.leaderboard.models import V2Pagination
+from ..api.leaderboard.models import V2PaginationV2
 
 
 def create_models_archive_leaderboard_req_example() -> ModelsArchiveLeaderboardReq:
@@ -499,7 +499,7 @@ def create_v2_get_all_leaderboard_configs_public_resp_example() -> (
 ):
     instance = V2GetAllLeaderboardConfigsPublicResp()
     instance.data = [create_v2_get_leaderboard_config_public_resp_example()]
-    instance.paging = create_v2_pagination_example()
+    instance.paging = create_v2_pagination_v2_example()
     return instance
 
 
@@ -519,12 +519,12 @@ def create_v2_get_public_leaderboard_ranking_response_example() -> (
 ):
     instance = V2GetPublicLeaderboardRankingResponse()
     instance.data = [create_v2_entry_example()]
-    instance.paging = create_v2_pagination_example()
+    instance.paging = create_v2_pagination_v2_example()
     return instance
 
 
-def create_v2_pagination_example() -> V2Pagination:
-    instance = V2Pagination()
+def create_v2_pagination_v2_example() -> V2PaginationV2:
+    instance = V2PaginationV2()
     instance.first = randomize()
     instance.last = randomize()
     instance.next_ = randomize()

@@ -305,6 +305,7 @@ from ..api.platform.models import PaymentToken
 from ..api.platform.models import PaymentUrl
 from ..api.platform.models import PaymentUrlCreate
 from ..api.platform.models import Permission
+from ..api.platform.models import PlatformAccountClosureHistoryInfo
 from ..api.platform.models import PlatformDLCConfigInfo
 from ..api.platform.models import PlatformDLCConfigUpdate
 from ..api.platform.models import PlatformDlcEntry
@@ -378,6 +379,9 @@ from ..api.platform.models import SectionPluginConfigUpdate
 from ..api.platform.models import SectionUpdate
 from ..api.platform.models import ServicePluginConfigInfo
 from ..api.platform.models import ServicePluginConfigUpdate
+from ..api.platform.models import SimpleEntitlement
+from ..api.platform.models import SimpleUserDLC
+from ..api.platform.models import SimpleWallet
 from ..api.platform.models import Slide
 from ..api.platform.models import StackableEntitlementInfo
 from ..api.platform.models import SteamAchievement
@@ -3740,6 +3744,21 @@ def create_permission_example() -> Permission:
     return instance
 
 
+def create_platform_account_closure_history_info_example() -> (
+    PlatformAccountClosureHistoryInfo
+):
+    instance = PlatformAccountClosureHistoryInfo()
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.platform = randomize()
+    instance.progression = randomize()
+    instance.user_id = randomize("uid")
+    instance.entitlements = [create_simple_entitlement_example()]
+    instance.user_dlc_s = [create_simple_user_dlc_example()]
+    instance.wallets = [create_simple_wallet_example()]
+    return instance
+
+
 def create_platform_dlc_config_info_example() -> PlatformDLCConfigInfo:
     instance = PlatformDLCConfigInfo()
     instance.data = [create_platform_dlc_entry_example()]
@@ -4499,6 +4518,36 @@ def create_service_plugin_config_info_example() -> ServicePluginConfigInfo:
 def create_service_plugin_config_update_example() -> ServicePluginConfigUpdate:
     instance = ServicePluginConfigUpdate()
     instance.grpc_server_address = randomize()
+    return instance
+
+
+def create_simple_entitlement_example() -> SimpleEntitlement:
+    instance = SimpleEntitlement()
+    instance.entitlement_id = randomize()
+    instance.granted_code = randomize()
+    instance.item_id = randomize()
+    instance.item_namespace = randomize("slug")
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.origin = randomize()
+    instance.sku = randomize("slug")
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_simple_user_dlc_example() -> SimpleUserDLC:
+    instance = SimpleUserDLC()
+    instance.dlc_id = randomize()
+    return instance
+
+
+def create_simple_wallet_example() -> SimpleWallet:
+    instance = SimpleWallet()
+    instance.balance = randomize("int", min_val=1, max_val=1000)
+    instance.balance_origin = randomize()
+    instance.currency_code = randomize()
+    instance.time_limited_balances = [create_time_limited_balance_example()]
+    instance.wallet_id = randomize()
     return instance
 
 

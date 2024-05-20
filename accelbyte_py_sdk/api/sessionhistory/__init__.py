@@ -8,11 +8,17 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session History Service."""
 
-__version__ = "1.9.4"
+__version__ = "1.10.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
+
+# config
+from .wrappers import admin_get_log_config
+from .wrappers import admin_get_log_config_async
+from .wrappers import admin_patch_update_log_config
+from .wrappers import admin_patch_update_log_config_async
 
 # game_session_detail
 from .wrappers import admin_get_matchmaking_detail_by_session_id

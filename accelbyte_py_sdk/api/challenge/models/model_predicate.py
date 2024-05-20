@@ -40,6 +40,7 @@ class MatcherEnum(StrEnum):
 class ParameterTypeEnum(StrEnum):
     ACHIEVEMENT = "ACHIEVEMENT"
     STATISTIC = "STATISTIC"
+    STATISTIC_CYCLE = "STATISTIC_CYCLE"
     USERACCOUNT = "USERACCOUNT"
 
 
@@ -54,6 +55,8 @@ class ModelPredicate(Model):
         parameter_type: (parameterType) REQUIRED Union[str, ParameterTypeEnum]
 
         target_value: (targetValue) REQUIRED float
+
+        stat_cycle_id: (statCycleId) OPTIONAL str
     """
 
     # region fields
@@ -62,6 +65,7 @@ class ModelPredicate(Model):
     parameter_name: str  # REQUIRED
     parameter_type: Union[str, ParameterTypeEnum]  # REQUIRED
     target_value: float  # REQUIRED
+    stat_cycle_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -83,6 +87,10 @@ class ModelPredicate(Model):
 
     def with_target_value(self, value: float) -> ModelPredicate:
         self.target_value = value
+        return self
+
+    def with_stat_cycle_id(self, value: str) -> ModelPredicate:
+        self.stat_cycle_id = value
         return self
 
     # endregion with_x methods
@@ -107,6 +115,10 @@ class ModelPredicate(Model):
             result["targetValue"] = float(self.target_value)
         elif include_empty:
             result["targetValue"] = 0.0
+        if hasattr(self, "stat_cycle_id"):
+            result["statCycleId"] = str(self.stat_cycle_id)
+        elif include_empty:
+            result["statCycleId"] = ""
         return result
 
     # endregion to methods
@@ -120,6 +132,7 @@ class ModelPredicate(Model):
         parameter_name: str,
         parameter_type: Union[str, ParameterTypeEnum],
         target_value: float,
+        stat_cycle_id: Optional[str] = None,
         **kwargs,
     ) -> ModelPredicate:
         instance = cls()
@@ -127,6 +140,8 @@ class ModelPredicate(Model):
         instance.parameter_name = parameter_name
         instance.parameter_type = parameter_type
         instance.target_value = target_value
+        if stat_cycle_id is not None:
+            instance.stat_cycle_id = stat_cycle_id
         return instance
 
     @classmethod
@@ -152,6 +167,10 @@ class ModelPredicate(Model):
             instance.target_value = float(dict_["targetValue"])
         elif include_empty:
             instance.target_value = 0.0
+        if "statCycleId" in dict_ and dict_["statCycleId"] is not None:
+            instance.stat_cycle_id = str(dict_["statCycleId"])
+        elif include_empty:
+            instance.stat_cycle_id = ""
         return instance
 
     @classmethod
@@ -195,6 +214,7 @@ class ModelPredicate(Model):
             "parameterName": "parameter_name",
             "parameterType": "parameter_type",
             "targetValue": "target_value",
+            "statCycleId": "stat_cycle_id",
         }
 
     @staticmethod
@@ -204,6 +224,7 @@ class ModelPredicate(Model):
             "parameterName": True,
             "parameterType": True,
             "targetValue": True,
+            "statCycleId": False,
         }
 
     @staticmethod
@@ -216,7 +237,12 @@ class ModelPredicate(Model):
                 "LESS_THAN",
                 "LESS_THAN_EQUAL",
             ],
-            "parameterType": ["ACHIEVEMENT", "STATISTIC", "USERACCOUNT"],
+            "parameterType": [
+                "ACHIEVEMENT",
+                "STATISTIC",
+                "STATISTIC_CYCLE",
+                "USERACCOUNT",
+            ],
         }
 
     # endregion static methods

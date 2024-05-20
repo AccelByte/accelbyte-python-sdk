@@ -25,10 +25,14 @@
 from .utils import randomize
 
 from ..api.gdpr.models import DtoExtendConfigDTO
+from ..api.gdpr.models import DtoPlatformAccountClosureClientRequest
+from ..api.gdpr.models import DtoPlatformAccountClosureClientResponse
 from ..api.gdpr.models import DtoServiceConfigDTO
 from ..api.gdpr.models import DtoServiceConfigurationDTO
 from ..api.gdpr.models import DtoServiceConfigurationUpdateRequest
 from ..api.gdpr.models import DtoServicesConfigurationResponse
+from ..api.gdpr.models import DtoUserPlatformAccountClosureHistoriesResponse
+from ..api.gdpr.models import DtoUserPlatformAccountClosureHistory
 from ..api.gdpr.models import ModelsDataRetrievalResponse
 from ..api.gdpr.models import ModelsDeletionData
 from ..api.gdpr.models import ModelsDeletionStatus
@@ -50,10 +54,32 @@ def create_dto_extend_config_dto_example() -> DtoExtendConfigDTO:
     return instance
 
 
+def create_dto_platform_account_closure_client_request_example() -> (
+    DtoPlatformAccountClosureClientRequest
+):
+    instance = DtoPlatformAccountClosureClientRequest()
+    instance.client_id = randomize("uid")
+    instance.secret = randomize()
+    return instance
+
+
+def create_dto_platform_account_closure_client_response_example() -> (
+    DtoPlatformAccountClosureClientResponse
+):
+    instance = DtoPlatformAccountClosureClientResponse()
+    instance.client_id = randomize("uid")
+    instance.namespace = randomize("slug")
+    instance.platform = randomize()
+    instance.secret = randomize()
+    instance.updated_at = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_dto_service_config_dto_example() -> DtoServiceConfigDTO:
     instance = DtoServiceConfigDTO()
     instance.protocol = randomize()
     instance.url = randomize("url")
+    instance.skip_ack = randomize("bool")
     return instance
 
 
@@ -79,6 +105,28 @@ def create_dto_services_configuration_response_example() -> (
 ):
     instance = DtoServicesConfigurationResponse()
     instance.services = [create_dto_service_configuration_dto_example()]
+    return instance
+
+
+def create_dto_user_platform_account_closure_histories_response_example() -> (
+    DtoUserPlatformAccountClosureHistoriesResponse
+):
+    instance = DtoUserPlatformAccountClosureHistoriesResponse()
+    instance.data = [create_dto_user_platform_account_closure_history_example()]
+    instance.pagination = create_models_pagination_example()
+    return instance
+
+
+def create_dto_user_platform_account_closure_history_example() -> (
+    DtoUserPlatformAccountClosureHistory
+):
+    instance = DtoUserPlatformAccountClosureHistory()
+    instance.closed_date = randomize("int", min_val=1, max_val=1000)
+    instance.environment = randomize()
+    instance.namespace = randomize("slug")
+    instance.platform = randomize()
+    instance.platform_user_id = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (7.15.0)
+# AccelByte Gaming Services Iam Service Index (7.16.0)
 
 
 ## Operations
@@ -269,6 +269,7 @@
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/justice | GET | AdminGetListJusticePlatformAccounts | `false` | [AdminGetListJusticePlatformAccounts](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_list_justice__0399f2.py) | [admin_get_list_justice_platform_accounts](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-list-justice-platform-accounts](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_list_justice_platform_accounts.py) |
 | /iam/v3/admin/users/me | GET | AdminGetMyUserV3 | `false` | [AdminGetMyUserV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_my_user_v3.py) | [admin_get_my_user_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-my-user-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_my_user_v3.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms/{platformId}/linkStatus | POST | AdminGetThirdPartyPlatformTokenLinkStatusV3 | `false` | [AdminGetThirdPartyPlatformTokenLinkStatusV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_third_party_p_5d509c.py) | [admin_get_third_party_platform_token_link_status_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-third-party-platform-token-link-status-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_third_party_platform_token_link_status_v3.py) |
+| /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans/summary | GET | AdminGetUserBanSummaryV3 | `false` | [AdminGetUserBanSummaryV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_ban_summary_v3.py) | [admin_get_user_ban_summary_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-ban-summary-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_ban_summary_v3.py) |
 | /iam/v2/admin/namespaces/{namespace}/users/{userId}/bans | GET | AdminGetUserBanV2 | `true` | [AdminGetUserBanV2](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_ban_v2.py) | [admin_get_user_ban_v2](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-ban-v2](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_ban_v2.py) |
 | /iam/v3/admin/namespaces/{namespace}/users/{userId}/bans | GET | AdminGetUserBanV3 | `false` | [AdminGetUserBanV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_ban_v3.py) | [admin_get_user_ban_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-ban-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_ban_v3.py) |
 | /iam/v3/admin/namespaces/{namespace}/users | GET | AdminGetUserByEmailAddressV3 | `false` | [AdminGetUserByEmailAddressV3](../../accelbyte_py_sdk/api/iam/operations/users/admin_get_user_by_email_160113.py) | [admin_get_user_by_email_address_v3](../../accelbyte_py_sdk/api/iam/wrappers/_users.py) | [accelbyte_py_sdk_cli iam-admin-get-user-by-email-address-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_get_user_by_email_address_v3.py) |
@@ -613,6 +614,7 @@
 | model.GetBulkUserBansRequest | [ModelGetBulkUserBansRequest](../../accelbyte_py_sdk/api/iam/models/model_get_bulk_user_bans_request.py) |
 | model.GetLinkHeadlessAccountConflictResponse | [ModelGetLinkHeadlessAccountConflictResponse](../../accelbyte_py_sdk/api/iam/models/model_get_link_headless_account_conflict_response.py) |
 | model.GetPublisherUserResponse | [ModelGetPublisherUserResponse](../../accelbyte_py_sdk/api/iam/models/model_get_publisher_user_response.py) |
+| model.GetUserBanSummaryV3 | [ModelGetUserBanSummaryV3](../../accelbyte_py_sdk/api/iam/models/model_get_user_ban_summary_v3.py) |
 | model.GetUserBanV3Response | [ModelGetUserBanV3Response](../../accelbyte_py_sdk/api/iam/models/model_get_user_ban_v3_response.py) |
 | model.GetUserJusticePlatformAccountResponse | [ModelGetUserJusticePlatformAccountResponse](../../accelbyte_py_sdk/api/iam/models/model_get_user_justice_platform_account_response.py) |
 | model.GetUserMapping | [ModelGetUserMapping](../../accelbyte_py_sdk/api/iam/models/model_get_user_mapping.py) |
@@ -711,6 +713,7 @@
 | model.UserActiveBanResponseV3 | [ModelUserActiveBanResponseV3](../../accelbyte_py_sdk/api/iam/models/model_user_active_ban_response_v3.py) |
 | model.UserBanResponse | [ModelUserBanResponse](../../accelbyte_py_sdk/api/iam/models/model_user_ban_response.py) |
 | model.UserBanResponseV3 | [ModelUserBanResponseV3](../../accelbyte_py_sdk/api/iam/models/model_user_ban_response_v3.py) |
+| model.UserBanWithStatus | [ModelUserBanWithStatus](../../accelbyte_py_sdk/api/iam/models/model_user_ban_with_status.py) |
 | model.UserBaseInfo | [ModelUserBaseInfo](../../accelbyte_py_sdk/api/iam/models/model_user_base_info.py) |
 | model.UserBulkUpdateRequestV3 | [ModelUserBulkUpdateRequestV3](../../accelbyte_py_sdk/api/iam/models/model_user_bulk_update_request_v3.py) |
 | model.UserCreateRequest | [ModelUserCreateRequest](../../accelbyte_py_sdk/api/iam/models/model_user_create_request.py) |

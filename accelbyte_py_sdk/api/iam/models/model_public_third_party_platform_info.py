@@ -45,6 +45,8 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         platform_name: (PlatformName) REQUIRED str
 
         token_authentication_type: (TokenAuthenticationType) REQUIRED str
+
+        logo_url: (LogoURL) OPTIONAL str
     """
 
     # region fields
@@ -56,6 +58,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
     platform_id: str  # REQUIRED
     platform_name: str  # REQUIRED
     token_authentication_type: str  # REQUIRED
+    logo_url: str  # OPTIONAL
 
     # endregion fields
 
@@ -89,6 +92,10 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         self, value: str
     ) -> ModelPublicThirdPartyPlatformInfo:
         self.token_authentication_type = value
+        return self
+
+    def with_logo_url(self, value: str) -> ModelPublicThirdPartyPlatformInfo:
+        self.logo_url = value
         return self
 
     # endregion with_x methods
@@ -125,6 +132,10 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             result["TokenAuthenticationType"] = str(self.token_authentication_type)
         elif include_empty:
             result["TokenAuthenticationType"] = ""
+        if hasattr(self, "logo_url"):
+            result["LogoURL"] = str(self.logo_url)
+        elif include_empty:
+            result["LogoURL"] = ""
         return result
 
     # endregion to methods
@@ -141,6 +152,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         platform_id: str,
         platform_name: str,
         token_authentication_type: str,
+        logo_url: Optional[str] = None,
         **kwargs,
     ) -> ModelPublicThirdPartyPlatformInfo:
         instance = cls()
@@ -151,6 +163,8 @@ class ModelPublicThirdPartyPlatformInfo(Model):
         instance.platform_id = platform_id
         instance.platform_name = platform_name
         instance.token_authentication_type = token_authentication_type
+        if logo_url is not None:
+            instance.logo_url = logo_url
         return instance
 
     @classmethod
@@ -191,6 +205,10 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             instance.token_authentication_type = str(dict_["TokenAuthenticationType"])
         elif include_empty:
             instance.token_authentication_type = ""
+        if "LogoURL" in dict_ and dict_["LogoURL"] is not None:
+            instance.logo_url = str(dict_["LogoURL"])
+        elif include_empty:
+            instance.logo_url = ""
         return instance
 
     @classmethod
@@ -241,6 +259,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             "PlatformId": "platform_id",
             "PlatformName": "platform_name",
             "TokenAuthenticationType": "token_authentication_type",
+            "LogoURL": "logo_url",
         }
 
     @staticmethod
@@ -253,6 +272,7 @@ class ModelPublicThirdPartyPlatformInfo(Model):
             "PlatformId": True,
             "PlatformName": True,
             "TokenAuthenticationType": True,
+            "LogoURL": False,
         }
 
     # endregion static methods

@@ -95,6 +95,7 @@ def create_create_base_policy_request_example() -> CreateBasePolicyRequest:
     instance.affected_countries = [randomize()]
     instance.base_policy_name = randomize()
     instance.description = randomize()
+    instance.is_hidden = randomize("bool")
     instance.namespace = randomize("slug")
     instance.tags = [randomize()]
     instance.type_id = randomize()
@@ -107,6 +108,7 @@ def create_create_base_policy_request_v2_example() -> CreateBasePolicyRequestV2:
     instance.affected_countries = [randomize()]
     instance.base_policy_name = randomize()
     instance.description = randomize()
+    instance.is_hidden = randomize("bool")
     instance.tags = [randomize()]
     instance.type_id = randomize()
     return instance
@@ -120,6 +122,7 @@ def create_create_base_policy_response_example() -> CreateBasePolicyResponse:
     instance.created_at = randomize("date")
     instance.description = randomize()
     instance.global_policy_name = randomize()
+    instance.is_hidden = randomize("bool")
     instance.namespace = randomize("slug")
     instance.policy_id = randomize()
     instance.tags = [randomize()]
@@ -334,6 +337,7 @@ def create_retrieve_base_policy_response_example() -> RetrieveBasePolicyResponse
     instance.affected_client_ids = [randomize()]
     instance.created_at = randomize("date")
     instance.description = randomize()
+    instance.is_hidden = randomize("bool")
     instance.policies = [create_policy_object_example()]
     instance.policy_type_id = randomize()
     instance.policy_type_name = randomize()
@@ -359,6 +363,7 @@ def create_retrieve_localized_policy_version_public_response_example() -> (
     instance.content_type = randomize()
     instance.created_at = randomize("date")
     instance.description = randomize()
+    instance.is_hidden = randomize("bool")
     instance.tags = [randomize()]
     instance.updated_at = randomize("date")
     return instance
@@ -521,6 +526,7 @@ def create_update_base_policy_request_example() -> UpdateBasePolicyRequest:
     instance.affected_countries = [randomize()]
     instance.base_policy_name = randomize()
     instance.description = randomize()
+    instance.is_hidden = randomize("bool")
     instance.namespace = randomize("slug")
     instance.tags = [randomize()]
     return instance
@@ -532,6 +538,7 @@ def create_update_base_policy_request_v2_example() -> UpdateBasePolicyRequestV2:
     instance.affected_countries = [randomize()]
     instance.base_policy_name = randomize()
     instance.description = randomize()
+    instance.is_hidden = randomize("bool")
     instance.tags = [randomize()]
     return instance
 
@@ -544,6 +551,7 @@ def create_update_base_policy_response_example() -> UpdateBasePolicyResponse:
     instance.created_at = randomize("date")
     instance.description = randomize()
     instance.global_policy_name = randomize()
+    instance.is_hidden = randomize("bool")
     instance.namespace = randomize("slug")
     instance.policy_id = randomize()
     instance.tags = [randomize()]

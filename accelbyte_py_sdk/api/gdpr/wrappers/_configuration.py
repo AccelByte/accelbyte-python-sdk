@@ -33,13 +33,120 @@ from ..models import DtoServiceConfigurationUpdateRequest
 from ..models import DtoServicesConfigurationResponse
 from ..models import ResponseError
 
+from ..operations.configuration import (
+    AdminGetPlatformAccountClosureServicesConfiguration,
+)
 from ..operations.configuration import AdminGetServicesConfiguration
+from ..operations.configuration import (
+    AdminResetPlatformAccountClosureServicesConfiguration,
+)
 from ..operations.configuration import AdminResetServicesConfiguration
+from ..operations.configuration import (
+    AdminUpdatePlatformAccountClosureServicesConfiguration,
+)
 from ..operations.configuration import AdminUpdateServicesConfiguration
 from ..operations.configuration import DeleteAdminEmailConfiguration
 from ..operations.configuration import GetAdminEmailConfiguration
 from ..operations.configuration import SaveAdminEmailConfiguration
 from ..operations.configuration import UpdateAdminEmailConfiguration
+
+
+@same_doc_as(AdminGetPlatformAccountClosureServicesConfiguration)
+def admin_get_platform_account_closure_services_configuration(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get Registered Platform Account Closure Services Configuration (AdminGetPlatformAccountClosureServicesConfiguration)
+
+    Get registered platform account closure services configuration.
+    Scope: account
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
+
+        method: GET
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - DtoServicesConfigurationResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetPlatformAccountClosureServicesConfiguration.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetPlatformAccountClosureServicesConfiguration)
+async def admin_get_platform_account_closure_services_configuration_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get Registered Platform Account Closure Services Configuration (AdminGetPlatformAccountClosureServicesConfiguration)
+
+    Get registered platform account closure services configuration.
+    Scope: account
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
+
+        method: GET
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - DtoServicesConfigurationResponse (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetPlatformAccountClosureServicesConfiguration.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetServicesConfiguration)
@@ -140,6 +247,102 @@ async def admin_get_services_configuration_async(
     )
 
 
+@same_doc_as(AdminResetPlatformAccountClosureServicesConfiguration)
+def admin_reset_platform_account_closure_services_configuration(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Reset Registered Platform Account Closure Services Configuration (AdminResetPlatformAccountClosureServicesConfiguration)
+
+    **[TEST FACILITY ONLY]**
+    Reset registered platform account closure services configuration to use the default configuration.
+    Scope: account
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
+
+        method: DELETE
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminResetPlatformAccountClosureServicesConfiguration.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminResetPlatformAccountClosureServicesConfiguration)
+async def admin_reset_platform_account_closure_services_configuration_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Reset Registered Platform Account Closure Services Configuration (AdminResetPlatformAccountClosureServicesConfiguration)
+
+    **[TEST FACILITY ONLY]**
+    Reset registered platform account closure services configuration to use the default configuration.
+    Scope: account
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
+
+        method: DELETE
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminResetPlatformAccountClosureServicesConfiguration.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminResetServicesConfiguration)
 def admin_reset_services_configuration(
     namespace: Optional[str] = None,
@@ -229,6 +432,112 @@ async def admin_reset_services_configuration_async(
         if error:
             return None, error
     request = AdminResetServicesConfiguration.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminUpdatePlatformAccountClosureServicesConfiguration)
+def admin_update_platform_account_closure_services_configuration(
+    body: DtoServiceConfigurationUpdateRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Registered Platform Account Closure Services Configuration (AdminUpdatePlatformAccountClosureServicesConfiguration)
+
+    Update registered platform account closure services configuration.
+    Scope: account
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
+
+        method: PUT
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED DtoServiceConfigurationUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - DtoServiceConfigurationUpdateRequest (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdatePlatformAccountClosureServicesConfiguration.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminUpdatePlatformAccountClosureServicesConfiguration)
+async def admin_update_platform_account_closure_services_configuration_async(
+    body: DtoServiceConfigurationUpdateRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Registered Platform Account Closure Services Configuration (AdminUpdatePlatformAccountClosureServicesConfiguration)
+
+    Update registered platform account closure services configuration.
+    Scope: account
+
+    Required Scope(s):
+        - account
+
+    Properties:
+        url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
+
+        method: PUT
+
+        tags: ["Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED DtoServiceConfigurationUpdateRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - DtoServiceConfigurationUpdateRequest (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdatePlatformAccountClosureServicesConfiguration.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

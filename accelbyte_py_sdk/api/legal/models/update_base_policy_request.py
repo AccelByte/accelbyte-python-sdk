@@ -40,6 +40,8 @@ class UpdateBasePolicyRequest(Model):
 
         description: (description) OPTIONAL str
 
+        is_hidden: (isHidden) OPTIONAL bool
+
         namespace: (namespace) OPTIONAL str
 
         tags: (tags) OPTIONAL List[str]
@@ -51,6 +53,7 @@ class UpdateBasePolicyRequest(Model):
     affected_countries: List[str]  # OPTIONAL
     base_policy_name: str  # OPTIONAL
     description: str  # OPTIONAL
+    is_hidden: bool  # OPTIONAL
     namespace: str  # OPTIONAL
     tags: List[str]  # OPTIONAL
 
@@ -72,6 +75,10 @@ class UpdateBasePolicyRequest(Model):
 
     def with_description(self, value: str) -> UpdateBasePolicyRequest:
         self.description = value
+        return self
+
+    def with_is_hidden(self, value: bool) -> UpdateBasePolicyRequest:
+        self.is_hidden = value
         return self
 
     def with_namespace(self, value: str) -> UpdateBasePolicyRequest:
@@ -104,6 +111,10 @@ class UpdateBasePolicyRequest(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "is_hidden"):
+            result["isHidden"] = bool(self.is_hidden)
+        elif include_empty:
+            result["isHidden"] = False
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -125,6 +136,7 @@ class UpdateBasePolicyRequest(Model):
         affected_countries: Optional[List[str]] = None,
         base_policy_name: Optional[str] = None,
         description: Optional[str] = None,
+        is_hidden: Optional[bool] = None,
         namespace: Optional[str] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
@@ -138,6 +150,8 @@ class UpdateBasePolicyRequest(Model):
             instance.base_policy_name = base_policy_name
         if description is not None:
             instance.description = description
+        if is_hidden is not None:
+            instance.is_hidden = is_hidden
         if namespace is not None:
             instance.namespace = namespace
         if tags is not None:
@@ -169,6 +183,10 @@ class UpdateBasePolicyRequest(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "isHidden" in dict_ and dict_["isHidden"] is not None:
+            instance.is_hidden = bool(dict_["isHidden"])
+        elif include_empty:
+            instance.is_hidden = False
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -224,6 +242,7 @@ class UpdateBasePolicyRequest(Model):
             "affectedCountries": "affected_countries",
             "basePolicyName": "base_policy_name",
             "description": "description",
+            "isHidden": "is_hidden",
             "namespace": "namespace",
             "tags": "tags",
         }
@@ -235,6 +254,7 @@ class UpdateBasePolicyRequest(Model):
             "affectedCountries": False,
             "basePolicyName": False,
             "description": False,
+            "isHidden": False,
             "namespace": False,
             "tags": False,
         }

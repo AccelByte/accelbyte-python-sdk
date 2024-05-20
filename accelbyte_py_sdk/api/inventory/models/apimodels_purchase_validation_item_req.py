@@ -46,6 +46,8 @@ class ApimodelsPurchaseValidationItemReq(Model):
 
         sku: (sku) REQUIRED str
 
+        stackable: (stackable) REQUIRED bool
+
         use_count: (useCount) OPTIONAL int
     """
 
@@ -57,6 +59,7 @@ class ApimodelsPurchaseValidationItemReq(Model):
     item_id: str  # REQUIRED
     item_type: str  # REQUIRED
     sku: str  # REQUIRED
+    stackable: bool  # REQUIRED
     use_count: int  # OPTIONAL
 
     # endregion fields
@@ -87,6 +90,10 @@ class ApimodelsPurchaseValidationItemReq(Model):
 
     def with_sku(self, value: str) -> ApimodelsPurchaseValidationItemReq:
         self.sku = value
+        return self
+
+    def with_stackable(self, value: bool) -> ApimodelsPurchaseValidationItemReq:
+        self.stackable = value
         return self
 
     def with_use_count(self, value: int) -> ApimodelsPurchaseValidationItemReq:
@@ -125,6 +132,10 @@ class ApimodelsPurchaseValidationItemReq(Model):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = ""
+        if hasattr(self, "stackable"):
+            result["stackable"] = bool(self.stackable)
+        elif include_empty:
+            result["stackable"] = False
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
@@ -144,6 +155,7 @@ class ApimodelsPurchaseValidationItemReq(Model):
         item_id: str,
         item_type: str,
         sku: str,
+        stackable: bool,
         use_count: Optional[int] = None,
         **kwargs,
     ) -> ApimodelsPurchaseValidationItemReq:
@@ -154,6 +166,7 @@ class ApimodelsPurchaseValidationItemReq(Model):
         instance.item_id = item_id
         instance.item_type = item_type
         instance.sku = sku
+        instance.stackable = stackable
         if use_count is not None:
             instance.use_count = use_count
         return instance
@@ -191,6 +204,10 @@ class ApimodelsPurchaseValidationItemReq(Model):
             instance.sku = str(dict_["sku"])
         elif include_empty:
             instance.sku = ""
+        if "stackable" in dict_ and dict_["stackable"] is not None:
+            instance.stackable = bool(dict_["stackable"])
+        elif include_empty:
+            instance.stackable = False
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
@@ -244,6 +261,7 @@ class ApimodelsPurchaseValidationItemReq(Model):
             "itemId": "item_id",
             "itemType": "item_type",
             "sku": "sku",
+            "stackable": "stackable",
             "useCount": "use_count",
         }
 
@@ -256,6 +274,7 @@ class ApimodelsPurchaseValidationItemReq(Model):
             "itemId": True,
             "itemType": True,
             "sku": True,
+            "stackable": True,
             "useCount": False,
         }
 

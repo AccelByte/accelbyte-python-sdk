@@ -352,9 +352,6 @@ def logout(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Logout (Logout)
 
     This endpoint is used to remove **access_token**, **refresh_token** from cookie and revoke token from usage.
-    Supported methods:
-    - VerifyToken to verify token from header
-    - AddTokenToRevocationList to revoke token with TTL
 
     Properties:
         url: /iam/v3/logout
@@ -381,9 +378,6 @@ async def logout_async(x_additional_headers: Optional[Dict[str, str]] = None, **
     """Logout (Logout)
 
     This endpoint is used to remove **access_token**, **refresh_token** from cookie and revoke token from usage.
-    Supported methods:
-    - VerifyToken to verify token from header
-    - AddTokenToRevocationList to revoke token with TTL
 
     Properties:
         url: /iam/v3/logout

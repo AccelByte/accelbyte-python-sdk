@@ -219,6 +219,7 @@ from ._admin_get_user_by_user_id_v3 import admin_get_user_by_user_id_v3
 from ._admin_update_user_v3 import admin_update_user_v3
 from ._admin_get_user_ban_v3 import admin_get_user_ban_v3
 from ._admin_ban_user_v3 import admin_ban_user_v3
+from ._admin_get_user_ban_summary_v3 import admin_get_user_ban_summary_v3
 from ._admin_update_user_ban_v3 import admin_update_user_ban_v3
 from ._admin_send_verification_code_v3 import admin_send_verification_code_v3
 from ._admin_verify_account_v3 import admin_verify_account_v3
@@ -675,6 +676,7 @@ commands = [
     admin_update_user_v3,
     admin_get_user_ban_v3,
     admin_ban_user_v3,
+    admin_get_user_ban_summary_v3,
     admin_update_user_ban_v3,
     admin_send_verification_code_v3,
     admin_verify_account_v3,

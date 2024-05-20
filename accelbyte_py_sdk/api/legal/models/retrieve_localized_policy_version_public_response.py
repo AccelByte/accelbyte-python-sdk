@@ -61,6 +61,8 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
 
         description: (description) OPTIONAL str
 
+        is_hidden: (isHidden) OPTIONAL bool
+
         tags: (tags) OPTIONAL List[str]
 
         updated_at: (updatedAt) OPTIONAL str
@@ -81,6 +83,7 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
     content_type: str  # OPTIONAL
     created_at: str  # OPTIONAL
     description: str  # OPTIONAL
+    is_hidden: bool  # OPTIONAL
     tags: List[str]  # OPTIONAL
     updated_at: str  # OPTIONAL
 
@@ -164,6 +167,12 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         self.description = value
         return self
 
+    def with_is_hidden(
+        self, value: bool
+    ) -> RetrieveLocalizedPolicyVersionPublicResponse:
+        self.is_hidden = value
+        return self
+
     def with_tags(
         self, value: List[str]
     ) -> RetrieveLocalizedPolicyVersionPublicResponse:
@@ -238,6 +247,10 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
+        if hasattr(self, "is_hidden"):
+            result["isHidden"] = bool(self.is_hidden)
+        elif include_empty:
+            result["isHidden"] = False
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -268,6 +281,7 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
         content_type: Optional[str] = None,
         created_at: Optional[str] = None,
         description: Optional[str] = None,
+        is_hidden: Optional[bool] = None,
         tags: Optional[List[str]] = None,
         updated_at: Optional[str] = None,
         **kwargs,
@@ -294,6 +308,8 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
             instance.created_at = created_at
         if description is not None:
             instance.description = description
+        if is_hidden is not None:
+            instance.is_hidden = is_hidden
         if tags is not None:
             instance.tags = tags
         if updated_at is not None:
@@ -368,6 +384,10 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
+        if "isHidden" in dict_ and dict_["isHidden"] is not None:
+            instance.is_hidden = bool(dict_["isHidden"])
+        elif include_empty:
+            instance.is_hidden = False
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -432,6 +452,7 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
             "contentType": "content_type",
             "createdAt": "created_at",
             "description": "description",
+            "isHidden": "is_hidden",
             "tags": "tags",
             "updatedAt": "updated_at",
         }
@@ -452,6 +473,7 @@ class RetrieveLocalizedPolicyVersionPublicResponse(Model):
             "contentType": False,
             "createdAt": False,
             "description": False,
+            "isHidden": False,
             "tags": False,
             "updatedAt": False,
         }

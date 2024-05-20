@@ -73,6 +73,8 @@ class PublicSendVerificationCodeV3(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
+        403: Forbidden - RestErrorResponse (10146: userID not match)
+
         404: Not Found - RestErrorResponse (10171: email address not found | 10139: platform account not found)
 
         409: Conflict - RestErrorResponse (10140: user verified | 10133: email already used)
@@ -195,6 +197,8 @@ class PublicSendVerificationCodeV3(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
+        403: Forbidden - RestErrorResponse (10146: userID not match)
+
         404: Not Found - RestErrorResponse (10171: email address not found | 10139: platform account not found)
 
         409: Conflict - RestErrorResponse (10140: user verified | 10133: email already used)
@@ -219,6 +223,8 @@ class PublicSendVerificationCodeV3(Operation):
         if code == 400:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 401:
+            return None, RestErrorResponse.create_from_dict(content)
+        if code == 403:
             return None, RestErrorResponse.create_from_dict(content)
         if code == 404:
             return None, RestErrorResponse.create_from_dict(content)

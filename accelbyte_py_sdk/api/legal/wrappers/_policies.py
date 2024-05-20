@@ -54,7 +54,7 @@ def retrieve_country_list_with_policies(
 ):
     """Retrieve List of Countries that have Active Legal Policies (retrieveCountryListWithPolicies)
 
-    Retrieve List of Countries that have Active Legal Policies.
+    Retrieve List of Countries that have Active and Visible Legal Policies.
 
     Properties:
         url: /agreement/public/policies/countries/list
@@ -82,7 +82,7 @@ async def retrieve_country_list_with_policies_async(
 ):
     """Retrieve List of Countries that have Active Legal Policies (retrieveCountryListWithPolicies)
 
-    Retrieve List of Countries that have Active Legal Policies.
+    Retrieve List of Countries that have Active and Visible Legal Policies.
 
     Properties:
         url: /agreement/public/policies/countries/list
@@ -112,6 +112,7 @@ def retrieve_latest_policies(
     default_on_empty: Optional[bool] = None,
     policy_type: Optional[Union[str, RetrieveLatestPoliciesPolicyTypeEnum]] = None,
     tags: Optional[str] = None,
+    visible_only: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -145,6 +146,8 @@ def retrieve_latest_policies(
 
         tags: (tags) OPTIONAL str in query
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrievePolicyPublicResponse] (successful operation)
     """
@@ -153,6 +156,7 @@ def retrieve_latest_policies(
         default_on_empty=default_on_empty,
         policy_type=policy_type,
         tags=tags,
+        visible_only=visible_only,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -163,6 +167,7 @@ async def retrieve_latest_policies_async(
     default_on_empty: Optional[bool] = None,
     policy_type: Optional[Union[str, RetrieveLatestPoliciesPolicyTypeEnum]] = None,
     tags: Optional[str] = None,
+    visible_only: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -196,6 +201,8 @@ async def retrieve_latest_policies_async(
 
         tags: (tags) OPTIONAL str in query
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrievePolicyPublicResponse] (successful operation)
     """
@@ -204,6 +211,7 @@ async def retrieve_latest_policies_async(
         default_on_empty=default_on_empty,
         policy_type=policy_type,
         tags=tags,
+        visible_only=visible_only,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -219,6 +227,7 @@ def retrieve_latest_policies_by_namespace_and_country_public(
         Union[str, RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]
     ] = None,
     tags: Optional[str] = None,
+    visible_only: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -264,6 +273,8 @@ def retrieve_latest_policies_by_namespace_and_country_public(
 
         tags: (tags) OPTIONAL str in query
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrievePolicyPublicResponse] (successful operation)
     """
@@ -277,6 +288,7 @@ def retrieve_latest_policies_by_namespace_and_country_public(
         default_on_empty=default_on_empty,
         policy_type=policy_type,
         tags=tags,
+        visible_only=visible_only,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -291,6 +303,7 @@ async def retrieve_latest_policies_by_namespace_and_country_public_async(
         Union[str, RetrieveLatestPoliciesByNamespaceAndCountryPublicPolicyTypeEnum]
     ] = None,
     tags: Optional[str] = None,
+    visible_only: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -336,6 +349,8 @@ async def retrieve_latest_policies_by_namespace_and_country_public_async(
 
         tags: (tags) OPTIONAL str in query
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrievePolicyPublicResponse] (successful operation)
     """
@@ -349,6 +364,7 @@ async def retrieve_latest_policies_by_namespace_and_country_public_async(
         default_on_empty=default_on_empty,
         policy_type=policy_type,
         tags=tags,
+        visible_only=visible_only,
         namespace=namespace,
     )
     return await run_request_async(
@@ -364,6 +380,7 @@ def retrieve_latest_policies_public(
         Union[str, RetrieveLatestPoliciesPublicPolicyTypeEnum]
     ] = None,
     tags: Optional[str] = None,
+    visible_only: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -407,6 +424,8 @@ def retrieve_latest_policies_public(
 
         tags: (tags) OPTIONAL str in query
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrievePolicyPublicResponse] (successful operation)
 
@@ -421,6 +440,7 @@ def retrieve_latest_policies_public(
         default_on_empty=default_on_empty,
         policy_type=policy_type,
         tags=tags,
+        visible_only=visible_only,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -434,6 +454,7 @@ async def retrieve_latest_policies_public_async(
         Union[str, RetrieveLatestPoliciesPublicPolicyTypeEnum]
     ] = None,
     tags: Optional[str] = None,
+    visible_only: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -477,6 +498,8 @@ async def retrieve_latest_policies_public_async(
 
         tags: (tags) OPTIONAL str in query
 
+        visible_only: (visibleOnly) OPTIONAL bool in query
+
     Responses:
         200: OK - List[RetrievePolicyPublicResponse] (successful operation)
 
@@ -491,6 +514,7 @@ async def retrieve_latest_policies_public_async(
         default_on_empty=default_on_empty,
         policy_type=policy_type,
         tags=tags,
+        visible_only=visible_only,
         namespace=namespace,
     )
     return await run_request_async(

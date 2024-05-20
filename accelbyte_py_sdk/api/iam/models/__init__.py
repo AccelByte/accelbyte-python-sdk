@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.15.0"
+__version__ = "7.16.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -197,6 +197,7 @@ from .model_get_link_headless_account_conflict_response import (
     ModelGetLinkHeadlessAccountConflictResponse,
 )
 from .model_get_publisher_user_response import ModelGetPublisherUserResponse
+from .model_get_user_ban_summary_v3 import ModelGetUserBanSummaryV3
 from .model_get_user_ban_v3_response import ModelGetUserBanV3Response
 from .model_get_user_justice_platform_account_response import (
     ModelGetUserJusticePlatformAccountResponse,
@@ -333,6 +334,7 @@ from .model_user_active_ban_response import ModelUserActiveBanResponse
 from .model_user_active_ban_response_v3 import ModelUserActiveBanResponseV3
 from .model_user_ban_response import ModelUserBanResponse
 from .model_user_ban_response_v3 import ModelUserBanResponseV3
+from .model_user_ban_with_status import ModelUserBanWithStatus
 from .model_user_base_info import ModelUserBaseInfo
 from .model_user_bulk_update_request_v3 import ModelUserBulkUpdateRequestV3
 from .model_user_create_request import ModelUserCreateRequest
