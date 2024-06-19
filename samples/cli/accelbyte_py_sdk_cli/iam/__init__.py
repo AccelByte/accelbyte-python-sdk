@@ -350,6 +350,7 @@ from ._public_bulk_get_users import public_bulk_get_users
 from ._public_send_registration_code import public_send_registration_code
 from ._public_verify_registration_code import public_verify_registration_code
 from ._public_forgot_password_v3 import public_forgot_password_v3
+from ._public_validate_user_input import public_validate_user_input
 from ._get_admin_invitation_v3 import get_admin_invitation_v3
 from ._create_user_from_invitation_v3 import create_user_from_invitation_v3
 from ._update_user_v3 import update_user_v3
@@ -461,11 +462,13 @@ from ._admin_enable_my_backup_codes_v4 import admin_enable_my_backup_codes_v4
 from ._admin_get_backup_codes_v4 import admin_get_backup_codes_v4
 from ._admin_generate_backup_codes_v4 import admin_generate_backup_codes_v4
 from ._admin_enable_backup_codes_v4 import admin_enable_backup_codes_v4
+from ._admin_challenge_my_mfav4 import admin_challenge_my_mfav4
 from ._admin_send_my_mfa_email_code_v4 import admin_send_my_mfa_email_code_v4
 from ._admin_disable_my_email_v4 import admin_disable_my_email_v4
 from ._admin_enable_my_email_v4 import admin_enable_my_email_v4
 from ._admin_get_my_enabled_factors_v4 import admin_get_my_enabled_factors_v4
 from ._admin_make_factor_my_default_v4 import admin_make_factor_my_default_v4
+from ._admin_get_my_mfa_status_v4 import admin_get_my_mfa_status_v4
 from ._admin_invite_user_v4 import admin_invite_user_v4
 from ._authentication_with_platform_link_v4 import authentication_with_platform_link_v4
 from ._generate_token_by_new_headless_account_v4 import (
@@ -476,6 +479,9 @@ from ._platform_token_grant_v4 import platform_token_grant_v4
 from ._simultaneous_login_v4 import simultaneous_login_v4
 from ._token_grant_v4 import token_grant_v4
 from ._request_target_token_response_v4 import request_target_token_response_v4
+from ._public_list_user_id_by_platform_user_i_ds_v4 import (
+    public_list_user_id_by_platform_user_i_ds_v4,
+)
 from ._public_create_test_user_v4 import public_create_test_user_v4
 from ._public_create_user_v4 import public_create_user_v4
 from ._create_user_from_invitation_v4 import create_user_from_invitation_v4
@@ -498,12 +504,14 @@ from ._public_enable_my_backup_codes_v4 import public_enable_my_backup_codes_v4
 from ._public_get_backup_codes_v4 import public_get_backup_codes_v4
 from ._public_generate_backup_codes_v4 import public_generate_backup_codes_v4
 from ._public_enable_backup_codes_v4 import public_enable_backup_codes_v4
+from ._public_challenge_my_mfav4 import public_challenge_my_mfav4
 from ._public_remove_trusted_device_v4 import public_remove_trusted_device_v4
 from ._public_send_my_mfa_email_code_v4 import public_send_my_mfa_email_code_v4
 from ._public_disable_my_email_v4 import public_disable_my_email_v4
 from ._public_enable_my_email_v4 import public_enable_my_email_v4
 from ._public_get_my_enabled_factors_v4 import public_get_my_enabled_factors_v4
 from ._public_make_factor_my_default_v4 import public_make_factor_my_default_v4
+from ._public_get_my_mfa_status_v4 import public_get_my_mfa_status_v4
 from ._public_get_user_public_info_by_user_id_v4 import (
     public_get_user_public_info_by_user_id_v4,
 )
@@ -775,6 +783,7 @@ commands = [
     public_send_registration_code,
     public_verify_registration_code,
     public_forgot_password_v3,
+    public_validate_user_input,
     get_admin_invitation_v3,
     create_user_from_invitation_v3,
     update_user_v3,
@@ -866,11 +875,13 @@ commands = [
     admin_get_backup_codes_v4,
     admin_generate_backup_codes_v4,
     admin_enable_backup_codes_v4,
+    admin_challenge_my_mfav4,
     admin_send_my_mfa_email_code_v4,
     admin_disable_my_email_v4,
     admin_enable_my_email_v4,
     admin_get_my_enabled_factors_v4,
     admin_make_factor_my_default_v4,
+    admin_get_my_mfa_status_v4,
     admin_invite_user_v4,
     authentication_with_platform_link_v4,
     generate_token_by_new_headless_account_v4,
@@ -879,6 +890,7 @@ commands = [
     simultaneous_login_v4,
     token_grant_v4,
     request_target_token_response_v4,
+    public_list_user_id_by_platform_user_i_ds_v4,
     public_create_test_user_v4,
     public_create_user_v4,
     create_user_from_invitation_v4,
@@ -897,12 +909,14 @@ commands = [
     public_get_backup_codes_v4,
     public_generate_backup_codes_v4,
     public_enable_backup_codes_v4,
+    public_challenge_my_mfav4,
     public_remove_trusted_device_v4,
     public_send_my_mfa_email_code_v4,
     public_disable_my_email_v4,
     public_enable_my_email_v4,
     public_get_my_enabled_factors_v4,
     public_make_factor_my_default_v4,
+    public_get_my_mfa_status_v4,
     public_get_user_public_info_by_user_id_v4,
     public_invite_user_v4,
 ]

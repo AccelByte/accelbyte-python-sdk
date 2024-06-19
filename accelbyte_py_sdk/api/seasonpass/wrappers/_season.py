@@ -91,11 +91,7 @@ def bulk_get_user_season_progression(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS, action=2 (READ)
-      *  Returns : user season progression
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : user season progression
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/current/users/bulk/progression
@@ -108,7 +104,7 @@ def bulk_get_user_season_progression(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL BulkUserProgressionRequest in body
 
@@ -145,11 +141,7 @@ async def bulk_get_user_season_progression_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS, action=2 (READ)
-      *  Returns : user season progression
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : user season progression
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/current/users/bulk/progression
@@ -162,7 +154,7 @@ async def bulk_get_user_season_progression_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL BulkUserProgressionRequest in body
 
@@ -200,13 +192,6 @@ def check_season_purchasable(
 
     This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/purchasable
 
@@ -218,7 +203,7 @@ def check_season_purchasable(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserPurchasable in body
 
@@ -259,13 +244,6 @@ async def check_season_purchasable_async(
 
     This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/purchasable
 
@@ -277,7 +255,7 @@ async def check_season_purchasable_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserPurchasable in body
 
@@ -322,11 +300,7 @@ def clone_season(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-      *  Returns : cloned season info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+      * Returns : cloned season info
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/clone
@@ -339,7 +313,7 @@ def clone_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SeasonCloneRequest in body
 
@@ -382,11 +356,7 @@ async def clone_season_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-      *  Returns : cloned season info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+      * Returns : cloned season info
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/clone
@@ -399,7 +369,7 @@ async def clone_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SeasonCloneRequest in body
 
@@ -443,11 +413,7 @@ def create_season(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-      *  Returns : created season
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+      * Returns : created season
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons
@@ -460,7 +426,7 @@ def create_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SeasonCreate in body
 
@@ -499,11 +465,7 @@ async def create_season_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-      *  Returns : created season
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+      * Returns : created season
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons
@@ -516,7 +478,7 @@ async def create_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SeasonCreate in body
 
@@ -555,13 +517,6 @@ def delete_season(
 
     This API is used to delete a season permanently, only draft season can be deleted.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
 
@@ -573,7 +528,7 @@ def delete_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -610,13 +565,6 @@ async def delete_season_async(
 
     This API is used to delete a season permanently, only draft season can be deleted.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
 
@@ -628,7 +576,7 @@ async def delete_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -670,11 +618,7 @@ def exists_any_pass_by_pass_codes(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : ownership
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : ownership
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/passes/ownership/any
@@ -687,7 +631,7 @@ def exists_any_pass_by_pass_codes(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -726,11 +670,7 @@ async def exists_any_pass_by_pass_codes_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : ownership
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : ownership
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/passes/ownership/any
@@ -743,7 +683,7 @@ async def exists_any_pass_by_pass_codes_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -877,11 +817,7 @@ def get_current_user_season_progression(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user season progression
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user season progression
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/progression
@@ -894,7 +830,7 @@ def get_current_user_season_progression(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -931,11 +867,7 @@ async def get_current_user_season_progression_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user season progression
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user season progression
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/progression
@@ -948,7 +880,7 @@ async def get_current_user_season_progression_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -987,11 +919,7 @@ def get_full_season(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/full
@@ -1004,7 +932,7 @@ def get_full_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1041,11 +969,7 @@ async def get_full_season_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/full
@@ -1058,7 +982,7 @@ async def get_full_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1097,11 +1021,7 @@ def get_season(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
@@ -1114,7 +1034,7 @@ def get_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1151,11 +1071,7 @@ async def get_season_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
@@ -1168,7 +1084,7 @@ async def get_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1209,11 +1125,7 @@ def get_user_participated_seasons(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user participated season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user participated season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons
@@ -1226,7 +1138,7 @@ def get_user_participated_seasons(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1269,11 +1181,7 @@ async def get_user_participated_seasons_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user participated season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user participated season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons
@@ -1286,7 +1194,7 @@ async def get_user_participated_seasons_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1330,11 +1238,7 @@ def get_user_season(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data
@@ -1347,7 +1251,7 @@ def get_user_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1388,11 +1292,7 @@ async def get_user_season_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data
@@ -1405,7 +1305,7 @@ async def get_user_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1549,11 +1449,7 @@ def public_get_current_user_season(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/data
@@ -1566,7 +1462,7 @@ def public_get_current_user_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1603,11 +1499,7 @@ async def public_get_current_user_season_async(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/data
@@ -1620,7 +1512,7 @@ async def public_get_current_user_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1660,11 +1552,7 @@ def public_get_user_season(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data
@@ -1677,7 +1565,7 @@ def public_get_user_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1718,11 +1606,7 @@ async def public_get_user_season_async(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/{seasonId}/data
@@ -1735,7 +1619,7 @@ async def public_get_user_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1777,11 +1661,7 @@ def publish_season(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : published season
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : published season
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/publish
@@ -1794,7 +1674,7 @@ def publish_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1833,11 +1713,7 @@ async def publish_season_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : published season
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : published season
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/publish
@@ -1850,7 +1726,7 @@ async def publish_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1893,11 +1769,7 @@ def query_seasons(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : the list of season basic info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : the list of season basic info
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons
@@ -1910,7 +1782,7 @@ def query_seasons(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1953,11 +1825,7 @@ async def query_seasons_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : the list of season basic info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : the list of season basic info
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons
@@ -1970,7 +1838,7 @@ async def query_seasons_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2021,11 +1889,7 @@ def query_user_exp_grant_history(
     Other detail info:
 
       * default will query from current active season
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
       *  Returns : paginated grant history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history
@@ -2038,7 +1902,7 @@ def query_user_exp_grant_history(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2102,11 +1966,7 @@ async def query_user_exp_grant_history_async(
     Other detail info:
 
       * default will query from current active season
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
       *  Returns : paginated grant history
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history
@@ -2119,7 +1979,7 @@ async def query_user_exp_grant_history_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2179,11 +2039,7 @@ def query_user_exp_grant_history_tag(
     Other detail info:
 
       * default will query from current active season
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
       *  Returns : exp grant history tags list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history/tags
@@ -2196,7 +2052,7 @@ def query_user_exp_grant_history_tag(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2236,11 +2092,7 @@ async def query_user_exp_grant_history_tag_async(
     Other detail info:
 
       * default will query from current active season
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
       *  Returns : exp grant history tags list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history/tags
@@ -2253,7 +2105,7 @@ async def query_user_exp_grant_history_tag_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2291,13 +2143,6 @@ def reset_user_season(
 
     [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset user data in current season, it will not revoke the rewarded entitlements.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/reset
 
@@ -2309,7 +2154,7 @@ def reset_user_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2342,13 +2187,6 @@ async def reset_user_season_async(
 
     [TEST FACILITY ONLY] Forbidden in live environment. This API is used to reset user data in current season, it will not revoke the rewarded entitlements.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/reset
 
@@ -2360,7 +2198,7 @@ async def reset_user_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2398,11 +2236,7 @@ def retire_season(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : season info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : season info
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/retire
@@ -2415,7 +2249,7 @@ def retire_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2458,11 +2292,7 @@ async def retire_season_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : season info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : season info
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/retire
@@ -2475,7 +2305,7 @@ async def retire_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2520,11 +2350,7 @@ def unpublish_season(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : season info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : season info
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/unpublish
@@ -2537,7 +2363,7 @@ def unpublish_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2580,11 +2406,7 @@ async def unpublish_season_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : season info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : season info
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/unpublish
@@ -2597,7 +2419,7 @@ async def unpublish_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2642,11 +2464,7 @@ def update_season(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : updated season
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : updated season
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
@@ -2659,7 +2477,7 @@ def update_season(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SeasonUpdate in body
 
@@ -2704,11 +2522,7 @@ async def update_season_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : updated season
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : updated season
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
@@ -2721,7 +2535,7 @@ async def update_season_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SeasonUpdate in body
 

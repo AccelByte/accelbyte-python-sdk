@@ -39,11 +39,6 @@ class DeleteReward(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
 
@@ -55,7 +50,7 @@ class DeleteReward(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -81,7 +76,7 @@ class DeleteReward(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     code: str  # REQUIRED in [path]

@@ -51,7 +51,9 @@ class AdminDeleteUserLinkingHistoryByPlatformIDV3(Operation):
     - oculus
     - oculusweb
     - facebook
+    - google group
     - google
+    - googleplaygames
     - twitch
     - discord
     - apple

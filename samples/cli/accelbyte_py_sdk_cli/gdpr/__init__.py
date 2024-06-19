@@ -81,6 +81,17 @@ from ._public_cancel_my_account_deletion_request import (
 from ._public_get_my_account_deletion_status import (
     public_get_my_account_deletion_status,
 )
+from ._s2s_get_list_finished_account_deletion_request import (
+    s2s_get_list_finished_account_deletion_request,
+)
+from ._s2s_get_list_finished_personal_data_request import (
+    s2s_get_list_finished_personal_data_request,
+)
+from ._s2s_submit_user_account_deletion_request import (
+    s2s_submit_user_account_deletion_request,
+)
+from ._s2s_request_data_retrieval import s2s_request_data_retrieval
+from ._s2s_generate_personal_data_url import s2s_generate_personal_data_url
 
 
 commands = [
@@ -117,4 +128,9 @@ commands = [
     public_submit_my_account_deletion_request,
     public_cancel_my_account_deletion_request,
     public_get_my_account_deletion_status,
+    s2s_get_list_finished_account_deletion_request,
+    s2s_get_list_finished_personal_data_request,
+    s2s_submit_user_account_deletion_request,
+    s2s_request_data_retrieval,
+    s2s_generate_personal_data_url,
 ]

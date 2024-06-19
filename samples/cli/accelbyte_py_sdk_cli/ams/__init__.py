@@ -15,6 +15,7 @@ from ._admin_account_create import admin_account_create
 from ._admin_account_link_token_get import admin_account_link_token_get
 from ._admin_account_link_token_post import admin_account_link_token_post
 from ._artifact_get import artifact_get
+from ._artifact_bulk_delete import artifact_bulk_delete
 from ._artifact_usage_get import artifact_usage_get
 from ._artifact_delete import artifact_delete
 from ._artifact_get_url import artifact_get_url
@@ -39,7 +40,9 @@ from ._fleet_servers import fleet_servers
 from ._fleet_server_history import fleet_server_history
 from ._image_list import image_list
 from ._image_get import image_get
+from ._image_mark_for_deletion import image_mark_for_deletion
 from ._image_patch import image_patch
+from ._image_unmark_for_deletion import image_unmark_for_deletion
 from ._qo_s_regions_get import qo_s_regions_get
 from ._qo_s_regions_update import qo_s_regions_update
 from ._info_regions import info_regions
@@ -65,6 +68,7 @@ commands = [
     admin_account_link_token_get,
     admin_account_link_token_post,
     artifact_get,
+    artifact_bulk_delete,
     artifact_usage_get,
     artifact_delete,
     artifact_get_url,
@@ -83,7 +87,9 @@ commands = [
     fleet_server_history,
     image_list,
     image_get,
+    image_mark_for_deletion,
     image_patch,
+    image_unmark_for_deletion,
     qo_s_regions_get,
     qo_s_regions_update,
     info_regions,

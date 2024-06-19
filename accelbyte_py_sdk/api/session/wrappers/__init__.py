@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.15.0"
+__version__ = "3.15.5"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -122,6 +122,8 @@ from ._operations import get_healthcheck_info_v1_async
 
 from ._party import admin_query_parties
 from ._party import admin_query_parties_async
+from ._party import admin_sync_native_session
+from ._party import admin_sync_native_session_async
 from ._party import public_create_party
 from ._party import public_create_party_async
 from ._party import public_generate_party_code

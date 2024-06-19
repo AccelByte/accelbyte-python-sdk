@@ -42,11 +42,7 @@ class CreateReward(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-      *  Returns : created reward
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+      * Returns : created reward
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards
@@ -59,7 +55,7 @@ class CreateReward(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RewardCreate in body
 
@@ -85,7 +81,7 @@ class CreateReward(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: RewardCreate  # OPTIONAL in [body]

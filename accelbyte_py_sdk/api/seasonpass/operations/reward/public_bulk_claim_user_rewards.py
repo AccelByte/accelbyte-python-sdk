@@ -40,11 +40,7 @@ class PublicBulkClaimUserRewards(Operation):
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/rewards/bulk
@@ -57,7 +53,7 @@ class PublicBulkClaimUserRewards(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -77,7 +73,7 @@ class PublicBulkClaimUserRewards(Operation):
     _method: str = "POST"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

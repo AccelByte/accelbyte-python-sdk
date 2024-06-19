@@ -41,11 +41,7 @@ class BulkCreateUserStatItems(Operation):
     Bulk create user's statItems.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : bulk created result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/bulk
@@ -58,7 +54,7 @@ class BulkCreateUserStatItems(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemCreate] in body
 
@@ -86,7 +82,7 @@ class BulkCreateUserStatItems(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[BulkStatItemCreate]  # OPTIONAL in [body]

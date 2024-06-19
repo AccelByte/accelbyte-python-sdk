@@ -8,13 +8,19 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "2.10.0"
+__version__ = "2.11.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .dto_extend_config_dto import DtoExtendConfigDTO
+from .dto_finished_data_deletion import DtoFinishedDataDeletion
+from .dto_finished_data_deletion import StatusEnum as DtoFinishedDataDeletionStatusEnum
+from .dto_finished_data_request import DtoFinishedDataRequest
+from .dto_finished_data_request import StatusEnum as DtoFinishedDataRequestStatusEnum
+from .dto_list_finished_data_deletion import DtoListFinishedDataDeletion
+from .dto_list_finished_data_requests import DtoListFinishedDataRequests
 from .dto_platform_account_closure_client_request import (
     DtoPlatformAccountClosureClientRequest,
 )
@@ -45,6 +51,9 @@ from .models_list_personal_data_response import ModelsListPersonalDataResponse
 from .models_pagination import ModelsPagination
 from .models_personal_data import ModelsPersonalData
 from .models_request_delete_response import ModelsRequestDeleteResponse
+from .models_s2s_data_retrieval_response import ModelsS2SDataRetrievalResponse
+from .models_s2s_request_delete_response import ModelsS2SRequestDeleteResponse
+from .models_s2s_user_data_url import ModelsS2SUserDataURL
 from .models_user_data_url import ModelsUserDataURL
 from .models_user_personal_data import ModelsUserPersonalData
 from .models_user_personal_data_response import ModelsUserPersonalDataResponse

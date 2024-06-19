@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.15.0)
+# AccelByte Gaming Services Session Service Index (3.15.5)
 
 
 ## Operations
@@ -99,6 +99,7 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /session/v1/admin/namespaces/{namespace}/parties | GET | adminQueryParties | `false` | [AdminQueryParties](../../accelbyte_py_sdk/api/session/operations/party/admin_query_parties.py) | [admin_query_parties](../../accelbyte_py_sdk/api/session/wrappers/_party.py) | [accelbyte_py_sdk_cli session-admin-query-parties](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_query_parties.py) |
+| /session/v1/admin/namespaces/{namespace}/users/{userId}/native-sync | POST | adminSyncNativeSession | `false` | [AdminSyncNativeSession](../../accelbyte_py_sdk/api/session/operations/party/admin_sync_native_session.py) | [admin_sync_native_session](../../accelbyte_py_sdk/api/session/wrappers/_party.py) | [accelbyte_py_sdk_cli session-admin-sync-native-session](../../samples/cli/accelbyte_py_sdk_cli/session/_admin_sync_native_session.py) |
 | /session/v1/public/namespaces/{namespace}/party | POST | publicCreateParty | `false` | [PublicCreateParty](../../accelbyte_py_sdk/api/session/operations/party/public_create_party.py) | [public_create_party](../../accelbyte_py_sdk/api/session/wrappers/_party.py) | [accelbyte_py_sdk_cli session-public-create-party](../../samples/cli/accelbyte_py_sdk_cli/session/_public_create_party.py) |
 | /session/v1/public/namespaces/{namespace}/parties/{partyId}/code | POST | publicGeneratePartyCode | `false` | [PublicGeneratePartyCode](../../accelbyte_py_sdk/api/session/operations/party/public_generate_party_code.py) | [public_generate_party_code](../../accelbyte_py_sdk/api/session/wrappers/_party.py) | [accelbyte_py_sdk_cli session-public-generate-party-code](../../samples/cli/accelbyte_py_sdk_cli/session/_public_generate_party_code.py) |
 | /session/v1/public/namespaces/{namespace}/parties/{partyId} | GET | publicGetParty | `false` | [PublicGetParty](../../accelbyte_py_sdk/api/session/operations/party/public_get_party.py) | [public_get_party](../../accelbyte_py_sdk/api/session/wrappers/_party.py) | [accelbyte_py_sdk_cli session-public-get-party](../../samples/cli/accelbyte_py_sdk_cli/session/_public_get_party.py) |

@@ -41,6 +41,7 @@ from ..models import ApimodelsUpdatePartyRequest
 from ..models import ResponseError
 
 from ..operations.party import AdminQueryParties
+from ..operations.party import AdminSyncNativeSession
 from ..operations.party import PublicCreateParty
 from ..operations.party import PublicGeneratePartyCode
 from ..operations.party import PublicGetParty
@@ -236,6 +237,108 @@ async def admin_query_parties_async(
         order_by=order_by,
         party_id=party_id,
         value=value,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminSyncNativeSession)
+def admin_sync_native_session(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Trigger user's active party session to native platform. (adminSyncNativeSession)
+
+    Trigger user's active party session to native platform.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/users/{userId}/native-sync
+
+        method: POST
+
+        tags: ["Party"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminSyncNativeSession.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminSyncNativeSession)
+async def admin_sync_native_session_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Trigger user's active party session to native platform. (adminSyncNativeSession)
+
+    Trigger user's active party session to native platform.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/users/{userId}/native-sync
+
+        method: POST
+
+        tags: ["Party"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminSyncNativeSession.create(
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

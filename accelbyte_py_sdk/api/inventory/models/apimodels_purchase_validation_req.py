@@ -45,13 +45,13 @@ class ApimodelsPurchaseValidationReq(Model):
 
         sku: (sku) REQUIRED str
 
-        stackable: (stackable) REQUIRED bool
-
         entitlement_type: (entitlementType) OPTIONAL str
 
         inventory_config: (inventoryConfig) OPTIONAL ApimodelsInventoryConfig
 
         items: (items) OPTIONAL List[ApimodelsPurchaseValidationItemReq]
+
+        stackable: (stackable) OPTIONAL bool
 
         use_count: (useCount) OPTIONAL int
     """
@@ -62,10 +62,10 @@ class ApimodelsPurchaseValidationReq(Model):
     item_type: str  # REQUIRED
     quantity: int  # REQUIRED
     sku: str  # REQUIRED
-    stackable: bool  # REQUIRED
     entitlement_type: str  # OPTIONAL
     inventory_config: ApimodelsInventoryConfig  # OPTIONAL
     items: List[ApimodelsPurchaseValidationItemReq]  # OPTIONAL
+    stackable: bool  # OPTIONAL
     use_count: int  # OPTIONAL
 
     # endregion fields
@@ -88,10 +88,6 @@ class ApimodelsPurchaseValidationReq(Model):
         self.sku = value
         return self
 
-    def with_stackable(self, value: bool) -> ApimodelsPurchaseValidationReq:
-        self.stackable = value
-        return self
-
     def with_entitlement_type(self, value: str) -> ApimodelsPurchaseValidationReq:
         self.entitlement_type = value
         return self
@@ -106,6 +102,10 @@ class ApimodelsPurchaseValidationReq(Model):
         self, value: List[ApimodelsPurchaseValidationItemReq]
     ) -> ApimodelsPurchaseValidationReq:
         self.items = value
+        return self
+
+    def with_stackable(self, value: bool) -> ApimodelsPurchaseValidationReq:
+        self.stackable = value
         return self
 
     def with_use_count(self, value: int) -> ApimodelsPurchaseValidationReq:
@@ -134,10 +134,6 @@ class ApimodelsPurchaseValidationReq(Model):
             result["sku"] = str(self.sku)
         elif include_empty:
             result["sku"] = ""
-        if hasattr(self, "stackable"):
-            result["stackable"] = bool(self.stackable)
-        elif include_empty:
-            result["stackable"] = False
         if hasattr(self, "entitlement_type"):
             result["entitlementType"] = str(self.entitlement_type)
         elif include_empty:
@@ -154,6 +150,10 @@ class ApimodelsPurchaseValidationReq(Model):
             ]
         elif include_empty:
             result["items"] = []
+        if hasattr(self, "stackable"):
+            result["stackable"] = bool(self.stackable)
+        elif include_empty:
+            result["stackable"] = False
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
@@ -171,10 +171,10 @@ class ApimodelsPurchaseValidationReq(Model):
         item_type: str,
         quantity: int,
         sku: str,
-        stackable: bool,
         entitlement_type: Optional[str] = None,
         inventory_config: Optional[ApimodelsInventoryConfig] = None,
         items: Optional[List[ApimodelsPurchaseValidationItemReq]] = None,
+        stackable: Optional[bool] = None,
         use_count: Optional[int] = None,
         **kwargs,
     ) -> ApimodelsPurchaseValidationReq:
@@ -183,13 +183,14 @@ class ApimodelsPurchaseValidationReq(Model):
         instance.item_type = item_type
         instance.quantity = quantity
         instance.sku = sku
-        instance.stackable = stackable
         if entitlement_type is not None:
             instance.entitlement_type = entitlement_type
         if inventory_config is not None:
             instance.inventory_config = inventory_config
         if items is not None:
             instance.items = items
+        if stackable is not None:
+            instance.stackable = stackable
         if use_count is not None:
             instance.use_count = use_count
         return instance
@@ -217,10 +218,6 @@ class ApimodelsPurchaseValidationReq(Model):
             instance.sku = str(dict_["sku"])
         elif include_empty:
             instance.sku = ""
-        if "stackable" in dict_ and dict_["stackable"] is not None:
-            instance.stackable = bool(dict_["stackable"])
-        elif include_empty:
-            instance.stackable = False
         if "entitlementType" in dict_ and dict_["entitlementType"] is not None:
             instance.entitlement_type = str(dict_["entitlementType"])
         elif include_empty:
@@ -240,6 +237,10 @@ class ApimodelsPurchaseValidationReq(Model):
             ]
         elif include_empty:
             instance.items = []
+        if "stackable" in dict_ and dict_["stackable"] is not None:
+            instance.stackable = bool(dict_["stackable"])
+        elif include_empty:
+            instance.stackable = False
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
@@ -291,10 +292,10 @@ class ApimodelsPurchaseValidationReq(Model):
             "itemType": "item_type",
             "quantity": "quantity",
             "sku": "sku",
-            "stackable": "stackable",
             "entitlementType": "entitlement_type",
             "inventoryConfig": "inventory_config",
             "items": "items",
+            "stackable": "stackable",
             "useCount": "use_count",
         }
 
@@ -305,10 +306,10 @@ class ApimodelsPurchaseValidationReq(Model):
             "itemType": True,
             "quantity": True,
             "sku": True,
-            "stackable": True,
             "entitlementType": False,
             "inventoryConfig": False,
             "items": False,
+            "stackable": False,
             "useCount": False,
         }
 

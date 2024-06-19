@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.16.0"
+__version__ = "7.17.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -686,6 +686,8 @@ from ._users import public_user_verification_v3
 from ._users import public_user_verification_v3_async
 from ._users import public_validate_user_by_user_id_and_password_v3
 from ._users import public_validate_user_by_user_id_and_password_v3_async
+from ._users import public_validate_user_input
+from ._users import public_validate_user_input_async
 from ._users import public_verify_headless_account_v3
 from ._users import public_verify_headless_account_v3_async
 from ._users import public_verify_registration_code
@@ -729,6 +731,8 @@ from ._users_v4 import admin_bulk_check_valid_user_idv4
 from ._users_v4 import admin_bulk_check_valid_user_idv4_async
 from ._users_v4 import admin_bulk_update_user_account_type_v4
 from ._users_v4 import admin_bulk_update_user_account_type_v4_async
+from ._users_v4 import admin_challenge_my_mfav4
+from ._users_v4 import admin_challenge_my_mfav4_async
 from ._users_v4 import admin_create_test_users_v4
 from ._users_v4 import admin_create_test_users_v4_async
 from ._users_v4 import admin_create_user_v4
@@ -763,6 +767,8 @@ from ._users_v4 import admin_get_my_backup_codes_v4
 from ._users_v4 import admin_get_my_backup_codes_v4_async
 from ._users_v4 import admin_get_my_enabled_factors_v4
 from ._users_v4 import admin_get_my_enabled_factors_v4_async
+from ._users_v4 import admin_get_my_mfa_status_v4
+from ._users_v4 import admin_get_my_mfa_status_v4_async
 from ._users_v4 import admin_get_namespace_invitation_history_v4
 from ._users_v4 import admin_get_namespace_invitation_history_v4_async
 from ._users_v4 import admin_get_namespace_user_invitation_history_v4
@@ -791,6 +797,8 @@ from ._users_v4 import admin_update_user_v4
 from ._users_v4 import admin_update_user_v4_async
 from ._users_v4 import create_user_from_invitation_v4
 from ._users_v4 import create_user_from_invitation_v4_async
+from ._users_v4 import public_challenge_my_mfav4
+from ._users_v4 import public_challenge_my_mfav4_async
 from ._users_v4 import public_create_test_user_v4
 from ._users_v4 import public_create_test_user_v4_async
 from ._users_v4 import public_create_user_v4
@@ -823,10 +831,14 @@ from ._users_v4 import public_get_my_backup_codes_v4
 from ._users_v4 import public_get_my_backup_codes_v4_async
 from ._users_v4 import public_get_my_enabled_factors_v4
 from ._users_v4 import public_get_my_enabled_factors_v4_async
+from ._users_v4 import public_get_my_mfa_status_v4
+from ._users_v4 import public_get_my_mfa_status_v4_async
 from ._users_v4 import public_get_user_public_info_by_user_id_v4
 from ._users_v4 import public_get_user_public_info_by_user_id_v4_async
 from ._users_v4 import public_invite_user_v4
 from ._users_v4 import public_invite_user_v4_async
+from ._users_v4 import public_list_user_id_by_platform_user_i_ds_v4
+from ._users_v4 import public_list_user_id_by_platform_user_i_ds_v4_async
 from ._users_v4 import public_make_factor_my_default_v4
 from ._users_v4 import public_make_factor_my_default_v4_async
 from ._users_v4 import public_remove_trusted_device_v4

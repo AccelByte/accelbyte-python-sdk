@@ -32,16 +32,23 @@ class ApiPatchNamespaceConfigRequest(Model):
     """Api patch namespace config request (api.PatchNamespaceConfigRequest)
 
     Properties:
+        extra_platforms: (extraPlatforms) OPTIONAL List[str]
+
         platform_group: (platformGroup) OPTIONAL Dict[str, List[str]]
     """
 
     # region fields
 
+    extra_platforms: List[str]  # OPTIONAL
     platform_group: Dict[str, List[str]]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_extra_platforms(self, value: List[str]) -> ApiPatchNamespaceConfigRequest:
+        self.extra_platforms = value
+        return self
 
     def with_platform_group(
         self, value: Dict[str, List[str]]
@@ -55,6 +62,10 @@ class ApiPatchNamespaceConfigRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "extra_platforms"):
+            result["extraPlatforms"] = [str(i0) for i0 in self.extra_platforms]
+        elif include_empty:
+            result["extraPlatforms"] = []
         if hasattr(self, "platform_group"):
             result["platformGroup"] = {
                 str(k0): [str(i1) for i1 in v0]
@@ -70,9 +81,14 @@ class ApiPatchNamespaceConfigRequest(Model):
 
     @classmethod
     def create(
-        cls, platform_group: Optional[Dict[str, List[str]]] = None, **kwargs
+        cls,
+        extra_platforms: Optional[List[str]] = None,
+        platform_group: Optional[Dict[str, List[str]]] = None,
+        **kwargs,
     ) -> ApiPatchNamespaceConfigRequest:
         instance = cls()
+        if extra_platforms is not None:
+            instance.extra_platforms = extra_platforms
         if platform_group is not None:
             instance.platform_group = platform_group
         return instance
@@ -84,6 +100,10 @@ class ApiPatchNamespaceConfigRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "extraPlatforms" in dict_ and dict_["extraPlatforms"] is not None:
+            instance.extra_platforms = [str(i0) for i0 in dict_["extraPlatforms"]]
+        elif include_empty:
+            instance.extra_platforms = []
         if "platformGroup" in dict_ and dict_["platformGroup"] is not None:
             instance.platform_group = {
                 str(k0): [str(i1) for i1 in v0]
@@ -134,12 +154,14 @@ class ApiPatchNamespaceConfigRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "extraPlatforms": "extra_platforms",
             "platformGroup": "platform_group",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "extraPlatforms": False,
             "platformGroup": False,
         }
 

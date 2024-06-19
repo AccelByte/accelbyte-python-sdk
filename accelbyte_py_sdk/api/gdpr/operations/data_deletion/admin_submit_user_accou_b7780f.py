@@ -34,9 +34,9 @@ from ...models import ResponseError
 
 
 class AdminSubmitUserAccountDeletionRequest(Operation):
-    """Submit user's account deletion requests (AdminSubmitUserAccountDeletionRequest)
+    """Submit user's account deletion request (AdminSubmitUserAccountDeletionRequest)
 
-    Submit user's account deletion requests
+    Submit user's account deletion request.
     Scope: account
 
     Required Scope(s):

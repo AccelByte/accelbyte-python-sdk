@@ -61,11 +61,7 @@ def get_slot_data(
     Get slot data.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
       *  Returns : slot data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
 
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/slots/{slotId}
@@ -78,7 +74,7 @@ def get_slot_data(
 
         produces: ["application/octet-stream"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -120,11 +116,7 @@ async def get_slot_data_async(
     Get slot data.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
       *  Returns : slot data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
 
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/slots/{slotId}
@@ -137,7 +129,7 @@ async def get_slot_data_async(
 
         produces: ["application/octet-stream"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -180,11 +172,7 @@ def get_user_namespace_slots(
     Get slots for a given user.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
       *  Returns : list of slots
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
 
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/slots
@@ -197,7 +185,7 @@ def get_user_namespace_slots(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -233,11 +221,7 @@ async def get_user_namespace_slots_async(
     Get slots for a given user.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
       *  Returns : list of slots
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
 
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/slots
@@ -250,7 +234,7 @@ async def get_user_namespace_slots_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -293,11 +277,7 @@ def public_create_user_namespace_slot(
     Creates a slot.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=1 (CREATE)
       *  Returns : created slot info
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [CREATE]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots
@@ -310,7 +290,7 @@ def public_create_user_namespace_slot(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         checksum: (checksum) OPTIONAL str in form_data
 
@@ -370,11 +350,7 @@ async def public_create_user_namespace_slot_async(
     Creates a slot.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=1 (CREATE)
       *  Returns : created slot info
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [CREATE]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots
@@ -387,7 +363,7 @@ async def public_create_user_namespace_slot_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         checksum: (checksum) OPTIONAL str in form_data
 
@@ -445,11 +421,6 @@ def public_delete_user_namespace_slot(
     Deletes the slot.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=8 (DELETE)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [DELETE]
-
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
 
@@ -461,7 +432,7 @@ def public_delete_user_namespace_slot(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -503,11 +474,6 @@ async def public_delete_user_namespace_slot_async(
     Deletes the slot.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=8 (DELETE)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [DELETE]
-
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
 
@@ -519,7 +485,7 @@ async def public_delete_user_namespace_slot_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -563,11 +529,7 @@ def public_get_slot_data(
     Get slot data.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
       *  Returns : slot data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
@@ -580,7 +542,7 @@ def public_get_slot_data(
 
         produces: ["application/octet-stream"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -622,11 +584,7 @@ async def public_get_slot_data_async(
     Get slot data.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
       *  Returns : slot data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
@@ -639,7 +597,7 @@ async def public_get_slot_data_async(
 
         produces: ["application/octet-stream"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -682,11 +640,7 @@ def public_get_user_namespace_slots(
     Get list of slots for a given user in namespace.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
       *  Returns : list of slots
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots
@@ -699,7 +653,7 @@ def public_get_user_namespace_slots(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -735,11 +689,7 @@ async def public_get_user_namespace_slots_async(
     Get list of slots for a given user in namespace.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=2 (READ)
       *  Returns : list of slots
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [READ]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots
@@ -752,7 +702,7 @@ async def public_get_user_namespace_slots_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -796,11 +746,7 @@ def public_update_user_namespace_slot(
     Updates a slot.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
       *  Returns : updated slot
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
@@ -813,7 +759,7 @@ def public_update_user_namespace_slot(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         checksum: (checksum) OPTIONAL str in form_data
 
@@ -877,11 +823,7 @@ async def public_update_user_namespace_slot_async(
     Updates a slot.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
       *  Returns : updated slot
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
@@ -894,7 +836,7 @@ async def public_update_user_namespace_slot_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         checksum: (checksum) OPTIONAL str in form_data
 
@@ -956,11 +898,7 @@ def public_update_user_namespace_slot_metadata(
     Updates the slot metadata.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
       *  Returns : updated slot
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}/metadata
@@ -973,7 +911,7 @@ def public_update_user_namespace_slot_metadata(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SlotMetadataUpdate in body
 
@@ -1019,11 +957,7 @@ async def public_update_user_namespace_slot_metadata_async(
     Updates the slot metadata.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
       *  Returns : updated slot
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}/metadata
@@ -1036,7 +970,7 @@ async def public_update_user_namespace_slot_metadata_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SlotMetadataUpdate in body
 

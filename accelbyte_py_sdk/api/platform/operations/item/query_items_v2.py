@@ -76,8 +76,8 @@ class SortByEnum(StrEnum):
     DISPLAYORDER_DESC = "displayOrder:desc"
 
 
-class QueryItems1(Operation):
-    """Query items by criteria (queryItems_1)
+class QueryItemsV2(Operation):
+    """Query items by criteria (queryItemsV2)
 
     This API is used to query items by criteria within a store.
 
@@ -120,7 +120,7 @@ class QueryItems1(Operation):
 
         item_status: (itemStatus) OPTIONAL Union[str, ItemStatusEnum] in query
 
-        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+        item_type: (itemType) OPTIONAL List[Union[str, ItemTypeEnum]] in query
 
         limit: (limit) OPTIONAL int in query
 
@@ -166,7 +166,7 @@ class QueryItems1(Operation):
     include_sub_category_item: bool  # OPTIONAL in [query]
     item_name: str  # OPTIONAL in [query]
     item_status: Union[str, ItemStatusEnum]  # OPTIONAL in [query]
-    item_type: Union[str, ItemTypeEnum]  # OPTIONAL in [query]
+    item_type: List[Union[str, ItemTypeEnum]]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
@@ -273,79 +273,79 @@ class QueryItems1(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> QueryItems1:
+    def with_namespace(self, value: str) -> QueryItemsV2:
         self.namespace = value
         return self
 
-    def with_app_type(self, value: Union[str, AppTypeEnum]) -> QueryItems1:
+    def with_app_type(self, value: Union[str, AppTypeEnum]) -> QueryItemsV2:
         self.app_type = value
         return self
 
-    def with_available_date(self, value: str) -> QueryItems1:
+    def with_available_date(self, value: str) -> QueryItemsV2:
         self.available_date = value
         return self
 
-    def with_base_app_id(self, value: str) -> QueryItems1:
+    def with_base_app_id(self, value: str) -> QueryItemsV2:
         self.base_app_id = value
         return self
 
-    def with_category_path(self, value: str) -> QueryItems1:
+    def with_category_path(self, value: str) -> QueryItemsV2:
         self.category_path = value
         return self
 
-    def with_features(self, value: str) -> QueryItems1:
+    def with_features(self, value: str) -> QueryItemsV2:
         self.features = value
         return self
 
-    def with_include_sub_category_item(self, value: bool) -> QueryItems1:
+    def with_include_sub_category_item(self, value: bool) -> QueryItemsV2:
         self.include_sub_category_item = value
         return self
 
-    def with_item_name(self, value: str) -> QueryItems1:
+    def with_item_name(self, value: str) -> QueryItemsV2:
         self.item_name = value
         return self
 
-    def with_item_status(self, value: Union[str, ItemStatusEnum]) -> QueryItems1:
+    def with_item_status(self, value: Union[str, ItemStatusEnum]) -> QueryItemsV2:
         self.item_status = value
         return self
 
-    def with_item_type(self, value: Union[str, ItemTypeEnum]) -> QueryItems1:
+    def with_item_type(self, value: List[Union[str, ItemTypeEnum]]) -> QueryItemsV2:
         self.item_type = value
         return self
 
-    def with_limit(self, value: int) -> QueryItems1:
+    def with_limit(self, value: int) -> QueryItemsV2:
         self.limit = value
         return self
 
-    def with_offset(self, value: int) -> QueryItems1:
+    def with_offset(self, value: int) -> QueryItemsV2:
         self.offset = value
         return self
 
-    def with_region(self, value: str) -> QueryItems1:
+    def with_region(self, value: str) -> QueryItemsV2:
         self.region = value
         return self
 
-    def with_section_exclusive(self, value: bool) -> QueryItems1:
+    def with_section_exclusive(self, value: bool) -> QueryItemsV2:
         self.section_exclusive = value
         return self
 
-    def with_sort_by(self, value: List[Union[str, SortByEnum]]) -> QueryItems1:
+    def with_sort_by(self, value: List[Union[str, SortByEnum]]) -> QueryItemsV2:
         self.sort_by = value
         return self
 
-    def with_store_id(self, value: str) -> QueryItems1:
+    def with_store_id(self, value: str) -> QueryItemsV2:
         self.store_id = value
         return self
 
-    def with_tags(self, value: str) -> QueryItems1:
+    def with_tags(self, value: str) -> QueryItemsV2:
         self.tags = value
         return self
 
-    def with_target_namespace(self, value: str) -> QueryItems1:
+    def with_target_namespace(self, value: str) -> QueryItemsV2:
         self.target_namespace = value
         return self
 
-    def with_with_total(self, value: bool) -> QueryItems1:
+    def with_with_total(self, value: bool) -> QueryItemsV2:
         self.with_total = value
         return self
 
@@ -395,9 +395,9 @@ class QueryItems1(Operation):
         elif include_empty:
             result["itemStatus"] = Union[str, ItemStatusEnum]()
         if hasattr(self, "item_type") and self.item_type:
-            result["itemType"] = str(self.item_type)
+            result["itemType"] = [str(i0) for i0 in self.item_type]
         elif include_empty:
-            result["itemType"] = Union[str, ItemTypeEnum]()
+            result["itemType"] = []
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -495,7 +495,7 @@ class QueryItems1(Operation):
         include_sub_category_item: Optional[bool] = None,
         item_name: Optional[str] = None,
         item_status: Optional[Union[str, ItemStatusEnum]] = None,
-        item_type: Optional[Union[str, ItemTypeEnum]] = None,
+        item_type: Optional[List[Union[str, ItemTypeEnum]]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         region: Optional[str] = None,
@@ -506,7 +506,7 @@ class QueryItems1(Operation):
         target_namespace: Optional[str] = None,
         with_total: Optional[bool] = None,
         **kwargs,
-    ) -> QueryItems1:
+    ) -> QueryItemsV2:
         instance = cls()
         instance.namespace = namespace
         if app_type is not None:
@@ -550,7 +550,7 @@ class QueryItems1(Operation):
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> QueryItems1:
+    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> QueryItemsV2:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
@@ -592,9 +592,9 @@ class QueryItems1(Operation):
         elif include_empty:
             instance.item_status = Union[str, ItemStatusEnum]()
         if "itemType" in dict_ and dict_["itemType"] is not None:
-            instance.item_type = str(dict_["itemType"])
+            instance.item_type = [str(i0) for i0 in dict_["itemType"]]
         elif include_empty:
-            instance.item_type = Union[str, ItemTypeEnum]()
+            instance.item_type = []
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -684,6 +684,7 @@ class QueryItems1(Operation):
     @staticmethod
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
+            "itemType": "multi",  # in query
             "sortBy": "csv",  # in query
         }
 

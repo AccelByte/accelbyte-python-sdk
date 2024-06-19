@@ -54,6 +54,8 @@ class ModelsConfig(Model):
 
         disable_invitation_on_join_party: (disableInvitationOnJoinParty) OPTIONAL bool
 
+        disable_remove_socket_old_connection: (disableRemoveSocketOldConnection) OPTIONAL bool
+
         enable_chat: (enableChat) OPTIONAL bool
 
         entitlement_check: (entitlementCheck) OPTIONAL bool
@@ -90,6 +92,7 @@ class ModelsConfig(Model):
     chat_rate_limit_duration: int  # OPTIONAL
     concurrent_users_limit: int  # OPTIONAL
     disable_invitation_on_join_party: bool  # OPTIONAL
+    disable_remove_socket_old_connection: bool  # OPTIONAL
     enable_chat: bool  # OPTIONAL
     entitlement_check: bool  # OPTIONAL
     entitlement_item_id: str  # OPTIONAL
@@ -148,6 +151,10 @@ class ModelsConfig(Model):
 
     def with_disable_invitation_on_join_party(self, value: bool) -> ModelsConfig:
         self.disable_invitation_on_join_party = value
+        return self
+
+    def with_disable_remove_socket_old_connection(self, value: bool) -> ModelsConfig:
+        self.disable_remove_socket_old_connection = value
         return self
 
     def with_enable_chat(self, value: bool) -> ModelsConfig:
@@ -252,6 +259,12 @@ class ModelsConfig(Model):
             )
         elif include_empty:
             result["disableInvitationOnJoinParty"] = False
+        if hasattr(self, "disable_remove_socket_old_connection"):
+            result["disableRemoveSocketOldConnection"] = bool(
+                self.disable_remove_socket_old_connection
+            )
+        elif include_empty:
+            result["disableRemoveSocketOldConnection"] = False
         if hasattr(self, "enable_chat"):
             result["enableChat"] = bool(self.enable_chat)
         elif include_empty:
@@ -318,6 +331,7 @@ class ModelsConfig(Model):
         chat_rate_limit_duration: Optional[int] = None,
         concurrent_users_limit: Optional[int] = None,
         disable_invitation_on_join_party: Optional[bool] = None,
+        disable_remove_socket_old_connection: Optional[bool] = None,
         enable_chat: Optional[bool] = None,
         entitlement_check: Optional[bool] = None,
         entitlement_item_id: Optional[str] = None,
@@ -354,6 +368,10 @@ class ModelsConfig(Model):
             instance.concurrent_users_limit = concurrent_users_limit
         if disable_invitation_on_join_party is not None:
             instance.disable_invitation_on_join_party = disable_invitation_on_join_party
+        if disable_remove_socket_old_connection is not None:
+            instance.disable_remove_socket_old_connection = (
+                disable_remove_socket_old_connection
+            )
         if enable_chat is not None:
             instance.enable_chat = enable_chat
         if entitlement_check is not None:
@@ -463,6 +481,15 @@ class ModelsConfig(Model):
             )
         elif include_empty:
             instance.disable_invitation_on_join_party = False
+        if (
+            "disableRemoveSocketOldConnection" in dict_
+            and dict_["disableRemoveSocketOldConnection"] is not None
+        ):
+            instance.disable_remove_socket_old_connection = bool(
+                dict_["disableRemoveSocketOldConnection"]
+            )
+        elif include_empty:
+            instance.disable_remove_socket_old_connection = False
         if "enableChat" in dict_ and dict_["enableChat"] is not None:
             instance.enable_chat = bool(dict_["enableChat"])
         elif include_empty:
@@ -570,6 +597,7 @@ class ModelsConfig(Model):
             "chatRateLimitDuration": "chat_rate_limit_duration",
             "concurrentUsersLimit": "concurrent_users_limit",
             "disableInvitationOnJoinParty": "disable_invitation_on_join_party",
+            "disableRemoveSocketOldConnection": "disable_remove_socket_old_connection",
             "enableChat": "enable_chat",
             "entitlementCheck": "entitlement_check",
             "entitlementItemID": "entitlement_item_id",
@@ -597,6 +625,7 @@ class ModelsConfig(Model):
             "chatRateLimitDuration": False,
             "concurrentUsersLimit": False,
             "disableInvitationOnJoinParty": False,
+            "disableRemoveSocketOldConnection": False,
             "enableChat": False,
             "entitlementCheck": False,
             "entitlementItemID": False,

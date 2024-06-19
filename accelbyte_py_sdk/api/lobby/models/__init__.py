@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.35.5"
+__version__ = "3.35.9"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -17,6 +17,8 @@ __email__ = "dev@accelbyte.net"
 from .handlers_get_users_presence_response import HandlersGetUsersPresenceResponse
 from .handlers_user_presence import HandlersUserPresence
 from .log_app_message_declaration import LogAppMessageDeclaration
+from .logconfig_configuration import LogconfigConfiguration
+from .logconfig_configuration import LogLevelEnum as LogconfigConfigurationLogLevelEnum
 from .model_bulk_friends_request import ModelBulkFriendsRequest
 from .model_bulk_friends_response import ModelBulkFriendsResponse
 from .model_bulk_users_free_form_notification_request_v1 import (

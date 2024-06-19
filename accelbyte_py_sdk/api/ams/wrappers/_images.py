@@ -36,7 +36,9 @@ from ..models import ResponseErrorResponse
 
 from ..operations.images import ImageGet
 from ..operations.images import ImageList
+from ..operations.images import ImageMarkForDeletion
 from ..operations.images import ImagePatch
+from ..operations.images import ImageUnmarkForDeletion
 
 
 @same_doc_as(ImageGet)
@@ -48,10 +50,10 @@ def image_get(
 ):
     """get image details. (ImageGet)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
@@ -101,10 +103,10 @@ async def image_get_async(
 ):
     """get image details. (ImageGet)
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
@@ -157,10 +159,10 @@ def image_list(
 
     Returns images which exist (uploaded, uploading, or building) in the linked account. This route fails if no account is linked
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images
@@ -208,10 +210,10 @@ async def image_list_async(
 
     Returns images which exist (uploaded, uploading, or building) in the linked account. This route fails if no account is linked
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [READ]
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images
@@ -251,6 +253,122 @@ async def image_list_async(
     )
 
 
+@same_doc_as(ImageMarkForDeletion)
+def image_mark_for_deletion(
+    image_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """mark the image for deletion (ImageMarkForDeletion)
+
+    Marks an image for deletion. The image will stop being available for fleets and will eventually be deleted.
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
+
+        method: DELETE
+
+        tags: ["Images"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        image_id: (imageID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (success)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (image doesn't exist)
+
+        412: Precondition Failed - ResponseErrorResponse (image is being used by 1 or more fleets)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImageMarkForDeletion.create(
+        image_id=image_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ImageMarkForDeletion)
+async def image_mark_for_deletion_async(
+    image_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """mark the image for deletion (ImageMarkForDeletion)
+
+    Marks an image for deletion. The image will stop being available for fleets and will eventually be deleted.
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
+
+        method: DELETE
+
+        tags: ["Images"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        image_id: (imageID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (success)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (image doesn't exist)
+
+        412: Precondition Failed - ResponseErrorResponse (image is being used by 1 or more fleets)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImageMarkForDeletion.create(
+        image_id=image_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(ImagePatch)
 def image_patch(
     body: ApiImageUpdate,
@@ -263,10 +381,10 @@ def image_patch(
 
     This allows editing of the image name, toggling `IsProtected`, or adding & removal of tags
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
@@ -322,10 +440,10 @@ async def image_patch_async(
 
     This allows editing of the image name, toggling `IsProtected`, or adding & removal of tags
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
@@ -363,6 +481,122 @@ async def image_patch_async(
             return None, error
     request = ImagePatch.create(
         body=body,
+        image_id=image_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ImageUnmarkForDeletion)
+def image_unmark_for_deletion(
+    image_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """unmarks the image for deletion (ImageUnmarkForDeletion)
+
+    Unmarks an image for deletion. The image will be available for fleets.
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}/restore
+
+        method: POST
+
+        tags: ["Images"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        image_id: (imageID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (success)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (image doesn't exist)
+
+        412: Precondition Failed - ResponseErrorResponse (image wasn't marked for deletion)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImageUnmarkForDeletion.create(
+        image_id=image_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ImageUnmarkForDeletion)
+async def image_unmark_for_deletion_async(
+    image_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """unmarks the image for deletion (ImageUnmarkForDeletion)
+
+    Unmarks an image for deletion. The image will be available for fleets.
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}/restore
+
+        method: POST
+
+        tags: ["Images"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        image_id: (imageID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        202: Accepted - (success)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (image doesn't exist)
+
+        412: Precondition Failed - ResponseErrorResponse (image wasn't marked for deletion)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImageUnmarkForDeletion.create(
         image_id=image_id,
         namespace=namespace,
     )

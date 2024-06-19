@@ -32,11 +32,15 @@ from ....core import same_doc_as
 from ..models import ApiNamespaceConfigList
 from ..models import ApiPatchNamespaceConfigRequest
 from ..models import ConfigmodelsNamespaceConfig
+from ..models import LogconfigConfiguration
 from ..models import ResponseError
 
 from ..operations.config import AdminGetAllConfigV1
 from ..operations.config import AdminGetConfigV1
+from ..operations.config import AdminGetLogConfig
 from ..operations.config import AdminPatchConfigV1
+from ..operations.config import AdminPatchUpdateLogConfig
+from ..models import LogconfigConfigurationLogLevelEnum
 
 
 @same_doc_as(AdminGetAllConfigV1)
@@ -199,6 +203,64 @@ async def admin_get_config_v1_async(
     )
 
 
+@same_doc_as(AdminGetLogConfig)
+def admin_get_log_config(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Log Configuration (adminGetLogConfig)
+
+    Get Log Configuration.
+
+    Properties:
+        url: /match2/v1/admin/config/log
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - LogconfigConfiguration
+    """
+    request = AdminGetLogConfig.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetLogConfig)
+async def admin_get_log_config_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Log Configuration (adminGetLogConfig)
+
+    Get Log Configuration.
+
+    Properties:
+        url: /match2/v1/admin/config/log
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - LogconfigConfiguration
+    """
+    request = AdminGetLogConfig.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminPatchConfigV1)
 def admin_patch_config_v1(
     body: ApiPatchNamespaceConfigRequest,
@@ -291,6 +353,76 @@ async def admin_patch_config_v1_async(
     request = AdminPatchConfigV1.create(
         body=body,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminPatchUpdateLogConfig)
+def admin_patch_update_log_config(
+    body: LogconfigConfiguration,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Patch Update Log Configuration (adminPatchUpdateLogConfig)
+
+    Update Log Configuration.
+
+    Properties:
+        url: /match2/v1/admin/config/log
+
+        method: PATCH
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED LogconfigConfiguration in body
+
+    Responses:
+        200: OK - LogconfigConfiguration
+    """
+    request = AdminPatchUpdateLogConfig.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminPatchUpdateLogConfig)
+async def admin_patch_update_log_config_async(
+    body: LogconfigConfiguration,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Patch Update Log Configuration (adminPatchUpdateLogConfig)
+
+    Update Log Configuration.
+
+    Properties:
+        url: /match2/v1/admin/config/log
+
+        method: PATCH
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED LogconfigConfiguration in body
+
+    Responses:
+        200: OK - LogconfigConfiguration
+    """
+    request = AdminPatchUpdateLogConfig.create(
+        body=body,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

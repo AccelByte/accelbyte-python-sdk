@@ -42,11 +42,7 @@ class GetUserSlotConfig(Operation):
     Get a user slot configuration in given namespace. In case the user slot configuration is not set, the namespace configuration will be returned.
     Other detail info:
 
-      * Required permission: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=2 (READ)
       * Returns: slot config info
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [READ]
 
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/config
@@ -59,7 +55,7 @@ class GetUserSlotConfig(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -75,7 +71,7 @@ class GetUserSlotConfig(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

@@ -136,6 +136,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.auto_leave_session = randomize("bool")
+    instance.custom_urlgrpc = randomize()
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
@@ -181,6 +182,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.auto_leave_session = randomize("bool")
+    instance.custom_urlgrpc = randomize()
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
@@ -219,6 +221,7 @@ def create_apimodels_create_game_session_request_example() -> (
     instance.ticket_i_ds = [randomize()]
     instance.type_ = randomize()
     instance.auto_join = randomize("bool")
+    instance.custom_urlgrpc = randomize()
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
     instance.preferred_claim_keys = [randomize()]
@@ -466,6 +469,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.attributes = {randomize(): randomize()}
+    instance.custom_urlgrpc = randomize()
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
@@ -566,6 +570,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.auto_leave_session = randomize("bool")
+    instance.custom_urlgrpc = randomize()
     instance.disable_code_generation = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
@@ -706,6 +711,7 @@ def create_models_game_server_example() -> ModelsGameServer:
     instance.alternate_ips = [randomize()]
     instance.ams_protocol = [create_models_port_configuration_ams_example()]
     instance.deployment = randomize()
+    instance.extend_region = randomize()
     instance.game_version = randomize("version")
     instance.image_version = randomize()
     instance.ip = randomize()

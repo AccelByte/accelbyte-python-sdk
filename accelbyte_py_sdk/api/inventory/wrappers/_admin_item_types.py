@@ -179,7 +179,7 @@ def admin_delete_item_type(
 
         tags: ["Admin Item Types"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -232,7 +232,7 @@ async def admin_delete_item_type_async(
 
         tags: ["Admin Item Types"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -289,7 +289,7 @@ def admin_list_item_types(
 
         tags: ["Admin Item Types"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -350,7 +350,7 @@ async def admin_list_item_types_async(
 
         tags: ["Admin Item Types"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

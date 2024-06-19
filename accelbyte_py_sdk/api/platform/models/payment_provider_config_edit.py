@@ -31,6 +31,9 @@ from ....core import StrEnum
 
 class AggregateEnum(StrEnum):
     ADYEN = "ADYEN"
+    CHECKOUT = "CHECKOUT"
+    NEONPAY = "NEONPAY"
+    STRIPE = "STRIPE"
     XSOLLA = "XSOLLA"
 
 
@@ -38,6 +41,7 @@ class SpecialsEnum(StrEnum):
     ADYEN = "ADYEN"
     ALIPAY = "ALIPAY"
     CHECKOUT = "CHECKOUT"
+    NEONPAY = "NEONPAY"
     PAYPAL = "PAYPAL"
     STRIPE = "STRIPE"
     WALLET = "WALLET"
@@ -309,11 +313,12 @@ class PaymentProviderConfigEdit(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "aggregate": ["ADYEN", "XSOLLA"],
+            "aggregate": ["ADYEN", "CHECKOUT", "NEONPAY", "STRIPE", "XSOLLA"],
             "specials": [
                 "ADYEN",
                 "ALIPAY",
                 "CHECKOUT",
+                "NEONPAY",
                 "PAYPAL",
                 "STRIPE",
                 "WALLET",

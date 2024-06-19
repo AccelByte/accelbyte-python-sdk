@@ -38,7 +38,7 @@ class ConnectNotif(WebSocketMessage):
         # pylint: disable=no-self-use
         wsm = [f"type: {ConnectNotif.get_type()}"]
         if hasattr(self, "lobby_session_id") and self.lobby_session_id:
-            wsm.append(f"lobbySessionId: {self.lobby_session_id}")
+            wsm.append(f"lobbySessionID: {self.lobby_session_id}")
         return "\n".join(wsm)
 
     # endregion methods
@@ -62,8 +62,8 @@ class ConnectNotif(WebSocketMessage):
                     WebSocketMessageParserError.FieldFormatInvalid
                 )
             name, value = parts[0].strip(), parts[1].strip()
-            if (not is_strict and name.casefold() == "lobbySessionId".casefold()) or (
-                name == "lobbySessionId"
+            if (not is_strict and name.casefold() == "lobbySessionID".casefold()) or (
+                name == "lobbySessionID"
             ):
                 instance.lobby_session_id = value
                 continue
@@ -80,7 +80,7 @@ class ConnectNotif(WebSocketMessage):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "lobbySessionId": "lobby_session_id",
+            "lobbySessionID": "lobby_session_id",
         }
 
     # endregion static methods

@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.iam_permission import IamPermission
+
 
 class IamErrorResponse(Model):
     """Iam error response (iam.ErrorResponse)
@@ -35,12 +37,15 @@ class IamErrorResponse(Model):
         error_code: (errorCode) REQUIRED int
 
         error_message: (errorMessage) REQUIRED str
+
+        required_permission: (requiredPermission) OPTIONAL IamPermission
     """
 
     # region fields
 
     error_code: int  # REQUIRED
     error_message: str  # REQUIRED
+    required_permission: IamPermission  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +57,10 @@ class IamErrorResponse(Model):
 
     def with_error_message(self, value: str) -> IamErrorResponse:
         self.error_message = value
+        return self
+
+    def with_required_permission(self, value: IamPermission) -> IamErrorResponse:
+        self.required_permission = value
         return self
 
     # endregion with_x methods
@@ -68,6 +77,12 @@ class IamErrorResponse(Model):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
             result["errorMessage"] = ""
+        if hasattr(self, "required_permission"):
+            result["requiredPermission"] = self.required_permission.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["requiredPermission"] = IamPermission()
         return result
 
     # endregion to methods
@@ -75,10 +90,18 @@ class IamErrorResponse(Model):
     # region static methods
 
     @classmethod
-    def create(cls, error_code: int, error_message: str, **kwargs) -> IamErrorResponse:
+    def create(
+        cls,
+        error_code: int,
+        error_message: str,
+        required_permission: Optional[IamPermission] = None,
+        **kwargs,
+    ) -> IamErrorResponse:
         instance = cls()
         instance.error_code = error_code
         instance.error_message = error_message
+        if required_permission is not None:
+            instance.required_permission = required_permission
         return instance
 
     @classmethod
@@ -96,6 +119,12 @@ class IamErrorResponse(Model):
             instance.error_message = str(dict_["errorMessage"])
         elif include_empty:
             instance.error_message = ""
+        if "requiredPermission" in dict_ and dict_["requiredPermission"] is not None:
+            instance.required_permission = IamPermission.create_from_dict(
+                dict_["requiredPermission"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.required_permission = IamPermission()
         return instance
 
     @classmethod
@@ -137,6 +166,7 @@ class IamErrorResponse(Model):
         return {
             "errorCode": "error_code",
             "errorMessage": "error_message",
+            "requiredPermission": "required_permission",
         }
 
     @staticmethod
@@ -144,6 +174,7 @@ class IamErrorResponse(Model):
         return {
             "errorCode": True,
             "errorMessage": True,
+            "requiredPermission": False,
         }
 
     # endregion static methods

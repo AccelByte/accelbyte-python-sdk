@@ -43,6 +43,7 @@ class RequestOneTimeLinkingCodeV3(Operation):
     - **steamopenid**
     - **facebook**
     - **google**
+    - **googleplaygames**
     - **oculus**
     - **twitch**
     - **discord**

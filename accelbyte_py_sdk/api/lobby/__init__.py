@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.35.5"
+__version__ = "3.35.9"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -53,8 +53,12 @@ from .wrappers import admin_get_all_config_v1
 from .wrappers import admin_get_all_config_v1_async
 from .wrappers import admin_get_config_v1
 from .wrappers import admin_get_config_v1_async
+from .wrappers import admin_get_log_config
+from .wrappers import admin_get_log_config_async
 from .wrappers import admin_import_config_v1
 from .wrappers import admin_import_config_v1_async
+from .wrappers import admin_patch_update_log_config
+from .wrappers import admin_patch_update_log_config_async
 from .wrappers import admin_update_config_v1
 from .wrappers import admin_update_config_v1_async
 

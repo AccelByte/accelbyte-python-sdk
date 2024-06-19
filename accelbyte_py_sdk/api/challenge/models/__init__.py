@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.5.0"
+__version__ = "1.6.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .iam_error_response import IamErrorResponse
+from .iam_permission import IamPermission
 from .model_challenge_response import ModelChallengeResponse
 from .model_challenge_response import (
     AssignmentRuleEnum as ModelChallengeResponseAssignmentRuleEnum,
@@ -23,6 +24,8 @@ from .model_challenge_response import (
     StatusEnum as ModelChallengeResponseStatusEnum,
 )
 from .model_claim_user_rewards_req import ModelClaimUserRewardsReq
+from .model_claim_users_rewards_request import ModelClaimUsersRewardsRequest
+from .model_claim_users_rewards_response import ModelClaimUsersRewardsResponse
 from .model_create_challenge_request import ModelCreateChallengeRequest
 from .model_create_challenge_request import (
     AssignmentRuleEnum as ModelCreateChallengeRequestAssignmentRuleEnum,
@@ -54,18 +57,19 @@ from .model_predicate import (
 from .model_requirement import ModelRequirement
 from .model_requirement import OperatorEnum as ModelRequirementOperatorEnum
 from .model_requirement_progression_response import ModelRequirementProgressionResponse
+from .model_reset_config import ModelResetConfig
 from .model_reward import ModelReward
 from .model_reward import TypeEnum as ModelRewardTypeEnum
 from .model_schedule import ModelSchedule
+from .model_update_challenge_request import ModelUpdateChallengeRequest
+from .model_update_challenge_request import (
+    AssignmentRuleEnum as ModelUpdateChallengeRequestAssignmentRuleEnum,
+    GoalsVisibilityEnum as ModelUpdateChallengeRequestGoalsVisibilityEnum,
+    RotationEnum as ModelUpdateChallengeRequestRotationEnum,
+)
 from .model_update_goal_request import ModelUpdateGoalRequest
 from .model_user_progression_response import ModelUserProgressionResponse
 from .model_user_progression_response_meta import ModelUserProgressionResponseMeta
 from .model_user_reward import ModelUserReward
 from .models_period import ModelsPeriod
-from .models_update_challenge_request import ModelsUpdateChallengeRequest
-from .models_update_challenge_request import (
-    AssignmentRuleEnum as ModelsUpdateChallengeRequestAssignmentRuleEnum,
-    GoalsVisibilityEnum as ModelsUpdateChallengeRequestGoalsVisibilityEnum,
-    RotationEnum as ModelsUpdateChallengeRequestRotationEnum,
-)
 from .response_error import ResponseError

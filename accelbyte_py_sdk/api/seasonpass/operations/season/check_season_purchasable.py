@@ -38,13 +38,6 @@ class CheckSeasonPurchasable(Operation):
 
     This API is used to check pass or tier purchasable, season only located in non-publisher namespace.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/purchasable
 
@@ -56,7 +49,7 @@ class CheckSeasonPurchasable(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserPurchasable in body
 
@@ -80,7 +73,7 @@ class CheckSeasonPurchasable(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UserPurchasable  # OPTIONAL in [body]

@@ -39,6 +39,9 @@ class PublicRequestDataRetrieval(Operation):
     Submit personal data retrieval request.
     Scope: account
 
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
+
     Required Scope(s):
         - account
 
@@ -67,6 +70,8 @@ class PublicRequestDataRetrieval(Operation):
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -199,6 +204,8 @@ class PublicRequestDataRetrieval(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        429: Too Many Requests - ResponseError (Too Many Requests)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -219,6 +226,8 @@ class PublicRequestDataRetrieval(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 429:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

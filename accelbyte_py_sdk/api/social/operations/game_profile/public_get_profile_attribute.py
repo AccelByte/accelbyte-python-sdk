@@ -39,11 +39,7 @@ class PublicGetProfileAttribute(Operation):
     Returns game profile attribute.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
       *  Returns : attribute info
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}/attributes/{attributeName}
@@ -56,7 +52,7 @@ class PublicGetProfileAttribute(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         attribute_name: (attributeName) REQUIRED str in path
 
@@ -84,7 +80,7 @@ class PublicGetProfileAttribute(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     attribute_name: str  # REQUIRED in [path]

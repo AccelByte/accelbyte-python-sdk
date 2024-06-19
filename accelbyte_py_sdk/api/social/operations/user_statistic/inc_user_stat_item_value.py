@@ -41,11 +41,7 @@ class IncUserStatItemValue(Operation):
     Update user's statitem value.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : updated user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -58,7 +54,7 @@ class IncUserStatItemValue(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemInc in body
 
@@ -92,7 +88,7 @@ class IncUserStatItemValue(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: StatItemInc  # OPTIONAL in [body]

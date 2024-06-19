@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.19.2"
+__version__ = "2.21.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -48,6 +48,8 @@ from .api_ticket import ApiTicket
 from .api_ticket_metric_result_record import ApiTicketMetricResultRecord
 from .config_environment_variable import ConfigEnvironmentVariable
 from .configmodels_namespace_config import ConfigmodelsNamespaceConfig
+from .logconfig_configuration import LogconfigConfiguration
+from .logconfig_configuration import LogLevelEnum as LogconfigConfigurationLogLevelEnum
 from .matchmaker_match_ticket_record import MatchmakerMatchTicketRecord
 from .matchmaker_party import MatchmakerParty
 from .matchmaker_proposed_proposal import MatchmakerProposedProposal

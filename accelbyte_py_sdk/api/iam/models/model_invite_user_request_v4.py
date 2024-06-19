@@ -40,6 +40,8 @@ class ModelInviteUserRequestV4(Model):
 
         is_new_studio: (isNewStudio) OPTIONAL bool
 
+        language_tag: (languageTag) OPTIONAL str
+
         namespace: (namespace) OPTIONAL str
 
         role_id: (roleId) OPTIONAL str
@@ -51,6 +53,7 @@ class ModelInviteUserRequestV4(Model):
     email_addresses: List[str]  # REQUIRED
     is_admin: bool  # REQUIRED
     is_new_studio: bool  # OPTIONAL
+    language_tag: str  # OPTIONAL
     namespace: str  # OPTIONAL
     role_id: str  # OPTIONAL
 
@@ -72,6 +75,10 @@ class ModelInviteUserRequestV4(Model):
 
     def with_is_new_studio(self, value: bool) -> ModelInviteUserRequestV4:
         self.is_new_studio = value
+        return self
+
+    def with_language_tag(self, value: str) -> ModelInviteUserRequestV4:
+        self.language_tag = value
         return self
 
     def with_namespace(self, value: str) -> ModelInviteUserRequestV4:
@@ -104,6 +111,10 @@ class ModelInviteUserRequestV4(Model):
             result["isNewStudio"] = bool(self.is_new_studio)
         elif include_empty:
             result["isNewStudio"] = False
+        if hasattr(self, "language_tag"):
+            result["languageTag"] = str(self.language_tag)
+        elif include_empty:
+            result["languageTag"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -125,6 +136,7 @@ class ModelInviteUserRequestV4(Model):
         email_addresses: List[str],
         is_admin: bool,
         is_new_studio: Optional[bool] = None,
+        language_tag: Optional[str] = None,
         namespace: Optional[str] = None,
         role_id: Optional[str] = None,
         **kwargs,
@@ -135,6 +147,8 @@ class ModelInviteUserRequestV4(Model):
         instance.is_admin = is_admin
         if is_new_studio is not None:
             instance.is_new_studio = is_new_studio
+        if language_tag is not None:
+            instance.language_tag = language_tag
         if namespace is not None:
             instance.namespace = namespace
         if role_id is not None:
@@ -166,6 +180,10 @@ class ModelInviteUserRequestV4(Model):
             instance.is_new_studio = bool(dict_["isNewStudio"])
         elif include_empty:
             instance.is_new_studio = False
+        if "languageTag" in dict_ and dict_["languageTag"] is not None:
+            instance.language_tag = str(dict_["languageTag"])
+        elif include_empty:
+            instance.language_tag = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -221,6 +239,7 @@ class ModelInviteUserRequestV4(Model):
             "emailAddresses": "email_addresses",
             "isAdmin": "is_admin",
             "isNewStudio": "is_new_studio",
+            "languageTag": "language_tag",
             "namespace": "namespace",
             "roleId": "role_id",
         }
@@ -232,6 +251,7 @@ class ModelInviteUserRequestV4(Model):
             "emailAddresses": True,
             "isAdmin": True,
             "isNewStudio": False,
+            "languageTag": False,
             "namespace": False,
             "roleId": False,
         }

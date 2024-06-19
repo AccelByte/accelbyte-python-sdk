@@ -35,7 +35,7 @@ from ..models import ModelCreateChallengeRequest
 from ..models import ModelListChallengeResponse
 from ..models import ModelListPeriodsResponse
 from ..models import ModelSchedule
-from ..models import ModelsUpdateChallengeRequest
+from ..models import ModelUpdateChallengeRequest
 from ..models import ResponseError
 
 from ..operations.challenge_configuration import AdminCreateChallenge
@@ -59,9 +59,9 @@ from ..models import (
     ModelCreateChallengeRequestRotationEnum,
 )
 from ..models import (
-    ModelsUpdateChallengeRequestAssignmentRuleEnum,
-    ModelsUpdateChallengeRequestGoalsVisibilityEnum,
-    ModelsUpdateChallengeRequestRotationEnum,
+    ModelUpdateChallengeRequestAssignmentRuleEnum,
+    ModelUpdateChallengeRequestGoalsVisibilityEnum,
+    ModelUpdateChallengeRequestRotationEnum,
 )
 
 
@@ -915,7 +915,7 @@ async def admin_randomize_challenge_async(
 
 @same_doc_as(AdminUpdateChallenge)
 def admin_update_challenge(
-    body: ModelsUpdateChallengeRequest,
+    body: ModelUpdateChallengeRequest,
     challenge_code: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -935,6 +935,11 @@ def admin_update_challenge(
       * endDate: timestamp of when the challenge is ended (optional)
       * endAfter: describe number of period challenge will be retired after (optional)
     To configure challenge that never end, leave the endDate and endAfter field null/empty.
+      * repeatAfter: describe number of period challenge's goals will be repeated after. Leave it empty if you don't want to repeat the challenge.
+      * rotation: describe how long goals in a challenge will be available for players to progress before rotated with another goals. (DAILY|WEEKLY|MONTHLY|NONE)
+      * activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
+      * assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED)
+      * goalsVisibility: describe whether users can see all goals under challenge, or only active goal in one rotation period only. (SHOWALL|PERIODONLY)
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
@@ -952,7 +957,7 @@ def admin_update_challenge(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsUpdateChallengeRequest in body
+        body: (body) REQUIRED ModelUpdateChallengeRequest in body
 
         challenge_code: (challengeCode) REQUIRED str in path
 
@@ -987,7 +992,7 @@ def admin_update_challenge(
 
 @same_doc_as(AdminUpdateChallenge)
 async def admin_update_challenge_async(
-    body: ModelsUpdateChallengeRequest,
+    body: ModelUpdateChallengeRequest,
     challenge_code: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -1007,6 +1012,11 @@ async def admin_update_challenge_async(
       * endDate: timestamp of when the challenge is ended (optional)
       * endAfter: describe number of period challenge will be retired after (optional)
     To configure challenge that never end, leave the endDate and endAfter field null/empty.
+      * repeatAfter: describe number of period challenge's goals will be repeated after. Leave it empty if you don't want to repeat the challenge.
+      * rotation: describe how long goals in a challenge will be available for players to progress before rotated with another goals. (DAILY|WEEKLY|MONTHLY|NONE)
+      * activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
+      * assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED)
+      * goalsVisibility: describe whether users can see all goals under challenge, or only active goal in one rotation period only. (SHOWALL|PERIODONLY)
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
@@ -1024,7 +1034,7 @@ async def admin_update_challenge_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelsUpdateChallengeRequest in body
+        body: (body) REQUIRED ModelUpdateChallengeRequest in body
 
         challenge_code: (challengeCode) REQUIRED str in path
 

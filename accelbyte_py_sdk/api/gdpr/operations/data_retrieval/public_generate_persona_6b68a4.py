@@ -40,6 +40,9 @@ class PublicGeneratePersonalDataURL(Operation):
     Requires valid user access token
     Scope: account
 
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
+
     Required Scope(s):
         - account
 

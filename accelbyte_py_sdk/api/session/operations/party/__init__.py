@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.15.0"
+__version__ = "3.15.5"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .admin_query_parties import AdminQueryParties
+from .admin_sync_native_session import AdminSyncNativeSession
 from .public_create_party import PublicCreateParty
 from .public_generate_party_code import PublicGeneratePartyCode
 from .public_get_party import PublicGetParty

@@ -39,6 +39,8 @@ class ModelPublicInviteUserRequestV4(Model):
         namespace_display_name: (namespaceDisplayName) REQUIRED str
 
         additional_data: (additionalData) OPTIONAL str
+
+        language_tag: (languageTag) OPTIONAL str
     """
 
     # region fields
@@ -47,6 +49,7 @@ class ModelPublicInviteUserRequestV4(Model):
     namespace: str  # REQUIRED
     namespace_display_name: str  # REQUIRED
     additional_data: str  # OPTIONAL
+    language_tag: str  # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +69,10 @@ class ModelPublicInviteUserRequestV4(Model):
 
     def with_additional_data(self, value: str) -> ModelPublicInviteUserRequestV4:
         self.additional_data = value
+        return self
+
+    def with_language_tag(self, value: str) -> ModelPublicInviteUserRequestV4:
+        self.language_tag = value
         return self
 
     # endregion with_x methods
@@ -90,6 +97,10 @@ class ModelPublicInviteUserRequestV4(Model):
             result["additionalData"] = str(self.additional_data)
         elif include_empty:
             result["additionalData"] = ""
+        if hasattr(self, "language_tag"):
+            result["languageTag"] = str(self.language_tag)
+        elif include_empty:
+            result["languageTag"] = ""
         return result
 
     # endregion to methods
@@ -103,6 +114,7 @@ class ModelPublicInviteUserRequestV4(Model):
         namespace: str,
         namespace_display_name: str,
         additional_data: Optional[str] = None,
+        language_tag: Optional[str] = None,
         **kwargs,
     ) -> ModelPublicInviteUserRequestV4:
         instance = cls()
@@ -111,6 +123,8 @@ class ModelPublicInviteUserRequestV4(Model):
         instance.namespace_display_name = namespace_display_name
         if additional_data is not None:
             instance.additional_data = additional_data
+        if language_tag is not None:
+            instance.language_tag = language_tag
         return instance
 
     @classmethod
@@ -139,6 +153,10 @@ class ModelPublicInviteUserRequestV4(Model):
             instance.additional_data = str(dict_["additionalData"])
         elif include_empty:
             instance.additional_data = ""
+        if "languageTag" in dict_ and dict_["languageTag"] is not None:
+            instance.language_tag = str(dict_["languageTag"])
+        elif include_empty:
+            instance.language_tag = ""
         return instance
 
     @classmethod
@@ -186,6 +204,7 @@ class ModelPublicInviteUserRequestV4(Model):
             "namespace": "namespace",
             "namespaceDisplayName": "namespace_display_name",
             "additionalData": "additional_data",
+            "languageTag": "language_tag",
         }
 
     @staticmethod
@@ -195,6 +214,7 @@ class ModelPublicInviteUserRequestV4(Model):
             "namespace": True,
             "namespaceDisplayName": True,
             "additionalData": False,
+            "languageTag": False,
         }
 
     # endregion static methods

@@ -42,11 +42,7 @@ class BulkResetUserStatItem2(Operation):
     User's statitem value will be reset to the default value defined in the statistic configuration.
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/value/reset/bulk
@@ -59,7 +55,7 @@ class BulkResetUserStatItem2(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemReset] in body
 
@@ -85,7 +81,7 @@ class BulkResetUserStatItem2(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[BulkUserStatItemReset]  # OPTIONAL in [body]

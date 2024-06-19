@@ -40,11 +40,7 @@ class PublicGetCurrentUserSeason(Operation):
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/data
@@ -57,7 +53,7 @@ class PublicGetCurrentUserSeason(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -79,7 +75,7 @@ class PublicGetCurrentUserSeason(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

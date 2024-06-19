@@ -30,12 +30,14 @@ from ....core import StrEnum
 
 from ..models.additional_data import AdditionalData
 from ..models.currency_summary import CurrencySummary
+from ..models.payment_data import PaymentData
 
 
 class ProviderEnum(StrEnum):
     ADYEN = "ADYEN"
     ALIPAY = "ALIPAY"
     CHECKOUT = "CHECKOUT"
+    NEONPAY = "NEONPAY"
     PAYPAL = "PAYPAL"
     STRIPE = "STRIPE"
     WALLET = "WALLET"
@@ -80,6 +82,8 @@ class Transaction(Model):
 
         notified: (notified) OPTIONAL bool
 
+        payment_data: (paymentData) OPTIONAL PaymentData
+
         payment_method: (paymentMethod) OPTIONAL str
 
         payment_method_fee: (paymentMethodFee) OPTIONAL int
@@ -113,6 +117,7 @@ class Transaction(Model):
     ext_tx_id: str  # OPTIONAL
     merchant_id: str  # OPTIONAL
     notified: bool  # OPTIONAL
+    payment_data: PaymentData  # OPTIONAL
     payment_method: str  # OPTIONAL
     payment_method_fee: int  # OPTIONAL
     payment_provider_fee: int  # OPTIONAL
@@ -159,6 +164,10 @@ class Transaction(Model):
 
     def with_notified(self, value: bool) -> Transaction:
         self.notified = value
+        return self
+
+    def with_payment_data(self, value: PaymentData) -> Transaction:
+        self.payment_data = value
         return self
 
     def with_payment_method(self, value: str) -> Transaction:
@@ -245,6 +254,12 @@ class Transaction(Model):
             result["notified"] = bool(self.notified)
         elif include_empty:
             result["notified"] = False
+        if hasattr(self, "payment_data"):
+            result["paymentData"] = self.payment_data.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["paymentData"] = PaymentData()
         if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
@@ -306,6 +321,7 @@ class Transaction(Model):
         ext_tx_id: Optional[str] = None,
         merchant_id: Optional[str] = None,
         notified: Optional[bool] = None,
+        payment_data: Optional[PaymentData] = None,
         payment_method: Optional[str] = None,
         payment_method_fee: Optional[int] = None,
         payment_provider_fee: Optional[int] = None,
@@ -336,6 +352,8 @@ class Transaction(Model):
             instance.merchant_id = merchant_id
         if notified is not None:
             instance.notified = notified
+        if payment_data is not None:
+            instance.payment_data = payment_data
         if payment_method is not None:
             instance.payment_method = payment_method
         if payment_method_fee is not None:
@@ -401,6 +419,12 @@ class Transaction(Model):
             instance.notified = bool(dict_["notified"])
         elif include_empty:
             instance.notified = False
+        if "paymentData" in dict_ and dict_["paymentData"] is not None:
+            instance.payment_data = PaymentData.create_from_dict(
+                dict_["paymentData"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.payment_data = PaymentData()
         if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
             instance.payment_method = str(dict_["paymentMethod"])
         elif include_empty:
@@ -492,6 +516,7 @@ class Transaction(Model):
             "extTxId": "ext_tx_id",
             "merchantId": "merchant_id",
             "notified": "notified",
+            "paymentData": "payment_data",
             "paymentMethod": "payment_method",
             "paymentMethodFee": "payment_method_fee",
             "paymentProviderFee": "payment_provider_fee",
@@ -516,6 +541,7 @@ class Transaction(Model):
             "extTxId": False,
             "merchantId": False,
             "notified": False,
+            "paymentData": False,
             "paymentMethod": False,
             "paymentMethodFee": False,
             "paymentProviderFee": False,
@@ -536,6 +562,7 @@ class Transaction(Model):
                 "ADYEN",
                 "ALIPAY",
                 "CHECKOUT",
+                "NEONPAY",
                 "PAYPAL",
                 "STRIPE",
                 "WALLET",

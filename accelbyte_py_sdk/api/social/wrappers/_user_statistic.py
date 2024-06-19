@@ -114,8 +114,7 @@ def admin_list_users_stat_items(
     * If stat code does not exist, will ignore this stat code.
     * If stat item does not exist, will return default value
 
-    Other detail info:+ *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
-
+    Other detail info:
       *  Returns : stat items
 
     Properties:
@@ -187,8 +186,7 @@ async def admin_list_users_stat_items_async(
     * If stat code does not exist, will ignore this stat code.
     * If stat item does not exist, will return default value
 
-    Other detail info:+ *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
-
+    Other detail info:
       *  Returns : stat items
 
     Properties:
@@ -258,11 +256,7 @@ def bulk_create_user_stat_items(
     Bulk create user's statItems.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : bulk created result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/bulk
@@ -275,7 +269,7 @@ def bulk_create_user_stat_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemCreate] in body
 
@@ -321,11 +315,7 @@ async def bulk_create_user_stat_items_async(
     Bulk create user's statItems.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : bulk created result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/bulk
@@ -338,7 +328,7 @@ async def bulk_create_user_stat_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemCreate] in body
 
@@ -385,7 +375,6 @@ def bulk_fetch_or_default_stat_items(
 
     Bulk fetch multiple user's stat item values for a given namespace and statCode.
     NOTE: If stat item does not exist, will return default value. Other detail info:
-    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
     + *Returns*: list of user's stat item values
 
     Properties:
@@ -444,7 +433,6 @@ async def bulk_fetch_or_default_stat_items_async(
 
     Bulk fetch multiple user's stat item values for a given namespace and statCode.
     NOTE: If stat item does not exist, will return default value. Other detail info:
-    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
     + *Returns*: list of user's stat item values
 
     Properties:
@@ -506,7 +494,6 @@ def bulk_fetch_or_default_stat_items_1(
 
     Bulk fetch multiple user's stat item values for a given namespace and statCode.
     NOTE: If stat item does not exist, will return default value. Other detail info:
-    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
     + *Returns*: list of user's stat item values
 
     Properties:
@@ -569,7 +556,6 @@ async def bulk_fetch_or_default_stat_items_1_async(
 
     Bulk fetch multiple user's stat item values for a given namespace and statCode.
     NOTE: If stat item does not exist, will return default value. Other detail info:
-    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
     + *Returns*: list of user's stat item values
 
     Properties:
@@ -633,11 +619,7 @@ def bulk_fetch_stat_items(
 
     Bulk fetch multiple user's statitem value for a given namespace and statCode.
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
     + *Returns*: list of user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statitems/bulk
@@ -650,7 +632,7 @@ def bulk_fetch_stat_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -693,11 +675,7 @@ async def bulk_fetch_stat_items_async(
 
     Bulk fetch multiple user's statitem value for a given namespace and statCode.
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
     + *Returns*: list of user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statitems/bulk
@@ -710,7 +688,7 @@ async def bulk_fetch_stat_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -755,11 +733,7 @@ def bulk_fetch_stat_items_1(
 
     Public bulk fetch multiple user's statitem value for a given namespace and statCode.
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=2 (READ)
     + *Returns*: list of user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [READ]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/bulk
@@ -772,7 +746,7 @@ def bulk_fetch_stat_items_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -815,11 +789,7 @@ async def bulk_fetch_stat_items_1_async(
 
     Public bulk fetch multiple user's statitem value for a given namespace and statCode.
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=2 (READ)
     + *Returns*: list of user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [READ]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/bulk
@@ -832,7 +802,7 @@ async def bulk_fetch_stat_items_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -877,11 +847,7 @@ def bulk_inc_user_stat_item(
     Bulk update multiple user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statitems/value/bulk
@@ -894,7 +860,7 @@ def bulk_inc_user_stat_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemInc] in body
 
@@ -936,11 +902,7 @@ async def bulk_inc_user_stat_item_async(
     Bulk update multiple user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statitems/value/bulk
@@ -953,7 +915,7 @@ async def bulk_inc_user_stat_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemInc] in body
 
@@ -998,11 +960,7 @@ def bulk_inc_user_stat_item_1(
     Bulk update user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -1015,7 +973,7 @@ def bulk_inc_user_stat_item_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemInc] in body
 
@@ -1061,11 +1019,7 @@ async def bulk_inc_user_stat_item_1_async(
     Bulk update user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -1078,7 +1032,7 @@ async def bulk_inc_user_stat_item_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemInc] in body
 
@@ -1123,13 +1077,6 @@ def bulk_inc_user_stat_item_value(
     """Bulk update multiple user's statitems value (bulkIncUserStatItemValue)
 
     Bulk update multiple user's statitems value.
-    Other detail info:
-
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
-      *  Returns : bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statitems/value/bulk
@@ -1142,7 +1089,7 @@ def bulk_inc_user_stat_item_value(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemInc] in body
 
@@ -1182,13 +1129,6 @@ async def bulk_inc_user_stat_item_value_async(
     """Bulk update multiple user's statitems value (bulkIncUserStatItemValue)
 
     Bulk update multiple user's statitems value.
-    Other detail info:
-
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
-      *  Returns : bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statitems/value/bulk
@@ -1201,7 +1141,7 @@ async def bulk_inc_user_stat_item_value_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemInc] in body
 
@@ -1246,11 +1186,7 @@ def bulk_inc_user_stat_item_value_1(
     Bulk update user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -1263,7 +1199,7 @@ def bulk_inc_user_stat_item_value_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemInc] in body
 
@@ -1309,11 +1245,7 @@ async def bulk_inc_user_stat_item_value_1_async(
     Bulk update user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -1326,7 +1258,7 @@ async def bulk_inc_user_stat_item_value_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemInc] in body
 
@@ -1374,11 +1306,7 @@ def bulk_inc_user_stat_item_value_2(
     Public bulk update user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -1391,7 +1319,7 @@ def bulk_inc_user_stat_item_value_2(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemInc] in body
 
@@ -1437,11 +1365,7 @@ async def bulk_inc_user_stat_item_value_2_async(
     Public bulk update user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -1454,7 +1378,7 @@ async def bulk_inc_user_stat_item_value_2_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemInc] in body
 
@@ -1502,11 +1426,7 @@ def bulk_reset_user_stat_item(
     User's statitem value will be reset to the default value defined in the statistic configuration.
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statitems/value/reset/bulk
@@ -1519,7 +1439,7 @@ def bulk_reset_user_stat_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemReset] in body
 
@@ -1562,11 +1482,7 @@ async def bulk_reset_user_stat_item_async(
     User's statitem value will be reset to the default value defined in the statistic configuration.
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statitems/value/reset/bulk
@@ -1579,7 +1495,7 @@ async def bulk_reset_user_stat_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemReset] in body
 
@@ -1623,11 +1539,7 @@ def bulk_reset_user_stat_item_1(
 
     Bulk reset user's statitems value for given namespace and user.
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
@@ -1640,7 +1552,7 @@ def bulk_reset_user_stat_item_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemReset] in body
 
@@ -1685,11 +1597,7 @@ async def bulk_reset_user_stat_item_1_async(
 
     Bulk reset user's statitems value for given namespace and user.
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
@@ -1702,7 +1610,7 @@ async def bulk_reset_user_stat_item_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemReset] in body
 
@@ -1750,11 +1658,7 @@ def bulk_reset_user_stat_item_2(
     User's statitem value will be reset to the default value defined in the statistic configuration.
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/value/reset/bulk
@@ -1767,7 +1671,7 @@ def bulk_reset_user_stat_item_2(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemReset] in body
 
@@ -1810,11 +1714,7 @@ async def bulk_reset_user_stat_item_2_async(
     User's statitem value will be reset to the default value defined in the statistic configuration.
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/value/reset/bulk
@@ -1827,7 +1727,7 @@ async def bulk_reset_user_stat_item_2_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemReset] in body
 
@@ -1871,11 +1771,7 @@ def bulk_reset_user_stat_item_3(
 
     Public bulk reset user's statitems value for given namespace and user.
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
@@ -1888,7 +1784,7 @@ def bulk_reset_user_stat_item_3(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemReset] in body
 
@@ -1933,11 +1829,7 @@ async def bulk_reset_user_stat_item_3_async(
 
     Public bulk reset user's statitems value for given namespace and user.
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
@@ -1950,7 +1842,7 @@ async def bulk_reset_user_stat_item_3_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemReset] in body
 
@@ -1998,11 +1890,7 @@ def bulk_reset_user_stat_item_values(
 
     Bulk reset user's statitem values for given namespace and user.
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
@@ -2015,7 +1903,7 @@ def bulk_reset_user_stat_item_values(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[ADTOObjectForResettingUserStatItems] in body
 
@@ -2064,11 +1952,7 @@ async def bulk_reset_user_stat_item_values_async(
 
     Bulk reset user's statitem values for given namespace and user.
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
@@ -2081,7 +1965,7 @@ async def bulk_reset_user_stat_item_values_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[ADTOObjectForResettingUserStatItems] in body
 
@@ -2141,11 +2025,7 @@ def bulk_update_user_stat_item(
     If provided, user's statitems will be saved with key: *userId_additionalKey*
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -2158,7 +2038,7 @@ def bulk_update_user_stat_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemUpdate] in body
 
@@ -2216,11 +2096,7 @@ async def bulk_update_user_stat_item_async(
     If provided, user's statitems will be saved with key: *userId_additionalKey*
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -2233,7 +2109,7 @@ async def bulk_update_user_stat_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemUpdate] in body
 
@@ -2288,11 +2164,7 @@ def bulk_update_user_stat_item_1(
     + *MIN*: update user statitem with the specified value if it's lower than the existing value
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/public/namespaces/{namespace}/statitems/value/bulk
@@ -2305,7 +2177,7 @@ def bulk_update_user_stat_item_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemUpdate] in body
 
@@ -2352,11 +2224,7 @@ async def bulk_update_user_stat_item_1_async(
     + *MIN*: update user statitem with the specified value if it's lower than the existing value
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/public/namespaces/{namespace}/statitems/value/bulk
@@ -2369,7 +2237,7 @@ async def bulk_update_user_stat_item_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemUpdate] in body
 
@@ -2423,11 +2291,7 @@ def bulk_update_user_stat_item_2(
     If provided, user's statitems will be saved with key: *userId_additionalKey*
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -2440,7 +2304,7 @@ def bulk_update_user_stat_item_2(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemUpdate] in body
 
@@ -2498,11 +2362,7 @@ async def bulk_update_user_stat_item_2_async(
     If provided, user's statitems will be saved with key: *userId_additionalKey*
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -2515,7 +2375,7 @@ async def bulk_update_user_stat_item_2_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemUpdate] in body
 
@@ -2570,11 +2430,7 @@ def bulk_update_user_stat_item_v2(
     + *MIN*: update user statitem with the specified value if it's lower than the existing value
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/statitems/value/bulk
@@ -2587,7 +2443,7 @@ def bulk_update_user_stat_item_v2(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemUpdate] in body
 
@@ -2634,11 +2490,7 @@ async def bulk_update_user_stat_item_v2_async(
     + *MIN*: update user statitem with the specified value if it's lower than the existing value
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/statitems/value/bulk
@@ -2651,7 +2503,7 @@ async def bulk_update_user_stat_item_v2_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemUpdate] in body
 
@@ -2696,11 +2548,7 @@ def create_user_stat_item(
     Create statItem for a user.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : created user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -2713,7 +2561,7 @@ def create_user_stat_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2761,11 +2609,7 @@ async def create_user_stat_item_async(
     Create statItem for a user.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : created user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -2778,7 +2622,7 @@ async def create_user_stat_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2829,11 +2673,7 @@ def delete_user_stat_items(
     Delete user's statItems given stat code.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
       *  Returns : no content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -2846,7 +2686,7 @@ def delete_user_stat_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2893,11 +2733,7 @@ async def delete_user_stat_items_async(
     Delete user's statItems given stat code.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
       *  Returns : no content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -2910,7 +2746,7 @@ async def delete_user_stat_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2958,11 +2794,7 @@ def delete_user_stat_items_1(
     Delete user's statItems given stat code.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
       *  Returns : no content
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -2975,7 +2807,7 @@ def delete_user_stat_items_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -3021,11 +2853,7 @@ async def delete_user_stat_items_1_async(
     Delete user's statItems given stat code.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
       *  Returns : no content
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -3038,7 +2866,7 @@ async def delete_user_stat_items_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -3091,11 +2919,7 @@ def delete_user_stat_items_2(
     Delete user's statItems given stat code.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
       *  Returns : no content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -3108,7 +2932,7 @@ def delete_user_stat_items_2(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -3162,11 +2986,7 @@ async def delete_user_stat_items_2_async(
     Delete user's statItems given stat code.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
       *  Returns : no content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -3179,7 +2999,7 @@ async def delete_user_stat_items_2_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -3231,7 +3051,6 @@ def get_stat_items(
 
     Get users' stat item values for a given namespace and statCode.
     Other info:
-    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
     + *Returns*: list of users' stat item values
 
     Properties:
@@ -3294,7 +3113,6 @@ async def get_stat_items_async(
 
     Get users' stat item values for a given namespace and statCode.
     Other info:
-    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
     + *Returns*: list of users' stat item values
 
     Properties:
@@ -3363,11 +3181,7 @@ def get_user_stat_items(
     List user's statItems.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems
@@ -3380,7 +3194,7 @@ def get_user_stat_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -3444,11 +3258,7 @@ async def get_user_stat_items_async(
     List user's statItems.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems
@@ -3461,7 +3271,7 @@ async def get_user_stat_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -3523,11 +3333,7 @@ def inc_user_stat_item_value(
     Update user's statitem value.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : updated user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -3540,7 +3346,7 @@ def inc_user_stat_item_value(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemInc in body
 
@@ -3594,11 +3400,7 @@ async def inc_user_stat_item_value_async(
     Update user's statitem value.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : updated user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -3611,7 +3413,7 @@ async def inc_user_stat_item_value_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemInc in body
 
@@ -3666,11 +3468,7 @@ def public_bulk_create_user_stat_items(
     Bulk create statItems.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : bulk created result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/bulk
@@ -3683,7 +3481,7 @@ def public_bulk_create_user_stat_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemCreate] in body
 
@@ -3729,11 +3527,7 @@ async def public_bulk_create_user_stat_items_async(
     Bulk create statItems.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : bulk created result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/bulk
@@ -3746,7 +3540,7 @@ async def public_bulk_create_user_stat_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemCreate] in body
 
@@ -3793,11 +3587,7 @@ def public_bulk_inc_user_stat_item(
     Public bulk update multiple user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/value/bulk
@@ -3810,7 +3600,7 @@ def public_bulk_inc_user_stat_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemInc] in body
 
@@ -3852,11 +3642,7 @@ async def public_bulk_inc_user_stat_item_async(
     Public bulk update multiple user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/value/bulk
@@ -3869,7 +3655,7 @@ async def public_bulk_inc_user_stat_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemInc] in body
 
@@ -3914,11 +3700,7 @@ def public_bulk_inc_user_stat_item_1(
     Public bulk update user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -3931,7 +3713,7 @@ def public_bulk_inc_user_stat_item_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemInc] in body
 
@@ -3977,11 +3759,7 @@ async def public_bulk_inc_user_stat_item_1_async(
     Public bulk update user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -3994,7 +3772,7 @@ async def public_bulk_inc_user_stat_item_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemInc] in body
 
@@ -4041,11 +3819,7 @@ def public_bulk_inc_user_stat_item_value(
     Public bulk update multiple user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/value/bulk
@@ -4058,7 +3832,7 @@ def public_bulk_inc_user_stat_item_value(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemInc] in body
 
@@ -4100,11 +3874,7 @@ async def public_bulk_inc_user_stat_item_value_async(
     Public bulk update multiple user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/statitems/value/bulk
@@ -4117,7 +3887,7 @@ async def public_bulk_inc_user_stat_item_value_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemInc] in body
 
@@ -4162,11 +3932,7 @@ def public_create_user_stat_item(
     Create user's statItem.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : created user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -4179,7 +3945,7 @@ def public_create_user_stat_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -4227,11 +3993,7 @@ async def public_create_user_stat_item_async(
     Create user's statItem.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : created user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -4244,7 +4006,7 @@ async def public_create_user_stat_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -4295,11 +4057,7 @@ def public_inc_user_stat_item(
     Public update user's statitem value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : updated user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -4312,7 +4070,7 @@ def public_inc_user_stat_item(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemInc in body
 
@@ -4366,11 +4124,7 @@ async def public_inc_user_stat_item_async(
     Public update user's statitem value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : updated user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -4383,7 +4137,7 @@ async def public_inc_user_stat_item_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemInc in body
 
@@ -4439,11 +4193,7 @@ def public_inc_user_stat_item_value(
     Public update user's statitem value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : updated user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -4456,7 +4206,7 @@ def public_inc_user_stat_item_value(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemInc in body
 
@@ -4510,11 +4260,7 @@ async def public_inc_user_stat_item_value_async(
     Public update user's statitem value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : updated user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -4527,7 +4273,7 @@ async def public_inc_user_stat_item_value_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemInc in body
 
@@ -4586,11 +4332,7 @@ def public_list_all_my_stat_items(
     * If stat item does not exist, will return default value
 
     Other detail info:
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/me/statitems/value/bulk
@@ -4603,7 +4345,7 @@ def public_list_all_my_stat_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -4654,11 +4396,7 @@ async def public_list_all_my_stat_items_async(
     * If stat item does not exist, will return default value
 
     Other detail info:
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/me/statitems/value/bulk
@@ -4671,7 +4409,7 @@ async def public_list_all_my_stat_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -4723,11 +4461,7 @@ def public_list_my_stat_items(
     Public list all statItems by pagination.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/me/statitems
@@ -4740,7 +4474,7 @@ def public_list_my_stat_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -4796,11 +4530,7 @@ async def public_list_my_stat_items_async(
     Public list all statItems by pagination.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/me/statitems
@@ -4813,7 +4543,7 @@ async def public_list_my_stat_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -4872,11 +4602,7 @@ def public_query_user_stat_items(
     Public list all statItems by pagination.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems
@@ -4889,7 +4615,7 @@ def public_query_user_stat_items(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -4949,11 +4675,7 @@ async def public_query_user_stat_items_async(
     Public list all statItems by pagination.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems
@@ -4966,7 +4688,7 @@ async def public_query_user_stat_items_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5029,11 +4751,7 @@ def public_query_user_stat_items_1(
     * If stat item does not exist, will return default value
 
     Other detail info:
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -5046,7 +4764,7 @@ def public_query_user_stat_items_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5105,11 +4823,7 @@ async def public_query_user_stat_items_1_async(
     * If stat item does not exist, will return default value
 
     Other detail info:
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -5122,7 +4836,7 @@ async def public_query_user_stat_items_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5183,11 +4897,7 @@ def public_query_user_stat_items_2(
     * If stat item does not exist, will return default value
 
     Other detail info:
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -5200,7 +4910,7 @@ def public_query_user_stat_items_2(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5259,11 +4969,7 @@ async def public_query_user_stat_items_2_async(
     * If stat item does not exist, will return default value
 
     Other detail info:
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -5276,7 +4982,7 @@ async def public_query_user_stat_items_2_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5335,11 +5041,7 @@ def reset_user_stat_item_value(
     User's statitem value will be reset to the default value defined in the statistic configuration.
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: updated user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value/reset
@@ -5352,7 +5054,7 @@ def reset_user_stat_item_value(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatResetInfo in body
 
@@ -5409,11 +5111,7 @@ async def reset_user_stat_item_value_async(
     User's statitem value will be reset to the default value defined in the statistic configuration.
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: updated user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value/reset
@@ -5426,7 +5124,7 @@ async def reset_user_stat_item_value_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatResetInfo in body
 
@@ -5483,11 +5181,7 @@ def reset_user_stat_item_value_1(
     User's statitem value will be reset to the default value defined in the statistic configuration.
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: updated user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value/reset
@@ -5500,7 +5194,7 @@ def reset_user_stat_item_value_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5549,11 +5243,7 @@ async def reset_user_stat_item_value_1_async(
     User's statitem value will be reset to the default value defined in the statistic configuration.
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: updated user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value/reset
@@ -5566,7 +5256,7 @@ async def reset_user_stat_item_value_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5626,11 +5316,7 @@ def update_user_stat_item_value(
     If provided, user's statitems will be saved with key: *userId_additionalKey*
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: updated user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -5643,7 +5329,7 @@ def update_user_stat_item_value(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemUpdate in body
 
@@ -5709,11 +5395,7 @@ async def update_user_stat_item_value_async(
     If provided, user's statitems will be saved with key: *userId_additionalKey*
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: updated user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -5726,7 +5408,7 @@ async def update_user_stat_item_value_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemUpdate in body
 
@@ -5794,11 +5476,7 @@ def update_user_stat_item_value_1(
     If provided, user's statitems will be saved with key: *userId_additionalKey*
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: updated user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -5811,7 +5489,7 @@ def update_user_stat_item_value_1(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemUpdate in body
 
@@ -5877,11 +5555,7 @@ async def update_user_stat_item_value_1_async(
     If provided, user's statitems will be saved with key: *userId_additionalKey*
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: updated user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -5894,7 +5568,7 @@ async def update_user_stat_item_value_1_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemUpdate in body
 

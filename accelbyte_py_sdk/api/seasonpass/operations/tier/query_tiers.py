@@ -40,11 +40,7 @@ class QueryTiers(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : the list of passes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : the list of passes
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers
@@ -57,7 +53,7 @@ class QueryTiers(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -81,7 +77,7 @@ class QueryTiers(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

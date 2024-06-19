@@ -56,7 +56,9 @@ class PublicGetUserByPlatformUserIDV3(Operation):
     - oculus
     - oculusweb
     - facebook
+    - google group
     - google
+    - googleplaygames
     - twitch
     - discord
     - android

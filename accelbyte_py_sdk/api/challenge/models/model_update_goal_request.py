@@ -36,41 +36,45 @@ class ModelUpdateGoalRequest(Model):
     """Model update goal request (model.UpdateGoalRequest)
 
     Properties:
-        description: (description) REQUIRED str
-
         name: (name) REQUIRED str
 
-        requirement_groups: (requirementGroups) REQUIRED List[ModelRequirement]
-
-        rewards: (rewards) REQUIRED List[ModelReward]
-
-        tags: (tags) REQUIRED List[str]
+        description: (description) OPTIONAL str
 
         is_active: (isActive) OPTIONAL bool
 
+        requirement_groups: (requirementGroups) OPTIONAL List[ModelRequirement]
+
+        rewards: (rewards) OPTIONAL List[ModelReward]
+
         schedule: (schedule) OPTIONAL ModelGoalSchedule
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
 
-    description: str  # REQUIRED
     name: str  # REQUIRED
-    requirement_groups: List[ModelRequirement]  # REQUIRED
-    rewards: List[ModelReward]  # REQUIRED
-    tags: List[str]  # REQUIRED
+    description: str  # OPTIONAL
     is_active: bool  # OPTIONAL
+    requirement_groups: List[ModelRequirement]  # OPTIONAL
+    rewards: List[ModelReward]  # OPTIONAL
     schedule: ModelGoalSchedule  # OPTIONAL
+    tags: List[str]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
+    def with_name(self, value: str) -> ModelUpdateGoalRequest:
+        self.name = value
+        return self
+
     def with_description(self, value: str) -> ModelUpdateGoalRequest:
         self.description = value
         return self
 
-    def with_name(self, value: str) -> ModelUpdateGoalRequest:
-        self.name = value
+    def with_is_active(self, value: bool) -> ModelUpdateGoalRequest:
+        self.is_active = value
         return self
 
     def with_requirement_groups(
@@ -83,16 +87,12 @@ class ModelUpdateGoalRequest(Model):
         self.rewards = value
         return self
 
-    def with_tags(self, value: List[str]) -> ModelUpdateGoalRequest:
-        self.tags = value
-        return self
-
-    def with_is_active(self, value: bool) -> ModelUpdateGoalRequest:
-        self.is_active = value
-        return self
-
     def with_schedule(self, value: ModelGoalSchedule) -> ModelUpdateGoalRequest:
         self.schedule = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelUpdateGoalRequest:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -101,14 +101,18 @@ class ModelUpdateGoalRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "description"):
-            result["description"] = str(self.description)
-        elif include_empty:
-            result["description"] = ""
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "description"):
+            result["description"] = str(self.description)
+        elif include_empty:
+            result["description"] = ""
+        if hasattr(self, "is_active"):
+            result["isActive"] = bool(self.is_active)
+        elif include_empty:
+            result["isActive"] = False
         if hasattr(self, "requirement_groups"):
             result["requirementGroups"] = [
                 i0.to_dict(include_empty=include_empty)
@@ -122,18 +126,14 @@ class ModelUpdateGoalRequest(Model):
             ]
         elif include_empty:
             result["rewards"] = []
-        if hasattr(self, "tags"):
-            result["tags"] = [str(i0) for i0 in self.tags]
-        elif include_empty:
-            result["tags"] = []
-        if hasattr(self, "is_active"):
-            result["isActive"] = bool(self.is_active)
-        elif include_empty:
-            result["isActive"] = False
         if hasattr(self, "schedule"):
             result["schedule"] = self.schedule.to_dict(include_empty=include_empty)
         elif include_empty:
             result["schedule"] = ModelGoalSchedule()
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -143,25 +143,29 @@ class ModelUpdateGoalRequest(Model):
     @classmethod
     def create(
         cls,
-        description: str,
         name: str,
-        requirement_groups: List[ModelRequirement],
-        rewards: List[ModelReward],
-        tags: List[str],
+        description: Optional[str] = None,
         is_active: Optional[bool] = None,
+        requirement_groups: Optional[List[ModelRequirement]] = None,
+        rewards: Optional[List[ModelReward]] = None,
         schedule: Optional[ModelGoalSchedule] = None,
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelUpdateGoalRequest:
         instance = cls()
-        instance.description = description
         instance.name = name
-        instance.requirement_groups = requirement_groups
-        instance.rewards = rewards
-        instance.tags = tags
+        if description is not None:
+            instance.description = description
         if is_active is not None:
             instance.is_active = is_active
+        if requirement_groups is not None:
+            instance.requirement_groups = requirement_groups
+        if rewards is not None:
+            instance.rewards = rewards
         if schedule is not None:
             instance.schedule = schedule
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -171,14 +175,18 @@ class ModelUpdateGoalRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "description" in dict_ and dict_["description"] is not None:
-            instance.description = str(dict_["description"])
-        elif include_empty:
-            instance.description = ""
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "description" in dict_ and dict_["description"] is not None:
+            instance.description = str(dict_["description"])
+        elif include_empty:
+            instance.description = ""
+        if "isActive" in dict_ and dict_["isActive"] is not None:
+            instance.is_active = bool(dict_["isActive"])
+        elif include_empty:
+            instance.is_active = False
         if "requirementGroups" in dict_ and dict_["requirementGroups"] is not None:
             instance.requirement_groups = [
                 ModelRequirement.create_from_dict(i0, include_empty=include_empty)
@@ -193,20 +201,16 @@ class ModelUpdateGoalRequest(Model):
             ]
         elif include_empty:
             instance.rewards = []
-        if "tags" in dict_ and dict_["tags"] is not None:
-            instance.tags = [str(i0) for i0 in dict_["tags"]]
-        elif include_empty:
-            instance.tags = []
-        if "isActive" in dict_ and dict_["isActive"] is not None:
-            instance.is_active = bool(dict_["isActive"])
-        elif include_empty:
-            instance.is_active = False
         if "schedule" in dict_ and dict_["schedule"] is not None:
             instance.schedule = ModelGoalSchedule.create_from_dict(
                 dict_["schedule"], include_empty=include_empty
             )
         elif include_empty:
             instance.schedule = ModelGoalSchedule()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @classmethod
@@ -250,25 +254,25 @@ class ModelUpdateGoalRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "description": "description",
             "name": "name",
+            "description": "description",
+            "isActive": "is_active",
             "requirementGroups": "requirement_groups",
             "rewards": "rewards",
-            "tags": "tags",
-            "isActive": "is_active",
             "schedule": "schedule",
+            "tags": "tags",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "description": True,
             "name": True,
-            "requirementGroups": True,
-            "rewards": True,
-            "tags": True,
+            "description": False,
             "isActive": False,
+            "requirementGroups": False,
+            "rewards": False,
             "schedule": False,
+            "tags": False,
         }
 
     # endregion static methods

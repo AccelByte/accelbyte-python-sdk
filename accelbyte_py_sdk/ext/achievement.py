@@ -169,6 +169,7 @@ def create_models_error_details_example() -> ModelsErrorDetails:
     instance = ModelsErrorDetails()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
+    instance.third_party_reference_id = randomize()
     return instance
 
 

@@ -37,6 +37,8 @@ class MatchmakerTicket(Model):
     Properties:
         created_at: (CreatedAt) REQUIRED str
 
+        is_active: (IsActive) REQUIRED bool
+
         latencies: (Latencies) REQUIRED Dict[str, int]
 
         match_pool: (MatchPool) REQUIRED str
@@ -52,11 +54,14 @@ class MatchmakerTicket(Model):
         ticket_attributes: (TicketAttributes) REQUIRED Dict[str, Any]
 
         ticket_id: (TicketID) REQUIRED str
+
+        ticket_information: (TicketInformation) REQUIRED Dict[str, Any]
     """
 
     # region fields
 
     created_at: str  # REQUIRED
+    is_active: bool  # REQUIRED
     latencies: Dict[str, int]  # REQUIRED
     match_pool: str  # REQUIRED
     namespace: str  # REQUIRED
@@ -65,6 +70,7 @@ class MatchmakerTicket(Model):
     proposed_proposal: MatchmakerProposedProposal  # REQUIRED
     ticket_attributes: Dict[str, Any]  # REQUIRED
     ticket_id: str  # REQUIRED
+    ticket_information: Dict[str, Any]  # REQUIRED
 
     # endregion fields
 
@@ -72,6 +78,10 @@ class MatchmakerTicket(Model):
 
     def with_created_at(self, value: str) -> MatchmakerTicket:
         self.created_at = value
+        return self
+
+    def with_is_active(self, value: bool) -> MatchmakerTicket:
+        self.is_active = value
         return self
 
     def with_latencies(self, value: Dict[str, int]) -> MatchmakerTicket:
@@ -108,6 +118,10 @@ class MatchmakerTicket(Model):
         self.ticket_id = value
         return self
 
+    def with_ticket_information(self, value: Dict[str, Any]) -> MatchmakerTicket:
+        self.ticket_information = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -118,6 +132,10 @@ class MatchmakerTicket(Model):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
             result["CreatedAt"] = ""
+        if hasattr(self, "is_active"):
+            result["IsActive"] = bool(self.is_active)
+        elif include_empty:
+            result["IsActive"] = False
         if hasattr(self, "latencies"):
             result["Latencies"] = {
                 str(k0): int(v0) for k0, v0 in self.latencies.items()
@@ -158,6 +176,12 @@ class MatchmakerTicket(Model):
             result["TicketID"] = str(self.ticket_id)
         elif include_empty:
             result["TicketID"] = ""
+        if hasattr(self, "ticket_information"):
+            result["TicketInformation"] = {
+                str(k0): v0 for k0, v0 in self.ticket_information.items()
+            }
+        elif include_empty:
+            result["TicketInformation"] = {}
         return result
 
     # endregion to methods
@@ -168,6 +192,7 @@ class MatchmakerTicket(Model):
     def create(
         cls,
         created_at: str,
+        is_active: bool,
         latencies: Dict[str, int],
         match_pool: str,
         namespace: str,
@@ -176,10 +201,12 @@ class MatchmakerTicket(Model):
         proposed_proposal: MatchmakerProposedProposal,
         ticket_attributes: Dict[str, Any],
         ticket_id: str,
+        ticket_information: Dict[str, Any],
         **kwargs,
     ) -> MatchmakerTicket:
         instance = cls()
         instance.created_at = created_at
+        instance.is_active = is_active
         instance.latencies = latencies
         instance.match_pool = match_pool
         instance.namespace = namespace
@@ -188,6 +215,7 @@ class MatchmakerTicket(Model):
         instance.proposed_proposal = proposed_proposal
         instance.ticket_attributes = ticket_attributes
         instance.ticket_id = ticket_id
+        instance.ticket_information = ticket_information
         return instance
 
     @classmethod
@@ -201,6 +229,10 @@ class MatchmakerTicket(Model):
             instance.created_at = str(dict_["CreatedAt"])
         elif include_empty:
             instance.created_at = ""
+        if "IsActive" in dict_ and dict_["IsActive"] is not None:
+            instance.is_active = bool(dict_["IsActive"])
+        elif include_empty:
+            instance.is_active = False
         if "Latencies" in dict_ and dict_["Latencies"] is not None:
             instance.latencies = {
                 str(k0): int(v0) for k0, v0 in dict_["Latencies"].items()
@@ -242,6 +274,12 @@ class MatchmakerTicket(Model):
             instance.ticket_id = str(dict_["TicketID"])
         elif include_empty:
             instance.ticket_id = ""
+        if "TicketInformation" in dict_ and dict_["TicketInformation"] is not None:
+            instance.ticket_information = {
+                str(k0): v0 for k0, v0 in dict_["TicketInformation"].items()
+            }
+        elif include_empty:
+            instance.ticket_information = {}
         return instance
 
     @classmethod
@@ -282,6 +320,7 @@ class MatchmakerTicket(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "CreatedAt": "created_at",
+            "IsActive": "is_active",
             "Latencies": "latencies",
             "MatchPool": "match_pool",
             "Namespace": "namespace",
@@ -290,12 +329,14 @@ class MatchmakerTicket(Model):
             "ProposedProposal": "proposed_proposal",
             "TicketAttributes": "ticket_attributes",
             "TicketID": "ticket_id",
+            "TicketInformation": "ticket_information",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "CreatedAt": True,
+            "IsActive": True,
             "Latencies": True,
             "MatchPool": True,
             "Namespace": True,
@@ -304,6 +345,7 @@ class MatchmakerTicket(Model):
             "ProposedProposal": True,
             "TicketAttributes": True,
             "TicketID": True,
+            "TicketInformation": True,
         }
 
     # endregion static methods

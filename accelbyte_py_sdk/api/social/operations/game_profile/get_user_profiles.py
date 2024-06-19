@@ -39,11 +39,7 @@ class GetUserProfiles(Operation):
     Returns all profiles' header for a user.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=2 (READ)
       *  Returns : list of profiles
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [READ]
 
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/profiles
@@ -56,7 +52,7 @@ class GetUserProfiles(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +74,7 @@ class GetUserProfiles(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

@@ -87,6 +87,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         allowed_clients: (AllowedClients) OPTIONAL List[str]
 
+        empty_str_field_list: (EmptyStrFieldList) OPTIONAL List[str]
+
         logo_url: (LogoURL) OPTIONAL str
 
         token_claims_mapping: (TokenClaimsMapping) OPTIONAL Dict[str, str]
@@ -120,6 +122,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     user_info_endpoint: str  # REQUIRED
     user_info_http_method: str  # REQUIRED
     allowed_clients: List[str]  # OPTIONAL
+    empty_str_field_list: List[str]  # OPTIONAL
     logo_url: str  # OPTIONAL
     token_claims_mapping: Dict[str, str]  # OPTIONAL
 
@@ -271,6 +274,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.allowed_clients = value
         return self
 
+    def with_empty_str_field_list(
+        self, value: List[str]
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.empty_str_field_list = value
+        return self
+
     def with_logo_url(
         self, value: str
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -398,6 +407,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["AllowedClients"] = [str(i0) for i0 in self.allowed_clients]
         elif include_empty:
             result["AllowedClients"] = []
+        if hasattr(self, "empty_str_field_list"):
+            result["EmptyStrFieldList"] = [str(i0) for i0 in self.empty_str_field_list]
+        elif include_empty:
+            result["EmptyStrFieldList"] = []
         if hasattr(self, "logo_url"):
             result["LogoURL"] = str(self.logo_url)
         elif include_empty:
@@ -443,6 +456,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         user_info_endpoint: str,
         user_info_http_method: str,
         allowed_clients: Optional[List[str]] = None,
+        empty_str_field_list: Optional[List[str]] = None,
         logo_url: Optional[str] = None,
         token_claims_mapping: Optional[Dict[str, str]] = None,
         **kwargs,
@@ -475,6 +489,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         instance.user_info_http_method = user_info_http_method
         if allowed_clients is not None:
             instance.allowed_clients = allowed_clients
+        if empty_str_field_list is not None:
+            instance.empty_str_field_list = empty_str_field_list
         if logo_url is not None:
             instance.logo_url = logo_url
         if token_claims_mapping is not None:
@@ -610,6 +626,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.allowed_clients = [str(i0) for i0 in dict_["AllowedClients"]]
         elif include_empty:
             instance.allowed_clients = []
+        if "EmptyStrFieldList" in dict_ and dict_["EmptyStrFieldList"] is not None:
+            instance.empty_str_field_list = [
+                str(i0) for i0 in dict_["EmptyStrFieldList"]
+            ]
+        elif include_empty:
+            instance.empty_str_field_list = []
         if "LogoURL" in dict_ and dict_["LogoURL"] is not None:
             instance.logo_url = str(dict_["LogoURL"])
         elif include_empty:
@@ -689,6 +711,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "UserInfoEndpoint": "user_info_endpoint",
             "UserInfoHTTPMethod": "user_info_http_method",
             "AllowedClients": "allowed_clients",
+            "EmptyStrFieldList": "empty_str_field_list",
             "LogoURL": "logo_url",
             "TokenClaimsMapping": "token_claims_mapping",
         }
@@ -722,6 +745,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "UserInfoEndpoint": True,
             "UserInfoHTTPMethod": True,
             "AllowedClients": False,
+            "EmptyStrFieldList": False,
             "LogoURL": False,
             "TokenClaimsMapping": False,
         }

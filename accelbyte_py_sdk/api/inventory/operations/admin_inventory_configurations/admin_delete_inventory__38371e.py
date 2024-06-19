@@ -51,7 +51,7 @@ class AdminDeleteInventoryConfiguration(Operation):
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -75,7 +75,7 @@ class AdminDeleteInventoryConfiguration(Operation):
 
     _url: str = "/inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations/{inventoryConfigurationId}"
     _method: str = "DELETE"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None

@@ -28,11 +28,14 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.payment_order_neon_pay_config import PaymentOrderNeonPayConfig
+
 
 class PaymentProviderEnum(StrEnum):
     ADYEN = "ADYEN"
     ALIPAY = "ALIPAY"
     CHECKOUT = "CHECKOUT"
+    NEONPAY = "NEONPAY"
     PAYPAL = "PAYPAL"
     STRIPE = "STRIPE"
     WALLET = "WALLET"
@@ -48,6 +51,8 @@ class PaymentUrlCreate(Model):
 
         payment_provider: (paymentProvider) REQUIRED Union[str, PaymentProviderEnum]
 
+        neon_pay_config: (neonPayConfig) OPTIONAL PaymentOrderNeonPayConfig
+
         return_url: (returnUrl) OPTIONAL str
 
         ui: (ui) OPTIONAL str
@@ -59,6 +64,7 @@ class PaymentUrlCreate(Model):
 
     payment_order_no: str  # REQUIRED
     payment_provider: Union[str, PaymentProviderEnum]  # REQUIRED
+    neon_pay_config: PaymentOrderNeonPayConfig  # OPTIONAL
     return_url: str  # OPTIONAL
     ui: str  # OPTIONAL
     zip_code: str  # OPTIONAL
@@ -75,6 +81,12 @@ class PaymentUrlCreate(Model):
         self, value: Union[str, PaymentProviderEnum]
     ) -> PaymentUrlCreate:
         self.payment_provider = value
+        return self
+
+    def with_neon_pay_config(
+        self, value: PaymentOrderNeonPayConfig
+    ) -> PaymentUrlCreate:
+        self.neon_pay_config = value
         return self
 
     def with_return_url(self, value: str) -> PaymentUrlCreate:
@@ -103,6 +115,12 @@ class PaymentUrlCreate(Model):
             result["paymentProvider"] = str(self.payment_provider)
         elif include_empty:
             result["paymentProvider"] = Union[str, PaymentProviderEnum]()
+        if hasattr(self, "neon_pay_config"):
+            result["neonPayConfig"] = self.neon_pay_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["neonPayConfig"] = PaymentOrderNeonPayConfig()
         if hasattr(self, "return_url"):
             result["returnUrl"] = str(self.return_url)
         elif include_empty:
@@ -126,6 +144,7 @@ class PaymentUrlCreate(Model):
         cls,
         payment_order_no: str,
         payment_provider: Union[str, PaymentProviderEnum],
+        neon_pay_config: Optional[PaymentOrderNeonPayConfig] = None,
         return_url: Optional[str] = None,
         ui: Optional[str] = None,
         zip_code: Optional[str] = None,
@@ -134,6 +153,8 @@ class PaymentUrlCreate(Model):
         instance = cls()
         instance.payment_order_no = payment_order_no
         instance.payment_provider = payment_provider
+        if neon_pay_config is not None:
+            instance.neon_pay_config = neon_pay_config
         if return_url is not None:
             instance.return_url = return_url
         if ui is not None:
@@ -157,6 +178,12 @@ class PaymentUrlCreate(Model):
             instance.payment_provider = str(dict_["paymentProvider"])
         elif include_empty:
             instance.payment_provider = Union[str, PaymentProviderEnum]()
+        if "neonPayConfig" in dict_ and dict_["neonPayConfig"] is not None:
+            instance.neon_pay_config = PaymentOrderNeonPayConfig.create_from_dict(
+                dict_["neonPayConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.neon_pay_config = PaymentOrderNeonPayConfig()
         if "returnUrl" in dict_ and dict_["returnUrl"] is not None:
             instance.return_url = str(dict_["returnUrl"])
         elif include_empty:
@@ -210,6 +237,7 @@ class PaymentUrlCreate(Model):
         return {
             "paymentOrderNo": "payment_order_no",
             "paymentProvider": "payment_provider",
+            "neonPayConfig": "neon_pay_config",
             "returnUrl": "return_url",
             "ui": "ui",
             "zipCode": "zip_code",
@@ -220,6 +248,7 @@ class PaymentUrlCreate(Model):
         return {
             "paymentOrderNo": True,
             "paymentProvider": True,
+            "neonPayConfig": False,
             "returnUrl": False,
             "ui": False,
             "zipCode": False,
@@ -232,6 +261,7 @@ class PaymentUrlCreate(Model):
                 "ADYEN",
                 "ALIPAY",
                 "CHECKOUT",
+                "NEONPAY",
                 "PAYPAL",
                 "STRIPE",
                 "WALLET",

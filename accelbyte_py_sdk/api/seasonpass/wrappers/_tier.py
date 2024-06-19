@@ -63,13 +63,6 @@ def create_tier(
 
     This API is used to create tier for a draft season, can create multiple tiers at same time.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers
 
@@ -81,7 +74,7 @@ def create_tier(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TierCreate in body
 
@@ -124,13 +117,6 @@ async def create_tier_async(
 
     This API is used to create tier for a draft season, can create multiple tiers at same time.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers
 
@@ -142,7 +128,7 @@ async def create_tier_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TierCreate in body
 
@@ -187,13 +173,6 @@ def delete_tier(
 
     This API is used to delete a tier permanently, only draft season pass can be deleted.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}
 
@@ -205,7 +184,7 @@ def delete_tier(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -246,13 +225,6 @@ async def delete_tier_async(
 
     This API is used to delete a tier permanently, only draft season pass can be deleted.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}
 
@@ -264,7 +236,7 @@ async def delete_tier_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -309,11 +281,7 @@ def grant_user_exp(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/exp
@@ -326,7 +294,7 @@ def grant_user_exp(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserExpGrant in body
 
@@ -365,11 +333,7 @@ async def grant_user_exp_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/exp
@@ -382,7 +346,7 @@ async def grant_user_exp_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserExpGrant in body
 
@@ -423,11 +387,7 @@ def grant_user_tier(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/tiers
@@ -440,7 +400,7 @@ def grant_user_tier(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserTierGrant in body
 
@@ -481,11 +441,7 @@ async def grant_user_tier_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/tiers
@@ -498,7 +454,7 @@ async def grant_user_tier_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserTierGrant in body
 
@@ -542,11 +498,7 @@ def query_tiers(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : the list of passes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : the list of passes
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers
@@ -559,7 +511,7 @@ def query_tiers(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -604,11 +556,7 @@ async def query_tiers_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : the list of passes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : the list of passes
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers
@@ -621,7 +569,7 @@ async def query_tiers_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -666,13 +614,6 @@ def reorder_tier(
 
     This API is used to reorder a tier. Only draft season pass can be updated.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}/reorder
 
@@ -684,7 +625,7 @@ def reorder_tier(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TierReorder in body
 
@@ -731,13 +672,6 @@ async def reorder_tier_async(
 
     This API is used to reorder a tier. Only draft season pass can be updated.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}/reorder
 
@@ -749,7 +683,7 @@ async def reorder_tier_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TierReorder in body
 
@@ -798,13 +732,6 @@ def update_tier(
 
     This API is used to update a tier. Only draft season pass can be updated.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}
 
@@ -816,7 +743,7 @@ def update_tier(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TierInput in body
 
@@ -863,13 +790,6 @@ async def update_tier_async(
 
     This API is used to update a tier. Only draft season pass can be updated.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}
 
@@ -881,7 +801,7 @@ async def update_tier_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL TierInput in body
 

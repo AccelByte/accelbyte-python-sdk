@@ -41,6 +41,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenWithDeviceCookieRespo
 @click.option("--device_id", "device_id", type=str)
 @click.option("--additional_data", "additional_data", type=str)
 @click.option("--client_id", "client_id", type=str)
+@click.option("--client_secret", "client_secret", type=str)
 @click.option("--code", "code", type=str)
 @click.option("--code_verifier", "code_verifier", type=str)
 @click.option("--extend_namespace", "extend_namespace", type=str)
@@ -58,6 +59,7 @@ def token_grant_v3(
     device_id: Optional[str] = None,
     additional_data: Optional[str] = None,
     client_id: Optional[str] = None,
+    client_secret: Optional[str] = None,
     code: Optional[str] = None,
     code_verifier: Optional[str] = None,
     extend_namespace: Optional[str] = None,
@@ -84,6 +86,7 @@ def token_grant_v3(
         device_id=device_id,
         additional_data=additional_data,
         client_id=client_id,
+        client_secret=client_secret,
         code=code,
         code_verifier=code_verifier,
         extend_namespace=extend_namespace,

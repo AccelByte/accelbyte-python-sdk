@@ -39,6 +39,7 @@ class MatcherEnum(StrEnum):
 
 class ParameterTypeEnum(StrEnum):
     ACHIEVEMENT = "ACHIEVEMENT"
+    ENTITLEMENT = "ENTITLEMENT"
     STATISTIC = "STATISTIC"
     STATISTIC_CYCLE = "STATISTIC_CYCLE"
     USERACCOUNT = "USERACCOUNT"
@@ -239,6 +240,7 @@ class ModelPredicate(Model):
             ],
             "parameterType": [
                 "ACHIEVEMENT",
+                "ENTITLEMENT",
                 "STATISTIC",
                 "STATISTIC_CYCLE",
                 "USERACCOUNT",

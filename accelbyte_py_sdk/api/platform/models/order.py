@@ -33,12 +33,14 @@ from ..models.deduction_detail import DeductionDetail
 from ..models.item_snapshot import ItemSnapshot
 from ..models.order_bundle_item_info import OrderBundleItemInfo
 from ..models.order_creation_options import OrderCreationOptions
+from ..models.payment_data import PaymentData
 
 
 class PaymentProviderEnum(StrEnum):
     ADYEN = "ADYEN"
     ALIPAY = "ALIPAY"
     CHECKOUT = "CHECKOUT"
+    NEONPAY = "NEONPAY"
     PAYPAL = "PAYPAL"
     STRIPE = "STRIPE"
     WALLET = "WALLET"
@@ -113,6 +115,8 @@ class Order(Model):
         order_bundle_item_infos: (orderBundleItemInfos) OPTIONAL List[OrderBundleItemInfo]
 
         order_no: (orderNo) OPTIONAL str
+
+        payment_data: (paymentData) OPTIONAL PaymentData
 
         payment_method: (paymentMethod) OPTIONAL str
 
@@ -190,6 +194,7 @@ class Order(Model):
     namespace: str  # OPTIONAL
     order_bundle_item_infos: List[OrderBundleItemInfo]  # OPTIONAL
     order_no: str  # OPTIONAL
+    payment_data: PaymentData  # OPTIONAL
     payment_method: str  # OPTIONAL
     payment_method_fee: int  # OPTIONAL
     payment_order_no: str  # OPTIONAL
@@ -317,6 +322,10 @@ class Order(Model):
 
     def with_order_no(self, value: str) -> Order:
         self.order_no = value
+        return self
+
+    def with_payment_data(self, value: PaymentData) -> Order:
+        self.payment_data = value
         return self
 
     def with_payment_method(self, value: str) -> Order:
@@ -530,6 +539,12 @@ class Order(Model):
             result["orderNo"] = str(self.order_no)
         elif include_empty:
             result["orderNo"] = ""
+        if hasattr(self, "payment_data"):
+            result["paymentData"] = self.payment_data.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["paymentData"] = PaymentData()
         if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
@@ -660,6 +675,7 @@ class Order(Model):
         namespace: Optional[str] = None,
         order_bundle_item_infos: Optional[List[OrderBundleItemInfo]] = None,
         order_no: Optional[str] = None,
+        payment_data: Optional[PaymentData] = None,
         payment_method: Optional[str] = None,
         payment_method_fee: Optional[int] = None,
         payment_order_no: Optional[str] = None,
@@ -737,6 +753,8 @@ class Order(Model):
             instance.order_bundle_item_infos = order_bundle_item_infos
         if order_no is not None:
             instance.order_no = order_no
+        if payment_data is not None:
+            instance.payment_data = payment_data
         if payment_method is not None:
             instance.payment_method = payment_method
         if payment_method_fee is not None:
@@ -910,6 +928,12 @@ class Order(Model):
             instance.order_no = str(dict_["orderNo"])
         elif include_empty:
             instance.order_no = ""
+        if "paymentData" in dict_ and dict_["paymentData"] is not None:
+            instance.payment_data = PaymentData.create_from_dict(
+                dict_["paymentData"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.payment_data = PaymentData()
         if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
             instance.payment_method = str(dict_["paymentMethod"])
         elif include_empty:
@@ -1073,6 +1097,7 @@ class Order(Model):
             "namespace": "namespace",
             "orderBundleItemInfos": "order_bundle_item_infos",
             "orderNo": "order_no",
+            "paymentData": "payment_data",
             "paymentMethod": "payment_method",
             "paymentMethodFee": "payment_method_fee",
             "paymentOrderNo": "payment_order_no",
@@ -1127,6 +1152,7 @@ class Order(Model):
             "namespace": False,
             "orderBundleItemInfos": False,
             "orderNo": False,
+            "paymentData": False,
             "paymentMethod": False,
             "paymentMethodFee": False,
             "paymentOrderNo": False,
@@ -1160,6 +1186,7 @@ class Order(Model):
                 "ADYEN",
                 "ALIPAY",
                 "CHECKOUT",
+                "NEONPAY",
                 "PAYPAL",
                 "STRIPE",
                 "WALLET",

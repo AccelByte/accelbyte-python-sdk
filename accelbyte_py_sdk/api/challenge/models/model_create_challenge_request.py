@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.model_reset_config import ModelResetConfig
+
 
 class AssignmentRuleEnum(StrEnum):
     FIXED = "FIXED"
@@ -72,6 +74,8 @@ class ModelCreateChallengeRequest(Model):
         end_date: (endDate) OPTIONAL str
 
         repeat_after: (repeatAfter) OPTIONAL int
+
+        reset_config: (resetConfig) OPTIONAL ModelResetConfig
     """
 
     # region fields
@@ -87,6 +91,7 @@ class ModelCreateChallengeRequest(Model):
     end_after: int  # OPTIONAL
     end_date: str  # OPTIONAL
     repeat_after: int  # OPTIONAL
+    reset_config: ModelResetConfig  # OPTIONAL
 
     # endregion fields
 
@@ -142,6 +147,10 @@ class ModelCreateChallengeRequest(Model):
         self.repeat_after = value
         return self
 
+    def with_reset_config(self, value: ModelResetConfig) -> ModelCreateChallengeRequest:
+        self.reset_config = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -192,6 +201,12 @@ class ModelCreateChallengeRequest(Model):
             result["repeatAfter"] = int(self.repeat_after)
         elif include_empty:
             result["repeatAfter"] = 0
+        if hasattr(self, "reset_config"):
+            result["resetConfig"] = self.reset_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["resetConfig"] = ModelResetConfig()
         return result
 
     # endregion to methods
@@ -212,6 +227,7 @@ class ModelCreateChallengeRequest(Model):
         end_after: Optional[int] = None,
         end_date: Optional[str] = None,
         repeat_after: Optional[int] = None,
+        reset_config: Optional[ModelResetConfig] = None,
         **kwargs,
     ) -> ModelCreateChallengeRequest:
         instance = cls()
@@ -231,6 +247,8 @@ class ModelCreateChallengeRequest(Model):
             instance.end_date = end_date
         if repeat_after is not None:
             instance.repeat_after = repeat_after
+        if reset_config is not None:
+            instance.reset_config = reset_config
         return instance
 
     @classmethod
@@ -287,6 +305,12 @@ class ModelCreateChallengeRequest(Model):
             instance.repeat_after = int(dict_["repeatAfter"])
         elif include_empty:
             instance.repeat_after = 0
+        if "resetConfig" in dict_ and dict_["resetConfig"] is not None:
+            instance.reset_config = ModelResetConfig.create_from_dict(
+                dict_["resetConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.reset_config = ModelResetConfig()
         return instance
 
     @classmethod
@@ -341,6 +365,7 @@ class ModelCreateChallengeRequest(Model):
             "endAfter": "end_after",
             "endDate": "end_date",
             "repeatAfter": "repeat_after",
+            "resetConfig": "reset_config",
         }
 
     @staticmethod
@@ -357,6 +382,7 @@ class ModelCreateChallengeRequest(Model):
             "endAfter": False,
             "endDate": False,
             "repeatAfter": False,
+            "resetConfig": False,
         }
 
     @staticmethod

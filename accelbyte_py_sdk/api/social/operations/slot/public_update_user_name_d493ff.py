@@ -43,11 +43,7 @@ class PublicUpdateUserNamespaceSlot(Operation):
     Updates a slot.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=4 (UPDATE)
       *  Returns : updated slot
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [UPDATE]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
@@ -60,7 +56,7 @@ class PublicUpdateUserNamespaceSlot(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         checksum: (checksum) OPTIONAL str in form_data
 
@@ -92,7 +88,7 @@ class PublicUpdateUserNamespaceSlot(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     checksum: str  # OPTIONAL in [form_data]

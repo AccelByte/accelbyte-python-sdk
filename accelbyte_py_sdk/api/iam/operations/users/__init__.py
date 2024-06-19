@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.16.0"
+__version__ = "7.17.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -165,6 +165,7 @@ from .public_update_user_v2 import PublicUpdateUserV2
 from .public_upgrade_headless_a93947 import PublicUpgradeHeadlessAccountV3
 from .public_user_verification_v3 import PublicUserVerificationV3
 from .public_validate_user_by_fc4982 import PublicValidateUserByUserIDAndPasswordV3
+from .public_validate_user_input import PublicValidateUserInput
 from .public_verify_headless__2e6c24 import PublicVerifyHeadlessAccountV3
 from .public_verify_registrat_4d06db import PublicVerifyRegistrationCode
 from .public_verify_user_by_link_v3 import PublicVerifyUserByLinkV3

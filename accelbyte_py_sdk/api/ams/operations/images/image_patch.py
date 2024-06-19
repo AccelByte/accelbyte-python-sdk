@@ -39,10 +39,10 @@ class ImagePatch(Operation):
 
     This allows editing of the image name, toggling `IsProtected`, or adding & removal of tags
 
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}

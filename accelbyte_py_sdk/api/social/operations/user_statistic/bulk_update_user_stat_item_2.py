@@ -49,11 +49,7 @@ class BulkUpdateUserStatItem2(Operation):
     If provided, user's statitems will be saved with key: *userId_additionalKey*
 
     Other detail info:
-    + *Required permission*: resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -66,7 +62,7 @@ class BulkUpdateUserStatItem2(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemUpdate] in body
 
@@ -98,7 +94,7 @@ class BulkUpdateUserStatItem2(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[BulkStatItemUpdate]  # OPTIONAL in [body]

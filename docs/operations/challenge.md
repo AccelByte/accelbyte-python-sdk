@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Challenge Service Index (1.5.0)
+# AccelByte Gaming Services Challenge Service Index (1.6.0)
 
 
 ## Operations
@@ -44,6 +44,8 @@
 ### Player Reward
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards/claim | POST | adminClaimUserRewards | `false` | [AdminClaimUserRewards](../../accelbyte_py_sdk/api/challenge/operations/player_reward/admin_claim_user_rewards.py) | [admin_claim_user_rewards](../../accelbyte_py_sdk/api/challenge/wrappers/_player_reward.py) | [accelbyte_py_sdk_cli challenge-admin-claim-user-rewards](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_claim_user_rewards.py) |
+| /challenge/v1/admin/namespaces/{namespace}/users/rewards/claim | POST | adminClaimUsersRewards | `false` | [AdminClaimUsersRewards](../../accelbyte_py_sdk/api/challenge/operations/player_reward/admin_claim_users_rewards.py) | [admin_claim_users_rewards](../../accelbyte_py_sdk/api/challenge/wrappers/_player_reward.py) | [accelbyte_py_sdk_cli challenge-admin-claim-users-rewards](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_claim_users_rewards.py) |
 | /challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards | GET | adminGetUserRewards | `false` | [AdminGetUserRewards](../../accelbyte_py_sdk/api/challenge/operations/player_reward/admin_get_user_rewards.py) | [admin_get_user_rewards](../../accelbyte_py_sdk/api/challenge/wrappers/_player_reward.py) | [accelbyte_py_sdk_cli challenge-admin-get-user-rewards](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_get_user_rewards.py) |
 | /challenge/v1/public/namespaces/{namespace}/users/me/rewards/claim | POST | publicClaimUserRewards | `false` | [PublicClaimUserRewards](../../accelbyte_py_sdk/api/challenge/operations/player_reward/public_claim_user_rewards.py) | [public_claim_user_rewards](../../accelbyte_py_sdk/api/challenge/wrappers/_player_reward.py) | [accelbyte_py_sdk_cli challenge-public-claim-user-rewards](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_claim_user_rewards.py) |
 | /challenge/v1/public/namespaces/{namespace}/users/me/rewards | GET | publicGetUserRewards | `false` | [PublicGetUserRewards](../../accelbyte_py_sdk/api/challenge/operations/player_reward/public_get_user_rewards.py) | [public_get_user_rewards](../../accelbyte_py_sdk/api/challenge/wrappers/_player_reward.py) | [accelbyte_py_sdk_cli challenge-public-get-user-rewards](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_get_user_rewards.py) |
@@ -53,8 +55,11 @@
 | Model | Class |
 |---|---|
 | iam.ErrorResponse | [IamErrorResponse](../../accelbyte_py_sdk/api/challenge/models/iam_error_response.py) |
+| iam.Permission | [IamPermission](../../accelbyte_py_sdk/api/challenge/models/iam_permission.py) |
 | model.ChallengeResponse | [ModelChallengeResponse](../../accelbyte_py_sdk/api/challenge/models/model_challenge_response.py) |
 | model.ClaimUserRewardsReq | [ModelClaimUserRewardsReq](../../accelbyte_py_sdk/api/challenge/models/model_claim_user_rewards_req.py) |
+| model.ClaimUsersRewardsRequest | [ModelClaimUsersRewardsRequest](../../accelbyte_py_sdk/api/challenge/models/model_claim_users_rewards_request.py) |
+| model.ClaimUsersRewardsResponse | [ModelClaimUsersRewardsResponse](../../accelbyte_py_sdk/api/challenge/models/model_claim_users_rewards_response.py) |
 | model.CreateChallengeRequest | [ModelCreateChallengeRequest](../../accelbyte_py_sdk/api/challenge/models/model_create_challenge_request.py) |
 | model.CreateGoalRequest | [ModelCreateGoalRequest](../../accelbyte_py_sdk/api/challenge/models/model_create_goal_request.py) |
 | model.EvaluatePlayerProgressionRequest | [ModelEvaluatePlayerProgressionRequest](../../accelbyte_py_sdk/api/challenge/models/model_evaluate_player_progression_request.py) |
@@ -71,12 +76,13 @@
 | model.Predicate | [ModelPredicate](../../accelbyte_py_sdk/api/challenge/models/model_predicate.py) |
 | model.Requirement | [ModelRequirement](../../accelbyte_py_sdk/api/challenge/models/model_requirement.py) |
 | model.RequirementProgressionResponse | [ModelRequirementProgressionResponse](../../accelbyte_py_sdk/api/challenge/models/model_requirement_progression_response.py) |
+| model.ResetConfig | [ModelResetConfig](../../accelbyte_py_sdk/api/challenge/models/model_reset_config.py) |
 | model.Reward | [ModelReward](../../accelbyte_py_sdk/api/challenge/models/model_reward.py) |
 | model.Schedule | [ModelSchedule](../../accelbyte_py_sdk/api/challenge/models/model_schedule.py) |
+| model.UpdateChallengeRequest | [ModelUpdateChallengeRequest](../../accelbyte_py_sdk/api/challenge/models/model_update_challenge_request.py) |
 | model.UpdateGoalRequest | [ModelUpdateGoalRequest](../../accelbyte_py_sdk/api/challenge/models/model_update_goal_request.py) |
 | model.UserProgressionResponse | [ModelUserProgressionResponse](../../accelbyte_py_sdk/api/challenge/models/model_user_progression_response.py) |
 | model.UserProgressionResponseMeta | [ModelUserProgressionResponseMeta](../../accelbyte_py_sdk/api/challenge/models/model_user_progression_response_meta.py) |
 | model.UserReward | [ModelUserReward](../../accelbyte_py_sdk/api/challenge/models/model_user_reward.py) |
 | models.Period | [ModelsPeriod](../../accelbyte_py_sdk/api/challenge/models/models_period.py) |
-| models.UpdateChallengeRequest | [ModelsUpdateChallengeRequest](../../accelbyte_py_sdk/api/challenge/models/models_update_challenge_request.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/challenge/models/response_error.py) |

@@ -42,11 +42,6 @@ class PublicDeleteUserNamespaceSlot(Operation):
     Deletes the slot.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SLOTDATA", action=8 (DELETE)
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SLOTDATA [DELETE]
-
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/slots/{slotId}
 
@@ -58,7 +53,7 @@ class PublicDeleteUserNamespaceSlot(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +73,7 @@ class PublicDeleteUserNamespaceSlot(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

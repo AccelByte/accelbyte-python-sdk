@@ -42,11 +42,7 @@ class UpdateSeason(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : updated season
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : updated season
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}
@@ -59,7 +55,7 @@ class UpdateSeason(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL SeasonUpdate in body
 
@@ -85,7 +81,7 @@ class UpdateSeason(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: SeasonUpdate  # OPTIONAL in [body]

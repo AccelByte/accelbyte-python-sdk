@@ -41,11 +41,7 @@ class QueryUserExpGrantHistoryTag(Operation):
     Other detail info:
 
       * default will query from current active season
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=2 (READ)
       *  Returns : exp grant history tags list
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [READ]
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/exp/history/tags
@@ -58,7 +54,7 @@ class QueryUserExpGrantHistoryTag(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +74,7 @@ class QueryUserExpGrantHistoryTag(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

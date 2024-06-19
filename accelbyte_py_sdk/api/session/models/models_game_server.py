@@ -56,6 +56,8 @@ class ModelsGameServer(Model):
 
         deployment: (deployment) OPTIONAL str
 
+        extend_region: (extend_region) OPTIONAL str
+
         game_version: (game_version) OPTIONAL str
 
         image_version: (image_version) OPTIONAL str
@@ -86,6 +88,7 @@ class ModelsGameServer(Model):
     alternate_ips: List[str]  # OPTIONAL
     ams_protocol: List[ModelsPortConfigurationAMS]  # OPTIONAL
     deployment: str  # OPTIONAL
+    extend_region: str  # OPTIONAL
     game_version: str  # OPTIONAL
     image_version: str  # OPTIONAL
     ip: str  # OPTIONAL
@@ -143,6 +146,10 @@ class ModelsGameServer(Model):
 
     def with_deployment(self, value: str) -> ModelsGameServer:
         self.deployment = value
+        return self
+
+    def with_extend_region(self, value: str) -> ModelsGameServer:
+        self.extend_region = value
         return self
 
     def with_game_version(self, value: str) -> ModelsGameServer:
@@ -229,6 +236,10 @@ class ModelsGameServer(Model):
             result["deployment"] = str(self.deployment)
         elif include_empty:
             result["deployment"] = ""
+        if hasattr(self, "extend_region"):
+            result["extend_region"] = str(self.extend_region)
+        elif include_empty:
+            result["extend_region"] = ""
         if hasattr(self, "game_version"):
             result["game_version"] = str(self.game_version)
         elif include_empty:
@@ -281,6 +292,7 @@ class ModelsGameServer(Model):
         alternate_ips: Optional[List[str]] = None,
         ams_protocol: Optional[List[ModelsPortConfigurationAMS]] = None,
         deployment: Optional[str] = None,
+        extend_region: Optional[str] = None,
         game_version: Optional[str] = None,
         image_version: Optional[str] = None,
         ip: Optional[str] = None,
@@ -306,6 +318,8 @@ class ModelsGameServer(Model):
             instance.ams_protocol = ams_protocol
         if deployment is not None:
             instance.deployment = deployment
+        if extend_region is not None:
+            instance.extend_region = extend_region
         if game_version is not None:
             instance.game_version = game_version
         if image_version is not None:
@@ -383,6 +397,10 @@ class ModelsGameServer(Model):
             instance.deployment = str(dict_["deployment"])
         elif include_empty:
             instance.deployment = ""
+        if "extend_region" in dict_ and dict_["extend_region"] is not None:
+            instance.extend_region = str(dict_["extend_region"])
+        elif include_empty:
+            instance.extend_region = ""
         if "game_version" in dict_ and dict_["game_version"] is not None:
             instance.game_version = str(dict_["game_version"])
         elif include_empty:
@@ -465,6 +483,7 @@ class ModelsGameServer(Model):
             "alternate_ips": "alternate_ips",
             "ams_protocol": "ams_protocol",
             "deployment": "deployment",
+            "extend_region": "extend_region",
             "game_version": "game_version",
             "image_version": "image_version",
             "ip": "ip",
@@ -489,6 +508,7 @@ class ModelsGameServer(Model):
             "alternate_ips": False,
             "ams_protocol": False,
             "deployment": False,
+            "extend_region": False,
             "game_version": False,
             "image_version": False,
             "ip": False,

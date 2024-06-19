@@ -44,6 +44,8 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
 
         platform_name: (platformName) REQUIRED str
 
+        logo_url: (logoURL) OPTIONAL str
+
         platform_user_id: (platformUserId) OPTIONAL str
     """
 
@@ -53,6 +55,7 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
     linked_at: str  # REQUIRED
     platform_group: str  # REQUIRED
     platform_name: str  # REQUIRED
+    logo_url: str  # OPTIONAL
     platform_user_id: str  # OPTIONAL
 
     # endregion fields
@@ -75,6 +78,10 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
 
     def with_platform_name(self, value: str) -> AccountcommonDistinctLinkedPlatformV3:
         self.platform_name = value
+        return self
+
+    def with_logo_url(self, value: str) -> AccountcommonDistinctLinkedPlatformV3:
+        self.logo_url = value
         return self
 
     def with_platform_user_id(
@@ -107,6 +114,10 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
             result["platformName"] = str(self.platform_name)
         elif include_empty:
             result["platformName"] = ""
+        if hasattr(self, "logo_url"):
+            result["logoURL"] = str(self.logo_url)
+        elif include_empty:
+            result["logoURL"] = ""
         if hasattr(self, "platform_user_id"):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
@@ -124,6 +135,7 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
         linked_at: str,
         platform_group: str,
         platform_name: str,
+        logo_url: Optional[str] = None,
         platform_user_id: Optional[str] = None,
         **kwargs,
     ) -> AccountcommonDistinctLinkedPlatformV3:
@@ -132,6 +144,8 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
         instance.linked_at = linked_at
         instance.platform_group = platform_group
         instance.platform_name = platform_name
+        if logo_url is not None:
+            instance.logo_url = logo_url
         if platform_user_id is not None:
             instance.platform_user_id = platform_user_id
         return instance
@@ -164,6 +178,10 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
             instance.platform_name = str(dict_["platformName"])
         elif include_empty:
             instance.platform_name = ""
+        if "logoURL" in dict_ and dict_["logoURL"] is not None:
+            instance.logo_url = str(dict_["logoURL"])
+        elif include_empty:
+            instance.logo_url = ""
         if "platformUserId" in dict_ and dict_["platformUserId"] is not None:
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
@@ -215,6 +233,7 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
             "linkedAt": "linked_at",
             "platformGroup": "platform_group",
             "platformName": "platform_name",
+            "logoURL": "logo_url",
             "platformUserId": "platform_user_id",
         }
 
@@ -225,6 +244,7 @@ class AccountcommonDistinctLinkedPlatformV3(Model):
             "linkedAt": True,
             "platformGroup": True,
             "platformName": True,
+            "logoURL": False,
             "platformUserId": False,
         }
 

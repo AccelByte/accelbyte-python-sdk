@@ -39,11 +39,7 @@ class PublicCreateUserStatItem(Operation):
     Create user's statItem.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=1 (CREATE)
       *  Returns : created user's statItem
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [CREATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -56,7 +52,7 @@ class PublicCreateUserStatItem(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -86,7 +82,7 @@ class PublicCreateUserStatItem(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

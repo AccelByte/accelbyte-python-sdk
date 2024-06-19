@@ -317,6 +317,7 @@ def create_api_fleet_get_response_example() -> ApiFleetGetResponse:
     instance.name = randomize()
     instance.on_demand = randomize("bool")
     instance.regions = [create_api_region_config_example()]
+    instance.sampling_rules = create_api_fleet_artifacts_sample_rules_example()
     return instance
 
 
@@ -432,6 +433,7 @@ def create_api_image_deployment_profile_example() -> ApiImageDeploymentProfile:
 def create_api_image_details_example() -> ApiImageDetails:
     instance = ApiImageDetails()
     instance.created_at = randomize("date")
+    instance.delete_at = create_api_time_example()
     instance.executable = randomize()
     instance.id_ = randomize()
     instance.is_protected = randomize("bool")
@@ -454,6 +456,7 @@ def create_api_image_list_example() -> ApiImageList:
 def create_api_image_list_item_example() -> ApiImageListItem:
     instance = ApiImageListItem()
     instance.created_at = randomize("date")
+    instance.delete_at = create_api_time_example()
     instance.executable = randomize()
     instance.id_ = randomize()
     instance.is_protected = randomize("bool")

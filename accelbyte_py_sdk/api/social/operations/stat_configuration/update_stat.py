@@ -40,13 +40,9 @@ class UpdateStat(Operation):
     Update stat.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
       *  Returns : updated stat
       *  Field globalAggregationMethod will be ignored when the stat is not set as global
       *  Field globalAggregationMethod is not updatable when the stat status is TIED
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STAT [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
@@ -59,7 +55,7 @@ class UpdateStat(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatUpdate in body
 
@@ -87,7 +83,7 @@ class UpdateStat(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: StatUpdate  # OPTIONAL in [body]

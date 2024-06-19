@@ -39,6 +39,8 @@ class ApiMatchTicketRequest(Model):
         match_pool: (matchPool) REQUIRED str
 
         session_id: (sessionID) OPTIONAL str
+
+        storage: (storage) OPTIONAL Dict[str, Any]
     """
 
     # region fields
@@ -47,6 +49,7 @@ class ApiMatchTicketRequest(Model):
     latencies: Dict[str, int]  # REQUIRED
     match_pool: str  # REQUIRED
     session_id: str  # OPTIONAL
+    storage: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
 
@@ -66,6 +69,10 @@ class ApiMatchTicketRequest(Model):
 
     def with_session_id(self, value: str) -> ApiMatchTicketRequest:
         self.session_id = value
+        return self
+
+    def with_storage(self, value: Dict[str, Any]) -> ApiMatchTicketRequest:
+        self.storage = value
         return self
 
     # endregion with_x methods
@@ -92,6 +99,10 @@ class ApiMatchTicketRequest(Model):
             result["sessionID"] = str(self.session_id)
         elif include_empty:
             result["sessionID"] = ""
+        if hasattr(self, "storage"):
+            result["storage"] = {str(k0): v0 for k0, v0 in self.storage.items()}
+        elif include_empty:
+            result["storage"] = {}
         return result
 
     # endregion to methods
@@ -105,6 +116,7 @@ class ApiMatchTicketRequest(Model):
         latencies: Dict[str, int],
         match_pool: str,
         session_id: Optional[str] = None,
+        storage: Optional[Dict[str, Any]] = None,
         **kwargs,
     ) -> ApiMatchTicketRequest:
         instance = cls()
@@ -113,6 +125,8 @@ class ApiMatchTicketRequest(Model):
         instance.match_pool = match_pool
         if session_id is not None:
             instance.session_id = session_id
+        if storage is not None:
+            instance.storage = storage
         return instance
 
     @classmethod
@@ -142,6 +156,10 @@ class ApiMatchTicketRequest(Model):
             instance.session_id = str(dict_["sessionID"])
         elif include_empty:
             instance.session_id = ""
+        if "storage" in dict_ and dict_["storage"] is not None:
+            instance.storage = {str(k0): v0 for k0, v0 in dict_["storage"].items()}
+        elif include_empty:
+            instance.storage = {}
         return instance
 
     @classmethod
@@ -189,6 +207,7 @@ class ApiMatchTicketRequest(Model):
             "latencies": "latencies",
             "matchPool": "match_pool",
             "sessionID": "session_id",
+            "storage": "storage",
         }
 
     @staticmethod
@@ -198,6 +217,7 @@ class ApiMatchTicketRequest(Model):
             "latencies": True,
             "matchPool": True,
             "sessionID": False,
+            "storage": False,
         }
 
     # endregion static methods

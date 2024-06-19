@@ -37,10 +37,12 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
+@click.option("--language_tag", "language_tag", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_get_backup_codes_v4(
+    language_tag: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -54,6 +56,7 @@ def admin_get_backup_codes_v4(
     else:
         login_as_internal(login_as)
     result, error = admin_get_backup_codes_v4_internal(
+        language_tag=language_tag,
         x_additional_headers=x_additional_headers,
     )
     if error:

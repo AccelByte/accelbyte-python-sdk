@@ -34,12 +34,15 @@ class ConfigmodelsNamespaceConfig(Model):
     Properties:
         namespace: (namespace) REQUIRED str
 
+        extra_platforms: (extraPlatforms) OPTIONAL List[str]
+
         platform_group: (platformGroup) OPTIONAL Dict[str, List[str]]
     """
 
     # region fields
 
     namespace: str  # REQUIRED
+    extra_platforms: List[str]  # OPTIONAL
     platform_group: Dict[str, List[str]]  # OPTIONAL
 
     # endregion fields
@@ -48,6 +51,10 @@ class ConfigmodelsNamespaceConfig(Model):
 
     def with_namespace(self, value: str) -> ConfigmodelsNamespaceConfig:
         self.namespace = value
+        return self
+
+    def with_extra_platforms(self, value: List[str]) -> ConfigmodelsNamespaceConfig:
+        self.extra_platforms = value
         return self
 
     def with_platform_group(
@@ -66,6 +73,10 @@ class ConfigmodelsNamespaceConfig(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "extra_platforms"):
+            result["extraPlatforms"] = [str(i0) for i0 in self.extra_platforms]
+        elif include_empty:
+            result["extraPlatforms"] = []
         if hasattr(self, "platform_group"):
             result["platformGroup"] = {
                 str(k0): [str(i1) for i1 in v0]
@@ -83,11 +94,14 @@ class ConfigmodelsNamespaceConfig(Model):
     def create(
         cls,
         namespace: str,
+        extra_platforms: Optional[List[str]] = None,
         platform_group: Optional[Dict[str, List[str]]] = None,
         **kwargs,
     ) -> ConfigmodelsNamespaceConfig:
         instance = cls()
         instance.namespace = namespace
+        if extra_platforms is not None:
+            instance.extra_platforms = extra_platforms
         if platform_group is not None:
             instance.platform_group = platform_group
         return instance
@@ -103,6 +117,10 @@ class ConfigmodelsNamespaceConfig(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "extraPlatforms" in dict_ and dict_["extraPlatforms"] is not None:
+            instance.extra_platforms = [str(i0) for i0 in dict_["extraPlatforms"]]
+        elif include_empty:
+            instance.extra_platforms = []
         if "platformGroup" in dict_ and dict_["platformGroup"] is not None:
             instance.platform_group = {
                 str(k0): [str(i1) for i1 in v0]
@@ -154,6 +172,7 @@ class ConfigmodelsNamespaceConfig(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "extraPlatforms": "extra_platforms",
             "platformGroup": "platform_group",
         }
 
@@ -161,6 +180,7 @@ class ConfigmodelsNamespaceConfig(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "extraPlatforms": False,
             "platformGroup": False,
         }
 

@@ -36,12 +36,6 @@ class DeleteStatCycle(Operation):
     """Deletes stat cycle (deleteStatCycle)
 
     Deletes stat cycle.
-    Other detail info:
-
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STAT [DELETE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}
@@ -54,7 +48,7 @@ class DeleteStatCycle(Operation):
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         cycle_id: (cycleId) REQUIRED str in path
 
@@ -78,7 +72,7 @@ class DeleteStatCycle(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = []
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     cycle_id: str  # REQUIRED in [path]

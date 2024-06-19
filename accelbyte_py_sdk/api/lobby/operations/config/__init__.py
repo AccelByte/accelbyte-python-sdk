@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.35.5"
+__version__ = "3.35.9"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -17,5 +17,7 @@ __email__ = "dev@accelbyte.net"
 from .admin_export_config_v1 import AdminExportConfigV1
 from .admin_get_all_config_v1 import AdminGetAllConfigV1
 from .admin_get_config_v1 import AdminGetConfigV1
+from .admin_get_log_config import AdminGetLogConfig
 from .admin_import_config_v1 import AdminImportConfigV1
+from .admin_patch_update_log_config import AdminPatchUpdateLogConfig
 from .admin_update_config_v1 import AdminUpdateConfigV1

@@ -41,11 +41,7 @@ class GrantUserPass(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/passes
@@ -58,7 +54,7 @@ class GrantUserPass(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserPassGrant in body
 
@@ -80,7 +76,7 @@ class GrantUserPass(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UserPassGrant  # OPTIONAL in [body]

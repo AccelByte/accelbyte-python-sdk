@@ -40,6 +40,9 @@ class PublicSubmitMyAccountDeletionRequest(Operation):
     Requires valid user access token
     This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
 
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
+
     Properties:
         url: /gdpr/public/users/me/deletions
 
@@ -67,6 +70,8 @@ class PublicSubmitMyAccountDeletionRequest(Operation):
         403: Forbidden - ResponseError (Forbidden)
 
         404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -187,6 +192,8 @@ class PublicSubmitMyAccountDeletionRequest(Operation):
 
         404: Not Found - ResponseError (Not Found)
 
+        409: Conflict - ResponseError (Conflict)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -211,6 +218,8 @@ class PublicSubmitMyAccountDeletionRequest(Operation):
         if code == 403:
             return None, ResponseError.create_from_dict(content)
         if code == 404:
+            return None, ResponseError.create_from_dict(content)
+        if code == 409:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

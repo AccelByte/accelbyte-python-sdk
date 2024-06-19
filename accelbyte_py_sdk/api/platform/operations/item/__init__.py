@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.52.0"
+__version__ = "4.53.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -62,12 +62,12 @@ from .query_items import (
     ItemTypeEnum as QueryItemsItemTypeEnum,
     SortByEnum as QueryItemsSortByEnum,
 )
-from .query_items_1 import QueryItems1
-from .query_items_1 import (
-    AppTypeEnum as QueryItems1AppTypeEnum,
-    ItemStatusEnum as QueryItems1ItemStatusEnum,
-    ItemTypeEnum as QueryItems1ItemTypeEnum,
-    SortByEnum as QueryItems1SortByEnum,
+from .query_items_v2 import QueryItemsV2
+from .query_items_v2 import (
+    AppTypeEnum as QueryItemsV2AppTypeEnum,
+    ItemStatusEnum as QueryItemsV2ItemStatusEnum,
+    ItemTypeEnum as QueryItemsV2ItemTypeEnum,
+    SortByEnum as QueryItemsV2SortByEnum,
 )
 from .query_uncategorized_items import QueryUncategorizedItems
 from .query_uncategorized_items import SortByEnum as QueryUncategorizedItemsSortByEnum

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.19.2"
+__version__ = "2.21.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -33,8 +33,12 @@ from .wrappers import admin_get_all_config_v1
 from .wrappers import admin_get_all_config_v1_async
 from .wrappers import admin_get_config_v1
 from .wrappers import admin_get_config_v1_async
+from .wrappers import admin_get_log_config
+from .wrappers import admin_get_log_config_async
 from .wrappers import admin_patch_config_v1
 from .wrappers import admin_patch_config_v1_async
+from .wrappers import admin_patch_update_log_config
+from .wrappers import admin_patch_update_log_config_async
 
 # environment_variables
 from .wrappers import environment_variable_list

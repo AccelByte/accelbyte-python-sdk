@@ -43,11 +43,7 @@ class PublicQueryUserStatItems2(Operation):
     * If stat item does not exist, will return default value
 
     Other detail info:
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
       *  Returns : stat items
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
 
     Properties:
         url: /social/v2/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -60,7 +56,7 @@ class PublicQueryUserStatItems2(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -96,7 +92,7 @@ class PublicQueryUserStatItems2(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

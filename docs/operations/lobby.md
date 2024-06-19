@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Lobby Server Index (3.35.5)
+# AccelByte Gaming Services Lobby Server Index (3.35.9)
 
 
 ## Operations
@@ -35,7 +35,9 @@
 | /lobby/v1/admin/config/namespaces/{namespace}/export | GET | adminExportConfigV1 | `false` | [AdminExportConfigV1](../../accelbyte_py_sdk/api/lobby/operations/config/admin_export_config_v1.py) | [admin_export_config_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_config.py) | [accelbyte_py_sdk_cli lobby-admin-export-config-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_export_config_v1.py) |
 | /lobby/v1/admin/config | GET | adminGetAllConfigV1 | `false` | [AdminGetAllConfigV1](../../accelbyte_py_sdk/api/lobby/operations/config/admin_get_all_config_v1.py) | [admin_get_all_config_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_config.py) | [accelbyte_py_sdk_cli lobby-admin-get-all-config-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_all_config_v1.py) |
 | /lobby/v1/admin/config/namespaces/{namespace} | GET | adminGetConfigV1 | `false` | [AdminGetConfigV1](../../accelbyte_py_sdk/api/lobby/operations/config/admin_get_config_v1.py) | [admin_get_config_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_config.py) | [accelbyte_py_sdk_cli lobby-admin-get-config-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_config_v1.py) |
+| /lobby/v1/admin/config/log | GET | adminGetLogConfig | `false` | [AdminGetLogConfig](../../accelbyte_py_sdk/api/lobby/operations/config/admin_get_log_config.py) | [admin_get_log_config](../../accelbyte_py_sdk/api/lobby/wrappers/_config.py) | [accelbyte_py_sdk_cli lobby-admin-get-log-config](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_log_config.py) |
 | /lobby/v1/admin/config/namespaces/{namespace}/import | POST | adminImportConfigV1 | `false` | [AdminImportConfigV1](../../accelbyte_py_sdk/api/lobby/operations/config/admin_import_config_v1.py) | [admin_import_config_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_config.py) | [accelbyte_py_sdk_cli lobby-admin-import-config-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_import_config_v1.py) |
+| /lobby/v1/admin/config/log | PATCH | adminPatchUpdateLogConfig | `false` | [AdminPatchUpdateLogConfig](../../accelbyte_py_sdk/api/lobby/operations/config/admin_patch_update_log_config.py) | [admin_patch_update_log_config](../../accelbyte_py_sdk/api/lobby/wrappers/_config.py) | [accelbyte_py_sdk_cli lobby-admin-patch-update-log-config](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_patch_update_log_config.py) |
 | /lobby/v1/admin/config/namespaces/{namespace} | PUT | adminUpdateConfigV1 | `false` | [AdminUpdateConfigV1](../../accelbyte_py_sdk/api/lobby/operations/config/admin_update_config_v1.py) | [admin_update_config_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_config.py) | [accelbyte_py_sdk_cli lobby-admin-update-config-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_update_config_v1.py) |
 
 ### friends
@@ -162,6 +164,7 @@
 | handlers.GetUsersPresenceResponse | [HandlersGetUsersPresenceResponse](../../accelbyte_py_sdk/api/lobby/models/handlers_get_users_presence_response.py) |
 | handlers.UserPresence | [HandlersUserPresence](../../accelbyte_py_sdk/api/lobby/models/handlers_user_presence.py) |
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../../accelbyte_py_sdk/api/lobby/models/log_app_message_declaration.py) |
+| logconfig.Configuration | [LogconfigConfiguration](../../accelbyte_py_sdk/api/lobby/models/logconfig_configuration.py) |
 | model.BulkFriendsRequest | [ModelBulkFriendsRequest](../../accelbyte_py_sdk/api/lobby/models/model_bulk_friends_request.py) |
 | model.BulkFriendsResponse | [ModelBulkFriendsResponse](../../accelbyte_py_sdk/api/lobby/models/model_bulk_friends_response.py) |
 | model.BulkUsersFreeFormNotificationRequestV1 | [ModelBulkUsersFreeFormNotificationRequestV1](../../accelbyte_py_sdk/api/lobby/models/model_bulk_users_free_form_notification_request_v1.py) |

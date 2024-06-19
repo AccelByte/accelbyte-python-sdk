@@ -8,12 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.5.0"
+__version__ = "1.6.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .admin_claim_user_rewards import AdminClaimUserRewards
+from .admin_claim_users_rewards import AdminClaimUsersRewards
 from .admin_get_user_rewards import AdminGetUserRewards
 from .admin_get_user_rewards import StatusEnum as AdminGetUserRewardsStatusEnum
 from .public_claim_user_rewards import PublicClaimUserRewards

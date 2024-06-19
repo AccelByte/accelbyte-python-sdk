@@ -35,12 +35,15 @@ class ModelsErrorDetails(Model):
         error_code: (errorCode) REQUIRED int
 
         error_message: (errorMessage) REQUIRED str
+
+        third_party_reference_id: (thirdPartyReferenceId) OPTIONAL str
     """
 
     # region fields
 
     error_code: int  # REQUIRED
     error_message: str  # REQUIRED
+    third_party_reference_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class ModelsErrorDetails(Model):
 
     def with_error_message(self, value: str) -> ModelsErrorDetails:
         self.error_message = value
+        return self
+
+    def with_third_party_reference_id(self, value: str) -> ModelsErrorDetails:
+        self.third_party_reference_id = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class ModelsErrorDetails(Model):
             result["errorMessage"] = str(self.error_message)
         elif include_empty:
             result["errorMessage"] = ""
+        if hasattr(self, "third_party_reference_id"):
+            result["thirdPartyReferenceId"] = str(self.third_party_reference_id)
+        elif include_empty:
+            result["thirdPartyReferenceId"] = ""
         return result
 
     # endregion to methods
@@ -76,11 +87,17 @@ class ModelsErrorDetails(Model):
 
     @classmethod
     def create(
-        cls, error_code: int, error_message: str, **kwargs
+        cls,
+        error_code: int,
+        error_message: str,
+        third_party_reference_id: Optional[str] = None,
+        **kwargs,
     ) -> ModelsErrorDetails:
         instance = cls()
         instance.error_code = error_code
         instance.error_message = error_message
+        if third_party_reference_id is not None:
+            instance.third_party_reference_id = third_party_reference_id
         return instance
 
     @classmethod
@@ -98,6 +115,13 @@ class ModelsErrorDetails(Model):
             instance.error_message = str(dict_["errorMessage"])
         elif include_empty:
             instance.error_message = ""
+        if (
+            "thirdPartyReferenceId" in dict_
+            and dict_["thirdPartyReferenceId"] is not None
+        ):
+            instance.third_party_reference_id = str(dict_["thirdPartyReferenceId"])
+        elif include_empty:
+            instance.third_party_reference_id = ""
         return instance
 
     @classmethod
@@ -141,6 +165,7 @@ class ModelsErrorDetails(Model):
         return {
             "errorCode": "error_code",
             "errorMessage": "error_message",
+            "thirdPartyReferenceId": "third_party_reference_id",
         }
 
     @staticmethod
@@ -148,6 +173,7 @@ class ModelsErrorDetails(Model):
         return {
             "errorCode": True,
             "errorMessage": True,
+            "thirdPartyReferenceId": False,
         }
 
     # endregion static methods

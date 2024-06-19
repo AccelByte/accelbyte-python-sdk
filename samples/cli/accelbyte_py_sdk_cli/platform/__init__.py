@@ -157,6 +157,10 @@ from ._get_order import get_order
 from ._refund_order import refund_order
 from ._get_payment_callback_config import get_payment_callback_config
 from ._update_payment_callback_config import update_payment_callback_config
+from ._get_payment_merchant_config import get_payment_merchant_config
+from ._update_payment_domain_whitelist_config import (
+    update_payment_domain_whitelist_config,
+)
 from ._query_payment_notifications import query_payment_notifications
 from ._query_payment_orders import query_payment_orders
 from ._create_payment_order_by_dedicated import create_payment_order_by_dedicated
@@ -166,6 +170,8 @@ from ._charge_payment_order import charge_payment_order
 from ._refund_payment_order_by_dedicated import refund_payment_order_by_dedicated
 from ._simulate_payment_order_notification import simulate_payment_order_notification
 from ._get_payment_order_charge_status import get_payment_order_charge_status
+from ._get_psn_entitlement_ownership import get_psn_entitlement_ownership
+from ._get_xbox_entitlement_ownership import get_xbox_entitlement_ownership
 from ._get_platform_entitlement_config import get_platform_entitlement_config
 from ._update_platform_entitlement_config import update_platform_entitlement_config
 from ._get_platform_wallet_config import get_platform_wallet_config
@@ -355,17 +361,20 @@ from ._test_checkout_config import test_checkout_config
 from ._debug_matched_payment_merchant_config import (
     debug_matched_payment_merchant_config,
 )
+from ._test_neon_pay_config import test_neon_pay_config
 from ._test_pay_pal_config import test_pay_pal_config
 from ._test_stripe_config import test_stripe_config
 from ._test_wx_pay_config import test_wx_pay_config
 from ._test_xsolla_config import test_xsolla_config
-from ._get_payment_merchant_config import get_payment_merchant_config
+from ._get_payment_merchant_config_1 import get_payment_merchant_config_1
 from ._update_adyen_config import update_adyen_config
 from ._test_adyen_config_by_id import test_adyen_config_by_id
 from ._update_ali_pay_config import update_ali_pay_config
 from ._test_ali_pay_config_by_id import test_ali_pay_config_by_id
 from ._update_checkout_config import update_checkout_config
 from ._test_checkout_config_by_id import test_checkout_config_by_id
+from ._update_neon_pay_config import update_neon_pay_config
+from ._test_neon_pay_config_by_id import test_neon_pay_config_by_id
 from ._update_pay_pal_config import update_pay_pal_config
 from ._test_pay_pal_config_by_id import test_pay_pal_config_by_id
 from ._update_stripe_config import update_stripe_config
@@ -520,7 +529,7 @@ from ._public_get_user_subscription_billing_histories import (
 from ._public_list_views import public_list_views
 from ._public_get_wallet import public_get_wallet
 from ._public_list_user_wallet_transactions import public_list_user_wallet_transactions
-from ._query_items_1 import query_items_1
+from ._query_items_v2 import query_items_v2
 from ._import_store_1 import import_store_1
 from ._export_store_1 import export_store_1
 from ._fulfill_rewards_v2 import fulfill_rewards_v2
@@ -674,6 +683,8 @@ commands = [
     refund_order,
     get_payment_callback_config,
     update_payment_callback_config,
+    get_payment_merchant_config,
+    update_payment_domain_whitelist_config,
     query_payment_notifications,
     query_payment_orders,
     create_payment_order_by_dedicated,
@@ -683,6 +694,8 @@ commands = [
     refund_payment_order_by_dedicated,
     simulate_payment_order_notification,
     get_payment_order_charge_status,
+    get_psn_entitlement_ownership,
+    get_xbox_entitlement_ownership,
     get_platform_entitlement_config,
     update_platform_entitlement_config,
     get_platform_wallet_config,
@@ -848,17 +861,20 @@ commands = [
     test_ali_pay_config,
     test_checkout_config,
     debug_matched_payment_merchant_config,
+    test_neon_pay_config,
     test_pay_pal_config,
     test_stripe_config,
     test_wx_pay_config,
     test_xsolla_config,
-    get_payment_merchant_config,
+    get_payment_merchant_config_1,
     update_adyen_config,
     test_adyen_config_by_id,
     update_ali_pay_config,
     test_ali_pay_config_by_id,
     update_checkout_config,
     test_checkout_config_by_id,
+    update_neon_pay_config,
+    test_neon_pay_config_by_id,
     update_pay_pal_config,
     test_pay_pal_config_by_id,
     update_stripe_config,
@@ -971,7 +987,7 @@ commands = [
     public_list_views,
     public_get_wallet,
     public_list_user_wallet_transactions,
-    query_items_1,
+    query_items_v2,
     import_store_1,
     export_store_1,
     fulfill_rewards_v2,

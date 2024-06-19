@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.5.0"
+__version__ = "1.6.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -54,6 +54,10 @@ from ._goal_configuration import admin_get_goals_async
 from ._goal_configuration import admin_update_goals
 from ._goal_configuration import admin_update_goals_async
 
+from ._player_reward import admin_claim_user_rewards
+from ._player_reward import admin_claim_user_rewards_async
+from ._player_reward import admin_claim_users_rewards
+from ._player_reward import admin_claim_users_rewards_async
 from ._player_reward import admin_get_user_rewards
 from ._player_reward import admin_get_user_rewards_async
 from ._player_reward import public_claim_user_rewards

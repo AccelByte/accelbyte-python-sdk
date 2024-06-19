@@ -39,11 +39,7 @@ class DeleteUserStatItems1(Operation):
     Delete user's statItems given stat code.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=8 (DELETE)
       *  Returns : no content
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [DELETE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems
@@ -56,7 +52,7 @@ class DeleteUserStatItems1(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -84,7 +80,7 @@ class DeleteUserStatItems1(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

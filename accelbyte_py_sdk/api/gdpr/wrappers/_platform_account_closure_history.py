@@ -50,11 +50,11 @@ def admin_get_user_platform_account_closure_histories(
     """Get User's Platform Account Closure Histories (AdminGetUserPlatformAccountClosureHistories)
 
     Get user's platform account closure histories.
+    Scope: account
+
     ------
     Supported platforms:
     * psn
-
-    Scope: account
 
     Required Scope(s):
         - account
@@ -120,11 +120,11 @@ async def admin_get_user_platform_account_closure_histories_async(
     """Get User's Platform Account Closure Histories (AdminGetUserPlatformAccountClosureHistories)
 
     Get user's platform account closure histories.
+    Scope: account
+
     ------
     Supported platforms:
     * psn
-
-    Scope: account
 
     Required Scope(s):
         - account

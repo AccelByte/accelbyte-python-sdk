@@ -41,6 +41,7 @@ class PublicPlatformUnlinkV3(Operation):
     - **steamopenid**
     - **facebook**
     - **google**
+    - **googleplaygames**
     - **oculus**
     - **twitch**
     - **android**

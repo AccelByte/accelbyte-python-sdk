@@ -34,11 +34,14 @@ from ...models import ResponseError
 
 
 class PublicSubmitUserAccountDeletionRequest(Operation):
-    """Submit user's account deletion requests (PublicSubmitUserAccountDeletionRequest)
+    """Submit user's account deletion request (PublicSubmitUserAccountDeletionRequest)
 
-    Submit user's account deletion requests
+    Submit user's account deletion request.
     Requires valid user access token and password
     Scope: account
+
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
 
     Required Scope(s):
         - account
@@ -72,6 +75,8 @@ class PublicSubmitUserAccountDeletionRequest(Operation):
         403: Forbidden - ResponseError (Forbidden)
 
         404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -208,6 +213,8 @@ class PublicSubmitUserAccountDeletionRequest(Operation):
 
         404: Not Found - ResponseError (Not Found)
 
+        409: Conflict - ResponseError (Conflict)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -232,6 +239,8 @@ class PublicSubmitUserAccountDeletionRequest(Operation):
         if code == 403:
             return None, ResponseError.create_from_dict(content)
         if code == 404:
+            return None, ResponseError.create_from_dict(content)
+        if code == 409:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

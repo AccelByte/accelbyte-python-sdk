@@ -69,6 +69,8 @@ class PublicClaimUserRewards(Operation):
 
         404: Not Found - IamErrorResponse (20029: not found)
 
+        422: Unprocessable Entity - IamErrorResponse (99004: unprocessable entity: {{message}})
+
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
 
@@ -190,6 +192,8 @@ class PublicClaimUserRewards(Operation):
 
         404: Not Found - IamErrorResponse (20029: not found)
 
+        422: Unprocessable Entity - IamErrorResponse (99004: unprocessable entity: {{message}})
+
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
 
         ---: HttpResponse (Undocumented Response)
@@ -212,6 +216,8 @@ class PublicClaimUserRewards(Operation):
         if code == 403:
             return None, IamErrorResponse.create_from_dict(content)
         if code == 404:
+            return None, IamErrorResponse.create_from_dict(content)
+        if code == 422:
             return None, IamErrorResponse.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

@@ -33,7 +33,10 @@ from ..models import AdyenConfig
 from ..models import AliPayConfig
 from ..models import CheckoutConfig
 from ..models import ErrorEntity
+from ..models import NeonPayConfig
 from ..models import PayPalConfig
+from ..models import PaymentDomainWhitelistConfigEdit
+from ..models import PaymentDomainWhitelistConfigInfo
 from ..models import PaymentMerchantConfigInfo
 from ..models import PaymentProviderConfigEdit
 from ..models import PaymentProviderConfigInfo
@@ -53,6 +56,7 @@ from ..operations.payment_config import DebugMatchedPaymentProviderConfig
 from ..operations.payment_config import DeletePaymentProviderConfig
 from ..operations.payment_config import GetAggregatePaymentProviders
 from ..operations.payment_config import GetPaymentMerchantConfig
+from ..operations.payment_config import GetPaymentMerchantConfig1
 from ..operations.payment_config import GetPaymentTaxConfig
 from ..operations.payment_config import GetSpecialPaymentProviders
 from ..operations.payment_config import QueryPaymentProviderConfig
@@ -62,6 +66,8 @@ from ..operations.payment_config import TestAliPayConfig
 from ..operations.payment_config import TestAliPayConfigById
 from ..operations.payment_config import TestCheckoutConfig
 from ..operations.payment_config import TestCheckoutConfigById
+from ..operations.payment_config import TestNeonPayConfig
+from ..operations.payment_config import TestNeonPayConfigById
 from ..operations.payment_config import TestPayPalConfig
 from ..operations.payment_config import TestPayPalConfigById
 from ..operations.payment_config import TestStripeConfig
@@ -73,7 +79,9 @@ from ..operations.payment_config import TestXsollaConfigById
 from ..operations.payment_config import UpdateAdyenConfig
 from ..operations.payment_config import UpdateAliPayConfig
 from ..operations.payment_config import UpdateCheckoutConfig
+from ..operations.payment_config import UpdateNeonPayConfig
 from ..operations.payment_config import UpdatePayPalConfig
+from ..operations.payment_config import UpdatePaymentDomainWhitelistConfig
 from ..operations.payment_config import UpdatePaymentProviderConfig
 from ..operations.payment_config import UpdatePaymentTaxConfig
 from ..operations.payment_config import UpdateStripeConfig
@@ -544,17 +552,19 @@ async def get_aggregate_payment_providers_async(
 
 @same_doc_as(GetPaymentMerchantConfig)
 def get_payment_merchant_config(
-    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
-    """Get payment merchant config (getPaymentMerchantConfig)
+    """Get payment domain whitelist config (getPaymentMerchantConfig)
 
-    [Not Supported Yet In Starter] Get payment merchant config by id.
+    [Not Supported Yet In Starter] Get payment domain whitelist config by namespace.
     Other detail info:
 
-      * Returns : payment merchant config info
+      * Returns : payment domain whitelist config info
 
     Properties:
-        url: /platform/admin/payment/config/merchant/{id}
+        url: /platform/admin/namespaces/{namespace}/payment/config/domains
 
         method: GET
 
@@ -566,24 +576,69 @@ def get_payment_merchant_config(
 
         securities: [BEARER_AUTH]
 
-        id_: (id) REQUIRED str in path
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - PaymentMerchantConfigInfo (successful operation)
-
-        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
+        200: OK - PaymentDomainWhitelistConfigInfo (successful operation)
     """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
     request = GetPaymentMerchantConfig.create(
-        id_=id_,
+        namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(GetPaymentMerchantConfig)
 async def get_payment_merchant_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get payment domain whitelist config (getPaymentMerchantConfig)
+
+    [Not Supported Yet In Starter] Get payment domain whitelist config by namespace.
+    Other detail info:
+
+      * Returns : payment domain whitelist config info
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/config/domains
+
+        method: GET
+
+        tags: ["PaymentConfig"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentDomainWhitelistConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetPaymentMerchantConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetPaymentMerchantConfig1)
+def get_payment_merchant_config_1(
     id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    """Get payment merchant config (getPaymentMerchantConfig)
+    """Get payment merchant config (getPaymentMerchantConfig_1)
 
     [Not Supported Yet In Starter] Get payment merchant config by id.
     Other detail info:
@@ -610,7 +665,44 @@ async def get_payment_merchant_config_async(
 
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
     """
-    request = GetPaymentMerchantConfig.create(
+    request = GetPaymentMerchantConfig1.create(
+        id_=id_,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetPaymentMerchantConfig1)
+async def get_payment_merchant_config_1_async(
+    id_: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get payment merchant config (getPaymentMerchantConfig_1)
+
+    [Not Supported Yet In Starter] Get payment merchant config by id.
+    Other detail info:
+
+      * Returns : payment merchant config info
+
+    Properties:
+        url: /platform/admin/payment/config/merchant/{id}
+
+        method: GET
+
+        tags: ["PaymentConfig"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentMerchantConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
+    """
+    request = GetPaymentMerchantConfig1.create(
         id_=id_,
     )
     return await run_request_async(
@@ -1394,6 +1486,186 @@ async def test_checkout_config_by_id_async(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
     """
     request = TestCheckoutConfigById.create(
+        id_=id_,
+        sandbox=sandbox,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(TestNeonPayConfig)
+def test_neon_pay_config(
+    body: Optional[NeonPayConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Test Neon Pay configuration (testNeonPayConfig)
+
+    [Not Supported Yet In Starter] Check Neon Pay configuration, Reference: [Neon Pay Document](https://docs.neonpay.com/docs/checkout).
+
+    #### Check List:
+
+      * apiKey
+      * webhookSecretKey
+
+    Other detail info:
+      * Returns : test result
+
+    Properties:
+        url: /platform/admin/payment/config/merchant/neonpayconfig/test
+
+        method: POST
+
+        tags: ["PaymentConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL NeonPayConfig in body
+
+        sandbox: (sandbox) OPTIONAL bool in query
+
+    Responses:
+        200: OK - TestResult (successful operation)
+    """
+    request = TestNeonPayConfig.create(
+        body=body,
+        sandbox=sandbox,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(TestNeonPayConfig)
+async def test_neon_pay_config_async(
+    body: Optional[NeonPayConfig] = None,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Test Neon Pay configuration (testNeonPayConfig)
+
+    [Not Supported Yet In Starter] Check Neon Pay configuration, Reference: [Neon Pay Document](https://docs.neonpay.com/docs/checkout).
+
+    #### Check List:
+
+      * apiKey
+      * webhookSecretKey
+
+    Other detail info:
+      * Returns : test result
+
+    Properties:
+        url: /platform/admin/payment/config/merchant/neonpayconfig/test
+
+        method: POST
+
+        tags: ["PaymentConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL NeonPayConfig in body
+
+        sandbox: (sandbox) OPTIONAL bool in query
+
+    Responses:
+        200: OK - TestResult (successful operation)
+    """
+    request = TestNeonPayConfig.create(
+        body=body,
+        sandbox=sandbox,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(TestNeonPayConfigById)
+def test_neon_pay_config_by_id(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Test Neon Pay configuration by id (testNeonPayConfigById)
+
+    [Not Supported Yet In Starter] Test Neon Pay configuration in payment merchant config. Other detail info:
+
+      * Returns : test result
+
+    Properties:
+        url: /platform/admin/payment/config/merchant/{id}/neonpayconfig/test
+
+        method: GET
+
+        tags: ["PaymentConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+        sandbox: (sandbox) OPTIONAL bool in query
+
+    Responses:
+        200: OK - TestResult (successful operation)
+
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
+    """
+    request = TestNeonPayConfigById.create(
+        id_=id_,
+        sandbox=sandbox,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(TestNeonPayConfigById)
+async def test_neon_pay_config_by_id_async(
+    id_: str,
+    sandbox: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Test Neon Pay configuration by id (testNeonPayConfigById)
+
+    [Not Supported Yet In Starter] Test Neon Pay configuration in payment merchant config. Other detail info:
+
+      * Returns : test result
+
+    Properties:
+        url: /platform/admin/payment/config/merchant/{id}/neonpayconfig/test
+
+        method: GET
+
+        tags: ["PaymentConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+        sandbox: (sandbox) OPTIONAL bool in query
+
+    Responses:
+        200: OK - TestResult (successful operation)
+
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
+    """
+    request = TestNeonPayConfigById.create(
         id_=id_,
         sandbox=sandbox,
     )
@@ -2428,6 +2700,110 @@ async def update_checkout_config_async(
     )
 
 
+@same_doc_as(UpdateNeonPayConfig)
+def update_neon_pay_config(
+    id_: str,
+    body: Optional[NeonPayConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Neon Pay config (updateNeonPayConfig)
+
+    [Not Supported Yet In Starter] Update Neon Pay config.
+    Other detail info:
+
+      * Returns : updated payment merchant config
+
+    Properties:
+        url: /platform/admin/payment/config/merchant/{id}/neonpayconfig
+
+        method: PUT
+
+        tags: ["PaymentConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL NeonPayConfig in body
+
+        id_: (id) REQUIRED str in path
+
+        sandbox: (sandbox) OPTIONAL bool in query
+
+        validate: (validate) OPTIONAL bool in query
+
+    Responses:
+        200: OK - PaymentMerchantConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
+    """
+    request = UpdateNeonPayConfig.create(
+        id_=id_,
+        body=body,
+        sandbox=sandbox,
+        validate=validate,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateNeonPayConfig)
+async def update_neon_pay_config_async(
+    id_: str,
+    body: Optional[NeonPayConfig] = None,
+    sandbox: Optional[bool] = None,
+    validate: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Neon Pay config (updateNeonPayConfig)
+
+    [Not Supported Yet In Starter] Update Neon Pay config.
+    Other detail info:
+
+      * Returns : updated payment merchant config
+
+    Properties:
+        url: /platform/admin/payment/config/merchant/{id}/neonpayconfig
+
+        method: PUT
+
+        tags: ["PaymentConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL NeonPayConfig in body
+
+        id_: (id) REQUIRED str in path
+
+        sandbox: (sandbox) OPTIONAL bool in query
+
+        validate: (validate) OPTIONAL bool in query
+
+    Responses:
+        200: OK - PaymentMerchantConfigInfo (successful operation)
+
+        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
+    """
+    request = UpdateNeonPayConfig.create(
+        id_=id_,
+        body=body,
+        sandbox=sandbox,
+        validate=validate,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(UpdatePayPalConfig)
 def update_pay_pal_config(
     id_: str,
@@ -2526,6 +2902,128 @@ async def update_pay_pal_config_async(
         body=body,
         sandbox=sandbox,
         validate=validate,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdatePaymentDomainWhitelistConfig)
+def update_payment_domain_whitelist_config(
+    body: Optional[PaymentDomainWhitelistConfigEdit] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update payment domain whitelist config (updatePaymentDomainWhitelistConfig)
+
+    [Not Supported Yet In Starter] Update payment provider config by namespace.
+
+
+
+         Request Body Parameters:
+
+
+         Parameter | Type   | Required | Description
+        -----------|--------|----------|--------------------------------------------------
+        domains    | String | Yes      | list of domains to whitelist for the return URL.
+
+
+
+    Other detail info:
+
+      * Validation : the domain should include the protocol (http/https), but the whitelist check will only compare the host part (www.example.com)
+      *  Returns : payment domain whitelist config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/config/domains
+
+        method: PUT
+
+        tags: ["PaymentConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentDomainWhitelistConfigEdit in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentDomainWhitelistConfigInfo (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePaymentDomainWhitelistConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdatePaymentDomainWhitelistConfig)
+async def update_payment_domain_whitelist_config_async(
+    body: Optional[PaymentDomainWhitelistConfigEdit] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update payment domain whitelist config (updatePaymentDomainWhitelistConfig)
+
+    [Not Supported Yet In Starter] Update payment provider config by namespace.
+
+
+
+         Request Body Parameters:
+
+
+         Parameter | Type   | Required | Description
+        -----------|--------|----------|--------------------------------------------------
+        domains    | String | Yes      | list of domains to whitelist for the return URL.
+
+
+
+    Other detail info:
+
+      * Validation : the domain should include the protocol (http/https), but the whitelist check will only compare the host part (www.example.com)
+      *  Returns : payment domain whitelist config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/payment/config/domains
+
+        method: PUT
+
+        tags: ["PaymentConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL PaymentDomainWhitelistConfigEdit in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - PaymentDomainWhitelistConfigInfo (successful operation)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdatePaymentDomainWhitelistConfig.create(
+        body=body,
+        namespace=namespace,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

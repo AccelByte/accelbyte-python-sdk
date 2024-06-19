@@ -40,11 +40,7 @@ class BulkResetUserStatItemValues(Operation):
 
     Bulk reset user's statitem values for given namespace and user.
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/reset/bulk
@@ -57,7 +53,7 @@ class BulkResetUserStatItemValues(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[ADTOObjectForResettingUserStatItems] in body
 
@@ -87,7 +83,7 @@ class BulkResetUserStatItemValues(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[ADTOObjectForResettingUserStatItems]  # OPTIONAL in [body]

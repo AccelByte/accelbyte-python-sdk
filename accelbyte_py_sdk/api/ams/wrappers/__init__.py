@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.18.0"
+__version__ = "1.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -37,6 +37,8 @@ from ._ams_qo_s import qo_s_regions_get_async
 from ._ams_qo_s import qo_s_regions_update
 from ._ams_qo_s import qo_s_regions_update_async
 
+from ._artifacts import artifact_bulk_delete
+from ._artifacts import artifact_bulk_delete_async
 from ._artifacts import artifact_delete
 from ._artifacts import artifact_delete_async
 from ._artifacts import artifact_get
@@ -90,8 +92,12 @@ from ._images import image_get
 from ._images import image_get_async
 from ._images import image_list
 from ._images import image_list_async
+from ._images import image_mark_for_deletion
+from ._images import image_mark_for_deletion_async
 from ._images import image_patch
 from ._images import image_patch_async
+from ._images import image_unmark_for_deletion
+from ._images import image_unmark_for_deletion_async
 
 from ._servers import fleet_server_connection_info
 from ._servers import fleet_server_connection_info_async

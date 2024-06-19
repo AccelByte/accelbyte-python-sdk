@@ -43,70 +43,71 @@ session-admin-update-configuration-alert-v1 '{"durationDays": 99}' --login_with_
 session-admin-create-configuration-alert-v1 '{"durationDays": 89}' --login_with_auth "Bearer foo"
 session-admin-delete-configuration-alert-v1 --login_with_auth "Bearer foo"
 session-handle-upload-xbox-pfx-certificate 'e5dNRljv7IPrDQQR' 'tmp.dat' 'gat0SevkLGMS0lyu' --login_with_auth "Bearer foo"
-session-admin-create-configuration-template-v1 '{"NativeSessionSetting": {"PSNServiceLabel": 70, "PSNSupportedPlatforms": ["aO35llzQRaT5kPxU", "fofvnnSuB0y5WUlr", "MdI4sNveabntBSxT"], "SessionTitle": "eIv53HGCiljvjKoy", "ShouldSync": true, "XboxAllowCrossPlatform": true, "XboxSandboxID": "6SCwGrncqmLtjQHA", "XboxServiceConfigID": "f8TgoNm03VLisV6z", "XboxSessionTemplateName": "wPuo3td6TC6I3lMj", "XboxTitleID": "GSWN2laRlxfcjHfY", "localizedSessionName": {"akUCTqGkE7wcWfDs": {}, "lpJSqGAXQ0yYoNRK": {}, "d3IL5TAQ6iiPlSC2": {}}}, "PSNBaseUrl": "uE4o5Vwdo3fePqIJ", "attributes": {"A8IHtrkmu0hpDDWV": {}, "Ala2l5BYNtIuS5S5": {}, "XUdjsoqwGyzzWi9g": {}}, "autoJoin": true, "autoLeaveSession": true, "clientVersion": "QYv7t1o7TTr1Dmrh", "deployment": "Zv15T7quIOvBMcaY", "disableCodeGeneration": false, "dsManualSetReady": true, "dsSource": "vCkGZ5dAgqxpBFma", "enableSecret": true, "fallbackClaimKeys": ["oxozr6wfNPX2bOIt", "RMvqtlB2jJCSQT27", "9ZZPYGu0rdlgdWyO"], "immutableStorage": true, "inactiveTimeout": 20, "inviteTimeout": 76, "joinability": "i3choQrpOsDBU5Se", "leaderElectionGracePeriod": 31, "manualRejoin": false, "maxActiveSessions": 59, "maxPlayers": 79, "minPlayers": 15, "name": "yKrQpM4hkkK6KKXN", "persistent": true, "preferredClaimKeys": ["3xoJ8aeCnaLpUKp4", "4YUDjasWIPUvmEej", "tGeoyIPa8ZRrvjj7"], "requestedRegions": ["il35MXbN9oCMNqq9", "8SjTvhZNkSQ70D0H", "6BXksUC9b6i5lZC9"], "textChat": true, "tieTeamsSessionLifetime": true, "type": "gb3boLQQ1MzH7Qm8"}' --login_with_auth "Bearer foo"
+session-admin-create-configuration-template-v1 '{"NativeSessionSetting": {"PSNServiceLabel": 70, "PSNSupportedPlatforms": ["aO35llzQRaT5kPxU", "fofvnnSuB0y5WUlr", "MdI4sNveabntBSxT"], "SessionTitle": "eIv53HGCiljvjKoy", "ShouldSync": true, "XboxAllowCrossPlatform": true, "XboxSandboxID": "6SCwGrncqmLtjQHA", "XboxServiceConfigID": "f8TgoNm03VLisV6z", "XboxSessionTemplateName": "wPuo3td6TC6I3lMj", "XboxTitleID": "GSWN2laRlxfcjHfY", "localizedSessionName": {"akUCTqGkE7wcWfDs": {}, "lpJSqGAXQ0yYoNRK": {}, "d3IL5TAQ6iiPlSC2": {}}}, "PSNBaseUrl": "uE4o5Vwdo3fePqIJ", "attributes": {"A8IHtrkmu0hpDDWV": {}, "Ala2l5BYNtIuS5S5": {}, "XUdjsoqwGyzzWi9g": {}}, "autoJoin": true, "autoLeaveSession": true, "clientVersion": "QYv7t1o7TTr1Dmrh", "customURLGRPC": "Zv15T7quIOvBMcaY", "deployment": "mvCkGZ5dAgqxpBFm", "disableCodeGeneration": false, "dsManualSetReady": true, "dsSource": "Loxozr6wfNPX2bOI", "enableSecret": true, "fallbackClaimKeys": ["NyLu0M3VHh2EI8Jl", "DbPWbQ6Q9lNmqRBa", "AkLnvxkT1X68cmDc"], "immutableStorage": false, "inactiveTimeout": 9, "inviteTimeout": 48, "joinability": "pjChB3V0v52Dlym6", "leaderElectionGracePeriod": 31, "manualRejoin": true, "maxActiveSessions": 86, "maxPlayers": 81, "minPlayers": 57, "name": "3xoJ8aeCnaLpUKp4", "persistent": false, "preferredClaimKeys": ["YUDjasWIPUvmEejt", "GeoyIPa8ZRrvjj7i", "l35MXbN9oCMNqq98"], "requestedRegions": ["SjTvhZNkSQ70D0H6", "BXksUC9b6i5lZC9x", "v32e8c5csSovoqsZ"], "textChat": false, "tieTeamsSessionLifetime": true, "type": "wbmXgdAPh1EThG96"}' --login_with_auth "Bearer foo"
 session-admin-get-all-configuration-templates-v1 --login_with_auth "Bearer foo"
-session-admin-get-configuration-template-v1 'bwbmXgdAPh1EThG9' --login_with_auth "Bearer foo"
-session-admin-update-configuration-template-v1 '{"NativeSessionSetting": {"PSNServiceLabel": 13, "PSNSupportedPlatforms": ["QZxfgPubTDIHrvqA", "ThuwjRHpKKTlmVr9", "XuoJbRFQSKVPHbn4"], "SessionTitle": "Xxtu7LQRENjEEztx", "ShouldSync": false, "XboxAllowCrossPlatform": true, "XboxSandboxID": "4lSck0ZHn5GI39YB", "XboxServiceConfigID": "HqaTHeKtW18iGeUl", "XboxSessionTemplateName": "c9d9sogWa24CKNS0", "XboxTitleID": "GqVvUfHQvsHXNUNe", "localizedSessionName": {"4mhgo5QB65lSAiYn": {}, "NjkfZrQvGgbLdLsF": {}, "zHkBMr1yrOMlNFSr": {}}}, "PSNBaseUrl": "UEirnjX9fDmIbeZx", "attributes": {"zfTcyiuATus9hsfp": {}, "FDcSDG8aMVGLiBNr": {}, "DjqoxcwgGLXpUL4p": {}}, "autoJoin": false, "autoLeaveSession": true, "clientVersion": "2ncYAHdNzDmeIP6r", "deployment": "OvDz9KOsb392k6Ym", "disableCodeGeneration": true, "dsManualSetReady": true, "dsSource": "fRByjlBiuFM3FIoV", "enableSecret": false, "fallbackClaimKeys": ["1X2PFAAMwzHPxB1U", "skYs4Yw20DOqOBSC", "2DKHRuPMMWH8Yb33"], "immutableStorage": false, "inactiveTimeout": 5, "inviteTimeout": 96, "joinability": "eJ5i0EeDxOgBnhhq", "leaderElectionGracePeriod": 63, "manualRejoin": false, "maxActiveSessions": 63, "maxPlayers": 72, "minPlayers": 18, "name": "aDml48wdNFLTm5T5", "persistent": true, "preferredClaimKeys": ["vQR3biBfsu4jmsRE", "2w1yEkLgh3tIYt4S", "qYUTLDx9gIiDandp"], "requestedRegions": ["GT2t24aOMh5eC3IH", "eHSKLCa3xreNDUWe", "hwH3q31A806DJgas"], "textChat": true, "tieTeamsSessionLifetime": false, "type": "fe2NubeoKFeIaFQC"}' 'YoDPICpnduEEQlUL' --login_with_auth "Bearer foo"
-session-admin-delete-configuration-template-v1 'dJz4mnRBkMNxvvKg' --login_with_auth "Bearer foo"
-session-admin-get-member-active-session 'AT8mJrYq6hRkloqx' 'M3gpwxcfMy9XzjjI' --login_with_auth "Bearer foo"
-session-admin-reconcile-max-active-session '{"userID": "5YbsKoADkzJEN2VH"}' 'zih3bit0VWn3CO39' --login_with_auth "Bearer foo"
+session-admin-get-configuration-template-v1 'gAFKK2WDgCcxvONZ' --login_with_auth "Bearer foo"
+session-admin-update-configuration-template-v1 '{"NativeSessionSetting": {"PSNServiceLabel": 25, "PSNSupportedPlatforms": ["ThuwjRHpKKTlmVr9", "XuoJbRFQSKVPHbn4", "Xxtu7LQRENjEEztx"], "SessionTitle": "1WsYSiZqan0nSBJr", "ShouldSync": false, "XboxAllowCrossPlatform": false, "XboxSandboxID": "BHqaTHeKtW18iGeU", "XboxServiceConfigID": "lc9d9sogWa24CKNS", "XboxSessionTemplateName": "0GqVvUfHQvsHXNUN", "XboxTitleID": "e4mhgo5QB65lSAiY", "localizedSessionName": {"nNjkfZrQvGgbLdLs": {}, "FzHkBMr1yrOMlNFS": {}, "rUEirnjX9fDmIbeZ": {}}}, "PSNBaseUrl": "xzfTcyiuATus9hsf", "attributes": {"pFDcSDG8aMVGLiBN": {}, "rDjqoxcwgGLXpUL4": {}, "pp2ncYAHdNzDmeIP": {}}, "autoJoin": false, "autoLeaveSession": true, "clientVersion": "sR5cJcHm3SZLxoRD", "customURLGRPC": "FuuuySj29a9LJE8H", "deployment": "oRS1X2PFAAMwzHPx", "disableCodeGeneration": true, "dsManualSetReady": false, "dsSource": "1UskYs4Yw20DOqOB", "enableSecret": false, "fallbackClaimKeys": ["C2DKHRuPMMWH8Yb3", "3T5UBJCjfcnLRfxe", "CSz9WEi8KlloeH0J"], "immutableStorage": true, "inactiveTimeout": 26, "inviteTimeout": 6, "joinability": "5T50x9WT0GfH2rtO", "leaderElectionGracePeriod": 0, "manualRejoin": false, "maxActiveSessions": 38, "maxPlayers": 62, "minPlayers": 89, "name": "XsXzOXQAk4mqrxzT", "persistent": true, "preferredClaimKeys": ["SqYUTLDx9gIiDand", "pGT2t24aOMh5eC3I", "HeHSKLCa3xreNDUW"], "requestedRegions": ["ehwH3q31A806DJga", "s4b6z3LNUj7fdgLA", "84Z8YYk6QEgJjBbE"], "textChat": true, "tieTeamsSessionLifetime": false, "type": "LdJz4mnRBkMNxvvK"}' 'gAT8mJrYq6hRkloq' --login_with_auth "Bearer foo"
+session-admin-delete-configuration-template-v1 'xM3gpwxcfMy9Xzjj' --login_with_auth "Bearer foo"
+session-admin-get-member-active-session 'I5YbsKoADkzJEN2V' 'Hzih3bit0VWn3CO3' --login_with_auth "Bearer foo"
+session-admin-reconcile-max-active-session '{"userID": "9PXDNxtXgeO3FgkX"}' 'hjDzaQY3snn2ZkP7' --login_with_auth "Bearer foo"
 session-admin-get-dsmc-configuration --login_with_auth "Bearer foo"
 session-admin-sync-dsmc-configuration --login_with_auth "Bearer foo"
 session-admin-query-game-sessions --login_with_auth "Bearer foo"
-session-admin-query-game-sessions-by-attributes '{"PXDNxtXgeO3FgkXh": {}, "jDzaQY3snn2ZkP7c": {}, "FdP43e5dC9XIBudf": {}}' --login_with_auth "Bearer foo"
-session-admin-delete-bulk-game-sessions '{"ids": ["ZgrbHDIDm4hMzF4T", "xodenSrUTvfqU0bf", "oMm5cTtFWbotQyXJ"]}' --login_with_auth "Bearer foo"
-session-admin-set-ds-ready '{"ready": false}' 'a23YvYmmDg7VYPXI' --login_with_auth "Bearer foo"
-session-admin-update-game-session-member 'uvUYTZBRujIUE1Tq' '5jyAZvkRCMNFIurj' 'h2imdb4rbkXj0Zws' --login_with_auth "Bearer foo"
+session-admin-query-game-sessions-by-attributes '{"cFdP43e5dC9XIBud": {}, "fZgrbHDIDm4hMzF4": {}, "TxodenSrUTvfqU0b": {}}' --login_with_auth "Bearer foo"
+session-admin-delete-bulk-game-sessions '{"ids": ["foMm5cTtFWbotQyX", "JRcQWsmqPNs92epx", "k0i8VxsZNereSvf9"]}' --login_with_auth "Bearer foo"
+session-admin-set-ds-ready '{"ready": true}' '9mCEHThUJkETAsSp' --login_with_auth "Bearer foo"
+session-admin-update-game-session-member '7gh4TeUTkOkAYfJB' '8AT9t4Tv207Y2QD3' 'oD5fLCr3OOlXVv8Z' --login_with_auth "Bearer foo"
 session-admin-get-list-native-session --login_with_auth "Bearer foo"
 session-admin-query-parties --login_with_auth "Bearer foo"
 session-admin-get-platform-credentials --login_with_auth "Bearer foo"
-session-admin-update-platform-credentials '{"psn": {"clientId": "VC0gL97ZVJSPqJiw", "clientSecret": "v1qlYB1RSKs6gQxC", "scope": "3Gb7S0o4zGYY7KQI"}}' --login_with_auth "Bearer foo"
+session-admin-update-platform-credentials '{"psn": {"clientId": "GF7uYnGzpipNDigN", "clientSecret": "Jma1MbqqZtfNWql4", "scope": "nmwAft4gqkNNlWkD"}}' --login_with_auth "Bearer foo"
 session-admin-delete-platform-credentials --login_with_auth "Bearer foo"
 session-admin-get-recent-player --login_with_auth "Bearer foo"
 session-admin-get-recent-team-player --login_with_auth "Bearer foo"
-session-admin-read-session-storage '1AeFgPqaOkvo1aol' --login_with_auth "Bearer foo"
-session-admin-delete-user-session-storage 'B4lkKB4EYOkQ1jMD' --login_with_auth "Bearer foo"
-session-admin-read-user-session-storage '3cym8xIfkOVW2grR' 'EOLx0KOww3HICQLf' --login_with_auth "Bearer foo"
+session-admin-read-session-storage '9eOziYRFOn0jJLHC' --login_with_auth "Bearer foo"
+session-admin-delete-user-session-storage '9LxhvNXTwGBCtohL' --login_with_auth "Bearer foo"
+session-admin-read-user-session-storage 'tl9Zuhytm5UDrT6Q' 'XCs5SPBbRPZTF6oQ' --login_with_auth "Bearer foo"
 session-admin-query-player-attributes --login_with_auth "Bearer foo"
-session-admin-get-player-attributes 'l7MUBG7qtPu64yAt' --login_with_auth "Bearer foo"
-session-create-game-session '{"attributes": {"URKLRkb738HGS6rD": {}, "gMdIIlhS1fSiM933": {}, "1m7Ta1PsKc50Kv6e": {}}, "autoJoin": false, "backfillTicketID": "yomQoIXimBJehyxl", "clientVersion": "NsjUgxBkF6wFPoJe", "configurationName": "QediogEhhM2rIizG", "deployment": "dKvOPdq5xrgxSmy1", "dsSource": "DN9LFkYW5DQyj4bj", "fallbackClaimKeys": ["5Ro2ogaKt2ujQSa3", "Zdb65UXmy0Zp6iIa", "TIKUkmkk9QM0NBMA"], "inactiveTimeout": 82, "inviteTimeout": 40, "joinability": "RxpzwLR2AK6eXUGP", "matchPool": "Jsw1fiP80G9Pclxc", "maxPlayers": 10, "minPlayers": 69, "preferredClaimKeys": ["t2ulIJzPyrVEiOG4", "UcqsuGKHhMRWLVd3", "DlhLuIpomM8sm1Mi"], "requestedRegions": ["aI1mX2tJoARtdbBe", "7udsMrok0WvGYYnx", "4V709xbnGezKsDwG"], "serverName": "2omOR2nvYI9TVqJd", "teams": [{"UserIDs": ["vzcWbfUpaXp5JMl5", "LL4bTxBmZjdrrIxs", "B0NRsB1fPqqRRulp"], "parties": [{"partyID": "qpymDkQhtrHWwRVn", "userIDs": ["wVBOqOHi8pWGd1ju", "YhiqjRJOqB5F93zF", "QbJndUDpdONneAcz"]}, {"partyID": "bBdHb2slt71B1SmZ", "userIDs": ["p2JZp50CnPb71ORY", "cmQbTU5JX8ccLjMX", "JRk0eaKQDOJvrTef"]}, {"partyID": "glSs6g4iY9u02aCN", "userIDs": ["YIWekp18lOC3mNqF", "7Bl0LcghVHfPEspx", "whRON0bc1eMbEIjo"]}]}, {"UserIDs": ["wLqc3ecjXJbZDKKo", "xLE1Y3Dymtj3giPg", "4x4yiPX6ues1Hhhk"], "parties": [{"partyID": "g1yLVbLFzHEP8cM4", "userIDs": ["NTwr0KHaAsmTej52", "WKi6tArAURt9plCS", "Vq8PdH6hJPUAc0RV"]}, {"partyID": "wXgAgntLMCuaXBWQ", "userIDs": ["i6BqPg4xr0lCancU", "ZGCHsZYoLfR1KtOv", "7Zy0b65uvuKNuy0y"]}, {"partyID": "tZQ7M6Nzy1adnSKO", "userIDs": ["LFKx1dX4LuWJu3pD", "MUAeeZ97SBROPYuG", "6XqP6oo7G73zdxTg"]}]}, {"UserIDs": ["OfnwIdlNa29fDLh7", "41IslKHzGlLKWUtD", "Qs61OQAoxyyQpRWC"], "parties": [{"partyID": "iiPDGQhNPEwiJCf2", "userIDs": ["XJVrlzqQls1ozhLV", "A3kE8jKvgatOEBM7", "0TdlNBJYOmpu1VCa"]}, {"partyID": "rzBsV6xnZ5Jrzzjr", "userIDs": ["caug6CWVG8SWP3gl", "U6muswVJnNnN7kAa", "7j0riFc5HTHQIoVs"]}, {"partyID": "Go7dwV9DBqFKHQkE", "userIDs": ["TJyTlUrwDTnoujQD", "4IEiH9Z5qXn3aoRt", "lqOECohViHA5CzgF"]}]}], "textChat": true, "ticketIDs": ["y8X1A3PrIfapq5AA", "eMe4L3mDWORBVXTI", "IJM9XsYIIZxiXNMR"], "tieTeamsSessionLifetime": true, "type": "9G4AvQkqsGnmyo5J"}' --login_with_auth "Bearer foo"
-session-public-query-game-sessions-by-attributes '{"JTUVmb8GEXFTlEME": {}, "sFzYqwgK1Np5nodq": {}, "pLm7FhJBNXzAFdO0": {}}' --login_with_auth "Bearer foo"
-session-public-session-join-code '{"code": "Khqf6kiTdSGv2LFj"}' --login_with_auth "Bearer foo"
-session-get-game-session-by-pod-name 'AKY7CbgsWqFWZX7k' --login_with_auth "Bearer foo"
-session-get-game-session 'PBom8F9GLLTG8phc' --login_with_auth "Bearer foo"
-session-update-game-session '{"attributes": {"3n4iLoIllKlpO2pq": {}, "iXJF3WGRaoQomSJC": {}, "4DdrKF7SUQPLG59e": {}}, "backfillTicketID": "0k5ZtX6wK7PpUlcI", "clientVersion": "W32iK7MGt1ixY5rA", "deployment": "1WoVeJIePF8ZrQzP", "fallbackClaimKeys": ["4zvtdxdbZUpd6FJt", "HJ1pyVwyKQLY6FEO", "65Rb3z7CYLM8IlsH"], "inactiveTimeout": 33, "inviteTimeout": 57, "joinability": "ffnrfsGlfPaZKBwa", "matchPool": "3Ddb60ufPpzwj1QG", "maxPlayers": 70, "minPlayers": 65, "preferredClaimKeys": ["CfHkIySok5DiXZtL", "W87rGysryod3dNQr", "msApRA6HX3RwrKt2"], "requestedRegions": ["ecozL0TOg54vCE48", "L5oLF6M4lNa4JUMS", "HNgqRqCV7usamANk"], "teams": [{"UserIDs": ["ZlOX9Sfo95HgXqKh", "TPkwfLM9uSybRzWe", "k2gZvRrvr0n9d9lv"], "parties": [{"partyID": "ccKMLhrTrcBE2ItB", "userIDs": ["S3KtKZWe8aoFzAyB", "ME74HUtipUWYhWV1", "qx8CzPML52faXUr9"]}, {"partyID": "Sk4lq2faBcAXXKlh", "userIDs": ["vyH8paOJtxqMPpcV", "fRwNj547fH0XrKED", "pEY8VnocGAjci0V3"]}, {"partyID": "tBf2jnHGKXphn50c", "userIDs": ["9tNLDljhZ2jxLRX3", "z46OCaGBeMfPlNos", "4yBRjrERHEonAZR8"]}]}, {"UserIDs": ["GmEu0q1p6QCyY6vS", "kVFWdsbYuVEGVxYh", "eR3j5mNZ6vwv7K8A"], "parties": [{"partyID": "svt1j1Rx59hesNWy", "userIDs": ["2NvZ85DDKDAF8KDs", "BZOuYQJ03BAHZ7c5", "3q7akMpcmnnx6RVB"]}, {"partyID": "rop9v7aZK3h65hbN", "userIDs": ["15zfQSfQrtfF3TQN", "0OcNDLr36vzohZyj", "MQAg5mPYhrLTyU8O"]}, {"partyID": "hgfY9JQYGF4bYXEc", "userIDs": ["ENx9xZlAchob44lO", "NDDwMvgI0HlyPR7w", "ZNiVsF6xG2mXEQdb"]}]}, {"UserIDs": ["zIVy8alncV7vWgSH", "dfo07UctPErqxyMy", "OK06MqQBErxgjVBy"], "parties": [{"partyID": "cvU4PbmRDcrg0DjQ", "userIDs": ["jBECXvea7H1m2lJF", "RZ3ZprZ60zMjhTHe", "h94TSenE5hCFkIf5"]}, {"partyID": "weqZ18MH57l2Zsrh", "userIDs": ["90ETtYmGukz3Mnlr", "jcHp6B8Vj7rXFgDn", "DkdZ9bpjb1tdA3Qh"]}, {"partyID": "jCMW64f4XhIjSoTB", "userIDs": ["2NMKtezapPr2QEPx", "3zTxBGtEJIYppuUS", "sKoHw2hyd12uSE7B"]}]}], "ticketIDs": ["Ev3aevq6iohU1cg4", "W1IS3Uv1BpWoJBaq", "dg2FHcunsS1lnaO2"], "tieTeamsSessionLifetime": false, "type": "yn50sigBVZxiKdV5", "version": 85}' 'GvRyd9UuL02Le8HS' --login_with_auth "Bearer foo"
-session-delete-game-session 'CslsDd4M1F5qRIbl' --login_with_auth "Bearer foo"
-session-patch-update-game-session '{"attributes": {"S7Nz81GRazPAANjf": {}, "BoldFOyqA2clJ5gE": {}, "OaCgM6Yn6RugbNEI": {}}, "backfillTicketID": "pGBFUjOn5mM7k8nb", "clientVersion": "LzvtCIW5ynMKquUi", "deployment": "cAeIVXtoWAXhMlW4", "fallbackClaimKeys": ["tLqX7OICf5oD1e6o", "I9FmYel0kOw72o8Z", "kgk0jS6rDWUwfhKv"], "inactiveTimeout": 37, "inviteTimeout": 51, "joinability": "f2AaH4yCWrHSppnI", "matchPool": "ZkNnTn3rzH5NvAtc", "maxPlayers": 45, "minPlayers": 82, "preferredClaimKeys": ["sIPSE1XXPzySa0sZ", "oFS6xCOWMpyh9pMs", "Qgb64ELbzDMwyo4n"], "requestedRegions": ["IRysQdbufXjYnSoI", "FeouC2m38kXrDZWl", "GVE9sJ4NpUtKp6M9"], "teams": [{"UserIDs": ["I6nEwnZhsjwJeGwa", "PSDMZz95OYKiqaZD", "63xe5rruJVfLGea0"], "parties": [{"partyID": "ZtlzUcuHAXz0UV31", "userIDs": ["MfuGaXsAuGsZaSHe", "vO0TQNEI3kfabxJW", "WSI1ECUo1NPpeFhU"]}, {"partyID": "ztXDgB7n4C97uAPP", "userIDs": ["8PATLpUpxeJlsBJT", "6Hh3OMjAjq2mK8lb", "SEEelxnb5QxWG2HF"]}, {"partyID": "nZlA6HKWW4fI1IQc", "userIDs": ["oBQELcNlZkqTZrKg", "XNwvm4e5GX6H742O", "ixhtAoKiVm6URT95"]}]}, {"UserIDs": ["XhnUcvWB28Mpusuh", "hDJ5slzgiWZEtyd5", "6LfxnbY97jjYgXch"], "parties": [{"partyID": "CbkXX26uEdCfQaMA", "userIDs": ["QuTKfC0I2kNjCMDt", "DMrentgn3DhqciwI", "eShF9RKb9vvxuJlh"]}, {"partyID": "XbWhbwPwToC6knjV", "userIDs": ["wVnzaqSfJiQFC2gX", "oda0kg16yUSpSOAj", "HJWwfCjYwWkLob9g"]}, {"partyID": "KLqs2nEZhpByfHZi", "userIDs": ["nxNfgPAwkMBsznlB", "UqnLT4AbGptKaWNv", "Pbpg7yrRvXfZ6rvg"]}]}, {"UserIDs": ["vEY3Hht1SwqTsKKK", "o37NHDOQe91Ps3zt", "UIV0dS6hIH9c4Vfk"], "parties": [{"partyID": "yrwpuXxbaERbfgPm", "userIDs": ["i0eHkt1mr9EOIFg0", "dnWIYN2NVL70Iw15", "7g00jr9b8MuYmmeK"]}, {"partyID": "TmBNvGYxEQdf3ewo", "userIDs": ["GGoY7xmFNAmjDDCv", "s78mcMdiS76YApGJ", "9ufwLYkqIgLuZS6h"]}, {"partyID": "sQryiEtOAbpeUNf2", "userIDs": ["6UqkCfgCUYBn2xaO", "BdPF0JmX8qwU1cTu", "HHPB5S3DvPRCzBrV"]}]}], "ticketIDs": ["UxmDOj3cvRFaTC11", "W0TGTCm4fZWuk6pQ", "xDQpKqxLGeMvr9Ts"], "tieTeamsSessionLifetime": true, "type": "C7IVYa6iZ5uFRYNn", "version": 44}' 'SHiWxF0YbuU5ar5q' --login_with_auth "Bearer foo"
-session-update-game-session-backfill-ticket-id '{"backfillTicketID": "TLWUCy0Afgc050XI"}' 'ZRW491e94mQjVOOB' --login_with_auth "Bearer foo"
-session-game-session-generate-code 'nIWhunElqZUodp3I' --login_with_auth "Bearer foo"
-session-public-revoke-game-session-code 'htCSHy1ei1fIrPvf' --login_with_auth "Bearer foo"
-session-public-game-session-invite '{"platformID": "HnRN06EjRwEQlNap", "userID": "JRfk4f9Zcw1pEHAy"}' 'NFxcVTKuAQTGh5Bx' --login_with_auth "Bearer foo"
-session-join-game-session 'jWOozGoDtsUuYo5p' --login_with_auth "Bearer foo"
-session-public-promote-game-session-leader '{"leaderID": "8ED5QZAufwNa8lzf"}' 'jv9oYMXMjlVHY1AH' --login_with_auth "Bearer foo"
-session-leave-game-session 'wF3vGoav7MK0PcLn' --login_with_auth "Bearer foo"
-session-public-game-session-reject 'EkcokKwcQ0baDT9O' --login_with_auth "Bearer foo"
-session-get-session-server-secret 'yJ2h23GUS2amU7sy' --login_with_auth "Bearer foo"
-session-append-team-game-session '{"additionalMembers": [{"partyID": "GlElXdEAOrVSnLoc", "userIDs": ["LVVYamQc4wcG5nDB", "LJoJHbiQ5duE5p4c", "fs2E41cK8QTwiIAv"]}, {"partyID": "xSvNDlmM5nQFMGzs", "userIDs": ["7fzjgyc44mEh9tRk", "8knYSV30lnroQehM", "Dli6t9unQLYXxm09"]}, {"partyID": "wpGAbpEmDY9vLh3u", "userIDs": ["6EDsUmrV6kH4OotK", "wG3UC6XCnnZxF8Cm", "Qr17W65br34rBBN9"]}], "proposedTeams": [{"UserIDs": ["tU6TDm5GloFSKWM1", "eym5ydC6p25xCWTq", "UOYZENJ1QHZQxPRX"], "parties": [{"partyID": "H7uxBJEECQE1li3B", "userIDs": ["g7Jxc9pUnZmvhidw", "CkZwqjYLfTiCO1ND", "BvQvRPnAz4VzW0Cp"]}, {"partyID": "oBCbyJsF5IjF1c0W", "userIDs": ["338HS6CBgVRyihYN", "Z84CVhziXV8HwSmv", "cvcDKF19yVRafCjO"]}, {"partyID": "uSYht83AdvBaagTi", "userIDs": ["RJ8daGTVX3Bb7jlz", "5IfHgKjI9mwJSrN8", "jkIykR2zbaI6PD7f"]}]}, {"UserIDs": ["EscShnGUGUtV9GJ2", "79GDbLNwjm3FK0nn", "X2poMfZ1hDHtbh4H"], "parties": [{"partyID": "tMlFgvh2Dp2SoiIP", "userIDs": ["p1yvfAHS0VgLu11A", "3HTovFi4tPAGfley", "CA6jEtcqsnzoVILj"]}, {"partyID": "kwW61duF87aUyrdt", "userIDs": ["4XSpWBAetsanzqP8", "oxfrtbECD1CYPwai", "BAxfYL8Avt70ZUT2"]}, {"partyID": "fSk3LL0calqxEewu", "userIDs": ["GS469k2hG0WKt4sU", "manYxM0UHZVNYzGM", "NIpWoSLkUrfuf4U3"]}]}, {"UserIDs": ["WeYeA9t2ENKKWrFt", "HIi1CMgKAOG5iDcC", "R5PbCvDLil8wj9cK"], "parties": [{"partyID": "M3Ar6MF35hCER4nG", "userIDs": ["mWGgTJfHlJl4tHGa", "4XfZcd9CVnGqMX9F", "ieeEssWEUl07bhwn"]}, {"partyID": "tCVqiYOJf5KwMZQj", "userIDs": ["zvjSozv6CTRDl0zp", "9CzHFwinkBNi4gvq", "gl6TZ9TGVPmv34h6"]}, {"partyID": "T7EsufmfxKYB4LM6", "userIDs": ["H6QXmpZ9X3fUSR1l", "9xLPBsmAUrD9L1Ii", "D6MlcEPhMDFzjHZ3"]}]}], "version": 37}' 'vVe4MHX6AgMep90A' --login_with_auth "Bearer foo"
-session-public-party-join-code '{"code": "yyUJyAK5PRMRMwdv"}' --login_with_auth "Bearer foo"
-session-public-get-party 'l0hv6g62GxBW2tQF' --login_with_auth "Bearer foo"
-session-public-update-party '{"attributes": {"5tkTjgJaMYvNQOsD": {}, "a4bkcgepqtxjbrzt": {}, "ee7QLTGAak7Kaol0": {}}, "inactiveTimeout": 61, "inviteTimeout": 26, "joinability": "K97D2xnik42miteR", "maxPlayers": 58, "minPlayers": 9, "type": "OPipH1MWVTHG0qHJ", "version": 58}' 'mO4oI8KDqebm83ra' --login_with_auth "Bearer foo"
-session-public-patch-update-party '{"attributes": {"NBJ5y7axEkvI4oxZ": {}, "EDxGiBnNbn0zaf7C": {}, "aOSlHXrUSA6sMJzA": {}}, "inactiveTimeout": 46, "inviteTimeout": 26, "joinability": "EsdOGBXBwnzDX8v3", "maxPlayers": 47, "minPlayers": 27, "type": "gC1Ge9PdbTTAJ2Gp", "version": 62}' 'r0sVZ6LJAOddIL2l' --login_with_auth "Bearer foo"
-session-public-generate-party-code '3hPjNDKv2LWfXqjr' --login_with_auth "Bearer foo"
-session-public-revoke-party-code '8fS79En3wYowBdka' --login_with_auth "Bearer foo"
-session-public-party-invite '{"platformID": "Z3y6i38XQjLDRqkp", "userID": "iFK5BtiQ272Uo9UB"}' 'JWodpdwsX1jorcyR' --login_with_auth "Bearer foo"
-session-public-promote-party-leader '{"leaderID": "0x3YiHF8ITGPRQBC"}' 'gIs1Q2lzxl0yF5m7' --login_with_auth "Bearer foo"
-session-public-party-join '7TTh4gUoj8u2WRcL' --login_with_auth "Bearer foo"
-session-public-party-leave 'iEtzVlnkflfn7pHY' --login_with_auth "Bearer foo"
-session-public-party-reject '48F1dl1q92m3iRlf' --login_with_auth "Bearer foo"
-session-public-party-kick 'nBAk0CwiAsR65yQ9' 'ssuHdGmxncCEr0Kc' --login_with_auth "Bearer foo"
-session-public-create-party '{"attributes": {"geqzGbruNB72HHMk": {}, "jzyBB4UFKiaoV0VO": {}, "em2yqPsMFxKybPkb": {}}, "configurationName": "uS6x9cLJ1APnNlsa", "inactiveTimeout": 86, "inviteTimeout": 3, "joinability": "UYnfG6jl9U4jRete", "maxPlayers": 70, "members": [{"ID": "R919IZPKOKiAVQXX", "PlatformID": "OmqFHLbyXmgCNiXH", "PlatformUserID": "8uenbC5CphgMweex"}, {"ID": "sIAP5vHLjBJ9iqMc", "PlatformID": "BL4BzhDUjhKPwbwc", "PlatformUserID": "vQU5kG8bXGFmPAnO"}, {"ID": "kDiJq4xQye7HqnVK", "PlatformID": "3YVeOWs9mfVQh3jL", "PlatformUserID": "Btn9pxpE7BYtzB0B"}], "minPlayers": 47, "textChat": true, "type": "HbHig6IKWVZ77KeR"}' --login_with_auth "Bearer foo"
+session-admin-get-player-attributes 'AXVG7tnsZg5QgXjv' --login_with_auth "Bearer foo"
+session-admin-sync-native-session 'yGJPN4eXbJE5Vs2G' --login_with_auth "Bearer foo"
+session-create-game-session '{"attributes": {"cyomQoIXimBJehyx": {}, "lNsjUgxBkF6wFPoJ": {}, "eQediogEhhM2rIiz": {}}, "autoJoin": false, "backfillTicketID": "BHUTrDzZSKscfOcY", "clientVersion": "u3dpCROYqUiGKXVF", "configurationName": "Cmpo6sPwVOEDSJsE", "customURLGRPC": "K5QpNhlI2iS5EpGh", "deployment": "hvXYck0upMzUYnb7", "dsSource": "6tFkEORV3bu1bNCt", "fallbackClaimKeys": ["X7W40V6Do5sYadCC", "FrHHC3DpZxkrQDXu", "NFviMarv8mnfHK8C"], "inactiveTimeout": 59, "inviteTimeout": 6, "joinability": "mE2lPnsbD3SGEdlw", "matchPool": "uUccE536ugBp3HBv", "maxPlayers": 8, "minPlayers": 9, "preferredClaimKeys": ["pnDCjgyJlXe36mgW", "jLfFmteue9nzJ6fH", "24T805tVg8JqU0jZ"], "requestedRegions": ["pjvsugAOS7u8RiWy", "erCSa8SRgwsAj1ik", "1jglaDXTvKCWwNTA"], "serverName": "hd2wrS0uPdjhdinp", "teams": [{"UserIDs": ["ng5BLy8wbhMssAHj", "apIkY9Rf4wP57dBZ", "NR88YbCtmKy8M9zV"], "parties": [{"partyID": "rjfGXZnqAQUoY1Gj", "userIDs": ["lIIk0iKoTTS1j02o", "7JjTXAQN0qdskdQV", "0TqI8EFnmDbxIxi4"]}, {"partyID": "YKlONk2Q5Y4Jvaiz", "userIDs": ["wiilatuUjjt9lIMG", "ql5ElEa9EIIlGcHB", "3CfR3ncDlwi3v3MF"]}, {"partyID": "FJ1KesKoELCpobBE", "userIDs": ["G8X645xpdXpai0rY", "aT5hOPjaf3H0tYig", "hU0VUfcYHJbBfAKS"]}]}, {"UserIDs": ["iPW3VgsZXiR1DJ7H", "VWqMkNSawQUWDFJv", "JBWic7UkBeIXuqDu"], "parties": [{"partyID": "AXI66bQ71w0deoV9", "userIDs": ["Lx5RDA1l2XcrciYN", "EzvSZIPkhSgORcz5", "S5BvmgBLxh4ijFnE"]}, {"partyID": "3Tam69qSZ7PC6f6Q", "userIDs": ["kmZXElW9YfRSse6A", "Az3S4czz0QKFlAVm", "VLu4AOec0z8eBeeo"]}, {"partyID": "ip68J1nsv4W2OJht", "userIDs": ["afxMSJlHeb34sZKH", "cl5LLLOexL4fZvWt", "ND2tcBFpX8lNtFEJ"]}]}, {"UserIDs": ["7tnkY6Mca5afj12K", "2IzrBvvWm4udE0OX", "udXgNne8kJATwlc6"], "parties": [{"partyID": "esUp6Sw1I98jeZQ7", "userIDs": ["hfxnhLd3Knaknoed", "9DHhLOqQGhCUr6iT", "rjyEgarAdNJOIG36"]}, {"partyID": "I6tRbRcrEveMdAdi", "userIDs": ["PKDUVSC00PYeDcag", "ginxnFIna3yddcbs", "PheTH26IUJNvYuGR"]}, {"partyID": "UvpZaHCuESOiIZsM", "userIDs": ["fB4ZH3mtgWgU4pCA", "KxeE70CaunQNxot3", "71W9G4AvQkqsGnmy"]}]}], "textChat": false, "ticketIDs": ["TsMWPAxUMkawaGpA", "yrIwMif3BOdkocVT", "d4BxqGWV6mTJ0sQs"], "tieTeamsSessionLifetime": false, "type": "hqf6kiTdSGv2LFjA"}' --login_with_auth "Bearer foo"
+session-public-query-game-sessions-by-attributes '{"KY7CbgsWqFWZX7kP": {}, "Bom8F9GLLTG8phc3": {}, "n4iLoIllKlpO2pqi": {}}' --login_with_auth "Bearer foo"
+session-public-session-join-code '{"code": "XJF3WGRaoQomSJC4"}' --login_with_auth "Bearer foo"
+session-get-game-session-by-pod-name 'DdrKF7SUQPLG59e0' --login_with_auth "Bearer foo"
+session-get-game-session 'k5ZtX6wK7PpUlcIW' --login_with_auth "Bearer foo"
+session-update-game-session '{"attributes": {"32iK7MGt1ixY5rA1": {}, "WoVeJIePF8ZrQzP4": {}, "zvtdxdbZUpd6FJtH": {}}, "backfillTicketID": "J1pyVwyKQLY6FEO6", "clientVersion": "5Rb3z7CYLM8IlsHq", "deployment": "ffnrfsGlfPaZKBwa", "fallbackClaimKeys": ["3Ddb60ufPpzwj1QG", "IFmlVf4jvapseE9L", "N9bvhOrHflIOd6X3"], "inactiveTimeout": 43, "inviteTimeout": 35, "joinability": "iLvtEk4mTIpUA9gx", "matchPool": "o8SV38nEhoXmM2W7", "maxPlayers": 24, "minPlayers": 76, "preferredClaimKeys": ["6jHMA2rG3nakopAy", "welu01nryEJ0NqoT", "ow0qiOiC4j0iktm0"], "requestedRegions": ["ZPLkLOsp0LZ5njN8", "6Hl8kUXzt6bSc6bW", "vgpVyW9dD1kOmvrA"], "teams": [{"UserIDs": ["ejcq2LgkQuaS7RBx", "3vim02jBOxrZDyvp", "cLYOWA8NjxOnaEok"], "parties": [{"partyID": "4nOOCzfsflhjbngJ", "userIDs": ["OUn18G5MlfDTk8aG", "40NlncceIZSwgAIk", "gzh4pTU0Am4DZhl0"]}, {"partyID": "bQxFJ3sWCqQpQ2Fb", "userIDs": ["KPFMycMSQ4qfAacR", "0LgB5BUXvjcu2s6w", "3VifnKqmTSoGH1XE"]}, {"partyID": "fY6QAYn6WQ5UBEU1", "userIDs": ["QAOHfZiGhxOdcuDX", "SxSc3aZPV87pna08", "gxefTYKhuxaEc7M4"]}]}, {"UserIDs": ["P7UckSC6ePeN8i4G", "rFES9z7xueHpATHc", "cee9GXhKcjmSEwdr"], "parties": [{"partyID": "kEnnqKzFsLfYalUl", "userIDs": ["fwEQKjU7eHGebSVu", "0LQ40kepEaC4dfiO", "MZfEhHr39pysFO3Z"]}, {"partyID": "vc1BZG99LyvfvHEs", "userIDs": ["JKQQewVLMUoAnaRc", "Yp7FUjfIGaffoflE", "IByYqeKN0meGelYF"]}, {"partyID": "5wWaDhukU4khGG4v", "userIDs": ["ZFTYnPkmSu4PWam1", "jxR7SETWjteoc8fg", "vZDDhoO05oKqymxL"]}]}, {"UserIDs": ["D1Lcvw6T6mZEiwxx", "ElpMYSWIeVzm7z9n", "oowmlTIKVowi0RY2"], "parties": [{"partyID": "VN4ZONJREdUQ3z9F", "userIDs": ["1BxNNgnke4akncw7", "wu9TmXfJWBPrx9Ns", "8eLzYEvwSWTaLQjc"]}, {"partyID": "tvrK2jhsYpKPlXn7", "userIDs": ["7AtYoFzLAATPY8P8", "P3cfoivvQxevecWw", "7Rry0KK5rgAGO0dW"]}, {"partyID": "8rX2MVUGKSZ4GcLk", "userIDs": ["t4pK32sJxlZcCTpT", "dRtCHvuk6B6XTmSL", "yn50sigBVZxiKdV5"]}]}], "ticketIDs": ["7GvRyd9UuL02Le8H", "SCslsDd4M1F5qRIb", "lS7Nz81GRazPAANj"], "tieTeamsSessionLifetime": false, "type": "Wc9x1aMjgGim51T1", "version": 84}' '7XIZRZ7tZdIs0xf4' --login_with_auth "Bearer foo"
+session-delete-game-session 'czdt7zqmSKxOEQlV' --login_with_auth "Bearer foo"
+session-patch-update-game-session '{"attributes": {"cx6GqsBq8vdhWVnu": {}, "YLgpZehK0G2nmyuV": {}, "iB9kRTcSQdTnNYGe": {}}, "backfillTicketID": "AfYFG3wSkHKufBdS", "clientVersion": "3ZOokZB4cXnAXyuG", "deployment": "z6LlxHv8SwyagYvD", "fallbackClaimKeys": ["J3w3UNgIGj2jZtEY", "T8sIPSE1XXPzySa0", "sZoFS6xCOWMpyh9p"], "inactiveTimeout": 79, "inviteTimeout": 67, "joinability": "sQgb64ELbzDMwyo4", "matchPool": "nIRysQdbufXjYnSo", "maxPlayers": 71, "minPlayers": 75, "preferredClaimKeys": ["FeouC2m38kXrDZWl", "GVE9sJ4NpUtKp6M9", "I6nEwnZhsjwJeGwa"], "requestedRegions": ["PSDMZz95OYKiqaZD", "63xe5rruJVfLGea0", "ZtlzUcuHAXz0UV31"], "teams": [{"UserIDs": ["MfuGaXsAuGsZaSHe", "vO0TQNEI3kfabxJW", "WSI1ECUo1NPpeFhU"], "parties": [{"partyID": "ztXDgB7n4C97uAPP", "userIDs": ["8PATLpUpxeJlsBJT", "6Hh3OMjAjq2mK8lb", "SEEelxnb5QxWG2HF"]}, {"partyID": "nZlA6HKWW4fI1IQc", "userIDs": ["oBQELcNlZkqTZrKg", "XNwvm4e5GX6H742O", "ixhtAoKiVm6URT95"]}, {"partyID": "XhnUcvWB28Mpusuh", "userIDs": ["hDJ5slzgiWZEtyd5", "6LfxnbY97jjYgXch", "CbkXX26uEdCfQaMA"]}]}, {"UserIDs": ["QuTKfC0I2kNjCMDt", "DMrentgn3DhqciwI", "eShF9RKb9vvxuJlh"], "parties": [{"partyID": "XbWhbwPwToC6knjV", "userIDs": ["wVnzaqSfJiQFC2gX", "oda0kg16yUSpSOAj", "HJWwfCjYwWkLob9g"]}, {"partyID": "KLqs2nEZhpByfHZi", "userIDs": ["nxNfgPAwkMBsznlB", "UqnLT4AbGptKaWNv", "Pbpg7yrRvXfZ6rvg"]}, {"partyID": "vEY3Hht1SwqTsKKK", "userIDs": ["o37NHDOQe91Ps3zt", "UIV0dS6hIH9c4Vfk", "yrwpuXxbaERbfgPm"]}]}, {"UserIDs": ["i0eHkt1mr9EOIFg0", "dnWIYN2NVL70Iw15", "7g00jr9b8MuYmmeK"], "parties": [{"partyID": "TmBNvGYxEQdf3ewo", "userIDs": ["GGoY7xmFNAmjDDCv", "s78mcMdiS76YApGJ", "9ufwLYkqIgLuZS6h"]}, {"partyID": "sQryiEtOAbpeUNf2", "userIDs": ["6UqkCfgCUYBn2xaO", "BdPF0JmX8qwU1cTu", "HHPB5S3DvPRCzBrV"]}, {"partyID": "UxmDOj3cvRFaTC11", "userIDs": ["W0TGTCm4fZWuk6pQ", "xDQpKqxLGeMvr9Ts", "vcMQ7dBsaIecRxIs"]}]}], "ticketIDs": ["ZvD6rmzVr5XT1Nxw", "0v1dMQ9Rrbk6C2cV", "Wf6ttvbU1PO6ApCD"], "tieTeamsSessionLifetime": true, "type": "VXidT7w0Oc15N8WX", "version": 57}' 'htCSHy1ei1fIrPvf' --login_with_auth "Bearer foo"
+session-update-game-session-backfill-ticket-id '{"backfillTicketID": "HnRN06EjRwEQlNap"}' 'JRfk4f9Zcw1pEHAy' --login_with_auth "Bearer foo"
+session-game-session-generate-code 'NFxcVTKuAQTGh5Bx' --login_with_auth "Bearer foo"
+session-public-revoke-game-session-code 'jWOozGoDtsUuYo5p' --login_with_auth "Bearer foo"
+session-public-game-session-invite '{"platformID": "8ED5QZAufwNa8lzf", "userID": "jv9oYMXMjlVHY1AH"}' 'wF3vGoav7MK0PcLn' --login_with_auth "Bearer foo"
+session-join-game-session 'EkcokKwcQ0baDT9O' --login_with_auth "Bearer foo"
+session-public-promote-game-session-leader '{"leaderID": "yJ2h23GUS2amU7sy"}' 'GlElXdEAOrVSnLoc' --login_with_auth "Bearer foo"
+session-leave-game-session 'LVVYamQc4wcG5nDB' --login_with_auth "Bearer foo"
+session-public-game-session-reject 'LJoJHbiQ5duE5p4c' --login_with_auth "Bearer foo"
+session-get-session-server-secret 'fs2E41cK8QTwiIAv' --login_with_auth "Bearer foo"
+session-append-team-game-session '{"additionalMembers": [{"partyID": "xSvNDlmM5nQFMGzs", "userIDs": ["7fzjgyc44mEh9tRk", "8knYSV30lnroQehM", "Dli6t9unQLYXxm09"]}, {"partyID": "wpGAbpEmDY9vLh3u", "userIDs": ["6EDsUmrV6kH4OotK", "wG3UC6XCnnZxF8Cm", "Qr17W65br34rBBN9"]}, {"partyID": "tU6TDm5GloFSKWM1", "userIDs": ["eym5ydC6p25xCWTq", "UOYZENJ1QHZQxPRX", "H7uxBJEECQE1li3B"]}], "proposedTeams": [{"UserIDs": ["g7Jxc9pUnZmvhidw", "CkZwqjYLfTiCO1ND", "BvQvRPnAz4VzW0Cp"], "parties": [{"partyID": "oBCbyJsF5IjF1c0W", "userIDs": ["338HS6CBgVRyihYN", "Z84CVhziXV8HwSmv", "cvcDKF19yVRafCjO"]}, {"partyID": "uSYht83AdvBaagTi", "userIDs": ["RJ8daGTVX3Bb7jlz", "5IfHgKjI9mwJSrN8", "jkIykR2zbaI6PD7f"]}, {"partyID": "EscShnGUGUtV9GJ2", "userIDs": ["79GDbLNwjm3FK0nn", "X2poMfZ1hDHtbh4H", "tMlFgvh2Dp2SoiIP"]}]}, {"UserIDs": ["p1yvfAHS0VgLu11A", "3HTovFi4tPAGfley", "CA6jEtcqsnzoVILj"], "parties": [{"partyID": "kwW61duF87aUyrdt", "userIDs": ["4XSpWBAetsanzqP8", "oxfrtbECD1CYPwai", "BAxfYL8Avt70ZUT2"]}, {"partyID": "fSk3LL0calqxEewu", "userIDs": ["GS469k2hG0WKt4sU", "manYxM0UHZVNYzGM", "NIpWoSLkUrfuf4U3"]}, {"partyID": "WeYeA9t2ENKKWrFt", "userIDs": ["HIi1CMgKAOG5iDcC", "R5PbCvDLil8wj9cK", "M3Ar6MF35hCER4nG"]}]}, {"UserIDs": ["mWGgTJfHlJl4tHGa", "4XfZcd9CVnGqMX9F", "ieeEssWEUl07bhwn"], "parties": [{"partyID": "tCVqiYOJf5KwMZQj", "userIDs": ["zvjSozv6CTRDl0zp", "9CzHFwinkBNi4gvq", "gl6TZ9TGVPmv34h6"]}, {"partyID": "T7EsufmfxKYB4LM6", "userIDs": ["H6QXmpZ9X3fUSR1l", "9xLPBsmAUrD9L1Ii", "D6MlcEPhMDFzjHZ3"]}, {"partyID": "sIhzOx2CXKlvIomU", "userIDs": ["3pIxM9n8D2eLMe3l", "t9qfx2UDcgVE7L9F", "K6e0MrPc4vtxk9hV"]}]}], "version": 76}' 'a4bkcgepqtxjbrzt' --login_with_auth "Bearer foo"
+session-public-party-join-code '{"code": "ee7QLTGAak7Kaol0"}' --login_with_auth "Bearer foo"
+session-public-get-party '1DK97D2xnik42mit' --login_with_auth "Bearer foo"
+session-public-update-party '{"attributes": {"eR5eQAe1rzmmgqBP": {}, "Rmd6mO4oI8KDqebm": {}, "83raNBJ5y7axEkvI": {}}, "inactiveTimeout": 9, "inviteTimeout": 29, "joinability": "qGJtWf1Ybgg8rdwY", "maxPlayers": 2, "minPlayers": 58, "type": "mrvHmO07KNqX9LM2", "version": 70}' '5mtqISQ83TTbtefX' --login_with_auth "Bearer foo"
+session-public-patch-update-party '{"attributes": {"WznDe4LQdXfFBii2": {}, "RAMEX5RMjBFVZGYz": {}, "QqV8d9mDdUIoiIJF": {}}, "inactiveTimeout": 82, "inviteTimeout": 34, "joinability": "xuNOmUSWw18T1IxV", "maxPlayers": 99, "minPlayers": 22, "type": "CxdvPL9e4P01vxP8", "version": 48}' 'piFK5BtiQ272Uo9U' --login_with_auth "Bearer foo"
+session-public-generate-party-code 'BJWodpdwsX1jorcy' --login_with_auth "Bearer foo"
+session-public-revoke-party-code 'R0x3YiHF8ITGPRQB' --login_with_auth "Bearer foo"
+session-public-party-invite '{"platformID": "CgIs1Q2lzxl0yF5m", "userID": "77TTh4gUoj8u2WRc"}' 'LiEtzVlnkflfn7pH' --login_with_auth "Bearer foo"
+session-public-promote-party-leader '{"leaderID": "Y48F1dl1q92m3iRl"}' 'fnBAk0CwiAsR65yQ' --login_with_auth "Bearer foo"
+session-public-party-join '9ssuHdGmxncCEr0K' --login_with_auth "Bearer foo"
+session-public-party-leave 'cgeqzGbruNB72HHM' --login_with_auth "Bearer foo"
+session-public-party-reject 'kjzyBB4UFKiaoV0V' --login_with_auth "Bearer foo"
+session-public-party-kick 'Oem2yqPsMFxKybPk' 'buS6x9cLJ1APnNls' --login_with_auth "Bearer foo"
+session-public-create-party '{"attributes": {"a2bRBr27fVMWuAfD": {}, "qLMR919IZPKOKiAV": {}, "QXXOmqFHLbyXmgCN": {}}, "configurationName": "iXH8uenbC5CphgMw", "inactiveTimeout": 10, "inviteTimeout": 68, "joinability": "exsIAP5vHLjBJ9iq", "maxPlayers": 79, "members": [{"ID": "GvJ4UMS93yOxNInD", "PlatformID": "ByhnoluO6ti0QP2s", "PlatformUserID": "siJ66OzOj84O6tgo"}, {"ID": "hjtC7bzjPpucddXJ", "PlatformID": "5zifF8y959anrNSl", "PlatformUserID": "eywHbHig6IKWVZ77"}, {"ID": "KeRWdECaFGzfZ2hx", "PlatformID": "cJ2Fnemn7M23SzUo", "PlatformUserID": "4hNBDh9ZFP1OW0nX"}], "minPlayers": 84, "textChat": false, "type": "ErQPS4VsRoYIK69y"}' --login_with_auth "Bearer foo"
 session-public-get-recent-player --login_with_auth "Bearer foo"
 session-public-get-recent-team-player --login_with_auth "Bearer foo"
-session-public-update-insert-session-storage-leader '{"WdECaFGzfZ2hxcJ2": {}, "Fnemn7M23SzUo4hN": {}, "BDh9ZFP1OW0nXOEr": {}}' 'QPS4VsRoYIK69yg9' --login_with_auth "Bearer foo"
-session-public-update-insert-session-storage '{"ADCGiXaLs2xjHkin": {}, "OD975nARHCmhNHSX": {}, "uqIHsxvaUoXDmwWs": {}}' 'ukxncuD3QxCXMd00' 'YBWCaVVmM45mfIZs' --login_with_auth "Bearer foo"
-session-public-get-bulk-player-current-platform '{"userIDs": ["WhkS476dGGJwJ00U", "H197MJ6zU7JLMQyM", "WzYQCAaPJgoxGJoJ"]}' --login_with_auth "Bearer foo"
+session-public-update-insert-session-storage-leader '{"g9ADCGiXaLs2xjHk": {}, "inOD975nARHCmhNH": {}, "SXuqIHsxvaUoXDmw": {}}' 'WsukxncuD3QxCXMd' --login_with_auth "Bearer foo"
+session-public-update-insert-session-storage '{"00YBWCaVVmM45mfI": {}, "ZsWhkS476dGGJwJ0": {}, "0UH197MJ6zU7JLMQ": {}}' 'yMWzYQCAaPJgoxGJ' 'oJaSzUtY4ZD0Xtb0' --login_with_auth "Bearer foo"
+session-public-get-bulk-player-current-platform '{"userIDs": ["U4pH16NUsVY21NVI", "s7NRen2Y3Ns0QJQe", "aWytPfds1BYx0EaU"]}' --login_with_auth "Bearer foo"
 session-public-get-player-attributes --login_with_auth "Bearer foo"
-session-public-store-player-attributes '{"crossplayEnabled": false, "currentPlatform": "895ImqK6tVsaUq3s", "data": {"tUh5J5Z9GiBiSAyl": {}, "X5cS0IeHpWCugmfO": {}, "L0QQpxsuD8PGqku5": {}}, "platforms": [{"name": "9eFJrOXyDYz9vMUO", "userID": "PG0iHDT8QbF7gHPT"}, {"name": "PQbvLt2NRqJGIKzL", "userID": "yH1y72L13Ornyx34"}, {"name": "luLdvtsTKXMjiw6g", "userID": "YPvfn2Qt9iyq3Nyk"}], "roles": ["8ncu2Z3eDHH9WaVO", "4iKhDcJ7TCcNIsQ3", "PuppUxDSK8aOTGMu"], "simultaneousPlatform": "dcxlCV4cNbJGQ57l"}' --login_with_auth "Bearer foo"
+session-public-store-player-attributes '{"crossplayEnabled": true, "currentPlatform": "ydf8ZyyZeHAWGgJU", "data": {"bUJRMbkcTglbU86F": {}, "yOjApNHBVfNOURcj": {}, "Y3YYT9oTynmfIuBW": {}}, "platforms": [{"name": "gJTNFfM8M0IW4oe8", "userID": "KDgy0xZfAcNg14Ws"}, {"name": "8TIP1LKiFQoLDvum", "userID": "fqrgSfnx2h61X9dN"}, {"name": "1MGRXBJ6mVV7JS9q", "userID": "jNLwvI8JdiY3RRiL"}], "roles": ["ilmOGF6dLLIeIVIj", "McdlbdRXTGIrdNL5", "gJPqTAjgqaTHf1AN"], "simultaneousPlatform": "TJ9Yk997XkGOdC6I"}' --login_with_auth "Bearer foo"
 session-public-delete-player-attributes --login_with_auth "Bearer foo"
 session-public-query-my-game-sessions --login_with_auth "Bearer foo"
 session-public-query-my-parties --login_with_auth "Bearer foo"
@@ -129,7 +130,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..82"
+echo "1..83"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -158,7 +159,7 @@ eval_tap $? 4 'AdminGetLogConfig' test.out
 
 #- 5 AdminPatchUpdateLogConfig
 $PYTHON -m $MODULE 'session-admin-patch-update-log-config' \
-    '{"logLevel": "trace"}' \
+    '{"logLevel": "fatal"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'AdminPatchUpdateLogConfig' test.out
@@ -183,7 +184,7 @@ eval_tap $? 8 'AdminListGlobalConfiguration' test.out
 
 #- 9 AdminUpdateGlobalConfiguration
 $PYTHON -m $MODULE 'session-admin-update-global-configuration' \
-    '{"regionRetryMapping": {"mOGF6dLLIeIVIjMc": ["dlbdRXTGIrdNL5gJ", "PqTAjgqaTHf1ANTJ", "9Yk997XkGOdC6Itx"], "DT8p4n4XCFkD1AJL": ["CwszbZxuHSgDOK8b", "joF7bL2635KbtZTG", "Jpqgl2IzNXGTuQPI"], "Dpor7t1aJLNNz6QI": ["VC9Mfuc8VOsnmnlV", "ljdWYmELe74p38vu", "mnxAnYBTxaTIz0jc"]}, "regionURLMapping": ["gDI8Pkz96vd80msq", "Im5bufnBqrpLeqhw", "VhjnnjKMEmtbiWsA"], "testGameMode": "QHbMrKYi0Zxs5SWC", "testRegionURLMapping": ["qZXHLLa31oQf7BUL", "nZDhutDM6BqguqD5", "xxGxBWtnTKUe2zns"], "testTargetUserIDs": ["qPzPkwCBo2SwCUsT", "ag4MLAo3m61P2xaN", "fmn8Onb1a9gMz0F2"]}' \
+    '{"regionRetryMapping": {"EXqvUWDjU1G0EVjV": ["Zw1ToLuPakQN1MpO", "s1RVFrcg2CXxepx7", "8fvsyhE2BKtyTDSI"], "M7mkmvZ7Cmsh4US8": ["o4jfMANPpmZDdMiC", "xmuCCVuFjS1GC1d2", "b92B4vEgj3HOmhcW"], "m428XejRF94NIY9n": ["MrBZo0lNUBDShHD3", "2vvL28FPwTiXfLcx", "DC9Ynd02mECIQhfI"]}, "regionURLMapping": ["hHtADUQ9zimQTQT9", "5pFJUAJsyAfeKOuf", "V4f15NohXu6opxQG"], "testGameMode": "Rt6PqlkL0diRhLC1", "testRegionURLMapping": ["0ih2EQfY3XCv4hdO", "a6FdZhNMd1onFjGR", "bxtABPXDmgNEJBhg"], "testTargetUserIDs": ["Gq5GIDhNC66szbCC", "f73IFbRkPSSITz4T", "jCrJHXGXku2YVuOz"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'AdminUpdateGlobalConfiguration' test.out
@@ -202,14 +203,14 @@ eval_tap $? 11 'AdminGetConfigurationAlertV1' test.out
 
 #- 12 AdminUpdateConfigurationAlertV1
 $PYTHON -m $MODULE 'session-admin-update-configuration-alert-v1' \
-    '{"durationDays": 95}' \
+    '{"durationDays": 16}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'AdminUpdateConfigurationAlertV1' test.out
 
 #- 13 AdminCreateConfigurationAlertV1
 $PYTHON -m $MODULE 'session-admin-create-configuration-alert-v1' \
-    '{"durationDays": 40}' \
+    '{"durationDays": 72}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'AdminCreateConfigurationAlertV1' test.out
@@ -222,16 +223,16 @@ eval_tap $? 14 'AdminDeleteConfigurationAlertV1' test.out
 
 #- 15 HandleUploadXboxPFXCertificate
 $PYTHON -m $MODULE 'session-handle-upload-xbox-pfx-certificate' \
-    'BRmMhAbUWmFhdYLW' \
+    'xHmnrrV9ZGWrZ05s' \
     'tmp.dat' \
-    'zMuv3zkUY0n0BAZk' \
+    'xe6A6RpmKDebNkyl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 15 'HandleUploadXboxPFXCertificate' test.out
 
 #- 16 AdminCreateConfigurationTemplateV1
 $PYTHON -m $MODULE 'session-admin-create-configuration-template-v1' \
-    '{"NativeSessionSetting": {"PSNServiceLabel": 47, "PSNSupportedPlatforms": ["IFbRkPSSITz4TjCr", "JHXGXku2YVuOzhxH", "mnrrV9ZGWrZ05sxe"], "SessionTitle": "6A6RpmKDebNkylby", "ShouldSync": false, "XboxAllowCrossPlatform": false, "XboxSandboxID": "mzwOZOK56sDkci5r", "XboxServiceConfigID": "Z8iMlOuksQJCiRFi", "XboxSessionTemplateName": "ZWwJ7NrTb1XTB9YQ", "XboxTitleID": "zUJ9XlYJ8BzP6EUm", "localizedSessionName": {"UXGM5anIloyj9lhb": {}, "vuQdW2jwKUckc794": {}, "ryY91lX8DD4MYXlr": {}}}, "PSNBaseUrl": "J81lHvv9rqvEoM8Y", "attributes": {"mVjAkO3HKsEp6Klq": {}, "wW4djrexcbHdEtoQ": {}, "vpV344RctmTozCi8": {}}, "autoJoin": true, "autoLeaveSession": false, "clientVersion": "iTgYmx82JVBRLPZ6", "deployment": "Iz8tne5dbguBF6Gs", "disableCodeGeneration": true, "dsManualSetReady": false, "dsSource": "vdl8jHz9x7XZIjU4", "enableSecret": true, "fallbackClaimKeys": ["9lOLaZaMphKCqTq3", "EVheJjoEEXBLIxGn", "NuhoJM3WWPvvCiCf"], "immutableStorage": false, "inactiveTimeout": 99, "inviteTimeout": 18, "joinability": "7KORRhxSWLWLNfHR", "leaderElectionGracePeriod": 61, "manualRejoin": false, "maxActiveSessions": 85, "maxPlayers": 97, "minPlayers": 54, "name": "15QaGGL46LuxJF3s", "persistent": false, "preferredClaimKeys": ["zf5aANNNs5kgSZZN", "UHbIT9szApmWJO5v", "zzXZj08a6K1XRVfr"], "requestedRegions": ["iSpPFnZBJZkDnEiy", "fa2LrnpZxNnLRH36", "bqS2oFY76PU1AziB"], "textChat": true, "tieTeamsSessionLifetime": true, "type": "EAj1cT3u6Zc2FbrT"}' \
+    '{"NativeSessionSetting": {"PSNServiceLabel": 3, "PSNSupportedPlatforms": ["ucNmzwOZOK56sDkc", "i5rZ8iMlOuksQJCi", "RFiZWwJ7NrTb1XTB"], "SessionTitle": "9YQzUJ9XlYJ8BzP6", "ShouldSync": true, "XboxAllowCrossPlatform": false, "XboxSandboxID": "zdhMeBXH8x6HdVfZ", "XboxServiceConfigID": "VDAiU6iJOF7JKZFN", "XboxSessionTemplateName": "k2NKy59X8iOg2sVB", "XboxTitleID": "iCoeC5weXJl7PeiM", "localizedSessionName": {"H8z8dVej8N2yv6VT": {}, "nOK7xAvM7tuL81ls": {}, "R7xxSVp3Gd2TK0Hz": {}}}, "PSNBaseUrl": "YviTgYmx82JVBRLP", "attributes": {"Z6Iz8tne5dbguBF6": {}, "Gsvvdl8jHz9x7XZI": {}, "jU4IK9lOLaZaMphK": {}}, "autoJoin": true, "autoLeaveSession": true, "clientVersion": "qTq3EVheJjoEEXBL", "customURLGRPC": "IxGnNuhoJM3WWPvv", "deployment": "CiCf33ViEdqQpoGk", "disableCodeGeneration": false, "dsManualSetReady": true, "dsSource": "fHRD3V15QaGGL46L", "enableSecret": true, "fallbackClaimKeys": ["ZYTYZbzf5aANNNs5", "kgSZZNUHbIT9szAp", "mWJO5vzzXZj08a6K"], "immutableStorage": true, "inactiveTimeout": 90, "inviteTimeout": 84, "joinability": "VfriSpPFnZBJZkDn", "leaderElectionGracePeriod": 62, "manualRejoin": true, "maxActiveSessions": 17, "maxPlayers": 51, "minPlayers": 98, "name": "fa2LrnpZxNnLRH36", "persistent": false, "preferredClaimKeys": ["7A0TuU2aL4bPkk11", "sys6GdkDcos5uVJ0", "BJfZ0jvA54CSqZFD"], "requestedRegions": ["sO1skRjOU1SMfQVQ", "a6blj9Rdd85bdYUu", "mPKVSZCg3XTc9vQe"], "textChat": false, "tieTeamsSessionLifetime": true, "type": "HJfF6KIuvnRCa9Jk"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 16 'AdminCreateConfigurationTemplateV1' test.out
@@ -244,38 +245,38 @@ eval_tap $? 17 'AdminGetAllConfigurationTemplatesV1' test.out
 
 #- 18 AdminGetConfigurationTemplateV1
 $PYTHON -m $MODULE 'session-admin-get-configuration-template-v1' \
-    'FznTgDIwZIRWf6T3' \
+    'tyBdxkZKrEWFw9GY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 18 'AdminGetConfigurationTemplateV1' test.out
 
 #- 19 AdminUpdateConfigurationTemplateV1
 $PYTHON -m $MODULE 'session-admin-update-configuration-template-v1' \
-    '{"NativeSessionSetting": {"PSNServiceLabel": 3, "PSNSupportedPlatforms": ["1skRjOU1SMfQVQa6", "blj9Rdd85bdYUumP", "KVSZCg3XTc9vQe0d"], "SessionTitle": "HJfF6KIuvnRCa9Jk", "ShouldSync": true, "XboxAllowCrossPlatform": false, "XboxSandboxID": "yBdxkZKrEWFw9GYx", "XboxServiceConfigID": "jiiOQAD77ci0vfWV", "XboxSessionTemplateName": "ZoRRMPi57HyKKz5n", "XboxTitleID": "yI6ulKNKoXa0dgx1", "localizedSessionName": {"JgjC56pda3YhtQxp": {}, "CYME6x21pdX2QSPA": {}, "d9sxoLnWGP1PafIj": {}}}, "PSNBaseUrl": "LX8ce0KbNN7Ycl2J", "attributes": {"fmQplvGjVQ4aebjf": {}, "gGu472oWJlfglLM4": {}, "xjfkNL4lU6jaGfsD": {}}, "autoJoin": true, "autoLeaveSession": false, "clientVersion": "tYEJTSiXjcY5ZPkv", "deployment": "90lyKSTWLxSFZ0Lp", "disableCodeGeneration": true, "dsManualSetReady": false, "dsSource": "pEi5DbkVs3qFTi1t", "enableSecret": false, "fallbackClaimKeys": ["30Wj1WfzIvc3VlSX", "rA3XUGud4tVjmxEf", "4XvVhFJTxFHITBg9"], "immutableStorage": true, "inactiveTimeout": 44, "inviteTimeout": 41, "joinability": "Pb1kuUfNfUDe4g7q", "leaderElectionGracePeriod": 58, "manualRejoin": false, "maxActiveSessions": 62, "maxPlayers": 62, "minPlayers": 0, "name": "xnKfV3869IN4V1Od", "persistent": false, "preferredClaimKeys": ["GBA6JXDpA1tIC45C", "0oaGouFu4hXONgUw", "JnUpryDeRcpUvlrw"], "requestedRegions": ["2MwC1uuokpaIjL0V", "xe5n9Lx3QcFo9gxO", "gvDc7xMrRKvw8ISP"], "textChat": true, "tieTeamsSessionLifetime": false, "type": "KmCRRXBxlalCHtWl"}' \
-    'KxLpS8fLWoQ5nuJh' \
+    '{"NativeSessionSetting": {"PSNServiceLabel": 48, "PSNSupportedPlatforms": ["hrtwSd9QWVMYz7TU", "1TsxsChSclSkb5aB", "i9K9zyv6gFZXI5nX"], "SessionTitle": "J7hLi6HweweRmyo9", "ShouldSync": true, "XboxAllowCrossPlatform": false, "XboxSandboxID": "YME6x21pdX2QSPAd", "XboxServiceConfigID": "9sxoLnWGP1PafIjL", "XboxSessionTemplateName": "X8ce0KbNN7Ycl2Jf", "XboxTitleID": "mQplvGjVQ4aebjfg", "localizedSessionName": {"Gu472oWJlfglLM4x": {}, "jfkNL4lU6jaGfsD1": {}, "cfswmeFpvtDtetoQ": {}}}, "PSNBaseUrl": "VFL8LNW11vtpaTxi", "attributes": {"7k489jRCn48bvkCP": {}, "fKofwXOIZZQAJza8": {}, "4lKKmVOaTS6xBbNr": {}}, "autoJoin": true, "autoLeaveSession": false, "clientVersion": "AW2ak7ISDrBVg6Nu", "customURLGRPC": "DZvPb1kuUfNfUDe4", "deployment": "g7q6PHEaqbzHvDDl", "disableCodeGeneration": false, "dsManualSetReady": false, "dsSource": "4V1OdhH4GVU7Exlk", "enableSecret": false, "fallbackClaimKeys": ["IC45C0oaGouFu4hX", "ONgUwJnUpryDeRcp", "Uvlrw2MwC1uuokpa"], "immutableStorage": false, "inactiveTimeout": 19, "inviteTimeout": 77, "joinability": "CPrFa05Xl5TPC5GO", "leaderElectionGracePeriod": 61, "manualRejoin": true, "maxActiveSessions": 92, "maxPlayers": 83, "minPlayers": 13, "name": "4bmm7jPdKLddfdsU", "persistent": true, "preferredClaimKeys": ["WKmCRRXBxlalCHtW", "lKxLpS8fLWoQ5nuJ", "hatQPxR7dvBVC5zg"], "requestedRegions": ["OKLTDmHe8c1eJ9sd", "e7Ryt4udIv22M18u", "ux9xBomQFPFWy5cw"], "textChat": false, "tieTeamsSessionLifetime": false, "type": "I6aFo0MVwDZCIXFN"}' \
+    'EL3uWVRz3V7YbJM3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'AdminUpdateConfigurationTemplateV1' test.out
 
 #- 20 AdminDeleteConfigurationTemplateV1
 $PYTHON -m $MODULE 'session-admin-delete-configuration-template-v1' \
-    'atQPxR7dvBVC5zgO' \
+    'bNLWHAbCZixe2cQ6' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 20 'AdminDeleteConfigurationTemplateV1' test.out
 
 #- 21 AdminGetMemberActiveSession
 $PYTHON -m $MODULE 'session-admin-get-member-active-session' \
-    'KLTDmHe8c1eJ9sde' \
-    '7Ryt4udIv22M18uu' \
+    'O30lpzcBQMAEcNcJ' \
+    'qrKxnMzSYoc4ZjiM' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 21 'AdminGetMemberActiveSession' test.out
 
 #- 22 AdminReconcileMaxActiveSession
 $PYTHON -m $MODULE 'session-admin-reconcile-max-active-session' \
-    '{"userID": "x9xBomQFPFWy5cwN"}' \
-    'PI6aFo0MVwDZCIXF' \
+    '{"userID": "Y4H34B6wVd8ipcKD"}' \
+    'wQeUWtjCC2UH6jzM' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 22 'AdminReconcileMaxActiveSession' test.out
@@ -300,31 +301,31 @@ eval_tap $? 25 'AdminQueryGameSessions' test.out
 
 #- 26 AdminQueryGameSessionsByAttributes
 $PYTHON -m $MODULE 'session-admin-query-game-sessions-by-attributes' \
-    '{"NEL3uWVRz3V7YbJM": {}, "3bNLWHAbCZixe2cQ": {}, "6O30lpzcBQMAEcNc": {}}' \
+    '{"O3AfmOS5mQNyRPZF": {}, "PNP56l1AT6OLKmZh": {}, "CZxxPPdPwOtEuWBS": {}}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 26 'AdminQueryGameSessionsByAttributes' test.out
 
 #- 27 AdminDeleteBulkGameSessions
 $PYTHON -m $MODULE 'session-admin-delete-bulk-game-sessions' \
-    '{"ids": ["JqrKxnMzSYoc4Zji", "MY4H34B6wVd8ipcK", "DwQeUWtjCC2UH6jz"]}' \
+    '{"ids": ["O2jJepUnEEgja2mI", "E2kLTnJwc5XmkCuL", "5W4tKt6G3j9LYdG7"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 27 'AdminDeleteBulkGameSessions' test.out
 
 #- 28 AdminSetDSReady
 $PYTHON -m $MODULE 'session-admin-set-ds-ready' \
-    '{"ready": false}' \
-    'O3AfmOS5mQNyRPZF' \
+    '{"ready": true}' \
+    'PW02PWsHiKYArAxn' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 28 'AdminSetDSReady' test.out
 
 #- 29 AdminUpdateGameSessionMember
 $PYTHON -m $MODULE 'session-admin-update-game-session-member' \
-    'PNP56l1AT6OLKmZh' \
-    'CZxxPPdPwOtEuWBS' \
-    'O2jJepUnEEgja2mI' \
+    'KBfBfDlrQQuAc10D' \
+    'jjwMv4vrIPRtvhQI' \
+    'yLarjaLOKnX51yAB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 29 'AdminUpdateGameSessionMember' test.out
@@ -349,7 +350,7 @@ eval_tap $? 32 'AdminGetPlatformCredentials' test.out
 
 #- 33 AdminUpdatePlatformCredentials
 $PYTHON -m $MODULE 'session-admin-update-platform-credentials' \
-    '{"psn": {"clientId": "E2kLTnJwc5XmkCuL", "clientSecret": "5W4tKt6G3j9LYdG7", "scope": "xVPqBqe9RDQMBSYA"}}' \
+    '{"psn": {"clientId": "8Pa3uNGKhaLlJzJM", "clientSecret": "SnJIIgsAVmaGYxUX", "scope": "1B9oVuzG2CnYX2YB"}}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 33 'AdminUpdatePlatformCredentials' test.out
@@ -374,22 +375,22 @@ eval_tap $? 36 'AdminGetRecentTeamPlayer' test.out
 
 #- 37 AdminReadSessionStorage
 $PYTHON -m $MODULE 'session-admin-read-session-storage' \
-    'FLqp8PF5hCcoukWp' \
+    'F2g7TVtzYEHUodh3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 37 'AdminReadSessionStorage' test.out
 
 #- 38 AdminDeleteUserSessionStorage
 $PYTHON -m $MODULE 'session-admin-delete-user-session-storage' \
-    'nbz4ys7j6lxuU3u2' \
+    'iUfBthbepUCTWiZ1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 38 'AdminDeleteUserSessionStorage' test.out
 
 #- 39 AdminReadUserSessionStorage
 $PYTHON -m $MODULE 'session-admin-read-user-session-storage' \
-    'HEG0qfKegvFTD1sP' \
-    'ykS8YLmwtYgWGcA0' \
+    'uqh7GAi4FEIu44u8' \
+    '3ZLRxYlYqlpq03BG' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 39 'AdminReadUserSessionStorage' test.out
@@ -402,305 +403,312 @@ eval_tap $? 40 'AdminQueryPlayerAttributes' test.out
 
 #- 41 AdminGetPlayerAttributes
 $PYTHON -m $MODULE 'session-admin-get-player-attributes' \
-    'h4G1LZ1HaX5UBMbs' \
+    'dIk4oEogFVGR71rJ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 41 'AdminGetPlayerAttributes' test.out
 
-#- 42 CreateGameSession
+#- 42 AdminSyncNativeSession
+$PYTHON -m $MODULE 'session-admin-sync-native-session' \
+    'OBy6lsj1AKGBjnHm' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 42 'AdminSyncNativeSession' test.out
+
+#- 43 CreateGameSession
 $PYTHON -m $MODULE 'session-create-game-session' \
-    '{"attributes": {"F44VTsLDRzdq22cb": {}, "nyK3ggFDh2kaZP7p": {}, "nnVfxPwc259HF9ej": {}}, "autoJoin": true, "backfillTicketID": "aILQruAuYyJLYGqM", "clientVersion": "v824ouSgkpK70uJm", "configurationName": "UL0uzElixc023dIv", "deployment": "DiA0tQWlHwBcTtzt", "dsSource": "x3VAl6tXFbnATCzU", "fallbackClaimKeys": ["OIzVcy9k3ie64Vnw", "a0ClGQJultJe32Ai", "wKadEoIVmprwPsa9"], "inactiveTimeout": 93, "inviteTimeout": 60, "joinability": "YgwWv5XldL6rOVGc", "matchPool": "RAn51rVAQSxp4qTB", "maxPlayers": 88, "minPlayers": 25, "preferredClaimKeys": ["Fj1umx4ItzkMJ7cu", "df4r916GPrhn2etV", "IQvRkQJAtDUH9tx6"], "requestedRegions": ["0AehGz1ermJYXsYg", "L7TfyIlAwjTZdRZJ", "JzWZwvTX2bamSCvX"], "serverName": "1nwvSWdDwD7WJHzg", "teams": [{"UserIDs": ["NZUKsI5y0mR3zMyT", "sftKqnsIJctAdxyZ", "VKHA9DkaSOWgtg8y"], "parties": [{"partyID": "w8lHEbVDwBAqanOl", "userIDs": ["scRIWw82k5K5VTkd", "ubkOFldMCQ98JH4n", "0JtgqzZv5kVu4S95"]}, {"partyID": "mj8YRvae4f4lhBPb", "userIDs": ["arbWEm8bVtZcfVCP", "dQhim9QKUAFTVYel", "IlGJg9wdc8bihhWj"]}, {"partyID": "fZpfcFBUsnnDJlmD", "userIDs": ["1iEokbUiYzCQh2iN", "TwtnohddMzMTQ9P7", "sYLDWAJOA75K4BYJ"]}]}, {"UserIDs": ["2fkqYJoF2FI3vyyq", "Rzc20O7FdsJP1G9t", "yBTfERXdvgD1Qf7O"], "parties": [{"partyID": "t2DkUt3yexZBRvxY", "userIDs": ["nEBhXtAVxCd3meTr", "T7cF9oVCh89wNOkK", "YssVejcL3kR3hCGN"]}, {"partyID": "gaJmuALlMQl9RLrt", "userIDs": ["hbfp0VgweLlT2sY3", "SsTnDQY7kKU2u06Q", "4veujxtyQENvJrBC"]}, {"partyID": "qeg67d4RWOqO4U0b", "userIDs": ["itNQLzwRoWnR0Abk", "CPY70FmvviVIBbcu", "jF8Vk5qb8NhWWwax"]}]}, {"UserIDs": ["yMchkt8l5IPSrwrJ", "l7wYIVw13NCo9yXl", "bQ52FTHTCj6SEAzT"], "parties": [{"partyID": "7TOpyiuvvQUm29Ia", "userIDs": ["cq4XRLaA643nTMtX", "SAyejnny0Ju13b6o", "5uB2XM6IHy7EEvHy"]}, {"partyID": "LmcvrZZOdwe1x8Rj", "userIDs": ["U6Bi8JXE52sUBBq2", "SimQQoLbe5YOJvxG", "RxUzrTwagH7BMT1I"]}, {"partyID": "ZKTdNFVBQ1crBXAu", "userIDs": ["pATO8uXsqVpdiWo8", "SjDAM0Riw8wLYW3n", "4F3LD1EDwBXw5uBY"]}]}], "textChat": false, "ticketIDs": ["5VyC4qvWjVac1cQv", "SxgTNIUzxDgBlIbu", "zm7DzJ20NFRJIhFX"], "tieTeamsSessionLifetime": false, "type": "aMsq8ePN1oco2jx8"}' \
+    '{"attributes": {"aAu4YK87DYAWWcbc": {}, "bGWmKgE8CZ4AELr5": {}, "lraa5v5P5Cj8hgFs": {}}, "autoJoin": true, "backfillTicketID": "wKadEoIVmprwPsa9", "clientVersion": "YD92CX0rITajpwHI", "configurationName": "TGeHTnqRbzBB9ZFg", "customURLGRPC": "JbQ3Fj1umx4ItzkM", "deployment": "J7cudf4r916GPrhn", "dsSource": "2etVIQvRkQJAtDUH", "fallbackClaimKeys": ["9tx60AehGz1ermJY", "XsYgL7TfyIlAwjTZ", "dRZJJzWZwvTX2bam"], "inactiveTimeout": 91, "inviteTimeout": 2, "joinability": "CvX1nwvSWdDwD7WJ", "matchPool": "HzgNZUKsI5y0mR3z", "maxPlayers": 79, "minPlayers": 60, "preferredClaimKeys": ["yTsftKqnsIJctAdx", "yZVKHA9DkaSOWgtg", "8yw8lHEbVDwBAqan"], "requestedRegions": ["OlscRIWw82k5K5VT", "kdubkOFldMCQ98JH", "4n0JtgqzZv5kVu4S"], "serverName": "95mj8YRvae4f4lhB", "teams": [{"UserIDs": ["PbarbWEm8bVtZcfV", "CPdQhim9QKUAFTVY", "elIlGJg9wdc8bihh"], "parties": [{"partyID": "WjfZpfcFBUsnnDJl", "userIDs": ["mD1iEokbUiYzCQh2", "iNTwtnohddMzMTQ9", "P7sYLDWAJOA75K4B"]}, {"partyID": "YJ2fkqYJoF2FI3vy", "userIDs": ["yqRzc20O7FdsJP1G", "9tyBTfERXdvgD1Qf", "7Ot2DkUt3yexZBRv"]}, {"partyID": "xYnEBhXtAVxCd3me", "userIDs": ["TrT7cF9oVCh89wNO", "kKYssVejcL3kR3hC", "GNgaJmuALlMQl9RL"]}]}, {"UserIDs": ["rthbfp0VgweLlT2s", "Y3SsTnDQY7kKU2u0", "6Q4veujxtyQENvJr"], "parties": [{"partyID": "BCqeg67d4RWOqO4U", "userIDs": ["0bitNQLzwRoWnR0A", "bkCPY70FmvviVIBb", "cujF8Vk5qb8NhWWw"]}, {"partyID": "axyMchkt8l5IPSrw", "userIDs": ["rJl7wYIVw13NCo9y", "XlbQ52FTHTCj6SEA", "zT7TOpyiuvvQUm29"]}, {"partyID": "Iacq4XRLaA643nTM", "userIDs": ["tXSAyejnny0Ju13b", "6o5uB2XM6IHy7EEv", "HyLmcvrZZOdwe1x8"]}]}, {"UserIDs": ["RjU6Bi8JXE52sUBB", "q2SimQQoLbe5YOJv", "xGRxUzrTwagH7BMT"], "parties": [{"partyID": "1IZKTdNFVBQ1crBX", "userIDs": ["AupATO8uXsqVpdiW", "o8SjDAM0Riw8wLYW", "3n4F3LD1EDwBXw5u"]}, {"partyID": "BYeQZOzATNSV9E9y", "userIDs": ["yNb7yaLXzAVYymOu", "hCkZu4htrsf8eIFS", "ovTGXaMsq8ePN1oc"]}, {"partyID": "o2jx8Upe8SjMvpqM", "userIDs": ["8puggOEdG47gD5i2", "Ni6AnWn3NdEPhNHS", "H7eKDfRcngEpTnRU"]}]}], "textChat": true, "ticketIDs": ["qEAuJbpZSrcbc4LW", "fKaY5c1tP5TDuI5f", "6m4KC07CnsZe32hq"], "tieTeamsSessionLifetime": true, "type": "F74tz6aeXZOYwbwj"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 42 'CreateGameSession' test.out
+eval_tap $? 43 'CreateGameSession' test.out
 
-#- 43 PublicQueryGameSessionsByAttributes
+#- 44 PublicQueryGameSessionsByAttributes
 $PYTHON -m $MODULE 'session-public-query-game-sessions-by-attributes' \
-    '{"Upe8SjMvpqM8pugg": {}, "OEdG47gD5i2Ni6An": {}, "Wn3NdEPhNHSH7eKD": {}}' \
+    '{"MNdxKWlBfnRyFS0E": {}, "d7gTM5AVrtBQiDTc": {}, "NnZa6Zuxk6u6HXXd": {}}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 43 'PublicQueryGameSessionsByAttributes' test.out
+eval_tap $? 44 'PublicQueryGameSessionsByAttributes' test.out
 
-#- 44 PublicSessionJoinCode
+#- 45 PublicSessionJoinCode
 $PYTHON -m $MODULE 'session-public-session-join-code' \
-    '{"code": "fRcngEpTnRUQr3RL"}' \
+    '{"code": "iC9ZDj4E4mv12FNX"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 44 'PublicSessionJoinCode' test.out
+eval_tap $? 45 'PublicSessionJoinCode' test.out
 
-#- 45 GetGameSessionByPodName
+#- 46 GetGameSessionByPodName
 $PYTHON -m $MODULE 'session-get-game-session-by-pod-name' \
-    'OM1vEx4gqDY6jwyK' \
+    'ypoOLl13j84P0Kqi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 45 'GetGameSessionByPodName' test.out
+eval_tap $? 46 'GetGameSessionByPodName' test.out
 
-#- 46 GetGameSession
+#- 47 GetGameSession
 $PYTHON -m $MODULE 'session-get-game-session' \
-    'RxhkLe5zohg9s9ut' \
+    'rJ4PkMFtsnFfz8Ew' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 46 'GetGameSession' test.out
+eval_tap $? 47 'GetGameSession' test.out
 
-#- 47 UpdateGameSession
+#- 48 UpdateGameSession
 $PYTHON -m $MODULE 'session-update-game-session' \
-    '{"attributes": {"RQt28b6o3K0COF74": {}, "tz6aeXZOYwbwjMNd": {}, "xKWlBfnRyFS0Ed7g": {}}, "backfillTicketID": "TM5AVrtBQiDTcNnZ", "clientVersion": "a6Zuxk6u6HXXdiC9", "deployment": "ZDj4E4mv12FNXypo", "fallbackClaimKeys": ["OLl13j84P0KqirJ4", "PkMFtsnFfz8Ew0X8", "fBuBSKLSQ4GvLtz5"], "inactiveTimeout": 60, "inviteTimeout": 60, "joinability": "i0mNHb6Lx8eq8SGN", "matchPool": "wEQO8dYXvBSYvJBw", "maxPlayers": 3, "minPlayers": 10, "preferredClaimKeys": ["6CjZUMRf2VJetWso", "kvx3BHuTEczr9KjQ", "3ttz8MTBt1xk9Iys"], "requestedRegions": ["sSA8nP5PQjpzk2Tb", "7iYdmNZWosrsVBPZ", "64j0HUONscofwYLQ"], "teams": [{"UserIDs": ["cDvkaEIIPoJT83zE", "GXmVBZLyrH9J7Boy", "smaORLkP5hc2Fh04"], "parties": [{"partyID": "JTsqDTynCewqJlig", "userIDs": ["LlRxOelKykICRxF6", "HtlER2txs4qrNARA", "Tn6KXOutlYBbLhL8"]}, {"partyID": "KXx25FZfQIodVBqQ", "userIDs": ["sBpCJBIXLGYcwWVR", "K6UKk5ozrXA4HZHN", "yq9odanhR1Zrm3th"]}, {"partyID": "UvV87yfkycLSVdle", "userIDs": ["SaAylsmLYe2phYOg", "T5kDTyPl3dKF7NXE", "jrJMki8jvc3P8Gwj"]}]}, {"UserIDs": ["g3IOH0SDHgYKqxJi", "FJdrmj5vhzgsJwex", "7wq8ZPlXNaUNgdY2"], "parties": [{"partyID": "vfJuje5cPnmGjTvY", "userIDs": ["a5Pqx1K7qcAoijBP", "Ap6EPb988NzxrDKV", "pULjjiw3NeVG4DJi"]}, {"partyID": "9DaMrc0WFgKjE945", "userIDs": ["x2CPVYYG9WvoGmAm", "vaVV5YfxnUNcwjr7", "gSGhnfuF4WZiQVIC"]}, {"partyID": "VpWd3UM08gMXhdf3", "userIDs": ["juXW4JprIb3CJCAt", "vSG8Cfa9dzOJDGCT", "HIOFjeXbsSgR43kI"]}]}, {"UserIDs": ["DzxBwqRJTzrHNZWU", "sq5lQo2jy29EJigq", "YhyVhURx1yPeczRp"], "parties": [{"partyID": "dk0HATGylx2JG2KN", "userIDs": ["GfhzfCTxxrsRRLee", "3TcJ7DQIi45aCDHN", "9mVug2zkVf6KgpKO"]}, {"partyID": "cn3tMD9UT67bOwug", "userIDs": ["FDa6wUQvehKqwCh8", "6XmRkCEcfHDCdl59", "Wp9A3tXGve6DdK6u"]}, {"partyID": "vg8f2cIoByk9fxtv", "userIDs": ["sgeAxo57nKAbZpsb", "J4Iu5KJ0ynxGBlac", "DCdFe8ATUqVxcSth"]}]}], "ticketIDs": ["rpnMUBsnUfuQIcSb", "Ut5UGkInFGpuUsdt", "q4dOwNESzCEW9dUV"], "tieTeamsSessionLifetime": false, "type": "2Cqm84jVi9kIpqgr", "version": 53}' \
-    'PD9CeDEdCnnL6Kt1' \
+    '{"attributes": {"0X8fBuBSKLSQ4GvL": {}, "tz50D3rpBfBovqLw": {}, "XBuT30EYeRj17xGh": {}}, "backfillTicketID": "aBKoUfiHjGmCyPsK", "clientVersion": "CJTv1ic9gvagF2cS", "deployment": "uztsJ5tj64gV7nmD", "fallbackClaimKeys": ["k29mcjSuz9vbNStq", "PtQmQN6eKAGiZFCf", "tT0RWECdjWYrnulx"], "inactiveTimeout": 5, "inviteTimeout": 11, "joinability": "CKAru8pOaAVLDB4k", "matchPool": "3JwkdaxR7GJpYmuY", "maxPlayers": 57, "minPlayers": 85, "preferredClaimKeys": ["BoysmaORLkP5hc2F", "h04JTsqDTynCewqJ", "ligLlRxOelKykICR"], "requestedRegions": ["xF6HtlER2txs4qrN", "ARATn6KXOutlYBbL", "hL8KXx25FZfQIodV"], "teams": [{"UserIDs": ["BqQsBpCJBIXLGYcw", "WVRK6UKk5ozrXA4H", "ZHNyq9odanhR1Zrm"], "parties": [{"partyID": "3thUvV87yfkycLSV", "userIDs": ["dleSaAylsmLYe2ph", "YOgT5kDTyPl3dKF7", "NXEjrJMki8jvc3P8"]}, {"partyID": "Gwjg3IOH0SDHgYKq", "userIDs": ["xJiFJdrmj5vhzgsJ", "wex7wq8ZPlXNaUNg", "dY2vfJuje5cPnmGj"]}, {"partyID": "TvYa5Pqx1K7qcAoi", "userIDs": ["jBPAp6EPb988Nzxr", "DKVpULjjiw3NeVG4", "DJi9DaMrc0WFgKjE"]}]}, {"UserIDs": ["945x2CPVYYG9WvoG", "mAmvaVV5YfxnUNcw", "jr7gSGhnfuF4WZiQ"], "parties": [{"partyID": "VICVpWd3UM08gMXh", "userIDs": ["df3juXW4JprIb3CJ", "CAtvSG8Cfa9dzOJD", "GCTHIOFjeXbsSgR4"]}, {"partyID": "3kIDzxBwqRJTzrHN", "userIDs": ["ZWUsq5lQo2jy29EJ", "igqYhyVhURx1yPec", "zRpdk0HATGylx2JG"]}, {"partyID": "2KNGfhzfCTxxrsRR", "userIDs": ["Lee3TcJ7DQIi45aC", "DHN9mVug2zkVf6Kg", "pKOcn3tMD9UT67bO"]}]}, {"UserIDs": ["wugFDa6wUQvehKqw", "Ch86XmRkCEcfHDCd", "l59Wp9A3tXGve6Dd"], "parties": [{"partyID": "K6uvg8f2cIoByk9f", "userIDs": ["xtvsgeAxo57nKAbZ", "psbJ4Iu5KJ0ynxGB", "lacDCdFe8ATUqVxc"]}, {"partyID": "SthrpnMUBsnUfuQI", "userIDs": ["cSbUt5UGkInFGpuU", "sdtq4dOwNESzCEW9", "dUVhZjLftC3sCS8C"]}, {"partyID": "pLCqPD9CeDEdCnnL", "userIDs": ["6Kt1Bjj3b8QM8Rr4", "5ULqXQgvwD3PsKDJ", "iWxQBwaS7rDBf2S5"]}]}], "ticketIDs": ["4phbdyGDt47f9GWR", "lE9hqz6rjDNo4rhj", "xUdMM83WekqfWv04"], "tieTeamsSessionLifetime": true, "type": "2wj9uaDzsr9xYiWR", "version": 42}' \
+    'GAqXUjNypF6MMqWp' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 47 'UpdateGameSession' test.out
+eval_tap $? 48 'UpdateGameSession' test.out
 
-#- 48 DeleteGameSession
+#- 49 DeleteGameSession
 $PYTHON -m $MODULE 'session-delete-game-session' \
-    'Bjj3b8QM8Rr45ULq' \
+    'dEJsPoaIbYz8cK5j' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 48 'DeleteGameSession' test.out
+eval_tap $? 49 'DeleteGameSession' test.out
 
-#- 49 PatchUpdateGameSession
+#- 50 PatchUpdateGameSession
 $PYTHON -m $MODULE 'session-patch-update-game-session' \
-    '{"attributes": {"XQgvwD3PsKDJiWxQ": {}, "BwaS7rDBf2S54phb": {}, "dyGDt47f9GWRlE9h": {}}, "backfillTicketID": "qz6rjDNo4rhjxUdM", "clientVersion": "M83WekqfWv04vvn9", "deployment": "bk5qr8qs2mqtnGAq", "fallbackClaimKeys": ["XUjNypF6MMqWpdEJ", "sPoaIbYz8cK5jlpJ", "dre5ur6yvWJDdvM7"], "inactiveTimeout": 94, "inviteTimeout": 57, "joinability": "7PX2vamIRZHzsIYO", "matchPool": "CUoiCXNjrdQL2jdx", "maxPlayers": 81, "minPlayers": 9, "preferredClaimKeys": ["Pvl1kCY5bEokxXxk", "WZbjf7GZxaossQmj", "o69wohJFyTNk5FGU"], "requestedRegions": ["PhR4LEZvz3EjFR79", "96Ug5m4axDV5uTcY", "soahUrELQ1btjJOq"], "teams": [{"UserIDs": ["QMgZWAU6E92nHJzv", "w7tnYtGfv0EJyjBu", "4EzwRjD7jmQJeFPg"], "parties": [{"partyID": "hqamSc5y0X48eT7M", "userIDs": ["luexk87b9Z5BTsEA", "3EdmW8saabP4xRow", "fNojzPXI2v0prR3O"]}, {"partyID": "Eey0MkZwS6TYwNN3", "userIDs": ["UYhic03qGEg5fNzB", "Vrjo3g8CfRwtyl1H", "eT7VEPgG40QyXzsO"]}, {"partyID": "zgck078IghoQBp2m", "userIDs": ["WAOYksczxBS0OBCa", "2vWadLmQtYKmEMzi", "cbuL2S3RiW8dLTCB"]}]}, {"UserIDs": ["fGUdVEdvdQL7sVwc", "Z2PofaJoSqtrEOqx", "H46fRTSZoDdT0fef"], "parties": [{"partyID": "o74eg3Nt2c0r4GqF", "userIDs": ["0NHglOVuNZ9LzNeJ", "nBurh54CWbYb0Peb", "yt8b4DGscjwrizsF"]}, {"partyID": "UgYwbaLvqvQ2NbmD", "userIDs": ["ITuymTBjn3d2sFzM", "S3QaVjZF7Ax6115K", "g9U8vrQJXQxoIbVi"]}, {"partyID": "2CLEk277Ivjj1A64", "userIDs": ["7XQ3koaAfZIim0sF", "Pm1YN27bojDVaZLp", "x4kEWYkO6KrKUMhJ"]}]}, {"UserIDs": ["rASBh61hmWKSSrF3", "5anDGvur19V18oIr", "UKXttgAI2QdWJFLm"], "parties": [{"partyID": "oPEgd8EMspOs8nki", "userIDs": ["c9gj5vyUMAAmIHYb", "sxG5N066FXb88SbL", "Oa21DiSFsm0XXQJW"]}, {"partyID": "szvTQEuALzDNp1SZ", "userIDs": ["58aDllwzTRHak1MX", "xj7Esrg7900nml5B", "idsK9dCEzhVnOv0P"]}, {"partyID": "QbVIaKiHfoeorY7A", "userIDs": ["1otGFyv2SMjbEr50", "qGdCZIc6EFqBKxbS", "7Q2OgRucL1jwRXzf"]}]}], "ticketIDs": ["jDZZBmOau6syme06", "c6SKLc2mEC3IXl5X", "CbkOfHaGr5kdazly"], "tieTeamsSessionLifetime": true, "type": "MB6jzrpRGESmooHi", "version": 58}' \
-    'qxj4hBgVY3YAxZLK' \
+    '{"attributes": {"lpJdre5ur6yvWJDd": {}, "vM7T7PX2vamIRZHz": {}, "sIYOCUoiCXNjrdQL": {}}, "backfillTicketID": "2jdx1eIba1sB0HsJ", "clientVersion": "06DzfbzRYt4OVUyu", "deployment": "mBeIqdQGZC5kM03H", "fallbackClaimKeys": ["HijsQRj7N8IAjmso", "njj0ZR50BQ1U6aFD", "3O2kXQSc58zgZVl4"], "inactiveTimeout": 14, "inviteTimeout": 39, "joinability": "IF7v3qbZu9M3OxqV", "matchPool": "AT4H1lRZ9Z1JBrHR", "maxPlayers": 53, "minPlayers": 50, "preferredClaimKeys": ["EOtIxzPqb6n73m0j", "iaDH86d9rsKgzCsM", "ulpB8HZUtVVaJCiL"], "requestedRegions": ["gKOwrSfWhT5B4Wed", "opzwSluBtRFPKThy", "GnbjmPDKFS6u9FHu"], "teams": [{"UserIDs": ["v1M3qfch4SqIV6LQ", "PHlaeYl4csFq65cU", "66yJaj4ovoKWE4EW"], "parties": [{"partyID": "0sw8v5peiuxoBJAT", "userIDs": ["auyD3XCXVMiyEvMf", "9yilUEujk6oqYo1H", "QYTFzwdOMdupwD4O"]}, {"partyID": "3uNbcIDcIyvZbOy1", "userIDs": ["T4hfwkuVykH4Rpfm", "jIXFGZ5PKdbabJIk", "Nnt9P1Tkm08luh4d"]}, {"partyID": "pPRMDbUXBWTbpAog", "userIDs": ["G2wlZkLhuU5FI8Ni", "jFI0GKwJ3vfXlsAM", "y2Zp2UAGxHnmSxvk"]}]}, {"UserIDs": ["G9UR5q9neoW6JBcG", "p9Rx2RfcRhXpmeeH", "dvphas9S7ivHEoLb"], "parties": [{"partyID": "UMM47f1UreUpxEkX", "userIDs": ["IbE1ETzRJZKMavu4", "Ul2IaieEbPSE7TGk", "eHsYsW9oGBN1pYMB"]}, {"partyID": "wbPZTlMlUvFEiGpr", "userIDs": ["cNSQ9kEeXBZ6FVrB", "zyhyhoS6a9oe0JaX", "Fpff28uYbe4Cf2HE"]}, {"partyID": "HvVevhISjbtBJUK5", "userIDs": ["fE3OufPSX3PdOU2V", "9yw94oa8UJ34TIed", "V3HyoX4VnO2LpBU0"]}]}, {"UserIDs": ["8wfnlHBXFIqFUmgU", "SMM5au8GJT0mkVPI", "6zUtf3QaJPGrTNcX"], "parties": [{"partyID": "XTUIggoH89QNmI17", "userIDs": ["UDb19R6H7r1ta3m7", "jK5pxe82pgFiAS6p", "iIzmc8rKrKEPGSAc"]}, {"partyID": "ong6eNERUf8kjci1", "userIDs": ["Ctccv9Gv4tOcbnuC", "qf0lm6WBkIzjoSV3", "1tvmMB6jzrpRGESm"]}, {"partyID": "ooHiCV4GUOnXpapX", "userIDs": ["QGRakUbcG7PcR4ei", "U3Idi55jNrGNT2VH", "TKuIT5FwwHj0Ur5F"]}]}], "ticketIDs": ["2PWGTTD81xhNP4t6", "kYBUjyXAn3bWQF6Q", "cAiJpXIrgroixptZ"], "tieTeamsSessionLifetime": false, "type": "oWq94RImNWVIJnhh", "version": 46}' \
+    'Kyi8ZFvGcV8DY0XO' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 49 'PatchUpdateGameSession' test.out
+eval_tap $? 50 'PatchUpdateGameSession' test.out
 
-#- 50 UpdateGameSessionBackfillTicketID
+#- 51 UpdateGameSessionBackfillTicketID
 $PYTHON -m $MODULE 'session-update-game-session-backfill-ticket-id' \
-    '{"backfillTicketID": "bcOdyjqf6Q4oiwoJ"}' \
-    'caRMEb15LBlTVufc' \
+    '{"backfillTicketID": "kDstxZcY1HgAnZV4"}' \
+    'IOglVLqb9lGAJUg2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 50 'UpdateGameSessionBackfillTicketID' test.out
+eval_tap $? 51 'UpdateGameSessionBackfillTicketID' test.out
 
-#- 51 GameSessionGenerateCode
+#- 52 GameSessionGenerateCode
 $PYTHON -m $MODULE 'session-game-session-generate-code' \
-    '5ZyODR2NVyn4PRqf' \
+    '1Lt7JwgwMUSuC3Ba' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 51 'GameSessionGenerateCode' test.out
+eval_tap $? 52 'GameSessionGenerateCode' test.out
 
-#- 52 PublicRevokeGameSessionCode
+#- 53 PublicRevokeGameSessionCode
 $PYTHON -m $MODULE 'session-public-revoke-game-session-code' \
-    '3eRbZqBAoKGcVCdM' \
+    'jy3BcEMCtQs2FcEc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 52 'PublicRevokeGameSessionCode' test.out
+eval_tap $? 53 'PublicRevokeGameSessionCode' test.out
 
-#- 53 PublicGameSessionInvite
+#- 54 PublicGameSessionInvite
 $PYTHON -m $MODULE 'session-public-game-session-invite' \
-    '{"platformID": "iSNV4qBrt1kcLmRv", "userID": "6EJtl5xWnsb8oWq9"}' \
-    '4RImNWVIJnhhwFDV' \
+    '{"platformID": "vVAyId6Cp85HVDsZ", "userID": "BQgOnXuXsGThYZrm"}' \
+    'm0wrFMnPpWgrQD4h' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 53 'PublicGameSessionInvite' test.out
+eval_tap $? 54 'PublicGameSessionInvite' test.out
 
-#- 54 JoinGameSession
+#- 55 JoinGameSession
 $PYTHON -m $MODULE 'session-join-game-session' \
-    '1VitaomvWTzdsW4N' \
+    'Ek0OLjYsnignE7Kc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 54 'JoinGameSession' test.out
+eval_tap $? 55 'JoinGameSession' test.out
 
-#- 55 PublicPromoteGameSessionLeader
+#- 56 PublicPromoteGameSessionLeader
 $PYTHON -m $MODULE 'session-public-promote-game-session-leader' \
-    '{"leaderID": "70wYS4Kj7Yi2VvoQ"}' \
-    'NW8Yc481dYdvGxJA' \
+    '{"leaderID": "MF7fuDbzRRYMNXWU"}' \
+    'sp1tOibJY9aL9ie6' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 55 'PublicPromoteGameSessionLeader' test.out
+eval_tap $? 56 'PublicPromoteGameSessionLeader' test.out
 
-#- 56 LeaveGameSession
+#- 57 LeaveGameSession
 $PYTHON -m $MODULE 'session-leave-game-session' \
-    'MDRA1LF7jdWlekFw' \
+    'vvMbiNURrlm88QlK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 56 'LeaveGameSession' test.out
+eval_tap $? 57 'LeaveGameSession' test.out
 
-#- 57 PublicGameSessionReject
+#- 58 PublicGameSessionReject
 $PYTHON -m $MODULE 'session-public-game-session-reject' \
-    'O94VBCV9qJhWva2F' \
+    'yuoya4JgakZyUV7t' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 57 'PublicGameSessionReject' test.out
+eval_tap $? 58 'PublicGameSessionReject' test.out
 
-#- 58 GetSessionServerSecret
+#- 59 GetSessionServerSecret
 $PYTHON -m $MODULE 'session-get-session-server-secret' \
-    'PBujX0geYCpGJM4s' \
+    '73VnSFbuxd4KYZ0j' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 58 'GetSessionServerSecret' test.out
+eval_tap $? 59 'GetSessionServerSecret' test.out
 
-#- 59 AppendTeamGameSession
+#- 60 AppendTeamGameSession
 $PYTHON -m $MODULE 'session-append-team-game-session' \
-    '{"additionalMembers": [{"partyID": "qsPNJMiZXXOFwmGW", "userIDs": ["AvNF0Z0GkwxUNYyN", "wGiKrknH0Y5mrQgL", "C6D2qsFiQHglUQMZ"]}, {"partyID": "i5WjMZfOadpgegCU", "userIDs": ["jTdi1Ehr8OtqpNJ9", "R8TuNy4ejmVA3vMC", "sGyPd12B8QNUz0hF"]}, {"partyID": "FNbH6j2W4roZM2UK", "userIDs": ["AXEEsL5D0oiFchQn", "Veq3g2AB2WIRUQma", "uIY5HXCZ0W4XmWP0"]}], "proposedTeams": [{"UserIDs": ["HzSdiylLhVYszm8x", "Y33OQbumu2QHLyZN", "uysyM4OfCzdQCXMA"], "parties": [{"partyID": "Wnf87YPNOe9Eevf1", "userIDs": ["fhMg1E2k7QLFrVgt", "X7y0fPOieDCow2zX", "yFFVpM87yqEwEacQ"]}, {"partyID": "MTlqN4LKkxJ5v3SB", "userIDs": ["afnKNiMPbFkFGA85", "W3HJkqgS2B37wwoP", "YOHiIsxmsLBPBJuN"]}, {"partyID": "LnWRrtW870qD88Zc", "userIDs": ["duZSe7W20UZcDaiq", "0nEZ7PyhqFJkDClO", "sKmfsgJdmzsDPsWh"]}]}, {"UserIDs": ["1k0cQ08NG6dX2TZk", "il67kRngoUa83ECh", "1gqPeS193TNNzot3"], "parties": [{"partyID": "sVli3GN2XTrFibRA", "userIDs": ["hzzEWzWlTY70qdgJ", "RvpZrSpWX3KEe2Bj", "V00ReCXFffjJJxlg"]}, {"partyID": "jzIhpgOoIOD74V21", "userIDs": ["HWDAfvXwdxbyp4HA", "PbBbNPStVBUpKgOs", "sFkz0F36piDYXeHZ"]}, {"partyID": "7FHls3nyvconqbHQ", "userIDs": ["qKLQKe3xmj6s0Gqs", "Wncp5LrqbiKudv9z", "75SzoCV8ZMi2o1nR"]}]}, {"UserIDs": ["482D6gNClk9c87ho", "saPFC5zBW3ZgVZCj", "9ObVGT0Scwl4kNmC"], "parties": [{"partyID": "i15XTJTgCNNH7RtG", "userIDs": ["5Xmo9Q0Wb07N17fk", "xZSc6VbE0AGcekjM", "NHuPXtz8tXxrmzaf"]}, {"partyID": "MUguyDoN91uc28Ho", "userIDs": ["SpGt1g0GGbT4Hf2P", "PKOldkbgX9CWJKwX", "XSbv5eg9q86IaDFj"]}, {"partyID": "jx6uZerWbtwTX9gN", "userIDs": ["RByjbE8lOLAfTXKL", "zbrddqcKLa7LevxN", "HOSEhQRZIp693lRw"]}]}], "version": 39}' \
-    'wDwD9RKvQX4yFQFd' \
+    '{"additionalMembers": [{"partyID": "k0UZdhtnKu9oTc8p", "userIDs": ["VkiyGsj5JdXzRxfN", "EjUMTs8WIObJBTsv", "sw76uISRX0bKVoWt"]}, {"partyID": "oUW1P7ocuBAldDSU", "userIDs": ["S7Haa6unq1yQOSRv", "yiLBRVtIDi2piIQF", "VmzMidw70KSahpYZ"]}, {"partyID": "dKZRyR9AX7JjxvNZ", "userIDs": ["hM84DiZk6ySrB9SV", "FctW7YS0OkL78XeE", "AtALFI3v8yha4pd5"]}], "proposedTeams": [{"UserIDs": ["A7MYcpBD6lKNb8Rx", "vN2u5J7baOeLH19f", "qBwNbNe1ffYRtIvQ"], "parties": [{"partyID": "aKyevWYtZjK6J29v", "userIDs": ["8MpBSpo3AKRmnJkz", "JHAckUyBksYQfDm0", "RNFwiz70tRVLMlHi"]}, {"partyID": "8i9gOVqajUWrgEsW", "userIDs": ["DtaKzn8dZwnnGeZs", "ZVgbPzPFbrOMZMgW", "kFN7Tpkx6GcfyOg6"]}, {"partyID": "ZUrrp9ubg9mndW2J", "userIDs": ["KmQafUs2bxYztOEy", "VbKIf1ZbzgUwd8DH", "oCQykmXHYmkRlg7g"]}]}, {"UserIDs": ["Ys6unPYQ9jNQN1di", "1ldhOh6HvjnYuV7N", "fC4A2ODiZhbfb8Qq"], "parties": [{"partyID": "CyK1XH9D6vl5eFdF", "userIDs": ["fgK46GjCWaP8huTm", "nq3FGQn3Ahu5wxq6", "oJq4mChmQHQhO9IK"]}, {"partyID": "BXDFQfXFD58sG6uD", "userIDs": ["hFYlrzJBYSeMuJfQ", "ecutjS029BiJWOG1", "m7MKclr5igjNTVIt"]}, {"partyID": "rH2X78hxJgaVfw5V", "userIDs": ["nyq8OzTE89WDNoMc", "OmbfJrCJQIj1haAo", "sKglqaCXE9ytpIO8"]}]}, {"UserIDs": ["btO3OwNEGSW5TaW4", "to7QCY2NGGvi9kg3", "rMIzNmhJTNQjKlwj"], "parties": [{"partyID": "fJ3TJ2xVpge70WsL", "userIDs": ["fgbZieRvJI5sT9DH", "3DfLCv8q4Thmq09b", "BgPAYxrBE9jlnTgt"]}, {"partyID": "gW33wDwD9RKvQX4y", "userIDs": ["FQFdrRoM6FoqCYw7", "AlxO6qdFpc71sSck", "3ggZWJlSlCQMDji3"]}, {"partyID": "29PfVrvMEPtpsSNc", "userIDs": ["pK1QkB2Sy8Ww79LV", "eVskqeUB7RSayqGF", "guhh3bvadRthdbVA"]}]}], "version": 32}' \
+    'ydVw0zCqoMZvpIOO' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 59 'AppendTeamGameSession' test.out
+eval_tap $? 60 'AppendTeamGameSession' test.out
 
-#- 60 PublicPartyJoinCode
+#- 61 PublicPartyJoinCode
 $PYTHON -m $MODULE 'session-public-party-join-code' \
-    '{"code": "rRoM6FoqCYw7AlxO"}' \
+    '{"code": "97DmQ5ZOzx6iCJTu"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 60 'PublicPartyJoinCode' test.out
+eval_tap $? 61 'PublicPartyJoinCode' test.out
 
-#- 61 PublicGetParty
+#- 62 PublicGetParty
 $PYTHON -m $MODULE 'session-public-get-party' \
-    '6qdFpc71sSck3ggZ' \
+    '60IifzMhkk5Pxsjq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 61 'PublicGetParty' test.out
+eval_tap $? 62 'PublicGetParty' test.out
 
-#- 62 PublicUpdateParty
+#- 63 PublicUpdateParty
 $PYTHON -m $MODULE 'session-public-update-party' \
-    '{"attributes": {"WJlSlCQMDji329Pf": {}, "VrvMEPtpsSNcpK1Q": {}, "kB2Sy8Ww79LVeVsk": {}}, "inactiveTimeout": 33, "inviteTimeout": 10, "joinability": "WAEvdRF9bqMj4ro5", "maxPlayers": 56, "minPlayers": 43, "type": "19VE838c7OydVw0z", "version": 57}' \
-    'rW8i8krFWJhe03co' \
+    '{"attributes": {"bCKpMv2Yky9DYkD2": {}, "sIllFtBtXJKG3rqB": {}, "mILhtWm8RQvRUbUD": {}}, "inactiveTimeout": 92, "inviteTimeout": 63, "joinability": "iefGEdLucrtO2gCQ", "maxPlayers": 59, "minPlayers": 60, "type": "057DrDlgC2nzS9Si", "version": 66}' \
+    'w3kKoaP1K4CDuH1m' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 62 'PublicUpdateParty' test.out
+eval_tap $? 63 'PublicUpdateParty' test.out
 
-#- 63 PublicPatchUpdateParty
+#- 64 PublicPatchUpdateParty
 $PYTHON -m $MODULE 'session-public-patch-update-party' \
-    '{"attributes": {"RFok5d3AyGrZO8Gu": {}, "oXNSoVEBG7VbBPUW": {}, "ipz9C05YabFX4FCK": {}}, "inactiveTimeout": 39, "inviteTimeout": 42, "joinability": "XJKG3rqBmILhtWm8", "maxPlayers": 90, "minPlayers": 80, "type": "QvRUbUDSiefGEdLu", "version": 5}' \
-    'AadM9y66Drf4SSGG' \
+    '{"attributes": {"MIfOCDyVAHrHncR5": {}, "dShqiBUI9esSsXeg": {}, "SEhrPpK2q8kxR4Bu": {}}, "inactiveTimeout": 62, "inviteTimeout": 53, "joinability": "ksS2A9VOA8H9VeHv", "maxPlayers": 85, "minPlayers": 76, "type": "nAFjsodyJQVVBrSh", "version": 66}' \
+    '8xs1WId9WlalqshF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 63 'PublicPatchUpdateParty' test.out
+eval_tap $? 64 'PublicPatchUpdateParty' test.out
 
-#- 64 PublicGeneratePartyCode
+#- 65 PublicGeneratePartyCode
 $PYTHON -m $MODULE 'session-public-generate-party-code' \
-    't3MiBKohow3kKoaP' \
+    '9Rh2o7GCQGPCxwEd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 64 'PublicGeneratePartyCode' test.out
+eval_tap $? 65 'PublicGeneratePartyCode' test.out
 
-#- 65 PublicRevokePartyCode
+#- 66 PublicRevokePartyCode
 $PYTHON -m $MODULE 'session-public-revoke-party-code' \
-    '1K4CDuH1mMIfOCDy' \
+    'kyuT3MgzReRq0112' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 65 'PublicRevokePartyCode' test.out
+eval_tap $? 66 'PublicRevokePartyCode' test.out
 
-#- 66 PublicPartyInvite
+#- 67 PublicPartyInvite
 $PYTHON -m $MODULE 'session-public-party-invite' \
-    '{"platformID": "VAHrHncR5dShqiBU", "userID": "I9esSsXegSEhrPpK"}' \
-    '2q8kxR4BuEksS2A9' \
+    '{"platformID": "ISArROIodcmM6v2A", "userID": "EozWWaYvBLE46bpu"}' \
+    'Jip8JyxJ39vrtuWW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 66 'PublicPartyInvite' test.out
+eval_tap $? 67 'PublicPartyInvite' test.out
 
-#- 67 PublicPromotePartyLeader
+#- 68 PublicPromotePartyLeader
 $PYTHON -m $MODULE 'session-public-promote-party-leader' \
-    '{"leaderID": "VOA8H9VeHv0L2Acm"}' \
-    '960EYQEuGJVl8xs1' \
+    '{"leaderID": "rqTZbSqBSKp8Amgw"}' \
+    'hYzk33J34fiTxK63' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 67 'PublicPromotePartyLeader' test.out
+eval_tap $? 68 'PublicPromotePartyLeader' test.out
 
-#- 68 PublicPartyJoin
+#- 69 PublicPartyJoin
 $PYTHON -m $MODULE 'session-public-party-join' \
-    'WId9WlalqshF9Rh2' \
+    'OHpnUCGBVfpctNFU' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 68 'PublicPartyJoin' test.out
+eval_tap $? 69 'PublicPartyJoin' test.out
 
-#- 69 PublicPartyLeave
+#- 70 PublicPartyLeave
 $PYTHON -m $MODULE 'session-public-party-leave' \
-    'o7GCQGPCxwEdkyuT' \
+    'sUQ6ZXQcb2o1J5eu' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 69 'PublicPartyLeave' test.out
+eval_tap $? 70 'PublicPartyLeave' test.out
 
-#- 70 PublicPartyReject
+#- 71 PublicPartyReject
 $PYTHON -m $MODULE 'session-public-party-reject' \
-    '3MgzReRq0112ISAr' \
+    'LAbBgejqc0apxqZ2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 70 'PublicPartyReject' test.out
+eval_tap $? 71 'PublicPartyReject' test.out
 
-#- 71 PublicPartyKick
+#- 72 PublicPartyKick
 $PYTHON -m $MODULE 'session-public-party-kick' \
-    'ROIodcmM6v2AEozW' \
-    'WaYvBLE46bpuJip8' \
+    '09BySn8aUaGlAyvI' \
+    'slt7N1qcxKs4nlf1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 71 'PublicPartyKick' test.out
+eval_tap $? 72 'PublicPartyKick' test.out
 
-#- 72 PublicCreateParty
+#- 73 PublicCreateParty
 $PYTHON -m $MODULE 'session-public-create-party' \
-    '{"attributes": {"JyxJ39vrtuWWrqTZ": {}, "bSqBSKp8AmgwhYzk": {}, "33J34fiTxK63OHpn": {}}, "configurationName": "UCGBVfpctNFUsUQ6", "inactiveTimeout": 40, "inviteTimeout": 98, "joinability": "Qcb2o1J5euLAbBge", "maxPlayers": 20, "members": [{"ID": "3ig8Jg5VByeI3ycM", "PlatformID": "cYYBixKJXCISQdwe", "PlatformUserID": "c1m8BusV9tUh74KV"}, {"ID": "o6Xqjz2xUKLNWSmY", "PlatformID": "yVvyelIJ8QgaLMqi", "PlatformUserID": "836ULa7cfZl4VuY6"}, {"ID": "rsZyo6CBRRnoOikI", "PlatformID": "xXKKIR6kPmswm5TC", "PlatformUserID": "AU1cKApdJDnE73GL"}], "minPlayers": 25, "textChat": false, "type": "SZns5owBhoUg4LsG"}' \
+    '{"attributes": {"MfqUZXkjHvcUOTlx": {}, "Nf09pefgFIiJssSh": {}, "BKsQjXvfQgQDt6ce": {}}, "configurationName": "8NDMErA82FrR1GSo", "inactiveTimeout": 13, "inviteTimeout": 27, "joinability": "kewIzTOqKkcjRh3l", "maxPlayers": 46, "members": [{"ID": "gAJOTCbx7J3gNLIl", "PlatformID": "Tk3Bpclrk4hIRn0z", "PlatformUserID": "nIKzAEAHQpBOgHEP"}, {"ID": "5l94s7CbIJ7eHnVW", "PlatformID": "OboMkyB7FTexsOZ0", "PlatformUserID": "b2p3b63KrcwIcXMh"}, {"ID": "Gy83Xit6boOLGCcg", "PlatformID": "16DqwdQPQ9HkSSV8", "PlatformUserID": "e1MgTTLS2FgarY90"}], "minPlayers": 44, "textChat": true, "type": "NGIyEfRBEj7qms9A"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 72 'PublicCreateParty' test.out
+eval_tap $? 73 'PublicCreateParty' test.out
 
-#- 73 PublicGetRecentPlayer
+#- 74 PublicGetRecentPlayer
 $PYTHON -m $MODULE 'session-public-get-recent-player' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 73 'PublicGetRecentPlayer' test.out
+eval_tap $? 74 'PublicGetRecentPlayer' test.out
 
-#- 74 PublicGetRecentTeamPlayer
+#- 75 PublicGetRecentTeamPlayer
 $PYTHON -m $MODULE 'session-public-get-recent-team-player' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 74 'PublicGetRecentTeamPlayer' test.out
+eval_tap $? 75 'PublicGetRecentTeamPlayer' test.out
 
-#- 75 PublicUpdateInsertSessionStorageLeader
+#- 76 PublicUpdateInsertSessionStorageLeader
 $PYTHON -m $MODULE 'session-public-update-insert-session-storage-leader' \
-    '{"P6KLPXkvUv2XiXaB": {}, "zsmaxjTZPlLitytG": {}, "ka7Kv5TacQKF4OlR": {}}' \
-    'GdmXxETLEQrr3KCA' \
+    '{"GQExPhgr9gGfC0Gj": {}, "vpgJfuBs1Vpqn47G": {}, "VghTH2wToOnq9U5l": {}}' \
+    'yW89Xwt3wmRTrDCj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 75 'PublicUpdateInsertSessionStorageLeader' test.out
+eval_tap $? 76 'PublicUpdateInsertSessionStorageLeader' test.out
 
-#- 76 PublicUpdateInsertSessionStorage
+#- 77 PublicUpdateInsertSessionStorage
 $PYTHON -m $MODULE 'session-public-update-insert-session-storage' \
-    '{"V9alq3hK1G4kKooS": {}, "NNUZuiynZ64IwncZ": {}, "Pk82GF3eTC0vzZUD": {}}' \
-    'j9dzGgGVxo9OHgfH' \
-    'umyfuBNisecYbcOp' \
+    '{"hnKvsHezWTqgYPix": {}, "tHk6lWq6tEeUmU96": {}, "FLEak0mJqjRYldcT": {}}' \
+    'pdeCD9XPRi4bAQL7' \
+    'VE2wL8Y4JFVUdzA8' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 76 'PublicUpdateInsertSessionStorage' test.out
+eval_tap $? 77 'PublicUpdateInsertSessionStorage' test.out
 
-#- 77 PublicGetBulkPlayerCurrentPlatform
+#- 78 PublicGetBulkPlayerCurrentPlatform
 $PYTHON -m $MODULE 'session-public-get-bulk-player-current-platform' \
-    '{"userIDs": ["R45VDlvSc0Mr7Imw", "CwGqOf0bNs97KvKy", "j3MqS7Dcmtfh50eO"]}' \
+    '{"userIDs": ["bvXlDhG7BrorbKIK", "uOXJPm5ztrr09CDA", "8Ij5bGKSuopWQbaC"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 77 'PublicGetBulkPlayerCurrentPlatform' test.out
+eval_tap $? 78 'PublicGetBulkPlayerCurrentPlatform' test.out
 
-#- 78 PublicGetPlayerAttributes
+#- 79 PublicGetPlayerAttributes
 $PYTHON -m $MODULE 'session-public-get-player-attributes' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 78 'PublicGetPlayerAttributes' test.out
+eval_tap $? 79 'PublicGetPlayerAttributes' test.out
 
-#- 79 PublicStorePlayerAttributes
+#- 80 PublicStorePlayerAttributes
 $PYTHON -m $MODULE 'session-public-store-player-attributes' \
-    '{"crossplayEnabled": false, "currentPlatform": "sHezWTqgYPixtHk6", "data": {"lWq6tEeUmU96FLEa": {}, "k0mJqjRYldcTpdeC": {}, "D9XPRi4bAQL7VE2w": {}}, "platforms": [{"name": "L8Y4JFVUdzA8bvXl", "userID": "DhG7BrorbKIKuOXJ"}, {"name": "Pm5ztrr09CDA8Ij5", "userID": "bGKSuopWQbaCvdPS"}, {"name": "q8Z27GpvHCDx55JZ", "userID": "5z6gujpFzlPspQD9"}], "roles": ["IRIpDDubntPCFxfe", "oW2NdSWzOXjO1NQU", "qWHBW78XREZCiTNA"], "simultaneousPlatform": "xq26gZrPqCsSDspv"}' \
+    '{"crossplayEnabled": true, "currentPlatform": "0hG9xmSnzd7zgUxA", "data": {"ogcnGkXk17QPkJHR": {}, "hmLKQuQVFSKiXl8G": {}, "2uf6E8EajXLSAS8M": {}}, "platforms": [{"name": "KMaxQ1QyJCpKedhu", "userID": "zI7G9NCKKXu1bqI2"}, {"name": "M5PmXfKnQ7BYGjCU", "userID": "DMOrbmoRvWnfmGFy"}, {"name": "0eUoOBd90h9EDqST", "userID": "OfoNewWjwMWDKEt6"}], "roles": ["JhbJ0fwTDaq6b5Rp", "MwhWPtndriXU9loO", "xpmEuwDVc12r0DVU"], "simultaneousPlatform": "GgGHkapTCafFMdvY"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 79 'PublicStorePlayerAttributes' test.out
+eval_tap $? 80 'PublicStorePlayerAttributes' test.out
 
-#- 80 PublicDeletePlayerAttributes
+#- 81 PublicDeletePlayerAttributes
 $PYTHON -m $MODULE 'session-public-delete-player-attributes' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 80 'PublicDeletePlayerAttributes' test.out
+eval_tap $? 81 'PublicDeletePlayerAttributes' test.out
 
-#- 81 PublicQueryMyGameSessions
+#- 82 PublicQueryMyGameSessions
 $PYTHON -m $MODULE 'session-public-query-my-game-sessions' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 81 'PublicQueryMyGameSessions' test.out
+eval_tap $? 82 'PublicQueryMyGameSessions' test.out
 
-#- 82 PublicQueryMyParties
+#- 83 PublicQueryMyParties
 $PYTHON -m $MODULE 'session-public-query-my-parties' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 82 'PublicQueryMyParties' test.out
+eval_tap $? 83 'PublicQueryMyParties' test.out
 
 
 fi

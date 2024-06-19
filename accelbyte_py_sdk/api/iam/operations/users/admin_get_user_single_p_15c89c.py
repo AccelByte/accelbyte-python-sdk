@@ -55,7 +55,9 @@ class AdminGetUserSinglePlatformAccount(Operation):
     - nintendo
     - aws cognito
     - facebook
+    - google group
     - google
+    - googleplaygames
     - discord
     - twitch
     - snapchat

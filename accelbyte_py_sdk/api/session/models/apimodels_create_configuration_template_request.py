@@ -64,6 +64,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
 
         auto_leave_session: (autoLeaveSession) OPTIONAL bool
 
+        custom_urlgrpc: (customURLGRPC) OPTIONAL str
+
         disable_code_generation: (disableCodeGeneration) OPTIONAL bool
 
         ds_manual_set_ready: (dsManualSetReady) OPTIONAL bool
@@ -108,6 +110,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
     attributes: Dict[str, Any]  # OPTIONAL
     auto_join: bool  # OPTIONAL
     auto_leave_session: bool  # OPTIONAL
+    custom_urlgrpc: str  # OPTIONAL
     disable_code_generation: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
@@ -210,6 +213,12 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         self, value: bool
     ) -> ApimodelsCreateConfigurationTemplateRequest:
         self.auto_leave_session = value
+        return self
+
+    def with_custom_urlgrpc(
+        self, value: str
+    ) -> ApimodelsCreateConfigurationTemplateRequest:
+        self.custom_urlgrpc = value
         return self
 
     def with_disable_code_generation(
@@ -354,6 +363,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             result["autoLeaveSession"] = bool(self.auto_leave_session)
         elif include_empty:
             result["autoLeaveSession"] = False
+        if hasattr(self, "custom_urlgrpc"):
+            result["customURLGRPC"] = str(self.custom_urlgrpc)
+        elif include_empty:
+            result["customURLGRPC"] = ""
         if hasattr(self, "disable_code_generation"):
             result["disableCodeGeneration"] = bool(self.disable_code_generation)
         elif include_empty:
@@ -432,6 +445,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
         attributes: Optional[Dict[str, Any]] = None,
         auto_join: Optional[bool] = None,
         auto_leave_session: Optional[bool] = None,
+        custom_urlgrpc: Optional[str] = None,
         disable_code_generation: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
         ds_source: Optional[str] = None,
@@ -466,6 +480,8 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.auto_join = auto_join
         if auto_leave_session is not None:
             instance.auto_leave_session = auto_leave_session
+        if custom_urlgrpc is not None:
+            instance.custom_urlgrpc = custom_urlgrpc
         if disable_code_generation is not None:
             instance.disable_code_generation = disable_code_generation
         if ds_manual_set_ready is not None:
@@ -563,6 +579,10 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             instance.auto_leave_session = bool(dict_["autoLeaveSession"])
         elif include_empty:
             instance.auto_leave_session = False
+        if "customURLGRPC" in dict_ and dict_["customURLGRPC"] is not None:
+            instance.custom_urlgrpc = str(dict_["customURLGRPC"])
+        elif include_empty:
+            instance.custom_urlgrpc = ""
         if (
             "disableCodeGeneration" in dict_
             and dict_["disableCodeGeneration"] is not None
@@ -695,6 +715,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "attributes": "attributes",
             "autoJoin": "auto_join",
             "autoLeaveSession": "auto_leave_session",
+            "customURLGRPC": "custom_urlgrpc",
             "disableCodeGeneration": "disable_code_generation",
             "dsManualSetReady": "ds_manual_set_ready",
             "dsSource": "ds_source",
@@ -728,6 +749,7 @@ class ApimodelsCreateConfigurationTemplateRequest(Model):
             "attributes": False,
             "autoJoin": False,
             "autoLeaveSession": False,
+            "customURLGRPC": False,
             "disableCodeGeneration": False,
             "dsManualSetReady": False,
             "dsSource": False,

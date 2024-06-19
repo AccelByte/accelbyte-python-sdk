@@ -41,11 +41,7 @@ class PublicBulkIncUserStatItem1(Operation):
     Public bulk update user's statitems value.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
       *  Returns : bulk updated result
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
@@ -58,7 +54,7 @@ class PublicBulkIncUserStatItem1(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkStatItemInc] in body
 
@@ -88,7 +84,7 @@ class PublicBulkIncUserStatItem1(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[BulkStatItemInc]  # OPTIONAL in [body]

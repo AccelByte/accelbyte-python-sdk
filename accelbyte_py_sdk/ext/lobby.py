@@ -27,6 +27,7 @@ from .utils import randomize
 from ..api.lobby.models import HandlersGetUsersPresenceResponse
 from ..api.lobby.models import HandlersUserPresence
 from ..api.lobby.models import LogAppMessageDeclaration
+from ..api.lobby.models import LogconfigConfiguration
 from ..api.lobby.models import ModelBulkFriendsRequest
 from ..api.lobby.models import ModelBulkFriendsResponse
 from ..api.lobby.models import ModelBulkUsersFreeFormNotificationRequestV1
@@ -154,6 +155,13 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
     instance.section = randomize()
     instance.service = randomize()
     instance.text = randomize()
+    return instance
+
+
+def create_logconfig_configuration_example() -> LogconfigConfiguration:
+    instance = LogconfigConfiguration()
+    instance.log_level = randomize()
+    instance.socket_log_enabled = randomize("bool")
     return instance
 
 
@@ -733,6 +741,7 @@ def create_models_config_example() -> ModelsConfig:
     instance.chat_rate_limit_duration = randomize("int", min_val=1, max_val=1000)
     instance.concurrent_users_limit = randomize("int", min_val=1, max_val=1000)
     instance.disable_invitation_on_join_party = randomize("bool")
+    instance.disable_remove_socket_old_connection = randomize("bool")
     instance.enable_chat = randomize("bool")
     instance.entitlement_check = randomize("bool")
     instance.entitlement_item_id = randomize()

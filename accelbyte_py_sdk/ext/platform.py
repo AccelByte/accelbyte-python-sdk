@@ -247,6 +247,7 @@ from ..api.platform.models import LootBoxPluginConfigInfo
 from ..api.platform.models import LootBoxPluginConfigUpdate
 from ..api.platform.models import LootBoxReward
 from ..api.platform.models import MockIAPReceipt
+from ..api.platform.models import NeonPayConfig
 from ..api.platform.models import NotificationProcessResult
 from ..api.platform.models import OculusIAPConfigInfo
 from ..api.platform.models import OculusIAPConfigRequest
@@ -277,6 +278,9 @@ from ..api.platform.models import PayPalConfig
 from ..api.platform.models import PaymentAccount
 from ..api.platform.models import PaymentCallbackConfigInfo
 from ..api.platform.models import PaymentCallbackConfigUpdate
+from ..api.platform.models import PaymentData
+from ..api.platform.models import PaymentDomainWhitelistConfigEdit
+from ..api.platform.models import PaymentDomainWhitelistConfigInfo
 from ..api.platform.models import PaymentMerchantConfigInfo
 from ..api.platform.models import PaymentMethod
 from ..api.platform.models import PaymentNotificationInfo
@@ -288,6 +292,7 @@ from ..api.platform.models import PaymentOrderCreate
 from ..api.platform.models import PaymentOrderCreateResult
 from ..api.platform.models import PaymentOrderDetails
 from ..api.platform.models import PaymentOrderInfo
+from ..api.platform.models import PaymentOrderNeonPayConfig
 from ..api.platform.models import PaymentOrderNotifySimulation
 from ..api.platform.models import PaymentOrderPagingSlicedResult
 from ..api.platform.models import PaymentOrderPaidResult
@@ -309,6 +314,7 @@ from ..api.platform.models import PlatformAccountClosureHistoryInfo
 from ..api.platform.models import PlatformDLCConfigInfo
 from ..api.platform.models import PlatformDLCConfigUpdate
 from ..api.platform.models import PlatformDlcEntry
+from ..api.platform.models import PlatformOwnership
 from ..api.platform.models import PlatformReward
 from ..api.platform.models import PlatformRewardCurrency
 from ..api.platform.models import PlatformRewardItem
@@ -327,6 +333,7 @@ from ..api.platform.models import PopulatedItemInfo
 from ..api.platform.models import PreCheckFulfillmentRequest
 from ..api.platform.models import Predicate
 from ..api.platform.models import PredicateValidateResult
+from ..api.platform.models import PsnEntitlementOwnershipRequest
 from ..api.platform.models import PublicCustomConfigInfo
 from ..api.platform.models import PublicEntitlementHistoryInfo
 from ..api.platform.models import PurchaseCondition
@@ -444,6 +451,7 @@ from ..api.platform.models import WxPayConfigInfo
 from ..api.platform.models import WxPayConfigRequest
 from ..api.platform.models import XblAchievementUpdateRequest
 from ..api.platform.models import XblDLCSyncRequest
+from ..api.platform.models import XblEntitlementOwnershipRequest
 from ..api.platform.models import XblIAPConfigInfo
 from ..api.platform.models import XblIAPConfigRequest
 from ..api.platform.models import XblReconcileRequest
@@ -3016,6 +3024,13 @@ def create_mock_iap_receipt_example() -> MockIAPReceipt:
     return instance
 
 
+def create_neon_pay_config_example() -> NeonPayConfig:
+    instance = NeonPayConfig()
+    instance.api_key = randomize()
+    instance.webhook_secret_key = randomize()
+    return instance
+
+
 def create_notification_process_result_example() -> NotificationProcessResult:
     instance = NotificationProcessResult()
     instance.code = randomize()
@@ -3106,6 +3121,7 @@ def create_order_example() -> Order:
     instance.namespace = randomize("slug")
     instance.order_bundle_item_infos = [create_order_bundle_item_info_example()]
     instance.order_no = randomize()
+    instance.payment_data = create_payment_data_example()
     instance.payment_method = randomize()
     instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.payment_order_no = randomize()
@@ -3359,6 +3375,31 @@ def create_payment_callback_config_update_example() -> PaymentCallbackConfigUpda
     return instance
 
 
+def create_payment_data_example() -> PaymentData:
+    instance = PaymentData()
+    instance.subtotal_price = randomize("int", min_val=1, max_val=1000)
+    instance.tax = randomize("int", min_val=1, max_val=1000)
+    instance.total_price = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_payment_domain_whitelist_config_edit_example() -> (
+    PaymentDomainWhitelistConfigEdit
+):
+    instance = PaymentDomainWhitelistConfigEdit()
+    instance.domains = [randomize()]
+    return instance
+
+
+def create_payment_domain_whitelist_config_info_example() -> (
+    PaymentDomainWhitelistConfigInfo
+):
+    instance = PaymentDomainWhitelistConfigInfo()
+    instance.domains = [randomize()]
+    instance.namespace = randomize("slug")
+    return instance
+
+
 def create_payment_merchant_config_info_example() -> PaymentMerchantConfigInfo:
     instance = PaymentMerchantConfigInfo()
     instance.created_at = randomize("date")
@@ -3370,6 +3411,8 @@ def create_payment_merchant_config_info_example() -> PaymentMerchantConfigInfo:
     instance.ali_pay_sandbox_config = create_ali_pay_config_example()
     instance.checkout_config = create_checkout_config_example()
     instance.checkout_sandbox_config = create_checkout_config_example()
+    instance.neon_pay_config = create_neon_pay_config_example()
+    instance.neon_pay_sandbox_config = create_neon_pay_config_example()
     instance.pay_pal_config = create_pay_pal_config_example()
     instance.pay_pal_sandbox_config = create_pay_pal_config_example()
     instance.stripe_config = create_stripe_config_example()
@@ -3420,6 +3463,9 @@ def create_payment_order_example() -> PaymentOrder:
     instance.chargeback_time = randomize("date")
     instance.charged_time = randomize("date")
     instance.charging = randomize("bool")
+    instance.checkout_url = randomize("url")
+    instance.checkout_url_expired_at = randomize("date")
+    instance.checkout_url_valid = randomize("bool")
     instance.created_at = randomize("date")
     instance.created_time = randomize("date")
     instance.currency = create_currency_summary_example()
@@ -3431,8 +3477,10 @@ def create_payment_order_example() -> PaymentOrder:
     instance.language = randomize()
     instance.metadata = {randomize(): randomize()}
     instance.namespace = randomize("slug")
+    instance.neon_pay_config = create_payment_order_neon_pay_config_example()
     instance.notify_url = randomize("url")
     instance.omit_notification = randomize("bool")
+    instance.payment_data = create_payment_data_example()
     instance.payment_method = randomize()
     instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.payment_order_no = randomize()
@@ -3586,6 +3634,13 @@ def create_payment_order_info_example() -> PaymentOrderInfo:
     return instance
 
 
+def create_payment_order_neon_pay_config_example() -> PaymentOrderNeonPayConfig:
+    instance = PaymentOrderNeonPayConfig()
+    instance.cancel_url = randomize("url")
+    instance.success_url = randomize("url")
+    return instance
+
+
 def create_payment_order_notify_simulation_example() -> PaymentOrderNotifySimulation:
     instance = PaymentOrderNotifySimulation()
     instance.currency_code = randomize()
@@ -3731,6 +3786,7 @@ def create_payment_url_create_example() -> PaymentUrlCreate:
     instance = PaymentUrlCreate()
     instance.payment_order_no = randomize()
     instance.payment_provider = randomize()
+    instance.neon_pay_config = create_payment_order_neon_pay_config_example()
     instance.return_url = randomize("url")
     instance.ui = randomize()
     instance.zip_code = randomize("zip_code")
@@ -3775,6 +3831,12 @@ def create_platform_dlc_entry_example() -> PlatformDlcEntry:
     instance = PlatformDlcEntry()
     instance.platform = randomize()
     instance.platform_dlc_id_map = {randomize(): randomize()}
+    return instance
+
+
+def create_platform_ownership_example() -> PlatformOwnership:
+    instance = PlatformOwnership()
+    instance.owned = randomize("bool")
     return instance
 
 
@@ -3993,6 +4055,15 @@ def create_predicate_validate_result_example() -> PredicateValidateResult:
     instance.predicate_name = randomize()
     instance.unmatched = [randomize()]
     instance.validated = randomize("bool")
+    return instance
+
+
+def create_psn_entitlement_ownership_request_example() -> (
+    PsnEntitlementOwnershipRequest
+):
+    instance = PsnEntitlementOwnershipRequest()
+    instance.access_token = randomize()
+    instance.service_label = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -5006,6 +5077,7 @@ def create_trade_notification_example() -> TradeNotification:
     instance.ext_tx_id = randomize()
     instance.ext_user_id = randomize()
     instance.metadata = {randomize(): randomize()}
+    instance.payment_data = create_payment_data_example()
     instance.payment_method = randomize()
     instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.payment_provider_fee = randomize("int", min_val=1, max_val=1000)
@@ -5037,6 +5109,7 @@ def create_transaction_example() -> Transaction:
     instance.ext_tx_id = randomize()
     instance.merchant_id = randomize()
     instance.notified = randomize("bool")
+    instance.payment_data = create_payment_data_example()
     instance.payment_method = randomize()
     instance.payment_method_fee = randomize("int", min_val=1, max_val=1000)
     instance.payment_provider_fee = randomize("int", min_val=1, max_val=1000)
@@ -5266,6 +5339,15 @@ def create_xbl_achievement_update_request_example() -> XblAchievementUpdateReque
 def create_xbl_dlc_sync_request_example() -> XblDLCSyncRequest:
     instance = XblDLCSyncRequest()
     instance.xsts_token = randomize()
+    return instance
+
+
+def create_xbl_entitlement_ownership_request_example() -> (
+    XblEntitlementOwnershipRequest
+):
+    instance = XblEntitlementOwnershipRequest()
+    instance.delegation_token = randomize()
+    instance.sandbox_id = randomize()
     return instance
 
 

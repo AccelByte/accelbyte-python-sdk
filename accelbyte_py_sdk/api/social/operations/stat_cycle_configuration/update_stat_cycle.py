@@ -41,11 +41,7 @@ class UpdateStatCycle(Operation):
     Update stat cycle.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=4 (UPDATE)
       *  Returns : updated stat cycle
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STAT [UPDATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statCycles/{cycleId}
@@ -58,7 +54,7 @@ class UpdateStatCycle(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatCycleUpdate in body
 
@@ -90,7 +86,7 @@ class UpdateStatCycle(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: StatCycleUpdate  # OPTIONAL in [body]

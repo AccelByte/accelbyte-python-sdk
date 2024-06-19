@@ -38,11 +38,13 @@ from ..models import AccountCreateUserResponseV4
 from ..models import AccountUpgradeHeadlessAccountRequestV4
 from ..models import AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4
 from ..models import AccountUserResponseV4
+from ..models import AccountcommonUserPlatforms
 from ..models import ModelAddUserRoleV4Request
 from ..models import ModelAuthenticatorKeyResponseV4
 from ..models import ModelBackupCodesResponseV4
 from ..models import ModelBulkAccountTypeUpdateRequestV4
 from ..models import ModelCheckValidUserIDRequestV4
+from ..models import ModelDisableMFARequest
 from ..models import ModelEmailUpdateRequestV4
 from ..models import ModelEnabledFactorsResponseV4
 from ..models import ModelInvitationHistoryResponse
@@ -52,9 +54,12 @@ from ..models import ModelListInvitationHistoriesV4Response
 from ..models import ModelListUserRolesV4Response
 from ..models import ModelListValidUserIDResponseV4
 from ..models import ModelNamespaceInvitationHistoryUserV4Response
+from ..models import ModelPlatformUserIDRequestV4
 from ..models import ModelPublicInviteUserRequestV4
 from ..models import ModelPublicUserUpdateRequestV3
 from ..models import ModelRemoveUserRoleV4Request
+from ..models import ModelUserMFAStatusResponseV4
+from ..models import ModelUserMFATokenResponseV4
 from ..models import ModelUserPublicInfoResponseV4
 from ..models import ModelUserResponseV3
 from ..models import ModelUserUpdateRequestV3
@@ -63,6 +68,7 @@ from ..models import RestErrorResponse
 from ..operations.users_v4 import AdminAddUserRoleV4
 from ..operations.users_v4 import AdminBulkCheckValidUserIDV4
 from ..operations.users_v4 import AdminBulkUpdateUserAccountTypeV4
+from ..operations.users_v4 import AdminChallengeMyMFAV4
 from ..operations.users_v4 import AdminCreateTestUsersV4
 from ..operations.users_v4 import AdminCreateUserV4
 from ..operations.users_v4 import AdminDisableMyAuthenticatorV4
@@ -80,6 +86,7 @@ from ..operations.users_v4 import AdminGenerateMyBackupCodesV4
 from ..operations.users_v4 import AdminGetBackupCodesV4
 from ..operations.users_v4 import AdminGetMyBackupCodesV4
 from ..operations.users_v4 import AdminGetMyEnabledFactorsV4
+from ..operations.users_v4 import AdminGetMyMFAStatusV4
 from ..operations.users_v4 import AdminGetNamespaceInvitationHistoryV4
 from ..operations.users_v4 import AdminGetNamespaceUserInvitationHistoryV4
 from ..operations.users_v4 import AdminInviteUserNewV4
@@ -94,6 +101,7 @@ from ..operations.users_v4 import AdminUpdateUserEmailAddressV4
 from ..operations.users_v4 import AdminUpdateUserRoleV4
 from ..operations.users_v4 import AdminUpdateUserV4
 from ..operations.users_v4 import CreateUserFromInvitationV4
+from ..operations.users_v4 import PublicChallengeMyMFAV4
 from ..operations.users_v4 import PublicCreateTestUserV4
 from ..operations.users_v4 import PublicCreateUserV4
 from ..operations.users_v4 import PublicDisableMyAuthenticatorV4
@@ -110,8 +118,10 @@ from ..operations.users_v4 import PublicGenerateMyBackupCodesV4
 from ..operations.users_v4 import PublicGetBackupCodesV4
 from ..operations.users_v4 import PublicGetMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyEnabledFactorsV4
+from ..operations.users_v4 import PublicGetMyMFAStatusV4
 from ..operations.users_v4 import PublicGetUserPublicInfoByUserIdV4
 from ..operations.users_v4 import PublicInviteUserV4
+from ..operations.users_v4 import PublicListUserIDByPlatformUserIDsV4
 from ..operations.users_v4 import PublicMakeFactorMyDefaultV4
 from ..operations.users_v4 import PublicRemoveTrustedDeviceV4
 from ..operations.users_v4 import PublicSendMyMFAEmailCodeV4
@@ -457,6 +467,108 @@ async def admin_bulk_update_user_account_type_v4_async(
     )
 
 
+@same_doc_as(AdminChallengeMyMFAV4)
+def admin_challenge_my_mfav4(
+    code: Optional[str] = None,
+    factor: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Challenge User MFA (AdminChallengeMyMFAV4)
+
+    This endpoint will verify user's' MFA code and generate a MFA token.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/challenge/verify
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        code: (code) OPTIONAL str in form_data
+
+        factor: (factor) OPTIONAL str in form_data
+
+    Responses:
+        200: OK - ModelUserMFATokenResponseV4 (MFA token generated)
+
+        204: No Content - (No MFA token generated)
+
+        400: Bad Request - RestErrorResponse (10138: code not match | 10137: code is expired)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminChallengeMyMFAV4.create(
+        code=code,
+        factor=factor,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminChallengeMyMFAV4)
+async def admin_challenge_my_mfav4_async(
+    code: Optional[str] = None,
+    factor: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Challenge User MFA (AdminChallengeMyMFAV4)
+
+    This endpoint will verify user's' MFA code and generate a MFA token.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/challenge/verify
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        code: (code) OPTIONAL str in form_data
+
+        factor: (factor) OPTIONAL str in form_data
+
+    Responses:
+        200: OK - ModelUserMFATokenResponseV4 (MFA token generated)
+
+        204: No Content - (No MFA token generated)
+
+        400: Bad Request - RestErrorResponse (10138: code not match | 10137: code is expired)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminChallengeMyMFAV4.create(
+        code=code,
+        factor=factor,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminCreateTestUsersV4)
 def admin_create_test_users_v4(
     body: AccountCreateTestUsersRequestV4,
@@ -691,11 +803,18 @@ async def admin_create_user_v4_async(
 
 @same_doc_as(AdminDisableMyAuthenticatorV4)
 def admin_disable_my_authenticator_v4(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    body: ModelDisableMFARequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Disable 2FA authenticator (AdminDisableMyAuthenticatorV4)
 
     This endpoint is used to disable 2FA authenticator.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/authenticator/disable
@@ -704,16 +823,18 @@ def admin_disable_my_authenticator_v4(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
+        body: (body) REQUIRED ModelDisableMFARequest in body
+
     Responses:
         204: No Content - (Authenticator disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -723,17 +844,26 @@ def admin_disable_my_authenticator_v4(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminDisableMyAuthenticatorV4.create()
+    request = AdminDisableMyAuthenticatorV4.create(
+        body=body,
+    )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminDisableMyAuthenticatorV4)
 async def admin_disable_my_authenticator_v4_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    body: ModelDisableMFARequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Disable 2FA authenticator (AdminDisableMyAuthenticatorV4)
 
     This endpoint is used to disable 2FA authenticator.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/authenticator/disable
@@ -742,16 +872,18 @@ async def admin_disable_my_authenticator_v4_async(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
+        body: (body) REQUIRED ModelDisableMFARequest in body
+
     Responses:
         204: No Content - (Authenticator disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -761,7 +893,9 @@ async def admin_disable_my_authenticator_v4_async(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminDisableMyAuthenticatorV4.create()
+    request = AdminDisableMyAuthenticatorV4.create(
+        body=body,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -769,11 +903,18 @@ async def admin_disable_my_authenticator_v4_async(
 
 @same_doc_as(AdminDisableMyBackupCodesV4)
 def admin_disable_my_backup_codes_v4(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    body: ModelDisableMFARequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Disable 2FA backup codes (AdminDisableMyBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    This endpoint is used to disable 2FA backup codes.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/backupCode/disable
@@ -782,16 +923,18 @@ def admin_disable_my_backup_codes_v4(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
+        body: (body) REQUIRED ModelDisableMFARequest in body
+
     Responses:
         204: No Content - (Backup codes disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -801,17 +944,26 @@ def admin_disable_my_backup_codes_v4(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminDisableMyBackupCodesV4.create()
+    request = AdminDisableMyBackupCodesV4.create(
+        body=body,
+    )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminDisableMyBackupCodesV4)
 async def admin_disable_my_backup_codes_v4_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    body: ModelDisableMFARequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Disable 2FA backup codes (AdminDisableMyBackupCodesV4)
 
-    This endpoint is used to enable 2FA backup codes.
+    This endpoint is used to disable 2FA backup codes.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/backupCode/disable
@@ -820,16 +972,18 @@ async def admin_disable_my_backup_codes_v4_async(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
+        body: (body) REQUIRED ModelDisableMFARequest in body
+
     Responses:
         204: No Content - (Backup codes disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -839,7 +993,9 @@ async def admin_disable_my_backup_codes_v4_async(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminDisableMyBackupCodesV4.create()
+    request = AdminDisableMyBackupCodesV4.create(
+        body=body,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -847,11 +1003,18 @@ async def admin_disable_my_backup_codes_v4_async(
 
 @same_doc_as(AdminDisableMyEmailV4)
 def admin_disable_my_email_v4(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    body: ModelDisableMFARequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Disable 2FA email (AdminDisableMyEmailV4)
 
     This endpoint is used to disable 2FA email.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/email/disable
@@ -860,16 +1023,18 @@ def admin_disable_my_email_v4(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
+        body: (body) REQUIRED ModelDisableMFARequest in body
+
     Responses:
         204: No Content - (email disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -879,17 +1044,26 @@ def admin_disable_my_email_v4(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminDisableMyEmailV4.create()
+    request = AdminDisableMyEmailV4.create(
+        body=body,
+    )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminDisableMyEmailV4)
 async def admin_disable_my_email_v4_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    body: ModelDisableMFARequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Disable 2FA email (AdminDisableMyEmailV4)
 
     This endpoint is used to disable 2FA email.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/email/disable
@@ -898,16 +1072,18 @@ async def admin_disable_my_email_v4_async(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
+        body: (body) REQUIRED ModelDisableMFARequest in body
+
     Responses:
         204: No Content - (email disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -917,7 +1093,9 @@ async def admin_disable_my_email_v4_async(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminDisableMyEmailV4.create()
+    request = AdminDisableMyEmailV4.create(
+        body=body,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -1111,7 +1289,9 @@ async def admin_download_my_backup_codes_v4_async(
 
 @same_doc_as(AdminEnableBackupCodesV4)
 def admin_enable_backup_codes_v4(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    language_tag: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Enable 2FA backup codes (AdminEnableBackupCodesV4)
 
@@ -1130,6 +1310,8 @@ def admin_enable_backup_codes_v4(
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         200: OK - (Backup codes enabled)
 
@@ -1145,13 +1327,17 @@ def admin_enable_backup_codes_v4(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminEnableBackupCodesV4.create()
+    request = AdminEnableBackupCodesV4.create(
+        language_tag=language_tag,
+    )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminEnableBackupCodesV4)
 async def admin_enable_backup_codes_v4_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    language_tag: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Enable 2FA backup codes (AdminEnableBackupCodesV4)
 
@@ -1170,6 +1356,8 @@ async def admin_enable_backup_codes_v4_async(
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         200: OK - (Backup codes enabled)
 
@@ -1185,7 +1373,9 @@ async def admin_enable_backup_codes_v4_async(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminEnableBackupCodesV4.create()
+    request = AdminEnableBackupCodesV4.create(
+        language_tag=language_tag,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -1461,7 +1651,9 @@ async def admin_enable_my_email_v4_async(
 
 @same_doc_as(AdminGenerateBackupCodesV4)
 def admin_generate_backup_codes_v4(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    language_tag: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Generate backup codes (AdminGenerateBackupCodesV4)
 
@@ -1481,6 +1673,8 @@ def admin_generate_backup_codes_v4(
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         200: OK - (Backup codes generated)
 
@@ -1494,13 +1688,17 @@ def admin_generate_backup_codes_v4(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminGenerateBackupCodesV4.create()
+    request = AdminGenerateBackupCodesV4.create(
+        language_tag=language_tag,
+    )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGenerateBackupCodesV4)
 async def admin_generate_backup_codes_v4_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    language_tag: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Generate backup codes (AdminGenerateBackupCodesV4)
 
@@ -1520,6 +1718,8 @@ async def admin_generate_backup_codes_v4_async(
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         200: OK - (Backup codes generated)
 
@@ -1533,7 +1733,9 @@ async def admin_generate_backup_codes_v4_async(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminGenerateBackupCodesV4.create()
+    request = AdminGenerateBackupCodesV4.create(
+        language_tag=language_tag,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -1703,7 +1905,9 @@ async def admin_generate_my_backup_codes_v4_async(
 
 @same_doc_as(AdminGetBackupCodesV4)
 def admin_get_backup_codes_v4(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    language_tag: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Get backup codes and send to email (AdminGetBackupCodesV4)
 
@@ -1723,6 +1927,8 @@ def admin_get_backup_codes_v4(
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         204: No Content - (Get backup codes)
 
@@ -1736,13 +1942,17 @@ def admin_get_backup_codes_v4(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminGetBackupCodesV4.create()
+    request = AdminGetBackupCodesV4.create(
+        language_tag=language_tag,
+    )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminGetBackupCodesV4)
 async def admin_get_backup_codes_v4_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    language_tag: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Get backup codes and send to email (AdminGetBackupCodesV4)
 
@@ -1762,6 +1972,8 @@ async def admin_get_backup_codes_v4_async(
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         204: No Content - (Get backup codes)
 
@@ -1775,7 +1987,9 @@ async def admin_get_backup_codes_v4_async(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminGetBackupCodesV4.create()
+    request = AdminGetBackupCodesV4.create(
+        language_tag=language_tag,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -1936,6 +2150,80 @@ async def admin_get_my_enabled_factors_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     request = AdminGetMyEnabledFactorsV4.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetMyMFAStatusV4)
+def admin_get_my_mfa_status_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get User MFA Status (AdminGetMyMFAStatusV4)
+
+    This endpoint will get user's' MFA status.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/status
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelUserMFAStatusResponseV4 (MFA status returned)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminGetMyMFAStatusV4.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetMyMFAStatusV4)
+async def admin_get_my_mfa_status_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get User MFA Status (AdminGetMyMFAStatusV4)
+
+    This endpoint will get user's' MFA status.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/status
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelUserMFAStatusResponseV4 (MFA status returned)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminGetMyMFAStatusV4.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -2837,11 +3125,17 @@ async def admin_remove_user_role_v4_async(
 
 @same_doc_as(AdminSendMyMFAEmailCodeV4)
 def admin_send_my_mfa_email_code_v4(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    action: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
-    """Send code for enabling email (AdminSendMyMFAEmailCodeV4)
+    """Send code for MFA email (AdminSendMyMFAEmailCodeV4)
 
     This endpoint is used to send email code.
+    --------------
+    Supported actions:
+    * ChangePassword
+    * DisableMFAEmail
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/email/code
@@ -2850,11 +3144,13 @@ def admin_send_my_mfa_email_code_v4(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/x-www-form-urlencoded"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        action: (action) OPTIONAL str in form_data
 
     Responses:
         204: No Content - (code sent)
@@ -2871,17 +3167,25 @@ def admin_send_my_mfa_email_code_v4(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminSendMyMFAEmailCodeV4.create()
+    request = AdminSendMyMFAEmailCodeV4.create(
+        action=action,
+    )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(AdminSendMyMFAEmailCodeV4)
 async def admin_send_my_mfa_email_code_v4_async(
-    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    action: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
-    """Send code for enabling email (AdminSendMyMFAEmailCodeV4)
+    """Send code for MFA email (AdminSendMyMFAEmailCodeV4)
 
     This endpoint is used to send email code.
+    --------------
+    Supported actions:
+    * ChangePassword
+    * DisableMFAEmail
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/email/code
@@ -2890,11 +3194,13 @@ async def admin_send_my_mfa_email_code_v4_async(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/x-www-form-urlencoded"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        action: (action) OPTIONAL str in form_data
 
     Responses:
         204: No Content - (code sent)
@@ -2911,7 +3217,9 @@ async def admin_send_my_mfa_email_code_v4_async(
 
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
-    request = AdminSendMyMFAEmailCodeV4.create()
+    request = AdminSendMyMFAEmailCodeV4.create(
+        action=action,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -3539,6 +3847,124 @@ async def create_user_from_invitation_v4_async(
     )
 
 
+@same_doc_as(PublicChallengeMyMFAV4)
+def public_challenge_my_mfav4(
+    code: Optional[str] = None,
+    factor: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Challenge User MFA (PublicChallengeMyMFAV4)
+
+    This endpoint will verify user's' MFA code and generate a MFA token for the action.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/challenge/verify
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        code: (code) OPTIONAL str in form_data
+
+        factor: (factor) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserMFATokenResponseV4 (MFA token generated)
+
+        204: No Content - (No MFA token generated)
+
+        400: Bad Request - RestErrorResponse (10138: code not match | 10137: code is expired)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicChallengeMyMFAV4.create(
+        code=code,
+        factor=factor,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicChallengeMyMFAV4)
+async def public_challenge_my_mfav4_async(
+    code: Optional[str] = None,
+    factor: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Challenge User MFA (PublicChallengeMyMFAV4)
+
+    This endpoint will verify user's' MFA code and generate a MFA token for the action.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/challenge/verify
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        code: (code) OPTIONAL str in form_data
+
+        factor: (factor) OPTIONAL str in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserMFATokenResponseV4 (MFA token generated)
+
+        204: No Content - (No MFA token generated)
+
+        400: Bad Request - RestErrorResponse (10138: code not match | 10137: code is expired)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicChallengeMyMFAV4.create(
+        code=code,
+        factor=factor,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicCreateTestUserV4)
 def public_create_test_user_v4(
     body: AccountCreateTestUserRequestV4,
@@ -3803,6 +4229,7 @@ async def public_create_user_v4_async(
 
 @same_doc_as(PublicDisableMyAuthenticatorV4)
 def public_disable_my_authenticator_v4(
+    body: ModelDisableMFARequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -3810,6 +4237,11 @@ def public_disable_my_authenticator_v4(
     """Disable 2FA authenticator (PublicDisableMyAuthenticatorV4)
 
     This endpoint is used to disable 2FA authenticator.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/disable
@@ -3818,18 +4250,20 @@ def public_disable_my_authenticator_v4(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableMFARequest in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
         204: No Content - (Authenticator disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -3844,6 +4278,7 @@ def public_disable_my_authenticator_v4(
         if error:
             return None, error
     request = PublicDisableMyAuthenticatorV4.create(
+        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -3851,6 +4286,7 @@ def public_disable_my_authenticator_v4(
 
 @same_doc_as(PublicDisableMyAuthenticatorV4)
 async def public_disable_my_authenticator_v4_async(
+    body: ModelDisableMFARequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -3858,6 +4294,11 @@ async def public_disable_my_authenticator_v4_async(
     """Disable 2FA authenticator (PublicDisableMyAuthenticatorV4)
 
     This endpoint is used to disable 2FA authenticator.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/disable
@@ -3866,18 +4307,20 @@ async def public_disable_my_authenticator_v4_async(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableMFARequest in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
         204: No Content - (Authenticator disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -3892,6 +4335,7 @@ async def public_disable_my_authenticator_v4_async(
         if error:
             return None, error
     request = PublicDisableMyAuthenticatorV4.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -3901,6 +4345,7 @@ async def public_disable_my_authenticator_v4_async(
 
 @same_doc_as(PublicDisableMyBackupCodesV4)
 def public_disable_my_backup_codes_v4(
+    body: ModelDisableMFARequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -3908,6 +4353,11 @@ def public_disable_my_backup_codes_v4(
     """Disable 2FA backup codes (PublicDisableMyBackupCodesV4)
 
     This endpoint is used to disable 2FA backup codes.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/disable
@@ -3916,18 +4366,20 @@ def public_disable_my_backup_codes_v4(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableMFARequest in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
         204: No Content - (Backup codes disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -3942,6 +4394,7 @@ def public_disable_my_backup_codes_v4(
         if error:
             return None, error
     request = PublicDisableMyBackupCodesV4.create(
+        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -3949,6 +4402,7 @@ def public_disable_my_backup_codes_v4(
 
 @same_doc_as(PublicDisableMyBackupCodesV4)
 async def public_disable_my_backup_codes_v4_async(
+    body: ModelDisableMFARequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -3956,6 +4410,11 @@ async def public_disable_my_backup_codes_v4_async(
     """Disable 2FA backup codes (PublicDisableMyBackupCodesV4)
 
     This endpoint is used to disable 2FA backup codes.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/backupCode/disable
@@ -3964,18 +4423,20 @@ async def public_disable_my_backup_codes_v4_async(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableMFARequest in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
         204: No Content - (Backup codes disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -3990,6 +4451,7 @@ async def public_disable_my_backup_codes_v4_async(
         if error:
             return None, error
     request = PublicDisableMyBackupCodesV4.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -3999,6 +4461,7 @@ async def public_disable_my_backup_codes_v4_async(
 
 @same_doc_as(PublicDisableMyEmailV4)
 def public_disable_my_email_v4(
+    body: ModelDisableMFARequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4006,6 +4469,11 @@ def public_disable_my_email_v4(
     """Disable 2FA email (PublicDisableMyEmailV4)
 
     This endpoint is used to disable 2FA email.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/email/disable
@@ -4014,18 +4482,20 @@ def public_disable_my_email_v4(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableMFARequest in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
         204: No Content - (email disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -4040,6 +4510,7 @@ def public_disable_my_email_v4(
         if error:
             return None, error
     request = PublicDisableMyEmailV4.create(
+        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -4047,6 +4518,7 @@ def public_disable_my_email_v4(
 
 @same_doc_as(PublicDisableMyEmailV4)
 async def public_disable_my_email_v4_async(
+    body: ModelDisableMFARequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4054,6 +4526,11 @@ async def public_disable_my_email_v4_async(
     """Disable 2FA email (PublicDisableMyEmailV4)
 
     This endpoint is used to disable 2FA email.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/email/disable
@@ -4062,18 +4539,20 @@ async def public_disable_my_email_v4_async(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableMFARequest in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
         204: No Content - (email disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -4088,6 +4567,7 @@ async def public_disable_my_email_v4_async(
         if error:
             return None, error
     request = PublicDisableMyEmailV4.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -4623,6 +5103,7 @@ async def public_enable_my_email_v4_async(
 
 @same_doc_as(PublicGenerateBackupCodesV4)
 def public_generate_backup_codes_v4(
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4648,6 +5129,8 @@ def public_generate_backup_codes_v4(
 
         namespace: (namespace) REQUIRED str in path
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         204: No Content - (Backup codes sent to email)
 
@@ -4666,6 +5149,7 @@ def public_generate_backup_codes_v4(
         if error:
             return None, error
     request = PublicGenerateBackupCodesV4.create(
+        language_tag=language_tag,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -4673,6 +5157,7 @@ def public_generate_backup_codes_v4(
 
 @same_doc_as(PublicGenerateBackupCodesV4)
 async def public_generate_backup_codes_v4_async(
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4698,6 +5183,8 @@ async def public_generate_backup_codes_v4_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         204: No Content - (Backup codes sent to email)
 
@@ -4716,6 +5203,7 @@ async def public_generate_backup_codes_v4_async(
         if error:
             return None, error
     request = PublicGenerateBackupCodesV4.create(
+        language_tag=language_tag,
         namespace=namespace,
     )
     return await run_request_async(
@@ -4927,6 +5415,7 @@ async def public_generate_my_backup_codes_v4_async(
 
 @same_doc_as(PublicGetBackupCodesV4)
 def public_get_backup_codes_v4(
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4952,6 +5441,8 @@ def public_get_backup_codes_v4(
 
         namespace: (namespace) REQUIRED str in path
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         204: No Content - (Backup codes sent to email)
 
@@ -4970,6 +5461,7 @@ def public_get_backup_codes_v4(
         if error:
             return None, error
     request = PublicGetBackupCodesV4.create(
+        language_tag=language_tag,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -4977,6 +5469,7 @@ def public_get_backup_codes_v4(
 
 @same_doc_as(PublicGetBackupCodesV4)
 async def public_get_backup_codes_v4_async(
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5002,6 +5495,8 @@ async def public_get_backup_codes_v4_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         204: No Content - (Backup codes sent to email)
 
@@ -5020,6 +5515,7 @@ async def public_get_backup_codes_v4_async(
         if error:
             return None, error
     request = PublicGetBackupCodesV4.create(
+        language_tag=language_tag,
         namespace=namespace,
     )
     return await run_request_async(
@@ -5220,6 +5716,100 @@ async def public_get_my_enabled_factors_v4_async(
         if error:
             return None, error
     request = PublicGetMyEnabledFactorsV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetMyMFAStatusV4)
+def public_get_my_mfa_status_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get User MFA Status (PublicGetMyMFAStatusV4)
+
+    This endpoint will get user's' MFA status.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserMFAStatusResponseV4 (MFA status returned)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetMyMFAStatusV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetMyMFAStatusV4)
+async def public_get_my_mfa_status_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get User MFA Status (PublicGetMyMFAStatusV4)
+
+    This endpoint will get user's' MFA status.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserMFAStatusResponseV4 (MFA status returned)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetMyMFAStatusV4.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -5429,6 +6019,184 @@ async def public_invite_user_v4_async(
     """
     request = PublicInviteUserV4.create(
         body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicListUserIDByPlatformUserIDsV4)
+def public_list_user_id_by_platform_user_i_ds_v4(
+    body: ModelPlatformUserIDRequestV4,
+    platform_id: str,
+    raw_puid: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List User ID By Platform User ID (PublicListUserIDByPlatformUserIDsV4)
+
+    List User ID By Platform User ID
+    This endpoint intended to list game user ID from the given namespace
+    This endpoint return list of user ID by given platform ID and list of platform user ID, the max count is 100.
+
+    Supported platform:
+    - steam
+    - steamopenid
+    - ps4web
+    - ps4
+    - ps5
+    - live
+    - xblweb
+    - oculus
+    - oculusweb
+    - facebook
+    - google
+    - googleplaygames
+    - twitch
+    - discord
+    - apple
+    - device
+    - justice
+    - epicgames
+    - nintendo
+    - awscognito
+    - netflix
+    - snapchat
+    - oidc platform id
+
+    Note:
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformUserIDRequestV4 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        raw_puid: (rawPUID) OPTIONAL bool in query
+
+    Responses:
+        200: OK - AccountcommonUserPlatforms (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListUserIDByPlatformUserIDsV4.create(
+        body=body,
+        platform_id=platform_id,
+        raw_puid=raw_puid,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicListUserIDByPlatformUserIDsV4)
+async def public_list_user_id_by_platform_user_i_ds_v4_async(
+    body: ModelPlatformUserIDRequestV4,
+    platform_id: str,
+    raw_puid: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List User ID By Platform User ID (PublicListUserIDByPlatformUserIDsV4)
+
+    List User ID By Platform User ID
+    This endpoint intended to list game user ID from the given namespace
+    This endpoint return list of user ID by given platform ID and list of platform user ID, the max count is 100.
+
+    Supported platform:
+    - steam
+    - steamopenid
+    - ps4web
+    - ps4
+    - ps5
+    - live
+    - xblweb
+    - oculus
+    - oculusweb
+    - facebook
+    - google
+    - googleplaygames
+    - twitch
+    - discord
+    - apple
+    - device
+    - justice
+    - epicgames
+    - nintendo
+    - awscognito
+    - netflix
+    - snapchat
+    - oidc platform id
+
+    Note:
+    **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformUserIDRequestV4 in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        raw_puid: (rawPUID) OPTIONAL bool in query
+
+    Responses:
+        200: OK - AccountcommonUserPlatforms (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicListUserIDByPlatformUserIDsV4.create(
+        body=body,
+        platform_id=platform_id,
+        raw_puid=raw_puid,
+        namespace=namespace,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -5651,13 +6419,18 @@ async def public_remove_trusted_device_v4_async(
 
 @same_doc_as(PublicSendMyMFAEmailCodeV4)
 def public_send_my_mfa_email_code_v4(
+    action: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Send code for enabling email (PublicSendMyMFAEmailCodeV4)
+    """Send code for MFA email (PublicSendMyMFAEmailCodeV4)
 
     This endpoint is used to send email code.
+    ----------------
+    Supported values of action:
+    * ChangePassword
+    * DisableMFAEmail
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/email/code
@@ -5666,11 +6439,13 @@ def public_send_my_mfa_email_code_v4(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/x-www-form-urlencoded"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        action: (action) OPTIONAL str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5694,6 +6469,7 @@ def public_send_my_mfa_email_code_v4(
         if error:
             return None, error
     request = PublicSendMyMFAEmailCodeV4.create(
+        action=action,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -5701,13 +6477,18 @@ def public_send_my_mfa_email_code_v4(
 
 @same_doc_as(PublicSendMyMFAEmailCodeV4)
 async def public_send_my_mfa_email_code_v4_async(
+    action: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Send code for enabling email (PublicSendMyMFAEmailCodeV4)
+    """Send code for MFA email (PublicSendMyMFAEmailCodeV4)
 
     This endpoint is used to send email code.
+    ----------------
+    Supported values of action:
+    * ChangePassword
+    * DisableMFAEmail
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/email/code
@@ -5716,11 +6497,13 @@ async def public_send_my_mfa_email_code_v4_async(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/x-www-form-urlencoded"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        action: (action) OPTIONAL str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5744,6 +6527,7 @@ async def public_send_my_mfa_email_code_v4_async(
         if error:
             return None, error
     request = PublicSendMyMFAEmailCodeV4.create(
+        action=action,
         namespace=namespace,
     )
     return await run_request_async(

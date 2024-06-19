@@ -59,11 +59,7 @@ def create_pass(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-      *  Returns : created pass
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+      * Returns : created pass
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes
@@ -76,7 +72,7 @@ def create_pass(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PassCreate in body
 
@@ -121,11 +117,7 @@ async def create_pass_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-      *  Returns : created pass
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+      * Returns : created pass
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes
@@ -138,7 +130,7 @@ async def create_pass_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PassCreate in body
 
@@ -183,13 +175,6 @@ def delete_pass(
 
     This API is used to delete a pass permanently, only draft season pass can be deleted.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code}
 
@@ -201,7 +186,7 @@ def delete_pass(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -242,13 +227,6 @@ async def delete_pass_async(
 
     This API is used to delete a pass permanently, only draft season pass can be deleted.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code}
 
@@ -260,7 +238,7 @@ async def delete_pass_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -305,11 +283,7 @@ def get_pass(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : pass data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : pass data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code}
@@ -322,7 +296,7 @@ def get_pass(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -363,11 +337,7 @@ async def get_pass_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : pass data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : pass data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code}
@@ -380,7 +350,7 @@ async def get_pass_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -423,11 +393,7 @@ def grant_user_pass(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/passes
@@ -440,7 +406,7 @@ def grant_user_pass(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserPassGrant in body
 
@@ -479,11 +445,7 @@ async def grant_user_pass_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/users/{userId}/seasons/current/passes
@@ -496,7 +458,7 @@ async def grant_user_pass_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserPassGrant in body
 
@@ -536,11 +498,7 @@ def query_passes(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : the list of passes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : the list of passes
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes
@@ -553,7 +511,7 @@ def query_passes(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -590,11 +548,7 @@ async def query_passes_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : the list of passes
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : the list of passes
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes
@@ -607,7 +561,7 @@ async def query_passes_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -648,11 +602,7 @@ def update_pass(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : updated pass
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : updated pass
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code}
@@ -665,7 +615,7 @@ def update_pass(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PassUpdate in body
 
@@ -714,11 +664,7 @@ async def update_pass_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : updated pass
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : updated pass
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code}
@@ -731,7 +677,7 @@ async def update_pass_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PassUpdate in body
 

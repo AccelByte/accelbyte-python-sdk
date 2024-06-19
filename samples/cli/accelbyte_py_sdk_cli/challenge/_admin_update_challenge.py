@@ -34,7 +34,7 @@ from accelbyte_py_sdk.api.challenge import (
     admin_update_challenge as admin_update_challenge_internal,
 )
 from accelbyte_py_sdk.api.challenge.models import ModelChallengeResponse
-from accelbyte_py_sdk.api.challenge.models import ModelsUpdateChallengeRequest
+from accelbyte_py_sdk.api.challenge.models import ModelUpdateChallengeRequest
 from accelbyte_py_sdk.api.challenge.models import ResponseError
 
 
@@ -64,7 +64,7 @@ def admin_update_challenge(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelsUpdateChallengeRequest.create_from_dict(body_json)
+            body = ModelUpdateChallengeRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = admin_update_challenge_internal(

@@ -30,6 +30,7 @@ from ....core import Model
 from ..models.adyen_config import AdyenConfig
 from ..models.ali_pay_config import AliPayConfig
 from ..models.checkout_config import CheckoutConfig
+from ..models.neon_pay_config import NeonPayConfig
 from ..models.pay_pal_config import PayPalConfig
 from ..models.stripe_config import StripeConfig
 from ..models.wx_pay_config_info import WxPayConfigInfo
@@ -59,6 +60,10 @@ class PaymentMerchantConfigInfo(Model):
 
         checkout_sandbox_config: (checkoutSandboxConfig) OPTIONAL CheckoutConfig
 
+        neon_pay_config: (neonPayConfig) OPTIONAL NeonPayConfig
+
+        neon_pay_sandbox_config: (neonPaySandboxConfig) OPTIONAL NeonPayConfig
+
         pay_pal_config: (payPalConfig) OPTIONAL PayPalConfig
 
         pay_pal_sandbox_config: (payPalSandboxConfig) OPTIONAL PayPalConfig
@@ -85,6 +90,8 @@ class PaymentMerchantConfigInfo(Model):
     ali_pay_sandbox_config: AliPayConfig  # OPTIONAL
     checkout_config: CheckoutConfig  # OPTIONAL
     checkout_sandbox_config: CheckoutConfig  # OPTIONAL
+    neon_pay_config: NeonPayConfig  # OPTIONAL
+    neon_pay_sandbox_config: NeonPayConfig  # OPTIONAL
     pay_pal_config: PayPalConfig  # OPTIONAL
     pay_pal_sandbox_config: PayPalConfig  # OPTIONAL
     stripe_config: StripeConfig  # OPTIONAL
@@ -137,6 +144,16 @@ class PaymentMerchantConfigInfo(Model):
         self, value: CheckoutConfig
     ) -> PaymentMerchantConfigInfo:
         self.checkout_sandbox_config = value
+        return self
+
+    def with_neon_pay_config(self, value: NeonPayConfig) -> PaymentMerchantConfigInfo:
+        self.neon_pay_config = value
+        return self
+
+    def with_neon_pay_sandbox_config(
+        self, value: NeonPayConfig
+    ) -> PaymentMerchantConfigInfo:
+        self.neon_pay_sandbox_config = value
         return self
 
     def with_pay_pal_config(self, value: PayPalConfig) -> PaymentMerchantConfigInfo:
@@ -227,6 +244,18 @@ class PaymentMerchantConfigInfo(Model):
             )
         elif include_empty:
             result["checkoutSandboxConfig"] = CheckoutConfig()
+        if hasattr(self, "neon_pay_config"):
+            result["neonPayConfig"] = self.neon_pay_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["neonPayConfig"] = NeonPayConfig()
+        if hasattr(self, "neon_pay_sandbox_config"):
+            result["neonPaySandboxConfig"] = self.neon_pay_sandbox_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["neonPaySandboxConfig"] = NeonPayConfig()
         if hasattr(self, "pay_pal_config"):
             result["payPalConfig"] = self.pay_pal_config.to_dict(
                 include_empty=include_empty
@@ -287,6 +316,8 @@ class PaymentMerchantConfigInfo(Model):
         ali_pay_sandbox_config: Optional[AliPayConfig] = None,
         checkout_config: Optional[CheckoutConfig] = None,
         checkout_sandbox_config: Optional[CheckoutConfig] = None,
+        neon_pay_config: Optional[NeonPayConfig] = None,
+        neon_pay_sandbox_config: Optional[NeonPayConfig] = None,
         pay_pal_config: Optional[PayPalConfig] = None,
         pay_pal_sandbox_config: Optional[PayPalConfig] = None,
         stripe_config: Optional[StripeConfig] = None,
@@ -312,6 +343,10 @@ class PaymentMerchantConfigInfo(Model):
             instance.checkout_config = checkout_config
         if checkout_sandbox_config is not None:
             instance.checkout_sandbox_config = checkout_sandbox_config
+        if neon_pay_config is not None:
+            instance.neon_pay_config = neon_pay_config
+        if neon_pay_sandbox_config is not None:
+            instance.neon_pay_sandbox_config = neon_pay_sandbox_config
         if pay_pal_config is not None:
             instance.pay_pal_config = pay_pal_config
         if pay_pal_sandbox_config is not None:
@@ -386,6 +421,21 @@ class PaymentMerchantConfigInfo(Model):
             )
         elif include_empty:
             instance.checkout_sandbox_config = CheckoutConfig()
+        if "neonPayConfig" in dict_ and dict_["neonPayConfig"] is not None:
+            instance.neon_pay_config = NeonPayConfig.create_from_dict(
+                dict_["neonPayConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.neon_pay_config = NeonPayConfig()
+        if (
+            "neonPaySandboxConfig" in dict_
+            and dict_["neonPaySandboxConfig"] is not None
+        ):
+            instance.neon_pay_sandbox_config = NeonPayConfig.create_from_dict(
+                dict_["neonPaySandboxConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.neon_pay_sandbox_config = NeonPayConfig()
         if "payPalConfig" in dict_ and dict_["payPalConfig"] is not None:
             instance.pay_pal_config = PayPalConfig.create_from_dict(
                 dict_["payPalConfig"], include_empty=include_empty
@@ -480,6 +530,8 @@ class PaymentMerchantConfigInfo(Model):
             "aliPaySandboxConfig": "ali_pay_sandbox_config",
             "checkoutConfig": "checkout_config",
             "checkoutSandboxConfig": "checkout_sandbox_config",
+            "neonPayConfig": "neon_pay_config",
+            "neonPaySandboxConfig": "neon_pay_sandbox_config",
             "payPalConfig": "pay_pal_config",
             "payPalSandboxConfig": "pay_pal_sandbox_config",
             "stripeConfig": "stripe_config",
@@ -501,6 +553,8 @@ class PaymentMerchantConfigInfo(Model):
             "aliPaySandboxConfig": False,
             "checkoutConfig": False,
             "checkoutSandboxConfig": False,
+            "neonPayConfig": False,
+            "neonPaySandboxConfig": False,
             "payPalConfig": False,
             "payPalSandboxConfig": False,
             "stripeConfig": False,

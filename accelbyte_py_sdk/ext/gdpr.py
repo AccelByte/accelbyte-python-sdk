@@ -25,6 +25,10 @@
 from .utils import randomize
 
 from ..api.gdpr.models import DtoExtendConfigDTO
+from ..api.gdpr.models import DtoFinishedDataDeletion
+from ..api.gdpr.models import DtoFinishedDataRequest
+from ..api.gdpr.models import DtoListFinishedDataDeletion
+from ..api.gdpr.models import DtoListFinishedDataRequests
 from ..api.gdpr.models import DtoPlatformAccountClosureClientRequest
 from ..api.gdpr.models import DtoPlatformAccountClosureClientResponse
 from ..api.gdpr.models import DtoServiceConfigDTO
@@ -41,6 +45,9 @@ from ..api.gdpr.models import ModelsListPersonalDataResponse
 from ..api.gdpr.models import ModelsPagination
 from ..api.gdpr.models import ModelsPersonalData
 from ..api.gdpr.models import ModelsRequestDeleteResponse
+from ..api.gdpr.models import ModelsS2SDataRetrievalResponse
+from ..api.gdpr.models import ModelsS2SRequestDeleteResponse
+from ..api.gdpr.models import ModelsS2SUserDataURL
 from ..api.gdpr.models import ModelsUserDataURL
 from ..api.gdpr.models import ModelsUserPersonalData
 from ..api.gdpr.models import ModelsUserPersonalDataResponse
@@ -51,6 +58,39 @@ def create_dto_extend_config_dto_example() -> DtoExtendConfigDTO:
     instance = DtoExtendConfigDTO()
     instance.app_name = randomize()
     instance.namespace = randomize("slug")
+    return instance
+
+
+def create_dto_finished_data_deletion_example() -> DtoFinishedDataDeletion:
+    instance = DtoFinishedDataDeletion()
+    instance.finished_date = randomize("date")
+    instance.request_date = randomize("date")
+    instance.status = randomize()
+    instance.user_id = randomize("uid")
+    instance.failed_message = randomize()
+    return instance
+
+
+def create_dto_finished_data_request_example() -> DtoFinishedDataRequest:
+    instance = DtoFinishedDataRequest()
+    instance.finished_date = randomize("date")
+    instance.request_date = randomize("date")
+    instance.status = randomize()
+    instance.user_id = randomize("uid")
+    instance.data_expiration_date = randomize("date")
+    instance.failed_message = randomize()
+    return instance
+
+
+def create_dto_list_finished_data_deletion_example() -> DtoListFinishedDataDeletion:
+    instance = DtoListFinishedDataDeletion()
+    instance.data = [create_dto_finished_data_deletion_example()]
+    return instance
+
+
+def create_dto_list_finished_data_requests_example() -> DtoListFinishedDataRequests:
+    instance = DtoListFinishedDataRequests()
+    instance.data = [create_dto_finished_data_request_example()]
     return instance
 
 
@@ -78,8 +118,8 @@ def create_dto_platform_account_closure_client_response_example() -> (
 def create_dto_service_config_dto_example() -> DtoServiceConfigDTO:
     instance = DtoServiceConfigDTO()
     instance.protocol = randomize()
-    instance.url = randomize("url")
     instance.skip_ack = randomize("bool")
+    instance.url = randomize("url")
     return instance
 
 
@@ -202,6 +242,31 @@ def create_models_request_delete_response_example() -> ModelsRequestDeleteRespon
     instance = ModelsRequestDeleteResponse()
     instance.namespace = randomize("slug")
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_s2s_data_retrieval_response_example() -> (
+    ModelsS2SDataRetrievalResponse
+):
+    instance = ModelsS2SDataRetrievalResponse()
+    instance.namespace = randomize("slug")
+    instance.request_date = randomize("date")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_s2s_request_delete_response_example() -> (
+    ModelsS2SRequestDeleteResponse
+):
+    instance = ModelsS2SRequestDeleteResponse()
+    instance.namespace = randomize("slug")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_s2s_user_data_url_example() -> ModelsS2SUserDataURL:
+    instance = ModelsS2SUserDataURL()
+    instance.url = randomize("url")
     return instance
 
 

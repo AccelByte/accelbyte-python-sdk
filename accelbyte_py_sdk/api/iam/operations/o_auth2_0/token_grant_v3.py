@@ -123,6 +123,8 @@ class TokenGrantV3(Operation):
 
         client_id: (client_id) OPTIONAL str in form_data
 
+        client_secret: (client_secret) OPTIONAL str in form_data
+
         code: (code) OPTIONAL str in form_data
 
         code_verifier: (code_verifier) OPTIONAL str in form_data
@@ -166,6 +168,7 @@ class TokenGrantV3(Operation):
     device_id: Union[str, HeaderStr]  # OPTIONAL in [header]
     additional_data: str  # OPTIONAL in [form_data]
     client_id: str  # OPTIONAL in [form_data]
+    client_secret: str  # OPTIONAL in [form_data]
     code: str  # OPTIONAL in [form_data]
     code_verifier: str  # OPTIONAL in [form_data]
     extend_namespace: str  # OPTIONAL in [form_data]
@@ -232,6 +235,8 @@ class TokenGrantV3(Operation):
             result["additionalData"] = self.additional_data
         if hasattr(self, "client_id"):
             result["client_id"] = self.client_id
+        if hasattr(self, "client_secret"):
+            result["client_secret"] = self.client_secret
         if hasattr(self, "code"):
             result["code"] = self.code
         if hasattr(self, "code_verifier"):
@@ -274,6 +279,10 @@ class TokenGrantV3(Operation):
 
     def with_client_id(self, value: str) -> TokenGrantV3:
         self.client_id = value
+        return self
+
+    def with_client_secret(self, value: str) -> TokenGrantV3:
+        self.client_secret = value
         return self
 
     def with_code(self, value: str) -> TokenGrantV3:
@@ -334,6 +343,10 @@ class TokenGrantV3(Operation):
             result["client_id"] = str(self.client_id)
         elif include_empty:
             result["client_id"] = ""
+        if hasattr(self, "client_secret") and self.client_secret:
+            result["client_secret"] = str(self.client_secret)
+        elif include_empty:
+            result["client_secret"] = ""
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
@@ -438,6 +451,7 @@ class TokenGrantV3(Operation):
         device_id: Optional[Union[str, HeaderStr]] = None,
         additional_data: Optional[str] = None,
         client_id: Optional[str] = None,
+        client_secret: Optional[str] = None,
         code: Optional[str] = None,
         code_verifier: Optional[str] = None,
         extend_namespace: Optional[str] = None,
@@ -458,6 +472,8 @@ class TokenGrantV3(Operation):
             instance.additional_data = additional_data
         if client_id is not None:
             instance.client_id = client_id
+        if client_secret is not None:
+            instance.client_secret = client_secret
         if code is not None:
             instance.code = code
         if code_verifier is not None:
@@ -497,6 +513,10 @@ class TokenGrantV3(Operation):
             instance.client_id = str(dict_["client_id"])
         elif include_empty:
             instance.client_id = ""
+        if "client_secret" in dict_ and dict_["client_secret"] is not None:
+            instance.client_secret = str(dict_["client_secret"])
+        elif include_empty:
+            instance.client_secret = ""
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
@@ -542,6 +562,7 @@ class TokenGrantV3(Operation):
             "device_id": "device_id",
             "additionalData": "additional_data",
             "client_id": "client_id",
+            "client_secret": "client_secret",
             "code": "code",
             "code_verifier": "code_verifier",
             "extendNamespace": "extend_namespace",
@@ -560,6 +581,7 @@ class TokenGrantV3(Operation):
             "device_id": False,
             "additionalData": False,
             "client_id": False,
+            "client_secret": False,
             "code": False,
             "code_verifier": False,
             "extendNamespace": False,

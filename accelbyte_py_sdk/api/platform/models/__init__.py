@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.52.0"
+__version__ = "4.53.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -537,6 +537,7 @@ from .mock_iap_receipt import (
     ItemIdentityTypeEnum as MockIAPReceiptItemIdentityTypeEnum,
     TypeEnum as MockIAPReceiptTypeEnum,
 )
+from .neon_pay_config import NeonPayConfig
 from .notification_process_result import NotificationProcessResult
 from .notification_process_result import (
     StatusEnum as NotificationProcessResultStatusEnum,
@@ -587,6 +588,9 @@ from .payment_account import PaymentAccount
 from .payment_account import TypeEnum as PaymentAccountTypeEnum
 from .payment_callback_config_info import PaymentCallbackConfigInfo
 from .payment_callback_config_update import PaymentCallbackConfigUpdate
+from .payment_data import PaymentData
+from .payment_domain_whitelist_config_edit import PaymentDomainWhitelistConfigEdit
+from .payment_domain_whitelist_config_info import PaymentDomainWhitelistConfigInfo
 from .payment_merchant_config_info import PaymentMerchantConfigInfo
 from .payment_method import PaymentMethod
 from .payment_method import PaymentProviderEnum as PaymentMethodPaymentProviderEnum
@@ -627,6 +631,7 @@ from .payment_order_info import (
     PaymentProviderEnum as PaymentOrderInfoPaymentProviderEnum,
     StatusEnum as PaymentOrderInfoStatusEnum,
 )
+from .payment_order_neon_pay_config import PaymentOrderNeonPayConfig
 from .payment_order_notify_simulation import PaymentOrderNotifySimulation
 from .payment_order_notify_simulation import (
     NotifyTypeEnum as PaymentOrderNotifySimulationNotifyTypeEnum,
@@ -677,6 +682,7 @@ from .platform_dlc_config_info import PlatformDLCConfigInfo
 from .platform_dlc_config_update import PlatformDLCConfigUpdate
 from .platform_dlc_entry import PlatformDlcEntry
 from .platform_dlc_entry import PlatformEnum as PlatformDlcEntryPlatformEnum
+from .platform_ownership import PlatformOwnership
 from .platform_reward import PlatformReward
 from .platform_reward import TypeEnum as PlatformRewardTypeEnum
 from .platform_reward_currency import PlatformRewardCurrency
@@ -721,6 +727,7 @@ from .predicate import (
     PredicateTypeEnum as PredicatePredicateTypeEnum,
 )
 from .predicate_validate_result import PredicateValidateResult
+from .psn_entitlement_ownership_request import PsnEntitlementOwnershipRequest
 from .public_custom_config_info import PublicCustomConfigInfo
 from .public_custom_config_info import (
     ConnectionTypeEnum as PublicCustomConfigInfoConnectionTypeEnum,
@@ -937,6 +944,7 @@ from .wx_pay_config_info import WxPayConfigInfo
 from .wx_pay_config_request import WxPayConfigRequest
 from .xbl_achievement_update_request import XblAchievementUpdateRequest
 from .xbl_dlc_sync_request import XblDLCSyncRequest
+from .xbl_entitlement_ownership_request import XblEntitlementOwnershipRequest
 from .xbl_iap_config_info import XblIAPConfigInfo
 from .xbl_iap_config_request import XblIAPConfigRequest
 from .xbl_reconcile_request import XblReconcileRequest

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.52.0"
+__version__ = "4.53.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,6 +20,7 @@ from .debug_matched_payment_p_02dcf1 import DebugMatchedPaymentProviderConfig
 from .delete_payment_provider_config import DeletePaymentProviderConfig
 from .get_aggregate_payment_p_41c63c import GetAggregatePaymentProviders
 from .get_payment_merchant_config import GetPaymentMerchantConfig
+from .get_payment_merchant_config_1 import GetPaymentMerchantConfig1
 from .get_payment_tax_config import GetPaymentTaxConfig
 from .get_special_payment_providers import GetSpecialPaymentProviders
 from .query_payment_provider_config import QueryPaymentProviderConfig
@@ -29,6 +30,8 @@ from .test_ali_pay_config import TestAliPayConfig
 from .test_ali_pay_config_by_id import TestAliPayConfigById
 from .test_checkout_config import TestCheckoutConfig
 from .test_checkout_config_by_id import TestCheckoutConfigById
+from .test_neon_pay_config import TestNeonPayConfig
+from .test_neon_pay_config_by_id import TestNeonPayConfigById
 from .test_pay_pal_config import TestPayPalConfig
 from .test_pay_pal_config_by_id import TestPayPalConfigById
 from .test_stripe_config import TestStripeConfig
@@ -40,7 +43,9 @@ from .test_xsolla_config_by_id import TestXsollaConfigById
 from .update_adyen_config import UpdateAdyenConfig
 from .update_ali_pay_config import UpdateAliPayConfig
 from .update_checkout_config import UpdateCheckoutConfig
+from .update_neon_pay_config import UpdateNeonPayConfig
 from .update_pay_pal_config import UpdatePayPalConfig
+from .update_payment_domain_w_db8e8d import UpdatePaymentDomainWhitelistConfig
 from .update_payment_provider_config import UpdatePaymentProviderConfig
 from .update_payment_tax_config import UpdatePaymentTaxConfig
 from .update_stripe_config import UpdateStripeConfig

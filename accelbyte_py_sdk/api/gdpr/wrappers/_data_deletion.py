@@ -424,9 +424,9 @@ def admin_submit_user_account_deletion_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Submit user's account deletion requests (AdminSubmitUserAccountDeletionRequest)
+    """Submit user's account deletion request (AdminSubmitUserAccountDeletionRequest)
 
-    Submit user's account deletion requests
+    Submit user's account deletion request.
     Scope: account
 
     Required Scope(s):
@@ -480,9 +480,9 @@ async def admin_submit_user_account_deletion_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Submit user's account deletion requests (AdminSubmitUserAccountDeletionRequest)
+    """Submit user's account deletion request (AdminSubmitUserAccountDeletionRequest)
 
-    Submit user's account deletion requests
+    Submit user's account deletion request.
     Scope: account
 
     Required Scope(s):
@@ -912,6 +912,9 @@ def public_submit_my_account_deletion_request(
     Requires valid user access token
     This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
 
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
+
     Properties:
         url: /gdpr/public/users/me/deletions
 
@@ -939,6 +942,8 @@ def public_submit_my_account_deletion_request(
         403: Forbidden - ResponseError (Forbidden)
 
         404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -962,6 +967,9 @@ async def public_submit_my_account_deletion_request_async(
     Requires valid user access token
     This is for in-game only and require a valid platformId and platform token. If a full account is not logged by 3rd platform, then please use [/gdpr/public/namespaces/{namespace}/users/{userId}/deletions](#operations-Data_Deletion-PublicSubmitUserAccountDeletionRequest)
 
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
+
     Properties:
         url: /gdpr/public/users/me/deletions
 
@@ -990,6 +998,8 @@ async def public_submit_my_account_deletion_request_async(
 
         404: Not Found - ResponseError (Not Found)
 
+        409: Conflict - ResponseError (Conflict)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     request = PublicSubmitMyAccountDeletionRequest.create(
@@ -1009,11 +1019,14 @@ def public_submit_user_account_deletion_request(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Submit user's account deletion requests (PublicSubmitUserAccountDeletionRequest)
+    """Submit user's account deletion request (PublicSubmitUserAccountDeletionRequest)
 
-    Submit user's account deletion requests
+    Submit user's account deletion request.
     Requires valid user access token and password
     Scope: account
+
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
 
     Required Scope(s):
         - account
@@ -1047,6 +1060,8 @@ def public_submit_user_account_deletion_request(
         403: Forbidden - ResponseError (Forbidden)
 
         404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -1070,11 +1085,14 @@ async def public_submit_user_account_deletion_request_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Submit user's account deletion requests (PublicSubmitUserAccountDeletionRequest)
+    """Submit user's account deletion request (PublicSubmitUserAccountDeletionRequest)
 
-    Submit user's account deletion requests
+    Submit user's account deletion request.
     Requires valid user access token and password
     Scope: account
+
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
 
     Required Scope(s):
         - account
@@ -1108,6 +1126,8 @@ async def public_submit_user_account_deletion_request_async(
         403: Forbidden - ResponseError (Forbidden)
 
         404: Not Found - ResponseError (Not Found)
+
+        409: Conflict - ResponseError (Conflict)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """

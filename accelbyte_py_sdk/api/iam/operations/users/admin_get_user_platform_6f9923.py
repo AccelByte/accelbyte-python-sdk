@@ -70,6 +70,8 @@ class AdminGetUserPlatformAccountsV3(Operation):
 
         platform_id: (platformId) OPTIONAL str in query
 
+        target_namespace: (targetNamespace) OPTIONAL str in query
+
     Responses:
         200: OK - AccountcommonUserLinkedPlatformsResponseV3 (OK)
 
@@ -99,6 +101,7 @@ class AdminGetUserPlatformAccountsV3(Operation):
     before: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     platform_id: str  # OPTIONAL in [query]
+    target_namespace: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -160,6 +163,8 @@ class AdminGetUserPlatformAccountsV3(Operation):
             result["limit"] = self.limit
         if hasattr(self, "platform_id"):
             result["platformId"] = self.platform_id
+        if hasattr(self, "target_namespace"):
+            result["targetNamespace"] = self.target_namespace
         return result
 
     # endregion get_x_params methods
@@ -194,6 +199,10 @@ class AdminGetUserPlatformAccountsV3(Operation):
         self.platform_id = value
         return self
 
+    def with_target_namespace(self, value: str) -> AdminGetUserPlatformAccountsV3:
+        self.target_namespace = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -224,6 +233,10 @@ class AdminGetUserPlatformAccountsV3(Operation):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = ""
+        if hasattr(self, "target_namespace") and self.target_namespace:
+            result["targetNamespace"] = str(self.target_namespace)
+        elif include_empty:
+            result["targetNamespace"] = ""
         return result
 
     # endregion to methods
@@ -297,6 +310,7 @@ class AdminGetUserPlatformAccountsV3(Operation):
         before: Optional[str] = None,
         limit: Optional[int] = None,
         platform_id: Optional[str] = None,
+        target_namespace: Optional[str] = None,
         **kwargs,
     ) -> AdminGetUserPlatformAccountsV3:
         instance = cls()
@@ -310,6 +324,8 @@ class AdminGetUserPlatformAccountsV3(Operation):
             instance.limit = limit
         if platform_id is not None:
             instance.platform_id = platform_id
+        if target_namespace is not None:
+            instance.target_namespace = target_namespace
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -343,6 +359,10 @@ class AdminGetUserPlatformAccountsV3(Operation):
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = ""
+        if "targetNamespace" in dict_ and dict_["targetNamespace"] is not None:
+            instance.target_namespace = str(dict_["targetNamespace"])
+        elif include_empty:
+            instance.target_namespace = ""
         return instance
 
     @staticmethod
@@ -354,6 +374,7 @@ class AdminGetUserPlatformAccountsV3(Operation):
             "before": "before",
             "limit": "limit",
             "platformId": "platform_id",
+            "targetNamespace": "target_namespace",
         }
 
     @staticmethod
@@ -365,6 +386,7 @@ class AdminGetUserPlatformAccountsV3(Operation):
             "before": False,
             "limit": False,
             "platformId": False,
+            "targetNamespace": False,
         }
 
     # endregion static methods

@@ -60,6 +60,8 @@ class ApimodelsPublicConfiguration(Model):
 
         attributes: (attributes) OPTIONAL Dict[str, Any]
 
+        custom_urlgrpc: (customURLGRPC) OPTIONAL str
+
         disable_code_generation: (disableCodeGeneration) OPTIONAL bool
 
         ds_manual_set_ready: (dsManualSetReady) OPTIONAL bool
@@ -104,6 +106,7 @@ class ApimodelsPublicConfiguration(Model):
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
     attributes: Dict[str, Any]  # OPTIONAL
+    custom_urlgrpc: str  # OPTIONAL
     disable_code_generation: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
@@ -173,6 +176,10 @@ class ApimodelsPublicConfiguration(Model):
 
     def with_attributes(self, value: Dict[str, Any]) -> ApimodelsPublicConfiguration:
         self.attributes = value
+        return self
+
+    def with_custom_urlgrpc(self, value: str) -> ApimodelsPublicConfiguration:
+        self.custom_urlgrpc = value
         return self
 
     def with_disable_code_generation(self, value: bool) -> ApimodelsPublicConfiguration:
@@ -299,6 +306,10 @@ class ApimodelsPublicConfiguration(Model):
             result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
         elif include_empty:
             result["attributes"] = {}
+        if hasattr(self, "custom_urlgrpc"):
+            result["customURLGRPC"] = str(self.custom_urlgrpc)
+        elif include_empty:
+            result["customURLGRPC"] = ""
         if hasattr(self, "disable_code_generation"):
             result["disableCodeGeneration"] = bool(self.disable_code_generation)
         elif include_empty:
@@ -379,6 +390,7 @@ class ApimodelsPublicConfiguration(Model):
         text_chat: bool,
         type_: str,
         attributes: Optional[Dict[str, Any]] = None,
+        custom_urlgrpc: Optional[str] = None,
         disable_code_generation: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
         ds_source: Optional[str] = None,
@@ -410,6 +422,8 @@ class ApimodelsPublicConfiguration(Model):
         instance.type_ = type_
         if attributes is not None:
             instance.attributes = attributes
+        if custom_urlgrpc is not None:
+            instance.custom_urlgrpc = custom_urlgrpc
         if disable_code_generation is not None:
             instance.disable_code_generation = disable_code_generation
         if ds_manual_set_ready is not None:
@@ -501,6 +515,10 @@ class ApimodelsPublicConfiguration(Model):
             }
         elif include_empty:
             instance.attributes = {}
+        if "customURLGRPC" in dict_ and dict_["customURLGRPC"] is not None:
+            instance.custom_urlgrpc = str(dict_["customURLGRPC"])
+        elif include_empty:
+            instance.custom_urlgrpc = ""
         if (
             "disableCodeGeneration" in dict_
             and dict_["disableCodeGeneration"] is not None
@@ -635,6 +653,7 @@ class ApimodelsPublicConfiguration(Model):
             "textChat": "text_chat",
             "type": "type_",
             "attributes": "attributes",
+            "customURLGRPC": "custom_urlgrpc",
             "disableCodeGeneration": "disable_code_generation",
             "dsManualSetReady": "ds_manual_set_ready",
             "dsSource": "ds_source",
@@ -667,6 +686,7 @@ class ApimodelsPublicConfiguration(Model):
             "textChat": True,
             "type": True,
             "attributes": False,
+            "customURLGRPC": False,
             "disableCodeGeneration": False,
             "dsManualSetReady": False,
             "dsSource": False,

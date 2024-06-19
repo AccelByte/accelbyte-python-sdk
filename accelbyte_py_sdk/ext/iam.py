@@ -152,6 +152,7 @@ from ..api.iam.models import ModelDeviceTypesResponseV4
 from ..api.iam.models import ModelDeviceUserResponseV4
 from ..api.iam.models import ModelDeviceUsersResponseV4
 from ..api.iam.models import ModelDevicesResponseV4
+from ..api.iam.models import ModelDisableMFARequest
 from ..api.iam.models import ModelDisableUserRequest
 from ..api.iam.models import ModelEmailUpdateRequestV4
 from ..api.iam.models import ModelEnabledFactorsResponseV4
@@ -201,6 +202,7 @@ from ..api.iam.models import ModelPlatformDomainDeleteRequest
 from ..api.iam.models import ModelPlatformDomainResponse
 from ..api.iam.models import ModelPlatformDomainUpdateRequest
 from ..api.iam.models import ModelPlatformUserIDRequest
+from ..api.iam.models import ModelPlatformUserIDRequestV4
 from ..api.iam.models import ModelPlatformUserInformation
 from ..api.iam.models import ModelPublicInviteUserRequestV4
 from ..api.iam.models import ModelPublicThirdPartyPlatformInfo
@@ -272,9 +274,13 @@ from ..api.iam.models import ModelUserIDsRequest
 from ..api.iam.models import ModelUserIdentityUpdateRequestV3
 from ..api.iam.models import ModelUserInfoResponse
 from ..api.iam.models import ModelUserInformation
+from ..api.iam.models import ModelUserInputValidationRequest
+from ..api.iam.models import ModelUserInputValidationResponse
 from ..api.iam.models import ModelUserInvitationHistory
 from ..api.iam.models import ModelUserInvitationV3
 from ..api.iam.models import ModelUserLoginHistoryResponse
+from ..api.iam.models import ModelUserMFAStatusResponseV4
+from ..api.iam.models import ModelUserMFATokenResponseV4
 from ..api.iam.models import ModelUserPasswordUpdateRequest
 from ..api.iam.models import ModelUserPasswordUpdateV3Request
 from ..api.iam.models import ModelUserPermissionsResponseV3
@@ -668,6 +674,7 @@ def create_accountcommon_distinct_linked_platform_v3_example() -> (
     instance.linked_at = randomize()
     instance.platform_group = randomize()
     instance.platform_name = randomize()
+    instance.logo_url = randomize("url")
     instance.platform_user_id = randomize()
     return instance
 
@@ -1593,6 +1600,12 @@ def create_model_devices_response_v4_example() -> ModelDevicesResponseV4:
     return instance
 
 
+def create_model_disable_mfa_request_example() -> ModelDisableMFARequest:
+    instance = ModelDisableMFARequest()
+    instance.mfa_token = randomize()
+    return instance
+
+
 def create_model_disable_user_request_example() -> ModelDisableUserRequest:
     instance = ModelDisableUserRequest()
     instance.reason = randomize()
@@ -1729,6 +1742,7 @@ def create_model_input_validation_config_version_example() -> (
     instance.special_characters = [randomize()]
     instance.version = randomize("int", min_val=1, max_val=1000)
     instance.avatar_config = create_accountcommon_avatar_config_example()
+    instance.profanity_filter = randomize()
     return instance
 
 
@@ -1790,6 +1804,7 @@ def create_model_invite_user_request_v3_example() -> ModelInviteUserRequestV3:
     instance.email_addresses = [randomize()]
     instance.is_admin = randomize("bool")
     instance.roles = [randomize()]
+    instance.language_tag = randomize()
     instance.namespace = randomize("slug")
     return instance
 
@@ -1800,6 +1815,7 @@ def create_model_invite_user_request_v4_example() -> ModelInviteUserRequestV4:
     instance.email_addresses = [randomize()]
     instance.is_admin = randomize("bool")
     instance.is_new_studio = randomize("bool")
+    instance.language_tag = randomize()
     instance.namespace = randomize("slug")
     instance.role_id = randomize("uid")
     return instance
@@ -2016,6 +2032,12 @@ def create_model_platform_user_id_request_example() -> ModelPlatformUserIDReques
     return instance
 
 
+def create_model_platform_user_id_request_v4_example() -> ModelPlatformUserIDRequestV4:
+    instance = ModelPlatformUserIDRequestV4()
+    instance.platform_user_ids = [randomize()]
+    return instance
+
+
 def create_model_platform_user_information_example() -> ModelPlatformUserInformation:
     instance = ModelPlatformUserInformation()
     instance.display_name = randomize("slug")
@@ -2036,6 +2058,7 @@ def create_model_public_invite_user_request_v4_example() -> (
     instance.namespace = randomize("slug")
     instance.namespace_display_name = randomize()
     instance.additional_data = randomize()
+    instance.language_tag = randomize()
     return instance
 
 
@@ -2475,6 +2498,7 @@ def create_model_third_party_login_platform_credential_request_example() -> (
     instance.user_info_endpoint = randomize()
     instance.user_info_http_method = randomize()
     instance.allowed_clients = [randomize()]
+    instance.empty_str_field_list = [randomize()]
     instance.logo_url = randomize("url")
     instance.token_claims_mapping = {randomize(): randomize()}
     return instance
@@ -2786,6 +2810,25 @@ def create_model_user_information_example() -> ModelUserInformation:
     return instance
 
 
+def create_model_user_input_validation_request_example() -> (
+    ModelUserInputValidationRequest
+):
+    instance = ModelUserInputValidationRequest()
+    instance.display_name = randomize("slug")
+    instance.unique_display_name = randomize()
+    instance.username = randomize("slug")
+    return instance
+
+
+def create_model_user_input_validation_response_example() -> (
+    ModelUserInputValidationResponse
+):
+    instance = ModelUserInputValidationResponse()
+    instance.valid = randomize("bool")
+    instance.message = randomize()
+    return instance
+
+
 def create_model_user_invitation_history_example() -> ModelUserInvitationHistory:
     instance = ModelUserInvitationHistory()
     instance.accepted = randomize("bool")
@@ -2820,6 +2863,20 @@ def create_model_user_login_history_response_example() -> ModelUserLoginHistoryR
     return instance
 
 
+def create_model_user_mfa_status_response_v4_example() -> ModelUserMFAStatusResponseV4:
+    instance = ModelUserMFAStatusResponseV4()
+    instance.enabled = randomize("bool")
+    instance.default_factor = randomize()
+    instance.enabled_factors = [randomize()]
+    return instance
+
+
+def create_model_user_mfa_token_response_v4_example() -> ModelUserMFATokenResponseV4:
+    instance = ModelUserMFATokenResponseV4()
+    instance.mfa_token = randomize()
+    return instance
+
+
 def create_model_user_password_update_request_example() -> (
     ModelUserPasswordUpdateRequest
 ):
@@ -2837,6 +2894,7 @@ def create_model_user_password_update_v3_request_example() -> (
     instance.language_tag = randomize()
     instance.new_password = randomize()
     instance.old_password = randomize()
+    instance.mfa_token = randomize()
     return instance
 
 
@@ -3083,6 +3141,7 @@ def create_model_validation_detail_example() -> ModelValidationDetail:
     instance.special_character_location = randomize()
     instance.special_characters = [randomize()]
     instance.avatar_config = create_accountcommon_avatar_config_example()
+    instance.profanity_filter = randomize()
     return instance
 
 
@@ -3106,6 +3165,7 @@ def create_model_validation_detail_public_example() -> ModelValidationDetailPubl
     instance.special_character_location = randomize()
     instance.special_characters = [randomize()]
     instance.avatar_config = create_accountcommon_avatar_config_example()
+    instance.profanity_filter = randomize()
     return instance
 
 
@@ -3417,6 +3477,7 @@ def create_validation_example() -> Validation:
     instance.max_repeating_special_character = randomize("int", min_val=1, max_val=1000)
     instance.min_char_type = randomize("int", min_val=1, max_val=1000)
     instance.min_length = randomize("int", min_val=1, max_val=1000)
+    instance.profanity_filter = randomize()
     instance.regex = randomize()
     instance.special_character_location = randomize()
     instance.special_characters = [randomize()]

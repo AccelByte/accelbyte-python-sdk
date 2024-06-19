@@ -58,6 +58,7 @@ from ..api.match2.models import ApiTicket
 from ..api.match2.models import ApiTicketMetricResultRecord
 from ..api.match2.models import ConfigEnvironmentVariable
 from ..api.match2.models import ConfigmodelsNamespaceConfig
+from ..api.match2.models import LogconfigConfiguration
 from ..api.match2.models import MatchmakerMatchTicketRecord
 from ..api.match2.models import MatchmakerParty
 from ..api.match2.models import MatchmakerProposedProposal
@@ -251,6 +252,7 @@ def create_api_match_ticket_request_example() -> ApiMatchTicketRequest:
     instance.latencies = {}
     instance.match_pool = randomize()
     instance.session_id = randomize("uid")
+    instance.storage = {randomize(): randomize()}
     return instance
 
 
@@ -295,6 +297,7 @@ def create_api_patch_namespace_config_request_example() -> (
     ApiPatchNamespaceConfigRequest
 ):
     instance = ApiPatchNamespaceConfigRequest()
+    instance.extra_platforms = [randomize()]
     instance.platform_group = {}
     return instance
 
@@ -367,7 +370,14 @@ def create_config_environment_variable_example() -> ConfigEnvironmentVariable:
 def create_configmodels_namespace_config_example() -> ConfigmodelsNamespaceConfig:
     instance = ConfigmodelsNamespaceConfig()
     instance.namespace = randomize("slug")
+    instance.extra_platforms = [randomize()]
     instance.platform_group = {}
+    return instance
+
+
+def create_logconfig_configuration_example() -> LogconfigConfiguration:
+    instance = LogconfigConfiguration()
+    instance.log_level = randomize()
     return instance
 
 
@@ -409,6 +419,7 @@ def create_matchmaker_team_example() -> MatchmakerTeam:
 def create_matchmaker_ticket_example() -> MatchmakerTicket:
     instance = MatchmakerTicket()
     instance.created_at = randomize("date")
+    instance.is_active = randomize("bool")
     instance.latencies = {}
     instance.match_pool = randomize()
     instance.namespace = randomize("slug")
@@ -417,6 +428,7 @@ def create_matchmaker_ticket_example() -> MatchmakerTicket:
     instance.proposed_proposal = create_matchmaker_proposed_proposal_example()
     instance.ticket_attributes = {randomize(): randomize()}
     instance.ticket_id = randomize()
+    instance.ticket_information = {randomize(): randomize()}
     return instance
 
 

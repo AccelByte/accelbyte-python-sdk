@@ -42,11 +42,7 @@ class UpdatePass(Operation):
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : updated pass
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : updated pass
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/passes/{code}
@@ -59,7 +55,7 @@ class UpdatePass(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL PassUpdate in body
 
@@ -89,7 +85,7 @@ class UpdatePass(Operation):
     _method: str = "PATCH"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: PassUpdate  # OPTIONAL in [body]

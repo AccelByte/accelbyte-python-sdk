@@ -35,12 +35,137 @@ from ..models import ApiArtifactUsageResponse
 from ..models import ApiFleetArtifactsSampleRules
 from ..models import ResponseErrorResponse
 
+from ..operations.artifacts import ArtifactBulkDelete
 from ..operations.artifacts import ArtifactDelete
 from ..operations.artifacts import ArtifactGet
 from ..operations.artifacts import ArtifactGetURL
 from ..operations.artifacts import ArtifactUsageGet
 from ..operations.artifacts import FleetArtifactSamplingRulesGet
 from ..operations.artifacts import FleetArtifactSamplingRulesSet
+
+
+@same_doc_as(ArtifactBulkDelete)
+def artifact_bulk_delete(
+    artifact_type: Optional[str] = None,
+    fleet_id: Optional[str] = None,
+    uploaded_before: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """delete artifacts that match criteria in bulk. all artifacts matching any one criteria will be deleted. at least 1 parameter is required. (ArtifactBulkDelete)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/artifacts
+
+        method: DELETE
+
+        tags: ["Artifacts"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        artifact_type: (artifactType) OPTIONAL str in query
+
+        fleet_id: (fleetId) OPTIONAL str in query
+
+        uploaded_before: (uploadedBefore) OPTIONAL str in query
+
+    Responses:
+        202: Accepted - (delete received)
+
+        400: Bad Request - ResponseErrorResponse (bad request)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ArtifactBulkDelete.create(
+        artifact_type=artifact_type,
+        fleet_id=fleet_id,
+        uploaded_before=uploaded_before,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ArtifactBulkDelete)
+async def artifact_bulk_delete_async(
+    artifact_type: Optional[str] = None,
+    fleet_id: Optional[str] = None,
+    uploaded_before: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """delete artifacts that match criteria in bulk. all artifacts matching any one criteria will be deleted. at least 1 parameter is required. (ArtifactBulkDelete)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/artifacts
+
+        method: DELETE
+
+        tags: ["Artifacts"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        artifact_type: (artifactType) OPTIONAL str in query
+
+        fleet_id: (fleetId) OPTIONAL str in query
+
+        uploaded_before: (uploadedBefore) OPTIONAL str in query
+
+    Responses:
+        202: Accepted - (delete received)
+
+        400: Bad Request - ResponseErrorResponse (bad request)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ArtifactBulkDelete.create(
+        artifact_type=artifact_type,
+        fleet_id=fleet_id,
+        uploaded_before=uploaded_before,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(ArtifactDelete)

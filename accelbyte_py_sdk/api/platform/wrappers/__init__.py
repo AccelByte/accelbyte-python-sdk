@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.52.0"
+__version__ = "4.53.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -481,8 +481,8 @@ from ._item import public_validate_item_purchase_condition
 from ._item import public_validate_item_purchase_condition_async
 from ._item import query_items
 from ._item import query_items_async
-from ._item import query_items_1
-from ._item import query_items_1_async
+from ._item import query_items_v2
+from ._item import query_items_v2_async
 from ._item import query_uncategorized_items
 from ._item import query_uncategorized_items_async
 from ._item import return_item
@@ -608,6 +608,8 @@ from ._payment_config import get_aggregate_payment_providers
 from ._payment_config import get_aggregate_payment_providers_async
 from ._payment_config import get_payment_merchant_config
 from ._payment_config import get_payment_merchant_config_async
+from ._payment_config import get_payment_merchant_config_1
+from ._payment_config import get_payment_merchant_config_1_async
 from ._payment_config import get_payment_tax_config
 from ._payment_config import get_payment_tax_config_async
 from ._payment_config import get_special_payment_providers
@@ -626,6 +628,10 @@ from ._payment_config import test_checkout_config
 from ._payment_config import test_checkout_config_async
 from ._payment_config import test_checkout_config_by_id
 from ._payment_config import test_checkout_config_by_id_async
+from ._payment_config import test_neon_pay_config
+from ._payment_config import test_neon_pay_config_async
+from ._payment_config import test_neon_pay_config_by_id
+from ._payment_config import test_neon_pay_config_by_id_async
 from ._payment_config import test_pay_pal_config
 from ._payment_config import test_pay_pal_config_async
 from ._payment_config import test_pay_pal_config_by_id
@@ -648,8 +654,12 @@ from ._payment_config import update_ali_pay_config
 from ._payment_config import update_ali_pay_config_async
 from ._payment_config import update_checkout_config
 from ._payment_config import update_checkout_config_async
+from ._payment_config import update_neon_pay_config
+from ._payment_config import update_neon_pay_config_async
 from ._payment_config import update_pay_pal_config
 from ._payment_config import update_pay_pal_config_async
+from ._payment_config import update_payment_domain_whitelist_config
+from ._payment_config import update_payment_domain_whitelist_config_async
 from ._payment_config import update_payment_provider_config
 from ._payment_config import update_payment_provider_config_async
 from ._payment_config import update_payment_tax_config
@@ -692,6 +702,11 @@ from ._payment_station import public_get_unpaid_payment_order
 from ._payment_station import public_get_unpaid_payment_order_async
 from ._payment_station import public_normalize_payment_return_url
 from ._payment_station import public_normalize_payment_return_url_async
+
+from ._platform import get_psn_entitlement_ownership
+from ._platform import get_psn_entitlement_ownership_async
+from ._platform import get_xbox_entitlement_ownership
+from ._platform import get_xbox_entitlement_ownership_async
 
 from ._platform_account_closure import get_user_platform_account_closure_histories
 from ._platform_account_closure import get_user_platform_account_closure_histories_async

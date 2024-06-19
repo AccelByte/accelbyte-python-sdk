@@ -30,12 +30,14 @@ from ....core import StrEnum
 
 from ..models.additional_data import AdditionalData
 from ..models.currency_summary import CurrencySummary
+from ..models.payment_data import PaymentData
 
 
 class PaymentProviderEnum(StrEnum):
     ADYEN = "ADYEN"
     ALIPAY = "ALIPAY"
     CHECKOUT = "CHECKOUT"
+    NEONPAY = "NEONPAY"
     PAYPAL = "PAYPAL"
     STRIPE = "STRIPE"
     WALLET = "WALLET"
@@ -105,6 +107,8 @@ class TradeNotification(Model):
 
         metadata: (metadata) OPTIONAL Dict[str, str]
 
+        payment_data: (paymentData) OPTIONAL PaymentData
+
         payment_method: (paymentMethod) OPTIONAL str
 
         payment_method_fee: (paymentMethodFee) OPTIONAL int
@@ -165,6 +169,7 @@ class TradeNotification(Model):
     ext_tx_id: str  # OPTIONAL
     ext_user_id: str  # OPTIONAL
     metadata: Dict[str, str]  # OPTIONAL
+    payment_data: PaymentData  # OPTIONAL
     payment_method: str  # OPTIONAL
     payment_method_fee: int  # OPTIONAL
     payment_provider_fee: int  # OPTIONAL
@@ -272,6 +277,10 @@ class TradeNotification(Model):
 
     def with_metadata(self, value: Dict[str, str]) -> TradeNotification:
         self.metadata = value
+        return self
+
+    def with_payment_data(self, value: PaymentData) -> TradeNotification:
+        self.payment_data = value
         return self
 
     def with_payment_method(self, value: str) -> TradeNotification:
@@ -440,6 +449,12 @@ class TradeNotification(Model):
             result["metadata"] = {str(k0): str(v0) for k0, v0 in self.metadata.items()}
         elif include_empty:
             result["metadata"] = {}
+        if hasattr(self, "payment_data"):
+            result["paymentData"] = self.payment_data.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["paymentData"] = PaymentData()
         if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
@@ -542,6 +557,7 @@ class TradeNotification(Model):
         ext_tx_id: Optional[str] = None,
         ext_user_id: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
+        payment_data: Optional[PaymentData] = None,
         payment_method: Optional[str] = None,
         payment_method_fee: Optional[int] = None,
         payment_provider_fee: Optional[int] = None,
@@ -594,6 +610,8 @@ class TradeNotification(Model):
             instance.ext_user_id = ext_user_id
         if metadata is not None:
             instance.metadata = metadata
+        if payment_data is not None:
+            instance.payment_data = payment_data
         if payment_method is not None:
             instance.payment_method = payment_method
         if payment_method_fee is not None:
@@ -734,6 +752,12 @@ class TradeNotification(Model):
             }
         elif include_empty:
             instance.metadata = {}
+        if "paymentData" in dict_ and dict_["paymentData"] is not None:
+            instance.payment_data = PaymentData.create_from_dict(
+                dict_["paymentData"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.payment_data = PaymentData()
         if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
             instance.payment_method = str(dict_["paymentMethod"])
         elif include_empty:
@@ -868,6 +892,7 @@ class TradeNotification(Model):
             "extTxId": "ext_tx_id",
             "extUserId": "ext_user_id",
             "metadata": "metadata",
+            "paymentData": "payment_data",
             "paymentMethod": "payment_method",
             "paymentMethodFee": "payment_method_fee",
             "paymentProviderFee": "payment_provider_fee",
@@ -912,6 +937,7 @@ class TradeNotification(Model):
             "extTxId": False,
             "extUserId": False,
             "metadata": False,
+            "paymentData": False,
             "paymentMethod": False,
             "paymentMethodFee": False,
             "paymentProviderFee": False,
@@ -939,6 +965,7 @@ class TradeNotification(Model):
                 "ADYEN",
                 "ALIPAY",
                 "CHECKOUT",
+                "NEONPAY",
                 "PAYPAL",
                 "STRIPE",
                 "WALLET",

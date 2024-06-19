@@ -30,7 +30,7 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.platform import query_items_1 as query_items_1_internal
+from accelbyte_py_sdk.api.platform import query_items_v2 as query_items_v2_internal
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import FullItemPagingResult
 from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
@@ -59,7 +59,7 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def query_items_1(
+def query_items_v2(
     app_type: Optional[str] = None,
     available_date: Optional[str] = None,
     base_app_id: Optional[str] = None,
@@ -84,20 +84,26 @@ def query_items_1(
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(query_items_1_internal.__doc__)
+        click.echo(query_items_v2_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if item_type is not None:
+        try:
+            item_type_json = json.loads(item_type)
+            item_type = [str(i0) for i0 in item_type_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'itemType'. {str(e)}") from e
     if sort_by is not None:
         try:
             sort_by_json = json.loads(sort_by)
             sort_by = [str(i0) for i0 in sort_by_json]
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'sortBy'. {str(e)}") from e
-    result, error = query_items_1_internal(
+    result, error = query_items_v2_internal(
         app_type=app_type,
         available_date=available_date,
         base_app_id=base_app_id,
@@ -120,9 +126,9 @@ def query_items_1(
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"queryItems_1 failed: {str(error)}")
+        raise Exception(f"queryItemsV2 failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-query_items_1.operation_id = "queryItems_1"
-query_items_1.is_deprecated = False
+query_items_v2.operation_id = "queryItemsV2"
+query_items_v2.is_deprecated = False

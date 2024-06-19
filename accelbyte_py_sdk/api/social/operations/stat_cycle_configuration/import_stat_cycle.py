@@ -38,13 +38,6 @@ class ImportStatCycle(Operation):
 
     Import stat cycle configurations for a given namespace from file. At current, only JSON file is supported.
 
-    Other detail info:
-
-      *  *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
-
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statCycles/import
 
@@ -56,7 +49,7 @@ class ImportStatCycle(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         file: (file) OPTIONAL Any in form_data
 
@@ -82,7 +75,7 @@ class ImportStatCycle(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["multipart/form-data"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     file: Any  # OPTIONAL in [form_data]

@@ -37,13 +37,6 @@ class DeleteTier(Operation):
 
     This API is used to delete a tier permanently, only draft season pass can be deleted.
 
-    Other detail info:
-
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}
 
@@ -55,7 +48,7 @@ class DeleteTier(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         id_: (id) REQUIRED str in path
 
@@ -79,7 +72,7 @@ class DeleteTier(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     id_: str  # REQUIRED in [path]

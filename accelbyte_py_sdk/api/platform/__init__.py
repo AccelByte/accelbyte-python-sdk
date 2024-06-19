@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.52.0"
+__version__ = "4.53.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -497,8 +497,8 @@ from .wrappers import public_validate_item_purchase_condition
 from .wrappers import public_validate_item_purchase_condition_async
 from .wrappers import query_items
 from .wrappers import query_items_async
-from .wrappers import query_items_1
-from .wrappers import query_items_1_async
+from .wrappers import query_items_v2
+from .wrappers import query_items_v2_async
 from .wrappers import query_uncategorized_items
 from .wrappers import query_uncategorized_items_async
 from .wrappers import return_item
@@ -631,6 +631,8 @@ from .wrappers import get_aggregate_payment_providers
 from .wrappers import get_aggregate_payment_providers_async
 from .wrappers import get_payment_merchant_config
 from .wrappers import get_payment_merchant_config_async
+from .wrappers import get_payment_merchant_config_1
+from .wrappers import get_payment_merchant_config_1_async
 from .wrappers import get_payment_tax_config
 from .wrappers import get_payment_tax_config_async
 from .wrappers import get_special_payment_providers
@@ -649,6 +651,10 @@ from .wrappers import test_checkout_config
 from .wrappers import test_checkout_config_async
 from .wrappers import test_checkout_config_by_id
 from .wrappers import test_checkout_config_by_id_async
+from .wrappers import test_neon_pay_config
+from .wrappers import test_neon_pay_config_async
+from .wrappers import test_neon_pay_config_by_id
+from .wrappers import test_neon_pay_config_by_id_async
 from .wrappers import test_pay_pal_config
 from .wrappers import test_pay_pal_config_async
 from .wrappers import test_pay_pal_config_by_id
@@ -671,8 +677,12 @@ from .wrappers import update_ali_pay_config
 from .wrappers import update_ali_pay_config_async
 from .wrappers import update_checkout_config
 from .wrappers import update_checkout_config_async
+from .wrappers import update_neon_pay_config
+from .wrappers import update_neon_pay_config_async
 from .wrappers import update_pay_pal_config
 from .wrappers import update_pay_pal_config_async
+from .wrappers import update_payment_domain_whitelist_config
+from .wrappers import update_payment_domain_whitelist_config_async
 from .wrappers import update_payment_provider_config
 from .wrappers import update_payment_provider_config_async
 from .wrappers import update_payment_tax_config
@@ -717,6 +727,12 @@ from .wrappers import public_get_unpaid_payment_order
 from .wrappers import public_get_unpaid_payment_order_async
 from .wrappers import public_normalize_payment_return_url
 from .wrappers import public_normalize_payment_return_url_async
+
+# platform
+from .wrappers import get_psn_entitlement_ownership
+from .wrappers import get_psn_entitlement_ownership_async
+from .wrappers import get_xbox_entitlement_ownership
+from .wrappers import get_xbox_entitlement_ownership_async
 
 # platform_account_closure
 from .wrappers import get_user_platform_account_closure_histories

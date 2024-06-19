@@ -40,6 +40,8 @@ class ApimodelsItemResp(Model):
 
         inventory_id: (inventoryId) REQUIRED str
 
+        item_info: (itemInfo) REQUIRED Dict[str, Any]
+
         namespace: (namespace) REQUIRED str
 
         qty: (qty) REQUIRED int
@@ -71,6 +73,7 @@ class ApimodelsItemResp(Model):
     custom_attributes: Dict[str, Any]  # REQUIRED
     id_: str  # REQUIRED
     inventory_id: str  # REQUIRED
+    item_info: Dict[str, Any]  # REQUIRED
     namespace: str  # REQUIRED
     qty: int  # REQUIRED
     server_custom_attributes: Dict[str, Any]  # REQUIRED
@@ -102,6 +105,10 @@ class ApimodelsItemResp(Model):
 
     def with_inventory_id(self, value: str) -> ApimodelsItemResp:
         self.inventory_id = value
+        return self
+
+    def with_item_info(self, value: Dict[str, Any]) -> ApimodelsItemResp:
+        self.item_info = value
         return self
 
     def with_namespace(self, value: str) -> ApimodelsItemResp:
@@ -176,6 +183,10 @@ class ApimodelsItemResp(Model):
             result["inventoryId"] = str(self.inventory_id)
         elif include_empty:
             result["inventoryId"] = ""
+        if hasattr(self, "item_info"):
+            result["itemInfo"] = {str(k0): v0 for k0, v0 in self.item_info.items()}
+        elif include_empty:
+            result["itemInfo"] = {}
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -239,6 +250,7 @@ class ApimodelsItemResp(Model):
         custom_attributes: Dict[str, Any],
         id_: str,
         inventory_id: str,
+        item_info: Dict[str, Any],
         namespace: str,
         qty: int,
         server_custom_attributes: Dict[str, Any],
@@ -258,6 +270,7 @@ class ApimodelsItemResp(Model):
         instance.custom_attributes = custom_attributes
         instance.id_ = id_
         instance.inventory_id = inventory_id
+        instance.item_info = item_info
         instance.namespace = namespace
         instance.qty = qty
         instance.server_custom_attributes = server_custom_attributes
@@ -298,6 +311,10 @@ class ApimodelsItemResp(Model):
             instance.inventory_id = str(dict_["inventoryId"])
         elif include_empty:
             instance.inventory_id = ""
+        if "itemInfo" in dict_ and dict_["itemInfo"] is not None:
+            instance.item_info = {str(k0): v0 for k0, v0 in dict_["itemInfo"].items()}
+        elif include_empty:
+            instance.item_info = {}
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -396,6 +413,7 @@ class ApimodelsItemResp(Model):
             "customAttributes": "custom_attributes",
             "id": "id_",
             "inventoryId": "inventory_id",
+            "itemInfo": "item_info",
             "namespace": "namespace",
             "qty": "qty",
             "serverCustomAttributes": "server_custom_attributes",
@@ -417,6 +435,7 @@ class ApimodelsItemResp(Model):
             "customAttributes": True,
             "id": True,
             "inventoryId": True,
+            "itemInfo": True,
             "namespace": True,
             "qty": True,
             "serverCustomAttributes": True,

@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.api_ds_host_configuration import ApiDSHostConfiguration
+from ..models.api_fleet_artifacts_sample_rules import ApiFleetArtifactsSampleRules
 from ..models.api_image_deployment_profile import ApiImageDeploymentProfile
 from ..models.api_region_config import ApiRegionConfig
 
@@ -53,6 +54,8 @@ class ApiFleetGetResponse(Model):
         on_demand: (onDemand) REQUIRED bool
 
         regions: (regions) REQUIRED List[ApiRegionConfig]
+
+        sampling_rules: (samplingRules) REQUIRED ApiFleetArtifactsSampleRules
     """
 
     # region fields
@@ -66,6 +69,7 @@ class ApiFleetGetResponse(Model):
     name: str  # REQUIRED
     on_demand: bool  # REQUIRED
     regions: List[ApiRegionConfig]  # REQUIRED
+    sampling_rules: ApiFleetArtifactsSampleRules  # REQUIRED
 
     # endregion fields
 
@@ -109,6 +113,12 @@ class ApiFleetGetResponse(Model):
 
     def with_regions(self, value: List[ApiRegionConfig]) -> ApiFleetGetResponse:
         self.regions = value
+        return self
+
+    def with_sampling_rules(
+        self, value: ApiFleetArtifactsSampleRules
+    ) -> ApiFleetGetResponse:
+        self.sampling_rules = value
         return self
 
     # endregion with_x methods
@@ -159,6 +169,12 @@ class ApiFleetGetResponse(Model):
             ]
         elif include_empty:
             result["regions"] = []
+        if hasattr(self, "sampling_rules"):
+            result["samplingRules"] = self.sampling_rules.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["samplingRules"] = ApiFleetArtifactsSampleRules()
         return result
 
     # endregion to methods
@@ -177,6 +193,7 @@ class ApiFleetGetResponse(Model):
         name: str,
         on_demand: bool,
         regions: List[ApiRegionConfig],
+        sampling_rules: ApiFleetArtifactsSampleRules,
         **kwargs,
     ) -> ApiFleetGetResponse:
         instance = cls()
@@ -189,6 +206,7 @@ class ApiFleetGetResponse(Model):
         instance.name = name
         instance.on_demand = on_demand
         instance.regions = regions
+        instance.sampling_rules = sampling_rules
         return instance
 
     @classmethod
@@ -246,6 +264,12 @@ class ApiFleetGetResponse(Model):
             ]
         elif include_empty:
             instance.regions = []
+        if "samplingRules" in dict_ and dict_["samplingRules"] is not None:
+            instance.sampling_rules = ApiFleetArtifactsSampleRules.create_from_dict(
+                dict_["samplingRules"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.sampling_rules = ApiFleetArtifactsSampleRules()
         return instance
 
     @classmethod
@@ -296,6 +320,7 @@ class ApiFleetGetResponse(Model):
             "name": "name",
             "onDemand": "on_demand",
             "regions": "regions",
+            "samplingRules": "sampling_rules",
         }
 
     @staticmethod
@@ -310,6 +335,7 @@ class ApiFleetGetResponse(Model):
             "name": True,
             "onDemand": True,
             "regions": True,
+            "samplingRules": True,
         }
 
     # endregion static methods

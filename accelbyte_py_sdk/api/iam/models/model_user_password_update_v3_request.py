@@ -37,6 +37,8 @@ class ModelUserPasswordUpdateV3Request(Model):
         new_password: (newPassword) REQUIRED str
 
         old_password: (oldPassword) REQUIRED str
+
+        mfa_token: (mfaToken) OPTIONAL str
     """
 
     # region fields
@@ -44,6 +46,7 @@ class ModelUserPasswordUpdateV3Request(Model):
     language_tag: str  # REQUIRED
     new_password: str  # REQUIRED
     old_password: str  # REQUIRED
+    mfa_token: str  # OPTIONAL
 
     # endregion fields
 
@@ -59,6 +62,10 @@ class ModelUserPasswordUpdateV3Request(Model):
 
     def with_old_password(self, value: str) -> ModelUserPasswordUpdateV3Request:
         self.old_password = value
+        return self
+
+    def with_mfa_token(self, value: str) -> ModelUserPasswordUpdateV3Request:
+        self.mfa_token = value
         return self
 
     # endregion with_x methods
@@ -79,6 +86,10 @@ class ModelUserPasswordUpdateV3Request(Model):
             result["oldPassword"] = str(self.old_password)
         elif include_empty:
             result["oldPassword"] = ""
+        if hasattr(self, "mfa_token"):
+            result["mfaToken"] = str(self.mfa_token)
+        elif include_empty:
+            result["mfaToken"] = ""
         return result
 
     # endregion to methods
@@ -87,12 +98,19 @@ class ModelUserPasswordUpdateV3Request(Model):
 
     @classmethod
     def create(
-        cls, language_tag: str, new_password: str, old_password: str, **kwargs
+        cls,
+        language_tag: str,
+        new_password: str,
+        old_password: str,
+        mfa_token: Optional[str] = None,
+        **kwargs,
     ) -> ModelUserPasswordUpdateV3Request:
         instance = cls()
         instance.language_tag = language_tag
         instance.new_password = new_password
         instance.old_password = old_password
+        if mfa_token is not None:
+            instance.mfa_token = mfa_token
         return instance
 
     @classmethod
@@ -114,6 +132,10 @@ class ModelUserPasswordUpdateV3Request(Model):
             instance.old_password = str(dict_["oldPassword"])
         elif include_empty:
             instance.old_password = ""
+        if "mfaToken" in dict_ and dict_["mfaToken"] is not None:
+            instance.mfa_token = str(dict_["mfaToken"])
+        elif include_empty:
+            instance.mfa_token = ""
         return instance
 
     @classmethod
@@ -160,6 +182,7 @@ class ModelUserPasswordUpdateV3Request(Model):
             "languageTag": "language_tag",
             "newPassword": "new_password",
             "oldPassword": "old_password",
+            "mfaToken": "mfa_token",
         }
 
     @staticmethod
@@ -168,6 +191,7 @@ class ModelUserPasswordUpdateV3Request(Model):
             "languageTag": True,
             "newPassword": True,
             "oldPassword": True,
+            "mfaToken": False,
         }
 
     # endregion static methods

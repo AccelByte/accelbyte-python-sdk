@@ -458,7 +458,7 @@ def admin_get_inventory_item(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -520,7 +520,7 @@ async def admin_get_inventory_item_async(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -563,7 +563,6 @@ def admin_list_items(
     inventory_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    qty_gte: Optional[int] = None,
     sort_by: Optional[Union[str, AdminListItemsSortByEnum]] = None,
     source_item_id: Optional[str] = None,
     tags: Optional[str] = None,
@@ -589,7 +588,7 @@ def admin_list_items(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -602,8 +601,6 @@ def admin_list_items(
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
-
-        qty_gte: (qtyGte) OPTIONAL int in query
 
         sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
@@ -626,7 +623,6 @@ def admin_list_items(
         inventory_id=inventory_id,
         limit=limit,
         offset=offset,
-        qty_gte=qty_gte,
         sort_by=sort_by,
         source_item_id=source_item_id,
         tags=tags,
@@ -640,7 +636,6 @@ async def admin_list_items_async(
     inventory_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    qty_gte: Optional[int] = None,
     sort_by: Optional[Union[str, AdminListItemsSortByEnum]] = None,
     source_item_id: Optional[str] = None,
     tags: Optional[str] = None,
@@ -666,7 +661,7 @@ async def admin_list_items_async(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -679,8 +674,6 @@ async def admin_list_items_async(
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
-
-        qty_gte: (qtyGte) OPTIONAL int in query
 
         sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
@@ -703,7 +696,6 @@ async def admin_list_items_async(
         inventory_id=inventory_id,
         limit=limit,
         offset=offset,
-        qty_gte=qty_gte,
         sort_by=sort_by,
         source_item_id=source_item_id,
         tags=tags,
@@ -737,6 +729,11 @@ def admin_save_item(
 
     For Ecommerce item, this fields will be override by ecommerce configuration
     (slotUsed, serverCustomAttributes, customAttributes, type)
+
+    For Ecommerce items, the quantity saved is dynamically adjusted based on an item's useCount configured in Store.
+    When saving items, the quantity specified for each item will be multiplied by the useCount.
+    i.e. If the store item is configured with a useCount of 5
+    and the quantity of a particular item is set to 2 during saving, it will be stored as 10.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
@@ -805,6 +802,11 @@ async def admin_save_item_async(
     For Ecommerce item, this fields will be override by ecommerce configuration
     (slotUsed, serverCustomAttributes, customAttributes, type)
 
+    For Ecommerce items, the quantity saved is dynamically adjusted based on an item's useCount configured in Store.
+    When saving items, the quantity specified for each item will be multiplied by the useCount.
+    i.e. If the store item is configured with a useCount of 5
+    and the quantity of a particular item is set to 2 during saving, it will be stored as 10.
+
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
     Required Permission(s):
@@ -870,6 +872,14 @@ def admin_save_item_to_inventory(
 
     Tags will be auto-created.
     ItemType will be auto-created.
+
+    For Ecommerce item, this fields will be override by ecommerce configuration
+    (slotUsed, serverCustomAttributes, customAttributes, type)
+
+    For Ecommerce items, the quantity saved is dynamically adjusted based on an item's useCount configured in Store.
+    When saving items, the quantity specified for each item will be multiplied by the useCount.
+    i.e. If the store item is configured with a useCount of 5
+    and the quantity of a particular item is set to 2 during saving, it will be stored as 10.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
@@ -938,6 +948,14 @@ async def admin_save_item_to_inventory_async(
     Tags will be auto-created.
     ItemType will be auto-created.
 
+    For Ecommerce item, this fields will be override by ecommerce configuration
+    (slotUsed, serverCustomAttributes, customAttributes, type)
+
+    For Ecommerce items, the quantity saved is dynamically adjusted based on an item's useCount configured in Store.
+    When saving items, the quantity specified for each item will be multiplied by the useCount.
+    i.e. If the store item is configured with a useCount of 5
+    and the quantity of a particular item is set to 2 during saving, it will be stored as 10.
+
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
     Required Permission(s):
@@ -996,6 +1014,8 @@ def admin_sync_user_entitlements(
     """To sync user's entitlements to e-commerce (AdminSyncUserEntitlements)
 
 
+    Sync user's entitlement from e-commerce service to inventory for non exist item at user inventory.
+    will skip the item if already exist at user inventory.
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
     Required Permission(s):
@@ -1008,7 +1028,7 @@ def admin_sync_user_entitlements(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -1052,6 +1072,8 @@ async def admin_sync_user_entitlements_async(
     """To sync user's entitlements to e-commerce (AdminSyncUserEntitlements)
 
 
+    Sync user's entitlement from e-commerce service to inventory for non exist item at user inventory.
+    will skip the item if already exist at user inventory.
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
     Required Permission(s):
@@ -1064,7 +1086,7 @@ async def admin_sync_user_entitlements_async(
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

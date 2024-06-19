@@ -47,6 +47,14 @@ class AdminSaveItemToInventory(Operation):
     Tags will be auto-created.
     ItemType will be auto-created.
 
+    For Ecommerce item, this fields will be override by ecommerce configuration
+    (slotUsed, serverCustomAttributes, customAttributes, type)
+
+    For Ecommerce items, the quantity saved is dynamically adjusted based on an item's useCount configured in Store.
+    When saving items, the quantity specified for each item will be multiplied by the useCount.
+    i.e. If the store item is configured with a useCount of 5
+    and the quantity of a particular item is set to 2 during saving, it will be stored as 10.
+
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
     Required Permission(s):

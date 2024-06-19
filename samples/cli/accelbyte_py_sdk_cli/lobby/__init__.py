@@ -25,6 +25,8 @@ from ._bulk_delete_friends import bulk_delete_friends
 from ._sync_native_friends import sync_native_friends
 from ._sync_native_blocked_user import sync_native_blocked_user
 from ._admin_get_all_config_v1 import admin_get_all_config_v1
+from ._admin_get_log_config import admin_get_log_config
+from ._admin_patch_update_log_config import admin_patch_update_log_config
 from ._admin_get_config_v1 import admin_get_config_v1
 from ._admin_update_config_v1 import admin_update_config_v1
 from ._admin_export_config_v1 import admin_export_config_v1
@@ -178,6 +180,8 @@ commands = [
     sync_native_friends,
     sync_native_blocked_user,
     admin_get_all_config_v1,
+    admin_get_log_config,
+    admin_patch_update_log_config,
     admin_get_config_v1,
     admin_update_config_v1,
     admin_export_config_v1,

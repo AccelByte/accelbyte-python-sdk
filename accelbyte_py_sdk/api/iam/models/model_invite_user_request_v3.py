@@ -38,6 +38,8 @@ class ModelInviteUserRequestV3(Model):
 
         roles: (roles) REQUIRED List[str]
 
+        language_tag: (languageTag) OPTIONAL str
+
         namespace: (namespace) OPTIONAL str
     """
 
@@ -46,6 +48,7 @@ class ModelInviteUserRequestV3(Model):
     email_addresses: List[str]  # REQUIRED
     is_admin: bool  # REQUIRED
     roles: List[str]  # REQUIRED
+    language_tag: str  # OPTIONAL
     namespace: str  # OPTIONAL
 
     # endregion fields
@@ -62,6 +65,10 @@ class ModelInviteUserRequestV3(Model):
 
     def with_roles(self, value: List[str]) -> ModelInviteUserRequestV3:
         self.roles = value
+        return self
+
+    def with_language_tag(self, value: str) -> ModelInviteUserRequestV3:
+        self.language_tag = value
         return self
 
     def with_namespace(self, value: str) -> ModelInviteUserRequestV3:
@@ -86,6 +93,10 @@ class ModelInviteUserRequestV3(Model):
             result["roles"] = [str(i0) for i0 in self.roles]
         elif include_empty:
             result["roles"] = []
+        if hasattr(self, "language_tag"):
+            result["languageTag"] = str(self.language_tag)
+        elif include_empty:
+            result["languageTag"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -102,6 +113,7 @@ class ModelInviteUserRequestV3(Model):
         email_addresses: List[str],
         is_admin: bool,
         roles: List[str],
+        language_tag: Optional[str] = None,
         namespace: Optional[str] = None,
         **kwargs,
     ) -> ModelInviteUserRequestV3:
@@ -109,6 +121,8 @@ class ModelInviteUserRequestV3(Model):
         instance.email_addresses = email_addresses
         instance.is_admin = is_admin
         instance.roles = roles
+        if language_tag is not None:
+            instance.language_tag = language_tag
         if namespace is not None:
             instance.namespace = namespace
         return instance
@@ -132,6 +146,10 @@ class ModelInviteUserRequestV3(Model):
             instance.roles = [str(i0) for i0 in dict_["roles"]]
         elif include_empty:
             instance.roles = []
+        if "languageTag" in dict_ and dict_["languageTag"] is not None:
+            instance.language_tag = str(dict_["languageTag"])
+        elif include_empty:
+            instance.language_tag = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -182,6 +200,7 @@ class ModelInviteUserRequestV3(Model):
             "emailAddresses": "email_addresses",
             "isAdmin": "is_admin",
             "roles": "roles",
+            "languageTag": "language_tag",
             "namespace": "namespace",
         }
 
@@ -191,6 +210,7 @@ class ModelInviteUserRequestV3(Model):
             "emailAddresses": True,
             "isAdmin": True,
             "roles": True,
+            "languageTag": False,
             "namespace": False,
         }
 

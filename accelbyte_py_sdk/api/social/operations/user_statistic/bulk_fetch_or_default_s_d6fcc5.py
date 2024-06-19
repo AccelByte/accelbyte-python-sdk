@@ -39,7 +39,6 @@ class BulkFetchOrDefaultStatItems1(Operation):
 
     Bulk fetch multiple user's stat item values for a given namespace and statCode.
     NOTE: If stat item does not exist, will return default value. Other detail info:
-    + *Required permission*: resource=ADMIN:NAMESPACE:{namespace}:STATITEM, action=2 (READ)
     + *Returns*: list of user's stat item values
 
     Properties:

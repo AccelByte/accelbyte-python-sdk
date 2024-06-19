@@ -33,9 +33,13 @@ from ...models import RestErrorResponse
 
 
 class PublicSendMyMFAEmailCodeV4(Operation):
-    """Send code for enabling email (PublicSendMyMFAEmailCodeV4)
+    """Send code for MFA email (PublicSendMyMFAEmailCodeV4)
 
     This endpoint is used to send email code.
+    ----------------
+    Supported values of action:
+    * ChangePassword
+    * DisableMFAEmail
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/email/code
@@ -44,11 +48,13 @@ class PublicSendMyMFAEmailCodeV4(Operation):
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/x-www-form-urlencoded"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        action: (action) OPTIONAL str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -72,11 +78,12 @@ class PublicSendMyMFAEmailCodeV4(Operation):
 
     _url: str = "/iam/v4/public/namespaces/{namespace}/users/me/mfa/email/code"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    action: str  # OPTIONAL in [form_data]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -117,8 +124,15 @@ class PublicSendMyMFAEmailCodeV4(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "form_data": self.get_form_data_params(),
             "path": self.get_path_params(),
         }
+
+    def get_form_data_params(self) -> dict:
+        result = {}
+        if hasattr(self, "action"):
+            result["action"] = self.action
+        return result
 
     def get_path_params(self) -> dict:
         result = {}
@@ -134,6 +148,10 @@ class PublicSendMyMFAEmailCodeV4(Operation):
 
     # region with_x methods
 
+    def with_action(self, value: str) -> PublicSendMyMFAEmailCodeV4:
+        self.action = value
+        return self
+
     def with_namespace(self, value: str) -> PublicSendMyMFAEmailCodeV4:
         self.namespace = value
         return self
@@ -144,6 +162,10 @@ class PublicSendMyMFAEmailCodeV4(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "action") and self.action:
+            result["action"] = str(self.action)
+        elif include_empty:
+            result["action"] = ""
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -211,9 +233,13 @@ class PublicSendMyMFAEmailCodeV4(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> PublicSendMyMFAEmailCodeV4:
+    def create(
+        cls, namespace: str, action: Optional[str] = None, **kwargs
+    ) -> PublicSendMyMFAEmailCodeV4:
         instance = cls()
         instance.namespace = namespace
+        if action is not None:
+            instance.action = action
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -223,6 +249,10 @@ class PublicSendMyMFAEmailCodeV4(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> PublicSendMyMFAEmailCodeV4:
         instance = cls()
+        if "action" in dict_ and dict_["action"] is not None:
+            instance.action = str(dict_["action"])
+        elif include_empty:
+            instance.action = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -232,12 +262,14 @@ class PublicSendMyMFAEmailCodeV4(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "action": "action",
             "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "action": False,
             "namespace": True,
         }
 

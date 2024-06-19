@@ -49,11 +49,7 @@ class UpdateUserStatItemValue(Operation):
     If provided, user's statitems will be saved with key: *userId_additionalKey*
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=4 (UPDATE)
     + *Returns*: updated user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/stats/{statCode}/statitems/value
@@ -66,7 +62,7 @@ class UpdateUserStatItemValue(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatItemUpdate in body
 
@@ -102,7 +98,7 @@ class UpdateUserStatItemValue(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: StatItemUpdate  # OPTIONAL in [body]

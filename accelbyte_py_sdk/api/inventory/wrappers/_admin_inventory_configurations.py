@@ -189,7 +189,7 @@ def admin_delete_inventory_configuration(
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -244,7 +244,7 @@ async def admin_delete_inventory_configuration_async(
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -300,7 +300,7 @@ def admin_get_inventory_configuration(
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -354,7 +354,7 @@ async def admin_get_inventory_configuration_async(
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -414,7 +414,7 @@ def admin_list_inventory_configurations(
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -479,7 +479,7 @@ async def admin_list_inventory_configurations_async(
 
         tags: ["Admin Inventory Configurations"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

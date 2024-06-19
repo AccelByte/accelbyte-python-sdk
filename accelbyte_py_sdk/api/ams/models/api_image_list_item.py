@@ -27,12 +27,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.api_time import ApiTime
+
 
 class ApiImageListItem(Model):
     """Api image list item (api.ImageListItem)
 
     Properties:
         created_at: (createdAt) REQUIRED str
+
+        delete_at: (deleteAt) REQUIRED ApiTime
 
         executable: (executable) REQUIRED str
 
@@ -58,6 +62,7 @@ class ApiImageListItem(Model):
     # region fields
 
     created_at: str  # REQUIRED
+    delete_at: ApiTime  # REQUIRED
     executable: str  # REQUIRED
     id_: str  # REQUIRED
     is_protected: bool  # REQUIRED
@@ -75,6 +80,10 @@ class ApiImageListItem(Model):
 
     def with_created_at(self, value: str) -> ApiImageListItem:
         self.created_at = value
+        return self
+
+    def with_delete_at(self, value: ApiTime) -> ApiImageListItem:
+        self.delete_at = value
         return self
 
     def with_executable(self, value: str) -> ApiImageListItem:
@@ -127,6 +136,10 @@ class ApiImageListItem(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
+        if hasattr(self, "delete_at"):
+            result["deleteAt"] = self.delete_at.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["deleteAt"] = ApiTime()
         if hasattr(self, "executable"):
             result["executable"] = str(self.executable)
         elif include_empty:
@@ -177,6 +190,7 @@ class ApiImageListItem(Model):
     def create(
         cls,
         created_at: str,
+        delete_at: ApiTime,
         executable: str,
         id_: str,
         is_protected: bool,
@@ -191,6 +205,7 @@ class ApiImageListItem(Model):
     ) -> ApiImageListItem:
         instance = cls()
         instance.created_at = created_at
+        instance.delete_at = delete_at
         instance.executable = executable
         instance.id_ = id_
         instance.is_protected = is_protected
@@ -214,6 +229,12 @@ class ApiImageListItem(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
+        if "deleteAt" in dict_ and dict_["deleteAt"] is not None:
+            instance.delete_at = ApiTime.create_from_dict(
+                dict_["deleteAt"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.delete_at = ApiTime()
         if "executable" in dict_ and dict_["executable"] is not None:
             instance.executable = str(dict_["executable"])
         elif include_empty:
@@ -294,6 +315,7 @@ class ApiImageListItem(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "createdAt": "created_at",
+            "deleteAt": "delete_at",
             "executable": "executable",
             "id": "id_",
             "isProtected": "is_protected",
@@ -310,6 +332,7 @@ class ApiImageListItem(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "createdAt": True,
+            "deleteAt": True,
             "executable": True,
             "id": True,
             "isProtected": True,

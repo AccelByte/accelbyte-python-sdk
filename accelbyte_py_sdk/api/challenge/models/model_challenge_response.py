@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.model_reset_config import ModelResetConfig
+
 
 class AssignmentRuleEnum(StrEnum):
     FIXED = "FIXED"
@@ -71,6 +73,8 @@ class ModelChallengeResponse(Model):
 
         name: (name) REQUIRED str
 
+        reset_config: (resetConfig) REQUIRED ModelResetConfig
+
         rotation: (rotation) REQUIRED Union[str, RotationEnum]
 
         start_date: (startDate) REQUIRED str
@@ -95,6 +99,7 @@ class ModelChallengeResponse(Model):
     description: str  # REQUIRED
     goals_visibility: Union[str, GoalsVisibilityEnum]  # REQUIRED
     name: str  # REQUIRED
+    reset_config: ModelResetConfig  # REQUIRED
     rotation: Union[str, RotationEnum]  # REQUIRED
     start_date: str  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
@@ -137,6 +142,10 @@ class ModelChallengeResponse(Model):
 
     def with_name(self, value: str) -> ModelChallengeResponse:
         self.name = value
+        return self
+
+    def with_reset_config(self, value: ModelResetConfig) -> ModelChallengeResponse:
+        self.reset_config = value
         return self
 
     def with_rotation(self, value: Union[str, RotationEnum]) -> ModelChallengeResponse:
@@ -201,6 +210,12 @@ class ModelChallengeResponse(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "reset_config"):
+            result["resetConfig"] = self.reset_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["resetConfig"] = ModelResetConfig()
         if hasattr(self, "rotation"):
             result["rotation"] = str(self.rotation)
         elif include_empty:
@@ -245,6 +260,7 @@ class ModelChallengeResponse(Model):
         description: str,
         goals_visibility: Union[str, GoalsVisibilityEnum],
         name: str,
+        reset_config: ModelResetConfig,
         rotation: Union[str, RotationEnum],
         start_date: str,
         status: Union[str, StatusEnum],
@@ -262,6 +278,7 @@ class ModelChallengeResponse(Model):
         instance.description = description
         instance.goals_visibility = goals_visibility
         instance.name = name
+        instance.reset_config = reset_config
         instance.rotation = rotation
         instance.start_date = start_date
         instance.status = status
@@ -312,6 +329,12 @@ class ModelChallengeResponse(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "resetConfig" in dict_ and dict_["resetConfig"] is not None:
+            instance.reset_config = ModelResetConfig.create_from_dict(
+                dict_["resetConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.reset_config = ModelResetConfig()
         if "rotation" in dict_ and dict_["rotation"] is not None:
             instance.rotation = str(dict_["rotation"])
         elif include_empty:
@@ -390,6 +413,7 @@ class ModelChallengeResponse(Model):
             "description": "description",
             "goalsVisibility": "goals_visibility",
             "name": "name",
+            "resetConfig": "reset_config",
             "rotation": "rotation",
             "startDate": "start_date",
             "status": "status",
@@ -409,6 +433,7 @@ class ModelChallengeResponse(Model):
             "description": True,
             "goalsVisibility": True,
             "name": True,
+            "resetConfig": True,
             "rotation": True,
             "startDate": True,
             "status": True,

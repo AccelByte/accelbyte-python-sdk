@@ -69,6 +69,8 @@ class ModelInputValidationConfigVersion(Model):
         version: (version) REQUIRED int
 
         avatar_config: (avatarConfig) OPTIONAL AccountcommonAvatarConfig
+
+        profanity_filter: (profanityFilter) OPTIONAL str
     """
 
     # region fields
@@ -91,6 +93,7 @@ class ModelInputValidationConfigVersion(Model):
     special_characters: List[str]  # REQUIRED
     version: int  # REQUIRED
     avatar_config: AccountcommonAvatarConfig  # OPTIONAL
+    profanity_filter: str  # OPTIONAL
 
     # endregion fields
 
@@ -180,6 +183,10 @@ class ModelInputValidationConfigVersion(Model):
         self.avatar_config = value
         return self
 
+    def with_profanity_filter(self, value: str) -> ModelInputValidationConfigVersion:
+        self.profanity_filter = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -264,6 +271,10 @@ class ModelInputValidationConfigVersion(Model):
             )
         elif include_empty:
             result["avatarConfig"] = AccountcommonAvatarConfig()
+        if hasattr(self, "profanity_filter"):
+            result["profanityFilter"] = str(self.profanity_filter)
+        elif include_empty:
+            result["profanityFilter"] = ""
         return result
 
     # endregion to methods
@@ -291,6 +302,7 @@ class ModelInputValidationConfigVersion(Model):
         special_characters: List[str],
         version: int,
         avatar_config: Optional[AccountcommonAvatarConfig] = None,
+        profanity_filter: Optional[str] = None,
         **kwargs,
     ) -> ModelInputValidationConfigVersion:
         instance = cls()
@@ -313,6 +325,8 @@ class ModelInputValidationConfigVersion(Model):
         instance.version = version
         if avatar_config is not None:
             instance.avatar_config = avatar_config
+        if profanity_filter is not None:
+            instance.profanity_filter = profanity_filter
         return instance
 
     @classmethod
@@ -412,6 +426,10 @@ class ModelInputValidationConfigVersion(Model):
             )
         elif include_empty:
             instance.avatar_config = AccountcommonAvatarConfig()
+        if "profanityFilter" in dict_ and dict_["profanityFilter"] is not None:
+            instance.profanity_filter = str(dict_["profanityFilter"])
+        elif include_empty:
+            instance.profanity_filter = ""
         return instance
 
     @classmethod
@@ -473,6 +491,7 @@ class ModelInputValidationConfigVersion(Model):
             "specialCharacters": "special_characters",
             "version": "version",
             "avatarConfig": "avatar_config",
+            "profanityFilter": "profanity_filter",
         }
 
     @staticmethod
@@ -496,6 +515,7 @@ class ModelInputValidationConfigVersion(Model):
             "specialCharacters": True,
             "version": True,
             "avatarConfig": False,
+            "profanityFilter": False,
         }
 
     # endregion static methods

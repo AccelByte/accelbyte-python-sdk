@@ -40,7 +40,7 @@ $PYTHON -m $MODULE 'start-batched-ws-session' --continue_on_error '--writer=tap'
 'type: cancelMatchmakingResponse\nid: l3rGN9A3sNm84hdd\ncode: 53'
 'type: channelChatNotif\nchannelSlug: SpHt0P7MIIR7CkyF\nfrom: 6C7duuyZ0GhDogqr\npayload: hBRd8lDR6qVNPRZY\nsentAt: 1972-11-20T00:00:00Z'
 'type: clientResetRequest\nnamespace: FLIAjGGJddVCvu9v\nuserId: x5KQ7KYnIuMBvaO3'
-'type: connectNotif\nlobbySessionId: 5llzQRaT5kPxUfof'
+'type: connectNotif\nlobbySessionID: 5llzQRaT5kPxUfof'
 'type: disconnectNotif\nconnectionId: vnnSuB0y5WUlrMdI\nnamespace: 4sNveabntBSxTeIv'
 'type: dsNotif\nalternateIps: [53HGCiljvjKoyD6S,CwGrncqmLtjQHAf8,TgoNm03VLisV6zwP]\ncustomAttribute: uo3td6TC6I3lMjGS\ndeployment: WN2laRlxfcjHfYak\ngameVersion: UCTqGkE7wcWfDslp\nimageVersion: JSqGAXQ0yYoNRKd3\nip: IL5TAQ6iiPlSC2uE\nisOK: False\nisOverrideGameVersion: False\nlastUpdate: TD1ZBm3MqHcUmLZZ\nmatchId: bSqb8RwNmn9HrNQy\nmessage: 4uZAAiE0mit9RGCC\nnamespace: HYzUOcEdscKHPEqg\npodName: A8yu7Vk6Jt4Ymos9\nport: 74\nports: {"5T7quIOvBMcaYmvC":22,"zYoMcHyCUEXlAvxJ":79,"ozr6wfNPX2bOItRM":43}\nprotocol: u0M3VHh2EI8JlDbP\nprovider: WbQ6Q9lNmqRBaAkL\nregion: nvxkT1X68cmDc3fx\nsessionId: U8MyKrQpM4hkkK6K\nstatus: KXNB3Gv0IqmF51Tk'
 'type: errorNotif\nmessage: hjYnaq6foWvXa3bM'
@@ -241,7 +241,7 @@ eval_tap $? 14 'ClientResetRequest' test.out
 
 #- 15 ConnectNotif
 $PYTHON -m $MODULE 'one-shot-websocket' \
-    'type: connectNotif\nlobbySessionId: mmkW2miH3xRHAKy4' \
+    'type: connectNotif\nlobbySessionID: mmkW2miH3xRHAKy4' \
     > test.out 2>&1
 eval_tap $? 15 'ConnectNotif' test.out
 

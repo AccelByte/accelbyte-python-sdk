@@ -39,11 +39,7 @@ class BulkFetchStatItems(Operation):
 
     Bulk fetch multiple user's statitem value for a given namespace and statCode.
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=2 (READ)
     + *Returns*: list of user's statItem
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [READ]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statitems/bulk
@@ -56,7 +52,7 @@ class BulkFetchStatItems(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -82,7 +78,7 @@ class BulkFetchStatItems(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

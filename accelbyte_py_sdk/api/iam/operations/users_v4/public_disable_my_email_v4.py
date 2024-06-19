@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ModelDisableMFARequest
 from ...models import RestErrorResponse
 
 
@@ -36,6 +37,11 @@ class PublicDisableMyEmailV4(Operation):
     """Disable 2FA email (PublicDisableMyEmailV4)
 
     This endpoint is used to disable 2FA email.
+    ------
+    **Note**: **mfaToken** is required when all the following are enabled:
+    - The environment variable **SENSITIVE_MFA_AUTH_ENABLED** is true
+    - The **Two-Factor Authentication** is enabled in the IAM client where user logs in
+    - Users already enabled the MFA
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/email/disable
@@ -44,18 +50,20 @@ class PublicDisableMyEmailV4(Operation):
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableMFARequest in body
 
         namespace: (namespace) REQUIRED str in path
 
     Responses:
         204: No Content - (email disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -70,11 +78,12 @@ class PublicDisableMyEmailV4(Operation):
 
     _url: str = "/iam/v4/public/namespaces/{namespace}/users/me/mfa/email/disable"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    body: ModelDisableMFARequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -115,8 +124,14 @@ class PublicDisableMyEmailV4(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
+
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
@@ -132,6 +147,10 @@ class PublicDisableMyEmailV4(Operation):
 
     # region with_x methods
 
+    def with_body(self, value: ModelDisableMFARequest) -> PublicDisableMyEmailV4:
+        self.body = value
+        return self
+
     def with_namespace(self, value: str) -> PublicDisableMyEmailV4:
         self.namespace = value
         return self
@@ -142,6 +161,10 @@ class PublicDisableMyEmailV4(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["body"] = ModelDisableMFARequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -160,7 +183,7 @@ class PublicDisableMyEmailV4(Operation):
 
         204: No Content - (email disabled)
 
-        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found)
+        400: Bad Request - RestErrorResponse (10191: email address not verified | 10171: email address not found | 10228: invalid mfa token)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access)
 
@@ -205,8 +228,11 @@ class PublicDisableMyEmailV4(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> PublicDisableMyEmailV4:
+    def create(
+        cls, body: ModelDisableMFARequest, namespace: str, **kwargs
+    ) -> PublicDisableMyEmailV4:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
@@ -217,6 +243,12 @@ class PublicDisableMyEmailV4(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> PublicDisableMyEmailV4:
         instance = cls()
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = ModelDisableMFARequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.body = ModelDisableMFARequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -226,12 +258,14 @@ class PublicDisableMyEmailV4(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "body": "body",
             "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "body": True,
             "namespace": True,
         }
 

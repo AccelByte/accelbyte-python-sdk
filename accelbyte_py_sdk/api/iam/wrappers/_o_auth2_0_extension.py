@@ -212,7 +212,7 @@ def generate_token_by_new_headless_account_v3(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BASIC_AUTH]
 
         additional_data: (additionalData) OPTIONAL str in form_data
 
@@ -262,7 +262,7 @@ async def generate_token_by_new_headless_account_v3_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BASIC_AUTH]
 
         additional_data: (additionalData) OPTIONAL str in form_data
 
@@ -351,7 +351,7 @@ async def get_country_location_v3_async(
 def logout(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Logout (Logout)
 
-    This endpoint is used to remove **access_token**, **refresh_token** from cookie and revoke token from usage.
+    This endpoint is used to remove **access_token**, **refresh_token** from cookie.
 
     Properties:
         url: /iam/v3/logout
@@ -377,7 +377,7 @@ def logout(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
 async def logout_async(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs):
     """Logout (Logout)
 
-    This endpoint is used to remove **access_token**, **refresh_token** from cookie and revoke token from usage.
+    This endpoint is used to remove **access_token**, **refresh_token** from cookie.
 
     Properties:
         url: /iam/v3/logout
@@ -763,6 +763,7 @@ def request_one_time_linking_code_v3(
     - **steamopenid**
     - **facebook**
     - **google**
+    - **googleplaygames**
     - **oculus**
     - **twitch**
     - **discord**
@@ -819,6 +820,7 @@ async def request_one_time_linking_code_v3_async(
     - **steamopenid**
     - **facebook**
     - **google**
+    - **googleplaygames**
     - **oculus**
     - **twitch**
     - **discord**
@@ -887,7 +889,7 @@ def request_target_token_response_v3(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BASIC_AUTH]
 
         additional_data: (additionalData) OPTIONAL str in form_data
 
@@ -927,7 +929,7 @@ async def request_target_token_response_v3_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH]
+        securities: [BASIC_AUTH]
 
         additional_data: (additionalData) OPTIONAL str in form_data
 

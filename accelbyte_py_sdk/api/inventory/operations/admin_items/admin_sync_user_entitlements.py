@@ -36,6 +36,8 @@ class AdminSyncUserEntitlements(Operation):
     """To sync user's entitlements to e-commerce (AdminSyncUserEntitlements)
 
 
+    Sync user's entitlement from e-commerce service to inventory for non exist item at user inventory.
+    will skip the item if already exist at user inventory.
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
     Required Permission(s):
@@ -48,7 +50,7 @@ class AdminSyncUserEntitlements(Operation):
 
         tags: ["Admin Items"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -76,7 +78,7 @@ class AdminSyncUserEntitlements(Operation):
 
     _url: str = "/inventory/v1/admin/namespaces/{namespace}/users/{userId}/items/entitlements/sync"
     _method: str = "PUT"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None

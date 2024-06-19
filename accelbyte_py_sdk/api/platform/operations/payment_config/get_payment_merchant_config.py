@@ -29,20 +29,19 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ErrorEntity
-from ...models import PaymentMerchantConfigInfo
+from ...models import PaymentDomainWhitelistConfigInfo
 
 
 class GetPaymentMerchantConfig(Operation):
-    """Get payment merchant config (getPaymentMerchantConfig)
+    """Get payment domain whitelist config (getPaymentMerchantConfig)
 
-    [Not Supported Yet In Starter] Get payment merchant config by id.
+    [Not Supported Yet In Starter] Get payment domain whitelist config by namespace.
     Other detail info:
 
-      * Returns : payment merchant config info
+      * Returns : payment domain whitelist config info
 
     Properties:
-        url: /platform/admin/payment/config/merchant/{id}
+        url: /platform/admin/namespaces/{namespace}/payment/config/domains
 
         method: GET
 
@@ -54,24 +53,22 @@ class GetPaymentMerchantConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        id_: (id) REQUIRED str in path
+        namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - PaymentMerchantConfigInfo (successful operation)
-
-        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
+        200: OK - PaymentDomainWhitelistConfigInfo (successful operation)
     """
 
     # region fields
 
-    _url: str = "/platform/admin/payment/config/merchant/{id}"
+    _url: str = "/platform/admin/namespaces/{namespace}/payment/config/domains"
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    id_: str  # REQUIRED in [path]
+    namespace: str  # REQUIRED in [path]
 
     # endregion fields
 
@@ -116,8 +113,8 @@ class GetPaymentMerchantConfig(Operation):
 
     def get_path_params(self) -> dict:
         result = {}
-        if hasattr(self, "id_"):
-            result["id"] = self.id_
+        if hasattr(self, "namespace"):
+            result["namespace"] = self.namespace
         return result
 
     # endregion get_x_params methods
@@ -128,8 +125,8 @@ class GetPaymentMerchantConfig(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> GetPaymentMerchantConfig:
-        self.id_ = value
+    def with_namespace(self, value: str) -> GetPaymentMerchantConfig:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -138,10 +135,10 @@ class GetPaymentMerchantConfig(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "id_") and self.id_:
-            result["id"] = str(self.id_)
+        if hasattr(self, "namespace") and self.namespace:
+            result["namespace"] = str(self.namespace)
         elif include_empty:
-            result["id"] = ""
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -152,13 +149,11 @@ class GetPaymentMerchantConfig(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, PaymentMerchantConfigInfo], Union[None, ErrorEntity, HttpResponse]
+        Union[None, PaymentDomainWhitelistConfigInfo], Union[None, HttpResponse]
     ]:
         """Parse the given response.
 
-        200: OK - PaymentMerchantConfigInfo (successful operation)
-
-        404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
+        200: OK - PaymentDomainWhitelistConfigInfo (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -174,9 +169,7 @@ class GetPaymentMerchantConfig(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return PaymentMerchantConfigInfo.create_from_dict(content), None
-        if code == 404:
-            return None, ErrorEntity.create_from_dict(content)
+            return PaymentDomainWhitelistConfigInfo.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -187,9 +180,9 @@ class GetPaymentMerchantConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, id_: str, **kwargs) -> GetPaymentMerchantConfig:
+    def create(cls, namespace: str, **kwargs) -> GetPaymentMerchantConfig:
         instance = cls()
-        instance.id_ = id_
+        instance.namespace = namespace
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -199,22 +192,22 @@ class GetPaymentMerchantConfig(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> GetPaymentMerchantConfig:
         instance = cls()
-        if "id" in dict_ and dict_["id"] is not None:
-            instance.id_ = str(dict_["id"])
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
         elif include_empty:
-            instance.id_ = ""
+            instance.namespace = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "id": "id_",
+            "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "id": True,
+            "namespace": True,
         }
 
     # endregion static methods

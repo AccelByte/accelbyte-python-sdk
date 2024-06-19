@@ -175,8 +175,11 @@ def admin_generate_personal_data_url(
 ):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Generate personal data download url
+    Generate personal data download url.
     Scope: account
+
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
 
     Required Scope(s):
         - account
@@ -237,8 +240,11 @@ async def admin_generate_personal_data_url_async(
 ):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Generate personal data download url
+    Generate personal data download url.
     Scope: account
+
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
 
     Required Scope(s):
         - account
@@ -552,9 +558,11 @@ def admin_request_data_retrieval(
 ):
     """Submit user personal data retrieval request (AdminRequestDataRetrieval)
 
-    Submit user personal data retrieval request
-    If admin request data for themselves, password is need to be set
+    Submit user personal data retrieval request.
     Scope: account
+
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
 
     Required Scope(s):
         - account
@@ -584,6 +592,10 @@ def admin_request_data_retrieval(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -609,9 +621,11 @@ async def admin_request_data_retrieval_async(
 ):
     """Submit user personal data retrieval request (AdminRequestDataRetrieval)
 
-    Submit user personal data retrieval request
-    If admin request data for themselves, password is need to be set
+    Submit user personal data retrieval request.
     Scope: account
+
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
 
     Required Scope(s):
         - account
@@ -641,6 +655,10 @@ async def admin_request_data_retrieval_async(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -793,6 +811,9 @@ def public_generate_personal_data_url(
     Requires valid user access token
     Scope: account
 
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
+
     Required Scope(s):
         - account
 
@@ -855,6 +876,9 @@ async def public_generate_personal_data_url_async(
     Generate personal data download url
     Requires valid user access token
     Scope: account
+
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
 
     Required Scope(s):
         - account
@@ -1043,6 +1067,9 @@ def public_request_data_retrieval(
     Submit personal data retrieval request.
     Scope: account
 
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
+
     Required Scope(s):
         - account
 
@@ -1071,6 +1098,8 @@ def public_request_data_retrieval(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -1099,6 +1128,9 @@ async def public_request_data_retrieval_async(
     Submit personal data retrieval request.
     Scope: account
 
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
+
     Required Scope(s):
         - account
 
@@ -1127,6 +1159,8 @@ async def public_request_data_retrieval_async(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """

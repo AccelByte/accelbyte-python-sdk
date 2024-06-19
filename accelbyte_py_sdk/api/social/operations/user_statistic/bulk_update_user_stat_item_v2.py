@@ -46,11 +46,7 @@ class BulkUpdateUserStatItemV2(Operation):
     + *MIN*: update user statitem with the specified value if it's lower than the existing value
 
     Other detail info:
-    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:STATITEM", action=4 (UPDATE)
     + *Returns*: bulk updated result
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STATITEM [UPDATE]
 
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/statitems/value/bulk
@@ -63,7 +59,7 @@ class BulkUpdateUserStatItemV2(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL List[BulkUserStatItemUpdate] in body
 
@@ -89,7 +85,7 @@ class BulkUpdateUserStatItemV2(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: List[BulkUserStatItemUpdate]  # OPTIONAL in [body]

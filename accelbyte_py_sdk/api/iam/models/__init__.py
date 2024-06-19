@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.16.0"
+__version__ = "7.17.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -186,6 +186,7 @@ from .model_device_types_response_v4 import ModelDeviceTypesResponseV4
 from .model_device_user_response_v4 import ModelDeviceUserResponseV4
 from .model_device_users_response_v4 import ModelDeviceUsersResponseV4
 from .model_devices_response_v4 import ModelDevicesResponseV4
+from .model_disable_mfa_request import ModelDisableMFARequest
 from .model_disable_user_request import ModelDisableUserRequest
 from .model_email_update_request_v4 import ModelEmailUpdateRequestV4
 from .model_enabled_factors_response_v4 import ModelEnabledFactorsResponseV4
@@ -249,6 +250,7 @@ from .model_platform_domain_delete_request import ModelPlatformDomainDeleteReque
 from .model_platform_domain_response import ModelPlatformDomainResponse
 from .model_platform_domain_update_request import ModelPlatformDomainUpdateRequest
 from .model_platform_user_id_request import ModelPlatformUserIDRequest
+from .model_platform_user_id_request_v4 import ModelPlatformUserIDRequestV4
 from .model_platform_user_information import ModelPlatformUserInformation
 from .model_public_invite_user_request_v4 import ModelPublicInviteUserRequestV4
 from .model_public_third_party_platform_info import ModelPublicThirdPartyPlatformInfo
@@ -346,9 +348,13 @@ from .model_user_i_ds_request import ModelUserIDsRequest
 from .model_user_identity_update_request_v3 import ModelUserIdentityUpdateRequestV3
 from .model_user_info_response import ModelUserInfoResponse
 from .model_user_information import ModelUserInformation
+from .model_user_input_validation_request import ModelUserInputValidationRequest
+from .model_user_input_validation_response import ModelUserInputValidationResponse
 from .model_user_invitation_history import ModelUserInvitationHistory
 from .model_user_invitation_v3 import ModelUserInvitationV3
 from .model_user_login_history_response import ModelUserLoginHistoryResponse
+from .model_user_mfa_status_response_v4 import ModelUserMFAStatusResponseV4
+from .model_user_mfa_token_response_v4 import ModelUserMFATokenResponseV4
 from .model_user_password_update_request import ModelUserPasswordUpdateRequest
 from .model_user_password_update_v3_request import ModelUserPasswordUpdateV3Request
 from .model_user_permissions_response_v3 import ModelUserPermissionsResponseV3

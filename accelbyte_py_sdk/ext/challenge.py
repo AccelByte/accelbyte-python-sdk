@@ -25,8 +25,11 @@
 from .utils import randomize
 
 from ..api.challenge.models import IamErrorResponse
+from ..api.challenge.models import IamPermission
 from ..api.challenge.models import ModelChallengeResponse
 from ..api.challenge.models import ModelClaimUserRewardsReq
+from ..api.challenge.models import ModelClaimUsersRewardsRequest
+from ..api.challenge.models import ModelClaimUsersRewardsResponse
 from ..api.challenge.models import ModelCreateChallengeRequest
 from ..api.challenge.models import ModelCreateGoalRequest
 from ..api.challenge.models import ModelEvaluatePlayerProgressionRequest
@@ -43,14 +46,15 @@ from ..api.challenge.models import ModelPagination
 from ..api.challenge.models import ModelPredicate
 from ..api.challenge.models import ModelRequirement
 from ..api.challenge.models import ModelRequirementProgressionResponse
+from ..api.challenge.models import ModelResetConfig
 from ..api.challenge.models import ModelReward
 from ..api.challenge.models import ModelSchedule
+from ..api.challenge.models import ModelUpdateChallengeRequest
 from ..api.challenge.models import ModelUpdateGoalRequest
 from ..api.challenge.models import ModelUserProgressionResponse
 from ..api.challenge.models import ModelUserProgressionResponseMeta
 from ..api.challenge.models import ModelUserReward
 from ..api.challenge.models import ModelsPeriod
-from ..api.challenge.models import ModelsUpdateChallengeRequest
 from ..api.challenge.models import ResponseError
 
 
@@ -58,6 +62,14 @@ def create_iam_error_response_example() -> IamErrorResponse:
     instance = IamErrorResponse()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
+    instance.required_permission = create_iam_permission_example()
+    return instance
+
+
+def create_iam_permission_example() -> IamPermission:
+    instance = IamPermission()
+    instance.action = randomize("int", min_val=1, max_val=1000)
+    instance.resource = randomize()
     return instance
 
 
@@ -70,6 +82,7 @@ def create_model_challenge_response_example() -> ModelChallengeResponse:
     instance.description = randomize()
     instance.goals_visibility = randomize()
     instance.name = randomize()
+    instance.reset_config = create_model_reset_config_example()
     instance.rotation = randomize()
     instance.start_date = randomize()
     instance.status = randomize()
@@ -86,6 +99,24 @@ def create_model_claim_user_rewards_req_example() -> ModelClaimUserRewardsReq:
     return instance
 
 
+def create_model_claim_users_rewards_request_example() -> ModelClaimUsersRewardsRequest:
+    instance = ModelClaimUsersRewardsRequest()
+    instance.reward_ids = [randomize()]
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_model_claim_users_rewards_response_example() -> (
+    ModelClaimUsersRewardsResponse
+):
+    instance = ModelClaimUsersRewardsResponse()
+    instance.is_success = randomize("bool")
+    instance.rewards = [create_model_user_reward_example()]
+    instance.user_id = randomize("uid")
+    instance.error_detail = create_response_error_example()
+    return instance
+
+
 def create_model_create_challenge_request_example() -> ModelCreateChallengeRequest:
     instance = ModelCreateChallengeRequest()
     instance.assignment_rule = randomize()
@@ -99,6 +130,7 @@ def create_model_create_challenge_request_example() -> ModelCreateChallengeReque
     instance.end_after = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize("date")
     instance.repeat_after = randomize("int", min_val=1, max_val=1000)
+    instance.reset_config = create_model_reset_config_example()
     return instance
 
 
@@ -249,6 +281,14 @@ def create_model_requirement_progression_response_example() -> (
     return instance
 
 
+def create_model_reset_config_example() -> ModelResetConfig:
+    instance = ModelResetConfig()
+    instance.reset_date = randomize("int", min_val=1, max_val=1000)
+    instance.reset_day = randomize("int", min_val=1, max_val=1000)
+    instance.reset_time = randomize()
+    return instance
+
+
 def create_model_reward_example() -> ModelReward:
     instance = ModelReward()
     instance.item_id = randomize()
@@ -270,15 +310,31 @@ def create_model_schedule_example() -> ModelSchedule:
     return instance
 
 
+def create_model_update_challenge_request_example() -> ModelUpdateChallengeRequest:
+    instance = ModelUpdateChallengeRequest()
+    instance.active_goals_per_rotation = randomize("int", min_val=1, max_val=1000)
+    instance.assignment_rule = randomize()
+    instance.description = randomize()
+    instance.end_after = randomize("int", min_val=1, max_val=1000)
+    instance.end_date = randomize("date")
+    instance.goals_visibility = randomize()
+    instance.name = randomize()
+    instance.repeat_after = randomize("int", min_val=1, max_val=1000)
+    instance.reset_config = create_model_reset_config_example()
+    instance.rotation = randomize()
+    instance.start_date = randomize("date")
+    return instance
+
+
 def create_model_update_goal_request_example() -> ModelUpdateGoalRequest:
     instance = ModelUpdateGoalRequest()
-    instance.description = randomize()
     instance.name = randomize()
+    instance.description = randomize()
+    instance.is_active = randomize("bool")
     instance.requirement_groups = [create_model_requirement_example()]
     instance.rewards = [create_model_reward_example()]
-    instance.tags = [randomize()]
-    instance.is_active = randomize("bool")
     instance.schedule = create_model_goal_schedule_example()
+    instance.tags = [randomize()]
     return instance
 
 
@@ -324,21 +380,6 @@ def create_models_period_example() -> ModelsPeriod:
     instance.end_time = randomize("date")
     instance.slot = randomize("int", min_val=1, max_val=1000)
     instance.start_time = randomize("date")
-    return instance
-
-
-def create_models_update_challenge_request_example() -> ModelsUpdateChallengeRequest:
-    instance = ModelsUpdateChallengeRequest()
-    instance.active_goals_per_rotation = randomize("int", min_val=1, max_val=1000)
-    instance.assignment_rule = randomize()
-    instance.description = randomize()
-    instance.end_after = randomize("int", min_val=1, max_val=1000)
-    instance.end_date = randomize("date")
-    instance.goals_visibility = randomize()
-    instance.name = randomize()
-    instance.repeat_after = randomize("int", min_val=1, max_val=1000)
-    instance.rotation = randomize()
-    instance.start_date = randomize("date")
     return instance
 
 

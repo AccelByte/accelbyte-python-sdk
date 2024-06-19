@@ -50,6 +50,8 @@ class AdminEnableBackupCodesV4(Operation):
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         200: OK - (Backup codes enabled)
 
@@ -74,6 +76,8 @@ class AdminEnableBackupCodesV4(Operation):
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
+
+    language_tag: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -112,7 +116,15 @@ class AdminEnableBackupCodesV4(Operation):
     # region get_x_params methods
 
     def get_all_params(self) -> dict:
-        return {}
+        return {
+            "query": self.get_query_params(),
+        }
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "language_tag"):
+            result["languageTag"] = self.language_tag
+        return result
 
     # endregion get_x_params methods
 
@@ -122,12 +134,20 @@ class AdminEnableBackupCodesV4(Operation):
 
     # region with_x methods
 
+    def with_language_tag(self, value: str) -> AdminEnableBackupCodesV4:
+        self.language_tag = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "language_tag") and self.language_tag:
+            result["languageTag"] = str(self.language_tag)
+        elif include_empty:
+            result["languageTag"] = ""
         return result
 
     # endregion to methods
@@ -191,8 +211,12 @@ class AdminEnableBackupCodesV4(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, **kwargs) -> AdminEnableBackupCodesV4:
+    def create(
+        cls, language_tag: Optional[str] = None, **kwargs
+    ) -> AdminEnableBackupCodesV4:
         instance = cls()
+        if language_tag is not None:
+            instance.language_tag = language_tag
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -202,14 +226,22 @@ class AdminEnableBackupCodesV4(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> AdminEnableBackupCodesV4:
         instance = cls()
+        if "languageTag" in dict_ and dict_["languageTag"] is not None:
+            instance.language_tag = str(dict_["languageTag"])
+        elif include_empty:
+            instance.language_tag = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {}
+        return {
+            "languageTag": "language_tag",
+        }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
-        return {}
+        return {
+            "languageTag": False,
+        }
 
     # endregion static methods

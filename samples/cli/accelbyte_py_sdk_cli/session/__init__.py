@@ -58,6 +58,7 @@ from ._admin_delete_user_session_storage import admin_delete_user_session_storag
 from ._admin_read_user_session_storage import admin_read_user_session_storage
 from ._admin_query_player_attributes import admin_query_player_attributes
 from ._admin_get_player_attributes import admin_get_player_attributes
+from ._admin_sync_native_session import admin_sync_native_session
 from ._create_game_session import create_game_session
 from ._public_query_game_sessions_by_attributes import (
     public_query_game_sessions_by_attributes,
@@ -150,6 +151,7 @@ commands = [
     admin_read_user_session_storage,
     admin_query_player_attributes,
     admin_get_player_attributes,
+    admin_sync_native_session,
     create_game_session,
     public_query_game_sessions_by_attributes,
     public_session_join_code,

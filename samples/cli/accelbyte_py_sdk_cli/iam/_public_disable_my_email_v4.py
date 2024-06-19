@@ -33,15 +33,18 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     public_disable_my_email_v4 as public_disable_my_email_v4_internal,
 )
+from accelbyte_py_sdk.api.iam.models import ModelDisableMFARequest
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_disable_my_email_v4(
+    body: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -55,7 +58,14 @@ def public_disable_my_email_v4(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelDisableMFARequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = public_disable_my_email_v4_internal(
+        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

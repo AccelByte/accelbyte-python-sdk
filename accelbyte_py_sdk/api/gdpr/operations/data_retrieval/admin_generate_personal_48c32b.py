@@ -36,8 +36,11 @@ from ...models import ResponseError
 class AdminGeneratePersonalDataURL(Operation):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Generate personal data download url
+    Generate personal data download url.
     Scope: account
+
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
 
     Required Scope(s):
         - account

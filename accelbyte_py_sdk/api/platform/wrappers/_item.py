@@ -107,12 +107,12 @@ from ..operations.item import (
     QueryItemsItemTypeEnum,
     QueryItemsSortByEnum,
 )
-from ..operations.item import QueryItems1
+from ..operations.item import QueryItemsV2
 from ..operations.item import (
-    QueryItems1AppTypeEnum,
-    QueryItems1ItemStatusEnum,
-    QueryItems1ItemTypeEnum,
-    QueryItems1SortByEnum,
+    QueryItemsV2AppTypeEnum,
+    QueryItemsV2ItemStatusEnum,
+    QueryItemsV2ItemTypeEnum,
+    QueryItemsV2SortByEnum,
 )
 from ..operations.item import QueryUncategorizedItems
 from ..operations.item import QueryUncategorizedItemsSortByEnum
@@ -4984,22 +4984,22 @@ async def query_items_async(
     )
 
 
-@same_doc_as(QueryItems1)
-def query_items_1(
-    app_type: Optional[Union[str, QueryItems1AppTypeEnum]] = None,
+@same_doc_as(QueryItemsV2)
+def query_items_v2(
+    app_type: Optional[Union[str, QueryItemsV2AppTypeEnum]] = None,
     available_date: Optional[str] = None,
     base_app_id: Optional[str] = None,
     category_path: Optional[str] = None,
     features: Optional[str] = None,
     include_sub_category_item: Optional[bool] = None,
     item_name: Optional[str] = None,
-    item_status: Optional[Union[str, QueryItems1ItemStatusEnum]] = None,
-    item_type: Optional[Union[str, QueryItems1ItemTypeEnum]] = None,
+    item_status: Optional[Union[str, QueryItemsV2ItemStatusEnum]] = None,
+    item_type: Optional[List[Union[str, QueryItemsV2ItemTypeEnum]]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
     section_exclusive: Optional[bool] = None,
-    sort_by: Optional[List[Union[str, QueryItems1SortByEnum]]] = None,
+    sort_by: Optional[List[Union[str, QueryItemsV2SortByEnum]]] = None,
     store_id: Optional[str] = None,
     tags: Optional[str] = None,
     target_namespace: Optional[str] = None,
@@ -5008,7 +5008,7 @@ def query_items_1(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query items by criteria (queryItems_1)
+    """Query items by criteria (queryItemsV2)
 
     This API is used to query items by criteria within a store.
 
@@ -5051,7 +5051,7 @@ def query_items_1(
 
         item_status: (itemStatus) OPTIONAL Union[str, ItemStatusEnum] in query
 
-        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+        item_type: (itemType) OPTIONAL List[Union[str, ItemTypeEnum]] in query
 
         limit: (limit) OPTIONAL int in query
 
@@ -5082,7 +5082,7 @@ def query_items_1(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = QueryItems1.create(
+    request = QueryItemsV2.create(
         app_type=app_type,
         available_date=available_date,
         base_app_id=base_app_id,
@@ -5106,22 +5106,22 @@ def query_items_1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(QueryItems1)
-async def query_items_1_async(
-    app_type: Optional[Union[str, QueryItems1AppTypeEnum]] = None,
+@same_doc_as(QueryItemsV2)
+async def query_items_v2_async(
+    app_type: Optional[Union[str, QueryItemsV2AppTypeEnum]] = None,
     available_date: Optional[str] = None,
     base_app_id: Optional[str] = None,
     category_path: Optional[str] = None,
     features: Optional[str] = None,
     include_sub_category_item: Optional[bool] = None,
     item_name: Optional[str] = None,
-    item_status: Optional[Union[str, QueryItems1ItemStatusEnum]] = None,
-    item_type: Optional[Union[str, QueryItems1ItemTypeEnum]] = None,
+    item_status: Optional[Union[str, QueryItemsV2ItemStatusEnum]] = None,
+    item_type: Optional[List[Union[str, QueryItemsV2ItemTypeEnum]]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
     section_exclusive: Optional[bool] = None,
-    sort_by: Optional[List[Union[str, QueryItems1SortByEnum]]] = None,
+    sort_by: Optional[List[Union[str, QueryItemsV2SortByEnum]]] = None,
     store_id: Optional[str] = None,
     tags: Optional[str] = None,
     target_namespace: Optional[str] = None,
@@ -5130,7 +5130,7 @@ async def query_items_1_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query items by criteria (queryItems_1)
+    """Query items by criteria (queryItemsV2)
 
     This API is used to query items by criteria within a store.
 
@@ -5173,7 +5173,7 @@ async def query_items_1_async(
 
         item_status: (itemStatus) OPTIONAL Union[str, ItemStatusEnum] in query
 
-        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
+        item_type: (itemType) OPTIONAL List[Union[str, ItemTypeEnum]] in query
 
         limit: (limit) OPTIONAL int in query
 
@@ -5204,7 +5204,7 @@ async def query_items_1_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = QueryItems1.create(
+    request = QueryItemsV2.create(
         app_type=app_type,
         available_date=available_date,
         base_app_id=base_app_id,

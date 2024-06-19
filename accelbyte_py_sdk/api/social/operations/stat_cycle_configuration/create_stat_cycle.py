@@ -51,11 +51,7 @@ class CreateStatCycle(Operation):
       * end: End time must follow RFC3339 standard. e.g. 2023-02-24T05:10:24.865Z.
 
     Other detail info:
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=1 (CREATE)
       *  Returns : created stat cycle
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STAT [CREATE]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statCycles
@@ -68,7 +64,7 @@ class CreateStatCycle(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL StatCycleCreate in body
 
@@ -94,7 +90,7 @@ class CreateStatCycle(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: StatCycleCreate  # OPTIONAL in [body]

@@ -33,17 +33,16 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     get_payment_merchant_config as get_payment_merchant_config_internal,
 )
-from accelbyte_py_sdk.api.platform.models import ErrorEntity
-from accelbyte_py_sdk.api.platform.models import PaymentMerchantConfigInfo
+from accelbyte_py_sdk.api.platform.models import PaymentDomainWhitelistConfigInfo
 
 
 @click.command()
-@click.argument("id_", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_payment_merchant_config(
-    id_: str,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -57,7 +56,7 @@ def get_payment_merchant_config(
     else:
         login_as_internal(login_as)
     result, error = get_payment_merchant_config_internal(
-        id_=id_,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:

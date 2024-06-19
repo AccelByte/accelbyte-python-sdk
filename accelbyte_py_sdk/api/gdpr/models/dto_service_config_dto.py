@@ -30,6 +30,7 @@ from ....core import StrEnum
 
 
 class ProtocolEnum(StrEnum):
+    EVENT = "EVENT"
     GRPC = "GRPC"
 
 
@@ -39,16 +40,16 @@ class DtoServiceConfigDTO(Model):
     Properties:
         protocol: (protocol) REQUIRED Union[str, ProtocolEnum]
 
-        url: (url) REQUIRED str
-
         skip_ack: (skipAck) OPTIONAL bool
+
+        url: (url) OPTIONAL str
     """
 
     # region fields
 
     protocol: Union[str, ProtocolEnum]  # REQUIRED
-    url: str  # REQUIRED
     skip_ack: bool  # OPTIONAL
+    url: str  # OPTIONAL
 
     # endregion fields
 
@@ -58,12 +59,12 @@ class DtoServiceConfigDTO(Model):
         self.protocol = value
         return self
 
-    def with_url(self, value: str) -> DtoServiceConfigDTO:
-        self.url = value
-        return self
-
     def with_skip_ack(self, value: bool) -> DtoServiceConfigDTO:
         self.skip_ack = value
+        return self
+
+    def with_url(self, value: str) -> DtoServiceConfigDTO:
+        self.url = value
         return self
 
     # endregion with_x methods
@@ -76,14 +77,14 @@ class DtoServiceConfigDTO(Model):
             result["protocol"] = str(self.protocol)
         elif include_empty:
             result["protocol"] = Union[str, ProtocolEnum]()
-        if hasattr(self, "url"):
-            result["url"] = str(self.url)
-        elif include_empty:
-            result["url"] = ""
         if hasattr(self, "skip_ack"):
             result["skipAck"] = bool(self.skip_ack)
         elif include_empty:
             result["skipAck"] = False
+        if hasattr(self, "url"):
+            result["url"] = str(self.url)
+        elif include_empty:
+            result["url"] = ""
         return result
 
     # endregion to methods
@@ -94,15 +95,16 @@ class DtoServiceConfigDTO(Model):
     def create(
         cls,
         protocol: Union[str, ProtocolEnum],
-        url: str,
         skip_ack: Optional[bool] = None,
+        url: Optional[str] = None,
         **kwargs,
     ) -> DtoServiceConfigDTO:
         instance = cls()
         instance.protocol = protocol
-        instance.url = url
         if skip_ack is not None:
             instance.skip_ack = skip_ack
+        if url is not None:
+            instance.url = url
         return instance
 
     @classmethod
@@ -116,14 +118,14 @@ class DtoServiceConfigDTO(Model):
             instance.protocol = str(dict_["protocol"])
         elif include_empty:
             instance.protocol = Union[str, ProtocolEnum]()
-        if "url" in dict_ and dict_["url"] is not None:
-            instance.url = str(dict_["url"])
-        elif include_empty:
-            instance.url = ""
         if "skipAck" in dict_ and dict_["skipAck"] is not None:
             instance.skip_ack = bool(dict_["skipAck"])
         elif include_empty:
             instance.skip_ack = False
+        if "url" in dict_ and dict_["url"] is not None:
+            instance.url = str(dict_["url"])
+        elif include_empty:
+            instance.url = ""
         return instance
 
     @classmethod
@@ -166,22 +168,22 @@ class DtoServiceConfigDTO(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "protocol": "protocol",
-            "url": "url",
             "skipAck": "skip_ack",
+            "url": "url",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "protocol": True,
-            "url": True,
             "skipAck": False,
+            "url": False,
         }
 
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "protocol": ["GRPC"],
+            "protocol": ["EVENT", "GRPC"],
         }
 
     # endregion static methods

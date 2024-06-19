@@ -63,11 +63,7 @@ def create_reward(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-      *  Returns : created reward
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+      * Returns : created reward
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards
@@ -80,7 +76,7 @@ def create_reward(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RewardCreate in body
 
@@ -125,11 +121,7 @@ async def create_reward_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=1 (CREATE)
-      *  Returns : created reward
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [CREATE]
+      * Returns : created reward
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards
@@ -142,7 +134,7 @@ async def create_reward_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RewardCreate in body
 
@@ -189,11 +181,6 @@ def delete_reward(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
 
@@ -205,7 +192,7 @@ def delete_reward(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -248,11 +235,6 @@ async def delete_reward_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [DELETE]
-
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
 
@@ -264,7 +246,7 @@ async def delete_reward_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -309,11 +291,7 @@ def get_reward(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : reward data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : reward data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
@@ -326,7 +304,7 @@ def get_reward(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -367,11 +345,7 @@ async def get_reward_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : reward data
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : reward data
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
@@ -384,7 +358,7 @@ async def get_reward_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         code: (code) REQUIRED str in path
 
@@ -426,11 +400,7 @@ def public_bulk_claim_user_rewards(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/rewards/bulk
@@ -443,7 +413,7 @@ def public_bulk_claim_user_rewards(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -480,11 +450,7 @@ async def public_bulk_claim_user_rewards_async(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/rewards/bulk
@@ -497,7 +463,7 @@ async def public_bulk_claim_user_rewards_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -537,11 +503,7 @@ def public_claim_user_reward(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/rewards
@@ -554,7 +516,7 @@ def public_claim_user_reward(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserRewardClaim in body
 
@@ -597,11 +559,7 @@ async def public_claim_user_reward_async(
 
     Other detail info:
 
-      * Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : user season data
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:SEASONPASS [UPDATE]
+      * Returns : user season data
 
     Properties:
         url: /seasonpass/public/namespaces/{namespace}/users/{userId}/seasons/current/rewards
@@ -614,7 +572,7 @@ async def public_claim_user_reward_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserRewardClaim in body
 
@@ -659,11 +617,7 @@ def query_rewards(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : the list of rewards
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : the list of rewards
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards
@@ -676,7 +630,7 @@ def query_rewards(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -717,11 +671,7 @@ async def query_rewards_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=2 (READ)
-      *  Returns : the list of rewards
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [READ]
+      * Returns : the list of rewards
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards
@@ -734,7 +684,7 @@ async def query_rewards_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -778,11 +728,7 @@ def update_reward(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : updated reward
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : updated reward
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
@@ -795,7 +741,7 @@ def update_reward(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RewardUpdate in body
 
@@ -844,11 +790,7 @@ async def update_reward_async(
 
     Other detail info:
 
-      * Required permission : resource="ADMIN:NAMESPACE:{namespace}:SEASONPASS", action=4 (UPDATE)
-      *  Returns : updated reward
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:SEASONPASS [UPDATE]
+      * Returns : updated reward
 
     Properties:
         url: /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/rewards/{code}
@@ -861,7 +803,7 @@ async def update_reward_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL RewardUpdate in body
 

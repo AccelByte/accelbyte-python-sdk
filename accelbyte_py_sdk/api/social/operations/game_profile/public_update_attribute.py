@@ -41,11 +41,7 @@ class PublicUpdateAttribute(Operation):
     Updates game profile attribute, returns updated profile.
     Other detail info:
 
-      *  Required permission : resource="NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE", action=4 (UPDATE)
       *  Returns : updated attribute
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:GAMEPROFILE [UPDATE]
 
     Properties:
         url: /social/public/namespaces/{namespace}/users/{userId}/profiles/{profileId}/attributes/{attributeName}
@@ -58,7 +54,7 @@ class PublicUpdateAttribute(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL Attribute in body
 
@@ -92,7 +88,7 @@ class PublicUpdateAttribute(Operation):
     _method: str = "PUT"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: Attribute  # OPTIONAL in [body]

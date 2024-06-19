@@ -40,11 +40,6 @@ class DeleteUserSlotConfig(Operation):
     Deletes a user slot configuration in given namespace, the namespace slot configuration will be returned after delete.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG", action=8 (DELETE)
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:SLOTCONFIG [DELETE]
-
     Properties:
         url: /social/admin/namespaces/{namespace}/users/{userId}/config
 
@@ -56,7 +51,7 @@ class DeleteUserSlotConfig(Operation):
 
         produces: []
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -72,7 +67,7 @@ class DeleteUserSlotConfig(Operation):
     _method: str = "DELETE"
     _consumes: List[str] = []
     _produces: List[str] = []
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

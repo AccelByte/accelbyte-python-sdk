@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.model_reset_config import ModelResetConfig
+
 
 class AssignmentRuleEnum(StrEnum):
     FIXED = "FIXED"
@@ -47,8 +49,8 @@ class RotationEnum(StrEnum):
     WEEKLY = "WEEKLY"
 
 
-class ModelsUpdateChallengeRequest(Model):
-    """Models update challenge request (models.UpdateChallengeRequest)
+class ModelUpdateChallengeRequest(Model):
+    """Model update challenge request (model.UpdateChallengeRequest)
 
     Properties:
         active_goals_per_rotation: (activeGoalsPerRotation) OPTIONAL int
@@ -67,6 +69,8 @@ class ModelsUpdateChallengeRequest(Model):
 
         repeat_after: (repeatAfter) OPTIONAL int
 
+        reset_config: (resetConfig) OPTIONAL ModelResetConfig
+
         rotation: (rotation) OPTIONAL Union[str, RotationEnum]
 
         start_date: (startDate) OPTIONAL str
@@ -82,6 +86,7 @@ class ModelsUpdateChallengeRequest(Model):
     goals_visibility: Union[str, GoalsVisibilityEnum]  # OPTIONAL
     name: str  # OPTIONAL
     repeat_after: int  # OPTIONAL
+    reset_config: ModelResetConfig  # OPTIONAL
     rotation: Union[str, RotationEnum]  # OPTIONAL
     start_date: str  # OPTIONAL
 
@@ -89,51 +94,53 @@ class ModelsUpdateChallengeRequest(Model):
 
     # region with_x methods
 
-    def with_active_goals_per_rotation(
-        self, value: int
-    ) -> ModelsUpdateChallengeRequest:
+    def with_active_goals_per_rotation(self, value: int) -> ModelUpdateChallengeRequest:
         self.active_goals_per_rotation = value
         return self
 
     def with_assignment_rule(
         self, value: Union[str, AssignmentRuleEnum]
-    ) -> ModelsUpdateChallengeRequest:
+    ) -> ModelUpdateChallengeRequest:
         self.assignment_rule = value
         return self
 
-    def with_description(self, value: str) -> ModelsUpdateChallengeRequest:
+    def with_description(self, value: str) -> ModelUpdateChallengeRequest:
         self.description = value
         return self
 
-    def with_end_after(self, value: int) -> ModelsUpdateChallengeRequest:
+    def with_end_after(self, value: int) -> ModelUpdateChallengeRequest:
         self.end_after = value
         return self
 
-    def with_end_date(self, value: str) -> ModelsUpdateChallengeRequest:
+    def with_end_date(self, value: str) -> ModelUpdateChallengeRequest:
         self.end_date = value
         return self
 
     def with_goals_visibility(
         self, value: Union[str, GoalsVisibilityEnum]
-    ) -> ModelsUpdateChallengeRequest:
+    ) -> ModelUpdateChallengeRequest:
         self.goals_visibility = value
         return self
 
-    def with_name(self, value: str) -> ModelsUpdateChallengeRequest:
+    def with_name(self, value: str) -> ModelUpdateChallengeRequest:
         self.name = value
         return self
 
-    def with_repeat_after(self, value: int) -> ModelsUpdateChallengeRequest:
+    def with_repeat_after(self, value: int) -> ModelUpdateChallengeRequest:
         self.repeat_after = value
+        return self
+
+    def with_reset_config(self, value: ModelResetConfig) -> ModelUpdateChallengeRequest:
+        self.reset_config = value
         return self
 
     def with_rotation(
         self, value: Union[str, RotationEnum]
-    ) -> ModelsUpdateChallengeRequest:
+    ) -> ModelUpdateChallengeRequest:
         self.rotation = value
         return self
 
-    def with_start_date(self, value: str) -> ModelsUpdateChallengeRequest:
+    def with_start_date(self, value: str) -> ModelUpdateChallengeRequest:
         self.start_date = value
         return self
 
@@ -175,6 +182,12 @@ class ModelsUpdateChallengeRequest(Model):
             result["repeatAfter"] = int(self.repeat_after)
         elif include_empty:
             result["repeatAfter"] = 0
+        if hasattr(self, "reset_config"):
+            result["resetConfig"] = self.reset_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["resetConfig"] = ModelResetConfig()
         if hasattr(self, "rotation"):
             result["rotation"] = str(self.rotation)
         elif include_empty:
@@ -200,10 +213,11 @@ class ModelsUpdateChallengeRequest(Model):
         goals_visibility: Optional[Union[str, GoalsVisibilityEnum]] = None,
         name: Optional[str] = None,
         repeat_after: Optional[int] = None,
+        reset_config: Optional[ModelResetConfig] = None,
         rotation: Optional[Union[str, RotationEnum]] = None,
         start_date: Optional[str] = None,
         **kwargs,
-    ) -> ModelsUpdateChallengeRequest:
+    ) -> ModelUpdateChallengeRequest:
         instance = cls()
         if active_goals_per_rotation is not None:
             instance.active_goals_per_rotation = active_goals_per_rotation
@@ -221,6 +235,8 @@ class ModelsUpdateChallengeRequest(Model):
             instance.name = name
         if repeat_after is not None:
             instance.repeat_after = repeat_after
+        if reset_config is not None:
+            instance.reset_config = reset_config
         if rotation is not None:
             instance.rotation = rotation
         if start_date is not None:
@@ -230,7 +246,7 @@ class ModelsUpdateChallengeRequest(Model):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsUpdateChallengeRequest:
+    ) -> ModelUpdateChallengeRequest:
         instance = cls()
         if not dict_:
             return instance
@@ -269,6 +285,12 @@ class ModelsUpdateChallengeRequest(Model):
             instance.repeat_after = int(dict_["repeatAfter"])
         elif include_empty:
             instance.repeat_after = 0
+        if "resetConfig" in dict_ and dict_["resetConfig"] is not None:
+            instance.reset_config = ModelResetConfig.create_from_dict(
+                dict_["resetConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.reset_config = ModelResetConfig()
         if "rotation" in dict_ and dict_["rotation"] is not None:
             instance.rotation = str(dict_["rotation"])
         elif include_empty:
@@ -282,7 +304,7 @@ class ModelsUpdateChallengeRequest(Model):
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsUpdateChallengeRequest]:
+    ) -> Dict[str, ModelUpdateChallengeRequest]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -292,7 +314,7 @@ class ModelsUpdateChallengeRequest(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsUpdateChallengeRequest]:
+    ) -> List[ModelUpdateChallengeRequest]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -303,9 +325,9 @@ class ModelsUpdateChallengeRequest(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ModelsUpdateChallengeRequest,
-        List[ModelsUpdateChallengeRequest],
-        Dict[Any, ModelsUpdateChallengeRequest],
+        ModelUpdateChallengeRequest,
+        List[ModelUpdateChallengeRequest],
+        Dict[Any, ModelUpdateChallengeRequest],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -328,6 +350,7 @@ class ModelsUpdateChallengeRequest(Model):
             "goalsVisibility": "goals_visibility",
             "name": "name",
             "repeatAfter": "repeat_after",
+            "resetConfig": "reset_config",
             "rotation": "rotation",
             "startDate": "start_date",
         }
@@ -343,6 +366,7 @@ class ModelsUpdateChallengeRequest(Model):
             "goalsVisibility": False,
             "name": False,
             "repeatAfter": False,
+            "resetConfig": False,
             "rotation": False,
             "startDate": False,
         }

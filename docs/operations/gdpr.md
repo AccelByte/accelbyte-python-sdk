@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Gdpr Service Index (2.10.0)
+# AccelByte Gaming Services Gdpr Service Index (2.11.0)
 
 
 ## Operations
@@ -35,6 +35,12 @@
 | /gdpr/public/users/me/deletions | POST | PublicSubmitMyAccountDeletionRequest | `false` | [PublicSubmitMyAccountDeletionRequest](../../accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_submit_my_accoun_f5ded3.py) | [public_submit_my_account_deletion_request](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_deletion.py) | [accelbyte_py_sdk_cli gdpr-public-submit-my-account-deletion-request](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_public_submit_my_account_deletion_request.py) |
 | /gdpr/public/namespaces/{namespace}/users/{userId}/deletions | POST | PublicSubmitUserAccountDeletionRequest | `false` | [PublicSubmitUserAccountDeletionRequest](../../accelbyte_py_sdk/api/gdpr/operations/data_deletion/public_submit_user_acco_a6db4f.py) | [public_submit_user_account_deletion_request](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_deletion.py) | [accelbyte_py_sdk_cli gdpr-public-submit-user-account-deletion-request](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_public_submit_user_account_deletion_request.py) |
 
+### Data Deletion S2S
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /gdpr/s2s/namespaces/{namespace}/deletions/finished | GET | S2SGetListFinishedAccountDeletionRequest | `false` | [S2SGetListFinishedAccountDeletionRequest](../../accelbyte_py_sdk/api/gdpr/operations/data_deletion_s2s/s2s_get_list_finished_a_52b7a0.py) | [s2s_get_list_finished_account_deletion_request](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_deletion_s2s.py) | [accelbyte_py_sdk_cli gdpr-s2s-get-list-finished-account-deletion-request](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_s2s_get_list_finished_account_deletion_request.py) |
+| /gdpr/s2s/namespaces/{namespace}/users/{userId}/deletions | POST | S2SSubmitUserAccountDeletionRequest | `false` | [S2SSubmitUserAccountDeletionRequest](../../accelbyte_py_sdk/api/gdpr/operations/data_deletion_s2s/s2s_submit_user_account_5c299d.py) | [s2s_submit_user_account_deletion_request](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_deletion_s2s.py) | [accelbyte_py_sdk_cli gdpr-s2s-submit-user-account-deletion-request](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_s2s_submit_user_account_deletion_request.py) |
+
 ### Data Retrieval
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -47,6 +53,13 @@
 | /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate | POST | PublicGeneratePersonalDataURL | `false` | [PublicGeneratePersonalDataURL](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval/public_generate_persona_6b68a4.py) | [public_generate_personal_data_url](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval.py) | [accelbyte_py_sdk_cli gdpr-public-generate-personal-data-url](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_public_generate_personal_data_url.py) |
 | /gdpr/public/namespaces/{namespace}/users/{userId}/requests | GET | PublicGetUserPersonalDataRequests | `false` | [PublicGetUserPersonalDataRequests](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval/public_get_user_persona_7e40c3.py) | [public_get_user_personal_data_requests](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval.py) | [accelbyte_py_sdk_cli gdpr-public-get-user-personal-data-requests](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_public_get_user_personal_data_requests.py) |
 | /gdpr/public/namespaces/{namespace}/users/{userId}/requests | POST | PublicRequestDataRetrieval | `false` | [PublicRequestDataRetrieval](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval/public_request_data_retrieval.py) | [public_request_data_retrieval](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval.py) | [accelbyte_py_sdk_cli gdpr-public-request-data-retrieval](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_public_request_data_retrieval.py) |
+
+### Data Retrieval S2S
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /gdpr/s2s/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate | POST | S2SGeneratePersonalDataURL | `false` | [S2SGeneratePersonalDataURL](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_generate_personal_data_url.py) | [s2s_generate_personal_data_url](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval_s2s.py) | [accelbyte_py_sdk_cli gdpr-s2s-generate-personal-data-url](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_s2s_generate_personal_data_url.py) |
+| /gdpr/s2s/namespaces/{namespace}/requests/finished | GET | S2SGetListFinishedPersonalDataRequest | `false` | [S2SGetListFinishedPersonalDataRequest](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_get_list_finished_p_06385b.py) | [s2s_get_list_finished_personal_data_request](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval_s2s.py) | [accelbyte_py_sdk_cli gdpr-s2s-get-list-finished-personal-data-request](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_s2s_get_list_finished_personal_data_request.py) |
+| /gdpr/s2s/namespaces/{namespace}/users/{userId}/requests | POST | S2SRequestDataRetrieval | `false` | [S2SRequestDataRetrieval](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_request_data_retrieval.py) | [s2s_request_data_retrieval](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval_s2s.py) | [accelbyte_py_sdk_cli gdpr-s2s-request-data-retrieval](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_s2s_request_data_retrieval.py) |
 
 ### Platform Account Closure Client
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -65,6 +78,10 @@
 | Model | Class |
 |---|---|
 | dto.ExtendConfigDTO | [DtoExtendConfigDTO](../../accelbyte_py_sdk/api/gdpr/models/dto_extend_config_dto.py) |
+| dto.FinishedDataDeletion | [DtoFinishedDataDeletion](../../accelbyte_py_sdk/api/gdpr/models/dto_finished_data_deletion.py) |
+| dto.FinishedDataRequest | [DtoFinishedDataRequest](../../accelbyte_py_sdk/api/gdpr/models/dto_finished_data_request.py) |
+| dto.ListFinishedDataDeletion | [DtoListFinishedDataDeletion](../../accelbyte_py_sdk/api/gdpr/models/dto_list_finished_data_deletion.py) |
+| dto.ListFinishedDataRequests | [DtoListFinishedDataRequests](../../accelbyte_py_sdk/api/gdpr/models/dto_list_finished_data_requests.py) |
 | dto.PlatformAccountClosureClientRequest | [DtoPlatformAccountClosureClientRequest](../../accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_client_request.py) |
 | dto.PlatformAccountClosureClientResponse | [DtoPlatformAccountClosureClientResponse](../../accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_client_response.py) |
 | dto.ServiceConfigDTO | [DtoServiceConfigDTO](../../accelbyte_py_sdk/api/gdpr/models/dto_service_config_dto.py) |
@@ -81,6 +98,9 @@
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/gdpr/models/models_pagination.py) |
 | models.PersonalData | [ModelsPersonalData](../../accelbyte_py_sdk/api/gdpr/models/models_personal_data.py) |
 | models.RequestDeleteResponse | [ModelsRequestDeleteResponse](../../accelbyte_py_sdk/api/gdpr/models/models_request_delete_response.py) |
+| models.S2SDataRetrievalResponse | [ModelsS2SDataRetrievalResponse](../../accelbyte_py_sdk/api/gdpr/models/models_s2s_data_retrieval_response.py) |
+| models.S2SRequestDeleteResponse | [ModelsS2SRequestDeleteResponse](../../accelbyte_py_sdk/api/gdpr/models/models_s2s_request_delete_response.py) |
+| models.S2SUserDataURL | [ModelsS2SUserDataURL](../../accelbyte_py_sdk/api/gdpr/models/models_s2s_user_data_url.py) |
 | models.UserDataURL | [ModelsUserDataURL](../../accelbyte_py_sdk/api/gdpr/models/models_user_data_url.py) |
 | models.UserPersonalData | [ModelsUserPersonalData](../../accelbyte_py_sdk/api/gdpr/models/models_user_personal_data.py) |
 | models.UserPersonalDataResponse | [ModelsUserPersonalDataResponse](../../accelbyte_py_sdk/api/gdpr/models/models_user_personal_data_response.py) |

@@ -70,6 +70,8 @@ class ApimodelsCreateGameSessionRequest(Model):
 
         auto_join: (autoJoin) OPTIONAL bool
 
+        custom_urlgrpc: (customURLGRPC) OPTIONAL str
+
         ds_source: (dsSource) OPTIONAL str
 
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
@@ -99,6 +101,7 @@ class ApimodelsCreateGameSessionRequest(Model):
     ticket_i_ds: List[str]  # REQUIRED
     type_: str  # REQUIRED
     auto_join: bool  # OPTIONAL
+    custom_urlgrpc: str  # OPTIONAL
     ds_source: str  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
@@ -182,6 +185,10 @@ class ApimodelsCreateGameSessionRequest(Model):
 
     def with_auto_join(self, value: bool) -> ApimodelsCreateGameSessionRequest:
         self.auto_join = value
+        return self
+
+    def with_custom_urlgrpc(self, value: str) -> ApimodelsCreateGameSessionRequest:
+        self.custom_urlgrpc = value
         return self
 
     def with_ds_source(self, value: str) -> ApimodelsCreateGameSessionRequest:
@@ -286,6 +293,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             result["autoJoin"] = bool(self.auto_join)
         elif include_empty:
             result["autoJoin"] = False
+        if hasattr(self, "custom_urlgrpc"):
+            result["customURLGRPC"] = str(self.custom_urlgrpc)
+        elif include_empty:
+            result["customURLGRPC"] = ""
         if hasattr(self, "ds_source"):
             result["dsSource"] = str(self.ds_source)
         elif include_empty:
@@ -329,6 +340,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         ticket_i_ds: List[str],
         type_: str,
         auto_join: Optional[bool] = None,
+        custom_urlgrpc: Optional[str] = None,
         ds_source: Optional[str] = None,
         fallback_claim_keys: Optional[List[str]] = None,
         preferred_claim_keys: Optional[List[str]] = None,
@@ -355,6 +367,8 @@ class ApimodelsCreateGameSessionRequest(Model):
         instance.type_ = type_
         if auto_join is not None:
             instance.auto_join = auto_join
+        if custom_urlgrpc is not None:
+            instance.custom_urlgrpc = custom_urlgrpc
         if ds_source is not None:
             instance.ds_source = ds_source
         if fallback_claim_keys is not None:
@@ -449,6 +463,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             instance.auto_join = bool(dict_["autoJoin"])
         elif include_empty:
             instance.auto_join = False
+        if "customURLGRPC" in dict_ and dict_["customURLGRPC"] is not None:
+            instance.custom_urlgrpc = str(dict_["customURLGRPC"])
+        elif include_empty:
+            instance.custom_urlgrpc = ""
         if "dsSource" in dict_ and dict_["dsSource"] is not None:
             instance.ds_source = str(dict_["dsSource"])
         elif include_empty:
@@ -533,6 +551,7 @@ class ApimodelsCreateGameSessionRequest(Model):
             "ticketIDs": "ticket_i_ds",
             "type": "type_",
             "autoJoin": "auto_join",
+            "customURLGRPC": "custom_urlgrpc",
             "dsSource": "ds_source",
             "fallbackClaimKeys": "fallback_claim_keys",
             "preferredClaimKeys": "preferred_claim_keys",
@@ -560,6 +579,7 @@ class ApimodelsCreateGameSessionRequest(Model):
             "ticketIDs": True,
             "type": True,
             "autoJoin": False,
+            "customURLGRPC": False,
             "dsSource": False,
             "fallbackClaimKeys": False,
             "preferredClaimKeys": False,

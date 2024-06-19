@@ -53,6 +53,7 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
     - oculusweb
     - facebook
     - google
+    - googleplaygames
     - twitch
     - discord
     - android
@@ -91,6 +92,8 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
 
         raw_pid: (rawPID) OPTIONAL bool in query
 
+        raw_puid: (rawPUID) OPTIONAL bool in query
+
     Responses:
         200: OK - AccountcommonUserPlatforms (OK)
 
@@ -116,6 +119,7 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
     namespace: str  # REQUIRED in [path]
     platform_id: str  # REQUIRED in [path]
     raw_pid: bool  # OPTIONAL in [query]
+    raw_puid: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -177,6 +181,8 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
         result = {}
         if hasattr(self, "raw_pid"):
             result["rawPID"] = self.raw_pid
+        if hasattr(self, "raw_puid"):
+            result["rawPUID"] = self.raw_puid
         return result
 
     # endregion get_x_params methods
@@ -205,6 +211,10 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
         self.raw_pid = value
         return self
 
+    def with_raw_puid(self, value: bool) -> AdminListUserIDByPlatformUserIDsV3:
+        self.raw_puid = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -227,6 +237,10 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
             result["rawPID"] = bool(self.raw_pid)
         elif include_empty:
             result["rawPID"] = False
+        if hasattr(self, "raw_puid") and self.raw_puid:
+            result["rawPUID"] = bool(self.raw_puid)
+        elif include_empty:
+            result["rawPUID"] = False
         return result
 
     # endregion to methods
@@ -291,6 +305,7 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
         namespace: str,
         platform_id: str,
         raw_pid: Optional[bool] = None,
+        raw_puid: Optional[bool] = None,
         **kwargs,
     ) -> AdminListUserIDByPlatformUserIDsV3:
         instance = cls()
@@ -299,6 +314,8 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
         instance.platform_id = platform_id
         if raw_pid is not None:
             instance.raw_pid = raw_pid
+        if raw_puid is not None:
+            instance.raw_puid = raw_puid
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -326,6 +343,10 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
             instance.raw_pid = bool(dict_["rawPID"])
         elif include_empty:
             instance.raw_pid = False
+        if "rawPUID" in dict_ and dict_["rawPUID"] is not None:
+            instance.raw_puid = bool(dict_["rawPUID"])
+        elif include_empty:
+            instance.raw_puid = False
         return instance
 
     @staticmethod
@@ -335,6 +356,7 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
             "namespace": "namespace",
             "platformId": "platform_id",
             "rawPID": "raw_pid",
+            "rawPUID": "raw_puid",
         }
 
     @staticmethod
@@ -344,6 +366,7 @@ class AdminListUserIDByPlatformUserIDsV3(Operation):
             "namespace": True,
             "platformId": True,
             "rawPID": False,
+            "rawPUID": False,
         }
 
     # endregion static methods

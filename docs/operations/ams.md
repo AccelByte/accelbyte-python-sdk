@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.18.0)
+# Fleet Commander Index (1.20.0)
 
 
 ## Operations
@@ -32,6 +32,7 @@
 ### Artifacts
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /ams/v1/admin/namespaces/{namespace}/artifacts | DELETE | ArtifactBulkDelete | `false` | [ArtifactBulkDelete](../../accelbyte_py_sdk/api/ams/operations/artifacts/artifact_bulk_delete.py) | [artifact_bulk_delete](../../accelbyte_py_sdk/api/ams/wrappers/_artifacts.py) | [accelbyte_py_sdk_cli ams-artifact-bulk-delete](../../samples/cli/accelbyte_py_sdk_cli/ams/_artifact_bulk_delete.py) |
 | /ams/v1/admin/namespaces/{namespace}/artifacts/{artifactID} | DELETE | ArtifactDelete | `false` | [ArtifactDelete](../../accelbyte_py_sdk/api/ams/operations/artifacts/artifact_delete.py) | [artifact_delete](../../accelbyte_py_sdk/api/ams/wrappers/_artifacts.py) | [accelbyte_py_sdk_cli ams-artifact-delete](../../samples/cli/accelbyte_py_sdk_cli/ams/_artifact_delete.py) |
 | /ams/v1/admin/namespaces/{namespace}/artifacts | GET | ArtifactGet | `false` | [ArtifactGet](../../accelbyte_py_sdk/api/ams/operations/artifacts/artifact_get.py) | [artifact_get](../../accelbyte_py_sdk/api/ams/wrappers/_artifacts.py) | [accelbyte_py_sdk_cli ams-artifact-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_artifact_get.py) |
 | /ams/v1/admin/namespaces/{namespace}/artifacts/{artifactID}/url | GET | ArtifactGetURL | `false` | [ArtifactGetURL](../../accelbyte_py_sdk/api/ams/operations/artifacts/artifact_get_url.py) | [artifact_get_url](../../accelbyte_py_sdk/api/ams/wrappers/_artifacts.py) | [accelbyte_py_sdk_cli ams-artifact-get-url](../../samples/cli/accelbyte_py_sdk_cli/ams/_artifact_get_url.py) |
@@ -76,7 +77,9 @@
 |---|---|---|---|---|---|---|
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID} | GET | ImageGet | `false` | [ImageGet](../../accelbyte_py_sdk/api/ams/operations/images/image_get.py) | [image_get](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_get.py) |
 | /ams/v1/admin/namespaces/{namespace}/images | GET | ImageList | `false` | [ImageList](../../accelbyte_py_sdk/api/ams/operations/images/image_list.py) | [image_list](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-list](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_list.py) |
+| /ams/v1/admin/namespaces/{namespace}/images/{imageID} | DELETE | ImageMarkForDeletion | `false` | [ImageMarkForDeletion](../../accelbyte_py_sdk/api/ams/operations/images/image_mark_for_deletion.py) | [image_mark_for_deletion](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-mark-for-deletion](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_mark_for_deletion.py) |
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID} | PATCH | ImagePatch | `false` | [ImagePatch](../../accelbyte_py_sdk/api/ams/operations/images/image_patch.py) | [image_patch](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-patch](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_patch.py) |
+| /ams/v1/admin/namespaces/{namespace}/images/{imageID}/restore | POST | ImageUnmarkForDeletion | `false` | [ImageUnmarkForDeletion](../../accelbyte_py_sdk/api/ams/operations/images/image_unmark_for_deletion.py) | [image_unmark_for_deletion](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-unmark-for-deletion](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_unmark_for_deletion.py) |
 
 ### Servers
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |

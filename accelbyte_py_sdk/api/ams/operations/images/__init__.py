@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.18.0"
+__version__ = "1.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,4 +16,6 @@ __email__ = "dev@accelbyte.net"
 
 from .image_get import ImageGet
 from .image_list import ImageList
+from .image_mark_for_deletion import ImageMarkForDeletion
 from .image_patch import ImagePatch
+from .image_unmark_for_deletion import ImageUnmarkForDeletion

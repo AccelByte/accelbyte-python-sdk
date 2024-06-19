@@ -63,6 +63,8 @@ class Validation(Model):
 
         min_length: (minLength) REQUIRED int
 
+        profanity_filter: (profanityFilter) REQUIRED str
+
         regex: (regex) REQUIRED str
 
         special_character_location: (specialCharacterLocation) REQUIRED str
@@ -88,6 +90,7 @@ class Validation(Model):
     max_repeating_special_character: int  # REQUIRED
     min_char_type: int  # REQUIRED
     min_length: int  # REQUIRED
+    profanity_filter: str  # REQUIRED
     regex: str  # REQUIRED
     special_character_location: str  # REQUIRED
     special_characters: List[str]  # REQUIRED
@@ -151,6 +154,10 @@ class Validation(Model):
 
     def with_min_length(self, value: int) -> Validation:
         self.min_length = value
+        return self
+
+    def with_profanity_filter(self, value: str) -> Validation:
+        self.profanity_filter = value
         return self
 
     def with_regex(self, value: str) -> Validation:
@@ -237,6 +244,10 @@ class Validation(Model):
             result["minLength"] = int(self.min_length)
         elif include_empty:
             result["minLength"] = 0
+        if hasattr(self, "profanity_filter"):
+            result["profanityFilter"] = str(self.profanity_filter)
+        elif include_empty:
+            result["profanityFilter"] = ""
         if hasattr(self, "regex"):
             result["regex"] = str(self.regex)
         elif include_empty:
@@ -278,6 +289,7 @@ class Validation(Model):
         max_repeating_special_character: int,
         min_char_type: int,
         min_length: int,
+        profanity_filter: str,
         regex: str,
         special_character_location: str,
         special_characters: List[str],
@@ -299,6 +311,7 @@ class Validation(Model):
         instance.max_repeating_special_character = max_repeating_special_character
         instance.min_char_type = min_char_type
         instance.min_length = min_length
+        instance.profanity_filter = profanity_filter
         instance.regex = regex
         instance.special_character_location = special_character_location
         instance.special_characters = special_characters
@@ -383,6 +396,10 @@ class Validation(Model):
             instance.min_length = int(dict_["minLength"])
         elif include_empty:
             instance.min_length = 0
+        if "profanityFilter" in dict_ and dict_["profanityFilter"] is not None:
+            instance.profanity_filter = str(dict_["profanityFilter"])
+        elif include_empty:
+            instance.profanity_filter = ""
         if "regex" in dict_ and dict_["regex"] is not None:
             instance.regex = str(dict_["regex"])
         elif include_empty:
@@ -457,6 +474,7 @@ class Validation(Model):
             "maxRepeatingSpecialCharacter": "max_repeating_special_character",
             "minCharType": "min_char_type",
             "minLength": "min_length",
+            "profanityFilter": "profanity_filter",
             "regex": "regex",
             "specialCharacterLocation": "special_character_location",
             "specialCharacters": "special_characters",
@@ -480,6 +498,7 @@ class Validation(Model):
             "maxRepeatingSpecialCharacter": True,
             "minCharType": True,
             "minLength": True,
+            "profanityFilter": True,
             "regex": True,
             "specialCharacterLocation": True,
             "specialCharacters": True,

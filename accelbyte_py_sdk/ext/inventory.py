@@ -280,6 +280,7 @@ def create_apimodels_item_resp_example() -> ApimodelsItemResp:
     instance.custom_attributes = {randomize(): randomize()}
     instance.id_ = randomize()
     instance.inventory_id = randomize()
+    instance.item_info = {randomize(): randomize()}
     instance.namespace = randomize("slug")
     instance.qty = randomize("int", min_val=1, max_val=1000)
     instance.server_custom_attributes = {randomize(): randomize()}
@@ -400,10 +401,10 @@ def create_apimodels_purchase_validation_req_example() -> (
     instance.item_type = randomize()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.sku = randomize("slug")
-    instance.stackable = randomize("bool")
     instance.entitlement_type = randomize()
     instance.inventory_config = create_apimodels_inventory_config_example()
     instance.items = [create_apimodels_purchase_validation_item_req_example()]
+    instance.stackable = randomize("bool")
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 

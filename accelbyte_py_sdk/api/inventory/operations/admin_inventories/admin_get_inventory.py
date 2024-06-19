@@ -51,7 +51,7 @@ class AdminGetInventory(Operation):
 
         tags: ["Admin Inventories"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -75,7 +75,7 @@ class AdminGetInventory(Operation):
 
     _url: str = "/inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}"
     _method: str = "GET"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None

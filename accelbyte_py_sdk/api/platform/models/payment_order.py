@@ -29,6 +29,8 @@ from ....core import Model
 from ....core import StrEnum
 
 from ..models.currency_summary import CurrencySummary
+from ..models.payment_data import PaymentData
+from ..models.payment_order_neon_pay_config import PaymentOrderNeonPayConfig
 from ..models.transaction import Transaction
 
 
@@ -55,6 +57,7 @@ class PaymentProviderEnum(StrEnum):
     ADYEN = "ADYEN"
     ALIPAY = "ALIPAY"
     CHECKOUT = "CHECKOUT"
+    NEONPAY = "NEONPAY"
     PAYPAL = "PAYPAL"
     STRIPE = "STRIPE"
     WALLET = "WALLET"
@@ -94,6 +97,12 @@ class PaymentOrder(Model):
 
         charging: (charging) OPTIONAL bool
 
+        checkout_url: (checkoutUrl) OPTIONAL str
+
+        checkout_url_expired_at: (checkoutUrlExpiredAt) OPTIONAL str
+
+        checkout_url_valid: (checkoutUrlValid) OPTIONAL bool
+
         created_at: (createdAt) OPTIONAL str
 
         created_time: (createdTime) OPTIONAL str
@@ -116,9 +125,13 @@ class PaymentOrder(Model):
 
         namespace: (namespace) OPTIONAL str
 
+        neon_pay_config: (neonPayConfig) OPTIONAL PaymentOrderNeonPayConfig
+
         notify_url: (notifyUrl) OPTIONAL str
 
         omit_notification: (omitNotification) OPTIONAL bool
+
+        payment_data: (paymentData) OPTIONAL PaymentData
 
         payment_method: (paymentMethod) OPTIONAL str
 
@@ -193,6 +206,9 @@ class PaymentOrder(Model):
     chargeback_time: str  # OPTIONAL
     charged_time: str  # OPTIONAL
     charging: bool  # OPTIONAL
+    checkout_url: str  # OPTIONAL
+    checkout_url_expired_at: str  # OPTIONAL
+    checkout_url_valid: bool  # OPTIONAL
     created_at: str  # OPTIONAL
     created_time: str  # OPTIONAL
     currency: CurrencySummary  # OPTIONAL
@@ -204,8 +220,10 @@ class PaymentOrder(Model):
     language: str  # OPTIONAL
     metadata: Dict[str, str]  # OPTIONAL
     namespace: str  # OPTIONAL
+    neon_pay_config: PaymentOrderNeonPayConfig  # OPTIONAL
     notify_url: str  # OPTIONAL
     omit_notification: bool  # OPTIONAL
+    payment_data: PaymentData  # OPTIONAL
     payment_method: str  # OPTIONAL
     payment_method_fee: int  # OPTIONAL
     payment_order_no: str  # OPTIONAL
@@ -267,6 +285,18 @@ class PaymentOrder(Model):
         self.charging = value
         return self
 
+    def with_checkout_url(self, value: str) -> PaymentOrder:
+        self.checkout_url = value
+        return self
+
+    def with_checkout_url_expired_at(self, value: str) -> PaymentOrder:
+        self.checkout_url_expired_at = value
+        return self
+
+    def with_checkout_url_valid(self, value: bool) -> PaymentOrder:
+        self.checkout_url_valid = value
+        return self
+
     def with_created_at(self, value: str) -> PaymentOrder:
         self.created_at = value
         return self
@@ -311,12 +341,20 @@ class PaymentOrder(Model):
         self.namespace = value
         return self
 
+    def with_neon_pay_config(self, value: PaymentOrderNeonPayConfig) -> PaymentOrder:
+        self.neon_pay_config = value
+        return self
+
     def with_notify_url(self, value: str) -> PaymentOrder:
         self.notify_url = value
         return self
 
     def with_omit_notification(self, value: bool) -> PaymentOrder:
         self.omit_notification = value
+        return self
+
+    def with_payment_data(self, value: PaymentData) -> PaymentOrder:
+        self.payment_data = value
         return self
 
     def with_payment_method(self, value: str) -> PaymentOrder:
@@ -479,6 +517,18 @@ class PaymentOrder(Model):
             result["charging"] = bool(self.charging)
         elif include_empty:
             result["charging"] = False
+        if hasattr(self, "checkout_url"):
+            result["checkoutUrl"] = str(self.checkout_url)
+        elif include_empty:
+            result["checkoutUrl"] = ""
+        if hasattr(self, "checkout_url_expired_at"):
+            result["checkoutUrlExpiredAt"] = str(self.checkout_url_expired_at)
+        elif include_empty:
+            result["checkoutUrlExpiredAt"] = ""
+        if hasattr(self, "checkout_url_valid"):
+            result["checkoutUrlValid"] = bool(self.checkout_url_valid)
+        elif include_empty:
+            result["checkoutUrlValid"] = False
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -525,6 +575,12 @@ class PaymentOrder(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "neon_pay_config"):
+            result["neonPayConfig"] = self.neon_pay_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["neonPayConfig"] = PaymentOrderNeonPayConfig()
         if hasattr(self, "notify_url"):
             result["notifyUrl"] = str(self.notify_url)
         elif include_empty:
@@ -533,6 +589,12 @@ class PaymentOrder(Model):
             result["omitNotification"] = bool(self.omit_notification)
         elif include_empty:
             result["omitNotification"] = False
+        if hasattr(self, "payment_data"):
+            result["paymentData"] = self.payment_data.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["paymentData"] = PaymentData()
         if hasattr(self, "payment_method"):
             result["paymentMethod"] = str(self.payment_method)
         elif include_empty:
@@ -678,6 +740,9 @@ class PaymentOrder(Model):
         chargeback_time: Optional[str] = None,
         charged_time: Optional[str] = None,
         charging: Optional[bool] = None,
+        checkout_url: Optional[str] = None,
+        checkout_url_expired_at: Optional[str] = None,
+        checkout_url_valid: Optional[bool] = None,
         created_at: Optional[str] = None,
         created_time: Optional[str] = None,
         currency: Optional[CurrencySummary] = None,
@@ -689,8 +754,10 @@ class PaymentOrder(Model):
         language: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
         namespace: Optional[str] = None,
+        neon_pay_config: Optional[PaymentOrderNeonPayConfig] = None,
         notify_url: Optional[str] = None,
         omit_notification: Optional[bool] = None,
+        payment_data: Optional[PaymentData] = None,
         payment_method: Optional[str] = None,
         payment_method_fee: Optional[int] = None,
         payment_order_no: Optional[str] = None,
@@ -738,6 +805,12 @@ class PaymentOrder(Model):
             instance.charged_time = charged_time
         if charging is not None:
             instance.charging = charging
+        if checkout_url is not None:
+            instance.checkout_url = checkout_url
+        if checkout_url_expired_at is not None:
+            instance.checkout_url_expired_at = checkout_url_expired_at
+        if checkout_url_valid is not None:
+            instance.checkout_url_valid = checkout_url_valid
         if created_at is not None:
             instance.created_at = created_at
         if created_time is not None:
@@ -760,10 +833,14 @@ class PaymentOrder(Model):
             instance.metadata = metadata
         if namespace is not None:
             instance.namespace = namespace
+        if neon_pay_config is not None:
+            instance.neon_pay_config = neon_pay_config
         if notify_url is not None:
             instance.notify_url = notify_url
         if omit_notification is not None:
             instance.omit_notification = omit_notification
+        if payment_data is not None:
+            instance.payment_data = payment_data
         if payment_method is not None:
             instance.payment_method = payment_method
         if payment_method_fee is not None:
@@ -862,6 +939,21 @@ class PaymentOrder(Model):
             instance.charging = bool(dict_["charging"])
         elif include_empty:
             instance.charging = False
+        if "checkoutUrl" in dict_ and dict_["checkoutUrl"] is not None:
+            instance.checkout_url = str(dict_["checkoutUrl"])
+        elif include_empty:
+            instance.checkout_url = ""
+        if (
+            "checkoutUrlExpiredAt" in dict_
+            and dict_["checkoutUrlExpiredAt"] is not None
+        ):
+            instance.checkout_url_expired_at = str(dict_["checkoutUrlExpiredAt"])
+        elif include_empty:
+            instance.checkout_url_expired_at = ""
+        if "checkoutUrlValid" in dict_ and dict_["checkoutUrlValid"] is not None:
+            instance.checkout_url_valid = bool(dict_["checkoutUrlValid"])
+        elif include_empty:
+            instance.checkout_url_valid = False
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -912,6 +1004,12 @@ class PaymentOrder(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "neonPayConfig" in dict_ and dict_["neonPayConfig"] is not None:
+            instance.neon_pay_config = PaymentOrderNeonPayConfig.create_from_dict(
+                dict_["neonPayConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.neon_pay_config = PaymentOrderNeonPayConfig()
         if "notifyUrl" in dict_ and dict_["notifyUrl"] is not None:
             instance.notify_url = str(dict_["notifyUrl"])
         elif include_empty:
@@ -920,6 +1018,12 @@ class PaymentOrder(Model):
             instance.omit_notification = bool(dict_["omitNotification"])
         elif include_empty:
             instance.omit_notification = False
+        if "paymentData" in dict_ and dict_["paymentData"] is not None:
+            instance.payment_data = PaymentData.create_from_dict(
+                dict_["paymentData"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.payment_data = PaymentData()
         if "paymentMethod" in dict_ and dict_["paymentMethod"] is not None:
             instance.payment_method = str(dict_["paymentMethod"])
         elif include_empty:
@@ -1099,6 +1203,9 @@ class PaymentOrder(Model):
             "chargebackTime": "chargeback_time",
             "chargedTime": "charged_time",
             "charging": "charging",
+            "checkoutUrl": "checkout_url",
+            "checkoutUrlExpiredAt": "checkout_url_expired_at",
+            "checkoutUrlValid": "checkout_url_valid",
             "createdAt": "created_at",
             "createdTime": "created_time",
             "currency": "currency",
@@ -1110,8 +1217,10 @@ class PaymentOrder(Model):
             "language": "language",
             "metadata": "metadata",
             "namespace": "namespace",
+            "neonPayConfig": "neon_pay_config",
             "notifyUrl": "notify_url",
             "omitNotification": "omit_notification",
+            "paymentData": "payment_data",
             "paymentMethod": "payment_method",
             "paymentMethodFee": "payment_method_fee",
             "paymentOrderNo": "payment_order_no",
@@ -1155,6 +1264,9 @@ class PaymentOrder(Model):
             "chargebackTime": False,
             "chargedTime": False,
             "charging": False,
+            "checkoutUrl": False,
+            "checkoutUrlExpiredAt": False,
+            "checkoutUrlValid": False,
             "createdAt": False,
             "createdTime": False,
             "currency": False,
@@ -1166,8 +1278,10 @@ class PaymentOrder(Model):
             "language": False,
             "metadata": False,
             "namespace": False,
+            "neonPayConfig": False,
             "notifyUrl": False,
             "omitNotification": False,
+            "paymentData": False,
             "paymentMethod": False,
             "paymentMethodFee": False,
             "paymentOrderNo": False,
@@ -1223,6 +1337,7 @@ class PaymentOrder(Model):
                 "ADYEN",
                 "ALIPAY",
                 "CHECKOUT",
+                "NEONPAY",
                 "PAYPAL",
                 "STRIPE",
                 "WALLET",

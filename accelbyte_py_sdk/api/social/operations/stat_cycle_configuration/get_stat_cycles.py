@@ -54,11 +54,7 @@ class GetStatCycles(Operation):
     List stat cycles by pagination.
     Other detail info:
 
-      *  Required permission : resource="ADMIN:NAMESPACE:{namespace}:STAT", action=2 (READ)
       *  Returns : stat cycles
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:STAT [READ]
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/statCycles
@@ -71,7 +67,7 @@ class GetStatCycles(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         namespace: (namespace) REQUIRED str in path
 
@@ -103,7 +99,7 @@ class GetStatCycles(Operation):
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]

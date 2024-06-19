@@ -22,7 +22,9 @@ from ._admin_get_periods import admin_get_periods
 from ._admin_randomize_challenge import admin_randomize_challenge
 from ._admin_delete_tied_challenge import admin_delete_tied_challenge
 from ._admin_evaluate_progress import admin_evaluate_progress
+from ._admin_claim_users_rewards import admin_claim_users_rewards
 from ._admin_get_user_rewards import admin_get_user_rewards
+from ._admin_claim_user_rewards import admin_claim_user_rewards
 from ._get_challenges import get_challenges
 from ._public_get_scheduled_goals import public_get_scheduled_goals
 from ._evaluate_my_progress import evaluate_my_progress
@@ -46,7 +48,9 @@ commands = [
     admin_randomize_challenge,
     admin_delete_tied_challenge,
     admin_evaluate_progress,
+    admin_claim_users_rewards,
     admin_get_user_rewards,
+    admin_claim_user_rewards,
     get_challenges,
     public_get_scheduled_goals,
     evaluate_my_progress,

@@ -33,9 +33,13 @@ from ...models import RestErrorResponse
 
 
 class AdminSendMyMFAEmailCodeV4(Operation):
-    """Send code for enabling email (AdminSendMyMFAEmailCodeV4)
+    """Send code for MFA email (AdminSendMyMFAEmailCodeV4)
 
     This endpoint is used to send email code.
+    --------------
+    Supported actions:
+    * ChangePassword
+    * DisableMFAEmail
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/email/code
@@ -44,11 +48,13 @@ class AdminSendMyMFAEmailCodeV4(Operation):
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/x-www-form-urlencoded"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        action: (action) OPTIONAL str in form_data
 
     Responses:
         204: No Content - (code sent)
@@ -70,10 +76,12 @@ class AdminSendMyMFAEmailCodeV4(Operation):
 
     _url: str = "/iam/v4/admin/users/me/mfa/email/code"
     _method: str = "POST"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/x-www-form-urlencoded"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
+
+    action: str  # OPTIONAL in [form_data]
 
     # endregion fields
 
@@ -112,7 +120,15 @@ class AdminSendMyMFAEmailCodeV4(Operation):
     # region get_x_params methods
 
     def get_all_params(self) -> dict:
-        return {}
+        return {
+            "form_data": self.get_form_data_params(),
+        }
+
+    def get_form_data_params(self) -> dict:
+        result = {}
+        if hasattr(self, "action"):
+            result["action"] = self.action
+        return result
 
     # endregion get_x_params methods
 
@@ -122,12 +138,20 @@ class AdminSendMyMFAEmailCodeV4(Operation):
 
     # region with_x methods
 
+    def with_action(self, value: str) -> AdminSendMyMFAEmailCodeV4:
+        self.action = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "action") and self.action:
+            result["action"] = str(self.action)
+        elif include_empty:
+            result["action"] = ""
         return result
 
     # endregion to methods
@@ -191,8 +215,12 @@ class AdminSendMyMFAEmailCodeV4(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, **kwargs) -> AdminSendMyMFAEmailCodeV4:
+    def create(
+        cls, action: Optional[str] = None, **kwargs
+    ) -> AdminSendMyMFAEmailCodeV4:
         instance = cls()
+        if action is not None:
+            instance.action = action
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -202,14 +230,22 @@ class AdminSendMyMFAEmailCodeV4(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> AdminSendMyMFAEmailCodeV4:
         instance = cls()
+        if "action" in dict_ and dict_["action"] is not None:
+            instance.action = str(dict_["action"])
+        elif include_empty:
+            instance.action = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
-        return {}
+        return {
+            "action": "action",
+        }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
-        return {}
+        return {
+            "action": False,
+        }
 
     # endregion static methods

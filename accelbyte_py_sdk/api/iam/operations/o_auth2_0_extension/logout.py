@@ -33,7 +33,7 @@ from .....core import HttpResponse
 class Logout(Operation):
     """Logout (Logout)
 
-    This endpoint is used to remove **access_token**, **refresh_token** from cookie and revoke token from usage.
+    This endpoint is used to remove **access_token**, **refresh_token** from cookie.
 
     Properties:
         url: /iam/v3/logout

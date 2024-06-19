@@ -36,9 +36,11 @@ from ...models import ResponseError
 class AdminRequestDataRetrieval(Operation):
     """Submit user personal data retrieval request (AdminRequestDataRetrieval)
 
-    Submit user personal data retrieval request
-    If admin request data for themselves, password is need to be set
+    Submit user personal data retrieval request.
     Scope: account
+
+    ### Request Header:
+    - **Content-Type: application/x-www-form-urlencoded**
 
     Required Scope(s):
         - account
@@ -68,6 +70,10 @@ class AdminRequestDataRetrieval(Operation):
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
@@ -200,6 +206,10 @@ class AdminRequestDataRetrieval(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (Not Found)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -220,6 +230,10 @@ class AdminRequestDataRetrieval(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 404:
+            return None, ResponseError.create_from_dict(content)
+        if code == 429:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)
