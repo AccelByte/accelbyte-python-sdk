@@ -12,7 +12,6 @@ Following changes in AccelByte Gaming Services OpenAPI specification:
 - `ams`: Operation `ImagePatch` required permission changed from `ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [UPDATE]` to `ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]`
 
 - `challenge`: Model `ModelChallengeResponse` has a new required field `reset_config`.
-- `challenge`: Model `ModelCreateChallengeRequest` has a new required field `reset_config`.
 - `challenge`: Model `ModelsUpdateChallengeRequest` is now renamed into `ModelUpdateChallengeRequest`.
 
 - `iam`: Model `Validation` has a new required field `profanity_filter`.
