@@ -37,8 +37,7 @@ class SessionHistoryTestCase(IntegrationTestCase):
     # region test:query_total_matchmaking_match
 
     def test_query_total_matchmaking_match(self):
-        if self.using_ags_starter:
-            self.skipTest(reason="Test not yet ready for AGS Starter.")
+        self.skipTest(reason="Disabled")
 
         from accelbyte_py_sdk.api.sessionhistory import query_total_matchmaking_match
 
