@@ -95,7 +95,7 @@ class SeasonPassTestCase(IntegrationTestCase):
                     "US": [
                         RegionDataItemDTO()
                         .with_currency_code(currencyCode)
-                        .with_currency_namespace(self.namespace)
+                        .with_currency_namespace("accelbyte")
                         .with_currency_type(CurrencyTypeEnum.REAL)
                         .with_price(itemPrice)
                     ]
