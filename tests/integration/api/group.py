@@ -37,6 +37,7 @@ class GroupTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.group import get_group_configuration_admin_v1
         from accelbyte_py_sdk.api.group import initiate_group_configuration_admin_v1
         from accelbyte_py_sdk.api.group import create_group_configuration_admin_v1
+        from accelbyte_py_sdk.api.group import leave_group_public_v2
         from accelbyte_py_sdk.api.group import delete_group_public_v1
         from accelbyte_py_sdk.api.group import get_user_group_information_public_v2
         from accelbyte_py_sdk.api.group.models import (
@@ -85,6 +86,19 @@ class GroupTestCase(IntegrationTestCase):
                 name="Python Extend SDK Configuration Code",
             )
         )
+
+        result, error = get_user_group_information_public_v2(
+            limit=10,
+            offset=0,
+            namespace=self.namespace,
+        )
+
+        if not error:
+            for data in result.data:
+                _, _ = leave_group_public_v2(
+                    group_id=data.group_id,
+                    namespace= self.namespace,
+                )
 
     # noinspection PyMethodMayBeStatic
     def do_create_new_group_public_v1(
