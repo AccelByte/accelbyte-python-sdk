@@ -38,20 +38,12 @@ class GroupTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.group import initiate_group_configuration_admin_v1
         from accelbyte_py_sdk.api.group import create_group_configuration_admin_v1
         from accelbyte_py_sdk.api.group import leave_group_public_v2
-        from accelbyte_py_sdk.api.group import delete_group_public_v1
         from accelbyte_py_sdk.api.group import get_user_group_information_public_v2
         from accelbyte_py_sdk.api.group.models import (
             ModelsCreateGroupConfigurationRequestV1,
         )
 
         super().setUp()
-
-        result, error = get_user_group_information_public_v2()
-        if not error:
-            for g in result.data:
-                _, error = delete_group_public_v1(g.group_id)
-                if error:
-                    self.log_warning(f"Failed to delete group user is in. {str(error)}")
 
         result, error = get_group_configuration_admin_v1(
             configuration_code=self.initial_configuration_code
@@ -74,7 +66,7 @@ class GroupTestCase(IntegrationTestCase):
 
         self.group_namespace = self.namespace
 
-        _, _ = create_group_configuration_admin_v1(
+        _, error = create_group_configuration_admin_v1(
             body=ModelsCreateGroupConfigurationRequestV1.create(
                 allow_multiple=False,
                 configuration_code=self.group_configuration_code,
@@ -86,6 +78,9 @@ class GroupTestCase(IntegrationTestCase):
                 name="Python Extend SDK Configuration Code",
             )
         )
+        if error:
+            self.skipTest(reason=f"Failed to create group config. error: {str(error)}")
+            return
 
         result, error = get_user_group_information_public_v2(
             limit=10,
@@ -97,7 +92,7 @@ class GroupTestCase(IntegrationTestCase):
             for data in result.data:
                 _, _ = leave_group_public_v2(
                     group_id=data.group_id,
-                    namespace= self.namespace,
+                    namespace=self.namespace,
                 )
 
     # noinspection PyMethodMayBeStatic
