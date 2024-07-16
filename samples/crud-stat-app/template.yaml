@@ -11,7 +11,7 @@ Globals:
     Timeout: 20
     Environment:
       Variables:
-        APP_BASE_URL: 'https://demo.accelbyte.io'
+        APP_BASE_URL: 'https://test.accelbyte.io'
         APP_CLIENT_ID: xxxxxxxxxxxxxxxxxx
         APP_CLIENT_SECRET: xxxxxxxxxxxxxxxxxx
 

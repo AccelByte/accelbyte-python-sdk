@@ -177,7 +177,7 @@ return create_response(status_code=200, body=str(game))
         - AWSLambdaBasicExecutionRole
     - VpcConfig Security Group ID and Subnet ID
 5. From the AccelByte Admin Portal:
-    - Base URL (for `AB_BASE_URL` ex: `https://demo.accelbyte.io`)
+    - Base URL (for `AB_BASE_URL` ex: `https://test.accelbyte.io`)
     - Client ID (for `AB_CLIENT_ID`)
     - Client Secret (for `AB_CLIENT_SECRET`, optional if you are not using a Public Client)
     - 2 User Accounts for playing Tic-Tac-Toe with.

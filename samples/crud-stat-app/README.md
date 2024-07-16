@@ -34,7 +34,7 @@ Globals:
     Timeout: 20   # Give enough time to complete API calls
     Environment:
         Variables:
-          AB_BASE_URL: https://demo.accelbyte.io    # Base URL
+          AB_BASE_URL: https://test.accelbyte.io    # Base URL
           AB_CLIENT_ID: 'xxxxxxxxxx'                # Cliend ID
           AB_CLIENT_SECRET: 'xxxxxxxxxx'            # Client Secret
 ```
