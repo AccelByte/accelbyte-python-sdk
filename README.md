@@ -309,6 +309,50 @@ client_sdk1.deintialize()
 client_sdk1.deintialize()
 ```
 
+### CLI
+
+You can also use the Python Extend SDK to get tokens.
+
+```shell
+python -m accelbyte_py_sdk login -h
+```
+
+```text
+usage: python -m accelbyte_py_sdk login [-h] [-b BASE_URL] [-n NAMESPACE] [-c CLIENT_ID] [-s CLIENT_SECRET] [-u USERNAME] [-p PASSWORD] {client,user}
+
+positional arguments:
+  {client,user}
+
+options:
+  -h, --help            show this help message and exit
+  -b BASE_URL, --base-url BASE_URL
+  -n NAMESPACE, --namespace NAMESPACE
+  -c CLIENT_ID, --client-id CLIENT_ID
+  -s CLIENT_SECRET, --client-secret CLIENT_SECRET
+  -u USERNAME, --username USERNAME
+  -p PASSWORD, --password PASSWORD
+```
+
+---
+
+```shell
+python -m accelbyte_py_sdk login client -b 'https://<environment>.accelbyte.io' -c **** -s ****  | jq -r .access_token
+```
+
+```text
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWNjZWwgSm9lIn0.VOnZ863KSLHhgJfupKzuKZq4ACcefUlcQwi1YvxdBlw
+```
+
+---
+
+```shell
+AB_BASE_URL='https://<environment>.accelbyte.io' AB_CLIENT_ID=**** AB_CLIENT_SECRET=**** python -m accelbyte_py_sdk login user -u **** -p ****  | jq -r .access_token
+```
+
+```text
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWNjZWwgSm9lIn0.VOnZ863KSLHhgJfupKzuKZq4ACcefUlcQwi1YvxdBlw
+```
+
 ## Interacting with a Service Endpoint
 
 ### Example A
