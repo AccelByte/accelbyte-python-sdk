@@ -95,6 +95,8 @@ async def _start_batched_ws_session_async(
     try:
         await ws_client.connect()
 
+        await asyncio.sleep(1.0)  # wait for connectNotif to be sent
+
         error_count = 0
         for message in messages:
             error = None
@@ -123,6 +125,7 @@ async def _start_batched_ws_session_async(
                 writer.write_log(
                     raw_response.splitlines(keepends=False)[0].removeprefix("type: ")
                 )
+            await asyncio.sleep(0.1)  # add extra delay between messages
     finally:
         await ws_client.disconnect()
         print(writer.flush())
