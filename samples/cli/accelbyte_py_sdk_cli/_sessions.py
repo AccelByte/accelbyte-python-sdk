@@ -80,11 +80,10 @@ async def _start_batched_ws_session_async(
         print(writer.flush())
         exit(1)
 
-    raw_response: Optional[str] = None
+    received_messages: List[str] = []
 
     async def on_message_(msg: str):
-        nonlocal raw_response
-        raw_response = msg
+        received_messages.append(msg)
 
     ws_client = WebsocketsWSClient(
         uri=base_url,
@@ -95,37 +94,24 @@ async def _start_batched_ws_session_async(
     try:
         await ws_client.connect()
 
-        await asyncio.sleep(1.0)  # wait for connectNotif to be sent
+        coros = [ws_client.send(message.replace("\\n", "\n")) for message in messages]
 
-        error_count = 0
+        await asyncio.gather(*coros)
+
+        await asyncio.sleep(1.0)  # wait for all message echoes
+
+        missing = []
+
         for message in messages:
-            error = None
-            elapsed = 0.0
-            sleep = 0.03
-            raw_request = message.replace("\\n", "\n")
-            raw_response = None
-            await ws_client.send(raw_request)
-            while elapsed < timeout and raw_response is None:
-                await asyncio.sleep(sleep)
-                elapsed += sleep
-            if elapsed >= timeout:
-                error = "TimeoutError"
-            elif raw_response is None:
-                error = "NoResponseError"
-            if raw_request != raw_response:
-                flat_request = "\\n".join(raw_request.splitlines(keepends=False))
-                flat_response = "\\n".join(raw_response.splitlines(keepends=False))
-                error = f"'{flat_request}' != '{flat_response}'"
-            if error is not None:
-                error_count += 1
-                writer.write_error(error)
-                if not continue_on_error:
-                    break
+            sent_message = message.replace("\\n", "\n")
+            message_type = sent_message.splitlines(keepends=False)[0].removeprefix("type: ")
+            if sent_message in received_messages:
+                writer.write_log(message_type)
             else:
-                writer.write_log(
-                    raw_response.splitlines(keepends=False)[0].removeprefix("type: ")
-                )
-            await asyncio.sleep(0.1)  # add extra delay between messages
+                writer.write_error(f"{message_type} - did not receive echo")
+                missing.append(message)
+
+        error_count = len(missing)
     finally:
         await ws_client.disconnect()
         print(writer.flush())
