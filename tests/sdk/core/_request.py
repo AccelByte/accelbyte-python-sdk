@@ -24,7 +24,7 @@ from accelbyte_py_sdk.core import Operation
 
 from accelbyte_py_sdk.core import create_basic_authentication
 from accelbyte_py_sdk.core import create_proto_from_operation
-from accelbyte_py_sdk.core import get_http_client
+from accelbyte_py_sdk.core import get_http_client, get_config_repository
 
 
 class TestConfigRepository(DictConfigRepository):
@@ -2081,6 +2081,57 @@ class MockServerRequestTestCase(TestCase):
         self.assertNotEqual(new_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(new_access_token))
 
+    def test_download_upload_file(self):
+        from io import BytesIO
+
+        # arrange (upload)
+        config_repo = get_config_repository()
+        http_client = get_http_client()
+        base_url = config_repo.get_base_url()
+        file_name = "foo.txt"
+        file_content = "lorem ipsum"
+
+        # act (upload)
+        response = http_client.send_raw_request(
+            method="POST",
+            url=f"{base_url}/test/upload/files",
+            files={
+                "file": (file_name, BytesIO(file_content.encode(encoding="utf-8")))
+            }
+        )
+
+        # assert (upload)
+        self.assertTrue(response.ok, response.text)
+
+        response_json = response.json()
+        self.assertTrue(response_json)
+
+        self.assertIn("files", response_json)
+        files = response_json["files"]
+        self.assertTrue(files)
+
+        uploaded_file = files[0]
+        self.assertTrue(uploaded_file)
+
+        # act (download)
+        response = http_client.send_raw_request(
+            method="GET",
+            url=f"{base_url}/test/download/files/{uploaded_file}",
+        )
+
+        # assert (download)
+        self.assertTrue(response.ok, response.text)
+
+        temp_file_path = Path("temp")
+        self.assertFalse(temp_file_path.exists())
+
+        try:
+            temp_file_path.write_bytes(response.content)
+            temp_file_content = temp_file_path.read_text(encoding="utf-8")
+            self.assertEqual(file_content, temp_file_content)
+        finally:
+            temp_file_path.unlink(missing_ok=True)
+
 
 class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
     reachable: bool = True
@@ -2706,6 +2757,57 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         self.assertEqual(2, token_repo.counter)
         self.assertNotEqual(new_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(new_access_token))
+
+    async def test_download_upload_file(self):
+        from io import BytesIO
+
+        # arrange (upload)
+        config_repo = get_config_repository()
+        http_client = get_http_client()
+        base_url = config_repo.get_base_url()
+        file_name = "foo.txt"
+        file_content = "lorem ipsum"
+
+        # act (upload)
+        response = await http_client.send_raw_request_async(
+            method="POST",
+            url=f"{base_url}/test/upload/files",
+            files={
+                "file": (file_name, BytesIO(file_content.encode(encoding="utf-8")))
+            }
+        )
+
+        # assert (upload)
+        self.assertTrue(response.ok, response.text)
+
+        response_json = response.json()
+        self.assertTrue(response_json)
+
+        self.assertIn("files", response_json)
+        files = response_json["files"]
+        self.assertTrue(files)
+
+        uploaded_file = files[0]
+        self.assertTrue(uploaded_file)
+
+        # act (download)
+        response = await http_client.send_raw_request_async(
+            method="GET",
+            url=f"{base_url}/test/download/files/{uploaded_file}",
+        )
+
+        # assert (download)
+        self.assertTrue(response.ok, response.text)
+
+        temp_file_path = Path("temp")
+        self.assertFalse(temp_file_path.exists())
+
+        try:
+            temp_file_path.write_bytes(response.content)
+            temp_file_content = temp_file_path.read_text(encoding="utf-8")
+            self.assertEqual(file_content, temp_file_content)
+        finally:
+            temp_file_path.unlink(missing_ok=True)
 
     # noinspection PyUnresolvedReferences
     def _setupAsyncioLoop(self):

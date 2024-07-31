@@ -1,11 +1,15 @@
 # Copyright (c) 2021 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
+
 import asyncio
 import logging
+import shutil
 import time
 from abc import ABC, abstractmethod
 from datetime import timedelta
+from functools import partial
+from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 import httpx
@@ -70,6 +74,12 @@ class HttpClient(ABC):
         self, raw_response: Any, **kwargs
     ) -> Tuple[Union[None, HttpRawResponse], Union[None, HttpResponse]]:
         pass
+
+    def send_raw_request(self, method: str, url: str, **kwargs) -> Any:
+        raise NotImplementedError
+
+    async def send_raw_request_async(self, method: str, url: str, **kwargs) -> Any:
+        raise NotImplementedError
 
     def _log_request(self, request_dict: dict) -> None:
         req_fmt = self.request_log_formatter or format_request_log
@@ -189,6 +199,9 @@ class RequestsHttpClient(HttpClient):
         )
         self.log_response(raw_response)
         return http_raw_response, http_response
+
+    def send_raw_request(self, method: str, url: str, **kwargs) -> Any:
+        return self.session.request(method=method, url=url, **kwargs)
 
     def log_request(self, prepared_request: requests.PreparedRequest) -> None:
         if _LOGGER.isEnabledFor(logging.DEBUG):
@@ -449,6 +462,20 @@ class HttpxHttpClient(HttpClient):
         )
         self.log_response(raw_response)
         return http_raw_response, http_response
+
+    def send_raw_request(self, method: str, url: str, **kwargs) -> Any:
+        response = self.client.request(method=method, url=url, **kwargs)
+        ok = self.__ok(response)
+        if response is not None:
+            setattr(response, "ok", ok)
+        return response
+
+    async def send_raw_request_async(self, method: str, url: str, **kwargs) -> Any:
+        response = await self.client_async.request(method=method, url=url, **kwargs)
+        ok = self.__ok(response)
+        if response is not None:
+            setattr(response, "ok", ok)
+        return response
 
     def log_request(self, httpx_request: httpx.Request) -> None:
         if _LOGGER.isEnabledFor(logging.DEBUG):
