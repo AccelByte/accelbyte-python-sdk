@@ -29,7 +29,7 @@ test_core:
 			docker run -d -p 8070:80 --name mylocal_httpbin --network host --rm kennethreitz/httpbin && \
 			echo "[info] httpbin ready" && \
 			echo "[info] running mock-server" && \
-			(bash "$(SDK_MOCK_SERVER_PATH)/mock-server.sh" -s /data/spec &) && \
+			(bash "$(SDK_MOCK_SERVER_PATH)/mock-server.sh" -s /data/spec --save_files y &) && \
 			(for i in $$(seq 1 10); do echo "[info] pinging mock-server" && bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8080" 2>/dev/null && exit 0 || sleep 10; done; echo "[erro] can't connect to mock-server"; exit 1) && \
 			echo "[info] mock-server ready" && \
 			docker run --rm --tty --entrypoint /bin/bash --env PIP_CACHE_DIR=/tmp/pip --name ab_py_sdk_core_test --network host --user $$(id -u):$$(id -g) --volume $$(pwd):/data --workdir /data python:3.9-slim \
