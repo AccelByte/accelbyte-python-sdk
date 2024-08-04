@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Lobby Server Index (3.35.9)
+# AccelByte Gaming Services Lobby Server Index (3.35.15)
 
 
 ## Operations
@@ -115,6 +115,7 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/bulk/block | POST | adminBulkBlockPlayersV1 | `false` | [AdminBulkBlockPlayersV1](../../accelbyte_py_sdk/api/lobby/operations/player/admin_bulk_block_players_v1.py) | [admin_bulk_block_players_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-bulk-block-players-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_bulk_block_players_v1.py) |
+| /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/bulk/unblock | DELETE | adminBulkUnblockPlayersV1 | `false` | [AdminBulkUnblockPlayersV1](../../accelbyte_py_sdk/api/lobby/operations/player/admin_bulk_unblock_players_v1.py) | [admin_bulk_unblock_players_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-bulk-unblock-players-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_bulk_unblock_players_v1.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/attributes | GET | adminGetAllPlayerSessionAttribute | `false` | [AdminGetAllPlayerSessionAttribute](../../accelbyte_py_sdk/api/lobby/operations/player/admin_get_all_player_se_b925d7.py) | [admin_get_all_player_session_attribute](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-get-all-player-session-attribute](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_all_player_session_attribute.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/users/bulk/blocked | POST | adminGetBulkPlayerBlockedPlayersV1 | `false` | [AdminGetBulkPlayerBlockedPlayersV1](../../accelbyte_py_sdk/api/lobby/operations/player/admin_get_bulk_player_b_0addc5.py) | [admin_get_bulk_player_blocked_players_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-get-bulk-player-blocked-players-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_bulk_player_blocked_players_v1.py) |
 | /lobby/v1/admin/player/namespaces/{namespace}/ccu | GET | adminGetLobbyCCU | `false` | [AdminGetLobbyCCU](../../accelbyte_py_sdk/api/lobby/operations/player/admin_get_lobby_ccu.py) | [admin_get_lobby_ccu](../../accelbyte_py_sdk/api/lobby/wrappers/_player.py) | [accelbyte_py_sdk_cli lobby-admin-get-lobby-ccu](../../samples/cli/accelbyte_py_sdk_cli/lobby/_admin_get_lobby_ccu.py) |
@@ -131,6 +132,7 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /lobby/v1/public/presence/namespaces/{namespace}/users/presence | GET | UsersPresenceHandlerV1 | `false` | [UsersPresenceHandlerV1](../../accelbyte_py_sdk/api/lobby/operations/presence/users_presence_handler_v1.py) | [users_presence_handler_v1](../../accelbyte_py_sdk/api/lobby/wrappers/_presence.py) | [accelbyte_py_sdk_cli lobby-users-presence-handler-v1](../../samples/cli/accelbyte_py_sdk_cli/lobby/_users_presence_handler_v1.py) |
+| /lobby/v1/public/presence/namespaces/{namespace}/users/presence | POST | UsersPresenceHandlerV2 | `false` | [UsersPresenceHandlerV2](../../accelbyte_py_sdk/api/lobby/operations/presence/users_presence_handler_v2.py) | [users_presence_handler_v2](../../accelbyte_py_sdk/api/lobby/wrappers/_presence.py) | [accelbyte_py_sdk_cli lobby-users-presence-handler-v2](../../samples/cli/accelbyte_py_sdk_cli/lobby/_users_presence_handler_v2.py) |
 
 ### profanity
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -201,6 +203,7 @@
 | model.OutgoingFriendsWithTimeData | [ModelOutgoingFriendsWithTimeData](../../accelbyte_py_sdk/api/lobby/models/model_outgoing_friends_with_time_data.py) |
 | model.Pagination | [ModelPagination](../../accelbyte_py_sdk/api/lobby/models/model_pagination.py) |
 | model.PutGlobalConfigurationRequest | [ModelPutGlobalConfigurationRequest](../../accelbyte_py_sdk/api/lobby/models/model_put_global_configuration_request.py) |
+| model.RequestUserPresence | [ModelRequestUserPresence](../../accelbyte_py_sdk/api/lobby/models/model_request_user_presence.py) |
 | model.TemplateContent | [ModelTemplateContent](../../accelbyte_py_sdk/api/lobby/models/model_template_content.py) |
 | model.TemplateLocalization | [ModelTemplateLocalization](../../accelbyte_py_sdk/api/lobby/models/model_template_localization.py) |
 | model.TemplateLocalizationResponse | [ModelTemplateLocalizationResponse](../../accelbyte_py_sdk/api/lobby/models/model_template_localization_response.py) |
@@ -246,6 +249,7 @@
 | models.GetPlayerSessionAttributeResponse | [ModelsGetPlayerSessionAttributeResponse](../../accelbyte_py_sdk/api/lobby/models/models_get_player_session_attribute_response.py) |
 | models.ImportConfigResponse | [ModelsImportConfigResponse](../../accelbyte_py_sdk/api/lobby/models/models_import_config_response.py) |
 | models.ListBlockedPlayerRequest | [ModelsListBlockedPlayerRequest](../../accelbyte_py_sdk/api/lobby/models/models_list_blocked_player_request.py) |
+| models.ListUnblockPlayerRequest | [ModelsListUnblockPlayerRequest](../../accelbyte_py_sdk/api/lobby/models/models_list_unblock_player_request.py) |
 | models.PartyData | [ModelsPartyData](../../accelbyte_py_sdk/api/lobby/models/models_party_data.py) |
 | models.PartyPUTCustomAttributesRequest | [ModelsPartyPUTCustomAttributesRequest](../../accelbyte_py_sdk/api/lobby/models/models_party_put_custom_attributes_request.py) |
 | models.PartyPUTLimitSizeRequest | [ModelsPartyPUTLimitSizeRequest](../../accelbyte_py_sdk/api/lobby/models/models_party_put_limit_size_request.py) |

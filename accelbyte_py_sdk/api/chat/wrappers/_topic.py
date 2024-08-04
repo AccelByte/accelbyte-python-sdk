@@ -645,6 +645,7 @@ def admin_chat_history(
     shard_id: Optional[str] = None,
     start_created_at: Optional[int] = None,
     topic: Optional[List[str]] = None,
+    unfiltered: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -688,6 +689,8 @@ def admin_chat_history(
 
         topic: (topic) OPTIONAL List[str] in query
 
+        unfiltered: (unfiltered) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelsChatMessageWithPaginationResponse (OK)
 
@@ -714,6 +717,7 @@ def admin_chat_history(
         shard_id=shard_id,
         start_created_at=start_created_at,
         topic=topic,
+        unfiltered=unfiltered,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -731,6 +735,7 @@ async def admin_chat_history_async(
     shard_id: Optional[str] = None,
     start_created_at: Optional[int] = None,
     topic: Optional[List[str]] = None,
+    unfiltered: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -774,6 +779,8 @@ async def admin_chat_history_async(
 
         topic: (topic) OPTIONAL List[str] in query
 
+        unfiltered: (unfiltered) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelsChatMessageWithPaginationResponse (OK)
 
@@ -800,6 +807,7 @@ async def admin_chat_history_async(
         shard_id=shard_id,
         start_created_at=start_created_at,
         topic=topic,
+        unfiltered=unfiltered,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1967,6 +1975,7 @@ def admin_topic_chat_history(
     sender_user_id: Optional[str] = None,
     shard_id: Optional[str] = None,
     start_created_at: Optional[int] = None,
+    unfiltered: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2008,6 +2017,8 @@ def admin_topic_chat_history(
 
         start_created_at: (startCreatedAt) OPTIONAL int in query
 
+        unfiltered: (unfiltered) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelsChatMessageWithPaginationResponse (OK)
 
@@ -2033,6 +2044,7 @@ def admin_topic_chat_history(
         sender_user_id=sender_user_id,
         shard_id=shard_id,
         start_created_at=start_created_at,
+        unfiltered=unfiltered,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -2050,6 +2062,7 @@ async def admin_topic_chat_history_async(
     sender_user_id: Optional[str] = None,
     shard_id: Optional[str] = None,
     start_created_at: Optional[int] = None,
+    unfiltered: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2091,6 +2104,8 @@ async def admin_topic_chat_history_async(
 
         start_created_at: (startCreatedAt) OPTIONAL int in query
 
+        unfiltered: (unfiltered) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelsChatMessageWithPaginationResponse (OK)
 
@@ -2116,6 +2131,7 @@ async def admin_topic_chat_history_async(
         sender_user_id=sender_user_id,
         shard_id=shard_id,
         start_created_at=start_created_at,
+        unfiltered=unfiltered,
         namespace=namespace,
     )
     return await run_request_async(

@@ -64,6 +64,7 @@ from ..api.lobby.models import ModelNotificationWithTemplateRequestV1
 from ..api.lobby.models import ModelOutgoingFriendsWithTimeData
 from ..api.lobby.models import ModelPagination
 from ..api.lobby.models import ModelPutGlobalConfigurationRequest
+from ..api.lobby.models import ModelRequestUserPresence
 from ..api.lobby.models import ModelTemplateContent
 from ..api.lobby.models import ModelTemplateLocalization
 from ..api.lobby.models import ModelTemplateLocalizationResponse
@@ -109,6 +110,7 @@ from ..api.lobby.models import ModelsGetLobbyCcuResponse
 from ..api.lobby.models import ModelsGetPlayerSessionAttributeResponse
 from ..api.lobby.models import ModelsImportConfigResponse
 from ..api.lobby.models import ModelsListBlockedPlayerRequest
+from ..api.lobby.models import ModelsListUnblockPlayerRequest
 from ..api.lobby.models import ModelsPartyData
 from ..api.lobby.models import ModelsPartyPUTCustomAttributesRequest
 from ..api.lobby.models import ModelsPartyPUTLimitSizeRequest
@@ -487,6 +489,12 @@ def create_model_put_global_configuration_request_example() -> (
     instance.test_game_mode = randomize()
     instance.test_region_url_mapping = [randomize()]
     instance.test_target_user_i_ds = [randomize()]
+    return instance
+
+
+def create_model_request_user_presence_example() -> ModelRequestUserPresence:
+    instance = ModelRequestUserPresence()
+    instance.user_i_ds = [randomize()]
     return instance
 
 
@@ -885,6 +893,14 @@ def create_models_list_blocked_player_request_example() -> (
 ):
     instance = ModelsListBlockedPlayerRequest()
     instance.list_blocked_user_id = [randomize()]
+    return instance
+
+
+def create_models_list_unblock_player_request_example() -> (
+    ModelsListUnblockPlayerRequest
+):
+    instance = ModelsListUnblockPlayerRequest()
+    instance.list_unblock_user_id = [randomize()]
     return instance
 
 

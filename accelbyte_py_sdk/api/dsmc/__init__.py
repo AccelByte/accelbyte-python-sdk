@@ -8,19 +8,23 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.4.7"
+__version__ = "6.8.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 # admin
+from .wrappers import add_buffer
+from .wrappers import add_buffer_async
 from .wrappers import count_server
 from .wrappers import count_server_async
 from .wrappers import count_server_detailed
 from .wrappers import count_server_detailed_async
 from .wrappers import count_session
 from .wrappers import count_session_async
+from .wrappers import create_worker_config
+from .wrappers import create_worker_config_async
 from .wrappers import delete_local_server
 from .wrappers import delete_local_server_async
 from .wrappers import delete_server
@@ -29,12 +33,20 @@ from .wrappers import delete_session
 from .wrappers import delete_session_async
 from .wrappers import get_server
 from .wrappers import get_server_async
+from .wrappers import get_worker_config
+from .wrappers import get_worker_config_async
 from .wrappers import list_local_server
 from .wrappers import list_local_server_async
 from .wrappers import list_server
 from .wrappers import list_server_async
 from .wrappers import list_session
 from .wrappers import list_session_async
+from .wrappers import run_ghost_cleaner_request_handler
+from .wrappers import run_ghost_cleaner_request_handler_async
+from .wrappers import run_zombie_cleaner_request_handler
+from .wrappers import run_zombie_cleaner_request_handler_async
+from .wrappers import update_worker_config
+from .wrappers import update_worker_config_async
 
 # config
 from .wrappers import add_port
@@ -73,6 +85,8 @@ from .wrappers import create_override_region_override
 from .wrappers import create_override_region_override_async
 from .wrappers import create_root_region_override
 from .wrappers import create_root_region_override_async
+from .wrappers import delete_creating_server_count_queue
+from .wrappers import delete_creating_server_count_queue_async
 from .wrappers import delete_deployment
 from .wrappers import delete_deployment_async
 from .wrappers import delete_deployment_client
@@ -89,6 +103,8 @@ from .wrappers import get_all_deployment_client
 from .wrappers import get_all_deployment_client_async
 from .wrappers import get_deployment
 from .wrappers import get_deployment_async
+from .wrappers import get_deployment_client
+from .wrappers import get_deployment_client_async
 from .wrappers import update_deployment
 from .wrappers import update_deployment_async
 from .wrappers import update_deployment_override
@@ -113,8 +129,6 @@ from .wrappers import delete_image
 from .wrappers import delete_image_async
 from .wrappers import delete_image_patch
 from .wrappers import delete_image_patch_async
-from .wrappers import export_images
-from .wrappers import export_images_async
 from .wrappers import get_image_detail
 from .wrappers import get_image_detail_async
 from .wrappers import get_image_limit
@@ -129,8 +143,6 @@ from .wrappers import image_detail_client
 from .wrappers import image_detail_client_async
 from .wrappers import image_limit_client
 from .wrappers import image_limit_client_async
-from .wrappers import import_images
-from .wrappers import import_images_async
 from .wrappers import list_images
 from .wrappers import list_images_async
 from .wrappers import list_images_client
@@ -167,6 +179,8 @@ from .wrappers import list_providers_by_region
 from .wrappers import list_providers_by_region_async
 
 # server
+from .wrappers import count_server_detailed_client
+from .wrappers import count_server_detailed_client_async
 from .wrappers import deregister_local_server
 from .wrappers import deregister_local_server_async
 from .wrappers import get_server_session

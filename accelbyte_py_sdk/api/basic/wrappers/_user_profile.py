@@ -53,6 +53,7 @@ from ..operations.user_profile import GetMyZipCode
 from ..operations.user_profile import GetPrivateCustomAttributesInfo
 from ..operations.user_profile import GetUserProfileInfo
 from ..operations.user_profile import GetUserProfileInfoByPublicId
+from ..operations.user_profile import PublicBulkGetUserProfilePublicInfo
 from ..operations.user_profile import PublicCreateUserProfile
 from ..operations.user_profile import PublicGetCustomAttributesInfo
 from ..operations.user_profile import PublicGetUserProfileInfo
@@ -1148,6 +1149,102 @@ async def get_user_profile_info_by_public_id_async(
             return None, error
     request = GetUserProfileInfoByPublicId.create(
         public_id=public_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicBulkGetUserProfilePublicInfo)
+def public_bulk_get_user_profile_public_info(
+    body: Optional[UserProfileBulkRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get user profile public info by ids (publicBulkGetUserProfilePublicInfo)
+
+    Bulk get user public profile by ids.
+    Other detail info:
+
+      * Returns : user public profiles
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/profiles/public
+
+        method: POST
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileBulkRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[UserProfilePublicInfo] (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicBulkGetUserProfilePublicInfo.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicBulkGetUserProfilePublicInfo)
+async def public_bulk_get_user_profile_public_info_async(
+    body: Optional[UserProfileBulkRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get user profile public info by ids (publicBulkGetUserProfilePublicInfo)
+
+    Bulk get user public profile by ids.
+    Other detail info:
+
+      * Returns : user public profiles
+
+    Properties:
+        url: /basic/v1/public/namespaces/{namespace}/profiles/public
+
+        method: POST
+
+        tags: ["UserProfile"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL UserProfileBulkRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[UserProfilePublicInfo] (Successful operation)
+
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicBulkGetUserProfilePublicInfo.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

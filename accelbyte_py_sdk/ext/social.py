@@ -36,6 +36,7 @@ from ..api.social.models import BulkStatItemInc
 from ..api.social.models import BulkStatItemReset
 from ..api.social.models import BulkStatItemUpdate
 from ..api.social.models import BulkStatOperationResult
+from ..api.social.models import BulkUserStatItemByStatCodes
 from ..api.social.models import BulkUserStatItemInc
 from ..api.social.models import BulkUserStatItemReset
 from ..api.social.models import BulkUserStatItemUpdate
@@ -49,6 +50,7 @@ from ..api.social.models import GlobalStatItemInfo
 from ..api.social.models import GlobalStatItemPagingSlicedResult
 from ..api.social.models import NamespaceSlotConfigInfo
 from ..api.social.models import Paging
+from ..api.social.models import Permission
 from ..api.social.models import SlotConfigUpdate
 from ..api.social.models import SlotInfo
 from ..api.social.models import SlotMetadataUpdate
@@ -166,6 +168,12 @@ def create_bulk_stat_operation_result_example() -> BulkStatOperationResult:
     return instance
 
 
+def create_bulk_user_stat_item_by_stat_codes_example() -> BulkUserStatItemByStatCodes:
+    instance = BulkUserStatItemByStatCodes()
+    instance.stat_codes = [randomize()]
+    return instance
+
+
 def create_bulk_user_stat_item_inc_example() -> BulkUserStatItemInc:
     instance = BulkUserStatItemInc()
     instance.stat_code = randomize()
@@ -198,6 +206,7 @@ def create_error_entity_example() -> ErrorEntity:
     instance.error_message = randomize()
     instance.dev_stack_trace = randomize()
     instance.message_variables = {randomize(): randomize()}
+    instance.required_permission = create_permission_example()
     return instance
 
 
@@ -295,6 +304,13 @@ def create_paging_example() -> Paging:
     instance = Paging()
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_permission_example() -> Permission:
+    instance = Permission()
+    instance.action = randomize("int", min_val=1, max_val=1000)
+    instance.resource = randomize()
     return instance
 
 

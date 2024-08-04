@@ -34,6 +34,7 @@ from ..api.chat.models import ApiSendChatParams
 from ..api.chat.models import ApiUnmuteUserRequest
 from ..api.chat.models import ApiUpdateTopicParams
 from ..api.chat.models import LogAppMessageDeclaration
+from ..api.chat.models import LogconfigConfiguration
 from ..api.chat.models import MessageActionAddUserToTopicResult
 from ..api.chat.models import MessageActionDeleteTopicResult
 from ..api.chat.models import ModelsAddInboxCategoryRequest
@@ -185,6 +186,13 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
     instance.section = randomize()
     instance.service = randomize()
     instance.text = randomize()
+    return instance
+
+
+def create_logconfig_configuration_example() -> LogconfigConfiguration:
+    instance = LogconfigConfiguration()
+    instance.log_level = randomize()
+    instance.socket_log_enabled = randomize("bool")
     return instance
 
 

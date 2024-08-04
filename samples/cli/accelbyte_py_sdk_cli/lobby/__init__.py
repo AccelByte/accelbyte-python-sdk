@@ -106,6 +106,7 @@ from ._admin_get_player_blocked_by_players_v1 import (
     admin_get_player_blocked_by_players_v1,
 )
 from ._admin_bulk_block_players_v1 import admin_bulk_block_players_v1
+from ._admin_bulk_unblock_players_v1 import admin_bulk_unblock_players_v1
 from ._admin_debug_profanity_filters import admin_debug_profanity_filters
 from ._admin_get_profanity_list_filters_v1 import admin_get_profanity_list_filters_v1
 from ._admin_add_profanity_filter_into_list import admin_add_profanity_filter_into_list
@@ -140,6 +141,7 @@ from ._public_get_player_blocked_by_players_v1 import (
 )
 from ._public_unblock_player_v1 import public_unblock_player_v1
 from ._users_presence_handler_v1 import users_presence_handler_v1
+from ._users_presence_handler_v2 import users_presence_handler_v2
 from ._free_form_notification import free_form_notification
 from ._get_my_notifications import get_my_notifications
 from ._notification_with_template import notification_with_template
@@ -225,6 +227,7 @@ commands = [
     admin_get_player_blocked_players_v1,
     admin_get_player_blocked_by_players_v1,
     admin_bulk_block_players_v1,
+    admin_bulk_unblock_players_v1,
     admin_debug_profanity_filters,
     admin_get_profanity_list_filters_v1,
     admin_add_profanity_filter_into_list,
@@ -251,6 +254,7 @@ commands = [
     public_get_player_blocked_by_players_v1,
     public_unblock_player_v1,
     users_presence_handler_v1,
+    users_presence_handler_v2,
     free_form_notification,
     get_my_notifications,
     notification_with_template,

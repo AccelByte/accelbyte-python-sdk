@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ds Log Manager Service."""
 
-__version__ = "3.4.1"
+__version__ = "3.7.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,3 +16,4 @@ __email__ = "dev@accelbyte.net"
 
 from .batch_download_server_logs import BatchDownloadServerLogs
 from .list_all_terminated_servers import ListAllTerminatedServers
+from .list_metadata_servers import ListMetadataServers

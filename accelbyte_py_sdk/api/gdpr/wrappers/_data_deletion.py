@@ -1015,6 +1015,7 @@ async def public_submit_my_account_deletion_request_async(
 def public_submit_user_account_deletion_request(
     password: str,
     user_id: str,
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1044,6 +1045,8 @@ def public_submit_user_account_deletion_request(
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in form_data
+
         password: (password) REQUIRED str in form_data
 
         namespace: (namespace) REQUIRED str in path
@@ -1072,6 +1075,7 @@ def public_submit_user_account_deletion_request(
     request = PublicSubmitUserAccountDeletionRequest.create(
         password=password,
         user_id=user_id,
+        language_tag=language_tag,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1081,6 +1085,7 @@ def public_submit_user_account_deletion_request(
 async def public_submit_user_account_deletion_request_async(
     password: str,
     user_id: str,
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1110,6 +1115,8 @@ async def public_submit_user_account_deletion_request_async(
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in form_data
+
         password: (password) REQUIRED str in form_data
 
         namespace: (namespace) REQUIRED str in path
@@ -1138,6 +1145,7 @@ async def public_submit_user_account_deletion_request_async(
     request = PublicSubmitUserAccountDeletionRequest.create(
         password=password,
         user_id=user_id,
+        language_tag=language_tag,
         namespace=namespace,
     )
     return await run_request_async(

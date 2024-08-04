@@ -31,8 +31,8 @@ from ..models.models_allocation_event import ModelsAllocationEvent
 from ..models.models_status_history import ModelsStatusHistory
 
 
-class ModelsServer(Model):
-    """Models server (models.Server)
+class ModelsServerResponse(Model):
+    """Models server response (models.ServerResponse)
 
     Properties:
         allocation_id: (allocation_id) REQUIRED str
@@ -83,9 +83,15 @@ class ModelsServer(Model):
 
         alternate_ips: (alternate_ips) OPTIONAL List[str]
 
+        artifact_path: (artifact_path) OPTIONAL str
+
+        is_core_dump_enabled: (is_core_dump_enabled) OPTIONAL bool
+
         ports: (ports) OPTIONAL Dict[str, int]
 
         status_history: (status_history) OPTIONAL List[ModelsStatusHistory]
+
+        ulimit_file_size: (ulimit_file_size) OPTIONAL int
     """
 
     # region fields
@@ -114,117 +120,134 @@ class ModelsServer(Model):
     termination_reason: str  # REQUIRED
     allocation_events: List[ModelsAllocationEvent]  # OPTIONAL
     alternate_ips: List[str]  # OPTIONAL
+    artifact_path: str  # OPTIONAL
+    is_core_dump_enabled: bool  # OPTIONAL
     ports: Dict[str, int]  # OPTIONAL
     status_history: List[ModelsStatusHistory]  # OPTIONAL
+    ulimit_file_size: int  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_allocation_id(self, value: str) -> ModelsServer:
+    def with_allocation_id(self, value: str) -> ModelsServerResponse:
         self.allocation_id = value
         return self
 
-    def with_cpu_limit(self, value: int) -> ModelsServer:
+    def with_cpu_limit(self, value: int) -> ModelsServerResponse:
         self.cpu_limit = value
         return self
 
-    def with_deployment(self, value: str) -> ModelsServer:
+    def with_deployment(self, value: str) -> ModelsServerResponse:
         self.deployment = value
         return self
 
-    def with_deployment_override(self, value: str) -> ModelsServer:
+    def with_deployment_override(self, value: str) -> ModelsServerResponse:
         self.deployment_override = value
         return self
 
-    def with_game_version(self, value: str) -> ModelsServer:
+    def with_game_version(self, value: str) -> ModelsServerResponse:
         self.game_version = value
         return self
 
-    def with_image_version(self, value: str) -> ModelsServer:
+    def with_image_version(self, value: str) -> ModelsServerResponse:
         self.image_version = value
         return self
 
-    def with_ip(self, value: str) -> ModelsServer:
+    def with_ip(self, value: str) -> ModelsServerResponse:
         self.ip = value
         return self
 
-    def with_is_override_game_version(self, value: bool) -> ModelsServer:
+    def with_is_override_game_version(self, value: bool) -> ModelsServerResponse:
         self.is_override_game_version = value
         return self
 
-    def with_job_id(self, value: str) -> ModelsServer:
+    def with_job_id(self, value: str) -> ModelsServerResponse:
         self.job_id = value
         return self
 
-    def with_last_update(self, value: str) -> ModelsServer:
+    def with_last_update(self, value: str) -> ModelsServerResponse:
         self.last_update = value
         return self
 
-    def with_match_id(self, value: str) -> ModelsServer:
+    def with_match_id(self, value: str) -> ModelsServerResponse:
         self.match_id = value
         return self
 
-    def with_mem_limit(self, value: int) -> ModelsServer:
+    def with_mem_limit(self, value: int) -> ModelsServerResponse:
         self.mem_limit = value
         return self
 
-    def with_namespace(self, value: str) -> ModelsServer:
+    def with_namespace(self, value: str) -> ModelsServerResponse:
         self.namespace = value
         return self
 
-    def with_params(self, value: str) -> ModelsServer:
+    def with_params(self, value: str) -> ModelsServerResponse:
         self.params = value
         return self
 
-    def with_pod_name(self, value: str) -> ModelsServer:
+    def with_pod_name(self, value: str) -> ModelsServerResponse:
         self.pod_name = value
         return self
 
-    def with_port(self, value: int) -> ModelsServer:
+    def with_port(self, value: int) -> ModelsServerResponse:
         self.port = value
         return self
 
-    def with_protocol(self, value: str) -> ModelsServer:
+    def with_protocol(self, value: str) -> ModelsServerResponse:
         self.protocol = value
         return self
 
-    def with_provider(self, value: str) -> ModelsServer:
+    def with_provider(self, value: str) -> ModelsServerResponse:
         self.provider = value
         return self
 
-    def with_region(self, value: str) -> ModelsServer:
+    def with_region(self, value: str) -> ModelsServerResponse:
         self.region = value
         return self
 
-    def with_session_id(self, value: str) -> ModelsServer:
+    def with_session_id(self, value: str) -> ModelsServerResponse:
         self.session_id = value
         return self
 
-    def with_status(self, value: str) -> ModelsServer:
+    def with_status(self, value: str) -> ModelsServerResponse:
         self.status = value
         return self
 
-    def with_termination_reason(self, value: str) -> ModelsServer:
+    def with_termination_reason(self, value: str) -> ModelsServerResponse:
         self.termination_reason = value
         return self
 
     def with_allocation_events(
         self, value: List[ModelsAllocationEvent]
-    ) -> ModelsServer:
+    ) -> ModelsServerResponse:
         self.allocation_events = value
         return self
 
-    def with_alternate_ips(self, value: List[str]) -> ModelsServer:
+    def with_alternate_ips(self, value: List[str]) -> ModelsServerResponse:
         self.alternate_ips = value
         return self
 
-    def with_ports(self, value: Dict[str, int]) -> ModelsServer:
+    def with_artifact_path(self, value: str) -> ModelsServerResponse:
+        self.artifact_path = value
+        return self
+
+    def with_is_core_dump_enabled(self, value: bool) -> ModelsServerResponse:
+        self.is_core_dump_enabled = value
+        return self
+
+    def with_ports(self, value: Dict[str, int]) -> ModelsServerResponse:
         self.ports = value
         return self
 
-    def with_status_history(self, value: List[ModelsStatusHistory]) -> ModelsServer:
+    def with_status_history(
+        self, value: List[ModelsStatusHistory]
+    ) -> ModelsServerResponse:
         self.status_history = value
+        return self
+
+    def with_ulimit_file_size(self, value: int) -> ModelsServerResponse:
+        self.ulimit_file_size = value
         return self
 
     # endregion with_x methods
@@ -331,6 +354,14 @@ class ModelsServer(Model):
             result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
         elif include_empty:
             result["alternate_ips"] = []
+        if hasattr(self, "artifact_path"):
+            result["artifact_path"] = str(self.artifact_path)
+        elif include_empty:
+            result["artifact_path"] = ""
+        if hasattr(self, "is_core_dump_enabled"):
+            result["is_core_dump_enabled"] = bool(self.is_core_dump_enabled)
+        elif include_empty:
+            result["is_core_dump_enabled"] = False
         if hasattr(self, "ports"):
             result["ports"] = {str(k0): int(v0) for k0, v0 in self.ports.items()}
         elif include_empty:
@@ -341,6 +372,10 @@ class ModelsServer(Model):
             ]
         elif include_empty:
             result["status_history"] = []
+        if hasattr(self, "ulimit_file_size"):
+            result["ulimit_file_size"] = int(self.ulimit_file_size)
+        elif include_empty:
+            result["ulimit_file_size"] = 0
         return result
 
     # endregion to methods
@@ -374,10 +409,13 @@ class ModelsServer(Model):
         termination_reason: str,
         allocation_events: Optional[List[ModelsAllocationEvent]] = None,
         alternate_ips: Optional[List[str]] = None,
+        artifact_path: Optional[str] = None,
+        is_core_dump_enabled: Optional[bool] = None,
         ports: Optional[Dict[str, int]] = None,
         status_history: Optional[List[ModelsStatusHistory]] = None,
+        ulimit_file_size: Optional[int] = None,
         **kwargs,
-    ) -> ModelsServer:
+    ) -> ModelsServerResponse:
         instance = cls()
         instance.allocation_id = allocation_id
         instance.cpu_limit = cpu_limit
@@ -405,14 +443,22 @@ class ModelsServer(Model):
             instance.allocation_events = allocation_events
         if alternate_ips is not None:
             instance.alternate_ips = alternate_ips
+        if artifact_path is not None:
+            instance.artifact_path = artifact_path
+        if is_core_dump_enabled is not None:
+            instance.is_core_dump_enabled = is_core_dump_enabled
         if ports is not None:
             instance.ports = ports
         if status_history is not None:
             instance.status_history = status_history
+        if ulimit_file_size is not None:
+            instance.ulimit_file_size = ulimit_file_size
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ModelsServer:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ModelsServerResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -518,6 +564,17 @@ class ModelsServer(Model):
             instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
         elif include_empty:
             instance.alternate_ips = []
+        if "artifact_path" in dict_ and dict_["artifact_path"] is not None:
+            instance.artifact_path = str(dict_["artifact_path"])
+        elif include_empty:
+            instance.artifact_path = ""
+        if (
+            "is_core_dump_enabled" in dict_
+            and dict_["is_core_dump_enabled"] is not None
+        ):
+            instance.is_core_dump_enabled = bool(dict_["is_core_dump_enabled"])
+        elif include_empty:
+            instance.is_core_dump_enabled = False
         if "ports" in dict_ and dict_["ports"] is not None:
             instance.ports = {str(k0): int(v0) for k0, v0 in dict_["ports"].items()}
         elif include_empty:
@@ -529,12 +586,16 @@ class ModelsServer(Model):
             ]
         elif include_empty:
             instance.status_history = []
+        if "ulimit_file_size" in dict_ and dict_["ulimit_file_size"] is not None:
+            instance.ulimit_file_size = int(dict_["ulimit_file_size"])
+        elif include_empty:
+            instance.ulimit_file_size = 0
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsServer]:
+    ) -> Dict[str, ModelsServerResponse]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -544,7 +605,7 @@ class ModelsServer(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsServer]:
+    ) -> List[ModelsServerResponse]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -554,7 +615,11 @@ class ModelsServer(Model):
     @classmethod
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
-    ) -> Union[ModelsServer, List[ModelsServer], Dict[Any, ModelsServer]]:
+    ) -> Union[
+        ModelsServerResponse,
+        List[ModelsServerResponse],
+        Dict[Any, ModelsServerResponse],
+    ]:
         if many:
             if isinstance(any_, dict):
                 return cls.create_many_from_dict(any_, include_empty=include_empty)
@@ -592,8 +657,11 @@ class ModelsServer(Model):
             "termination_reason": "termination_reason",
             "allocation_events": "allocation_events",
             "alternate_ips": "alternate_ips",
+            "artifact_path": "artifact_path",
+            "is_core_dump_enabled": "is_core_dump_enabled",
             "ports": "ports",
             "status_history": "status_history",
+            "ulimit_file_size": "ulimit_file_size",
         }
 
     @staticmethod
@@ -623,8 +691,11 @@ class ModelsServer(Model):
             "termination_reason": True,
             "allocation_events": False,
             "alternate_ips": False,
+            "artifact_path": False,
+            "is_core_dump_enabled": False,
             "ports": False,
             "status_history": False,
+            "ulimit_file_size": False,
         }
 
     # endregion static methods

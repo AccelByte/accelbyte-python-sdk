@@ -29,6 +29,7 @@ from ._get_challenges import get_challenges
 from ._public_get_scheduled_goals import public_get_scheduled_goals
 from ._evaluate_my_progress import evaluate_my_progress
 from ._public_get_user_progression import public_get_user_progression
+from ._public_get_past_user_progression import public_get_past_user_progression
 from ._public_get_user_rewards import public_get_user_rewards
 from ._public_claim_user_rewards import public_claim_user_rewards
 
@@ -55,6 +56,7 @@ commands = [
     public_get_scheduled_goals,
     evaluate_my_progress,
     public_get_user_progression,
+    public_get_past_user_progression,
     public_get_user_rewards,
     public_claim_user_rewards,
 ]

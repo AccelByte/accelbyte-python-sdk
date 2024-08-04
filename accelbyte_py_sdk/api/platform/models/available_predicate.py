@@ -35,6 +35,7 @@ class PredicateTypeEnum(StrEnum):
     ENTITLEMENTPREDICATE = "EntitlementPredicate"
     SEASONPASSPREDICATE = "SeasonPassPredicate"
     SEASONTIERPREDICATE = "SeasonTierPredicate"
+    STATISTICCODEPREDICATE = "StatisticCodePredicate"
 
 
 class ValueTypeEnum(StrEnum):
@@ -230,6 +231,7 @@ class AvailablePredicate(Model):
                 "EntitlementPredicate",
                 "SeasonPassPredicate",
                 "SeasonTierPredicate",
+                "StatisticCodePredicate",
             ],
             "valueType": ["List", "Number", "String"],
         }

@@ -36,6 +36,7 @@ from ..models import BulkStatItemInc
 from ..models import BulkStatItemReset
 from ..models import BulkStatItemUpdate
 from ..models import BulkStatOperationResult
+from ..models import BulkUserStatItemByStatCodes
 from ..models import BulkUserStatItemInc
 from ..models import BulkUserStatItemReset
 from ..models import BulkUserStatItemUpdate
@@ -55,6 +56,7 @@ from ..operations.user_statistic import BulkFetchOrDefaultStatItems
 from ..operations.user_statistic import BulkFetchOrDefaultStatItems1
 from ..operations.user_statistic import BulkFetchStatItems
 from ..operations.user_statistic import BulkFetchStatItems1
+from ..operations.user_statistic import BulkGetOrDefaultByUserId
 from ..operations.user_statistic import BulkIncUserStatItem
 from ..operations.user_statistic import BulkIncUserStatItem1
 from ..operations.user_statistic import BulkIncUserStatItemValue
@@ -107,12 +109,13 @@ def admin_list_users_stat_items(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Admin list user's statItems (AdminListUsersStatItems)
+    """(Legacy) Admin list user's statItems (AdminListUsersStatItems)
 
     Admin list all statItems of user
-    NOTE:
-    * If stat code does not exist, will ignore this stat code.
-    * If stat item does not exist, will return default value
+    NOTE: Legacy endpoint , please use POST /v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk/getOrDefault
+
+      * If stat code does not exist, will ignore this stat code.
+      * If stat item does not exist, will return default value
 
     Other detail info:
       *  Returns : stat items
@@ -179,12 +182,13 @@ async def admin_list_users_stat_items_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Admin list user's statItems (AdminListUsersStatItems)
+    """(Legacy) Admin list user's statItems (AdminListUsersStatItems)
 
     Admin list all statItems of user
-    NOTE:
-    * If stat code does not exist, will ignore this stat code.
-    * If stat item does not exist, will return default value
+    NOTE: Legacy endpoint , please use POST /v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk/getOrDefault
+
+      * If stat code does not exist, will ignore this stat code.
+      * If stat item does not exist, will return default value
 
     Other detail info:
       *  Returns : stat items
@@ -828,6 +832,140 @@ async def bulk_fetch_stat_items_1_async(
     request = BulkFetchStatItems1.create(
         stat_code=stat_code,
         user_ids=user_ids,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(BulkGetOrDefaultByUserId)
+def bulk_get_or_default_by_user_id(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[BulkUserStatItemByStatCodes] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get user's statitems value by user id and multiple stat codes (bulkGetOrDefaultByUserId)
+
+    Bulk get user's statitems value for given namespace and user by multiple stat codes.
+    Will return default value if player doesn't have the stat.
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+    + *Max stat codes*: 20
+    + *Returns*: list of user's stat item values
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk/getOrDefault
+
+        method: POST
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkUserStatItemByStatCodes in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetOrDefaultByUserId.create(
+        user_id=user_id,
+        additional_key=additional_key,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(BulkGetOrDefaultByUserId)
+async def bulk_get_or_default_by_user_id_async(
+    user_id: str,
+    additional_key: Optional[str] = None,
+    body: Optional[BulkUserStatItemByStatCodes] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk get user's statitems value by user id and multiple stat codes (bulkGetOrDefaultByUserId)
+
+    Bulk get user's statitems value for given namespace and user by multiple stat codes.
+    Will return default value if player doesn't have the stat.
+    Other detail info:
+    + *Required permission*: resource="ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM", action=2 (READ)
+    + *Max stat codes*: 20
+    + *Returns*: list of user's stat item values
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
+
+    Properties:
+        url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk/getOrDefault
+
+        method: POST
+
+        tags: ["UserStatistic"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH] or [BEARER_AUTH]
+
+        body: (body) OPTIONAL BulkUserStatItemByStatCodes in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        additional_key: (additionalKey) OPTIONAL str in query
+
+    Responses:
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        401: Unauthorized - ErrorEntity (20001: unauthorized access)
+
+        403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
+        500: Internal Server Error - ErrorEntity (20000: Internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = BulkGetOrDefaultByUserId.create(
+        user_id=user_id,
+        additional_key=additional_key,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

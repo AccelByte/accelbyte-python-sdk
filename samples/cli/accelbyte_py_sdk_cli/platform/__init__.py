@@ -529,10 +529,14 @@ from ._public_get_user_subscription_billing_histories import (
 from ._public_list_views import public_list_views
 from ._public_get_wallet import public_get_wallet
 from ._public_list_user_wallet_transactions import public_list_user_wallet_transactions
+from ._public_get_my_dlc_content import public_get_my_dlc_content
+from ._query_fulfillments import query_fulfillments
 from ._query_items_v2 import query_items_v2
 from ._import_store_1 import import_store_1
 from ._export_store_1 import export_store_1
 from ._fulfill_rewards_v2 import fulfill_rewards_v2
+from ._fulfill_items import fulfill_items
+from ._revoke_items import revoke_items
 
 
 commands = [
@@ -987,8 +991,12 @@ commands = [
     public_list_views,
     public_get_wallet,
     public_list_user_wallet_transactions,
+    public_get_my_dlc_content,
+    query_fulfillments,
     query_items_v2,
     import_store_1,
     export_store_1,
     fulfill_rewards_v2,
+    fulfill_items,
+    revoke_items,
 ]

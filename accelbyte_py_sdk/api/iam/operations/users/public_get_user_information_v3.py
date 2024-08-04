@@ -36,7 +36,11 @@ from ...models import RestErrorResponse
 class PublicGetUserInformationV3(Operation):
     """Get user's information v3 (PublicGetUserInformationV3)
 
-    This endpoint retrieves user info and linked platform accounts
+    This endpoint retrieves user info and linked platform accounts.
+
+
+    **Authentication:**
+    The _**userId**_ parameter should match the one in the access token.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/information

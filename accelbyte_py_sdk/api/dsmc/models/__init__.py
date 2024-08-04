@@ -8,13 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.4.7"
+__version__ = "6.8.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .log_app_message_declaration import LogAppMessageDeclaration
+from .models_add_buffer_request import ModelsAddBufferRequest
+from .models_add_buffer_response import ModelsAddBufferResponse
 from .models_allocation_event import ModelsAllocationEvent
 from .models_claim_session_request import ModelsClaimSessionRequest
 from .models_count_server_response import ModelsCountServerResponse
@@ -32,6 +34,7 @@ from .models_create_region_override_request import ModelsCreateRegionOverrideReq
 from .models_create_repository_request import ModelsCreateRepositoryRequest
 from .models_create_session_request import ModelsCreateSessionRequest
 from .models_default_provider import ModelsDefaultProvider
+from .models_delete_zombie_request import ModelsDeleteZombieRequest
 from .models_deployment_config_override import ModelsDeploymentConfigOverride
 from .models_deployment_with_override import ModelsDeploymentWithOverride
 from .models_deregister_local_server_request import ModelsDeregisterLocalServerRequest
@@ -42,7 +45,7 @@ from .models_get_image_detail_response import ModelsGetImageDetailResponse
 from .models_get_image_limit_response import ModelsGetImageLimitResponse
 from .models_get_image_limit_response_data import ModelsGetImageLimitResponseData
 from .models_get_image_patch_detail_response import ModelsGetImagePatchDetailResponse
-from .models_image_record import ModelsImageRecord
+from .models_image_record_response import ModelsImageRecordResponse
 from .models_image_record_update import ModelsImageRecordUpdate
 from .models_image_replication import ModelsImageReplication
 from .models_import_response import ModelsImportResponse
@@ -59,6 +62,7 @@ from .models_match_result_notification_payload import (
 )
 from .models_paging_cursor import ModelsPagingCursor
 from .models_patch_image_record import ModelsPatchImageRecord
+from .models_patch_image_record_response import ModelsPatchImageRecordResponse
 from .models_pod_config_record import ModelsPodConfigRecord
 from .models_pod_count_config_override import ModelsPodCountConfigOverride
 from .models_register_local_server_request import ModelsRegisterLocalServerRequest
@@ -71,6 +75,7 @@ from .models_server import ModelsServer
 from .models_server_deployment_config_session_timeout_response import (
     ModelsServerDeploymentConfigSessionTimeoutResponse,
 )
+from .models_server_details_response import ModelsServerDetailsResponse
 from .models_server_session_response import ModelsServerSessionResponse
 from .models_session import ModelsSession
 from .models_session_response import ModelsSessionResponse
@@ -84,4 +89,6 @@ from .models_update_dsm_config_request import ModelsUpdateDSMConfigRequest
 from .models_update_pod_config_request import ModelsUpdatePodConfigRequest
 from .models_update_port_request import ModelsUpdatePortRequest
 from .models_update_region_override_request import ModelsUpdateRegionOverrideRequest
+from .models_worker_config import ModelsWorkerConfig
+from .models_worker_config_request import ModelsWorkerConfigRequest
 from .response_error import ResponseError

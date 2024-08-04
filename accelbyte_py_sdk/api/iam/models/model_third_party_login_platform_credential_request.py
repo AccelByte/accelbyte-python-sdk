@@ -89,6 +89,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         empty_str_field_list: (EmptyStrFieldList) OPTIONAL List[str]
 
+        enable_server_license_validation: (EnableServerLicenseValidation) OPTIONAL bool
+
+        include_puid: (IncludePUID) OPTIONAL bool
+
         logo_url: (LogoURL) OPTIONAL str
 
         token_claims_mapping: (TokenClaimsMapping) OPTIONAL Dict[str, str]
@@ -123,6 +127,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     user_info_http_method: str  # REQUIRED
     allowed_clients: List[str]  # OPTIONAL
     empty_str_field_list: List[str]  # OPTIONAL
+    enable_server_license_validation: bool  # OPTIONAL
+    include_puid: bool  # OPTIONAL
     logo_url: str  # OPTIONAL
     token_claims_mapping: Dict[str, str]  # OPTIONAL
 
@@ -280,6 +286,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.empty_str_field_list = value
         return self
 
+    def with_enable_server_license_validation(
+        self, value: bool
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.enable_server_license_validation = value
+        return self
+
+    def with_include_puid(
+        self, value: bool
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.include_puid = value
+        return self
+
     def with_logo_url(
         self, value: str
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -411,6 +429,16 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["EmptyStrFieldList"] = [str(i0) for i0 in self.empty_str_field_list]
         elif include_empty:
             result["EmptyStrFieldList"] = []
+        if hasattr(self, "enable_server_license_validation"):
+            result["EnableServerLicenseValidation"] = bool(
+                self.enable_server_license_validation
+            )
+        elif include_empty:
+            result["EnableServerLicenseValidation"] = False
+        if hasattr(self, "include_puid"):
+            result["IncludePUID"] = bool(self.include_puid)
+        elif include_empty:
+            result["IncludePUID"] = False
         if hasattr(self, "logo_url"):
             result["LogoURL"] = str(self.logo_url)
         elif include_empty:
@@ -457,6 +485,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         user_info_http_method: str,
         allowed_clients: Optional[List[str]] = None,
         empty_str_field_list: Optional[List[str]] = None,
+        enable_server_license_validation: Optional[bool] = None,
+        include_puid: Optional[bool] = None,
         logo_url: Optional[str] = None,
         token_claims_mapping: Optional[Dict[str, str]] = None,
         **kwargs,
@@ -491,6 +521,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.allowed_clients = allowed_clients
         if empty_str_field_list is not None:
             instance.empty_str_field_list = empty_str_field_list
+        if enable_server_license_validation is not None:
+            instance.enable_server_license_validation = enable_server_license_validation
+        if include_puid is not None:
+            instance.include_puid = include_puid
         if logo_url is not None:
             instance.logo_url = logo_url
         if token_claims_mapping is not None:
@@ -632,6 +666,19 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             ]
         elif include_empty:
             instance.empty_str_field_list = []
+        if (
+            "EnableServerLicenseValidation" in dict_
+            and dict_["EnableServerLicenseValidation"] is not None
+        ):
+            instance.enable_server_license_validation = bool(
+                dict_["EnableServerLicenseValidation"]
+            )
+        elif include_empty:
+            instance.enable_server_license_validation = False
+        if "IncludePUID" in dict_ and dict_["IncludePUID"] is not None:
+            instance.include_puid = bool(dict_["IncludePUID"])
+        elif include_empty:
+            instance.include_puid = False
         if "LogoURL" in dict_ and dict_["LogoURL"] is not None:
             instance.logo_url = str(dict_["LogoURL"])
         elif include_empty:
@@ -712,6 +759,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "UserInfoHTTPMethod": "user_info_http_method",
             "AllowedClients": "allowed_clients",
             "EmptyStrFieldList": "empty_str_field_list",
+            "EnableServerLicenseValidation": "enable_server_license_validation",
+            "IncludePUID": "include_puid",
             "LogoURL": "logo_url",
             "TokenClaimsMapping": "token_claims_mapping",
         }
@@ -746,6 +795,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "UserInfoHTTPMethod": True,
             "AllowedClients": False,
             "EmptyStrFieldList": False,
+            "EnableServerLicenseValidation": False,
+            "IncludePUID": False,
             "LogoURL": False,
             "TokenClaimsMapping": False,
         }

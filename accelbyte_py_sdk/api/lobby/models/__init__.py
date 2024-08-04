@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.35.9"
+__version__ = "3.35.15"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -73,6 +73,7 @@ from .model_notification_with_template_request_v1 import (
 from .model_outgoing_friends_with_time_data import ModelOutgoingFriendsWithTimeData
 from .model_pagination import ModelPagination
 from .model_put_global_configuration_request import ModelPutGlobalConfigurationRequest
+from .model_request_user_presence import ModelRequestUserPresence
 from .model_template_content import ModelTemplateContent
 from .model_template_localization import ModelTemplateLocalization
 from .model_template_localization_response import ModelTemplateLocalizationResponse
@@ -152,6 +153,7 @@ from .models_get_player_session_attribute_response import (
 )
 from .models_import_config_response import ModelsImportConfigResponse
 from .models_list_blocked_player_request import ModelsListBlockedPlayerRequest
+from .models_list_unblock_player_request import ModelsListUnblockPlayerRequest
 from .models_party_data import ModelsPartyData
 from .models_party_put_custom_attributes_request import (
     ModelsPartyPUTCustomAttributesRequest,

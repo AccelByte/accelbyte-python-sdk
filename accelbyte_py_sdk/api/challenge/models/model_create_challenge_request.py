@@ -73,6 +73,8 @@ class ModelCreateChallengeRequest(Model):
 
         end_date: (endDate) OPTIONAL str
 
+        randomized_per_rotation: (randomizedPerRotation) OPTIONAL bool
+
         repeat_after: (repeatAfter) OPTIONAL int
 
         reset_config: (resetConfig) OPTIONAL ModelResetConfig
@@ -90,6 +92,7 @@ class ModelCreateChallengeRequest(Model):
     description: str  # OPTIONAL
     end_after: int  # OPTIONAL
     end_date: str  # OPTIONAL
+    randomized_per_rotation: bool  # OPTIONAL
     repeat_after: int  # OPTIONAL
     reset_config: ModelResetConfig  # OPTIONAL
 
@@ -141,6 +144,10 @@ class ModelCreateChallengeRequest(Model):
 
     def with_end_date(self, value: str) -> ModelCreateChallengeRequest:
         self.end_date = value
+        return self
+
+    def with_randomized_per_rotation(self, value: bool) -> ModelCreateChallengeRequest:
+        self.randomized_per_rotation = value
         return self
 
     def with_repeat_after(self, value: int) -> ModelCreateChallengeRequest:
@@ -197,6 +204,10 @@ class ModelCreateChallengeRequest(Model):
             result["endDate"] = str(self.end_date)
         elif include_empty:
             result["endDate"] = ""
+        if hasattr(self, "randomized_per_rotation"):
+            result["randomizedPerRotation"] = bool(self.randomized_per_rotation)
+        elif include_empty:
+            result["randomizedPerRotation"] = False
         if hasattr(self, "repeat_after"):
             result["repeatAfter"] = int(self.repeat_after)
         elif include_empty:
@@ -226,6 +237,7 @@ class ModelCreateChallengeRequest(Model):
         description: Optional[str] = None,
         end_after: Optional[int] = None,
         end_date: Optional[str] = None,
+        randomized_per_rotation: Optional[bool] = None,
         repeat_after: Optional[int] = None,
         reset_config: Optional[ModelResetConfig] = None,
         **kwargs,
@@ -245,6 +257,8 @@ class ModelCreateChallengeRequest(Model):
             instance.end_after = end_after
         if end_date is not None:
             instance.end_date = end_date
+        if randomized_per_rotation is not None:
+            instance.randomized_per_rotation = randomized_per_rotation
         if repeat_after is not None:
             instance.repeat_after = repeat_after
         if reset_config is not None:
@@ -301,6 +315,13 @@ class ModelCreateChallengeRequest(Model):
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
             instance.end_date = ""
+        if (
+            "randomizedPerRotation" in dict_
+            and dict_["randomizedPerRotation"] is not None
+        ):
+            instance.randomized_per_rotation = bool(dict_["randomizedPerRotation"])
+        elif include_empty:
+            instance.randomized_per_rotation = False
         if "repeatAfter" in dict_ and dict_["repeatAfter"] is not None:
             instance.repeat_after = int(dict_["repeatAfter"])
         elif include_empty:
@@ -364,6 +385,7 @@ class ModelCreateChallengeRequest(Model):
             "description": "description",
             "endAfter": "end_after",
             "endDate": "end_date",
+            "randomizedPerRotation": "randomized_per_rotation",
             "repeatAfter": "repeat_after",
             "resetConfig": "reset_config",
         }
@@ -381,6 +403,7 @@ class ModelCreateChallengeRequest(Model):
             "description": False,
             "endAfter": False,
             "endDate": False,
+            "randomizedPerRotation": False,
             "repeatAfter": False,
             "resetConfig": False,
         }

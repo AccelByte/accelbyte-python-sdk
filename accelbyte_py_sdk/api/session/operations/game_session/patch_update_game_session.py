@@ -69,6 +69,8 @@ class PatchUpdateGameSession(Operation):
 
         404: Not Found - ResponseError (Not Found)
 
+        409: Conflict - ResponseError (Conflict)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
@@ -205,6 +207,8 @@ class PatchUpdateGameSession(Operation):
 
         404: Not Found - ResponseError (Not Found)
 
+        409: Conflict - ResponseError (Conflict)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -229,6 +233,8 @@ class PatchUpdateGameSession(Operation):
         if code == 403:
             return None, ResponseError.create_from_dict(content)
         if code == 404:
+            return None, ResponseError.create_from_dict(content)
+        if code == 409:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

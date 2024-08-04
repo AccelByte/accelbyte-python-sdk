@@ -38,11 +38,13 @@ from ..models import ModelsGetBulkAllPlayerBlockedUsersResponse
 from ..models import ModelsGetLobbyCcuResponse
 from ..models import ModelsGetPlayerSessionAttributeResponse
 from ..models import ModelsListBlockedPlayerRequest
+from ..models import ModelsListUnblockPlayerRequest
 from ..models import ModelsSetPlayerSessionAttributeRequest
 from ..models import ModelsUnblockPlayerRequest
 from ..models import RestapiErrorResponseBody
 
 from ..operations.player import AdminBulkBlockPlayersV1
+from ..operations.player import AdminBulkUnblockPlayersV1
 from ..operations.player import AdminGetAllPlayerSessionAttribute
 from ..operations.player import AdminGetBulkPlayerBlockedPlayersV1
 from ..operations.player import AdminGetLobbyCCU
@@ -157,6 +159,116 @@ async def admin_bulk_block_players_v1_async(
         if error:
             return None, error
     request = AdminBulkBlockPlayersV1.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminBulkUnblockPlayersV1)
+def admin_bulk_unblock_players_v1(
+    body: ModelsListUnblockPlayerRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin bulk unblock players by list user id (adminBulkUnblockPlayersV1)
+
+    Bulk unblock player in a namespace by list of user id
+
+    Properties:
+        url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/bulk/unblock
+
+        method: DELETE
+
+        tags: ["player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsListUnblockPlayerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkUnblockPlayersV1.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBulkUnblockPlayersV1)
+async def admin_bulk_unblock_players_v1_async(
+    body: ModelsListUnblockPlayerRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin bulk unblock players by list user id (adminBulkUnblockPlayersV1)
+
+    Bulk unblock player in a namespace by list of user id
+
+    Properties:
+        url: /lobby/v1/admin/player/namespaces/{namespace}/users/{userId}/bulk/unblock
+
+        method: DELETE
+
+        tags: ["player"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsListUnblockPlayerRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkUnblockPlayersV1.create(
         body=body,
         user_id=user_id,
         namespace=namespace,

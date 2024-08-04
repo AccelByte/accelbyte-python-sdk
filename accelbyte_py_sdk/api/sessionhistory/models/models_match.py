@@ -27,8 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_match_ticket import ModelsMatchTicket
 from ..models.models_team import ModelsTeam
-from ..models.models_ticket import ModelsTicket
 
 
 class ModelsMatch(Model):
@@ -41,13 +41,17 @@ class ModelsMatch(Model):
 
         match_attributes: (MatchAttributes) OPTIONAL Dict[str, Any]
 
+        pivot_id: (PivotID) OPTIONAL str
+
         region_preference: (RegionPreference) OPTIONAL List[str]
 
         server_name: (ServerName) OPTIONAL str
 
         teams: (Teams) OPTIONAL List[ModelsTeam]
 
-        tickets: (Tickets) OPTIONAL List[ModelsTicket]
+        tickets: (Tickets) OPTIONAL List[ModelsMatchTicket]
+
+        timestamp: (Timestamp) OPTIONAL str
     """
 
     # region fields
@@ -55,10 +59,12 @@ class ModelsMatch(Model):
     backfill: bool  # OPTIONAL
     client_version: str  # OPTIONAL
     match_attributes: Dict[str, Any]  # OPTIONAL
+    pivot_id: str  # OPTIONAL
     region_preference: List[str]  # OPTIONAL
     server_name: str  # OPTIONAL
     teams: List[ModelsTeam]  # OPTIONAL
-    tickets: List[ModelsTicket]  # OPTIONAL
+    tickets: List[ModelsMatchTicket]  # OPTIONAL
+    timestamp: str  # OPTIONAL
 
     # endregion fields
 
@@ -76,6 +82,10 @@ class ModelsMatch(Model):
         self.match_attributes = value
         return self
 
+    def with_pivot_id(self, value: str) -> ModelsMatch:
+        self.pivot_id = value
+        return self
+
     def with_region_preference(self, value: List[str]) -> ModelsMatch:
         self.region_preference = value
         return self
@@ -88,8 +98,12 @@ class ModelsMatch(Model):
         self.teams = value
         return self
 
-    def with_tickets(self, value: List[ModelsTicket]) -> ModelsMatch:
+    def with_tickets(self, value: List[ModelsMatchTicket]) -> ModelsMatch:
         self.tickets = value
+        return self
+
+    def with_timestamp(self, value: str) -> ModelsMatch:
+        self.timestamp = value
         return self
 
     # endregion with_x methods
@@ -112,6 +126,10 @@ class ModelsMatch(Model):
             }
         elif include_empty:
             result["MatchAttributes"] = {}
+        if hasattr(self, "pivot_id"):
+            result["PivotID"] = str(self.pivot_id)
+        elif include_empty:
+            result["PivotID"] = ""
         if hasattr(self, "region_preference"):
             result["RegionPreference"] = [str(i0) for i0 in self.region_preference]
         elif include_empty:
@@ -132,6 +150,10 @@ class ModelsMatch(Model):
             ]
         elif include_empty:
             result["Tickets"] = []
+        if hasattr(self, "timestamp"):
+            result["Timestamp"] = str(self.timestamp)
+        elif include_empty:
+            result["Timestamp"] = ""
         return result
 
     # endregion to methods
@@ -144,10 +166,12 @@ class ModelsMatch(Model):
         backfill: Optional[bool] = None,
         client_version: Optional[str] = None,
         match_attributes: Optional[Dict[str, Any]] = None,
+        pivot_id: Optional[str] = None,
         region_preference: Optional[List[str]] = None,
         server_name: Optional[str] = None,
         teams: Optional[List[ModelsTeam]] = None,
-        tickets: Optional[List[ModelsTicket]] = None,
+        tickets: Optional[List[ModelsMatchTicket]] = None,
+        timestamp: Optional[str] = None,
         **kwargs,
     ) -> ModelsMatch:
         instance = cls()
@@ -157,6 +181,8 @@ class ModelsMatch(Model):
             instance.client_version = client_version
         if match_attributes is not None:
             instance.match_attributes = match_attributes
+        if pivot_id is not None:
+            instance.pivot_id = pivot_id
         if region_preference is not None:
             instance.region_preference = region_preference
         if server_name is not None:
@@ -165,6 +191,8 @@ class ModelsMatch(Model):
             instance.teams = teams
         if tickets is not None:
             instance.tickets = tickets
+        if timestamp is not None:
+            instance.timestamp = timestamp
         return instance
 
     @classmethod
@@ -186,6 +214,10 @@ class ModelsMatch(Model):
             }
         elif include_empty:
             instance.match_attributes = {}
+        if "PivotID" in dict_ and dict_["PivotID"] is not None:
+            instance.pivot_id = str(dict_["PivotID"])
+        elif include_empty:
+            instance.pivot_id = ""
         if "RegionPreference" in dict_ and dict_["RegionPreference"] is not None:
             instance.region_preference = [str(i0) for i0 in dict_["RegionPreference"]]
         elif include_empty:
@@ -203,11 +235,15 @@ class ModelsMatch(Model):
             instance.teams = []
         if "Tickets" in dict_ and dict_["Tickets"] is not None:
             instance.tickets = [
-                ModelsTicket.create_from_dict(i0, include_empty=include_empty)
+                ModelsMatchTicket.create_from_dict(i0, include_empty=include_empty)
                 for i0 in dict_["Tickets"]
             ]
         elif include_empty:
             instance.tickets = []
+        if "Timestamp" in dict_ and dict_["Timestamp"] is not None:
+            instance.timestamp = str(dict_["Timestamp"])
+        elif include_empty:
+            instance.timestamp = ""
         return instance
 
     @classmethod
@@ -250,10 +286,12 @@ class ModelsMatch(Model):
             "Backfill": "backfill",
             "ClientVersion": "client_version",
             "MatchAttributes": "match_attributes",
+            "PivotID": "pivot_id",
             "RegionPreference": "region_preference",
             "ServerName": "server_name",
             "Teams": "teams",
             "Tickets": "tickets",
+            "Timestamp": "timestamp",
         }
 
     @staticmethod
@@ -262,10 +300,12 @@ class ModelsMatch(Model):
             "Backfill": False,
             "ClientVersion": False,
             "MatchAttributes": False,
+            "PivotID": False,
             "RegionPreference": False,
             "ServerName": False,
             "Teams": False,
             "Tickets": False,
+            "Timestamp": False,
         }
 
     # endregion static methods

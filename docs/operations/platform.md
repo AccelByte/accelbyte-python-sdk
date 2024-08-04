@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.53.0)
+# AccelByte Gaming Services Platform Service Index (4.54.0)
 
 
 ## Operations
@@ -103,6 +103,7 @@
 | /platform/admin/namespaces/{namespace}/dlc/config/platformMap | GET | getPlatformDLCConfig | `false` | [GetPlatformDLCConfig](../../accelbyte_py_sdk/api/platform/operations/dlc/get_platform_dlc_config.py) | [get_platform_dlc_config](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-get-platform-dlc-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_platform_dlc_config.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/dlc/records | GET | getUserDLC | `false` | [GetUserDLC](../../accelbyte_py_sdk/api/platform/operations/dlc/get_user_dlc.py) | [get_user_dlc](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-get-user-dlc](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_user_dlc.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/dlc | GET | getUserDLCByPlatform | `false` | [GetUserDLCByPlatform](../../accelbyte_py_sdk/api/platform/operations/dlc/get_user_dlc_by_platform.py) | [get_user_dlc_by_platform](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-get-user-dlc-by-platform](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_user_dlc_by_platform.py) |
+| /platform/public/users/me/dlc/content | GET | publicGetMyDLCContent | `false` | [PublicGetMyDLCContent](../../accelbyte_py_sdk/api/platform/operations/dlc/public_get_my_dlc_content.py) | [public_get_my_dlc_content](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-public-get-my-dlc-content](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_get_my_dlc_content.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync | PUT | publicSyncPsnDlcInventory | `false` | [PublicSyncPsnDlcInventory](../../accelbyte_py_sdk/api/platform/operations/dlc/public_sync_psn_dlc_inventory.py) | [public_sync_psn_dlc_inventory](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-public-sync-psn-dlc-inventory](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_sync_psn_dlc_inventory.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/dlc/psn/sync/multiServiceLabels | PUT | publicSyncPsnDlcInventoryWithMultipleServiceLabels | `false` | [PublicSyncPsnDlcInventoryWithMultipleServiceLabels](../../accelbyte_py_sdk/api/platform/operations/dlc/public_sync_psn_dlc_inv_429118.py) | [public_sync_psn_dlc_inventory_with_multiple_service_labels](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-public-sync-psn-dlc-inventory-with-multiple-service-labels](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_sync_psn_dlc_inventory_with_multiple_service_labels.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/dlc/epicgames/sync | PUT | syncEpicGameDLC | `false` | [SyncEpicGameDLC](../../accelbyte_py_sdk/api/platform/operations/dlc/sync_epic_game_dlc.py) | [sync_epic_game_dlc](../../accelbyte_py_sdk/api/platform/wrappers/_dlc.py) | [accelbyte_py_sdk_cli platform-sync-epic-game-dlc](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_epic_game_dlc.py) |
@@ -177,12 +178,15 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment | POST | fulfillItem | `false` | [FulfillItem](../../accelbyte_py_sdk/api/platform/operations/fulfillment/fulfill_item.py) | [fulfill_item](../../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) | [accelbyte_py_sdk_cli platform-fulfill-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_fulfill_item.py) |
+| /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId} | PUT | fulfillItems | `false` | [FulfillItems](../../accelbyte_py_sdk/api/platform/operations/fulfillment/fulfill_items.py) | [fulfill_items](../../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) | [accelbyte_py_sdk_cli platform-fulfill-items](../../samples/cli/accelbyte_py_sdk_cli/platform/_fulfill_items.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/rewards | POST | fulfillRewards | `false` | [FulfillRewards](../../accelbyte_py_sdk/api/platform/operations/fulfillment/fulfill_rewards.py) | [fulfill_rewards](../../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) | [accelbyte_py_sdk_cli platform-fulfill-rewards](../../samples/cli/accelbyte_py_sdk_cli/platform/_fulfill_rewards.py) |
 | /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillment/rewards | POST | fulfillRewardsV2 | `false` | [FulfillRewardsV2](../../accelbyte_py_sdk/api/platform/operations/fulfillment/fulfill_rewards_v2.py) | [fulfill_rewards_v2](../../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) | [accelbyte_py_sdk_cli platform-fulfill-rewards-v2](../../samples/cli/accelbyte_py_sdk_cli/platform/_fulfill_rewards_v2.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/preCheck | POST | preCheckFulfillItem | `false` | [PreCheckFulfillItem](../../accelbyte_py_sdk/api/platform/operations/fulfillment/pre_check_fulfill_item.py) | [pre_check_fulfill_item](../../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) | [accelbyte_py_sdk_cli platform-pre-check-fulfill-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_pre_check_fulfill_item.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/fulfillment/code | POST | publicRedeemCode | `false` | [PublicRedeemCode](../../accelbyte_py_sdk/api/platform/operations/fulfillment/public_redeem_code.py) | [public_redeem_code](../../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) | [accelbyte_py_sdk_cli platform-public-redeem-code](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_redeem_code.py) |
 | /platform/admin/namespaces/{namespace}/fulfillment/history | GET | queryFulfillmentHistories | `false` | [QueryFulfillmentHistories](../../accelbyte_py_sdk/api/platform/operations/fulfillment/query_fulfillment_histories.py) | [query_fulfillment_histories](../../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) | [accelbyte_py_sdk_cli platform-query-fulfillment-histories](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_fulfillment_histories.py) |
+| /platform/v2/admin/namespaces/{namespace}/fulfillments | GET | queryFulfillments | `false` | [QueryFulfillments](../../accelbyte_py_sdk/api/platform/operations/fulfillment/query_fulfillments.py) | [query_fulfillments](../../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) | [accelbyte_py_sdk_cli platform-query-fulfillments](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_fulfillments.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/fulfillment/code | POST | redeemCode | `false` | [RedeemCode](../../accelbyte_py_sdk/api/platform/operations/fulfillment/redeem_code.py) | [redeem_code](../../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) | [accelbyte_py_sdk_cli platform-redeem-code](../../samples/cli/accelbyte_py_sdk_cli/platform/_redeem_code.py) |
+| /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/revoke | PUT | revokeItems | `false` | [RevokeItems](../../accelbyte_py_sdk/api/platform/operations/fulfillment/revoke_items.py) | [revoke_items](../../accelbyte_py_sdk/api/platform/wrappers/_fulfillment.py) | [accelbyte_py_sdk_cli platform-revoke-items](../../samples/cli/accelbyte_py_sdk_cli/platform/_revoke_items.py) |
 
 ### FulfillmentScript
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -753,7 +757,9 @@
 | FieldValidationError | [FieldValidationError](../../accelbyte_py_sdk/api/platform/models/field_validation_error.py) |
 | FixedPeriodRotationConfig | [FixedPeriodRotationConfig](../../accelbyte_py_sdk/api/platform/models/fixed_period_rotation_config.py) |
 | FulFillItemPayload | [FulFillItemPayload](../../accelbyte_py_sdk/api/platform/models/ful_fill_item_payload.py) |
+| FulfillBundledItemResult | [FulfillBundledItemResult](../../accelbyte_py_sdk/api/platform/models/fulfill_bundled_item_result.py) |
 | FulfillCodeRequest | [FulfillCodeRequest](../../accelbyte_py_sdk/api/platform/models/fulfill_code_request.py) |
+| FulfillItemResult | [FulfillItemResult](../../accelbyte_py_sdk/api/platform/models/fulfill_item_result.py) |
 | FulfillmentError | [FulfillmentError](../../accelbyte_py_sdk/api/platform/models/fulfillment_error.py) |
 | FulfillmentHistoryInfo | [FulfillmentHistoryInfo](../../accelbyte_py_sdk/api/platform/models/fulfillment_history_info.py) |
 | FulfillmentHistoryPagingSlicedResult | [FulfillmentHistoryPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/fulfillment_history_paging_sliced_result.py) |
@@ -763,6 +769,10 @@
 | FulfillmentScriptCreate | [FulfillmentScriptCreate](../../accelbyte_py_sdk/api/platform/models/fulfillment_script_create.py) |
 | FulfillmentScriptInfo | [FulfillmentScriptInfo](../../accelbyte_py_sdk/api/platform/models/fulfillment_script_info.py) |
 | FulfillmentScriptUpdate | [FulfillmentScriptUpdate](../../accelbyte_py_sdk/api/platform/models/fulfillment_script_update.py) |
+| FulfillmentStateInfo | [FulfillmentStateInfo](../../accelbyte_py_sdk/api/platform/models/fulfillment_state_info.py) |
+| FulfillmentV2Request | [FulfillmentV2Request](../../accelbyte_py_sdk/api/platform/models/fulfillment_v2_request.py) |
+| FulfillmentV2RequestItem | [FulfillmentV2RequestItem](../../accelbyte_py_sdk/api/platform/models/fulfillment_v2_request_item.py) |
+| FulfillmentV2Result | [FulfillmentV2Result](../../accelbyte_py_sdk/api/platform/models/fulfillment_v2_result.py) |
 | FullAppInfo | [FullAppInfo](../../accelbyte_py_sdk/api/platform/models/full_app_info.py) |
 | FullCategoryInfo | [FullCategoryInfo](../../accelbyte_py_sdk/api/platform/models/full_category_info.py) |
 | FullItemInfo | [FullItemInfo](../../accelbyte_py_sdk/api/platform/models/full_item_info.py) |
@@ -950,6 +960,7 @@
 | RevokeEntitlement | [RevokeEntitlement](../../accelbyte_py_sdk/api/platform/models/revoke_entitlement.py) |
 | RevokeEntitlementPayload | [RevokeEntitlementPayload](../../accelbyte_py_sdk/api/platform/models/revoke_entitlement_payload.py) |
 | RevokeEntry | [RevokeEntry](../../accelbyte_py_sdk/api/platform/models/revoke_entry.py) |
+| RevokeFulfillmentV2Result | [RevokeFulfillmentV2Result](../../accelbyte_py_sdk/api/platform/models/revoke_fulfillment_v2_result.py) |
 | RevokeItem | [RevokeItem](../../accelbyte_py_sdk/api/platform/models/revoke_item.py) |
 | RevokeItemSummary | [RevokeItemSummary](../../accelbyte_py_sdk/api/platform/models/revoke_item_summary.py) |
 | RevokeResult | [RevokeResult](../../accelbyte_py_sdk/api/platform/models/revoke_result.py) |
@@ -972,8 +983,11 @@
 | SectionUpdate | [SectionUpdate](../../accelbyte_py_sdk/api/platform/models/section_update.py) |
 | ServicePluginConfigInfo | [ServicePluginConfigInfo](../../accelbyte_py_sdk/api/platform/models/service_plugin_config_info.py) |
 | ServicePluginConfigUpdate | [ServicePluginConfigUpdate](../../accelbyte_py_sdk/api/platform/models/service_plugin_config_update.py) |
+| SimpleDLCRewardItem | [SimpleDLCRewardItem](../../accelbyte_py_sdk/api/platform/models/simple_dlc_reward_item.py) |
 | SimpleEntitlement | [SimpleEntitlement](../../accelbyte_py_sdk/api/platform/models/simple_entitlement.py) |
 | SimpleUserDLC | [SimpleUserDLC](../../accelbyte_py_sdk/api/platform/models/simple_user_dlc.py) |
+| SimpleUserDLCRewardContent | [SimpleUserDLCRewardContent](../../accelbyte_py_sdk/api/platform/models/simple_user_dlc_reward_content.py) |
+| SimpleUserDLCRewardContentsResponse | [SimpleUserDLCRewardContentsResponse](../../accelbyte_py_sdk/api/platform/models/simple_user_dlc_reward_contents_response.py) |
 | SimpleWallet | [SimpleWallet](../../accelbyte_py_sdk/api/platform/models/simple_wallet.py) |
 | Slide | [Slide](../../accelbyte_py_sdk/api/platform/models/slide.py) |
 | StackableEntitlementInfo | [StackableEntitlementInfo](../../accelbyte_py_sdk/api/platform/models/stackable_entitlement_info.py) |

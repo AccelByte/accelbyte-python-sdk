@@ -27,26 +27,26 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_patch_image_record import ModelsPatchImageRecord
+from ..models.models_patch_image_record_response import ModelsPatchImageRecordResponse
 
 
 class ModelsListImagePatchesResponse(Model):
     """Models list image patches response (models.ListImagePatchesResponse)
 
     Properties:
-        images: (images) REQUIRED List[ModelsPatchImageRecord]
+        images: (images) REQUIRED List[ModelsPatchImageRecordResponse]
     """
 
     # region fields
 
-    images: List[ModelsPatchImageRecord]  # REQUIRED
+    images: List[ModelsPatchImageRecordResponse]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
     def with_images(
-        self, value: List[ModelsPatchImageRecord]
+        self, value: List[ModelsPatchImageRecordResponse]
     ) -> ModelsListImagePatchesResponse:
         self.images = value
         return self
@@ -71,7 +71,7 @@ class ModelsListImagePatchesResponse(Model):
 
     @classmethod
     def create(
-        cls, images: List[ModelsPatchImageRecord], **kwargs
+        cls, images: List[ModelsPatchImageRecordResponse], **kwargs
     ) -> ModelsListImagePatchesResponse:
         instance = cls()
         instance.images = images
@@ -86,7 +86,9 @@ class ModelsListImagePatchesResponse(Model):
             return instance
         if "images" in dict_ and dict_["images"] is not None:
             instance.images = [
-                ModelsPatchImageRecord.create_from_dict(i0, include_empty=include_empty)
+                ModelsPatchImageRecordResponse.create_from_dict(
+                    i0, include_empty=include_empty
+                )
                 for i0 in dict_["images"]
             ]
         elif include_empty:

@@ -39,6 +39,8 @@ from ._public_mute_user import public_mute_user
 from ._public_unban_topic_members import public_unban_topic_members
 from ._public_unmute_user import public_unmute_user
 from ._admin_get_all_config_v1 import admin_get_all_config_v1
+from ._admin_get_log_config import admin_get_log_config
+from ._admin_patch_update_log_config import admin_patch_update_log_config
 from ._admin_get_config_v1 import admin_get_config_v1
 from ._admin_update_config_v1 import admin_update_config_v1
 from ._export_config import export_config
@@ -103,6 +105,8 @@ commands = [
     public_unban_topic_members,
     public_unmute_user,
     admin_get_all_config_v1,
+    admin_get_log_config,
+    admin_patch_update_log_config,
     admin_get_config_v1,
     admin_update_config_v1,
     export_config,

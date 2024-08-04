@@ -53,6 +53,8 @@ class AdminQueryGameSessionDetail(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        end_date: (endDate) OPTIONAL str in query
+
         game_session_id: (gameSessionID) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -62,6 +64,8 @@ class AdminQueryGameSessionDetail(Operation):
         order: (order) OPTIONAL str in query
 
         order_by: (orderBy) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
 
         user_id: (userID) OPTIONAL str in query
 
@@ -87,11 +91,13 @@ class AdminQueryGameSessionDetail(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    end_date: str  # OPTIONAL in [query]
     game_session_id: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     order: str  # OPTIONAL in [query]
     order_by: str  # OPTIONAL in [query]
+    start_date: str  # OPTIONAL in [query]
     user_id: str  # OPTIONAL in [query]
 
     # endregion fields
@@ -144,6 +150,8 @@ class AdminQueryGameSessionDetail(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "end_date"):
+            result["endDate"] = self.end_date
         if hasattr(self, "game_session_id"):
             result["gameSessionID"] = self.game_session_id
         if hasattr(self, "limit"):
@@ -154,6 +162,8 @@ class AdminQueryGameSessionDetail(Operation):
             result["order"] = self.order
         if hasattr(self, "order_by"):
             result["orderBy"] = self.order_by
+        if hasattr(self, "start_date"):
+            result["startDate"] = self.start_date
         if hasattr(self, "user_id"):
             result["userID"] = self.user_id
         return result
@@ -168,6 +178,10 @@ class AdminQueryGameSessionDetail(Operation):
 
     def with_namespace(self, value: str) -> AdminQueryGameSessionDetail:
         self.namespace = value
+        return self
+
+    def with_end_date(self, value: str) -> AdminQueryGameSessionDetail:
+        self.end_date = value
         return self
 
     def with_game_session_id(self, value: str) -> AdminQueryGameSessionDetail:
@@ -190,6 +204,10 @@ class AdminQueryGameSessionDetail(Operation):
         self.order_by = value
         return self
 
+    def with_start_date(self, value: str) -> AdminQueryGameSessionDetail:
+        self.start_date = value
+        return self
+
     def with_user_id(self, value: str) -> AdminQueryGameSessionDetail:
         self.user_id = value
         return self
@@ -204,6 +222,10 @@ class AdminQueryGameSessionDetail(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "end_date") and self.end_date:
+            result["endDate"] = str(self.end_date)
+        elif include_empty:
+            result["endDate"] = ""
         if hasattr(self, "game_session_id") and self.game_session_id:
             result["gameSessionID"] = str(self.game_session_id)
         elif include_empty:
@@ -224,6 +246,10 @@ class AdminQueryGameSessionDetail(Operation):
             result["orderBy"] = str(self.order_by)
         elif include_empty:
             result["orderBy"] = ""
+        if hasattr(self, "start_date") and self.start_date:
+            result["startDate"] = str(self.start_date)
+        elif include_empty:
+            result["startDate"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userID"] = str(self.user_id)
         elif include_empty:
@@ -292,16 +318,20 @@ class AdminQueryGameSessionDetail(Operation):
     def create(
         cls,
         namespace: str,
+        end_date: Optional[str] = None,
         game_session_id: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         order: Optional[str] = None,
         order_by: Optional[str] = None,
+        start_date: Optional[str] = None,
         user_id: Optional[str] = None,
         **kwargs,
     ) -> AdminQueryGameSessionDetail:
         instance = cls()
         instance.namespace = namespace
+        if end_date is not None:
+            instance.end_date = end_date
         if game_session_id is not None:
             instance.game_session_id = game_session_id
         if limit is not None:
@@ -312,6 +342,8 @@ class AdminQueryGameSessionDetail(Operation):
             instance.order = order
         if order_by is not None:
             instance.order_by = order_by
+        if start_date is not None:
+            instance.start_date = start_date
         if user_id is not None:
             instance.user_id = user_id
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -327,6 +359,10 @@ class AdminQueryGameSessionDetail(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "endDate" in dict_ and dict_["endDate"] is not None:
+            instance.end_date = str(dict_["endDate"])
+        elif include_empty:
+            instance.end_date = ""
         if "gameSessionID" in dict_ and dict_["gameSessionID"] is not None:
             instance.game_session_id = str(dict_["gameSessionID"])
         elif include_empty:
@@ -347,6 +383,10 @@ class AdminQueryGameSessionDetail(Operation):
             instance.order_by = str(dict_["orderBy"])
         elif include_empty:
             instance.order_by = ""
+        if "startDate" in dict_ and dict_["startDate"] is not None:
+            instance.start_date = str(dict_["startDate"])
+        elif include_empty:
+            instance.start_date = ""
         if "userID" in dict_ and dict_["userID"] is not None:
             instance.user_id = str(dict_["userID"])
         elif include_empty:
@@ -357,11 +397,13 @@ class AdminQueryGameSessionDetail(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "endDate": "end_date",
             "gameSessionID": "game_session_id",
             "limit": "limit",
             "offset": "offset",
             "order": "order",
             "orderBy": "order_by",
+            "startDate": "start_date",
             "userID": "user_id",
         }
 
@@ -369,11 +411,13 @@ class AdminQueryGameSessionDetail(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "endDate": False,
             "gameSessionID": False,
             "limit": False,
             "offset": False,
             "order": False,
             "orderBy": False,
+            "startDate": False,
             "userID": False,
         }
 

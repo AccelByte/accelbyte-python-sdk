@@ -35,9 +35,7 @@ from ..models import ModelsCreateRepositoryRequest
 from ..models import ModelsGetImageDetailResponse
 from ..models import ModelsGetImageLimitResponse
 from ..models import ModelsGetImagePatchDetailResponse
-from ..models import ModelsImageRecord
 from ..models import ModelsImageRecordUpdate
-from ..models import ModelsImportResponse
 from ..models import ModelsListImagePatchesResponse
 from ..models import ModelsListImageResponse
 from ..models import ModelsRepositoryRecord
@@ -48,7 +46,6 @@ from ..operations.image_config import CreateImagePatch
 from ..operations.image_config import CreateRepository
 from ..operations.image_config import DeleteImage
 from ..operations.image_config import DeleteImagePatch
-from ..operations.image_config import ExportImages
 from ..operations.image_config import GetImageDetail
 from ..operations.image_config import GetImageLimit
 from ..operations.image_config import GetImagePatchDetail
@@ -56,7 +53,6 @@ from ..operations.image_config import GetImagePatches
 from ..operations.image_config import GetRepository
 from ..operations.image_config import ImageDetailClient
 from ..operations.image_config import ImageLimitClient
-from ..operations.image_config import ImportImages
 from ..operations.image_config import ListImages
 from ..operations.image_config import ListImagesSortByEnum, ListImagesSortDirectionEnum
 from ..operations.image_config import ListImagesClient
@@ -118,6 +114,8 @@ def create_image(
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (the image is not exist in the container registry)
+
         409: Conflict - ResponseError (conflict. duplicate image version record)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -178,6 +176,8 @@ async def create_image_async(
         400: Bad Request - ResponseError (malformed request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (the image is not exist in the container registry)
 
         409: Conflict - ResponseError (conflict. duplicate image version record)
 
@@ -706,120 +706,6 @@ async def delete_image_patch_async(
         image_uri=image_uri,
         version=version,
         version_patch=version_patch,
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(ExportImages)
-def export_images(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """export DSM Controller images for a namespace (ExportImages)
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required scope: social
-
-    This endpoint export a dedicated servers images in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
-    Properties:
-        url: /dsmcontroller/admin/namespaces/{namespace}/images/export
-
-        method: GET
-
-        tags: ["Image Config"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - List[ModelsImageRecord] (images exported)
-
-        401: Unauthorized - ResponseError (unauthorized access)
-
-        403: Forbidden - ResponseError (forbidden access)
-
-        404: Not Found - ResponseError (images not found)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = ExportImages.create(
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(ExportImages)
-async def export_images_async(
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """export DSM Controller images for a namespace (ExportImages)
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required scope: social
-
-    This endpoint export a dedicated servers images in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
-    Properties:
-        url: /dsmcontroller/admin/namespaces/{namespace}/images/export
-
-        method: GET
-
-        tags: ["Image Config"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        200: OK - List[ModelsImageRecord] (images exported)
-
-        401: Unauthorized - ResponseError (unauthorized access)
-
-        403: Forbidden - ResponseError (forbidden access)
-
-        404: Not Found - ResponseError (images not found)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = ExportImages.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -1631,132 +1517,6 @@ async def image_limit_client_async(
             return None, error
     request = ImageLimitClient.create(
         namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(ImportImages)
-def import_images(
-    file: Any, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
-    """import images for a namespace (ImportImages)
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required scope: social
-
-    This endpoint import a dedicated servers images in a namespace.
-
-    The image will be upsert. Existing version will be replaced with imported image, will create new one if not found.
-
-    Example data inside imported file
-    [
-    {
-    "namespace": "dewa",
-    "image": "123456789.dkr.ecr.us-west-2.amazonaws.com/ds-dewa:0.0.1-alpha",
-    "version": "0.0.1",
-    "persistent": true
-    }
-    ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
-    Properties:
-        url: /dsmcontroller/admin/images/import
-
-        method: POST
-
-        tags: ["Image Config"]
-
-        consumes: ["multipart/form-data"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        file: (file) REQUIRED Any in form_data
-
-    Responses:
-        200: OK - ModelsImportResponse (images imported)
-
-        400: Bad Request - ResponseError (malformed request)
-
-        401: Unauthorized - ResponseError (unauthorized access)
-
-        403: Forbidden - ResponseError (forbidden access)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
-    """
-    request = ImportImages.create(
-        file=file,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(ImportImages)
-async def import_images_async(
-    file: Any, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
-):
-    """import images for a namespace (ImportImages)
-
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required scope: social
-
-    This endpoint import a dedicated servers images in a namespace.
-
-    The image will be upsert. Existing version will be replaced with imported image, will create new one if not found.
-
-    Example data inside imported file
-    [
-    {
-    "namespace": "dewa",
-    "image": "123456789.dkr.ecr.us-west-2.amazonaws.com/ds-dewa:0.0.1-alpha",
-    "version": "0.0.1",
-    "persistent": true
-    }
-    ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
-    Properties:
-        url: /dsmcontroller/admin/images/import
-
-        method: POST
-
-        tags: ["Image Config"]
-
-        consumes: ["multipart/form-data"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        file: (file) REQUIRED Any in form_data
-
-    Responses:
-        200: OK - ModelsImportResponse (images imported)
-
-        400: Bad Request - ResponseError (malformed request)
-
-        401: Unauthorized - ResponseError (unauthorized access)
-
-        403: Forbidden - ResponseError (forbidden access)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
-    """
-    request = ImportImages.create(
-        file=file,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

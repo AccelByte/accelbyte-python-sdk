@@ -37,6 +37,48 @@ class PublicGetUserPlatformAccountsV3(Operation):
     """Get platform accounts linked to the user (PublicGetUserPlatformAccountsV3)
 
     This endpoint retrieves platform accounts linked to user.
+
+
+    **Supported Platforms:**
+    - Steam group (steamnetwork):
+    - steam
+    - steamopenid
+    - PSN group (psn):
+    - ps4web
+    - ps4
+    - ps5
+    - XBOX group(xbox):
+    - live
+    - xblweb
+    - Oculus group (oculusgroup):
+    - oculus
+    - oculusweb
+    - Google group (google):
+    - google
+    - googleplaygames:
+    - epicgames
+    - facebook
+    - twitch
+    - discord
+    - android
+    - ios
+    - apple
+    - device
+    - nintendo
+    - awscognito
+    - amazon
+    - netflix
+    - snapchat
+    - _oidc platform id_
+
+    Note:
+    - You can use either platform id or platform group as **platformId** parameter.
+    - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+
+    **Authentication:**
+    The _**userId**_ parameter should match the one in the access token.
+
     action code: 10128
 
     Properties:

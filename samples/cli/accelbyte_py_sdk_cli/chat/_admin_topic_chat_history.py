@@ -47,6 +47,7 @@ from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 @click.option("--sender_user_id", "sender_user_id", type=str)
 @click.option("--shard_id", "shard_id", type=str)
 @click.option("--start_created_at", "start_created_at", type=int)
+@click.option("--unfiltered", "unfiltered", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -61,6 +62,7 @@ def admin_topic_chat_history(
     sender_user_id: Optional[str] = None,
     shard_id: Optional[str] = None,
     start_created_at: Optional[int] = None,
+    unfiltered: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -84,6 +86,7 @@ def admin_topic_chat_history(
         sender_user_id=sender_user_id,
         shard_id=shard_id,
         start_created_at=start_created_at,
+        unfiltered=unfiltered,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

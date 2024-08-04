@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.35.9"
+__version__ = "3.35.15"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .admin_bulk_block_players_v1 import AdminBulkBlockPlayersV1
+from .admin_bulk_unblock_players_v1 import AdminBulkUnblockPlayersV1
 from .admin_get_all_player_se_b925d7 import AdminGetAllPlayerSessionAttribute
 from .admin_get_bulk_player_b_0addc5 import AdminGetBulkPlayerBlockedPlayersV1
 from .admin_get_lobby_ccu import AdminGetLobbyCCU

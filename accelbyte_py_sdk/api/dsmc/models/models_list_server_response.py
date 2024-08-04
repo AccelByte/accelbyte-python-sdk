@@ -28,7 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.models_paging_cursor import ModelsPagingCursor
-from ..models.models_server import ModelsServer
+from ..models.models_server_details_response import ModelsServerDetailsResponse
 
 
 class ModelsListServerResponse(Model):
@@ -37,13 +37,13 @@ class ModelsListServerResponse(Model):
     Properties:
         paging: (paging) REQUIRED ModelsPagingCursor
 
-        servers: (servers) OPTIONAL List[ModelsServer]
+        servers: (servers) OPTIONAL List[ModelsServerDetailsResponse]
     """
 
     # region fields
 
     paging: ModelsPagingCursor  # REQUIRED
-    servers: List[ModelsServer]  # OPTIONAL
+    servers: List[ModelsServerDetailsResponse]  # OPTIONAL
 
     # endregion fields
 
@@ -53,7 +53,9 @@ class ModelsListServerResponse(Model):
         self.paging = value
         return self
 
-    def with_servers(self, value: List[ModelsServer]) -> ModelsListServerResponse:
+    def with_servers(
+        self, value: List[ModelsServerDetailsResponse]
+    ) -> ModelsListServerResponse:
         self.servers = value
         return self
 
@@ -83,7 +85,7 @@ class ModelsListServerResponse(Model):
     def create(
         cls,
         paging: ModelsPagingCursor,
-        servers: Optional[List[ModelsServer]] = None,
+        servers: Optional[List[ModelsServerDetailsResponse]] = None,
         **kwargs,
     ) -> ModelsListServerResponse:
         instance = cls()
@@ -107,7 +109,9 @@ class ModelsListServerResponse(Model):
             instance.paging = ModelsPagingCursor()
         if "servers" in dict_ and dict_["servers"] is not None:
             instance.servers = [
-                ModelsServer.create_from_dict(i0, include_empty=include_empty)
+                ModelsServerDetailsResponse.create_from_dict(
+                    i0, include_empty=include_empty
+                )
                 for i0 in dict_["servers"]
             ]
         elif include_empty:

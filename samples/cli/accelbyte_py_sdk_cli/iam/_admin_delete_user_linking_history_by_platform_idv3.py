@@ -75,4 +75,4 @@ def admin_delete_user_linking_history_by_platform_idv3(
 admin_delete_user_linking_history_by_platform_idv3.operation_id = (
     "AdminDeleteUserLinkingHistoryByPlatformIDV3"
 )
-admin_delete_user_linking_history_by_platform_idv3.is_deprecated = False
+admin_delete_user_linking_history_by_platform_idv3.is_deprecated = True

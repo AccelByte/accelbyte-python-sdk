@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Dsm Controller Service
+# AGS Session History Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,38 +30,51 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.dsmc import import_images as import_images_internal
-from accelbyte_py_sdk.api.dsmc.models import ModelsImportResponse
-from accelbyte_py_sdk.api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.sessionhistory import (
+    public_query_game_session_me as public_query_game_session_me_internal,
+)
+from accelbyte_py_sdk.api.sessionhistory.models import (
+    ApimodelsGameSessionDetailQueryResponse,
+)
+from accelbyte_py_sdk.api.sessionhistory.models import ResponseError
 
 
 @click.command()
-@click.argument("file", type=str)
+@click.option("--limit", "limit", type=int)
+@click.option("--offset", "offset", type=int)
+@click.option("--order", "order", type=str)
+@click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def import_images(
-    file: str,
+def public_query_game_session_me(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order: Optional[str] = None,
+    namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(import_images_internal.__doc__)
+        click.echo(public_query_game_session_me_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = import_images_internal(
-        file=file,
+    result, error = public_query_game_session_me_internal(
+        limit=limit,
+        offset=offset,
+        order=order,
+        namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"ImportImages failed: {str(error)}")
+        raise Exception(f"publicQueryGameSessionMe failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-import_images.operation_id = "ImportImages"
-import_images.is_deprecated = False
+public_query_game_session_me.operation_id = "publicQueryGameSessionMe"
+public_query_game_session_me.is_deprecated = False

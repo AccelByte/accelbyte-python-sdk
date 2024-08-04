@@ -2095,9 +2095,7 @@ class MockServerRequestTestCase(TestCase):
         response = http_client.send_raw_request(
             method="POST",
             url=f"{base_url}/test/upload/files",
-            files={
-                "file": (file_name, BytesIO(file_content.encode(encoding="utf-8")))
-            }
+            files={"file": (file_name, BytesIO(file_content.encode(encoding="utf-8")))},
         )
 
         # assert (upload)
@@ -2121,7 +2119,9 @@ class MockServerRequestTestCase(TestCase):
 
         # assert (download)
         self.assertTrue(response.ok, response.text)
-        self.assertEqual(file_content, response.content.decode(encoding="utf-8"), response.content)
+        self.assertEqual(
+            file_content, response.content.decode(encoding="utf-8"), response.content
+        )
 
 
 class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
@@ -2763,9 +2763,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         response = http_client.send_raw_request(
             method="POST",
             url=f"{base_url}/test/upload/files",
-            files={
-                "file": (file_name, BytesIO(file_content.encode(encoding="utf-8")))
-            }
+            files={"file": (file_name, BytesIO(file_content.encode(encoding="utf-8")))},
         )
 
         # assert (upload)
@@ -2789,7 +2787,9 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         # assert (download)
         self.assertTrue(response.ok, response.text)
-        self.assertEqual(file_content, response.content.decode(encoding="utf-8"), response.content)
+        self.assertEqual(
+            file_content, response.content.decode(encoding="utf-8"), response.content
+        )
 
     async def test_download_upload_file_async(self):
         from io import BytesIO
@@ -2805,9 +2805,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
         response = await http_client.send_raw_request_async(
             method="POST",
             url=f"{base_url}/test/upload/files",
-            files={
-                "file": (file_name, BytesIO(file_content.encode(encoding="utf-8")))
-            }
+            files={"file": (file_name, BytesIO(file_content.encode(encoding="utf-8")))},
         )
 
         # assert (upload)
@@ -2831,7 +2829,9 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         # assert (download)
         self.assertTrue(response.ok, response.text)
-        self.assertEqual(file_content, response.content.decode(encoding="utf-8"), response.content)
+        self.assertEqual(
+            file_content, response.content.decode(encoding="utf-8"), response.content
+        )
 
     # noinspection PyUnresolvedReferences
     def _setupAsyncioLoop(self):

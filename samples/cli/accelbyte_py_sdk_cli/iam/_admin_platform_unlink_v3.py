@@ -81,4 +81,4 @@ def admin_platform_unlink_v3(
 
 
 admin_platform_unlink_v3.operation_id = "AdminPlatformUnlinkV3"
-admin_platform_unlink_v3.is_deprecated = False
+admin_platform_unlink_v3.is_deprecated = True

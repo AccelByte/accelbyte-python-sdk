@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.20.1"
+__version__ = "2.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -24,6 +24,7 @@ from .get_my_zip_code import GetMyZipCode
 from .get_private_custom_attr_322032 import GetPrivateCustomAttributesInfo
 from .get_user_profile_info import GetUserProfileInfo
 from .get_user_profile_info_b_5dfc7f import GetUserProfileInfoByPublicId
+from .public_bulk_get_user_pr_20583a import PublicBulkGetUserProfilePublicInfo
 from .public_create_user_profile import PublicCreateUserProfile
 from .public_get_custom_attri_5323c2 import PublicGetCustomAttributesInfo
 from .public_get_user_profile_info import PublicGetUserProfileInfo

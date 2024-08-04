@@ -26,6 +26,17 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class StatusEnum(StrEnum):
+    CLAIM = "CLAIM"
+    UNCLAIMED = "UNCLAIMED"
+
+
+class TypeEnum(StrEnum):
+    ENTITLEMENT = "ENTITLEMENT"
+    STATISTIC = "STATISTIC"
 
 
 class ModelUserReward(Model):
@@ -46,9 +57,9 @@ class ModelUserReward(Model):
 
         qty: (qty) REQUIRED float
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -64,8 +75,8 @@ class ModelUserReward(Model):
     item_id: str  # REQUIRED
     item_name: str  # REQUIRED
     qty: float  # REQUIRED
-    status: str  # REQUIRED
-    type_: str  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    type_: Union[str, TypeEnum]  # REQUIRED
     updated_at: str  # REQUIRED
     user_id: str  # REQUIRED
 
@@ -101,11 +112,11 @@ class ModelUserReward(Model):
         self.qty = value
         return self
 
-    def with_status(self, value: str) -> ModelUserReward:
+    def with_status(self, value: Union[str, StatusEnum]) -> ModelUserReward:
         self.status = value
         return self
 
-    def with_type(self, value: str) -> ModelUserReward:
+    def with_type(self, value: Union[str, TypeEnum]) -> ModelUserReward:
         self.type_ = value
         return self
 
@@ -154,11 +165,11 @@ class ModelUserReward(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = ""
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = ""
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -183,8 +194,8 @@ class ModelUserReward(Model):
         item_id: str,
         item_name: str,
         qty: float,
-        status: str,
-        type_: str,
+        status: Union[str, StatusEnum],
+        type_: Union[str, TypeEnum],
         updated_at: str,
         user_id: str,
         **kwargs,
@@ -241,11 +252,11 @@ class ModelUserReward(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = ""
+            instance.status = Union[str, StatusEnum]()
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = ""
+            instance.type_ = Union[str, TypeEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -320,6 +331,13 @@ class ModelUserReward(Model):
             "type": True,
             "updatedAt": True,
             "userId": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "status": ["CLAIM", "UNCLAIMED"],
+            "type": ["ENTITLEMENT", "STATISTIC"],
         }
 
     # endregion static methods

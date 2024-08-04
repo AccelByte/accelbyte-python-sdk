@@ -67,6 +67,8 @@ class ModelUpdateChallengeRequest(Model):
 
         name: (name) OPTIONAL str
 
+        randomized_per_rotation: (randomizedPerRotation) OPTIONAL bool
+
         repeat_after: (repeatAfter) OPTIONAL int
 
         reset_config: (resetConfig) OPTIONAL ModelResetConfig
@@ -85,6 +87,7 @@ class ModelUpdateChallengeRequest(Model):
     end_date: str  # OPTIONAL
     goals_visibility: Union[str, GoalsVisibilityEnum]  # OPTIONAL
     name: str  # OPTIONAL
+    randomized_per_rotation: bool  # OPTIONAL
     repeat_after: int  # OPTIONAL
     reset_config: ModelResetConfig  # OPTIONAL
     rotation: Union[str, RotationEnum]  # OPTIONAL
@@ -124,6 +127,10 @@ class ModelUpdateChallengeRequest(Model):
 
     def with_name(self, value: str) -> ModelUpdateChallengeRequest:
         self.name = value
+        return self
+
+    def with_randomized_per_rotation(self, value: bool) -> ModelUpdateChallengeRequest:
+        self.randomized_per_rotation = value
         return self
 
     def with_repeat_after(self, value: int) -> ModelUpdateChallengeRequest:
@@ -178,6 +185,10 @@ class ModelUpdateChallengeRequest(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "randomized_per_rotation"):
+            result["randomizedPerRotation"] = bool(self.randomized_per_rotation)
+        elif include_empty:
+            result["randomizedPerRotation"] = False
         if hasattr(self, "repeat_after"):
             result["repeatAfter"] = int(self.repeat_after)
         elif include_empty:
@@ -212,6 +223,7 @@ class ModelUpdateChallengeRequest(Model):
         end_date: Optional[str] = None,
         goals_visibility: Optional[Union[str, GoalsVisibilityEnum]] = None,
         name: Optional[str] = None,
+        randomized_per_rotation: Optional[bool] = None,
         repeat_after: Optional[int] = None,
         reset_config: Optional[ModelResetConfig] = None,
         rotation: Optional[Union[str, RotationEnum]] = None,
@@ -233,6 +245,8 @@ class ModelUpdateChallengeRequest(Model):
             instance.goals_visibility = goals_visibility
         if name is not None:
             instance.name = name
+        if randomized_per_rotation is not None:
+            instance.randomized_per_rotation = randomized_per_rotation
         if repeat_after is not None:
             instance.repeat_after = repeat_after
         if reset_config is not None:
@@ -281,6 +295,13 @@ class ModelUpdateChallengeRequest(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if (
+            "randomizedPerRotation" in dict_
+            and dict_["randomizedPerRotation"] is not None
+        ):
+            instance.randomized_per_rotation = bool(dict_["randomizedPerRotation"])
+        elif include_empty:
+            instance.randomized_per_rotation = False
         if "repeatAfter" in dict_ and dict_["repeatAfter"] is not None:
             instance.repeat_after = int(dict_["repeatAfter"])
         elif include_empty:
@@ -349,6 +370,7 @@ class ModelUpdateChallengeRequest(Model):
             "endDate": "end_date",
             "goalsVisibility": "goals_visibility",
             "name": "name",
+            "randomizedPerRotation": "randomized_per_rotation",
             "repeatAfter": "repeat_after",
             "resetConfig": "reset_config",
             "rotation": "rotation",
@@ -365,6 +387,7 @@ class ModelUpdateChallengeRequest(Model):
             "endDate": False,
             "goalsVisibility": False,
             "name": False,
+            "randomizedPerRotation": False,
             "repeatAfter": False,
             "resetConfig": False,
             "rotation": False,

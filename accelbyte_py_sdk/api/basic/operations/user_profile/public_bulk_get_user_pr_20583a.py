@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Dsm Controller Service
+# AccelByte Gaming Services Basic Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,31 +29,25 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsImageRecord
-from ...models import ResponseError
+from ...models import UserProfileBulkRequest
+from ...models import UserProfilePublicInfo
+from ...models import ValidationErrorEntity
 
 
-class ExportImages(Operation):
-    """export DSM Controller images for a namespace (ExportImages)
+class PublicBulkGetUserProfilePublicInfo(Operation):
+    """Bulk get user profile public info by ids (publicBulkGetUserProfilePublicInfo)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
+    Bulk get user public profile by ids.
+    Other detail info:
 
-    Required scope: social
-
-    This endpoint export a dedicated servers images in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
+      * Returns : user public profiles
 
     Properties:
-        url: /dsmcontroller/admin/namespaces/{namespace}/images/export
+        url: /basic/v1/public/namespaces/{namespace}/profiles/public
 
-        method: GET
+        method: POST
 
-        tags: ["Image Config"]
+        tags: ["UserProfile"]
 
         consumes: ["application/json"]
 
@@ -61,29 +55,26 @@ class ExportImages(Operation):
 
         securities: [BEARER_AUTH]
 
+        body: (body) OPTIONAL UserProfileBulkRequest in body
+
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - List[ModelsImageRecord] (images exported)
+        200: OK - List[UserProfilePublicInfo] (Successful operation)
 
-        401: Unauthorized - ResponseError (unauthorized access)
-
-        403: Forbidden - ResponseError (forbidden access)
-
-        404: Not Found - ResponseError (images not found)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
     """
 
     # region fields
 
-    _url: str = "/dsmcontroller/admin/namespaces/{namespace}/images/export"
-    _method: str = "GET"
+    _url: str = "/basic/v1/public/namespaces/{namespace}/profiles/public"
+    _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    body: UserProfileBulkRequest  # OPTIONAL in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -124,8 +115,14 @@ class ExportImages(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
+
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
@@ -141,7 +138,13 @@ class ExportImages(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> ExportImages:
+    def with_body(
+        self, value: UserProfileBulkRequest
+    ) -> PublicBulkGetUserProfilePublicInfo:
+        self.body = value
+        return self
+
+    def with_namespace(self, value: str) -> PublicBulkGetUserProfilePublicInfo:
         self.namespace = value
         return self
 
@@ -151,6 +154,10 @@ class ExportImages(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["body"] = UserProfileBulkRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -165,19 +172,14 @@ class ExportImages(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, List[ModelsImageRecord]], Union[None, HttpResponse, ResponseError]
+        Union[None, List[UserProfilePublicInfo]],
+        Union[None, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
-        200: OK - List[ModelsImageRecord] (images exported)
+        200: OK - List[UserProfilePublicInfo] (Successful operation)
 
-        401: Unauthorized - ResponseError (unauthorized access)
-
-        403: Forbidden - ResponseError (forbidden access)
-
-        404: Not Found - ResponseError (images not found)
-
-        500: Internal Server Error - ResponseError (Internal Server Error)
+        400: Bad Request - ValidationErrorEntity (20002: validation error)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -193,15 +195,9 @@ class ExportImages(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return [ModelsImageRecord.create_from_dict(i) for i in content], None
-        if code == 401:
-            return None, ResponseError.create_from_dict(content)
-        if code == 403:
-            return None, ResponseError.create_from_dict(content)
-        if code == 404:
-            return None, ResponseError.create_from_dict(content)
-        if code == 500:
-            return None, ResponseError.create_from_dict(content)
+            return [UserProfilePublicInfo.create_from_dict(i) for i in content], None
+        if code == 400:
+            return None, ValidationErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -212,16 +208,28 @@ class ExportImages(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> ExportImages:
+    def create(
+        cls, namespace: str, body: Optional[UserProfileBulkRequest] = None, **kwargs
+    ) -> PublicBulkGetUserProfilePublicInfo:
         instance = cls()
         instance.namespace = namespace
+        if body is not None:
+            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ExportImages:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> PublicBulkGetUserProfilePublicInfo:
         instance = cls()
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = UserProfileBulkRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.body = UserProfileBulkRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -231,12 +239,14 @@ class ExportImages(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "body": "body",
             "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "body": False,
             "namespace": True,
         }
 

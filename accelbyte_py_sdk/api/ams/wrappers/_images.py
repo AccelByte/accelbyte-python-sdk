@@ -31,6 +31,7 @@ from ....core import same_doc_as
 
 from ..models import ApiImageDetails
 from ..models import ApiImageList
+from ..models import ApiImageStorage
 from ..models import ApiImageUpdate
 from ..models import ResponseErrorResponse
 
@@ -39,6 +40,7 @@ from ..operations.images import ImageList
 from ..operations.images import ImageMarkForDeletion
 from ..operations.images import ImagePatch
 from ..operations.images import ImageUnmarkForDeletion
+from ..operations.images import ImagesStorage
 
 
 @same_doc_as(ImageGet)
@@ -598,6 +600,110 @@ async def image_unmark_for_deletion_async(
             return None, error
     request = ImageUnmarkForDeletion.create(
         image_id=image_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ImagesStorage)
+def images_storage(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """get current usage for images storage (ImagesStorage)
+
+    Returns information regarding the account's usage for images storage including the free tier quota
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/images-storage
+
+        method: GET
+
+        tags: ["Images"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiImageStorage (success)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (account not linked)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImagesStorage.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ImagesStorage)
+async def images_storage_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """get current usage for images storage (ImagesStorage)
+
+    Returns information regarding the account's usage for images storage including the free tier quota
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/images-storage
+
+        method: GET
+
+        tags: ["Images"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiImageStorage (success)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (account not linked)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = ImagesStorage.create(
         namespace=namespace,
     )
     return await run_request_async(

@@ -44,6 +44,7 @@ from ..operations.player_reward import AdminGetUserRewardsStatusEnum
 from ..operations.player_reward import PublicClaimUserRewards
 from ..operations.player_reward import PublicGetUserRewards
 from ..operations.player_reward import PublicGetUserRewardsStatusEnum
+from ..models import ModelUserRewardStatusEnum, ModelUserRewardTypeEnum
 
 
 @same_doc_as(AdminClaimUserRewards)

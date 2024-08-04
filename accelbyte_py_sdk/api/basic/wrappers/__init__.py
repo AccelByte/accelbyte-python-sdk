@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Basic Service."""
 
-__version__ = "2.20.1"
+__version__ = "2.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -107,6 +107,8 @@ from ._user_profile import get_user_profile_info
 from ._user_profile import get_user_profile_info_async
 from ._user_profile import get_user_profile_info_by_public_id
 from ._user_profile import get_user_profile_info_by_public_id_async
+from ._user_profile import public_bulk_get_user_profile_public_info
+from ._user_profile import public_bulk_get_user_profile_public_info_async
 from ._user_profile import public_create_user_profile
 from ._user_profile import public_create_user_profile_async
 from ._user_profile import public_get_custom_attributes_info

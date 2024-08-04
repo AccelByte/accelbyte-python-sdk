@@ -27,6 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.apimodels_session_storage_request import ApimodelsSessionStorageRequest
 from ..models.models_team import ModelsTeam
 
 
@@ -68,6 +69,8 @@ class ApimodelsCreateGameSessionRequest(Model):
 
         type_: (type) REQUIRED str
 
+        app_name: (appName) OPTIONAL str
+
         auto_join: (autoJoin) OPTIONAL bool
 
         custom_urlgrpc: (customURLGRPC) OPTIONAL str
@@ -77,6 +80,8 @@ class ApimodelsCreateGameSessionRequest(Model):
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
+
+        storage: (storage) OPTIONAL ApimodelsSessionStorageRequest
 
         tie_teams_session_lifetime: (tieTeamsSessionLifetime) OPTIONAL bool
     """
@@ -100,11 +105,13 @@ class ApimodelsCreateGameSessionRequest(Model):
     text_chat: bool  # REQUIRED
     ticket_i_ds: List[str]  # REQUIRED
     type_: str  # REQUIRED
+    app_name: str  # OPTIONAL
     auto_join: bool  # OPTIONAL
     custom_urlgrpc: str  # OPTIONAL
     ds_source: str  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
+    storage: ApimodelsSessionStorageRequest  # OPTIONAL
     tie_teams_session_lifetime: bool  # OPTIONAL
 
     # endregion fields
@@ -183,6 +190,10 @@ class ApimodelsCreateGameSessionRequest(Model):
         self.type_ = value
         return self
 
+    def with_app_name(self, value: str) -> ApimodelsCreateGameSessionRequest:
+        self.app_name = value
+        return self
+
     def with_auto_join(self, value: bool) -> ApimodelsCreateGameSessionRequest:
         self.auto_join = value
         return self
@@ -205,6 +216,12 @@ class ApimodelsCreateGameSessionRequest(Model):
         self, value: List[str]
     ) -> ApimodelsCreateGameSessionRequest:
         self.preferred_claim_keys = value
+        return self
+
+    def with_storage(
+        self, value: ApimodelsSessionStorageRequest
+    ) -> ApimodelsCreateGameSessionRequest:
+        self.storage = value
         return self
 
     def with_tie_teams_session_lifetime(
@@ -289,6 +306,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "app_name"):
+            result["appName"] = str(self.app_name)
+        elif include_empty:
+            result["appName"] = ""
         if hasattr(self, "auto_join"):
             result["autoJoin"] = bool(self.auto_join)
         elif include_empty:
@@ -309,6 +330,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
         elif include_empty:
             result["preferredClaimKeys"] = []
+        if hasattr(self, "storage"):
+            result["storage"] = self.storage.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["storage"] = ApimodelsSessionStorageRequest()
         if hasattr(self, "tie_teams_session_lifetime"):
             result["tieTeamsSessionLifetime"] = bool(self.tie_teams_session_lifetime)
         elif include_empty:
@@ -339,11 +364,13 @@ class ApimodelsCreateGameSessionRequest(Model):
         text_chat: bool,
         ticket_i_ds: List[str],
         type_: str,
+        app_name: Optional[str] = None,
         auto_join: Optional[bool] = None,
         custom_urlgrpc: Optional[str] = None,
         ds_source: Optional[str] = None,
         fallback_claim_keys: Optional[List[str]] = None,
         preferred_claim_keys: Optional[List[str]] = None,
+        storage: Optional[ApimodelsSessionStorageRequest] = None,
         tie_teams_session_lifetime: Optional[bool] = None,
         **kwargs,
     ) -> ApimodelsCreateGameSessionRequest:
@@ -365,6 +392,8 @@ class ApimodelsCreateGameSessionRequest(Model):
         instance.text_chat = text_chat
         instance.ticket_i_ds = ticket_i_ds
         instance.type_ = type_
+        if app_name is not None:
+            instance.app_name = app_name
         if auto_join is not None:
             instance.auto_join = auto_join
         if custom_urlgrpc is not None:
@@ -375,6 +404,8 @@ class ApimodelsCreateGameSessionRequest(Model):
             instance.fallback_claim_keys = fallback_claim_keys
         if preferred_claim_keys is not None:
             instance.preferred_claim_keys = preferred_claim_keys
+        if storage is not None:
+            instance.storage = storage
         if tie_teams_session_lifetime is not None:
             instance.tie_teams_session_lifetime = tie_teams_session_lifetime
         return instance
@@ -459,6 +490,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "appName" in dict_ and dict_["appName"] is not None:
+            instance.app_name = str(dict_["appName"])
+        elif include_empty:
+            instance.app_name = ""
         if "autoJoin" in dict_ and dict_["autoJoin"] is not None:
             instance.auto_join = bool(dict_["autoJoin"])
         elif include_empty:
@@ -483,6 +518,12 @@ class ApimodelsCreateGameSessionRequest(Model):
             ]
         elif include_empty:
             instance.preferred_claim_keys = []
+        if "storage" in dict_ and dict_["storage"] is not None:
+            instance.storage = ApimodelsSessionStorageRequest.create_from_dict(
+                dict_["storage"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.storage = ApimodelsSessionStorageRequest()
         if (
             "tieTeamsSessionLifetime" in dict_
             and dict_["tieTeamsSessionLifetime"] is not None
@@ -550,11 +591,13 @@ class ApimodelsCreateGameSessionRequest(Model):
             "textChat": "text_chat",
             "ticketIDs": "ticket_i_ds",
             "type": "type_",
+            "appName": "app_name",
             "autoJoin": "auto_join",
             "customURLGRPC": "custom_urlgrpc",
             "dsSource": "ds_source",
             "fallbackClaimKeys": "fallback_claim_keys",
             "preferredClaimKeys": "preferred_claim_keys",
+            "storage": "storage",
             "tieTeamsSessionLifetime": "tie_teams_session_lifetime",
         }
 
@@ -578,11 +621,13 @@ class ApimodelsCreateGameSessionRequest(Model):
             "textChat": True,
             "ticketIDs": True,
             "type": True,
+            "appName": False,
             "autoJoin": False,
             "customURLGRPC": False,
             "dsSource": False,
             "fallbackClaimKeys": False,
             "preferredClaimKeys": False,
+            "storage": False,
             "tieTeamsSessionLifetime": False,
         }
 

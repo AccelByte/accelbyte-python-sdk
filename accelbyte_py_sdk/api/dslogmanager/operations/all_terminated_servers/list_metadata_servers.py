@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Dsm Controller Service
+# AccelByte Gaming Services Ds Log Manager Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,74 +29,60 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsImportResponse
+from ...models import ModelsListTerminatedServersResponse
+from ...models import ModelsMetadataServersRequest
 from ...models import ResponseError
 
 
-class ImportImages(Operation):
-    """import images for a namespace (ImportImages)
+class ListMetadataServers(Operation):
+    """Retrieve Metadata Servers (listMetadataServers)
 
-    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
 
-    Required scope: social
+    This endpoint used to retrieve metadata servers in a namespace
 
-    This endpoint import a dedicated servers images in a namespace.
-
-    The image will be upsert. Existing version will be replaced with imported image, will create new one if not found.
-
-    Example data inside imported file
-    [
-    {
-    "namespace": "dewa",
-    "image": "123456789.dkr.ecr.us-west-2.amazonaws.com/ds-dewa:0.0.1-alpha",
-    "version": "0.0.1",
-    "persistent": true
-    }
-    ]
+    The namespace filter is will give result exact namespace response
+    ```
 
     Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
+        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
 
     Properties:
-        url: /dsmcontroller/admin/images/import
+        url: /dslogmanager/servers/metadata
 
         method: POST
 
-        tags: ["Image Config"]
+        tags: ["All Terminated Servers"]
 
-        consumes: ["multipart/form-data"]
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
 
-        file: (file) REQUIRED Any in form_data
+        body: (body) REQUIRED ModelsMetadataServersRequest in body
 
     Responses:
-        200: OK - ModelsImportResponse (images imported)
+        200: OK - ModelsListTerminatedServersResponse (OK)
 
-        400: Bad Request - ResponseError (malformed request)
+        400: Bad Request - ResponseError (Bad Request)
 
-        401: Unauthorized - ResponseError (unauthorized access)
-
-        403: Forbidden - ResponseError (forbidden access)
+        401: Unauthorized - ResponseError (Unauthorized)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
     # region fields
 
-    _url: str = "/dsmcontroller/admin/images/import"
+    _url: str = "/dslogmanager/servers/metadata"
     _method: str = "POST"
-    _consumes: List[str] = ["multipart/form-data"]
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    file: Any  # REQUIRED in [form_data]
+    body: ModelsMetadataServersRequest  # REQUIRED in [body]
 
     # endregion fields
 
@@ -136,14 +122,13 @@ class ImportImages(Operation):
 
     def get_all_params(self) -> dict:
         return {
-            "form_data": self.get_form_data_params(),
+            "body": self.get_body_params(),
         }
 
-    def get_form_data_params(self) -> dict:
-        result = {}
-        if hasattr(self, "file"):
-            result[("file", "file")] = self.file
-        return result
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
 
     # endregion get_x_params methods
 
@@ -153,8 +138,8 @@ class ImportImages(Operation):
 
     # region with_x methods
 
-    def with_file(self, value: Any) -> ImportImages:
-        self.file = value
+    def with_body(self, value: ModelsMetadataServersRequest) -> ListMetadataServers:
+        self.body = value
         return self
 
     # endregion with_x methods
@@ -163,10 +148,10 @@ class ImportImages(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "file") and self.file:
-            result["file"] = Any(self.file)
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["file"] = Any()
+            result["body"] = ModelsMetadataServersRequest()
         return result
 
     # endregion to methods
@@ -177,17 +162,16 @@ class ImportImages(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ModelsImportResponse], Union[None, HttpResponse, ResponseError]
+        Union[None, ModelsListTerminatedServersResponse],
+        Union[None, HttpResponse, ResponseError],
     ]:
         """Parse the given response.
 
-        200: OK - ModelsImportResponse (images imported)
+        200: OK - ModelsListTerminatedServersResponse (OK)
 
-        400: Bad Request - ResponseError (malformed request)
+        400: Bad Request - ResponseError (Bad Request)
 
-        401: Unauthorized - ResponseError (unauthorized access)
-
-        403: Forbidden - ResponseError (forbidden access)
+        401: Unauthorized - ResponseError (Unauthorized)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
 
@@ -205,12 +189,10 @@ class ImportImages(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsImportResponse.create_from_dict(content), None
+            return ModelsListTerminatedServersResponse.create_from_dict(content), None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
-            return None, ResponseError.create_from_dict(content)
-        if code == 403:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)
@@ -224,32 +206,38 @@ class ImportImages(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, file: Any, **kwargs) -> ImportImages:
+    def create(
+        cls, body: ModelsMetadataServersRequest, **kwargs
+    ) -> ListMetadataServers:
         instance = cls()
-        instance.file = file
+        instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
 
     @classmethod
-    def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> ImportImages:
+    def create_from_dict(
+        cls, dict_: dict, include_empty: bool = False
+    ) -> ListMetadataServers:
         instance = cls()
-        if "file" in dict_ and dict_["file"] is not None:
-            instance.file = Any(dict_["file"])
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = ModelsMetadataServersRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
         elif include_empty:
-            instance.file = Any()
+            instance.body = ModelsMetadataServersRequest()
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "file": "file",
+            "body": "body",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "file": True,
+            "body": True,
         }
 
     # endregion static methods

@@ -73,6 +73,8 @@ class ModelChallengeResponse(Model):
 
         name: (name) REQUIRED str
 
+        randomized_per_rotation: (randomizedPerRotation) REQUIRED bool
+
         reset_config: (resetConfig) REQUIRED ModelResetConfig
 
         rotation: (rotation) REQUIRED Union[str, RotationEnum]
@@ -99,6 +101,7 @@ class ModelChallengeResponse(Model):
     description: str  # REQUIRED
     goals_visibility: Union[str, GoalsVisibilityEnum]  # REQUIRED
     name: str  # REQUIRED
+    randomized_per_rotation: bool  # REQUIRED
     reset_config: ModelResetConfig  # REQUIRED
     rotation: Union[str, RotationEnum]  # REQUIRED
     start_date: str  # REQUIRED
@@ -142,6 +145,10 @@ class ModelChallengeResponse(Model):
 
     def with_name(self, value: str) -> ModelChallengeResponse:
         self.name = value
+        return self
+
+    def with_randomized_per_rotation(self, value: bool) -> ModelChallengeResponse:
+        self.randomized_per_rotation = value
         return self
 
     def with_reset_config(self, value: ModelResetConfig) -> ModelChallengeResponse:
@@ -210,6 +217,10 @@ class ModelChallengeResponse(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "randomized_per_rotation"):
+            result["randomizedPerRotation"] = bool(self.randomized_per_rotation)
+        elif include_empty:
+            result["randomizedPerRotation"] = False
         if hasattr(self, "reset_config"):
             result["resetConfig"] = self.reset_config.to_dict(
                 include_empty=include_empty
@@ -260,6 +271,7 @@ class ModelChallengeResponse(Model):
         description: str,
         goals_visibility: Union[str, GoalsVisibilityEnum],
         name: str,
+        randomized_per_rotation: bool,
         reset_config: ModelResetConfig,
         rotation: Union[str, RotationEnum],
         start_date: str,
@@ -278,6 +290,7 @@ class ModelChallengeResponse(Model):
         instance.description = description
         instance.goals_visibility = goals_visibility
         instance.name = name
+        instance.randomized_per_rotation = randomized_per_rotation
         instance.reset_config = reset_config
         instance.rotation = rotation
         instance.start_date = start_date
@@ -329,6 +342,13 @@ class ModelChallengeResponse(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if (
+            "randomizedPerRotation" in dict_
+            and dict_["randomizedPerRotation"] is not None
+        ):
+            instance.randomized_per_rotation = bool(dict_["randomizedPerRotation"])
+        elif include_empty:
+            instance.randomized_per_rotation = False
         if "resetConfig" in dict_ and dict_["resetConfig"] is not None:
             instance.reset_config = ModelResetConfig.create_from_dict(
                 dict_["resetConfig"], include_empty=include_empty
@@ -413,6 +433,7 @@ class ModelChallengeResponse(Model):
             "description": "description",
             "goalsVisibility": "goals_visibility",
             "name": "name",
+            "randomizedPerRotation": "randomized_per_rotation",
             "resetConfig": "reset_config",
             "rotation": "rotation",
             "startDate": "start_date",
@@ -433,6 +454,7 @@ class ModelChallengeResponse(Model):
             "description": True,
             "goalsVisibility": True,
             "name": True,
+            "randomizedPerRotation": True,
             "resetConfig": True,
             "rotation": True,
             "startDate": True,

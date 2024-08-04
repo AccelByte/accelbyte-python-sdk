@@ -30,8 +30,8 @@ from ....core import Model
 from ..models.models_image_replication import ModelsImageReplication
 
 
-class ModelsImageRecord(Model):
-    """Models image record (models.ImageRecord)
+class ModelsPatchImageRecordResponse(Model):
+    """Models patch image record response (models.PatchImageRecordResponse)
 
     Properties:
         created_at: (createdAt) REQUIRED str
@@ -46,9 +46,13 @@ class ModelsImageRecord(Model):
 
         namespace: (namespace) REQUIRED str
 
+        patch_version: (patchVersion) REQUIRED str
+
         persistent: (persistent) REQUIRED bool
 
         updated_at: (updatedAt) REQUIRED str
+
+        uploader_flag: (uploaderFlag) REQUIRED str
 
         version: (version) REQUIRED str
 
@@ -71,8 +75,10 @@ class ModelsImageRecord(Model):
     image_size: int  # REQUIRED
     modified_by: str  # REQUIRED
     namespace: str  # REQUIRED
+    patch_version: str  # REQUIRED
     persistent: bool  # REQUIRED
     updated_at: str  # REQUIRED
+    uploader_flag: str  # REQUIRED
     version: str  # REQUIRED
     artifact_path: str  # OPTIONAL
     core_dump_enabled: bool  # OPTIONAL
@@ -84,63 +90,71 @@ class ModelsImageRecord(Model):
 
     # region with_x methods
 
-    def with_created_at(self, value: str) -> ModelsImageRecord:
+    def with_created_at(self, value: str) -> ModelsPatchImageRecordResponse:
         self.created_at = value
         return self
 
-    def with_docker_path(self, value: str) -> ModelsImageRecord:
+    def with_docker_path(self, value: str) -> ModelsPatchImageRecordResponse:
         self.docker_path = value
         return self
 
-    def with_image(self, value: str) -> ModelsImageRecord:
+    def with_image(self, value: str) -> ModelsPatchImageRecordResponse:
         self.image = value
         return self
 
-    def with_image_size(self, value: int) -> ModelsImageRecord:
+    def with_image_size(self, value: int) -> ModelsPatchImageRecordResponse:
         self.image_size = value
         return self
 
-    def with_modified_by(self, value: str) -> ModelsImageRecord:
+    def with_modified_by(self, value: str) -> ModelsPatchImageRecordResponse:
         self.modified_by = value
         return self
 
-    def with_namespace(self, value: str) -> ModelsImageRecord:
+    def with_namespace(self, value: str) -> ModelsPatchImageRecordResponse:
         self.namespace = value
         return self
 
-    def with_persistent(self, value: bool) -> ModelsImageRecord:
+    def with_patch_version(self, value: str) -> ModelsPatchImageRecordResponse:
+        self.patch_version = value
+        return self
+
+    def with_persistent(self, value: bool) -> ModelsPatchImageRecordResponse:
         self.persistent = value
         return self
 
-    def with_updated_at(self, value: str) -> ModelsImageRecord:
+    def with_updated_at(self, value: str) -> ModelsPatchImageRecordResponse:
         self.updated_at = value
         return self
 
-    def with_version(self, value: str) -> ModelsImageRecord:
+    def with_uploader_flag(self, value: str) -> ModelsPatchImageRecordResponse:
+        self.uploader_flag = value
+        return self
+
+    def with_version(self, value: str) -> ModelsPatchImageRecordResponse:
         self.version = value
         return self
 
-    def with_artifact_path(self, value: str) -> ModelsImageRecord:
+    def with_artifact_path(self, value: str) -> ModelsPatchImageRecordResponse:
         self.artifact_path = value
         return self
 
-    def with_core_dump_enabled(self, value: bool) -> ModelsImageRecord:
+    def with_core_dump_enabled(self, value: bool) -> ModelsPatchImageRecordResponse:
         self.core_dump_enabled = value
         return self
 
     def with_image_replications(
         self, value: List[ModelsImageReplication]
-    ) -> ModelsImageRecord:
+    ) -> ModelsPatchImageRecordResponse:
         self.image_replications = value
         return self
 
     def with_image_replications_map(
         self, value: Dict[str, ModelsImageReplication]
-    ) -> ModelsImageRecord:
+    ) -> ModelsPatchImageRecordResponse:
         self.image_replications_map = value
         return self
 
-    def with_ulimit_file_size(self, value: int) -> ModelsImageRecord:
+    def with_ulimit_file_size(self, value: int) -> ModelsPatchImageRecordResponse:
         self.ulimit_file_size = value
         return self
 
@@ -174,6 +188,10 @@ class ModelsImageRecord(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "patch_version"):
+            result["patchVersion"] = str(self.patch_version)
+        elif include_empty:
+            result["patchVersion"] = ""
         if hasattr(self, "persistent"):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
@@ -182,6 +200,10 @@ class ModelsImageRecord(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "uploader_flag"):
+            result["uploaderFlag"] = str(self.uploader_flag)
+        elif include_empty:
+            result["uploaderFlag"] = ""
         if hasattr(self, "version"):
             result["version"] = str(self.version)
         elif include_empty:
@@ -227,8 +249,10 @@ class ModelsImageRecord(Model):
         image_size: int,
         modified_by: str,
         namespace: str,
+        patch_version: str,
         persistent: bool,
         updated_at: str,
+        uploader_flag: str,
         version: str,
         artifact_path: Optional[str] = None,
         core_dump_enabled: Optional[bool] = None,
@@ -236,7 +260,7 @@ class ModelsImageRecord(Model):
         image_replications_map: Optional[Dict[str, ModelsImageReplication]] = None,
         ulimit_file_size: Optional[int] = None,
         **kwargs,
-    ) -> ModelsImageRecord:
+    ) -> ModelsPatchImageRecordResponse:
         instance = cls()
         instance.created_at = created_at
         instance.docker_path = docker_path
@@ -244,8 +268,10 @@ class ModelsImageRecord(Model):
         instance.image_size = image_size
         instance.modified_by = modified_by
         instance.namespace = namespace
+        instance.patch_version = patch_version
         instance.persistent = persistent
         instance.updated_at = updated_at
+        instance.uploader_flag = uploader_flag
         instance.version = version
         if artifact_path is not None:
             instance.artifact_path = artifact_path
@@ -262,7 +288,7 @@ class ModelsImageRecord(Model):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsImageRecord:
+    ) -> ModelsPatchImageRecordResponse:
         instance = cls()
         if not dict_:
             return instance
@@ -290,6 +316,10 @@ class ModelsImageRecord(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "patchVersion" in dict_ and dict_["patchVersion"] is not None:
+            instance.patch_version = str(dict_["patchVersion"])
+        elif include_empty:
+            instance.patch_version = ""
         if "persistent" in dict_ and dict_["persistent"] is not None:
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
@@ -298,6 +328,10 @@ class ModelsImageRecord(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "uploaderFlag" in dict_ and dict_["uploaderFlag"] is not None:
+            instance.uploader_flag = str(dict_["uploaderFlag"])
+        elif include_empty:
+            instance.uploader_flag = ""
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = str(dict_["version"])
         elif include_empty:
@@ -338,7 +372,7 @@ class ModelsImageRecord(Model):
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsImageRecord]:
+    ) -> Dict[str, ModelsPatchImageRecordResponse]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -348,7 +382,7 @@ class ModelsImageRecord(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsImageRecord]:
+    ) -> List[ModelsPatchImageRecordResponse]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -359,7 +393,9 @@ class ModelsImageRecord(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ModelsImageRecord, List[ModelsImageRecord], Dict[Any, ModelsImageRecord]
+        ModelsPatchImageRecordResponse,
+        List[ModelsPatchImageRecordResponse],
+        Dict[Any, ModelsPatchImageRecordResponse],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -380,8 +416,10 @@ class ModelsImageRecord(Model):
             "imageSize": "image_size",
             "modifiedBy": "modified_by",
             "namespace": "namespace",
+            "patchVersion": "patch_version",
             "persistent": "persistent",
             "updatedAt": "updated_at",
+            "uploaderFlag": "uploader_flag",
             "version": "version",
             "artifactPath": "artifact_path",
             "coreDumpEnabled": "core_dump_enabled",
@@ -399,8 +437,10 @@ class ModelsImageRecord(Model):
             "imageSize": True,
             "modifiedBy": True,
             "namespace": True,
+            "patchVersion": True,
             "persistent": True,
             "updatedAt": True,
+            "uploaderFlag": True,
             "version": True,
             "artifactPath": False,
             "coreDumpEnabled": False,

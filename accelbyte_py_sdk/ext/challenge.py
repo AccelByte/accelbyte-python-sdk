@@ -51,6 +51,7 @@ from ..api.challenge.models import ModelReward
 from ..api.challenge.models import ModelSchedule
 from ..api.challenge.models import ModelUpdateChallengeRequest
 from ..api.challenge.models import ModelUpdateGoalRequest
+from ..api.challenge.models import ModelUserProgressionPeriodResponseMeta
 from ..api.challenge.models import ModelUserProgressionResponse
 from ..api.challenge.models import ModelUserProgressionResponseMeta
 from ..api.challenge.models import ModelUserReward
@@ -82,6 +83,7 @@ def create_model_challenge_response_example() -> ModelChallengeResponse:
     instance.description = randomize()
     instance.goals_visibility = randomize()
     instance.name = randomize()
+    instance.randomized_per_rotation = randomize("bool")
     instance.reset_config = create_model_reset_config_example()
     instance.rotation = randomize()
     instance.start_date = randomize()
@@ -129,6 +131,7 @@ def create_model_create_challenge_request_example() -> ModelCreateChallengeReque
     instance.description = randomize()
     instance.end_after = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize("date")
+    instance.randomized_per_rotation = randomize("bool")
     instance.repeat_after = randomize("int", min_val=1, max_val=1000)
     instance.reset_config = create_model_reset_config_example()
     return instance
@@ -319,6 +322,7 @@ def create_model_update_challenge_request_example() -> ModelUpdateChallengeReque
     instance.end_date = randomize("date")
     instance.goals_visibility = randomize()
     instance.name = randomize()
+    instance.randomized_per_rotation = randomize("bool")
     instance.repeat_after = randomize("int", min_val=1, max_val=1000)
     instance.reset_config = create_model_reset_config_example()
     instance.rotation = randomize()
@@ -338,6 +342,15 @@ def create_model_update_goal_request_example() -> ModelUpdateGoalRequest:
     return instance
 
 
+def create_model_user_progression_period_response_meta_example() -> (
+    ModelUserProgressionPeriodResponseMeta
+):
+    instance = ModelUserProgressionPeriodResponseMeta()
+    instance.end_time = randomize()
+    instance.start_time = randomize()
+    return instance
+
+
 def create_model_user_progression_response_example() -> ModelUserProgressionResponse:
     instance = ModelUserProgressionResponse()
     instance.data = [create_model_goal_progression_response_example()]
@@ -353,6 +366,7 @@ def create_model_user_progression_response_meta_example() -> (
     instance.code = randomize()
     instance.description = randomize()
     instance.name = randomize()
+    instance.period = create_model_user_progression_period_response_meta_example()
     instance.start_date = randomize()
     instance.user_id = randomize("uid")
     instance.end_date = randomize()

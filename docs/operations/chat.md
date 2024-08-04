@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Chat Service Index (0.4.30)
+# AccelByte Gaming Services Chat Service Index (0.4.31)
 
 
 ## Operations
@@ -12,6 +12,8 @@
 |---|---|---|---|---|---|---|
 | /chat/v1/admin/config | GET | adminGetAllConfigV1 | `false` | [AdminGetAllConfigV1](../../accelbyte_py_sdk/api/chat/operations/config/admin_get_all_config_v1.py) | [admin_get_all_config_v1](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-admin-get-all-config-v1](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_get_all_config_v1.py) |
 | /chat/v1/admin/config/namespaces/{namespace} | GET | adminGetConfigV1 | `false` | [AdminGetConfigV1](../../accelbyte_py_sdk/api/chat/operations/config/admin_get_config_v1.py) | [admin_get_config_v1](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-admin-get-config-v1](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_get_config_v1.py) |
+| /chat/v1/admin/config/log | GET | adminGetLogConfig | `false` | [AdminGetLogConfig](../../accelbyte_py_sdk/api/chat/operations/config/admin_get_log_config.py) | [admin_get_log_config](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-admin-get-log-config](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_get_log_config.py) |
+| /chat/v1/admin/config/log | PATCH | adminPatchUpdateLogConfig | `false` | [AdminPatchUpdateLogConfig](../../accelbyte_py_sdk/api/chat/operations/config/admin_patch_update_log_config.py) | [admin_patch_update_log_config](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-admin-patch-update-log-config](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_patch_update_log_config.py) |
 | /chat/v1/admin/config/namespaces/{namespace} | PUT | adminUpdateConfigV1 | `false` | [AdminUpdateConfigV1](../../accelbyte_py_sdk/api/chat/operations/config/admin_update_config_v1.py) | [admin_update_config_v1](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-admin-update-config-v1](../../samples/cli/accelbyte_py_sdk_cli/chat/_admin_update_config_v1.py) |
 | /chat/v1/admin/config/namespaces/{namespace}/export | GET | ExportConfig | `false` | [ExportConfig](../../accelbyte_py_sdk/api/chat/operations/config/export_config.py) | [export_config](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-export-config](../../samples/cli/accelbyte_py_sdk_cli/chat/_export_config.py) |
 | /chat/v1/admin/config/namespaces/{namespace}/import | POST | ImportConfig | `false` | [ImportConfig](../../accelbyte_py_sdk/api/chat/operations/config/import_config.py) | [import_config](../../accelbyte_py_sdk/api/chat/wrappers/_config.py) | [accelbyte_py_sdk_cli chat-import-config](../../samples/cli/accelbyte_py_sdk_cli/chat/_import_config.py) |
@@ -106,6 +108,7 @@
 | api.UnmuteUserRequest | [ApiUnmuteUserRequest](../../accelbyte_py_sdk/api/chat/models/api_unmute_user_request.py) |
 | api.UpdateTopicParams | [ApiUpdateTopicParams](../../accelbyte_py_sdk/api/chat/models/api_update_topic_params.py) |
 | log.AppMessageDeclaration | [LogAppMessageDeclaration](../../accelbyte_py_sdk/api/chat/models/log_app_message_declaration.py) |
+| logconfig.Configuration | [LogconfigConfiguration](../../accelbyte_py_sdk/api/chat/models/logconfig_configuration.py) |
 | message.ActionAddUserToTopicResult | [MessageActionAddUserToTopicResult](../../accelbyte_py_sdk/api/chat/models/message_action_add_user_to_topic_result.py) |
 | message.ActionDeleteTopicResult | [MessageActionDeleteTopicResult](../../accelbyte_py_sdk/api/chat/models/message_action_delete_topic_result.py) |
 | models.AddInboxCategoryRequest | [ModelsAddInboxCategoryRequest](../../accelbyte_py_sdk/api/chat/models/models_add_inbox_category_request.py) |

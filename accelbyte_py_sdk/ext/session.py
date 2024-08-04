@@ -60,6 +60,7 @@ from ..api.session.models import ApimodelsResponseDeleteBulkGameSessions
 from ..api.session.models import ApimodelsServerSecret
 from ..api.session.models import ApimodelsSessionInviteRequest
 from ..api.session.models import ApimodelsSessionInviteResponse
+from ..api.session.models import ApimodelsSessionStorageRequest
 from ..api.session.models import ApimodelsSetDSReadyRequest
 from ..api.session.models import ApimodelsUpdateConfigurationTemplateRequest
 from ..api.session.models import ApimodelsUpdateGameSessionBackfillRequest
@@ -133,11 +134,13 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.updated_at = randomize()
+    instance.app_name = randomize()
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.auto_leave_session = randomize("bool")
     instance.custom_urlgrpc = randomize()
     instance.disable_code_generation = randomize("bool")
+    instance.disable_resend_invite = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
     instance.enable_secret = randomize("bool")
@@ -179,11 +182,13 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.app_name = randomize()
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.auto_leave_session = randomize("bool")
     instance.custom_urlgrpc = randomize()
     instance.disable_code_generation = randomize("bool")
+    instance.disable_resend_invite = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
     instance.enable_secret = randomize("bool")
@@ -220,11 +225,13 @@ def create_apimodels_create_game_session_request_example() -> (
     instance.text_chat = randomize("bool")
     instance.ticket_i_ds = [randomize()]
     instance.type_ = randomize()
+    instance.app_name = randomize()
     instance.auto_join = randomize("bool")
     instance.custom_urlgrpc = randomize()
     instance.ds_source = randomize()
     instance.fallback_claim_keys = [randomize()]
     instance.preferred_claim_keys = [randomize()]
+    instance.storage = create_apimodels_session_storage_request_example()
     instance.tie_teams_session_lifetime = randomize("bool")
     return instance
 
@@ -336,6 +343,7 @@ def create_apimodels_global_configuration_response_example() -> (
     instance.test_region_url_mapping = [randomize()]
     instance.test_target_user_i_ds = [randomize()]
     instance.updated_at = randomize()
+    instance.metric_excluded_namespaces = [randomize()]
     return instance
 
 
@@ -468,9 +476,11 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.persistent = randomize("bool")
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.app_name = randomize()
     instance.attributes = {randomize(): randomize()}
     instance.custom_urlgrpc = randomize()
     instance.disable_code_generation = randomize("bool")
+    instance.disable_resend_invite = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
     instance.enable_secret = randomize("bool")
@@ -491,6 +501,7 @@ def create_apimodels_put_global_configuration_request_example() -> (
     ApimodelsPutGlobalConfigurationRequest
 ):
     instance = ApimodelsPutGlobalConfigurationRequest()
+    instance.metric_excluded_namespaces = [randomize()]
     instance.region_retry_mapping = {}
     instance.region_url_mapping = [randomize()]
     instance.test_game_mode = randomize()
@@ -545,6 +556,14 @@ def create_apimodels_session_invite_response_example() -> (
     return instance
 
 
+def create_apimodels_session_storage_request_example() -> (
+    ApimodelsSessionStorageRequest
+):
+    instance = ApimodelsSessionStorageRequest()
+    instance.leader = {randomize(): randomize()}
+    return instance
+
+
 def create_apimodels_set_ds_ready_request_example() -> ApimodelsSetDSReadyRequest:
     instance = ApimodelsSetDSReadyRequest()
     instance.ready = randomize("bool")
@@ -567,11 +586,13 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.app_name = randomize()
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.auto_leave_session = randomize("bool")
     instance.custom_urlgrpc = randomize()
     instance.disable_code_generation = randomize("bool")
+    instance.disable_resend_invite = randomize("bool")
     instance.ds_manual_set_ready = randomize("bool")
     instance.ds_source = randomize()
     instance.enable_secret = randomize("bool")

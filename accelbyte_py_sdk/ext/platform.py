@@ -167,7 +167,9 @@ from ..api.platform.models import ExternalPaymentOrderCreate
 from ..api.platform.models import FieldValidationError
 from ..api.platform.models import FixedPeriodRotationConfig
 from ..api.platform.models import FulFillItemPayload
+from ..api.platform.models import FulfillBundledItemResult
 from ..api.platform.models import FulfillCodeRequest
+from ..api.platform.models import FulfillItemResult
 from ..api.platform.models import FulfillmentError
 from ..api.platform.models import FulfillmentHistoryInfo
 from ..api.platform.models import FulfillmentHistoryPagingSlicedResult
@@ -177,6 +179,10 @@ from ..api.platform.models import FulfillmentResult
 from ..api.platform.models import FulfillmentScriptCreate
 from ..api.platform.models import FulfillmentScriptInfo
 from ..api.platform.models import FulfillmentScriptUpdate
+from ..api.platform.models import FulfillmentStateInfo
+from ..api.platform.models import FulfillmentV2Request
+from ..api.platform.models import FulfillmentV2RequestItem
+from ..api.platform.models import FulfillmentV2Result
 from ..api.platform.models import FullAppInfo
 from ..api.platform.models import FullCategoryInfo
 from ..api.platform.models import FullItemInfo
@@ -364,6 +370,7 @@ from ..api.platform.models import RevokeCurrency
 from ..api.platform.models import RevokeEntitlement
 from ..api.platform.models import RevokeEntitlementPayload
 from ..api.platform.models import RevokeEntry
+from ..api.platform.models import RevokeFulfillmentV2Result
 from ..api.platform.models import RevokeItem
 from ..api.platform.models import RevokeItemSummary
 from ..api.platform.models import RevokeResult
@@ -386,8 +393,11 @@ from ..api.platform.models import SectionPluginConfigUpdate
 from ..api.platform.models import SectionUpdate
 from ..api.platform.models import ServicePluginConfigInfo
 from ..api.platform.models import ServicePluginConfigUpdate
+from ..api.platform.models import SimpleDLCRewardItem
 from ..api.platform.models import SimpleEntitlement
 from ..api.platform.models import SimpleUserDLC
+from ..api.platform.models import SimpleUserDLCRewardContent
+from ..api.platform.models import SimpleUserDLCRewardContentsResponse
 from ..api.platform.models import SimpleWallet
 from ..api.platform.models import Slide
 from ..api.platform.models import StackableEntitlementInfo
@@ -1425,6 +1435,7 @@ def create_deduction_detail_example() -> DeductionDetail:
     instance.discount_code_deduction_detail = (
         create_discount_code_deduction_detail_example()
     )
+    instance.discount_provider_name = randomize()
     return instance
 
 
@@ -2033,11 +2044,29 @@ def create_ful_fill_item_payload_example() -> FulFillItemPayload:
     return instance
 
 
+def create_fulfill_bundled_item_result_example() -> FulfillBundledItemResult:
+    instance = FulfillBundledItemResult()
+    instance.error = randomize()
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_fulfill_code_request_example() -> FulfillCodeRequest:
     instance = FulfillCodeRequest()
     instance.code = randomize()
     instance.language = randomize()
     instance.region = randomize()
+    return instance
+
+
+def create_fulfill_item_result_example() -> FulfillItemResult:
+    instance = FulfillItemResult()
+    instance.error = randomize()
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
+    instance.items = [create_fulfill_bundled_item_result_example()]
     return instance
 
 
@@ -2141,6 +2170,54 @@ def create_fulfillment_script_info_example() -> FulfillmentScriptInfo:
 def create_fulfillment_script_update_example() -> FulfillmentScriptUpdate:
     instance = FulfillmentScriptUpdate()
     instance.grant_days = randomize()
+    return instance
+
+
+def create_fulfillment_state_info_example() -> FulfillmentStateInfo:
+    instance = FulfillmentStateInfo()
+    instance.failed_list = [create_fulfill_item_result_example()]
+    instance.success_list = [create_fulfill_item_result_example()]
+    return instance
+
+
+def create_fulfillment_v2_request_example() -> FulfillmentV2Request:
+    instance = FulfillmentV2Request()
+    instance.items = [create_fulfillment_v2_request_item_example()]
+    return instance
+
+
+def create_fulfillment_v2_request_item_example() -> FulfillmentV2RequestItem:
+    instance = FulfillmentV2RequestItem()
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.duration = randomize("int", min_val=1, max_val=1000)
+    instance.end_date = randomize("date")
+    instance.entitlement_collection_id = randomize()
+    instance.entitlement_origin = randomize()
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
+    instance.language = randomize()
+    instance.metadata = {randomize(): randomize()}
+    instance.order_no = randomize()
+    instance.origin = randomize()
+    instance.region = randomize()
+    instance.source = randomize()
+    instance.start_date = randomize("date")
+    instance.store_id = randomize()
+    return instance
+
+
+def create_fulfillment_v2_result_example() -> FulfillmentV2Result:
+    instance = FulfillmentV2Result()
+    instance.items = [create_fulfillment_item_example()]
+    instance.namespace = randomize("slug")
+    instance.state = randomize()
+    instance.state_info = create_fulfillment_state_info_example()
+    instance.transaction_id = randomize("uid")
+    instance.user_id = randomize("uid")
+    instance.credit_summaries = [create_credit_summary_example()]
+    instance.entitlement_summaries = [create_entitlement_summary_example()]
+    instance.id_ = randomize()
+    instance.subscription_summaries = [create_subscription_summary_example()]
     return instance
 
 
@@ -3377,6 +3454,8 @@ def create_payment_callback_config_update_example() -> PaymentCallbackConfigUpda
 
 def create_payment_data_example() -> PaymentData:
     instance = PaymentData()
+    instance.discount_amount = randomize("int", min_val=1, max_val=1000)
+    instance.discount_code = randomize()
     instance.subtotal_price = randomize("int", min_val=1, max_val=1000)
     instance.tax = randomize("int", min_val=1, max_val=1000)
     instance.total_price = randomize("int", min_val=1, max_val=1000)
@@ -3859,6 +3938,7 @@ def create_platform_reward_currency_example() -> PlatformRewardCurrency:
 def create_platform_reward_item_example() -> PlatformRewardItem:
     instance = PlatformRewardItem()
     instance.item_id = randomize()
+    instance.item_name = randomize()
     instance.item_sku = randomize()
     instance.item_type = randomize()
     return instance
@@ -3884,6 +3964,7 @@ def create_platform_wallet_example() -> PlatformWallet:
     instance.user_id = randomize("uid")
     instance.id_ = randomize()
     instance.status = randomize()
+    instance.transaction_id = randomize("uid")
     instance.wallet_infos = [create_wallet_info_example()]
     instance.wallet_status = randomize()
     return instance
@@ -4041,6 +4122,7 @@ def create_pre_check_fulfillment_request_example() -> PreCheckFulfillmentRequest
 def create_predicate_example() -> Predicate:
     instance = Predicate()
     instance.any_of = randomize("int", min_val=1, max_val=1000)
+    instance.code = randomize()
     instance.comparison = randomize()
     instance.name = randomize()
     instance.predicate_type = randomize()
@@ -4309,6 +4391,7 @@ def create_revocation_plugin_config_update_example() -> RevocationPluginConfigUp
 def create_revocation_request_example() -> RevocationRequest:
     instance = RevocationRequest()
     instance.meta = {randomize(): randomize()}
+    instance.reason = randomize()
     instance.revoke_entries = [create_revoke_entry_example()]
     instance.source = randomize()
     instance.transaction_id = randomize("uid")
@@ -4353,6 +4436,21 @@ def create_revoke_entry_example() -> RevokeEntry:
     instance.item = create_revoke_item_example()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     instance.type_ = randomize()
+    return instance
+
+
+def create_revoke_fulfillment_v2_result_example() -> RevokeFulfillmentV2Result:
+    instance = RevokeFulfillmentV2Result()
+    instance.id_ = randomize()
+    instance.items = [create_fulfillment_item_example()]
+    instance.namespace = randomize("slug")
+    instance.state = randomize()
+    instance.state_info = create_fulfillment_state_info_example()
+    instance.transaction_id = randomize("uid")
+    instance.user_id = randomize("uid")
+    instance.credit_revocations = [create_credit_revocation_example()]
+    instance.entitlement_revocations = [create_entitlement_revocation_example()]
+    instance.item_revocations = [create_item_revocation_example()]
     return instance
 
 
@@ -4592,6 +4690,12 @@ def create_service_plugin_config_update_example() -> ServicePluginConfigUpdate:
     return instance
 
 
+def create_simple_dlc_reward_item_example() -> SimpleDLCRewardItem:
+    instance = SimpleDLCRewardItem()
+    instance.item_name = randomize()
+    return instance
+
+
 def create_simple_entitlement_example() -> SimpleEntitlement:
     instance = SimpleEntitlement()
     instance.entitlement_id = randomize()
@@ -4609,6 +4713,24 @@ def create_simple_entitlement_example() -> SimpleEntitlement:
 def create_simple_user_dlc_example() -> SimpleUserDLC:
     instance = SimpleUserDLC()
     instance.dlc_id = randomize()
+    return instance
+
+
+def create_simple_user_dlc_reward_content_example() -> SimpleUserDLCRewardContent:
+    instance = SimpleUserDLCRewardContent()
+    instance.currency = create_platform_reward_currency_example()
+    instance.item = create_simple_dlc_reward_item_example()
+    instance.obtained_at = randomize("date")
+    instance.quantity = randomize("int", min_val=1, max_val=1000)
+    instance.type_ = randomize()
+    return instance
+
+
+def create_simple_user_dlc_reward_contents_response_example() -> (
+    SimpleUserDLCRewardContentsResponse
+):
+    instance = SimpleUserDLCRewardContentsResponse()
+    instance.data = [create_simple_user_dlc_reward_content_example()]
     return instance
 
 

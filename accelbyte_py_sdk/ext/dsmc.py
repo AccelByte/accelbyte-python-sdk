@@ -25,6 +25,8 @@
 from .utils import randomize
 
 from ..api.dsmc.models import LogAppMessageDeclaration
+from ..api.dsmc.models import ModelsAddBufferRequest
+from ..api.dsmc.models import ModelsAddBufferResponse
 from ..api.dsmc.models import ModelsAllocationEvent
 from ..api.dsmc.models import ModelsClaimSessionRequest
 from ..api.dsmc.models import ModelsCountServerResponse
@@ -42,6 +44,7 @@ from ..api.dsmc.models import ModelsCreateSessionRequest
 from ..api.dsmc.models import ModelsDSHeartbeatRequest
 from ..api.dsmc.models import ModelsDSMConfigRecord
 from ..api.dsmc.models import ModelsDefaultProvider
+from ..api.dsmc.models import ModelsDeleteZombieRequest
 from ..api.dsmc.models import ModelsDeploymentConfigOverride
 from ..api.dsmc.models import ModelsDeploymentWithOverride
 from ..api.dsmc.models import ModelsDeregisterLocalServerRequest
@@ -50,7 +53,7 @@ from ..api.dsmc.models import ModelsGetImageDetailResponse
 from ..api.dsmc.models import ModelsGetImageLimitResponse
 from ..api.dsmc.models import ModelsGetImageLimitResponseData
 from ..api.dsmc.models import ModelsGetImagePatchDetailResponse
-from ..api.dsmc.models import ModelsImageRecord
+from ..api.dsmc.models import ModelsImageRecordResponse
 from ..api.dsmc.models import ModelsImageRecordUpdate
 from ..api.dsmc.models import ModelsImageReplication
 from ..api.dsmc.models import ModelsImportResponse
@@ -65,6 +68,7 @@ from ..api.dsmc.models import ModelsListSessionResponse
 from ..api.dsmc.models import ModelsMatchResultNotificationPayload
 from ..api.dsmc.models import ModelsPagingCursor
 from ..api.dsmc.models import ModelsPatchImageRecord
+from ..api.dsmc.models import ModelsPatchImageRecordResponse
 from ..api.dsmc.models import ModelsPodConfigRecord
 from ..api.dsmc.models import ModelsPodCountConfigOverride
 from ..api.dsmc.models import ModelsRegisterLocalServerRequest
@@ -75,6 +79,7 @@ from ..api.dsmc.models import ModelsRequestMatchParty
 from ..api.dsmc.models import ModelsRequestMatchingAlly
 from ..api.dsmc.models import ModelsServer
 from ..api.dsmc.models import ModelsServerDeploymentConfigSessionTimeoutResponse
+from ..api.dsmc.models import ModelsServerDetailsResponse
 from ..api.dsmc.models import ModelsServerSessionResponse
 from ..api.dsmc.models import ModelsSession
 from ..api.dsmc.models import ModelsSessionResponse
@@ -86,6 +91,8 @@ from ..api.dsmc.models import ModelsUpdateDeploymentRequest
 from ..api.dsmc.models import ModelsUpdatePodConfigRequest
 from ..api.dsmc.models import ModelsUpdatePortRequest
 from ..api.dsmc.models import ModelsUpdateRegionOverrideRequest
+from ..api.dsmc.models import ModelsWorkerConfig
+from ..api.dsmc.models import ModelsWorkerConfigRequest
 from ..api.dsmc.models import ResponseError
 
 
@@ -100,6 +107,23 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
     return instance
 
 
+def create_models_add_buffer_request_example() -> ModelsAddBufferRequest:
+    instance = ModelsAddBufferRequest()
+    instance.alloc_count = randomize("int", min_val=1, max_val=1000)
+    instance.deployment_name = randomize()
+    instance.job_count = randomize("int", min_val=1, max_val=1000)
+    instance.job_priority = randomize("int", min_val=1, max_val=1000)
+    instance.override_version = randomize()
+    instance.region = randomize()
+    return instance
+
+
+def create_models_add_buffer_response_example() -> ModelsAddBufferResponse:
+    instance = ModelsAddBufferResponse()
+    instance.message = randomize()
+    return instance
+
+
 def create_models_allocation_event_example() -> ModelsAllocationEvent:
     instance = ModelsAllocationEvent()
     instance.description = randomize()
@@ -110,7 +134,13 @@ def create_models_allocation_event_example() -> ModelsAllocationEvent:
 
 def create_models_claim_session_request_example() -> ModelsClaimSessionRequest:
     instance = ModelsClaimSessionRequest()
+    instance.game_mode = randomize()
+    instance.matching_allies = [create_models_request_matching_ally_example()]
+    instance.namespace = randomize("slug")
     instance.session_id = randomize("uid")
+    instance.notification_payload = (
+        create_models_match_result_notification_payload_example()
+    )
     return instance
 
 
@@ -267,6 +297,15 @@ def create_models_default_provider_example() -> ModelsDefaultProvider:
     return instance
 
 
+def create_models_delete_zombie_request_example() -> ModelsDeleteZombieRequest:
+    instance = ModelsDeleteZombieRequest()
+    instance.job_count = randomize("int", min_val=1, max_val=1000)
+    instance.region = randomize()
+    instance.timeout_second = randomize("int", min_val=1, max_val=1000)
+    instance.zombie_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_models_deployment_config_override_example() -> (
     ModelsDeploymentConfigOverride
 ):
@@ -358,7 +397,7 @@ def create_models_dsm_config_record_example() -> ModelsDSMConfigRecord:
 
 def create_models_get_image_detail_response_example() -> ModelsGetImageDetailResponse:
     instance = ModelsGetImageDetailResponse()
-    instance.data = create_models_image_record_example()
+    instance.data = create_models_image_record_response_example()
     return instance
 
 
@@ -389,8 +428,8 @@ def create_models_get_image_patch_detail_response_example() -> (
     return instance
 
 
-def create_models_image_record_example() -> ModelsImageRecord:
-    instance = ModelsImageRecord()
+def create_models_image_record_response_example() -> ModelsImageRecordResponse:
+    instance = ModelsImageRecordResponse()
     instance.created_at = randomize("date")
     instance.docker_path = randomize()
     instance.image = randomize()
@@ -402,6 +441,7 @@ def create_models_image_record_example() -> ModelsImageRecord:
     instance.version = randomize("version")
     instance.artifact_path = randomize()
     instance.core_dump_enabled = randomize("bool")
+    instance.deployments = [randomize()]
     instance.image_replications = [create_models_image_replication_example()]
     instance.image_replications_map = {}
     instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
@@ -414,6 +454,7 @@ def create_models_image_record_update_example() -> ModelsImageRecordUpdate:
     instance.namespace = randomize("slug")
     instance.patch_version = randomize()
     instance.persistent = randomize("bool")
+    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     instance.version = randomize("version")
     instance.artifact_path = randomize()
     instance.core_dump_enabled = randomize("bool")
@@ -461,13 +502,13 @@ def create_models_list_image_patches_response_example() -> (
     ModelsListImagePatchesResponse
 ):
     instance = ModelsListImagePatchesResponse()
-    instance.images = [create_models_patch_image_record_example()]
+    instance.images = [create_models_patch_image_record_response_example()]
     return instance
 
 
 def create_models_list_image_response_example() -> ModelsListImageResponse:
     instance = ModelsListImageResponse()
-    instance.images = [create_models_image_record_example()]
+    instance.images = [create_models_image_record_response_example()]
     instance.paging = create_models_paging_cursor_example()
     return instance
 
@@ -482,7 +523,7 @@ def create_models_list_pod_config_response_example() -> ModelsListPodConfigRespo
 def create_models_list_server_response_example() -> ModelsListServerResponse:
     instance = ModelsListServerResponse()
     instance.paging = create_models_paging_cursor_example()
-    instance.servers = [create_models_server_example()]
+    instance.servers = [create_models_server_details_response_example()]
     return instance
 
 
@@ -509,6 +550,29 @@ def create_models_paging_cursor_example() -> ModelsPagingCursor:
 
 def create_models_patch_image_record_example() -> ModelsPatchImageRecord:
     instance = ModelsPatchImageRecord()
+    instance.created_at = randomize("date")
+    instance.docker_path = randomize()
+    instance.image = randomize()
+    instance.image_size = randomize("int", min_val=1, max_val=1000)
+    instance.modified_by = randomize()
+    instance.namespace = randomize("slug")
+    instance.patch_version = randomize()
+    instance.persistent = randomize("bool")
+    instance.updated_at = randomize("date")
+    instance.uploader_flag = randomize()
+    instance.version = randomize("version")
+    instance.artifact_path = randomize()
+    instance.core_dump_enabled = randomize("bool")
+    instance.image_replications = [create_models_image_replication_example()]
+    instance.image_replications_map = {}
+    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_patch_image_record_response_example() -> (
+    ModelsPatchImageRecordResponse
+):
+    instance = ModelsPatchImageRecordResponse()
     instance.created_at = randomize("date")
     instance.docker_path = randomize()
     instance.image = randomize()
@@ -604,6 +668,7 @@ def create_models_request_matching_ally_example() -> ModelsRequestMatchingAlly:
 def create_models_server_example() -> ModelsServer:
     instance = ModelsServer()
     instance.allocation_id = randomize()
+    instance.artifact_path = randomize()
     instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
     instance.created_at = randomize("date")
     instance.deployment = randomize()
@@ -611,6 +676,50 @@ def create_models_server_example() -> ModelsServer:
     instance.image_version = randomize()
     instance.ip = randomize()
     instance.is_override_game_version = randomize("bool")
+    instance.is_override_region = randomize("bool")
+    instance.job_id = randomize()
+    instance.last_update = randomize("date")
+    instance.mem_limit = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
+    instance.params = randomize()
+    instance.pod_name = randomize()
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    instance.protocol = randomize()
+    instance.provider = randomize()
+    instance.region = randomize()
+    instance.session_id = randomize("uid")
+    instance.status = randomize()
+    instance.termination_reason = randomize()
+    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
+    instance.allocation_events = [create_models_allocation_event_example()]
+    instance.alternate_ips = [randomize()]
+    instance.custom_attribute = randomize()
+    instance.deployment_override = randomize()
+    instance.is_core_dump_enabled = randomize("bool")
+    instance.ports = {}
+    instance.status_history = [create_models_status_history_example()]
+    return instance
+
+
+def create_models_server_deployment_config_session_timeout_response_example() -> (
+    ModelsServerDeploymentConfigSessionTimeoutResponse
+):
+    instance = ModelsServerDeploymentConfigSessionTimeoutResponse()
+    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_models_server_details_response_example() -> ModelsServerDetailsResponse:
+    instance = ModelsServerDetailsResponse()
+    instance.allocation_id = randomize()
+    instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
+    instance.created_at = randomize("date")
+    instance.deployment = randomize()
+    instance.game_version = randomize("version")
+    instance.image_version = randomize()
+    instance.ip = randomize()
+    instance.is_override_game_version = randomize("bool")
+    instance.is_override_region = randomize("bool")
     instance.job_id = randomize()
     instance.last_update = randomize("date")
     instance.mem_limit = randomize("int", min_val=1, max_val=1000)
@@ -632,14 +741,7 @@ def create_models_server_example() -> ModelsServer:
     instance.is_core_dump_enabled = randomize("bool")
     instance.ports = {}
     instance.status_history = [create_models_status_history_example()]
-    return instance
-
-
-def create_models_server_deployment_config_session_timeout_response_example() -> (
-    ModelsServerDeploymentConfigSessionTimeoutResponse
-):
-    instance = ModelsServerDeploymentConfigSessionTimeoutResponse()
-    instance.session_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -754,6 +856,29 @@ def create_models_update_region_override_request_example() -> (
     instance.min_count = randomize("int", min_val=1, max_val=1000)
     instance.unlimited = randomize("bool")
     instance.use_buffer_percent = randomize("bool")
+    return instance
+
+
+def create_models_worker_config_example() -> ModelsWorkerConfig:
+    instance = ModelsWorkerConfig()
+    instance.auto_deletion = randomize("bool")
+    instance.created_at = randomize("date")
+    instance.created_by = randomize()
+    instance.ghost_worker = randomize("bool")
+    instance.manual_buffer_override = randomize("bool")
+    instance.modified_by = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.zombie_worker = randomize("bool")
+    return instance
+
+
+def create_models_worker_config_request_example() -> ModelsWorkerConfigRequest:
+    instance = ModelsWorkerConfigRequest()
+    instance.auto_deletion = randomize("bool")
+    instance.ghost_worker = randomize("bool")
+    instance.manual_buffer_override = randomize("bool")
+    instance.zombie_worker = randomize("bool")
     return instance
 
 

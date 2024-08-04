@@ -40,6 +40,10 @@ class PublicGetUserBanHistoryV3(Operation):
     - This endpoint retrieve the first page of the data if after and before parameters is empty
     - **The pagination is not working yet**
 
+
+    **Authentication:**
+    The _**userId**_ parameter should match the one in the access token.
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/bans
 

@@ -34,6 +34,8 @@ class ApiRegionConfig(Model):
     Properties:
         buffer_size: (bufferSize) REQUIRED int
 
+        dynamic_buffer: (dynamicBuffer) REQUIRED bool
+
         max_server_count: (maxServerCount) REQUIRED int
 
         min_server_count: (minServerCount) REQUIRED int
@@ -44,6 +46,7 @@ class ApiRegionConfig(Model):
     # region fields
 
     buffer_size: int  # REQUIRED
+    dynamic_buffer: bool  # REQUIRED
     max_server_count: int  # REQUIRED
     min_server_count: int  # REQUIRED
     region: str  # REQUIRED
@@ -54,6 +57,10 @@ class ApiRegionConfig(Model):
 
     def with_buffer_size(self, value: int) -> ApiRegionConfig:
         self.buffer_size = value
+        return self
+
+    def with_dynamic_buffer(self, value: bool) -> ApiRegionConfig:
+        self.dynamic_buffer = value
         return self
 
     def with_max_server_count(self, value: int) -> ApiRegionConfig:
@@ -78,6 +85,10 @@ class ApiRegionConfig(Model):
             result["bufferSize"] = int(self.buffer_size)
         elif include_empty:
             result["bufferSize"] = 0
+        if hasattr(self, "dynamic_buffer"):
+            result["dynamicBuffer"] = bool(self.dynamic_buffer)
+        elif include_empty:
+            result["dynamicBuffer"] = False
         if hasattr(self, "max_server_count"):
             result["maxServerCount"] = int(self.max_server_count)
         elif include_empty:
@@ -100,6 +111,7 @@ class ApiRegionConfig(Model):
     def create(
         cls,
         buffer_size: int,
+        dynamic_buffer: bool,
         max_server_count: int,
         min_server_count: int,
         region: str,
@@ -107,6 +119,7 @@ class ApiRegionConfig(Model):
     ) -> ApiRegionConfig:
         instance = cls()
         instance.buffer_size = buffer_size
+        instance.dynamic_buffer = dynamic_buffer
         instance.max_server_count = max_server_count
         instance.min_server_count = min_server_count
         instance.region = region
@@ -123,6 +136,10 @@ class ApiRegionConfig(Model):
             instance.buffer_size = int(dict_["bufferSize"])
         elif include_empty:
             instance.buffer_size = 0
+        if "dynamicBuffer" in dict_ and dict_["dynamicBuffer"] is not None:
+            instance.dynamic_buffer = bool(dict_["dynamicBuffer"])
+        elif include_empty:
+            instance.dynamic_buffer = False
         if "maxServerCount" in dict_ and dict_["maxServerCount"] is not None:
             instance.max_server_count = int(dict_["maxServerCount"])
         elif include_empty:
@@ -175,6 +192,7 @@ class ApiRegionConfig(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "bufferSize": "buffer_size",
+            "dynamicBuffer": "dynamic_buffer",
             "maxServerCount": "max_server_count",
             "minServerCount": "min_server_count",
             "region": "region",
@@ -184,6 +202,7 @@ class ApiRegionConfig(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "bufferSize": True,
+            "dynamicBuffer": True,
             "maxServerCount": True,
             "minServerCount": True,
             "region": True,

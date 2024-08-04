@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelsDeregisterLocalServerRequest
+from ..models import ModelsDetailedCountServerResponse
 from ..models import ModelsDSHeartbeatRequest
 from ..models import ModelsListServerResponse
 from ..models import ModelsRegisterLocalServerRequest
@@ -40,6 +41,7 @@ from ..models import ModelsServerSessionResponse
 from ..models import ModelsShutdownServerRequest
 from ..models import ResponseError
 
+from ..operations.server import CountServerDetailedClient
 from ..operations.server import DeregisterLocalServer
 from ..operations.server import GetServerSession
 from ..operations.server import GetServerSessionTimeout
@@ -48,6 +50,120 @@ from ..operations.server import RegisterLocalServer
 from ..operations.server import RegisterServer
 from ..operations.server import ServerHeartbeat
 from ..operations.server import ShutdownServer
+
+
+@same_doc_as(CountServerDetailedClient)
+def count_server_detailed_client(
+    region: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get detailed count of managed servers in a region (CountServerDetailedClient)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint counts all of dedicated servers in a region managed by this service.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/count/detailed
+
+        method: GET
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsDetailedCountServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CountServerDetailedClient.create(
+        region=region,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CountServerDetailedClient)
+async def count_server_detailed_client_async(
+    region: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get detailed count of managed servers in a region (CountServerDetailedClient)
+
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required scope: social
+
+    This endpoint counts all of dedicated servers in a region managed by this service.
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
+
+    Required Scope(s):
+        - social
+
+    Properties:
+        url: /dsmcontroller/namespaces/{namespace}/servers/count/detailed
+
+        method: GET
+
+        tags: ["Server"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        region: (region) OPTIONAL str in query
+
+    Responses:
+        200: OK - ModelsDetailedCountServerResponse (servers listed)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CountServerDetailedClient.create(
+        region=region,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeregisterLocalServer)

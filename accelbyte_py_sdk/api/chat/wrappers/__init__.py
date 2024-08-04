@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Chat Service."""
 
-__version__ = "0.4.30"
+__version__ = "0.4.31"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,6 +18,10 @@ from ._config import admin_get_all_config_v1
 from ._config import admin_get_all_config_v1_async
 from ._config import admin_get_config_v1
 from ._config import admin_get_config_v1_async
+from ._config import admin_get_log_config
+from ._config import admin_get_log_config_async
+from ._config import admin_patch_update_log_config
+from ._config import admin_patch_update_log_config_async
 from ._config import admin_update_config_v1
 from ._config import admin_update_config_v1_async
 from ._config import export_config

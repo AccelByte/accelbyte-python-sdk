@@ -73,6 +73,8 @@ class AdminChatHistory(Operation):
 
         topic: (topic) OPTIONAL List[str] in query
 
+        unfiltered: (unfiltered) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelsChatMessageWithPaginationResponse (OK)
 
@@ -105,6 +107,7 @@ class AdminChatHistory(Operation):
     shard_id: str  # OPTIONAL in [query]
     start_created_at: int  # OPTIONAL in [query]
     topic: List[str]  # OPTIONAL in [query]
+    unfiltered: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -176,6 +179,8 @@ class AdminChatHistory(Operation):
             result["startCreatedAt"] = self.start_created_at
         if hasattr(self, "topic"):
             result["topic"] = self.topic
+        if hasattr(self, "unfiltered"):
+            result["unfiltered"] = self.unfiltered
         return result
 
     # endregion get_x_params methods
@@ -230,6 +235,10 @@ class AdminChatHistory(Operation):
         self.topic = value
         return self
 
+    def with_unfiltered(self, value: bool) -> AdminChatHistory:
+        self.unfiltered = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -280,6 +289,10 @@ class AdminChatHistory(Operation):
             result["topic"] = [str(i0) for i0 in self.topic]
         elif include_empty:
             result["topic"] = []
+        if hasattr(self, "unfiltered") and self.unfiltered:
+            result["unfiltered"] = bool(self.unfiltered)
+        elif include_empty:
+            result["unfiltered"] = False
         return result
 
     # endregion to methods
@@ -354,6 +367,7 @@ class AdminChatHistory(Operation):
         shard_id: Optional[str] = None,
         start_created_at: Optional[int] = None,
         topic: Optional[List[str]] = None,
+        unfiltered: Optional[bool] = None,
         **kwargs,
     ) -> AdminChatHistory:
         instance = cls()
@@ -378,6 +392,8 @@ class AdminChatHistory(Operation):
             instance.start_created_at = start_created_at
         if topic is not None:
             instance.topic = topic
+        if unfiltered is not None:
+            instance.unfiltered = unfiltered
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -431,6 +447,10 @@ class AdminChatHistory(Operation):
             instance.topic = [str(i0) for i0 in dict_["topic"]]
         elif include_empty:
             instance.topic = []
+        if "unfiltered" in dict_ and dict_["unfiltered"] is not None:
+            instance.unfiltered = bool(dict_["unfiltered"])
+        elif include_empty:
+            instance.unfiltered = False
         return instance
 
     @staticmethod
@@ -447,6 +467,7 @@ class AdminChatHistory(Operation):
             "shardId": "shard_id",
             "startCreatedAt": "start_created_at",
             "topic": "topic",
+            "unfiltered": "unfiltered",
         }
 
     @staticmethod
@@ -463,6 +484,7 @@ class AdminChatHistory(Operation):
             "shardId": False,
             "startCreatedAt": False,
             "topic": False,
+            "unfiltered": False,
         }
 
     @staticmethod

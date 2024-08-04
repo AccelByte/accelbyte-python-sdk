@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.6.0"
+__version__ = "1.8.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -68,8 +68,15 @@ from .model_update_challenge_request import (
     RotationEnum as ModelUpdateChallengeRequestRotationEnum,
 )
 from .model_update_goal_request import ModelUpdateGoalRequest
+from .model_user_progression_period_response_meta import (
+    ModelUserProgressionPeriodResponseMeta,
+)
 from .model_user_progression_response import ModelUserProgressionResponse
 from .model_user_progression_response_meta import ModelUserProgressionResponseMeta
 from .model_user_reward import ModelUserReward
+from .model_user_reward import (
+    StatusEnum as ModelUserRewardStatusEnum,
+    TypeEnum as ModelUserRewardTypeEnum,
+)
 from .models_period import ModelsPeriod
 from .response_error import ResponseError

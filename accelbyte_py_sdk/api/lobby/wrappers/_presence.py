@@ -30,9 +30,11 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import HandlersGetUsersPresenceResponse
+from ..models import ModelRequestUserPresence
 from ..models import RestapiErrorResponseBody
 
 from ..operations.presence import UsersPresenceHandlerV1
+from ..operations.presence import UsersPresenceHandlerV2
 
 
 @same_doc_as(UsersPresenceHandlerV1)
@@ -133,6 +135,112 @@ async def users_presence_handler_v1_async(
             return None, error
     request = UsersPresenceHandlerV1.create(
         user_ids=user_ids,
+        count_only=count_only,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UsersPresenceHandlerV2)
+def users_presence_handler_v2(
+    body: ModelRequestUserPresence,
+    count_only: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query users presence (UsersPresenceHandlerV2)
+
+    Query users presence with given namespace and userIds.
+
+    Properties:
+        url: /lobby/v1/public/presence/namespaces/{namespace}/users/presence
+
+        method: POST
+
+        tags: ["presence"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRequestUserPresence in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        count_only: (countOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - HandlersGetUsersPresenceResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UsersPresenceHandlerV2.create(
+        body=body,
+        count_only=count_only,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UsersPresenceHandlerV2)
+async def users_presence_handler_v2_async(
+    body: ModelRequestUserPresence,
+    count_only: Optional[bool] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query users presence (UsersPresenceHandlerV2)
+
+    Query users presence with given namespace and userIds.
+
+    Properties:
+        url: /lobby/v1/public/presence/namespaces/{namespace}/users/presence
+
+        method: POST
+
+        tags: ["presence"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelRequestUserPresence in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        count_only: (countOnly) OPTIONAL bool in query
+
+    Responses:
+        200: OK - HandlersGetUsersPresenceResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseBody (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UsersPresenceHandlerV2.create(
+        body=body,
         count_only=count_only,
         namespace=namespace,
     )

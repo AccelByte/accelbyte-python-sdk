@@ -54,6 +54,10 @@ class RetrieveUserThirdPartyPlatformTokenV3(Operation):
     - twitch
     - live
 
+
+    **Authentication:**
+    The _**userId**_ parameter should match the one in the access token.
+
     Properties:
         url: /iam/v3/oauth/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken
 

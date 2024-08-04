@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.6.0"
+__version__ = "1.8.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -40,6 +40,8 @@ from ._challenge_progression import admin_evaluate_progress
 from ._challenge_progression import admin_evaluate_progress_async
 from ._challenge_progression import evaluate_my_progress
 from ._challenge_progression import evaluate_my_progress_async
+from ._challenge_progression import public_get_past_user_progression
+from ._challenge_progression import public_get_past_user_progression_async
 from ._challenge_progression import public_get_user_progression
 from ._challenge_progression import public_get_user_progression_async
 

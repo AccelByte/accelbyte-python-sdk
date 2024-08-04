@@ -38,6 +38,8 @@ class ApiMatchTicketStatus(Model):
 
         session_id: (sessionID) REQUIRED str
 
+        is_active: (isActive) OPTIONAL bool
+
         match_pool: (matchPool) OPTIONAL str
 
         match_ticket_id: (matchTicketID) OPTIONAL str
@@ -49,6 +51,7 @@ class ApiMatchTicketStatus(Model):
 
     match_found: bool  # REQUIRED
     session_id: str  # REQUIRED
+    is_active: bool  # OPTIONAL
     match_pool: str  # OPTIONAL
     match_ticket_id: str  # OPTIONAL
     proposed_proposal: ApiProposedProposal  # OPTIONAL
@@ -63,6 +66,10 @@ class ApiMatchTicketStatus(Model):
 
     def with_session_id(self, value: str) -> ApiMatchTicketStatus:
         self.session_id = value
+        return self
+
+    def with_is_active(self, value: bool) -> ApiMatchTicketStatus:
+        self.is_active = value
         return self
 
     def with_match_pool(self, value: str) -> ApiMatchTicketStatus:
@@ -93,6 +100,10 @@ class ApiMatchTicketStatus(Model):
             result["sessionID"] = str(self.session_id)
         elif include_empty:
             result["sessionID"] = ""
+        if hasattr(self, "is_active"):
+            result["isActive"] = bool(self.is_active)
+        elif include_empty:
+            result["isActive"] = False
         if hasattr(self, "match_pool"):
             result["matchPool"] = str(self.match_pool)
         elif include_empty:
@@ -118,6 +129,7 @@ class ApiMatchTicketStatus(Model):
         cls,
         match_found: bool,
         session_id: str,
+        is_active: Optional[bool] = None,
         match_pool: Optional[str] = None,
         match_ticket_id: Optional[str] = None,
         proposed_proposal: Optional[ApiProposedProposal] = None,
@@ -126,6 +138,8 @@ class ApiMatchTicketStatus(Model):
         instance = cls()
         instance.match_found = match_found
         instance.session_id = session_id
+        if is_active is not None:
+            instance.is_active = is_active
         if match_pool is not None:
             instance.match_pool = match_pool
         if match_ticket_id is not None:
@@ -149,6 +163,10 @@ class ApiMatchTicketStatus(Model):
             instance.session_id = str(dict_["sessionID"])
         elif include_empty:
             instance.session_id = ""
+        if "isActive" in dict_ and dict_["isActive"] is not None:
+            instance.is_active = bool(dict_["isActive"])
+        elif include_empty:
+            instance.is_active = False
         if "matchPool" in dict_ and dict_["matchPool"] is not None:
             instance.match_pool = str(dict_["matchPool"])
         elif include_empty:
@@ -208,6 +226,7 @@ class ApiMatchTicketStatus(Model):
         return {
             "matchFound": "match_found",
             "sessionID": "session_id",
+            "isActive": "is_active",
             "matchPool": "match_pool",
             "matchTicketID": "match_ticket_id",
             "proposedProposal": "proposed_proposal",
@@ -218,6 +237,7 @@ class ApiMatchTicketStatus(Model):
         return {
             "matchFound": True,
             "sessionID": True,
+            "isActive": False,
             "matchPool": False,
             "matchTicketID": False,
             "proposedProposal": False,

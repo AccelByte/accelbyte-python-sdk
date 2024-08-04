@@ -39,6 +39,7 @@ from ._fleet_artifact_sampling_rules_set import fleet_artifact_sampling_rules_se
 from ._fleet_servers import fleet_servers
 from ._fleet_server_history import fleet_server_history
 from ._image_list import image_list
+from ._images_storage import images_storage
 from ._image_get import image_get
 from ._image_mark_for_deletion import image_mark_for_deletion
 from ._image_patch import image_patch
@@ -86,6 +87,7 @@ commands = [
     fleet_servers,
     fleet_server_history,
     image_list,
+    images_storage,
     image_get,
     image_mark_for_deletion,
     image_patch,

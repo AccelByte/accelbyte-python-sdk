@@ -8,10 +8,11 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.35.9"
+__version__ = "3.35.15"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .users_presence_handler_v1 import UsersPresenceHandlerV1
+from .users_presence_handler_v2 import UsersPresenceHandlerV2

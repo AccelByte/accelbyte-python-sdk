@@ -78,4 +78,4 @@ def public_platform_unlink_v3(
 
 
 public_platform_unlink_v3.operation_id = "PublicPlatformUnlinkV3"
-public_platform_unlink_v3.is_deprecated = False
+public_platform_unlink_v3.is_deprecated = True

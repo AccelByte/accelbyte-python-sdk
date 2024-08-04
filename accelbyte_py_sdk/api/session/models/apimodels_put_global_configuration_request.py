@@ -32,6 +32,8 @@ class ApimodelsPutGlobalConfigurationRequest(Model):
     """Apimodels put global configuration request (apimodels.PutGlobalConfigurationRequest)
 
     Properties:
+        metric_excluded_namespaces: (metricExcludedNamespaces) REQUIRED List[str]
+
         region_retry_mapping: (regionRetryMapping) REQUIRED Dict[str, List[str]]
 
         region_url_mapping: (regionURLMapping) REQUIRED List[str]
@@ -45,6 +47,7 @@ class ApimodelsPutGlobalConfigurationRequest(Model):
 
     # region fields
 
+    metric_excluded_namespaces: List[str]  # REQUIRED
     region_retry_mapping: Dict[str, List[str]]  # REQUIRED
     region_url_mapping: List[str]  # REQUIRED
     test_game_mode: str  # REQUIRED
@@ -54,6 +57,12 @@ class ApimodelsPutGlobalConfigurationRequest(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_metric_excluded_namespaces(
+        self, value: List[str]
+    ) -> ApimodelsPutGlobalConfigurationRequest:
+        self.metric_excluded_namespaces = value
+        return self
 
     def with_region_retry_mapping(
         self, value: Dict[str, List[str]]
@@ -89,6 +98,12 @@ class ApimodelsPutGlobalConfigurationRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "metric_excluded_namespaces"):
+            result["metricExcludedNamespaces"] = [
+                str(i0) for i0 in self.metric_excluded_namespaces
+            ]
+        elif include_empty:
+            result["metricExcludedNamespaces"] = []
         if hasattr(self, "region_retry_mapping"):
             result["regionRetryMapping"] = {
                 str(k0): [str(i1) for i1 in v0]
@@ -123,6 +138,7 @@ class ApimodelsPutGlobalConfigurationRequest(Model):
     @classmethod
     def create(
         cls,
+        metric_excluded_namespaces: List[str],
         region_retry_mapping: Dict[str, List[str]],
         region_url_mapping: List[str],
         test_game_mode: str,
@@ -131,6 +147,7 @@ class ApimodelsPutGlobalConfigurationRequest(Model):
         **kwargs,
     ) -> ApimodelsPutGlobalConfigurationRequest:
         instance = cls()
+        instance.metric_excluded_namespaces = metric_excluded_namespaces
         instance.region_retry_mapping = region_retry_mapping
         instance.region_url_mapping = region_url_mapping
         instance.test_game_mode = test_game_mode
@@ -145,6 +162,15 @@ class ApimodelsPutGlobalConfigurationRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if (
+            "metricExcludedNamespaces" in dict_
+            and dict_["metricExcludedNamespaces"] is not None
+        ):
+            instance.metric_excluded_namespaces = [
+                str(i0) for i0 in dict_["metricExcludedNamespaces"]
+            ]
+        elif include_empty:
+            instance.metric_excluded_namespaces = []
         if "regionRetryMapping" in dict_ and dict_["regionRetryMapping"] is not None:
             instance.region_retry_mapping = {
                 str(k0): [str(i1) for i1 in v0]
@@ -218,6 +244,7 @@ class ApimodelsPutGlobalConfigurationRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "metricExcludedNamespaces": "metric_excluded_namespaces",
             "regionRetryMapping": "region_retry_mapping",
             "regionURLMapping": "region_url_mapping",
             "testGameMode": "test_game_mode",
@@ -228,6 +255,7 @@ class ApimodelsPutGlobalConfigurationRequest(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "metricExcludedNamespaces": True,
             "regionRetryMapping": True,
             "regionURLMapping": True,
             "testGameMode": True,

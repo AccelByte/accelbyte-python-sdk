@@ -44,6 +44,7 @@ class PredicateTypeEnum(StrEnum):
     ENTITLEMENTPREDICATE = "EntitlementPredicate"
     SEASONPASSPREDICATE = "SeasonPassPredicate"
     SEASONTIERPREDICATE = "SeasonTierPredicate"
+    STATISTICCODEPREDICATE = "StatisticCodePredicate"
 
 
 class Predicate(Model):
@@ -51,6 +52,8 @@ class Predicate(Model):
 
     Properties:
         any_of: (anyOf) OPTIONAL int
+
+        code: (code) OPTIONAL str
 
         comparison: (comparison) OPTIONAL Union[str, ComparisonEnum]
 
@@ -66,6 +69,7 @@ class Predicate(Model):
     # region fields
 
     any_of: int  # OPTIONAL
+    code: str  # OPTIONAL
     comparison: Union[str, ComparisonEnum]  # OPTIONAL
     name: str  # OPTIONAL
     predicate_type: Union[str, PredicateTypeEnum]  # OPTIONAL
@@ -78,6 +82,10 @@ class Predicate(Model):
 
     def with_any_of(self, value: int) -> Predicate:
         self.any_of = value
+        return self
+
+    def with_code(self, value: str) -> Predicate:
+        self.code = value
         return self
 
     def with_comparison(self, value: Union[str, ComparisonEnum]) -> Predicate:
@@ -110,6 +118,10 @@ class Predicate(Model):
             result["anyOf"] = int(self.any_of)
         elif include_empty:
             result["anyOf"] = 0
+        if hasattr(self, "code"):
+            result["code"] = str(self.code)
+        elif include_empty:
+            result["code"] = ""
         if hasattr(self, "comparison"):
             result["comparison"] = str(self.comparison)
         elif include_empty:
@@ -140,6 +152,7 @@ class Predicate(Model):
     def create(
         cls,
         any_of: Optional[int] = None,
+        code: Optional[str] = None,
         comparison: Optional[Union[str, ComparisonEnum]] = None,
         name: Optional[str] = None,
         predicate_type: Optional[Union[str, PredicateTypeEnum]] = None,
@@ -150,6 +163,8 @@ class Predicate(Model):
         instance = cls()
         if any_of is not None:
             instance.any_of = any_of
+        if code is not None:
+            instance.code = code
         if comparison is not None:
             instance.comparison = comparison
         if name is not None:
@@ -171,6 +186,10 @@ class Predicate(Model):
             instance.any_of = int(dict_["anyOf"])
         elif include_empty:
             instance.any_of = 0
+        if "code" in dict_ and dict_["code"] is not None:
+            instance.code = str(dict_["code"])
+        elif include_empty:
+            instance.code = ""
         if "comparison" in dict_ and dict_["comparison"] is not None:
             instance.comparison = str(dict_["comparison"])
         elif include_empty:
@@ -231,6 +250,7 @@ class Predicate(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "anyOf": "any_of",
+            "code": "code",
             "comparison": "comparison",
             "name": "name",
             "predicateType": "predicate_type",
@@ -242,6 +262,7 @@ class Predicate(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "anyOf": False,
+            "code": False,
             "comparison": False,
             "name": False,
             "predicateType": False,
@@ -266,6 +287,7 @@ class Predicate(Model):
                 "EntitlementPredicate",
                 "SeasonPassPredicate",
                 "SeasonTierPredicate",
+                "StatisticCodePredicate",
             ],
         }
 

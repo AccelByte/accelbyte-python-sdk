@@ -92,6 +92,13 @@ def admin_create_challenge(
       * activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
       * assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED)
       * goalsVisibility: describe whether users can see all goals under challenge, or only active goal in one rotation period only. (SHOWALL|PERIODONLY)
+      * resetConfig: describe when rotation reset will happen (optional).
+        * resetTime: Reset time must follow hours:minutes in 24 hours format (e.g. 01:30, 23:15) and in UTC timezone. Default to "00:00"
+        * resetDay: Reset Day follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday). Default to 1 in WEEKLY rotation.
+        * resetDate: Reset Date must be a number 1 - 31. Default to 1 in MONTHLY rotation.
+      * randomizedPerRotation:
+        * true: each goal will be randomly assigned to multiple periods
+        * false: a goal will only be assigned to one period
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
@@ -166,6 +173,13 @@ async def admin_create_challenge_async(
       * activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
       * assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED)
       * goalsVisibility: describe whether users can see all goals under challenge, or only active goal in one rotation period only. (SHOWALL|PERIODONLY)
+      * resetConfig: describe when rotation reset will happen (optional).
+        * resetTime: Reset time must follow hours:minutes in 24 hours format (e.g. 01:30, 23:15) and in UTC timezone. Default to "00:00"
+        * resetDay: Reset Day follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday). Default to 1 in WEEKLY rotation.
+        * resetDate: Reset Date must be a number 1 - 31. Default to 1 in MONTHLY rotation.
+      * randomizedPerRotation:
+        * true: each goal will be randomly assigned to multiple periods
+        * false: a goal will only be assigned to one period
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
@@ -812,7 +826,7 @@ def admin_randomize_challenge(
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 
-    This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED.
+    This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED and RandomizePerRotation assigned with true.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
@@ -836,6 +850,8 @@ def admin_randomize_challenge(
 
     Responses:
         200: OK - List[ModelSchedule] (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -867,7 +883,7 @@ async def admin_randomize_challenge_async(
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 
-    This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED.
+    This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED and RandomizePerRotation assigned with true.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
@@ -891,6 +907,8 @@ async def admin_randomize_challenge_async(
 
     Responses:
         200: OK - List[ModelSchedule] (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -940,6 +958,13 @@ def admin_update_challenge(
       * activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
       * assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED)
       * goalsVisibility: describe whether users can see all goals under challenge, or only active goal in one rotation period only. (SHOWALL|PERIODONLY)
+      * resetConfig: describe when rotation reset will happen (optional).
+        * resetTime: Reset time must follow hours:minutes in 24 hours format (e.g. 01:30, 23:15) and in UTC timezone. Default to "00:00"
+        * resetDay: Reset Day follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday). Default to 1 in WEEKLY rotation.
+        * resetDate: Reset Date must be a number 1 - 31. Default to 1 in MONTHLY rotation.
+      * randomizedPerRotation:
+        * true: each goal will be randomly assigned to multiple periods
+        * false: a goal will only be assigned to one period
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
@@ -1017,6 +1042,13 @@ async def admin_update_challenge_async(
       * activeGoalsPerRotation: number of goals per rotation (currently only applicable for RANDOMIZE assignment)
       * assignmentRule: describe how the goals will be assigned and scheduled to users. (FIXED|RANDOMIZED|UNSCHEDULED)
       * goalsVisibility: describe whether users can see all goals under challenge, or only active goal in one rotation period only. (SHOWALL|PERIODONLY)
+      * resetConfig: describe when rotation reset will happen (optional).
+        * resetTime: Reset time must follow hours:minutes in 24 hours format (e.g. 01:30, 23:15) and in UTC timezone. Default to "00:00"
+        * resetDay: Reset Day follows the ISO-8601 standard, from 1 (Monday) to 7 (Sunday). Default to 1 in WEEKLY rotation.
+        * resetDate: Reset Date must be a number 1 - 31. Default to 1 in MONTHLY rotation.
+      * randomizedPerRotation:
+        * true: each goal will be randomly assigned to multiple periods
+        * false: a goal will only be assigned to one period
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]

@@ -27,7 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_image_record import ModelsImageRecord
+from ..models.models_image_record_response import ModelsImageRecordResponse
 from ..models.models_paging_cursor import ModelsPagingCursor
 
 
@@ -35,21 +35,23 @@ class ModelsListImageResponse(Model):
     """Models list image response (models.ListImageResponse)
 
     Properties:
-        images: (images) REQUIRED List[ModelsImageRecord]
+        images: (images) REQUIRED List[ModelsImageRecordResponse]
 
         paging: (paging) REQUIRED ModelsPagingCursor
     """
 
     # region fields
 
-    images: List[ModelsImageRecord]  # REQUIRED
+    images: List[ModelsImageRecordResponse]  # REQUIRED
     paging: ModelsPagingCursor  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_images(self, value: List[ModelsImageRecord]) -> ModelsListImageResponse:
+    def with_images(
+        self, value: List[ModelsImageRecordResponse]
+    ) -> ModelsListImageResponse:
         self.images = value
         return self
 
@@ -81,7 +83,10 @@ class ModelsListImageResponse(Model):
 
     @classmethod
     def create(
-        cls, images: List[ModelsImageRecord], paging: ModelsPagingCursor, **kwargs
+        cls,
+        images: List[ModelsImageRecordResponse],
+        paging: ModelsPagingCursor,
+        **kwargs,
     ) -> ModelsListImageResponse:
         instance = cls()
         instance.images = images
@@ -97,7 +102,9 @@ class ModelsListImageResponse(Model):
             return instance
         if "images" in dict_ and dict_["images"] is not None:
             instance.images = [
-                ModelsImageRecord.create_from_dict(i0, include_empty=include_empty)
+                ModelsImageRecordResponse.create_from_dict(
+                    i0, include_empty=include_empty
+                )
                 for i0 in dict_["images"]
             ]
         elif include_empty:

@@ -31,13 +31,14 @@ from ..api.dslogmanager.models import ModelsDownloadLogsRequest
 from ..api.dslogmanager.models import ModelsListTerminatedServersResponse
 from ..api.dslogmanager.models import ModelsLogFileStatus
 from ..api.dslogmanager.models import ModelsMatchResult
-from ..api.dslogmanager.models import ModelsNotifPayloadServerStatusChange
+from ..api.dslogmanager.models import ModelsMetadataServersRequest
+from ..api.dslogmanager.models import ModelsNotifPayloadServerStatusChangeResponse
 from ..api.dslogmanager.models import ModelsPagingCursor
 from ..api.dslogmanager.models import ModelsRequestMatchMember
 from ..api.dslogmanager.models import ModelsRequestMatchParty
 from ..api.dslogmanager.models import ModelsRequestMatchingAlly
-from ..api.dslogmanager.models import ModelsServer
 from ..api.dslogmanager.models import ModelsServerLogs
+from ..api.dslogmanager.models import ModelsServerResponse
 from ..api.dslogmanager.models import ModelsStatusHistory
 from ..api.dslogmanager.models import ResponseError
 
@@ -81,7 +82,9 @@ def create_models_list_terminated_servers_response_example() -> (
     ModelsListTerminatedServersResponse
 ):
     instance = ModelsListTerminatedServersResponse()
-    instance.data = [create_models_notif_payload_server_status_change_example()]
+    instance.data = [
+        create_models_notif_payload_server_status_change_response_example()
+    ]
     instance.paging = create_models_paging_cursor_example()
     return instance
 
@@ -101,12 +104,18 @@ def create_models_match_result_example() -> ModelsMatchResult:
     return instance
 
 
-def create_models_notif_payload_server_status_change_example() -> (
-    ModelsNotifPayloadServerStatusChange
+def create_models_metadata_servers_request_example() -> ModelsMetadataServersRequest:
+    instance = ModelsMetadataServersRequest()
+    instance.pod_names = [randomize()]
+    return instance
+
+
+def create_models_notif_payload_server_status_change_response_example() -> (
+    ModelsNotifPayloadServerStatusChangeResponse
 ):
-    instance = ModelsNotifPayloadServerStatusChange()
+    instance = ModelsNotifPayloadServerStatusChangeResponse()
     instance.match = create_models_match_result_example()
-    instance.server = create_models_server_example()
+    instance.server = create_models_server_response_example()
     return instance
 
 
@@ -139,8 +148,15 @@ def create_models_request_matching_ally_example() -> ModelsRequestMatchingAlly:
     return instance
 
 
-def create_models_server_example() -> ModelsServer:
-    instance = ModelsServer()
+def create_models_server_logs_example() -> ModelsServerLogs:
+    instance = ModelsServerLogs()
+    instance.std_err_logs = randomize()
+    instance.std_out_logs = randomize()
+    return instance
+
+
+def create_models_server_response_example() -> ModelsServerResponse:
+    instance = ModelsServerResponse()
     instance.allocation_id = randomize()
     instance.cpu_limit = randomize("int", min_val=1, max_val=1000)
     instance.deployment = randomize()
@@ -165,15 +181,11 @@ def create_models_server_example() -> ModelsServer:
     instance.termination_reason = randomize()
     instance.allocation_events = [create_models_allocation_event_example()]
     instance.alternate_ips = [randomize()]
+    instance.artifact_path = randomize()
+    instance.is_core_dump_enabled = randomize("bool")
     instance.ports = {}
     instance.status_history = [create_models_status_history_example()]
-    return instance
-
-
-def create_models_server_logs_example() -> ModelsServerLogs:
-    instance = ModelsServerLogs()
-    instance.std_err_logs = randomize()
-    instance.std_out_logs = randomize()
+    instance.ulimit_file_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

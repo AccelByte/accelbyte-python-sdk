@@ -58,6 +58,8 @@ class PublicRequestDataRetrieval(Operation):
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in form_data
+
         password: (password) REQUIRED str in form_data
 
         namespace: (namespace) REQUIRED str in path
@@ -85,6 +87,7 @@ class PublicRequestDataRetrieval(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    language_tag: str  # OPTIONAL in [form_data]
     password: str  # REQUIRED in [form_data]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -133,6 +136,8 @@ class PublicRequestDataRetrieval(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
+        if hasattr(self, "language_tag"):
+            result["languageTag"] = self.language_tag
         if hasattr(self, "password"):
             result["password"] = self.password
         return result
@@ -153,6 +158,10 @@ class PublicRequestDataRetrieval(Operation):
 
     # region with_x methods
 
+    def with_language_tag(self, value: str) -> PublicRequestDataRetrieval:
+        self.language_tag = value
+        return self
+
     def with_password(self, value: str) -> PublicRequestDataRetrieval:
         self.password = value
         return self
@@ -171,6 +180,10 @@ class PublicRequestDataRetrieval(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "language_tag") and self.language_tag:
+            result["languageTag"] = str(self.language_tag)
+        elif include_empty:
+            result["languageTag"] = ""
         if hasattr(self, "password") and self.password:
             result["password"] = str(self.password)
         elif include_empty:
@@ -242,12 +255,19 @@ class PublicRequestDataRetrieval(Operation):
 
     @classmethod
     def create(
-        cls, password: str, namespace: str, user_id: str, **kwargs
+        cls,
+        password: str,
+        namespace: str,
+        user_id: str,
+        language_tag: Optional[str] = None,
+        **kwargs,
     ) -> PublicRequestDataRetrieval:
         instance = cls()
         instance.password = password
         instance.namespace = namespace
         instance.user_id = user_id
+        if language_tag is not None:
+            instance.language_tag = language_tag
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -257,6 +277,10 @@ class PublicRequestDataRetrieval(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> PublicRequestDataRetrieval:
         instance = cls()
+        if "languageTag" in dict_ and dict_["languageTag"] is not None:
+            instance.language_tag = str(dict_["languageTag"])
+        elif include_empty:
+            instance.language_tag = ""
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
@@ -274,6 +298,7 @@ class PublicRequestDataRetrieval(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "languageTag": "language_tag",
             "password": "password",
             "namespace": "namespace",
             "userId": "user_id",
@@ -282,6 +307,7 @@ class PublicRequestDataRetrieval(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "languageTag": False,
             "password": True,
             "namespace": True,
             "userId": True,

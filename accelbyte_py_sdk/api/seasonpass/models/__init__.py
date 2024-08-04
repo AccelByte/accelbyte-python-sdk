@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Seasonpass Service."""
 
-__version__ = "1.22.4"
+__version__ = "1.22.5"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -42,6 +42,7 @@ from .paging import Paging
 from .pass_create import PassCreate
 from .pass_info import PassInfo
 from .pass_update import PassUpdate
+from .permission import Permission
 from .reason_tags_result import ReasonTagsResult
 from .reward_create import RewardCreate
 from .reward_create import TypeEnum as RewardCreateTypeEnum

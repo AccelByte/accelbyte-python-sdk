@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Seasonpass Service Index (1.22.4)
+# AccelByte Gaming Services Seasonpass Service Index (1.22.5)
 
 
 ## Operations
@@ -97,6 +97,7 @@
 | PassCreate | [PassCreate](../../accelbyte_py_sdk/api/seasonpass/models/pass_create.py) |
 | PassInfo | [PassInfo](../../accelbyte_py_sdk/api/seasonpass/models/pass_info.py) |
 | PassUpdate | [PassUpdate](../../accelbyte_py_sdk/api/seasonpass/models/pass_update.py) |
+| Permission | [Permission](../../accelbyte_py_sdk/api/seasonpass/models/permission.py) |
 | ReasonTagsResult | [ReasonTagsResult](../../accelbyte_py_sdk/api/seasonpass/models/reason_tags_result.py) |
 | RewardCreate | [RewardCreate](../../accelbyte_py_sdk/api/seasonpass/models/reward_create.py) |
 | RewardCurrency | [RewardCurrency](../../accelbyte_py_sdk/api/seasonpass/models/reward_currency.py) |

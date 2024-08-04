@@ -45,6 +45,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
         client_id: (ClientId) REQUIRED str
 
+        enable_server_license_validation: (EnableServerLicenseValidation) REQUIRED bool
+
         environment: (Environment) REQUIRED str
 
         federation_metadata_url: (FederationMetadataURL) REQUIRED str
@@ -79,6 +81,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
         authorization_endpoint: (AuthorizationEndpoint) OPTIONAL str
 
+        include_puid: (IncludePUID) OPTIONAL bool
+
         logo_url: (LogoURL) OPTIONAL str
 
         netflix_certificates: (NetflixCertificates) OPTIONAL AccountcommonNetflixCertificates
@@ -103,6 +107,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     aws_cognito_region: str  # REQUIRED
     aws_cognito_user_pool: str  # REQUIRED
     client_id: str  # REQUIRED
+    enable_server_license_validation: bool  # REQUIRED
     environment: str  # REQUIRED
     federation_metadata_url: str  # REQUIRED
     generic_oauth_flow: bool  # REQUIRED
@@ -120,6 +125,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     token_authentication_type: str  # REQUIRED
     allowed_clients: List[str]  # OPTIONAL
     authorization_endpoint: str  # OPTIONAL
+    include_puid: bool  # OPTIONAL
     logo_url: str  # OPTIONAL
     netflix_certificates: AccountcommonNetflixCertificates  # OPTIONAL
     registered_domains: List[AccountcommonRegisteredDomain]  # OPTIONAL
@@ -157,6 +163,12 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self, value: str
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.client_id = value
+        return self
+
+    def with_enable_server_license_validation(
+        self, value: bool
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.enable_server_license_validation = value
         return self
 
     def with_environment(
@@ -255,6 +267,12 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.authorization_endpoint = value
         return self
 
+    def with_include_puid(
+        self, value: bool
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.include_puid = value
+        return self
+
     def with_logo_url(
         self, value: str
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
@@ -329,6 +347,12 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["ClientId"] = str(self.client_id)
         elif include_empty:
             result["ClientId"] = ""
+        if hasattr(self, "enable_server_license_validation"):
+            result["EnableServerLicenseValidation"] = bool(
+                self.enable_server_license_validation
+            )
+        elif include_empty:
+            result["EnableServerLicenseValidation"] = False
         if hasattr(self, "environment"):
             result["Environment"] = str(self.environment)
         elif include_empty:
@@ -397,6 +421,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             result["AuthorizationEndpoint"] = str(self.authorization_endpoint)
         elif include_empty:
             result["AuthorizationEndpoint"] = ""
+        if hasattr(self, "include_puid"):
+            result["IncludePUID"] = bool(self.include_puid)
+        elif include_empty:
+            result["IncludePUID"] = False
         if hasattr(self, "logo_url"):
             result["LogoURL"] = str(self.logo_url)
         elif include_empty:
@@ -450,6 +478,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         aws_cognito_region: str,
         aws_cognito_user_pool: str,
         client_id: str,
+        enable_server_license_validation: bool,
         environment: str,
         federation_metadata_url: str,
         generic_oauth_flow: bool,
@@ -467,6 +496,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         token_authentication_type: str,
         allowed_clients: Optional[List[str]] = None,
         authorization_endpoint: Optional[str] = None,
+        include_puid: Optional[bool] = None,
         logo_url: Optional[str] = None,
         netflix_certificates: Optional[AccountcommonNetflixCertificates] = None,
         registered_domains: Optional[List[AccountcommonRegisteredDomain]] = None,
@@ -483,6 +513,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         instance.aws_cognito_region = aws_cognito_region
         instance.aws_cognito_user_pool = aws_cognito_user_pool
         instance.client_id = client_id
+        instance.enable_server_license_validation = enable_server_license_validation
         instance.environment = environment
         instance.federation_metadata_url = federation_metadata_url
         instance.generic_oauth_flow = generic_oauth_flow
@@ -502,6 +533,8 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.allowed_clients = allowed_clients
         if authorization_endpoint is not None:
             instance.authorization_endpoint = authorization_endpoint
+        if include_puid is not None:
+            instance.include_puid = include_puid
         if logo_url is not None:
             instance.logo_url = logo_url
         if netflix_certificates is not None:
@@ -547,6 +580,15 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.client_id = str(dict_["ClientId"])
         elif include_empty:
             instance.client_id = ""
+        if (
+            "EnableServerLicenseValidation" in dict_
+            and dict_["EnableServerLicenseValidation"] is not None
+        ):
+            instance.enable_server_license_validation = bool(
+                dict_["EnableServerLicenseValidation"]
+            )
+        elif include_empty:
+            instance.enable_server_license_validation = False
         if "Environment" in dict_ and dict_["Environment"] is not None:
             instance.environment = str(dict_["Environment"])
         elif include_empty:
@@ -624,6 +666,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.authorization_endpoint = str(dict_["AuthorizationEndpoint"])
         elif include_empty:
             instance.authorization_endpoint = ""
+        if "IncludePUID" in dict_ and dict_["IncludePUID"] is not None:
+            instance.include_puid = bool(dict_["IncludePUID"])
+        elif include_empty:
+            instance.include_puid = False
         if "LogoURL" in dict_ and dict_["LogoURL"] is not None:
             instance.logo_url = str(dict_["LogoURL"])
         elif include_empty:
@@ -715,6 +761,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "AWSCognitoRegion": "aws_cognito_region",
             "AWSCognitoUserPool": "aws_cognito_user_pool",
             "ClientId": "client_id",
+            "EnableServerLicenseValidation": "enable_server_license_validation",
             "Environment": "environment",
             "FederationMetadataURL": "federation_metadata_url",
             "GenericOauthFlow": "generic_oauth_flow",
@@ -732,6 +779,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "TokenAuthenticationType": "token_authentication_type",
             "AllowedClients": "allowed_clients",
             "AuthorizationEndpoint": "authorization_endpoint",
+            "IncludePUID": "include_puid",
             "LogoURL": "logo_url",
             "NetflixCertificates": "netflix_certificates",
             "registeredDomains": "registered_domains",
@@ -750,6 +798,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "AWSCognitoRegion": True,
             "AWSCognitoUserPool": True,
             "ClientId": True,
+            "EnableServerLicenseValidation": True,
             "Environment": True,
             "FederationMetadataURL": True,
             "GenericOauthFlow": True,
@@ -767,6 +816,7 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "TokenAuthenticationType": True,
             "AllowedClients": False,
             "AuthorizationEndpoint": False,
+            "IncludePUID": False,
             "LogoURL": False,
             "NetflixCertificates": False,
             "registeredDomains": False,

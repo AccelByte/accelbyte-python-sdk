@@ -33,6 +33,12 @@ from .....core import StrEnum
 from ...models import UserDLCRecord
 
 
+class StatusEnum(StrEnum):
+    FULFILLED = "FULFILLED"
+    REVOKED = "REVOKED"
+    REVOKE_FAILED = "REVOKE_FAILED"
+
+
 class TypeEnum(StrEnum):
     EPICGAMES = "EPICGAMES"
     OCULUS = "OCULUS"
@@ -45,6 +51,7 @@ class GetUserDLC(Operation):
     """Get user dlc records (getUserDLC)
 
     Get user dlc records.
+    Note: includeAllNamespaces means this endpoint will return user dlcs from all namespace, example scenario isadmin may need to check the user dlcs before unlink a 3rd party account, so the user dlcs should be from all namespaces because unlinking is a platform level action
     Other detail info:
 
       * Returns : user dlc
@@ -66,6 +73,10 @@ class GetUserDLC(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        include_all_namespaces: (includeAllNamespaces) OPTIONAL bool in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
+
         type_: (type) OPTIONAL Union[str, TypeEnum] in query
 
     Responses:
@@ -83,6 +94,8 @@ class GetUserDLC(Operation):
 
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    include_all_namespaces: bool  # OPTIONAL in [query]
+    status: Union[str, StatusEnum]  # OPTIONAL in [query]
     type_: Union[str, TypeEnum]  # OPTIONAL in [query]
 
     # endregion fields
@@ -137,6 +150,10 @@ class GetUserDLC(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "include_all_namespaces"):
+            result["includeAllNamespaces"] = self.include_all_namespaces
+        if hasattr(self, "status"):
+            result["status"] = self.status
         if hasattr(self, "type_"):
             result["type"] = self.type_
         return result
@@ -157,6 +174,14 @@ class GetUserDLC(Operation):
         self.user_id = value
         return self
 
+    def with_include_all_namespaces(self, value: bool) -> GetUserDLC:
+        self.include_all_namespaces = value
+        return self
+
+    def with_status(self, value: Union[str, StatusEnum]) -> GetUserDLC:
+        self.status = value
+        return self
+
     def with_type_(self, value: Union[str, TypeEnum]) -> GetUserDLC:
         self.type_ = value
         return self
@@ -175,6 +200,14 @@ class GetUserDLC(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "include_all_namespaces") and self.include_all_namespaces:
+            result["includeAllNamespaces"] = bool(self.include_all_namespaces)
+        elif include_empty:
+            result["includeAllNamespaces"] = False
+        if hasattr(self, "status") and self.status:
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "type_") and self.type_:
             result["type"] = str(self.type_)
         elif include_empty:
@@ -222,12 +255,18 @@ class GetUserDLC(Operation):
         cls,
         namespace: str,
         user_id: str,
+        include_all_namespaces: Optional[bool] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         type_: Optional[Union[str, TypeEnum]] = None,
         **kwargs,
     ) -> GetUserDLC:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
+        if include_all_namespaces is not None:
+            instance.include_all_namespaces = include_all_namespaces
+        if status is not None:
+            instance.status = status
         if type_ is not None:
             instance.type_ = type_
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -245,6 +284,17 @@ class GetUserDLC(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if (
+            "includeAllNamespaces" in dict_
+            and dict_["includeAllNamespaces"] is not None
+        ):
+            instance.include_all_namespaces = bool(dict_["includeAllNamespaces"])
+        elif include_empty:
+            instance.include_all_namespaces = False
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = Union[str, StatusEnum]()
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
@@ -256,6 +306,8 @@ class GetUserDLC(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
+            "includeAllNamespaces": "include_all_namespaces",
+            "status": "status",
             "type": "type_",
         }
 
@@ -264,12 +316,15 @@ class GetUserDLC(Operation):
         return {
             "namespace": True,
             "userId": True,
+            "includeAllNamespaces": False,
+            "status": False,
             "type": False,
         }
 
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "status": ["FULFILLED", "REVOKED", "REVOKE_FAILED"],  # in query
             "type": ["EPICGAMES", "OCULUS", "PSN", "STEAM", "XBOX"],  # in query
         }
 

@@ -31,7 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.dsmc import get_server as get_server_internal
-from accelbyte_py_sdk.api.dsmc.models import ModelsServer
+from accelbyte_py_sdk.api.dsmc.models import ModelsServerDetailsResponse
 from accelbyte_py_sdk.api.dsmc.models import ResponseError
 
 

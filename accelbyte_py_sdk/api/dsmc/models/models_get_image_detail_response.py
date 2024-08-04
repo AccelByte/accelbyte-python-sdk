@@ -27,25 +27,27 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_image_record import ModelsImageRecord
+from ..models.models_image_record_response import ModelsImageRecordResponse
 
 
 class ModelsGetImageDetailResponse(Model):
     """Models get image detail response (models.GetImageDetailResponse)
 
     Properties:
-        data: (data) REQUIRED ModelsImageRecord
+        data: (data) REQUIRED ModelsImageRecordResponse
     """
 
     # region fields
 
-    data: ModelsImageRecord  # REQUIRED
+    data: ModelsImageRecordResponse  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_data(self, value: ModelsImageRecord) -> ModelsGetImageDetailResponse:
+    def with_data(
+        self, value: ModelsImageRecordResponse
+    ) -> ModelsGetImageDetailResponse:
         self.data = value
         return self
 
@@ -58,7 +60,7 @@ class ModelsGetImageDetailResponse(Model):
         if hasattr(self, "data"):
             result["data"] = self.data.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["data"] = ModelsImageRecord()
+            result["data"] = ModelsImageRecordResponse()
         return result
 
     # endregion to methods
@@ -66,7 +68,9 @@ class ModelsGetImageDetailResponse(Model):
     # region static methods
 
     @classmethod
-    def create(cls, data: ModelsImageRecord, **kwargs) -> ModelsGetImageDetailResponse:
+    def create(
+        cls, data: ModelsImageRecordResponse, **kwargs
+    ) -> ModelsGetImageDetailResponse:
         instance = cls()
         instance.data = data
         return instance
@@ -79,11 +83,11 @@ class ModelsGetImageDetailResponse(Model):
         if not dict_:
             return instance
         if "data" in dict_ and dict_["data"] is not None:
-            instance.data = ModelsImageRecord.create_from_dict(
+            instance.data = ModelsImageRecordResponse.create_from_dict(
                 dict_["data"], include_empty=include_empty
             )
         elif include_empty:
-            instance.data = ModelsImageRecord()
+            instance.data = ModelsImageRecordResponse()
         return instance
 
     @classmethod

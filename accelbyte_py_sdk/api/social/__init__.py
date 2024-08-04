@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Statistics Service."""
 
-__version__ = "2.15.0"
+__version__ = "2.17.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -141,6 +141,8 @@ from .wrappers import bulk_fetch_stat_items
 from .wrappers import bulk_fetch_stat_items_async
 from .wrappers import bulk_fetch_stat_items_1
 from .wrappers import bulk_fetch_stat_items_1_async
+from .wrappers import bulk_get_or_default_by_user_id
+from .wrappers import bulk_get_or_default_by_user_id_async
 from .wrappers import bulk_inc_user_stat_item
 from .wrappers import bulk_inc_user_stat_item_async
 from .wrappers import bulk_inc_user_stat_item_1

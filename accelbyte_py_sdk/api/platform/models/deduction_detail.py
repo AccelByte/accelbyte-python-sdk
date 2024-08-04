@@ -33,6 +33,7 @@ from ..models.discount_code_deduction_detail import DiscountCodeDeductionDetail
 
 class DeductionTypeEnum(StrEnum):
     DISCOUNT_CODE = "DISCOUNT_CODE"
+    PAYMENT_DISCOUNT_CODE = "PAYMENT_DISCOUNT_CODE"
 
 
 class DeductionDetail(Model):
@@ -42,12 +43,15 @@ class DeductionDetail(Model):
         deduction_type: (deductionType) OPTIONAL Union[str, DeductionTypeEnum]
 
         discount_code_deduction_detail: (discountCodeDeductionDetail) OPTIONAL DiscountCodeDeductionDetail
+
+        discount_provider_name: (discountProviderName) OPTIONAL str
     """
 
     # region fields
 
     deduction_type: Union[str, DeductionTypeEnum]  # OPTIONAL
     discount_code_deduction_detail: DiscountCodeDeductionDetail  # OPTIONAL
+    discount_provider_name: str  # OPTIONAL
 
     # endregion fields
 
@@ -63,6 +67,10 @@ class DeductionDetail(Model):
         self, value: DiscountCodeDeductionDetail
     ) -> DeductionDetail:
         self.discount_code_deduction_detail = value
+        return self
+
+    def with_discount_provider_name(self, value: str) -> DeductionDetail:
+        self.discount_provider_name = value
         return self
 
     # endregion with_x methods
@@ -81,6 +89,10 @@ class DeductionDetail(Model):
             ] = self.discount_code_deduction_detail.to_dict(include_empty=include_empty)
         elif include_empty:
             result["discountCodeDeductionDetail"] = DiscountCodeDeductionDetail()
+        if hasattr(self, "discount_provider_name"):
+            result["discountProviderName"] = str(self.discount_provider_name)
+        elif include_empty:
+            result["discountProviderName"] = ""
         return result
 
     # endregion to methods
@@ -92,6 +104,7 @@ class DeductionDetail(Model):
         cls,
         deduction_type: Optional[Union[str, DeductionTypeEnum]] = None,
         discount_code_deduction_detail: Optional[DiscountCodeDeductionDetail] = None,
+        discount_provider_name: Optional[str] = None,
         **kwargs,
     ) -> DeductionDetail:
         instance = cls()
@@ -99,6 +112,8 @@ class DeductionDetail(Model):
             instance.deduction_type = deduction_type
         if discount_code_deduction_detail is not None:
             instance.discount_code_deduction_detail = discount_code_deduction_detail
+        if discount_provider_name is not None:
+            instance.discount_provider_name = discount_provider_name
         return instance
 
     @classmethod
@@ -123,6 +138,13 @@ class DeductionDetail(Model):
             )
         elif include_empty:
             instance.discount_code_deduction_detail = DiscountCodeDeductionDetail()
+        if (
+            "discountProviderName" in dict_
+            and dict_["discountProviderName"] is not None
+        ):
+            instance.discount_provider_name = str(dict_["discountProviderName"])
+        elif include_empty:
+            instance.discount_provider_name = ""
         return instance
 
     @classmethod
@@ -164,6 +186,7 @@ class DeductionDetail(Model):
         return {
             "deductionType": "deduction_type",
             "discountCodeDeductionDetail": "discount_code_deduction_detail",
+            "discountProviderName": "discount_provider_name",
         }
 
     @staticmethod
@@ -171,12 +194,13 @@ class DeductionDetail(Model):
         return {
             "deductionType": False,
             "discountCodeDeductionDetail": False,
+            "discountProviderName": False,
         }
 
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "deductionType": ["DISCOUNT_CODE"],
+            "deductionType": ["DISCOUNT_CODE", "PAYMENT_DISCOUNT_CODE"],
         }
 
     # endregion static methods

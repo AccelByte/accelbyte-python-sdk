@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.gdpr.models import ResponseError
 @click.command()
 @click.argument("password", type=str)
 @click.argument("user_id", type=str)
+@click.option("--language_tag", "language_tag", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.gdpr.models import ResponseError
 def public_submit_user_account_deletion_request(
     password: str,
     user_id: str,
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -63,6 +65,7 @@ def public_submit_user_account_deletion_request(
     result, error = public_submit_user_account_deletion_request_internal(
         password=password,
         user_id=user_id,
+        language_tag=language_tag,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

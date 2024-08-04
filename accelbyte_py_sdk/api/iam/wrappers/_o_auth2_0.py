@@ -1135,6 +1135,10 @@ def retrieve_user_third_party_platform_token_v3(
     - twitch
     - live
 
+
+    **Authentication:**
+    The _**userId**_ parameter should match the one in the access token.
+
     Properties:
         url: /iam/v3/oauth/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken
 
@@ -1202,6 +1206,10 @@ async def retrieve_user_third_party_platform_token_v3_async(
     - snapchat
     - twitch
     - live
+
+
+    **Authentication:**
+    The _**userId**_ parameter should match the one in the access token.
 
     Properties:
         url: /iam/v3/oauth/namespaces/{namespace}/users/{userId}/platforms/{platformId}/platformToken

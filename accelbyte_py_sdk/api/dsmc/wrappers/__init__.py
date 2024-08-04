@@ -8,18 +8,22 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.4.7"
+__version__ = "6.8.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from ._admin import add_buffer
+from ._admin import add_buffer_async
 from ._admin import count_server
 from ._admin import count_server_async
 from ._admin import count_server_detailed
 from ._admin import count_server_detailed_async
 from ._admin import count_session
 from ._admin import count_session_async
+from ._admin import create_worker_config
+from ._admin import create_worker_config_async
 from ._admin import delete_local_server
 from ._admin import delete_local_server_async
 from ._admin import delete_server
@@ -28,12 +32,20 @@ from ._admin import delete_session
 from ._admin import delete_session_async
 from ._admin import get_server
 from ._admin import get_server_async
+from ._admin import get_worker_config
+from ._admin import get_worker_config_async
 from ._admin import list_local_server
 from ._admin import list_local_server_async
 from ._admin import list_server
 from ._admin import list_server_async
 from ._admin import list_session
 from ._admin import list_session_async
+from ._admin import run_ghost_cleaner_request_handler
+from ._admin import run_ghost_cleaner_request_handler_async
+from ._admin import run_zombie_cleaner_request_handler
+from ._admin import run_zombie_cleaner_request_handler_async
+from ._admin import update_worker_config
+from ._admin import update_worker_config_async
 
 from ._config import add_port
 from ._config import add_port_async
@@ -70,6 +82,8 @@ from ._deployment_config import create_override_region_override
 from ._deployment_config import create_override_region_override_async
 from ._deployment_config import create_root_region_override
 from ._deployment_config import create_root_region_override_async
+from ._deployment_config import delete_creating_server_count_queue
+from ._deployment_config import delete_creating_server_count_queue_async
 from ._deployment_config import delete_deployment
 from ._deployment_config import delete_deployment_async
 from ._deployment_config import delete_deployment_client
@@ -86,6 +100,8 @@ from ._deployment_config import get_all_deployment_client
 from ._deployment_config import get_all_deployment_client_async
 from ._deployment_config import get_deployment
 from ._deployment_config import get_deployment_async
+from ._deployment_config import get_deployment_client
+from ._deployment_config import get_deployment_client_async
 from ._deployment_config import update_deployment
 from ._deployment_config import update_deployment_async
 from ._deployment_config import update_deployment_override
@@ -108,8 +124,6 @@ from ._image_config import delete_image
 from ._image_config import delete_image_async
 from ._image_config import delete_image_patch
 from ._image_config import delete_image_patch_async
-from ._image_config import export_images
-from ._image_config import export_images_async
 from ._image_config import get_image_detail
 from ._image_config import get_image_detail_async
 from ._image_config import get_image_limit
@@ -124,8 +138,6 @@ from ._image_config import image_detail_client
 from ._image_config import image_detail_client_async
 from ._image_config import image_limit_client
 from ._image_config import image_limit_client_async
-from ._image_config import import_images
-from ._image_config import import_images_async
 from ._image_config import list_images
 from ._image_config import list_images_async
 from ._image_config import list_images_client
@@ -159,6 +171,8 @@ from ._public import list_providers_async
 from ._public import list_providers_by_region
 from ._public import list_providers_by_region_async
 
+from ._server import count_server_detailed_client
+from ._server import count_server_detailed_client_async
 from ._server import deregister_local_server
 from ._server import deregister_local_server_async
 from ._server import get_server_session

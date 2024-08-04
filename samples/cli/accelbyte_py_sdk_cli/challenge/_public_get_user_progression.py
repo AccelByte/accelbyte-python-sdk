@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 
 @click.command()
 @click.argument("challenge_code", type=str)
+@click.option("--date_time", "date_time", type=str)
 @click.option("--goal_code", "goal_code", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
@@ -50,6 +51,7 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 @click.option("--doc", type=bool)
 def public_get_user_progression(
     challenge_code: str,
+    date_time: Optional[str] = None,
     goal_code: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -75,6 +77,7 @@ def public_get_user_progression(
             raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = public_get_user_progression_internal(
         challenge_code=challenge_code,
+        date_time=date_time,
         goal_code=goal_code,
         limit=limit,
         offset=offset,

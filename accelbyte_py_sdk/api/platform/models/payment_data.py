@@ -32,6 +32,10 @@ class PaymentData(Model):
     """Payment data (PaymentData)
 
     Properties:
+        discount_amount: (discountAmount) OPTIONAL int
+
+        discount_code: (discountCode) OPTIONAL str
+
         subtotal_price: (subtotalPrice) OPTIONAL int
 
         tax: (tax) OPTIONAL int
@@ -41,6 +45,8 @@ class PaymentData(Model):
 
     # region fields
 
+    discount_amount: int  # OPTIONAL
+    discount_code: str  # OPTIONAL
     subtotal_price: int  # OPTIONAL
     tax: int  # OPTIONAL
     total_price: int  # OPTIONAL
@@ -48,6 +54,14 @@ class PaymentData(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_discount_amount(self, value: int) -> PaymentData:
+        self.discount_amount = value
+        return self
+
+    def with_discount_code(self, value: str) -> PaymentData:
+        self.discount_code = value
+        return self
 
     def with_subtotal_price(self, value: int) -> PaymentData:
         self.subtotal_price = value
@@ -67,6 +81,14 @@ class PaymentData(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "discount_amount"):
+            result["discountAmount"] = int(self.discount_amount)
+        elif include_empty:
+            result["discountAmount"] = 0
+        if hasattr(self, "discount_code"):
+            result["discountCode"] = str(self.discount_code)
+        elif include_empty:
+            result["discountCode"] = ""
         if hasattr(self, "subtotal_price"):
             result["subtotalPrice"] = int(self.subtotal_price)
         elif include_empty:
@@ -88,12 +110,18 @@ class PaymentData(Model):
     @classmethod
     def create(
         cls,
+        discount_amount: Optional[int] = None,
+        discount_code: Optional[str] = None,
         subtotal_price: Optional[int] = None,
         tax: Optional[int] = None,
         total_price: Optional[int] = None,
         **kwargs,
     ) -> PaymentData:
         instance = cls()
+        if discount_amount is not None:
+            instance.discount_amount = discount_amount
+        if discount_code is not None:
+            instance.discount_code = discount_code
         if subtotal_price is not None:
             instance.subtotal_price = subtotal_price
         if tax is not None:
@@ -107,6 +135,14 @@ class PaymentData(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "discountAmount" in dict_ and dict_["discountAmount"] is not None:
+            instance.discount_amount = int(dict_["discountAmount"])
+        elif include_empty:
+            instance.discount_amount = 0
+        if "discountCode" in dict_ and dict_["discountCode"] is not None:
+            instance.discount_code = str(dict_["discountCode"])
+        elif include_empty:
+            instance.discount_code = ""
         if "subtotalPrice" in dict_ and dict_["subtotalPrice"] is not None:
             instance.subtotal_price = int(dict_["subtotalPrice"])
         elif include_empty:
@@ -158,6 +194,8 @@ class PaymentData(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "discountAmount": "discount_amount",
+            "discountCode": "discount_code",
             "subtotalPrice": "subtotal_price",
             "tax": "tax",
             "totalPrice": "total_price",
@@ -166,6 +204,8 @@ class PaymentData(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "discountAmount": False,
+            "discountCode": False,
             "subtotalPrice": False,
             "tax": False,
             "totalPrice": False,

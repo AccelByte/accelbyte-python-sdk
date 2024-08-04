@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.15.5"
+__version__ = "3.16.15"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,7 @@ from .admin_sync_native_session import AdminSyncNativeSession
 from .public_create_party import PublicCreateParty
 from .public_generate_party_code import PublicGeneratePartyCode
 from .public_get_party import PublicGetParty
+from .public_party_cancel import PublicPartyCancel
 from .public_party_invite import PublicPartyInvite
 from .public_party_join import PublicPartyJoin
 from .public_party_join_code import PublicPartyJoinCode

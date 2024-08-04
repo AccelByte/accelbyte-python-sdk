@@ -161,6 +161,7 @@ def create_apimodels_create_item_example() -> ApimodelsCreateItem:
     instance.type_ = randomize()
     instance.inventory_configuration_code = randomize()
     instance.inventory_id = randomize()
+    instance.source = randomize()
     return instance
 
 

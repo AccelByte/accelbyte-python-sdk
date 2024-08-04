@@ -36,6 +36,7 @@ from ..models import ResponseError
 
 from ..operations.challenge_progression import AdminEvaluateProgress
 from ..operations.challenge_progression import EvaluateMyProgress
+from ..operations.challenge_progression import PublicGetPastUserProgression
 from ..operations.challenge_progression import PublicGetUserProgression
 
 
@@ -243,9 +244,162 @@ async def evaluate_my_progress_async(
     )
 
 
+@same_doc_as(PublicGetPastUserProgression)
+def public_get_past_user_progression(
+    challenge_code: str,
+    index: int,
+    goal_code: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List User's Progressions in the previous rotation. (publicGetPastUserProgression)
+
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+
+    Properties:
+        url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index}
+
+        method: GET
+
+        tags: ["Challenge Progression"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        index: (index) REQUIRED int in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        goal_code: (goalCode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - ModelUserProgressionResponse (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - IamErrorResponse (20029: not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetPastUserProgression.create(
+        challenge_code=challenge_code,
+        index=index,
+        goal_code=goal_code,
+        limit=limit,
+        offset=offset,
+        tags=tags,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetPastUserProgression)
+async def public_get_past_user_progression_async(
+    challenge_code: str,
+    index: int,
+    goal_code: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List User's Progressions in the previous rotation. (publicGetPastUserProgression)
+
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+
+    Required Permission(s):
+        - NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+
+    Properties:
+        url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index}
+
+        method: GET
+
+        tags: ["Challenge Progression"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        index: (index) REQUIRED int in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        goal_code: (goalCode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - ModelUserProgressionResponse (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - IamErrorResponse (20029: not found)
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetPastUserProgression.create(
+        challenge_code=challenge_code,
+        index=index,
+        goal_code=goal_code,
+        limit=limit,
+        offset=offset,
+        tags=tags,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGetUserProgression)
 def public_get_user_progression(
     challenge_code: str,
+    date_time: Optional[str] = None,
     goal_code: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -278,6 +432,8 @@ def public_get_user_progression(
 
         namespace: (namespace) REQUIRED str in path
 
+        date_time: (dateTime) OPTIONAL str in query
+
         goal_code: (goalCode) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -288,6 +444,8 @@ def public_get_user_progression(
 
     Responses:
         200: OK - ModelUserProgressionResponse (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -303,6 +461,7 @@ def public_get_user_progression(
             return None, error
     request = PublicGetUserProgression.create(
         challenge_code=challenge_code,
+        date_time=date_time,
         goal_code=goal_code,
         limit=limit,
         offset=offset,
@@ -315,6 +474,7 @@ def public_get_user_progression(
 @same_doc_as(PublicGetUserProgression)
 async def public_get_user_progression_async(
     challenge_code: str,
+    date_time: Optional[str] = None,
     goal_code: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -347,6 +507,8 @@ async def public_get_user_progression_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        date_time: (dateTime) OPTIONAL str in query
+
         goal_code: (goalCode) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -357,6 +519,8 @@ async def public_get_user_progression_async(
 
     Responses:
         200: OK - ModelUserProgressionResponse (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -372,6 +536,7 @@ async def public_get_user_progression_async(
             return None, error
     request = PublicGetUserProgression.create(
         challenge_code=challenge_code,
+        date_time=date_time,
         goal_code=goal_code,
         limit=limit,
         offset=offset,

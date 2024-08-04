@@ -42,7 +42,13 @@ class ModelsTicketData(Model):
 
         is_backfill_match: (isBackfillMatch) REQUIRED bool
 
+        is_pivot: (isPivot) REQUIRED bool
+
         is_rule_set_flexed: (isRuleSetFlexed) REQUIRED bool
+
+        matched_region: (matchedRegion) REQUIRED str
+
+        member_attributes: (memberAttributes) REQUIRED Dict[str, Any]
 
         namespace: (namespace) REQUIRED str
 
@@ -56,9 +62,13 @@ class ModelsTicketData(Model):
 
         timestamp: (timestamp) REQUIRED str
 
+        total_players: (totalPlayers) REQUIRED int
+
         active_alliance_rule: (activeAllianceRule) OPTIONAL ModelsAllianceRule
 
         active_matching_rule: (activeMatchingRule) OPTIONAL List[ModelsMatchingRule]
+
+        elapsed_time: (elapsedTime) OPTIONAL float
 
         function: (function) OPTIONAL str
 
@@ -84,15 +94,20 @@ class ModelsTicketData(Model):
     action: str  # REQUIRED
     game_mode: str  # REQUIRED
     is_backfill_match: bool  # REQUIRED
+    is_pivot: bool  # REQUIRED
     is_rule_set_flexed: bool  # REQUIRED
+    matched_region: str  # REQUIRED
+    member_attributes: Dict[str, Any]  # REQUIRED
     namespace: str  # REQUIRED
     party_id: str  # REQUIRED
     pod_name: str  # REQUIRED
     session_tick_id: str  # REQUIRED
     tick_id: int  # REQUIRED
     timestamp: str  # REQUIRED
+    total_players: int  # REQUIRED
     active_alliance_rule: ModelsAllianceRule  # OPTIONAL
     active_matching_rule: List[ModelsMatchingRule]  # OPTIONAL
+    elapsed_time: float  # OPTIONAL
     function: str  # OPTIONAL
     iteration: int  # OPTIONAL
     match_id: str  # OPTIONAL
@@ -119,8 +134,20 @@ class ModelsTicketData(Model):
         self.is_backfill_match = value
         return self
 
+    def with_is_pivot(self, value: bool) -> ModelsTicketData:
+        self.is_pivot = value
+        return self
+
     def with_is_rule_set_flexed(self, value: bool) -> ModelsTicketData:
         self.is_rule_set_flexed = value
+        return self
+
+    def with_matched_region(self, value: str) -> ModelsTicketData:
+        self.matched_region = value
+        return self
+
+    def with_member_attributes(self, value: Dict[str, Any]) -> ModelsTicketData:
+        self.member_attributes = value
         return self
 
     def with_namespace(self, value: str) -> ModelsTicketData:
@@ -147,6 +174,10 @@ class ModelsTicketData(Model):
         self.timestamp = value
         return self
 
+    def with_total_players(self, value: int) -> ModelsTicketData:
+        self.total_players = value
+        return self
+
     def with_active_alliance_rule(self, value: ModelsAllianceRule) -> ModelsTicketData:
         self.active_alliance_rule = value
         return self
@@ -155,6 +186,10 @@ class ModelsTicketData(Model):
         self, value: List[ModelsMatchingRule]
     ) -> ModelsTicketData:
         self.active_matching_rule = value
+        return self
+
+    def with_elapsed_time(self, value: float) -> ModelsTicketData:
+        self.elapsed_time = value
         return self
 
     def with_function(self, value: str) -> ModelsTicketData:
@@ -211,10 +246,24 @@ class ModelsTicketData(Model):
             result["isBackfillMatch"] = bool(self.is_backfill_match)
         elif include_empty:
             result["isBackfillMatch"] = False
+        if hasattr(self, "is_pivot"):
+            result["isPivot"] = bool(self.is_pivot)
+        elif include_empty:
+            result["isPivot"] = False
         if hasattr(self, "is_rule_set_flexed"):
             result["isRuleSetFlexed"] = bool(self.is_rule_set_flexed)
         elif include_empty:
             result["isRuleSetFlexed"] = False
+        if hasattr(self, "matched_region"):
+            result["matchedRegion"] = str(self.matched_region)
+        elif include_empty:
+            result["matchedRegion"] = ""
+        if hasattr(self, "member_attributes"):
+            result["memberAttributes"] = {
+                str(k0): v0 for k0, v0 in self.member_attributes.items()
+            }
+        elif include_empty:
+            result["memberAttributes"] = {}
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -239,6 +288,10 @@ class ModelsTicketData(Model):
             result["timestamp"] = str(self.timestamp)
         elif include_empty:
             result["timestamp"] = ""
+        if hasattr(self, "total_players"):
+            result["totalPlayers"] = int(self.total_players)
+        elif include_empty:
+            result["totalPlayers"] = 0
         if hasattr(self, "active_alliance_rule"):
             result["activeAllianceRule"] = self.active_alliance_rule.to_dict(
                 include_empty=include_empty
@@ -252,6 +305,10 @@ class ModelsTicketData(Model):
             ]
         elif include_empty:
             result["activeMatchingRule"] = []
+        if hasattr(self, "elapsed_time"):
+            result["elapsedTime"] = float(self.elapsed_time)
+        elif include_empty:
+            result["elapsedTime"] = 0.0
         if hasattr(self, "function"):
             result["function"] = str(self.function)
         elif include_empty:
@@ -302,15 +359,20 @@ class ModelsTicketData(Model):
         action: str,
         game_mode: str,
         is_backfill_match: bool,
+        is_pivot: bool,
         is_rule_set_flexed: bool,
+        matched_region: str,
+        member_attributes: Dict[str, Any],
         namespace: str,
         party_id: str,
         pod_name: str,
         session_tick_id: str,
         tick_id: int,
         timestamp: str,
+        total_players: int,
         active_alliance_rule: Optional[ModelsAllianceRule] = None,
         active_matching_rule: Optional[List[ModelsMatchingRule]] = None,
+        elapsed_time: Optional[float] = None,
         function: Optional[str] = None,
         iteration: Optional[int] = None,
         match_id: Optional[str] = None,
@@ -326,17 +388,23 @@ class ModelsTicketData(Model):
         instance.action = action
         instance.game_mode = game_mode
         instance.is_backfill_match = is_backfill_match
+        instance.is_pivot = is_pivot
         instance.is_rule_set_flexed = is_rule_set_flexed
+        instance.matched_region = matched_region
+        instance.member_attributes = member_attributes
         instance.namespace = namespace
         instance.party_id = party_id
         instance.pod_name = pod_name
         instance.session_tick_id = session_tick_id
         instance.tick_id = tick_id
         instance.timestamp = timestamp
+        instance.total_players = total_players
         if active_alliance_rule is not None:
             instance.active_alliance_rule = active_alliance_rule
         if active_matching_rule is not None:
             instance.active_matching_rule = active_matching_rule
+        if elapsed_time is not None:
+            instance.elapsed_time = elapsed_time
         if function is not None:
             instance.function = function
         if iteration is not None:
@@ -376,10 +444,24 @@ class ModelsTicketData(Model):
             instance.is_backfill_match = bool(dict_["isBackfillMatch"])
         elif include_empty:
             instance.is_backfill_match = False
+        if "isPivot" in dict_ and dict_["isPivot"] is not None:
+            instance.is_pivot = bool(dict_["isPivot"])
+        elif include_empty:
+            instance.is_pivot = False
         if "isRuleSetFlexed" in dict_ and dict_["isRuleSetFlexed"] is not None:
             instance.is_rule_set_flexed = bool(dict_["isRuleSetFlexed"])
         elif include_empty:
             instance.is_rule_set_flexed = False
+        if "matchedRegion" in dict_ and dict_["matchedRegion"] is not None:
+            instance.matched_region = str(dict_["matchedRegion"])
+        elif include_empty:
+            instance.matched_region = ""
+        if "memberAttributes" in dict_ and dict_["memberAttributes"] is not None:
+            instance.member_attributes = {
+                str(k0): v0 for k0, v0 in dict_["memberAttributes"].items()
+            }
+        elif include_empty:
+            instance.member_attributes = {}
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -404,6 +486,10 @@ class ModelsTicketData(Model):
             instance.timestamp = str(dict_["timestamp"])
         elif include_empty:
             instance.timestamp = ""
+        if "totalPlayers" in dict_ and dict_["totalPlayers"] is not None:
+            instance.total_players = int(dict_["totalPlayers"])
+        elif include_empty:
+            instance.total_players = 0
         if "activeAllianceRule" in dict_ and dict_["activeAllianceRule"] is not None:
             instance.active_alliance_rule = ModelsAllianceRule.create_from_dict(
                 dict_["activeAllianceRule"], include_empty=include_empty
@@ -417,6 +503,10 @@ class ModelsTicketData(Model):
             ]
         elif include_empty:
             instance.active_matching_rule = []
+        if "elapsedTime" in dict_ and dict_["elapsedTime"] is not None:
+            instance.elapsed_time = float(dict_["elapsedTime"])
+        elif include_empty:
+            instance.elapsed_time = 0.0
         if "function" in dict_ and dict_["function"] is not None:
             instance.function = str(dict_["function"])
         elif include_empty:
@@ -502,15 +592,20 @@ class ModelsTicketData(Model):
             "action": "action",
             "gameMode": "game_mode",
             "isBackfillMatch": "is_backfill_match",
+            "isPivot": "is_pivot",
             "isRuleSetFlexed": "is_rule_set_flexed",
+            "matchedRegion": "matched_region",
+            "memberAttributes": "member_attributes",
             "namespace": "namespace",
             "partyID": "party_id",
             "podName": "pod_name",
             "sessionTickID": "session_tick_id",
             "tickID": "tick_id",
             "timestamp": "timestamp",
+            "totalPlayers": "total_players",
             "activeAllianceRule": "active_alliance_rule",
             "activeMatchingRule": "active_matching_rule",
+            "elapsedTime": "elapsed_time",
             "function": "function",
             "iteration": "iteration",
             "matchID": "match_id",
@@ -528,15 +623,20 @@ class ModelsTicketData(Model):
             "action": True,
             "gameMode": True,
             "isBackfillMatch": True,
+            "isPivot": True,
             "isRuleSetFlexed": True,
+            "matchedRegion": True,
+            "memberAttributes": True,
             "namespace": True,
             "partyID": True,
             "podName": True,
             "sessionTickID": True,
             "tickID": True,
             "timestamp": True,
+            "totalPlayers": True,
             "activeAllianceRule": False,
             "activeMatchingRule": False,
+            "elapsedTime": False,
             "function": False,
             "iteration": False,
             "matchID": False,

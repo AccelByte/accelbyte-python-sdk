@@ -42,6 +42,7 @@ sessionhistory-admin-query-party-detail --login_with_auth "Bearer foo"
 sessionhistory-get-party-detail '4n8mzZ0m8SAMTwE6' --login_with_auth "Bearer foo"
 sessionhistory-admin-query-ticket-detail --login_with_auth "Bearer foo"
 sessionhistory-admin-ticket-detail-get-by-ticket-id 'I56IaRDBXxyaNoMR' --login_with_auth "Bearer foo"
+sessionhistory-public-query-game-session-me --login_with_auth "Bearer foo"
 sessionhistory-query-xray-match-pool '6hkspInrAip6lyzS' 'xwElFHHdgs21Jub7' '4CUkNmKJfh5pUkHO' --login_with_auth "Bearer foo"
 sessionhistory-query-detail-tick-match-pool 'DpoMF78NY4YkHs1c' 'nz1JSDgY1TXp38zs' 'CTCrbCbPOyNQkT7N' 'vyE3cwyALczNIicX' --login_with_auth "Bearer foo"
 sessionhistory-query-detail-tick-match-pool-matches 'm7agSrjJW2OQNOs1' 'PXhT5FvdiRilZ7oF' 'gx4c8OumKtPDKJDX' --login_with_auth "Bearer foo"
@@ -60,8 +61,9 @@ sessionhistory-query-total-matchmaking-canceled '4cYEzfTD1ZBm3MqH' 'cUmLZZbSqb8R
 sessionhistory-query-total-matchmaking-created '9HrNQy4uZAAiE0mi' 't9RGCCHYzUOcEdsc' --login_with_auth "Bearer foo"
 sessionhistory-query-total-matchmaking-expired 'KHPEqgA8yu7Vk6Jt' '4Ymos9Jcdos4fYcT' --login_with_auth "Bearer foo"
 sessionhistory-query-total-matchmaking-match-ticket 'VU6RBt0zYoMcHyCU' 'EXlAvxJMdalwSyli' --login_with_auth "Bearer foo"
-sessionhistory-query-xray-timeline-by-ticket-id 'WMNW5NyLu0M3VHh2' 'EI8JlDbPWbQ6Q9lN' 'mqRBaAkLnvxkT1X6' --login_with_auth "Bearer foo"
-sessionhistory-query-xray-timeline-by-user-id '8cmDc3fxU8MyKrQp' 'M4hkkK6KKXNB3Gv0' 'IqmF51TkhjYnaq6f' --login_with_auth "Bearer foo"
+sessionhistory-create-xray-ticket-observability '{"action": "WMNW5NyLu0M3VHh2", "activeAllianceRule": {"max_number": 61, "min_number": 92, "player_max_number": 70, "player_min_number": 86}, "activeMatchingRule": [{"attribute": "8JlDbPWbQ6Q9lNmq", "criteria": "RBaAkLnvxkT1X68c", "reference": 0.19766543389055458}, {"attribute": "Dc3fxU8MyKrQpM4h", "criteria": "kkK6KKXNB3Gv0Iqm", "reference": 0.5046353728477166}, {"attribute": "51TkhjYnaq6foWvX", "criteria": "a3bMrXsDr6kILsSS", "reference": 0.39911652978498113}], "function": "DdmykmoPYgc2L4jk", "gameMode": "4Lo0LSP0pf4IxjUk", "isBackfillMatch": false, "isRuleSetFlexed": true, "iteration": 69, "matchID": "ateEKDpADz1x3poD", "namespace": "3Qgb3boLQQ1MzH7Q", "partyID": "m8bwbmXgdAPh1ETh", "remainingPlayersPerTicket": [67, 13, 87], "remainingTickets": 55, "sessionTickID": "ZxfgPubTDIHrvqAT", "tickID": 16, "timeToMatchSec": 0.4937779406724534, "timestamp": "1973-07-02T00:00:00Z", "unbackfillReason": "ERmDnyeFoF7VSZ6p", "unmatchReason": "f3vneSD2Tb3g7mSQ"}' --login_with_auth "Bearer foo"
+sessionhistory-query-xray-timeline-by-ticket-id 'UhAEtrmjqU6YE3p4' 'lSck0ZHn5GI39YBH' 'qaTHeKtW18iGeUlc' --login_with_auth "Bearer foo"
+sessionhistory-query-xray-timeline-by-user-id '9d9sogWa24CKNS0G' 'qVvUfHQvsHXNUNe4' 'mhgo5QB65lSAiYnN' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -81,7 +83,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..34"
+echo "1..36"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -123,7 +125,7 @@ eval_tap $? 6 'AdminQueryGameSessionDetail' test.out
 
 #- 7 GetGameSessionDetail
 $PYTHON -m $MODULE 'sessionhistory-get-game-session-detail' \
-    'asWIPUvmEejtGeoy' \
+    'lxqMrj3oZk03QXcK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'GetGameSessionDetail' test.out
@@ -136,14 +138,14 @@ eval_tap $? 8 'AdminQueryMatchmakingDetail' test.out
 
 #- 9 AdminGetMatchmakingDetailBySessionID
 $PYTHON -m $MODULE 'sessionhistory-admin-get-matchmaking-detail-by-session-id' \
-    'IPa8ZRrvjj7il35M' \
+    'MDYDDxHSZjtqXyJ5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'AdminGetMatchmakingDetailBySessionID' test.out
 
 #- 10 AdminGetMatchmakingDetailByTicketID
 $PYTHON -m $MODULE 'sessionhistory-admin-get-matchmaking-detail-by-ticket-id' \
-    'XbN9oCMNqq98SjTv' \
+    '8f7Gc26SaiGVkydw' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'AdminGetMatchmakingDetailByTicketID' test.out
@@ -156,7 +158,7 @@ eval_tap $? 11 'AdminQueryPartyDetail' test.out
 
 #- 12 GetPartyDetail
 $PYTHON -m $MODULE 'sessionhistory-get-party-detail' \
-    'hZNkSQ70D0H6BXks' \
+    'YWQG26yUZNmTBcvr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'GetPartyDetail' test.out
@@ -169,174 +171,187 @@ eval_tap $? 13 'AdminQueryTicketDetail' test.out
 
 #- 14 AdminTicketDetailGetByTicketID
 $PYTHON -m $MODULE 'sessionhistory-admin-ticket-detail-get-by-ticket-id' \
-    'UC9b6i5lZC9xv32e' \
+    'bYCwZtxFHyPLtI8i' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 14 'AdminTicketDetailGetByTicketID' test.out
 
-#- 15 QueryXrayMatchPool
+#- 15 PublicQueryGameSessionMe
+$PYTHON -m $MODULE 'sessionhistory-public-query-game-session-me' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 15 'PublicQueryGameSessionMe' test.out
+
+#- 16 QueryXrayMatchPool
 $PYTHON -m $MODULE 'sessionhistory-query-xray-match-pool' \
-    '8c5csSovoqsZNBdt' \
-    'e9NDUPVJf6c2Z0QZ' \
-    'xfgPubTDIHrvqATh' \
+    'lbyDPUIj88cekdqC' \
+    't81P1ktfIovmv9gs' \
+    'R5cJcHm3SZLxoRDF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 15 'QueryXrayMatchPool' test.out
+eval_tap $? 16 'QueryXrayMatchPool' test.out
 
-#- 16 QueryDetailTickMatchPool
+#- 17 QueryDetailTickMatchPool
 $PYTHON -m $MODULE 'sessionhistory-query-detail-tick-match-pool' \
-    'uwjRHpKKTlmVr9Xu' \
-    'oJbRFQSKVPHbn4Xx' \
-    'tu7LQRENjEEztx1W' \
-    'sYSiZqan0nSBJroa' \
+    'uuuySj29a9LJE8Ho' \
+    'RS1X2PFAAMwzHPxB' \
+    '1UskYs4Yw20DOqOB' \
+    'SC2DKHRuPMMWH8Yb' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 16 'QueryDetailTickMatchPool' test.out
+eval_tap $? 17 'QueryDetailTickMatchPool' test.out
 
-#- 17 QueryDetailTickMatchPoolMatches
+#- 18 QueryDetailTickMatchPoolMatches
 $PYTHON -m $MODULE 'sessionhistory-query-detail-tick-match-pool-matches' \
-    'v91GXlvPG6bFYReV' \
-    'HQipcCx9Zw5D2L7v' \
-    'IYhGGSyEW4ZJJ42d' \
+    '33T5UBJCjfcnLRfx' \
+    'eCSz9WEi8KlloeH0' \
+    'JT1yduat2vQR3biB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 17 'QueryDetailTickMatchPoolMatches' test.out
+eval_tap $? 18 'QueryDetailTickMatchPoolMatches' test.out
 
-#- 18 QueryDetailTickMatchPoolTicket
+#- 19 QueryDetailTickMatchPoolTicket
 $PYTHON -m $MODULE 'sessionhistory-query-detail-tick-match-pool-ticket' \
-    '3PBddN8S48l9lyNA' \
-    'pflxqMrj3oZk03QX' \
-    'cKMDYDDxHSZjtqXy' \
+    'fsu4jmsRE2w1yEkL' \
+    'gh3tIYt4SqYUTLDx' \
+    '9gIiDandpGT2t24a' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 18 'QueryDetailTickMatchPoolTicket' test.out
+eval_tap $? 19 'QueryDetailTickMatchPoolTicket' test.out
 
-#- 19 QueryMatchHistories
+#- 20 QueryMatchHistories
 $PYTHON -m $MODULE 'sessionhistory-query-match-histories' \
-    'J58f7Gc26SaiGVky' \
+    'OMh5eC3IHeHSKLCa' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 19 'QueryMatchHistories' test.out
+eval_tap $? 20 'QueryMatchHistories' test.out
 
-#- 20 QueryMatchTicketHistories
+#- 21 QueryMatchTicketHistories
 $PYTHON -m $MODULE 'sessionhistory-query-match-ticket-histories' \
-    'dwYWQG26yUZNmTBc' \
+    '3xreNDUWehwH3q31' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 20 'QueryMatchTicketHistories' test.out
+eval_tap $? 21 'QueryMatchTicketHistories' test.out
 
-#- 21 QueryXrayMatch
+#- 22 QueryXrayMatch
 $PYTHON -m $MODULE 'sessionhistory-query-xray-match' \
-    'vrbYCwZtxFHyPLtI' \
+    'A806DJgas4b6z3LN' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 21 'QueryXrayMatch' test.out
+eval_tap $? 22 'QueryXrayMatch' test.out
 
-#- 22 QueryAcquiringDS
+#- 23 QueryAcquiringDS
 $PYTHON -m $MODULE 'sessionhistory-query-acquiring-ds' \
-    '8ilbyDPUIj88cekd' \
-    'qCt81P1ktfIovmv9' \
+    'Uj7fdgLA84Z8YYk6' \
+    'QEgJjBbEDoNf3n0h' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 22 'QueryAcquiringDS' test.out
+eval_tap $? 23 'QueryAcquiringDS' test.out
 
-#- 23 QueryAcquiringDSWaitTimeAvg
+#- 24 QueryAcquiringDSWaitTimeAvg
 $PYTHON -m $MODULE 'sessionhistory-query-acquiring-ds-wait-time-avg' \
-    'gsR5cJcHm3SZLxoR' \
-    'DFuuuySj29a9LJE8' \
+    'EoRCAcf80zfFyabW' \
+    'AgIUXiI07A68eaqC' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 23 'QueryAcquiringDSWaitTimeAvg' test.out
+eval_tap $? 24 'QueryAcquiringDSWaitTimeAvg' test.out
 
-#- 24 QueryMatchLengthDurationpAvg
+#- 25 QueryMatchLengthDurationpAvg
 $PYTHON -m $MODULE 'sessionhistory-query-match-length-durationp-avg' \
-    'HoRS1X2PFAAMwzHP' \
-    'xB1UskYs4Yw20DOq' \
+    '2J9jyEW6GLbc0NaK' \
+    'DUL3sa13lk1dQBHO' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 24 'QueryMatchLengthDurationpAvg' test.out
+eval_tap $? 25 'QueryMatchLengthDurationpAvg' test.out
 
-#- 25 QueryMatchLengthDurationp99
+#- 26 QueryMatchLengthDurationp99
 $PYTHON -m $MODULE 'sessionhistory-query-match-length-durationp99' \
-    'OBSC2DKHRuPMMWH8' \
-    'Yb33T5UBJCjfcnLR' \
+    '86IlBhnetU4RwTqU' \
+    'XlTDBzOuYsaZA2yy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 25 'QueryMatchLengthDurationp99' test.out
+eval_tap $? 26 'QueryMatchLengthDurationp99' test.out
 
-#- 26 QueryTotalActiveSession
+#- 27 QueryTotalActiveSession
 $PYTHON -m $MODULE 'sessionhistory-query-total-active-session' \
-    'fxeCSz9WEi8Klloe' \
-    'H0JT1yduat2vQR3b' \
+    'd4mbqoOfADMMAXFa' \
+    'Y9eKa699bRVhyaKw' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 26 'QueryTotalActiveSession' test.out
+eval_tap $? 27 'QueryTotalActiveSession' test.out
 
-#- 27 QueryTotalMatchmakingMatch
+#- 28 QueryTotalMatchmakingMatch
 $PYTHON -m $MODULE 'sessionhistory-query-total-matchmaking-match' \
-    'iBfsu4jmsRE2w1yE' \
-    'kLgh3tIYt4SqYUTL' \
+    'wrAP2aMlu7WtjCto' \
+    'YetOO847g8OudOfj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 27 'QueryTotalMatchmakingMatch' test.out
+eval_tap $? 28 'QueryTotalMatchmakingMatch' test.out
 
-#- 28 QueryTotalPlayerPersession
+#- 29 QueryTotalPlayerPersession
 $PYTHON -m $MODULE 'sessionhistory-query-total-player-persession' \
-    'Dx9gIiDandpGT2t2' \
-    '4aOMh5eC3IHeHSKL' \
+    'nCuHZ3c46IjGa23Y' \
+    'vYmmDg7VYPXIuvUY' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 28 'QueryTotalPlayerPersession' test.out
+eval_tap $? 29 'QueryTotalPlayerPersession' test.out
 
-#- 29 QueryTotalMatchmakingCanceled
+#- 30 QueryTotalMatchmakingCanceled
 $PYTHON -m $MODULE 'sessionhistory-query-total-matchmaking-canceled' \
-    'Ca3xreNDUWehwH3q' \
-    '31A806DJgas4b6z3' \
+    'TZBRujIUE1Tq5jyA' \
+    'ZvkRCMNFIurjh2im' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 29 'QueryTotalMatchmakingCanceled' test.out
+eval_tap $? 30 'QueryTotalMatchmakingCanceled' test.out
 
-#- 30 QueryTotalMatchmakingCreated
+#- 31 QueryTotalMatchmakingCreated
 $PYTHON -m $MODULE 'sessionhistory-query-total-matchmaking-created' \
-    'LNUj7fdgLA84Z8YY' \
-    'k6QEgJjBbEDoNf3n' \
+    'db4rbkXj0ZwsVC0g' \
+    'L97ZVJSPqJiwv1ql' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 30 'QueryTotalMatchmakingCreated' test.out
+eval_tap $? 31 'QueryTotalMatchmakingCreated' test.out
 
-#- 31 QueryTotalMatchmakingExpired
+#- 32 QueryTotalMatchmakingExpired
 $PYTHON -m $MODULE 'sessionhistory-query-total-matchmaking-expired' \
-    '0hEoRCAcf80zfFya' \
-    'bWAgIUXiI07A68ea' \
+    'YB1RSKs6gQxC3Gb7' \
+    'S0o4zGYY7KQI1AeF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 31 'QueryTotalMatchmakingExpired' test.out
+eval_tap $? 32 'QueryTotalMatchmakingExpired' test.out
 
-#- 32 QueryTotalMatchmakingMatchTicket
+#- 33 QueryTotalMatchmakingMatchTicket
 $PYTHON -m $MODULE 'sessionhistory-query-total-matchmaking-match-ticket' \
-    'qC2J9jyEW6GLbc0N' \
-    'aKDUL3sa13lk1dQB' \
+    'gPqaOkvo1aolB4lk' \
+    'KB4EYOkQ1jMD3cym' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 32 'QueryTotalMatchmakingMatchTicket' test.out
+eval_tap $? 33 'QueryTotalMatchmakingMatchTicket' test.out
 
-#- 33 QueryXrayTimelineByTicketID
+#- 34 CreateXrayTicketObservability
+$PYTHON -m $MODULE 'sessionhistory-create-xray-ticket-observability' \
+    '{"action": "8xIfkOVW2grREOLx", "activeAllianceRule": {"max_number": 81, "min_number": 75, "player_max_number": 82, "player_min_number": 94}, "activeMatchingRule": [{"attribute": "ww3HICQLfl7MUBG7", "criteria": "qtPu64yAtURKLRkb", "reference": 0.9665989331813947}, {"attribute": "38HGS6rDgMdIIlhS", "criteria": "1fSiM9331m7Ta1Ps", "reference": 0.5845456837068258}, {"attribute": "c50Kv6ecnEevcAx2", "criteria": "K2zkRenmPZnGBt4P", "reference": 0.9616140495101612}], "function": "WnbdSJtjX7ZshZyZ", "gameMode": "l5x4bRXBHUTrDzZS", "isBackfillMatch": false, "isRuleSetFlexed": true, "iteration": 48, "matchID": "cfOcYu3dpCROYqUi", "namespace": "GKXVFCmpo6sPwVOE", "partyID": "DSJsEK5QpNhlI2iS", "remainingPlayersPerTicket": [63, 17, 31], "remainingTickets": 71, "sessionTickID": "GhhvXYck0upMzUYn", "tickID": 3, "timeToMatchSec": 0.4279508363856612, "timestamp": "1991-06-09T00:00:00Z", "unbackfillReason": "RxpzwLR2AK6eXUGP", "unmatchReason": "Jsw1fiP80G9Pclxc"}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 34 'CreateXrayTicketObservability' test.out
+
+#- 35 QueryXrayTimelineByTicketID
 $PYTHON -m $MODULE 'sessionhistory-query-xray-timeline-by-ticket-id' \
-    'HO86IlBhnetU4RwT' \
-    'qUXlTDBzOuYsaZA2' \
-    'yyd4mbqoOfADMMAX' \
+    'ft2ulIJzPyrVEiOG' \
+    '4UcqsuGKHhMRWLVd' \
+    '3DlhLuIpomM8sm1M' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 33 'QueryXrayTimelineByTicketID' test.out
+eval_tap $? 35 'QueryXrayTimelineByTicketID' test.out
 
-#- 34 QueryXrayTimelineByUserID
+#- 36 QueryXrayTimelineByUserID
 $PYTHON -m $MODULE 'sessionhistory-query-xray-timeline-by-user-id' \
-    'FaY9eKa699bRVhya' \
-    'KwwrAP2aMlu7WtjC' \
-    'toYetOO847g8OudO' \
+    'iaI1mX2tJoARtdbB' \
+    'e7udsMrok0WvGYYn' \
+    'x4V709xbnGezKsDw' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 34 'QueryXrayTimelineByUserID' test.out
+eval_tap $? 36 'QueryXrayTimelineByUserID' test.out
 
 
 fi

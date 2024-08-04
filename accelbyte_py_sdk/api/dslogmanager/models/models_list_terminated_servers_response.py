@@ -27,8 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_notif_payload_server_status_change import (
-    ModelsNotifPayloadServerStatusChange,
+from ..models.models_notif_payload_server_status_change_response import (
+    ModelsNotifPayloadServerStatusChangeResponse,
 )
 from ..models.models_paging_cursor import ModelsPagingCursor
 
@@ -37,14 +37,14 @@ class ModelsListTerminatedServersResponse(Model):
     """Models list terminated servers response (models.ListTerminatedServersResponse)
 
     Properties:
-        data: (data) REQUIRED List[ModelsNotifPayloadServerStatusChange]
+        data: (data) REQUIRED List[ModelsNotifPayloadServerStatusChangeResponse]
 
         paging: (paging) REQUIRED ModelsPagingCursor
     """
 
     # region fields
 
-    data: List[ModelsNotifPayloadServerStatusChange]  # REQUIRED
+    data: List[ModelsNotifPayloadServerStatusChangeResponse]  # REQUIRED
     paging: ModelsPagingCursor  # REQUIRED
 
     # endregion fields
@@ -52,7 +52,7 @@ class ModelsListTerminatedServersResponse(Model):
     # region with_x methods
 
     def with_data(
-        self, value: List[ModelsNotifPayloadServerStatusChange]
+        self, value: List[ModelsNotifPayloadServerStatusChangeResponse]
     ) -> ModelsListTerminatedServersResponse:
         self.data = value
         return self
@@ -88,7 +88,7 @@ class ModelsListTerminatedServersResponse(Model):
     @classmethod
     def create(
         cls,
-        data: List[ModelsNotifPayloadServerStatusChange],
+        data: List[ModelsNotifPayloadServerStatusChangeResponse],
         paging: ModelsPagingCursor,
         **kwargs,
     ) -> ModelsListTerminatedServersResponse:
@@ -106,7 +106,7 @@ class ModelsListTerminatedServersResponse(Model):
             return instance
         if "data" in dict_ and dict_["data"] is not None:
             instance.data = [
-                ModelsNotifPayloadServerStatusChange.create_from_dict(
+                ModelsNotifPayloadServerStatusChangeResponse.create_from_dict(
                     i0, include_empty=include_empty
                 )
                 for i0 in dict_["data"]

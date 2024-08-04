@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.53.0"
+__version__ = "4.54.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -151,6 +151,8 @@ from ._dlc import get_user_dlc
 from ._dlc import get_user_dlc_async
 from ._dlc import get_user_dlc_by_platform
 from ._dlc import get_user_dlc_by_platform_async
+from ._dlc import public_get_my_dlc_content
+from ._dlc import public_get_my_dlc_content_async
 from ._dlc import public_sync_psn_dlc_inventory
 from ._dlc import public_sync_psn_dlc_inventory_async
 from ._dlc import public_sync_psn_dlc_inventory_with_multiple_service_labels
@@ -285,6 +287,8 @@ from ._entitlement import update_user_entitlement_async
 
 from ._fulfillment import fulfill_item
 from ._fulfillment import fulfill_item_async
+from ._fulfillment import fulfill_items
+from ._fulfillment import fulfill_items_async
 from ._fulfillment import fulfill_rewards
 from ._fulfillment import fulfill_rewards_async
 from ._fulfillment import fulfill_rewards_v2
@@ -295,8 +299,12 @@ from ._fulfillment import public_redeem_code
 from ._fulfillment import public_redeem_code_async
 from ._fulfillment import query_fulfillment_histories
 from ._fulfillment import query_fulfillment_histories_async
+from ._fulfillment import query_fulfillments
+from ._fulfillment import query_fulfillments_async
 from ._fulfillment import redeem_code
 from ._fulfillment import redeem_code_async
+from ._fulfillment import revoke_items
+from ._fulfillment import revoke_items_async
 
 from ._fulfillment_script import create_fulfillment_script
 from ._fulfillment_script import create_fulfillment_script_async

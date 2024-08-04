@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.17.0"
+__version__ = "7.19.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -413,6 +413,8 @@ from .wrappers import admin_delete_user_information_v3
 from .wrappers import admin_delete_user_information_v3_async
 from .wrappers import admin_delete_user_linking_history_by_platform_idv3
 from .wrappers import admin_delete_user_linking_history_by_platform_idv3_async
+from .wrappers import admin_delete_user_linking_restriction_by_platform_idv3
+from .wrappers import admin_delete_user_linking_restriction_by_platform_idv3_async
 from .wrappers import admin_delete_user_permission_bulk_v3
 from .wrappers import admin_delete_user_permission_bulk_v3_async
 from .wrappers import admin_delete_user_permission_v3
@@ -457,6 +459,8 @@ from .wrappers import admin_get_user_by_user_id_v3
 from .wrappers import admin_get_user_by_user_id_v3_async
 from .wrappers import admin_get_user_deletion_status_v3
 from .wrappers import admin_get_user_deletion_status_v3_async
+from .wrappers import admin_get_user_link_histories_v3
+from .wrappers import admin_get_user_link_histories_v3_async
 from .wrappers import admin_get_user_login_histories_v3
 from .wrappers import admin_get_user_login_histories_v3_async
 from .wrappers import admin_get_user_mapping
@@ -469,6 +473,8 @@ from .wrappers import admin_invite_user_v3
 from .wrappers import admin_invite_user_v3_async
 from .wrappers import admin_link_platform_account
 from .wrappers import admin_link_platform_account_async
+from .wrappers import admin_list_all_distinct_platform_accounts_v3
+from .wrappers import admin_list_all_distinct_platform_accounts_v3_async
 from .wrappers import admin_list_user_all_platform_accounts_distinct_v3
 from .wrappers import admin_list_user_all_platform_accounts_distinct_v3_async
 from .wrappers import admin_list_user_id_by_platform_user_i_ds_v3

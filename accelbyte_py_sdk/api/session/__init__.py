@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.15.5"
+__version__ = "3.16.15"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -87,6 +87,8 @@ from .wrappers import leave_game_session
 from .wrappers import leave_game_session_async
 from .wrappers import patch_update_game_session
 from .wrappers import patch_update_game_session_async
+from .wrappers import public_game_session_cancel
+from .wrappers import public_game_session_cancel_async
 from .wrappers import public_game_session_invite
 from .wrappers import public_game_session_invite_async
 from .wrappers import public_game_session_reject
@@ -141,6 +143,8 @@ from .wrappers import public_generate_party_code
 from .wrappers import public_generate_party_code_async
 from .wrappers import public_get_party
 from .wrappers import public_get_party_async
+from .wrappers import public_party_cancel
+from .wrappers import public_party_cancel_async
 from .wrappers import public_party_invite
 from .wrappers import public_party_invite_async
 from .wrappers import public_party_join

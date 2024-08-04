@@ -65,6 +65,7 @@ from ..api.ams.models import ApiImageDeploymentProfile
 from ..api.ams.models import ApiImageDetails
 from ..api.ams.models import ApiImageList
 from ..api.ams.models import ApiImageListItem
+from ..api.ams.models import ApiImageStorage
 from ..api.ams.models import ApiImageUpdate
 from ..api.ams.models import ApiInstanceTypeDescriptionResponse
 from ..api.ams.models import ApiPagingInfo
@@ -470,6 +471,16 @@ def create_api_image_list_item_example() -> ApiImageListItem:
     return instance
 
 
+def create_api_image_storage_example() -> ApiImageStorage:
+    instance = ApiImageStorage()
+    instance.current_marked_for_deletion_bytes = randomize(
+        "int", min_val=1, max_val=1000
+    )
+    instance.current_usage_bytes = randomize("int", min_val=1, max_val=1000)
+    instance.quota_bytes = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_api_image_update_example() -> ApiImageUpdate:
     instance = ApiImageUpdate()
     instance.added_tags = [randomize()]
@@ -540,6 +551,7 @@ def create_api_referencing_fleet_example() -> ApiReferencingFleet:
 def create_api_region_config_example() -> ApiRegionConfig:
     instance = ApiRegionConfig()
     instance.buffer_size = randomize("int", min_val=1, max_val=1000)
+    instance.dynamic_buffer = randomize("bool")
     instance.max_server_count = randomize("int", min_val=1, max_val=1000)
     instance.min_server_count = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()

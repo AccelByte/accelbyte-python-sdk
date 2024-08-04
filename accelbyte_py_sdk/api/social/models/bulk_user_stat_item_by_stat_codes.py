@@ -6,7 +6,7 @@
 
 # template file: ags_py_codegen
 
-# AccelByte Gaming Services Ds Log Manager Service
+# AccelByte Gaming Services Statistics Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -27,36 +27,24 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_match_result import ModelsMatchResult
-from ..models.models_server import ModelsServer
 
-
-class ModelsNotifPayloadServerStatusChange(Model):
-    """Models notif payload server status change (models.NotifPayloadServerStatusChange)
+class BulkUserStatItemByStatCodes(Model):
+    """Bulk user stat item by stat codes (BulkUserStatItemByStatCodes)
 
     Properties:
-        match: (match) REQUIRED ModelsMatchResult
-
-        server: (server) REQUIRED ModelsServer
+        stat_codes: (statCodes) OPTIONAL List[str]
     """
 
     # region fields
 
-    match: ModelsMatchResult  # REQUIRED
-    server: ModelsServer  # REQUIRED
+    stat_codes: List[str]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_match(
-        self, value: ModelsMatchResult
-    ) -> ModelsNotifPayloadServerStatusChange:
-        self.match = value
-        return self
-
-    def with_server(self, value: ModelsServer) -> ModelsNotifPayloadServerStatusChange:
-        self.server = value
+    def with_stat_codes(self, value: List[str]) -> BulkUserStatItemByStatCodes:
+        self.stat_codes = value
         return self
 
     # endregion with_x methods
@@ -65,14 +53,10 @@ class ModelsNotifPayloadServerStatusChange(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "match"):
-            result["match"] = self.match.to_dict(include_empty=include_empty)
+        if hasattr(self, "stat_codes"):
+            result["statCodes"] = [str(i0) for i0 in self.stat_codes]
         elif include_empty:
-            result["match"] = ModelsMatchResult()
-        if hasattr(self, "server"):
-            result["server"] = self.server.to_dict(include_empty=include_empty)
-        elif include_empty:
-            result["server"] = ModelsServer()
+            result["statCodes"] = []
         return result
 
     # endregion to methods
@@ -81,38 +65,30 @@ class ModelsNotifPayloadServerStatusChange(Model):
 
     @classmethod
     def create(
-        cls, match: ModelsMatchResult, server: ModelsServer, **kwargs
-    ) -> ModelsNotifPayloadServerStatusChange:
+        cls, stat_codes: Optional[List[str]] = None, **kwargs
+    ) -> BulkUserStatItemByStatCodes:
         instance = cls()
-        instance.match = match
-        instance.server = server
+        if stat_codes is not None:
+            instance.stat_codes = stat_codes
         return instance
 
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> ModelsNotifPayloadServerStatusChange:
+    ) -> BulkUserStatItemByStatCodes:
         instance = cls()
         if not dict_:
             return instance
-        if "match" in dict_ and dict_["match"] is not None:
-            instance.match = ModelsMatchResult.create_from_dict(
-                dict_["match"], include_empty=include_empty
-            )
+        if "statCodes" in dict_ and dict_["statCodes"] is not None:
+            instance.stat_codes = [str(i0) for i0 in dict_["statCodes"]]
         elif include_empty:
-            instance.match = ModelsMatchResult()
-        if "server" in dict_ and dict_["server"] is not None:
-            instance.server = ModelsServer.create_from_dict(
-                dict_["server"], include_empty=include_empty
-            )
-        elif include_empty:
-            instance.server = ModelsServer()
+            instance.stat_codes = []
         return instance
 
     @classmethod
     def create_many_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> Dict[str, ModelsNotifPayloadServerStatusChange]:
+    ) -> Dict[str, BulkUserStatItemByStatCodes]:
         return (
             {k: cls.create_from_dict(v, include_empty=include_empty) for k, v in dict_}
             if dict_
@@ -122,7 +98,7 @@ class ModelsNotifPayloadServerStatusChange(Model):
     @classmethod
     def create_many_from_list(
         cls, list_: list, include_empty: bool = False
-    ) -> List[ModelsNotifPayloadServerStatusChange]:
+    ) -> List[BulkUserStatItemByStatCodes]:
         return (
             [cls.create_from_dict(i, include_empty=include_empty) for i in list_]
             if list_
@@ -133,9 +109,9 @@ class ModelsNotifPayloadServerStatusChange(Model):
     def create_from_any(
         cls, any_: any, include_empty: bool = False, many: bool = False
     ) -> Union[
-        ModelsNotifPayloadServerStatusChange,
-        List[ModelsNotifPayloadServerStatusChange],
-        Dict[Any, ModelsNotifPayloadServerStatusChange],
+        BulkUserStatItemByStatCodes,
+        List[BulkUserStatItemByStatCodes],
+        Dict[Any, BulkUserStatItemByStatCodes],
     ]:
         if many:
             if isinstance(any_, dict):
@@ -150,15 +126,13 @@ class ModelsNotifPayloadServerStatusChange(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "match": "match",
-            "server": "server",
+            "statCodes": "stat_codes",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "match": True,
-            "server": True,
+            "statCodes": False,
         }
 
     # endregion static methods

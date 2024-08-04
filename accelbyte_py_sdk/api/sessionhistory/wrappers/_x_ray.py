@@ -44,11 +44,14 @@ from ..models import ApimodelsXRayMatchPoolPodTickTicketResponse
 from ..models import ApimodelsXRayMatchPoolQueryResponse
 from ..models import ApimodelsXRayMatchTicketHistoryQueryResponse
 from ..models import ApimodelsXRayMatchesQueryResponse
+from ..models import ApimodelsXRayTicketObservabilityRequest
+from ..models import ApimodelsXRayTicketObservabilityResponse
 from ..models import ApimodelsXRayTicketQueryResponse
 from ..models import ApimodelsXRayTotalActiveSessionQueryResponse
 from ..models import ApimodelsXRayTotalPlayerPersessionAVGQueryResponse
 from ..models import ResponseError
 
+from ..operations.x_ray import CreateXrayTicketObservability
 from ..operations.x_ray import QueryAcquiringDS
 from ..operations.x_ray import QueryAcquiringDSWaitTimeAvg
 from ..operations.x_ray import QueryDetailTickMatchPool
@@ -69,6 +72,160 @@ from ..operations.x_ray import QueryXrayMatch
 from ..operations.x_ray import QueryXrayMatchPool
 from ..operations.x_ray import QueryXrayTimelineByTicketID
 from ..operations.x_ray import QueryXrayTimelineByUserID
+
+
+@same_doc_as(CreateXrayTicketObservability)
+def create_xray_ticket_observability(
+    body: ApimodelsXRayTicketObservabilityRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create ticket observability request (createXrayTicketObservability)
+
+    Create ticket observability request
+    Request body details (all attributes are optional):
+    Timestamp : timestamp when calling this endpoint
+    Action : support one of the following value:
+    1. "started"
+    2. "matchFound"
+    3. "matchNotFound"
+    4. "flexed"
+    5 "canceled"
+    6. "expired"
+    PartyID : ticket Party ID
+    MatchID : match ID will be filled only when match found
+    Namespace : ticket current namespace
+    GameMode : ticket current matchpool
+    ActiveAllianceRule : current active alliance ruleset
+    ActiveMatchingRule : current active matching ruleset
+    Function : name of the function that called the endpoint
+    Iteration : total iteration before match found
+    TimeToMatchSec : time to match (in seconds) will be filled only when match found
+    UnmatchReason : reason when unable to find match
+    RemainingTickets : remaining ticket when unable to find match
+    RemainingPlayersPerTicket : remaining players when unable to find match
+    UnbackfillReason : reason when unable to backfill
+    IsBackfillMatch : flag to distinguish between new match and backfill match
+    IsRuleSetFlexed : flag if ruleset is getting flexed
+    TickID : tick id for the matchmaking tick
+    SessionTickID : session tick id for differentiate session when doing matches
+
+    Properties:
+        url: /sessionhistory/v2/admin/namespaces/{namespace}/xray/tickets
+
+        method: POST
+
+        tags: ["XRay"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsXRayTicketObservabilityRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsXRayTicketObservabilityResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreateXrayTicketObservability.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(CreateXrayTicketObservability)
+async def create_xray_ticket_observability_async(
+    body: ApimodelsXRayTicketObservabilityRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Create ticket observability request (createXrayTicketObservability)
+
+    Create ticket observability request
+    Request body details (all attributes are optional):
+    Timestamp : timestamp when calling this endpoint
+    Action : support one of the following value:
+    1. "started"
+    2. "matchFound"
+    3. "matchNotFound"
+    4. "flexed"
+    5 "canceled"
+    6. "expired"
+    PartyID : ticket Party ID
+    MatchID : match ID will be filled only when match found
+    Namespace : ticket current namespace
+    GameMode : ticket current matchpool
+    ActiveAllianceRule : current active alliance ruleset
+    ActiveMatchingRule : current active matching ruleset
+    Function : name of the function that called the endpoint
+    Iteration : total iteration before match found
+    TimeToMatchSec : time to match (in seconds) will be filled only when match found
+    UnmatchReason : reason when unable to find match
+    RemainingTickets : remaining ticket when unable to find match
+    RemainingPlayersPerTicket : remaining players when unable to find match
+    UnbackfillReason : reason when unable to backfill
+    IsBackfillMatch : flag to distinguish between new match and backfill match
+    IsRuleSetFlexed : flag if ruleset is getting flexed
+    TickID : tick id for the matchmaking tick
+    SessionTickID : session tick id for differentiate session when doing matches
+
+    Properties:
+        url: /sessionhistory/v2/admin/namespaces/{namespace}/xray/tickets
+
+        method: POST
+
+        tags: ["XRay"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsXRayTicketObservabilityRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsXRayTicketObservabilityResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = CreateXrayTicketObservability.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(QueryAcquiringDS)

@@ -35,10 +35,12 @@ from ...models import RestErrorResponse
 class PublicValidateUserByUserIDAndPasswordV3(Operation):
     """Validate user password by user ID and password (PublicValidateUserByUserIDAndPasswordV3)
 
-    This endpoint is used to validate the user password. Require valid user ID.
+    This endpoint is used to validate the user password.
+    This endpoint validate the user password by specifying the userId and password.
 
-    Notes:
-    - This endpoint validate the user password by specifying the userId and password
+
+    **Authentication:**
+    The _**userId**_ parameter should match the one in the access token.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/validate

@@ -27,6 +27,10 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.model_user_progression_period_response_meta import (
+    ModelUserProgressionPeriodResponseMeta,
+)
+
 
 class ModelUserProgressionResponseMeta(Model):
     """Model user progression response meta (model.UserProgressionResponseMeta)
@@ -37,6 +41,8 @@ class ModelUserProgressionResponseMeta(Model):
         description: (description) REQUIRED str
 
         name: (name) REQUIRED str
+
+        period: (period) REQUIRED ModelUserProgressionPeriodResponseMeta
 
         start_date: (startDate) REQUIRED str
 
@@ -50,6 +56,7 @@ class ModelUserProgressionResponseMeta(Model):
     code: str  # REQUIRED
     description: str  # REQUIRED
     name: str  # REQUIRED
+    period: ModelUserProgressionPeriodResponseMeta  # REQUIRED
     start_date: str  # REQUIRED
     user_id: str  # REQUIRED
     end_date: str  # OPTIONAL
@@ -68,6 +75,12 @@ class ModelUserProgressionResponseMeta(Model):
 
     def with_name(self, value: str) -> ModelUserProgressionResponseMeta:
         self.name = value
+        return self
+
+    def with_period(
+        self, value: ModelUserProgressionPeriodResponseMeta
+    ) -> ModelUserProgressionResponseMeta:
+        self.period = value
         return self
 
     def with_start_date(self, value: str) -> ModelUserProgressionResponseMeta:
@@ -100,6 +113,10 @@ class ModelUserProgressionResponseMeta(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "period"):
+            result["period"] = self.period.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["period"] = ModelUserProgressionPeriodResponseMeta()
         if hasattr(self, "start_date"):
             result["startDate"] = str(self.start_date)
         elif include_empty:
@@ -124,6 +141,7 @@ class ModelUserProgressionResponseMeta(Model):
         code: str,
         description: str,
         name: str,
+        period: ModelUserProgressionPeriodResponseMeta,
         start_date: str,
         user_id: str,
         end_date: Optional[str] = None,
@@ -133,6 +151,7 @@ class ModelUserProgressionResponseMeta(Model):
         instance.code = code
         instance.description = description
         instance.name = name
+        instance.period = period
         instance.start_date = start_date
         instance.user_id = user_id
         if end_date is not None:
@@ -158,6 +177,12 @@ class ModelUserProgressionResponseMeta(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "period" in dict_ and dict_["period"] is not None:
+            instance.period = ModelUserProgressionPeriodResponseMeta.create_from_dict(
+                dict_["period"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.period = ModelUserProgressionPeriodResponseMeta()
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
@@ -216,6 +241,7 @@ class ModelUserProgressionResponseMeta(Model):
             "code": "code",
             "description": "description",
             "name": "name",
+            "period": "period",
             "startDate": "start_date",
             "userId": "user_id",
             "endDate": "end_date",
@@ -227,6 +253,7 @@ class ModelUserProgressionResponseMeta(Model):
             "code": True,
             "description": True,
             "name": True,
+            "period": True,
             "startDate": True,
             "userId": True,
             "endDate": False,

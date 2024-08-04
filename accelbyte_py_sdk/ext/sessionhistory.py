@@ -73,6 +73,8 @@ from ..api.sessionhistory.models import ApimodelsXRayMatchTicketHistory
 from ..api.sessionhistory.models import ApimodelsXRayMatchTicketHistoryQueryResponse
 from ..api.sessionhistory.models import ApimodelsXRayMatchesQueryResponse
 from ..api.sessionhistory.models import ApimodelsXRayTicketMatchesResult
+from ..api.sessionhistory.models import ApimodelsXRayTicketObservabilityRequest
+from ..api.sessionhistory.models import ApimodelsXRayTicketObservabilityResponse
 from ..api.sessionhistory.models import ApimodelsXRayTicketQueryResponse
 from ..api.sessionhistory.models import ApimodelsXRayTicketResult
 from ..api.sessionhistory.models import ApimodelsXRayTotalActiveSessionQueryResponse
@@ -88,6 +90,7 @@ from ..api.sessionhistory.models import ModelsGameServer
 from ..api.sessionhistory.models import ModelsGameSession
 from ..api.sessionhistory.models import ModelsGameSessionTeam
 from ..api.sessionhistory.models import ModelsMatch
+from ..api.sessionhistory.models import ModelsMatchTicket
 from ..api.sessionhistory.models import ModelsMatchingAlly
 from ..api.sessionhistory.models import ModelsMatchingParty
 from ..api.sessionhistory.models import ModelsMatchingRule
@@ -540,13 +543,50 @@ def create_apimodels_x_ray_ticket_matches_result_example() -> (
 ):
     instance = ApimodelsXRayTicketMatchesResult()
     instance.created_at = randomize("date")
+    instance.is_pivot = randomize("bool")
     instance.latencies = {}
     instance.match_pool = randomize()
     instance.namespace = randomize("slug")
     instance.party_session_id = randomize()
     instance.players = [create_models_player_data_example()]
     instance.proposed_proposal = create_models_proposed_proposal_example()
+    instance.region_preference = [randomize()]
     instance.ticket_attributes = {randomize(): randomize()}
+    instance.ticket_id = randomize()
+    instance.time_to_match = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_apimodels_x_ray_ticket_observability_request_example() -> (
+    ApimodelsXRayTicketObservabilityRequest
+):
+    instance = ApimodelsXRayTicketObservabilityRequest()
+    instance.action = randomize()
+    instance.game_mode = randomize()
+    instance.is_backfill_match = randomize("bool")
+    instance.is_rule_set_flexed = randomize("bool")
+    instance.namespace = randomize("slug")
+    instance.party_id = randomize("uid")
+    instance.session_tick_id = randomize()
+    instance.tick_id = randomize("int", min_val=1, max_val=1000)
+    instance.timestamp = randomize("date")
+    instance.active_alliance_rule = create_models_alliance_rule_example()
+    instance.active_matching_rule = [create_models_matching_rule_example()]
+    instance.function = randomize()
+    instance.iteration = randomize("int", min_val=1, max_val=1000)
+    instance.match_id = randomize()
+    instance.remaining_players_per_ticket = [randomize("int", min_val=1, max_val=1000)]
+    instance.remaining_tickets = randomize("int", min_val=1, max_val=1000)
+    instance.time_to_match_sec = randomize("int", min_val=1, max_val=1000)
+    instance.unbackfill_reason = randomize()
+    instance.unmatch_reason = randomize()
+    return instance
+
+
+def create_apimodels_x_ray_ticket_observability_response_example() -> (
+    ApimodelsXRayTicketObservabilityResponse
+):
+    instance = ApimodelsXRayTicketObservabilityResponse()
     instance.ticket_id = randomize()
     return instance
 
@@ -562,13 +602,20 @@ def create_apimodels_x_ray_ticket_query_response_example() -> (
 
 def create_apimodels_x_ray_ticket_result_example() -> ApimodelsXRayTicketResult:
     instance = ApimodelsXRayTicketResult()
+    instance.elapsed_time = randomize("int", min_val=1, max_val=1000)
     instance.id_ = randomize()
     instance.matchpool = randomize()
     instance.pod_name = randomize()
+    instance.reason = randomize()
+    instance.region = randomize()
     instance.tick_id = randomize()
     instance.ticket_id = randomize()
     instance.ticket_status = randomize()
     instance.timestamp = randomize("date")
+    instance.is_backfill = randomize("bool")
+    instance.is_pivot = randomize("bool")
+    instance.member_attributes = {randomize(): randomize()}
+    instance.total_players = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -695,10 +742,29 @@ def create_models_match_example() -> ModelsMatch:
     instance.backfill = randomize("bool")
     instance.client_version = randomize()
     instance.match_attributes = {randomize(): randomize()}
+    instance.pivot_id = randomize()
     instance.region_preference = [randomize()]
     instance.server_name = randomize()
     instance.teams = [create_models_team_example()]
-    instance.tickets = [create_models_ticket_example()]
+    instance.tickets = [create_models_match_ticket_example()]
+    instance.timestamp = randomize("date")
+    return instance
+
+
+def create_models_match_ticket_example() -> ModelsMatchTicket:
+    instance = ModelsMatchTicket()
+    instance.created_at = randomize("date")
+    instance.is_pivot = randomize("bool")
+    instance.latencies = {}
+    instance.match_pool = randomize()
+    instance.namespace = randomize("slug")
+    instance.party_session_id = randomize()
+    instance.players = [create_models_player_data_example()]
+    instance.proposed_proposal = create_models_proposed_proposal_example()
+    instance.region_preference = [randomize()]
+    instance.ticket_attributes = {randomize(): randomize()}
+    instance.ticket_id = randomize()
+    instance.time_to_match = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -866,15 +932,20 @@ def create_models_ticket_data_example() -> ModelsTicketData:
     instance.action = randomize()
     instance.game_mode = randomize()
     instance.is_backfill_match = randomize("bool")
+    instance.is_pivot = randomize("bool")
     instance.is_rule_set_flexed = randomize("bool")
+    instance.matched_region = randomize()
+    instance.member_attributes = {randomize(): randomize()}
     instance.namespace = randomize("slug")
     instance.party_id = randomize("uid")
     instance.pod_name = randomize()
     instance.session_tick_id = randomize()
     instance.tick_id = randomize("int", min_val=1, max_val=1000)
     instance.timestamp = randomize("date")
+    instance.total_players = randomize("int", min_val=1, max_val=1000)
     instance.active_alliance_rule = create_models_alliance_rule_example()
     instance.active_matching_rule = [create_models_matching_rule_example()]
+    instance.elapsed_time = randomize("int", min_val=1, max_val=1000)
     instance.function = randomize()
     instance.iteration = randomize("int", min_val=1, max_val=1000)
     instance.match_id = randomize()

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Statistics Service."""
 
-__version__ = "2.15.0"
+__version__ = "2.17.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -31,6 +31,7 @@ from .bulk_stat_item_update import (
     UpdateStrategyEnum as BulkStatItemUpdateUpdateStrategyEnum,
 )
 from .bulk_stat_operation_result import BulkStatOperationResult
+from .bulk_user_stat_item_by_stat_codes import BulkUserStatItemByStatCodes
 from .bulk_user_stat_item_inc import BulkUserStatItemInc
 from .bulk_user_stat_item_reset import BulkUserStatItemReset
 from .bulk_user_stat_item_update import BulkUserStatItemUpdate
@@ -50,6 +51,7 @@ from .global_stat_item_info import (
 from .global_stat_item_paging_sliced_result import GlobalStatItemPagingSlicedResult
 from .namespace_slot_config_info import NamespaceSlotConfigInfo
 from .paging import Paging
+from .permission import Permission
 from .slot_config_update import SlotConfigUpdate
 from .slot_info import SlotInfo
 from .slot_metadata_update import SlotMetadataUpdate

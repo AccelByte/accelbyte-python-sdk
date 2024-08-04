@@ -579,6 +579,8 @@ def admin_create_test_users_v4(
     """[TEST FACILITY ONLY]Create test Users (AdminCreateTestUsersV4)
 
     Create test users and not send verification code email.
+    Enter the number of test users you want to create in the count field.
+    The maximum value of the user count is 100.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/test_users
@@ -627,6 +629,8 @@ async def admin_create_test_users_v4_async(
     """[TEST FACILITY ONLY]Create test Users (AdminCreateTestUsersV4)
 
     Create test users and not send verification code email.
+    Enter the number of test users you want to create in the count field.
+    The maximum value of the user count is 100.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/test_users
@@ -4677,6 +4681,7 @@ async def public_download_my_backup_codes_v4_async(
 
 @same_doc_as(PublicEnableBackupCodesV4)
 def public_enable_backup_codes_v4(
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4700,6 +4705,8 @@ def public_enable_backup_codes_v4(
 
         namespace: (namespace) REQUIRED str in path
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         204: No Content - (Backup codes enabled and codes sent to email)
 
@@ -4720,6 +4727,7 @@ def public_enable_backup_codes_v4(
         if error:
             return None, error
     request = PublicEnableBackupCodesV4.create(
+        language_tag=language_tag,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -4727,6 +4735,7 @@ def public_enable_backup_codes_v4(
 
 @same_doc_as(PublicEnableBackupCodesV4)
 async def public_enable_backup_codes_v4_async(
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4750,6 +4759,8 @@ async def public_enable_backup_codes_v4_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        language_tag: (languageTag) OPTIONAL str in query
+
     Responses:
         204: No Content - (Backup codes enabled and codes sent to email)
 
@@ -4770,6 +4781,7 @@ async def public_enable_backup_codes_v4_async(
         if error:
             return None, error
     request = PublicEnableBackupCodesV4.create(
+        language_tag=language_tag,
         namespace=namespace,
     )
     return await run_request_async(
@@ -6068,6 +6080,8 @@ def public_list_user_id_by_platform_user_i_ds_v4(
     Note:
     **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
+    If the request body exceed the max limitation, the max count will be in response body's messageVariables: "messageVariables": {"maxCount": "100"}
+
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users
 
@@ -6092,7 +6106,7 @@ def public_list_user_id_by_platform_user_i_ds_v4(
     Responses:
         200: OK - AccountcommonUserPlatforms (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10229: request body exceed max limitation)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
@@ -6156,6 +6170,8 @@ async def public_list_user_id_by_platform_user_i_ds_v4_async(
     Note:
     **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
+    If the request body exceed the max limitation, the max count will be in response body's messageVariables: "messageVariables": {"maxCount": "100"}
+
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users
 
@@ -6180,7 +6196,7 @@ async def public_list_user_id_by_platform_user_i_ds_v4_async(
     Responses:
         200: OK - AccountcommonUserPlatforms (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10229: request body exceed max limitation)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 

@@ -27,11 +27,26 @@ def parse_args() -> dict:
     info = subparsers.add_parser(name="info")
 
     login = subparsers.add_parser(name="login")
-    login.add_argument("type", choices=("client", "user",))
-    login.add_argument("-b", "--base-url", default=environ.get("AB_BASE_URL", None), dest="base_url")
+    login.add_argument(
+        "type",
+        choices=(
+            "client",
+            "user",
+        ),
+    )
+    login.add_argument(
+        "-b", "--base-url", default=environ.get("AB_BASE_URL", None), dest="base_url"
+    )
     login.add_argument("-n", "--namespace", default=environ.get("AB_NAMESPACE", None))
-    login.add_argument("-c", "--client-id", default=environ.get("AB_CLIENT_ID", None), dest="client_id")
-    login.add_argument("-s", "--client-secret", default=environ.get("AB_CLIENT_SECRET", None), dest="client_secret")
+    login.add_argument(
+        "-c", "--client-id", default=environ.get("AB_CLIENT_ID", None), dest="client_id"
+    )
+    login.add_argument(
+        "-s",
+        "--client-secret",
+        default=environ.get("AB_CLIENT_SECRET", None),
+        dest="client_secret",
+    )
     login.add_argument("-u", "--username", default=environ.get("AB_USERNAME", None))
     login.add_argument("-p", "--password", default=environ.get("AB_PASSWORD", None))
     return vars(parser.parse_args())
@@ -64,17 +79,27 @@ def login_command(
     **kwargs,
 ) -> None:
     if not base_url:
-        exit(f"[erro] base url not set, have you using -b/--base-url or setting AB_BASE_URL?")
+        exit(
+            f"[erro] base url not set, have you using -b/--base-url or setting AB_BASE_URL?"
+        )
     if namespace is None:
-        print("[warn] namespace not set, "
-              "did you forget using -n/--namespace or setting AB_NAMESPACE? "
-              "- defaulting to 'accelbyte'", file=stderr)
+        print(
+            "[warn] namespace not set, "
+            "did you forget using -n/--namespace or setting AB_NAMESPACE? "
+            "- defaulting to 'accelbyte'",
+            file=stderr,
+        )
         namespace = "accelbyte"
     if not client_id:
-        exit(f"[erro] client id not set, have you using -c/--client-id or setting AB_CLIENT_ID?")
+        exit(
+            f"[erro] client id not set, have you using -c/--client-id or setting AB_CLIENT_ID?"
+        )
     if client_secret is None:
-        print("[warn] client secret not set, "
-              "did you forget using -s/--client-secret or setting AB_CLIENT_SECRET?", file=stderr)
+        print(
+            "[warn] client secret not set, "
+            "did you forget using -s/--client-secret or setting AB_CLIENT_SECRET?",
+            file=stderr,
+        )
         client_secret = ""
 
     config_repo = MyConfigRepository(base_url, client_id, client_secret, namespace)
@@ -89,9 +114,13 @@ def login_command(
 
     elif type == "user":
         if not username:
-            exit(f"[erro] username not set, have you using -u/--username or setting AB_USERNAME?")
+            exit(
+                f"[erro] username not set, have you using -u/--username or setting AB_USERNAME?"
+            )
         if not password:
-            exit(f"[erro] password not set, have you using -p/--password or setting AB_PASSWORD?")
+            exit(
+                f"[erro] password not set, have you using -p/--password or setting AB_PASSWORD?"
+            )
 
         token, error = auth_service.login_user(username, password, sdk=sdk)
         if error:

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.20.0)
+# Fleet Commander Index (1.22.1)
 
 
 ## Operations
@@ -80,6 +80,7 @@
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID} | DELETE | ImageMarkForDeletion | `false` | [ImageMarkForDeletion](../../accelbyte_py_sdk/api/ams/operations/images/image_mark_for_deletion.py) | [image_mark_for_deletion](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-mark-for-deletion](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_mark_for_deletion.py) |
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID} | PATCH | ImagePatch | `false` | [ImagePatch](../../accelbyte_py_sdk/api/ams/operations/images/image_patch.py) | [image_patch](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-patch](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_patch.py) |
 | /ams/v1/admin/namespaces/{namespace}/images/{imageID}/restore | POST | ImageUnmarkForDeletion | `false` | [ImageUnmarkForDeletion](../../accelbyte_py_sdk/api/ams/operations/images/image_unmark_for_deletion.py) | [image_unmark_for_deletion](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-image-unmark-for-deletion](../../samples/cli/accelbyte_py_sdk_cli/ams/_image_unmark_for_deletion.py) |
+| /ams/v1/admin/namespaces/{namespace}/images-storage | GET | ImagesStorage | `false` | [ImagesStorage](../../accelbyte_py_sdk/api/ams/operations/images/images_storage.py) | [images_storage](../../accelbyte_py_sdk/api/ams/wrappers/_images.py) | [accelbyte_py_sdk_cli ams-images-storage](../../samples/cli/accelbyte_py_sdk_cli/ams/_images_storage.py) |
 
 ### Servers
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -140,6 +141,7 @@
 | api.ImageDetails | [ApiImageDetails](../../accelbyte_py_sdk/api/ams/models/api_image_details.py) |
 | api.ImageList | [ApiImageList](../../accelbyte_py_sdk/api/ams/models/api_image_list.py) |
 | api.ImageListItem | [ApiImageListItem](../../accelbyte_py_sdk/api/ams/models/api_image_list_item.py) |
+| api.ImageStorage | [ApiImageStorage](../../accelbyte_py_sdk/api/ams/models/api_image_storage.py) |
 | api.ImageUpdate | [ApiImageUpdate](../../accelbyte_py_sdk/api/ams/models/api_image_update.py) |
 | api.InstanceTypeDescriptionResponse | [ApiInstanceTypeDescriptionResponse](../../accelbyte_py_sdk/api/ams/models/api_instance_type_description_response.py) |
 | api.PagingInfo | [ApiPagingInfo](../../accelbyte_py_sdk/api/ams/models/api_paging_info.py) |

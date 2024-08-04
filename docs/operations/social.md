@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Statistics Service Index (2.15.0)
+# AccelByte Gaming Services Statistics Service Index (2.17.0)
 
 
 ## Operations
@@ -91,6 +91,7 @@
 | /social/v2/admin/namespaces/{namespace}/statitems/value/bulk/getOrDefault | GET | bulkFetchOrDefaultStatItems_1 | `false` | [BulkFetchOrDefaultStatItems1](../../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_fetch_or_default_s_d6fcc5.py) | [bulk_fetch_or_default_stat_items_1](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-bulk-fetch-or-default-stat-items-1](../../samples/cli/accelbyte_py_sdk_cli/social/_bulk_fetch_or_default_stat_items_1.py) |
 | /social/v1/admin/namespaces/{namespace}/statitems/bulk | GET | bulkFetchStatItems | `false` | [BulkFetchStatItems](../../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_fetch_stat_items.py) | [bulk_fetch_stat_items](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-bulk-fetch-stat-items](../../samples/cli/accelbyte_py_sdk_cli/social/_bulk_fetch_stat_items.py) |
 | /social/v1/public/namespaces/{namespace}/statitems/bulk | GET | bulkFetchStatItems_1 | `false` | [BulkFetchStatItems1](../../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_fetch_stat_items_1.py) | [bulk_fetch_stat_items_1](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-bulk-fetch-stat-items-1](../../samples/cli/accelbyte_py_sdk_cli/social/_bulk_fetch_stat_items_1.py) |
+| /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk/getOrDefault | POST | bulkGetOrDefaultByUserId | `false` | [BulkGetOrDefaultByUserId](../../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_get_or_default_by_user_id.py) | [bulk_get_or_default_by_user_id](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-bulk-get-or-default-by-user-id](../../samples/cli/accelbyte_py_sdk_cli/social/_bulk_get_or_default_by_user_id.py) |
 | /social/v1/admin/namespaces/{namespace}/statitems/value/bulk | PUT | bulkIncUserStatItem | `false` | [BulkIncUserStatItem](../../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_inc_user_stat_item.py) | [bulk_inc_user_stat_item](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-bulk-inc-user-stat-item](../../samples/cli/accelbyte_py_sdk_cli/social/_bulk_inc_user_stat_item.py) |
 | /social/v1/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk | PUT | bulkIncUserStatItem_1 | `false` | [BulkIncUserStatItem1](../../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_inc_user_stat_item_1.py) | [bulk_inc_user_stat_item_1](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-bulk-inc-user-stat-item-1](../../samples/cli/accelbyte_py_sdk_cli/social/_bulk_inc_user_stat_item_1.py) |
 | /social/v1/admin/namespaces/{namespace}/statitems/value/bulk | PATCH | bulkIncUserStatItemValue | `false` | [BulkIncUserStatItemValue](../../accelbyte_py_sdk/api/social/operations/user_statistic/bulk_inc_user_stat_item_value.py) | [bulk_inc_user_stat_item_value](../../accelbyte_py_sdk/api/social/wrappers/_user_statistic.py) | [accelbyte_py_sdk_cli social-bulk-inc-user-stat-item-value](../../samples/cli/accelbyte_py_sdk_cli/social/_bulk_inc_user_stat_item_value.py) |
@@ -152,6 +153,7 @@
 | BulkStatItemReset | [BulkStatItemReset](../../accelbyte_py_sdk/api/social/models/bulk_stat_item_reset.py) |
 | BulkStatItemUpdate | [BulkStatItemUpdate](../../accelbyte_py_sdk/api/social/models/bulk_stat_item_update.py) |
 | BulkStatOperationResult | [BulkStatOperationResult](../../accelbyte_py_sdk/api/social/models/bulk_stat_operation_result.py) |
+| BulkUserStatItemByStatCodes | [BulkUserStatItemByStatCodes](../../accelbyte_py_sdk/api/social/models/bulk_user_stat_item_by_stat_codes.py) |
 | BulkUserStatItemInc | [BulkUserStatItemInc](../../accelbyte_py_sdk/api/social/models/bulk_user_stat_item_inc.py) |
 | BulkUserStatItemReset | [BulkUserStatItemReset](../../accelbyte_py_sdk/api/social/models/bulk_user_stat_item_reset.py) |
 | BulkUserStatItemUpdate | [BulkUserStatItemUpdate](../../accelbyte_py_sdk/api/social/models/bulk_user_stat_item_update.py) |
@@ -165,6 +167,7 @@
 | GlobalStatItemPagingSlicedResult | [GlobalStatItemPagingSlicedResult](../../accelbyte_py_sdk/api/social/models/global_stat_item_paging_sliced_result.py) |
 | NamespaceSlotConfigInfo | [NamespaceSlotConfigInfo](../../accelbyte_py_sdk/api/social/models/namespace_slot_config_info.py) |
 | Paging | [Paging](../../accelbyte_py_sdk/api/social/models/paging.py) |
+| Permission | [Permission](../../accelbyte_py_sdk/api/social/models/permission.py) |
 | SlotConfigUpdate | [SlotConfigUpdate](../../accelbyte_py_sdk/api/social/models/slot_config_update.py) |
 | SlotInfo | [SlotInfo](../../accelbyte_py_sdk/api/social/models/slot_info.py) |
 | SlotMetadataUpdate | [SlotMetadataUpdate](../../accelbyte_py_sdk/api/social/models/slot_metadata_update.py) |

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.35.9"
+__version__ = "3.35.15"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -175,6 +175,8 @@ from ._party import public_update_party_attributes_v1_async
 
 from ._player import admin_bulk_block_players_v1
 from ._player import admin_bulk_block_players_v1_async
+from ._player import admin_bulk_unblock_players_v1
+from ._player import admin_bulk_unblock_players_v1_async
 from ._player import admin_get_all_player_session_attribute
 from ._player import admin_get_all_player_session_attribute_async
 from ._player import admin_get_bulk_player_blocked_players_v1
@@ -200,6 +202,8 @@ from ._player import public_unblock_player_v1_async
 
 from ._presence import users_presence_handler_v1
 from ._presence import users_presence_handler_v1_async
+from ._presence import users_presence_handler_v2
+from ._presence import users_presence_handler_v2_async
 
 from ._profanity import admin_add_profanity_filter_into_list
 from ._profanity import admin_add_profanity_filter_into_list_async

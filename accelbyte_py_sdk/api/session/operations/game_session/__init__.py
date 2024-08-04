@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.15.5"
+__version__ = "3.16.15"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -29,6 +29,7 @@ from .get_session_server_secret import GetSessionServerSecret
 from .join_game_session import JoinGameSession
 from .leave_game_session import LeaveGameSession
 from .patch_update_game_session import PatchUpdateGameSession
+from .public_game_session_cancel import PublicGameSessionCancel
 from .public_game_session_invite import PublicGameSessionInvite
 from .public_game_session_reject import PublicGameSessionReject
 from .public_promote_game_ses_482ff3 import PublicPromoteGameSessionLeader

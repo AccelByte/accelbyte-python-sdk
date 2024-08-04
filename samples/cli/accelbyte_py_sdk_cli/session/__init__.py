@@ -81,6 +81,7 @@ from ._leave_game_session import leave_game_session
 from ._public_game_session_reject import public_game_session_reject
 from ._get_session_server_secret import get_session_server_secret
 from ._append_team_game_session import append_team_game_session
+from ._public_game_session_cancel import public_game_session_cancel
 from ._public_party_join_code import public_party_join_code
 from ._public_get_party import public_get_party
 from ._public_update_party import public_update_party
@@ -92,6 +93,7 @@ from ._public_promote_party_leader import public_promote_party_leader
 from ._public_party_join import public_party_join
 from ._public_party_leave import public_party_leave
 from ._public_party_reject import public_party_reject
+from ._public_party_cancel import public_party_cancel
 from ._public_party_kick import public_party_kick
 from ._public_create_party import public_create_party
 from ._public_get_recent_player import public_get_recent_player
@@ -170,6 +172,7 @@ commands = [
     public_game_session_reject,
     get_session_server_secret,
     append_team_game_session,
+    public_game_session_cancel,
     public_party_join_code,
     public_get_party,
     public_update_party,
@@ -181,6 +184,7 @@ commands = [
     public_party_join,
     public_party_leave,
     public_party_reject,
+    public_party_cancel,
     public_party_kick,
     public_create_party,
     public_get_recent_player,

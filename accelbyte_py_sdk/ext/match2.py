@@ -267,6 +267,7 @@ def create_api_match_ticket_status_example() -> ApiMatchTicketStatus:
     instance = ApiMatchTicketStatus()
     instance.match_found = randomize("bool")
     instance.session_id = randomize("uid")
+    instance.is_active = randomize("bool")
     instance.match_pool = randomize()
     instance.match_ticket_id = randomize()
     instance.proposed_proposal = create_api_proposed_proposal_example()
@@ -420,6 +421,7 @@ def create_matchmaker_ticket_example() -> MatchmakerTicket:
     instance = MatchmakerTicket()
     instance.created_at = randomize("date")
     instance.is_active = randomize("bool")
+    instance.is_pivot = randomize("bool")
     instance.latencies = {}
     instance.match_pool = randomize()
     instance.namespace = randomize("slug")

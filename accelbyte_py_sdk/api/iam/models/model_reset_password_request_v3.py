@@ -37,6 +37,8 @@ class ModelResetPasswordRequestV3(Model):
         email_address: (emailAddress) REQUIRED str
 
         new_password: (newPassword) REQUIRED str
+
+        language_tag: (languageTag) OPTIONAL str
     """
 
     # region fields
@@ -44,6 +46,7 @@ class ModelResetPasswordRequestV3(Model):
     code: str  # REQUIRED
     email_address: str  # REQUIRED
     new_password: str  # REQUIRED
+    language_tag: str  # OPTIONAL
 
     # endregion fields
 
@@ -59,6 +62,10 @@ class ModelResetPasswordRequestV3(Model):
 
     def with_new_password(self, value: str) -> ModelResetPasswordRequestV3:
         self.new_password = value
+        return self
+
+    def with_language_tag(self, value: str) -> ModelResetPasswordRequestV3:
+        self.language_tag = value
         return self
 
     # endregion with_x methods
@@ -79,6 +86,10 @@ class ModelResetPasswordRequestV3(Model):
             result["newPassword"] = str(self.new_password)
         elif include_empty:
             result["newPassword"] = ""
+        if hasattr(self, "language_tag"):
+            result["languageTag"] = str(self.language_tag)
+        elif include_empty:
+            result["languageTag"] = ""
         return result
 
     # endregion to methods
@@ -87,12 +98,19 @@ class ModelResetPasswordRequestV3(Model):
 
     @classmethod
     def create(
-        cls, code: str, email_address: str, new_password: str, **kwargs
+        cls,
+        code: str,
+        email_address: str,
+        new_password: str,
+        language_tag: Optional[str] = None,
+        **kwargs,
     ) -> ModelResetPasswordRequestV3:
         instance = cls()
         instance.code = code
         instance.email_address = email_address
         instance.new_password = new_password
+        if language_tag is not None:
+            instance.language_tag = language_tag
         return instance
 
     @classmethod
@@ -114,6 +132,10 @@ class ModelResetPasswordRequestV3(Model):
             instance.new_password = str(dict_["newPassword"])
         elif include_empty:
             instance.new_password = ""
+        if "languageTag" in dict_ and dict_["languageTag"] is not None:
+            instance.language_tag = str(dict_["languageTag"])
+        elif include_empty:
+            instance.language_tag = ""
         return instance
 
     @classmethod
@@ -160,6 +182,7 @@ class ModelResetPasswordRequestV3(Model):
             "code": "code",
             "emailAddress": "email_address",
             "newPassword": "new_password",
+            "languageTag": "language_tag",
         }
 
     @staticmethod
@@ -168,6 +191,7 @@ class ModelResetPasswordRequestV3(Model):
             "code": True,
             "emailAddress": True,
             "newPassword": True,
+            "languageTag": False,
         }
 
     # endregion static methods

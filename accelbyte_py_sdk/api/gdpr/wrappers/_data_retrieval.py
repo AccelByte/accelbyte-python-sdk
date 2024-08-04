@@ -1058,6 +1058,7 @@ async def public_get_user_personal_data_requests_async(
 def public_request_data_retrieval(
     password: str,
     user_id: str,
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1086,6 +1087,8 @@ def public_request_data_retrieval(
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in form_data
+
         password: (password) REQUIRED str in form_data
 
         namespace: (namespace) REQUIRED str in path
@@ -1110,6 +1113,7 @@ def public_request_data_retrieval(
     request = PublicRequestDataRetrieval.create(
         password=password,
         user_id=user_id,
+        language_tag=language_tag,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1119,6 +1123,7 @@ def public_request_data_retrieval(
 async def public_request_data_retrieval_async(
     password: str,
     user_id: str,
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1147,6 +1152,8 @@ async def public_request_data_retrieval_async(
 
         securities: [BEARER_AUTH]
 
+        language_tag: (languageTag) OPTIONAL str in form_data
+
         password: (password) REQUIRED str in form_data
 
         namespace: (namespace) REQUIRED str in path
@@ -1171,6 +1178,7 @@ async def public_request_data_retrieval_async(
     request = PublicRequestDataRetrieval.create(
         password=password,
         user_id=user_id,
+        language_tag=language_tag,
         namespace=namespace,
     )
     return await run_request_async(

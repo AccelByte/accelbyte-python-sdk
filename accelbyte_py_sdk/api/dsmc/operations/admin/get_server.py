@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsServer
+from ...models import ModelsServerDetailsResponse
 from ...models import ResponseError
 
 
@@ -66,7 +66,7 @@ class GetServer(Operation):
         pod_name: (podName) REQUIRED str in path
 
     Responses:
-        200: OK - ModelsServer (server queried)
+        200: OK - ModelsServerDetailsResponse (server queried)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -175,10 +175,13 @@ class GetServer(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, ModelsServer], Union[None, HttpResponse, ResponseError]]:
+    ) -> Tuple[
+        Union[None, ModelsServerDetailsResponse],
+        Union[None, HttpResponse, ResponseError],
+    ]:
         """Parse the given response.
 
-        200: OK - ModelsServer (server queried)
+        200: OK - ModelsServerDetailsResponse (server queried)
 
         401: Unauthorized - ResponseError (Unauthorized)
 
@@ -200,7 +203,7 @@ class GetServer(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ModelsServer.create_from_dict(content), None
+            return ModelsServerDetailsResponse.create_from_dict(content), None
         if code == 401:
             return None, ResponseError.create_from_dict(content)
         if code == 404:

@@ -238,17 +238,24 @@ from ._admin_add_user_permissions_v3 import admin_add_user_permissions_v3
 from ._admin_delete_user_permission_bulk_v3 import admin_delete_user_permission_bulk_v3
 from ._admin_delete_user_permission_v3 import admin_delete_user_permission_v3
 from ._admin_get_user_platform_accounts_v3 import admin_get_user_platform_accounts_v3
+from ._admin_list_all_distinct_platform_accounts_v3 import (
+    admin_list_all_distinct_platform_accounts_v3,
+)
 from ._admin_get_list_justice_platform_accounts import (
     admin_get_list_justice_platform_accounts,
 )
 from ._admin_get_user_mapping import admin_get_user_mapping
 from ._admin_create_justice_user import admin_create_justice_user
 from ._admin_link_platform_account import admin_link_platform_account
+from ._admin_get_user_link_histories_v3 import admin_get_user_link_histories_v3
 from ._admin_platform_unlink_v3 import admin_platform_unlink_v3
 from ._admin_platform_unlink_all_v3 import admin_platform_unlink_all_v3
 from ._admin_platform_link_v3 import admin_platform_link_v3
 from ._admin_delete_user_linking_history_by_platform_idv3 import (
     admin_delete_user_linking_history_by_platform_idv3,
+)
+from ._admin_delete_user_linking_restriction_by_platform_idv3 import (
+    admin_delete_user_linking_restriction_by_platform_idv3,
 )
 from ._admin_get_third_party_platform_token_link_status_v3 import (
     admin_get_third_party_platform_token_link_status_v3,
@@ -701,14 +708,17 @@ commands = [
     admin_delete_user_permission_bulk_v3,
     admin_delete_user_permission_v3,
     admin_get_user_platform_accounts_v3,
+    admin_list_all_distinct_platform_accounts_v3,
     admin_get_list_justice_platform_accounts,
     admin_get_user_mapping,
     admin_create_justice_user,
     admin_link_platform_account,
+    admin_get_user_link_histories_v3,
     admin_platform_unlink_v3,
     admin_platform_unlink_all_v3,
     admin_platform_link_v3,
     admin_delete_user_linking_history_by_platform_idv3,
+    admin_delete_user_linking_restriction_by_platform_idv3,
     admin_get_third_party_platform_token_link_status_v3,
     admin_get_user_single_platform_account,
     admin_delete_user_roles_v3,

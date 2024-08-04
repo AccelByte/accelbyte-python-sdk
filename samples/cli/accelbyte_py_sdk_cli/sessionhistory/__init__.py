@@ -25,6 +25,7 @@ from ._admin_query_party_detail import admin_query_party_detail
 from ._get_party_detail import get_party_detail
 from ._admin_query_ticket_detail import admin_query_ticket_detail
 from ._admin_ticket_detail_get_by_ticket_id import admin_ticket_detail_get_by_ticket_id
+from ._public_query_game_session_me import public_query_game_session_me
 from ._query_xray_match_pool import query_xray_match_pool
 from ._query_detail_tick_match_pool import query_detail_tick_match_pool
 from ._query_detail_tick_match_pool_matches import query_detail_tick_match_pool_matches
@@ -43,6 +44,7 @@ from ._query_total_matchmaking_canceled import query_total_matchmaking_canceled
 from ._query_total_matchmaking_created import query_total_matchmaking_created
 from ._query_total_matchmaking_expired import query_total_matchmaking_expired
 from ._query_total_matchmaking_match_ticket import query_total_matchmaking_match_ticket
+from ._create_xray_ticket_observability import create_xray_ticket_observability
 from ._query_xray_timeline_by_ticket_id import query_xray_timeline_by_ticket_id
 from ._query_xray_timeline_by_user_id import query_xray_timeline_by_user_id
 
@@ -61,6 +63,7 @@ commands = [
     get_party_detail,
     admin_query_ticket_detail,
     admin_ticket_detail_get_by_ticket_id,
+    public_query_game_session_me,
     query_xray_match_pool,
     query_detail_tick_match_pool,
     query_detail_tick_match_pool_matches,
@@ -79,6 +82,7 @@ commands = [
     query_total_matchmaking_created,
     query_total_matchmaking_expired,
     query_total_matchmaking_match_ticket,
+    create_xray_ticket_observability,
     query_xray_timeline_by_ticket_id,
     query_xray_timeline_by_user_id,
 ]

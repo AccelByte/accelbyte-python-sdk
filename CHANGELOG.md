@@ -1,3 +1,30 @@
+<a name="v0.68.0"></a>
+## [v0.68.0]
+### docs
+- **migration-guide:** remove item in migration guide
+- **:** update links
+### ci
+- **generate:** use stage_extend-sdk
+- **:** use extend-builder-batch
+- **:** update commitlint
+- **:** use slack channel env var
+### test
+- **nightly:** integration - delay sending packets due to db eventual consistency
+- **integration:** matchmaking - disable total matchmaking test
+- **integration:** seasonpass - fix currency code namespace
+- **integration:** group - clear user group member first
+- **integration:** seasonpass - fix currency code namespace
+- **generate:** integration - delay sending packets due to db eventual consistency
+- **core:** fix missing flag in test_core target
+### fix
+- **group:** fix group tests
+- **integration:** add delay between ws messages
+- **integration:** fix batched ws session checking
+### feat
+- **core:** add login cli command
+- **core:** add send_raw_request func in http_client
+
+
 <a name="v0.67.0"></a>
 ## [v0.67.0]
 

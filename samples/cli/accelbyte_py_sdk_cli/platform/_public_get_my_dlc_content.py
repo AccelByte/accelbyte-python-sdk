@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Dsm Controller Service
+# AGS Platform Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,38 +30,42 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.dsmc import export_images as export_images_internal
-from accelbyte_py_sdk.api.dsmc.models import ModelsImageRecord
-from accelbyte_py_sdk.api.dsmc.models import ResponseError
+from accelbyte_py_sdk.api.platform import (
+    public_get_my_dlc_content as public_get_my_dlc_content_internal,
+)
+from accelbyte_py_sdk.api.platform.models import SimpleUserDLCRewardContentsResponse
 
 
 @click.command()
-@click.option("--namespace", type=str)
+@click.argument("type_", type=str)
+@click.option("--include_all_namespaces", "include_all_namespaces", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def export_images(
-    namespace: Optional[str] = None,
+def public_get_my_dlc_content(
+    type_: str,
+    include_all_namespaces: Optional[bool] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(export_images_internal.__doc__)
+        click.echo(public_get_my_dlc_content_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = export_images_internal(
-        namespace=namespace,
+    result, error = public_get_my_dlc_content_internal(
+        type_=type_,
+        include_all_namespaces=include_all_namespaces,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"ExportImages failed: {str(error)}")
+        raise Exception(f"publicGetMyDLCContent failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-export_images.operation_id = "ExportImages"
-export_images.is_deprecated = False
+public_get_my_dlc_content.operation_id = "publicGetMyDLCContent"
+public_get_my_dlc_content.is_deprecated = False

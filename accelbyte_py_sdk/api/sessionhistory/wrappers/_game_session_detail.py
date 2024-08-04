@@ -48,6 +48,7 @@ from ..operations.game_session_detail import AdminQueryTicketDetail
 from ..operations.game_session_detail import AdminTicketDetailGetByTicketID
 from ..operations.game_session_detail import GetGameSessionDetail
 from ..operations.game_session_detail import GetPartyDetail
+from ..operations.game_session_detail import PublicQueryGameSessionMe
 
 
 @same_doc_as(AdminGetMatchmakingDetailBySessionID)
@@ -256,11 +257,13 @@ async def admin_get_matchmaking_detail_by_ticket_id_async(
 
 @same_doc_as(AdminQueryGameSessionDetail)
 def admin_query_game_session_detail(
+    end_date: Optional[str] = None,
     game_session_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
+    start_date: Optional[str] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -285,6 +288,8 @@ def admin_query_game_session_detail(
 
         namespace: (namespace) REQUIRED str in path
 
+        end_date: (endDate) OPTIONAL str in query
+
         game_session_id: (gameSessionID) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -294,6 +299,8 @@ def admin_query_game_session_detail(
         order: (order) OPTIONAL str in query
 
         order_by: (orderBy) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
 
         user_id: (userID) OPTIONAL str in query
 
@@ -313,11 +320,13 @@ def admin_query_game_session_detail(
         if error:
             return None, error
     request = AdminQueryGameSessionDetail.create(
+        end_date=end_date,
         game_session_id=game_session_id,
         limit=limit,
         offset=offset,
         order=order,
         order_by=order_by,
+        start_date=start_date,
         user_id=user_id,
         namespace=namespace,
     )
@@ -326,11 +335,13 @@ def admin_query_game_session_detail(
 
 @same_doc_as(AdminQueryGameSessionDetail)
 async def admin_query_game_session_detail_async(
+    end_date: Optional[str] = None,
     game_session_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
+    start_date: Optional[str] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -355,6 +366,8 @@ async def admin_query_game_session_detail_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        end_date: (endDate) OPTIONAL str in query
+
         game_session_id: (gameSessionID) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
@@ -364,6 +377,8 @@ async def admin_query_game_session_detail_async(
         order: (order) OPTIONAL str in query
 
         order_by: (orderBy) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
 
         user_id: (userID) OPTIONAL str in query
 
@@ -383,11 +398,13 @@ async def admin_query_game_session_detail_async(
         if error:
             return None, error
     request = AdminQueryGameSessionDetail.create(
+        end_date=end_date,
         game_session_id=game_session_id,
         limit=limit,
         offset=offset,
         order=order,
         order_by=order_by,
+        start_date=start_date,
         user_id=user_id,
         namespace=namespace,
     )
@@ -1161,6 +1178,128 @@ async def get_party_detail_async(
             return None, error
     request = GetPartyDetail.create(
         session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicQueryGameSessionMe)
+def public_query_game_session_me(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get all game sessions history for current user. (publicQueryGameSessionMe)
+
+    Get all game sessions history for current user.
+
+    Properties:
+        url: /sessionhistory/v1/public/namespaces/{namespace}/users/me/gamesessions
+
+        method: GET
+
+        tags: ["Game Session Detail"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order: (order) OPTIONAL str in query
+
+    Responses:
+        200: OK - ApimodelsGameSessionDetailQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicQueryGameSessionMe.create(
+        limit=limit,
+        offset=offset,
+        order=order,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicQueryGameSessionMe)
+async def public_query_game_session_me_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get all game sessions history for current user. (publicQueryGameSessionMe)
+
+    Get all game sessions history for current user.
+
+    Properties:
+        url: /sessionhistory/v1/public/namespaces/{namespace}/users/me/gamesessions
+
+        method: GET
+
+        tags: ["Game Session Detail"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order: (order) OPTIONAL str in query
+
+    Responses:
+        200: OK - ApimodelsGameSessionDetailQueryResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        429: Too Many Requests - ResponseError (Too Many Requests)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicQueryGameSessionMe.create(
+        limit=limit,
+        offset=offset,
+        order=order,
         namespace=namespace,
     )
     return await run_request_async(

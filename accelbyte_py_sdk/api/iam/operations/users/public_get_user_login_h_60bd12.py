@@ -42,6 +42,10 @@ class PublicGetUserLoginHistoriesV3(Operation):
     - This endpoint retrieve the next page of the data if we provide `after` parameters with valid Unix timestamp.
     - This endpoint retrieve the previous page of the data if we provide `before` parameter with valid data Unix timestamp.
 
+
+    **Authentication:**
+    The _**userId**_ parameter should match the one in the access token.
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/logins/histories
 

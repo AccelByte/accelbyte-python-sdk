@@ -42,6 +42,10 @@ class PublicLinkPlatformAccount(Operation):
     Note: Game progression data (statistics, reward, etc) associated with previous User Account will not be
     transferred. If the data is tight to game user ID, the user will have the game progression data.
 
+
+    **Authentication:**
+    The _**userId**_ parameter should match the one in the access token.
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/platforms/link
 

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.53.0"
+__version__ = "4.54.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -159,6 +159,8 @@ from .wrappers import get_user_dlc
 from .wrappers import get_user_dlc_async
 from .wrappers import get_user_dlc_by_platform
 from .wrappers import get_user_dlc_by_platform_async
+from .wrappers import public_get_my_dlc_content
+from .wrappers import public_get_my_dlc_content_async
 from .wrappers import public_sync_psn_dlc_inventory
 from .wrappers import public_sync_psn_dlc_inventory_async
 from .wrappers import public_sync_psn_dlc_inventory_with_multiple_service_labels
@@ -295,6 +297,8 @@ from .wrappers import update_user_entitlement_async
 # fulfillment
 from .wrappers import fulfill_item
 from .wrappers import fulfill_item_async
+from .wrappers import fulfill_items
+from .wrappers import fulfill_items_async
 from .wrappers import fulfill_rewards
 from .wrappers import fulfill_rewards_async
 from .wrappers import fulfill_rewards_v2
@@ -305,8 +309,12 @@ from .wrappers import public_redeem_code
 from .wrappers import public_redeem_code_async
 from .wrappers import query_fulfillment_histories
 from .wrappers import query_fulfillment_histories_async
+from .wrappers import query_fulfillments
+from .wrappers import query_fulfillments_async
 from .wrappers import redeem_code
 from .wrappers import redeem_code_async
+from .wrappers import revoke_items
+from .wrappers import revoke_items_async
 
 # fulfillment_script
 from .wrappers import create_fulfillment_script

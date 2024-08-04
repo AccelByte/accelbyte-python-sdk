@@ -42,6 +42,8 @@ class ModelsImageRecordUpdate(Model):
 
         persistent: (persistent) REQUIRED bool
 
+        ulimit_file_size: (ulimitFileSize) REQUIRED int
+
         version: (version) REQUIRED str
 
         artifact_path: (artifactPath) OPTIONAL str
@@ -57,6 +59,7 @@ class ModelsImageRecordUpdate(Model):
     namespace: str  # REQUIRED
     patch_version: str  # REQUIRED
     persistent: bool  # REQUIRED
+    ulimit_file_size: int  # REQUIRED
     version: str  # REQUIRED
     artifact_path: str  # OPTIONAL
     core_dump_enabled: bool  # OPTIONAL
@@ -80,6 +83,10 @@ class ModelsImageRecordUpdate(Model):
 
     def with_persistent(self, value: bool) -> ModelsImageRecordUpdate:
         self.persistent = value
+        return self
+
+    def with_ulimit_file_size(self, value: int) -> ModelsImageRecordUpdate:
+        self.ulimit_file_size = value
         return self
 
     def with_version(self, value: str) -> ModelsImageRecordUpdate:
@@ -122,6 +129,10 @@ class ModelsImageRecordUpdate(Model):
             result["persistent"] = bool(self.persistent)
         elif include_empty:
             result["persistent"] = False
+        if hasattr(self, "ulimit_file_size"):
+            result["ulimitFileSize"] = int(self.ulimit_file_size)
+        elif include_empty:
+            result["ulimitFileSize"] = 0
         if hasattr(self, "version"):
             result["version"] = str(self.version)
         elif include_empty:
@@ -154,6 +165,7 @@ class ModelsImageRecordUpdate(Model):
         namespace: str,
         patch_version: str,
         persistent: bool,
+        ulimit_file_size: int,
         version: str,
         artifact_path: Optional[str] = None,
         core_dump_enabled: Optional[bool] = None,
@@ -165,6 +177,7 @@ class ModelsImageRecordUpdate(Model):
         instance.namespace = namespace
         instance.patch_version = patch_version
         instance.persistent = persistent
+        instance.ulimit_file_size = ulimit_file_size
         instance.version = version
         if artifact_path is not None:
             instance.artifact_path = artifact_path
@@ -197,6 +210,10 @@ class ModelsImageRecordUpdate(Model):
             instance.persistent = bool(dict_["persistent"])
         elif include_empty:
             instance.persistent = False
+        if "ulimitFileSize" in dict_ and dict_["ulimitFileSize"] is not None:
+            instance.ulimit_file_size = int(dict_["ulimitFileSize"])
+        elif include_empty:
+            instance.ulimit_file_size = 0
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = str(dict_["version"])
         elif include_empty:
@@ -268,6 +285,7 @@ class ModelsImageRecordUpdate(Model):
             "namespace": "namespace",
             "patchVersion": "patch_version",
             "persistent": "persistent",
+            "ulimitFileSize": "ulimit_file_size",
             "version": "version",
             "artifactPath": "artifact_path",
             "coreDumpEnabled": "core_dump_enabled",
@@ -281,6 +299,7 @@ class ModelsImageRecordUpdate(Model):
             "namespace": True,
             "patchVersion": True,
             "persistent": True,
+            "ulimitFileSize": True,
             "version": True,
             "artifactPath": False,
             "coreDumpEnabled": False,

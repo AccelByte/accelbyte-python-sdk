@@ -53,6 +53,8 @@ class ApimodelsCreateItem(Model):
         inventory_configuration_code: (inventoryConfigurationCode) OPTIONAL str
 
         inventory_id: (inventoryId) OPTIONAL str
+
+        source: (source) OPTIONAL str
     """
 
     # region fields
@@ -68,6 +70,7 @@ class ApimodelsCreateItem(Model):
     type_: str  # REQUIRED
     inventory_configuration_code: str  # OPTIONAL
     inventory_id: str  # OPTIONAL
+    source: str  # OPTIONAL
 
     # endregion fields
 
@@ -117,6 +120,10 @@ class ApimodelsCreateItem(Model):
 
     def with_inventory_id(self, value: str) -> ApimodelsCreateItem:
         self.inventory_id = value
+        return self
+
+    def with_source(self, value: str) -> ApimodelsCreateItem:
+        self.source = value
         return self
 
     # endregion with_x methods
@@ -175,6 +182,10 @@ class ApimodelsCreateItem(Model):
             result["inventoryId"] = str(self.inventory_id)
         elif include_empty:
             result["inventoryId"] = ""
+        if hasattr(self, "source"):
+            result["source"] = str(self.source)
+        elif include_empty:
+            result["source"] = ""
         return result
 
     # endregion to methods
@@ -195,6 +206,7 @@ class ApimodelsCreateItem(Model):
         type_: str,
         inventory_configuration_code: Optional[str] = None,
         inventory_id: Optional[str] = None,
+        source: Optional[str] = None,
         **kwargs,
     ) -> ApimodelsCreateItem:
         instance = cls()
@@ -211,6 +223,8 @@ class ApimodelsCreateItem(Model):
             instance.inventory_configuration_code = inventory_configuration_code
         if inventory_id is not None:
             instance.inventory_id = inventory_id
+        if source is not None:
+            instance.source = source
         return instance
 
     @classmethod
@@ -276,6 +290,10 @@ class ApimodelsCreateItem(Model):
             instance.inventory_id = str(dict_["inventoryId"])
         elif include_empty:
             instance.inventory_id = ""
+        if "source" in dict_ and dict_["source"] is not None:
+            instance.source = str(dict_["source"])
+        elif include_empty:
+            instance.source = ""
         return instance
 
     @classmethod
@@ -328,6 +346,7 @@ class ApimodelsCreateItem(Model):
             "type": "type_",
             "inventoryConfigurationCode": "inventory_configuration_code",
             "inventoryId": "inventory_id",
+            "source": "source",
         }
 
     @staticmethod
@@ -344,6 +363,7 @@ class ApimodelsCreateItem(Model):
             "type": True,
             "inventoryConfigurationCode": False,
             "inventoryId": False,
+            "source": False,
         }
 
     # endregion static methods

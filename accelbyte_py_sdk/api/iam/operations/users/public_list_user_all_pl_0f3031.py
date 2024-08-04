@@ -37,7 +37,11 @@ class PublicListUserAllPlatformAccountsDistinctV3(Operation):
     """Get distinct platform accounts linked to the user (PublicListUserAllPlatformAccountsDistinctV3)
 
     This endpoint retrieves platform accounts linked to user.
-    It will query all linked platform accounts and result will be distinct & grouped, same platform we will pick oldest linked one.
+    It will query all linked platform accounts. The results will be distinct and grouped by platform, and for each platform, we will select the oldest linked one.
+
+
+    **Authentication:**
+    The _**userId**_ parameter should match the one in the access token.
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}/distinctPlatforms

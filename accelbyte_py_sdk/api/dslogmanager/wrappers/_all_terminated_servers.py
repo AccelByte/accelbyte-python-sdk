@@ -31,10 +31,12 @@ from ....core import same_doc_as
 
 from ..models import ModelsBatchDownloadLogsRequest
 from ..models import ModelsListTerminatedServersResponse
+from ..models import ModelsMetadataServersRequest
 from ..models import ResponseError
 
 from ..operations.all_terminated_servers import BatchDownloadServerLogs
 from ..operations.all_terminated_servers import ListAllTerminatedServers
+from ..operations.all_terminated_servers import ListMetadataServers
 
 
 @same_doc_as(BatchDownloadServerLogs)
@@ -337,6 +339,106 @@ async def list_all_terminated_servers_async(
         start_date=start_date,
         status=status,
         user_id=user_id,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(ListMetadataServers)
+def list_metadata_servers(
+    body: ModelsMetadataServersRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve Metadata Servers (listMetadataServers)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    This endpoint used to retrieve metadata servers in a namespace
+
+    The namespace filter is will give result exact namespace response
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    Properties:
+        url: /dslogmanager/servers/metadata
+
+        method: POST
+
+        tags: ["All Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsMetadataServersRequest in body
+
+    Responses:
+        200: OK - ModelsListTerminatedServersResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    request = ListMetadataServers.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(ListMetadataServers)
+async def list_metadata_servers_async(
+    body: ModelsMetadataServersRequest,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retrieve Metadata Servers (listMetadataServers)
+
+    ```
+    Required permission: ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    This endpoint used to retrieve metadata servers in a namespace
+
+    The namespace filter is will give result exact namespace response
+    ```
+
+    Required Permission(s):
+        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
+
+    Properties:
+        url: /dslogmanager/servers/metadata
+
+        method: POST
+
+        tags: ["All Terminated Servers"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsMetadataServersRequest in body
+
+    Responses:
+        200: OK - ModelsListTerminatedServersResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    request = ListMetadataServers.create(
+        body=body,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

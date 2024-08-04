@@ -69,6 +69,8 @@ class PublicListUserIDByPlatformUserIDsV4(Operation):
     Note:
     **nintendo platform user ID**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
+    If the request body exceed the max limitation, the max count will be in response body's messageVariables: "messageVariables": {"maxCount": "100"}
+
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users
 
@@ -93,7 +95,7 @@ class PublicListUserIDByPlatformUserIDsV4(Operation):
     Responses:
         200: OK - AccountcommonUserPlatforms (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10229: request body exceed max limitation)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
@@ -243,7 +245,7 @@ class PublicListUserIDByPlatformUserIDsV4(Operation):
 
         200: OK - AccountcommonUserPlatforms (OK)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse (20002: validation error | 10229: request body exceed max limitation)
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 

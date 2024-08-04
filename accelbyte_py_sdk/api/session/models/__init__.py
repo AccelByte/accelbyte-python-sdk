@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.15.5"
+__version__ = "3.16.15"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -84,6 +84,7 @@ from .apimodels_response_delete_bulk_game_sessions import (
 from .apimodels_server_secret import ApimodelsServerSecret
 from .apimodels_session_invite_request import ApimodelsSessionInviteRequest
 from .apimodels_session_invite_response import ApimodelsSessionInviteResponse
+from .apimodels_session_storage_request import ApimodelsSessionStorageRequest
 from .apimodels_set_ds_ready_request import ApimodelsSetDSReadyRequest
 from .apimodels_update_configuration_template_request import (
     ApimodelsUpdateConfigurationTemplateRequest,

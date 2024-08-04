@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.15.5"
+__version__ = "3.16.15"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

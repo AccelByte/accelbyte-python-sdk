@@ -57,6 +57,9 @@ from ._public_get_time_zones import public_get_time_zones
 from ._public_get_user_profile_public_info_by_ids import (
     public_get_user_profile_public_info_by_ids,
 )
+from ._public_bulk_get_user_profile_public_info import (
+    public_bulk_get_user_profile_public_info,
+)
 from ._public_get_user_profile_info_by_public_id import (
     public_get_user_profile_info_by_public_id,
 )
@@ -130,6 +133,7 @@ commands = [
     public_get_languages,
     public_get_time_zones,
     public_get_user_profile_public_info_by_ids,
+    public_bulk_get_user_profile_public_info,
     public_get_user_profile_info_by_public_id,
     public_get_namespace_publisher,
     get_my_profile_info,

@@ -100,6 +100,7 @@ from ._bulk_update_user_stat_item_v2 import bulk_update_user_stat_item_v2
 from ._bulk_fetch_or_default_stat_items_1 import bulk_fetch_or_default_stat_items_1
 from ._admin_list_users_stat_items import admin_list_users_stat_items
 from ._bulk_update_user_stat_item import bulk_update_user_stat_item
+from ._bulk_get_or_default_by_user_id import bulk_get_or_default_by_user_id
 from ._bulk_reset_user_stat_item_values import bulk_reset_user_stat_item_values
 from ._delete_user_stat_items_2 import delete_user_stat_items_2
 from ._update_user_stat_item_value import update_user_stat_item_value
@@ -200,6 +201,7 @@ commands = [
     bulk_fetch_or_default_stat_items_1,
     admin_list_users_stat_items,
     bulk_update_user_stat_item,
+    bulk_get_or_default_by_user_id,
     bulk_reset_user_stat_item_values,
     delete_user_stat_items_2,
     update_user_stat_item_value,

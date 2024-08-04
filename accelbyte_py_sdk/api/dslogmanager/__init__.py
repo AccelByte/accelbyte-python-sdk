@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ds Log Manager Service."""
 
-__version__ = "3.4.1"
+__version__ = "3.7.4"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,6 +23,8 @@ from .wrappers import batch_download_server_logs
 from .wrappers import batch_download_server_logs_async
 from .wrappers import list_all_terminated_servers
 from .wrappers import list_all_terminated_servers_async
+from .wrappers import list_metadata_servers
+from .wrappers import list_metadata_servers_async
 
 # dslogmanager_operations
 from .wrappers import public_get_messages

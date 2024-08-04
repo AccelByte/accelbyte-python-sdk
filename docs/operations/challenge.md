@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Challenge Service Index (1.6.0)
+# AccelByte Gaming Services Challenge Service Index (1.8.1)
 
 
 ## Operations
@@ -30,6 +30,7 @@
 |---|---|---|---|---|---|---|
 | /challenge/v1/admin/namespaces/{namespace}/progress/evaluate | POST | adminEvaluateProgress | `false` | [AdminEvaluateProgress](../../accelbyte_py_sdk/api/challenge/operations/challenge_progression/admin_evaluate_progress.py) | [admin_evaluate_progress](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_progression.py) | [accelbyte_py_sdk_cli challenge-admin-evaluate-progress](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_evaluate_progress.py) |
 | /challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate | POST | EvaluateMyProgress | `false` | [EvaluateMyProgress](../../accelbyte_py_sdk/api/challenge/operations/challenge_progression/evaluate_my_progress.py) | [evaluate_my_progress](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_progression.py) | [accelbyte_py_sdk_cli challenge-evaluate-my-progress](../../samples/cli/accelbyte_py_sdk_cli/challenge/_evaluate_my_progress.py) |
+| /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index} | GET | publicGetPastUserProgression | `false` | [PublicGetPastUserProgression](../../accelbyte_py_sdk/api/challenge/operations/challenge_progression/public_get_past_user_pr_bbe905.py) | [public_get_past_user_progression](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_progression.py) | [accelbyte_py_sdk_cli challenge-public-get-past-user-progression](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_get_past_user_progression.py) |
 | /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode} | GET | publicGetUserProgression | `false` | [PublicGetUserProgression](../../accelbyte_py_sdk/api/challenge/operations/challenge_progression/public_get_user_progression.py) | [public_get_user_progression](../../accelbyte_py_sdk/api/challenge/wrappers/_challenge_progression.py) | [accelbyte_py_sdk_cli challenge-public-get-user-progression](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_get_user_progression.py) |
 
 ### Goal Configuration
@@ -81,6 +82,7 @@
 | model.Schedule | [ModelSchedule](../../accelbyte_py_sdk/api/challenge/models/model_schedule.py) |
 | model.UpdateChallengeRequest | [ModelUpdateChallengeRequest](../../accelbyte_py_sdk/api/challenge/models/model_update_challenge_request.py) |
 | model.UpdateGoalRequest | [ModelUpdateGoalRequest](../../accelbyte_py_sdk/api/challenge/models/model_update_goal_request.py) |
+| model.UserProgressionPeriodResponseMeta | [ModelUserProgressionPeriodResponseMeta](../../accelbyte_py_sdk/api/challenge/models/model_user_progression_period_response_meta.py) |
 | model.UserProgressionResponse | [ModelUserProgressionResponse](../../accelbyte_py_sdk/api/challenge/models/model_user_progression_response.py) |
 | model.UserProgressionResponseMeta | [ModelUserProgressionResponseMeta](../../accelbyte_py_sdk/api/challenge/models/model_user_progression_response_meta.py) |
 | model.UserReward | [ModelUserReward](../../accelbyte_py_sdk/api/challenge/models/model_user_reward.py) |

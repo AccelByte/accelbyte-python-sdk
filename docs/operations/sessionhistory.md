@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session History Service Index (1.10.1)
+# AccelByte Gaming Services Session History Service Index (1.11.1)
 
 
 ## Operations
@@ -25,6 +25,7 @@
 | /sessionhistory/v1/admin/namespaces/{namespace}/tickets/{ticketId} | GET | adminTicketDetailGetByTicketID | `false` | [AdminTicketDetailGetByTicketID](../../accelbyte_py_sdk/api/sessionhistory/operations/game_session_detail/admin_ticket_detail_get_8ac60d.py) | [admin_ticket_detail_get_by_ticket_id](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_game_session_detail.py) | [accelbyte_py_sdk_cli sessionhistory-admin-ticket-detail-get-by-ticket-id](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_admin_ticket_detail_get_by_ticket_id.py) |
 | /sessionhistory/v1/admin/namespaces/{namespace}/gamesessions/{sessionId} | GET | getGameSessionDetail | `false` | [GetGameSessionDetail](../../accelbyte_py_sdk/api/sessionhistory/operations/game_session_detail/get_game_session_detail.py) | [get_game_session_detail](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_game_session_detail.py) | [accelbyte_py_sdk_cli sessionhistory-get-game-session-detail](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_get_game_session_detail.py) |
 | /sessionhistory/v1/admin/namespaces/{namespace}/parties/{sessionId} | GET | getPartyDetail | `false` | [GetPartyDetail](../../accelbyte_py_sdk/api/sessionhistory/operations/game_session_detail/get_party_detail.py) | [get_party_detail](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_game_session_detail.py) | [accelbyte_py_sdk_cli sessionhistory-get-party-detail](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_get_party_detail.py) |
+| /sessionhistory/v1/public/namespaces/{namespace}/users/me/gamesessions | GET | publicQueryGameSessionMe | `false` | [PublicQueryGameSessionMe](../../accelbyte_py_sdk/api/sessionhistory/operations/game_session_detail/public_query_game_session_me.py) | [public_query_game_session_me](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_game_session_detail.py) | [accelbyte_py_sdk_cli sessionhistory-public-query-game-session-me](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_public_query_game_session_me.py) |
 
 ### Operations
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -35,6 +36,7 @@
 ### XRay
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /sessionhistory/v2/admin/namespaces/{namespace}/xray/tickets | POST | createXrayTicketObservability | `false` | [CreateXrayTicketObservability](../../accelbyte_py_sdk/api/sessionhistory/operations/x_ray/create_xray_ticket_obse_a825bd.py) | [create_xray_ticket_observability](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_x_ray.py) | [accelbyte_py_sdk_cli sessionhistory-create-xray-ticket-observability](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_create_xray_ticket_observability.py) |
 | /sessionhistory/v2/admin/namespaces/{namespace}/xray/metrics/acquiring-ds | GET | queryAcquiringDS | `false` | [QueryAcquiringDS](../../accelbyte_py_sdk/api/sessionhistory/operations/x_ray/query_acquiring_ds.py) | [query_acquiring_ds](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_x_ray.py) | [accelbyte_py_sdk_cli sessionhistory-query-acquiring-ds](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_query_acquiring_ds.py) |
 | /sessionhistory/v2/admin/namespaces/{namespace}/xray/metrics/acquiring-ds-wait-time-avg | GET | queryAcquiringDSWaitTimeAvg | `false` | [QueryAcquiringDSWaitTimeAvg](../../accelbyte_py_sdk/api/sessionhistory/operations/x_ray/query_acquiring_ds_wait_a2982b.py) | [query_acquiring_ds_wait_time_avg](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_x_ray.py) | [accelbyte_py_sdk_cli sessionhistory-query-acquiring-ds-wait-time-avg](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_query_acquiring_ds_wait_time_avg.py) |
 | /sessionhistory/v2/admin/namespaces/{namespace}/xray/match-pools/{poolName}/pods/{podName}/ticks | GET | queryDetailTickMatchPool | `false` | [QueryDetailTickMatchPool](../../accelbyte_py_sdk/api/sessionhistory/operations/x_ray/query_detail_tick_match_pool.py) | [query_detail_tick_match_pool](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_x_ray.py) | [accelbyte_py_sdk_cli sessionhistory-query-detail-tick-match-pool](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_query_detail_tick_match_pool.py) |
@@ -103,6 +105,8 @@
 | apimodels.XRayMatchTicketHistoryQueryResponse | [ApimodelsXRayMatchTicketHistoryQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_match_ticket_history_query_response.py) |
 | apimodels.XRayMatchesQueryResponse | [ApimodelsXRayMatchesQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_matches_query_response.py) |
 | apimodels.XRayTicketMatchesResult | [ApimodelsXRayTicketMatchesResult](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_ticket_matches_result.py) |
+| apimodels.XRayTicketObservabilityRequest | [ApimodelsXRayTicketObservabilityRequest](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_ticket_observability_request.py) |
+| apimodels.XRayTicketObservabilityResponse | [ApimodelsXRayTicketObservabilityResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_ticket_observability_response.py) |
 | apimodels.XRayTicketQueryResponse | [ApimodelsXRayTicketQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_ticket_query_response.py) |
 | apimodels.XRayTicketResult | [ApimodelsXRayTicketResult](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_ticket_result.py) |
 | apimodels.XRayTotalActiveSessionQueryResponse | [ApimodelsXRayTotalActiveSessionQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_total_active_session_query_response.py) |
@@ -116,6 +120,7 @@
 | models.GameSession | [ModelsGameSession](../../accelbyte_py_sdk/api/sessionhistory/models/models_game_session.py) |
 | models.GameSessionTeam | [ModelsGameSessionTeam](../../accelbyte_py_sdk/api/sessionhistory/models/models_game_session_team.py) |
 | models.Match | [ModelsMatch](../../accelbyte_py_sdk/api/sessionhistory/models/models_match.py) |
+| models.MatchTicket | [ModelsMatchTicket](../../accelbyte_py_sdk/api/sessionhistory/models/models_match_ticket.py) |
 | models.MatchingAlly | [ModelsMatchingAlly](../../accelbyte_py_sdk/api/sessionhistory/models/models_matching_ally.py) |
 | models.MatchingParty | [ModelsMatchingParty](../../accelbyte_py_sdk/api/sessionhistory/models/models_matching_party.py) |
 | models.MatchingRule | [ModelsMatchingRule](../../accelbyte_py_sdk/api/sessionhistory/models/models_matching_rule.py) |

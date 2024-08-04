@@ -59,6 +59,8 @@ class PlatformWallet(Model):
 
         status: (status) OPTIONAL Union[str, StatusEnum]
 
+        transaction_id: (transactionId) OPTIONAL str
+
         wallet_infos: (walletInfos) OPTIONAL List[WalletInfo]
 
         wallet_status: (walletStatus) OPTIONAL Union[str, WalletStatusEnum]
@@ -73,6 +75,7 @@ class PlatformWallet(Model):
     user_id: str  # REQUIRED
     id_: str  # OPTIONAL
     status: Union[str, StatusEnum]  # OPTIONAL
+    transaction_id: str  # OPTIONAL
     wallet_infos: List[WalletInfo]  # OPTIONAL
     wallet_status: Union[str, WalletStatusEnum]  # OPTIONAL
 
@@ -106,6 +109,10 @@ class PlatformWallet(Model):
 
     def with_status(self, value: Union[str, StatusEnum]) -> PlatformWallet:
         self.status = value
+        return self
+
+    def with_transaction_id(self, value: str) -> PlatformWallet:
+        self.transaction_id = value
         return self
 
     def with_wallet_infos(self, value: List[WalletInfo]) -> PlatformWallet:
@@ -150,6 +157,10 @@ class PlatformWallet(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = Union[str, StatusEnum]()
+        if hasattr(self, "transaction_id"):
+            result["transactionId"] = str(self.transaction_id)
+        elif include_empty:
+            result["transactionId"] = ""
         if hasattr(self, "wallet_infos"):
             result["walletInfos"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.wallet_infos
@@ -176,6 +187,7 @@ class PlatformWallet(Model):
         user_id: str,
         id_: Optional[str] = None,
         status: Optional[Union[str, StatusEnum]] = None,
+        transaction_id: Optional[str] = None,
         wallet_infos: Optional[List[WalletInfo]] = None,
         wallet_status: Optional[Union[str, WalletStatusEnum]] = None,
         **kwargs,
@@ -190,6 +202,8 @@ class PlatformWallet(Model):
             instance.id_ = id_
         if status is not None:
             instance.status = status
+        if transaction_id is not None:
+            instance.transaction_id = transaction_id
         if wallet_infos is not None:
             instance.wallet_infos = wallet_infos
         if wallet_status is not None:
@@ -231,6 +245,10 @@ class PlatformWallet(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = Union[str, StatusEnum]()
+        if "transactionId" in dict_ and dict_["transactionId"] is not None:
+            instance.transaction_id = str(dict_["transactionId"])
+        elif include_empty:
+            instance.transaction_id = ""
         if "walletInfos" in dict_ and dict_["walletInfos"] is not None:
             instance.wallet_infos = [
                 WalletInfo.create_from_dict(i0, include_empty=include_empty)
@@ -288,6 +306,7 @@ class PlatformWallet(Model):
             "userId": "user_id",
             "id": "id_",
             "status": "status",
+            "transactionId": "transaction_id",
             "walletInfos": "wallet_infos",
             "walletStatus": "wallet_status",
         }
@@ -302,6 +321,7 @@ class PlatformWallet(Model):
             "userId": True,
             "id": False,
             "status": False,
+            "transactionId": False,
             "walletInfos": False,
             "walletStatus": False,
         }

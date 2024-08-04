@@ -58,11 +58,15 @@ class ApimodelsPublicConfiguration(Model):
 
         type_: (type) REQUIRED str
 
+        app_name: (appName) OPTIONAL str
+
         attributes: (attributes) OPTIONAL Dict[str, Any]
 
         custom_urlgrpc: (customURLGRPC) OPTIONAL str
 
         disable_code_generation: (disableCodeGeneration) OPTIONAL bool
+
+        disable_resend_invite: (disableResendInvite) OPTIONAL bool
 
         ds_manual_set_ready: (dsManualSetReady) OPTIONAL bool
 
@@ -105,9 +109,11 @@ class ApimodelsPublicConfiguration(Model):
     persistent: bool  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
+    app_name: str  # OPTIONAL
     attributes: Dict[str, Any]  # OPTIONAL
     custom_urlgrpc: str  # OPTIONAL
     disable_code_generation: bool  # OPTIONAL
+    disable_resend_invite: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
     enable_secret: bool  # OPTIONAL
@@ -174,6 +180,10 @@ class ApimodelsPublicConfiguration(Model):
         self.type_ = value
         return self
 
+    def with_app_name(self, value: str) -> ApimodelsPublicConfiguration:
+        self.app_name = value
+        return self
+
     def with_attributes(self, value: Dict[str, Any]) -> ApimodelsPublicConfiguration:
         self.attributes = value
         return self
@@ -184,6 +194,10 @@ class ApimodelsPublicConfiguration(Model):
 
     def with_disable_code_generation(self, value: bool) -> ApimodelsPublicConfiguration:
         self.disable_code_generation = value
+        return self
+
+    def with_disable_resend_invite(self, value: bool) -> ApimodelsPublicConfiguration:
+        self.disable_resend_invite = value
         return self
 
     def with_ds_manual_set_ready(self, value: bool) -> ApimodelsPublicConfiguration:
@@ -302,6 +316,10 @@ class ApimodelsPublicConfiguration(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "app_name"):
+            result["appName"] = str(self.app_name)
+        elif include_empty:
+            result["appName"] = ""
         if hasattr(self, "attributes"):
             result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
         elif include_empty:
@@ -314,6 +332,10 @@ class ApimodelsPublicConfiguration(Model):
             result["disableCodeGeneration"] = bool(self.disable_code_generation)
         elif include_empty:
             result["disableCodeGeneration"] = False
+        if hasattr(self, "disable_resend_invite"):
+            result["disableResendInvite"] = bool(self.disable_resend_invite)
+        elif include_empty:
+            result["disableResendInvite"] = False
         if hasattr(self, "ds_manual_set_ready"):
             result["dsManualSetReady"] = bool(self.ds_manual_set_ready)
         elif include_empty:
@@ -389,9 +411,11 @@ class ApimodelsPublicConfiguration(Model):
         persistent: bool,
         text_chat: bool,
         type_: str,
+        app_name: Optional[str] = None,
         attributes: Optional[Dict[str, Any]] = None,
         custom_urlgrpc: Optional[str] = None,
         disable_code_generation: Optional[bool] = None,
+        disable_resend_invite: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
         ds_source: Optional[str] = None,
         enable_secret: Optional[bool] = None,
@@ -420,12 +444,16 @@ class ApimodelsPublicConfiguration(Model):
         instance.persistent = persistent
         instance.text_chat = text_chat
         instance.type_ = type_
+        if app_name is not None:
+            instance.app_name = app_name
         if attributes is not None:
             instance.attributes = attributes
         if custom_urlgrpc is not None:
             instance.custom_urlgrpc = custom_urlgrpc
         if disable_code_generation is not None:
             instance.disable_code_generation = disable_code_generation
+        if disable_resend_invite is not None:
+            instance.disable_resend_invite = disable_resend_invite
         if ds_manual_set_ready is not None:
             instance.ds_manual_set_ready = ds_manual_set_ready
         if ds_source is not None:
@@ -509,6 +537,10 @@ class ApimodelsPublicConfiguration(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if "appName" in dict_ and dict_["appName"] is not None:
+            instance.app_name = str(dict_["appName"])
+        elif include_empty:
+            instance.app_name = ""
         if "attributes" in dict_ and dict_["attributes"] is not None:
             instance.attributes = {
                 str(k0): v0 for k0, v0 in dict_["attributes"].items()
@@ -526,6 +558,10 @@ class ApimodelsPublicConfiguration(Model):
             instance.disable_code_generation = bool(dict_["disableCodeGeneration"])
         elif include_empty:
             instance.disable_code_generation = False
+        if "disableResendInvite" in dict_ and dict_["disableResendInvite"] is not None:
+            instance.disable_resend_invite = bool(dict_["disableResendInvite"])
+        elif include_empty:
+            instance.disable_resend_invite = False
         if "dsManualSetReady" in dict_ and dict_["dsManualSetReady"] is not None:
             instance.ds_manual_set_ready = bool(dict_["dsManualSetReady"])
         elif include_empty:
@@ -652,9 +688,11 @@ class ApimodelsPublicConfiguration(Model):
             "persistent": "persistent",
             "textChat": "text_chat",
             "type": "type_",
+            "appName": "app_name",
             "attributes": "attributes",
             "customURLGRPC": "custom_urlgrpc",
             "disableCodeGeneration": "disable_code_generation",
+            "disableResendInvite": "disable_resend_invite",
             "dsManualSetReady": "ds_manual_set_ready",
             "dsSource": "ds_source",
             "enableSecret": "enable_secret",
@@ -685,9 +723,11 @@ class ApimodelsPublicConfiguration(Model):
             "persistent": True,
             "textChat": True,
             "type": True,
+            "appName": False,
             "attributes": False,
             "customURLGRPC": False,
             "disableCodeGeneration": False,
+            "disableResendInvite": False,
             "dsManualSetReady": False,
             "dsSource": False,
             "enableSecret": False,

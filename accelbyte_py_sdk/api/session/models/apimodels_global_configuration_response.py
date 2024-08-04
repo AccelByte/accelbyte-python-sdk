@@ -43,6 +43,8 @@ class ApimodelsGlobalConfigurationResponse(Model):
         test_target_user_i_ds: (testTargetUserIDs) REQUIRED List[str]
 
         updated_at: (updatedAt) REQUIRED str
+
+        metric_excluded_namespaces: (metricExcludedNamespaces) OPTIONAL List[str]
     """
 
     # region fields
@@ -53,6 +55,7 @@ class ApimodelsGlobalConfigurationResponse(Model):
     test_region_url_mapping: List[str]  # REQUIRED
     test_target_user_i_ds: List[str]  # REQUIRED
     updated_at: str  # REQUIRED
+    metric_excluded_namespaces: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -90,6 +93,12 @@ class ApimodelsGlobalConfigurationResponse(Model):
         self.updated_at = value
         return self
 
+    def with_metric_excluded_namespaces(
+        self, value: List[str]
+    ) -> ApimodelsGlobalConfigurationResponse:
+        self.metric_excluded_namespaces = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -125,6 +134,12 @@ class ApimodelsGlobalConfigurationResponse(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "metric_excluded_namespaces"):
+            result["metricExcludedNamespaces"] = [
+                str(i0) for i0 in self.metric_excluded_namespaces
+            ]
+        elif include_empty:
+            result["metricExcludedNamespaces"] = []
         return result
 
     # endregion to methods
@@ -140,6 +155,7 @@ class ApimodelsGlobalConfigurationResponse(Model):
         test_region_url_mapping: List[str],
         test_target_user_i_ds: List[str],
         updated_at: str,
+        metric_excluded_namespaces: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsGlobalConfigurationResponse:
         instance = cls()
@@ -149,6 +165,8 @@ class ApimodelsGlobalConfigurationResponse(Model):
         instance.test_region_url_mapping = test_region_url_mapping
         instance.test_target_user_i_ds = test_target_user_i_ds
         instance.updated_at = updated_at
+        if metric_excluded_namespaces is not None:
+            instance.metric_excluded_namespaces = metric_excluded_namespaces
         return instance
 
     @classmethod
@@ -192,6 +210,15 @@ class ApimodelsGlobalConfigurationResponse(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if (
+            "metricExcludedNamespaces" in dict_
+            and dict_["metricExcludedNamespaces"] is not None
+        ):
+            instance.metric_excluded_namespaces = [
+                str(i0) for i0 in dict_["metricExcludedNamespaces"]
+            ]
+        elif include_empty:
+            instance.metric_excluded_namespaces = []
         return instance
 
     @classmethod
@@ -241,6 +268,7 @@ class ApimodelsGlobalConfigurationResponse(Model):
             "testRegionURLMapping": "test_region_url_mapping",
             "testTargetUserIDs": "test_target_user_i_ds",
             "updatedAt": "updated_at",
+            "metricExcludedNamespaces": "metric_excluded_namespaces",
         }
 
     @staticmethod
@@ -252,6 +280,7 @@ class ApimodelsGlobalConfigurationResponse(Model):
             "testRegionURLMapping": True,
             "testTargetUserIDs": True,
             "updatedAt": True,
+            "metricExcludedNamespaces": False,
         }
 
     # endregion static methods

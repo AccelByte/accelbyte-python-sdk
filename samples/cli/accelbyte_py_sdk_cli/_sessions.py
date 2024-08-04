@@ -104,7 +104,9 @@ async def _start_batched_ws_session_async(
 
         for message in messages:
             sent_message = message.replace("\\n", "\n")
-            message_type = sent_message.splitlines(keepends=False)[0].removeprefix("type: ")
+            message_type = sent_message.splitlines(keepends=False)[0].removeprefix(
+                "type: "
+            )
             if sent_message in received_messages:
                 writer.write_log(message_type)
             else:

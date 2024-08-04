@@ -64,6 +64,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         updated_at: (updatedAt) REQUIRED str
 
+        app_name: (appName) OPTIONAL str
+
         attributes: (attributes) OPTIONAL Dict[str, Any]
 
         auto_join: (autoJoin) OPTIONAL bool
@@ -73,6 +75,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
         custom_urlgrpc: (customURLGRPC) OPTIONAL str
 
         disable_code_generation: (disableCodeGeneration) OPTIONAL bool
+
+        disable_resend_invite: (disableResendInvite) OPTIONAL bool
 
         ds_manual_set_ready: (dsManualSetReady) OPTIONAL bool
 
@@ -118,11 +122,13 @@ class ApimodelsConfigurationTemplateResponse(Model):
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
     updated_at: str  # REQUIRED
+    app_name: str  # OPTIONAL
     attributes: Dict[str, Any]  # OPTIONAL
     auto_join: bool  # OPTIONAL
     auto_leave_session: bool  # OPTIONAL
     custom_urlgrpc: str  # OPTIONAL
     disable_code_generation: bool  # OPTIONAL
+    disable_resend_invite: bool  # OPTIONAL
     ds_manual_set_ready: bool  # OPTIONAL
     ds_source: str  # OPTIONAL
     enable_secret: bool  # OPTIONAL
@@ -203,6 +209,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self.updated_at = value
         return self
 
+    def with_app_name(self, value: str) -> ApimodelsConfigurationTemplateResponse:
+        self.app_name = value
+        return self
+
     def with_attributes(
         self, value: Dict[str, Any]
     ) -> ApimodelsConfigurationTemplateResponse:
@@ -227,6 +237,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self, value: bool
     ) -> ApimodelsConfigurationTemplateResponse:
         self.disable_code_generation = value
+        return self
+
+    def with_disable_resend_invite(
+        self, value: bool
+    ) -> ApimodelsConfigurationTemplateResponse:
+        self.disable_resend_invite = value
         return self
 
     def with_ds_manual_set_ready(
@@ -365,6 +381,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "app_name"):
+            result["appName"] = str(self.app_name)
+        elif include_empty:
+            result["appName"] = ""
         if hasattr(self, "attributes"):
             result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
         elif include_empty:
@@ -385,6 +405,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["disableCodeGeneration"] = bool(self.disable_code_generation)
         elif include_empty:
             result["disableCodeGeneration"] = False
+        if hasattr(self, "disable_resend_invite"):
+            result["disableResendInvite"] = bool(self.disable_resend_invite)
+        elif include_empty:
+            result["disableResendInvite"] = False
         if hasattr(self, "ds_manual_set_ready"):
             result["dsManualSetReady"] = bool(self.ds_manual_set_ready)
         elif include_empty:
@@ -463,11 +487,13 @@ class ApimodelsConfigurationTemplateResponse(Model):
         text_chat: bool,
         type_: str,
         updated_at: str,
+        app_name: Optional[str] = None,
         attributes: Optional[Dict[str, Any]] = None,
         auto_join: Optional[bool] = None,
         auto_leave_session: Optional[bool] = None,
         custom_urlgrpc: Optional[str] = None,
         disable_code_generation: Optional[bool] = None,
+        disable_resend_invite: Optional[bool] = None,
         ds_manual_set_ready: Optional[bool] = None,
         ds_source: Optional[str] = None,
         enable_secret: Optional[bool] = None,
@@ -499,6 +525,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
         instance.text_chat = text_chat
         instance.type_ = type_
         instance.updated_at = updated_at
+        if app_name is not None:
+            instance.app_name = app_name
         if attributes is not None:
             instance.attributes = attributes
         if auto_join is not None:
@@ -509,6 +537,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.custom_urlgrpc = custom_urlgrpc
         if disable_code_generation is not None:
             instance.disable_code_generation = disable_code_generation
+        if disable_resend_invite is not None:
+            instance.disable_resend_invite = disable_resend_invite
         if ds_manual_set_ready is not None:
             instance.ds_manual_set_ready = ds_manual_set_ready
         if ds_source is not None:
@@ -604,6 +634,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "appName" in dict_ and dict_["appName"] is not None:
+            instance.app_name = str(dict_["appName"])
+        elif include_empty:
+            instance.app_name = ""
         if "attributes" in dict_ and dict_["attributes"] is not None:
             instance.attributes = {
                 str(k0): v0 for k0, v0 in dict_["attributes"].items()
@@ -629,6 +663,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.disable_code_generation = bool(dict_["disableCodeGeneration"])
         elif include_empty:
             instance.disable_code_generation = False
+        if "disableResendInvite" in dict_ and dict_["disableResendInvite"] is not None:
+            instance.disable_resend_invite = bool(dict_["disableResendInvite"])
+        elif include_empty:
+            instance.disable_resend_invite = False
         if "dsManualSetReady" in dict_ and dict_["dsManualSetReady"] is not None:
             instance.ds_manual_set_ready = bool(dict_["dsManualSetReady"])
         elif include_empty:
@@ -758,11 +796,13 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "textChat": "text_chat",
             "type": "type_",
             "updatedAt": "updated_at",
+            "appName": "app_name",
             "attributes": "attributes",
             "autoJoin": "auto_join",
             "autoLeaveSession": "auto_leave_session",
             "customURLGRPC": "custom_urlgrpc",
             "disableCodeGeneration": "disable_code_generation",
+            "disableResendInvite": "disable_resend_invite",
             "dsManualSetReady": "ds_manual_set_ready",
             "dsSource": "ds_source",
             "enableSecret": "enable_secret",
@@ -796,11 +836,13 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "textChat": True,
             "type": True,
             "updatedAt": True,
+            "appName": False,
             "attributes": False,
             "autoJoin": False,
             "autoLeaveSession": False,
             "customURLGRPC": False,
             "disableCodeGeneration": False,
+            "disableResendInvite": False,
             "dsManualSetReady": False,
             "dsSource": False,
             "enableSecret": False,

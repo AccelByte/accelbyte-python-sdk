@@ -35,23 +35,32 @@ from ..models import FulfillmentHistoryPagingSlicedResult
 from ..models import FulfillmentItem
 from ..models import FulfillmentRequest
 from ..models import FulfillmentResult
+from ..models import FulfillmentV2Request
+from ..models import FulfillmentV2Result
 from ..models import PreCheckFulfillmentRequest
+from ..models import RevokeFulfillmentV2Result
 from ..models import RewardsRequest
 
 from ..operations.fulfillment import FulfillItem
+from ..operations.fulfillment import FulfillItems
 from ..operations.fulfillment import FulfillRewards
 from ..operations.fulfillment import FulfillRewardsV2
 from ..operations.fulfillment import PreCheckFulfillItem
 from ..operations.fulfillment import PublicRedeemCode
 from ..operations.fulfillment import QueryFulfillmentHistories
 from ..operations.fulfillment import QueryFulfillmentHistoriesStatusEnum
+from ..operations.fulfillment import QueryFulfillments
+from ..operations.fulfillment import QueryFulfillmentsStateEnum
 from ..operations.fulfillment import RedeemCode
+from ..operations.fulfillment import RevokeItems
 from ..models import FulfillmentItemItemTypeEnum
 from ..models import (
     FulfillmentRequestEntitlementOriginEnum,
     FulfillmentRequestOriginEnum,
     FulfillmentRequestSourceEnum,
 )
+from ..models import FulfillmentV2ResultStateEnum
+from ..models import RevokeFulfillmentV2ResultStateEnum
 from ..models import (
     RewardsRequestEntitlementOriginEnum,
     RewardsRequestOriginEnum,
@@ -162,6 +171,126 @@ async def fulfill_item_async(
         if error:
             return None, error
     request = FulfillItem.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(FulfillItems)
+def fulfill_items(
+    transaction_id: str,
+    user_id: str,
+    body: Optional[FulfillmentV2Request] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Fulfill items by transactionId (fulfillItems)
+
+    [Not Supported Yet In Starter] Fulfill items by transactionId.
+    Other detail info:
+
+      * Returns : fulfillment v2 result
+
+    Properties:
+        url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}
+
+        method: PUT
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillmentV2Request in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        transaction_id: (transactionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentV2Result (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required | 38128: Cannot retry fulfillment with different payload. Please check the items list. | 38129: Cannot combine same item [{itemId}] with different [{fieldName}] value | 38130: Cannot fulfill item with type [{itemType}] in item [{itemIdentity}])
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+
+        409: Conflict - FulfillmentV2Result ()
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = FulfillItems.create(
+        transaction_id=transaction_id,
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(FulfillItems)
+async def fulfill_items_async(
+    transaction_id: str,
+    user_id: str,
+    body: Optional[FulfillmentV2Request] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Fulfill items by transactionId (fulfillItems)
+
+    [Not Supported Yet In Starter] Fulfill items by transactionId.
+    Other detail info:
+
+      * Returns : fulfillment v2 result
+
+    Properties:
+        url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}
+
+        method: PUT
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL FulfillmentV2Request in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        transaction_id: (transactionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentV2Result (successful operation)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required | 38128: Cannot retry fulfillment with different payload. Please check the items list. | 38129: Cannot combine same item [{itemId}] with different [{fieldName}] value | 38130: Cannot fulfill item with type [{itemType}] in item [{itemIdentity}])
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
+
+        409: Conflict - FulfillmentV2Result ()
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = FulfillItems.create(
+        transaction_id=transaction_id,
         user_id=user_id,
         body=body,
         namespace=namespace,
@@ -737,6 +866,146 @@ async def query_fulfillment_histories_async(
     )
 
 
+@same_doc_as(QueryFulfillments)
+def query_fulfillments(
+    end_time: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_time: Optional[str] = None,
+    state: Optional[Union[str, QueryFulfillmentsStateEnum]] = None,
+    transaction_id: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query fulfillments (queryFulfillments)
+
+    [Not Supported Yet In Starter] Query fulfillments in a namespace.
+    Other detail info:
+
+      * Returns : query fulfillments
+
+    Properties:
+        url: /platform/v2/admin/namespaces/{namespace}/fulfillments
+
+        method: GET
+
+        tags: ["Fulfillment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_time: (startTime) OPTIONAL str in query
+
+        state: (state) OPTIONAL Union[str, StateEnum] in query
+
+        transaction_id: (transactionId) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryFulfillments.create(
+        end_time=end_time,
+        limit=limit,
+        offset=offset,
+        start_time=start_time,
+        state=state,
+        transaction_id=transaction_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryFulfillments)
+async def query_fulfillments_async(
+    end_time: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_time: Optional[str] = None,
+    state: Optional[Union[str, QueryFulfillmentsStateEnum]] = None,
+    transaction_id: Optional[str] = None,
+    user_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query fulfillments (queryFulfillments)
+
+    [Not Supported Yet In Starter] Query fulfillments in a namespace.
+    Other detail info:
+
+      * Returns : query fulfillments
+
+    Properties:
+        url: /platform/v2/admin/namespaces/{namespace}/fulfillments
+
+        method: GET
+
+        tags: ["Fulfillment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_time: (startTime) OPTIONAL str in query
+
+        state: (state) OPTIONAL Union[str, StateEnum] in query
+
+        transaction_id: (transactionId) OPTIONAL str in query
+
+        user_id: (userId) OPTIONAL str in query
+
+    Responses:
+        200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryFulfillments.create(
+        end_time=end_time,
+        limit=limit,
+        offset=offset,
+        start_time=start_time,
+        state=state,
+        transaction_id=transaction_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(RedeemCode)
 def redeem_code(
     user_id: str,
@@ -842,6 +1111,114 @@ async def redeem_code_async(
     request = RedeemCode.create(
         user_id=user_id,
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RevokeItems)
+def revoke_items(
+    transaction_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Revoke items by transactionId (revokeItems)
+
+    [Not Supported Yet In Starter] Revoke items by transactionId.
+    Other detail info:
+
+      * Returns : revoke fulfillment v2 result
+
+    Properties:
+        url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/revoke
+
+        method: PUT
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        transaction_id: (transactionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - RevokeFulfillmentV2Result (successful operation)
+
+        404: Not Found - ErrorEntity (38145: Fulfillment with transactionId [{transactionId}] does not exist)
+
+        409: Conflict - RevokeFulfillmentV2Result ()
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RevokeItems.create(
+        transaction_id=transaction_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RevokeItems)
+async def revoke_items_async(
+    transaction_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Revoke items by transactionId (revokeItems)
+
+    [Not Supported Yet In Starter] Revoke items by transactionId.
+    Other detail info:
+
+      * Returns : revoke fulfillment v2 result
+
+    Properties:
+        url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/revoke
+
+        method: PUT
+
+        tags: ["Fulfillment"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        transaction_id: (transactionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - RevokeFulfillmentV2Result (successful operation)
+
+        404: Not Found - ErrorEntity (38145: Fulfillment with transactionId [{transactionId}] does not exist)
+
+        409: Conflict - RevokeFulfillmentV2Result ()
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RevokeItems.create(
+        transaction_id=transaction_id,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

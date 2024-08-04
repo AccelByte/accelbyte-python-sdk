@@ -37,6 +37,8 @@ class ApimodelsXRayTicketMatchesResult(Model):
     Properties:
         created_at: (CreatedAt) OPTIONAL str
 
+        is_pivot: (IsPivot) OPTIONAL bool
+
         latencies: (Latencies) OPTIONAL Dict[str, int]
 
         match_pool: (MatchPool) OPTIONAL str
@@ -49,22 +51,29 @@ class ApimodelsXRayTicketMatchesResult(Model):
 
         proposed_proposal: (ProposedProposal) OPTIONAL ModelsProposedProposal
 
+        region_preference: (RegionPreference) OPTIONAL List[str]
+
         ticket_attributes: (TicketAttributes) OPTIONAL Dict[str, Any]
 
         ticket_id: (TicketID) OPTIONAL str
+
+        time_to_match: (TimeToMatch) OPTIONAL float
     """
 
     # region fields
 
     created_at: str  # OPTIONAL
+    is_pivot: bool  # OPTIONAL
     latencies: Dict[str, int]  # OPTIONAL
     match_pool: str  # OPTIONAL
     namespace: str  # OPTIONAL
     party_session_id: str  # OPTIONAL
     players: List[ModelsPlayerData]  # OPTIONAL
     proposed_proposal: ModelsProposedProposal  # OPTIONAL
+    region_preference: List[str]  # OPTIONAL
     ticket_attributes: Dict[str, Any]  # OPTIONAL
     ticket_id: str  # OPTIONAL
+    time_to_match: float  # OPTIONAL
 
     # endregion fields
 
@@ -72,6 +81,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
 
     def with_created_at(self, value: str) -> ApimodelsXRayTicketMatchesResult:
         self.created_at = value
+        return self
+
+    def with_is_pivot(self, value: bool) -> ApimodelsXRayTicketMatchesResult:
+        self.is_pivot = value
         return self
 
     def with_latencies(self, value: Dict[str, int]) -> ApimodelsXRayTicketMatchesResult:
@@ -102,6 +115,12 @@ class ApimodelsXRayTicketMatchesResult(Model):
         self.proposed_proposal = value
         return self
 
+    def with_region_preference(
+        self, value: List[str]
+    ) -> ApimodelsXRayTicketMatchesResult:
+        self.region_preference = value
+        return self
+
     def with_ticket_attributes(
         self, value: Dict[str, Any]
     ) -> ApimodelsXRayTicketMatchesResult:
@@ -110,6 +129,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
 
     def with_ticket_id(self, value: str) -> ApimodelsXRayTicketMatchesResult:
         self.ticket_id = value
+        return self
+
+    def with_time_to_match(self, value: float) -> ApimodelsXRayTicketMatchesResult:
+        self.time_to_match = value
         return self
 
     # endregion with_x methods
@@ -122,6 +145,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
             result["CreatedAt"] = ""
+        if hasattr(self, "is_pivot"):
+            result["IsPivot"] = bool(self.is_pivot)
+        elif include_empty:
+            result["IsPivot"] = False
         if hasattr(self, "latencies"):
             result["Latencies"] = {
                 str(k0): int(v0) for k0, v0 in self.latencies.items()
@@ -152,6 +179,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
             )
         elif include_empty:
             result["ProposedProposal"] = ModelsProposedProposal()
+        if hasattr(self, "region_preference"):
+            result["RegionPreference"] = [str(i0) for i0 in self.region_preference]
+        elif include_empty:
+            result["RegionPreference"] = []
         if hasattr(self, "ticket_attributes"):
             result["TicketAttributes"] = {
                 str(k0): v0 for k0, v0 in self.ticket_attributes.items()
@@ -162,6 +193,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
             result["TicketID"] = str(self.ticket_id)
         elif include_empty:
             result["TicketID"] = ""
+        if hasattr(self, "time_to_match"):
+            result["TimeToMatch"] = float(self.time_to_match)
+        elif include_empty:
+            result["TimeToMatch"] = 0.0
         return result
 
     # endregion to methods
@@ -172,19 +207,24 @@ class ApimodelsXRayTicketMatchesResult(Model):
     def create(
         cls,
         created_at: Optional[str] = None,
+        is_pivot: Optional[bool] = None,
         latencies: Optional[Dict[str, int]] = None,
         match_pool: Optional[str] = None,
         namespace: Optional[str] = None,
         party_session_id: Optional[str] = None,
         players: Optional[List[ModelsPlayerData]] = None,
         proposed_proposal: Optional[ModelsProposedProposal] = None,
+        region_preference: Optional[List[str]] = None,
         ticket_attributes: Optional[Dict[str, Any]] = None,
         ticket_id: Optional[str] = None,
+        time_to_match: Optional[float] = None,
         **kwargs,
     ) -> ApimodelsXRayTicketMatchesResult:
         instance = cls()
         if created_at is not None:
             instance.created_at = created_at
+        if is_pivot is not None:
+            instance.is_pivot = is_pivot
         if latencies is not None:
             instance.latencies = latencies
         if match_pool is not None:
@@ -197,10 +237,14 @@ class ApimodelsXRayTicketMatchesResult(Model):
             instance.players = players
         if proposed_proposal is not None:
             instance.proposed_proposal = proposed_proposal
+        if region_preference is not None:
+            instance.region_preference = region_preference
         if ticket_attributes is not None:
             instance.ticket_attributes = ticket_attributes
         if ticket_id is not None:
             instance.ticket_id = ticket_id
+        if time_to_match is not None:
+            instance.time_to_match = time_to_match
         return instance
 
     @classmethod
@@ -214,6 +258,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
             instance.created_at = str(dict_["CreatedAt"])
         elif include_empty:
             instance.created_at = ""
+        if "IsPivot" in dict_ and dict_["IsPivot"] is not None:
+            instance.is_pivot = bool(dict_["IsPivot"])
+        elif include_empty:
+            instance.is_pivot = False
         if "Latencies" in dict_ and dict_["Latencies"] is not None:
             instance.latencies = {
                 str(k0): int(v0) for k0, v0 in dict_["Latencies"].items()
@@ -245,6 +293,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
             )
         elif include_empty:
             instance.proposed_proposal = ModelsProposedProposal()
+        if "RegionPreference" in dict_ and dict_["RegionPreference"] is not None:
+            instance.region_preference = [str(i0) for i0 in dict_["RegionPreference"]]
+        elif include_empty:
+            instance.region_preference = []
         if "TicketAttributes" in dict_ and dict_["TicketAttributes"] is not None:
             instance.ticket_attributes = {
                 str(k0): v0 for k0, v0 in dict_["TicketAttributes"].items()
@@ -255,6 +307,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
             instance.ticket_id = str(dict_["TicketID"])
         elif include_empty:
             instance.ticket_id = ""
+        if "TimeToMatch" in dict_ and dict_["TimeToMatch"] is not None:
+            instance.time_to_match = float(dict_["TimeToMatch"])
+        elif include_empty:
+            instance.time_to_match = 0.0
         return instance
 
     @classmethod
@@ -299,28 +355,34 @@ class ApimodelsXRayTicketMatchesResult(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "CreatedAt": "created_at",
+            "IsPivot": "is_pivot",
             "Latencies": "latencies",
             "MatchPool": "match_pool",
             "Namespace": "namespace",
             "PartySessionID": "party_session_id",
             "Players": "players",
             "ProposedProposal": "proposed_proposal",
+            "RegionPreference": "region_preference",
             "TicketAttributes": "ticket_attributes",
             "TicketID": "ticket_id",
+            "TimeToMatch": "time_to_match",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "CreatedAt": False,
+            "IsPivot": False,
             "Latencies": False,
             "MatchPool": False,
             "Namespace": False,
             "PartySessionID": False,
             "Players": False,
             "ProposedProposal": False,
+            "RegionPreference": False,
             "TicketAttributes": False,
             "TicketID": False,
+            "TimeToMatch": False,
         }
 
     # endregion static methods

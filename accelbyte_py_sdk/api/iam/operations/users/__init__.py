@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.17.0"
+__version__ = "7.19.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -27,6 +27,9 @@ from .admin_create_user_roles_v2 import AdminCreateUserRolesV2
 from .admin_delete_platform_link_v2 import AdminDeletePlatformLinkV2
 from .admin_delete_user_infor_aae072 import AdminDeleteUserInformationV3
 from .admin_delete_user_linki_405f1b import AdminDeleteUserLinkingHistoryByPlatformIDV3
+from .admin_delete_user_linki_88f6c6 import (
+    AdminDeleteUserLinkingRestrictionByPlatformIDV3,
+)
 from .admin_delete_user_permi_6b5aa5 import AdminDeleteUserPermissionBulkV3
 from .admin_delete_user_permi_b5683d import AdminDeleteUserPermissionV3
 from .admin_delete_user_role_v3 import AdminDeleteUserRoleV3
@@ -49,12 +52,14 @@ from .admin_get_user_by_platf_63b0f0 import AdminGetUserByPlatformUserIDV3
 from .admin_get_user_by_user_id_v2 import AdminGetUserByUserIdV2
 from .admin_get_user_by_user_id_v3 import AdminGetUserByUserIdV3
 from .admin_get_user_deletion_d1510f import AdminGetUserDeletionStatusV3
+from .admin_get_user_link_his_044c21 import AdminGetUserLinkHistoriesV3
 from .admin_get_user_login_hi_f4b37e import AdminGetUserLoginHistoriesV3
 from .admin_get_user_mapping import AdminGetUserMapping
 from .admin_get_user_platform_6f9923 import AdminGetUserPlatformAccountsV3
 from .admin_get_user_single_p_15c89c import AdminGetUserSinglePlatformAccount
 from .admin_invite_user_v3 import AdminInviteUserV3
 from .admin_link_platform_account import AdminLinkPlatformAccount
+from .admin_list_all_distinct_1dbdd2 import AdminListAllDistinctPlatformAccountsV3
 from .admin_list_user_all_pla_d71da7 import AdminListUserAllPlatformAccountsDistinctV3
 from .admin_list_user_id_by_p_f86a28 import AdminListUserIDByPlatformUserIDsV3
 from .admin_list_user_id_by_u_d47f71 import AdminListUserIDByUserIDsV3

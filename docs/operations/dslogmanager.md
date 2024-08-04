@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Ds Log Manager Service Index (3.4.1)
+# AccelByte Gaming Services Ds Log Manager Service Index (3.7.4)
 
 
 ## Operations
@@ -17,6 +17,7 @@
 |---|---|---|---|---|---|---|
 | /dslogmanager/servers/logs/download | POST | batchDownloadServerLogs | `false` | [BatchDownloadServerLogs](../../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/batch_download_server_logs.py) | [batch_download_server_logs](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-batch-download-server-logs](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_batch_download_server_logs.py) |
 | /dslogmanager/servers/search | GET | listAllTerminatedServers | `false` | [ListAllTerminatedServers](../../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/list_all_terminated_servers.py) | [list_all_terminated_servers](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-list-all-terminated-servers](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_list_all_terminated_servers.py) |
+| /dslogmanager/servers/metadata | POST | listMetadataServers | `false` | [ListMetadataServers](../../accelbyte_py_sdk/api/dslogmanager/operations/all_terminated_servers/list_metadata_servers.py) | [list_metadata_servers](../../accelbyte_py_sdk/api/dslogmanager/wrappers/_all_terminated_servers.py) | [accelbyte_py_sdk_cli dslogmanager-list-metadata-servers](../../samples/cli/accelbyte_py_sdk_cli/dslogmanager/_list_metadata_servers.py) |
 
 ### Dslogmanager Operations
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -41,12 +42,13 @@
 | models.ListTerminatedServersResponse | [ModelsListTerminatedServersResponse](../../accelbyte_py_sdk/api/dslogmanager/models/models_list_terminated_servers_response.py) |
 | models.LogFileStatus | [ModelsLogFileStatus](../../accelbyte_py_sdk/api/dslogmanager/models/models_log_file_status.py) |
 | models.MatchResult | [ModelsMatchResult](../../accelbyte_py_sdk/api/dslogmanager/models/models_match_result.py) |
-| models.NotifPayloadServerStatusChange | [ModelsNotifPayloadServerStatusChange](../../accelbyte_py_sdk/api/dslogmanager/models/models_notif_payload_server_status_change.py) |
+| models.MetadataServersRequest | [ModelsMetadataServersRequest](../../accelbyte_py_sdk/api/dslogmanager/models/models_metadata_servers_request.py) |
+| models.NotifPayloadServerStatusChangeResponse | [ModelsNotifPayloadServerStatusChangeResponse](../../accelbyte_py_sdk/api/dslogmanager/models/models_notif_payload_server_status_change_response.py) |
 | models.PagingCursor | [ModelsPagingCursor](../../accelbyte_py_sdk/api/dslogmanager/models/models_paging_cursor.py) |
 | models.RequestMatchMember | [ModelsRequestMatchMember](../../accelbyte_py_sdk/api/dslogmanager/models/models_request_match_member.py) |
 | models.RequestMatchParty | [ModelsRequestMatchParty](../../accelbyte_py_sdk/api/dslogmanager/models/models_request_match_party.py) |
 | models.RequestMatchingAlly | [ModelsRequestMatchingAlly](../../accelbyte_py_sdk/api/dslogmanager/models/models_request_matching_ally.py) |
-| models.Server | [ModelsServer](../../accelbyte_py_sdk/api/dslogmanager/models/models_server.py) |
 | models.ServerLogs | [ModelsServerLogs](../../accelbyte_py_sdk/api/dslogmanager/models/models_server_logs.py) |
+| models.ServerResponse | [ModelsServerResponse](../../accelbyte_py_sdk/api/dslogmanager/models/models_server_response.py) |
 | models.StatusHistory | [ModelsStatusHistory](../../accelbyte_py_sdk/api/dslogmanager/models/models_status_history.py) |
 | response.Error | [ResponseError](../../accelbyte_py_sdk/api/dslogmanager/models/response_error.py) |

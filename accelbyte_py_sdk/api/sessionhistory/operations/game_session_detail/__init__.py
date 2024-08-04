@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session History Service."""
 
-__version__ = "1.10.1"
+__version__ = "1.11.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,3 +23,4 @@ from .admin_query_ticket_detail import AdminQueryTicketDetail
 from .admin_ticket_detail_get_8ac60d import AdminTicketDetailGetByTicketID
 from .get_game_session_detail import GetGameSessionDetail
 from .get_party_detail import GetPartyDetail
+from .public_query_game_session_me import PublicQueryGameSessionMe

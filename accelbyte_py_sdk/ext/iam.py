@@ -286,6 +286,8 @@ from ..api.iam.models import ModelUserPasswordUpdateV3Request
 from ..api.iam.models import ModelUserPermissionsResponseV3
 from ..api.iam.models import ModelUserPlatformInfo
 from ..api.iam.models import ModelUserPlatformInfos
+from ..api.iam.models import ModelUserPlatformLinkHistories
+from ..api.iam.models import ModelUserPlatformLinkHistory
 from ..api.iam.models import ModelUserPlatformMetadata
 from ..api.iam.models import ModelUserPublicInfoResponseV4
 from ..api.iam.models import ModelUserResponse
@@ -670,11 +672,13 @@ def create_accountcommon_distinct_linked_platform_v3_example() -> (
     AccountcommonDistinctLinkedPlatformV3
 ):
     instance = AccountcommonDistinctLinkedPlatformV3()
-    instance.details = [create_accountcommon_simple_user_platform_info_v3_example()]
     instance.linked_at = randomize()
     instance.platform_group = randomize()
     instance.platform_name = randomize()
+    instance.status = randomize()
+    instance.details = [create_accountcommon_simple_user_platform_info_v3_example()]
     instance.logo_url = randomize("url")
+    instance.platform_display_name = randomize()
     instance.platform_user_id = randomize()
     return instance
 
@@ -2187,6 +2191,7 @@ def create_model_reset_password_request_v3_example() -> ModelResetPasswordReques
     instance.code = randomize()
     instance.email_address = randomize("email")
     instance.new_password = randomize()
+    instance.language_tag = randomize()
     return instance
 
 
@@ -2499,6 +2504,8 @@ def create_model_third_party_login_platform_credential_request_example() -> (
     instance.user_info_http_method = randomize()
     instance.allowed_clients = [randomize()]
     instance.empty_str_field_list = [randomize()]
+    instance.enable_server_license_validation = randomize("bool")
+    instance.include_puid = randomize("bool")
     instance.logo_url = randomize("url")
     instance.token_claims_mapping = {randomize(): randomize()}
     return instance
@@ -2513,6 +2520,7 @@ def create_model_third_party_login_platform_credential_response_example() -> (
     instance.aws_cognito_region = randomize()
     instance.aws_cognito_user_pool = randomize()
     instance.client_id = randomize("uid")
+    instance.enable_server_license_validation = randomize("bool")
     instance.environment = randomize()
     instance.federation_metadata_url = randomize("url")
     instance.generic_oauth_flow = randomize("bool")
@@ -2530,6 +2538,7 @@ def create_model_third_party_login_platform_credential_response_example() -> (
     instance.token_authentication_type = randomize()
     instance.allowed_clients = [randomize()]
     instance.authorization_endpoint = randomize()
+    instance.include_puid = randomize("bool")
     instance.logo_url = randomize("url")
     instance.netflix_certificates = create_accountcommon_netflix_certificates_example()
     instance.registered_domains = [create_accountcommon_registered_domain_example()]
@@ -2927,6 +2936,29 @@ def create_model_user_platform_infos_example() -> ModelUserPlatformInfos:
     instance.avatar_url = randomize("url")
     instance.display_name = randomize("slug")
     instance.unique_display_name = randomize()
+    return instance
+
+
+def create_model_user_platform_link_histories_example() -> (
+    ModelUserPlatformLinkHistories
+):
+    instance = ModelUserPlatformLinkHistories()
+    instance.data = [create_model_user_platform_link_history_example()]
+    return instance
+
+
+def create_model_user_platform_link_history_example() -> ModelUserPlatformLinkHistory:
+    instance = ModelUserPlatformLinkHistory()
+    instance.action = randomize()
+    instance.actor = randomize()
+    instance.actor_type = randomize()
+    instance.created_at = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
+    instance.platform = randomize()
+    instance.platform_display_name = randomize()
+    instance.platform_id = randomize()
+    instance.platform_user_id = randomize()
+    instance.publisher_user_id = randomize()
     return instance
 
 

@@ -39,7 +39,7 @@ class AdminRandomizeChallenge(Operation):
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 
-    This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED.
+    This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED and RandomizePerRotation assigned with true.
 
     Required Permission(s):
         - ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
@@ -63,6 +63,8 @@ class AdminRandomizeChallenge(Operation):
 
     Responses:
         200: OK - List[ModelSchedule] (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -181,6 +183,8 @@ class AdminRandomizeChallenge(Operation):
 
         200: OK - List[ModelSchedule] (OK)
 
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
+
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
         403: Forbidden - IamErrorResponse (20013: insufficient permission)
@@ -204,6 +208,8 @@ class AdminRandomizeChallenge(Operation):
 
         if code == 200:
             return [ModelSchedule.create_from_dict(i) for i in content], None
+        if code == 400:
+            return None, IamErrorResponse.create_from_dict(content)
         if code == 401:
             return None, IamErrorResponse.create_from_dict(content)
         if code == 403:

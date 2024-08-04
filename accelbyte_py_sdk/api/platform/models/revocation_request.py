@@ -44,6 +44,8 @@ class RevocationRequest(Model):
     Properties:
         meta: (meta) OPTIONAL Dict[str, Any]
 
+        reason: (reason) OPTIONAL str
+
         revoke_entries: (revokeEntries) OPTIONAL List[RevokeEntry]
 
         source: (source) OPTIONAL Union[str, SourceEnum]
@@ -54,6 +56,7 @@ class RevocationRequest(Model):
     # region fields
 
     meta: Dict[str, Any]  # OPTIONAL
+    reason: str  # OPTIONAL
     revoke_entries: List[RevokeEntry]  # OPTIONAL
     source: Union[str, SourceEnum]  # OPTIONAL
     transaction_id: str  # OPTIONAL
@@ -64,6 +67,10 @@ class RevocationRequest(Model):
 
     def with_meta(self, value: Dict[str, Any]) -> RevocationRequest:
         self.meta = value
+        return self
+
+    def with_reason(self, value: str) -> RevocationRequest:
+        self.reason = value
         return self
 
     def with_revoke_entries(self, value: List[RevokeEntry]) -> RevocationRequest:
@@ -88,6 +95,10 @@ class RevocationRequest(Model):
             result["meta"] = {str(k0): v0 for k0, v0 in self.meta.items()}
         elif include_empty:
             result["meta"] = {}
+        if hasattr(self, "reason"):
+            result["reason"] = str(self.reason)
+        elif include_empty:
+            result["reason"] = ""
         if hasattr(self, "revoke_entries"):
             result["revokeEntries"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.revoke_entries
@@ -112,6 +123,7 @@ class RevocationRequest(Model):
     def create(
         cls,
         meta: Optional[Dict[str, Any]] = None,
+        reason: Optional[str] = None,
         revoke_entries: Optional[List[RevokeEntry]] = None,
         source: Optional[Union[str, SourceEnum]] = None,
         transaction_id: Optional[str] = None,
@@ -120,6 +132,8 @@ class RevocationRequest(Model):
         instance = cls()
         if meta is not None:
             instance.meta = meta
+        if reason is not None:
+            instance.reason = reason
         if revoke_entries is not None:
             instance.revoke_entries = revoke_entries
         if source is not None:
@@ -139,6 +153,10 @@ class RevocationRequest(Model):
             instance.meta = {str(k0): v0 for k0, v0 in dict_["meta"].items()}
         elif include_empty:
             instance.meta = {}
+        if "reason" in dict_ and dict_["reason"] is not None:
+            instance.reason = str(dict_["reason"])
+        elif include_empty:
+            instance.reason = ""
         if "revokeEntries" in dict_ and dict_["revokeEntries"] is not None:
             instance.revoke_entries = [
                 RevokeEntry.create_from_dict(i0, include_empty=include_empty)
@@ -196,6 +214,7 @@ class RevocationRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "meta": "meta",
+            "reason": "reason",
             "revokeEntries": "revoke_entries",
             "source": "source",
             "transactionId": "transaction_id",
@@ -205,6 +224,7 @@ class RevocationRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "meta": False,
+            "reason": False,
             "revokeEntries": False,
             "source": False,
             "transactionId": False,

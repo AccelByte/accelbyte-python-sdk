@@ -36,6 +36,8 @@ from accelbyte_py_sdk.api.platform.models import UserDLCRecord
 
 @click.command()
 @click.argument("user_id", type=str)
+@click.option("--include_all_namespaces", "include_all_namespaces", type=bool)
+@click.option("--status", "status", type=str)
 @click.option("--type", "type_", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -43,6 +45,8 @@ from accelbyte_py_sdk.api.platform.models import UserDLCRecord
 @click.option("--doc", type=bool)
 def get_user_dlc(
     user_id: str,
+    include_all_namespaces: Optional[bool] = None,
+    status: Optional[str] = None,
     type_: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -59,6 +63,8 @@ def get_user_dlc(
         login_as_internal(login_as)
     result, error = get_user_dlc_internal(
         user_id=user_id,
+        include_all_namespaces=include_all_namespaces,
+        status=status,
         type_=type_,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

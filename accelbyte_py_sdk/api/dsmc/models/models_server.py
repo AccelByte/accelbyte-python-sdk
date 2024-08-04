@@ -37,6 +37,8 @@ class ModelsServer(Model):
     Properties:
         allocation_id: (allocation_id) REQUIRED str
 
+        artifact_path: (artifact_path) REQUIRED str
+
         cpu_limit: (cpu_limit) REQUIRED int
 
         created_at: (created_at) REQUIRED str
@@ -50,6 +52,8 @@ class ModelsServer(Model):
         ip: (ip) REQUIRED str
 
         is_override_game_version: (is_override_game_version) REQUIRED bool
+
+        is_override_region: (is_override_region) REQUIRED bool
 
         job_id: (job_id) REQUIRED str
 
@@ -77,11 +81,11 @@ class ModelsServer(Model):
 
         termination_reason: (termination_reason) REQUIRED str
 
+        ulimit_file_size: (ulimit_file_size) REQUIRED int
+
         allocation_events: (allocation_events) OPTIONAL List[ModelsAllocationEvent]
 
         alternate_ips: (alternate_ips) OPTIONAL List[str]
-
-        artifact_path: (artifact_path) OPTIONAL str
 
         custom_attribute: (custom_attribute) OPTIONAL str
 
@@ -97,6 +101,7 @@ class ModelsServer(Model):
     # region fields
 
     allocation_id: str  # REQUIRED
+    artifact_path: str  # REQUIRED
     cpu_limit: int  # REQUIRED
     created_at: str  # REQUIRED
     deployment: str  # REQUIRED
@@ -104,6 +109,7 @@ class ModelsServer(Model):
     image_version: str  # REQUIRED
     ip: str  # REQUIRED
     is_override_game_version: bool  # REQUIRED
+    is_override_region: bool  # REQUIRED
     job_id: str  # REQUIRED
     last_update: str  # REQUIRED
     mem_limit: int  # REQUIRED
@@ -117,9 +123,9 @@ class ModelsServer(Model):
     session_id: str  # REQUIRED
     status: str  # REQUIRED
     termination_reason: str  # REQUIRED
+    ulimit_file_size: int  # REQUIRED
     allocation_events: List[ModelsAllocationEvent]  # OPTIONAL
     alternate_ips: List[str]  # OPTIONAL
-    artifact_path: str  # OPTIONAL
     custom_attribute: str  # OPTIONAL
     deployment_override: str  # OPTIONAL
     is_core_dump_enabled: bool  # OPTIONAL
@@ -132,6 +138,10 @@ class ModelsServer(Model):
 
     def with_allocation_id(self, value: str) -> ModelsServer:
         self.allocation_id = value
+        return self
+
+    def with_artifact_path(self, value: str) -> ModelsServer:
+        self.artifact_path = value
         return self
 
     def with_cpu_limit(self, value: int) -> ModelsServer:
@@ -160,6 +170,10 @@ class ModelsServer(Model):
 
     def with_is_override_game_version(self, value: bool) -> ModelsServer:
         self.is_override_game_version = value
+        return self
+
+    def with_is_override_region(self, value: bool) -> ModelsServer:
+        self.is_override_region = value
         return self
 
     def with_job_id(self, value: str) -> ModelsServer:
@@ -214,6 +228,10 @@ class ModelsServer(Model):
         self.termination_reason = value
         return self
 
+    def with_ulimit_file_size(self, value: int) -> ModelsServer:
+        self.ulimit_file_size = value
+        return self
+
     def with_allocation_events(
         self, value: List[ModelsAllocationEvent]
     ) -> ModelsServer:
@@ -222,10 +240,6 @@ class ModelsServer(Model):
 
     def with_alternate_ips(self, value: List[str]) -> ModelsServer:
         self.alternate_ips = value
-        return self
-
-    def with_artifact_path(self, value: str) -> ModelsServer:
-        self.artifact_path = value
         return self
 
     def with_custom_attribute(self, value: str) -> ModelsServer:
@@ -258,6 +272,10 @@ class ModelsServer(Model):
             result["allocation_id"] = str(self.allocation_id)
         elif include_empty:
             result["allocation_id"] = ""
+        if hasattr(self, "artifact_path"):
+            result["artifact_path"] = str(self.artifact_path)
+        elif include_empty:
+            result["artifact_path"] = ""
         if hasattr(self, "cpu_limit"):
             result["cpu_limit"] = int(self.cpu_limit)
         elif include_empty:
@@ -286,6 +304,10 @@ class ModelsServer(Model):
             result["is_override_game_version"] = bool(self.is_override_game_version)
         elif include_empty:
             result["is_override_game_version"] = False
+        if hasattr(self, "is_override_region"):
+            result["is_override_region"] = bool(self.is_override_region)
+        elif include_empty:
+            result["is_override_region"] = False
         if hasattr(self, "job_id"):
             result["job_id"] = str(self.job_id)
         elif include_empty:
@@ -338,6 +360,10 @@ class ModelsServer(Model):
             result["termination_reason"] = str(self.termination_reason)
         elif include_empty:
             result["termination_reason"] = ""
+        if hasattr(self, "ulimit_file_size"):
+            result["ulimit_file_size"] = int(self.ulimit_file_size)
+        elif include_empty:
+            result["ulimit_file_size"] = 0
         if hasattr(self, "allocation_events"):
             result["allocation_events"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.allocation_events
@@ -348,10 +374,6 @@ class ModelsServer(Model):
             result["alternate_ips"] = [str(i0) for i0 in self.alternate_ips]
         elif include_empty:
             result["alternate_ips"] = []
-        if hasattr(self, "artifact_path"):
-            result["artifact_path"] = str(self.artifact_path)
-        elif include_empty:
-            result["artifact_path"] = ""
         if hasattr(self, "custom_attribute"):
             result["custom_attribute"] = str(self.custom_attribute)
         elif include_empty:
@@ -384,6 +406,7 @@ class ModelsServer(Model):
     def create(
         cls,
         allocation_id: str,
+        artifact_path: str,
         cpu_limit: int,
         created_at: str,
         deployment: str,
@@ -391,6 +414,7 @@ class ModelsServer(Model):
         image_version: str,
         ip: str,
         is_override_game_version: bool,
+        is_override_region: bool,
         job_id: str,
         last_update: str,
         mem_limit: int,
@@ -404,9 +428,9 @@ class ModelsServer(Model):
         session_id: str,
         status: str,
         termination_reason: str,
+        ulimit_file_size: int,
         allocation_events: Optional[List[ModelsAllocationEvent]] = None,
         alternate_ips: Optional[List[str]] = None,
-        artifact_path: Optional[str] = None,
         custom_attribute: Optional[str] = None,
         deployment_override: Optional[str] = None,
         is_core_dump_enabled: Optional[bool] = None,
@@ -416,6 +440,7 @@ class ModelsServer(Model):
     ) -> ModelsServer:
         instance = cls()
         instance.allocation_id = allocation_id
+        instance.artifact_path = artifact_path
         instance.cpu_limit = cpu_limit
         instance.created_at = created_at
         instance.deployment = deployment
@@ -423,6 +448,7 @@ class ModelsServer(Model):
         instance.image_version = image_version
         instance.ip = ip
         instance.is_override_game_version = is_override_game_version
+        instance.is_override_region = is_override_region
         instance.job_id = job_id
         instance.last_update = last_update
         instance.mem_limit = mem_limit
@@ -436,12 +462,11 @@ class ModelsServer(Model):
         instance.session_id = session_id
         instance.status = status
         instance.termination_reason = termination_reason
+        instance.ulimit_file_size = ulimit_file_size
         if allocation_events is not None:
             instance.allocation_events = allocation_events
         if alternate_ips is not None:
             instance.alternate_ips = alternate_ips
-        if artifact_path is not None:
-            instance.artifact_path = artifact_path
         if custom_attribute is not None:
             instance.custom_attribute = custom_attribute
         if deployment_override is not None:
@@ -463,6 +488,10 @@ class ModelsServer(Model):
             instance.allocation_id = str(dict_["allocation_id"])
         elif include_empty:
             instance.allocation_id = ""
+        if "artifact_path" in dict_ and dict_["artifact_path"] is not None:
+            instance.artifact_path = str(dict_["artifact_path"])
+        elif include_empty:
+            instance.artifact_path = ""
         if "cpu_limit" in dict_ and dict_["cpu_limit"] is not None:
             instance.cpu_limit = int(dict_["cpu_limit"])
         elif include_empty:
@@ -494,6 +523,10 @@ class ModelsServer(Model):
             instance.is_override_game_version = bool(dict_["is_override_game_version"])
         elif include_empty:
             instance.is_override_game_version = False
+        if "is_override_region" in dict_ and dict_["is_override_region"] is not None:
+            instance.is_override_region = bool(dict_["is_override_region"])
+        elif include_empty:
+            instance.is_override_region = False
         if "job_id" in dict_ and dict_["job_id"] is not None:
             instance.job_id = str(dict_["job_id"])
         elif include_empty:
@@ -546,6 +579,10 @@ class ModelsServer(Model):
             instance.termination_reason = str(dict_["termination_reason"])
         elif include_empty:
             instance.termination_reason = ""
+        if "ulimit_file_size" in dict_ and dict_["ulimit_file_size"] is not None:
+            instance.ulimit_file_size = int(dict_["ulimit_file_size"])
+        elif include_empty:
+            instance.ulimit_file_size = 0
         if "allocation_events" in dict_ and dict_["allocation_events"] is not None:
             instance.allocation_events = [
                 ModelsAllocationEvent.create_from_dict(i0, include_empty=include_empty)
@@ -557,10 +594,6 @@ class ModelsServer(Model):
             instance.alternate_ips = [str(i0) for i0 in dict_["alternate_ips"]]
         elif include_empty:
             instance.alternate_ips = []
-        if "artifact_path" in dict_ and dict_["artifact_path"] is not None:
-            instance.artifact_path = str(dict_["artifact_path"])
-        elif include_empty:
-            instance.artifact_path = ""
         if "custom_attribute" in dict_ and dict_["custom_attribute"] is not None:
             instance.custom_attribute = str(dict_["custom_attribute"])
         elif include_empty:
@@ -627,6 +660,7 @@ class ModelsServer(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "allocation_id": "allocation_id",
+            "artifact_path": "artifact_path",
             "cpu_limit": "cpu_limit",
             "created_at": "created_at",
             "deployment": "deployment",
@@ -634,6 +668,7 @@ class ModelsServer(Model):
             "image_version": "image_version",
             "ip": "ip",
             "is_override_game_version": "is_override_game_version",
+            "is_override_region": "is_override_region",
             "job_id": "job_id",
             "last_update": "last_update",
             "mem_limit": "mem_limit",
@@ -647,9 +682,9 @@ class ModelsServer(Model):
             "session_id": "session_id",
             "status": "status",
             "termination_reason": "termination_reason",
+            "ulimit_file_size": "ulimit_file_size",
             "allocation_events": "allocation_events",
             "alternate_ips": "alternate_ips",
-            "artifact_path": "artifact_path",
             "custom_attribute": "custom_attribute",
             "deployment_override": "deployment_override",
             "is_core_dump_enabled": "is_core_dump_enabled",
@@ -661,6 +696,7 @@ class ModelsServer(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "allocation_id": True,
+            "artifact_path": True,
             "cpu_limit": True,
             "created_at": True,
             "deployment": True,
@@ -668,6 +704,7 @@ class ModelsServer(Model):
             "image_version": True,
             "ip": True,
             "is_override_game_version": True,
+            "is_override_region": True,
             "job_id": True,
             "last_update": True,
             "mem_limit": True,
@@ -681,9 +718,9 @@ class ModelsServer(Model):
             "session_id": True,
             "status": True,
             "termination_reason": True,
+            "ulimit_file_size": True,
             "allocation_events": False,
             "alternate_ips": False,
-            "artifact_path": False,
             "custom_attribute": False,
             "deployment_override": False,
             "is_core_dump_enabled": False,

@@ -34,6 +34,8 @@ class PlatformRewardItem(Model):
     Properties:
         item_id: (itemId) OPTIONAL str
 
+        item_name: (itemName) OPTIONAL str
+
         item_sku: (itemSku) OPTIONAL str
 
         item_type: (itemType) OPTIONAL str
@@ -42,6 +44,7 @@ class PlatformRewardItem(Model):
     # region fields
 
     item_id: str  # OPTIONAL
+    item_name: str  # OPTIONAL
     item_sku: str  # OPTIONAL
     item_type: str  # OPTIONAL
 
@@ -51,6 +54,10 @@ class PlatformRewardItem(Model):
 
     def with_item_id(self, value: str) -> PlatformRewardItem:
         self.item_id = value
+        return self
+
+    def with_item_name(self, value: str) -> PlatformRewardItem:
+        self.item_name = value
         return self
 
     def with_item_sku(self, value: str) -> PlatformRewardItem:
@@ -71,6 +78,10 @@ class PlatformRewardItem(Model):
             result["itemId"] = str(self.item_id)
         elif include_empty:
             result["itemId"] = ""
+        if hasattr(self, "item_name"):
+            result["itemName"] = str(self.item_name)
+        elif include_empty:
+            result["itemName"] = ""
         if hasattr(self, "item_sku"):
             result["itemSku"] = str(self.item_sku)
         elif include_empty:
@@ -89,6 +100,7 @@ class PlatformRewardItem(Model):
     def create(
         cls,
         item_id: Optional[str] = None,
+        item_name: Optional[str] = None,
         item_sku: Optional[str] = None,
         item_type: Optional[str] = None,
         **kwargs,
@@ -96,6 +108,8 @@ class PlatformRewardItem(Model):
         instance = cls()
         if item_id is not None:
             instance.item_id = item_id
+        if item_name is not None:
+            instance.item_name = item_name
         if item_sku is not None:
             instance.item_sku = item_sku
         if item_type is not None:
@@ -113,6 +127,10 @@ class PlatformRewardItem(Model):
             instance.item_id = str(dict_["itemId"])
         elif include_empty:
             instance.item_id = ""
+        if "itemName" in dict_ and dict_["itemName"] is not None:
+            instance.item_name = str(dict_["itemName"])
+        elif include_empty:
+            instance.item_name = ""
         if "itemSku" in dict_ and dict_["itemSku"] is not None:
             instance.item_sku = str(dict_["itemSku"])
         elif include_empty:
@@ -163,6 +181,7 @@ class PlatformRewardItem(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "itemId": "item_id",
+            "itemName": "item_name",
             "itemSku": "item_sku",
             "itemType": "item_type",
         }
@@ -171,6 +190,7 @@ class PlatformRewardItem(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "itemId": False,
+            "itemName": False,
             "itemSku": False,
             "itemType": False,
         }

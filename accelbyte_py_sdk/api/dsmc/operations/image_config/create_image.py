@@ -79,6 +79,8 @@ class CreateImage(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (the image is not exist in the container registry)
+
         409: Conflict - ResponseError (conflict. duplicate image version record)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -181,6 +183,8 @@ class CreateImage(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (the image is not exist in the container registry)
+
         409: Conflict - ResponseError (conflict. duplicate image version record)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -203,6 +207,8 @@ class CreateImage(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 404:
             return None, ResponseError.create_from_dict(content)
         if code == 409:
             return None, ResponseError.create_from_dict(content)

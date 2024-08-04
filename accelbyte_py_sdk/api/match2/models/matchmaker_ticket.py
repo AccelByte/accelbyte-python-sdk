@@ -39,6 +39,8 @@ class MatchmakerTicket(Model):
 
         is_active: (IsActive) REQUIRED bool
 
+        is_pivot: (IsPivot) REQUIRED bool
+
         latencies: (Latencies) REQUIRED Dict[str, int]
 
         match_pool: (MatchPool) REQUIRED str
@@ -62,6 +64,7 @@ class MatchmakerTicket(Model):
 
     created_at: str  # REQUIRED
     is_active: bool  # REQUIRED
+    is_pivot: bool  # REQUIRED
     latencies: Dict[str, int]  # REQUIRED
     match_pool: str  # REQUIRED
     namespace: str  # REQUIRED
@@ -82,6 +85,10 @@ class MatchmakerTicket(Model):
 
     def with_is_active(self, value: bool) -> MatchmakerTicket:
         self.is_active = value
+        return self
+
+    def with_is_pivot(self, value: bool) -> MatchmakerTicket:
+        self.is_pivot = value
         return self
 
     def with_latencies(self, value: Dict[str, int]) -> MatchmakerTicket:
@@ -136,6 +143,10 @@ class MatchmakerTicket(Model):
             result["IsActive"] = bool(self.is_active)
         elif include_empty:
             result["IsActive"] = False
+        if hasattr(self, "is_pivot"):
+            result["IsPivot"] = bool(self.is_pivot)
+        elif include_empty:
+            result["IsPivot"] = False
         if hasattr(self, "latencies"):
             result["Latencies"] = {
                 str(k0): int(v0) for k0, v0 in self.latencies.items()
@@ -193,6 +204,7 @@ class MatchmakerTicket(Model):
         cls,
         created_at: str,
         is_active: bool,
+        is_pivot: bool,
         latencies: Dict[str, int],
         match_pool: str,
         namespace: str,
@@ -207,6 +219,7 @@ class MatchmakerTicket(Model):
         instance = cls()
         instance.created_at = created_at
         instance.is_active = is_active
+        instance.is_pivot = is_pivot
         instance.latencies = latencies
         instance.match_pool = match_pool
         instance.namespace = namespace
@@ -233,6 +246,10 @@ class MatchmakerTicket(Model):
             instance.is_active = bool(dict_["IsActive"])
         elif include_empty:
             instance.is_active = False
+        if "IsPivot" in dict_ and dict_["IsPivot"] is not None:
+            instance.is_pivot = bool(dict_["IsPivot"])
+        elif include_empty:
+            instance.is_pivot = False
         if "Latencies" in dict_ and dict_["Latencies"] is not None:
             instance.latencies = {
                 str(k0): int(v0) for k0, v0 in dict_["Latencies"].items()
@@ -321,6 +338,7 @@ class MatchmakerTicket(Model):
         return {
             "CreatedAt": "created_at",
             "IsActive": "is_active",
+            "IsPivot": "is_pivot",
             "Latencies": "latencies",
             "MatchPool": "match_pool",
             "Namespace": "namespace",
@@ -337,6 +355,7 @@ class MatchmakerTicket(Model):
         return {
             "CreatedAt": True,
             "IsActive": True,
+            "IsPivot": True,
             "Latencies": True,
             "MatchPool": True,
             "Namespace": True,

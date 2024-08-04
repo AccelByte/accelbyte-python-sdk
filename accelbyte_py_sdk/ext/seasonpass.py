@@ -46,6 +46,7 @@ from ..api.seasonpass.models import Paging
 from ..api.seasonpass.models import PassCreate
 from ..api.seasonpass.models import PassInfo
 from ..api.seasonpass.models import PassUpdate
+from ..api.seasonpass.models import Permission
 from ..api.seasonpass.models import ReasonTagsResult
 from ..api.seasonpass.models import RewardCreate
 from ..api.seasonpass.models import RewardCurrency
@@ -113,6 +114,7 @@ def create_error_entity_example() -> ErrorEntity:
     instance.error_message = randomize()
     instance.dev_stack_trace = randomize()
     instance.message_variables = {randomize(): randomize()}
+    instance.required_permission = create_permission_example()
     return instance
 
 
@@ -327,6 +329,13 @@ def create_pass_update_example() -> PassUpdate:
     instance.images = [create_image_example()]
     instance.localizations = {}
     instance.pass_item_id = randomize()
+    return instance
+
+
+def create_permission_example() -> Permission:
+    instance = Permission()
+    instance.action = randomize("int", min_val=1, max_val=1000)
+    instance.resource = randomize()
     return instance
 
 

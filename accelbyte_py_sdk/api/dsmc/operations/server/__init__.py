@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Dsm Controller Service."""
 
-__version__ = "6.4.7"
+__version__ = "6.8.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .count_server_detailed_client import CountServerDetailedClient
 from .deregister_local_server import DeregisterLocalServer
 from .get_server_session import GetServerSession
 from .get_server_session_timeout import GetServerSessionTimeout

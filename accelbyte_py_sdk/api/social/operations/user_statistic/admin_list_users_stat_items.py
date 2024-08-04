@@ -35,12 +35,13 @@ from ...models import ValidationErrorEntity
 
 
 class AdminListUsersStatItems(Operation):
-    """Admin list user's statItems (AdminListUsersStatItems)
+    """(Legacy) Admin list user's statItems (AdminListUsersStatItems)
 
     Admin list all statItems of user
-    NOTE:
-    * If stat code does not exist, will ignore this stat code.
-    * If stat item does not exist, will return default value
+    NOTE: Legacy endpoint , please use POST /v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk/getOrDefault
+
+      * If stat code does not exist, will ignore this stat code.
+      * If stat item does not exist, will return default value
 
     Other detail info:
       *  Returns : stat items

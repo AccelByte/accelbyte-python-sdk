@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.53.0"
+__version__ = "4.54.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .fulfill_item import FulfillItem
+from .fulfill_items import FulfillItems
 from .fulfill_rewards import FulfillRewards
 from .fulfill_rewards_v2 import FulfillRewardsV2
 from .pre_check_fulfill_item import PreCheckFulfillItem
@@ -23,4 +24,7 @@ from .query_fulfillment_histories import QueryFulfillmentHistories
 from .query_fulfillment_histories import (
     StatusEnum as QueryFulfillmentHistoriesStatusEnum,
 )
+from .query_fulfillments import QueryFulfillments
+from .query_fulfillments import StateEnum as QueryFulfillmentsStateEnum
 from .redeem_code import RedeemCode
+from .revoke_items import RevokeItems
