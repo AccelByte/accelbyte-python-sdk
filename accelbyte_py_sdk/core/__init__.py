@@ -43,7 +43,13 @@ from ._proto_http_request import create_proto_from_operation
 from ._timer import Timer
 from ._timer import TimerStatus
 
-from ._ws_client import WebsocketsWSClient
+from ._ws_client import WebsocketsWSClient  # deprecated, use WSClient
+
+from ._websocket_client import (
+    WSClient,
+    WSClientListener, WSClientListenerC, WSClientListenerM,
+    WSClientProtocol, WSClientState,
+)
 
 from ._wsm import WebSocketMessage
 from ._wsm import WebSocketMessageParserError
