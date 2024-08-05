@@ -15,6 +15,7 @@ from ._config_repository import YamlFileConfigRepository
 from ._token_repository import TokenRepository
 from ._token_repository import InMemoryTokenRepository
 from ._token_repository import MyTokenRepository
+from ._token_repository import TokenRepositoryObserver
 
 from ._http_client import HttpClient
 from ._http_client import HttpRawResponse
