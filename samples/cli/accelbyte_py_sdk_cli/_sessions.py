@@ -6,7 +6,7 @@ from typing import Any, IO, List, Optional
 import click
 
 from accelbyte_py_sdk.core import get_base_url
-from accelbyte_py_sdk.core import WebsocketsWSClient
+from accelbyte_py_sdk.api.lobby.ws_client import LobbyWSClient
 
 
 class SessionWriter:
@@ -85,7 +85,7 @@ async def _start_batched_ws_session_async(
     async def on_message_(msg: str):
         received_messages.append(msg)
 
-    ws_client = WebsocketsWSClient(
+    ws_client = LobbyWSClient(
         uri=base_url,
         uri_prefix=uri_prefix,
     )

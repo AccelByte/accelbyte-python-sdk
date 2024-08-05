@@ -5,11 +5,11 @@ from accelbyte_py_sdk.core import (
     DotEnvFileConfigRepository,
     HttpxHttpClient,
     InMemoryTokenRepository,
-    WebsocketsWSClient,
     get_env_user_credentials,
 )
 import accelbyte_py_sdk.services.auth as auth_service
 import accelbyte_py_sdk.api.lobby.wss_models as wss_models
+from accelbyte_py_sdk.api.lobby.ws_client import LobbyWSClient
 
 
 async def main() -> None:
@@ -31,7 +31,7 @@ async def main() -> None:
     if error:
         raise Exception(error)
 
-    ws_client = WebsocketsWSClient(
+    ws_client = LobbyWSClient(
         uri=config_repo.get_base_url(),
         access_token=token_repo.get_access_token(),
     )

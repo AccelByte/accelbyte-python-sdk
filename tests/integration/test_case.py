@@ -13,7 +13,7 @@ from unittest import TestCase
 import accelbyte_py_sdk
 from accelbyte_py_sdk import AccelByteSDK
 from accelbyte_py_sdk.core import EnvironmentConfigRepository, InMemoryTokenRepository
-from accelbyte_py_sdk.core import WebsocketsWSClient
+from accelbyte_py_sdk.api.lobby.ws_client import LobbyWSClient
 
 from .utils import format_request_response_as_yaml
 from .utils import get_init_options
@@ -297,7 +297,7 @@ class IntegrationTestCase(ABC, SDKTestCaseUtils, TestCase):
 class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
     login_type: Optional[str] = None
 
-    ws_client: Optional[WebsocketsWSClient] = None
+    ws_client: Optional[LobbyWSClient] = None
     messages: Queue = Queue()
 
     @classmethod
@@ -375,7 +375,7 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
         access_token, error = get_access_token()
         self.assertIsNone(error, msg=f"Failed to get the access token. {str(error)}")
 
-        self.ws_client = WebsocketsWSClient(uri=base_url, access_token=access_token)
+        self.ws_client = LobbyWSClient(uri=base_url, access_token=access_token)
 
         self.ws_client.listeners.append(self.on_receive)
 

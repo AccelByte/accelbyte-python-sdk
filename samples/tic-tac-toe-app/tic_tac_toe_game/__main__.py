@@ -13,6 +13,7 @@ import accelbyte_py_sdk.core
 import accelbyte_py_sdk.services.auth as auth_service
 
 from accelbyte_py_sdk.core import get_access_token, get_base_url
+from accelbyte_py_sdk.api.lobby.ws_client import LobbyWSClient
 
 CTX: dict = {}
 
@@ -27,7 +28,7 @@ async def main():
     async def on_message(message: str):
         print(message)
 
-    ws_client = accelbyte_py_sdk.core.WebsocketsWSClient(
+    ws_client = LobbyWSClient(
         uri=base_url,
         access_token=access_token,
     )
