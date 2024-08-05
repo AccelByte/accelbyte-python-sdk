@@ -140,14 +140,17 @@ def main(*args, **kwargs) -> None:
     if kwargs.get("test_core", False):
         import tests.core
         import tests.sdk.core
+        import tests.sdk.api
 
         core_tests = load_tests_from_module(loader, tests.core, **kwargs)
         sdk_core_tests = load_tests_from_module(loader, tests.sdk.core, **kwargs)
+        sdk_api_tests = load_tests_from_module(loader, tests.sdk.api, **kwargs)
 
         suite = unittest.TestSuite(
             [
                 core_tests,
                 sdk_core_tests,
+                sdk_api_tests,
             ]
         )
         results_core = runner.run(suite)
