@@ -169,7 +169,7 @@ class WSClient:
 
     async def on_disconnect(self, *, code: int = 1000, reason: str = "", **kwargs) -> None:
         if self.should_reconnect(code=code, reason=reason):
-            self._set_reconnect_conn_event_data(code=code, reason=reason)
+            self._set_reconnect_conn_event_data(code=code, reason=reason, number_of_attempts=0)
             self._conn_event.set()
         else:
             self.clear_data()
@@ -184,7 +184,7 @@ class WSClient:
                 raise TypeError(listener)
 
     # noinspection PyMethodMayBeStatic
-    def should_reconnect(self, code: int, reason: str = "") -> bool:
+    def should_reconnect(self, code: int, reason: str = "", number_of_attempts: int = 0) -> bool:
         return 1001 <= code <= 2999
 
     # noinspection PyMethodMayBeStatic
@@ -264,7 +264,7 @@ class WSClient:
                 await asyncio.sleep(delay=delay)
                 did_reconnect = await self.connect(reconnecting=True)
                 if not did_reconnect:
-                    if self.should_reconnect(code=code, reason=reason):
+                    if self.should_reconnect(code=code, reason=reason, number_of_attempts=number_of_attempts+1):
                         self._set_reconnect_conn_event_data(
                             code=code, reason=reason, number_of_attempts=number_of_attempts+1,
                         )
