@@ -6,7 +6,12 @@ SHELL := /bin/bash
 
 #ENV_FILE_PATH ?= $(PWD)/tests/sample_apps/.env
 
-lint:
+clean:
+	rm -rf build
+	rm -rf dist
+	rm -rf *.egg-info
+
+lint: clean
 	rm -f lint.err
 	docker run -t --rm -v $$(pwd):/data -w /data --entrypoint /bin/sh dhanarab/python-pylint:3.9-2.12.2-2 \
 			-c 'pip install -r requirements.txt && pylint -j 0 accelbyte_py_sdk || exit $$(( $$? & (1+2+32) ))' || touch lint.err
