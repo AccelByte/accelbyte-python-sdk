@@ -46,17 +46,21 @@ def make_headers(**kwargs) -> Optional[Dict[str, str]]:
     headers = {}
 
     if (
-        (extra_headers := kwargs.get("extra_headers", {})) and
-        isinstance(extra_headers, dict) and
-        extra_headers
+        (extra_headers := kwargs.get("extra_headers", {}))
+        and isinstance(extra_headers, dict)
+        and extra_headers
     ):
         headers.update(extra_headers)
 
-    if (access_token := kwargs.get("access_token", None)) and isinstance(access_token, str):
+    if (access_token := kwargs.get("access_token", None)) and isinstance(
+        access_token, str
+    ):
         headers["Authorization"] = f"Bearer {access_token}"
     elif (username := kwargs.get("username", None)) and isinstance(username, str):
         password = kwargs.get("password", "")
-        headers["Authorization"] = create_basic_authentication(username=username, password=password)
+        headers["Authorization"] = create_basic_authentication(
+            username=username, password=password
+        )
 
     return headers if headers else None
 
@@ -71,12 +75,14 @@ class WSClientState(Enum):
 
 @runtime_checkable
 class WSClientListenerC(Protocol):
-    async def __call__(self, message: str, **kwargs) -> None: ...
+    async def __call__(self, message: str, **kwargs) -> None:
+        ...
 
 
 @runtime_checkable
 class WSClientListenerM(Protocol):
-    async def on_message(self, message: str, **kwargs) -> None: ...
+    async def on_message(self, message: str, **kwargs) -> None:
+        ...
 
 
 WSClientListener = Union[WSClientListenerC, WSClientListenerM]
@@ -86,15 +92,28 @@ WSClientListener = Union[WSClientListenerC, WSClientListenerM]
 class WSClientProtocol(Protocol):
     # noinspection PyPropertyDefinition
     @property
-    def state(self) -> WSClientState: ...
+    def state(self) -> WSClientState:
+        ...
 
-    async def connect(self, *, reconnecting: bool = False, **kwargs) -> bool: ...
-    async def disconnect(self, *, code: int = 1000, reason: str = "", **kwargs) -> None: ...
-    async def send(self, message: str, **kwargs) -> None: ...
+    async def connect(self, *, reconnecting: bool = False, **kwargs) -> bool:
+        ...
 
-    async def on_connect(self, *, reconnecting: bool = False, **kwargs) -> None: ...
-    async def on_disconnect(self, *, code: int = 1000, reason: str = "", **kwargs) -> None: ...
-    async def on_message(self, message: str, **kwargs) -> None: ...
+    async def disconnect(self, *, code: int = 1000, reason: str = "", **kwargs) -> None:
+        ...
+
+    async def send(self, message: str, **kwargs) -> None:
+        ...
+
+    async def on_connect(self, *, reconnecting: bool = False, **kwargs) -> None:
+        ...
+
+    async def on_disconnect(
+        self, *, code: int = 1000, reason: str = "", **kwargs
+    ) -> None:
+        ...
+
+    async def on_message(self, message: str, **kwargs) -> None:
+        ...
 
 
 class WSClient:
@@ -167,9 +186,13 @@ class WSClient:
     async def on_connect(self, *, reconnecting: bool = False, **kwargs) -> None:
         self.set_data(self.RECONNECT_ATTEMPTS_DATA_KEY, 0)
 
-    async def on_disconnect(self, *, code: int = 1000, reason: str = "", **kwargs) -> None:
+    async def on_disconnect(
+        self, *, code: int = 1000, reason: str = "", **kwargs
+    ) -> None:
         if self.should_reconnect(code=code, reason=reason):
-            self._set_reconnect_conn_event_data(code=code, reason=reason, number_of_attempts=0)
+            self._set_reconnect_conn_event_data(
+                code=code, reason=reason, number_of_attempts=0
+            )
             self._conn_event.set()
         else:
             self.clear_data()
@@ -184,7 +207,9 @@ class WSClient:
                 raise TypeError(listener)
 
     # noinspection PyMethodMayBeStatic
-    def should_reconnect(self, code: int, reason: str = "", number_of_attempts: int = 0) -> bool:
+    def should_reconnect(
+        self, code: int, reason: str = "", number_of_attempts: int = 0
+    ) -> bool:
         return 1001 <= code <= 2999
 
     # noinspection PyMethodMayBeStatic
@@ -236,10 +261,16 @@ class WSClient:
         return make_headers(**kwargs)
 
     # noinspection PyMethodMayBeStatic
-    async def _create_connection(self, url: str, headers: Optional[Dict[str, str]], **kwargs) -> Any:
-        return await websockets.connect(uri=url, extra_headers=headers)  # pylint: disable=no-member
+    async def _create_connection(
+        self, url: str, headers: Optional[Dict[str, str]], **kwargs
+    ) -> Any:
+        return await websockets.connect(
+            uri=url, extra_headers=headers
+        )  # pylint: disable=no-member
 
-    async def _close_connection(self, code: int = 1000, reason: str = "", **kwargs) -> None:
+    async def _close_connection(
+        self, code: int = 1000, reason: str = "", **kwargs
+    ) -> None:
         await self._connection.close(code=code, reason=reason)
 
     async def _conn_task(self) -> None:
@@ -264,9 +295,15 @@ class WSClient:
                 await asyncio.sleep(delay=delay)
                 did_reconnect = await self.connect(reconnecting=True)
                 if not did_reconnect:
-                    if self.should_reconnect(code=code, reason=reason, number_of_attempts=number_of_attempts+1):
+                    if self.should_reconnect(
+                        code=code,
+                        reason=reason,
+                        number_of_attempts=number_of_attempts + 1,
+                    ):
                         self._set_reconnect_conn_event_data(
-                            code=code, reason=reason, number_of_attempts=number_of_attempts+1,
+                            code=code,
+                            reason=reason,
+                            number_of_attempts=number_of_attempts + 1,
                         )
                         self._conn_event.set()
                     else:
@@ -309,12 +346,19 @@ class WSClient:
                 await asyncio.sleep(0.1)
 
     def _set_disconnect_conn_event_data(self, code: int, reason: str = "") -> None:
-        setattr(self._conn_event, "data", {
-            "type": "disconnect",
-            "code": code, "reason": reason,
-        })
+        setattr(
+            self._conn_event,
+            "data",
+            {
+                "type": "disconnect",
+                "code": code,
+                "reason": reason,
+            },
+        )
 
-    def _set_disconnect_conn_event_data_from_exception(self, closed: websockets.exceptions.ConnectionClosed) -> None:
+    def _set_disconnect_conn_event_data_from_exception(
+        self, closed: websockets.exceptions.ConnectionClosed
+    ) -> None:
         if closed.sent is not None:
             source = closed.sent
         elif closed.rcvd is not None:
@@ -323,13 +367,19 @@ class WSClient:
             source = closed
         self._set_disconnect_conn_event_data(code=source.code, reason=source.reason)
 
-    def _set_reconnect_conn_event_data(self, code: int, reason: str = "", number_of_attempts: int = 0) -> None:
-        setattr(self._conn_event, "data", {
-            "type": "reconnect",
-            "code": code,
-            "reason": reason,
-            "number_of_attempts": number_of_attempts,
-        })
+    def _set_reconnect_conn_event_data(
+        self, code: int, reason: str = "", number_of_attempts: int = 0
+    ) -> None:
+        setattr(
+            self._conn_event,
+            "data",
+            {
+                "type": "reconnect",
+                "code": code,
+                "reason": reason,
+                "number_of_attempts": number_of_attempts,
+            },
+        )
 
     def _clear_conn_event_data(self) -> None:
         setattr(self._conn_event, "data", None)

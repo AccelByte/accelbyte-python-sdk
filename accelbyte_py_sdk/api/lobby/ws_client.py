@@ -37,7 +37,9 @@ class LobbyWSClient(WSClient):
             try:
                 connect_notif = ConnectNotif.create_from_wsm(message, is_strict=False)
                 if connect_notif.lobby_session_id:
-                    self.set_data(self.LOBBY_SESSION_ID_DATA_KEY, connect_notif.lobby_session_id)
+                    self.set_data(
+                        self.LOBBY_SESSION_ID_DATA_KEY, connect_notif.lobby_session_id
+                    )
             except WebSocketMessageParserException as error:
                 pass  # explicitly ignore
 

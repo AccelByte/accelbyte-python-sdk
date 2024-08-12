@@ -47,8 +47,11 @@ from ._ws_client import WebsocketsWSClient  # deprecated, use WSClient
 
 from ._websocket_client import (
     WSClient,
-    WSClientListener, WSClientListenerC, WSClientListenerM,
-    WSClientProtocol, WSClientState,
+    WSClientListener,
+    WSClientListenerC,
+    WSClientListenerM,
+    WSClientProtocol,
+    WSClientState,
 )
 
 from ._wsm import WebSocketMessage

@@ -57,7 +57,9 @@ class AsyncMockLobbyServerWebSocketTestCase(IsolatedAsyncioTestCase):
 
         self.messages: List[str] = []
 
-        self.ws_client = LobbyWSClient(url=self.base_url, username="admin", password="admin", scheme="ws://")
+        self.ws_client = LobbyWSClient(
+            url=self.base_url, username="admin", password="admin", scheme="ws://"
+        )
         self.ws_client.listeners.append(self.on_message)
 
         self.token_repo.register_observer(self.ws_client)
@@ -75,7 +77,9 @@ class AsyncMockLobbyServerWebSocketTestCase(IsolatedAsyncioTestCase):
     async def on_message(self, message: str, **kwargs) -> None:
         self.messages.append(message)
 
-    async def wait_for_message_type(self, message_type: str, timeout: float) -> Optional[str]:
+    async def wait_for_message_type(
+        self, message_type: str, timeout: float
+    ) -> Optional[str]:
         elapsed: float = 0.0
         interval: float = 0.25
         while elapsed < timeout:
@@ -97,17 +101,26 @@ class AsyncMockLobbyServerWebSocketTestCase(IsolatedAsyncioTestCase):
         self.assertTrue(response.ok)
 
     async def test_lobby_reconnect_with_session_id(self):
-        connect_notif_message = await self.wait_for_message_type(message_type="connectNotif", timeout=5.0)
+        connect_notif_message = await self.wait_for_message_type(
+            message_type="connectNotif", timeout=5.0
+        )
         if not connect_notif_message:
             self.fail(msg="did not receive connectNotif")
         self.messages = []
 
-        connect_notif = ConnectNotif.create_from_wsm(connect_notif_message, is_strict=False)
+        connect_notif = ConnectNotif.create_from_wsm(
+            connect_notif_message, is_strict=False
+        )
         original_lobby_session_id = connect_notif.lobby_session_id
         self.assertTrue(bool(original_lobby_session_id))
 
-        self.assertTrue(self.ws_client.has_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY))
-        self.assertEqual(original_lobby_session_id, self.ws_client.get_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY))
+        self.assertTrue(
+            self.ws_client.has_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY)
+        )
+        self.assertEqual(
+            original_lobby_session_id,
+            self.ws_client.get_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY),
+        )
 
         self.force_close(code=2000)
 
@@ -115,29 +128,42 @@ class AsyncMockLobbyServerWebSocketTestCase(IsolatedAsyncioTestCase):
 
         self.assertEqual(self.ws_client.state, WSClientState.CONNECTED)
 
-        connect_notif_message = await self.wait_for_message_type(message_type="connectNotif", timeout=5.0)
+        connect_notif_message = await self.wait_for_message_type(
+            message_type="connectNotif", timeout=5.0
+        )
         if not connect_notif_message:
             self.fail(msg="did not receive connectNotif")
         self.messages = []
 
-        connect_notif = ConnectNotif.create_from_wsm(connect_notif_message, is_strict=False)
+        connect_notif = ConnectNotif.create_from_wsm(
+            connect_notif_message, is_strict=False
+        )
         new_lobby_session_id = connect_notif.lobby_session_id
         self.assertTrue(bool(new_lobby_session_id))
 
         self.assertEqual(original_lobby_session_id, new_lobby_session_id)
 
     async def test_lobby_no_reconnect(self):
-        connect_notif_message = await self.wait_for_message_type(message_type="connectNotif", timeout=5.0)
+        connect_notif_message = await self.wait_for_message_type(
+            message_type="connectNotif", timeout=5.0
+        )
         if not connect_notif_message:
             self.fail(msg="did not receive connectNotif")
         self.messages = []
 
-        connect_notif = ConnectNotif.create_from_wsm(connect_notif_message, is_strict=False)
+        connect_notif = ConnectNotif.create_from_wsm(
+            connect_notif_message, is_strict=False
+        )
         original_lobby_session_id = connect_notif.lobby_session_id
         self.assertTrue(bool(original_lobby_session_id))
 
-        self.assertTrue(self.ws_client.has_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY))
-        self.assertEqual(original_lobby_session_id, self.ws_client.get_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY))
+        self.assertTrue(
+            self.ws_client.has_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY)
+        )
+        self.assertEqual(
+            original_lobby_session_id,
+            self.ws_client.get_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY),
+        )
 
         self.force_close(code=4000)
 
@@ -149,25 +175,35 @@ class AsyncMockLobbyServerWebSocketTestCase(IsolatedAsyncioTestCase):
 
         self.assertEqual(self.ws_client.state, WSClientState.DISCONNECTED)
 
-        self.assertFalse(self.ws_client.has_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY))
+        self.assertFalse(
+            self.ws_client.has_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY)
+        )
 
-        self.ws_client = LobbyWSClient(url=self.base_url, username="admin", password="admin", scheme="ws://")
+        self.ws_client = LobbyWSClient(
+            url=self.base_url, username="admin", password="admin", scheme="ws://"
+        )
         self.ws_client.listeners.append(self.on_message)
         await self.ws_client.connect()
 
-        connect_notif_message = await self.wait_for_message_type(message_type="connectNotif", timeout=5.0)
+        connect_notif_message = await self.wait_for_message_type(
+            message_type="connectNotif", timeout=5.0
+        )
         if not connect_notif_message:
             self.fail(msg="did not receive connectNotif")
         self.messages = []
 
-        connect_notif = ConnectNotif.create_from_wsm(connect_notif_message, is_strict=False)
+        connect_notif = ConnectNotif.create_from_wsm(
+            connect_notif_message, is_strict=False
+        )
         new_lobby_session_id = connect_notif.lobby_session_id
         self.assertTrue(bool(new_lobby_session_id))
 
         self.assertNotEqual(original_lobby_session_id, new_lobby_session_id)
 
     async def test_refresh_token_request(self):
-        connect_notif_message = await self.wait_for_message_type(message_type="connectNotif", timeout=5.0)
+        connect_notif_message = await self.wait_for_message_type(
+            message_type="connectNotif", timeout=5.0
+        )
         if not connect_notif_message:
             self.fail(msg="did not receive connectNotif")
         self.messages = []
@@ -176,13 +212,16 @@ class AsyncMockLobbyServerWebSocketTestCase(IsolatedAsyncioTestCase):
         self.token_repo.store_token(token={"access_token": access_token})
 
         refresh_token_request_message = await self.wait_for_message_type(
-            message_type="refreshTokenRequest", timeout=5.0,
+            message_type="refreshTokenRequest",
+            timeout=5.0,
         )
         if not refresh_token_request_message:
             self.fail(msg="did not receive refreshTokenRequest")
         self.messages = []
 
-        refresh_token_request = RefreshTokenRequest.create_from_wsm(refresh_token_request_message, is_strict=False)
+        refresh_token_request = RefreshTokenRequest.create_from_wsm(
+            refresh_token_request_message, is_strict=False
+        )
         self.assertEqual(access_token, refresh_token_request.token)
 
     # noinspection PyUnresolvedReferences
