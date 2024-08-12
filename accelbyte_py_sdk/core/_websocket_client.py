@@ -200,9 +200,9 @@ class WSClient:
     async def on_message(self, message: str, **kwargs) -> None:
         for listener in self.listeners:
             if isinstance(listener, WSClientListenerC):
-                await listener(message=message, **kwargs)
+                await listener(message, **kwargs)
             elif isinstance(listener, WSClientListenerM):
-                await listener.on_message(message=message, **kwargs)
+                await listener.on_message(message, **kwargs)
             else:
                 raise TypeError(listener)
 
