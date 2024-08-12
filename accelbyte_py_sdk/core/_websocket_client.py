@@ -264,9 +264,10 @@ class WSClient:
     async def _create_connection(
         self, url: str, headers: Optional[Dict[str, str]], **kwargs
     ) -> Any:
+        # pylint: disable=no-member
         return await websockets.connect(
             uri=url, extra_headers=headers
-        )  # pylint: disable=no-member
+        )
 
     async def _close_connection(
         self, code: int = 1000, reason: str = "", **kwargs
