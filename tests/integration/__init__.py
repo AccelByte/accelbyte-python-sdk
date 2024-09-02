@@ -15,6 +15,7 @@ from .api.gametelemetry import GametelemetryTestCase
 from .api.gdpr import GDPRTestCase
 from .api.group import GroupTestCase
 from .api.iam import IAMTestCase
+from .api.inventory import InventoryTestCase
 from .api.leaderboard import LeaderboardTestCase
 from .api.legal import LegalTestCase
 from .api.lobby import AsyncLobbyTestCase, LobbyTestCase
