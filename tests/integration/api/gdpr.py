@@ -94,6 +94,7 @@ class GDPRTestCase(IntegrationTestCase):
             self.skipTest(reason="Test not applicable to AGS Starter.")
 
         from accelbyte_py_sdk.api.gdpr import admin_submit_user_account_deletion_request
+        from accelbyte_py_sdk.api.gdpr import admin_cancel_user_account_deletion_request
 
         # arrange
         _, error, user_id = self.do_create_user(
@@ -111,6 +112,14 @@ class GDPRTestCase(IntegrationTestCase):
 
         # assert
         self.assertIsNone(error, error)
+
+        # clean up
+        #   the GDPR deletion is an async process, this request will cancel the
+        #   previous request since we are going to delete the user we created
+        #   in the tear down step
+        _, _ = admin_cancel_user_account_deletion_request(
+            user_id=self.user_id, namespace=self.user_namespace
+        )
 
     # endregion test:admin_submit_user_account_deletion_request
 
