@@ -38,9 +38,6 @@ class FleetServerConnectionInfo(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/connectioninfo
 

@@ -50,7 +50,7 @@ def create_fulfillment_script(
 ):
     """Create fulfillment script (createFulfillmentScript)
 
-    [Not Supported Yet In Starter] Create fulfillment script.
+    [Not supported yet in AGS Shared Cloud] Create fulfillment script.
     Other detail info:
 
 
@@ -96,7 +96,7 @@ async def create_fulfillment_script_async(
 ):
     """Create fulfillment script (createFulfillmentScript)
 
-    [Not Supported Yet In Starter] Create fulfillment script.
+    [Not supported yet in AGS Shared Cloud] Create fulfillment script.
     Other detail info:
 
 
@@ -141,7 +141,7 @@ def delete_fulfillment_script(
 ):
     """Delete fulfillment script (deleteFulfillmentScript)
 
-    [Not Supported Yet In Starter] Delete fulfillment script.
+    [Not supported yet in AGS Shared Cloud] Delete fulfillment script.
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -173,7 +173,7 @@ async def delete_fulfillment_script_async(
 ):
     """Delete fulfillment script (deleteFulfillmentScript)
 
-    [Not Supported Yet In Starter] Delete fulfillment script.
+    [Not supported yet in AGS Shared Cloud] Delete fulfillment script.
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -207,7 +207,7 @@ def get_fulfillment_script(
 ):
     """Get fulfillment script by id (getFulfillmentScript)
 
-    [Not Supported Yet In Starter] Get fulfillment script by id.
+    [Not supported yet in AGS Shared Cloud] Get fulfillment script by id.
     Other detail info:
 
       * Returns : get fulfillment script
@@ -244,7 +244,7 @@ async def get_fulfillment_script_async(
 ):
     """Get fulfillment script by id (getFulfillmentScript)
 
-    [Not Supported Yet In Starter] Get fulfillment script by id.
+    [Not supported yet in AGS Shared Cloud] Get fulfillment script by id.
     Other detail info:
 
       * Returns : get fulfillment script
@@ -283,7 +283,7 @@ def list_fulfillment_scripts(
 ):
     """List all fulfillment scripts (listFulfillmentScripts)
 
-    [Not Supported Yet In Starter] List all fulfillment scripts.
+    [Not supported yet in AGS Shared Cloud] List all fulfillment scripts.
 
     Properties:
         url: /platform/admin/fulfillment/scripts
@@ -311,7 +311,7 @@ async def list_fulfillment_scripts_async(
 ):
     """List all fulfillment scripts (listFulfillmentScripts)
 
-    [Not Supported Yet In Starter] List all fulfillment scripts.
+    [Not supported yet in AGS Shared Cloud] List all fulfillment scripts.
 
     Properties:
         url: /platform/admin/fulfillment/scripts
@@ -344,7 +344,7 @@ def update_fulfillment_script(
 ):
     """Update fulfillment script (updateFulfillmentScript)
 
-    [Not Supported Yet In Starter] Update fulfillment script.
+    [Not supported yet in AGS Shared Cloud] Update fulfillment script.
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -384,7 +384,7 @@ async def update_fulfillment_script_async(
 ):
     """Update fulfillment script (updateFulfillmentScript)
 
-    [Not Supported Yet In Starter] Update fulfillment script.
+    [Not supported yet in AGS Shared Cloud] Update fulfillment script.
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}

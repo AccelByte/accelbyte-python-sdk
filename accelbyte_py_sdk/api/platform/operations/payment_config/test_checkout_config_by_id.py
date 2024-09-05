@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestCheckoutConfigById(Operation):
     """Test checkout.com configuration by id (testCheckoutConfigById)
 
-    [Not Supported Yet In Starter] Test checkout.com configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test checkout.com configuration in payment merchant config. Other detail info:
 
       * Returns : test result
 
@@ -137,7 +137,7 @@ class TestCheckoutConfigById(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> TestCheckoutConfigById:
+    def with_id(self, value: str) -> TestCheckoutConfigById:
         self.id_ = value
         return self
 

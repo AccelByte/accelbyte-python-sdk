@@ -37,13 +37,13 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
-@click.option("--code", "code", type=str)
+@click.argument("code", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_enable_my_authenticator_v4(
-    code: Optional[str] = None,
+    code: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,

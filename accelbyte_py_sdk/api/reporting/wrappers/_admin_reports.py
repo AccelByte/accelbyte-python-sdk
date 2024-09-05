@@ -173,9 +173,6 @@ def list_reports(
     - createdAt
     - updatedAt
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
-
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reports
 
@@ -238,9 +235,6 @@ async def list_reports_async(
     Reports list can be ordered by:
     - createdAt
     - updatedAt
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
 
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reports

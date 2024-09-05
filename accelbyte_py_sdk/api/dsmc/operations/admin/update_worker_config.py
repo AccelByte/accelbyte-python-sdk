@@ -42,12 +42,6 @@ class UpdateWorkerConfig(Operation):
 
     This endpoint updates a worker configuration to control the worker in the DSMC.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespace/{namespace}/workers
 

@@ -81,10 +81,10 @@ def admin_create_goal(
         * rewards: list of rewards that will be claimable once a goal is complete.
         * tag: goal's labels.
         * isActive: when goal is in a schedule, isActive determine whether goal is active to progress or not.
-    Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
+    Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.
+    The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
+    Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX.
+    Number of goals per challenge is limited to 100 goals.
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals
@@ -172,10 +172,10 @@ async def admin_create_goal_async(
         * rewards: list of rewards that will be claimable once a goal is complete.
         * tag: goal's labels.
         * isActive: when goal is in a schedule, isActive determine whether goal is active to progress or not.
-    Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [CREATE]
+    Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.
+    The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.
+    Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX.
+    Number of goals per challenge is limited to 100 goals.
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals
@@ -239,9 +239,6 @@ def admin_delete_goal(
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
-
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
 
@@ -293,9 +290,6 @@ async def admin_delete_goal_async(
     """Delete Goal (adminDeleteGoal)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
@@ -351,9 +345,6 @@ def admin_get_goal(
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
-
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
 
@@ -407,9 +398,6 @@ async def admin_get_goal_async(
     """Get Goal (adminGetGoal)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
@@ -468,9 +456,6 @@ def admin_get_goals(
     """List Goals of a Challenge (adminGetGoals)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals
@@ -533,9 +518,6 @@ async def admin_get_goals_async(
     """List Goals of a Challenge (adminGetGoals)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals
@@ -631,9 +613,6 @@ def admin_update_goals(
 
     Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
-
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
 
@@ -720,9 +699,6 @@ async def admin_update_goals_async(
       * isActive: when goal is in a schedule, isActive determine whether goal is active to progress or not (optional).
 
     Goal describe set of requirements that need to be fulfilled by players in order to complete it and describe what is the rewards given to player when they complete the goal.The requirement will have target value and a operator that will evaluate that against an observable playerâs attribute (e.g. statistic, entitlement). Goal belongs to a challenge.Supported item type for ENTITLEMENT reward type: APP, BUNDLE, CODE, COINS, EXTENSION, INGAMEITEM, LOOTBOX, MEDIA, OPTIONBOX
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}

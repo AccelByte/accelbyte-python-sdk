@@ -37,7 +37,7 @@ from ...models import FulfillmentScriptInfo
 class CreateFulfillmentScript(Operation):
     """Create fulfillment script (createFulfillmentScript)
 
-    [Not Supported Yet In Starter] Create fulfillment script.
+    [Not supported yet in AGS Shared Cloud] Create fulfillment script.
     Other detail info:
 
 
@@ -145,7 +145,7 @@ class CreateFulfillmentScript(Operation):
         self.body = value
         return self
 
-    def with_id_(self, value: str) -> CreateFulfillmentScript:
+    def with_id(self, value: str) -> CreateFulfillmentScript:
         self.id_ = value
         return self
 

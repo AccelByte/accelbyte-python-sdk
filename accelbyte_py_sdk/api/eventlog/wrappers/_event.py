@@ -60,12 +60,6 @@ def get_event_by_event_id_handler(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/eventId/{eventId}
 
@@ -134,12 +128,6 @@ async def get_event_by_event_id_handler_async(
     """Get events from all users in a namespace with specific eventID (GetEventByEventIDHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}/eventId/{eventId}
@@ -213,12 +201,6 @@ def get_event_by_event_type_and_event_id_handler(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/eventType/{eventType}/eventId/{eventId}
 
@@ -291,12 +273,6 @@ async def get_event_by_event_type_and_event_id_handler_async(
     """Get events from all users in a namespace with specific eventID and eventType (GetEventByEventTypeAndEventIDHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}/eventType/{eventType}/eventId/{eventId}
@@ -372,12 +348,6 @@ def get_event_by_event_type_handler(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/eventType/{eventType}
 
@@ -446,12 +416,6 @@ async def get_event_by_event_type_handler_async(
     """Get events from all users in a namespace with specific eventType (GetEventByEventTypeHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}/eventType/{eventType}
@@ -523,12 +487,6 @@ def get_event_by_namespace_handler(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}
 
@@ -593,12 +551,6 @@ async def get_event_by_namespace_handler_async(
     """Get events from all users in a namespace (GetEventByNamespaceHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}
@@ -669,12 +621,6 @@ def get_event_by_user_event_id_and_event_type_handler(
     """Get events from specific user with specific eventID and eventType (GetEventByUserEventIDAndEventTypeHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/eventType/{eventType}/eventId/{eventId}
@@ -752,12 +698,6 @@ async def get_event_by_user_event_id_and_event_type_handler_async(
     """Get events from specific user with specific eventID and eventType (GetEventByUserEventIDAndEventTypeHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/eventType/{eventType}/eventId/{eventId}
@@ -837,12 +777,6 @@ def get_event_by_user_id_and_event_id_handler(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/eventId/{eventId}
 
@@ -915,12 +849,6 @@ async def get_event_by_user_id_and_event_id_handler_async(
     """Get events from specific user with specific eventID (GetEventByUserIDAndEventIDHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/eventId/{eventId}
@@ -997,12 +925,6 @@ def get_event_by_user_id_and_event_type_handler(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/eventType/{eventType}
 
@@ -1075,12 +997,6 @@ async def get_event_by_user_id_and_event_type_handler_async(
     """Get events from specific user with specific eventType (GetEventByUserIDAndEventTypeHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/eventType/{eventType}
@@ -1156,12 +1072,6 @@ def get_event_by_user_id_handler(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}
 
@@ -1231,12 +1141,6 @@ async def get_event_by_user_id_handler_async(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]` and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}
 
@@ -1304,12 +1208,6 @@ def post_event_handler(
 
     Required permission `NAMESPACE:{namespace}:EVENT [CREATE]`and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [CREATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}
 
@@ -1360,12 +1258,6 @@ async def post_event_handler_async(
     """Post an activity log (PostEventHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [CREATE]`and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [CREATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}

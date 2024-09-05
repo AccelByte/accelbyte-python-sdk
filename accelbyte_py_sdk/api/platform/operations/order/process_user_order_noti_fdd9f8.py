@@ -53,7 +53,7 @@ class ProcessUserOrderNotification(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TradeNotification in body
+        body: (body) REQUIRED TradeNotification in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -76,7 +76,7 @@ class ProcessUserOrderNotification(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: TradeNotification  # OPTIONAL in [body]
+    body: TradeNotification  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     order_no: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -229,18 +229,17 @@ class ProcessUserOrderNotification(Operation):
     @classmethod
     def create(
         cls,
+        body: TradeNotification,
         namespace: str,
         order_no: str,
         user_id: str,
-        body: Optional[TradeNotification] = None,
         **kwargs,
     ) -> ProcessUserOrderNotification:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.order_no = order_no
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -282,7 +281,7 @@ class ProcessUserOrderNotification(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "orderNo": True,
             "userId": True,

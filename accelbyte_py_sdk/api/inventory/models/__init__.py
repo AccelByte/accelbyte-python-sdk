@@ -8,13 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Inventory Service."""
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .apimodels_admin_update_item_req import ApimodelsAdminUpdateItemReq
+from .apimodels_bulk_save_item_error import ApimodelsBulkSaveItemError
+from .apimodels_bulk_save_item_resp import ApimodelsBulkSaveItemResp
 from .apimodels_chaining_operation_req import ApimodelsChainingOperationReq
 from .apimodels_chaining_operation_resp import ApimodelsChainingOperationResp
 from .apimodels_consume_item import ApimodelsConsumeItem
@@ -27,6 +29,7 @@ from .apimodels_create_inventory_configuration_req import (
 )
 from .apimodels_create_inventory_req import ApimodelsCreateInventoryReq
 from .apimodels_create_item import ApimodelsCreateItem
+from .apimodels_create_item import SourceEnum as ApimodelsCreateItemSourceEnum
 from .apimodels_create_item_type_req import ApimodelsCreateItemTypeReq
 from .apimodels_create_item_type_resp import ApimodelsCreateItemTypeResp
 from .apimodels_create_tag_req import ApimodelsCreateTagReq

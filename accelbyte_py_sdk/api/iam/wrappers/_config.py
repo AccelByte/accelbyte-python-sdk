@@ -50,6 +50,7 @@ def admin_get_config_value_v3(
     **Supported config key:**
     * uniqueDisplayNameEnabled
     * usernameDisabled
+    * mandatoryEmailVerificationEnabled
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/config/{configKey}
@@ -100,6 +101,7 @@ async def admin_get_config_value_v3_async(
     **Supported config key:**
     * uniqueDisplayNameEnabled
     * usernameDisabled
+    * mandatoryEmailVerificationEnabled
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/config/{configKey}
@@ -153,6 +155,7 @@ def public_get_config_value_v3(
     **Supported config key:**
     * uniqueDisplayNameEnabled
     * usernameDisabled
+    * mandatoryEmailVerificationEnabled
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/config/{configKey}
@@ -204,6 +207,7 @@ async def public_get_config_value_v3_async(
     **Supported config key:**
     * uniqueDisplayNameEnabled
     * usernameDisabled
+    * mandatoryEmailVerificationEnabled
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/config/{configKey}

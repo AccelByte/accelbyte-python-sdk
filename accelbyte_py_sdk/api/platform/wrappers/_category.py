@@ -55,8 +55,8 @@ from ..operations.category import UpdateCategory
 
 @same_doc_as(CreateCategory)
 def create_category(
+    body: CategoryCreate,
     store_id: str,
-    body: Optional[CategoryCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -93,7 +93,7 @@ def create_category(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CategoryCreate in body
+        body: (body) REQUIRED CategoryCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -115,8 +115,8 @@ def create_category(
         if error:
             return None, error
     request = CreateCategory.create(
-        store_id=store_id,
         body=body,
+        store_id=store_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -124,8 +124,8 @@ def create_category(
 
 @same_doc_as(CreateCategory)
 async def create_category_async(
+    body: CategoryCreate,
     store_id: str,
-    body: Optional[CategoryCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -162,7 +162,7 @@ async def create_category_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CategoryCreate in body
+        body: (body) REQUIRED CategoryCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -184,8 +184,8 @@ async def create_category_async(
         if error:
             return None, error
     request = CreateCategory.create(
-        store_id=store_id,
         body=body,
+        store_id=store_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1365,9 +1365,9 @@ async def public_get_root_categories_async(
 
 @same_doc_as(UpdateCategory)
 def update_category(
+    body: CategoryUpdate,
     category_path: str,
     store_id: str,
-    body: Optional[CategoryUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1404,7 +1404,7 @@ def update_category(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CategoryUpdate in body
+        body: (body) REQUIRED CategoryUpdate in body
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -1428,9 +1428,9 @@ def update_category(
         if error:
             return None, error
     request = UpdateCategory.create(
+        body=body,
         category_path=category_path,
         store_id=store_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1438,9 +1438,9 @@ def update_category(
 
 @same_doc_as(UpdateCategory)
 async def update_category_async(
+    body: CategoryUpdate,
     category_path: str,
     store_id: str,
-    body: Optional[CategoryUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1477,7 +1477,7 @@ async def update_category_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CategoryUpdate in body
+        body: (body) REQUIRED CategoryUpdate in body
 
         category_path: (categoryPath) REQUIRED str in path
 
@@ -1501,9 +1501,9 @@ async def update_category_async(
         if error:
             return None, error
     request = UpdateCategory.create(
+        body=body,
         category_path=category_path,
         store_id=store_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(

@@ -36,7 +36,7 @@ from ...models import XsollaConfig
 class TestXsollaConfig(Operation):
     """Test xsolla configuration (testXsollaConfig)
 
-    [Not Supported Yet In Starter] Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not supported yet in AGS Shared Cloud] Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
 
     #### Check List:
 
@@ -66,7 +66,7 @@ class TestXsollaConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XsollaConfig in body
+        body: (body) REQUIRED XsollaConfig in body
 
     Responses:
         200: OK - TestResult (successful operation)
@@ -81,7 +81,7 @@ class TestXsollaConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: XsollaConfig  # OPTIONAL in [body]
+    body: XsollaConfig  # REQUIRED in [body]
 
     # endregion fields
 
@@ -190,10 +190,9 @@ class TestXsollaConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, body: Optional[XsollaConfig] = None, **kwargs) -> TestXsollaConfig:
+    def create(cls, body: XsollaConfig, **kwargs) -> TestXsollaConfig:
         instance = cls()
-        if body is not None:
-            instance.body = body
+        instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -220,7 +219,7 @@ class TestXsollaConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
         }
 
     # endregion static methods

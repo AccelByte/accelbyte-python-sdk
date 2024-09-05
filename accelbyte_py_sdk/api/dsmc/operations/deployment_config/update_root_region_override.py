@@ -43,12 +43,6 @@ class UpdateRootRegionOverride(Operation):
 
     This endpoint update a dedicated servers deployment override in a namespace in a region for root deployment.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
 

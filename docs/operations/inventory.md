@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Inventory Service Index (0.2.1)
+# AccelByte Gaming Services Inventory Service Index (0.2.2)
 
 
 ## Operations
@@ -28,6 +28,7 @@
 | /inventory/v1/admin/namespaces/{namespace}/inventories | GET | AdminListInventories | `false` | [AdminListInventories](../../accelbyte_py_sdk/api/inventory/operations/admin_inventories/admin_list_inventories.py) | [admin_list_inventories](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_inventories.py) | [accelbyte_py_sdk_cli inventory-admin-list-inventories](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_list_inventories.py) |
 | /inventory/v1/admin/namespaces/{namespace}/users/{userId}/purchaseable | POST | AdminPurchasable | `false` | [AdminPurchasable](../../accelbyte_py_sdk/api/inventory/operations/admin_inventories/admin_purchasable.py) | [admin_purchasable](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_inventories.py) | [accelbyte_py_sdk_cli inventory-admin-purchasable](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_purchasable.py) |
 | /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId} | PUT | AdminUpdateInventory | `false` | [AdminUpdateInventory](../../accelbyte_py_sdk/api/inventory/operations/admin_inventories/admin_update_inventory.py) | [admin_update_inventory](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_inventories.py) | [accelbyte_py_sdk_cli inventory-admin-update-inventory](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_update_inventory.py) |
+| /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventoryConfigurations/{inventoryConfigurationCode}/inventories | PUT | AdminUpdateUserInventoriesByInventoryCode | `false` | [AdminUpdateUserInventoriesByInventoryCode](../../accelbyte_py_sdk/api/inventory/operations/admin_inventories/admin_update_user_inven_6f94a4.py) | [admin_update_user_inventories_by_inventory_code](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_inventories.py) | [accelbyte_py_sdk_cli inventory-admin-update-user-inventories-by-inventory-code](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_update_user_inventories_by_inventory_code.py) |
 | /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId} | DELETE | deleteInventory | `false` | [DeleteInventory](../../accelbyte_py_sdk/api/inventory/operations/admin_inventories/delete_inventory.py) | [delete_inventory](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_inventories.py) | [accelbyte_py_sdk_cli inventory-delete-inventory](../../samples/cli/accelbyte_py_sdk_cli/inventory/_delete_inventory.py) |
 
 ### Admin Inventory Configurations
@@ -50,6 +51,8 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items | DELETE | AdminBulkRemoveItems | `false` | [AdminBulkRemoveItems](../../accelbyte_py_sdk/api/inventory/operations/admin_items/admin_bulk_remove_items.py) | [admin_bulk_remove_items](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_items.py) | [accelbyte_py_sdk_cli inventory-admin-bulk-remove-items](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_bulk_remove_items.py) |
+| /inventory/v1/admin/namespaces/{namespace}/users/{userId}/items/bulk | POST | AdminBulkSaveItem | `false` | [AdminBulkSaveItem](../../accelbyte_py_sdk/api/inventory/operations/admin_items/admin_bulk_save_item.py) | [admin_bulk_save_item](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_items.py) | [accelbyte_py_sdk_cli inventory-admin-bulk-save-item](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_bulk_save_item.py) |
+| /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items/bulk | POST | AdminBulkSaveItemToInventory | `false` | [AdminBulkSaveItemToInventory](../../accelbyte_py_sdk/api/inventory/operations/admin_items/admin_bulk_save_item_to_7fa299.py) | [admin_bulk_save_item_to_inventory](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_items.py) | [accelbyte_py_sdk_cli inventory-admin-bulk-save-item-to-inventory](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_bulk_save_item_to_inventory.py) |
 | /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items | PUT | AdminBulkUpdateMyItems | `false` | [AdminBulkUpdateMyItems](../../accelbyte_py_sdk/api/inventory/operations/admin_items/admin_bulk_update_my_items.py) | [admin_bulk_update_my_items](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_items.py) | [accelbyte_py_sdk_cli inventory-admin-bulk-update-my-items](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_bulk_update_my_items.py) |
 | /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/consume | POST | AdminConsumeUserItem | `false` | [AdminConsumeUserItem](../../accelbyte_py_sdk/api/inventory/operations/admin_items/admin_consume_user_item.py) | [admin_consume_user_item](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_items.py) | [accelbyte_py_sdk_cli inventory-admin-consume-user-item](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_consume_user_item.py) |
 | /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId} | GET | AdminGetInventoryItem | `false` | [AdminGetInventoryItem](../../accelbyte_py_sdk/api/inventory/operations/admin_items/admin_get_inventory_item.py) | [admin_get_inventory_item](../../accelbyte_py_sdk/api/inventory/wrappers/_admin_items.py) | [accelbyte_py_sdk_cli inventory-admin-get-inventory-item](../../samples/cli/accelbyte_py_sdk_cli/inventory/_admin_get_inventory_item.py) |
@@ -100,6 +103,8 @@
 | Model | Class |
 |---|---|
 | apimodels.AdminUpdateItemReq | [ApimodelsAdminUpdateItemReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_admin_update_item_req.py) |
+| apimodels.BulkSaveItemError | [ApimodelsBulkSaveItemError](../../accelbyte_py_sdk/api/inventory/models/apimodels_bulk_save_item_error.py) |
+| apimodels.BulkSaveItemResp | [ApimodelsBulkSaveItemResp](../../accelbyte_py_sdk/api/inventory/models/apimodels_bulk_save_item_resp.py) |
 | apimodels.ChainingOperationReq | [ApimodelsChainingOperationReq](../../accelbyte_py_sdk/api/inventory/models/apimodels_chaining_operation_req.py) |
 | apimodels.ChainingOperationResp | [ApimodelsChainingOperationResp](../../accelbyte_py_sdk/api/inventory/models/apimodels_chaining_operation_resp.py) |
 | apimodels.ConsumeItem | [ApimodelsConsumeItem](../../accelbyte_py_sdk/api/inventory/models/apimodels_consume_item.py) |

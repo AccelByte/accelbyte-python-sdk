@@ -53,7 +53,7 @@ class UpdateItemPurchaseCondition(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PurchaseConditionUpdate in body
+        body: (body) REQUIRED PurchaseConditionUpdate in body
 
         item_id: (itemId) REQUIRED str in path
 
@@ -84,7 +84,7 @@ class UpdateItemPurchaseCondition(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PurchaseConditionUpdate  # OPTIONAL in [body]
+    body: PurchaseConditionUpdate  # REQUIRED in [body]
     item_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     store_id: str  # REQUIRED in [query]
@@ -257,18 +257,17 @@ class UpdateItemPurchaseCondition(Operation):
     @classmethod
     def create(
         cls,
+        body: PurchaseConditionUpdate,
         item_id: str,
         namespace: str,
         store_id: str,
-        body: Optional[PurchaseConditionUpdate] = None,
         **kwargs,
     ) -> UpdateItemPurchaseCondition:
         instance = cls()
+        instance.body = body
         instance.item_id = item_id
         instance.namespace = namespace
         instance.store_id = store_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -310,7 +309,7 @@ class UpdateItemPurchaseCondition(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "itemId": True,
             "namespace": True,
             "storeId": True,

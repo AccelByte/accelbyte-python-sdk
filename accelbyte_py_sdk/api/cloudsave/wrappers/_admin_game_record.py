@@ -334,9 +334,6 @@ def admin_post_game_record_handler_v1(
     }
     ```
 
-    Required Permission(s):
-        - CLIENT []
-
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
 
@@ -467,9 +464,6 @@ async def admin_post_game_record_handler_v1_async(
     }
     ```
 
-    Required Permission(s):
-        - CLIENT []
-
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
 
@@ -590,9 +584,6 @@ def admin_put_game_record_handler_v1(
     }
     ```
 
-    Required Permission(s):
-        - CLIENT []
-
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
 
@@ -710,9 +701,6 @@ async def admin_put_game_record_handler_v1_async(
     ...
     }
     ```
-
-    Required Permission(s):
-        - CLIENT []
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}

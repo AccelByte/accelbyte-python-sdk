@@ -57,9 +57,6 @@ class SingleAdminUpdateContentS3(Operation):
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/s3/{contentId}
 

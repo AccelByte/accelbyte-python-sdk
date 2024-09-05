@@ -41,12 +41,6 @@ class DownloadServerArtifacts(Operation):
 
     This endpoint will download dedicated server's Artifact file (.zip).
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/servers/{podName}/artifacts/download
 

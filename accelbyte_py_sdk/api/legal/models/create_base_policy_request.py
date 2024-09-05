@@ -42,6 +42,8 @@ class CreateBasePolicyRequest(Model):
 
         is_hidden: (isHidden) OPTIONAL bool
 
+        is_hidden_public: (isHiddenPublic) OPTIONAL bool
+
         namespace: (namespace) OPTIONAL str
 
         tags: (tags) OPTIONAL List[str]
@@ -56,6 +58,7 @@ class CreateBasePolicyRequest(Model):
     base_policy_name: str  # OPTIONAL
     description: str  # OPTIONAL
     is_hidden: bool  # OPTIONAL
+    is_hidden_public: bool  # OPTIONAL
     namespace: str  # OPTIONAL
     tags: List[str]  # OPTIONAL
     type_id: str  # OPTIONAL
@@ -82,6 +85,10 @@ class CreateBasePolicyRequest(Model):
 
     def with_is_hidden(self, value: bool) -> CreateBasePolicyRequest:
         self.is_hidden = value
+        return self
+
+    def with_is_hidden_public(self, value: bool) -> CreateBasePolicyRequest:
+        self.is_hidden_public = value
         return self
 
     def with_namespace(self, value: str) -> CreateBasePolicyRequest:
@@ -122,6 +129,10 @@ class CreateBasePolicyRequest(Model):
             result["isHidden"] = bool(self.is_hidden)
         elif include_empty:
             result["isHidden"] = False
+        if hasattr(self, "is_hidden_public"):
+            result["isHiddenPublic"] = bool(self.is_hidden_public)
+        elif include_empty:
+            result["isHiddenPublic"] = False
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -148,6 +159,7 @@ class CreateBasePolicyRequest(Model):
         base_policy_name: Optional[str] = None,
         description: Optional[str] = None,
         is_hidden: Optional[bool] = None,
+        is_hidden_public: Optional[bool] = None,
         namespace: Optional[str] = None,
         tags: Optional[List[str]] = None,
         type_id: Optional[str] = None,
@@ -164,6 +176,8 @@ class CreateBasePolicyRequest(Model):
             instance.description = description
         if is_hidden is not None:
             instance.is_hidden = is_hidden
+        if is_hidden_public is not None:
+            instance.is_hidden_public = is_hidden_public
         if namespace is not None:
             instance.namespace = namespace
         if tags is not None:
@@ -201,6 +215,10 @@ class CreateBasePolicyRequest(Model):
             instance.is_hidden = bool(dict_["isHidden"])
         elif include_empty:
             instance.is_hidden = False
+        if "isHiddenPublic" in dict_ and dict_["isHiddenPublic"] is not None:
+            instance.is_hidden_public = bool(dict_["isHiddenPublic"])
+        elif include_empty:
+            instance.is_hidden_public = False
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -261,6 +279,7 @@ class CreateBasePolicyRequest(Model):
             "basePolicyName": "base_policy_name",
             "description": "description",
             "isHidden": "is_hidden",
+            "isHiddenPublic": "is_hidden_public",
             "namespace": "namespace",
             "tags": "tags",
             "typeId": "type_id",
@@ -274,6 +293,7 @@ class CreateBasePolicyRequest(Model):
             "basePolicyName": False,
             "description": False,
             "isHidden": False,
+            "isHiddenPublic": False,
             "namespace": False,
             "tags": False,
             "typeId": False,

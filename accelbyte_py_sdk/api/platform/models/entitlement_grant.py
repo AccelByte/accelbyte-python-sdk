@@ -74,6 +74,8 @@ class EntitlementGrant(Model):
 
         language: (language) OPTIONAL str
 
+        metadata: (metadata) OPTIONAL Dict[str, Any]
+
         origin: (origin) OPTIONAL Union[str, OriginEnum]
 
         region: (region) OPTIONAL str
@@ -94,6 +96,7 @@ class EntitlementGrant(Model):
     end_date: str  # OPTIONAL
     granted_code: str  # OPTIONAL
     language: str  # OPTIONAL
+    metadata: Dict[str, Any]  # OPTIONAL
     origin: Union[str, OriginEnum]  # OPTIONAL
     region: str  # OPTIONAL
     source: Union[str, SourceEnum]  # OPTIONAL
@@ -130,6 +133,10 @@ class EntitlementGrant(Model):
 
     def with_language(self, value: str) -> EntitlementGrant:
         self.language = value
+        return self
+
+    def with_metadata(self, value: Dict[str, Any]) -> EntitlementGrant:
+        self.metadata = value
         return self
 
     def with_origin(self, value: Union[str, OriginEnum]) -> EntitlementGrant:
@@ -186,6 +193,10 @@ class EntitlementGrant(Model):
             result["language"] = str(self.language)
         elif include_empty:
             result["language"] = ""
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): v0 for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
         if hasattr(self, "origin"):
             result["origin"] = str(self.origin)
         elif include_empty:
@@ -222,6 +233,7 @@ class EntitlementGrant(Model):
         end_date: Optional[str] = None,
         granted_code: Optional[str] = None,
         language: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
         origin: Optional[Union[str, OriginEnum]] = None,
         region: Optional[str] = None,
         source: Optional[Union[str, SourceEnum]] = None,
@@ -241,6 +253,8 @@ class EntitlementGrant(Model):
             instance.granted_code = granted_code
         if language is not None:
             instance.language = language
+        if metadata is not None:
+            instance.metadata = metadata
         if origin is not None:
             instance.origin = origin
         if region is not None:
@@ -288,6 +302,10 @@ class EntitlementGrant(Model):
             instance.language = str(dict_["language"])
         elif include_empty:
             instance.language = ""
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {str(k0): v0 for k0, v0 in dict_["metadata"].items()}
+        elif include_empty:
+            instance.metadata = {}
         if "origin" in dict_ and dict_["origin"] is not None:
             instance.origin = str(dict_["origin"])
         elif include_empty:
@@ -354,6 +372,7 @@ class EntitlementGrant(Model):
             "endDate": "end_date",
             "grantedCode": "granted_code",
             "language": "language",
+            "metadata": "metadata",
             "origin": "origin",
             "region": "region",
             "source": "source",
@@ -371,6 +390,7 @@ class EntitlementGrant(Model):
             "endDate": False,
             "grantedCode": False,
             "language": False,
+            "metadata": False,
             "origin": False,
             "region": False,
             "source": False,

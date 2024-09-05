@@ -39,9 +39,6 @@ class AdminGetPlatformAccountClosureClient(Operation):
     Get platform account closure config.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client
 

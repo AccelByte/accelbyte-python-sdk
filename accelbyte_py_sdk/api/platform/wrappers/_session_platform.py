@@ -37,8 +37,8 @@ from ..operations.session_platform import RegisterXblSessions
 
 @same_doc_as(RegisterXblSessions)
 def register_xbl_sessions(
+    body: XblUserSessionRequest,
     user_id: str,
-    body: Optional[XblUserSessionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -60,7 +60,7 @@ def register_xbl_sessions(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XblUserSessionRequest in body
+        body: (body) REQUIRED XblUserSessionRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -76,8 +76,8 @@ def register_xbl_sessions(
         if error:
             return None, error
     request = RegisterXblSessions.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -85,8 +85,8 @@ def register_xbl_sessions(
 
 @same_doc_as(RegisterXblSessions)
 async def register_xbl_sessions_async(
+    body: XblUserSessionRequest,
     user_id: str,
-    body: Optional[XblUserSessionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -108,7 +108,7 @@ async def register_xbl_sessions_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XblUserSessionRequest in body
+        body: (body) REQUIRED XblUserSessionRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -124,8 +124,8 @@ async def register_xbl_sessions_async(
         if error:
             return None, error
     request = RegisterXblSessions.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

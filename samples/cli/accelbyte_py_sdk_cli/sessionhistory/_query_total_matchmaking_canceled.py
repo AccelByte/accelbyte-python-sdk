@@ -64,6 +64,12 @@ def query_total_matchmaking_canceled(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if match_pool is not None:
+        try:
+            match_pool_json = json.loads(match_pool)
+            match_pool = [str(i0) for i0 in match_pool_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'matchPool'. {str(e)}") from e
     result, error = query_total_matchmaking_canceled_internal(
         end_date=end_date,
         start_date=start_date,

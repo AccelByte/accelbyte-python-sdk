@@ -45,9 +45,6 @@ class PublicGetUserRewards(Operation):
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
-
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards
 

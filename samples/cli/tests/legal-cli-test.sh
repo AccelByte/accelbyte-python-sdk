@@ -33,35 +33,35 @@ legal-change-preference-consent 'EAxcVpFrttufHIRd' --body '[{"isAccepted": true,
 legal-retrieve-accepted-agreements 'bPOyNQkT7NvyE3cw' --login_with_auth "Bearer foo"
 legal-retrieve-all-users-by-policy-version 'yALczNIicXm7agSr' --login_with_auth "Bearer foo"
 legal-retrieve-all-legal-policies --login_with_auth "Bearer foo"
-legal-create-policy --body '{"affectedClientIds": ["jJW2OQNOs1PXhT5F", "vdiRilZ7oFgx4c8O", "umKtPDKJDXn7Z4U6"], "affectedCountries": ["8su8XfqlqNiTvB6S", "dAdIhUDrwoZ5Mecd", "Ki5r6QEa1ysLEzth"], "basePolicyName": "6mXhzkzWkFeZSoEA", "description": "cBdW19m4eu6d5tA5", "isHidden": false, "namespace": "duuyZ0GhDogqrhBR", "tags": ["d8lDR6qVNPRZYdFL", "KQ7KYnIuMBvaO35l", "IAjGGJddVCvu9vx5"], "typeId": "lzQRaT5kPxUfofvn"}' --login_with_auth "Bearer foo"
-legal-retrieve-single-policy 'nSuB0y5WUlrMdI4s' --login_with_auth "Bearer foo"
-legal-partial-update-policy 'NveabntBSxTeIv53' --body '{"affectedClientIds": ["HGCiljvjKoyD6SCw", "GrncqmLtjQHAf8Tg", "oNm03VLisV6zwPuo"], "affectedCountries": ["3td6TC6I3lMjGSWN", "2laRlxfcjHfYakUC", "TqGkE7wcWfDslpJS"], "basePolicyName": "qGAXQ0yYoNRKd3IL", "description": "5TAQ6iiPlSC2uE4o", "isHidden": true, "namespace": "Vwdo3fePqIJA8IHt", "tags": ["oqwGyzzWi9gwQYv7", "rkmu0hpDDWVAla2l", "5BYNtIuS5S5XUdjs"]}' --login_with_auth "Bearer foo"
-legal-retrieve-policy-country 't1o7TTr1DmrhZv15' 'T7quIOvBMcaYmvCk' --login_with_auth "Bearer foo"
-legal-retrieve-localized-policy-versions 'GZ5dAgqxpBFmaLox' --login_with_auth "Bearer foo"
-legal-create-localized-policy-version 'ozr6wfNPX2bOItRM' --body '{"contentType": "vqtlB2jJCSQT279Z", "description": "ZPYGu0rdlgdWyOtX", "localeCode": "i3choQrpOsDBU5Se"}' --login_with_auth "Bearer foo"
-legal-retrieve-single-localized-policy-version 'pjChB3V0v52Dlym6' --login_with_auth "Bearer foo"
-legal-update-localized-policy-version 'puQ23xoJ8aeCnaLp' --body '{"attachmentChecksum": "UKp44YUDjasWIPUv", "attachmentLocation": "mEejtGeoyIPa8ZRr", "attachmentVersionIdentifier": "vjj7il35MXbN9oCM", "contentType": "Nqq98SjTvhZNkSQ7", "description": "0D0H6BXksUC9b6i5"}' --login_with_auth "Bearer foo"
-legal-request-presigned-url 'lZC9xv32e8c5csSo' --body '{"contentMD5": "voqsZNBdte9NDUPV", "contentType": "Jf6c2Z0QZxfgPubT"}' --login_with_auth "Bearer foo"
-legal-set-default-policy 'DIHrvqAThuwjRHpK' --login_with_auth "Bearer foo"
-legal-retrieve-accepted-agreements-for-multi-users --body '{"currentPublishedOnly": false, "userIds": ["TlmVr9XuoJbRFQSK", "jEEztx1WsYSiZqan", "VPHbn4Xxtu7LQREN"]}' --login_with_auth "Bearer foo"
-legal-retrieve-accepted-agreements-1 '0nSBJroav91GXlvP' --login_with_auth "Bearer foo"
-legal-retrieve-all-users-by-policy-version-1 'G6bFYReVHQipcCx9' --login_with_auth "Bearer foo"
-legal-download-exported-agreements-in-csv 'Zw5D2L7vIYhGGSyE' --login_with_auth "Bearer foo"
-legal-initiate-export-agreements-to-csv 'W4ZJJ42d3PBddN8S' '48l9lyNApflxqMrj' --login_with_auth "Bearer foo"
+legal-create-policy --body '{"affectedClientIds": ["umKtPDKJDXn7Z4U6", "vdiRilZ7oFgx4c8O", "jJW2OQNOs1PXhT5F"], "affectedCountries": ["8su8XfqlqNiTvB6S", "dAdIhUDrwoZ5Mecd", "Ki5r6QEa1ysLEzth"], "basePolicyName": "6mXhzkzWkFeZSoEA", "description": "cBdW19m4eu6d5tA5", "isHidden": false, "isHiddenPublic": false, "namespace": "UmiTqpyhPFdxLzFQ", "tags": ["vkLGMS0lyuI9a2I9", "jv7IPrDQQRgat0Se", "N05MYzYiKWe5dNRl"], "typeId": "u6Vpbsx5w8hqUI06"}' --login_with_auth "Bearer foo"
+legal-retrieve-single-policy 'UpOXGSLmCVuHOPlL' --login_with_auth "Bearer foo"
+legal-partial-update-policy 'lkvR8sKgnuRkgghG' --body '{"affectedClientIds": ["oYupD391C2qtPYok", "ahFjkQsfCaTmt1d6", "7FXGk2s9Q0mPVo3t"], "affectedCountries": ["wu0MesTCf9x4rt69", "lna7qxNeIxPz6Mbw", "L6IY69z1UaLqYSYW"], "basePolicyName": "ytLPziZMdjxcBZuf", "description": "QxGiHPllG4cYEzfT", "isHidden": true, "isHiddenPublic": true, "namespace": "ZBm3MqHcUmLZZbSq", "tags": ["AAiE0mit9RGCCHYz", "UOcEdscKHPEqgA8y", "b8RwNmn9HrNQy4uZ"]}' --login_with_auth "Bearer foo"
+legal-retrieve-policy-country 'u7Vk6Jt4Ymos9Jcd' 'os4fYcTVU6RBt0zY' --login_with_auth "Bearer foo"
+legal-retrieve-localized-policy-versions 'oMcHyCUEXlAvxJMd' --login_with_auth "Bearer foo"
+legal-create-localized-policy-version 'alwSyliWMNW5NyLu' --body '{"contentType": "0M3VHh2EI8JlDbPW", "description": "bQ6Q9lNmqRBaAkLn", "localeCode": "vxkT1X68cmDc3fxU"}' --login_with_auth "Bearer foo"
+legal-retrieve-single-localized-policy-version '8MyKrQpM4hkkK6KK' --login_with_auth "Bearer foo"
+legal-update-localized-policy-version 'XNB3Gv0IqmF51Tkh' --body '{"attachmentChecksum": "jYnaq6foWvXa3bMr", "attachmentLocation": "XsDr6kILsSSyDdmy", "attachmentVersionIdentifier": "kmoPYgc2L4jk4Lo0", "contentType": "LSP0pf4IxjUkl535", "description": "X3ateEKDpADz1x3p"}' --login_with_auth "Bearer foo"
+legal-request-presigned-url 'oD3Qgb3boLQQ1MzH' --body '{"contentMD5": "7Qm8bwbmXgdAPh1E", "contentType": "ThG96gAFKK2WDgCc"}' --login_with_auth "Bearer foo"
+legal-set-default-policy 'xvONZm3EeERmDnye' --login_with_auth "Bearer foo"
+legal-retrieve-accepted-agreements-for-multi-users --body '{"currentPublishedOnly": false, "userIds": ["oF7VSZ6pf3vneSD2", "qU6YE3p4lSck0ZHn", "Tb3g7mSQUhAEtrmj"]}' --login_with_auth "Bearer foo"
+legal-retrieve-accepted-agreements-1 '5GI39YBHqaTHeKtW' --login_with_auth "Bearer foo"
+legal-retrieve-all-users-by-policy-version-1 '18iGeUlc9d9sogWa' --login_with_auth "Bearer foo"
+legal-download-exported-agreements-in-csv '24CKNS0GqVvUfHQv' --login_with_auth "Bearer foo"
+legal-initiate-export-agreements-to-csv 'sHXNUNe4mhgo5QB6' '5lSAiYnNjkfZrQvG' --login_with_auth "Bearer foo"
 legal-retrieve-all-legal-policies-by-namespace --login_with_auth "Bearer foo"
-legal-create-policy-1 --body '{"affectedClientIds": ["3oZk03QXcKMDYDDx", "HSZjtqXyJ58f7Gc2", "6SaiGVkydwYWQG26"], "affectedCountries": ["xFHyPLtI8ilbyDPU", "Ij88cekdqCt81P1k", "yUZNmTBcvrbYCwZt"], "basePolicyName": "tfIovmv9gsR5cJcH", "description": "m3SZLxoRDFuuuySj", "isHidden": false, "tags": ["9a9LJE8HoRS1X2PF", "AAMwzHPxB1UskYs4", "Yw20DOqOBSC2DKHR"], "typeId": "uPMMWH8Yb33T5UBJ"}' --login_with_auth "Bearer foo"
-legal-retrieve-single-policy-1 'CjfcnLRfxeCSz9WE' --login_with_auth "Bearer foo"
-legal-partial-update-policy-1 'i8KlloeH0JT1ydua' --body '{"affectedClientIds": ["4SqYUTLDx9gIiDan", "t2vQR3biBfsu4jms", "RE2w1yEkLgh3tIYt"], "affectedCountries": ["dpGT2t24aOMh5eC3", "IHeHSKLCa3xreNDU", "WehwH3q31A806DJg"], "basePolicyName": "as4b6z3LNUj7fdgL", "description": "A84Z8YYk6QEgJjBb", "isHidden": true, "tags": ["lULdJz4mnRBkMNxv", "vKgAT8mJrYq6hRkl", "oqxM3gpwxcfMy9Xz"]}' --login_with_auth "Bearer foo"
-legal-retrieve-policy-country-1 'jjI5YbsKoADkzJEN' '2VHzih3bit0VWn3C' --login_with_auth "Bearer foo"
-legal-retrieve-localized-policy-versions-1 'O39PXDNxtXgeO3Fg' --login_with_auth "Bearer foo"
-legal-create-localized-policy-version-1 'kXhjDzaQY3snn2Zk' --body '{"contentType": "P7cFdP43e5dC9XIB", "description": "udfZgrbHDIDm4hMz", "localeCode": "F4TxodenSrUTvfqU"}' --login_with_auth "Bearer foo"
-legal-retrieve-single-localized-policy-version-1 '0bfoMm5cTtFWbotQ' --login_with_auth "Bearer foo"
-legal-update-localized-policy-version-1 'yXJRcQWsmqPNs92e' --body '{"attachmentChecksum": "pxk0i8VxsZNereSv", "attachmentLocation": "f9699mCEHThUJkET", "attachmentVersionIdentifier": "AsSp7gh4TeUTkOkA", "contentType": "YfJB8AT9t4Tv207Y", "description": "2QD3oD5fLCr3OOlX"}' --login_with_auth "Bearer foo"
-legal-request-presigned-url-1 'Vv8ZGF7uYnGzpipN' --body '{"contentMD5": "DigNJma1MbqqZtfN", "contentType": "Wql4nmwAft4gqkNN"}' --login_with_auth "Bearer foo"
-legal-set-default-policy-1 'lWkD9eOziYRFOn0j' --login_with_auth "Bearer foo"
-legal-update-policy-version-1 'JLHC9LxhvNXTwGBC' --body '{"description": "tohLtl9Zuhytm5UD", "displayVersion": "rT6QXCs5SPBbRPZT", "isCommitted": false}' --login_with_auth "Bearer foo"
-legal-publish-policy-version-1 'rDgMdIIlhS1fSiM9' --login_with_auth "Bearer foo"
-legal-update-policy-1 '331m7Ta1PsKc50Kv' --body '{"description": "6ecnEevcAx2K2zkR", "isDefaultOpted": false, "isMandatory": true, "policyName": "nmPZnGBt4P7WnbdS", "readableId": "JtjX7ZshZyZl5x4b", "shouldNotifyOnUpdate": false}' --login_with_auth "Bearer foo"
+legal-create-policy-1 --body '{"affectedClientIds": ["OMlNFSrUEirnjX9f", "DmIbeZxzfTcyiuAT", "gbLdLsFzHkBMr1yr"], "affectedCountries": ["LXpUL4pp2ncYAHdN", "us9hsfpFDcSDG8aM", "VGLiBNrDjqoxcwgG"], "basePolicyName": "zDmeIP6rOvDz9KOs", "description": "b392k6YmJFfRByjl", "isHidden": true, "isHiddenPublic": false, "tags": ["iuFM3FIoVk8T3GpA", "9y1aZSWMiVi10sG6", "nkCmBUqg2SCnqntX"], "typeId": "vxkfUcmqRRbceJ5i"}' --login_with_auth "Bearer foo"
+legal-retrieve-single-policy-1 '0EeDxOgBnhhqElIa' --login_with_auth "Bearer foo"
+legal-partial-update-policy-1 'Dml48wdNFLTm5T50' --body '{"affectedClientIds": ["sXzOXQAk4mqrxzTt", "uLl4XlbGL8QOxtjz", "x9WT0GfH2rtOa4EX"], "affectedCountries": ["m8y2wNhmwoYZyI4E", "mx40NLRc6m8heKnW", "FZKBcYrCEAE7WIsf"], "basePolicyName": "hzfe2NubeoKFeIaF", "description": "QCYoDPICpnduEEQl", "isHidden": false, "isHiddenPublic": false, "tags": ["FyabWAgIUXiI07A6", "f3n0hEoRCAcf80zf", "8eaqC2J9jyEW6GLb"]}' --login_with_auth "Bearer foo"
+legal-retrieve-policy-country-1 'c0NaKDUL3sa13lk1' 'dQBHO86IlBhnetU4' --login_with_auth "Bearer foo"
+legal-retrieve-localized-policy-versions-1 'RwTqUXlTDBzOuYsa' --login_with_auth "Bearer foo"
+legal-create-localized-policy-version-1 'ZA2yyd4mbqoOfADM' --body '{"contentType": "MAXFaY9eKa699bRV", "description": "hyaKwwrAP2aMlu7W", "localeCode": "tjCtoYetOO847g8O"}' --login_with_auth "Bearer foo"
+legal-retrieve-single-localized-policy-version-1 'udOfjnCuHZ3c46Ij' --login_with_auth "Bearer foo"
+legal-update-localized-policy-version-1 'Ga23YvYmmDg7VYPX' --body '{"attachmentChecksum": "IuvUYTZBRujIUE1T", "attachmentLocation": "q5jyAZvkRCMNFIur", "attachmentVersionIdentifier": "jh2imdb4rbkXj0Zw", "contentType": "sVC0gL97ZVJSPqJi", "description": "wv1qlYB1RSKs6gQx"}' --login_with_auth "Bearer foo"
+legal-request-presigned-url-1 'C3Gb7S0o4zGYY7KQ' --body '{"contentMD5": "I1AeFgPqaOkvo1ao", "contentType": "lB4lkKB4EYOkQ1jM"}' --login_with_auth "Bearer foo"
+legal-set-default-policy-1 'D3cym8xIfkOVW2gr' --login_with_auth "Bearer foo"
+legal-update-policy-version-1 'REOLx0KOww3HICQL' --body '{"description": "fl7MUBG7qtPu64yA", "displayVersion": "tURKLRkb738HGS6r", "isCommitted": true}' --login_with_auth "Bearer foo"
+legal-publish-policy-version-1 'AXVG7tnsZg5QgXjv' --login_with_auth "Bearer foo"
+legal-update-policy-1 'yGJPN4eXbJE5Vs2G' --body '{"description": "cyomQoIXimBJehyx", "isDefaultOpted": false, "isMandatory": false, "policyName": "NsjUgxBkF6wFPoJe", "readableId": "QediogEhhM2rIizG", "shouldNotifyOnUpdate": false}' --login_with_auth "Bearer foo"
 legal-set-default-policy-3 'BHUTrDzZSKscfOcY' --login_with_auth "Bearer foo"
 legal-retrieve-single-policy-version-1 'u3dpCROYqUiGKXVF' --login_with_auth "Bearer foo"
 legal-create-policy-version-1 'Cmpo6sPwVOEDSJsE' --body '{"description": "K5QpNhlI2iS5EpGh", "displayVersion": "hvXYck0upMzUYnb7", "isCommitted": true}' --login_with_auth "Bearer foo"
@@ -149,111 +149,111 @@ eval_tap $? 5 'RetrieveAllLegalPolicies' test.out
 
 #- 6 CreatePolicy
 $PYTHON -m $MODULE 'legal-create-policy' \
-    --body '{"affectedClientIds": ["tpgkieDyF97lGdMi", "HKxbWCYzo8yO2KTK", "9tmmOnYnOpas6ghP"], "affectedCountries": ["1y4Zi7s7QBlk44Z4", "4B1GZgKg4uKxaCgc", "GLuC3brWdTYCfHkI"], "basePolicyName": "ySok5DiXZtLW87rG", "description": "ysryod3dNQrmsApR", "isHidden": true, "namespace": "4mTIpUA9gxo8SV38", "tags": ["2rG3nakopAywelu0", "1nryEJ0NqoTow0qi", "nEhoXmM2W7l6jHMA"], "typeId": "OiC4j0iktm0ZPLkL"}' \
+    --body '{"affectedClientIds": ["9tmmOnYnOpas6ghP", "tpgkieDyF97lGdMi", "HKxbWCYzo8yO2KTK"], "affectedCountries": ["1y4Zi7s7QBlk44Z4", "4B1GZgKg4uKxaCgc", "GLuC3brWdTYCfHkI"], "basePolicyName": "ySok5DiXZtLW87rG", "description": "ysryod3dNQrmsApR", "isHidden": true, "isHiddenPublic": false, "namespace": "HX3RwrKt2ecozL0T", "tags": ["Og54vCE48L5oLF6M", "4lNa4JUMSHNgqRqC", "V7usamANkZlOX9Sf"], "typeId": "o95HgXqKhTPkwfLM"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'CreatePolicy' test.out
 
 #- 7 RetrieveSinglePolicy
 $PYTHON -m $MODULE 'legal-retrieve-single-policy' \
-    'Osp0LZ5njN86Hl8k' \
+    '9uSybRzWek2gZvRr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 7 'RetrieveSinglePolicy' test.out
 
 #- 8 PartialUpdatePolicy
 $PYTHON -m $MODULE 'legal-partial-update-policy' \
-    'UXzt6bSc6bWvgpVy' \
-    --body '{"affectedClientIds": ["LgkQuaS7RBx3vim0", "W9dD1kOmvrAejcq2", "2jBOxrZDyvpcLYOW"], "affectedCountries": ["A8NjxOnaEok4nOOC", "zfsflhjbngJOUn18", "G5MlfDTk8aG40Nln"], "basePolicyName": "cceIZSwgAIkgzh4p", "description": "TU0Am4DZhl0bQxFJ", "isHidden": true, "namespace": "GKXphn50c9tNLDlj", "tags": ["RHEonAZR8GmEu0q1", "BeMfPlNos4yBRjrE", "hZ2jxLRX3z46OCaG"]}' \
+    'vr0n9d9lvccKMLhr' \
+    --body '{"affectedClientIds": ["TrcBE2ItBS3KtKZW", "ipUWYhWV1qx8CzPM", "e8aoFzAyBME74HUt"], "affectedCountries": ["L52faXUr9Sk4lq2f", "aBcAXXKlhvyH8paO", "JtxqMPpcVfRwNj54"], "basePolicyName": "7fH0XrKEDpEY8Vno", "description": "cGAjci0V3tBf2jnH", "isHidden": true, "isHiddenPublic": true, "namespace": "phn50c9tNLDljhZ2", "tags": ["fPlNos4yBRjrERHE", "jxLRX3z46OCaGBeM", "onAZR8GmEu0q1p6Q"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'PartialUpdatePolicy' test.out
 
 #- 9 RetrievePolicyCountry
 $PYTHON -m $MODULE 'legal-retrieve-policy-country' \
-    'p6QCyY6vSkVFWdsb' \
-    'YuVEGVxYheR3j5mN' \
+    'CyY6vSkVFWdsbYuV' \
+    'EGVxYheR3j5mNZ6v' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 9 'RetrievePolicyCountry' test.out
 
 #- 10 RetrieveLocalizedPolicyVersions
 $PYTHON -m $MODULE 'legal-retrieve-localized-policy-versions' \
-    'Z6vwv7K8Asvt1j1R' \
+    'wv7K8Asvt1j1Rx59' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'RetrieveLocalizedPolicyVersions' test.out
 
 #- 11 CreateLocalizedPolicyVersion
 $PYTHON -m $MODULE 'legal-create-localized-policy-version' \
-    'x59hesNWy2NvZ85D' \
-    --body '{"contentType": "DKDAF8KDsBZOuYQJ", "description": "03BAHZ7c53q7akMp", "localeCode": "cmnnx6RVBrop9v7a"}' \
+    'hesNWy2NvZ85DDKD' \
+    --body '{"contentType": "AF8KDsBZOuYQJ03B", "description": "AHZ7c53q7akMpcmn", "localeCode": "nx6RVBrop9v7aZK3"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'CreateLocalizedPolicyVersion' test.out
 
 #- 12 RetrieveSingleLocalizedPolicyVersion
 $PYTHON -m $MODULE 'legal-retrieve-single-localized-policy-version' \
-    'ZK3h65hbN15zfQSf' \
+    'h65hbN15zfQSfQrt' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'RetrieveSingleLocalizedPolicyVersion' test.out
 
 #- 13 UpdateLocalizedPolicyVersion
 $PYTHON -m $MODULE 'legal-update-localized-policy-version' \
-    'QrtfF3TQN0OcNDLr' \
-    --body '{"attachmentChecksum": "36vzohZyjMQAg5mP", "attachmentLocation": "YhrLTyU8OhgfY9JQ", "attachmentVersionIdentifier": "YGF4bYXEcENx9xZl", "contentType": "Achob44lONDDwMvg", "description": "I0HlyPR7wZNiVsF6"}' \
+    'fF3TQN0OcNDLr36v' \
+    --body '{"attachmentChecksum": "zohZyjMQAg5mPYhr", "attachmentLocation": "LTyU8OhgfY9JQYGF", "attachmentVersionIdentifier": "4bYXEcENx9xZlAch", "contentType": "ob44lONDDwMvgI0H", "description": "lyPR7wZNiVsF6xG2"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'UpdateLocalizedPolicyVersion' test.out
 
 #- 14 RequestPresignedURL
 $PYTHON -m $MODULE 'legal-request-presigned-url' \
-    'xG2mXEQdbzIVy8al' \
-    --body '{"contentMD5": "ncV7vWgSHdfo07Uc", "contentType": "tPErqxyMyOK06MqQ"}' \
+    'mXEQdbzIVy8alncV' \
+    --body '{"contentMD5": "7vWgSHdfo07UctPE", "contentType": "rqxyMyOK06MqQBEr"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 14 'RequestPresignedURL' test.out
 
 #- 15 SetDefaultPolicy
 $PYTHON -m $MODULE 'legal-set-default-policy' \
-    'BErxgjVBycvU4Pbm' \
+    'xgjVBycvU4PbmRDc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 15 'SetDefaultPolicy' test.out
 
 #- 16 RetrieveAcceptedAgreementsForMultiUsers
 $PYTHON -m $MODULE 'legal-retrieve-accepted-agreements-for-multi-users' \
-    --body '{"currentPublishedOnly": true, "userIds": ["5oKqymxLD1Lcvw6T", "eVzm7z9noowmlTIK", "6mZEiwxxElpMYSWI"]}' \
+    --body '{"currentPublishedOnly": true, "userIds": ["ZEiwxxElpMYSWIeV", "zm7z9noowmlTIKVo", "KqymxLD1Lcvw6T6m"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 16 'RetrieveAcceptedAgreementsForMultiUsers' test.out
 
 #- 17 RetrieveAcceptedAgreements1
 $PYTHON -m $MODULE 'legal-retrieve-accepted-agreements-1' \
-    'Vowi0RY2VN4ZONJR' \
+    'wi0RY2VN4ZONJREd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'RetrieveAcceptedAgreements1' test.out
 
 #- 18 RetrieveAllUsersByPolicyVersion1
 $PYTHON -m $MODULE 'legal-retrieve-all-users-by-policy-version-1' \
-    'EdUQ3z9F1BxNNgnk' \
+    'UQ3z9F1BxNNgnke4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 18 'RetrieveAllUsersByPolicyVersion1' test.out
 
 #- 19 DownloadExportedAgreementsInCSV
 $PYTHON -m $MODULE 'legal-download-exported-agreements-in-csv' \
-    'e4akncw7wu9TmXfJ' \
+    'akncw7wu9TmXfJWB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'DownloadExportedAgreementsInCSV' test.out
 
 #- 20 InitiateExportAgreementsToCSV
 $PYTHON -m $MODULE 'legal-initiate-export-agreements-to-csv' \
-    'WBPrx9Ns8eLzYEvw' \
-    'SWTaLQjctvrK2jhs' \
+    'Prx9Ns8eLzYEvwSW' \
+    'TaLQjctvrK2jhsYp' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 20 'InitiateExportAgreementsToCSV' test.out
@@ -266,120 +266,120 @@ eval_tap $? 21 'RetrieveAllLegalPoliciesByNamespace' test.out
 
 #- 22 CreatePolicy1
 $PYTHON -m $MODULE 'legal-create-policy-1' \
-    --body '{"affectedClientIds": ["YpKPlXn77AtYoFzL", "AATPY8P8P3cfoivv", "QxevecWw7Rry0KK5"], "affectedCountries": ["xlZcCTpTdRtCHvuk", "KSZ4GcLkt4pK32sJ", "rgAGO0dW8rX2MVUG"], "basePolicyName": "6B6XTmSLyn50sigB", "description": "VZxiKdV57GvRyd9U", "isHidden": true, "tags": ["lkUetzCAWc9x1aMj", "hLiD5sf5y1JsxJNG", "myt0SQDUDoWBZVGL"], "typeId": "gGim51T107XIZRZ7"}' \
+    --body '{"affectedClientIds": ["TPY8P8P3cfoivvQx", "KPlXn77AtYoFzLAA", "evecWw7Rry0KK5rg"], "affectedCountries": ["ZcCTpTdRtCHvuk6B", "Z4GcLkt4pK32sJxl", "AGO0dW8rX2MVUGKS"], "basePolicyName": "6XTmSLyn50sigBVZ", "description": "xiKdV57GvRyd9UuL", "isHidden": false, "isHiddenPublic": true, "tags": ["qRIblS7Nz81GRazP", "AANjfBoldFOyqA2c", "Le8HSCslsDd4M1F5"], "typeId": "lJ5gEOaCgM6Yn6Ru"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 22 'CreatePolicy1' test.out
 
 #- 23 RetrieveSinglePolicy1
 $PYTHON -m $MODULE 'legal-retrieve-single-policy-1' \
-    'tZdIs0xf4czdt7zq' \
+    'gbNEIpGBFUjOn5mM' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 23 'RetrieveSinglePolicy1' test.out
 
 #- 24 PartialUpdatePolicy1
 $PYTHON -m $MODULE 'legal-partial-update-policy-1' \
-    'mSKxOEQlVcx6GqsB' \
-    --body '{"affectedClientIds": ["SQdTnNYGeAfYFG3w", "q8vdhWVnuYLgpZeh", "K0G2nmyuViB9kRTc"], "affectedCountries": ["4cXnAXyuGz6LlxHv", "8SwyagYvDJ3w3UNg", "SkHKufBdS3ZOokZB"], "basePolicyName": "IGj2jZtEYT8sIPSE", "description": "1XXPzySa0sZoFS6x", "isHidden": true, "tags": ["6hIWDZrpP7rz3ISW", "510kHr4isTKWjmv6", "QMVDXEHeiGTnwyEw"]}' \
+    '7k8nbLzvtCIW5ynM' \
+    --body '{"affectedClientIds": ["KquUicAeIVXtoWAX", "D1e6oI9FmYel0kOw", "hMlW4tLqX7OICf5o"], "affectedCountries": ["HSppnIZkNnTn3rzH", "72o8Zkgk0jS6rDWU", "wfhKvrf2AaH4yCWr"], "basePolicyName": "5NvAtcvNedgS1fUf", "description": "KmihDbmu8ePWlQMV", "isHidden": true, "isHiddenPublic": false, "tags": ["Hr4isTKWjmv67nuH", "XEHeiGTnwyEw6hIW", "DZrpP7rz3ISW510k"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 24 'PartialUpdatePolicy1' test.out
 
 #- 25 RetrievePolicyCountry1
 $PYTHON -m $MODULE 'legal-retrieve-policy-country-1' \
-    '7nuHCXWfwnwGioVw' \
-    'VzmmBVVFfpqx1AeL' \
+    'CXWfwnwGioVwVzmm' \
+    'BVVFfpqx1AeLtzcP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 25 'RetrievePolicyCountry1' test.out
 
 #- 26 RetrieveLocalizedPolicyVersions1
 $PYTHON -m $MODULE 'legal-retrieve-localized-policy-versions-1' \
-    'tzcPJ3jtDYBo4FUT' \
+    'J3jtDYBo4FUTH7CG' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 26 'RetrieveLocalizedPolicyVersions1' test.out
 
 #- 27 CreateLocalizedPolicyVersion1
 $PYTHON -m $MODULE 'legal-create-localized-policy-version-1' \
-    'H7CGfKSyxgRR1DiC' \
-    --body '{"contentType": "qSMzpqIFGLkDs7AC", "description": "C1RgBfoNrHlFi2qJ", "localeCode": "LgmBLE35YhyiDV90"}' \
+    'fKSyxgRR1DiCqSMz' \
+    --body '{"contentType": "pqIFGLkDs7ACC1Rg", "description": "BfoNrHlFi2qJLgmB", "localeCode": "LE35YhyiDV90SeI5"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 27 'CreateLocalizedPolicyVersion1' test.out
 
 #- 28 RetrieveSingleLocalizedPolicyVersion1
 $PYTHON -m $MODULE 'legal-retrieve-single-localized-policy-version-1' \
-    'SeI5yppBHoytVznC' \
+    'yppBHoytVznCgNyx' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 28 'RetrieveSingleLocalizedPolicyVersion1' test.out
 
 #- 29 UpdateLocalizedPolicyVersion1
 $PYTHON -m $MODULE 'legal-update-localized-policy-version-1' \
-    'gNyx9fbT63ShEh8P' \
-    --body '{"attachmentChecksum": "bGikLjgjcj34uulU", "attachmentLocation": "6FYBZsWFbr3RSP0W", "attachmentVersionIdentifier": "9nBhvhf8Q0DtJMcY", "contentType": "QdN66bswAgt65X4N", "description": "1LQZmB61JMdtwCVU"}' \
+    '9fbT63ShEh8PbGik' \
+    --body '{"attachmentChecksum": "Ljgjcj34uulU6FYB", "attachmentLocation": "ZsWFbr3RSP0W9nBh", "attachmentVersionIdentifier": "vhf8Q0DtJMcYQdN6", "contentType": "6bswAgt65X4N1LQZ", "description": "mB61JMdtwCVUrYQu"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 29 'UpdateLocalizedPolicyVersion1' test.out
 
 #- 30 RequestPresignedURL1
 $PYTHON -m $MODULE 'legal-request-presigned-url-1' \
-    'rYQue84dwmbwFEnA' \
-    --body '{"contentMD5": "ZaWsQJtRYoagRJK5", "contentType": "PX9UcOvhPyE11TRT"}' \
+    'e84dwmbwFEnAZaWs' \
+    --body '{"contentMD5": "QJtRYoagRJK5PX9U", "contentType": "cOvhPyE11TRT2SKs"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 30 'RequestPresignedURL1' test.out
 
 #- 31 SetDefaultPolicy1
 $PYTHON -m $MODULE 'legal-set-default-policy-1' \
-    '2SKseoe8VLie0LBa' \
+    'eoe8VLie0LBa36KN' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 31 'SetDefaultPolicy1' test.out
 
 #- 32 UpdatePolicyVersion1
 $PYTHON -m $MODULE 'legal-update-policy-version-1' \
-    '36KNzjf005CXNGeh' \
-    --body '{"description": "Q2aTjTDfKFDXC7eG", "displayVersion": "L5YhJDWh9YWqc0qg", "isCommitted": false}' \
+    'zjf005CXNGehQ2aT' \
+    --body '{"description": "jTDfKFDXC7eGL5Yh", "displayVersion": "JDWh9YWqc0qgV6d9", "isCommitted": true}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 32 'UpdatePolicyVersion1' test.out
 
 #- 33 PublishPolicyVersion1
 $PYTHON -m $MODULE 'legal-publish-policy-version-1' \
-    '2kNjCMDtDMrentgn' \
+    'NjCMDtDMrentgn3D' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 33 'PublishPolicyVersion1' test.out
 
 #- 34 UpdatePolicy1
 $PYTHON -m $MODULE 'legal-update-policy-1' \
-    '3DhqciwIeShF9RKb' \
-    --body '{"description": "9vvxuJlhXbWhbwPw", "isDefaultOpted": true, "isMandatory": false, "policyName": "JBg0tTJg46IewOXE", "readableId": "2AkCh3QIZsUf8lGF", "shouldNotifyOnUpdate": false}' \
+    'hqciwIeShF9RKb9v' \
+    --body '{"description": "vxuJlhXbWhbwPwTo", "isDefaultOpted": true, "isMandatory": true, "policyName": "6knjVwVnzaqSfJiQ", "readableId": "FC2gXoda0kg16yUS", "shouldNotifyOnUpdate": false}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 34 'UpdatePolicy1' test.out
 
 #- 35 SetDefaultPolicy3
 $PYTHON -m $MODULE 'legal-set-default-policy-3' \
-    'pSOAjHJWwfCjYwWk' \
+    'mwTERHclOdxIwqej' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 35 'SetDefaultPolicy3' test.out
 
 #- 36 RetrieveSinglePolicyVersion1
 $PYTHON -m $MODULE 'legal-retrieve-single-policy-version-1' \
-    'Lob9gKLqs2nEZhpB' \
+    'xe18rNdb8Otq6j1m' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 36 'RetrieveSinglePolicyVersion1' test.out
 
 #- 37 CreatePolicyVersion1
 $PYTHON -m $MODULE 'legal-create-policy-version-1' \
-    'yfHZinxNfgPAwkMB' \
-    --body '{"description": "sznlBUqnLT4AbGpt", "displayVersion": "KaWNvPbpg7yrRvXf", "isCommitted": false}' \
+    'qUav7k05HAQltnSo' \
+    --body '{"description": "jV4jT65yclX2FtAz", "displayVersion": "0vJjFIYWOaNdsimm", "isCommitted": false}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 37 'CreatePolicyVersion1' test.out

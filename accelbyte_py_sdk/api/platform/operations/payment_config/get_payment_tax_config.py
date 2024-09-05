@@ -35,7 +35,7 @@ from ...models import PaymentTaxConfigInfo
 class GetPaymentTaxConfig(Operation):
     """Get payment global tax config (getPaymentTaxConfig)
 
-    [Not Supported Yet In Starter] Get payment global tax config.
+    [Not supported yet in AGS Shared Cloud] Get payment global tax config.
     Other detail info:
 
       * Returns : payment provider list

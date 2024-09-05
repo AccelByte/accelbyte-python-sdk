@@ -616,9 +616,6 @@ def admin_put_game_record_concurrent_handler_v1(
     and client need to redo the operation (fetch data and do update).
     Otherwise, the server will process the request.
 
-    Required Permission(s):
-        - CLIENT []
-
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key}
 
@@ -739,9 +736,6 @@ async def admin_put_game_record_concurrent_handler_v1_async(
     If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
     and client need to redo the operation (fetch data and do update).
     Otherwise, the server will process the request.
-
-    Required Permission(s):
-        - CLIENT []
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key}
@@ -868,9 +862,6 @@ def admin_put_player_public_record_concurrent_handler_v1(
     If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
     and client need to redo the operation (fetch data and do update).
     Otherwise, the server will process the request.
-
-    Required Permission(s):
-        - CLIENT []
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public
@@ -1003,9 +994,6 @@ async def admin_put_player_public_record_concurrent_handler_v1_async(
     If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
     and client need to redo the operation (fetch data and do update).
     Otherwise, the server will process the request.
-
-    Required Permission(s):
-        - CLIENT []
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key}/public
@@ -1141,9 +1129,6 @@ def admin_put_player_record_concurrent_handler_v1(
     and client need to redo the operation (fetch data and do update).
     Otherwise, the server will process the request.
 
-    Required Permission(s):
-        - CLIENT []
-
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key}
 
@@ -1275,9 +1260,6 @@ async def admin_put_player_record_concurrent_handler_v1_async(
     If the record has been updated since the client fetch it, the server will return HTTP status code 412 (precondition failed)
     and client need to redo the operation (fetch data and do update).
     Otherwise, the server will process the request.
-
-    Required Permission(s):
-        - CLIENT []
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/concurrent/records/{key}

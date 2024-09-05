@@ -49,12 +49,6 @@ def get_registered_event_id_handler(
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/registry/eventIds/{eventId}
 
@@ -97,12 +91,6 @@ async def get_registered_event_id_handler_async(
     """Get registered eventID data from the Event Registry (GetRegisteredEventIDHandler)
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/registry/eventIds/{eventId}
@@ -149,12 +137,6 @@ def get_registered_events_by_event_type_handler(
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/registry/eventTypes/{eventType}
 
@@ -197,12 +179,6 @@ async def get_registered_events_by_event_type_handler_async(
     """Get registered eventID data from the Event Registry based on the event type (GetRegisteredEventsByEventTypeHandler)
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/registry/eventTypes/{eventType}
@@ -249,12 +225,6 @@ def get_registered_events_handler(
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/registry/eventIds
 
@@ -289,12 +259,6 @@ async def get_registered_events_handler_async(
     """Get registered events in the Event Registry (GetRegisteredEventsHandler)
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/registry/eventIds
@@ -334,12 +298,6 @@ def register_event_handler(
     """Register an eventID to the Event Registry (RegisterEventHandler)
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [CREATE]`and scope `analytics`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [CREATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/registry/eventIds
@@ -386,12 +344,6 @@ async def register_event_handler_async(
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [CREATE]`and scope `analytics`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [CREATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/registry/eventIds
 
@@ -437,12 +389,6 @@ def unregister_event_id_handler(
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [DELETE]`and scope `analytics`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [DELETE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/registry/eventIds/{eventId}
 
@@ -483,12 +429,6 @@ async def unregister_event_id_handler_async(
     """Unregister eventID from the Event Registry (UnregisterEventIDHandler)
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [DELETE]`and scope `analytics`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [DELETE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/registry/eventIds/{eventId}
@@ -535,12 +475,6 @@ def update_event_registry_handler(
     """Update an eventID data in the Event Registry (UpdateEventRegistryHandler)
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/registry/eventIds/{eventId}
@@ -590,12 +524,6 @@ async def update_event_registry_handler_async(
     """Update an eventID data in the Event Registry (UpdateEventRegistryHandler)
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/registry/eventIds/{eventId}

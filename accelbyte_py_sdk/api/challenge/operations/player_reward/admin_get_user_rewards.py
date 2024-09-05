@@ -45,9 +45,6 @@ class AdminGetUserRewards(Operation):
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
-
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards
 

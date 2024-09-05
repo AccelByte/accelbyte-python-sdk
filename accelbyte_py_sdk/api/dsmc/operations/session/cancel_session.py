@@ -41,12 +41,6 @@ class CancelSession(Operation):
 
     This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to cancel a temporary dedicated server. The dedicated server cannot be canceled unless the status is CREATING
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}/cancel
 

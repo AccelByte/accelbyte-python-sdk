@@ -46,12 +46,6 @@ class ImportAchievements(Operation):
     - leaveOut: if achievement with same key exist, the existing will be used and imported one will be ignored (default)
     - replace: if achievement with same key exist, the imported achievement will be used and existing one will be removed
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/import
 

@@ -85,6 +85,8 @@ class CodeInfo(Model):
 
         acquire_user_id: (acquireUserId) OPTIONAL str
 
+        batch_name: (batchName) OPTIONAL str
+
         campaign: (campaign) OPTIONAL CampaignIfc
 
         discount_config: (discountConfig) OPTIONAL DiscountConfig
@@ -115,6 +117,7 @@ class CodeInfo(Model):
     value: str  # REQUIRED
     acquire_order_no: str  # OPTIONAL
     acquire_user_id: str  # OPTIONAL
+    batch_name: str  # OPTIONAL
     campaign: CampaignIfc  # OPTIONAL
     discount_config: DiscountConfig  # OPTIONAL
     items: List[RedeemableItem]  # OPTIONAL
@@ -191,6 +194,10 @@ class CodeInfo(Model):
 
     def with_acquire_user_id(self, value: str) -> CodeInfo:
         self.acquire_user_id = value
+        return self
+
+    def with_batch_name(self, value: str) -> CodeInfo:
+        self.batch_name = value
         return self
 
     def with_campaign(self, value: CampaignIfc) -> CodeInfo:
@@ -291,6 +298,10 @@ class CodeInfo(Model):
             result["acquireUserId"] = str(self.acquire_user_id)
         elif include_empty:
             result["acquireUserId"] = ""
+        if hasattr(self, "batch_name"):
+            result["batchName"] = str(self.batch_name)
+        elif include_empty:
+            result["batchName"] = ""
         if hasattr(self, "campaign"):
             result["campaign"] = self.campaign.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -341,6 +352,7 @@ class CodeInfo(Model):
         value: str,
         acquire_order_no: Optional[str] = None,
         acquire_user_id: Optional[str] = None,
+        batch_name: Optional[str] = None,
         campaign: Optional[CampaignIfc] = None,
         discount_config: Optional[DiscountConfig] = None,
         items: Optional[List[RedeemableItem]] = None,
@@ -370,6 +382,8 @@ class CodeInfo(Model):
             instance.acquire_order_no = acquire_order_no
         if acquire_user_id is not None:
             instance.acquire_user_id = acquire_user_id
+        if batch_name is not None:
+            instance.batch_name = batch_name
         if campaign is not None:
             instance.campaign = campaign
         if discount_config is not None:
@@ -468,6 +482,10 @@ class CodeInfo(Model):
             instance.acquire_user_id = str(dict_["acquireUserId"])
         elif include_empty:
             instance.acquire_user_id = ""
+        if "batchName" in dict_ and dict_["batchName"] is not None:
+            instance.batch_name = str(dict_["batchName"])
+        elif include_empty:
+            instance.batch_name = ""
         if "campaign" in dict_ and dict_["campaign"] is not None:
             instance.campaign = CampaignIfc.create_from_dict(
                 dict_["campaign"], include_empty=include_empty
@@ -551,6 +569,7 @@ class CodeInfo(Model):
             "value": "value",
             "acquireOrderNo": "acquire_order_no",
             "acquireUserId": "acquire_user_id",
+            "batchName": "batch_name",
             "campaign": "campaign",
             "discountConfig": "discount_config",
             "items": "items",
@@ -578,6 +597,7 @@ class CodeInfo(Model):
             "value": True,
             "acquireOrderNo": False,
             "acquireUserId": False,
+            "batchName": False,
             "campaign": False,
             "discountConfig": False,
             "items": False,

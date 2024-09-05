@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.54.0"
+__version__ = "4.56.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -106,6 +106,8 @@ from .bundled_item_info import (
     SeasonTypeEnum as BundledItemInfoSeasonTypeEnum,
     StatusEnum as BundledItemInfoStatusEnum,
 )
+from .campaign_batch_name_change import CampaignBatchNameChange
+from .campaign_batch_name_info import CampaignBatchNameInfo
 from .campaign_create import CampaignCreate
 from .campaign_create import (
     RedeemTypeEnum as CampaignCreateRedeemTypeEnum,
@@ -244,7 +246,6 @@ from .durable_entitlement_revocation_config import (
     StrategyEnum as DurableEntitlementRevocationConfigStrategyEnum,
 )
 from .entitlement_config_info import EntitlementConfigInfo
-from .entitlement_decrement import EntitlementDecrement
 from .entitlement_decrement_result import EntitlementDecrementResult
 from .entitlement_decrement_result import (
     AppTypeEnum as EntitlementDecrementResultAppTypeEnum,
@@ -296,6 +297,7 @@ from .entitlement_prechek_result import EntitlementPrechekResult
 from .entitlement_revocation import EntitlementRevocation
 from .entitlement_revocation import StatusEnum as EntitlementRevocationStatusEnum
 from .entitlement_revocation_config import EntitlementRevocationConfig
+from .entitlement_revoke_request import EntitlementRevokeRequest
 from .entitlement_revoke_result import EntitlementRevokeResult
 from .entitlement_sold_request import EntitlementSoldRequest
 from .entitlement_sold_result import EntitlementSoldResult
@@ -744,11 +746,16 @@ from .public_custom_config_info import PublicCustomConfigInfo
 from .public_custom_config_info import (
     ConnectionTypeEnum as PublicCustomConfigInfoConnectionTypeEnum,
 )
+from .public_entitlement_decrement import PublicEntitlementDecrement
 from .public_entitlement_history_info import PublicEntitlementHistoryInfo
 from .public_entitlement_history_info import (
     ActionEnum as PublicEntitlementHistoryInfoActionEnum,
     ClazzEnum as PublicEntitlementHistoryInfoClazzEnum,
     OriginEnum as PublicEntitlementHistoryInfoOriginEnum,
+)
+from .public_entitlement_metadata import PublicEntitlementMetadata
+from .public_entitlement_metadata import (
+    OperationSourceEnum as PublicEntitlementMetadataOperationSourceEnum,
 )
 from .purchase_condition import PurchaseCondition
 from .purchase_condition_update import PurchaseConditionUpdate

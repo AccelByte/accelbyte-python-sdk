@@ -54,7 +54,7 @@ class PublicTransferUserEntitlement(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementTransferRequest in body
+        body: (body) REQUIRED EntitlementTransferRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -79,7 +79,7 @@ class PublicTransferUserEntitlement(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: EntitlementTransferRequest  # OPTIONAL in [body]
+    body: EntitlementTransferRequest  # REQUIRED in [body]
     entitlement_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -240,18 +240,17 @@ class PublicTransferUserEntitlement(Operation):
     @classmethod
     def create(
         cls,
+        body: EntitlementTransferRequest,
         entitlement_id: str,
         namespace: str,
         user_id: str,
-        body: Optional[EntitlementTransferRequest] = None,
         **kwargs,
     ) -> PublicTransferUserEntitlement:
         instance = cls()
+        instance.body = body
         instance.entitlement_id = entitlement_id
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -293,7 +292,7 @@ class PublicTransferUserEntitlement(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "entitlementId": True,
             "namespace": True,
             "userId": True,

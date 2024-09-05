@@ -14,7 +14,9 @@ from accelbyte_py_sdk.api.inventory import (
     admin_delete_inventory_configuration,
 )
 
-from accelbyte_py_sdk.api.inventory.models import ApimodelsCreateInventoryConfigurationReq
+from accelbyte_py_sdk.api.inventory.models import (
+    ApimodelsCreateInventoryConfigurationReq,
+)
 from accelbyte_py_sdk.api.inventory.models import ApimodelsCreateInventoryReq
 from accelbyte_py_sdk.api.inventory.models import ApimodelsUpdateInventoryReq
 from accelbyte_py_sdk.api.inventory.models import ApimodelsDeleteInventoryReq
@@ -75,13 +77,17 @@ class InventoryTestCase(IntegrationTestCase):
             .with_name(self.inventory_config_code)
         )
 
-        result, error = admin_create_inventory_configuration(body=body, namespace=self.namespace)
+        result, error = admin_create_inventory_configuration(
+            body=body, namespace=self.namespace
+        )
         self.assertIsNone(error, error)
         self.inventory_config_id = result.id_
         return result
 
     def do_delete_inventory_config(self):
-        _, error = admin_delete_inventory_configuration(inventory_configuration_id=self.inventory_config_id)
+        _, error = admin_delete_inventory_configuration(
+            inventory_configuration_id=self.inventory_config_id
+        )
         self.assertIsNone(error, error)
 
     # region test:inventory_crud
@@ -115,7 +121,9 @@ class InventoryTestCase(IntegrationTestCase):
 
         inventory_id = result.id_
         body = ApimodelsUpdateInventoryReq().with_inc_max_slots(2)
-        result, error = admin_update_inventory(body=body, inventory_id=inventory_id, namespace=self.namespace)
+        result, error = admin_update_inventory(
+            body=body, inventory_id=inventory_id, namespace=self.namespace
+        )
 
         # assert - update inventory
 
@@ -124,7 +132,9 @@ class InventoryTestCase(IntegrationTestCase):
 
         # act - get inventory
 
-        result, error = admin_get_inventory(inventory_id=inventory_id, namespace=self.namespace)
+        result, error = admin_get_inventory(
+            inventory_id=inventory_id, namespace=self.namespace
+        )
 
         # assert - get inventory
 
@@ -136,7 +146,7 @@ class InventoryTestCase(IntegrationTestCase):
         _, error = delete_inventory(
             body=ApimodelsDeleteInventoryReq.create(message="deleting"),
             inventory_id=inventory_id,
-            namespace=self.namespace
+            namespace=self.namespace,
         )
 
         # assert - delete inventory

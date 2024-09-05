@@ -42,12 +42,6 @@ class GetPodConfig(Operation):
 
     This endpoint get a dedicated server pod config in a namespace
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name}
 

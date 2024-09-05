@@ -160,12 +160,6 @@ def admin_delete_third_party_config(
 
     delete third party config in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam
 
@@ -213,12 +207,6 @@ async def admin_delete_third_party_config_async(
     Required permission : `ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]` with scope `social`
 
     delete third party config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:THIRDPARTY:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /lobby/v1/admin/thirdparty/namespaces/{namespace}/config/steam

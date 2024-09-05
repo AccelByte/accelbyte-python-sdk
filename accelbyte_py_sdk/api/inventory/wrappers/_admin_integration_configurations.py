@@ -69,9 +69,6 @@ def admin_create_integration_configuration(
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations
 
@@ -123,9 +120,6 @@ async def admin_create_integration_configuration_async(
     There cannot be one duplicate serviceName per namespace.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations
@@ -182,9 +176,6 @@ def admin_list_integration_configurations(
     The response body will be in the form of standard pagination.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations
@@ -243,9 +234,6 @@ async def admin_list_integration_configurations_async(
     The response body will be in the form of standard pagination.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations
@@ -306,9 +294,6 @@ def admin_update_integration_configuration(
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations/{integrationConfigurationId}
 
@@ -366,9 +351,6 @@ async def admin_update_integration_configuration_async(
     There cannot be duplicate serviceName per namespace.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations/{integrationConfigurationId}
@@ -430,9 +412,6 @@ def admin_update_status_integration_configuration(
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations/{integrationConfigurationId}/status
 
@@ -490,9 +469,6 @@ async def admin_update_status_integration_configuration_async(
     There cannot be duplicate serviceName per namespace.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations/{integrationConfigurationId}/status

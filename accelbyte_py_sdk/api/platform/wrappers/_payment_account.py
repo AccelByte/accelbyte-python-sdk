@@ -48,7 +48,7 @@ def public_delete_payment_account(
 ):
     """Delete payment account (publicDeletePaymentAccount)
 
-    [Not Supported Yet In Starter] Delete payment account.
+    [Not supported yet in AGS Shared Cloud] Delete payment account.
     Other detail info:
 
       * Returns :
@@ -101,7 +101,7 @@ async def public_delete_payment_account_async(
 ):
     """Delete payment account (publicDeletePaymentAccount)
 
-    [Not Supported Yet In Starter] Delete payment account.
+    [Not supported yet in AGS Shared Cloud] Delete payment account.
     Other detail info:
 
       * Returns :
@@ -154,7 +154,7 @@ def public_get_payment_accounts(
 ):
     """Get payment accounts (publicGetPaymentAccounts)
 
-    [Not Supported Yet In Starter] Get payment accounts.
+    [Not supported yet in AGS Shared Cloud] Get payment accounts.
     Other detail info:
 
       * Returns : Payment account list
@@ -199,7 +199,7 @@ async def public_get_payment_accounts_async(
 ):
     """Get payment accounts (publicGetPaymentAccounts)
 
-    [Not Supported Yet In Starter] Get payment accounts.
+    [Not supported yet in AGS Shared Cloud] Get payment accounts.
     Other detail info:
 
       * Returns : Payment account list

@@ -782,7 +782,7 @@ async def get_service_plugin_config_async(
 
 @same_doc_as(UpdateLootBoxPluginConfig)
 def update_loot_box_plugin_config(
-    body: Optional[LootBoxPluginConfigUpdate] = None,
+    body: LootBoxPluginConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -806,7 +806,7 @@ def update_loot_box_plugin_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL LootBoxPluginConfigUpdate in body
+        body: (body) REQUIRED LootBoxPluginConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -828,7 +828,7 @@ def update_loot_box_plugin_config(
 
 @same_doc_as(UpdateLootBoxPluginConfig)
 async def update_loot_box_plugin_config_async(
-    body: Optional[LootBoxPluginConfigUpdate] = None,
+    body: LootBoxPluginConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -852,7 +852,7 @@ async def update_loot_box_plugin_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL LootBoxPluginConfigUpdate in body
+        body: (body) REQUIRED LootBoxPluginConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -876,7 +876,7 @@ async def update_loot_box_plugin_config_async(
 
 @same_doc_as(UpdateRevocationPluginConfig)
 def update_revocation_plugin_config(
-    body: Optional[RevocationPluginConfigUpdate] = None,
+    body: RevocationPluginConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -900,7 +900,7 @@ def update_revocation_plugin_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevocationPluginConfigUpdate in body
+        body: (body) REQUIRED RevocationPluginConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -922,7 +922,7 @@ def update_revocation_plugin_config(
 
 @same_doc_as(UpdateRevocationPluginConfig)
 async def update_revocation_plugin_config_async(
-    body: Optional[RevocationPluginConfigUpdate] = None,
+    body: RevocationPluginConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -946,7 +946,7 @@ async def update_revocation_plugin_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevocationPluginConfigUpdate in body
+        body: (body) REQUIRED RevocationPluginConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -970,7 +970,7 @@ async def update_revocation_plugin_config_async(
 
 @same_doc_as(UpdateSectionPluginConfig)
 def update_section_plugin_config(
-    body: Optional[SectionPluginConfigUpdate] = None,
+    body: SectionPluginConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -994,7 +994,7 @@ def update_section_plugin_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SectionPluginConfigUpdate in body
+        body: (body) REQUIRED SectionPluginConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1016,7 +1016,7 @@ def update_section_plugin_config(
 
 @same_doc_as(UpdateSectionPluginConfig)
 async def update_section_plugin_config_async(
-    body: Optional[SectionPluginConfigUpdate] = None,
+    body: SectionPluginConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1040,7 +1040,7 @@ async def update_section_plugin_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SectionPluginConfigUpdate in body
+        body: (body) REQUIRED SectionPluginConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1065,7 +1065,7 @@ async def update_section_plugin_config_async(
 @deprecated
 @same_doc_as(UpdateServicePluginConfig)
 def update_service_plugin_config(
-    body: Optional[ServicePluginConfigUpdate] = None,
+    body: ServicePluginConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1089,7 +1089,7 @@ def update_service_plugin_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ServicePluginConfigUpdate in body
+        body: (body) REQUIRED ServicePluginConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1112,7 +1112,7 @@ def update_service_plugin_config(
 @deprecated
 @same_doc_as(UpdateServicePluginConfig)
 async def update_service_plugin_config_async(
-    body: Optional[ServicePluginConfigUpdate] = None,
+    body: ServicePluginConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1136,7 +1136,7 @@ async def update_service_plugin_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ServicePluginConfigUpdate in body
+        body: (body) REQUIRED ServicePluginConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 

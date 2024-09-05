@@ -34,12 +34,14 @@ from accelbyte_py_sdk.api.platform import (
     revoke_user_entitlement as revoke_user_entitlement_internal,
 )
 from accelbyte_py_sdk.api.platform.models import EntitlementInfo
+from accelbyte_py_sdk.api.platform.models import EntitlementRevokeRequest
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 
 @click.command()
 @click.argument("entitlement_id", type=str)
 @click.argument("user_id", type=str)
+@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -47,6 +49,7 @@ from accelbyte_py_sdk.api.platform.models import ErrorEntity
 def revoke_user_entitlement(
     entitlement_id: str,
     user_id: str,
+    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -60,9 +63,16 @@ def revoke_user_entitlement(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = EntitlementRevokeRequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = revoke_user_entitlement_internal(
         entitlement_id=entitlement_id,
         user_id=user_id,
+        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

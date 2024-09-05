@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelUserMFAStatusResponseV4
 from ...models import RestErrorResponse
@@ -37,6 +38,8 @@ class AdminGetMyMFAStatusV4(Operation):
     """Get User MFA Status (AdminGetMyMFAStatusV4)
 
     This endpoint will get user's' MFA status.
+    ------------
+    **Substitute endpoint**: /iam/v4/admin/users/me/mfa/status [GET]
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/status

@@ -55,7 +55,7 @@ class StatusEnum(StrEnum):
 class QueryPaymentNotifications(Operation):
     """Query payment notifications (queryPaymentNotifications)
 
-    [Not Supported Yet In Starter] Query payment notifications.
+    [Not supported yet in AGS Shared Cloud] Query payment notifications.
     Other detail info:
 
       * Returns : Payment notifications

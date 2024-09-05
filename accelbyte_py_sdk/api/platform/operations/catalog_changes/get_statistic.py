@@ -215,7 +215,7 @@ class GetStatistic(Operation):
         self.item_type = value
         return self
 
-    def with_type_(self, value: Union[str, TypeEnum]) -> GetStatistic:
+    def with_type(self, value: Union[str, TypeEnum]) -> GetStatistic:
         self.type_ = value
         return self
 

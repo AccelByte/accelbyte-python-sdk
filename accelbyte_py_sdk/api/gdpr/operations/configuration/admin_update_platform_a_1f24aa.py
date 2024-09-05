@@ -39,9 +39,6 @@ class AdminUpdatePlatformAccountClosureServicesConfiguration(Operation):
     Update registered platform account closure services configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
 

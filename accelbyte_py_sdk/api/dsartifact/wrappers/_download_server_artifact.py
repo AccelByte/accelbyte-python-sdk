@@ -55,12 +55,6 @@ def check_server_artifact(
 
     The possible status is : 'Empty', 'In Queue', 'Uploading', 'Ready', 'Failed'
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/servers/{podName}/artifacts/exists
 
@@ -115,12 +109,6 @@ async def check_server_artifact_async(
 
     The possible status is : 'Empty', 'In Queue', 'Uploading', 'Ready', 'Failed'
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/servers/{podName}/artifacts/exists
 
@@ -173,12 +161,6 @@ def download_server_artifacts(
 
     This endpoint will download dedicated server's Artifact file (.zip).
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/servers/{podName}/artifacts/download
 
@@ -228,12 +210,6 @@ async def download_server_artifacts_async(
     Required scope: social
 
     This endpoint will download dedicated server's Artifact file (.zip).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsartifact/namespaces/{namespace}/servers/{podName}/artifacts/download

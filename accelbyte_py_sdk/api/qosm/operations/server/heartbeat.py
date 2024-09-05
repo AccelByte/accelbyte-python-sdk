@@ -44,9 +44,6 @@ class Heartbeat(Operation):
     to register and periodically let QoS Manager know that it is still alive.
     ```
 
-    Required Scope(s):
-        - social
-
     Properties:
         url: /qosm/servers/heartbeat
 

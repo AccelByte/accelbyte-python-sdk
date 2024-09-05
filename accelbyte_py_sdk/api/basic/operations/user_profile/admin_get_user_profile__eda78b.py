@@ -44,9 +44,6 @@ class AdminGetUserProfilePublicInfoByIds(Operation):
       *  Action code : 11405
       *  Returns : user public profiles
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFILE []
-
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/profiles/public
 
@@ -58,7 +55,7 @@ class AdminGetUserProfilePublicInfoByIds(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileBulkRequest in body
 
@@ -76,7 +73,7 @@ class AdminGetUserProfilePublicInfoByIds(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: UserProfileBulkRequest  # OPTIONAL in [body]

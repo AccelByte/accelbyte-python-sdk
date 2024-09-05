@@ -39,9 +39,6 @@ class AdminGetServicesConfiguration(Operation):
     Get Registered Services Configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/configurations
 

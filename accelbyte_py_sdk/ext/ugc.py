@@ -42,6 +42,7 @@ from ..api.ugc.models import ModelsContentLikersResponse
 from ..api.ugc.models import ModelsContentRequestV2
 from ..api.ugc.models import ModelsContentSnapshot
 from ..api.ugc.models import ModelsContentVersionResponse
+from ..api.ugc.models import ModelsCopyContentRequest
 from ..api.ugc.models import ModelsCreateContentRequest
 from ..api.ugc.models import ModelsCreateContentRequestS3
 from ..api.ugc.models import ModelsCreateContentResponse
@@ -314,6 +315,17 @@ def create_models_content_version_response_example() -> ModelsContentVersionResp
     instance.id_ = randomize()
     instance.updated_at = randomize()
     instance.version = randomize("version")
+    return instance
+
+
+def create_models_copy_content_request_example() -> ModelsCopyContentRequest:
+    instance = ModelsCopyContentRequest()
+    instance.target_channel_id = randomize()
+    instance.custom_attributes = {randomize(): randomize()}
+    instance.name = randomize()
+    instance.sub_type = randomize()
+    instance.tags = [randomize()]
+    instance.type_ = randomize()
     return instance
 
 

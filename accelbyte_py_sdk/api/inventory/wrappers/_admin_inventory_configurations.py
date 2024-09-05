@@ -67,9 +67,6 @@ def admin_create_inventory_configuration(
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations
 
@@ -121,9 +118,6 @@ async def admin_create_inventory_configuration_async(
     There cannot be one inventory configuration duplicate code per namespace.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [CREATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations
@@ -179,9 +173,6 @@ def admin_delete_inventory_configuration(
 
     ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [DELETE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations/{inventoryConfigurationId}
 
@@ -233,9 +224,6 @@ async def admin_delete_inventory_configuration_async(
     If an inventory already reference this type (i.e. STATUS is "TIED"), then the type cannot be deleted anymore.
 
     ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [DELETE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations/{inventoryConfigurationId}
@@ -290,9 +278,6 @@ def admin_get_inventory_configuration(
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations/{inventoryConfigurationId}
 
@@ -343,9 +328,6 @@ async def admin_get_inventory_configuration_async(
     Getting an inventory configuration info.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations/{inventoryConfigurationId}
@@ -403,9 +385,6 @@ def admin_list_inventory_configurations(
     The response body will be in the form of standard pagination.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations
@@ -469,9 +448,6 @@ async def admin_list_inventory_configurations_async(
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations
 
@@ -534,9 +510,6 @@ def admin_update_inventory_configuration(
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations/{inventoryConfigurationId}
 
@@ -594,9 +567,6 @@ async def admin_update_inventory_configuration_async(
     There cannot be duplicate code per namespace.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations/{inventoryConfigurationId}

@@ -58,9 +58,6 @@ def admin_create_tag(
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/tags
 
@@ -113,9 +110,6 @@ async def admin_create_tag_async(
     It is safe to call this endpoint even if the tag already exists.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [CREATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/tags
@@ -171,9 +165,6 @@ def admin_delete_tag(
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [DELETE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/tags/{tagName}
 
@@ -223,9 +214,6 @@ async def admin_delete_tag_async(
     If the tagName doesn't exist in a namespace, it'll return not found.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [DELETE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/tags/{tagName}
@@ -281,9 +269,6 @@ def admin_list_tags(
     The response body will be in the form of standard pagination.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [READ]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/tags
@@ -346,9 +331,6 @@ async def admin_list_tags_async(
     The response body will be in the form of standard pagination.
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [READ]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/tags

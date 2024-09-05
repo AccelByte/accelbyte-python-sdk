@@ -41,12 +41,6 @@ class DeleteServer(Operation):
 
     This endpoint deletes a specified dedicated server from DB and terminates the DS pod.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}
 

@@ -43,12 +43,6 @@ class ResetGlobalAchievement(Operation):
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/global/achievements/{achievementCode}/reset
 

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.8.1"
+__version__ = "1.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -66,3 +66,12 @@ from ._player_reward import public_claim_user_rewards
 from ._player_reward import public_claim_user_rewards_async
 from ._player_reward import public_get_user_rewards
 from ._player_reward import public_get_user_rewards_async
+
+from ._plugins import admin_create_assignment_plugin
+from ._plugins import admin_create_assignment_plugin_async
+from ._plugins import admin_delete_assignment_plugin
+from ._plugins import admin_delete_assignment_plugin_async
+from ._plugins import admin_get_assignment_plugin
+from ._plugins import admin_get_assignment_plugin_async
+from ._plugins import admin_update_assignment_plugin
+from ._plugins import admin_update_assignment_plugin_async

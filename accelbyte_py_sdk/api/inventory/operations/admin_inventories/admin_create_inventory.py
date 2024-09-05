@@ -45,9 +45,6 @@ class AdminCreateInventory(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventories
 

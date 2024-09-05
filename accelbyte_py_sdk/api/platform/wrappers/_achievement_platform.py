@@ -140,8 +140,8 @@ async def get_xbl_user_achievements_async(
 
 @same_doc_as(UnlockSteamUserAchievement)
 def unlock_steam_user_achievement(
+    body: SteamAchievementUpdateRequest,
     user_id: str,
-    body: Optional[SteamAchievementUpdateRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -163,7 +163,7 @@ def unlock_steam_user_achievement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SteamAchievementUpdateRequest in body
+        body: (body) REQUIRED SteamAchievementUpdateRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -181,8 +181,8 @@ def unlock_steam_user_achievement(
         if error:
             return None, error
     request = UnlockSteamUserAchievement.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -190,8 +190,8 @@ def unlock_steam_user_achievement(
 
 @same_doc_as(UnlockSteamUserAchievement)
 async def unlock_steam_user_achievement_async(
+    body: SteamAchievementUpdateRequest,
     user_id: str,
-    body: Optional[SteamAchievementUpdateRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -213,7 +213,7 @@ async def unlock_steam_user_achievement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SteamAchievementUpdateRequest in body
+        body: (body) REQUIRED SteamAchievementUpdateRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -231,8 +231,8 @@ async def unlock_steam_user_achievement_async(
         if error:
             return None, error
     request = UnlockSteamUserAchievement.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -242,8 +242,8 @@ async def unlock_steam_user_achievement_async(
 
 @same_doc_as(UpdateXblUserAchievement)
 def update_xbl_user_achievement(
+    body: XblAchievementUpdateRequest,
     user_id: str,
-    body: Optional[XblAchievementUpdateRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -265,7 +265,7 @@ def update_xbl_user_achievement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XblAchievementUpdateRequest in body
+        body: (body) REQUIRED XblAchievementUpdateRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -281,8 +281,8 @@ def update_xbl_user_achievement(
         if error:
             return None, error
     request = UpdateXblUserAchievement.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -290,8 +290,8 @@ def update_xbl_user_achievement(
 
 @same_doc_as(UpdateXblUserAchievement)
 async def update_xbl_user_achievement_async(
+    body: XblAchievementUpdateRequest,
     user_id: str,
-    body: Optional[XblAchievementUpdateRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -313,7 +313,7 @@ async def update_xbl_user_achievement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XblAchievementUpdateRequest in body
+        body: (body) REQUIRED XblAchievementUpdateRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -329,8 +329,8 @@ async def update_xbl_user_achievement_async(
         if error:
             return None, error
     request = UpdateXblUserAchievement.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

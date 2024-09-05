@@ -55,7 +55,7 @@ class AcquireItem(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ItemAcquireRequest in body
+        body: (body) REQUIRED ItemAcquireRequest in body
 
         item_id: (itemId) REQUIRED str in path
 
@@ -76,7 +76,7 @@ class AcquireItem(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ItemAcquireRequest  # OPTIONAL in [body]
+    body: ItemAcquireRequest  # REQUIRED in [body]
     item_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -217,17 +217,12 @@ class AcquireItem(Operation):
 
     @classmethod
     def create(
-        cls,
-        item_id: str,
-        namespace: str,
-        body: Optional[ItemAcquireRequest] = None,
-        **kwargs,
+        cls, body: ItemAcquireRequest, item_id: str, namespace: str, **kwargs
     ) -> AcquireItem:
         instance = cls()
+        instance.body = body
         instance.item_id = item_id
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -262,7 +257,7 @@ class AcquireItem(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "itemId": True,
             "namespace": True,
         }

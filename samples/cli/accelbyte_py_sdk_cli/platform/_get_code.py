@@ -38,6 +38,7 @@ from accelbyte_py_sdk.api.platform.models import ErrorEntity
 @click.command()
 @click.argument("code", type=str)
 @click.option("--redeemable", "redeemable", type=bool)
+@click.option("--with_batch_name", "with_batch_name", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -45,6 +46,7 @@ from accelbyte_py_sdk.api.platform.models import ErrorEntity
 def get_code(
     code: str,
     redeemable: Optional[bool] = None,
+    with_batch_name: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -61,6 +63,7 @@ def get_code(
     result, error = get_code_internal(
         code=code,
         redeemable=redeemable,
+        with_batch_name=with_batch_name,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

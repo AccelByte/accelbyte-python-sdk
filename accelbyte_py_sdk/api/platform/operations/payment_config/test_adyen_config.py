@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestAdyenConfig(Operation):
     """Test adyen configuration (testAdyenConfig)
 
-    [Not Supported Yet In Starter] Test adyen configuration.
+    [Not supported yet in AGS Shared Cloud] Test adyen configuration.
 
     #### Check List:
 
@@ -71,7 +71,7 @@ class TestAdyenConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdyenConfig in body
+        body: (body) REQUIRED AdyenConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -88,7 +88,7 @@ class TestAdyenConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: AdyenConfig  # OPTIONAL in [body]
+    body: AdyenConfig  # REQUIRED in [body]
     sandbox: bool  # OPTIONAL in [query]
 
     # endregion fields
@@ -214,14 +214,10 @@ class TestAdyenConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: Optional[AdyenConfig] = None,
-        sandbox: Optional[bool] = None,
-        **kwargs,
+        cls, body: AdyenConfig, sandbox: Optional[bool] = None, **kwargs
     ) -> TestAdyenConfig:
         instance = cls()
-        if body is not None:
-            instance.body = body
+        instance.body = body
         if sandbox is not None:
             instance.sandbox = sandbox
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -255,7 +251,7 @@ class TestAdyenConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "sandbox": False,
         }
 

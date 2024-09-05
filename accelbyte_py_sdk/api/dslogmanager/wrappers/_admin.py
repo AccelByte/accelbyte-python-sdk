@@ -53,12 +53,6 @@ def get_server_logs(
 
     This endpoint queries a specified dedicated server's logs.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dslogmanager/admin/namespaces/{namespace}/servers/{podName}/logs
 
@@ -124,12 +118,6 @@ async def get_server_logs_async(
     Required scope: social
 
     This endpoint queries a specified dedicated server's logs.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dslogmanager/admin/namespaces/{namespace}/servers/{podName}/logs

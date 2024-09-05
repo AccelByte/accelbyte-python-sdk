@@ -54,9 +54,6 @@ def image_get(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
 
@@ -106,9 +103,6 @@ async def image_get_async(
     """get image details. (ImageGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
@@ -163,9 +157,6 @@ def image_list(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images
 
@@ -213,9 +204,6 @@ async def image_list_async(
     Returns images which exist (uploaded, uploading, or building) in the linked account. This route fails if no account is linked
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images
@@ -267,9 +255,6 @@ def image_mark_for_deletion(
     Marks an image for deletion. The image will stop being available for fleets and will eventually be deleted.
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
@@ -324,9 +309,6 @@ async def image_mark_for_deletion_async(
     Marks an image for deletion. The image will stop being available for fleets and will eventually be deleted.
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
@@ -385,9 +367,6 @@ def image_patch(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
 
@@ -443,9 +422,6 @@ async def image_patch_async(
     This allows editing of the image name, toggling `IsProtected`, or adding & removal of tags
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
@@ -504,9 +480,6 @@ def image_unmark_for_deletion(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}/restore
 
@@ -560,9 +533,6 @@ async def image_unmark_for_deletion_async(
     Unmarks an image for deletion. The image will be available for fleets.
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}/restore
@@ -619,9 +589,6 @@ def images_storage(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images-storage
 
@@ -669,9 +636,6 @@ async def images_storage_async(
     Returns information regarding the account's usage for images storage including the free tier quota
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images-storage

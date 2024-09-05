@@ -40,9 +40,6 @@ class PublicClaimUserRewards(Operation):
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
-
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards/claim
 

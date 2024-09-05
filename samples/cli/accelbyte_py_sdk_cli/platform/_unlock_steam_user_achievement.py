@@ -39,15 +39,15 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("user_id", type=str)
-@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def unlock_steam_user_achievement(
+    body: str,
     user_id: str,
-    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -68,8 +68,8 @@ def unlock_steam_user_achievement(
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = unlock_steam_user_achievement_internal(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

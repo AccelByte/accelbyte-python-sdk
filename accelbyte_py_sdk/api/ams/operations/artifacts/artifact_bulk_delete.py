@@ -38,9 +38,6 @@ class ArtifactBulkDelete(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts
 

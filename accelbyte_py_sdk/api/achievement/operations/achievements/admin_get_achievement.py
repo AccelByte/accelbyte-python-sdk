@@ -39,12 +39,6 @@ class AdminGetAchievement(Operation):
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
 

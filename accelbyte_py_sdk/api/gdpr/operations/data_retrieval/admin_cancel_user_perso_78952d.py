@@ -38,9 +38,6 @@ class AdminCancelUserPersonalDataRequest(Operation):
     Cancel user's personal data requests
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests/{requestDate}
 

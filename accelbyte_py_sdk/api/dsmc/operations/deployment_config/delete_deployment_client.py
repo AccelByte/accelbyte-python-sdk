@@ -41,12 +41,6 @@ class DeleteDeploymentClient(Operation):
 
     This endpoint delete a dedicated server deployment in a namespace
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
 

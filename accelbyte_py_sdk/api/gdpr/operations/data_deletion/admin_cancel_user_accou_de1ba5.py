@@ -38,9 +38,6 @@ class AdminCancelUserAccountDeletionRequest(Operation):
     Cancel user's account deletion request
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
 

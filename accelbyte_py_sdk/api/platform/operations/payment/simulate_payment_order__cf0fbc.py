@@ -37,7 +37,7 @@ from ...models import PaymentOrderNotifySimulation
 class SimulatePaymentOrderNotification(Operation):
     """Simulate payment notification (simulatePaymentOrderNotification)
 
-    [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
+    [Not supported yet in AGS Shared Cloud] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
     Other detail info:
 
       * Returns : notification process result
@@ -55,7 +55,7 @@ class SimulatePaymentOrderNotification(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderNotifySimulation in body
+        body: (body) REQUIRED PaymentOrderNotifySimulation in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +78,7 @@ class SimulatePaymentOrderNotification(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentOrderNotifySimulation  # OPTIONAL in [body]
+    body: PaymentOrderNotifySimulation  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     payment_order_no: str  # REQUIRED in [path]
 
@@ -228,16 +228,15 @@ class SimulatePaymentOrderNotification(Operation):
     @classmethod
     def create(
         cls,
+        body: PaymentOrderNotifySimulation,
         namespace: str,
         payment_order_no: str,
-        body: Optional[PaymentOrderNotifySimulation] = None,
         **kwargs,
     ) -> SimulatePaymentOrderNotification:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.payment_order_no = payment_order_no
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -274,7 +273,7 @@ class SimulatePaymentOrderNotification(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "paymentOrderNo": True,
         }

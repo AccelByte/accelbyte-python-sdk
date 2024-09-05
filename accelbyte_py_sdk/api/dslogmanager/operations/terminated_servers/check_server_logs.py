@@ -42,12 +42,6 @@ class CheckServerLogs(Operation):
 
     This endpoint will check log file existence before download file.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists
 

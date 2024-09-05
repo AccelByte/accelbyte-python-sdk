@@ -56,7 +56,7 @@ class UpdateCurrency(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CurrencyUpdate in body
+        body: (body) REQUIRED CurrencyUpdate in body
 
         currency_code: (currencyCode) REQUIRED str in path
 
@@ -79,7 +79,7 @@ class UpdateCurrency(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: CurrencyUpdate  # OPTIONAL in [body]
+    body: CurrencyUpdate  # REQUIRED in [body]
     currency_code: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -227,17 +227,12 @@ class UpdateCurrency(Operation):
 
     @classmethod
     def create(
-        cls,
-        currency_code: str,
-        namespace: str,
-        body: Optional[CurrencyUpdate] = None,
-        **kwargs,
+        cls, body: CurrencyUpdate, currency_code: str, namespace: str, **kwargs
     ) -> UpdateCurrency:
         instance = cls()
+        instance.body = body
         instance.currency_code = currency_code
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -274,7 +269,7 @@ class UpdateCurrency(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "currencyCode": True,
             "namespace": True,
         }

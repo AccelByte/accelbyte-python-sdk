@@ -511,7 +511,7 @@ def get_languages(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - Dict[str, Any] (successful operation)
+        200: OK - Dict[str, str] (successful operation)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error)
 
@@ -557,7 +557,7 @@ async def get_languages_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - Dict[str, Any] (successful operation)
+        200: OK - Dict[str, str] (successful operation)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error)
 

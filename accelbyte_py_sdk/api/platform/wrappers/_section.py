@@ -51,8 +51,8 @@ from ..models import SectionUpdateRotationTypeEnum
 
 @same_doc_as(CreateSection)
 def create_section(
+    body: SectionCreate,
     store_id: str,
-    body: Optional[SectionCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -96,7 +96,7 @@ def create_section(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SectionCreate in body
+        body: (body) REQUIRED SectionCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -118,8 +118,8 @@ def create_section(
         if error:
             return None, error
     request = CreateSection.create(
-        store_id=store_id,
         body=body,
+        store_id=store_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -127,8 +127,8 @@ def create_section(
 
 @same_doc_as(CreateSection)
 async def create_section_async(
+    body: SectionCreate,
     store_id: str,
-    body: Optional[SectionCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -172,7 +172,7 @@ async def create_section_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SectionCreate in body
+        body: (body) REQUIRED SectionCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -194,8 +194,8 @@ async def create_section_async(
         if error:
             return None, error
     request = CreateSection.create(
-        store_id=store_id,
         body=body,
+        store_id=store_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -787,9 +787,9 @@ async def query_sections_async(
 
 @same_doc_as(UpdateSection)
 def update_section(
+    body: SectionUpdate,
     section_id: str,
     store_id: str,
-    body: Optional[SectionUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -833,7 +833,7 @@ def update_section(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SectionUpdate in body
+        body: (body) REQUIRED SectionUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -857,9 +857,9 @@ def update_section(
         if error:
             return None, error
     request = UpdateSection.create(
+        body=body,
         section_id=section_id,
         store_id=store_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -867,9 +867,9 @@ def update_section(
 
 @same_doc_as(UpdateSection)
 async def update_section_async(
+    body: SectionUpdate,
     section_id: str,
     store_id: str,
-    body: Optional[SectionUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -913,7 +913,7 @@ async def update_section_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SectionUpdate in body
+        body: (body) REQUIRED SectionUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -937,9 +937,9 @@ async def update_section_async(
         if error:
             return None, error
     request = UpdateSection.create(
+        body=body,
         section_id=section_id,
         store_id=store_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(

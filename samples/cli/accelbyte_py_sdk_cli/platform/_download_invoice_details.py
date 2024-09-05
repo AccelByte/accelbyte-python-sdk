@@ -37,20 +37,20 @@ from accelbyte_py_sdk.api.platform import (
 
 @click.command()
 @click.argument("end_time", type=str)
+@click.argument("feature", type=str)
+@click.argument("item_id", type=str)
+@click.argument("item_type", type=str)
 @click.argument("start_time", type=str)
-@click.option("--feature", "feature", type=str)
-@click.option("--item_id", "item_id", type=str)
-@click.option("--item_type", "item_type", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def download_invoice_details(
     end_time: str,
+    feature: str,
+    item_id: str,
+    item_type: str,
     start_time: str,
-    feature: Optional[str] = None,
-    item_id: Optional[str] = None,
-    item_type: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -66,10 +66,10 @@ def download_invoice_details(
         login_as_internal(login_as)
     result, error = download_invoice_details_internal(
         end_time=end_time,
-        start_time=start_time,
         feature=feature,
         item_id=item_id,
         item_type=item_type,
+        start_time=start_time,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

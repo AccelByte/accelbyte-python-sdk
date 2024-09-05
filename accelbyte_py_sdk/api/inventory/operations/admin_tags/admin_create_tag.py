@@ -44,9 +44,6 @@ class AdminCreateTag(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:TAG [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/tags
 

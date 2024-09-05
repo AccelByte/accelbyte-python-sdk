@@ -214,7 +214,7 @@ class QueryUserIAPConsumeHistory(Operation):
         self.status = value
         return self
 
-    def with_type_(self, value: Union[str, TypeEnum]) -> QueryUserIAPConsumeHistory:
+    def with_type(self, value: Union[str, TypeEnum]) -> QueryUserIAPConsumeHistory:
         self.type_ = value
         return self
 

@@ -37,7 +37,7 @@ from ...models import PaymentUrlCreate
 class PublicGetPaymentUrl(Operation):
     """Get payment url (publicGetPaymentUrl)
 
-    [Not Supported Yet In Starter] Get payment url.
+    [Not supported yet in AGS Shared Cloud] Get payment url.
     Other detail info:
 
       * For Neon Pay payment provider, the 'neonPayConfig' field can be used to provide success and cancel URL. If 'neonPayConfig' field is not present, the 'returnUrl' will be used for both success and cancel URL.
@@ -56,7 +56,7 @@ class PublicGetPaymentUrl(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentUrlCreate in body
+        body: (body) REQUIRED PaymentUrlCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -79,7 +79,7 @@ class PublicGetPaymentUrl(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentUrlCreate  # OPTIONAL in [body]
+    body: PaymentUrlCreate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -217,12 +217,11 @@ class PublicGetPaymentUrl(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, body: Optional[PaymentUrlCreate] = None, **kwargs
+        cls, body: PaymentUrlCreate, namespace: str, **kwargs
     ) -> PublicGetPaymentUrl:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -254,7 +253,7 @@ class PublicGetPaymentUrl(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

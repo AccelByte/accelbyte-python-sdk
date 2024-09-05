@@ -36,7 +36,7 @@ from ...models import PaymentMerchantConfigInfo
 class GetPaymentMerchantConfig1(Operation):
     """Get payment merchant config (getPaymentMerchantConfig_1)
 
-    [Not Supported Yet In Starter] Get payment merchant config by id.
+    [Not supported yet in AGS Shared Cloud] Get payment merchant config by id.
     Other detail info:
 
       * Returns : payment merchant config info
@@ -128,7 +128,7 @@ class GetPaymentMerchantConfig1(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> GetPaymentMerchantConfig1:
+    def with_id(self, value: str) -> GetPaymentMerchantConfig1:
         self.id_ = value
         return self
 

@@ -42,9 +42,6 @@ class ListTerminatedServersWithNamespace(Operation):
     This endpoint used to retrieve terminated servers in a namespace
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:SERVER [READ]
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/servers/search
 
@@ -212,7 +209,7 @@ class ListTerminatedServersWithNamespace(Operation):
         self.limit = value
         return self
 
-    def with_next_(self, value: str) -> ListTerminatedServersWithNamespace:
+    def with_next(self, value: str) -> ListTerminatedServersWithNamespace:
         self.next_ = value
         return self
 

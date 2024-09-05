@@ -64,6 +64,8 @@ class SyncEpicGamesInventory(Operation):
         200: OK - List[EpicGamesReconcileResult] (successful operation)
 
         400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+
+        404: Not Found - ErrorEntity (39147: Epic IAP config not found in namespace [{namespace}].)
     """
 
     # region fields
@@ -193,6 +195,8 @@ class SyncEpicGamesInventory(Operation):
 
         400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
 
+        404: Not Found - ErrorEntity (39147: Epic IAP config not found in namespace [{namespace}].)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -209,6 +213,8 @@ class SyncEpicGamesInventory(Operation):
         if code == 200:
             return [EpicGamesReconcileResult.create_from_dict(i) for i in content], None
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(

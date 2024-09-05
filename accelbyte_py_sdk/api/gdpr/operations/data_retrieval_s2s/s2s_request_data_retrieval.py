@@ -49,9 +49,6 @@ class S2SRequestDataRetrieval(Operation):
 
     1. This API will **not send GDPR email notification** both for player and admin notification.
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/users/{userId}/requests
 

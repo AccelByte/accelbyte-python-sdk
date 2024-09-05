@@ -43,12 +43,6 @@ class SetServerAlias(Operation):
     This endpoint modifies a registered QoS service's region alias.
     ```
 
-    Required Permission(s):
-        - ADMIN:QOS:SERVER []
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /qosm/admin/servers/{region}/alias
 

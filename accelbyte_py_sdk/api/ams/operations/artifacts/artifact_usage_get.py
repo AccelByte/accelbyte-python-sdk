@@ -38,9 +38,6 @@ class ArtifactUsageGet(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts/usage
 

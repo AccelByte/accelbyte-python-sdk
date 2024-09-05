@@ -51,7 +51,7 @@ class SyncSteamDLC(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SteamDLCSyncRequest in body
+        body: (body) REQUIRED SteamDLCSyncRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -61,6 +61,8 @@ class SyncSteamDLC(Operation):
         204: No Content - (Successful operation)
 
         400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
     """
 
     # region fields
@@ -72,7 +74,7 @@ class SyncSteamDLC(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: SteamDLCSyncRequest  # OPTIONAL in [body]
+    body: SteamDLCSyncRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -185,6 +187,8 @@ class SyncSteamDLC(Operation):
 
         400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
 
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -202,6 +206,8 @@ class SyncSteamDLC(Operation):
             return None, None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -213,17 +219,12 @@ class SyncSteamDLC(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        body: Optional[SteamDLCSyncRequest] = None,
-        **kwargs,
+        cls, body: SteamDLCSyncRequest, namespace: str, user_id: str, **kwargs
     ) -> SyncSteamDLC:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -258,7 +259,7 @@ class SyncSteamDLC(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "userId": True,
         }

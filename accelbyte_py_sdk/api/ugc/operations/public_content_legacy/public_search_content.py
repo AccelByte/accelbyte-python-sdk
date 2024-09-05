@@ -258,7 +258,7 @@ class PublicSearchContent(Operation):
         self.tags = value
         return self
 
-    def with_type_(self, value: str) -> PublicSearchContent:
+    def with_type(self, value: str) -> PublicSearchContent:
         self.type_ = value
         return self
 

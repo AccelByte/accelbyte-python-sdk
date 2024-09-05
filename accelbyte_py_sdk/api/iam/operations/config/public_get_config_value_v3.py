@@ -42,6 +42,7 @@ class PublicGetConfigValueV3(Operation):
     **Supported config key:**
     * uniqueDisplayNameEnabled
     * usernameDisabled
+    * mandatoryEmailVerificationEnabled
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/config/{configKey}

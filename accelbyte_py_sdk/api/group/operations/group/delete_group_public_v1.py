@@ -43,9 +43,6 @@ class DeleteGroupPublicV1(Operation):
 
     Action Code: 73305
 
-    Required Permission(s):
-        - GROUP [DELETE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}
 

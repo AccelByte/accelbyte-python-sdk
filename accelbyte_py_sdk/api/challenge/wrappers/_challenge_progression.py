@@ -50,9 +50,7 @@ def admin_evaluate_progress(
     """Evaluate User's Progressions (adminEvaluateProgress)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+      * Limited up to 10 users per request
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/progress/evaluate
@@ -73,6 +71,8 @@ def admin_evaluate_progress(
 
     Responses:
         204: No Content - (No Content)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -103,9 +103,7 @@ async def admin_evaluate_progress_async(
     """Evaluate User's Progressions (adminEvaluateProgress)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+      * Limited up to 10 users per request
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/progress/evaluate
@@ -126,6 +124,8 @@ async def admin_evaluate_progress_async(
 
     Responses:
         204: No Content - (No Content)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -157,9 +157,6 @@ def evaluate_my_progress(
     """Evaluate User's Challenge Progressions (EvaluateMyProgress)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate
@@ -204,9 +201,6 @@ async def evaluate_my_progress_async(
     """Evaluate User's Challenge Progressions (EvaluateMyProgress)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate
@@ -259,9 +253,6 @@ def public_get_past_user_progression(
     """List User's Progressions in the previous rotation. (publicGetPastUserProgression)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index}
@@ -334,9 +325,6 @@ async def public_get_past_user_progression_async(
     """List User's Progressions in the previous rotation. (publicGetPastUserProgression)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index}
@@ -412,9 +400,6 @@ def public_get_user_progression(
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
-
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}
 
@@ -486,9 +471,6 @@ async def public_get_user_progression_async(
     """List User's Progressions (publicGetUserProgression)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}

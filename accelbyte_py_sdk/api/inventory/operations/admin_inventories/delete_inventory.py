@@ -42,9 +42,6 @@ class DeleteInventory(Operation):
 
     ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [DELETE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}
 

@@ -144,7 +144,7 @@ class UpdateApp(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AppUpdate in body
+        body: (body) REQUIRED AppUpdate in body
 
         item_id: (itemId) REQUIRED str in path
 
@@ -171,7 +171,7 @@ class UpdateApp(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: AppUpdate  # OPTIONAL in [body]
+    body: AppUpdate  # REQUIRED in [body]
     item_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     store_id: str  # REQUIRED in [query]
@@ -339,19 +339,13 @@ class UpdateApp(Operation):
 
     @classmethod
     def create(
-        cls,
-        item_id: str,
-        namespace: str,
-        store_id: str,
-        body: Optional[AppUpdate] = None,
-        **kwargs,
+        cls, body: AppUpdate, item_id: str, namespace: str, store_id: str, **kwargs
     ) -> UpdateApp:
         instance = cls()
+        instance.body = body
         instance.item_id = item_id
         instance.namespace = namespace
         instance.store_id = store_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -391,7 +385,7 @@ class UpdateApp(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "itemId": True,
             "namespace": True,
             "storeId": True,

@@ -43,9 +43,6 @@ class AdminCreateIntegrationConfiguration(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations
 

@@ -44,12 +44,6 @@ class ListServerClient(Operation):
 
     Parameter Offset and Count is Required
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers
 

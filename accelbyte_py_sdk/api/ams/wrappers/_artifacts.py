@@ -57,9 +57,6 @@ def artifact_bulk_delete(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts
 
@@ -117,9 +114,6 @@ async def artifact_bulk_delete_async(
     """delete artifacts that match criteria in bulk. all artifacts matching any one criteria will be deleted. at least 1 parameter is required. (ArtifactBulkDelete)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA [DELETE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts
@@ -179,9 +173,6 @@ def artifact_delete(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts/{artifactID}
 
@@ -233,9 +224,6 @@ async def artifact_delete_async(
     """delete a specified artifact (ArtifactDelete)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts/{artifactID}
@@ -303,9 +291,6 @@ def artifact_get(
     Get all artifacts matching the provided search criteria. When criteria is not specified the data returned won't have been filtered on those parameters
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts
@@ -403,9 +388,6 @@ async def artifact_get_async(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts
 
@@ -491,9 +473,6 @@ def artifact_get_url(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts/{artifactID}/url
 
@@ -545,9 +524,6 @@ async def artifact_get_url_async(
     """get a signed URL for a specific artifact (ArtifactGetURL)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts/{artifactID}/url
@@ -602,9 +578,6 @@ def artifact_usage_get(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts/usage
 
@@ -648,9 +621,6 @@ async def artifact_usage_get_async(
     """retrieve artifact storage usage for the namespace (ArtifactUsageGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts/usage
@@ -698,9 +668,6 @@ def fleet_artifact_sampling_rules_get(
     """get the sampling rules for a fleet (FleetArtifactSamplingRulesGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules
@@ -753,9 +720,6 @@ async def fleet_artifact_sampling_rules_get_async(
     """get the sampling rules for a fleet (FleetArtifactSamplingRulesGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules
@@ -812,9 +776,6 @@ def fleet_artifact_sampling_rules_set(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules
 
@@ -870,9 +831,6 @@ async def fleet_artifact_sampling_rules_set_async(
     """set sampling rules for a fleet (FleetArtifactSamplingRulesSet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules

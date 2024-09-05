@@ -83,8 +83,8 @@ from ..models import TradeNotificationPaymentProviderEnum, TradeNotificationStat
 
 @same_doc_as(AdminCreateUserOrder)
 def admin_create_user_order(
+    body: AdminOrderCreate,
     user_id: str,
-    body: Optional[AdminOrderCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -130,7 +130,7 @@ def admin_create_user_order(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdminOrderCreate in body
+        body: (body) REQUIRED AdminOrderCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -154,8 +154,8 @@ def admin_create_user_order(
         if error:
             return None, error
     request = AdminCreateUserOrder.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -163,8 +163,8 @@ def admin_create_user_order(
 
 @same_doc_as(AdminCreateUserOrder)
 async def admin_create_user_order_async(
+    body: AdminOrderCreate,
     user_id: str,
-    body: Optional[AdminOrderCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -210,7 +210,7 @@ async def admin_create_user_order_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdminOrderCreate in body
+        body: (body) REQUIRED AdminOrderCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -234,8 +234,8 @@ async def admin_create_user_order_async(
         if error:
             return None, error
     request = AdminCreateUserOrder.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1051,9 +1051,9 @@ async def get_user_order_histories_async(
 
 @same_doc_as(ProcessUserOrderNotification)
 def process_user_order_notification(
+    body: TradeNotification,
     order_no: str,
     user_id: str,
-    body: Optional[TradeNotification] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1078,7 +1078,7 @@ def process_user_order_notification(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TradeNotification in body
+        body: (body) REQUIRED TradeNotification in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1096,9 +1096,9 @@ def process_user_order_notification(
         if error:
             return None, error
     request = ProcessUserOrderNotification.create(
+        body=body,
         order_no=order_no,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1106,9 +1106,9 @@ def process_user_order_notification(
 
 @same_doc_as(ProcessUserOrderNotification)
 async def process_user_order_notification_async(
+    body: TradeNotification,
     order_no: str,
     user_id: str,
-    body: Optional[TradeNotification] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1133,7 +1133,7 @@ async def process_user_order_notification_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TradeNotification in body
+        body: (body) REQUIRED TradeNotification in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1151,9 +1151,9 @@ async def process_user_order_notification_async(
         if error:
             return None, error
     request = ProcessUserOrderNotification.create(
+        body=body,
         order_no=order_no,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1271,8 +1271,8 @@ async def public_cancel_user_order_async(
 
 @same_doc_as(PublicCreateUserOrder)
 def public_create_user_order(
+    body: OrderCreate,
     user_id: str,
-    body: Optional[OrderCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1317,7 +1317,7 @@ def public_create_user_order(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL OrderCreate in body
+        body: (body) REQUIRED OrderCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1341,8 +1341,8 @@ def public_create_user_order(
         if error:
             return None, error
     request = PublicCreateUserOrder.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1350,8 +1350,8 @@ def public_create_user_order(
 
 @same_doc_as(PublicCreateUserOrder)
 async def public_create_user_order_async(
+    body: OrderCreate,
     user_id: str,
-    body: Optional[OrderCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1396,7 +1396,7 @@ async def public_create_user_order_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL OrderCreate in body
+        body: (body) REQUIRED OrderCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1420,8 +1420,8 @@ async def public_create_user_order_async(
         if error:
             return None, error
     request = PublicCreateUserOrder.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1743,8 +1743,8 @@ async def public_get_user_order_histories_async(
 
 @same_doc_as(PublicPreviewOrderPrice)
 def public_preview_order_price(
+    body: OrderDiscountPreviewRequest,
     user_id: str,
-    body: Optional[OrderDiscountPreviewRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1768,7 +1768,7 @@ def public_preview_order_price(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL OrderDiscountPreviewRequest in body
+        body: (body) REQUIRED OrderDiscountPreviewRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1792,8 +1792,8 @@ def public_preview_order_price(
         if error:
             return None, error
     request = PublicPreviewOrderPrice.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1801,8 +1801,8 @@ def public_preview_order_price(
 
 @same_doc_as(PublicPreviewOrderPrice)
 async def public_preview_order_price_async(
+    body: OrderDiscountPreviewRequest,
     user_id: str,
-    body: Optional[OrderDiscountPreviewRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1826,7 +1826,7 @@ async def public_preview_order_price_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL OrderDiscountPreviewRequest in body
+        body: (body) REQUIRED OrderDiscountPreviewRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1850,8 +1850,8 @@ async def public_preview_order_price_async(
         if error:
             return None, error
     request = PublicPreviewOrderPrice.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -2277,8 +2277,8 @@ async def query_user_orders_async(
 
 @same_doc_as(RefundOrder)
 def refund_order(
+    body: OrderRefundCreate,
     order_no: str,
-    body: Optional[OrderRefundCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2300,7 +2300,7 @@ def refund_order(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL OrderRefundCreate in body
+        body: (body) REQUIRED OrderRefundCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2320,8 +2320,8 @@ def refund_order(
         if error:
             return None, error
     request = RefundOrder.create(
-        order_no=order_no,
         body=body,
+        order_no=order_no,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -2329,8 +2329,8 @@ def refund_order(
 
 @same_doc_as(RefundOrder)
 async def refund_order_async(
+    body: OrderRefundCreate,
     order_no: str,
-    body: Optional[OrderRefundCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2352,7 +2352,7 @@ async def refund_order_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL OrderRefundCreate in body
+        body: (body) REQUIRED OrderRefundCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2372,8 +2372,8 @@ async def refund_order_async(
         if error:
             return None, error
     request = RefundOrder.create(
-        order_no=order_no,
         body=body,
+        order_no=order_no,
         namespace=namespace,
     )
     return await run_request_async(
@@ -2383,9 +2383,9 @@ async def refund_order_async(
 
 @same_doc_as(UpdateUserOrderStatus)
 def update_user_order_status(
+    body: OrderUpdate,
     order_no: str,
     user_id: str,
-    body: Optional[OrderUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2410,7 +2410,7 @@ def update_user_order_status(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL OrderUpdate in body
+        body: (body) REQUIRED OrderUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2432,9 +2432,9 @@ def update_user_order_status(
         if error:
             return None, error
     request = UpdateUserOrderStatus.create(
+        body=body,
         order_no=order_no,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -2442,9 +2442,9 @@ def update_user_order_status(
 
 @same_doc_as(UpdateUserOrderStatus)
 async def update_user_order_status_async(
+    body: OrderUpdate,
     order_no: str,
     user_id: str,
-    body: Optional[OrderUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2469,7 +2469,7 @@ async def update_user_order_status_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL OrderUpdate in body
+        body: (body) REQUIRED OrderUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2491,9 +2491,9 @@ async def update_user_order_status_async(
         if error:
             return None, error
     request = UpdateUserOrderStatus.create(
+        body=body,
         order_no=order_no,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(

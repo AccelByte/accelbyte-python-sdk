@@ -42,12 +42,6 @@ class ImageLimitClient(Operation):
 
     This endpoint get DS image limit for specific namespace.This endpoint also give the non-persistent image which is used by any deployments
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/images/limit
 

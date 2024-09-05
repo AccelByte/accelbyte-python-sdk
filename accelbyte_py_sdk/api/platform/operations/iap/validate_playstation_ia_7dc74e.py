@@ -53,7 +53,7 @@ class ValidatePlaystationIAPConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PlaystationIAPConfigRequest in body
+        body: (body) REQUIRED PlaystationIAPConfigRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -70,7 +70,7 @@ class ValidatePlaystationIAPConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PlaystationIAPConfigRequest  # OPTIONAL in [body]
+    body: PlaystationIAPConfigRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -198,15 +198,11 @@ class ValidatePlaystationIAPConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        body: Optional[PlaystationIAPConfigRequest] = None,
-        **kwargs,
+        cls, body: PlaystationIAPConfigRequest, namespace: str, **kwargs
     ) -> ValidatePlaystationIAPConfig:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -238,7 +234,7 @@ class ValidatePlaystationIAPConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

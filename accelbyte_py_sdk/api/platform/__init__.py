@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.54.0"
+__version__ = "4.56.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -65,12 +65,16 @@ from .wrappers import get_campaign_dynamic
 from .wrappers import get_campaign_dynamic_async
 from .wrappers import get_code
 from .wrappers import get_code_async
+from .wrappers import query_campaign_batch_names
+from .wrappers import query_campaign_batch_names_async
 from .wrappers import query_campaigns
 from .wrappers import query_campaigns_async
 from .wrappers import query_codes
 from .wrappers import query_codes_async
 from .wrappers import query_redeem_history
 from .wrappers import query_redeem_history_async
+from .wrappers import rename_batch
+from .wrappers import rename_batch_async
 from .wrappers import update_campaign
 from .wrappers import update_campaign_async
 

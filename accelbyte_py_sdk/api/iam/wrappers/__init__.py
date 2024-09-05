@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.19.0"
+__version__ = "7.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -226,6 +226,17 @@ from ._o_auth2_0_v4 import token_grant_v4
 from ._o_auth2_0_v4 import token_grant_v4_async
 from ._o_auth2_0_v4 import verify2fa_code_v4
 from ._o_auth2_0_v4 import verify2fa_code_v4_async
+
+from ._override_role_config_v3 import admin_change_role_override_config_status_v3
+from ._override_role_config_v3 import admin_change_role_override_config_status_v3_async
+from ._override_role_config_v3 import admin_get_role_namespace_permission_v3
+from ._override_role_config_v3 import admin_get_role_namespace_permission_v3_async
+from ._override_role_config_v3 import admin_get_role_override_config_v3
+from ._override_role_config_v3 import admin_get_role_override_config_v3_async
+from ._override_role_config_v3 import admin_get_role_source_v3
+from ._override_role_config_v3 import admin_get_role_source_v3_async
+from ._override_role_config_v3 import admin_update_role_override_config_v3
+from ._override_role_config_v3 import admin_update_role_override_config_v3_async
 
 from ._roles import add_role_managers
 from ._roles import add_role_managers_async
@@ -775,6 +786,8 @@ from ._users_v4 import admin_get_my_enabled_factors_v4
 from ._users_v4 import admin_get_my_enabled_factors_v4_async
 from ._users_v4 import admin_get_my_mfa_status_v4
 from ._users_v4 import admin_get_my_mfa_status_v4_async
+from ._users_v4 import admin_get_my_own_mfa_status_v4
+from ._users_v4 import admin_get_my_own_mfa_status_v4_async
 from ._users_v4 import admin_get_namespace_invitation_history_v4
 from ._users_v4 import admin_get_namespace_invitation_history_v4_async
 from ._users_v4 import admin_get_namespace_user_invitation_history_v4
@@ -839,6 +852,8 @@ from ._users_v4 import public_get_my_enabled_factors_v4
 from ._users_v4 import public_get_my_enabled_factors_v4_async
 from ._users_v4 import public_get_my_mfa_status_v4
 from ._users_v4 import public_get_my_mfa_status_v4_async
+from ._users_v4 import public_get_my_own_mfa_status_v4
+from ._users_v4 import public_get_my_own_mfa_status_v4_async
 from ._users_v4 import public_get_user_public_info_by_user_id_v4
 from ._users_v4 import public_get_user_public_info_by_user_id_v4_async
 from ._users_v4 import public_invite_user_v4

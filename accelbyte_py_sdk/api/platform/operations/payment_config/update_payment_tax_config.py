@@ -38,7 +38,7 @@ from ...models import ValidationErrorEntity
 class UpdatePaymentTaxConfig(Operation):
     """Update payment global tax config (updatePaymentTaxConfig)
 
-    [Not Supported Yet In Starter] Update payment tax config.
+    [Not supported yet in AGS Shared Cloud] Update payment tax config.
 
 
 
@@ -70,7 +70,7 @@ class UpdatePaymentTaxConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentTaxConfigEdit in body
+        body: (body) REQUIRED PaymentTaxConfigEdit in body
 
     Responses:
         200: OK - PaymentTaxConfigInfo (successful operation)
@@ -89,7 +89,7 @@ class UpdatePaymentTaxConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentTaxConfigEdit  # OPTIONAL in [body]
+    body: PaymentTaxConfigEdit  # REQUIRED in [body]
 
     # endregion fields
 
@@ -209,12 +209,9 @@ class UpdatePaymentTaxConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls, body: Optional[PaymentTaxConfigEdit] = None, **kwargs
-    ) -> UpdatePaymentTaxConfig:
+    def create(cls, body: PaymentTaxConfigEdit, **kwargs) -> UpdatePaymentTaxConfig:
         instance = cls()
-        if body is not None:
-            instance.body = body
+        instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -241,7 +238,7 @@ class UpdatePaymentTaxConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
         }
 
     # endregion static methods

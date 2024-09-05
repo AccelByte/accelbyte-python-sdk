@@ -40,15 +40,15 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("payment_order_no", type=str)
-@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def refund_payment_order_by_dedicated(
+    body: str,
     payment_order_no: str,
-    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -69,8 +69,8 @@ def refund_payment_order_by_dedicated(
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = refund_payment_order_by_dedicated_internal(
-        payment_order_no=payment_order_no,
         body=body,
+        payment_order_no=payment_order_no,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

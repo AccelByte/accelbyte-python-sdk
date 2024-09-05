@@ -279,7 +279,7 @@ class QueryChanges(Operation):
         self.status = value
         return self
 
-    def with_type_(self, value: Union[str, TypeEnum]) -> QueryChanges:
+    def with_type(self, value: Union[str, TypeEnum]) -> QueryChanges:
         self.type_ = value
         return self
 

@@ -43,12 +43,6 @@ class DeleteImage(Operation):
 
     Default image is cannot be deleted and will throw error 422 (Unprocessable entity).
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/images
 

@@ -47,8 +47,8 @@ from ..operations.view import UpdateView
 
 @same_doc_as(CreateView)
 def create_view(
+    body: ViewCreate,
     store_id: str,
-    body: Optional[ViewCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -92,7 +92,7 @@ def create_view(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ViewCreate in body
+        body: (body) REQUIRED ViewCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -114,8 +114,8 @@ def create_view(
         if error:
             return None, error
     request = CreateView.create(
-        store_id=store_id,
         body=body,
+        store_id=store_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -123,8 +123,8 @@ def create_view(
 
 @same_doc_as(CreateView)
 async def create_view_async(
+    body: ViewCreate,
     store_id: str,
-    body: Optional[ViewCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -168,7 +168,7 @@ async def create_view_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ViewCreate in body
+        body: (body) REQUIRED ViewCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -190,8 +190,8 @@ async def create_view_async(
         if error:
             return None, error
     request = CreateView.create(
-        store_id=store_id,
         body=body,
+        store_id=store_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -625,9 +625,9 @@ async def public_list_views_async(
 
 @same_doc_as(UpdateView)
 def update_view(
+    body: ViewUpdate,
     store_id: str,
     view_id: str,
-    body: Optional[ViewUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -671,7 +671,7 @@ def update_view(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ViewUpdate in body
+        body: (body) REQUIRED ViewUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -695,9 +695,9 @@ def update_view(
         if error:
             return None, error
     request = UpdateView.create(
+        body=body,
         store_id=store_id,
         view_id=view_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -705,9 +705,9 @@ def update_view(
 
 @same_doc_as(UpdateView)
 async def update_view_async(
+    body: ViewUpdate,
     store_id: str,
     view_id: str,
-    body: Optional[ViewUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -751,7 +751,7 @@ async def update_view_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ViewUpdate in body
+        body: (body) REQUIRED ViewUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -775,9 +775,9 @@ async def update_view_async(
         if error:
             return None, error
     request = UpdateView.create(
+        body=body,
         store_id=store_id,
         view_id=view_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(

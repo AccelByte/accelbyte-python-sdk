@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Inventory Service."""
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -46,6 +46,8 @@ from ._admin_inventories import admin_purchasable
 from ._admin_inventories import admin_purchasable_async
 from ._admin_inventories import admin_update_inventory
 from ._admin_inventories import admin_update_inventory_async
+from ._admin_inventories import admin_update_user_inventories_by_inventory_code
+from ._admin_inventories import admin_update_user_inventories_by_inventory_code_async
 from ._admin_inventories import delete_inventory
 from ._admin_inventories import delete_inventory_async
 
@@ -69,6 +71,10 @@ from ._admin_item_types import admin_list_item_types_async
 
 from ._admin_items import admin_bulk_remove_items
 from ._admin_items import admin_bulk_remove_items_async
+from ._admin_items import admin_bulk_save_item
+from ._admin_items import admin_bulk_save_item_async
+from ._admin_items import admin_bulk_save_item_to_inventory
+from ._admin_items import admin_bulk_save_item_to_inventory_async
 from ._admin_items import admin_bulk_update_my_items
 from ._admin_items import admin_bulk_update_my_items_async
 from ._admin_items import admin_consume_user_item

@@ -56,7 +56,7 @@ class UpdateCampaign(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CampaignUpdate in body
+        body: (body) REQUIRED CampaignUpdate in body
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -81,7 +81,7 @@ class UpdateCampaign(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: CampaignUpdate  # OPTIONAL in [body]
+    body: CampaignUpdate  # REQUIRED in [body]
     campaign_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -233,17 +233,12 @@ class UpdateCampaign(Operation):
 
     @classmethod
     def create(
-        cls,
-        campaign_id: str,
-        namespace: str,
-        body: Optional[CampaignUpdate] = None,
-        **kwargs,
+        cls, body: CampaignUpdate, campaign_id: str, namespace: str, **kwargs
     ) -> UpdateCampaign:
         instance = cls()
+        instance.body = body
         instance.campaign_id = campaign_id
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -280,7 +275,7 @@ class UpdateCampaign(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "campaignId": True,
             "namespace": True,
         }

@@ -35,14 +35,18 @@ from accelbyte_py_sdk.api.platform import download as download_internal
 
 @click.command()
 @click.argument("campaign_id", type=str)
-@click.option("--batch_no", "batch_no", type=int)
+@click.option("--batch_name", "batch_name", type=str)
+@click.option("--batch_no", "batch_no", type=str)
+@click.option("--with_batch_name", "with_batch_name", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def download(
     campaign_id: str,
-    batch_no: Optional[int] = None,
+    batch_name: Optional[str] = None,
+    batch_no: Optional[str] = None,
+    with_batch_name: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -56,9 +60,17 @@ def download(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if batch_no is not None:
+        try:
+            batch_no_json = json.loads(batch_no)
+            batch_no = [int(i0) for i0 in batch_no_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'batchNo'. {str(e)}") from e
     result, error = download_internal(
         campaign_id=campaign_id,
+        batch_name=batch_name,
         batch_no=batch_no,
+        with_batch_name=with_batch_name,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

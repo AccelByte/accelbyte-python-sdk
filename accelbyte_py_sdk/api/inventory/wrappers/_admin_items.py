@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ApimodelsAdminUpdateItemReq
+from ..models import ApimodelsBulkSaveItemResp
 from ..models import ApimodelsConsumeItemReq
 from ..models import ApimodelsErrorResponse
 from ..models import ApimodelsItemResp
@@ -40,6 +41,8 @@ from ..models import ApimodelsSaveItemToInventoryReq
 from ..models import ApimodelsUpdateItemResp
 
 from ..operations.admin_items import AdminBulkRemoveItems
+from ..operations.admin_items import AdminBulkSaveItem
+from ..operations.admin_items import AdminBulkSaveItemToInventory
 from ..operations.admin_items import AdminBulkUpdateMyItems
 from ..operations.admin_items import AdminConsumeUserItem
 from ..operations.admin_items import AdminGetInventoryItem
@@ -67,9 +70,6 @@ def admin_bulk_remove_items(
     Bulk remove user's own items'.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [DELETE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items
@@ -130,9 +130,6 @@ async def admin_bulk_remove_items_async(
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [DELETE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items
 
@@ -178,6 +175,330 @@ async def admin_bulk_remove_items_async(
     )
 
 
+@same_doc_as(AdminBulkSaveItem)
+def admin_bulk_save_item(
+    body: List[ApimodelsSaveItemReq],
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk save items to inventory (AdminBulkSaveItem)
+
+
+    This endpoint will be used by client to save the purchased item to user's inventory,
+    since want to integrate the inventory service to e-commerce, source field will be mandatory to determine the item,
+    supported field âOTHERâ and âECOMMERCEâ
+
+    Notes :
+    source ECOMMERCE, the quantity of ecommerce items saved is dynamically adjusted based on an item's useCount configured in Store.
+    When saving items, the quantity specified for each item will be multiplied by the useCount
+    i.e. If the store item is configured with a useCount of 5 and the quantity of a particular item is set to 2 during saving, it will be stored as 10
+
+    Target inventory will be based on the specified inventoryConfigurationCode. If the inventory exist then will put to the existing one,
+    if not exist at all then will create at least one inventory, if full then will return failed at the response.
+    We implement the logic as proportional to store the item to inventory, will loop from createdAt until find the available slots at inventory.
+
+    Type:
+    - ingame
+    - app
+    - coin
+    etc..
+
+    Max length of the payload is 10 items
+
+    Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
+
+    Properties:
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/items/bulk
+
+        method: POST
+
+        tags: ["Admin Items"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[ApimodelsSaveItemReq] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ApimodelsBulkSaveItemResp] (OK)
+
+        400: Bad Request - ApimodelsErrorResponse (Bad Request)
+
+        401: Unauthorized - ApimodelsErrorResponse (Unauthorized)
+
+        403: Forbidden - ApimodelsErrorResponse (Forbidden)
+
+        404: Not Found - ApimodelsErrorResponse (Not Found)
+
+        422: Unprocessable Entity - ApimodelsErrorResponse (Unprocessable Entity)
+
+        500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkSaveItem.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBulkSaveItem)
+async def admin_bulk_save_item_async(
+    body: List[ApimodelsSaveItemReq],
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk save items to inventory (AdminBulkSaveItem)
+
+
+    This endpoint will be used by client to save the purchased item to user's inventory,
+    since want to integrate the inventory service to e-commerce, source field will be mandatory to determine the item,
+    supported field âOTHERâ and âECOMMERCEâ
+
+    Notes :
+    source ECOMMERCE, the quantity of ecommerce items saved is dynamically adjusted based on an item's useCount configured in Store.
+    When saving items, the quantity specified for each item will be multiplied by the useCount
+    i.e. If the store item is configured with a useCount of 5 and the quantity of a particular item is set to 2 during saving, it will be stored as 10
+
+    Target inventory will be based on the specified inventoryConfigurationCode. If the inventory exist then will put to the existing one,
+    if not exist at all then will create at least one inventory, if full then will return failed at the response.
+    We implement the logic as proportional to store the item to inventory, will loop from createdAt until find the available slots at inventory.
+
+    Type:
+    - ingame
+    - app
+    - coin
+    etc..
+
+    Max length of the payload is 10 items
+
+    Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
+
+    Properties:
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/items/bulk
+
+        method: POST
+
+        tags: ["Admin Items"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[ApimodelsSaveItemReq] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ApimodelsBulkSaveItemResp] (OK)
+
+        400: Bad Request - ApimodelsErrorResponse (Bad Request)
+
+        401: Unauthorized - ApimodelsErrorResponse (Unauthorized)
+
+        403: Forbidden - ApimodelsErrorResponse (Forbidden)
+
+        404: Not Found - ApimodelsErrorResponse (Not Found)
+
+        422: Unprocessable Entity - ApimodelsErrorResponse (Unprocessable Entity)
+
+        500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkSaveItem.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminBulkSaveItemToInventory)
+def admin_bulk_save_item_to_inventory(
+    body: List[ApimodelsSaveItemToInventoryReq],
+    inventory_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk save items to specific inventory (AdminBulkSaveItemToInventory)
+
+
+    This endpoint will be used by client to save the purchased item to user's inventory,
+    since want to integrate the inventory service to e-commerce, source field will be mandatory to determine the item,
+    supported field âOTHERâ and âECOMMERCEâ
+
+    Notes :
+    source ECOMMERCE, the quantity of ecommerce items saved is dynamically adjusted based on an item's useCount configured in Store.
+    When saving items, the quantity specified for each item will be multiplied by the useCount
+    i.e. If the store item is configured with a useCount of 5 and the quantity of a particular item is set to 2 during saving, it will be stored as 10
+
+    Type:
+    - ingame
+    - app
+    - coin
+    etc..
+
+    Max length of the payload is 10 items
+
+    Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
+
+    Properties:
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items/bulk
+
+        method: POST
+
+        tags: ["Admin Items"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[ApimodelsSaveItemToInventoryReq] in body
+
+        inventory_id: (inventoryId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ApimodelsBulkSaveItemResp] (OK)
+
+        400: Bad Request - ApimodelsErrorResponse (Bad Request)
+
+        401: Unauthorized - ApimodelsErrorResponse (Unauthorized)
+
+        403: Forbidden - ApimodelsErrorResponse (Forbidden)
+
+        404: Not Found - ApimodelsErrorResponse (Not Found)
+
+        422: Unprocessable Entity - ApimodelsErrorResponse (Unprocessable Entity)
+
+        500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkSaveItemToInventory.create(
+        body=body,
+        inventory_id=inventory_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBulkSaveItemToInventory)
+async def admin_bulk_save_item_to_inventory_async(
+    body: List[ApimodelsSaveItemToInventoryReq],
+    inventory_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk save items to specific inventory (AdminBulkSaveItemToInventory)
+
+
+    This endpoint will be used by client to save the purchased item to user's inventory,
+    since want to integrate the inventory service to e-commerce, source field will be mandatory to determine the item,
+    supported field âOTHERâ and âECOMMERCEâ
+
+    Notes :
+    source ECOMMERCE, the quantity of ecommerce items saved is dynamically adjusted based on an item's useCount configured in Store.
+    When saving items, the quantity specified for each item will be multiplied by the useCount
+    i.e. If the store item is configured with a useCount of 5 and the quantity of a particular item is set to 2 during saving, it will be stored as 10
+
+    Type:
+    - ingame
+    - app
+    - coin
+    etc..
+
+    Max length of the payload is 10 items
+
+    Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
+
+    Properties:
+        url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items/bulk
+
+        method: POST
+
+        tags: ["Admin Items"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED List[ApimodelsSaveItemToInventoryReq] in body
+
+        inventory_id: (inventoryId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ApimodelsBulkSaveItemResp] (OK)
+
+        400: Bad Request - ApimodelsErrorResponse (Bad Request)
+
+        401: Unauthorized - ApimodelsErrorResponse (Unauthorized)
+
+        403: Forbidden - ApimodelsErrorResponse (Forbidden)
+
+        404: Not Found - ApimodelsErrorResponse (Not Found)
+
+        422: Unprocessable Entity - ApimodelsErrorResponse (Unprocessable Entity)
+
+        500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminBulkSaveItemToInventory.create(
+        body=body,
+        inventory_id=inventory_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminBulkUpdateMyItems)
 def admin_bulk_update_my_items(
     body: List[ApimodelsAdminUpdateItemReq],
@@ -194,9 +515,6 @@ def admin_bulk_update_my_items(
     Tags will be auto-created.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items
@@ -257,9 +575,6 @@ async def admin_bulk_update_my_items_async(
     Tags will be auto-created.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items
@@ -322,9 +637,6 @@ def admin_consume_user_item(
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/consume
 
@@ -383,9 +695,6 @@ async def admin_consume_user_item_async(
     Consume user's own item
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/consume
@@ -448,9 +757,6 @@ def admin_get_inventory_item(
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}
 
@@ -509,9 +815,6 @@ async def admin_get_inventory_item_async(
     Getting an item info.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/slots/{slotId}/sourceItems/{sourceItemId}
@@ -577,9 +880,6 @@ def admin_list_items(
     The response body will be in the form of standard pagination.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/items
@@ -650,9 +950,6 @@ async def admin_list_items_async(
     The response body will be in the form of standard pagination.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [READ]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}/items
@@ -737,9 +1034,6 @@ def admin_save_item(
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/items
 
@@ -808,9 +1102,6 @@ async def admin_save_item_async(
     and the quantity of a particular item is set to 2 during saving, it will be stored as 10.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/items
@@ -882,9 +1173,6 @@ def admin_save_item_to_inventory(
     and the quantity of a particular item is set to 2 during saving, it will be stored as 10.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items
@@ -958,9 +1246,6 @@ async def admin_save_item_to_inventory_async(
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items
 
@@ -1018,9 +1303,6 @@ def admin_sync_user_entitlements(
     will skip the item if already exist at user inventory.
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/items/entitlements/sync
 
@@ -1075,9 +1357,6 @@ async def admin_sync_user_entitlements_async(
     Sync user's entitlement from e-commerce service to inventory for non exist item at user inventory.
     will skip the item if already exist at user inventory.
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/items/entitlements/sync

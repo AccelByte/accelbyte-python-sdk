@@ -60,7 +60,9 @@ class SyncXboxDLC(Operation):
     Responses:
         204: No Content - (Successful operation)
 
-        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39221: Invalid Xbox Business Partner Certificate or password: [{message}])
+
+        404: Not Found - ErrorEntity (39145: XBox IAP config not found in namespace [{namespace}].)
     """
 
     # region fields
@@ -183,7 +185,9 @@ class SyncXboxDLC(Operation):
 
         204: No Content - (Successful operation)
 
-        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39221: Invalid Xbox Business Partner Certificate or password: [{message}])
+
+        404: Not Found - ErrorEntity (39145: XBox IAP config not found in namespace [{namespace}].)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -201,6 +205,8 @@ class SyncXboxDLC(Operation):
         if code == 204:
             return None, None
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(

@@ -42,9 +42,6 @@ class CreateContentDirect(Operation):
 
     All request body are required except preview, tags and customAttributes.
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents
 

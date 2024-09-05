@@ -43,12 +43,6 @@ class AddPort(Operation):
 
     This endpoint create a dedicated servers port config in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
 

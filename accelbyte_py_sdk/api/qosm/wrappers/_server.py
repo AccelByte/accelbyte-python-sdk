@@ -51,9 +51,6 @@ def heartbeat(
     to register and periodically let QoS Manager know that it is still alive.
     ```
 
-    Required Scope(s):
-        - social
-
     Properties:
         url: /qosm/servers/heartbeat
 
@@ -97,9 +94,6 @@ async def heartbeat_async(
     This endpoint is intended to be called by QoS service
     to register and periodically let QoS Manager know that it is still alive.
     ```
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /qosm/servers/heartbeat

@@ -38,7 +38,7 @@ from ...models import ValidationErrorEntity
 class UpdateItemTypeConfig(Operation):
     """Update an Item Type Config (updateItemTypeConfig)
 
-    [Not Supported Yet In Starter] This API is used to update an item type config.
+    [Not supported yet in AGS Shared Cloud] This API is used to update an item type config.
 
     *  Returns : item type config data
 
@@ -55,7 +55,7 @@ class UpdateItemTypeConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ItemTypeConfigUpdate in body
+        body: (body) REQUIRED ItemTypeConfigUpdate in body
 
         id_: (id) REQUIRED str in path
 
@@ -78,7 +78,7 @@ class UpdateItemTypeConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ItemTypeConfigUpdate  # OPTIONAL in [body]
+    body: ItemTypeConfigUpdate  # REQUIRED in [body]
     id_: str  # REQUIRED in [path]
 
     # endregion fields
@@ -146,7 +146,7 @@ class UpdateItemTypeConfig(Operation):
         self.body = value
         return self
 
-    def with_id_(self, value: str) -> UpdateItemTypeConfig:
+    def with_id(self, value: str) -> UpdateItemTypeConfig:
         self.id_ = value
         return self
 
@@ -219,12 +219,11 @@ class UpdateItemTypeConfig(Operation):
 
     @classmethod
     def create(
-        cls, id_: str, body: Optional[ItemTypeConfigUpdate] = None, **kwargs
+        cls, body: ItemTypeConfigUpdate, id_: str, **kwargs
     ) -> UpdateItemTypeConfig:
         instance = cls()
+        instance.body = body
         instance.id_ = id_
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -256,7 +255,7 @@ class UpdateItemTypeConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "id": True,
         }
 

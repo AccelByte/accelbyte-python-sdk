@@ -1211,9 +1211,6 @@ def public_get_content_by_user_idv2(
 
     Public user can access without token or if token specified, required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
-
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/contents
 
@@ -1273,9 +1270,6 @@ async def public_get_content_by_user_idv2_async(
     """Get content by user ID (PublicGetContentByUserIDV2)
 
     Public user can access without token or if token specified, required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
 
     Properties:
         url: /ugc/v2/public/namespaces/{namespace}/users/{userId}/contents

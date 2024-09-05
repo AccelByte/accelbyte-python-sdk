@@ -38,9 +38,7 @@ class AdminEvaluateProgress(Operation):
     """Evaluate User's Progressions (adminEvaluateProgress)
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+      * Limited up to 10 users per request
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/progress/evaluate
@@ -61,6 +59,8 @@ class AdminEvaluateProgress(Operation):
 
     Responses:
         204: No Content - (No Content)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -182,6 +182,8 @@ class AdminEvaluateProgress(Operation):
 
         204: No Content - (No Content)
 
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
+
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
         403: Forbidden - IamErrorResponse (20013: insufficient permission)
@@ -205,6 +207,8 @@ class AdminEvaluateProgress(Operation):
 
         if code == 204:
             return None, None
+        if code == 400:
+            return None, IamErrorResponse.create_from_dict(content)
         if code == 401:
             return None, IamErrorResponse.create_from_dict(content)
         if code == 403:

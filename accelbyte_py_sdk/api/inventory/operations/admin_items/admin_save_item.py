@@ -58,9 +58,6 @@ class AdminSaveItem(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/items
 

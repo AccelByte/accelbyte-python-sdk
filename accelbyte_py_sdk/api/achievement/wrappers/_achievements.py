@@ -79,12 +79,6 @@ def admin_create_new_achievement(
     - slug: specify the image they want to use, it can be file image name or something
     to define the achievement icon.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements
 
@@ -150,12 +144,6 @@ async def admin_create_new_achievement_async(
     - slug: specify the image they want to use, it can be file image name or something
     to define the achievement icon.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements
 
@@ -209,12 +197,6 @@ def admin_delete_achievement(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
 
@@ -265,12 +247,6 @@ async def admin_delete_achievement_async(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
@@ -325,12 +301,6 @@ def admin_get_achievement(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
 
@@ -381,12 +351,6 @@ async def admin_get_achievement_async(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
@@ -444,12 +408,6 @@ def admin_list_achievements(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements
@@ -518,12 +476,6 @@ async def admin_list_achievements_async(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements
 
@@ -590,12 +542,6 @@ def admin_update_achievement(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
 
@@ -650,12 +596,6 @@ async def admin_update_achievement_async(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
@@ -714,12 +654,6 @@ def admin_update_achievement_list_order(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
 
@@ -774,12 +708,6 @@ async def admin_update_achievement_list_order_async(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]` and scope `social`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/{achievementCode}
@@ -841,12 +769,6 @@ def export_achievements(
 
     Successful response header will contain: `content-disposition: attachment; filename=achievement__config.json`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - socialSuccessful
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/export
 
@@ -899,12 +821,6 @@ async def export_achievements_async(
     Required Scope: `social`
 
     Successful response header will contain: `content-disposition: attachment; filename=achievement__config.json`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - socialSuccessful
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/export
@@ -964,12 +880,6 @@ def import_achievements(
     Available import strategy:
     - leaveOut: if achievement with same key exist, the existing will be used and imported one will be ignored (default)
     - replace: if achievement with same key exist, the imported achievement will be used and existing one will be removed
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/import
@@ -1033,12 +943,6 @@ async def import_achievements_async(
     - leaveOut: if achievement with same key exist, the existing will be used and imported one will be ignored (default)
     - replace: if achievement with same key exist, the imported achievement will be used and existing one will be removed
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/import
 
@@ -1096,12 +1000,6 @@ def public_get_achievement(
     Required permission
     `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/achievements/{achievementCode}
 
@@ -1156,12 +1054,6 @@ async def public_get_achievement_async(
 
     Required permission
     `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/achievements/{achievementCode}
@@ -1223,12 +1115,6 @@ def public_list_achievements(
 
     Required permission
     `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/achievements
@@ -1300,12 +1186,6 @@ async def public_list_achievements_async(
 
     Required permission
     `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/achievements

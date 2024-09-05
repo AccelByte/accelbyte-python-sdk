@@ -38,7 +38,7 @@ from ...models import ValidationErrorEntity
 class RefundUserPaymentOrder(Operation):
     """Refund payment order (refundUserPaymentOrder)
 
-    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
+    [Not supported yet in AGS Shared Cloud] [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund
@@ -53,7 +53,7 @@ class RefundUserPaymentOrder(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderRefund in body
+        body: (body) REQUIRED PaymentOrderRefund in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -80,7 +80,7 @@ class RefundUserPaymentOrder(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentOrderRefund  # OPTIONAL in [body]
+    body: PaymentOrderRefund  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     payment_order_no: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -244,18 +244,17 @@ class RefundUserPaymentOrder(Operation):
     @classmethod
     def create(
         cls,
+        body: PaymentOrderRefund,
         namespace: str,
         payment_order_no: str,
         user_id: str,
-        body: Optional[PaymentOrderRefund] = None,
         **kwargs,
     ) -> RefundUserPaymentOrder:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.payment_order_no = payment_order_no
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -297,7 +296,7 @@ class RefundUserPaymentOrder(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "paymentOrderNo": True,
             "userId": True,

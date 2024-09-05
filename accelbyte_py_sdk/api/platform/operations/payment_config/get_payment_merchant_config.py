@@ -35,7 +35,7 @@ from ...models import PaymentDomainWhitelistConfigInfo
 class GetPaymentMerchantConfig(Operation):
     """Get payment domain whitelist config (getPaymentMerchantConfig)
 
-    [Not Supported Yet In Starter] Get payment domain whitelist config by namespace.
+    [Not supported yet in AGS Shared Cloud] Get payment domain whitelist config by namespace.
     Other detail info:
 
       * Returns : payment domain whitelist config info

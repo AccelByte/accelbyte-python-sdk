@@ -150,9 +150,6 @@ def admin_delete_all_user_contents(
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents
 
@@ -200,9 +197,6 @@ async def admin_delete_all_user_contents_async(
     """Delete all user content (AdminDeleteAllUserContents)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents
@@ -352,9 +346,6 @@ def admin_delete_all_user_states(
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/states
 
@@ -402,9 +393,6 @@ async def admin_delete_all_user_states_async(
     """Remove all user related state: likes, downloads, followers, following (AdminDeleteAllUserStates)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId} [DELETE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/states
@@ -554,9 +542,6 @@ def delete_all_user_contents(
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
 
@@ -604,9 +589,6 @@ async def delete_all_user_contents_async(
     """Delete all user content (DeleteAllUserContents)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
@@ -756,9 +738,6 @@ def delete_all_user_states(
 
     Required permission NAMESPACE:{namespace}:USER:{userId}" [DELETE]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [DELETE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/states
 
@@ -806,9 +785,6 @@ async def delete_all_user_states_async(
     """Remove all user related state: likes, downloads, followers, following (DeleteAllUserStates)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}" [DELETE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [DELETE]
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/states

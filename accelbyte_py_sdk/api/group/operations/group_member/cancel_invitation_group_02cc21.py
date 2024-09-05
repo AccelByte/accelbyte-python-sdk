@@ -46,9 +46,6 @@ class CancelInvitationGroupMemberV2(Operation):
 
     Action Code: 73409
 
-    Required Permission(s):
-        - GROUP:INVITE [DELETE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite/cancel
 

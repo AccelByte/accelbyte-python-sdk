@@ -41,9 +41,6 @@ class AdminRandomizeChallenge(Operation):
 
     This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED and RandomizePerRotation assigned with true.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
-
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/randomize
 

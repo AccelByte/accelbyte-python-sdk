@@ -42,9 +42,6 @@ class GetActiveQueue(Operation):
     This endpoint is used to get an active queue process on a node
     ```
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [READ]
-
     Properties:
         url: /dsartifact/artifacts/queues/active
 

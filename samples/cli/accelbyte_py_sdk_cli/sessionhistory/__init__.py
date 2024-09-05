@@ -45,6 +45,9 @@ from ._query_total_matchmaking_created import query_total_matchmaking_created
 from ._query_total_matchmaking_expired import query_total_matchmaking_expired
 from ._query_total_matchmaking_match_ticket import query_total_matchmaking_match_ticket
 from ._create_xray_ticket_observability import create_xray_ticket_observability
+from ._create_xray_bulk_ticket_observability import (
+    create_xray_bulk_ticket_observability,
+)
 from ._query_xray_timeline_by_ticket_id import query_xray_timeline_by_ticket_id
 from ._query_xray_timeline_by_user_id import query_xray_timeline_by_user_id
 
@@ -83,6 +86,7 @@ commands = [
     query_total_matchmaking_expired,
     query_total_matchmaking_match_ticket,
     create_xray_ticket_observability,
+    create_xray_bulk_ticket_observability,
     query_xray_timeline_by_ticket_id,
     query_xray_timeline_by_user_id,
 ]

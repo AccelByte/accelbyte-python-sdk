@@ -38,12 +38,6 @@ class UpdateEventRegistryHandler(Operation):
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/registry/eventIds/{eventId}
 

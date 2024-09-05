@@ -123,6 +123,12 @@ from ._get_all_time_leaderboard_ranking_admin_v3 import (
 from ._get_current_cycle_leaderboard_ranking_admin_v3 import (
     get_current_cycle_leaderboard_ranking_admin_v3,
 )
+from ._delete_all_user_ranking_by_cycle_id_admin_v3 import (
+    delete_all_user_ranking_by_cycle_id_admin_v3,
+)
+from ._delete_user_ranking_by_cycle_id_admin_v3 import (
+    delete_user_ranking_by_cycle_id_admin_v3,
+)
 from ._hard_delete_leaderboard_admin_v3 import hard_delete_leaderboard_admin_v3
 from ._delete_user_ranking_by_leaderboard_code_admin_v3 import (
     delete_user_ranking_by_leaderboard_code_admin_v3,
@@ -199,6 +205,8 @@ commands = [
     delete_leaderboard_configuration_admin_v3,
     get_all_time_leaderboard_ranking_admin_v3,
     get_current_cycle_leaderboard_ranking_admin_v3,
+    delete_all_user_ranking_by_cycle_id_admin_v3,
+    delete_user_ranking_by_cycle_id_admin_v3,
     hard_delete_leaderboard_admin_v3,
     delete_user_ranking_by_leaderboard_code_admin_v3,
     get_hidden_users_v3,

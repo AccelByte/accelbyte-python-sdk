@@ -43,9 +43,6 @@ class AdminUpdateStatusIntegrationConfiguration(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [UPDATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations/{integrationConfigurationId}/status
 

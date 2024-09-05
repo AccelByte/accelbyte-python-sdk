@@ -42,12 +42,6 @@ class ExportAchievements(Operation):
 
     Successful response header will contain: `content-disposition: attachment; filename=achievement__config.json`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - socialSuccessful
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements/export
 

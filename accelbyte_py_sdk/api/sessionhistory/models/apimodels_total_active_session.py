@@ -34,6 +34,8 @@ class ApimodelsTotalActiveSession(Model):
     Properties:
         created_at: (createdAt) OPTIONAL str
 
+        match_pool: (matchPool) OPTIONAL str
+
         namespace: (namespace) OPTIONAL str
 
         region: (region) OPTIONAL str
@@ -44,6 +46,7 @@ class ApimodelsTotalActiveSession(Model):
     # region fields
 
     created_at: str  # OPTIONAL
+    match_pool: str  # OPTIONAL
     namespace: str  # OPTIONAL
     region: str  # OPTIONAL
     value: int  # OPTIONAL
@@ -54,6 +57,10 @@ class ApimodelsTotalActiveSession(Model):
 
     def with_created_at(self, value: str) -> ApimodelsTotalActiveSession:
         self.created_at = value
+        return self
+
+    def with_match_pool(self, value: str) -> ApimodelsTotalActiveSession:
+        self.match_pool = value
         return self
 
     def with_namespace(self, value: str) -> ApimodelsTotalActiveSession:
@@ -78,6 +85,10 @@ class ApimodelsTotalActiveSession(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
+        if hasattr(self, "match_pool"):
+            result["matchPool"] = str(self.match_pool)
+        elif include_empty:
+            result["matchPool"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -100,6 +111,7 @@ class ApimodelsTotalActiveSession(Model):
     def create(
         cls,
         created_at: Optional[str] = None,
+        match_pool: Optional[str] = None,
         namespace: Optional[str] = None,
         region: Optional[str] = None,
         value: Optional[int] = None,
@@ -108,6 +120,8 @@ class ApimodelsTotalActiveSession(Model):
         instance = cls()
         if created_at is not None:
             instance.created_at = created_at
+        if match_pool is not None:
+            instance.match_pool = match_pool
         if namespace is not None:
             instance.namespace = namespace
         if region is not None:
@@ -127,6 +141,10 @@ class ApimodelsTotalActiveSession(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
+        if "matchPool" in dict_ and dict_["matchPool"] is not None:
+            instance.match_pool = str(dict_["matchPool"])
+        elif include_empty:
+            instance.match_pool = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -183,6 +201,7 @@ class ApimodelsTotalActiveSession(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "createdAt": "created_at",
+            "matchPool": "match_pool",
             "namespace": "namespace",
             "region": "region",
             "value": "value",
@@ -192,6 +211,7 @@ class ApimodelsTotalActiveSession(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "createdAt": False,
+            "matchPool": False,
             "namespace": False,
             "region": False,
             "value": False,

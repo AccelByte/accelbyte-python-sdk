@@ -50,7 +50,7 @@ class PaymentProviderEnum(StrEnum):
 class GetPaymentCustomization(Operation):
     """Get payment provider customization (getPaymentCustomization)
 
-    [Not Supported Yet In Starter] Get payment provider customization, at current only Adyen provide customization. This api has been deprecated, pls use /public/namespaces/{namespace}/payment/publicconfig to get adyen config
+    [Not supported yet in AGS Shared Cloud] Get payment provider customization, at current only Adyen provide customization. This api has been deprecated, pls use /public/namespaces/{namespace}/payment/publicconfig to get adyen config
     Other detail info:
 
       * Returns : customization

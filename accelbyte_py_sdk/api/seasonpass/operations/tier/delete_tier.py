@@ -138,7 +138,7 @@ class DeleteTier(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> DeleteTier:
+    def with_id(self, value: str) -> DeleteTier:
         self.id_ = value
         return self
 

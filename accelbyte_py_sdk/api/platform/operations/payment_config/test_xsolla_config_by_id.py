@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestXsollaConfigById(Operation):
     """Test xsolla configuration by id (testXsollaConfigById)
 
-    [Not Supported Yet In Starter] Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not supported yet in AGS Shared Cloud] Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Returns : test xsolla config
@@ -128,7 +128,7 @@ class TestXsollaConfigById(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> TestXsollaConfigById:
+    def with_id(self, value: str) -> TestXsollaConfigById:
         self.id_ = value
         return self
 

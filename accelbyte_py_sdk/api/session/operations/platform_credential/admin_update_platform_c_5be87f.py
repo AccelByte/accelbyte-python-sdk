@@ -44,9 +44,6 @@ class AdminUpdatePlatformCredentials(Operation):
     - clientSecret: Auth Server (Client Credential) Secret
     - scope: psn:s2s.service (For Sync non PSN member to PSN Session)
 
-    Required Scope(s):
-        - psn
-
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials
 

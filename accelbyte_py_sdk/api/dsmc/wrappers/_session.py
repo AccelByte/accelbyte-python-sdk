@@ -55,12 +55,6 @@ def cancel_session(
 
     This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to cancel a temporary dedicated server. The dedicated server cannot be canceled unless the status is CREATING
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}/cancel
 
@@ -114,12 +108,6 @@ async def cancel_session_async(
     Required scope: social
 
     This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to cancel a temporary dedicated server. The dedicated server cannot be canceled unless the status is CREATING
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}/cancel
@@ -176,12 +164,6 @@ def claim_server(
     Required scope: social
 
     This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to claim a dedicated server. The dedicated server cannot be claimed unless the status is READY
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/claim
@@ -240,12 +222,6 @@ async def claim_server_async(
     Required scope: social
 
     This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to claim a dedicated server. The dedicated server cannot be claimed unless the status is READY
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/claim
@@ -313,12 +289,6 @@ def create_session(
 
     Specify pod_name with name of local DS in the request to create a session using the registered local DS
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions
 
@@ -383,12 +353,6 @@ async def create_session_async(
 
     Specify pod_name with name of local DS in the request to create a session using the registered local DS
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions
 
@@ -451,12 +415,6 @@ def get_session(
 
     The server is ready to use when the status is READY. At which point, the game session manager can claim the server using the GET /namespaces/{namespace}/sessions/{sessionID}/claim endpoint
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}
 
@@ -510,12 +468,6 @@ async def get_session_async(
     This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to query the status of dedicated server that is created for the session.
 
     The server is ready to use when the status is READY. At which point, the game session manager can claim the server using the GET /namespaces/{namespace}/sessions/{sessionID}/claim endpoint
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}

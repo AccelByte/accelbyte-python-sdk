@@ -57,7 +57,9 @@ class BulkEnableCodes(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        batch_no: (batchNo) OPTIONAL int in query
+        batch_name: (batchName) OPTIONAL str in query
+
+        batch_no: (batchNo) OPTIONAL List[int] in query
 
     Responses:
         200: OK - BulkOperationResult (successful operation)
@@ -74,7 +76,8 @@ class BulkEnableCodes(Operation):
 
     campaign_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
-    batch_no: int  # OPTIONAL in [query]
+    batch_name: str  # OPTIONAL in [query]
+    batch_no: List[int]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -128,6 +131,8 @@ class BulkEnableCodes(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "batch_name"):
+            result["batchName"] = self.batch_name
         if hasattr(self, "batch_no"):
             result["batchNo"] = self.batch_no
         return result
@@ -148,7 +153,11 @@ class BulkEnableCodes(Operation):
         self.namespace = value
         return self
 
-    def with_batch_no(self, value: int) -> BulkEnableCodes:
+    def with_batch_name(self, value: str) -> BulkEnableCodes:
+        self.batch_name = value
+        return self
+
+    def with_batch_no(self, value: List[int]) -> BulkEnableCodes:
         self.batch_no = value
         return self
 
@@ -166,10 +175,14 @@ class BulkEnableCodes(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "batch_no") and self.batch_no:
-            result["batchNo"] = int(self.batch_no)
+        if hasattr(self, "batch_name") and self.batch_name:
+            result["batchName"] = str(self.batch_name)
         elif include_empty:
-            result["batchNo"] = 0
+            result["batchName"] = ""
+        if hasattr(self, "batch_no") and self.batch_no:
+            result["batchNo"] = [int(i0) for i0 in self.batch_no]
+        elif include_empty:
+            result["batchNo"] = []
         return result
 
     # endregion to methods
@@ -210,11 +223,18 @@ class BulkEnableCodes(Operation):
 
     @classmethod
     def create(
-        cls, campaign_id: str, namespace: str, batch_no: Optional[int] = None, **kwargs
+        cls,
+        campaign_id: str,
+        namespace: str,
+        batch_name: Optional[str] = None,
+        batch_no: Optional[List[int]] = None,
+        **kwargs,
     ) -> BulkEnableCodes:
         instance = cls()
         instance.campaign_id = campaign_id
         instance.namespace = namespace
+        if batch_name is not None:
+            instance.batch_name = batch_name
         if batch_no is not None:
             instance.batch_no = batch_no
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -234,10 +254,14 @@ class BulkEnableCodes(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "batchNo" in dict_ and dict_["batchNo"] is not None:
-            instance.batch_no = int(dict_["batchNo"])
+        if "batchName" in dict_ and dict_["batchName"] is not None:
+            instance.batch_name = str(dict_["batchName"])
         elif include_empty:
-            instance.batch_no = 0
+            instance.batch_name = ""
+        if "batchNo" in dict_ and dict_["batchNo"] is not None:
+            instance.batch_no = [int(i0) for i0 in dict_["batchNo"]]
+        elif include_empty:
+            instance.batch_no = []
         return instance
 
     @staticmethod
@@ -245,6 +269,7 @@ class BulkEnableCodes(Operation):
         return {
             "campaignId": "campaign_id",
             "namespace": "namespace",
+            "batchName": "batch_name",
             "batchNo": "batch_no",
         }
 
@@ -253,7 +278,14 @@ class BulkEnableCodes(Operation):
         return {
             "campaignId": True,
             "namespace": True,
+            "batchName": False,
             "batchNo": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "batchNo": "multi",  # in query
         }
 
     # endregion static methods

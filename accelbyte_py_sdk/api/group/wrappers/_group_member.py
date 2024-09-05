@@ -846,9 +846,6 @@ def cancel_invitation_group_member_v2(
 
     Action Code: 73409
 
-    Required Permission(s):
-        - GROUP:INVITE [DELETE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite/cancel
 
@@ -912,9 +909,6 @@ async def cancel_invitation_group_member_v2_async(
     cancel invitation group member. This endpoint will cancel invitation to specific user, and also the role permission of the the user who accesses this endpoint
 
     Action Code: 73409
-
-    Required Permission(s):
-        - GROUP:INVITE [DELETE]
 
     Properties:
         url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite/cancel
@@ -1518,9 +1512,6 @@ def get_user_group_status_information_v2(
 
     Action Code: 73409
 
-    Required Permission(s):
-        - GROUP [READ]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/status
 
@@ -1582,9 +1573,6 @@ async def get_user_group_status_information_v2_async(
     get user group status information. This endpoint will check the member and group information, and also the role permission of the the user who accesses this endpoint
 
     Action Code: 73409
-
-    Required Permission(s):
-        - GROUP [READ]
 
     Properties:
         url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/status
@@ -1799,9 +1787,6 @@ def invite_group_public_v1(
 
     The invited user will have a permission to invite another user to the group
 
-    Required Permission(s):
-        - GROUP:INVITE [CREATE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/users/{userId}/invite
 
@@ -1875,9 +1860,6 @@ async def invite_group_public_v1_async(
     "resourceName": "GROUP:INVITE"
 
     The invited user will have a permission to invite another user to the group
-
-    Required Permission(s):
-        - GROUP:INVITE [CREATE]
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/users/{userId}/invite
@@ -1956,9 +1938,6 @@ def invite_group_public_v2(
 
     The invited user will have a permission to invite another user to the group
 
-    Required Permission(s):
-        - GROUP:INVITE [CREATE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite
 
@@ -2036,9 +2015,6 @@ async def invite_group_public_v2_async(
     "resourceName": "GROUP:INVITE"
 
     The invited user will have a permission to invite another user to the group
-
-    Required Permission(s):
-        - GROUP:INVITE [CREATE]
 
     Properties:
         url: /group/v2/public/namespaces/{namespace}/users/{userId}/groups/{groupId}/invite

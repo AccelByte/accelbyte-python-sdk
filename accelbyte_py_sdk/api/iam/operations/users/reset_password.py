@@ -40,9 +40,6 @@ class ResetPassword(Operation):
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
-
     Properties:
         url: /iam/namespaces/{namespace}/users/resetPassword
 

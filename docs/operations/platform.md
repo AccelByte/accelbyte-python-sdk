@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (4.54.0)
+# AccelByte Gaming Services Platform Service Index (4.56.0)
 
 
 ## Operations
@@ -41,9 +41,11 @@
 | /platform/admin/namespaces/{namespace}/campaigns/{campaignId} | GET | getCampaign | `false` | [GetCampaign](../../accelbyte_py_sdk/api/platform/operations/campaign/get_campaign.py) | [get_campaign](../../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-get-campaign](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_campaign.py) |
 | /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/dynamic | GET | getCampaignDynamic | `false` | [GetCampaignDynamic](../../accelbyte_py_sdk/api/platform/operations/campaign/get_campaign_dynamic.py) | [get_campaign_dynamic](../../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-get-campaign-dynamic](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_campaign_dynamic.py) |
 | /platform/admin/namespaces/{namespace}/codes/{code} | GET | getCode | `false` | [GetCode](../../accelbyte_py_sdk/api/platform/operations/campaign/get_code.py) | [get_code](../../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-get-code](../../samples/cli/accelbyte_py_sdk_cli/platform/_get_code.py) |
+| /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/batchNames | GET | queryCampaignBatchNames | `false` | [QueryCampaignBatchNames](../../accelbyte_py_sdk/api/platform/operations/campaign/query_campaign_batch_names.py) | [query_campaign_batch_names](../../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-query-campaign-batch-names](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_campaign_batch_names.py) |
 | /platform/admin/namespaces/{namespace}/campaigns | GET | queryCampaigns | `false` | [QueryCampaigns](../../accelbyte_py_sdk/api/platform/operations/campaign/query_campaigns.py) | [query_campaigns](../../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-query-campaigns](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_campaigns.py) |
 | /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId} | GET | queryCodes | `false` | [QueryCodes](../../accelbyte_py_sdk/api/platform/operations/campaign/query_codes.py) | [query_codes](../../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-query-codes](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_codes.py) |
 | /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/history | GET | queryRedeemHistory | `false` | [QueryRedeemHistory](../../accelbyte_py_sdk/api/platform/operations/campaign/query_redeem_history.py) | [query_redeem_history](../../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-query-redeem-history](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_redeem_history.py) |
+| /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/batchName | PUT | renameBatch | `false` | [RenameBatch](../../accelbyte_py_sdk/api/platform/operations/campaign/rename_batch.py) | [rename_batch](../../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-rename-batch](../../samples/cli/accelbyte_py_sdk_cli/platform/_rename_batch.py) |
 | /platform/admin/namespaces/{namespace}/campaigns/{campaignId} | PUT | updateCampaign | `false` | [UpdateCampaign](../../accelbyte_py_sdk/api/platform/operations/campaign/update_campaign.py) | [update_campaign](../../accelbyte_py_sdk/api/platform/wrappers/_campaign.py) | [accelbyte_py_sdk_cli platform-update-campaign](../../samples/cli/accelbyte_py_sdk_cli/platform/_update_campaign.py) |
 
 ### CatalogChanges
@@ -654,6 +656,8 @@
 | BulkOperationResult | [BulkOperationResult](../../accelbyte_py_sdk/api/platform/models/bulk_operation_result.py) |
 | BulkRegionDataChangeRequest | [BulkRegionDataChangeRequest](../../accelbyte_py_sdk/api/platform/models/bulk_region_data_change_request.py) |
 | BundledItemInfo | [BundledItemInfo](../../accelbyte_py_sdk/api/platform/models/bundled_item_info.py) |
+| CampaignBatchNameChange | [CampaignBatchNameChange](../../accelbyte_py_sdk/api/platform/models/campaign_batch_name_change.py) |
+| CampaignBatchNameInfo | [CampaignBatchNameInfo](../../accelbyte_py_sdk/api/platform/models/campaign_batch_name_info.py) |
 | CampaignCreate | [CampaignCreate](../../accelbyte_py_sdk/api/platform/models/campaign_create.py) |
 | CampaignDynamicInfo | [CampaignDynamicInfo](../../accelbyte_py_sdk/api/platform/models/campaign_dynamic_info.py) |
 | CampaignIfc | [CampaignIfc](../../accelbyte_py_sdk/api/platform/models/campaign_ifc.py) |
@@ -716,7 +720,6 @@
 | DLCRecord | [DLCRecord](../../accelbyte_py_sdk/api/platform/models/dlc_record.py) |
 | DurableEntitlementRevocationConfig | [DurableEntitlementRevocationConfig](../../accelbyte_py_sdk/api/platform/models/durable_entitlement_revocation_config.py) |
 | EntitlementConfigInfo | [EntitlementConfigInfo](../../accelbyte_py_sdk/api/platform/models/entitlement_config_info.py) |
-| EntitlementDecrement | [EntitlementDecrement](../../accelbyte_py_sdk/api/platform/models/entitlement_decrement.py) |
 | EntitlementDecrementResult | [EntitlementDecrementResult](../../accelbyte_py_sdk/api/platform/models/entitlement_decrement_result.py) |
 | EntitlementGrant | [EntitlementGrant](../../accelbyte_py_sdk/api/platform/models/entitlement_grant.py) |
 | EntitlementGrantResult | [EntitlementGrantResult](../../accelbyte_py_sdk/api/platform/models/entitlement_grant_result.py) |
@@ -732,6 +735,7 @@
 | EntitlementPrechekResult | [EntitlementPrechekResult](../../accelbyte_py_sdk/api/platform/models/entitlement_prechek_result.py) |
 | EntitlementRevocation | [EntitlementRevocation](../../accelbyte_py_sdk/api/platform/models/entitlement_revocation.py) |
 | EntitlementRevocationConfig | [EntitlementRevocationConfig](../../accelbyte_py_sdk/api/platform/models/entitlement_revocation_config.py) |
+| EntitlementRevokeRequest | [EntitlementRevokeRequest](../../accelbyte_py_sdk/api/platform/models/entitlement_revoke_request.py) |
 | EntitlementRevokeResult | [EntitlementRevokeResult](../../accelbyte_py_sdk/api/platform/models/entitlement_revoke_result.py) |
 | EntitlementSoldRequest | [EntitlementSoldRequest](../../accelbyte_py_sdk/api/platform/models/entitlement_sold_request.py) |
 | EntitlementSoldResult | [EntitlementSoldResult](../../accelbyte_py_sdk/api/platform/models/entitlement_sold_result.py) |
@@ -931,7 +935,9 @@
 | PredicateValidateResult | [PredicateValidateResult](../../accelbyte_py_sdk/api/platform/models/predicate_validate_result.py) |
 | PsnEntitlementOwnershipRequest | [PsnEntitlementOwnershipRequest](../../accelbyte_py_sdk/api/platform/models/psn_entitlement_ownership_request.py) |
 | PublicCustomConfigInfo | [PublicCustomConfigInfo](../../accelbyte_py_sdk/api/platform/models/public_custom_config_info.py) |
+| PublicEntitlementDecrement | [PublicEntitlementDecrement](../../accelbyte_py_sdk/api/platform/models/public_entitlement_decrement.py) |
 | PublicEntitlementHistoryInfo | [PublicEntitlementHistoryInfo](../../accelbyte_py_sdk/api/platform/models/public_entitlement_history_info.py) |
+| PublicEntitlementMetadata | [PublicEntitlementMetadata](../../accelbyte_py_sdk/api/platform/models/public_entitlement_metadata.py) |
 | PurchaseCondition | [PurchaseCondition](../../accelbyte_py_sdk/api/platform/models/purchase_condition.py) |
 | PurchaseConditionUpdate | [PurchaseConditionUpdate](../../accelbyte_py_sdk/api/platform/models/purchase_condition_update.py) |
 | PurchasedItemCount | [PurchasedItemCount](../../accelbyte_py_sdk/api/platform/models/purchased_item_count.py) |

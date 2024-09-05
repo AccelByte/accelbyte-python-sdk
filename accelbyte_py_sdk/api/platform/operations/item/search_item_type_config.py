@@ -51,7 +51,7 @@ class ItemTypeEnum(StrEnum):
 class SearchItemTypeConfig(Operation):
     """Get an item type config (searchItemTypeConfig)
 
-    [Not Supported Yet In Starter] This API is used to get an item type config.
+    [Not supported yet in AGS Shared Cloud] This API is used to get an item type config.
 
     Other detail info:
 

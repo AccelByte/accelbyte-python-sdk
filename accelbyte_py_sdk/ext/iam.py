@@ -64,6 +64,7 @@ from ..api.iam.models import AccountcommonJWTBanV3
 from ..api.iam.models import AccountcommonListUsersWithPlatformAccountsResponse
 from ..api.iam.models import AccountcommonNamespaceRole
 from ..api.iam.models import AccountcommonNetflixCertificates
+from ..api.iam.models import AccountcommonOverrideRolePermission
 from ..api.iam.models import AccountcommonPagination
 from ..api.iam.models import AccountcommonPaginationV3
 from ..api.iam.models import AccountcommonPermission
@@ -75,6 +76,7 @@ from ..api.iam.models import AccountcommonPlatformAccount
 from ..api.iam.models import AccountcommonPlatformLinkingHistory
 from ..api.iam.models import AccountcommonPlatformUserInformationV3
 from ..api.iam.models import AccountcommonRegisteredDomain
+from ..api.iam.models import AccountcommonReplaceRolePermission
 from ..api.iam.models import AccountcommonRole
 from ..api.iam.models import AccountcommonRoleManager
 from ..api.iam.models import AccountcommonRoleManagerV3
@@ -229,6 +231,11 @@ from ..api.iam.models import ModelRoleMembersRequestV3
 from ..api.iam.models import ModelRoleMembersResponse
 from ..api.iam.models import ModelRoleMembersResponseV3
 from ..api.iam.models import ModelRoleNamesResponseV3
+from ..api.iam.models import ModelRoleOverrideResponse
+from ..api.iam.models import ModelRoleOverrideSourceResponse
+from ..api.iam.models import ModelRoleOverrideStatsUpdateRequest
+from ..api.iam.models import ModelRoleOverrideUpdateRequest
+from ..api.iam.models import ModelRolePermissionResponseV3
 from ..api.iam.models import ModelRoleResponse
 from ..api.iam.models import ModelRoleResponseV3
 from ..api.iam.models import ModelRoleResponseWithManagers
@@ -740,6 +747,15 @@ def create_accountcommon_netflix_certificates_example() -> (
     return instance
 
 
+def create_accountcommon_override_role_permission_example() -> (
+    AccountcommonOverrideRolePermission
+):
+    instance = AccountcommonOverrideRolePermission()
+    instance.actions = [randomize("int", min_val=1, max_val=1000)]
+    instance.resource = randomize()
+    return instance
+
+
 def create_accountcommon_pagination_example() -> AccountcommonPagination:
     instance = AccountcommonPagination()
     instance.first = randomize()
@@ -836,6 +852,15 @@ def create_accountcommon_registered_domain_example() -> AccountcommonRegisteredD
     instance.domain = randomize()
     instance.namespaces = [randomize()]
     instance.role_id = randomize("uid")
+    return instance
+
+
+def create_accountcommon_replace_role_permission_example() -> (
+    AccountcommonReplaceRolePermission
+):
+    instance = AccountcommonReplaceRolePermission()
+    instance.replacement = create_accountcommon_override_role_permission_example()
+    instance.target = randomize()
     return instance
 
 
@@ -2191,6 +2216,7 @@ def create_model_reset_password_request_v3_example() -> ModelResetPasswordReques
     instance.code = randomize()
     instance.email_address = randomize("email")
     instance.new_password = randomize()
+    instance.client_id = randomize("uid")
     instance.language_tag = randomize()
     return instance
 
@@ -2292,6 +2318,53 @@ def create_model_role_names_response_v3_example() -> ModelRoleNamesResponseV3:
     instance = ModelRoleNamesResponseV3()
     instance.data = [randomize()]
     instance.paging = create_accountcommon_pagination_v3_example()
+    return instance
+
+
+def create_model_role_override_response_example() -> ModelRoleOverrideResponse:
+    instance = ModelRoleOverrideResponse()
+    instance.active = randomize("bool")
+    instance.additions = [create_accountcommon_override_role_permission_example()]
+    instance.exclusions = [create_accountcommon_override_role_permission_example()]
+    instance.identity = randomize()
+    instance.namespace = randomize("slug")
+    instance.overrides = [create_accountcommon_override_role_permission_example()]
+    instance.replacements = [create_accountcommon_replace_role_permission_example()]
+    instance.created_at = randomize("date")
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_model_role_override_source_response_example() -> (
+    ModelRoleOverrideSourceResponse
+):
+    instance = ModelRoleOverrideSourceResponse()
+    instance.permissions = [create_accountcommon_override_role_permission_example()]
+    return instance
+
+
+def create_model_role_override_stats_update_request_example() -> (
+    ModelRoleOverrideStatsUpdateRequest
+):
+    instance = ModelRoleOverrideStatsUpdateRequest()
+    instance.active = randomize("bool")
+    return instance
+
+
+def create_model_role_override_update_request_example() -> (
+    ModelRoleOverrideUpdateRequest
+):
+    instance = ModelRoleOverrideUpdateRequest()
+    instance.additions = [create_accountcommon_override_role_permission_example()]
+    instance.exclusions = [create_accountcommon_override_role_permission_example()]
+    instance.overrides = [create_accountcommon_override_role_permission_example()]
+    instance.replacements = [create_accountcommon_replace_role_permission_example()]
+    return instance
+
+
+def create_model_role_permission_response_v3_example() -> ModelRolePermissionResponseV3:
+    instance = ModelRolePermissionResponseV3()
+    instance.permissions = [create_accountcommon_permission_example()]
     return instance
 
 
@@ -2824,6 +2897,7 @@ def create_model_user_input_validation_request_example() -> (
 ):
     instance = ModelUserInputValidationRequest()
     instance.display_name = randomize("slug")
+    instance.password = randomize("password")
     instance.unique_display_name = randomize()
     instance.username = randomize("slug")
     return instance

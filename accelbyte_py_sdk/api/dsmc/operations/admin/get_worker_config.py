@@ -42,12 +42,6 @@ class GetWorkerConfig(Operation):
 
     This endpoint retrieves a worker configuration to control the worker in the DSMC.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespace/{namespace}/workers
 

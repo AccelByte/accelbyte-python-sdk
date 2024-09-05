@@ -33,7 +33,7 @@ from .....core import HttpResponse
 class ListExtOrderNoByExtTxId(Operation):
     """List external order No by external transaction id (listExtOrderNoByExtTxId)
 
-    [Not Supported Yet In Starter] List external order No by external transaction id.
+    [Not supported yet in AGS Shared Cloud] List external order No by external transaction id.
     Other detail info:
 
       * Returns : payment orders

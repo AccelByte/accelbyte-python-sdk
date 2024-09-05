@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session History Service."""
 
-__version__ = "1.11.1"
+__version__ = "1.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .create_xray_bulk_ticket_cacbf6 import CreateXrayBulkTicketObservability
 from .create_xray_ticket_obse_a825bd import CreateXrayTicketObservability
 from .query_acquiring_ds import QueryAcquiringDS
 from .query_acquiring_ds_wait_a2982b import QueryAcquiringDSWaitTimeAvg

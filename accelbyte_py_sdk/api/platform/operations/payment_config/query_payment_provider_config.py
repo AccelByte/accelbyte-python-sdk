@@ -35,7 +35,7 @@ from ...models import PaymentProviderConfigPagingSlicedResult
 class QueryPaymentProviderConfig(Operation):
     """Query payment provider config (queryPaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Query payment provider config.
+    [Not supported yet in AGS Shared Cloud] Query payment provider config.
     Other detail info:
 
       * Returns : payment provider config list

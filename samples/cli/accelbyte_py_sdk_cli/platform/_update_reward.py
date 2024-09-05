@@ -37,15 +37,15 @@ from accelbyte_py_sdk.api.platform.models import RewardUpdate
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("reward_id", type=str)
-@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_reward(
+    body: str,
     reward_id: str,
-    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -66,8 +66,8 @@ def update_reward(
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = update_reward_internal(
-        reward_id=reward_id,
         body=body,
+        reward_id=reward_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

@@ -38,9 +38,6 @@ class PublicGetUserContent(Operation):
 
     Public user can access without token or if token specified, required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
 

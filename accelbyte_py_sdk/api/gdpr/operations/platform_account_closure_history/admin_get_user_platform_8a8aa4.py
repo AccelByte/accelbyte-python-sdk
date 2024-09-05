@@ -43,9 +43,6 @@ class AdminGetUserPlatformAccountClosureHistories(Operation):
     Supported platforms:
     * psn
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/platforms/closure/histories
 

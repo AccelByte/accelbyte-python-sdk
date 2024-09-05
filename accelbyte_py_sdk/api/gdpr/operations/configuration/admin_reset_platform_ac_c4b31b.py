@@ -39,9 +39,6 @@ class AdminResetPlatformAccountClosureServicesConfiguration(Operation):
     Reset registered platform account closure services configuration to use the default configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
 

@@ -67,7 +67,7 @@ class GrantEntitlements(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkEntitlementGrantRequest in body
+        body: (body) REQUIRED BulkEntitlementGrantRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -86,7 +86,7 @@ class GrantEntitlements(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: BulkEntitlementGrantRequest  # OPTIONAL in [body]
+    body: BulkEntitlementGrantRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -219,15 +219,11 @@ class GrantEntitlements(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        body: Optional[BulkEntitlementGrantRequest] = None,
-        **kwargs,
+        cls, body: BulkEntitlementGrantRequest, namespace: str, **kwargs
     ) -> GrantEntitlements:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -259,7 +255,7 @@ class GrantEntitlements(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

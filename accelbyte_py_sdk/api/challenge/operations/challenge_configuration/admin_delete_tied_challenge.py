@@ -38,9 +38,6 @@ class AdminDeleteTiedChallenge(Operation):
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
       * This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
-
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/tied
 

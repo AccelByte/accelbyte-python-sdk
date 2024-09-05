@@ -5208,9 +5208,6 @@ def admin_get_user_platform_accounts_v3(
     ## Justice Platform Account
     The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms
 
@@ -5324,9 +5321,6 @@ async def admin_get_user_platform_accounts_v3_async(
     ## Justice Platform Account
     The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms
 
@@ -5389,6 +5383,7 @@ async def admin_get_user_platform_accounts_v3_async(
 def admin_get_user_single_platform_account(
     platform_id: str,
     user_id: str,
+    cross_namespace: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5453,6 +5448,8 @@ def admin_get_user_single_platform_account(
 
         user_id: (userId) REQUIRED str in path
 
+        cross_namespace: (crossNamespace) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelUserPlatformMetadata (OK)
 
@@ -5473,6 +5470,7 @@ def admin_get_user_single_platform_account(
     request = AdminGetUserSinglePlatformAccount.create(
         platform_id=platform_id,
         user_id=user_id,
+        cross_namespace=cross_namespace,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -5482,6 +5480,7 @@ def admin_get_user_single_platform_account(
 async def admin_get_user_single_platform_account_async(
     platform_id: str,
     user_id: str,
+    cross_namespace: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5546,6 +5545,8 @@ async def admin_get_user_single_platform_account_async(
 
         user_id: (userId) REQUIRED str in path
 
+        cross_namespace: (crossNamespace) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelUserPlatformMetadata (OK)
 
@@ -5566,6 +5567,7 @@ async def admin_get_user_single_platform_account_async(
     request = AdminGetUserSinglePlatformAccount.create(
         platform_id=platform_id,
         user_id=user_id,
+        cross_namespace=cross_namespace,
         namespace=namespace,
     )
     return await run_request_async(
@@ -9649,6 +9651,9 @@ def admin_verify_user_without_verification_code_v3(
     """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
 
     This endpoint force verify user
+    Note:
+    - namespace: only accept publisher/studio namespace
+    - userId: only accept publisher/studio userId
     action code: 10118
 
     Properties:
@@ -9704,6 +9709,9 @@ async def admin_verify_user_without_verification_code_v3_async(
     """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
 
     This endpoint force verify user
+    Note:
+    - namespace: only accept publisher/studio namespace
+    - userId: only accept publisher/studio userId
     action code: 10118
 
     Properties:
@@ -11209,9 +11217,6 @@ def forgot_password(
 
     The password reset code will be sent to the publisher account's email address.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
-
     Properties:
         url: /iam/namespaces/{namespace}/users/forgotPassword
 
@@ -11268,9 +11273,6 @@ async def forgot_password_async(
     **Special note for publisher-game scenario:** Game Client should provide game namespace path parameter and Publisher Client should provide publisher namespace path parameter.
 
     The password reset code will be sent to the publisher account's email address.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/forgotPassword
@@ -12963,9 +12965,6 @@ def get_user_platform_accounts(
     ## Justice Platform Account
     The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms
 
@@ -13021,9 +13020,6 @@ async def get_user_platform_accounts_async(
     ## Justice Platform Account
     The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
     Properties:
         url: /iam/namespaces/{namespace}/users/{userId}/platforms
 
@@ -13072,11 +13068,18 @@ def get_user_verification_code(
 ):
     """Get verification code sent to user (getUserVerificationCode)
 
-    [WARNING] This endpoint is only for testing purpose.
-    This endpoint get active user verification
-    code. There are 3 scenario of getting verification codes : after account registration, after reset password
-    request, and after headless account upgrade. All of them will be returned on this endpoint.
-    action code: 10146
+    **[WARNING] This endpoint is only for testing purpose.**
+
+    This endpoint get active user verification code.
+    There are some scenarios of getting verification codes, all of them will be returned on this endpoint:
+    - After account registration
+    - After reset password request
+    - After headless account upgrade
+    - After update email request
+
+    This API only accept publisher/studio namespace and userId.
+
+    Action code: 10146
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/codes
@@ -13126,11 +13129,18 @@ async def get_user_verification_code_async(
 ):
     """Get verification code sent to user (getUserVerificationCode)
 
-    [WARNING] This endpoint is only for testing purpose.
-    This endpoint get active user verification
-    code. There are 3 scenario of getting verification codes : after account registration, after reset password
-    request, and after headless account upgrade. All of them will be returned on this endpoint.
-    action code: 10146
+    **[WARNING] This endpoint is only for testing purpose.**
+
+    This endpoint get active user verification code.
+    There are some scenarios of getting verification codes, all of them will be returned on this endpoint:
+    - After account registration
+    - After reset password request
+    - After headless account upgrade
+    - After update email request
+
+    This API only accept publisher/studio namespace and userId.
+
+    Action code: 10146
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/codes
@@ -14339,6 +14349,7 @@ def public_create_user_v3(
 
     **Note**:
     * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
+    * **code**: this is required when mandatoryEmailVerificationEnabled config is true. please refer to the config from /iam/v3/public/namespaces/{namespace}/config/{configKey} [GET] API.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -14364,7 +14375,7 @@ def public_create_user_v3(
     Responses:
         201: Created - ModelUserCreateResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age | 10152: verification code not found)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
@@ -14401,6 +14412,7 @@ async def public_create_user_v3_async(
 
     **Note**:
     * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
+    * **code**: this is required when mandatoryEmailVerificationEnabled config is true. please refer to the config from /iam/v3/public/namespaces/{namespace}/config/{configKey} [GET] API.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -14426,7 +14438,7 @@ async def public_create_user_v3_async(
     Responses:
         201: Created - ModelUserCreateResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age | 10152: verification code not found)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
@@ -20533,9 +20545,6 @@ def reset_password(
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
-
     Properties:
         url: /iam/namespaces/{namespace}/users/resetPassword
 
@@ -20588,9 +20597,6 @@ async def reset_password_async(
     ## The endpoint is going to be deprecated
     ### Endpoint migration guide
     - **Substitute endpoint: _/iam/v3/public/namespaces/{namespace}/users/reset [POST]_**
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
 
     Properties:
         url: /iam/namespaces/{namespace}/users/resetPassword

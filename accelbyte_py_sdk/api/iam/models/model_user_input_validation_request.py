@@ -34,6 +34,8 @@ class ModelUserInputValidationRequest(Model):
     Properties:
         display_name: (displayName) OPTIONAL str
 
+        password: (password) OPTIONAL str
+
         unique_display_name: (uniqueDisplayName) OPTIONAL str
 
         username: (username) OPTIONAL str
@@ -42,6 +44,7 @@ class ModelUserInputValidationRequest(Model):
     # region fields
 
     display_name: str  # OPTIONAL
+    password: str  # OPTIONAL
     unique_display_name: str  # OPTIONAL
     username: str  # OPTIONAL
 
@@ -51,6 +54,10 @@ class ModelUserInputValidationRequest(Model):
 
     def with_display_name(self, value: str) -> ModelUserInputValidationRequest:
         self.display_name = value
+        return self
+
+    def with_password(self, value: str) -> ModelUserInputValidationRequest:
+        self.password = value
         return self
 
     def with_unique_display_name(self, value: str) -> ModelUserInputValidationRequest:
@@ -71,6 +78,10 @@ class ModelUserInputValidationRequest(Model):
             result["displayName"] = str(self.display_name)
         elif include_empty:
             result["displayName"] = ""
+        if hasattr(self, "password"):
+            result["password"] = str(self.password)
+        elif include_empty:
+            result["password"] = ""
         if hasattr(self, "unique_display_name"):
             result["uniqueDisplayName"] = str(self.unique_display_name)
         elif include_empty:
@@ -89,6 +100,7 @@ class ModelUserInputValidationRequest(Model):
     def create(
         cls,
         display_name: Optional[str] = None,
+        password: Optional[str] = None,
         unique_display_name: Optional[str] = None,
         username: Optional[str] = None,
         **kwargs,
@@ -96,6 +108,8 @@ class ModelUserInputValidationRequest(Model):
         instance = cls()
         if display_name is not None:
             instance.display_name = display_name
+        if password is not None:
+            instance.password = password
         if unique_display_name is not None:
             instance.unique_display_name = unique_display_name
         if username is not None:
@@ -113,6 +127,10 @@ class ModelUserInputValidationRequest(Model):
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
             instance.display_name = ""
+        if "password" in dict_ and dict_["password"] is not None:
+            instance.password = str(dict_["password"])
+        elif include_empty:
+            instance.password = ""
         if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
             instance.unique_display_name = str(dict_["uniqueDisplayName"])
         elif include_empty:
@@ -165,6 +183,7 @@ class ModelUserInputValidationRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "displayName": "display_name",
+            "password": "password",
             "uniqueDisplayName": "unique_display_name",
             "username": "username",
         }
@@ -173,6 +192,7 @@ class ModelUserInputValidationRequest(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "displayName": False,
+            "password": False,
             "uniqueDisplayName": False,
             "username": False,
         }

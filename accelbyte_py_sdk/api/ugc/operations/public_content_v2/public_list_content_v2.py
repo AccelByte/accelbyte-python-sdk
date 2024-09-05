@@ -222,7 +222,7 @@ class PublicListContentV2(Operation):
         self.tags = value
         return self
 
-    def with_type_(self, value: str) -> PublicListContentV2:
+    def with_type(self, value: str) -> PublicListContentV2:
         self.type_ = value
         return self
 

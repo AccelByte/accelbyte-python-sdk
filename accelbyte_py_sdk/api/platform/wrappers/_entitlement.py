@@ -39,7 +39,6 @@ from ..models import BulkEntitlementGrantResult
 from ..models import BulkEntitlementRevokeResult
 from ..models import BulkOperationResult
 from ..models import EntitlementConfigInfo
-from ..models import EntitlementDecrement
 from ..models import EntitlementDecrementResult
 from ..models import EntitlementGrant
 from ..models import EntitlementHistoryInfo
@@ -50,6 +49,7 @@ from ..models import EntitlementPagingSlicedResult
 from ..models import EntitlementPlatformConfigInfo
 from ..models import EntitlementPlatformConfigUpdate
 from ..models import EntitlementPrechekResult
+from ..models import EntitlementRevokeRequest
 from ..models import EntitlementSoldRequest
 from ..models import EntitlementSoldResult
 from ..models import EntitlementSplitRequest
@@ -60,6 +60,7 @@ from ..models import EntitlementUpdate
 from ..models import ErrorEntity
 from ..models import Ownership
 from ..models import OwnershipToken
+from ..models import PublicEntitlementDecrement
 from ..models import RevokeUseCountRequest
 from ..models import StackableEntitlementInfo
 from ..models import TimedOwnership
@@ -216,9 +217,9 @@ from ..models import (
 
 @same_doc_as(ConsumeUserEntitlement)
 def consume_user_entitlement(
+    body: AdminEntitlementDecrement,
     entitlement_id: str,
     user_id: str,
-    body: Optional[AdminEntitlementDecrement] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -243,7 +244,7 @@ def consume_user_entitlement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdminEntitlementDecrement in body
+        body: (body) REQUIRED AdminEntitlementDecrement in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -265,9 +266,9 @@ def consume_user_entitlement(
         if error:
             return None, error
     request = ConsumeUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -275,9 +276,9 @@ def consume_user_entitlement(
 
 @same_doc_as(ConsumeUserEntitlement)
 async def consume_user_entitlement_async(
+    body: AdminEntitlementDecrement,
     entitlement_id: str,
     user_id: str,
-    body: Optional[AdminEntitlementDecrement] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -302,7 +303,7 @@ async def consume_user_entitlement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdminEntitlementDecrement in body
+        body: (body) REQUIRED AdminEntitlementDecrement in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -324,9 +325,9 @@ async def consume_user_entitlement_async(
         if error:
             return None, error
     request = ConsumeUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -2232,7 +2233,7 @@ async def get_user_entitlement_ownership_by_sku_async(
 
 @same_doc_as(GrantEntitlements)
 def grant_entitlements(
-    body: Optional[BulkEntitlementGrantRequest] = None,
+    body: BulkEntitlementGrantRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2269,7 +2270,7 @@ def grant_entitlements(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkEntitlementGrantRequest in body
+        body: (body) REQUIRED BulkEntitlementGrantRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2291,7 +2292,7 @@ def grant_entitlements(
 
 @same_doc_as(GrantEntitlements)
 async def grant_entitlements_async(
-    body: Optional[BulkEntitlementGrantRequest] = None,
+    body: BulkEntitlementGrantRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2328,7 +2329,7 @@ async def grant_entitlements_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkEntitlementGrantRequest in body
+        body: (body) REQUIRED BulkEntitlementGrantRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2352,8 +2353,8 @@ async def grant_entitlements_async(
 
 @same_doc_as(GrantUserEntitlement)
 def grant_user_entitlement(
+    body: List[EntitlementGrant],
     user_id: str,
-    body: Optional[List[EntitlementGrant]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2392,7 +2393,7 @@ def grant_user_entitlement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL List[EntitlementGrant] in body
+        body: (body) REQUIRED List[EntitlementGrant] in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2410,8 +2411,8 @@ def grant_user_entitlement(
         if error:
             return None, error
     request = GrantUserEntitlement.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -2419,8 +2420,8 @@ def grant_user_entitlement(
 
 @same_doc_as(GrantUserEntitlement)
 async def grant_user_entitlement_async(
+    body: List[EntitlementGrant],
     user_id: str,
-    body: Optional[List[EntitlementGrant]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2459,7 +2460,7 @@ async def grant_user_entitlement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL List[EntitlementGrant] in body
+        body: (body) REQUIRED List[EntitlementGrant] in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2477,8 +2478,8 @@ async def grant_user_entitlement_async(
         if error:
             return None, error
     request = GrantUserEntitlement.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -2600,9 +2601,9 @@ async def pre_check_revoke_user_entitlement_by_use_count_async(
 
 @same_doc_as(PublicConsumeUserEntitlement)
 def public_consume_user_entitlement(
+    body: PublicEntitlementDecrement,
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementDecrement] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2627,7 +2628,7 @@ def public_consume_user_entitlement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementDecrement in body
+        body: (body) REQUIRED PublicEntitlementDecrement in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -2649,9 +2650,9 @@ def public_consume_user_entitlement(
         if error:
             return None, error
     request = PublicConsumeUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -2659,9 +2660,9 @@ def public_consume_user_entitlement(
 
 @same_doc_as(PublicConsumeUserEntitlement)
 async def public_consume_user_entitlement_async(
+    body: PublicEntitlementDecrement,
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementDecrement] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2686,7 +2687,7 @@ async def public_consume_user_entitlement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementDecrement in body
+        body: (body) REQUIRED PublicEntitlementDecrement in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -2708,9 +2709,9 @@ async def public_consume_user_entitlement_async(
         if error:
             return None, error
     request = PublicConsumeUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -4708,9 +4709,9 @@ async def public_query_user_entitlements_by_app_type_async(
 
 @same_doc_as(PublicSellUserEntitlement)
 def public_sell_user_entitlement(
+    body: EntitlementSoldRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementSoldRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4734,7 +4735,7 @@ def public_sell_user_entitlement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementSoldRequest in body
+        body: (body) REQUIRED EntitlementSoldRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -4754,9 +4755,9 @@ def public_sell_user_entitlement(
         if error:
             return None, error
     request = PublicSellUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -4764,9 +4765,9 @@ def public_sell_user_entitlement(
 
 @same_doc_as(PublicSellUserEntitlement)
 async def public_sell_user_entitlement_async(
+    body: EntitlementSoldRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementSoldRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4790,7 +4791,7 @@ async def public_sell_user_entitlement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementSoldRequest in body
+        body: (body) REQUIRED EntitlementSoldRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -4810,9 +4811,9 @@ async def public_sell_user_entitlement_async(
         if error:
             return None, error
     request = PublicSellUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -4822,9 +4823,9 @@ async def public_sell_user_entitlement_async(
 
 @same_doc_as(PublicSplitUserEntitlement)
 def public_split_user_entitlement(
+    body: EntitlementSplitRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementSplitRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4848,7 +4849,7 @@ def public_split_user_entitlement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementSplitRequest in body
+        body: (body) REQUIRED EntitlementSplitRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -4868,9 +4869,9 @@ def public_split_user_entitlement(
         if error:
             return None, error
     request = PublicSplitUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -4878,9 +4879,9 @@ def public_split_user_entitlement(
 
 @same_doc_as(PublicSplitUserEntitlement)
 async def public_split_user_entitlement_async(
+    body: EntitlementSplitRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementSplitRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4904,7 +4905,7 @@ async def public_split_user_entitlement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementSplitRequest in body
+        body: (body) REQUIRED EntitlementSplitRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -4924,9 +4925,9 @@ async def public_split_user_entitlement_async(
         if error:
             return None, error
     request = PublicSplitUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -4936,9 +4937,9 @@ async def public_split_user_entitlement_async(
 
 @same_doc_as(PublicTransferUserEntitlement)
 def public_transfer_user_entitlement(
+    body: EntitlementTransferRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementTransferRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4962,7 +4963,7 @@ def public_transfer_user_entitlement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementTransferRequest in body
+        body: (body) REQUIRED EntitlementTransferRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -4982,9 +4983,9 @@ def public_transfer_user_entitlement(
         if error:
             return None, error
     request = PublicTransferUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -4992,9 +4993,9 @@ def public_transfer_user_entitlement(
 
 @same_doc_as(PublicTransferUserEntitlement)
 async def public_transfer_user_entitlement_async(
+    body: EntitlementTransferRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementTransferRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5018,7 +5019,7 @@ async def public_transfer_user_entitlement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementTransferRequest in body
+        body: (body) REQUIRED EntitlementTransferRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -5038,9 +5039,9 @@ async def public_transfer_user_entitlement_async(
         if error:
             return None, error
     request = PublicTransferUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -5969,9 +5970,9 @@ async def revoke_entitlements_async(
 @deprecated
 @same_doc_as(RevokeUseCount)
 def revoke_use_count(
+    body: RevokeUseCountRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[RevokeUseCountRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5996,7 +5997,7 @@ def revoke_use_count(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevokeUseCountRequest in body
+        body: (body) REQUIRED RevokeUseCountRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6014,9 +6015,9 @@ def revoke_use_count(
         if error:
             return None, error
     request = RevokeUseCount.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -6025,9 +6026,9 @@ def revoke_use_count(
 @deprecated
 @same_doc_as(RevokeUseCount)
 async def revoke_use_count_async(
+    body: RevokeUseCountRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[RevokeUseCountRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6052,7 +6053,7 @@ async def revoke_use_count_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevokeUseCountRequest in body
+        body: (body) REQUIRED RevokeUseCountRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6070,9 +6071,9 @@ async def revoke_use_count_async(
         if error:
             return None, error
     request = RevokeUseCount.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -6084,6 +6085,7 @@ async def revoke_use_count_async(
 def revoke_user_entitlement(
     entitlement_id: str,
     user_id: str,
+    body: Optional[EntitlementRevokeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6102,11 +6104,13 @@ def revoke_user_entitlement(
 
         tags: ["Entitlement"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementRevokeRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6126,6 +6130,7 @@ def revoke_user_entitlement(
     request = RevokeUserEntitlement.create(
         entitlement_id=entitlement_id,
         user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -6135,6 +6140,7 @@ def revoke_user_entitlement(
 async def revoke_user_entitlement_async(
     entitlement_id: str,
     user_id: str,
+    body: Optional[EntitlementRevokeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6153,11 +6159,13 @@ async def revoke_user_entitlement_async(
 
         tags: ["Entitlement"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementRevokeRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6177,6 +6185,7 @@ async def revoke_user_entitlement_async(
     request = RevokeUserEntitlement.create(
         entitlement_id=entitlement_id,
         user_id=user_id,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -6186,9 +6195,9 @@ async def revoke_user_entitlement_async(
 
 @same_doc_as(RevokeUserEntitlementByUseCount)
 def revoke_user_entitlement_by_use_count(
+    body: RevokeUseCountRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[RevokeUseCountRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6213,7 +6222,7 @@ def revoke_user_entitlement_by_use_count(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevokeUseCountRequest in body
+        body: (body) REQUIRED RevokeUseCountRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6231,9 +6240,9 @@ def revoke_user_entitlement_by_use_count(
         if error:
             return None, error
     request = RevokeUserEntitlementByUseCount.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -6241,9 +6250,9 @@ def revoke_user_entitlement_by_use_count(
 
 @same_doc_as(RevokeUserEntitlementByUseCount)
 async def revoke_user_entitlement_by_use_count_async(
+    body: RevokeUseCountRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[RevokeUseCountRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6268,7 +6277,7 @@ async def revoke_user_entitlement_by_use_count_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevokeUseCountRequest in body
+        body: (body) REQUIRED RevokeUseCountRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6286,9 +6295,9 @@ async def revoke_user_entitlement_by_use_count_async(
         if error:
             return None, error
     request = RevokeUserEntitlementByUseCount.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -6398,9 +6407,9 @@ async def revoke_user_entitlements_async(
 
 @same_doc_as(SellUserEntitlement)
 def sell_user_entitlement(
+    body: AdminEntitlementSoldRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[AdminEntitlementSoldRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6424,7 +6433,7 @@ def sell_user_entitlement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdminEntitlementSoldRequest in body
+        body: (body) REQUIRED AdminEntitlementSoldRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6444,9 +6453,9 @@ def sell_user_entitlement(
         if error:
             return None, error
     request = SellUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -6454,9 +6463,9 @@ def sell_user_entitlement(
 
 @same_doc_as(SellUserEntitlement)
 async def sell_user_entitlement_async(
+    body: AdminEntitlementSoldRequest,
     entitlement_id: str,
     user_id: str,
-    body: Optional[AdminEntitlementSoldRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6480,7 +6489,7 @@ async def sell_user_entitlement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdminEntitlementSoldRequest in body
+        body: (body) REQUIRED AdminEntitlementSoldRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6500,9 +6509,9 @@ async def sell_user_entitlement_async(
         if error:
             return None, error
     request = SellUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -6512,8 +6521,8 @@ async def sell_user_entitlement_async(
 
 @same_doc_as(UpdatePlatformEntitlementConfig)
 def update_platform_entitlement_config(
+    body: EntitlementPlatformConfigUpdate,
     platform: Union[str, UpdatePlatformEntitlementConfigPlatformEnum],
-    body: Optional[EntitlementPlatformConfigUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6538,7 +6547,7 @@ def update_platform_entitlement_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementPlatformConfigUpdate in body
+        body: (body) REQUIRED EntitlementPlatformConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -6554,8 +6563,8 @@ def update_platform_entitlement_config(
         if error:
             return None, error
     request = UpdatePlatformEntitlementConfig.create(
-        platform=platform,
         body=body,
+        platform=platform,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -6563,8 +6572,8 @@ def update_platform_entitlement_config(
 
 @same_doc_as(UpdatePlatformEntitlementConfig)
 async def update_platform_entitlement_config_async(
+    body: EntitlementPlatformConfigUpdate,
     platform: Union[str, UpdatePlatformEntitlementConfigPlatformEnum],
-    body: Optional[EntitlementPlatformConfigUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6589,7 +6598,7 @@ async def update_platform_entitlement_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementPlatformConfigUpdate in body
+        body: (body) REQUIRED EntitlementPlatformConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -6605,8 +6614,8 @@ async def update_platform_entitlement_config_async(
         if error:
             return None, error
     request = UpdatePlatformEntitlementConfig.create(
-        platform=platform,
         body=body,
+        platform=platform,
         namespace=namespace,
     )
     return await run_request_async(
@@ -6616,9 +6625,9 @@ async def update_platform_entitlement_config_async(
 
 @same_doc_as(UpdateUserEntitlement)
 def update_user_entitlement(
+    body: EntitlementUpdate,
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6643,7 +6652,7 @@ def update_user_entitlement(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementUpdate in body
+        body: (body) REQUIRED EntitlementUpdate in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6665,9 +6674,9 @@ def update_user_entitlement(
         if error:
             return None, error
     request = UpdateUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -6675,9 +6684,9 @@ def update_user_entitlement(
 
 @same_doc_as(UpdateUserEntitlement)
 async def update_user_entitlement_async(
+    body: EntitlementUpdate,
     entitlement_id: str,
     user_id: str,
-    body: Optional[EntitlementUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6702,7 +6711,7 @@ async def update_user_entitlement_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementUpdate in body
+        body: (body) REQUIRED EntitlementUpdate in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -6724,9 +6733,9 @@ async def update_user_entitlement_async(
         if error:
             return None, error
     request = UpdateUserEntitlement.create(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(

@@ -37,9 +37,6 @@ class DeleteAllUserContents(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
 

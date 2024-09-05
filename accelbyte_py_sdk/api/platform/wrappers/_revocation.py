@@ -129,8 +129,8 @@ async def delete_revocation_config_async(
 
 @same_doc_as(DoRevocation)
 def do_revocation(
+    body: RevocationRequest,
     user_id: str,
-    body: Optional[RevocationRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -155,7 +155,7 @@ def do_revocation(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevocationRequest in body
+        body: (body) REQUIRED RevocationRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -169,8 +169,8 @@ def do_revocation(
         if error:
             return None, error
     request = DoRevocation.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -178,8 +178,8 @@ def do_revocation(
 
 @same_doc_as(DoRevocation)
 async def do_revocation_async(
+    body: RevocationRequest,
     user_id: str,
-    body: Optional[RevocationRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -204,7 +204,7 @@ async def do_revocation_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevocationRequest in body
+        body: (body) REQUIRED RevocationRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -218,8 +218,8 @@ async def do_revocation_async(
         if error:
             return None, error
     request = DoRevocation.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -465,7 +465,7 @@ async def query_revocation_histories_async(
 
 @same_doc_as(UpdateRevocationConfig)
 def update_revocation_config(
-    body: Optional[RevocationConfigUpdate] = None,
+    body: RevocationConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -490,7 +490,7 @@ def update_revocation_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevocationConfigUpdate in body
+        body: (body) REQUIRED RevocationConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -510,7 +510,7 @@ def update_revocation_config(
 
 @same_doc_as(UpdateRevocationConfig)
 async def update_revocation_config_async(
-    body: Optional[RevocationConfigUpdate] = None,
+    body: RevocationConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -535,7 +535,7 @@ async def update_revocation_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevocationConfigUpdate in body
+        body: (body) REQUIRED RevocationConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 

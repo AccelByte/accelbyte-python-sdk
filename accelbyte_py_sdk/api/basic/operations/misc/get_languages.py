@@ -58,7 +58,7 @@ class GetLanguages(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - Dict[str, Any] (successful operation)
+        200: OK - Dict[str, str] (successful operation)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error)
 
@@ -155,12 +155,12 @@ class GetLanguages(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, Dict[str, Any]],
+        Union[None, Dict[str, str]],
         Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
-        200: OK - Dict[str, Any] (successful operation)
+        200: OK - Dict[str, str] (successful operation)
 
         400: Bad Request - ValidationErrorEntity (20002: validation error)
 
@@ -180,7 +180,7 @@ class GetLanguages(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return {str(k): v for k, v in content.items()}, None
+            return {str(k): str(v) for k, v in content.items()}, None
         if code == 400:
             return None, ValidationErrorEntity.create_from_dict(content)
         if code == 401:

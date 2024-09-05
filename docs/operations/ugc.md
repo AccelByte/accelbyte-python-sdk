@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Ugc Service Index (2.20.4)
+# AccelByte Gaming Services Ugc Service Index (2.21.0)
 
 
 ## Operations
@@ -57,6 +57,7 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /ugc/v2/admin/namespaces/{namespace}/contents/bulk | POST | AdminBulkGetContentByIDsV2 | `false` | [AdminBulkGetContentByIDsV2](../../accelbyte_py_sdk/api/ugc/operations/admin_content_v2/admin_bulk_get_content__b85ce3.py) | [admin_bulk_get_content_by_i_ds_v2](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content_v2.py) | [accelbyte_py_sdk_cli ugc-admin-bulk-get-content-by-i-ds-v2](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_bulk_get_content_by_i_ds_v2.py) |
+| /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}/copy | POST | AdminCopyContent | `false` | [AdminCopyContent](../../accelbyte_py_sdk/api/ugc/operations/admin_content_v2/admin_copy_content.py) | [admin_copy_content](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content_v2.py) | [accelbyte_py_sdk_cli ugc-admin-copy-content](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_copy_content.py) |
 | /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents | POST | AdminCreateContentV2 | `false` | [AdminCreateContentV2](../../accelbyte_py_sdk/api/ugc/operations/admin_content_v2/admin_create_content_v2.py) | [admin_create_content_v2](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content_v2.py) | [accelbyte_py_sdk_cli ugc-admin-create-content-v2](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_create_content_v2.py) |
 | /ugc/v2/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode} | DELETE | AdminDeleteContentByShareCodeV2 | `false` | [AdminDeleteContentByShareCodeV2](../../accelbyte_py_sdk/api/ugc/operations/admin_content_v2/admin_delete_content_by_cd2201.py) | [admin_delete_content_by_share_code_v2](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content_v2.py) | [accelbyte_py_sdk_cli ugc-admin-delete-content-by-share-code-v2](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_delete_content_by_share_code_v2.py) |
 | /ugc/v2/admin/namespaces/{namespace}/contents/{contentId}/screenshots/{screenshotId} | DELETE | AdminDeleteContentScreenshotV2 | `false` | [AdminDeleteContentScreenshotV2](../../accelbyte_py_sdk/api/ugc/operations/admin_content_v2/admin_delete_content_sc_bf1900.py) | [admin_delete_content_screenshot_v2](../../accelbyte_py_sdk/api/ugc/wrappers/_admin_content_v2.py) | [accelbyte_py_sdk_cli ugc-admin-delete-content-screenshot-v2](../../samples/cli/accelbyte_py_sdk_cli/ugc/_admin_delete_content_screenshot_v2.py) |
@@ -276,6 +277,7 @@
 | models.ContentRequestV2 | [ModelsContentRequestV2](../../accelbyte_py_sdk/api/ugc/models/models_content_request_v2.py) |
 | models.ContentSnapshot | [ModelsContentSnapshot](../../accelbyte_py_sdk/api/ugc/models/models_content_snapshot.py) |
 | models.ContentVersionResponse | [ModelsContentVersionResponse](../../accelbyte_py_sdk/api/ugc/models/models_content_version_response.py) |
+| models.CopyContentRequest | [ModelsCopyContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_copy_content_request.py) |
 | models.CreateContentRequest | [ModelsCreateContentRequest](../../accelbyte_py_sdk/api/ugc/models/models_create_content_request.py) |
 | models.CreateContentRequestS3 | [ModelsCreateContentRequestS3](../../accelbyte_py_sdk/api/ugc/models/models_create_content_request_s3.py) |
 | models.CreateContentResponse | [ModelsCreateContentResponse](../../accelbyte_py_sdk/api/ugc/models/models_create_content_response.py) |

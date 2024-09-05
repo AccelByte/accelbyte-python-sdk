@@ -37,9 +37,6 @@ class AdminDeleteAllUserContents(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents
 

@@ -47,14 +47,14 @@ from ..models import PaymentOrderRefundResultStatusEnum
 
 @same_doc_as(CreatePaymentOrderByDedicated)
 def create_payment_order_by_dedicated(
-    body: Optional[ExternalPaymentOrderCreate] = None,
+    body: ExternalPaymentOrderCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Create payment order by dedicated server (createPaymentOrderByDedicated)
 
-    [Not Supported Yet In Starter]
+    [Not supported yet in AGS Shared Cloud]
 
     This API is used to create payment order from non justice service. e.g. from dedicated server, the result contains the payment station url.
 
@@ -236,7 +236,7 @@ def create_payment_order_by_dedicated(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ExternalPaymentOrderCreate in body
+        body: (body) REQUIRED ExternalPaymentOrderCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -266,14 +266,14 @@ def create_payment_order_by_dedicated(
 
 @same_doc_as(CreatePaymentOrderByDedicated)
 async def create_payment_order_by_dedicated_async(
-    body: Optional[ExternalPaymentOrderCreate] = None,
+    body: ExternalPaymentOrderCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Create payment order by dedicated server (createPaymentOrderByDedicated)
 
-    [Not Supported Yet In Starter]
+    [Not supported yet in AGS Shared Cloud]
 
     This API is used to create payment order from non justice service. e.g. from dedicated server, the result contains the payment station url.
 
@@ -455,7 +455,7 @@ async def create_payment_order_by_dedicated_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ExternalPaymentOrderCreate in body
+        body: (body) REQUIRED ExternalPaymentOrderCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -487,15 +487,15 @@ async def create_payment_order_by_dedicated_async(
 
 @same_doc_as(RefundPaymentOrderByDedicated)
 def refund_payment_order_by_dedicated(
+    body: PaymentOrderRefund,
     payment_order_no: str,
-    body: Optional[PaymentOrderRefund] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Refund payment order by dedicated server (refundPaymentOrderByDedicated)
 
-    [Not Supported Yet In Starter]
+    [Not supported yet in AGS Shared Cloud]
 
     This API is used to refund payment order by paymentOrderNo from non justice service. e.g. dedicated server.
 
@@ -653,7 +653,7 @@ def refund_payment_order_by_dedicated(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderRefund in body
+        body: (body) REQUIRED PaymentOrderRefund in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -675,8 +675,8 @@ def refund_payment_order_by_dedicated(
         if error:
             return None, error
     request = RefundPaymentOrderByDedicated.create(
-        payment_order_no=payment_order_no,
         body=body,
+        payment_order_no=payment_order_no,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -684,15 +684,15 @@ def refund_payment_order_by_dedicated(
 
 @same_doc_as(RefundPaymentOrderByDedicated)
 async def refund_payment_order_by_dedicated_async(
+    body: PaymentOrderRefund,
     payment_order_no: str,
-    body: Optional[PaymentOrderRefund] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Refund payment order by dedicated server (refundPaymentOrderByDedicated)
 
-    [Not Supported Yet In Starter]
+    [Not supported yet in AGS Shared Cloud]
 
     This API is used to refund payment order by paymentOrderNo from non justice service. e.g. dedicated server.
 
@@ -850,7 +850,7 @@ async def refund_payment_order_by_dedicated_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderRefund in body
+        body: (body) REQUIRED PaymentOrderRefund in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -872,8 +872,8 @@ async def refund_payment_order_by_dedicated_async(
         if error:
             return None, error
     request = RefundPaymentOrderByDedicated.create(
-        payment_order_no=payment_order_no,
         body=body,
+        payment_order_no=payment_order_no,
         namespace=namespace,
     )
     return await run_request_async(
@@ -891,7 +891,7 @@ def sync_payment_orders(
 ):
     """Sync payment orders (syncPaymentOrders)
 
-    [Not Supported Yet In Starter] Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
+    [Not supported yet in AGS Shared Cloud] Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
       * Returns : sync payment orders
@@ -936,7 +936,7 @@ async def sync_payment_orders_async(
 ):
     """Sync payment orders (syncPaymentOrders)
 
-    [Not Supported Yet In Starter] Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
+    [Not supported yet in AGS Shared Cloud] Sync payment orders. If response contains nextEvaluatedKey, please use it as query param in the next call to fetch the next batch, a batch has 1000 elements or less.
     Other detail info:
 
       * Returns : sync payment orders

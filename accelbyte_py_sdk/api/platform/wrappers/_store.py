@@ -183,7 +183,7 @@ async def clone_store_async(
 
 @same_doc_as(CreateStore)
 def create_store(
-    body: Optional[StoreCreate] = None,
+    body: StoreCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -209,7 +209,7 @@ def create_store(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StoreCreate in body
+        body: (body) REQUIRED StoreCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -233,7 +233,7 @@ def create_store(
 
 @same_doc_as(CreateStore)
 async def create_store_async(
-    body: Optional[StoreCreate] = None,
+    body: StoreCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -259,7 +259,7 @@ async def create_store_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StoreCreate in body
+        body: (body) REQUIRED StoreCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -743,7 +743,7 @@ async def export_store_1_async(
 
 @same_doc_as(ExportStoreByCSV)
 def export_store_by_csv(
-    body: Optional[ExportStoreToCSVRequest] = None,
+    body: ExportStoreToCSVRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -765,7 +765,7 @@ def export_store_by_csv(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ExportStoreToCSVRequest in body
+        body: (body) REQUIRED ExportStoreToCSVRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -791,7 +791,7 @@ def export_store_by_csv(
 
 @same_doc_as(ExportStoreByCSV)
 async def export_store_by_csv_async(
-    body: Optional[ExportStoreToCSVRequest] = None,
+    body: ExportStoreToCSVRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -813,7 +813,7 @@ async def export_store_by_csv_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ExportStoreToCSVRequest in body
+        body: (body) REQUIRED ExportStoreToCSVRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1509,12 +1509,12 @@ async def import_store_1_async(
 
 @same_doc_as(ImportStoreByCSV)
 def import_store_by_csv(
+    category: Any,
+    display: Any,
+    item: Any,
+    notes: str,
+    section: Any,
     store_id: str,
-    category: Optional[Any] = None,
-    display: Optional[Any] = None,
-    item: Optional[Any] = None,
-    notes: Optional[str] = None,
-    section: Optional[Any] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1536,15 +1536,15 @@ def import_store_by_csv(
 
         securities: [BEARER_AUTH]
 
-        category: (category) OPTIONAL Any in form_data
+        category: (category) REQUIRED Any in form_data
 
-        display: (display) OPTIONAL Any in form_data
+        display: (display) REQUIRED Any in form_data
 
-        item: (item) OPTIONAL Any in form_data
+        item: (item) REQUIRED Any in form_data
 
-        notes: (notes) OPTIONAL str in form_data
+        notes: (notes) REQUIRED str in form_data
 
-        section: (section) OPTIONAL Any in form_data
+        section: (section) REQUIRED Any in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1564,12 +1564,12 @@ def import_store_by_csv(
         if error:
             return None, error
     request = ImportStoreByCSV.create(
-        store_id=store_id,
         category=category,
         display=display,
         item=item,
         notes=notes,
         section=section,
+        store_id=store_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1577,12 +1577,12 @@ def import_store_by_csv(
 
 @same_doc_as(ImportStoreByCSV)
 async def import_store_by_csv_async(
+    category: Any,
+    display: Any,
+    item: Any,
+    notes: str,
+    section: Any,
     store_id: str,
-    category: Optional[Any] = None,
-    display: Optional[Any] = None,
-    item: Optional[Any] = None,
-    notes: Optional[str] = None,
-    section: Optional[Any] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1604,15 +1604,15 @@ async def import_store_by_csv_async(
 
         securities: [BEARER_AUTH]
 
-        category: (category) OPTIONAL Any in form_data
+        category: (category) REQUIRED Any in form_data
 
-        display: (display) OPTIONAL Any in form_data
+        display: (display) REQUIRED Any in form_data
 
-        item: (item) OPTIONAL Any in form_data
+        item: (item) REQUIRED Any in form_data
 
-        notes: (notes) OPTIONAL str in form_data
+        notes: (notes) REQUIRED str in form_data
 
-        section: (section) OPTIONAL Any in form_data
+        section: (section) REQUIRED Any in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1632,12 +1632,12 @@ async def import_store_by_csv_async(
         if error:
             return None, error
     request = ImportStoreByCSV.create(
-        store_id=store_id,
         category=category,
         display=display,
         item=item,
         notes=notes,
         section=section,
+        store_id=store_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -2051,7 +2051,7 @@ async def rollback_published_store_async(
 
 @same_doc_as(UpdateCatalogConfig)
 def update_catalog_config(
-    body: Optional[CatalogConfigUpdate] = None,
+    body: CatalogConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2075,7 +2075,7 @@ def update_catalog_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CatalogConfigUpdate in body
+        body: (body) REQUIRED CatalogConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2097,7 +2097,7 @@ def update_catalog_config(
 
 @same_doc_as(UpdateCatalogConfig)
 async def update_catalog_config_async(
-    body: Optional[CatalogConfigUpdate] = None,
+    body: CatalogConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2121,7 +2121,7 @@ async def update_catalog_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CatalogConfigUpdate in body
+        body: (body) REQUIRED CatalogConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2145,8 +2145,8 @@ async def update_catalog_config_async(
 
 @same_doc_as(UpdateStore)
 def update_store(
+    body: StoreUpdate,
     store_id: str,
-    body: Optional[StoreUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2172,7 +2172,7 @@ def update_store(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StoreUpdate in body
+        body: (body) REQUIRED StoreUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2192,8 +2192,8 @@ def update_store(
         if error:
             return None, error
     request = UpdateStore.create(
-        store_id=store_id,
         body=body,
+        store_id=store_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -2201,8 +2201,8 @@ def update_store(
 
 @same_doc_as(UpdateStore)
 async def update_store_async(
+    body: StoreUpdate,
     store_id: str,
-    body: Optional[StoreUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2228,7 +2228,7 @@ async def update_store_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StoreUpdate in body
+        body: (body) REQUIRED StoreUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2248,8 +2248,8 @@ async def update_store_async(
         if error:
             return None, error
     request = UpdateStore.create(
-        store_id=store_id,
         body=body,
+        store_id=store_id,
         namespace=namespace,
     )
     return await run_request_async(

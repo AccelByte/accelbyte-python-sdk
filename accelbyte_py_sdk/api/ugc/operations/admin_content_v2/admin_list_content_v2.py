@@ -222,7 +222,7 @@ class AdminListContentV2(Operation):
         self.tags = value
         return self
 
-    def with_type_(self, value: str) -> AdminListContentV2:
+    def with_type(self, value: str) -> AdminListContentV2:
         self.type_ = value
         return self
 

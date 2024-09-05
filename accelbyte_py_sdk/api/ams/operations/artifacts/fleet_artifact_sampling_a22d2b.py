@@ -38,9 +38,6 @@ class FleetArtifactSamplingRulesSet(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [UPDATE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/artifacts-sampling-rules
 

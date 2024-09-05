@@ -42,12 +42,6 @@ class CountServerDetailed(Operation):
 
     This endpoint counts all of dedicated servers in a region managed by this service.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/count/detailed
 

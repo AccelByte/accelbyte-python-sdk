@@ -1,3 +1,25 @@
+<a name="v0.69.0"></a>
+## [v0.69.0]
+### chore
+- **core:** exported TokenRepositoryObserver
+- **:** replace usage of WebsocketsWSClient with LobbyWSClient
+- **:** add clean step
+- **:** disable incorrect lint error
+- **:** disable incorrect lint error
+### feat
+- **core:** add websocket client base implementation
+- **lobby:** add websocket client lobby implementation
+- **core:** add number_of_attempts to WSClient should_reconnect
+### test
+- **lobby:** add tests for websocket client lobby implementation
+- **integration:** add inventory test
+### style
+- **:** run styler
+### fix
+- **core:** fix ws listener invocation needing exact parameter name
+- **integration:** add cancel user account deletion request
+
+
 <a name="v0.68.0"></a>
 ## [v0.68.0]
 ### docs

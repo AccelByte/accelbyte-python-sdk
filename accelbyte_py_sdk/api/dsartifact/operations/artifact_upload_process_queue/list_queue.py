@@ -42,9 +42,6 @@ class ListQueue(Operation):
     This endpoint is used to get the list of queues on a node
     ```
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [READ]
-
     Properties:
         url: /dsartifact/artifacts/queues
 
@@ -157,7 +154,7 @@ class ListQueue(Operation):
         self.limit = value
         return self
 
-    def with_next_(self, value: str) -> ListQueue:
+    def with_next(self, value: str) -> ListQueue:
         self.next_ = value
         return self
 

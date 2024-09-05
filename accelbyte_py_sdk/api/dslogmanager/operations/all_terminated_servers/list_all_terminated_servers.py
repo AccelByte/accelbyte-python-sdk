@@ -42,9 +42,6 @@ class ListAllTerminatedServers(Operation):
     This endpoint used to retrieve terminated servers in all namespace
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
-
     Properties:
         url: /dslogmanager/servers/search
 
@@ -226,7 +223,7 @@ class ListAllTerminatedServers(Operation):
         self.namespace = value
         return self
 
-    def with_next_(self, value: str) -> ListAllTerminatedServers:
+    def with_next(self, value: str) -> ListAllTerminatedServers:
         self.next_ = value
         return self
 

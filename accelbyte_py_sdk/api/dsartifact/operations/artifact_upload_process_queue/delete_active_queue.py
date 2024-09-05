@@ -41,9 +41,6 @@ class DeleteActiveQueue(Operation):
     This endpoint is used to delete active queue process on a node
     ```
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [DELETE]
-
     Properties:
         url: /dsartifact/artifacts/queues/active
 

@@ -60,7 +60,9 @@ class SyncOculusConsumableEntitlements(Operation):
     Responses:
         200: OK - List[OculusReconcileResult] (successful operation)
 
-        400: Bad Request - ErrorEntity (39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+        400: Bad Request - ErrorEntity (39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39134: Invalid Oculus IAP config under namespace [{namespace}]: [{message}] | 39133: Bad request for Oculus: [{reason}])
+
+        404: Not Found - ErrorEntity (39146: Oculus IAP config not found in namespace [{namespace}].)
     """
 
     # region fields
@@ -170,7 +172,9 @@ class SyncOculusConsumableEntitlements(Operation):
 
         200: OK - List[OculusReconcileResult] (successful operation)
 
-        400: Bad Request - ErrorEntity (39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+        400: Bad Request - ErrorEntity (39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39134: Invalid Oculus IAP config under namespace [{namespace}]: [{message}] | 39133: Bad request for Oculus: [{reason}])
+
+        404: Not Found - ErrorEntity (39146: Oculus IAP config not found in namespace [{namespace}].)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -188,6 +192,8 @@ class SyncOculusConsumableEntitlements(Operation):
         if code == 200:
             return [OculusReconcileResult.create_from_dict(i) for i in content], None
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(

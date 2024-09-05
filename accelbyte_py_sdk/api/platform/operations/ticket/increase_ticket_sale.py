@@ -56,7 +56,7 @@ class IncreaseTicketSale(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TicketSaleIncrementRequest in body
+        body: (body) REQUIRED TicketSaleIncrementRequest in body
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -79,7 +79,7 @@ class IncreaseTicketSale(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: TicketSaleIncrementRequest  # OPTIONAL in [body]
+    body: TicketSaleIncrementRequest  # REQUIRED in [body]
     booth_name: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -227,17 +227,12 @@ class IncreaseTicketSale(Operation):
 
     @classmethod
     def create(
-        cls,
-        booth_name: str,
-        namespace: str,
-        body: Optional[TicketSaleIncrementRequest] = None,
-        **kwargs,
+        cls, body: TicketSaleIncrementRequest, booth_name: str, namespace: str, **kwargs
     ) -> IncreaseTicketSale:
         instance = cls()
+        instance.body = body
         instance.booth_name = booth_name
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -274,7 +269,7 @@ class IncreaseTicketSale(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "boothName": True,
             "namespace": True,
         }

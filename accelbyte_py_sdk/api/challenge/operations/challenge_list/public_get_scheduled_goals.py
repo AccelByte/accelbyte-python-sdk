@@ -39,9 +39,6 @@ class PublicGetScheduledGoals(Operation):
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE [READ]
-
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/goals
 

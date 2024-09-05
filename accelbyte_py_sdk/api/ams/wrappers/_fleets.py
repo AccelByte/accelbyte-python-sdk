@@ -61,9 +61,6 @@ def fleet_claim_by_id(
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
-
     Properties:
         url: /ams/v1/namespaces/{namespace}/fleets/{fleetID}/claim
 
@@ -119,9 +116,6 @@ async def fleet_claim_by_id_async(
     """claim a dedicated server from a fleet (FleetClaimByID)
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/fleets/{fleetID}/claim
@@ -182,9 +176,6 @@ def fleet_claim_by_keys(
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
-
     Properties:
         url: /ams/v1/namespaces/{namespace}/servers/claim
 
@@ -238,9 +229,6 @@ async def fleet_claim_by_keys_async(
     Claim a dedicated server from fleets with matching claim keys
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
     Properties:
         url: /ams/v1/namespaces/{namespace}/servers/claim
@@ -298,9 +286,6 @@ def fleet_create(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets
 
@@ -352,9 +337,6 @@ async def fleet_create_async(
     Optionally, sampling rules for the fleet can also be specified
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets
@@ -408,9 +390,6 @@ def fleet_delete(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
 
@@ -462,9 +441,6 @@ async def fleet_delete_async(
     """delete a fleet (FleetDelete)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
@@ -520,9 +496,6 @@ def fleet_get(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
 
@@ -574,9 +547,6 @@ async def fleet_get_async(
     """get a fleet (FleetGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
@@ -631,9 +601,6 @@ def fleet_list(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets
 
@@ -674,9 +641,6 @@ async def fleet_list_async(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets
 
@@ -712,6 +676,8 @@ async def fleet_list_async(
 @same_doc_as(FleetServers)
 def fleet_servers(
     fleet_id: str,
+    count: Optional[str] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -719,9 +685,6 @@ def fleet_servers(
     """get server details & counts for a fleet (FleetServers)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers
@@ -739,6 +702,10 @@ def fleet_servers(
         fleet_id: (fleetID) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
+
+        count: (count) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ApiFleetServersResponse (success)
@@ -759,6 +726,8 @@ def fleet_servers(
             return None, error
     request = FleetServers.create(
         fleet_id=fleet_id,
+        count=count,
+        offset=offset,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -767,6 +736,8 @@ def fleet_servers(
 @same_doc_as(FleetServers)
 async def fleet_servers_async(
     fleet_id: str,
+    count: Optional[str] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -774,9 +745,6 @@ async def fleet_servers_async(
     """get server details & counts for a fleet (FleetServers)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers
@@ -794,6 +762,10 @@ async def fleet_servers_async(
         fleet_id: (fleetID) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
+
+        count: (count) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ApiFleetServersResponse (success)
@@ -814,6 +786,8 @@ async def fleet_servers_async(
             return None, error
     request = FleetServers.create(
         fleet_id=fleet_id,
+        count=count,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(
@@ -834,9 +808,6 @@ def fleet_update(
     Optionally, sampling rules for the fleet can also be updated
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}
@@ -895,9 +866,6 @@ async def fleet_update_async(
     Optionally, sampling rules for the fleet can also be updated
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}

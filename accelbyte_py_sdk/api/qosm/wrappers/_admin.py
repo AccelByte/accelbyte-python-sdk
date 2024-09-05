@@ -51,12 +51,6 @@ def delete_server(
     This endpoint delete a registered QoS service record.
     ```
 
-    Required Permission(s):
-        - ADMIN:QOS:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /qosm/admin/servers/{region}
 
@@ -95,12 +89,6 @@ async def delete_server_async(
 
     This endpoint delete a registered QoS service record.
     ```
-
-    Required Permission(s):
-        - ADMIN:QOS:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /qosm/admin/servers/{region}
@@ -145,12 +133,6 @@ def set_server_alias(
 
     This endpoint modifies a registered QoS service's region alias.
     ```
-
-    Required Permission(s):
-        - ADMIN:QOS:SERVER []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /qosm/admin/servers/{region}/alias
@@ -200,12 +182,6 @@ async def set_server_alias_async(
 
     This endpoint modifies a registered QoS service's region alias.
     ```
-
-    Required Permission(s):
-        - ADMIN:QOS:SERVER []
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /qosm/admin/servers/{region}/alias
@@ -258,12 +234,6 @@ def update_server_config(
 
     This endpoint updates the registered QoS service's configurable configuration'.
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /qosm/admin/namespaces/{namespace}/servers/{region}
@@ -321,12 +291,6 @@ async def update_server_config_async(
 
     This endpoint updates the registered QoS service's configurable configuration'.
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /qosm/admin/namespaces/{namespace}/servers/{region}

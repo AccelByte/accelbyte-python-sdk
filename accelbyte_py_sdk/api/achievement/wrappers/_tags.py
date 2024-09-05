@@ -51,12 +51,6 @@ def admin_list_tags(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/tags
 
@@ -119,12 +113,6 @@ async def admin_list_tags_async(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/tags
@@ -191,12 +179,6 @@ def public_list_tags(
     Required permission
     `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/tags
 
@@ -259,12 +241,6 @@ async def public_list_tags_async(
 
     Required permission
     `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/tags

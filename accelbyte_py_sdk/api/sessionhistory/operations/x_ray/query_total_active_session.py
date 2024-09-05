@@ -53,6 +53,8 @@ class QueryTotalActiveSession(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        match_pool: (matchPool) OPTIONAL List[str] in query
+
         region: (region) OPTIONAL str in query
 
         end_date: (endDate) REQUIRED str in query
@@ -83,6 +85,7 @@ class QueryTotalActiveSession(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    match_pool: List[str]  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
     end_date: str  # REQUIRED in [query]
     start_date: str  # REQUIRED in [query]
@@ -137,6 +140,8 @@ class QueryTotalActiveSession(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "match_pool"):
+            result["matchPool"] = self.match_pool
         if hasattr(self, "region"):
             result["region"] = self.region
         if hasattr(self, "end_date"):
@@ -155,6 +160,10 @@ class QueryTotalActiveSession(Operation):
 
     def with_namespace(self, value: str) -> QueryTotalActiveSession:
         self.namespace = value
+        return self
+
+    def with_match_pool(self, value: List[str]) -> QueryTotalActiveSession:
+        self.match_pool = value
         return self
 
     def with_region(self, value: str) -> QueryTotalActiveSession:
@@ -179,6 +188,10 @@ class QueryTotalActiveSession(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "match_pool") and self.match_pool:
+            result["matchPool"] = [str(i0) for i0 in self.match_pool]
+        elif include_empty:
+            result["matchPool"] = []
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
@@ -261,6 +274,7 @@ class QueryTotalActiveSession(Operation):
         namespace: str,
         end_date: str,
         start_date: str,
+        match_pool: Optional[List[str]] = None,
         region: Optional[str] = None,
         **kwargs,
     ) -> QueryTotalActiveSession:
@@ -268,6 +282,8 @@ class QueryTotalActiveSession(Operation):
         instance.namespace = namespace
         instance.end_date = end_date
         instance.start_date = start_date
+        if match_pool is not None:
+            instance.match_pool = match_pool
         if region is not None:
             instance.region = region
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -283,6 +299,10 @@ class QueryTotalActiveSession(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "matchPool" in dict_ and dict_["matchPool"] is not None:
+            instance.match_pool = [str(i0) for i0 in dict_["matchPool"]]
+        elif include_empty:
+            instance.match_pool = []
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
@@ -301,6 +321,7 @@ class QueryTotalActiveSession(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "matchPool": "match_pool",
             "region": "region",
             "endDate": "end_date",
             "startDate": "start_date",
@@ -310,9 +331,16 @@ class QueryTotalActiveSession(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "matchPool": False,
             "region": False,
             "endDate": True,
             "startDate": True,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "matchPool": "csv",  # in query
         }
 
     # endregion static methods

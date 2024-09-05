@@ -191,7 +191,7 @@ class QueryUserExpGrantHistory(Operation):
         self.user_id = value
         return self
 
-    def with_from_(self, value: str) -> QueryUserExpGrantHistory:
+    def with_from(self, value: str) -> QueryUserExpGrantHistory:
         self.from_ = value
         return self
 

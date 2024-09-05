@@ -37,9 +37,6 @@ class AdminDeleteChallenge(Operation):
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
-
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}
 

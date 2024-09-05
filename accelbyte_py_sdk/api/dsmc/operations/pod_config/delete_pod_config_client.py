@@ -41,12 +41,6 @@ class DeletePodConfigClient(Operation):
 
     This endpoint delete a dedicated server pod config in a namespace
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/pods/{name}
 

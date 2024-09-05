@@ -88,9 +88,6 @@ def admin_delete_content(
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
 
@@ -146,9 +143,6 @@ async def admin_delete_content_async(
     """Delete content (AdminDeleteContent)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -322,9 +316,6 @@ def admin_download_content_preview(
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/preview
 
@@ -374,9 +365,6 @@ async def admin_download_content_preview_async(
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/preview
@@ -429,9 +417,6 @@ def admin_get_content(
     """Get user's generated contents (AdminGetContent)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents
@@ -488,9 +473,6 @@ async def admin_get_content_async(
     """Get user's generated contents (AdminGetContent)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents
@@ -549,9 +531,6 @@ def admin_get_content_bulk(
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
     Maximum contentId per request 100
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/bulk
 
@@ -602,9 +581,6 @@ async def admin_get_content_bulk_async(
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
     Maximum contentId per request 100
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/bulk
@@ -659,9 +635,6 @@ def admin_get_content_bulk_by_share_codes(
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
     Maximum sharecodes per request 100
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/sharecodes/bulk
 
@@ -712,9 +685,6 @@ async def admin_get_content_bulk_by_share_codes_async(
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
     Maximum sharecodes per request 100
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/sharecodes/bulk
@@ -768,9 +738,6 @@ def admin_get_specific_content(
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}
 
@@ -818,9 +785,6 @@ async def admin_get_specific_content_async(
     """Get user specific content (AdminGetSpecificContent)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}
@@ -872,9 +836,6 @@ def admin_get_user_content_by_share_code(
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/sharecodes/{shareCode}
 
@@ -922,9 +883,6 @@ async def admin_get_user_content_by_share_code_async(
     """Get content by sharecode (AdminGetUserContentByShareCode)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/sharecodes/{shareCode}
@@ -977,9 +935,6 @@ def admin_hide_user_content(
     """Hide/Unhide user's generated contents (AdminHideUserContent)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents/{contentId}/hide
@@ -1038,9 +993,6 @@ async def admin_hide_user_content_async(
     """Hide/Unhide user's generated contents (AdminHideUserContent)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents/{contentId}/hide
@@ -1131,9 +1083,6 @@ def admin_search_channel_specific_content(
     Allowed character for operator: `&` `|` `(` `)`
 
      Please note that value of tags query param should be URL encoded
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/search
@@ -1250,9 +1199,6 @@ async def admin_search_channel_specific_content_async(
     Allowed character for operator: `&` `|` `(` `)`
 
      Please note that value of tags query param should be URL encoded
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/search
@@ -1371,9 +1317,6 @@ def admin_search_content(
 
      Please note that value of tags query param should be URL encoded
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/search
 
@@ -1486,9 +1429,6 @@ async def admin_search_content_async(
 
      Please note that value of tags query param should be URL encoded
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/search
 
@@ -1578,9 +1518,6 @@ def admin_update_content_direct(
 
     All request body are required except preview, tags and customAttributes.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
 
@@ -1647,9 +1584,6 @@ async def admin_update_content_direct_async(
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
 
     All request body are required except preview, tags and customAttributes.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -1735,9 +1669,6 @@ def admin_update_content_s3(
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/{contentId}
 
@@ -1821,9 +1752,6 @@ async def admin_update_content_s3_async(
 
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/{contentId}
@@ -1911,9 +1839,6 @@ def admin_update_content_s3_by_share_code(
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
 
@@ -1997,9 +1922,6 @@ async def admin_update_content_s3_by_share_code_async(
 
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
@@ -2184,9 +2106,6 @@ def admin_upload_content_direct(
 
     All request body are required except preview, tags and customAttributes.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents
 
@@ -2245,9 +2164,6 @@ async def admin_upload_content_direct_async(
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
 
     All request body are required except preview, tags and customAttributes.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents
@@ -2321,9 +2237,6 @@ def admin_upload_content_s3(
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/s3
 
@@ -2393,9 +2306,6 @@ async def admin_upload_content_s3_async(
 
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/s3
@@ -2578,9 +2488,6 @@ def delete_content_by_share_code(
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
 
@@ -2636,9 +2543,6 @@ async def delete_content_by_share_code_async(
     """Delete content by share code (DeleteContentByShareCode)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
@@ -2697,9 +2601,6 @@ def list_content_versions(
     Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
     Content's payload versions created when UGC is created or updated with `updateContentFile` set to true. Only list up to 10 latest versions.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/versions
 
@@ -2748,9 +2649,6 @@ async def list_content_versions_async(
 
     Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
     Content's payload versions created when UGC is created or updated with `updateContentFile` set to true. Only list up to 10 latest versions.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/versions
@@ -2803,9 +2701,6 @@ def rollback_content_version(
 
     Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
     Rollback content's payload to specified version.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}
@@ -2861,9 +2756,6 @@ async def rollback_content_version_async(
 
     Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
     Rollback content's payload to specified version.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}
@@ -2921,9 +2813,6 @@ def single_admin_delete_content(
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}
 
@@ -2975,9 +2864,6 @@ async def single_admin_delete_content_async(
     """Delete content (SingleAdminDeleteContent)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}
@@ -3033,9 +2919,6 @@ def single_admin_get_content(
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents
 
@@ -3087,9 +2970,6 @@ async def single_admin_get_content_async(
     """Get user's generated contents (SingleAdminGetContent)
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents
@@ -3148,9 +3028,6 @@ def single_admin_update_content_direct(
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
 
     All request body are required except preview, tags and customAttributes.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}
@@ -3214,9 +3091,6 @@ async def single_admin_update_content_direct_async(
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
 
     All request body are required except preview, tags and customAttributes.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}
@@ -3298,9 +3172,6 @@ def single_admin_update_content_s3(
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/s3/{contentId}
 
@@ -3380,9 +3251,6 @@ async def single_admin_update_content_s3_async(
 
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/s3/{contentId}

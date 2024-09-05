@@ -30,6 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import EntitlementInfo
+from ...models import EntitlementRevokeRequest
 from ...models import ErrorEntity
 
 
@@ -48,11 +49,13 @@ class RevokeUserEntitlement(Operation):
 
         tags: ["Entitlement"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL EntitlementRevokeRequest in body
 
         entitlement_id: (entitlementId) REQUIRED str in path
 
@@ -70,11 +73,12 @@ class RevokeUserEntitlement(Operation):
 
     _url: str = "/platform/admin/namespaces/{namespace}/users/{userId}/entitlements/{entitlementId}/revoke"
     _method: str = "PUT"
-    _consumes: List[str] = []
+    _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    body: EntitlementRevokeRequest  # OPTIONAL in [body]
     entitlement_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -117,8 +121,14 @@ class RevokeUserEntitlement(Operation):
 
     def get_all_params(self) -> dict:
         return {
+            "body": self.get_body_params(),
             "path": self.get_path_params(),
         }
+
+    def get_body_params(self) -> Any:
+        if not hasattr(self, "body") or self.body is None:
+            return None
+        return self.body.to_dict()
 
     def get_path_params(self) -> dict:
         result = {}
@@ -138,6 +148,10 @@ class RevokeUserEntitlement(Operation):
 
     # region with_x methods
 
+    def with_body(self, value: EntitlementRevokeRequest) -> RevokeUserEntitlement:
+        self.body = value
+        return self
+
     def with_entitlement_id(self, value: str) -> RevokeUserEntitlement:
         self.entitlement_id = value
         return self
@@ -156,6 +170,10 @@ class RevokeUserEntitlement(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "body") and self.body:
+            result["body"] = self.body.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["body"] = EntitlementRevokeRequest()
         if hasattr(self, "entitlement_id") and self.entitlement_id:
             result["entitlementId"] = str(self.entitlement_id)
         elif include_empty:
@@ -212,12 +230,19 @@ class RevokeUserEntitlement(Operation):
 
     @classmethod
     def create(
-        cls, entitlement_id: str, namespace: str, user_id: str, **kwargs
+        cls,
+        entitlement_id: str,
+        namespace: str,
+        user_id: str,
+        body: Optional[EntitlementRevokeRequest] = None,
+        **kwargs,
     ) -> RevokeUserEntitlement:
         instance = cls()
         instance.entitlement_id = entitlement_id
         instance.namespace = namespace
         instance.user_id = user_id
+        if body is not None:
+            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -227,6 +252,12 @@ class RevokeUserEntitlement(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> RevokeUserEntitlement:
         instance = cls()
+        if "body" in dict_ and dict_["body"] is not None:
+            instance.body = EntitlementRevokeRequest.create_from_dict(
+                dict_["body"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.body = EntitlementRevokeRequest()
         if "entitlementId" in dict_ and dict_["entitlementId"] is not None:
             instance.entitlement_id = str(dict_["entitlementId"])
         elif include_empty:
@@ -244,6 +275,7 @@ class RevokeUserEntitlement(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "body": "body",
             "entitlementId": "entitlement_id",
             "namespace": "namespace",
             "userId": "user_id",
@@ -252,6 +284,7 @@ class RevokeUserEntitlement(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "body": False,
             "entitlementId": True,
             "namespace": True,
             "userId": True,

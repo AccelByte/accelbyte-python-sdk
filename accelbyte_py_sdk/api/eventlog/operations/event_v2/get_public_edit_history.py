@@ -199,7 +199,7 @@ class GetPublicEditHistory(Operation):
         self.start_date = value
         return self
 
-    def with_type_(self, value: str) -> GetPublicEditHistory:
+    def with_type(self, value: str) -> GetPublicEditHistory:
         self.type_ = value
         return self
 

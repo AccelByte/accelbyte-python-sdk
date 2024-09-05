@@ -27,21 +27,32 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.public_entitlement_metadata import PublicEntitlementMetadata
+
 
 class EntitlementSplitRequest(Model):
     """Entitlement split request (EntitlementSplitRequest)
 
     Properties:
+        metadata: (metadata) OPTIONAL PublicEntitlementMetadata
+
         use_count: (useCount) OPTIONAL int
     """
 
     # region fields
 
+    metadata: PublicEntitlementMetadata  # OPTIONAL
     use_count: int  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_metadata(
+        self, value: PublicEntitlementMetadata
+    ) -> EntitlementSplitRequest:
+        self.metadata = value
+        return self
 
     def with_use_count(self, value: int) -> EntitlementSplitRequest:
         self.use_count = value
@@ -53,6 +64,10 @@ class EntitlementSplitRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "metadata"):
+            result["metadata"] = self.metadata.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["metadata"] = PublicEntitlementMetadata()
         if hasattr(self, "use_count"):
             result["useCount"] = int(self.use_count)
         elif include_empty:
@@ -65,9 +80,14 @@ class EntitlementSplitRequest(Model):
 
     @classmethod
     def create(
-        cls, use_count: Optional[int] = None, **kwargs
+        cls,
+        metadata: Optional[PublicEntitlementMetadata] = None,
+        use_count: Optional[int] = None,
+        **kwargs,
     ) -> EntitlementSplitRequest:
         instance = cls()
+        if metadata is not None:
+            instance.metadata = metadata
         if use_count is not None:
             instance.use_count = use_count
         return instance
@@ -79,6 +99,12 @@ class EntitlementSplitRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = PublicEntitlementMetadata.create_from_dict(
+                dict_["metadata"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.metadata = PublicEntitlementMetadata()
         if "useCount" in dict_ and dict_["useCount"] is not None:
             instance.use_count = int(dict_["useCount"])
         elif include_empty:
@@ -126,12 +152,14 @@ class EntitlementSplitRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "metadata": "metadata",
             "useCount": "use_count",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "metadata": False,
             "useCount": False,
         }
 

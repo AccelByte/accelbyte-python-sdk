@@ -52,9 +52,6 @@ class PublicUpdateContentByShareCode(Operation):
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
 

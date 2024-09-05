@@ -39,12 +39,6 @@ class AdminListUserContributions(Operation):
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/global/achievements
 

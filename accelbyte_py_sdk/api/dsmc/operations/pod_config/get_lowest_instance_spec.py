@@ -42,12 +42,6 @@ class GetLowestInstanceSpec(Operation):
 
     This endpoint returns the lowest instance spec, both cpu (in Mhz) and memory (in Mb).
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/instances/spec/lowest
 

@@ -36,7 +36,7 @@ from ...models import WxPayConfigRequest
 class TestWxPayConfig(Operation):
     """Test wxPay configuration (testWxPayConfig)
 
-    [Not Supported Yet In Starter] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not supported yet in AGS Shared Cloud] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Returns : test WxPay config
@@ -54,7 +54,7 @@ class TestWxPayConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL WxPayConfigRequest in body
+        body: (body) REQUIRED WxPayConfigRequest in body
 
     Responses:
         200: OK - TestResult (successful operation)
@@ -69,7 +69,7 @@ class TestWxPayConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: WxPayConfigRequest  # OPTIONAL in [body]
+    body: WxPayConfigRequest  # REQUIRED in [body]
 
     # endregion fields
 
@@ -178,12 +178,9 @@ class TestWxPayConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls, body: Optional[WxPayConfigRequest] = None, **kwargs
-    ) -> TestWxPayConfig:
+    def create(cls, body: WxPayConfigRequest, **kwargs) -> TestWxPayConfig:
         instance = cls()
-        if body is not None:
-            instance.body = body
+        instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -210,7 +207,7 @@ class TestWxPayConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
         }
 
     # endregion static methods

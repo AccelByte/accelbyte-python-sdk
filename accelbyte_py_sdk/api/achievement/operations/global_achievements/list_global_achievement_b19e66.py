@@ -39,12 +39,6 @@ class ListGlobalAchievementContributors(Operation):
     Required permission
     `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/global/achievements/{achievementCode}/contributors
 

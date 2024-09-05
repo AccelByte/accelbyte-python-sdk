@@ -59,9 +59,6 @@ def admin_cancel_user_personal_data_request(
     Cancel user's personal data requests
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests/{requestDate}
 
@@ -116,9 +113,6 @@ async def admin_cancel_user_personal_data_request_async(
 
     Cancel user's personal data requests
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests/{requestDate}
@@ -180,9 +174,6 @@ def admin_generate_personal_data_url(
 
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
@@ -246,9 +237,6 @@ async def admin_generate_personal_data_url_async(
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
 
@@ -310,9 +298,6 @@ def admin_get_list_personal_data_request(
     Get list personal data requests
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/requests
 
@@ -373,9 +358,6 @@ async def admin_get_list_personal_data_request_async(
 
     Get list personal data requests
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/requests
@@ -440,9 +422,6 @@ def admin_get_user_personal_data_requests(
     Get user's personal data requests
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests
 
@@ -499,9 +478,6 @@ async def admin_get_user_personal_data_requests_async(
 
     Get user's personal data requests
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests
@@ -564,9 +540,6 @@ def admin_request_data_retrieval(
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests
 
@@ -626,9 +599,6 @@ async def admin_request_data_retrieval_async(
 
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests
@@ -690,9 +660,6 @@ def public_cancel_user_personal_data_request(
     Requires valid user access token
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}
 
@@ -748,9 +715,6 @@ async def public_cancel_user_personal_data_request_async(
     Cancel user's personal data requests
     Requires valid user access token
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}
@@ -813,9 +777,6 @@ def public_generate_personal_data_url(
 
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
@@ -880,9 +841,6 @@ async def public_generate_personal_data_url_async(
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
 
@@ -945,9 +903,6 @@ def public_get_user_personal_data_requests(
     Requires valid user access token
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests
 
@@ -1005,9 +960,6 @@ async def public_get_user_personal_data_requests_async(
     Get user's personal data requests
     Requires valid user access token
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests
@@ -1071,9 +1023,6 @@ def public_request_data_retrieval(
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests
 
@@ -1135,9 +1084,6 @@ async def public_request_data_retrieval_async(
 
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/requests

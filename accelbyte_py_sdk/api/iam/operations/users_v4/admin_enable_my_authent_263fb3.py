@@ -36,6 +36,11 @@ class AdminEnableMyAuthenticatorV4(Operation):
     """Enable 2FA authenticator (AdminEnableMyAuthenticatorV4)
 
     This endpoint is used to enable 2FA authenticator.
+    ----------
+    Prerequisites:
+    - Generate the secret key/QR code uri by **_/iam/v4/admin/users/me/mfa/authenticator/key_**
+    - Consume the secret key/QR code by an authenticator app
+    - Get the code from the authenticator app
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/authenticator/enable
@@ -50,7 +55,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
 
         securities: [BEARER_AUTH]
 
-        code: (code) OPTIONAL str in form_data
+        code: (code) REQUIRED str in form_data
 
     Responses:
         204: No Content - (Authenticator enabled)
@@ -77,7 +82,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    code: str  # OPTIONAL in [form_data]
+    code: str  # REQUIRED in [form_data]
 
     # endregion fields
 
@@ -211,12 +216,9 @@ class AdminEnableMyAuthenticatorV4(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls, code: Optional[str] = None, **kwargs
-    ) -> AdminEnableMyAuthenticatorV4:
+    def create(cls, code: str, **kwargs) -> AdminEnableMyAuthenticatorV4:
         instance = cls()
-        if code is not None:
-            instance.code = code
+        instance.code = code
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -241,7 +243,7 @@ class AdminEnableMyAuthenticatorV4(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "code": False,
+            "code": True,
         }
 
     # endregion static methods

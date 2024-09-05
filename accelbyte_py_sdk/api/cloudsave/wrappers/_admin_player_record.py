@@ -1281,9 +1281,6 @@ def admin_post_player_record_handler_v1(
     }
     ```
 
-    Required Permission(s):
-        - CLIENT []
-
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
 
@@ -1412,9 +1409,6 @@ async def admin_post_player_record_handler_v1_async(
     ...
     }
     ```
-
-    Required Permission(s):
-        - CLIENT []
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -1731,9 +1725,6 @@ def admin_put_player_record_handler_v1(
     }
     ```
 
-    Required Permission(s):
-        - CLIENT []
-
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
 
@@ -1850,9 +1841,6 @@ async def admin_put_player_record_handler_v1_async(
     ...
     }
     ```
-
-    Required Permission(s):
-        - CLIENT []
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}

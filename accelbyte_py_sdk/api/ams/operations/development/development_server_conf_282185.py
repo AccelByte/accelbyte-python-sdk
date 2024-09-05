@@ -38,9 +38,6 @@ class DevelopmentServerConfigurationGet(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}
 

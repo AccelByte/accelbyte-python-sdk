@@ -36,7 +36,7 @@ from ...models import FulfillmentScriptInfo
 class GetFulfillmentScript(Operation):
     """Get fulfillment script by id (getFulfillmentScript)
 
-    [Not Supported Yet In Starter] Get fulfillment script by id.
+    [Not supported yet in AGS Shared Cloud] Get fulfillment script by id.
     Other detail info:
 
       * Returns : get fulfillment script
@@ -128,7 +128,7 @@ class GetFulfillmentScript(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> GetFulfillmentScript:
+    def with_id(self, value: str) -> GetFulfillmentScript:
         self.id_ = value
         return self
 

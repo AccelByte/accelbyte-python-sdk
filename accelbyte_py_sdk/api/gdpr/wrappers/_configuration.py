@@ -62,9 +62,6 @@ def admin_get_platform_account_closure_services_configuration(
     Get registered platform account closure services configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
 
@@ -109,9 +106,6 @@ async def admin_get_platform_account_closure_services_configuration_async(
 
     Get registered platform account closure services configuration.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
@@ -160,9 +154,6 @@ def admin_get_services_configuration(
     Get Registered Services Configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/configurations
 
@@ -207,9 +198,6 @@ async def admin_get_services_configuration_async(
 
     Get Registered Services Configuration.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/configurations
@@ -259,9 +247,6 @@ def admin_reset_platform_account_closure_services_configuration(
     Reset registered platform account closure services configuration to use the default configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
 
@@ -305,9 +290,6 @@ async def admin_reset_platform_account_closure_services_configuration_async(
     **[TEST FACILITY ONLY]**
     Reset registered platform account closure services configuration to use the default configuration.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
@@ -355,9 +337,6 @@ def admin_reset_services_configuration(
     Reset Registered Services Configuration to use the default configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/configurations/reset
 
@@ -401,9 +380,6 @@ async def admin_reset_services_configuration_async(
     **[TEST FACILITY ONLY]**
     Reset Registered Services Configuration to use the default configuration.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/configurations/reset
@@ -450,9 +426,6 @@ def admin_update_platform_account_closure_services_configuration(
 
     Update registered platform account closure services configuration.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
@@ -502,9 +475,6 @@ async def admin_update_platform_account_closure_services_configuration_async(
 
     Update registered platform account closure services configuration.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/platforms/closure/config
@@ -557,9 +527,6 @@ def admin_update_services_configuration(
     Update Registered Services Configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/configurations
 
@@ -608,9 +575,6 @@ async def admin_update_services_configuration_async(
 
     Update Registered Services Configuration.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/configurations
@@ -662,9 +626,6 @@ def delete_admin_email_configuration(
 
     Delete a list of admin email addresses to stop receiving personal data request notification.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
@@ -718,9 +679,6 @@ async def delete_admin_email_configuration_async(
 
     Delete a list of admin email addresses to stop receiving personal data request notification.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
@@ -776,9 +734,6 @@ def get_admin_email_configuration(
     Get list of admin email address configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
 
@@ -821,9 +776,6 @@ async def get_admin_email_configuration_async(
 
     Get list of admin email address configuration.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
@@ -870,9 +822,6 @@ def save_admin_email_configuration(
 
     Add admin email address for receiving personal data request notification.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
@@ -922,9 +871,6 @@ async def save_admin_email_configuration_async(
 
     Add admin email address for receiving personal data request notification.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
@@ -977,9 +923,6 @@ def update_admin_email_configuration(
     Update admin email address for receiving personal data request notification.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
 
@@ -1028,9 +971,6 @@ async def update_admin_email_configuration_async(
 
     Update admin email address for receiving personal data request notification.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations

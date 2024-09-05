@@ -36,7 +36,7 @@ from ...models import PaymentProviderConfigInfo
 class DebugMatchedPaymentProviderConfig(Operation):
     """Debug matched payment provider config(internal) (debugMatchedPaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Debug matched payment provider config.
+    [Not supported yet in AGS Shared Cloud] Debug matched payment provider config.
     Other detail info:
 
       * Returns : payment provider config

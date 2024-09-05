@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session History Service."""
 
-__version__ = "1.11.1"
+__version__ = "1.12.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -49,6 +49,8 @@ from .wrappers import get_healthcheck_info_v1
 from .wrappers import get_healthcheck_info_v1_async
 
 # x_ray
+from .wrappers import create_xray_bulk_ticket_observability
+from .wrappers import create_xray_bulk_ticket_observability_async
 from .wrappers import create_xray_ticket_observability
 from .wrappers import create_xray_ticket_observability_async
 from .wrappers import query_acquiring_ds

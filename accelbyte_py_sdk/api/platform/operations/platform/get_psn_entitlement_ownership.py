@@ -51,7 +51,7 @@ class GetPsnEntitlementOwnership(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PsnEntitlementOwnershipRequest in body
+        body: (body) REQUIRED PsnEntitlementOwnershipRequest in body
 
         entitlement_label: (entitlementLabel) REQUIRED str in path
 
@@ -70,7 +70,7 @@ class GetPsnEntitlementOwnership(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PsnEntitlementOwnershipRequest  # OPTIONAL in [body]
+    body: PsnEntitlementOwnershipRequest  # REQUIRED in [body]
     entitlement_label: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -210,16 +210,15 @@ class GetPsnEntitlementOwnership(Operation):
     @classmethod
     def create(
         cls,
+        body: PsnEntitlementOwnershipRequest,
         entitlement_label: str,
         namespace: str,
-        body: Optional[PsnEntitlementOwnershipRequest] = None,
         **kwargs,
     ) -> GetPsnEntitlementOwnership:
         instance = cls()
+        instance.body = body
         instance.entitlement_label = entitlement_label
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -256,7 +255,7 @@ class GetPsnEntitlementOwnership(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "entitlementLabel": True,
             "namespace": True,
         }

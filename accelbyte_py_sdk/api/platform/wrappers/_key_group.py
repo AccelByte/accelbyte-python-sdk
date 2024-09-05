@@ -56,7 +56,7 @@ from ..models import KeyGroupUpdateStatusEnum
 
 @same_doc_as(CreateKeyGroup)
 def create_key_group(
-    body: Optional[KeyGroupCreate] = None,
+    body: KeyGroupCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -81,7 +81,7 @@ def create_key_group(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL KeyGroupCreate in body
+        body: (body) REQUIRED KeyGroupCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -105,7 +105,7 @@ def create_key_group(
 
 @same_doc_as(CreateKeyGroup)
 async def create_key_group_async(
-    body: Optional[KeyGroupCreate] = None,
+    body: KeyGroupCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -130,7 +130,7 @@ async def create_key_group_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL KeyGroupCreate in body
+        body: (body) REQUIRED KeyGroupCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -678,8 +678,8 @@ async def query_key_groups_async(
 
 @same_doc_as(UpdateKeyGroup)
 def update_key_group(
+    body: KeyGroupUpdate,
     key_group_id: str,
-    body: Optional[KeyGroupUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -704,7 +704,7 @@ def update_key_group(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL KeyGroupUpdate in body
+        body: (body) REQUIRED KeyGroupUpdate in body
 
         key_group_id: (keyGroupId) REQUIRED str in path
 
@@ -724,8 +724,8 @@ def update_key_group(
         if error:
             return None, error
     request = UpdateKeyGroup.create(
-        key_group_id=key_group_id,
         body=body,
+        key_group_id=key_group_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -733,8 +733,8 @@ def update_key_group(
 
 @same_doc_as(UpdateKeyGroup)
 async def update_key_group_async(
+    body: KeyGroupUpdate,
     key_group_id: str,
-    body: Optional[KeyGroupUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -759,7 +759,7 @@ async def update_key_group_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL KeyGroupUpdate in body
+        body: (body) REQUIRED KeyGroupUpdate in body
 
         key_group_id: (keyGroupId) REQUIRED str in path
 
@@ -779,8 +779,8 @@ async def update_key_group_async(
         if error:
             return None, error
     request = UpdateKeyGroup.create(
-        key_group_id=key_group_id,
         body=body,
+        key_group_id=key_group_id,
         namespace=namespace,
     )
     return await run_request_async(

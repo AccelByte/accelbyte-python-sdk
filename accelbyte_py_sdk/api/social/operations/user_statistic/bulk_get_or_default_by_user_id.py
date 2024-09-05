@@ -45,9 +45,6 @@ class BulkGetOrDefaultByUserId(Operation):
     + *Max stat codes*: 20
     + *Returns*: list of user's stat item values
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:STATITEM [READ]
-
     Properties:
         url: /social/v2/admin/namespaces/{namespace}/users/{userId}/statitems/value/bulk/getOrDefault
 
@@ -59,7 +56,7 @@ class BulkGetOrDefaultByUserId(Operation):
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL BulkUserStatItemByStatCodes in body
 
@@ -87,7 +84,7 @@ class BulkGetOrDefaultByUserId(Operation):
     _method: str = "POST"
     _consumes: List[str] = ["application/json"]
     _produces: List[str] = ["application/json"]
-    _securities: List[List[str]] = [["BEARER_AUTH"], ["BEARER_AUTH"]]
+    _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     body: BulkUserStatItemByStatCodes  # OPTIONAL in [body]

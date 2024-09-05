@@ -36,7 +36,9 @@ from ..models import ModelsUserRankingResponseV3
 from ..models import ResponseErrorResponse
 
 from ..operations.leaderboard_data_v3 import BulkGetUsersRankingPublicV3
+from ..operations.leaderboard_data_v3 import DeleteAllUserRankingByCycleIdAdminV3
 from ..operations.leaderboard_data_v3 import DeleteUserRankingAdminV3
+from ..operations.leaderboard_data_v3 import DeleteUserRankingByCycleIdAdminV3
 from ..operations.leaderboard_data_v3 import DeleteUserRankingByLeaderboardCodeAdminV3
 from ..operations.leaderboard_data_v3 import DeleteUserRankingsAdminV3
 from ..operations.leaderboard_data_v3 import GetAllTimeLeaderboardRankingAdminV3
@@ -153,6 +155,126 @@ async def bulk_get_users_ranking_public_v3_async(
             return None, error
     request = BulkGetUsersRankingPublicV3.create(
         body=body,
+        leaderboard_code=leaderboard_code,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteAllUserRankingByCycleIdAdminV3)
+def delete_all_user_ranking_by_cycle_id_admin_v3(
+    cycle_id: str,
+    leaderboard_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """delete all user ranking by cycle id (deleteAllUserRankingByCycleIdAdminV3)
+
+    This endpoint will delete user ranking by cycleId
+
+
+
+
+    Warning : This will permanently delete your data. Make sure to back up anything important before continuing.
+
+    Properties:
+        url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/cycles/{cycleId}/reset
+
+        method: DELETE
+
+        tags: ["LeaderboardDataV3"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        cycle_id: (cycleId) REQUIRED str in path
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (all user ranking in specific cycleId successfully deleted)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 71241: forbidden environment)
+
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
+
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteAllUserRankingByCycleIdAdminV3.create(
+        cycle_id=cycle_id,
+        leaderboard_code=leaderboard_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteAllUserRankingByCycleIdAdminV3)
+async def delete_all_user_ranking_by_cycle_id_admin_v3_async(
+    cycle_id: str,
+    leaderboard_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """delete all user ranking by cycle id (deleteAllUserRankingByCycleIdAdminV3)
+
+    This endpoint will delete user ranking by cycleId
+
+
+
+
+    Warning : This will permanently delete your data. Make sure to back up anything important before continuing.
+
+    Properties:
+        url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/cycles/{cycleId}/reset
+
+        method: DELETE
+
+        tags: ["LeaderboardDataV3"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        cycle_id: (cycleId) REQUIRED str in path
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (all user ranking in specific cycleId successfully deleted)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions | 71241: forbidden environment)
+
+        404: Not Found - ResponseErrorResponse (71130: leaderboard config not found)
+
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteAllUserRankingByCycleIdAdminV3.create(
+        cycle_id=cycle_id,
         leaderboard_code=leaderboard_code,
         namespace=namespace,
     )
@@ -279,6 +401,132 @@ async def delete_user_ranking_admin_v3_async(
     )
 
 
+@same_doc_as(DeleteUserRankingByCycleIdAdminV3)
+def delete_user_ranking_by_cycle_id_admin_v3(
+    cycle_id: str,
+    leaderboard_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete user ranking by cycle id (deleteUserRankingByCycleIdAdminV3)
+
+    Delete user ranking by cycle id
+
+    Remove entry with provided cycleId and userId from leaderboard.
+    If leaderboard with given leaderboard code not found, it will return http status not found (404).
+    If the leaderboard is found and no entry found in it, it will still return success (204)
+
+    Properties:
+        url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/cycles/{cycleId}/users/{userId}
+
+        method: DELETE
+
+        tags: ["LeaderboardDataV3"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        cycle_id: (cycleId) REQUIRED str in path
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (User ranking deleted by cycle id)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71233: user ranking data not found)
+
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteUserRankingByCycleIdAdminV3.create(
+        cycle_id=cycle_id,
+        leaderboard_code=leaderboard_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteUserRankingByCycleIdAdminV3)
+async def delete_user_ranking_by_cycle_id_admin_v3_async(
+    cycle_id: str,
+    leaderboard_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete user ranking by cycle id (deleteUserRankingByCycleIdAdminV3)
+
+    Delete user ranking by cycle id
+
+    Remove entry with provided cycleId and userId from leaderboard.
+    If leaderboard with given leaderboard code not found, it will return http status not found (404).
+    If the leaderboard is found and no entry found in it, it will still return success (204)
+
+    Properties:
+        url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/cycles/{cycleId}/users/{userId}
+
+        method: DELETE
+
+        tags: ["LeaderboardDataV3"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        cycle_id: (cycleId) REQUIRED str in path
+
+        leaderboard_code: (leaderboardCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (User ranking deleted by cycle id)
+
+        401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - ResponseErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (71230: leaderboard configuration not found | 71233: user ranking data not found)
+
+        500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteUserRankingByCycleIdAdminV3.create(
+        cycle_id=cycle_id,
+        leaderboard_code=leaderboard_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(DeleteUserRankingByLeaderboardCodeAdminV3)
 def delete_user_ranking_by_leaderboard_code_admin_v3(
     leaderboard_code: str,
@@ -288,17 +536,12 @@ def delete_user_ranking_by_leaderboard_code_admin_v3(
 ):
     """delete all user ranking by leaderboard code (deleteUserRankingByLeaderboardCodeAdminV3)
 
-    [Test Facility Only]
-
-
-
-
     This endpoint will delete user ranking by leaderboard code
 
 
 
 
-    Note: this endpoint only works on development environment.
+    Warning : This will permanently delete your data. Make sure to back up anything important before continuing.
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset
@@ -348,17 +591,12 @@ async def delete_user_ranking_by_leaderboard_code_admin_v3_async(
 ):
     """delete all user ranking by leaderboard code (deleteUserRankingByLeaderboardCodeAdminV3)
 
-    [Test Facility Only]
-
-
-
-
     This endpoint will delete user ranking by leaderboard code
 
 
 
 
-    Note: this endpoint only works on development environment.
+    Warning : This will permanently delete your data. Make sure to back up anything important before continuing.
 
     Properties:
         url: /leaderboard/v3/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset

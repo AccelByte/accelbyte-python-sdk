@@ -375,6 +375,7 @@ def create_stat_cycle_create_example() -> StatCycleCreate:
     instance.start = randomize("date")
     instance.description = randomize()
     instance.end = randomize("date")
+    instance.id_ = randomize()
     instance.reset_date = randomize("int", min_val=1, max_val=1000)
     instance.reset_day = randomize("int", min_val=1, max_val=1000)
     instance.reset_month = randomize("int", min_val=1, max_val=1000)

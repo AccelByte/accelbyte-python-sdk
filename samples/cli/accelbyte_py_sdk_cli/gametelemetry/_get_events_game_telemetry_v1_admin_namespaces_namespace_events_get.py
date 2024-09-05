@@ -41,6 +41,7 @@ from accelbyte_py_sdk.api.gametelemetry.models import (
 
 
 @click.command()
+@click.option("--device_type", "device_type", type=str)
 @click.option("--end_time", "end_time", type=str)
 @click.option("--event_id", "event_id", type=str)
 @click.option("--event_name", "event_name", type=str)
@@ -55,6 +56,7 @@ from accelbyte_py_sdk.api.gametelemetry.models import (
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
+    device_type: Optional[str] = None,
     end_time: Optional[str] = None,
     event_id: Optional[str] = None,
     event_name: Optional[str] = None,
@@ -83,6 +85,7 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
         result,
         error,
     ) = get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_internal(
+        device_type=device_type,
         end_time=end_time,
         event_id=event_id,
         event_name=event_name,

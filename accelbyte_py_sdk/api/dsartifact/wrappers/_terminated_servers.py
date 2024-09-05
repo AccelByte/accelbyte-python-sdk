@@ -60,9 +60,6 @@ def list_terminated_servers_with_namespace(
     This endpoint used to retrieve terminated servers in a namespace
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:SERVER [READ]
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/servers/search
 
@@ -154,9 +151,6 @@ async def list_terminated_servers_with_namespace_async(
 
     This endpoint used to retrieve terminated servers in a namespace
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:SERVER [READ]
 
     Properties:
         url: /dsartifact/namespaces/{namespace}/servers/search

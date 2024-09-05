@@ -59,9 +59,6 @@ def delete_active_queue(
     This endpoint is used to delete active queue process on a node
     ```
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [DELETE]
-
     Properties:
         url: /dsartifact/artifacts/queues/active
 
@@ -103,9 +100,6 @@ async def delete_active_queue_async(
 
     This endpoint is used to delete active queue process on a node
     ```
-
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [DELETE]
 
     Properties:
         url: /dsartifact/artifacts/queues/active
@@ -154,12 +148,6 @@ def delete_node_by_id(
 
     This endpoint will delete a node by IP
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:NODES [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/artifacts/nodes/ipaddresses
 
@@ -205,12 +193,6 @@ async def delete_node_by_id_async(
     Required scope: social
 
     This endpoint will delete a node by IP
-
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:NODES [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsartifact/artifacts/nodes/ipaddresses
@@ -260,12 +242,6 @@ def delete_queue(
     Required scope: social
 
     This endpoint will delete a queue entry
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT:QUEUE [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsartifact/namespaces/{namespace}/artifacts/queues
@@ -321,12 +297,6 @@ async def delete_queue_async(
 
     This endpoint will delete a queue entry
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT:QUEUE [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/artifacts/queues
 
@@ -379,9 +349,6 @@ def get_active_queue(
     This endpoint is used to get an active queue process on a node
     ```
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [READ]
-
     Properties:
         url: /dsartifact/artifacts/queues/active
 
@@ -425,9 +392,6 @@ async def get_active_queue_async(
 
     This endpoint is used to get an active queue process on a node
     ```
-
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [READ]
 
     Properties:
         url: /dsartifact/artifacts/queues/active
@@ -481,12 +445,6 @@ def list_all_active_queue(
     Required scope: social
 
     This endpoint will list all DSes which artifact is currently in uploading process.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT:QUEUE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsartifact/namespaces/{namespace}/artifacts/queues/active/all
@@ -555,12 +513,6 @@ async def list_all_active_queue_async(
     Required scope: social
 
     This endpoint will list all DSes which artifact is currently in uploading process.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT:QUEUE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsartifact/namespaces/{namespace}/artifacts/queues/active/all
@@ -633,12 +585,6 @@ def list_all_queue(
     Required scope: social
 
     This endpoint will list all DSes which has artifact in upload queue.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT:QUEUE [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsartifact/namespaces/{namespace}/artifacts/queues/all
@@ -716,12 +662,6 @@ async def list_all_queue_async(
 
     This endpoint will list all DSes which has artifact in upload queue.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT:QUEUE [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/artifacts/queues/all
 
@@ -796,12 +736,6 @@ def list_nodes_ip_address(
 
     This endpoint will list IP Address of all artifact queue
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:NODES [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/artifacts/nodes/ipaddresses
 
@@ -855,12 +789,6 @@ async def list_nodes_ip_address_async(
     Required scope: social
 
     This endpoint will list IP Address of all artifact queue
-
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:NODES [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsartifact/artifacts/nodes/ipaddresses
@@ -917,9 +845,6 @@ def list_queue(
 
     This endpoint is used to get the list of queues on a node
     ```
-
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [READ]
 
     Properties:
         url: /dsartifact/artifacts/queues
@@ -979,9 +904,6 @@ async def list_queue_async(
     This endpoint is used to get the list of queues on a node
     ```
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [READ]
-
     Properties:
         url: /dsartifact/artifacts/queues
 
@@ -1040,9 +962,6 @@ def report_failed_upload(
     This endpoint is used to report a failed artifact upload
     ```
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [UPDATE]
-
     Properties:
         url: /dsartifact/artifacts/queues/failed
 
@@ -1090,9 +1009,6 @@ async def report_failed_upload_async(
 
     This endpoint is used to report a failed artifact upload
     ```
-
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [UPDATE]
 
     Properties:
         url: /dsartifact/artifacts/queues/failed
@@ -1145,9 +1061,6 @@ def set_active_queue(
     for artifact uploading process on a node
     ```
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [UPDATE]
-
     Properties:
         url: /dsartifact/artifacts/queues/active
 
@@ -1196,9 +1109,6 @@ async def set_active_queue_async(
     This endpoint is used to set a queue entry as the current active queue
     for artifact uploading process on a node
     ```
-
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [UPDATE]
 
     Properties:
         url: /dsartifact/artifacts/queues/active

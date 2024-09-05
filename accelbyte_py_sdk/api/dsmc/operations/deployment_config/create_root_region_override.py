@@ -43,12 +43,6 @@ class CreateRootRegionOverride(Operation):
 
     This endpoint creates a dedicated servers deployment override in a namespace in a region for root deployment.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
 

@@ -42,12 +42,6 @@ class ListLocalServer(Operation):
 
     This endpoint lists all of local dedicated servers in a namespace managed by this service.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/local
 

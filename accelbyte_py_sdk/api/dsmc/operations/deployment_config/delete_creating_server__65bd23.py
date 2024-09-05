@@ -41,12 +41,6 @@ class DeleteCreatingServerCountQueue(Operation):
 
     This endpoint deletes the deployment creating server count queue in a namespace in all registered region for the selected version
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/versions/{version}/queues
 

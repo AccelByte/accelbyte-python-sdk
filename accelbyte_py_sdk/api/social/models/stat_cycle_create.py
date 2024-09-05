@@ -53,6 +53,8 @@ class StatCycleCreate(Model):
 
         end: (end) OPTIONAL str
 
+        id_: (id) OPTIONAL str
+
         reset_date: (resetDate) OPTIONAL int
 
         reset_day: (resetDay) OPTIONAL int
@@ -70,6 +72,7 @@ class StatCycleCreate(Model):
     start: str  # REQUIRED
     description: str  # OPTIONAL
     end: str  # OPTIONAL
+    id_: str  # OPTIONAL
     reset_date: int  # OPTIONAL
     reset_day: int  # OPTIONAL
     reset_month: int  # OPTIONAL
@@ -101,6 +104,10 @@ class StatCycleCreate(Model):
 
     def with_end(self, value: str) -> StatCycleCreate:
         self.end = value
+        return self
+
+    def with_id(self, value: str) -> StatCycleCreate:
+        self.id_ = value
         return self
 
     def with_reset_date(self, value: int) -> StatCycleCreate:
@@ -149,6 +156,10 @@ class StatCycleCreate(Model):
             result["end"] = str(self.end)
         elif include_empty:
             result["end"] = ""
+        if hasattr(self, "id_"):
+            result["id"] = str(self.id_)
+        elif include_empty:
+            result["id"] = ""
         if hasattr(self, "reset_date"):
             result["resetDate"] = int(self.reset_date)
         elif include_empty:
@@ -180,6 +191,7 @@ class StatCycleCreate(Model):
         start: str,
         description: Optional[str] = None,
         end: Optional[str] = None,
+        id_: Optional[str] = None,
         reset_date: Optional[int] = None,
         reset_day: Optional[int] = None,
         reset_month: Optional[int] = None,
@@ -195,6 +207,8 @@ class StatCycleCreate(Model):
             instance.description = description
         if end is not None:
             instance.end = end
+        if id_ is not None:
+            instance.id_ = id_
         if reset_date is not None:
             instance.reset_date = reset_date
         if reset_day is not None:
@@ -236,6 +250,10 @@ class StatCycleCreate(Model):
             instance.end = str(dict_["end"])
         elif include_empty:
             instance.end = ""
+        if "id" in dict_ and dict_["id"] is not None:
+            instance.id_ = str(dict_["id"])
+        elif include_empty:
+            instance.id_ = ""
         if "resetDate" in dict_ and dict_["resetDate"] is not None:
             instance.reset_date = int(dict_["resetDate"])
         elif include_empty:
@@ -297,6 +315,7 @@ class StatCycleCreate(Model):
             "start": "start",
             "description": "description",
             "end": "end",
+            "id": "id_",
             "resetDate": "reset_date",
             "resetDay": "reset_day",
             "resetMonth": "reset_month",
@@ -312,6 +331,7 @@ class StatCycleCreate(Model):
             "start": True,
             "description": False,
             "end": False,
+            "id": False,
             "resetDate": False,
             "resetDay": False,
             "resetMonth": False,

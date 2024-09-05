@@ -58,9 +58,6 @@ def s2s_generate_personal_data_url(
     ---
     ## This API for S2S integration purpose only
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
 
@@ -121,9 +118,6 @@ async def s2s_generate_personal_data_url_async(
 
     ---
     ## This API for S2S integration purpose only
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
@@ -191,9 +185,6 @@ def s2s_get_list_finished_personal_data_request(
     ---
     ## This API for S2S integration purpose only
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/requests/finished
 
@@ -257,9 +248,6 @@ async def s2s_get_list_finished_personal_data_request_async(
 
     ---
     ## This API for S2S integration purpose only
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/requests/finished
@@ -327,9 +315,6 @@ def s2s_request_data_retrieval(
 
     1. This API will **not send GDPR email notification** both for player and admin notification.
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/users/{userId}/requests
 
@@ -390,9 +375,6 @@ async def s2s_request_data_retrieval_async(
     **Notes:**
 
     1. This API will **not send GDPR email notification** both for player and admin notification.
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/users/{userId}/requests

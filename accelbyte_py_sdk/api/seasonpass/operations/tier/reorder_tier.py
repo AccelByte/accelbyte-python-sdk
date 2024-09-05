@@ -158,7 +158,7 @@ class ReorderTier(Operation):
         self.body = value
         return self
 
-    def with_id_(self, value: str) -> ReorderTier:
+    def with_id(self, value: str) -> ReorderTier:
         self.id_ = value
         return self
 

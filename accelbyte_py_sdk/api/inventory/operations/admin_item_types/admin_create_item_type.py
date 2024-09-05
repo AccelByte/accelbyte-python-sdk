@@ -44,9 +44,6 @@ class AdminCreateItemType(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:ITEMTYPE [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/itemtypes
 

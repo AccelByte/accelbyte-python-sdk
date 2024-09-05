@@ -39,9 +39,6 @@ class PublicCancelUserAccountDeletionRequest(Operation):
     Requires valid user access token
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
 

@@ -35,9 +35,6 @@ class WatchdogConnect(Operation):
 
     Required Permission: NAMESPACE:{namespace}:ARMADA:WATCHDOG [CREATE]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ARMADA:WATCHDOG [CREATE]
-
     Properties:
         url: /ams/v1/namespaces/{namespace}/watchdogs/{watchdogID}/connect
 

@@ -42,6 +42,7 @@ from accelbyte_py_sdk.api.sessionhistory.models import ResponseError
 @click.command()
 @click.argument("end_date", type=str)
 @click.argument("start_date", type=str)
+@click.option("--match_pool", "match_pool", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -49,6 +50,7 @@ from accelbyte_py_sdk.api.sessionhistory.models import ResponseError
 def query_match_length_durationp_avg(
     end_date: str,
     start_date: str,
+    match_pool: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -62,9 +64,16 @@ def query_match_length_durationp_avg(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if match_pool is not None:
+        try:
+            match_pool_json = json.loads(match_pool)
+            match_pool = [str(i0) for i0 in match_pool_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'matchPool'. {str(e)}") from e
     result, error = query_match_length_durationp_avg_internal(
         end_date=end_date,
         start_date=start_date,
+        match_pool=match_pool,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

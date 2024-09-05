@@ -70,8 +70,8 @@ from ..models import (
 
 @same_doc_as(FulfillItem)
 def fulfill_item(
+    body: FulfillmentRequest,
     user_id: str,
-    body: Optional[FulfillmentRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -96,7 +96,7 @@ def fulfill_item(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillmentRequest in body
+        body: (body) REQUIRED FulfillmentRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -116,8 +116,8 @@ def fulfill_item(
         if error:
             return None, error
     request = FulfillItem.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -125,8 +125,8 @@ def fulfill_item(
 
 @same_doc_as(FulfillItem)
 async def fulfill_item_async(
+    body: FulfillmentRequest,
     user_id: str,
-    body: Optional[FulfillmentRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -151,7 +151,7 @@ async def fulfill_item_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillmentRequest in body
+        body: (body) REQUIRED FulfillmentRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -171,8 +171,8 @@ async def fulfill_item_async(
         if error:
             return None, error
     request = FulfillItem.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -182,19 +182,20 @@ async def fulfill_item_async(
 
 @same_doc_as(FulfillItems)
 def fulfill_items(
+    body: FulfillmentV2Request,
     transaction_id: str,
     user_id: str,
-    body: Optional[FulfillmentV2Request] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Fulfill items by transactionId (fulfillItems)
 
-    [Not Supported Yet In Starter] Fulfill items by transactionId.
+    [Not supported yet in AGS Shared Cloud] Fulfill items by transactionId.
     Other detail info:
 
-      * Returns : fulfillment v2 result
+      * Request body : storeId, region, language, and entitlementCollectionId can be ignored.
+      *  Returns : fulfillment v2 result, storeId field can be ignored.
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}
@@ -209,7 +210,7 @@ def fulfill_items(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillmentV2Request in body
+        body: (body) REQUIRED FulfillmentV2Request in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -231,9 +232,9 @@ def fulfill_items(
         if error:
             return None, error
     request = FulfillItems.create(
+        body=body,
         transaction_id=transaction_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -241,19 +242,20 @@ def fulfill_items(
 
 @same_doc_as(FulfillItems)
 async def fulfill_items_async(
+    body: FulfillmentV2Request,
     transaction_id: str,
     user_id: str,
-    body: Optional[FulfillmentV2Request] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Fulfill items by transactionId (fulfillItems)
 
-    [Not Supported Yet In Starter] Fulfill items by transactionId.
+    [Not supported yet in AGS Shared Cloud] Fulfill items by transactionId.
     Other detail info:
 
-      * Returns : fulfillment v2 result
+      * Request body : storeId, region, language, and entitlementCollectionId can be ignored.
+      *  Returns : fulfillment v2 result, storeId field can be ignored.
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}
@@ -268,7 +270,7 @@ async def fulfill_items_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillmentV2Request in body
+        body: (body) REQUIRED FulfillmentV2Request in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -290,9 +292,9 @@ async def fulfill_items_async(
         if error:
             return None, error
     request = FulfillItems.create(
+        body=body,
         transaction_id=transaction_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -302,8 +304,8 @@ async def fulfill_items_async(
 
 @same_doc_as(FulfillRewards)
 def fulfill_rewards(
+    body: RewardsRequest,
     user_id: str,
-    body: Optional[RewardsRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -328,7 +330,7 @@ def fulfill_rewards(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardsRequest in body
+        body: (body) REQUIRED RewardsRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -348,8 +350,8 @@ def fulfill_rewards(
         if error:
             return None, error
     request = FulfillRewards.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -357,8 +359,8 @@ def fulfill_rewards(
 
 @same_doc_as(FulfillRewards)
 async def fulfill_rewards_async(
+    body: RewardsRequest,
     user_id: str,
-    body: Optional[RewardsRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -383,7 +385,7 @@ async def fulfill_rewards_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardsRequest in body
+        body: (body) REQUIRED RewardsRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -403,8 +405,8 @@ async def fulfill_rewards_async(
         if error:
             return None, error
     request = FulfillRewards.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -414,8 +416,8 @@ async def fulfill_rewards_async(
 
 @same_doc_as(FulfillRewardsV2)
 def fulfill_rewards_v2(
+    body: RewardsRequest,
     user_id: str,
-    body: Optional[RewardsRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -441,7 +443,7 @@ def fulfill_rewards_v2(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardsRequest in body
+        body: (body) REQUIRED RewardsRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -461,8 +463,8 @@ def fulfill_rewards_v2(
         if error:
             return None, error
     request = FulfillRewardsV2.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -470,8 +472,8 @@ def fulfill_rewards_v2(
 
 @same_doc_as(FulfillRewardsV2)
 async def fulfill_rewards_v2_async(
+    body: RewardsRequest,
     user_id: str,
-    body: Optional[RewardsRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -497,7 +499,7 @@ async def fulfill_rewards_v2_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardsRequest in body
+        body: (body) REQUIRED RewardsRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -517,8 +519,8 @@ async def fulfill_rewards_v2_async(
         if error:
             return None, error
     request = FulfillRewardsV2.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -528,8 +530,8 @@ async def fulfill_rewards_v2_async(
 
 @same_doc_as(PreCheckFulfillItem)
 def pre_check_fulfill_item(
+    body: PreCheckFulfillmentRequest,
     user_id: str,
-    body: Optional[PreCheckFulfillmentRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -554,7 +556,7 @@ def pre_check_fulfill_item(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PreCheckFulfillmentRequest in body
+        body: (body) REQUIRED PreCheckFulfillmentRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -572,8 +574,8 @@ def pre_check_fulfill_item(
         if error:
             return None, error
     request = PreCheckFulfillItem.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -581,8 +583,8 @@ def pre_check_fulfill_item(
 
 @same_doc_as(PreCheckFulfillItem)
 async def pre_check_fulfill_item_async(
+    body: PreCheckFulfillmentRequest,
     user_id: str,
-    body: Optional[PreCheckFulfillmentRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -607,7 +609,7 @@ async def pre_check_fulfill_item_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PreCheckFulfillmentRequest in body
+        body: (body) REQUIRED PreCheckFulfillmentRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -625,8 +627,8 @@ async def pre_check_fulfill_item_async(
         if error:
             return None, error
     request = PreCheckFulfillItem.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -636,8 +638,8 @@ async def pre_check_fulfill_item_async(
 
 @same_doc_as(PublicRedeemCode)
 def public_redeem_code(
+    body: FulfillCodeRequest,
     user_id: str,
-    body: Optional[FulfillCodeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -662,7 +664,7 @@ def public_redeem_code(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillCodeRequest in body
+        body: (body) REQUIRED FulfillCodeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -684,8 +686,8 @@ def public_redeem_code(
         if error:
             return None, error
     request = PublicRedeemCode.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -693,8 +695,8 @@ def public_redeem_code(
 
 @same_doc_as(PublicRedeemCode)
 async def public_redeem_code_async(
+    body: FulfillCodeRequest,
     user_id: str,
-    body: Optional[FulfillCodeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -719,7 +721,7 @@ async def public_redeem_code_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillCodeRequest in body
+        body: (body) REQUIRED FulfillCodeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -741,8 +743,8 @@ async def public_redeem_code_async(
         if error:
             return None, error
     request = PublicRedeemCode.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -881,10 +883,10 @@ def query_fulfillments(
 ):
     """Query fulfillments (queryFulfillments)
 
-    [Not Supported Yet In Starter] Query fulfillments in a namespace.
+    [Not supported yet in AGS Shared Cloud] Query fulfillments in a namespace.
     Other detail info:
 
-      * Returns : query fulfillments
+      * Returns : list of fulfillment info, storeId field can be ignored.
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/fulfillments
@@ -950,10 +952,10 @@ async def query_fulfillments_async(
 ):
     """Query fulfillments (queryFulfillments)
 
-    [Not Supported Yet In Starter] Query fulfillments in a namespace.
+    [Not supported yet in AGS Shared Cloud] Query fulfillments in a namespace.
     Other detail info:
 
-      * Returns : query fulfillments
+      * Returns : list of fulfillment info, storeId field can be ignored.
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/fulfillments
@@ -1008,8 +1010,8 @@ async def query_fulfillments_async(
 
 @same_doc_as(RedeemCode)
 def redeem_code(
+    body: FulfillCodeRequest,
     user_id: str,
-    body: Optional[FulfillCodeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1034,7 +1036,7 @@ def redeem_code(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillCodeRequest in body
+        body: (body) REQUIRED FulfillCodeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1054,8 +1056,8 @@ def redeem_code(
         if error:
             return None, error
     request = RedeemCode.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1063,8 +1065,8 @@ def redeem_code(
 
 @same_doc_as(RedeemCode)
 async def redeem_code_async(
+    body: FulfillCodeRequest,
     user_id: str,
-    body: Optional[FulfillCodeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1089,7 +1091,7 @@ async def redeem_code_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillCodeRequest in body
+        body: (body) REQUIRED FulfillCodeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1109,8 +1111,8 @@ async def redeem_code_async(
         if error:
             return None, error
     request = RedeemCode.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1128,10 +1130,10 @@ def revoke_items(
 ):
     """Revoke items by transactionId (revokeItems)
 
-    [Not Supported Yet In Starter] Revoke items by transactionId.
+    [Not supported yet in AGS Shared Cloud] Revoke items by transactionId.
     Other detail info:
 
-      * Returns : revoke fulfillment v2 result
+      * Returns : revoke fulfillment v2 result, storeId field can be ignored.
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/revoke
@@ -1181,10 +1183,10 @@ async def revoke_items_async(
 ):
     """Revoke items by transactionId (revokeItems)
 
-    [Not Supported Yet In Starter] Revoke items by transactionId.
+    [Not supported yet in AGS Shared Cloud] Revoke items by transactionId.
     Other detail info:
 
-      * Returns : revoke fulfillment v2 result
+      * Returns : revoke fulfillment v2 result, storeId field can be ignored.
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/revoke

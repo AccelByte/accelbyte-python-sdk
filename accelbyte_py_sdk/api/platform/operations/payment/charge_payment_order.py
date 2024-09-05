@@ -37,7 +37,7 @@ from ...models import PaymentOrderInfo
 class ChargePaymentOrder(Operation):
     """Charge payment order without payment flow (chargePaymentOrder)
 
-    [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
+    [Not supported yet in AGS Shared Cloud] [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
     Other detail info:
 
       * Returns : payment order instance
@@ -55,7 +55,7 @@ class ChargePaymentOrder(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderChargeRequest in body
+        body: (body) REQUIRED PaymentOrderChargeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -80,7 +80,7 @@ class ChargePaymentOrder(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentOrderChargeRequest  # OPTIONAL in [body]
+    body: PaymentOrderChargeRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     payment_order_no: str  # REQUIRED in [path]
 
@@ -230,16 +230,15 @@ class ChargePaymentOrder(Operation):
     @classmethod
     def create(
         cls,
+        body: PaymentOrderChargeRequest,
         namespace: str,
         payment_order_no: str,
-        body: Optional[PaymentOrderChargeRequest] = None,
         **kwargs,
     ) -> ChargePaymentOrder:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.payment_order_no = payment_order_no
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -276,7 +275,7 @@ class ChargePaymentOrder(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "paymentOrderNo": True,
         }

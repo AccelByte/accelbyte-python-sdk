@@ -60,10 +60,12 @@ class GetCode(Operation):
 
         redeemable: (redeemable) OPTIONAL bool in query
 
+        with_batch_name: (withBatchName) OPTIONAL bool in query
+
     Responses:
         200: OK - CodeInfo (successful operation)
 
-        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}] | 37144: Campaign batch name does not exist for batch number [{batchNo}] campaign [{campaignId}] in namespace [{namespace}].)
 
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
     """
@@ -80,6 +82,7 @@ class GetCode(Operation):
     code: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     redeemable: bool  # OPTIONAL in [query]
+    with_batch_name: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -135,6 +138,8 @@ class GetCode(Operation):
         result = {}
         if hasattr(self, "redeemable"):
             result["redeemable"] = self.redeemable
+        if hasattr(self, "with_batch_name"):
+            result["withBatchName"] = self.with_batch_name
         return result
 
     # endregion get_x_params methods
@@ -157,6 +162,10 @@ class GetCode(Operation):
         self.redeemable = value
         return self
 
+    def with_with_batch_name(self, value: bool) -> GetCode:
+        self.with_batch_name = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -175,6 +184,10 @@ class GetCode(Operation):
             result["redeemable"] = bool(self.redeemable)
         elif include_empty:
             result["redeemable"] = False
+        if hasattr(self, "with_batch_name") and self.with_batch_name:
+            result["withBatchName"] = bool(self.with_batch_name)
+        elif include_empty:
+            result["withBatchName"] = False
         return result
 
     # endregion to methods
@@ -189,7 +202,7 @@ class GetCode(Operation):
 
         200: OK - CodeInfo (successful operation)
 
-        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}] | 37144: Campaign batch name does not exist for batch number [{batchNo}] campaign [{campaignId}] in namespace [{namespace}].)
 
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
 
@@ -223,13 +236,20 @@ class GetCode(Operation):
 
     @classmethod
     def create(
-        cls, code: str, namespace: str, redeemable: Optional[bool] = None, **kwargs
+        cls,
+        code: str,
+        namespace: str,
+        redeemable: Optional[bool] = None,
+        with_batch_name: Optional[bool] = None,
+        **kwargs,
     ) -> GetCode:
         instance = cls()
         instance.code = code
         instance.namespace = namespace
         if redeemable is not None:
             instance.redeemable = redeemable
+        if with_batch_name is not None:
+            instance.with_batch_name = with_batch_name
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -249,6 +269,10 @@ class GetCode(Operation):
             instance.redeemable = bool(dict_["redeemable"])
         elif include_empty:
             instance.redeemable = False
+        if "withBatchName" in dict_ and dict_["withBatchName"] is not None:
+            instance.with_batch_name = bool(dict_["withBatchName"])
+        elif include_empty:
+            instance.with_batch_name = False
         return instance
 
     @staticmethod
@@ -257,6 +281,7 @@ class GetCode(Operation):
             "code": "code",
             "namespace": "namespace",
             "redeemable": "redeemable",
+            "withBatchName": "with_batch_name",
         }
 
     @staticmethod
@@ -265,6 +290,7 @@ class GetCode(Operation):
             "code": True,
             "namespace": True,
             "redeemable": False,
+            "withBatchName": False,
         }
 
     # endregion static methods

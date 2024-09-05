@@ -68,7 +68,7 @@ class UpdatePlatformEntitlementConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL EntitlementPlatformConfigUpdate in body
+        body: (body) REQUIRED EntitlementPlatformConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -91,7 +91,7 @@ class UpdatePlatformEntitlementConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: EntitlementPlatformConfigUpdate  # OPTIONAL in [body]
+    body: EntitlementPlatformConfigUpdate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     platform: Union[str, PlatformEnum]  # REQUIRED in [path]
 
@@ -240,16 +240,15 @@ class UpdatePlatformEntitlementConfig(Operation):
     @classmethod
     def create(
         cls,
+        body: EntitlementPlatformConfigUpdate,
         namespace: str,
         platform: Union[str, PlatformEnum],
-        body: Optional[EntitlementPlatformConfigUpdate] = None,
         **kwargs,
     ) -> UpdatePlatformEntitlementConfig:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.platform = platform
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -286,7 +285,7 @@ class UpdatePlatformEntitlementConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "platform": True,
         }

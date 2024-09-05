@@ -46,7 +46,7 @@ class PaymentProviderEnum(StrEnum):
 class PublicNormalizePaymentReturnUrl(Operation):
     """Normalize payment return url (publicNormalizePaymentReturnUrl)
 
-    [Not Supported Yet In Starter] Normalize payment return url for payment provider
+    [Not supported yet in AGS Shared Cloud] Normalize payment return url for payment provider
     Field                                                                                                                                                        | Type   | Required | Description
     -------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|----------|-----------------------
     orderNo                                                                                                                                                      | String | Yes      | order no
@@ -284,7 +284,7 @@ class PublicNormalizePaymentReturnUrl(Operation):
         self.token = value
         return self
 
-    def with_type_(self, value: str) -> PublicNormalizePaymentReturnUrl:
+    def with_type(self, value: str) -> PublicNormalizePaymentReturnUrl:
         self.type_ = value
         return self
 

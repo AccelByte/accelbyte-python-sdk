@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.19.0"
+__version__ = "7.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -237,6 +237,18 @@ from .wrappers import token_grant_v4
 from .wrappers import token_grant_v4_async
 from .wrappers import verify2fa_code_v4
 from .wrappers import verify2fa_code_v4_async
+
+# override_role_config_v3
+from .wrappers import admin_change_role_override_config_status_v3
+from .wrappers import admin_change_role_override_config_status_v3_async
+from .wrappers import admin_get_role_namespace_permission_v3
+from .wrappers import admin_get_role_namespace_permission_v3_async
+from .wrappers import admin_get_role_override_config_v3
+from .wrappers import admin_get_role_override_config_v3_async
+from .wrappers import admin_get_role_source_v3
+from .wrappers import admin_get_role_source_v3_async
+from .wrappers import admin_update_role_override_config_v3
+from .wrappers import admin_update_role_override_config_v3_async
 
 # roles
 from .wrappers import add_role_managers
@@ -775,6 +787,8 @@ from .wrappers import admin_get_my_enabled_factors_v4
 from .wrappers import admin_get_my_enabled_factors_v4_async
 from .wrappers import admin_get_my_mfa_status_v4
 from .wrappers import admin_get_my_mfa_status_v4_async
+from .wrappers import admin_get_my_own_mfa_status_v4
+from .wrappers import admin_get_my_own_mfa_status_v4_async
 from .wrappers import admin_get_namespace_invitation_history_v4
 from .wrappers import admin_get_namespace_invitation_history_v4_async
 from .wrappers import admin_get_namespace_user_invitation_history_v4
@@ -839,6 +853,8 @@ from .wrappers import public_get_my_enabled_factors_v4
 from .wrappers import public_get_my_enabled_factors_v4_async
 from .wrappers import public_get_my_mfa_status_v4
 from .wrappers import public_get_my_mfa_status_v4_async
+from .wrappers import public_get_my_own_mfa_status_v4
+from .wrappers import public_get_my_own_mfa_status_v4_async
 from .wrappers import public_get_user_public_info_by_user_id_v4
 from .wrappers import public_get_user_public_info_by_user_id_v4_async
 from .wrappers import public_invite_user_v4

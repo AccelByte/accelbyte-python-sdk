@@ -58,9 +58,6 @@ class AdminSearchContent(Operation):
 
      Please note that value of tags query param should be URL encoded
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/search
 
@@ -261,7 +258,7 @@ class AdminSearchContent(Operation):
         self.tags = value
         return self
 
-    def with_type_(self, value: str) -> AdminSearchContent:
+    def with_type(self, value: str) -> AdminSearchContent:
         self.type_ = value
         return self
 

@@ -75,7 +75,7 @@ class CreateSection(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SectionCreate in body
+        body: (body) REQUIRED SectionCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -102,7 +102,7 @@ class CreateSection(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: SectionCreate  # OPTIONAL in [body]
+    body: SectionCreate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     store_id: str  # REQUIRED in [query]
 
@@ -263,17 +263,12 @@ class CreateSection(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        store_id: str,
-        body: Optional[SectionCreate] = None,
-        **kwargs,
+        cls, body: SectionCreate, namespace: str, store_id: str, **kwargs
     ) -> CreateSection:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.store_id = store_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -310,7 +305,7 @@ class CreateSection(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "storeId": True,
         }

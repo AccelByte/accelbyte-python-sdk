@@ -39,9 +39,6 @@ class AdminHideUserContent(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/users/{userId}/contents/{contentId}/hide
 

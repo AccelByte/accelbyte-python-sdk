@@ -55,9 +55,6 @@ class AdminListInventoryConfigurations(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [READ]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations
 

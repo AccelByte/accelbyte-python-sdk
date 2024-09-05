@@ -42,9 +42,6 @@ class SetActiveQueue(Operation):
     for artifact uploading process on a node
     ```
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [UPDATE]
-
     Properties:
         url: /dsartifact/artifacts/queues/active
 

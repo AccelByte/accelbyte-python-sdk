@@ -58,9 +58,6 @@ class InviteGroupPublicV1(Operation):
 
     The invited user will have a permission to invite another user to the group
 
-    Required Permission(s):
-        - GROUP:INVITE [CREATE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/users/{userId}/invite
 

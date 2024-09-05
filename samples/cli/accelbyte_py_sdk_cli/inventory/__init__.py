@@ -43,7 +43,12 @@ from ._admin_consume_user_item import admin_consume_user_item
 from ._admin_bulk_update_my_items import admin_bulk_update_my_items
 from ._admin_save_item_to_inventory import admin_save_item_to_inventory
 from ._admin_bulk_remove_items import admin_bulk_remove_items
+from ._admin_bulk_save_item_to_inventory import admin_bulk_save_item_to_inventory
+from ._admin_update_user_inventories_by_inventory_code import (
+    admin_update_user_inventories_by_inventory_code,
+)
 from ._admin_save_item import admin_save_item
+from ._admin_bulk_save_item import admin_bulk_save_item
 from ._admin_sync_user_entitlements import admin_sync_user_entitlements
 from ._admin_purchasable import admin_purchasable
 from ._public_list_inventory_configurations import public_list_inventory_configurations
@@ -86,7 +91,10 @@ commands = [
     admin_bulk_update_my_items,
     admin_save_item_to_inventory,
     admin_bulk_remove_items,
+    admin_bulk_save_item_to_inventory,
+    admin_update_user_inventories_by_inventory_code,
     admin_save_item,
+    admin_bulk_save_item,
     admin_sync_user_entitlements,
     admin_purchasable,
     public_list_inventory_configurations,

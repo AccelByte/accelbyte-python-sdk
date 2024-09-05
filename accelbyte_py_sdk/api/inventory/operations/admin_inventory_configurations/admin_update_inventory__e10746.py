@@ -43,9 +43,6 @@ class AdminUpdateInventoryConfiguration(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:CONFIGURATION [UPDATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventoryConfigurations/{inventoryConfigurationId}
 

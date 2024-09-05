@@ -38,11 +38,13 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 @click.command()
 @click.option("--action", "action", type=str)
+@click.option("--language_tag", "language_tag", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_send_my_mfa_email_code_v4(
     action: Optional[str] = None,
+    language_tag: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -57,6 +59,7 @@ def admin_send_my_mfa_email_code_v4(
         login_as_internal(login_as)
     result, error = admin_send_my_mfa_email_code_v4_internal(
         action=action,
+        language_tag=language_tag,
         x_additional_headers=x_additional_headers,
     )
     if error:

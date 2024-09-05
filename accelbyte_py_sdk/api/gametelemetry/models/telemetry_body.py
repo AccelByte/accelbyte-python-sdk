@@ -40,6 +40,8 @@ class TelemetryBody(Model):
 
         client_timestamp: (ClientTimestamp) OPTIONAL str
 
+        device_type: (DeviceType) OPTIONAL str
+
         event_id: (EventId) OPTIONAL str
 
         event_timestamp: (EventTimestamp) OPTIONAL str
@@ -51,6 +53,7 @@ class TelemetryBody(Model):
     event_namespace: str  # REQUIRED
     payload: Dict[str, Any]  # REQUIRED
     client_timestamp: str  # OPTIONAL
+    device_type: str  # OPTIONAL
     event_id: str  # OPTIONAL
     event_timestamp: str  # OPTIONAL
 
@@ -72,6 +75,10 @@ class TelemetryBody(Model):
 
     def with_client_timestamp(self, value: str) -> TelemetryBody:
         self.client_timestamp = value
+        return self
+
+    def with_device_type(self, value: str) -> TelemetryBody:
+        self.device_type = value
         return self
 
     def with_event_id(self, value: str) -> TelemetryBody:
@@ -104,6 +111,10 @@ class TelemetryBody(Model):
             result["ClientTimestamp"] = str(self.client_timestamp)
         elif include_empty:
             result["ClientTimestamp"] = ""
+        if hasattr(self, "device_type"):
+            result["DeviceType"] = str(self.device_type)
+        elif include_empty:
+            result["DeviceType"] = ""
         if hasattr(self, "event_id"):
             result["EventId"] = str(self.event_id)
         elif include_empty:
@@ -125,6 +136,7 @@ class TelemetryBody(Model):
         event_namespace: str,
         payload: Dict[str, Any],
         client_timestamp: Optional[str] = None,
+        device_type: Optional[str] = None,
         event_id: Optional[str] = None,
         event_timestamp: Optional[str] = None,
         **kwargs,
@@ -135,6 +147,8 @@ class TelemetryBody(Model):
         instance.payload = payload
         if client_timestamp is not None:
             instance.client_timestamp = client_timestamp
+        if device_type is not None:
+            instance.device_type = device_type
         if event_id is not None:
             instance.event_id = event_id
         if event_timestamp is not None:
@@ -164,6 +178,10 @@ class TelemetryBody(Model):
             instance.client_timestamp = str(dict_["ClientTimestamp"])
         elif include_empty:
             instance.client_timestamp = ""
+        if "DeviceType" in dict_ and dict_["DeviceType"] is not None:
+            instance.device_type = str(dict_["DeviceType"])
+        elif include_empty:
+            instance.device_type = ""
         if "EventId" in dict_ and dict_["EventId"] is not None:
             instance.event_id = str(dict_["EventId"])
         elif include_empty:
@@ -215,6 +233,7 @@ class TelemetryBody(Model):
             "EventNamespace": "event_namespace",
             "Payload": "payload",
             "ClientTimestamp": "client_timestamp",
+            "DeviceType": "device_type",
             "EventId": "event_id",
             "EventTimestamp": "event_timestamp",
         }
@@ -226,6 +245,7 @@ class TelemetryBody(Model):
             "EventNamespace": True,
             "Payload": True,
             "ClientTimestamp": False,
+            "DeviceType": False,
             "EventId": False,
             "EventTimestamp": False,
         }

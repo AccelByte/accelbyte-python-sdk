@@ -34,6 +34,7 @@ from ..models import ModelsAdminGetContentBulkRequest
 from ..models import ModelsAdminUpdateContentRequestV2
 from ..models import ModelsContentDownloadResponse
 from ..models import ModelsContentDownloadResponseV2
+from ..models import ModelsCopyContentRequest
 from ..models import ModelsCreateContentResponseV2
 from ..models import ModelsCreateScreenshotRequest
 from ..models import ModelsCreateScreenshotResponse
@@ -50,6 +51,7 @@ from ..models import ModelsUpdateScreenshotResponse
 from ..models import ResponseError
 
 from ..operations.admin_content_v2 import AdminBulkGetContentByIDsV2
+from ..operations.admin_content_v2 import AdminCopyContent
 from ..operations.admin_content_v2 import AdminCreateContentV2
 from ..operations.admin_content_v2 import AdminDeleteContentByShareCodeV2
 from ..operations.admin_content_v2 import AdminDeleteContentScreenshotV2
@@ -172,6 +174,124 @@ async def admin_bulk_get_content_by_i_ds_v2_async(
             return None, error
     request = AdminBulkGetContentByIDsV2.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminCopyContent)
+def admin_copy_content(
+    body: ModelsCopyContentRequest,
+    channel_id: str,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Copy contents from a channel to another (AdminCopyContent)
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}/copy
+
+        method: POST
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCopyContentRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsContentDownloadResponseV2 (contents copied)
+
+        400: Bad Request - ResponseError
+
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        403: Forbidden - ResponseError (20013: insufficient permission)
+
+        404: Not Found - ResponseError
+
+        500: Internal Server Error - ResponseError
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCopyContent.create(
+        body=body,
+        channel_id=channel_id,
+        content_id=content_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminCopyContent)
+async def admin_copy_content_async(
+    body: ModelsCopyContentRequest,
+    channel_id: str,
+    content_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Copy contents from a channel to another (AdminCopyContent)
+
+    Properties:
+        url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}/copy
+
+        method: POST
+
+        tags: ["Admin Content V2"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsCopyContentRequest in body
+
+        channel_id: (channelId) REQUIRED str in path
+
+        content_id: (contentId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ModelsContentDownloadResponseV2 (contents copied)
+
+        400: Bad Request - ResponseError
+
+        401: Unauthorized - ResponseError (20001: unauthorized access)
+
+        403: Forbidden - ResponseError (20013: insufficient permission)
+
+        404: Not Found - ResponseError
+
+        500: Internal Server Error - ResponseError
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminCopyContent.create(
+        body=body,
+        channel_id=channel_id,
+        content_id=content_id,
         namespace=namespace,
     )
     return await run_request_async(

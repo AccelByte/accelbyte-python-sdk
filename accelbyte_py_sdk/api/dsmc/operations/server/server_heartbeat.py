@@ -48,12 +48,6 @@ class ServerHeartbeat(Operation):
     If the last heartbeat is longer than the session timout, the server.
     will be considered as expired and will be terminated by DSMC.```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/heartbeat
 

@@ -63,12 +63,6 @@ def create_pod_config(
 
     This endpoint create a dedicated servers pod config in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name}
 
@@ -126,12 +120,6 @@ async def create_pod_config_async(
     Required scope: social
 
     This endpoint create a dedicated servers pod config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name}
@@ -193,12 +181,6 @@ def create_pod_config_client(
 
     This endpoint create a dedicated servers pod config in a namespace.
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/pods/{name}
 
@@ -256,12 +238,6 @@ async def create_pod_config_client_async(
     Required scope: social
 
     This endpoint create a dedicated servers pod config in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/pods/{name}
@@ -322,12 +298,6 @@ def delete_pod_config(
 
     This endpoint delete a dedicated server pod config in a namespace
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name}
 
@@ -383,12 +353,6 @@ async def delete_pod_config_async(
     Required scope: social
 
     This endpoint delete a dedicated server pod config in a namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name}
@@ -448,12 +412,6 @@ def delete_pod_config_client(
 
     This endpoint delete a dedicated server pod config in a namespace
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/pods/{name}
 
@@ -509,12 +467,6 @@ async def delete_pod_config_client_async(
     Required scope: social
 
     This endpoint delete a dedicated server pod config in a namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/pods/{name}
@@ -577,12 +529,6 @@ def get_all_pod_config(
 
     Parameter Offset and Count is Required
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods
 
@@ -640,12 +586,6 @@ async def get_all_pod_config_async(
     This endpoint get a all pod configs in a namespace
 
     Parameter Offset and Count is Required
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods
@@ -707,12 +647,6 @@ def get_all_pod_config_client(
 
     Parameter Offset and Count is Required
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/pods
 
@@ -771,12 +705,6 @@ async def get_all_pod_config_client_async(
 
     Parameter Offset and Count is Required
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/pods
 
@@ -831,12 +759,6 @@ def get_lowest_instance_spec(
 
     This endpoint returns the lowest instance spec, both cpu (in Mhz) and memory (in Mb).
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/instances/spec/lowest
 
@@ -872,12 +794,6 @@ async def get_lowest_instance_spec_async(
     Required scope: social
 
     This endpoint returns the lowest instance spec, both cpu (in Mhz) and memory (in Mb).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:*:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/instances/spec/lowest
@@ -919,12 +835,6 @@ def get_pod_config(
     Required scope: social
 
     This endpoint get a dedicated server pod config in a namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name}
@@ -979,12 +889,6 @@ async def get_pod_config_async(
     Required scope: social
 
     This endpoint get a dedicated server pod config in a namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name}
@@ -1042,12 +946,6 @@ def update_pod_config(
     Required scope: social
 
     This endpoint update a dedicated servers pod config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name}
@@ -1108,12 +1006,6 @@ async def update_pod_config_async(
     Required scope: social
 
     This endpoint update a dedicated servers pod config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods/{name}

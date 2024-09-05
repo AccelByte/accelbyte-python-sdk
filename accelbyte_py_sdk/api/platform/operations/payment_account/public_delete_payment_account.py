@@ -39,7 +39,7 @@ class TypeEnum(StrEnum):
 class PublicDeletePaymentAccount(Operation):
     """Delete payment account (publicDeletePaymentAccount)
 
-    [Not Supported Yet In Starter] Delete payment account.
+    [Not supported yet in AGS Shared Cloud] Delete payment account.
     Other detail info:
 
       * Returns :
@@ -144,7 +144,7 @@ class PublicDeletePaymentAccount(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> PublicDeletePaymentAccount:
+    def with_id(self, value: str) -> PublicDeletePaymentAccount:
         self.id_ = value
         return self
 
@@ -152,7 +152,7 @@ class PublicDeletePaymentAccount(Operation):
         self.namespace = value
         return self
 
-    def with_type_(self, value: Union[str, TypeEnum]) -> PublicDeletePaymentAccount:
+    def with_type(self, value: Union[str, TypeEnum]) -> PublicDeletePaymentAccount:
         self.type_ = value
         return self
 

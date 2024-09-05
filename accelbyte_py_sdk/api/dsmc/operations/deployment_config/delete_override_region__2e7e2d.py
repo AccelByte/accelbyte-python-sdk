@@ -42,12 +42,6 @@ class DeleteOverrideRegionOverride(Operation):
 
     This endpoint delete a dedicated server deployment override in a namespace in a region for deployment overrides
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
 

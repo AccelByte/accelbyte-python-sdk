@@ -42,12 +42,6 @@ class ListNodesIPAddress(Operation):
 
     This endpoint will list IP Address of all artifact queue
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:NODES [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/artifacts/nodes/ipaddresses
 
@@ -156,7 +150,7 @@ class ListNodesIPAddress(Operation):
         self.limit = value
         return self
 
-    def with_next_(self, value: str) -> ListNodesIPAddress:
+    def with_next(self, value: str) -> ListNodesIPAddress:
         self.next_ = value
         return self
 

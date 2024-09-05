@@ -417,6 +417,7 @@ def create_api_fleet_server_info_response_example() -> ApiFleetServerInfoRespons
 
 def create_api_fleet_servers_response_example() -> ApiFleetServersResponse:
     instance = ApiFleetServersResponse()
+    instance.paging = create_api_paging_info_example()
     instance.regions = [create_api_fleet_regional_server_counts_example()]
     instance.servers = [create_api_fleet_server_info_response_example()]
     return instance

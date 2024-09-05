@@ -42,12 +42,6 @@ class GetDeploymentClient(Operation):
 
     This endpoint get a dedicated server deployment in a namespace
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
 

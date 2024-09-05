@@ -41,12 +41,6 @@ class DeleteSession(Operation):
 
     This endpoint deletes a specified session and its corresponding match result from DB.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/sessions/{sessionID}
 

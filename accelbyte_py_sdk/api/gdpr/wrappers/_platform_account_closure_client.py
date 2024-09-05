@@ -162,9 +162,6 @@ def admin_get_platform_account_closure_client(
     Get platform account closure config.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client
 
@@ -217,9 +214,6 @@ async def admin_get_platform_account_closure_client_async(
 
     Get platform account closure config.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client
@@ -277,9 +271,6 @@ def admin_update_platform_account_closure_client(
     Update platform account closure client.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client
 
@@ -334,9 +325,6 @@ async def admin_update_platform_account_closure_client_async(
 
     Update platform account closure client.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client

@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestStripeConfigById(Operation):
     """Test stripe configuration by id (testStripeConfigById)
 
-    [Not Supported Yet In Starter] Test stripe configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test stripe configuration in payment merchant config. Other detail info:
 
       * Returns : test adyen config
 
@@ -137,7 +137,7 @@ class TestStripeConfigById(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> TestStripeConfigById:
+    def with_id(self, value: str) -> TestStripeConfigById:
         self.id_ = value
         return self
 

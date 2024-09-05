@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestAdyenConfigById(Operation):
     """Test adyen configuration by id (testAdyenConfigById)
 
-    [Not Supported Yet In Starter] Test adyen configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test adyen configuration in payment merchant config. Other detail info:
 
       * Returns : test adyen config
 
@@ -137,7 +137,7 @@ class TestAdyenConfigById(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> TestAdyenConfigById:
+    def with_id(self, value: str) -> TestAdyenConfigById:
         self.id_ = value
         return self
 

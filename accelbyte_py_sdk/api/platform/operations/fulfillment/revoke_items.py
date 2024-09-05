@@ -36,10 +36,10 @@ from ...models import RevokeFulfillmentV2Result
 class RevokeItems(Operation):
     """Revoke items by transactionId (revokeItems)
 
-    [Not Supported Yet In Starter] Revoke items by transactionId.
+    [Not supported yet in AGS Shared Cloud] Revoke items by transactionId.
     Other detail info:
 
-      * Returns : revoke fulfillment v2 result
+      * Returns : revoke fulfillment v2 result, storeId field can be ignored.
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/revoke

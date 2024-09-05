@@ -79,9 +79,6 @@ class AdminGetUserPlatformAccountsV3(Operation):
     ## Justice Platform Account
     The permission âADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId}â [READ] is required in order to read the UserID who linked with the user.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:JUSTICE:USER:{userId} [READ]
-
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/platforms
 

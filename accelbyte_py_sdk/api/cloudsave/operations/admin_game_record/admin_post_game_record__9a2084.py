@@ -115,9 +115,6 @@ class AdminPostGameRecordHandlerV1(Operation):
     }
     ```
 
-    Required Permission(s):
-        - CLIENT []
-
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/records/{key}
 

@@ -35,7 +35,7 @@ from ...models import ErrorEntity
 class DeletePaymentProviderConfig(Operation):
     """Delete payment provider config (deletePaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Delete payment provider config.
+    [Not supported yet in AGS Shared Cloud] Delete payment provider config.
     Other detail info:
 
       * Returns : payment provider config
@@ -127,7 +127,7 @@ class DeletePaymentProviderConfig(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> DeletePaymentProviderConfig:
+    def with_id(self, value: str) -> DeletePaymentProviderConfig:
         self.id_ = value
         return self
 

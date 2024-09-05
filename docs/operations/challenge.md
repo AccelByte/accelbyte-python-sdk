@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Challenge Service Index (1.8.1)
+# AccelByte Gaming Services Challenge Service Index (1.9.0)
 
 
 ## Operations
@@ -51,6 +51,14 @@
 | /challenge/v1/public/namespaces/{namespace}/users/me/rewards/claim | POST | publicClaimUserRewards | `false` | [PublicClaimUserRewards](../../accelbyte_py_sdk/api/challenge/operations/player_reward/public_claim_user_rewards.py) | [public_claim_user_rewards](../../accelbyte_py_sdk/api/challenge/wrappers/_player_reward.py) | [accelbyte_py_sdk_cli challenge-public-claim-user-rewards](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_claim_user_rewards.py) |
 | /challenge/v1/public/namespaces/{namespace}/users/me/rewards | GET | publicGetUserRewards | `false` | [PublicGetUserRewards](../../accelbyte_py_sdk/api/challenge/operations/player_reward/public_get_user_rewards.py) | [public_get_user_rewards](../../accelbyte_py_sdk/api/challenge/wrappers/_player_reward.py) | [accelbyte_py_sdk_cli challenge-public-get-user-rewards](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_get_user_rewards.py) |
 
+### Plugins
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /challenge/v1/admin/namespaces/{namespace}/plugins/assignment | POST | adminCreateAssignmentPlugin | `false` | [AdminCreateAssignmentPlugin](../../accelbyte_py_sdk/api/challenge/operations/plugins/admin_create_assignment_plugin.py) | [admin_create_assignment_plugin](../../accelbyte_py_sdk/api/challenge/wrappers/_plugins.py) | [accelbyte_py_sdk_cli challenge-admin-create-assignment-plugin](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_create_assignment_plugin.py) |
+| /challenge/v1/admin/namespaces/{namespace}/plugins/assignment | DELETE | adminDeleteAssignmentPlugin | `false` | [AdminDeleteAssignmentPlugin](../../accelbyte_py_sdk/api/challenge/operations/plugins/admin_delete_assignment_plugin.py) | [admin_delete_assignment_plugin](../../accelbyte_py_sdk/api/challenge/wrappers/_plugins.py) | [accelbyte_py_sdk_cli challenge-admin-delete-assignment-plugin](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_delete_assignment_plugin.py) |
+| /challenge/v1/admin/namespaces/{namespace}/plugins/assignment | GET | adminGetAssignmentPlugin | `false` | [AdminGetAssignmentPlugin](../../accelbyte_py_sdk/api/challenge/operations/plugins/admin_get_assignment_plugin.py) | [admin_get_assignment_plugin](../../accelbyte_py_sdk/api/challenge/wrappers/_plugins.py) | [accelbyte_py_sdk_cli challenge-admin-get-assignment-plugin](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_get_assignment_plugin.py) |
+| /challenge/v1/admin/namespaces/{namespace}/plugins/assignment | PUT | adminUpdateAssignmentPlugin | `false` | [AdminUpdateAssignmentPlugin](../../accelbyte_py_sdk/api/challenge/operations/plugins/admin_update_assignment_plugin.py) | [admin_update_assignment_plugin](../../accelbyte_py_sdk/api/challenge/wrappers/_plugins.py) | [accelbyte_py_sdk_cli challenge-admin-update-assignment-plugin](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_update_assignment_plugin.py) |
+
 
 ## Models
 | Model | Class |
@@ -74,6 +82,10 @@
 | model.ListPeriodsResponse | [ModelListPeriodsResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_periods_response.py) |
 | model.ListUserRewardsResponse | [ModelListUserRewardsResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_user_rewards_response.py) |
 | model.Pagination | [ModelPagination](../../accelbyte_py_sdk/api/challenge/models/model_pagination.py) |
+| model.PluginAsignmentAppConfig | [ModelPluginAsignmentAppConfig](../../accelbyte_py_sdk/api/challenge/models/model_plugin_asignment_app_config.py) |
+| model.PluginAssignmentCustomConfig | [ModelPluginAssignmentCustomConfig](../../accelbyte_py_sdk/api/challenge/models/model_plugin_assignment_custom_config.py) |
+| model.PluginAssignmentRequest | [ModelPluginAssignmentRequest](../../accelbyte_py_sdk/api/challenge/models/model_plugin_assignment_request.py) |
+| model.PluginAssignmentResponse | [ModelPluginAssignmentResponse](../../accelbyte_py_sdk/api/challenge/models/model_plugin_assignment_response.py) |
 | model.Predicate | [ModelPredicate](../../accelbyte_py_sdk/api/challenge/models/model_predicate.py) |
 | model.Requirement | [ModelRequirement](../../accelbyte_py_sdk/api/challenge/models/model_requirement.py) |
 | model.RequirementProgressionResponse | [ModelRequirementProgressionResponse](../../accelbyte_py_sdk/api/challenge/models/model_requirement_progression_response.py) |

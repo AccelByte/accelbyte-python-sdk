@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestWxPayConfigById(Operation):
     """Test wxPay configuration by id (testWxPayConfigById)
 
-    [Not Supported Yet In Starter] Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not supported yet in AGS Shared Cloud] Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Returns : test WxPay config
@@ -128,7 +128,7 @@ class TestWxPayConfigById(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> TestWxPayConfigById:
+    def with_id(self, value: str) -> TestWxPayConfigById:
         self.id_ = value
         return self
 

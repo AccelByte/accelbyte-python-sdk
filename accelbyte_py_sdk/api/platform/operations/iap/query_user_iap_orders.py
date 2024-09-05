@@ -221,7 +221,7 @@ class QueryUserIAPOrders(Operation):
         self.status = value
         return self
 
-    def with_type_(self, value: Union[str, TypeEnum]) -> QueryUserIAPOrders:
+    def with_type(self, value: Union[str, TypeEnum]) -> QueryUserIAPOrders:
         self.type_ = value
         return self
 

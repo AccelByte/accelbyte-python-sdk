@@ -33,7 +33,7 @@ from .....core import HttpResponse
 class PublicGetQRCode(Operation):
     """Get qrcode (publicGetQRCode)
 
-    [Not Supported Yet In Starter] Get qrcode.
+    [Not supported yet in AGS Shared Cloud] Get qrcode.
     Other detail info:
 
       * Returns : QRCode image stream

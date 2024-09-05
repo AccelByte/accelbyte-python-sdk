@@ -51,15 +51,15 @@ class ImportStoreByCSV(Operation):
 
         securities: [BEARER_AUTH]
 
-        category: (category) OPTIONAL Any in form_data
+        category: (category) REQUIRED Any in form_data
 
-        display: (display) OPTIONAL Any in form_data
+        display: (display) REQUIRED Any in form_data
 
-        item: (item) OPTIONAL Any in form_data
+        item: (item) REQUIRED Any in form_data
 
-        notes: (notes) OPTIONAL str in form_data
+        notes: (notes) REQUIRED str in form_data
 
-        section: (section) OPTIONAL Any in form_data
+        section: (section) REQUIRED Any in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -84,11 +84,11 @@ class ImportStoreByCSV(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    category: Any  # OPTIONAL in [form_data]
-    display: Any  # OPTIONAL in [form_data]
-    item: Any  # OPTIONAL in [form_data]
-    notes: str  # OPTIONAL in [form_data]
-    section: Any  # OPTIONAL in [form_data]
+    category: Any  # REQUIRED in [form_data]
+    display: Any  # REQUIRED in [form_data]
+    item: Any  # REQUIRED in [form_data]
+    notes: str  # REQUIRED in [form_data]
+    section: Any  # REQUIRED in [form_data]
     namespace: str  # REQUIRED in [path]
     store_id: str  # REQUIRED in [path]
 
@@ -279,28 +279,23 @@ class ImportStoreByCSV(Operation):
     @classmethod
     def create(
         cls,
+        category: Any,
+        display: Any,
+        item: Any,
+        notes: str,
+        section: Any,
         namespace: str,
         store_id: str,
-        category: Optional[Any] = None,
-        display: Optional[Any] = None,
-        item: Optional[Any] = None,
-        notes: Optional[str] = None,
-        section: Optional[Any] = None,
         **kwargs,
     ) -> ImportStoreByCSV:
         instance = cls()
+        instance.category = category
+        instance.display = display
+        instance.item = item
+        instance.notes = notes
+        instance.section = section
         instance.namespace = namespace
         instance.store_id = store_id
-        if category is not None:
-            instance.category = category
-        if display is not None:
-            instance.display = display
-        if item is not None:
-            instance.item = item
-        if notes is not None:
-            instance.notes = notes
-        if section is not None:
-            instance.section = section
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -355,11 +350,11 @@ class ImportStoreByCSV(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "category": False,
-            "display": False,
-            "item": False,
-            "notes": False,
-            "section": False,
+            "category": True,
+            "display": True,
+            "item": True,
+            "notes": True,
+            "section": True,
             "namespace": True,
             "storeId": True,
         }

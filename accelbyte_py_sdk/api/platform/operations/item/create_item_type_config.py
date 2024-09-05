@@ -37,7 +37,7 @@ from ...models import ValidationErrorEntity
 class CreateItemTypeConfig(Operation):
     """Create an Item Type Config (createItemTypeConfig)
 
-    [Not Supported Yet In Starter] This API is used to create an item type config.
+    [Not supported yet in AGS Shared Cloud] This API is used to create an item type config.
 
     *  Returns : item type config data
 
@@ -54,7 +54,7 @@ class CreateItemTypeConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ItemTypeConfigCreate in body
+        body: (body) REQUIRED ItemTypeConfigCreate in body
 
     Responses:
         201: Created - (item type config created)
@@ -75,7 +75,7 @@ class CreateItemTypeConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ItemTypeConfigCreate  # OPTIONAL in [body]
+    body: ItemTypeConfigCreate  # REQUIRED in [body]
 
     # endregion fields
 
@@ -199,12 +199,9 @@ class CreateItemTypeConfig(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls, body: Optional[ItemTypeConfigCreate] = None, **kwargs
-    ) -> CreateItemTypeConfig:
+    def create(cls, body: ItemTypeConfigCreate, **kwargs) -> CreateItemTypeConfig:
         instance = cls()
-        if body is not None:
-            instance.body = body
+        instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -231,7 +228,7 @@ class CreateItemTypeConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
         }
 
     # endregion static methods

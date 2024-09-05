@@ -64,6 +64,8 @@ from ..api.platform.models import BulkEntitlementRevokeResult
 from ..api.platform.models import BulkOperationResult
 from ..api.platform.models import BulkRegionDataChangeRequest
 from ..api.platform.models import BundledItemInfo
+from ..api.platform.models import CampaignBatchNameChange
+from ..api.platform.models import CampaignBatchNameInfo
 from ..api.platform.models import CampaignCreate
 from ..api.platform.models import CampaignDynamicInfo
 from ..api.platform.models import CampaignIfc
@@ -126,7 +128,6 @@ from ..api.platform.models import DiscountConfig
 from ..api.platform.models import DiscountItem
 from ..api.platform.models import DurableEntitlementRevocationConfig
 from ..api.platform.models import EntitlementConfigInfo
-from ..api.platform.models import EntitlementDecrement
 from ..api.platform.models import EntitlementDecrementResult
 from ..api.platform.models import EntitlementGrant
 from ..api.platform.models import EntitlementGrantResult
@@ -142,6 +143,7 @@ from ..api.platform.models import EntitlementPlatformConfigUpdate
 from ..api.platform.models import EntitlementPrechekResult
 from ..api.platform.models import EntitlementRevocation
 from ..api.platform.models import EntitlementRevocationConfig
+from ..api.platform.models import EntitlementRevokeRequest
 from ..api.platform.models import EntitlementRevokeResult
 from ..api.platform.models import EntitlementSoldRequest
 from ..api.platform.models import EntitlementSoldResult
@@ -341,7 +343,9 @@ from ..api.platform.models import Predicate
 from ..api.platform.models import PredicateValidateResult
 from ..api.platform.models import PsnEntitlementOwnershipRequest
 from ..api.platform.models import PublicCustomConfigInfo
+from ..api.platform.models import PublicEntitlementDecrement
 from ..api.platform.models import PublicEntitlementHistoryInfo
+from ..api.platform.models import PublicEntitlementMetadata
 from ..api.platform.models import PurchaseCondition
 from ..api.platform.models import PurchaseConditionUpdate
 from ..api.platform.models import PurchasedItemCount
@@ -516,6 +520,7 @@ def create_additional_data_entitlement_example() -> AdditionalDataEntitlement:
 
 def create_admin_entitlement_decrement_example() -> AdminEntitlementDecrement:
     instance = AdminEntitlementDecrement()
+    instance.metadata = {randomize(): randomize()}
     instance.options = [randomize()]
     instance.platform = randomize()
     instance.request_id = randomize()
@@ -942,6 +947,20 @@ def create_bundled_item_info_example() -> BundledItemInfo:
     return instance
 
 
+def create_campaign_batch_name_change_example() -> CampaignBatchNameChange:
+    instance = CampaignBatchNameChange()
+    instance.new_name = randomize()
+    instance.old_name = randomize()
+    return instance
+
+
+def create_campaign_batch_name_info_example() -> CampaignBatchNameInfo:
+    instance = CampaignBatchNameInfo()
+    instance.batch_name = randomize()
+    instance.batch_nos = [randomize("int", min_val=1, max_val=1000)]
+    return instance
+
+
 def create_campaign_create_example() -> CampaignCreate:
     instance = CampaignCreate()
     instance.name = randomize()
@@ -1177,6 +1196,7 @@ def create_client_transaction_example() -> ClientTransaction:
 
 def create_code_create_example() -> CodeCreate:
     instance = CodeCreate()
+    instance.batch_name = randomize()
     instance.code_value = randomize()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
     return instance
@@ -1211,6 +1231,7 @@ def create_code_info_example() -> CodeInfo:
     instance.value = randomize()
     instance.acquire_order_no = randomize()
     instance.acquire_user_id = randomize()
+    instance.batch_name = randomize()
     instance.campaign = create_campaign_ifc_example()
     instance.discount_config = create_discount_config_example()
     instance.items = [create_redeemable_item_example()]
@@ -1581,14 +1602,6 @@ def create_entitlement_config_info_example() -> EntitlementConfigInfo:
     return instance
 
 
-def create_entitlement_decrement_example() -> EntitlementDecrement:
-    instance = EntitlementDecrement()
-    instance.options = [randomize()]
-    instance.request_id = randomize()
-    instance.use_count = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
 def create_entitlement_decrement_result_example() -> EntitlementDecrementResult:
     instance = EntitlementDecrementResult()
     instance.clazz = randomize()
@@ -1634,6 +1647,7 @@ def create_entitlement_grant_example() -> EntitlementGrant:
     instance.end_date = randomize("date")
     instance.granted_code = randomize()
     instance.language = randomize()
+    instance.metadata = {randomize(): randomize()}
     instance.origin = randomize()
     instance.region = randomize()
     instance.source = randomize()
@@ -1806,6 +1820,12 @@ def create_entitlement_revocation_config_example() -> EntitlementRevocationConfi
     return instance
 
 
+def create_entitlement_revoke_request_example() -> EntitlementRevokeRequest:
+    instance = EntitlementRevokeRequest()
+    instance.metadata = {randomize(): randomize()}
+    return instance
+
+
 def create_entitlement_revoke_result_example() -> EntitlementRevokeResult:
     instance = EntitlementRevokeResult()
     instance.entitlement_id = randomize()
@@ -1832,6 +1852,7 @@ def create_entitlement_sold_result_example() -> EntitlementSoldResult:
 
 def create_entitlement_split_request_example() -> EntitlementSplitRequest:
     instance = EntitlementSplitRequest()
+    instance.metadata = create_public_entitlement_metadata_example()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -1869,6 +1890,7 @@ def create_entitlement_summary_example() -> EntitlementSummary:
 def create_entitlement_transfer_request_example() -> EntitlementTransferRequest:
     instance = EntitlementTransferRequest()
     instance.entitlement_id = randomize()
+    instance.metadata = create_public_entitlement_metadata_example()
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -4157,6 +4179,15 @@ def create_public_custom_config_info_example() -> PublicCustomConfigInfo:
     return instance
 
 
+def create_public_entitlement_decrement_example() -> PublicEntitlementDecrement:
+    instance = PublicEntitlementDecrement()
+    instance.metadata = create_public_entitlement_metadata_example()
+    instance.options = [randomize()]
+    instance.request_id = randomize()
+    instance.use_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_public_entitlement_history_info_example() -> PublicEntitlementHistoryInfo:
     instance = PublicEntitlementHistoryInfo()
     instance.action = randomize()
@@ -4172,6 +4203,12 @@ def create_public_entitlement_history_info_example() -> PublicEntitlementHistory
     instance.sku = randomize("slug")
     instance.use_count = randomize("int", min_val=1, max_val=1000)
     instance.use_count_change = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_public_entitlement_metadata_example() -> PublicEntitlementMetadata:
+    instance = PublicEntitlementMetadata()
+    instance.operation_source = randomize()
     return instance
 
 

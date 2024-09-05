@@ -43,12 +43,6 @@ class CreateDeployment(Operation):
 
     This endpoint create a dedicated servers deployment in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
 

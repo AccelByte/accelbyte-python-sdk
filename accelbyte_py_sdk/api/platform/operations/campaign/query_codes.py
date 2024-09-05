@@ -39,6 +39,7 @@ class QueryCodes(Operation):
     Other detail info:
 
       * Returns : list of codes
+      * The batchName field in the codes response will be present only when the withBatchName parameter is true , or when the batchName filter is not blank.
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
@@ -59,13 +60,17 @@ class QueryCodes(Operation):
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        batch_no: (batchNo) OPTIONAL int in query
+        batch_name: (batchName) OPTIONAL str in query
+
+        batch_no: (batchNo) OPTIONAL List[int] in query
 
         code: (code) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        with_batch_name: (withBatchName) OPTIONAL bool in query
 
     Responses:
         200: OK - CodeInfoPagingSlicedResult (successful operation)
@@ -83,10 +88,12 @@ class QueryCodes(Operation):
     campaign_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     active_only: bool  # OPTIONAL in [query]
-    batch_no: int  # OPTIONAL in [query]
+    batch_name: str  # OPTIONAL in [query]
+    batch_no: List[int]  # OPTIONAL in [query]
     code: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    with_batch_name: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -142,6 +149,8 @@ class QueryCodes(Operation):
         result = {}
         if hasattr(self, "active_only"):
             result["activeOnly"] = self.active_only
+        if hasattr(self, "batch_name"):
+            result["batchName"] = self.batch_name
         if hasattr(self, "batch_no"):
             result["batchNo"] = self.batch_no
         if hasattr(self, "code"):
@@ -150,6 +159,8 @@ class QueryCodes(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "with_batch_name"):
+            result["withBatchName"] = self.with_batch_name
         return result
 
     # endregion get_x_params methods
@@ -172,7 +183,11 @@ class QueryCodes(Operation):
         self.active_only = value
         return self
 
-    def with_batch_no(self, value: int) -> QueryCodes:
+    def xwith_batch_name(self, value: str) -> QueryCodes:
+        self.batch_name = value
+        return self
+
+    def with_batch_no(self, value: List[int]) -> QueryCodes:
         self.batch_no = value
         return self
 
@@ -186,6 +201,10 @@ class QueryCodes(Operation):
 
     def with_offset(self, value: int) -> QueryCodes:
         self.offset = value
+        return self
+
+    def with_with_batch_name(self, value: bool) -> QueryCodes:
+        self.with_batch_name = value
         return self
 
     # endregion with_x methods
@@ -206,10 +225,14 @@ class QueryCodes(Operation):
             result["activeOnly"] = bool(self.active_only)
         elif include_empty:
             result["activeOnly"] = False
-        if hasattr(self, "batch_no") and self.batch_no:
-            result["batchNo"] = int(self.batch_no)
+        if hasattr(self, "batch_name") and self.batch_name:
+            result["batchName"] = str(self.batch_name)
         elif include_empty:
-            result["batchNo"] = 0
+            result["batchName"] = ""
+        if hasattr(self, "batch_no") and self.batch_no:
+            result["batchNo"] = [int(i0) for i0 in self.batch_no]
+        elif include_empty:
+            result["batchNo"] = []
         if hasattr(self, "code") and self.code:
             result["code"] = str(self.code)
         elif include_empty:
@@ -222,6 +245,10 @@ class QueryCodes(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "with_batch_name") and self.with_batch_name:
+            result["withBatchName"] = bool(self.with_batch_name)
+        elif include_empty:
+            result["withBatchName"] = False
         return result
 
     # endregion to methods
@@ -266,10 +293,12 @@ class QueryCodes(Operation):
         campaign_id: str,
         namespace: str,
         active_only: Optional[bool] = None,
-        batch_no: Optional[int] = None,
+        batch_name: Optional[str] = None,
+        batch_no: Optional[List[int]] = None,
         code: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        with_batch_name: Optional[bool] = None,
         **kwargs,
     ) -> QueryCodes:
         instance = cls()
@@ -277,6 +306,8 @@ class QueryCodes(Operation):
         instance.namespace = namespace
         if active_only is not None:
             instance.active_only = active_only
+        if batch_name is not None:
+            instance.batch_name = batch_name
         if batch_no is not None:
             instance.batch_no = batch_no
         if code is not None:
@@ -285,6 +316,8 @@ class QueryCodes(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if with_batch_name is not None:
+            instance.with_batch_name = with_batch_name
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -304,10 +337,14 @@ class QueryCodes(Operation):
             instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
             instance.active_only = False
-        if "batchNo" in dict_ and dict_["batchNo"] is not None:
-            instance.batch_no = int(dict_["batchNo"])
+        if "batchName" in dict_ and dict_["batchName"] is not None:
+            instance.batch_name = str(dict_["batchName"])
         elif include_empty:
-            instance.batch_no = 0
+            instance.batch_name = ""
+        if "batchNo" in dict_ and dict_["batchNo"] is not None:
+            instance.batch_no = [int(i0) for i0 in dict_["batchNo"]]
+        elif include_empty:
+            instance.batch_no = []
         if "code" in dict_ and dict_["code"] is not None:
             instance.code = str(dict_["code"])
         elif include_empty:
@@ -320,6 +357,10 @@ class QueryCodes(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "withBatchName" in dict_ and dict_["withBatchName"] is not None:
+            instance.with_batch_name = bool(dict_["withBatchName"])
+        elif include_empty:
+            instance.with_batch_name = False
         return instance
 
     @staticmethod
@@ -328,10 +369,12 @@ class QueryCodes(Operation):
             "campaignId": "campaign_id",
             "namespace": "namespace",
             "activeOnly": "active_only",
+            "batchName": "batch_name",
             "batchNo": "batch_no",
             "code": "code",
             "limit": "limit",
             "offset": "offset",
+            "withBatchName": "with_batch_name",
         }
 
     @staticmethod
@@ -340,10 +383,18 @@ class QueryCodes(Operation):
             "campaignId": True,
             "namespace": True,
             "activeOnly": False,
+            "batchName": False,
             "batchNo": False,
             "code": False,
             "limit": False,
             "offset": False,
+            "withBatchName": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "batchNo": "multi",  # in query
         }
 
     # endregion static methods

@@ -42,12 +42,6 @@ class ListAllQueue(Operation):
 
     This endpoint will list all DSes which has artifact in upload queue.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT:QUEUE [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/artifacts/queues/all
 
@@ -191,7 +185,7 @@ class ListAllQueue(Operation):
         self.limit = value
         return self
 
-    def with_next_(self, value: str) -> ListAllQueue:
+    def with_next(self, value: str) -> ListAllQueue:
         self.next_ = value
         return self
 

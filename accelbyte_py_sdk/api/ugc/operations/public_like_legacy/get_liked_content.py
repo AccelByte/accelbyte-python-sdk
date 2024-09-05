@@ -231,7 +231,7 @@ class GetLikedContent(Operation):
         self.tags = value
         return self
 
-    def with_type_(self, value: str) -> GetLikedContent:
+    def with_type(self, value: str) -> GetLikedContent:
         self.type_ = value
         return self
 

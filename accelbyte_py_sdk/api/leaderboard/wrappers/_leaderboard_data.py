@@ -408,17 +408,12 @@ def delete_user_ranking_by_leaderboard_code_admin_v1(
 ):
     """delete all user ranking by leaderboard code (deleteUserRankingByLeaderboardCodeAdminV1)
 
-    [Test Facility Only]
-
-
-
-
     This endpoint will delete user ranking by leaderboard code
 
 
 
 
-    Note: this endpoint only works on development environment.
+    Warning : This will permanently delete your data. Make sure to back up anything important before continuing.
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset
@@ -468,17 +463,12 @@ async def delete_user_ranking_by_leaderboard_code_admin_v1_async(
 ):
     """delete all user ranking by leaderboard code (deleteUserRankingByLeaderboardCodeAdminV1)
 
-    [Test Facility Only]
-
-
-
-
     This endpoint will delete user ranking by leaderboard code
 
 
 
 
-    Note: this endpoint only works on development environment.
+    Warning : This will permanently delete your data. Make sure to back up anything important before continuing.
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/reset

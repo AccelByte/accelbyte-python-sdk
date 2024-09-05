@@ -43,12 +43,6 @@ class UpdatePort(Operation):
 
     This endpoint update a dedicated servers port config in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
 

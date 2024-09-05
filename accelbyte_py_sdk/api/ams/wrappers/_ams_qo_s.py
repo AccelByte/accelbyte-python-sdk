@@ -65,9 +65,6 @@ def qo_s_regions_get(
     2. Send the latency list to Matchmaking Service so that player can be matched with other players
     in nearby regions
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/qos
 
@@ -135,9 +132,6 @@ async def qo_s_regions_get_async(
     2. Send the latency list to Matchmaking Service so that player can be matched with other players
     in nearby regions
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/qos
 
@@ -193,9 +187,6 @@ def qo_s_regions_update(
     Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
 
     This endpoint updates the registered QoS service's configurable configuration.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/qos/{region}
@@ -255,9 +246,6 @@ async def qo_s_regions_update_async(
     Required Permission: ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
 
     This endpoint updates the registered QoS service's configurable configuration.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/qos/{region}

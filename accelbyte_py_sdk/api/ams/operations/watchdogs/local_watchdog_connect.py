@@ -37,9 +37,6 @@ class LocalWatchdogConnect(Operation):
 
     Required Permission: NAMESPACE:{namespace}:AMS:LOCALDS [CREATE]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:AMS:LOCALDS [CREATE]
-
     Properties:
         url: /ams/v1/namespaces/{namespace}/local/{watchdogID}/connect
 

@@ -51,7 +51,7 @@ class GetXboxEntitlementOwnership(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XblEntitlementOwnershipRequest in body
+        body: (body) REQUIRED XblEntitlementOwnershipRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -70,7 +70,7 @@ class GetXboxEntitlementOwnership(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: XblEntitlementOwnershipRequest  # OPTIONAL in [body]
+    body: XblEntitlementOwnershipRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     product_sku: str  # REQUIRED in [path]
 
@@ -210,16 +210,15 @@ class GetXboxEntitlementOwnership(Operation):
     @classmethod
     def create(
         cls,
+        body: XblEntitlementOwnershipRequest,
         namespace: str,
         product_sku: str,
-        body: Optional[XblEntitlementOwnershipRequest] = None,
         **kwargs,
     ) -> GetXboxEntitlementOwnership:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.product_sku = product_sku
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -256,7 +255,7 @@ class GetXboxEntitlementOwnership(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "productSku": True,
         }

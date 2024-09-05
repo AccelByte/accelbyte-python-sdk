@@ -56,9 +56,6 @@ def admin_get_user_platform_account_closure_histories(
     Supported platforms:
     * psn
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/platforms/closure/histories
 
@@ -125,9 +122,6 @@ async def admin_get_user_platform_account_closure_histories_async(
     ------
     Supported platforms:
     * psn
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/platforms/closure/histories

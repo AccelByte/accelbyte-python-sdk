@@ -55,7 +55,7 @@ class PublicRedeemCode(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillCodeRequest in body
+        body: (body) REQUIRED FulfillCodeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -84,7 +84,7 @@ class PublicRedeemCode(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: FulfillCodeRequest  # OPTIONAL in [body]
+    body: FulfillCodeRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -237,17 +237,12 @@ class PublicRedeemCode(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        body: Optional[FulfillCodeRequest] = None,
-        **kwargs,
+        cls, body: FulfillCodeRequest, namespace: str, user_id: str, **kwargs
     ) -> PublicRedeemCode:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -284,7 +279,7 @@ class PublicRedeemCode(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "userId": True,
         }

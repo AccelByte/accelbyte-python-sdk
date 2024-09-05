@@ -38,23 +38,23 @@ from accelbyte_py_sdk.api.platform.models import ImportStoreResult
 
 
 @click.command()
+@click.argument("category", type=str)
+@click.argument("display", type=str)
+@click.argument("item", type=str)
+@click.argument("notes", type=str)
+@click.argument("section", type=str)
 @click.argument("store_id", type=str)
-@click.option("--category", "category", type=str)
-@click.option("--display", "display", type=str)
-@click.option("--item", "item", type=str)
-@click.option("--notes", "notes", type=str)
-@click.option("--section", "section", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def import_store_by_csv(
+    category: str,
+    display: str,
+    item: str,
+    notes: str,
+    section: str,
     store_id: str,
-    category: Optional[str] = None,
-    display: Optional[str] = None,
-    item: Optional[str] = None,
-    notes: Optional[str] = None,
-    section: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -69,12 +69,12 @@ def import_store_by_csv(
     else:
         login_as_internal(login_as)
     result, error = import_store_by_csv_internal(
-        store_id=store_id,
         category=category,
         display=display,
         item=item,
         notes=notes,
         section=section,
+        store_id=store_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

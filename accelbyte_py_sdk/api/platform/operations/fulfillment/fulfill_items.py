@@ -37,10 +37,11 @@ from ...models import FulfillmentV2Result
 class FulfillItems(Operation):
     """Fulfill items by transactionId (fulfillItems)
 
-    [Not Supported Yet In Starter] Fulfill items by transactionId.
+    [Not supported yet in AGS Shared Cloud] Fulfill items by transactionId.
     Other detail info:
 
-      * Returns : fulfillment v2 result
+      * Request body : storeId, region, language, and entitlementCollectionId can be ignored.
+      *  Returns : fulfillment v2 result, storeId field can be ignored.
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}
@@ -55,7 +56,7 @@ class FulfillItems(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL FulfillmentV2Request in body
+        body: (body) REQUIRED FulfillmentV2Request in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -82,7 +83,7 @@ class FulfillItems(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: FulfillmentV2Request  # OPTIONAL in [body]
+    body: FulfillmentV2Request  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     transaction_id: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -246,18 +247,17 @@ class FulfillItems(Operation):
     @classmethod
     def create(
         cls,
+        body: FulfillmentV2Request,
         namespace: str,
         transaction_id: str,
         user_id: str,
-        body: Optional[FulfillmentV2Request] = None,
         **kwargs,
     ) -> FulfillItems:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.transaction_id = transaction_id
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -297,7 +297,7 @@ class FulfillItems(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "transactionId": True,
             "userId": True,

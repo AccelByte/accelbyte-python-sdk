@@ -96,6 +96,7 @@ def create_create_base_policy_request_example() -> CreateBasePolicyRequest:
     instance.base_policy_name = randomize()
     instance.description = randomize()
     instance.is_hidden = randomize("bool")
+    instance.is_hidden_public = randomize("bool")
     instance.namespace = randomize("slug")
     instance.tags = [randomize()]
     instance.type_id = randomize()
@@ -109,6 +110,7 @@ def create_create_base_policy_request_v2_example() -> CreateBasePolicyRequestV2:
     instance.base_policy_name = randomize()
     instance.description = randomize()
     instance.is_hidden = randomize("bool")
+    instance.is_hidden_public = randomize("bool")
     instance.tags = [randomize()]
     instance.type_id = randomize()
     return instance
@@ -123,6 +125,7 @@ def create_create_base_policy_response_example() -> CreateBasePolicyResponse:
     instance.description = randomize()
     instance.global_policy_name = randomize()
     instance.is_hidden = randomize("bool")
+    instance.is_hidden_public = randomize("bool")
     instance.namespace = randomize("slug")
     instance.policy_id = randomize()
     instance.tags = [randomize()]
@@ -338,6 +341,7 @@ def create_retrieve_base_policy_response_example() -> RetrieveBasePolicyResponse
     instance.created_at = randomize("date")
     instance.description = randomize()
     instance.is_hidden = randomize("bool")
+    instance.is_hidden_public = randomize("bool")
     instance.policies = [create_policy_object_example()]
     instance.policy_type_id = randomize()
     instance.policy_type_name = randomize()
@@ -504,6 +508,8 @@ def create_retrieve_user_eligibilities_response_example() -> (
     instance.base_urls = [randomize()]
     instance.country_group_code = randomize()
     instance.description = randomize()
+    instance.hidden_public = randomize("bool")
+    instance.is_hidden_public = randomize("bool")
     instance.policy_versions = [
         create_policy_version_with_localized_version_object_example()
     ]
@@ -527,6 +533,7 @@ def create_update_base_policy_request_example() -> UpdateBasePolicyRequest:
     instance.base_policy_name = randomize()
     instance.description = randomize()
     instance.is_hidden = randomize("bool")
+    instance.is_hidden_public = randomize("bool")
     instance.namespace = randomize("slug")
     instance.tags = [randomize()]
     return instance
@@ -539,6 +546,7 @@ def create_update_base_policy_request_v2_example() -> UpdateBasePolicyRequestV2:
     instance.base_policy_name = randomize()
     instance.description = randomize()
     instance.is_hidden = randomize("bool")
+    instance.is_hidden_public = randomize("bool")
     instance.tags = [randomize()]
     return instance
 
@@ -552,6 +560,7 @@ def create_update_base_policy_response_example() -> UpdateBasePolicyResponse:
     instance.description = randomize()
     instance.global_policy_name = randomize()
     instance.is_hidden = randomize("bool")
+    instance.is_hidden_public = randomize("bool")
     instance.namespace = randomize("slug")
     instance.policy_id = randomize()
     instance.tags = [randomize()]

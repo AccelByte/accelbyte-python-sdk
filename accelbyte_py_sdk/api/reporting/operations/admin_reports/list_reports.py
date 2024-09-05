@@ -41,9 +41,6 @@ class ListReports(Operation):
     - createdAt
     - updatedAt
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:TICKET [READ]
-
     Properties:
         url: /reporting/v1/admin/namespaces/{namespace}/reports
 

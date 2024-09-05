@@ -98,9 +98,6 @@ class AdminPutPlayerRecordHandlerV1(Operation):
     }
     ```
 
-    Required Permission(s):
-        - CLIENT []
-
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
 

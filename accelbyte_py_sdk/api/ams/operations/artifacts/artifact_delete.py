@@ -37,9 +37,6 @@ class ArtifactDelete(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:ARTIFACT [DELETE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/artifacts/{artifactID}
 

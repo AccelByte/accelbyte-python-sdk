@@ -43,12 +43,6 @@ class UpdateServerConfig(Operation):
     This endpoint updates the registered QoS service's configurable configuration'.
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /qosm/admin/namespaces/{namespace}/servers/{region}
 

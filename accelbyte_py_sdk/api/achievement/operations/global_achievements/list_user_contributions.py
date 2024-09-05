@@ -39,12 +39,6 @@ class ListUserContributions(Operation):
     Required permission
     `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/global/achievements
 

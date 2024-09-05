@@ -58,9 +58,6 @@ class AdminSearchChannelSpecificContent(Operation):
 
      Please note that value of tags query param should be URL encoded
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/channels/{channelId}/contents/search
 
@@ -272,7 +269,7 @@ class AdminSearchChannelSpecificContent(Operation):
         self.tags = value
         return self
 
-    def with_type_(self, value: str) -> AdminSearchChannelSpecificContent:
+    def with_type(self, value: str) -> AdminSearchChannelSpecificContent:
         self.type_ = value
         return self
 

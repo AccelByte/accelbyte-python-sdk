@@ -41,9 +41,6 @@ class ImagePatch(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [UPDATE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
 

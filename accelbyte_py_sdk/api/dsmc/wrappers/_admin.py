@@ -85,12 +85,6 @@ def add_buffer(
     If OverrideVersion is empty, will use version in the deployment.
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/manual/buffer/add
 
@@ -155,12 +149,6 @@ async def add_buffer_async(
     If OverrideVersion is empty, will use version in the deployment.
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/manual/buffer/add
 
@@ -216,12 +204,6 @@ def count_server(
 
     This endpoint counts all of dedicated servers in a namespace managed by this service.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/count
 
@@ -267,12 +249,6 @@ async def count_server_async(
     Required scope: social
 
     This endpoint counts all of dedicated servers in a namespace managed by this service.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/count
@@ -323,12 +299,6 @@ def count_server_detailed(
 
     This endpoint counts all of dedicated servers in a region managed by this service.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/count/detailed
 
@@ -378,12 +348,6 @@ async def count_server_detailed_async(
     Required scope: social
 
     This endpoint counts all of dedicated servers in a region managed by this service.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/count/detailed
@@ -437,12 +401,6 @@ def count_session(
 
     This endpoint count all of sessions in a namespace managed by this service.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/sessions/count
 
@@ -492,12 +450,6 @@ async def count_session_async(
     Required scope: social
 
     This endpoint count all of sessions in a namespace managed by this service.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/sessions/count
@@ -551,12 +503,6 @@ def create_worker_config(
 
     This endpoint creates a worker configuration to control the worker in the DSMC.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespace/{namespace}/workers
 
@@ -608,12 +554,6 @@ async def create_worker_config_async(
     Required scope: social
 
     This endpoint creates a worker configuration to control the worker in the DSMC.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespace/{namespace}/workers
@@ -670,12 +610,6 @@ def delete_local_server(
     This endpoint deletes a specified local dedicated server from DB.
     Note that DSM has no ability to shutdown local DS.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/local/{name}
 
@@ -726,12 +660,6 @@ async def delete_local_server_async(
 
     This endpoint deletes a specified local dedicated server from DB.
     Note that DSM has no ability to shutdown local DS.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/local/{name}
@@ -785,12 +713,6 @@ def delete_server(
 
     This endpoint deletes a specified dedicated server from DB and terminates the DS pod.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}
 
@@ -842,12 +764,6 @@ async def delete_server_async(
     Required scope: social
 
     This endpoint deletes a specified dedicated server from DB and terminates the DS pod.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}
@@ -903,12 +819,6 @@ def delete_session(
 
     This endpoint deletes a specified session and its corresponding match result from DB.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/sessions/{sessionID}
 
@@ -958,12 +868,6 @@ async def delete_session_async(
     Required scope: social
 
     This endpoint deletes a specified session and its corresponding match result from DB.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/sessions/{sessionID}
@@ -1017,12 +921,6 @@ def get_server(
 
     This endpoint queries a specified dedicated server from DB.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}
 
@@ -1074,12 +972,6 @@ async def get_server_async(
     Required scope: social
 
     This endpoint queries a specified dedicated server from DB.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/{podName}
@@ -1134,12 +1026,6 @@ def get_worker_config(
 
     This endpoint retrieves a worker configuration to control the worker in the DSMC.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespace/{namespace}/workers
 
@@ -1189,12 +1075,6 @@ async def get_worker_config_async(
     Required scope: social
 
     This endpoint retrieves a worker configuration to control the worker in the DSMC.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespace/{namespace}/workers
@@ -1248,12 +1128,6 @@ def list_local_server(
 
     This endpoint lists all of local dedicated servers in a namespace managed by this service.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/local
 
@@ -1299,12 +1173,6 @@ async def list_local_server_async(
     Required scope: social
 
     This endpoint lists all of local dedicated servers in a namespace managed by this service.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers/local
@@ -1358,12 +1226,6 @@ def list_server(
     This endpoint lists all of dedicated servers in a namespace managed by this service.
 
     Parameter Offset and Count is Required
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers
@@ -1424,12 +1286,6 @@ async def list_server_async(
     This endpoint lists all of dedicated servers in a namespace managed by this service.
 
     Parameter Offset and Count is Required
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/servers
@@ -1493,12 +1349,6 @@ def list_session(
     This endpoint lists all of sessions in a namespace managed by this service.
 
     Parameter Offset and Count is Required
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/sessions
@@ -1564,12 +1414,6 @@ async def list_session_async(
 
     Parameter Offset and Count is Required
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/sessions
 
@@ -1630,12 +1474,6 @@ def run_ghost_cleaner_request_handler(
 
     This endpoint run ghost cleaner once.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/workers/ghost
 
@@ -1679,12 +1517,6 @@ async def run_ghost_cleaner_request_handler_async(
     Required scope: social
 
     This endpoint run ghost cleaner once.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/workers/ghost
@@ -1735,12 +1567,6 @@ def run_zombie_cleaner_request_handler(
 
     use * as region name to target all regions
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/workers/zombie
@@ -1793,12 +1619,6 @@ async def run_zombie_cleaner_request_handler_async(
     use * as region name to target all regions
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/workers/zombie
 
@@ -1848,12 +1668,6 @@ def update_worker_config(
     Required scope: social
 
     This endpoint updates a worker configuration to control the worker in the DSMC.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespace/{namespace}/workers
@@ -1908,12 +1722,6 @@ async def update_worker_config_async(
     Required scope: social
 
     This endpoint updates a worker configuration to control the worker in the DSMC.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:WORKER:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespace/{namespace}/workers

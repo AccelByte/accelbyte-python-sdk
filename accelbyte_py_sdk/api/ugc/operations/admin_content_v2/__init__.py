@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.20.4"
+__version__ = "2.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .admin_bulk_get_content__b85ce3 import AdminBulkGetContentByIDsV2
+from .admin_copy_content import AdminCopyContent
 from .admin_create_content_v2 import AdminCreateContentV2
 from .admin_delete_content_by_cd2201 import AdminDeleteContentByShareCodeV2
 from .admin_delete_content_sc_bf1900 import AdminDeleteContentScreenshotV2

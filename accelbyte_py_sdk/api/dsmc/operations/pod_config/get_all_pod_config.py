@@ -44,12 +44,6 @@ class GetAllPodConfig(Operation):
 
     Parameter Offset and Count is Required
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/pods
 

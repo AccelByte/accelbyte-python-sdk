@@ -52,7 +52,7 @@ class ReturnItem(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ItemReturnRequest in body
+        body: (body) REQUIRED ItemReturnRequest in body
 
         item_id: (itemId) REQUIRED str in path
 
@@ -75,7 +75,7 @@ class ReturnItem(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ItemReturnRequest  # OPTIONAL in [body]
+    body: ItemReturnRequest  # REQUIRED in [body]
     item_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -220,17 +220,12 @@ class ReturnItem(Operation):
 
     @classmethod
     def create(
-        cls,
-        item_id: str,
-        namespace: str,
-        body: Optional[ItemReturnRequest] = None,
-        **kwargs,
+        cls, body: ItemReturnRequest, item_id: str, namespace: str, **kwargs
     ) -> ReturnItem:
         instance = cls()
+        instance.body = body
         instance.item_id = item_id
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -265,7 +260,7 @@ class ReturnItem(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "itemId": True,
             "namespace": True,
         }

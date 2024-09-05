@@ -54,12 +54,6 @@ class PublicListUserAchievements(Operation):
 
     `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements
 

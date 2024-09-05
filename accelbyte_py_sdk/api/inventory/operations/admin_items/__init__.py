@@ -8,13 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Inventory Service."""
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .admin_bulk_remove_items import AdminBulkRemoveItems
+from .admin_bulk_save_item import AdminBulkSaveItem
+from .admin_bulk_save_item_to_7fa299 import AdminBulkSaveItemToInventory
 from .admin_bulk_update_my_items import AdminBulkUpdateMyItems
 from .admin_consume_user_item import AdminConsumeUserItem
 from .admin_get_inventory_item import AdminGetInventoryItem

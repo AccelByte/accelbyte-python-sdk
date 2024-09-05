@@ -25,6 +25,8 @@
 from .utils import randomize
 
 from ..api.inventory.models import ApimodelsAdminUpdateItemReq
+from ..api.inventory.models import ApimodelsBulkSaveItemError
+from ..api.inventory.models import ApimodelsBulkSaveItemResp
 from ..api.inventory.models import ApimodelsChainingOperationReq
 from ..api.inventory.models import ApimodelsChainingOperationResp
 from ..api.inventory.models import ApimodelsConsumeItem
@@ -79,6 +81,23 @@ def create_apimodels_admin_update_item_req_example() -> ApimodelsAdminUpdateItem
     instance.source_item_id = randomize()
     instance.tags = [randomize()]
     instance.type_ = randomize()
+    return instance
+
+
+def create_apimodels_bulk_save_item_error_example() -> ApimodelsBulkSaveItemError:
+    instance = ApimodelsBulkSaveItemError()
+    instance.error_code = randomize("int", min_val=1, max_val=1000)
+    instance.error_message = randomize()
+    instance.slot_id = randomize()
+    instance.source_item_id = randomize()
+    return instance
+
+
+def create_apimodels_bulk_save_item_resp_example() -> ApimodelsBulkSaveItemResp:
+    instance = ApimodelsBulkSaveItemResp()
+    instance.success = randomize("bool")
+    instance.error_details = create_apimodels_bulk_save_item_error_example()
+    instance.item = create_apimodels_item_resp_example()
     return instance
 
 

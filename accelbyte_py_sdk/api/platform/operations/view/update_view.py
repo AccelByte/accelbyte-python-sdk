@@ -75,7 +75,7 @@ class UpdateView(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ViewUpdate in body
+        body: (body) REQUIRED ViewUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -104,7 +104,7 @@ class UpdateView(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ViewUpdate  # OPTIONAL in [body]
+    body: ViewUpdate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     view_id: str  # REQUIRED in [path]
     store_id: str  # REQUIRED in [query]
@@ -276,19 +276,13 @@ class UpdateView(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        view_id: str,
-        store_id: str,
-        body: Optional[ViewUpdate] = None,
-        **kwargs,
+        cls, body: ViewUpdate, namespace: str, view_id: str, store_id: str, **kwargs
     ) -> UpdateView:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.view_id = view_id
         instance.store_id = store_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -328,7 +322,7 @@ class UpdateView(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "viewId": True,
             "storeId": True,

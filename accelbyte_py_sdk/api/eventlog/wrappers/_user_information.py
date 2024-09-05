@@ -50,12 +50,6 @@ def delete_user_activities_handler(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/activities
 
@@ -106,12 +100,6 @@ async def delete_user_activities_handler_async(
     """Delete all user's activities (DeleteUserActivitiesHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/activities
@@ -167,12 +155,6 @@ def get_user_activities_handler(
     """Get all user's activities (GetUserActivitiesHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/activities
@@ -235,12 +217,6 @@ async def get_user_activities_handler_async(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/activities
 
@@ -302,12 +278,6 @@ def last_user_activity_time_handler(
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/lastActivityTime
 
@@ -358,12 +328,6 @@ async def last_user_activity_time_handler_async(
     """Get last activity time of a user in a namespace (LastUserActivityTimeHandler)
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
 
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/lastActivityTime

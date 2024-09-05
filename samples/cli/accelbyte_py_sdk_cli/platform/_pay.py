@@ -37,8 +37,8 @@ from accelbyte_py_sdk.api.platform.models import PaymentToken
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("payment_order_no", type=str)
-@click.option("--body", "body", type=str)
 @click.option("--payment_provider", "payment_provider", type=str)
 @click.option("--zip_code", "zip_code", type=str)
 @click.option("--namespace", type=str)
@@ -46,8 +46,8 @@ from accelbyte_py_sdk.api.platform.models import PaymentToken
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def pay(
+    body: str,
     payment_order_no: str,
-    body: Optional[str] = None,
     payment_provider: Optional[str] = None,
     zip_code: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -70,8 +70,8 @@ def pay(
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = pay_internal(
-        payment_order_no=payment_order_no,
         body=body,
+        payment_order_no=payment_order_no,
         payment_provider=payment_provider,
         zip_code=zip_code,
         namespace=namespace,

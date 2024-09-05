@@ -40,9 +40,6 @@ class AdminClaimUserRewards(Operation):
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
-
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards/claim
 

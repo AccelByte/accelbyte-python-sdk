@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.54.0"
+__version__ = "4.56.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -25,7 +25,9 @@ from .enable_code import EnableCode
 from .get_campaign import GetCampaign
 from .get_campaign_dynamic import GetCampaignDynamic
 from .get_code import GetCode
+from .query_campaign_batch_names import QueryCampaignBatchNames
 from .query_campaigns import QueryCampaigns
 from .query_codes import QueryCodes
 from .query_redeem_history import QueryRedeemHistory
+from .rename_batch import RenameBatch
 from .update_campaign import UpdateCampaign

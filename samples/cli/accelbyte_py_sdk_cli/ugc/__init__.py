@@ -124,6 +124,7 @@ from ._admin_get_content_by_channel_idv2 import admin_get_content_by_channel_idv
 from ._admin_create_content_v2 import admin_create_content_v2
 from ._admin_delete_official_content_v2 import admin_delete_official_content_v2
 from ._admin_update_official_content_v2 import admin_update_official_content_v2
+from ._admin_copy_content import admin_copy_content
 from ._admin_update_official_content_file_location import (
     admin_update_official_content_file_location,
 )
@@ -306,6 +307,7 @@ commands = [
     admin_create_content_v2,
     admin_delete_official_content_v2,
     admin_update_official_content_v2,
+    admin_copy_content,
     admin_update_official_content_file_location,
     admin_generate_official_content_upload_urlv2,
     admin_get_configs,

@@ -51,9 +51,6 @@ class PublicPromoteGameSessionLeader(Operation):
     - Leader candidate has a "CONNECTED" or "JOINED" status
     - If the leader candidate is the current leader, then no promotion process is carried out
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSION:GAME [UPDATE]
-
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leader
 

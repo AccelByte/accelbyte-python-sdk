@@ -50,9 +50,6 @@ class S2SSubmitUserAccountDeletionRequest(Operation):
     1. This API will **not send GDPR email notification** both for player and admin notification.
     2. This API will **perform account deletion immediately** without GDPR grace period (i.e. 28 days grace period).
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/users/{userId}/deletions
 

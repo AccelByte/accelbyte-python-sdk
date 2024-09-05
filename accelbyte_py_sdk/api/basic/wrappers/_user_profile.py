@@ -92,9 +92,6 @@ def admin_get_user_profile_public_info_by_ids(
       *  Action code : 11405
       *  Returns : user public profiles
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFILE []
-
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/profiles/public
 
@@ -106,7 +103,7 @@ def admin_get_user_profile_public_info_by_ids(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileBulkRequest in body
 
@@ -144,9 +141,6 @@ async def admin_get_user_profile_public_info_by_ids_async(
       *  Action code : 11405
       *  Returns : user public profiles
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PROFILE []
-
     Properties:
         url: /basic/v1/admin/namespaces/{namespace}/profiles/public
 
@@ -158,7 +152,7 @@ async def admin_get_user_profile_public_info_by_ids_async(
 
         produces: ["application/json"]
 
-        securities: [BEARER_AUTH] or [BEARER_AUTH]
+        securities: [BEARER_AUTH]
 
         body: (body) OPTIONAL UserProfileBulkRequest in body
 

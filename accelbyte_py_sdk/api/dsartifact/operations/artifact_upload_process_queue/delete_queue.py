@@ -41,12 +41,6 @@ class DeleteQueue(Operation):
 
     This endpoint will delete a queue entry
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT:QUEUE [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/artifacts/queues
 

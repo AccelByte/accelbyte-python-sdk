@@ -143,7 +143,7 @@ class PublicGetMyDLCContent(Operation):
         self.include_all_namespaces = value
         return self
 
-    def with_type_(self, value: Union[str, TypeEnum]) -> PublicGetMyDLCContent:
+    def with_type(self, value: Union[str, TypeEnum]) -> PublicGetMyDLCContent:
         self.type_ = value
         return self
 

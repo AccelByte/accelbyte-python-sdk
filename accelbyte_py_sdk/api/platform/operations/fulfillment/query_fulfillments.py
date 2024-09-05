@@ -43,10 +43,10 @@ class StateEnum(StrEnum):
 class QueryFulfillments(Operation):
     """Query fulfillments (queryFulfillments)
 
-    [Not Supported Yet In Starter] Query fulfillments in a namespace.
+    [Not supported yet in AGS Shared Cloud] Query fulfillments in a namespace.
     Other detail info:
 
-      * Returns : query fulfillments
+      * Returns : list of fulfillment info, storeId field can be ignored.
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/fulfillments

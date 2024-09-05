@@ -30,6 +30,8 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import BulkOperationResult
+from ..models import CampaignBatchNameChange
+from ..models import CampaignBatchNameInfo
 from ..models import CampaignCreate
 from ..models import CampaignDynamicInfo
 from ..models import CampaignInfo
@@ -56,9 +58,11 @@ from ..operations.campaign import EnableCode
 from ..operations.campaign import GetCampaign
 from ..operations.campaign import GetCampaignDynamic
 from ..operations.campaign import GetCode
+from ..operations.campaign import QueryCampaignBatchNames
 from ..operations.campaign import QueryCampaigns
 from ..operations.campaign import QueryCodes
 from ..operations.campaign import QueryRedeemHistory
+from ..operations.campaign import RenameBatch
 from ..operations.campaign import UpdateCampaign
 from ..models import (
     CampaignCreateRedeemTypeEnum,
@@ -76,8 +80,8 @@ from ..models import CodeInfoRedeemTypeEnum, CodeInfoStatusEnum, CodeInfoTypeEnu
 
 @same_doc_as(ApplyUserRedemption)
 def apply_user_redemption(
+    body: RedeemRequest,
     user_id: str,
-    body: Optional[RedeemRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -102,7 +106,7 @@ def apply_user_redemption(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RedeemRequest in body
+        body: (body) REQUIRED RedeemRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -122,8 +126,8 @@ def apply_user_redemption(
         if error:
             return None, error
     request = ApplyUserRedemption.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -131,8 +135,8 @@ def apply_user_redemption(
 
 @same_doc_as(ApplyUserRedemption)
 async def apply_user_redemption_async(
+    body: RedeemRequest,
     user_id: str,
-    body: Optional[RedeemRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -157,7 +161,7 @@ async def apply_user_redemption_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RedeemRequest in body
+        body: (body) REQUIRED RedeemRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -177,8 +181,8 @@ async def apply_user_redemption_async(
         if error:
             return None, error
     request = ApplyUserRedemption.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -189,7 +193,8 @@ async def apply_user_redemption_async(
 @same_doc_as(BulkDisableCodes)
 def bulk_disable_codes(
     campaign_id: str,
-    batch_no: Optional[int] = None,
+    batch_name: Optional[str] = None,
+    batch_no: Optional[List[int]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -220,7 +225,9 @@ def bulk_disable_codes(
 
         namespace: (namespace) REQUIRED str in path
 
-        batch_no: (batchNo) OPTIONAL int in query
+        batch_name: (batchName) OPTIONAL str in query
+
+        batch_no: (batchNo) OPTIONAL List[int] in query
 
     Responses:
         200: OK - BulkOperationResult (successful operation)
@@ -231,6 +238,7 @@ def bulk_disable_codes(
             return None, error
     request = BulkDisableCodes.create(
         campaign_id=campaign_id,
+        batch_name=batch_name,
         batch_no=batch_no,
         namespace=namespace,
     )
@@ -240,7 +248,8 @@ def bulk_disable_codes(
 @same_doc_as(BulkDisableCodes)
 async def bulk_disable_codes_async(
     campaign_id: str,
-    batch_no: Optional[int] = None,
+    batch_name: Optional[str] = None,
+    batch_no: Optional[List[int]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -271,7 +280,9 @@ async def bulk_disable_codes_async(
 
         namespace: (namespace) REQUIRED str in path
 
-        batch_no: (batchNo) OPTIONAL int in query
+        batch_name: (batchName) OPTIONAL str in query
+
+        batch_no: (batchNo) OPTIONAL List[int] in query
 
     Responses:
         200: OK - BulkOperationResult (successful operation)
@@ -282,6 +293,7 @@ async def bulk_disable_codes_async(
             return None, error
     request = BulkDisableCodes.create(
         campaign_id=campaign_id,
+        batch_name=batch_name,
         batch_no=batch_no,
         namespace=namespace,
     )
@@ -293,7 +305,8 @@ async def bulk_disable_codes_async(
 @same_doc_as(BulkEnableCodes)
 def bulk_enable_codes(
     campaign_id: str,
-    batch_no: Optional[int] = None,
+    batch_name: Optional[str] = None,
+    batch_no: Optional[List[int]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -322,7 +335,9 @@ def bulk_enable_codes(
 
         namespace: (namespace) REQUIRED str in path
 
-        batch_no: (batchNo) OPTIONAL int in query
+        batch_name: (batchName) OPTIONAL str in query
+
+        batch_no: (batchNo) OPTIONAL List[int] in query
 
     Responses:
         200: OK - BulkOperationResult (successful operation)
@@ -333,6 +348,7 @@ def bulk_enable_codes(
             return None, error
     request = BulkEnableCodes.create(
         campaign_id=campaign_id,
+        batch_name=batch_name,
         batch_no=batch_no,
         namespace=namespace,
     )
@@ -342,7 +358,8 @@ def bulk_enable_codes(
 @same_doc_as(BulkEnableCodes)
 async def bulk_enable_codes_async(
     campaign_id: str,
-    batch_no: Optional[int] = None,
+    batch_name: Optional[str] = None,
+    batch_no: Optional[List[int]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -371,7 +388,9 @@ async def bulk_enable_codes_async(
 
         namespace: (namespace) REQUIRED str in path
 
-        batch_no: (batchNo) OPTIONAL int in query
+        batch_name: (batchName) OPTIONAL str in query
+
+        batch_no: (batchNo) OPTIONAL List[int] in query
 
     Responses:
         200: OK - BulkOperationResult (successful operation)
@@ -382,6 +401,7 @@ async def bulk_enable_codes_async(
             return None, error
     request = BulkEnableCodes.create(
         campaign_id=campaign_id,
+        batch_name=batch_name,
         batch_no=batch_no,
         namespace=namespace,
     )
@@ -392,7 +412,7 @@ async def bulk_enable_codes_async(
 
 @same_doc_as(CreateCampaign)
 def create_campaign(
-    body: Optional[CampaignCreate] = None,
+    body: CampaignCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -417,7 +437,7 @@ def create_campaign(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CampaignCreate in body
+        body: (body) REQUIRED CampaignCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -443,7 +463,7 @@ def create_campaign(
 
 @same_doc_as(CreateCampaign)
 async def create_campaign_async(
-    body: Optional[CampaignCreate] = None,
+    body: CampaignCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -468,7 +488,7 @@ async def create_campaign_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CampaignCreate in body
+        body: (body) REQUIRED CampaignCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -496,8 +516,8 @@ async def create_campaign_async(
 
 @same_doc_as(CreateCodes)
 def create_codes(
+    body: CodeCreate,
     campaign_id: str,
-    body: Optional[CodeCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -522,7 +542,7 @@ def create_codes(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CodeCreate in body
+        body: (body) REQUIRED CodeCreate in body
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -542,8 +562,8 @@ def create_codes(
         if error:
             return None, error
     request = CreateCodes.create(
-        campaign_id=campaign_id,
         body=body,
+        campaign_id=campaign_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -551,8 +571,8 @@ def create_codes(
 
 @same_doc_as(CreateCodes)
 async def create_codes_async(
+    body: CodeCreate,
     campaign_id: str,
-    body: Optional[CodeCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -577,7 +597,7 @@ async def create_codes_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CodeCreate in body
+        body: (body) REQUIRED CodeCreate in body
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -597,8 +617,8 @@ async def create_codes_async(
         if error:
             return None, error
     request = CreateCodes.create(
-        campaign_id=campaign_id,
         body=body,
+        campaign_id=campaign_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -709,7 +729,9 @@ async def disable_code_async(
 @same_doc_as(Download)
 def download(
     campaign_id: str,
-    batch_no: Optional[int] = None,
+    batch_name: Optional[str] = None,
+    batch_no: Optional[List[int]] = None,
+    with_batch_name: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -720,6 +742,7 @@ def download(
     Other detail info:
 
       * Returns : codes csv file
+      * The csv file will always have Batch Name column, but this column will be filled only when the withBatchName parameter is true , or when the batchName filter is not blank.
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/codes.csv
@@ -738,7 +761,11 @@ def download(
 
         namespace: (namespace) REQUIRED str in path
 
-        batch_no: (batchNo) OPTIONAL int in query
+        batch_name: (batchName) OPTIONAL str in query
+
+        batch_no: (batchNo) OPTIONAL List[int] in query
+
+        with_batch_name: (withBatchName) OPTIONAL bool in query
 
     Responses:
         200: OK - Any (Successful operation)
@@ -749,7 +776,9 @@ def download(
             return None, error
     request = Download.create(
         campaign_id=campaign_id,
+        batch_name=batch_name,
         batch_no=batch_no,
+        with_batch_name=with_batch_name,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -758,7 +787,9 @@ def download(
 @same_doc_as(Download)
 async def download_async(
     campaign_id: str,
-    batch_no: Optional[int] = None,
+    batch_name: Optional[str] = None,
+    batch_no: Optional[List[int]] = None,
+    with_batch_name: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -769,6 +800,7 @@ async def download_async(
     Other detail info:
 
       * Returns : codes csv file
+      * The csv file will always have Batch Name column, but this column will be filled only when the withBatchName parameter is true , or when the batchName filter is not blank.
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}/codes.csv
@@ -787,7 +819,11 @@ async def download_async(
 
         namespace: (namespace) REQUIRED str in path
 
-        batch_no: (batchNo) OPTIONAL int in query
+        batch_name: (batchName) OPTIONAL str in query
+
+        batch_no: (batchNo) OPTIONAL List[int] in query
+
+        with_batch_name: (withBatchName) OPTIONAL bool in query
 
     Responses:
         200: OK - Any (Successful operation)
@@ -798,7 +834,9 @@ async def download_async(
             return None, error
     request = Download.create(
         campaign_id=campaign_id,
+        batch_name=batch_name,
         batch_no=batch_no,
+        with_batch_name=with_batch_name,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1098,6 +1136,7 @@ async def get_campaign_dynamic_async(
 def get_code(
     code: str,
     redeemable: Optional[bool] = None,
+    with_batch_name: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1128,10 +1167,12 @@ def get_code(
 
         redeemable: (redeemable) OPTIONAL bool in query
 
+        with_batch_name: (withBatchName) OPTIONAL bool in query
+
     Responses:
         200: OK - CodeInfo (successful operation)
 
-        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}] | 37144: Campaign batch name does not exist for batch number [{batchNo}] campaign [{campaignId}] in namespace [{namespace}].)
 
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
     """
@@ -1142,6 +1183,7 @@ def get_code(
     request = GetCode.create(
         code=code,
         redeemable=redeemable,
+        with_batch_name=with_batch_name,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1151,6 +1193,7 @@ def get_code(
 async def get_code_async(
     code: str,
     redeemable: Optional[bool] = None,
+    with_batch_name: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1181,10 +1224,12 @@ async def get_code_async(
 
         redeemable: (redeemable) OPTIONAL bool in query
 
+        with_batch_name: (withBatchName) OPTIONAL bool in query
+
     Responses:
         200: OK - CodeInfo (successful operation)
 
-        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}] | 37144: Campaign batch name does not exist for batch number [{batchNo}] campaign [{campaignId}] in namespace [{namespace}].)
 
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
     """
@@ -1195,6 +1240,115 @@ async def get_code_async(
     request = GetCode.create(
         code=code,
         redeemable=redeemable,
+        with_batch_name=with_batch_name,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(QueryCampaignBatchNames)
+def query_campaign_batch_names(
+    campaign_id: str,
+    batch_name: Optional[str] = None,
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query campaign batch names (queryCampaignBatchNames)
+
+    Query campaign batch name by fuzzy match.
+    Other detail info:
+
+      * Returns : list of campaign batch names
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/batchNames
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        batch_name: (batchName) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - List[CampaignBatchNameInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryCampaignBatchNames.create(
+        campaign_id=campaign_id,
+        batch_name=batch_name,
+        limit=limit,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryCampaignBatchNames)
+async def query_campaign_batch_names_async(
+    campaign_id: str,
+    batch_name: Optional[str] = None,
+    limit: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query campaign batch names (queryCampaignBatchNames)
+
+    Query campaign batch name by fuzzy match.
+    Other detail info:
+
+      * Returns : list of campaign batch names
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/batchNames
+
+        method: GET
+
+        tags: ["Campaign"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        batch_name: (batchName) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+    Responses:
+        200: OK - List[CampaignBatchNameInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = QueryCampaignBatchNames.create(
+        campaign_id=campaign_id,
+        batch_name=batch_name,
+        limit=limit,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1322,10 +1476,12 @@ async def query_campaigns_async(
 def query_codes(
     campaign_id: str,
     active_only: Optional[bool] = None,
-    batch_no: Optional[int] = None,
+    batch_name: Optional[str] = None,
+    batch_no: Optional[List[int]] = None,
     code: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    with_batch_name: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1336,6 +1492,7 @@ def query_codes(
     Other detail info:
 
       * Returns : list of codes
+      * The batchName field in the codes response will be present only when the withBatchName parameter is true , or when the batchName filter is not blank.
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
@@ -1356,13 +1513,17 @@ def query_codes(
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        batch_no: (batchNo) OPTIONAL int in query
+        batch_name: (batchName) OPTIONAL str in query
+
+        batch_no: (batchNo) OPTIONAL List[int] in query
 
         code: (code) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        with_batch_name: (withBatchName) OPTIONAL bool in query
 
     Responses:
         200: OK - CodeInfoPagingSlicedResult (successful operation)
@@ -1374,10 +1535,12 @@ def query_codes(
     request = QueryCodes.create(
         campaign_id=campaign_id,
         active_only=active_only,
+        batch_name=batch_name,
         batch_no=batch_no,
         code=code,
         limit=limit,
         offset=offset,
+        with_batch_name=with_batch_name,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1387,10 +1550,12 @@ def query_codes(
 async def query_codes_async(
     campaign_id: str,
     active_only: Optional[bool] = None,
-    batch_no: Optional[int] = None,
+    batch_name: Optional[str] = None,
+    batch_no: Optional[List[int]] = None,
     code: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    with_batch_name: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1401,6 +1566,7 @@ async def query_codes_async(
     Other detail info:
 
       * Returns : list of codes
+      * The batchName field in the codes response will be present only when the withBatchName parameter is true , or when the batchName filter is not blank.
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/codes/campaigns/{campaignId}
@@ -1421,13 +1587,17 @@ async def query_codes_async(
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        batch_no: (batchNo) OPTIONAL int in query
+        batch_name: (batchName) OPTIONAL str in query
+
+        batch_no: (batchNo) OPTIONAL List[int] in query
 
         code: (code) OPTIONAL str in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        with_batch_name: (withBatchName) OPTIONAL bool in query
 
     Responses:
         200: OK - CodeInfoPagingSlicedResult (successful operation)
@@ -1439,10 +1609,12 @@ async def query_codes_async(
     request = QueryCodes.create(
         campaign_id=campaign_id,
         active_only=active_only,
+        batch_name=batch_name,
         batch_no=batch_no,
         code=code,
         limit=limit,
         offset=offset,
+        with_batch_name=with_batch_name,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1574,10 +1746,110 @@ async def query_redeem_history_async(
     )
 
 
+@same_doc_as(RenameBatch)
+def rename_batch(
+    body: CampaignBatchNameChange,
+    campaign_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Rename batch (renameBatch)
+
+    Change campaign batch name.
+    Other detail info:
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/batchName
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED CampaignBatchNameChange in body
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Batch was renamed successfully)
+
+        404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}] | 37143: Batch name [{batchName}] does not exist for campaign [{campaignId}] in namespace [{namespace}].)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RenameBatch.create(
+        body=body,
+        campaign_id=campaign_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RenameBatch)
+async def rename_batch_async(
+    body: CampaignBatchNameChange,
+    campaign_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Rename batch (renameBatch)
+
+    Change campaign batch name.
+    Other detail info:
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/campaigns/{campaignId}/batchName
+
+        method: PUT
+
+        tags: ["Campaign"]
+
+        consumes: ["application/json"]
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED CampaignBatchNameChange in body
+
+        campaign_id: (campaignId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Batch was renamed successfully)
+
+        404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}] | 37143: Batch name [{batchName}] does not exist for campaign [{campaignId}] in namespace [{namespace}].)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RenameBatch.create(
+        body=body,
+        campaign_id=campaign_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(UpdateCampaign)
 def update_campaign(
+    body: CampaignUpdate,
     campaign_id: str,
-    body: Optional[CampaignUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1602,7 +1874,7 @@ def update_campaign(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CampaignUpdate in body
+        body: (body) REQUIRED CampaignUpdate in body
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -1622,8 +1894,8 @@ def update_campaign(
         if error:
             return None, error
     request = UpdateCampaign.create(
-        campaign_id=campaign_id,
         body=body,
+        campaign_id=campaign_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1631,8 +1903,8 @@ def update_campaign(
 
 @same_doc_as(UpdateCampaign)
 async def update_campaign_async(
+    body: CampaignUpdate,
     campaign_id: str,
-    body: Optional[CampaignUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1657,7 +1929,7 @@ async def update_campaign_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CampaignUpdate in body
+        body: (body) REQUIRED CampaignUpdate in body
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -1677,8 +1949,8 @@ async def update_campaign_async(
         if error:
             return None, error
     request = UpdateCampaign.create(
-        campaign_id=campaign_id,
         body=body,
+        campaign_id=campaign_id,
         namespace=namespace,
     )
     return await run_request_async(

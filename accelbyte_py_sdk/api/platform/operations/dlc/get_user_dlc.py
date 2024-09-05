@@ -182,7 +182,7 @@ class GetUserDLC(Operation):
         self.status = value
         return self
 
-    def with_type_(self, value: Union[str, TypeEnum]) -> GetUserDLC:
+    def with_type(self, value: Union[str, TypeEnum]) -> GetUserDLC:
         self.type_ = value
         return self
 

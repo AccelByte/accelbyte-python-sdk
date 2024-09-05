@@ -54,9 +54,6 @@ def development_server_configuration_create(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations
 
@@ -108,9 +105,6 @@ async def development_server_configuration_create_async(
     Configuration name can be up to 128 characters and must conform to ^[.a-zA-Z0-9_-]+$
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations
@@ -164,9 +158,6 @@ def development_server_configuration_delete(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}
 
@@ -216,9 +207,6 @@ async def development_server_configuration_delete_async(
     """delete a development server configuration (DevelopmentServerConfigurationDelete)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [DELETE]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}
@@ -272,9 +260,6 @@ def development_server_configuration_get(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}
 
@@ -324,9 +309,6 @@ async def development_server_configuration_get_async(
     """get a development server configuration (DevelopmentServerConfigurationGet)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}
@@ -381,9 +363,6 @@ def development_server_configuration_list(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations
 
@@ -435,9 +414,6 @@ async def development_server_configuration_list_async(
     """lists development server configurations with pagination (DevelopmentServerConfigurationList)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations

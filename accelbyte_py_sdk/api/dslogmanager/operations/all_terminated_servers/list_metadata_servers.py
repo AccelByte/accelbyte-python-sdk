@@ -45,9 +45,6 @@ class ListMetadataServers(Operation):
     The namespace filter is will give result exact namespace response
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
-
     Properties:
         url: /dslogmanager/servers/metadata
 

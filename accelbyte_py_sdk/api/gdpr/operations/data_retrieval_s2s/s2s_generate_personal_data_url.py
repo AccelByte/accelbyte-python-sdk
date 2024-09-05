@@ -45,9 +45,6 @@ class S2SGeneratePersonalDataURL(Operation):
     ---
     ## This API for S2S integration purpose only
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
 

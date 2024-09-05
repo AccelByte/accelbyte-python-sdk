@@ -38,9 +38,6 @@ class AdminGetUserContentByShareCode(Operation):
 
     Required permission ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ].
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:*:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/sharecodes/{shareCode}
 

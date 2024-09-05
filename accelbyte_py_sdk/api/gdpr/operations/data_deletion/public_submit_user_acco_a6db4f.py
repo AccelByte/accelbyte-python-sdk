@@ -43,9 +43,6 @@ class PublicSubmitUserAccountDeletionRequest(Operation):
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
 

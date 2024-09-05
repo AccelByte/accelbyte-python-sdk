@@ -54,7 +54,7 @@ class UpdateCatalogConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CatalogConfigUpdate in body
+        body: (body) REQUIRED CatalogConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -73,7 +73,7 @@ class UpdateCatalogConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: CatalogConfigUpdate  # OPTIONAL in [body]
+    body: CatalogConfigUpdate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -205,12 +205,11 @@ class UpdateCatalogConfig(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, body: Optional[CatalogConfigUpdate] = None, **kwargs
+        cls, body: CatalogConfigUpdate, namespace: str, **kwargs
     ) -> UpdateCatalogConfig:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -242,7 +241,7 @@ class UpdateCatalogConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

@@ -38,12 +38,6 @@ class PublicUnlockAchievement(Operation):
     Required permission
     `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
 

@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestNeonPayConfigById(Operation):
     """Test Neon Pay configuration by id (testNeonPayConfigById)
 
-    [Not Supported Yet In Starter] Test Neon Pay configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test Neon Pay configuration in payment merchant config. Other detail info:
 
       * Returns : test result
 
@@ -137,7 +137,7 @@ class TestNeonPayConfigById(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> TestNeonPayConfigById:
+    def with_id(self, value: str) -> TestNeonPayConfigById:
         self.id_ = value
         return self
 

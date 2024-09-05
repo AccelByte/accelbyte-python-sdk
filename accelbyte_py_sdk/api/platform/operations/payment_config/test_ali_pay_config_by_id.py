@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestAliPayConfigById(Operation):
     """Test Alipay configuration by id (testAliPayConfigById)
 
-    [Not Supported Yet In Starter] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    [Not supported yet in AGS Shared Cloud] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Returns : test alipay config
@@ -138,7 +138,7 @@ class TestAliPayConfigById(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> TestAliPayConfigById:
+    def with_id(self, value: str) -> TestAliPayConfigById:
         self.id_ = value
         return self
 

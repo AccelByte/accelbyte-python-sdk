@@ -288,7 +288,7 @@ class CreateItem(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ItemCreate in body
+        body: (body) REQUIRED ItemCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -315,7 +315,7 @@ class CreateItem(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ItemCreate  # OPTIONAL in [body]
+    body: ItemCreate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     store_id: str  # REQUIRED in [query]
 
@@ -476,13 +476,12 @@ class CreateItem(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, store_id: str, body: Optional[ItemCreate] = None, **kwargs
+        cls, body: ItemCreate, namespace: str, store_id: str, **kwargs
     ) -> CreateItem:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.store_id = store_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -517,7 +516,7 @@ class CreateItem(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "storeId": True,
         }

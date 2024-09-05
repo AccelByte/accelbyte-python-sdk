@@ -52,7 +52,7 @@ class ValidateItemPurchaseCondition(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ItemPurchaseConditionValidateRequest in body
+        body: (body) REQUIRED ItemPurchaseConditionValidateRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -77,7 +77,7 @@ class ValidateItemPurchaseCondition(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ItemPurchaseConditionValidateRequest  # OPTIONAL in [body]
+    body: ItemPurchaseConditionValidateRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     platform: str  # OPTIONAL in [query]
     user_id: str  # REQUIRED in [query]
@@ -242,17 +242,16 @@ class ValidateItemPurchaseCondition(Operation):
     @classmethod
     def create(
         cls,
+        body: ItemPurchaseConditionValidateRequest,
         namespace: str,
         user_id: str,
-        body: Optional[ItemPurchaseConditionValidateRequest] = None,
         platform: Optional[str] = None,
         **kwargs,
     ) -> ValidateItemPurchaseCondition:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if platform is not None:
             instance.platform = platform
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -296,7 +295,7 @@ class ValidateItemPurchaseCondition(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "platform": False,
             "userId": True,

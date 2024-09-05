@@ -45,9 +45,6 @@ class UpdateContentShareCode(Operation):
     Max length: 7
     Available characters: abcdefhkpqrstuxyz
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/sharecode
 

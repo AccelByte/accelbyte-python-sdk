@@ -40,7 +40,11 @@ class ModelsUser(Model):
 
         status: (Status) REQUIRED str
 
+        status_v2: (StatusV2) REQUIRED str
+
         updated_at: (UpdatedAt) REQUIRED str
+
+        previous_status: (PreviousStatus) OPTIONAL str
     """
 
     # region fields
@@ -49,7 +53,9 @@ class ModelsUser(Model):
     platform_id: str  # REQUIRED
     platform_user_id: str  # REQUIRED
     status: str  # REQUIRED
+    status_v2: str  # REQUIRED
     updated_at: str  # REQUIRED
+    previous_status: str  # OPTIONAL
 
     # endregion fields
 
@@ -71,8 +77,16 @@ class ModelsUser(Model):
         self.status = value
         return self
 
+    def with_status_v2(self, value: str) -> ModelsUser:
+        self.status_v2 = value
+        return self
+
     def with_updated_at(self, value: str) -> ModelsUser:
         self.updated_at = value
+        return self
+
+    def with_previous_status(self, value: str) -> ModelsUser:
+        self.previous_status = value
         return self
 
     # endregion with_x methods
@@ -97,10 +111,18 @@ class ModelsUser(Model):
             result["Status"] = str(self.status)
         elif include_empty:
             result["Status"] = ""
+        if hasattr(self, "status_v2"):
+            result["StatusV2"] = str(self.status_v2)
+        elif include_empty:
+            result["StatusV2"] = ""
         if hasattr(self, "updated_at"):
             result["UpdatedAt"] = str(self.updated_at)
         elif include_empty:
             result["UpdatedAt"] = ""
+        if hasattr(self, "previous_status"):
+            result["PreviousStatus"] = str(self.previous_status)
+        elif include_empty:
+            result["PreviousStatus"] = ""
         return result
 
     # endregion to methods
@@ -114,7 +136,9 @@ class ModelsUser(Model):
         platform_id: str,
         platform_user_id: str,
         status: str,
+        status_v2: str,
         updated_at: str,
+        previous_status: Optional[str] = None,
         **kwargs,
     ) -> ModelsUser:
         instance = cls()
@@ -122,7 +146,10 @@ class ModelsUser(Model):
         instance.platform_id = platform_id
         instance.platform_user_id = platform_user_id
         instance.status = status
+        instance.status_v2 = status_v2
         instance.updated_at = updated_at
+        if previous_status is not None:
+            instance.previous_status = previous_status
         return instance
 
     @classmethod
@@ -146,10 +173,18 @@ class ModelsUser(Model):
             instance.status = str(dict_["Status"])
         elif include_empty:
             instance.status = ""
+        if "StatusV2" in dict_ and dict_["StatusV2"] is not None:
+            instance.status_v2 = str(dict_["StatusV2"])
+        elif include_empty:
+            instance.status_v2 = ""
         if "UpdatedAt" in dict_ and dict_["UpdatedAt"] is not None:
             instance.updated_at = str(dict_["UpdatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "PreviousStatus" in dict_ and dict_["PreviousStatus"] is not None:
+            instance.previous_status = str(dict_["PreviousStatus"])
+        elif include_empty:
+            instance.previous_status = ""
         return instance
 
     @classmethod
@@ -193,7 +228,9 @@ class ModelsUser(Model):
             "PlatformID": "platform_id",
             "PlatformUserID": "platform_user_id",
             "Status": "status",
+            "StatusV2": "status_v2",
             "UpdatedAt": "updated_at",
+            "PreviousStatus": "previous_status",
         }
 
     @staticmethod
@@ -203,7 +240,9 @@ class ModelsUser(Model):
             "PlatformID": True,
             "PlatformUserID": True,
             "Status": True,
+            "StatusV2": True,
             "UpdatedAt": True,
+            "PreviousStatus": False,
         }
 
     # endregion static methods

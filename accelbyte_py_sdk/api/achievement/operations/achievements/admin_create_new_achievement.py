@@ -54,12 +54,6 @@ class AdminCreateNewAchievement(Operation):
     - slug: specify the image they want to use, it can be file image name or something
     to define the achievement icon.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/achievements
 

@@ -57,7 +57,7 @@ class CreateReward(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardCreate in body
+        body: (body) REQUIRED RewardCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -82,7 +82,7 @@ class CreateReward(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: RewardCreate  # OPTIONAL in [body]
+    body: RewardCreate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -226,13 +226,10 @@ class CreateReward(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls, namespace: str, body: Optional[RewardCreate] = None, **kwargs
-    ) -> CreateReward:
+    def create(cls, body: RewardCreate, namespace: str, **kwargs) -> CreateReward:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -262,7 +259,7 @@ class CreateReward(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

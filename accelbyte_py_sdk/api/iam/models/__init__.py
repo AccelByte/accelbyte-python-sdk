@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.19.0"
+__version__ = "7.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -74,6 +74,7 @@ from .accountcommon_list_users_with_platform_accounts_response import (
 )
 from .accountcommon_namespace_role import AccountcommonNamespaceRole
 from .accountcommon_netflix_certificates import AccountcommonNetflixCertificates
+from .accountcommon_override_role_permission import AccountcommonOverrideRolePermission
 from .accountcommon_pagination import AccountcommonPagination
 from .accountcommon_pagination_v3 import AccountcommonPaginationV3
 from .accountcommon_permission import AccountcommonPermission
@@ -87,6 +88,7 @@ from .accountcommon_platform_user_information_v3 import (
     AccountcommonPlatformUserInformationV3,
 )
 from .accountcommon_registered_domain import AccountcommonRegisteredDomain
+from .accountcommon_replace_role_permission import AccountcommonReplaceRolePermission
 from .accountcommon_role import AccountcommonRole
 from .accountcommon_role_manager import AccountcommonRoleManager
 from .accountcommon_role_manager_v3 import AccountcommonRoleManagerV3
@@ -279,6 +281,13 @@ from .model_role_members_request_v3 import ModelRoleMembersRequestV3
 from .model_role_members_response import ModelRoleMembersResponse
 from .model_role_members_response_v3 import ModelRoleMembersResponseV3
 from .model_role_names_response_v3 import ModelRoleNamesResponseV3
+from .model_role_override_response import ModelRoleOverrideResponse
+from .model_role_override_source_response import ModelRoleOverrideSourceResponse
+from .model_role_override_stats_update_request import (
+    ModelRoleOverrideStatsUpdateRequest,
+)
+from .model_role_override_update_request import ModelRoleOverrideUpdateRequest
+from .model_role_permission_response_v3 import ModelRolePermissionResponseV3
 from .model_role_response import ModelRoleResponse
 from .model_role_response_v3 import ModelRoleResponseV3
 from .model_role_response_with_managers import ModelRoleResponseWithManagers

@@ -48,12 +48,6 @@ class ClaimGlobalAchievementReward(Operation):
 
     Global achievement should be unlocked to claim the reward. Only contributor of global achievement are eligible for rewards
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/global/achievements/{achievementCode}/claim
 

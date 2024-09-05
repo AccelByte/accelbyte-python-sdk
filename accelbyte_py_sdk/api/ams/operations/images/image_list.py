@@ -40,9 +40,6 @@ class ImageList(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images
 

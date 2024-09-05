@@ -138,7 +138,7 @@ class AdminGetProfanityListFiltersV1(Operation):
 
     # region with_x methods
 
-    def with_list_(self, value: str) -> AdminGetProfanityListFiltersV1:
+    def with_list(self, value: str) -> AdminGetProfanityListFiltersV1:
         self.list_ = value
         return self
 

@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestPayPalConfigById(Operation):
     """Test PayPal configuration by id (testPayPalConfigById)
 
-    [Not Supported Yet In Starter] Test PayPal configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test PayPal configuration in payment merchant config. Other detail info:
 
       * Returns : test result
 
@@ -137,7 +137,7 @@ class TestPayPalConfigById(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> TestPayPalConfigById:
+    def with_id(self, value: str) -> TestPayPalConfigById:
         self.id_ = value
         return self
 

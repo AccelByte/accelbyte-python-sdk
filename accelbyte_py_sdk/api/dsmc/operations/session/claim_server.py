@@ -42,12 +42,6 @@ class ClaimServer(Operation):
 
     This endpoint is intended to be called by game session manager (matchmaker, lobby, etc.) to claim a dedicated server. The dedicated server cannot be claimed unless the status is READY
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/claim
 

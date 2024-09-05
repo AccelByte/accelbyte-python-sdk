@@ -55,7 +55,7 @@ class UpdateIAPItemConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL IAPItemConfigUpdate in body
+        body: (body) REQUIRED IAPItemConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +78,7 @@ class UpdateIAPItemConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: IAPItemConfigUpdate  # OPTIONAL in [body]
+    body: IAPItemConfigUpdate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -219,12 +219,11 @@ class UpdateIAPItemConfig(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, body: Optional[IAPItemConfigUpdate] = None, **kwargs
+        cls, body: IAPItemConfigUpdate, namespace: str, **kwargs
     ) -> UpdateIAPItemConfig:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -256,7 +255,7 @@ class UpdateIAPItemConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

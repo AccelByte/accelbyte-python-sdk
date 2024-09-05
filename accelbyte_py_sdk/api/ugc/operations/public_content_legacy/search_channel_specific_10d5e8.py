@@ -267,7 +267,7 @@ class SearchChannelSpecificContent(Operation):
         self.tags = value
         return self
 
-    def with_type_(self, value: str) -> SearchChannelSpecificContent:
+    def with_type(self, value: str) -> SearchChannelSpecificContent:
         self.type_ = value
         return self
 

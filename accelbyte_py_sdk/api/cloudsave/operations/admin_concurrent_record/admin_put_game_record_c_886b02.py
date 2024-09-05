@@ -103,9 +103,6 @@ class AdminPutGameRecordConcurrentHandlerV1(Operation):
     and client need to redo the operation (fetch data and do update).
     Otherwise, the server will process the request.
 
-    Required Permission(s):
-        - CLIENT []
-
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/concurrent/records/{key}
 

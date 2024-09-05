@@ -36,7 +36,7 @@ from ...models import PaymentOrderDetails
 class PublicGetUnpaidPaymentOrder(Operation):
     """Get payment order info (publicGetUnpaidPaymentOrder)
 
-    [Not Supported Yet In Starter] Get payment order info.
+    [Not supported yet in AGS Shared Cloud] Get payment order info.
     Other detail info:
 
       * Returns : Payment order details

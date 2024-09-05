@@ -42,6 +42,7 @@ from ..operations.telemetry import GetNamespacesGameTelemetryV1AdminNamespacesGe
 
 @same_doc_as(GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet)
 def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
+    device_type: Optional[str] = None,
     end_time: Optional[str] = None,
     event_id: Optional[str] = None,
     event_name: Optional[str] = None,
@@ -75,6 +76,8 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
 
         namespace: (namespace) REQUIRED str in path
 
+        device_type: (deviceType) OPTIONAL str in query
+
         end_time: (endTime) OPTIONAL str in query
 
         event_id: (eventId) OPTIONAL str in query
@@ -105,6 +108,7 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
         if error:
             return None, error
     request = GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet.create(
+        device_type=device_type,
         end_time=end_time,
         event_id=event_id,
         event_name=event_name,
@@ -121,6 +125,7 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
 
 @same_doc_as(GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet)
 async def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_async(
+    device_type: Optional[str] = None,
     end_time: Optional[str] = None,
     event_id: Optional[str] = None,
     event_name: Optional[str] = None,
@@ -154,6 +159,8 @@ async def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_asy
 
         namespace: (namespace) REQUIRED str in path
 
+        device_type: (deviceType) OPTIONAL str in query
+
         end_time: (endTime) OPTIONAL str in query
 
         event_id: (eventId) OPTIONAL str in query
@@ -184,6 +191,7 @@ async def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_asy
         if error:
             return None, error
     request = GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet.create(
+        device_type=device_type,
         end_time=end_time,
         event_id=event_id,
         event_name=event_name,

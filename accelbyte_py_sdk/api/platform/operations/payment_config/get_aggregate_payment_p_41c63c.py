@@ -33,7 +33,7 @@ from .....core import HttpResponse
 class GetAggregatePaymentProviders(Operation):
     """Get aggregate payment providers (getAggregatePaymentProviders)
 
-    [Not Supported Yet In Starter] Get aggregate payment providers, such as XSOLLA, ADYEN.
+    [Not supported yet in AGS Shared Cloud] Get aggregate payment providers, such as XSOLLA, ADYEN.
     Other detail info:
 
       * Returns : payment provider list

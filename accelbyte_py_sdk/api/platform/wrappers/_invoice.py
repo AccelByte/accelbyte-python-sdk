@@ -41,10 +41,10 @@ from ..operations.invoice import GenerateInvoiceSummaryItemTypeEnum
 @same_doc_as(DownloadInvoiceDetails)
 def download_invoice_details(
     end_time: str,
+    feature: str,
+    item_id: str,
+    item_type: Union[str, DownloadInvoiceDetailsItemTypeEnum],
     start_time: str,
-    feature: Optional[str] = None,
-    item_id: Optional[str] = None,
-    item_type: Optional[Union[str, DownloadInvoiceDetailsItemTypeEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -71,13 +71,13 @@ def download_invoice_details(
 
         namespace: (namespace) REQUIRED str in path
 
-        feature: (feature) OPTIONAL str in query
-
-        item_id: (itemId) OPTIONAL str in query
-
-        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
-
         end_time: (endTime) REQUIRED str in query
+
+        feature: (feature) REQUIRED str in query
+
+        item_id: (itemId) REQUIRED str in query
+
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum] in query
 
         start_time: (startTime) REQUIRED str in query
 
@@ -90,10 +90,10 @@ def download_invoice_details(
             return None, error
     request = DownloadInvoiceDetails.create(
         end_time=end_time,
-        start_time=start_time,
         feature=feature,
         item_id=item_id,
         item_type=item_type,
+        start_time=start_time,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -102,10 +102,10 @@ def download_invoice_details(
 @same_doc_as(DownloadInvoiceDetails)
 async def download_invoice_details_async(
     end_time: str,
+    feature: str,
+    item_id: str,
+    item_type: Union[str, DownloadInvoiceDetailsItemTypeEnum],
     start_time: str,
-    feature: Optional[str] = None,
-    item_id: Optional[str] = None,
-    item_type: Optional[Union[str, DownloadInvoiceDetailsItemTypeEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -132,13 +132,13 @@ async def download_invoice_details_async(
 
         namespace: (namespace) REQUIRED str in path
 
-        feature: (feature) OPTIONAL str in query
-
-        item_id: (itemId) OPTIONAL str in query
-
-        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
-
         end_time: (endTime) REQUIRED str in query
+
+        feature: (feature) REQUIRED str in query
+
+        item_id: (itemId) REQUIRED str in query
+
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum] in query
 
         start_time: (startTime) REQUIRED str in query
 
@@ -151,10 +151,10 @@ async def download_invoice_details_async(
             return None, error
     request = DownloadInvoiceDetails.create(
         end_time=end_time,
-        start_time=start_time,
         feature=feature,
         item_id=item_id,
         item_type=item_type,
+        start_time=start_time,
         namespace=namespace,
     )
     return await run_request_async(
@@ -165,10 +165,10 @@ async def download_invoice_details_async(
 @same_doc_as(GenerateInvoiceSummary)
 def generate_invoice_summary(
     end_time: str,
+    feature: str,
+    item_id: str,
+    item_type: Union[str, GenerateInvoiceSummaryItemTypeEnum],
     start_time: str,
-    feature: Optional[str] = None,
-    item_id: Optional[str] = None,
-    item_type: Optional[Union[str, GenerateInvoiceSummaryItemTypeEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -195,13 +195,13 @@ def generate_invoice_summary(
 
         namespace: (namespace) REQUIRED str in path
 
-        feature: (feature) OPTIONAL str in query
-
-        item_id: (itemId) OPTIONAL str in query
-
-        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
-
         end_time: (endTime) REQUIRED str in query
+
+        feature: (feature) REQUIRED str in query
+
+        item_id: (itemId) REQUIRED str in query
+
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum] in query
 
         start_time: (startTime) REQUIRED str in query
 
@@ -216,10 +216,10 @@ def generate_invoice_summary(
             return None, error
     request = GenerateInvoiceSummary.create(
         end_time=end_time,
-        start_time=start_time,
         feature=feature,
         item_id=item_id,
         item_type=item_type,
+        start_time=start_time,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -228,10 +228,10 @@ def generate_invoice_summary(
 @same_doc_as(GenerateInvoiceSummary)
 async def generate_invoice_summary_async(
     end_time: str,
+    feature: str,
+    item_id: str,
+    item_type: Union[str, GenerateInvoiceSummaryItemTypeEnum],
     start_time: str,
-    feature: Optional[str] = None,
-    item_id: Optional[str] = None,
-    item_type: Optional[Union[str, GenerateInvoiceSummaryItemTypeEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -258,13 +258,13 @@ async def generate_invoice_summary_async(
 
         namespace: (namespace) REQUIRED str in path
 
-        feature: (feature) OPTIONAL str in query
-
-        item_id: (itemId) OPTIONAL str in query
-
-        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
-
         end_time: (endTime) REQUIRED str in query
+
+        feature: (feature) REQUIRED str in query
+
+        item_id: (itemId) REQUIRED str in query
+
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum] in query
 
         start_time: (startTime) REQUIRED str in query
 
@@ -279,10 +279,10 @@ async def generate_invoice_summary_async(
             return None, error
     request = GenerateInvoiceSummary.create(
         end_time=end_time,
-        start_time=start_time,
         feature=feature,
         item_id=item_id,
         item_type=item_type,
+        start_time=start_time,
         namespace=namespace,
     )
     return await run_request_async(

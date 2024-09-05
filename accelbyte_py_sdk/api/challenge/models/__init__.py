@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.8.1"
+__version__ = "1.9.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -49,6 +49,16 @@ from .model_list_challenge_response import ModelListChallengeResponse
 from .model_list_periods_response import ModelListPeriodsResponse
 from .model_list_user_rewards_response import ModelListUserRewardsResponse
 from .model_pagination import ModelPagination
+from .model_plugin_asignment_app_config import ModelPluginAsignmentAppConfig
+from .model_plugin_assignment_custom_config import ModelPluginAssignmentCustomConfig
+from .model_plugin_assignment_request import ModelPluginAssignmentRequest
+from .model_plugin_assignment_request import (
+    ExtendTypeEnum as ModelPluginAssignmentRequestExtendTypeEnum,
+)
+from .model_plugin_assignment_response import ModelPluginAssignmentResponse
+from .model_plugin_assignment_response import (
+    ExtendTypeEnum as ModelPluginAssignmentResponseExtendTypeEnum,
+)
 from .model_predicate import ModelPredicate
 from .model_predicate import (
     MatcherEnum as ModelPredicateMatcherEnum,

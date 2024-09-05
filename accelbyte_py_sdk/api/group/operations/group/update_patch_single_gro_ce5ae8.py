@@ -45,9 +45,6 @@ class UpdatePatchSingleGroupPublicV1(Operation):
 
     Action Code: 73307
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}
 

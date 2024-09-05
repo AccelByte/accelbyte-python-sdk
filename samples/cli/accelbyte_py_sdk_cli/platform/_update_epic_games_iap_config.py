@@ -38,13 +38,13 @@ from accelbyte_py_sdk.api.platform.models import EpicGamesIAPConfigRequest
 
 
 @click.command()
-@click.option("--body", "body", type=str)
+@click.argument("body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_epic_games_iap_config(
-    body: Optional[str] = None,
+    body: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,

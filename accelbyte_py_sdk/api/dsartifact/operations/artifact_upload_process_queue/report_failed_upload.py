@@ -41,9 +41,6 @@ class ReportFailedUpload(Operation):
     This endpoint is used to report a failed artifact upload
     ```
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:QUEUE [UPDATE]
-
     Properties:
         url: /dsartifact/artifacts/queues/failed
 

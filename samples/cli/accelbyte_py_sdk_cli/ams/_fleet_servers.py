@@ -37,12 +37,16 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 @click.command()
 @click.argument("fleet_id", type=str)
+@click.option("--count", "count", type=str)
+@click.option("--offset", "offset", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def fleet_servers(
     fleet_id: str,
+    count: Optional[str] = None,
+    offset: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -58,6 +62,8 @@ def fleet_servers(
         login_as_internal(login_as)
     result, error = fleet_servers_internal(
         fleet_id=fleet_id,
+        count=count,
+        offset=offset,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

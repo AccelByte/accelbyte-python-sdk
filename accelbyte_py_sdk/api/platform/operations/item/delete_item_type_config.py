@@ -35,7 +35,7 @@ from ...models import ErrorEntity
 class DeleteItemTypeConfig(Operation):
     """Delete an item type config (deleteItemTypeConfig)
 
-    [Not Supported Yet In Starter] This API is used to delete an item type config permanently.
+    [Not supported yet in AGS Shared Cloud] This API is used to delete an item type config permanently.
 
     Properties:
         url: /platform/admin/items/configs/{id}
@@ -124,7 +124,7 @@ class DeleteItemTypeConfig(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> DeleteItemTypeConfig:
+    def with_id(self, value: str) -> DeleteItemTypeConfig:
         self.id_ = value
         return self
 

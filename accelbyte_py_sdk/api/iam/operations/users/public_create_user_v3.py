@@ -42,6 +42,7 @@ class PublicCreateUserV3(Operation):
 
     **Note**:
     * **uniqueDisplayName**: this is required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true.
+    * **code**: this is required when mandatoryEmailVerificationEnabled config is true. please refer to the config from /iam/v3/public/namespaces/{namespace}/config/{configKey} [GET] API.
 
     Country use ISO3166-1 alpha-2 two letter, e.g. US.
     Date of Birth format : YYYY-MM-DD, e.g. 2019-04-29.
@@ -67,7 +68,7 @@ class PublicCreateUserV3(Operation):
     Responses:
         201: Created - ModelUserCreateResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age | 10152: verification code not found)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
@@ -192,7 +193,7 @@ class PublicCreateUserV3(Operation):
 
         201: Created - ModelUserCreateResponseV3 (Created)
 
-        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age | 10152: verification code not found)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 

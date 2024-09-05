@@ -42,9 +42,6 @@ class AdminConsumeUserItem(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [UPDATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/consume
 

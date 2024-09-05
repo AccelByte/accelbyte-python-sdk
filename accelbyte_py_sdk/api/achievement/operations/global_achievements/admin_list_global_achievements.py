@@ -49,12 +49,6 @@ class AdminListGlobalAchievements(Operation):
 
     Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/global/achievements
 

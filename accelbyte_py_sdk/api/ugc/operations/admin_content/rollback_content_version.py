@@ -39,9 +39,6 @@ class RollbackContentVersion(Operation):
     Required permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
     Rollback content's payload to specified version.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/admin/namespaces/{namespace}/contents/{contentId}/rollback/{versionId}
 

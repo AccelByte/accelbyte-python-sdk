@@ -76,12 +76,6 @@ def create_deployment(
 
     This endpoint create a dedicated servers deployment in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
 
@@ -139,12 +133,6 @@ async def create_deployment_async(
     Required scope: social
 
     This endpoint create a dedicated servers deployment in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
@@ -206,12 +194,6 @@ def create_deployment_client(
 
     This endpoint create a dedicated servers deployment in a namespace.
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
 
@@ -269,12 +251,6 @@ async def create_deployment_client_async(
     Required scope: social
 
     This endpoint create a dedicated servers deployment in a namespace.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
@@ -336,12 +312,6 @@ def create_deployment_override(
     Required scope: social
 
     This endpoint create a dedicated servers deployment override in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/version/{version}
@@ -406,12 +376,6 @@ async def create_deployment_override_async(
     Required scope: social
 
     This endpoint create a dedicated servers deployment override in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/version/{version}
@@ -480,12 +444,6 @@ def create_override_region_override(
 
     This endpoint creates a dedicated servers deployment override in a namespace in a region for deployment overrides.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
 
@@ -553,12 +511,6 @@ async def create_override_region_override_async(
     Required scope: social
 
     This endpoint creates a dedicated servers deployment override in a namespace in a region for deployment overrides.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
@@ -629,12 +581,6 @@ def create_root_region_override(
 
     This endpoint creates a dedicated servers deployment override in a namespace in a region for root deployment.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
 
@@ -698,12 +644,6 @@ async def create_root_region_override_async(
     Required scope: social
 
     This endpoint creates a dedicated servers deployment override in a namespace in a region for root deployment.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
@@ -770,12 +710,6 @@ def delete_creating_server_count_queue(
 
     This endpoint deletes the deployment creating server count queue in a namespace in all registered region for the selected version
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/versions/{version}/queues
 
@@ -833,12 +767,6 @@ async def delete_creating_server_count_queue_async(
     Required scope: social
 
     This endpoint deletes the deployment creating server count queue in a namespace in all registered region for the selected version
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/versions/{version}/queues
@@ -899,12 +827,6 @@ def delete_deployment(
 
     This endpoint delete a dedicated server deployment in a namespace
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
 
@@ -958,12 +880,6 @@ async def delete_deployment_async(
     Required scope: social
 
     This endpoint delete a dedicated server deployment in a namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
@@ -1021,12 +937,6 @@ def delete_deployment_client(
 
     This endpoint delete a dedicated server deployment in a namespace
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
 
@@ -1080,12 +990,6 @@ async def delete_deployment_client_async(
     Required scope: social
 
     This endpoint delete a dedicated server deployment in a namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
@@ -1144,12 +1048,6 @@ def delete_deployment_override(
 
     This endpoint delete a dedicated server deployment override in a namespace
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}
 
@@ -1207,12 +1105,6 @@ async def delete_deployment_override_async(
     Required scope: social
 
     This endpoint delete a dedicated server deployment override in a namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}
@@ -1275,12 +1167,6 @@ def delete_override_region_override(
 
     This endpoint delete a dedicated server deployment override in a namespace in a region for deployment overrides
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
 
@@ -1342,12 +1228,6 @@ async def delete_override_region_override_async(
     Required scope: social
 
     This endpoint delete a dedicated server deployment override in a namespace in a region for deployment overrides
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
@@ -1412,12 +1292,6 @@ def delete_root_region_override(
 
     This endpoint delete a dedicated server deployment override in a namespace in a region for root deployment
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
 
@@ -1475,12 +1349,6 @@ async def delete_root_region_override_async(
     Required scope: social
 
     This endpoint delete a dedicated server deployment override in a namespace in a region for root deployment
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
@@ -1545,12 +1413,6 @@ def get_all_deployment(
 
     Parameter Offset and Count is Required
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments
 
@@ -1612,12 +1474,6 @@ async def get_all_deployment_async(
     This endpoint get a all deployments in a namespace
 
     Parameter Offset and Count is Required
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments
@@ -1683,12 +1539,6 @@ def get_all_deployment_client(
 
     Parameter Offset and Count is Required
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/deployments
 
@@ -1751,12 +1601,6 @@ async def get_all_deployment_client_async(
 
     Parameter Offset and Count is Required
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/deployments
 
@@ -1817,12 +1661,6 @@ def get_deployment(
 
     This endpoint get a dedicated server deployment in a namespace
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
 
@@ -1876,12 +1714,6 @@ async def get_deployment_async(
     Required scope: social
 
     This endpoint get a dedicated server deployment in a namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
@@ -1939,12 +1771,6 @@ def get_deployment_client(
 
     This endpoint get a dedicated server deployment in a namespace
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
 
@@ -1998,12 +1824,6 @@ async def get_deployment_client_async(
     Required scope: social
 
     This endpoint get a dedicated server deployment in a namespace
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/configs/deployments/{deployment}
@@ -2061,12 +1881,6 @@ def update_deployment(
     Required scope: social
 
     This endpoint update a dedicated servers deployment in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
@@ -2127,12 +1941,6 @@ async def update_deployment_async(
     Required scope: social
 
     This endpoint update a dedicated servers deployment in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}
@@ -2197,12 +2005,6 @@ def update_deployment_override(
 
     This endpoint update a dedicated servers deployment override in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}
 
@@ -2264,12 +2066,6 @@ async def update_deployment_override_async(
     Required scope: social
 
     This endpoint update a dedicated servers deployment override in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}
@@ -2336,12 +2132,6 @@ def update_override_region_override(
 
     This endpoint update a dedicated servers deployment override in a namespace in a region for deployment overrides.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
 
@@ -2407,12 +2197,6 @@ async def update_override_region_override_async(
     Required scope: social
 
     This endpoint update a dedicated servers deployment override in a namespace in a region for deployment overrides.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/versions/{version}/regions/{region}
@@ -2481,12 +2265,6 @@ def update_root_region_override(
 
     This endpoint update a dedicated servers deployment override in a namespace in a region for root deployment.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}
 
@@ -2548,12 +2326,6 @@ async def update_root_region_override_async(
     Required scope: social
 
     This endpoint update a dedicated servers deployment override in a namespace in a region for root deployment.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/deployments/{deployment}/overrides/regions/{region}

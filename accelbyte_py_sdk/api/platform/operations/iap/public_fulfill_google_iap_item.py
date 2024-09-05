@@ -54,7 +54,7 @@ class PublicFulfillGoogleIAPItem(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL GoogleIAPReceipt in body
+        body: (body) REQUIRED GoogleIAPReceipt in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -63,9 +63,9 @@ class PublicFulfillGoogleIAPItem(Operation):
     Responses:
         200: OK - GoogleReceiptResolveResult (Successful operation)
 
-        400: Bad Request - ErrorEntity (39122: Google iap receipt is invalid with status code [{statusCode}] and error message [{message}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
+        400: Bad Request - ErrorEntity (39122: Google iap receipt is invalid with status code [{statusCode}] and error message [{message}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required | 39135: Invalid Google IAP config under namespace [{namespace}]: [{message}])
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 39148: Google IAP config not found in namespace [{namespace}].)
 
         409: Conflict - ErrorEntity (39172: The order id in namespace [{namespace}] expect [{expected}] but was [{actual}] | 39173: The purchase status of google play order [{orderId}] in namespace [{namespace}] expect [{expected}] but was [{actual}] | 39174: The google iap purchase time of order [{orderId}] in namespace [{namespace}] expect [{expected}] but was [{actual}] | 20006: optimistic lock)
     """
@@ -81,7 +81,7 @@ class PublicFulfillGoogleIAPItem(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: GoogleIAPReceipt  # OPTIONAL in [body]
+    body: GoogleIAPReceipt  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -194,9 +194,9 @@ class PublicFulfillGoogleIAPItem(Operation):
 
         200: OK - GoogleReceiptResolveResult (Successful operation)
 
-        400: Bad Request - ErrorEntity (39122: Google iap receipt is invalid with status code [{statusCode}] and error message [{message}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required)
+        400: Bad Request - ErrorEntity (39122: Google iap receipt is invalid with status code [{statusCode}] and error message [{message}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required | 39135: Invalid Google IAP config under namespace [{namespace}]: [{message}])
 
-        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 39148: Google IAP config not found in namespace [{namespace}].)
 
         409: Conflict - ErrorEntity (39172: The order id in namespace [{namespace}] expect [{expected}] but was [{actual}] | 39173: The purchase status of google play order [{orderId}] in namespace [{namespace}] expect [{expected}] but was [{actual}] | 39174: The google iap purchase time of order [{orderId}] in namespace [{namespace}] expect [{expected}] but was [{actual}] | 20006: optimistic lock)
 
@@ -232,17 +232,12 @@ class PublicFulfillGoogleIAPItem(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        body: Optional[GoogleIAPReceipt] = None,
-        **kwargs,
+        cls, body: GoogleIAPReceipt, namespace: str, user_id: str, **kwargs
     ) -> PublicFulfillGoogleIAPItem:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -279,7 +274,7 @@ class PublicFulfillGoogleIAPItem(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "userId": True,
         }

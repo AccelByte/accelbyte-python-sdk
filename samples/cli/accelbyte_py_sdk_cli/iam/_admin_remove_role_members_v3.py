@@ -75,4 +75,4 @@ def admin_remove_role_members_v3(
 
 
 admin_remove_role_members_v3.operation_id = "AdminRemoveRoleMembersV3"
-admin_remove_role_members_v3.is_deprecated = False
+admin_remove_role_members_v3.is_deprecated = True

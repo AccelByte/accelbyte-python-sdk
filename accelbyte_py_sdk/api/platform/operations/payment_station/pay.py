@@ -50,7 +50,7 @@ class PaymentProviderEnum(StrEnum):
 class Pay(Operation):
     """Do payment (pay)
 
-    [Not Supported Yet In Starter] Do payment(For now, this only support checkout.com).
+    [Not supported yet in AGS Shared Cloud] Do payment(For now, this only support checkout.com).
     Other detail info:
 
       * Returns : Payment process result
@@ -68,7 +68,7 @@ class Pay(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentToken in body
+        body: (body) REQUIRED PaymentToken in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -99,7 +99,7 @@ class Pay(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentToken  # OPTIONAL in [body]
+    body: PaymentToken  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     payment_order_no: str  # REQUIRED in [path]
     payment_provider: Union[str, PaymentProviderEnum]  # OPTIONAL in [query]
@@ -278,18 +278,17 @@ class Pay(Operation):
     @classmethod
     def create(
         cls,
+        body: PaymentToken,
         namespace: str,
         payment_order_no: str,
-        body: Optional[PaymentToken] = None,
         payment_provider: Optional[Union[str, PaymentProviderEnum]] = None,
         zip_code: Optional[str] = None,
         **kwargs,
     ) -> Pay:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.payment_order_no = payment_order_no
-        if body is not None:
-            instance.body = body
         if payment_provider is not None:
             instance.payment_provider = payment_provider
         if zip_code is not None:
@@ -338,7 +337,7 @@ class Pay(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "paymentOrderNo": True,
             "paymentProvider": False,

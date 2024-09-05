@@ -157,7 +157,7 @@ class GetUserDLCByPlatform(Operation):
         self.user_id = value
         return self
 
-    def with_type_(self, value: Union[str, TypeEnum]) -> GetUserDLCByPlatform:
+    def with_type(self, value: Union[str, TypeEnum]) -> GetUserDLCByPlatform:
         self.type_ = value
         return self
 

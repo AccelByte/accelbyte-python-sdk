@@ -39,15 +39,15 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("booth_name", type=str)
-@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def decrease_ticket_sale(
+    body: str,
     booth_name: str,
-    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -68,8 +68,8 @@ def decrease_ticket_sale(
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = decrease_ticket_sale_internal(
-        booth_name=booth_name,
         body=body,
+        booth_name=booth_name,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

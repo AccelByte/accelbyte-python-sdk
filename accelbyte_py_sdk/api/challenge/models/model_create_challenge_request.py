@@ -32,6 +32,7 @@ from ..models.model_reset_config import ModelResetConfig
 
 
 class AssignmentRuleEnum(StrEnum):
+    CUSTOM = "CUSTOM"
     FIXED = "FIXED"
     RANDOMIZED = "RANDOMIZED"
     UNSCHEDULED = "UNSCHEDULED"
@@ -411,7 +412,7 @@ class ModelCreateChallengeRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "assignmentRule": ["FIXED", "RANDOMIZED", "UNSCHEDULED"],
+            "assignmentRule": ["CUSTOM", "FIXED", "RANDOMIZED", "UNSCHEDULED"],
             "goalsVisibility": ["PERIODONLY", "SHOWALL"],
             "rotation": ["DAILY", "MONTHLY", "NONE", "WEEKLY"],
         }

@@ -38,7 +38,7 @@ from ...models import ValidationErrorEntity
 class UpdatePaymentProviderConfig(Operation):
     """Update payment provider config (updatePaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Update payment provider config.
+    [Not supported yet in AGS Shared Cloud] Update payment provider config.
 
 
 
@@ -77,7 +77,7 @@ class UpdatePaymentProviderConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentProviderConfigEdit in body
+        body: (body) REQUIRED PaymentProviderConfigEdit in body
 
         id_: (id) REQUIRED str in path
 
@@ -102,7 +102,7 @@ class UpdatePaymentProviderConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentProviderConfigEdit  # OPTIONAL in [body]
+    body: PaymentProviderConfigEdit  # REQUIRED in [body]
     id_: str  # REQUIRED in [path]
 
     # endregion fields
@@ -172,7 +172,7 @@ class UpdatePaymentProviderConfig(Operation):
         self.body = value
         return self
 
-    def with_id_(self, value: str) -> UpdatePaymentProviderConfig:
+    def with_id(self, value: str) -> UpdatePaymentProviderConfig:
         self.id_ = value
         return self
 
@@ -249,12 +249,11 @@ class UpdatePaymentProviderConfig(Operation):
 
     @classmethod
     def create(
-        cls, id_: str, body: Optional[PaymentProviderConfigEdit] = None, **kwargs
+        cls, body: PaymentProviderConfigEdit, id_: str, **kwargs
     ) -> UpdatePaymentProviderConfig:
         instance = cls()
+        instance.body = body
         instance.id_ = id_
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -286,7 +285,7 @@ class UpdatePaymentProviderConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "id": True,
         }
 

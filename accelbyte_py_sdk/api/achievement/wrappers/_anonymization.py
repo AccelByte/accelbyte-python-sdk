@@ -51,9 +51,6 @@ def admin_anonymize_user_achievement(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/achievements
 
@@ -105,9 +102,6 @@ async def admin_anonymize_user_achievement_async(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/achievements

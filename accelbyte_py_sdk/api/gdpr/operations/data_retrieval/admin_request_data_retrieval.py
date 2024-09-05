@@ -42,9 +42,6 @@ class AdminRequestDataRetrieval(Operation):
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests
 

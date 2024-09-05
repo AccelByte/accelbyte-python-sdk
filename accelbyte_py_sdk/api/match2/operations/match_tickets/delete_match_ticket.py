@@ -63,6 +63,8 @@ class DeleteMatchTicket(Operation):
 
         404: Not Found - ResponseError (Not Found)
 
+        406: Not Acceptable - ResponseError (Not Acceptable)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
@@ -177,6 +179,8 @@ class DeleteMatchTicket(Operation):
 
         404: Not Found - ResponseError (Not Found)
 
+        406: Not Acceptable - ResponseError (Not Acceptable)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -199,6 +203,8 @@ class DeleteMatchTicket(Operation):
         if code == 403:
             return None, ResponseError.create_from_dict(content)
         if code == 404:
+            return None, ResponseError.create_from_dict(content)
+        if code == 406:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

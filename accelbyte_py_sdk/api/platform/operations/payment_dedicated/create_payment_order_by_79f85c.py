@@ -38,7 +38,7 @@ from ...models import ValidationErrorEntity
 class CreatePaymentOrderByDedicated(Operation):
     """Create payment order by dedicated server (createPaymentOrderByDedicated)
 
-    [Not Supported Yet In Starter]
+    [Not supported yet in AGS Shared Cloud]
 
     This API is used to create payment order from non justice service. e.g. from dedicated server, the result contains the payment station url.
 
@@ -220,7 +220,7 @@ class CreatePaymentOrderByDedicated(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL ExternalPaymentOrderCreate in body
+        body: (body) REQUIRED ExternalPaymentOrderCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -247,7 +247,7 @@ class CreatePaymentOrderByDedicated(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ExternalPaymentOrderCreate  # OPTIONAL in [body]
+    body: ExternalPaymentOrderCreate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -398,12 +398,11 @@ class CreatePaymentOrderByDedicated(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, body: Optional[ExternalPaymentOrderCreate] = None, **kwargs
+        cls, body: ExternalPaymentOrderCreate, namespace: str, **kwargs
     ) -> CreatePaymentOrderByDedicated:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -435,7 +434,7 @@ class CreatePaymentOrderByDedicated(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

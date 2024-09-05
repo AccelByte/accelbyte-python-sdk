@@ -38,9 +38,6 @@ class FleetServers(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers
 
@@ -57,6 +54,10 @@ class FleetServers(Operation):
         fleet_id: (fleetID) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
+
+        count: (count) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
         200: OK - ApiFleetServersResponse (success)
@@ -83,6 +84,8 @@ class FleetServers(Operation):
 
     fleet_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
+    count: str  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -123,6 +126,7 @@ class FleetServers(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -131,6 +135,14 @@ class FleetServers(Operation):
             result["fleetID"] = self.fleet_id
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "count"):
+            result["count"] = self.count
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -149,6 +161,14 @@ class FleetServers(Operation):
         self.namespace = value
         return self
 
+    def with_count(self, value: str) -> FleetServers:
+        self.count = value
+        return self
+
+    def with_offset(self, value: int) -> FleetServers:
+        self.offset = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -163,6 +183,14 @@ class FleetServers(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "count") and self.count:
+            result["count"] = str(self.count)
+        elif include_empty:
+            result["count"] = ""
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -225,10 +253,21 @@ class FleetServers(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, fleet_id: str, namespace: str, **kwargs) -> FleetServers:
+    def create(
+        cls,
+        fleet_id: str,
+        namespace: str,
+        count: Optional[str] = None,
+        offset: Optional[int] = None,
+        **kwargs,
+    ) -> FleetServers:
         instance = cls()
         instance.fleet_id = fleet_id
         instance.namespace = namespace
+        if count is not None:
+            instance.count = count
+        if offset is not None:
+            instance.offset = offset
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -244,6 +283,14 @@ class FleetServers(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "count" in dict_ and dict_["count"] is not None:
+            instance.count = str(dict_["count"])
+        elif include_empty:
+            instance.count = ""
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         return instance
 
     @staticmethod
@@ -251,6 +298,8 @@ class FleetServers(Operation):
         return {
             "fleetID": "fleet_id",
             "namespace": "namespace",
+            "count": "count",
+            "offset": "offset",
         }
 
     @staticmethod
@@ -258,6 +307,8 @@ class FleetServers(Operation):
         return {
             "fleetID": True,
             "namespace": True,
+            "count": False,
+            "offset": False,
         }
 
     # endregion static methods

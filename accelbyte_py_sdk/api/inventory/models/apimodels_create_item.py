@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class SourceEnum(StrEnum):
+    ECOMMERCE = "ECOMMERCE"
+    OTHER = "OTHER"
 
 
 class ApimodelsCreateItem(Model):
@@ -54,7 +60,7 @@ class ApimodelsCreateItem(Model):
 
         inventory_id: (inventoryId) OPTIONAL str
 
-        source: (source) OPTIONAL str
+        source: (source) OPTIONAL Union[str, SourceEnum]
     """
 
     # region fields
@@ -70,7 +76,7 @@ class ApimodelsCreateItem(Model):
     type_: str  # REQUIRED
     inventory_configuration_code: str  # OPTIONAL
     inventory_id: str  # OPTIONAL
-    source: str  # OPTIONAL
+    source: Union[str, SourceEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -122,7 +128,7 @@ class ApimodelsCreateItem(Model):
         self.inventory_id = value
         return self
 
-    def with_source(self, value: str) -> ApimodelsCreateItem:
+    def with_source(self, value: Union[str, SourceEnum]) -> ApimodelsCreateItem:
         self.source = value
         return self
 
@@ -185,7 +191,7 @@ class ApimodelsCreateItem(Model):
         if hasattr(self, "source"):
             result["source"] = str(self.source)
         elif include_empty:
-            result["source"] = ""
+            result["source"] = Union[str, SourceEnum]()
         return result
 
     # endregion to methods
@@ -206,7 +212,7 @@ class ApimodelsCreateItem(Model):
         type_: str,
         inventory_configuration_code: Optional[str] = None,
         inventory_id: Optional[str] = None,
-        source: Optional[str] = None,
+        source: Optional[Union[str, SourceEnum]] = None,
         **kwargs,
     ) -> ApimodelsCreateItem:
         instance = cls()
@@ -293,7 +299,7 @@ class ApimodelsCreateItem(Model):
         if "source" in dict_ and dict_["source"] is not None:
             instance.source = str(dict_["source"])
         elif include_empty:
-            instance.source = ""
+            instance.source = Union[str, SourceEnum]()
         return instance
 
     @classmethod
@@ -364,6 +370,12 @@ class ApimodelsCreateItem(Model):
             "inventoryConfigurationCode": False,
             "inventoryId": False,
             "source": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "source": ["ECOMMERCE", "OTHER"],
         }
 
     # endregion static methods

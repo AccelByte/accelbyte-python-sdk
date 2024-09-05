@@ -36,7 +36,7 @@ from ...models import PaymentOrderChargeStatus
 class GetPaymentOrderChargeStatus(Operation):
     """Get payment order charge status (getPaymentOrderChargeStatus)
 
-    [Not Supported Yet In Starter] Get payment order charge status.
+    [Not supported yet in AGS Shared Cloud] Get payment order charge status.
     Other detail info:
 
       * Returns : payment order charge status

@@ -35,7 +35,7 @@ from ...models import FulfillmentScriptInfo
 class ListFulfillmentScripts(Operation):
     """List all fulfillment scripts (listFulfillmentScripts)
 
-    [Not Supported Yet In Starter] List all fulfillment scripts.
+    [Not supported yet in AGS Shared Cloud] List all fulfillment scripts.
 
     Properties:
         url: /platform/admin/fulfillment/scripts

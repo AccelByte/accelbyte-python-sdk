@@ -59,9 +59,6 @@ def s2s_get_list_finished_account_deletion_request(
     ---
     ## This API for S2S integration purpose only
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/deletions/finished
 
@@ -125,9 +122,6 @@ async def s2s_get_list_finished_account_deletion_request_async(
 
     ---
     ## This API for S2S integration purpose only
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/deletions/finished
@@ -196,9 +190,6 @@ def s2s_submit_user_account_deletion_request(
     1. This API will **not send GDPR email notification** both for player and admin notification.
     2. This API will **perform account deletion immediately** without GDPR grace period (i.e. 28 days grace period).
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/users/{userId}/deletions
 
@@ -262,9 +253,6 @@ async def s2s_submit_user_account_deletion_request_async(
 
     1. This API will **not send GDPR email notification** both for player and admin notification.
     2. This API will **perform account deletion immediately** without GDPR grace period (i.e. 28 days grace period).
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/s2s/namespaces/{namespace}/users/{userId}/deletions

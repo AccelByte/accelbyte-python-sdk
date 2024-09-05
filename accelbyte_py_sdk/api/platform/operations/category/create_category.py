@@ -68,7 +68,7 @@ class CreateCategory(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CategoryCreate in body
+        body: (body) REQUIRED CategoryCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -95,7 +95,7 @@ class CreateCategory(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: CategoryCreate  # OPTIONAL in [body]
+    body: CategoryCreate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     store_id: str  # REQUIRED in [query]
 
@@ -256,17 +256,12 @@ class CreateCategory(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        store_id: str,
-        body: Optional[CategoryCreate] = None,
-        **kwargs,
+        cls, body: CategoryCreate, namespace: str, store_id: str, **kwargs
     ) -> CreateCategory:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.store_id = store_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -303,7 +298,7 @@ class CreateCategory(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "storeId": True,
         }

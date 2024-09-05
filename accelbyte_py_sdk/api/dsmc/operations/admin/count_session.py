@@ -42,12 +42,6 @@ class CountSession(Operation):
 
     This endpoint count all of sessions in a namespace managed by this service.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SESSION [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/sessions/count
 

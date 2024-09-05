@@ -56,7 +56,7 @@ class CreateCodes(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CodeCreate in body
+        body: (body) REQUIRED CodeCreate in body
 
         campaign_id: (campaignId) REQUIRED str in path
 
@@ -81,7 +81,7 @@ class CreateCodes(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: CodeCreate  # OPTIONAL in [body]
+    body: CodeCreate  # REQUIRED in [body]
     campaign_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -233,17 +233,12 @@ class CreateCodes(Operation):
 
     @classmethod
     def create(
-        cls,
-        campaign_id: str,
-        namespace: str,
-        body: Optional[CodeCreate] = None,
-        **kwargs,
+        cls, body: CodeCreate, campaign_id: str, namespace: str, **kwargs
     ) -> CreateCodes:
         instance = cls()
+        instance.body = body
         instance.campaign_id = campaign_id
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -278,7 +273,7 @@ class CreateCodes(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "campaignId": True,
             "namespace": True,
         }

@@ -36,7 +36,7 @@ from ...models import PaymentMerchantConfigInfo
 class UpdateWxPayConfigCert(Operation):
     """Upload wxpay cert file (updateWxPayConfigCert)
 
-    [Not Supported Yet In Starter] Upload wxpay cert file.
+    [Not supported yet in AGS Shared Cloud] Upload wxpay cert file.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -142,7 +142,7 @@ class UpdateWxPayConfigCert(Operation):
         self.file = value
         return self
 
-    def with_id_(self, value: str) -> UpdateWxPayConfigCert:
+    def with_id(self, value: str) -> UpdateWxPayConfigCert:
         self.id_ = value
         return self
 

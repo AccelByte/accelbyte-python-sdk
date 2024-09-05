@@ -44,12 +44,6 @@ class GetSession(Operation):
 
     The server is ready to use when the status is READY. At which point, the game session manager can claim the server using the GET /namespaces/{namespace}/sessions/{sessionID}/claim endpoint
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SESSION [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/sessions/{sessionID}
 

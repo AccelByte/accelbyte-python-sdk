@@ -69,12 +69,6 @@ def add_port(
 
     This endpoint create a dedicated servers port config in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
 
@@ -134,12 +128,6 @@ async def add_port_async(
     Required scope: social
 
     This endpoint create a dedicated servers port config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
@@ -201,12 +189,6 @@ def clear_cache(
 
     This endpoint clears config cache in a namespace
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/cache
 
@@ -252,12 +234,6 @@ async def clear_cache_async(
     Required scope: social
 
     This endpoint clears config cache in a namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/cache
@@ -335,12 +311,6 @@ def create_config(
     "unreachable_timeout": 30,
     }
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs
@@ -424,12 +394,6 @@ async def create_config_async(
     }
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs
 
@@ -487,12 +451,6 @@ def delete_config(
     those servers will be removed.
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs
 
@@ -544,12 +502,6 @@ async def delete_config_async(
     This endpoint removes config. When there are ready servers,
     those servers will be removed.
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs
@@ -604,12 +556,6 @@ def delete_port(
 
     This endpoint delete a dedicated server port config in a namespace
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
 
@@ -663,12 +609,6 @@ async def delete_port_async(
     Required scope: social
 
     This endpoint delete a dedicated server port config in a namespace
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
@@ -725,12 +665,6 @@ def export_config_v1(
 
     This endpoint export a dedicated servers config in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/export
 
@@ -780,12 +714,6 @@ async def export_config_v1_async(
     Required scope: social
 
     This endpoint export a dedicated servers config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/export
@@ -839,12 +767,6 @@ def get_config(
 
     This endpoint get a dedicated servers config in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs
 
@@ -892,12 +814,6 @@ async def get_config_async(
     Required scope: social
 
     This endpoint get a dedicated servers config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs
@@ -951,12 +867,6 @@ def import_config_v1(
     This endpoint import a dedicated servers config in a namespace.
 
     If there is an existing configuration, the configuration would be replaced.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/import
@@ -1016,12 +926,6 @@ async def import_config_v1_async(
 
     If there is an existing configuration, the configuration would be replaced.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/import
 
@@ -1075,12 +979,6 @@ def list_config(x_additional_headers: Optional[Dict[str, str]] = None, **kwargs)
 
     This endpoint lists all of dedicated servers configs.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/configs
 
@@ -1116,12 +1014,6 @@ async def list_config_async(
     Required scope: social
 
     This endpoint lists all of dedicated servers configs.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/configs
@@ -1232,12 +1124,6 @@ def save_config(
     },
     }
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/configs
@@ -1353,12 +1239,6 @@ async def save_config_async(
     }
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/configs
 
@@ -1434,12 +1314,6 @@ def update_config(
     "unreachable_timeout": 30,
     }
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs
@@ -1524,12 +1398,6 @@ async def update_config_async(
     }
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs
 
@@ -1586,12 +1454,6 @@ def update_port(
     Required scope: social
 
     This endpoint update a dedicated servers port config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
@@ -1650,12 +1512,6 @@ async def update_port_async(
     Required scope: social
 
     This endpoint update a dedicated servers port config in a namespace.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}

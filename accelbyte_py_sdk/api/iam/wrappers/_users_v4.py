@@ -87,6 +87,7 @@ from ..operations.users_v4 import AdminGetBackupCodesV4
 from ..operations.users_v4 import AdminGetMyBackupCodesV4
 from ..operations.users_v4 import AdminGetMyEnabledFactorsV4
 from ..operations.users_v4 import AdminGetMyMFAStatusV4
+from ..operations.users_v4 import AdminGetMyOwnMFAStatusV4
 from ..operations.users_v4 import AdminGetNamespaceInvitationHistoryV4
 from ..operations.users_v4 import AdminGetNamespaceUserInvitationHistoryV4
 from ..operations.users_v4 import AdminInviteUserNewV4
@@ -119,6 +120,7 @@ from ..operations.users_v4 import PublicGetBackupCodesV4
 from ..operations.users_v4 import PublicGetMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyEnabledFactorsV4
 from ..operations.users_v4 import PublicGetMyMFAStatusV4
+from ..operations.users_v4 import PublicGetMyOwnMFAStatusV4
 from ..operations.users_v4 import PublicGetUserPublicInfoByUserIdV4
 from ..operations.users_v4 import PublicInviteUserV4
 from ..operations.users_v4 import PublicListUserIDByPlatformUserIDsV4
@@ -1387,13 +1389,16 @@ async def admin_enable_backup_codes_v4_async(
 
 @same_doc_as(AdminEnableMyAuthenticatorV4)
 def admin_enable_my_authenticator_v4(
-    code: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     """Enable 2FA authenticator (AdminEnableMyAuthenticatorV4)
 
     This endpoint is used to enable 2FA authenticator.
+    ----------
+    Prerequisites:
+    - Generate the secret key/QR code uri by **_/iam/v4/admin/users/me/mfa/authenticator/key_**
+    - Consume the secret key/QR code by an authenticator app
+    - Get the code from the authenticator app
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/authenticator/enable
@@ -1408,7 +1413,7 @@ def admin_enable_my_authenticator_v4(
 
         securities: [BEARER_AUTH]
 
-        code: (code) OPTIONAL str in form_data
+        code: (code) REQUIRED str in form_data
 
     Responses:
         204: No Content - (Authenticator enabled)
@@ -1433,13 +1438,16 @@ def admin_enable_my_authenticator_v4(
 
 @same_doc_as(AdminEnableMyAuthenticatorV4)
 async def admin_enable_my_authenticator_v4_async(
-    code: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    code: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     """Enable 2FA authenticator (AdminEnableMyAuthenticatorV4)
 
     This endpoint is used to enable 2FA authenticator.
+    ----------
+    Prerequisites:
+    - Generate the secret key/QR code uri by **_/iam/v4/admin/users/me/mfa/authenticator/key_**
+    - Consume the secret key/QR code by an authenticator app
+    - Get the code from the authenticator app
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/authenticator/enable
@@ -1454,7 +1462,7 @@ async def admin_enable_my_authenticator_v4_async(
 
         securities: [BEARER_AUTH]
 
-        code: (code) OPTIONAL str in form_data
+        code: (code) REQUIRED str in form_data
 
     Responses:
         204: No Content - (Authenticator enabled)
@@ -2159,6 +2167,7 @@ async def admin_get_my_enabled_factors_v4_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetMyMFAStatusV4)
 def admin_get_my_mfa_status_v4(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -2166,6 +2175,8 @@ def admin_get_my_mfa_status_v4(
     """Get User MFA Status (AdminGetMyMFAStatusV4)
 
     This endpoint will get user's' MFA status.
+    ------------
+    **Substitute endpoint**: /iam/v4/admin/users/me/mfa/status [GET]
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/status
@@ -2195,6 +2206,7 @@ def admin_get_my_mfa_status_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetMyMFAStatusV4)
 async def admin_get_my_mfa_status_v4_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -2202,6 +2214,8 @@ async def admin_get_my_mfa_status_v4_async(
     """Get User MFA Status (AdminGetMyMFAStatusV4)
 
     This endpoint will get user's' MFA status.
+    ------------
+    **Substitute endpoint**: /iam/v4/admin/users/me/mfa/status [GET]
 
     Properties:
         url: /iam/v4/admin/users/me/mfa/status
@@ -2228,6 +2242,80 @@ async def admin_get_my_mfa_status_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     request = AdminGetMyMFAStatusV4.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetMyOwnMFAStatusV4)
+def admin_get_my_own_mfa_status_v4(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Admin Own MFA Status (AdminGetMyOwnMFAStatusV4)
+
+    This endpoint will get user's' MFA status.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/status
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelUserMFAStatusResponseV4 (MFA status returned)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminGetMyOwnMFAStatusV4.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetMyOwnMFAStatusV4)
+async def admin_get_my_own_mfa_status_v4_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Admin Own MFA Status (AdminGetMyOwnMFAStatusV4)
+
+    This endpoint will get user's' MFA status.
+
+    Properties:
+        url: /iam/v4/admin/users/me/mfa/status
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelUserMFAStatusResponseV4 (MFA status returned)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = AdminGetMyOwnMFAStatusV4.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -3130,6 +3218,7 @@ async def admin_remove_user_role_v4_async(
 @same_doc_as(AdminSendMyMFAEmailCodeV4)
 def admin_send_my_mfa_email_code_v4(
     action: Optional[str] = None,
+    language_tag: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -3156,6 +3245,8 @@ def admin_send_my_mfa_email_code_v4(
 
         action: (action) OPTIONAL str in form_data
 
+        language_tag: (languageTag) OPTIONAL str in form_data
+
     Responses:
         204: No Content - (code sent)
 
@@ -3173,6 +3264,7 @@ def admin_send_my_mfa_email_code_v4(
     """
     request = AdminSendMyMFAEmailCodeV4.create(
         action=action,
+        language_tag=language_tag,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
@@ -3180,6 +3272,7 @@ def admin_send_my_mfa_email_code_v4(
 @same_doc_as(AdminSendMyMFAEmailCodeV4)
 async def admin_send_my_mfa_email_code_v4_async(
     action: Optional[str] = None,
+    language_tag: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -3206,6 +3299,8 @@ async def admin_send_my_mfa_email_code_v4_async(
 
         action: (action) OPTIONAL str in form_data
 
+        language_tag: (languageTag) OPTIONAL str in form_data
+
     Responses:
         204: No Content - (code sent)
 
@@ -3223,6 +3318,7 @@ async def admin_send_my_mfa_email_code_v4_async(
     """
     request = AdminSendMyMFAEmailCodeV4.create(
         action=action,
+        language_tag=language_tag,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -4115,6 +4211,7 @@ def public_create_user_v4(
     - country: ISO3166-1 alpha-2 two letter, e.g. US.
     - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
     - uniqueDisplayName: required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true, please refer to the rule from /v3/public/inputValidations API.
+    - code: required when mandatoryEmailVerificationEnabled config is true, please refer to the config from /iam/v3/public/namespaces/{namespace}/config/{configKey} [GET] API.
 
     **Not required attributes:**
     - displayName: Please refer to the rule from /v3/public/inputValidations API.
@@ -4140,7 +4237,7 @@ def public_create_user_v4(
     Responses:
         201: Created - AccountCreateUserResponseV4 (Created)
 
-        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age | 10152: verification code not found)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
@@ -4181,6 +4278,7 @@ async def public_create_user_v4_async(
     - country: ISO3166-1 alpha-2 two letter, e.g. US.
     - dateOfBirth: YYYY-MM-DD, e.g. 1990-01-01. valid values are between 1905-01-01 until current date.
     - uniqueDisplayName: required when uniqueDisplayNameEnabled/UNIQUE_DISPLAY_NAME_ENABLED is true, please refer to the rule from /v3/public/inputValidations API.
+    - code: required when mandatoryEmailVerificationEnabled config is true, please refer to the config from /iam/v3/public/namespaces/{namespace}/config/{configKey} [GET] API.
 
     **Not required attributes:**
     - displayName: Please refer to the rule from /v3/public/inputValidations API.
@@ -4206,7 +4304,7 @@ async def public_create_user_v4_async(
     Responses:
         201: Created - AccountCreateUserResponseV4 (Created)
 
-        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age)
+        400: Bad Request - RestErrorResponse (20019: unable to parse request body | 20002: validation error | 10130: user under age | 10152: verification code not found)
 
         403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
 
@@ -4791,7 +4889,7 @@ async def public_enable_backup_codes_v4_async(
 
 @same_doc_as(PublicEnableMyAuthenticatorV4)
 def public_enable_my_authenticator_v4(
-    code: Optional[str] = None,
+    code: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4799,6 +4897,11 @@ def public_enable_my_authenticator_v4(
     """Enable 2FA authenticator (PublicEnableMyAuthenticatorV4)
 
     This endpoint is used to enable 2FA authenticator.
+    ----------
+    Prerequisites:
+    - Generate the secret key/QR code uri by **_/iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/key_**
+    - Consume the secret key/QR code by an authenticator app
+    - Get the code from the authenticator app
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/enable
@@ -4813,7 +4916,7 @@ def public_enable_my_authenticator_v4(
 
         securities: [BEARER_AUTH]
 
-        code: (code) OPTIONAL str in form_data
+        code: (code) REQUIRED str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -4845,7 +4948,7 @@ def public_enable_my_authenticator_v4(
 
 @same_doc_as(PublicEnableMyAuthenticatorV4)
 async def public_enable_my_authenticator_v4_async(
-    code: Optional[str] = None,
+    code: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4853,6 +4956,11 @@ async def public_enable_my_authenticator_v4_async(
     """Enable 2FA authenticator (PublicEnableMyAuthenticatorV4)
 
     This endpoint is used to enable 2FA authenticator.
+    ----------
+    Prerequisites:
+    - Generate the secret key/QR code uri by **_/iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/key_**
+    - Consume the secret key/QR code by an authenticator app
+    - Get the code from the authenticator app
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/enable
@@ -4867,7 +4975,7 @@ async def public_enable_my_authenticator_v4_async(
 
         securities: [BEARER_AUTH]
 
-        code: (code) OPTIONAL str in form_data
+        code: (code) REQUIRED str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -5735,6 +5843,7 @@ async def public_get_my_enabled_factors_v4_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetMyMFAStatusV4)
 def public_get_my_mfa_status_v4(
     namespace: Optional[str] = None,
@@ -5744,6 +5853,8 @@ def public_get_my_mfa_status_v4(
     """Get User MFA Status (PublicGetMyMFAStatusV4)
 
     This endpoint will get user's' MFA status.
+    ---------
+    **Substitute endpoint**: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status [GET]
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status
@@ -5781,6 +5892,7 @@ def public_get_my_mfa_status_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetMyMFAStatusV4)
 async def public_get_my_mfa_status_v4_async(
     namespace: Optional[str] = None,
@@ -5790,6 +5902,8 @@ async def public_get_my_mfa_status_v4_async(
     """Get User MFA Status (PublicGetMyMFAStatusV4)
 
     This endpoint will get user's' MFA status.
+    ---------
+    **Substitute endpoint**: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status [GET]
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status
@@ -5822,6 +5936,100 @@ async def public_get_my_mfa_status_v4_async(
         if error:
             return None, error
     request = PublicGetMyMFAStatusV4.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetMyOwnMFAStatusV4)
+def public_get_my_own_mfa_status_v4(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get My Own MFA Status (PublicGetMyOwnMFAStatusV4)
+
+    This endpoint will get user's' MFA status.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserMFAStatusResponseV4 (MFA status returned)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetMyOwnMFAStatusV4.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetMyOwnMFAStatusV4)
+async def public_get_my_own_mfa_status_v4_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get My Own MFA Status (PublicGetMyOwnMFAStatusV4)
+
+    This endpoint will get user's' MFA status.
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/status
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserMFAStatusResponseV4 (MFA status returned)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (10365: client not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetMyOwnMFAStatusV4.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -6436,6 +6644,7 @@ async def public_remove_trusted_device_v4_async(
 @same_doc_as(PublicSendMyMFAEmailCodeV4)
 def public_send_my_mfa_email_code_v4(
     action: Optional[str] = None,
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6463,6 +6672,8 @@ def public_send_my_mfa_email_code_v4(
 
         action: (action) OPTIONAL str in form_data
 
+        language_tag: (languageTag) OPTIONAL str in form_data
+
         namespace: (namespace) REQUIRED str in path
 
     Responses:
@@ -6486,6 +6697,7 @@ def public_send_my_mfa_email_code_v4(
             return None, error
     request = PublicSendMyMFAEmailCodeV4.create(
         action=action,
+        language_tag=language_tag,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -6494,6 +6706,7 @@ def public_send_my_mfa_email_code_v4(
 @same_doc_as(PublicSendMyMFAEmailCodeV4)
 async def public_send_my_mfa_email_code_v4_async(
     action: Optional[str] = None,
+    language_tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6521,6 +6734,8 @@ async def public_send_my_mfa_email_code_v4_async(
 
         action: (action) OPTIONAL str in form_data
 
+        language_tag: (languageTag) OPTIONAL str in form_data
+
         namespace: (namespace) REQUIRED str in path
 
     Responses:
@@ -6544,6 +6759,7 @@ async def public_send_my_mfa_email_code_v4_async(
             return None, error
     request = PublicSendMyMFAEmailCodeV4.create(
         action=action,
+        language_tag=language_tag,
         namespace=namespace,
     )
     return await run_request_async(

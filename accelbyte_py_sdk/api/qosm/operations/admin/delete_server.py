@@ -42,12 +42,6 @@ class DeleteServer(Operation):
     This endpoint delete a registered QoS service record.
     ```
 
-    Required Permission(s):
-        - ADMIN:QOS:SERVER [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /qosm/admin/servers/{region}
 

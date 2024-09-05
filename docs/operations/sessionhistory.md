@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session History Service Index (1.11.1)
+# AccelByte Gaming Services Session History Service Index (1.12.0)
 
 
 ## Operations
@@ -36,6 +36,7 @@
 ### XRay
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /sessionhistory/v2/admin/namespaces/{namespace}/xray/tickets/bulk | POST | createXrayBulkTicketObservability | `false` | [CreateXrayBulkTicketObservability](../../accelbyte_py_sdk/api/sessionhistory/operations/x_ray/create_xray_bulk_ticket_cacbf6.py) | [create_xray_bulk_ticket_observability](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_x_ray.py) | [accelbyte_py_sdk_cli sessionhistory-create-xray-bulk-ticket-observability](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_create_xray_bulk_ticket_observability.py) |
 | /sessionhistory/v2/admin/namespaces/{namespace}/xray/tickets | POST | createXrayTicketObservability | `false` | [CreateXrayTicketObservability](../../accelbyte_py_sdk/api/sessionhistory/operations/x_ray/create_xray_ticket_obse_a825bd.py) | [create_xray_ticket_observability](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_x_ray.py) | [accelbyte_py_sdk_cli sessionhistory-create-xray-ticket-observability](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_create_xray_ticket_observability.py) |
 | /sessionhistory/v2/admin/namespaces/{namespace}/xray/metrics/acquiring-ds | GET | queryAcquiringDS | `false` | [QueryAcquiringDS](../../accelbyte_py_sdk/api/sessionhistory/operations/x_ray/query_acquiring_ds.py) | [query_acquiring_ds](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_x_ray.py) | [accelbyte_py_sdk_cli sessionhistory-query-acquiring-ds](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_query_acquiring_ds.py) |
 | /sessionhistory/v2/admin/namespaces/{namespace}/xray/metrics/acquiring-ds-wait-time-avg | GET | queryAcquiringDSWaitTimeAvg | `false` | [QueryAcquiringDSWaitTimeAvg](../../accelbyte_py_sdk/api/sessionhistory/operations/x_ray/query_acquiring_ds_wait_a2982b.py) | [query_acquiring_ds_wait_time_avg](../../accelbyte_py_sdk/api/sessionhistory/wrappers/_x_ray.py) | [accelbyte_py_sdk_cli sessionhistory-query-acquiring-ds-wait-time-avg](../../samples/cli/accelbyte_py_sdk_cli/sessionhistory/_query_acquiring_ds_wait_time_avg.py) |
@@ -88,6 +89,8 @@
 | apimodels.TotalPlayerPersession | [ApimodelsTotalPlayerPersession](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_total_player_persession.py) |
 | apimodels.XRayAcquiringDsQueryResponse | [ApimodelsXRayAcquiringDsQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_acquiring_ds_query_response.py) |
 | apimodels.XRayAcquiringDsWaitTimeQueryResponse | [ApimodelsXRayAcquiringDsWaitTimeQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_acquiring_ds_wait_time_query_response.py) |
+| apimodels.XRayBulkTicketObservabilityRequest | [ApimodelsXRayBulkTicketObservabilityRequest](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_bulk_ticket_observability_request.py) |
+| apimodels.XRayBulkTicketObservabilityResponse | [ApimodelsXRayBulkTicketObservabilityResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_bulk_ticket_observability_response.py) |
 | apimodels.XRayCanceledMatchmakingTicketQueryResponse | [ApimodelsXRayCanceledMatchmakingTicketQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_canceled_matchmaking_ticket_query_response.py) |
 | apimodels.XRayCreatedMatchmakingTicketQueryResponse | [ApimodelsXRayCreatedMatchmakingTicketQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_created_matchmaking_ticket_query_response.py) |
 | apimodels.XRayExpiredMatchmakingTicketQueryResponse | [ApimodelsXRayExpiredMatchmakingTicketQueryResponse](../../accelbyte_py_sdk/api/sessionhistory/models/apimodels_x_ray_expired_matchmaking_ticket_query_response.py) |

@@ -45,7 +45,7 @@ def get_payment_callback_config(
 ):
     """Get payment callback configuration (getPaymentCallbackConfig)
 
-    [Not Supported Yet In Starter] Get payment callback configuration.
+    [Not supported yet in AGS Shared Cloud] Get payment callback configuration.
     Other detail info:
 
       * Returns : Payment callback config
@@ -88,7 +88,7 @@ async def get_payment_callback_config_async(
 ):
     """Get payment callback configuration (getPaymentCallbackConfig)
 
-    [Not Supported Yet In Starter] Get payment callback configuration.
+    [Not supported yet in AGS Shared Cloud] Get payment callback configuration.
     Other detail info:
 
       * Returns : Payment callback config
@@ -127,14 +127,14 @@ async def get_payment_callback_config_async(
 
 @same_doc_as(UpdatePaymentCallbackConfig)
 def update_payment_callback_config(
-    body: Optional[PaymentCallbackConfigUpdate] = None,
+    body: PaymentCallbackConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update payment callback configuration (updatePaymentCallbackConfig)
 
-    [Not Supported Yet In Starter] Update payment callback configuration.
+    [Not supported yet in AGS Shared Cloud] Update payment callback configuration.
     Other detail info:
 
       * Returns : Payment callback config
@@ -152,7 +152,7 @@ def update_payment_callback_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentCallbackConfigUpdate in body
+        body: (body) REQUIRED PaymentCallbackConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -172,14 +172,14 @@ def update_payment_callback_config(
 
 @same_doc_as(UpdatePaymentCallbackConfig)
 async def update_payment_callback_config_async(
-    body: Optional[PaymentCallbackConfigUpdate] = None,
+    body: PaymentCallbackConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update payment callback configuration (updatePaymentCallbackConfig)
 
-    [Not Supported Yet In Starter] Update payment callback configuration.
+    [Not supported yet in AGS Shared Cloud] Update payment callback configuration.
     Other detail info:
 
       * Returns : Payment callback config
@@ -197,7 +197,7 @@ async def update_payment_callback_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentCallbackConfigUpdate in body
+        body: (body) REQUIRED PaymentCallbackConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 

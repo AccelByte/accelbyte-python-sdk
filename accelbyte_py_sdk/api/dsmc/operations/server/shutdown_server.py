@@ -42,12 +42,6 @@ class ShutdownServer(Operation):
 
     This endpoint is intended to be called by dedicated server to let DSM know that it is shutting down. Calling this will remove the server and session records from DB.Set 'kill_me' in request to 'true' if the DS cannot shut itself down.
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/shutdown
 

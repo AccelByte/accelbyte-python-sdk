@@ -52,12 +52,6 @@ class CreateImagePatch(Operation):
     }
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/images/patches
 

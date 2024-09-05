@@ -42,9 +42,6 @@ class AdminBulkRemoveItems(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [DELETE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/users/{userId}/inventories/{inventoryId}/items
 

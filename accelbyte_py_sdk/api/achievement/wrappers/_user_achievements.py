@@ -71,12 +71,6 @@ def admin_list_user_achievements(
 
     `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements
 
@@ -163,12 +157,6 @@ async def admin_list_user_achievements_async(
 
     `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements
 
@@ -243,12 +231,6 @@ def admin_reset_achievement(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [DELETE]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/reset
 
@@ -309,12 +291,6 @@ async def admin_reset_achievement_async(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [DELETE]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/reset
 
@@ -372,12 +348,6 @@ def admin_unlock_achievement(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
 
@@ -432,12 +402,6 @@ async def admin_unlock_achievement_async(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
@@ -514,12 +478,6 @@ def public_list_user_achievements(
 
 
     `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements
@@ -607,12 +565,6 @@ async def public_list_user_achievements_async(
 
     `achievedAt` value will return default value: `0001-01-01T00:00:00Z` for user achievement that locked or in progress
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements
 
@@ -682,12 +634,6 @@ def public_unlock_achievement(
     Required permission
     `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock
 
@@ -742,12 +688,6 @@ async def public_unlock_achievement_async(
 
     Required permission
     `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/{achievementCode}/unlock

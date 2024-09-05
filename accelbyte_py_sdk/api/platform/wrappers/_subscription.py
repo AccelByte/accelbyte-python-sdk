@@ -87,9 +87,9 @@ from ..models import TradeNotificationPaymentProviderEnum, TradeNotificationStat
 
 @same_doc_as(CancelSubscription)
 def cancel_subscription(
+    body: CancelRequest,
     subscription_id: str,
     user_id: str,
-    body: Optional[CancelRequest] = None,
     force: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -117,7 +117,7 @@ def cancel_subscription(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CancelRequest in body
+        body: (body) REQUIRED CancelRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -139,9 +139,9 @@ def cancel_subscription(
         if error:
             return None, error
     request = CancelSubscription.create(
+        body=body,
         subscription_id=subscription_id,
         user_id=user_id,
-        body=body,
         force=force,
         namespace=namespace,
     )
@@ -150,9 +150,9 @@ def cancel_subscription(
 
 @same_doc_as(CancelSubscription)
 async def cancel_subscription_async(
+    body: CancelRequest,
     subscription_id: str,
     user_id: str,
-    body: Optional[CancelRequest] = None,
     force: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -180,7 +180,7 @@ async def cancel_subscription_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CancelRequest in body
+        body: (body) REQUIRED CancelRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -202,9 +202,9 @@ async def cancel_subscription_async(
         if error:
             return None, error
     request = CancelSubscription.create(
+        body=body,
         subscription_id=subscription_id,
         user_id=user_id,
-        body=body,
         force=force,
         namespace=namespace,
     )
@@ -763,9 +763,9 @@ async def get_user_subscription_billing_histories_async(
 
 @same_doc_as(GrantDaysToSubscription)
 def grant_days_to_subscription(
+    body: GrantSubscriptionDaysRequest,
     subscription_id: str,
     user_id: str,
-    body: Optional[GrantSubscriptionDaysRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -791,7 +791,7 @@ def grant_days_to_subscription(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL GrantSubscriptionDaysRequest in body
+        body: (body) REQUIRED GrantSubscriptionDaysRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -809,9 +809,9 @@ def grant_days_to_subscription(
         if error:
             return None, error
     request = GrantDaysToSubscription.create(
+        body=body,
         subscription_id=subscription_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -819,9 +819,9 @@ def grant_days_to_subscription(
 
 @same_doc_as(GrantDaysToSubscription)
 async def grant_days_to_subscription_async(
+    body: GrantSubscriptionDaysRequest,
     subscription_id: str,
     user_id: str,
-    body: Optional[GrantSubscriptionDaysRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -847,7 +847,7 @@ async def grant_days_to_subscription_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL GrantSubscriptionDaysRequest in body
+        body: (body) REQUIRED GrantSubscriptionDaysRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -865,9 +865,9 @@ async def grant_days_to_subscription_async(
         if error:
             return None, error
     request = GrantDaysToSubscription.create(
+        body=body,
         subscription_id=subscription_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -877,8 +877,8 @@ async def grant_days_to_subscription_async(
 
 @same_doc_as(PlatformSubscribeSubscription)
 def platform_subscribe_subscription(
+    body: PlatformSubscribeRequest,
     user_id: str,
-    body: Optional[PlatformSubscribeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -903,7 +903,7 @@ def platform_subscribe_subscription(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PlatformSubscribeRequest in body
+        body: (body) REQUIRED PlatformSubscribeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -925,8 +925,8 @@ def platform_subscribe_subscription(
         if error:
             return None, error
     request = PlatformSubscribeSubscription.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -934,8 +934,8 @@ def platform_subscribe_subscription(
 
 @same_doc_as(PlatformSubscribeSubscription)
 async def platform_subscribe_subscription_async(
+    body: PlatformSubscribeRequest,
     user_id: str,
-    body: Optional[PlatformSubscribeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -960,7 +960,7 @@ async def platform_subscribe_subscription_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PlatformSubscribeRequest in body
+        body: (body) REQUIRED PlatformSubscribeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -982,8 +982,8 @@ async def platform_subscribe_subscription_async(
         if error:
             return None, error
     request = PlatformSubscribeSubscription.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -993,9 +993,9 @@ async def platform_subscribe_subscription_async(
 
 @same_doc_as(ProcessUserSubscriptionNotification)
 def process_user_subscription_notification(
+    body: TradeNotification,
     subscription_id: str,
     user_id: str,
-    body: Optional[TradeNotification] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1020,7 +1020,7 @@ def process_user_subscription_notification(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TradeNotification in body
+        body: (body) REQUIRED TradeNotification in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1038,9 +1038,9 @@ def process_user_subscription_notification(
         if error:
             return None, error
     request = ProcessUserSubscriptionNotification.create(
+        body=body,
         subscription_id=subscription_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1048,9 +1048,9 @@ def process_user_subscription_notification(
 
 @same_doc_as(ProcessUserSubscriptionNotification)
 async def process_user_subscription_notification_async(
+    body: TradeNotification,
     subscription_id: str,
     user_id: str,
-    body: Optional[TradeNotification] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1075,7 +1075,7 @@ async def process_user_subscription_notification_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TradeNotification in body
+        body: (body) REQUIRED TradeNotification in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1093,9 +1093,9 @@ async def process_user_subscription_notification_async(
         if error:
             return None, error
     request = ProcessUserSubscriptionNotification.create(
+        body=body,
         subscription_id=subscription_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1105,9 +1105,9 @@ async def process_user_subscription_notification_async(
 
 @same_doc_as(PublicCancelSubscription)
 def public_cancel_subscription(
+    body: CancelRequest,
     subscription_id: str,
     user_id: str,
-    body: Optional[CancelRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1133,7 +1133,7 @@ def public_cancel_subscription(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CancelRequest in body
+        body: (body) REQUIRED CancelRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1153,9 +1153,9 @@ def public_cancel_subscription(
         if error:
             return None, error
     request = PublicCancelSubscription.create(
+        body=body,
         subscription_id=subscription_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1163,9 +1163,9 @@ def public_cancel_subscription(
 
 @same_doc_as(PublicCancelSubscription)
 async def public_cancel_subscription_async(
+    body: CancelRequest,
     subscription_id: str,
     user_id: str,
-    body: Optional[CancelRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1191,7 +1191,7 @@ async def public_cancel_subscription_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CancelRequest in body
+        body: (body) REQUIRED CancelRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1211,9 +1211,9 @@ async def public_cancel_subscription_async(
         if error:
             return None, error
     request = PublicCancelSubscription.create(
+        body=body,
         subscription_id=subscription_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1823,8 +1823,8 @@ async def public_query_user_subscriptions_async(
 
 @same_doc_as(PublicSubscribeSubscription)
 def public_subscribe_subscription(
+    body: SubscribeRequest,
     user_id: str,
-    body: Optional[SubscribeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1854,7 +1854,7 @@ def public_subscribe_subscription(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SubscribeRequest in body
+        body: (body) REQUIRED SubscribeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1878,8 +1878,8 @@ def public_subscribe_subscription(
         if error:
             return None, error
     request = PublicSubscribeSubscription.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1887,8 +1887,8 @@ def public_subscribe_subscription(
 
 @same_doc_as(PublicSubscribeSubscription)
 async def public_subscribe_subscription_async(
+    body: SubscribeRequest,
     user_id: str,
-    body: Optional[SubscribeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1918,7 +1918,7 @@ async def public_subscribe_subscription_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SubscribeRequest in body
+        body: (body) REQUIRED SubscribeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1942,8 +1942,8 @@ async def public_subscribe_subscription_async(
         if error:
             return None, error
     request = PublicSubscribeSubscription.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

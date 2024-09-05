@@ -42,12 +42,6 @@ class ListConfig(Operation):
 
     This endpoint lists all of dedicated servers configs.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/configs
 

@@ -29,12 +29,15 @@ from ....core import Model
 
 from ..models.api_fleet_regional_server_counts import ApiFleetRegionalServerCounts
 from ..models.api_fleet_server_info_response import ApiFleetServerInfoResponse
+from ..models.api_paging_info import ApiPagingInfo
 
 
 class ApiFleetServersResponse(Model):
     """Api fleet servers response (api.FleetServersResponse)
 
     Properties:
+        paging: (paging) REQUIRED ApiPagingInfo
+
         regions: (regions) REQUIRED List[ApiFleetRegionalServerCounts]
 
         servers: (servers) REQUIRED List[ApiFleetServerInfoResponse]
@@ -42,12 +45,17 @@ class ApiFleetServersResponse(Model):
 
     # region fields
 
+    paging: ApiPagingInfo  # REQUIRED
     regions: List[ApiFleetRegionalServerCounts]  # REQUIRED
     servers: List[ApiFleetServerInfoResponse]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
+
+    def with_paging(self, value: ApiPagingInfo) -> ApiFleetServersResponse:
+        self.paging = value
+        return self
 
     def with_regions(
         self, value: List[ApiFleetRegionalServerCounts]
@@ -67,6 +75,10 @@ class ApiFleetServersResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "paging"):
+            result["paging"] = self.paging.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["paging"] = ApiPagingInfo()
         if hasattr(self, "regions"):
             result["regions"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.regions
@@ -88,11 +100,13 @@ class ApiFleetServersResponse(Model):
     @classmethod
     def create(
         cls,
+        paging: ApiPagingInfo,
         regions: List[ApiFleetRegionalServerCounts],
         servers: List[ApiFleetServerInfoResponse],
         **kwargs,
     ) -> ApiFleetServersResponse:
         instance = cls()
+        instance.paging = paging
         instance.regions = regions
         instance.servers = servers
         return instance
@@ -104,6 +118,12 @@ class ApiFleetServersResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "paging" in dict_ and dict_["paging"] is not None:
+            instance.paging = ApiPagingInfo.create_from_dict(
+                dict_["paging"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.paging = ApiPagingInfo()
         if "regions" in dict_ and dict_["regions"] is not None:
             instance.regions = [
                 ApiFleetRegionalServerCounts.create_from_dict(
@@ -165,6 +185,7 @@ class ApiFleetServersResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "paging": "paging",
             "regions": "regions",
             "servers": "servers",
         }
@@ -172,6 +193,7 @@ class ApiFleetServersResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "paging": True,
             "regions": True,
             "servers": True,
         }

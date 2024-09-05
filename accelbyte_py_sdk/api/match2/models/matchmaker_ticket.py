@@ -41,6 +41,8 @@ class MatchmakerTicket(Model):
 
         is_pivot: (IsPivot) REQUIRED bool
 
+        is_single_play: (IsSinglePlay) REQUIRED bool
+
         latencies: (Latencies) REQUIRED Dict[str, int]
 
         match_pool: (MatchPool) REQUIRED str
@@ -65,6 +67,7 @@ class MatchmakerTicket(Model):
     created_at: str  # REQUIRED
     is_active: bool  # REQUIRED
     is_pivot: bool  # REQUIRED
+    is_single_play: bool  # REQUIRED
     latencies: Dict[str, int]  # REQUIRED
     match_pool: str  # REQUIRED
     namespace: str  # REQUIRED
@@ -89,6 +92,10 @@ class MatchmakerTicket(Model):
 
     def with_is_pivot(self, value: bool) -> MatchmakerTicket:
         self.is_pivot = value
+        return self
+
+    def with_is_single_play(self, value: bool) -> MatchmakerTicket:
+        self.is_single_play = value
         return self
 
     def with_latencies(self, value: Dict[str, int]) -> MatchmakerTicket:
@@ -147,6 +154,10 @@ class MatchmakerTicket(Model):
             result["IsPivot"] = bool(self.is_pivot)
         elif include_empty:
             result["IsPivot"] = False
+        if hasattr(self, "is_single_play"):
+            result["IsSinglePlay"] = bool(self.is_single_play)
+        elif include_empty:
+            result["IsSinglePlay"] = False
         if hasattr(self, "latencies"):
             result["Latencies"] = {
                 str(k0): int(v0) for k0, v0 in self.latencies.items()
@@ -205,6 +216,7 @@ class MatchmakerTicket(Model):
         created_at: str,
         is_active: bool,
         is_pivot: bool,
+        is_single_play: bool,
         latencies: Dict[str, int],
         match_pool: str,
         namespace: str,
@@ -220,6 +232,7 @@ class MatchmakerTicket(Model):
         instance.created_at = created_at
         instance.is_active = is_active
         instance.is_pivot = is_pivot
+        instance.is_single_play = is_single_play
         instance.latencies = latencies
         instance.match_pool = match_pool
         instance.namespace = namespace
@@ -250,6 +263,10 @@ class MatchmakerTicket(Model):
             instance.is_pivot = bool(dict_["IsPivot"])
         elif include_empty:
             instance.is_pivot = False
+        if "IsSinglePlay" in dict_ and dict_["IsSinglePlay"] is not None:
+            instance.is_single_play = bool(dict_["IsSinglePlay"])
+        elif include_empty:
+            instance.is_single_play = False
         if "Latencies" in dict_ and dict_["Latencies"] is not None:
             instance.latencies = {
                 str(k0): int(v0) for k0, v0 in dict_["Latencies"].items()
@@ -339,6 +356,7 @@ class MatchmakerTicket(Model):
             "CreatedAt": "created_at",
             "IsActive": "is_active",
             "IsPivot": "is_pivot",
+            "IsSinglePlay": "is_single_play",
             "Latencies": "latencies",
             "MatchPool": "match_pool",
             "Namespace": "namespace",
@@ -356,6 +374,7 @@ class MatchmakerTicket(Model):
             "CreatedAt": True,
             "IsActive": True,
             "IsPivot": True,
+            "IsSinglePlay": True,
             "Latencies": True,
             "MatchPool": True,
             "Namespace": True,

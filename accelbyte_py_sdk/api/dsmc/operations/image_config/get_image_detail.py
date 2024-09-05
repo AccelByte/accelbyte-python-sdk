@@ -42,12 +42,6 @@ class GetImageDetail(Operation):
 
     This endpoint get specific version of dedicated servers images.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/images/versions/{version}
 

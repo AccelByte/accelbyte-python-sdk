@@ -39,9 +39,6 @@ class AdminGetListPersonalDataRequest(Operation):
     Get list personal data requests
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/requests
 

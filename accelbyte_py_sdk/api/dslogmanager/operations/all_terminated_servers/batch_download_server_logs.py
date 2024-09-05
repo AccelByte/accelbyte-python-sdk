@@ -42,12 +42,6 @@ class BatchDownloadServerLogs(Operation):
 
     This endpoint will download dedicated server's log file (.zip).
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dslogmanager/servers/logs/download
 

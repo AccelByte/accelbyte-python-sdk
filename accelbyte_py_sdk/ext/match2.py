@@ -216,6 +216,7 @@ def create_api_match_pool_example() -> ApiMatchPool:
     instance.rule_set = randomize()
     instance.session_template = randomize()
     instance.ticket_expiration_seconds = randomize("int", min_val=1, max_val=1000)
+    instance.best_latency_calculation_method = randomize()
     instance.crossplay_disabled = randomize("bool")
     instance.platform_group_enabled = randomize("bool")
     return instance
@@ -235,6 +236,7 @@ def create_api_match_pool_config_example() -> ApiMatchPoolConfig:
     instance.rule_set = randomize()
     instance.session_template = randomize()
     instance.ticket_expiration_seconds = randomize("int", min_val=1, max_val=1000)
+    instance.best_latency_calculation_method = randomize()
     instance.crossplay_disabled = randomize("bool")
     instance.platform_group_enabled = randomize("bool")
     return instance
@@ -298,7 +300,9 @@ def create_api_patch_namespace_config_request_example() -> (
     ApiPatchNamespaceConfigRequest
 ):
     instance = ApiPatchNamespaceConfigRequest()
+    instance.cross_platform_no_current_platform = randomize("bool")
     instance.extra_platforms = [randomize()]
+    instance.match_any_common = randomize("bool")
     instance.platform_group = {}
     return instance
 
@@ -371,7 +375,9 @@ def create_config_environment_variable_example() -> ConfigEnvironmentVariable:
 def create_configmodels_namespace_config_example() -> ConfigmodelsNamespaceConfig:
     instance = ConfigmodelsNamespaceConfig()
     instance.namespace = randomize("slug")
+    instance.cross_platform_no_current_platform = randomize("bool")
     instance.extra_platforms = [randomize()]
+    instance.match_any_common = randomize("bool")
     instance.platform_group = {}
     return instance
 
@@ -422,6 +428,7 @@ def create_matchmaker_ticket_example() -> MatchmakerTicket:
     instance.created_at = randomize("date")
     instance.is_active = randomize("bool")
     instance.is_pivot = randomize("bool")
+    instance.is_single_play = randomize("bool")
     instance.latencies = {}
     instance.match_pool = randomize()
     instance.namespace = randomize("slug")
@@ -517,7 +524,9 @@ def create_models_user_example() -> ModelsUser:
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
     instance.status = randomize()
+    instance.status_v2 = randomize()
     instance.updated_at = randomize("date")
+    instance.previous_status = randomize()
     return instance
 
 

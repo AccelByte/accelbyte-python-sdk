@@ -76,15 +76,15 @@ from ..models import (
 
 @same_doc_as(ChargePaymentOrder)
 def charge_payment_order(
+    body: PaymentOrderChargeRequest,
     payment_order_no: str,
-    body: Optional[PaymentOrderChargeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Charge payment order without payment flow (chargePaymentOrder)
 
-    [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
+    [Not supported yet in AGS Shared Cloud] [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
     Other detail info:
 
       * Returns : payment order instance
@@ -102,7 +102,7 @@ def charge_payment_order(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderChargeRequest in body
+        body: (body) REQUIRED PaymentOrderChargeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -122,8 +122,8 @@ def charge_payment_order(
         if error:
             return None, error
     request = ChargePaymentOrder.create(
-        payment_order_no=payment_order_no,
         body=body,
+        payment_order_no=payment_order_no,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -131,15 +131,15 @@ def charge_payment_order(
 
 @same_doc_as(ChargePaymentOrder)
 async def charge_payment_order_async(
+    body: PaymentOrderChargeRequest,
     payment_order_no: str,
-    body: Optional[PaymentOrderChargeRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Charge payment order without payment flow (chargePaymentOrder)
 
-    [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
+    [Not supported yet in AGS Shared Cloud] [TEST FACILITY ONLY] Forbidden in live environment. Charge payment order without payment flow for unpaid payment order, usually for test usage to simulate real currency payment process.
     Other detail info:
 
       * Returns : payment order instance
@@ -157,7 +157,7 @@ async def charge_payment_order_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderChargeRequest in body
+        body: (body) REQUIRED PaymentOrderChargeRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -177,8 +177,8 @@ async def charge_payment_order_async(
         if error:
             return None, error
     request = ChargePaymentOrder.create(
-        payment_order_no=payment_order_no,
         body=body,
+        payment_order_no=payment_order_no,
         namespace=namespace,
     )
     return await run_request_async(
@@ -188,15 +188,15 @@ async def charge_payment_order_async(
 
 @same_doc_as(CreateUserPaymentOrder)
 def create_user_payment_order(
+    body: PaymentOrderCreate,
     user_id: str,
-    body: Optional[PaymentOrderCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Create payment order (createUserPaymentOrder)
 
-    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
+    [Not supported yet in AGS Shared Cloud] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
     Other detail info:
 
       * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
@@ -233,7 +233,7 @@ def create_user_payment_order(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderCreate in body
+        body: (body) REQUIRED PaymentOrderCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -257,8 +257,8 @@ def create_user_payment_order(
         if error:
             return None, error
     request = CreateUserPaymentOrder.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -266,15 +266,15 @@ def create_user_payment_order(
 
 @same_doc_as(CreateUserPaymentOrder)
 async def create_user_payment_order_async(
+    body: PaymentOrderCreate,
     user_id: str,
-    body: Optional[PaymentOrderCreate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Create payment order (createUserPaymentOrder)
 
-    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
+    [Not supported yet in AGS Shared Cloud] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
     Other detail info:
 
       * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
@@ -311,7 +311,7 @@ async def create_user_payment_order_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderCreate in body
+        body: (body) REQUIRED PaymentOrderCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -335,8 +335,8 @@ async def create_user_payment_order_async(
         if error:
             return None, error
     request = CreateUserPaymentOrder.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -353,7 +353,7 @@ def get_payment_order(
 ):
     """Get payment order (getPaymentOrder)
 
-    [Not Supported Yet In Starter] Get payment order by paymentOrderNo.
+    [Not supported yet in AGS Shared Cloud] Get payment order by paymentOrderNo.
     Other detail info:
 
       * Returns : payment order instance
@@ -400,7 +400,7 @@ async def get_payment_order_async(
 ):
     """Get payment order (getPaymentOrder)
 
-    [Not Supported Yet In Starter] Get payment order by paymentOrderNo.
+    [Not supported yet in AGS Shared Cloud] Get payment order by paymentOrderNo.
     Other detail info:
 
       * Returns : payment order instance
@@ -449,7 +449,7 @@ def get_payment_order_charge_status(
 ):
     """Get payment order charge status (getPaymentOrderChargeStatus)
 
-    [Not Supported Yet In Starter] Get payment order charge status.
+    [Not supported yet in AGS Shared Cloud] Get payment order charge status.
     Other detail info:
 
       * Returns : payment order charge status
@@ -496,7 +496,7 @@ async def get_payment_order_charge_status_async(
 ):
     """Get payment order charge status (getPaymentOrderChargeStatus)
 
-    [Not Supported Yet In Starter] Get payment order charge status.
+    [Not supported yet in AGS Shared Cloud] Get payment order charge status.
     Other detail info:
 
       * Returns : payment order charge status
@@ -545,7 +545,7 @@ def list_ext_order_no_by_ext_tx_id(
 ):
     """List external order No by external transaction id (listExtOrderNoByExtTxId)
 
-    [Not Supported Yet In Starter] List external order No by external transaction id.
+    [Not supported yet in AGS Shared Cloud] List external order No by external transaction id.
     Other detail info:
 
       * Returns : payment orders
@@ -590,7 +590,7 @@ async def list_ext_order_no_by_ext_tx_id_async(
 ):
     """List external order No by external transaction id (listExtOrderNoByExtTxId)
 
-    [Not Supported Yet In Starter] List external order No by external transaction id.
+    [Not supported yet in AGS Shared Cloud] List external order No by external transaction id.
     Other detail info:
 
       * Returns : payment orders
@@ -647,7 +647,7 @@ def query_payment_notifications(
 ):
     """Query payment notifications (queryPaymentNotifications)
 
-    [Not Supported Yet In Starter] Query payment notifications.
+    [Not supported yet in AGS Shared Cloud] Query payment notifications.
     Other detail info:
 
       * Returns : Payment notifications
@@ -726,7 +726,7 @@ async def query_payment_notifications_async(
 ):
     """Query payment notifications (queryPaymentNotifications)
 
-    [Not Supported Yet In Starter] Query payment notifications.
+    [Not supported yet in AGS Shared Cloud] Query payment notifications.
     Other detail info:
 
       * Returns : Payment notifications
@@ -801,7 +801,7 @@ def query_payment_orders(
 ):
     """Query payment orders (queryPaymentOrders)
 
-    [Not Supported Yet In Starter] Query payment orders.
+    [Not supported yet in AGS Shared Cloud] Query payment orders.
     Other detail info:
 
       * Returns : query payment orders
@@ -862,7 +862,7 @@ async def query_payment_orders_async(
 ):
     """Query payment orders (queryPaymentOrders)
 
-    [Not Supported Yet In Starter] Query payment orders.
+    [Not supported yet in AGS Shared Cloud] Query payment orders.
     Other detail info:
 
       * Returns : query payment orders
@@ -914,16 +914,16 @@ async def query_payment_orders_async(
 
 @same_doc_as(RefundUserPaymentOrder)
 def refund_user_payment_order(
+    body: PaymentOrderRefund,
     payment_order_no: str,
     user_id: str,
-    body: Optional[PaymentOrderRefund] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Refund payment order (refundUserPaymentOrder)
 
-    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
+    [Not supported yet in AGS Shared Cloud] [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund
@@ -938,7 +938,7 @@ def refund_user_payment_order(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderRefund in body
+        body: (body) REQUIRED PaymentOrderRefund in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -960,9 +960,9 @@ def refund_user_payment_order(
         if error:
             return None, error
     request = RefundUserPaymentOrder.create(
+        body=body,
         payment_order_no=payment_order_no,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -970,16 +970,16 @@ def refund_user_payment_order(
 
 @same_doc_as(RefundUserPaymentOrder)
 async def refund_user_payment_order_async(
+    body: PaymentOrderRefund,
     payment_order_no: str,
     user_id: str,
-    body: Optional[PaymentOrderRefund] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Refund payment order (refundUserPaymentOrder)
 
-    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
+    [Not supported yet in AGS Shared Cloud] [SERVICE COMMUNICATION ONLY] This API is used to refund order by paymentOrderNo from justice service.
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/users/{userId}/payment/orders/{paymentOrderNo}/refund
@@ -994,7 +994,7 @@ async def refund_user_payment_order_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderRefund in body
+        body: (body) REQUIRED PaymentOrderRefund in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1016,9 +1016,9 @@ async def refund_user_payment_order_async(
         if error:
             return None, error
     request = RefundUserPaymentOrder.create(
+        body=body,
         payment_order_no=payment_order_no,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1028,15 +1028,15 @@ async def refund_user_payment_order_async(
 
 @same_doc_as(SimulatePaymentOrderNotification)
 def simulate_payment_order_notification(
+    body: PaymentOrderNotifySimulation,
     payment_order_no: str,
-    body: Optional[PaymentOrderNotifySimulation] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Simulate payment notification (simulatePaymentOrderNotification)
 
-    [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
+    [Not supported yet in AGS Shared Cloud] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
     Other detail info:
 
       * Returns : notification process result
@@ -1054,7 +1054,7 @@ def simulate_payment_order_notification(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderNotifySimulation in body
+        body: (body) REQUIRED PaymentOrderNotifySimulation in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1072,8 +1072,8 @@ def simulate_payment_order_notification(
         if error:
             return None, error
     request = SimulatePaymentOrderNotification.create(
-        payment_order_no=payment_order_no,
         body=body,
+        payment_order_no=payment_order_no,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1081,15 +1081,15 @@ def simulate_payment_order_notification(
 
 @same_doc_as(SimulatePaymentOrderNotification)
 async def simulate_payment_order_notification_async(
+    body: PaymentOrderNotifySimulation,
     payment_order_no: str,
-    body: Optional[PaymentOrderNotifySimulation] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Simulate payment notification (simulatePaymentOrderNotification)
 
-    [Not Supported Yet In Starter] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
+    [Not supported yet in AGS Shared Cloud] [TEST FACILITY ONLY] Forbidden in live environment. Simulate payment notification on sandbox payment order, usually for test usage to simulate real currency payment notification.
     Other detail info:
 
       * Returns : notification process result
@@ -1107,7 +1107,7 @@ async def simulate_payment_order_notification_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderNotifySimulation in body
+        body: (body) REQUIRED PaymentOrderNotifySimulation in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1125,8 +1125,8 @@ async def simulate_payment_order_notification_async(
         if error:
             return None, error
     request = SimulatePaymentOrderNotification.create(
-        payment_order_no=payment_order_no,
         body=body,
+        payment_order_no=payment_order_no,
         namespace=namespace,
     )
     return await run_request_async(

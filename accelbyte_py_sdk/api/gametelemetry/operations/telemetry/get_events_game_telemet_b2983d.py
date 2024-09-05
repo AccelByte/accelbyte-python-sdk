@@ -55,6 +55,8 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        device_type: (deviceType) OPTIONAL str in query
+
         end_time: (endTime) OPTIONAL str in query
 
         event_id: (eventId) OPTIONAL str in query
@@ -91,6 +93,7 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    device_type: str  # OPTIONAL in [query]
     end_time: str  # OPTIONAL in [query]
     event_id: str  # OPTIONAL in [query]
     event_name: str  # OPTIONAL in [query]
@@ -151,6 +154,8 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "device_type"):
+            result["deviceType"] = self.device_type
         if hasattr(self, "end_time"):
             result["endTime"] = self.end_time
         if hasattr(self, "event_id"):
@@ -183,6 +188,12 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
         self, value: str
     ) -> GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet:
         self.namespace = value
+        return self
+
+    def with_device_type(
+        self, value: str
+    ) -> GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet:
+        self.device_type = value
         return self
 
     def with_end_time(
@@ -249,6 +260,10 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "device_type") and self.device_type:
+            result["deviceType"] = str(self.device_type)
+        elif include_empty:
+            result["deviceType"] = ""
         if hasattr(self, "end_time") and self.end_time:
             result["endTime"] = str(self.end_time)
         elif include_empty:
@@ -341,6 +356,7 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
     def create(
         cls,
         namespace: str,
+        device_type: Optional[str] = None,
         end_time: Optional[str] = None,
         event_id: Optional[str] = None,
         event_name: Optional[str] = None,
@@ -354,6 +370,8 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
     ) -> GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet:
         instance = cls()
         instance.namespace = namespace
+        if device_type is not None:
+            instance.device_type = device_type
         if end_time is not None:
             instance.end_time = end_time
         if event_id is not None:
@@ -385,6 +403,10 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "deviceType" in dict_ and dict_["deviceType"] is not None:
+            instance.device_type = str(dict_["deviceType"])
+        elif include_empty:
+            instance.device_type = ""
         if "endTime" in dict_ and dict_["endTime"] is not None:
             instance.end_time = str(dict_["endTime"])
         elif include_empty:
@@ -427,6 +449,7 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "deviceType": "device_type",
             "endTime": "end_time",
             "eventId": "event_id",
             "eventName": "event_name",
@@ -442,6 +465,7 @@ class GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "deviceType": False,
             "endTime": False,
             "eventId": False,
             "eventName": False,

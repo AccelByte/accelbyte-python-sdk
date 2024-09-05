@@ -42,12 +42,6 @@ class DeletePort(Operation):
 
     This endpoint delete a dedicated server port config in a namespace
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/configs/ports/{name}
 

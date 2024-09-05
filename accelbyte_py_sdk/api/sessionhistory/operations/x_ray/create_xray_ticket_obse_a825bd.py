@@ -41,12 +41,9 @@ class CreateXrayTicketObservability(Operation):
     Request body details (all attributes are optional):
     Timestamp : timestamp when calling this endpoint
     Action : support one of the following value:
-    1. "started"
-    2. "matchFound"
-    3. "matchNotFound"
-    4. "flexed"
-    5 "canceled"
-    6. "expired"
+    1. "matchFound"
+    2. "matchNotFound"
+    3. "flexed"
     PartyID : ticket Party ID
     MatchID : match ID will be filled only when match found
     Namespace : ticket current namespace

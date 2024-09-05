@@ -36,6 +36,9 @@ class AdminVerifyUserWithoutVerificationCodeV3(Operation):
     """Verify user without verification code (AdminVerifyUserWithoutVerificationCodeV3)
 
     This endpoint force verify user
+    Note:
+    - namespace: only accept publisher/studio namespace
+    - userId: only accept publisher/studio userId
     action code: 10118
 
     Properties:

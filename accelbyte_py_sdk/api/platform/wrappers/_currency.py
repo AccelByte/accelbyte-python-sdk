@@ -53,7 +53,7 @@ from ..models import CurrencySummaryCurrencyTypeEnum
 
 @same_doc_as(CreateCurrency)
 def create_currency(
-    body: Optional[CurrencyCreate] = None,
+    body: CurrencyCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -78,7 +78,7 @@ def create_currency(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CurrencyCreate in body
+        body: (body) REQUIRED CurrencyCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -102,7 +102,7 @@ def create_currency(
 
 @same_doc_as(CreateCurrency)
 async def create_currency_async(
-    body: Optional[CurrencyCreate] = None,
+    body: CurrencyCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -127,7 +127,7 @@ async def create_currency_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CurrencyCreate in body
+        body: (body) REQUIRED CurrencyCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -625,8 +625,8 @@ async def public_list_currencies_async(
 
 @same_doc_as(UpdateCurrency)
 def update_currency(
+    body: CurrencyUpdate,
     currency_code: str,
-    body: Optional[CurrencyUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -651,7 +651,7 @@ def update_currency(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CurrencyUpdate in body
+        body: (body) REQUIRED CurrencyUpdate in body
 
         currency_code: (currencyCode) REQUIRED str in path
 
@@ -669,8 +669,8 @@ def update_currency(
         if error:
             return None, error
     request = UpdateCurrency.create(
-        currency_code=currency_code,
         body=body,
+        currency_code=currency_code,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -678,8 +678,8 @@ def update_currency(
 
 @same_doc_as(UpdateCurrency)
 async def update_currency_async(
+    body: CurrencyUpdate,
     currency_code: str,
-    body: Optional[CurrencyUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -704,7 +704,7 @@ async def update_currency_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CurrencyUpdate in body
+        body: (body) REQUIRED CurrencyUpdate in body
 
         currency_code: (currencyCode) REQUIRED str in path
 
@@ -722,8 +722,8 @@ async def update_currency_async(
         if error:
             return None, error
     request = UpdateCurrency.create(
-        currency_code=currency_code,
         body=body,
+        currency_code=currency_code,
         namespace=namespace,
     )
     return await run_request_async(

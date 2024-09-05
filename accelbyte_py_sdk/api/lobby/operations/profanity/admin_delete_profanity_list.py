@@ -137,7 +137,7 @@ class AdminDeleteProfanityList(Operation):
 
     # region with_x methods
 
-    def with_list_(self, value: str) -> AdminDeleteProfanityList:
+    def with_list(self, value: str) -> AdminDeleteProfanityList:
         self.list_ = value
         return self
 

@@ -36,7 +36,7 @@ from ...models import TestResult
 class TestPayPalConfig(Operation):
     """Test PayPal configuration (testPayPalConfig)
 
-    [Not Supported Yet In Starter] Test PayPal configuration.
+    [Not supported yet in AGS Shared Cloud] Test PayPal configuration.
 
     #### Check List:
 
@@ -65,7 +65,7 @@ class TestPayPalConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PayPalConfig in body
+        body: (body) REQUIRED PayPalConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -82,7 +82,7 @@ class TestPayPalConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PayPalConfig  # OPTIONAL in [body]
+    body: PayPalConfig  # REQUIRED in [body]
     sandbox: bool  # OPTIONAL in [query]
 
     # endregion fields
@@ -208,14 +208,10 @@ class TestPayPalConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        body: Optional[PayPalConfig] = None,
-        sandbox: Optional[bool] = None,
-        **kwargs,
+        cls, body: PayPalConfig, sandbox: Optional[bool] = None, **kwargs
     ) -> TestPayPalConfig:
         instance = cls()
-        if body is not None:
-            instance.body = body
+        instance.body = body
         if sandbox is not None:
             instance.sandbox = sandbox
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -249,7 +245,7 @@ class TestPayPalConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "sandbox": False,
         }
 

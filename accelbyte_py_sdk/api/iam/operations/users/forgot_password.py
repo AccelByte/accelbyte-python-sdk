@@ -45,9 +45,6 @@ class ForgotPassword(Operation):
 
     The password reset code will be sent to the publisher account's email address.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:PASSWORD:USER [UPDATE]
-
     Properties:
         url: /iam/namespaces/{namespace}/users/forgotPassword
 

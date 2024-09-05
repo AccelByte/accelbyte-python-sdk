@@ -42,6 +42,8 @@ class CreateBasePolicyRequestV2(Model):
 
         is_hidden: (isHidden) OPTIONAL bool
 
+        is_hidden_public: (isHiddenPublic) OPTIONAL bool
+
         tags: (tags) OPTIONAL List[str]
 
         type_id: (typeId) OPTIONAL str
@@ -54,6 +56,7 @@ class CreateBasePolicyRequestV2(Model):
     base_policy_name: str  # OPTIONAL
     description: str  # OPTIONAL
     is_hidden: bool  # OPTIONAL
+    is_hidden_public: bool  # OPTIONAL
     tags: List[str]  # OPTIONAL
     type_id: str  # OPTIONAL
 
@@ -79,6 +82,10 @@ class CreateBasePolicyRequestV2(Model):
 
     def with_is_hidden(self, value: bool) -> CreateBasePolicyRequestV2:
         self.is_hidden = value
+        return self
+
+    def with_is_hidden_public(self, value: bool) -> CreateBasePolicyRequestV2:
+        self.is_hidden_public = value
         return self
 
     def with_tags(self, value: List[str]) -> CreateBasePolicyRequestV2:
@@ -115,6 +122,10 @@ class CreateBasePolicyRequestV2(Model):
             result["isHidden"] = bool(self.is_hidden)
         elif include_empty:
             result["isHidden"] = False
+        if hasattr(self, "is_hidden_public"):
+            result["isHiddenPublic"] = bool(self.is_hidden_public)
+        elif include_empty:
+            result["isHiddenPublic"] = False
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -137,6 +148,7 @@ class CreateBasePolicyRequestV2(Model):
         base_policy_name: Optional[str] = None,
         description: Optional[str] = None,
         is_hidden: Optional[bool] = None,
+        is_hidden_public: Optional[bool] = None,
         tags: Optional[List[str]] = None,
         type_id: Optional[str] = None,
         **kwargs,
@@ -152,6 +164,8 @@ class CreateBasePolicyRequestV2(Model):
             instance.description = description
         if is_hidden is not None:
             instance.is_hidden = is_hidden
+        if is_hidden_public is not None:
+            instance.is_hidden_public = is_hidden_public
         if tags is not None:
             instance.tags = tags
         if type_id is not None:
@@ -187,6 +201,10 @@ class CreateBasePolicyRequestV2(Model):
             instance.is_hidden = bool(dict_["isHidden"])
         elif include_empty:
             instance.is_hidden = False
+        if "isHiddenPublic" in dict_ and dict_["isHiddenPublic"] is not None:
+            instance.is_hidden_public = bool(dict_["isHiddenPublic"])
+        elif include_empty:
+            instance.is_hidden_public = False
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -243,6 +261,7 @@ class CreateBasePolicyRequestV2(Model):
             "basePolicyName": "base_policy_name",
             "description": "description",
             "isHidden": "is_hidden",
+            "isHiddenPublic": "is_hidden_public",
             "tags": "tags",
             "typeId": "type_id",
         }
@@ -255,6 +274,7 @@ class CreateBasePolicyRequestV2(Model):
             "basePolicyName": False,
             "description": False,
             "isHidden": False,
+            "isHiddenPublic": False,
             "tags": False,
             "typeId": False,
         }

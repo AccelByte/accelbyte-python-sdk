@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.20.4"
+__version__ = "2.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -32,6 +32,7 @@ from .models_content_likers_response import ModelsContentLikersResponse
 from .models_content_request_v2 import ModelsContentRequestV2
 from .models_content_snapshot import ModelsContentSnapshot
 from .models_content_version_response import ModelsContentVersionResponse
+from .models_copy_content_request import ModelsCopyContentRequest
 from .models_create_content_request import ModelsCreateContentRequest
 from .models_create_content_request_s3 import ModelsCreateContentRequestS3
 from .models_create_content_response import ModelsCreateContentResponse

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.19.0"
+__version__ = "7.21.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -36,6 +36,7 @@ from .admin_get_backup_codes_v4 import AdminGetBackupCodesV4
 from .admin_get_my_backup_codes_v4 import AdminGetMyBackupCodesV4
 from .admin_get_my_enabled_fa_206f77 import AdminGetMyEnabledFactorsV4
 from .admin_get_my_mfa_status_v4 import AdminGetMyMFAStatusV4
+from .admin_get_my_own_mfa_status_v4 import AdminGetMyOwnMFAStatusV4
 from .admin_get_namespace_inv_117873 import AdminGetNamespaceInvitationHistoryV4
 from .admin_get_namespace_use_b6aedf import AdminGetNamespaceUserInvitationHistoryV4
 from .admin_invite_user_new_v4 import AdminInviteUserNewV4
@@ -68,6 +69,7 @@ from .public_get_backup_codes_v4 import PublicGetBackupCodesV4
 from .public_get_my_backup_codes_v4 import PublicGetMyBackupCodesV4
 from .public_get_my_enabled_f_a93b10 import PublicGetMyEnabledFactorsV4
 from .public_get_my_mfa_status_v4 import PublicGetMyMFAStatusV4
+from .public_get_my_own_mfa_s_1e6e1b import PublicGetMyOwnMFAStatusV4
 from .public_get_user_public__2645c4 import PublicGetUserPublicInfoByUserIdV4
 from .public_invite_user_v4 import PublicInviteUserV4
 from .public_list_user_id_by__9f5d47 import PublicListUserIDByPlatformUserIDsV4

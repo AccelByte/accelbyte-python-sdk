@@ -41,12 +41,6 @@ class DownloadServerLogs(Operation):
 
     This endpoint will download dedicated server's log file (.log).
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/download
 

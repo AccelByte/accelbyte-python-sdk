@@ -53,7 +53,7 @@ class MockFulfillIAPItem(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL MockIAPReceipt in body
+        body: (body) REQUIRED MockIAPReceipt in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +78,7 @@ class MockFulfillIAPItem(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: MockIAPReceipt  # OPTIONAL in [body]
+    body: MockIAPReceipt  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -227,17 +227,12 @@ class MockFulfillIAPItem(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        body: Optional[MockIAPReceipt] = None,
-        **kwargs,
+        cls, body: MockIAPReceipt, namespace: str, user_id: str, **kwargs
     ) -> MockFulfillIAPItem:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -274,7 +269,7 @@ class MockFulfillIAPItem(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "userId": True,
         }

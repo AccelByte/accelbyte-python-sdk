@@ -52,9 +52,6 @@ def fleet_server_connection_info(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/connectioninfo
 
@@ -104,9 +101,6 @@ async def fleet_server_connection_info_async(
     """get connection info for a dedicated server (FleetServerConnectionInfo)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:DS:LOGS [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/connectioninfo
@@ -166,9 +160,6 @@ def fleet_server_history(
     """get history records of a dedicated server in a fleet (FleetServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers/history
@@ -248,9 +239,6 @@ async def fleet_server_history_async(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/fleets/{fleetID}/servers/history
 
@@ -324,9 +312,6 @@ def fleet_server_info(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}
 
@@ -376,9 +361,6 @@ async def fleet_server_info_async(
     """get information about a dedicated server (FleetServerInfo)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}
@@ -432,9 +414,6 @@ def server_history(
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/history
 
@@ -484,9 +463,6 @@ async def server_history_async(
     """get history records of a dedicated server (ServerHistory)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [READ]
 
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/servers/{serverID}/history

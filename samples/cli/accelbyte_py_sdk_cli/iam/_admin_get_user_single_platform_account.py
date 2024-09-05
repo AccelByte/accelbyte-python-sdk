@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.command()
 @click.argument("platform_id", type=str)
 @click.argument("user_id", type=str)
+@click.option("--cross_namespace", "cross_namespace", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 def admin_get_user_single_platform_account(
     platform_id: str,
     user_id: str,
+    cross_namespace: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -63,6 +65,7 @@ def admin_get_user_single_platform_account(
     result, error = admin_get_user_single_platform_account_internal(
         platform_id=platform_id,
         user_id=user_id,
+        cross_namespace=cross_namespace,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

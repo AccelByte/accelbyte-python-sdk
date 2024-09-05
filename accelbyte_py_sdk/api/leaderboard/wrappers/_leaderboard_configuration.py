@@ -1093,9 +1093,6 @@ def hard_delete_leaderboard_admin_v1(
 
     Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:HARDDELETE [DELETE]
-
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard
 
@@ -1162,9 +1159,6 @@ async def hard_delete_leaderboard_admin_v1_async(
 
 
     Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:HARDDELETE [DELETE]
 
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard

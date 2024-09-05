@@ -61,9 +61,6 @@ def admin_create_chaining_operations(
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/chainingOperations
 
@@ -130,9 +127,6 @@ async def admin_create_chaining_operations_async(
     replayed : replayed, if true,the response is original successful response. This will not be included in response if client have not pass request id.
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY:ITEM [CREATE]
 
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/chainingOperations

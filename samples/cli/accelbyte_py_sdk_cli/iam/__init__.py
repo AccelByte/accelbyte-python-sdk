@@ -200,6 +200,15 @@ from ._admin_list_user_id_by_platform_user_i_ds_v3 import (
     admin_list_user_id_by_platform_user_i_ds_v3,
 )
 from ._admin_get_user_by_platform_user_idv3 import admin_get_user_by_platform_user_idv3
+from ._admin_get_role_override_config_v3 import admin_get_role_override_config_v3
+from ._admin_update_role_override_config_v3 import admin_update_role_override_config_v3
+from ._admin_get_role_source_v3 import admin_get_role_source_v3
+from ._admin_change_role_override_config_status_v3 import (
+    admin_change_role_override_config_status_v3,
+)
+from ._admin_get_role_namespace_permission_v3 import (
+    admin_get_role_namespace_permission_v3,
+)
 from ._get_admin_users_by_role_id_v3 import get_admin_users_by_role_id_v3
 from ._admin_get_user_by_email_address_v3 import admin_get_user_by_email_address_v3
 from ._admin_bulk_update_users_v3 import admin_bulk_update_users_v3
@@ -475,6 +484,7 @@ from ._admin_disable_my_email_v4 import admin_disable_my_email_v4
 from ._admin_enable_my_email_v4 import admin_enable_my_email_v4
 from ._admin_get_my_enabled_factors_v4 import admin_get_my_enabled_factors_v4
 from ._admin_make_factor_my_default_v4 import admin_make_factor_my_default_v4
+from ._admin_get_my_own_mfa_status_v4 import admin_get_my_own_mfa_status_v4
 from ._admin_get_my_mfa_status_v4 import admin_get_my_mfa_status_v4
 from ._admin_invite_user_v4 import admin_invite_user_v4
 from ._authentication_with_platform_link_v4 import authentication_with_platform_link_v4
@@ -518,6 +528,7 @@ from ._public_disable_my_email_v4 import public_disable_my_email_v4
 from ._public_enable_my_email_v4 import public_enable_my_email_v4
 from ._public_get_my_enabled_factors_v4 import public_get_my_enabled_factors_v4
 from ._public_make_factor_my_default_v4 import public_make_factor_my_default_v4
+from ._public_get_my_own_mfa_status_v4 import public_get_my_own_mfa_status_v4
 from ._public_get_my_mfa_status_v4 import public_get_my_mfa_status_v4
 from ._public_get_user_public_info_by_user_id_v4 import (
     public_get_user_public_info_by_user_id_v4,
@@ -676,6 +687,11 @@ commands = [
     update_sso_platform_credential,
     admin_list_user_id_by_platform_user_i_ds_v3,
     admin_get_user_by_platform_user_idv3,
+    admin_get_role_override_config_v3,
+    admin_update_role_override_config_v3,
+    admin_get_role_source_v3,
+    admin_change_role_override_config_status_v3,
+    admin_get_role_namespace_permission_v3,
     get_admin_users_by_role_id_v3,
     admin_get_user_by_email_address_v3,
     admin_bulk_update_users_v3,
@@ -891,6 +907,7 @@ commands = [
     admin_enable_my_email_v4,
     admin_get_my_enabled_factors_v4,
     admin_make_factor_my_default_v4,
+    admin_get_my_own_mfa_status_v4,
     admin_get_my_mfa_status_v4,
     admin_invite_user_v4,
     authentication_with_platform_link_v4,
@@ -926,6 +943,7 @@ commands = [
     public_enable_my_email_v4,
     public_get_my_enabled_factors_v4,
     public_make_factor_my_default_v4,
+    public_get_my_own_mfa_status_v4,
     public_get_my_mfa_status_v4,
     public_get_user_public_info_by_user_id_v4,
     public_invite_user_v4,

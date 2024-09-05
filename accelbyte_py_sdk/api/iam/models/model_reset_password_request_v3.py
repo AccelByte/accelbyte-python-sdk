@@ -38,6 +38,8 @@ class ModelResetPasswordRequestV3(Model):
 
         new_password: (newPassword) REQUIRED str
 
+        client_id: (clientId) OPTIONAL str
+
         language_tag: (languageTag) OPTIONAL str
     """
 
@@ -46,6 +48,7 @@ class ModelResetPasswordRequestV3(Model):
     code: str  # REQUIRED
     email_address: str  # REQUIRED
     new_password: str  # REQUIRED
+    client_id: str  # OPTIONAL
     language_tag: str  # OPTIONAL
 
     # endregion fields
@@ -62,6 +65,10 @@ class ModelResetPasswordRequestV3(Model):
 
     def with_new_password(self, value: str) -> ModelResetPasswordRequestV3:
         self.new_password = value
+        return self
+
+    def with_client_id(self, value: str) -> ModelResetPasswordRequestV3:
+        self.client_id = value
         return self
 
     def with_language_tag(self, value: str) -> ModelResetPasswordRequestV3:
@@ -86,6 +93,10 @@ class ModelResetPasswordRequestV3(Model):
             result["newPassword"] = str(self.new_password)
         elif include_empty:
             result["newPassword"] = ""
+        if hasattr(self, "client_id"):
+            result["clientId"] = str(self.client_id)
+        elif include_empty:
+            result["clientId"] = ""
         if hasattr(self, "language_tag"):
             result["languageTag"] = str(self.language_tag)
         elif include_empty:
@@ -102,6 +113,7 @@ class ModelResetPasswordRequestV3(Model):
         code: str,
         email_address: str,
         new_password: str,
+        client_id: Optional[str] = None,
         language_tag: Optional[str] = None,
         **kwargs,
     ) -> ModelResetPasswordRequestV3:
@@ -109,6 +121,8 @@ class ModelResetPasswordRequestV3(Model):
         instance.code = code
         instance.email_address = email_address
         instance.new_password = new_password
+        if client_id is not None:
+            instance.client_id = client_id
         if language_tag is not None:
             instance.language_tag = language_tag
         return instance
@@ -132,6 +146,10 @@ class ModelResetPasswordRequestV3(Model):
             instance.new_password = str(dict_["newPassword"])
         elif include_empty:
             instance.new_password = ""
+        if "clientId" in dict_ and dict_["clientId"] is not None:
+            instance.client_id = str(dict_["clientId"])
+        elif include_empty:
+            instance.client_id = ""
         if "languageTag" in dict_ and dict_["languageTag"] is not None:
             instance.language_tag = str(dict_["languageTag"])
         elif include_empty:
@@ -182,6 +200,7 @@ class ModelResetPasswordRequestV3(Model):
             "code": "code",
             "emailAddress": "email_address",
             "newPassword": "new_password",
+            "clientId": "client_id",
             "languageTag": "language_tag",
         }
 
@@ -191,6 +210,7 @@ class ModelResetPasswordRequestV3(Model):
             "code": True,
             "emailAddress": True,
             "newPassword": True,
+            "clientId": False,
             "languageTag": False,
         }
 

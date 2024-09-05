@@ -37,7 +37,7 @@ from ...models import XsollaPaywallConfigRequest
 class UpdateXsollaUIConfig(Operation):
     """Update xsolla UI configuration (updateXsollaUIConfig)
 
-    [Not Supported Yet In Starter] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
+    [Not supported yet in AGS Shared Cloud] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -55,7 +55,7 @@ class UpdateXsollaUIConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XsollaPaywallConfigRequest in body
+        body: (body) REQUIRED XsollaPaywallConfigRequest in body
 
         id_: (id) REQUIRED str in path
 
@@ -74,7 +74,7 @@ class UpdateXsollaUIConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: XsollaPaywallConfigRequest  # OPTIONAL in [body]
+    body: XsollaPaywallConfigRequest  # REQUIRED in [body]
     id_: str  # REQUIRED in [path]
 
     # endregion fields
@@ -142,7 +142,7 @@ class UpdateXsollaUIConfig(Operation):
         self.body = value
         return self
 
-    def with_id_(self, value: str) -> UpdateXsollaUIConfig:
+    def with_id(self, value: str) -> UpdateXsollaUIConfig:
         self.id_ = value
         return self
 
@@ -206,12 +206,11 @@ class UpdateXsollaUIConfig(Operation):
 
     @classmethod
     def create(
-        cls, id_: str, body: Optional[XsollaPaywallConfigRequest] = None, **kwargs
+        cls, body: XsollaPaywallConfigRequest, id_: str, **kwargs
     ) -> UpdateXsollaUIConfig:
         instance = cls()
+        instance.body = body
         instance.id_ = id_
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -243,7 +242,7 @@ class UpdateXsollaUIConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "id": True,
         }
 

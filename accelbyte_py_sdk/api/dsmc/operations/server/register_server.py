@@ -47,12 +47,6 @@ class RegisterServer(Operation):
     Upon successfully calling this endpoint, the dedicated
     server is listed under READY servers.```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/register
 

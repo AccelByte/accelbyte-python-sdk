@@ -152,7 +152,7 @@ class AdminProfanityUpdate(Operation):
         self.body = value
         return self
 
-    def with_id_(self, value: str) -> AdminProfanityUpdate:
+    def with_id(self, value: str) -> AdminProfanityUpdate:
         self.id_ = value
         return self
 

@@ -156,7 +156,7 @@ class UpdateTier(Operation):
         self.body = value
         return self
 
-    def with_id_(self, value: str) -> UpdateTier:
+    def with_id(self, value: str) -> UpdateTier:
         self.id_ = value
         return self
 

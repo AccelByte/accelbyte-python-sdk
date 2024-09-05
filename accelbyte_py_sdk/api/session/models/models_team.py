@@ -36,7 +36,7 @@ class ModelsTeam(Model):
     Properties:
         parties: (parties) OPTIONAL List[ModelsPartyMembers]
 
-        user_i_ds: (UserIDs) OPTIONAL List[str]
+        user_i_ds: (userIDs) OPTIONAL List[str]
     """
 
     # region fields
@@ -69,9 +69,9 @@ class ModelsTeam(Model):
         elif include_empty:
             result["parties"] = []
         if hasattr(self, "user_i_ds"):
-            result["UserIDs"] = [str(i0) for i0 in self.user_i_ds]
+            result["userIDs"] = [str(i0) for i0 in self.user_i_ds]
         elif include_empty:
-            result["UserIDs"] = []
+            result["userIDs"] = []
         return result
 
     # endregion to methods
@@ -104,8 +104,8 @@ class ModelsTeam(Model):
             ]
         elif include_empty:
             instance.parties = []
-        if "UserIDs" in dict_ and dict_["UserIDs"] is not None:
-            instance.user_i_ds = [str(i0) for i0 in dict_["UserIDs"]]
+        if "userIDs" in dict_ and dict_["userIDs"] is not None:
+            instance.user_i_ds = [str(i0) for i0 in dict_["userIDs"]]
         elif include_empty:
             instance.user_i_ds = []
         return instance
@@ -148,14 +148,14 @@ class ModelsTeam(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "parties": "parties",
-            "UserIDs": "user_i_ds",
+            "userIDs": "user_i_ds",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "parties": False,
-            "UserIDs": False,
+            "userIDs": False,
         }
 
     # endregion static methods

@@ -41,12 +41,6 @@ class DeleteNodeByID(Operation):
 
     This endpoint will delete a node by IP
 
-    Required Permission(s):
-        - ADMIN:DSAM:ARTIFACT:NODES [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/artifacts/nodes/ipaddresses
 

@@ -37,6 +37,7 @@ class QueryXrayMatchPool(Operation):
     """Query xray match pool (queryXrayMatchPool)
 
     Query xray match pool.
+    query can using matchpool array with separate ","
 
     Properties:
         url: /sessionhistory/v2/admin/namespaces/{namespace}/xray/match-pools/{poolName}
@@ -53,7 +54,7 @@ class QueryXrayMatchPool(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        pool_name: (poolName) REQUIRED str in path
+        pool_name: (poolName) REQUIRED List[str] in path
 
         end_date: (endDate) REQUIRED str in query
 
@@ -85,7 +86,7 @@ class QueryXrayMatchPool(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
-    pool_name: str  # REQUIRED in [path]
+    pool_name: List[str]  # REQUIRED in [path]
     end_date: str  # REQUIRED in [query]
     start_date: str  # REQUIRED in [query]
 
@@ -159,7 +160,7 @@ class QueryXrayMatchPool(Operation):
         self.namespace = value
         return self
 
-    def with_pool_name(self, value: str) -> QueryXrayMatchPool:
+    def with_pool_name(self, value: List[str]) -> QueryXrayMatchPool:
         self.pool_name = value
         return self
 
@@ -182,9 +183,9 @@ class QueryXrayMatchPool(Operation):
         elif include_empty:
             result["namespace"] = ""
         if hasattr(self, "pool_name") and self.pool_name:
-            result["poolName"] = str(self.pool_name)
+            result["poolName"] = [str(i0) for i0 in self.pool_name]
         elif include_empty:
-            result["poolName"] = ""
+            result["poolName"] = []
         if hasattr(self, "end_date") and self.end_date:
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -256,7 +257,12 @@ class QueryXrayMatchPool(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, pool_name: str, end_date: str, start_date: str, **kwargs
+        cls,
+        namespace: str,
+        pool_name: List[str],
+        end_date: str,
+        start_date: str,
+        **kwargs,
     ) -> QueryXrayMatchPool:
         instance = cls()
         instance.namespace = namespace
@@ -277,9 +283,9 @@ class QueryXrayMatchPool(Operation):
         elif include_empty:
             instance.namespace = ""
         if "poolName" in dict_ and dict_["poolName"] is not None:
-            instance.pool_name = str(dict_["poolName"])
+            instance.pool_name = [str(i0) for i0 in dict_["poolName"]]
         elif include_empty:
-            instance.pool_name = ""
+            instance.pool_name = []
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -306,6 +312,12 @@ class QueryXrayMatchPool(Operation):
             "poolName": True,
             "endDate": True,
             "startDate": True,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "poolName": "csv",  # in path
         }
 
     # endregion static methods

@@ -39,9 +39,6 @@ class AdminGetChallenge(Operation):
 
       * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
-
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}
 

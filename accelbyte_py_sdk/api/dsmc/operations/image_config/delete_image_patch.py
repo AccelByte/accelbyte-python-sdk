@@ -41,12 +41,6 @@ class DeleteImagePatch(Operation):
 
     This endpoint will delete an image patch that specified in the request parameter
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/namespaces/{namespace}/images/patches
 

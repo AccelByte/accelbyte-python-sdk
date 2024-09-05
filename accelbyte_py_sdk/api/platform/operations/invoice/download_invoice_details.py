@@ -68,13 +68,13 @@ class DownloadInvoiceDetails(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        feature: (feature) OPTIONAL str in query
-
-        item_id: (itemId) OPTIONAL str in query
-
-        item_type: (itemType) OPTIONAL Union[str, ItemTypeEnum] in query
-
         end_time: (endTime) REQUIRED str in query
+
+        feature: (feature) REQUIRED str in query
+
+        item_id: (itemId) REQUIRED str in query
+
+        item_type: (itemType) REQUIRED Union[str, ItemTypeEnum] in query
 
         start_time: (startTime) REQUIRED str in query
 
@@ -92,10 +92,10 @@ class DownloadInvoiceDetails(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
-    feature: str  # OPTIONAL in [query]
-    item_id: str  # OPTIONAL in [query]
-    item_type: Union[str, ItemTypeEnum]  # OPTIONAL in [query]
     end_time: str  # REQUIRED in [query]
+    feature: str  # REQUIRED in [query]
+    item_id: str  # REQUIRED in [query]
+    item_type: Union[str, ItemTypeEnum]  # REQUIRED in [query]
     start_time: str  # REQUIRED in [query]
 
     # endregion fields
@@ -148,14 +148,14 @@ class DownloadInvoiceDetails(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "end_time"):
+            result["endTime"] = self.end_time
         if hasattr(self, "feature"):
             result["feature"] = self.feature
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
         if hasattr(self, "item_type"):
             result["itemType"] = self.item_type
-        if hasattr(self, "end_time"):
-            result["endTime"] = self.end_time
         if hasattr(self, "start_time"):
             result["startTime"] = self.start_time
         return result
@@ -172,6 +172,10 @@ class DownloadInvoiceDetails(Operation):
         self.namespace = value
         return self
 
+    def with_end_time(self, value: str) -> DownloadInvoiceDetails:
+        self.end_time = value
+        return self
+
     def with_feature(self, value: str) -> DownloadInvoiceDetails:
         self.feature = value
         return self
@@ -182,10 +186,6 @@ class DownloadInvoiceDetails(Operation):
 
     def with_item_type(self, value: Union[str, ItemTypeEnum]) -> DownloadInvoiceDetails:
         self.item_type = value
-        return self
-
-    def with_end_time(self, value: str) -> DownloadInvoiceDetails:
-        self.end_time = value
         return self
 
     def with_start_time(self, value: str) -> DownloadInvoiceDetails:
@@ -202,6 +202,10 @@ class DownloadInvoiceDetails(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "end_time") and self.end_time:
+            result["endTime"] = str(self.end_time)
+        elif include_empty:
+            result["endTime"] = ""
         if hasattr(self, "feature") and self.feature:
             result["feature"] = str(self.feature)
         elif include_empty:
@@ -214,10 +218,6 @@ class DownloadInvoiceDetails(Operation):
             result["itemType"] = str(self.item_type)
         elif include_empty:
             result["itemType"] = Union[str, ItemTypeEnum]()
-        if hasattr(self, "end_time") and self.end_time:
-            result["endTime"] = str(self.end_time)
-        elif include_empty:
-            result["endTime"] = ""
         if hasattr(self, "start_time") and self.start_time:
             result["startTime"] = str(self.start_time)
         elif include_empty:
@@ -265,22 +265,19 @@ class DownloadInvoiceDetails(Operation):
         cls,
         namespace: str,
         end_time: str,
+        feature: str,
+        item_id: str,
+        item_type: Union[str, ItemTypeEnum],
         start_time: str,
-        feature: Optional[str] = None,
-        item_id: Optional[str] = None,
-        item_type: Optional[Union[str, ItemTypeEnum]] = None,
         **kwargs,
     ) -> DownloadInvoiceDetails:
         instance = cls()
         instance.namespace = namespace
         instance.end_time = end_time
+        instance.feature = feature
+        instance.item_id = item_id
+        instance.item_type = item_type
         instance.start_time = start_time
-        if feature is not None:
-            instance.feature = feature
-        if item_id is not None:
-            instance.item_id = item_id
-        if item_type is not None:
-            instance.item_type = item_type
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -294,6 +291,10 @@ class DownloadInvoiceDetails(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "endTime" in dict_ and dict_["endTime"] is not None:
+            instance.end_time = str(dict_["endTime"])
+        elif include_empty:
+            instance.end_time = ""
         if "feature" in dict_ and dict_["feature"] is not None:
             instance.feature = str(dict_["feature"])
         elif include_empty:
@@ -306,10 +307,6 @@ class DownloadInvoiceDetails(Operation):
             instance.item_type = str(dict_["itemType"])
         elif include_empty:
             instance.item_type = Union[str, ItemTypeEnum]()
-        if "endTime" in dict_ and dict_["endTime"] is not None:
-            instance.end_time = str(dict_["endTime"])
-        elif include_empty:
-            instance.end_time = ""
         if "startTime" in dict_ and dict_["startTime"] is not None:
             instance.start_time = str(dict_["startTime"])
         elif include_empty:
@@ -320,10 +317,10 @@ class DownloadInvoiceDetails(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "endTime": "end_time",
             "feature": "feature",
             "itemId": "item_id",
             "itemType": "item_type",
-            "endTime": "end_time",
             "startTime": "start_time",
         }
 
@@ -331,10 +328,10 @@ class DownloadInvoiceDetails(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "feature": False,
-            "itemId": False,
-            "itemType": False,
             "endTime": True,
+            "feature": True,
+            "itemId": True,
+            "itemType": True,
             "startTime": True,
         }
 

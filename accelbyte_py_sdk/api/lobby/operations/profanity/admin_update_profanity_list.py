@@ -153,7 +153,7 @@ class AdminUpdateProfanityList(Operation):
         self.body = value
         return self
 
-    def with_list_(self, value: str) -> AdminUpdateProfanityList:
+    def with_list(self, value: str) -> AdminUpdateProfanityList:
         self.list_ = value
         return self
 

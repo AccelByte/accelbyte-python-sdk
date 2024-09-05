@@ -46,12 +46,6 @@ class CheckServerArtifact(Operation):
 
     The possible status is : 'Empty', 'In Queue', 'Uploading', 'Ready', 'Failed'
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSAM:ARTIFACT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsartifact/namespaces/{namespace}/servers/{podName}/artifacts/exists
 

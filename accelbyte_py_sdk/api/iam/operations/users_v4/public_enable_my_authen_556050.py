@@ -36,6 +36,11 @@ class PublicEnableMyAuthenticatorV4(Operation):
     """Enable 2FA authenticator (PublicEnableMyAuthenticatorV4)
 
     This endpoint is used to enable 2FA authenticator.
+    ----------
+    Prerequisites:
+    - Generate the secret key/QR code uri by **_/iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/key_**
+    - Consume the secret key/QR code by an authenticator app
+    - Get the code from the authenticator app
 
     Properties:
         url: /iam/v4/public/namespaces/{namespace}/users/me/mfa/authenticator/enable
@@ -50,7 +55,7 @@ class PublicEnableMyAuthenticatorV4(Operation):
 
         securities: [BEARER_AUTH]
 
-        code: (code) OPTIONAL str in form_data
+        code: (code) REQUIRED str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -81,7 +86,7 @@ class PublicEnableMyAuthenticatorV4(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    code: str  # OPTIONAL in [form_data]
+    code: str  # REQUIRED in [form_data]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -232,12 +237,11 @@ class PublicEnableMyAuthenticatorV4(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, code: Optional[str] = None, **kwargs
+        cls, code: str, namespace: str, **kwargs
     ) -> PublicEnableMyAuthenticatorV4:
         instance = cls()
+        instance.code = code
         instance.namespace = namespace
-        if code is not None:
-            instance.code = code
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -267,7 +271,7 @@ class PublicEnableMyAuthenticatorV4(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "code": False,
+            "code": True,
             "namespace": True,
         }
 

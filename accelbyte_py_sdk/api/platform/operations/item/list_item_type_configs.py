@@ -35,7 +35,7 @@ from ...models import ItemTypeConfigInfo
 class ListItemTypeConfigs(Operation):
     """Get all item type configs (listItemTypeConfigs)
 
-    [Not Supported Yet In Starter] This API is used to get all item type configs.
+    [Not supported yet in AGS Shared Cloud] This API is used to get all item type configs.
 
     Other detail info:
 

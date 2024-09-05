@@ -41,6 +41,7 @@ class AdminGetConfigValueV3(Operation):
     **Supported config key:**
     * uniqueDisplayNameEnabled
     * usernameDisabled
+    * mandatoryEmailVerificationEnabled
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/config/{configKey}

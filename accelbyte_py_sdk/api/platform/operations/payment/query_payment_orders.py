@@ -57,7 +57,7 @@ class StatusEnum(StrEnum):
 class QueryPaymentOrders(Operation):
     """Query payment orders (queryPaymentOrders)
 
-    [Not Supported Yet In Starter] Query payment orders.
+    [Not supported yet in AGS Shared Cloud] Query payment orders.
     Other detail info:
 
       * Returns : query payment orders

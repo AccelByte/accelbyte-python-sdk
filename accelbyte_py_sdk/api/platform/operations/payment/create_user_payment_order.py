@@ -38,7 +38,7 @@ from ...models import ValidationErrorEntity
 class CreateUserPaymentOrder(Operation):
     """Create payment order (createUserPaymentOrder)
 
-    [Not Supported Yet In Starter] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
+    [Not supported yet in AGS Shared Cloud] [SERVICE COMMUNICATION ONLY] This API is used to create payment order from justice service. The result contains the payment station url.
     Other detail info:
 
       * It will be forbidden while the user is banned: PAYMENT_INITIATE or ORDER_AND_PAYMENT
@@ -75,7 +75,7 @@ class CreateUserPaymentOrder(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderCreate in body
+        body: (body) REQUIRED PaymentOrderCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -104,7 +104,7 @@ class CreateUserPaymentOrder(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentOrderCreate  # OPTIONAL in [body]
+    body: PaymentOrderCreate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -264,17 +264,12 @@ class CreateUserPaymentOrder(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        body: Optional[PaymentOrderCreate] = None,
-        **kwargs,
+        cls, body: PaymentOrderCreate, namespace: str, user_id: str, **kwargs
     ) -> CreateUserPaymentOrder:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -311,7 +306,7 @@ class CreateUserPaymentOrder(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "userId": True,
         }

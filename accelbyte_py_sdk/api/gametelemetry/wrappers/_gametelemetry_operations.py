@@ -208,6 +208,8 @@ def protected_save_events_game_telemetry_v1_protected_events_post(
 
     - **ClientTimestamp (optional)**: Timestamp of the event captured by the client SDK.
 
+    - **DeviceType (optional)**: The device type of the user.
+
     Properties:
         url: /game-telemetry/v1/protected/events
 
@@ -300,6 +302,8 @@ async def protected_save_events_game_telemetry_v1_protected_events_post_async(
 
 
     - **ClientTimestamp (optional)**: Timestamp of the event captured by the client SDK.
+
+    - **DeviceType (optional)**: The device type of the user.
 
     Properties:
         url: /game-telemetry/v1/protected/events

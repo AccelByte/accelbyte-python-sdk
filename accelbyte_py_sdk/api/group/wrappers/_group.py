@@ -476,9 +476,6 @@ def delete_group_predefined_rule_public_v1(
 
     Action Code: 73309
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}
 
@@ -540,9 +537,6 @@ async def delete_group_predefined_rule_public_v1_async(
     Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73309
-
-    Required Permission(s):
-        - GROUP [UPDATE]
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}
@@ -608,9 +602,6 @@ def delete_group_predefined_rule_public_v2(
 
     Action Code: 73309
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}
 
@@ -672,9 +663,6 @@ async def delete_group_predefined_rule_public_v2_async(
     Delete group predefined rule based on the allowed action. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73309
-
-    Required Permission(s):
-        - GROUP [UPDATE]
 
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}
@@ -739,9 +727,6 @@ def delete_group_public_v1(
 
     Action Code: 73305
 
-    Required Permission(s):
-        - GROUP [DELETE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}
 
@@ -799,9 +784,6 @@ async def delete_group_public_v1_async(
     Delete existing group. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73305
-
-    Required Permission(s):
-        - GROUP [DELETE]
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}
@@ -863,9 +845,6 @@ def delete_group_public_v2(
 
     Action Code: 73305
 
-    Required Permission(s):
-        - GROUP [DELETE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}
 
@@ -923,9 +902,6 @@ async def delete_group_public_v2_async(
     Delete existing group. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73305
-
-    Required Permission(s):
-        - GROUP [DELETE]
 
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}
@@ -1704,9 +1680,6 @@ def update_group_custom_attributes_public_v1(
 
     Action Code: 73311
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/attributes/custom
 
@@ -1768,9 +1741,6 @@ async def update_group_custom_attributes_public_v1_async(
     This endpoint replaces current group custom attributes entirely. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73311
-
-    Required Permission(s):
-        - GROUP [UPDATE]
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/attributes/custom
@@ -1836,9 +1806,6 @@ def update_group_custom_attributes_public_v2(
 
     Action Code: 73311
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/attributes/custom
 
@@ -1900,9 +1867,6 @@ async def update_group_custom_attributes_public_v2_async(
     This endpoint replaces current group custom attributes entirely. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73311
-
-    Required Permission(s):
-        - GROUP [UPDATE]
 
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/attributes/custom
@@ -2215,9 +2179,6 @@ def update_group_predefined_rule_public_v1(
 
     Action Code: 73310
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}
 
@@ -2285,9 +2246,6 @@ async def update_group_predefined_rule_public_v1_async(
     If the rule action is not defined in the group, it will be added immediately to the predefined group rule
 
     Action Code: 73310
-
-    Required Permission(s):
-        - GROUP [UPDATE]
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}
@@ -2359,9 +2317,6 @@ def update_group_predefined_rule_public_v2(
 
     Action Code: 73310
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}
 
@@ -2430,9 +2385,6 @@ async def update_group_predefined_rule_public_v2_async(
 
     Action Code: 73310
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}
 
@@ -2500,9 +2452,6 @@ def update_patch_single_group_public_v1(
 
     Action Code: 73307
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}
 
@@ -2564,9 +2513,6 @@ async def update_patch_single_group_public_v1_async(
     Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
-
-    Required Permission(s):
-        - GROUP [UPDATE]
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}
@@ -2632,9 +2578,6 @@ def update_patch_single_group_public_v2(
 
     Action Code: 73307
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}
 
@@ -2696,9 +2639,6 @@ async def update_patch_single_group_public_v2_async(
     Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
-
-    Required Permission(s):
-        - GROUP [UPDATE]
 
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}
@@ -2764,9 +2704,6 @@ def update_put_single_group_public_v2(
 
     Action Code: 73307
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}
 
@@ -2828,9 +2765,6 @@ async def update_put_single_group_public_v2_async(
     Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
-
-    Required Permission(s):
-        - GROUP [UPDATE]
 
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}
@@ -2896,9 +2830,6 @@ def update_single_group_v1(
 
     Action Code: 73307
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}
 
@@ -2960,9 +2891,6 @@ async def update_single_group_v1_async(
     Update existing group. This endpoint supports partial update. This endpoint will check the group ID of the user based on the access token and compare it with the group ID in path parameter. It will also check the member role of the user based on the access token
 
     Action Code: 73307
-
-    Required Permission(s):
-        - GROUP [UPDATE]
 
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}

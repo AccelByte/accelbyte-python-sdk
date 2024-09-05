@@ -67,12 +67,6 @@ def count_server_detailed_client(
 
     This endpoint counts all of dedicated servers in a region managed by this service.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/count/detailed
 
@@ -122,12 +116,6 @@ async def count_server_detailed_client_async(
     Required scope: social
 
     This endpoint counts all of dedicated servers in a region managed by this service.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/count/detailed
@@ -184,12 +172,6 @@ def deregister_local_server(
 
     Calling this will remove the server records from DB.```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/local/deregister
 
@@ -244,12 +226,6 @@ async def deregister_local_server_async(
     to let DSM know that it is shutting down.
 
     Calling this will remove the server records from DB.```
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/local/deregister
@@ -308,12 +284,6 @@ def get_server_session(
     DS should call this when it first receive player connection,
     to see if it is actually claimed```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/session
 
@@ -370,12 +340,6 @@ async def get_server_session_async(
     to query its session ID.
     DS should call this when it first receive player connection,
     to see if it is actually claimed```
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/session
@@ -436,12 +400,6 @@ def get_server_session_timeout(
     DS will use this session timeout to make sure it regularly make heartbeat
     call to the DSMC, before the session timeout.```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/config/sessiontimeout
 
@@ -498,12 +456,6 @@ async def get_server_session_timeout_async(
     to get the session timeout that will be used for the DS.
     DS will use this session timeout to make sure it regularly make heartbeat
     call to the DSMC, before the session timeout.```
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/config/sessiontimeout
@@ -565,12 +517,6 @@ def list_server_client(
 
     Parameter Offset and Count is Required
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers
 
@@ -630,12 +576,6 @@ async def list_server_client_async(
     This endpoint lists all of dedicated servers in a namespace managed by this service.
 
     Parameter Offset and Count is Required
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers
@@ -702,12 +642,6 @@ def register_local_server(
     Upon successfully calling this endpoint, the dedicated
     server is listed under READY local servers.```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/local/register
 
@@ -769,12 +703,6 @@ async def register_local_server_async(
     Upon successfully calling this endpoint, the dedicated
     server is listed under READY local servers.```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/local/register
 
@@ -835,12 +763,6 @@ def register_server(
     Upon successfully calling this endpoint, the dedicated
     server is listed under READY servers.```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/register
 
@@ -900,12 +822,6 @@ async def register_server_async(
 
     Upon successfully calling this endpoint, the dedicated
     server is listed under READY servers.```
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/register
@@ -971,12 +887,6 @@ def server_heartbeat(
     If the last heartbeat is longer than the session timout, the server.
     will be considered as expired and will be terminated by DSMC.```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/heartbeat
 
@@ -1037,12 +947,6 @@ async def server_heartbeat_async(
     If the last heartbeat is longer than the session timout, the server.
     will be considered as expired and will be terminated by DSMC.```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/heartbeat
 
@@ -1099,12 +1003,6 @@ def shutdown_server(
 
     This endpoint is intended to be called by dedicated server to let DSM know that it is shutting down. Calling this will remove the server and session records from DB.Set 'kill_me' in request to 'true' if the DS cannot shut itself down.
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/shutdown
 
@@ -1158,12 +1056,6 @@ async def shutdown_server_async(
     Required scope: social
 
     This endpoint is intended to be called by dedicated server to let DSM know that it is shutting down. Calling this will remove the server and session records from DB.Set 'kill_me' in request to 'true' if the DS cannot shut itself down.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:SERVER [UPDATE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/shutdown

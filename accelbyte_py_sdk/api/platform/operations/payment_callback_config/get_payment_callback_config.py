@@ -36,7 +36,7 @@ from ...models import PaymentCallbackConfigInfo
 class GetPaymentCallbackConfig(Operation):
     """Get payment callback configuration (getPaymentCallbackConfig)
 
-    [Not Supported Yet In Starter] Get payment callback configuration.
+    [Not supported yet in AGS Shared Cloud] Get payment callback configuration.
     Other detail info:
 
       * Returns : Payment callback config

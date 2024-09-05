@@ -52,6 +52,8 @@ class ApiMatchPool(Model):
 
         ticket_expiration_seconds: (ticket_expiration_seconds) REQUIRED int
 
+        best_latency_calculation_method: (best_latency_calculation_method) OPTIONAL str
+
         crossplay_disabled: (crossplay_disabled) OPTIONAL bool
 
         platform_group_enabled: (platform_group_enabled) OPTIONAL bool
@@ -68,6 +70,7 @@ class ApiMatchPool(Model):
     rule_set: str  # REQUIRED
     session_template: str  # REQUIRED
     ticket_expiration_seconds: int  # REQUIRED
+    best_latency_calculation_method: str  # OPTIONAL
     crossplay_disabled: bool  # OPTIONAL
     platform_group_enabled: bool  # OPTIONAL
 
@@ -111,6 +114,10 @@ class ApiMatchPool(Model):
 
     def with_ticket_expiration_seconds(self, value: int) -> ApiMatchPool:
         self.ticket_expiration_seconds = value
+        return self
+
+    def with_best_latency_calculation_method(self, value: str) -> ApiMatchPool:
+        self.best_latency_calculation_method = value
         return self
 
     def with_crossplay_disabled(self, value: bool) -> ApiMatchPool:
@@ -171,6 +178,12 @@ class ApiMatchPool(Model):
             result["ticket_expiration_seconds"] = int(self.ticket_expiration_seconds)
         elif include_empty:
             result["ticket_expiration_seconds"] = 0
+        if hasattr(self, "best_latency_calculation_method"):
+            result["best_latency_calculation_method"] = str(
+                self.best_latency_calculation_method
+            )
+        elif include_empty:
+            result["best_latency_calculation_method"] = ""
         if hasattr(self, "crossplay_disabled"):
             result["crossplay_disabled"] = bool(self.crossplay_disabled)
         elif include_empty:
@@ -197,6 +210,7 @@ class ApiMatchPool(Model):
         rule_set: str,
         session_template: str,
         ticket_expiration_seconds: int,
+        best_latency_calculation_method: Optional[str] = None,
         crossplay_disabled: Optional[bool] = None,
         platform_group_enabled: Optional[bool] = None,
         **kwargs,
@@ -213,6 +227,8 @@ class ApiMatchPool(Model):
         instance.rule_set = rule_set
         instance.session_template = session_template
         instance.ticket_expiration_seconds = ticket_expiration_seconds
+        if best_latency_calculation_method is not None:
+            instance.best_latency_calculation_method = best_latency_calculation_method
         if crossplay_disabled is not None:
             instance.crossplay_disabled = crossplay_disabled
         if platform_group_enabled is not None:
@@ -285,6 +301,15 @@ class ApiMatchPool(Model):
             instance.ticket_expiration_seconds = int(dict_["ticket_expiration_seconds"])
         elif include_empty:
             instance.ticket_expiration_seconds = 0
+        if (
+            "best_latency_calculation_method" in dict_
+            and dict_["best_latency_calculation_method"] is not None
+        ):
+            instance.best_latency_calculation_method = str(
+                dict_["best_latency_calculation_method"]
+            )
+        elif include_empty:
+            instance.best_latency_calculation_method = ""
         if "crossplay_disabled" in dict_ and dict_["crossplay_disabled"] is not None:
             instance.crossplay_disabled = bool(dict_["crossplay_disabled"])
         elif include_empty:
@@ -344,6 +369,7 @@ class ApiMatchPool(Model):
             "rule_set": "rule_set",
             "session_template": "session_template",
             "ticket_expiration_seconds": "ticket_expiration_seconds",
+            "best_latency_calculation_method": "best_latency_calculation_method",
             "crossplay_disabled": "crossplay_disabled",
             "platform_group_enabled": "platform_group_enabled",
         }
@@ -360,6 +386,7 @@ class ApiMatchPool(Model):
             "rule_set": True,
             "session_template": True,
             "ticket_expiration_seconds": True,
+            "best_latency_calculation_method": False,
             "crossplay_disabled": False,
             "platform_group_enabled": False,
         }

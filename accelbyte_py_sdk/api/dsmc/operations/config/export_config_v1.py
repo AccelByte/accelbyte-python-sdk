@@ -41,12 +41,6 @@ class ExportConfigV1(Operation):
 
     This endpoint export a dedicated servers config in a namespace.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/export
 

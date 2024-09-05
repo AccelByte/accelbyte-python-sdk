@@ -53,9 +53,6 @@ def get_challenges(
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE [READ]
-
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/challenges
 
@@ -115,9 +112,6 @@ async def get_challenges_async(
     """List Challenges (GetChallenges)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/challenges
@@ -181,9 +175,6 @@ def public_get_scheduled_goals(
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE [READ]
-
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/goals
 
@@ -245,9 +236,6 @@ async def public_get_scheduled_goals_async(
     """List Goals of a Challenge (publicGetScheduledGoals)
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/goals

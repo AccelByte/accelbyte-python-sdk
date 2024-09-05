@@ -56,7 +56,7 @@ class UpdateReward(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardUpdate in body
+        body: (body) REQUIRED RewardUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -81,7 +81,7 @@ class UpdateReward(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: RewardUpdate  # OPTIONAL in [body]
+    body: RewardUpdate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     reward_id: str  # REQUIRED in [path]
 
@@ -230,17 +230,12 @@ class UpdateReward(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        reward_id: str,
-        body: Optional[RewardUpdate] = None,
-        **kwargs,
+        cls, body: RewardUpdate, namespace: str, reward_id: str, **kwargs
     ) -> UpdateReward:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.reward_id = reward_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -275,7 +270,7 @@ class UpdateReward(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "rewardId": True,
         }

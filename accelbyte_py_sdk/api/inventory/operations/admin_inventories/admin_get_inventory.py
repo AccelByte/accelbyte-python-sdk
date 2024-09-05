@@ -41,9 +41,6 @@ class AdminGetInventory(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:INVENTORY [READ]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/inventories/{inventoryId}
 

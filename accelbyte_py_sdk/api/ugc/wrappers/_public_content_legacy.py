@@ -84,9 +84,6 @@ def create_content_direct(
 
     All request body are required except preview, tags and customAttributes.
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents
 
@@ -147,9 +144,6 @@ async def create_content_direct_async(
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE].
 
     All request body are required except preview, tags and customAttributes.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents
@@ -219,9 +213,6 @@ def create_content_s3(
 
     NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3
 
@@ -288,9 +279,6 @@ async def create_content_s3_async(
 
     NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [CREATE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3
 
@@ -351,9 +339,6 @@ def delete_content(
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
 
@@ -409,9 +394,6 @@ async def delete_content_async(
     """Delete content (DeleteContent)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -593,9 +575,6 @@ def public_delete_content_by_share_code(
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
 
@@ -651,9 +630,6 @@ async def public_delete_content_by_share_code_async(
     """Delete content by share code (PublicDeleteContentByShareCode)
 
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [DELETE]
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/sharecodes/{shareCode}
@@ -1215,9 +1191,6 @@ def public_get_user_content(
 
     Public user can access without token or if token specified, required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
 
@@ -1273,9 +1246,6 @@ async def public_get_user_content_async(
     """Get user's generated contents (PublicGetUserContent)
 
     Public user can access without token or if token specified, required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ].
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [READ]
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/contents
@@ -1575,9 +1545,6 @@ def public_update_content_by_share_code(
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
 
@@ -1656,9 +1623,6 @@ async def public_update_content_by_share_code_async(
 
 
      NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/sharecodes/{shareCode}
@@ -1965,9 +1929,6 @@ def update_content_direct(
 
     All request body are required except preview, tags and customAttributes.
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
 
@@ -2034,9 +1995,6 @@ async def update_content_direct_async(
     Required permission NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE].
 
     All request body are required except preview, tags and customAttributes.
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}
@@ -2112,9 +2070,6 @@ def update_content_s3(
 
     NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/{contentId}
 
@@ -2186,9 +2141,6 @@ async def update_content_s3_async(
 
 
     NOTE: Preview is Legacy Code, please use Screenshot for better solution to display preview of a content
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT [UPDATE]
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/s3/{contentId}
@@ -2262,9 +2214,6 @@ def update_content_share_code(
     Max length: 7
     Available characters: abcdefhkpqrstuxyz
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/sharecode
 
@@ -2336,9 +2285,6 @@ async def update_content_share_code_async(
     `shareCode` format should follows:
     Max length: 7
     Available characters: abcdefhkpqrstuxyz
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:CONTENT:SHARECODE [UPDATE]
 
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/channels/{channelId}/contents/{contentId}/sharecode

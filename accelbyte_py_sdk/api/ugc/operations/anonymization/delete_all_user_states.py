@@ -37,9 +37,6 @@ class DeleteAllUserStates(Operation):
 
     Required permission NAMESPACE:{namespace}:USER:{userId}" [DELETE]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId} [DELETE]
-
     Properties:
         url: /ugc/v1/public/namespaces/{namespace}/users/{userId}/states
 

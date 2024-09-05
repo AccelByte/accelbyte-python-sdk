@@ -52,9 +52,6 @@ class HardDeleteLeaderboardAdminV1(Operation):
 
     Note: this endpoint only works on development environment, you might want to use archive endpoint instead hard delete.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:LEADERBOARD:HARDDELETE [DELETE]
-
     Properties:
         url: /leaderboard/v1/admin/namespaces/{namespace}/leaderboards/{leaderboardCode}/hard
 

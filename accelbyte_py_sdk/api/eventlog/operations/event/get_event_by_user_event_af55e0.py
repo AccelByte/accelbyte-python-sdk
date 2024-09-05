@@ -38,12 +38,6 @@ class GetEventByUserEventIDAndEventTypeHandler(Operation):
 
     Required permission `NAMESPACE:{namespace}:EVENT [UPDATE]`and scope `analytics`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:EVENT [UPDATE]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/namespaces/{namespace}/users/{userId}/eventType/{eventType}/eventId/{eventId}
 

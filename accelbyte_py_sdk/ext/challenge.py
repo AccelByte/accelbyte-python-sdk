@@ -43,6 +43,10 @@ from ..api.challenge.models import ModelListChallengeResponse
 from ..api.challenge.models import ModelListPeriodsResponse
 from ..api.challenge.models import ModelListUserRewardsResponse
 from ..api.challenge.models import ModelPagination
+from ..api.challenge.models import ModelPluginAsignmentAppConfig
+from ..api.challenge.models import ModelPluginAssignmentCustomConfig
+from ..api.challenge.models import ModelPluginAssignmentRequest
+from ..api.challenge.models import ModelPluginAssignmentResponse
 from ..api.challenge.models import ModelPredicate
 from ..api.challenge.models import ModelRequirement
 from ..api.challenge.models import ModelRequirementProgressionResponse
@@ -249,6 +253,36 @@ def create_model_pagination_example() -> ModelPagination:
     instance.last = randomize()
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_model_plugin_asignment_app_config_example() -> ModelPluginAsignmentAppConfig:
+    instance = ModelPluginAsignmentAppConfig()
+    instance.app_name = randomize()
+    return instance
+
+
+def create_model_plugin_assignment_custom_config_example() -> (
+    ModelPluginAssignmentCustomConfig
+):
+    instance = ModelPluginAssignmentCustomConfig()
+    instance.grpc_server_address = randomize()
+    return instance
+
+
+def create_model_plugin_assignment_request_example() -> ModelPluginAssignmentRequest:
+    instance = ModelPluginAssignmentRequest()
+    instance.extend_type = randomize()
+    instance.app_name = randomize()
+    instance.grpc_server_address = randomize()
+    return instance
+
+
+def create_model_plugin_assignment_response_example() -> ModelPluginAssignmentResponse:
+    instance = ModelPluginAssignmentResponse()
+    instance.extend_type = randomize()
+    instance.app_config = create_model_plugin_asignment_app_config_example()
+    instance.custom_config = create_model_plugin_assignment_custom_config_example()
     return instance
 
 

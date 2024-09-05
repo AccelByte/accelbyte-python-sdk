@@ -46,6 +46,7 @@ from ..models import ApimodelsUpdateGameSessionRequest
 from ..models import ResponseError
 
 from ..operations.game_session import AdminDeleteBulkGameSessions
+from ..operations.game_session import AdminKickGameSessionMember
 from ..operations.game_session import AdminQueryGameSessions
 from ..operations.game_session import AdminQueryGameSessionsByAttributes
 from ..operations.game_session import AdminSetDSReady
@@ -63,6 +64,7 @@ from ..operations.game_session import PatchUpdateGameSession
 from ..operations.game_session import PublicGameSessionCancel
 from ..operations.game_session import PublicGameSessionInvite
 from ..operations.game_session import PublicGameSessionReject
+from ..operations.game_session import PublicKickGameSessionMember
 from ..operations.game_session import PublicPromoteGameSessionLeader
 from ..operations.game_session import PublicQueryGameSessionsByAttributes
 from ..operations.game_session import PublicQueryMyGameSessions
@@ -167,6 +169,120 @@ async def admin_delete_bulk_game_sessions_async(
             return None, error
     request = AdminDeleteBulkGameSessions.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminKickGameSessionMember)
+def admin_kick_game_session_member(
+    member_id: str,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Kick member from a game session. (adminKickGameSessionMember)
+
+    Kick member from a game session.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/kick
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        member_id: (memberId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminKickGameSessionMember.create(
+        member_id=member_id,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminKickGameSessionMember)
+async def admin_kick_game_session_member_async(
+    member_id: str,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Kick member from a game session. (adminKickGameSessionMember)
+
+    Kick member from a game session.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/kick
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        member_id: (memberId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminKickGameSessionMember.create(
+        member_id=member_id,
+        session_id=session_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -576,7 +692,7 @@ def admin_set_ds_ready(
         session_id: (sessionId) REQUIRED str in path
 
     Responses:
-        204: No Content - (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -630,7 +746,7 @@ async def admin_set_ds_ready_async(
         session_id: (sessionId) REQUIRED str in path
 
     Responses:
-        204: No Content - (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -2410,6 +2526,120 @@ async def public_game_session_reject_async(
     )
 
 
+@same_doc_as(PublicKickGameSessionMember)
+def public_kick_game_session_member(
+    member_id: str,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Kick member from a game session, only leader can kick member. (publicKickGameSessionMember)
+
+    Kick member from a game session, only leader can kick member.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/kick
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        member_id: (memberId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicKickGameSessionMember.create(
+        member_id=member_id,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicKickGameSessionMember)
+async def public_kick_game_session_member_async(
+    member_id: str,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Kick member from a game session, only leader can kick member. (publicKickGameSessionMember)
+
+    Kick member from a game session, only leader can kick member.
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/members/{memberId}/kick
+
+        method: DELETE
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        member_id: (memberId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicKickGameSessionMember.create(
+        member_id=member_id,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicPromoteGameSessionLeader)
 def public_promote_game_session_leader(
     body: ApimodelsPromoteLeaderRequest,
@@ -2433,9 +2663,6 @@ def public_promote_game_session_leader(
     - Leader candidate is a member of the game session
     - Leader candidate has a "CONNECTED" or "JOINED" status
     - If the leader candidate is the current leader, then no promotion process is carried out
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSION:GAME [UPDATE]
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leader
@@ -2504,9 +2731,6 @@ async def public_promote_game_session_leader_async(
     - Leader candidate is a member of the game session
     - Leader candidate has a "CONNECTED" or "JOINED" status
     - If the leader candidate is the current leader, then no promotion process is carried out
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:SESSION:GAME [UPDATE]
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/leader

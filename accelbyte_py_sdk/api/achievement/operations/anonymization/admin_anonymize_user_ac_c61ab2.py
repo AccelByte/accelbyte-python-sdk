@@ -43,9 +43,6 @@ class AdminAnonymizeUserAchievement(Operation):
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ANONYMIZATION [DELETE]
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/anonymization/achievements
 

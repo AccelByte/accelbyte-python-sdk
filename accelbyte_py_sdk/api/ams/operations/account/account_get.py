@@ -38,9 +38,6 @@ class AccountGet(Operation):
 
     Required Permission: NAMESPACE:{namespace}:AMS:ACCOUNT [READ]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:AMS:ACCOUNT [READ]
-
     Properties:
         url: /ams/v1/namespaces/{namespace}/account
 

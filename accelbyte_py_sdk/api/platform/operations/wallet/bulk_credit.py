@@ -55,7 +55,7 @@ class BulkCredit(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL List[BulkCreditRequest] in body
+        body: (body) REQUIRED List[BulkCreditRequest] in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -74,7 +74,7 @@ class BulkCredit(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: List[BulkCreditRequest]  # OPTIONAL in [body]
+    body: List[BulkCreditRequest]  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -208,12 +208,11 @@ class BulkCredit(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, body: Optional[List[BulkCreditRequest]] = None, **kwargs
+        cls, body: List[BulkCreditRequest], namespace: str, **kwargs
     ) -> BulkCredit:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -244,7 +243,7 @@ class BulkCredit(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

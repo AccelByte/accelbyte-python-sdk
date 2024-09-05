@@ -50,6 +50,8 @@ from ..api.sessionhistory.models import ApimodelsTotalActiveSession
 from ..api.sessionhistory.models import ApimodelsTotalPlayerPersession
 from ..api.sessionhistory.models import ApimodelsXRayAcquiringDsQueryResponse
 from ..api.sessionhistory.models import ApimodelsXRayAcquiringDsWaitTimeQueryResponse
+from ..api.sessionhistory.models import ApimodelsXRayBulkTicketObservabilityRequest
+from ..api.sessionhistory.models import ApimodelsXRayBulkTicketObservabilityResponse
 from ..api.sessionhistory.models import (
     ApimodelsXRayCanceledMatchmakingTicketQueryResponse,
 )
@@ -363,6 +365,7 @@ def create_apimodels_ticket_observability_history_example() -> (
 def create_apimodels_total_active_session_example() -> ApimodelsTotalActiveSession:
     instance = ApimodelsTotalActiveSession()
     instance.created_at = randomize("date")
+    instance.match_pool = randomize()
     instance.namespace = randomize("slug")
     instance.region = randomize()
     instance.value = randomize("int", min_val=1, max_val=1000)
@@ -394,6 +397,24 @@ def create_apimodels_x_ray_acquiring_ds_wait_time_query_response_example() -> (
 ):
     instance = ApimodelsXRayAcquiringDsWaitTimeQueryResponse()
     instance.data = [create_apimodels_acquiring_ds_wait_time_example()]
+    return instance
+
+
+def create_apimodels_x_ray_bulk_ticket_observability_request_example() -> (
+    ApimodelsXRayBulkTicketObservabilityRequest
+):
+    instance = ApimodelsXRayBulkTicketObservabilityRequest()
+    instance.ticket_observabilities = [
+        create_apimodels_x_ray_ticket_observability_request_example()
+    ]
+    return instance
+
+
+def create_apimodels_x_ray_bulk_ticket_observability_response_example() -> (
+    ApimodelsXRayBulkTicketObservabilityResponse
+):
+    instance = ApimodelsXRayBulkTicketObservabilityResponse()
+    instance.ticket_i_ds = [randomize()]
     return instance
 
 

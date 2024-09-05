@@ -159,7 +159,7 @@ async def check_event_condition_async(
 
 @same_doc_as(CreateReward)
 def create_reward(
-    body: Optional[RewardCreate] = None,
+    body: RewardCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -185,7 +185,7 @@ def create_reward(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardCreate in body
+        body: (body) REQUIRED RewardCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -213,7 +213,7 @@ def create_reward(
 
 @same_doc_as(CreateReward)
 async def create_reward_async(
-    body: Optional[RewardCreate] = None,
+    body: RewardCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -239,7 +239,7 @@ async def create_reward_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardCreate in body
+        body: (body) REQUIRED RewardCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -367,8 +367,8 @@ async def delete_reward_async(
 
 @same_doc_as(DeleteRewardConditionRecord)
 def delete_reward_condition_record(
+    body: DeleteRewardConditionRequest,
     reward_id: str,
-    body: Optional[DeleteRewardConditionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -394,7 +394,7 @@ def delete_reward_condition_record(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL DeleteRewardConditionRequest in body
+        body: (body) REQUIRED DeleteRewardConditionRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -408,8 +408,8 @@ def delete_reward_condition_record(
         if error:
             return None, error
     request = DeleteRewardConditionRecord.create(
-        reward_id=reward_id,
         body=body,
+        reward_id=reward_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -417,8 +417,8 @@ def delete_reward_condition_record(
 
 @same_doc_as(DeleteRewardConditionRecord)
 async def delete_reward_condition_record_async(
+    body: DeleteRewardConditionRequest,
     reward_id: str,
-    body: Optional[DeleteRewardConditionRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -444,7 +444,7 @@ async def delete_reward_condition_record_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL DeleteRewardConditionRequest in body
+        body: (body) REQUIRED DeleteRewardConditionRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -458,8 +458,8 @@ async def delete_reward_condition_record_async(
         if error:
             return None, error
     request = DeleteRewardConditionRecord.create(
-        reward_id=reward_id,
         body=body,
+        reward_id=reward_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1181,8 +1181,8 @@ async def query_rewards_1_async(
 
 @same_doc_as(UpdateReward)
 def update_reward(
+    body: RewardUpdate,
     reward_id: str,
-    body: Optional[RewardUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1208,7 +1208,7 @@ def update_reward(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardUpdate in body
+        body: (body) REQUIRED RewardUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1228,8 +1228,8 @@ def update_reward(
         if error:
             return None, error
     request = UpdateReward.create(
-        reward_id=reward_id,
         body=body,
+        reward_id=reward_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1237,8 +1237,8 @@ def update_reward(
 
 @same_doc_as(UpdateReward)
 async def update_reward_async(
+    body: RewardUpdate,
     reward_id: str,
-    body: Optional[RewardUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1264,7 +1264,7 @@ async def update_reward_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RewardUpdate in body
+        body: (body) REQUIRED RewardUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1284,8 +1284,8 @@ async def update_reward_async(
         if error:
             return None, error
     request = UpdateReward.create(
-        reward_id=reward_id,
         body=body,
+        reward_id=reward_id,
         namespace=namespace,
     )
     return await run_request_async(

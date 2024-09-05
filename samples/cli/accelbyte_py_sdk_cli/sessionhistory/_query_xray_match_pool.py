@@ -64,6 +64,12 @@ def query_xray_match_pool(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if pool_name is not None:
+        try:
+            pool_name_json = json.loads(pool_name)
+            pool_name = [str(i0) for i0 in pool_name_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'poolName'. {str(e)}") from e
     result, error = query_xray_match_pool_internal(
         pool_name=pool_name,
         end_date=end_date,

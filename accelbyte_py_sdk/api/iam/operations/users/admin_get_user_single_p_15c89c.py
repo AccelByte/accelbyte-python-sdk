@@ -94,6 +94,8 @@ class AdminGetUserSinglePlatformAccount(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        cross_namespace: (crossNamespace) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelUserPlatformMetadata (OK)
 
@@ -120,6 +122,7 @@ class AdminGetUserSinglePlatformAccount(Operation):
     namespace: str  # REQUIRED in [path]
     platform_id: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    cross_namespace: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -160,6 +163,7 @@ class AdminGetUserSinglePlatformAccount(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -170,6 +174,12 @@ class AdminGetUserSinglePlatformAccount(Operation):
             result["platformId"] = self.platform_id
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "cross_namespace"):
+            result["crossNamespace"] = self.cross_namespace
         return result
 
     # endregion get_x_params methods
@@ -192,6 +202,10 @@ class AdminGetUserSinglePlatformAccount(Operation):
         self.user_id = value
         return self
 
+    def with_cross_namespace(self, value: bool) -> AdminGetUserSinglePlatformAccount:
+        self.cross_namespace = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -210,6 +224,10 @@ class AdminGetUserSinglePlatformAccount(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "cross_namespace") and self.cross_namespace:
+            result["crossNamespace"] = bool(self.cross_namespace)
+        elif include_empty:
+            result["crossNamespace"] = False
         return result
 
     # endregion to methods
@@ -273,12 +291,19 @@ class AdminGetUserSinglePlatformAccount(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, platform_id: str, user_id: str, **kwargs
+        cls,
+        namespace: str,
+        platform_id: str,
+        user_id: str,
+        cross_namespace: Optional[bool] = None,
+        **kwargs,
     ) -> AdminGetUserSinglePlatformAccount:
         instance = cls()
         instance.namespace = namespace
         instance.platform_id = platform_id
         instance.user_id = user_id
+        if cross_namespace is not None:
+            instance.cross_namespace = cross_namespace
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -300,6 +325,10 @@ class AdminGetUserSinglePlatformAccount(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "crossNamespace" in dict_ and dict_["crossNamespace"] is not None:
+            instance.cross_namespace = bool(dict_["crossNamespace"])
+        elif include_empty:
+            instance.cross_namespace = False
         return instance
 
     @staticmethod
@@ -308,6 +337,7 @@ class AdminGetUserSinglePlatformAccount(Operation):
             "namespace": "namespace",
             "platformId": "platform_id",
             "userId": "user_id",
+            "crossNamespace": "cross_namespace",
         }
 
     @staticmethod
@@ -316,6 +346,7 @@ class AdminGetUserSinglePlatformAccount(Operation):
             "namespace": True,
             "platformId": True,
             "userId": True,
+            "crossNamespace": False,
         }
 
     # endregion static methods

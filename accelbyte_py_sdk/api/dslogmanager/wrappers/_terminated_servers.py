@@ -53,12 +53,6 @@ def check_server_logs(
 
     This endpoint will check log file existence before download file.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists
 
@@ -108,12 +102,6 @@ async def check_server_logs_async(
     Required scope: social
 
     This endpoint will check log file existence before download file.
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/exists
@@ -167,12 +155,6 @@ def download_server_logs(
 
     This endpoint will download dedicated server's log file (.log).
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/download
 
@@ -222,12 +204,6 @@ async def download_server_logs_async(
     Required scope: social
 
     This endpoint will download dedicated server's log file (.log).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dslogmanager/namespaces/{namespace}/servers/{podName}/logs/download
@@ -296,9 +272,6 @@ def list_terminated_servers(
 
     The namespace filter is will give result exact namespace response
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
 
     Properties:
         url: /dslogmanager/namespaces/{namespace}/servers/search
@@ -409,9 +382,6 @@ async def list_terminated_servers_async(
 
     The namespace filter is will give result exact namespace response
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
 
     Properties:
         url: /dslogmanager/namespaces/{namespace}/servers/search

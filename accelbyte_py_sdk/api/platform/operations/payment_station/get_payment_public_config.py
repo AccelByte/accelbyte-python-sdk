@@ -46,7 +46,7 @@ class PaymentProviderEnum(StrEnum):
 class GetPaymentPublicConfig(Operation):
     """Get payment provider public config (getPaymentPublicConfig)
 
-    [Not Supported Yet In Starter] Get payment provider public config, at current only Strip provide public config.
+    [Not supported yet in AGS Shared Cloud] Get payment provider public config, at current only Strip provide public config.
     Other detail info:
 
       * Returns : Public config

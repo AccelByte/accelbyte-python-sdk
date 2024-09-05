@@ -54,7 +54,7 @@ class UpdateRevocationConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL RevocationConfigUpdate in body
+        body: (body) REQUIRED RevocationConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -71,7 +71,7 @@ class UpdateRevocationConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: RevocationConfigUpdate  # OPTIONAL in [body]
+    body: RevocationConfigUpdate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -197,12 +197,11 @@ class UpdateRevocationConfig(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, body: Optional[RevocationConfigUpdate] = None, **kwargs
+        cls, body: RevocationConfigUpdate, namespace: str, **kwargs
     ) -> UpdateRevocationConfig:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -234,7 +233,7 @@ class UpdateRevocationConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

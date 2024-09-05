@@ -33,7 +33,7 @@ from .....core import HttpResponse
 class GetSpecialPaymentProviders(Operation):
     """Get special payment providers (getSpecialPaymentProviders)
 
-    [Not Supported Yet In Starter] Get special payment providers, such as ALIPAY, WXPAY.
+    [Not supported yet in AGS Shared Cloud] Get special payment providers, such as ALIPAY, WXPAY.
     Other detail info:
 
       * Returns : payment provider list

@@ -37,7 +37,7 @@ from ...models import ValidationErrorEntity
 class UpdatePaymentDomainWhitelistConfig(Operation):
     """Update payment domain whitelist config (updatePaymentDomainWhitelistConfig)
 
-    [Not Supported Yet In Starter] Update payment provider config by namespace.
+    [Not supported yet in AGS Shared Cloud] Update payment provider config by namespace.
 
 
 
@@ -68,7 +68,7 @@ class UpdatePaymentDomainWhitelistConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentDomainWhitelistConfigEdit in body
+        body: (body) REQUIRED PaymentDomainWhitelistConfigEdit in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -87,7 +87,7 @@ class UpdatePaymentDomainWhitelistConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentDomainWhitelistConfigEdit  # OPTIONAL in [body]
+    body: PaymentDomainWhitelistConfigEdit  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -222,15 +222,11 @@ class UpdatePaymentDomainWhitelistConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        body: Optional[PaymentDomainWhitelistConfigEdit] = None,
-        **kwargs,
+        cls, body: PaymentDomainWhitelistConfigEdit, namespace: str, **kwargs
     ) -> UpdatePaymentDomainWhitelistConfig:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -262,7 +258,7 @@ class UpdatePaymentDomainWhitelistConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

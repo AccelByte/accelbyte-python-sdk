@@ -37,7 +37,7 @@ from ...models import FulfillmentScriptUpdate
 class UpdateFulfillmentScript(Operation):
     """Update fulfillment script (updateFulfillmentScript)
 
-    [Not Supported Yet In Starter] Update fulfillment script.
+    [Not supported yet in AGS Shared Cloud] Update fulfillment script.
 
     Properties:
         url: /platform/admin/fulfillment/scripts/{id}
@@ -139,7 +139,7 @@ class UpdateFulfillmentScript(Operation):
         self.body = value
         return self
 
-    def with_id_(self, value: str) -> UpdateFulfillmentScript:
+    def with_id(self, value: str) -> UpdateFulfillmentScript:
         self.id_ = value
         return self
 

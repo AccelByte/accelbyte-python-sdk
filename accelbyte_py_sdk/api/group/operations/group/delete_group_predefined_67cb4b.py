@@ -43,9 +43,6 @@ class DeleteGroupPredefinedRulePublicV2(Operation):
 
     Action Code: 73309
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v2/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}
 

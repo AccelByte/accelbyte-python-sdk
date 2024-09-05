@@ -44,9 +44,6 @@ class ListTerminatedServers(Operation):
     The namespace filter is will give result exact namespace response
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
-
     Properties:
         url: /dslogmanager/namespaces/{namespace}/servers/search
 
@@ -238,7 +235,7 @@ class ListTerminatedServers(Operation):
         self.limit = value
         return self
 
-    def with_next_(self, value: str) -> ListTerminatedServers:
+    def with_next(self, value: str) -> ListTerminatedServers:
         self.next_ = value
         return self
 

@@ -55,9 +55,6 @@ class QoSRegionsGet(Operation):
     2. Send the latency list to Matchmaking Service so that player can be matched with other players
     in nearby regions
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [READ]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/qos
 

@@ -152,7 +152,7 @@ class AdminImportProfanityFiltersFromFile(Operation):
         self.body = value
         return self
 
-    def with_list_(self, value: str) -> AdminImportProfanityFiltersFromFile:
+    def with_list(self, value: str) -> AdminImportProfanityFiltersFromFile:
         self.list_ = value
         return self
 

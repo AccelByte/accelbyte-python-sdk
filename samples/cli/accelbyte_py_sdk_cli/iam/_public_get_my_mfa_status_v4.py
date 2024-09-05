@@ -66,4 +66,4 @@ def public_get_my_mfa_status_v4(
 
 
 public_get_my_mfa_status_v4.operation_id = "PublicGetMyMFAStatusV4"
-public_get_my_mfa_status_v4.is_deprecated = False
+public_get_my_mfa_status_v4.is_deprecated = True

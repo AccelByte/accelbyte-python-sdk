@@ -32,6 +32,8 @@ class AdminEntitlementDecrement(Model):
     """A DTO object for admin entitlement decrement. (AdminEntitlementDecrement)
 
     Properties:
+        metadata: (metadata) OPTIONAL Dict[str, Any]
+
         options: (options) OPTIONAL List[str]
 
         platform: (platform) OPTIONAL str
@@ -43,6 +45,7 @@ class AdminEntitlementDecrement(Model):
 
     # region fields
 
+    metadata: Dict[str, Any]  # OPTIONAL
     options: List[str]  # OPTIONAL
     platform: str  # OPTIONAL
     request_id: str  # OPTIONAL
@@ -51,6 +54,10 @@ class AdminEntitlementDecrement(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_metadata(self, value: Dict[str, Any]) -> AdminEntitlementDecrement:
+        self.metadata = value
+        return self
 
     def with_options(self, value: List[str]) -> AdminEntitlementDecrement:
         self.options = value
@@ -74,6 +81,10 @@ class AdminEntitlementDecrement(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): v0 for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
         if hasattr(self, "options"):
             result["options"] = [str(i0) for i0 in self.options]
         elif include_empty:
@@ -99,6 +110,7 @@ class AdminEntitlementDecrement(Model):
     @classmethod
     def create(
         cls,
+        metadata: Optional[Dict[str, Any]] = None,
         options: Optional[List[str]] = None,
         platform: Optional[str] = None,
         request_id: Optional[str] = None,
@@ -106,6 +118,8 @@ class AdminEntitlementDecrement(Model):
         **kwargs,
     ) -> AdminEntitlementDecrement:
         instance = cls()
+        if metadata is not None:
+            instance.metadata = metadata
         if options is not None:
             instance.options = options
         if platform is not None:
@@ -123,6 +137,10 @@ class AdminEntitlementDecrement(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {str(k0): v0 for k0, v0 in dict_["metadata"].items()}
+        elif include_empty:
+            instance.metadata = {}
         if "options" in dict_ and dict_["options"] is not None:
             instance.options = [str(i0) for i0 in dict_["options"]]
         elif include_empty:
@@ -182,6 +200,7 @@ class AdminEntitlementDecrement(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "metadata": "metadata",
             "options": "options",
             "platform": "platform",
             "requestId": "request_id",
@@ -191,6 +210,7 @@ class AdminEntitlementDecrement(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "metadata": False,
             "options": False,
             "platform": False,
             "requestId": False,

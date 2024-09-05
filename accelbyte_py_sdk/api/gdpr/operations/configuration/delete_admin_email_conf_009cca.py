@@ -38,9 +38,6 @@ class DeleteAdminEmailConfiguration(Operation):
     Delete a list of admin email addresses to stop receiving personal data request notification.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
 

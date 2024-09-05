@@ -47,9 +47,6 @@ class UpdateGroupPredefinedRulePublicV1(Operation):
 
     Action Code: 73310
 
-    Required Permission(s):
-        - GROUP [UPDATE]
-
     Properties:
         url: /group/v1/public/namespaces/{namespace}/groups/{groupId}/rules/defined/{allowedAction}
 

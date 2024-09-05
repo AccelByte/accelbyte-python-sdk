@@ -33,23 +33,23 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     public_consume_user_entitlement as public_consume_user_entitlement_internal,
 )
-from accelbyte_py_sdk.api.platform.models import EntitlementDecrement
 from accelbyte_py_sdk.api.platform.models import EntitlementDecrementResult
 from accelbyte_py_sdk.api.platform.models import ErrorEntity
+from accelbyte_py_sdk.api.platform.models import PublicEntitlementDecrement
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("entitlement_id", type=str)
 @click.argument("user_id", type=str)
-@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_consume_user_entitlement(
+    body: str,
     entitlement_id: str,
     user_id: str,
-    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -66,13 +66,13 @@ def public_consume_user_entitlement(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = EntitlementDecrement.create_from_dict(body_json)
+            body = PublicEntitlementDecrement.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = public_consume_user_entitlement_internal(
+        body=body,
         entitlement_id=entitlement_id,
         user_id=user_id,
-        body=body,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

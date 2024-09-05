@@ -258,6 +258,8 @@ def delete_match_ticket(
 
         404: Not Found - ResponseError (Not Found)
 
+        406: Not Acceptable - ResponseError (Not Acceptable)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
@@ -307,6 +309,8 @@ async def delete_match_ticket_async(
         403: Forbidden - ResponseError (Forbidden)
 
         404: Not Found - ResponseError (Not Found)
+
+        406: Not Acceptable - ResponseError (Not Acceptable)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """

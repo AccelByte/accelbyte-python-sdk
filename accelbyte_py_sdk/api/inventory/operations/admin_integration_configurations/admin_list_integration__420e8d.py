@@ -49,9 +49,6 @@ class AdminListIntegrationConfigurations(Operation):
 
     Permission: ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:INVENTORY:INTEGRATIONCONFIGURATION [READ]
-
     Properties:
         url: /inventory/v1/admin/namespaces/{namespace}/integrationConfigurations
 

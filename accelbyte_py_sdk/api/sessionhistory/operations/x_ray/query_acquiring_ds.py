@@ -53,6 +53,8 @@ class QueryAcquiringDS(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        match_pool: (matchPool) OPTIONAL List[str] in query
+
         end_date: (endDate) REQUIRED str in query
 
         start_date: (startDate) REQUIRED str in query
@@ -83,6 +85,7 @@ class QueryAcquiringDS(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    match_pool: List[str]  # OPTIONAL in [query]
     end_date: str  # REQUIRED in [query]
     start_date: str  # REQUIRED in [query]
 
@@ -136,6 +139,8 @@ class QueryAcquiringDS(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "match_pool"):
+            result["matchPool"] = self.match_pool
         if hasattr(self, "end_date"):
             result["endDate"] = self.end_date
         if hasattr(self, "start_date"):
@@ -152,6 +157,10 @@ class QueryAcquiringDS(Operation):
 
     def with_namespace(self, value: str) -> QueryAcquiringDS:
         self.namespace = value
+        return self
+
+    def with_match_pool(self, value: List[str]) -> QueryAcquiringDS:
+        self.match_pool = value
         return self
 
     def with_end_date(self, value: str) -> QueryAcquiringDS:
@@ -172,6 +181,10 @@ class QueryAcquiringDS(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "match_pool") and self.match_pool:
+            result["matchPool"] = [str(i0) for i0 in self.match_pool]
+        elif include_empty:
+            result["matchPool"] = []
         if hasattr(self, "end_date") and self.end_date:
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -243,12 +256,19 @@ class QueryAcquiringDS(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, end_date: str, start_date: str, **kwargs
+        cls,
+        namespace: str,
+        end_date: str,
+        start_date: str,
+        match_pool: Optional[List[str]] = None,
+        **kwargs,
     ) -> QueryAcquiringDS:
         instance = cls()
         instance.namespace = namespace
         instance.end_date = end_date
         instance.start_date = start_date
+        if match_pool is not None:
+            instance.match_pool = match_pool
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -262,6 +282,10 @@ class QueryAcquiringDS(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "matchPool" in dict_ and dict_["matchPool"] is not None:
+            instance.match_pool = [str(i0) for i0 in dict_["matchPool"]]
+        elif include_empty:
+            instance.match_pool = []
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -276,6 +300,7 @@ class QueryAcquiringDS(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "matchPool": "match_pool",
             "endDate": "end_date",
             "startDate": "start_date",
         }
@@ -284,8 +309,15 @@ class QueryAcquiringDS(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "matchPool": False,
             "endDate": True,
             "startDate": True,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "matchPool": "csv",  # in query
         }
 
     # endregion static methods

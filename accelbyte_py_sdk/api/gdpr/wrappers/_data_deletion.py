@@ -59,9 +59,6 @@ def admin_cancel_user_account_deletion_request(
     Cancel user's account deletion request
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
 
@@ -114,9 +111,6 @@ async def admin_cancel_user_account_deletion_request_async(
 
     Cancel user's account deletion request
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
@@ -176,9 +170,6 @@ def admin_get_list_deletion_data_request(
 
     Retrieve all user's account deletion requests in specified date
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/deletions
@@ -249,9 +240,6 @@ async def admin_get_list_deletion_data_request_async(
     Retrieve all user's account deletion requests in specified date
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/deletions
 
@@ -319,9 +307,6 @@ def admin_get_user_account_deletion_request(
     Retrieve specific user's account deletion request
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
 
@@ -372,9 +357,6 @@ async def admin_get_user_account_deletion_request_async(
 
     Retrieve specific user's account deletion request
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
@@ -429,9 +411,6 @@ def admin_submit_user_account_deletion_request(
     Submit user's account deletion request.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
 
@@ -484,9 +463,6 @@ async def admin_submit_user_account_deletion_request_async(
 
     Submit user's account deletion request.
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/deletions
@@ -620,9 +596,6 @@ def public_cancel_user_account_deletion_request(
     Requires valid user access token
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
 
@@ -674,9 +647,6 @@ async def public_cancel_user_account_deletion_request_async(
     Cancel user's account deletion request
     Requires valid user access token
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
@@ -804,9 +774,6 @@ def public_get_user_account_deletion_status(
     Requires valid user access token
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions/status
 
@@ -856,9 +823,6 @@ async def public_get_user_account_deletion_status_async(
     Retrieve specific user's account deletion status
     Requires valid user access token
     Scope: account
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions/status
@@ -1029,9 +993,6 @@ def public_submit_user_account_deletion_request(
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions
 
@@ -1098,9 +1059,6 @@ async def public_submit_user_account_deletion_request_async(
 
     ### Request Header:
     - **Content-Type: application/x-www-form-urlencoded**
-
-    Required Scope(s):
-        - account
 
     Properties:
         url: /gdpr/public/namespaces/{namespace}/users/{userId}/deletions

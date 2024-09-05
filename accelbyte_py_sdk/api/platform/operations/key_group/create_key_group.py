@@ -56,7 +56,7 @@ class CreateKeyGroup(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL KeyGroupCreate in body
+        body: (body) REQUIRED KeyGroupCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -77,7 +77,7 @@ class CreateKeyGroup(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: KeyGroupCreate  # OPTIONAL in [body]
+    body: KeyGroupCreate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -213,13 +213,10 @@ class CreateKeyGroup(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls, namespace: str, body: Optional[KeyGroupCreate] = None, **kwargs
-    ) -> CreateKeyGroup:
+    def create(cls, body: KeyGroupCreate, namespace: str, **kwargs) -> CreateKeyGroup:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -251,7 +248,7 @@ class CreateKeyGroup(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

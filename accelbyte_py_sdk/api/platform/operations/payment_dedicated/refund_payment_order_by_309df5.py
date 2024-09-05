@@ -38,7 +38,7 @@ from ...models import ValidationErrorEntity
 class RefundPaymentOrderByDedicated(Operation):
     """Refund payment order by dedicated server (refundPaymentOrderByDedicated)
 
-    [Not Supported Yet In Starter]
+    [Not supported yet in AGS Shared Cloud]
 
     This API is used to refund payment order by paymentOrderNo from non justice service. e.g. dedicated server.
 
@@ -196,7 +196,7 @@ class RefundPaymentOrderByDedicated(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentOrderRefund in body
+        body: (body) REQUIRED PaymentOrderRefund in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -225,7 +225,7 @@ class RefundPaymentOrderByDedicated(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentOrderRefund  # OPTIONAL in [body]
+    body: PaymentOrderRefund  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     payment_order_no: str  # REQUIRED in [path]
 
@@ -381,17 +381,12 @@ class RefundPaymentOrderByDedicated(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        payment_order_no: str,
-        body: Optional[PaymentOrderRefund] = None,
-        **kwargs,
+        cls, body: PaymentOrderRefund, namespace: str, payment_order_no: str, **kwargs
     ) -> RefundPaymentOrderByDedicated:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.payment_order_no = payment_order_no
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -428,7 +423,7 @@ class RefundPaymentOrderByDedicated(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "paymentOrderNo": True,
         }

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.16.15"
+__version__ = "3.17.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -59,6 +59,8 @@ from .wrappers import admin_list_environment_variables_async
 # game_session
 from .wrappers import admin_delete_bulk_game_sessions
 from .wrappers import admin_delete_bulk_game_sessions_async
+from .wrappers import admin_kick_game_session_member
+from .wrappers import admin_kick_game_session_member_async
 from .wrappers import admin_query_game_sessions
 from .wrappers import admin_query_game_sessions_async
 from .wrappers import admin_query_game_sessions_by_attributes
@@ -93,6 +95,8 @@ from .wrappers import public_game_session_invite
 from .wrappers import public_game_session_invite_async
 from .wrappers import public_game_session_reject
 from .wrappers import public_game_session_reject_async
+from .wrappers import public_kick_game_session_member
+from .wrappers import public_kick_game_session_member_async
 from .wrappers import public_promote_game_session_leader
 from .wrappers import public_promote_game_session_leader_async
 from .wrappers import public_query_game_sessions_by_attributes
@@ -127,10 +131,32 @@ from .wrappers import admin_get_list_native_session
 from .wrappers import admin_get_list_native_session_async
 
 # operations
+from .wrappers import allocs_handler
+from .wrappers import allocs_handler_async
+from .wrappers import block_handler
+from .wrappers import block_handler_async
+from .wrappers import cmdline_handler
+from .wrappers import cmdline_handler_async
 from .wrappers import get_healthcheck_info
 from .wrappers import get_healthcheck_info_async
 from .wrappers import get_healthcheck_info_v1
 from .wrappers import get_healthcheck_info_v1_async
+from .wrappers import goroutine_handler
+from .wrappers import goroutine_handler_async
+from .wrappers import heap_handler
+from .wrappers import heap_handler_async
+from .wrappers import mutex_handler
+from .wrappers import mutex_handler_async
+from .wrappers import pprof_handler
+from .wrappers import pprof_handler_async
+from .wrappers import profile
+from .wrappers import profile_async
+from .wrappers import symbol_handler
+from .wrappers import symbol_handler_async
+from .wrappers import threadcreate_handler
+from .wrappers import threadcreate_handler_async
+from .wrappers import trace_handler
+from .wrappers import trace_handler_async
 
 # party
 from .wrappers import admin_query_parties

@@ -39,9 +39,6 @@ class AdminGetListDeletionDataRequest(Operation):
     Retrieve all user's account deletion requests in specified date
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/deletions
 

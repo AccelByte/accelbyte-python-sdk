@@ -39,9 +39,6 @@ class PublicGetPastUserProgression(Operation):
 
       * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
-
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index}
 

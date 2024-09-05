@@ -2767,6 +2767,7 @@ async def admin_remove_role_managers_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminRemoveRoleMembersV3)
 def admin_remove_role_members_v3(
     body: ModelRoleMembersRequestV3,
@@ -2779,6 +2780,7 @@ def admin_remove_role_members_v3(
     Admin roles has its members listed in the role.
     Role can only be assigned to other users by the role's manager.
     action code: 10411
+    Deprecate: Suggest to use this: AdminRevokeUserFromRoleV4
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members
@@ -2817,6 +2819,7 @@ def admin_remove_role_members_v3(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminRemoveRoleMembersV3)
 async def admin_remove_role_members_v3_async(
     body: ModelRoleMembersRequestV3,
@@ -2829,6 +2832,7 @@ async def admin_remove_role_members_v3_async(
     Admin roles has its members listed in the role.
     Role can only be assigned to other users by the role's manager.
     action code: 10411
+    Deprecate: Suggest to use this: AdminRevokeUserFromRoleV4
 
     Properties:
         url: /iam/v3/admin/roles/{roleId}/members

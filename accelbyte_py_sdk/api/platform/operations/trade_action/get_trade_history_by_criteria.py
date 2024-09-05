@@ -179,7 +179,7 @@ class GetTradeHistoryByCriteria(Operation):
         self.status = value
         return self
 
-    def with_type_(self, value: str) -> GetTradeHistoryByCriteria:
+    def with_type(self, value: str) -> GetTradeHistoryByCriteria:
         self.type_ = value
         return self
 

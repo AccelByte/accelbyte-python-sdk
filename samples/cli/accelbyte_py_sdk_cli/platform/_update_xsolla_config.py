@@ -39,15 +39,15 @@ from accelbyte_py_sdk.api.platform.models import XsollaConfig
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("id_", type=str)
-@click.option("--body", "body", type=str)
 @click.option("--validate", "validate", type=bool)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_xsolla_config(
+    body: str,
     id_: str,
-    body: Optional[str] = None,
     validate: Optional[bool] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -68,8 +68,8 @@ def update_xsolla_config(
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = update_xsolla_config_internal(
-        id_=id_,
         body=body,
+        id_=id_,
         validate=validate,
         x_additional_headers=x_additional_headers,
     )

@@ -58,7 +58,7 @@ class AdminSetDSReady(Operation):
         session_id: (sessionId) REQUIRED str in path
 
     Responses:
-        204: No Content - (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 
@@ -187,7 +187,7 @@ class AdminSetDSReady(Operation):
     ) -> Tuple[None, Union[None, HttpResponse, ResponseError]]:
         """Parse the given response.
 
-        204: No Content - (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (Bad Request)
 

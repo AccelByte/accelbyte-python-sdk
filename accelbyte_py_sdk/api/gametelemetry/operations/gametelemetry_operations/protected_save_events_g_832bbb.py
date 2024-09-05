@@ -87,6 +87,8 @@ class ProtectedSaveEventsGameTelemetryV1ProtectedEventsPost(Operation):
 
     - **ClientTimestamp (optional)**: Timestamp of the event captured by the client SDK.
 
+    - **DeviceType (optional)**: The device type of the user.
+
     Properties:
         url: /game-telemetry/v1/protected/events
 

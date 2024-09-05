@@ -53,7 +53,7 @@ class DebitUserWalletByCurrencyCode(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL DebitByCurrencyCodeRequest in body
+        body: (body) REQUIRED DebitByCurrencyCodeRequest in body
 
         currency_code: (currencyCode) REQUIRED str in path
 
@@ -80,7 +80,7 @@ class DebitUserWalletByCurrencyCode(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: DebitByCurrencyCodeRequest  # OPTIONAL in [body]
+    body: DebitByCurrencyCodeRequest  # REQUIRED in [body]
     currency_code: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -246,18 +246,17 @@ class DebitUserWalletByCurrencyCode(Operation):
     @classmethod
     def create(
         cls,
+        body: DebitByCurrencyCodeRequest,
         currency_code: str,
         namespace: str,
         user_id: str,
-        body: Optional[DebitByCurrencyCodeRequest] = None,
         **kwargs,
     ) -> DebitUserWalletByCurrencyCode:
         instance = cls()
+        instance.body = body
         instance.currency_code = currency_code
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -299,7 +298,7 @@ class DebitUserWalletByCurrencyCode(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "currencyCode": True,
             "namespace": True,
             "userId": True,

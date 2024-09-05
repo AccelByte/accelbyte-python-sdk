@@ -38,9 +38,6 @@ class GetAdminEmailConfiguration(Operation):
     Get list of admin email address configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/emails/configurations
 

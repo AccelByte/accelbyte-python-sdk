@@ -39,9 +39,6 @@ class ImageMarkForDeletion(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:AMS:IMAGE [DELETE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/images/{imageID}
 

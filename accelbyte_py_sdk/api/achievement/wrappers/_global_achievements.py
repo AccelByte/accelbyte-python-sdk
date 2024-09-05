@@ -59,12 +59,6 @@ def admin_list_global_achievement_contributors(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/global/achievements/{achievementCode}/contributors
 
@@ -125,12 +119,6 @@ async def admin_list_global_achievement_contributors_async(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/global/achievements/{achievementCode}/contributors
@@ -206,12 +194,6 @@ def admin_list_global_achievements(
 
 
     Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/global/achievements
@@ -292,12 +274,6 @@ async def admin_list_global_achievements_async(
 
     Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/global/achievements
 
@@ -369,12 +345,6 @@ def admin_list_user_contributions(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/global/achievements
 
@@ -443,12 +413,6 @@ async def admin_list_user_contributions_async(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/global/achievements
@@ -527,12 +491,6 @@ def claim_global_achievement_reward(
 
     Global achievement should be unlocked to claim the reward. Only contributor of global achievement are eligible for rewards
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/global/achievements/{achievementCode}/claim
 
@@ -596,12 +554,6 @@ async def claim_global_achievement_reward_async(
 
     Global achievement should be unlocked to claim the reward. Only contributor of global achievement are eligible for rewards
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/global/achievements/{achievementCode}/claim
 
@@ -658,12 +610,6 @@ def list_global_achievement_contributors(
 
     Required permission
     `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/global/achievements/{achievementCode}/contributors
@@ -725,12 +671,6 @@ async def list_global_achievement_contributors_async(
 
     Required permission
     `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/global/achievements/{achievementCode}/contributors
@@ -796,12 +736,6 @@ def list_user_contributions(
 
     Required permission
     `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/global/achievements
@@ -871,12 +805,6 @@ async def list_user_contributions_async(
 
     Required permission
     `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
-
-    Required Permission(s):
-        - NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/global/achievements
@@ -959,12 +887,6 @@ def public_list_global_achievements(
 
     Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/global/achievements
 
@@ -1044,12 +966,6 @@ async def public_list_global_achievements_async(
 
     Global achievement status value mean: `status = 1 (in progress)` and `status = 2 (unlocked)`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/global/achievements
 
@@ -1121,12 +1037,6 @@ def reset_global_achievement(
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/global/achievements/{achievementCode}/reset
 
@@ -1180,12 +1090,6 @@ async def reset_global_achievement_async(
 
     Required permission
     `ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]` and scope `social`
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ACHIEVEMENT [DELETE]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /achievement/v1/admin/namespaces/{namespace}/global/achievements/{achievementCode}/reset

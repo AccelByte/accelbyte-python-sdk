@@ -21,6 +21,10 @@ from ._admin_delete_goal import admin_delete_goal
 from ._admin_get_periods import admin_get_periods
 from ._admin_randomize_challenge import admin_randomize_challenge
 from ._admin_delete_tied_challenge import admin_delete_tied_challenge
+from ._admin_get_assignment_plugin import admin_get_assignment_plugin
+from ._admin_update_assignment_plugin import admin_update_assignment_plugin
+from ._admin_create_assignment_plugin import admin_create_assignment_plugin
+from ._admin_delete_assignment_plugin import admin_delete_assignment_plugin
 from ._admin_evaluate_progress import admin_evaluate_progress
 from ._admin_claim_users_rewards import admin_claim_users_rewards
 from ._admin_get_user_rewards import admin_get_user_rewards
@@ -48,6 +52,10 @@ commands = [
     admin_get_periods,
     admin_randomize_challenge,
     admin_delete_tied_challenge,
+    admin_get_assignment_plugin,
+    admin_update_assignment_plugin,
+    admin_create_assignment_plugin,
+    admin_delete_assignment_plugin,
     admin_evaluate_progress,
     admin_claim_users_rewards,
     admin_get_user_rewards,

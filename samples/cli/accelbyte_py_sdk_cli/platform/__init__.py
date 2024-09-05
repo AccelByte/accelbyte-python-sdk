@@ -23,6 +23,8 @@ from ._query_campaigns import query_campaigns
 from ._create_campaign import create_campaign
 from ._get_campaign import get_campaign
 from ._update_campaign import update_campaign
+from ._rename_batch import rename_batch
+from ._query_campaign_batch_names import query_campaign_batch_names
 from ._get_campaign_dynamic import get_campaign_dynamic
 from ._get_catalog_config import get_catalog_config
 from ._update_catalog_config import update_catalog_config
@@ -555,6 +557,8 @@ commands = [
     create_campaign,
     get_campaign,
     update_campaign,
+    rename_batch,
+    query_campaign_batch_names,
     get_campaign_dynamic,
     get_catalog_config,
     update_catalog_config,

@@ -40,8 +40,8 @@ from ..operations.platform import GetXboxEntitlementOwnership
 
 @same_doc_as(GetPsnEntitlementOwnership)
 def get_psn_entitlement_ownership(
+    body: PsnEntitlementOwnershipRequest,
     entitlement_label: str,
-    body: Optional[PsnEntitlementOwnershipRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -63,7 +63,7 @@ def get_psn_entitlement_ownership(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PsnEntitlementOwnershipRequest in body
+        body: (body) REQUIRED PsnEntitlementOwnershipRequest in body
 
         entitlement_label: (entitlementLabel) REQUIRED str in path
 
@@ -77,8 +77,8 @@ def get_psn_entitlement_ownership(
         if error:
             return None, error
     request = GetPsnEntitlementOwnership.create(
-        entitlement_label=entitlement_label,
         body=body,
+        entitlement_label=entitlement_label,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -86,8 +86,8 @@ def get_psn_entitlement_ownership(
 
 @same_doc_as(GetPsnEntitlementOwnership)
 async def get_psn_entitlement_ownership_async(
+    body: PsnEntitlementOwnershipRequest,
     entitlement_label: str,
-    body: Optional[PsnEntitlementOwnershipRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -109,7 +109,7 @@ async def get_psn_entitlement_ownership_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PsnEntitlementOwnershipRequest in body
+        body: (body) REQUIRED PsnEntitlementOwnershipRequest in body
 
         entitlement_label: (entitlementLabel) REQUIRED str in path
 
@@ -123,8 +123,8 @@ async def get_psn_entitlement_ownership_async(
         if error:
             return None, error
     request = GetPsnEntitlementOwnership.create(
-        entitlement_label=entitlement_label,
         body=body,
+        entitlement_label=entitlement_label,
         namespace=namespace,
     )
     return await run_request_async(
@@ -134,8 +134,8 @@ async def get_psn_entitlement_ownership_async(
 
 @same_doc_as(GetXboxEntitlementOwnership)
 def get_xbox_entitlement_ownership(
+    body: XblEntitlementOwnershipRequest,
     product_sku: str,
-    body: Optional[XblEntitlementOwnershipRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -157,7 +157,7 @@ def get_xbox_entitlement_ownership(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XblEntitlementOwnershipRequest in body
+        body: (body) REQUIRED XblEntitlementOwnershipRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -171,8 +171,8 @@ def get_xbox_entitlement_ownership(
         if error:
             return None, error
     request = GetXboxEntitlementOwnership.create(
-        product_sku=product_sku,
         body=body,
+        product_sku=product_sku,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -180,8 +180,8 @@ def get_xbox_entitlement_ownership(
 
 @same_doc_as(GetXboxEntitlementOwnership)
 async def get_xbox_entitlement_ownership_async(
+    body: XblEntitlementOwnershipRequest,
     product_sku: str,
-    body: Optional[XblEntitlementOwnershipRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -203,7 +203,7 @@ async def get_xbox_entitlement_ownership_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XblEntitlementOwnershipRequest in body
+        body: (body) REQUIRED XblEntitlementOwnershipRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -217,8 +217,8 @@ async def get_xbox_entitlement_ownership_async(
         if error:
             return None, error
     request = GetXboxEntitlementOwnership.create(
-        product_sku=product_sku,
         body=body,
+        product_sku=product_sku,
         namespace=namespace,
     )
     return await run_request_async(

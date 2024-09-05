@@ -39,9 +39,6 @@ class AdminUpdatePlatformAccountClosureClient(Operation):
     Update platform account closure client.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client
 

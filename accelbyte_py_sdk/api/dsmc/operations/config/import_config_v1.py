@@ -44,12 +44,6 @@ class ImportConfigV1(Operation):
 
     If there is an existing configuration, the configuration would be replaced.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSM:CONFIG [CREATE]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/admin/v1/namespaces/{namespace}/configs/import
 

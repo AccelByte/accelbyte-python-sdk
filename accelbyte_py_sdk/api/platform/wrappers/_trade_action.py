@@ -42,7 +42,7 @@ from ..models import TradeChainActionHistoryInfoStatusEnum
 
 @same_doc_as(Commit)
 def commit(
-    body: Optional[TradeChainedActionCommitRequest] = None,
+    body: TradeChainedActionCommitRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -87,7 +87,7 @@ def commit(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TradeChainedActionCommitRequest in body
+        body: (body) REQUIRED TradeChainedActionCommitRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -107,7 +107,7 @@ def commit(
 
 @same_doc_as(Commit)
 async def commit_async(
-    body: Optional[TradeChainedActionCommitRequest] = None,
+    body: TradeChainedActionCommitRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -152,7 +152,7 @@ async def commit_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TradeChainedActionCommitRequest in body
+        body: (body) REQUIRED TradeChainedActionCommitRequest in body
 
         namespace: (namespace) REQUIRED str in path
 

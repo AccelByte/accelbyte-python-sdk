@@ -36,7 +36,7 @@ from ...models import ItemTypeConfigInfo
 class GetItemTypeConfig(Operation):
     """Get an item type config (getItemTypeConfig)
 
-    [Not Supported Yet In Starter] This API is used to get an item type config.
+    [Not supported yet in AGS Shared Cloud] This API is used to get an item type config.
 
     Other detail info:
 
@@ -129,7 +129,7 @@ class GetItemTypeConfig(Operation):
 
     # region with_x methods
 
-    def with_id_(self, value: str) -> GetItemTypeConfig:
+    def with_id(self, value: str) -> GetItemTypeConfig:
         self.id_ = value
         return self
 

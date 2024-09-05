@@ -37,7 +37,7 @@ from ...models import PaymentMerchantConfigInfo
 class UpdatePayPalConfig(Operation):
     """Update PayPal config (updatePayPalConfig)
 
-    [Not Supported Yet In Starter] Update PayPal config.
+    [Not supported yet in AGS Shared Cloud] Update PayPal config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -55,7 +55,7 @@ class UpdatePayPalConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PayPalConfig in body
+        body: (body) REQUIRED PayPalConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -78,7 +78,7 @@ class UpdatePayPalConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PayPalConfig  # OPTIONAL in [body]
+    body: PayPalConfig  # REQUIRED in [body]
     id_: str  # REQUIRED in [path]
     sandbox: bool  # OPTIONAL in [query]
     validate: bool  # OPTIONAL in [query]
@@ -157,7 +157,7 @@ class UpdatePayPalConfig(Operation):
         self.body = value
         return self
 
-    def with_id_(self, value: str) -> UpdatePayPalConfig:
+    def with_id(self, value: str) -> UpdatePayPalConfig:
         self.id_ = value
         return self
 
@@ -238,16 +238,15 @@ class UpdatePayPalConfig(Operation):
     @classmethod
     def create(
         cls,
+        body: PayPalConfig,
         id_: str,
-        body: Optional[PayPalConfig] = None,
         sandbox: Optional[bool] = None,
         validate: Optional[bool] = None,
         **kwargs,
     ) -> UpdatePayPalConfig:
         instance = cls()
+        instance.body = body
         instance.id_ = id_
-        if body is not None:
-            instance.body = body
         if sandbox is not None:
             instance.sandbox = sandbox
         if validate is not None:
@@ -293,7 +292,7 @@ class UpdatePayPalConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "id": True,
             "sandbox": False,
             "validate": False,

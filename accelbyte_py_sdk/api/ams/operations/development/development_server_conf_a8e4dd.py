@@ -41,9 +41,6 @@ class DevelopmentServerConfigurationCreate(Operation):
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [CREATE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations
 

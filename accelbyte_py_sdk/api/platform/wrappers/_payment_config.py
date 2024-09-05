@@ -106,13 +106,13 @@ from ..models import (
 
 @same_doc_as(CreatePaymentProviderConfig)
 def create_payment_provider_config(
-    body: Optional[PaymentProviderConfigEdit] = None,
+    body: PaymentProviderConfigEdit,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Create payment provider config (createPaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Create payment provider config.
+    [Not supported yet in AGS Shared Cloud] Create payment provider config.
 
 
 
@@ -151,7 +151,7 @@ def create_payment_provider_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentProviderConfigEdit in body
+        body: (body) REQUIRED PaymentProviderConfigEdit in body
 
     Responses:
         200: OK - PaymentProviderConfigInfo (successful operation)
@@ -170,13 +170,13 @@ def create_payment_provider_config(
 
 @same_doc_as(CreatePaymentProviderConfig)
 async def create_payment_provider_config_async(
-    body: Optional[PaymentProviderConfigEdit] = None,
+    body: PaymentProviderConfigEdit,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Create payment provider config (createPaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Create payment provider config.
+    [Not supported yet in AGS Shared Cloud] Create payment provider config.
 
 
 
@@ -215,7 +215,7 @@ async def create_payment_provider_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentProviderConfigEdit in body
+        body: (body) REQUIRED PaymentProviderConfigEdit in body
 
     Responses:
         200: OK - PaymentProviderConfigInfo (successful operation)
@@ -243,7 +243,7 @@ def debug_matched_payment_merchant_config(
 ):
     """Debug matched payment merchant config(internal) (debugMatchedPaymentMerchantConfig)
 
-    [Not Supported Yet In Starter] Debug matched payment merchant config.
+    [Not supported yet in AGS Shared Cloud] Debug matched payment merchant config.
     Other detail info:
 
       * Returns : payment merchant config info
@@ -286,7 +286,7 @@ async def debug_matched_payment_merchant_config_async(
 ):
     """Debug matched payment merchant config(internal) (debugMatchedPaymentMerchantConfig)
 
-    [Not Supported Yet In Starter] Debug matched payment merchant config.
+    [Not supported yet in AGS Shared Cloud] Debug matched payment merchant config.
     Other detail info:
 
       * Returns : payment merchant config info
@@ -331,7 +331,7 @@ def debug_matched_payment_provider_config(
 ):
     """Debug matched payment provider config(internal) (debugMatchedPaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Debug matched payment provider config.
+    [Not supported yet in AGS Shared Cloud] Debug matched payment provider config.
     Other detail info:
 
       * Returns : payment provider config
@@ -374,7 +374,7 @@ async def debug_matched_payment_provider_config_async(
 ):
     """Debug matched payment provider config(internal) (debugMatchedPaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Debug matched payment provider config.
+    [Not supported yet in AGS Shared Cloud] Debug matched payment provider config.
     Other detail info:
 
       * Returns : payment provider config
@@ -416,7 +416,7 @@ def delete_payment_provider_config(
 ):
     """Delete payment provider config (deletePaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Delete payment provider config.
+    [Not supported yet in AGS Shared Cloud] Delete payment provider config.
     Other detail info:
 
       * Returns : payment provider config
@@ -453,7 +453,7 @@ async def delete_payment_provider_config_async(
 ):
     """Delete payment provider config (deletePaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Delete payment provider config.
+    [Not supported yet in AGS Shared Cloud] Delete payment provider config.
     Other detail info:
 
       * Returns : payment provider config
@@ -492,7 +492,7 @@ def get_aggregate_payment_providers(
 ):
     """Get aggregate payment providers (getAggregatePaymentProviders)
 
-    [Not Supported Yet In Starter] Get aggregate payment providers, such as XSOLLA, ADYEN.
+    [Not supported yet in AGS Shared Cloud] Get aggregate payment providers, such as XSOLLA, ADYEN.
     Other detail info:
 
       * Returns : payment provider list
@@ -523,7 +523,7 @@ async def get_aggregate_payment_providers_async(
 ):
     """Get aggregate payment providers (getAggregatePaymentProviders)
 
-    [Not Supported Yet In Starter] Get aggregate payment providers, such as XSOLLA, ADYEN.
+    [Not supported yet in AGS Shared Cloud] Get aggregate payment providers, such as XSOLLA, ADYEN.
     Other detail info:
 
       * Returns : payment provider list
@@ -558,7 +558,7 @@ def get_payment_merchant_config(
 ):
     """Get payment domain whitelist config (getPaymentMerchantConfig)
 
-    [Not Supported Yet In Starter] Get payment domain whitelist config by namespace.
+    [Not supported yet in AGS Shared Cloud] Get payment domain whitelist config by namespace.
     Other detail info:
 
       * Returns : payment domain whitelist config info
@@ -599,7 +599,7 @@ async def get_payment_merchant_config_async(
 ):
     """Get payment domain whitelist config (getPaymentMerchantConfig)
 
-    [Not Supported Yet In Starter] Get payment domain whitelist config by namespace.
+    [Not supported yet in AGS Shared Cloud] Get payment domain whitelist config by namespace.
     Other detail info:
 
       * Returns : payment domain whitelist config info
@@ -640,7 +640,7 @@ def get_payment_merchant_config_1(
 ):
     """Get payment merchant config (getPaymentMerchantConfig_1)
 
-    [Not Supported Yet In Starter] Get payment merchant config by id.
+    [Not supported yet in AGS Shared Cloud] Get payment merchant config by id.
     Other detail info:
 
       * Returns : payment merchant config info
@@ -677,7 +677,7 @@ async def get_payment_merchant_config_1_async(
 ):
     """Get payment merchant config (getPaymentMerchantConfig_1)
 
-    [Not Supported Yet In Starter] Get payment merchant config by id.
+    [Not supported yet in AGS Shared Cloud] Get payment merchant config by id.
     Other detail info:
 
       * Returns : payment merchant config info
@@ -716,7 +716,7 @@ def get_payment_tax_config(
 ):
     """Get payment global tax config (getPaymentTaxConfig)
 
-    [Not Supported Yet In Starter] Get payment global tax config.
+    [Not supported yet in AGS Shared Cloud] Get payment global tax config.
     Other detail info:
 
       * Returns : payment provider list
@@ -747,7 +747,7 @@ async def get_payment_tax_config_async(
 ):
     """Get payment global tax config (getPaymentTaxConfig)
 
-    [Not Supported Yet In Starter] Get payment global tax config.
+    [Not supported yet in AGS Shared Cloud] Get payment global tax config.
     Other detail info:
 
       * Returns : payment provider list
@@ -780,7 +780,7 @@ def get_special_payment_providers(
 ):
     """Get special payment providers (getSpecialPaymentProviders)
 
-    [Not Supported Yet In Starter] Get special payment providers, such as ALIPAY, WXPAY.
+    [Not supported yet in AGS Shared Cloud] Get special payment providers, such as ALIPAY, WXPAY.
     Other detail info:
 
       * Returns : payment provider list
@@ -811,7 +811,7 @@ async def get_special_payment_providers_async(
 ):
     """Get special payment providers (getSpecialPaymentProviders)
 
-    [Not Supported Yet In Starter] Get special payment providers, such as ALIPAY, WXPAY.
+    [Not supported yet in AGS Shared Cloud] Get special payment providers, such as ALIPAY, WXPAY.
     Other detail info:
 
       * Returns : payment provider list
@@ -849,7 +849,7 @@ def query_payment_provider_config(
 ):
     """Query payment provider config (queryPaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Query payment provider config.
+    [Not supported yet in AGS Shared Cloud] Query payment provider config.
     Other detail info:
 
       * Returns : payment provider config list
@@ -898,7 +898,7 @@ async def query_payment_provider_config_async(
 ):
     """Query payment provider config (queryPaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Query payment provider config.
+    [Not supported yet in AGS Shared Cloud] Query payment provider config.
     Other detail info:
 
       * Returns : payment provider config list
@@ -940,14 +940,14 @@ async def query_payment_provider_config_async(
 
 @same_doc_as(TestAdyenConfig)
 def test_adyen_config(
-    body: Optional[AdyenConfig] = None,
+    body: AdyenConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test adyen configuration (testAdyenConfig)
 
-    [Not Supported Yet In Starter] Test adyen configuration.
+    [Not supported yet in AGS Shared Cloud] Test adyen configuration.
 
     #### Check List:
 
@@ -982,7 +982,7 @@ def test_adyen_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdyenConfig in body
+        body: (body) REQUIRED AdyenConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -998,14 +998,14 @@ def test_adyen_config(
 
 @same_doc_as(TestAdyenConfig)
 async def test_adyen_config_async(
-    body: Optional[AdyenConfig] = None,
+    body: AdyenConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test adyen configuration (testAdyenConfig)
 
-    [Not Supported Yet In Starter] Test adyen configuration.
+    [Not supported yet in AGS Shared Cloud] Test adyen configuration.
 
     #### Check List:
 
@@ -1040,7 +1040,7 @@ async def test_adyen_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdyenConfig in body
+        body: (body) REQUIRED AdyenConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1065,7 +1065,7 @@ def test_adyen_config_by_id(
 ):
     """Test adyen configuration by id (testAdyenConfigById)
 
-    [Not Supported Yet In Starter] Test adyen configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test adyen configuration in payment merchant config. Other detail info:
 
       * Returns : test adyen config
 
@@ -1107,7 +1107,7 @@ async def test_adyen_config_by_id_async(
 ):
     """Test adyen configuration by id (testAdyenConfigById)
 
-    [Not Supported Yet In Starter] Test adyen configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test adyen configuration in payment merchant config. Other detail info:
 
       * Returns : test adyen config
 
@@ -1144,14 +1144,14 @@ async def test_adyen_config_by_id_async(
 
 @same_doc_as(TestAliPayConfig)
 def test_ali_pay_config(
-    body: Optional[AliPayConfig] = None,
+    body: AliPayConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test Alipay configuration (testAliPayConfig)
 
-    [Not Supported Yet In Starter] Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    [Not supported yet in AGS Shared Cloud] Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Returns : test result
@@ -1169,7 +1169,7 @@ def test_ali_pay_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AliPayConfig in body
+        body: (body) REQUIRED AliPayConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1185,14 +1185,14 @@ def test_ali_pay_config(
 
 @same_doc_as(TestAliPayConfig)
 async def test_ali_pay_config_async(
-    body: Optional[AliPayConfig] = None,
+    body: AliPayConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test Alipay configuration (testAliPayConfig)
 
-    [Not Supported Yet In Starter] Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    [Not supported yet in AGS Shared Cloud] Test AliPay configuration.Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Returns : test result
@@ -1210,7 +1210,7 @@ async def test_ali_pay_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AliPayConfig in body
+        body: (body) REQUIRED AliPayConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1235,7 +1235,7 @@ def test_ali_pay_config_by_id(
 ):
     """Test Alipay configuration by id (testAliPayConfigById)
 
-    [Not Supported Yet In Starter] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    [Not supported yet in AGS Shared Cloud] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Returns : test alipay config
@@ -1278,7 +1278,7 @@ async def test_ali_pay_config_by_id_async(
 ):
     """Test Alipay configuration by id (testAliPayConfigById)
 
-    [Not Supported Yet In Starter] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
+    [Not supported yet in AGS Shared Cloud] Test AliPay configuration in payment merchant config. Reference: [Alipay Document](https://docs.open.alipay.com/270/alipay.trade.page.pay).
     Other detail info:
 
       * Returns : test alipay config
@@ -1316,14 +1316,14 @@ async def test_ali_pay_config_by_id_async(
 
 @same_doc_as(TestCheckoutConfig)
 def test_checkout_config(
-    body: Optional[CheckoutConfig] = None,
+    body: CheckoutConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test checkout.com configuration (testCheckoutConfig)
 
-    [Not Supported Yet In Starter] Test checkout.com configuration.
+    [Not supported yet in AGS Shared Cloud] Test checkout.com configuration.
 
     #### Check List:
 
@@ -1346,7 +1346,7 @@ def test_checkout_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CheckoutConfig in body
+        body: (body) REQUIRED CheckoutConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1362,14 +1362,14 @@ def test_checkout_config(
 
 @same_doc_as(TestCheckoutConfig)
 async def test_checkout_config_async(
-    body: Optional[CheckoutConfig] = None,
+    body: CheckoutConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test checkout.com configuration (testCheckoutConfig)
 
-    [Not Supported Yet In Starter] Test checkout.com configuration.
+    [Not supported yet in AGS Shared Cloud] Test checkout.com configuration.
 
     #### Check List:
 
@@ -1392,7 +1392,7 @@ async def test_checkout_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CheckoutConfig in body
+        body: (body) REQUIRED CheckoutConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1417,7 +1417,7 @@ def test_checkout_config_by_id(
 ):
     """Test checkout.com configuration by id (testCheckoutConfigById)
 
-    [Not Supported Yet In Starter] Test checkout.com configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test checkout.com configuration in payment merchant config. Other detail info:
 
       * Returns : test result
 
@@ -1459,7 +1459,7 @@ async def test_checkout_config_by_id_async(
 ):
     """Test checkout.com configuration by id (testCheckoutConfigById)
 
-    [Not Supported Yet In Starter] Test checkout.com configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test checkout.com configuration in payment merchant config. Other detail info:
 
       * Returns : test result
 
@@ -1496,14 +1496,14 @@ async def test_checkout_config_by_id_async(
 
 @same_doc_as(TestNeonPayConfig)
 def test_neon_pay_config(
-    body: Optional[NeonPayConfig] = None,
+    body: NeonPayConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test Neon Pay configuration (testNeonPayConfig)
 
-    [Not Supported Yet In Starter] Check Neon Pay configuration, Reference: [Neon Pay Document](https://docs.neonpay.com/docs/checkout).
+    [Not supported yet in AGS Shared Cloud] Check Neon Pay configuration, Reference: [Neon Pay Document](https://docs.neonpay.com/docs/checkout).
 
     #### Check List:
 
@@ -1526,7 +1526,7 @@ def test_neon_pay_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL NeonPayConfig in body
+        body: (body) REQUIRED NeonPayConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1542,14 +1542,14 @@ def test_neon_pay_config(
 
 @same_doc_as(TestNeonPayConfig)
 async def test_neon_pay_config_async(
-    body: Optional[NeonPayConfig] = None,
+    body: NeonPayConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test Neon Pay configuration (testNeonPayConfig)
 
-    [Not Supported Yet In Starter] Check Neon Pay configuration, Reference: [Neon Pay Document](https://docs.neonpay.com/docs/checkout).
+    [Not supported yet in AGS Shared Cloud] Check Neon Pay configuration, Reference: [Neon Pay Document](https://docs.neonpay.com/docs/checkout).
 
     #### Check List:
 
@@ -1572,7 +1572,7 @@ async def test_neon_pay_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL NeonPayConfig in body
+        body: (body) REQUIRED NeonPayConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1597,7 +1597,7 @@ def test_neon_pay_config_by_id(
 ):
     """Test Neon Pay configuration by id (testNeonPayConfigById)
 
-    [Not Supported Yet In Starter] Test Neon Pay configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test Neon Pay configuration in payment merchant config. Other detail info:
 
       * Returns : test result
 
@@ -1639,7 +1639,7 @@ async def test_neon_pay_config_by_id_async(
 ):
     """Test Neon Pay configuration by id (testNeonPayConfigById)
 
-    [Not Supported Yet In Starter] Test Neon Pay configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test Neon Pay configuration in payment merchant config. Other detail info:
 
       * Returns : test result
 
@@ -1676,14 +1676,14 @@ async def test_neon_pay_config_by_id_async(
 
 @same_doc_as(TestPayPalConfig)
 def test_pay_pal_config(
-    body: Optional[PayPalConfig] = None,
+    body: PayPalConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test PayPal configuration (testPayPalConfig)
 
-    [Not Supported Yet In Starter] Test PayPal configuration.
+    [Not supported yet in AGS Shared Cloud] Test PayPal configuration.
 
     #### Check List:
 
@@ -1712,7 +1712,7 @@ def test_pay_pal_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PayPalConfig in body
+        body: (body) REQUIRED PayPalConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1728,14 +1728,14 @@ def test_pay_pal_config(
 
 @same_doc_as(TestPayPalConfig)
 async def test_pay_pal_config_async(
-    body: Optional[PayPalConfig] = None,
+    body: PayPalConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test PayPal configuration (testPayPalConfig)
 
-    [Not Supported Yet In Starter] Test PayPal configuration.
+    [Not supported yet in AGS Shared Cloud] Test PayPal configuration.
 
     #### Check List:
 
@@ -1764,7 +1764,7 @@ async def test_pay_pal_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PayPalConfig in body
+        body: (body) REQUIRED PayPalConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1789,7 +1789,7 @@ def test_pay_pal_config_by_id(
 ):
     """Test PayPal configuration by id (testPayPalConfigById)
 
-    [Not Supported Yet In Starter] Test PayPal configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test PayPal configuration in payment merchant config. Other detail info:
 
       * Returns : test result
 
@@ -1831,7 +1831,7 @@ async def test_pay_pal_config_by_id_async(
 ):
     """Test PayPal configuration by id (testPayPalConfigById)
 
-    [Not Supported Yet In Starter] Test PayPal configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test PayPal configuration in payment merchant config. Other detail info:
 
       * Returns : test result
 
@@ -1868,14 +1868,14 @@ async def test_pay_pal_config_by_id_async(
 
 @same_doc_as(TestStripeConfig)
 def test_stripe_config(
-    body: Optional[StripeConfig] = None,
+    body: StripeConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test stripe configuration (testStripeConfig)
 
-    [Not Supported Yet In Starter] Test stripe configuration.
+    [Not supported yet in AGS Shared Cloud] Test stripe configuration.
 
     #### Check List:
 
@@ -1905,7 +1905,7 @@ def test_stripe_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StripeConfig in body
+        body: (body) REQUIRED StripeConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1921,14 +1921,14 @@ def test_stripe_config(
 
 @same_doc_as(TestStripeConfig)
 async def test_stripe_config_async(
-    body: Optional[StripeConfig] = None,
+    body: StripeConfig,
     sandbox: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test stripe configuration (testStripeConfig)
 
-    [Not Supported Yet In Starter] Test stripe configuration.
+    [Not supported yet in AGS Shared Cloud] Test stripe configuration.
 
     #### Check List:
 
@@ -1958,7 +1958,7 @@ async def test_stripe_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StripeConfig in body
+        body: (body) REQUIRED StripeConfig in body
 
         sandbox: (sandbox) OPTIONAL bool in query
 
@@ -1983,7 +1983,7 @@ def test_stripe_config_by_id(
 ):
     """Test stripe configuration by id (testStripeConfigById)
 
-    [Not Supported Yet In Starter] Test stripe configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test stripe configuration in payment merchant config. Other detail info:
 
       * Returns : test adyen config
 
@@ -2025,7 +2025,7 @@ async def test_stripe_config_by_id_async(
 ):
     """Test stripe configuration by id (testStripeConfigById)
 
-    [Not Supported Yet In Starter] Test stripe configuration in payment merchant config. Other detail info:
+    [Not supported yet in AGS Shared Cloud] Test stripe configuration in payment merchant config. Other detail info:
 
       * Returns : test adyen config
 
@@ -2062,13 +2062,13 @@ async def test_stripe_config_by_id_async(
 
 @same_doc_as(TestWxPayConfig)
 def test_wx_pay_config(
-    body: Optional[WxPayConfigRequest] = None,
+    body: WxPayConfigRequest,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test wxPay configuration (testWxPayConfig)
 
-    [Not Supported Yet In Starter] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not supported yet in AGS Shared Cloud] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Returns : test WxPay config
@@ -2086,7 +2086,7 @@ def test_wx_pay_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL WxPayConfigRequest in body
+        body: (body) REQUIRED WxPayConfigRequest in body
 
     Responses:
         200: OK - TestResult (successful operation)
@@ -2099,13 +2099,13 @@ def test_wx_pay_config(
 
 @same_doc_as(TestWxPayConfig)
 async def test_wx_pay_config_async(
-    body: Optional[WxPayConfigRequest] = None,
+    body: WxPayConfigRequest,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Test wxPay configuration (testWxPayConfig)
 
-    [Not Supported Yet In Starter] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not supported yet in AGS Shared Cloud] Test WxPay configuration. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Returns : test WxPay config
@@ -2123,7 +2123,7 @@ async def test_wx_pay_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL WxPayConfigRequest in body
+        body: (body) REQUIRED WxPayConfigRequest in body
 
     Responses:
         200: OK - TestResult (successful operation)
@@ -2142,7 +2142,7 @@ def test_wx_pay_config_by_id(
 ):
     """Test wxPay configuration by id (testWxPayConfigById)
 
-    [Not Supported Yet In Starter] Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not supported yet in AGS Shared Cloud] Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Returns : test WxPay config
@@ -2179,7 +2179,7 @@ async def test_wx_pay_config_by_id_async(
 ):
     """Test wxPay configuration by id (testWxPayConfigById)
 
-    [Not Supported Yet In Starter] Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
+    [Not supported yet in AGS Shared Cloud] Test WxPay configuration in payment merchant config. Reference: [WxPay Document](https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1).
     Other detail info:
 
       * Returns : test WxPay config
@@ -2214,13 +2214,11 @@ async def test_wx_pay_config_by_id_async(
 
 @same_doc_as(TestXsollaConfig)
 def test_xsolla_config(
-    body: Optional[XsollaConfig] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    body: XsollaConfig, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     """Test xsolla configuration (testXsollaConfig)
 
-    [Not Supported Yet In Starter] Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not supported yet in AGS Shared Cloud] Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
 
     #### Check List:
 
@@ -2250,7 +2248,7 @@ def test_xsolla_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XsollaConfig in body
+        body: (body) REQUIRED XsollaConfig in body
 
     Responses:
         200: OK - TestResult (successful operation)
@@ -2263,13 +2261,11 @@ def test_xsolla_config(
 
 @same_doc_as(TestXsollaConfig)
 async def test_xsolla_config_async(
-    body: Optional[XsollaConfig] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
+    body: XsollaConfig, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
     """Test xsolla configuration (testXsollaConfig)
 
-    [Not Supported Yet In Starter] Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not supported yet in AGS Shared Cloud] Check xsolla configuration, Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
 
     #### Check List:
 
@@ -2299,7 +2295,7 @@ async def test_xsolla_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XsollaConfig in body
+        body: (body) REQUIRED XsollaConfig in body
 
     Responses:
         200: OK - TestResult (successful operation)
@@ -2318,7 +2314,7 @@ def test_xsolla_config_by_id(
 ):
     """Test xsolla configuration by id (testXsollaConfigById)
 
-    [Not Supported Yet In Starter] Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not supported yet in AGS Shared Cloud] Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Returns : test xsolla config
@@ -2355,7 +2351,7 @@ async def test_xsolla_config_by_id_async(
 ):
     """Test xsolla configuration by id (testXsollaConfigById)
 
-    [Not Supported Yet In Starter] Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not supported yet in AGS Shared Cloud] Test xsolla configuration in payment merchant config. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Returns : test xsolla config
@@ -2390,8 +2386,8 @@ async def test_xsolla_config_by_id_async(
 
 @same_doc_as(UpdateAdyenConfig)
 def update_adyen_config(
+    body: AdyenConfig,
     id_: str,
-    body: Optional[AdyenConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2399,7 +2395,7 @@ def update_adyen_config(
 ):
     """Update adyen config (updateAdyenConfig)
 
-    [Not Supported Yet In Starter] Update adyen config.
+    [Not supported yet in AGS Shared Cloud] Update adyen config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -2417,7 +2413,7 @@ def update_adyen_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdyenConfig in body
+        body: (body) REQUIRED AdyenConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -2431,8 +2427,8 @@ def update_adyen_config(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateAdyenConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -2441,8 +2437,8 @@ def update_adyen_config(
 
 @same_doc_as(UpdateAdyenConfig)
 async def update_adyen_config_async(
+    body: AdyenConfig,
     id_: str,
-    body: Optional[AdyenConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2450,7 +2446,7 @@ async def update_adyen_config_async(
 ):
     """Update adyen config (updateAdyenConfig)
 
-    [Not Supported Yet In Starter] Update adyen config.
+    [Not supported yet in AGS Shared Cloud] Update adyen config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -2468,7 +2464,7 @@ async def update_adyen_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AdyenConfig in body
+        body: (body) REQUIRED AdyenConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -2482,8 +2478,8 @@ async def update_adyen_config_async(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateAdyenConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -2494,8 +2490,8 @@ async def update_adyen_config_async(
 
 @same_doc_as(UpdateAliPayConfig)
 def update_ali_pay_config(
+    body: AliPayConfig,
     id_: str,
-    body: Optional[AliPayConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2503,7 +2499,7 @@ def update_ali_pay_config(
 ):
     """Update alipay configuration (updateAliPayConfig)
 
-    [Not Supported Yet In Starter] Update alipay configuration.
+    [Not supported yet in AGS Shared Cloud] Update alipay configuration.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -2521,7 +2517,7 @@ def update_ali_pay_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AliPayConfig in body
+        body: (body) REQUIRED AliPayConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -2535,8 +2531,8 @@ def update_ali_pay_config(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateAliPayConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -2545,8 +2541,8 @@ def update_ali_pay_config(
 
 @same_doc_as(UpdateAliPayConfig)
 async def update_ali_pay_config_async(
+    body: AliPayConfig,
     id_: str,
-    body: Optional[AliPayConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2554,7 +2550,7 @@ async def update_ali_pay_config_async(
 ):
     """Update alipay configuration (updateAliPayConfig)
 
-    [Not Supported Yet In Starter] Update alipay configuration.
+    [Not supported yet in AGS Shared Cloud] Update alipay configuration.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -2572,7 +2568,7 @@ async def update_ali_pay_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL AliPayConfig in body
+        body: (body) REQUIRED AliPayConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -2586,8 +2582,8 @@ async def update_ali_pay_config_async(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateAliPayConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -2598,8 +2594,8 @@ async def update_ali_pay_config_async(
 
 @same_doc_as(UpdateCheckoutConfig)
 def update_checkout_config(
+    body: CheckoutConfig,
     id_: str,
-    body: Optional[CheckoutConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2607,7 +2603,7 @@ def update_checkout_config(
 ):
     """Update checkout.com config (updateCheckoutConfig)
 
-    [Not Supported Yet In Starter] Update checkout.com config.
+    [Not supported yet in AGS Shared Cloud] Update checkout.com config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -2625,7 +2621,7 @@ def update_checkout_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CheckoutConfig in body
+        body: (body) REQUIRED CheckoutConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -2639,8 +2635,8 @@ def update_checkout_config(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateCheckoutConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -2649,8 +2645,8 @@ def update_checkout_config(
 
 @same_doc_as(UpdateCheckoutConfig)
 async def update_checkout_config_async(
+    body: CheckoutConfig,
     id_: str,
-    body: Optional[CheckoutConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2658,7 +2654,7 @@ async def update_checkout_config_async(
 ):
     """Update checkout.com config (updateCheckoutConfig)
 
-    [Not Supported Yet In Starter] Update checkout.com config.
+    [Not supported yet in AGS Shared Cloud] Update checkout.com config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -2676,7 +2672,7 @@ async def update_checkout_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CheckoutConfig in body
+        body: (body) REQUIRED CheckoutConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -2690,8 +2686,8 @@ async def update_checkout_config_async(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateCheckoutConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -2702,8 +2698,8 @@ async def update_checkout_config_async(
 
 @same_doc_as(UpdateNeonPayConfig)
 def update_neon_pay_config(
+    body: NeonPayConfig,
     id_: str,
-    body: Optional[NeonPayConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2711,7 +2707,7 @@ def update_neon_pay_config(
 ):
     """Update Neon Pay config (updateNeonPayConfig)
 
-    [Not Supported Yet In Starter] Update Neon Pay config.
+    [Not supported yet in AGS Shared Cloud] Update Neon Pay config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -2729,7 +2725,7 @@ def update_neon_pay_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL NeonPayConfig in body
+        body: (body) REQUIRED NeonPayConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -2743,8 +2739,8 @@ def update_neon_pay_config(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateNeonPayConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -2753,8 +2749,8 @@ def update_neon_pay_config(
 
 @same_doc_as(UpdateNeonPayConfig)
 async def update_neon_pay_config_async(
+    body: NeonPayConfig,
     id_: str,
-    body: Optional[NeonPayConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2762,7 +2758,7 @@ async def update_neon_pay_config_async(
 ):
     """Update Neon Pay config (updateNeonPayConfig)
 
-    [Not Supported Yet In Starter] Update Neon Pay config.
+    [Not supported yet in AGS Shared Cloud] Update Neon Pay config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -2780,7 +2776,7 @@ async def update_neon_pay_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL NeonPayConfig in body
+        body: (body) REQUIRED NeonPayConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -2794,8 +2790,8 @@ async def update_neon_pay_config_async(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateNeonPayConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -2806,8 +2802,8 @@ async def update_neon_pay_config_async(
 
 @same_doc_as(UpdatePayPalConfig)
 def update_pay_pal_config(
+    body: PayPalConfig,
     id_: str,
-    body: Optional[PayPalConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2815,7 +2811,7 @@ def update_pay_pal_config(
 ):
     """Update PayPal config (updatePayPalConfig)
 
-    [Not Supported Yet In Starter] Update PayPal config.
+    [Not supported yet in AGS Shared Cloud] Update PayPal config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -2833,7 +2829,7 @@ def update_pay_pal_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PayPalConfig in body
+        body: (body) REQUIRED PayPalConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -2847,8 +2843,8 @@ def update_pay_pal_config(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdatePayPalConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -2857,8 +2853,8 @@ def update_pay_pal_config(
 
 @same_doc_as(UpdatePayPalConfig)
 async def update_pay_pal_config_async(
+    body: PayPalConfig,
     id_: str,
-    body: Optional[PayPalConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -2866,7 +2862,7 @@ async def update_pay_pal_config_async(
 ):
     """Update PayPal config (updatePayPalConfig)
 
-    [Not Supported Yet In Starter] Update PayPal config.
+    [Not supported yet in AGS Shared Cloud] Update PayPal config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -2884,7 +2880,7 @@ async def update_pay_pal_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PayPalConfig in body
+        body: (body) REQUIRED PayPalConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -2898,8 +2894,8 @@ async def update_pay_pal_config_async(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdatePayPalConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -2910,14 +2906,14 @@ async def update_pay_pal_config_async(
 
 @same_doc_as(UpdatePaymentDomainWhitelistConfig)
 def update_payment_domain_whitelist_config(
-    body: Optional[PaymentDomainWhitelistConfigEdit] = None,
+    body: PaymentDomainWhitelistConfigEdit,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update payment domain whitelist config (updatePaymentDomainWhitelistConfig)
 
-    [Not Supported Yet In Starter] Update payment provider config by namespace.
+    [Not supported yet in AGS Shared Cloud] Update payment provider config by namespace.
 
 
 
@@ -2948,7 +2944,7 @@ def update_payment_domain_whitelist_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentDomainWhitelistConfigEdit in body
+        body: (body) REQUIRED PaymentDomainWhitelistConfigEdit in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -2970,14 +2966,14 @@ def update_payment_domain_whitelist_config(
 
 @same_doc_as(UpdatePaymentDomainWhitelistConfig)
 async def update_payment_domain_whitelist_config_async(
-    body: Optional[PaymentDomainWhitelistConfigEdit] = None,
+    body: PaymentDomainWhitelistConfigEdit,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update payment domain whitelist config (updatePaymentDomainWhitelistConfig)
 
-    [Not Supported Yet In Starter] Update payment provider config by namespace.
+    [Not supported yet in AGS Shared Cloud] Update payment provider config by namespace.
 
 
 
@@ -3008,7 +3004,7 @@ async def update_payment_domain_whitelist_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentDomainWhitelistConfigEdit in body
+        body: (body) REQUIRED PaymentDomainWhitelistConfigEdit in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -3032,14 +3028,14 @@ async def update_payment_domain_whitelist_config_async(
 
 @same_doc_as(UpdatePaymentProviderConfig)
 def update_payment_provider_config(
+    body: PaymentProviderConfigEdit,
     id_: str,
-    body: Optional[PaymentProviderConfigEdit] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update payment provider config (updatePaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Update payment provider config.
+    [Not supported yet in AGS Shared Cloud] Update payment provider config.
 
 
 
@@ -3078,7 +3074,7 @@ def update_payment_provider_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentProviderConfigEdit in body
+        body: (body) REQUIRED PaymentProviderConfigEdit in body
 
         id_: (id) REQUIRED str in path
 
@@ -3094,22 +3090,22 @@ def update_payment_provider_config(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     request = UpdatePaymentProviderConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdatePaymentProviderConfig)
 async def update_payment_provider_config_async(
+    body: PaymentProviderConfigEdit,
     id_: str,
-    body: Optional[PaymentProviderConfigEdit] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update payment provider config (updatePaymentProviderConfig)
 
-    [Not Supported Yet In Starter] Update payment provider config.
+    [Not supported yet in AGS Shared Cloud] Update payment provider config.
 
 
 
@@ -3148,7 +3144,7 @@ async def update_payment_provider_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentProviderConfigEdit in body
+        body: (body) REQUIRED PaymentProviderConfigEdit in body
 
         id_: (id) REQUIRED str in path
 
@@ -3164,8 +3160,8 @@ async def update_payment_provider_config_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     request = UpdatePaymentProviderConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -3174,13 +3170,13 @@ async def update_payment_provider_config_async(
 
 @same_doc_as(UpdatePaymentTaxConfig)
 def update_payment_tax_config(
-    body: Optional[PaymentTaxConfigEdit] = None,
+    body: PaymentTaxConfigEdit,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update payment global tax config (updatePaymentTaxConfig)
 
-    [Not Supported Yet In Starter] Update payment tax config.
+    [Not supported yet in AGS Shared Cloud] Update payment tax config.
 
 
 
@@ -3212,7 +3208,7 @@ def update_payment_tax_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentTaxConfigEdit in body
+        body: (body) REQUIRED PaymentTaxConfigEdit in body
 
     Responses:
         200: OK - PaymentTaxConfigInfo (successful operation)
@@ -3229,13 +3225,13 @@ def update_payment_tax_config(
 
 @same_doc_as(UpdatePaymentTaxConfig)
 async def update_payment_tax_config_async(
-    body: Optional[PaymentTaxConfigEdit] = None,
+    body: PaymentTaxConfigEdit,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update payment global tax config (updatePaymentTaxConfig)
 
-    [Not Supported Yet In Starter] Update payment tax config.
+    [Not supported yet in AGS Shared Cloud] Update payment tax config.
 
 
 
@@ -3267,7 +3263,7 @@ async def update_payment_tax_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentTaxConfigEdit in body
+        body: (body) REQUIRED PaymentTaxConfigEdit in body
 
     Responses:
         200: OK - PaymentTaxConfigInfo (successful operation)
@@ -3286,8 +3282,8 @@ async def update_payment_tax_config_async(
 
 @same_doc_as(UpdateStripeConfig)
 def update_stripe_config(
+    body: StripeConfig,
     id_: str,
-    body: Optional[StripeConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -3295,7 +3291,7 @@ def update_stripe_config(
 ):
     """Update stripe config (updateStripeConfig)
 
-    [Not Supported Yet In Starter] Update stripe config.
+    [Not supported yet in AGS Shared Cloud] Update stripe config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -3313,7 +3309,7 @@ def update_stripe_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StripeConfig in body
+        body: (body) REQUIRED StripeConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -3327,8 +3323,8 @@ def update_stripe_config(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateStripeConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -3337,8 +3333,8 @@ def update_stripe_config(
 
 @same_doc_as(UpdateStripeConfig)
 async def update_stripe_config_async(
+    body: StripeConfig,
     id_: str,
-    body: Optional[StripeConfig] = None,
     sandbox: Optional[bool] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -3346,7 +3342,7 @@ async def update_stripe_config_async(
 ):
     """Update stripe config (updateStripeConfig)
 
-    [Not Supported Yet In Starter] Update stripe config.
+    [Not supported yet in AGS Shared Cloud] Update stripe config.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -3364,7 +3360,7 @@ async def update_stripe_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StripeConfig in body
+        body: (body) REQUIRED StripeConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -3378,8 +3374,8 @@ async def update_stripe_config_async(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateStripeConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         sandbox=sandbox,
         validate=validate,
     )
@@ -3390,15 +3386,15 @@ async def update_stripe_config_async(
 
 @same_doc_as(UpdateWxPayConfig)
 def update_wx_pay_config(
+    body: WxPayConfigRequest,
     id_: str,
-    body: Optional[WxPayConfigRequest] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update wxpay configuration (updateWxPayConfig)
 
-    [Not Supported Yet In Starter] Update wxpay configuration.
+    [Not supported yet in AGS Shared Cloud] Update wxpay configuration.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -3416,7 +3412,7 @@ def update_wx_pay_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL WxPayConfigRequest in body
+        body: (body) REQUIRED WxPayConfigRequest in body
 
         id_: (id) REQUIRED str in path
 
@@ -3428,8 +3424,8 @@ def update_wx_pay_config(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateWxPayConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         validate=validate,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -3437,15 +3433,15 @@ def update_wx_pay_config(
 
 @same_doc_as(UpdateWxPayConfig)
 async def update_wx_pay_config_async(
+    body: WxPayConfigRequest,
     id_: str,
-    body: Optional[WxPayConfigRequest] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update wxpay configuration (updateWxPayConfig)
 
-    [Not Supported Yet In Starter] Update wxpay configuration.
+    [Not supported yet in AGS Shared Cloud] Update wxpay configuration.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -3463,7 +3459,7 @@ async def update_wx_pay_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL WxPayConfigRequest in body
+        body: (body) REQUIRED WxPayConfigRequest in body
 
         id_: (id) REQUIRED str in path
 
@@ -3475,8 +3471,8 @@ async def update_wx_pay_config_async(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateWxPayConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         validate=validate,
     )
     return await run_request_async(
@@ -3493,7 +3489,7 @@ def update_wx_pay_config_cert(
 ):
     """Upload wxpay cert file (updateWxPayConfigCert)
 
-    [Not Supported Yet In Starter] Upload wxpay cert file.
+    [Not supported yet in AGS Shared Cloud] Upload wxpay cert file.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -3536,7 +3532,7 @@ async def update_wx_pay_config_cert_async(
 ):
     """Upload wxpay cert file (updateWxPayConfigCert)
 
-    [Not Supported Yet In Starter] Upload wxpay cert file.
+    [Not supported yet in AGS Shared Cloud] Upload wxpay cert file.
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -3574,15 +3570,15 @@ async def update_wx_pay_config_cert_async(
 
 @same_doc_as(UpdateXsollaConfig)
 def update_xsolla_config(
+    body: XsollaConfig,
     id_: str,
-    body: Optional[XsollaConfig] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update xsolla configuration (updateXsollaConfig)
 
-    [Not Supported Yet In Starter] Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not supported yet in AGS Shared Cloud] Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -3600,7 +3596,7 @@ def update_xsolla_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XsollaConfig in body
+        body: (body) REQUIRED XsollaConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -3612,8 +3608,8 @@ def update_xsolla_config(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateXsollaConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         validate=validate,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -3621,15 +3617,15 @@ def update_xsolla_config(
 
 @same_doc_as(UpdateXsollaConfig)
 async def update_xsolla_config_async(
+    body: XsollaConfig,
     id_: str,
-    body: Optional[XsollaConfig] = None,
     validate: Optional[bool] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update xsolla configuration (updateXsollaConfig)
 
-    [Not Supported Yet In Starter] Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
+    [Not supported yet in AGS Shared Cloud] Update xsolla configuration. Reference: [Xsolla Document](https://developers.xsolla.com/?#simple-checkout).
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -3647,7 +3643,7 @@ async def update_xsolla_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XsollaConfig in body
+        body: (body) REQUIRED XsollaConfig in body
 
         id_: (id) REQUIRED str in path
 
@@ -3659,8 +3655,8 @@ async def update_xsolla_config_async(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist | 33221: Update [{paymentProvider}] config in payment merchant config [{id}] failed with message [{errMsg}])
     """
     request = UpdateXsollaConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
         validate=validate,
     )
     return await run_request_async(
@@ -3670,14 +3666,14 @@ async def update_xsolla_config_async(
 
 @same_doc_as(UpdateXsollaUIConfig)
 def update_xsolla_ui_config(
+    body: XsollaPaywallConfigRequest,
     id_: str,
-    body: Optional[XsollaPaywallConfigRequest] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update xsolla UI configuration (updateXsollaUIConfig)
 
-    [Not Supported Yet In Starter] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
+    [Not supported yet in AGS Shared Cloud] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -3695,7 +3691,7 @@ def update_xsolla_ui_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XsollaPaywallConfigRequest in body
+        body: (body) REQUIRED XsollaPaywallConfigRequest in body
 
         id_: (id) REQUIRED str in path
 
@@ -3705,22 +3701,22 @@ def update_xsolla_ui_config(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
     """
     request = UpdateXsollaUIConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(UpdateXsollaUIConfig)
 async def update_xsolla_ui_config_async(
+    body: XsollaPaywallConfigRequest,
     id_: str,
-    body: Optional[XsollaPaywallConfigRequest] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Update xsolla UI configuration (updateXsollaUIConfig)
 
-    [Not Supported Yet In Starter] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
+    [Not supported yet in AGS Shared Cloud] Update xsolla UI configuration.Reference: [Xsolla Document](https://developers.xsolla.com/api.html#ui-integrations).
     Other detail info:
 
       * Returns : updated payment merchant config
@@ -3738,7 +3734,7 @@ async def update_xsolla_ui_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XsollaPaywallConfigRequest in body
+        body: (body) REQUIRED XsollaPaywallConfigRequest in body
 
         id_: (id) REQUIRED str in path
 
@@ -3748,8 +3744,8 @@ async def update_xsolla_ui_config_async(
         404: Not Found - ErrorEntity (33242: Payment merchant config [{id}] does not exist)
     """
     request = UpdateXsollaUIConfig.create(
-        id_=id_,
         body=body,
+        id_=id_,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

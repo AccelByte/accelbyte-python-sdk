@@ -49,9 +49,9 @@ from ..models import TicketBoothIDTypeEnum
 
 @same_doc_as(AcquireUserTicket)
 def acquire_user_ticket(
+    body: TicketAcquireRequest,
     booth_name: str,
     user_id: str,
-    body: Optional[TicketAcquireRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -76,7 +76,7 @@ def acquire_user_ticket(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TicketAcquireRequest in body
+        body: (body) REQUIRED TicketAcquireRequest in body
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -98,9 +98,9 @@ def acquire_user_ticket(
         if error:
             return None, error
     request = AcquireUserTicket.create(
+        body=body,
         booth_name=booth_name,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -108,9 +108,9 @@ def acquire_user_ticket(
 
 @same_doc_as(AcquireUserTicket)
 async def acquire_user_ticket_async(
+    body: TicketAcquireRequest,
     booth_name: str,
     user_id: str,
-    body: Optional[TicketAcquireRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -135,7 +135,7 @@ async def acquire_user_ticket_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TicketAcquireRequest in body
+        body: (body) REQUIRED TicketAcquireRequest in body
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -157,9 +157,9 @@ async def acquire_user_ticket_async(
         if error:
             return None, error
     request = AcquireUserTicket.create(
+        body=body,
         booth_name=booth_name,
         user_id=user_id,
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -169,8 +169,8 @@ async def acquire_user_ticket_async(
 
 @same_doc_as(DecreaseTicketSale)
 def decrease_ticket_sale(
+    body: TicketSaleDecrementRequest,
     booth_name: str,
-    body: Optional[TicketSaleDecrementRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -192,7 +192,7 @@ def decrease_ticket_sale(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TicketSaleDecrementRequest in body
+        body: (body) REQUIRED TicketSaleDecrementRequest in body
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -210,8 +210,8 @@ def decrease_ticket_sale(
         if error:
             return None, error
     request = DecreaseTicketSale.create(
-        booth_name=booth_name,
         body=body,
+        booth_name=booth_name,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -219,8 +219,8 @@ def decrease_ticket_sale(
 
 @same_doc_as(DecreaseTicketSale)
 async def decrease_ticket_sale_async(
+    body: TicketSaleDecrementRequest,
     booth_name: str,
-    body: Optional[TicketSaleDecrementRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -242,7 +242,7 @@ async def decrease_ticket_sale_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TicketSaleDecrementRequest in body
+        body: (body) REQUIRED TicketSaleDecrementRequest in body
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -260,8 +260,8 @@ async def decrease_ticket_sale_async(
         if error:
             return None, error
     request = DecreaseTicketSale.create(
-        booth_name=booth_name,
         body=body,
+        booth_name=booth_name,
         namespace=namespace,
     )
     return await run_request_async(
@@ -463,8 +463,8 @@ async def get_ticket_dynamic_async(
 
 @same_doc_as(IncreaseTicketSale)
 def increase_ticket_sale(
+    body: TicketSaleIncrementRequest,
     booth_name: str,
-    body: Optional[TicketSaleIncrementRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -489,7 +489,7 @@ def increase_ticket_sale(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TicketSaleIncrementRequest in body
+        body: (body) REQUIRED TicketSaleIncrementRequest in body
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -507,8 +507,8 @@ def increase_ticket_sale(
         if error:
             return None, error
     request = IncreaseTicketSale.create(
-        booth_name=booth_name,
         body=body,
+        booth_name=booth_name,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -516,8 +516,8 @@ def increase_ticket_sale(
 
 @same_doc_as(IncreaseTicketSale)
 async def increase_ticket_sale_async(
+    body: TicketSaleIncrementRequest,
     booth_name: str,
-    body: Optional[TicketSaleIncrementRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -542,7 +542,7 @@ async def increase_ticket_sale_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL TicketSaleIncrementRequest in body
+        body: (body) REQUIRED TicketSaleIncrementRequest in body
 
         booth_name: (boothName) REQUIRED str in path
 
@@ -560,8 +560,8 @@ async def increase_ticket_sale_async(
         if error:
             return None, error
     request = IncreaseTicketSale.create(
-        booth_name=booth_name,
         body=body,
+        booth_name=booth_name,
         namespace=namespace,
     )
     return await run_request_async(

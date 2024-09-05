@@ -53,7 +53,7 @@ class UpdateXblIAPConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL XblIAPConfigRequest in body
+        body: (body) REQUIRED XblIAPConfigRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -70,7 +70,7 @@ class UpdateXblIAPConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: XblIAPConfigRequest  # OPTIONAL in [body]
+    body: XblIAPConfigRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -196,12 +196,11 @@ class UpdateXblIAPConfig(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, body: Optional[XblIAPConfigRequest] = None, **kwargs
+        cls, body: XblIAPConfigRequest, namespace: str, **kwargs
     ) -> UpdateXblIAPConfig:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -233,7 +232,7 @@ class UpdateXblIAPConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

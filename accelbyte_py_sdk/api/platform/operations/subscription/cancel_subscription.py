@@ -57,7 +57,7 @@ class CancelSubscription(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL CancelRequest in body
+        body: (body) REQUIRED CancelRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -84,7 +84,7 @@ class CancelSubscription(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: CancelRequest  # OPTIONAL in [body]
+    body: CancelRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     subscription_id: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -257,19 +257,18 @@ class CancelSubscription(Operation):
     @classmethod
     def create(
         cls,
+        body: CancelRequest,
         namespace: str,
         subscription_id: str,
         user_id: str,
-        body: Optional[CancelRequest] = None,
         force: Optional[bool] = None,
         **kwargs,
     ) -> CancelSubscription:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.subscription_id = subscription_id
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if force is not None:
             instance.force = force
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -318,7 +317,7 @@ class CancelSubscription(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "subscriptionId": True,
             "userId": True,

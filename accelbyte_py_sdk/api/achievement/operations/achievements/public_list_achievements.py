@@ -52,12 +52,6 @@ class PublicListAchievements(Operation):
     Required permission
     `NAMESPACE:{namespace}:ACHIEVEMENT [READ]` and scope `social`
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:ACHIEVEMENT [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /achievement/v1/public/namespaces/{namespace}/achievements
 
@@ -190,7 +184,7 @@ class PublicListAchievements(Operation):
         self.namespace = value
         return self
 
-    def with_global_(self, value: bool) -> PublicListAchievements:
+    def with_global(self, value: bool) -> PublicListAchievements:
         self.global_ = value
         return self
 

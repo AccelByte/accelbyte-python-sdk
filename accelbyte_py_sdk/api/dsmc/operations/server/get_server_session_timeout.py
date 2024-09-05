@@ -45,12 +45,6 @@ class GetServerSessionTimeout(Operation):
     DS will use this session timeout to make sure it regularly make heartbeat
     call to the DSMC, before the session timeout.```
 
-    Required Permission(s):
-        - NAMESPACE:{namespace}:DSM:CONFIG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dsmcontroller/namespaces/{namespace}/servers/{podName}/config/sessiontimeout
 

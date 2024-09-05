@@ -38,12 +38,6 @@ class GetRegisteredEventsByEventTypeHandler(Operation):
 
     Required permission `ADMIN:NAMESPACE:{namespace}:EVENT [READ]`and scope `analytics`
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:EVENT [READ]
-
-    Required Scope(s):
-        - analytics
-
     Properties:
         url: /event/registry/eventTypes/{eventType}
 

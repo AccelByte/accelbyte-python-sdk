@@ -36,7 +36,7 @@ from ...models import PaymentCallbackConfigUpdate
 class UpdatePaymentCallbackConfig(Operation):
     """Update payment callback configuration (updatePaymentCallbackConfig)
 
-    [Not Supported Yet In Starter] Update payment callback configuration.
+    [Not supported yet in AGS Shared Cloud] Update payment callback configuration.
     Other detail info:
 
       * Returns : Payment callback config
@@ -54,7 +54,7 @@ class UpdatePaymentCallbackConfig(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PaymentCallbackConfigUpdate in body
+        body: (body) REQUIRED PaymentCallbackConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -71,7 +71,7 @@ class UpdatePaymentCallbackConfig(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: PaymentCallbackConfigUpdate  # OPTIONAL in [body]
+    body: PaymentCallbackConfigUpdate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -199,15 +199,11 @@ class UpdatePaymentCallbackConfig(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        body: Optional[PaymentCallbackConfigUpdate] = None,
-        **kwargs,
+        cls, body: PaymentCallbackConfigUpdate, namespace: str, **kwargs
     ) -> UpdatePaymentCallbackConfig:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -239,7 +235,7 @@ class UpdatePaymentCallbackConfig(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

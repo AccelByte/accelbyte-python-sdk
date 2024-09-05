@@ -39,9 +39,6 @@ class AdminResetServicesConfiguration(Operation):
     Reset Registered Services Configuration to use the default configuration.
     Scope: account
 
-    Required Scope(s):
-        - account
-
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/services/configurations/reset
 

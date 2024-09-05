@@ -36,7 +36,7 @@ class TypeEnum(StrEnum):
 
 
 class NamespaceContext(Model):
-    """Namespace context (NamespaceContext)
+    """This model is used to indicate the context of a namespace (NamespaceContext)
 
     Properties:
         namespace: (namespace) OPTIONAL str

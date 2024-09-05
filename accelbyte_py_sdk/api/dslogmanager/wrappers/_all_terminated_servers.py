@@ -53,12 +53,6 @@ def batch_download_server_logs(
 
     This endpoint will download dedicated server's log file (.zip).
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
-
-    Required Scope(s):
-        - social
-
     Properties:
         url: /dslogmanager/servers/logs/download
 
@@ -100,12 +94,6 @@ async def batch_download_server_logs_async(
     Required scope: social
 
     This endpoint will download dedicated server's log file (.zip).
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:LOG [READ]
-
-    Required Scope(s):
-        - social
 
     Properties:
         url: /dslogmanager/servers/logs/download
@@ -164,9 +152,6 @@ def list_all_terminated_servers(
 
     This endpoint used to retrieve terminated servers in all namespace
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
 
     Properties:
         url: /dslogmanager/servers/search
@@ -268,9 +253,6 @@ async def list_all_terminated_servers_async(
     This endpoint used to retrieve terminated servers in all namespace
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
-
     Properties:
         url: /dslogmanager/servers/search
 
@@ -361,9 +343,6 @@ def list_metadata_servers(
     The namespace filter is will give result exact namespace response
     ```
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
-
     Properties:
         url: /dslogmanager/servers/metadata
 
@@ -409,9 +388,6 @@ async def list_metadata_servers_async(
 
     The namespace filter is will give result exact namespace response
     ```
-
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:DSLM:SERVER [READ]
 
     Properties:
         url: /dslogmanager/servers/metadata

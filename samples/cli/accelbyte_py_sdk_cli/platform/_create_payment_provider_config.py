@@ -40,12 +40,12 @@ from accelbyte_py_sdk.api.platform.models import ValidationErrorEntity
 
 
 @click.command()
-@click.option("--body", "body", type=str)
+@click.argument("body", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def create_payment_provider_config(
-    body: Optional[str] = None,
+    body: str,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,

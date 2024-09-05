@@ -41,9 +41,6 @@ class QoSRegionsUpdate(Operation):
 
     This endpoint updates the registered QoS service's configurable configuration.
 
-    Required Permission(s):
-        - ADMIN:NAMESPACE:{namespace}:QOS:SERVER [UPDATE]
-
     Properties:
         url: /ams/v1/admin/namespaces/{namespace}/qos/{region}
 

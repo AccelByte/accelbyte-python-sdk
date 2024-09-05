@@ -150,9 +150,6 @@ def admin_get_platform_credentials(
     - clientSecret: Auth Server (Client Credential) Secret. For security, only the first few characters are shown.
     - scope: should be psn:s2s.service (For Sync non PSN member to PSN Session)
 
-    Required Scope(s):
-        - should
-
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials
 
@@ -204,9 +201,6 @@ async def admin_get_platform_credentials_async(
     - clientID: Auth Server (Client Credential) ClientID
     - clientSecret: Auth Server (Client Credential) Secret. For security, only the first few characters are shown.
     - scope: should be psn:s2s.service (For Sync non PSN member to PSN Session)
-
-    Required Scope(s):
-        - should
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials
@@ -264,9 +258,6 @@ def admin_update_platform_credentials(
     - clientSecret: Auth Server (Client Credential) Secret
     - scope: psn:s2s.service (For Sync non PSN member to PSN Session)
 
-    Required Scope(s):
-        - psn
-
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials
 
@@ -323,9 +314,6 @@ async def admin_update_platform_credentials_async(
     - clientID: Auth Server (Client Credential) ClientID
     - clientSecret: Auth Server (Client Credential) Secret
     - scope: psn:s2s.service (For Sync non PSN member to PSN Session)
-
-    Required Scope(s):
-        - psn
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials

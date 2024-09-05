@@ -822,7 +822,9 @@ def public_sync_psn_dlc_inventory(
     Responses:
         204: No Content - (Successful operation)
 
-        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}])
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}] | 39132: Bad request for playstation under namespace [{namespace}], reason: [{reason}].)
+
+        404: Not Found - ErrorEntity (39143: PlayStation IAP config not found in namespace [{namespace}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -872,7 +874,9 @@ async def public_sync_psn_dlc_inventory_async(
     Responses:
         204: No Content - (Successful operation)
 
-        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}])
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}] | 39132: Bad request for playstation under namespace [{namespace}], reason: [{reason}].)
+
+        404: Not Found - ErrorEntity (39143: PlayStation IAP config not found in namespace [{namespace}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -924,7 +928,9 @@ def public_sync_psn_dlc_inventory_with_multiple_service_labels(
     Responses:
         204: No Content - (Successful operation)
 
-        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}])
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}] | 39132: Bad request for playstation under namespace [{namespace}], reason: [{reason}].)
+
+        404: Not Found - ErrorEntity (39143: PlayStation IAP config not found in namespace [{namespace}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -974,7 +980,9 @@ async def public_sync_psn_dlc_inventory_with_multiple_service_labels_async(
     Responses:
         204: No Content - (Successful operation)
 
-        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}])
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39127: Invalid service label [{serviceLabel}] | 39132: Bad request for playstation under namespace [{namespace}], reason: [{reason}].)
+
+        404: Not Found - ErrorEntity (39143: PlayStation IAP config not found in namespace [{namespace}])
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1025,6 +1033,8 @@ def sync_epic_game_dlc(
         204: No Content - (Successful operation)
 
         400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+
+        404: Not Found - ErrorEntity (39147: Epic IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1073,6 +1083,8 @@ async def sync_epic_game_dlc_async(
         204: No Content - (Successful operation)
 
         400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+
+        404: Not Found - ErrorEntity (39147: Epic IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1119,7 +1131,9 @@ def sync_oculus_dlc(
     Responses:
         204: No Content - (Successful operation)
 
-        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+        400: Bad Request - ErrorEntity (39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39134: Invalid Oculus IAP config under namespace [{namespace}]: [{message}] | 39133: Bad request for Oculus: [{reason}])
+
+        404: Not Found - ErrorEntity (39146: Oculus IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1163,7 +1177,9 @@ async def sync_oculus_dlc_async(
     Responses:
         204: No Content - (Successful operation)
 
-        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+        400: Bad Request - ErrorEntity (39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39134: Invalid Oculus IAP config under namespace [{namespace}]: [{message}] | 39133: Bad request for Oculus: [{reason}])
+
+        404: Not Found - ErrorEntity (39146: Oculus IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1180,8 +1196,8 @@ async def sync_oculus_dlc_async(
 
 @same_doc_as(SyncSteamDLC)
 def sync_steam_dlc(
+    body: SteamDLCSyncRequest,
     user_id: str,
-    body: Optional[SteamDLCSyncRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1203,7 +1219,7 @@ def sync_steam_dlc(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SteamDLCSyncRequest in body
+        body: (body) REQUIRED SteamDLCSyncRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1213,14 +1229,16 @@ def sync_steam_dlc(
         204: No Content - (Successful operation)
 
         400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = SyncSteamDLC.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1228,8 +1246,8 @@ def sync_steam_dlc(
 
 @same_doc_as(SyncSteamDLC)
 async def sync_steam_dlc_async(
+    body: SteamDLCSyncRequest,
     user_id: str,
-    body: Optional[SteamDLCSyncRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1251,7 +1269,7 @@ async def sync_steam_dlc_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL SteamDLCSyncRequest in body
+        body: (body) REQUIRED SteamDLCSyncRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1261,14 +1279,16 @@ async def sync_steam_dlc_async(
         204: No Content - (Successful operation)
 
         400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
         if error:
             return None, error
     request = SyncSteamDLC.create(
-        user_id=user_id,
         body=body,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1310,7 +1330,9 @@ def sync_xbox_dlc(
     Responses:
         204: No Content - (Successful operation)
 
-        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39221: Invalid Xbox Business Partner Certificate or password: [{message}])
+
+        404: Not Found - ErrorEntity (39145: XBox IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1358,7 +1380,9 @@ async def sync_xbox_dlc_async(
     Responses:
         204: No Content - (Successful operation)
 
-        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}])
+        400: Bad Request - ErrorEntity (39125: Invalid platform [{platformId}] user token | 39126: User id [{}] in namespace [{}] doesn't link platform [{}] | 39221: Invalid Xbox Business Partner Certificate or password: [{message}])
+
+        404: Not Found - ErrorEntity (39145: XBox IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1376,7 +1400,7 @@ async def sync_xbox_dlc_async(
 
 @same_doc_as(UpdateDLCItemConfig)
 def update_dlc_item_config(
-    body: Optional[DLCItemConfigUpdate] = None,
+    body: DLCItemConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1400,7 +1424,7 @@ def update_dlc_item_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL DLCItemConfigUpdate in body
+        body: (body) REQUIRED DLCItemConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1426,7 +1450,7 @@ def update_dlc_item_config(
 
 @same_doc_as(UpdateDLCItemConfig)
 async def update_dlc_item_config_async(
-    body: Optional[DLCItemConfigUpdate] = None,
+    body: DLCItemConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1450,7 +1474,7 @@ async def update_dlc_item_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL DLCItemConfigUpdate in body
+        body: (body) REQUIRED DLCItemConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1478,7 +1502,7 @@ async def update_dlc_item_config_async(
 
 @same_doc_as(UpdatePlatformDLCConfig)
 def update_platform_dlc_config(
-    body: Optional[PlatformDLCConfigUpdate] = None,
+    body: PlatformDLCConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1520,7 +1544,7 @@ def update_platform_dlc_config(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PlatformDLCConfigUpdate in body
+        body: (body) REQUIRED PlatformDLCConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1542,7 +1566,7 @@ def update_platform_dlc_config(
 
 @same_doc_as(UpdatePlatformDLCConfig)
 async def update_platform_dlc_config_async(
-    body: Optional[PlatformDLCConfigUpdate] = None,
+    body: PlatformDLCConfigUpdate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1584,7 +1608,7 @@ async def update_platform_dlc_config_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL PlatformDLCConfigUpdate in body
+        body: (body) REQUIRED PlatformDLCConfigUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 

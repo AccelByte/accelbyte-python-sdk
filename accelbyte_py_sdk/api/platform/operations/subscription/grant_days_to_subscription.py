@@ -56,7 +56,7 @@ class GrantDaysToSubscription(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL GrantSubscriptionDaysRequest in body
+        body: (body) REQUIRED GrantSubscriptionDaysRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -79,7 +79,7 @@ class GrantDaysToSubscription(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: GrantSubscriptionDaysRequest  # OPTIONAL in [body]
+    body: GrantSubscriptionDaysRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     subscription_id: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -232,18 +232,17 @@ class GrantDaysToSubscription(Operation):
     @classmethod
     def create(
         cls,
+        body: GrantSubscriptionDaysRequest,
         namespace: str,
         subscription_id: str,
         user_id: str,
-        body: Optional[GrantSubscriptionDaysRequest] = None,
         **kwargs,
     ) -> GrantDaysToSubscription:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.subscription_id = subscription_id
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -285,7 +284,7 @@ class GrantDaysToSubscription(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "subscriptionId": True,
             "userId": True,
