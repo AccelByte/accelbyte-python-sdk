@@ -67,27 +67,28 @@ from ._model import Model
 from ._operation import Operation
 from ._strenum import StrEnum
 
+from ._http_utils import clean_content_type
+from ._http_utils import create_basic_authentication
+from ._http_utils import create_pkce_verifier_and_challenge_plain
+from ._http_utils import create_pkce_verifier_and_challenge_s256
+from ._http_utils import create_url
+from ._http_utils import flatten_query_params
+from ._http_utils import generate_amazon_xray_trace_id
+from ._http_utils import get_query_from_http_redirect_response
+from ._http_utils import is_json_mime_type
+from ._http_utils import try_convert_content_type
+
 from ._utils import SENTINEL
 from ._utils import add_buffered_file_handler_to_logger
 from ._utils import add_stream_handler_to_logger
-from ._utils import clean_content_type
-from ._utils import create_basic_authentication
-from ._utils import create_pkce_verifier_and_challenge_plain
-from ._utils import create_pkce_verifier_and_challenge_s256
-from ._utils import create_url
-from ._utils import flatten_query_params
 from ._utils import generate_id
-from ._utils import generate_amazon_xray_trace_id
 from ._utils import generate_websocket_message_id
 from ._utils import get_env_config
 from ._utils import get_env_user_credentials
 from ._utils import get_logger
-from ._utils import get_query_from_http_redirect_response
-from ._utils import is_json_mime_type
 from ._utils import set_env_config
 from ._utils import set_env_user_credentials
 from ._utils import set_logger_level
-from ._utils import try_convert_content_type
 
 from ._flight_id import get_default_flight_id
 from ._flight_id import set_default_flight_id

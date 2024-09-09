@@ -14,7 +14,7 @@ from typing import Protocol, runtime_checkable
 import websockets
 import websockets.exceptions
 
-from ._utils import create_basic_authentication
+from ._http_utils import create_basic_authentication
 
 
 def empty_queue(queue: asyncio.Queue) -> None:

@@ -6,8 +6,8 @@ from __future__ import annotations
 from typing import Dict, Tuple, Union
 
 from ._headerstr import HeaderStr
-from ._utils import create_basic_authentication
-from ._utils import generate_amazon_xray_trace_id
+from ._http_utils import create_basic_authentication
+from ._http_utils import generate_amazon_xray_trace_id
 
 import accelbyte_py_sdk
 

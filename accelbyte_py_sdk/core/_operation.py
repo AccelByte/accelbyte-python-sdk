@@ -8,9 +8,9 @@ from re import Pattern
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ._http_response import HttpResponse
+from ._http_utils import clean_content_type
+from ._http_utils import try_convert_content_type
 from ._model import Model
-from ._utils import clean_content_type
-from ._utils import try_convert_content_type
 from ._validators import validate_field
 
 

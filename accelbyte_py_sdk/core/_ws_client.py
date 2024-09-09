@@ -10,7 +10,8 @@ from typing import Awaitable, Callable, Dict, List, Optional, Union
 
 import websockets
 
-from ._utils import create_basic_authentication, generate_websocket_message_id
+from ._http_utils import create_basic_authentication
+from ._utils import generate_websocket_message_id
 
 _LOGGER = logging.getLogger("accelbyte_py_sdk.ws")
 

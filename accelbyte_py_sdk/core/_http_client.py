@@ -4,12 +4,9 @@
 
 import asyncio
 import logging
-import shutil
 import time
 from abc import ABC, abstractmethod
 from datetime import timedelta
-from functools import partial
-from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 import httpx
@@ -18,9 +15,8 @@ import requests
 from ._http_backoff_policy import HttpBackoffPolicy
 from ._http_response import HttpResponse
 from ._http_retry_policy import HttpRetryPolicy
+from ._http_utils import create_curl_request, is_json_mime_type
 from ._proto_http_request import ProtoHttpRequest
-from ._proto_http_request import is_json_mime_type
-from ._utils import create_curl_request
 
 _LOGGER = logging.getLogger("accelbyte_py_sdk.http")
 

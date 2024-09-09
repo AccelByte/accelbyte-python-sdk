@@ -13,13 +13,11 @@ from ._config_repository import ConfigRepository, CONFIG_REPOS, DEFAULT_CONFIG_R
 from ._flight_id import add_flight_id
 from ._http_client import HttpClient, HTTP_CLIENTS, DEFAULT_HTTP_CLIENT
 from ._http_response import HttpResponse
+from ._http_utils import get_query_from_http_redirect_response
 from ._operation import Operation
 from ._proto_http_request import ProtoHttpRequest, create_proto_from_operation
 from ._token_repository import TokenRepository, TOKEN_REPOS, DEFAULT_TOKEN_REPO
-from ._utils import (
-    add_buffered_file_handler_to_logger,
-    get_query_from_http_redirect_response,
-)
+from ._utils import add_buffered_file_handler_to_logger
 
 
 class OperationPreprocessor(Protocol):

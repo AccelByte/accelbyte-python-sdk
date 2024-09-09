@@ -13,12 +13,12 @@ from ._token_repository import TokenRepository
 from ._header import Header
 from ._headerstr import HeaderStr
 from ._http_response import HttpResponse
+from ._http_utils import create_basic_authentication
+from ._http_utils import create_url
+from ._http_utils import is_file
+from ._http_utils import is_json_mime_type
 from ._operation import Operation
 from ._utils import SENTINEL
-from ._utils import create_basic_authentication
-from ._utils import create_url
-from ._utils import is_file
-from ._utils import is_json_mime_type
 
 
 @dataclass

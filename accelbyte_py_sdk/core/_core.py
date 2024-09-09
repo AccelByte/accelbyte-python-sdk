@@ -25,16 +25,14 @@ from ._token_repository import MyTokenRepository
 from ._http_client import HttpClient
 from ._http_client import RequestsHttpClient
 from ._http_client import HttpxHttpClient
-
+from ._http_response import HttpResponse
+from ._http_utils import get_query_from_http_redirect_response
 from ._proto_http_request import ProtoHttpRequest
 from ._proto_http_request import create_proto_from_operation
-
-from ._http_response import HttpResponse
 
 from ._operation import Operation
 
 from ._utils import add_buffered_file_handler_to_logger
-from ._utils import get_query_from_http_redirect_response
 
 _LOGGER = logging.getLogger("accelbyte_py_sdk")
 
