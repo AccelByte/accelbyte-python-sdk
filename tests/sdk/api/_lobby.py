@@ -15,7 +15,7 @@ from accelbyte_py_sdk.api.lobby.wss_models import ConnectNotif, RefreshTokenRequ
 
 class AsyncMockLobbyServerWebSocketTestCase(IsolatedAsyncioTestCase):
     reachable: bool = True
-    base_url: str = "http://localhost:8080"
+    base_url: str = "http://localhost:8000"
     ready_endpoint: str = f"{base_url}/ready"
 
     @classmethod
@@ -122,7 +122,7 @@ class AsyncMockLobbyServerWebSocketTestCase(IsolatedAsyncioTestCase):
             self.ws_client.get_data(self.ws_client.LOBBY_SESSION_ID_DATA_KEY),
         )
 
-        self.force_close(code=2000)
+        self.force_close(code=1001)
 
         await asyncio.sleep(2.0)
 

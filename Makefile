@@ -28,22 +28,31 @@ lint: clean
 test_core:
 	@test -n "$(SDK_MOCK_SERVER_PATH)" || (echo "SDK_MOCK_SERVER_PATH is not set" ; exit 1)
 	rm -f test_core.err
-	sed -i "s/\r//" "$(SDK_MOCK_SERVER_PATH)/mock-server.sh" && \
-			trap "docker stop --time 1 justice-codegen-sdk-mock-server && docker rm --force mylocal_httpbin" EXIT && \
-			echo "[info] running httpbin" && \
-			docker run -d -p 8070:80 --name mylocal_httpbin --network host --rm kennethreitz/httpbin && \
+	trap "docker stop --time 1 justice-codegen-sdk-mock-server justice-codegen-sdk-ws-mock-server; docker rm --force mylocal_httpbin" EXIT && \
+		echo "[info] running httpbin" && \
+			docker run -d -p 8070:80 --name mylocal_httpbin --rm kennethreitz/httpbin && \
 			echo "[info] httpbin ready" && \
-			echo "[info] running mock-server" && \
-			(bash "$(SDK_MOCK_SERVER_PATH)/mock-server.sh" -s /data/spec --save_files y &) && \
+		echo "[info] running mock-server" && \
+			(bash "$(SDK_MOCK_SERVER_PATH)/mock-server.sh" -s /data/spec -t "-" --save_files y &) && \
 			(for i in $$(seq 1 10); do echo "[info] pinging mock-server" && bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8080" 2>/dev/null && exit 0 || sleep 10; done; echo "[erro] can't connect to mock-server"; exit 1) && \
 			echo "[info] mock-server ready" && \
-			docker run --rm --tty --entrypoint /bin/bash --env PIP_CACHE_DIR=/tmp/pip --name ab_py_sdk_core_test --network host --user $$(id -u):$$(id -g) --volume $$(pwd):/data --workdir /data python:3.9-slim \
-					-c 'rm -f /data/test_core.tap && \
-							python -m venv /tmp/client && \
-							echo "[info] installing requirements-test.txt" && \
-							(cd /data && /tmp/client/bin/pip install -r requirements-test.txt) && \
-							echo "[info] running tests" && \
-							((PYTHONPATH=/data:$$PYTHONPATH /tmp/client/bin/python test.py --test_core Y --use_tap || touch /data/test_core.err) | tee "/data/test_core.tap")'
+		echo "[info] running ws-mock-server" && \
+			(SPEC_DIR=/data/spec bash "$(SDK_MOCK_SERVER_PATH)/ws/ws-mock-server.sh" &) && \
+			(for i in $$(seq 1 10); do echo "[info] pinging ws-mock-server" && bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8000" 2>/dev/null && exit 0 || sleep 10; done; echo "[erro] can't connect to ws-mock-server"; exit 1) && \
+			echo "[info] ws-mock-server ready" && \
+		docker run --rm --tty --network host \
+			--user $$(id -u):$$(id -g) \
+			--volume $$(pwd):/data --workdir /data \
+			--env PIP_CACHE_DIR=/tmp/pip \
+			--name ab_py_sdk_core_test \
+			--entrypoint /bin/bash \
+			python:3.9-slim \
+				-c 'rm -f /data/test_core.tap && \
+					python -m venv /tmp/client && \
+					echo "[info] installing requirements-test.txt" && \
+					(cd /data && /tmp/client/bin/pip install --upgrade pip && /tmp/client/bin/pip install -r requirements-test.txt) && \
+					echo "[info] running tests" && \
+					((PYTHONPATH=/data:$$PYTHONPATH /tmp/client/bin/python test.py --test_core Y --use_tap || touch /data/test_core.err) | tee "/data/test_core.tap")'
 	[ ! -f test_core.err ]
 
 test_integration:
@@ -59,17 +68,30 @@ test_integration:
 test_cli:
 	@test -n "$(SDK_MOCK_SERVER_PATH)" || (echo "SDK_MOCK_SERVER_PATH is not set" ; exit 1)
 	rm -f test_cli.err
-	docker run -t --rm -u $$(id -u):$$(id -g) -v $$(readlink -f "$(SDK_MOCK_SERVER_PATH)"):/server -v $$(pwd):/data -w /data --entrypoint /bin/bash -e PIP_CACHE_DIR=/tmp/pip -e BATCH=true python:3.9-slim \
-			-c 'python -m venv /tmp/server && \
-					(cd /server && /tmp/server/bin/pip install -r requirements.txt) && \
-					python -m venv /tmp/client && \
-					(cd samples/cli && /tmp/client/bin/pip install -r requirements.txt) && \
-					(PYTHONPATH=/server:$$PYTHONPATH /tmp/server/bin/python -m justice_sdk_mock_server -s /data/spec &) && \
-					(for i in $$(seq 1 10); do bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8080" 2>/dev/null && exit 0 || sleep 10; done; exit 1) && \
-					sed -i "s/\r//" samples/cli/tests/* && \
+	trap "docker stop --time 1 justice-codegen-sdk-mock-server justice-codegen-sdk-ws-mock-server" EXIT && \
+		echo "[info] running mock-server" && \
+			(bash "$(SDK_MOCK_SERVER_PATH)/mock-server.sh" -s /data/spec -t "-" --save_files y &) && \
+			(for i in $$(seq 1 10); do echo "[info] pinging mock-server" && bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8080" 2>/dev/null && exit 0 || sleep 10; done; echo "[erro] can't connect to mock-server"; exit 1) && \
+			echo "[info] mock-server ready" && \
+		echo "[info] running ws-mock-server" && \
+			(SPEC_DIR=/data/spec bash "$(SDK_MOCK_SERVER_PATH)/ws/ws-mock-server.sh" &) && \
+			(for i in $$(seq 1 10); do echo "[info] pinging ws-mock-server" && bash -c "timeout 1 echo > /dev/tcp/127.0.0.1/8000" 2>/dev/null && exit 0 || sleep 10; done; echo "[erro] can't connect to ws-mock-server"; exit 1) && \
+			echo "[info] ws-mock-server ready" && \
+		docker run --rm --tty --network host \
+			--user $$(id -u):$$(id -g) \
+			--volume $$(pwd):/data --workdir /data \
+			--env PIP_CACHE_DIR=/tmp/pip \
+			--env BATCH=true \
+			--name ab_py_sdk_cli_test \
+			--entrypoint /bin/bash \
+			python:3.9-slim \
+				-c 'python -m venv /tmp/client && \
+					echo "[info] installing samples/cli/requirements.txt" && \
+					(cd /data/samples/cli && /tmp/client/bin/pip install --upgrade pip && /tmp/client/bin/pip install -r requirements.txt) && \
+					echo "[info] running samples/cli/tests" && \
 					rm -f samples/cli/tests/*.tap && \
-					(cd samples/cli && . /tmp/client/bin/activate && for FILE in $$(ls /data/samples/cli/tests/*.sh); do \
-							(set -o pipefail; bash $${FILE} | tee "$${FILE}.tap") || touch /data/test_cli.err; \
+					(cd /data/samples/cli && . /tmp/client/bin/activate && for FILE in $$(ls /data/samples/cli/tests/*.sh); do \
+						(set -o pipefail; bash $${FILE} | tee "$${FILE}.tap") || touch /data/test_cli.err; \
 					done)'
 	[ ! -f test_cli.err ]
 

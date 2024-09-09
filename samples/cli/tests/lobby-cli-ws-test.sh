@@ -18,7 +18,7 @@ PYTHON='python3'
 MODULE='accelbyte_py_sdk_cli'
 MODULE_PATH='../samples/cli'
 
-export AB_BASE_URL="http://127.0.0.1:8080"
+export AB_BASE_URL="http://127.0.0.1:8000"
 export AB_CLIENT_ID="admin"
 export AB_CLIENT_SECRET="admin"
 export AB_NAMESPACE="test"
