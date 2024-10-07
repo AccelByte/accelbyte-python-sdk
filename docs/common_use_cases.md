@@ -370,6 +370,114 @@ def test_put_game_record_handler_v1(self):
     self.assertIn("foo", result.value)
     self.assertEqual("baz", result.value["foo"])
 ```
+### Delete Player Record Handler V1
+
+```python
+def test_delete_player_record_handler_v1(self):
+    from accelbyte_py_sdk.api.cloudsave import delete_player_record_handler_v1
+    from accelbyte_py_sdk.api.cloudsave import post_player_record_handler_v1
+
+    self.user_id = self.get_user_id()
+
+    # arrange
+    _, error = post_player_record_handler_v1(
+        body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+    )
+    self.log_warning(
+        msg=f"Failed to set up player record handler. {str(error)}",
+        condition=error is not None,
+    )
+
+    # act
+    _, error = delete_player_record_handler_v1(key=self.post_player_record_handler_key, user_id=self.user_id)
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Create Player Record Handler V1
+
+```python
+def test_create_player_record_handler_v1(self):
+    from accelbyte_py_sdk.api.cloudsave import post_player_record_handler_v1
+
+    self.user_id = self.get_user_id()
+
+    # act
+    _, error = post_player_record_handler_v1(
+        body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+    )
+    self.log_warning(
+        msg=f"Failed to set up player record handler. {str(error)}",
+        condition=error is not None,
+    )
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Get Player Record Handler V1
+
+```python
+def test_get_player_record_handler_v1(self):
+    from accelbyte_py_sdk.api.cloudsave import get_player_record_handler_v1
+    from accelbyte_py_sdk.api.cloudsave import post_player_record_handler_v1
+
+    self.user_id = self.get_user_id()
+
+    # arrange
+    _, error = post_player_record_handler_v1(
+        body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+    )
+    self.log_warning(
+        msg=f"Failed to set up player record handler. {str(error)}",
+        condition=error is not None,
+    )
+
+    # act
+    _, error = get_player_record_handler_v1(key=self.post_player_record_handler_key, user_id=self.user_id)
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Put Player Record Handler V1
+
+```python
+def test_put_player_record_handler_v1(self):
+    from accelbyte_py_sdk.api.cloudsave import get_player_record_handler_v1
+    from accelbyte_py_sdk.api.cloudsave import post_player_record_handler_v1
+    from accelbyte_py_sdk.api.cloudsave import put_player_record_handler_v1
+    from accelbyte_py_sdk.api.cloudsave.models import ModelsPlayerRecordRequest
+    from accelbyte_py_sdk.api.cloudsave.models import ModelsPlayerRecordResponse
+
+    self.user_id = self.get_user_id()
+
+    # arrange
+    _, error = post_player_record_handler_v1(
+        body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+    )
+    self.log_warning(
+        msg=f"Failed to set up player record handler. {str(error)}",
+        condition=error is not None,
+    )
+
+    # act
+    _, error = put_player_record_handler_v1(
+        body=ModelsPlayerRecordRequest.create(dict_={"foo": "baz"}),
+        key=self.post_player_record_handler_key,
+        user_id = self.user_id,
+    )
+
+    # assert
+    self.assertIsNone(error, error)
+
+    result, error = get_player_record_handler_v1(
+        key=self.post_player_record_handler_key, user_id=self.user_id
+    )
+    self.assertIsNotNone(result)
+    self.assertIsInstance(result, ModelsPlayerRecordResponse)
+    self.assertIsNotNone(result.value)
+    self.assertIn("foo", result.value)
+    self.assertEqual("baz", result.value["foo"])
+```
 ## Game Telemetry
 
 Source: [gametelemetry.py](../tests/integration/api/gametelemetry.py)
@@ -490,7 +598,6 @@ def test_admin_submit_user_account_deletion_request(self):
         self.skipTest(reason="Test not applicable to AGS Starter.")
 
     from accelbyte_py_sdk.api.gdpr import admin_submit_user_account_deletion_request
-    from accelbyte_py_sdk.api.gdpr import admin_cancel_user_account_deletion_request
 
     # arrange
     _, error, user_id = self.do_create_user(
@@ -508,14 +615,6 @@ def test_admin_submit_user_account_deletion_request(self):
 
     # assert
     self.assertIsNone(error, error)
-
-    # clean up
-    #   the GDPR deletion is an async process, this request will cancel the
-    #   previous request since we are going to delete the user we created
-    #   in the tear down step
-    _, _ = admin_cancel_user_account_deletion_request(
-        user_id=self.user_id, namespace=self.user_namespace
-    )
 ```
 ### Delete Admin Email Configuration
 
