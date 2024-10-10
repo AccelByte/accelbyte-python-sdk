@@ -160,7 +160,7 @@ class WSClient:
         headers = self._make_headers(**connect_kwargs)
 
         self._state = WSClientState.CONNECTING
-        self._connection = await self._create_connection(url=url, headers=headers)
+        self._connection = await self._create_connection(url=url, headers=headers, **connect_kwargs)
         self._setup()
         self._state = WSClientState.CONNECTED
 
@@ -264,8 +264,32 @@ class WSClient:
     async def _create_connection(
         self, url: str, headers: Optional[Dict[str, str]], **kwargs
     ) -> Any:
-        # pylint: disable=no-member
-        return await websockets.connect(uri=url, extra_headers=headers)
+        if headers and "extra_headers" in kwargs:
+            extra_headers = kwargs.pop("extra_headers")
+            if extra_headers:
+                headers.update(extra_headers)
+
+        for key in list(kwargs.keys()):
+            if key not in (
+                "create_protocol",
+                "logger",
+                "compression",
+                "origin",
+                "extensions",
+                "subprotocols",
+                "user_agent_header",
+                "open_timeout",
+                "ping_interval",
+                "ping_timeout",
+                "close_timeout",
+                "max_size",
+                "max_queue",
+                "read_limit",
+                "write_limit",
+            ):
+                _ = kwargs.pop(key)
+
+        return await websockets.connect(uri=url, extra_headers=headers, **kwargs)
 
     async def _close_connection(
         self, code: int = 1000, reason: str = "", **kwargs
