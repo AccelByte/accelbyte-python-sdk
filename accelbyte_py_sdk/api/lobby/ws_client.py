@@ -25,6 +25,9 @@ class LobbyWSClient(WSClient):
             if lobby_session_id := self.get_data(self.LOBBY_SESSION_ID_DATA_KEY):
                 extra_headers[self.LOBBY_SESSION_ID_HEADER_KEY] = lobby_session_id
 
+        if not extra_headers:
+            extra_headers = None
+
         return await super().connect(
             reconnecting=reconnecting,
             url_suffix=url_suffix,
