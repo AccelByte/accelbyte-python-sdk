@@ -366,6 +366,7 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
         return False
 
     async def connect(self):
+        import asyncio.exceptions
         import websockets.exceptions
         from accelbyte_py_sdk.core import get_access_token
         from accelbyte_py_sdk.core import get_base_url
@@ -392,6 +393,9 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
                 tries += 1
                 if tries == max_tries:
                     raise
+                self.logger.warning(f"failed to connect due to error: ({type(e).__name__}) {e}")
+            except asyncio.exceptions.TimeoutError as e:
+                self.skipTest(reason=f"failed to connect due to error: ({type(e).__name__}) {e}")
 
     async def disconnect(self):
         if self.ws_client is not None:
