@@ -289,6 +289,7 @@ class WSClient:
             ):
                 _ = kwargs.pop(key)
 
+        # pylint: disable=no-member
         return await websockets.connect(uri=url, extra_headers=headers, **kwargs)
 
     async def _close_connection(
