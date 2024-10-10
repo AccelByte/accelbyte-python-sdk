@@ -366,6 +366,7 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
         return False
 
     async def connect(self):
+        import websockets.exceptions
         from accelbyte_py_sdk.core import get_access_token
         from accelbyte_py_sdk.core import get_base_url
 
@@ -379,7 +380,18 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
 
         self.ws_client.listeners.append(self.on_receive)
 
-        await self.ws_client.connect()
+        tries = 0
+        max_tries = 3
+        while True:
+            try:
+                await self.ws_client.connect(open_timeout=60)
+                break
+            except websockets.exceptions.SecurityError as e:
+                if e.args[0] != "too many redirects":
+                    raise
+                tries += 1
+                if tries == max_tries:
+                    raise
 
     async def disconnect(self):
         if self.ws_client is not None:
