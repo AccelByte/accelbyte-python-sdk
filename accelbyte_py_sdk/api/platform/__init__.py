@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.56.0"
+__version__ = "5.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -317,6 +317,8 @@ from .wrappers import query_fulfillments
 from .wrappers import query_fulfillments_async
 from .wrappers import redeem_code
 from .wrappers import redeem_code_async
+from .wrappers import retry_fulfill_items
+from .wrappers import retry_fulfill_items_async
 from .wrappers import revoke_items
 from .wrappers import revoke_items_async
 
@@ -351,6 +353,8 @@ from .wrappers import delete_twitch_iap_config
 from .wrappers import delete_twitch_iap_config_async
 from .wrappers import delete_xbl_ap_config
 from .wrappers import delete_xbl_ap_config_async
+from .wrappers import get_apple_config_version
+from .wrappers import get_apple_config_version_async
 from .wrappers import get_apple_iap_config
 from .wrappers import get_apple_iap_config_async
 from .wrappers import get_epic_games_iap_config
@@ -403,6 +407,8 @@ from .wrappers import sync_xbox_inventory
 from .wrappers import sync_xbox_inventory_async
 from .wrappers import update_apple_iap_config
 from .wrappers import update_apple_iap_config_async
+from .wrappers import update_apple_p8_file
+from .wrappers import update_apple_p8_file_async
 from .wrappers import update_epic_games_iap_config
 from .wrappers import update_epic_games_iap_config_async
 from .wrappers import update_google_iap_config
@@ -423,10 +429,42 @@ from .wrappers import update_xbl_bp_cert_file
 from .wrappers import update_xbl_bp_cert_file_async
 from .wrappers import update_xbl_iap_config
 from .wrappers import update_xbl_iap_config_async
+from .wrappers import v2_public_fulfill_apple_iap_item
+from .wrappers import v2_public_fulfill_apple_iap_item_async
 from .wrappers import validate_existed_playstation_iap_config
 from .wrappers import validate_existed_playstation_iap_config_async
 from .wrappers import validate_playstation_iap_config
 from .wrappers import validate_playstation_iap_config_async
+
+# iap_notification
+from .wrappers import query_third_party_notifications
+from .wrappers import query_third_party_notifications_async
+
+# iap_subscription
+from .wrappers import get_subscription_history
+from .wrappers import get_subscription_history_async
+from .wrappers import get_third_party_platform_subscription_ownership_by_group_id
+from .wrappers import get_third_party_platform_subscription_ownership_by_group_id_async
+from .wrappers import get_third_party_platform_subscription_ownership_by_product_id
+from .wrappers import (
+    get_third_party_platform_subscription_ownership_by_product_id_async,
+)
+from .wrappers import get_third_party_subscription_details
+from .wrappers import get_third_party_subscription_details_async
+from .wrappers import get_third_party_user_subscription_details
+from .wrappers import get_third_party_user_subscription_details_async
+from .wrappers import public_query_user_third_party_subscription
+from .wrappers import public_query_user_third_party_subscription_async
+from .wrappers import query_third_party_subscription
+from .wrappers import query_third_party_subscription_async
+from .wrappers import query_user_third_party_subscription
+from .wrappers import query_user_third_party_subscription_async
+from .wrappers import query_user_third_party_subscription_transactions
+from .wrappers import query_user_third_party_subscription_transactions_async
+from .wrappers import sync_subscription
+from .wrappers import sync_subscription_async
+from .wrappers import sync_subscription_transaction
+from .wrappers import sync_subscription_transaction_async
 
 # invoice
 from .wrappers import download_invoice_details

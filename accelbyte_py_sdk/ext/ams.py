@@ -38,10 +38,13 @@ from ..api.ams.models import ApiArtifactSamplingRule
 from ..api.ams.models import ApiArtifactTypeSamplingRules
 from ..api.ams.models import ApiArtifactURLResponse
 from ..api.ams.models import ApiArtifactUsageResponse
+from ..api.ams.models import ApiAvailableInstanceType
 from ..api.ams.models import ApiAvailableInstanceTypesResponse
+from ..api.ams.models import ApiCapacity
 from ..api.ams.models import ApiDSHistoryEvent
 from ..api.ams.models import ApiDSHistoryList
 from ..api.ams.models import ApiDSHostConfiguration
+from ..api.ams.models import ApiDSHostConfigurationParameters
 from ..api.ams.models import ApiDevelopmentServerConfigurationCreateRequest
 from ..api.ams.models import ApiDevelopmentServerConfigurationCreateResponse
 from ..api.ams.models import ApiDevelopmentServerConfigurationGetResponse
@@ -67,7 +70,6 @@ from ..api.ams.models import ApiImageList
 from ..api.ams.models import ApiImageListItem
 from ..api.ams.models import ApiImageStorage
 from ..api.ams.models import ApiImageUpdate
-from ..api.ams.models import ApiInstanceTypeDescriptionResponse
 from ..api.ams.models import ApiPagingInfo
 from ..api.ams.models import ApiPortConfiguration
 from ..api.ams.models import ApiQoSEndpointResponse
@@ -196,13 +198,32 @@ def create_api_artifact_usage_response_example() -> ApiArtifactUsageResponse:
     return instance
 
 
+def create_api_available_instance_type_example() -> ApiAvailableInstanceType:
+    instance = ApiAvailableInstanceType()
+    instance.capacity = [create_api_capacity_example()]
+    instance.description = randomize()
+    instance.id_ = randomize()
+    instance.memory_gi_b = randomize("int", min_val=1, max_val=1000)
+    instance.min_speed = randomize()
+    instance.name = randomize()
+    instance.owner_account_id = randomize()
+    instance.provider = randomize()
+    instance.virtual_cpu = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
 def create_api_available_instance_types_response_example() -> (
     ApiAvailableInstanceTypesResponse
 ):
     instance = ApiAvailableInstanceTypesResponse()
-    instance.available_instance_types = [
-        create_api_instance_type_description_response_example()
-    ]
+    instance.available_instance_types = [create_api_available_instance_type_example()]
+    return instance
+
+
+def create_api_capacity_example() -> ApiCapacity:
+    instance = ApiCapacity()
+    instance.region = randomize()
+    instance.vm_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -211,6 +232,7 @@ def create_api_development_server_configuration_create_request_example() -> (
 ):
     instance = ApiDevelopmentServerConfigurationCreateRequest()
     instance.command_line_arguments = randomize()
+    instance.expires_at = randomize("date")
     instance.image_id = randomize()
     instance.name = randomize()
     return instance
@@ -231,6 +253,8 @@ def create_api_development_server_configuration_get_response_example() -> (
     instance.command_line_arguments = randomize()
     instance.image_id = randomize()
     instance.name = randomize()
+    instance.created_at = randomize("date")
+    instance.expires_at = randomize("date")
     return instance
 
 
@@ -251,6 +275,7 @@ def create_api_ds_history_event_example() -> ApiDSHistoryEvent:
     instance.reason = randomize()
     instance.region = randomize()
     instance.server_id = randomize()
+    instance.session_id = randomize("uid")
     instance.status = randomize()
     return instance
 
@@ -265,7 +290,17 @@ def create_api_ds_history_list_example() -> ApiDSHistoryList:
 def create_api_ds_host_configuration_example() -> ApiDSHostConfiguration:
     instance = ApiDSHostConfiguration()
     instance.instance_id = randomize()
+    instance.instance_provider = randomize()
     instance.instance_type = randomize()
+    instance.servers_per_vm = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_api_ds_host_configuration_parameters_example() -> (
+    ApiDSHostConfigurationParameters
+):
+    instance = ApiDSHostConfigurationParameters()
+    instance.instance_id = randomize()
     instance.servers_per_vm = randomize("int", min_val=1, max_val=1000)
     return instance
 
@@ -328,6 +363,7 @@ def create_api_fleet_list_item_response_example() -> ApiFleetListItemResponse:
     instance.counts = [create_api_fleet_regional_server_counts_example()]
     instance.id_ = randomize()
     instance.image = randomize()
+    instance.instance_provider = randomize()
     instance.is_local = randomize("bool")
     instance.name = randomize()
     instance.on_demand = randomize("bool")
@@ -344,7 +380,9 @@ def create_api_fleet_list_response_example() -> ApiFleetListResponse:
 def create_api_fleet_parameters_example() -> ApiFleetParameters:
     instance = ApiFleetParameters()
     instance.active = randomize("bool")
-    instance.ds_host_configuration = create_api_ds_host_configuration_example()
+    instance.ds_host_configuration = (
+        create_api_ds_host_configuration_parameters_example()
+    )
     instance.image_deployment_profile = create_api_image_deployment_profile_example()
     instance.name = randomize()
     instance.on_demand = randomize("bool")
@@ -488,19 +526,6 @@ def create_api_image_update_example() -> ApiImageUpdate:
     instance.is_protected = randomize("bool")
     instance.name = randomize()
     instance.removed_tags = [randomize()]
-    return instance
-
-
-def create_api_instance_type_description_response_example() -> (
-    ApiInstanceTypeDescriptionResponse
-):
-    instance = ApiInstanceTypeDescriptionResponse()
-    instance.description = randomize()
-    instance.id_ = randomize()
-    instance.memory_gi_b = randomize("int", min_val=1, max_val=1000)
-    instance.min_speed = randomize()
-    instance.name = randomize()
-    instance.virtual_cpu = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

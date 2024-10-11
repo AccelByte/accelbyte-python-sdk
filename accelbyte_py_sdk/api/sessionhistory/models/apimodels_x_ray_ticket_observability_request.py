@@ -45,11 +45,11 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
 
         namespace: (namespace) REQUIRED str
 
-        party_id: (partyID) REQUIRED str
-
         session_tick_id: (sessionTickID) REQUIRED str
 
         tick_id: (tickID) REQUIRED int
+
+        ticket_id: (ticketID) REQUIRED str
 
         timestamp: (timestamp) REQUIRED str
 
@@ -81,9 +81,9 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
     is_backfill_match: bool  # REQUIRED
     is_rule_set_flexed: bool  # REQUIRED
     namespace: str  # REQUIRED
-    party_id: str  # REQUIRED
     session_tick_id: str  # REQUIRED
     tick_id: int  # REQUIRED
+    ticket_id: str  # REQUIRED
     timestamp: str  # REQUIRED
     active_alliance_rule: ModelsAllianceRule  # OPTIONAL
     active_matching_rule: List[ModelsMatchingRule]  # OPTIONAL
@@ -124,10 +124,6 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
         self.namespace = value
         return self
 
-    def with_party_id(self, value: str) -> ApimodelsXRayTicketObservabilityRequest:
-        self.party_id = value
-        return self
-
     def with_session_tick_id(
         self, value: str
     ) -> ApimodelsXRayTicketObservabilityRequest:
@@ -136,6 +132,10 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
 
     def with_tick_id(self, value: int) -> ApimodelsXRayTicketObservabilityRequest:
         self.tick_id = value
+        return self
+
+    def with_ticket_id(self, value: str) -> ApimodelsXRayTicketObservabilityRequest:
+        self.ticket_id = value
         return self
 
     def with_timestamp(self, value: str) -> ApimodelsXRayTicketObservabilityRequest:
@@ -222,10 +222,6 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "party_id"):
-            result["partyID"] = str(self.party_id)
-        elif include_empty:
-            result["partyID"] = ""
         if hasattr(self, "session_tick_id"):
             result["sessionTickID"] = str(self.session_tick_id)
         elif include_empty:
@@ -234,6 +230,10 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
             result["tickID"] = int(self.tick_id)
         elif include_empty:
             result["tickID"] = 0
+        if hasattr(self, "ticket_id"):
+            result["ticketID"] = str(self.ticket_id)
+        elif include_empty:
+            result["ticketID"] = ""
         if hasattr(self, "timestamp"):
             result["timestamp"] = str(self.timestamp)
         elif include_empty:
@@ -299,9 +299,9 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
         is_backfill_match: bool,
         is_rule_set_flexed: bool,
         namespace: str,
-        party_id: str,
         session_tick_id: str,
         tick_id: int,
+        ticket_id: str,
         timestamp: str,
         active_alliance_rule: Optional[ModelsAllianceRule] = None,
         active_matching_rule: Optional[List[ModelsMatchingRule]] = None,
@@ -321,9 +321,9 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
         instance.is_backfill_match = is_backfill_match
         instance.is_rule_set_flexed = is_rule_set_flexed
         instance.namespace = namespace
-        instance.party_id = party_id
         instance.session_tick_id = session_tick_id
         instance.tick_id = tick_id
+        instance.ticket_id = ticket_id
         instance.timestamp = timestamp
         if active_alliance_rule is not None:
             instance.active_alliance_rule = active_alliance_rule
@@ -374,10 +374,6 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "partyID" in dict_ and dict_["partyID"] is not None:
-            instance.party_id = str(dict_["partyID"])
-        elif include_empty:
-            instance.party_id = ""
         if "sessionTickID" in dict_ and dict_["sessionTickID"] is not None:
             instance.session_tick_id = str(dict_["sessionTickID"])
         elif include_empty:
@@ -386,6 +382,10 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
             instance.tick_id = int(dict_["tickID"])
         elif include_empty:
             instance.tick_id = 0
+        if "ticketID" in dict_ and dict_["ticketID"] is not None:
+            instance.ticket_id = str(dict_["ticketID"])
+        elif include_empty:
+            instance.ticket_id = ""
         if "timestamp" in dict_ and dict_["timestamp"] is not None:
             instance.timestamp = str(dict_["timestamp"])
         elif include_empty:
@@ -488,9 +488,9 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
             "isBackfillMatch": "is_backfill_match",
             "isRuleSetFlexed": "is_rule_set_flexed",
             "namespace": "namespace",
-            "partyID": "party_id",
             "sessionTickID": "session_tick_id",
             "tickID": "tick_id",
+            "ticketID": "ticket_id",
             "timestamp": "timestamp",
             "activeAllianceRule": "active_alliance_rule",
             "activeMatchingRule": "active_matching_rule",
@@ -512,9 +512,9 @@ class ApimodelsXRayTicketObservabilityRequest(Model):
             "isBackfillMatch": True,
             "isRuleSetFlexed": True,
             "namespace": True,
-            "partyID": True,
             "sessionTickID": True,
             "tickID": True,
+            "ticketID": True,
             "timestamp": True,
             "activeAllianceRule": False,
             "activeMatchingRule": False,

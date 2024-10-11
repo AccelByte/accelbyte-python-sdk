@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.56.0"
+__version__ = "5.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,6 +23,7 @@ from .delete_playstation_iap_config import DeletePlaystationIAPConfig
 from .delete_steam_iap_config import DeleteSteamIAPConfig
 from .delete_twitch_iap_config import DeleteTwitchIAPConfig
 from .delete_xbl_ap_config import DeleteXblAPConfig
+from .get_apple_config_version import GetAppleConfigVersion
 from .get_apple_iap_config import GetAppleIAPConfig
 from .get_epic_games_iap_config import GetEpicGamesIAPConfig
 from .get_google_iap_config import GetGoogleIAPConfig
@@ -59,6 +60,7 @@ from .sync_twitch_drops_entitlement import SyncTwitchDropsEntitlement
 from .sync_twitch_drops_entit_0c09ca import SyncTwitchDropsEntitlement1
 from .sync_xbox_inventory import SyncXboxInventory
 from .update_apple_iap_config import UpdateAppleIAPConfig
+from .update_apple_p8_file import UpdateAppleP8File
 from .update_epic_games_iap_config import UpdateEpicGamesIAPConfig
 from .update_google_iap_config import UpdateGoogleIAPConfig
 from .update_google_p12_file import UpdateGoogleP12File
@@ -69,5 +71,6 @@ from .update_steam_iap_config import UpdateSteamIAPConfig
 from .update_twitch_iap_config import UpdateTwitchIAPConfig
 from .update_xbl_bp_cert_file import UpdateXblBPCertFile
 from .update_xbl_iap_config import UpdateXblIAPConfig
+from .v2_public_fulfill_apple_ebaa63 import V2PublicFulfillAppleIAPItem
 from .validate_existed_playst_881975 import ValidateExistedPlaystationIAPConfig
 from .validate_playstation_ia_7dc74e import ValidatePlaystationIAPConfig

@@ -35,12 +35,15 @@ class ModelEnabledFactorsResponseV4(Model):
         default: (default) REQUIRED str
 
         enabled: (enabled) REQUIRED List[str]
+
+        remaining_backup_code_count: (remainingBackupCodeCount) OPTIONAL int
     """
 
     # region fields
 
     default: str  # REQUIRED
     enabled: List[str]  # REQUIRED
+    remaining_backup_code_count: int  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,12 @@ class ModelEnabledFactorsResponseV4(Model):
 
     def with_enabled(self, value: List[str]) -> ModelEnabledFactorsResponseV4:
         self.enabled = value
+        return self
+
+    def with_remaining_backup_code_count(
+        self, value: int
+    ) -> ModelEnabledFactorsResponseV4:
+        self.remaining_backup_code_count = value
         return self
 
     # endregion with_x methods
@@ -68,6 +77,10 @@ class ModelEnabledFactorsResponseV4(Model):
             result["enabled"] = [str(i0) for i0 in self.enabled]
         elif include_empty:
             result["enabled"] = []
+        if hasattr(self, "remaining_backup_code_count"):
+            result["remainingBackupCodeCount"] = int(self.remaining_backup_code_count)
+        elif include_empty:
+            result["remainingBackupCodeCount"] = 0
         return result
 
     # endregion to methods
@@ -76,11 +89,17 @@ class ModelEnabledFactorsResponseV4(Model):
 
     @classmethod
     def create(
-        cls, default: str, enabled: List[str], **kwargs
+        cls,
+        default: str,
+        enabled: List[str],
+        remaining_backup_code_count: Optional[int] = None,
+        **kwargs,
     ) -> ModelEnabledFactorsResponseV4:
         instance = cls()
         instance.default = default
         instance.enabled = enabled
+        if remaining_backup_code_count is not None:
+            instance.remaining_backup_code_count = remaining_backup_code_count
         return instance
 
     @classmethod
@@ -98,6 +117,15 @@ class ModelEnabledFactorsResponseV4(Model):
             instance.enabled = [str(i0) for i0 in dict_["enabled"]]
         elif include_empty:
             instance.enabled = []
+        if (
+            "remainingBackupCodeCount" in dict_
+            and dict_["remainingBackupCodeCount"] is not None
+        ):
+            instance.remaining_backup_code_count = int(
+                dict_["remainingBackupCodeCount"]
+            )
+        elif include_empty:
+            instance.remaining_backup_code_count = 0
         return instance
 
     @classmethod
@@ -143,6 +171,7 @@ class ModelEnabledFactorsResponseV4(Model):
         return {
             "default": "default",
             "enabled": "enabled",
+            "remainingBackupCodeCount": "remaining_backup_code_count",
         }
 
     @staticmethod
@@ -150,6 +179,7 @@ class ModelEnabledFactorsResponseV4(Model):
         return {
             "default": True,
             "enabled": True,
+            "remainingBackupCodeCount": False,
         }
 
     # endregion static methods

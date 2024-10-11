@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.21.0"
+__version__ = "7.22.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -135,6 +135,11 @@ from ._input_validations import public_get_input_validation_by_field_async
 from ._input_validations import public_get_input_validations
 from ._input_validations import public_get_input_validations_async
 
+from ._login_allowlist import admin_get_login_allowlist_v3
+from ._login_allowlist import admin_get_login_allowlist_v3_async
+from ._login_allowlist import admin_update_login_allowlist_v3
+from ._login_allowlist import admin_update_login_allowlist_v3_async
+
 from ._o_auth import authorization
 from ._o_auth import authorization_async
 from ._o_auth import get_jwks
@@ -237,6 +242,13 @@ from ._override_role_config_v3 import admin_get_role_source_v3
 from ._override_role_config_v3 import admin_get_role_source_v3_async
 from ._override_role_config_v3 import admin_update_role_override_config_v3
 from ._override_role_config_v3 import admin_update_role_override_config_v3_async
+
+from ._profile_update_strategy import admin_get_profile_update_strategy_v3
+from ._profile_update_strategy import admin_get_profile_update_strategy_v3_async
+from ._profile_update_strategy import admin_update_profile_update_strategy_v3
+from ._profile_update_strategy import admin_update_profile_update_strategy_v3_async
+from ._profile_update_strategy import public_get_profile_update_strategy_v3
+from ._profile_update_strategy import public_get_profile_update_strategy_v3_async
 
 from ._roles import add_role_managers
 from ._roles import add_role_managers_async
@@ -639,6 +651,8 @@ from ._users import public_get_country_age_restriction_v3
 from ._users import public_get_country_age_restriction_v3_async
 from ._users import public_get_link_headless_account_to_my_account_conflict_v3
 from ._users import public_get_link_headless_account_to_my_account_conflict_v3_async
+from ._users import public_get_my_profile_allow_update_status_v3
+from ._users import public_get_my_profile_allow_update_status_v3_async
 from ._users import public_get_my_user_v3
 from ._users import public_get_my_user_v3_async
 from ._users import public_get_publisher_user_v3
@@ -792,6 +806,8 @@ from ._users_v4 import admin_get_namespace_invitation_history_v4
 from ._users_v4 import admin_get_namespace_invitation_history_v4_async
 from ._users_v4 import admin_get_namespace_user_invitation_history_v4
 from ._users_v4 import admin_get_namespace_user_invitation_history_v4_async
+from ._users_v4 import admin_get_user_mfa_status_v4
+from ._users_v4 import admin_get_user_mfa_status_v4_async
 from ._users_v4 import admin_invite_user_new_v4
 from ._users_v4 import admin_invite_user_new_v4_async
 from ._users_v4 import admin_invite_user_v4

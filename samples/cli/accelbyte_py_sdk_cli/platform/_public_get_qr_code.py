@@ -33,6 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     public_get_qr_code as public_get_qr_code_internal,
 )
+from accelbyte_py_sdk.api.platform.models import BinarySchema
 
 
 @click.command()

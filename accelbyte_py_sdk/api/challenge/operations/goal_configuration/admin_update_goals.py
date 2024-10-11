@@ -98,6 +98,8 @@ class AdminUpdateGoals(Operation):
 
         404: Not Found - ResponseError (Not Found)
 
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
 
@@ -238,6 +240,8 @@ class AdminUpdateGoals(Operation):
 
         404: Not Found - ResponseError (Not Found)
 
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
+
         500: Internal Server Error - ResponseError (Internal Server Error)
 
         ---: HttpResponse (Undocumented Response)
@@ -258,6 +262,8 @@ class AdminUpdateGoals(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 404:
+            return None, ResponseError.create_from_dict(content)
+        if code == 422:
             return None, ResponseError.create_from_dict(content)
         if code == 500:
             return None, ResponseError.create_from_dict(content)

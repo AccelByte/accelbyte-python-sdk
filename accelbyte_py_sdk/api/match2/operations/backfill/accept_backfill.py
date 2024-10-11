@@ -38,6 +38,8 @@ class AcceptBackfill(Operation):
     """Accept a backfill proposal (AcceptBackfill)
 
     Accept backfill proposal.
+    Field **acceptedTicketIds** can be used to accept specific tickets within a backfill proposal. If the ticketIDs are not mentioned in this field, those tickets will be rejected and reactivated for future proposals.
+    If **acceptedTicketIds** is nil or not specified, then all tickets in the proposal will be accepted.
 
     Properties:
         url: /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept

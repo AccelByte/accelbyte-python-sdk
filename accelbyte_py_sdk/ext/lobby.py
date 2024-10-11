@@ -163,6 +163,8 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
 def create_logconfig_configuration_example() -> LogconfigConfiguration:
     instance = LogconfigConfiguration()
     instance.log_level = randomize()
+    instance.log_level_db = randomize()
+    instance.slow_query_threshold = randomize("int", min_val=1, max_val=1000)
     instance.socket_log_enabled = randomize("bool")
     return instance
 

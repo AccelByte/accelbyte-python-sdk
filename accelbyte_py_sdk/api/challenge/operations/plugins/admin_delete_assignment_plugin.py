@@ -54,7 +54,7 @@ class AdminDeleteAssignmentPlugin(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (20018: bad request: {{message}})
 
@@ -156,13 +156,10 @@ class AdminDeleteAssignmentPlugin(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, HttpResponse],
-        Union[None, HttpResponse, IamErrorResponse, ResponseError],
-    ]:
+    ) -> Tuple[None, Union[None, HttpResponse, IamErrorResponse, ResponseError]]:
         """Parse the given response.
 
-        200: OK - (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (20018: bad request: {{message}})
 
@@ -187,8 +184,8 @@ class AdminDeleteAssignmentPlugin(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
-            return HttpResponse.create(code, "OK"), None
+        if code == 204:
+            return None, None
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:

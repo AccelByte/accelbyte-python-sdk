@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.56.0"
+__version__ = "5.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -27,4 +27,5 @@ from .query_fulfillment_histories import (
 from .query_fulfillments import QueryFulfillments
 from .query_fulfillments import StateEnum as QueryFulfillmentsStateEnum
 from .redeem_code import RedeemCode
+from .retry_fulfill_items import RetryFulfillItems
 from .revoke_items import RevokeItems

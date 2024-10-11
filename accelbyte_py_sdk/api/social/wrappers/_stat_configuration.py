@@ -47,13 +47,18 @@ from ..operations.stat_configuration import GetStats
 from ..operations.stat_configuration import ImportStats
 from ..operations.stat_configuration import QueryStats
 from ..operations.stat_configuration import UpdateStat
-from ..models import StatCreateGlobalAggregationMethodEnum, StatCreateSetByEnum
+from ..models import (
+    StatCreateGlobalAggregationMethodEnum,
+    StatCreateSetByEnum,
+    StatCreateVisibilityEnum,
+)
 from ..models import (
     StatInfoGlobalAggregationMethodEnum,
     StatInfoSetByEnum,
     StatInfoStatusEnum,
+    StatInfoVisibilityEnum,
 )
-from ..models import StatUpdateGlobalAggregationMethodEnum
+from ..models import StatUpdateGlobalAggregationMethodEnum, StatUpdateVisibilityEnum
 
 
 @same_doc_as(CreateStat)
@@ -1112,6 +1117,7 @@ def update_stat(
       *  Returns : updated stat
       *  Field globalAggregationMethod will be ignored when the stat is not set as global
       *  Field globalAggregationMethod is not updatable when the stat status is TIED
+      *  Field visibility is not updatable when the stat status is TIED
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}
@@ -1173,6 +1179,7 @@ async def update_stat_async(
       *  Returns : updated stat
       *  Field globalAggregationMethod will be ignored when the stat is not set as global
       *  Field globalAggregationMethod is not updatable when the stat status is TIED
+      *  Field visibility is not updatable when the stat status is TIED
 
     Properties:
         url: /social/v1/admin/namespaces/{namespace}/stats/{statCode}

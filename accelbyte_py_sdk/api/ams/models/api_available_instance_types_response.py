@@ -27,28 +27,26 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.api_instance_type_description_response import (
-    ApiInstanceTypeDescriptionResponse,
-)
+from ..models.api_available_instance_type import ApiAvailableInstanceType
 
 
 class ApiAvailableInstanceTypesResponse(Model):
     """Api available instance types response (api.AvailableInstanceTypesResponse)
 
     Properties:
-        available_instance_types: (availableInstanceTypes) REQUIRED List[ApiInstanceTypeDescriptionResponse]
+        available_instance_types: (availableInstanceTypes) REQUIRED List[ApiAvailableInstanceType]
     """
 
     # region fields
 
-    available_instance_types: List[ApiInstanceTypeDescriptionResponse]  # REQUIRED
+    available_instance_types: List[ApiAvailableInstanceType]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
     def with_available_instance_types(
-        self, value: List[ApiInstanceTypeDescriptionResponse]
+        self, value: List[ApiAvailableInstanceType]
     ) -> ApiAvailableInstanceTypesResponse:
         self.available_instance_types = value
         return self
@@ -74,9 +72,7 @@ class ApiAvailableInstanceTypesResponse(Model):
 
     @classmethod
     def create(
-        cls,
-        available_instance_types: List[ApiInstanceTypeDescriptionResponse],
-        **kwargs,
+        cls, available_instance_types: List[ApiAvailableInstanceType], **kwargs
     ) -> ApiAvailableInstanceTypesResponse:
         instance = cls()
         instance.available_instance_types = available_instance_types
@@ -94,7 +90,7 @@ class ApiAvailableInstanceTypesResponse(Model):
             and dict_["availableInstanceTypes"] is not None
         ):
             instance.available_instance_types = [
-                ApiInstanceTypeDescriptionResponse.create_from_dict(
+                ApiAvailableInstanceType.create_from_dict(
                     i0, include_empty=include_empty
                 )
                 for i0 in dict_["availableInstanceTypes"]

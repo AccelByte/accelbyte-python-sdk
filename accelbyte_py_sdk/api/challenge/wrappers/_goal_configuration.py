@@ -641,6 +641,8 @@ def admin_update_goals(
 
         404: Not Found - ResponseError (Not Found)
 
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
@@ -727,6 +729,8 @@ async def admin_update_goals_async(
         400: Bad Request - ResponseError (20018: bad request: {{message}})
 
         404: Not Found - ResponseError (Not Found)
+
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """

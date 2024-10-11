@@ -27,6 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_extend_configuration import ModelsExtendConfiguration
 from ..models.models_native_session_setting import ModelsNativeSessionSetting
 
 
@@ -86,6 +87,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         fallback_claim_keys: (fallbackClaimKeys) OPTIONAL List[str]
 
+        grpc_session_config: (grpcSessionConfig) OPTIONAL ModelsExtendConfiguration
+
         immutable_storage: (immutableStorage) OPTIONAL bool
 
         leader_election_grace_period: (leaderElectionGracePeriod) OPTIONAL int
@@ -133,6 +136,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     ds_source: str  # OPTIONAL
     enable_secret: bool  # OPTIONAL
     fallback_claim_keys: List[str]  # OPTIONAL
+    grpc_session_config: ModelsExtendConfiguration  # OPTIONAL
     immutable_storage: bool  # OPTIONAL
     leader_election_grace_period: int  # OPTIONAL
     manual_rejoin: bool  # OPTIONAL
@@ -263,6 +267,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self, value: List[str]
     ) -> ApimodelsConfigurationTemplateResponse:
         self.fallback_claim_keys = value
+        return self
+
+    def with_grpc_session_config(
+        self, value: ModelsExtendConfiguration
+    ) -> ApimodelsConfigurationTemplateResponse:
+        self.grpc_session_config = value
         return self
 
     def with_immutable_storage(
@@ -425,6 +435,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["fallbackClaimKeys"] = [str(i0) for i0 in self.fallback_claim_keys]
         elif include_empty:
             result["fallbackClaimKeys"] = []
+        if hasattr(self, "grpc_session_config"):
+            result["grpcSessionConfig"] = self.grpc_session_config.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["grpcSessionConfig"] = ModelsExtendConfiguration()
         if hasattr(self, "immutable_storage"):
             result["immutableStorage"] = bool(self.immutable_storage)
         elif include_empty:
@@ -498,6 +514,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         ds_source: Optional[str] = None,
         enable_secret: Optional[bool] = None,
         fallback_claim_keys: Optional[List[str]] = None,
+        grpc_session_config: Optional[ModelsExtendConfiguration] = None,
         immutable_storage: Optional[bool] = None,
         leader_election_grace_period: Optional[int] = None,
         manual_rejoin: Optional[bool] = None,
@@ -547,6 +564,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.enable_secret = enable_secret
         if fallback_claim_keys is not None:
             instance.fallback_claim_keys = fallback_claim_keys
+        if grpc_session_config is not None:
+            instance.grpc_session_config = grpc_session_config
         if immutable_storage is not None:
             instance.immutable_storage = immutable_storage
         if leader_election_grace_period is not None:
@@ -685,6 +704,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
             ]
         elif include_empty:
             instance.fallback_claim_keys = []
+        if "grpcSessionConfig" in dict_ and dict_["grpcSessionConfig"] is not None:
+            instance.grpc_session_config = ModelsExtendConfiguration.create_from_dict(
+                dict_["grpcSessionConfig"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.grpc_session_config = ModelsExtendConfiguration()
         if "immutableStorage" in dict_ and dict_["immutableStorage"] is not None:
             instance.immutable_storage = bool(dict_["immutableStorage"])
         elif include_empty:
@@ -807,6 +832,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "dsSource": "ds_source",
             "enableSecret": "enable_secret",
             "fallbackClaimKeys": "fallback_claim_keys",
+            "grpcSessionConfig": "grpc_session_config",
             "immutableStorage": "immutable_storage",
             "leaderElectionGracePeriod": "leader_election_grace_period",
             "manualRejoin": "manual_rejoin",
@@ -847,6 +873,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "dsSource": False,
             "enableSecret": False,
             "fallbackClaimKeys": False,
+            "grpcSessionConfig": False,
             "immutableStorage": False,
             "leaderElectionGracePeriod": False,
             "manualRejoin": False,

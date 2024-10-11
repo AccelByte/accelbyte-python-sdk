@@ -46,6 +46,7 @@ from ..operations.fleets import FleetDelete
 from ..operations.fleets import FleetGet
 from ..operations.fleets import FleetList
 from ..operations.fleets import FleetServers
+from ..operations.fleets import FleetServersSortDirectionEnum, FleetServersStatusEnum
 from ..operations.fleets import FleetUpdate
 
 
@@ -172,7 +173,9 @@ def fleet_claim_by_keys(
 ):
     """claim a dedicated server (FleetClaimByKeys)
 
-    Claim a dedicated server from fleets with matching claim keys
+    Claim a dedicated server from fleets with matching claim keys.
+    If the claim key is for a regular fleet (non development), the request will instantly fail if there are no DS available (HTTP 404).
+    If the claim key is for a development fleet and there are no DS available, a new DS will be launched and the request might take up to 8 seconds to return (depending on the environment configuration). If it's not ready after that duration the request will still return HTTP 404. In either case, the call to this endpoint may be retried at any time to check if a DS has become available.
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
@@ -226,7 +229,9 @@ async def fleet_claim_by_keys_async(
 ):
     """claim a dedicated server (FleetClaimByKeys)
 
-    Claim a dedicated server from fleets with matching claim keys
+    Claim a dedicated server from fleets with matching claim keys.
+    If the claim key is for a regular fleet (non development), the request will instantly fail if there are no DS available (HTTP 404).
+    If the claim key is for a development fleet and there are no DS available, a new DS will be launched and the request might take up to 8 seconds to return (depending on the environment configuration). If it's not ready after that duration the request will still return HTTP 404. In either case, the call to this endpoint may be retried at any time to check if a DS has become available.
 
     Required Permission: NAMESPACE:{namespace}:AMS:SERVER:CLAIM [UPDATE]
 
@@ -676,8 +681,13 @@ async def fleet_list_async(
 @same_doc_as(FleetServers)
 def fleet_servers(
     fleet_id: str,
-    count: Optional[str] = None,
+    count: Optional[int] = None,
     offset: Optional[int] = None,
+    region: Optional[str] = None,
+    server_id: Optional[str] = None,
+    sort_by: Optional[str] = None,
+    sort_direction: Optional[Union[str, FleetServersSortDirectionEnum]] = None,
+    status: Optional[Union[str, FleetServersStatusEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -703,9 +713,19 @@ def fleet_servers(
 
         namespace: (namespace) REQUIRED str in path
 
-        count: (count) OPTIONAL str in query
+        count: (count) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        server_id: (serverId) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
         200: OK - ApiFleetServersResponse (success)
@@ -728,6 +748,11 @@ def fleet_servers(
         fleet_id=fleet_id,
         count=count,
         offset=offset,
+        region=region,
+        server_id=server_id,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
+        status=status,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -736,8 +761,13 @@ def fleet_servers(
 @same_doc_as(FleetServers)
 async def fleet_servers_async(
     fleet_id: str,
-    count: Optional[str] = None,
+    count: Optional[int] = None,
     offset: Optional[int] = None,
+    region: Optional[str] = None,
+    server_id: Optional[str] = None,
+    sort_by: Optional[str] = None,
+    sort_direction: Optional[Union[str, FleetServersSortDirectionEnum]] = None,
+    status: Optional[Union[str, FleetServersStatusEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -763,9 +793,19 @@ async def fleet_servers_async(
 
         namespace: (namespace) REQUIRED str in path
 
-        count: (count) OPTIONAL str in query
+        count: (count) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        server_id: (serverId) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
         200: OK - ApiFleetServersResponse (success)
@@ -788,6 +828,11 @@ async def fleet_servers_async(
         fleet_id=fleet_id,
         count=count,
         offset=offset,
+        region=region,
+        server_id=server_id,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
+        status=status,
         namespace=namespace,
     )
     return await run_request_async(

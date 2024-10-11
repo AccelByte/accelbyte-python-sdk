@@ -27,17 +27,22 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.account_user_info import AccountUserInfo
+
 
 class AccountCreateTestUsersRequestV4(Model):
     """Account create test users request V4 (account.createTestUsersRequestV4)
 
     Properties:
         count: (count) REQUIRED int
+
+        user_info: (userInfo) REQUIRED AccountUserInfo
     """
 
     # region fields
 
     count: int  # REQUIRED
+    user_info: AccountUserInfo  # REQUIRED
 
     # endregion fields
 
@@ -45,6 +50,10 @@ class AccountCreateTestUsersRequestV4(Model):
 
     def with_count(self, value: int) -> AccountCreateTestUsersRequestV4:
         self.count = value
+        return self
+
+    def with_user_info(self, value: AccountUserInfo) -> AccountCreateTestUsersRequestV4:
+        self.user_info = value
         return self
 
     # endregion with_x methods
@@ -57,6 +66,10 @@ class AccountCreateTestUsersRequestV4(Model):
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = 0
+        if hasattr(self, "user_info"):
+            result["userInfo"] = self.user_info.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["userInfo"] = AccountUserInfo()
         return result
 
     # endregion to methods
@@ -64,9 +77,12 @@ class AccountCreateTestUsersRequestV4(Model):
     # region static methods
 
     @classmethod
-    def create(cls, count: int, **kwargs) -> AccountCreateTestUsersRequestV4:
+    def create(
+        cls, count: int, user_info: AccountUserInfo, **kwargs
+    ) -> AccountCreateTestUsersRequestV4:
         instance = cls()
         instance.count = count
+        instance.user_info = user_info
         return instance
 
     @classmethod
@@ -80,6 +96,12 @@ class AccountCreateTestUsersRequestV4(Model):
             instance.count = int(dict_["count"])
         elif include_empty:
             instance.count = 0
+        if "userInfo" in dict_ and dict_["userInfo"] is not None:
+            instance.user_info = AccountUserInfo.create_from_dict(
+                dict_["userInfo"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.user_info = AccountUserInfo()
         return instance
 
     @classmethod
@@ -124,12 +146,14 @@ class AccountCreateTestUsersRequestV4(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "count": "count",
+            "userInfo": "user_info",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "count": True,
+            "userInfo": True,
         }
 
     # endregion static methods

@@ -241,7 +241,7 @@ def create_xray_ticket_observability(
     1. "matchFound"
     2. "matchNotFound"
     3. "flexed"
-    PartyID : ticket Party ID
+    TicketID : ticket ID
     MatchID : match ID will be filled only when match found
     Namespace : ticket current namespace
     GameMode : ticket current matchpool
@@ -314,7 +314,7 @@ async def create_xray_ticket_observability_async(
     1. "matchFound"
     2. "matchNotFound"
     3. "flexed"
-    PartyID : ticket Party ID
+    TicketID : ticket ID
     MatchID : match ID will be filled only when match found
     Namespace : ticket current namespace
     GameMode : ticket current matchpool

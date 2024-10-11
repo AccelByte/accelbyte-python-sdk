@@ -29,6 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import BinarySchema
+
 
 class PublicGetQRCode(Operation):
     """Get qrcode (publicGetQRCode)
@@ -56,7 +58,7 @@ class PublicGetQRCode(Operation):
         code: (code) REQUIRED str in query
 
     Responses:
-        200: OK - Any (Successful operation)
+        200: OK - BinarySchema (Successful operation)
     """
 
     # region fields
@@ -164,10 +166,10 @@ class PublicGetQRCode(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, Any], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, BinarySchema], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - Any (Successful operation)
+        200: OK - BinarySchema (Successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -183,7 +185,7 @@ class PublicGetQRCode(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return content, None
+            return BinarySchema.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

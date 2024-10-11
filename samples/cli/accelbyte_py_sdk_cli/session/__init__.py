@@ -9,17 +9,6 @@
 # justice-session-service
 
 from ._get_healthcheck_info import get_healthcheck_info
-from ._pprof_handler import pprof_handler
-from ._allocs_handler import allocs_handler
-from ._block_handler import block_handler
-from ._cmdline_handler import cmdline_handler
-from ._goroutine_handler import goroutine_handler
-from ._heap_handler import heap_handler
-from ._mutex_handler import mutex_handler
-from ._profile import profile
-from ._symbol_handler import symbol_handler
-from ._threadcreate_handler import threadcreate_handler
-from ._trace_handler import trace_handler
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
 from ._admin_get_log_config import admin_get_log_config
 from ._admin_patch_update_log_config import admin_patch_update_log_config
@@ -127,17 +116,6 @@ from ._public_query_my_parties import public_query_my_parties
 
 commands = [
     get_healthcheck_info,
-    pprof_handler,
-    allocs_handler,
-    block_handler,
-    cmdline_handler,
-    goroutine_handler,
-    heap_handler,
-    mutex_handler,
-    profile,
-    symbol_handler,
-    threadcreate_handler,
-    trace_handler,
     get_healthcheck_info_v1,
     admin_get_log_config,
     admin_patch_update_log_config,

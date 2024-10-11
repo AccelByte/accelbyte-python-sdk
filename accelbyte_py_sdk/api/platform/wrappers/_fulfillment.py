@@ -33,6 +33,7 @@ from ..models import ErrorEntity
 from ..models import FulfillCodeRequest
 from ..models import FulfillmentHistoryPagingSlicedResult
 from ..models import FulfillmentItem
+from ..models import FulfillmentPagingSlicedResult
 from ..models import FulfillmentRequest
 from ..models import FulfillmentResult
 from ..models import FulfillmentV2Request
@@ -52,6 +53,7 @@ from ..operations.fulfillment import QueryFulfillmentHistoriesStatusEnum
 from ..operations.fulfillment import QueryFulfillments
 from ..operations.fulfillment import QueryFulfillmentsStateEnum
 from ..operations.fulfillment import RedeemCode
+from ..operations.fulfillment import RetryFulfillItems
 from ..operations.fulfillment import RevokeItems
 from ..models import FulfillmentItemItemTypeEnum
 from ..models import (
@@ -886,7 +888,9 @@ def query_fulfillments(
     [Not supported yet in AGS Shared Cloud] Query fulfillments in a namespace.
     Other detail info:
 
-      * Returns : list of fulfillment info, storeId field can be ignored.
+      * Returns : list of fulfillment info:
+        * storeId in items can be ignored
+        * error in successList will always be null
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/fulfillments
@@ -918,7 +922,7 @@ def query_fulfillments(
         user_id: (userId) OPTIONAL str in query
 
     Responses:
-        200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
+        200: OK - FulfillmentPagingSlicedResult (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -955,7 +959,9 @@ async def query_fulfillments_async(
     [Not supported yet in AGS Shared Cloud] Query fulfillments in a namespace.
     Other detail info:
 
-      * Returns : list of fulfillment info, storeId field can be ignored.
+      * Returns : list of fulfillment info:
+        * storeId in items can be ignored
+        * error in successList will always be null
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/fulfillments
@@ -987,7 +993,7 @@ async def query_fulfillments_async(
         user_id: (userId) OPTIONAL str in query
 
     Responses:
-        200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
+        200: OK - FulfillmentPagingSlicedResult (successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -1112,6 +1118,114 @@ async def redeem_code_async(
             return None, error
     request = RedeemCode.create(
         body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RetryFulfillItems)
+def retry_fulfill_items(
+    transaction_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retry fulfill items by transactionId (retryFulfillItems)
+
+    [Not supported yet in AGS Shared Cloud] Retry fulfill items by transactionId without sending the original payload.
+    Other detail info:
+
+      * Returns : fulfillment v2 result, storeId field can be ignored.
+
+    Properties:
+        url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/retry
+
+        method: PUT
+
+        tags: ["Fulfillment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        transaction_id: (transactionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentV2Result (successful operation)
+
+        404: Not Found - ErrorEntity (38145: Fulfillment with transactionId [{transactionId}] does not exist)
+
+        409: Conflict - FulfillmentV2Result ()
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetryFulfillItems.create(
+        transaction_id=transaction_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RetryFulfillItems)
+async def retry_fulfill_items_async(
+    transaction_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Retry fulfill items by transactionId (retryFulfillItems)
+
+    [Not supported yet in AGS Shared Cloud] Retry fulfill items by transactionId without sending the original payload.
+    Other detail info:
+
+      * Returns : fulfillment v2 result, storeId field can be ignored.
+
+    Properties:
+        url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/retry
+
+        method: PUT
+
+        tags: ["Fulfillment"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        transaction_id: (transactionId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - FulfillmentV2Result (successful operation)
+
+        404: Not Found - ErrorEntity (38145: Fulfillment with transactionId [{transactionId}] does not exist)
+
+        409: Conflict - FulfillmentV2Result ()
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = RetryFulfillItems.create(
+        transaction_id=transaction_id,
         user_id=user_id,
         namespace=namespace,
     )

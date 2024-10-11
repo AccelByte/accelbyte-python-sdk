@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.24.2"
+__version__ = "1.27.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -28,7 +28,9 @@ from .api_artifact_sampling_rule import ApiArtifactSamplingRule
 from .api_artifact_type_sampling_rules import ApiArtifactTypeSamplingRules
 from .api_artifact_url_response import ApiArtifactURLResponse
 from .api_artifact_usage_response import ApiArtifactUsageResponse
+from .api_available_instance_type import ApiAvailableInstanceType
 from .api_available_instance_types_response import ApiAvailableInstanceTypesResponse
+from .api_capacity import ApiCapacity
 from .api_development_server_configuration_create_request import (
     ApiDevelopmentServerConfigurationCreateRequest,
 )
@@ -44,6 +46,7 @@ from .api_development_server_configuration_list_response import (
 from .api_ds_history_event import ApiDSHistoryEvent
 from .api_ds_history_list import ApiDSHistoryList
 from .api_ds_host_configuration import ApiDSHostConfiguration
+from .api_ds_host_configuration_parameters import ApiDSHostConfigurationParameters
 from .api_fleet_artifacts_sample_rules import ApiFleetArtifactsSampleRules
 from .api_fleet_claim_by_keys_req import ApiFleetClaimByKeysReq
 from .api_fleet_claim_req import ApiFleetClaimReq
@@ -67,7 +70,6 @@ from .api_image_list import ApiImageList
 from .api_image_list_item import ApiImageListItem
 from .api_image_storage import ApiImageStorage
 from .api_image_update import ApiImageUpdate
-from .api_instance_type_description_response import ApiInstanceTypeDescriptionResponse
 from .api_paging_info import ApiPagingInfo
 from .api_port_configuration import ApiPortConfiguration
 from .api_qo_s_endpoint_response import ApiQoSEndpointResponse

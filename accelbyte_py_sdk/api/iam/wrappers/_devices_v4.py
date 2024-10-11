@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelDeviceBanRequestV4
@@ -160,6 +161,7 @@ async def admin_ban_device_v4_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDecryptDeviceV4)
 def admin_decrypt_device_v4(
     device_id: str,
@@ -210,6 +212,7 @@ def admin_decrypt_device_v4(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDecryptDeviceV4)
 async def admin_decrypt_device_v4_async(
     device_id: str,

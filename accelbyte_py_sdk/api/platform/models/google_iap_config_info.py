@@ -36,7 +36,13 @@ class GoogleIAPConfigInfo(Model):
 
         application_name: (applicationName) OPTIONAL str
 
+        notification_token_audience: (notificationTokenAudience) OPTIONAL str
+
+        notification_token_email: (notificationTokenEmail) OPTIONAL str
+
         p12_file_name: (p12FileName) OPTIONAL str
+
+        package_name: (packageName) OPTIONAL str
 
         service_account_id: (serviceAccountId) OPTIONAL str
     """
@@ -45,7 +51,10 @@ class GoogleIAPConfigInfo(Model):
 
     namespace: str  # REQUIRED
     application_name: str  # OPTIONAL
+    notification_token_audience: str  # OPTIONAL
+    notification_token_email: str  # OPTIONAL
     p12_file_name: str  # OPTIONAL
+    package_name: str  # OPTIONAL
     service_account_id: str  # OPTIONAL
 
     # endregion fields
@@ -60,8 +69,20 @@ class GoogleIAPConfigInfo(Model):
         self.application_name = value
         return self
 
+    def with_notification_token_audience(self, value: str) -> GoogleIAPConfigInfo:
+        self.notification_token_audience = value
+        return self
+
+    def with_notification_token_email(self, value: str) -> GoogleIAPConfigInfo:
+        self.notification_token_email = value
+        return self
+
     def with_p12_file_name(self, value: str) -> GoogleIAPConfigInfo:
         self.p12_file_name = value
+        return self
+
+    def with_package_name(self, value: str) -> GoogleIAPConfigInfo:
+        self.package_name = value
         return self
 
     def with_service_account_id(self, value: str) -> GoogleIAPConfigInfo:
@@ -82,10 +103,22 @@ class GoogleIAPConfigInfo(Model):
             result["applicationName"] = str(self.application_name)
         elif include_empty:
             result["applicationName"] = ""
+        if hasattr(self, "notification_token_audience"):
+            result["notificationTokenAudience"] = str(self.notification_token_audience)
+        elif include_empty:
+            result["notificationTokenAudience"] = ""
+        if hasattr(self, "notification_token_email"):
+            result["notificationTokenEmail"] = str(self.notification_token_email)
+        elif include_empty:
+            result["notificationTokenEmail"] = ""
         if hasattr(self, "p12_file_name"):
             result["p12FileName"] = str(self.p12_file_name)
         elif include_empty:
             result["p12FileName"] = ""
+        if hasattr(self, "package_name"):
+            result["packageName"] = str(self.package_name)
+        elif include_empty:
+            result["packageName"] = ""
         if hasattr(self, "service_account_id"):
             result["serviceAccountId"] = str(self.service_account_id)
         elif include_empty:
@@ -101,7 +134,10 @@ class GoogleIAPConfigInfo(Model):
         cls,
         namespace: str,
         application_name: Optional[str] = None,
+        notification_token_audience: Optional[str] = None,
+        notification_token_email: Optional[str] = None,
         p12_file_name: Optional[str] = None,
+        package_name: Optional[str] = None,
         service_account_id: Optional[str] = None,
         **kwargs,
     ) -> GoogleIAPConfigInfo:
@@ -109,8 +145,14 @@ class GoogleIAPConfigInfo(Model):
         instance.namespace = namespace
         if application_name is not None:
             instance.application_name = application_name
+        if notification_token_audience is not None:
+            instance.notification_token_audience = notification_token_audience
+        if notification_token_email is not None:
+            instance.notification_token_email = notification_token_email
         if p12_file_name is not None:
             instance.p12_file_name = p12_file_name
+        if package_name is not None:
+            instance.package_name = package_name
         if service_account_id is not None:
             instance.service_account_id = service_account_id
         return instance
@@ -130,10 +172,30 @@ class GoogleIAPConfigInfo(Model):
             instance.application_name = str(dict_["applicationName"])
         elif include_empty:
             instance.application_name = ""
+        if (
+            "notificationTokenAudience" in dict_
+            and dict_["notificationTokenAudience"] is not None
+        ):
+            instance.notification_token_audience = str(
+                dict_["notificationTokenAudience"]
+            )
+        elif include_empty:
+            instance.notification_token_audience = ""
+        if (
+            "notificationTokenEmail" in dict_
+            and dict_["notificationTokenEmail"] is not None
+        ):
+            instance.notification_token_email = str(dict_["notificationTokenEmail"])
+        elif include_empty:
+            instance.notification_token_email = ""
         if "p12FileName" in dict_ and dict_["p12FileName"] is not None:
             instance.p12_file_name = str(dict_["p12FileName"])
         elif include_empty:
             instance.p12_file_name = ""
+        if "packageName" in dict_ and dict_["packageName"] is not None:
+            instance.package_name = str(dict_["packageName"])
+        elif include_empty:
+            instance.package_name = ""
         if "serviceAccountId" in dict_ and dict_["serviceAccountId"] is not None:
             instance.service_account_id = str(dict_["serviceAccountId"])
         elif include_empty:
@@ -181,7 +243,10 @@ class GoogleIAPConfigInfo(Model):
         return {
             "namespace": "namespace",
             "applicationName": "application_name",
+            "notificationTokenAudience": "notification_token_audience",
+            "notificationTokenEmail": "notification_token_email",
             "p12FileName": "p12_file_name",
+            "packageName": "package_name",
             "serviceAccountId": "service_account_id",
         }
 
@@ -190,7 +255,10 @@ class GoogleIAPConfigInfo(Model):
         return {
             "namespace": True,
             "applicationName": False,
+            "notificationTokenAudience": False,
+            "notificationTokenEmail": False,
             "p12FileName": False,
+            "packageName": False,
             "serviceAccountId": False,
         }
 

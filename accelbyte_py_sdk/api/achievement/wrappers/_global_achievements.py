@@ -479,7 +479,7 @@ def claim_global_achievement_reward(
     """Claim global achievement reward (ClaimGlobalAchievementReward)
 
     Required permission
-    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
 
 
 
@@ -542,7 +542,7 @@ async def claim_global_achievement_reward_async(
     """Claim global achievement reward (ClaimGlobalAchievementReward)
 
     Required permission
-    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [READ]` and scope `social`
+    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
 
 
 

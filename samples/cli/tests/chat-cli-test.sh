@@ -60,37 +60,37 @@ chat-public-unban-topic-members '{"userIDs": ["Q23xoJ8aeCnaLpUK", "p44YUDjasWIPU
 chat-public-unmute-user '{"userId": "q98SjTvhZNkSQ70D"}' '0H6BXksUC9b6i5lZ' --login_with_auth "Bearer foo"
 chat-admin-get-all-config-v1 --login_with_auth "Bearer foo"
 chat-admin-get-log-config --login_with_auth "Bearer foo"
-chat-admin-patch-update-log-config '{"logLevel": "info", "socketLogEnabled": true}' --login_with_auth "Bearer foo"
+chat-admin-patch-update-log-config '{"logLevel": "info", "logLevelDB": "info", "slowQueryThreshold": 47, "socketLogEnabled": true}' --login_with_auth "Bearer foo"
 chat-admin-get-config-v1 --login_with_auth "Bearer foo"
-chat-admin-update-config-v1 '{"chatRateLimitBurst": 47, "chatRateLimitDuration": 87, "concurrentUsersLimit": 44, "enableClanChat": false, "enableManualTopicCreation": false, "enableProfanityFilter": false, "filterAppName": "boLQQ1MzH7Qm8bwb", "filterParam": "mXgdAPh1EThG96gA", "filterType": "FKK2WDgCcxvONZm3", "generalRateLimitBurst": 63, "generalRateLimitDuration": 42, "maxChatMessageLength": 10, "shardCapacityLimit": 45, "shardDefaultLimit": 62, "shardHardLimit": 19, "spamChatBurst": 90, "spamChatDuration": 89, "spamMuteDuration": 25}' --login_with_auth "Bearer foo"
+chat-admin-update-config-v1 '{"chatRateLimitBurst": 14, "chatRateLimitDuration": 2, "concurrentUsersLimit": 9, "enableClanChat": false, "enableManualTopicCreation": false, "enableProfanityFilter": false, "filterAppName": "LQQ1MzH7Qm8bwbmX", "filterParam": "gdAPh1EThG96gAFK", "filterType": "K2WDgCcxvONZm3Ee", "generalRateLimitBurst": 62, "generalRateLimitDuration": 19, "maxChatMessageLength": 90, "shardCapacityLimit": 89, "shardDefaultLimit": 25, "shardHardLimit": 69, "spamChatBurst": 61, "spamChatDuration": 32, "spamMuteDuration": 28}' --login_with_auth "Bearer foo"
 chat-export-config --login_with_auth "Bearer foo"
 chat-import-config --login_with_auth "Bearer foo"
 chat-admin-get-inbox-categories --login_with_auth "Bearer foo"
-chat-admin-add-inbox-category '{"enabled": true, "expiresIn": 32, "hook": {"driver": "nyeFoF7VSZ6pf3vn", "params": {"eSD2Tb3g7mSQUhAE": {}, "trmjqU6YE3p4lSck": {}, "0ZHn5GI39YBHqaTH": {}}}, "jsonSchema": {"eKtW18iGeUlc9d9s": {}, "ogWa24CKNS0GqVvU": {}, "fHQvsHXNUNe4mhgo": {}}, "name": "5QB65lSAiYnNjkfZ", "saveInbox": true, "sendNotification": true}' --login_with_auth "Bearer foo"
-chat-admin-delete-inbox-category 'QvGgbLdLsFzHkBMr' --login_with_auth "Bearer foo"
-chat-admin-update-inbox-category '{"enabled": true, "expiresIn": 50, "hook": {"driver": "HSZjtqXyJ58f7Gc2", "params": {"6SaiGVkydwYWQG26": {}, "yUZNmTBcvrbYCwZt": {}, "xFHyPLtI8ilbyDPU": {}}}, "jsonSchema": {"Ij88cekdqCt81P1k": {}, "tfIovmv9gsR5cJcH": {}, "m3SZLxoRDFuuuySj": {}}, "saveInbox": false, "sendNotification": true}' 'a9LJE8HoRS1X2PFA' --login_with_auth "Bearer foo"
-chat-admin-get-category-schema 'AMwzHPxB1UskYs4Y' --login_with_auth "Bearer foo"
-chat-admin-delete-inbox-message 'w20DOqOBSC2DKHRu' --login_with_auth "Bearer foo"
+chat-admin-add-inbox-category '{"enabled": true, "expiresIn": 74, "hook": {"driver": "eFoF7VSZ6pf3vneS", "params": {"D2Tb3g7mSQUhAEtr": {}, "mjqU6YE3p4lSck0Z": {}, "Hn5GI39YBHqaTHeK": {}}}, "jsonSchema": {"tW18iGeUlc9d9sog": {}, "Wa24CKNS0GqVvUfH": {}, "QvsHXNUNe4mhgo5Q": {}}, "name": "B65lSAiYnNjkfZrQ", "saveInbox": true, "sendNotification": false}' --login_with_auth "Bearer foo"
+chat-admin-delete-inbox-category 'gbLdLsFzHkBMr1yr' --login_with_auth "Bearer foo"
+chat-admin-update-inbox-category '{"enabled": false, "expiresIn": 23, "hook": {"driver": "tqXyJ58f7Gc26Sai", "params": {"GVkydwYWQG26yUZN": {}, "mTBcvrbYCwZtxFHy": {}, "PLtI8ilbyDPUIj88": {}}}, "jsonSchema": {"cekdqCt81P1ktfIo": {}, "vmv9gsR5cJcHm3SZ": {}, "LxoRDFuuuySj29a9": {}}, "saveInbox": true, "sendNotification": false}' 'oVk8T3GpAnkCmBUq' --login_with_auth "Bearer foo"
+chat-admin-get-category-schema 'g2SCnqntX9y1aZSW' --login_with_auth "Bearer foo"
+chat-admin-delete-inbox-message 'MiVi10sG6vxkfUcm' --login_with_auth "Bearer foo"
 chat-admin-get-inbox-messages --login_with_auth "Bearer foo"
-chat-admin-save-inbox-message '{"category": "PMMWH8Yb33T5UBJC", "expiredAt": 18, "message": {"0EeDxOgBnhhqElIa": {}, "Dml48wdNFLTm5T50": {}, "x9WT0GfH2rtOa4EX": {}}, "scope": "USER", "status": "SENT", "userIds": ["zOXQAk4mqrxzTtuL", "l4XlbGL8QOxtjzm8", "y2wNhmwoYZyI4EFZ"]}' --login_with_auth "Bearer foo"
-chat-admin-unsend-inbox-message '{"userIds": ["KBcYrCEAE7WIsfmx", "40NLRc6m8heKnWhz", "fe2NubeoKFeIaFQC"]}' 'YoDPICpnduEEQlUL' --login_with_auth "Bearer foo"
-chat-admin-get-inbox-users 'dJz4mnRBkMNxvvKg' --login_with_auth "Bearer foo"
-chat-admin-update-inbox-message '{"expiredAt": 55, "message": {"FyabWAgIUXiI07A6": {}, "8eaqC2J9jyEW6GLb": {}, "c0NaKDUL3sa13lk1": {}}, "scope": "NAMESPACE", "userIds": ["ih3bit0VWn3CO39P", "XDNxtXgeO3FgkXhj", "DzaQY3snn2ZkP7cF"]}' 'dP43e5dC9XIBudfZ' --login_with_auth "Bearer foo"
-chat-admin-send-inbox-message '{}' 'grbHDIDm4hMzF4Tx' --login_with_auth "Bearer foo"
+chat-admin-save-inbox-message '{"category": "qRRbceJ5i0EeDxOg", "expiredAt": 55, "message": {"eCSz9WEi8KlloeH0": {}, "JT1yduat2vQR3biB": {}, "fsu4jmsRE2w1yEkL": {}}, "scope": "NAMESPACE", "status": "DRAFT", "userIds": ["mqrxzTtuLl4XlbGL", "8QOxtjzm8y2wNhmw", "oYZyI4EFZKBcYrCE"]}' --login_with_auth "Bearer foo"
+chat-admin-unsend-inbox-message '{"userIds": ["AE7WIsfmx40NLRc6", "m8heKnWhzfe2Nube", "oKFeIaFQCYoDPICp"]}' 'nduEEQlULdJz4mnR' --login_with_auth "Bearer foo"
+chat-admin-get-inbox-users 'BkMNxvvKgAT8mJrY' --login_with_auth "Bearer foo"
+chat-admin-update-inbox-message '{"expiredAt": 33, "message": {"IUXiI07A68eaqC2J": {}, "9jyEW6GLbc0NaKDU": {}, "L3sa13lk1dQBHO86": {}}, "scope": "NAMESPACE", "userIds": ["Wn3CO39PXDNxtXge", "O3FgkXhjDzaQY3sn", "n2ZkP7cFdP43e5dC"]}' '9XIBudfZgrbHDIDm' --login_with_auth "Bearer foo"
+chat-admin-send-inbox-message '{}' '4hMzF4TxodenSrUT' --login_with_auth "Bearer foo"
 chat-admin-get-inbox-stats --login_with_auth "Bearer foo"
-chat-admin-get-chat-snapshot 'odenSrUTvfqU0bfo' --login_with_auth "Bearer foo"
-chat-admin-delete-chat-snapshot 'Mm5cTtFWbotQyXJR' --login_with_auth "Bearer foo"
+chat-admin-get-chat-snapshot 'vfqU0bfoMm5cTtFW' --login_with_auth "Bearer foo"
+chat-admin-delete-chat-snapshot 'botQyXJRcQWsmqPN' --login_with_auth "Bearer foo"
 chat-admin-profanity-query --login_with_auth "Bearer foo"
-chat-admin-profanity-create '{"falseNegative": ["cQWsmqPNs92epxk0", "i8VxsZNereSvf969", "9mCEHThUJkETAsSp"], "falsePositive": ["7gh4TeUTkOkAYfJB", "8AT9t4Tv207Y2QD3", "oD5fLCr3OOlXVv8Z"], "word": "GF7uYnGzpipNDigN", "wordType": "Jma1MbqqZtfNWql4"}' --login_with_auth "Bearer foo"
-chat-admin-profanity-create-bulk '{"dictionaries": [{"falseNegative": ["nmwAft4gqkNNlWkD", "9eOziYRFOn0jJLHC", "9LxhvNXTwGBCtohL"], "falsePositive": ["tl9Zuhytm5UDrT6Q", "XCs5SPBbRPZTF6oQ", "AXVG7tnsZg5QgXjv"], "word": "yGJPN4eXbJE5Vs2G", "wordType": "cyomQoIXimBJehyx"}, {"falseNegative": ["lNsjUgxBkF6wFPoJ", "eQediogEhhM2rIiz", "GdKvOPdq5xrgxSmy"], "falsePositive": ["1DN9LFkYW5DQyj4b", "j5Ro2ogaKt2ujQSa", "3Zdb65UXmy0Zp6iI"], "word": "aTIKUkmkk9QM0NBM", "wordType": "A9ORxpzwLR2AK6eX"}, {"falseNegative": ["UGPJsw1fiP80G9Pc", "lxcft2ulIJzPyrVE", "iOG4UcqsuGKHhMRW"], "falsePositive": ["LVd3DlhLuIpomM8s", "m1MiaI1mX2tJoARt", "dbBe7udsMrok0WvG"], "word": "YYnx4V709xbnGezK", "wordType": "sDwG2omOR2nvYI9T"}]}' --login_with_auth "Bearer foo"
+chat-admin-profanity-create '{"falseNegative": ["s92epxk0i8VxsZNe", "reSvf9699mCEHThU", "JkETAsSp7gh4TeUT"], "falsePositive": ["kOkAYfJB8AT9t4Tv", "207Y2QD3oD5fLCr3", "OOlXVv8ZGF7uYnGz"], "word": "pipNDigNJma1Mbqq", "wordType": "ZtfNWql4nmwAft4g"}' --login_with_auth "Bearer foo"
+chat-admin-profanity-create-bulk '{"dictionaries": [{"falseNegative": ["qkNNlWkD9eOziYRF", "On0jJLHC9LxhvNXT", "wGBCtohLtl9Zuhyt"], "falsePositive": ["m5UDrT6QXCs5SPBb", "RPZTF6oQAXVG7tns", "Zg5QgXjvyGJPN4eX"], "word": "bJE5Vs2GcyomQoIX", "wordType": "imBJehyxlNsjUgxB"}, {"falseNegative": ["kF6wFPoJeQediogE", "hhM2rIizGdKvOPdq", "5xrgxSmy1DN9LFkY"], "falsePositive": ["W5DQyj4bj5Ro2oga", "Kt2ujQSa3Zdb65UX", "my0Zp6iIaTIKUkmk"], "word": "k9QM0NBMA9ORxpzw", "wordType": "LR2AK6eXUGPJsw1f"}, {"falseNegative": ["iP80G9Pclxcft2ul", "IJzPyrVEiOG4Ucqs", "uGKHhMRWLVd3DlhL"], "falsePositive": ["uIpomM8sm1MiaI1m", "X2tJoARtdbBe7uds", "Mrok0WvGYYnx4V70"], "word": "9xbnGezKsDwG2omO", "wordType": "R2nvYI9TVqJdvzcW"}]}' --login_with_auth "Bearer foo"
 chat-admin-profanity-export --login_with_auth "Bearer foo"
 chat-admin-profanity-group --login_with_auth "Bearer foo"
 chat-admin-profanity-import 'tmp.dat' --login_with_auth "Bearer foo"
-chat-admin-profanity-update '{"falseNegative": ["VqJdvzcWbfUpaXp5", "JMl5LL4bTxBmZjdr", "rIxsB0NRsB1fPqqR"], "falsePositive": ["RulpqpymDkQhtrHW", "wRVnwVBOqOHi8pWG", "d1juYhiqjRJOqB5F"], "word": "93zFQbJndUDpdONn", "wordType": "eAczbBdHb2slt71B"}' '1SmZp2JZp50CnPb7' --login_with_auth "Bearer foo"
-chat-admin-profanity-delete '1ORYcmQbTU5JX8cc' --login_with_auth "Bearer foo"
+chat-admin-profanity-update '{"falseNegative": ["bfUpaXp5JMl5LL4b", "TxBmZjdrrIxsB0NR", "sB1fPqqRRulpqpym"], "falsePositive": ["DkQhtrHWwRVnwVBO", "qOHi8pWGd1juYhiq", "jRJOqB5F93zFQbJn"], "word": "dUDpdONneAczbBdH", "wordType": "b2slt71B1SmZp2JZ"}' 'p50CnPb71ORYcmQb' --login_with_auth "Bearer foo"
+chat-admin-profanity-delete 'TU5JX8ccLjMXJRk0' --login_with_auth "Bearer foo"
 chat-public-get-messages --login_with_auth "Bearer foo"
 chat-public-get-config-v1 --login_with_auth "Bearer foo"
-chat-public-get-chat-snapshot 'LjMXJRk0eaKQDOJv' 'rTefglSs6g4iY9u0' --login_with_auth "Bearer foo"
+chat-public-get-chat-snapshot 'eaKQDOJvrTefglSs' '6g4iY9u02aCNYIWe' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -121,7 +121,7 @@ fi
 
 #- 2 AdminFilterChatMessage
 $PYTHON -m $MODULE 'chat-admin-filter-chat-message' \
-    '{"message": "2aCNYIWekp18lOC3", "timestamp": 26, "topicId": "IMGql5ElEa9EIIlG", "topicType": "GROUP", "userId": "spxwhRON0bc1eMbE"}' \
+    '{"message": "kp18lOC3mNqF7Bl0", "timestamp": 76, "topicId": "Ea9EIIlGcHB3CfR3", "topicType": "GROUP", "userId": "0bc1eMbEIjowLqc3"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 2 'AdminFilterChatMessage' test.out
@@ -134,7 +134,7 @@ eval_tap $? 3 'AdminChatHistory' test.out
 
 #- 4 AdminCreateNamespaceTopic
 $PYTHON -m $MODULE 'chat-admin-create-namespace-topic' \
-    '{"description": "IjowLqc3ecjXJbZD", "name": "KKoxLE1Y3Dymtj3g"}' \
+    '{"description": "ecjXJbZDKKoxLE1Y", "name": "3Dymtj3giPg4x4yi"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 4 'AdminCreateNamespaceTopic' test.out
@@ -147,7 +147,7 @@ eval_tap $? 5 'AdminTopicList' test.out
 
 #- 6 AdminCreateTopic
 $PYTHON -m $MODULE 'chat-admin-create-topic' \
-    '{"admins": ["iPg4x4yiPX6ues1H", "hhkg1yLVbLFzHEP8", "cM4NTwr0KHaAsmTe"], "description": "j52WKi6tArAURt9p", "isChannel": false, "isJoinable": true, "members": ["vJBWic7UkBeIXuqD", "uAXI66bQ71w0deoV", "9Lx5RDA1l2XcrciY"], "name": "NEzvSZIPkhSgORcz", "shardLimit": 43, "type": "S5BvmgBLxh4ijFnE"}' \
+    '{"admins": ["PX6ues1Hhhkg1yLV", "bLFzHEP8cM4NTwr0", "KHaAsmTej52WKi6t"], "description": "ArAURt9plCSVq8Pd", "isChannel": false, "isJoinable": false, "members": ["BeIXuqDuAXI66bQ7", "1w0deoV9Lx5RDA1l", "2XcrciYNEzvSZIPk"], "name": "hSgORcz5S5BvmgBL", "shardLimit": 48, "type": "vuKNuy0ytZQ7M6Nz"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'AdminCreateTopic' test.out
@@ -172,30 +172,30 @@ eval_tap $? 9 'AdminQueryTopicLog' test.out
 
 #- 10 AdminUpdateTopic
 $PYTHON -m $MODULE 'chat-admin-update-topic' \
-    '{"description": "3Tam69qSZ7PC6f6Q", "isJoinable": false, "name": "LFKx1dX4LuWJu3pD"}' \
-    'MUAeeZ97SBROPYuG' \
+    '{"description": "y1adnSKOLFKx1dX4", "isJoinable": false, "name": "uWJu3pDMUAeeZ97S"}' \
+    'BROPYuG6XqP6oo7G' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'AdminUpdateTopic' test.out
 
 #- 11 AdminDeleteTopic
 $PYTHON -m $MODULE 'chat-admin-delete-topic' \
-    '6XqP6oo7G73zdxTg' \
+    '73zdxTgOfnwIdlNa' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'AdminDeleteTopic' test.out
 
 #- 12 AdminBanTopicMembers
 $PYTHON -m $MODULE 'chat-admin-ban-topic-members' \
-    '{"userIds": ["OfnwIdlNa29fDLh7", "41IslKHzGlLKWUtD", "Qs61OQAoxyyQpRWC"]}' \
-    'iiPDGQhNPEwiJCf2' \
+    '{"userIds": ["29fDLh741IslKHzG", "lLKWUtDQs61OQAox", "yyQpRWCiiPDGQhNP"]}' \
+    'EwiJCf2XJVrlzqQl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'AdminBanTopicMembers' test.out
 
 #- 13 AdminChannelTopicInfo
 $PYTHON -m $MODULE 'chat-admin-channel-topic-info' \
-    'XJVrlzqQls1ozhLV' \
+    's1ozhLVA3kE8jKvg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'AdminChannelTopicInfo' test.out
@@ -205,55 +205,55 @@ eval_tap 0 14 'AdminTopicChatHistory # SKIP deprecated' test.out
 
 #- 15 AdminSendChat
 $PYTHON -m $MODULE 'chat-admin-send-chat' \
-    '{"message": "A3kE8jKvgatOEBM7"}' \
-    '0TdlNBJYOmpu1VCa' \
+    '{"message": "atOEBM70TdlNBJYO"}' \
+    'mpu1VCarzBsV6xnZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 15 'AdminSendChat' test.out
 
 #- 16 AdminDeleteChat
 $PYTHON -m $MODULE 'chat-admin-delete-chat' \
-    'rzBsV6xnZ5Jrzzjr' \
-    'caug6CWVG8SWP3gl' \
+    '5Jrzzjrcaug6CWVG' \
+    '8SWP3glU6muswVJn' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 16 'AdminDeleteChat' test.out
 
 #- 17 AdminTopicMembers
 $PYTHON -m $MODULE 'chat-admin-topic-members' \
-    'U6muswVJnNnN7kAa' \
+    'NnN7kAa7j0riFc5H' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'AdminTopicMembers' test.out
 
 #- 18 AdminTopicShards
 $PYTHON -m $MODULE 'chat-admin-topic-shards' \
-    '7j0riFc5HTHQIoVs' \
+    'THQIoVsGo7dwV9DB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 18 'AdminTopicShards' test.out
 
 #- 19 AdminUnbanTopicMembers
 $PYTHON -m $MODULE 'chat-admin-unban-topic-members' \
-    '{"userIds": ["Go7dwV9DBqFKHQkE", "TJyTlUrwDTnoujQD", "4IEiH9Z5qXn3aoRt"]}' \
-    'lqOECohViHA5CzgF' \
+    '{"userIds": ["qFKHQkETJyTlUrwD", "TnoujQD4IEiH9Z5q", "Xn3aoRtlqOECohVi"]}' \
+    'HA5CzgFSy8X1A3Pr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'AdminUnbanTopicMembers' test.out
 
 #- 20 AdminAddTopicMember
 $PYTHON -m $MODULE 'chat-admin-add-topic-member' \
-    '{"isAdmin": true}' \
-    'y8X1A3PrIfapq5AA' \
-    'eMe4L3mDWORBVXTI' \
+    '{"isAdmin": false}' \
+    'iIZsMfB4ZH3mtgWg' \
+    'U4pCAKxeE70CaunQ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 20 'AdminAddTopicMember' test.out
 
 #- 21 AdminRemoveTopicMember
 $PYTHON -m $MODULE 'chat-admin-remove-topic-member' \
-    'IJM9XsYIIZxiXNMR' \
-    '9BgaWcFX3SUBhyoT' \
+    'Nxot371W9G4AvQkq' \
+    'sGnmyo5JJTUVmb8G' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 21 'AdminRemoveTopicMember' test.out
@@ -266,7 +266,7 @@ eval_tap $? 22 'AdminQueryTopic' test.out
 
 #- 23 AdminQueryUsersTopic
 $PYTHON -m $MODULE 'chat-admin-query-users-topic' \
-    'sMWPAxUMkawaGpAy' \
+    'EXFTlEMEsFzYqwgK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 23 'AdminQueryUsersTopic' test.out
@@ -285,47 +285,47 @@ eval_tap $? 25 'PublicTopicList' test.out
 
 #- 26 PublicBanTopicMembers
 $PYTHON -m $MODULE 'chat-public-ban-topic-members' \
-    '{"userIDs": ["rIwMif3BOdkocVTd", "4BxqGWV6mTJ0sQs6", "XNbjvqhnUVLWu8ol"]}' \
-    'KdxL6ozRmDD0jJvl' \
+    '{"userIDs": ["1Np5nodqpLm7FhJB", "NXzAFdO0Khqf6kiT", "dSGv2LFjAKY7Cbgs"]}' \
+    'WqFWZX7kPBom8F9G' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 26 'PublicBanTopicMembers' test.out
 
 #- 27 PublicChatHistory
 $PYTHON -m $MODULE 'chat-public-chat-history' \
-    'fV5OemPYdYT7DROC' \
+    'LLTG8phc3n4iLoIl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 27 'PublicChatHistory' test.out
 
 #- 28 PublicDeleteChat
 $PYTHON -m $MODULE 'chat-public-delete-chat' \
-    'jtuzFMbAG9YI89hm' \
-    'guB8FOTjMLo4b9rI' \
+    'lKlpO2pqiXJF3WGR' \
+    'aoQomSJC4DdrKF7S' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 28 'PublicDeleteChat' test.out
 
 #- 29 PublicMuteUser
 $PYTHON -m $MODULE 'chat-public-mute-user' \
-    '{"duration": 53, "userId": "C4DdrKF7SUQPLG59"}' \
-    'e0k5ZtX6wK7PpUlc' \
+    '{"duration": 96, "userId": "TBcrM8rG0rH0zcsw"}' \
+    'wVeMK6MbGIVIu8vv' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 29 'PublicMuteUser' test.out
 
 #- 30 PublicUnbanTopicMembers
 $PYTHON -m $MODULE 'chat-public-unban-topic-members' \
-    '{"userIDs": ["IW32iK7MGt1ixY5r", "A1WoVeJIePF8ZrQz", "P4zvtdxdbZUpd6FJ"]}' \
-    'tHJ1pyVwyKQLY6FE' \
+    '{"userIDs": ["wLc7KY3uVoJXTIMt", "pgkieDyF97lGdMiH", "KxbWCYzo8yO2KTK9"]}' \
+    'tmmOnYnOpas6ghP1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 30 'PublicUnbanTopicMembers' test.out
 
 #- 31 PublicUnmuteUser
 $PYTHON -m $MODULE 'chat-public-unmute-user' \
-    '{"userId": "O65Rb3z7CYLM8Ils"}' \
-    'HqffnrfsGlfPaZKB' \
+    '{"userId": "y4Zi7s7QBlk44Z44"}' \
+    'B1GZgKg4uKxaCgcG' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 31 'PublicUnmuteUser' test.out
@@ -344,7 +344,7 @@ eval_tap $? 33 'AdminGetLogConfig' test.out
 
 #- 34 AdminPatchUpdateLogConfig
 $PYTHON -m $MODULE 'chat-admin-patch-update-log-config' \
-    '{"logLevel": "fatal", "socketLogEnabled": false}' \
+    '{"logLevel": "panic", "logLevelDB": "trace", "slowQueryThreshold": 41, "socketLogEnabled": false}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 34 'AdminPatchUpdateLogConfig' test.out
@@ -357,7 +357,7 @@ eval_tap $? 35 'AdminGetConfigV1' test.out
 
 #- 36 AdminUpdateConfigV1
 $PYTHON -m $MODULE 'chat-admin-update-config-v1' \
-    '{"chatRateLimitBurst": 42, "chatRateLimitDuration": 74, "concurrentUsersLimit": 60, "enableClanChat": true, "enableManualTopicCreation": false, "enableProfanityFilter": false, "filterAppName": "b60ufPpzwj1QGIFm", "filterParam": "lVf4jvapseE9LN9b", "filterType": "vhOrHflIOd6X3viL", "generalRateLimitBurst": 43, "generalRateLimitDuration": 55, "maxChatMessageLength": 39, "shardCapacityLimit": 32, "shardDefaultLimit": 62, "shardHardLimit": 88, "spamChatBurst": 21, "spamChatDuration": 53, "spamMuteDuration": 24}' \
+    '{"chatRateLimitBurst": 59, "chatRateLimitDuration": 53, "concurrentUsersLimit": 47, "enableClanChat": false, "enableManualTopicCreation": false, "enableProfanityFilter": true, "filterAppName": "1QGIFmlVf4jvapse", "filterParam": "E9LN9bvhOrHflIOd", "filterType": "6X3viLvtEk4mTIpU", "generalRateLimitBurst": 55, "generalRateLimitDuration": 36, "maxChatMessageLength": 75, "shardCapacityLimit": 14, "shardDefaultLimit": 39, "shardHardLimit": 48, "spamChatBurst": 30, "spamChatDuration": 9, "spamMuteDuration": 4}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 36 'AdminUpdateConfigV1' test.out
@@ -382,36 +382,36 @@ eval_tap $? 39 'AdminGetInboxCategories' test.out
 
 #- 40 AdminAddInboxCategory
 $PYTHON -m $MODULE 'chat-admin-add-inbox-category' \
-    '{"enabled": false, "expiresIn": 89, "hook": {"driver": "UA9gxo8SV38nEhoX", "params": {"mM2W7l6jHMA2rG3n": {}, "akopAywelu01nryE": {}, "J0NqoTow0qiOiC4j": {}}}, "jsonSchema": {"0iktm0ZPLkLOsp0L": {}, "Z5njN86Hl8kUXzt6": {}, "bSc6bWvgpVyW9dD1": {}}, "name": "kOmvrAejcq2LgkQu", "saveInbox": false, "sendNotification": true}' \
+    '{"enabled": false, "expiresIn": 98, "hook": {"driver": "zL0TOg54vCE48L5o", "params": {"LF6M4lNa4JUMSHNg": {}, "qRqCV7usamANkZlO": {}, "X9Sfo95HgXqKhTPk": {}}}, "jsonSchema": {"wfLM9uSybRzWek2g": {}, "ZvRrvr0n9d9lvccK": {}, "MLhrTrcBE2ItBS3K": {}}, "name": "tKZWe8aoFzAyBME7", "saveInbox": false, "sendNotification": true}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 40 'AdminAddInboxCategory' test.out
 
 #- 41 AdminDeleteInboxCategory
 $PYTHON -m $MODULE 'chat-admin-delete-inbox-category' \
-    '7RBx3vim02jBOxrZ' \
+    'jBOxrZDyvpcLYOWA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 41 'AdminDeleteInboxCategory' test.out
 
 #- 42 AdminUpdateInboxCategory
 $PYTHON -m $MODULE 'chat-admin-update-inbox-category' \
-    '{"enabled": true, "expiresIn": 100, "hook": {"driver": "yvpcLYOWA8NjxOna", "params": {"Eok4nOOCzfsflhjb": {}, "ngJOUn18G5MlfDTk": {}, "8aG40NlncceIZSwg": {}}}, "jsonSchema": {"AIkgzh4pTU0Am4DZ": {}, "hl0bQxFJ3sWCqQpQ": {}, "2FbKPFMycMSQ4qfA": {}}, "saveInbox": false, "sendNotification": false}' \
-    '3z46OCaGBeMfPlNo' \
+    '{"enabled": false, "expiresIn": 47, "hook": {"driver": "faXUr9Sk4lq2faBc", "params": {"AXXKlhvyH8paOJtx": {}, "qMPpcVfRwNj547fH": {}, "0XrKEDpEY8VnocGA": {}}}, "jsonSchema": {"jci0V3tBf2jnHGKX": {}, "phn50c9tNLDljhZ2": {}, "jxLRX3z46OCaGBeM": {}}, "saveInbox": false, "sendNotification": false}' \
+    'PlNos4yBRjrERHEo' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 42 'AdminUpdateInboxCategory' test.out
 
 #- 43 AdminGetCategorySchema
 $PYTHON -m $MODULE 'chat-admin-get-category-schema' \
-    's4yBRjrERHEonAZR' \
+    'nAZR8GmEu0q1p6QC' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 43 'AdminGetCategorySchema' test.out
 
 #- 44 AdminDeleteInboxMessage
 $PYTHON -m $MODULE 'chat-admin-delete-inbox-message' \
-    '8GmEu0q1p6QCyY6v' \
+    'yY6vSkVFWdsbYuVE' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 44 'AdminDeleteInboxMessage' test.out
@@ -424,30 +424,30 @@ eval_tap $? 45 'AdminGetInboxMessages' test.out
 
 #- 46 AdminSaveInboxMessage
 $PYTHON -m $MODULE 'chat-admin-save-inbox-message' \
-    '{"category": "SkVFWdsbYuVEGVxY", "expiredAt": 15, "message": {"XSxSc3aZPV87pna0": {}, "8gxefTYKhuxaEc7M": {}, "4P7UckSC6ePeN8i4": {}}, "scope": "USER", "status": "SENT", "userIds": ["ZOuYQJ03BAHZ7c53", "q7akMpcmnnx6RVBr", "op9v7aZK3h65hbN1"]}' \
+    '{"category": "GVxYheR3j5mNZ6vw", "expiredAt": 43, "message": {"pna08gxefTYKhuxa": {}, "Ec7M4P7UckSC6ePe": {}, "N8i4GrFES9z7xueH": {}}, "scope": "USER", "status": "SENT", "userIds": ["7c53q7akMpcmnnx6", "RVBrop9v7aZK3h65", "hbN15zfQSfQrtfF3"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 46 'AdminSaveInboxMessage' test.out
 
 #- 47 AdminUnsendInboxMessage
 $PYTHON -m $MODULE 'chat-admin-unsend-inbox-message' \
-    '{"userIds": ["5zfQSfQrtfF3TQN0", "OcNDLr36vzohZyjM", "QAg5mPYhrLTyU8Oh"]}' \
-    'gfY9JQYGF4bYXEcE' \
+    '{"userIds": ["TQN0OcNDLr36vzoh", "ZyjMQAg5mPYhrLTy", "U8OhgfY9JQYGF4bY"]}' \
+    'XEcENx9xZlAchob4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 47 'AdminUnsendInboxMessage' test.out
 
 #- 48 AdminGetInboxUsers
 $PYTHON -m $MODULE 'chat-admin-get-inbox-users' \
-    'Nx9xZlAchob44lON' \
+    '4lONDDwMvgI0HlyP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 48 'AdminGetInboxUsers' test.out
 
 #- 49 AdminUpdateInboxMessage
 $PYTHON -m $MODULE 'chat-admin-update-inbox-message' \
-    '{"expiredAt": 61, "message": {"p7FUjfIGaffoflEI": {}, "ByYqeKN0meGelYF5": {}, "wWaDhukU4khGG4vZ": {}}, "scope": "NAMESPACE", "userIds": ["TYnPkmSu4PWam1jx", "R7SETWjteoc8fgvZ", "DDhoO05oKqymxLD1"]}' \
-    'Lcvw6T6mZEiwxxEl' \
+    '{"expiredAt": 90, "message": {"flEIByYqeKN0meGe": {}, "lYF5wWaDhukU4khG": {}, "G4vZFTYnPkmSu4PW": {}}, "scope": "NAMESPACE", "userIds": ["MyOK06MqQBErxgjV", "BycvU4PbmRDcrg0D", "jQjBECXvea7H1m2l"]}' \
+    'JFRZ3ZprZ60zMjhT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 49 'AdminUpdateInboxMessage' test.out
@@ -455,7 +455,7 @@ eval_tap $? 49 'AdminUpdateInboxMessage' test.out
 #- 50 AdminSendInboxMessage
 $PYTHON -m $MODULE 'chat-admin-send-inbox-message' \
     '{}' \
-    'pMYSWIeVzm7z9noo' \
+    'Heh94TSenE5hCFkI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 50 'AdminSendInboxMessage' test.out
@@ -468,14 +468,14 @@ eval_tap $? 51 'AdminGetInboxStats' test.out
 
 #- 52 AdminGetChatSnapshot
 $PYTHON -m $MODULE 'chat-admin-get-chat-snapshot' \
-    'wmlTIKVowi0RY2VN' \
+    'f5weqZ18MH57l2Zs' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 52 'AdminGetChatSnapshot' test.out
 
 #- 53 AdminDeleteChatSnapshot
 $PYTHON -m $MODULE 'chat-admin-delete-chat-snapshot' \
-    '4ZONJREdUQ3z9F1B' \
+    'rh90ETtYmGukz3Mn' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 53 'AdminDeleteChatSnapshot' test.out
@@ -488,14 +488,14 @@ eval_tap $? 54 'AdminProfanityQuery' test.out
 
 #- 55 AdminProfanityCreate
 $PYTHON -m $MODULE 'chat-admin-profanity-create' \
-    '{"falseNegative": ["xNNgnke4akncw7wu", "9TmXfJWBPrx9Ns8e", "LzYEvwSWTaLQjctv"], "falsePositive": ["rK2jhsYpKPlXn77A", "tYoFzLAATPY8P8P3", "cfoivvQxevecWw7R"], "word": "ry0KK5rgAGO0dW8r", "wordType": "X2MVUGKSZ4GcLkt4"}' \
+    '{"falseNegative": ["lrjcHp6B8Vj7rXFg", "DnDkdZ9bpjb1tdA3", "QhjCMW64f4XhIjSo"], "falsePositive": ["TB2NMKtezapPr2QE", "Px3zTxBGtEJIYppu", "USsKoHw2hyd12uSE"], "word": "7BEv3aevq6iohU1c", "wordType": "g4W1IS3Uv1BpWoJB"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 55 'AdminProfanityCreate' test.out
 
 #- 56 AdminProfanityCreateBulk
 $PYTHON -m $MODULE 'chat-admin-profanity-create-bulk' \
-    '{"dictionaries": [{"falseNegative": ["pK32sJxlZcCTpTdR", "tCHvuk6B6XTmSLyn", "50sigBVZxiKdV57G"], "falsePositive": ["vRyd9UuL02Le8HSC", "slsDd4M1F5qRIblS", "7Nz81GRazPAANjfB"], "word": "oldFOyqA2clJ5gEO", "wordType": "aCgM6Yn6RugbNEIp"}, {"falseNegative": ["GBFUjOn5mM7k8nbL", "zvtCIW5ynMKquUic", "AeIVXtoWAXhMlW4t"], "falsePositive": ["LqX7OICf5oD1e6oI", "9FmYel0kOw72o8Zk", "gk0jS6rDWUwfhKvr"], "word": "f2AaH4yCWrHSppnI", "wordType": "ZkNnTn3rzH5NvAtc"}, {"falseNegative": ["vNedgS1fUfKmihDb", "mu8ePWlQMVDXEHei", "GTnwyEw6hIWDZrpP"], "falsePositive": ["7rz3ISW510kHr4is", "TKWjmv67nuHCXWfw", "nwGioVwVzmmBVVFf"], "word": "pqx1AeLtzcPJ3jtD", "wordType": "YBo4FUTH7CGfKSyx"}]}' \
+    '{"dictionaries": [{"falseNegative": ["aqdg2FHcunsS1lna", "O2m9vqjhbeK2qN8g", "6x2PyYDo5R3hLiD5"], "falsePositive": ["sf5y1JsxJNGmyt0S", "QDUDoWBZVGLlkUet", "zCAWc9x1aMjgGim5"], "word": "1T107XIZRZ7tZdIs", "wordType": "0xf4czdt7zqmSKxO"}, {"falseNegative": ["EQlVcx6GqsBq8vdh", "WVnuYLgpZehK0G2n", "myuViB9kRTcSQdTn"], "falsePositive": ["NYGeAfYFG3wSkHKu", "fBdS3ZOokZB4cXnA", "XyuGz6LlxHv8Swya"], "word": "gYvDJ3w3UNgIGj2j", "wordType": "ZtEYT8sIPSE1XXPz"}, {"falseNegative": ["ySa0sZoFS6xCOWMp", "yh9pMsQgb64ELbzD", "Mwyo4nIRysQdbufX"], "falsePositive": ["jYnSoIFeouC2m38k", "XrDZWlGVE9sJ4NpU", "tKp6M9I6nEwnZhsj"], "word": "wJeGwaPSDMZz95OY", "wordType": "KiqaZD63xe5rruJV"}]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 56 'AdminProfanityCreateBulk' test.out
@@ -521,15 +521,15 @@ eval_tap $? 59 'AdminProfanityImport' test.out
 
 #- 60 AdminProfanityUpdate
 $PYTHON -m $MODULE 'chat-admin-profanity-update' \
-    '{"falseNegative": ["gRR1DiCqSMzpqIFG", "LkDs7ACC1RgBfoNr", "HlFi2qJLgmBLE35Y"], "falsePositive": ["hyiDV90SeI5yppBH", "oytVznCgNyx9fbT6", "3ShEh8PbGikLjgjc"], "word": "j34uulU6FYBZsWFb", "wordType": "r3RSP0W9nBhvhf8Q"}' \
-    '0DtJMcYQdN66bswA' \
+    '{"falseNegative": ["fLGea0ZtlzUcuHAX", "z0UV31MfuGaXsAuG", "sZaSHevO0TQNEI3k"], "falsePositive": ["fabxJWWSI1ECUo1N", "PpeFhUztXDgB7n4C", "97uAPP8PATLpUpxe"], "word": "JlsBJT6Hh3OMjAjq", "wordType": "2mK8lbSEEelxnb5Q"}' \
+    'xWG2HFnZlA6HKWW4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 60 'AdminProfanityUpdate' test.out
 
 #- 61 AdminProfanityDelete
 $PYTHON -m $MODULE 'chat-admin-profanity-delete' \
-    'gt65X4N1LQZmB61J' \
+    'fI1IQcoBQELcNlZk' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 61 'AdminProfanityDelete' test.out
@@ -548,8 +548,8 @@ eval_tap $? 63 'PublicGetConfigV1' test.out
 
 #- 64 PublicGetChatSnapshot
 $PYTHON -m $MODULE 'chat-public-get-chat-snapshot' \
-    'MdtwCVUrYQue84dw' \
-    'mbwFEnAZaWsQJtRY' \
+    'qTZrKgXNwvm4e5GX' \
+    '6H742OixhtAoKiVm' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 64 'PublicGetChatSnapshot' test.out

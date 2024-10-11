@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import IamErrorResponse
+from ..models import ModelClaimUserRewardsByGoalCodeRequest
 from ..models import ModelClaimUserRewardsReq
 from ..models import ModelClaimUsersRewardsRequest
 from ..models import ModelClaimUsersRewardsResponse
@@ -38,10 +39,12 @@ from ..models import ModelUserReward
 from ..models import ResponseError
 
 from ..operations.player_reward import AdminClaimUserRewards
+from ..operations.player_reward import AdminClaimUserRewardsByGoalCode
 from ..operations.player_reward import AdminClaimUsersRewards
 from ..operations.player_reward import AdminGetUserRewards
 from ..operations.player_reward import AdminGetUserRewardsStatusEnum
 from ..operations.player_reward import PublicClaimUserRewards
+from ..operations.player_reward import PublicClaimUserRewardsByGoalCode
 from ..operations.player_reward import PublicGetUserRewards
 from ..operations.player_reward import PublicGetUserRewardsStatusEnum
 from ..models import ModelUserRewardStatusEnum, ModelUserRewardTypeEnum
@@ -153,6 +156,132 @@ async def admin_claim_user_rewards_async(
             return None, error
     request = AdminClaimUserRewards.create(
         body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminClaimUserRewardsByGoalCode)
+def admin_claim_user_rewards_by_goal_code(
+    body: ModelClaimUserRewardsByGoalCodeRequest,
+    challenge_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Claim rewards of a single user by goal code (adminClaimUserRewardsByGoalCode)
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/challenges/{challengeCode}/rewards/claim
+
+        method: POST
+
+        tags: ["Player Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelClaimUserRewardsByGoalCodeRequest in body
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelUserReward] (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - IamErrorResponse (20029: not found)
+
+        422: Unprocessable Entity - IamErrorResponse (99004: unprocessable entity: {{message}})
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminClaimUserRewardsByGoalCode.create(
+        body=body,
+        challenge_code=challenge_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminClaimUserRewardsByGoalCode)
+async def admin_claim_user_rewards_by_goal_code_async(
+    body: ModelClaimUserRewardsByGoalCodeRequest,
+    challenge_code: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Claim rewards of a single user by goal code (adminClaimUserRewardsByGoalCode)
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/challenges/{challengeCode}/rewards/claim
+
+        method: POST
+
+        tags: ["Player Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelClaimUserRewardsByGoalCodeRequest in body
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelUserReward] (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - IamErrorResponse (20029: not found)
+
+        422: Unprocessable Entity - IamErrorResponse (99004: unprocessable entity: {{message}})
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminClaimUserRewardsByGoalCode.create(
+        body=body,
+        challenge_code=challenge_code,
         user_id=user_id,
         namespace=namespace,
     )
@@ -496,6 +625,124 @@ async def public_claim_user_rewards_async(
             return None, error
     request = PublicClaimUserRewards.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicClaimUserRewardsByGoalCode)
+def public_claim_user_rewards_by_goal_code(
+    body: ModelClaimUserRewardsByGoalCodeRequest,
+    challenge_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Claim User's Rewards by Goal Code (publicClaimUserRewardsByGoalCode)
+
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+
+    Properties:
+        url: /challenge/v1/public/namespaces/{namespace}/users/me/challenges/{challengeCode}/rewards/claim
+
+        method: POST
+
+        tags: ["Player Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelClaimUserRewardsByGoalCodeRequest in body
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelUserReward] (OK)
+
+        400: Bad Request - IamErrorResponse (20001: unauthorized access)
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - IamErrorResponse (20029: not found)
+
+        422: Unprocessable Entity - IamErrorResponse (99004: unprocessable entity: {{message}})
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicClaimUserRewardsByGoalCode.create(
+        body=body,
+        challenge_code=challenge_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicClaimUserRewardsByGoalCode)
+async def public_claim_user_rewards_by_goal_code_async(
+    body: ModelClaimUserRewardsByGoalCodeRequest,
+    challenge_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Claim User's Rewards by Goal Code (publicClaimUserRewardsByGoalCode)
+
+      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+
+    Properties:
+        url: /challenge/v1/public/namespaces/{namespace}/users/me/challenges/{challengeCode}/rewards/claim
+
+        method: POST
+
+        tags: ["Player Reward"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelClaimUserRewardsByGoalCodeRequest in body
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelUserReward] (OK)
+
+        400: Bad Request - IamErrorResponse (20001: unauthorized access)
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - IamErrorResponse (20029: not found)
+
+        422: Unprocessable Entity - IamErrorResponse (99004: unprocessable entity: {{message}})
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicClaimUserRewardsByGoalCode.create(
+        body=body,
+        challenge_code=challenge_code,
         namespace=namespace,
     )
     return await run_request_async(

@@ -174,7 +174,9 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
                     if wsm_type == "refreshTokenResponse":
                         break
             if elapsed > timeout:
-                self.skipTest(reason=f"did not get 'refreshTokenResponse' message within {timeout} seconds")
+                self.skipTest(
+                    reason=f"did not get 'refreshTokenResponse' message within {timeout} seconds"
+                )
                 break
 
         # assert

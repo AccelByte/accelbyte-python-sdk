@@ -37,6 +37,10 @@ class ApiDevelopmentServerConfigurationGetResponse(Model):
         image_id: (imageId) REQUIRED str
 
         name: (name) REQUIRED str
+
+        created_at: (createdAt) OPTIONAL str
+
+        expires_at: (expiresAt) OPTIONAL str
     """
 
     # region fields
@@ -44,6 +48,8 @@ class ApiDevelopmentServerConfigurationGetResponse(Model):
     command_line_arguments: str  # REQUIRED
     image_id: str  # REQUIRED
     name: str  # REQUIRED
+    created_at: str  # OPTIONAL
+    expires_at: str  # OPTIONAL
 
     # endregion fields
 
@@ -61,6 +67,18 @@ class ApiDevelopmentServerConfigurationGetResponse(Model):
 
     def with_name(self, value: str) -> ApiDevelopmentServerConfigurationGetResponse:
         self.name = value
+        return self
+
+    def with_created_at(
+        self, value: str
+    ) -> ApiDevelopmentServerConfigurationGetResponse:
+        self.created_at = value
+        return self
+
+    def with_expires_at(
+        self, value: str
+    ) -> ApiDevelopmentServerConfigurationGetResponse:
+        self.expires_at = value
         return self
 
     # endregion with_x methods
@@ -81,6 +99,14 @@ class ApiDevelopmentServerConfigurationGetResponse(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = ""
+        if hasattr(self, "expires_at"):
+            result["expiresAt"] = str(self.expires_at)
+        elif include_empty:
+            result["expiresAt"] = ""
         return result
 
     # endregion to methods
@@ -89,12 +115,22 @@ class ApiDevelopmentServerConfigurationGetResponse(Model):
 
     @classmethod
     def create(
-        cls, command_line_arguments: str, image_id: str, name: str, **kwargs
+        cls,
+        command_line_arguments: str,
+        image_id: str,
+        name: str,
+        created_at: Optional[str] = None,
+        expires_at: Optional[str] = None,
+        **kwargs,
     ) -> ApiDevelopmentServerConfigurationGetResponse:
         instance = cls()
         instance.command_line_arguments = command_line_arguments
         instance.image_id = image_id
         instance.name = name
+        if created_at is not None:
+            instance.created_at = created_at
+        if expires_at is not None:
+            instance.expires_at = expires_at
         return instance
 
     @classmethod
@@ -119,6 +155,14 @@ class ApiDevelopmentServerConfigurationGetResponse(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = ""
+        if "expiresAt" in dict_ and dict_["expiresAt"] is not None:
+            instance.expires_at = str(dict_["expiresAt"])
+        elif include_empty:
+            instance.expires_at = ""
         return instance
 
     @classmethod
@@ -165,6 +209,8 @@ class ApiDevelopmentServerConfigurationGetResponse(Model):
             "commandLineArguments": "command_line_arguments",
             "imageId": "image_id",
             "name": "name",
+            "createdAt": "created_at",
+            "expiresAt": "expires_at",
         }
 
     @staticmethod
@@ -173,6 +219,8 @@ class ApiDevelopmentServerConfigurationGetResponse(Model):
             "commandLineArguments": True,
             "imageId": True,
             "name": True,
+            "createdAt": False,
+            "expiresAt": False,
         }
 
     # endregion static methods

@@ -118,6 +118,7 @@ from ..models import ModelUserPasswordUpdateRequest
 from ..models import ModelUserPasswordUpdateV3Request
 from ..models import ModelUserPlatformLinkHistories
 from ..models import ModelUserPlatformMetadata
+from ..models import ModelUserProfileUpdateAllowStatus
 from ..models import ModelUserResponse
 from ..models import ModelUserResponseV3
 from ..models import ModelUserUpdateRequest
@@ -252,6 +253,7 @@ from ..operations.users import PublicGetAsyncStatus
 from ..operations.users import PublicGetCountryAgeRestriction
 from ..operations.users import PublicGetCountryAgeRestrictionV3
 from ..operations.users import PublicGetLinkHeadlessAccountToMyAccountConflictV3
+from ..operations.users import PublicGetMyProfileAllowUpdateStatusV3
 from ..operations.users import PublicGetMyUserV3
 from ..operations.users import PublicGetPublisherUserV3
 from ..operations.users import PublicGetUserBan
@@ -4735,7 +4737,6 @@ def admin_get_user_link_histories_v3(
 
     This API is for admin to get user's link history.
 
-
     **Supported Platforms:**
     - Steam group (steamnetwork):
     - steam
@@ -4825,7 +4826,6 @@ async def admin_get_user_link_histories_v3_async(
     """Admin get user's platform link histories. (AdminGetUserLinkHistoriesV3)
 
     This API is for admin to get user's link history.
-
 
     **Supported Platforms:**
     - Steam group (steamnetwork):
@@ -11228,7 +11228,7 @@ def forgot_password(
 
         produces: ["application/json"]
 
-        securities: [BASIC_AUTH] or [BEARER_AUTH]
+        securities: [BASIC_AUTH and BEARER_AUTH]
 
         body: (body) REQUIRED ModelSendVerificationCodeRequest in body
 
@@ -11285,7 +11285,7 @@ async def forgot_password_async(
 
         produces: ["application/json"]
 
-        securities: [BASIC_AUTH] or [BEARER_AUTH]
+        securities: [BASIC_AUTH and BEARER_AUTH]
 
         body: (body) REQUIRED ModelSendVerificationCodeRequest in body
 
@@ -15519,6 +15519,82 @@ async def public_get_link_headless_account_to_my_account_conflict_v3_async(
     )
 
 
+@same_doc_as(PublicGetMyProfileAllowUpdateStatusV3)
+def public_get_my_profile_allow_update_status_v3(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Public get my profile allowed update status. (PublicGetMyProfileAllowUpdateStatusV3)
+
+    This API is for user to get self profile update allow status.
+    Note: If the config is not found, this API will return a config with unlimited.
+
+    Properties:
+        url: /iam/v3/public/users/me/profileStatus
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelUserProfileUpdateAllowStatus (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicGetMyProfileAllowUpdateStatusV3.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetMyProfileAllowUpdateStatusV3)
+async def public_get_my_profile_allow_update_status_v3_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Public get my profile allowed update status. (PublicGetMyProfileAllowUpdateStatusV3)
+
+    This API is for user to get self profile update allow status.
+    Note: If the config is not found, this API will return a config with unlimited.
+
+    Properties:
+        url: /iam/v3/public/users/me/profileStatus
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelUserProfileUpdateAllowStatus (Operation succeeded)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicGetMyProfileAllowUpdateStatusV3.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGetMyUserV3)
 def public_get_my_user_v3(
     include_all_platforms: Optional[bool] = None,
@@ -17597,7 +17673,7 @@ def public_partial_update_user_v3(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
+        403: Forbidden - RestErrorResponse (10213: country is blocked | 10235: date of birth not allowed to update | 10236: username not allowed to update | 10237: display name not allowed to update | 10238: country not allowed to update)
 
         409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
@@ -17658,7 +17734,7 @@ async def public_partial_update_user_v3_async(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access | 10213: country is blocked)
+        403: Forbidden - RestErrorResponse (10213: country is blocked | 10235: date of birth not allowed to update | 10236: username not allowed to update | 10237: display name not allowed to update | 10238: country not allowed to update)
 
         409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
@@ -20556,7 +20632,7 @@ def reset_password(
 
         produces: ["application/json"]
 
-        securities: [BASIC_AUTH] or [BEARER_AUTH]
+        securities: [BASIC_AUTH and BEARER_AUTH]
 
         body: (body) REQUIRED ModelResetPasswordRequest in body
 
@@ -20609,7 +20685,7 @@ async def reset_password_async(
 
         produces: ["application/json"]
 
-        securities: [BASIC_AUTH] or [BEARER_AUTH]
+        securities: [BASIC_AUTH and BEARER_AUTH]
 
         body: (body) REQUIRED ModelResetPasswordRequest in body
 
@@ -21709,7 +21785,7 @@ def update_user_v3(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (10213: country is blocked)
+        403: Forbidden - RestErrorResponse (10213: country is blocked | 10235: date of birth not allowed to update | 10236: username not allowed to update | 10237: display name not allowed to update | 10238: country not allowed to update)
 
         409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
@@ -21774,7 +21850,7 @@ async def update_user_v3_async(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (10213: country is blocked)
+        403: Forbidden - RestErrorResponse (10213: country is blocked | 10235: date of birth not allowed to update | 10236: username not allowed to update | 10237: display name not allowed to update | 10238: country not allowed to update)
 
         409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 

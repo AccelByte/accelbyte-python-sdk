@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.56.0"
+__version__ = "5.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -102,12 +102,12 @@ from .public_user_entitlement_741412 import (
     EntitlementClazzEnum as PublicUserEntitlementHistoryEntitlementClazzEnum,
 )
 from .query_entitlements import QueryEntitlements
-from .query_entitlements import (
-    AppTypeEnum as QueryEntitlementsAppTypeEnum,
-    EntitlementClazzEnum as QueryEntitlementsEntitlementClazzEnum,
-    OriginEnum as QueryEntitlementsOriginEnum,
-)
 from .query_entitlements_1 import QueryEntitlements1
+from .query_entitlements_1 import (
+    AppTypeEnum as QueryEntitlements1AppTypeEnum,
+    EntitlementClazzEnum as QueryEntitlements1EntitlementClazzEnum,
+    OriginEnum as QueryEntitlements1OriginEnum,
+)
 from .query_user_entitlements import QueryUserEntitlements
 from .query_user_entitlements import (
     AppTypeEnum as QueryUserEntitlementsAppTypeEnum,

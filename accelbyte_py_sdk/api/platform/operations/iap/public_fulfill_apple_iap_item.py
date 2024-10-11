@@ -36,7 +36,7 @@ from ...models import ErrorEntity
 class PublicFulfillAppleIAPItem(Operation):
     """Fulfill apple iap item. (publicFulfillAppleIAPItem)
 
-    Verify apple iap receipt and fulfill item.Other detail info:
+    Verify apple iap receipt and fulfill item. don't support subscriptionOther detail info:
 
       * Returns :
 
@@ -62,7 +62,7 @@ class PublicFulfillAppleIAPItem(Operation):
     Responses:
         204: No Content - (Fulfill item successfully)
 
-        400: Bad Request - ErrorEntity (39121: Apple iap receipt verify failed with status code [{statusCode}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required | 39131: Invalid Apple IAP config under namespace [{namespace}]: [{message}])
+        400: Bad Request - ErrorEntity (39121: Apple iap receipt verify failed with status code [{statusCode}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 39131: Invalid Apple IAP config under namespace [{namespace}]: [{message}] | 39138: Apple IAP version mismatch detected: The current configuration is set to  [{configVersion}], but the API version is [{apiVersion}]. Please ensure that both the configuration and API versions are aligned)
 
         404: Not Found - ErrorEntity (39141: Apple iap receipt of transaction [{transactionId}] for productId [{}] does not exist | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 39142: Apple IAP config not found in namespace [{namespace}])
 
@@ -191,7 +191,7 @@ class PublicFulfillAppleIAPItem(Operation):
 
         204: No Content - (Fulfill item successfully)
 
-        400: Bad Request - ErrorEntity (39121: Apple iap receipt verify failed with status code [{statusCode}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required | 39131: Invalid Apple IAP config under namespace [{namespace}]: [{message}])
+        400: Bad Request - ErrorEntity (39121: Apple iap receipt verify failed with status code [{statusCode}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 39131: Invalid Apple IAP config under namespace [{namespace}]: [{message}] | 39138: Apple IAP version mismatch detected: The current configuration is set to  [{configVersion}], but the API version is [{apiVersion}]. Please ensure that both the configuration and API versions are aligned)
 
         404: Not Found - ErrorEntity (39141: Apple iap receipt of transaction [{transactionId}] for productId [{}] does not exist | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 39142: Apple IAP config not found in namespace [{namespace}])
 

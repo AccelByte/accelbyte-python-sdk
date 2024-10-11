@@ -69,4 +69,4 @@ def admin_decrypt_device_v4(
 
 
 admin_decrypt_device_v4.operation_id = "AdminDecryptDeviceV4"
-admin_decrypt_device_v4.is_deprecated = False
+admin_decrypt_device_v4.is_deprecated = True

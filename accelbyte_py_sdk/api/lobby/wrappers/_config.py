@@ -43,7 +43,10 @@ from ..operations.config import AdminGetLogConfig
 from ..operations.config import AdminImportConfigV1
 from ..operations.config import AdminPatchUpdateLogConfig
 from ..operations.config import AdminUpdateConfigV1
-from ..models import LogconfigConfigurationLogLevelEnum
+from ..models import (
+    LogconfigConfigurationLogLevelDBEnum,
+    LogconfigConfigurationLogLevelEnum,
+)
 
 
 @same_doc_as(AdminExportConfigV1)
@@ -750,7 +753,12 @@ def admin_get_log_config(
 ):
     """Get Log Configuration (adminGetLogConfig)
 
-    Get Log Configuration.
+
+    Get Log Configuration
+    logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
+    socketLogEnabled is use for enable socket log
+    logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
+    slowQueryThreshold use for logging slow threshold in time measure is nano second
 
     Properties:
         url: /lobby/v1/admin/config/log
@@ -778,7 +786,12 @@ async def admin_get_log_config_async(
 ):
     """Get Log Configuration (adminGetLogConfig)
 
-    Get Log Configuration.
+
+    Get Log Configuration
+    logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
+    socketLogEnabled is use for enable socket log
+    logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
+    slowQueryThreshold use for logging slow threshold in time measure is nano second
 
     Properties:
         url: /lobby/v1/admin/config/log
@@ -916,7 +929,12 @@ def admin_patch_update_log_config(
 ):
     """Patch Update Log Configuration (adminPatchUpdateLogConfig)
 
-    Update Log Configuration.
+
+    Update Log Configuration
+    logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
+    socketLogEnabled is use for enable socket log
+    logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
+    slowQueryThreshold use for logging slow threshold in time measure is nano second
 
     Properties:
         url: /lobby/v1/admin/config/log
@@ -950,7 +968,12 @@ async def admin_patch_update_log_config_async(
 ):
     """Patch Update Log Configuration (adminPatchUpdateLogConfig)
 
-    Update Log Configuration.
+
+    Update Log Configuration
+    logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
+    socketLogEnabled is use for enable socket log
+    logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
+    slowQueryThreshold use for logging slow threshold in time measure is nano second
 
     Properties:
         url: /lobby/v1/admin/config/log

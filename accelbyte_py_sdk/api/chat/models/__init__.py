@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Chat Service."""
 
-__version__ = "0.4.33"
+__version__ = "0.4.34"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -25,7 +25,10 @@ from .api_unmute_user_request import ApiUnmuteUserRequest
 from .api_update_topic_params import ApiUpdateTopicParams
 from .log_app_message_declaration import LogAppMessageDeclaration
 from .logconfig_configuration import LogconfigConfiguration
-from .logconfig_configuration import LogLevelEnum as LogconfigConfigurationLogLevelEnum
+from .logconfig_configuration import (
+    LogLevelDBEnum as LogconfigConfigurationLogLevelDBEnum,
+    LogLevelEnum as LogconfigConfigurationLogLevelEnum,
+)
 from .message_action_add_user_to_topic_result import MessageActionAddUserToTopicResult
 from .message_action_delete_topic_result import MessageActionDeleteTopicResult
 from .models_add_inbox_category_request import ModelsAddInboxCategoryRequest

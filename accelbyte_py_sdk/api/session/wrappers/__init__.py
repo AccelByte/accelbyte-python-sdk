@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.17.1"
+__version__ = "3.19.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -121,32 +121,10 @@ from ._max_active import admin_reconcile_max_active_session_async
 from ._native_session import admin_get_list_native_session
 from ._native_session import admin_get_list_native_session_async
 
-from ._operations import allocs_handler
-from ._operations import allocs_handler_async
-from ._operations import block_handler
-from ._operations import block_handler_async
-from ._operations import cmdline_handler
-from ._operations import cmdline_handler_async
 from ._operations import get_healthcheck_info
 from ._operations import get_healthcheck_info_async
 from ._operations import get_healthcheck_info_v1
 from ._operations import get_healthcheck_info_v1_async
-from ._operations import goroutine_handler
-from ._operations import goroutine_handler_async
-from ._operations import heap_handler
-from ._operations import heap_handler_async
-from ._operations import mutex_handler
-from ._operations import mutex_handler_async
-from ._operations import pprof_handler
-from ._operations import pprof_handler_async
-from ._operations import profile
-from ._operations import profile_async
-from ._operations import symbol_handler
-from ._operations import symbol_handler_async
-from ._operations import threadcreate_handler
-from ._operations import threadcreate_handler_async
-from ._operations import trace_handler
-from ._operations import trace_handler_async
 
 from ._party import admin_query_parties
 from ._party import admin_query_parties_async

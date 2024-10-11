@@ -38,7 +38,6 @@ class AdminGetUserLinkHistoriesV3(Operation):
 
     This API is for admin to get user's link history.
 
-
     **Supported Platforms:**
     - Steam group (steamnetwork):
     - steam

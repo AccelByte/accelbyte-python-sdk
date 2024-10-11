@@ -42,7 +42,9 @@ from ..api.platform.models import AppLocalization
 from ..api.platform.models import AppUpdate
 from ..api.platform.models import AppleIAPConfigInfo
 from ..api.platform.models import AppleIAPConfigRequest
+from ..api.platform.models import AppleIAPConfigVersionInfo
 from ..api.platform.models import AppleIAPReceipt
+from ..api.platform.models import AppleIAPRequest
 from ..api.platform.models import AvailableComparison
 from ..api.platform.models import AvailablePredicate
 from ..api.platform.models import AvailablePrice
@@ -53,6 +55,7 @@ from ..api.platform.models import BasicItem
 from ..api.platform.models import BillingAccount
 from ..api.platform.models import BillingHistoryInfo
 from ..api.platform.models import BillingHistoryPagingSlicedResult
+from ..api.platform.models import BinarySchema
 from ..api.platform.models import BoxItem
 from ..api.platform.models import BulkCreditRequest
 from ..api.platform.models import BulkCreditResult
@@ -172,10 +175,13 @@ from ..api.platform.models import FulFillItemPayload
 from ..api.platform.models import FulfillBundledItemResult
 from ..api.platform.models import FulfillCodeRequest
 from ..api.platform.models import FulfillItemResult
+from ..api.platform.models import FulfillmentActionHistory
 from ..api.platform.models import FulfillmentError
 from ..api.platform.models import FulfillmentHistoryInfo
 from ..api.platform.models import FulfillmentHistoryPagingSlicedResult
+from ..api.platform.models import FulfillmentInfo
 from ..api.platform.models import FulfillmentItem
+from ..api.platform.models import FulfillmentPagingSlicedResult
 from ..api.platform.models import FulfillmentRequest
 from ..api.platform.models import FulfillmentResult
 from ..api.platform.models import FulfillmentScriptCreate
@@ -256,6 +262,7 @@ from ..api.platform.models import LootBoxPluginConfigUpdate
 from ..api.platform.models import LootBoxReward
 from ..api.platform.models import MockIAPReceipt
 from ..api.platform.models import NeonPayConfig
+from ..api.platform.models import NotificationPagingSlicedResult
 from ..api.platform.models import NotificationProcessResult
 from ..api.platform.models import OculusIAPConfigInfo
 from ..api.platform.models import OculusIAPConfigRequest
@@ -430,6 +437,15 @@ from ..api.platform.models import SubscriptionSummary
 from ..api.platform.models import TLSConfig
 from ..api.platform.models import TaxResult
 from ..api.platform.models import TestResult
+from ..api.platform.models import ThirdPartySubscriptionOwnership
+from ..api.platform.models import ThirdPartySubscriptionTransactionHistoryInfo
+from ..api.platform.models import (
+    ThirdPartySubscriptionTransactionHistoryPagingSlicedResult,
+)
+from ..api.platform.models import ThirdPartySubscriptionTransactionInfo
+from ..api.platform.models import ThirdPartySubscriptionTransactionPagingSlicedResult
+from ..api.platform.models import ThirdPartyUserSubscriptionInfo
+from ..api.platform.models import ThirdPartyUserSubscriptionPagingSlicedResult
 from ..api.platform.models import TicketAcquireRequest
 from ..api.platform.models import TicketAcquireResult
 from ..api.platform.models import TicketBoothID
@@ -668,15 +684,30 @@ def create_app_update_example() -> AppUpdate:
 def create_apple_iap_config_info_example() -> AppleIAPConfigInfo:
     instance = AppleIAPConfigInfo()
     instance.namespace = randomize("slug")
+    instance.app_apple_id = randomize("int", min_val=1, max_val=1000)
+    instance.auth_key_file_name = randomize()
     instance.bundle_id = randomize()
+    instance.issuer_id = randomize()
+    instance.key_id = randomize()
     instance.password = randomize("password")
+    instance.version = randomize("version")
     return instance
 
 
 def create_apple_iap_config_request_example() -> AppleIAPConfigRequest:
     instance = AppleIAPConfigRequest()
     instance.bundle_id = randomize()
+    instance.app_apple_id = randomize("int", min_val=1, max_val=1000)
+    instance.issuer_id = randomize()
+    instance.key_id = randomize()
     instance.password = randomize("password")
+    instance.version = randomize("version")
+    return instance
+
+
+def create_apple_iap_config_version_info_example() -> AppleIAPConfigVersionInfo:
+    instance = AppleIAPConfigVersionInfo()
+    instance.version = randomize("version")
     return instance
 
 
@@ -688,6 +719,12 @@ def create_apple_iap_receipt_example() -> AppleIAPReceipt:
     instance.exclude_old_transactions = randomize("bool")
     instance.language = randomize()
     instance.region = randomize()
+    return instance
+
+
+def create_apple_iap_request_example() -> AppleIAPRequest:
+    instance = AppleIAPRequest()
+    instance.transaction_id = randomize("uid")
     return instance
 
 
@@ -809,6 +846,11 @@ def create_billing_history_paging_sliced_result_example() -> (
     instance = BillingHistoryPagingSlicedResult()
     instance.data = [create_billing_history_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_binary_schema_example() -> BinarySchema:
+    instance = BinarySchema()
     return instance
 
 
@@ -2092,6 +2134,16 @@ def create_fulfill_item_result_example() -> FulfillItemResult:
     return instance
 
 
+def create_fulfillment_action_history_example() -> FulfillmentActionHistory:
+    instance = FulfillmentActionHistory()
+    instance.action = randomize()
+    instance.created_at = randomize("date")
+    instance.fulfillment_history_id = randomize()
+    instance.revocation_history_id = randomize()
+    instance.state = randomize()
+    return instance
+
+
 def create_fulfillment_error_example() -> FulfillmentError:
     instance = FulfillmentError()
     instance.code = randomize("int", min_val=1, max_val=1000)
@@ -2131,6 +2183,21 @@ def create_fulfillment_history_paging_sliced_result_example() -> (
     return instance
 
 
+def create_fulfillment_info_example() -> FulfillmentInfo:
+    instance = FulfillmentInfo()
+    instance.created_at = randomize("date")
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    instance.user_id = randomize("uid")
+    instance.actions = [create_fulfillment_action_history_example()]
+    instance.items = [create_fulfillment_item_example()]
+    instance.state = randomize()
+    instance.state_info = create_fulfillment_state_info_example()
+    instance.transaction_id = randomize("uid")
+    return instance
+
+
 def create_fulfillment_item_example() -> FulfillmentItem:
     instance = FulfillmentItem()
     instance.quantity = randomize("int", min_val=1, max_val=1000)
@@ -2140,6 +2207,13 @@ def create_fulfillment_item_example() -> FulfillmentItem:
     instance.item_sku = randomize()
     instance.item_type = randomize()
     instance.store_id = randomize()
+    return instance
+
+
+def create_fulfillment_paging_sliced_result_example() -> FulfillmentPagingSlicedResult:
+    instance = FulfillmentPagingSlicedResult()
+    instance.data = [create_fulfillment_info_example()]
+    instance.paging = create_paging_example()
     return instance
 
 
@@ -2379,7 +2453,10 @@ def create_google_iap_config_info_example() -> GoogleIAPConfigInfo:
     instance = GoogleIAPConfigInfo()
     instance.namespace = randomize("slug")
     instance.application_name = randomize()
+    instance.notification_token_audience = randomize()
+    instance.notification_token_email = randomize()
     instance.p12_file_name = randomize()
+    instance.package_name = randomize()
     instance.service_account_id = randomize()
     return instance
 
@@ -2387,7 +2464,10 @@ def create_google_iap_config_info_example() -> GoogleIAPConfigInfo:
 def create_google_iap_config_request_example() -> GoogleIAPConfigRequest:
     instance = GoogleIAPConfigRequest()
     instance.application_name = randomize()
+    instance.package_name = randomize()
     instance.service_account_id = randomize()
+    instance.notification_token_audience = randomize()
+    instance.notification_token_email = randomize()
     return instance
 
 
@@ -2395,12 +2475,14 @@ def create_google_iap_receipt_example() -> GoogleIAPReceipt:
     instance = GoogleIAPReceipt()
     instance.order_id = randomize()
     instance.package_name = randomize()
-    instance.product_id = randomize("uid")
-    instance.purchase_time = randomize("int", min_val=1, max_val=1000)
     instance.purchase_token = randomize()
     instance.auto_ack = randomize("bool")
+    instance.auto_consume = randomize("bool")
     instance.language = randomize()
+    instance.product_id = randomize("uid")
+    instance.purchase_time = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
+    instance.subscription_purchase = randomize("bool")
     return instance
 
 
@@ -3127,6 +3209,13 @@ def create_neon_pay_config_example() -> NeonPayConfig:
     instance = NeonPayConfig()
     instance.api_key = randomize()
     instance.webhook_secret_key = randomize()
+    return instance
+
+
+def create_notification_paging_sliced_result_example() -> (
+    NotificationPagingSlicedResult
+):
+    instance = NotificationPagingSlicedResult()
     return instance
 
 
@@ -5110,6 +5199,102 @@ def create_test_result_example() -> TestResult:
     instance = TestResult()
     instance.success = randomize("bool")
     instance.msg = randomize()
+    return instance
+
+
+def create_third_party_subscription_ownership_example() -> (
+    ThirdPartySubscriptionOwnership
+):
+    instance = ThirdPartySubscriptionOwnership()
+    instance.owned = randomize("bool")
+    return instance
+
+
+def create_third_party_subscription_transaction_history_info_example() -> (
+    ThirdPartySubscriptionTransactionHistoryInfo
+):
+    instance = ThirdPartySubscriptionTransactionHistoryInfo()
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.status = randomize()
+    instance.third_party_subscription_id = randomize()
+    instance.user_id = randomize("uid")
+    instance.created_at = randomize("date")
+    instance.expired_at = randomize("date")
+    instance.last_transaction_id = randomize()
+    instance.operator = randomize()
+    instance.reason = randomize()
+    instance.subscription_product_id = randomize()
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_third_party_subscription_transaction_history_paging_sliced_result_example() -> (
+    ThirdPartySubscriptionTransactionHistoryPagingSlicedResult
+):
+    instance = ThirdPartySubscriptionTransactionHistoryPagingSlicedResult()
+    instance.data = [create_third_party_subscription_transaction_history_info_example()]
+    instance.paging = create_paging_example()
+    return instance
+
+
+def create_third_party_subscription_transaction_info_example() -> (
+    ThirdPartySubscriptionTransactionInfo
+):
+    instance = ThirdPartySubscriptionTransactionInfo()
+    instance.active = randomize("bool")
+    instance.expired_at = randomize("date")
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.original_transaction_id = randomize()
+    instance.platform = randomize()
+    instance.status = randomize()
+    instance.subscription_product_id = randomize()
+    instance.user_id = randomize("uid")
+    instance.created_at = randomize("date")
+    instance.last_transaction_id = randomize()
+    instance.purchase_token = randomize()
+    instance.start_at = randomize("date")
+    instance.subscription_group_id = randomize()
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_third_party_subscription_transaction_paging_sliced_result_example() -> (
+    ThirdPartySubscriptionTransactionPagingSlicedResult
+):
+    instance = ThirdPartySubscriptionTransactionPagingSlicedResult()
+    instance.data = [create_third_party_subscription_transaction_info_example()]
+    instance.paging = create_paging_example()
+    return instance
+
+
+def create_third_party_user_subscription_info_example() -> (
+    ThirdPartyUserSubscriptionInfo
+):
+    instance = ThirdPartyUserSubscriptionInfo()
+    instance.active = randomize("bool")
+    instance.expired_at = randomize("date")
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.platform = randomize()
+    instance.status = randomize()
+    instance.subscription_product_id = randomize()
+    instance.user_id = randomize("uid")
+    instance.created_at = randomize("date")
+    instance.last_transaction_id = randomize()
+    instance.start_at = randomize("date")
+    instance.subscription_group_id = randomize()
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_third_party_user_subscription_paging_sliced_result_example() -> (
+    ThirdPartyUserSubscriptionPagingSlicedResult
+):
+    instance = ThirdPartyUserSubscriptionPagingSlicedResult()
+    instance.data = [create_third_party_user_subscription_info_example()]
+    instance.paging = create_paging_example()
     return instance
 
 

@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import deprecated
 from ....core import same_doc_as
 
+from ..models import BinarySchema
 from ..models import Customization
 from ..models import ErrorEntity
 from ..models import PaymentMethod
@@ -855,7 +856,7 @@ def public_get_qr_code(
         code: (code) REQUIRED str in query
 
     Responses:
-        200: OK - Any (Successful operation)
+        200: OK - BinarySchema (Successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -900,7 +901,7 @@ async def public_get_qr_code_async(
         code: (code) REQUIRED str in query
 
     Responses:
-        200: OK - Any (Successful operation)
+        200: OK - BinarySchema (Successful operation)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

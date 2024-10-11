@@ -73,6 +73,7 @@ from ..api.session.models import ModelNativeSession
 from ..api.session.models import ModelNativeSessionMember
 from ..api.session.models import ModelsDSMConfigRecord
 from ..api.session.models import ModelsDefaultDSMCConfig
+from ..api.session.models import ModelsExtendConfiguration
 from ..api.session.models import ModelsGameServer
 from ..api.session.models import ModelsMemberActiveSession
 from ..api.session.models import ModelsNativeSessionSetting
@@ -145,6 +146,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.ds_source = randomize()
     instance.enable_secret = randomize("bool")
     instance.fallback_claim_keys = [randomize()]
+    instance.grpc_session_config = create_models_extend_configuration_example()
     instance.immutable_storage = randomize("bool")
     instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
     instance.manual_rejoin = randomize("bool")
@@ -193,6 +195,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.ds_source = randomize()
     instance.enable_secret = randomize("bool")
     instance.fallback_claim_keys = [randomize()]
+    instance.grpc_session_config = create_models_extend_configuration_example()
     instance.immutable_storage = randomize("bool")
     instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
     instance.manual_rejoin = randomize("bool")
@@ -485,6 +488,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.ds_source = randomize()
     instance.enable_secret = randomize("bool")
     instance.fallback_claim_keys = [randomize()]
+    instance.grpc_session_config = create_models_extend_configuration_example()
     instance.immutable_storage = randomize("bool")
     instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
     instance.manual_rejoin = randomize("bool")
@@ -597,6 +601,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.ds_source = randomize()
     instance.enable_secret = randomize("bool")
     instance.fallback_claim_keys = [randomize()]
+    instance.grpc_session_config = create_models_extend_configuration_example()
     instance.immutable_storage = randomize("bool")
     instance.leader_election_grace_period = randomize("int", min_val=1, max_val=1000)
     instance.manual_rejoin = randomize("bool")
@@ -716,6 +721,14 @@ def create_models_dsm_config_record_example() -> ModelsDSMConfigRecord:
     instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
     instance.namespace = randomize("slug")
     instance.updated_at = randomize("date")
+    return instance
+
+
+def create_models_extend_configuration_example() -> ModelsExtendConfiguration:
+    instance = ModelsExtendConfiguration()
+    instance.app_name = randomize()
+    instance.custom_url = randomize("url")
+    instance.function_flag = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

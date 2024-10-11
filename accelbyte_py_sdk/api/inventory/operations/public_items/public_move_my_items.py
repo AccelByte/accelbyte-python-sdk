@@ -40,10 +40,6 @@ class PublicMoveMyItems(Operation):
 
     Move items between inventories that is owned by the same user.
 
-    Currently, this endpoint supports transferring items exclusively from source OTHER.
-    Items from source ECOMMERCE are not yet eligible for transfer.
-    We are working on expanding support to include source ECOMMERCE in future updates.
-
     Properties:
         url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/items/movement
 

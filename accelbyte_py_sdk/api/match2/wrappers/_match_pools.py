@@ -44,6 +44,7 @@ from ..operations.match_pools import GetPlayerMetric
 from ..operations.match_pools import MatchPoolDetails
 from ..operations.match_pools import MatchPoolList
 from ..operations.match_pools import MatchPoolMetric
+from ..operations.match_pools import PublicGetPlayerMetric
 from ..operations.match_pools import UpdateMatchPool
 
 
@@ -825,6 +826,108 @@ async def match_pool_metric_async(
         if error:
             return None, error
     request = MatchPoolMetric.create(
+        pool=pool,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetPlayerMetric)
+def public_get_player_metric(
+    pool: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get metrics player for a specific match pool (PublicGetPlayerMetric)
+
+    Public get player metric for a specific match pool
+
+    Properties:
+        url: /match2/v1/public/namespaces/{namespace}/match-pools/{pool}/metrics/player
+
+        method: GET
+
+        tags: ["Match-Pools", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pool: (pool) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiPlayerMetricRecord (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetPlayerMetric.create(
+        pool=pool,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetPlayerMetric)
+async def public_get_player_metric_async(
+    pool: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get metrics player for a specific match pool (PublicGetPlayerMetric)
+
+    Public get player metric for a specific match pool
+
+    Properties:
+        url: /match2/v1/public/namespaces/{namespace}/match-pools/{pool}/metrics/player
+
+        method: GET
+
+        tags: ["Match-Pools", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        pool: (pool) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiPlayerMetricRecord (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetPlayerMetric.create(
         pool=pool,
         namespace=namespace,
     )

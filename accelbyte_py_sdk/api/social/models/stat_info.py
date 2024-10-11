@@ -46,6 +46,11 @@ class GlobalAggregationMethodEnum(StrEnum):
     TOTAL = "TOTAL"
 
 
+class VisibilityEnum(StrEnum):
+    SERVERONLY = "SERVERONLY"
+    SHOWALL = "SHOWALL"
+
+
 class StatInfo(Model):
     """Stat info (StatInfo)
 
@@ -85,6 +90,8 @@ class StatInfo(Model):
         minimum: (minimum) OPTIONAL float
 
         tags: (tags) OPTIONAL List[str]
+
+        visibility: (visibility) OPTIONAL Union[str, VisibilityEnum]
     """
 
     # region fields
@@ -107,6 +114,7 @@ class StatInfo(Model):
     maximum: float  # OPTIONAL
     minimum: float  # OPTIONAL
     tags: List[str]  # OPTIONAL
+    visibility: Union[str, VisibilityEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -184,6 +192,10 @@ class StatInfo(Model):
 
     def with_tags(self, value: List[str]) -> StatInfo:
         self.tags = value
+        return self
+
+    def with_visibility(self, value: Union[str, VisibilityEnum]) -> StatInfo:
+        self.visibility = value
         return self
 
     # endregion with_x methods
@@ -268,6 +280,10 @@ class StatInfo(Model):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
+        if hasattr(self, "visibility"):
+            result["visibility"] = str(self.visibility)
+        elif include_empty:
+            result["visibility"] = Union[str, VisibilityEnum]()
         return result
 
     # endregion to methods
@@ -297,6 +313,7 @@ class StatInfo(Model):
         maximum: Optional[float] = None,
         minimum: Optional[float] = None,
         tags: Optional[List[str]] = None,
+        visibility: Optional[Union[str, VisibilityEnum]] = None,
         **kwargs,
     ) -> StatInfo:
         instance = cls()
@@ -326,6 +343,8 @@ class StatInfo(Model):
             instance.minimum = minimum
         if tags is not None:
             instance.tags = tags
+        if visibility is not None:
+            instance.visibility = visibility
         return instance
 
     @classmethod
@@ -415,6 +434,10 @@ class StatInfo(Model):
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
             instance.tags = []
+        if "visibility" in dict_ and dict_["visibility"] is not None:
+            instance.visibility = str(dict_["visibility"])
+        elif include_empty:
+            instance.visibility = Union[str, VisibilityEnum]()
         return instance
 
     @classmethod
@@ -472,6 +495,7 @@ class StatInfo(Model):
             "maximum": "maximum",
             "minimum": "minimum",
             "tags": "tags",
+            "visibility": "visibility",
         }
 
     @staticmethod
@@ -495,6 +519,7 @@ class StatInfo(Model):
             "maximum": False,
             "minimum": False,
             "tags": False,
+            "visibility": False,
         }
 
     @staticmethod
@@ -503,6 +528,7 @@ class StatInfo(Model):
             "setBy": ["CLIENT", "SERVER"],
             "status": ["INIT", "TIED"],
             "globalAggregationMethod": ["LAST", "MAX", "MIN", "TOTAL"],
+            "visibility": ["SERVERONLY", "SHOWALL"],
         }
 
     # endregion static methods

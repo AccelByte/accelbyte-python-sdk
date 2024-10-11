@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Session Service Index (3.17.1)
+# AccelByte Gaming Services Session Service Index (3.19.0)
 
 
 ## Operations
@@ -95,19 +95,8 @@
 ### Operations
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /session/admin/internal/pprof/allocs | GET | allocsHandler | `false` | [AllocsHandler](../../accelbyte_py_sdk/api/session/operations/operations/allocs_handler.py) | [allocs_handler](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-allocs-handler](../../samples/cli/accelbyte_py_sdk_cli/session/_allocs_handler.py) |
-| /session/admin/internal/pprof/block | GET | blockHandler | `false` | [BlockHandler](../../accelbyte_py_sdk/api/session/operations/operations/block_handler.py) | [block_handler](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-block-handler](../../samples/cli/accelbyte_py_sdk_cli/session/_block_handler.py) |
-| /session/admin/internal/pprof/cmdline | GET | cmdlineHandler | `false` | [CmdlineHandler](../../accelbyte_py_sdk/api/session/operations/operations/cmdline_handler.py) | [cmdline_handler](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-cmdline-handler](../../samples/cli/accelbyte_py_sdk_cli/session/_cmdline_handler.py) |
 | /healthz | GET | GetHealthcheckInfo | `false` | [GetHealthcheckInfo](../../accelbyte_py_sdk/api/session/operations/operations/get_healthcheck_info.py) | [get_healthcheck_info](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-get-healthcheck-info](../../samples/cli/accelbyte_py_sdk_cli/session/_get_healthcheck_info.py) |
 | /session/healthz | GET | GetHealthcheckInfoV1 | `false` | [GetHealthcheckInfoV1](../../accelbyte_py_sdk/api/session/operations/operations/get_healthcheck_info_v1.py) | [get_healthcheck_info_v1](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-get-healthcheck-info-v1](../../samples/cli/accelbyte_py_sdk_cli/session/_get_healthcheck_info_v1.py) |
-| /session/admin/internal/pprof/goroutine | GET | goroutineHandler | `false` | [GoroutineHandler](../../accelbyte_py_sdk/api/session/operations/operations/goroutine_handler.py) | [goroutine_handler](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-goroutine-handler](../../samples/cli/accelbyte_py_sdk_cli/session/_goroutine_handler.py) |
-| /session/admin/internal/pprof/heap | GET | heapHandler | `false` | [HeapHandler](../../accelbyte_py_sdk/api/session/operations/operations/heap_handler.py) | [heap_handler](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-heap-handler](../../samples/cli/accelbyte_py_sdk_cli/session/_heap_handler.py) |
-| /session/admin/internal/pprof/mutex | GET | mutexHandler | `false` | [MutexHandler](../../accelbyte_py_sdk/api/session/operations/operations/mutex_handler.py) | [mutex_handler](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-mutex-handler](../../samples/cli/accelbyte_py_sdk_cli/session/_mutex_handler.py) |
-| /session/admin/internal/pprof | GET | pprofHandler | `false` | [PprofHandler](../../accelbyte_py_sdk/api/session/operations/operations/pprof_handler.py) | [pprof_handler](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-pprof-handler](../../samples/cli/accelbyte_py_sdk_cli/session/_pprof_handler.py) |
-| /session/admin/internal/pprof/profile | GET | profile | `false` | [Profile](../../accelbyte_py_sdk/api/session/operations/operations/profile.py) | [profile](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-profile](../../samples/cli/accelbyte_py_sdk_cli/session/_profile.py) |
-| /session/admin/internal/pprof/symbol | GET | symbolHandler | `false` | [SymbolHandler](../../accelbyte_py_sdk/api/session/operations/operations/symbol_handler.py) | [symbol_handler](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-symbol-handler](../../samples/cli/accelbyte_py_sdk_cli/session/_symbol_handler.py) |
-| /session/admin/internal/pprof/threadcreate | GET | threadcreateHandler | `false` | [ThreadcreateHandler](../../accelbyte_py_sdk/api/session/operations/operations/threadcreate_handler.py) | [threadcreate_handler](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-threadcreate-handler](../../samples/cli/accelbyte_py_sdk_cli/session/_threadcreate_handler.py) |
-| /session/admin/internal/pprof/trace | GET | traceHandler | `false` | [TraceHandler](../../accelbyte_py_sdk/api/session/operations/operations/trace_handler.py) | [trace_handler](../../accelbyte_py_sdk/api/session/wrappers/_operations.py) | [accelbyte_py_sdk_cli session-trace-handler](../../samples/cli/accelbyte_py_sdk_cli/session/_trace_handler.py) |
 
 ### Party
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -217,6 +206,7 @@
 | model.NativeSessionMember | [ModelNativeSessionMember](../../accelbyte_py_sdk/api/session/models/model_native_session_member.py) |
 | models.DefaultDSMCConfig | [ModelsDefaultDSMCConfig](../../accelbyte_py_sdk/api/session/models/models_default_dsmc_config.py) |
 | models.DSMConfigRecord | [ModelsDSMConfigRecord](../../accelbyte_py_sdk/api/session/models/models_dsm_config_record.py) |
+| models.ExtendConfiguration | [ModelsExtendConfiguration](../../accelbyte_py_sdk/api/session/models/models_extend_configuration.py) |
 | models.GameServer | [ModelsGameServer](../../accelbyte_py_sdk/api/session/models/models_game_server.py) |
 | models.MemberActiveSession | [ModelsMemberActiveSession](../../accelbyte_py_sdk/api/session/models/models_member_active_session.py) |
 | models.NativeSessionSetting | [ModelsNativeSessionSetting](../../accelbyte_py_sdk/api/session/models/models_native_session_setting.py) |

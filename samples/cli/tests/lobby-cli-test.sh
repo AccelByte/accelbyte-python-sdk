@@ -47,9 +47,9 @@ lobby-sync-native-friends '[{"isLogin": false, "platformId": "9m0XcgGVbMqSszE8",
 lobby-sync-native-blocked-user '[{"platformId": "aO35llzQRaT5kPxU", "psnEnv": "fofvnnSuB0y5WUlr"}, {"platformId": "MdI4sNveabntBSxT", "psnEnv": "eIv53HGCiljvjKoy"}, {"platformId": "D6SCwGrncqmLtjQH", "psnEnv": "Af8TgoNm03VLisV6"}]' --login_with_auth "Bearer foo"
 lobby-admin-get-all-config-v1 --login_with_auth "Bearer foo"
 lobby-admin-get-log-config --login_with_auth "Bearer foo"
-lobby-admin-patch-update-log-config '{"logLevel": "info", "socketLogEnabled": true}' --login_with_auth "Bearer foo"
+lobby-admin-patch-update-log-config '{"logLevel": "info", "logLevelDB": "trace", "slowQueryThreshold": 46, "socketLogEnabled": false}' --login_with_auth "Bearer foo"
 lobby-admin-get-config-v1 --login_with_auth "Bearer foo"
-lobby-admin-update-config-v1 '{"allowInviteNonConnectedUser": false, "allowJoinPartyDuringMatchmaking": true, "autoKickOnDisconnect": false, "autoKickOnDisconnectDelay": 40, "cancelTicketOnDisconnect": true, "chatRateLimitBurst": 39, "chatRateLimitDuration": 42, "concurrentUsersLimit": 6, "disableInvitationOnJoinParty": false, "enableChat": true, "entitlementCheck": true, "entitlementItemID": "6I3lMjGSWN2laRlx", "generalRateLimitBurst": 12, "generalRateLimitDuration": 82, "keepPresenceActivityOnDisconnect": false, "maxDSWaitTime": 10, "maxFriendsLimit": 20, "maxPartyMember": 71, "profanityFilter": true, "readyConsentTimeout": 11, "unregisterDelay": 85}' --login_with_auth "Bearer foo"
+lobby-admin-update-config-v1 '{"allowInviteNonConnectedUser": true, "allowJoinPartyDuringMatchmaking": false, "autoKickOnDisconnect": true, "autoKickOnDisconnectDelay": 47, "cancelTicketOnDisconnect": true, "chatRateLimitBurst": 42, "chatRateLimitDuration": 6, "concurrentUsersLimit": 80, "disableInvitationOnJoinParty": false, "enableChat": true, "entitlementCheck": true, "entitlementItemID": "6I3lMjGSWN2laRlx", "generalRateLimitBurst": 12, "generalRateLimitDuration": 82, "keepPresenceActivityOnDisconnect": false, "maxDSWaitTime": 10, "maxFriendsLimit": 20, "maxPartyMember": 71, "profanityFilter": true, "readyConsentTimeout": 11, "unregisterDelay": 85}' --login_with_auth "Bearer foo"
 lobby-admin-export-config-v1 --login_with_auth "Bearer foo"
 lobby-admin-import-config-v1 --login_with_auth "Bearer foo"
 lobby-get-list-of-friends 'YakUCTqGkE7wcWfD' --login_with_auth "Bearer foo"
@@ -287,7 +287,7 @@ eval_tap $? 19 'AdminGetLogConfig' test.out
 
 #- 20 AdminPatchUpdateLogConfig
 $PYTHON -m $MODULE 'lobby-admin-patch-update-log-config' \
-    '{"logLevel": "error", "socketLogEnabled": false}' \
+    '{"logLevel": "error", "logLevelDB": "panic", "slowQueryThreshold": 67, "socketLogEnabled": false}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 20 'AdminPatchUpdateLogConfig' test.out

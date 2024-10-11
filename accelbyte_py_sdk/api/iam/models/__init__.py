@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.21.0"
+__version__ = "7.22.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -33,6 +33,7 @@ from .account_upgrade_headless_account_with_verification_code_request_v4 import 
     AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
 )
 from .account_user_active_ban_response_v4 import AccountUserActiveBanResponseV4
+from .account_user_info import AccountUserInfo
 from .account_user_permissions_response_v4 import AccountUserPermissionsResponseV4
 from .account_user_response_v4 import AccountUserResponseV4
 from .accountcommon_allowed_permission import AccountcommonAllowedPermission
@@ -87,6 +88,7 @@ from .accountcommon_platform_linking_history import AccountcommonPlatformLinking
 from .accountcommon_platform_user_information_v3 import (
     AccountcommonPlatformUserInformationV3,
 )
+from .accountcommon_profile_update_config import AccountcommonProfileUpdateConfig
 from .accountcommon_registered_domain import AccountcommonRegisteredDomain
 from .accountcommon_replace_role_permission import AccountcommonReplaceRolePermission
 from .accountcommon_role import AccountcommonRole
@@ -193,11 +195,15 @@ from .model_disable_user_request import ModelDisableUserRequest
 from .model_email_update_request_v4 import ModelEmailUpdateRequestV4
 from .model_enabled_factors_response_v4 import ModelEnabledFactorsResponseV4
 from .model_failed_ban_unban_user_v3 import ModelFailedBanUnbanUserV3
+from .model_field_update_allow_status import ModelFieldUpdateAllowStatus
 from .model_forgot_password_request_v3 import ModelForgotPasswordRequestV3
 from .model_get_admin_users_response import ModelGetAdminUsersResponse
 from .model_get_bulk_user_bans_request import ModelGetBulkUserBansRequest
 from .model_get_link_headless_account_conflict_response import (
     ModelGetLinkHeadlessAccountConflictResponse,
+)
+from .model_get_profile_update_strategy_config_response import (
+    ModelGetProfileUpdateStrategyConfigResponse,
 )
 from .model_get_publisher_user_response import ModelGetPublisherUserResponse
 from .model_get_user_ban_summary_v3 import ModelGetUserBanSummaryV3
@@ -242,6 +248,8 @@ from .model_list_user_information_result import ModelListUserInformationResult
 from .model_list_user_response_v3 import ModelListUserResponseV3
 from .model_list_user_roles_v4_response import ModelListUserRolesV4Response
 from .model_list_valid_user_id_response_v4 import ModelListValidUserIDResponseV4
+from .model_login_allowlist_request import ModelLoginAllowlistRequest
+from .model_login_allowlist_response import ModelLoginAllowlistResponse
 from .model_login_histories_response import ModelLoginHistoriesResponse
 from .model_namespace_invitation_history_user_v4_response import (
     ModelNamespaceInvitationHistoryUserV4Response,
@@ -312,6 +320,9 @@ from .model_send_register_verification_code_request import (
 from .model_send_verification_code_request import ModelSendVerificationCodeRequest
 from .model_send_verification_code_request_v3 import ModelSendVerificationCodeRequestV3
 from .model_send_verification_link_request import ModelSendVerificationLinkRequest
+from .model_simple_profile_update_strategy_configs import (
+    ModelSimpleProfileUpdateStrategyConfigs,
+)
 from .model_sso_platform_credential_request import ModelSSOPlatformCredentialRequest
 from .model_sso_platform_credential_response import ModelSSOPlatformCredentialResponse
 from .model_third_party_login_platform_credential_request import (
@@ -326,6 +337,9 @@ from .model_token_third_party_link_status_response import (
 from .model_unlink_user_platform_request import ModelUnlinkUserPlatformRequest
 from .model_update_permission_schedule_request import (
     ModelUpdatePermissionScheduleRequest,
+)
+from .model_update_profile_update_strategy_config_request import (
+    ModelUpdateProfileUpdateStrategyConfigRequest,
 )
 from .model_update_user_deletion_status_request import (
     ModelUpdateUserDeletionStatusRequest,
@@ -372,6 +386,7 @@ from .model_user_platform_infos import ModelUserPlatformInfos
 from .model_user_platform_link_histories import ModelUserPlatformLinkHistories
 from .model_user_platform_link_history import ModelUserPlatformLinkHistory
 from .model_user_platform_metadata import ModelUserPlatformMetadata
+from .model_user_profile_update_allow_status import ModelUserProfileUpdateAllowStatus
 from .model_user_public_info_response_v4 import ModelUserPublicInfoResponseV4
 from .model_user_response import ModelUserResponse
 from .model_user_response_v3 import ModelUserResponseV3

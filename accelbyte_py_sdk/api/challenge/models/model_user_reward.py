@@ -30,7 +30,7 @@ from ....core import StrEnum
 
 
 class StatusEnum(StrEnum):
-    CLAIM = "CLAIM"
+    CLAIMED = "CLAIMED"
     UNCLAIMED = "UNCLAIMED"
 
 
@@ -336,7 +336,7 @@ class ModelUserReward(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["CLAIM", "UNCLAIMED"],
+            "status": ["CLAIMED", "UNCLAIMED"],
             "type": ["ENTITLEMENT", "STATISTIC"],
         }
 

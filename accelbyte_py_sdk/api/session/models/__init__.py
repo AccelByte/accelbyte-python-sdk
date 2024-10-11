@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.17.1"
+__version__ = "3.19.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -104,6 +104,7 @@ from .model_native_session import ModelNativeSession
 from .model_native_session_member import ModelNativeSessionMember
 from .models_default_dsmc_config import ModelsDefaultDSMCConfig
 from .models_dsm_config_record import ModelsDSMConfigRecord
+from .models_extend_configuration import ModelsExtendConfiguration
 from .models_game_server import ModelsGameServer
 from .models_member_active_session import ModelsMemberActiveSession
 from .models_native_session_setting import ModelsNativeSessionSetting

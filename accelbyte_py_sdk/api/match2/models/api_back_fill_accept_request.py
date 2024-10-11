@@ -35,12 +35,15 @@ class ApiBackFillAcceptRequest(Model):
         proposal_id: (proposalId) REQUIRED str
 
         stop: (stop) REQUIRED bool
+
+        accepted_ticket_ids: (acceptedTicketIds) OPTIONAL List[str]
     """
 
     # region fields
 
     proposal_id: str  # REQUIRED
     stop: bool  # REQUIRED
+    accepted_ticket_ids: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class ApiBackFillAcceptRequest(Model):
 
     def with_stop(self, value: bool) -> ApiBackFillAcceptRequest:
         self.stop = value
+        return self
+
+    def with_accepted_ticket_ids(self, value: List[str]) -> ApiBackFillAcceptRequest:
+        self.accepted_ticket_ids = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class ApiBackFillAcceptRequest(Model):
             result["stop"] = bool(self.stop)
         elif include_empty:
             result["stop"] = False
+        if hasattr(self, "accepted_ticket_ids"):
+            result["acceptedTicketIds"] = [str(i0) for i0 in self.accepted_ticket_ids]
+        elif include_empty:
+            result["acceptedTicketIds"] = []
         return result
 
     # endregion to methods
@@ -75,10 +86,18 @@ class ApiBackFillAcceptRequest(Model):
     # region static methods
 
     @classmethod
-    def create(cls, proposal_id: str, stop: bool, **kwargs) -> ApiBackFillAcceptRequest:
+    def create(
+        cls,
+        proposal_id: str,
+        stop: bool,
+        accepted_ticket_ids: Optional[List[str]] = None,
+        **kwargs,
+    ) -> ApiBackFillAcceptRequest:
         instance = cls()
         instance.proposal_id = proposal_id
         instance.stop = stop
+        if accepted_ticket_ids is not None:
+            instance.accepted_ticket_ids = accepted_ticket_ids
         return instance
 
     @classmethod
@@ -96,6 +115,12 @@ class ApiBackFillAcceptRequest(Model):
             instance.stop = bool(dict_["stop"])
         elif include_empty:
             instance.stop = False
+        if "acceptedTicketIds" in dict_ and dict_["acceptedTicketIds"] is not None:
+            instance.accepted_ticket_ids = [
+                str(i0) for i0 in dict_["acceptedTicketIds"]
+            ]
+        elif include_empty:
+            instance.accepted_ticket_ids = []
         return instance
 
     @classmethod
@@ -141,6 +166,7 @@ class ApiBackFillAcceptRequest(Model):
         return {
             "proposalId": "proposal_id",
             "stop": "stop",
+            "acceptedTicketIds": "accepted_ticket_ids",
         }
 
     @staticmethod
@@ -148,6 +174,7 @@ class ApiBackFillAcceptRequest(Model):
         return {
             "proposalId": True,
             "stop": True,
+            "acceptedTicketIds": False,
         }
 
     # endregion static methods

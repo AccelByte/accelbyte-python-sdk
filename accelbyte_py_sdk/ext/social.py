@@ -364,6 +364,7 @@ def create_stat_create_example() -> StatCreate:
     instance.minimum = randomize("int", min_val=1, max_val=1000)
     instance.set_as_global = randomize("bool")
     instance.tags = [randomize()]
+    instance.visibility = randomize()
     return instance
 
 
@@ -456,6 +457,7 @@ def create_stat_info_example() -> StatInfo:
     instance.maximum = randomize("int", min_val=1, max_val=1000)
     instance.minimum = randomize("int", min_val=1, max_val=1000)
     instance.tags = [randomize()]
+    instance.visibility = randomize()
     return instance
 
 
@@ -520,6 +522,7 @@ def create_stat_update_example() -> StatUpdate:
     instance.is_public = randomize("bool")
     instance.name = randomize()
     instance.tags = [randomize()]
+    instance.visibility = randomize()
     return instance
 
 

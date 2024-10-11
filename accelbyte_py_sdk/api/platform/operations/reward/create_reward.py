@@ -62,7 +62,7 @@ class CreateReward(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - RewardInfo (successful operation)
+        201: Created - RewardInfo (successful operation)
 
         400: Bad Request - ErrorEntity (34023: Reward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate | 34027: Reward Item [{sku}] with item type [{itemType}] is not supported for duration or endDate)
 
@@ -183,7 +183,7 @@ class CreateReward(Operation):
     ]:
         """Parse the given response.
 
-        200: OK - RewardInfo (successful operation)
+        201: Created - RewardInfo (successful operation)
 
         400: Bad Request - ErrorEntity (34023: Reward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate | 34027: Reward Item [{sku}] with item type [{itemType}] is not supported for duration or endDate)
 
@@ -206,7 +206,7 @@ class CreateReward(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 200:
+        if code == 201:
             return RewardInfo.create_from_dict(content), None
         if code == 400:
             return None, ErrorEntity.create_from_dict(content)

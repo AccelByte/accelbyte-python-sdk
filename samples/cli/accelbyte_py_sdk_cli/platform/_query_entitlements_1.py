@@ -38,18 +38,28 @@ from accelbyte_py_sdk.api.platform.models import EntitlementPagingSlicedResult
 
 @click.command()
 @click.option("--active_only", "active_only", type=bool)
-@click.option("--item_ids", "item_ids", type=str)
+@click.option("--app_type", "app_type", type=str)
+@click.option("--entitlement_clazz", "entitlement_clazz", type=str)
+@click.option("--entitlement_name", "entitlement_name", type=str)
+@click.option("--item_id", "item_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--origin", "origin", type=str)
+@click.option("--user_id", "user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def query_entitlements_1(
     active_only: Optional[bool] = None,
-    item_ids: Optional[str] = None,
+    app_type: Optional[str] = None,
+    entitlement_clazz: Optional[str] = None,
+    entitlement_name: Optional[str] = None,
+    item_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    origin: Optional[str] = None,
+    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -63,17 +73,22 @@ def query_entitlements_1(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if item_ids is not None:
+    if item_id is not None:
         try:
-            item_ids_json = json.loads(item_ids)
-            item_ids = [str(i0) for i0 in item_ids_json]
+            item_id_json = json.loads(item_id)
+            item_id = [str(i0) for i0 in item_id_json]
         except ValueError as e:
-            raise Exception(f"Invalid JSON for 'itemIds'. {str(e)}") from e
+            raise Exception(f"Invalid JSON for 'itemId'. {str(e)}") from e
     result, error = query_entitlements_1_internal(
         active_only=active_only,
-        item_ids=item_ids,
+        app_type=app_type,
+        entitlement_clazz=entitlement_clazz,
+        entitlement_name=entitlement_name,
+        item_id=item_id,
         limit=limit,
         offset=offset,
+        origin=origin,
+        user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

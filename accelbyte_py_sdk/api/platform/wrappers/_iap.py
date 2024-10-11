@@ -31,7 +31,9 @@ from ....core import same_doc_as
 
 from ..models import AppleIAPConfigInfo
 from ..models import AppleIAPConfigRequest
+from ..models import AppleIAPConfigVersionInfo
 from ..models import AppleIAPReceipt
+from ..models import AppleIAPRequest
 from ..models import EpicGamesIAPConfigInfo
 from ..models import EpicGamesIAPConfigRequest
 from ..models import EpicGamesReconcileRequest
@@ -79,6 +81,7 @@ from ..operations.iap import DeletePlaystationIAPConfig
 from ..operations.iap import DeleteSteamIAPConfig
 from ..operations.iap import DeleteTwitchIAPConfig
 from ..operations.iap import DeleteXblAPConfig
+from ..operations.iap import GetAppleConfigVersion
 from ..operations.iap import GetAppleIAPConfig
 from ..operations.iap import GetEpicGamesIAPConfig
 from ..operations.iap import GetGoogleIAPConfig
@@ -110,6 +113,7 @@ from ..operations.iap import SyncTwitchDropsEntitlement
 from ..operations.iap import SyncTwitchDropsEntitlement1
 from ..operations.iap import SyncXboxInventory
 from ..operations.iap import UpdateAppleIAPConfig
+from ..operations.iap import UpdateAppleP8File
 from ..operations.iap import UpdateEpicGamesIAPConfig
 from ..operations.iap import UpdateGoogleIAPConfig
 from ..operations.iap import UpdateGoogleP12File
@@ -120,8 +124,12 @@ from ..operations.iap import UpdateSteamIAPConfig
 from ..operations.iap import UpdateTwitchIAPConfig
 from ..operations.iap import UpdateXblBPCertFile
 from ..operations.iap import UpdateXblIAPConfig
+from ..operations.iap import V2PublicFulfillAppleIAPItem
 from ..operations.iap import ValidateExistedPlaystationIAPConfig
 from ..operations.iap import ValidatePlaystationIAPConfig
+from ..models import AppleIAPConfigInfoVersionEnum
+from ..models import AppleIAPConfigRequestVersionEnum
+from ..models import AppleIAPConfigVersionInfoVersionEnum
 from ..models import EpicGamesReconcileResultStatusEnum
 from ..models import MockIAPReceiptItemIdentityTypeEnum, MockIAPReceiptTypeEnum
 from ..models import (
@@ -828,6 +836,88 @@ async def delete_xbl_ap_config_async(
         if error:
             return None, error
     request = DeleteXblAPConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetAppleConfigVersion)
+def get_apple_config_version(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get apple config version (getAppleConfigVersion)
+
+    Get apple config version.
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/iap/apple/config/version
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - AppleIAPConfigVersionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (39142: Apple IAP config not found in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetAppleConfigVersion.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetAppleConfigVersion)
+async def get_apple_config_version_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get apple config version (getAppleConfigVersion)
+
+    Get apple config version.
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/iap/apple/config/version
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - AppleIAPConfigVersionInfo (successful operation)
+
+        404: Not Found - ErrorEntity (39142: Apple IAP config not found in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetAppleConfigVersion.create(
         namespace=namespace,
     )
     return await run_request_async(
@@ -1799,7 +1889,7 @@ def public_fulfill_apple_iap_item(
 ):
     """Fulfill apple iap item. (publicFulfillAppleIAPItem)
 
-    Verify apple iap receipt and fulfill item.Other detail info:
+    Verify apple iap receipt and fulfill item. don't support subscriptionOther detail info:
 
       * Returns :
 
@@ -1825,7 +1915,7 @@ def public_fulfill_apple_iap_item(
     Responses:
         204: No Content - (Fulfill item successfully)
 
-        400: Bad Request - ErrorEntity (39121: Apple iap receipt verify failed with status code [{statusCode}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required | 39131: Invalid Apple IAP config under namespace [{namespace}]: [{message}])
+        400: Bad Request - ErrorEntity (39121: Apple iap receipt verify failed with status code [{statusCode}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 39131: Invalid Apple IAP config under namespace [{namespace}]: [{message}] | 39138: Apple IAP version mismatch detected: The current configuration is set to  [{configVersion}], but the API version is [{apiVersion}]. Please ensure that both the configuration and API versions are aligned)
 
         404: Not Found - ErrorEntity (39141: Apple iap receipt of transaction [{transactionId}] for productId [{}] does not exist | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 39142: Apple IAP config not found in namespace [{namespace}])
 
@@ -1853,7 +1943,7 @@ async def public_fulfill_apple_iap_item_async(
 ):
     """Fulfill apple iap item. (publicFulfillAppleIAPItem)
 
-    Verify apple iap receipt and fulfill item.Other detail info:
+    Verify apple iap receipt and fulfill item. don't support subscriptionOther detail info:
 
       * Returns :
 
@@ -1879,7 +1969,7 @@ async def public_fulfill_apple_iap_item_async(
     Responses:
         204: No Content - (Fulfill item successfully)
 
-        400: Bad Request - ErrorEntity (39121: Apple iap receipt verify failed with status code [{statusCode}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 38122: Subscription endDate required | 39131: Invalid Apple IAP config under namespace [{namespace}]: [{message}])
+        400: Bad Request - ErrorEntity (39121: Apple iap receipt verify failed with status code [{statusCode}] | 35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 39131: Invalid Apple IAP config under namespace [{namespace}]: [{message}] | 39138: Apple IAP version mismatch detected: The current configuration is set to  [{configVersion}], but the API version is [{apiVersion}]. Please ensure that both the configuration and API versions are aligned)
 
         404: Not Found - ErrorEntity (39141: Apple iap receipt of transaction [{transactionId}] for productId [{}] does not exist | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 39142: Apple IAP config not found in namespace [{namespace}])
 
@@ -3299,6 +3389,98 @@ async def update_apple_iap_config_async(
     )
 
 
+@same_doc_as(UpdateAppleP8File)
+def update_apple_p8_file(
+    file: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Upload Apple Store p8 file (updateAppleP8File)
+
+    Upload Apple Store p8 file.
+    Other detail info:
+
+      * Returns : updated apple iap config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/apple/cert
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - AppleIAPConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateAppleP8File.create(
+        file=file,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateAppleP8File)
+async def update_apple_p8_file_async(
+    file: Optional[Any] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Upload Apple Store p8 file (updateAppleP8File)
+
+    Upload Apple Store p8 file.
+    Other detail info:
+
+      * Returns : updated apple iap config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/config/apple/cert
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["multipart/form-data"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        file: (file) OPTIONAL Any in form_data
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - AppleIAPConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateAppleP8File.create(
+        file=file,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(UpdateEpicGamesIAPConfig)
 def update_epic_games_iap_config(
     body: EpicGamesIAPConfigRequest,
@@ -4227,6 +4409,116 @@ async def update_xbl_iap_config_async(
         if error:
             return None, error
     request = UpdateXblIAPConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(V2PublicFulfillAppleIAPItem)
+def v2_public_fulfill_apple_iap_item(
+    user_id: str,
+    body: Optional[AppleIAPRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Fulfill apple iap item V2. (V2PublicFulfillAppleIAPItem)
+
+    Verify apple iap transaction and fulfill item, support subscriptionOther detail info:
+
+      * Returns :
+
+    Properties:
+        url: /platform/v2/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL AppleIAPRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Fulfill successfully)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 39131: Invalid Apple IAP config under namespace [{namespace}]: [{message}] | 39136: Request Apple API failed with status code [{statusCode}] and error message [{message}] | 39137: Verify Apple transaction failed with status [{status}] and error message [{message}] | 39138: Apple IAP version mismatch detected: The current configuration is set to  [{configVersion}], but the API version is [{apiVersion}]. Please ensure that both the configuration and API versions are aligned)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 39142: Apple IAP config not found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (39171: The bundle id in namespace [{namespace}] expect [{expected}] but was [{actual}] | 20006: optimistic lock)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = V2PublicFulfillAppleIAPItem.create(
+        user_id=user_id,
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(V2PublicFulfillAppleIAPItem)
+async def v2_public_fulfill_apple_iap_item_async(
+    user_id: str,
+    body: Optional[AppleIAPRequest] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Fulfill apple iap item V2. (V2PublicFulfillAppleIAPItem)
+
+    Verify apple iap transaction and fulfill item, support subscriptionOther detail info:
+
+      * Returns :
+
+    Properties:
+        url: /platform/v2/public/namespaces/{namespace}/users/{userId}/iap/apple/receipt
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL AppleIAPRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Fulfill successfully)
+
+        400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 38121: Duplicate permanent item exists | 39131: Invalid Apple IAP config under namespace [{namespace}]: [{message}] | 39136: Request Apple API failed with status code [{statusCode}] and error message [{message}] | 39137: Verify Apple transaction failed with status [{status}] and error message [{message}] | 39138: Apple IAP version mismatch detected: The current configuration is set to  [{configVersion}], but the API version is [{apiVersion}]. Please ensure that both the configuration and API versions are aligned)
+
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 39142: Apple IAP config not found in namespace [{namespace}])
+
+        409: Conflict - ErrorEntity (39171: The bundle id in namespace [{namespace}] expect [{expected}] but was [{actual}] | 20006: optimistic lock)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = V2PublicFulfillAppleIAPItem.create(
+        user_id=user_id,
         body=body,
         namespace=namespace,
     )

@@ -37,6 +37,8 @@ from ...models import ResponseError
 class AdminCopyContent(Operation):
     """Copy contents from a channel to another (AdminCopyContent)
 
+    Copy existing content from source channel to target channel.
+
     Properties:
         url: /ugc/v2/admin/namespaces/{namespace}/channels/{channelId}/contents/{contentId}/copy
 

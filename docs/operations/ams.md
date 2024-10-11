@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.24.2)
+# Fleet Commander Index (1.27.1)
 
 
 ## Operations
@@ -114,7 +114,9 @@
 | api.ArtifactTypeSamplingRules | [ApiArtifactTypeSamplingRules](../../accelbyte_py_sdk/api/ams/models/api_artifact_type_sampling_rules.py) |
 | api.ArtifactURLResponse | [ApiArtifactURLResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_url_response.py) |
 | api.ArtifactUsageResponse | [ApiArtifactUsageResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_usage_response.py) |
+| api.AvailableInstanceType | [ApiAvailableInstanceType](../../accelbyte_py_sdk/api/ams/models/api_available_instance_type.py) |
 | api.AvailableInstanceTypesResponse | [ApiAvailableInstanceTypesResponse](../../accelbyte_py_sdk/api/ams/models/api_available_instance_types_response.py) |
+| api.Capacity | [ApiCapacity](../../accelbyte_py_sdk/api/ams/models/api_capacity.py) |
 | api.DevelopmentServerConfigurationCreateRequest | [ApiDevelopmentServerConfigurationCreateRequest](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_create_request.py) |
 | api.DevelopmentServerConfigurationCreateResponse | [ApiDevelopmentServerConfigurationCreateResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_create_response.py) |
 | api.DevelopmentServerConfigurationGetResponse | [ApiDevelopmentServerConfigurationGetResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_get_response.py) |
@@ -122,6 +124,7 @@
 | api.DSHistoryEvent | [ApiDSHistoryEvent](../../accelbyte_py_sdk/api/ams/models/api_ds_history_event.py) |
 | api.DSHistoryList | [ApiDSHistoryList](../../accelbyte_py_sdk/api/ams/models/api_ds_history_list.py) |
 | api.DSHostConfiguration | [ApiDSHostConfiguration](../../accelbyte_py_sdk/api/ams/models/api_ds_host_configuration.py) |
+| api.DSHostConfigurationParameters | [ApiDSHostConfigurationParameters](../../accelbyte_py_sdk/api/ams/models/api_ds_host_configuration_parameters.py) |
 | api.FleetArtifactsSampleRules | [ApiFleetArtifactsSampleRules](../../accelbyte_py_sdk/api/ams/models/api_fleet_artifacts_sample_rules.py) |
 | api.FleetClaimByKeysReq | [ApiFleetClaimByKeysReq](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_by_keys_req.py) |
 | api.FleetClaimReq | [ApiFleetClaimReq](../../accelbyte_py_sdk/api/ams/models/api_fleet_claim_req.py) |
@@ -143,7 +146,6 @@
 | api.ImageListItem | [ApiImageListItem](../../accelbyte_py_sdk/api/ams/models/api_image_list_item.py) |
 | api.ImageStorage | [ApiImageStorage](../../accelbyte_py_sdk/api/ams/models/api_image_storage.py) |
 | api.ImageUpdate | [ApiImageUpdate](../../accelbyte_py_sdk/api/ams/models/api_image_update.py) |
-| api.InstanceTypeDescriptionResponse | [ApiInstanceTypeDescriptionResponse](../../accelbyte_py_sdk/api/ams/models/api_instance_type_description_response.py) |
 | api.PagingInfo | [ApiPagingInfo](../../accelbyte_py_sdk/api/ams/models/api_paging_info.py) |
 | api.PortConfiguration | [ApiPortConfiguration](../../accelbyte_py_sdk/api/ams/models/api_port_configuration.py) |
 | api.QoSEndpointResponse | [ApiQoSEndpointResponse](../../accelbyte_py_sdk/api/ams/models/api_qo_s_endpoint_response.py) |

@@ -33,16 +33,19 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     admin_disable_user_mfav4 as admin_disable_user_mfav4_internal,
 )
+from accelbyte_py_sdk.api.iam.models import ModelDisableMFARequest
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("user_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_disable_user_mfav4(
+    body: str,
     user_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -57,7 +60,14 @@ def admin_disable_user_mfav4(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if body is not None:
+        try:
+            body_json = json.loads(body)
+            body = ModelDisableMFARequest.create_from_dict(body_json)
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = admin_disable_user_mfav4_internal(
+        body=body,
         user_id=user_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

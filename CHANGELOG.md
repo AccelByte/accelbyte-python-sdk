@@ -1,3 +1,29 @@
+<a name="v0.70.0"></a>
+## [v0.70.0]
+### test
+- **eventlog:** remove tests
+- **ws:** move to standalone mock ws server
+- **match2:** fix tests parameters
+- **integration:** remove deprecated services
+- **integration:** remove deprecated services (more)
+- **lobby:** retry on ws too many redirects
+- **lobby:** skip ws tests when encountering timeouts
+### refactor
+- **core:** move http related util methods
+### chore
+- **:** remove event log
+- **makefile:** improve mock server ready detection
+- **integration:** add player record cloudsave test
+- **docs:** add player record cloudsave integration test
+### docs
+- **common use cases:** remove deprecated services
+### fix
+- **core:** allow passing websockets connect kwargs
+- **lobby:** remove passing empty extra_headers kwarg
+### ci
+- **lint:** disable false-positive lint error
+
+
 <a name="v0.69.0"></a>
 ## [v0.69.0]
 ### chore

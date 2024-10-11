@@ -78,6 +78,7 @@ def create_api_back_fill_accept_request_example() -> ApiBackFillAcceptRequest:
     instance = ApiBackFillAcceptRequest()
     instance.proposal_id = randomize()
     instance.stop = randomize("bool")
+    instance.accepted_ticket_ids = [randomize()]
     return instance
 
 
@@ -253,6 +254,7 @@ def create_api_match_ticket_request_example() -> ApiMatchTicketRequest:
     instance.attributes = {randomize(): randomize()}
     instance.latencies = {}
     instance.match_pool = randomize()
+    instance.excluded_sessions = [randomize()]
     instance.session_id = randomize("uid")
     instance.storage = {randomize(): randomize()}
     return instance
@@ -426,11 +428,13 @@ def create_matchmaker_team_example() -> MatchmakerTeam:
 def create_matchmaker_ticket_example() -> MatchmakerTicket:
     instance = MatchmakerTicket()
     instance.created_at = randomize("date")
+    instance.excluded_sessions = [randomize()]
     instance.is_active = randomize("bool")
     instance.is_pivot = randomize("bool")
     instance.is_single_play = randomize("bool")
     instance.latencies = {}
     instance.match_pool = randomize()
+    instance.matched_at = randomize("date")
     instance.namespace = randomize("slug")
     instance.party_session_id = randomize()
     instance.players = [create_player_player_data_example()]

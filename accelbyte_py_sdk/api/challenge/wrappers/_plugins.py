@@ -170,7 +170,7 @@ def admin_delete_assignment_plugin(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (20018: bad request: {{message}})
 
@@ -218,7 +218,7 @@ async def admin_delete_assignment_plugin_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - (OK)
+        204: No Content - (No Content)
 
         400: Bad Request - ResponseError (20018: bad request: {{message}})
 

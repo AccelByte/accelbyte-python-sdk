@@ -38,8 +38,10 @@ class AdminCreateTestUsersV4(Operation):
     """[TEST FACILITY ONLY]Create test Users (AdminCreateTestUsersV4)
 
     Create test users and not send verification code email.
-    Enter the number of test users you want to create in the count field.
-    The maximum value of the user count is 100.
+    Note:
+    - count : Enter the number of test users you want to create in the count field. The maximum value of the user count is 100.
+    - userInfo(optional) :
+    - country: you can specify country for the test user. Country use ISO3166-1 alpha-2 two letter, e.g. US
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/test_users

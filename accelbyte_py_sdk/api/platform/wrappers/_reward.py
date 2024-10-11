@@ -190,7 +190,7 @@ def create_reward(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - RewardInfo (successful operation)
+        201: Created - RewardInfo (successful operation)
 
         400: Bad Request - ErrorEntity (34023: Reward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate | 34027: Reward Item [{sku}] with item type [{itemType}] is not supported for duration or endDate)
 
@@ -244,7 +244,7 @@ async def create_reward_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - RewardInfo (successful operation)
+        201: Created - RewardInfo (successful operation)
 
         400: Bad Request - ErrorEntity (34023: Reward Item [{itemId}] with item type [{itemType}] is not supported for duration or endDate | 34027: Reward Item [{sku}] with item type [{itemType}] is not supported for duration or endDate)
 

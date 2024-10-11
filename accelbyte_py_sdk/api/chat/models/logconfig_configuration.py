@@ -39,11 +39,25 @@ class LogLevelEnum(StrEnum):
     WARNING = "warning"
 
 
+class LogLevelDBEnum(StrEnum):
+    DEBUG = "debug"
+    ERROR = "error"
+    FATAL = "fatal"
+    INFO = "info"
+    PANIC = "panic"
+    TRACE = "trace"
+    WARNING = "warning"
+
+
 class LogconfigConfiguration(Model):
     """Logconfig configuration (logconfig.Configuration)
 
     Properties:
         log_level: (logLevel) OPTIONAL Union[str, LogLevelEnum]
+
+        log_level_db: (logLevelDB) OPTIONAL Union[str, LogLevelDBEnum]
+
+        slow_query_threshold: (slowQueryThreshold) OPTIONAL int
 
         socket_log_enabled: (socketLogEnabled) OPTIONAL bool
     """
@@ -51,6 +65,8 @@ class LogconfigConfiguration(Model):
     # region fields
 
     log_level: Union[str, LogLevelEnum]  # OPTIONAL
+    log_level_db: Union[str, LogLevelDBEnum]  # OPTIONAL
+    slow_query_threshold: int  # OPTIONAL
     socket_log_enabled: bool  # OPTIONAL
 
     # endregion fields
@@ -59,6 +75,16 @@ class LogconfigConfiguration(Model):
 
     def with_log_level(self, value: Union[str, LogLevelEnum]) -> LogconfigConfiguration:
         self.log_level = value
+        return self
+
+    def with_log_level_db(
+        self, value: Union[str, LogLevelDBEnum]
+    ) -> LogconfigConfiguration:
+        self.log_level_db = value
+        return self
+
+    def with_slow_query_threshold(self, value: int) -> LogconfigConfiguration:
+        self.slow_query_threshold = value
         return self
 
     def with_socket_log_enabled(self, value: bool) -> LogconfigConfiguration:
@@ -75,6 +101,14 @@ class LogconfigConfiguration(Model):
             result["logLevel"] = str(self.log_level)
         elif include_empty:
             result["logLevel"] = Union[str, LogLevelEnum]()
+        if hasattr(self, "log_level_db"):
+            result["logLevelDB"] = str(self.log_level_db)
+        elif include_empty:
+            result["logLevelDB"] = Union[str, LogLevelDBEnum]()
+        if hasattr(self, "slow_query_threshold"):
+            result["slowQueryThreshold"] = int(self.slow_query_threshold)
+        elif include_empty:
+            result["slowQueryThreshold"] = 0
         if hasattr(self, "socket_log_enabled"):
             result["socketLogEnabled"] = bool(self.socket_log_enabled)
         elif include_empty:
@@ -89,12 +123,18 @@ class LogconfigConfiguration(Model):
     def create(
         cls,
         log_level: Optional[Union[str, LogLevelEnum]] = None,
+        log_level_db: Optional[Union[str, LogLevelDBEnum]] = None,
+        slow_query_threshold: Optional[int] = None,
         socket_log_enabled: Optional[bool] = None,
         **kwargs,
     ) -> LogconfigConfiguration:
         instance = cls()
         if log_level is not None:
             instance.log_level = log_level
+        if log_level_db is not None:
+            instance.log_level_db = log_level_db
+        if slow_query_threshold is not None:
+            instance.slow_query_threshold = slow_query_threshold
         if socket_log_enabled is not None:
             instance.socket_log_enabled = socket_log_enabled
         return instance
@@ -110,6 +150,14 @@ class LogconfigConfiguration(Model):
             instance.log_level = str(dict_["logLevel"])
         elif include_empty:
             instance.log_level = Union[str, LogLevelEnum]()
+        if "logLevelDB" in dict_ and dict_["logLevelDB"] is not None:
+            instance.log_level_db = str(dict_["logLevelDB"])
+        elif include_empty:
+            instance.log_level_db = Union[str, LogLevelDBEnum]()
+        if "slowQueryThreshold" in dict_ and dict_["slowQueryThreshold"] is not None:
+            instance.slow_query_threshold = int(dict_["slowQueryThreshold"])
+        elif include_empty:
+            instance.slow_query_threshold = 0
         if "socketLogEnabled" in dict_ and dict_["socketLogEnabled"] is not None:
             instance.socket_log_enabled = bool(dict_["socketLogEnabled"])
         elif include_empty:
@@ -158,6 +206,8 @@ class LogconfigConfiguration(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "logLevel": "log_level",
+            "logLevelDB": "log_level_db",
+            "slowQueryThreshold": "slow_query_threshold",
             "socketLogEnabled": "socket_log_enabled",
         }
 
@@ -165,6 +215,8 @@ class LogconfigConfiguration(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "logLevel": False,
+            "logLevelDB": False,
+            "slowQueryThreshold": False,
             "socketLogEnabled": False,
         }
 
@@ -172,6 +224,15 @@ class LogconfigConfiguration(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "logLevel": [
+                "debug",
+                "error",
+                "fatal",
+                "info",
+                "panic",
+                "trace",
+                "warning",
+            ],
+            "logLevelDB": [
                 "debug",
                 "error",
                 "fatal",

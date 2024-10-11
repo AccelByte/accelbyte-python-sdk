@@ -508,7 +508,6 @@ def create_retrieve_user_eligibilities_response_example() -> (
     instance.base_urls = [randomize()]
     instance.country_group_code = randomize()
     instance.description = randomize()
-    instance.hidden_public = randomize("bool")
     instance.is_hidden_public = randomize("bool")
     instance.policy_versions = [
         create_policy_version_with_localized_version_object_example()

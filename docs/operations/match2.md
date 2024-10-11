@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Match Service V2 Index (2.26.1)
+# AccelByte Gaming Services Match Service V2 Index (2.27.0)
 
 
 ## Operations
@@ -49,6 +49,7 @@
 | /match2/v1/namespaces/{namespace}/match-pools/{pool} | GET | MatchPoolDetails | `false` | [MatchPoolDetails](../../accelbyte_py_sdk/api/match2/operations/match_pools/match_pool_details.py) | [match_pool_details](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-match-pool-details](../../samples/cli/accelbyte_py_sdk_cli/match2/_match_pool_details.py) |
 | /match2/v1/namespaces/{namespace}/match-pools | GET | MatchPoolList | `false` | [MatchPoolList](../../accelbyte_py_sdk/api/match2/operations/match_pools/match_pool_list.py) | [match_pool_list](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-match-pool-list](../../samples/cli/accelbyte_py_sdk_cli/match2/_match_pool_list.py) |
 | /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics | GET | MatchPoolMetric | `false` | [MatchPoolMetric](../../accelbyte_py_sdk/api/match2/operations/match_pools/match_pool_metric.py) | [match_pool_metric](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-match-pool-metric](../../samples/cli/accelbyte_py_sdk_cli/match2/_match_pool_metric.py) |
+| /match2/v1/public/namespaces/{namespace}/match-pools/{pool}/metrics/player | GET | PublicGetPlayerMetric | `false` | [PublicGetPlayerMetric](../../accelbyte_py_sdk/api/match2/operations/match_pools/public_get_player_metric.py) | [public_get_player_metric](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-public-get-player-metric](../../samples/cli/accelbyte_py_sdk_cli/match2/_public_get_player_metric.py) |
 | /match2/v1/namespaces/{namespace}/match-pools/{pool} | PUT | UpdateMatchPool | `false` | [UpdateMatchPool](../../accelbyte_py_sdk/api/match2/operations/match_pools/update_match_pool.py) | [update_match_pool](../../accelbyte_py_sdk/api/match2/wrappers/_match_pools.py) | [accelbyte_py_sdk_cli match2-update-match-pool](../../samples/cli/accelbyte_py_sdk_cli/match2/_update_match_pool.py) |
 
 ### Match-Tickets

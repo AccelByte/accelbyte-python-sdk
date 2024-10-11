@@ -27,7 +27,9 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.api_ds_host_configuration import ApiDSHostConfiguration
+from ..models.api_ds_host_configuration_parameters import (
+    ApiDSHostConfigurationParameters,
+)
 from ..models.api_fleet_artifacts_sample_rules import ApiFleetArtifactsSampleRules
 from ..models.api_image_deployment_profile import ApiImageDeploymentProfile
 from ..models.api_region_config import ApiRegionConfig
@@ -39,7 +41,7 @@ class ApiFleetParameters(Model):
     Properties:
         active: (active) REQUIRED bool
 
-        ds_host_configuration: (dsHostConfiguration) REQUIRED ApiDSHostConfiguration
+        ds_host_configuration: (dsHostConfiguration) REQUIRED ApiDSHostConfigurationParameters
 
         image_deployment_profile: (imageDeploymentProfile) REQUIRED ApiImageDeploymentProfile
 
@@ -57,7 +59,7 @@ class ApiFleetParameters(Model):
     # region fields
 
     active: bool  # REQUIRED
-    ds_host_configuration: ApiDSHostConfiguration  # REQUIRED
+    ds_host_configuration: ApiDSHostConfigurationParameters  # REQUIRED
     image_deployment_profile: ApiImageDeploymentProfile  # REQUIRED
     name: str  # REQUIRED
     on_demand: bool  # REQUIRED
@@ -74,7 +76,7 @@ class ApiFleetParameters(Model):
         return self
 
     def with_ds_host_configuration(
-        self, value: ApiDSHostConfiguration
+        self, value: ApiDSHostConfigurationParameters
     ) -> ApiFleetParameters:
         self.ds_host_configuration = value
         return self
@@ -122,7 +124,7 @@ class ApiFleetParameters(Model):
                 include_empty=include_empty
             )
         elif include_empty:
-            result["dsHostConfiguration"] = ApiDSHostConfiguration()
+            result["dsHostConfiguration"] = ApiDSHostConfigurationParameters()
         if hasattr(self, "image_deployment_profile"):
             result["imageDeploymentProfile"] = self.image_deployment_profile.to_dict(
                 include_empty=include_empty
@@ -163,7 +165,7 @@ class ApiFleetParameters(Model):
     def create(
         cls,
         active: bool,
-        ds_host_configuration: ApiDSHostConfiguration,
+        ds_host_configuration: ApiDSHostConfigurationParameters,
         image_deployment_profile: ApiImageDeploymentProfile,
         name: str,
         on_demand: bool,
@@ -197,11 +199,13 @@ class ApiFleetParameters(Model):
         elif include_empty:
             instance.active = False
         if "dsHostConfiguration" in dict_ and dict_["dsHostConfiguration"] is not None:
-            instance.ds_host_configuration = ApiDSHostConfiguration.create_from_dict(
-                dict_["dsHostConfiguration"], include_empty=include_empty
+            instance.ds_host_configuration = (
+                ApiDSHostConfigurationParameters.create_from_dict(
+                    dict_["dsHostConfiguration"], include_empty=include_empty
+                )
             )
         elif include_empty:
-            instance.ds_host_configuration = ApiDSHostConfiguration()
+            instance.ds_host_configuration = ApiDSHostConfigurationParameters()
         if (
             "imageDeploymentProfile" in dict_
             and dict_["imageDeploymentProfile"] is not None

@@ -38,6 +38,8 @@ class ApiMatchTicketRequest(Model):
 
         match_pool: (matchPool) REQUIRED str
 
+        excluded_sessions: (excludedSessions) OPTIONAL List[str]
+
         session_id: (sessionID) OPTIONAL str
 
         storage: (storage) OPTIONAL Dict[str, Any]
@@ -48,6 +50,7 @@ class ApiMatchTicketRequest(Model):
     attributes: Dict[str, Any]  # REQUIRED
     latencies: Dict[str, int]  # REQUIRED
     match_pool: str  # REQUIRED
+    excluded_sessions: List[str]  # OPTIONAL
     session_id: str  # OPTIONAL
     storage: Dict[str, Any]  # OPTIONAL
 
@@ -65,6 +68,10 @@ class ApiMatchTicketRequest(Model):
 
     def with_match_pool(self, value: str) -> ApiMatchTicketRequest:
         self.match_pool = value
+        return self
+
+    def with_excluded_sessions(self, value: List[str]) -> ApiMatchTicketRequest:
+        self.excluded_sessions = value
         return self
 
     def with_session_id(self, value: str) -> ApiMatchTicketRequest:
@@ -95,6 +102,10 @@ class ApiMatchTicketRequest(Model):
             result["matchPool"] = str(self.match_pool)
         elif include_empty:
             result["matchPool"] = ""
+        if hasattr(self, "excluded_sessions"):
+            result["excludedSessions"] = [str(i0) for i0 in self.excluded_sessions]
+        elif include_empty:
+            result["excludedSessions"] = []
         if hasattr(self, "session_id"):
             result["sessionID"] = str(self.session_id)
         elif include_empty:
@@ -115,6 +126,7 @@ class ApiMatchTicketRequest(Model):
         attributes: Dict[str, Any],
         latencies: Dict[str, int],
         match_pool: str,
+        excluded_sessions: Optional[List[str]] = None,
         session_id: Optional[str] = None,
         storage: Optional[Dict[str, Any]] = None,
         **kwargs,
@@ -123,6 +135,8 @@ class ApiMatchTicketRequest(Model):
         instance.attributes = attributes
         instance.latencies = latencies
         instance.match_pool = match_pool
+        if excluded_sessions is not None:
+            instance.excluded_sessions = excluded_sessions
         if session_id is not None:
             instance.session_id = session_id
         if storage is not None:
@@ -152,6 +166,10 @@ class ApiMatchTicketRequest(Model):
             instance.match_pool = str(dict_["matchPool"])
         elif include_empty:
             instance.match_pool = ""
+        if "excludedSessions" in dict_ and dict_["excludedSessions"] is not None:
+            instance.excluded_sessions = [str(i0) for i0 in dict_["excludedSessions"]]
+        elif include_empty:
+            instance.excluded_sessions = []
         if "sessionID" in dict_ and dict_["sessionID"] is not None:
             instance.session_id = str(dict_["sessionID"])
         elif include_empty:
@@ -206,6 +224,7 @@ class ApiMatchTicketRequest(Model):
             "attributes": "attributes",
             "latencies": "latencies",
             "matchPool": "match_pool",
+            "excludedSessions": "excluded_sessions",
             "sessionID": "session_id",
             "storage": "storage",
         }
@@ -216,6 +235,7 @@ class ApiMatchTicketRequest(Model):
             "attributes": True,
             "latencies": True,
             "matchPool": True,
+            "excludedSessions": False,
             "sessionID": False,
             "storage": False,
         }

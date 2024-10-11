@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.9.0"
+__version__ = "1.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,6 +22,9 @@ from .model_challenge_response import (
     GoalsVisibilityEnum as ModelChallengeResponseGoalsVisibilityEnum,
     RotationEnum as ModelChallengeResponseRotationEnum,
     StatusEnum as ModelChallengeResponseStatusEnum,
+)
+from .model_claim_user_rewards_by_goal_code_request import (
+    ModelClaimUserRewardsByGoalCodeRequest,
 )
 from .model_claim_user_rewards_req import ModelClaimUserRewardsReq
 from .model_claim_users_rewards_request import ModelClaimUsersRewardsRequest
@@ -76,6 +79,10 @@ from .model_update_challenge_request import (
     AssignmentRuleEnum as ModelUpdateChallengeRequestAssignmentRuleEnum,
     GoalsVisibilityEnum as ModelUpdateChallengeRequestGoalsVisibilityEnum,
     RotationEnum as ModelUpdateChallengeRequestRotationEnum,
+)
+from .model_update_challenge_schedule_request import ModelUpdateChallengeScheduleRequest
+from .model_update_challenge_schedule_request import (
+    ActionEnum as ModelUpdateChallengeScheduleRequestActionEnum,
 )
 from .model_update_goal_request import ModelUpdateGoalRequest
 from .model_user_progression_period_response_meta import (

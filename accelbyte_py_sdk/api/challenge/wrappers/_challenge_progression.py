@@ -35,6 +35,7 @@ from ..models import ModelUserProgressionResponse
 from ..models import ResponseError
 
 from ..operations.challenge_progression import AdminEvaluateProgress
+from ..operations.challenge_progression import AdminGetUserProgression
 from ..operations.challenge_progression import EvaluateMyProgress
 from ..operations.challenge_progression import PublicGetPastUserProgression
 from ..operations.challenge_progression import PublicGetUserProgression
@@ -141,6 +142,164 @@ async def admin_evaluate_progress_async(
             return None, error
     request = AdminEvaluateProgress.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetUserProgression)
+def admin_get_user_progression(
+    challenge_code: str,
+    user_id: str,
+    date_time: Optional[str] = None,
+    goal_code: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List User's Progressions (adminGetUserProgression)
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/progress/{challengeCode}
+
+        method: GET
+
+        tags: ["Challenge Progression"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        date_time: (dateTime) OPTIONAL str in query
+
+        goal_code: (goalCode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - ModelUserProgressionResponse (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - IamErrorResponse (20029: not found)
+
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserProgression.create(
+        challenge_code=challenge_code,
+        user_id=user_id,
+        date_time=date_time,
+        goal_code=goal_code,
+        limit=limit,
+        offset=offset,
+        tags=tags,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetUserProgression)
+async def admin_get_user_progression_async(
+    challenge_code: str,
+    user_id: str,
+    date_time: Optional[str] = None,
+    goal_code: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    tags: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List User's Progressions (adminGetUserProgression)
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/progress/{challengeCode}
+
+        method: GET
+
+        tags: ["Challenge Progression"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        date_time: (dateTime) OPTIONAL str in query
+
+        goal_code: (goalCode) OPTIONAL str in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        tags: (tags) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - ModelUserProgressionResponse (OK)
+
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        404: Not Found - IamErrorResponse (20029: not found)
+
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserProgression.create(
+        challenge_code=challenge_code,
+        user_id=user_id,
+        date_time=date_time,
+        goal_code=goal_code,
+        limit=limit,
+        offset=offset,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(
@@ -438,6 +597,8 @@ def public_get_user_progression(
 
         404: Not Found - IamErrorResponse (20029: not found)
 
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
+
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
@@ -509,6 +670,8 @@ async def public_get_user_progression_async(
         403: Forbidden - IamErrorResponse (20013: insufficient permission)
 
         404: Not Found - IamErrorResponse (20029: not found)
+
+        422: Unprocessable Entity - ResponseError (99004: unprocessable entity: {{message}})
 
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """

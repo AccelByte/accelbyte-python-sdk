@@ -160,7 +160,9 @@ class WSClient:
         headers = self._make_headers(**connect_kwargs)
 
         self._state = WSClientState.CONNECTING
-        self._connection = await self._create_connection(url=url, headers=headers, **connect_kwargs)
+        self._connection = await self._create_connection(
+            url=url, headers=headers, **connect_kwargs
+        )
         self._setup()
         self._state = WSClientState.CONNECTED
 

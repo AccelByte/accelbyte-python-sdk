@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.21.0"
+__version__ = "7.22.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -142,6 +142,12 @@ from .wrappers import public_get_input_validation_by_field_async
 from .wrappers import public_get_input_validations
 from .wrappers import public_get_input_validations_async
 
+# login_allowlist
+from .wrappers import admin_get_login_allowlist_v3
+from .wrappers import admin_get_login_allowlist_v3_async
+from .wrappers import admin_update_login_allowlist_v3
+from .wrappers import admin_update_login_allowlist_v3_async
+
 # o_auth
 from .wrappers import authorization
 from .wrappers import authorization_async
@@ -249,6 +255,14 @@ from .wrappers import admin_get_role_source_v3
 from .wrappers import admin_get_role_source_v3_async
 from .wrappers import admin_update_role_override_config_v3
 from .wrappers import admin_update_role_override_config_v3_async
+
+# profile_update_strategy
+from .wrappers import admin_get_profile_update_strategy_v3
+from .wrappers import admin_get_profile_update_strategy_v3_async
+from .wrappers import admin_update_profile_update_strategy_v3
+from .wrappers import admin_update_profile_update_strategy_v3_async
+from .wrappers import public_get_profile_update_strategy_v3
+from .wrappers import public_get_profile_update_strategy_v3_async
 
 # roles
 from .wrappers import add_role_managers
@@ -639,6 +653,8 @@ from .wrappers import public_get_country_age_restriction_v3
 from .wrappers import public_get_country_age_restriction_v3_async
 from .wrappers import public_get_link_headless_account_to_my_account_conflict_v3
 from .wrappers import public_get_link_headless_account_to_my_account_conflict_v3_async
+from .wrappers import public_get_my_profile_allow_update_status_v3
+from .wrappers import public_get_my_profile_allow_update_status_v3_async
 from .wrappers import public_get_my_user_v3
 from .wrappers import public_get_my_user_v3_async
 from .wrappers import public_get_publisher_user_v3
@@ -793,6 +809,8 @@ from .wrappers import admin_get_namespace_invitation_history_v4
 from .wrappers import admin_get_namespace_invitation_history_v4_async
 from .wrappers import admin_get_namespace_user_invitation_history_v4
 from .wrappers import admin_get_namespace_user_invitation_history_v4_async
+from .wrappers import admin_get_user_mfa_status_v4
+from .wrappers import admin_get_user_mfa_status_v4_async
 from .wrappers import admin_invite_user_new_v4
 from .wrappers import admin_invite_user_new_v4_async
 from .wrappers import admin_invite_user_v4

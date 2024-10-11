@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.9.0"
+__version__ = "1.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,6 +21,8 @@ from .wrappers import admin_delete_challenge
 from .wrappers import admin_delete_challenge_async
 from .wrappers import admin_delete_tied_challenge
 from .wrappers import admin_delete_tied_challenge_async
+from .wrappers import admin_get_active_challenges
+from .wrappers import admin_get_active_challenges_async
 from .wrappers import admin_get_challenge
 from .wrappers import admin_get_challenge_async
 from .wrappers import admin_get_challenges
@@ -31,6 +33,8 @@ from .wrappers import admin_randomize_challenge
 from .wrappers import admin_randomize_challenge_async
 from .wrappers import admin_update_challenge
 from .wrappers import admin_update_challenge_async
+from .wrappers import admin_update_tied_challenge_schedule
+from .wrappers import admin_update_tied_challenge_schedule_async
 
 # challenge_list
 from .wrappers import get_challenges
@@ -41,6 +45,8 @@ from .wrappers import public_get_scheduled_goals_async
 # challenge_progression
 from .wrappers import admin_evaluate_progress
 from .wrappers import admin_evaluate_progress_async
+from .wrappers import admin_get_user_progression
+from .wrappers import admin_get_user_progression_async
 from .wrappers import evaluate_my_progress
 from .wrappers import evaluate_my_progress_async
 from .wrappers import public_get_past_user_progression
@@ -63,12 +69,16 @@ from .wrappers import admin_update_goals_async
 # player_reward
 from .wrappers import admin_claim_user_rewards
 from .wrappers import admin_claim_user_rewards_async
+from .wrappers import admin_claim_user_rewards_by_goal_code
+from .wrappers import admin_claim_user_rewards_by_goal_code_async
 from .wrappers import admin_claim_users_rewards
 from .wrappers import admin_claim_users_rewards_async
 from .wrappers import admin_get_user_rewards
 from .wrappers import admin_get_user_rewards_async
 from .wrappers import public_claim_user_rewards
 from .wrappers import public_claim_user_rewards_async
+from .wrappers import public_claim_user_rewards_by_goal_code
+from .wrappers import public_claim_user_rewards_by_goal_code_async
 from .wrappers import public_get_user_rewards
 from .wrappers import public_get_user_rewards_async
 

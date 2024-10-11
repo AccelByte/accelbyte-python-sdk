@@ -161,6 +161,8 @@ from ._admin_get_config_value_v3 import admin_get_config_value_v3
 from ._admin_get_country_list_v3 import admin_get_country_list_v3
 from ._admin_get_country_blacklist_v3 import admin_get_country_blacklist_v3
 from ._admin_add_country_blacklist_v3 import admin_add_country_blacklist_v3
+from ._admin_get_login_allowlist_v3 import admin_get_login_allowlist_v3
+from ._admin_update_login_allowlist_v3 import admin_update_login_allowlist_v3
 from ._retrieve_all_third_party_login_platform_credential_v3 import (
     retrieve_all_third_party_login_platform_credential_v3,
 )
@@ -200,6 +202,10 @@ from ._admin_list_user_id_by_platform_user_i_ds_v3 import (
     admin_list_user_id_by_platform_user_i_ds_v3,
 )
 from ._admin_get_user_by_platform_user_idv3 import admin_get_user_by_platform_user_idv3
+from ._admin_get_profile_update_strategy_v3 import admin_get_profile_update_strategy_v3
+from ._admin_update_profile_update_strategy_v3 import (
+    admin_update_profile_update_strategy_v3,
+)
 from ._admin_get_role_override_config_v3 import admin_get_role_override_config_v3
 from ._admin_update_role_override_config_v3 import admin_update_role_override_config_v3
 from ._admin_get_role_source_v3 import admin_get_role_source_v3
@@ -358,6 +364,9 @@ from ._public_list_user_id_by_platform_user_i_ds_v3 import (
 from ._public_get_user_by_platform_user_idv3 import (
     public_get_user_by_platform_user_idv3,
 )
+from ._public_get_profile_update_strategy_v3 import (
+    public_get_profile_update_strategy_v3,
+)
 from ._public_get_async_status import public_get_async_status
 from ._public_search_user_v3 import public_search_user_v3
 from ._public_create_user_v3 import public_create_user_v3
@@ -414,6 +423,9 @@ from ._public_get_link_headless_account_to_my_account_conflict_v3 import (
 from ._link_headless_account_to_my_account_v3 import (
     link_headless_account_to_my_account_v3,
 )
+from ._public_get_my_profile_allow_update_status_v3 import (
+    public_get_my_profile_allow_update_status_v3,
+)
 from ._public_send_verification_link_v3 import public_send_verification_link_v3
 from ._public_verify_user_by_link_v3 import public_verify_user_by_link_v3
 from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_handler
@@ -448,6 +460,7 @@ from ._admin_bulk_check_valid_user_idv4 import admin_bulk_check_valid_user_idv4
 from ._admin_update_user_v4 import admin_update_user_v4
 from ._admin_update_user_email_address_v4 import admin_update_user_email_address_v4
 from ._admin_disable_user_mfav4 import admin_disable_user_mfav4
+from ._admin_get_user_mfa_status_v4 import admin_get_user_mfa_status_v4
 from ._admin_list_user_roles_v4 import admin_list_user_roles_v4
 from ._admin_update_user_role_v4 import admin_update_user_role_v4
 from ._admin_add_user_role_v4 import admin_add_user_role_v4
@@ -672,6 +685,8 @@ commands = [
     admin_get_country_list_v3,
     admin_get_country_blacklist_v3,
     admin_add_country_blacklist_v3,
+    admin_get_login_allowlist_v3,
+    admin_update_login_allowlist_v3,
     retrieve_all_third_party_login_platform_credential_v3,
     retrieve_all_active_third_party_login_platform_credential_v3,
     retrieve_all_sso_login_platform_credential_v3,
@@ -687,6 +702,8 @@ commands = [
     update_sso_platform_credential,
     admin_list_user_id_by_platform_user_i_ds_v3,
     admin_get_user_by_platform_user_idv3,
+    admin_get_profile_update_strategy_v3,
+    admin_update_profile_update_strategy_v3,
     admin_get_role_override_config_v3,
     admin_update_role_override_config_v3,
     admin_get_role_source_v3,
@@ -801,6 +818,7 @@ commands = [
     retrieve_active_oidc_clients_public_v3,
     public_list_user_id_by_platform_user_i_ds_v3,
     public_get_user_by_platform_user_idv3,
+    public_get_profile_update_strategy_v3,
     public_get_async_status,
     public_search_user_v3,
     public_create_user_v3,
@@ -845,6 +863,7 @@ commands = [
     public_get_my_user_v3,
     public_get_link_headless_account_to_my_account_conflict_v3,
     link_headless_account_to_my_account_v3,
+    public_get_my_profile_allow_update_status_v3,
     public_send_verification_link_v3,
     public_verify_user_by_link_v3,
     platform_authenticate_samlv3_handler,
@@ -873,6 +892,7 @@ commands = [
     admin_update_user_v4,
     admin_update_user_email_address_v4,
     admin_disable_user_mfav4,
+    admin_get_user_mfa_status_v4,
     admin_list_user_roles_v4,
     admin_update_user_role_v4,
     admin_add_user_role_v4,

@@ -33,6 +33,7 @@ from ..api.iam.models import AccountCreateUserResponseV4
 from ..api.iam.models import AccountUpgradeHeadlessAccountRequestV4
 from ..api.iam.models import AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4
 from ..api.iam.models import AccountUserActiveBanResponseV4
+from ..api.iam.models import AccountUserInfo
 from ..api.iam.models import AccountUserPermissionsResponseV4
 from ..api.iam.models import AccountUserResponseV4
 from ..api.iam.models import AccountcommonAllowedPermission
@@ -75,6 +76,7 @@ from ..api.iam.models import AccountcommonPermissionsV3
 from ..api.iam.models import AccountcommonPlatformAccount
 from ..api.iam.models import AccountcommonPlatformLinkingHistory
 from ..api.iam.models import AccountcommonPlatformUserInformationV3
+from ..api.iam.models import AccountcommonProfileUpdateConfig
 from ..api.iam.models import AccountcommonRegisteredDomain
 from ..api.iam.models import AccountcommonReplaceRolePermission
 from ..api.iam.models import AccountcommonRole
@@ -159,10 +161,12 @@ from ..api.iam.models import ModelDisableUserRequest
 from ..api.iam.models import ModelEmailUpdateRequestV4
 from ..api.iam.models import ModelEnabledFactorsResponseV4
 from ..api.iam.models import ModelFailedBanUnbanUserV3
+from ..api.iam.models import ModelFieldUpdateAllowStatus
 from ..api.iam.models import ModelForgotPasswordRequestV3
 from ..api.iam.models import ModelGetAdminUsersResponse
 from ..api.iam.models import ModelGetBulkUserBansRequest
 from ..api.iam.models import ModelGetLinkHeadlessAccountConflictResponse
+from ..api.iam.models import ModelGetProfileUpdateStrategyConfigResponse
 from ..api.iam.models import ModelGetPublisherUserResponse
 from ..api.iam.models import ModelGetUserBanSummaryV3
 from ..api.iam.models import ModelGetUserBanV3Response
@@ -196,6 +200,8 @@ from ..api.iam.models import ModelListUserInformationResult
 from ..api.iam.models import ModelListUserResponseV3
 from ..api.iam.models import ModelListUserRolesV4Response
 from ..api.iam.models import ModelListValidUserIDResponseV4
+from ..api.iam.models import ModelLoginAllowlistRequest
+from ..api.iam.models import ModelLoginAllowlistResponse
 from ..api.iam.models import ModelLoginHistoriesResponse
 from ..api.iam.models import ModelNamespaceInvitationHistoryUserV4Response
 from ..api.iam.models import ModelNamespaceRoleRequest
@@ -254,11 +260,13 @@ from ..api.iam.models import ModelSendRegisterVerificationCodeRequest
 from ..api.iam.models import ModelSendVerificationCodeRequest
 from ..api.iam.models import ModelSendVerificationCodeRequestV3
 from ..api.iam.models import ModelSendVerificationLinkRequest
+from ..api.iam.models import ModelSimpleProfileUpdateStrategyConfigs
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialRequest
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialResponse
 from ..api.iam.models import ModelTokenThirdPartyLinkStatusResponse
 from ..api.iam.models import ModelUnlinkUserPlatformRequest
 from ..api.iam.models import ModelUpdatePermissionScheduleRequest
+from ..api.iam.models import ModelUpdateProfileUpdateStrategyConfigRequest
 from ..api.iam.models import ModelUpdateUserDeletionStatusRequest
 from ..api.iam.models import ModelUpdateUserStatusRequest
 from ..api.iam.models import ModelUpgradeHeadlessAccountRequest
@@ -296,6 +304,7 @@ from ..api.iam.models import ModelUserPlatformInfos
 from ..api.iam.models import ModelUserPlatformLinkHistories
 from ..api.iam.models import ModelUserPlatformLinkHistory
 from ..api.iam.models import ModelUserPlatformMetadata
+from ..api.iam.models import ModelUserProfileUpdateAllowStatus
 from ..api.iam.models import ModelUserPublicInfoResponseV4
 from ..api.iam.models import ModelUserResponse
 from ..api.iam.models import ModelUserResponseV3
@@ -381,6 +390,7 @@ def create_account_create_test_users_request_v4_example() -> (
 ):
     instance = AccountCreateTestUsersRequestV4()
     instance.count = randomize("int", min_val=1, max_val=1000)
+    instance.user_info = create_account_user_info_example()
     return instance
 
 
@@ -457,6 +467,12 @@ def create_account_user_active_ban_response_v4_example() -> (
     instance.ban = randomize()
     instance.ban_id = randomize()
     instance.end_date = randomize("date")
+    return instance
+
+
+def create_account_user_info_example() -> AccountUserInfo:
+    instance = AccountUserInfo()
+    instance.country = randomize("country")
     return instance
 
 
@@ -843,6 +859,14 @@ def create_accountcommon_platform_user_information_v3_example() -> (
     instance.display_name = randomize("slug")
     instance.email_address = randomize("email")
     instance.xbox_user_id = randomize()
+    return instance
+
+
+def create_accountcommon_profile_update_config_example() -> (
+    AccountcommonProfileUpdateConfig
+):
+    instance = AccountcommonProfileUpdateConfig()
+    instance.minimum_allowed_interval = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1631,6 +1655,7 @@ def create_model_devices_response_v4_example() -> ModelDevicesResponseV4:
 
 def create_model_disable_mfa_request_example() -> ModelDisableMFARequest:
     instance = ModelDisableMFARequest()
+    instance.factor = randomize()
     instance.mfa_token = randomize()
     return instance
 
@@ -1652,6 +1677,7 @@ def create_model_enabled_factors_response_v4_example() -> ModelEnabledFactorsRes
     instance = ModelEnabledFactorsResponseV4()
     instance.default = randomize()
     instance.enabled = [randomize()]
+    instance.remaining_backup_code_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1659,6 +1685,15 @@ def create_model_failed_ban_unban_user_v3_example() -> ModelFailedBanUnbanUserV3
     instance = ModelFailedBanUnbanUserV3()
     instance.reason = randomize()
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_model_field_update_allow_status_example() -> ModelFieldUpdateAllowStatus:
+    instance = ModelFieldUpdateAllowStatus()
+    instance.field = randomize()
+    instance.type_ = randomize()
+    instance.next_available_edit_time = randomize("int", min_val=1, max_val=1000)
+    instance.remaining_time_in_seconds = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -1691,6 +1726,14 @@ def create_model_get_link_headless_account_conflict_response_example() -> (
     instance.platform_link_conflict = randomize("bool")
     instance.current_account = create_model_account_progression_info_example()
     instance.headless_account = create_model_account_progression_info_example()
+    return instance
+
+
+def create_model_get_profile_update_strategy_config_response_example() -> (
+    ModelGetProfileUpdateStrategyConfigResponse
+):
+    instance = ModelGetProfileUpdateStrategyConfigResponse()
+    instance.data = [create_model_simple_profile_update_strategy_configs_example()]
     return instance
 
 
@@ -1997,6 +2040,21 @@ def create_model_list_valid_user_id_response_v4_example() -> (
 ):
     instance = ModelListValidUserIDResponseV4()
     instance.data = [create_model_valid_user_id_response_v4_example()]
+    return instance
+
+
+def create_model_login_allowlist_request_example() -> ModelLoginAllowlistRequest:
+    instance = ModelLoginAllowlistRequest()
+    instance.active = randomize("bool")
+    instance.role_ids = [randomize()]
+    return instance
+
+
+def create_model_login_allowlist_response_example() -> ModelLoginAllowlistResponse:
+    instance = ModelLoginAllowlistResponse()
+    instance.active = randomize("bool")
+    instance.namespace = randomize("slug")
+    instance.role_ids = [randomize()]
     return instance
 
 
@@ -2514,6 +2572,18 @@ def create_model_send_verification_link_request_example() -> (
     return instance
 
 
+def create_model_simple_profile_update_strategy_configs_example() -> (
+    ModelSimpleProfileUpdateStrategyConfigs
+):
+    instance = ModelSimpleProfileUpdateStrategyConfigs()
+    instance.created_at = randomize("date")
+    instance.field = randomize()
+    instance.type_ = randomize()
+    instance.updated_at = randomize("date")
+    instance.config = create_accountcommon_profile_update_config_example()
+    return instance
+
+
 def create_model_sso_platform_credential_request_example() -> (
     ModelSSOPlatformCredentialRequest
 ):
@@ -2648,6 +2718,15 @@ def create_model_update_permission_schedule_request_example() -> (
     instance.sched_action = randomize("int", min_val=1, max_val=1000)
     instance.sched_cron = randomize()
     instance.sched_range = [randomize()]
+    return instance
+
+
+def create_model_update_profile_update_strategy_config_request_example() -> (
+    ModelUpdateProfileUpdateStrategyConfigRequest
+):
+    instance = ModelUpdateProfileUpdateStrategyConfigRequest()
+    instance.config = create_accountcommon_profile_update_config_example()
+    instance.type_ = randomize()
     return instance
 
 
@@ -3045,6 +3124,14 @@ def create_model_user_platform_metadata_example() -> ModelUserPlatformMetadata:
     return instance
 
 
+def create_model_user_profile_update_allow_status_example() -> (
+    ModelUserProfileUpdateAllowStatus
+):
+    instance = ModelUserProfileUpdateAllowStatus()
+    instance.status = [create_model_field_update_allow_status_example()]
+    return instance
+
+
 def create_model_user_public_info_response_v4_example() -> (
     ModelUserPublicInfoResponseV4
 ):
@@ -3358,6 +3445,7 @@ def create_oauthmodel_error_response_example() -> OauthmodelErrorResponse:
     instance.message_variables = {randomize(): randomize()}
     instance.mfa_token = randomize()
     instance.platform_id = randomize()
+    instance.remaining_backup_code_count = randomize("int", min_val=1, max_val=1000)
     instance.user_ban = create_oauthmodel_user_ban_example()
     return instance
 

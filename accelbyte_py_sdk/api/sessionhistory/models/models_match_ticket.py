@@ -43,6 +43,8 @@ class ModelsMatchTicket(Model):
 
         match_pool: (MatchPool) OPTIONAL str
 
+        matched_at: (MatchedAt) OPTIONAL str
+
         namespace: (Namespace) OPTIONAL str
 
         party_session_id: (PartySessionID) OPTIONAL str
@@ -66,6 +68,7 @@ class ModelsMatchTicket(Model):
     is_pivot: bool  # OPTIONAL
     latencies: Dict[str, int]  # OPTIONAL
     match_pool: str  # OPTIONAL
+    matched_at: str  # OPTIONAL
     namespace: str  # OPTIONAL
     party_session_id: str  # OPTIONAL
     players: List[ModelsPlayerData]  # OPTIONAL
@@ -93,6 +96,10 @@ class ModelsMatchTicket(Model):
 
     def with_match_pool(self, value: str) -> ModelsMatchTicket:
         self.match_pool = value
+        return self
+
+    def with_matched_at(self, value: str) -> ModelsMatchTicket:
+        self.matched_at = value
         return self
 
     def with_namespace(self, value: str) -> ModelsMatchTicket:
@@ -153,6 +160,10 @@ class ModelsMatchTicket(Model):
             result["MatchPool"] = str(self.match_pool)
         elif include_empty:
             result["MatchPool"] = ""
+        if hasattr(self, "matched_at"):
+            result["MatchedAt"] = str(self.matched_at)
+        elif include_empty:
+            result["MatchedAt"] = ""
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
@@ -204,6 +215,7 @@ class ModelsMatchTicket(Model):
         is_pivot: Optional[bool] = None,
         latencies: Optional[Dict[str, int]] = None,
         match_pool: Optional[str] = None,
+        matched_at: Optional[str] = None,
         namespace: Optional[str] = None,
         party_session_id: Optional[str] = None,
         players: Optional[List[ModelsPlayerData]] = None,
@@ -223,6 +235,8 @@ class ModelsMatchTicket(Model):
             instance.latencies = latencies
         if match_pool is not None:
             instance.match_pool = match_pool
+        if matched_at is not None:
+            instance.matched_at = matched_at
         if namespace is not None:
             instance.namespace = namespace
         if party_session_id is not None:
@@ -266,6 +280,10 @@ class ModelsMatchTicket(Model):
             instance.match_pool = str(dict_["MatchPool"])
         elif include_empty:
             instance.match_pool = ""
+        if "MatchedAt" in dict_ and dict_["MatchedAt"] is not None:
+            instance.matched_at = str(dict_["MatchedAt"])
+        elif include_empty:
+            instance.matched_at = ""
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
@@ -350,6 +368,7 @@ class ModelsMatchTicket(Model):
             "IsPivot": "is_pivot",
             "Latencies": "latencies",
             "MatchPool": "match_pool",
+            "MatchedAt": "matched_at",
             "Namespace": "namespace",
             "PartySessionID": "party_session_id",
             "Players": "players",
@@ -367,6 +386,7 @@ class ModelsMatchTicket(Model):
             "IsPivot": False,
             "Latencies": False,
             "MatchPool": False,
+            "MatchedAt": False,
             "Namespace": False,
             "PartySessionID": False,
             "Players": False,

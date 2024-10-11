@@ -567,6 +567,7 @@ def create_apimodels_x_ray_ticket_matches_result_example() -> (
     instance.is_pivot = randomize("bool")
     instance.latencies = {}
     instance.match_pool = randomize()
+    instance.matched_at = randomize("date")
     instance.namespace = randomize("slug")
     instance.party_session_id = randomize()
     instance.players = [create_models_player_data_example()]
@@ -587,9 +588,9 @@ def create_apimodels_x_ray_ticket_observability_request_example() -> (
     instance.is_backfill_match = randomize("bool")
     instance.is_rule_set_flexed = randomize("bool")
     instance.namespace = randomize("slug")
-    instance.party_id = randomize("uid")
     instance.session_tick_id = randomize()
     instance.tick_id = randomize("int", min_val=1, max_val=1000)
+    instance.ticket_id = randomize()
     instance.timestamp = randomize("date")
     instance.active_alliance_rule = create_models_alliance_rule_example()
     instance.active_matching_rule = [create_models_matching_rule_example()]
@@ -778,6 +779,7 @@ def create_models_match_ticket_example() -> ModelsMatchTicket:
     instance.is_pivot = randomize("bool")
     instance.latencies = {}
     instance.match_pool = randomize()
+    instance.matched_at = randomize("date")
     instance.namespace = randomize("slug")
     instance.party_session_id = randomize()
     instance.players = [create_models_player_data_example()]
@@ -939,6 +941,7 @@ def create_models_ticket_example() -> ModelsTicket:
     instance.created_at = randomize("date")
     instance.latencies = {}
     instance.match_pool = randomize()
+    instance.matched_at = randomize("date")
     instance.namespace = randomize("slug")
     instance.party_session_id = randomize()
     instance.players = [create_models_player_data_example()]

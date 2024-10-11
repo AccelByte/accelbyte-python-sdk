@@ -28,9 +28,25 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ApiFleetServersResponse
 from ...models import ResponseErrorResponse
+
+
+class SortDirectionEnum(StrEnum):
+    ASC = "asc"
+    DESC = "desc"
+
+
+class StatusEnum(StrEnum):
+    CLAIMED = "claimed"
+    CLAIMING = "claiming"
+    CRASH_BACKOFF = "crash backoff"
+    CREATING = "creating"
+    DRAINING = "draining"
+    READY = "ready"
+    UNRESPONSIVE = "unresponsive"
 
 
 class FleetServers(Operation):
@@ -55,9 +71,19 @@ class FleetServers(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        count: (count) OPTIONAL str in query
+        count: (count) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        region: (region) OPTIONAL str in query
+
+        server_id: (serverId) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
+
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
     Responses:
         200: OK - ApiFleetServersResponse (success)
@@ -84,8 +110,13 @@ class FleetServers(Operation):
 
     fleet_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
-    count: str  # OPTIONAL in [query]
+    count: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    region: str  # OPTIONAL in [query]
+    server_id: str  # OPTIONAL in [query]
+    sort_by: str  # OPTIONAL in [query]
+    sort_direction: Union[str, SortDirectionEnum]  # OPTIONAL in [query]
+    status: Union[str, StatusEnum]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -143,6 +174,16 @@ class FleetServers(Operation):
             result["count"] = self.count
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "region"):
+            result["region"] = self.region
+        if hasattr(self, "server_id"):
+            result["serverId"] = self.server_id
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
+        if hasattr(self, "sort_direction"):
+            result["sortDirection"] = self.sort_direction
+        if hasattr(self, "status"):
+            result["status"] = self.status
         return result
 
     # endregion get_x_params methods
@@ -161,12 +202,32 @@ class FleetServers(Operation):
         self.namespace = value
         return self
 
-    def with_count(self, value: str) -> FleetServers:
+    def with_count(self, value: int) -> FleetServers:
         self.count = value
         return self
 
     def with_offset(self, value: int) -> FleetServers:
         self.offset = value
+        return self
+
+    def with_region(self, value: str) -> FleetServers:
+        self.region = value
+        return self
+
+    def with_server_id(self, value: str) -> FleetServers:
+        self.server_id = value
+        return self
+
+    def with_sort_by(self, value: str) -> FleetServers:
+        self.sort_by = value
+        return self
+
+    def with_sort_direction(self, value: Union[str, SortDirectionEnum]) -> FleetServers:
+        self.sort_direction = value
+        return self
+
+    def with_status(self, value: Union[str, StatusEnum]) -> FleetServers:
+        self.status = value
         return self
 
     # endregion with_x methods
@@ -184,13 +245,33 @@ class FleetServers(Operation):
         elif include_empty:
             result["namespace"] = ""
         if hasattr(self, "count") and self.count:
-            result["count"] = str(self.count)
+            result["count"] = int(self.count)
         elif include_empty:
-            result["count"] = ""
+            result["count"] = 0
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = ""
+        if hasattr(self, "server_id") and self.server_id:
+            result["serverId"] = str(self.server_id)
+        elif include_empty:
+            result["serverId"] = ""
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = ""
+        if hasattr(self, "sort_direction") and self.sort_direction:
+            result["sortDirection"] = str(self.sort_direction)
+        elif include_empty:
+            result["sortDirection"] = Union[str, SortDirectionEnum]()
+        if hasattr(self, "status") and self.status:
+            result["status"] = str(self.status)
+        elif include_empty:
+            result["status"] = Union[str, StatusEnum]()
         return result
 
     # endregion to methods
@@ -257,8 +338,13 @@ class FleetServers(Operation):
         cls,
         fleet_id: str,
         namespace: str,
-        count: Optional[str] = None,
+        count: Optional[int] = None,
         offset: Optional[int] = None,
+        region: Optional[str] = None,
+        server_id: Optional[str] = None,
+        sort_by: Optional[str] = None,
+        sort_direction: Optional[Union[str, SortDirectionEnum]] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
         **kwargs,
     ) -> FleetServers:
         instance = cls()
@@ -268,6 +354,16 @@ class FleetServers(Operation):
             instance.count = count
         if offset is not None:
             instance.offset = offset
+        if region is not None:
+            instance.region = region
+        if server_id is not None:
+            instance.server_id = server_id
+        if sort_by is not None:
+            instance.sort_by = sort_by
+        if sort_direction is not None:
+            instance.sort_direction = sort_direction
+        if status is not None:
+            instance.status = status
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -284,13 +380,33 @@ class FleetServers(Operation):
         elif include_empty:
             instance.namespace = ""
         if "count" in dict_ and dict_["count"] is not None:
-            instance.count = str(dict_["count"])
+            instance.count = int(dict_["count"])
         elif include_empty:
-            instance.count = ""
+            instance.count = 0
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = ""
+        if "serverId" in dict_ and dict_["serverId"] is not None:
+            instance.server_id = str(dict_["serverId"])
+        elif include_empty:
+            instance.server_id = ""
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = ""
+        if "sortDirection" in dict_ and dict_["sortDirection"] is not None:
+            instance.sort_direction = str(dict_["sortDirection"])
+        elif include_empty:
+            instance.sort_direction = Union[str, SortDirectionEnum]()
+        if "status" in dict_ and dict_["status"] is not None:
+            instance.status = str(dict_["status"])
+        elif include_empty:
+            instance.status = Union[str, StatusEnum]()
         return instance
 
     @staticmethod
@@ -300,6 +416,11 @@ class FleetServers(Operation):
             "namespace": "namespace",
             "count": "count",
             "offset": "offset",
+            "region": "region",
+            "serverId": "server_id",
+            "sortBy": "sort_by",
+            "sortDirection": "sort_direction",
+            "status": "status",
         }
 
     @staticmethod
@@ -309,6 +430,26 @@ class FleetServers(Operation):
             "namespace": True,
             "count": False,
             "offset": False,
+            "region": False,
+            "serverId": False,
+            "sortBy": False,
+            "sortDirection": False,
+            "status": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortDirection": ["asc", "desc"],  # in query
+            "status": [
+                "claimed",
+                "claiming",
+                "crash backoff",
+                "creating",
+                "draining",
+                "ready",
+                "unresponsive",
+            ],  # in query
         }
 
     # endregion static methods

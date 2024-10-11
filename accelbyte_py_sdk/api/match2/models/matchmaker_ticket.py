@@ -37,6 +37,8 @@ class MatchmakerTicket(Model):
     Properties:
         created_at: (CreatedAt) REQUIRED str
 
+        excluded_sessions: (ExcludedSessions) REQUIRED List[str]
+
         is_active: (IsActive) REQUIRED bool
 
         is_pivot: (IsPivot) REQUIRED bool
@@ -46,6 +48,8 @@ class MatchmakerTicket(Model):
         latencies: (Latencies) REQUIRED Dict[str, int]
 
         match_pool: (MatchPool) REQUIRED str
+
+        matched_at: (MatchedAt) REQUIRED str
 
         namespace: (Namespace) REQUIRED str
 
@@ -65,11 +69,13 @@ class MatchmakerTicket(Model):
     # region fields
 
     created_at: str  # REQUIRED
+    excluded_sessions: List[str]  # REQUIRED
     is_active: bool  # REQUIRED
     is_pivot: bool  # REQUIRED
     is_single_play: bool  # REQUIRED
     latencies: Dict[str, int]  # REQUIRED
     match_pool: str  # REQUIRED
+    matched_at: str  # REQUIRED
     namespace: str  # REQUIRED
     party_session_id: str  # REQUIRED
     players: List[PlayerPlayerData]  # REQUIRED
@@ -84,6 +90,10 @@ class MatchmakerTicket(Model):
 
     def with_created_at(self, value: str) -> MatchmakerTicket:
         self.created_at = value
+        return self
+
+    def with_excluded_sessions(self, value: List[str]) -> MatchmakerTicket:
+        self.excluded_sessions = value
         return self
 
     def with_is_active(self, value: bool) -> MatchmakerTicket:
@@ -104,6 +114,10 @@ class MatchmakerTicket(Model):
 
     def with_match_pool(self, value: str) -> MatchmakerTicket:
         self.match_pool = value
+        return self
+
+    def with_matched_at(self, value: str) -> MatchmakerTicket:
+        self.matched_at = value
         return self
 
     def with_namespace(self, value: str) -> MatchmakerTicket:
@@ -146,6 +160,10 @@ class MatchmakerTicket(Model):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
             result["CreatedAt"] = ""
+        if hasattr(self, "excluded_sessions"):
+            result["ExcludedSessions"] = [str(i0) for i0 in self.excluded_sessions]
+        elif include_empty:
+            result["ExcludedSessions"] = []
         if hasattr(self, "is_active"):
             result["IsActive"] = bool(self.is_active)
         elif include_empty:
@@ -168,6 +186,10 @@ class MatchmakerTicket(Model):
             result["MatchPool"] = str(self.match_pool)
         elif include_empty:
             result["MatchPool"] = ""
+        if hasattr(self, "matched_at"):
+            result["MatchedAt"] = str(self.matched_at)
+        elif include_empty:
+            result["MatchedAt"] = ""
         if hasattr(self, "namespace"):
             result["Namespace"] = str(self.namespace)
         elif include_empty:
@@ -214,11 +236,13 @@ class MatchmakerTicket(Model):
     def create(
         cls,
         created_at: str,
+        excluded_sessions: List[str],
         is_active: bool,
         is_pivot: bool,
         is_single_play: bool,
         latencies: Dict[str, int],
         match_pool: str,
+        matched_at: str,
         namespace: str,
         party_session_id: str,
         players: List[PlayerPlayerData],
@@ -230,11 +254,13 @@ class MatchmakerTicket(Model):
     ) -> MatchmakerTicket:
         instance = cls()
         instance.created_at = created_at
+        instance.excluded_sessions = excluded_sessions
         instance.is_active = is_active
         instance.is_pivot = is_pivot
         instance.is_single_play = is_single_play
         instance.latencies = latencies
         instance.match_pool = match_pool
+        instance.matched_at = matched_at
         instance.namespace = namespace
         instance.party_session_id = party_session_id
         instance.players = players
@@ -255,6 +281,10 @@ class MatchmakerTicket(Model):
             instance.created_at = str(dict_["CreatedAt"])
         elif include_empty:
             instance.created_at = ""
+        if "ExcludedSessions" in dict_ and dict_["ExcludedSessions"] is not None:
+            instance.excluded_sessions = [str(i0) for i0 in dict_["ExcludedSessions"]]
+        elif include_empty:
+            instance.excluded_sessions = []
         if "IsActive" in dict_ and dict_["IsActive"] is not None:
             instance.is_active = bool(dict_["IsActive"])
         elif include_empty:
@@ -277,6 +307,10 @@ class MatchmakerTicket(Model):
             instance.match_pool = str(dict_["MatchPool"])
         elif include_empty:
             instance.match_pool = ""
+        if "MatchedAt" in dict_ and dict_["MatchedAt"] is not None:
+            instance.matched_at = str(dict_["MatchedAt"])
+        elif include_empty:
+            instance.matched_at = ""
         if "Namespace" in dict_ and dict_["Namespace"] is not None:
             instance.namespace = str(dict_["Namespace"])
         elif include_empty:
@@ -354,11 +388,13 @@ class MatchmakerTicket(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "CreatedAt": "created_at",
+            "ExcludedSessions": "excluded_sessions",
             "IsActive": "is_active",
             "IsPivot": "is_pivot",
             "IsSinglePlay": "is_single_play",
             "Latencies": "latencies",
             "MatchPool": "match_pool",
+            "MatchedAt": "matched_at",
             "Namespace": "namespace",
             "PartySessionID": "party_session_id",
             "Players": "players",
@@ -372,11 +408,13 @@ class MatchmakerTicket(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "CreatedAt": True,
+            "ExcludedSessions": True,
             "IsActive": True,
             "IsPivot": True,
             "IsSinglePlay": True,
             "Latencies": True,
             "MatchPool": True,
+            "MatchedAt": True,
             "Namespace": True,
             "PartySessionID": True,
             "Players": True,

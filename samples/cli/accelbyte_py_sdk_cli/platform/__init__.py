@@ -69,8 +69,8 @@ from ._delete_dlc_item_config import delete_dlc_item_config
 from ._get_platform_dlc_config import get_platform_dlc_config
 from ._update_platform_dlc_config import update_platform_dlc_config
 from ._delete_platform_dlc_config import delete_platform_dlc_config
-from ._query_entitlements import query_entitlements
 from ._query_entitlements_1 import query_entitlements_1
+from ._query_entitlements import query_entitlements
 from ._enable_entitlement_origin_feature import enable_entitlement_origin_feature
 from ._get_entitlement_config_info import get_entitlement_config_info
 from ._grant_entitlements import grant_entitlements
@@ -82,6 +82,7 @@ from ._mock_play_station_stream_event import mock_play_station_stream_event
 from ._get_apple_iap_config import get_apple_iap_config
 from ._update_apple_iap_config import update_apple_iap_config
 from ._delete_apple_iap_config import delete_apple_iap_config
+from ._update_apple_p8_file import update_apple_p8_file
 from ._get_epic_games_iap_config import get_epic_games_iap_config
 from ._update_epic_games_iap_config import update_epic_games_iap_config
 from ._delete_epic_games_iap_config import delete_epic_games_iap_config
@@ -112,6 +113,8 @@ from ._get_xbl_iap_config import get_xbl_iap_config
 from ._update_xbl_iap_config import update_xbl_iap_config
 from ._delete_xbl_ap_config import delete_xbl_ap_config
 from ._update_xbl_bp_cert_file import update_xbl_bp_cert_file
+from ._query_third_party_notifications import query_third_party_notifications
+from ._query_third_party_subscription import query_third_party_subscription
 from ._download_invoice_details import download_invoice_details
 from ._generate_invoice_summary import generate_invoice_summary
 from ._sync_in_game_item import sync_in_game_item
@@ -299,6 +302,23 @@ from ._query_user_iap_orders import query_user_iap_orders
 from ._query_all_user_iap_orders import query_all_user_iap_orders
 from ._query_user_iap_consume_history import query_user_iap_consume_history
 from ._mock_fulfill_iap_item import mock_fulfill_iap_item
+from ._query_user_third_party_subscription import query_user_third_party_subscription
+from ._get_third_party_platform_subscription_ownership_by_group_id import (
+    get_third_party_platform_subscription_ownership_by_group_id,
+)
+from ._get_third_party_platform_subscription_ownership_by_product_id import (
+    get_third_party_platform_subscription_ownership_by_product_id,
+)
+from ._query_user_third_party_subscription_transactions import (
+    query_user_third_party_subscription_transactions,
+)
+from ._get_third_party_subscription_details import get_third_party_subscription_details
+from ._get_subscription_history import get_subscription_history
+from ._sync_subscription_transaction import sync_subscription_transaction
+from ._get_third_party_user_subscription_details import (
+    get_third_party_user_subscription_details,
+)
+from ._sync_subscription import sync_subscription
 from ._query_user_orders import query_user_orders
 from ._admin_create_user_order import admin_create_user_order
 from ._count_of_purchased_item import count_of_purchased_item
@@ -406,6 +426,7 @@ from ._public_get_child_categories import public_get_child_categories
 from ._public_get_descendant_categories import public_get_descendant_categories
 from ._public_list_currencies import public_list_currencies
 from ._ge_dlc_durable_reward_short_map import ge_dlc_durable_reward_short_map
+from ._get_apple_config_version import get_apple_config_version
 from ._get_iap_item_mapping import get_iap_item_mapping
 from ._public_get_item_by_app_id import public_get_item_by_app_id
 from ._public_query_items import public_query_items
@@ -503,6 +524,9 @@ from ._public_reconcile_play_station_store_with_multiple_service_labels import (
     public_reconcile_play_station_store_with_multiple_service_labels,
 )
 from ._sync_steam_inventory import sync_steam_inventory
+from ._public_query_user_third_party_subscription import (
+    public_query_user_third_party_subscription,
+)
 from ._sync_twitch_drops_entitlement_1 import sync_twitch_drops_entitlement_1
 from ._sync_xbox_inventory import sync_xbox_inventory
 from ._public_query_user_orders import public_query_user_orders
@@ -538,7 +562,9 @@ from ._import_store_1 import import_store_1
 from ._export_store_1 import export_store_1
 from ._fulfill_rewards_v2 import fulfill_rewards_v2
 from ._fulfill_items import fulfill_items
+from ._retry_fulfill_items import retry_fulfill_items
 from ._revoke_items import revoke_items
+from ._v2_public_fulfill_apple_iap_item import v2_public_fulfill_apple_iap_item
 
 
 commands = [
@@ -603,8 +629,8 @@ commands = [
     get_platform_dlc_config,
     update_platform_dlc_config,
     delete_platform_dlc_config,
-    query_entitlements,
     query_entitlements_1,
+    query_entitlements,
     enable_entitlement_origin_feature,
     get_entitlement_config_info,
     grant_entitlements,
@@ -616,6 +642,7 @@ commands = [
     get_apple_iap_config,
     update_apple_iap_config,
     delete_apple_iap_config,
+    update_apple_p8_file,
     get_epic_games_iap_config,
     update_epic_games_iap_config,
     delete_epic_games_iap_config,
@@ -644,6 +671,8 @@ commands = [
     update_xbl_iap_config,
     delete_xbl_ap_config,
     update_xbl_bp_cert_file,
+    query_third_party_notifications,
+    query_third_party_subscription,
     download_invoice_details,
     generate_invoice_summary,
     sync_in_game_item,
@@ -815,6 +844,15 @@ commands = [
     query_all_user_iap_orders,
     query_user_iap_consume_history,
     mock_fulfill_iap_item,
+    query_user_third_party_subscription,
+    get_third_party_platform_subscription_ownership_by_group_id,
+    get_third_party_platform_subscription_ownership_by_product_id,
+    query_user_third_party_subscription_transactions,
+    get_third_party_subscription_details,
+    get_subscription_history,
+    sync_subscription_transaction,
+    get_third_party_user_subscription_details,
+    sync_subscription,
     query_user_orders,
     admin_create_user_order,
     count_of_purchased_item,
@@ -910,6 +948,7 @@ commands = [
     public_get_descendant_categories,
     public_list_currencies,
     ge_dlc_durable_reward_short_map,
+    get_apple_config_version,
     get_iap_item_mapping,
     public_get_item_by_app_id,
     public_query_items,
@@ -973,6 +1012,7 @@ commands = [
     public_reconcile_play_station_store,
     public_reconcile_play_station_store_with_multiple_service_labels,
     sync_steam_inventory,
+    public_query_user_third_party_subscription,
     sync_twitch_drops_entitlement_1,
     sync_xbox_inventory,
     public_query_user_orders,
@@ -1002,5 +1042,7 @@ commands = [
     export_store_1,
     fulfill_rewards_v2,
     fulfill_items,
+    retry_fulfill_items,
     revoke_items,
+    v2_public_fulfill_apple_iap_item,
 ]

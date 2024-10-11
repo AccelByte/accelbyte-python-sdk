@@ -30,7 +30,7 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 from .....core import StrEnum
 
-from ...models import FulfillmentHistoryPagingSlicedResult
+from ...models import FulfillmentPagingSlicedResult
 
 
 class StateEnum(StrEnum):
@@ -46,7 +46,9 @@ class QueryFulfillments(Operation):
     [Not supported yet in AGS Shared Cloud] Query fulfillments in a namespace.
     Other detail info:
 
-      * Returns : list of fulfillment info, storeId field can be ignored.
+      * Returns : list of fulfillment info:
+        * storeId in items can be ignored
+        * error in successList will always be null
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/fulfillments
@@ -78,7 +80,7 @@ class QueryFulfillments(Operation):
         user_id: (userId) OPTIONAL str in query
 
     Responses:
-        200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
+        200: OK - FulfillmentPagingSlicedResult (successful operation)
     """
 
     # region fields
@@ -252,12 +254,10 @@ class QueryFulfillments(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[
-        Union[None, FulfillmentHistoryPagingSlicedResult], Union[None, HttpResponse]
-    ]:
+    ) -> Tuple[Union[None, FulfillmentPagingSlicedResult], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
+        200: OK - FulfillmentPagingSlicedResult (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -273,7 +273,7 @@ class QueryFulfillments(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return FulfillmentHistoryPagingSlicedResult.create_from_dict(content), None
+            return FulfillmentPagingSlicedResult.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

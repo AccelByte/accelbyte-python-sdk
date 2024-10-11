@@ -27,6 +27,7 @@ from .utils import randomize
 from ..api.challenge.models import IamErrorResponse
 from ..api.challenge.models import IamPermission
 from ..api.challenge.models import ModelChallengeResponse
+from ..api.challenge.models import ModelClaimUserRewardsByGoalCodeRequest
 from ..api.challenge.models import ModelClaimUserRewardsReq
 from ..api.challenge.models import ModelClaimUsersRewardsRequest
 from ..api.challenge.models import ModelClaimUsersRewardsResponse
@@ -54,6 +55,7 @@ from ..api.challenge.models import ModelResetConfig
 from ..api.challenge.models import ModelReward
 from ..api.challenge.models import ModelSchedule
 from ..api.challenge.models import ModelUpdateChallengeRequest
+from ..api.challenge.models import ModelUpdateChallengeScheduleRequest
 from ..api.challenge.models import ModelUpdateGoalRequest
 from ..api.challenge.models import ModelUserProgressionPeriodResponseMeta
 from ..api.challenge.models import ModelUserProgressionResponse
@@ -96,6 +98,14 @@ def create_model_challenge_response_example() -> ModelChallengeResponse:
     instance.end_after = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize()
     instance.repeat_after = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_model_claim_user_rewards_by_goal_code_request_example() -> (
+    ModelClaimUserRewardsByGoalCodeRequest
+):
+    instance = ModelClaimUserRewardsByGoalCodeRequest()
+    instance.goal_code = randomize()
     return instance
 
 
@@ -361,6 +371,15 @@ def create_model_update_challenge_request_example() -> ModelUpdateChallengeReque
     instance.reset_config = create_model_reset_config_example()
     instance.rotation = randomize()
     instance.start_date = randomize("date")
+    return instance
+
+
+def create_model_update_challenge_schedule_request_example() -> (
+    ModelUpdateChallengeScheduleRequest
+):
+    instance = ModelUpdateChallengeScheduleRequest()
+    instance.action = randomize()
+    instance.end_date = randomize("date")
     return instance
 
 

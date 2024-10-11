@@ -143,12 +143,12 @@ from ..operations.entitlement import PublicTransferUserEntitlement
 from ..operations.entitlement import PublicUserEntitlementHistory
 from ..operations.entitlement import PublicUserEntitlementHistoryEntitlementClazzEnum
 from ..operations.entitlement import QueryEntitlements
-from ..operations.entitlement import (
-    QueryEntitlementsAppTypeEnum,
-    QueryEntitlementsEntitlementClazzEnum,
-    QueryEntitlementsOriginEnum,
-)
 from ..operations.entitlement import QueryEntitlements1
+from ..operations.entitlement import (
+    QueryEntitlements1AppTypeEnum,
+    QueryEntitlements1EntitlementClazzEnum,
+    QueryEntitlements1OriginEnum,
+)
 from ..operations.entitlement import QueryUserEntitlements
 from ..operations.entitlement import (
     QueryUserEntitlementsAppTypeEnum,
@@ -5190,30 +5190,23 @@ async def public_user_entitlement_history_async(
 @same_doc_as(QueryEntitlements)
 def query_entitlements(
     active_only: Optional[bool] = None,
-    app_type: Optional[Union[str, QueryEntitlementsAppTypeEnum]] = None,
-    entitlement_clazz: Optional[
-        Union[str, QueryEntitlementsEntitlementClazzEnum]
-    ] = None,
-    entitlement_name: Optional[str] = None,
-    item_id: Optional[List[str]] = None,
+    item_ids: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    origin: Optional[Union[str, QueryEntitlementsOriginEnum]] = None,
-    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query entitlements (queryEntitlements)
+    """Query entitlements by Item Ids (queryEntitlements)
 
-    Query entitlements.
+    Query entitlements by Item Ids.
 
     Other detail info:
 
       * Returns : entitlement list
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/entitlements
+        url: /platform/admin/namespaces/{namespace}/entitlements/byItemIds
 
         method: GET
 
@@ -5229,21 +5222,11 @@ def query_entitlements(
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
-
-        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
-
-        entitlement_name: (entitlementName) OPTIONAL str in query
-
-        item_id: (itemId) OPTIONAL List[str] in query
+        item_ids: (itemIds) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
-
-        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
-
-        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - EntitlementPagingSlicedResult (successful operation)
@@ -5254,14 +5237,9 @@ def query_entitlements(
             return None, error
     request = QueryEntitlements.create(
         active_only=active_only,
-        app_type=app_type,
-        entitlement_clazz=entitlement_clazz,
-        entitlement_name=entitlement_name,
-        item_id=item_id,
+        item_ids=item_ids,
         limit=limit,
         offset=offset,
-        origin=origin,
-        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -5270,30 +5248,23 @@ def query_entitlements(
 @same_doc_as(QueryEntitlements)
 async def query_entitlements_async(
     active_only: Optional[bool] = None,
-    app_type: Optional[Union[str, QueryEntitlementsAppTypeEnum]] = None,
-    entitlement_clazz: Optional[
-        Union[str, QueryEntitlementsEntitlementClazzEnum]
-    ] = None,
-    entitlement_name: Optional[str] = None,
-    item_id: Optional[List[str]] = None,
+    item_ids: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    origin: Optional[Union[str, QueryEntitlementsOriginEnum]] = None,
-    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query entitlements (queryEntitlements)
+    """Query entitlements by Item Ids (queryEntitlements)
 
-    Query entitlements.
+    Query entitlements by Item Ids.
 
     Other detail info:
 
       * Returns : entitlement list
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/entitlements
+        url: /platform/admin/namespaces/{namespace}/entitlements/byItemIds
 
         method: GET
 
@@ -5309,21 +5280,11 @@ async def query_entitlements_async(
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
-
-        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
-
-        entitlement_name: (entitlementName) OPTIONAL str in query
-
-        item_id: (itemId) OPTIONAL List[str] in query
+        item_ids: (itemIds) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
-
-        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
-
-        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - EntitlementPagingSlicedResult (successful operation)
@@ -5334,14 +5295,9 @@ async def query_entitlements_async(
             return None, error
     request = QueryEntitlements.create(
         active_only=active_only,
-        app_type=app_type,
-        entitlement_clazz=entitlement_clazz,
-        entitlement_name=entitlement_name,
-        item_id=item_id,
+        item_ids=item_ids,
         limit=limit,
         offset=offset,
-        origin=origin,
-        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -5352,23 +5308,30 @@ async def query_entitlements_async(
 @same_doc_as(QueryEntitlements1)
 def query_entitlements_1(
     active_only: Optional[bool] = None,
-    item_ids: Optional[List[str]] = None,
+    app_type: Optional[Union[str, QueryEntitlements1AppTypeEnum]] = None,
+    entitlement_clazz: Optional[
+        Union[str, QueryEntitlements1EntitlementClazzEnum]
+    ] = None,
+    entitlement_name: Optional[str] = None,
+    item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    origin: Optional[Union[str, QueryEntitlements1OriginEnum]] = None,
+    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query entitlements by Item Ids (queryEntitlements_1)
+    """Query entitlements (queryEntitlements_1)
 
-    Query entitlements by Item Ids.
+    Query entitlements.
 
     Other detail info:
 
       * Returns : entitlement list
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/entitlements/byItemIds
+        url: /platform/admin/namespaces/{namespace}/entitlements
 
         method: GET
 
@@ -5384,11 +5347,21 @@ def query_entitlements_1(
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        item_ids: (itemIds) OPTIONAL List[str] in query
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        entitlement_name: (entitlementName) OPTIONAL str in query
+
+        item_id: (itemId) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
+
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - EntitlementPagingSlicedResult (successful operation)
@@ -5399,9 +5372,14 @@ def query_entitlements_1(
             return None, error
     request = QueryEntitlements1.create(
         active_only=active_only,
-        item_ids=item_ids,
+        app_type=app_type,
+        entitlement_clazz=entitlement_clazz,
+        entitlement_name=entitlement_name,
+        item_id=item_id,
         limit=limit,
         offset=offset,
+        origin=origin,
+        user_id=user_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -5410,23 +5388,30 @@ def query_entitlements_1(
 @same_doc_as(QueryEntitlements1)
 async def query_entitlements_1_async(
     active_only: Optional[bool] = None,
-    item_ids: Optional[List[str]] = None,
+    app_type: Optional[Union[str, QueryEntitlements1AppTypeEnum]] = None,
+    entitlement_clazz: Optional[
+        Union[str, QueryEntitlements1EntitlementClazzEnum]
+    ] = None,
+    entitlement_name: Optional[str] = None,
+    item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    origin: Optional[Union[str, QueryEntitlements1OriginEnum]] = None,
+    user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Query entitlements by Item Ids (queryEntitlements_1)
+    """Query entitlements (queryEntitlements_1)
 
-    Query entitlements by Item Ids.
+    Query entitlements.
 
     Other detail info:
 
       * Returns : entitlement list
 
     Properties:
-        url: /platform/admin/namespaces/{namespace}/entitlements/byItemIds
+        url: /platform/admin/namespaces/{namespace}/entitlements
 
         method: GET
 
@@ -5442,11 +5427,21 @@ async def query_entitlements_1_async(
 
         active_only: (activeOnly) OPTIONAL bool in query
 
-        item_ids: (itemIds) OPTIONAL List[str] in query
+        app_type: (appType) OPTIONAL Union[str, AppTypeEnum] in query
+
+        entitlement_clazz: (entitlementClazz) OPTIONAL Union[str, EntitlementClazzEnum] in query
+
+        entitlement_name: (entitlementName) OPTIONAL str in query
+
+        item_id: (itemId) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        origin: (origin) OPTIONAL Union[str, OriginEnum] in query
+
+        user_id: (userId) OPTIONAL str in query
 
     Responses:
         200: OK - EntitlementPagingSlicedResult (successful operation)
@@ -5457,9 +5452,14 @@ async def query_entitlements_1_async(
             return None, error
     request = QueryEntitlements1.create(
         active_only=active_only,
-        item_ids=item_ids,
+        app_type=app_type,
+        entitlement_clazz=entitlement_clazz,
+        entitlement_name=entitlement_name,
+        item_id=item_id,
         limit=limit,
         offset=offset,
+        origin=origin,
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(

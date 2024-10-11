@@ -76,7 +76,7 @@ class UpdateUserV3(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (10213: country is blocked)
+        403: Forbidden - RestErrorResponse (10213: country is blocked | 10235: date of birth not allowed to update | 10236: username not allowed to update | 10237: display name not allowed to update | 10238: country not allowed to update)
 
         409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
@@ -198,7 +198,7 @@ class UpdateUserV3(Operation):
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (10213: country is blocked)
+        403: Forbidden - RestErrorResponse (10213: country is blocked | 10235: date of birth not allowed to update | 10236: username not allowed to update | 10237: display name not allowed to update | 10238: country not allowed to update)
 
         409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 

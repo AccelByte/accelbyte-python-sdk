@@ -42,6 +42,8 @@ class ApiFleetListItemResponse(Model):
 
         image: (image) REQUIRED str
 
+        instance_provider: (instanceProvider) REQUIRED str
+
         is_local: (isLocal) REQUIRED bool
 
         name: (name) REQUIRED str
@@ -57,6 +59,7 @@ class ApiFleetListItemResponse(Model):
     counts: List[ApiFleetRegionalServerCounts]  # REQUIRED
     id_: str  # REQUIRED
     image: str  # REQUIRED
+    instance_provider: str  # REQUIRED
     is_local: bool  # REQUIRED
     name: str  # REQUIRED
     on_demand: bool  # REQUIRED
@@ -82,6 +85,10 @@ class ApiFleetListItemResponse(Model):
 
     def with_image(self, value: str) -> ApiFleetListItemResponse:
         self.image = value
+        return self
+
+    def with_instance_provider(self, value: str) -> ApiFleetListItemResponse:
+        self.instance_provider = value
         return self
 
     def with_is_local(self, value: bool) -> ApiFleetListItemResponse:
@@ -124,6 +131,10 @@ class ApiFleetListItemResponse(Model):
             result["image"] = str(self.image)
         elif include_empty:
             result["image"] = ""
+        if hasattr(self, "instance_provider"):
+            result["instanceProvider"] = str(self.instance_provider)
+        elif include_empty:
+            result["instanceProvider"] = ""
         if hasattr(self, "is_local"):
             result["isLocal"] = bool(self.is_local)
         elif include_empty:
@@ -153,6 +164,7 @@ class ApiFleetListItemResponse(Model):
         counts: List[ApiFleetRegionalServerCounts],
         id_: str,
         image: str,
+        instance_provider: str,
         is_local: bool,
         name: str,
         on_demand: bool,
@@ -164,6 +176,7 @@ class ApiFleetListItemResponse(Model):
         instance.counts = counts
         instance.id_ = id_
         instance.image = image
+        instance.instance_provider = instance_provider
         instance.is_local = is_local
         instance.name = name
         instance.on_demand = on_demand
@@ -198,6 +211,10 @@ class ApiFleetListItemResponse(Model):
             instance.image = str(dict_["image"])
         elif include_empty:
             instance.image = ""
+        if "instanceProvider" in dict_ and dict_["instanceProvider"] is not None:
+            instance.instance_provider = str(dict_["instanceProvider"])
+        elif include_empty:
+            instance.instance_provider = ""
         if "isLocal" in dict_ and dict_["isLocal"] is not None:
             instance.is_local = bool(dict_["isLocal"])
         elif include_empty:
@@ -261,6 +278,7 @@ class ApiFleetListItemResponse(Model):
             "counts": "counts",
             "id": "id_",
             "image": "image",
+            "instanceProvider": "instance_provider",
             "isLocal": "is_local",
             "name": "name",
             "onDemand": "on_demand",
@@ -274,6 +292,7 @@ class ApiFleetListItemResponse(Model):
             "counts": True,
             "id": True,
             "image": True,
+            "instanceProvider": True,
             "isLocal": True,
             "name": True,
             "onDemand": True,

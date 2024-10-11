@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import (
     query_fulfillments as query_fulfillments_internal,
 )
-from accelbyte_py_sdk.api.platform.models import FulfillmentHistoryPagingSlicedResult
+from accelbyte_py_sdk.api.platform.models import FulfillmentPagingSlicedResult
 
 
 @click.command()

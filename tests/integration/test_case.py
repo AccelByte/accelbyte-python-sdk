@@ -393,9 +393,13 @@ class AsyncIntegrationTestCase(ABC, SDKTestCaseUtils, IsolatedAsyncioTestCase):
                 tries += 1
                 if tries == max_tries:
                     raise
-                self.logger.warning(f"failed to connect due to error: ({type(e).__name__}) {e}")
+                self.logger.warning(
+                    f"failed to connect due to error: ({type(e).__name__}) {e}"
+                )
             except asyncio.exceptions.TimeoutError as e:
-                self.skipTest(reason=f"failed to connect due to error: ({type(e).__name__}) {e}")
+                self.skipTest(
+                    reason=f"failed to connect due to error: ({type(e).__name__}) {e}"
+                )
 
     async def disconnect(self):
         if self.ws_client is not None:

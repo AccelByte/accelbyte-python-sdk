@@ -44,7 +44,7 @@ class CreateXrayTicketObservability(Operation):
     1. "matchFound"
     2. "matchNotFound"
     3. "flexed"
-    PartyID : ticket Party ID
+    TicketID : ticket ID
     MatchID : match ID will be filled only when match found
     Namespace : ticket current namespace
     GameMode : ticket current matchpool

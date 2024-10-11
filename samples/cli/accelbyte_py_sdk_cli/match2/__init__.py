@@ -43,6 +43,7 @@ from ._create_rule_set import create_rule_set
 from ._rule_set_details import rule_set_details
 from ._update_rule_set import update_rule_set
 from ._delete_rule_set import delete_rule_set
+from ._public_get_player_metric import public_get_player_metric
 from ._version_check_handler import version_check_handler
 
 
@@ -82,5 +83,6 @@ commands = [
     rule_set_details,
     update_rule_set,
     delete_rule_set,
+    public_get_player_metric,
     version_check_handler,
 ]

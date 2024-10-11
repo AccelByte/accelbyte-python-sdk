@@ -141,7 +141,9 @@ class CloudSaveTestCase(IntegrationTestCase):
 
         # arrange
         _, error = post_player_record_handler_v1(
-            body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+            body=self.models_player_record_request,
+            key=self.post_player_record_handler_key,
+            user_id=self.user_id,
         )
         self.log_warning(
             msg=f"Failed to set up player record handler. {str(error)}",
@@ -149,7 +151,9 @@ class CloudSaveTestCase(IntegrationTestCase):
         )
 
         # act
-        _, error = delete_player_record_handler_v1(key=self.post_player_record_handler_key, user_id=self.user_id)
+        _, error = delete_player_record_handler_v1(
+            key=self.post_player_record_handler_key, user_id=self.user_id
+        )
 
         # assert
         self.assertIsNone(error, error)
@@ -165,7 +169,9 @@ class CloudSaveTestCase(IntegrationTestCase):
 
         # act
         _, error = post_player_record_handler_v1(
-            body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+            body=self.models_player_record_request,
+            key=self.post_player_record_handler_key,
+            user_id=self.user_id,
         )
         self.log_warning(
             msg=f"Failed to set up player record handler. {str(error)}",
@@ -187,7 +193,9 @@ class CloudSaveTestCase(IntegrationTestCase):
 
         # arrange
         _, error = post_player_record_handler_v1(
-            body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+            body=self.models_player_record_request,
+            key=self.post_player_record_handler_key,
+            user_id=self.user_id,
         )
         self.log_warning(
             msg=f"Failed to set up player record handler. {str(error)}",
@@ -195,7 +203,9 @@ class CloudSaveTestCase(IntegrationTestCase):
         )
 
         # act
-        _, error = get_player_record_handler_v1(key=self.post_player_record_handler_key, user_id=self.user_id)
+        _, error = get_player_record_handler_v1(
+            key=self.post_player_record_handler_key, user_id=self.user_id
+        )
 
         # assert
         self.assertIsNone(error, error)
@@ -215,7 +225,9 @@ class CloudSaveTestCase(IntegrationTestCase):
 
         # arrange
         _, error = post_player_record_handler_v1(
-            body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+            body=self.models_player_record_request,
+            key=self.post_player_record_handler_key,
+            user_id=self.user_id,
         )
         self.log_warning(
             msg=f"Failed to set up player record handler. {str(error)}",
@@ -226,7 +238,7 @@ class CloudSaveTestCase(IntegrationTestCase):
         _, error = put_player_record_handler_v1(
             body=ModelsPlayerRecordRequest.create(dict_={"foo": "baz"}),
             key=self.post_player_record_handler_key,
-            user_id = self.user_id,
+            user_id=self.user_id,
         )
 
         # assert

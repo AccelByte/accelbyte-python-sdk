@@ -34,6 +34,8 @@ class ApiDSHostConfiguration(Model):
     Properties:
         instance_id: (instanceId) REQUIRED str
 
+        instance_provider: (instanceProvider) REQUIRED str
+
         instance_type: (instanceType) REQUIRED str
 
         servers_per_vm: (serversPerVm) REQUIRED int
@@ -42,6 +44,7 @@ class ApiDSHostConfiguration(Model):
     # region fields
 
     instance_id: str  # REQUIRED
+    instance_provider: str  # REQUIRED
     instance_type: str  # REQUIRED
     servers_per_vm: int  # REQUIRED
 
@@ -51,6 +54,10 @@ class ApiDSHostConfiguration(Model):
 
     def with_instance_id(self, value: str) -> ApiDSHostConfiguration:
         self.instance_id = value
+        return self
+
+    def with_instance_provider(self, value: str) -> ApiDSHostConfiguration:
+        self.instance_provider = value
         return self
 
     def with_instance_type(self, value: str) -> ApiDSHostConfiguration:
@@ -71,6 +78,10 @@ class ApiDSHostConfiguration(Model):
             result["instanceId"] = str(self.instance_id)
         elif include_empty:
             result["instanceId"] = ""
+        if hasattr(self, "instance_provider"):
+            result["instanceProvider"] = str(self.instance_provider)
+        elif include_empty:
+            result["instanceProvider"] = ""
         if hasattr(self, "instance_type"):
             result["instanceType"] = str(self.instance_type)
         elif include_empty:
@@ -87,10 +98,16 @@ class ApiDSHostConfiguration(Model):
 
     @classmethod
     def create(
-        cls, instance_id: str, instance_type: str, servers_per_vm: int, **kwargs
+        cls,
+        instance_id: str,
+        instance_provider: str,
+        instance_type: str,
+        servers_per_vm: int,
+        **kwargs,
     ) -> ApiDSHostConfiguration:
         instance = cls()
         instance.instance_id = instance_id
+        instance.instance_provider = instance_provider
         instance.instance_type = instance_type
         instance.servers_per_vm = servers_per_vm
         return instance
@@ -106,6 +123,10 @@ class ApiDSHostConfiguration(Model):
             instance.instance_id = str(dict_["instanceId"])
         elif include_empty:
             instance.instance_id = ""
+        if "instanceProvider" in dict_ and dict_["instanceProvider"] is not None:
+            instance.instance_provider = str(dict_["instanceProvider"])
+        elif include_empty:
+            instance.instance_provider = ""
         if "instanceType" in dict_ and dict_["instanceType"] is not None:
             instance.instance_type = str(dict_["instanceType"])
         elif include_empty:
@@ -158,6 +179,7 @@ class ApiDSHostConfiguration(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "instanceId": "instance_id",
+            "instanceProvider": "instance_provider",
             "instanceType": "instance_type",
             "serversPerVm": "servers_per_vm",
         }
@@ -166,6 +188,7 @@ class ApiDSHostConfiguration(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "instanceId": True,
+            "instanceProvider": True,
             "instanceType": True,
             "serversPerVm": True,
         }

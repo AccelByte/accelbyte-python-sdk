@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.21.0"
+__version__ = "7.22.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -39,6 +39,7 @@ from .admin_get_my_mfa_status_v4 import AdminGetMyMFAStatusV4
 from .admin_get_my_own_mfa_status_v4 import AdminGetMyOwnMFAStatusV4
 from .admin_get_namespace_inv_117873 import AdminGetNamespaceInvitationHistoryV4
 from .admin_get_namespace_use_b6aedf import AdminGetNamespaceUserInvitationHistoryV4
+from .admin_get_user_mfa_status_v4 import AdminGetUserMFAStatusV4
 from .admin_invite_user_new_v4 import AdminInviteUserNewV4
 from .admin_invite_user_v4 import AdminInviteUserV4
 from .admin_list_invitation_h_840d46 import AdminListInvitationHistoriesV4

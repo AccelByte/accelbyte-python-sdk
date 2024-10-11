@@ -56,8 +56,6 @@ class RetrieveUserEligibilitiesResponse(Model):
 
         description: (description) OPTIONAL str
 
-        hidden_public: (hiddenPublic) OPTIONAL bool
-
         is_hidden_public: (isHiddenPublic) OPTIONAL bool
 
         policy_versions: (policyVersions) OPTIONAL List[PolicyVersionWithLocalizedVersionObject]
@@ -77,7 +75,6 @@ class RetrieveUserEligibilitiesResponse(Model):
     base_urls: List[str]  # OPTIONAL
     country_group_code: str  # OPTIONAL
     description: str  # OPTIONAL
-    hidden_public: bool  # OPTIONAL
     is_hidden_public: bool  # OPTIONAL
     policy_versions: List[PolicyVersionWithLocalizedVersionObject]  # OPTIONAL
     readable_id: str  # OPTIONAL
@@ -124,10 +121,6 @@ class RetrieveUserEligibilitiesResponse(Model):
 
     def with_description(self, value: str) -> RetrieveUserEligibilitiesResponse:
         self.description = value
-        return self
-
-    def with_hidden_public(self, value: bool) -> RetrieveUserEligibilitiesResponse:
-        self.hidden_public = value
         return self
 
     def with_is_hidden_public(self, value: bool) -> RetrieveUserEligibilitiesResponse:
@@ -190,10 +183,6 @@ class RetrieveUserEligibilitiesResponse(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
-        if hasattr(self, "hidden_public"):
-            result["hiddenPublic"] = bool(self.hidden_public)
-        elif include_empty:
-            result["hiddenPublic"] = False
         if hasattr(self, "is_hidden_public"):
             result["isHiddenPublic"] = bool(self.is_hidden_public)
         elif include_empty:
@@ -227,7 +216,6 @@ class RetrieveUserEligibilitiesResponse(Model):
         base_urls: Optional[List[str]] = None,
         country_group_code: Optional[str] = None,
         description: Optional[str] = None,
-        hidden_public: Optional[bool] = None,
         is_hidden_public: Optional[bool] = None,
         policy_versions: Optional[List[PolicyVersionWithLocalizedVersionObject]] = None,
         readable_id: Optional[str] = None,
@@ -247,8 +235,6 @@ class RetrieveUserEligibilitiesResponse(Model):
             instance.country_group_code = country_group_code
         if description is not None:
             instance.description = description
-        if hidden_public is not None:
-            instance.hidden_public = hidden_public
         if is_hidden_public is not None:
             instance.is_hidden_public = is_hidden_public
         if policy_versions is not None:
@@ -304,10 +290,6 @@ class RetrieveUserEligibilitiesResponse(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
-        if "hiddenPublic" in dict_ and dict_["hiddenPublic"] is not None:
-            instance.hidden_public = bool(dict_["hiddenPublic"])
-        elif include_empty:
-            instance.hidden_public = False
         if "isHiddenPublic" in dict_ and dict_["isHiddenPublic"] is not None:
             instance.is_hidden_public = bool(dict_["isHiddenPublic"])
         elif include_empty:
@@ -378,7 +360,6 @@ class RetrieveUserEligibilitiesResponse(Model):
             "baseUrls": "base_urls",
             "countryGroupCode": "country_group_code",
             "description": "description",
-            "hiddenPublic": "hidden_public",
             "isHiddenPublic": "is_hidden_public",
             "policyVersions": "policy_versions",
             "readableId": "readable_id",
@@ -397,7 +378,6 @@ class RetrieveUserEligibilitiesResponse(Model):
             "baseUrls": False,
             "countryGroupCode": False,
             "description": False,
-            "hiddenPublic": False,
             "isHiddenPublic": False,
             "policyVersions": False,
             "readableId": False,

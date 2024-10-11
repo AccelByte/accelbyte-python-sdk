@@ -90,6 +90,7 @@ from ..operations.users_v4 import AdminGetMyMFAStatusV4
 from ..operations.users_v4 import AdminGetMyOwnMFAStatusV4
 from ..operations.users_v4 import AdminGetNamespaceInvitationHistoryV4
 from ..operations.users_v4 import AdminGetNamespaceUserInvitationHistoryV4
+from ..operations.users_v4 import AdminGetUserMFAStatusV4
 from ..operations.users_v4 import AdminInviteUserNewV4
 from ..operations.users_v4 import AdminInviteUserV4
 from ..operations.users_v4 import AdminListInvitationHistoriesV4
@@ -581,8 +582,10 @@ def admin_create_test_users_v4(
     """[TEST FACILITY ONLY]Create test Users (AdminCreateTestUsersV4)
 
     Create test users and not send verification code email.
-    Enter the number of test users you want to create in the count field.
-    The maximum value of the user count is 100.
+    Note:
+    - count : Enter the number of test users you want to create in the count field. The maximum value of the user count is 100.
+    - userInfo(optional) :
+    - country: you can specify country for the test user. Country use ISO3166-1 alpha-2 two letter, e.g. US
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/test_users
@@ -631,8 +634,10 @@ async def admin_create_test_users_v4_async(
     """[TEST FACILITY ONLY]Create test Users (AdminCreateTestUsersV4)
 
     Create test users and not send verification code email.
-    Enter the number of test users you want to create in the count field.
-    The maximum value of the user count is 100.
+    Note:
+    - count : Enter the number of test users you want to create in the count field. The maximum value of the user count is 100.
+    - userInfo(optional) :
+    - country: you can specify country for the test user. Country use ISO3166-1 alpha-2 two letter, e.g. US
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/test_users
@@ -1109,6 +1114,7 @@ async def admin_disable_my_email_v4_async(
 
 @same_doc_as(AdminDisableUserMFAV4)
 def admin_disable_user_mfav4(
+    body: ModelDisableMFARequest,
     user_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -1116,7 +1122,9 @@ def admin_disable_user_mfav4(
 ):
     """Disable User 2FA (AdminDisableUserMFAV4)
 
-    **This endpoint is used to disable user 2FA.**
+    This endpoint is used to disable user 2FA.
+    -----------
+    **Note**: if the factor is not specified, will disable all 2FA methods.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/mfa/disable
@@ -1125,11 +1133,13 @@ def admin_disable_user_mfav4(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableMFARequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1153,6 +1163,7 @@ def admin_disable_user_mfav4(
         if error:
             return None, error
     request = AdminDisableUserMFAV4.create(
+        body=body,
         user_id=user_id,
         namespace=namespace,
     )
@@ -1161,6 +1172,7 @@ def admin_disable_user_mfav4(
 
 @same_doc_as(AdminDisableUserMFAV4)
 async def admin_disable_user_mfav4_async(
+    body: ModelDisableMFARequest,
     user_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -1168,7 +1180,9 @@ async def admin_disable_user_mfav4_async(
 ):
     """Disable User 2FA (AdminDisableUserMFAV4)
 
-    **This endpoint is used to disable user 2FA.**
+    This endpoint is used to disable user 2FA.
+    -----------
+    **Note**: if the factor is not specified, will disable all 2FA methods.
 
     Properties:
         url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/mfa/disable
@@ -1177,11 +1191,13 @@ async def admin_disable_user_mfav4_async(
 
         tags: ["Users V4"]
 
-        consumes: []
+        consumes: ["application/json"]
 
         produces: ["application/json"]
 
         securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelDisableMFARequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1205,6 +1221,7 @@ async def admin_disable_user_mfav4_async(
         if error:
             return None, error
     request = AdminDisableUserMFAV4.create(
+        body=body,
         user_id=user_id,
         namespace=namespace,
     )
@@ -2536,6 +2553,108 @@ async def admin_get_namespace_user_invitation_history_v4_async(
     request = AdminGetNamespaceUserInvitationHistoryV4.create(
         limit=limit,
         offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetUserMFAStatusV4)
+def admin_get_user_mfa_status_v4(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get User 2FA Status (AdminGetUserMFAStatusV4)
+
+    **This endpoint is used to get user's 2FA status.**
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/mfa/status
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserMFAStatusResponseV4 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserMFAStatusV4.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetUserMFAStatusV4)
+async def admin_get_user_mfa_status_v4_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get User 2FA Status (AdminGetUserMFAStatusV4)
+
+    **This endpoint is used to get user's 2FA status.**
+
+    Properties:
+        url: /iam/v4/admin/namespaces/{namespace}/users/{userId}/mfa/status
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserMFAStatusResponseV4 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10139: platform account not found | 20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserMFAStatusV4.create(
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -6920,7 +7039,7 @@ def public_update_user_v4(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (10213: country is blocked | 10235: date of birth not allowed to update | 10236: username not allowed to update | 10237: display name not allowed to update | 10238: country not allowed to update)
 
         409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 
@@ -6982,7 +7101,7 @@ async def public_update_user_v4_async(
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
-        403: Forbidden - RestErrorResponse (20003: forbidden access)
+        403: Forbidden - RestErrorResponse (10213: country is blocked | 10235: date of birth not allowed to update | 10236: username not allowed to update | 10237: display name not allowed to update | 10238: country not allowed to update)
 
         409: Conflict - RestErrorResponse (10133: email already used | 10222: unique display name already exists)
 

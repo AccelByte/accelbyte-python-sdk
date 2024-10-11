@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "4.56.0"
+__version__ = "5.0.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -307,6 +307,8 @@ from ._fulfillment import query_fulfillments
 from ._fulfillment import query_fulfillments_async
 from ._fulfillment import redeem_code
 from ._fulfillment import redeem_code_async
+from ._fulfillment import retry_fulfill_items
+from ._fulfillment import retry_fulfill_items_async
 from ._fulfillment import revoke_items
 from ._fulfillment import revoke_items_async
 
@@ -339,6 +341,8 @@ from ._iap import delete_twitch_iap_config
 from ._iap import delete_twitch_iap_config_async
 from ._iap import delete_xbl_ap_config
 from ._iap import delete_xbl_ap_config_async
+from ._iap import get_apple_config_version
+from ._iap import get_apple_config_version_async
 from ._iap import get_apple_iap_config
 from ._iap import get_apple_iap_config_async
 from ._iap import get_epic_games_iap_config
@@ -389,6 +393,8 @@ from ._iap import sync_xbox_inventory
 from ._iap import sync_xbox_inventory_async
 from ._iap import update_apple_iap_config
 from ._iap import update_apple_iap_config_async
+from ._iap import update_apple_p8_file
+from ._iap import update_apple_p8_file_async
 from ._iap import update_epic_games_iap_config
 from ._iap import update_epic_games_iap_config_async
 from ._iap import update_google_iap_config
@@ -409,10 +415,46 @@ from ._iap import update_xbl_bp_cert_file
 from ._iap import update_xbl_bp_cert_file_async
 from ._iap import update_xbl_iap_config
 from ._iap import update_xbl_iap_config_async
+from ._iap import v2_public_fulfill_apple_iap_item
+from ._iap import v2_public_fulfill_apple_iap_item_async
 from ._iap import validate_existed_playstation_iap_config
 from ._iap import validate_existed_playstation_iap_config_async
 from ._iap import validate_playstation_iap_config
 from ._iap import validate_playstation_iap_config_async
+
+from ._iap_notification import query_third_party_notifications
+from ._iap_notification import query_third_party_notifications_async
+
+from ._iap_subscription import get_subscription_history
+from ._iap_subscription import get_subscription_history_async
+from ._iap_subscription import (
+    get_third_party_platform_subscription_ownership_by_group_id,
+)
+from ._iap_subscription import (
+    get_third_party_platform_subscription_ownership_by_group_id_async,
+)
+from ._iap_subscription import (
+    get_third_party_platform_subscription_ownership_by_product_id,
+)
+from ._iap_subscription import (
+    get_third_party_platform_subscription_ownership_by_product_id_async,
+)
+from ._iap_subscription import get_third_party_subscription_details
+from ._iap_subscription import get_third_party_subscription_details_async
+from ._iap_subscription import get_third_party_user_subscription_details
+from ._iap_subscription import get_third_party_user_subscription_details_async
+from ._iap_subscription import public_query_user_third_party_subscription
+from ._iap_subscription import public_query_user_third_party_subscription_async
+from ._iap_subscription import query_third_party_subscription
+from ._iap_subscription import query_third_party_subscription_async
+from ._iap_subscription import query_user_third_party_subscription
+from ._iap_subscription import query_user_third_party_subscription_async
+from ._iap_subscription import query_user_third_party_subscription_transactions
+from ._iap_subscription import query_user_third_party_subscription_transactions_async
+from ._iap_subscription import sync_subscription
+from ._iap_subscription import sync_subscription_async
+from ._iap_subscription import sync_subscription_transaction
+from ._iap_subscription import sync_subscription_transaction_async
 
 from ._invoice import download_invoice_details
 from ._invoice import download_invoice_details_async

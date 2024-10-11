@@ -100,7 +100,7 @@ def create_models_admin_concurrent_record_request_example() -> (
 ):
     instance = ModelsAdminConcurrentRecordRequest()
     instance.set_by = randomize()
-    instance.updated_at = randomize()
+    instance.updated_at = randomize("date")
     instance.value = {randomize(): randomize()}
     instance.tags = [randomize()]
     instance.ttl_config = create_models_ttl_config_dto_example()
@@ -111,7 +111,7 @@ def create_models_admin_game_concurrent_record_request_example() -> (
     ModelsAdminGameConcurrentRecordRequest
 ):
     instance = ModelsAdminGameConcurrentRecordRequest()
-    instance.updated_at = randomize()
+    instance.updated_at = randomize("date")
     instance.value = {randomize(): randomize()}
     instance.tags = [randomize()]
     return instance
@@ -137,7 +137,7 @@ def create_models_admin_player_concurrent_record_request_example() -> (
     ModelsAdminPlayerConcurrentRecordRequest
 ):
     instance = ModelsAdminPlayerConcurrentRecordRequest()
-    instance.updated_at = randomize()
+    instance.updated_at = randomize("date")
     instance.value = {randomize(): randomize()}
     instance.tags = [randomize()]
     return instance
@@ -355,7 +355,7 @@ def create_models_bulk_user_key_request_example() -> ModelsBulkUserKeyRequest:
 
 def create_models_concurrent_record_request_example() -> ModelsConcurrentRecordRequest:
     instance = ModelsConcurrentRecordRequest()
-    instance.updated_at = randomize()
+    instance.updated_at = randomize("date")
     instance.value = {randomize(): randomize()}
     return instance
 

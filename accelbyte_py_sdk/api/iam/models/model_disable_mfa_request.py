@@ -32,16 +32,23 @@ class ModelDisableMFARequest(Model):
     """Model disable MFA request (model.DisableMFARequest)
 
     Properties:
+        factor: (factor) OPTIONAL str
+
         mfa_token: (mfaToken) OPTIONAL str
     """
 
     # region fields
 
+    factor: str  # OPTIONAL
     mfa_token: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_factor(self, value: str) -> ModelDisableMFARequest:
+        self.factor = value
+        return self
 
     def with_mfa_token(self, value: str) -> ModelDisableMFARequest:
         self.mfa_token = value
@@ -53,6 +60,10 @@ class ModelDisableMFARequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "factor"):
+            result["factor"] = str(self.factor)
+        elif include_empty:
+            result["factor"] = ""
         if hasattr(self, "mfa_token"):
             result["mfaToken"] = str(self.mfa_token)
         elif include_empty:
@@ -65,9 +76,11 @@ class ModelDisableMFARequest(Model):
 
     @classmethod
     def create(
-        cls, mfa_token: Optional[str] = None, **kwargs
+        cls, factor: Optional[str] = None, mfa_token: Optional[str] = None, **kwargs
     ) -> ModelDisableMFARequest:
         instance = cls()
+        if factor is not None:
+            instance.factor = factor
         if mfa_token is not None:
             instance.mfa_token = mfa_token
         return instance
@@ -79,6 +92,10 @@ class ModelDisableMFARequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "factor" in dict_ and dict_["factor"] is not None:
+            instance.factor = str(dict_["factor"])
+        elif include_empty:
+            instance.factor = ""
         if "mfaToken" in dict_ and dict_["mfaToken"] is not None:
             instance.mfa_token = str(dict_["mfaToken"])
         elif include_empty:
@@ -126,12 +143,14 @@ class ModelDisableMFARequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "factor": "factor",
             "mfaToken": "mfa_token",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "factor": False,
             "mfaToken": False,
         }
 

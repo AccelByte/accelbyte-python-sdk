@@ -36,17 +36,20 @@ from ..models import ModelListChallengeResponse
 from ..models import ModelListPeriodsResponse
 from ..models import ModelSchedule
 from ..models import ModelUpdateChallengeRequest
+from ..models import ModelUpdateChallengeScheduleRequest
 from ..models import ResponseError
 
 from ..operations.challenge_configuration import AdminCreateChallenge
 from ..operations.challenge_configuration import AdminDeleteChallenge
 from ..operations.challenge_configuration import AdminDeleteTiedChallenge
+from ..operations.challenge_configuration import AdminGetActiveChallenges
 from ..operations.challenge_configuration import AdminGetChallenge
 from ..operations.challenge_configuration import AdminGetChallenges
 from ..operations.challenge_configuration import AdminGetChallengesStatusEnum
 from ..operations.challenge_configuration import AdminGetPeriods
 from ..operations.challenge_configuration import AdminRandomizeChallenge
 from ..operations.challenge_configuration import AdminUpdateChallenge
+from ..operations.challenge_configuration import AdminUpdateTiedChallengeSchedule
 from ..models import (
     ModelChallengeResponseAssignmentRuleEnum,
     ModelChallengeResponseGoalsVisibilityEnum,
@@ -63,6 +66,7 @@ from ..models import (
     ModelUpdateChallengeRequestGoalsVisibilityEnum,
     ModelUpdateChallengeRequestRotationEnum,
 )
+from ..models import ModelUpdateChallengeScheduleRequestActionEnum
 
 
 @same_doc_as(AdminCreateChallenge)
@@ -430,6 +434,120 @@ async def admin_delete_tied_challenge_async(
             return None, error
     request = AdminDeleteTiedChallenge.create(
         challenge_code=challenge_code,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetActiveChallenges)
+def admin_get_active_challenges(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List User's Active Challenges (adminGetActiveChallenges)
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/challenges/users/{userId}
+
+        method: GET
+
+        tags: ["Challenge Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelListChallengeResponse (OK)
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetActiveChallenges.create(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetActiveChallenges)
+async def admin_get_active_challenges_async(
+    user_id: str,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """List User's Active Challenges (adminGetActiveChallenges)
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/challenges/users/{userId}
+
+        method: GET
+
+        tags: ["Challenge Configuration"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelListChallengeResponse (OK)
+
+        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - IamErrorResponse (20013: insufficient permission)
+
+        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetActiveChallenges.create(
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1044,6 +1162,138 @@ async def admin_update_challenge_async(
         if error:
             return None, error
     request = AdminUpdateChallenge.create(
+        body=body,
+        challenge_code=challenge_code,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminUpdateTiedChallengeSchedule)
+def admin_update_tied_challenge_schedule(
+    body: ModelUpdateChallengeScheduleRequest,
+    challenge_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Tied Challenge Schedule (adminUpdateTiedChallengeSchedule)
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+
+
+
+    Request body:
+
+      * action: Update the challenge schedule. The available options are:
+        * STOP: Ends the challenge, changing its status to RETIRED. This option supports all types of challenges.
+        * ACCELERATE: Speeds up the challenge's end time. Note that this option does not apply to challenges with an 'endAfter' value.
+      * endDate: The timestamp specifying when the challenge should end (required if the action is ACCELERATE).
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/tied/schedule
+
+        method: PUT
+
+        tags: ["Challenge Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateChallengeScheduleRequest in body
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelChallengeResponse (OK)
+
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateTiedChallengeSchedule.create(
+        body=body,
+        challenge_code=challenge_code,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminUpdateTiedChallengeSchedule)
+async def admin_update_tied_challenge_schedule_async(
+    body: ModelUpdateChallengeScheduleRequest,
+    challenge_code: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Tied Challenge Schedule (adminUpdateTiedChallengeSchedule)
+
+      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+
+
+
+    Request body:
+
+      * action: Update the challenge schedule. The available options are:
+        * STOP: Ends the challenge, changing its status to RETIRED. This option supports all types of challenges.
+        * ACCELERATE: Speeds up the challenge's end time. Note that this option does not apply to challenges with an 'endAfter' value.
+      * endDate: The timestamp specifying when the challenge should end (required if the action is ACCELERATE).
+
+    Properties:
+        url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/tied/schedule
+
+        method: PUT
+
+        tags: ["Challenge Configuration"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelUpdateChallengeScheduleRequest in body
+
+        challenge_code: (challengeCode) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelChallengeResponse (OK)
+
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateTiedChallengeSchedule.create(
         body=body,
         challenge_code=challenge_code,
         namespace=namespace,

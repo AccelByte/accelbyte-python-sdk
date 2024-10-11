@@ -34,13 +34,22 @@ class GoogleIAPConfigRequest(Model):
     Properties:
         application_name: (applicationName) REQUIRED str
 
+        package_name: (packageName) REQUIRED str
+
         service_account_id: (serviceAccountId) REQUIRED str
+
+        notification_token_audience: (notificationTokenAudience) OPTIONAL str
+
+        notification_token_email: (notificationTokenEmail) OPTIONAL str
     """
 
     # region fields
 
     application_name: str  # REQUIRED
+    package_name: str  # REQUIRED
     service_account_id: str  # REQUIRED
+    notification_token_audience: str  # OPTIONAL
+    notification_token_email: str  # OPTIONAL
 
     # endregion fields
 
@@ -50,8 +59,20 @@ class GoogleIAPConfigRequest(Model):
         self.application_name = value
         return self
 
+    def with_package_name(self, value: str) -> GoogleIAPConfigRequest:
+        self.package_name = value
+        return self
+
     def with_service_account_id(self, value: str) -> GoogleIAPConfigRequest:
         self.service_account_id = value
+        return self
+
+    def with_notification_token_audience(self, value: str) -> GoogleIAPConfigRequest:
+        self.notification_token_audience = value
+        return self
+
+    def with_notification_token_email(self, value: str) -> GoogleIAPConfigRequest:
+        self.notification_token_email = value
         return self
 
     # endregion with_x methods
@@ -64,10 +85,22 @@ class GoogleIAPConfigRequest(Model):
             result["applicationName"] = str(self.application_name)
         elif include_empty:
             result["applicationName"] = ""
+        if hasattr(self, "package_name"):
+            result["packageName"] = str(self.package_name)
+        elif include_empty:
+            result["packageName"] = ""
         if hasattr(self, "service_account_id"):
             result["serviceAccountId"] = str(self.service_account_id)
         elif include_empty:
             result["serviceAccountId"] = ""
+        if hasattr(self, "notification_token_audience"):
+            result["notificationTokenAudience"] = str(self.notification_token_audience)
+        elif include_empty:
+            result["notificationTokenAudience"] = ""
+        if hasattr(self, "notification_token_email"):
+            result["notificationTokenEmail"] = str(self.notification_token_email)
+        elif include_empty:
+            result["notificationTokenEmail"] = ""
         return result
 
     # endregion to methods
@@ -76,11 +109,22 @@ class GoogleIAPConfigRequest(Model):
 
     @classmethod
     def create(
-        cls, application_name: str, service_account_id: str, **kwargs
+        cls,
+        application_name: str,
+        package_name: str,
+        service_account_id: str,
+        notification_token_audience: Optional[str] = None,
+        notification_token_email: Optional[str] = None,
+        **kwargs,
     ) -> GoogleIAPConfigRequest:
         instance = cls()
         instance.application_name = application_name
+        instance.package_name = package_name
         instance.service_account_id = service_account_id
+        if notification_token_audience is not None:
+            instance.notification_token_audience = notification_token_audience
+        if notification_token_email is not None:
+            instance.notification_token_email = notification_token_email
         return instance
 
     @classmethod
@@ -94,10 +138,30 @@ class GoogleIAPConfigRequest(Model):
             instance.application_name = str(dict_["applicationName"])
         elif include_empty:
             instance.application_name = ""
+        if "packageName" in dict_ and dict_["packageName"] is not None:
+            instance.package_name = str(dict_["packageName"])
+        elif include_empty:
+            instance.package_name = ""
         if "serviceAccountId" in dict_ and dict_["serviceAccountId"] is not None:
             instance.service_account_id = str(dict_["serviceAccountId"])
         elif include_empty:
             instance.service_account_id = ""
+        if (
+            "notificationTokenAudience" in dict_
+            and dict_["notificationTokenAudience"] is not None
+        ):
+            instance.notification_token_audience = str(
+                dict_["notificationTokenAudience"]
+            )
+        elif include_empty:
+            instance.notification_token_audience = ""
+        if (
+            "notificationTokenEmail" in dict_
+            and dict_["notificationTokenEmail"] is not None
+        ):
+            instance.notification_token_email = str(dict_["notificationTokenEmail"])
+        elif include_empty:
+            instance.notification_token_email = ""
         return instance
 
     @classmethod
@@ -142,14 +206,20 @@ class GoogleIAPConfigRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "applicationName": "application_name",
+            "packageName": "package_name",
             "serviceAccountId": "service_account_id",
+            "notificationTokenAudience": "notification_token_audience",
+            "notificationTokenEmail": "notification_token_email",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "applicationName": True,
+            "packageName": True,
             "serviceAccountId": True,
+            "notificationTokenAudience": False,
+            "notificationTokenEmail": False,
         }
 
     # endregion static methods

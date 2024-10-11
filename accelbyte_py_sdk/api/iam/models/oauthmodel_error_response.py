@@ -61,6 +61,8 @@ class OauthmodelErrorResponse(Model):
 
         platform_id: (platformId) OPTIONAL str
 
+        remaining_backup_code_count: (remainingBackupCodeCount) OPTIONAL int
+
         user_ban: (userBan) OPTIONAL OauthmodelUserBan
     """
 
@@ -78,6 +80,7 @@ class OauthmodelErrorResponse(Model):
     message_variables: Dict[str, str]  # OPTIONAL
     mfa_token: str  # OPTIONAL
     platform_id: str  # OPTIONAL
+    remaining_backup_code_count: int  # OPTIONAL
     user_ban: OauthmodelUserBan  # OPTIONAL
 
     # endregion fields
@@ -132,6 +135,10 @@ class OauthmodelErrorResponse(Model):
 
     def with_platform_id(self, value: str) -> OauthmodelErrorResponse:
         self.platform_id = value
+        return self
+
+    def with_remaining_backup_code_count(self, value: int) -> OauthmodelErrorResponse:
+        self.remaining_backup_code_count = value
         return self
 
     def with_user_ban(self, value: OauthmodelUserBan) -> OauthmodelErrorResponse:
@@ -196,6 +203,10 @@ class OauthmodelErrorResponse(Model):
             result["platformId"] = str(self.platform_id)
         elif include_empty:
             result["platformId"] = ""
+        if hasattr(self, "remaining_backup_code_count"):
+            result["remainingBackupCodeCount"] = int(self.remaining_backup_code_count)
+        elif include_empty:
+            result["remainingBackupCodeCount"] = 0
         if hasattr(self, "user_ban"):
             result["userBan"] = self.user_ban.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -221,6 +232,7 @@ class OauthmodelErrorResponse(Model):
         message_variables: Optional[Dict[str, str]] = None,
         mfa_token: Optional[str] = None,
         platform_id: Optional[str] = None,
+        remaining_backup_code_count: Optional[int] = None,
         user_ban: Optional[OauthmodelUserBan] = None,
         **kwargs,
     ) -> OauthmodelErrorResponse:
@@ -248,6 +260,8 @@ class OauthmodelErrorResponse(Model):
             instance.mfa_token = mfa_token
         if platform_id is not None:
             instance.platform_id = platform_id
+        if remaining_backup_code_count is not None:
+            instance.remaining_backup_code_count = remaining_backup_code_count
         if user_ban is not None:
             instance.user_ban = user_ban
         return instance
@@ -313,6 +327,15 @@ class OauthmodelErrorResponse(Model):
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
             instance.platform_id = ""
+        if (
+            "remainingBackupCodeCount" in dict_
+            and dict_["remainingBackupCodeCount"] is not None
+        ):
+            instance.remaining_backup_code_count = int(
+                dict_["remainingBackupCodeCount"]
+            )
+        elif include_empty:
+            instance.remaining_backup_code_count = 0
         if "userBan" in dict_ and dict_["userBan"] is not None:
             instance.user_ban = OauthmodelUserBan.create_from_dict(
                 dict_["userBan"], include_empty=include_empty
@@ -374,6 +397,7 @@ class OauthmodelErrorResponse(Model):
             "messageVariables": "message_variables",
             "mfa_token": "mfa_token",
             "platformId": "platform_id",
+            "remainingBackupCodeCount": "remaining_backup_code_count",
             "userBan": "user_ban",
         }
 
@@ -392,6 +416,7 @@ class OauthmodelErrorResponse(Model):
             "messageVariables": False,
             "mfa_token": False,
             "platformId": False,
+            "remainingBackupCodeCount": False,
             "userBan": False,
         }
 

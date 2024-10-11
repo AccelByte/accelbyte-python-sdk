@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.9.0"
+__version__ = "1.10.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,6 +20,8 @@ from ._challenge_configuration import admin_delete_challenge
 from ._challenge_configuration import admin_delete_challenge_async
 from ._challenge_configuration import admin_delete_tied_challenge
 from ._challenge_configuration import admin_delete_tied_challenge_async
+from ._challenge_configuration import admin_get_active_challenges
+from ._challenge_configuration import admin_get_active_challenges_async
 from ._challenge_configuration import admin_get_challenge
 from ._challenge_configuration import admin_get_challenge_async
 from ._challenge_configuration import admin_get_challenges
@@ -30,6 +32,8 @@ from ._challenge_configuration import admin_randomize_challenge
 from ._challenge_configuration import admin_randomize_challenge_async
 from ._challenge_configuration import admin_update_challenge
 from ._challenge_configuration import admin_update_challenge_async
+from ._challenge_configuration import admin_update_tied_challenge_schedule
+from ._challenge_configuration import admin_update_tied_challenge_schedule_async
 
 from ._challenge_list import get_challenges
 from ._challenge_list import get_challenges_async
@@ -38,6 +42,8 @@ from ._challenge_list import public_get_scheduled_goals_async
 
 from ._challenge_progression import admin_evaluate_progress
 from ._challenge_progression import admin_evaluate_progress_async
+from ._challenge_progression import admin_get_user_progression
+from ._challenge_progression import admin_get_user_progression_async
 from ._challenge_progression import evaluate_my_progress
 from ._challenge_progression import evaluate_my_progress_async
 from ._challenge_progression import public_get_past_user_progression
@@ -58,12 +64,16 @@ from ._goal_configuration import admin_update_goals_async
 
 from ._player_reward import admin_claim_user_rewards
 from ._player_reward import admin_claim_user_rewards_async
+from ._player_reward import admin_claim_user_rewards_by_goal_code
+from ._player_reward import admin_claim_user_rewards_by_goal_code_async
 from ._player_reward import admin_claim_users_rewards
 from ._player_reward import admin_claim_users_rewards_async
 from ._player_reward import admin_get_user_rewards
 from ._player_reward import admin_get_user_rewards_async
 from ._player_reward import public_claim_user_rewards
 from ._player_reward import public_claim_user_rewards_async
+from ._player_reward import public_claim_user_rewards_by_goal_code
+from ._player_reward import public_claim_user_rewards_by_goal_code_async
 from ._player_reward import public_get_user_rewards
 from ._player_reward import public_get_user_rewards_async
 

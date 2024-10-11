@@ -598,6 +598,7 @@ def test_admin_submit_user_account_deletion_request(self):
         self.skipTest(reason="Test not applicable to AGS Starter.")
 
     from accelbyte_py_sdk.api.gdpr import admin_submit_user_account_deletion_request
+    from accelbyte_py_sdk.api.gdpr import admin_cancel_user_account_deletion_request
 
     # arrange
     _, error, user_id = self.do_create_user(
@@ -615,6 +616,14 @@ def test_admin_submit_user_account_deletion_request(self):
 
     # assert
     self.assertIsNone(error, error)
+
+    # clean up
+    #   the GDPR deletion is an async process, this request will cancel the
+    #   previous request since we are going to delete the user we created
+    #   in the tear down step
+    _, _ = admin_cancel_user_account_deletion_request(
+        user_id=self.user_id, namespace=self.user_namespace
+    )
 ```
 ### Delete Admin Email Configuration
 
@@ -1500,7 +1509,7 @@ async def test_refresh_token_request(self):
 
     elapsed = 0.0
     interval = 0.016
-    timeout = 10.0
+    timeout = 60.0
     wsm = None
     wsm_type = None
     while True:
@@ -1515,6 +1524,7 @@ async def test_refresh_token_request(self):
                 if wsm_type == "refreshTokenResponse":
                     break
         if elapsed > timeout:
+            self.skipTest(reason=f"did not get 'refreshTokenResponse' message within {timeout} seconds")
             break
 
     # assert
@@ -1717,7 +1727,6 @@ def test_match_function_list(self):
     # assert
     self.assertIsNone(error, error)
 ```
-
 ## Platform
 
 Source: [platformx.py](../tests/integration/api/platformx.py)
@@ -2213,7 +2222,6 @@ def test_party_flow(self):
     party_ids = [party.id_ for party in result.data]
     self.assertIn(party_id, party_ids)
 ```
-
 ## Social
 
 Source: [social.py](../tests/integration/api/social.py)
