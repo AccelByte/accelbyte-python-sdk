@@ -40,6 +40,10 @@ class UpdatePolicyRequest(Model):
 
         should_notify_on_update: (shouldNotifyOnUpdate) REQUIRED bool
 
+        countries: (countries) OPTIONAL List[str]
+
+        country_group_name: (countryGroupName) OPTIONAL str
+
         description: (description) OPTIONAL str
 
         readable_id: (readableId) OPTIONAL str
@@ -51,6 +55,8 @@ class UpdatePolicyRequest(Model):
     is_mandatory: bool  # REQUIRED
     policy_name: str  # REQUIRED
     should_notify_on_update: bool  # REQUIRED
+    countries: List[str]  # OPTIONAL
+    country_group_name: str  # OPTIONAL
     description: str  # OPTIONAL
     readable_id: str  # OPTIONAL
 
@@ -72,6 +78,14 @@ class UpdatePolicyRequest(Model):
 
     def with_should_notify_on_update(self, value: bool) -> UpdatePolicyRequest:
         self.should_notify_on_update = value
+        return self
+
+    def with_countries(self, value: List[str]) -> UpdatePolicyRequest:
+        self.countries = value
+        return self
+
+    def with_country_group_name(self, value: str) -> UpdatePolicyRequest:
+        self.country_group_name = value
         return self
 
     def with_description(self, value: str) -> UpdatePolicyRequest:
@@ -104,6 +118,14 @@ class UpdatePolicyRequest(Model):
             result["shouldNotifyOnUpdate"] = bool(self.should_notify_on_update)
         elif include_empty:
             result["shouldNotifyOnUpdate"] = False
+        if hasattr(self, "countries"):
+            result["countries"] = [str(i0) for i0 in self.countries]
+        elif include_empty:
+            result["countries"] = []
+        if hasattr(self, "country_group_name"):
+            result["countryGroupName"] = str(self.country_group_name)
+        elif include_empty:
+            result["countryGroupName"] = ""
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -125,6 +147,8 @@ class UpdatePolicyRequest(Model):
         is_mandatory: bool,
         policy_name: str,
         should_notify_on_update: bool,
+        countries: Optional[List[str]] = None,
+        country_group_name: Optional[str] = None,
         description: Optional[str] = None,
         readable_id: Optional[str] = None,
         **kwargs,
@@ -134,6 +158,10 @@ class UpdatePolicyRequest(Model):
         instance.is_mandatory = is_mandatory
         instance.policy_name = policy_name
         instance.should_notify_on_update = should_notify_on_update
+        if countries is not None:
+            instance.countries = countries
+        if country_group_name is not None:
+            instance.country_group_name = country_group_name
         if description is not None:
             instance.description = description
         if readable_id is not None:
@@ -166,6 +194,14 @@ class UpdatePolicyRequest(Model):
             instance.should_notify_on_update = bool(dict_["shouldNotifyOnUpdate"])
         elif include_empty:
             instance.should_notify_on_update = False
+        if "countries" in dict_ and dict_["countries"] is not None:
+            instance.countries = [str(i0) for i0 in dict_["countries"]]
+        elif include_empty:
+            instance.countries = []
+        if "countryGroupName" in dict_ and dict_["countryGroupName"] is not None:
+            instance.country_group_name = str(dict_["countryGroupName"])
+        elif include_empty:
+            instance.country_group_name = ""
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -219,6 +255,8 @@ class UpdatePolicyRequest(Model):
             "isMandatory": "is_mandatory",
             "policyName": "policy_name",
             "shouldNotifyOnUpdate": "should_notify_on_update",
+            "countries": "countries",
+            "countryGroupName": "country_group_name",
             "description": "description",
             "readableId": "readable_id",
         }
@@ -230,6 +268,8 @@ class UpdatePolicyRequest(Model):
             "isMandatory": True,
             "policyName": True,
             "shouldNotifyOnUpdate": True,
+            "countries": False,
+            "countryGroupName": False,
             "description": False,
             "readableId": False,
         }

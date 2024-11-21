@@ -45,6 +45,7 @@ from accelbyte_py_sdk.api.platform.models import EntitlementPagingSlicedResult
 @click.option("--entitlement_name", "entitlement_name", type=str)
 @click.option("--features", "features", type=str)
 @click.option("--fuzzy_match_name", "fuzzy_match_name", type=bool)
+@click.option("--ignore_active_date", "ignore_active_date", type=bool)
 @click.option("--item_id", "item_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
@@ -62,6 +63,7 @@ def query_user_entitlements(
     entitlement_name: Optional[str] = None,
     features: Optional[str] = None,
     fuzzy_match_name: Optional[bool] = None,
+    ignore_active_date: Optional[bool] = None,
     item_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -100,6 +102,7 @@ def query_user_entitlements(
         entitlement_name=entitlement_name,
         features=features,
         fuzzy_match_name=fuzzy_match_name,
+        ignore_active_date=ignore_active_date,
         item_id=item_id,
         limit=limit,
         offset=offset,

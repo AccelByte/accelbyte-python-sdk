@@ -61,7 +61,7 @@ class BulkUpdateUserStatItemV2(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL List[BulkUserStatItemUpdate] in body
+        body: (body) REQUIRED List[BulkUserStatItemUpdate] in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -88,7 +88,7 @@ class BulkUpdateUserStatItemV2(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: List[BulkUserStatItemUpdate]  # OPTIONAL in [body]
+    body: List[BulkUserStatItemUpdate]  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -241,15 +241,11 @@ class BulkUpdateUserStatItemV2(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        body: Optional[List[BulkUserStatItemUpdate]] = None,
-        **kwargs,
+        cls, body: List[BulkUserStatItemUpdate], namespace: str, **kwargs
     ) -> BulkUpdateUserStatItemV2:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -282,7 +278,7 @@ class BulkUpdateUserStatItemV2(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

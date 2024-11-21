@@ -69,8 +69,8 @@ from ..models import StatCycleUpdateCycleTypeEnum
 
 @same_doc_as(BulkAddStats)
 def bulk_add_stats(
+    body: BulkCycleStatsAdd,
     cycle_id: str,
-    body: Optional[BulkCycleStatsAdd] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -92,7 +92,7 @@ def bulk_add_stats(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkCycleStatsAdd in body
+        body: (body) REQUIRED BulkCycleStatsAdd in body
 
         cycle_id: (cycleId) REQUIRED str in path
 
@@ -118,8 +118,8 @@ def bulk_add_stats(
         if error:
             return None, error
     request = BulkAddStats.create(
-        cycle_id=cycle_id,
         body=body,
+        cycle_id=cycle_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -127,8 +127,8 @@ def bulk_add_stats(
 
 @same_doc_as(BulkAddStats)
 async def bulk_add_stats_async(
+    body: BulkCycleStatsAdd,
     cycle_id: str,
-    body: Optional[BulkCycleStatsAdd] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -150,7 +150,7 @@ async def bulk_add_stats_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkCycleStatsAdd in body
+        body: (body) REQUIRED BulkCycleStatsAdd in body
 
         cycle_id: (cycleId) REQUIRED str in path
 
@@ -176,8 +176,8 @@ async def bulk_add_stats_async(
         if error:
             return None, error
     request = BulkAddStats.create(
-        cycle_id=cycle_id,
         body=body,
+        cycle_id=cycle_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -187,7 +187,7 @@ async def bulk_add_stats_async(
 
 @same_doc_as(BulkGetStatCycle)
 def bulk_get_stat_cycle(
-    body: Optional[BulkStatCycleRequest] = None,
+    body: BulkStatCycleRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -212,7 +212,7 @@ def bulk_get_stat_cycle(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkStatCycleRequest in body
+        body: (body) REQUIRED BulkStatCycleRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -242,7 +242,7 @@ def bulk_get_stat_cycle(
 
 @same_doc_as(BulkGetStatCycle)
 async def bulk_get_stat_cycle_async(
-    body: Optional[BulkStatCycleRequest] = None,
+    body: BulkStatCycleRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -267,7 +267,7 @@ async def bulk_get_stat_cycle_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkStatCycleRequest in body
+        body: (body) REQUIRED BulkStatCycleRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -299,7 +299,7 @@ async def bulk_get_stat_cycle_async(
 
 @same_doc_as(BulkGetStatCycle1)
 def bulk_get_stat_cycle_1(
-    body: Optional[BulkStatCycleRequest] = None,
+    body: BulkStatCycleRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -324,7 +324,7 @@ def bulk_get_stat_cycle_1(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkStatCycleRequest in body
+        body: (body) REQUIRED BulkStatCycleRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -354,7 +354,7 @@ def bulk_get_stat_cycle_1(
 
 @same_doc_as(BulkGetStatCycle1)
 async def bulk_get_stat_cycle_1_async(
-    body: Optional[BulkStatCycleRequest] = None,
+    body: BulkStatCycleRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -379,7 +379,7 @@ async def bulk_get_stat_cycle_1_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkStatCycleRequest in body
+        body: (body) REQUIRED BulkStatCycleRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -411,7 +411,7 @@ async def bulk_get_stat_cycle_1_async(
 
 @same_doc_as(CreateStatCycle)
 def create_stat_cycle(
-    body: Optional[StatCycleCreate] = None,
+    body: StatCycleCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -447,7 +447,7 @@ def create_stat_cycle(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StatCycleCreate in body
+        body: (body) REQUIRED StatCycleCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -479,7 +479,7 @@ def create_stat_cycle(
 
 @same_doc_as(CreateStatCycle)
 async def create_stat_cycle_async(
-    body: Optional[StatCycleCreate] = None,
+    body: StatCycleCreate,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -515,7 +515,7 @@ async def create_stat_cycle_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StatCycleCreate in body
+        body: (body) REQUIRED StatCycleCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1467,8 +1467,8 @@ async def stop_stat_cycle_async(
 
 @same_doc_as(UpdateStatCycle)
 def update_stat_cycle(
+    body: StatCycleUpdate,
     cycle_id: str,
-    body: Optional[StatCycleUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1493,7 +1493,7 @@ def update_stat_cycle(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StatCycleUpdate in body
+        body: (body) REQUIRED StatCycleUpdate in body
 
         cycle_id: (cycleId) REQUIRED str in path
 
@@ -1521,8 +1521,8 @@ def update_stat_cycle(
         if error:
             return None, error
     request = UpdateStatCycle.create(
-        cycle_id=cycle_id,
         body=body,
+        cycle_id=cycle_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1530,8 +1530,8 @@ def update_stat_cycle(
 
 @same_doc_as(UpdateStatCycle)
 async def update_stat_cycle_async(
+    body: StatCycleUpdate,
     cycle_id: str,
-    body: Optional[StatCycleUpdate] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1556,7 +1556,7 @@ async def update_stat_cycle_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StatCycleUpdate in body
+        body: (body) REQUIRED StatCycleUpdate in body
 
         cycle_id: (cycleId) REQUIRED str in path
 
@@ -1584,8 +1584,8 @@ async def update_stat_cycle_async(
         if error:
             return None, error
     request = UpdateStatCycle.create(
-        cycle_id=cycle_id,
         body=body,
+        cycle_id=cycle_id,
         namespace=namespace,
     )
     return await run_request_async(

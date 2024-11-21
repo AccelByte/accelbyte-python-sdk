@@ -37,6 +37,8 @@ class ApimodelsConsumeItemReq(Model):
         slot_id: (slotId) REQUIRED str
 
         source_item_id: (sourceItemId) REQUIRED str
+
+        options: (options) OPTIONAL List[str]
     """
 
     # region fields
@@ -44,6 +46,7 @@ class ApimodelsConsumeItemReq(Model):
     qty: int  # REQUIRED
     slot_id: str  # REQUIRED
     source_item_id: str  # REQUIRED
+    options: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -59,6 +62,10 @@ class ApimodelsConsumeItemReq(Model):
 
     def with_source_item_id(self, value: str) -> ApimodelsConsumeItemReq:
         self.source_item_id = value
+        return self
+
+    def with_options(self, value: List[str]) -> ApimodelsConsumeItemReq:
+        self.options = value
         return self
 
     # endregion with_x methods
@@ -79,6 +86,10 @@ class ApimodelsConsumeItemReq(Model):
             result["sourceItemId"] = str(self.source_item_id)
         elif include_empty:
             result["sourceItemId"] = ""
+        if hasattr(self, "options"):
+            result["options"] = [str(i0) for i0 in self.options]
+        elif include_empty:
+            result["options"] = []
         return result
 
     # endregion to methods
@@ -87,12 +98,19 @@ class ApimodelsConsumeItemReq(Model):
 
     @classmethod
     def create(
-        cls, qty: int, slot_id: str, source_item_id: str, **kwargs
+        cls,
+        qty: int,
+        slot_id: str,
+        source_item_id: str,
+        options: Optional[List[str]] = None,
+        **kwargs,
     ) -> ApimodelsConsumeItemReq:
         instance = cls()
         instance.qty = qty
         instance.slot_id = slot_id
         instance.source_item_id = source_item_id
+        if options is not None:
+            instance.options = options
         return instance
 
     @classmethod
@@ -114,6 +132,10 @@ class ApimodelsConsumeItemReq(Model):
             instance.source_item_id = str(dict_["sourceItemId"])
         elif include_empty:
             instance.source_item_id = ""
+        if "options" in dict_ and dict_["options"] is not None:
+            instance.options = [str(i0) for i0 in dict_["options"]]
+        elif include_empty:
+            instance.options = []
         return instance
 
     @classmethod
@@ -160,6 +182,7 @@ class ApimodelsConsumeItemReq(Model):
             "qty": "qty",
             "slotId": "slot_id",
             "sourceItemId": "source_item_id",
+            "options": "options",
         }
 
     @staticmethod
@@ -168,6 +191,7 @@ class ApimodelsConsumeItemReq(Model):
             "qty": True,
             "slotId": True,
             "sourceItemId": True,
+            "options": False,
         }
 
     # endregion static methods

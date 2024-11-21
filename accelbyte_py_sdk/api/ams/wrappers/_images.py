@@ -147,6 +147,15 @@ async def image_get_async(
 
 @same_doc_as(ImageList)
 def image_list(
+    count: Optional[int] = None,
+    in_use: Optional[str] = None,
+    is_protected: Optional[bool] = None,
+    name: Optional[str] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    sort_direction: Optional[str] = None,
+    status: Optional[str] = None,
+    tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -172,6 +181,24 @@ def image_list(
 
         namespace: (namespace) REQUIRED str in path
 
+        count: (count) OPTIONAL int in query
+
+        in_use: (inUse) OPTIONAL str in query
+
+        is_protected: (isProtected) OPTIONAL bool in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        sort_direction: (sortDirection) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        tag: (tag) OPTIONAL str in query
+
     Responses:
         200: OK - ApiImageList (success)
 
@@ -188,6 +215,15 @@ def image_list(
         if error:
             return None, error
     request = ImageList.create(
+        count=count,
+        in_use=in_use,
+        is_protected=is_protected,
+        name=name,
+        offset=offset,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
+        status=status,
+        tag=tag,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -195,6 +231,15 @@ def image_list(
 
 @same_doc_as(ImageList)
 async def image_list_async(
+    count: Optional[int] = None,
+    in_use: Optional[str] = None,
+    is_protected: Optional[bool] = None,
+    name: Optional[str] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    sort_direction: Optional[str] = None,
+    status: Optional[str] = None,
+    tag: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -220,6 +265,24 @@ async def image_list_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        count: (count) OPTIONAL int in query
+
+        in_use: (inUse) OPTIONAL str in query
+
+        is_protected: (isProtected) OPTIONAL bool in query
+
+        name: (name) OPTIONAL str in query
+
+        offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL str in query
+
+        sort_direction: (sortDirection) OPTIONAL str in query
+
+        status: (status) OPTIONAL str in query
+
+        tag: (tag) OPTIONAL str in query
+
     Responses:
         200: OK - ApiImageList (success)
 
@@ -236,6 +299,15 @@ async def image_list_async(
         if error:
             return None, error
     request = ImageList.create(
+        count=count,
+        in_use=in_use,
+        is_protected=is_protected,
+        name=name,
+        offset=offset,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
+        status=status,
+        tag=tag,
         namespace=namespace,
     )
     return await run_request_async(

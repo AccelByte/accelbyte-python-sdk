@@ -35,12 +35,15 @@ class ModelUserRequestFriendRequest(Model):
         friend_id: (friendId) OPTIONAL str
 
         friend_public_id: (friendPublicId) OPTIONAL str
+
+        metadata: (metadata) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
     friend_id: str  # OPTIONAL
     friend_public_id: str  # OPTIONAL
+    metadata: Dict[str, str]  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class ModelUserRequestFriendRequest(Model):
 
     def with_friend_public_id(self, value: str) -> ModelUserRequestFriendRequest:
         self.friend_public_id = value
+        return self
+
+    def with_metadata(self, value: Dict[str, str]) -> ModelUserRequestFriendRequest:
+        self.metadata = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class ModelUserRequestFriendRequest(Model):
             result["friendPublicId"] = str(self.friend_public_id)
         elif include_empty:
             result["friendPublicId"] = ""
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): str(v0) for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
         return result
 
     # endregion to methods
@@ -79,6 +90,7 @@ class ModelUserRequestFriendRequest(Model):
         cls,
         friend_id: Optional[str] = None,
         friend_public_id: Optional[str] = None,
+        metadata: Optional[Dict[str, str]] = None,
         **kwargs,
     ) -> ModelUserRequestFriendRequest:
         instance = cls()
@@ -86,6 +98,8 @@ class ModelUserRequestFriendRequest(Model):
             instance.friend_id = friend_id
         if friend_public_id is not None:
             instance.friend_public_id = friend_public_id
+        if metadata is not None:
+            instance.metadata = metadata
         return instance
 
     @classmethod
@@ -103,6 +117,12 @@ class ModelUserRequestFriendRequest(Model):
             instance.friend_public_id = str(dict_["friendPublicId"])
         elif include_empty:
             instance.friend_public_id = ""
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {
+                str(k0): str(v0) for k0, v0 in dict_["metadata"].items()
+            }
+        elif include_empty:
+            instance.metadata = {}
         return instance
 
     @classmethod
@@ -148,6 +168,7 @@ class ModelUserRequestFriendRequest(Model):
         return {
             "friendId": "friend_id",
             "friendPublicId": "friend_public_id",
+            "metadata": "metadata",
         }
 
     @staticmethod
@@ -155,6 +176,7 @@ class ModelUserRequestFriendRequest(Model):
         return {
             "friendId": False,
             "friendPublicId": False,
+            "metadata": False,
         }
 
     # endregion static methods

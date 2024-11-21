@@ -95,6 +95,7 @@ from ..operations.entitlement import GetUserEntitlementOwnershipBySku
 from ..operations.entitlement import (
     GetUserEntitlementOwnershipBySkuEntitlementClazzEnum,
 )
+from ..operations.entitlement import GetUserEntitlementsByIds
 from ..operations.entitlement import GrantEntitlements
 from ..operations.entitlement import GrantUserEntitlement
 from ..operations.entitlement import PreCheckRevokeUserEntitlementByUseCount
@@ -2224,6 +2225,108 @@ async def get_user_entitlement_ownership_by_sku_async(
         user_id=user_id,
         entitlement_clazz=entitlement_clazz,
         platform=platform,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetUserEntitlementsByIds)
+def get_user_entitlements_by_ids(
+    user_id: str,
+    ids: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get user entitlements by ids. (getUserEntitlementsByIds)
+
+    Get user entitlements by ids. This will return all entitlements regardless of its status
+
+    Other detail info:
+
+      * Returns : entitlement list
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byIds
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        ids: (ids) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[EntitlementInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserEntitlementsByIds.create(
+        user_id=user_id,
+        ids=ids,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetUserEntitlementsByIds)
+async def get_user_entitlements_by_ids_async(
+    user_id: str,
+    ids: Optional[List[str]] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get user entitlements by ids. (getUserEntitlementsByIds)
+
+    Get user entitlements by ids. This will return all entitlements regardless of its status
+
+    Other detail info:
+
+      * Returns : entitlement list
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/entitlements/byIds
+
+        method: GET
+
+        tags: ["Entitlement"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+        ids: (ids) OPTIONAL List[str] in query
+
+    Responses:
+        200: OK - List[EntitlementInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetUserEntitlementsByIds.create(
+        user_id=user_id,
+        ids=ids,
         namespace=namespace,
     )
     return await run_request_async(
@@ -5479,6 +5582,7 @@ def query_user_entitlements(
     entitlement_name: Optional[str] = None,
     features: Optional[List[str]] = None,
     fuzzy_match_name: Optional[bool] = None,
+    ignore_active_date: Optional[bool] = None,
     item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -5526,6 +5630,8 @@ def query_user_entitlements(
 
         fuzzy_match_name: (fuzzyMatchName) OPTIONAL bool in query
 
+        ignore_active_date: (ignoreActiveDate) OPTIONAL bool in query
+
         item_id: (itemId) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
@@ -5550,6 +5656,7 @@ def query_user_entitlements(
         entitlement_name=entitlement_name,
         features=features,
         fuzzy_match_name=fuzzy_match_name,
+        ignore_active_date=ignore_active_date,
         item_id=item_id,
         limit=limit,
         offset=offset,
@@ -5571,6 +5678,7 @@ async def query_user_entitlements_async(
     entitlement_name: Optional[str] = None,
     features: Optional[List[str]] = None,
     fuzzy_match_name: Optional[bool] = None,
+    ignore_active_date: Optional[bool] = None,
     item_id: Optional[List[str]] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
@@ -5618,6 +5726,8 @@ async def query_user_entitlements_async(
 
         fuzzy_match_name: (fuzzyMatchName) OPTIONAL bool in query
 
+        ignore_active_date: (ignoreActiveDate) OPTIONAL bool in query
+
         item_id: (itemId) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
@@ -5642,6 +5752,7 @@ async def query_user_entitlements_async(
         entitlement_name=entitlement_name,
         features=features,
         fuzzy_match_name=fuzzy_match_name,
+        ignore_active_date=ignore_active_date,
         item_id=item_id,
         limit=limit,
         offset=offset,

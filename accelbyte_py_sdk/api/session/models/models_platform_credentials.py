@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.models_psn_app_server_credentials import ModelsPSNAppServerCredentials
+from ..models.models_xbl_certificate_credential import ModelsXBLCertificateCredential
 
 
 class ModelsPlatformCredentials(Model):
@@ -37,12 +38,15 @@ class ModelsPlatformCredentials(Model):
         psn: (psn) REQUIRED ModelsPSNAppServerCredentials
 
         updated_at: (updatedAt) REQUIRED str
+
+        xbox: (xbox) OPTIONAL ModelsXBLCertificateCredential
     """
 
     # region fields
 
     psn: ModelsPSNAppServerCredentials  # REQUIRED
     updated_at: str  # REQUIRED
+    xbox: ModelsXBLCertificateCredential  # OPTIONAL
 
     # endregion fields
 
@@ -56,6 +60,12 @@ class ModelsPlatformCredentials(Model):
 
     def with_updated_at(self, value: str) -> ModelsPlatformCredentials:
         self.updated_at = value
+        return self
+
+    def with_xbox(
+        self, value: ModelsXBLCertificateCredential
+    ) -> ModelsPlatformCredentials:
+        self.xbox = value
         return self
 
     # endregion with_x methods
@@ -72,6 +82,10 @@ class ModelsPlatformCredentials(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "xbox"):
+            result["xbox"] = self.xbox.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["xbox"] = ModelsXBLCertificateCredential()
         return result
 
     # endregion to methods
@@ -80,11 +94,17 @@ class ModelsPlatformCredentials(Model):
 
     @classmethod
     def create(
-        cls, psn: ModelsPSNAppServerCredentials, updated_at: str, **kwargs
+        cls,
+        psn: ModelsPSNAppServerCredentials,
+        updated_at: str,
+        xbox: Optional[ModelsXBLCertificateCredential] = None,
+        **kwargs,
     ) -> ModelsPlatformCredentials:
         instance = cls()
         instance.psn = psn
         instance.updated_at = updated_at
+        if xbox is not None:
+            instance.xbox = xbox
         return instance
 
     @classmethod
@@ -104,6 +124,12 @@ class ModelsPlatformCredentials(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "xbox" in dict_ and dict_["xbox"] is not None:
+            instance.xbox = ModelsXBLCertificateCredential.create_from_dict(
+                dict_["xbox"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.xbox = ModelsXBLCertificateCredential()
         return instance
 
     @classmethod
@@ -149,6 +175,7 @@ class ModelsPlatformCredentials(Model):
         return {
             "psn": "psn",
             "updatedAt": "updated_at",
+            "xbox": "xbox",
         }
 
     @staticmethod
@@ -156,6 +183,7 @@ class ModelsPlatformCredentials(Model):
         return {
             "psn": True,
             "updatedAt": True,
+            "xbox": False,
         }
 
     # endregion static methods

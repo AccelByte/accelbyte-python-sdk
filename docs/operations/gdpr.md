@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Gdpr Service Index (2.14.0)
+# AccelByte Gaming Services Gdpr Service Index (2.15.0)
 
 
 ## Operations
@@ -58,6 +58,7 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /gdpr/s2s/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate | POST | S2SGeneratePersonalDataURL | `false` | [S2SGeneratePersonalDataURL](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_generate_personal_data_url.py) | [s2s_generate_personal_data_url](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval_s2s.py) | [accelbyte_py_sdk_cli gdpr-s2s-generate-personal-data-url](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_s2s_generate_personal_data_url.py) |
+| /gdpr/s2s/namespaces/{namespace}/requests/{requestId} | GET | S2SGetDataRequestByRequestID | `false` | [S2SGetDataRequestByRequestID](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_get_data_request_by_21f4a4.py) | [s2s_get_data_request_by_request_id](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval_s2s.py) | [accelbyte_py_sdk_cli gdpr-s2s-get-data-request-by-request-id](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_s2s_get_data_request_by_request_id.py) |
 | /gdpr/s2s/namespaces/{namespace}/requests/finished | GET | S2SGetListFinishedPersonalDataRequest | `false` | [S2SGetListFinishedPersonalDataRequest](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_get_list_finished_p_06385b.py) | [s2s_get_list_finished_personal_data_request](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval_s2s.py) | [accelbyte_py_sdk_cli gdpr-s2s-get-list-finished-personal-data-request](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_s2s_get_list_finished_personal_data_request.py) |
 | /gdpr/s2s/namespaces/{namespace}/users/{userId}/requests | POST | S2SRequestDataRetrieval | `false` | [S2SRequestDataRetrieval](../../accelbyte_py_sdk/api/gdpr/operations/data_retrieval_s2s/s2s_request_data_retrieval.py) | [s2s_request_data_retrieval](../../accelbyte_py_sdk/api/gdpr/wrappers/_data_retrieval_s2s.py) | [accelbyte_py_sdk_cli gdpr-s2s-request-data-retrieval](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_s2s_request_data_retrieval.py) |
 
@@ -84,6 +85,7 @@
 | dto.ListFinishedDataRequests | [DtoListFinishedDataRequests](../../accelbyte_py_sdk/api/gdpr/models/dto_list_finished_data_requests.py) |
 | dto.PlatformAccountClosureClientRequest | [DtoPlatformAccountClosureClientRequest](../../accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_client_request.py) |
 | dto.PlatformAccountClosureClientResponse | [DtoPlatformAccountClosureClientResponse](../../accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_client_response.py) |
+| dto.S2SDataRequestSummary | [DtoS2SDataRequestSummary](../../accelbyte_py_sdk/api/gdpr/models/dto_s2s_data_request_summary.py) |
 | dto.ServiceConfigDTO | [DtoServiceConfigDTO](../../accelbyte_py_sdk/api/gdpr/models/dto_service_config_dto.py) |
 | dto.ServiceConfigurationDTO | [DtoServiceConfigurationDTO](../../accelbyte_py_sdk/api/gdpr/models/dto_service_configuration_dto.py) |
 | dto.ServiceConfigurationUpdateRequest | [DtoServiceConfigurationUpdateRequest](../../accelbyte_py_sdk/api/gdpr/models/dto_service_configuration_update_request.py) |

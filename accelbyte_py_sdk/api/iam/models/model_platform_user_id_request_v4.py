@@ -33,11 +33,14 @@ class ModelPlatformUserIDRequestV4(Model):
 
     Properties:
         platform_user_ids: (platformUserIds) REQUIRED List[str]
+
+        pid_type: (pidType) OPTIONAL str
     """
 
     # region fields
 
     platform_user_ids: List[str]  # REQUIRED
+    pid_type: str  # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class ModelPlatformUserIDRequestV4(Model):
 
     def with_platform_user_ids(self, value: List[str]) -> ModelPlatformUserIDRequestV4:
         self.platform_user_ids = value
+        return self
+
+    def with_pid_type(self, value: str) -> ModelPlatformUserIDRequestV4:
+        self.pid_type = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class ModelPlatformUserIDRequestV4(Model):
             result["platformUserIds"] = [str(i0) for i0 in self.platform_user_ids]
         elif include_empty:
             result["platformUserIds"] = []
+        if hasattr(self, "pid_type"):
+            result["pidType"] = str(self.pid_type)
+        elif include_empty:
+            result["pidType"] = ""
         return result
 
     # endregion to methods
@@ -65,10 +76,12 @@ class ModelPlatformUserIDRequestV4(Model):
 
     @classmethod
     def create(
-        cls, platform_user_ids: List[str], **kwargs
+        cls, platform_user_ids: List[str], pid_type: Optional[str] = None, **kwargs
     ) -> ModelPlatformUserIDRequestV4:
         instance = cls()
         instance.platform_user_ids = platform_user_ids
+        if pid_type is not None:
+            instance.pid_type = pid_type
         return instance
 
     @classmethod
@@ -82,6 +95,10 @@ class ModelPlatformUserIDRequestV4(Model):
             instance.platform_user_ids = [str(i0) for i0 in dict_["platformUserIds"]]
         elif include_empty:
             instance.platform_user_ids = []
+        if "pidType" in dict_ and dict_["pidType"] is not None:
+            instance.pid_type = str(dict_["pidType"])
+        elif include_empty:
+            instance.pid_type = ""
         return instance
 
     @classmethod
@@ -126,12 +143,14 @@ class ModelPlatformUserIDRequestV4(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "platformUserIds": "platform_user_ids",
+            "pidType": "pid_type",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "platformUserIds": True,
+            "pidType": False,
         }
 
     # endregion static methods

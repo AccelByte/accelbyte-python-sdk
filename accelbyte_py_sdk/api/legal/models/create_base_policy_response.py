@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class CountryTypeEnum(StrEnum):
+    COUNTRY = "COUNTRY"
+    COUNTRY_GROUP = "COUNTRY_GROUP"
 
 
 class CreateBasePolicyResponse(Model):
@@ -37,6 +43,10 @@ class CreateBasePolicyResponse(Model):
         affected_client_ids: (affectedClientIds) OPTIONAL List[str]
 
         affected_countries: (affectedCountries) OPTIONAL List[str]
+
+        country_group_name: (countryGroupName) OPTIONAL str
+
+        country_type: (countryType) OPTIONAL Union[str, CountryTypeEnum]
 
         created_at: (createdAt) OPTIONAL str
 
@@ -64,6 +74,8 @@ class CreateBasePolicyResponse(Model):
     id_: str  # REQUIRED
     affected_client_ids: List[str]  # OPTIONAL
     affected_countries: List[str]  # OPTIONAL
+    country_group_name: str  # OPTIONAL
+    country_type: Union[str, CountryTypeEnum]  # OPTIONAL
     created_at: str  # OPTIONAL
     description: str  # OPTIONAL
     global_policy_name: str  # OPTIONAL
@@ -89,6 +101,16 @@ class CreateBasePolicyResponse(Model):
 
     def with_affected_countries(self, value: List[str]) -> CreateBasePolicyResponse:
         self.affected_countries = value
+        return self
+
+    def with_country_group_name(self, value: str) -> CreateBasePolicyResponse:
+        self.country_group_name = value
+        return self
+
+    def with_country_type(
+        self, value: Union[str, CountryTypeEnum]
+    ) -> CreateBasePolicyResponse:
+        self.country_type = value
         return self
 
     def with_created_at(self, value: str) -> CreateBasePolicyResponse:
@@ -149,6 +171,14 @@ class CreateBasePolicyResponse(Model):
             result["affectedCountries"] = [str(i0) for i0 in self.affected_countries]
         elif include_empty:
             result["affectedCountries"] = []
+        if hasattr(self, "country_group_name"):
+            result["countryGroupName"] = str(self.country_group_name)
+        elif include_empty:
+            result["countryGroupName"] = ""
+        if hasattr(self, "country_type"):
+            result["countryType"] = str(self.country_type)
+        elif include_empty:
+            result["countryType"] = Union[str, CountryTypeEnum]()
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -201,6 +231,8 @@ class CreateBasePolicyResponse(Model):
         id_: str,
         affected_client_ids: Optional[List[str]] = None,
         affected_countries: Optional[List[str]] = None,
+        country_group_name: Optional[str] = None,
+        country_type: Optional[Union[str, CountryTypeEnum]] = None,
         created_at: Optional[str] = None,
         description: Optional[str] = None,
         global_policy_name: Optional[str] = None,
@@ -219,6 +251,10 @@ class CreateBasePolicyResponse(Model):
             instance.affected_client_ids = affected_client_ids
         if affected_countries is not None:
             instance.affected_countries = affected_countries
+        if country_group_name is not None:
+            instance.country_group_name = country_group_name
+        if country_type is not None:
+            instance.country_type = country_type
         if created_at is not None:
             instance.created_at = created_at
         if description is not None:
@@ -262,6 +298,14 @@ class CreateBasePolicyResponse(Model):
             instance.affected_countries = [str(i0) for i0 in dict_["affectedCountries"]]
         elif include_empty:
             instance.affected_countries = []
+        if "countryGroupName" in dict_ and dict_["countryGroupName"] is not None:
+            instance.country_group_name = str(dict_["countryGroupName"])
+        elif include_empty:
+            instance.country_group_name = ""
+        if "countryType" in dict_ and dict_["countryType"] is not None:
+            instance.country_type = str(dict_["countryType"])
+        elif include_empty:
+            instance.country_type = Union[str, CountryTypeEnum]()
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -348,6 +392,8 @@ class CreateBasePolicyResponse(Model):
             "id": "id_",
             "affectedClientIds": "affected_client_ids",
             "affectedCountries": "affected_countries",
+            "countryGroupName": "country_group_name",
+            "countryType": "country_type",
             "createdAt": "created_at",
             "description": "description",
             "globalPolicyName": "global_policy_name",
@@ -366,6 +412,8 @@ class CreateBasePolicyResponse(Model):
             "id": True,
             "affectedClientIds": False,
             "affectedCountries": False,
+            "countryGroupName": False,
+            "countryType": False,
             "createdAt": False,
             "description": False,
             "globalPolicyName": False,
@@ -376,6 +424,12 @@ class CreateBasePolicyResponse(Model):
             "tags": False,
             "typeId": False,
             "updatedAt": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "countryType": ["COUNTRY", "COUNTRY_GROUP"],
         }
 
     # endregion static methods

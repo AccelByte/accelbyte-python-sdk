@@ -64,7 +64,7 @@ class UpdateUserStatItemValue1(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StatItemUpdate in body
+        body: (body) REQUIRED StatItemUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -101,7 +101,7 @@ class UpdateUserStatItemValue1(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: StatItemUpdate  # OPTIONAL in [body]
+    body: StatItemUpdate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     stat_code: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -297,19 +297,18 @@ class UpdateUserStatItemValue1(Operation):
     @classmethod
     def create(
         cls,
+        body: StatItemUpdate,
         namespace: str,
         stat_code: str,
         user_id: str,
-        body: Optional[StatItemUpdate] = None,
         additional_key: Optional[str] = None,
         **kwargs,
     ) -> UpdateUserStatItemValue1:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.stat_code = stat_code
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if additional_key is not None:
             instance.additional_key = additional_key
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -358,7 +357,7 @@ class UpdateUserStatItemValue1(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "statCode": True,
             "userId": True,

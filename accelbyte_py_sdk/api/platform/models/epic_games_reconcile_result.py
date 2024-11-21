@@ -32,6 +32,8 @@ from ....core import StrEnum
 class StatusEnum(StrEnum):
     FAILED = "FAILED"
     FULFILLED = "FULFILLED"
+    PARTIAL_REVOKED = "PARTIAL_REVOKED"
+    REVOKED = "REVOKED"
     VERIFIED = "VERIFIED"
 
 
@@ -227,7 +229,7 @@ class EpicGamesReconcileResult(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["FAILED", "FULFILLED", "VERIFIED"],
+            "status": ["FAILED", "FULFILLED", "PARTIAL_REVOKED", "REVOKED", "VERIFIED"],
         }
 
     # endregion static methods

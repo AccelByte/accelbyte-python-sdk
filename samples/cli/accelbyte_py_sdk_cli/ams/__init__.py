@@ -13,7 +13,7 @@ from ._portal_health_check import portal_health_check
 from ._admin_account_get import admin_account_get
 from ._admin_account_create import admin_account_create
 from ._admin_account_link_token_get import admin_account_link_token_get
-from ._admin_account_link_token_post import admin_account_link_token_post
+from ._admin_account_link import admin_account_link
 from ._artifact_get import artifact_get
 from ._artifact_bulk_delete import artifact_bulk_delete
 from ._artifact_usage_get import artifact_usage_get
@@ -67,7 +67,7 @@ commands = [
     admin_account_get,
     admin_account_create,
     admin_account_link_token_get,
-    admin_account_link_token_post,
+    admin_account_link,
     artifact_get,
     artifact_bulk_delete,
     artifact_usage_get,

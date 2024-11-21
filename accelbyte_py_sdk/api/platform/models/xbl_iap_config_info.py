@@ -38,6 +38,14 @@ class XblIAPConfigInfo(Model):
 
         business_partner_cert_file_name: (businessPartnerCertFileName) OPTIONAL str
 
+        enable_clawback: (enableClawback) OPTIONAL bool
+
+        entra_app_client_id: (entraAppClientId) OPTIONAL str
+
+        entra_app_client_secret: (entraAppClientSecret) OPTIONAL str
+
+        entra_tenant_id: (entraTenantId) OPTIONAL str
+
         password: (password) OPTIONAL str
 
         relying_party_cert: (relyingPartyCert) OPTIONAL str
@@ -48,6 +56,10 @@ class XblIAPConfigInfo(Model):
     namespace: str  # REQUIRED
     business_partner_cert_expired_time: str  # OPTIONAL
     business_partner_cert_file_name: str  # OPTIONAL
+    enable_clawback: bool  # OPTIONAL
+    entra_app_client_id: str  # OPTIONAL
+    entra_app_client_secret: str  # OPTIONAL
+    entra_tenant_id: str  # OPTIONAL
     password: str  # OPTIONAL
     relying_party_cert: str  # OPTIONAL
 
@@ -65,6 +77,22 @@ class XblIAPConfigInfo(Model):
 
     def with_business_partner_cert_file_name(self, value: str) -> XblIAPConfigInfo:
         self.business_partner_cert_file_name = value
+        return self
+
+    def with_enable_clawback(self, value: bool) -> XblIAPConfigInfo:
+        self.enable_clawback = value
+        return self
+
+    def with_entra_app_client_id(self, value: str) -> XblIAPConfigInfo:
+        self.entra_app_client_id = value
+        return self
+
+    def with_entra_app_client_secret(self, value: str) -> XblIAPConfigInfo:
+        self.entra_app_client_secret = value
+        return self
+
+    def with_entra_tenant_id(self, value: str) -> XblIAPConfigInfo:
+        self.entra_tenant_id = value
         return self
 
     def with_password(self, value: str) -> XblIAPConfigInfo:
@@ -97,6 +125,22 @@ class XblIAPConfigInfo(Model):
             )
         elif include_empty:
             result["businessPartnerCertFileName"] = ""
+        if hasattr(self, "enable_clawback"):
+            result["enableClawback"] = bool(self.enable_clawback)
+        elif include_empty:
+            result["enableClawback"] = False
+        if hasattr(self, "entra_app_client_id"):
+            result["entraAppClientId"] = str(self.entra_app_client_id)
+        elif include_empty:
+            result["entraAppClientId"] = ""
+        if hasattr(self, "entra_app_client_secret"):
+            result["entraAppClientSecret"] = str(self.entra_app_client_secret)
+        elif include_empty:
+            result["entraAppClientSecret"] = ""
+        if hasattr(self, "entra_tenant_id"):
+            result["entraTenantId"] = str(self.entra_tenant_id)
+        elif include_empty:
+            result["entraTenantId"] = ""
         if hasattr(self, "password"):
             result["password"] = str(self.password)
         elif include_empty:
@@ -117,6 +161,10 @@ class XblIAPConfigInfo(Model):
         namespace: str,
         business_partner_cert_expired_time: Optional[str] = None,
         business_partner_cert_file_name: Optional[str] = None,
+        enable_clawback: Optional[bool] = None,
+        entra_app_client_id: Optional[str] = None,
+        entra_app_client_secret: Optional[str] = None,
+        entra_tenant_id: Optional[str] = None,
         password: Optional[str] = None,
         relying_party_cert: Optional[str] = None,
         **kwargs,
@@ -129,6 +177,14 @@ class XblIAPConfigInfo(Model):
             )
         if business_partner_cert_file_name is not None:
             instance.business_partner_cert_file_name = business_partner_cert_file_name
+        if enable_clawback is not None:
+            instance.enable_clawback = enable_clawback
+        if entra_app_client_id is not None:
+            instance.entra_app_client_id = entra_app_client_id
+        if entra_app_client_secret is not None:
+            instance.entra_app_client_secret = entra_app_client_secret
+        if entra_tenant_id is not None:
+            instance.entra_tenant_id = entra_tenant_id
         if password is not None:
             instance.password = password
         if relying_party_cert is not None:
@@ -164,6 +220,25 @@ class XblIAPConfigInfo(Model):
             )
         elif include_empty:
             instance.business_partner_cert_file_name = ""
+        if "enableClawback" in dict_ and dict_["enableClawback"] is not None:
+            instance.enable_clawback = bool(dict_["enableClawback"])
+        elif include_empty:
+            instance.enable_clawback = False
+        if "entraAppClientId" in dict_ and dict_["entraAppClientId"] is not None:
+            instance.entra_app_client_id = str(dict_["entraAppClientId"])
+        elif include_empty:
+            instance.entra_app_client_id = ""
+        if (
+            "entraAppClientSecret" in dict_
+            and dict_["entraAppClientSecret"] is not None
+        ):
+            instance.entra_app_client_secret = str(dict_["entraAppClientSecret"])
+        elif include_empty:
+            instance.entra_app_client_secret = ""
+        if "entraTenantId" in dict_ and dict_["entraTenantId"] is not None:
+            instance.entra_tenant_id = str(dict_["entraTenantId"])
+        elif include_empty:
+            instance.entra_tenant_id = ""
         if "password" in dict_ and dict_["password"] is not None:
             instance.password = str(dict_["password"])
         elif include_empty:
@@ -214,6 +289,10 @@ class XblIAPConfigInfo(Model):
             "namespace": "namespace",
             "businessPartnerCertExpiredTime": "business_partner_cert_expired_time",
             "businessPartnerCertFileName": "business_partner_cert_file_name",
+            "enableClawback": "enable_clawback",
+            "entraAppClientId": "entra_app_client_id",
+            "entraAppClientSecret": "entra_app_client_secret",
+            "entraTenantId": "entra_tenant_id",
             "password": "password",
             "relyingPartyCert": "relying_party_cert",
         }
@@ -224,6 +303,10 @@ class XblIAPConfigInfo(Model):
             "namespace": True,
             "businessPartnerCertExpiredTime": False,
             "businessPartnerCertFileName": False,
+            "enableClawback": False,
+            "entraAppClientId": False,
+            "entraAppClientSecret": False,
+            "entraTenantId": False,
             "password": False,
             "relyingPartyCert": False,
         }

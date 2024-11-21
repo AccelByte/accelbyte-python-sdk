@@ -72,7 +72,7 @@ def admin_get_player_attributes(
 
         tags: ["Player"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -133,7 +133,7 @@ async def admin_get_player_attributes_async(
 
         tags: ["Player"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -196,7 +196,7 @@ def admin_query_player_attributes(
 
         tags: ["Player"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -257,7 +257,7 @@ async def admin_query_player_attributes_async(
 
         tags: ["Player"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

@@ -32,6 +32,8 @@ from ....core import StrEnum
 class IapOrderStatusEnum(StrEnum):
     FAILED = "FAILED"
     FULFILLED = "FULFILLED"
+    PARTIAL_REVOKED = "PARTIAL_REVOKED"
+    REVOKED = "REVOKED"
     VERIFIED = "VERIFIED"
 
 
@@ -227,7 +229,13 @@ class XblReconcileResult(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "iapOrderStatus": ["FAILED", "FULFILLED", "VERIFIED"],
+            "iapOrderStatus": [
+                "FAILED",
+                "FULFILLED",
+                "PARTIAL_REVOKED",
+                "REVOKED",
+                "VERIFIED",
+            ],
         }
 
     # endregion static methods

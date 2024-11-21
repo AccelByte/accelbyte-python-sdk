@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Group Service."""
 
-__version__ = "2.21.0"
+__version__ = "2.21.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -69,11 +69,15 @@ from .models_remove_role_from_member_request_v1 import (
 )
 from .models_role_permission import ModelsRolePermission
 from .models_rule import ModelsRule
+from .models_rule import AllowedActionEnum as ModelsRuleAllowedActionEnum
 from .models_rule_information import ModelsRuleInformation
 from .models_rule_information import (
     RuleCriteriaEnum as ModelsRuleInformationRuleCriteriaEnum,
 )
 from .models_rule_response_v1 import ModelsRuleResponseV1
+from .models_rule_response_v1 import (
+    AllowedActionEnum as ModelsRuleResponseV1AllowedActionEnum,
+)
 from .models_update_group_configuration_global_rules_request_v1 import (
     ModelsUpdateGroupConfigurationGlobalRulesRequestV1,
 )

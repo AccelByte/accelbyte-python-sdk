@@ -32,25 +32,32 @@ class ApiTimeout(Model):
     """Api timeout (api.Timeout)
 
     Properties:
-        creation: (creation) REQUIRED int
+        claim: (claim) OPTIONAL int
 
-        drain: (drain) REQUIRED int
+        creation: (creation) OPTIONAL int
 
-        session: (session) REQUIRED int
+        drain: (drain) OPTIONAL int
 
-        unresponsive: (unresponsive) REQUIRED int
+        session: (session) OPTIONAL int
+
+        unresponsive: (unresponsive) OPTIONAL int
     """
 
     # region fields
 
-    creation: int  # REQUIRED
-    drain: int  # REQUIRED
-    session: int  # REQUIRED
-    unresponsive: int  # REQUIRED
+    claim: int  # OPTIONAL
+    creation: int  # OPTIONAL
+    drain: int  # OPTIONAL
+    session: int  # OPTIONAL
+    unresponsive: int  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_claim(self, value: int) -> ApiTimeout:
+        self.claim = value
+        return self
 
     def with_creation(self, value: int) -> ApiTimeout:
         self.creation = value
@@ -74,6 +81,10 @@ class ApiTimeout(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "claim"):
+            result["claim"] = int(self.claim)
+        elif include_empty:
+            result["claim"] = 0
         if hasattr(self, "creation"):
             result["creation"] = int(self.creation)
         elif include_empty:
@@ -98,13 +109,25 @@ class ApiTimeout(Model):
 
     @classmethod
     def create(
-        cls, creation: int, drain: int, session: int, unresponsive: int, **kwargs
+        cls,
+        claim: Optional[int] = None,
+        creation: Optional[int] = None,
+        drain: Optional[int] = None,
+        session: Optional[int] = None,
+        unresponsive: Optional[int] = None,
+        **kwargs,
     ) -> ApiTimeout:
         instance = cls()
-        instance.creation = creation
-        instance.drain = drain
-        instance.session = session
-        instance.unresponsive = unresponsive
+        if claim is not None:
+            instance.claim = claim
+        if creation is not None:
+            instance.creation = creation
+        if drain is not None:
+            instance.drain = drain
+        if session is not None:
+            instance.session = session
+        if unresponsive is not None:
+            instance.unresponsive = unresponsive
         return instance
 
     @classmethod
@@ -112,6 +135,10 @@ class ApiTimeout(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "claim" in dict_ and dict_["claim"] is not None:
+            instance.claim = int(dict_["claim"])
+        elif include_empty:
+            instance.claim = 0
         if "creation" in dict_ and dict_["creation"] is not None:
             instance.creation = int(dict_["creation"])
         elif include_empty:
@@ -167,6 +194,7 @@ class ApiTimeout(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "claim": "claim",
             "creation": "creation",
             "drain": "drain",
             "session": "session",
@@ -176,10 +204,11 @@ class ApiTimeout(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "creation": True,
-            "drain": True,
-            "session": True,
-            "unresponsive": True,
+            "claim": False,
+            "creation": False,
+            "drain": False,
+            "session": False,
+            "unresponsive": False,
         }
 
     # endregion static methods

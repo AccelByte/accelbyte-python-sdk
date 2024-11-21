@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.cycle_override_request import CycleOverrideRequest
+
 
 class GlobalAggregationMethodEnum(StrEnum):
     LAST = "LAST"
@@ -46,6 +48,8 @@ class StatUpdate(Model):
 
     Properties:
         cycle_ids: (cycleIds) OPTIONAL List[str]
+
+        cycle_overrides: (cycleOverrides) OPTIONAL List[CycleOverrideRequest]
 
         default_value: (defaultValue) OPTIONAL float
 
@@ -67,6 +71,7 @@ class StatUpdate(Model):
     # region fields
 
     cycle_ids: List[str]  # OPTIONAL
+    cycle_overrides: List[CycleOverrideRequest]  # OPTIONAL
     default_value: float  # OPTIONAL
     description: str  # OPTIONAL
     global_aggregation_method: Union[str, GlobalAggregationMethodEnum]  # OPTIONAL
@@ -82,6 +87,10 @@ class StatUpdate(Model):
 
     def with_cycle_ids(self, value: List[str]) -> StatUpdate:
         self.cycle_ids = value
+        return self
+
+    def with_cycle_overrides(self, value: List[CycleOverrideRequest]) -> StatUpdate:
+        self.cycle_overrides = value
         return self
 
     def with_default_value(self, value: float) -> StatUpdate:
@@ -128,6 +137,12 @@ class StatUpdate(Model):
             result["cycleIds"] = [str(i0) for i0 in self.cycle_ids]
         elif include_empty:
             result["cycleIds"] = []
+        if hasattr(self, "cycle_overrides"):
+            result["cycleOverrides"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.cycle_overrides
+            ]
+        elif include_empty:
+            result["cycleOverrides"] = []
         if hasattr(self, "default_value"):
             result["defaultValue"] = float(self.default_value)
         elif include_empty:
@@ -174,6 +189,7 @@ class StatUpdate(Model):
     def create(
         cls,
         cycle_ids: Optional[List[str]] = None,
+        cycle_overrides: Optional[List[CycleOverrideRequest]] = None,
         default_value: Optional[float] = None,
         description: Optional[str] = None,
         global_aggregation_method: Optional[
@@ -189,6 +205,8 @@ class StatUpdate(Model):
         instance = cls()
         if cycle_ids is not None:
             instance.cycle_ids = cycle_ids
+        if cycle_overrides is not None:
+            instance.cycle_overrides = cycle_overrides
         if default_value is not None:
             instance.default_value = default_value
         if description is not None:
@@ -218,6 +236,13 @@ class StatUpdate(Model):
             instance.cycle_ids = [str(i0) for i0 in dict_["cycleIds"]]
         elif include_empty:
             instance.cycle_ids = []
+        if "cycleOverrides" in dict_ and dict_["cycleOverrides"] is not None:
+            instance.cycle_overrides = [
+                CycleOverrideRequest.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["cycleOverrides"]
+            ]
+        elif include_empty:
+            instance.cycle_overrides = []
         if "defaultValue" in dict_ and dict_["defaultValue"] is not None:
             instance.default_value = float(dict_["defaultValue"])
         elif include_empty:
@@ -300,6 +325,7 @@ class StatUpdate(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "cycleIds": "cycle_ids",
+            "cycleOverrides": "cycle_overrides",
             "defaultValue": "default_value",
             "description": "description",
             "globalAggregationMethod": "global_aggregation_method",
@@ -314,6 +340,7 @@ class StatUpdate(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "cycleIds": False,
+            "cycleOverrides": False,
             "defaultValue": False,
             "description": False,
             "globalAggregationMethod": False,

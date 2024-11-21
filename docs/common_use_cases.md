@@ -381,7 +381,9 @@ def test_delete_player_record_handler_v1(self):
 
     # arrange
     _, error = post_player_record_handler_v1(
-        body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+        body=self.models_player_record_request,
+        key=self.post_player_record_handler_key,
+        user_id=self.user_id,
     )
     self.log_warning(
         msg=f"Failed to set up player record handler. {str(error)}",
@@ -389,7 +391,9 @@ def test_delete_player_record_handler_v1(self):
     )
 
     # act
-    _, error = delete_player_record_handler_v1(key=self.post_player_record_handler_key, user_id=self.user_id)
+    _, error = delete_player_record_handler_v1(
+        key=self.post_player_record_handler_key, user_id=self.user_id
+    )
 
     # assert
     self.assertIsNone(error, error)
@@ -404,7 +408,9 @@ def test_create_player_record_handler_v1(self):
 
     # act
     _, error = post_player_record_handler_v1(
-        body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+        body=self.models_player_record_request,
+        key=self.post_player_record_handler_key,
+        user_id=self.user_id,
     )
     self.log_warning(
         msg=f"Failed to set up player record handler. {str(error)}",
@@ -425,7 +431,9 @@ def test_get_player_record_handler_v1(self):
 
     # arrange
     _, error = post_player_record_handler_v1(
-        body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+        body=self.models_player_record_request,
+        key=self.post_player_record_handler_key,
+        user_id=self.user_id,
     )
     self.log_warning(
         msg=f"Failed to set up player record handler. {str(error)}",
@@ -433,7 +441,9 @@ def test_get_player_record_handler_v1(self):
     )
 
     # act
-    _, error = get_player_record_handler_v1(key=self.post_player_record_handler_key, user_id=self.user_id)
+    _, error = get_player_record_handler_v1(
+        key=self.post_player_record_handler_key, user_id=self.user_id
+    )
 
     # assert
     self.assertIsNone(error, error)
@@ -452,7 +462,9 @@ def test_put_player_record_handler_v1(self):
 
     # arrange
     _, error = post_player_record_handler_v1(
-        body=self.models_player_record_request, key=self.post_player_record_handler_key, user_id=self.user_id
+        body=self.models_player_record_request,
+        key=self.post_player_record_handler_key,
+        user_id=self.user_id,
     )
     self.log_warning(
         msg=f"Failed to set up player record handler. {str(error)}",
@@ -463,7 +475,7 @@ def test_put_player_record_handler_v1(self):
     _, error = put_player_record_handler_v1(
         body=ModelsPlayerRecordRequest.create(dict_={"foo": "baz"}),
         key=self.post_player_record_handler_key,
-        user_id = self.user_id,
+        user_id=self.user_id,
     )
 
     # assert
@@ -1524,7 +1536,9 @@ async def test_refresh_token_request(self):
                 if wsm_type == "refreshTokenResponse":
                     break
         if elapsed > timeout:
-            self.skipTest(reason=f"did not get 'refreshTokenResponse' message within {timeout} seconds")
+            self.skipTest(
+                reason=f"did not get 'refreshTokenResponse' message within {timeout} seconds"
+            )
             break
 
     # assert

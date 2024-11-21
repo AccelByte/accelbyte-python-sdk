@@ -43,6 +43,9 @@ class PublicGetConfigValueV3(Operation):
     * uniqueDisplayNameEnabled
     * usernameDisabled
     * mandatoryEmailVerificationEnabled
+    * verificationCodeType
+
+    If the key is verificationCodeType, then possible value format will be '{collection}:{N}'; example: 'ABCDEFGHI:6', 'ABCDEFGHI1234:8','01234567894:7'
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/config/{configKey}

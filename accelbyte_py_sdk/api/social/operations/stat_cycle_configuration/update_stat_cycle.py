@@ -56,7 +56,7 @@ class UpdateStatCycle(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StatCycleUpdate in body
+        body: (body) REQUIRED StatCycleUpdate in body
 
         cycle_id: (cycleId) REQUIRED str in path
 
@@ -89,7 +89,7 @@ class UpdateStatCycle(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: StatCycleUpdate  # OPTIONAL in [body]
+    body: StatCycleUpdate  # REQUIRED in [body]
     cycle_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -257,17 +257,12 @@ class UpdateStatCycle(Operation):
 
     @classmethod
     def create(
-        cls,
-        cycle_id: str,
-        namespace: str,
-        body: Optional[StatCycleUpdate] = None,
-        **kwargs,
+        cls, body: StatCycleUpdate, cycle_id: str, namespace: str, **kwargs
     ) -> UpdateStatCycle:
         instance = cls()
+        instance.body = body
         instance.cycle_id = cycle_id
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -304,7 +299,7 @@ class UpdateStatCycle(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "cycleId": True,
             "namespace": True,
         }

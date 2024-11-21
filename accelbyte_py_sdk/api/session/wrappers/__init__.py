@@ -8,14 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.19.0"
+__version__ = "3.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-from ._certificate import handle_upload_xbox_pfx_certificate
-from ._certificate import handle_upload_xbox_pfx_certificate_async
+from ._certificate import admin_upload_x_box_certificate
+from ._certificate import admin_upload_x_box_certificate_async
 
 from ._config import admin_get_log_config
 from ._config import admin_get_log_config_async
@@ -126,6 +126,8 @@ from ._operations import get_healthcheck_info_async
 from ._operations import get_healthcheck_info_v1
 from ._operations import get_healthcheck_info_v1_async
 
+from ._party import admin_delete_bulk_parties
+from ._party import admin_delete_bulk_parties_async
 from ._party import admin_query_parties
 from ._party import admin_query_parties_async
 from ._party import admin_sync_native_session
@@ -163,8 +165,12 @@ from ._party import public_update_party_async
 
 from ._platform_credential import admin_delete_platform_credentials
 from ._platform_credential import admin_delete_platform_credentials_async
+from ._platform_credential import admin_delete_platform_credentials_by_platform_id
+from ._platform_credential import admin_delete_platform_credentials_by_platform_id_async
 from ._platform_credential import admin_get_platform_credentials
 from ._platform_credential import admin_get_platform_credentials_async
+from ._platform_credential import admin_sync_platform_credentials
+from ._platform_credential import admin_sync_platform_credentials_async
 from ._platform_credential import admin_update_platform_credentials
 from ._platform_credential import admin_update_platform_credentials_async
 

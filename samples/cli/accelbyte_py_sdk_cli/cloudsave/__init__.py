@@ -14,6 +14,7 @@ from ._admin_get_admin_game_record_v1 import admin_get_admin_game_record_v1
 from ._admin_put_admin_game_record_v1 import admin_put_admin_game_record_v1
 from ._admin_post_admin_game_record_v1 import admin_post_admin_game_record_v1
 from ._admin_delete_admin_game_record_v1 import admin_delete_admin_game_record_v1
+from ._delete_admin_game_record_ttl_config import delete_admin_game_record_ttl_config
 from ._admin_list_game_binary_records_v1 import admin_list_game_binary_records_v1
 from ._admin_post_game_binary_record_v1 import admin_post_game_binary_record_v1
 from ._admin_get_game_binary_record_v1 import admin_get_game_binary_record_v1
@@ -180,6 +181,7 @@ commands = [
     admin_put_admin_game_record_v1,
     admin_post_admin_game_record_v1,
     admin_delete_admin_game_record_v1,
+    delete_admin_game_record_ttl_config,
     admin_list_game_binary_records_v1,
     admin_post_game_binary_record_v1,
     admin_get_game_binary_record_v1,

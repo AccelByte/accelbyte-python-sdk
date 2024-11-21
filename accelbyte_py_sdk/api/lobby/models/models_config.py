@@ -77,6 +77,8 @@ class ModelsConfig(Model):
         profanity_filter: (profanityFilter) OPTIONAL bool
 
         ready_consent_timeout: (readyConsentTimeout) OPTIONAL int
+
+        request_metadata_max_size: (requestMetadataMaxSize) OPTIONAL int
     """
 
     # region fields
@@ -104,6 +106,7 @@ class ModelsConfig(Model):
     namespace: str  # OPTIONAL
     profanity_filter: bool  # OPTIONAL
     ready_consent_timeout: int  # OPTIONAL
+    request_metadata_max_size: int  # OPTIONAL
 
     # endregion fields
 
@@ -199,6 +202,10 @@ class ModelsConfig(Model):
 
     def with_ready_consent_timeout(self, value: int) -> ModelsConfig:
         self.ready_consent_timeout = value
+        return self
+
+    def with_request_metadata_max_size(self, value: int) -> ModelsConfig:
+        self.request_metadata_max_size = value
         return self
 
     # endregion with_x methods
@@ -311,6 +318,10 @@ class ModelsConfig(Model):
             result["readyConsentTimeout"] = int(self.ready_consent_timeout)
         elif include_empty:
             result["readyConsentTimeout"] = 0
+        if hasattr(self, "request_metadata_max_size"):
+            result["requestMetadataMaxSize"] = int(self.request_metadata_max_size)
+        elif include_empty:
+            result["requestMetadataMaxSize"] = 0
         return result
 
     # endregion to methods
@@ -343,6 +354,7 @@ class ModelsConfig(Model):
         namespace: Optional[str] = None,
         profanity_filter: Optional[bool] = None,
         ready_consent_timeout: Optional[int] = None,
+        request_metadata_max_size: Optional[int] = None,
         **kwargs,
     ) -> ModelsConfig:
         instance = cls()
@@ -396,6 +408,8 @@ class ModelsConfig(Model):
             instance.profanity_filter = profanity_filter
         if ready_consent_timeout is not None:
             instance.ready_consent_timeout = ready_consent_timeout
+        if request_metadata_max_size is not None:
+            instance.request_metadata_max_size = request_metadata_max_size
         return instance
 
     @classmethod
@@ -547,6 +561,13 @@ class ModelsConfig(Model):
             instance.ready_consent_timeout = int(dict_["readyConsentTimeout"])
         elif include_empty:
             instance.ready_consent_timeout = 0
+        if (
+            "requestMetadataMaxSize" in dict_
+            and dict_["requestMetadataMaxSize"] is not None
+        ):
+            instance.request_metadata_max_size = int(dict_["requestMetadataMaxSize"])
+        elif include_empty:
+            instance.request_metadata_max_size = 0
         return instance
 
     @classmethod
@@ -609,6 +630,7 @@ class ModelsConfig(Model):
             "namespace": "namespace",
             "profanityFilter": "profanity_filter",
             "readyConsentTimeout": "ready_consent_timeout",
+            "requestMetadataMaxSize": "request_metadata_max_size",
         }
 
     @staticmethod
@@ -637,6 +659,7 @@ class ModelsConfig(Model):
             "namespace": False,
             "profanityFilter": False,
             "readyConsentTimeout": False,
+            "requestMetadataMaxSize": False,
         }
 
     # endregion static methods

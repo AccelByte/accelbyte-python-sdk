@@ -36,6 +36,8 @@ from ...models import IAPOrderPagingSlicedResult
 class StatusEnum(StrEnum):
     FAILED = "FAILED"
     FULFILLED = "FULFILLED"
+    PARTIAL_REVOKED = "PARTIAL_REVOKED"
+    REVOKED = "REVOKED"
     VERIFIED = "VERIFIED"
 
 
@@ -414,7 +416,13 @@ class QueryUserIAPOrders(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["FAILED", "FULFILLED", "VERIFIED"],  # in query
+            "status": [
+                "FAILED",
+                "FULFILLED",
+                "PARTIAL_REVOKED",
+                "REVOKED",
+                "VERIFIED",
+            ],  # in query
             "type": [
                 "APPLE",
                 "EPICGAMES",

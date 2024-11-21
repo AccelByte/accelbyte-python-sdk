@@ -33,7 +33,7 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.ams import (
     info_supported_instances as info_supported_instances_internal,
 )
-from accelbyte_py_sdk.api.ams.models import ApiAvailableInstanceTypesResponse
+from accelbyte_py_sdk.api.ams.models import ApiInstanceTypesForNamespaceResponse
 from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 

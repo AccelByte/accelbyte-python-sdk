@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "2.14.0"
+__version__ = "2.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -87,6 +87,8 @@ from .wrappers import public_request_data_retrieval_async
 # data_retrieval_s2s
 from .wrappers import s2s_generate_personal_data_url
 from .wrappers import s2s_generate_personal_data_url_async
+from .wrappers import s2s_get_data_request_by_request_id
+from .wrappers import s2s_get_data_request_by_request_id_async
 from .wrappers import s2s_get_list_finished_personal_data_request
 from .wrappers import s2s_get_list_finished_personal_data_request_async
 from .wrappers import s2s_request_data_retrieval

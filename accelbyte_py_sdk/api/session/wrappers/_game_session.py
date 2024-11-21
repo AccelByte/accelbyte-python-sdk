@@ -2314,6 +2314,7 @@ def public_game_session_invite(
     - STEAM
     - XBOX
     - PSN
+    Metadata is optional parameter which will be sent over via invitation notification and is not permanently stored in the game session storage.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/invite
@@ -2375,6 +2376,7 @@ async def public_game_session_invite_async(
     - STEAM
     - XBOX
     - PSN
+    Metadata is optional parameter which will be sent over via invitation notification and is not permanently stored in the game session storage.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/invite

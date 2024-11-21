@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# AGS Session Service
+# AGS Legal Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,52 +30,42 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.session import (
-    handle_upload_xbox_pfx_certificate as handle_upload_xbox_pfx_certificate_internal,
+from accelbyte_py_sdk.api.legal import (
+    delete_policy_version as delete_policy_version_internal,
 )
-from accelbyte_py_sdk.api.session.models import ModelsPlatformCredentials
-from accelbyte_py_sdk.api.session.models import ResponseError
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()
-@click.argument("certname", type=str)
-@click.argument("file", type=str)
-@click.argument("password", type=str)
-@click.option("--description", "description", type=str)
+@click.argument("policy_version_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def handle_upload_xbox_pfx_certificate(
-    certname: str,
-    file: str,
-    password: str,
-    description: Optional[str] = None,
+def delete_policy_version(
+    policy_version_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(handle_upload_xbox_pfx_certificate_internal.__doc__)
+        click.echo(delete_policy_version_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    result, error = handle_upload_xbox_pfx_certificate_internal(
-        certname=certname,
-        file=file,
-        password=password,
-        description=description,
+    result, error = delete_policy_version_internal(
+        policy_version_id=policy_version_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"HandleUploadXboxPFXCertificate failed: {str(error)}")
+        raise Exception(f"deletePolicyVersion failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-handle_upload_xbox_pfx_certificate.operation_id = "HandleUploadXboxPFXCertificate"
-handle_upload_xbox_pfx_certificate.is_deprecated = False
+delete_policy_version.operation_id = "deletePolicyVersion"
+delete_policy_version.is_deprecated = False

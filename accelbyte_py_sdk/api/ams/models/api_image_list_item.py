@@ -46,6 +46,8 @@ class ApiImageListItem(Model):
 
         name: (name) REQUIRED str
 
+        referencing_configs: (referencingConfigs) REQUIRED int
+
         referencing_fleets: (referencingFleets) REQUIRED int
 
         size_in_byte: (sizeInByte) REQUIRED int
@@ -67,6 +69,7 @@ class ApiImageListItem(Model):
     id_: str  # REQUIRED
     is_protected: bool  # REQUIRED
     name: str  # REQUIRED
+    referencing_configs: int  # REQUIRED
     referencing_fleets: int  # REQUIRED
     size_in_byte: int  # REQUIRED
     status: str  # REQUIRED
@@ -100,6 +103,10 @@ class ApiImageListItem(Model):
 
     def with_name(self, value: str) -> ApiImageListItem:
         self.name = value
+        return self
+
+    def with_referencing_configs(self, value: int) -> ApiImageListItem:
+        self.referencing_configs = value
         return self
 
     def with_referencing_fleets(self, value: int) -> ApiImageListItem:
@@ -156,6 +163,10 @@ class ApiImageListItem(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "referencing_configs"):
+            result["referencingConfigs"] = int(self.referencing_configs)
+        elif include_empty:
+            result["referencingConfigs"] = 0
         if hasattr(self, "referencing_fleets"):
             result["referencingFleets"] = int(self.referencing_fleets)
         elif include_empty:
@@ -195,6 +206,7 @@ class ApiImageListItem(Model):
         id_: str,
         is_protected: bool,
         name: str,
+        referencing_configs: int,
         referencing_fleets: int,
         size_in_byte: int,
         status: str,
@@ -210,6 +222,7 @@ class ApiImageListItem(Model):
         instance.id_ = id_
         instance.is_protected = is_protected
         instance.name = name
+        instance.referencing_configs = referencing_configs
         instance.referencing_fleets = referencing_fleets
         instance.size_in_byte = size_in_byte
         instance.status = status
@@ -251,6 +264,10 @@ class ApiImageListItem(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "referencingConfigs" in dict_ and dict_["referencingConfigs"] is not None:
+            instance.referencing_configs = int(dict_["referencingConfigs"])
+        elif include_empty:
+            instance.referencing_configs = 0
         if "referencingFleets" in dict_ and dict_["referencingFleets"] is not None:
             instance.referencing_fleets = int(dict_["referencingFleets"])
         elif include_empty:
@@ -320,6 +337,7 @@ class ApiImageListItem(Model):
             "id": "id_",
             "isProtected": "is_protected",
             "name": "name",
+            "referencingConfigs": "referencing_configs",
             "referencingFleets": "referencing_fleets",
             "sizeInByte": "size_in_byte",
             "status": "status",
@@ -337,6 +355,7 @@ class ApiImageListItem(Model):
             "id": True,
             "isProtected": True,
             "name": True,
+            "referencingConfigs": True,
             "referencingFleets": True,
             "sizeInByte": True,
             "status": True,

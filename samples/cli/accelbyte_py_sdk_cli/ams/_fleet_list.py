@@ -36,11 +36,17 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 
 @click.command()
+@click.option("--active", "active", type=bool)
+@click.option("--name", "name", type=str)
+@click.option("--region", "region", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def fleet_list(
+    active: Optional[bool] = None,
+    name: Optional[str] = None,
+    region: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -55,6 +61,9 @@ def fleet_list(
     else:
         login_as_internal(login_as)
     result, error = fleet_list_internal(
+        active=active,
+        name=name,
+        region=region,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

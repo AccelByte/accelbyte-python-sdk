@@ -42,6 +42,7 @@ class PublicGameSessionInvite(Operation):
     - STEAM
     - XBOX
     - PSN
+    Metadata is optional parameter which will be sent over via invitation notification and is not permanently stored in the game session storage.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/invite

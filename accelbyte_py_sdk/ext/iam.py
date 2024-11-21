@@ -440,6 +440,9 @@ def create_account_upgrade_headless_account_request_v4_example() -> (
     instance.email_address = randomize("email")
     instance.password = randomize("password")
     instance.username = randomize("slug")
+    instance.date_of_birth = randomize()
+    instance.display_name = randomize("slug")
+    instance.unique_display_name = randomize()
     return instance
 
 
@@ -2122,6 +2125,7 @@ def create_model_platform_user_id_request_example() -> ModelPlatformUserIDReques
 def create_model_platform_user_id_request_v4_example() -> ModelPlatformUserIDRequestV4:
     instance = ModelPlatformUserIDRequestV4()
     instance.platform_user_ids = [randomize()]
+    instance.pid_type = randomize()
     return instance
 
 

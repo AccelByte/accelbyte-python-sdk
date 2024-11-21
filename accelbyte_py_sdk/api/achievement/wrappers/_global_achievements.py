@@ -35,12 +35,20 @@ from ..models import ModelsPaginatedUserContributionResponse
 from ..models import ResponseError
 
 from ..operations.global_achievements import AdminListGlobalAchievementContributors
+from ..operations.global_achievements import (
+    AdminListGlobalAchievementContributorsSortByEnum,
+)
 from ..operations.global_achievements import AdminListGlobalAchievements
+from ..operations.global_achievements import AdminListGlobalAchievementsSortByEnum
 from ..operations.global_achievements import AdminListUserContributions
+from ..operations.global_achievements import AdminListUserContributionsSortByEnum
 from ..operations.global_achievements import ClaimGlobalAchievementReward
 from ..operations.global_achievements import ListGlobalAchievementContributors
+from ..operations.global_achievements import ListGlobalAchievementContributorsSortByEnum
 from ..operations.global_achievements import ListUserContributions
+from ..operations.global_achievements import ListUserContributionsSortByEnum
 from ..operations.global_achievements import PublicListGlobalAchievements
+from ..operations.global_achievements import PublicListGlobalAchievementsSortByEnum
 from ..operations.global_achievements import ResetGlobalAchievement
 
 
@@ -49,7 +57,9 @@ def admin_list_global_achievement_contributors(
     achievement_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[
+        Union[str, AdminListGlobalAchievementContributorsSortByEnum]
+    ] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -80,7 +90,7 @@ def admin_list_global_achievement_contributors(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ModelsPaginatedContributorResponse (OK)
@@ -110,7 +120,9 @@ async def admin_list_global_achievement_contributors_async(
     achievement_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[
+        Union[str, AdminListGlobalAchievementContributorsSortByEnum]
+    ] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -141,7 +153,7 @@ async def admin_list_global_achievement_contributors_async(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ModelsPaginatedContributorResponse (OK)
@@ -173,7 +185,7 @@ def admin_list_global_achievements(
     achievement_codes: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, AdminListGlobalAchievementsSortByEnum]] = None,
     status: Optional[str] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
@@ -216,7 +228,7 @@ def admin_list_global_achievements(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         status: (status) OPTIONAL str in query
 
@@ -252,7 +264,7 @@ async def admin_list_global_achievements_async(
     achievement_codes: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, AdminListGlobalAchievementsSortByEnum]] = None,
     status: Optional[str] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
@@ -295,7 +307,7 @@ async def admin_list_global_achievements_async(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         status: (status) OPTIONAL str in query
 
@@ -334,7 +346,7 @@ def admin_list_user_contributions(
     achievement_codes: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, AdminListUserContributionsSortByEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -368,7 +380,7 @@ def admin_list_user_contributions(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         tags: (tags) OPTIONAL List[str] in query
 
@@ -403,7 +415,7 @@ async def admin_list_user_contributions_async(
     achievement_codes: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, AdminListUserContributionsSortByEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -437,7 +449,7 @@ async def admin_list_user_contributions_async(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         tags: (tags) OPTIONAL List[str] in query
 
@@ -601,7 +613,7 @@ def list_global_achievement_contributors(
     achievement_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, ListGlobalAchievementContributorsSortByEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -632,7 +644,7 @@ def list_global_achievement_contributors(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ModelsPaginatedContributorResponse (OK)
@@ -662,7 +674,7 @@ async def list_global_achievement_contributors_async(
     achievement_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, ListGlobalAchievementContributorsSortByEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -693,7 +705,7 @@ async def list_global_achievement_contributors_async(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ModelsPaginatedContributorResponse (OK)
@@ -726,7 +738,7 @@ def list_user_contributions(
     achievement_codes: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, ListUserContributionsSortByEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -760,7 +772,7 @@ def list_user_contributions(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         tags: (tags) OPTIONAL List[str] in query
 
@@ -795,7 +807,7 @@ async def list_user_contributions_async(
     achievement_codes: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, ListUserContributionsSortByEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -829,7 +841,7 @@ async def list_user_contributions_async(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         tags: (tags) OPTIONAL List[str] in query
 
@@ -865,7 +877,7 @@ def public_list_global_achievements(
     achievement_codes: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, PublicListGlobalAchievementsSortByEnum]] = None,
     status: Optional[str] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
@@ -908,7 +920,7 @@ def public_list_global_achievements(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         status: (status) OPTIONAL str in query
 
@@ -944,7 +956,7 @@ async def public_list_global_achievements_async(
     achievement_codes: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, PublicListGlobalAchievementsSortByEnum]] = None,
     status: Optional[str] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
@@ -987,7 +999,7 @@ async def public_list_global_achievements_async(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         status: (status) OPTIONAL str in query
 

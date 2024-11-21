@@ -38,6 +38,10 @@ class RetrieveAcceptedAgreementResponse(Model):
 
         country_code: (countryCode) OPTIONAL str
 
+        country_group_name: (countryGroupName) OPTIONAL str
+
+        country_type: (countryType) OPTIONAL str
+
         created_at: (createdAt) OPTIONAL str
 
         description: (description) OPTIONAL str
@@ -69,6 +73,8 @@ class RetrieveAcceptedAgreementResponse(Model):
 
     id_: str  # REQUIRED
     country_code: str  # OPTIONAL
+    country_group_name: str  # OPTIONAL
+    country_type: str  # OPTIONAL
     created_at: str  # OPTIONAL
     description: str  # OPTIONAL
     display_version: str  # OPTIONAL
@@ -93,6 +99,14 @@ class RetrieveAcceptedAgreementResponse(Model):
 
     def with_country_code(self, value: str) -> RetrieveAcceptedAgreementResponse:
         self.country_code = value
+        return self
+
+    def with_country_group_name(self, value: str) -> RetrieveAcceptedAgreementResponse:
+        self.country_group_name = value
+        return self
+
+    def with_country_type(self, value: str) -> RetrieveAcceptedAgreementResponse:
+        self.country_type = value
         return self
 
     def with_created_at(self, value: str) -> RetrieveAcceptedAgreementResponse:
@@ -163,6 +177,14 @@ class RetrieveAcceptedAgreementResponse(Model):
             result["countryCode"] = str(self.country_code)
         elif include_empty:
             result["countryCode"] = ""
+        if hasattr(self, "country_group_name"):
+            result["countryGroupName"] = str(self.country_group_name)
+        elif include_empty:
+            result["countryGroupName"] = ""
+        if hasattr(self, "country_type"):
+            result["countryType"] = str(self.country_type)
+        elif include_empty:
+            result["countryType"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -228,6 +250,8 @@ class RetrieveAcceptedAgreementResponse(Model):
         cls,
         id_: str,
         country_code: Optional[str] = None,
+        country_group_name: Optional[str] = None,
+        country_type: Optional[str] = None,
         created_at: Optional[str] = None,
         description: Optional[str] = None,
         display_version: Optional[str] = None,
@@ -247,6 +271,10 @@ class RetrieveAcceptedAgreementResponse(Model):
         instance.id_ = id_
         if country_code is not None:
             instance.country_code = country_code
+        if country_group_name is not None:
+            instance.country_group_name = country_group_name
+        if country_type is not None:
+            instance.country_type = country_type
         if created_at is not None:
             instance.created_at = created_at
         if description is not None:
@@ -290,6 +318,14 @@ class RetrieveAcceptedAgreementResponse(Model):
             instance.country_code = str(dict_["countryCode"])
         elif include_empty:
             instance.country_code = ""
+        if "countryGroupName" in dict_ and dict_["countryGroupName"] is not None:
+            instance.country_group_name = str(dict_["countryGroupName"])
+        elif include_empty:
+            instance.country_group_name = ""
+        if "countryType" in dict_ and dict_["countryType"] is not None:
+            instance.country_type = str(dict_["countryType"])
+        elif include_empty:
+            instance.country_type = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -394,6 +430,8 @@ class RetrieveAcceptedAgreementResponse(Model):
         return {
             "id": "id_",
             "countryCode": "country_code",
+            "countryGroupName": "country_group_name",
+            "countryType": "country_type",
             "createdAt": "created_at",
             "description": "description",
             "displayVersion": "display_version",
@@ -414,6 +452,8 @@ class RetrieveAcceptedAgreementResponse(Model):
         return {
             "id": True,
             "countryCode": False,
+            "countryGroupName": False,
+            "countryType": False,
             "createdAt": False,
             "description": False,
             "displayVersion": False,

@@ -87,8 +87,6 @@ def admin_put_admin_game_record_concurrent_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -203,8 +201,6 @@ async def admin_put_admin_game_record_concurrent_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -323,8 +319,6 @@ def admin_put_admin_player_record_concurrent_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -450,8 +444,6 @@ async def admin_put_admin_player_record_concurrent_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -577,8 +569,6 @@ def admin_put_game_record_concurrent_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -698,8 +688,6 @@ async def admin_put_game_record_concurrent_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -823,8 +811,6 @@ def admin_put_player_public_record_concurrent_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -955,8 +941,6 @@ async def admin_put_player_public_record_concurrent_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -1089,8 +1073,6 @@ def admin_put_player_record_concurrent_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -1221,8 +1203,6 @@ async def admin_put_player_record_concurrent_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word

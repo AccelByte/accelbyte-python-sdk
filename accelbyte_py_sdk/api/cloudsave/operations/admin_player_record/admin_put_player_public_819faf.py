@@ -65,8 +65,6 @@ class AdminPutPlayerPublicRecordHandlerV1(Operation):
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate

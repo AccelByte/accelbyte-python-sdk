@@ -34,18 +34,19 @@ from accelbyte_py_sdk.api.social import update_stat as update_stat_internal
 from accelbyte_py_sdk.api.social.models import ErrorEntity
 from accelbyte_py_sdk.api.social.models import StatInfo
 from accelbyte_py_sdk.api.social.models import StatUpdate
+from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 
 
 @click.command()
+@click.argument("body", type=str)
 @click.argument("stat_code", type=str)
-@click.option("--body", "body", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def update_stat(
+    body: str,
     stat_code: str,
-    body: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -66,8 +67,8 @@ def update_stat(
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = update_stat_internal(
-        stat_code=stat_code,
         body=body,
+        stat_code=stat_code,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

@@ -28,9 +28,19 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ModelsPaginatedTagResponse
 from ...models import ResponseError
+
+
+class SortByEnum(StrEnum):
+    CREATEDAT = "createdAt"
+    CREATEDAT_ASC = "createdAt:asc"
+    CREATEDAT_DESC = "createdAt:desc"
+    NAME = "name"
+    NAME_ASC = "name:asc"
+    NAME_DESC = "name:desc"
 
 
 class PublicListTags(Operation):
@@ -60,7 +70,7 @@ class PublicListTags(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ModelsPaginatedTagResponse (OK)
@@ -87,7 +97,7 @@ class PublicListTags(Operation):
     limit: int  # OPTIONAL in [query]
     name: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
-    sort_by: str  # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -173,7 +183,7 @@ class PublicListTags(Operation):
         self.offset = value
         return self
 
-    def with_sort_by(self, value: str) -> PublicListTags:
+    def with_sort_by(self, value: Union[str, SortByEnum]) -> PublicListTags:
         self.sort_by = value
         return self
 
@@ -202,7 +212,7 @@ class PublicListTags(Operation):
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = Union[str, SortByEnum]()
         return result
 
     # endregion to methods
@@ -267,7 +277,7 @@ class PublicListTags(Operation):
         limit: Optional[int] = None,
         name: Optional[str] = None,
         offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[Union[str, SortByEnum]] = None,
         **kwargs,
     ) -> PublicListTags:
         instance = cls()
@@ -308,7 +318,7 @@ class PublicListTags(Operation):
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = Union[str, SortByEnum]()
         return instance
 
     @staticmethod
@@ -329,6 +339,19 @@ class PublicListTags(Operation):
             "name": False,
             "offset": False,
             "sortBy": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortBy": [
+                "createdAt",
+                "createdAt:asc",
+                "createdAt:desc",
+                "name",
+                "name:asc",
+                "name:desc",
+            ],  # in query
         }
 
     # endregion static methods

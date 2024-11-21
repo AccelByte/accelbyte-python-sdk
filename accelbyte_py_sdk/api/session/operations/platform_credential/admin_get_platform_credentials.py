@@ -42,6 +42,14 @@ class AdminGetPlatformCredentials(Operation):
     - clientSecret: Auth Server (Client Credential) Secret. For security, only the first few characters are shown.
     - scope: should be psn:s2s.service (For Sync non PSN member to PSN Session)
 
+    XBOX:
+    - namespace: namespace of the configuration
+    - businessPartnerCertFileName: name of pfx xbox configuration file
+    - businessPartnerCertFileBytes: the pfx configuration file
+    - updatedAt: date time when the record is updated
+    - createdAt: date time when the record is created
+    - createdBy: the actor who trigger the xbox configuration sync
+
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials
 
@@ -49,7 +57,7 @@ class AdminGetPlatformCredentials(Operation):
 
         tags: ["Platform Credential"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -75,7 +83,7 @@ class AdminGetPlatformCredentials(Operation):
 
     _url: str = "/session/v1/admin/namespaces/{namespace}/platform-credentials"
     _method: str = "GET"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None

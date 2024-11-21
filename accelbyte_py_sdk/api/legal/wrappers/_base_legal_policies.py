@@ -45,6 +45,9 @@ from ..operations.base_legal_policies import RetrieveAllLegalPolicies
 from ..operations.base_legal_policies import RetrieveAllPolicyTypes
 from ..operations.base_legal_policies import RetrievePolicyCountry
 from ..operations.base_legal_policies import RetrieveSinglePolicy
+from ..models import CreateBasePolicyRequestCountryTypeEnum
+from ..models import CreateBasePolicyResponseCountryTypeEnum
+from ..models import UpdateBasePolicyRequestCountryTypeEnum
 
 
 @same_doc_as(CreatePolicy)
@@ -56,6 +59,14 @@ def create_policy(
     """Create a Base Legal Policy (createPolicy)
 
     Create a legal policy.
+    Note:
+
+
+      *  countryType field only accept COUNTRY or COUNTRY_GROUP.
+      * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
+
+
+    * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
 
     Properties:
         url: /agreement/admin/base-policies
@@ -96,6 +107,14 @@ async def create_policy_async(
     """Create a Base Legal Policy (createPolicy)
 
     Create a legal policy.
+    Note:
+
+
+      *  countryType field only accept COUNTRY or COUNTRY_GROUP.
+      * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
+
+
+    * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
 
     Properties:
         url: /agreement/admin/base-policies
@@ -139,6 +158,14 @@ def partial_update_policy(
     """Update Base Legal Policy (partialUpdatePolicy)
 
     Update an existing base policy.
+    Note:
+
+
+      *  countryType field only accept COUNTRY or COUNTRY_GROUP.
+      * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
+
+
+    * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
 
     Properties:
         url: /agreement/admin/base-policies/{basePolicyId}
@@ -181,6 +208,14 @@ async def partial_update_policy_async(
     """Update Base Legal Policy (partialUpdatePolicy)
 
     Update an existing base policy.
+    Note:
+
+
+      *  countryType field only accept COUNTRY or COUNTRY_GROUP.
+      * COUNTRY_GROUP countryType requires the countryGroupName and affectedCountries fields to be provided.
+
+
+    * policy with COUNTRY_GROUP type include multiple countries and apply the same policy across the entire list of countries
 
     Properties:
         url: /agreement/admin/base-policies/{basePolicyId}

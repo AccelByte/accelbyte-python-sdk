@@ -32,6 +32,7 @@ from .....core import HttpResponse
 from ...models import ErrorEntity
 from ...models import StatInfo
 from ...models import StatUpdate
+from ...models import ValidationErrorEntity
 
 
 class UpdateStat(Operation):
@@ -58,7 +59,7 @@ class UpdateStat(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StatUpdate in body
+        body: (body) REQUIRED StatUpdate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -75,6 +76,8 @@ class UpdateStat(Operation):
 
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
 
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
+
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
 
@@ -87,7 +90,7 @@ class UpdateStat(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: StatUpdate  # OPTIONAL in [body]
+    body: StatUpdate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     stat_code: str  # REQUIRED in [path]
 
@@ -193,7 +196,10 @@ class UpdateStat(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, StatInfo], Union[None, ErrorEntity, HttpResponse]]:
+    ) -> Tuple[
+        Union[None, StatInfo],
+        Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
+    ]:
         """Parse the given response.
 
         200: OK - StatInfo (successful update of stat)
@@ -205,6 +211,8 @@ class UpdateStat(Operation):
         403: Forbidden - ErrorEntity (20013: insufficient permission)
 
         404: Not Found - ErrorEntity (12241: Stat [{statCode}] cannot be found in namespace [{namespace}] | 12245: Stat cycle [{id}] cannot be found in namespace [{namespace}])
+
+        422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
 
@@ -231,6 +239,8 @@ class UpdateStat(Operation):
             return None, ErrorEntity.create_from_dict(content)
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
+        if code == 422:
+            return None, ValidationErrorEntity.create_from_dict(content)
         if code == 500:
             return None, ErrorEntity.create_from_dict(content)
 
@@ -244,13 +254,12 @@ class UpdateStat(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, stat_code: str, body: Optional[StatUpdate] = None, **kwargs
+        cls, body: StatUpdate, namespace: str, stat_code: str, **kwargs
     ) -> UpdateStat:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.stat_code = stat_code
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -285,7 +294,7 @@ class UpdateStat(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "statCode": True,
         }

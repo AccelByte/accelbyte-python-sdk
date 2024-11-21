@@ -30,13 +30,16 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import DtoListFinishedDataRequests
+from ..models import DtoS2SDataRequestSummary
 from ..models import ModelsS2SDataRetrievalResponse
 from ..models import ModelsS2SUserDataURL
 from ..models import ResponseError
 
 from ..operations.data_retrieval_s2s import S2SGeneratePersonalDataURL
+from ..operations.data_retrieval_s2s import S2SGetDataRequestByRequestID
 from ..operations.data_retrieval_s2s import S2SGetListFinishedPersonalDataRequest
 from ..operations.data_retrieval_s2s import S2SRequestDataRetrieval
+from ..models import DtoS2SDataRequestSummaryStatusEnum
 
 
 @same_doc_as(S2SGeneratePersonalDataURL)
@@ -156,6 +159,116 @@ async def s2s_generate_personal_data_url_async(
     request = S2SGeneratePersonalDataURL.create(
         request_date=request_date,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(S2SGetDataRequestByRequestID)
+def s2s_get_data_request_by_request_id(
+    request_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get Personal Data Request by Request Id (S2SGetDataRequestByRequestID)
+
+    Scope: account
+
+    Get Personal Data Request by Request Id.
+    If the request has been completed, it will return a download url for the data package.
+
+    ---
+    ## This API for S2S integration purpose only
+
+    Properties:
+        url: /gdpr/s2s/namespaces/{namespace}/requests/{requestId}
+
+        method: GET
+
+        tags: ["Data Retrieval (S2S)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        request_id: (requestId) REQUIRED str in path
+
+    Responses:
+        200: OK - DtoS2SDataRequestSummary (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = S2SGetDataRequestByRequestID.create(
+        request_id=request_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(S2SGetDataRequestByRequestID)
+async def s2s_get_data_request_by_request_id_async(
+    request_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get Personal Data Request by Request Id (S2SGetDataRequestByRequestID)
+
+    Scope: account
+
+    Get Personal Data Request by Request Id.
+    If the request has been completed, it will return a download url for the data package.
+
+    ---
+    ## This API for S2S integration purpose only
+
+    Properties:
+        url: /gdpr/s2s/namespaces/{namespace}/requests/{requestId}
+
+        method: GET
+
+        tags: ["Data Retrieval (S2S)"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        request_id: (requestId) REQUIRED str in path
+
+    Responses:
+        200: OK - DtoS2SDataRequestSummary (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = S2SGetDataRequestByRequestID.create(
+        request_id=request_id,
         namespace=namespace,
     )
     return await run_request_async(

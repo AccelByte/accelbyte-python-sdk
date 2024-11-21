@@ -6,7 +6,7 @@
 
 # template_file: python-cli-command.j2
 
-# Fleet Commander
+# AGS Legal Service
 
 # pylint: disable=duplicate-code
 # pylint: disable=line-too-long
@@ -30,50 +30,42 @@ import click
 
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
-from accelbyte_py_sdk.api.ams import (
-    admin_account_link_token_post as admin_account_link_token_post_internal,
+from accelbyte_py_sdk.api.legal import (
+    delete_localized_policy as delete_localized_policy_internal,
 )
-from accelbyte_py_sdk.api.ams.models import ApiAccountLinkRequest
-from accelbyte_py_sdk.api.ams.models import ApiAccountLinkResponse
-from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
+from accelbyte_py_sdk.api.legal.models import ErrorEntity
 
 
 @click.command()
-@click.argument("body", type=str)
+@click.argument("localized_policy_version_id", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
-def admin_account_link_token_post(
-    body: str,
+def delete_localized_policy(
+    localized_policy_version_id: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
 ):
     if doc:
-        click.echo(admin_account_link_token_post_internal.__doc__)
+        click.echo(delete_localized_policy_internal.__doc__)
         return
     x_additional_headers = None
     if login_with_auth:
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
-    if body is not None:
-        try:
-            body_json = json.loads(body)
-            body = ApiAccountLinkRequest.create_from_dict(body_json)
-        except ValueError as e:
-            raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
-    result, error = admin_account_link_token_post_internal(
-        body=body,
+    result, error = delete_localized_policy_internal(
+        localized_policy_version_id=localized_policy_version_id,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )
     if error:
-        raise Exception(f"AdminAccountLinkTokenPost failed: {str(error)}")
+        raise Exception(f"deleteLocalizedPolicy failed: {str(error)}")
     click.echo(yaml.safe_dump(to_dict(result), sort_keys=False))
 
 
-admin_account_link_token_post.operation_id = "AdminAccountLinkTokenPost"
-admin_account_link_token_post.is_deprecated = False
+delete_localized_policy.operation_id = "deleteLocalizedPolicy"
+delete_localized_policy.is_deprecated = False

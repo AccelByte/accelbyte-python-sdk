@@ -35,12 +35,15 @@ class ApimodelsSessionInviteRequest(Model):
         platform_id: (platformID) REQUIRED str
 
         user_id: (userID) REQUIRED str
+
+        metadata: (metadata) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
     platform_id: str  # REQUIRED
     user_id: str  # REQUIRED
+    metadata: Dict[str, str]  # OPTIONAL
 
     # endregion fields
 
@@ -52,6 +55,10 @@ class ApimodelsSessionInviteRequest(Model):
 
     def with_user_id(self, value: str) -> ApimodelsSessionInviteRequest:
         self.user_id = value
+        return self
+
+    def with_metadata(self, value: Dict[str, str]) -> ApimodelsSessionInviteRequest:
+        self.metadata = value
         return self
 
     # endregion with_x methods
@@ -68,6 +75,10 @@ class ApimodelsSessionInviteRequest(Model):
             result["userID"] = str(self.user_id)
         elif include_empty:
             result["userID"] = ""
+        if hasattr(self, "metadata"):
+            result["metadata"] = {str(k0): str(v0) for k0, v0 in self.metadata.items()}
+        elif include_empty:
+            result["metadata"] = {}
         return result
 
     # endregion to methods
@@ -76,11 +87,17 @@ class ApimodelsSessionInviteRequest(Model):
 
     @classmethod
     def create(
-        cls, platform_id: str, user_id: str, **kwargs
+        cls,
+        platform_id: str,
+        user_id: str,
+        metadata: Optional[Dict[str, str]] = None,
+        **kwargs,
     ) -> ApimodelsSessionInviteRequest:
         instance = cls()
         instance.platform_id = platform_id
         instance.user_id = user_id
+        if metadata is not None:
+            instance.metadata = metadata
         return instance
 
     @classmethod
@@ -98,6 +115,12 @@ class ApimodelsSessionInviteRequest(Model):
             instance.user_id = str(dict_["userID"])
         elif include_empty:
             instance.user_id = ""
+        if "metadata" in dict_ and dict_["metadata"] is not None:
+            instance.metadata = {
+                str(k0): str(v0) for k0, v0 in dict_["metadata"].items()
+            }
+        elif include_empty:
+            instance.metadata = {}
         return instance
 
     @classmethod
@@ -143,6 +166,7 @@ class ApimodelsSessionInviteRequest(Model):
         return {
             "platformID": "platform_id",
             "userID": "user_id",
+            "metadata": "metadata",
         }
 
     @staticmethod
@@ -150,6 +174,7 @@ class ApimodelsSessionInviteRequest(Model):
         return {
             "platformID": True,
             "userID": True,
+            "metadata": False,
         }
 
     # endregion static methods

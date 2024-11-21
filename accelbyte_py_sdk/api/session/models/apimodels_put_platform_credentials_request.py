@@ -27,26 +27,28 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.models_psn_app_server_credentials import ModelsPSNAppServerCredentials
+from ..models.apimodels_psn_app_server_credential_record import (
+    ApimodelsPSNAppServerCredentialRecord,
+)
 
 
 class ApimodelsPutPlatformCredentialsRequest(Model):
     """Apimodels put platform credentials request (apimodels.PutPlatformCredentialsRequest)
 
     Properties:
-        psn: (psn) REQUIRED ModelsPSNAppServerCredentials
+        psn: (psn) REQUIRED ApimodelsPSNAppServerCredentialRecord
     """
 
     # region fields
 
-    psn: ModelsPSNAppServerCredentials  # REQUIRED
+    psn: ApimodelsPSNAppServerCredentialRecord  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
     def with_psn(
-        self, value: ModelsPSNAppServerCredentials
+        self, value: ApimodelsPSNAppServerCredentialRecord
     ) -> ApimodelsPutPlatformCredentialsRequest:
         self.psn = value
         return self
@@ -60,7 +62,7 @@ class ApimodelsPutPlatformCredentialsRequest(Model):
         if hasattr(self, "psn"):
             result["psn"] = self.psn.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["psn"] = ModelsPSNAppServerCredentials()
+            result["psn"] = ApimodelsPSNAppServerCredentialRecord()
         return result
 
     # endregion to methods
@@ -69,7 +71,7 @@ class ApimodelsPutPlatformCredentialsRequest(Model):
 
     @classmethod
     def create(
-        cls, psn: ModelsPSNAppServerCredentials, **kwargs
+        cls, psn: ApimodelsPSNAppServerCredentialRecord, **kwargs
     ) -> ApimodelsPutPlatformCredentialsRequest:
         instance = cls()
         instance.psn = psn
@@ -83,11 +85,11 @@ class ApimodelsPutPlatformCredentialsRequest(Model):
         if not dict_:
             return instance
         if "psn" in dict_ and dict_["psn"] is not None:
-            instance.psn = ModelsPSNAppServerCredentials.create_from_dict(
+            instance.psn = ApimodelsPSNAppServerCredentialRecord.create_from_dict(
                 dict_["psn"], include_empty=include_empty
             )
         elif include_empty:
-            instance.psn = ModelsPSNAppServerCredentials()
+            instance.psn = ApimodelsPSNAppServerCredentialRecord()
         return instance
 
     @classmethod

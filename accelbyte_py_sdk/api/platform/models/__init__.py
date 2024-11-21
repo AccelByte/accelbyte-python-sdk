@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "5.0.1"
+__version__ = "6.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -452,6 +452,10 @@ from .iap_item_flat_entry import (
     PlatformEnum as IAPItemFlatEntryPlatformEnum,
 )
 from .iap_item_mapping_info import IAPItemMappingInfo
+from .iap_order_consume_detail_info import IAPOrderConsumeDetailInfo
+from .iap_order_consume_detail_info import (
+    StatusEnum as IAPOrderConsumeDetailInfoStatusEnum,
+)
 from .iap_order_info import IAPOrderInfo
 from .iap_order_info import (
     StatusEnum as IAPOrderInfoStatusEnum,
@@ -1019,6 +1023,9 @@ from .wallet_transaction_paging_sliced_result import WalletTransactionPagingSlic
 from .wx_pay_config_info import WxPayConfigInfo
 from .wx_pay_config_request import WxPayConfigRequest
 from .xbl_achievement_update_request import XblAchievementUpdateRequest
+from .xbl_clawback_contract_v2 import XblClawbackContractV2
+from .xbl_clawback_event import XblClawbackEvent
+from .xbl_clawback_event_subscription_data import XblClawbackEventSubscriptionData
 from .xbl_dlc_sync_request import XblDLCSyncRequest
 from .xbl_entitlement_ownership_request import XblEntitlementOwnershipRequest
 from .xbl_iap_config_info import XblIAPConfigInfo

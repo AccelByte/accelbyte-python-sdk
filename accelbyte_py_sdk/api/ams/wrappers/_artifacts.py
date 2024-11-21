@@ -38,6 +38,7 @@ from ..models import ResponseErrorResponse
 from ..operations.artifacts import ArtifactBulkDelete
 from ..operations.artifacts import ArtifactDelete
 from ..operations.artifacts import ArtifactGet
+from ..operations.artifacts import ArtifactGetSortDirectionEnum
 from ..operations.artifacts import ArtifactGetURL
 from ..operations.artifacts import ArtifactUsageGet
 from ..operations.artifacts import FleetArtifactSamplingRulesGet
@@ -280,6 +281,8 @@ def artifact_get(
     offset: Optional[int] = None,
     region: Optional[str] = None,
     server_id: Optional[str] = None,
+    sort_by: Optional[str] = None,
+    sort_direction: Optional[Union[str, ArtifactGetSortDirectionEnum]] = None,
     start_date: Optional[str] = None,
     status: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -327,6 +330,10 @@ def artifact_get(
 
         server_id: (serverId) OPTIONAL str in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
+
         start_date: (startDate) OPTIONAL str in query
 
         status: (status) OPTIONAL str in query
@@ -357,6 +364,8 @@ def artifact_get(
         offset=offset,
         region=region,
         server_id=server_id,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
         start_date=start_date,
         status=status,
         namespace=namespace,
@@ -376,6 +385,8 @@ async def artifact_get_async(
     offset: Optional[int] = None,
     region: Optional[str] = None,
     server_id: Optional[str] = None,
+    sort_by: Optional[str] = None,
+    sort_direction: Optional[Union[str, ArtifactGetSortDirectionEnum]] = None,
     start_date: Optional[str] = None,
     status: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -423,6 +434,10 @@ async def artifact_get_async(
 
         server_id: (serverId) OPTIONAL str in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
+
         start_date: (startDate) OPTIONAL str in query
 
         status: (status) OPTIONAL str in query
@@ -453,6 +468,8 @@ async def artifact_get_async(
         offset=offset,
         region=region,
         server_id=server_id,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
         start_date=start_date,
         status=status,
         namespace=namespace,

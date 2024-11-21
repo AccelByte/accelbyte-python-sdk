@@ -31,6 +31,7 @@ from ..api.challenge.models import ModelClaimUserRewardsByGoalCodeRequest
 from ..api.challenge.models import ModelClaimUserRewardsReq
 from ..api.challenge.models import ModelClaimUsersRewardsRequest
 from ..api.challenge.models import ModelClaimUsersRewardsResponse
+from ..api.challenge.models import ModelClaimableUserReward
 from ..api.challenge.models import ModelCreateChallengeRequest
 from ..api.challenge.models import ModelCreateGoalRequest
 from ..api.challenge.models import ModelEvaluatePlayerProgressionRequest
@@ -133,6 +134,18 @@ def create_model_claim_users_rewards_response_example() -> (
     return instance
 
 
+def create_model_claimable_user_reward_example() -> ModelClaimableUserReward:
+    instance = ModelClaimableUserReward()
+    instance.goal_progression_id = randomize()
+    instance.id_ = randomize()
+    instance.item_id = randomize()
+    instance.item_name = randomize()
+    instance.qty = randomize("int", min_val=1, max_val=1000)
+    instance.status = randomize()
+    instance.type_ = randomize()
+    return instance
+
+
 def create_model_create_challenge_request_example() -> ModelCreateChallengeRequest:
     instance = ModelCreateChallengeRequest()
     instance.assignment_rule = randomize()
@@ -208,6 +221,7 @@ def create_model_goal_progression_response_example() -> ModelGoalProgressionResp
         create_model_requirement_progression_response_example()
     ]
     instance.status = randomize()
+    instance.to_claim_rewards = [create_model_claimable_user_reward_example()]
     return instance
 
 
@@ -431,6 +445,7 @@ def create_model_user_reward_example() -> ModelUserReward:
     instance.challenge_code = randomize()
     instance.created_at = randomize()
     instance.goal_code = randomize()
+    instance.goal_progression_id = randomize()
     instance.id_ = randomize()
     instance.item_id = randomize()
     instance.item_name = randomize()

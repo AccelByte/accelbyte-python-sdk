@@ -30,7 +30,8 @@ from ....core import StrEnum
 
 
 class StatusEnum(StrEnum):
-    COMPLETED_FAILED = "Completed,Failed"
+    COMPLETED = "Completed"
+    FAILED = "Failed"
 
 
 class DtoFinishedDataRequest(Model):
@@ -40,6 +41,8 @@ class DtoFinishedDataRequest(Model):
         finished_date: (finishedDate) REQUIRED str
 
         request_date: (requestDate) REQUIRED str
+
+        request_id: (requestId) REQUIRED str
 
         status: (status) REQUIRED Union[str, StatusEnum]
 
@@ -54,6 +57,7 @@ class DtoFinishedDataRequest(Model):
 
     finished_date: str  # REQUIRED
     request_date: str  # REQUIRED
+    request_id: str  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
     user_id: str  # REQUIRED
     data_expiration_date: str  # OPTIONAL
@@ -69,6 +73,10 @@ class DtoFinishedDataRequest(Model):
 
     def with_request_date(self, value: str) -> DtoFinishedDataRequest:
         self.request_date = value
+        return self
+
+    def with_request_id(self, value: str) -> DtoFinishedDataRequest:
+        self.request_id = value
         return self
 
     def with_status(self, value: Union[str, StatusEnum]) -> DtoFinishedDataRequest:
@@ -101,6 +109,10 @@ class DtoFinishedDataRequest(Model):
             result["requestDate"] = str(self.request_date)
         elif include_empty:
             result["requestDate"] = ""
+        if hasattr(self, "request_id"):
+            result["requestId"] = str(self.request_id)
+        elif include_empty:
+            result["requestId"] = ""
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
@@ -128,6 +140,7 @@ class DtoFinishedDataRequest(Model):
         cls,
         finished_date: str,
         request_date: str,
+        request_id: str,
         status: Union[str, StatusEnum],
         user_id: str,
         data_expiration_date: Optional[str] = None,
@@ -137,6 +150,7 @@ class DtoFinishedDataRequest(Model):
         instance = cls()
         instance.finished_date = finished_date
         instance.request_date = request_date
+        instance.request_id = request_id
         instance.status = status
         instance.user_id = user_id
         if data_expiration_date is not None:
@@ -160,6 +174,10 @@ class DtoFinishedDataRequest(Model):
             instance.request_date = str(dict_["requestDate"])
         elif include_empty:
             instance.request_date = ""
+        if "requestId" in dict_ and dict_["requestId"] is not None:
+            instance.request_id = str(dict_["requestId"])
+        elif include_empty:
+            instance.request_id = ""
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -221,6 +239,7 @@ class DtoFinishedDataRequest(Model):
         return {
             "finishedDate": "finished_date",
             "requestDate": "request_date",
+            "requestId": "request_id",
             "status": "status",
             "userId": "user_id",
             "dataExpirationDate": "data_expiration_date",
@@ -232,6 +251,7 @@ class DtoFinishedDataRequest(Model):
         return {
             "finishedDate": True,
             "requestDate": True,
+            "requestId": True,
             "status": True,
             "userId": True,
             "dataExpirationDate": False,
@@ -241,7 +261,7 @@ class DtoFinishedDataRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["Completed,Failed"],
+            "status": ["Completed", "Failed"],
         }
 
     # endregion static methods

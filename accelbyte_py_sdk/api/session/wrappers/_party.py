@@ -30,6 +30,8 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ApimodelsCreatePartyRequest
+from ..models import ApimodelsDeleteBulkPartySessionRequest
+from ..models import ApimodelsDeleteBulkPartySessionsAPIResponse
 from ..models import ApimodelsJoinByCodeRequest
 from ..models import ApimodelsKickResponse
 from ..models import ApimodelsPartyQueryResponse
@@ -40,6 +42,7 @@ from ..models import ApimodelsSessionInviteResponse
 from ..models import ApimodelsUpdatePartyRequest
 from ..models import ResponseError
 
+from ..operations.party import AdminDeleteBulkParties
 from ..operations.party import AdminQueryParties
 from ..operations.party import AdminSyncNativeSession
 from ..operations.party import PublicCreateParty
@@ -57,6 +60,108 @@ from ..operations.party import PublicPromotePartyLeader
 from ..operations.party import PublicQueryMyParties
 from ..operations.party import PublicRevokePartyCode
 from ..operations.party import PublicUpdateParty
+
+
+@same_doc_as(AdminDeleteBulkParties)
+def admin_delete_bulk_parties(
+    body: ApimodelsDeleteBulkPartySessionRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete bulk parties. (adminDeleteBulkParties)
+
+    Delete bulk parties.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/parties/bulk
+
+        method: DELETE
+
+        tags: ["Party"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsDeleteBulkPartySessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsDeleteBulkPartySessionsAPIResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteBulkParties.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminDeleteBulkParties)
+async def admin_delete_bulk_parties_async(
+    body: ApimodelsDeleteBulkPartySessionRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete bulk parties. (adminDeleteBulkParties)
+
+    Delete bulk parties.
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/parties/bulk
+
+        method: DELETE
+
+        tags: ["Party"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsDeleteBulkPartySessionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApimodelsDeleteBulkPartySessionsAPIResponse (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeleteBulkParties.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminQueryParties)
@@ -901,6 +1006,7 @@ def public_party_invite(
     - STEAM
     - XBOX
     - PSN
+    Metadata is optional parameter which will be sent over via invitation notification and is not permanently stored in the party storage.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/invite
@@ -962,6 +1068,7 @@ async def public_party_invite_async(
     - STEAM
     - XBOX
     - PSN
+    Metadata is optional parameter which will be sent over via invitation notification and is not permanently stored in the party storage.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/invite

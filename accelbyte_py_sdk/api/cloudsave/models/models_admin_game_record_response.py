@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.models_ttl_config_dto import ModelsTTLConfigDTO
+
 
 class ModelsAdminGameRecordResponse(Model):
     """Models admin game record response (models.AdminGameRecordResponse)
@@ -43,6 +45,8 @@ class ModelsAdminGameRecordResponse(Model):
         value: (value) REQUIRED Dict[str, Any]
 
         tags: (tags) OPTIONAL List[str]
+
+        ttl_config: (ttl_config) OPTIONAL ModelsTTLConfigDTO
     """
 
     # region fields
@@ -53,6 +57,7 @@ class ModelsAdminGameRecordResponse(Model):
     updated_at: str  # REQUIRED
     value: Dict[str, Any]  # REQUIRED
     tags: List[str]  # OPTIONAL
+    ttl_config: ModelsTTLConfigDTO  # OPTIONAL
 
     # endregion fields
 
@@ -80,6 +85,12 @@ class ModelsAdminGameRecordResponse(Model):
 
     def with_tags(self, value: List[str]) -> ModelsAdminGameRecordResponse:
         self.tags = value
+        return self
+
+    def with_ttl_config(
+        self, value: ModelsTTLConfigDTO
+    ) -> ModelsAdminGameRecordResponse:
+        self.ttl_config = value
         return self
 
     # endregion with_x methods
@@ -112,6 +123,10 @@ class ModelsAdminGameRecordResponse(Model):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
             result["tags"] = []
+        if hasattr(self, "ttl_config"):
+            result["ttl_config"] = self.ttl_config.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["ttl_config"] = ModelsTTLConfigDTO()
         return result
 
     # endregion to methods
@@ -127,6 +142,7 @@ class ModelsAdminGameRecordResponse(Model):
         updated_at: str,
         value: Dict[str, Any],
         tags: Optional[List[str]] = None,
+        ttl_config: Optional[ModelsTTLConfigDTO] = None,
         **kwargs,
     ) -> ModelsAdminGameRecordResponse:
         instance = cls()
@@ -137,6 +153,8 @@ class ModelsAdminGameRecordResponse(Model):
         instance.value = value
         if tags is not None:
             instance.tags = tags
+        if ttl_config is not None:
+            instance.ttl_config = ttl_config
         return instance
 
     @classmethod
@@ -170,6 +188,12 @@ class ModelsAdminGameRecordResponse(Model):
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
             instance.tags = []
+        if "ttl_config" in dict_ and dict_["ttl_config"] is not None:
+            instance.ttl_config = ModelsTTLConfigDTO.create_from_dict(
+                dict_["ttl_config"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.ttl_config = ModelsTTLConfigDTO()
         return instance
 
     @classmethod
@@ -219,6 +243,7 @@ class ModelsAdminGameRecordResponse(Model):
             "updated_at": "updated_at",
             "value": "value",
             "tags": "tags",
+            "ttl_config": "ttl_config",
         }
 
     @staticmethod
@@ -230,6 +255,7 @@ class ModelsAdminGameRecordResponse(Model):
             "updated_at": True,
             "value": True,
             "tags": False,
+            "ttl_config": False,
         }
 
     # endregion static methods

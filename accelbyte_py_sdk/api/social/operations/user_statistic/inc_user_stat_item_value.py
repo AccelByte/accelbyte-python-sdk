@@ -56,7 +56,7 @@ class IncUserStatItemValue(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StatItemInc in body
+        body: (body) REQUIRED StatItemInc in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -91,7 +91,7 @@ class IncUserStatItemValue(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: StatItemInc  # OPTIONAL in [body]
+    body: StatItemInc  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     stat_code: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -270,19 +270,13 @@ class IncUserStatItemValue(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        stat_code: str,
-        user_id: str,
-        body: Optional[StatItemInc] = None,
-        **kwargs,
+        cls, body: StatItemInc, namespace: str, stat_code: str, user_id: str, **kwargs
     ) -> IncUserStatItemValue:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.stat_code = stat_code
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -324,7 +318,7 @@ class IncUserStatItemValue(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "statCode": True,
             "userId": True,

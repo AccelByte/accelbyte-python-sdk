@@ -28,9 +28,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ModelsPaginatedUserContributionResponse
 from ...models import ResponseError
+
+
+class SortByEnum(StrEnum):
+    CONTRIBUTEDVALUE = "contributedValue"
+    CONTRIBUTEDVALUE_ASC = "contributedValue:asc"
+    CONTRIBUTEDVALUE_DESC = "contributedValue:desc"
 
 
 class AdminListUserContributions(Operation):
@@ -62,7 +69,7 @@ class AdminListUserContributions(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         tags: (tags) OPTIONAL List[str] in query
 
@@ -90,7 +97,7 @@ class AdminListUserContributions(Operation):
     achievement_codes: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
-    sort_by: str  # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
     tags: List[str]  # OPTIONAL in [query]
 
     # endregion fields
@@ -185,7 +192,7 @@ class AdminListUserContributions(Operation):
         self.offset = value
         return self
 
-    def with_sort_by(self, value: str) -> AdminListUserContributions:
+    def with_sort_by(self, value: Union[str, SortByEnum]) -> AdminListUserContributions:
         self.sort_by = value
         return self
 
@@ -222,7 +229,7 @@ class AdminListUserContributions(Operation):
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = Union[str, SortByEnum]()
         if hasattr(self, "tags") and self.tags:
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -291,7 +298,7 @@ class AdminListUserContributions(Operation):
         achievement_codes: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[Union[str, SortByEnum]] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
     ) -> AdminListUserContributions:
@@ -340,7 +347,7 @@ class AdminListUserContributions(Operation):
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = Union[str, SortByEnum]()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -375,6 +382,16 @@ class AdminListUserContributions(Operation):
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
             "tags": "csv",  # in query
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortBy": [
+                "contributedValue",
+                "contributedValue:asc",
+                "contributedValue:desc",
+            ],  # in query
         }
 
     # endregion static methods

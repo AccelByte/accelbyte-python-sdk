@@ -30,11 +30,18 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ApimodelsPutPlatformCredentialsRequest
+from ..models import ApimodelsXblCertificateResponseBody
 from ..models import ModelsPlatformCredentials
 from ..models import ResponseError
 
 from ..operations.platform_credential import AdminDeletePlatformCredentials
+from ..operations.platform_credential import AdminDeletePlatformCredentialsByPlatformId
+from ..operations.platform_credential import (
+    AdminDeletePlatformCredentialsByPlatformIdPlatformIdEnum,
+)
 from ..operations.platform_credential import AdminGetPlatformCredentials
+from ..operations.platform_credential import AdminSyncPlatformCredentials
+from ..operations.platform_credential import AdminSyncPlatformCredentialsPlatformIdEnum
 from ..operations.platform_credential import AdminUpdatePlatformCredentials
 
 
@@ -55,7 +62,7 @@ def admin_delete_platform_credentials(
 
         tags: ["Platform Credential"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -103,7 +110,7 @@ async def admin_delete_platform_credentials_async(
 
         tags: ["Platform Credential"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -136,6 +143,112 @@ async def admin_delete_platform_credentials_async(
     )
 
 
+@same_doc_as(AdminDeletePlatformCredentialsByPlatformId)
+def admin_delete_platform_credentials_by_platform_id(
+    platform_id: Union[str, AdminDeletePlatformCredentialsByPlatformIdPlatformIdEnum],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete platform credentials by platformId (adminDeletePlatformCredentialsByPlatformId)
+
+    Delete platform credentials for specific platform used for Native Session sync. Supported platforms: XBOX, PSN
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}
+
+        method: DELETE
+
+        tags: ["Platform Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED Union[str, PlatformIdEnum] in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeletePlatformCredentialsByPlatformId.create(
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminDeletePlatformCredentialsByPlatformId)
+async def admin_delete_platform_credentials_by_platform_id_async(
+    platform_id: Union[str, AdminDeletePlatformCredentialsByPlatformIdPlatformIdEnum],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete platform credentials by platformId (adminDeletePlatformCredentialsByPlatformId)
+
+    Delete platform credentials for specific platform used for Native Session sync. Supported platforms: XBOX, PSN
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}
+
+        method: DELETE
+
+        tags: ["Platform Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED Union[str, PlatformIdEnum] in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminDeletePlatformCredentialsByPlatformId.create(
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminGetPlatformCredentials)
 def admin_get_platform_credentials(
     namespace: Optional[str] = None,
@@ -150,6 +263,14 @@ def admin_get_platform_credentials(
     - clientSecret: Auth Server (Client Credential) Secret. For security, only the first few characters are shown.
     - scope: should be psn:s2s.service (For Sync non PSN member to PSN Session)
 
+    XBOX:
+    - namespace: namespace of the configuration
+    - businessPartnerCertFileName: name of pfx xbox configuration file
+    - businessPartnerCertFileBytes: the pfx configuration file
+    - updatedAt: date time when the record is updated
+    - createdAt: date time when the record is created
+    - createdBy: the actor who trigger the xbox configuration sync
+
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials
 
@@ -157,7 +278,7 @@ def admin_get_platform_credentials(
 
         tags: ["Platform Credential"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -202,6 +323,14 @@ async def admin_get_platform_credentials_async(
     - clientSecret: Auth Server (Client Credential) Secret. For security, only the first few characters are shown.
     - scope: should be psn:s2s.service (For Sync non PSN member to PSN Session)
 
+    XBOX:
+    - namespace: namespace of the configuration
+    - businessPartnerCertFileName: name of pfx xbox configuration file
+    - businessPartnerCertFileBytes: the pfx configuration file
+    - updatedAt: date time when the record is updated
+    - createdAt: date time when the record is created
+    - createdBy: the actor who trigger the xbox configuration sync
+
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/platform-credentials
 
@@ -209,7 +338,7 @@ async def admin_get_platform_credentials_async(
 
         tags: ["Platform Credential"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -235,6 +364,130 @@ async def admin_get_platform_credentials_async(
         if error:
             return None, error
     request = AdminGetPlatformCredentials.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminSyncPlatformCredentials)
+def admin_sync_platform_credentials(
+    platform_id: Union[str, AdminSyncPlatformCredentialsPlatformIdEnum],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync Platform Credentials. (adminSyncPlatformCredentials)
+
+    Sync Platform Credentials.
+
+    Supported Platforms:
+    1. XBOX
+    With this method, we will be performing sync to Platform Service to retrieve the existing PFX certificate which uploaded through IAP.
+    If the API returns Not Found, alternatively what you can do is either:
+    a. upload PFX file to IAP. You can access it from Admin Portal {BASE_URL}/admin/namespaces/{NAMESPACE}/in-app-purchase/xbox, or directly through API /platform/admin/namespaces/{NAMESPACE}/iap/config/xbl/cert.
+    b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl
+    We recommend approach #a, since you need to only upload the file once, and the service will do the sync.
+    If you set the PFX through Session service, when this API is invoked, we will sync and replace the existing PFX file with the one from Platform (IAP).
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}/sync
+
+        method: PUT
+
+        tags: ["Platform Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED Union[str, PlatformIdEnum] in path
+
+    Responses:
+        200: OK - ApimodelsXblCertificateResponseBody (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminSyncPlatformCredentials.create(
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminSyncPlatformCredentials)
+async def admin_sync_platform_credentials_async(
+    platform_id: Union[str, AdminSyncPlatformCredentialsPlatformIdEnum],
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync Platform Credentials. (adminSyncPlatformCredentials)
+
+    Sync Platform Credentials.
+
+    Supported Platforms:
+    1. XBOX
+    With this method, we will be performing sync to Platform Service to retrieve the existing PFX certificate which uploaded through IAP.
+    If the API returns Not Found, alternatively what you can do is either:
+    a. upload PFX file to IAP. You can access it from Admin Portal {BASE_URL}/admin/namespaces/{NAMESPACE}/in-app-purchase/xbox, or directly through API /platform/admin/namespaces/{NAMESPACE}/iap/config/xbl/cert.
+    b. upload PFX file through Session API /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl
+    We recommend approach #a, since you need to only upload the file once, and the service will do the sync.
+    If you set the PFX through Session service, when this API is invoked, we will sync and replace the existing PFX file with the one from Platform (IAP).
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/platform-credentials/{platformId}/sync
+
+        method: PUT
+
+        tags: ["Platform Credential"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED Union[str, PlatformIdEnum] in path
+
+    Responses:
+        200: OK - ApimodelsXblCertificateResponseBody (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminSyncPlatformCredentials.create(
+        platform_id=platform_id,
         namespace=namespace,
     )
     return await run_request_async(

@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.api_image_list_item import ApiImageListItem
+from ..models.api_paging_info import ApiPagingInfo
 
 
 class ApiImageList(Model):
@@ -35,11 +36,14 @@ class ApiImageList(Model):
 
     Properties:
         images: (images) REQUIRED List[ApiImageListItem]
+
+        paging: (paging) REQUIRED ApiPagingInfo
     """
 
     # region fields
 
     images: List[ApiImageListItem]  # REQUIRED
+    paging: ApiPagingInfo  # REQUIRED
 
     # endregion fields
 
@@ -47,6 +51,10 @@ class ApiImageList(Model):
 
     def with_images(self, value: List[ApiImageListItem]) -> ApiImageList:
         self.images = value
+        return self
+
+    def with_paging(self, value: ApiPagingInfo) -> ApiImageList:
+        self.paging = value
         return self
 
     # endregion with_x methods
@@ -61,6 +69,10 @@ class ApiImageList(Model):
             ]
         elif include_empty:
             result["images"] = []
+        if hasattr(self, "paging"):
+            result["paging"] = self.paging.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["paging"] = ApiPagingInfo()
         return result
 
     # endregion to methods
@@ -68,9 +80,12 @@ class ApiImageList(Model):
     # region static methods
 
     @classmethod
-    def create(cls, images: List[ApiImageListItem], **kwargs) -> ApiImageList:
+    def create(
+        cls, images: List[ApiImageListItem], paging: ApiPagingInfo, **kwargs
+    ) -> ApiImageList:
         instance = cls()
         instance.images = images
+        instance.paging = paging
         return instance
 
     @classmethod
@@ -85,6 +100,12 @@ class ApiImageList(Model):
             ]
         elif include_empty:
             instance.images = []
+        if "paging" in dict_ and dict_["paging"] is not None:
+            instance.paging = ApiPagingInfo.create_from_dict(
+                dict_["paging"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.paging = ApiPagingInfo()
         return instance
 
     @classmethod
@@ -125,12 +146,14 @@ class ApiImageList(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "images": "images",
+            "paging": "paging",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "images": True,
+            "paging": True,
         }
 
     # endregion static methods

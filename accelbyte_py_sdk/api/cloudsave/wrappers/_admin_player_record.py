@@ -1028,8 +1028,6 @@ def admin_post_player_public_record_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
@@ -1137,8 +1135,6 @@ async def admin_post_player_public_record_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
@@ -1248,8 +1244,6 @@ def admin_post_player_record_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Record Metadata
@@ -1377,8 +1371,6 @@ async def admin_post_player_record_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Record Metadata
@@ -1496,8 +1488,6 @@ def admin_put_player_public_record_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
@@ -1593,8 +1583,6 @@ async def admin_put_player_public_record_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
@@ -1692,8 +1680,6 @@ def admin_put_player_record_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Record Metadata
@@ -1809,8 +1795,6 @@ async def admin_put_player_record_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Record Metadata
@@ -1901,6 +1885,7 @@ def admin_put_player_records_handler_v1(
 
     This endpoints will create new player record or replace the existing player record in bulk.
     Maximum bulk key limit per request 10.
+    Maximum total size of the request payload is 5 MB.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
@@ -1954,6 +1939,7 @@ async def admin_put_player_records_handler_v1_async(
 
     This endpoints will create new player record or replace the existing player record in bulk.
     Maximum bulk key limit per request 10.
+    Maximum total size of the request payload is 5 MB.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk

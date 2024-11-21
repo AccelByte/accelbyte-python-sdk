@@ -31,6 +31,7 @@ from ..api.gdpr.models import DtoListFinishedDataDeletion
 from ..api.gdpr.models import DtoListFinishedDataRequests
 from ..api.gdpr.models import DtoPlatformAccountClosureClientRequest
 from ..api.gdpr.models import DtoPlatformAccountClosureClientResponse
+from ..api.gdpr.models import DtoS2SDataRequestSummary
 from ..api.gdpr.models import DtoServiceConfigDTO
 from ..api.gdpr.models import DtoServiceConfigurationDTO
 from ..api.gdpr.models import DtoServiceConfigurationUpdateRequest
@@ -75,6 +76,7 @@ def create_dto_finished_data_request_example() -> DtoFinishedDataRequest:
     instance = DtoFinishedDataRequest()
     instance.finished_date = randomize("date")
     instance.request_date = randomize("date")
+    instance.request_id = randomize()
     instance.status = randomize()
     instance.user_id = randomize("uid")
     instance.data_expiration_date = randomize("date")
@@ -112,6 +114,14 @@ def create_dto_platform_account_closure_client_response_example() -> (
     instance.platform = randomize()
     instance.secret = randomize()
     instance.updated_at = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_dto_s2s_data_request_summary_example() -> DtoS2SDataRequestSummary:
+    instance = DtoS2SDataRequestSummary()
+    instance.status = randomize()
+    instance.failed_message = randomize()
+    instance.url = randomize("url")
     return instance
 
 
@@ -251,6 +261,7 @@ def create_models_s2s_data_retrieval_response_example() -> (
     instance = ModelsS2SDataRetrievalResponse()
     instance.namespace = randomize("slug")
     instance.request_date = randomize("date")
+    instance.request_id = randomize()
     instance.user_id = randomize("uid")
     return instance
 

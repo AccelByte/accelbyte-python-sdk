@@ -213,6 +213,7 @@ from ..api.platform.models import IAPItemConfigUpdate
 from ..api.platform.models import IAPItemEntry
 from ..api.platform.models import IAPItemFlatEntry
 from ..api.platform.models import IAPItemMappingInfo
+from ..api.platform.models import IAPOrderConsumeDetailInfo
 from ..api.platform.models import IAPOrderInfo
 from ..api.platform.models import IAPOrderPagingSlicedResult
 from ..api.platform.models import Image
@@ -480,6 +481,9 @@ from ..api.platform.models import WalletTransactionPagingSlicedResult
 from ..api.platform.models import WxPayConfigInfo
 from ..api.platform.models import WxPayConfigRequest
 from ..api.platform.models import XblAchievementUpdateRequest
+from ..api.platform.models import XblClawbackContractV2
+from ..api.platform.models import XblClawbackEvent
+from ..api.platform.models import XblClawbackEventSubscriptionData
 from ..api.platform.models import XblDLCSyncRequest
 from ..api.platform.models import XblEntitlementOwnershipRequest
 from ..api.platform.models import XblIAPConfigInfo
@@ -2584,6 +2588,25 @@ def create_iap_item_flat_entry_example() -> IAPItemFlatEntry:
 def create_iap_item_mapping_info_example() -> IAPItemMappingInfo:
     instance = IAPItemMappingInfo()
     instance.data = [create_iap_item_flat_entry_example()]
+    return instance
+
+
+def create_iap_order_consume_detail_info_example() -> IAPOrderConsumeDetailInfo:
+    instance = IAPOrderConsumeDetailInfo()
+    instance.correlation_id = randomize()
+    instance.iap_order_no = randomize()
+    instance.id_ = randomize()
+    instance.item_id = randomize()
+    instance.item_sku = randomize()
+    instance.line_item_order_id = randomize()
+    instance.namespace = randomize("slug")
+    instance.order_id = randomize()
+    instance.platform = randomize()
+    instance.product_id = randomize("uid")
+    instance.quantity_consumed = randomize("int", min_val=1, max_val=1000)
+    instance.quantity_revoked = randomize("int", min_val=1, max_val=1000)
+    instance.status = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -5680,6 +5703,46 @@ def create_xbl_achievement_update_request_example() -> XblAchievementUpdateReque
     return instance
 
 
+def create_xbl_clawback_contract_v2_example() -> XblClawbackContractV2:
+    instance = XblClawbackContractV2()
+    instance.event_state = randomize()
+    instance.line_item_id = randomize()
+    instance.order_id = randomize()
+    instance.product_id = randomize("uid")
+    instance.event_date = randomize()
+    instance.product_type = randomize()
+    instance.purchased_date = randomize()
+    instance.sandbox_id = randomize()
+    instance.sku_id = randomize()
+    instance.subscription_data = create_xbl_clawback_event_subscription_data_example()
+    return instance
+
+
+def create_xbl_clawback_event_example() -> XblClawbackEvent:
+    instance = XblClawbackEvent()
+    instance.data = create_xbl_clawback_contract_v2_example()
+    instance.id_ = randomize()
+    instance.source = randomize()
+    instance.type_ = randomize()
+    instance.datacontenttype = randomize()
+    instance.spec_version = randomize()
+    instance.subject = randomize()
+    instance.time = randomize()
+    instance.traceparent = randomize()
+    return instance
+
+
+def create_xbl_clawback_event_subscription_data_example() -> (
+    XblClawbackEventSubscriptionData
+):
+    instance = XblClawbackEventSubscriptionData()
+    instance.consumed_duration_in_days = randomize("int", min_val=1, max_val=1000)
+    instance.date_time = randomize()
+    instance.duration_in_days = randomize("int", min_val=1, max_val=1000)
+    instance.recurrence_id = randomize()
+    return instance
+
+
 def create_xbl_dlc_sync_request_example() -> XblDLCSyncRequest:
     instance = XblDLCSyncRequest()
     instance.xsts_token = randomize()
@@ -5700,6 +5763,10 @@ def create_xbl_iap_config_info_example() -> XblIAPConfigInfo:
     instance.namespace = randomize("slug")
     instance.business_partner_cert_expired_time = randomize("date")
     instance.business_partner_cert_file_name = randomize()
+    instance.enable_clawback = randomize("bool")
+    instance.entra_app_client_id = randomize()
+    instance.entra_app_client_secret = randomize()
+    instance.entra_tenant_id = randomize()
     instance.password = randomize("password")
     instance.relying_party_cert = randomize()
     return instance
@@ -5707,6 +5774,10 @@ def create_xbl_iap_config_info_example() -> XblIAPConfigInfo:
 
 def create_xbl_iap_config_request_example() -> XblIAPConfigRequest:
     instance = XblIAPConfigRequest()
+    instance.enable_clawback = randomize("bool")
+    instance.entra_app_client_id = randomize()
+    instance.entra_app_client_secret = randomize()
+    instance.entra_tenant_id = randomize()
     instance.relying_party_cert = randomize()
     return instance
 

@@ -1,3 +1,11 @@
+<a name="v0.71.0"></a>
+## [v0.71.0]
+### ci
+- **:** avoid lima build machines
+### feat
+- **:** add challenge service integration tests
+
+
 <a name="v0.70.0"></a>
 ## [v0.70.0]
 ### test

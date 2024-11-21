@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "2.0.0"
+__version__ = "4.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -70,6 +70,10 @@ from ._base_legal_policies import retrieve_single_policy_async
 
 from ._base_legal_policies_with_namespace import create_policy_1
 from ._base_legal_policies_with_namespace import create_policy_1_async
+from ._base_legal_policies_with_namespace import create_policy_under_base_policy
+from ._base_legal_policies_with_namespace import create_policy_under_base_policy_async
+from ._base_legal_policies_with_namespace import delete_base_policy
+from ._base_legal_policies_with_namespace import delete_base_policy_async
 from ._base_legal_policies_with_namespace import partial_update_policy_1
 from ._base_legal_policies_with_namespace import partial_update_policy_1_async
 from ._base_legal_policies_with_namespace import (
@@ -77,6 +81,10 @@ from ._base_legal_policies_with_namespace import (
 )
 from ._base_legal_policies_with_namespace import (
     retrieve_all_legal_policies_by_namespace_async,
+)
+from ._base_legal_policies_with_namespace import retrieve_all_policies_from_base_policy
+from ._base_legal_policies_with_namespace import (
+    retrieve_all_policies_from_base_policy_async,
 )
 from ._base_legal_policies_with_namespace import retrieve_all_policy_types_1
 from ._base_legal_policies_with_namespace import retrieve_all_policy_types_1_async
@@ -109,6 +117,8 @@ from ._localized_policy_versions_with_namespace import create_localized_policy_v
 from ._localized_policy_versions_with_namespace import (
     create_localized_policy_version_1_async,
 )
+from ._localized_policy_versions_with_namespace import delete_localized_policy
+from ._localized_policy_versions_with_namespace import delete_localized_policy_async
 from ._localized_policy_versions_with_namespace import request_presigned_url_1
 from ._localized_policy_versions_with_namespace import request_presigned_url_1_async
 from ._localized_policy_versions_with_namespace import (
@@ -151,6 +161,8 @@ from ._policies import set_default_policy_2_async
 from ._policies import update_policy
 from ._policies import update_policy_async
 
+from ._policies_with_namespace import delete_policy
+from ._policies_with_namespace import delete_policy_async
 from ._policies_with_namespace import set_default_policy_3
 from ._policies_with_namespace import set_default_policy_3_async
 from ._policies_with_namespace import update_policy_1
@@ -167,10 +179,14 @@ from ._policy_versions import update_policy_version_async
 
 from ._policy_versions_with_namespace import create_policy_version_1
 from ._policy_versions_with_namespace import create_policy_version_1_async
+from ._policy_versions_with_namespace import delete_policy_version
+from ._policy_versions_with_namespace import delete_policy_version_async
 from ._policy_versions_with_namespace import publish_policy_version_1
 from ._policy_versions_with_namespace import publish_policy_version_1_async
 from ._policy_versions_with_namespace import retrieve_single_policy_version_1
 from ._policy_versions_with_namespace import retrieve_single_policy_version_1_async
+from ._policy_versions_with_namespace import unpublish_policy_version
+from ._policy_versions_with_namespace import unpublish_policy_version_async
 from ._policy_versions_with_namespace import update_policy_version_1
 from ._policy_versions_with_namespace import update_policy_version_1_async
 

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "2.0.0"
+__version__ = "4.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -17,12 +17,24 @@ __email__ = "dev@accelbyte.net"
 from .accept_agreement_request import AcceptAgreementRequest
 from .accept_agreement_response import AcceptAgreementResponse
 from .create_base_policy_request import CreateBasePolicyRequest
+from .create_base_policy_request import (
+    CountryTypeEnum as CreateBasePolicyRequestCountryTypeEnum,
+)
 from .create_base_policy_request_v2 import CreateBasePolicyRequestV2
+from .create_base_policy_request_v2 import (
+    CountryTypeEnum as CreateBasePolicyRequestV2CountryTypeEnum,
+)
 from .create_base_policy_response import CreateBasePolicyResponse
+from .create_base_policy_response import (
+    CountryTypeEnum as CreateBasePolicyResponseCountryTypeEnum,
+)
 from .create_localized_policy_version_request import CreateLocalizedPolicyVersionRequest
 from .create_localized_policy_version_response import (
     CreateLocalizedPolicyVersionResponse,
 )
+from .create_policy_request import CreatePolicyRequest
+from .create_policy_request import CountryTypeEnum as CreatePolicyRequestCountryTypeEnum
+from .create_policy_response import CreatePolicyResponse
 from .create_policy_version_request import CreatePolicyVersionRequest
 from .create_policy_version_response import CreatePolicyVersionResponse
 from .download_exported_agreements_in_csv_response import (
@@ -53,6 +65,9 @@ from .retrieve_localized_policy_version_public_response import (
 from .retrieve_localized_policy_version_response import (
     RetrieveLocalizedPolicyVersionResponse,
 )
+from .retrieve_policies_from_base_policy_response import (
+    RetrievePoliciesFromBasePolicyResponse,
+)
 from .retrieve_policy_public_response import RetrievePolicyPublicResponse
 from .retrieve_policy_response import RetrievePolicyResponse
 from .retrieve_policy_type_response import RetrievePolicyTypeResponse
@@ -68,7 +83,13 @@ from .retrieve_user_info_cache_status_response import (
     RetrieveUserInfoCacheStatusResponse,
 )
 from .update_base_policy_request import UpdateBasePolicyRequest
+from .update_base_policy_request import (
+    CountryTypeEnum as UpdateBasePolicyRequestCountryTypeEnum,
+)
 from .update_base_policy_request_v2 import UpdateBasePolicyRequestV2
+from .update_base_policy_request_v2 import (
+    CountryTypeEnum as UpdateBasePolicyRequestV2CountryTypeEnum,
+)
 from .update_base_policy_response import UpdateBasePolicyResponse
 from .update_localized_policy_version_request import UpdateLocalizedPolicyVersionRequest
 from .update_localized_policy_version_response import (

@@ -599,6 +599,7 @@ def create_model_user_request_friend_request_example() -> ModelUserRequestFriend
     instance = ModelUserRequestFriendRequest()
     instance.friend_id = randomize()
     instance.friend_public_id = randomize()
+    instance.metadata = {randomize(): randomize()}
     return instance
 
 
@@ -763,6 +764,7 @@ def create_models_config_example() -> ModelsConfig:
     instance.namespace = randomize("slug")
     instance.profanity_filter = randomize("bool")
     instance.ready_consent_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.request_metadata_max_size = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -794,6 +796,7 @@ def create_models_config_req_example() -> ModelsConfigReq:
     instance.max_party_member = randomize("int", min_val=1, max_val=1000)
     instance.profanity_filter = randomize("bool")
     instance.ready_consent_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.request_metadata_max_size = randomize("int", min_val=1, max_val=1000)
     instance.unregister_delay = randomize("int", min_val=1, max_val=1000)
     return instance
 

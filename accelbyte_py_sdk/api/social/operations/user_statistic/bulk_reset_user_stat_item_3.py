@@ -55,7 +55,7 @@ class BulkResetUserStatItem3(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL List[BulkStatItemReset] in body
+        body: (body) REQUIRED List[BulkStatItemReset] in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -84,7 +84,7 @@ class BulkResetUserStatItem3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: List[BulkStatItemReset]  # OPTIONAL in [body]
+    body: List[BulkStatItemReset]  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
 
@@ -246,17 +246,12 @@ class BulkResetUserStatItem3(Operation):
 
     @classmethod
     def create(
-        cls,
-        namespace: str,
-        user_id: str,
-        body: Optional[List[BulkStatItemReset]] = None,
-        **kwargs,
+        cls, body: List[BulkStatItemReset], namespace: str, user_id: str, **kwargs
     ) -> BulkResetUserStatItem3:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -294,7 +289,7 @@ class BulkResetUserStatItem3(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "userId": True,
         }

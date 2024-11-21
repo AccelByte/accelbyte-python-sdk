@@ -32,8 +32,107 @@ from ....core import same_doc_as
 from ..models import ErrorEntity
 from ..models import UpdatePolicyRequest
 
+from ..operations.policies_with_namespace import DeletePolicy
 from ..operations.policies_with_namespace import SetDefaultPolicy3
 from ..operations.policies_with_namespace import UpdatePolicy1
+
+
+@same_doc_as(DeletePolicy)
+def delete_policy(
+    policy_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete Policy (deletePolicy)
+
+    Delete policy.Can only be deleted if match these criteria:
+
+
+      * Policy is not default policy
+      * Policy version under policy has never been accepted by any user
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/{policyId}
+
+        method: DELETE
+
+        tags: ["Policies With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_id: (policyId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id | 40072: errors.net.accelbyte.platform.legal.policy_have_published_policy_version | 40073: errors.net.accelbyte.platform.legal.policy_have_published_policy_version_and_already_accepted_by_user | 40074: errors.net.accelbyte.platform.legal.policy_is_default_policy)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeletePolicy.create(
+        policy_id=policy_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeletePolicy)
+async def delete_policy_async(
+    policy_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete Policy (deletePolicy)
+
+    Delete policy.Can only be deleted if match these criteria:
+
+
+      * Policy is not default policy
+      * Policy version under policy has never been accepted by any user
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/{policyId}
+
+        method: DELETE
+
+        tags: ["Policies With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_id: (policyId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id | 40072: errors.net.accelbyte.platform.legal.policy_have_published_policy_version | 40073: errors.net.accelbyte.platform.legal.policy_have_published_policy_version_and_already_accepted_by_user | 40074: errors.net.accelbyte.platform.legal.policy_is_default_policy)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeletePolicy.create(
+        policy_id=policy_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(SetDefaultPolicy3)
@@ -136,7 +235,7 @@ def update_policy_1(
 ):
     """Update Country-Specific Policy (updatePolicy_1)
 
-    Update country-specific policy.
+    Update country-specific and country-group policy.
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/policies/{policyId}
@@ -184,7 +283,7 @@ async def update_policy_1_async(
 ):
     """Update Country-Specific Policy (updatePolicy_1)
 
-    Update country-specific policy.
+    Update country-specific and country-group policy.
 
     Properties:
         url: /agreement/admin/namespaces/{namespace}/policies/{policyId}

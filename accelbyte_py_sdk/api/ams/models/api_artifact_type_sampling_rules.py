@@ -37,12 +37,15 @@ class ApiArtifactTypeSamplingRules(Model):
         crashed: (crashed) REQUIRED ApiArtifactSamplingRule
 
         success: (success) REQUIRED ApiArtifactSamplingRule
+
+        unclaimed: (unclaimed) OPTIONAL ApiArtifactSamplingRule
     """
 
     # region fields
 
     crashed: ApiArtifactSamplingRule  # REQUIRED
     success: ApiArtifactSamplingRule  # REQUIRED
+    unclaimed: ApiArtifactSamplingRule  # OPTIONAL
 
     # endregion fields
 
@@ -60,6 +63,12 @@ class ApiArtifactTypeSamplingRules(Model):
         self.success = value
         return self
 
+    def with_unclaimed(
+        self, value: ApiArtifactSamplingRule
+    ) -> ApiArtifactTypeSamplingRules:
+        self.unclaimed = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -74,6 +83,10 @@ class ApiArtifactTypeSamplingRules(Model):
             result["success"] = self.success.to_dict(include_empty=include_empty)
         elif include_empty:
             result["success"] = ApiArtifactSamplingRule()
+        if hasattr(self, "unclaimed"):
+            result["unclaimed"] = self.unclaimed.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["unclaimed"] = ApiArtifactSamplingRule()
         return result
 
     # endregion to methods
@@ -85,11 +98,14 @@ class ApiArtifactTypeSamplingRules(Model):
         cls,
         crashed: ApiArtifactSamplingRule,
         success: ApiArtifactSamplingRule,
+        unclaimed: Optional[ApiArtifactSamplingRule] = None,
         **kwargs,
     ) -> ApiArtifactTypeSamplingRules:
         instance = cls()
         instance.crashed = crashed
         instance.success = success
+        if unclaimed is not None:
+            instance.unclaimed = unclaimed
         return instance
 
     @classmethod
@@ -111,6 +127,12 @@ class ApiArtifactTypeSamplingRules(Model):
             )
         elif include_empty:
             instance.success = ApiArtifactSamplingRule()
+        if "unclaimed" in dict_ and dict_["unclaimed"] is not None:
+            instance.unclaimed = ApiArtifactSamplingRule.create_from_dict(
+                dict_["unclaimed"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.unclaimed = ApiArtifactSamplingRule()
         return instance
 
     @classmethod
@@ -156,6 +178,7 @@ class ApiArtifactTypeSamplingRules(Model):
         return {
             "crashed": "crashed",
             "success": "success",
+            "unclaimed": "unclaimed",
         }
 
     @staticmethod
@@ -163,6 +186,7 @@ class ApiArtifactTypeSamplingRules(Model):
         return {
             "crashed": True,
             "success": True,
+            "unclaimed": False,
         }
 
     # endregion static methods

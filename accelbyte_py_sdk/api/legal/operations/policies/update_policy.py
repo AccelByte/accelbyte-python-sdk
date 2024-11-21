@@ -36,7 +36,7 @@ from ...models import UpdatePolicyRequest
 class UpdatePolicy(Operation):
     """Update Country-Specific Policy (updatePolicy)
 
-    Update country-specific policy.
+    Update country-specific and country-group policy.
 
     Properties:
         url: /agreement/admin/policies/{policyId}

@@ -35,6 +35,8 @@ class ApimodelsXRayTicketMatchesResult(Model):
     """Apimodels X ray ticket matches result (apimodels.XRayTicketMatchesResult)
 
     Properties:
+        actual_time_to_match: (ActualTimeToMatch) OPTIONAL str
+
         created_at: (CreatedAt) OPTIONAL str
 
         is_pivot: (IsPivot) OPTIONAL bool
@@ -64,6 +66,7 @@ class ApimodelsXRayTicketMatchesResult(Model):
 
     # region fields
 
+    actual_time_to_match: str  # OPTIONAL
     created_at: str  # OPTIONAL
     is_pivot: bool  # OPTIONAL
     latencies: Dict[str, int]  # OPTIONAL
@@ -81,6 +84,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_actual_time_to_match(self, value: str) -> ApimodelsXRayTicketMatchesResult:
+        self.actual_time_to_match = value
+        return self
 
     def with_created_at(self, value: str) -> ApimodelsXRayTicketMatchesResult:
         self.created_at = value
@@ -148,6 +155,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "actual_time_to_match"):
+            result["ActualTimeToMatch"] = str(self.actual_time_to_match)
+        elif include_empty:
+            result["ActualTimeToMatch"] = ""
         if hasattr(self, "created_at"):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
@@ -217,6 +228,7 @@ class ApimodelsXRayTicketMatchesResult(Model):
     @classmethod
     def create(
         cls,
+        actual_time_to_match: Optional[str] = None,
         created_at: Optional[str] = None,
         is_pivot: Optional[bool] = None,
         latencies: Optional[Dict[str, int]] = None,
@@ -233,6 +245,8 @@ class ApimodelsXRayTicketMatchesResult(Model):
         **kwargs,
     ) -> ApimodelsXRayTicketMatchesResult:
         instance = cls()
+        if actual_time_to_match is not None:
+            instance.actual_time_to_match = actual_time_to_match
         if created_at is not None:
             instance.created_at = created_at
         if is_pivot is not None:
@@ -268,6 +282,10 @@ class ApimodelsXRayTicketMatchesResult(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "ActualTimeToMatch" in dict_ and dict_["ActualTimeToMatch"] is not None:
+            instance.actual_time_to_match = str(dict_["ActualTimeToMatch"])
+        elif include_empty:
+            instance.actual_time_to_match = ""
         if "CreatedAt" in dict_ and dict_["CreatedAt"] is not None:
             instance.created_at = str(dict_["CreatedAt"])
         elif include_empty:
@@ -372,6 +390,7 @@ class ApimodelsXRayTicketMatchesResult(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "ActualTimeToMatch": "actual_time_to_match",
             "CreatedAt": "created_at",
             "IsPivot": "is_pivot",
             "Latencies": "latencies",
@@ -390,6 +409,7 @@ class ApimodelsXRayTicketMatchesResult(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "ActualTimeToMatch": False,
             "CreatedAt": False,
             "IsPivot": False,
             "Latencies": False,

@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.cycle_override import CycleOverride
+
 
 class SetByEnum(StrEnum):
     CLIENT = "CLIENT"
@@ -81,6 +83,8 @@ class StatInfo(Model):
 
         cycle_ids: (cycleIds) OPTIONAL List[str]
 
+        cycle_overrides: (cycleOverrides) OPTIONAL List[CycleOverride]
+
         description: (description) OPTIONAL str
 
         global_aggregation_method: (globalAggregationMethod) OPTIONAL Union[str, GlobalAggregationMethodEnum]
@@ -109,6 +113,7 @@ class StatInfo(Model):
     status: Union[str, StatusEnum]  # REQUIRED
     updated_at: str  # REQUIRED
     cycle_ids: List[str]  # OPTIONAL
+    cycle_overrides: List[CycleOverride]  # OPTIONAL
     description: str  # OPTIONAL
     global_aggregation_method: Union[str, GlobalAggregationMethodEnum]  # OPTIONAL
     maximum: float  # OPTIONAL
@@ -170,6 +175,10 @@ class StatInfo(Model):
 
     def with_cycle_ids(self, value: List[str]) -> StatInfo:
         self.cycle_ids = value
+        return self
+
+    def with_cycle_overrides(self, value: List[CycleOverride]) -> StatInfo:
+        self.cycle_overrides = value
         return self
 
     def with_description(self, value: str) -> StatInfo:
@@ -258,6 +267,12 @@ class StatInfo(Model):
             result["cycleIds"] = [str(i0) for i0 in self.cycle_ids]
         elif include_empty:
             result["cycleIds"] = []
+        if hasattr(self, "cycle_overrides"):
+            result["cycleOverrides"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.cycle_overrides
+            ]
+        elif include_empty:
+            result["cycleOverrides"] = []
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -306,6 +321,7 @@ class StatInfo(Model):
         status: Union[str, StatusEnum],
         updated_at: str,
         cycle_ids: Optional[List[str]] = None,
+        cycle_overrides: Optional[List[CycleOverride]] = None,
         description: Optional[str] = None,
         global_aggregation_method: Optional[
             Union[str, GlobalAggregationMethodEnum]
@@ -333,6 +349,8 @@ class StatInfo(Model):
         instance.updated_at = updated_at
         if cycle_ids is not None:
             instance.cycle_ids = cycle_ids
+        if cycle_overrides is not None:
+            instance.cycle_overrides = cycle_overrides
         if description is not None:
             instance.description = description
         if global_aggregation_method is not None:
@@ -409,6 +427,13 @@ class StatInfo(Model):
             instance.cycle_ids = [str(i0) for i0 in dict_["cycleIds"]]
         elif include_empty:
             instance.cycle_ids = []
+        if "cycleOverrides" in dict_ and dict_["cycleOverrides"] is not None:
+            instance.cycle_overrides = [
+                CycleOverride.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["cycleOverrides"]
+            ]
+        elif include_empty:
+            instance.cycle_overrides = []
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -490,6 +515,7 @@ class StatInfo(Model):
             "status": "status",
             "updatedAt": "updated_at",
             "cycleIds": "cycle_ids",
+            "cycleOverrides": "cycle_overrides",
             "description": "description",
             "globalAggregationMethod": "global_aggregation_method",
             "maximum": "maximum",
@@ -514,6 +540,7 @@ class StatInfo(Model):
             "status": True,
             "updatedAt": True,
             "cycleIds": False,
+            "cycleOverrides": False,
             "description": False,
             "globalAggregationMethod": False,
             "maximum": False,

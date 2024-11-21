@@ -31,8 +31,119 @@ from ....core import same_doc_as
 
 from ..models import ModelsResponseError
 
+from ..operations.ttl_config import DeleteAdminGameRecordTTLConfig
 from ..operations.ttl_config import DeleteGameBinaryRecordTTLConfig
 from ..operations.ttl_config import DeleteGameRecordTTLConfig
+
+
+@same_doc_as(DeleteAdminGameRecordTTLConfig)
+def delete_admin_game_record_ttl_config(
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete admin game record TTL config (deleteAdminGameRecordTTLConfig)
+
+    ## Description
+
+    This endpoints will delete the ttl config of the admin game record
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}/ttl
+
+        method: DELETE
+
+        tags: ["TTLConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (TTL config deleted)
+
+        400: Bad Request - ModelsResponseError (20002: validation error)
+
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError
+
+        500: Internal Server Error - ModelsResponseError
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteAdminGameRecordTTLConfig.create(
+        key=key,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteAdminGameRecordTTLConfig)
+async def delete_admin_game_record_ttl_config_async(
+    key: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete admin game record TTL config (deleteAdminGameRecordTTLConfig)
+
+    ## Description
+
+    This endpoints will delete the ttl config of the admin game record
+
+    Properties:
+        url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}/ttl
+
+        method: DELETE
+
+        tags: ["TTLConfig"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        key: (key) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (TTL config deleted)
+
+        400: Bad Request - ModelsResponseError (20002: validation error)
+
+        401: Unauthorized - ModelsResponseError (20001: unauthorized access)
+
+        403: Forbidden - ModelsResponseError (20013: insufficient permission)
+
+        404: Not Found - ModelsResponseError
+
+        500: Internal Server Error - ModelsResponseError
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteAdminGameRecordTTLConfig.create(
+        key=key,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteGameBinaryRecordTTLConfig)

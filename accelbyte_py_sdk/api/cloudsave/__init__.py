@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.21.1"
+__version__ = "3.24.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -245,6 +245,8 @@ from .wrappers import public_list_tags_handler_v1
 from .wrappers import public_list_tags_handler_v1_async
 
 # ttl_config
+from .wrappers import delete_admin_game_record_ttl_config
+from .wrappers import delete_admin_game_record_ttl_config_async
 from .wrappers import delete_game_binary_record_ttl_config
 from .wrappers import delete_game_binary_record_ttl_config_async
 from .wrappers import delete_game_record_ttl_config

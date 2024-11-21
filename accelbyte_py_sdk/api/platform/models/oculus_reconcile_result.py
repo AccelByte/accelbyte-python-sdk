@@ -32,6 +32,8 @@ from ....core import StrEnum
 class IapOrderStatusEnum(StrEnum):
     FAILED = "FAILED"
     FULFILLED = "FULFILLED"
+    PARTIAL_REVOKED = "PARTIAL_REVOKED"
+    REVOKED = "REVOKED"
     VERIFIED = "VERIFIED"
 
 
@@ -236,7 +238,13 @@ class OculusReconcileResult(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "iapOrderStatus": ["FAILED", "FULFILLED", "VERIFIED"],
+            "iapOrderStatus": [
+                "FAILED",
+                "FULFILLED",
+                "PARTIAL_REVOKED",
+                "REVOKED",
+                "VERIFIED",
+            ],
             "itemIdentityType": ["ITEM_ID", "ITEM_SKU"],
         }
 

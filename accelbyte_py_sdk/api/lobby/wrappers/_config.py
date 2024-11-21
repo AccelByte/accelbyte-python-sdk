@@ -84,7 +84,8 @@ def admin_export_config_v1(
         "allowInviteNonConnectedUser",
         "keepPresenceActivityOnDisconnect",
         "maxDSWaitTime",
-        "maxFriendsLimit"
+        "maxFriendsLimit",
+        "requestMetadataMaxSize"
         ],
         "properties": {
         "allowInviteNonConnectedUser": {
@@ -160,6 +161,10 @@ def admin_export_config_v1(
         "type": "integer",
         "format": "int64"
         },
+        "requestMetadataMaxSize": {
+        "type": "integer",
+        "format": "int32"
+        },
         "unregisterDelay": {
         "type": "integer",
         "format": "int64"
@@ -208,7 +213,8 @@ def admin_export_config_v1(
       "allowInviteNonConnectedUser",
       "keepPresenceActivityOnDisconnect",
       "maxDSWaitTime",
-      "maxFriendsLimit"
+      "maxFriendsLimit",
+      "requestMetadataMaxSize"
      ],
      "properties": {
       "allowInviteNonConnectedUser": {
@@ -283,6 +289,10 @@ def admin_export_config_v1(
       "readyConsentTimeout": {
        "type": "integer",
        "format": "int64"
+      },
+      "requestMetadataMaxSize": {
+       "type": "integer",
+       "format": "int32"
       },
       "unregisterDelay": {
        "type": "integer",
@@ -342,7 +352,8 @@ async def admin_export_config_v1_async(
         "allowInviteNonConnectedUser",
         "keepPresenceActivityOnDisconnect",
         "maxDSWaitTime",
-        "maxFriendsLimit"
+        "maxFriendsLimit",
+        "requestMetadataMaxSize"
         ],
         "properties": {
         "allowInviteNonConnectedUser": {
@@ -418,6 +429,10 @@ async def admin_export_config_v1_async(
         "type": "integer",
         "format": "int64"
         },
+        "requestMetadataMaxSize": {
+        "type": "integer",
+        "format": "int32"
+        },
         "unregisterDelay": {
         "type": "integer",
         "format": "int64"
@@ -466,7 +481,8 @@ async def admin_export_config_v1_async(
       "allowInviteNonConnectedUser",
       "keepPresenceActivityOnDisconnect",
       "maxDSWaitTime",
-      "maxFriendsLimit"
+      "maxFriendsLimit",
+      "requestMetadataMaxSize"
      ],
      "properties": {
       "allowInviteNonConnectedUser": {
@@ -541,6 +557,10 @@ async def admin_export_config_v1_async(
       "readyConsentTimeout": {
        "type": "integer",
        "format": "int64"
+      },
+      "requestMetadataMaxSize": {
+       "type": "integer",
+       "format": "int32"
       },
       "unregisterDelay": {
        "type": "integer",

@@ -58,7 +58,7 @@ class BulkGetOrDefaultByUserId(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkUserStatItemByStatCodes in body
+        body: (body) REQUIRED BulkUserStatItemByStatCodes in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -87,7 +87,7 @@ class BulkGetOrDefaultByUserId(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: BulkUserStatItemByStatCodes  # OPTIONAL in [body]
+    body: BulkUserStatItemByStatCodes  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
     additional_key: str  # OPTIONAL in [query]
@@ -262,17 +262,16 @@ class BulkGetOrDefaultByUserId(Operation):
     @classmethod
     def create(
         cls,
+        body: BulkUserStatItemByStatCodes,
         namespace: str,
         user_id: str,
-        body: Optional[BulkUserStatItemByStatCodes] = None,
         additional_key: Optional[str] = None,
         **kwargs,
     ) -> BulkGetOrDefaultByUserId:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
         instance.user_id = user_id
-        if body is not None:
-            instance.body = body
         if additional_key is not None:
             instance.additional_key = additional_key
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -316,7 +315,7 @@ class BulkGetOrDefaultByUserId(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
             "userId": True,
             "additionalKey": False,

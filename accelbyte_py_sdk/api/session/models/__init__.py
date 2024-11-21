@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.19.0"
+__version__ = "3.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -35,6 +35,12 @@ from .apimodels_delete_bulk_game_session_request import (
 )
 from .apimodels_delete_bulk_game_sessions_api_response import (
     ApimodelsDeleteBulkGameSessionsAPIResponse,
+)
+from .apimodels_delete_bulk_party_session_request import (
+    ApimodelsDeleteBulkPartySessionRequest,
+)
+from .apimodels_delete_bulk_party_sessions_api_response import (
+    ApimodelsDeleteBulkPartySessionsAPIResponse,
 )
 from .apimodels_ds_information_response import ApimodelsDSInformationResponse
 from .apimodels_environment_variable_list_response import (
@@ -70,6 +76,9 @@ from .apimodels_players_current_platform_response import (
     ApimodelsPlayersCurrentPlatformResponse,
 )
 from .apimodels_promote_leader_request import ApimodelsPromoteLeaderRequest
+from .apimodels_psn_app_server_credential_record import (
+    ApimodelsPSNAppServerCredentialRecord,
+)
 from .apimodels_public_configuration import ApimodelsPublicConfiguration
 from .apimodels_put_global_configuration_request import (
     ApimodelsPutGlobalConfigurationRequest,
@@ -80,6 +89,9 @@ from .apimodels_put_platform_credentials_request import (
 from .apimodels_request_member import ApimodelsRequestMember
 from .apimodels_response_delete_bulk_game_sessions import (
     ApimodelsResponseDeleteBulkGameSessions,
+)
+from .apimodels_response_delete_bulk_party_sessions import (
+    ApimodelsResponseDeleteBulkPartySessions,
 )
 from .apimodels_server_secret import ApimodelsServerSecret
 from .apimodels_session_invite_request import ApimodelsSessionInviteRequest
@@ -98,6 +110,7 @@ from .apimodels_update_game_session_member_status_response import (
 from .apimodels_update_game_session_request import ApimodelsUpdateGameSessionRequest
 from .apimodels_update_party_request import ApimodelsUpdatePartyRequest
 from .apimodels_user_response import ApimodelsUserResponse
+from .apimodels_xbl_certificate_response_body import ApimodelsXblCertificateResponseBody
 from .logconfig_configuration import LogconfigConfiguration
 from .logconfig_configuration import LogLevelEnum as LogconfigConfigurationLogLevelEnum
 from .model_native_session import ModelNativeSession
@@ -119,4 +132,5 @@ from .models_request_reconcile_max_active_session import (
 from .models_team import ModelsTeam
 from .models_user_info_response import ModelsUserInfoResponse
 from .models_user_platform_info import ModelsUserPlatformInfo
+from .models_xbl_certificate_credential import ModelsXBLCertificateCredential
 from .response_error import ResponseError

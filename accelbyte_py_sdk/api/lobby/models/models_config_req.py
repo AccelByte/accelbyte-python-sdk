@@ -72,6 +72,8 @@ class ModelsConfigReq(Model):
 
         ready_consent_timeout: (readyConsentTimeout) OPTIONAL int
 
+        request_metadata_max_size: (requestMetadataMaxSize) OPTIONAL int
+
         unregister_delay: (unregisterDelay) OPTIONAL int
     """
 
@@ -97,6 +99,7 @@ class ModelsConfigReq(Model):
     max_party_member: int  # OPTIONAL
     profanity_filter: bool  # OPTIONAL
     ready_consent_timeout: int  # OPTIONAL
+    request_metadata_max_size: int  # OPTIONAL
     unregister_delay: int  # OPTIONAL
 
     # endregion fields
@@ -181,6 +184,10 @@ class ModelsConfigReq(Model):
 
     def with_ready_consent_timeout(self, value: int) -> ModelsConfigReq:
         self.ready_consent_timeout = value
+        return self
+
+    def with_request_metadata_max_size(self, value: int) -> ModelsConfigReq:
+        self.request_metadata_max_size = value
         return self
 
     def with_unregister_delay(self, value: int) -> ModelsConfigReq:
@@ -283,6 +290,10 @@ class ModelsConfigReq(Model):
             result["readyConsentTimeout"] = int(self.ready_consent_timeout)
         elif include_empty:
             result["readyConsentTimeout"] = 0
+        if hasattr(self, "request_metadata_max_size"):
+            result["requestMetadataMaxSize"] = int(self.request_metadata_max_size)
+        elif include_empty:
+            result["requestMetadataMaxSize"] = 0
         if hasattr(self, "unregister_delay"):
             result["unregisterDelay"] = int(self.unregister_delay)
         elif include_empty:
@@ -316,6 +327,7 @@ class ModelsConfigReq(Model):
         max_party_member: Optional[int] = None,
         profanity_filter: Optional[bool] = None,
         ready_consent_timeout: Optional[int] = None,
+        request_metadata_max_size: Optional[int] = None,
         unregister_delay: Optional[int] = None,
         **kwargs,
     ) -> ModelsConfigReq:
@@ -364,6 +376,8 @@ class ModelsConfigReq(Model):
             instance.profanity_filter = profanity_filter
         if ready_consent_timeout is not None:
             instance.ready_consent_timeout = ready_consent_timeout
+        if request_metadata_max_size is not None:
+            instance.request_metadata_max_size = request_metadata_max_size
         if unregister_delay is not None:
             instance.unregister_delay = unregister_delay
         return instance
@@ -502,6 +516,13 @@ class ModelsConfigReq(Model):
             instance.ready_consent_timeout = int(dict_["readyConsentTimeout"])
         elif include_empty:
             instance.ready_consent_timeout = 0
+        if (
+            "requestMetadataMaxSize" in dict_
+            and dict_["requestMetadataMaxSize"] is not None
+        ):
+            instance.request_metadata_max_size = int(dict_["requestMetadataMaxSize"])
+        elif include_empty:
+            instance.request_metadata_max_size = 0
         if "unregisterDelay" in dict_ and dict_["unregisterDelay"] is not None:
             instance.unregister_delay = int(dict_["unregisterDelay"])
         elif include_empty:
@@ -565,6 +586,7 @@ class ModelsConfigReq(Model):
             "maxPartyMember": "max_party_member",
             "profanityFilter": "profanity_filter",
             "readyConsentTimeout": "ready_consent_timeout",
+            "requestMetadataMaxSize": "request_metadata_max_size",
             "unregisterDelay": "unregister_delay",
         }
 
@@ -591,6 +613,7 @@ class ModelsConfigReq(Model):
             "maxPartyMember": False,
             "profanityFilter": False,
             "readyConsentTimeout": False,
+            "requestMetadataMaxSize": False,
             "unregisterDelay": False,
         }
 

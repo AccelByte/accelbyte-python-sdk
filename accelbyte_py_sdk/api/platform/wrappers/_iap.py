@@ -47,6 +47,7 @@ from ..models import IAPConsumeHistoryPagingSlicedResult
 from ..models import IAPItemConfigInfo
 from ..models import IAPItemConfigUpdate
 from ..models import IAPItemMappingInfo
+from ..models import IAPOrderConsumeDetailInfo
 from ..models import IAPOrderPagingSlicedResult
 from ..models import MockIAPReceipt
 from ..models import OculusIAPConfigInfo
@@ -88,6 +89,7 @@ from ..operations.iap import GetGoogleIAPConfig
 from ..operations.iap import GetIAPItemConfig
 from ..operations.iap import GetIAPItemMapping
 from ..operations.iap import GetIAPItemMappingPlatformEnum
+from ..operations.iap import GetIAPOrderConsumeDetails
 from ..operations.iap import GetOculusIAPConfig
 from ..operations.iap import GetPlayStationIAPConfig
 from ..operations.iap import GetSteamIAPConfig
@@ -131,6 +133,7 @@ from ..models import AppleIAPConfigInfoVersionEnum
 from ..models import AppleIAPConfigRequestVersionEnum
 from ..models import AppleIAPConfigVersionInfoVersionEnum
 from ..models import EpicGamesReconcileResultStatusEnum
+from ..models import IAPOrderConsumeDetailInfoStatusEnum
 from ..models import MockIAPReceiptItemIdentityTypeEnum, MockIAPReceiptTypeEnum
 from ..models import (
     OculusReconcileResultIapOrderStatusEnum,
@@ -1342,6 +1345,92 @@ async def get_iap_item_mapping_async(
             return None, error
     request = GetIAPItemMapping.create(
         platform=platform,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetIAPOrderConsumeDetails)
+def get_iap_order_consume_details(
+    iap_order_no: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get IAP Order Consume Details by IAP Order Number. (getIAPOrderConsumeDetails)
+
+    Get IAP Order Consume Details by IAP Order Number.
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/{iapOrderNo}/consumedetails
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        iap_order_no: (iapOrderNo) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[IAPOrderConsumeDetailInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetIAPOrderConsumeDetails.create(
+        iap_order_no=iap_order_no,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetIAPOrderConsumeDetails)
+async def get_iap_order_consume_details_async(
+    iap_order_no: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get IAP Order Consume Details by IAP Order Number. (getIAPOrderConsumeDetails)
+
+    Get IAP Order Consume Details by IAP Order Number.
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/{iapOrderNo}/consumedetails
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        iap_order_no: (iapOrderNo) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[IAPOrderConsumeDetailInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetIAPOrderConsumeDetails.create(
+        iap_order_no=iap_order_no,
         namespace=namespace,
     )
     return await run_request_async(

@@ -30,7 +30,8 @@ from ....core import StrEnum
 
 
 class StatusEnum(StrEnum):
-    COMPLETED_FAILED = "Completed,Failed"
+    COMPLETED = "Completed"
+    FAILED = "Failed"
 
 
 class DtoFinishedDataDeletion(Model):
@@ -221,7 +222,7 @@ class DtoFinishedDataDeletion(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["Completed,Failed"],
+            "status": ["Completed", "Failed"],
         }
 
     # endregion static methods

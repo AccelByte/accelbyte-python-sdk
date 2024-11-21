@@ -44,7 +44,7 @@ class AdminDeletePlatformCredentials(Operation):
 
         tags: ["Platform Credential"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -70,7 +70,7 @@ class AdminDeletePlatformCredentials(Operation):
 
     _url: str = "/session/v1/admin/namespaces/{namespace}/platform-credentials"
     _method: str = "DELETE"
-    _consumes: List[str] = ["application/json"]
+    _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None

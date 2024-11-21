@@ -8,13 +8,14 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "5.0.1"
+__version__ = "6.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .mock_play_station_stream_event import MockPlayStationStreamEvent
+from .mock_xbl_clawback_event import MockXblClawbackEvent
 from .query_iap_clawback_history import QueryIAPClawbackHistory
 from .query_iap_clawback_history import (
     EventTypeEnum as QueryIAPClawbackHistoryEventTypeEnum,

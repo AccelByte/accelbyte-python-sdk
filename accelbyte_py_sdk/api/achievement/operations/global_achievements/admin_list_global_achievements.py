@@ -28,9 +28,19 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ModelsPaginatedGlobalAchievementResponse
 from ...models import ResponseError
+
+
+class SortByEnum(StrEnum):
+    ACHIEVEDAT = "achievedAt"
+    ACHIEVEDAT_ASC = "achievedAt:asc"
+    ACHIEVEDAT_DESC = "achievedAt:desc"
+    CREATEDAT = "createdAt"
+    CREATEDAT_ASC = "createdAt:asc"
+    CREATEDAT_DESC = "createdAt:desc"
 
 
 class AdminListGlobalAchievements(Operation):
@@ -70,7 +80,7 @@ class AdminListGlobalAchievements(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         status: (status) OPTIONAL str in query
 
@@ -99,7 +109,7 @@ class AdminListGlobalAchievements(Operation):
     achievement_codes: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
-    sort_by: str  # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
     status: str  # OPTIONAL in [query]
     tags: List[str]  # OPTIONAL in [query]
 
@@ -191,7 +201,9 @@ class AdminListGlobalAchievements(Operation):
         self.offset = value
         return self
 
-    def with_sort_by(self, value: str) -> AdminListGlobalAchievements:
+    def with_sort_by(
+        self, value: Union[str, SortByEnum]
+    ) -> AdminListGlobalAchievements:
         self.sort_by = value
         return self
 
@@ -228,7 +240,7 @@ class AdminListGlobalAchievements(Operation):
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = Union[str, SortByEnum]()
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
@@ -300,7 +312,7 @@ class AdminListGlobalAchievements(Operation):
         achievement_codes: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[Union[str, SortByEnum]] = None,
         status: Optional[str] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
@@ -347,7 +359,7 @@ class AdminListGlobalAchievements(Operation):
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = Union[str, SortByEnum]()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -386,6 +398,19 @@ class AdminListGlobalAchievements(Operation):
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
             "tags": "csv",  # in query
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortBy": [
+                "achievedAt",
+                "achievedAt:asc",
+                "achievedAt:desc",
+                "createdAt",
+                "createdAt:asc",
+                "createdAt:desc",
+            ],  # in query
         }
 
     # endregion static methods

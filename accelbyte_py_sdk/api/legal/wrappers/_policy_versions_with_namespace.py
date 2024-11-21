@@ -37,8 +37,10 @@ from ..models import UpdatePolicyVersionRequest
 from ..models import UpdatePolicyVersionResponse
 
 from ..operations.policy_versions_with_namespace import CreatePolicyVersion1
+from ..operations.policy_versions_with_namespace import DeletePolicyVersion
 from ..operations.policy_versions_with_namespace import PublishPolicyVersion1
 from ..operations.policy_versions_with_namespace import RetrieveSinglePolicyVersion1
+from ..operations.policy_versions_with_namespace import UnpublishPolicyVersion
 from ..operations.policy_versions_with_namespace import UpdatePolicyVersion1
 
 
@@ -133,6 +135,104 @@ async def create_policy_version_1_async(
     request = CreatePolicyVersion1.create(
         policy_id=policy_id,
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeletePolicyVersion)
+def delete_policy_version(
+    policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete a Version of Policy (deletePolicyVersion)
+
+    Delete a policy version from policy.Can only be deleted if match these criteria:
+
+
+      * Policy version is not published
+      * Policy version has never been accepted by any user
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/versions/{policyVersionId}
+
+        method: DELETE
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40070: errors.net.accelbyte.platform.legal.policy_version_is_published_and_already_accepted_by_user | 40071: errors.net.accelbyte.platform.legal.policy_version_is_active)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeletePolicyVersion.create(
+        policy_version_id=policy_version_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeletePolicyVersion)
+async def delete_policy_version_async(
+    policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete a Version of Policy (deletePolicyVersion)
+
+    Delete a policy version from policy.Can only be deleted if match these criteria:
+
+
+      * Policy version is not published
+      * Policy version has never been accepted by any user
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/versions/{policyVersionId}
+
+        method: DELETE
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40070: errors.net.accelbyte.platform.legal.policy_version_is_published_and_already_accepted_by_user | 40071: errors.net.accelbyte.platform.legal.policy_version_is_active)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeletePolicyVersion.create(
+        policy_version_id=policy_version_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -333,6 +433,102 @@ async def retrieve_single_policy_version_1_async(
     request = RetrieveSinglePolicyVersion1.create(
         policy_id=policy_id,
         version_id=version_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UnpublishPolicyVersion)
+def unpublish_policy_version(
+    policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Un-publish Version from Policy (unpublishPolicyVersion)
+
+    Un-publish a policy version from policy.Can only be un-publish if match these criteria:
+
+
+      * Policy version has never been accepted by any user
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/versions/{policyVersionId}/unpublish
+
+        method: PATCH
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40070: errors.net.accelbyte.platform.legal.policy_version_is_published_and_already_accepted_by_user)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UnpublishPolicyVersion.create(
+        policy_version_id=policy_version_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UnpublishPolicyVersion)
+async def unpublish_policy_version_async(
+    policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Un-publish Version from Policy (unpublishPolicyVersion)
+
+    Un-publish a policy version from policy.Can only be un-publish if match these criteria:
+
+
+      * Policy version has never been accepted by any user
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/policies/versions/{policyVersionId}/unpublish
+
+        method: PATCH
+
+        tags: ["Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        policy_version_id: (policyVersionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Successful operation)
+
+        400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40070: errors.net.accelbyte.platform.legal.policy_version_is_published_and_already_accepted_by_user)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UnpublishPolicyVersion.create(
+        policy_version_id=policy_version_id,
         namespace=namespace,
     )
     return await run_request_async(

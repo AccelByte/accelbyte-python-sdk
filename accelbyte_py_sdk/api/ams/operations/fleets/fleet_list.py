@@ -53,6 +53,12 @@ class FleetList(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        active: (active) OPTIONAL bool in query
+
+        name: (name) OPTIONAL str in query
+
+        region: (region) OPTIONAL str in query
+
     Responses:
         200: OK - ApiFleetListResponse (success)
 
@@ -69,6 +75,9 @@ class FleetList(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    active: bool  # OPTIONAL in [query]
+    name: str  # OPTIONAL in [query]
+    region: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -109,12 +118,23 @@ class FleetList(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "active"):
+            result["active"] = self.active
+        if hasattr(self, "name"):
+            result["name"] = self.name
+        if hasattr(self, "region"):
+            result["region"] = self.region
         return result
 
     # endregion get_x_params methods
@@ -129,6 +149,18 @@ class FleetList(Operation):
         self.namespace = value
         return self
 
+    def with_active(self, value: bool) -> FleetList:
+        self.active = value
+        return self
+
+    def with_name(self, value: str) -> FleetList:
+        self.name = value
+        return self
+
+    def with_region(self, value: str) -> FleetList:
+        self.region = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -139,6 +171,18 @@ class FleetList(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "active") and self.active:
+            result["active"] = bool(self.active)
+        elif include_empty:
+            result["active"] = False
+        if hasattr(self, "name") and self.name:
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = ""
+        if hasattr(self, "region") and self.region:
+            result["region"] = str(self.region)
+        elif include_empty:
+            result["region"] = ""
         return result
 
     # endregion to methods
@@ -185,9 +229,22 @@ class FleetList(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, namespace: str, **kwargs) -> FleetList:
+    def create(
+        cls,
+        namespace: str,
+        active: Optional[bool] = None,
+        name: Optional[str] = None,
+        region: Optional[str] = None,
+        **kwargs,
+    ) -> FleetList:
         instance = cls()
         instance.namespace = namespace
+        if active is not None:
+            instance.active = active
+        if name is not None:
+            instance.name = name
+        if region is not None:
+            instance.region = region
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -199,18 +256,36 @@ class FleetList(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "active" in dict_ and dict_["active"] is not None:
+            instance.active = bool(dict_["active"])
+        elif include_empty:
+            instance.active = False
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = ""
+        if "region" in dict_ and dict_["region"] is not None:
+            instance.region = str(dict_["region"])
+        elif include_empty:
+            instance.region = ""
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "active": "active",
+            "name": "name",
+            "region": "region",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "active": False,
+            "name": False,
+            "region": False,
         }
 
     # endregion static methods

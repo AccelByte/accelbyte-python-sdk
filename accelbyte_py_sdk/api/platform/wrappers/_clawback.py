@@ -32,8 +32,10 @@ from ....core import same_doc_as
 from ..models import ClawbackInfo
 from ..models import IAPClawbackPagingSlicedResult
 from ..models import StreamEvent
+from ..models import XblClawbackEvent
 
 from ..operations.clawback import MockPlayStationStreamEvent
+from ..operations.clawback import MockXblClawbackEvent
 from ..operations.clawback import QueryIAPClawbackHistory
 from ..operations.clawback import (
     QueryIAPClawbackHistoryEventTypeEnum,
@@ -120,6 +122,92 @@ async def mock_play_station_stream_event_async(
         if error:
             return None, error
     request = MockPlayStationStreamEvent.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(MockXblClawbackEvent)
+def mock_xbl_clawback_event(
+    body: Optional[XblClawbackEvent] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Mock Sync XBox Clawback event. (mockXblClawbackEvent)
+
+    Mock Sync XBox Clawback event.
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/clawback/xbl/mock
+
+        method: POST
+
+        tags: ["Clawback"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL XblClawbackEvent in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ClawbackInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = MockXblClawbackEvent.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(MockXblClawbackEvent)
+async def mock_xbl_clawback_event_async(
+    body: Optional[XblClawbackEvent] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Mock Sync XBox Clawback event. (mockXblClawbackEvent)
+
+    Mock Sync XBox Clawback event.
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/clawback/xbl/mock
+
+        method: POST
+
+        tags: ["Clawback"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) OPTIONAL XblClawbackEvent in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ClawbackInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = MockXblClawbackEvent.create(
         body=body,
         namespace=namespace,
     )

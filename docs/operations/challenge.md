@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Challenge Service Index (1.10.0)
+# AccelByte Gaming Services Challenge Service Index (1.11.1)
 
 
 ## Operations
@@ -75,6 +75,7 @@
 | model.ClaimUserRewardsReq | [ModelClaimUserRewardsReq](../../accelbyte_py_sdk/api/challenge/models/model_claim_user_rewards_req.py) |
 | model.ClaimUsersRewardsRequest | [ModelClaimUsersRewardsRequest](../../accelbyte_py_sdk/api/challenge/models/model_claim_users_rewards_request.py) |
 | model.ClaimUsersRewardsResponse | [ModelClaimUsersRewardsResponse](../../accelbyte_py_sdk/api/challenge/models/model_claim_users_rewards_response.py) |
+| model.ClaimableUserReward | [ModelClaimableUserReward](../../accelbyte_py_sdk/api/challenge/models/model_claimable_user_reward.py) |
 | model.CreateChallengeRequest | [ModelCreateChallengeRequest](../../accelbyte_py_sdk/api/challenge/models/model_create_challenge_request.py) |
 | model.CreateGoalRequest | [ModelCreateGoalRequest](../../accelbyte_py_sdk/api/challenge/models/model_create_goal_request.py) |
 | model.EvaluatePlayerProgressionRequest | [ModelEvaluatePlayerProgressionRequest](../../accelbyte_py_sdk/api/challenge/models/model_evaluate_player_progression_request.py) |

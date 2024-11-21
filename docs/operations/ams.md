@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.27.1)
+# Fleet Commander Index (1.30.0)
 
 
 ## Operations
@@ -13,8 +13,8 @@
 | /ams/v1/namespaces/{namespace}/account | GET | AccountGet | `false` | [AccountGet](../../accelbyte_py_sdk/api/ams/operations/account/account_get.py) | [account_get](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-account-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_account_get.py) |
 | /ams/v1/admin/namespaces/{namespace}/account | POST | AdminAccountCreate | `false` | [AdminAccountCreate](../../accelbyte_py_sdk/api/ams/operations/account/admin_account_create.py) | [admin_account_create](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-admin-account-create](../../samples/cli/accelbyte_py_sdk_cli/ams/_admin_account_create.py) |
 | /ams/v1/admin/namespaces/{namespace}/account | GET | AdminAccountGet | `false` | [AdminAccountGet](../../accelbyte_py_sdk/api/ams/operations/account/admin_account_get.py) | [admin_account_get](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-admin-account-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_admin_account_get.py) |
+| /ams/v1/admin/namespaces/{namespace}/account/link | POST | AdminAccountLink | `false` | [AdminAccountLink](../../accelbyte_py_sdk/api/ams/operations/account/admin_account_link.py) | [admin_account_link](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-admin-account-link](../../samples/cli/accelbyte_py_sdk_cli/ams/_admin_account_link.py) |
 | /ams/v1/admin/namespaces/{namespace}/account/link | GET | AdminAccountLinkTokenGet | `false` | [AdminAccountLinkTokenGet](../../accelbyte_py_sdk/api/ams/operations/account/admin_account_link_token_get.py) | [admin_account_link_token_get](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-admin-account-link-token-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_admin_account_link_token_get.py) |
-| /ams/v1/admin/namespaces/{namespace}/account/link | POST | AdminAccountLinkTokenPost | `false` | [AdminAccountLinkTokenPost](../../accelbyte_py_sdk/api/ams/operations/account/admin_account_link_token_post.py) | [admin_account_link_token_post](../../accelbyte_py_sdk/api/ams/wrappers/_account.py) | [accelbyte_py_sdk_cli ams-admin-account-link-token-post](../../samples/cli/accelbyte_py_sdk_cli/ams/_admin_account_link_token_post.py) |
 
 ### AMS Info
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -114,9 +114,8 @@
 | api.ArtifactTypeSamplingRules | [ApiArtifactTypeSamplingRules](../../accelbyte_py_sdk/api/ams/models/api_artifact_type_sampling_rules.py) |
 | api.ArtifactURLResponse | [ApiArtifactURLResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_url_response.py) |
 | api.ArtifactUsageResponse | [ApiArtifactUsageResponse](../../accelbyte_py_sdk/api/ams/models/api_artifact_usage_response.py) |
-| api.AvailableInstanceType | [ApiAvailableInstanceType](../../accelbyte_py_sdk/api/ams/models/api_available_instance_type.py) |
-| api.AvailableInstanceTypesResponse | [ApiAvailableInstanceTypesResponse](../../accelbyte_py_sdk/api/ams/models/api_available_instance_types_response.py) |
 | api.Capacity | [ApiCapacity](../../accelbyte_py_sdk/api/ams/models/api_capacity.py) |
+| api.CoredumpSamplingRules | [ApiCoredumpSamplingRules](../../accelbyte_py_sdk/api/ams/models/api_coredump_sampling_rules.py) |
 | api.DevelopmentServerConfigurationCreateRequest | [ApiDevelopmentServerConfigurationCreateRequest](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_create_request.py) |
 | api.DevelopmentServerConfigurationCreateResponse | [ApiDevelopmentServerConfigurationCreateResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_create_response.py) |
 | api.DevelopmentServerConfigurationGetResponse | [ApiDevelopmentServerConfigurationGetResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_get_response.py) |
@@ -146,6 +145,8 @@
 | api.ImageListItem | [ApiImageListItem](../../accelbyte_py_sdk/api/ams/models/api_image_list_item.py) |
 | api.ImageStorage | [ApiImageStorage](../../accelbyte_py_sdk/api/ams/models/api_image_storage.py) |
 | api.ImageUpdate | [ApiImageUpdate](../../accelbyte_py_sdk/api/ams/models/api_image_update.py) |
+| api.InstanceTypeForNamespaceResponse | [ApiInstanceTypeForNamespaceResponse](../../accelbyte_py_sdk/api/ams/models/api_instance_type_for_namespace_response.py) |
+| api.InstanceTypesForNamespaceResponse | [ApiInstanceTypesForNamespaceResponse](../../accelbyte_py_sdk/api/ams/models/api_instance_types_for_namespace_response.py) |
 | api.PagingInfo | [ApiPagingInfo](../../accelbyte_py_sdk/api/ams/models/api_paging_info.py) |
 | api.PortConfiguration | [ApiPortConfiguration](../../accelbyte_py_sdk/api/ams/models/api_port_configuration.py) |
 | api.QoSEndpointResponse | [ApiQoSEndpointResponse](../../accelbyte_py_sdk/api/ams/models/api_qo_s_endpoint_response.py) |

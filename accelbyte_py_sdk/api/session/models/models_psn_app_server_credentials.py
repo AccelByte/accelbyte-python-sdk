@@ -36,14 +36,23 @@ class ModelsPSNAppServerCredentials(Model):
 
         client_secret: (clientSecret) REQUIRED str
 
+        created_at: (createdAt) REQUIRED str
+
+        created_by: (createdBy) REQUIRED str
+
         scope: (scope) REQUIRED str
+
+        updated_at: (updatedAt) REQUIRED str
     """
 
     # region fields
 
     client_id: str  # REQUIRED
     client_secret: str  # REQUIRED
+    created_at: str  # REQUIRED
+    created_by: str  # REQUIRED
     scope: str  # REQUIRED
+    updated_at: str  # REQUIRED
 
     # endregion fields
 
@@ -57,8 +66,20 @@ class ModelsPSNAppServerCredentials(Model):
         self.client_secret = value
         return self
 
+    def with_created_at(self, value: str) -> ModelsPSNAppServerCredentials:
+        self.created_at = value
+        return self
+
+    def with_created_by(self, value: str) -> ModelsPSNAppServerCredentials:
+        self.created_by = value
+        return self
+
     def with_scope(self, value: str) -> ModelsPSNAppServerCredentials:
         self.scope = value
+        return self
+
+    def with_updated_at(self, value: str) -> ModelsPSNAppServerCredentials:
+        self.updated_at = value
         return self
 
     # endregion with_x methods
@@ -75,10 +96,22 @@ class ModelsPSNAppServerCredentials(Model):
             result["clientSecret"] = str(self.client_secret)
         elif include_empty:
             result["clientSecret"] = ""
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = ""
+        if hasattr(self, "created_by"):
+            result["createdBy"] = str(self.created_by)
+        elif include_empty:
+            result["createdBy"] = ""
         if hasattr(self, "scope"):
             result["scope"] = str(self.scope)
         elif include_empty:
             result["scope"] = ""
+        if hasattr(self, "updated_at"):
+            result["updatedAt"] = str(self.updated_at)
+        elif include_empty:
+            result["updatedAt"] = ""
         return result
 
     # endregion to methods
@@ -87,12 +120,22 @@ class ModelsPSNAppServerCredentials(Model):
 
     @classmethod
     def create(
-        cls, client_id: str, client_secret: str, scope: str, **kwargs
+        cls,
+        client_id: str,
+        client_secret: str,
+        created_at: str,
+        created_by: str,
+        scope: str,
+        updated_at: str,
+        **kwargs,
     ) -> ModelsPSNAppServerCredentials:
         instance = cls()
         instance.client_id = client_id
         instance.client_secret = client_secret
+        instance.created_at = created_at
+        instance.created_by = created_by
         instance.scope = scope
+        instance.updated_at = updated_at
         return instance
 
     @classmethod
@@ -110,10 +153,22 @@ class ModelsPSNAppServerCredentials(Model):
             instance.client_secret = str(dict_["clientSecret"])
         elif include_empty:
             instance.client_secret = ""
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = ""
+        if "createdBy" in dict_ and dict_["createdBy"] is not None:
+            instance.created_by = str(dict_["createdBy"])
+        elif include_empty:
+            instance.created_by = ""
         if "scope" in dict_ and dict_["scope"] is not None:
             instance.scope = str(dict_["scope"])
         elif include_empty:
             instance.scope = ""
+        if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
+            instance.updated_at = str(dict_["updatedAt"])
+        elif include_empty:
+            instance.updated_at = ""
         return instance
 
     @classmethod
@@ -159,7 +214,10 @@ class ModelsPSNAppServerCredentials(Model):
         return {
             "clientId": "client_id",
             "clientSecret": "client_secret",
+            "createdAt": "created_at",
+            "createdBy": "created_by",
             "scope": "scope",
+            "updatedAt": "updated_at",
         }
 
     @staticmethod
@@ -167,7 +225,10 @@ class ModelsPSNAppServerCredentials(Model):
         return {
             "clientId": True,
             "clientSecret": True,
+            "createdAt": True,
+            "createdBy": True,
             "scope": True,
+            "updatedAt": True,
         }
 
     # endregion static methods

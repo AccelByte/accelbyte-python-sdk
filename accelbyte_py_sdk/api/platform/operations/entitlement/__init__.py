@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "5.0.1"
+__version__ = "6.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -48,6 +48,7 @@ from .get_user_entitlement_ow_dab0ca import GetUserEntitlementOwnershipBySku
 from .get_user_entitlement_ow_dab0ca import (
     EntitlementClazzEnum as GetUserEntitlementOwnershipBySkuEntitlementClazzEnum,
 )
+from .get_user_entitlements_by_ids import GetUserEntitlementsByIds
 from .grant_entitlements import GrantEntitlements
 from .grant_user_entitlement import GrantUserEntitlement
 from .pre_check_revoke_user_e_124298 import PreCheckRevokeUserEntitlementByUseCount

@@ -38,8 +38,14 @@ from ._retrieve_all_legal_policies_by_namespace import (
 )
 from ._create_policy_1 import create_policy_1
 from ._retrieve_single_policy_1 import retrieve_single_policy_1
+from ._delete_base_policy import delete_base_policy
 from ._partial_update_policy_1 import partial_update_policy_1
 from ._retrieve_policy_country_1 import retrieve_policy_country_1
+from ._retrieve_all_policies_from_base_policy import (
+    retrieve_all_policies_from_base_policy,
+)
+from ._create_policy_under_base_policy import create_policy_under_base_policy
+from ._delete_localized_policy import delete_localized_policy
 from ._retrieve_localized_policy_versions_1 import retrieve_localized_policy_versions_1
 from ._create_localized_policy_version_1 import create_localized_policy_version_1
 from ._retrieve_single_localized_policy_version_1 import (
@@ -48,8 +54,11 @@ from ._retrieve_single_localized_policy_version_1 import (
 from ._update_localized_policy_version_1 import update_localized_policy_version_1
 from ._request_presigned_url_1 import request_presigned_url_1
 from ._set_default_policy_1 import set_default_policy_1
+from ._delete_policy_version import delete_policy_version
 from ._update_policy_version_1 import update_policy_version_1
 from ._publish_policy_version_1 import publish_policy_version_1
+from ._unpublish_policy_version import unpublish_policy_version
+from ._delete_policy import delete_policy
 from ._update_policy_1 import update_policy_1
 from ._set_default_policy_3 import set_default_policy_3
 from ._retrieve_single_policy_version_1 import retrieve_single_policy_version_1
@@ -123,16 +132,23 @@ commands = [
     retrieve_all_legal_policies_by_namespace,
     create_policy_1,
     retrieve_single_policy_1,
+    delete_base_policy,
     partial_update_policy_1,
     retrieve_policy_country_1,
+    retrieve_all_policies_from_base_policy,
+    create_policy_under_base_policy,
+    delete_localized_policy,
     retrieve_localized_policy_versions_1,
     create_localized_policy_version_1,
     retrieve_single_localized_policy_version_1,
     update_localized_policy_version_1,
     request_presigned_url_1,
     set_default_policy_1,
+    delete_policy_version,
     update_policy_version_1,
     publish_policy_version_1,
+    unpublish_policy_version,
+    delete_policy,
     update_policy_1,
     set_default_policy_3,
     retrieve_single_policy_version_1,

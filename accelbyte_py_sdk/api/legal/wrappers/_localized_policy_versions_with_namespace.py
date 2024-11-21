@@ -42,6 +42,7 @@ from ..models import UploadPolicyVersionAttachmentRequest
 from ..operations.localized_policy_versions_with_namespace import (
     CreateLocalizedPolicyVersion1,
 )
+from ..operations.localized_policy_versions_with_namespace import DeleteLocalizedPolicy
 from ..operations.localized_policy_versions_with_namespace import RequestPresignedURL1
 from ..operations.localized_policy_versions_with_namespace import (
     RetrieveLocalizedPolicyVersions1,
@@ -153,6 +154,106 @@ async def create_localized_policy_version_1_async(
     request = CreateLocalizedPolicyVersion1.create(
         policy_version_id=policy_version_id,
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DeleteLocalizedPolicy)
+def delete_localized_policy(
+    localized_policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete Localized Policy (deleteLocalizedPolicy)
+
+    Delete localized version policy.
+    Can only be deleted if match these criteria:
+
+
+      * Policy Version that this localized policy version belongs to is not active
+      * Has never been accepted by any user
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{localizedPolicyVersionId}
+
+        method: DELETE
+
+        tags: ["Localized Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (successful operation)
+
+        400: Bad Request - ErrorEntity (40075: errors.net.accelbyte.platform.legal.localized_policy_version_is_published_and_already_accepted_by_user | 40076: errors.net.accelbyte.platform.legal.localized_policy_version_is_active)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteLocalizedPolicy.create(
+        localized_policy_version_id=localized_policy_version_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DeleteLocalizedPolicy)
+async def delete_localized_policy_async(
+    localized_policy_version_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Delete Localized Policy (deleteLocalizedPolicy)
+
+    Delete localized version policy.
+    Can only be deleted if match these criteria:
+
+
+      * Policy Version that this localized policy version belongs to is not active
+      * Has never been accepted by any user
+
+    Properties:
+        url: /agreement/admin/namespaces/{namespace}/localized-policy-versions/versions/{localizedPolicyVersionId}
+
+        method: DELETE
+
+        tags: ["Localized Policy Versions With Namespace"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        localized_policy_version_id: (localizedPolicyVersionId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (successful operation)
+
+        400: Bad Request - ErrorEntity (40075: errors.net.accelbyte.platform.legal.localized_policy_version_is_published_and_already_accepted_by_user | 40076: errors.net.accelbyte.platform.legal.localized_policy_version_is_active)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = DeleteLocalizedPolicy.create(
+        localized_policy_version_id=localized_policy_version_id,
         namespace=namespace,
     )
     return await run_request_async(

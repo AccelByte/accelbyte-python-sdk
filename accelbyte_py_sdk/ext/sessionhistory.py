@@ -563,6 +563,7 @@ def create_apimodels_x_ray_ticket_matches_result_example() -> (
     ApimodelsXRayTicketMatchesResult
 ):
     instance = ApimodelsXRayTicketMatchesResult()
+    instance.actual_time_to_match = randomize()
     instance.created_at = randomize("date")
     instance.is_pivot = randomize("bool")
     instance.latencies = {}
@@ -775,6 +776,7 @@ def create_models_match_example() -> ModelsMatch:
 
 def create_models_match_ticket_example() -> ModelsMatchTicket:
     instance = ModelsMatchTicket()
+    instance.actual_time_to_match = randomize()
     instance.created_at = randomize("date")
     instance.is_pivot = randomize("bool")
     instance.latencies = {}

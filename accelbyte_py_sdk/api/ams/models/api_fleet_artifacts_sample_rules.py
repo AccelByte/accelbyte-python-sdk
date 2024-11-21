@@ -28,20 +28,21 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.api_artifact_type_sampling_rules import ApiArtifactTypeSamplingRules
+from ..models.api_coredump_sampling_rules import ApiCoredumpSamplingRules
 
 
 class ApiFleetArtifactsSampleRules(Model):
     """Api fleet artifacts sample rules (api.FleetArtifactsSampleRules)
 
     Properties:
-        coredumps: (coredumps) REQUIRED ApiArtifactTypeSamplingRules
+        coredumps: (coredumps) REQUIRED ApiCoredumpSamplingRules
 
         logs: (logs) REQUIRED ApiArtifactTypeSamplingRules
     """
 
     # region fields
 
-    coredumps: ApiArtifactTypeSamplingRules  # REQUIRED
+    coredumps: ApiCoredumpSamplingRules  # REQUIRED
     logs: ApiArtifactTypeSamplingRules  # REQUIRED
 
     # endregion fields
@@ -49,7 +50,7 @@ class ApiFleetArtifactsSampleRules(Model):
     # region with_x methods
 
     def with_coredumps(
-        self, value: ApiArtifactTypeSamplingRules
+        self, value: ApiCoredumpSamplingRules
     ) -> ApiFleetArtifactsSampleRules:
         self.coredumps = value
         return self
@@ -69,7 +70,7 @@ class ApiFleetArtifactsSampleRules(Model):
         if hasattr(self, "coredumps"):
             result["coredumps"] = self.coredumps.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["coredumps"] = ApiArtifactTypeSamplingRules()
+            result["coredumps"] = ApiCoredumpSamplingRules()
         if hasattr(self, "logs"):
             result["logs"] = self.logs.to_dict(include_empty=include_empty)
         elif include_empty:
@@ -83,7 +84,7 @@ class ApiFleetArtifactsSampleRules(Model):
     @classmethod
     def create(
         cls,
-        coredumps: ApiArtifactTypeSamplingRules,
+        coredumps: ApiCoredumpSamplingRules,
         logs: ApiArtifactTypeSamplingRules,
         **kwargs,
     ) -> ApiFleetArtifactsSampleRules:
@@ -100,11 +101,11 @@ class ApiFleetArtifactsSampleRules(Model):
         if not dict_:
             return instance
         if "coredumps" in dict_ and dict_["coredumps"] is not None:
-            instance.coredumps = ApiArtifactTypeSamplingRules.create_from_dict(
+            instance.coredumps = ApiCoredumpSamplingRules.create_from_dict(
                 dict_["coredumps"], include_empty=include_empty
             )
         elif include_empty:
-            instance.coredumps = ApiArtifactTypeSamplingRules()
+            instance.coredumps = ApiCoredumpSamplingRules()
         if "logs" in dict_ and dict_["logs"] is not None:
             instance.logs = ApiArtifactTypeSamplingRules.create_from_dict(
                 dict_["logs"], include_empty=include_empty

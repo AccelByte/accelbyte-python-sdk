@@ -33,7 +33,9 @@ from ..models import ModelsPaginatedTagResponse
 from ..models import ResponseError
 
 from ..operations.tags import AdminListTags
+from ..operations.tags import AdminListTagsSortByEnum
 from ..operations.tags import PublicListTags
+from ..operations.tags import PublicListTagsSortByEnum
 
 
 @same_doc_as(AdminListTags)
@@ -41,7 +43,7 @@ def admin_list_tags(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, AdminListTagsSortByEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -72,7 +74,7 @@ def admin_list_tags(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ModelsPaginatedTagResponse (OK)
@@ -104,7 +106,7 @@ async def admin_list_tags_async(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, AdminListTagsSortByEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -135,7 +137,7 @@ async def admin_list_tags_async(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ModelsPaginatedTagResponse (OK)
@@ -169,7 +171,7 @@ def public_list_tags(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, PublicListTagsSortByEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -200,7 +202,7 @@ def public_list_tags(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ModelsPaginatedTagResponse (OK)
@@ -232,7 +234,7 @@ async def public_list_tags_async(
     limit: Optional[int] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, PublicListTagsSortByEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -263,7 +265,7 @@ async def public_list_tags_async(
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ModelsPaginatedTagResponse (OK)

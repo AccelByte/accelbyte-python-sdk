@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Cloudsave Service Index (3.21.1)
+# AccelByte Gaming Services Cloudsave Service Index (3.24.0)
 
 
 ## Operations
@@ -167,6 +167,7 @@
 ### TTLConfig
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}/ttl | DELETE | deleteAdminGameRecordTTLConfig | `false` | [DeleteAdminGameRecordTTLConfig](../../accelbyte_py_sdk/api/cloudsave/operations/ttl_config/delete_admin_game_recor_701919.py) | [delete_admin_game_record_ttl_config](../../accelbyte_py_sdk/api/cloudsave/wrappers/_ttl_config.py) | [accelbyte_py_sdk_cli cloudsave-delete-admin-game-record-ttl-config](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_delete_admin_game_record_ttl_config.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/binaries/{key}/ttl | DELETE | deleteGameBinaryRecordTTLConfig | `false` | [DeleteGameBinaryRecordTTLConfig](../../accelbyte_py_sdk/api/cloudsave/operations/ttl_config/delete_game_binary_reco_40da6b.py) | [delete_game_binary_record_ttl_config](../../accelbyte_py_sdk/api/cloudsave/wrappers/_ttl_config.py) | [accelbyte_py_sdk_cli cloudsave-delete-game-binary-record-ttl-config](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_delete_game_binary_record_ttl_config.py) |
 | /cloudsave/v1/admin/namespaces/{namespace}/records/{key}/ttl | DELETE | deleteGameRecordTTLConfig | `false` | [DeleteGameRecordTTLConfig](../../accelbyte_py_sdk/api/cloudsave/operations/ttl_config/delete_game_record_ttl_config.py) | [delete_game_record_ttl_config](../../accelbyte_py_sdk/api/cloudsave/wrappers/_ttl_config.py) | [accelbyte_py_sdk_cli cloudsave-delete-game-record-ttl-config](../../samples/cli/accelbyte_py_sdk_cli/cloudsave/_delete_game_record_ttl_config.py) |
 

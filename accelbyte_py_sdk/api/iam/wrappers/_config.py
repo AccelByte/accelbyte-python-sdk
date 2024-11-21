@@ -156,6 +156,9 @@ def public_get_config_value_v3(
     * uniqueDisplayNameEnabled
     * usernameDisabled
     * mandatoryEmailVerificationEnabled
+    * verificationCodeType
+
+    If the key is verificationCodeType, then possible value format will be '{collection}:{N}'; example: 'ABCDEFGHI:6', 'ABCDEFGHI1234:8','01234567894:7'
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/config/{configKey}
@@ -208,6 +211,9 @@ async def public_get_config_value_v3_async(
     * uniqueDisplayNameEnabled
     * usernameDisabled
     * mandatoryEmailVerificationEnabled
+    * verificationCodeType
+
+    If the key is verificationCodeType, then possible value format will be '{collection}:{N}'; example: 'ABCDEFGHI:6', 'ABCDEFGHI1234:8','01234567894:7'
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/config/{configKey}

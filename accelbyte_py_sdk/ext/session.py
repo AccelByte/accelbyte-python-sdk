@@ -35,6 +35,8 @@ from ..api.session.models import ApimodelsCreatePartyRequest
 from ..api.session.models import ApimodelsDSInformationResponse
 from ..api.session.models import ApimodelsDeleteBulkGameSessionRequest
 from ..api.session.models import ApimodelsDeleteBulkGameSessionsAPIResponse
+from ..api.session.models import ApimodelsDeleteBulkPartySessionRequest
+from ..api.session.models import ApimodelsDeleteBulkPartySessionsAPIResponse
 from ..api.session.models import ApimodelsEnvironmentVariableListResponse
 from ..api.session.models import ApimodelsEnvironmentVariableResponse
 from ..api.session.models import ApimodelsGameSessionQueryResponse
@@ -43,6 +45,7 @@ from ..api.session.models import ApimodelsGlobalConfigurationResponse
 from ..api.session.models import ApimodelsJoinByCodeRequest
 from ..api.session.models import ApimodelsKickResponse
 from ..api.session.models import ApimodelsNativeSessionPagingResponse
+from ..api.session.models import ApimodelsPSNAppServerCredentialRecord
 from ..api.session.models import ApimodelsPagination
 from ..api.session.models import ApimodelsPartyQueryResponse
 from ..api.session.models import ApimodelsPartySessionResponse
@@ -57,6 +60,7 @@ from ..api.session.models import ApimodelsPutGlobalConfigurationRequest
 from ..api.session.models import ApimodelsPutPlatformCredentialsRequest
 from ..api.session.models import ApimodelsRequestMember
 from ..api.session.models import ApimodelsResponseDeleteBulkGameSessions
+from ..api.session.models import ApimodelsResponseDeleteBulkPartySessions
 from ..api.session.models import ApimodelsServerSecret
 from ..api.session.models import ApimodelsSessionInviteRequest
 from ..api.session.models import ApimodelsSessionInviteResponse
@@ -68,6 +72,7 @@ from ..api.session.models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..api.session.models import ApimodelsUpdateGameSessionRequest
 from ..api.session.models import ApimodelsUpdatePartyRequest
 from ..api.session.models import ApimodelsUserResponse
+from ..api.session.models import ApimodelsXblCertificateResponseBody
 from ..api.session.models import LogconfigConfiguration
 from ..api.session.models import ModelNativeSession
 from ..api.session.models import ModelNativeSessionMember
@@ -86,6 +91,7 @@ from ..api.session.models import ModelsRequestReconcileMaxActiveSession
 from ..api.session.models import ModelsTeam
 from ..api.session.models import ModelsUserInfoResponse
 from ..api.session.models import ModelsUserPlatformInfo
+from ..api.session.models import ModelsXBLCertificateCredential
 from ..api.session.models import ResponseError
 
 
@@ -271,6 +277,23 @@ def create_apimodels_delete_bulk_game_sessions_api_response_example() -> (
     return instance
 
 
+def create_apimodels_delete_bulk_party_session_request_example() -> (
+    ApimodelsDeleteBulkPartySessionRequest
+):
+    instance = ApimodelsDeleteBulkPartySessionRequest()
+    instance.ids = [randomize()]
+    return instance
+
+
+def create_apimodels_delete_bulk_party_sessions_api_response_example() -> (
+    ApimodelsDeleteBulkPartySessionsAPIResponse
+):
+    instance = ApimodelsDeleteBulkPartySessionsAPIResponse()
+    instance.failed = [create_apimodels_response_delete_bulk_party_sessions_example()]
+    instance.success = [randomize()]
+    return instance
+
+
 def create_apimodels_ds_information_response_example() -> (
     ApimodelsDSInformationResponse
 ):
@@ -391,6 +414,7 @@ def create_apimodels_party_query_response_example() -> ApimodelsPartyQueryRespon
 
 def create_apimodels_party_session_response_example() -> ApimodelsPartySessionResponse:
     instance = ApimodelsPartySessionResponse()
+    instance.code = randomize()
     instance.configuration = create_apimodels_public_configuration_example()
     instance.created_at = randomize()
     instance.created_by = randomize()
@@ -403,7 +427,6 @@ def create_apimodels_party_session_response_example() -> ApimodelsPartySessionRe
     instance.updated_at = randomize()
     instance.version = randomize("int", min_val=1, max_val=1000)
     instance.attributes = {randomize(): randomize()}
-    instance.code = randomize()
     instance.expired_at = randomize()
     instance.storage = {randomize(): randomize()}
     return instance
@@ -465,6 +488,16 @@ def create_apimodels_promote_leader_request_example() -> ApimodelsPromoteLeaderR
     return instance
 
 
+def create_apimodels_psn_app_server_credential_record_example() -> (
+    ApimodelsPSNAppServerCredentialRecord
+):
+    instance = ApimodelsPSNAppServerCredentialRecord()
+    instance.client_id = randomize("uid")
+    instance.client_secret = randomize()
+    instance.scope = randomize()
+    return instance
+
+
 def create_apimodels_public_configuration_example() -> ApimodelsPublicConfiguration:
     instance = ApimodelsPublicConfiguration()
     instance.auto_join = randomize("bool")
@@ -518,7 +551,7 @@ def create_apimodels_put_platform_credentials_request_example() -> (
     ApimodelsPutPlatformCredentialsRequest
 ):
     instance = ApimodelsPutPlatformCredentialsRequest()
-    instance.psn = create_models_psn_app_server_credentials_example()
+    instance.psn = create_apimodels_psn_app_server_credential_record_example()
     return instance
 
 
@@ -539,6 +572,15 @@ def create_apimodels_response_delete_bulk_game_sessions_example() -> (
     return instance
 
 
+def create_apimodels_response_delete_bulk_party_sessions_example() -> (
+    ApimodelsResponseDeleteBulkPartySessions
+):
+    instance = ApimodelsResponseDeleteBulkPartySessions()
+    instance.error = randomize()
+    instance.id_ = randomize()
+    return instance
+
+
 def create_apimodels_server_secret_example() -> ApimodelsServerSecret:
     instance = ApimodelsServerSecret()
     instance.secret = randomize()
@@ -549,6 +591,7 @@ def create_apimodels_session_invite_request_example() -> ApimodelsSessionInviteR
     instance = ApimodelsSessionInviteRequest()
     instance.platform_id = randomize()
     instance.user_id = randomize("uid")
+    instance.metadata = {randomize(): randomize()}
     return instance
 
 
@@ -680,6 +723,18 @@ def create_apimodels_user_response_example() -> ApimodelsUserResponse:
     return instance
 
 
+def create_apimodels_xbl_certificate_response_body_example() -> (
+    ApimodelsXblCertificateResponseBody
+):
+    instance = ApimodelsXblCertificateResponseBody()
+    instance.business_partner_cert_file_bytes = randomize()
+    instance.business_partner_cert_file_name = randomize()
+    instance.created_by = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
+    return instance
+
+
 def create_logconfig_configuration_example() -> LogconfigConfiguration:
     instance = LogconfigConfiguration()
     instance.log_level = randomize()
@@ -796,6 +851,7 @@ def create_models_platform_credentials_example() -> ModelsPlatformCredentials:
     instance = ModelsPlatformCredentials()
     instance.psn = create_models_psn_app_server_credentials_example()
     instance.updated_at = randomize()
+    instance.xbox = create_models_xbl_certificate_credential_example()
     return instance
 
 
@@ -810,7 +866,10 @@ def create_models_psn_app_server_credentials_example() -> ModelsPSNAppServerCred
     instance = ModelsPSNAppServerCredentials()
     instance.client_id = randomize("uid")
     instance.client_secret = randomize()
+    instance.created_at = randomize()
+    instance.created_by = randomize()
     instance.scope = randomize()
+    instance.updated_at = randomize()
     return instance
 
 
@@ -852,6 +911,19 @@ def create_models_user_platform_info_example() -> ModelsUserPlatformInfo:
     instance = ModelsUserPlatformInfo()
     instance.name = randomize()
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_xbl_certificate_credential_example() -> (
+    ModelsXBLCertificateCredential
+):
+    instance = ModelsXBLCertificateCredential()
+    instance.business_partner_cert_file_bytes = randomize()
+    instance.business_partner_cert_file_name = randomize()
+    instance.created_at = randomize("date")
+    instance.created_by = randomize()
+    instance.namespace = randomize("slug")
+    instance.updated_at = randomize("date")
     return instance
 
 

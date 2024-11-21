@@ -41,7 +41,7 @@ class ApiImageDeploymentProfile(Model):
 
         port_configurations: (portConfigurations) REQUIRED List[ApiPortConfiguration]
 
-        timeout: (timeout) REQUIRED ApiTimeout
+        timeout: (timeout) OPTIONAL ApiTimeout
     """
 
     # region fields
@@ -49,7 +49,7 @@ class ApiImageDeploymentProfile(Model):
     command_line: str  # REQUIRED
     image_id: str  # REQUIRED
     port_configurations: List[ApiPortConfiguration]  # REQUIRED
-    timeout: ApiTimeout  # REQUIRED
+    timeout: ApiTimeout  # OPTIONAL
 
     # endregion fields
 
@@ -110,14 +110,15 @@ class ApiImageDeploymentProfile(Model):
         command_line: str,
         image_id: str,
         port_configurations: List[ApiPortConfiguration],
-        timeout: ApiTimeout,
+        timeout: Optional[ApiTimeout] = None,
         **kwargs,
     ) -> ApiImageDeploymentProfile:
         instance = cls()
         instance.command_line = command_line
         instance.image_id = image_id
         instance.port_configurations = port_configurations
-        instance.timeout = timeout
+        if timeout is not None:
+            instance.timeout = timeout
         return instance
 
     @classmethod
@@ -203,7 +204,7 @@ class ApiImageDeploymentProfile(Model):
             "commandLine": True,
             "imageId": True,
             "portConfigurations": True,
-            "timeout": True,
+            "timeout": False,
         }
 
     # endregion static methods

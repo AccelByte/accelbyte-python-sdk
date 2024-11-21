@@ -48,7 +48,13 @@ class RetrievePolicyResponse(Model):
 
         should_notify_on_update: (shouldNotifyOnUpdate) REQUIRED bool
 
+        countries: (countries) OPTIONAL List[str]
+
         country_group_code: (countryGroupCode) OPTIONAL str
+
+        country_group_name: (countryGroupName) OPTIONAL str
+
+        country_type: (countryType) OPTIONAL str
 
         created_at: (createdAt) OPTIONAL str
 
@@ -70,7 +76,10 @@ class RetrievePolicyResponse(Model):
     is_mandatory: bool  # REQUIRED
     policy_name: str  # REQUIRED
     should_notify_on_update: bool  # REQUIRED
+    countries: List[str]  # OPTIONAL
     country_group_code: str  # OPTIONAL
+    country_group_name: str  # OPTIONAL
+    country_type: str  # OPTIONAL
     created_at: str  # OPTIONAL
     description: str  # OPTIONAL
     policy_versions: List[PolicyVersionObject]  # OPTIONAL
@@ -109,8 +118,20 @@ class RetrievePolicyResponse(Model):
         self.should_notify_on_update = value
         return self
 
+    def with_countries(self, value: List[str]) -> RetrievePolicyResponse:
+        self.countries = value
+        return self
+
     def with_country_group_code(self, value: str) -> RetrievePolicyResponse:
         self.country_group_code = value
+        return self
+
+    def with_country_group_name(self, value: str) -> RetrievePolicyResponse:
+        self.country_group_name = value
+        return self
+
+    def with_country_type(self, value: str) -> RetrievePolicyResponse:
+        self.country_type = value
         return self
 
     def with_created_at(self, value: str) -> RetrievePolicyResponse:
@@ -169,10 +190,22 @@ class RetrievePolicyResponse(Model):
             result["shouldNotifyOnUpdate"] = bool(self.should_notify_on_update)
         elif include_empty:
             result["shouldNotifyOnUpdate"] = False
+        if hasattr(self, "countries"):
+            result["countries"] = [str(i0) for i0 in self.countries]
+        elif include_empty:
+            result["countries"] = []
         if hasattr(self, "country_group_code"):
             result["countryGroupCode"] = str(self.country_group_code)
         elif include_empty:
             result["countryGroupCode"] = ""
+        if hasattr(self, "country_group_name"):
+            result["countryGroupName"] = str(self.country_group_name)
+        elif include_empty:
+            result["countryGroupName"] = ""
+        if hasattr(self, "country_type"):
+            result["countryType"] = str(self.country_type)
+        elif include_empty:
+            result["countryType"] = ""
         if hasattr(self, "created_at"):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
@@ -211,7 +244,10 @@ class RetrievePolicyResponse(Model):
         is_mandatory: bool,
         policy_name: str,
         should_notify_on_update: bool,
+        countries: Optional[List[str]] = None,
         country_group_code: Optional[str] = None,
+        country_group_name: Optional[str] = None,
+        country_type: Optional[str] = None,
         created_at: Optional[str] = None,
         description: Optional[str] = None,
         policy_versions: Optional[List[PolicyVersionObject]] = None,
@@ -227,8 +263,14 @@ class RetrievePolicyResponse(Model):
         instance.is_mandatory = is_mandatory
         instance.policy_name = policy_name
         instance.should_notify_on_update = should_notify_on_update
+        if countries is not None:
+            instance.countries = countries
         if country_group_code is not None:
             instance.country_group_code = country_group_code
+        if country_group_name is not None:
+            instance.country_group_name = country_group_name
+        if country_type is not None:
+            instance.country_type = country_type
         if created_at is not None:
             instance.created_at = created_at
         if description is not None:
@@ -279,10 +321,22 @@ class RetrievePolicyResponse(Model):
             instance.should_notify_on_update = bool(dict_["shouldNotifyOnUpdate"])
         elif include_empty:
             instance.should_notify_on_update = False
+        if "countries" in dict_ and dict_["countries"] is not None:
+            instance.countries = [str(i0) for i0 in dict_["countries"]]
+        elif include_empty:
+            instance.countries = []
         if "countryGroupCode" in dict_ and dict_["countryGroupCode"] is not None:
             instance.country_group_code = str(dict_["countryGroupCode"])
         elif include_empty:
             instance.country_group_code = ""
+        if "countryGroupName" in dict_ and dict_["countryGroupName"] is not None:
+            instance.country_group_name = str(dict_["countryGroupName"])
+        elif include_empty:
+            instance.country_group_name = ""
+        if "countryType" in dict_ and dict_["countryType"] is not None:
+            instance.country_type = str(dict_["countryType"])
+        elif include_empty:
+            instance.country_type = ""
         if "createdAt" in dict_ and dict_["createdAt"] is not None:
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
@@ -356,7 +410,10 @@ class RetrievePolicyResponse(Model):
             "isMandatory": "is_mandatory",
             "policyName": "policy_name",
             "shouldNotifyOnUpdate": "should_notify_on_update",
+            "countries": "countries",
             "countryGroupCode": "country_group_code",
+            "countryGroupName": "country_group_name",
+            "countryType": "country_type",
             "createdAt": "created_at",
             "description": "description",
             "policyVersions": "policy_versions",
@@ -374,7 +431,10 @@ class RetrievePolicyResponse(Model):
             "isMandatory": True,
             "policyName": True,
             "shouldNotifyOnUpdate": True,
+            "countries": False,
             "countryGroupCode": False,
+            "countryGroupName": False,
+            "countryType": False,
             "createdAt": False,
             "description": False,
             "policyVersions": False,

@@ -36,11 +36,29 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 
 
 @click.command()
+@click.option("--count", "count", type=int)
+@click.option("--in_use", "in_use", type=str)
+@click.option("--is_protected", "is_protected", type=bool)
+@click.option("--name", "name", type=str)
+@click.option("--offset", "offset", type=int)
+@click.option("--sort_by", "sort_by", type=str)
+@click.option("--sort_direction", "sort_direction", type=str)
+@click.option("--status", "status", type=str)
+@click.option("--tag", "tag", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def image_list(
+    count: Optional[int] = None,
+    in_use: Optional[str] = None,
+    is_protected: Optional[bool] = None,
+    name: Optional[str] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    sort_direction: Optional[str] = None,
+    status: Optional[str] = None,
+    tag: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -55,6 +73,15 @@ def image_list(
     else:
         login_as_internal(login_as)
     result, error = image_list_internal(
+        count=count,
+        in_use=in_use,
+        is_protected=is_protected,
+        name=name,
+        offset=offset,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
+        status=status,
+        tag=tag,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

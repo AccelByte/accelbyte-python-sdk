@@ -407,8 +407,6 @@ def post_game_record_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -510,8 +508,6 @@ async def post_game_record_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -603,8 +599,6 @@ def put_game_record_handler_v1(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word
@@ -694,8 +688,6 @@ async def put_game_record_handler_v1_async(
     - `{ "data.2": "value" }`
     2. Cannot use **"$"** as the prefix in key names
     - `{ "$data": "value" }`
-    3. Cannot use empty string in key names
-    - `{ "": "value" }`
 
 
     ## Reserved Word

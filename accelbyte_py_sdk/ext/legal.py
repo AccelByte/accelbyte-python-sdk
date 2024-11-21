@@ -31,6 +31,8 @@ from ..api.legal.models import CreateBasePolicyRequestV2
 from ..api.legal.models import CreateBasePolicyResponse
 from ..api.legal.models import CreateLocalizedPolicyVersionRequest
 from ..api.legal.models import CreateLocalizedPolicyVersionResponse
+from ..api.legal.models import CreatePolicyRequest
+from ..api.legal.models import CreatePolicyResponse
 from ..api.legal.models import CreatePolicyVersionRequest
 from ..api.legal.models import CreatePolicyVersionResponse
 from ..api.legal.models import DownloadExportedAgreementsInCSVResponse
@@ -49,6 +51,7 @@ from ..api.legal.models import RetrieveAcceptedAgreementResponse
 from ..api.legal.models import RetrieveBasePolicyResponse
 from ..api.legal.models import RetrieveLocalizedPolicyVersionPublicResponse
 from ..api.legal.models import RetrieveLocalizedPolicyVersionResponse
+from ..api.legal.models import RetrievePoliciesFromBasePolicyResponse
 from ..api.legal.models import RetrievePolicyPublicResponse
 from ..api.legal.models import RetrievePolicyResponse
 from ..api.legal.models import RetrievePolicyTypeResponse
@@ -94,6 +97,8 @@ def create_create_base_policy_request_example() -> CreateBasePolicyRequest:
     instance.affected_client_ids = [randomize()]
     instance.affected_countries = [randomize()]
     instance.base_policy_name = randomize()
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
     instance.description = randomize()
     instance.is_hidden = randomize("bool")
     instance.is_hidden_public = randomize("bool")
@@ -108,6 +113,8 @@ def create_create_base_policy_request_v2_example() -> CreateBasePolicyRequestV2:
     instance.affected_client_ids = [randomize()]
     instance.affected_countries = [randomize()]
     instance.base_policy_name = randomize()
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
     instance.description = randomize()
     instance.is_hidden = randomize("bool")
     instance.is_hidden_public = randomize("bool")
@@ -121,6 +128,8 @@ def create_create_base_policy_response_example() -> CreateBasePolicyResponse:
     instance.id_ = randomize()
     instance.affected_client_ids = [randomize()]
     instance.affected_countries = [randomize()]
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
     instance.created_at = randomize("date")
     instance.description = randomize()
     instance.global_policy_name = randomize()
@@ -152,6 +161,39 @@ def create_create_localized_policy_version_response_example() -> (
     instance.created_at = randomize("date")
     instance.description = randomize()
     instance.locale_code = randomize()
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_create_policy_request_example() -> CreatePolicyRequest:
+    instance = CreatePolicyRequest()
+    instance.countries = [randomize()]
+    instance.country_code = randomize()
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
+    instance.description = randomize()
+    instance.is_default_selection = randomize("bool")
+    instance.is_mandatory = randomize("bool")
+    instance.policy_name = randomize()
+    instance.should_notify_on_update = randomize("bool")
+    return instance
+
+
+def create_create_policy_response_example() -> CreatePolicyResponse:
+    instance = CreatePolicyResponse()
+    instance.country_code = randomize()
+    instance.id_ = randomize()
+    instance.is_default_selection = randomize("bool")
+    instance.is_mandatory = randomize("bool")
+    instance.policy_name = randomize()
+    instance.should_notify_on_update = randomize("bool")
+    instance.countries = [randomize()]
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
+    instance.created_at = randomize("date")
+    instance.description = randomize()
+    instance.policy_versions = [create_policy_version_object_example()]
+    instance.readable_id = randomize()
     instance.updated_at = randomize("date")
     return instance
 
@@ -269,7 +311,10 @@ def create_policy_object_example() -> PolicyObject:
     instance.is_mandatory = randomize("bool")
     instance.policy_name = randomize()
     instance.should_notify_on_update = randomize("bool")
+    instance.countries = [randomize()]
     instance.country_group_code = randomize()
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
     instance.created_at = randomize("date")
     instance.description = randomize()
     instance.readable_id = randomize()
@@ -316,6 +361,8 @@ def create_retrieve_accepted_agreement_response_example() -> (
     instance = RetrieveAcceptedAgreementResponse()
     instance.id_ = randomize()
     instance.country_code = randomize()
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
     instance.created_at = randomize("date")
     instance.description = randomize()
     instance.display_version = randomize()
@@ -392,6 +439,26 @@ def create_retrieve_localized_policy_version_response_example() -> (
     return instance
 
 
+def create_retrieve_policies_from_base_policy_response_example() -> (
+    RetrievePoliciesFromBasePolicyResponse
+):
+    instance = RetrievePoliciesFromBasePolicyResponse()
+    instance.country_code = randomize()
+    instance.id_ = randomize()
+    instance.policy_name = randomize()
+    instance.active_version = randomize()
+    instance.countries = [randomize()]
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
+    instance.created_at = randomize("date")
+    instance.description = randomize()
+    instance.is_active = [randomize()]
+    instance.last_published = randomize()
+    instance.policy_versions = [create_policy_version_object_example()]
+    instance.updated_at = randomize("date")
+    return instance
+
+
 def create_retrieve_policy_public_response_example() -> RetrievePolicyPublicResponse:
     instance = RetrievePolicyPublicResponse()
     instance.base_policy_id = randomize()
@@ -426,7 +493,10 @@ def create_retrieve_policy_response_example() -> RetrievePolicyResponse:
     instance.is_mandatory = randomize("bool")
     instance.policy_name = randomize()
     instance.should_notify_on_update = randomize("bool")
+    instance.countries = [randomize()]
     instance.country_group_code = randomize()
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
     instance.created_at = randomize("date")
     instance.description = randomize()
     instance.policy_versions = [create_policy_version_object_example()]
@@ -530,6 +600,8 @@ def create_update_base_policy_request_example() -> UpdateBasePolicyRequest:
     instance.affected_client_ids = [randomize()]
     instance.affected_countries = [randomize()]
     instance.base_policy_name = randomize()
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
     instance.description = randomize()
     instance.is_hidden = randomize("bool")
     instance.is_hidden_public = randomize("bool")
@@ -543,6 +615,8 @@ def create_update_base_policy_request_v2_example() -> UpdateBasePolicyRequestV2:
     instance.affected_client_ids = [randomize()]
     instance.affected_countries = [randomize()]
     instance.base_policy_name = randomize()
+    instance.country_group_name = randomize()
+    instance.country_type = randomize()
     instance.description = randomize()
     instance.is_hidden = randomize("bool")
     instance.is_hidden_public = randomize("bool")
@@ -602,6 +676,8 @@ def create_update_policy_request_example() -> UpdatePolicyRequest:
     instance.is_mandatory = randomize("bool")
     instance.policy_name = randomize()
     instance.should_notify_on_update = randomize("bool")
+    instance.countries = [randomize()]
+    instance.country_group_name = randomize()
     instance.description = randomize()
     instance.readable_id = randomize()
     return instance

@@ -33,9 +33,11 @@ from ..models import ModelsPaginatedUserAchievementResponse
 from ..models import ResponseError
 
 from ..operations.user_achievements import AdminListUserAchievements
+from ..operations.user_achievements import AdminListUserAchievementsSortByEnum
 from ..operations.user_achievements import AdminResetAchievement
 from ..operations.user_achievements import AdminUnlockAchievement
 from ..operations.user_achievements import PublicListUserAchievements
+from ..operations.user_achievements import PublicListUserAchievementsSortByEnum
 from ..operations.user_achievements import PublicUnlockAchievement
 
 
@@ -45,7 +47,7 @@ def admin_list_user_achievements(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     prefer_unlocked: Optional[bool] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, AdminListUserAchievementsSortByEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -94,7 +96,7 @@ def admin_list_user_achievements(
 
         prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         tags: (tags) OPTIONAL List[str] in query
 
@@ -131,7 +133,7 @@ async def admin_list_user_achievements_async(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     prefer_unlocked: Optional[bool] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, AdminListUserAchievementsSortByEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -180,7 +182,7 @@ async def admin_list_user_achievements_async(
 
         prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         tags: (tags) OPTIONAL List[str] in query
 
@@ -453,7 +455,7 @@ def public_list_user_achievements(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     prefer_unlocked: Optional[bool] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, PublicListUserAchievementsSortByEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -502,7 +504,7 @@ def public_list_user_achievements(
 
         prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         tags: (tags) OPTIONAL List[str] in query
 
@@ -539,7 +541,7 @@ async def public_list_user_achievements_async(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     prefer_unlocked: Optional[bool] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, PublicListUserAchievementsSortByEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -588,7 +590,7 @@ async def public_list_user_achievements_async(
 
         prefer_unlocked: (preferUnlocked) OPTIONAL bool in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         tags: (tags) OPTIONAL List[str] in query
 

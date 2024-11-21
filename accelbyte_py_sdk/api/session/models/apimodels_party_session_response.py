@@ -35,6 +35,8 @@ class ApimodelsPartySessionResponse(Model):
     """Apimodels party session response (apimodels.PartySessionResponse)
 
     Properties:
+        code: (code) REQUIRED str
+
         configuration: (configuration) REQUIRED ApimodelsPublicConfiguration
 
         created_at: (createdAt) REQUIRED str
@@ -59,8 +61,6 @@ class ApimodelsPartySessionResponse(Model):
 
         attributes: (attributes) OPTIONAL Dict[str, Any]
 
-        code: (code) OPTIONAL str
-
         expired_at: (expiredAt) OPTIONAL str
 
         storage: (storage) OPTIONAL Dict[str, Any]
@@ -68,6 +68,7 @@ class ApimodelsPartySessionResponse(Model):
 
     # region fields
 
+    code: str  # REQUIRED
     configuration: ApimodelsPublicConfiguration  # REQUIRED
     created_at: str  # REQUIRED
     created_by: str  # REQUIRED
@@ -80,13 +81,16 @@ class ApimodelsPartySessionResponse(Model):
     updated_at: str  # REQUIRED
     version: int  # REQUIRED
     attributes: Dict[str, Any]  # OPTIONAL
-    code: str  # OPTIONAL
     expired_at: str  # OPTIONAL
     storage: Dict[str, Any]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_code(self, value: str) -> ApimodelsPartySessionResponse:
+        self.code = value
+        return self
 
     def with_configuration(
         self, value: ApimodelsPublicConfiguration
@@ -140,10 +144,6 @@ class ApimodelsPartySessionResponse(Model):
         self.attributes = value
         return self
 
-    def with_code(self, value: str) -> ApimodelsPartySessionResponse:
-        self.code = value
-        return self
-
     def with_expired_at(self, value: str) -> ApimodelsPartySessionResponse:
         self.expired_at = value
         return self
@@ -158,6 +158,10 @@ class ApimodelsPartySessionResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "code"):
+            result["code"] = str(self.code)
+        elif include_empty:
+            result["code"] = ""
         if hasattr(self, "configuration"):
             result["configuration"] = self.configuration.to_dict(
                 include_empty=include_empty
@@ -210,10 +214,6 @@ class ApimodelsPartySessionResponse(Model):
             result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
         elif include_empty:
             result["attributes"] = {}
-        if hasattr(self, "code"):
-            result["code"] = str(self.code)
-        elif include_empty:
-            result["code"] = ""
         if hasattr(self, "expired_at"):
             result["expiredAt"] = str(self.expired_at)
         elif include_empty:
@@ -231,6 +231,7 @@ class ApimodelsPartySessionResponse(Model):
     @classmethod
     def create(
         cls,
+        code: str,
         configuration: ApimodelsPublicConfiguration,
         created_at: str,
         created_by: str,
@@ -243,12 +244,12 @@ class ApimodelsPartySessionResponse(Model):
         updated_at: str,
         version: int,
         attributes: Optional[Dict[str, Any]] = None,
-        code: Optional[str] = None,
         expired_at: Optional[str] = None,
         storage: Optional[Dict[str, Any]] = None,
         **kwargs,
     ) -> ApimodelsPartySessionResponse:
         instance = cls()
+        instance.code = code
         instance.configuration = configuration
         instance.created_at = created_at
         instance.created_by = created_by
@@ -262,8 +263,6 @@ class ApimodelsPartySessionResponse(Model):
         instance.version = version
         if attributes is not None:
             instance.attributes = attributes
-        if code is not None:
-            instance.code = code
         if expired_at is not None:
             instance.expired_at = expired_at
         if storage is not None:
@@ -277,6 +276,10 @@ class ApimodelsPartySessionResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "code" in dict_ and dict_["code"] is not None:
+            instance.code = str(dict_["code"])
+        elif include_empty:
+            instance.code = ""
         if "configuration" in dict_ and dict_["configuration"] is not None:
             instance.configuration = ApimodelsPublicConfiguration.create_from_dict(
                 dict_["configuration"], include_empty=include_empty
@@ -332,10 +335,6 @@ class ApimodelsPartySessionResponse(Model):
             }
         elif include_empty:
             instance.attributes = {}
-        if "code" in dict_ and dict_["code"] is not None:
-            instance.code = str(dict_["code"])
-        elif include_empty:
-            instance.code = ""
         if "expiredAt" in dict_ and dict_["expiredAt"] is not None:
             instance.expired_at = str(dict_["expiredAt"])
         elif include_empty:
@@ -387,6 +386,7 @@ class ApimodelsPartySessionResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "code": "code",
             "configuration": "configuration",
             "createdAt": "created_at",
             "createdBy": "created_by",
@@ -399,7 +399,6 @@ class ApimodelsPartySessionResponse(Model):
             "updatedAt": "updated_at",
             "version": "version",
             "attributes": "attributes",
-            "code": "code",
             "expiredAt": "expired_at",
             "storage": "storage",
         }
@@ -407,6 +406,7 @@ class ApimodelsPartySessionResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "code": True,
             "configuration": True,
             "createdAt": True,
             "createdBy": True,
@@ -419,7 +419,6 @@ class ApimodelsPartySessionResponse(Model):
             "updatedAt": True,
             "version": True,
             "attributes": False,
-            "code": False,
             "expiredAt": False,
             "storage": False,
         }

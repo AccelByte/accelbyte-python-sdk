@@ -114,6 +114,7 @@ def create_models_admin_game_concurrent_record_request_example() -> (
     instance.updated_at = randomize("date")
     instance.value = {randomize(): randomize()}
     instance.tags = [randomize()]
+    instance.ttl_config = create_models_ttl_config_dto_example()
     return instance
 
 
@@ -130,6 +131,7 @@ def create_models_admin_game_record_response_example() -> ModelsAdminGameRecordR
     instance.updated_at = randomize("date")
     instance.value = {randomize(): randomize()}
     instance.tags = [randomize()]
+    instance.ttl_config = create_models_ttl_config_dto_example()
     return instance
 
 

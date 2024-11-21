@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Statistics Service Index (2.18.1)
+# AccelByte Gaming Services Statistics Service Index (2.18.3)
 
 
 ## Operations
@@ -157,6 +157,8 @@
 | BulkUserStatItemInc | [BulkUserStatItemInc](../../accelbyte_py_sdk/api/social/models/bulk_user_stat_item_inc.py) |
 | BulkUserStatItemReset | [BulkUserStatItemReset](../../accelbyte_py_sdk/api/social/models/bulk_user_stat_item_reset.py) |
 | BulkUserStatItemUpdate | [BulkUserStatItemUpdate](../../accelbyte_py_sdk/api/social/models/bulk_user_stat_item_update.py) |
+| CycleOverride | [CycleOverride](../../accelbyte_py_sdk/api/social/models/cycle_override.py) |
+| CycleOverrideRequest | [CycleOverrideRequest](../../accelbyte_py_sdk/api/social/models/cycle_override_request.py) |
 | ErrorEntity | [ErrorEntity](../../accelbyte_py_sdk/api/social/models/error_entity.py) |
 | FieldValidationError | [FieldValidationError](../../accelbyte_py_sdk/api/social/models/field_validation_error.py) |
 | GameProfileHeader | [GameProfileHeader](../../accelbyte_py_sdk/api/social/models/game_profile_header.py) |

@@ -27,16 +27,18 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsPlatformCredentials
 from ..models import ResponseError
 
-from ..operations.certificate import HandleUploadXboxPFXCertificate
+from ..operations.certificate import AdminUploadXBoxCertificate
 
 
-@same_doc_as(HandleUploadXboxPFXCertificate)
-def handle_upload_xbox_pfx_certificate(
+@deprecated
+@same_doc_as(AdminUploadXBoxCertificate)
+def admin_upload_x_box_certificate(
     certname: str,
     file: Any,
     password: str,
@@ -45,9 +47,9 @@ def handle_upload_xbox_pfx_certificate(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upload certificates for xbox. (HandleUploadXboxPFXCertificate)
+    """Upload certificates for XBox. (adminUploadXBoxCertificate)
 
-    Upload certificates for xbox. Certificate must be in the valid form of PFX format.
+    Upload certificates for XBox. Certificate must be in the valid form of PFX format.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl
@@ -89,7 +91,7 @@ def handle_upload_xbox_pfx_certificate(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = HandleUploadXboxPFXCertificate.create(
+    request = AdminUploadXBoxCertificate.create(
         certname=certname,
         file=file,
         password=password,
@@ -99,8 +101,9 @@ def handle_upload_xbox_pfx_certificate(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
-@same_doc_as(HandleUploadXboxPFXCertificate)
-async def handle_upload_xbox_pfx_certificate_async(
+@deprecated
+@same_doc_as(AdminUploadXBoxCertificate)
+async def admin_upload_x_box_certificate_async(
     certname: str,
     file: Any,
     password: str,
@@ -109,9 +112,9 @@ async def handle_upload_xbox_pfx_certificate_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Upload certificates for xbox. (HandleUploadXboxPFXCertificate)
+    """Upload certificates for XBox. (adminUploadXBoxCertificate)
 
-    Upload certificates for xbox. Certificate must be in the valid form of PFX format.
+    Upload certificates for XBox. Certificate must be in the valid form of PFX format.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/certificates/pfx/platforms/xbl
@@ -153,7 +156,7 @@ async def handle_upload_xbox_pfx_certificate_async(
         namespace, error = get_services_namespace()
         if error:
             return None, error
-    request = HandleUploadXboxPFXCertificate.create(
+    request = AdminUploadXBoxCertificate.create(
         certname=certname,
         file=file,
         password=password,

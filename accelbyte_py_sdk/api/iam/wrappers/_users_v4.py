@@ -6388,6 +6388,7 @@ def public_list_user_id_by_platform_user_i_ds_v4(
     - live
     - xblweb
     - oculus
+    - if query by app user id, please set the param **pidType** to **OCULUS_APP_USER_ID**
     - oculusweb
     - facebook
     - google
@@ -6478,6 +6479,7 @@ async def public_list_user_id_by_platform_user_i_ds_v4_async(
     - live
     - xblweb
     - oculus
+    - if query by app user id, please set the param **pidType** to **OCULUS_APP_USER_ID**
     - oculusweb
     - facebook
     - google

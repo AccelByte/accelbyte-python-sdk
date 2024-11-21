@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "2.0.0"
+__version__ = "4.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -75,10 +75,16 @@ from .wrappers import retrieve_single_policy_async
 # base_legal_policies_with_namespace
 from .wrappers import create_policy_1
 from .wrappers import create_policy_1_async
+from .wrappers import create_policy_under_base_policy
+from .wrappers import create_policy_under_base_policy_async
+from .wrappers import delete_base_policy
+from .wrappers import delete_base_policy_async
 from .wrappers import partial_update_policy_1
 from .wrappers import partial_update_policy_1_async
 from .wrappers import retrieve_all_legal_policies_by_namespace
 from .wrappers import retrieve_all_legal_policies_by_namespace_async
+from .wrappers import retrieve_all_policies_from_base_policy
+from .wrappers import retrieve_all_policies_from_base_policy_async
 from .wrappers import retrieve_all_policy_types_1
 from .wrappers import retrieve_all_policy_types_1_async
 from .wrappers import retrieve_policy_country_1
@@ -111,6 +117,8 @@ from .wrappers import update_localized_policy_version_async
 # localized_policy_versions_with_namespace
 from .wrappers import create_localized_policy_version_1
 from .wrappers import create_localized_policy_version_1_async
+from .wrappers import delete_localized_policy
+from .wrappers import delete_localized_policy_async
 from .wrappers import request_presigned_url_1
 from .wrappers import request_presigned_url_1_async
 from .wrappers import retrieve_localized_policy_versions_1
@@ -141,6 +149,8 @@ from .wrappers import update_policy
 from .wrappers import update_policy_async
 
 # policies_with_namespace
+from .wrappers import delete_policy
+from .wrappers import delete_policy_async
 from .wrappers import set_default_policy_3
 from .wrappers import set_default_policy_3_async
 from .wrappers import update_policy_1
@@ -159,10 +169,14 @@ from .wrappers import update_policy_version_async
 # policy_versions_with_namespace
 from .wrappers import create_policy_version_1
 from .wrappers import create_policy_version_1_async
+from .wrappers import delete_policy_version
+from .wrappers import delete_policy_version_async
 from .wrappers import publish_policy_version_1
 from .wrappers import publish_policy_version_1_async
 from .wrappers import retrieve_single_policy_version_1
 from .wrappers import retrieve_single_policy_version_1_async
+from .wrappers import unpublish_policy_version
+from .wrappers import unpublish_policy_version_async
 from .wrappers import update_policy_version_1
 from .wrappers import update_policy_version_1_async
 

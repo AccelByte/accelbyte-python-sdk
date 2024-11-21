@@ -28,6 +28,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.cycle_override_request import CycleOverrideRequest
+
 
 class SetByEnum(StrEnum):
     CLIENT = "CLIENT"
@@ -60,6 +62,8 @@ class StatCreate(Model):
 
         cycle_ids: (cycleIds) OPTIONAL List[str]
 
+        cycle_overrides: (cycleOverrides) OPTIONAL List[CycleOverrideRequest]
+
         description: (description) OPTIONAL str
 
         global_aggregation_method: (globalAggregationMethod) OPTIONAL Union[str, GlobalAggregationMethodEnum]
@@ -88,6 +92,7 @@ class StatCreate(Model):
     set_by: Union[str, SetByEnum]  # REQUIRED
     stat_code: str  # REQUIRED
     cycle_ids: List[str]  # OPTIONAL
+    cycle_overrides: List[CycleOverrideRequest]  # OPTIONAL
     description: str  # OPTIONAL
     global_aggregation_method: Union[str, GlobalAggregationMethodEnum]  # OPTIONAL
     ignore_additional_data_on_value_rejected: bool  # OPTIONAL
@@ -121,6 +126,10 @@ class StatCreate(Model):
 
     def with_cycle_ids(self, value: List[str]) -> StatCreate:
         self.cycle_ids = value
+        return self
+
+    def with_cycle_overrides(self, value: List[CycleOverrideRequest]) -> StatCreate:
+        self.cycle_overrides = value
         return self
 
     def with_description(self, value: str) -> StatCreate:
@@ -191,6 +200,12 @@ class StatCreate(Model):
             result["cycleIds"] = [str(i0) for i0 in self.cycle_ids]
         elif include_empty:
             result["cycleIds"] = []
+        if hasattr(self, "cycle_overrides"):
+            result["cycleOverrides"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.cycle_overrides
+            ]
+        elif include_empty:
+            result["cycleOverrides"] = []
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -249,6 +264,7 @@ class StatCreate(Model):
         set_by: Union[str, SetByEnum],
         stat_code: str,
         cycle_ids: Optional[List[str]] = None,
+        cycle_overrides: Optional[List[CycleOverrideRequest]] = None,
         description: Optional[str] = None,
         global_aggregation_method: Optional[
             Union[str, GlobalAggregationMethodEnum]
@@ -270,6 +286,8 @@ class StatCreate(Model):
         instance.stat_code = stat_code
         if cycle_ids is not None:
             instance.cycle_ids = cycle_ids
+        if cycle_overrides is not None:
+            instance.cycle_overrides = cycle_overrides
         if description is not None:
             instance.description = description
         if global_aggregation_method is not None:
@@ -319,6 +337,13 @@ class StatCreate(Model):
             instance.cycle_ids = [str(i0) for i0 in dict_["cycleIds"]]
         elif include_empty:
             instance.cycle_ids = []
+        if "cycleOverrides" in dict_ and dict_["cycleOverrides"] is not None:
+            instance.cycle_overrides = [
+                CycleOverrideRequest.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["cycleOverrides"]
+            ]
+        elif include_empty:
+            instance.cycle_overrides = []
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -413,6 +438,7 @@ class StatCreate(Model):
             "setBy": "set_by",
             "statCode": "stat_code",
             "cycleIds": "cycle_ids",
+            "cycleOverrides": "cycle_overrides",
             "description": "description",
             "globalAggregationMethod": "global_aggregation_method",
             "ignoreAdditionalDataOnValueRejected": "ignore_additional_data_on_value_rejected",
@@ -433,6 +459,7 @@ class StatCreate(Model):
             "setBy": True,
             "statCode": True,
             "cycleIds": False,
+            "cycleOverrides": False,
             "description": False,
             "globalAggregationMethod": False,
             "ignoreAdditionalDataOnValueRejected": False,

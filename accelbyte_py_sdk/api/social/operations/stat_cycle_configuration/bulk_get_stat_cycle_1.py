@@ -56,7 +56,7 @@ class BulkGetStatCycle1(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL BulkStatCycleRequest in body
+        body: (body) REQUIRED BulkStatCycleRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -83,7 +83,7 @@ class BulkGetStatCycle1(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: BulkStatCycleRequest  # OPTIONAL in [body]
+    body: BulkStatCycleRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -232,12 +232,11 @@ class BulkGetStatCycle1(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, body: Optional[BulkStatCycleRequest] = None, **kwargs
+        cls, body: BulkStatCycleRequest, namespace: str, **kwargs
     ) -> BulkGetStatCycle1:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -269,7 +268,7 @@ class BulkGetStatCycle1(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

@@ -67,7 +67,7 @@ class CreateStatCycle(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) OPTIONAL StatCycleCreate in body
+        body: (body) REQUIRED StatCycleCreate in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -96,7 +96,7 @@ class CreateStatCycle(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: StatCycleCreate  # OPTIONAL in [body]
+    body: StatCycleCreate  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -248,13 +248,10 @@ class CreateStatCycle(Operation):
     # region static methods
 
     @classmethod
-    def create(
-        cls, namespace: str, body: Optional[StatCycleCreate] = None, **kwargs
-    ) -> CreateStatCycle:
+    def create(cls, body: StatCycleCreate, namespace: str, **kwargs) -> CreateStatCycle:
         instance = cls()
+        instance.body = body
         instance.namespace = namespace
-        if body is not None:
-            instance.body = body
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -286,7 +283,7 @@ class CreateStatCycle(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "body": False,
+            "body": True,
             "namespace": True,
         }
 

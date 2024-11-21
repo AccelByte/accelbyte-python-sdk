@@ -26,6 +26,12 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class CountryTypeEnum(StrEnum):
+    COUNTRY = "COUNTRY"
+    COUNTRY_GROUP = "COUNTRY_GROUP"
 
 
 class UpdateBasePolicyRequestV2(Model):
@@ -37,6 +43,10 @@ class UpdateBasePolicyRequestV2(Model):
         affected_countries: (affectedCountries) OPTIONAL List[str]
 
         base_policy_name: (basePolicyName) OPTIONAL str
+
+        country_group_name: (countryGroupName) OPTIONAL str
+
+        country_type: (countryType) OPTIONAL Union[str, CountryTypeEnum]
 
         description: (description) OPTIONAL str
 
@@ -52,6 +62,8 @@ class UpdateBasePolicyRequestV2(Model):
     affected_client_ids: List[str]  # OPTIONAL
     affected_countries: List[str]  # OPTIONAL
     base_policy_name: str  # OPTIONAL
+    country_group_name: str  # OPTIONAL
+    country_type: Union[str, CountryTypeEnum]  # OPTIONAL
     description: str  # OPTIONAL
     is_hidden: bool  # OPTIONAL
     is_hidden_public: bool  # OPTIONAL
@@ -71,6 +83,16 @@ class UpdateBasePolicyRequestV2(Model):
 
     def with_base_policy_name(self, value: str) -> UpdateBasePolicyRequestV2:
         self.base_policy_name = value
+        return self
+
+    def with_country_group_name(self, value: str) -> UpdateBasePolicyRequestV2:
+        self.country_group_name = value
+        return self
+
+    def with_country_type(
+        self, value: Union[str, CountryTypeEnum]
+    ) -> UpdateBasePolicyRequestV2:
+        self.country_type = value
         return self
 
     def with_description(self, value: str) -> UpdateBasePolicyRequestV2:
@@ -107,6 +129,14 @@ class UpdateBasePolicyRequestV2(Model):
             result["basePolicyName"] = str(self.base_policy_name)
         elif include_empty:
             result["basePolicyName"] = ""
+        if hasattr(self, "country_group_name"):
+            result["countryGroupName"] = str(self.country_group_name)
+        elif include_empty:
+            result["countryGroupName"] = ""
+        if hasattr(self, "country_type"):
+            result["countryType"] = str(self.country_type)
+        elif include_empty:
+            result["countryType"] = Union[str, CountryTypeEnum]()
         if hasattr(self, "description"):
             result["description"] = str(self.description)
         elif include_empty:
@@ -135,6 +165,8 @@ class UpdateBasePolicyRequestV2(Model):
         affected_client_ids: Optional[List[str]] = None,
         affected_countries: Optional[List[str]] = None,
         base_policy_name: Optional[str] = None,
+        country_group_name: Optional[str] = None,
+        country_type: Optional[Union[str, CountryTypeEnum]] = None,
         description: Optional[str] = None,
         is_hidden: Optional[bool] = None,
         is_hidden_public: Optional[bool] = None,
@@ -148,6 +180,10 @@ class UpdateBasePolicyRequestV2(Model):
             instance.affected_countries = affected_countries
         if base_policy_name is not None:
             instance.base_policy_name = base_policy_name
+        if country_group_name is not None:
+            instance.country_group_name = country_group_name
+        if country_type is not None:
+            instance.country_type = country_type
         if description is not None:
             instance.description = description
         if is_hidden is not None:
@@ -179,6 +215,14 @@ class UpdateBasePolicyRequestV2(Model):
             instance.base_policy_name = str(dict_["basePolicyName"])
         elif include_empty:
             instance.base_policy_name = ""
+        if "countryGroupName" in dict_ and dict_["countryGroupName"] is not None:
+            instance.country_group_name = str(dict_["countryGroupName"])
+        elif include_empty:
+            instance.country_group_name = ""
+        if "countryType" in dict_ and dict_["countryType"] is not None:
+            instance.country_type = str(dict_["countryType"])
+        elif include_empty:
+            instance.country_type = Union[str, CountryTypeEnum]()
         if "description" in dict_ and dict_["description"] is not None:
             instance.description = str(dict_["description"])
         elif include_empty:
@@ -241,6 +285,8 @@ class UpdateBasePolicyRequestV2(Model):
             "affectedClientIds": "affected_client_ids",
             "affectedCountries": "affected_countries",
             "basePolicyName": "base_policy_name",
+            "countryGroupName": "country_group_name",
+            "countryType": "country_type",
             "description": "description",
             "isHidden": "is_hidden",
             "isHiddenPublic": "is_hidden_public",
@@ -253,10 +299,18 @@ class UpdateBasePolicyRequestV2(Model):
             "affectedClientIds": False,
             "affectedCountries": False,
             "basePolicyName": False,
+            "countryGroupName": False,
+            "countryType": False,
             "description": False,
             "isHidden": False,
             "isHiddenPublic": False,
             "tags": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "countryType": ["COUNTRY", "COUNTRY_GROUP"],
         }
 
     # endregion static methods

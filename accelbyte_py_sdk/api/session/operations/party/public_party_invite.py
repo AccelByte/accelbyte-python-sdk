@@ -43,6 +43,7 @@ class PublicPartyInvite(Operation):
     - STEAM
     - XBOX
     - PSN
+    Metadata is optional parameter which will be sent over via invitation notification and is not permanently stored in the party storage.
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/invite

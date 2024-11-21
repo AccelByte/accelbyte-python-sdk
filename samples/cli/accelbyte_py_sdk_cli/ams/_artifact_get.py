@@ -46,6 +46,8 @@ from accelbyte_py_sdk.api.ams.models import ResponseErrorResponse
 @click.option("--offset", "offset", type=int)
 @click.option("--region", "region", type=str)
 @click.option("--server_id", "server_id", type=str)
+@click.option("--sort_by", "sort_by", type=str)
+@click.option("--sort_direction", "sort_direction", type=str)
 @click.option("--start_date", "start_date", type=str)
 @click.option("--status", "status", type=str)
 @click.option("--namespace", type=str)
@@ -63,6 +65,8 @@ def artifact_get(
     offset: Optional[int] = None,
     region: Optional[str] = None,
     server_id: Optional[str] = None,
+    sort_by: Optional[str] = None,
+    sort_direction: Optional[str] = None,
     start_date: Optional[str] = None,
     status: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -89,6 +93,8 @@ def artifact_get(
         offset=offset,
         region=region,
         server_id=server_id,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
         start_date=start_date,
         status=status,
         namespace=namespace,

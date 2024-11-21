@@ -26,29 +26,35 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_rule_information import ModelsRuleInformation
+
+
+class AllowedActionEnum(StrEnum):
+    CREATEGROUP = "createGroup"
+    JOINGROUP = "joinGroup"
 
 
 class ModelsRule(Model):
     """Models rule (models.Rule)
 
     Properties:
-        allowed_action: (allowedAction) REQUIRED str
+        allowed_action: (allowedAction) REQUIRED Union[str, AllowedActionEnum]
 
         rule_detail: (ruleDetail) REQUIRED List[ModelsRuleInformation]
     """
 
     # region fields
 
-    allowed_action: str  # REQUIRED
+    allowed_action: Union[str, AllowedActionEnum]  # REQUIRED
     rule_detail: List[ModelsRuleInformation]  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
 
-    def with_allowed_action(self, value: str) -> ModelsRule:
+    def with_allowed_action(self, value: Union[str, AllowedActionEnum]) -> ModelsRule:
         self.allowed_action = value
         return self
 
@@ -65,7 +71,7 @@ class ModelsRule(Model):
         if hasattr(self, "allowed_action"):
             result["allowedAction"] = str(self.allowed_action)
         elif include_empty:
-            result["allowedAction"] = ""
+            result["allowedAction"] = Union[str, AllowedActionEnum]()
         if hasattr(self, "rule_detail"):
             result["ruleDetail"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.rule_detail
@@ -80,7 +86,10 @@ class ModelsRule(Model):
 
     @classmethod
     def create(
-        cls, allowed_action: str, rule_detail: List[ModelsRuleInformation], **kwargs
+        cls,
+        allowed_action: Union[str, AllowedActionEnum],
+        rule_detail: List[ModelsRuleInformation],
+        **kwargs,
     ) -> ModelsRule:
         instance = cls()
         instance.allowed_action = allowed_action
@@ -95,7 +104,7 @@ class ModelsRule(Model):
         if "allowedAction" in dict_ and dict_["allowedAction"] is not None:
             instance.allowed_action = str(dict_["allowedAction"])
         elif include_empty:
-            instance.allowed_action = ""
+            instance.allowed_action = Union[str, AllowedActionEnum]()
         if "ruleDetail" in dict_ and dict_["ruleDetail"] is not None:
             instance.rule_detail = [
                 ModelsRuleInformation.create_from_dict(i0, include_empty=include_empty)
@@ -151,6 +160,12 @@ class ModelsRule(Model):
         return {
             "allowedAction": True,
             "ruleDetail": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "allowedAction": ["createGroup", "joinGroup"],
         }
 
     # endregion static methods

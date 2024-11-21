@@ -8,11 +8,12 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Cloudsave Service."""
 
-__version__ = "3.21.1"
+__version__ = "3.24.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .delete_admin_game_recor_701919 import DeleteAdminGameRecordTTLConfig
 from .delete_game_binary_reco_40da6b import DeleteGameBinaryRecordTTLConfig
 from .delete_game_record_ttl_config import DeleteGameRecordTTLConfig

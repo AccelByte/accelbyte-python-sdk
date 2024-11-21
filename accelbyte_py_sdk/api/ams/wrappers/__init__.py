@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.27.1"
+__version__ = "1.30.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,10 +20,10 @@ from ._account import admin_account_create
 from ._account import admin_account_create_async
 from ._account import admin_account_get
 from ._account import admin_account_get_async
+from ._account import admin_account_link
+from ._account import admin_account_link_async
 from ._account import admin_account_link_token_get
 from ._account import admin_account_link_token_get_async
-from ._account import admin_account_link_token_post
-from ._account import admin_account_link_token_post_async
 
 from ._ams_info import info_regions
 from ._ams_info import info_regions_async

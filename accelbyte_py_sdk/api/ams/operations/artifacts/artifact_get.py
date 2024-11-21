@@ -28,9 +28,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ApiArtifactListResponse
 from ...models import ResponseErrorResponse
+
+
+class SortDirectionEnum(StrEnum):
+    ASC = "asc"
+    DESC = "desc"
 
 
 class ArtifactGet(Operation):
@@ -75,6 +81,10 @@ class ArtifactGet(Operation):
 
         server_id: (serverId) OPTIONAL str in query
 
+        sort_by: (sortBy) OPTIONAL str in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
+
         start_date: (startDate) OPTIONAL str in query
 
         status: (status) OPTIONAL str in query
@@ -111,6 +121,8 @@ class ArtifactGet(Operation):
     offset: int  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
     server_id: str  # OPTIONAL in [query]
+    sort_by: str  # OPTIONAL in [query]
+    sort_direction: Union[str, SortDirectionEnum]  # OPTIONAL in [query]
     start_date: str  # OPTIONAL in [query]
     status: str  # OPTIONAL in [query]
 
@@ -184,6 +196,10 @@ class ArtifactGet(Operation):
             result["region"] = self.region
         if hasattr(self, "server_id"):
             result["serverId"] = self.server_id
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
+        if hasattr(self, "sort_direction"):
+            result["sortDirection"] = self.sort_direction
         if hasattr(self, "start_date"):
             result["startDate"] = self.start_date
         if hasattr(self, "status"):
@@ -240,6 +256,14 @@ class ArtifactGet(Operation):
 
     def with_server_id(self, value: str) -> ArtifactGet:
         self.server_id = value
+        return self
+
+    def with_sort_by(self, value: str) -> ArtifactGet:
+        self.sort_by = value
+        return self
+
+    def with_sort_direction(self, value: Union[str, SortDirectionEnum]) -> ArtifactGet:
+        self.sort_direction = value
         return self
 
     def with_start_date(self, value: str) -> ArtifactGet:
@@ -300,6 +324,14 @@ class ArtifactGet(Operation):
             result["serverId"] = str(self.server_id)
         elif include_empty:
             result["serverId"] = ""
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = ""
+        if hasattr(self, "sort_direction") and self.sort_direction:
+            result["sortDirection"] = str(self.sort_direction)
+        elif include_empty:
+            result["sortDirection"] = Union[str, SortDirectionEnum]()
         if hasattr(self, "start_date") and self.start_date:
             result["startDate"] = str(self.start_date)
         elif include_empty:
@@ -379,6 +411,8 @@ class ArtifactGet(Operation):
         offset: Optional[int] = None,
         region: Optional[str] = None,
         server_id: Optional[str] = None,
+        sort_by: Optional[str] = None,
+        sort_direction: Optional[Union[str, SortDirectionEnum]] = None,
         start_date: Optional[str] = None,
         status: Optional[str] = None,
         **kwargs,
@@ -405,6 +439,10 @@ class ArtifactGet(Operation):
             instance.region = region
         if server_id is not None:
             instance.server_id = server_id
+        if sort_by is not None:
+            instance.sort_by = sort_by
+        if sort_direction is not None:
+            instance.sort_direction = sort_direction
         if start_date is not None:
             instance.start_date = start_date
         if status is not None:
@@ -460,6 +498,14 @@ class ArtifactGet(Operation):
             instance.server_id = str(dict_["serverId"])
         elif include_empty:
             instance.server_id = ""
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = ""
+        if "sortDirection" in dict_ and dict_["sortDirection"] is not None:
+            instance.sort_direction = str(dict_["sortDirection"])
+        elif include_empty:
+            instance.sort_direction = Union[str, SortDirectionEnum]()
         if "startDate" in dict_ and dict_["startDate"] is not None:
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
@@ -484,6 +530,8 @@ class ArtifactGet(Operation):
             "offset": "offset",
             "region": "region",
             "serverId": "server_id",
+            "sortBy": "sort_by",
+            "sortDirection": "sort_direction",
             "startDate": "start_date",
             "status": "status",
         }
@@ -502,8 +550,16 @@ class ArtifactGet(Operation):
             "offset": False,
             "region": False,
             "serverId": False,
+            "sortBy": False,
+            "sortDirection": False,
             "startDate": False,
             "status": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortDirection": ["asc", "desc"],  # in query
         }
 
     # endregion static methods

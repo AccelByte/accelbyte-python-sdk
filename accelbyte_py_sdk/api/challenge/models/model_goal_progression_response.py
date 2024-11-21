@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 from ....core import StrEnum
 
+from ..models.model_claimable_user_reward import ModelClaimableUserReward
 from ..models.model_goal_meta import ModelGoalMeta
 from ..models.model_requirement_progression_response import (
     ModelRequirementProgressionResponse,
@@ -56,6 +57,8 @@ class ModelGoalProgressionResponse(Model):
         requirement_progressions: (requirementProgressions) REQUIRED List[ModelRequirementProgressionResponse]
 
         status: (status) REQUIRED Union[str, StatusEnum]
+
+        to_claim_rewards: (toClaimRewards) OPTIONAL List[ModelClaimableUserReward]
     """
 
     # region fields
@@ -66,6 +69,7 @@ class ModelGoalProgressionResponse(Model):
     goal_progression_id: str  # REQUIRED
     requirement_progressions: List[ModelRequirementProgressionResponse]  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
+    to_claim_rewards: List[ModelClaimableUserReward]  # OPTIONAL
 
     # endregion fields
 
@@ -97,6 +101,12 @@ class ModelGoalProgressionResponse(Model):
         self, value: Union[str, StatusEnum]
     ) -> ModelGoalProgressionResponse:
         self.status = value
+        return self
+
+    def with_to_claim_rewards(
+        self, value: List[ModelClaimableUserReward]
+    ) -> ModelGoalProgressionResponse:
+        self.to_claim_rewards = value
         return self
 
     # endregion with_x methods
@@ -132,6 +142,12 @@ class ModelGoalProgressionResponse(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = Union[str, StatusEnum]()
+        if hasattr(self, "to_claim_rewards"):
+            result["toClaimRewards"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.to_claim_rewards
+            ]
+        elif include_empty:
+            result["toClaimRewards"] = []
         return result
 
     # endregion to methods
@@ -147,6 +163,7 @@ class ModelGoalProgressionResponse(Model):
         goal_progression_id: str,
         requirement_progressions: List[ModelRequirementProgressionResponse],
         status: Union[str, StatusEnum],
+        to_claim_rewards: Optional[List[ModelClaimableUserReward]] = None,
         **kwargs,
     ) -> ModelGoalProgressionResponse:
         instance = cls()
@@ -156,6 +173,8 @@ class ModelGoalProgressionResponse(Model):
         instance.goal_progression_id = goal_progression_id
         instance.requirement_progressions = requirement_progressions
         instance.status = status
+        if to_claim_rewards is not None:
+            instance.to_claim_rewards = to_claim_rewards
         return instance
 
     @classmethod
@@ -199,6 +218,15 @@ class ModelGoalProgressionResponse(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = Union[str, StatusEnum]()
+        if "toClaimRewards" in dict_ and dict_["toClaimRewards"] is not None:
+            instance.to_claim_rewards = [
+                ModelClaimableUserReward.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["toClaimRewards"]
+            ]
+        elif include_empty:
+            instance.to_claim_rewards = []
         return instance
 
     @classmethod
@@ -248,6 +276,7 @@ class ModelGoalProgressionResponse(Model):
             "goalProgressionId": "goal_progression_id",
             "requirementProgressions": "requirement_progressions",
             "status": "status",
+            "toClaimRewards": "to_claim_rewards",
         }
 
     @staticmethod
@@ -259,6 +288,7 @@ class ModelGoalProgressionResponse(Model):
             "goalProgressionId": True,
             "requirementProgressions": True,
             "status": True,
+            "toClaimRewards": False,
         }
 
     @staticmethod

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.10.0"
+__version__ = "1.11.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -29,6 +29,11 @@ from .model_claim_user_rewards_by_goal_code_request import (
 from .model_claim_user_rewards_req import ModelClaimUserRewardsReq
 from .model_claim_users_rewards_request import ModelClaimUsersRewardsRequest
 from .model_claim_users_rewards_response import ModelClaimUsersRewardsResponse
+from .model_claimable_user_reward import ModelClaimableUserReward
+from .model_claimable_user_reward import (
+    StatusEnum as ModelClaimableUserRewardStatusEnum,
+    TypeEnum as ModelClaimableUserRewardTypeEnum,
+)
 from .model_create_challenge_request import ModelCreateChallengeRequest
 from .model_create_challenge_request import (
     AssignmentRuleEnum as ModelCreateChallengeRequestAssignmentRuleEnum,

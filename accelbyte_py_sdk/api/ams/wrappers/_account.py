@@ -40,8 +40,8 @@ from ..models import ResponseErrorResponse
 from ..operations.account import AccountGet
 from ..operations.account import AdminAccountCreate
 from ..operations.account import AdminAccountGet
+from ..operations.account import AdminAccountLink
 from ..operations.account import AdminAccountLinkTokenGet
-from ..operations.account import AdminAccountLinkTokenPost
 
 
 @same_doc_as(AccountGet)
@@ -330,6 +330,108 @@ async def admin_account_get_async(
     )
 
 
+@same_doc_as(AdminAccountLink)
+def admin_account_link(
+    body: ApiAccountLinkRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """link an account to a namespace (AdminAccountLink)
+
+    This route will attempt to register the account to namespace linkage in AMS and requires a valid account link token. This route fails if an account is already linked
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/account/link
+
+        method: POST
+
+        tags: ["Account"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiAccountLinkRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ApiAccountLinkResponse (success)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminAccountLink.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminAccountLink)
+async def admin_account_link_async(
+    body: ApiAccountLinkRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """link an account to a namespace (AdminAccountLink)
+
+    This route will attempt to register the account to namespace linkage in AMS and requires a valid account link token. This route fails if an account is already linked
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/account/link
+
+        method: POST
+
+        tags: ["Account"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiAccountLinkRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        201: Created - ApiAccountLinkResponse (success)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminAccountLink.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminAccountLinkTokenGet)
 def admin_account_link_token_get(
     namespace: Optional[str] = None,
@@ -421,112 +523,6 @@ async def admin_account_link_token_get_async(
         if error:
             return None, error
     request = AdminAccountLinkTokenGet.create(
-        namespace=namespace,
-    )
-    return await run_request_async(
-        request, additional_headers=x_additional_headers, **kwargs
-    )
-
-
-@same_doc_as(AdminAccountLinkTokenPost)
-def admin_account_link_token_post(
-    body: ApiAccountLinkRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """link an account to a namespace (AdminAccountLinkTokenPost)
-
-    This route will attempt to register the account to namespace linkage in AMS and requires a valid account link token. This route fails if an account is already linked
-
-    AdminAccountLink
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
-
-    Properties:
-        url: /ams/v1/admin/namespaces/{namespace}/account/link
-
-        method: POST
-
-        tags: ["Account"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) REQUIRED ApiAccountLinkRequest in body
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        201: Created - ApiAccountLinkResponse (success)
-
-        401: Unauthorized - ResponseErrorResponse (no authorization provided)
-
-        403: Forbidden - ResponseErrorResponse (insufficient permissions)
-
-        500: Internal Server Error - ResponseErrorResponse (internal server error)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminAccountLinkTokenPost.create(
-        body=body,
-        namespace=namespace,
-    )
-    return run_request(request, additional_headers=x_additional_headers, **kwargs)
-
-
-@same_doc_as(AdminAccountLinkTokenPost)
-async def admin_account_link_token_post_async(
-    body: ApiAccountLinkRequest,
-    namespace: Optional[str] = None,
-    x_additional_headers: Optional[Dict[str, str]] = None,
-    **kwargs
-):
-    """link an account to a namespace (AdminAccountLinkTokenPost)
-
-    This route will attempt to register the account to namespace linkage in AMS and requires a valid account link token. This route fails if an account is already linked
-
-    AdminAccountLink
-
-    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:ACCOUNT [CREATE]
-
-    Properties:
-        url: /ams/v1/admin/namespaces/{namespace}/account/link
-
-        method: POST
-
-        tags: ["Account"]
-
-        consumes: ["application/json"]
-
-        produces: ["application/json"]
-
-        securities: [BEARER_AUTH]
-
-        body: (body) REQUIRED ApiAccountLinkRequest in body
-
-        namespace: (namespace) REQUIRED str in path
-
-    Responses:
-        201: Created - ApiAccountLinkResponse (success)
-
-        401: Unauthorized - ResponseErrorResponse (no authorization provided)
-
-        403: Forbidden - ResponseErrorResponse (insufficient permissions)
-
-        500: Internal Server Error - ResponseErrorResponse (internal server error)
-    """
-    if namespace is None:
-        namespace, error = get_services_namespace()
-        if error:
-            return None, error
-    request = AdminAccountLinkTokenPost.create(
-        body=body,
         namespace=namespace,
     )
     return await run_request_async(

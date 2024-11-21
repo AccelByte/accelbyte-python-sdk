@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "5.0.1"
+__version__ = "6.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -30,6 +30,7 @@ from .get_google_iap_config import GetGoogleIAPConfig
 from .get_iap_item_config import GetIAPItemConfig
 from .get_iap_item_mapping import GetIAPItemMapping
 from .get_iap_item_mapping import PlatformEnum as GetIAPItemMappingPlatformEnum
+from .get_iap_order_consume_details import GetIAPOrderConsumeDetails
 from .get_oculus_iap_config import GetOculusIAPConfig
 from .get_play_station_iap_config import GetPlayStationIAPConfig
 from .get_steam_iap_config import GetSteamIAPConfig

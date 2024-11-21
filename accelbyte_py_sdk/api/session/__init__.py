@@ -8,15 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.19.0"
+__version__ = "3.20.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 # certificate
-from .wrappers import handle_upload_xbox_pfx_certificate
-from .wrappers import handle_upload_xbox_pfx_certificate_async
+from .wrappers import admin_upload_x_box_certificate
+from .wrappers import admin_upload_x_box_certificate_async
 
 # config
 from .wrappers import admin_get_log_config
@@ -137,6 +137,8 @@ from .wrappers import get_healthcheck_info_v1
 from .wrappers import get_healthcheck_info_v1_async
 
 # party
+from .wrappers import admin_delete_bulk_parties
+from .wrappers import admin_delete_bulk_parties_async
 from .wrappers import admin_query_parties
 from .wrappers import admin_query_parties_async
 from .wrappers import admin_sync_native_session
@@ -175,8 +177,12 @@ from .wrappers import public_update_party_async
 # platform_credential
 from .wrappers import admin_delete_platform_credentials
 from .wrappers import admin_delete_platform_credentials_async
+from .wrappers import admin_delete_platform_credentials_by_platform_id
+from .wrappers import admin_delete_platform_credentials_by_platform_id_async
 from .wrappers import admin_get_platform_credentials
 from .wrappers import admin_get_platform_credentials_async
+from .wrappers import admin_sync_platform_credentials
+from .wrappers import admin_sync_platform_credentials_async
 from .wrappers import admin_update_platform_credentials
 from .wrappers import admin_update_platform_credentials_async
 

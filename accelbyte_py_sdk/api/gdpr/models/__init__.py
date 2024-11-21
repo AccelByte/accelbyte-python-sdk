@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "2.14.0"
+__version__ = "2.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -26,6 +26,10 @@ from .dto_platform_account_closure_client_request import (
 )
 from .dto_platform_account_closure_client_response import (
     DtoPlatformAccountClosureClientResponse,
+)
+from .dto_s2s_data_request_summary import DtoS2SDataRequestSummary
+from .dto_s2s_data_request_summary import (
+    StatusEnum as DtoS2SDataRequestSummaryStatusEnum,
 )
 from .dto_service_config_dto import DtoServiceConfigDTO
 from .dto_service_config_dto import ProtocolEnum as DtoServiceConfigDTOProtocolEnum

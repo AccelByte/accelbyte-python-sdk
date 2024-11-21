@@ -49,6 +49,8 @@ class ModelUserReward(Model):
 
         goal_code: (goalCode) REQUIRED str
 
+        goal_progression_id: (goalProgressionId) REQUIRED str
+
         id_: (id) REQUIRED str
 
         item_id: (itemId) REQUIRED str
@@ -71,6 +73,7 @@ class ModelUserReward(Model):
     challenge_code: str  # REQUIRED
     created_at: str  # REQUIRED
     goal_code: str  # REQUIRED
+    goal_progression_id: str  # REQUIRED
     id_: str  # REQUIRED
     item_id: str  # REQUIRED
     item_name: str  # REQUIRED
@@ -94,6 +97,10 @@ class ModelUserReward(Model):
 
     def with_goal_code(self, value: str) -> ModelUserReward:
         self.goal_code = value
+        return self
+
+    def with_goal_progression_id(self, value: str) -> ModelUserReward:
+        self.goal_progression_id = value
         return self
 
     def with_id(self, value: str) -> ModelUserReward:
@@ -146,6 +153,10 @@ class ModelUserReward(Model):
             result["goalCode"] = str(self.goal_code)
         elif include_empty:
             result["goalCode"] = ""
+        if hasattr(self, "goal_progression_id"):
+            result["goalProgressionId"] = str(self.goal_progression_id)
+        elif include_empty:
+            result["goalProgressionId"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -190,6 +201,7 @@ class ModelUserReward(Model):
         challenge_code: str,
         created_at: str,
         goal_code: str,
+        goal_progression_id: str,
         id_: str,
         item_id: str,
         item_name: str,
@@ -204,6 +216,7 @@ class ModelUserReward(Model):
         instance.challenge_code = challenge_code
         instance.created_at = created_at
         instance.goal_code = goal_code
+        instance.goal_progression_id = goal_progression_id
         instance.id_ = id_
         instance.item_id = item_id
         instance.item_name = item_name
@@ -233,6 +246,10 @@ class ModelUserReward(Model):
             instance.goal_code = str(dict_["goalCode"])
         elif include_empty:
             instance.goal_code = ""
+        if "goalProgressionId" in dict_ and dict_["goalProgressionId"] is not None:
+            instance.goal_progression_id = str(dict_["goalProgressionId"])
+        elif include_empty:
+            instance.goal_progression_id = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -307,6 +324,7 @@ class ModelUserReward(Model):
             "challengeCode": "challenge_code",
             "createdAt": "created_at",
             "goalCode": "goal_code",
+            "goalProgressionId": "goal_progression_id",
             "id": "id_",
             "itemId": "item_id",
             "itemName": "item_name",
@@ -323,6 +341,7 @@ class ModelUserReward(Model):
             "challengeCode": True,
             "createdAt": True,
             "goalCode": True,
+            "goalProgressionId": True,
             "id": True,
             "itemId": True,
             "itemName": True,

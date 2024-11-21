@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "5.0.1"
+__version__ = "6.0.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -129,6 +129,8 @@ from .wrappers import update_category_async
 # clawback
 from .wrappers import mock_play_station_stream_event
 from .wrappers import mock_play_station_stream_event_async
+from .wrappers import mock_xbl_clawback_event
+from .wrappers import mock_xbl_clawback_event_async
 from .wrappers import query_iap_clawback_history
 from .wrappers import query_iap_clawback_history_async
 
@@ -221,6 +223,8 @@ from .wrappers import get_user_entitlement_ownership_by_item_ids
 from .wrappers import get_user_entitlement_ownership_by_item_ids_async
 from .wrappers import get_user_entitlement_ownership_by_sku
 from .wrappers import get_user_entitlement_ownership_by_sku_async
+from .wrappers import get_user_entitlements_by_ids
+from .wrappers import get_user_entitlements_by_ids_async
 from .wrappers import grant_entitlements
 from .wrappers import grant_entitlements_async
 from .wrappers import grant_user_entitlement
@@ -365,6 +369,8 @@ from .wrappers import get_iap_item_config
 from .wrappers import get_iap_item_config_async
 from .wrappers import get_iap_item_mapping
 from .wrappers import get_iap_item_mapping_async
+from .wrappers import get_iap_order_consume_details
+from .wrappers import get_iap_order_consume_details_async
 from .wrappers import get_oculus_iap_config
 from .wrappers import get_oculus_iap_config_async
 from .wrappers import get_play_station_iap_config

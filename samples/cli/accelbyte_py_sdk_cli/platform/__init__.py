@@ -79,6 +79,7 @@ from ._get_entitlement import get_entitlement
 from ._query_fulfillment_histories import query_fulfillment_histories
 from ._query_iap_clawback_history import query_iap_clawback_history
 from ._mock_play_station_stream_event import mock_play_station_stream_event
+from ._mock_xbl_clawback_event import mock_xbl_clawback_event
 from ._get_apple_iap_config import get_apple_iap_config
 from ._update_apple_iap_config import update_apple_iap_config
 from ._delete_apple_iap_config import delete_apple_iap_config
@@ -115,6 +116,7 @@ from ._delete_xbl_ap_config import delete_xbl_ap_config
 from ._update_xbl_bp_cert_file import update_xbl_bp_cert_file
 from ._query_third_party_notifications import query_third_party_notifications
 from ._query_third_party_subscription import query_third_party_subscription
+from ._get_iap_order_consume_details import get_iap_order_consume_details
 from ._download_invoice_details import download_invoice_details
 from ._generate_invoice_summary import generate_invoice_summary
 from ._sync_in_game_item import sync_in_game_item
@@ -258,6 +260,7 @@ from ._query_user_entitlements import query_user_entitlements
 from ._grant_user_entitlement import grant_user_entitlement
 from ._get_user_app_entitlement_by_app_id import get_user_app_entitlement_by_app_id
 from ._query_user_entitlements_by_app_type import query_user_entitlements_by_app_type
+from ._get_user_entitlements_by_ids import get_user_entitlements_by_ids
 from ._get_user_entitlement_by_item_id import get_user_entitlement_by_item_id
 from ._get_user_active_entitlements_by_item_ids import (
     get_user_active_entitlements_by_item_ids,
@@ -639,6 +642,7 @@ commands = [
     query_fulfillment_histories,
     query_iap_clawback_history,
     mock_play_station_stream_event,
+    mock_xbl_clawback_event,
     get_apple_iap_config,
     update_apple_iap_config,
     delete_apple_iap_config,
@@ -673,6 +677,7 @@ commands = [
     update_xbl_bp_cert_file,
     query_third_party_notifications,
     query_third_party_subscription,
+    get_iap_order_consume_details,
     download_invoice_details,
     generate_invoice_summary,
     sync_in_game_item,
@@ -814,6 +819,7 @@ commands = [
     grant_user_entitlement,
     get_user_app_entitlement_by_app_id,
     query_user_entitlements_by_app_type,
+    get_user_entitlements_by_ids,
     get_user_entitlement_by_item_id,
     get_user_active_entitlements_by_item_ids,
     get_user_entitlement_by_sku,

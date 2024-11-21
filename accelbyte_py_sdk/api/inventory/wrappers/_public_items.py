@@ -276,6 +276,7 @@ def public_consume_my_item(
 
 
     Consume user's own item.
+    Client should pass item ID in options if item type is OPTIONBOX
 
     Properties:
         url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/consume
@@ -329,6 +330,7 @@ async def public_consume_my_item_async(
 
 
     Consume user's own item.
+    Client should pass item ID in options if item type is OPTIONBOX
 
     Properties:
         url: /inventory/v1/public/namespaces/{namespace}/users/me/inventories/{inventoryId}/consume

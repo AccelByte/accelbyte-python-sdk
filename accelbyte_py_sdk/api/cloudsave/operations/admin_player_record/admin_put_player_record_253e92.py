@@ -39,6 +39,7 @@ class AdminPutPlayerRecordsHandlerV1(Operation):
 
     This endpoints will create new player record or replace the existing player record in bulk.
     Maximum bulk key limit per request 10.
+    Maximum total size of the request payload is 5 MB.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk

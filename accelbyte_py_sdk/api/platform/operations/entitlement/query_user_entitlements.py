@@ -104,6 +104,8 @@ class QueryUserEntitlements(Operation):
 
         fuzzy_match_name: (fuzzyMatchName) OPTIONAL bool in query
 
+        ignore_active_date: (ignoreActiveDate) OPTIONAL bool in query
+
         item_id: (itemId) OPTIONAL List[str] in query
 
         limit: (limit) OPTIONAL int in query
@@ -134,6 +136,7 @@ class QueryUserEntitlements(Operation):
     entitlement_name: str  # OPTIONAL in [query]
     features: List[str]  # OPTIONAL in [query]
     fuzzy_match_name: bool  # OPTIONAL in [query]
+    ignore_active_date: bool  # OPTIONAL in [query]
     item_id: List[str]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
@@ -205,6 +208,8 @@ class QueryUserEntitlements(Operation):
             result["features"] = self.features
         if hasattr(self, "fuzzy_match_name"):
             result["fuzzyMatchName"] = self.fuzzy_match_name
+        if hasattr(self, "ignore_active_date"):
+            result["ignoreActiveDate"] = self.ignore_active_date
         if hasattr(self, "item_id"):
             result["itemId"] = self.item_id
         if hasattr(self, "limit"):
@@ -259,6 +264,10 @@ class QueryUserEntitlements(Operation):
 
     def with_fuzzy_match_name(self, value: bool) -> QueryUserEntitlements:
         self.fuzzy_match_name = value
+        return self
+
+    def with_ignore_active_date(self, value: bool) -> QueryUserEntitlements:
+        self.ignore_active_date = value
         return self
 
     def with_item_id(self, value: List[str]) -> QueryUserEntitlements:
@@ -319,6 +328,10 @@ class QueryUserEntitlements(Operation):
             result["fuzzyMatchName"] = bool(self.fuzzy_match_name)
         elif include_empty:
             result["fuzzyMatchName"] = False
+        if hasattr(self, "ignore_active_date") and self.ignore_active_date:
+            result["ignoreActiveDate"] = bool(self.ignore_active_date)
+        elif include_empty:
+            result["ignoreActiveDate"] = False
         if hasattr(self, "item_id") and self.item_id:
             result["itemId"] = [str(i0) for i0 in self.item_id]
         elif include_empty:
@@ -385,6 +398,7 @@ class QueryUserEntitlements(Operation):
         entitlement_name: Optional[str] = None,
         features: Optional[List[str]] = None,
         fuzzy_match_name: Optional[bool] = None,
+        ignore_active_date: Optional[bool] = None,
         item_id: Optional[List[str]] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -408,6 +422,8 @@ class QueryUserEntitlements(Operation):
             instance.features = features
         if fuzzy_match_name is not None:
             instance.fuzzy_match_name = fuzzy_match_name
+        if ignore_active_date is not None:
+            instance.ignore_active_date = ignore_active_date
         if item_id is not None:
             instance.item_id = item_id
         if limit is not None:
@@ -461,6 +477,10 @@ class QueryUserEntitlements(Operation):
             instance.fuzzy_match_name = bool(dict_["fuzzyMatchName"])
         elif include_empty:
             instance.fuzzy_match_name = False
+        if "ignoreActiveDate" in dict_ and dict_["ignoreActiveDate"] is not None:
+            instance.ignore_active_date = bool(dict_["ignoreActiveDate"])
+        elif include_empty:
+            instance.ignore_active_date = False
         if "itemId" in dict_ and dict_["itemId"] is not None:
             instance.item_id = [str(i0) for i0 in dict_["itemId"]]
         elif include_empty:
@@ -491,6 +511,7 @@ class QueryUserEntitlements(Operation):
             "entitlementName": "entitlement_name",
             "features": "features",
             "fuzzyMatchName": "fuzzy_match_name",
+            "ignoreActiveDate": "ignore_active_date",
             "itemId": "item_id",
             "limit": "limit",
             "offset": "offset",
@@ -509,6 +530,7 @@ class QueryUserEntitlements(Operation):
             "entitlementName": False,
             "features": False,
             "fuzzyMatchName": False,
+            "ignoreActiveDate": False,
             "itemId": False,
             "limit": False,
             "offset": False,

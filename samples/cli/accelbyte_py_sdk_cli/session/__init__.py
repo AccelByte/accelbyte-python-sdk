@@ -21,7 +21,7 @@ from ._admin_get_configuration_alert_v1 import admin_get_configuration_alert_v1
 from ._admin_update_configuration_alert_v1 import admin_update_configuration_alert_v1
 from ._admin_create_configuration_alert_v1 import admin_create_configuration_alert_v1
 from ._admin_delete_configuration_alert_v1 import admin_delete_configuration_alert_v1
-from ._handle_upload_xbox_pfx_certificate import handle_upload_xbox_pfx_certificate
+from ._admin_upload_x_box_certificate import admin_upload_x_box_certificate
 from ._admin_create_configuration_template_v1 import (
     admin_create_configuration_template_v1,
 )
@@ -49,9 +49,14 @@ from ._admin_kick_game_session_member import admin_kick_game_session_member
 from ._admin_update_game_session_member import admin_update_game_session_member
 from ._admin_get_list_native_session import admin_get_list_native_session
 from ._admin_query_parties import admin_query_parties
+from ._admin_delete_bulk_parties import admin_delete_bulk_parties
 from ._admin_get_platform_credentials import admin_get_platform_credentials
 from ._admin_update_platform_credentials import admin_update_platform_credentials
 from ._admin_delete_platform_credentials import admin_delete_platform_credentials
+from ._admin_delete_platform_credentials_by_platform_id import (
+    admin_delete_platform_credentials_by_platform_id,
+)
+from ._admin_sync_platform_credentials import admin_sync_platform_credentials
 from ._admin_get_recent_player import admin_get_recent_player
 from ._admin_get_recent_team_player import admin_get_recent_team_player
 from ._admin_read_session_storage import admin_read_session_storage
@@ -128,7 +133,7 @@ commands = [
     admin_update_configuration_alert_v1,
     admin_create_configuration_alert_v1,
     admin_delete_configuration_alert_v1,
-    handle_upload_xbox_pfx_certificate,
+    admin_upload_x_box_certificate,
     admin_create_configuration_template_v1,
     admin_get_all_configuration_templates_v1,
     admin_get_configuration_template_v1,
@@ -146,9 +151,12 @@ commands = [
     admin_update_game_session_member,
     admin_get_list_native_session,
     admin_query_parties,
+    admin_delete_bulk_parties,
     admin_get_platform_credentials,
     admin_update_platform_credentials,
     admin_delete_platform_credentials,
+    admin_delete_platform_credentials_by_platform_id,
+    admin_sync_platform_credentials,
     admin_get_recent_player,
     admin_get_recent_team_player,
     admin_read_session_storage,

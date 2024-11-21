@@ -38,9 +38,8 @@ from ..api.ams.models import ApiArtifactSamplingRule
 from ..api.ams.models import ApiArtifactTypeSamplingRules
 from ..api.ams.models import ApiArtifactURLResponse
 from ..api.ams.models import ApiArtifactUsageResponse
-from ..api.ams.models import ApiAvailableInstanceType
-from ..api.ams.models import ApiAvailableInstanceTypesResponse
 from ..api.ams.models import ApiCapacity
+from ..api.ams.models import ApiCoredumpSamplingRules
 from ..api.ams.models import ApiDSHistoryEvent
 from ..api.ams.models import ApiDSHistoryList
 from ..api.ams.models import ApiDSHostConfiguration
@@ -70,6 +69,8 @@ from ..api.ams.models import ApiImageList
 from ..api.ams.models import ApiImageListItem
 from ..api.ams.models import ApiImageStorage
 from ..api.ams.models import ApiImageUpdate
+from ..api.ams.models import ApiInstanceTypeForNamespaceResponse
+from ..api.ams.models import ApiInstanceTypesForNamespaceResponse
 from ..api.ams.models import ApiPagingInfo
 from ..api.ams.models import ApiPortConfiguration
 from ..api.ams.models import ApiQoSEndpointResponse
@@ -181,6 +182,7 @@ def create_api_artifact_type_sampling_rules_example() -> ApiArtifactTypeSampling
     instance = ApiArtifactTypeSamplingRules()
     instance.crashed = create_api_artifact_sampling_rule_example()
     instance.success = create_api_artifact_sampling_rule_example()
+    instance.unclaimed = create_api_artifact_sampling_rule_example()
     return instance
 
 
@@ -198,32 +200,16 @@ def create_api_artifact_usage_response_example() -> ApiArtifactUsageResponse:
     return instance
 
 
-def create_api_available_instance_type_example() -> ApiAvailableInstanceType:
-    instance = ApiAvailableInstanceType()
-    instance.capacity = [create_api_capacity_example()]
-    instance.description = randomize()
-    instance.id_ = randomize()
-    instance.memory_gi_b = randomize("int", min_val=1, max_val=1000)
-    instance.min_speed = randomize()
-    instance.name = randomize()
-    instance.owner_account_id = randomize()
-    instance.provider = randomize()
-    instance.virtual_cpu = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
-def create_api_available_instance_types_response_example() -> (
-    ApiAvailableInstanceTypesResponse
-):
-    instance = ApiAvailableInstanceTypesResponse()
-    instance.available_instance_types = [create_api_available_instance_type_example()]
-    return instance
-
-
 def create_api_capacity_example() -> ApiCapacity:
     instance = ApiCapacity()
     instance.region = randomize()
     instance.vm_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_api_coredump_sampling_rules_example() -> ApiCoredumpSamplingRules:
+    instance = ApiCoredumpSamplingRules()
+    instance.crashed = create_api_artifact_sampling_rule_example()
     return instance
 
 
@@ -307,7 +293,7 @@ def create_api_ds_host_configuration_parameters_example() -> (
 
 def create_api_fleet_artifacts_sample_rules_example() -> ApiFleetArtifactsSampleRules:
     instance = ApiFleetArtifactsSampleRules()
-    instance.coredumps = create_api_artifact_type_sampling_rules_example()
+    instance.coredumps = create_api_coredump_sampling_rules_example()
     instance.logs = create_api_artifact_type_sampling_rules_example()
     return instance
 
@@ -490,6 +476,7 @@ def create_api_image_details_example() -> ApiImageDetails:
 def create_api_image_list_example() -> ApiImageList:
     instance = ApiImageList()
     instance.images = [create_api_image_list_item_example()]
+    instance.paging = create_api_paging_info_example()
     return instance
 
 
@@ -501,6 +488,7 @@ def create_api_image_list_item_example() -> ApiImageListItem:
     instance.id_ = randomize()
     instance.is_protected = randomize("bool")
     instance.name = randomize()
+    instance.referencing_configs = randomize("int", min_val=1, max_val=1000)
     instance.referencing_fleets = randomize("int", min_val=1, max_val=1000)
     instance.size_in_byte = randomize("int", min_val=1, max_val=1000)
     instance.status = randomize()
@@ -526,6 +514,32 @@ def create_api_image_update_example() -> ApiImageUpdate:
     instance.is_protected = randomize("bool")
     instance.name = randomize()
     instance.removed_tags = [randomize()]
+    return instance
+
+
+def create_api_instance_type_for_namespace_response_example() -> (
+    ApiInstanceTypeForNamespaceResponse
+):
+    instance = ApiInstanceTypeForNamespaceResponse()
+    instance.capacity = [create_api_capacity_example()]
+    instance.description = randomize()
+    instance.id_ = randomize()
+    instance.memory_gi_b = randomize("int", min_val=1, max_val=1000)
+    instance.min_speed = randomize()
+    instance.name = randomize()
+    instance.owner_account_id = randomize()
+    instance.provider = randomize()
+    instance.virtual_cpu = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_api_instance_types_for_namespace_response_example() -> (
+    ApiInstanceTypesForNamespaceResponse
+):
+    instance = ApiInstanceTypesForNamespaceResponse()
+    instance.available_instance_types = [
+        create_api_instance_type_for_namespace_response_example()
+    ]
     return instance
 
 
@@ -594,6 +608,7 @@ def create_api_time_example() -> ApiTime:
 
 def create_api_timeout_example() -> ApiTimeout:
     instance = ApiTimeout()
+    instance.claim = randomize("int", min_val=1, max_val=1000)
     instance.creation = randomize("int", min_val=1, max_val=1000)
     instance.drain = randomize("int", min_val=1, max_val=1000)
     instance.session = randomize("int", min_val=1, max_val=1000)
