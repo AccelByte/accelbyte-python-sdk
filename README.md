@@ -57,7 +57,7 @@ The following environment variables need to be set when using `EnvironmentConfig
 
 | Name             | Required                                                                               | Example                          |
 |------------------|----------------------------------------------------------------------------------------|----------------------------------|
-| AB_BASE_URL      | Yes                                                                                    | https://demo/accelbyte.io        |
+| AB_BASE_URL      | Yes                                                                                    | https://test.accelbyte.io        |
 | AB_CLIENT_ID     | Yes                                                                                    | abcdef0123456789abcdef0123456789 |
 | AB_CLIENT_SECRET | Yes, only if you use a private `AB_CLIENT_ID`                                          | ab#c,d)ef(ab#c,d)ef(ab#c,d)ef(ab |
 | AB_NAMESPACE     | Yes, the SDK will automatically fill up the `{namespace}` path parameter (overridable) | accelbyte                        |
