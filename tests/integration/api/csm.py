@@ -34,7 +34,7 @@ class CSMTestCase(IntegrationTestCase):
                 body=csm_models.ApimodelCreateAppV2Request.create(
                     scenario="function-override",
                     description="Python Extend SDK integration test app.",
-                )
+                ),
             )
             self.assertIsNone(error, str(error))
             self.assertEqual(result.app_name, app_name)
@@ -48,7 +48,9 @@ class CSMTestCase(IntegrationTestCase):
 
                 last_app_status = result.app_status
 
-                print(f"[{i + 1}/{check_retry}] Checking status [{result.app_name}]: {last_app_status}")
+                print(
+                    f"[{i + 1}/{check_retry}] Checking status [{result.app_name}]: {last_app_status}"
+                )
 
                 if last_app_status == "app-undeployed":
                     is_app_ready = True
@@ -56,10 +58,13 @@ class CSMTestCase(IntegrationTestCase):
 
                 sleep(check_interval)
 
-            self.assertTrue(is_app_ready, (
-                f"After waiting for {check_interval * check_retry}s, "
-                f"app {app_name} is not ready. Last status: {last_app_status}"
-            ))
+            self.assertTrue(
+                is_app_ready,
+                (
+                    f"After waiting for {check_interval * check_retry}s, "
+                    f"app {app_name} is not ready. Last status: {last_app_status}"
+                ),
+            )
 
             # secrets
 
@@ -70,15 +75,13 @@ class CSMTestCase(IntegrationTestCase):
                     value=env_sec_value,
                     source="plaintext",
                     apply_mask=True,
-                )
+                ),
             )
             self.assertIsNone(error, str(error))
             self.assertEqual(result.config_name, env_sec_key)
 
             result, error = csm_service.get_list_of_secrets_v2(
-                app=app_name,
-                limit=100,
-                offset=0
+                app=app_name, limit=100, offset=0
             )
             self.assertIsNone(error, str(error))
             self.assertTrue(result.data)
@@ -121,15 +124,13 @@ class CSMTestCase(IntegrationTestCase):
                     config_name=env_var_key,
                     value=env_var_value,
                     source="plaintext",
-                )
+                ),
             )
             self.assertIsNone(error, str(error))
             self.assertEqual(result.config_name, env_var_key)
 
             result, error = csm_service.get_list_of_variables_v2(
-                app=app_name,
-                limit=100,
-                offset=0
+                app=app_name, limit=100, offset=0
             )
             self.assertIsNone(error, str(error))
             self.assertTrue(result.data)

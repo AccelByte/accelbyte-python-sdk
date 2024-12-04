@@ -498,6 +498,9 @@ Source: [gametelemetry.py](../tests/integration/api/gametelemetry.py)
 
 ```python
 def test_get_playtime_v1(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test not applicable to AGS Starter.")
+
     from accelbyte_py_sdk.api.gametelemetry import (
         protected_get_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_get,
     )
@@ -522,6 +525,9 @@ def test_get_playtime_v1(self):
 
 ```python
 def test_save_events_v1(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test not applicable to AGS Starter.")
+
     from datetime import datetime
     from accelbyte_py_sdk.api.gametelemetry import (
         protected_save_events_game_telemetry_v1_protected_events_post,
@@ -548,6 +554,9 @@ def test_save_events_v1(self):
 
 ```python
 def test_update_playtime_v1(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test not applicable to AGS Starter.")
+
     from accelbyte_py_sdk.api.gametelemetry import (
         protected_update_playtime_game_telemetry_v1_protected_steam_ids_steam_id_playtime_playtime_put,
     )
