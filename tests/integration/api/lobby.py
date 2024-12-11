@@ -169,7 +169,7 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
                 message = self.messages.get_nowait()
                 if message is not None:
                     wsm, error = parse_wsm(message)
-                    self.assertIsNone(error, error)
+                    self.assertIsNone(error, f"error: {error}\nmessage: {message}\n")
                     wsm_type = wsm.get_type()
                     if wsm_type == "refreshTokenResponse":
                         break

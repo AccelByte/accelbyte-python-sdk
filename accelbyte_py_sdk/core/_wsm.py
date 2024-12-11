@@ -19,8 +19,10 @@ class WebSocketMessageParserError(Enum):
 
 
 class WebSocketMessageParserException(Exception):
-    def __init__(self, error: WebSocketMessageParserError):
+    def __init__(self, error: WebSocketMessageParserError, **kwargs):
         self.error = error
+        self.type_name = kwargs.get("type_name", None)
+        self.field_name = kwargs.get("field_name", None)
         super().__init__()
 
 
