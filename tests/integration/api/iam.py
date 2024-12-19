@@ -1,3 +1,4 @@
+import time
 from random import randint
 from pathlib import Path
 from typing import Optional
@@ -353,5 +354,102 @@ class IAMTestCase(IntegrationTestCase):
         self.assertGreater(exported_file_path.stat().st_size, 0)
 
     # endregion test:public_download_my_backup_codes_v4
+
+    # region test:role_override
+
+    def test_role_override(self):
+        if self.using_ags_starter:
+            self.skipTest(reason="Test not applicable to AGS Starter.")
+
+        from accelbyte_py_sdk.api import iam as iam_service
+        from accelbyte_py_sdk.api.iam import models as iam_models
+
+        # arrange
+        role_identity_to_update: str = "USER"
+        resource_to_check: str = "NAMESPACE:{namespace}:PROFILE"
+        action_to_check: int = 7
+        updated_action_to_check: int = 2
+        check_count: int = 20
+        check_interval: float = 1.0
+
+        def find_and_check_resource_action_from_role(role_id_: str, resource_to_check_: str) -> int:
+            result_, error_ = iam_service.admin_get_role_namespace_permission_v3(role_id=role_id_)
+            self.assertIsNone(error_, error_)
+
+            result_action_: int = -1
+            for permission in result_.permissions:
+                if permission.resource == resource_to_check_:
+                    result_action_ = permission.action
+                    break
+
+            return result_action_
+
+        # act & assert
+        result, error = iam_service.admin_get_roles_v4(admin_role=False)
+        self.assertIsNone(error, error)
+        self.assertTrue(result.data, result.data)
+
+        user_role_id: str = ""
+        for role in result.data:
+            if role.role_name.upper() == role_identity_to_update:
+                user_role_id = role.role_id
+                break
+        self.assertTrue(user_role_id)
+
+        action = find_and_check_resource_action_from_role(user_role_id, resource_to_check)
+        self.assertEqual(action_to_check, action)
+
+        # configure role override
+        result, error = iam_service.admin_update_role_override_config_v3(
+            body=iam_models.ModelRoleOverrideUpdateRequest.create(
+                additions=[],
+                exclusions=[
+                    iam_models.AccountcommonOverrideRolePermission.create(
+                        resource=resource_to_check,
+                        actions=[1, 4],
+                    ),
+                ],
+                overrides=[],
+                replacements=[],
+            ),
+            identity=role_identity_to_update,
+        )
+        self.assertIsNone(error, error)
+
+        # activate role override
+        result, error = iam_service.admin_change_role_override_config_status_v3(
+            body=iam_models.ModelRoleOverrideStatsUpdateRequest.create(
+                active=True,
+            ),
+            identity=role_identity_to_update,
+        )
+        self.assertIsNone(error, error)
+        self.assertTrue(result.active)
+
+        # wait for role override to apply
+        try:
+            valid: bool = False
+            current_count: int = 0
+            while current_count < check_count:
+                self.log_info(f"checking updated permissions [{current_count+1}]")
+                action = find_and_check_resource_action_from_role(user_role_id, resource_to_check)
+                if action == updated_action_to_check:
+                    valid = True
+                    break
+
+                current_count += 1
+                time.sleep(check_interval)
+        finally:
+            # deactivate role override
+            _, error = iam_service.admin_change_role_override_config_status_v3(
+                body=iam_models.ModelRoleOverrideStatsUpdateRequest.create(
+                    active=False
+                ),
+                identity=role_identity_to_update,
+            )
+            if error:
+                self.log_warning(msg=f"failed to deactivate role override: {error}")
+
+    # endregion test:role_override
 
     # end of file
