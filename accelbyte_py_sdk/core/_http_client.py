@@ -74,8 +74,50 @@ class HttpClient(ABC):
     def send_raw_request(self, method: str, url: str, **kwargs) -> Any:
         raise NotImplementedError
 
+    def delete(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request(method="DELETE", url=url, **kwargs)
+
+    def get(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request(method="GET", url=url, **kwargs)
+
+    def head(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request(method="HEAD", url=url, **kwargs)
+
+    def options(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request(method="OPTIONS", url=url, **kwargs)
+
+    def patch(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request(method="PATCH", url=url, **kwargs)
+
+    def post(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request(method="POST", url=url, **kwargs)
+
+    def put(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request(method="PUT", url=url, **kwargs)
+
     async def send_raw_request_async(self, method: str, url: str, **kwargs) -> Any:
         raise NotImplementedError
+
+    async def delete_async(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request_async(method="DELETE", url=url, **kwargs)
+
+    async def get_async(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request_async(method="GET", url=url, **kwargs)
+
+    async def head_async(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request_async(method="HEAD", url=url, **kwargs)
+
+    async def options_async(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request_async(method="OPTIONS", url=url, **kwargs)
+
+    async def patch_async(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request_async(method="PATCH", url=url, **kwargs)
+
+    async def post_async(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request_async(method="POST", url=url, **kwargs)
+
+    async def put_async(self, url: str, **kwargs) -> Any:
+        return self.send_raw_request_async(method="PUT", url=url, **kwargs)
 
     def _log_request(self, request_dict: dict) -> None:
         req_fmt = self.request_log_formatter or format_request_log
