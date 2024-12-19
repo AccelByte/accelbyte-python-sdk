@@ -346,8 +346,8 @@ class WSClient:
                 except websockets.exceptions.ConnectionClosed as closed:
                     self._set_disconnect_conn_event_data_from_exception(closed=closed)
                     self._conn_event.set()
-            else:
-                await asyncio.sleep(0.1)
+
+            await asyncio.sleep(0.01)
 
     async def _recv_task(self) -> None:
         while True:
@@ -360,16 +360,16 @@ class WSClient:
                 except websockets.exceptions.ConnectionClosed as closed:
                     self._set_disconnect_conn_event_data_from_exception(closed=closed)
                     self._conn_event.set()
-            else:
-                await asyncio.sleep(0.1)
+
+            await asyncio.sleep(0.01)
 
     async def _mesg_task(self) -> None:
         while True:
             if self._recv_queue is not None:
                 message = await self._recv_queue.get()
                 await self.on_message(message=message)
-            else:
-                await asyncio.sleep(0.1)
+
+            await asyncio.sleep(0.01)
 
     def _set_disconnect_conn_event_data(self, code: int, reason: str = "") -> None:
         setattr(

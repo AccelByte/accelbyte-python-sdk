@@ -98,7 +98,7 @@ async def _start_batched_ws_session_async(
 
         await asyncio.gather(*coros)
 
-        await asyncio.sleep(1.0)  # wait for all message echoes
+        await asyncio.sleep(3.0)  # wait for all message echoes
 
         missing = []
 
