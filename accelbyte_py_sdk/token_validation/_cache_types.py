@@ -23,7 +23,7 @@ JWTClaims = Dict[str, Any]
 JWKSet = Dict[str, PublicPrivateKey]
 NamespaceContext = basic_models.NamespaceContext
 NamespaceRole = Dict[str, str]
-Role = iam_models.ModelRoleResponseV3
+Role = iam_models.ModelRolePermissionResponseV3
 
 
 class JWKSCache(Timer):
@@ -212,7 +212,7 @@ class RolesCache(Timer):
         pass
 
     def cache_role(self, role_id: str) -> Any:
-        role, error = iam_service.admin_get_role_v3(role_id=role_id, sdk=self.sdk)
+        role, error = iam_service.admin_get_role_namespace_permission_v3(role_id=role_id, sdk=self.sdk)
         if error:
             return error
         with self._lock:
