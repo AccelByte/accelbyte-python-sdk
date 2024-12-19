@@ -266,6 +266,10 @@ class WSClient:
     async def _create_connection(
         self, url: str, headers: Optional[Dict[str, str]], **kwargs
     ) -> Any:
+        if headers and "additional_headers" in kwargs:
+            additional_headers = kwargs.pop("additional_headers")
+            if additional_headers:
+                headers.update(additional_headers)
         if headers and "extra_headers" in kwargs:
             extra_headers = kwargs.pop("extra_headers")
             if extra_headers:
@@ -273,26 +277,32 @@ class WSClient:
 
         for key in list(kwargs.keys()):
             if key not in (
-                "create_protocol",
-                "logger",
-                "compression",
+                # WebSocket
                 "origin",
                 "extensions",
                 "subprotocols",
+                # # additional_headers,
                 "user_agent_header",
+                "compression",
+                "process_exception",
+                # Timeouts
                 "open_timeout",
                 "ping_interval",
                 "ping_timeout",
                 "close_timeout",
+                # Limits
                 "max_size",
                 "max_queue",
-                "read_limit",
                 "write_limit",
+                # Logging
+                "logger",
+                # Escape hatch for advanced customization
+                "create_connection",
             ):
                 _ = kwargs.pop(key)
 
         # pylint: disable=no-member
-        return await websockets.connect(uri=url, extra_headers=headers, **kwargs)
+        return await websockets.connect(uri=url, additional_headers=headers, **kwargs)
 
     async def _close_connection(
         self, code: int = 1000, reason: str = "", **kwargs
