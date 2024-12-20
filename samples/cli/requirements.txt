@@ -1,18 +1,12 @@
 ../..   # accelbyte-py-sdk
 
-aioconsole
-anyio==3.3.4
-certifi==2021.10.8
-charset-normalizer==2.0.7
-click==8.0.3
-h11==0.12.0
-httpcore==0.13.7
-httpx==0.20.0
-idna==3.3
-pyjwt[crypto]==2.2.0
-PyYAML==6.0
-requests==2.26.0
-rfc3986==1.5.0
-sniffio==1.2.0
-urllib3==1.26.7
-websockets==10.0
+aioconsole==0.8.1
+bitarray==2.9.2
+click==8.1.7
+httpcore[http2]==1.0.5
+httpx==0.27.0
+mmh3==4.1.0
+PyJWT[crypto]==2.9.0
+PyYAML==6.0.2
+requests==2.32.3
+websockets==14.1
