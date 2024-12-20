@@ -192,7 +192,9 @@ class SDKTestCaseUtils:
         import accelbyte_py_sdk.api.iam.models as iam_models
         from accelbyte_py_sdk.core import generate_id
 
-        username = f"{user_prefix}{generate_id(8)}"
+        uid = generate_id(8)
+        unique_display_name = f"{user_prefix}{uid}"
+        username = f"{user_prefix}{uid}"
         password = SDKTestCaseUtils.generate_password(16)
         email_address = f"{username}@{email_domain}"
 
@@ -204,6 +206,7 @@ class SDKTestCaseUtils:
                     "emailAddress": email_address,
                     "username": username,
                     "password": password,
+                    "uniqueDisplayName": unique_display_name,
                     # optional
                     "dateOfBirth": date_of_birth,
                 }
@@ -217,7 +220,7 @@ class SDKTestCaseUtils:
         if not (user_id := getattr(result, "user_id", None)):
             return None, "userId not found"
 
-        return (username, password, user_id), None
+        return (email_address, password, user_id), None
 
     @staticmethod
     def generate_password(length: int) -> str:

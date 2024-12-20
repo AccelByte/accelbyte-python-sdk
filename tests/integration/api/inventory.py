@@ -29,10 +29,11 @@ class InventoryTestCase(IntegrationTestCase):
     rid = generate_id(4)
     inventory_config_code = f"python-sdk-code-{rid}"
     inventory_config_id: Optional[str] = None
-
+    uid: str = str(randint(0, 1_000_000)).rjust(7, '0')
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
-    username = f"testPythonServerSDKUser_{str(randint(0, 1_000_000)).rjust(7, '0')}"
+    unique_display_name = f"testPythonServerSDKUser_{uid}"
+    username = f"testPythonServerSDKUser_{uid}"
     model_user_create_request = AccountCreateUserRequestV4.create(
         auth_type="EMAILPASSWD",
         code="",
@@ -44,6 +45,7 @@ class InventoryTestCase(IntegrationTestCase):
         password="q!w@e#r$azsxdcfv1",
         password_md5_sum="",
         reach_minimum_age=True,
+        unique_display_name=unique_display_name,
     )
 
     # noinspection PyMethodMayBeStatic

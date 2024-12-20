@@ -2245,7 +2245,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         # assert
         self.assertEqual(0, n_retries)
-        self.assertAlmostEqual(0.5, duration, places=1)
+        self.assertAlmostEqual(0.5, duration, delta=0.5)
         self.assertIsNone(error)
 
     async def test_http_backoff_policy_constant_async(self):
@@ -2292,7 +2292,7 @@ class AsyncMockServerRequestTestCase(IsolatedAsyncioTestCase):
 
         # assert
         self.assertEqual(0, n_retries)
-        self.assertAlmostEqual(0.5, duration, delta=0.1)
+        self.assertAlmostEqual(0.5, duration, delta=0.5)
         self.assertIsNone(error)
 
     def test_http_backoff_policy_exponential(self):

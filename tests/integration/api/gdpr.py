@@ -1,3 +1,4 @@
+from random import randint
 from typing import Optional
 from uuid import uuid4
 
@@ -9,9 +10,11 @@ from accelbyte_py_sdk.api.iam.models import AccountCreateUserRequestV4
 class GDPRTestCase(IntegrationTestCase):
     did_configure: bool = False
     user_namespace: str = "accelbyte"
+    uid: str = str(randint(0, 1_000_000)).rjust(7, '0')
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
-    username = f"testPythonServerSDKUser_{uuid4().hex[0:7]}"
+    unique_display_name = f"testPythonServerSDKUser_{uid}"
+    username = f"testPythonServerSDKUser_{uid}"
     model_user_create_request = AccountCreateUserRequestV4.create(
         auth_type="EMAILPASSWD",
         code="",
@@ -23,6 +26,7 @@ class GDPRTestCase(IntegrationTestCase):
         password="q!w@e#r$azsxdcfv1",
         password_md5_sum="",
         reach_minimum_age=True,
+        unique_display_name=unique_display_name,
     )
 
     # noinspection PyMethodMayBeStatic
