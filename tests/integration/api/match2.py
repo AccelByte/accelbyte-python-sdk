@@ -151,10 +151,37 @@ class Match2TestCase(IntegrationTestCase):
 
         super().tearDown()
 
-    # region test:create_match_pool
+    # region test:create_and_get_ruleset
 
-    def test_create_match_pool(self):
+    def test_create_and_get_ruleset(self):
         from accelbyte_py_sdk.core import generate_id
+        from accelbyte_py_sdk.api.match2 import rule_set_details
+
+        # arrange
+        rid = generate_id(8)
+        rule_set_name = f"python_sdk_ruleset_{rid}"
+
+        # act
+        error = Match2TestCase.do_create_rule_set(rule_set_name=rule_set_name)
+        if error:
+            self.skipTest(reason=f"Unable to create rule set: {error}")
+            return
+        if error is None:
+            self.rule_set_name = rule_set_name
+
+        result, error = rule_set_details(ruleset=rule_set_name)
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertEqual(rule_set_name, result.name)
+
+    # endregion test:create_and_get_ruleset
+
+    # region test:create_and_get_match_pool
+
+    def test_create_and_get_match_pool(self):
+        from accelbyte_py_sdk.core import generate_id
+        from accelbyte_py_sdk.api.match2 import rule_set_details
 
         # arrange
         rid = generate_id(8)
@@ -175,8 +202,44 @@ class Match2TestCase(IntegrationTestCase):
             self.rule_set_name = rule_set_name
             self.session_template_name = session_template_name
 
+        result, error = rule_set_details(ruleset=rule_set_name)
+
         # assert
         self.assertIsNone(error, error)
+        self.assertEqual(rule_set_name, result.name)
+
+    # endregion test:create_and_get_match_pool
+
+    # region test:create_match_pool
+
+    def test_create_match_pool(self):
+        from accelbyte_py_sdk.core import generate_id
+        from accelbyte_py_sdk.api.match2 import match_pool_details
+
+        # arrange
+        rid = generate_id(8)
+        match_pool_name = f"python_sdk_pool_{rid}"
+        rule_set_name = f"python_sdk_ruleset_{rid}"
+        session_template_name = f"python_sdk_template_{rid}"
+
+        # act
+        pre_error, error = self.do_create_match_pool(
+            match_pool_name=match_pool_name,
+            rule_set_name=rule_set_name,
+            session_template_name=session_template_name,
+        )
+        if pre_error:
+            self.skipTest(reason=pre_error)
+        if error is None:
+            self.match_pool_name = match_pool_name
+            self.rule_set_name = rule_set_name
+            self.session_template_name = session_template_name
+
+        result, error = match_pool_details(pool=match_pool_name)
+
+        # assert
+        self.assertIsNone(error, error)
+        self.assertEqual(match_pool_name, result.name)
 
     # endregion test:create_match_pool
 

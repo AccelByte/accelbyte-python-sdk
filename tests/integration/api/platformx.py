@@ -104,34 +104,45 @@ class PlatformTestCase(IntegrationTestCase):
 
     # endregion test:delete_store
 
-    # region test:export_rewards
+    # region test:export_import_rewards
 
-    def test_export_rewards(self):
+    def test_export_import_rewards(self):
         from pathlib import Path
         from accelbyte_py_sdk.api.platform import export_rewards
+        from accelbyte_py_sdk.api.platform import import_rewards
 
-        # arrange
+        # arrange 1
         exported_file_path = Path(self.exported_filename)
         exported_file_path.unlink(missing_ok=True)
 
-        # act
+        # act 1
         result, error = export_rewards()
 
         if result is not None:
             exported_file_path.write_bytes(result)
 
-        # assert
+        # assert 1
         self.assertIsNone(error, error)
         self.assertTrue(exported_file_path.exists())
         self.assertGreater(exported_file_path.stat().st_size, 0)
 
-    # endregion test:export_rewards
+        # arrange 2
+
+        # act 2
+        with open(file=str(exported_file_path)) as file:
+            result, error = import_rewards(replace_existing=True, file=file)
+
+        # assert 3
+        self.assertIsNone(error, error)
+
+    # endregion test:export_import_rewards
 
     # region test:export_store
 
     def test_export_store(self):
         from pathlib import Path
         from accelbyte_py_sdk.api.platform import export_store_1
+        from accelbyte_py_sdk.api.platform.models import ExportStoreRequest
 
         # arrange
         exported_file_path = Path(self.exported_filename)
@@ -181,7 +192,6 @@ class PlatformTestCase(IntegrationTestCase):
         from pathlib import Path
         from accelbyte_py_sdk.api.platform import export_store_1
         from accelbyte_py_sdk.api.platform import import_store_1
-        from accelbyte_py_sdk.api.platform.models import ExportStoreRequest
 
         # arrange
         exported_file_path = Path(self.exported_filename)

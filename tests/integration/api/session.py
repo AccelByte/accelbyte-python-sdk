@@ -131,77 +131,89 @@ class SessionTestCase(IntegrationTestCase):
         import accelbyte_py_sdk.api.session as session_service
         import accelbyte_py_sdk.api.session.models as session_models
 
-        # arrange
-        rid = generate_id(8)
-        template_name = f"python_sdk_template_{rid}"
-        error = self.do_create_configuration_template(template_name=template_name)
-        if error:
-            self.skipTest(reason=f"unable to create configuration template: {error}")
-        else:
-            self.template_name = template_name
+        try:
+            # arrange
+            rid = generate_id(8)
+            template_name = f"python_sdk_template_{rid}"
+            error = self.do_create_configuration_template(template_name=template_name)
+            if error:
+                self.skipTest(reason=f"unable to create configuration template: {error}")
+            else:
+                self.template_name = template_name
 
-        generate_user1_result, error = self.generate_user()
-        if error:
-            self.skipTest(reason=f"unable to create user1: {error}")
-        username1, password1, user_id1 = generate_user1_result
-        self.user_ids.append(user_id1)
+            generate_user1_result, error = self.generate_user()
+            if error:
+                self.skipTest(reason=f"unable to create user1: {error}")
+            username1, password1, user_id1 = generate_user1_result
+            self.user_ids.append(user_id1)
 
-        generate_user2_result, error = self.generate_user()
-        if error:
-            self.skipTest(reason=f"unable to create user2: {error}")
-        username2, password2, user_id2 = generate_user2_result
-        self.user_ids.append(user_id2)
+            generate_user2_result, error = self.generate_user()
+            if error:
+                self.skipTest(reason=f"unable to create user2: {error}")
+            username2, password2, user_id2 = generate_user2_result
+            self.user_ids.append(user_id2)
 
-        user_sdk1, error = self.create_user_sdk(
-            username=username1,
-            password=password1,
-            existing_sdk=SDK,
-        )
-        if error:
-            self.skipTest(reason=f"unable to create user1 sdk: {error}")
-        else:
-            self.sdks.append(user_sdk1)
+            user_sdk1, error = self.create_user_sdk(
+                username=username1,
+                password=password1,
+                existing_sdk=SDK,
+            )
+            if error:
+                self.skipTest(reason=f"unable to create user1 sdk: {error}")
+            else:
+                self.sdks.append(user_sdk1)
 
-        user_sdk2, error = self.create_user_sdk(
-            username=username2,
-            password=password2,
-            existing_sdk=SDK,
-        )
-        if error:
-            self.skipTest(reason=f"unable to create user2 sdk: {error}")
-        else:
-            self.sdks.append(user_sdk2)
+            user_sdk2, error = self.create_user_sdk(
+                username=username2,
+                password=password2,
+                existing_sdk=SDK,
+            )
+            if error:
+                self.skipTest(reason=f"unable to create user2 sdk: {error}")
+            else:
+                self.sdks.append(user_sdk2)
 
-        # act & assert (create_game_session)
-        result, error = session_service.create_game_session(
-            body=session_models.ApimodelsCreateGameSessionRequest.create_from_dict(
-                {
-                    "configurationName": template_name,
-                }
-            ),
-            sdk=user_sdk1,
-        )
-        self.assertIsNone(error, error)
+            # act & assert (create_game_session)
+            result, error = session_service.create_game_session(
+                body=session_models.ApimodelsCreateGameSessionRequest.create_from_dict(
+                    {
+                        "configurationName": template_name,
+                    }
+                ),
+                sdk=user_sdk1,
+            )
+            self.assertIsNone(error, error)
 
-        if not (game_session_id := getattr(result, "id_", None)):
-            self.fail(msg=f"unable to find game session id")
+            if not (game_session_id := getattr(result, "id_", None)):
+                self.fail(msg=f"unable to find game session id")
 
-        # act & assert (join_game_sesion)
-        result, error = session_service.join_game_session(
-            session_id=game_session_id,
-            sdk=user_sdk2,
-        )
-        self.assertIsNone(error, error)
+            # act & assert (join_game_sesion)
+            result, error = session_service.join_game_session(
+                session_id=game_session_id,
+                sdk=user_sdk2,
+            )
+            self.assertIsNone(error, error)
 
-        # act & assert (get_game_session)
-        result, error = session_service.get_game_session(
-            session_id=game_session_id,
-        )
-        self.assertIsNone(error, error)
-        self.assertEqual(len(result.members), 2)
-        user_ids = [member.id_ for member in result.members]
-        self.assertIn(user_id1, user_ids)
-        self.assertIn(user_id2, user_ids)
+            # act & assert (get_game_session)
+            result, error = session_service.get_game_session(
+                session_id=game_session_id,
+            )
+            self.assertIsNone(error, error)
+            self.assertEqual(len(result.members), 2)
+            user_ids = [member.id_ for member in result.members]
+            self.assertIn(user_id1, user_ids)
+            self.assertIn(user_id2, user_ids)
+        finally:
+            if game_session_id:
+                _, error = session_service.admin_delete_bulk_game_sessions(
+                    body=session_models.ApimodelsDeleteBulkGameSessionRequest.create(
+                        ids=[game_session_id],
+                    ),
+                )
+                self.log_warning(
+                    msg=f"Failed to clean up game sessions: {error}",
+                    condition=error is not None,
+                )
 
     # endregion test:game_session_flow
 
@@ -215,98 +227,115 @@ class SessionTestCase(IntegrationTestCase):
         import accelbyte_py_sdk.api.session as session_service
         import accelbyte_py_sdk.api.session.models as session_models
 
-        # arrange
-        rid = generate_id(8)
-        template_name = f"python_sdk_template_{rid}"
-        error = self.do_create_configuration_template(template_name=template_name)
-        if error:
-            self.skipTest(reason=f"unable to create configuration template: {error}")
-        else:
-            self.template_name = template_name
+        try:
+            # arrange
+            rid = generate_id(8)
+            template_name = f"python_sdk_template_{rid}"
+            error = self.do_create_configuration_template(template_name=template_name)
+            if error:
+                self.skipTest(reason=f"unable to create configuration template: {error}")
+            else:
+                self.template_name = template_name
 
-        generate_user1_result, error = self.generate_user()
-        if error:
-            self.skipTest(reason=f"unable to create user1: {error}")
-        username1, password1, user_id1 = generate_user1_result
-        self.user_ids.append(user_id1)
+            generate_user1_result, error = self.generate_user()
+            if error:
+                self.skipTest(reason=f"unable to create user1: {error}")
+            username1, password1, user_id1 = generate_user1_result
+            self.user_ids.append(user_id1)
 
-        generate_user2_result, error = self.generate_user()
-        if error:
-            self.skipTest(reason=f"unable to create user2: {error}")
-        username2, password2, user_id2 = generate_user2_result
-        self.user_ids.append(user_id2)
+            generate_user2_result, error = self.generate_user()
+            if error:
+                self.skipTest(reason=f"unable to create user2: {error}")
+            username2, password2, user_id2 = generate_user2_result
+            self.user_ids.append(user_id2)
 
-        user_sdk1, error = self.create_user_sdk(
-            username=username1,
-            password=password1,
-            existing_sdk=SDK,
-        )
-        if error:
-            self.skipTest(reason=f"unable to create user1 sdk: {error}")
-        else:
-            self.sdks.append(user_sdk1)
+            user_sdk1, error = self.create_user_sdk(
+                username=username1,
+                password=password1,
+                existing_sdk=SDK,
+            )
+            if error:
+                self.skipTest(reason=f"unable to create user1 sdk: {error}")
+            else:
+                self.sdks.append(user_sdk1)
 
-        user_sdk2, error = self.create_user_sdk(
-            username=username2,
-            password=password2,
-            existing_sdk=SDK,
-        )
-        if error:
-            self.skipTest(reason=f"unable to create user2 sdk: {error}")
-        else:
-            self.sdks.append(user_sdk2)
+            user_sdk2, error = self.create_user_sdk(
+                username=username2,
+                password=password2,
+                existing_sdk=SDK,
+            )
+            if error:
+                self.skipTest(reason=f"unable to create user2 sdk: {error}")
+            else:
+                self.sdks.append(user_sdk2)
 
-        # act & assert (public_create_party)
-        result, error = session_service.public_create_party(
-            body=session_models.ApimodelsCreatePartyRequest.create_from_dict(
-                {
-                    "configurationName": template_name,
-                    "members": [
-                        {
-                            "ID": user_id1,
-                        }
-                    ],
-                }
-            ),
-            sdk=user_sdk1,
-        )
-        self.assertIsNone(error, error)
+            # act & assert (public_create_party)
+            result, error = session_service.public_create_party(
+                body=session_models.ApimodelsCreatePartyRequest.create_from_dict(
+                    {
+                        "configurationName": template_name,
+                        "members": [
+                            {
+                                "ID": user_id1,
+                            }
+                        ],
+                    }
+                ),
+                sdk=user_sdk1,
+            )
+            self.assertIsNone(error, error)
 
-        if not (party_id := getattr(result, "id_", None)):
-            self.fail(msg=f"unable to find party id")
+            if not (party_id := getattr(result, "id_", None)):
+                self.fail(msg=f"unable to find party id")
 
-        if not (party_code := getattr(result, "code", None)):
-            self.fail(msg=f"unable to find party code")
+            if not (party_code := getattr(result, "code", None)):
+                self.fail(msg=f"unable to find party code")
 
-        # act & assert (public_party_join_code)
-        result, error = session_service.public_party_join_code(
-            body=session_models.ApimodelsJoinByCodeRequest.create_from_dict(
-                {
-                    "code": party_code,
-                }
-            ),
-            sdk=user_sdk2,
-        )
-        self.assertIsNone(error, error)
+            # act & assert (public_get_party)
+            result, error = session_service.public_get_party(
+                party_id=party_id,
+            )
+            self.assertIsNone(error, error)
 
-        # act & assert (public_get_party)
-        result, error = session_service.public_get_party(
-            party_id=party_id,
-            sdk=user_sdk1,
-        )
-        self.assertIsNone(error, error)
-        self.assertEqual(len(result.members), 2)
-        user_ids = [member.id_ for member in result.members]
-        self.assertIn(user_id1, user_ids)
-        self.assertIn(user_id2, user_ids)
+            # act & assert (public_party_join_code)
+            result, error = session_service.public_party_join_code(
+                body=session_models.ApimodelsJoinByCodeRequest.create_from_dict(
+                    {
+                        "code": party_code,
+                    }
+                ),
+                sdk=user_sdk2,
+            )
+            self.assertIsNone(error, error)
 
-        # act & assert (admin_query_parties)
-        result, error = session_service.admin_query_parties(
-            leader_id=user_id1,
-        )
-        self.assertIsNone(error, error)
-        party_ids = [party.id_ for party in result.data]
-        self.assertIn(party_id, party_ids)
+            # act & assert (public_get_party)
+            result, error = session_service.public_get_party(
+                party_id=party_id,
+                sdk=user_sdk1,
+            )
+            self.assertIsNone(error, error)
+            self.assertEqual(len(result.members), 2)
+            user_ids = [member.id_ for member in result.members]
+            self.assertIn(user_id1, user_ids)
+            self.assertIn(user_id2, user_ids)
+
+            # act & assert (admin_query_parties)
+            result, error = session_service.admin_query_parties(
+                leader_id=user_id1,
+            )
+            self.assertIsNone(error, error)
+            party_ids = [party.id_ for party in result.data]
+            self.assertIn(party_id, party_ids)
+        finally:
+            if party_id:
+                result, error = session_service.public_party_leave(
+                    party_id=party_id,
+                    sdk=user_sdk2,
+                )
+                self.log_warning(
+                    msg=f"Failed to leave party: {error}",
+                    condition=error is not None,
+                )
 
     # endregion test:party_flow
 

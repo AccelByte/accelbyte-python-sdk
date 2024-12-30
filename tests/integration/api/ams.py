@@ -32,4 +32,19 @@ class AMSTestCase(IntegrationTestCase):
 
     # endregion test:info_supported_instances
 
+    # region test:image_list
+
+    def test_image_list(self):
+        from accelbyte_py_sdk.api.ams import image_list
+
+        # arrange
+
+        # act
+        _, error = image_list()
+
+        # assert
+        self.assertIsNone(error, error)
+
+    # endregion test:image_list
+
     # end of file

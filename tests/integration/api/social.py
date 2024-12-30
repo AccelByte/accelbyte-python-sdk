@@ -68,28 +68,38 @@ class SocialTestCase(IntegrationTestCase):
 
     # endregion test:delete_stat
 
-    # region test:export_stat
+    # region test:export_import_stat
 
-    def test_export_stats(self):
+    def test_export_import_stats(self):
         from pathlib import Path
         from accelbyte_py_sdk.api.social import export_stats
+        from accelbyte_py_sdk.api.social import import_stats
 
-        # arrange
+        # arrange 1
         exported_file_path = Path(self.exported_filename)
         exported_file_path.unlink(missing_ok=True)
 
-        # act
+        # act 1
         result, error = export_stats()
 
         if result is not None:
             exported_file_path.write_bytes(result)
 
-        # assert
+        # assert 1
         self.assertIsNone(error, error)
         self.assertTrue(exported_file_path.exists())
         self.assertGreater(exported_file_path.stat().st_size, 0)
 
-    # endregion test:export_stat
+        # arrange 2
+
+        # act 2
+        with open(file=str(exported_file_path)) as file:
+            result, error = import_stats(file=file)
+
+        # assert 3
+        self.assertIsNone(error, error)
+
+    # endregion test:export_import_stat
 
     # region test:get_stat
 
@@ -111,6 +121,36 @@ class SocialTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
     # endregion test:get_stat
+
+    # region test:get_stats
+
+    def test_get_stats(self):
+        from accelbyte_py_sdk.api.social import get_stats
+
+        # arrange
+
+        # act
+        result, error = get_stats()
+
+        # assert
+        self.assertIsNone(error, error)
+
+    # endregion test:get_stats
+
+    # region test:query_stats
+
+    def test_query_stats(self):
+        from accelbyte_py_sdk.api.social import query_stats
+
+        # arrange
+
+        # act
+        result, error = query_stats(keyword="stat")
+
+        # assert
+        self.assertIsNone(error, error)
+
+    # endregion test:query_stats
 
     # region test:update_stat
 
@@ -141,5 +181,86 @@ class SocialTestCase(IntegrationTestCase):
         self.assertEqual("KODE_STATUS", result.name)
 
     # endregion test:update_stat
+
+    # region test:test_user_stat
+
+    def test_user_stat(self):
+        from accelbyte_py_sdk.api.social import (
+            create_stat,
+            get_stat,
+            delete_tied_stat,
+        )
+        from accelbyte_py_sdk.api.social import (
+            create_user_stat_item,
+            delete_user_stat_items,
+            get_user_stat_items,
+            inc_user_stat_item_value,
+        )
+        from accelbyte_py_sdk.api.social.models import StatItemInc
+
+        # arrange
+        self.exist = False
+        _, error = get_stat(stat_code=self.stat_create.stat_code)
+        if error:
+            _, error = create_stat(body=self.stat_create)
+            self.exist = error is not None
+        else:
+            self.exist = True
+
+        if not self.exist:
+            self.skipTest(reason=f"Failed to set up stat.")
+
+        user_id = self.get_user_id()
+
+        # clean-up
+        _, _ = delete_user_stat_items(
+            stat_code=self.stat_create.stat_code,
+            user_id=user_id,
+        )
+
+        # act (create_user_stat_item)
+        _, error = create_user_stat_item(
+            stat_code=self.stat_create.stat_code,
+            user_id=user_id,
+        )
+
+        # assert (create_user_stat_item)
+        self.assertIsNone(error, error)
+
+        # act (get_user_stat_items)
+        result, error = get_user_stat_items(user_id=user_id)
+
+        # assert (get_user_stat_items)
+        self.assertIsNone(error, error)
+        self.assertGreater(len(result.data), 0)
+        self.assertTrue(any(item.stat_code == self.stat_create.stat_code for item in result.data))
+
+        # act (inc_user_stat_item_value)
+        result, error = inc_user_stat_item_value(
+            body=StatItemInc.create(inc=1),
+            stat_code=self.stat_create.stat_code,
+            user_id=user_id,
+        )
+
+        # assert (inc_user_stat_item_value)
+        self.assertIsNone(error, error)
+
+        # act (delete_user_stat_items)
+        _, error = delete_user_stat_items(
+            stat_code=self.stat_create.stat_code,
+            user_id=user_id,
+        )
+
+        # assert (delete_user_stat_items)
+        self.assertIsNone(error, error)
+
+        # clean-up
+        _, error = delete_tied_stat(stat_code=self.stat_create.stat_code)
+        if error:
+            self.log_warning(msg=f"Failed to tear down tied stat. {error}")
+        else:
+            self.exist = False
+
+    # endregion test:test_user_stat
 
     # end of file

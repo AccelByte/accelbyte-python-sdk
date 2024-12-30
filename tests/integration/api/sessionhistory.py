@@ -34,6 +34,21 @@ class SessionHistoryTestCase(IntegrationTestCase):
 
     # endregion test:admin_query_matchmaking_detail
 
+    # region test:admin_query_party_detail
+
+    def test_admin_query_party_detail(self):
+        from accelbyte_py_sdk.api.sessionhistory import admin_query_party_detail
+
+        # arrange
+
+        # act
+        response, error = admin_query_party_detail()
+
+        # assert
+        self.assertIsNone(error, error)
+
+    # endregion test:admin_query_party_detail
+
     # region test:query_total_matchmaking_match
 
     def test_query_total_matchmaking_match(self):
