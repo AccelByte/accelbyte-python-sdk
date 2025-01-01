@@ -78,4 +78,4 @@ def bulk_create_mock_tickets(
 
 
 bulk_create_mock_tickets.operation_id = "BulkCreateMockTickets"
-bulk_create_mock_tickets.is_deprecated = False
+bulk_create_mock_tickets.is_deprecated = True

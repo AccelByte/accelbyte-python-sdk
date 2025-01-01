@@ -37,7 +37,7 @@ from ...models import ResponseError
 class AdminGetGoal(Operation):
     """Get Goal (adminGetGoal)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}

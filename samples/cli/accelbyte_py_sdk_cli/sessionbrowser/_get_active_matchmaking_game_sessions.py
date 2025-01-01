@@ -83,4 +83,4 @@ def get_active_matchmaking_game_sessions(
 
 
 get_active_matchmaking_game_sessions.operation_id = "GetActiveMatchmakingGameSessions"
-get_active_matchmaking_game_sessions.is_deprecated = False
+get_active_matchmaking_game_sessions.is_deprecated = True

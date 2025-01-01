@@ -45,6 +45,7 @@ from ..operations.fleets import FleetCreate
 from ..operations.fleets import FleetDelete
 from ..operations.fleets import FleetGet
 from ..operations.fleets import FleetList
+from ..operations.fleets import FleetListDescEnum, FleetListSortByEnum
 from ..operations.fleets import FleetServers
 from ..operations.fleets import FleetServersSortDirectionEnum, FleetServersStatusEnum
 from ..operations.fleets import FleetUpdate
@@ -599,8 +600,12 @@ async def fleet_get_async(
 @same_doc_as(FleetList)
 def fleet_list(
     active: Optional[bool] = None,
+    count: Optional[int] = None,
+    desc: Optional[Union[str, FleetListDescEnum]] = None,
     name: Optional[str] = None,
+    offset: Optional[int] = None,
     region: Optional[str] = None,
+    sort_by: Optional[Union[str, FleetListSortByEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -626,9 +631,17 @@ def fleet_list(
 
         active: (active) OPTIONAL bool in query
 
+        count: (count) OPTIONAL int in query
+
+        desc: (desc) OPTIONAL Union[str, DescEnum] in query
+
         name: (name) OPTIONAL str in query
 
+        offset: (offset) OPTIONAL int in query
+
         region: (region) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ApiFleetListResponse (success)
@@ -641,8 +654,12 @@ def fleet_list(
             return None, error
     request = FleetList.create(
         active=active,
+        count=count,
+        desc=desc,
         name=name,
+        offset=offset,
         region=region,
+        sort_by=sort_by,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -651,8 +668,12 @@ def fleet_list(
 @same_doc_as(FleetList)
 async def fleet_list_async(
     active: Optional[bool] = None,
+    count: Optional[int] = None,
+    desc: Optional[Union[str, FleetListDescEnum]] = None,
     name: Optional[str] = None,
+    offset: Optional[int] = None,
     region: Optional[str] = None,
+    sort_by: Optional[Union[str, FleetListSortByEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -678,9 +699,17 @@ async def fleet_list_async(
 
         active: (active) OPTIONAL bool in query
 
+        count: (count) OPTIONAL int in query
+
+        desc: (desc) OPTIONAL Union[str, DescEnum] in query
+
         name: (name) OPTIONAL str in query
 
+        offset: (offset) OPTIONAL int in query
+
         region: (region) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ApiFleetListResponse (success)
@@ -693,8 +722,12 @@ async def fleet_list_async(
             return None, error
     request = FleetList.create(
         active=active,
+        count=count,
+        desc=desc,
         name=name,
+        offset=offset,
         region=region,
+        sort_by=sort_by,
         namespace=namespace,
     )
     return await run_request_async(

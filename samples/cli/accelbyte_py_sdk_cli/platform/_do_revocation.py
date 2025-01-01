@@ -31,6 +31,7 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.platform import do_revocation as do_revocation_internal
+from accelbyte_py_sdk.api.platform.models import ErrorEntity
 from accelbyte_py_sdk.api.platform.models import RevocationRequest
 from accelbyte_py_sdk.api.platform.models import RevocationResult
 

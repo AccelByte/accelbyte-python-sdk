@@ -66,4 +66,4 @@ def get_payment_callback_config(
 
 
 get_payment_callback_config.operation_id = "getPaymentCallbackConfig"
-get_payment_callback_config.is_deprecated = False
+get_payment_callback_config.is_deprecated = True

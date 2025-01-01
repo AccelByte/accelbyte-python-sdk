@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.11.1"
+__version__ = "1.12.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,7 +20,10 @@ from .admin_delete_tied_challenge import AdminDeleteTiedChallenge
 from .admin_get_active_challenges import AdminGetActiveChallenges
 from .admin_get_challenge import AdminGetChallenge
 from .admin_get_challenges import AdminGetChallenges
-from .admin_get_challenges import StatusEnum as AdminGetChallengesStatusEnum
+from .admin_get_challenges import (
+    SortByEnum as AdminGetChallengesSortByEnum,
+    StatusEnum as AdminGetChallengesStatusEnum,
+)
 from .admin_get_periods import AdminGetPeriods
 from .admin_randomize_challenge import AdminRandomizeChallenge
 from .admin_update_challenge import AdminUpdateChallenge

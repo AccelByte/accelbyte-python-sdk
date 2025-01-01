@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.24.2"
+__version__ = "7.25.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -189,9 +189,13 @@ from ._o_auth2_0 import token_revocation_v3
 from ._o_auth2_0 import token_revocation_v3_async
 from ._o_auth2_0 import verify2fa_code
 from ._o_auth2_0 import verify2fa_code_async
+from ._o_auth2_0 import verify2fa_code_forward
+from ._o_auth2_0 import verify2fa_code_forward_async
 from ._o_auth2_0 import verify_token_v3
 from ._o_auth2_0 import verify_token_v3_async
 
+from ._o_auth2_0_extension import authenticate_and_link_forward_v3
+from ._o_auth2_0_extension import authenticate_and_link_forward_v3_async
 from ._o_auth2_0_extension import authentication_with_platform_link_v3
 from ._o_auth2_0_extension import authentication_with_platform_link_v3_async
 from ._o_auth2_0_extension import generate_token_by_new_headless_account_v3
@@ -212,6 +216,8 @@ from ._o_auth2_0_extension import request_token_by_one_time_link_code_response_v
 from ._o_auth2_0_extension import request_token_by_one_time_link_code_response_v3_async
 from ._o_auth2_0_extension import request_token_exchange_code_v3
 from ._o_auth2_0_extension import request_token_exchange_code_v3_async
+from ._o_auth2_0_extension import upgrade_and_authenticate_forward_v3
+from ._o_auth2_0_extension import upgrade_and_authenticate_forward_v3_async
 from ._o_auth2_0_extension import user_authentication_v3
 from ._o_auth2_0_extension import user_authentication_v3_async
 from ._o_auth2_0_extension import validate_one_time_linking_code_v3
@@ -653,8 +659,12 @@ from ._users import public_get_link_headless_account_to_my_account_conflict_v3
 from ._users import public_get_link_headless_account_to_my_account_conflict_v3_async
 from ._users import public_get_my_profile_allow_update_status_v3
 from ._users import public_get_my_profile_allow_update_status_v3_async
+from ._users import public_get_my_redirection_after_link_v3
+from ._users import public_get_my_redirection_after_link_v3_async
 from ._users import public_get_my_user_v3
 from ._users import public_get_my_user_v3_async
+from ._users import public_get_openid_user_info_v3
+from ._users import public_get_openid_user_info_v3_async
 from ._users import public_get_publisher_user_v3
 from ._users import public_get_publisher_user_v3_async
 from ._users import public_get_user_ban
@@ -699,6 +709,8 @@ from ._users import public_reset_password_v2
 from ._users import public_reset_password_v2_async
 from ._users import public_search_user_v3
 from ._users import public_search_user_v3_async
+from ._users import public_send_code_forward_v3
+from ._users import public_send_code_forward_v3_async
 from ._users import public_send_registration_code
 from ._users import public_send_registration_code_async
 from ._users import public_send_verification_code_v3
@@ -890,3 +902,5 @@ from ._users_v4 import public_upgrade_headless_account_v4
 from ._users_v4 import public_upgrade_headless_account_v4_async
 from ._users_v4 import public_upgrade_headless_account_with_verification_code_v4
 from ._users_v4 import public_upgrade_headless_account_with_verification_code_v4_async
+from ._users_v4 import public_upgrade_headless_with_code_v4_forward
+from ._users_v4 import public_upgrade_headless_with_code_v4_forward_async

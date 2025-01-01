@@ -70,9 +70,9 @@ def create_app_v1(
     Creates new App for AB-Extend Customers
 
     Available scenario:
+    - scenario 1: `function-override`
     - scenario 2: `service-extension`
     - scenario 3: `event-handler`
-    - scenario 1: `function-override`
 
     Default: `function-override`
 
@@ -138,9 +138,9 @@ async def create_app_v1_async(
     Creates new App for AB-Extend Customers
 
     Available scenario:
+    - scenario 1: `function-override`
     - scenario 2: `service-extension`
     - scenario 3: `event-handler`
-    - scenario 1: `function-override`
 
     Default: `function-override`
 
@@ -339,9 +339,9 @@ def get_app_list_v1(
     Gets the List of Apps for AB-Extend Customer
 
     Available scenario:
+    - scenario 3: `event-handler`
     - scenario 1: `function-override`
     - scenario 2: `service-extension`
-    - scenario 3: `event-handler`
 
     Properties:
         url: /csm/v1/admin/namespaces/{namespace}/apps
@@ -407,9 +407,9 @@ async def get_app_list_v1_async(
     Gets the List of Apps for AB-Extend Customer
 
     Available scenario:
+    - scenario 3: `event-handler`
     - scenario 1: `function-override`
     - scenario 2: `service-extension`
-    - scenario 3: `event-handler`
 
     Properties:
         url: /csm/v1/admin/namespaces/{namespace}/apps

@@ -76,4 +76,4 @@ def admin_debug_profanity_filters(
 
 
 admin_debug_profanity_filters.operation_id = "adminDebugProfanityFilters"
-admin_debug_profanity_filters.is_deprecated = False
+admin_debug_profanity_filters.is_deprecated = True

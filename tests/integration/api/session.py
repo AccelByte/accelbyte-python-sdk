@@ -137,7 +137,9 @@ class SessionTestCase(IntegrationTestCase):
             template_name = f"python_sdk_template_{rid}"
             error = self.do_create_configuration_template(template_name=template_name)
             if error:
-                self.skipTest(reason=f"unable to create configuration template: {error}")
+                self.skipTest(
+                    reason=f"unable to create configuration template: {error}"
+                )
             else:
                 self.template_name = template_name
 
@@ -233,7 +235,9 @@ class SessionTestCase(IntegrationTestCase):
             template_name = f"python_sdk_template_{rid}"
             error = self.do_create_configuration_template(template_name=template_name)
             if error:
-                self.skipTest(reason=f"unable to create configuration template: {error}")
+                self.skipTest(
+                    reason=f"unable to create configuration template: {error}"
+                )
             else:
                 self.template_name = template_name
 

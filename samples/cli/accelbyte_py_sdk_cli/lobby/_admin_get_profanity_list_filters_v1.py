@@ -71,4 +71,4 @@ def admin_get_profanity_list_filters_v1(
 
 
 admin_get_profanity_list_filters_v1.operation_id = "adminGetProfanityListFiltersV1"
-admin_get_profanity_list_filters_v1.is_deprecated = False
+admin_get_profanity_list_filters_v1.is_deprecated = True

@@ -37,7 +37,7 @@ from ...models import ResponseError
 class AdminGetAssignmentPlugin(Operation):
     """Get assignment plugin (adminGetAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment

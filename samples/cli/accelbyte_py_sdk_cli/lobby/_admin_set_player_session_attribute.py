@@ -78,4 +78,4 @@ def admin_set_player_session_attribute(
 
 
 admin_set_player_session_attribute.operation_id = "adminSetPlayerSessionAttribute"
-admin_set_player_session_attribute.is_deprecated = False
+admin_set_player_session_attribute.is_deprecated = True

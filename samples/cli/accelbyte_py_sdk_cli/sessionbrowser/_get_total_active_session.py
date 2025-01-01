@@ -69,4 +69,4 @@ def get_total_active_session(
 
 
 get_total_active_session.operation_id = "GetTotalActiveSession"
-get_total_active_session.is_deprecated = False
+get_total_active_session.is_deprecated = True

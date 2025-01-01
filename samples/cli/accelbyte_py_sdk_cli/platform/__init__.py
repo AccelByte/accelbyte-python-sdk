@@ -568,6 +568,9 @@ from ._fulfill_items import fulfill_items
 from ._retry_fulfill_items import retry_fulfill_items
 from ._revoke_items import revoke_items
 from ._v2_public_fulfill_apple_iap_item import v2_public_fulfill_apple_iap_item
+from ._fulfill_items_v3 import fulfill_items_v3
+from ._retry_fulfill_items_v3 import retry_fulfill_items_v3
+from ._revoke_items_v3 import revoke_items_v3
 
 
 commands = [
@@ -1051,4 +1054,7 @@ commands = [
     retry_fulfill_items,
     revoke_items,
     v2_public_fulfill_apple_iap_item,
+    fulfill_items_v3,
+    retry_fulfill_items_v3,
+    revoke_items_v3,
 ]

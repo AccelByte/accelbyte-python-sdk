@@ -30,7 +30,6 @@ from .....core import HeaderStr
 from .....core import HttpResponse
 
 from ...models import ModelLoginAllowlistRequest
-from ...models import ModelLoginAllowlistResponse
 from ...models import RestErrorResponse
 
 
@@ -59,7 +58,7 @@ class AdminUpdateLoginAllowlistV3(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - ModelLoginAllowlistResponse (Operation succeeded)
+        204: No Content - (Operation succeeded)
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 10240: namespace is not game namespace | 10470: role is empty)
 
@@ -179,7 +178,7 @@ class AdminUpdateLoginAllowlistV3(Operation):
     ) -> Tuple[None, Union[None, HttpResponse, RestErrorResponse]]:
         """Parse the given response.
 
-        204: No Content - ModelLoginAllowlistResponse (Operation succeeded)
+        204: No Content - (Operation succeeded)
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 10240: namespace is not game namespace | 10470: role is empty)
 

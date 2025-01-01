@@ -69,4 +69,4 @@ def admin_get_party_data_v1(
 
 
 admin_get_party_data_v1.operation_id = "adminGetPartyDataV1"
-admin_get_party_data_v1.is_deprecated = False
+admin_get_party_data_v1.is_deprecated = True

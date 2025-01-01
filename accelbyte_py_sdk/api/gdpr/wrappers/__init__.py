@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "2.15.0"
+__version__ = "2.16.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -105,12 +105,22 @@ from ._platform_account_closure_client import admin_get_platform_account_closure
 from ._platform_account_closure_client import (
     admin_get_platform_account_closure_client_async,
 )
+from ._platform_account_closure_client import admin_get_platform_account_closure_clients
+from ._platform_account_closure_client import (
+    admin_get_platform_account_closure_clients_async,
+)
+from ._platform_account_closure_client import admin_mock_platform_account_closure_data
+from ._platform_account_closure_client import (
+    admin_mock_platform_account_closure_data_async,
+)
 from ._platform_account_closure_client import (
     admin_update_platform_account_closure_client,
 )
 from ._platform_account_closure_client import (
     admin_update_platform_account_closure_client_async,
 )
+from ._platform_account_closure_client import admin_validate_xbox_bp_cert_file
+from ._platform_account_closure_client import admin_validate_xbox_bp_cert_file_async
 
 from ._platform_account_closure_history import (
     admin_get_user_platform_account_closure_histories,

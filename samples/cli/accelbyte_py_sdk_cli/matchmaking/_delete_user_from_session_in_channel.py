@@ -75,4 +75,4 @@ def delete_user_from_session_in_channel(
 
 
 delete_user_from_session_in_channel.operation_id = "DeleteUserFromSessionInChannel"
-delete_user_from_session_in_channel.is_deprecated = False
+delete_user_from_session_in_channel.is_deprecated = True

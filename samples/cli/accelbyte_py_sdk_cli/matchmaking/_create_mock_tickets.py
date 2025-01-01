@@ -79,4 +79,4 @@ def create_mock_tickets(
 
 
 create_mock_tickets.operation_id = "CreateMockTickets"
-create_mock_tickets.is_deprecated = False
+create_mock_tickets.is_deprecated = True

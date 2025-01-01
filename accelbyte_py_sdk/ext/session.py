@@ -892,6 +892,7 @@ def create_models_request_reconcile_max_active_session_example() -> (
 def create_models_team_example() -> ModelsTeam:
     instance = ModelsTeam()
     instance.parties = [create_models_party_members_example()]
+    instance.team_id = randomize()
     instance.user_i_ds = [randomize()]
     return instance
 

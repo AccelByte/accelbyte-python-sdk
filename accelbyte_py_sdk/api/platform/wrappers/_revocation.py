@@ -163,6 +163,8 @@ def do_revocation(
 
     Responses:
         200: OK - RevocationResult (successful operation)
+
+        409: Conflict - ErrorEntity (41171: Request has different payload on previous call | 41172: Request has different user id on previous call)
     """
     if namespace is None:
         namespace, error = get_services_namespace()
@@ -212,6 +214,8 @@ async def do_revocation_async(
 
     Responses:
         200: OK - RevocationResult (successful operation)
+
+        409: Conflict - ErrorEntity (41171: Request has different payload on previous call | 41172: Request has different user id on previous call)
     """
     if namespace is None:
         namespace, error = get_services_namespace()

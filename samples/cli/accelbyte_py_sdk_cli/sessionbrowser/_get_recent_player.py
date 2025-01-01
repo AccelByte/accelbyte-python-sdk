@@ -69,4 +69,4 @@ def get_recent_player(
 
 
 get_recent_player.operation_id = "GetRecentPlayer"
-get_recent_player.is_deprecated = False
+get_recent_player.is_deprecated = True

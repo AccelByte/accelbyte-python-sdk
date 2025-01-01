@@ -37,8 +37,8 @@ from ...models import ResponseError
 class AdminEvaluateProgress(Operation):
     """Evaluate User's Progressions (adminEvaluateProgress)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-      * Limited up to 10 users per request
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    - Limited up to 10 users per request
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/progress/evaluate

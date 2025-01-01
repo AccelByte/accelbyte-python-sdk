@@ -37,6 +37,12 @@ class AdminUpdatePlatformAccountClosureClient(Operation):
     """Update Platform Account Closure Client (AdminUpdatePlatformAccountClosureClient)
 
     Update platform account closure client.
+    The namespace should be the **publisher or studio namespace**.
+    ------
+    Platform:
+    - steamnetwork
+    - xbox
+    - psn
     Scope: account
 
     Properties:

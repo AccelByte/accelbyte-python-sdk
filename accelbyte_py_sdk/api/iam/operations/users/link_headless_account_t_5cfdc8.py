@@ -58,7 +58,7 @@ class LinkHeadlessAccountToMyAccountV3(Operation):
     Responses:
         204: No Content - (No Content)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
@@ -162,7 +162,7 @@ class LinkHeadlessAccountToMyAccountV3(Operation):
 
         204: No Content - (No Content)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 

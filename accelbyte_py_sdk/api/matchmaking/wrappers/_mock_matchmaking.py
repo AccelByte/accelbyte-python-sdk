@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsCreateMockTicket
@@ -46,6 +47,7 @@ from ..operations.mock_matchmaking import GetMockMatchesByTimestamp
 from ..operations.mock_matchmaking import GetMockTicketsByTimestamp
 
 
+@deprecated
 @same_doc_as(BulkCreateMockTickets)
 def bulk_create_mock_tickets(
     body: List[ModelsMatchingParty],
@@ -104,6 +106,7 @@ def bulk_create_mock_tickets(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(BulkCreateMockTickets)
 async def bulk_create_mock_tickets_async(
     body: List[ModelsMatchingParty],
@@ -164,6 +167,7 @@ async def bulk_create_mock_tickets_async(
     )
 
 
+@deprecated
 @same_doc_as(CleanAllMocks)
 def clean_all_mocks(
     channel_name: str,
@@ -217,6 +221,7 @@ def clean_all_mocks(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(CleanAllMocks)
 async def clean_all_mocks_async(
     channel_name: str,
@@ -272,6 +277,7 @@ async def clean_all_mocks_async(
     )
 
 
+@deprecated
 @same_doc_as(CreateMockTickets)
 def create_mock_tickets(
     body: ModelsCreateMockTicket,
@@ -331,6 +337,7 @@ def create_mock_tickets(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(CreateMockTickets)
 async def create_mock_tickets_async(
     body: ModelsCreateMockTicket,
@@ -392,6 +399,7 @@ async def create_mock_tickets_async(
     )
 
 
+@deprecated
 @same_doc_as(GetAllMockMatches)
 def get_all_mock_matches(
     channel_name: str,
@@ -445,6 +453,7 @@ def get_all_mock_matches(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetAllMockMatches)
 async def get_all_mock_matches_async(
     channel_name: str,
@@ -500,6 +509,7 @@ async def get_all_mock_matches_async(
     )
 
 
+@deprecated
 @same_doc_as(GetAllMockTickets)
 def get_all_mock_tickets(
     channel_name: str,
@@ -553,6 +563,7 @@ def get_all_mock_tickets(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetAllMockTickets)
 async def get_all_mock_tickets_async(
     channel_name: str,
@@ -608,6 +619,7 @@ async def get_all_mock_tickets_async(
     )
 
 
+@deprecated
 @same_doc_as(GetMockMatchesByTimestamp)
 def get_mock_matches_by_timestamp(
     body: ModelsQueryMockBy,
@@ -665,6 +677,7 @@ def get_mock_matches_by_timestamp(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetMockMatchesByTimestamp)
 async def get_mock_matches_by_timestamp_async(
     body: ModelsQueryMockBy,
@@ -724,6 +737,7 @@ async def get_mock_matches_by_timestamp_async(
     )
 
 
+@deprecated
 @same_doc_as(GetMockTicketsByTimestamp)
 def get_mock_tickets_by_timestamp(
     body: ModelsQueryMockBy,
@@ -781,6 +795,7 @@ def get_mock_tickets_by_timestamp(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetMockTicketsByTimestamp)
 async def get_mock_tickets_by_timestamp_async(
     body: ModelsQueryMockBy,

@@ -69,4 +69,4 @@ def delete_session(
 
 
 delete_session.operation_id = "DeleteSession"
-delete_session.is_deprecated = False
+delete_session.is_deprecated = True

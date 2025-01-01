@@ -67,4 +67,4 @@ def get_stat_data(
 
 
 get_stat_data.operation_id = "GetStatData"
-get_stat_data.is_deprecated = False
+get_stat_data.is_deprecated = True

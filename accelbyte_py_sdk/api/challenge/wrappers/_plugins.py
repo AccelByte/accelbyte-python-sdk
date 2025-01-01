@@ -51,7 +51,7 @@ def admin_create_assignment_plugin(
 ):
     """Create assignment plugin (adminCreateAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [CREATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [CREATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment
@@ -101,7 +101,7 @@ async def admin_create_assignment_plugin_async(
 ):
     """Create assignment plugin (adminCreateAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [CREATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [CREATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment
@@ -152,7 +152,7 @@ def admin_delete_assignment_plugin(
 ):
     """Delete assignment plugin (adminDeleteAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment
@@ -200,7 +200,7 @@ async def admin_delete_assignment_plugin_async(
 ):
     """Delete assignment plugin (adminDeleteAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment
@@ -250,7 +250,7 @@ def admin_get_assignment_plugin(
 ):
     """Get assignment plugin (adminGetAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment
@@ -298,7 +298,7 @@ async def admin_get_assignment_plugin_async(
 ):
     """Get assignment plugin (adminGetAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment
@@ -349,7 +349,7 @@ def admin_update_assignment_plugin(
 ):
     """Update assignment plugin (adminUpdateAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [UPDATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [UPDATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment
@@ -401,7 +401,7 @@ async def admin_update_assignment_plugin_async(
 ):
     """Update assignment plugin (adminUpdateAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [UPDATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [UPDATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment

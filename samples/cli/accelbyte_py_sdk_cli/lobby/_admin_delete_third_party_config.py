@@ -65,4 +65,4 @@ def admin_delete_third_party_config(
 
 
 admin_delete_third_party_config.operation_id = "adminDeleteThirdPartyConfig"
-admin_delete_third_party_config.is_deprecated = False
+admin_delete_third_party_config.is_deprecated = True

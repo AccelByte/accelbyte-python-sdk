@@ -79,4 +79,4 @@ def public_update_party_attributes_v1(
 
 
 public_update_party_attributes_v1.operation_id = "publicUpdatePartyAttributesV1"
-public_update_party_attributes_v1.is_deprecated = False
+public_update_party_attributes_v1.is_deprecated = True

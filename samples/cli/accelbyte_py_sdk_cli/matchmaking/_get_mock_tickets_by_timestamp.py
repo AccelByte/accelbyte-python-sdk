@@ -79,4 +79,4 @@ def get_mock_tickets_by_timestamp(
 
 
 get_mock_tickets_by_timestamp.operation_id = "GetMockTicketsByTimestamp"
-get_mock_tickets_by_timestamp.is_deprecated = False
+get_mock_tickets_by_timestamp.is_deprecated = True

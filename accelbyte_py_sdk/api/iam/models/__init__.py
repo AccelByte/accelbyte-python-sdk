@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.24.2"
+__version__ = "7.25.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -255,6 +255,9 @@ from .model_namespace_invitation_history_user_v4_response import (
     ModelNamespaceInvitationHistoryUserV4Response,
 )
 from .model_namespace_role_request import ModelNamespaceRoleRequest
+from .model_one_time_code_link_redirection_response import (
+    ModelOneTimeCodeLinkRedirectionResponse,
+)
 from .model_permission_delete_request import ModelPermissionDeleteRequest
 from .model_platform_domain_delete_request import ModelPlatformDomainDeleteRequest
 from .model_platform_domain_response import ModelPlatformDomainResponse
@@ -262,7 +265,9 @@ from .model_platform_domain_update_request import ModelPlatformDomainUpdateReque
 from .model_platform_user_id_request import ModelPlatformUserIDRequest
 from .model_platform_user_id_request_v4 import ModelPlatformUserIDRequestV4
 from .model_platform_user_information import ModelPlatformUserInformation
+from .model_progression_info import ModelProgressionInfo
 from .model_public_invite_user_request_v4 import ModelPublicInviteUserRequestV4
+from .model_public_open_id_user_info_response import ModelPublicOpenIDUserInfoResponse
 from .model_public_third_party_platform_info import ModelPublicThirdPartyPlatformInfo
 from .model_public_user_information_response_v3 import (
     ModelPublicUserInformationResponseV3,
@@ -323,6 +328,7 @@ from .model_send_verification_link_request import ModelSendVerificationLinkReque
 from .model_simple_profile_update_strategy_configs import (
     ModelSimpleProfileUpdateStrategyConfigs,
 )
+from .model_simple_user_ban import ModelSimpleUserBan
 from .model_sso_platform_credential_request import ModelSSOPlatformCredentialRequest
 from .model_sso_platform_credential_response import ModelSSOPlatformCredentialResponse
 from .model_third_party_login_platform_credential_request import (
@@ -432,6 +438,8 @@ from .oauthmodel_token_with_device_cookie_response_v3 import (
     OauthmodelTokenWithDeviceCookieResponseV3,
 )
 from .oauthmodel_user_ban import OauthmodelUserBan
+from .platform_dlc_agg_response import PlatformDLCAggResponse
+from .platform_wallet_agg_response import PlatformWalletAggResponse
 from .rest_error_response import RestErrorResponse
 from .rest_error_response_with_conflicted_user_platform_accounts import (
     RestErrorResponseWithConflictedUserPlatformAccounts,

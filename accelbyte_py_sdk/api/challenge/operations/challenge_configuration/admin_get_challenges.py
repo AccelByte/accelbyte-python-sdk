@@ -35,6 +35,15 @@ from ...models import ModelListChallengeResponse
 from ...models import ResponseError
 
 
+class SortByEnum(StrEnum):
+    CREATEDAT = "createdAt"
+    CREATEDAT_ASC = "createdAt:asc"
+    CREATEDAT_DESC = "createdAt:desc"
+    UPDATEDAT = "updatedAt"
+    UPDATEDAT_ASC = "updatedAt:asc"
+    UPDATEDAT_DESC = "updatedAt:desc"
+
+
 class StatusEnum(StrEnum):
     INIT = "INIT"
     RETIRED = "RETIRED"
@@ -44,7 +53,7 @@ class StatusEnum(StrEnum):
 class AdminGetChallenges(Operation):
     """List Challenges (adminGetChallenges)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges
@@ -65,7 +74,7 @@ class AdminGetChallenges(Operation):
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
@@ -91,7 +100,7 @@ class AdminGetChallenges(Operation):
     namespace: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
-    sort_by: str  # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
     status: Union[str, StatusEnum]  # OPTIONAL in [query]
 
     # endregion fields
@@ -174,7 +183,7 @@ class AdminGetChallenges(Operation):
         self.offset = value
         return self
 
-    def with_sort_by(self, value: str) -> AdminGetChallenges:
+    def with_sort_by(self, value: Union[str, SortByEnum]) -> AdminGetChallenges:
         self.sort_by = value
         return self
 
@@ -203,7 +212,7 @@ class AdminGetChallenges(Operation):
         if hasattr(self, "sort_by") and self.sort_by:
             result["sortBy"] = str(self.sort_by)
         elif include_empty:
-            result["sortBy"] = ""
+            result["sortBy"] = Union[str, SortByEnum]()
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
@@ -267,7 +276,7 @@ class AdminGetChallenges(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
+        sort_by: Optional[Union[str, SortByEnum]] = None,
         status: Optional[Union[str, StatusEnum]] = None,
         **kwargs,
     ) -> AdminGetChallenges:
@@ -305,7 +314,7 @@ class AdminGetChallenges(Operation):
         if "sortBy" in dict_ and dict_["sortBy"] is not None:
             instance.sort_by = str(dict_["sortBy"])
         elif include_empty:
-            instance.sort_by = ""
+            instance.sort_by = Union[str, SortByEnum]()
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
@@ -335,6 +344,14 @@ class AdminGetChallenges(Operation):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "sortBy": [
+                "createdAt",
+                "createdAt:asc",
+                "createdAt:desc",
+                "updatedAt",
+                "updatedAt:asc",
+                "updatedAt:desc",
+            ],  # in query
             "status": ["INIT", "RETIRED", "TIED"],  # in query
         }
 

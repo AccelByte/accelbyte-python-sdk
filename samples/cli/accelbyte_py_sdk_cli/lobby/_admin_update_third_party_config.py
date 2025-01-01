@@ -76,4 +76,4 @@ def admin_update_third_party_config(
 
 
 admin_update_third_party_config.operation_id = "adminUpdateThirdPartyConfig"
-admin_update_third_party_config.is_deprecated = False
+admin_update_third_party_config.is_deprecated = True

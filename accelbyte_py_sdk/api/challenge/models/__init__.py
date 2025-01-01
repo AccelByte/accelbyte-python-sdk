@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.11.1"
+__version__ = "1.12.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -45,6 +45,7 @@ from .model_evaluate_player_progression_request import (
     ModelEvaluatePlayerProgressionRequest,
 )
 from .model_get_goals_response import ModelGetGoalsResponse
+from .model_goal_in_schedules_response import ModelGoalInSchedulesResponse
 from .model_goal_meta import ModelGoalMeta
 from .model_goal_order import ModelGoalOrder
 from .model_goal_progression_response import ModelGoalProgressionResponse
@@ -55,6 +56,8 @@ from .model_goal_response import ModelGoalResponse
 from .model_goal_schedule import ModelGoalSchedule
 from .model_list_challenge_response import ModelListChallengeResponse
 from .model_list_periods_response import ModelListPeriodsResponse
+from .model_list_schedule_by_goal_response import ModelListScheduleByGoalResponse
+from .model_list_schedules_response import ModelListSchedulesResponse
 from .model_list_user_rewards_response import ModelListUserRewardsResponse
 from .model_pagination import ModelPagination
 from .model_plugin_asignment_app_config import ModelPluginAsignmentAppConfig
@@ -79,6 +82,8 @@ from .model_reset_config import ModelResetConfig
 from .model_reward import ModelReward
 from .model_reward import TypeEnum as ModelRewardTypeEnum
 from .model_schedule import ModelSchedule
+from .model_schedule_by_goal_response import ModelScheduleByGoalResponse
+from .model_schedule_response import ModelScheduleResponse
 from .model_update_challenge_request import ModelUpdateChallengeRequest
 from .model_update_challenge_request import (
     AssignmentRuleEnum as ModelUpdateChallengeRequestAssignmentRuleEnum,

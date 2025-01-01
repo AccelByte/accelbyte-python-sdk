@@ -71,4 +71,4 @@ def admin_get_all_player_session_attribute(
 admin_get_all_player_session_attribute.operation_id = (
     "adminGetAllPlayerSessionAttribute"
 )
-admin_get_all_player_session_attribute.is_deprecated = False
+admin_get_all_player_session_attribute.is_deprecated = True

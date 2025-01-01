@@ -132,6 +132,7 @@ from ..operations.users_v4 import PublicUpdateUserEmailAddressV4
 from ..operations.users_v4 import PublicUpdateUserV4
 from ..operations.users_v4 import PublicUpgradeHeadlessAccountV4
 from ..operations.users_v4 import PublicUpgradeHeadlessAccountWithVerificationCodeV4
+from ..operations.users_v4 import PublicUpgradeHeadlessWithCodeV4Forward
 from ..models import AccountCreateTestUserRequestV4AuthTypeEnum
 from ..models import AccountCreateUserRequestV4AuthTypeEnum
 
@@ -7358,6 +7359,90 @@ async def public_upgrade_headless_account_with_verification_code_v4_async(
     request = PublicUpgradeHeadlessAccountWithVerificationCodeV4.create(
         body=body,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicUpgradeHeadlessWithCodeV4Forward)
+def public_upgrade_headless_with_code_v4_forward(
+    body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Upgrade the headless account and automatically verify the email address if the upgrade succeeds. (PublicUpgradeHeadlessWithCodeV4Forward)
+
+    This is a forward version for code verify.
+    The endpoint upgrades a headless account by linking the headless account with the email address, username, and password.
+    By upgrading the headless account into a full account, the user could use the email address, username, and password for using Justice IAM.
+
+    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
+    In order to get a verification code for the endpoint, please check the [send verification code endpoint](#operations-Users-PublicSendCodeForwardV3).
+
+    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+
+    Properties:
+        url: /iam/v4/public/users/me/headless/code/verify/forward
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4 in body
+
+    Responses:
+        302: Found - (Found. Redirected to login website with result. If validateOnly=true, then the redirection with contain validate result;If validateOnly=false, then the redirection will contain the upgrade result. If upgrade succeed, then the response will contain upgrade_success_token)
+    """
+    request = PublicUpgradeHeadlessWithCodeV4Forward.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUpgradeHeadlessWithCodeV4Forward)
+async def public_upgrade_headless_with_code_v4_forward_async(
+    body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Upgrade the headless account and automatically verify the email address if the upgrade succeeds. (PublicUpgradeHeadlessWithCodeV4Forward)
+
+    This is a forward version for code verify.
+    The endpoint upgrades a headless account by linking the headless account with the email address, username, and password.
+    By upgrading the headless account into a full account, the user could use the email address, username, and password for using Justice IAM.
+
+    The endpoint is a shortcut for upgrading a headless account and verifying the email address in one call.
+    In order to get a verification code for the endpoint, please check the [send verification code endpoint](#operations-Users-PublicSendCodeForwardV3).
+
+    This endpoint also have an ability to update user data (if the user data field is specified) right after the upgrade account process is done.
+
+    Properties:
+        url: /iam/v4/public/users/me/headless/code/verify/forward
+
+        method: POST
+
+        tags: ["Users V4"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4 in body
+
+    Responses:
+        302: Found - (Found. Redirected to login website with result. If validateOnly=true, then the redirection with contain validate result;If validateOnly=false, then the redirection will contain the upgrade result. If upgrade succeed, then the response will contain upgrade_success_token)
+    """
+    request = PublicUpgradeHeadlessWithCodeV4Forward.create(
+        body=body,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

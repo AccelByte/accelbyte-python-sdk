@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ErrorEntity
 from ...models import PaymentCallbackConfigInfo
@@ -35,6 +36,8 @@ from ...models import PaymentCallbackConfigInfo
 
 class GetPaymentCallbackConfig(Operation):
     """Get payment callback configuration (getPaymentCallbackConfig)
+
+    ### The endpoint is going to be deprecated
 
     [Not supported yet in AGS Shared Cloud] Get payment callback configuration.
     Other detail info:

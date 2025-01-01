@@ -60,6 +60,7 @@ from ..operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
 from ..operations.o_auth2_0 import TokenIntrospectionV3
 from ..operations.o_auth2_0 import TokenRevocationV3
 from ..operations.o_auth2_0 import Verify2faCode
+from ..operations.o_auth2_0 import Verify2faCodeForward
 from ..operations.o_auth2_0 import VerifyTokenV3
 
 
@@ -367,11 +368,14 @@ async def auth_code_request_v3_async(
 def authorize_v3(
     client_id: str,
     response_type: Union[str, AuthorizeV3ResponseTypeEnum],
+    blocked_platform_id: Optional[str] = None,
     code_challenge: Optional[str] = None,
     code_challenge_method: Optional[
         Union[str, AuthorizeV3CodeChallengeMethodEnum]
     ] = None,
     create_headless: Optional[bool] = None,
+    login_web_based: Optional[bool] = None,
+    nonce: Optional[str] = None,
     one_time_link_code: Optional[str] = None,
     redirect_uri: Optional[str] = None,
     scope: Optional[str] = None,
@@ -427,11 +431,17 @@ def authorize_v3(
 
         location query: request_id
 
+        blocked_platform_id: (blockedPlatformId) OPTIONAL str in query
+
         code_challenge: (code_challenge) OPTIONAL str in query
 
         code_challenge_method: (code_challenge_method) OPTIONAL Union[str, CodeChallengeMethodEnum] in query
 
         create_headless: (createHeadless) OPTIONAL bool in query
+
+        login_web_based: (loginWebBased) OPTIONAL bool in query
+
+        nonce: (nonce) OPTIONAL str in query
 
         one_time_link_code: (oneTimeLinkCode) OPTIONAL str in query
 
@@ -455,9 +465,12 @@ def authorize_v3(
     request = AuthorizeV3.create(
         client_id=client_id,
         response_type=response_type,
+        blocked_platform_id=blocked_platform_id,
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
         create_headless=create_headless,
+        login_web_based=login_web_based,
+        nonce=nonce,
         one_time_link_code=one_time_link_code,
         redirect_uri=redirect_uri,
         scope=scope,
@@ -472,11 +485,14 @@ def authorize_v3(
 async def authorize_v3_async(
     client_id: str,
     response_type: Union[str, AuthorizeV3ResponseTypeEnum],
+    blocked_platform_id: Optional[str] = None,
     code_challenge: Optional[str] = None,
     code_challenge_method: Optional[
         Union[str, AuthorizeV3CodeChallengeMethodEnum]
     ] = None,
     create_headless: Optional[bool] = None,
+    login_web_based: Optional[bool] = None,
+    nonce: Optional[str] = None,
     one_time_link_code: Optional[str] = None,
     redirect_uri: Optional[str] = None,
     scope: Optional[str] = None,
@@ -532,11 +548,17 @@ async def authorize_v3_async(
 
         location query: request_id
 
+        blocked_platform_id: (blockedPlatformId) OPTIONAL str in query
+
         code_challenge: (code_challenge) OPTIONAL str in query
 
         code_challenge_method: (code_challenge_method) OPTIONAL Union[str, CodeChallengeMethodEnum] in query
 
         create_headless: (createHeadless) OPTIONAL bool in query
+
+        login_web_based: (loginWebBased) OPTIONAL bool in query
+
+        nonce: (nonce) OPTIONAL str in query
 
         one_time_link_code: (oneTimeLinkCode) OPTIONAL str in query
 
@@ -560,9 +582,12 @@ async def authorize_v3_async(
     request = AuthorizeV3.create(
         client_id=client_id,
         response_type=response_type,
+        blocked_platform_id=blocked_platform_id,
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
         create_headless=create_headless,
+        login_web_based=login_web_based,
+        nonce=nonce,
         one_time_link_code=one_time_link_code,
         redirect_uri=redirect_uri,
         scope=scope,
@@ -2182,6 +2207,136 @@ async def verify2fa_code_async(
         code=code,
         factor=factor,
         mfa_token=mfa_token,
+        remember_device=remember_device,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(Verify2faCodeForward)
+def verify2fa_code_forward(
+    client_id: str,
+    code: str,
+    factor: str,
+    mfa_token: str,
+    default_factor: Optional[str] = None,
+    factors: Optional[str] = None,
+    remember_device: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Verify 2FA code (Verify2FACodeForward)
+
+    This is a forward version for '/mfa/verify'. If there is any error, it will redirect to login website with error details.
+    If success, it will forward to auth request redirect url
+    If got error, it will forward to login website
+    Verify 2FA code
+    This endpoint is used for verifying 2FA code.
+    ## 2FA remember device
+    To remember device for 2FA, should provide cookie: device_token or header: Device-Token
+
+    Properties:
+        url: /iam/v3/oauth/mfa/verify/forward
+
+        method: POST
+
+        tags: ["OAuth2.0"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        default_factor: (defaultFactor) OPTIONAL str in form_data
+
+        factors: (factors) OPTIONAL str in form_data
+
+        remember_device: (rememberDevice) OPTIONAL bool in form_data
+
+        client_id: (clientId) REQUIRED str in form_data
+
+        code: (code) REQUIRED str in form_data
+
+        factor: (factor) REQUIRED str in form_data
+
+        mfa_token: (mfaToken) REQUIRED str in form_data
+
+    Responses:
+        302: Found - (Found. Redirect to clients redirection URL with code or redirect to login web with error on the query parameter)
+    """
+    request = Verify2faCodeForward.create(
+        client_id=client_id,
+        code=code,
+        factor=factor,
+        mfa_token=mfa_token,
+        default_factor=default_factor,
+        factors=factors,
+        remember_device=remember_device,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(Verify2faCodeForward)
+async def verify2fa_code_forward_async(
+    client_id: str,
+    code: str,
+    factor: str,
+    mfa_token: str,
+    default_factor: Optional[str] = None,
+    factors: Optional[str] = None,
+    remember_device: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Verify 2FA code (Verify2FACodeForward)
+
+    This is a forward version for '/mfa/verify'. If there is any error, it will redirect to login website with error details.
+    If success, it will forward to auth request redirect url
+    If got error, it will forward to login website
+    Verify 2FA code
+    This endpoint is used for verifying 2FA code.
+    ## 2FA remember device
+    To remember device for 2FA, should provide cookie: device_token or header: Device-Token
+
+    Properties:
+        url: /iam/v3/oauth/mfa/verify/forward
+
+        method: POST
+
+        tags: ["OAuth2.0"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        default_factor: (defaultFactor) OPTIONAL str in form_data
+
+        factors: (factors) OPTIONAL str in form_data
+
+        remember_device: (rememberDevice) OPTIONAL bool in form_data
+
+        client_id: (clientId) REQUIRED str in form_data
+
+        code: (code) REQUIRED str in form_data
+
+        factor: (factor) REQUIRED str in form_data
+
+        mfa_token: (mfaToken) REQUIRED str in form_data
+
+    Responses:
+        302: Found - (Found. Redirect to clients redirection URL with code or redirect to login web with error on the query parameter)
+    """
+    request = Verify2faCodeForward.create(
+        client_id=client_id,
+        code=code,
+        factor=factor,
+        mfa_token=mfa_token,
+        default_factor=default_factor,
+        factors=factors,
         remember_device=remember_device,
     )
     return await run_request_async(

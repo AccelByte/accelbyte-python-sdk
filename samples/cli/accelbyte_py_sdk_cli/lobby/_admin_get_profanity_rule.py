@@ -66,4 +66,4 @@ def admin_get_profanity_rule(
 
 
 admin_get_profanity_rule.operation_id = "adminGetProfanityRule"
-admin_get_profanity_rule.is_deprecated = False
+admin_get_profanity_rule.is_deprecated = True

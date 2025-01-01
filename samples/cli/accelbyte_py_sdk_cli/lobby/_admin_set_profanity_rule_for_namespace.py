@@ -81,4 +81,4 @@ def admin_set_profanity_rule_for_namespace(
 admin_set_profanity_rule_for_namespace.operation_id = (
     "adminSetProfanityRuleForNamespace"
 )
-admin_set_profanity_rule_for_namespace.is_deprecated = False
+admin_set_profanity_rule_for_namespace.is_deprecated = True

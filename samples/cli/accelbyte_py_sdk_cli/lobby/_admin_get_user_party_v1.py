@@ -69,4 +69,4 @@ def admin_get_user_party_v1(
 
 
 admin_get_user_party_v1.operation_id = "adminGetUserPartyV1"
-admin_get_user_party_v1.is_deprecated = False
+admin_get_user_party_v1.is_deprecated = True

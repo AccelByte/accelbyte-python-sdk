@@ -205,6 +205,7 @@ from ..api.iam.models import ModelLoginAllowlistResponse
 from ..api.iam.models import ModelLoginHistoriesResponse
 from ..api.iam.models import ModelNamespaceInvitationHistoryUserV4Response
 from ..api.iam.models import ModelNamespaceRoleRequest
+from ..api.iam.models import ModelOneTimeCodeLinkRedirectionResponse
 from ..api.iam.models import ModelPermissionDeleteRequest
 from ..api.iam.models import ModelPlatformDomainDeleteRequest
 from ..api.iam.models import ModelPlatformDomainResponse
@@ -212,7 +213,9 @@ from ..api.iam.models import ModelPlatformDomainUpdateRequest
 from ..api.iam.models import ModelPlatformUserIDRequest
 from ..api.iam.models import ModelPlatformUserIDRequestV4
 from ..api.iam.models import ModelPlatformUserInformation
+from ..api.iam.models import ModelProgressionInfo
 from ..api.iam.models import ModelPublicInviteUserRequestV4
+from ..api.iam.models import ModelPublicOpenIDUserInfoResponse
 from ..api.iam.models import ModelPublicThirdPartyPlatformInfo
 from ..api.iam.models import ModelPublicUserInformationResponseV3
 from ..api.iam.models import ModelPublicUserInformationV3
@@ -261,6 +264,7 @@ from ..api.iam.models import ModelSendVerificationCodeRequest
 from ..api.iam.models import ModelSendVerificationCodeRequestV3
 from ..api.iam.models import ModelSendVerificationLinkRequest
 from ..api.iam.models import ModelSimpleProfileUpdateStrategyConfigs
+from ..api.iam.models import ModelSimpleUserBan
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialRequest
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialResponse
 from ..api.iam.models import ModelTokenThirdPartyLinkStatusResponse
@@ -342,6 +346,8 @@ from ..api.iam.models import OauthmodelTokenResponseV3
 from ..api.iam.models import OauthmodelTokenThirdPartyResponse
 from ..api.iam.models import OauthmodelTokenWithDeviceCookieResponseV3
 from ..api.iam.models import OauthmodelUserBan
+from ..api.iam.models import PlatformDLCAggResponse
+from ..api.iam.models import PlatformWalletAggResponse
 from ..api.iam.models import RestErrorResponse
 from ..api.iam.models import RestErrorResponseWithConflictedUserPlatformAccounts
 from ..api.iam.models import RestPermission
@@ -1349,6 +1355,9 @@ def create_model_account_progression_info_example() -> ModelAccountProgressionIn
     instance.linked_games = [randomize()]
     instance.display_name = randomize("slug")
     instance.email = randomize("email")
+    instance.platform_id = randomize()
+    instance.progressions = [create_model_progression_info_example()]
+    instance.unique_display_name = randomize()
     instance.user_name = randomize("slug")
     return instance
 
@@ -2084,6 +2093,14 @@ def create_model_namespace_role_request_example() -> ModelNamespaceRoleRequest:
     return instance
 
 
+def create_model_one_time_code_link_redirection_response_example() -> (
+    ModelOneTimeCodeLinkRedirectionResponse
+):
+    instance = ModelOneTimeCodeLinkRedirectionResponse()
+    instance.redirect_uri = randomize()
+    return instance
+
+
 def create_model_permission_delete_request_example() -> ModelPermissionDeleteRequest:
     instance = ModelPermissionDeleteRequest()
     instance.action = randomize("int", min_val=1, max_val=1000)
@@ -2141,6 +2158,17 @@ def create_model_platform_user_information_example() -> ModelPlatformUserInforma
     return instance
 
 
+def create_model_progression_info_example() -> ModelProgressionInfo:
+    instance = ModelProgressionInfo()
+    instance.created_at = randomize("int", min_val=1, max_val=1000)
+    instance.namespace = randomize("slug")
+    instance.dlcs = create_platform_dlc_agg_response_example()
+    instance.last_login_time = randomize("int", min_val=1, max_val=1000)
+    instance.user_ban = create_model_simple_user_ban_example()
+    instance.wallets = [create_platform_wallet_agg_response_example()]
+    return instance
+
+
 def create_model_public_invite_user_request_v4_example() -> (
     ModelPublicInviteUserRequestV4
 ):
@@ -2150,6 +2178,17 @@ def create_model_public_invite_user_request_v4_example() -> (
     instance.namespace_display_name = randomize()
     instance.additional_data = randomize()
     instance.language_tag = randomize()
+    return instance
+
+
+def create_model_public_open_id_user_info_response_example() -> (
+    ModelPublicOpenIDUserInfoResponse
+):
+    instance = ModelPublicOpenIDUserInfoResponse()
+    instance.email = randomize("email")
+    instance.name = randomize()
+    instance.picture = randomize()
+    instance.sub = randomize()
     return instance
 
 
@@ -2565,6 +2604,7 @@ def create_model_send_verification_code_request_v3_example() -> (
     instance.email_address = randomize("email")
     instance.context = randomize()
     instance.language_tag = randomize()
+    instance.upgrade_token = randomize()
     return instance
 
 
@@ -2585,6 +2625,13 @@ def create_model_simple_profile_update_strategy_configs_example() -> (
     instance.type_ = randomize()
     instance.updated_at = randomize("date")
     instance.config = create_accountcommon_profile_update_config_example()
+    return instance
+
+
+def create_model_simple_user_ban_example() -> ModelSimpleUserBan:
+    instance = ModelSimpleUserBan()
+    instance.ban = randomize()
+    instance.end_date = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -3486,6 +3533,7 @@ def create_oauthmodel_one_time_linking_code_validation_response_example() -> (
     instance = OauthmodelOneTimeLinkingCodeValidationResponse()
     instance.expired = randomize("bool")
     instance.valid = randomize("bool")
+    instance.platform_id = randomize()
     return instance
 
 
@@ -3625,6 +3673,20 @@ def create_oauthmodel_user_ban_example() -> OauthmodelUserBan:
     instance.comment = randomize()
     instance.end_date = randomize("int", min_val=1, max_val=1000)
     instance.reason = randomize()
+    return instance
+
+
+def create_platform_dlc_agg_response_example() -> PlatformDLCAggResponse:
+    instance = PlatformDLCAggResponse()
+    instance.total_count = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_platform_wallet_agg_response_example() -> PlatformWalletAggResponse:
+    instance = PlatformWalletAggResponse()
+    instance.balance = randomize("int", min_val=1, max_val=1000)
+    instance.currency_code = randomize()
+    instance.currency_symbol = randomize()
     return instance
 
 

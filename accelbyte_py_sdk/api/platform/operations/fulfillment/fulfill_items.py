@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ErrorEntity
 from ...models import FulfillmentV2Request
@@ -37,11 +38,18 @@ from ...models import FulfillmentV2Result
 class FulfillItems(Operation):
     """Fulfill items by transactionId (fulfillItems)
 
-    [Not supported yet in AGS Shared Cloud] Fulfill items by transactionId.
-    Other detail info:
+    ### The endpoint is going to be deprecated
 
-      * Request body : storeId, region, language, and entitlementCollectionId can be ignored.
+    Description: this endpoint is Not supported yet in AGS Shared Cloud and it's used to fulfill items by transaction id.
+
+      *  Request body : storeId, region, language, and entitlementCollectionId can be ignored.
       *  Returns : fulfillment v2 result, storeId field can be ignored.
+
+
+
+    ### Endpoint migration guide
+
+      *  Substitute endpoint: /v3/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId} [PUT]
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}

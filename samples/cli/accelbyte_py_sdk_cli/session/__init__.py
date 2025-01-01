@@ -50,6 +50,7 @@ from ._admin_update_game_session_member import admin_update_game_session_member
 from ._admin_get_list_native_session import admin_get_list_native_session
 from ._admin_query_parties import admin_query_parties
 from ._admin_delete_bulk_parties import admin_delete_bulk_parties
+from ._admin_read_party_session_storage import admin_read_party_session_storage
 from ._admin_get_platform_credentials import admin_get_platform_credentials
 from ._admin_update_platform_credentials import admin_update_platform_credentials
 from ._admin_delete_platform_credentials import admin_delete_platform_credentials
@@ -97,6 +98,10 @@ from ._public_generate_party_code import public_generate_party_code
 from ._public_revoke_party_code import public_revoke_party_code
 from ._public_party_invite import public_party_invite
 from ._public_promote_party_leader import public_promote_party_leader
+from ._public_read_party_session_storage import public_read_party_session_storage
+from ._public_update_insert_party_session_storage_reserved import (
+    public_update_insert_party_session_storage_reserved,
+)
 from ._public_party_join import public_party_join
 from ._public_party_leave import public_party_leave
 from ._public_party_reject import public_party_reject
@@ -152,6 +157,7 @@ commands = [
     admin_get_list_native_session,
     admin_query_parties,
     admin_delete_bulk_parties,
+    admin_read_party_session_storage,
     admin_get_platform_credentials,
     admin_update_platform_credentials,
     admin_delete_platform_credentials,
@@ -193,6 +199,8 @@ commands = [
     public_revoke_party_code,
     public_party_invite,
     public_promote_party_leader,
+    public_read_party_session_storage,
+    public_update_insert_party_session_storage_reserved,
     public_party_join,
     public_party_leave,
     public_party_reject,

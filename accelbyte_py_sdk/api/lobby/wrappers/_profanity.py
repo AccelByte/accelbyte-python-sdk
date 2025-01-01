@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsAdminAddProfanityFilterIntoListRequest
@@ -59,6 +60,7 @@ from ..operations.profanity import AdminUpdateProfanityList
 from ..operations.profanity import AdminVerifyMessageProfanityResponse
 
 
+@deprecated
 @same_doc_as(AdminAddProfanityFilterIntoList)
 def admin_add_profanity_filter_into_list(
     body: ModelsAdminAddProfanityFilterIntoListRequest,
@@ -115,6 +117,7 @@ def admin_add_profanity_filter_into_list(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminAddProfanityFilterIntoList)
 async def admin_add_profanity_filter_into_list_async(
     body: ModelsAdminAddProfanityFilterIntoListRequest,
@@ -173,6 +176,7 @@ async def admin_add_profanity_filter_into_list_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminAddProfanityFilters)
 def admin_add_profanity_filters(
     body: ModelsAdminAddProfanityFiltersRequest,
@@ -229,6 +233,7 @@ def admin_add_profanity_filters(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminAddProfanityFilters)
 async def admin_add_profanity_filters_async(
     body: ModelsAdminAddProfanityFiltersRequest,
@@ -287,6 +292,7 @@ async def admin_add_profanity_filters_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminCreateProfanityList)
 def admin_create_profanity_list(
     body: ModelsAdminCreateProfanityListRequest,
@@ -339,6 +345,7 @@ def admin_create_profanity_list(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminCreateProfanityList)
 async def admin_create_profanity_list_async(
     body: ModelsAdminCreateProfanityListRequest,
@@ -393,6 +400,7 @@ async def admin_create_profanity_list_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDebugProfanityFilters)
 def admin_debug_profanity_filters(
     body: ModelsDebugProfanityFilterRequest,
@@ -445,6 +453,7 @@ def admin_debug_profanity_filters(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDebugProfanityFilters)
 async def admin_debug_profanity_filters_async(
     body: ModelsDebugProfanityFilterRequest,
@@ -499,6 +508,7 @@ async def admin_debug_profanity_filters_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDeleteProfanityFilter)
 def admin_delete_profanity_filter(
     body: ModelsAdminDeleteProfanityFilterRequest,
@@ -555,6 +565,7 @@ def admin_delete_profanity_filter(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDeleteProfanityFilter)
 async def admin_delete_profanity_filter_async(
     body: ModelsAdminDeleteProfanityFilterRequest,
@@ -613,6 +624,7 @@ async def admin_delete_profanity_filter_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDeleteProfanityList)
 def admin_delete_profanity_list(
     list_: str,
@@ -665,6 +677,7 @@ def admin_delete_profanity_list(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDeleteProfanityList)
 async def admin_delete_profanity_list_async(
     list_: str,
@@ -719,6 +732,7 @@ async def admin_delete_profanity_list_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetProfanityListFiltersV1)
 def admin_get_profanity_list_filters_v1(
     list_: str,
@@ -771,6 +785,7 @@ def admin_get_profanity_list_filters_v1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetProfanityListFiltersV1)
 async def admin_get_profanity_list_filters_v1_async(
     list_: str,
@@ -825,6 +840,7 @@ async def admin_get_profanity_list_filters_v1_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetProfanityLists)
 def admin_get_profanity_lists(
     namespace: Optional[str] = None,
@@ -873,6 +889,7 @@ def admin_get_profanity_lists(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetProfanityLists)
 async def admin_get_profanity_lists_async(
     namespace: Optional[str] = None,
@@ -923,6 +940,7 @@ async def admin_get_profanity_lists_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetProfanityRule)
 def admin_get_profanity_rule(
     namespace: Optional[str] = None,
@@ -971,6 +989,7 @@ def admin_get_profanity_rule(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetProfanityRule)
 async def admin_get_profanity_rule_async(
     namespace: Optional[str] = None,
@@ -1021,6 +1040,7 @@ async def admin_get_profanity_rule_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminImportProfanityFiltersFromFile)
 def admin_import_profanity_filters_from_file(
     body: List[int],
@@ -1077,6 +1097,7 @@ def admin_import_profanity_filters_from_file(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminImportProfanityFiltersFromFile)
 async def admin_import_profanity_filters_from_file_async(
     body: List[int],
@@ -1135,6 +1156,7 @@ async def admin_import_profanity_filters_from_file_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminSetProfanityRuleForNamespace)
 def admin_set_profanity_rule_for_namespace(
     body: ModelsAdminSetProfanityRuleForNamespaceRequest,
@@ -1187,6 +1209,7 @@ def admin_set_profanity_rule_for_namespace(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminSetProfanityRuleForNamespace)
 async def admin_set_profanity_rule_for_namespace_async(
     body: ModelsAdminSetProfanityRuleForNamespaceRequest,
@@ -1241,6 +1264,7 @@ async def admin_set_profanity_rule_for_namespace_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminUpdateProfanityList)
 def admin_update_profanity_list(
     body: ModelsAdminUpdateProfanityList,
@@ -1297,6 +1321,7 @@ def admin_update_profanity_list(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminUpdateProfanityList)
 async def admin_update_profanity_list_async(
     body: ModelsAdminUpdateProfanityList,
@@ -1355,6 +1380,7 @@ async def admin_update_profanity_list_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminVerifyMessageProfanityResponse)
 def admin_verify_message_profanity_response(
     body: ModelsAdminVerifyMessageProfanityRequest,
@@ -1407,6 +1433,7 @@ def admin_verify_message_profanity_response(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminVerifyMessageProfanityResponse)
 async def admin_verify_message_profanity_response_async(
     body: ModelsAdminVerifyMessageProfanityRequest,

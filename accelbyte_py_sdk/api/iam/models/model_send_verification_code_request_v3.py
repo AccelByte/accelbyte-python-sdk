@@ -37,6 +37,8 @@ class ModelSendVerificationCodeRequestV3(Model):
         context: (context) OPTIONAL str
 
         language_tag: (languageTag) OPTIONAL str
+
+        upgrade_token: (upgradeToken) OPTIONAL str
     """
 
     # region fields
@@ -44,6 +46,7 @@ class ModelSendVerificationCodeRequestV3(Model):
     email_address: str  # REQUIRED
     context: str  # OPTIONAL
     language_tag: str  # OPTIONAL
+    upgrade_token: str  # OPTIONAL
 
     # endregion fields
 
@@ -59,6 +62,10 @@ class ModelSendVerificationCodeRequestV3(Model):
 
     def with_language_tag(self, value: str) -> ModelSendVerificationCodeRequestV3:
         self.language_tag = value
+        return self
+
+    def with_upgrade_token(self, value: str) -> ModelSendVerificationCodeRequestV3:
+        self.upgrade_token = value
         return self
 
     # endregion with_x methods
@@ -79,6 +86,10 @@ class ModelSendVerificationCodeRequestV3(Model):
             result["languageTag"] = str(self.language_tag)
         elif include_empty:
             result["languageTag"] = ""
+        if hasattr(self, "upgrade_token"):
+            result["upgradeToken"] = str(self.upgrade_token)
+        elif include_empty:
+            result["upgradeToken"] = ""
         return result
 
     # endregion to methods
@@ -91,6 +102,7 @@ class ModelSendVerificationCodeRequestV3(Model):
         email_address: str,
         context: Optional[str] = None,
         language_tag: Optional[str] = None,
+        upgrade_token: Optional[str] = None,
         **kwargs,
     ) -> ModelSendVerificationCodeRequestV3:
         instance = cls()
@@ -99,6 +111,8 @@ class ModelSendVerificationCodeRequestV3(Model):
             instance.context = context
         if language_tag is not None:
             instance.language_tag = language_tag
+        if upgrade_token is not None:
+            instance.upgrade_token = upgrade_token
         return instance
 
     @classmethod
@@ -120,6 +134,10 @@ class ModelSendVerificationCodeRequestV3(Model):
             instance.language_tag = str(dict_["languageTag"])
         elif include_empty:
             instance.language_tag = ""
+        if "upgradeToken" in dict_ and dict_["upgradeToken"] is not None:
+            instance.upgrade_token = str(dict_["upgradeToken"])
+        elif include_empty:
+            instance.upgrade_token = ""
         return instance
 
     @classmethod
@@ -166,6 +184,7 @@ class ModelSendVerificationCodeRequestV3(Model):
             "emailAddress": "email_address",
             "context": "context",
             "languageTag": "language_tag",
+            "upgradeToken": "upgrade_token",
         }
 
     @staticmethod
@@ -174,6 +193,7 @@ class ModelSendVerificationCodeRequestV3(Model):
             "emailAddress": True,
             "context": False,
             "languageTag": False,
+            "upgradeToken": False,
         }
 
     # endregion static methods

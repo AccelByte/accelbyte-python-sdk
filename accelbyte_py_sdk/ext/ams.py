@@ -80,6 +80,7 @@ from ..api.ams.models import ApiRegionConfig
 from ..api.ams.models import ApiTime
 from ..api.ams.models import ApiTimeout
 from ..api.ams.models import ApiUpdateServerRequest
+from ..api.ams.models import PaginationPaginationInfo
 from ..api.ams.models import ResponseErrorResponse
 from ..api.ams.models import TimeLocation
 from ..api.ams.models import TimeZone
@@ -360,6 +361,7 @@ def create_api_fleet_list_item_response_example() -> ApiFleetListItemResponse:
 def create_api_fleet_list_response_example() -> ApiFleetListResponse:
     instance = ApiFleetListResponse()
     instance.fleets = [create_api_fleet_list_item_response_example()]
+    instance.paging = create_pagination_pagination_info_example()
     return instance
 
 
@@ -619,6 +621,16 @@ def create_api_timeout_example() -> ApiTimeout:
 def create_api_update_server_request_example() -> ApiUpdateServerRequest:
     instance = ApiUpdateServerRequest()
     instance.status = randomize()
+    return instance
+
+
+def create_pagination_pagination_info_example() -> PaginationPaginationInfo:
+    instance = PaginationPaginationInfo()
+    instance.first = randomize()
+    instance.last = randomize()
+    instance.next_ = randomize()
+    instance.previous = randomize()
+    instance.total = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

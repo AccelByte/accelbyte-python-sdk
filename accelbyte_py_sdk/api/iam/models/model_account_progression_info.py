@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.model_progression_info import ModelProgressionInfo
+
 
 class ModelAccountProgressionInfo(Model):
     """Model account progression info (model.AccountProgressionInfo)
@@ -38,6 +40,12 @@ class ModelAccountProgressionInfo(Model):
 
         email: (email) OPTIONAL str
 
+        platform_id: (platformId) OPTIONAL str
+
+        progressions: (progressions) OPTIONAL List[ModelProgressionInfo]
+
+        unique_display_name: (uniqueDisplayName) OPTIONAL str
+
         user_name: (userName) OPTIONAL str
     """
 
@@ -46,6 +54,9 @@ class ModelAccountProgressionInfo(Model):
     linked_games: List[str]  # REQUIRED
     display_name: str  # OPTIONAL
     email: str  # OPTIONAL
+    platform_id: str  # OPTIONAL
+    progressions: List[ModelProgressionInfo]  # OPTIONAL
+    unique_display_name: str  # OPTIONAL
     user_name: str  # OPTIONAL
 
     # endregion fields
@@ -62,6 +73,20 @@ class ModelAccountProgressionInfo(Model):
 
     def with_email(self, value: str) -> ModelAccountProgressionInfo:
         self.email = value
+        return self
+
+    def with_platform_id(self, value: str) -> ModelAccountProgressionInfo:
+        self.platform_id = value
+        return self
+
+    def with_progressions(
+        self, value: List[ModelProgressionInfo]
+    ) -> ModelAccountProgressionInfo:
+        self.progressions = value
+        return self
+
+    def with_unique_display_name(self, value: str) -> ModelAccountProgressionInfo:
+        self.unique_display_name = value
         return self
 
     def with_user_name(self, value: str) -> ModelAccountProgressionInfo:
@@ -86,6 +111,20 @@ class ModelAccountProgressionInfo(Model):
             result["email"] = str(self.email)
         elif include_empty:
             result["email"] = ""
+        if hasattr(self, "platform_id"):
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = ""
+        if hasattr(self, "progressions"):
+            result["progressions"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.progressions
+            ]
+        elif include_empty:
+            result["progressions"] = []
+        if hasattr(self, "unique_display_name"):
+            result["uniqueDisplayName"] = str(self.unique_display_name)
+        elif include_empty:
+            result["uniqueDisplayName"] = ""
         if hasattr(self, "user_name"):
             result["userName"] = str(self.user_name)
         elif include_empty:
@@ -102,6 +141,9 @@ class ModelAccountProgressionInfo(Model):
         linked_games: List[str],
         display_name: Optional[str] = None,
         email: Optional[str] = None,
+        platform_id: Optional[str] = None,
+        progressions: Optional[List[ModelProgressionInfo]] = None,
+        unique_display_name: Optional[str] = None,
         user_name: Optional[str] = None,
         **kwargs,
     ) -> ModelAccountProgressionInfo:
@@ -111,6 +153,12 @@ class ModelAccountProgressionInfo(Model):
             instance.display_name = display_name
         if email is not None:
             instance.email = email
+        if platform_id is not None:
+            instance.platform_id = platform_id
+        if progressions is not None:
+            instance.progressions = progressions
+        if unique_display_name is not None:
+            instance.unique_display_name = unique_display_name
         if user_name is not None:
             instance.user_name = user_name
         return instance
@@ -134,6 +182,21 @@ class ModelAccountProgressionInfo(Model):
             instance.email = str(dict_["email"])
         elif include_empty:
             instance.email = ""
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = ""
+        if "progressions" in dict_ and dict_["progressions"] is not None:
+            instance.progressions = [
+                ModelProgressionInfo.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["progressions"]
+            ]
+        elif include_empty:
+            instance.progressions = []
+        if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
+            instance.unique_display_name = str(dict_["uniqueDisplayName"])
+        elif include_empty:
+            instance.unique_display_name = ""
         if "userName" in dict_ and dict_["userName"] is not None:
             instance.user_name = str(dict_["userName"])
         elif include_empty:
@@ -184,6 +247,9 @@ class ModelAccountProgressionInfo(Model):
             "linkedGames": "linked_games",
             "displayName": "display_name",
             "email": "email",
+            "platformId": "platform_id",
+            "progressions": "progressions",
+            "uniqueDisplayName": "unique_display_name",
             "userName": "user_name",
         }
 
@@ -193,6 +259,9 @@ class ModelAccountProgressionInfo(Model):
             "linkedGames": True,
             "displayName": False,
             "email": False,
+            "platformId": False,
+            "progressions": False,
+            "uniqueDisplayName": False,
             "userName": False,
         }
 

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.24.2"
+__version__ = "7.25.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -139,7 +139,9 @@ from .public_get_link_headles_d2aaa6 import (
     PublicGetLinkHeadlessAccountToMyAccountConflictV3,
 )
 from .public_get_my_profile_a_bdf3fe import PublicGetMyProfileAllowUpdateStatusV3
+from .public_get_my_redirecti_1fe939 import PublicGetMyRedirectionAfterLinkV3
 from .public_get_my_user_v3 import PublicGetMyUserV3
+from .public_get_openid_user_info_v3 import PublicGetOpenidUserInfoV3
 from .public_get_publisher_user_v3 import PublicGetPublisherUserV3
 from .public_get_user_ban import PublicGetUserBan
 from .public_get_user_ban_history_v3 import PublicGetUserBanHistoryV3
@@ -162,6 +164,7 @@ from .public_platform_unlink_v3 import PublicPlatformUnlinkV3
 from .public_process_web_link_2f9ff9 import PublicProcessWebLinkPlatformV3
 from .public_reset_password_v2 import PublicResetPasswordV2
 from .public_search_user_v3 import PublicSearchUserV3
+from .public_send_code_forward_v3 import PublicSendCodeForwardV3
 from .public_send_registration_code import PublicSendRegistrationCode
 from .public_send_verificatio_dc732c import PublicSendVerificationCodeV3
 from .public_send_verificatio_1a545f import PublicSendVerificationLinkV3

@@ -72,4 +72,4 @@ def retry_fulfill_items(
 
 
 retry_fulfill_items.operation_id = "retryFulfillItems"
-retry_fulfill_items.is_deprecated = False
+retry_fulfill_items.is_deprecated = True

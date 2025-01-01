@@ -70,4 +70,4 @@ def bulk_get_sessions(
 
 
 bulk_get_sessions.operation_id = "BulkGetSessions"
-bulk_get_sessions.is_deprecated = False
+bulk_get_sessions.is_deprecated = True

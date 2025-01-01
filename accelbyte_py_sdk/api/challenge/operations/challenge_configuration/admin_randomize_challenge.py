@@ -37,8 +37,7 @@ from ...models import ResponseError
 class AdminRandomizeChallenge(Operation):
     """Randomize Goals of a Challenge (adminRandomizeChallenge)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
-
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
     This is a utility endpoint to execute randomize goals schedule on challenge that the assignmentRule is RANDOMIZED and RandomizePerRotation assigned with true.
 
     Properties:

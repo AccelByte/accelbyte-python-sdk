@@ -36,9 +36,12 @@ from accelbyte_py_sdk.api.iam import authorize_v3 as authorize_v3_internal
 @click.command()
 @click.argument("client_id", type=str)
 @click.argument("response_type", type=str)
+@click.option("--blocked_platform_id", "blocked_platform_id", type=str)
 @click.option("--code_challenge", "code_challenge", type=str)
 @click.option("--code_challenge_method", "code_challenge_method", type=str)
 @click.option("--create_headless", "create_headless", type=bool)
+@click.option("--login_web_based", "login_web_based", type=bool)
+@click.option("--nonce", "nonce", type=str)
 @click.option("--one_time_link_code", "one_time_link_code", type=str)
 @click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--scope", "scope", type=str)
@@ -55,9 +58,12 @@ from accelbyte_py_sdk.api.iam import authorize_v3 as authorize_v3_internal
 def authorize_v3(
     client_id: str,
     response_type: str,
+    blocked_platform_id: Optional[str] = None,
     code_challenge: Optional[str] = None,
     code_challenge_method: Optional[str] = None,
     create_headless: Optional[bool] = None,
+    login_web_based: Optional[bool] = None,
+    nonce: Optional[str] = None,
     one_time_link_code: Optional[str] = None,
     redirect_uri: Optional[str] = None,
     scope: Optional[str] = None,
@@ -79,9 +85,12 @@ def authorize_v3(
     result, error = authorize_v3_internal(
         client_id=client_id,
         response_type=response_type,
+        blocked_platform_id=blocked_platform_id,
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
         create_headless=create_headless,
+        login_web_based=login_web_based,
+        nonce=nonce,
         one_time_link_code=one_time_link_code,
         redirect_uri=redirect_uri,
         scope=scope,

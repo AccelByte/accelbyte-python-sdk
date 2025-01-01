@@ -50,7 +50,11 @@ class RevocationResult(Model):
 
         entitlement_revocations: (entitlementRevocations) OPTIONAL List[EntitlementRevocation]
 
+        is_replayed: (isReplayed) OPTIONAL bool
+
         item_revocations: (itemRevocations) OPTIONAL List[ItemRevocation]
+
+        request_id: (requestId) OPTIONAL str
     """
 
     # region fields
@@ -59,7 +63,9 @@ class RevocationResult(Model):
     status: Union[str, StatusEnum]  # REQUIRED
     credit_revocations: List[CreditRevocation]  # OPTIONAL
     entitlement_revocations: List[EntitlementRevocation]  # OPTIONAL
+    is_replayed: bool  # OPTIONAL
     item_revocations: List[ItemRevocation]  # OPTIONAL
+    request_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -85,8 +91,16 @@ class RevocationResult(Model):
         self.entitlement_revocations = value
         return self
 
+    def with_is_replayed(self, value: bool) -> RevocationResult:
+        self.is_replayed = value
+        return self
+
     def with_item_revocations(self, value: List[ItemRevocation]) -> RevocationResult:
         self.item_revocations = value
+        return self
+
+    def with_request_id(self, value: str) -> RevocationResult:
+        self.request_id = value
         return self
 
     # endregion with_x methods
@@ -117,12 +131,20 @@ class RevocationResult(Model):
             ]
         elif include_empty:
             result["entitlementRevocations"] = []
+        if hasattr(self, "is_replayed"):
+            result["isReplayed"] = bool(self.is_replayed)
+        elif include_empty:
+            result["isReplayed"] = False
         if hasattr(self, "item_revocations"):
             result["itemRevocations"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.item_revocations
             ]
         elif include_empty:
             result["itemRevocations"] = []
+        if hasattr(self, "request_id"):
+            result["requestId"] = str(self.request_id)
+        elif include_empty:
+            result["requestId"] = ""
         return result
 
     # endregion to methods
@@ -136,7 +158,9 @@ class RevocationResult(Model):
         status: Union[str, StatusEnum],
         credit_revocations: Optional[List[CreditRevocation]] = None,
         entitlement_revocations: Optional[List[EntitlementRevocation]] = None,
+        is_replayed: Optional[bool] = None,
         item_revocations: Optional[List[ItemRevocation]] = None,
+        request_id: Optional[str] = None,
         **kwargs,
     ) -> RevocationResult:
         instance = cls()
@@ -146,8 +170,12 @@ class RevocationResult(Model):
             instance.credit_revocations = credit_revocations
         if entitlement_revocations is not None:
             instance.entitlement_revocations = entitlement_revocations
+        if is_replayed is not None:
+            instance.is_replayed = is_replayed
         if item_revocations is not None:
             instance.item_revocations = item_revocations
+        if request_id is not None:
+            instance.request_id = request_id
         return instance
 
     @classmethod
@@ -182,6 +210,10 @@ class RevocationResult(Model):
             ]
         elif include_empty:
             instance.entitlement_revocations = []
+        if "isReplayed" in dict_ and dict_["isReplayed"] is not None:
+            instance.is_replayed = bool(dict_["isReplayed"])
+        elif include_empty:
+            instance.is_replayed = False
         if "itemRevocations" in dict_ and dict_["itemRevocations"] is not None:
             instance.item_revocations = [
                 ItemRevocation.create_from_dict(i0, include_empty=include_empty)
@@ -189,6 +221,10 @@ class RevocationResult(Model):
             ]
         elif include_empty:
             instance.item_revocations = []
+        if "requestId" in dict_ and dict_["requestId"] is not None:
+            instance.request_id = str(dict_["requestId"])
+        elif include_empty:
+            instance.request_id = ""
         return instance
 
     @classmethod
@@ -232,7 +268,9 @@ class RevocationResult(Model):
             "status": "status",
             "creditRevocations": "credit_revocations",
             "entitlementRevocations": "entitlement_revocations",
+            "isReplayed": "is_replayed",
             "itemRevocations": "item_revocations",
+            "requestId": "request_id",
         }
 
     @staticmethod
@@ -242,7 +280,9 @@ class RevocationResult(Model):
             "status": True,
             "creditRevocations": False,
             "entitlementRevocations": False,
+            "isReplayed": False,
             "itemRevocations": False,
+            "requestId": False,
         }
 
     @staticmethod

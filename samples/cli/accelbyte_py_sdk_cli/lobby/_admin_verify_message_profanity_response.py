@@ -78,4 +78,4 @@ def admin_verify_message_profanity_response(
 admin_verify_message_profanity_response.operation_id = (
     "adminVerifyMessageProfanityResponse"
 )
-admin_verify_message_profanity_response.is_deprecated = False
+admin_verify_message_profanity_response.is_deprecated = True

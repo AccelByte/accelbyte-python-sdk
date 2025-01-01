@@ -82,4 +82,4 @@ def add_user_into_session_in_channel(
 
 
 add_user_into_session_in_channel.operation_id = "AddUserIntoSessionInChannel"
-add_user_into_session_in_channel.is_deprecated = False
+add_user_into_session_in_channel.is_deprecated = True

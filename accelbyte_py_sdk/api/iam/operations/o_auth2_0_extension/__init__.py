@@ -8,12 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.24.2"
+__version__ = "7.25.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .authenticate_and_link_f_05910a import AuthenticateAndLinkForwardV3
 from .authentication_with_pla_4d2d24 import AuthenticationWithPlatformLinkV3
 from .generate_token_by_new_h_af6555 import GenerateTokenByNewHeadlessAccountV3
 from .get_country_location_v3 import GetCountryLocationV3
@@ -27,5 +28,6 @@ from .request_token_exchange_code_v3 import RequestTokenExchangeCodeV3
 from .request_token_exchange_code_v3 import (
     CodeChallengeMethodEnum as RequestTokenExchangeCodeV3CodeChallengeMethodEnum,
 )
+from .upgrade_and_authenticat_c44b4f import UpgradeAndAuthenticateForwardV3
 from .user_authentication_v3 import UserAuthenticationV3
 from .validate_one_time_linki_84d856 import ValidateOneTimeLinkingCodeV3

@@ -69,4 +69,4 @@ def query_session_handler(
 
 
 query_session_handler.operation_id = "QuerySessionHandler"
-query_session_handler.is_deprecated = False
+query_session_handler.is_deprecated = True

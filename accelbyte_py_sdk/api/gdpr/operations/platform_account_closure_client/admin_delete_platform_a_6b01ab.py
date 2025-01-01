@@ -36,6 +36,12 @@ class AdminDeletePlatformAccountClosureClient(Operation):
     """Delete Platform Account Closure Client (AdminDeletePlatformAccountClosureClient)
 
     Delete platform account closure client.
+    The namespace should be **publisher or studio namespace**
+    -------
+    Platform:
+    - steamnetwork
+    - xbox
+    - psn
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client

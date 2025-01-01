@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsCreateConfigRequest
@@ -42,6 +43,7 @@ from ..operations.third_party import AdminGetThirdPartyConfig
 from ..operations.third_party import AdminUpdateThirdPartyConfig
 
 
+@deprecated
 @same_doc_as(AdminCreateThirdPartyConfig)
 def admin_create_third_party_config(
     body: ModelsCreateConfigRequest,
@@ -94,6 +96,7 @@ def admin_create_third_party_config(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminCreateThirdPartyConfig)
 async def admin_create_third_party_config_async(
     body: ModelsCreateConfigRequest,
@@ -148,6 +151,7 @@ async def admin_create_third_party_config_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDeleteThirdPartyConfig)
 def admin_delete_third_party_config(
     namespace: Optional[str] = None,
@@ -196,6 +200,7 @@ def admin_delete_third_party_config(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDeleteThirdPartyConfig)
 async def admin_delete_third_party_config_async(
     namespace: Optional[str] = None,
@@ -246,6 +251,7 @@ async def admin_delete_third_party_config_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetThirdPartyConfig)
 def admin_get_third_party_config(
     namespace: Optional[str] = None,
@@ -292,6 +298,7 @@ def admin_get_third_party_config(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetThirdPartyConfig)
 async def admin_get_third_party_config_async(
     namespace: Optional[str] = None,
@@ -340,6 +347,7 @@ async def admin_get_third_party_config_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminUpdateThirdPartyConfig)
 def admin_update_third_party_config(
     body: ModelsUpdateConfigRequest,
@@ -390,6 +398,7 @@ def admin_update_third_party_config(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminUpdateThirdPartyConfig)
 async def admin_update_third_party_config_async(
     body: ModelsUpdateConfigRequest,

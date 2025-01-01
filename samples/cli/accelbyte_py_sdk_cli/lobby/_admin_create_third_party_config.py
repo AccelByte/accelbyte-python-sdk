@@ -76,4 +76,4 @@ def admin_create_third_party_config(
 
 
 admin_create_third_party_config.operation_id = "adminCreateThirdPartyConfig"
-admin_create_third_party_config.is_deprecated = False
+admin_create_third_party_config.is_deprecated = True

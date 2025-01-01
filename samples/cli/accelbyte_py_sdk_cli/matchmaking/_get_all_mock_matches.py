@@ -69,4 +69,4 @@ def get_all_mock_matches(
 
 
 get_all_mock_matches.operation_id = "GetAllMockMatches"
-get_all_mock_matches.is_deprecated = False
+get_all_mock_matches.is_deprecated = True

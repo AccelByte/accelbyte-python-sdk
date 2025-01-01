@@ -54,7 +54,9 @@ def admin_get_user_platform_account_closure_histories(
 
     ------
     Supported platforms:
-    * psn
+    - psn
+    - steamnetwork
+    - xbox
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/platforms/closure/histories
@@ -121,7 +123,9 @@ async def admin_get_user_platform_account_closure_histories_async(
 
     ------
     Supported platforms:
-    * psn
+    - psn
+    - steamnetwork
+    - xbox
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/platforms/closure/histories

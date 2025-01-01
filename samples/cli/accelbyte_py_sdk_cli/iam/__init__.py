@@ -312,6 +312,7 @@ from ._admin_delete_role_permission_v3 import admin_delete_role_permission_v3
 from ._admin_get_my_user_v3 import admin_get_my_user_v3
 from ._user_authentication_v3 import user_authentication_v3
 from ._authentication_with_platform_link_v3 import authentication_with_platform_link_v3
+from ._authenticate_and_link_forward_v3 import authenticate_and_link_forward_v3
 from ._generate_token_by_new_headless_account_v3 import (
     generate_token_by_new_headless_account_v3,
 )
@@ -333,6 +334,7 @@ from ._get_jwksv3 import get_jwksv3
 from ._send_mfa_authentication_code import send_mfa_authentication_code
 from ._change2fa_method import change2fa_method
 from ._verify2fa_code import verify2fa_code
+from ._verify2fa_code_forward import verify2fa_code_forward
 from ._retrieve_user_third_party_platform_token_v3 import (
     retrieve_user_third_party_platform_token_v3,
 )
@@ -417,21 +419,27 @@ from ._public_validate_user_by_user_id_and_password_v3 import (
 from ._public_get_roles_v3 import public_get_roles_v3
 from ._public_get_role_v3 import public_get_role_v3
 from ._public_get_my_user_v3 import public_get_my_user_v3
+from ._public_send_code_forward_v3 import public_send_code_forward_v3
 from ._public_get_link_headless_account_to_my_account_conflict_v3 import (
     public_get_link_headless_account_to_my_account_conflict_v3,
 )
 from ._link_headless_account_to_my_account_v3 import (
     link_headless_account_to_my_account_v3,
 )
+from ._public_get_my_redirection_after_link_v3 import (
+    public_get_my_redirection_after_link_v3,
+)
 from ._public_get_my_profile_allow_update_status_v3 import (
     public_get_my_profile_allow_update_status_v3,
 )
 from ._public_send_verification_link_v3 import public_send_verification_link_v3
+from ._public_get_openid_user_info_v3 import public_get_openid_user_info_v3
 from ._public_verify_user_by_link_v3 import public_verify_user_by_link_v3
 from ._platform_authenticate_samlv3_handler import platform_authenticate_samlv3_handler
 from ._login_sso_client import login_sso_client
 from ._logout_sso_client import logout_sso_client
 from ._request_target_token_response_v3 import request_target_token_response_v3
+from ._upgrade_and_authenticate_forward_v3 import upgrade_and_authenticate_forward_v3
 from ._admin_list_invitation_histories_v4 import admin_list_invitation_histories_v4
 from ._admin_get_devices_by_user_v4 import admin_get_devices_by_user_v4
 from ._admin_get_banned_devices_v4 import admin_get_banned_devices_v4
@@ -547,6 +555,9 @@ from ._public_get_user_public_info_by_user_id_v4 import (
     public_get_user_public_info_by_user_id_v4,
 )
 from ._public_invite_user_v4 import public_invite_user_v4
+from ._public_upgrade_headless_with_code_v4_forward import (
+    public_upgrade_headless_with_code_v4_forward,
+)
 
 
 commands = [
@@ -784,6 +795,7 @@ commands = [
     admin_get_my_user_v3,
     user_authentication_v3,
     authentication_with_platform_link_v3,
+    authenticate_and_link_forward_v3,
     generate_token_by_new_headless_account_v3,
     request_one_time_linking_code_v3,
     validate_one_time_linking_code_v3,
@@ -799,6 +811,7 @@ commands = [
     send_mfa_authentication_code,
     change2fa_method,
     verify2fa_code,
+    verify2fa_code_forward,
     retrieve_user_third_party_platform_token_v3,
     auth_code_request_v3,
     platform_token_grant_v3,
@@ -861,15 +874,19 @@ commands = [
     public_get_roles_v3,
     public_get_role_v3,
     public_get_my_user_v3,
+    public_send_code_forward_v3,
     public_get_link_headless_account_to_my_account_conflict_v3,
     link_headless_account_to_my_account_v3,
+    public_get_my_redirection_after_link_v3,
     public_get_my_profile_allow_update_status_v3,
     public_send_verification_link_v3,
+    public_get_openid_user_info_v3,
     public_verify_user_by_link_v3,
     platform_authenticate_samlv3_handler,
     login_sso_client,
     logout_sso_client,
     request_target_token_response_v3,
+    upgrade_and_authenticate_forward_v3,
     admin_list_invitation_histories_v4,
     admin_get_devices_by_user_v4,
     admin_get_banned_devices_v4,
@@ -967,4 +984,5 @@ commands = [
     public_get_my_mfa_status_v4,
     public_get_user_public_info_by_user_id_v4,
     public_invite_user_v4,
+    public_upgrade_headless_with_code_v4_forward,
 ]

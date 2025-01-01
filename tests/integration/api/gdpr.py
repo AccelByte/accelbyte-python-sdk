@@ -10,7 +10,7 @@ from accelbyte_py_sdk.api.iam.models import AccountCreateUserRequestV4
 class GDPRTestCase(IntegrationTestCase):
     did_configure: bool = False
     user_namespace: str = "accelbyte"
-    uid: str = str(randint(0, 1_000_000)).rjust(7, '0')
+    uid: str = str(randint(0, 1_000_000)).rjust(7, "0")
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
     unique_display_name = f"testPythonServerSDKUser_{uid}"

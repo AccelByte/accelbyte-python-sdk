@@ -38,7 +38,7 @@ from ...models import ResponseError
 class AdminCreateAssignmentPlugin(Operation):
     """Create assignment plugin (adminCreateAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [CREATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [CREATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment

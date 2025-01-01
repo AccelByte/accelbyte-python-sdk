@@ -70,4 +70,4 @@ def get_all_party_in_channel(
 
 
 get_all_party_in_channel.operation_id = "GetAllPartyInChannel"
-get_all_party_in_channel.is_deprecated = False
+get_all_party_in_channel.is_deprecated = True

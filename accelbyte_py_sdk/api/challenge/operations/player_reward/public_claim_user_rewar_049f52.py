@@ -38,7 +38,7 @@ from ...models import ResponseError
 class PublicClaimUserRewardsByGoalCode(Operation):
     """Claim User's Rewards by Goal Code (publicClaimUserRewardsByGoalCode)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/challenges/{challengeCode}/rewards/claim
@@ -62,7 +62,7 @@ class PublicClaimUserRewardsByGoalCode(Operation):
     Responses:
         200: OK - List[ModelUserReward] (OK)
 
-        400: Bad Request - IamErrorResponse (20001: unauthorized access)
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -200,7 +200,7 @@ class PublicClaimUserRewardsByGoalCode(Operation):
 
         200: OK - List[ModelUserReward] (OK)
 
-        400: Bad Request - IamErrorResponse (20001: unauthorized access)
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 

@@ -31,6 +31,8 @@ from ..api.gdpr.models import DtoListFinishedDataDeletion
 from ..api.gdpr.models import DtoListFinishedDataRequests
 from ..api.gdpr.models import DtoPlatformAccountClosureClientRequest
 from ..api.gdpr.models import DtoPlatformAccountClosureClientResponse
+from ..api.gdpr.models import DtoPlatformAccountClosureClientsResponse
+from ..api.gdpr.models import DtoPlatformAccountClosureMockRequest
 from ..api.gdpr.models import DtoS2SDataRequestSummary
 from ..api.gdpr.models import DtoServiceConfigDTO
 from ..api.gdpr.models import DtoServiceConfigurationDTO
@@ -38,6 +40,8 @@ from ..api.gdpr.models import DtoServiceConfigurationUpdateRequest
 from ..api.gdpr.models import DtoServicesConfigurationResponse
 from ..api.gdpr.models import DtoUserPlatformAccountClosureHistoriesResponse
 from ..api.gdpr.models import DtoUserPlatformAccountClosureHistory
+from ..api.gdpr.models import DtoXboxBPCertValidationRequest
+from ..api.gdpr.models import DtoXboxBPCertValidationResponse
 from ..api.gdpr.models import ModelsDataRetrievalResponse
 from ..api.gdpr.models import ModelsDeletionData
 from ..api.gdpr.models import ModelsDeletionStatus
@@ -100,7 +104,12 @@ def create_dto_platform_account_closure_client_request_example() -> (
     DtoPlatformAccountClosureClientRequest
 ):
     instance = DtoPlatformAccountClosureClientRequest()
+    instance.bp_cert = randomize()
+    instance.bp_cert_file_name = randomize()
     instance.client_id = randomize("uid")
+    instance.password = randomize("password")
+    instance.publisher_key = randomize()
+    instance.sandbox_id = randomize()
     instance.secret = randomize()
     return instance
 
@@ -109,11 +118,33 @@ def create_dto_platform_account_closure_client_response_example() -> (
     DtoPlatformAccountClosureClientResponse
 ):
     instance = DtoPlatformAccountClosureClientResponse()
-    instance.client_id = randomize("uid")
     instance.namespace = randomize("slug")
     instance.platform = randomize()
-    instance.secret = randomize()
     instance.updated_at = randomize("int", min_val=1, max_val=1000)
+    instance.bp_cert_expire_at = randomize("int", min_val=1, max_val=1000)
+    instance.bp_cert_file_name = randomize()
+    instance.client_id = randomize("uid")
+    instance.publisher_key = randomize()
+    instance.sandbox_id = randomize()
+    instance.secret = randomize()
+    return instance
+
+
+def create_dto_platform_account_closure_clients_response_example() -> (
+    DtoPlatformAccountClosureClientsResponse
+):
+    instance = DtoPlatformAccountClosureClientsResponse()
+    instance.data = [create_dto_platform_account_closure_client_response_example()]
+    return instance
+
+
+def create_dto_platform_account_closure_mock_request_example() -> (
+    DtoPlatformAccountClosureMockRequest
+):
+    instance = DtoPlatformAccountClosureMockRequest()
+    instance.platform_user_id = randomize()
+    instance.sandbox = randomize()
+    instance.start_immediately = randomize("bool")
     return instance
 
 
@@ -177,6 +208,24 @@ def create_dto_user_platform_account_closure_history_example() -> (
     instance.platform = randomize()
     instance.platform_user_id = randomize()
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_dto_xbox_bp_cert_validation_request_example() -> (
+    DtoXboxBPCertValidationRequest
+):
+    instance = DtoXboxBPCertValidationRequest()
+    instance.bp_cert = randomize()
+    instance.password = randomize("password")
+    return instance
+
+
+def create_dto_xbox_bp_cert_validation_response_example() -> (
+    DtoXboxBPCertValidationResponse
+):
+    instance = DtoXboxBPCertValidationResponse()
+    instance.expiration_date = randomize("int", min_val=1, max_val=1000)
+    instance.expired = randomize("bool")
     return instance
 
 
@@ -308,4 +357,5 @@ def create_response_error_example() -> ResponseError:
     instance = ResponseError()
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
+    instance.message_variables = {randomize(): randomize()}
     return instance

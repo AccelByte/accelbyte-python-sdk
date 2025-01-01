@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.11.1"
+__version__ = "1.12.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -18,8 +18,14 @@ from .admin_claim_user_rewards import AdminClaimUserRewards
 from .admin_claim_user_reward_b23bb0 import AdminClaimUserRewardsByGoalCode
 from .admin_claim_users_rewards import AdminClaimUsersRewards
 from .admin_get_user_rewards import AdminGetUserRewards
-from .admin_get_user_rewards import StatusEnum as AdminGetUserRewardsStatusEnum
+from .admin_get_user_rewards import (
+    SortByEnum as AdminGetUserRewardsSortByEnum,
+    StatusEnum as AdminGetUserRewardsStatusEnum,
+)
 from .public_claim_user_rewards import PublicClaimUserRewards
 from .public_claim_user_rewar_049f52 import PublicClaimUserRewardsByGoalCode
 from .public_get_user_rewards import PublicGetUserRewards
-from .public_get_user_rewards import StatusEnum as PublicGetUserRewardsStatusEnum
+from .public_get_user_rewards import (
+    SortByEnum as PublicGetUserRewardsSortByEnum,
+    StatusEnum as PublicGetUserRewardsStatusEnum,
+)

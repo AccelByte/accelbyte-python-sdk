@@ -66,4 +66,4 @@ def get_all_party_in_all_channel(
 
 
 get_all_party_in_all_channel.operation_id = "GetAllPartyInAllChannel"
-get_all_party_in_all_channel.is_deprecated = False
+get_all_party_in_all_channel.is_deprecated = True

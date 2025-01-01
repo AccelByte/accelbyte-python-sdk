@@ -76,4 +76,4 @@ def store_match_results(
 
 
 store_match_results.operation_id = "StoreMatchResults"
-store_match_results.is_deprecated = False
+store_match_results.is_deprecated = True

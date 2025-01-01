@@ -67,4 +67,4 @@ def get_session(
 
 
 get_session.operation_id = "GetSession"
-get_session.is_deprecated = False
+get_session.is_deprecated = True

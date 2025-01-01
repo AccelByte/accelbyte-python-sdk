@@ -79,4 +79,4 @@ def update_settings(
 
 
 update_settings.operation_id = "UpdateSettings"
-update_settings.is_deprecated = False
+update_settings.is_deprecated = True

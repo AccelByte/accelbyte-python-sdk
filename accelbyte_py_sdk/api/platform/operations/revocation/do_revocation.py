@@ -29,6 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ErrorEntity
 from ...models import RevocationRequest
 from ...models import RevocationResult
 
@@ -62,6 +63,8 @@ class DoRevocation(Operation):
 
     Responses:
         200: OK - RevocationResult (successful operation)
+
+        409: Conflict - ErrorEntity (41171: Request has different payload on previous call | 41172: Request has different user id on previous call)
     """
 
     # region fields
@@ -179,10 +182,12 @@ class DoRevocation(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[Union[None, RevocationResult], Union[None, HttpResponse]]:
+    ) -> Tuple[Union[None, RevocationResult], Union[None, ErrorEntity, HttpResponse]]:
         """Parse the given response.
 
         200: OK - RevocationResult (successful operation)
+
+        409: Conflict - ErrorEntity (41171: Request has different payload on previous call | 41172: Request has different user id on previous call)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -199,6 +204,8 @@ class DoRevocation(Operation):
 
         if code == 200:
             return RevocationResult.create_from_dict(content), None
+        if code == 409:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content

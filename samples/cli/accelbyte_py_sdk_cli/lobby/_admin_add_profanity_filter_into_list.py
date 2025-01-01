@@ -82,4 +82,4 @@ def admin_add_profanity_filter_into_list(
 
 
 admin_add_profanity_filter_into_list.operation_id = "adminAddProfanityFilterIntoList"
-admin_add_profanity_filter_into_list.is_deprecated = False
+admin_add_profanity_filter_into_list.is_deprecated = True

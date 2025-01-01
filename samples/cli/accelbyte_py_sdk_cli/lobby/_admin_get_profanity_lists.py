@@ -66,4 +66,4 @@ def admin_get_profanity_lists(
 
 
 admin_get_profanity_lists.operation_id = "adminGetProfanityLists"
-admin_get_profanity_lists.is_deprecated = False
+admin_get_profanity_lists.is_deprecated = True

@@ -64,7 +64,7 @@ class GetNotificationSubscriberListV2(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        notification_type: (notificationType) OPTIONAL str in query
+        notification_type: (notificationType) REQUIRED str in query
 
     Responses:
         200: OK - ApimodelGetNotificationSubscriberListResponse
@@ -89,7 +89,7 @@ class GetNotificationSubscriberListV2(Operation):
 
     app: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
-    notification_type: str  # OPTIONAL in [query]
+    notification_type: str  # REQUIRED in [query]
 
     # endregion fields
 
@@ -247,13 +247,12 @@ class GetNotificationSubscriberListV2(Operation):
 
     @classmethod
     def create(
-        cls, app: str, namespace: str, notification_type: Optional[str] = None, **kwargs
+        cls, app: str, namespace: str, notification_type: str, **kwargs
     ) -> GetNotificationSubscriberListV2:
         instance = cls()
         instance.app = app
         instance.namespace = namespace
-        if notification_type is not None:
-            instance.notification_type = notification_type
+        instance.notification_type = notification_type
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -290,7 +289,7 @@ class GetNotificationSubscriberListV2(Operation):
         return {
             "app": True,
             "namespace": True,
-            "notificationType": False,
+            "notificationType": True,
         }
 
     # endregion static methods

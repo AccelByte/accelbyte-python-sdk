@@ -13,6 +13,10 @@ from ._get_admin_email_configuration import get_admin_email_configuration
 from ._update_admin_email_configuration import update_admin_email_configuration
 from ._save_admin_email_configuration import save_admin_email_configuration
 from ._delete_admin_email_configuration import delete_admin_email_configuration
+from ._admin_get_platform_account_closure_clients import (
+    admin_get_platform_account_closure_clients,
+)
+from ._admin_validate_xbox_bp_cert_file import admin_validate_xbox_bp_cert_file
 from ._admin_get_platform_account_closure_client import (
     admin_get_platform_account_closure_client,
 )
@@ -21,6 +25,9 @@ from ._admin_update_platform_account_closure_client import (
 )
 from ._admin_delete_platform_account_closure_client import (
     admin_delete_platform_account_closure_client,
+)
+from ._admin_mock_platform_account_closure_data import (
+    admin_mock_platform_account_closure_data,
 )
 from ._admin_get_list_personal_data_request import admin_get_list_personal_data_request
 from ._admin_get_services_configuration import admin_get_services_configuration
@@ -101,9 +108,12 @@ commands = [
     update_admin_email_configuration,
     save_admin_email_configuration,
     delete_admin_email_configuration,
+    admin_get_platform_account_closure_clients,
+    admin_validate_xbox_bp_cert_file,
     admin_get_platform_account_closure_client,
     admin_update_platform_account_closure_client,
     admin_delete_platform_account_closure_client,
+    admin_mock_platform_account_closure_data,
     admin_get_list_personal_data_request,
     admin_get_services_configuration,
     admin_update_services_configuration,

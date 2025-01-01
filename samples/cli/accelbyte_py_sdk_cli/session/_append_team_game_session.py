@@ -79,4 +79,4 @@ def append_team_game_session(
 
 
 append_team_game_session.operation_id = "appendTeamGameSession"
-append_team_game_session.is_deprecated = False
+append_team_game_session.is_deprecated = True

@@ -69,4 +69,4 @@ def get_all_mock_tickets(
 
 
 get_all_mock_tickets.operation_id = "GetAllMockTickets"
-get_all_mock_tickets.is_deprecated = False
+get_all_mock_tickets.is_deprecated = True

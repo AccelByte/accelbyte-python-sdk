@@ -88,6 +88,7 @@ from ..models import (
 )
 
 
+@deprecated
 @same_doc_as(AddUserIntoSessionInChannel)
 def add_user_into_session_in_channel(
     body: ModelsMatchAddUserIntoSessionRequest,
@@ -148,6 +149,7 @@ def add_user_into_session_in_channel(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AddUserIntoSessionInChannel)
 async def add_user_into_session_in_channel_async(
     body: ModelsMatchAddUserIntoSessionRequest,
@@ -210,6 +212,7 @@ async def add_user_into_session_in_channel_async(
     )
 
 
+@deprecated
 @same_doc_as(BulkGetSessions)
 def bulk_get_sessions(
     match_i_ds: Optional[str] = None,
@@ -262,6 +265,7 @@ def bulk_get_sessions(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(BulkGetSessions)
 async def bulk_get_sessions_async(
     match_i_ds: Optional[str] = None,
@@ -316,6 +320,7 @@ async def bulk_get_sessions_async(
     )
 
 
+@deprecated
 @same_doc_as(CreateChannelHandler)
 def create_channel_handler(
     body: ModelsChannelRequest,
@@ -381,6 +386,7 @@ def create_channel_handler(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(CreateChannelHandler)
 async def create_channel_handler_async(
     body: ModelsChannelRequest,
@@ -448,6 +454,7 @@ async def create_channel_handler_async(
     )
 
 
+@deprecated
 @same_doc_as(DeleteChannelHandler)
 def delete_channel_handler(
     channel: str,
@@ -499,6 +506,7 @@ def delete_channel_handler(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DeleteChannelHandler)
 async def delete_channel_handler_async(
     channel: str,
@@ -552,6 +560,7 @@ async def delete_channel_handler_async(
     )
 
 
+@deprecated
 @same_doc_as(DeleteSessionInChannel)
 def delete_session_in_channel(
     channel_name: str,
@@ -608,6 +617,7 @@ def delete_session_in_channel(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DeleteSessionInChannel)
 async def delete_session_in_channel_async(
     channel_name: str,
@@ -666,6 +676,7 @@ async def delete_session_in_channel_async(
     )
 
 
+@deprecated
 @same_doc_as(DeleteUserFromSessionInChannel)
 def delete_user_from_session_in_channel(
     channel_name: str,
@@ -728,6 +739,7 @@ def delete_user_from_session_in_channel(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DeleteUserFromSessionInChannel)
 async def delete_user_from_session_in_channel_async(
     channel_name: str,
@@ -792,6 +804,7 @@ async def delete_user_from_session_in_channel_async(
     )
 
 
+@deprecated
 @same_doc_as(DequeueSessionHandler)
 def dequeue_session_handler(
     body: ModelsDequeueRequest,
@@ -847,6 +860,7 @@ def dequeue_session_handler(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DequeueSessionHandler)
 async def dequeue_session_handler_async(
     body: ModelsDequeueRequest,
@@ -904,6 +918,7 @@ async def dequeue_session_handler_async(
     )
 
 
+@deprecated
 @same_doc_as(ExportChannels)
 def export_channels(
     namespace: Optional[str] = None,
@@ -950,6 +965,7 @@ def export_channels(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(ExportChannels)
 async def export_channels_async(
     namespace: Optional[str] = None,
@@ -998,6 +1014,7 @@ async def export_channels_async(
     )
 
 
+@deprecated
 @same_doc_as(GetAllChannelsHandler)
 def get_all_channels_handler(
     limit: Optional[int] = None,
@@ -1054,6 +1071,7 @@ def get_all_channels_handler(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetAllChannelsHandler)
 async def get_all_channels_handler_async(
     limit: Optional[int] = None,
@@ -1112,6 +1130,7 @@ async def get_all_channels_handler_async(
     )
 
 
+@deprecated
 @same_doc_as(GetAllPartyInAllChannel)
 def get_all_party_in_all_channel(
     namespace: Optional[str] = None,
@@ -1160,6 +1179,7 @@ def get_all_party_in_all_channel(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetAllPartyInAllChannel)
 async def get_all_party_in_all_channel_async(
     namespace: Optional[str] = None,
@@ -1210,6 +1230,7 @@ async def get_all_party_in_all_channel_async(
     )
 
 
+@deprecated
 @same_doc_as(GetAllPartyInChannel)
 def get_all_party_in_channel(
     channel_name: str,
@@ -1262,6 +1283,7 @@ def get_all_party_in_channel(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetAllPartyInChannel)
 async def get_all_party_in_channel_async(
     channel_name: str,
@@ -1316,6 +1338,7 @@ async def get_all_party_in_channel_async(
     )
 
 
+@deprecated
 @same_doc_as(GetAllSessionsInChannel)
 def get_all_sessions_in_channel(
     channel_name: str,
@@ -1370,6 +1393,7 @@ def get_all_sessions_in_channel(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetAllSessionsInChannel)
 async def get_all_sessions_in_channel_async(
     channel_name: str,
@@ -1426,6 +1450,7 @@ async def get_all_sessions_in_channel_async(
     )
 
 
+@deprecated
 @same_doc_as(GetMatchPoolMetric)
 def get_match_pool_metric(
     channel_name: str,
@@ -1478,6 +1503,7 @@ def get_match_pool_metric(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetMatchPoolMetric)
 async def get_match_pool_metric_async(
     channel_name: str,
@@ -1688,6 +1714,7 @@ async def get_session_history_detailed_async(
     )
 
 
+@deprecated
 @same_doc_as(GetSingleMatchmakingChannel)
 def get_single_matchmaking_channel(
     channel_name: str,
@@ -1742,6 +1769,7 @@ def get_single_matchmaking_channel(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetSingleMatchmakingChannel)
 async def get_single_matchmaking_channel_async(
     channel_name: str,
@@ -1798,6 +1826,7 @@ async def get_single_matchmaking_channel_async(
     )
 
 
+@deprecated
 @same_doc_as(GetStatData)
 def get_stat_data(
     channel_name: str,
@@ -1851,6 +1880,7 @@ def get_stat_data(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetStatData)
 async def get_stat_data_async(
     channel_name: str,
@@ -1906,6 +1936,7 @@ async def get_stat_data_async(
     )
 
 
+@deprecated
 @same_doc_as(ImportChannels)
 def import_channels(
     file: Optional[Any] = None,
@@ -1965,6 +1996,7 @@ def import_channels(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(ImportChannels)
 async def import_channels_async(
     file: Optional[Any] = None,
@@ -2026,6 +2058,7 @@ async def import_channels_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetAllMatchmakingChannel)
 def public_get_all_matchmaking_channel(
     namespace: Optional[str] = None,
@@ -2074,6 +2107,7 @@ def public_get_all_matchmaking_channel(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetAllMatchmakingChannel)
 async def public_get_all_matchmaking_channel_async(
     namespace: Optional[str] = None,
@@ -2124,6 +2158,7 @@ async def public_get_all_matchmaking_channel_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetSingleMatchmakingChannel)
 def public_get_single_matchmaking_channel(
     channel_name: str,
@@ -2176,6 +2211,7 @@ def public_get_single_matchmaking_channel(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetSingleMatchmakingChannel)
 async def public_get_single_matchmaking_channel_async(
     channel_name: str,
@@ -2230,6 +2266,7 @@ async def public_get_single_matchmaking_channel_async(
     )
 
 
+@deprecated
 @same_doc_as(QuerySessionHandler)
 def query_session_handler(
     match_id: str,
@@ -2288,6 +2325,7 @@ def query_session_handler(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(QuerySessionHandler)
 async def query_session_handler_async(
     match_id: str,
@@ -2348,6 +2386,7 @@ async def query_session_handler_async(
     )
 
 
+@deprecated
 @same_doc_as(QueueSessionHandler)
 def queue_session_handler(
     body: ModelsMatchmakingResult,
@@ -2408,6 +2447,7 @@ def queue_session_handler(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(QueueSessionHandler)
 async def queue_session_handler_async(
     body: ModelsMatchmakingResult,
@@ -2470,6 +2510,7 @@ async def queue_session_handler_async(
     )
 
 
+@deprecated
 @same_doc_as(Rebalance)
 def rebalance(
     body: ModelsRebalanceRequest,
@@ -2526,6 +2567,7 @@ def rebalance(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(Rebalance)
 async def rebalance_async(
     body: ModelsRebalanceRequest,
@@ -2980,6 +3022,7 @@ async def search_sessions_v2_async(
     )
 
 
+@deprecated
 @same_doc_as(StoreMatchResults)
 def store_match_results(
     body: ModelsMatchResultRequest,
@@ -3032,6 +3075,7 @@ def store_match_results(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(StoreMatchResults)
 async def store_match_results_async(
     body: ModelsMatchResultRequest,
@@ -3086,6 +3130,7 @@ async def store_match_results_async(
     )
 
 
+@deprecated
 @same_doc_as(UpdateMatchmakingChannel)
 def update_matchmaking_channel(
     body: ModelsUpdateChannelRequest,
@@ -3144,6 +3189,7 @@ def update_matchmaking_channel(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UpdateMatchmakingChannel)
 async def update_matchmaking_channel_async(
     body: ModelsUpdateChannelRequest,

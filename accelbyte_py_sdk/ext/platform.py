@@ -4541,6 +4541,7 @@ def create_revocation_request_example() -> RevocationRequest:
     instance = RevocationRequest()
     instance.meta = {randomize(): randomize()}
     instance.reason = randomize()
+    instance.request_id = randomize()
     instance.revoke_entries = [create_revoke_entry_example()]
     instance.source = randomize()
     instance.transaction_id = randomize("uid")
@@ -4553,7 +4554,9 @@ def create_revocation_result_example() -> RevocationResult:
     instance.status = randomize()
     instance.credit_revocations = [create_credit_revocation_example()]
     instance.entitlement_revocations = [create_entitlement_revocation_example()]
+    instance.is_replayed = randomize("bool")
     instance.item_revocations = [create_item_revocation_example()]
+    instance.request_id = randomize()
     return instance
 
 

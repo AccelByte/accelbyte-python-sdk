@@ -37,7 +37,7 @@ from ...models import ResponseError
 class AdminGetUserProgression(Operation):
     """List User's Progressions (adminGetUserProgression)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/progress/{challengeCode}

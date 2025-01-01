@@ -212,7 +212,9 @@ class RolesCache(Timer):
         pass
 
     def cache_role(self, role_id: str) -> Any:
-        role, error = iam_service.admin_get_role_namespace_permission_v3(role_id=role_id, sdk=self.sdk)
+        role, error = iam_service.admin_get_role_namespace_permission_v3(
+            role_id=role_id, sdk=self.sdk
+        )
         if error:
             return error
         with self._lock:

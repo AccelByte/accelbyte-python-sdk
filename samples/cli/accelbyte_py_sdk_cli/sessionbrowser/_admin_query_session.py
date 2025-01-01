@@ -96,4 +96,4 @@ def admin_query_session(
 
 
 admin_query_session.operation_id = "AdminQuerySession"
-admin_query_session.is_deprecated = False
+admin_query_session.is_deprecated = True

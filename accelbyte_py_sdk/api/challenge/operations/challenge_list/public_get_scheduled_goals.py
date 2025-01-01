@@ -37,7 +37,7 @@ from ...models import ResponseError
 class PublicGetScheduledGoals(Operation):
     """List Goals of a Challenge (publicGetScheduledGoals)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/goals

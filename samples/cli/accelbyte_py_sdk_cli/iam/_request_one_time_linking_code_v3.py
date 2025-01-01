@@ -38,11 +38,15 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelOneTimeLinkingCodeResponse
 
 @click.command()
 @click.argument("platform_id", type=str)
+@click.option("--redirect_uri", "redirect_uri", type=str)
+@click.option("--state", "state", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def request_one_time_linking_code_v3(
     platform_id: str,
+    redirect_uri: Optional[str] = None,
+    state: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
     doc: Optional[bool] = None,
@@ -57,6 +61,8 @@ def request_one_time_linking_code_v3(
         login_as_internal(login_as)
     result, error = request_one_time_linking_code_v3_internal(
         platform_id=platform_id,
+        redirect_uri=redirect_uri,
+        state=state,
         x_additional_headers=x_additional_headers,
     )
     if error:

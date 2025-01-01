@@ -35,8 +35,8 @@ from ...models import ResponseError
 class AdminDeleteTiedChallenge(Operation):
     """Delete Tied Challenge (adminDeleteTiedChallenge)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
-      * This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
+    - This endpoint will delete the combination of related data: CHALLENGES, GOALS, SCHEDULES, PLAYER PROGRESSIONS
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/tied

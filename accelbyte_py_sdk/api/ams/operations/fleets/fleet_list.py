@@ -28,9 +28,20 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ApiFleetListResponse
 from ...models import ResponseErrorResponse
+
+
+class DescEnum(StrEnum):
+    ASC = "asc"
+    DESC = "desc"
+
+
+class SortByEnum(StrEnum):
+    ACTIVE = "active"
+    NAME = "name"
 
 
 class FleetList(Operation):
@@ -55,9 +66,17 @@ class FleetList(Operation):
 
         active: (active) OPTIONAL bool in query
 
+        count: (count) OPTIONAL int in query
+
+        desc: (desc) OPTIONAL Union[str, DescEnum] in query
+
         name: (name) OPTIONAL str in query
 
+        offset: (offset) OPTIONAL int in query
+
         region: (region) OPTIONAL str in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
     Responses:
         200: OK - ApiFleetListResponse (success)
@@ -76,8 +95,12 @@ class FleetList(Operation):
 
     namespace: str  # REQUIRED in [path]
     active: bool  # OPTIONAL in [query]
+    count: int  # OPTIONAL in [query]
+    desc: Union[str, DescEnum]  # OPTIONAL in [query]
     name: str  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
     region: str  # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -131,10 +154,18 @@ class FleetList(Operation):
         result = {}
         if hasattr(self, "active"):
             result["active"] = self.active
+        if hasattr(self, "count"):
+            result["count"] = self.count
+        if hasattr(self, "desc"):
+            result["desc"] = self.desc
         if hasattr(self, "name"):
             result["name"] = self.name
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         if hasattr(self, "region"):
             result["region"] = self.region
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
         return result
 
     # endregion get_x_params methods
@@ -153,12 +184,28 @@ class FleetList(Operation):
         self.active = value
         return self
 
+    def with_count(self, value: int) -> FleetList:
+        self.count = value
+        return self
+
+    def with_desc(self, value: Union[str, DescEnum]) -> FleetList:
+        self.desc = value
+        return self
+
     def with_name(self, value: str) -> FleetList:
         self.name = value
         return self
 
+    def with_offset(self, value: int) -> FleetList:
+        self.offset = value
+        return self
+
     def with_region(self, value: str) -> FleetList:
         self.region = value
+        return self
+
+    def with_sort_by(self, value: Union[str, SortByEnum]) -> FleetList:
+        self.sort_by = value
         return self
 
     # endregion with_x methods
@@ -175,14 +222,30 @@ class FleetList(Operation):
             result["active"] = bool(self.active)
         elif include_empty:
             result["active"] = False
+        if hasattr(self, "count") and self.count:
+            result["count"] = int(self.count)
+        elif include_empty:
+            result["count"] = 0
+        if hasattr(self, "desc") and self.desc:
+            result["desc"] = str(self.desc)
+        elif include_empty:
+            result["desc"] = Union[str, DescEnum]()
         if hasattr(self, "name") and self.name:
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         if hasattr(self, "region") and self.region:
             result["region"] = str(self.region)
         elif include_empty:
             result["region"] = ""
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = Union[str, SortByEnum]()
         return result
 
     # endregion to methods
@@ -233,18 +296,30 @@ class FleetList(Operation):
         cls,
         namespace: str,
         active: Optional[bool] = None,
+        count: Optional[int] = None,
+        desc: Optional[Union[str, DescEnum]] = None,
         name: Optional[str] = None,
+        offset: Optional[int] = None,
         region: Optional[str] = None,
+        sort_by: Optional[Union[str, SortByEnum]] = None,
         **kwargs,
     ) -> FleetList:
         instance = cls()
         instance.namespace = namespace
         if active is not None:
             instance.active = active
+        if count is not None:
+            instance.count = count
+        if desc is not None:
+            instance.desc = desc
         if name is not None:
             instance.name = name
+        if offset is not None:
+            instance.offset = offset
         if region is not None:
             instance.region = region
+        if sort_by is not None:
+            instance.sort_by = sort_by
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -260,14 +335,30 @@ class FleetList(Operation):
             instance.active = bool(dict_["active"])
         elif include_empty:
             instance.active = False
+        if "count" in dict_ and dict_["count"] is not None:
+            instance.count = int(dict_["count"])
+        elif include_empty:
+            instance.count = 0
+        if "desc" in dict_ and dict_["desc"] is not None:
+            instance.desc = str(dict_["desc"])
+        elif include_empty:
+            instance.desc = Union[str, DescEnum]()
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         if "region" in dict_ and dict_["region"] is not None:
             instance.region = str(dict_["region"])
         elif include_empty:
             instance.region = ""
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = Union[str, SortByEnum]()
         return instance
 
     @staticmethod
@@ -275,8 +366,12 @@ class FleetList(Operation):
         return {
             "namespace": "namespace",
             "active": "active",
+            "count": "count",
+            "desc": "desc",
             "name": "name",
+            "offset": "offset",
             "region": "region",
+            "sortBy": "sort_by",
         }
 
     @staticmethod
@@ -284,8 +379,19 @@ class FleetList(Operation):
         return {
             "namespace": True,
             "active": False,
+            "count": False,
+            "desc": False,
             "name": False,
+            "offset": False,
             "region": False,
+            "sortBy": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "desc": ["asc", "desc"],  # in query
+            "sortBy": ["active", "name"],  # in query
         }
 
     # endregion static methods

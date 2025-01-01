@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import LogAppMessageDeclaration
@@ -39,6 +40,7 @@ from ..operations.lobby_operations import AdminUpdatePartyAttributesV1
 from ..operations.lobby_operations import PublicGetMessages
 
 
+@deprecated
 @same_doc_as(AdminJoinPartyV1)
 def admin_join_party_v1(
     party_id: str,
@@ -97,6 +99,7 @@ def admin_join_party_v1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminJoinPartyV1)
 async def admin_join_party_v1_async(
     party_id: str,
@@ -157,6 +160,7 @@ async def admin_join_party_v1_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminUpdatePartyAttributesV1)
 def admin_update_party_attributes_v1(
     body: ModelsPartyPUTCustomAttributesRequest,
@@ -215,6 +219,7 @@ def admin_update_party_attributes_v1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminUpdatePartyAttributesV1)
 async def admin_update_party_attributes_v1_async(
     body: ModelsPartyPUTCustomAttributesRequest,

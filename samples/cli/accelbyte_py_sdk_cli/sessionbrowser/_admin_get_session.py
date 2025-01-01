@@ -69,4 +69,4 @@ def admin_get_session(
 
 
 admin_get_session.operation_id = "AdminGetSession"
-admin_get_session.is_deprecated = False
+admin_get_session.is_deprecated = True

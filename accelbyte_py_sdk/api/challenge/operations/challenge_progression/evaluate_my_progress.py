@@ -36,7 +36,7 @@ from ...models import ResponseError
 class EvaluateMyProgress(Operation):
     """Evaluate User's Challenge Progressions (EvaluateMyProgress)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate

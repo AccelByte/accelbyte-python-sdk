@@ -78,4 +78,4 @@ def get_active_custom_game_sessions(
 
 
 get_active_custom_game_sessions.operation_id = "GetActiveCustomGameSessions"
-get_active_custom_game_sessions.is_deprecated = False
+get_active_custom_game_sessions.is_deprecated = True

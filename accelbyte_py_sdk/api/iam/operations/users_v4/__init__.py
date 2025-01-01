@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.24.2"
+__version__ = "7.25.3"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -83,3 +83,4 @@ from .public_upgrade_headless_966239 import PublicUpgradeHeadlessAccountV4
 from .public_upgrade_headless_a902b1 import (
     PublicUpgradeHeadlessAccountWithVerificationCodeV4,
 )
+from .public_upgrade_headless_3ac810 import PublicUpgradeHeadlessWithCodeV4Forward

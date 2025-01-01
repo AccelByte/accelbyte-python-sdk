@@ -69,4 +69,4 @@ def get_session_by_user_i_ds(
 
 
 get_session_by_user_i_ds.operation_id = "GetSessionByUserIDs"
-get_session_by_user_i_ds.is_deprecated = False
+get_session_by_user_i_ds.is_deprecated = True

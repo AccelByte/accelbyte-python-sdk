@@ -41,7 +41,9 @@ class AdminGetUserPlatformAccountClosureHistories(Operation):
 
     ------
     Supported platforms:
-    * psn
+    - psn
+    - steamnetwork
+    - xbox
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/platforms/closure/histories

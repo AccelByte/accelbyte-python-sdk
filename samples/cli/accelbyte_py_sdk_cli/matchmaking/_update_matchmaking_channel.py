@@ -79,4 +79,4 @@ def update_matchmaking_channel(
 
 
 update_matchmaking_channel.operation_id = "UpdateMatchmakingChannel"
-update_matchmaking_channel.is_deprecated = False
+update_matchmaking_channel.is_deprecated = True

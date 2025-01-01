@@ -29,7 +29,7 @@ class InventoryTestCase(IntegrationTestCase):
     rid = generate_id(4)
     inventory_config_code = f"python-sdk-code-{rid}"
     inventory_config_id: Optional[str] = None
-    uid: str = str(randint(0, 1_000_000)).rjust(7, '0')
+    uid: str = str(randint(0, 1_000_000)).rjust(7, "0")
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
     unique_display_name = f"testPythonServerSDKUser_{uid}"

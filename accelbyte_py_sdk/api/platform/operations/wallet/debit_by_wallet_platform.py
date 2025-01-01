@@ -36,9 +36,9 @@ from ...models import ValidationErrorEntity
 
 
 class DebitByWalletPlatform(Operation):
-    """Pay with user wallet by currency code and client platform (debitByWalletPlatform)
+    """Debit user wallet by currency code and client platform (debitByWalletPlatform)
 
-    Pay with user wallet by currency code and client platform.
+    Debit user wallet by currency code and client platform.
     Other detail info:
 
 

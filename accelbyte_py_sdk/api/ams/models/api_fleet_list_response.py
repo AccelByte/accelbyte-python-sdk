@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.api_fleet_list_item_response import ApiFleetListItemResponse
+from ..models.pagination_pagination_info import PaginationPaginationInfo
 
 
 class ApiFleetListResponse(Model):
@@ -35,11 +36,14 @@ class ApiFleetListResponse(Model):
 
     Properties:
         fleets: (fleets) REQUIRED List[ApiFleetListItemResponse]
+
+        paging: (paging) REQUIRED PaginationPaginationInfo
     """
 
     # region fields
 
     fleets: List[ApiFleetListItemResponse]  # REQUIRED
+    paging: PaginationPaginationInfo  # REQUIRED
 
     # endregion fields
 
@@ -49,6 +53,10 @@ class ApiFleetListResponse(Model):
         self, value: List[ApiFleetListItemResponse]
     ) -> ApiFleetListResponse:
         self.fleets = value
+        return self
+
+    def with_paging(self, value: PaginationPaginationInfo) -> ApiFleetListResponse:
+        self.paging = value
         return self
 
     # endregion with_x methods
@@ -63,6 +71,10 @@ class ApiFleetListResponse(Model):
             ]
         elif include_empty:
             result["fleets"] = []
+        if hasattr(self, "paging"):
+            result["paging"] = self.paging.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["paging"] = PaginationPaginationInfo()
         return result
 
     # endregion to methods
@@ -71,10 +83,14 @@ class ApiFleetListResponse(Model):
 
     @classmethod
     def create(
-        cls, fleets: List[ApiFleetListItemResponse], **kwargs
+        cls,
+        fleets: List[ApiFleetListItemResponse],
+        paging: PaginationPaginationInfo,
+        **kwargs,
     ) -> ApiFleetListResponse:
         instance = cls()
         instance.fleets = fleets
+        instance.paging = paging
         return instance
 
     @classmethod
@@ -93,6 +109,12 @@ class ApiFleetListResponse(Model):
             ]
         elif include_empty:
             instance.fleets = []
+        if "paging" in dict_ and dict_["paging"] is not None:
+            instance.paging = PaginationPaginationInfo.create_from_dict(
+                dict_["paging"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.paging = PaginationPaginationInfo()
         return instance
 
     @classmethod
@@ -137,12 +159,14 @@ class ApiFleetListResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "fleets": "fleets",
+            "paging": "paging",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "fleets": True,
+            "paging": True,
         }
 
     # endregion static methods

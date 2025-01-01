@@ -641,9 +641,9 @@ def debit_by_wallet_platform(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Pay with user wallet by currency code and client platform (debitByWalletPlatform)
+    """Debit user wallet by currency code and client platform (debitByWalletPlatform)
 
-    Pay with user wallet by currency code and client platform.
+    Debit user wallet by currency code and client platform.
     Other detail info:
 
 
@@ -715,9 +715,9 @@ async def debit_by_wallet_platform_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Pay with user wallet by currency code and client platform (debitByWalletPlatform)
+    """Debit user wallet by currency code and client platform (debitByWalletPlatform)
 
-    Pay with user wallet by currency code and client platform.
+    Debit user wallet by currency code and client platform.
     Other detail info:
 
 

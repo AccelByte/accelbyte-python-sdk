@@ -79,4 +79,4 @@ def update_session(
 
 
 update_session.operation_id = "UpdateSession"
-update_session.is_deprecated = False
+update_session.is_deprecated = True

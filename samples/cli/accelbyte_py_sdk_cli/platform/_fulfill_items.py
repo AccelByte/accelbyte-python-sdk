@@ -80,4 +80,4 @@ def fulfill_items(
 
 
 fulfill_items.operation_id = "fulfillItems"
-fulfill_items.is_deprecated = False
+fulfill_items.is_deprecated = True

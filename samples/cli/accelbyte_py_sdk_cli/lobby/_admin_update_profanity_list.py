@@ -78,4 +78,4 @@ def admin_update_profanity_list(
 
 
 admin_update_profanity_list.operation_id = "adminUpdateProfanityList"
-admin_update_profanity_list.is_deprecated = False
+admin_update_profanity_list.is_deprecated = True

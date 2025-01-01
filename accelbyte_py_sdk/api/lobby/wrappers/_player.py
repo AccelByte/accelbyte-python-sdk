@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsBlockPlayerRequest
@@ -278,6 +279,7 @@ async def admin_bulk_unblock_players_v1_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetAllPlayerSessionAttribute)
 def admin_get_all_player_session_attribute(
     user_id: str,
@@ -326,6 +328,7 @@ def admin_get_all_player_session_attribute(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetAllPlayerSessionAttribute)
 async def admin_get_all_player_session_attribute_async(
     user_id: str,
@@ -792,6 +795,7 @@ async def admin_get_player_blocked_players_v1_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetPlayerSessionAttribute)
 def admin_get_player_session_attribute(
     attribute: str,
@@ -848,6 +852,7 @@ def admin_get_player_session_attribute(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetPlayerSessionAttribute)
 async def admin_get_player_session_attribute_async(
     attribute: str,
@@ -906,6 +911,7 @@ async def admin_get_player_session_attribute_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminSetPlayerSessionAttribute)
 def admin_set_player_session_attribute(
     body: ModelsSetPlayerSessionAttributeRequest,
@@ -962,6 +968,7 @@ def admin_set_player_session_attribute(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminSetPlayerSessionAttribute)
 async def admin_set_player_session_attribute_async(
     body: ModelsSetPlayerSessionAttributeRequest,

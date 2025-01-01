@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsActiveCustomGameResponse
@@ -71,6 +72,7 @@ from ..operations.session import UpdateSettings
 from ..operations.session import UserQuerySession
 
 
+@deprecated
 @same_doc_as(AddPlayerToSession)
 def add_player_to_session(
     body: ModelsAddPlayerRequest,
@@ -123,6 +125,7 @@ def add_player_to_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AddPlayerToSession)
 async def add_player_to_session_async(
     body: ModelsAddPlayerRequest,
@@ -177,6 +180,7 @@ async def add_player_to_session_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminDeleteSession)
 def admin_delete_session(
     session_id: str,
@@ -225,6 +229,7 @@ def admin_delete_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminDeleteSession)
 async def admin_delete_session_async(
     session_id: str,
@@ -275,6 +280,7 @@ async def admin_delete_session_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetSession)
 def admin_get_session(
     session_id: str,
@@ -321,6 +327,7 @@ def admin_get_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetSession)
 async def admin_get_session_async(
     session_id: str,
@@ -369,6 +376,7 @@ async def admin_get_session_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminQuerySession)
 def admin_query_session(
     session_type: str,
@@ -451,6 +459,7 @@ def admin_query_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminQuerySession)
 async def admin_query_session_async(
     session_type: str,
@@ -535,6 +544,7 @@ async def admin_query_session_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminSearchSessionsV2)
 def admin_search_sessions_v2(
     limit: int,
@@ -618,6 +628,7 @@ def admin_search_sessions_v2(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminSearchSessionsV2)
 async def admin_search_sessions_v2_async(
     limit: int,
@@ -703,6 +714,7 @@ async def admin_search_sessions_v2_async(
     )
 
 
+@deprecated
 @same_doc_as(CreateSession)
 def create_session(
     body: ModelsCreateSessionRequest,
@@ -753,6 +765,7 @@ def create_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(CreateSession)
 async def create_session_async(
     body: ModelsCreateSessionRequest,
@@ -805,6 +818,7 @@ async def create_session_async(
     )
 
 
+@deprecated
 @same_doc_as(DeleteSession)
 def delete_session(
     session_id: str,
@@ -853,6 +867,7 @@ def delete_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DeleteSession)
 async def delete_session_async(
     session_id: str,
@@ -903,6 +918,7 @@ async def delete_session_async(
     )
 
 
+@deprecated
 @same_doc_as(DeleteSessionLocalDS)
 def delete_session_local_ds(
     session_id: str,
@@ -951,6 +967,7 @@ def delete_session_local_ds(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(DeleteSessionLocalDS)
 async def delete_session_local_ds_async(
     session_id: str,
@@ -1001,6 +1018,7 @@ async def delete_session_local_ds_async(
     )
 
 
+@deprecated
 @same_doc_as(GetActiveCustomGameSessions)
 def get_active_custom_game_sessions(
     limit: Optional[int] = None,
@@ -1059,6 +1077,7 @@ def get_active_custom_game_sessions(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetActiveCustomGameSessions)
 async def get_active_custom_game_sessions_async(
     limit: Optional[int] = None,
@@ -1119,6 +1138,7 @@ async def get_active_custom_game_sessions_async(
     )
 
 
+@deprecated
 @same_doc_as(GetActiveMatchmakingGameSessions)
 def get_active_matchmaking_game_sessions(
     limit: Optional[int] = None,
@@ -1181,6 +1201,7 @@ def get_active_matchmaking_game_sessions(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetActiveMatchmakingGameSessions)
 async def get_active_matchmaking_game_sessions_async(
     limit: Optional[int] = None,
@@ -1245,6 +1266,7 @@ async def get_active_matchmaking_game_sessions_async(
     )
 
 
+@deprecated
 @same_doc_as(GetRecentPlayer)
 def get_recent_player(
     user_id: str,
@@ -1291,6 +1313,7 @@ def get_recent_player(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetRecentPlayer)
 async def get_recent_player_async(
     user_id: str,
@@ -1339,6 +1362,7 @@ async def get_recent_player_async(
     )
 
 
+@deprecated
 @same_doc_as(GetSession)
 def get_session(
     session_id: str,
@@ -1385,6 +1409,7 @@ def get_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetSession)
 async def get_session_async(
     session_id: str,
@@ -1433,6 +1458,7 @@ async def get_session_async(
     )
 
 
+@deprecated
 @same_doc_as(GetSessionByUserIDs)
 def get_session_by_user_i_ds(
     user_ids: str,
@@ -1479,6 +1505,7 @@ def get_session_by_user_i_ds(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetSessionByUserIDs)
 async def get_session_by_user_i_ds_async(
     user_ids: str,
@@ -1527,6 +1554,7 @@ async def get_session_by_user_i_ds_async(
     )
 
 
+@deprecated
 @same_doc_as(GetSessionHistoryDetailed)
 def get_session_history_detailed(
     match_id: str,
@@ -1579,6 +1607,7 @@ def get_session_history_detailed(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetSessionHistoryDetailed)
 async def get_session_history_detailed_async(
     match_id: str,
@@ -1633,6 +1662,7 @@ async def get_session_history_detailed_async(
     )
 
 
+@deprecated
 @same_doc_as(GetTotalActiveSession)
 def get_total_active_session(
     session_type: Optional[str] = None,
@@ -1679,6 +1709,7 @@ def get_total_active_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetTotalActiveSession)
 async def get_total_active_session_async(
     session_type: Optional[str] = None,
@@ -1727,6 +1758,7 @@ async def get_total_active_session_async(
     )
 
 
+@deprecated
 @same_doc_as(JoinSession)
 def join_session(
     body: ModelsJoinGameSessionRequest,
@@ -1781,6 +1813,7 @@ def join_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(JoinSession)
 async def join_session_async(
     body: ModelsJoinGameSessionRequest,
@@ -1837,6 +1870,7 @@ async def join_session_async(
     )
 
 
+@deprecated
 @same_doc_as(RemovePlayerFromSession)
 def remove_player_from_session(
     session_id: str,
@@ -1889,6 +1923,7 @@ def remove_player_from_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(RemovePlayerFromSession)
 async def remove_player_from_session_async(
     session_id: str,
@@ -1943,6 +1978,7 @@ async def remove_player_from_session_async(
     )
 
 
+@deprecated
 @same_doc_as(UpdateSession)
 def update_session(
     body: ModelsUpdateSessionRequest,
@@ -1995,6 +2031,7 @@ def update_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UpdateSession)
 async def update_session_async(
     body: ModelsUpdateSessionRequest,
@@ -2049,6 +2086,7 @@ async def update_session_async(
     )
 
 
+@deprecated
 @same_doc_as(UpdateSettings)
 def update_settings(
     body: ModelsUpdateSettingsRequest,
@@ -2101,6 +2139,7 @@ def update_settings(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UpdateSettings)
 async def update_settings_async(
     body: ModelsUpdateSettingsRequest,
@@ -2155,6 +2194,7 @@ async def update_settings_async(
     )
 
 
+@deprecated
 @same_doc_as(UserQuerySession)
 def user_query_session(
     session_type: str,
@@ -2237,6 +2277,7 @@ def user_query_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UserQuerySession)
 async def user_query_session_async(
     session_type: str,

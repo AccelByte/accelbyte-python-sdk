@@ -37,7 +37,8 @@ from ...models import ResponseError
 class AdminGetActiveChallenges(Operation):
     """List User's Active Challenges (adminGetActiveChallenges)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    The endpoint provides you an access to list of currently active challenges in which the player is participating
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/users/{userId}

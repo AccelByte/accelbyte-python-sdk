@@ -96,4 +96,4 @@ def admin_search_sessions_v2(
 
 
 admin_search_sessions_v2.operation_id = "AdminSearchSessionsV2"
-admin_search_sessions_v2.is_deprecated = False
+admin_search_sessions_v2.is_deprecated = True

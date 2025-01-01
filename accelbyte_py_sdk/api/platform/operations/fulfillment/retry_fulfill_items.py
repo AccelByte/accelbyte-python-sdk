@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ErrorEntity
 from ...models import FulfillmentV2Result
@@ -36,10 +37,18 @@ from ...models import FulfillmentV2Result
 class RetryFulfillItems(Operation):
     """Retry fulfill items by transactionId (retryFulfillItems)
 
+    ### The endpoint is going to be deprecated
+
     [Not supported yet in AGS Shared Cloud] Retry fulfill items by transactionId without sending the original payload.
     Other detail info:
 
       * Returns : fulfillment v2 result, storeId field can be ignored.
+
+
+
+    ### Endpoint migration guide
+
+      *  Substitute endpoint: /v3/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/retry [PUT]
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/retry

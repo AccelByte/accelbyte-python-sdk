@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ErrorEntity
@@ -37,6 +38,7 @@ from ..operations.payment_callback_config import GetPaymentCallbackConfig
 from ..operations.payment_callback_config import UpdatePaymentCallbackConfig
 
 
+@deprecated
 @same_doc_as(GetPaymentCallbackConfig)
 def get_payment_callback_config(
     namespace: Optional[str] = None,
@@ -44,6 +46,8 @@ def get_payment_callback_config(
     **kwargs
 ):
     """Get payment callback configuration (getPaymentCallbackConfig)
+
+    ### The endpoint is going to be deprecated
 
     [Not supported yet in AGS Shared Cloud] Get payment callback configuration.
     Other detail info:
@@ -80,6 +84,7 @@ def get_payment_callback_config(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetPaymentCallbackConfig)
 async def get_payment_callback_config_async(
     namespace: Optional[str] = None,
@@ -87,6 +92,8 @@ async def get_payment_callback_config_async(
     **kwargs
 ):
     """Get payment callback configuration (getPaymentCallbackConfig)
+
+    ### The endpoint is going to be deprecated
 
     [Not supported yet in AGS Shared Cloud] Get payment callback configuration.
     Other detail info:
@@ -125,6 +132,7 @@ async def get_payment_callback_config_async(
     )
 
 
+@deprecated
 @same_doc_as(UpdatePaymentCallbackConfig)
 def update_payment_callback_config(
     body: PaymentCallbackConfigUpdate,
@@ -133,6 +141,8 @@ def update_payment_callback_config(
     **kwargs
 ):
     """Update payment callback configuration (updatePaymentCallbackConfig)
+
+    ### The endpoint is going to be deprecated
 
     [Not supported yet in AGS Shared Cloud] Update payment callback configuration.
     Other detail info:
@@ -170,6 +180,7 @@ def update_payment_callback_config(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(UpdatePaymentCallbackConfig)
 async def update_payment_callback_config_async(
     body: PaymentCallbackConfigUpdate,
@@ -178,6 +189,8 @@ async def update_payment_callback_config_async(
     **kwargs
 ):
     """Update payment callback configuration (updatePaymentCallbackConfig)
+
+    ### The endpoint is going to be deprecated
 
     [Not supported yet in AGS Shared Cloud] Update payment callback configuration.
     Other detail info:

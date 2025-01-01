@@ -78,4 +78,4 @@ def public_set_party_limit_v1(
 
 
 public_set_party_limit_v1.operation_id = "publicSetPartyLimitV1"
-public_set_party_limit_v1.is_deprecated = False
+public_set_party_limit_v1.is_deprecated = True

@@ -756,6 +756,7 @@ def create_models_game_session_example() -> ModelsGameSession:
 def create_models_game_session_team_example() -> ModelsGameSessionTeam:
     instance = ModelsGameSessionTeam()
     instance.parties = [create_models_party_members_example()]
+    instance.team_id = randomize()
     instance.user_i_ds = [randomize()]
     return instance
 
@@ -934,6 +935,7 @@ def create_models_session_configuration_example() -> ModelsSessionConfiguration:
 def create_models_team_example() -> ModelsTeam:
     instance = ModelsTeam()
     instance.parties = [create_models_party_team_example()]
+    instance.team_id = randomize()
     instance.user_i_ds = [randomize()]
     return instance
 

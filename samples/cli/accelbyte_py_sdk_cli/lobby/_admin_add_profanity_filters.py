@@ -78,4 +78,4 @@ def admin_add_profanity_filters(
 
 
 admin_add_profanity_filters.operation_id = "adminAddProfanityFilters"
-admin_add_profanity_filters.is_deprecated = False
+admin_add_profanity_filters.is_deprecated = True

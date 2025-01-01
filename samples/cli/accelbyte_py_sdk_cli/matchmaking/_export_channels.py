@@ -63,4 +63,4 @@ def export_channels(
 
 
 export_channels.operation_id = "ExportChannels"
-export_channels.is_deprecated = False
+export_channels.is_deprecated = True

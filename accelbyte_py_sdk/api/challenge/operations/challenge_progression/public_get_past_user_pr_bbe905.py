@@ -37,7 +37,7 @@ from ...models import ResponseError
 class PublicGetPastUserProgression(Operation):
     """List User's Progressions in the previous rotation. (publicGetPastUserProgression)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index}

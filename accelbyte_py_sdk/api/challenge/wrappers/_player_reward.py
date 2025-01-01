@@ -42,11 +42,17 @@ from ..operations.player_reward import AdminClaimUserRewards
 from ..operations.player_reward import AdminClaimUserRewardsByGoalCode
 from ..operations.player_reward import AdminClaimUsersRewards
 from ..operations.player_reward import AdminGetUserRewards
-from ..operations.player_reward import AdminGetUserRewardsStatusEnum
+from ..operations.player_reward import (
+    AdminGetUserRewardsSortByEnum,
+    AdminGetUserRewardsStatusEnum,
+)
 from ..operations.player_reward import PublicClaimUserRewards
 from ..operations.player_reward import PublicClaimUserRewardsByGoalCode
 from ..operations.player_reward import PublicGetUserRewards
-from ..operations.player_reward import PublicGetUserRewardsStatusEnum
+from ..operations.player_reward import (
+    PublicGetUserRewardsSortByEnum,
+    PublicGetUserRewardsStatusEnum,
+)
 from ..models import ModelUserRewardStatusEnum, ModelUserRewardTypeEnum
 
 
@@ -60,7 +66,7 @@ def admin_claim_user_rewards(
 ):
     """Claim rewards of a single user (adminClaimUserRewards)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards/claim
@@ -116,7 +122,7 @@ async def admin_claim_user_rewards_async(
 ):
     """Claim rewards of a single user (adminClaimUserRewards)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards/claim
@@ -175,7 +181,7 @@ def admin_claim_user_rewards_by_goal_code(
 ):
     """Claim rewards of a single user by goal code (adminClaimUserRewardsByGoalCode)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/challenges/{challengeCode}/rewards/claim
@@ -237,7 +243,7 @@ async def admin_claim_user_rewards_by_goal_code_async(
 ):
     """Claim rewards of a single user by goal code (adminClaimUserRewardsByGoalCode)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/challenges/{challengeCode}/rewards/claim
@@ -299,7 +305,7 @@ def admin_claim_users_rewards(
 ):
     """Claim  rewards of multiple users (adminClaimUsersRewards)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/rewards/claim
@@ -351,7 +357,7 @@ async def admin_claim_users_rewards_async(
 ):
     """Claim  rewards of multiple users (adminClaimUsersRewards)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/rewards/claim
@@ -399,9 +405,11 @@ async def admin_claim_users_rewards_async(
 @same_doc_as(AdminGetUserRewards)
 def admin_get_user_rewards(
     user_id: str,
+    challenge_code: Optional[str] = None,
+    goal_progression_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, AdminGetUserRewardsSortByEnum]] = None,
     status: Optional[Union[str, AdminGetUserRewardsStatusEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -409,7 +417,7 @@ def admin_get_user_rewards(
 ):
     """List User's Rewards (adminGetUserRewards)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards
@@ -428,11 +436,15 @@ def admin_get_user_rewards(
 
         user_id: (userId) REQUIRED str in path
 
+        challenge_code: (challengeCode) OPTIONAL str in query
+
+        goal_progression_id: (goalProgressionId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
@@ -451,6 +463,8 @@ def admin_get_user_rewards(
             return None, error
     request = AdminGetUserRewards.create(
         user_id=user_id,
+        challenge_code=challenge_code,
+        goal_progression_id=goal_progression_id,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
@@ -463,9 +477,11 @@ def admin_get_user_rewards(
 @same_doc_as(AdminGetUserRewards)
 async def admin_get_user_rewards_async(
     user_id: str,
+    challenge_code: Optional[str] = None,
+    goal_progression_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, AdminGetUserRewardsSortByEnum]] = None,
     status: Optional[Union[str, AdminGetUserRewardsStatusEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -473,7 +489,7 @@ async def admin_get_user_rewards_async(
 ):
     """List User's Rewards (adminGetUserRewards)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/rewards
@@ -492,11 +508,15 @@ async def admin_get_user_rewards_async(
 
         user_id: (userId) REQUIRED str in path
 
+        challenge_code: (challengeCode) OPTIONAL str in query
+
+        goal_progression_id: (goalProgressionId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
@@ -515,6 +535,8 @@ async def admin_get_user_rewards_async(
             return None, error
     request = AdminGetUserRewards.create(
         user_id=user_id,
+        challenge_code=challenge_code,
+        goal_progression_id=goal_progression_id,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
@@ -535,7 +557,7 @@ def public_claim_user_rewards(
 ):
     """Claim User's Rewards (publicClaimUserRewards)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards/claim
@@ -587,7 +609,7 @@ async def public_claim_user_rewards_async(
 ):
     """Claim User's Rewards (publicClaimUserRewards)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards/claim
@@ -642,7 +664,7 @@ def public_claim_user_rewards_by_goal_code(
 ):
     """Claim User's Rewards by Goal Code (publicClaimUserRewardsByGoalCode)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/challenges/{challengeCode}/rewards/claim
@@ -666,7 +688,7 @@ def public_claim_user_rewards_by_goal_code(
     Responses:
         200: OK - List[ModelUserReward] (OK)
 
-        400: Bad Request - IamErrorResponse (20001: unauthorized access)
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -700,7 +722,7 @@ async def public_claim_user_rewards_by_goal_code_async(
 ):
     """Claim User's Rewards by Goal Code (publicClaimUserRewardsByGoalCode)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/challenges/{challengeCode}/rewards/claim
@@ -724,7 +746,7 @@ async def public_claim_user_rewards_by_goal_code_async(
     Responses:
         200: OK - List[ModelUserReward] (OK)
 
-        400: Bad Request - IamErrorResponse (20001: unauthorized access)
+        400: Bad Request - IamErrorResponse (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -752,9 +774,11 @@ async def public_claim_user_rewards_by_goal_code_async(
 
 @same_doc_as(PublicGetUserRewards)
 def public_get_user_rewards(
+    challenge_code: Optional[str] = None,
+    goal_progression_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, PublicGetUserRewardsSortByEnum]] = None,
     status: Optional[Union[str, PublicGetUserRewardsStatusEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -762,7 +786,7 @@ def public_get_user_rewards(
 ):
     """List User's Rewards (publicGetUserRewards)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards
@@ -779,11 +803,15 @@ def public_get_user_rewards(
 
         namespace: (namespace) REQUIRED str in path
 
+        challenge_code: (challengeCode) OPTIONAL str in query
+
+        goal_progression_id: (goalProgressionId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
@@ -801,6 +829,8 @@ def public_get_user_rewards(
         if error:
             return None, error
     request = PublicGetUserRewards.create(
+        challenge_code=challenge_code,
+        goal_progression_id=goal_progression_id,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
@@ -812,9 +842,11 @@ def public_get_user_rewards(
 
 @same_doc_as(PublicGetUserRewards)
 async def public_get_user_rewards_async(
+    challenge_code: Optional[str] = None,
+    goal_progression_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    sort_by: Optional[Union[str, PublicGetUserRewardsSortByEnum]] = None,
     status: Optional[Union[str, PublicGetUserRewardsStatusEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -822,7 +854,7 @@ async def public_get_user_rewards_async(
 ):
     """List User's Rewards (publicGetUserRewards)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:REWARD [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/rewards
@@ -839,11 +871,15 @@ async def public_get_user_rewards_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        challenge_code: (challengeCode) OPTIONAL str in query
+
+        goal_progression_id: (goalProgressionId) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
 
-        sort_by: (sortBy) OPTIONAL str in query
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
@@ -861,6 +897,8 @@ async def public_get_user_rewards_async(
         if error:
             return None, error
     request = PublicGetUserRewards.create(
+        challenge_code=challenge_code,
+        goal_progression_id=goal_progression_id,
         limit=limit,
         offset=offset,
         sort_by=sort_by,

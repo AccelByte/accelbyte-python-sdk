@@ -7,7 +7,7 @@ from accelbyte_py_sdk.api.iam.models import AccountCreateUserRequestV4
 
 
 class LegalTestCase(IntegrationTestCase):
-    uid: str = str(randint(0, 1_000_000)).rjust(7, '0')
+    uid: str = str(randint(0, 1_000_000)).rjust(7, "0")
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
     unique_display_name = f"testPythonServerSDKUser_{uid}"
@@ -201,10 +201,7 @@ class LegalTestCase(IntegrationTestCase):
         target_policy_id: str = ""
 
         for policy in result:
-            if (
-                policy.base_policy_name == base_policy_name and
-                len(policy.policies) > 0
-            ):
+            if policy.base_policy_name == base_policy_name and len(policy.policies) > 0:
                 target_policy_id = policy.policies[0].id_
                 break
 
@@ -219,7 +216,10 @@ class LegalTestCase(IntegrationTestCase):
             marketing_pref_policy_type_id: str = ""
 
             for policy_type in result:
-                if policy_type.policy_type_name.strip().lower() == "marketing preference":
+                if (
+                    policy_type.policy_type_name.strip().lower()
+                    == "marketing preference"
+                ):
                     marketing_pref_policy_type_id = policy_type.id_
                     break
 
@@ -287,11 +287,13 @@ class LegalTestCase(IntegrationTestCase):
                     content_type="Python Extend SDK Legal Content for ID.",
                     description="Testing Python Extend SDK Legal Endpoints.",
                     locale_code="ID",
-                )
+                ),
             )
 
             if error:
-                self.skipTest(reason=f"Failed to create localized policy version: {error}")
+                self.skipTest(
+                    reason=f"Failed to create localized policy version: {error}"
+                )
                 return
 
             target_localized_policy_version_id = result.id_
@@ -300,7 +302,9 @@ class LegalTestCase(IntegrationTestCase):
 
         self.assertTrue(target_policy_id, target_policy_id)
         self.assertTrue(target_policy_version_id, target_policy_version_id)
-        self.assertTrue(target_localized_policy_version_id, target_localized_policy_version_id)
+        self.assertTrue(
+            target_localized_policy_version_id, target_localized_policy_version_id
+        )
 
     # endregion test:create_policy
 

@@ -35,7 +35,7 @@ from ...models import ResponseError
 class AdminDeleteChallenge(Operation):
     """Delete a Challenge (adminDeleteChallenge)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}

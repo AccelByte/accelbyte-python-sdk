@@ -45,6 +45,8 @@ class ApimodelAppItem(Model):
 
         created_at: (createdAt) REQUIRED str
 
+        game_name: (gameName) REQUIRED str
+
         scenario: (scenario) REQUIRED str
 
         updated_at: (updatedAt) REQUIRED str
@@ -86,6 +88,7 @@ class ApimodelAppItem(Model):
     app_name: str  # REQUIRED
     app_status: str  # REQUIRED
     created_at: str  # REQUIRED
+    game_name: str  # REQUIRED
     scenario: str  # REQUIRED
     updated_at: str  # REQUIRED
     app_repo_arn: str  # OPTIONAL
@@ -122,6 +125,10 @@ class ApimodelAppItem(Model):
 
     def with_created_at(self, value: str) -> ApimodelAppItem:
         self.created_at = value
+        return self
+
+    def with_game_name(self, value: str) -> ApimodelAppItem:
+        self.game_name = value
         return self
 
     def with_scenario(self, value: str) -> ApimodelAppItem:
@@ -214,6 +221,10 @@ class ApimodelAppItem(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
+        if hasattr(self, "game_name"):
+            result["gameName"] = str(self.game_name)
+        elif include_empty:
+            result["gameName"] = ""
         if hasattr(self, "scenario"):
             result["scenario"] = str(self.scenario)
         elif include_empty:
@@ -297,6 +308,7 @@ class ApimodelAppItem(Model):
         app_name: str,
         app_status: str,
         created_at: str,
+        game_name: str,
         scenario: str,
         updated_at: str,
         app_repo_arn: Optional[str] = None,
@@ -321,6 +333,7 @@ class ApimodelAppItem(Model):
         instance.app_name = app_name
         instance.app_status = app_status
         instance.created_at = created_at
+        instance.game_name = game_name
         instance.scenario = scenario
         instance.updated_at = updated_at
         if app_repo_arn is not None:
@@ -378,6 +391,10 @@ class ApimodelAppItem(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
+        if "gameName" in dict_ and dict_["gameName"] is not None:
+            instance.game_name = str(dict_["gameName"])
+        elif include_empty:
+            instance.game_name = ""
         if "scenario" in dict_ and dict_["scenario"] is not None:
             instance.scenario = str(dict_["scenario"])
         elif include_empty:
@@ -497,6 +514,7 @@ class ApimodelAppItem(Model):
             "appName": "app_name",
             "appStatus": "app_status",
             "createdAt": "created_at",
+            "gameName": "game_name",
             "scenario": "scenario",
             "updatedAt": "updated_at",
             "appRepoArn": "app_repo_arn",
@@ -523,6 +541,7 @@ class ApimodelAppItem(Model):
             "appName": True,
             "appStatus": True,
             "createdAt": True,
+            "gameName": True,
             "scenario": True,
             "updatedAt": True,
             "appRepoArn": False,

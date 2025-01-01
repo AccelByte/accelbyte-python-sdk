@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Gdpr Service Index (2.15.0)
+# AccelByte Gaming Services Gdpr Service Index (2.16.1)
 
 
 ## Operations
@@ -67,7 +67,10 @@
 |---|---|---|---|---|---|---|
 | /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client | DELETE | AdminDeletePlatformAccountClosureClient | `false` | [AdminDeletePlatformAccountClosureClient](../../accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_delete_platform_a_6b01ab.py) | [admin_delete_platform_account_closure_client](../../accelbyte_py_sdk/api/gdpr/wrappers/_platform_account_closure_client.py) | [accelbyte_py_sdk_cli gdpr-admin-delete-platform-account-closure-client](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_delete_platform_account_closure_client.py) |
 | /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client | GET | AdminGetPlatformAccountClosureClient | `false` | [AdminGetPlatformAccountClosureClient](../../accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_get_platform_acco_4a3f07.py) | [admin_get_platform_account_closure_client](../../accelbyte_py_sdk/api/gdpr/wrappers/_platform_account_closure_client.py) | [accelbyte_py_sdk_cli gdpr-admin-get-platform-account-closure-client](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_get_platform_account_closure_client.py) |
+| /gdpr/admin/namespaces/{namespace}/platforms/closure/clients | GET | AdminGetPlatformAccountClosureClients | `false` | [AdminGetPlatformAccountClosureClients](../../accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_get_platform_acco_f2bbf3.py) | [admin_get_platform_account_closure_clients](../../accelbyte_py_sdk/api/gdpr/wrappers/_platform_account_closure_client.py) | [accelbyte_py_sdk_cli gdpr-admin-get-platform-account-closure-clients](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_get_platform_account_closure_clients.py) |
+| /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/mock | POST | AdminMockPlatformAccountClosureData | `false` | [AdminMockPlatformAccountClosureData](../../accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_mock_platform_acc_903642.py) | [admin_mock_platform_account_closure_data](../../accelbyte_py_sdk/api/gdpr/wrappers/_platform_account_closure_client.py) | [accelbyte_py_sdk_cli gdpr-admin-mock-platform-account-closure-data](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_mock_platform_account_closure_data.py) |
 | /gdpr/admin/namespaces/{namespace}/platforms/{platform}/closure/client | POST | AdminUpdatePlatformAccountClosureClient | `false` | [AdminUpdatePlatformAccountClosureClient](../../accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_update_platform_a_818a23.py) | [admin_update_platform_account_closure_client](../../accelbyte_py_sdk/api/gdpr/wrappers/_platform_account_closure_client.py) | [accelbyte_py_sdk_cli gdpr-admin-update-platform-account-closure-client](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_update_platform_account_closure_client.py) |
+| /gdpr/admin/namespaces/{namespace}/platforms/xbox/closure/cert/validation | POST | AdminValidateXboxBPCertFile | `false` | [AdminValidateXboxBPCertFile](../../accelbyte_py_sdk/api/gdpr/operations/platform_account_closure_client/admin_validate_xbox_bp__812c1c.py) | [admin_validate_xbox_bp_cert_file](../../accelbyte_py_sdk/api/gdpr/wrappers/_platform_account_closure_client.py) | [accelbyte_py_sdk_cli gdpr-admin-validate-xbox-bp-cert-file](../../samples/cli/accelbyte_py_sdk_cli/gdpr/_admin_validate_xbox_bp_cert_file.py) |
 
 ### Platform Account Closure History
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -85,6 +88,8 @@
 | dto.ListFinishedDataRequests | [DtoListFinishedDataRequests](../../accelbyte_py_sdk/api/gdpr/models/dto_list_finished_data_requests.py) |
 | dto.PlatformAccountClosureClientRequest | [DtoPlatformAccountClosureClientRequest](../../accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_client_request.py) |
 | dto.PlatformAccountClosureClientResponse | [DtoPlatformAccountClosureClientResponse](../../accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_client_response.py) |
+| dto.PlatformAccountClosureClientsResponse | [DtoPlatformAccountClosureClientsResponse](../../accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_clients_response.py) |
+| dto.PlatformAccountClosureMockRequest | [DtoPlatformAccountClosureMockRequest](../../accelbyte_py_sdk/api/gdpr/models/dto_platform_account_closure_mock_request.py) |
 | dto.S2SDataRequestSummary | [DtoS2SDataRequestSummary](../../accelbyte_py_sdk/api/gdpr/models/dto_s2s_data_request_summary.py) |
 | dto.ServiceConfigDTO | [DtoServiceConfigDTO](../../accelbyte_py_sdk/api/gdpr/models/dto_service_config_dto.py) |
 | dto.ServiceConfigurationDTO | [DtoServiceConfigurationDTO](../../accelbyte_py_sdk/api/gdpr/models/dto_service_configuration_dto.py) |
@@ -92,6 +97,8 @@
 | dto.ServicesConfigurationResponse | [DtoServicesConfigurationResponse](../../accelbyte_py_sdk/api/gdpr/models/dto_services_configuration_response.py) |
 | dto.UserPlatformAccountClosureHistoriesResponse | [DtoUserPlatformAccountClosureHistoriesResponse](../../accelbyte_py_sdk/api/gdpr/models/dto_user_platform_account_closure_histories_response.py) |
 | dto.UserPlatformAccountClosureHistory | [DtoUserPlatformAccountClosureHistory](../../accelbyte_py_sdk/api/gdpr/models/dto_user_platform_account_closure_history.py) |
+| dto.XboxBPCertValidationRequest | [DtoXboxBPCertValidationRequest](../../accelbyte_py_sdk/api/gdpr/models/dto_xbox_bp_cert_validation_request.py) |
+| dto.XboxBPCertValidationResponse | [DtoXboxBPCertValidationResponse](../../accelbyte_py_sdk/api/gdpr/models/dto_xbox_bp_cert_validation_response.py) |
 | models.DataRetrievalResponse | [ModelsDataRetrievalResponse](../../accelbyte_py_sdk/api/gdpr/models/models_data_retrieval_response.py) |
 | models.DeletionData | [ModelsDeletionData](../../accelbyte_py_sdk/api/gdpr/models/models_deletion_data.py) |
 | models.DeletionStatus | [ModelsDeletionStatus](../../accelbyte_py_sdk/api/gdpr/models/models_deletion_status.py) |

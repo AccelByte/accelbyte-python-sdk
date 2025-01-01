@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsPartyData
@@ -41,6 +42,7 @@ from ..operations.party import PublicSetPartyLimitV1
 from ..operations.party import PublicUpdatePartyAttributesV1
 
 
+@deprecated
 @same_doc_as(AdminGetPartyDataV1)
 def admin_get_party_data_v1(
     party_id: str,
@@ -93,6 +95,7 @@ def admin_get_party_data_v1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetPartyDataV1)
 async def admin_get_party_data_v1_async(
     party_id: str,
@@ -147,6 +150,7 @@ async def admin_get_party_data_v1_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetUserPartyV1)
 def admin_get_user_party_v1(
     user_id: str,
@@ -199,6 +203,7 @@ def admin_get_user_party_v1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetUserPartyV1)
 async def admin_get_user_party_v1_async(
     user_id: str,
@@ -253,6 +258,7 @@ async def admin_get_user_party_v1_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetPartyDataV1)
 def public_get_party_data_v1(
     party_id: str,
@@ -310,6 +316,7 @@ def public_get_party_data_v1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetPartyDataV1)
 async def public_get_party_data_v1_async(
     party_id: str,
@@ -369,6 +376,7 @@ async def public_get_party_data_v1_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicSetPartyLimitV1)
 def public_set_party_limit_v1(
     body: ModelsPartyPUTLimitSizeRequest,
@@ -428,6 +436,7 @@ def public_set_party_limit_v1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicSetPartyLimitV1)
 async def public_set_party_limit_v1_async(
     body: ModelsPartyPUTLimitSizeRequest,
@@ -489,6 +498,7 @@ async def public_set_party_limit_v1_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicUpdatePartyAttributesV1)
 def public_update_party_attributes_v1(
     body: ModelsPartyPUTCustomAttributesRequest,
@@ -550,6 +560,7 @@ def public_update_party_attributes_v1(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicUpdatePartyAttributesV1)
 async def public_update_party_attributes_v1_async(
     body: ModelsPartyPUTCustomAttributesRequest,

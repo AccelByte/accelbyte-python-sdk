@@ -76,8 +76,10 @@ from ..models import ModelListUserInformationResult
 from ..models import ModelListUserResponseV3
 from ..models import ModelLoginHistoriesResponse
 from ..models import ModelNamespaceRoleRequest
+from ..models import ModelOneTimeCodeLinkRedirectionResponse
 from ..models import ModelPermissionDeleteRequest
 from ..models import ModelPlatformUserIDRequest
+from ..models import ModelPublicOpenIDUserInfoResponse
 from ..models import ModelPublicUserInformationResponseV3
 from ..models import ModelPublicUserResponse
 from ..models import ModelPublicUserResponseV3
@@ -254,7 +256,9 @@ from ..operations.users import PublicGetCountryAgeRestriction
 from ..operations.users import PublicGetCountryAgeRestrictionV3
 from ..operations.users import PublicGetLinkHeadlessAccountToMyAccountConflictV3
 from ..operations.users import PublicGetMyProfileAllowUpdateStatusV3
+from ..operations.users import PublicGetMyRedirectionAfterLinkV3
 from ..operations.users import PublicGetMyUserV3
+from ..operations.users import PublicGetOpenidUserInfoV3
 from ..operations.users import PublicGetPublisherUserV3
 from ..operations.users import PublicGetUserBan
 from ..operations.users import PublicGetUserBanHistoryV3
@@ -277,6 +281,7 @@ from ..operations.users import PublicPlatformUnlinkV3
 from ..operations.users import PublicProcessWebLinkPlatformV3
 from ..operations.users import PublicResetPasswordV2
 from ..operations.users import PublicSearchUserV3
+from ..operations.users import PublicSendCodeForwardV3
 from ..operations.users import PublicSendRegistrationCode
 from ..operations.users import PublicSendVerificationCodeV3
 from ..operations.users import PublicSendVerificationLinkV3
@@ -13319,7 +13324,7 @@ def link_headless_account_to_my_account_v3(
     Responses:
         204: No Content - (No Content)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
@@ -13363,7 +13368,7 @@ async def link_headless_account_to_my_account_v3_async(
     Responses:
         204: No Content - (No Content)
 
-        400: Bad Request - RestErrorResponse (20002: validation error)
+        400: Bad Request - RestErrorResponse
 
         401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
 
@@ -15595,6 +15600,88 @@ async def public_get_my_profile_allow_update_status_v3_async(
     )
 
 
+@same_doc_as(PublicGetMyRedirectionAfterLinkV3)
+def public_get_my_redirection_after_link_v3(
+    one_time_link_code: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get My Forward URI Link (PublicGetMyRedirectionAfterLinkV3)
+
+    Get my redirect uri after link, this endpoint will return NotFound(404) if redirect uri is not found
+
+    Properties:
+        url: /iam/v3/public/users/me/link/redirection
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        one_time_link_code: (oneTimeLinkCode) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelOneTimeCodeLinkRedirectionResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicGetMyRedirectionAfterLinkV3.create(
+        one_time_link_code=one_time_link_code,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetMyRedirectionAfterLinkV3)
+async def public_get_my_redirection_after_link_v3_async(
+    one_time_link_code: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get My Forward URI Link (PublicGetMyRedirectionAfterLinkV3)
+
+    Get my redirect uri after link, this endpoint will return NotFound(404) if redirect uri is not found
+
+    Properties:
+        url: /iam/v3/public/users/me/link/redirection
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        one_time_link_code: (oneTimeLinkCode) REQUIRED str in query
+
+    Responses:
+        200: OK - ModelOneTimeCodeLinkRedirectionResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        404: Not Found - (Not Found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicGetMyRedirectionAfterLinkV3.create(
+        one_time_link_code=one_time_link_code,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGetMyUserV3)
 def public_get_my_user_v3(
     include_all_platforms: Optional[bool] = None,
@@ -15706,6 +15793,72 @@ async def public_get_my_user_v3_async(
     request = PublicGetMyUserV3.create(
         include_all_platforms=include_all_platforms,
     )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetOpenidUserInfoV3)
+def public_get_openid_user_info_v3(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get my user info (PublicGetOpenidUserInfoV3)
+
+    This API is created to match openid userinfo standard => https://openid.net/specs/openid-connect-core-1_0.html#UserInfo
+
+    Properties:
+        url: /iam/v3/public/users/userinfo
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelPublicOpenIDUserInfoResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicGetOpenidUserInfoV3.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetOpenidUserInfoV3)
+async def public_get_openid_user_info_v3_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get my user info (PublicGetOpenidUserInfoV3)
+
+    This API is created to match openid userinfo standard => https://openid.net/specs/openid-connect-core-1_0.html#UserInfo
+
+    Properties:
+        url: /iam/v3/public/users/userinfo
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelPublicOpenIDUserInfoResponse (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access | 20022: token is not user token)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicGetOpenidUserInfoV3.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )
@@ -18737,6 +18890,15 @@ def public_search_user_v3(
     - You can use either platform id or platform group as **platformId** parameter.
     - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
+    ## IP Rate Limit validation
+
+    This API have IP Rate Limit validation, which activates when triggered excessively from the same IP address (throw 429 http error).
+    The default rule: 10 max request per 30 seconds (per unique IP address).
+
+    To mitigate potential unexpected issues in your implementation, consider adhering to these best practices as illustrated in the following examples:
+    * Delay invoking the Search API if the player continues typing in the search box, and only utilize the latest input provided.
+    * Prevent players from double-clicking or making multiple clicks within a short time frame.
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users
 
@@ -18857,6 +19019,15 @@ async def public_search_user_v3_async(
     - You can use either platform id or platform group as **platformId** parameter.
     - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
 
+    ## IP Rate Limit validation
+
+    This API have IP Rate Limit validation, which activates when triggered excessively from the same IP address (throw 429 http error).
+    The default rule: 10 max request per 30 seconds (per unique IP address).
+
+    To mitigate potential unexpected issues in your implementation, consider adhering to these best practices as illustrated in the following examples:
+    * Delay invoking the Search API if the player continues typing in the search box, and only utilize the latest input provided.
+    * Prevent players from double-clicking or making multiple clicks within a short time frame.
+
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users
 
@@ -18909,6 +19080,84 @@ async def public_search_user_v3_async(
         platform_id=platform_id,
         query=query,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicSendCodeForwardV3)
+def public_send_code_forward_v3(
+    body: ModelSendVerificationCodeRequestV3,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Send verification code to user (PublicSendCodeForwardV3)
+
+    This API need the upgradeToken in request body.
+    Available contexts for use :
+    1. **upgradeHeadlessAccount**
+    The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
+    If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
+
+    Properties:
+        url: /iam/v3/public/users/me/code/request/forward
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequestV3 in body
+
+    Responses:
+        302: Found - (Found. Redirected to login website if there is any error.)
+    """
+    request = PublicSendCodeForwardV3.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicSendCodeForwardV3)
+async def public_send_code_forward_v3_async(
+    body: ModelSendVerificationCodeRequestV3,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Send verification code to user (PublicSendCodeForwardV3)
+
+    This API need the upgradeToken in request body.
+    Available contexts for use :
+    1. **upgradeHeadlessAccount**
+    The context is intended to be used whenever the email address wanted to be automatically verified on upgrading a headless account.
+    If this context used, IAM rejects the request if the email address is already used by others by returning HTTP Status Code 409.
+
+    Properties:
+        url: /iam/v3/public/users/me/code/request/forward
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelSendVerificationCodeRequestV3 in body
+
+    Responses:
+        302: Found - (Found. Redirected to login website if there is any error.)
+    """
+    request = PublicSendCodeForwardV3.create(
+        body=body,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

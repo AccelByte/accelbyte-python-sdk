@@ -75,4 +75,4 @@ def admin_create_profanity_list(
 
 
 admin_create_profanity_list.operation_id = "adminCreateProfanityList"
-admin_create_profanity_list.is_deprecated = False
+admin_create_profanity_list.is_deprecated = True

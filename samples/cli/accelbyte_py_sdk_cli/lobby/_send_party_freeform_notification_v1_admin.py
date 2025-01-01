@@ -80,4 +80,4 @@ def send_party_freeform_notification_v1_admin(
 send_party_freeform_notification_v1_admin.operation_id = (
     "sendPartyFreeformNotificationV1Admin"
 )
-send_party_freeform_notification_v1_admin.is_deprecated = False
+send_party_freeform_notification_v1_admin.is_deprecated = True

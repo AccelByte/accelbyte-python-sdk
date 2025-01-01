@@ -77,4 +77,4 @@ def join_session(
 
 
 join_session.operation_id = "JoinSession"
-join_session.is_deprecated = False
+join_session.is_deprecated = True

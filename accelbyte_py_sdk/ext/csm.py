@@ -107,6 +107,7 @@ def create_apimodel_app_item_example() -> ApimodelAppItem:
     instance.app_name = randomize()
     instance.app_status = randomize()
     instance.created_at = randomize()
+    instance.game_name = randomize()
     instance.scenario = randomize()
     instance.updated_at = randomize()
     instance.app_repo_arn = randomize()

@@ -1,3 +1,26 @@
+<a name="v0.72.0"></a>
+## [v0.72.0]
+### test
+- **csm:** add csm integration tests
+- **integration:** disable game telemetry tests in starter
+- **:** add raw wsm in the assert message
+- **integration:** added new required param
+- **token-validation:** add role override iam test
+- **integration:** add missing tests
+### docs
+- **readme:** update AB_BASE_URL example
+### chore
+- **sdk:** generated from openapi spec commit: 36ae5c39dfabaa8b38695823c2a32ce307953790
+- **core:** add request http verb methods
+- **requirements:** update websockets version
+### fix
+- **websockets:** fix blocking in task
+- **websockets:** update connect params
+- **cli:** update requirements.txt
+### feat
+- **token-validation:** update role cache endpoint to AdminGetRoleNamespacePermissionV3
+
+
 <a name="v0.71.0"></a>
 ## [v0.71.0]
 ### ci

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.11.1"
+__version__ = "1.12.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -91,3 +91,13 @@ from .wrappers import admin_get_assignment_plugin
 from .wrappers import admin_get_assignment_plugin_async
 from .wrappers import admin_update_assignment_plugin
 from .wrappers import admin_update_assignment_plugin_async
+
+# schedules
+from .wrappers import admin_list_schedules
+from .wrappers import admin_list_schedules_async
+from .wrappers import admin_list_schedules_by_goal
+from .wrappers import admin_list_schedules_by_goal_async
+from .wrappers import public_list_schedules
+from .wrappers import public_list_schedules_async
+from .wrappers import public_list_schedules_by_goal
+from .wrappers import public_list_schedules_by_goal_async

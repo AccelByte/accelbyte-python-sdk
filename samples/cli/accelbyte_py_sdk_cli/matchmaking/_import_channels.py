@@ -70,4 +70,4 @@ def import_channels(
 
 
 import_channels.operation_id = "ImportChannels"
-import_channels.is_deprecated = False
+import_channels.is_deprecated = True

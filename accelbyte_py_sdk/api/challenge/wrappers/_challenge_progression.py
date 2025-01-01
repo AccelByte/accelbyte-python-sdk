@@ -50,8 +50,8 @@ def admin_evaluate_progress(
 ):
     """Evaluate User's Progressions (adminEvaluateProgress)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-      * Limited up to 10 users per request
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    - Limited up to 10 users per request
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/progress/evaluate
@@ -103,8 +103,8 @@ async def admin_evaluate_progress_async(
 ):
     """Evaluate User's Progressions (adminEvaluateProgress)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
-      * Limited up to 10 users per request
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    - Limited up to 10 users per request
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/progress/evaluate
@@ -164,7 +164,7 @@ def admin_get_user_progression(
 ):
     """List User's Progressions (adminGetUserProgression)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/progress/{challengeCode}
@@ -242,7 +242,7 @@ async def admin_get_user_progression_async(
 ):
     """List User's Progressions (adminGetUserProgression)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/progress/{challengeCode}
@@ -315,7 +315,7 @@ def evaluate_my_progress(
 ):
     """Evaluate User's Challenge Progressions (EvaluateMyProgress)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate
@@ -359,7 +359,7 @@ async def evaluate_my_progress_async(
 ):
     """Evaluate User's Challenge Progressions (EvaluateMyProgress)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate
@@ -411,7 +411,7 @@ def public_get_past_user_progression(
 ):
     """List User's Progressions in the previous rotation. (publicGetPastUserProgression)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index}
@@ -483,7 +483,7 @@ async def public_get_past_user_progression_async(
 ):
     """List User's Progressions in the previous rotation. (publicGetPastUserProgression)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}/index/{index}
@@ -557,7 +557,7 @@ def public_get_user_progression(
 ):
     """List User's Progressions (publicGetUserProgression)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}
@@ -631,7 +631,7 @@ async def public_get_user_progression_async(
 ):
     """List User's Progressions (publicGetUserProgression)
 
-      * Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
+    - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [READ]
 
     Properties:
         url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/{challengeCode}

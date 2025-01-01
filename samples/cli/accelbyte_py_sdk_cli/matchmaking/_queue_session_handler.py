@@ -75,4 +75,4 @@ def queue_session_handler(
 
 
 queue_session_handler.operation_id = "QueueSessionHandler"
-queue_session_handler.is_deprecated = False
+queue_session_handler.is_deprecated = True

@@ -10,7 +10,7 @@ from accelbyte_py_sdk.api.iam.models import AccountCreateUserRequestV4
 
 class IAMTestCase(IntegrationTestCase):
     exported_filename: str = "exported"
-    uid: str = str(randint(0, 1_000_000)).rjust(7, '0')
+    uid: str = str(randint(0, 1_000_000)).rjust(7, "0")
     user_id: Optional[str] = None
     scope: str = "commerce account social publishing analytics"
     unique_display_name = f"testPythonServerSDKUser_{uid}"
@@ -372,8 +372,12 @@ class IAMTestCase(IntegrationTestCase):
         check_count: int = 20
         check_interval: float = 1.0
 
-        def find_and_check_resource_action_from_role(role_id_: str, resource_to_check_: str) -> int:
-            result_, error_ = iam_service.admin_get_role_namespace_permission_v3(role_id=role_id_)
+        def find_and_check_resource_action_from_role(
+            role_id_: str, resource_to_check_: str
+        ) -> int:
+            result_, error_ = iam_service.admin_get_role_namespace_permission_v3(
+                role_id=role_id_
+            )
             self.assertIsNone(error_, error_)
 
             result_action_: int = -1
@@ -396,7 +400,9 @@ class IAMTestCase(IntegrationTestCase):
                 break
         self.assertTrue(user_role_id)
 
-        action = find_and_check_resource_action_from_role(user_role_id, resource_to_check)
+        action = find_and_check_resource_action_from_role(
+            user_role_id, resource_to_check
+        )
         self.assertEqual(action_to_check, action)
 
         # configure role override
@@ -432,7 +438,9 @@ class IAMTestCase(IntegrationTestCase):
             current_count: int = 0
             while current_count < check_count:
                 self.log_info(f"checking updated permissions [{current_count+1}]")
-                action = find_and_check_resource_action_from_role(user_role_id, resource_to_check)
+                action = find_and_check_resource_action_from_role(
+                    user_role_id, resource_to_check
+                )
                 if action == updated_action_to_check:
                     valid = True
                     break

@@ -37,16 +37,12 @@ from ...models import ResponseError
 class AdminUpdateTiedChallengeSchedule(Operation):
     """Update Tied Challenge Schedule (adminUpdateTiedChallengeSchedule)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
-
-
-
-    Request body:
-
-      * action: Update the challenge schedule. The available options are:
-        * STOP: Ends the challenge, changing its status to RETIRED. This option supports all types of challenges.
-        * ACCELERATE: Speeds up the challenge's end time. Note that this option does not apply to challenges with an 'endAfter' value.
-      * endDate: The timestamp specifying when the challenge should end (required if the action is ACCELERATE).
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [UPDATE]
+    ### Request body:
+    - action: Update the challenge schedule. The available options are:
+    - STOP: Ends the challenge, changing its status to RETIRED. This option supports all types of challenges.
+    - ACCELERATE: Speeds up the challenge's end time. Note that this option does not apply to challenges with an 'endAfter' value.
+    - endDate: The timestamp specifying when the challenge should end (required if the action is ACCELERATE).
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/tied/schedule

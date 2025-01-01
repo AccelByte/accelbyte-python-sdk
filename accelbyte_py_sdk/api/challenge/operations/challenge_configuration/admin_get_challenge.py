@@ -37,7 +37,7 @@ from ...models import ResponseError
 class AdminGetChallenge(Operation):
     """Get a Challenge (adminGetChallenge)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [READ]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}

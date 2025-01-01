@@ -66,4 +66,4 @@ def clean_all_mocks(
 
 
 clean_all_mocks.operation_id = "CleanAllMocks"
-clean_all_mocks.is_deprecated = False
+clean_all_mocks.is_deprecated = True

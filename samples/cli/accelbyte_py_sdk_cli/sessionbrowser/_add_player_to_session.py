@@ -79,4 +79,4 @@ def add_player_to_session(
 
 
 add_player_to_session.operation_id = "AddPlayerToSession"
-add_player_to_session.is_deprecated = False
+add_player_to_session.is_deprecated = True

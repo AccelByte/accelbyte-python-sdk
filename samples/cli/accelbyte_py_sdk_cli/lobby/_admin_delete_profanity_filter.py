@@ -79,4 +79,4 @@ def admin_delete_profanity_filter(
 
 
 admin_delete_profanity_filter.operation_id = "adminDeleteProfanityFilter"
-admin_delete_profanity_filter.is_deprecated = False
+admin_delete_profanity_filter.is_deprecated = True

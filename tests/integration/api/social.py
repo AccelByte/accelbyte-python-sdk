@@ -233,7 +233,9 @@ class SocialTestCase(IntegrationTestCase):
         # assert (get_user_stat_items)
         self.assertIsNone(error, error)
         self.assertGreater(len(result.data), 0)
-        self.assertTrue(any(item.stat_code == self.stat_create.stat_code for item in result.data))
+        self.assertTrue(
+            any(item.stat_code == self.stat_create.stat_code for item in result.data)
+        )
 
         # act (inc_user_stat_item_value)
         result, error = inc_user_stat_item_value(

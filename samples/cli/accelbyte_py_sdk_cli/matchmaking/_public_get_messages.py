@@ -63,4 +63,4 @@ def public_get_messages(
 
 
 public_get_messages.operation_id = "publicGetMessages"
-public_get_messages.is_deprecated = False
+public_get_messages.is_deprecated = True

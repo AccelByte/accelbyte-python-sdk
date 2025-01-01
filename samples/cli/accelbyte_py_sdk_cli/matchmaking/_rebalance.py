@@ -74,4 +74,4 @@ def rebalance(
 
 
 rebalance.operation_id = "Rebalance"
-rebalance.is_deprecated = False
+rebalance.is_deprecated = True

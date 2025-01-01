@@ -35,12 +35,15 @@ class OauthmodelOneTimeLinkingCodeValidationResponse(Model):
         expired: (expired) REQUIRED bool
 
         valid: (valid) REQUIRED bool
+
+        platform_id: (platformId) OPTIONAL str
     """
 
     # region fields
 
     expired: bool  # REQUIRED
     valid: bool  # REQUIRED
+    platform_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -54,6 +57,12 @@ class OauthmodelOneTimeLinkingCodeValidationResponse(Model):
 
     def with_valid(self, value: bool) -> OauthmodelOneTimeLinkingCodeValidationResponse:
         self.valid = value
+        return self
+
+    def with_platform_id(
+        self, value: str
+    ) -> OauthmodelOneTimeLinkingCodeValidationResponse:
+        self.platform_id = value
         return self
 
     # endregion with_x methods
@@ -70,6 +79,10 @@ class OauthmodelOneTimeLinkingCodeValidationResponse(Model):
             result["valid"] = bool(self.valid)
         elif include_empty:
             result["valid"] = False
+        if hasattr(self, "platform_id"):
+            result["platformId"] = str(self.platform_id)
+        elif include_empty:
+            result["platformId"] = ""
         return result
 
     # endregion to methods
@@ -78,11 +91,13 @@ class OauthmodelOneTimeLinkingCodeValidationResponse(Model):
 
     @classmethod
     def create(
-        cls, expired: bool, valid: bool, **kwargs
+        cls, expired: bool, valid: bool, platform_id: Optional[str] = None, **kwargs
     ) -> OauthmodelOneTimeLinkingCodeValidationResponse:
         instance = cls()
         instance.expired = expired
         instance.valid = valid
+        if platform_id is not None:
+            instance.platform_id = platform_id
         return instance
 
     @classmethod
@@ -100,6 +115,10 @@ class OauthmodelOneTimeLinkingCodeValidationResponse(Model):
             instance.valid = bool(dict_["valid"])
         elif include_empty:
             instance.valid = False
+        if "platformId" in dict_ and dict_["platformId"] is not None:
+            instance.platform_id = str(dict_["platformId"])
+        elif include_empty:
+            instance.platform_id = ""
         return instance
 
     @classmethod
@@ -145,6 +164,7 @@ class OauthmodelOneTimeLinkingCodeValidationResponse(Model):
         return {
             "expired": "expired",
             "valid": "valid",
+            "platformId": "platform_id",
         }
 
     @staticmethod
@@ -152,6 +172,7 @@ class OauthmodelOneTimeLinkingCodeValidationResponse(Model):
         return {
             "expired": True,
             "valid": True,
+            "platformId": False,
         }
 
     # endregion static methods

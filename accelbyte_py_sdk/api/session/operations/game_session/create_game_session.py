@@ -108,7 +108,7 @@ class CreateGameSession(Operation):
     - The server will be chosen based on a set of claim keys, in order of preference, to match with fleets.
     - The claim key list is built build from the preferredClaimKeys, fallbackClaimKeys, and clientVersion as follows:
     [preferredClaimKeys.., clientVersion, fallbackClaimKeys...]
-    for session override can follow guideline in here https://docs.accelbyte.io/gaming-services/services/extend/override-ags-feature/getting-started-with-session-customization/
+    for session override can follow guideline in here https://docs.accelbyte.io/gaming-services/services/extend/override-ags-feature/getting-started-with-session-customization-server-dsm/
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesession

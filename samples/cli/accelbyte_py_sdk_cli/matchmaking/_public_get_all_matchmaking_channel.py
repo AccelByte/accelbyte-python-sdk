@@ -66,4 +66,4 @@ def public_get_all_matchmaking_channel(
 
 
 public_get_all_matchmaking_channel.operation_id = "PublicGetAllMatchmakingChannel"
-public_get_all_matchmaking_channel.is_deprecated = False
+public_get_all_matchmaking_channel.is_deprecated = True

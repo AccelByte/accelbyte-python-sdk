@@ -68,4 +68,4 @@ def delete_channel_handler(
 
 
 delete_channel_handler.operation_id = "DeleteChannelHandler"
-delete_channel_handler.is_deprecated = False
+delete_channel_handler.is_deprecated = True

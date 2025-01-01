@@ -79,4 +79,4 @@ def update_play_time_weight(
 
 
 update_play_time_weight.operation_id = "UpdatePlayTimeWeight"
-update_play_time_weight.is_deprecated = False
+update_play_time_weight.is_deprecated = True

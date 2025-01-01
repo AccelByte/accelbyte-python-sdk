@@ -413,7 +413,7 @@ async def delete_subscription_app_notification_v2_async(
 @same_doc_as(GetNotificationSubscriberListV2)
 def get_notification_subscriber_list_v2(
     app: str,
-    notification_type: Optional[str] = None,
+    notification_type: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -448,7 +448,7 @@ def get_notification_subscriber_list_v2(
 
         namespace: (namespace) REQUIRED str in path
 
-        notification_type: (notificationType) OPTIONAL str in query
+        notification_type: (notificationType) REQUIRED str in query
 
     Responses:
         200: OK - ApimodelGetNotificationSubscriberListResponse
@@ -476,7 +476,7 @@ def get_notification_subscriber_list_v2(
 @same_doc_as(GetNotificationSubscriberListV2)
 async def get_notification_subscriber_list_v2_async(
     app: str,
-    notification_type: Optional[str] = None,
+    notification_type: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -511,7 +511,7 @@ async def get_notification_subscriber_list_v2_async(
 
         namespace: (namespace) REQUIRED str in path
 
-        notification_type: (notificationType) OPTIONAL str in query
+        notification_type: (notificationType) REQUIRED str in query
 
     Responses:
         200: OK - ApimodelGetNotificationSubscriberListResponse

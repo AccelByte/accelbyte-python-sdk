@@ -76,4 +76,4 @@ def create_channel_handler(
 
 
 create_channel_handler.operation_id = "CreateChannelHandler"
-create_channel_handler.is_deprecated = False
+create_channel_handler.is_deprecated = True

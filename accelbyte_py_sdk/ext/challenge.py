@@ -36,6 +36,7 @@ from ..api.challenge.models import ModelCreateChallengeRequest
 from ..api.challenge.models import ModelCreateGoalRequest
 from ..api.challenge.models import ModelEvaluatePlayerProgressionRequest
 from ..api.challenge.models import ModelGetGoalsResponse
+from ..api.challenge.models import ModelGoalInSchedulesResponse
 from ..api.challenge.models import ModelGoalMeta
 from ..api.challenge.models import ModelGoalOrder
 from ..api.challenge.models import ModelGoalProgressionResponse
@@ -43,6 +44,8 @@ from ..api.challenge.models import ModelGoalResponse
 from ..api.challenge.models import ModelGoalSchedule
 from ..api.challenge.models import ModelListChallengeResponse
 from ..api.challenge.models import ModelListPeriodsResponse
+from ..api.challenge.models import ModelListScheduleByGoalResponse
+from ..api.challenge.models import ModelListSchedulesResponse
 from ..api.challenge.models import ModelListUserRewardsResponse
 from ..api.challenge.models import ModelPagination
 from ..api.challenge.models import ModelPluginAsignmentAppConfig
@@ -55,6 +58,8 @@ from ..api.challenge.models import ModelRequirementProgressionResponse
 from ..api.challenge.models import ModelResetConfig
 from ..api.challenge.models import ModelReward
 from ..api.challenge.models import ModelSchedule
+from ..api.challenge.models import ModelScheduleByGoalResponse
+from ..api.challenge.models import ModelScheduleResponse
 from ..api.challenge.models import ModelUpdateChallengeRequest
 from ..api.challenge.models import ModelUpdateChallengeScheduleRequest
 from ..api.challenge.models import ModelUpdateGoalRequest
@@ -193,6 +198,22 @@ def create_model_get_goals_response_example() -> ModelGetGoalsResponse:
     return instance
 
 
+def create_model_goal_in_schedules_response_example() -> ModelGoalInSchedulesResponse:
+    instance = ModelGoalInSchedulesResponse()
+    instance.challenge_code = randomize()
+    instance.code = randomize()
+    instance.created_at = randomize()
+    instance.description = randomize()
+    instance.is_active = randomize("bool")
+    instance.name = randomize()
+    instance.namespace = randomize("slug")
+    instance.requirement_groups = [create_model_requirement_example()]
+    instance.rewards = [create_model_reward_example()]
+    instance.updated_at = randomize()
+    instance.tags = [randomize()]
+    return instance
+
+
 def create_model_goal_meta_example() -> ModelGoalMeta:
     instance = ModelGoalMeta()
     instance.code = randomize()
@@ -221,6 +242,7 @@ def create_model_goal_progression_response_example() -> ModelGoalProgressionResp
         create_model_requirement_progression_response_example()
     ]
     instance.status = randomize()
+    instance.completed_at = randomize()
     instance.to_claim_rewards = [create_model_claimable_user_reward_example()]
     return instance
 
@@ -260,6 +282,22 @@ def create_model_list_challenge_response_example() -> ModelListChallengeResponse
 def create_model_list_periods_response_example() -> ModelListPeriodsResponse:
     instance = ModelListPeriodsResponse()
     instance.data = [create_models_period_example()]
+    instance.paging = create_model_pagination_example()
+    return instance
+
+
+def create_model_list_schedule_by_goal_response_example() -> (
+    ModelListScheduleByGoalResponse
+):
+    instance = ModelListScheduleByGoalResponse()
+    instance.data = [create_model_schedule_by_goal_response_example()]
+    instance.paging = create_model_pagination_example()
+    return instance
+
+
+def create_model_list_schedules_response_example() -> ModelListSchedulesResponse:
+    instance = ModelListSchedulesResponse()
+    instance.data = [create_model_schedule_response_example()]
     instance.paging = create_model_pagination_example()
     return instance
 
@@ -368,6 +406,21 @@ def create_model_schedule_example() -> ModelSchedule:
     instance.namespace = randomize("slug")
     instance.start_time = randomize()
     instance.updated_at = randomize()
+    return instance
+
+
+def create_model_schedule_by_goal_response_example() -> ModelScheduleByGoalResponse:
+    instance = ModelScheduleByGoalResponse()
+    instance.end_time = randomize("date")
+    instance.start_time = randomize("date")
+    return instance
+
+
+def create_model_schedule_response_example() -> ModelScheduleResponse:
+    instance = ModelScheduleResponse()
+    instance.end_time = randomize("date")
+    instance.goals = [create_model_goal_in_schedules_response_example()]
+    instance.start_time = randomize("date")
     return instance
 
 

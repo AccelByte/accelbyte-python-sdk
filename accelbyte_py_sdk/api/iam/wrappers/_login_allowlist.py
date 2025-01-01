@@ -158,7 +158,7 @@ def admin_update_login_allowlist_v3(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - ModelLoginAllowlistResponse (Operation succeeded)
+        204: No Content - (Operation succeeded)
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 10240: namespace is not game namespace | 10470: role is empty)
 
@@ -210,7 +210,7 @@ async def admin_update_login_allowlist_v3_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - ModelLoginAllowlistResponse (Operation succeeded)
+        204: No Content - (Operation succeeded)
 
         400: Bad Request - RestErrorResponse (20019: unable to parse request body | 10240: namespace is not game namespace | 10470: role is empty)
 

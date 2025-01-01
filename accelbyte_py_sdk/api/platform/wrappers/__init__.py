@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.0.0"
+__version__ = "6.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -297,6 +297,8 @@ from ._fulfillment import fulfill_item
 from ._fulfillment import fulfill_item_async
 from ._fulfillment import fulfill_items
 from ._fulfillment import fulfill_items_async
+from ._fulfillment import fulfill_items_v3
+from ._fulfillment import fulfill_items_v3_async
 from ._fulfillment import fulfill_rewards
 from ._fulfillment import fulfill_rewards_async
 from ._fulfillment import fulfill_rewards_v2
@@ -313,8 +315,12 @@ from ._fulfillment import redeem_code
 from ._fulfillment import redeem_code_async
 from ._fulfillment import retry_fulfill_items
 from ._fulfillment import retry_fulfill_items_async
+from ._fulfillment import retry_fulfill_items_v3
+from ._fulfillment import retry_fulfill_items_v3_async
 from ._fulfillment import revoke_items
 from ._fulfillment import revoke_items_async
+from ._fulfillment import revoke_items_v3
+from ._fulfillment import revoke_items_v3_async
 
 from ._fulfillment_script import create_fulfillment_script
 from ._fulfillment_script import create_fulfillment_script_async

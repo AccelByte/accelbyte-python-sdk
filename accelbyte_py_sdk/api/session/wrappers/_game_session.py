@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ApimodelsAppendTeamGameSessionRequest
@@ -892,6 +893,7 @@ async def admin_update_game_session_member_async(
     )
 
 
+@deprecated
 @same_doc_as(AppendTeamGameSession)
 def append_team_game_session(
     body: ApimodelsAppendTeamGameSessionRequest,
@@ -900,9 +902,9 @@ def append_team_game_session(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Append new member or team to session. (appendTeamGameSession)
+    """Append new member or team to session. Please use patchUpdateGameSession instead (appendTeamGameSession)
 
-    Append new member or team to session
+    Append new member or team to session. Please use patchUpdateGameSession instead
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/teams
@@ -946,6 +948,7 @@ def append_team_game_session(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AppendTeamGameSession)
 async def append_team_game_session_async(
     body: ApimodelsAppendTeamGameSessionRequest,
@@ -954,9 +957,9 @@ async def append_team_game_session_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Append new member or team to session. (appendTeamGameSession)
+    """Append new member or team to session. Please use patchUpdateGameSession instead (appendTeamGameSession)
 
-    Append new member or team to session
+    Append new member or team to session. Please use patchUpdateGameSession instead
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/teams
@@ -1082,7 +1085,7 @@ def create_game_session(
     - The server will be chosen based on a set of claim keys, in order of preference, to match with fleets.
     - The claim key list is built build from the preferredClaimKeys, fallbackClaimKeys, and clientVersion as follows:
     [preferredClaimKeys.., clientVersion, fallbackClaimKeys...]
-    for session override can follow guideline in here https://docs.accelbyte.io/gaming-services/services/extend/override-ags-feature/getting-started-with-session-customization/
+    for session override can follow guideline in here https://docs.accelbyte.io/gaming-services/services/extend/override-ags-feature/getting-started-with-session-customization-server-dsm/
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesession
@@ -1203,7 +1206,7 @@ async def create_game_session_async(
     - The server will be chosen based on a set of claim keys, in order of preference, to match with fleets.
     - The claim key list is built build from the preferredClaimKeys, fallbackClaimKeys, and clientVersion as follows:
     [preferredClaimKeys.., clientVersion, fallbackClaimKeys...]
-    for session override can follow guideline in here https://docs.accelbyte.io/gaming-services/services/extend/override-ags-feature/getting-started-with-session-customization/
+    for session override can follow guideline in here https://docs.accelbyte.io/gaming-services/services/extend/override-ags-feature/getting-started-with-session-customization-server-dsm/
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesession

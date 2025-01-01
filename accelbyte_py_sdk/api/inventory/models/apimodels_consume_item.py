@@ -40,6 +40,8 @@ class ApimodelsConsumeItem(Model):
 
         source_item_id: (sourceItemId) REQUIRED str
 
+        date_range_validation: (dateRangeValidation) OPTIONAL bool
+
         options: (options) OPTIONAL List[str]
     """
 
@@ -49,6 +51,7 @@ class ApimodelsConsumeItem(Model):
     qty: int  # REQUIRED
     slot_id: str  # REQUIRED
     source_item_id: str  # REQUIRED
+    date_range_validation: bool  # OPTIONAL
     options: List[str]  # OPTIONAL
 
     # endregion fields
@@ -69,6 +72,10 @@ class ApimodelsConsumeItem(Model):
 
     def with_source_item_id(self, value: str) -> ApimodelsConsumeItem:
         self.source_item_id = value
+        return self
+
+    def with_date_range_validation(self, value: bool) -> ApimodelsConsumeItem:
+        self.date_range_validation = value
         return self
 
     def with_options(self, value: List[str]) -> ApimodelsConsumeItem:
@@ -97,6 +104,10 @@ class ApimodelsConsumeItem(Model):
             result["sourceItemId"] = str(self.source_item_id)
         elif include_empty:
             result["sourceItemId"] = ""
+        if hasattr(self, "date_range_validation"):
+            result["dateRangeValidation"] = bool(self.date_range_validation)
+        elif include_empty:
+            result["dateRangeValidation"] = False
         if hasattr(self, "options"):
             result["options"] = [str(i0) for i0 in self.options]
         elif include_empty:
@@ -114,6 +125,7 @@ class ApimodelsConsumeItem(Model):
         qty: int,
         slot_id: str,
         source_item_id: str,
+        date_range_validation: Optional[bool] = None,
         options: Optional[List[str]] = None,
         **kwargs,
     ) -> ApimodelsConsumeItem:
@@ -122,6 +134,8 @@ class ApimodelsConsumeItem(Model):
         instance.qty = qty
         instance.slot_id = slot_id
         instance.source_item_id = source_item_id
+        if date_range_validation is not None:
+            instance.date_range_validation = date_range_validation
         if options is not None:
             instance.options = options
         return instance
@@ -149,6 +163,10 @@ class ApimodelsConsumeItem(Model):
             instance.source_item_id = str(dict_["sourceItemId"])
         elif include_empty:
             instance.source_item_id = ""
+        if "dateRangeValidation" in dict_ and dict_["dateRangeValidation"] is not None:
+            instance.date_range_validation = bool(dict_["dateRangeValidation"])
+        elif include_empty:
+            instance.date_range_validation = False
         if "options" in dict_ and dict_["options"] is not None:
             instance.options = [str(i0) for i0 in dict_["options"]]
         elif include_empty:
@@ -200,6 +218,7 @@ class ApimodelsConsumeItem(Model):
             "qty": "qty",
             "slotId": "slot_id",
             "sourceItemId": "source_item_id",
+            "dateRangeValidation": "date_range_validation",
             "options": "options",
         }
 
@@ -210,6 +229,7 @@ class ApimodelsConsumeItem(Model):
             "qty": True,
             "slotId": True,
             "sourceItemId": True,
+            "dateRangeValidation": False,
             "options": False,
         }
 

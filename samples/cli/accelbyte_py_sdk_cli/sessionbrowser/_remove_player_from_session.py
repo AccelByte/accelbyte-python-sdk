@@ -72,4 +72,4 @@ def remove_player_from_session(
 
 
 remove_player_from_session.operation_id = "RemovePlayerFromSession"
-remove_player_from_session.is_deprecated = False
+remove_player_from_session.is_deprecated = True

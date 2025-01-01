@@ -58,6 +58,8 @@ class ModelGoalProgressionResponse(Model):
 
         status: (status) REQUIRED Union[str, StatusEnum]
 
+        completed_at: (completedAt) OPTIONAL str
+
         to_claim_rewards: (toClaimRewards) OPTIONAL List[ModelClaimableUserReward]
     """
 
@@ -69,6 +71,7 @@ class ModelGoalProgressionResponse(Model):
     goal_progression_id: str  # REQUIRED
     requirement_progressions: List[ModelRequirementProgressionResponse]  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
+    completed_at: str  # OPTIONAL
     to_claim_rewards: List[ModelClaimableUserReward]  # OPTIONAL
 
     # endregion fields
@@ -101,6 +104,10 @@ class ModelGoalProgressionResponse(Model):
         self, value: Union[str, StatusEnum]
     ) -> ModelGoalProgressionResponse:
         self.status = value
+        return self
+
+    def with_completed_at(self, value: str) -> ModelGoalProgressionResponse:
+        self.completed_at = value
         return self
 
     def with_to_claim_rewards(
@@ -142,6 +149,10 @@ class ModelGoalProgressionResponse(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = Union[str, StatusEnum]()
+        if hasattr(self, "completed_at"):
+            result["completedAt"] = str(self.completed_at)
+        elif include_empty:
+            result["completedAt"] = ""
         if hasattr(self, "to_claim_rewards"):
             result["toClaimRewards"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.to_claim_rewards
@@ -163,6 +174,7 @@ class ModelGoalProgressionResponse(Model):
         goal_progression_id: str,
         requirement_progressions: List[ModelRequirementProgressionResponse],
         status: Union[str, StatusEnum],
+        completed_at: Optional[str] = None,
         to_claim_rewards: Optional[List[ModelClaimableUserReward]] = None,
         **kwargs,
     ) -> ModelGoalProgressionResponse:
@@ -173,6 +185,8 @@ class ModelGoalProgressionResponse(Model):
         instance.goal_progression_id = goal_progression_id
         instance.requirement_progressions = requirement_progressions
         instance.status = status
+        if completed_at is not None:
+            instance.completed_at = completed_at
         if to_claim_rewards is not None:
             instance.to_claim_rewards = to_claim_rewards
         return instance
@@ -218,6 +232,10 @@ class ModelGoalProgressionResponse(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = Union[str, StatusEnum]()
+        if "completedAt" in dict_ and dict_["completedAt"] is not None:
+            instance.completed_at = str(dict_["completedAt"])
+        elif include_empty:
+            instance.completed_at = ""
         if "toClaimRewards" in dict_ and dict_["toClaimRewards"] is not None:
             instance.to_claim_rewards = [
                 ModelClaimableUserReward.create_from_dict(
@@ -276,6 +294,7 @@ class ModelGoalProgressionResponse(Model):
             "goalProgressionId": "goal_progression_id",
             "requirementProgressions": "requirement_progressions",
             "status": "status",
+            "completedAt": "completed_at",
             "toClaimRewards": "to_claim_rewards",
         }
 
@@ -288,6 +307,7 @@ class ModelGoalProgressionResponse(Model):
             "goalProgressionId": True,
             "requirementProgressions": True,
             "status": True,
+            "completedAt": False,
             "toClaimRewards": False,
         }
 

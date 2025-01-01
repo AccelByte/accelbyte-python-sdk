@@ -72,4 +72,4 @@ def get_all_channels_handler(
 
 
 get_all_channels_handler.operation_id = "GetAllChannelsHandler"
-get_all_channels_handler.is_deprecated = False
+get_all_channels_handler.is_deprecated = True

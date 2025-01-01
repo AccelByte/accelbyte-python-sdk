@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ApimodelsAppendTeamGameSessionRequest
 from ...models import ApimodelsGameSessionResponse
@@ -35,9 +36,9 @@ from ...models import ResponseError
 
 
 class AppendTeamGameSession(Operation):
-    """Append new member or team to session. (appendTeamGameSession)
+    """Append new member or team to session. Please use patchUpdateGameSession instead (appendTeamGameSession)
 
-    Append new member or team to session
+    Append new member or team to session. Please use patchUpdateGameSession instead
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}/teams

@@ -63,6 +63,8 @@ class AdminConsumeUserItem(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        date_range_validation: (dateRangeValidation) OPTIONAL str in query
+
     Responses:
         200: OK - ApimodelsItemResp (OK)
 
@@ -86,6 +88,7 @@ class AdminConsumeUserItem(Operation):
     inventory_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    date_range_validation: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -127,6 +130,7 @@ class AdminConsumeUserItem(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -142,6 +146,12 @@ class AdminConsumeUserItem(Operation):
             result["namespace"] = self.namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "date_range_validation"):
+            result["dateRangeValidation"] = self.date_range_validation
         return result
 
     # endregion get_x_params methods
@@ -168,6 +178,10 @@ class AdminConsumeUserItem(Operation):
         self.user_id = value
         return self
 
+    def with_date_range_validation(self, value: str) -> AdminConsumeUserItem:
+        self.date_range_validation = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -190,6 +204,10 @@ class AdminConsumeUserItem(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "date_range_validation") and self.date_range_validation:
+            result["dateRangeValidation"] = str(self.date_range_validation)
+        elif include_empty:
+            result["dateRangeValidation"] = ""
         return result
 
     # endregion to methods
@@ -250,6 +268,7 @@ class AdminConsumeUserItem(Operation):
         inventory_id: str,
         namespace: str,
         user_id: str,
+        date_range_validation: Optional[str] = None,
         **kwargs,
     ) -> AdminConsumeUserItem:
         instance = cls()
@@ -257,6 +276,8 @@ class AdminConsumeUserItem(Operation):
         instance.inventory_id = inventory_id
         instance.namespace = namespace
         instance.user_id = user_id
+        if date_range_validation is not None:
+            instance.date_range_validation = date_range_validation
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -284,6 +305,10 @@ class AdminConsumeUserItem(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "dateRangeValidation" in dict_ and dict_["dateRangeValidation"] is not None:
+            instance.date_range_validation = str(dict_["dateRangeValidation"])
+        elif include_empty:
+            instance.date_range_validation = ""
         return instance
 
     @staticmethod
@@ -293,6 +318,7 @@ class AdminConsumeUserItem(Operation):
             "inventoryId": "inventory_id",
             "namespace": "namespace",
             "userId": "user_id",
+            "dateRangeValidation": "date_range_validation",
         }
 
     @staticmethod
@@ -302,6 +328,7 @@ class AdminConsumeUserItem(Operation):
             "inventoryId": True,
             "namespace": True,
             "userId": True,
+            "dateRangeValidation": False,
         }
 
     # endregion static methods

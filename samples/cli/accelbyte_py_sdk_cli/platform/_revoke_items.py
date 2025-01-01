@@ -70,4 +70,4 @@ def revoke_items(
 
 
 revoke_items.operation_id = "revokeItems"
-revoke_items.is_deprecated = False
+revoke_items.is_deprecated = True

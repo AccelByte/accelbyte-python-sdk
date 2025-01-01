@@ -63,4 +63,4 @@ def admin_get_global_config(
 
 
 admin_get_global_config.operation_id = "adminGetGlobalConfig"
-admin_get_global_config.is_deprecated = False
+admin_get_global_config.is_deprecated = True

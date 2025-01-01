@@ -69,4 +69,4 @@ def delete_session_local_ds(
 
 
 delete_session_local_ds.operation_id = "DeleteSessionLocalDS"
-delete_session_local_ds.is_deprecated = False
+delete_session_local_ds.is_deprecated = True

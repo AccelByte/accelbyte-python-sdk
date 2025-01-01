@@ -77,4 +77,4 @@ def create_session(
 
 
 create_session.operation_id = "CreateSession"
-create_session.is_deprecated = False
+create_session.is_deprecated = True

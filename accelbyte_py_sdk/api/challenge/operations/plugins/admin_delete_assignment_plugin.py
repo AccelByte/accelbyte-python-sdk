@@ -36,7 +36,7 @@ from ...models import ResponseError
 class AdminDeleteAssignmentPlugin(Operation):
     """Delete assignment plugin (adminDeleteAssignmentPlugin)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:PLUGIN [DELETE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/plugins/assignment

@@ -79,4 +79,4 @@ def admin_import_profanity_filters_from_file(
 admin_import_profanity_filters_from_file.operation_id = (
     "adminImportProfanityFiltersFromFile"
 )
-admin_import_profanity_filters_from_file.is_deprecated = False
+admin_import_profanity_filters_from_file.is_deprecated = True

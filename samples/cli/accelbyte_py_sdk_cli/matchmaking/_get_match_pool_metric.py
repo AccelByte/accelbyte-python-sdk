@@ -69,4 +69,4 @@ def get_match_pool_metric(
 
 
 get_match_pool_metric.operation_id = "GetMatchPoolMetric"
-get_match_pool_metric.is_deprecated = False
+get_match_pool_metric.is_deprecated = True

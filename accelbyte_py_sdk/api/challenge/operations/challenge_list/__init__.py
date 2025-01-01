@@ -8,12 +8,15 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.11.1"
+__version__ = "1.12.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
 from .get_challenges import GetChallenges
-from .get_challenges import StatusEnum as GetChallengesStatusEnum
+from .get_challenges import (
+    SortByEnum as GetChallengesSortByEnum,
+    StatusEnum as GetChallengesStatusEnum,
+)
 from .public_get_scheduled_goals import PublicGetScheduledGoals

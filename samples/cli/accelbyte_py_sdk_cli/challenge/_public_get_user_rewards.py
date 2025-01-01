@@ -39,6 +39,8 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 
 
 @click.command()
+@click.option("--challenge_code", "challenge_code", type=str)
+@click.option("--goal_progression_id", "goal_progression_id", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
 @click.option("--sort_by", "sort_by", type=str)
@@ -48,6 +50,8 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def public_get_user_rewards(
+    challenge_code: Optional[str] = None,
+    goal_progression_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[str] = None,
@@ -66,6 +70,8 @@ def public_get_user_rewards(
     else:
         login_as_internal(login_as)
     result, error = public_get_user_rewards_internal(
+        challenge_code=challenge_code,
+        goal_progression_id=goal_progression_id,
         limit=limit,
         offset=offset,
         sort_by=sort_by,

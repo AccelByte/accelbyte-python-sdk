@@ -75,6 +75,10 @@ class RequestOneTimeLinkingCodeV3(Operation):
 
         securities: [BEARER_AUTH]
 
+        redirect_uri: (redirectUri) OPTIONAL str in form_data
+
+        state: (state) OPTIONAL str in form_data
+
         platform_id: (platformId) REQUIRED str in form_data
 
     Responses:
@@ -90,6 +94,8 @@ class RequestOneTimeLinkingCodeV3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
+    redirect_uri: str  # OPTIONAL in [form_data]
+    state: str  # OPTIONAL in [form_data]
     platform_id: str  # REQUIRED in [form_data]
 
     # endregion fields
@@ -135,6 +141,10 @@ class RequestOneTimeLinkingCodeV3(Operation):
 
     def get_form_data_params(self) -> dict:
         result = {}
+        if hasattr(self, "redirect_uri"):
+            result["redirectUri"] = self.redirect_uri
+        if hasattr(self, "state"):
+            result["state"] = self.state
         if hasattr(self, "platform_id"):
             result["platformId"] = self.platform_id
         return result
@@ -147,6 +157,14 @@ class RequestOneTimeLinkingCodeV3(Operation):
 
     # region with_x methods
 
+    def with_redirect_uri(self, value: str) -> RequestOneTimeLinkingCodeV3:
+        self.redirect_uri = value
+        return self
+
+    def with_state(self, value: str) -> RequestOneTimeLinkingCodeV3:
+        self.state = value
+        return self
+
     def with_platform_id(self, value: str) -> RequestOneTimeLinkingCodeV3:
         self.platform_id = value
         return self
@@ -157,6 +175,14 @@ class RequestOneTimeLinkingCodeV3(Operation):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "redirect_uri") and self.redirect_uri:
+            result["redirectUri"] = str(self.redirect_uri)
+        elif include_empty:
+            result["redirectUri"] = ""
+        if hasattr(self, "state") and self.state:
+            result["state"] = str(self.state)
+        elif include_empty:
+            result["state"] = ""
         if hasattr(self, "platform_id") and self.platform_id:
             result["platformId"] = str(self.platform_id)
         elif include_empty:
@@ -202,9 +228,19 @@ class RequestOneTimeLinkingCodeV3(Operation):
     # region static methods
 
     @classmethod
-    def create(cls, platform_id: str, **kwargs) -> RequestOneTimeLinkingCodeV3:
+    def create(
+        cls,
+        platform_id: str,
+        redirect_uri: Optional[str] = None,
+        state: Optional[str] = None,
+        **kwargs,
+    ) -> RequestOneTimeLinkingCodeV3:
         instance = cls()
         instance.platform_id = platform_id
+        if redirect_uri is not None:
+            instance.redirect_uri = redirect_uri
+        if state is not None:
+            instance.state = state
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -214,6 +250,14 @@ class RequestOneTimeLinkingCodeV3(Operation):
         cls, dict_: dict, include_empty: bool = False
     ) -> RequestOneTimeLinkingCodeV3:
         instance = cls()
+        if "redirectUri" in dict_ and dict_["redirectUri"] is not None:
+            instance.redirect_uri = str(dict_["redirectUri"])
+        elif include_empty:
+            instance.redirect_uri = ""
+        if "state" in dict_ and dict_["state"] is not None:
+            instance.state = str(dict_["state"])
+        elif include_empty:
+            instance.state = ""
         if "platformId" in dict_ and dict_["platformId"] is not None:
             instance.platform_id = str(dict_["platformId"])
         elif include_empty:
@@ -223,12 +267,16 @@ class RequestOneTimeLinkingCodeV3(Operation):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "redirectUri": "redirect_uri",
+            "state": "state",
             "platformId": "platform_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "redirectUri": False,
+            "state": False,
             "platformId": True,
         }
 

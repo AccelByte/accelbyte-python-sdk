@@ -71,4 +71,4 @@ def get_session_history_detailed(
 
 
 get_session_history_detailed.operation_id = "GetSessionHistoryDetailed"
-get_session_history_detailed.is_deprecated = False
+get_session_history_detailed.is_deprecated = True

@@ -71,4 +71,4 @@ def admin_join_party_v1(
 
 
 admin_join_party_v1.operation_id = "adminJoinPartyV1"
-admin_join_party_v1.is_deprecated = False
+admin_join_party_v1.is_deprecated = True

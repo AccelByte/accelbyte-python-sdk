@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Gdpr Service."""
 
-__version__ = "2.15.0"
+__version__ = "2.16.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -26,6 +26,12 @@ from .dto_platform_account_closure_client_request import (
 )
 from .dto_platform_account_closure_client_response import (
     DtoPlatformAccountClosureClientResponse,
+)
+from .dto_platform_account_closure_clients_response import (
+    DtoPlatformAccountClosureClientsResponse,
+)
+from .dto_platform_account_closure_mock_request import (
+    DtoPlatformAccountClosureMockRequest,
 )
 from .dto_s2s_data_request_summary import DtoS2SDataRequestSummary
 from .dto_s2s_data_request_summary import (
@@ -47,6 +53,8 @@ from .dto_user_platform_account_closure_histories_response import (
 from .dto_user_platform_account_closure_history import (
     DtoUserPlatformAccountClosureHistory,
 )
+from .dto_xbox_bp_cert_validation_request import DtoXboxBPCertValidationRequest
+from .dto_xbox_bp_cert_validation_response import DtoXboxBPCertValidationResponse
 from .models_data_retrieval_response import ModelsDataRetrievalResponse
 from .models_deletion_data import ModelsDeletionData
 from .models_deletion_status import ModelsDeletionStatus

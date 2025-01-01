@@ -34,7 +34,6 @@ from accelbyte_py_sdk.api.iam import (
     admin_update_login_allowlist_v3 as admin_update_login_allowlist_v3_internal,
 )
 from accelbyte_py_sdk.api.iam.models import ModelLoginAllowlistRequest
-from accelbyte_py_sdk.api.iam.models import ModelLoginAllowlistResponse
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 

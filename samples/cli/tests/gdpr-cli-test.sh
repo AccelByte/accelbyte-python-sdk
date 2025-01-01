@@ -34,40 +34,43 @@ gdpr-get-admin-email-configuration --login_with_auth "Bearer foo"
 gdpr-update-admin-email-configuration '["EAxcVpFrttufHIRd", "H9UzVRiXbqlAw7r6", "W2ktQG0h5JAav5kR"]' --login_with_auth "Bearer foo"
 gdpr-save-admin-email-configuration '["a62WopBJHPtcDs8b", "BZLCXLx8bbgorQeF", "bQ1g7qbPngUNB1vR"]' --login_with_auth "Bearer foo"
 gdpr-delete-admin-email-configuration '["odwpzS6DaDpv8N7Z", "QVqGj6oDLjWjkY1a", "XlFcDtgOjchIua5t"]' --login_with_auth "Bearer foo"
-gdpr-admin-get-platform-account-closure-client 'WEIC32ogW7olvbTg' --login_with_auth "Bearer foo"
-gdpr-admin-update-platform-account-closure-client '{"clientId": "rhRTcPiSuL0Sly6X", "secret": "M4OI18mAQLnzjMf8"}' 'GZ2WBZqxYG3aREAu' --login_with_auth "Bearer foo"
-gdpr-admin-delete-platform-account-closure-client '2D6QVKNCWP75TB0i' --login_with_auth "Bearer foo"
+gdpr-admin-get-platform-account-closure-clients --login_with_auth "Bearer foo"
+gdpr-admin-validate-xbox-bp-cert-file '{"bpCert": "WEIC32ogW7olvbTg", "password": "rhRTcPiSuL0Sly6X"}' --login_with_auth "Bearer foo"
+gdpr-admin-get-platform-account-closure-client 'M4OI18mAQLnzjMf8' --login_with_auth "Bearer foo"
+gdpr-admin-update-platform-account-closure-client '{"bpCert": "GZ2WBZqxYG3aREAu", "bpCertFileName": "2D6QVKNCWP75TB0i", "clientId": "7pKxR8dl0zRVW4EZ", "password": "G9m0XcgGVbMqSszE", "publisherKey": "8GHavj7AorKsxwko", "sandboxId": "sAVerXpc1C8XfwHu", "secret": "Keb9l3rGN9A3sNm8"}' '4hddSpHt0P7MIIR7' --login_with_auth "Bearer foo"
+gdpr-admin-delete-platform-account-closure-client 'CkyF6C7duuyZ0GhD' --login_with_auth "Bearer foo"
+gdpr-admin-mock-platform-account-closure-data '{"platformUserId": "ogqrhBRd8lDR6qVN", "sandbox": "PRZYdFLIAjGGJddV", "startImmediately": true}' 'Rgat0SevkLGMS0ly' --login_with_auth "Bearer foo"
 gdpr-admin-get-list-personal-data-request --login_with_auth "Bearer foo"
 gdpr-admin-get-services-configuration --login_with_auth "Bearer foo"
-gdpr-admin-update-services-configuration '{"services": [{"extendConfig": {"appName": "7pKxR8dl0zRVW4EZ", "namespace": "G9m0XcgGVbMqSszE"}, "id": "8GHavj7AorKsxwko", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "5MecdKi5r6QEa1ys"}, "type": "EXTEND"}, {"extendConfig": {"appName": "Ezth6mXhzkzWkFeZ", "namespace": "SoEAcBdW19m4eu6d"}, "id": "5tA5jUmiTqpyhPFd", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "LzFQN05MYzYiKWe5"}, "type": "EXTEND"}, {"extendConfig": {"appName": "dFLIAjGGJddVCvu9", "namespace": "vx5KQ7KYnIuMBvaO"}, "id": "35llzQRaT5kPxUfo", "serviceConfig": {"protocol": "EVENT", "skipAck": true, "url": "06UpOXGSLmCVuHOP"}, "type": "EXTEND"}]}' --login_with_auth "Bearer foo"
+gdpr-admin-update-services-configuration '{"services": [{"extendConfig": {"appName": "uI9a2I9u6Vpbsx5w", "namespace": "8hqUI06UpOXGSLmC"}, "id": "VuHOPlLlkvR8sKgn", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "kgghGoYupD391C2q"}, "type": "SERVICE"}, {"extendConfig": {"appName": "6SCwGrncqmLtjQHA", "namespace": "f8TgoNm03VLisV6z"}, "id": "wPuo3td6TC6I3lMj", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "WN2laRlxfcjHfYak"}, "type": "EXTEND"}, {"extendConfig": {"appName": "CTqGkE7wcWfDslpJ", "namespace": "SqGAXQ0yYoNRKd3I"}, "id": "L5TAQ6iiPlSC2uE4", "serviceConfig": {"protocol": "EVENT", "skipAck": true, "url": "Vwdo3fePqIJA8IHt"}, "type": "SERVICE"}]}' --login_with_auth "Bearer foo"
 gdpr-admin-reset-services-configuration --login_with_auth "Bearer foo"
 gdpr-admin-get-platform-account-closure-services-configuration --login_with_auth "Bearer foo"
-gdpr-admin-update-platform-account-closure-services-configuration '{"services": [{"extendConfig": {"appName": "sNveabntBSxTeIv5", "namespace": "3HGCiljvjKoyD6SC"}, "id": "wGrncqmLtjQHAf8T", "serviceConfig": {"protocol": "EVENT", "skipAck": false, "url": "7FXGk2s9Q0mPVo3t"}, "type": "SERVICE"}, {"extendConfig": {"appName": "td6TC6I3lMjGSWN2", "namespace": "laRlxfcjHfYakUCT"}, "id": "qGkE7wcWfDslpJSq", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "LPziZMdjxcBZufQx"}, "type": "EXTEND"}, {"extendConfig": {"appName": "6iiPlSC2uE4o5Vwd", "namespace": "o3fePqIJA8IHtrkm"}, "id": "u0hpDDWVAla2l5BY", "serviceConfig": {"protocol": "EVENT", "skipAck": true, "url": "E0mit9RGCCHYzUOc"}, "type": "SERVICE"}]}' --login_with_auth "Bearer foo"
+gdpr-admin-update-platform-account-closure-services-configuration '{"services": [{"extendConfig": {"appName": "qb8RwNmn9HrNQy4u", "namespace": "ZAAiE0mit9RGCCHY"}, "id": "zUOcEdscKHPEqgA8", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "o7TTr1DmrhZv15T7"}, "type": "SERVICE"}, {"extendConfig": {"appName": "s4fYcTVU6RBt0zYo", "namespace": "McHyCUEXlAvxJMda"}, "id": "lwSyliWMNW5NyLu0", "serviceConfig": {"protocol": "EVENT", "skipAck": true, "url": "VHh2EI8JlDbPWbQ6"}, "type": "SERVICE"}, {"extendConfig": {"appName": "lNmqRBaAkLnvxkT1", "namespace": "X68cmDc3fxU8MyKr"}, "id": "QpM4hkkK6KKXNB3G", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "qmF51TkhjYnaq6fo"}, "type": "SERVICE"}]}' --login_with_auth "Bearer foo"
 gdpr-admin-reset-platform-account-closure-services-configuration --login_with_auth "Bearer foo"
 gdpr-admin-get-user-platform-account-closure-histories --login_with_auth "Bearer foo"
-gdpr-admin-get-user-account-deletion-request 'zzWi9gwQYv7t1o7T' --login_with_auth "Bearer foo"
-gdpr-admin-submit-user-account-deletion-request 'Tr1DmrhZv15T7quI' --login_with_auth "Bearer foo"
-gdpr-admin-cancel-user-account-deletion-request 'OvBMcaYmvCkGZ5dA' --login_with_auth "Bearer foo"
-gdpr-admin-get-user-personal-data-requests 'gqxpBFmaLoxozr6w' --login_with_auth "Bearer foo"
-gdpr-admin-request-data-retrieval 'fNPX2bOItRMvqtlB' --login_with_auth "Bearer foo"
-gdpr-admin-cancel-user-personal-data-request '2jJCSQT279ZZPYGu' '0rdlgdWyOtXi3cho' --login_with_auth "Bearer foo"
-gdpr-admin-generate-personal-data-url 'QrpOsDBU5SepjChB' '3V0v52Dlym6puQ23' 'xoJ8aeCnaLpUKp44' --login_with_auth "Bearer foo"
-gdpr-public-submit-user-account-deletion-request 'YUDjasWIPUvmEejt' 'GeoyIPa8ZRrvjj7i' --login_with_auth "Bearer foo"
-gdpr-public-cancel-user-account-deletion-request 'l35MXbN9oCMNqq98' --login_with_auth "Bearer foo"
-gdpr-public-get-user-account-deletion-status 'SjTvhZNkSQ70D0H6' --login_with_auth "Bearer foo"
-gdpr-public-get-user-personal-data-requests 'BXksUC9b6i5lZC9x' --login_with_auth "Bearer foo"
-gdpr-public-request-data-retrieval 'v32e8c5csSovoqsZ' 'NBdte9NDUPVJf6c2' --login_with_auth "Bearer foo"
-gdpr-public-cancel-user-personal-data-request 'Z0QZxfgPubTDIHrv' 'qAThuwjRHpKKTlmV' --login_with_auth "Bearer foo"
-gdpr-public-generate-personal-data-url 'r9XuoJbRFQSKVPHb' 'n4Xxtu7LQRENjEEz' 'tx1WsYSiZqan0nSB' --login_with_auth "Bearer foo"
-gdpr-public-submit-my-account-deletion-request 'Jroav91GXlvPG6bF' 'YReVHQipcCx9Zw5D' --login_with_auth "Bearer foo"
+gdpr-admin-get-user-account-deletion-request 'vXa3bMrXsDr6kILs' --login_with_auth "Bearer foo"
+gdpr-admin-submit-user-account-deletion-request 'SSyDdmykmoPYgc2L' --login_with_auth "Bearer foo"
+gdpr-admin-cancel-user-account-deletion-request '4jk4Lo0LSP0pf4Ix' --login_with_auth "Bearer foo"
+gdpr-admin-get-user-personal-data-requests 'jUkl535X3ateEKDp' --login_with_auth "Bearer foo"
+gdpr-admin-request-data-retrieval 'ADz1x3poD3Qgb3bo' --login_with_auth "Bearer foo"
+gdpr-admin-cancel-user-personal-data-request 'LQQ1MzH7Qm8bwbmX' 'gdAPh1EThG96gAFK' --login_with_auth "Bearer foo"
+gdpr-admin-generate-personal-data-url 'K2WDgCcxvONZm3Ee' 'ERmDnyeFoF7VSZ6p' 'f3vneSD2Tb3g7mSQ' --login_with_auth "Bearer foo"
+gdpr-public-submit-user-account-deletion-request 'UhAEtrmjqU6YE3p4' 'lSck0ZHn5GI39YBH' --login_with_auth "Bearer foo"
+gdpr-public-cancel-user-account-deletion-request 'qaTHeKtW18iGeUlc' --login_with_auth "Bearer foo"
+gdpr-public-get-user-account-deletion-status '9d9sogWa24CKNS0G' --login_with_auth "Bearer foo"
+gdpr-public-get-user-personal-data-requests 'qVvUfHQvsHXNUNe4' --login_with_auth "Bearer foo"
+gdpr-public-request-data-retrieval 'mhgo5QB65lSAiYnN' 'jkfZrQvGgbLdLsFz' --login_with_auth "Bearer foo"
+gdpr-public-cancel-user-personal-data-request 'HkBMr1yrOMlNFSrU' 'EirnjX9fDmIbeZxz' --login_with_auth "Bearer foo"
+gdpr-public-generate-personal-data-url 'fTcyiuATus9hsfpF' 'DcSDG8aMVGLiBNrD' 'jqoxcwgGLXpUL4pp' --login_with_auth "Bearer foo"
+gdpr-public-submit-my-account-deletion-request '2ncYAHdNzDmeIP6r' 'OvDz9KOsb392k6Ym' --login_with_auth "Bearer foo"
 gdpr-public-cancel-my-account-deletion-request --login_with_auth "Bearer foo"
 gdpr-public-get-my-account-deletion-status --login_with_auth "Bearer foo"
-gdpr-s2s-get-list-finished-account-deletion-request '2L7vIYhGGSyEW4ZJ' 'J42d3PBddN8S48l9' --login_with_auth "Bearer foo"
-gdpr-s2s-get-list-finished-personal-data-request 'lyNApflxqMrj3oZk' '03QXcKMDYDDxHSZj' --login_with_auth "Bearer foo"
-gdpr-s2s-get-data-request-by-request-id 'tqXyJ58f7Gc26Sai' --login_with_auth "Bearer foo"
-gdpr-s2s-submit-user-account-deletion-request 'GVkydwYWQG26yUZN' --login_with_auth "Bearer foo"
-gdpr-s2s-request-data-retrieval 'mTBcvrbYCwZtxFHy' --login_with_auth "Bearer foo"
-gdpr-s2s-generate-personal-data-url 'PLtI8ilbyDPUIj88' 'cekdqCt81P1ktfIo' --login_with_auth "Bearer foo"
+gdpr-s2s-get-list-finished-account-deletion-request 'JFfRByjlBiuFM3FI' 'oVk8T3GpAnkCmBUq' --login_with_auth "Bearer foo"
+gdpr-s2s-get-list-finished-personal-data-request 'g2SCnqntX9y1aZSW' 'MiVi10sG6vxkfUcm' --login_with_auth "Bearer foo"
+gdpr-s2s-get-data-request-by-request-id 'qRRbceJ5i0EeDxOg' --login_with_auth "Bearer foo"
+gdpr-s2s-submit-user-account-deletion-request 'BnhhqElIaDml48wd' --login_with_auth "Bearer foo"
+gdpr-s2s-request-data-retrieval 'NFLTm5T50x9WT0Gf' --login_with_auth "Bearer foo"
+gdpr-s2s-generate-personal-data-url 'H2rtOa4EXsXzOXQA' 'k4mqrxzTtuLl4Xlb' --login_with_auth "Bearer foo"
 exit()
 END
 
@@ -87,7 +90,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..40"
+echo "1..43"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -110,267 +113,288 @@ eval_tap $? 3 'GetAdminEmailConfiguration' test.out
 
 #- 4 UpdateAdminEmailConfiguration
 $PYTHON -m $MODULE 'gdpr-update-admin-email-configuration' \
-    '["vmv9gsR5cJcHm3SZ", "LxoRDFuuuySj29a9", "LJE8HoRS1X2PFAAM"]' \
+    '["GL8QOxtjzm8y2wNh", "mwoYZyI4EFZKBcYr", "CEAE7WIsfmx40NLR"]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 4 'UpdateAdminEmailConfiguration' test.out
 
 #- 5 SaveAdminEmailConfiguration
 $PYTHON -m $MODULE 'gdpr-save-admin-email-configuration' \
-    '["wzHPxB1UskYs4Yw2", "0DOqOBSC2DKHRuPM", "MWH8Yb33T5UBJCjf"]' \
+    '["c6m8heKnWhzfe2Nu", "beoKFeIaFQCYoDPI", "CpnduEEQlULdJz4m"]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'SaveAdminEmailConfiguration' test.out
 
 #- 6 DeleteAdminEmailConfiguration
 $PYTHON -m $MODULE 'gdpr-delete-admin-email-configuration' \
-    '["cnLRfxeCSz9WEi8K", "lloeH0JT1yduat2v", "QR3biBfsu4jmsRE2"]' \
+    '["nRBkMNxvvKgAT8mJ", "rYq6hRkloqxM3gpw", "xcfMy9XzjjI5YbsK"]' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 6 'DeleteAdminEmailConfiguration' test.out
 
-#- 7 AdminGetPlatformAccountClosureClient
+#- 7 AdminGetPlatformAccountClosureClients
+$PYTHON -m $MODULE 'gdpr-admin-get-platform-account-closure-clients' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 7 'AdminGetPlatformAccountClosureClients' test.out
+
+#- 8 AdminValidateXboxBPCertFile
+$PYTHON -m $MODULE 'gdpr-admin-validate-xbox-bp-cert-file' \
+    '{"bpCert": "oADkzJEN2VHzih3b", "password": "it0VWn3CO39PXDNx"}' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 8 'AdminValidateXboxBPCertFile' test.out
+
+#- 9 AdminGetPlatformAccountClosureClient
 $PYTHON -m $MODULE 'gdpr-admin-get-platform-account-closure-client' \
-    'w1yEkLgh3tIYt4Sq' \
+    'tXgeO3FgkXhjDzaQ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 7 'AdminGetPlatformAccountClosureClient' test.out
+eval_tap $? 9 'AdminGetPlatformAccountClosureClient' test.out
 
-#- 8 AdminUpdatePlatformAccountClosureClient
+#- 10 AdminUpdatePlatformAccountClosureClient
 $PYTHON -m $MODULE 'gdpr-admin-update-platform-account-closure-client' \
-    '{"clientId": "YUTLDx9gIiDandpG", "secret": "T2t24aOMh5eC3IHe"}' \
-    'HSKLCa3xreNDUWeh' \
+    '{"bpCert": "Y3snn2ZkP7cFdP43", "bpCertFileName": "e5dC9XIBudfZgrbH", "clientId": "DIDm4hMzF4Txoden", "password": "SrUTvfqU0bfoMm5c", "publisherKey": "TtFWbotQyXJRcQWs", "sandboxId": "mqPNs92epxk0i8Vx", "secret": "sZNereSvf9699mCE"}' \
+    'HThUJkETAsSp7gh4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 8 'AdminUpdatePlatformAccountClosureClient' test.out
+eval_tap $? 10 'AdminUpdatePlatformAccountClosureClient' test.out
 
-#- 9 AdminDeletePlatformAccountClosureClient
+#- 11 AdminDeletePlatformAccountClosureClient
 $PYTHON -m $MODULE 'gdpr-admin-delete-platform-account-closure-client' \
-    'wH3q31A806DJgas4' \
+    'TeUTkOkAYfJB8AT9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 9 'AdminDeletePlatformAccountClosureClient' test.out
+eval_tap $? 11 'AdminDeletePlatformAccountClosureClient' test.out
 
-#- 10 AdminGetListPersonalDataRequest
+#- 12 AdminMockPlatformAccountClosureData
+$PYTHON -m $MODULE 'gdpr-admin-mock-platform-account-closure-data' \
+    '{"platformUserId": "t4Tv207Y2QD3oD5f", "sandbox": "LCr3OOlXVv8ZGF7u", "startImmediately": false}' \
+    '0o4zGYY7KQI1AeFg' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 12 'AdminMockPlatformAccountClosureData' test.out
+
+#- 13 AdminGetListPersonalDataRequest
 $PYTHON -m $MODULE 'gdpr-admin-get-list-personal-data-request' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 10 'AdminGetListPersonalDataRequest' test.out
+eval_tap $? 13 'AdminGetListPersonalDataRequest' test.out
 
-#- 11 AdminGetServicesConfiguration
+#- 14 AdminGetServicesConfiguration
 $PYTHON -m $MODULE 'gdpr-admin-get-services-configuration' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 11 'AdminGetServicesConfiguration' test.out
+eval_tap $? 14 'AdminGetServicesConfiguration' test.out
 
-#- 12 AdminUpdateServicesConfiguration
+#- 15 AdminUpdateServicesConfiguration
 $PYTHON -m $MODULE 'gdpr-admin-update-services-configuration' \
-    '{"services": [{"extendConfig": {"appName": "b6z3LNUj7fdgLA84", "namespace": "Z8YYk6QEgJjBbEDo"}, "id": "Nf3n0hEoRCAcf80z", "serviceConfig": {"protocol": "EVENT", "skipAck": true, "url": "FyabWAgIUXiI07A6"}, "type": "EXTEND"}, {"extendConfig": {"appName": "gpwxcfMy9XzjjI5Y", "namespace": "bsKoADkzJEN2VHzi"}, "id": "h3bit0VWn3CO39PX", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "xtXgeO3FgkXhjDza"}, "type": "SERVICE"}, {"extendConfig": {"appName": "Y3snn2ZkP7cFdP43", "namespace": "e5dC9XIBudfZgrbH"}, "id": "DIDm4hMzF4Txoden", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "UTvfqU0bfoMm5cTt"}, "type": "SERVICE"}]}' \
+    '{"services": [{"extendConfig": {"appName": "PqaOkvo1aolB4lkK", "namespace": "B4EYOkQ1jMD3cym8"}, "id": "xIfkOVW2grREOLx0", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "w3HICQLfl7MUBG7q"}, "type": "SERVICE"}, {"extendConfig": {"appName": "5UDrT6QXCs5SPBbR", "namespace": "PZTF6oQAXVG7tnsZ"}, "id": "g5QgXjvyGJPN4eXb", "serviceConfig": {"protocol": "EVENT", "skipAck": true, "url": "50Kv6ecnEevcAx2K"}, "type": "SERVICE"}, {"extendConfig": {"appName": "ehyxlNsjUgxBkF6w", "namespace": "FPoJeQediogEhhM2"}, "id": "rIizGdKvOPdq5xrg", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "Smy1DN9LFkYW5DQy"}, "type": "EXTEND"}]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 12 'AdminUpdateServicesConfiguration' test.out
+eval_tap $? 15 'AdminUpdateServicesConfiguration' test.out
 
-#- 13 AdminResetServicesConfiguration
+#- 16 AdminResetServicesConfiguration
 $PYTHON -m $MODULE 'gdpr-admin-reset-services-configuration' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 13 'AdminResetServicesConfiguration' test.out
+eval_tap $? 16 'AdminResetServicesConfiguration' test.out
 
-#- 14 AdminGetPlatformAccountClosureServicesConfiguration
+#- 17 AdminGetPlatformAccountClosureServicesConfiguration
 $PYTHON -m $MODULE 'gdpr-admin-get-platform-account-closure-services-configuration' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 14 'AdminGetPlatformAccountClosureServicesConfiguration' test.out
+eval_tap $? 17 'AdminGetPlatformAccountClosureServicesConfiguration' test.out
 
-#- 15 AdminUpdatePlatformAccountClosureServicesConfiguration
+#- 18 AdminUpdatePlatformAccountClosureServicesConfiguration
 $PYTHON -m $MODULE 'gdpr-admin-update-platform-account-closure-services-configuration' \
-    '{"services": [{"extendConfig": {"appName": "WbotQyXJRcQWsmqP", "namespace": "Ns92epxk0i8VxsZN"}, "id": "ereSvf9699mCEHTh", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "MNFIurjh2imdb4rb"}, "type": "EXTEND"}, {"extendConfig": {"appName": "kAYfJB8AT9t4Tv20", "namespace": "7Y2QD3oD5fLCr3OO"}, "id": "lXVv8ZGF7uYnGzpi", "serviceConfig": {"protocol": "EVENT", "skipAck": true, "url": "7KQI1AeFgPqaOkvo"}, "type": "SERVICE"}, {"extendConfig": {"appName": "aolB4lkKB4EYOkQ1", "namespace": "jMD3cym8xIfkOVW2"}, "id": "grREOLx0KOww3HIC", "serviceConfig": {"protocol": "EVENT", "skipAck": false, "url": "tl9Zuhytm5UDrT6Q"}, "type": "SERVICE"}]}' \
+    '{"services": [{"extendConfig": {"appName": "KXVFCmpo6sPwVOED", "namespace": "SJsEK5QpNhlI2iS5"}, "id": "EpGhhvXYck0upMzU", "serviceConfig": {"protocol": "GRPC", "skipAck": false, "url": "MA9ORxpzwLR2AK6e"}, "type": "SERVICE"}, {"extendConfig": {"appName": "UGPJsw1fiP80G9Pc", "namespace": "lxcft2ulIJzPyrVE"}, "id": "iOG4UcqsuGKHhMRW", "serviceConfig": {"protocol": "GRPC", "skipAck": true, "url": "d3DlhLuIpomM8sm1"}, "type": "SERVICE"}, {"extendConfig": {"appName": "iaI1mX2tJoARtdbB", "namespace": "e7udsMrok0WvGYYn"}, "id": "x4V709xbnGezKsDw", "serviceConfig": {"protocol": "EVENT", "skipAck": false, "url": "805tVg8JqU0jZpjv"}, "type": "SERVICE"}]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 15 'AdminUpdatePlatformAccountClosureServicesConfiguration' test.out
+eval_tap $? 18 'AdminUpdatePlatformAccountClosureServicesConfiguration' test.out
 
-#- 16 AdminResetPlatformAccountClosureServicesConfiguration
+#- 19 AdminResetPlatformAccountClosureServicesConfiguration
 $PYTHON -m $MODULE 'gdpr-admin-reset-platform-account-closure-services-configuration' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 16 'AdminResetPlatformAccountClosureServicesConfiguration' test.out
+eval_tap $? 19 'AdminResetPlatformAccountClosureServicesConfiguration' test.out
 
-#- 17 AdminGetUserPlatformAccountClosureHistories
+#- 20 AdminGetUserPlatformAccountClosureHistories
 $PYTHON -m $MODULE 'gdpr-admin-get-user-platform-account-closure-histories' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 17 'AdminGetUserPlatformAccountClosureHistories' test.out
+eval_tap $? 20 'AdminGetUserPlatformAccountClosureHistories' test.out
 
-#- 18 AdminGetUserAccountDeletionRequest
+#- 21 AdminGetUserAccountDeletionRequest
 $PYTHON -m $MODULE 'gdpr-admin-get-user-account-deletion-request' \
-    'RKLRkb738HGS6rDg' \
+    'WbfUpaXp5JMl5LL4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 18 'AdminGetUserAccountDeletionRequest' test.out
+eval_tap $? 21 'AdminGetUserAccountDeletionRequest' test.out
 
-#- 19 AdminSubmitUserAccountDeletionRequest
+#- 22 AdminSubmitUserAccountDeletionRequest
 $PYTHON -m $MODULE 'gdpr-admin-submit-user-account-deletion-request' \
-    'MdIIlhS1fSiM9331' \
+    'bTxBmZjdrrIxsB0N' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 19 'AdminSubmitUserAccountDeletionRequest' test.out
+eval_tap $? 22 'AdminSubmitUserAccountDeletionRequest' test.out
 
-#- 20 AdminCancelUserAccountDeletionRequest
+#- 23 AdminCancelUserAccountDeletionRequest
 $PYTHON -m $MODULE 'gdpr-admin-cancel-user-account-deletion-request' \
-    'm7Ta1PsKc50Kv6ec' \
+    'RsB1fPqqRRulpqpy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 20 'AdminCancelUserAccountDeletionRequest' test.out
+eval_tap $? 23 'AdminCancelUserAccountDeletionRequest' test.out
 
-#- 21 AdminGetUserPersonalDataRequests
+#- 24 AdminGetUserPersonalDataRequests
 $PYTHON -m $MODULE 'gdpr-admin-get-user-personal-data-requests' \
-    'nEevcAx2K2zkRenm' \
+    'mDkQhtrHWwRVnwVB' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 21 'AdminGetUserPersonalDataRequests' test.out
+eval_tap $? 24 'AdminGetUserPersonalDataRequests' test.out
 
-#- 22 AdminRequestDataRetrieval
+#- 25 AdminRequestDataRetrieval
 $PYTHON -m $MODULE 'gdpr-admin-request-data-retrieval' \
-    'PZnGBt4P7WnbdSJt' \
+    'OqOHi8pWGd1juYhi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 22 'AdminRequestDataRetrieval' test.out
+eval_tap $? 25 'AdminRequestDataRetrieval' test.out
 
-#- 23 AdminCancelUserPersonalDataRequest
+#- 26 AdminCancelUserPersonalDataRequest
 $PYTHON -m $MODULE 'gdpr-admin-cancel-user-personal-data-request' \
-    'jX7ZshZyZl5x4bRX' \
-    'BHUTrDzZSKscfOcY' \
+    'qjRJOqB5F93zFQbJ' \
+    'ndUDpdONneAczbBd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 23 'AdminCancelUserPersonalDataRequest' test.out
+eval_tap $? 26 'AdminCancelUserPersonalDataRequest' test.out
 
-#- 24 AdminGeneratePersonalDataURL
+#- 27 AdminGeneratePersonalDataURL
 $PYTHON -m $MODULE 'gdpr-admin-generate-personal-data-url' \
-    'u3dpCROYqUiGKXVF' \
-    'Cmpo6sPwVOEDSJsE' \
-    'K5QpNhlI2iS5EpGh' \
+    'Hb2slt71B1SmZp2J' \
+    'Zp50CnPb71ORYcmQ' \
+    'bTU5JX8ccLjMXJRk' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 24 'AdminGeneratePersonalDataURL' test.out
+eval_tap $? 27 'AdminGeneratePersonalDataURL' test.out
 
-#- 25 PublicSubmitUserAccountDeletionRequest
+#- 28 PublicSubmitUserAccountDeletionRequest
 $PYTHON -m $MODULE 'gdpr-public-submit-user-account-deletion-request' \
-    'hvXYck0upMzUYnb7' \
-    '6tFkEORV3bu1bNCt' \
+    '0eaKQDOJvrTefglS' \
+    's6g4iY9u02aCNYIW' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 25 'PublicSubmitUserAccountDeletionRequest' test.out
+eval_tap $? 28 'PublicSubmitUserAccountDeletionRequest' test.out
 
-#- 26 PublicCancelUserAccountDeletionRequest
+#- 29 PublicCancelUserAccountDeletionRequest
 $PYTHON -m $MODULE 'gdpr-public-cancel-user-account-deletion-request' \
-    'X7W40V6Do5sYadCC' \
+    'ekp18lOC3mNqF7Bl' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 26 'PublicCancelUserAccountDeletionRequest' test.out
+eval_tap $? 29 'PublicCancelUserAccountDeletionRequest' test.out
 
-#- 27 PublicGetUserAccountDeletionStatus
+#- 30 PublicGetUserAccountDeletionStatus
 $PYTHON -m $MODULE 'gdpr-public-get-user-account-deletion-status' \
-    'FrHHC3DpZxkrQDXu' \
+    '0LcghVHfPEspxwhR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 27 'PublicGetUserAccountDeletionStatus' test.out
+eval_tap $? 30 'PublicGetUserAccountDeletionStatus' test.out
 
-#- 28 PublicGetUserPersonalDataRequests
+#- 31 PublicGetUserPersonalDataRequests
 $PYTHON -m $MODULE 'gdpr-public-get-user-personal-data-requests' \
-    'NFviMarv8mnfHK8C' \
+    'ON0bc1eMbEIjowLq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 28 'PublicGetUserPersonalDataRequests' test.out
+eval_tap $? 31 'PublicGetUserPersonalDataRequests' test.out
 
-#- 29 PublicRequestDataRetrieval
+#- 32 PublicRequestDataRetrieval
 $PYTHON -m $MODULE 'gdpr-public-request-data-retrieval' \
-    'CmE2lPnsbD3SGEdl' \
-    'wuUccE536ugBp3HB' \
+    'c3ecjXJbZDKKoxLE' \
+    '1Y3Dymtj3giPg4x4' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 29 'PublicRequestDataRetrieval' test.out
+eval_tap $? 32 'PublicRequestDataRetrieval' test.out
 
-#- 30 PublicCancelUserPersonalDataRequest
+#- 33 PublicCancelUserPersonalDataRequest
 $PYTHON -m $MODULE 'gdpr-public-cancel-user-personal-data-request' \
-    'vepnDCjgyJlXe36m' \
-    'gWjLfFmteue9nzJ6' \
+    'yiPX6ues1Hhhkg1y' \
+    'LVbLFzHEP8cM4NTw' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 30 'PublicCancelUserPersonalDataRequest' test.out
+eval_tap $? 33 'PublicCancelUserPersonalDataRequest' test.out
 
-#- 31 PublicGeneratePersonalDataURL
+#- 34 PublicGeneratePersonalDataURL
 $PYTHON -m $MODULE 'gdpr-public-generate-personal-data-url' \
-    'fH24T805tVg8JqU0' \
-    'jZpjvsugAOS7u8Ri' \
-    'WyerCSa8SRgwsAj1' \
+    'r0KHaAsmTej52WKi' \
+    '6tArAURt9plCSVq8' \
+    'PdH6hJPUAc0RVwXg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 31 'PublicGeneratePersonalDataURL' test.out
+eval_tap $? 34 'PublicGeneratePersonalDataURL' test.out
 
-#- 32 PublicSubmitMyAccountDeletionRequest
+#- 35 PublicSubmitMyAccountDeletionRequest
 $PYTHON -m $MODULE 'gdpr-public-submit-my-account-deletion-request' \
-    'ik1jglaDXTvKCWwN' \
-    'TAhd2wrS0uPdjhdi' \
+    'AgntLMCuaXBWQi6B' \
+    'qPg4xr0lCancUZGC' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 32 'PublicSubmitMyAccountDeletionRequest' test.out
+eval_tap $? 35 'PublicSubmitMyAccountDeletionRequest' test.out
 
-#- 33 PublicCancelMyAccountDeletionRequest
+#- 36 PublicCancelMyAccountDeletionRequest
 $PYTHON -m $MODULE 'gdpr-public-cancel-my-account-deletion-request' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 33 'PublicCancelMyAccountDeletionRequest' test.out
+eval_tap $? 36 'PublicCancelMyAccountDeletionRequest' test.out
 
-#- 34 PublicGetMyAccountDeletionStatus
+#- 37 PublicGetMyAccountDeletionStatus
 $PYTHON -m $MODULE 'gdpr-public-get-my-account-deletion-status' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 34 'PublicGetMyAccountDeletionStatus' test.out
+eval_tap $? 37 'PublicGetMyAccountDeletionStatus' test.out
 
-#- 35 S2SGetListFinishedAccountDeletionRequest
+#- 38 S2SGetListFinishedAccountDeletionRequest
 $PYTHON -m $MODULE 'gdpr-s2s-get-list-finished-account-deletion-request' \
-    'npng5BLy8wbhMssA' \
-    'HjapIkY9Rf4wP57d' \
+    'HsZYoLfR1KtOv7Zy' \
+    '0b65uvuKNuy0ytZQ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 35 'S2SGetListFinishedAccountDeletionRequest' test.out
+eval_tap $? 38 'S2SGetListFinishedAccountDeletionRequest' test.out
 
-#- 36 S2SGetListFinishedPersonalDataRequest
+#- 39 S2SGetListFinishedPersonalDataRequest
 $PYTHON -m $MODULE 'gdpr-s2s-get-list-finished-personal-data-request' \
-    'BZNR88YbCtmKy8M9' \
-    'zVrjfGXZnqAQUoY1' \
+    '7M6Nzy1adnSKOLFK' \
+    'x1dX4LuWJu3pDMUA' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 36 'S2SGetListFinishedPersonalDataRequest' test.out
+eval_tap $? 39 'S2SGetListFinishedPersonalDataRequest' test.out
 
-#- 37 S2SGetDataRequestByRequestID
+#- 40 S2SGetDataRequestByRequestID
 $PYTHON -m $MODULE 'gdpr-s2s-get-data-request-by-request-id' \
-    'GjlIIk0iKoTTS1j0' \
+    'eeZ97SBROPYuG6Xq' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 37 'S2SGetDataRequestByRequestID' test.out
+eval_tap $? 40 'S2SGetDataRequestByRequestID' test.out
 
-#- 38 S2SSubmitUserAccountDeletionRequest
+#- 41 S2SSubmitUserAccountDeletionRequest
 $PYTHON -m $MODULE 'gdpr-s2s-submit-user-account-deletion-request' \
-    '2o7JjTXAQN0qdskd' \
+    'P6oo7G73zdxTgOfn' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 38 'S2SSubmitUserAccountDeletionRequest' test.out
+eval_tap $? 41 'S2SSubmitUserAccountDeletionRequest' test.out
 
-#- 39 S2SRequestDataRetrieval
+#- 42 S2SRequestDataRetrieval
 $PYTHON -m $MODULE 'gdpr-s2s-request-data-retrieval' \
-    'QV0TqI8EFnmDbxIx' \
+    'wIdlNa29fDLh741I' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 39 'S2SRequestDataRetrieval' test.out
+eval_tap $? 42 'S2SRequestDataRetrieval' test.out
 
-#- 40 S2SGeneratePersonalDataURL
+#- 43 S2SGeneratePersonalDataURL
 $PYTHON -m $MODULE 'gdpr-s2s-generate-personal-data-url' \
-    'i4YKlONk2Q5Y4Jva' \
-    'izwiilatuUjjt9lI' \
+    'slKHzGlLKWUtDQs6' \
+    '1OQAoxyyQpRWCiiP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 40 'S2SGeneratePersonalDataURL' test.out
+eval_tap $? 43 'S2SGeneratePersonalDataURL' test.out
 
 
 fi

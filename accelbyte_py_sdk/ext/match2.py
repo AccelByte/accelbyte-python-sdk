@@ -342,6 +342,7 @@ def create_api_rule_set_payload_example() -> ApiRuleSetPayload:
 def create_api_team_example() -> ApiTeam:
     instance = ApiTeam()
     instance.parties = [create_api_party_example()]
+    instance.team_id = randomize()
     instance.user_i_ds = [randomize()]
     return instance
 
@@ -421,6 +422,7 @@ def create_matchmaker_proposed_proposal_example() -> MatchmakerProposedProposal:
 def create_matchmaker_team_example() -> MatchmakerTeam:
     instance = MatchmakerTeam()
     instance.parties = [create_matchmaker_party_example()]
+    instance.team_id = randomize()
     instance.user_i_ds = [randomize()]
     return instance
 

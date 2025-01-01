@@ -36,12 +36,15 @@ class MatchmakerTeam(Model):
     Properties:
         parties: (Parties) OPTIONAL List[MatchmakerParty]
 
+        team_id: (TeamID) OPTIONAL str
+
         user_i_ds: (UserIDs) OPTIONAL List[str]
     """
 
     # region fields
 
     parties: List[MatchmakerParty]  # OPTIONAL
+    team_id: str  # OPTIONAL
     user_i_ds: List[str]  # OPTIONAL
 
     # endregion fields
@@ -50,6 +53,10 @@ class MatchmakerTeam(Model):
 
     def with_parties(self, value: List[MatchmakerParty]) -> MatchmakerTeam:
         self.parties = value
+        return self
+
+    def with_team_id(self, value: str) -> MatchmakerTeam:
+        self.team_id = value
         return self
 
     def with_user_i_ds(self, value: List[str]) -> MatchmakerTeam:
@@ -68,6 +75,10 @@ class MatchmakerTeam(Model):
             ]
         elif include_empty:
             result["Parties"] = []
+        if hasattr(self, "team_id"):
+            result["TeamID"] = str(self.team_id)
+        elif include_empty:
+            result["TeamID"] = ""
         if hasattr(self, "user_i_ds"):
             result["UserIDs"] = [str(i0) for i0 in self.user_i_ds]
         elif include_empty:
@@ -82,12 +93,15 @@ class MatchmakerTeam(Model):
     def create(
         cls,
         parties: Optional[List[MatchmakerParty]] = None,
+        team_id: Optional[str] = None,
         user_i_ds: Optional[List[str]] = None,
         **kwargs,
     ) -> MatchmakerTeam:
         instance = cls()
         if parties is not None:
             instance.parties = parties
+        if team_id is not None:
+            instance.team_id = team_id
         if user_i_ds is not None:
             instance.user_i_ds = user_i_ds
         return instance
@@ -106,6 +120,10 @@ class MatchmakerTeam(Model):
             ]
         elif include_empty:
             instance.parties = []
+        if "TeamID" in dict_ and dict_["TeamID"] is not None:
+            instance.team_id = str(dict_["TeamID"])
+        elif include_empty:
+            instance.team_id = ""
         if "UserIDs" in dict_ and dict_["UserIDs"] is not None:
             instance.user_i_ds = [str(i0) for i0 in dict_["UserIDs"]]
         elif include_empty:
@@ -150,6 +168,7 @@ class MatchmakerTeam(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "Parties": "parties",
+            "TeamID": "team_id",
             "UserIDs": "user_i_ds",
         }
 
@@ -157,6 +176,7 @@ class MatchmakerTeam(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "Parties": False,
+            "TeamID": False,
             "UserIDs": False,
         }
 

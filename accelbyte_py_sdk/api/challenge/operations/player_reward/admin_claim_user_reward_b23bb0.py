@@ -38,7 +38,7 @@ from ...models import ResponseError
 class AdminClaimUserRewardsByGoalCode(Operation):
     """Claim rewards of a single user by goal code (adminClaimUserRewardsByGoalCode)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE:REWARD [UPDATE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/users/{userId}/challenges/{challengeCode}/rewards/claim

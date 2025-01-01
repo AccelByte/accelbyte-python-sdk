@@ -32,8 +32,11 @@ from ....core import same_doc_as
 from ..models import ResponseError
 
 from ..operations.session_storage import AdminDeleteUserSessionStorage
+from ..operations.session_storage import AdminReadPartySessionStorage
 from ..operations.session_storage import AdminReadSessionStorage
 from ..operations.session_storage import AdminReadUserSessionStorage
+from ..operations.session_storage import PublicReadPartySessionStorage
+from ..operations.session_storage import PublicUpdateInsertPartySessionStorageReserved
 from ..operations.session_storage import PublicUpdateInsertSessionStorage
 from ..operations.session_storage import PublicUpdateInsertSessionStorageLeader
 
@@ -137,6 +140,128 @@ async def admin_delete_user_session_storage_async(
             return None, error
     request = AdminDeleteUserSessionStorage.create(
         session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminReadPartySessionStorage)
+def admin_read_party_session_storage(
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Read Party Session Storage. (adminReadPartySessionStorage)
+
+    Read Party Session Storage by partyID
+    Party Storage example:
+    ```
+    {
+    "reserved": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    }
+    }
+    ```
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/parties/{partyId}/storage
+
+        method: GET
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminReadPartySessionStorage.create(
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminReadPartySessionStorage)
+async def admin_read_party_session_storage_async(
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Read Party Session Storage. (adminReadPartySessionStorage)
+
+    Read Party Session Storage by partyID
+    Party Storage example:
+    ```
+    {
+    "reserved": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    }
+    }
+    ```
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/parties/{partyId}/storage
+
+        method: GET
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminReadPartySessionStorage.create(
+        party_id=party_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -356,6 +481,290 @@ async def admin_read_user_session_storage_async(
             return None, error
     request = AdminReadUserSessionStorage.create(
         session_id=session_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicReadPartySessionStorage)
+def public_read_party_session_storage(
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Read Party Session Storage. (publicReadPartySessionStorage)
+
+    Read Party Session Storage by partyID
+    Party Storage example:
+    ```
+    {
+    "reserved": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    }
+    }
+    ```
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/storage
+
+        method: GET
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicReadPartySessionStorage.create(
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicReadPartySessionStorage)
+async def public_read_party_session_storage_async(
+    party_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Read Party Session Storage. (publicReadPartySessionStorage)
+
+    Read Party Session Storage by partyID
+    Party Storage example:
+    ```
+    {
+    "reserved": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    }
+    }
+    ```
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/storage
+
+        method: GET
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicReadPartySessionStorage.create(
+        party_id=party_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicUpdateInsertPartySessionStorageReserved)
+def public_update_insert_party_session_storage_reserved(
+    body: Dict[str, Any],
+    party_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Insert Party Session Storage User. (publicUpdateInsertPartySessionStorageReserved)
+
+    **For Internal Use Only**
+    Update Insert Party Session Reserved Storage User. User can only update or insert user party session storage data itself.
+    can store generic json
+    example json can store :
+    ```
+    {
+    "key": "value",
+    "number": 123,
+    }
+    ```
+    The data will be stored on the "reserved" storage field
+    example stored data :
+    ```
+    {
+    "reserved": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    }
+    }
+    ```
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/storage/users/{userId}/reserved
+
+        method: PATCH
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUpdateInsertPartySessionStorageReserved.create(
+        body=body,
+        party_id=party_id,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicUpdateInsertPartySessionStorageReserved)
+async def public_update_insert_party_session_storage_reserved_async(
+    body: Dict[str, Any],
+    party_id: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Insert Party Session Storage User. (publicUpdateInsertPartySessionStorageReserved)
+
+    **For Internal Use Only**
+    Update Insert Party Session Reserved Storage User. User can only update or insert user party session storage data itself.
+    can store generic json
+    example json can store :
+    ```
+    {
+    "key": "value",
+    "number": 123,
+    }
+    ```
+    The data will be stored on the "reserved" storage field
+    example stored data :
+    ```
+    {
+    "reserved": {
+    "userID1": {"key": "value"},
+    "userID2": {"key": "value"},
+    ...
+    }
+    }
+    ```
+
+    Properties:
+        url: /session/v1/public/namespaces/{namespace}/parties/{partyId}/storage/users/{userId}/reserved
+
+        method: PATCH
+
+        tags: ["Session Storage"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED Dict[str, Any] in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        party_id: (partyId) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - Dict[str, Any] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicUpdateInsertPartySessionStorageReserved.create(
+        body=body,
+        party_id=party_id,
         user_id=user_id,
         namespace=namespace,
     )

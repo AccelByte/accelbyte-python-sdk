@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ErrorEntity
 from ...models import RevokeFulfillmentV2Result
@@ -36,10 +37,18 @@ from ...models import RevokeFulfillmentV2Result
 class RevokeItems(Operation):
     """Revoke items by transactionId (revokeItems)
 
+    ### The endpoint is going to be deprecated
+
     [Not supported yet in AGS Shared Cloud] Revoke items by transactionId.
     Other detail info:
 
       * Returns : revoke fulfillment v2 result, storeId field can be ignored.
+
+
+
+    ### Endpoint migration guide
+
+      *  Substitute endpoint: /v3/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/revoke [PUT]
 
     Properties:
         url: /platform/v2/admin/namespaces/{namespace}/users/{userId}/fulfillments/{transactionId}/revoke

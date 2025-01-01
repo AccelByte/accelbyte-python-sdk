@@ -73,4 +73,4 @@ def admin_update_global_config(
 
 
 admin_update_global_config.operation_id = "adminUpdateGlobalConfig"
-admin_update_global_config.is_deprecated = False
+admin_update_global_config.is_deprecated = True

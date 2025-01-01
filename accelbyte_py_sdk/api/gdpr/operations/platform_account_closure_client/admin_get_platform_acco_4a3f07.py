@@ -37,6 +37,12 @@ class AdminGetPlatformAccountClosureClient(Operation):
     """Get Platform Account Closure Config (AdminGetPlatformAccountClosureClient)
 
     Get platform account closure config.
+    The namespace should be **publisher or studio namespace**
+    ----------
+    Platform:
+    - steamnetwork
+    - xbox
+    - psn
     Scope: account
 
     Properties:

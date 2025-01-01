@@ -96,4 +96,4 @@ def user_query_session(
 
 
 user_query_session.operation_id = "UserQuerySession"
-user_query_session.is_deprecated = False
+user_query_session.is_deprecated = True

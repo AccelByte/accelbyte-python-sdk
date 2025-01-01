@@ -41,14 +41,14 @@ from accelbyte_py_sdk.api.csm.models import ResponseErrorResponse
 
 @click.command()
 @click.argument("app", type=str)
-@click.option("--notification_type", "notification_type", type=str)
+@click.argument("notification_type", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_notification_subscriber_list_v2(
     app: str,
-    notification_type: Optional[str] = None,
+    notification_type: str,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,

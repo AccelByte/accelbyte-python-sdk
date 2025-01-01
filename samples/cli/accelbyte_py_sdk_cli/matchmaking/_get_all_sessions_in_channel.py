@@ -70,4 +70,4 @@ def get_all_sessions_in_channel(
 
 
 get_all_sessions_in_channel.operation_id = "GetAllSessionsInChannel"
-get_all_sessions_in_channel.is_deprecated = False
+get_all_sessions_in_channel.is_deprecated = True

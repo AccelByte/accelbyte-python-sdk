@@ -126,6 +126,7 @@ def create_apimodels_consume_item_example() -> ApimodelsConsumeItem:
     instance.qty = randomize("int", min_val=1, max_val=1000)
     instance.slot_id = randomize()
     instance.source_item_id = randomize()
+    instance.date_range_validation = randomize("bool")
     instance.options = [randomize()]
     return instance
 

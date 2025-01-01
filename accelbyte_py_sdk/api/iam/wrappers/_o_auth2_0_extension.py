@@ -38,6 +38,7 @@ from ..models import OauthmodelTargetTokenCodeResponse
 from ..models import OauthmodelTokenResponseV3
 from ..models import RestErrorResponse
 
+from ..operations.o_auth2_0_extension import AuthenticateAndLinkForwardV3
 from ..operations.o_auth2_0_extension import AuthenticationWithPlatformLinkV3
 from ..operations.o_auth2_0_extension import GenerateTokenByNewHeadlessAccountV3
 from ..operations.o_auth2_0_extension import GetCountryLocationV3
@@ -51,8 +52,125 @@ from ..operations.o_auth2_0_extension import RequestTokenExchangeCodeV3
 from ..operations.o_auth2_0_extension import (
     RequestTokenExchangeCodeV3CodeChallengeMethodEnum,
 )
+from ..operations.o_auth2_0_extension import UpgradeAndAuthenticateForwardV3
 from ..operations.o_auth2_0_extension import UserAuthenticationV3
 from ..operations.o_auth2_0_extension import ValidateOneTimeLinkingCodeV3
+
+
+@same_doc_as(AuthenticateAndLinkForwardV3)
+def authenticate_and_link_forward_v3(
+    client_id: str,
+    linking_token: str,
+    password: str,
+    username: str,
+    extend_exp: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Authentication with platform link, the response will be a forward (AuthenticateAndLinkForwardV3)
+
+    This endpoint is being used to authenticate a user account and perform platform link.
+    It validates user's email / username and password.
+    If user already enable 2FA, then invoke _/mfa/verify_ using **mfa_token** from this endpoint response.
+
+    ## Device Cookie Validation
+
+    Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP](https://owasp.org/www-community/Slow_Down_Online_Guessing_Attacks_with_Device_Cookies).
+    This endpoint will read device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and set it into cookie when successfully authenticate.
+
+    Properties:
+        url: /iam/v3/authenticateWithLink/forward
+
+        method: POST
+
+        tags: ["OAuth2.0 - Extension"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        extend_exp: (extend_exp) OPTIONAL bool in form_data
+
+        client_id: (client_id) REQUIRED str in form_data
+
+        linking_token: (linkingToken) REQUIRED str in form_data
+
+        password: (password) REQUIRED str in form_data
+
+        username: (username) REQUIRED str in form_data
+
+    Responses:
+        302: Found - (Found. Redirect to clients redirection URL with code or redirect to login web with error on the query parameter)
+    """
+    request = AuthenticateAndLinkForwardV3.create(
+        client_id=client_id,
+        linking_token=linking_token,
+        password=password,
+        username=username,
+        extend_exp=extend_exp,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AuthenticateAndLinkForwardV3)
+async def authenticate_and_link_forward_v3_async(
+    client_id: str,
+    linking_token: str,
+    password: str,
+    username: str,
+    extend_exp: Optional[bool] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Authentication with platform link, the response will be a forward (AuthenticateAndLinkForwardV3)
+
+    This endpoint is being used to authenticate a user account and perform platform link.
+    It validates user's email / username and password.
+    If user already enable 2FA, then invoke _/mfa/verify_ using **mfa_token** from this endpoint response.
+
+    ## Device Cookie Validation
+
+    Device Cookie is used to protect the user account from brute force login attack, [more detail from OWASP](https://owasp.org/www-community/Slow_Down_Online_Guessing_Attacks_with_Device_Cookies).
+    This endpoint will read device cookie from cookie **auth-trust-id**. If device cookie not found, it will generate a new one and set it into cookie when successfully authenticate.
+
+    Properties:
+        url: /iam/v3/authenticateWithLink/forward
+
+        method: POST
+
+        tags: ["OAuth2.0 - Extension"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        extend_exp: (extend_exp) OPTIONAL bool in form_data
+
+        client_id: (client_id) REQUIRED str in form_data
+
+        linking_token: (linkingToken) REQUIRED str in form_data
+
+        password: (password) REQUIRED str in form_data
+
+        username: (username) REQUIRED str in form_data
+
+    Responses:
+        302: Found - (Found. Redirect to clients redirection URL with code or redirect to login web with error on the query parameter)
+    """
+    request = AuthenticateAndLinkForwardV3.create(
+        client_id=client_id,
+        linking_token=linking_token,
+        password=password,
+        username=username,
+        extend_exp=extend_exp,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AuthenticationWithPlatformLinkV3)
@@ -751,7 +869,11 @@ async def platform_token_refresh_v3_async(
 
 @same_doc_as(RequestOneTimeLinkingCodeV3)
 def request_one_time_linking_code_v3(
-    platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    platform_id: str,
+    redirect_uri: Optional[str] = None,
+    state: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Generate one time linking code (RequestOneTimeLinkingCodeV3)
 
@@ -795,6 +917,10 @@ def request_one_time_linking_code_v3(
 
         securities: [BEARER_AUTH]
 
+        redirect_uri: (redirectUri) OPTIONAL str in form_data
+
+        state: (state) OPTIONAL str in form_data
+
         platform_id: (platformId) REQUIRED str in form_data
 
     Responses:
@@ -802,13 +928,19 @@ def request_one_time_linking_code_v3(
     """
     request = RequestOneTimeLinkingCodeV3.create(
         platform_id=platform_id,
+        redirect_uri=redirect_uri,
+        state=state,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
 @same_doc_as(RequestOneTimeLinkingCodeV3)
 async def request_one_time_linking_code_v3_async(
-    platform_id: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+    platform_id: str,
+    redirect_uri: Optional[str] = None,
+    state: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
 ):
     """Generate one time linking code (RequestOneTimeLinkingCodeV3)
 
@@ -852,6 +984,10 @@ async def request_one_time_linking_code_v3_async(
 
         securities: [BEARER_AUTH]
 
+        redirect_uri: (redirectUri) OPTIONAL str in form_data
+
+        state: (state) OPTIONAL str in form_data
+
         platform_id: (platformId) REQUIRED str in form_data
 
     Responses:
@@ -859,6 +995,8 @@ async def request_one_time_linking_code_v3_async(
     """
     request = RequestOneTimeLinkingCodeV3.create(
         platform_id=platform_id,
+        redirect_uri=redirect_uri,
+        state=state,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
@@ -956,11 +1094,10 @@ def request_token_by_one_time_link_code_response_v3(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Generate publisher token by headless account's one time link code (RequestTokenByOneTimeLinkCodeResponseV3)
+    """Generate token by headless account's one time link code (RequestTokenByOneTimeLinkCodeResponseV3)
 
     This endpoint is being used to generate user's token by one time link code.
-    It require publisher ClientID
-    It required a code which can be generated from `/iam/v3/link/code/request`.
+    It requires a code which can be generated from `/iam/v3/link/code/request` or `/iam/v3/public/users/me/link/forward`.
 
     This endpoint support creating transient token by utilizing **isTransient** param:
     **isTransient=true** will generate a transient token with a short Time Expiration and without a refresh token
@@ -1008,11 +1145,10 @@ async def request_token_by_one_time_link_code_response_v3_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Generate publisher token by headless account's one time link code (RequestTokenByOneTimeLinkCodeResponseV3)
+    """Generate token by headless account's one time link code (RequestTokenByOneTimeLinkCodeResponseV3)
 
     This endpoint is being used to generate user's token by one time link code.
-    It require publisher ClientID
-    It required a code which can be generated from `/iam/v3/link/code/request`.
+    It requires a code which can be generated from `/iam/v3/link/code/request` or `/iam/v3/public/users/me/link/forward`.
 
     This endpoint support creating transient token by utilizing **isTransient** param:
     **isTransient=true** will generate a transient token with a short Time Expiration and without a refresh token
@@ -1163,6 +1299,84 @@ async def request_token_exchange_code_v3_async(
         code_challenge=code_challenge,
         code_challenge_method=code_challenge_method,
         namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpgradeAndAuthenticateForwardV3)
+def upgrade_and_authenticate_forward_v3(
+    client_id: str,
+    upgrade_success_token: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Handle the forward for account upgrade (UpgradeAndAuthenticateForwardV3)
+
+    In login website based flow, after account upgraded, we need this API to handle the forward
+
+    Properties:
+        url: /iam/v3/upgrade/forward
+
+        method: POST
+
+        tags: ["OAuth2.0 - Extension"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        client_id: (client_id) REQUIRED str in form_data
+
+        upgrade_success_token: (upgrade_success_token) REQUIRED str in form_data
+
+    Responses:
+        302: Found - (Found. Redirect to clients redirection URL with code)
+    """
+    request = UpgradeAndAuthenticateForwardV3.create(
+        client_id=client_id,
+        upgrade_success_token=upgrade_success_token,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpgradeAndAuthenticateForwardV3)
+async def upgrade_and_authenticate_forward_v3_async(
+    client_id: str,
+    upgrade_success_token: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Handle the forward for account upgrade (UpgradeAndAuthenticateForwardV3)
+
+    In login website based flow, after account upgraded, we need this API to handle the forward
+
+    Properties:
+        url: /iam/v3/upgrade/forward
+
+        method: POST
+
+        tags: ["OAuth2.0 - Extension"]
+
+        consumes: ["application/x-www-form-urlencoded"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        client_id: (client_id) REQUIRED str in form_data
+
+        upgrade_success_token: (upgrade_success_token) REQUIRED str in form_data
+
+    Responses:
+        302: Found - (Found. Redirect to clients redirection URL with code)
+    """
+    request = UpgradeAndAuthenticateForwardV3.create(
+        client_id=client_id,
+        upgrade_success_token=upgrade_success_token,
     )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs

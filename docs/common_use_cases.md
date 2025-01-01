@@ -187,6 +187,20 @@ def test_info_supported_instances(self):
     # assert
     self.assertIsNone(error, error)
 ```
+### Image List
+
+```python
+def test_image_list(self):
+    from accelbyte_py_sdk.api.ams import image_list
+
+    # arrange
+
+    # act
+    _, error = image_list()
+
+    # assert
+    self.assertIsNone(error, error)
+```
 ## Basic
 
 Source: [basic.py](../tests/integration/api/basic.py)
@@ -1155,6 +1169,102 @@ def test_public_download_my_backup_codes_v4(self):
     self.assertTrue(exported_file_path.exists())
     self.assertGreater(exported_file_path.stat().st_size, 0)
 ```
+### Role Override
+
+```python
+def test_role_override(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test not applicable to AGS Starter.")
+
+    from accelbyte_py_sdk.api import iam as iam_service
+    from accelbyte_py_sdk.api.iam import models as iam_models
+
+    # arrange
+    role_identity_to_update: str = "USER"
+    resource_to_check: str = "NAMESPACE:{namespace}:PROFILE"
+    action_to_check: int = 7
+    updated_action_to_check: int = 2
+    check_count: int = 20
+    check_interval: float = 1.0
+
+    def find_and_check_resource_action_from_role(role_id_: str, resource_to_check_: str) -> int:
+        result_, error_ = iam_service.admin_get_role_namespace_permission_v3(role_id=role_id_)
+        self.assertIsNone(error_, error_)
+
+        result_action_: int = -1
+        for permission in result_.permissions:
+            if permission.resource == resource_to_check_:
+                result_action_ = permission.action
+                break
+
+        return result_action_
+
+    # act & assert
+    result, error = iam_service.admin_get_roles_v4(admin_role=False)
+    self.assertIsNone(error, error)
+    self.assertTrue(result.data, result.data)
+
+    user_role_id: str = ""
+    for role in result.data:
+        if role.role_name.upper() == role_identity_to_update:
+            user_role_id = role.role_id
+            break
+    self.assertTrue(user_role_id)
+
+    action = find_and_check_resource_action_from_role(user_role_id, resource_to_check)
+    self.assertEqual(action_to_check, action)
+
+    # configure role override
+    result, error = iam_service.admin_update_role_override_config_v3(
+        body=iam_models.ModelRoleOverrideUpdateRequest.create(
+            additions=[],
+            exclusions=[
+                iam_models.AccountcommonOverrideRolePermission.create(
+                    resource=resource_to_check,
+                    actions=[1, 4],
+                ),
+            ],
+            overrides=[],
+            replacements=[],
+        ),
+        identity=role_identity_to_update,
+    )
+    self.assertIsNone(error, error)
+
+    # activate role override
+    result, error = iam_service.admin_change_role_override_config_status_v3(
+        body=iam_models.ModelRoleOverrideStatsUpdateRequest.create(
+            active=True,
+        ),
+        identity=role_identity_to_update,
+    )
+    self.assertIsNone(error, error)
+    self.assertTrue(result.active)
+
+    # wait for role override to apply
+    try:
+        valid: bool = False
+        current_count: int = 0
+        while current_count < check_count:
+            self.log_info(f"checking updated permissions [{current_count+1}]")
+            action = find_and_check_resource_action_from_role(user_role_id, resource_to_check)
+            if action == updated_action_to_check:
+                valid = True
+                break
+
+            current_count += 1
+            time.sleep(check_interval)
+    finally:
+        # deactivate role override
+        _, error = iam_service.admin_change_role_override_config_status_v3(
+            body=iam_models.ModelRoleOverrideStatsUpdateRequest.create(
+                active=False
+            ),
+            identity=role_identity_to_update,
+        )
+        if error:
+            self.log_warning(msg=f"failed to deactivate role override: {error}")
+```
 ## Leaderboard
 
 Source: [leaderboard.py](../tests/integration/api/leaderboard.py)
@@ -1402,6 +1512,138 @@ def test_retrieve_agreements_public(self):
     self.assertIsNotNone(result)
     self.assertIsInstance(result, list)
 ```
+### Create Policy
+
+```python
+def test_create_policy(self):
+    from accelbyte_py_sdk.api.legal import (
+        create_policy,
+        create_policy_version,
+        create_localized_policy_version,
+        retrieve_all_legal_policies,
+        retrieve_all_policy_types,
+        retrieve_single_policy_version,
+        retrieve_localized_policy_versions,
+    )
+    from accelbyte_py_sdk.api.legal.models import (
+        CreateBasePolicyRequest,
+        CreatePolicyVersionRequest,
+        CreateLocalizedPolicyVersionRequest,
+    )
+
+    # try to find policy
+
+    base_policy_name: str = "Python Extend SDK Test Policy"
+
+    result, error = retrieve_all_legal_policies()
+    if error:
+        self.skipTest(reason=f"Failed to get all legal policies: {error}")
+        return
+
+    target_policy_id: str = ""
+
+    for policy in result:
+        if (
+            policy.base_policy_name == base_policy_name and
+            len(policy.policies) > 0
+        ):
+            target_policy_id = policy.policies[0].id_
+            break
+
+    # policy does not exist, so we create it
+
+    if not target_policy_id:
+        result, error = retrieve_all_policy_types(limit=100, offset=0)
+        if error:
+            self.skipTest(reason=f"Failed to get all policy types: {error}")
+            return
+
+        marketing_pref_policy_type_id: str = ""
+
+        for policy_type in result:
+            if policy_type.policy_type_name.strip().lower() == "marketing preference":
+                marketing_pref_policy_type_id = policy_type.id_
+                break
+
+        if not marketing_pref_policy_type_id:
+            self.skipTest(reason=f"Failed to find marketing policy type.")
+            return
+
+        result, error = create_policy(
+            body=CreateBasePolicyRequest.create(
+                type_id=marketing_pref_policy_type_id,
+                base_policy_name=base_policy_name,
+                description="Testing Python Extend SDK Legal Endpoints.",
+                namespace=self.namespace,
+                tags=["python", "extend_sdk", "test"],
+                affected_countries=["ID"],
+            ),
+        )
+        if error:
+            self.skipTest(reason=f"Failed to create policy: {error}")
+            return
+
+        target_policy_id = result.policy_id
+
+    # try to find policy version
+
+    result, error = retrieve_single_policy_version(
+        policy_id=target_policy_id,
+    )
+    if error:
+        self.skipTest(reason=f"Failed to get policy versions: {error}")
+        return
+
+    target_policy_version_id: str = ""
+
+    if len(result) == 0:
+        result, error = create_policy_version(
+            policy_id=target_policy_id,
+            body=CreatePolicyVersionRequest.create(
+                description="Testing Python Extend SDK Legal Endpoints.",
+                display_version="1.0.0",
+                is_committed=False,
+            ),
+        )
+        if error:
+            self.skipTest(reason=f"Failed to create policy version: {error}")
+            return
+
+        target_policy_version_id = result.id_
+    else:
+        target_policy_version_id = result[0].id_
+
+    result, error = retrieve_localized_policy_versions(
+        policy_version_id=target_policy_version_id,
+    )
+    if error:
+        self.skipTest(reason=f"Failed to get localized policy versions: {error}")
+        return
+
+    target_localized_policy_version_id: str = ""
+
+    if len(result) == 0:
+        result, error = create_localized_policy_version(
+            policy_version_id=target_policy_version_id,
+            body=CreateLocalizedPolicyVersionRequest.create(
+                content_type="Python Extend SDK Legal Content for ID.",
+                description="Testing Python Extend SDK Legal Endpoints.",
+                locale_code="ID",
+            )
+        )
+
+        if error:
+            self.skipTest(reason=f"Failed to create localized policy version: {error}")
+            return
+
+        target_localized_policy_version_id = result.id_
+    else:
+        target_localized_policy_version_id = result[0].id_
+
+    self.assertTrue(target_policy_id, target_policy_id)
+    self.assertTrue(target_policy_version_id, target_policy_version_id)
+    self.assertTrue(target_localized_policy_version_id, target_localized_policy_version_id)
+```
 ## Lobby
 
 Source: [lobby.py](../tests/integration/api/lobby.py)
@@ -1540,7 +1782,7 @@ async def test_refresh_token_request(self):
             message = self.messages.get_nowait()
             if message is not None:
                 wsm, error = parse_wsm(message)
-                self.assertIsNone(error, error)
+                self.assertIsNone(error, f"error: {error}\nmessage: {message}\n")
                 wsm_type = wsm.get_type()
                 if wsm_type == "refreshTokenResponse":
                     break
@@ -1564,11 +1806,37 @@ async def test_refresh_token_request(self):
 
 Source: [match2.py](../tests/integration/api/match2.py)
 
-### Create Match Pool
+### Create And Get Ruleset
 
 ```python
-def test_create_match_pool(self):
+def test_create_and_get_ruleset(self):
     from accelbyte_py_sdk.core import generate_id
+    from accelbyte_py_sdk.api.match2 import rule_set_details
+
+    # arrange
+    rid = generate_id(8)
+    rule_set_name = f"python_sdk_ruleset_{rid}"
+
+    # act
+    error = Match2TestCase.do_create_rule_set(rule_set_name=rule_set_name)
+    if error:
+        self.skipTest(reason=f"Unable to create rule set: {error}")
+        return
+    if error is None:
+        self.rule_set_name = rule_set_name
+
+    result, error = rule_set_details(ruleset=rule_set_name)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertEqual(rule_set_name, result.name)
+```
+### Create And Get Match Pool
+
+```python
+def test_create_and_get_match_pool(self):
+    from accelbyte_py_sdk.core import generate_id
+    from accelbyte_py_sdk.api.match2 import rule_set_details
 
     # arrange
     rid = generate_id(8)
@@ -1589,8 +1857,43 @@ def test_create_match_pool(self):
         self.rule_set_name = rule_set_name
         self.session_template_name = session_template_name
 
+    result, error = rule_set_details(ruleset=rule_set_name)
+
     # assert
     self.assertIsNone(error, error)
+    self.assertEqual(rule_set_name, result.name)
+```
+### Create Match Pool
+
+```python
+def test_create_match_pool(self):
+    from accelbyte_py_sdk.core import generate_id
+    from accelbyte_py_sdk.api.match2 import match_pool_details
+
+    # arrange
+    rid = generate_id(8)
+    match_pool_name = f"python_sdk_pool_{rid}"
+    rule_set_name = f"python_sdk_ruleset_{rid}"
+    session_template_name = f"python_sdk_template_{rid}"
+
+    # act
+    pre_error, error = self.do_create_match_pool(
+        match_pool_name=match_pool_name,
+        rule_set_name=rule_set_name,
+        session_template_name=session_template_name,
+    )
+    if pre_error:
+        self.skipTest(reason=pre_error)
+    if error is None:
+        self.match_pool_name = match_pool_name
+        self.rule_set_name = rule_set_name
+        self.session_template_name = session_template_name
+
+    result, error = match_pool_details(pool=match_pool_name)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.assertEqual(match_pool_name, result.name)
 ```
 ### Delete Match Pool
 
@@ -1787,27 +2090,37 @@ def test_delete_store(self):
     self.assertIsNone(error, error)
     self.store_id = None
 ```
-### Export Rewards
+### Export Import Rewards
 
 ```python
-def test_export_rewards(self):
+def test_export_import_rewards(self):
     from pathlib import Path
     from accelbyte_py_sdk.api.platform import export_rewards
+    from accelbyte_py_sdk.api.platform import import_rewards
 
-    # arrange
+    # arrange 1
     exported_file_path = Path(self.exported_filename)
     exported_file_path.unlink(missing_ok=True)
 
-    # act
+    # act 1
     result, error = export_rewards()
 
     if result is not None:
         exported_file_path.write_bytes(result)
 
-    # assert
+    # assert 1
     self.assertIsNone(error, error)
     self.assertTrue(exported_file_path.exists())
     self.assertGreater(exported_file_path.stat().st_size, 0)
+
+    # arrange 2
+
+    # act 2
+    with open(file=str(exported_file_path)) as file:
+        result, error = import_rewards(replace_existing=True, file=file)
+
+    # assert 3
+    self.assertIsNone(error, error)
 ```
 ### Export Store
 
@@ -1815,6 +2128,7 @@ def test_export_rewards(self):
 def test_export_store(self):
     from pathlib import Path
     from accelbyte_py_sdk.api.platform import export_store_1
+    from accelbyte_py_sdk.api.platform.models import ExportStoreRequest
 
     # arrange
     exported_file_path = Path(self.exported_filename)
@@ -1862,7 +2176,6 @@ def test_import_store(self):
     from pathlib import Path
     from accelbyte_py_sdk.api.platform import export_store_1
     from accelbyte_py_sdk.api.platform import import_store_1
-    from accelbyte_py_sdk.api.platform.models import ExportStoreRequest
 
     # arrange
     exported_file_path = Path(self.exported_filename)
@@ -2069,77 +2382,89 @@ def test_game_session_flow(self):
     import accelbyte_py_sdk.api.session as session_service
     import accelbyte_py_sdk.api.session.models as session_models
 
-    # arrange
-    rid = generate_id(8)
-    template_name = f"python_sdk_template_{rid}"
-    error = self.do_create_configuration_template(template_name=template_name)
-    if error:
-        self.skipTest(reason=f"unable to create configuration template: {error}")
-    else:
-        self.template_name = template_name
+    try:
+        # arrange
+        rid = generate_id(8)
+        template_name = f"python_sdk_template_{rid}"
+        error = self.do_create_configuration_template(template_name=template_name)
+        if error:
+            self.skipTest(reason=f"unable to create configuration template: {error}")
+        else:
+            self.template_name = template_name
 
-    generate_user1_result, error = self.generate_user()
-    if error:
-        self.skipTest(reason=f"unable to create user1: {error}")
-    username1, password1, user_id1 = generate_user1_result
-    self.user_ids.append(user_id1)
+        generate_user1_result, error = self.generate_user()
+        if error:
+            self.skipTest(reason=f"unable to create user1: {error}")
+        username1, password1, user_id1 = generate_user1_result
+        self.user_ids.append(user_id1)
 
-    generate_user2_result, error = self.generate_user()
-    if error:
-        self.skipTest(reason=f"unable to create user2: {error}")
-    username2, password2, user_id2 = generate_user2_result
-    self.user_ids.append(user_id2)
+        generate_user2_result, error = self.generate_user()
+        if error:
+            self.skipTest(reason=f"unable to create user2: {error}")
+        username2, password2, user_id2 = generate_user2_result
+        self.user_ids.append(user_id2)
 
-    user_sdk1, error = self.create_user_sdk(
-        username=username1,
-        password=password1,
-        existing_sdk=SDK,
-    )
-    if error:
-        self.skipTest(reason=f"unable to create user1 sdk: {error}")
-    else:
-        self.sdks.append(user_sdk1)
+        user_sdk1, error = self.create_user_sdk(
+            username=username1,
+            password=password1,
+            existing_sdk=SDK,
+        )
+        if error:
+            self.skipTest(reason=f"unable to create user1 sdk: {error}")
+        else:
+            self.sdks.append(user_sdk1)
 
-    user_sdk2, error = self.create_user_sdk(
-        username=username2,
-        password=password2,
-        existing_sdk=SDK,
-    )
-    if error:
-        self.skipTest(reason=f"unable to create user2 sdk: {error}")
-    else:
-        self.sdks.append(user_sdk2)
+        user_sdk2, error = self.create_user_sdk(
+            username=username2,
+            password=password2,
+            existing_sdk=SDK,
+        )
+        if error:
+            self.skipTest(reason=f"unable to create user2 sdk: {error}")
+        else:
+            self.sdks.append(user_sdk2)
 
-    # act & assert (create_game_session)
-    result, error = session_service.create_game_session(
-        body=session_models.ApimodelsCreateGameSessionRequest.create_from_dict(
-            {
-                "configurationName": template_name,
-            }
-        ),
-        sdk=user_sdk1,
-    )
-    self.assertIsNone(error, error)
+        # act & assert (create_game_session)
+        result, error = session_service.create_game_session(
+            body=session_models.ApimodelsCreateGameSessionRequest.create_from_dict(
+                {
+                    "configurationName": template_name,
+                }
+            ),
+            sdk=user_sdk1,
+        )
+        self.assertIsNone(error, error)
 
-    if not (game_session_id := getattr(result, "id_", None)):
-        self.fail(msg=f"unable to find game session id")
+        if not (game_session_id := getattr(result, "id_", None)):
+            self.fail(msg=f"unable to find game session id")
 
-    # act & assert (join_game_sesion)
-    result, error = session_service.join_game_session(
-        session_id=game_session_id,
-        sdk=user_sdk2,
-    )
-    self.assertIsNone(error, error)
+        # act & assert (join_game_sesion)
+        result, error = session_service.join_game_session(
+            session_id=game_session_id,
+            sdk=user_sdk2,
+        )
+        self.assertIsNone(error, error)
 
-    # act & assert (get_game_session)
-    result, error = session_service.get_game_session(
-        session_id=game_session_id,
-    )
-    self.assertIsNone(error, error)
-    self.assertEqual(len(result.members), 2)
-    user_ids = [member.id_ for member in result.members]
-    self.assertIn(user_id1, user_ids)
-    self.assertIn(user_id2, user_ids)
+        # act & assert (get_game_session)
+        result, error = session_service.get_game_session(
+            session_id=game_session_id,
+        )
+        self.assertIsNone(error, error)
+        self.assertEqual(len(result.members), 2)
+        user_ids = [member.id_ for member in result.members]
+        self.assertIn(user_id1, user_ids)
+        self.assertIn(user_id2, user_ids)
+    finally:
+        if game_session_id:
+            _, error = session_service.admin_delete_bulk_game_sessions(
+                body=session_models.ApimodelsDeleteBulkGameSessionRequest.create(
+                    ids=[game_session_id],
+                ),
+            )
+            self.log_warning(
+                msg=f"Failed to clean up game sessions: {error}",
+                condition=error is not None,
+            )
 ```
 ### Party Flow
 
@@ -2152,98 +2477,115 @@ def test_party_flow(self):
     import accelbyte_py_sdk.api.session as session_service
     import accelbyte_py_sdk.api.session.models as session_models
 
-    # arrange
-    rid = generate_id(8)
-    template_name = f"python_sdk_template_{rid}"
-    error = self.do_create_configuration_template(template_name=template_name)
-    if error:
-        self.skipTest(reason=f"unable to create configuration template: {error}")
-    else:
-        self.template_name = template_name
+    try:
+        # arrange
+        rid = generate_id(8)
+        template_name = f"python_sdk_template_{rid}"
+        error = self.do_create_configuration_template(template_name=template_name)
+        if error:
+            self.skipTest(reason=f"unable to create configuration template: {error}")
+        else:
+            self.template_name = template_name
 
-    generate_user1_result, error = self.generate_user()
-    if error:
-        self.skipTest(reason=f"unable to create user1: {error}")
-    username1, password1, user_id1 = generate_user1_result
-    self.user_ids.append(user_id1)
+        generate_user1_result, error = self.generate_user()
+        if error:
+            self.skipTest(reason=f"unable to create user1: {error}")
+        username1, password1, user_id1 = generate_user1_result
+        self.user_ids.append(user_id1)
 
-    generate_user2_result, error = self.generate_user()
-    if error:
-        self.skipTest(reason=f"unable to create user2: {error}")
-    username2, password2, user_id2 = generate_user2_result
-    self.user_ids.append(user_id2)
+        generate_user2_result, error = self.generate_user()
+        if error:
+            self.skipTest(reason=f"unable to create user2: {error}")
+        username2, password2, user_id2 = generate_user2_result
+        self.user_ids.append(user_id2)
 
-    user_sdk1, error = self.create_user_sdk(
-        username=username1,
-        password=password1,
-        existing_sdk=SDK,
-    )
-    if error:
-        self.skipTest(reason=f"unable to create user1 sdk: {error}")
-    else:
-        self.sdks.append(user_sdk1)
+        user_sdk1, error = self.create_user_sdk(
+            username=username1,
+            password=password1,
+            existing_sdk=SDK,
+        )
+        if error:
+            self.skipTest(reason=f"unable to create user1 sdk: {error}")
+        else:
+            self.sdks.append(user_sdk1)
 
-    user_sdk2, error = self.create_user_sdk(
-        username=username2,
-        password=password2,
-        existing_sdk=SDK,
-    )
-    if error:
-        self.skipTest(reason=f"unable to create user2 sdk: {error}")
-    else:
-        self.sdks.append(user_sdk2)
+        user_sdk2, error = self.create_user_sdk(
+            username=username2,
+            password=password2,
+            existing_sdk=SDK,
+        )
+        if error:
+            self.skipTest(reason=f"unable to create user2 sdk: {error}")
+        else:
+            self.sdks.append(user_sdk2)
 
-    # act & assert (public_create_party)
-    result, error = session_service.public_create_party(
-        body=session_models.ApimodelsCreatePartyRequest.create_from_dict(
-            {
-                "configurationName": template_name,
-                "members": [
-                    {
-                        "ID": user_id1,
-                    }
-                ],
-            }
-        ),
-        sdk=user_sdk1,
-    )
-    self.assertIsNone(error, error)
+        # act & assert (public_create_party)
+        result, error = session_service.public_create_party(
+            body=session_models.ApimodelsCreatePartyRequest.create_from_dict(
+                {
+                    "configurationName": template_name,
+                    "members": [
+                        {
+                            "ID": user_id1,
+                        }
+                    ],
+                }
+            ),
+            sdk=user_sdk1,
+        )
+        self.assertIsNone(error, error)
 
-    if not (party_id := getattr(result, "id_", None)):
-        self.fail(msg=f"unable to find party id")
+        if not (party_id := getattr(result, "id_", None)):
+            self.fail(msg=f"unable to find party id")
 
-    if not (party_code := getattr(result, "code", None)):
-        self.fail(msg=f"unable to find party code")
+        if not (party_code := getattr(result, "code", None)):
+            self.fail(msg=f"unable to find party code")
 
-    # act & assert (public_party_join_code)
-    result, error = session_service.public_party_join_code(
-        body=session_models.ApimodelsJoinByCodeRequest.create_from_dict(
-            {
-                "code": party_code,
-            }
-        ),
-        sdk=user_sdk2,
-    )
-    self.assertIsNone(error, error)
+        # act & assert (public_get_party)
+        result, error = session_service.public_get_party(
+            party_id=party_id,
+        )
+        self.assertIsNone(error, error)
 
-    # act & assert (public_get_party)
-    result, error = session_service.public_get_party(
-        party_id=party_id,
-        sdk=user_sdk1,
-    )
-    self.assertIsNone(error, error)
-    self.assertEqual(len(result.members), 2)
-    user_ids = [member.id_ for member in result.members]
-    self.assertIn(user_id1, user_ids)
-    self.assertIn(user_id2, user_ids)
+        # act & assert (public_party_join_code)
+        result, error = session_service.public_party_join_code(
+            body=session_models.ApimodelsJoinByCodeRequest.create_from_dict(
+                {
+                    "code": party_code,
+                }
+            ),
+            sdk=user_sdk2,
+        )
+        self.assertIsNone(error, error)
 
-    # act & assert (admin_query_parties)
-    result, error = session_service.admin_query_parties(
-        leader_id=user_id1,
-    )
-    self.assertIsNone(error, error)
-    party_ids = [party.id_ for party in result.data]
-    self.assertIn(party_id, party_ids)
+        # act & assert (public_get_party)
+        result, error = session_service.public_get_party(
+            party_id=party_id,
+            sdk=user_sdk1,
+        )
+        self.assertIsNone(error, error)
+        self.assertEqual(len(result.members), 2)
+        user_ids = [member.id_ for member in result.members]
+        self.assertIn(user_id1, user_ids)
+        self.assertIn(user_id2, user_ids)
+
+        # act & assert (admin_query_parties)
+        result, error = session_service.admin_query_parties(
+            leader_id=user_id1,
+        )
+        self.assertIsNone(error, error)
+        party_ids = [party.id_ for party in result.data]
+        self.assertIn(party_id, party_ids)
+    finally:
+        if party_id:
+            result, error = session_service.public_party_leave(
+                party_id=party_id,
+                sdk=user_sdk2,
+            )
+            self.log_warning(
+                msg=f"Failed to leave party: {error}",
+                condition=error is not None,
+            )
 ```
 ## Social
 
@@ -2288,27 +2630,37 @@ def test_delete_stat(self):
     # assert
     self.assertIsNone(error, error)
 ```
-### Export Stat
+### Export Import Stat
 
 ```python
-def test_export_stats(self):
+def test_export_import_stats(self):
     from pathlib import Path
     from accelbyte_py_sdk.api.social import export_stats
+    from accelbyte_py_sdk.api.social import import_stats
 
-    # arrange
+    # arrange 1
     exported_file_path = Path(self.exported_filename)
     exported_file_path.unlink(missing_ok=True)
 
-    # act
+    # act 1
     result, error = export_stats()
 
     if result is not None:
         exported_file_path.write_bytes(result)
 
-    # assert
+    # assert 1
     self.assertIsNone(error, error)
     self.assertTrue(exported_file_path.exists())
     self.assertGreater(exported_file_path.stat().st_size, 0)
+
+    # arrange 2
+
+    # act 2
+    with open(file=str(exported_file_path)) as file:
+        result, error = import_stats(file=file)
+
+    # assert 3
+    self.assertIsNone(error, error)
 ```
 ### Get Stat
 
@@ -2326,6 +2678,34 @@ def test_get_stat(self):
 
     # act
     _, error = get_stat(stat_code=self.stat_create.stat_code)
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Get Stats
+
+```python
+def test_get_stats(self):
+    from accelbyte_py_sdk.api.social import get_stats
+
+    # arrange
+
+    # act
+    result, error = get_stats()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Query Stats
+
+```python
+def test_query_stats(self):
+    from accelbyte_py_sdk.api.social import query_stats
+
+    # arrange
+
+    # act
+    result, error = query_stats(keyword="stat")
 
     # assert
     self.assertIsNone(error, error)
@@ -2358,6 +2738,86 @@ def test_update_stat(self):
     self.assertIsInstance(result, StatInfo)
     self.assertIsNotNone(result.name)
     self.assertEqual("KODE_STATUS", result.name)
+```
+### Test User Stat
+
+```python
+def test_user_stat(self):
+    from accelbyte_py_sdk.api.social import (
+        create_stat,
+        get_stat,
+        delete_tied_stat,
+    )
+    from accelbyte_py_sdk.api.social import (
+        create_user_stat_item,
+        delete_user_stat_items,
+        get_user_stat_items,
+        inc_user_stat_item_value,
+    )
+    from accelbyte_py_sdk.api.social.models import StatItemInc
+
+    # arrange
+    self.exist = False
+    _, error = get_stat(stat_code=self.stat_create.stat_code)
+    if error:
+        _, error = create_stat(body=self.stat_create)
+        self.exist = error is not None
+    else:
+        self.exist = True
+
+    if not self.exist:
+        self.skipTest(reason=f"Failed to set up stat.")
+
+    user_id = self.get_user_id()
+
+    # clean-up
+    _, _ = delete_user_stat_items(
+        stat_code=self.stat_create.stat_code,
+        user_id=user_id,
+    )
+
+    # act (create_user_stat_item)
+    _, error = create_user_stat_item(
+        stat_code=self.stat_create.stat_code,
+        user_id=user_id,
+    )
+
+    # assert (create_user_stat_item)
+    self.assertIsNone(error, error)
+
+    # act (get_user_stat_items)
+    result, error = get_user_stat_items(user_id=user_id)
+
+    # assert (get_user_stat_items)
+    self.assertIsNone(error, error)
+    self.assertGreater(len(result.data), 0)
+    self.assertTrue(any(item.stat_code == self.stat_create.stat_code for item in result.data))
+
+    # act (inc_user_stat_item_value)
+    result, error = inc_user_stat_item_value(
+        body=StatItemInc.create(inc=1),
+        stat_code=self.stat_create.stat_code,
+        user_id=user_id,
+    )
+
+    # assert (inc_user_stat_item_value)
+    self.assertIsNone(error, error)
+
+    # act (delete_user_stat_items)
+    _, error = delete_user_stat_items(
+        stat_code=self.stat_create.stat_code,
+        user_id=user_id,
+    )
+
+    # assert (delete_user_stat_items)
+    self.assertIsNone(error, error)
+
+    # clean-up
+    _, error = delete_tied_stat(stat_code=self.stat_create.stat_code)
+    if error:
+        self.log_warning(msg=f"Failed to tear down tied stat. {error}")
+    else:
+        self.exist = False
 ```
 ## UGC
 

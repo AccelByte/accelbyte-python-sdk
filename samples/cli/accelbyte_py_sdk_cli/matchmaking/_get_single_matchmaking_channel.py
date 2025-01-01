@@ -69,4 +69,4 @@ def get_single_matchmaking_channel(
 
 
 get_single_matchmaking_channel.operation_id = "GetSingleMatchmakingChannel"
-get_single_matchmaking_channel.is_deprecated = False
+get_single_matchmaking_channel.is_deprecated = True

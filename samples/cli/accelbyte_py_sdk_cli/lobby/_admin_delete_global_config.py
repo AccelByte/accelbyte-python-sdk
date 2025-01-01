@@ -62,4 +62,4 @@ def admin_delete_global_config(
 
 
 admin_delete_global_config.operation_id = "adminDeleteGlobalConfig"
-admin_delete_global_config.is_deprecated = False
+admin_delete_global_config.is_deprecated = True

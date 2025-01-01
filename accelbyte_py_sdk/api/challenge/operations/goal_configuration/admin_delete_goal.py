@@ -35,7 +35,7 @@ from ...models import ResponseError
 class AdminDeleteGoal(Operation):
     """Delete Goal (adminDeleteGoal)
 
-      * Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
+    - Required permission: ADMIN:NAMESPACE:{namespace}:CHALLENGE [DELETE]
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}
