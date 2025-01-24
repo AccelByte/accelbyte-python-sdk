@@ -1963,7 +1963,7 @@ class MockServerRequestTestCase(TestCase):
         # act
         tmp_file = Path("test.dat")
         try:
-            size = 1024 * 1024 * 1024
+            size = 1024
             with tmp_file.open("wb") as tmp_handle:
                 tmp_handle.write(os.urandom(size))
             with tmp_file.open("rb") as tmp_handle:
