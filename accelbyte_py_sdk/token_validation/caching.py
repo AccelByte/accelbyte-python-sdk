@@ -44,6 +44,7 @@ class CachingTokenValidator:
         revocation_list_refresh_interval: Union[int, float] = 3600,
         role_cache_time: Union[int, float] = 3600,
         namespace_context_cache_time: Union[int, float] = 3600,
+        raise_on_error: bool = False,
     ) -> None:
         self.algorithms = (
             algorithms
@@ -66,13 +67,17 @@ class CachingTokenValidator:
                 sdk=sdk,
             )
 
-        self.jwks_cache = JWKSCache(sdk, jwks_refresh_interval)
-        self.revocation_list_cache = RevocationListCache(
-            sdk, revocation_list_refresh_interval
+        self.jwks_cache = JWKSCache(
+            sdk, jwks_refresh_interval, raise_on_error=raise_on_error,
         )
-        self.roles_cache = RolesCache(sdk, role_cache_time)
+        self.revocation_list_cache = RevocationListCache(
+            sdk, revocation_list_refresh_interval, raise_on_error=raise_on_error,
+        )
+        self.roles_cache = RolesCache(
+            sdk, role_cache_time, raise_on_error=raise_on_error,
+        )
         self.namespace_context_cache = NamespaceContextCache(
-            sdk, namespace_context_cache_time
+            sdk, namespace_context_cache_time, raise_on_error=raise_on_error,
         )
 
         self.jwks_cache.update()
