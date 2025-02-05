@@ -66,4 +66,4 @@ def admin_sync_dsmc_configuration(
 
 
 admin_sync_dsmc_configuration.operation_id = "adminSyncDSMCConfiguration"
-admin_sync_dsmc_configuration.is_deprecated = False
+admin_sync_dsmc_configuration.is_deprecated = True

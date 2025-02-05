@@ -76,4 +76,4 @@ def public_bulk_get_users(
 
 
 public_bulk_get_users.operation_id = "PublicBulkGetUsers"
-public_bulk_get_users.is_deprecated = False
+public_bulk_get_users.is_deprecated = True

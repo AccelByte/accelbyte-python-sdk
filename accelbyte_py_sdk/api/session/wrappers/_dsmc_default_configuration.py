@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ModelsDefaultDSMCConfig
@@ -35,6 +36,7 @@ from ..models import ResponseError
 from ..operations.dsmc_default_configuration import AdminGetDSMCConfigurationDefault
 
 
+@deprecated
 @same_doc_as(AdminGetDSMCConfigurationDefault)
 def admin_get_dsmc_configuration_default(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
@@ -73,6 +75,7 @@ def admin_get_dsmc_configuration_default(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetDSMCConfigurationDefault)
 async def admin_get_dsmc_configuration_default_async(
     x_additional_headers: Optional[Dict[str, str]] = None, **kwargs

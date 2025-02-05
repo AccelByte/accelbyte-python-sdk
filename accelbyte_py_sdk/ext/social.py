@@ -372,6 +372,7 @@ def create_stat_create_example() -> StatCreate:
     instance.name = randomize()
     instance.set_by = randomize()
     instance.stat_code = randomize()
+    instance.cap_cycle_override = randomize("bool")
     instance.cycle_ids = [randomize()]
     instance.cycle_overrides = [create_cycle_override_request_example()]
     instance.description = randomize()
@@ -470,6 +471,7 @@ def create_stat_info_example() -> StatInfo:
     instance.stat_code = randomize()
     instance.status = randomize()
     instance.updated_at = randomize("date")
+    instance.cap_cycle_override = randomize("bool")
     instance.cycle_ids = [randomize()]
     instance.cycle_overrides = [create_cycle_override_example()]
     instance.description = randomize()
@@ -534,6 +536,7 @@ def create_stat_reset_info_example() -> StatResetInfo:
 
 def create_stat_update_example() -> StatUpdate:
     instance = StatUpdate()
+    instance.cap_cycle_override = randomize("bool")
     instance.cycle_ids = [randomize()]
     instance.cycle_overrides = [create_cycle_override_request_example()]
     instance.default_value = randomize("int", min_val=1, max_val=1000)

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.25.3"
+__version__ = "7.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -399,6 +399,8 @@ from .wrappers import delete_third_party_login_platform_credential_v3
 from .wrappers import delete_third_party_login_platform_credential_v3_async
 from .wrappers import delete_third_party_login_platform_domain_v3
 from .wrappers import delete_third_party_login_platform_domain_v3_async
+from .wrappers import partial_update_third_party_login_platform_domain_v3
+from .wrappers import partial_update_third_party_login_platform_domain_v3_async
 from .wrappers import retrieve_active_oidc_clients_public_v3
 from .wrappers import retrieve_active_oidc_clients_public_v3_async
 from .wrappers import (
@@ -501,6 +503,8 @@ from .wrappers import admin_get_user_platform_accounts_v3
 from .wrappers import admin_get_user_platform_accounts_v3_async
 from .wrappers import admin_get_user_single_platform_account
 from .wrappers import admin_get_user_single_platform_account_async
+from .wrappers import admin_get_user_state_by_user_id_v3
+from .wrappers import admin_get_user_state_by_user_id_v3_async
 from .wrappers import admin_invite_user_v3
 from .wrappers import admin_invite_user_v3_async
 from .wrappers import admin_link_platform_account
@@ -885,6 +889,8 @@ from .wrappers import public_get_my_mfa_status_v4
 from .wrappers import public_get_my_mfa_status_v4_async
 from .wrappers import public_get_my_own_mfa_status_v4
 from .wrappers import public_get_my_own_mfa_status_v4_async
+from .wrappers import public_get_user_by_platform_user_idv4
+from .wrappers import public_get_user_by_platform_user_idv4_async
 from .wrappers import public_get_user_public_info_by_user_id_v4
 from .wrappers import public_get_user_public_info_by_user_id_v4_async
 from .wrappers import public_invite_user_v4

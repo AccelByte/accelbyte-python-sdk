@@ -70,6 +70,8 @@ class AdminGetChallenges(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        keyword: (keyword) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -78,8 +80,12 @@ class AdminGetChallenges(Operation):
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelListChallengeResponse (OK)
+
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -98,10 +104,12 @@ class AdminGetChallenges(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    keyword: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
     status: Union[str, StatusEnum]  # OPTIONAL in [query]
+    tags: List[str]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -153,6 +161,8 @@ class AdminGetChallenges(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "keyword"):
+            result["keyword"] = self.keyword
         if hasattr(self, "limit"):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
@@ -161,6 +171,8 @@ class AdminGetChallenges(Operation):
             result["sortBy"] = self.sort_by
         if hasattr(self, "status"):
             result["status"] = self.status
+        if hasattr(self, "tags"):
+            result["tags"] = self.tags
         return result
 
     # endregion get_x_params methods
@@ -173,6 +185,10 @@ class AdminGetChallenges(Operation):
 
     def with_namespace(self, value: str) -> AdminGetChallenges:
         self.namespace = value
+        return self
+
+    def with_keyword(self, value: str) -> AdminGetChallenges:
+        self.keyword = value
         return self
 
     def with_limit(self, value: int) -> AdminGetChallenges:
@@ -191,6 +207,10 @@ class AdminGetChallenges(Operation):
         self.status = value
         return self
 
+    def with_tags(self, value: List[str]) -> AdminGetChallenges:
+        self.tags = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -201,6 +221,10 @@ class AdminGetChallenges(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "keyword") and self.keyword:
+            result["keyword"] = str(self.keyword)
+        elif include_empty:
+            result["keyword"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -217,6 +241,10 @@ class AdminGetChallenges(Operation):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = Union[str, StatusEnum]()
+        if hasattr(self, "tags") and self.tags:
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -233,6 +261,8 @@ class AdminGetChallenges(Operation):
         """Parse the given response.
 
         200: OK - ModelListChallengeResponse (OK)
+
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -255,6 +285,8 @@ class AdminGetChallenges(Operation):
 
         if code == 200:
             return ModelListChallengeResponse.create_from_dict(content), None
+        if code == 400:
+            return None, ResponseError.create_from_dict(content)
         if code == 401:
             return None, IamErrorResponse.create_from_dict(content)
         if code == 403:
@@ -274,14 +306,18 @@ class AdminGetChallenges(Operation):
     def create(
         cls,
         namespace: str,
+        keyword: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
         sort_by: Optional[Union[str, SortByEnum]] = None,
         status: Optional[Union[str, StatusEnum]] = None,
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> AdminGetChallenges:
         instance = cls()
         instance.namespace = namespace
+        if keyword is not None:
+            instance.keyword = keyword
         if limit is not None:
             instance.limit = limit
         if offset is not None:
@@ -290,6 +326,8 @@ class AdminGetChallenges(Operation):
             instance.sort_by = sort_by
         if status is not None:
             instance.status = status
+        if tags is not None:
+            instance.tags = tags
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -303,6 +341,10 @@ class AdminGetChallenges(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "keyword" in dict_ and dict_["keyword"] is not None:
+            instance.keyword = str(dict_["keyword"])
+        elif include_empty:
+            instance.keyword = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -319,26 +361,40 @@ class AdminGetChallenges(Operation):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = Union[str, StatusEnum]()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "keyword": "keyword",
             "limit": "limit",
             "offset": "offset",
             "sortBy": "sort_by",
             "status": "status",
+            "tags": "tags",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "keyword": False,
             "limit": False,
             "offset": False,
             "sortBy": False,
             "status": False,
+            "tags": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "tags": "csv",  # in query
         }
 
     @staticmethod

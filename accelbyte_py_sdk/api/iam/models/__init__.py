@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.25.3"
+__version__ = "7.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -28,6 +28,9 @@ from .account_create_user_request_v4 import (
 from .account_create_user_response_v4 import AccountCreateUserResponseV4
 from .account_upgrade_headless_account_request_v4 import (
     AccountUpgradeHeadlessAccountRequestV4,
+)
+from .account_upgrade_headless_account_with_verification_code_forward_request_v4 import (
+    AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4,
 )
 from .account_upgrade_headless_account_with_verification_code_request_v4 import (
     AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
@@ -66,6 +69,12 @@ from .accountcommon_distinct_linked_platform_v3 import (
 from .accountcommon_distinct_platform_response_v3 import (
     AccountcommonDistinctPlatformResponseV3,
 )
+from .accountcommon_group_and_role_mapping_for_patch import (
+    AccountcommonGroupAndRoleMappingForPatch,
+)
+from .accountcommon_group_and_role_mapping_for_update import (
+    AccountcommonGroupAndRoleMappingForUpdate,
+)
 from .accountcommon_input_validation_description import (
     AccountcommonInputValidationDescription,
 )
@@ -100,6 +109,8 @@ from .accountcommon_role_v3 import AccountcommonRoleV3
 from .accountcommon_simple_user_platform_info_v3 import (
     AccountcommonSimpleUserPlatformInfoV3,
 )
+from .accountcommon_sso_config import AccountcommonSsoConfig
+from .accountcommon_sso_config_patch_req import AccountcommonSsoConfigPatchReq
 from .accountcommon_user_information_v3 import AccountcommonUserInformationV3
 from .accountcommon_user_linked_platform import AccountcommonUserLinkedPlatform
 from .accountcommon_user_linked_platform_v3 import AccountcommonUserLinkedPlatformV3
@@ -260,6 +271,7 @@ from .model_one_time_code_link_redirection_response import (
 )
 from .model_permission_delete_request import ModelPermissionDeleteRequest
 from .model_platform_domain_delete_request import ModelPlatformDomainDeleteRequest
+from .model_platform_domain_patch_request import ModelPlatformDomainPatchRequest
 from .model_platform_domain_response import ModelPlatformDomainResponse
 from .model_platform_domain_update_request import ModelPlatformDomainUpdateRequest
 from .model_platform_user_id_request import ModelPlatformUserIDRequest
@@ -397,6 +409,7 @@ from .model_user_public_info_response_v4 import ModelUserPublicInfoResponseV4
 from .model_user_response import ModelUserResponse
 from .model_user_response_v3 import ModelUserResponseV3
 from .model_user_roles_v4_response import ModelUserRolesV4Response
+from .model_user_state_response_v3 import ModelUserStateResponseV3
 from .model_user_unban_create_request_v3 import ModelUserUnbanCreateRequestV3
 from .model_user_update_request import ModelUserUpdateRequest
 from .model_user_update_request_v3 import ModelUserUpdateRequestV3

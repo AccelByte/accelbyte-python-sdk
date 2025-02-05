@@ -900,14 +900,6 @@ def post_player_public_record_handler_v1(
     `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Reserved Word
 
     Reserved Word List: **__META**
@@ -1013,14 +1005,6 @@ async def post_player_public_record_handler_v1_async(
     - Result:
 
     `{ "data1": { "data2": "value", "data3": "new value" }`
-
-
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
 
 
     ## Reserved Word
@@ -1133,14 +1117,6 @@ def post_player_record_handler_v1(
     `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1161,6 +1137,14 @@ def post_player_record_handler_v1(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
@@ -1253,14 +1237,6 @@ async def post_player_record_handler_v1_async(
     `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1281,6 +1257,14 @@ async def post_player_record_handler_v1_async(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
@@ -1488,14 +1472,6 @@ def put_player_public_record_handler_v1(
 
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Reserved Word
 
     Reserved Word List: **__META**
@@ -1589,14 +1565,6 @@ async def put_player_public_record_handler_v1_async(
 
     `{ "data2": "new value" }`
 
-
-
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
 
 
     ## Reserved Word
@@ -1697,14 +1665,6 @@ def put_player_record_handler_v1(
 
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1725,6 +1685,14 @@ def put_player_record_handler_v1(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
@@ -1805,14 +1773,6 @@ async def put_player_record_handler_v1_async(
 
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1833,6 +1793,14 @@ async def put_player_record_handler_v1_async(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}

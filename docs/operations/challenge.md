@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Challenge Service Index (1.12.1)
+# AccelByte Gaming Services Challenge Service Index (1.13.0)
 
 
 ## Operations
@@ -94,6 +94,7 @@
 | model.GoalProgressionResponse | [ModelGoalProgressionResponse](../../accelbyte_py_sdk/api/challenge/models/model_goal_progression_response.py) |
 | model.GoalResponse | [ModelGoalResponse](../../accelbyte_py_sdk/api/challenge/models/model_goal_response.py) |
 | model.GoalSchedule | [ModelGoalSchedule](../../accelbyte_py_sdk/api/challenge/models/model_goal_schedule.py) |
+| model.GoalScheduleRequest | [ModelGoalScheduleRequest](../../accelbyte_py_sdk/api/challenge/models/model_goal_schedule_request.py) |
 | model.ListChallengeResponse | [ModelListChallengeResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_challenge_response.py) |
 | model.ListPeriodsResponse | [ModelListPeriodsResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_periods_response.py) |
 | model.ListScheduleByGoalResponse | [ModelListScheduleByGoalResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_schedule_by_goal_response.py) |

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.21.1"
+__version__ = "3.21.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -22,13 +22,22 @@ from .apimodels_config_alert_response import ApimodelsConfigAlertResponse
 from .apimodels_configuration_template_response import (
     ApimodelsConfigurationTemplateResponse,
 )
+from .apimodels_configuration_template_response import (
+    TextChatModeEnum as ApimodelsConfigurationTemplateResponseTextChatModeEnum,
+)
 from .apimodels_configuration_templates_response import (
     ApimodelsConfigurationTemplatesResponse,
 )
 from .apimodels_create_configuration_template_request import (
     ApimodelsCreateConfigurationTemplateRequest,
 )
+from .apimodels_create_configuration_template_request import (
+    TextChatModeEnum as ApimodelsCreateConfigurationTemplateRequestTextChatModeEnum,
+)
 from .apimodels_create_game_session_request import ApimodelsCreateGameSessionRequest
+from .apimodels_create_game_session_request import (
+    TextChatModeEnum as ApimodelsCreateGameSessionRequestTextChatModeEnum,
+)
 from .apimodels_create_party_request import ApimodelsCreatePartyRequest
 from .apimodels_delete_bulk_game_session_request import (
     ApimodelsDeleteBulkGameSessionRequest,
@@ -80,6 +89,9 @@ from .apimodels_psn_app_server_credential_record import (
     ApimodelsPSNAppServerCredentialRecord,
 )
 from .apimodels_public_configuration import ApimodelsPublicConfiguration
+from .apimodels_public_configuration import (
+    TextChatModeEnum as ApimodelsPublicConfigurationTextChatModeEnum,
+)
 from .apimodels_put_global_configuration_request import (
     ApimodelsPutGlobalConfigurationRequest,
 )
@@ -101,6 +113,9 @@ from .apimodels_set_ds_ready_request import ApimodelsSetDSReadyRequest
 from .apimodels_update_configuration_template_request import (
     ApimodelsUpdateConfigurationTemplateRequest,
 )
+from .apimodels_update_configuration_template_request import (
+    TextChatModeEnum as ApimodelsUpdateConfigurationTemplateRequestTextChatModeEnum,
+)
 from .apimodels_update_game_session_backfill_request import (
     ApimodelsUpdateGameSessionBackfillRequest,
 )
@@ -108,6 +123,9 @@ from .apimodels_update_game_session_member_status_response import (
     ApimodelsUpdateGameSessionMemberStatusResponse,
 )
 from .apimodels_update_game_session_request import ApimodelsUpdateGameSessionRequest
+from .apimodels_update_gamesession_ds_information_request import (
+    ApimodelsUpdateGamesessionDSInformationRequest,
+)
 from .apimodels_update_party_request import ApimodelsUpdatePartyRequest
 from .apimodels_user_response import ApimodelsUserResponse
 from .apimodels_xbl_certificate_response_body import ApimodelsXblCertificateResponseBody
@@ -115,6 +133,7 @@ from .logconfig_configuration import LogconfigConfiguration
 from .logconfig_configuration import LogLevelEnum as LogconfigConfigurationLogLevelEnum
 from .model_native_session import ModelNativeSession
 from .model_native_session_member import ModelNativeSessionMember
+from .models_async_process_ds_request import ModelsAsyncProcessDSRequest
 from .models_default_dsmc_config import ModelsDefaultDSMCConfig
 from .models_dsm_config_record import ModelsDSMConfigRecord
 from .models_extend_configuration import ModelsExtendConfiguration

@@ -31,6 +31,7 @@ from ....core import same_doc_as
 
 from ..models import ModelCheckAvailabilityResponse
 from ..models import ModelPlatformDomainDeleteRequest
+from ..models import ModelPlatformDomainPatchRequest
 from ..models import ModelPlatformDomainResponse
 from ..models import ModelPlatformDomainUpdateRequest
 from ..models import ModelPublicThirdPartyPlatformInfo
@@ -46,6 +47,9 @@ from ..operations.third_party_credential import (
     DeleteThirdPartyLoginPlatformCredentialV3,
 )
 from ..operations.third_party_credential import DeleteThirdPartyLoginPlatformDomainV3
+from ..operations.third_party_credential import (
+    PartialUpdateThirdPartyLoginPlatformDomainV3,
+)
 from ..operations.third_party_credential import RetrieveActiveOIDCClientsPublicV3
 from ..operations.third_party_credential import (
     RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3,
@@ -420,6 +424,7 @@ def delete_third_party_login_platform_domain_v3(
     """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
 
     This is the API to unregister 3rd Platform domain.
+    If there is a ssoGroups in request body, then this request wil only delete the sso group from the target domain, it will not delete domain.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
@@ -476,6 +481,7 @@ async def delete_third_party_login_platform_domain_v3_async(
     """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
 
     This is the API to unregister 3rd Platform domain.
+    If there is a ssoGroups in request body, then this request wil only delete the sso group from the target domain, it will not delete domain.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
@@ -514,6 +520,122 @@ async def delete_third_party_login_platform_domain_v3_async(
         if error:
             return None, error
     request = DeleteThirdPartyLoginPlatformDomainV3.create(
+        body=body,
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PartialUpdateThirdPartyLoginPlatformDomainV3)
+def partial_update_third_party_login_platform_domain_v3(
+    body: ModelPlatformDomainPatchRequest,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Partial update third Party Platform Credential's domain (PartialUpdateThirdPartyLoginPlatformDomainV3)
+
+    This is the API to patch update 3rd Platform domain.
+    This API is a create or partial-update behavior. If it is update, it is a partial update behavior.
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
+
+        method: PATCH
+
+        tags: ["Third Party Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformDomainPatchRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelPlatformDomainResponse (Domain config partial updated)
+
+        400: Bad Request - RestErrorResponse (Bad Request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PartialUpdateThirdPartyLoginPlatformDomainV3.create(
+        body=body,
+        platform_id=platform_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PartialUpdateThirdPartyLoginPlatformDomainV3)
+async def partial_update_third_party_login_platform_domain_v3_async(
+    body: ModelPlatformDomainPatchRequest,
+    platform_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Partial update third Party Platform Credential's domain (PartialUpdateThirdPartyLoginPlatformDomainV3)
+
+    This is the API to patch update 3rd Platform domain.
+    This API is a create or partial-update behavior. If it is update, it is a partial update behavior.
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
+
+        method: PATCH
+
+        tags: ["Third Party Credential"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelPlatformDomainPatchRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelPlatformDomainResponse (Domain config partial updated)
+
+        400: Bad Request - RestErrorResponse (Bad Request)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (10175: third party credential not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PartialUpdateThirdPartyLoginPlatformDomainV3.create(
         body=body,
         platform_id=platform_id,
         namespace=namespace,
@@ -1168,6 +1290,7 @@ def update_third_party_login_platform_domain_v3(
     """Set Third Party Platform Credential's domain (UpdateThirdPartyLoginPlatformDomainV3)
 
     This is the API to set 3rd Platform domain.
+    This API is a create-or-update behavior. If it is update, it is a replacement behavior.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain
@@ -1224,6 +1347,7 @@ async def update_third_party_login_platform_domain_v3_async(
     """Set Third Party Platform Credential's domain (UpdateThirdPartyLoginPlatformDomainV3)
 
     This is the API to set 3rd Platform domain.
+    This API is a create-or-update behavior. If it is update, it is a replacement behavior.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain

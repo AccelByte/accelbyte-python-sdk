@@ -26,9 +26,17 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
+from ..models.models_async_process_ds_request import ModelsAsyncProcessDSRequest
 from ..models.models_extend_configuration import ModelsExtendConfiguration
 from ..models.models_native_session_setting import ModelsNativeSessionSetting
+
+
+class TextChatModeEnum(StrEnum):
+    GAME = "GAME"
+    NONE = "NONE"
+    TEAM = "TEAM"
 
 
 class ApimodelsConfigurationTemplateResponse(Model):
@@ -66,6 +74,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
         updated_at: (updatedAt) REQUIRED str
 
         app_name: (appName) OPTIONAL str
+
+        async_process_ds_request: (asyncProcessDSRequest) OPTIONAL ModelsAsyncProcessDSRequest
 
         attributes: (attributes) OPTIONAL Dict[str, Any]
 
@@ -105,6 +115,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         requested_regions: (requestedRegions) OPTIONAL List[str]
 
+        text_chat_mode: (textChatMode) OPTIONAL Union[str, TextChatModeEnum]
+
         tie_teams_session_lifetime: (tieTeamsSessionLifetime) OPTIONAL bool
     """
 
@@ -126,6 +138,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     type_: str  # REQUIRED
     updated_at: str  # REQUIRED
     app_name: str  # OPTIONAL
+    async_process_ds_request: ModelsAsyncProcessDSRequest  # OPTIONAL
     attributes: Dict[str, Any]  # OPTIONAL
     auto_join: bool  # OPTIONAL
     auto_leave_session: bool  # OPTIONAL
@@ -145,6 +158,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     preferred_claim_keys: List[str]  # OPTIONAL
     psn_base_url: str  # OPTIONAL
     requested_regions: List[str]  # OPTIONAL
+    text_chat_mode: Union[str, TextChatModeEnum]  # OPTIONAL
     tie_teams_session_lifetime: bool  # OPTIONAL
 
     # endregion fields
@@ -215,6 +229,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
     def with_app_name(self, value: str) -> ApimodelsConfigurationTemplateResponse:
         self.app_name = value
+        return self
+
+    def with_async_process_ds_request(
+        self, value: ModelsAsyncProcessDSRequest
+    ) -> ApimodelsConfigurationTemplateResponse:
+        self.async_process_ds_request = value
         return self
 
     def with_attributes(
@@ -319,6 +339,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self.requested_regions = value
         return self
 
+    def with_text_chat_mode(
+        self, value: Union[str, TextChatModeEnum]
+    ) -> ApimodelsConfigurationTemplateResponse:
+        self.text_chat_mode = value
+        return self
+
     def with_tie_teams_session_lifetime(
         self, value: bool
     ) -> ApimodelsConfigurationTemplateResponse:
@@ -395,6 +421,12 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["appName"] = str(self.app_name)
         elif include_empty:
             result["appName"] = ""
+        if hasattr(self, "async_process_ds_request"):
+            result["asyncProcessDSRequest"] = self.async_process_ds_request.to_dict(
+                include_empty=include_empty
+            )
+        elif include_empty:
+            result["asyncProcessDSRequest"] = ModelsAsyncProcessDSRequest()
         if hasattr(self, "attributes"):
             result["attributes"] = {str(k0): v0 for k0, v0 in self.attributes.items()}
         elif include_empty:
@@ -475,6 +507,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["requestedRegions"] = [str(i0) for i0 in self.requested_regions]
         elif include_empty:
             result["requestedRegions"] = []
+        if hasattr(self, "text_chat_mode"):
+            result["textChatMode"] = str(self.text_chat_mode)
+        elif include_empty:
+            result["textChatMode"] = Union[str, TextChatModeEnum]()
         if hasattr(self, "tie_teams_session_lifetime"):
             result["tieTeamsSessionLifetime"] = bool(self.tie_teams_session_lifetime)
         elif include_empty:
@@ -504,6 +540,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         type_: str,
         updated_at: str,
         app_name: Optional[str] = None,
+        async_process_ds_request: Optional[ModelsAsyncProcessDSRequest] = None,
         attributes: Optional[Dict[str, Any]] = None,
         auto_join: Optional[bool] = None,
         auto_leave_session: Optional[bool] = None,
@@ -523,6 +560,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         preferred_claim_keys: Optional[List[str]] = None,
         psn_base_url: Optional[str] = None,
         requested_regions: Optional[List[str]] = None,
+        text_chat_mode: Optional[Union[str, TextChatModeEnum]] = None,
         tie_teams_session_lifetime: Optional[bool] = None,
         **kwargs,
     ) -> ApimodelsConfigurationTemplateResponse:
@@ -544,6 +582,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
         instance.updated_at = updated_at
         if app_name is not None:
             instance.app_name = app_name
+        if async_process_ds_request is not None:
+            instance.async_process_ds_request = async_process_ds_request
         if attributes is not None:
             instance.attributes = attributes
         if auto_join is not None:
@@ -582,6 +622,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.psn_base_url = psn_base_url
         if requested_regions is not None:
             instance.requested_regions = requested_regions
+        if text_chat_mode is not None:
+            instance.text_chat_mode = text_chat_mode
         if tie_teams_session_lifetime is not None:
             instance.tie_teams_session_lifetime = tie_teams_session_lifetime
         return instance
@@ -657,6 +699,17 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.app_name = str(dict_["appName"])
         elif include_empty:
             instance.app_name = ""
+        if (
+            "asyncProcessDSRequest" in dict_
+            and dict_["asyncProcessDSRequest"] is not None
+        ):
+            instance.async_process_ds_request = (
+                ModelsAsyncProcessDSRequest.create_from_dict(
+                    dict_["asyncProcessDSRequest"], include_empty=include_empty
+                )
+            )
+        elif include_empty:
+            instance.async_process_ds_request = ModelsAsyncProcessDSRequest()
         if "attributes" in dict_ and dict_["attributes"] is not None:
             instance.attributes = {
                 str(k0): v0 for k0, v0 in dict_["attributes"].items()
@@ -756,6 +809,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.requested_regions = [str(i0) for i0 in dict_["requestedRegions"]]
         elif include_empty:
             instance.requested_regions = []
+        if "textChatMode" in dict_ and dict_["textChatMode"] is not None:
+            instance.text_chat_mode = str(dict_["textChatMode"])
+        elif include_empty:
+            instance.text_chat_mode = Union[str, TextChatModeEnum]()
         if (
             "tieTeamsSessionLifetime" in dict_
             and dict_["tieTeamsSessionLifetime"] is not None
@@ -822,6 +879,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "type": "type_",
             "updatedAt": "updated_at",
             "appName": "app_name",
+            "asyncProcessDSRequest": "async_process_ds_request",
             "attributes": "attributes",
             "autoJoin": "auto_join",
             "autoLeaveSession": "auto_leave_session",
@@ -841,6 +899,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "preferredClaimKeys": "preferred_claim_keys",
             "PSNBaseUrl": "psn_base_url",
             "requestedRegions": "requested_regions",
+            "textChatMode": "text_chat_mode",
             "tieTeamsSessionLifetime": "tie_teams_session_lifetime",
         }
 
@@ -863,6 +922,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "type": True,
             "updatedAt": True,
             "appName": False,
+            "asyncProcessDSRequest": False,
             "attributes": False,
             "autoJoin": False,
             "autoLeaveSession": False,
@@ -882,7 +942,14 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "preferredClaimKeys": False,
             "PSNBaseUrl": False,
             "requestedRegions": False,
+            "textChatMode": False,
             "tieTeamsSessionLifetime": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "textChatMode": ["GAME", "NONE", "TEAM"],
         }
 
     # endregion static methods

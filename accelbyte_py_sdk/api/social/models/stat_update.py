@@ -47,6 +47,8 @@ class StatUpdate(Model):
     """Stat update (StatUpdate)
 
     Properties:
+        cap_cycle_override: (capCycleOverride) OPTIONAL bool
+
         cycle_ids: (cycleIds) OPTIONAL List[str]
 
         cycle_overrides: (cycleOverrides) OPTIONAL List[CycleOverrideRequest]
@@ -70,6 +72,7 @@ class StatUpdate(Model):
 
     # region fields
 
+    cap_cycle_override: bool  # OPTIONAL
     cycle_ids: List[str]  # OPTIONAL
     cycle_overrides: List[CycleOverrideRequest]  # OPTIONAL
     default_value: float  # OPTIONAL
@@ -84,6 +87,10 @@ class StatUpdate(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_cap_cycle_override(self, value: bool) -> StatUpdate:
+        self.cap_cycle_override = value
+        return self
 
     def with_cycle_ids(self, value: List[str]) -> StatUpdate:
         self.cycle_ids = value
@@ -133,6 +140,10 @@ class StatUpdate(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "cap_cycle_override"):
+            result["capCycleOverride"] = bool(self.cap_cycle_override)
+        elif include_empty:
+            result["capCycleOverride"] = False
         if hasattr(self, "cycle_ids"):
             result["cycleIds"] = [str(i0) for i0 in self.cycle_ids]
         elif include_empty:
@@ -188,6 +199,7 @@ class StatUpdate(Model):
     @classmethod
     def create(
         cls,
+        cap_cycle_override: Optional[bool] = None,
         cycle_ids: Optional[List[str]] = None,
         cycle_overrides: Optional[List[CycleOverrideRequest]] = None,
         default_value: Optional[float] = None,
@@ -203,6 +215,8 @@ class StatUpdate(Model):
         **kwargs,
     ) -> StatUpdate:
         instance = cls()
+        if cap_cycle_override is not None:
+            instance.cap_cycle_override = cap_cycle_override
         if cycle_ids is not None:
             instance.cycle_ids = cycle_ids
         if cycle_overrides is not None:
@@ -232,6 +246,10 @@ class StatUpdate(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "capCycleOverride" in dict_ and dict_["capCycleOverride"] is not None:
+            instance.cap_cycle_override = bool(dict_["capCycleOverride"])
+        elif include_empty:
+            instance.cap_cycle_override = False
         if "cycleIds" in dict_ and dict_["cycleIds"] is not None:
             instance.cycle_ids = [str(i0) for i0 in dict_["cycleIds"]]
         elif include_empty:
@@ -324,6 +342,7 @@ class StatUpdate(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "capCycleOverride": "cap_cycle_override",
             "cycleIds": "cycle_ids",
             "cycleOverrides": "cycle_overrides",
             "defaultValue": "default_value",
@@ -339,6 +358,7 @@ class StatUpdate(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "capCycleOverride": False,
             "cycleIds": False,
             "cycleOverrides": False,
             "defaultValue": False,

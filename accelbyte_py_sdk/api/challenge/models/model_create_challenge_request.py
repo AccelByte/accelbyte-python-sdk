@@ -79,6 +79,8 @@ class ModelCreateChallengeRequest(Model):
         repeat_after: (repeatAfter) OPTIONAL int
 
         reset_config: (resetConfig) OPTIONAL ModelResetConfig
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
@@ -96,6 +98,7 @@ class ModelCreateChallengeRequest(Model):
     randomized_per_rotation: bool  # OPTIONAL
     repeat_after: int  # OPTIONAL
     reset_config: ModelResetConfig  # OPTIONAL
+    tags: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -159,6 +162,10 @@ class ModelCreateChallengeRequest(Model):
         self.reset_config = value
         return self
 
+    def with_tags(self, value: List[str]) -> ModelCreateChallengeRequest:
+        self.tags = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -219,6 +226,10 @@ class ModelCreateChallengeRequest(Model):
             )
         elif include_empty:
             result["resetConfig"] = ModelResetConfig()
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -241,6 +252,7 @@ class ModelCreateChallengeRequest(Model):
         randomized_per_rotation: Optional[bool] = None,
         repeat_after: Optional[int] = None,
         reset_config: Optional[ModelResetConfig] = None,
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelCreateChallengeRequest:
         instance = cls()
@@ -264,6 +276,8 @@ class ModelCreateChallengeRequest(Model):
             instance.repeat_after = repeat_after
         if reset_config is not None:
             instance.reset_config = reset_config
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -333,6 +347,10 @@ class ModelCreateChallengeRequest(Model):
             )
         elif include_empty:
             instance.reset_config = ModelResetConfig()
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @classmethod
@@ -389,6 +407,7 @@ class ModelCreateChallengeRequest(Model):
             "randomizedPerRotation": "randomized_per_rotation",
             "repeatAfter": "repeat_after",
             "resetConfig": "reset_config",
+            "tags": "tags",
         }
 
     @staticmethod
@@ -407,6 +426,7 @@ class ModelCreateChallengeRequest(Model):
             "randomizedPerRotation": False,
             "repeatAfter": False,
             "resetConfig": False,
+            "tags": False,
         }
 
     @staticmethod

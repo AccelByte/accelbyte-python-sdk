@@ -29,6 +29,7 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ApiExternalFailureMetricRecord
 from ..models import ApiListMatchPoolTicketsResponse
 from ..models import ApiListMatchPoolsResponse
 from ..models import ApiMatchPool
@@ -44,8 +45,10 @@ from ..operations.match_pools import GetPlayerMetric
 from ..operations.match_pools import MatchPoolDetails
 from ..operations.match_pools import MatchPoolList
 from ..operations.match_pools import MatchPoolMetric
+from ..operations.match_pools import PostMatchErrorMetric
 from ..operations.match_pools import PublicGetPlayerMetric
 from ..operations.match_pools import UpdateMatchPool
+from ..models import ApiExternalFailureMetricRecordTypeEnum
 
 
 @same_doc_as(AdminGetMatchPoolTickets)
@@ -826,6 +829,120 @@ async def match_pool_metric_async(
         if error:
             return None, error
     request = MatchPoolMetric.create(
+        pool=pool,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PostMatchErrorMetric)
+def post_match_error_metric(
+    body: ApiExternalFailureMetricRecord,
+    pool: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Post metrics for external flow failure in a specific match pool (PostMatchErrorMetric)
+
+    Post metrics for external flow failure in a specific match pool
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/external-failure
+
+        method: POST
+
+        tags: ["Match-Pools", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiExternalFailureMetricRecord in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        pool: (pool) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PostMatchErrorMetric.create(
+        body=body,
+        pool=pool,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PostMatchErrorMetric)
+async def post_match_error_metric_async(
+    body: ApiExternalFailureMetricRecord,
+    pool: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Post metrics for external flow failure in a specific match pool (PostMatchErrorMetric)
+
+    Post metrics for external flow failure in a specific match pool
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-pools/{pool}/metrics/external-failure
+
+        method: POST
+
+        tags: ["Match-Pools", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiExternalFailureMetricRecord in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        pool: (pool) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PostMatchErrorMetric.create(
+        body=body,
         pool=pool,
         namespace=namespace,
     )

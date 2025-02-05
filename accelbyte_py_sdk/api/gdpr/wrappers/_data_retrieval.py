@@ -160,20 +160,21 @@ async def admin_cancel_user_personal_data_request_async(
 
 @same_doc_as(AdminGeneratePersonalDataURL)
 def admin_generate_personal_data_url(
-    password: str,
     request_date: str,
     user_id: str,
+    password: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Generate personal data download url.
-    Scope: account
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
 
-    ### Request Header:
-    - **Content-Type: application/x-www-form-urlencoded**
+
+
+
+    If admin request data for themselves, password is need to be set
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
@@ -188,7 +189,7 @@ def admin_generate_personal_data_url(
 
         securities: [BEARER_AUTH]
 
-        password: (password) REQUIRED str in form_data
+        password: (password) OPTIONAL str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -212,9 +213,9 @@ def admin_generate_personal_data_url(
         if error:
             return None, error
     request = AdminGeneratePersonalDataURL.create(
-        password=password,
         request_date=request_date,
         user_id=user_id,
+        password=password,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -222,20 +223,21 @@ def admin_generate_personal_data_url(
 
 @same_doc_as(AdminGeneratePersonalDataURL)
 async def admin_generate_personal_data_url_async(
-    password: str,
     request_date: str,
     user_id: str,
+    password: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Generate personal data download url.
-    Scope: account
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
 
-    ### Request Header:
-    - **Content-Type: application/x-www-form-urlencoded**
+
+
+
+    If admin request data for themselves, password is need to be set
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
@@ -250,7 +252,7 @@ async def admin_generate_personal_data_url_async(
 
         securities: [BEARER_AUTH]
 
-        password: (password) REQUIRED str in form_data
+        password: (password) OPTIONAL str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -274,9 +276,9 @@ async def admin_generate_personal_data_url_async(
         if error:
             return None, error
     request = AdminGeneratePersonalDataURL.create(
-        password=password,
         request_date=request_date,
         user_id=user_id,
+        password=password,
         namespace=namespace,
     )
     return await run_request_async(

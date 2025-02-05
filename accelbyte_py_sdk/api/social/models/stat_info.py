@@ -81,6 +81,8 @@ class StatInfo(Model):
 
         updated_at: (updatedAt) REQUIRED str
 
+        cap_cycle_override: (capCycleOverride) OPTIONAL bool
+
         cycle_ids: (cycleIds) OPTIONAL List[str]
 
         cycle_overrides: (cycleOverrides) OPTIONAL List[CycleOverride]
@@ -112,6 +114,7 @@ class StatInfo(Model):
     stat_code: str  # REQUIRED
     status: Union[str, StatusEnum]  # REQUIRED
     updated_at: str  # REQUIRED
+    cap_cycle_override: bool  # OPTIONAL
     cycle_ids: List[str]  # OPTIONAL
     cycle_overrides: List[CycleOverride]  # OPTIONAL
     description: str  # OPTIONAL
@@ -171,6 +174,10 @@ class StatInfo(Model):
 
     def with_updated_at(self, value: str) -> StatInfo:
         self.updated_at = value
+        return self
+
+    def with_cap_cycle_override(self, value: bool) -> StatInfo:
+        self.cap_cycle_override = value
         return self
 
     def with_cycle_ids(self, value: List[str]) -> StatInfo:
@@ -263,6 +270,10 @@ class StatInfo(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "cap_cycle_override"):
+            result["capCycleOverride"] = bool(self.cap_cycle_override)
+        elif include_empty:
+            result["capCycleOverride"] = False
         if hasattr(self, "cycle_ids"):
             result["cycleIds"] = [str(i0) for i0 in self.cycle_ids]
         elif include_empty:
@@ -320,6 +331,7 @@ class StatInfo(Model):
         stat_code: str,
         status: Union[str, StatusEnum],
         updated_at: str,
+        cap_cycle_override: Optional[bool] = None,
         cycle_ids: Optional[List[str]] = None,
         cycle_overrides: Optional[List[CycleOverride]] = None,
         description: Optional[str] = None,
@@ -347,6 +359,8 @@ class StatInfo(Model):
         instance.stat_code = stat_code
         instance.status = status
         instance.updated_at = updated_at
+        if cap_cycle_override is not None:
+            instance.cap_cycle_override = cap_cycle_override
         if cycle_ids is not None:
             instance.cycle_ids = cycle_ids
         if cycle_overrides is not None:
@@ -423,6 +437,10 @@ class StatInfo(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if "capCycleOverride" in dict_ and dict_["capCycleOverride"] is not None:
+            instance.cap_cycle_override = bool(dict_["capCycleOverride"])
+        elif include_empty:
+            instance.cap_cycle_override = False
         if "cycleIds" in dict_ and dict_["cycleIds"] is not None:
             instance.cycle_ids = [str(i0) for i0 in dict_["cycleIds"]]
         elif include_empty:
@@ -514,6 +532,7 @@ class StatInfo(Model):
             "statCode": "stat_code",
             "status": "status",
             "updatedAt": "updated_at",
+            "capCycleOverride": "cap_cycle_override",
             "cycleIds": "cycle_ids",
             "cycleOverrides": "cycle_overrides",
             "description": "description",
@@ -539,6 +558,7 @@ class StatInfo(Model):
             "statCode": True,
             "status": True,
             "updatedAt": True,
+            "capCycleOverride": False,
             "cycleIds": False,
             "cycleOverrides": False,
             "description": False,

@@ -36,6 +36,7 @@ from ..models import AccountCreateTestUsersResponseV4
 from ..models import AccountCreateUserRequestV4
 from ..models import AccountCreateUserResponseV4
 from ..models import AccountUpgradeHeadlessAccountRequestV4
+from ..models import AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4
 from ..models import AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4
 from ..models import AccountUserResponseV4
 from ..models import AccountcommonUserPlatforms
@@ -122,6 +123,7 @@ from ..operations.users_v4 import PublicGetMyBackupCodesV4
 from ..operations.users_v4 import PublicGetMyEnabledFactorsV4
 from ..operations.users_v4 import PublicGetMyMFAStatusV4
 from ..operations.users_v4 import PublicGetMyOwnMFAStatusV4
+from ..operations.users_v4 import PublicGetUserByPlatformUserIDV4
 from ..operations.users_v4 import PublicGetUserPublicInfoByUserIdV4
 from ..operations.users_v4 import PublicInviteUserV4
 from ..operations.users_v4 import PublicListUserIDByPlatformUserIDsV4
@@ -6157,6 +6159,198 @@ async def public_get_my_own_mfa_status_v4_async(
     )
 
 
+@same_doc_as(PublicGetUserByPlatformUserIDV4)
+def public_get_user_by_platform_user_idv4(
+    platform_id: str,
+    platform_user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get User By Platform User ID (PublicGetUserByPlatformUserIDV4)
+
+    Get User By Platform User ID.
+    This endpoint return user information by given platform ID and platform user ID.
+    Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
+    example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
+    If the target platform is not linked to the current user, will only return public information.
+    ----------
+
+    **Supported Platforms:**
+    - Steam group (steamnetwork):
+    - steam
+    - steamopenid
+    - PSN group (psn):
+    - ps4web
+    - ps4
+    - ps5
+    - XBOX group(xbox):
+    - live
+    - xblweb
+    - Oculus group (oculusgroup):
+    - oculus
+    - oculusweb
+    - Google group (google):
+    - google
+    - googleplaygames:
+    - epicgames
+    - facebook
+    - twitch
+    - discord
+    - android
+    - ios
+    - apple
+    - device
+    - nintendo
+    - awscognito
+    - amazon
+    - netflix
+    - snapchat
+    - _oidc platform id_
+
+    Note:
+    - You can use either platform id or platform group as **platformId** parameter.
+    - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        platform_user_id: (platformUserId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserByPlatformUserIDV4.create(
+        platform_id=platform_id,
+        platform_user_id=platform_user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetUserByPlatformUserIDV4)
+async def public_get_user_by_platform_user_idv4_async(
+    platform_id: str,
+    platform_user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get User By Platform User ID (PublicGetUserByPlatformUserIDV4)
+
+    Get User By Platform User ID.
+    This endpoint return user information by given platform ID and platform user ID.
+    Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
+    example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
+    If the target platform is not linked to the current user, will only return public information.
+    ----------
+
+    **Supported Platforms:**
+    - Steam group (steamnetwork):
+    - steam
+    - steamopenid
+    - PSN group (psn):
+    - ps4web
+    - ps4
+    - ps5
+    - XBOX group(xbox):
+    - live
+    - xblweb
+    - Oculus group (oculusgroup):
+    - oculus
+    - oculusweb
+    - Google group (google):
+    - google
+    - googleplaygames:
+    - epicgames
+    - facebook
+    - twitch
+    - discord
+    - android
+    - ios
+    - apple
+    - device
+    - nintendo
+    - awscognito
+    - amazon
+    - netflix
+    - snapchat
+    - _oidc platform id_
+
+    Note:
+    - You can use either platform id or platform group as **platformId** parameter.
+    - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+
+    Properties:
+        url: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
+
+        method: GET
+
+        tags: ["Users V4"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        platform_id: (platformId) REQUIRED str in path
+
+        platform_user_id: (platformUserId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserResponseV3 (OK)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20003: forbidden access)
+
+        404: Not Found - RestErrorResponse (20008: user not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = PublicGetUserByPlatformUserIDV4.create(
+        platform_id=platform_id,
+        platform_user_id=platform_user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGetUserPublicInfoByUserIdV4)
 def public_get_user_public_info_by_user_id_v4(
     user_id: str,
@@ -7367,7 +7561,7 @@ async def public_upgrade_headless_account_with_verification_code_v4_async(
 
 @same_doc_as(PublicUpgradeHeadlessWithCodeV4Forward)
 def public_upgrade_headless_with_code_v4_forward(
-    body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
+    body: AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -7395,7 +7589,7 @@ def public_upgrade_headless_with_code_v4_forward(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4 in body
+        body: (body) REQUIRED AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4 in body
 
     Responses:
         302: Found - (Found. Redirected to login website with result. If validateOnly=true, then the redirection with contain validate result;If validateOnly=false, then the redirection will contain the upgrade result. If upgrade succeed, then the response will contain upgrade_success_token)
@@ -7408,7 +7602,7 @@ def public_upgrade_headless_with_code_v4_forward(
 
 @same_doc_as(PublicUpgradeHeadlessWithCodeV4Forward)
 async def public_upgrade_headless_with_code_v4_forward_async(
-    body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
+    body: AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
@@ -7436,7 +7630,7 @@ async def public_upgrade_headless_with_code_v4_forward_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4 in body
+        body: (body) REQUIRED AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4 in body
 
     Responses:
         302: Found - (Found. Redirected to login website with result. If validateOnly=true, then the redirection with contain validate result;If validateOnly=false, then the redirection will contain the upgrade result. If upgrade succeed, then the response will contain upgrade_success_token)

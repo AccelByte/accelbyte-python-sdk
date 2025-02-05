@@ -29,12 +29,12 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApiInstanceTypesForNamespaceResponse
+from ...models import ApiInstanceTypesResponse
 from ...models import ResponseErrorResponse
 
 
 class InfoSupportedInstances(Operation):
-    """get a list of available VM configurations (InfoSupportedInstances)
+    """get a list of available instance types for the current account (InfoSupportedInstances)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
 
@@ -54,7 +54,7 @@ class InfoSupportedInstances(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ApiInstanceTypesForNamespaceResponse (success)
+        200: OK - ApiInstanceTypesResponse (success)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -153,12 +153,12 @@ class InfoSupportedInstances(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, ApiInstanceTypesForNamespaceResponse],
+        Union[None, ApiInstanceTypesResponse],
         Union[None, HttpResponse, ResponseErrorResponse],
     ]:
         """Parse the given response.
 
-        200: OK - ApiInstanceTypesForNamespaceResponse (success)
+        200: OK - ApiInstanceTypesResponse (success)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -180,7 +180,7 @@ class InfoSupportedInstances(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return ApiInstanceTypesForNamespaceResponse.create_from_dict(content), None
+            return ApiInstanceTypesResponse.create_from_dict(content), None
         if code == 401:
             return None, ResponseErrorResponse.create_from_dict(content)
         if code == 403:

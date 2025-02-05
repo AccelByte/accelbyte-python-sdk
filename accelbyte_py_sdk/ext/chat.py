@@ -191,6 +191,7 @@ def create_log_app_message_declaration_example() -> LogAppMessageDeclaration:
 
 def create_logconfig_configuration_example() -> LogconfigConfiguration:
     instance = LogconfigConfiguration()
+    instance.internal_access_log_enabled = randomize("bool")
     instance.log_level = randomize()
     instance.log_level_db = randomize()
     instance.slow_query_threshold = randomize("int", min_val=1, max_val=1000)
@@ -361,6 +362,7 @@ def create_models_config_example() -> ModelsConfig:
     instance.default_dictionary_loaded = randomize("bool")
     instance.enable_clan_chat = randomize("bool")
     instance.enable_manual_topic_creation = randomize("bool")
+    instance.enable_pm_send_platform_id = randomize("bool")
     instance.max_chat_message_length = randomize("int", min_val=1, max_val=1000)
     instance.use_default_dictionary = randomize("bool")
     return instance
@@ -376,6 +378,7 @@ def create_models_config_export_example() -> ModelsConfigExport:
     instance.namespace = randomize("slug")
     instance.enable_clan_chat = randomize("bool")
     instance.enable_manual_topic_creation = randomize("bool")
+    instance.enable_pm_send_platform_id = randomize("bool")
     instance.enable_profanity_filter = randomize("bool")
     instance.filter_app_name = randomize()
     instance.filter_param = randomize()
@@ -402,6 +405,7 @@ def create_models_config_response_example() -> ModelsConfigResponse:
     instance.concurrent_users_limit = randomize("int", min_val=1, max_val=1000)
     instance.enable_clan_chat = randomize("bool")
     instance.enable_manual_topic_creation = randomize("bool")
+    instance.enable_pm_send_platform_id = randomize("bool")
     instance.enable_profanity_filter = randomize("bool")
     instance.filter_app_name = randomize()
     instance.filter_param = randomize()
@@ -654,6 +658,7 @@ def create_models_public_config_response_example() -> ModelsPublicConfigResponse
     instance.spam_chat_burst = randomize("int", min_val=1, max_val=1000)
     instance.spam_chat_duration = randomize("int", min_val=1, max_val=1000)
     instance.spam_mute_duration = randomize("int", min_val=1, max_val=1000)
+    instance.enable_pm_send_platform_id = randomize("bool")
     return instance
 
 

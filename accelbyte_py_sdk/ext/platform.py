@@ -473,6 +473,8 @@ from ..api.platform.models import ValidationErrorEntity
 from ..api.platform.models import ViewCreate
 from ..api.platform.models import ViewInfo
 from ..api.platform.models import ViewUpdate
+from ..api.platform.models import WalletConfigInfo
+from ..api.platform.models import WalletConfigUpdate
 from ..api.platform.models import WalletInfo
 from ..api.platform.models import WalletPagingSlicedResult
 from ..api.platform.models import WalletRevocationConfig
@@ -5617,6 +5619,19 @@ def create_view_update_example() -> ViewUpdate:
     instance.name = randomize()
     instance.display_order = randomize("int", min_val=1, max_val=1000)
     instance.localizations = {}
+    return instance
+
+
+def create_wallet_config_info_example() -> WalletConfigInfo:
+    instance = WalletConfigInfo()
+    instance.enable_paid_for_vc_expiration = randomize("bool")
+    instance.namespace = randomize("slug")
+    return instance
+
+
+def create_wallet_config_update_example() -> WalletConfigUpdate:
+    instance = WalletConfigUpdate()
+    instance.enable_paid_for_vc_expiration = randomize("bool")
     return instance
 
 

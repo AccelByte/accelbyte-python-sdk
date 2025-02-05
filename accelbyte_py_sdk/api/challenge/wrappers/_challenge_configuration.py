@@ -102,6 +102,7 @@ def admin_create_challenge(
     - randomizedPerRotation:
     - true: each goal will be randomly assigned to multiple periods
     - false: a goal will only be assigned to one period
+    - tags: challenge's labels.
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges
@@ -176,6 +177,7 @@ async def admin_create_challenge_async(
     - randomizedPerRotation:
     - true: each goal will be randomly assigned to multiple periods
     - false: a goal will only be assigned to one period
+    - tags: challenge's labels.
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges
@@ -656,10 +658,12 @@ async def admin_get_challenge_async(
 
 @same_doc_as(AdminGetChallenges)
 def admin_get_challenges(
+    keyword: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, AdminGetChallengesSortByEnum]] = None,
     status: Optional[Union[str, AdminGetChallengesStatusEnum]] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -683,6 +687,8 @@ def admin_get_challenges(
 
         namespace: (namespace) REQUIRED str in path
 
+        keyword: (keyword) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -691,8 +697,12 @@ def admin_get_challenges(
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelListChallengeResponse (OK)
+
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -705,10 +715,12 @@ def admin_get_challenges(
         if error:
             return None, error
     request = AdminGetChallenges.create(
+        keyword=keyword,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
         status=status,
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -716,10 +728,12 @@ def admin_get_challenges(
 
 @same_doc_as(AdminGetChallenges)
 async def admin_get_challenges_async(
+    keyword: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, AdminGetChallengesSortByEnum]] = None,
     status: Optional[Union[str, AdminGetChallengesStatusEnum]] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -743,6 +757,8 @@ async def admin_get_challenges_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        keyword: (keyword) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -751,8 +767,12 @@ async def admin_get_challenges_async(
 
         status: (status) OPTIONAL Union[str, StatusEnum] in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelListChallengeResponse (OK)
+
+        400: Bad Request - ResponseError (20018: bad request: {{message}})
 
         401: Unauthorized - IamErrorResponse (20001: unauthorized access)
 
@@ -765,10 +785,12 @@ async def admin_get_challenges_async(
         if error:
             return None, error
     request = AdminGetChallenges.create(
+        keyword=keyword,
         limit=limit,
         offset=offset,
         sort_by=sort_by,
         status=status,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1031,6 +1053,7 @@ def admin_update_challenge(
     - randomizedPerRotation:
     - true: each goal will be randomly assigned to multiple periods
     - false: a goal will only be assigned to one period
+    - tags: challenge's labels.
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}
@@ -1107,6 +1130,7 @@ async def admin_update_challenge_async(
     - randomizedPerRotation:
     - true: each goal will be randomly assigned to multiple periods
     - false: a goal will only be assigned to one period
+    - tags: challenge's labels.
 
     Properties:
         url: /challenge/v1/admin/namespaces/{namespace}/challenges/{challengeCode}

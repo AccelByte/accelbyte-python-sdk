@@ -48,6 +48,8 @@ class ApimodelCreateAppV2Request(Model):
         memory: (memory) OPTIONAL ApimodelMemoryRequest
 
         replica: (replica) OPTIONAL ApimodelReplicaRequest
+
+        vm_sharing_configuration: (vmSharingConfiguration) OPTIONAL str
     """
 
     # region fields
@@ -58,6 +60,7 @@ class ApimodelCreateAppV2Request(Model):
     description: str  # OPTIONAL
     memory: ApimodelMemoryRequest  # OPTIONAL
     replica: ApimodelReplicaRequest  # OPTIONAL
+    vm_sharing_configuration: str  # OPTIONAL
 
     # endregion fields
 
@@ -87,6 +90,10 @@ class ApimodelCreateAppV2Request(Model):
 
     def with_replica(self, value: ApimodelReplicaRequest) -> ApimodelCreateAppV2Request:
         self.replica = value
+        return self
+
+    def with_vm_sharing_configuration(self, value: str) -> ApimodelCreateAppV2Request:
+        self.vm_sharing_configuration = value
         return self
 
     # endregion with_x methods
@@ -121,6 +128,10 @@ class ApimodelCreateAppV2Request(Model):
             result["replica"] = self.replica.to_dict(include_empty=include_empty)
         elif include_empty:
             result["replica"] = ApimodelReplicaRequest()
+        if hasattr(self, "vm_sharing_configuration"):
+            result["vmSharingConfiguration"] = str(self.vm_sharing_configuration)
+        elif include_empty:
+            result["vmSharingConfiguration"] = ""
         return result
 
     # endregion to methods
@@ -136,6 +147,7 @@ class ApimodelCreateAppV2Request(Model):
         description: Optional[str] = None,
         memory: Optional[ApimodelMemoryRequest] = None,
         replica: Optional[ApimodelReplicaRequest] = None,
+        vm_sharing_configuration: Optional[str] = None,
         **kwargs,
     ) -> ApimodelCreateAppV2Request:
         instance = cls()
@@ -150,6 +162,8 @@ class ApimodelCreateAppV2Request(Model):
             instance.memory = memory
         if replica is not None:
             instance.replica = replica
+        if vm_sharing_configuration is not None:
+            instance.vm_sharing_configuration = vm_sharing_configuration
         return instance
 
     @classmethod
@@ -191,6 +205,13 @@ class ApimodelCreateAppV2Request(Model):
             )
         elif include_empty:
             instance.replica = ApimodelReplicaRequest()
+        if (
+            "vmSharingConfiguration" in dict_
+            and dict_["vmSharingConfiguration"] is not None
+        ):
+            instance.vm_sharing_configuration = str(dict_["vmSharingConfiguration"])
+        elif include_empty:
+            instance.vm_sharing_configuration = ""
         return instance
 
     @classmethod
@@ -240,6 +261,7 @@ class ApimodelCreateAppV2Request(Model):
             "description": "description",
             "memory": "memory",
             "replica": "replica",
+            "vmSharingConfiguration": "vm_sharing_configuration",
         }
 
     @staticmethod
@@ -251,6 +273,7 @@ class ApimodelCreateAppV2Request(Model):
             "description": False,
             "memory": False,
             "replica": False,
+            "vmSharingConfiguration": False,
         }
 
     # endregion static methods

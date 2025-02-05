@@ -30,6 +30,7 @@ from ..api.match2.models import ApiBackFillRejectRequest
 from ..api.match2.models import ApiBackfillCreateResponse
 from ..api.match2.models import ApiBackfillGetResponse
 from ..api.match2.models import ApiBackfillProposalResponse
+from ..api.match2.models import ApiExternalFailureMetricRecord
 from ..api.match2.models import ApiListEnvironmentVariablesResponse
 from ..api.match2.models import ApiListMatchFunctionsResponse
 from ..api.match2.models import ApiListMatchPoolTicketsResponse
@@ -121,6 +122,14 @@ def create_api_backfill_proposal_response_example() -> ApiBackfillProposalRespon
     instance.proposal_id = randomize()
     instance.proposed_teams = [create_api_team_example()]
     instance.tickets = [create_api_ticket_example()]
+    return instance
+
+
+def create_api_external_failure_metric_record_example() -> (
+    ApiExternalFailureMetricRecord
+):
+    instance = ApiExternalFailureMetricRecord()
+    instance.type_ = randomize()
     return instance
 
 

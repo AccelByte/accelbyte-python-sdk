@@ -44,6 +44,7 @@ from ..models import ApimodelsSetDSReadyRequest
 from ..models import ApimodelsUpdateGameSessionBackfillRequest
 from ..models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..models import ApimodelsUpdateGameSessionRequest
+from ..models import ApimodelsUpdateGamesessionDSInformationRequest
 from ..models import ResponseError
 
 from ..operations.game_session import AdminDeleteBulkGameSessions
@@ -51,6 +52,7 @@ from ..operations.game_session import AdminKickGameSessionMember
 from ..operations.game_session import AdminQueryGameSessions
 from ..operations.game_session import AdminQueryGameSessionsByAttributes
 from ..operations.game_session import AdminSetDSReady
+from ..operations.game_session import AdminUpdateDSInformation
 from ..operations.game_session import AdminUpdateGameSessionMember
 from ..operations.game_session import AppendTeamGameSession
 from ..operations.game_session import CreateGameSession
@@ -73,6 +75,7 @@ from ..operations.game_session import PublicRevokeGameSessionCode
 from ..operations.game_session import PublicSessionJoinCode
 from ..operations.game_session import UpdateGameSession
 from ..operations.game_session import UpdateGameSessionBackfillTicketID
+from ..models import ApimodelsCreateGameSessionRequestTextChatModeEnum
 
 
 @same_doc_as(AdminDeleteBulkGameSessions)
@@ -771,6 +774,120 @@ async def admin_set_ds_ready_async(
     )
 
 
+@same_doc_as(AdminUpdateDSInformation)
+def admin_update_ds_information(
+    body: ApimodelsUpdateGamesessionDSInformationRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Game Session DS Information for Asynchronous Process. (adminUpdateDSInformation)
+
+    Update Game Session DS Information for Asynchronous Process
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/dsinformation
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdateGamesessionDSInformationRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateDSInformation.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminUpdateDSInformation)
+async def admin_update_ds_information_async(
+    body: ApimodelsUpdateGamesessionDSInformationRequest,
+    session_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update Game Session DS Information for Asynchronous Process. (adminUpdateDSInformation)
+
+    Update Game Session DS Information for Asynchronous Process
+
+    Properties:
+        url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/dsinformation
+
+        method: PUT
+
+        tags: ["Game Session"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApimodelsUpdateGamesessionDSInformationRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        session_id: (sessionId) REQUIRED str in path
+
+    Responses:
+        204: No Content - (No Content)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminUpdateDSInformation.create(
+        body=body,
+        session_id=session_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(AdminUpdateGameSessionMember)
 def admin_update_game_session_member(
     member_id: str,
@@ -1033,7 +1150,6 @@ def create_game_session(
     - textChat
     - autoJoin
     - requestedRegions
-    - dsSource
     - preferredClaimKeys
     - fallbackClaimKeys
     - customURLGRPC
@@ -1154,7 +1270,6 @@ async def create_game_session_async(
     - textChat
     - autoJoin
     - requestedRegions
-    - dsSource
     - preferredClaimKeys
     - fallbackClaimKeys
     - customURLGRPC

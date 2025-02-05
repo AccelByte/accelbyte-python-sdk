@@ -70,12 +70,14 @@ from ..api.session.models import ApimodelsUpdateConfigurationTemplateRequest
 from ..api.session.models import ApimodelsUpdateGameSessionBackfillRequest
 from ..api.session.models import ApimodelsUpdateGameSessionMemberStatusResponse
 from ..api.session.models import ApimodelsUpdateGameSessionRequest
+from ..api.session.models import ApimodelsUpdateGamesessionDSInformationRequest
 from ..api.session.models import ApimodelsUpdatePartyRequest
 from ..api.session.models import ApimodelsUserResponse
 from ..api.session.models import ApimodelsXblCertificateResponseBody
 from ..api.session.models import LogconfigConfiguration
 from ..api.session.models import ModelNativeSession
 from ..api.session.models import ModelNativeSessionMember
+from ..api.session.models import ModelsAsyncProcessDSRequest
 from ..api.session.models import ModelsDSMConfigRecord
 from ..api.session.models import ModelsDefaultDSMCConfig
 from ..api.session.models import ModelsExtendConfiguration
@@ -142,6 +144,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.type_ = randomize()
     instance.updated_at = randomize()
     instance.app_name = randomize()
+    instance.async_process_ds_request = create_models_async_process_ds_request_example()
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.auto_leave_session = randomize("bool")
@@ -161,6 +164,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.preferred_claim_keys = [randomize()]
     instance.psn_base_url = randomize("url")
     instance.requested_regions = [randomize()]
+    instance.text_chat_mode = randomize()
     instance.tie_teams_session_lifetime = randomize("bool")
     return instance
 
@@ -191,6 +195,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.app_name = randomize()
+    instance.async_process_ds_request = create_models_async_process_ds_request_example()
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.auto_leave_session = randomize("bool")
@@ -209,6 +214,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
     instance.psn_base_url = randomize("url")
+    instance.text_chat_mode = randomize()
     instance.tie_teams_session_lifetime = randomize("bool")
     return instance
 
@@ -241,6 +247,7 @@ def create_apimodels_create_game_session_request_example() -> (
     instance.fallback_claim_keys = [randomize()]
     instance.preferred_claim_keys = [randomize()]
     instance.storage = create_apimodels_session_storage_request_example()
+    instance.text_chat_mode = randomize()
     instance.tie_teams_session_lifetime = randomize("bool")
     return instance
 
@@ -513,6 +520,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.app_name = randomize()
+    instance.async_process_ds_request = create_models_async_process_ds_request_example()
     instance.attributes = {randomize(): randomize()}
     instance.custom_urlgrpc = randomize()
     instance.disable_code_generation = randomize("bool")
@@ -530,6 +538,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.preferred_claim_keys = [randomize()]
     instance.psn_base_url = randomize("url")
     instance.requested_regions = [randomize()]
+    instance.text_chat_mode = randomize()
     instance.tie_teams_session_lifetime = randomize("bool")
     return instance
 
@@ -634,6 +643,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.app_name = randomize()
+    instance.async_process_ds_request = create_models_async_process_ds_request_example()
     instance.attributes = {randomize(): randomize()}
     instance.auto_join = randomize("bool")
     instance.auto_leave_session = randomize("bool")
@@ -652,6 +662,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.native_session_setting = create_models_native_session_setting_example()
     instance.preferred_claim_keys = [randomize()]
     instance.psn_base_url = randomize("url")
+    instance.text_chat_mode = randomize()
     instance.tie_teams_session_lifetime = randomize("bool")
     return instance
 
@@ -695,6 +706,24 @@ def create_apimodels_update_game_session_request_example() -> (
     instance.fallback_claim_keys = [randomize()]
     instance.preferred_claim_keys = [randomize()]
     instance.tie_teams_session_lifetime = randomize("bool")
+    return instance
+
+
+def create_apimodels_update_gamesession_ds_information_request_example() -> (
+    ApimodelsUpdateGamesessionDSInformationRequest
+):
+    instance = ApimodelsUpdateGamesessionDSInformationRequest()
+    instance.client_version = randomize()
+    instance.created_region = randomize()
+    instance.deployment = randomize()
+    instance.description = randomize()
+    instance.game_mode = randomize()
+    instance.ip = randomize()
+    instance.port = randomize("int", min_val=1, max_val=1000)
+    instance.region = randomize()
+    instance.server_id = randomize()
+    instance.source = randomize()
+    instance.status = randomize()
     return instance
 
 
@@ -759,6 +788,13 @@ def create_model_native_session_member_example() -> ModelNativeSessionMember:
     instance.platform_id = randomize()
     instance.platform_user_id = randomize()
     instance.user_id = randomize("uid")
+    return instance
+
+
+def create_models_async_process_ds_request_example() -> ModelsAsyncProcessDSRequest:
+    instance = ModelsAsyncProcessDSRequest()
+    instance.async_ = randomize("bool")
+    instance.timeout = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

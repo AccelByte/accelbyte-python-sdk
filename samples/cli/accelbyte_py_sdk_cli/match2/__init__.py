@@ -32,6 +32,7 @@ from ._match_pool_details import match_pool_details
 from ._update_match_pool import update_match_pool
 from ._delete_match_pool import delete_match_pool
 from ._match_pool_metric import match_pool_metric
+from ._post_match_error_metric import post_match_error_metric
 from ._get_player_metric import get_player_metric
 from ._admin_get_match_pool_tickets import admin_get_match_pool_tickets
 from ._create_match_ticket import create_match_ticket
@@ -72,6 +73,7 @@ commands = [
     update_match_pool,
     delete_match_pool,
     match_pool_metric,
+    post_match_error_metric,
     get_player_metric,
     admin_get_match_pool_tickets,
     create_match_ticket,

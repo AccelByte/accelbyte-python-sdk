@@ -173,7 +173,10 @@ class RevocationListCache(Timer):
 
     def is_token_revoked(self, token: str) -> bool:
         with self._lock:
-            return self._revoked_token_filter.might_contains(key=token)
+            if self._revoked_token_filter:
+                return self._revoked_token_filter.might_contains(key=token)
+            else:
+                return False
 
     def is_user_revoked(self, user_id: str, issued_at: int) -> bool:
         with self._lock:

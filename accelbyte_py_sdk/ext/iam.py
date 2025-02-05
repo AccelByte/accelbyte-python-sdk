@@ -31,6 +31,9 @@ from ..api.iam.models import AccountCreateTestUsersResponseV4
 from ..api.iam.models import AccountCreateUserRequestV4
 from ..api.iam.models import AccountCreateUserResponseV4
 from ..api.iam.models import AccountUpgradeHeadlessAccountRequestV4
+from ..api.iam.models import (
+    AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4,
+)
 from ..api.iam.models import AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4
 from ..api.iam.models import AccountUserActiveBanResponseV4
 from ..api.iam.models import AccountUserInfo
@@ -60,6 +63,8 @@ from ..api.iam.models import AccountcommonCountryAgeRestriction
 from ..api.iam.models import AccountcommonDescription
 from ..api.iam.models import AccountcommonDistinctLinkedPlatformV3
 from ..api.iam.models import AccountcommonDistinctPlatformResponseV3
+from ..api.iam.models import AccountcommonGroupAndRoleMappingForPatch
+from ..api.iam.models import AccountcommonGroupAndRoleMappingForUpdate
 from ..api.iam.models import AccountcommonInputValidationDescription
 from ..api.iam.models import AccountcommonJWTBanV3
 from ..api.iam.models import AccountcommonListUsersWithPlatformAccountsResponse
@@ -86,6 +91,8 @@ from ..api.iam.models import AccountcommonRoleMember
 from ..api.iam.models import AccountcommonRoleMemberV3
 from ..api.iam.models import AccountcommonRoleV3
 from ..api.iam.models import AccountcommonSimpleUserPlatformInfoV3
+from ..api.iam.models import AccountcommonSsoConfig
+from ..api.iam.models import AccountcommonSsoConfigPatchReq
 from ..api.iam.models import AccountcommonUserInformationV3
 from ..api.iam.models import AccountcommonUserLinkedPlatform
 from ..api.iam.models import AccountcommonUserLinkedPlatformV3
@@ -208,6 +215,7 @@ from ..api.iam.models import ModelNamespaceRoleRequest
 from ..api.iam.models import ModelOneTimeCodeLinkRedirectionResponse
 from ..api.iam.models import ModelPermissionDeleteRequest
 from ..api.iam.models import ModelPlatformDomainDeleteRequest
+from ..api.iam.models import ModelPlatformDomainPatchRequest
 from ..api.iam.models import ModelPlatformDomainResponse
 from ..api.iam.models import ModelPlatformDomainUpdateRequest
 from ..api.iam.models import ModelPlatformUserIDRequest
@@ -313,6 +321,7 @@ from ..api.iam.models import ModelUserPublicInfoResponseV4
 from ..api.iam.models import ModelUserResponse
 from ..api.iam.models import ModelUserResponseV3
 from ..api.iam.models import ModelUserRolesV4Response
+from ..api.iam.models import ModelUserStateResponseV3
 from ..api.iam.models import ModelUserUnbanCreateRequestV3
 from ..api.iam.models import ModelUserUpdateRequest
 from ..api.iam.models import ModelUserUpdateRequestV3
@@ -449,6 +458,24 @@ def create_account_upgrade_headless_account_request_v4_example() -> (
     instance.date_of_birth = randomize()
     instance.display_name = randomize("slug")
     instance.unique_display_name = randomize()
+    return instance
+
+
+def create_account_upgrade_headless_account_with_verification_code_forward_request_v4_example() -> (
+    AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4
+):
+    instance = AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4()
+    instance.code = randomize()
+    instance.email_address = randomize("email")
+    instance.password = randomize("password")
+    instance.username = randomize("slug")
+    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
+    instance.country = randomize("country")
+    instance.date_of_birth = randomize()
+    instance.display_name = randomize("slug")
+    instance.reach_minimum_age = randomize("bool")
+    instance.unique_display_name = randomize()
+    instance.validate_only = randomize("bool")
     return instance
 
 
@@ -723,6 +750,26 @@ def create_accountcommon_distinct_platform_response_v3_example() -> (
     return instance
 
 
+def create_accountcommon_group_and_role_mapping_for_patch_example() -> (
+    AccountcommonGroupAndRoleMappingForPatch
+):
+    instance = AccountcommonGroupAndRoleMappingForPatch()
+    instance.group = randomize()
+    instance.assign_namespaces = [randomize()]
+    instance.role_id = randomize("uid")
+    return instance
+
+
+def create_accountcommon_group_and_role_mapping_for_update_example() -> (
+    AccountcommonGroupAndRoleMappingForUpdate
+):
+    instance = AccountcommonGroupAndRoleMappingForUpdate()
+    instance.group = randomize()
+    instance.role_id = randomize("uid")
+    instance.assign_namespaces = [randomize()]
+    return instance
+
+
 def create_accountcommon_input_validation_description_example() -> (
     AccountcommonInputValidationDescription
 ):
@@ -885,6 +932,7 @@ def create_accountcommon_registered_domain_example() -> AccountcommonRegisteredD
     instance.domain = randomize()
     instance.namespaces = [randomize()]
     instance.role_id = randomize("uid")
+    instance.sso_cfg = create_accountcommon_sso_config_example()
     return instance
 
 
@@ -963,6 +1011,26 @@ def create_accountcommon_simple_user_platform_info_v3_example() -> (
     instance.origin_namespace = randomize("slug")
     instance.display_name = randomize("slug")
     instance.platform_id = randomize()
+    return instance
+
+
+def create_accountcommon_sso_config_example() -> AccountcommonSsoConfig:
+    instance = AccountcommonSsoConfig()
+    instance.google_key = {randomize(): randomize()}
+    instance.group_configs = [
+        create_accountcommon_group_and_role_mapping_for_update_example()
+    ]
+    return instance
+
+
+def create_accountcommon_sso_config_patch_req_example() -> (
+    AccountcommonSsoConfigPatchReq
+):
+    instance = AccountcommonSsoConfigPatchReq()
+    instance.google_key = {randomize(): randomize()}
+    instance.group_configs = [
+        create_accountcommon_group_and_role_mapping_for_patch_example()
+    ]
     return instance
 
 
@@ -2113,6 +2181,19 @@ def create_model_platform_domain_delete_request_example() -> (
 ):
     instance = ModelPlatformDomainDeleteRequest()
     instance.domain = randomize()
+    instance.sso_groups = [randomize()]
+    return instance
+
+
+def create_model_platform_domain_patch_request_example() -> (
+    ModelPlatformDomainPatchRequest
+):
+    instance = ModelPlatformDomainPatchRequest()
+    instance.domain = randomize()
+    instance.affected_client_i_ds = [randomize()]
+    instance.assigned_namespaces = [randomize()]
+    instance.role_id = randomize("uid")
+    instance.sso_cfg = create_accountcommon_sso_config_patch_req_example()
     return instance
 
 
@@ -2130,6 +2211,7 @@ def create_model_platform_domain_update_request_example() -> (
     instance.assigned_namespaces = [randomize()]
     instance.domain = randomize()
     instance.role_id = randomize("uid")
+    instance.sso_cfg = create_accountcommon_sso_config_example()
     return instance
 
 
@@ -2699,6 +2781,7 @@ def create_model_third_party_login_platform_credential_request_example() -> (
     instance.allowed_clients = [randomize()]
     instance.empty_str_field_list = [randomize()]
     instance.enable_server_license_validation = randomize("bool")
+    instance.google_admin_console_key = randomize()
     instance.include_puid = randomize("bool")
     instance.logo_url = randomize("url")
     instance.token_claims_mapping = {randomize(): randomize()}
@@ -3268,6 +3351,15 @@ def create_model_user_roles_v4_response_example() -> ModelUserRolesV4Response:
     instance.assigned_namespaces = [randomize()]
     instance.role_id = randomize("uid")
     instance.role_name = randomize()
+    return instance
+
+
+def create_model_user_state_response_v3_example() -> ModelUserStateResponseV3:
+    instance = ModelUserStateResponseV3()
+    instance.email_verified = randomize("bool")
+    instance.enabled = randomize("bool")
+    instance.full_account = randomize("bool")
+    instance.test_account = randomize("bool")
     return instance
 
 

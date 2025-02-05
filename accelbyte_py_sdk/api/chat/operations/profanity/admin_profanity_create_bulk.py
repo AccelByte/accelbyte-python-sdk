@@ -29,7 +29,6 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ModelsDictionary
 from ...models import ModelsDictionaryInsertBulkRequest
 from ...models import RestapiErrorResponseBody
 
@@ -57,7 +56,7 @@ class AdminProfanityCreateBulk(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - ModelsDictionary (No Content)
+        204: No Content - (No Content)
 
         400: Bad Request - RestapiErrorResponseBody (Bad Request)
 
@@ -179,7 +178,7 @@ class AdminProfanityCreateBulk(Operation):
     ) -> Tuple[None, Union[None, HttpResponse, RestapiErrorResponseBody]]:
         """Parse the given response.
 
-        204: No Content - ModelsDictionary (No Content)
+        204: No Content - (No Content)
 
         400: Bad Request - RestapiErrorResponseBody (Bad Request)
 

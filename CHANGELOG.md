@@ -1,3 +1,13 @@
+<a name="v0.73.0"></a>
+## [v0.73.0]
+### test
+- **core:** down size temp file size
+### fix
+- **token-validation:** add raise_on_error option to pass on caching classes
+### docs
+- **readme:** update doc links
+
+
 <a name="v0.72.0"></a>
 ## [v0.72.0]
 ### test

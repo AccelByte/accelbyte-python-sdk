@@ -33,11 +33,14 @@ class ModelPlatformDomainDeleteRequest(Model):
 
     Properties:
         domain: (domain) REQUIRED str
+
+        sso_groups: (ssoGroups) REQUIRED List[str]
     """
 
     # region fields
 
     domain: str  # REQUIRED
+    sso_groups: List[str]  # REQUIRED
 
     # endregion fields
 
@@ -45,6 +48,10 @@ class ModelPlatformDomainDeleteRequest(Model):
 
     def with_domain(self, value: str) -> ModelPlatformDomainDeleteRequest:
         self.domain = value
+        return self
+
+    def with_sso_groups(self, value: List[str]) -> ModelPlatformDomainDeleteRequest:
+        self.sso_groups = value
         return self
 
     # endregion with_x methods
@@ -57,6 +64,10 @@ class ModelPlatformDomainDeleteRequest(Model):
             result["domain"] = str(self.domain)
         elif include_empty:
             result["domain"] = ""
+        if hasattr(self, "sso_groups"):
+            result["ssoGroups"] = [str(i0) for i0 in self.sso_groups]
+        elif include_empty:
+            result["ssoGroups"] = []
         return result
 
     # endregion to methods
@@ -64,9 +75,12 @@ class ModelPlatformDomainDeleteRequest(Model):
     # region static methods
 
     @classmethod
-    def create(cls, domain: str, **kwargs) -> ModelPlatformDomainDeleteRequest:
+    def create(
+        cls, domain: str, sso_groups: List[str], **kwargs
+    ) -> ModelPlatformDomainDeleteRequest:
         instance = cls()
         instance.domain = domain
+        instance.sso_groups = sso_groups
         return instance
 
     @classmethod
@@ -80,6 +94,10 @@ class ModelPlatformDomainDeleteRequest(Model):
             instance.domain = str(dict_["domain"])
         elif include_empty:
             instance.domain = ""
+        if "ssoGroups" in dict_ and dict_["ssoGroups"] is not None:
+            instance.sso_groups = [str(i0) for i0 in dict_["ssoGroups"]]
+        elif include_empty:
+            instance.sso_groups = []
         return instance
 
     @classmethod
@@ -124,12 +142,14 @@ class ModelPlatformDomainDeleteRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "domain": "domain",
+            "ssoGroups": "sso_groups",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "domain": True,
+            "ssoGroups": True,
         }
 
     # endregion static methods

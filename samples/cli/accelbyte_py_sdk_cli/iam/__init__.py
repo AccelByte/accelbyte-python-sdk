@@ -190,6 +190,9 @@ from ._update_third_party_login_platform_domain_v3 import (
 from ._delete_third_party_login_platform_domain_v3 import (
     delete_third_party_login_platform_domain_v3,
 )
+from ._partial_update_third_party_login_platform_domain_v3 import (
+    partial_update_third_party_login_platform_domain_v3,
+)
 from ._retrieve_sso_login_platform_credential import (
     retrieve_sso_login_platform_credential,
 )
@@ -282,6 +285,7 @@ from ._admin_delete_user_roles_v3 import admin_delete_user_roles_v3
 from ._admin_save_user_role_v3 import admin_save_user_role_v3
 from ._admin_add_user_role_v3 import admin_add_user_role_v3
 from ._admin_delete_user_role_v3 import admin_delete_user_role_v3
+from ._admin_get_user_state_by_user_id_v3 import admin_get_user_state_by_user_id_v3
 from ._admin_update_user_status_v3 import admin_update_user_status_v3
 from ._admin_trustly_update_user_identity import admin_trustly_update_user_identity
 from ._admin_verify_user_without_verification_code_v3 import (
@@ -520,6 +524,9 @@ from ._request_target_token_response_v4 import request_target_token_response_v4
 from ._public_list_user_id_by_platform_user_i_ds_v4 import (
     public_list_user_id_by_platform_user_i_ds_v4,
 )
+from ._public_get_user_by_platform_user_idv4 import (
+    public_get_user_by_platform_user_idv4,
+)
 from ._public_create_test_user_v4 import public_create_test_user_v4
 from ._public_create_user_v4 import public_create_user_v4
 from ._create_user_from_invitation_v4 import create_user_from_invitation_v4
@@ -707,6 +714,7 @@ commands = [
     update_third_party_login_platform_credential_v3,
     update_third_party_login_platform_domain_v3,
     delete_third_party_login_platform_domain_v3,
+    partial_update_third_party_login_platform_domain_v3,
     retrieve_sso_login_platform_credential,
     add_sso_login_platform_credential,
     delete_sso_login_platform_credential_v3,
@@ -769,6 +777,7 @@ commands = [
     admin_save_user_role_v3,
     admin_add_user_role_v3,
     admin_delete_user_role_v3,
+    admin_get_user_state_by_user_id_v3,
     admin_update_user_status_v3,
     admin_trustly_update_user_identity,
     admin_verify_user_without_verification_code_v3,
@@ -955,6 +964,7 @@ commands = [
     token_grant_v4,
     request_target_token_response_v4,
     public_list_user_id_by_platform_user_i_ds_v4,
+    public_get_user_by_platform_user_idv4,
     public_create_test_user_v4,
     public_create_user_v4,
     create_user_from_invitation_v4,

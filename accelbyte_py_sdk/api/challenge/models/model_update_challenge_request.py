@@ -77,6 +77,8 @@ class ModelUpdateChallengeRequest(Model):
         rotation: (rotation) OPTIONAL Union[str, RotationEnum]
 
         start_date: (startDate) OPTIONAL str
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
@@ -93,6 +95,7 @@ class ModelUpdateChallengeRequest(Model):
     reset_config: ModelResetConfig  # OPTIONAL
     rotation: Union[str, RotationEnum]  # OPTIONAL
     start_date: str  # OPTIONAL
+    tags: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -152,6 +155,10 @@ class ModelUpdateChallengeRequest(Model):
         self.start_date = value
         return self
 
+    def with_tags(self, value: List[str]) -> ModelUpdateChallengeRequest:
+        self.tags = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -208,6 +215,10 @@ class ModelUpdateChallengeRequest(Model):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = ""
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -229,6 +240,7 @@ class ModelUpdateChallengeRequest(Model):
         reset_config: Optional[ModelResetConfig] = None,
         rotation: Optional[Union[str, RotationEnum]] = None,
         start_date: Optional[str] = None,
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelUpdateChallengeRequest:
         instance = cls()
@@ -256,6 +268,8 @@ class ModelUpdateChallengeRequest(Model):
             instance.rotation = rotation
         if start_date is not None:
             instance.start_date = start_date
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -321,6 +335,10 @@ class ModelUpdateChallengeRequest(Model):
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
             instance.start_date = ""
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @classmethod
@@ -376,6 +394,7 @@ class ModelUpdateChallengeRequest(Model):
             "resetConfig": "reset_config",
             "rotation": "rotation",
             "startDate": "start_date",
+            "tags": "tags",
         }
 
     @staticmethod
@@ -393,6 +412,7 @@ class ModelUpdateChallengeRequest(Model):
             "resetConfig": False,
             "rotation": False,
             "startDate": False,
+            "tags": False,
         }
 
     @staticmethod

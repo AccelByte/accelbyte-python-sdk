@@ -4,7 +4,7 @@ from datetime import datetime
 
 class ChallengeTestCase(IntegrationTestCase):
     @staticmethod
-    def do_create_challenge(challengeCode: str, challengeName: str):
+    def do_create_challenge(challenge_code: str, challenge_name: str):
         from accelbyte_py_sdk.api.challenge import admin_create_challenge
         from accelbyte_py_sdk.api.challenge.models import ModelCreateChallengeRequest
 
@@ -12,8 +12,8 @@ class ChallengeTestCase(IntegrationTestCase):
 
         response, error = admin_create_challenge(
             body=ModelCreateChallengeRequest.create(
-                code=challengeCode,
-                name=challengeName,
+                code=challenge_code,
+                name=challenge_name,
                 description="",
                 assignment_rule="FIXED",
                 goals_visibility="SHOWALL",
@@ -25,23 +25,23 @@ class ChallengeTestCase(IntegrationTestCase):
         return response, error
 
     @staticmethod
-    def do_update_challenge_name(challengeCode: str, newName: str):
+    def do_update_challenge_name(challenge_code: str, new_name: str):
         from accelbyte_py_sdk.api.challenge import admin_update_challenge
         from accelbyte_py_sdk.api.challenge.models import ModelUpdateChallengeRequest
 
         response, error = admin_update_challenge(
-            challenge_code=challengeCode,
-            body=ModelUpdateChallengeRequest.create(name=newName),
+            challenge_code=challenge_code,
+            body=ModelUpdateChallengeRequest.create(name=new_name),
         )
 
         return response, error
 
     @staticmethod
-    def do_create_goal(goalCode: str, goalName: str, challengeCode: str):
+    def do_create_goal(goal_code: str, goal_name: str, challenge_code: str):
         from accelbyte_py_sdk.api.challenge import admin_create_goal
         from accelbyte_py_sdk.api.challenge.models import (
             ModelCreateGoalRequest,
-            ModelGoalSchedule,
+            ModelGoalScheduleRequest,
             ModelRequirement,
             ModelPredicate,
         )
@@ -49,13 +49,13 @@ class ChallengeTestCase(IntegrationTestCase):
         start_time: str = f"{datetime.utcnow().year + 1}-01-01T00:00:00.00Z"
 
         response, error = admin_create_goal(
-            challenge_code=challengeCode,
+            challenge_code=challenge_code,
             body=ModelCreateGoalRequest.create(
-                code=goalCode,
-                name=goalName,
+                code=goal_code,
+                name=goal_name,
                 description="",
                 is_active=True,
-                schedule=ModelGoalSchedule.create(start_time=start_time, order=1),
+                schedule=ModelGoalScheduleRequest.create(start_time=start_time, order=1),
                 requirement_groups=[
                     ModelRequirement.create(
                         operator="AND",
@@ -120,21 +120,21 @@ class ChallengeTestCase(IntegrationTestCase):
         goal_name = "Python Goal Test"
         new_challenge_name = "Python Challenge Test UPDATED"
 
-        newChallenge, error = self.do_create_challenge(challenge_code, challenge_name)
+        new_challenge, error = self.do_create_challenge(challenge_code, challenge_name)
         self.assertIsNone(error)
-        self.assertEqual(challenge_name, newChallenge.name)
+        self.assertEqual(challenge_name, new_challenge.name)
 
-        challengeData, error = admin_get_challenge(challenge_code=challenge_code)
+        challenge_data, error = admin_get_challenge(challenge_code=challenge_code)
         self.assertIsNone(error)
-        self.assertEqual(challenge_name, challengeData.name)
+        self.assertEqual(challenge_name, challenge_data.name)
 
-        updatedChallenge, error = self.do_update_challenge_name(
+        updated_challenge, error = self.do_update_challenge_name(
             challenge_code, new_challenge_name
         )
         self.assertIsNone(error)
-        self.assertEqual(new_challenge_name, updatedChallenge.name)
+        self.assertEqual(new_challenge_name, updated_challenge.name)
 
-        newGoal, error = self.do_create_goal(goal_code, goal_name, challenge_code)
+        new_goal, error = self.do_create_goal(goal_code, goal_name, challenge_code)
         self.assertIsNone(error)
 
         _, error = admin_delete_goal(challenge_code=challenge_code, code=goal_code)

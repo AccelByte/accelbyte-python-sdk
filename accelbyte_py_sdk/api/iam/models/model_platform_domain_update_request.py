@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.accountcommon_sso_config import AccountcommonSsoConfig
+
 
 class ModelPlatformDomainUpdateRequest(Model):
     """Model platform domain update request (model.PlatformDomainUpdateRequest)
@@ -39,6 +41,8 @@ class ModelPlatformDomainUpdateRequest(Model):
         domain: (domain) REQUIRED str
 
         role_id: (roleId) REQUIRED str
+
+        sso_cfg: (ssoCfg) OPTIONAL AccountcommonSsoConfig
     """
 
     # region fields
@@ -47,6 +51,7 @@ class ModelPlatformDomainUpdateRequest(Model):
     assigned_namespaces: List[str]  # REQUIRED
     domain: str  # REQUIRED
     role_id: str  # REQUIRED
+    sso_cfg: AccountcommonSsoConfig  # OPTIONAL
 
     # endregion fields
 
@@ -72,6 +77,12 @@ class ModelPlatformDomainUpdateRequest(Model):
         self.role_id = value
         return self
 
+    def with_sso_cfg(
+        self, value: AccountcommonSsoConfig
+    ) -> ModelPlatformDomainUpdateRequest:
+        self.sso_cfg = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -94,6 +105,10 @@ class ModelPlatformDomainUpdateRequest(Model):
             result["roleId"] = str(self.role_id)
         elif include_empty:
             result["roleId"] = ""
+        if hasattr(self, "sso_cfg"):
+            result["ssoCfg"] = self.sso_cfg.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["ssoCfg"] = AccountcommonSsoConfig()
         return result
 
     # endregion to methods
@@ -107,6 +122,7 @@ class ModelPlatformDomainUpdateRequest(Model):
         assigned_namespaces: List[str],
         domain: str,
         role_id: str,
+        sso_cfg: Optional[AccountcommonSsoConfig] = None,
         **kwargs,
     ) -> ModelPlatformDomainUpdateRequest:
         instance = cls()
@@ -114,6 +130,8 @@ class ModelPlatformDomainUpdateRequest(Model):
         instance.assigned_namespaces = assigned_namespaces
         instance.domain = domain
         instance.role_id = role_id
+        if sso_cfg is not None:
+            instance.sso_cfg = sso_cfg
         return instance
 
     @classmethod
@@ -143,6 +161,12 @@ class ModelPlatformDomainUpdateRequest(Model):
             instance.role_id = str(dict_["roleId"])
         elif include_empty:
             instance.role_id = ""
+        if "ssoCfg" in dict_ and dict_["ssoCfg"] is not None:
+            instance.sso_cfg = AccountcommonSsoConfig.create_from_dict(
+                dict_["ssoCfg"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.sso_cfg = AccountcommonSsoConfig()
         return instance
 
     @classmethod
@@ -190,6 +214,7 @@ class ModelPlatformDomainUpdateRequest(Model):
             "assignedNamespaces": "assigned_namespaces",
             "domain": "domain",
             "roleId": "role_id",
+            "ssoCfg": "sso_cfg",
         }
 
     @staticmethod
@@ -199,6 +224,7 @@ class ModelPlatformDomainUpdateRequest(Model):
             "assignedNamespaces": True,
             "domain": True,
             "roleId": True,
+            "ssoCfg": False,
         }
 
     # endregion static methods

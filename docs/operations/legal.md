@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Legal Service Index (4.1.0)
+# AccelByte Gaming Services Legal Service Index (4.1.1)
 
 
 ## Operations
@@ -114,6 +114,11 @@
 | /agreement/admin/namespaces/{namespace}/policies/{policyId}/default | PATCH | setDefaultPolicy_3 | `false` | [SetDefaultPolicy3](../../accelbyte_py_sdk/api/legal/operations/policies_with_namespace/set_default_policy_3.py) | [set_default_policy_3](../../accelbyte_py_sdk/api/legal/wrappers/_policies_with_namespace.py) | [accelbyte_py_sdk_cli legal-set-default-policy-3](../../samples/cli/accelbyte_py_sdk_cli/legal/_set_default_policy_3.py) |
 | /agreement/admin/namespaces/{namespace}/policies/{policyId} | PATCH | updatePolicy_1 | `false` | [UpdatePolicy1](../../accelbyte_py_sdk/api/legal/operations/policies_with_namespace/update_policy_1.py) | [update_policy_1](../../accelbyte_py_sdk/api/legal/wrappers/_policies_with_namespace.py) | [accelbyte_py_sdk_cli legal-update-policy-1](../../samples/cli/accelbyte_py_sdk_cli/legal/_update_policy_1.py) |
 
+### Policies With Namespace V2
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /agreement/v2/public/policies/namespaces/{namespace}/countries/{countryCode} | GET | retrieveLatestPoliciesByNamespaceAndCountryPublic_1 | `false` | [RetrieveLatestPoliciesByNamespaceAndCountryPublic1](../../accelbyte_py_sdk/api/legal/operations/policies_with_namespace_v2/retrieve_latest_policie_0fb64b.py) | [retrieve_latest_policies_by_namespace_and_country_public_1](../../accelbyte_py_sdk/api/legal/wrappers/_policies_with_namespace_v2.py) | [accelbyte_py_sdk_cli legal-retrieve-latest-policies-by-namespace-and-country-public-1](../../samples/cli/accelbyte_py_sdk_cli/legal/_retrieve_latest_policies_by_namespace_and_country_public_1.py) |
+
 ### Policy Versions
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -180,10 +185,13 @@
 | RetrievePolicyResponse | [RetrievePolicyResponse](../../accelbyte_py_sdk/api/legal/models/retrieve_policy_response.py) |
 | RetrievePolicyTypeResponse | [RetrievePolicyTypeResponse](../../accelbyte_py_sdk/api/legal/models/retrieve_policy_type_response.py) |
 | RetrievePolicyVersionResponse | [RetrievePolicyVersionResponse](../../accelbyte_py_sdk/api/legal/models/retrieve_policy_version_response.py) |
+| RetrieveSimplePolicyPublicResponseV2 | [RetrieveSimplePolicyPublicResponseV2](../../accelbyte_py_sdk/api/legal/models/retrieve_simple_policy_public_response_v2.py) |
 | RetrieveUserAcceptedAgreementResponse | [RetrieveUserAcceptedAgreementResponse](../../accelbyte_py_sdk/api/legal/models/retrieve_user_accepted_agreement_response.py) |
 | RetrieveUserEligibilitiesIndirectResponse | [RetrieveUserEligibilitiesIndirectResponse](../../accelbyte_py_sdk/api/legal/models/retrieve_user_eligibilities_indirect_response.py) |
 | RetrieveUserEligibilitiesResponse | [RetrieveUserEligibilitiesResponse](../../accelbyte_py_sdk/api/legal/models/retrieve_user_eligibilities_response.py) |
 | RetrieveUserInfoCacheStatusResponse | [RetrieveUserInfoCacheStatusResponse](../../accelbyte_py_sdk/api/legal/models/retrieve_user_info_cache_status_response.py) |
+| SimpleLocalizedPolicyVersionObject | [SimpleLocalizedPolicyVersionObject](../../accelbyte_py_sdk/api/legal/models/simple_localized_policy_version_object.py) |
+| SimplePolicyVersionWithLocalizedVersionObject | [SimplePolicyVersionWithLocalizedVersionObject](../../accelbyte_py_sdk/api/legal/models/simple_policy_version_with_localized_version_object.py) |
 | UpdateBasePolicyRequest | [UpdateBasePolicyRequest](../../accelbyte_py_sdk/api/legal/models/update_base_policy_request.py) |
 | UpdateBasePolicyRequestV2 | [UpdateBasePolicyRequestV2](../../accelbyte_py_sdk/api/legal/models/update_base_policy_request_v2.py) |
 | UpdateBasePolicyResponse | [UpdateBasePolicyResponse](../../accelbyte_py_sdk/api/legal/models/update_base_policy_response.py) |

@@ -123,6 +123,7 @@ from ..models import ModelUserPlatformMetadata
 from ..models import ModelUserProfileUpdateAllowStatus
 from ..models import ModelUserResponse
 from ..models import ModelUserResponseV3
+from ..models import ModelUserStateResponseV3
 from ..models import ModelUserUpdateRequest
 from ..models import ModelUserUpdateRequestV3
 from ..models import ModelUserVerificationRequest
@@ -176,6 +177,7 @@ from ..operations.users import AdminGetUserLoginHistoriesV3
 from ..operations.users import AdminGetUserMapping
 from ..operations.users import AdminGetUserPlatformAccountsV3
 from ..operations.users import AdminGetUserSinglePlatformAccount
+from ..operations.users import AdminGetUserStateByUserIdV3
 from ..operations.users import AdminInviteUserV3
 from ..operations.users import AdminLinkPlatformAccount
 from ..operations.users import AdminListAllDistinctPlatformAccountsV3
@@ -5573,6 +5575,112 @@ async def admin_get_user_single_platform_account_async(
         platform_id=platform_id,
         user_id=user_id,
         cross_namespace=cross_namespace,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetUserStateByUserIdV3)
+def admin_get_user_state_by_user_id_v3(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin Get User State By User Id (AdminGetUserStateByUserIdV3)
+
+    Admin Get User State By User Id
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/state
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserStateResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserStateByUserIdV3.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetUserStateByUserIdV3)
+async def admin_get_user_state_by_user_id_v3_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin Get User State By User Id (AdminGetUserStateByUserIdV3)
+
+    Admin Get User State By User Id
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/{userId}/state
+
+        method: GET
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelUserStateResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        404: Not Found - RestErrorResponse (20008: user not found | 10139: platform account not found)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = AdminGetUserStateByUserIdV3.create(
+        user_id=user_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -14010,6 +14118,7 @@ async def platform_unlink_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicBulkGetUsers)
 def public_bulk_get_users(
     body: ModelUserIDsRequest,
@@ -14059,6 +14168,7 @@ def public_bulk_get_users(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicBulkGetUsers)
 async def public_bulk_get_users_async(
     body: ModelUserIDsRequest,
@@ -16230,6 +16340,7 @@ async def public_get_user_ban_history_v3_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetUserByPlatformUserIDV3)
 def public_get_user_by_platform_user_idv3(
     platform_id: str,
@@ -16244,6 +16355,7 @@ def public_get_user_by_platform_user_idv3(
     This endpoint return user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
+    **Note**: this is deprecated, substitute endpoint: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
 
 
     **Supported Platforms:**
@@ -16324,6 +16436,7 @@ def public_get_user_by_platform_user_idv3(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetUserByPlatformUserIDV3)
 async def public_get_user_by_platform_user_idv3_async(
     platform_id: str,
@@ -16338,6 +16451,7 @@ async def public_get_user_by_platform_user_idv3_async(
     This endpoint return user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
+    **Note**: this is deprecated, substitute endpoint: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
 
 
     **Supported Platforms:**

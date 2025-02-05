@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Legal Service."""
 
-__version__ = "4.1.0"
+__version__ = "4.1.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -72,6 +72,9 @@ from .retrieve_policy_public_response import RetrievePolicyPublicResponse
 from .retrieve_policy_response import RetrievePolicyResponse
 from .retrieve_policy_type_response import RetrievePolicyTypeResponse
 from .retrieve_policy_version_response import RetrievePolicyVersionResponse
+from .retrieve_simple_policy_public_response_v2 import (
+    RetrieveSimplePolicyPublicResponseV2,
+)
 from .retrieve_user_accepted_agreement_response import (
     RetrieveUserAcceptedAgreementResponse,
 )
@@ -81,6 +84,10 @@ from .retrieve_user_eligibilities_indirect_response import (
 from .retrieve_user_eligibilities_response import RetrieveUserEligibilitiesResponse
 from .retrieve_user_info_cache_status_response import (
     RetrieveUserInfoCacheStatusResponse,
+)
+from .simple_localized_policy_version_object import SimpleLocalizedPolicyVersionObject
+from .simple_policy_version_with_localized_version_object import (
+    SimplePolicyVersionWithLocalizedVersionObject,
 )
 from .update_base_policy_request import UpdateBasePolicyRequest
 from .update_base_policy_request import (

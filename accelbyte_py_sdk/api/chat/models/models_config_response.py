@@ -42,6 +42,8 @@ class ModelsConfigResponse(Model):
 
         enable_manual_topic_creation: (enableManualTopicCreation) OPTIONAL bool
 
+        enable_pm_send_platform_id: (enablePmSendPlatformId) OPTIONAL bool
+
         enable_profanity_filter: (enableProfanityFilter) OPTIONAL bool
 
         filter_app_name: (filterAppName) OPTIONAL str
@@ -76,6 +78,7 @@ class ModelsConfigResponse(Model):
     concurrent_users_limit: int  # OPTIONAL
     enable_clan_chat: bool  # OPTIONAL
     enable_manual_topic_creation: bool  # OPTIONAL
+    enable_pm_send_platform_id: bool  # OPTIONAL
     enable_profanity_filter: bool  # OPTIONAL
     filter_app_name: str  # OPTIONAL
     filter_param: str  # OPTIONAL
@@ -112,6 +115,10 @@ class ModelsConfigResponse(Model):
 
     def with_enable_manual_topic_creation(self, value: bool) -> ModelsConfigResponse:
         self.enable_manual_topic_creation = value
+        return self
+
+    def with_enable_pm_send_platform_id(self, value: bool) -> ModelsConfigResponse:
+        self.enable_pm_send_platform_id = value
         return self
 
     def with_enable_profanity_filter(self, value: bool) -> ModelsConfigResponse:
@@ -194,6 +201,10 @@ class ModelsConfigResponse(Model):
             )
         elif include_empty:
             result["enableManualTopicCreation"] = False
+        if hasattr(self, "enable_pm_send_platform_id"):
+            result["enablePmSendPlatformId"] = bool(self.enable_pm_send_platform_id)
+        elif include_empty:
+            result["enablePmSendPlatformId"] = False
         if hasattr(self, "enable_profanity_filter"):
             result["enableProfanityFilter"] = bool(self.enable_profanity_filter)
         elif include_empty:
@@ -260,6 +271,7 @@ class ModelsConfigResponse(Model):
         concurrent_users_limit: Optional[int] = None,
         enable_clan_chat: Optional[bool] = None,
         enable_manual_topic_creation: Optional[bool] = None,
+        enable_pm_send_platform_id: Optional[bool] = None,
         enable_profanity_filter: Optional[bool] = None,
         filter_app_name: Optional[str] = None,
         filter_param: Optional[str] = None,
@@ -286,6 +298,8 @@ class ModelsConfigResponse(Model):
             instance.enable_clan_chat = enable_clan_chat
         if enable_manual_topic_creation is not None:
             instance.enable_manual_topic_creation = enable_manual_topic_creation
+        if enable_pm_send_platform_id is not None:
+            instance.enable_pm_send_platform_id = enable_pm_send_platform_id
         if enable_profanity_filter is not None:
             instance.enable_profanity_filter = enable_profanity_filter
         if filter_app_name is not None:
@@ -352,6 +366,13 @@ class ModelsConfigResponse(Model):
             )
         elif include_empty:
             instance.enable_manual_topic_creation = False
+        if (
+            "enablePmSendPlatformId" in dict_
+            and dict_["enablePmSendPlatformId"] is not None
+        ):
+            instance.enable_pm_send_platform_id = bool(dict_["enablePmSendPlatformId"])
+        elif include_empty:
+            instance.enable_pm_send_platform_id = False
         if (
             "enableProfanityFilter" in dict_
             and dict_["enableProfanityFilter"] is not None
@@ -466,6 +487,7 @@ class ModelsConfigResponse(Model):
             "concurrentUsersLimit": "concurrent_users_limit",
             "enableClanChat": "enable_clan_chat",
             "enableManualTopicCreation": "enable_manual_topic_creation",
+            "enablePmSendPlatformId": "enable_pm_send_platform_id",
             "enableProfanityFilter": "enable_profanity_filter",
             "filterAppName": "filter_app_name",
             "filterParam": "filter_param",
@@ -489,6 +511,7 @@ class ModelsConfigResponse(Model):
             "concurrentUsersLimit": False,
             "enableClanChat": False,
             "enableManualTopicCreation": False,
+            "enablePmSendPlatformId": False,
             "enableProfanityFilter": False,
             "filterAppName": False,
             "filterParam": False,

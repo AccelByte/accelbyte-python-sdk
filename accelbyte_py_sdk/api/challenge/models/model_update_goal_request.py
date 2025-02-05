@@ -27,7 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.model_goal_schedule import ModelGoalSchedule
+from ..models.model_goal_schedule_request import ModelGoalScheduleRequest
 from ..models.model_requirement import ModelRequirement
 from ..models.model_reward import ModelReward
 
@@ -46,7 +46,7 @@ class ModelUpdateGoalRequest(Model):
 
         rewards: (rewards) OPTIONAL List[ModelReward]
 
-        schedule: (schedule) OPTIONAL ModelGoalSchedule
+        schedule: (schedule) OPTIONAL ModelGoalScheduleRequest
 
         tags: (tags) OPTIONAL List[str]
     """
@@ -58,7 +58,7 @@ class ModelUpdateGoalRequest(Model):
     is_active: bool  # OPTIONAL
     requirement_groups: List[ModelRequirement]  # OPTIONAL
     rewards: List[ModelReward]  # OPTIONAL
-    schedule: ModelGoalSchedule  # OPTIONAL
+    schedule: ModelGoalScheduleRequest  # OPTIONAL
     tags: List[str]  # OPTIONAL
 
     # endregion fields
@@ -87,7 +87,7 @@ class ModelUpdateGoalRequest(Model):
         self.rewards = value
         return self
 
-    def with_schedule(self, value: ModelGoalSchedule) -> ModelUpdateGoalRequest:
+    def with_schedule(self, value: ModelGoalScheduleRequest) -> ModelUpdateGoalRequest:
         self.schedule = value
         return self
 
@@ -129,7 +129,7 @@ class ModelUpdateGoalRequest(Model):
         if hasattr(self, "schedule"):
             result["schedule"] = self.schedule.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["schedule"] = ModelGoalSchedule()
+            result["schedule"] = ModelGoalScheduleRequest()
         if hasattr(self, "tags"):
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -148,7 +148,7 @@ class ModelUpdateGoalRequest(Model):
         is_active: Optional[bool] = None,
         requirement_groups: Optional[List[ModelRequirement]] = None,
         rewards: Optional[List[ModelReward]] = None,
-        schedule: Optional[ModelGoalSchedule] = None,
+        schedule: Optional[ModelGoalScheduleRequest] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelUpdateGoalRequest:
@@ -202,11 +202,11 @@ class ModelUpdateGoalRequest(Model):
         elif include_empty:
             instance.rewards = []
         if "schedule" in dict_ and dict_["schedule"] is not None:
-            instance.schedule = ModelGoalSchedule.create_from_dict(
+            instance.schedule = ModelGoalScheduleRequest.create_from_dict(
                 dict_["schedule"], include_empty=include_empty
             )
         elif include_empty:
-            instance.schedule = ModelGoalSchedule()
+            instance.schedule = ModelGoalScheduleRequest()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:

@@ -19,6 +19,7 @@ from .api.inventory import InventoryTestCase
 from .api.leaderboard import LeaderboardTestCase
 from .api.legal import LegalTestCase
 from .api.lobby import AsyncLobbyTestCase, LobbyTestCase
+from .api.loginqueue import LoginQueueTestCase
 from .api.match2 import Match2TestCase
 from .api.platformx import PlatformTestCase
 

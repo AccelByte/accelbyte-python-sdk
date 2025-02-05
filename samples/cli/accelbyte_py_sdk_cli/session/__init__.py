@@ -45,6 +45,7 @@ from ._admin_query_game_sessions_by_attributes import (
 )
 from ._admin_delete_bulk_game_sessions import admin_delete_bulk_game_sessions
 from ._admin_set_ds_ready import admin_set_ds_ready
+from ._admin_update_ds_information import admin_update_ds_information
 from ._admin_kick_game_session_member import admin_kick_game_session_member
 from ._admin_update_game_session_member import admin_update_game_session_member
 from ._admin_get_list_native_session import admin_get_list_native_session
@@ -152,6 +153,7 @@ commands = [
     admin_query_game_sessions_by_attributes,
     admin_delete_bulk_game_sessions,
     admin_set_ds_ready,
+    admin_update_ds_information,
     admin_kick_game_session_member,
     admin_update_game_session_member,
     admin_get_list_native_session,

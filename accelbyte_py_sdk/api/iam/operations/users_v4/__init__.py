@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.25.3"
+__version__ = "7.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -71,6 +71,7 @@ from .public_get_my_backup_codes_v4 import PublicGetMyBackupCodesV4
 from .public_get_my_enabled_f_a93b10 import PublicGetMyEnabledFactorsV4
 from .public_get_my_mfa_status_v4 import PublicGetMyMFAStatusV4
 from .public_get_my_own_mfa_s_1e6e1b import PublicGetMyOwnMFAStatusV4
+from .public_get_user_by_plat_6ddbb8 import PublicGetUserByPlatformUserIDV4
 from .public_get_user_public__2645c4 import PublicGetUserPublicInfoByUserIdV4
 from .public_invite_user_v4 import PublicInviteUserV4
 from .public_list_user_id_by__9f5d47 import PublicListUserIDByPlatformUserIDsV4

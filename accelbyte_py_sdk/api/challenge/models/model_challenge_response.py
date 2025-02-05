@@ -91,6 +91,8 @@ class ModelChallengeResponse(Model):
         end_date: (endDate) OPTIONAL str
 
         repeat_after: (repeatAfter) OPTIONAL int
+
+        tags: (tags) OPTIONAL List[str]
     """
 
     # region fields
@@ -111,6 +113,7 @@ class ModelChallengeResponse(Model):
     end_after: int  # OPTIONAL
     end_date: str  # OPTIONAL
     repeat_after: int  # OPTIONAL
+    tags: List[str]  # OPTIONAL
 
     # endregion fields
 
@@ -182,6 +185,10 @@ class ModelChallengeResponse(Model):
 
     def with_repeat_after(self, value: int) -> ModelChallengeResponse:
         self.repeat_after = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelChallengeResponse:
+        self.tags = value
         return self
 
     # endregion with_x methods
@@ -256,6 +263,10 @@ class ModelChallengeResponse(Model):
             result["repeatAfter"] = int(self.repeat_after)
         elif include_empty:
             result["repeatAfter"] = 0
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -281,6 +292,7 @@ class ModelChallengeResponse(Model):
         end_after: Optional[int] = None,
         end_date: Optional[str] = None,
         repeat_after: Optional[int] = None,
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> ModelChallengeResponse:
         instance = cls()
@@ -303,6 +315,8 @@ class ModelChallengeResponse(Model):
             instance.end_date = end_date
         if repeat_after is not None:
             instance.repeat_after = repeat_after
+        if tags is not None:
+            instance.tags = tags
         return instance
 
     @classmethod
@@ -384,6 +398,10 @@ class ModelChallengeResponse(Model):
             instance.repeat_after = int(dict_["repeatAfter"])
         elif include_empty:
             instance.repeat_after = 0
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         return instance
 
     @classmethod
@@ -443,6 +461,7 @@ class ModelChallengeResponse(Model):
             "endAfter": "end_after",
             "endDate": "end_date",
             "repeatAfter": "repeat_after",
+            "tags": "tags",
         }
 
     @staticmethod
@@ -464,6 +483,7 @@ class ModelChallengeResponse(Model):
             "endAfter": False,
             "endDate": False,
             "repeatAfter": False,
+            "tags": False,
         }
 
     @staticmethod

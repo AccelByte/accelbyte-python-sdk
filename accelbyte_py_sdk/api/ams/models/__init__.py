@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.31.1"
+__version__ = "1.32.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -69,12 +69,8 @@ from .api_image_list import ApiImageList
 from .api_image_list_item import ApiImageListItem
 from .api_image_storage import ApiImageStorage
 from .api_image_update import ApiImageUpdate
-from .api_instance_type_for_namespace_response import (
-    ApiInstanceTypeForNamespaceResponse,
-)
-from .api_instance_types_for_namespace_response import (
-    ApiInstanceTypesForNamespaceResponse,
-)
+from .api_instance_type import ApiInstanceType
+from .api_instance_types_response import ApiInstanceTypesResponse
 from .api_paging_info import ApiPagingInfo
 from .api_port_configuration import ApiPortConfiguration
 from .api_qo_s_endpoint_response import ApiQoSEndpointResponse

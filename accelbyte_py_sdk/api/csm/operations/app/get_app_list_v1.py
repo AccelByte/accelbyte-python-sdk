@@ -43,9 +43,9 @@ class GetAppListV1(Operation):
     Gets the List of Apps for AB-Extend Customer
 
     Available scenario:
-    - scenario 3: `event-handler`
     - scenario 1: `function-override`
     - scenario 2: `service-extension`
+    - scenario 3: `event-handler`
 
     Properties:
         url: /csm/v1/admin/namespaces/{namespace}/apps

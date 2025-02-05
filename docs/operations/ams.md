@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.31.1)
+# Fleet Commander Index (1.32.0)
 
 
 ## Operations
@@ -145,8 +145,8 @@
 | api.ImageListItem | [ApiImageListItem](../../accelbyte_py_sdk/api/ams/models/api_image_list_item.py) |
 | api.ImageStorage | [ApiImageStorage](../../accelbyte_py_sdk/api/ams/models/api_image_storage.py) |
 | api.ImageUpdate | [ApiImageUpdate](../../accelbyte_py_sdk/api/ams/models/api_image_update.py) |
-| api.InstanceTypeForNamespaceResponse | [ApiInstanceTypeForNamespaceResponse](../../accelbyte_py_sdk/api/ams/models/api_instance_type_for_namespace_response.py) |
-| api.InstanceTypesForNamespaceResponse | [ApiInstanceTypesForNamespaceResponse](../../accelbyte_py_sdk/api/ams/models/api_instance_types_for_namespace_response.py) |
+| api.InstanceType | [ApiInstanceType](../../accelbyte_py_sdk/api/ams/models/api_instance_type.py) |
+| api.InstanceTypesResponse | [ApiInstanceTypesResponse](../../accelbyte_py_sdk/api/ams/models/api_instance_types_response.py) |
 | api.PagingInfo | [ApiPagingInfo](../../accelbyte_py_sdk/api/ams/models/api_paging_info.py) |
 | api.PortConfiguration | [ApiPortConfiguration](../../accelbyte_py_sdk/api/ams/models/api_port_configuration.py) |
 | api.QoSEndpointResponse | [ApiQoSEndpointResponse](../../accelbyte_py_sdk/api/ams/models/api_qo_s_endpoint_response.py) |

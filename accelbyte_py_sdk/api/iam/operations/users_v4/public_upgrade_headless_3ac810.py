@@ -29,7 +29,7 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4
+from ...models import AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4
 
 
 class PublicUpgradeHeadlessWithCodeV4Forward(Operation):
@@ -57,7 +57,7 @@ class PublicUpgradeHeadlessWithCodeV4Forward(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4 in body
+        body: (body) REQUIRED AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4 in body
 
     Responses:
         302: Found - (Found. Redirected to login website with result. If validateOnly=true, then the redirection with contain validate result;If validateOnly=false, then the redirection will contain the upgrade result. If upgrade succeed, then the response will contain upgrade_success_token)
@@ -72,7 +72,7 @@ class PublicUpgradeHeadlessWithCodeV4Forward(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4  # REQUIRED in [body]
+    body: AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4  # REQUIRED in [body]
 
     # endregion fields
 
@@ -137,7 +137,7 @@ class PublicUpgradeHeadlessWithCodeV4Forward(Operation):
     # region with_x methods
 
     def with_body(
-        self, value: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4
+        self, value: AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4
     ) -> PublicUpgradeHeadlessWithCodeV4Forward:
         self.body = value
         return self
@@ -153,7 +153,7 @@ class PublicUpgradeHeadlessWithCodeV4Forward(Operation):
         elif include_empty:
             result[
                 "body"
-            ] = AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4()
+            ] = AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4()
         return result
 
     # endregion to methods
@@ -194,7 +194,9 @@ class PublicUpgradeHeadlessWithCodeV4Forward(Operation):
 
     @classmethod
     def create(
-        cls, body: AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4, **kwargs
+        cls,
+        body: AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4,
+        **kwargs,
     ) -> PublicUpgradeHeadlessWithCodeV4Forward:
         instance = cls()
         instance.body = body
@@ -208,11 +210,13 @@ class PublicUpgradeHeadlessWithCodeV4Forward(Operation):
     ) -> PublicUpgradeHeadlessWithCodeV4Forward:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4.create_from_dict(
+            instance.body = AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4()
+            instance.body = (
+                AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4()
+            )
         return instance
 
     @staticmethod

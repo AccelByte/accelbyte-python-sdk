@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.21.1"
+__version__ = "3.21.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -19,6 +19,7 @@ from .admin_kick_game_session_member import AdminKickGameSessionMember
 from .admin_query_game_sessions import AdminQueryGameSessions
 from .admin_query_game_sessio_9fd853 import AdminQueryGameSessionsByAttributes
 from .admin_set_ds_ready import AdminSetDSReady
+from .admin_update_ds_information import AdminUpdateDSInformation
 from .admin_update_game_sessi_718745 import AdminUpdateGameSessionMember
 from .append_team_game_session import AppendTeamGameSession
 from .create_game_session import CreateGameSession

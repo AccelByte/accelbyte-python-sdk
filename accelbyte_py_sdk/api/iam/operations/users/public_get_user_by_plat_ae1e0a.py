@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ModelUserResponseV3
 from ...models import RestErrorResponse
@@ -40,6 +41,7 @@ class PublicGetUserByPlatformUserIDV3(Operation):
     This endpoint return user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
+    **Note**: this is deprecated, substitute endpoint: /iam/v4/public/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId} [GET]
 
 
     **Supported Platforms:**

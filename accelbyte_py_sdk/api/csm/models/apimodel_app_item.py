@@ -47,9 +47,13 @@ class ApimodelAppItem(Model):
 
         game_name: (gameName) REQUIRED str
 
+        is_resource_applied: (isResourceApplied) REQUIRED bool
+
         scenario: (scenario) REQUIRED str
 
         updated_at: (updatedAt) REQUIRED str
+
+        vm_sharing_configuration: (vmSharingConfiguration) REQUIRED str
 
         app_repo_arn: (appRepoArn) OPTIONAL str
 
@@ -89,8 +93,10 @@ class ApimodelAppItem(Model):
     app_status: str  # REQUIRED
     created_at: str  # REQUIRED
     game_name: str  # REQUIRED
+    is_resource_applied: bool  # REQUIRED
     scenario: str  # REQUIRED
     updated_at: str  # REQUIRED
+    vm_sharing_configuration: str  # REQUIRED
     app_repo_arn: str  # OPTIONAL
     app_repo_url: str  # OPTIONAL
     autoscaling: ApimodelAutoscalingResponse  # OPTIONAL
@@ -131,12 +137,20 @@ class ApimodelAppItem(Model):
         self.game_name = value
         return self
 
+    def with_is_resource_applied(self, value: bool) -> ApimodelAppItem:
+        self.is_resource_applied = value
+        return self
+
     def with_scenario(self, value: str) -> ApimodelAppItem:
         self.scenario = value
         return self
 
     def with_updated_at(self, value: str) -> ApimodelAppItem:
         self.updated_at = value
+        return self
+
+    def with_vm_sharing_configuration(self, value: str) -> ApimodelAppItem:
+        self.vm_sharing_configuration = value
         return self
 
     def with_app_repo_arn(self, value: str) -> ApimodelAppItem:
@@ -225,6 +239,10 @@ class ApimodelAppItem(Model):
             result["gameName"] = str(self.game_name)
         elif include_empty:
             result["gameName"] = ""
+        if hasattr(self, "is_resource_applied"):
+            result["isResourceApplied"] = bool(self.is_resource_applied)
+        elif include_empty:
+            result["isResourceApplied"] = False
         if hasattr(self, "scenario"):
             result["scenario"] = str(self.scenario)
         elif include_empty:
@@ -233,6 +251,10 @@ class ApimodelAppItem(Model):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
             result["updatedAt"] = ""
+        if hasattr(self, "vm_sharing_configuration"):
+            result["vmSharingConfiguration"] = str(self.vm_sharing_configuration)
+        elif include_empty:
+            result["vmSharingConfiguration"] = ""
         if hasattr(self, "app_repo_arn"):
             result["appRepoArn"] = str(self.app_repo_arn)
         elif include_empty:
@@ -309,8 +331,10 @@ class ApimodelAppItem(Model):
         app_status: str,
         created_at: str,
         game_name: str,
+        is_resource_applied: bool,
         scenario: str,
         updated_at: str,
+        vm_sharing_configuration: str,
         app_repo_arn: Optional[str] = None,
         app_repo_url: Optional[str] = None,
         autoscaling: Optional[ApimodelAutoscalingResponse] = None,
@@ -334,8 +358,10 @@ class ApimodelAppItem(Model):
         instance.app_status = app_status
         instance.created_at = created_at
         instance.game_name = game_name
+        instance.is_resource_applied = is_resource_applied
         instance.scenario = scenario
         instance.updated_at = updated_at
+        instance.vm_sharing_configuration = vm_sharing_configuration
         if app_repo_arn is not None:
             instance.app_repo_arn = app_repo_arn
         if app_repo_url is not None:
@@ -395,6 +421,10 @@ class ApimodelAppItem(Model):
             instance.game_name = str(dict_["gameName"])
         elif include_empty:
             instance.game_name = ""
+        if "isResourceApplied" in dict_ and dict_["isResourceApplied"] is not None:
+            instance.is_resource_applied = bool(dict_["isResourceApplied"])
+        elif include_empty:
+            instance.is_resource_applied = False
         if "scenario" in dict_ and dict_["scenario"] is not None:
             instance.scenario = str(dict_["scenario"])
         elif include_empty:
@@ -403,6 +433,13 @@ class ApimodelAppItem(Model):
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
             instance.updated_at = ""
+        if (
+            "vmSharingConfiguration" in dict_
+            and dict_["vmSharingConfiguration"] is not None
+        ):
+            instance.vm_sharing_configuration = str(dict_["vmSharingConfiguration"])
+        elif include_empty:
+            instance.vm_sharing_configuration = ""
         if "appRepoArn" in dict_ and dict_["appRepoArn"] is not None:
             instance.app_repo_arn = str(dict_["appRepoArn"])
         elif include_empty:
@@ -515,8 +552,10 @@ class ApimodelAppItem(Model):
             "appStatus": "app_status",
             "createdAt": "created_at",
             "gameName": "game_name",
+            "isResourceApplied": "is_resource_applied",
             "scenario": "scenario",
             "updatedAt": "updated_at",
+            "vmSharingConfiguration": "vm_sharing_configuration",
             "appRepoArn": "app_repo_arn",
             "appRepoUrl": "app_repo_url",
             "autoscaling": "autoscaling",
@@ -542,8 +581,10 @@ class ApimodelAppItem(Model):
             "appStatus": True,
             "createdAt": True,
             "gameName": True,
+            "isResourceApplied": True,
             "scenario": True,
             "updatedAt": True,
+            "vmSharingConfiguration": True,
             "appRepoArn": False,
             "appRepoUrl": False,
             "autoscaling": False,

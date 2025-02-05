@@ -38,17 +38,17 @@ from accelbyte_py_sdk.api.gdpr.models import ResponseError
 
 
 @click.command()
-@click.argument("password", type=str)
 @click.argument("request_date", type=str)
 @click.argument("user_id", type=str)
+@click.option("--password", "password", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_generate_personal_data_url(
-    password: str,
     request_date: str,
     user_id: str,
+    password: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -63,9 +63,9 @@ def admin_generate_personal_data_url(
     else:
         login_as_internal(login_as)
     result, error = admin_generate_personal_data_url_internal(
-        password=password,
         request_date=request_date,
         user_id=user_id,
+        password=password,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

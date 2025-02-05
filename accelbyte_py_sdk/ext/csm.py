@@ -108,8 +108,10 @@ def create_apimodel_app_item_example() -> ApimodelAppItem:
     instance.app_status = randomize()
     instance.created_at = randomize()
     instance.game_name = randomize()
+    instance.is_resource_applied = randomize("bool")
     instance.scenario = randomize()
     instance.updated_at = randomize()
+    instance.vm_sharing_configuration = randomize()
     instance.app_repo_arn = randomize()
     instance.app_repo_url = randomize("url")
     instance.autoscaling = create_apimodel_autoscaling_response_example()
@@ -174,6 +176,7 @@ def create_apimodel_create_app_v2_request_example() -> ApimodelCreateAppV2Reques
     instance.description = randomize()
     instance.memory = create_apimodel_memory_request_example()
     instance.replica = create_apimodel_replica_request_example()
+    instance.vm_sharing_configuration = randomize()
     return instance
 
 
@@ -477,6 +480,7 @@ def create_apimodel_update_app_resource_request_example() -> (
     instance.cpu = create_apimodel_cpu_request_example()
     instance.memory = create_apimodel_memory_request_example()
     instance.replica = create_apimodel_replica_request_example()
+    instance.vm_sharing_configuration = randomize()
     return instance
 
 

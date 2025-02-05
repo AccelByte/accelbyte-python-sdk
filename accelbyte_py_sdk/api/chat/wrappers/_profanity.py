@@ -185,7 +185,7 @@ def admin_profanity_create_bulk(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - ModelsDictionary (No Content)
+        204: No Content - (No Content)
 
         400: Bad Request - RestapiErrorResponseBody (Bad Request)
 
@@ -237,7 +237,7 @@ async def admin_profanity_create_bulk_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - ModelsDictionary (No Content)
+        204: No Content - (No Content)
 
         400: Bad Request - RestapiErrorResponseBody (Bad Request)
 

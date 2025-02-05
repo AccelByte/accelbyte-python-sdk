@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import ApimodelsConfigAlertRequestCreate
@@ -49,6 +50,9 @@ from ..operations.configuration_template import AdminGetDSMCConfiguration
 from ..operations.configuration_template import AdminSyncDSMCConfiguration
 from ..operations.configuration_template import AdminUpdateConfigurationAlertV1
 from ..operations.configuration_template import AdminUpdateConfigurationTemplateV1
+from ..models import ApimodelsConfigurationTemplateResponseTextChatModeEnum
+from ..models import ApimodelsCreateConfigurationTemplateRequestTextChatModeEnum
+from ..models import ApimodelsUpdateConfigurationTemplateRequestTextChatModeEnum
 
 
 @same_doc_as(AdminCreateConfigurationAlertV1)
@@ -923,6 +927,7 @@ async def admin_get_configuration_template_v1_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminGetDSMCConfiguration)
 def admin_get_dsmc_configuration(
     namespace: Optional[str] = None,
@@ -971,6 +976,7 @@ def admin_get_dsmc_configuration(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminGetDSMCConfiguration)
 async def admin_get_dsmc_configuration_async(
     namespace: Optional[str] = None,
@@ -1021,6 +1027,7 @@ async def admin_get_dsmc_configuration_async(
     )
 
 
+@deprecated
 @same_doc_as(AdminSyncDSMCConfiguration)
 def admin_sync_dsmc_configuration(
     namespace: Optional[str] = None,
@@ -1069,6 +1076,7 @@ def admin_sync_dsmc_configuration(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(AdminSyncDSMCConfiguration)
 async def admin_sync_dsmc_configuration_async(
     namespace: Optional[str] = None,

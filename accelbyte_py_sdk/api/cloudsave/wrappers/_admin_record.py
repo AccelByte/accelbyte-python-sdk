@@ -1005,14 +1005,6 @@ def admin_post_admin_game_record_v1(
     `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1041,6 +1033,14 @@ def admin_post_admin_game_record_v1(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -1128,14 +1128,6 @@ async def admin_post_admin_game_record_v1_async(
     `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1164,6 +1156,14 @@ async def admin_post_admin_game_record_v1_async(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -1254,14 +1254,6 @@ def admin_post_player_admin_record_v1(
     `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1290,6 +1282,14 @@ def admin_post_player_admin_record_v1(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -1381,14 +1381,6 @@ async def admin_post_player_admin_record_v1_async(
     `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1417,6 +1409,14 @@ async def admin_post_player_admin_record_v1_async(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -1496,14 +1496,6 @@ def admin_put_admin_game_record_v1(
 
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1532,6 +1524,14 @@ def admin_put_admin_game_record_v1(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -1606,14 +1606,6 @@ async def admin_put_admin_game_record_v1_async(
 
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1642,6 +1634,14 @@ async def admin_put_admin_game_record_v1_async(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/adminrecords/{key}
@@ -1720,14 +1720,6 @@ def admin_put_admin_player_record_v1(
 
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1756,6 +1748,14 @@ def admin_put_admin_player_record_v1(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}
@@ -1835,14 +1835,6 @@ async def admin_put_admin_player_record_v1_async(
 
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1871,6 +1863,14 @@ async def admin_put_admin_player_record_v1_async(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/adminrecords/{key}

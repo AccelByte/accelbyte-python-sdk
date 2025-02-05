@@ -33,7 +33,6 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.chat import (
     admin_profanity_create_bulk as admin_profanity_create_bulk_internal,
 )
-from accelbyte_py_sdk.api.chat.models import ModelsDictionary
 from accelbyte_py_sdk.api.chat.models import ModelsDictionaryInsertBulkRequest
 from accelbyte_py_sdk.api.chat.models import RestapiErrorResponseBody
 

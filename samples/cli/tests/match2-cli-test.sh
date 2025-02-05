@@ -53,18 +53,19 @@ match2-match-pool-details 'Nqq98SjTvhZNkSQ7' --login_with_auth "Bearer foo"
 match2-update-match-pool '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 69, "backfill_ticket_expiration_seconds": 1, "best_latency_calculation_method": "6BXksUC9b6i5lZC9", "crossplay_disabled": true, "match_function": "Qgb3boLQQ1MzH7Qm", "match_function_override": {"backfill_matches": "8bwbmXgdAPh1EThG", "enrichment": ["96gAFKK2WDgCcxvO", "NZm3EeERmDnyeFoF", "7VSZ6pf3vneSD2Tb"], "make_matches": "3g7mSQUhAEtrmjqU", "stat_codes": ["6YE3p4lSck0ZHn5G", "I39YBHqaTHeKtW18", "iGeUlc9d9sogWa24"], "validation": ["CKNS0GqVvUfHQvsH", "XNUNe4mhgo5QB65l", "SAiYnNjkfZrQvGgb"]}, "platform_group_enabled": false, "rule_set": "3QXcKMDYDDxHSZjt", "session_template": "qXyJ58f7Gc26SaiG", "ticket_expiration_seconds": 98}' 'eZxzfTcyiuATus9h' --login_with_auth "Bearer foo"
 match2-delete-match-pool 'sfpFDcSDG8aMVGLi' --login_with_auth "Bearer foo"
 match2-match-pool-metric 'BNrDjqoxcwgGLXpU' --login_with_auth "Bearer foo"
-match2-get-player-metric 'L4pp2ncYAHdNzDme' --login_with_auth "Bearer foo"
-match2-admin-get-match-pool-tickets 'IP6rOvDz9KOsb392' --login_with_auth "Bearer foo"
-match2-create-match-ticket '{"attributes": {"k6YmJFfRByjlBiuF": {}, "M3FIoVk8T3GpAnkC": {}, "mBUqg2SCnqntX9y1": {}}, "excludedSessions": ["aZSWMiVi10sG6vxk", "fUcmqRRbceJ5i0Ee", "DxOgBnhhqElIaDml"], "latencies": {"48wdNFLTm5T50x9W": 94, "3biBfsu4jmsRE2w1": 50, "XQAk4mqrxzTtuLl4": 77}, "matchPool": "lbGL8QOxtjzm8y2w", "sessionID": "NhmwoYZyI4EFZKBc", "storage": {"YrCEAE7WIsfmx40N": {}, "LRc6m8heKnWhzfe2": {}, "NubeoKFeIaFQCYoD": {}}}' --login_with_auth "Bearer foo"
+match2-post-match-error-metric '{"type": "connectDS"}' '4pp2ncYAHdNzDmeI' --login_with_auth "Bearer foo"
+match2-get-player-metric 'P6rOvDz9KOsb392k' --login_with_auth "Bearer foo"
+match2-admin-get-match-pool-tickets '6YmJFfRByjlBiuFM' --login_with_auth "Bearer foo"
+match2-create-match-ticket '{"attributes": {"3FIoVk8T3GpAnkCm": {}, "BUqg2SCnqntX9y1a": {}, "ZSWMiVi10sG6vxkf": {}}, "excludedSessions": ["UcmqRRbceJ5i0EeD", "xOgBnhhqElIaDml4", "8wdNFLTm5T50x9WT"], "latencies": {"0GfH2rtOa4EXsXzO": 63, "QAk4mqrxzTtuLl4X": 22, "Dx9gIiDandpGT2t2": 15}, "matchPool": "aOMh5eC3IHeHSKLC", "sessionID": "a3xreNDUWehwH3q3", "storage": {"1A806DJgas4b6z3L": {}, "NUj7fdgLA84Z8YYk": {}, "6QEgJjBbEDoNf3n0": {}}}' --login_with_auth "Bearer foo"
 match2-get-my-match-tickets --login_with_auth "Bearer foo"
-match2-match-ticket-details 'PICpnduEEQlULdJz' --login_with_auth "Bearer foo"
-match2-delete-match-ticket '4mnRBkMNxvvKgAT8' --login_with_auth "Bearer foo"
+match2-match-ticket-details 'hEoRCAcf80zfFyab' --login_with_auth "Bearer foo"
+match2-delete-match-ticket 'WAgIUXiI07A68eaq' --login_with_auth "Bearer foo"
 match2-rule-set-list --login_with_auth "Bearer foo"
-match2-create-rule-set '{"data": {"mJrYq6hRkloqxM3g": {}, "pwxcfMy9XzjjI5Yb": {}, "sKoADkzJEN2VHzih": {}}, "enable_custom_match_function": false, "name": "O86IlBhnetU4RwTq"}' --login_with_auth "Bearer foo"
-match2-rule-set-details 'UXlTDBzOuYsaZA2y' --login_with_auth "Bearer foo"
-match2-update-rule-set '{"data": {"yd4mbqoOfADMMAXF": {}, "aY9eKa699bRVhyaK": {}, "wwrAP2aMlu7WtjCt": {}}, "enable_custom_match_function": false, "name": "SrUTvfqU0bfoMm5c"}' 'TtFWbotQyXJRcQWs' --login_with_auth "Bearer foo"
-match2-delete-rule-set 'mqPNs92epxk0i8Vx' --login_with_auth "Bearer foo"
-match2-public-get-player-metric 'sZNereSvf9699mCE' --login_with_auth "Bearer foo"
+match2-create-rule-set '{"data": {"C2J9jyEW6GLbc0Na": {}, "KDUL3sa13lk1dQBH": {}, "O86IlBhnetU4RwTq": {}}, "enable_custom_match_function": true, "name": "XlTDBzOuYsaZA2yy"}' --login_with_auth "Bearer foo"
+match2-rule-set-details 'd4mbqoOfADMMAXFa' --login_with_auth "Bearer foo"
+match2-update-rule-set '{"data": {"Y9eKa699bRVhyaKw": {}, "wrAP2aMlu7WtjCto": {}, "YetOO847g8OudOfj": {}}, "enable_custom_match_function": false, "name": "tFWbotQyXJRcQWsm"}' 'qPNs92epxk0i8Vxs' --login_with_auth "Bearer foo"
+match2-delete-rule-set 'ZNereSvf9699mCEH' --login_with_auth "Bearer foo"
+match2-public-get-player-metric 'ThUJkETAsSp7gh4T' --login_with_auth "Bearer foo"
 match2-version-check-handler --login_with_auth "Bearer foo"
 exit()
 END
@@ -85,7 +86,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..38"
+echo "1..39"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -114,7 +115,7 @@ eval_tap $? 4 'AdminGetLogConfig' test.out
 
 #- 5 AdminPatchUpdateLogConfig
 $PYTHON -m $MODULE 'match2-admin-patch-update-log-config' \
-    '{"logLevel": "panic"}' \
+    '{"logLevel": "debug"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'AdminPatchUpdateLogConfig' test.out
@@ -133,7 +134,7 @@ eval_tap $? 7 'AdminGetConfigV1' test.out
 
 #- 8 AdminPatchConfigV1
 $PYTHON -m $MODULE 'match2-admin-patch-config-v1' \
-    '{"crossPlatformNoCurrentPlatform": true, "extraPlatforms": ["hUJkETAsSp7gh4Te", "UTkOkAYfJB8AT9t4", "Tv207Y2QD3oD5fLC"], "matchAnyCommon": true, "platformGroup": {"1RSKs6gQxC3Gb7S0": ["o4zGYY7KQI1AeFgP", "qaOkvo1aolB4lkKB", "4EYOkQ1jMD3cym8x"], "IfkOVW2grREOLx0K": ["Oww3HICQLfl7MUBG", "7qtPu64yAtURKLRk", "b738HGS6rDgMdIIl"], "hS1fSiM9331m7Ta1": ["PsKc50Kv6ecnEevc", "Ax2K2zkRenmPZnGB", "t4P7WnbdSJtjX7Zs"]}}' \
+    '{"crossPlatformNoCurrentPlatform": false, "extraPlatforms": ["UTkOkAYfJB8AT9t4", "Tv207Y2QD3oD5fLC", "r3OOlXVv8ZGF7uYn"], "matchAnyCommon": false, "platformGroup": {"zpipNDigNJma1Mbq": ["qZtfNWql4nmwAft4", "gqkNNlWkD9eOziYR", "FOn0jJLHC9LxhvNX"], "TwGBCtohLtl9Zuhy": ["tm5UDrT6QXCs5SPB", "bRPZTF6oQAXVG7tn", "sZg5QgXjvyGJPN4e"], "XbJE5Vs2GcyomQoI": ["XimBJehyxlNsjUgx", "BkF6wFPoJeQediog", "EhhM2rIizGdKvOPd"]}}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 8 'AdminPatchConfigV1' test.out
@@ -146,44 +147,44 @@ eval_tap $? 9 'EnvironmentVariableList' test.out
 
 #- 10 CreateBackfill
 $PYTHON -m $MODULE 'match2-create-backfill' \
-    '{"matchPool": "hZyZl5x4bRXBHUTr", "sessionId": "DzZSKscfOcYu3dpC"}' \
+    '{"matchPool": "q5xrgxSmy1DN9LFk", "sessionId": "YW5DQyj4bj5Ro2og"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 10 'CreateBackfill' test.out
 
 #- 11 GetBackfillProposal
 $PYTHON -m $MODULE 'match2-get-backfill-proposal' \
-    'ROYqUiGKXVFCmpo6' \
+    'aKt2ujQSa3Zdb65U' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 11 'GetBackfillProposal' test.out
 
 #- 12 GetBackfill
 $PYTHON -m $MODULE 'match2-get-backfill' \
-    'sPwVOEDSJsEK5QpN' \
+    'Xmy0Zp6iIaTIKUkm' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 12 'GetBackfill' test.out
 
 #- 13 DeleteBackfill
 $PYTHON -m $MODULE 'match2-delete-backfill' \
-    'hlI2iS5EpGhhvXYc' \
+    'kk9QM0NBMA9ORxpz' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'DeleteBackfill' test.out
 
 #- 14 AcceptBackfill
 $PYTHON -m $MODULE 'match2-accept-backfill' \
-    '{"acceptedTicketIds": ["k0upMzUYnb76tFkE", "ORV3bu1bNCtX7W40", "V6Do5sYadCCFrHHC"], "proposalId": "3DpZxkrQDXuNFviM", "stop": false}' \
-    'suGKHhMRWLVd3Dlh' \
+    '{"acceptedTicketIds": ["wLR2AK6eXUGPJsw1", "fiP80G9Pclxcft2u", "lIJzPyrVEiOG4Ucq"], "proposalId": "suGKHhMRWLVd3Dlh", "stop": false}' \
+    'uIpomM8sm1MiaI1m' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 14 'AcceptBackfill' test.out
 
 #- 15 RejectBackfill
 $PYTHON -m $MODULE 'match2-reject-backfill' \
-    '{"proposalId": "LuIpomM8sm1MiaI1", "stop": false}' \
-    '536ugBp3HBvepnDC' \
+    '{"proposalId": "X2tJoARtdbBe7uds", "stop": false}' \
+    'rok0WvGYYnx4V709' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 15 'RejectBackfill' test.out
@@ -196,22 +197,22 @@ eval_tap $? 16 'MatchFunctionList' test.out
 
 #- 17 CreateMatchFunction
 $PYTHON -m $MODULE 'match2-create-match-function' \
-    '{"match_function": "jgyJlXe36mgWjLfF", "serviceAppName": "mteue9nzJ6fH24T8", "url": "05tVg8JqU0jZpjvs"}' \
+    '{"match_function": "xbnGezKsDwG2omOR", "serviceAppName": "2nvYI9TVqJdvzcWb", "url": "fUpaXp5JMl5LL4bT"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'CreateMatchFunction' test.out
 
 #- 18 UpdateMatchFunction
 $PYTHON -m $MODULE 'match2-update-match-function' \
-    '{"match_function": "ugAOS7u8RiWyerCS", "serviceAppName": "a8SRgwsAj1ik1jgl", "url": "aDXTvKCWwNTAhd2w"}' \
-    'rS0uPdjhdinpng5B' \
+    '{"match_function": "xBmZjdrrIxsB0NRs", "serviceAppName": "B1fPqqRRulpqpymD", "url": "kQhtrHWwRVnwVBOq"}' \
+    'OHi8pWGd1juYhiqj' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 18 'UpdateMatchFunction' test.out
 
 #- 19 DeleteMatchFunction
 $PYTHON -m $MODULE 'match2-delete-match-function' \
-    'Ly8wbhMssAHjapIk' \
+    'RJOqB5F93zFQbJnd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'DeleteMatchFunction' test.out
@@ -224,128 +225,136 @@ eval_tap $? 20 'MatchPoolList' test.out
 
 #- 21 CreateMatchPool
 $PYTHON -m $MODULE 'match2-create-match-pool' \
-    '{"auto_accept_backfill_proposal": false, "backfill_proposal_expiration_seconds": 88, "backfill_ticket_expiration_seconds": 89, "best_latency_calculation_method": "JOqB5F93zFQbJndU", "crossplay_disabled": true, "match_function": "tmKy8M9zVrjfGXZn", "match_function_override": {"backfill_matches": "qAQUoY1GjlIIk0iK", "enrichment": ["oTTS1j02o7JjTXAQ", "N0qdskdQV0TqI8EF", "nmDbxIxi4YKlONk2"], "make_matches": "Q5Y4Jvaizwiilatu", "stat_codes": ["Ujjt9lIMGql5ElEa", "9EIIlGcHB3CfR3nc", "Dlwi3v3MFFJ1KesK"], "validation": ["oELCpobBEG8X645x", "pdXpai0rYaT5hOPj", "af3H0tYighU0VUfc"]}, "name": "YHJbBfAKSiPW3Vgs", "platform_group_enabled": false, "rule_set": "XiR1DJ7HVWqMkNSa", "session_template": "wQUWDFJvJBWic7Uk", "ticket_expiration_seconds": 56}' \
+    '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 61, "backfill_ticket_expiration_seconds": 40, "best_latency_calculation_method": "pdONneAczbBdHb2s", "crossplay_disabled": false, "match_function": "AQUoY1GjlIIk0iKo", "match_function_override": {"backfill_matches": "TTS1j02o7JjTXAQN", "enrichment": ["0qdskdQV0TqI8EFn", "mDbxIxi4YKlONk2Q", "5Y4JvaizwiilatuU"], "make_matches": "jjt9lIMGql5ElEa9", "stat_codes": ["EIIlGcHB3CfR3ncD", "lwi3v3MFFJ1KesKo", "ELCpobBEG8X645xp"], "validation": ["dXpai0rYaT5hOPja", "f3H0tYighU0VUfcY", "HJbBfAKSiPW3VgsZ"]}, "name": "XiR1DJ7HVWqMkNSa", "platform_group_enabled": true, "rule_set": "URt9plCSVq8PdH6h", "session_template": "JPUAc0RVwXgAgntL", "ticket_expiration_seconds": 80}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 21 'CreateMatchPool' test.out
 
 #- 22 MatchPoolDetails
 $PYTHON -m $MODULE 'match2-match-pool-details' \
-    'JPUAc0RVwXgAgntL' \
+    'w0deoV9Lx5RDA1l2' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 22 'MatchPoolDetails' test.out
 
 #- 23 UpdateMatchPool
 $PYTHON -m $MODULE 'match2-update-match-pool' \
-    '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 58, "backfill_ticket_expiration_seconds": 41, "best_latency_calculation_method": "deoV9Lx5RDA1l2Xc", "crossplay_disabled": true, "match_function": "CancUZGCHsZYoLfR", "match_function_override": {"backfill_matches": "1KtOv7Zy0b65uvuK", "enrichment": ["Nuy0ytZQ7M6Nzy1a", "dnSKOLFKx1dX4LuW", "Ju3pDMUAeeZ97SBR"], "make_matches": "OPYuG6XqP6oo7G73", "stat_codes": ["zdxTgOfnwIdlNa29", "fDLh741IslKHzGlL", "KWUtDQs61OQAoxyy"], "validation": ["QpRWCiiPDGQhNPEw", "iJCf2XJVrlzqQls1", "ozhLVA3kE8jKvgat"]}, "platform_group_enabled": true, "rule_set": "EBM70TdlNBJYOmpu", "session_template": "1VCarzBsV6xnZ5Jr", "ticket_expiration_seconds": 52}' \
-    'ZQ7hfxnhLd3Knakn' \
+    '{"auto_accept_backfill_proposal": false, "backfill_proposal_expiration_seconds": 22, "backfill_ticket_expiration_seconds": 35, "best_latency_calculation_method": "CancUZGCHsZYoLfR", "crossplay_disabled": false, "match_function": "tOv7Zy0b65uvuKNu", "match_function_override": {"backfill_matches": "y0ytZQ7M6Nzy1adn", "enrichment": ["SKOLFKx1dX4LuWJu", "3pDMUAeeZ97SBROP", "YuG6XqP6oo7G73zd"], "make_matches": "xTgOfnwIdlNa29fD", "stat_codes": ["Lh741IslKHzGlLKW", "UtDQs61OQAoxyyQp", "RWCiiPDGQhNPEwiJ"], "validation": ["Cf2XJVrlzqQls1oz", "hLVA3kE8jKvgatOE", "BM70TdlNBJYOmpu1"]}, "platform_group_enabled": false, "rule_set": "CarzBsV6xnZ5Jrzz", "session_template": "jrcaug6CWVG8SWP3", "ticket_expiration_seconds": 12}' \
+    'd9DHhLOqQGhCUr6i' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 23 'UpdateMatchPool' test.out
 
 #- 24 DeleteMatchPool
 $PYTHON -m $MODULE 'match2-delete-match-pool' \
-    'oed9DHhLOqQGhCUr' \
+    'TrjyEgarAdNJOIG3' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 24 'DeleteMatchPool' test.out
 
 #- 25 MatchPoolMetric
 $PYTHON -m $MODULE 'match2-match-pool-metric' \
-    '6iTrjyEgarAdNJOI' \
+    '6I6tRbRcrEveMdAd' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 25 'MatchPoolMetric' test.out
 
-#- 26 GetPlayerMetric
+#- 26 PostMatchErrorMetric
+$PYTHON -m $MODULE 'match2-post-match-error-metric' \
+    '{"type": "connectDS"}' \
+    'ETJyTlUrwDTnoujQ' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 26 'PostMatchErrorMetric' test.out
+
+#- 27 GetPlayerMetric
 $PYTHON -m $MODULE 'match2-get-player-metric' \
-    'G36I6tRbRcrEveMd' \
+    'D4IEiH9Z5qXn3aoR' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 26 'GetPlayerMetric' test.out
+eval_tap $? 27 'GetPlayerMetric' test.out
 
-#- 27 AdminGetMatchPoolTickets
+#- 28 AdminGetMatchPoolTickets
 $PYTHON -m $MODULE 'match2-admin-get-match-pool-tickets' \
-    'AdiPKDUVSC00PYeD' \
+    'tlqOECohViHA5Czg' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 27 'AdminGetMatchPoolTickets' test.out
+eval_tap $? 28 'AdminGetMatchPoolTickets' test.out
 
-#- 28 CreateMatchTicket
+#- 29 CreateMatchTicket
 $PYTHON -m $MODULE 'match2-create-match-ticket' \
-    '{"attributes": {"cagginxnFIna3ydd": {}, "cbsPheTH26IUJNvY": {}, "uGRUvpZaHCuESOiI": {}}, "excludedSessions": ["ZsMfB4ZH3mtgWgU4", "pCAKxeE70CaunQNx", "ot371W9G4AvQkqsG"], "latencies": {"nmyo5JJTUVmb8GEX": 64, "GpAyrIwMif3BOdko": 5, "5nodqpLm7FhJBNXz": 54}, "matchPool": "Qs6XNbjvqhnUVLWu", "sessionID": "8olKdxL6ozRmDD0j", "storage": {"JvlfV5OemPYdYT7D": {}, "ROCjtuzFMbAG9YI8": {}, "9hmguB8FOTjMLo4b": {}}}' \
+    '{"attributes": {"FSy8X1A3PrIfapq5": {}, "AAeMe4L3mDWORBVX": {}, "TIIJM9XsYIIZxiXN": {}}, "excludedSessions": ["MR9BgaWcFX3SUBhy", "oTsMWPAxUMkawaGp", "AyrIwMif3BOdkocV"], "latencies": {"Td4BxqGWV6mTJ0sQ": 38, "dO0Khqf6kiTdSGv2": 78, "lKdxL6ozRmDD0jJv": 24}, "matchPool": "7kPBom8F9GLLTG8p", "sessionID": "hc3n4iLoIllKlpO2", "storage": {"pqiXJF3WGRaoQomS": {}, "JC4DdrKF7SUQPLG5": {}, "9e0k5ZtX6wK7PpUl": {}}}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 28 'CreateMatchTicket' test.out
+eval_tap $? 29 'CreateMatchTicket' test.out
 
-#- 29 GetMyMatchTickets
+#- 30 GetMyMatchTickets
 $PYTHON -m $MODULE 'match2-get-my-match-tickets' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 29 'GetMyMatchTickets' test.out
+eval_tap $? 30 'GetMyMatchTickets' test.out
 
-#- 30 MatchTicketDetails
+#- 31 MatchTicketDetails
 $PYTHON -m $MODULE 'match2-match-ticket-details' \
-    '9rIzqYkEpstyVTBc' \
+    'cIW32iK7MGt1ixY5' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 30 'MatchTicketDetails' test.out
+eval_tap $? 31 'MatchTicketDetails' test.out
 
-#- 31 DeleteMatchTicket
+#- 32 DeleteMatchTicket
 $PYTHON -m $MODULE 'match2-delete-match-ticket' \
-    'rM8rG0rH0zcswwVe' \
+    'rA1WoVeJIePF8ZrQ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 31 'DeleteMatchTicket' test.out
+eval_tap $? 32 'DeleteMatchTicket' test.out
 
-#- 32 RuleSetList
+#- 33 RuleSetList
 $PYTHON -m $MODULE 'match2-rule-set-list' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 32 'RuleSetList' test.out
+eval_tap $? 33 'RuleSetList' test.out
 
-#- 33 CreateRuleSet
+#- 34 CreateRuleSet
 $PYTHON -m $MODULE 'match2-create-rule-set' \
-    '{"data": {"MK6MbGIVIu8vvwLc": {}, "7KY3uVoJXTIMtpgk": {}, "ieDyF97lGdMiHKxb": {}}, "enable_custom_match_function": true, "name": "FJtHJ1pyVwyKQLY6"}' \
+    '{"data": {"zP4zvtdxdbZUpd6F": {}, "JtHJ1pyVwyKQLY6F": {}, "EO65Rb3z7CYLM8Il": {}}, "enable_custom_match_function": true, "name": "7QBlk44Z44B1GZgK"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 33 'CreateRuleSet' test.out
+eval_tap $? 34 'CreateRuleSet' test.out
 
-#- 34 RuleSetDetails
+#- 35 RuleSetDetails
 $PYTHON -m $MODULE 'match2-rule-set-details' \
-    'FEO65Rb3z7CYLM8I' \
+    'g4uKxaCgcGLuC3br' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 34 'RuleSetDetails' test.out
+eval_tap $? 35 'RuleSetDetails' test.out
 
-#- 35 UpdateRuleSet
+#- 36 UpdateRuleSet
 $PYTHON -m $MODULE 'match2-update-rule-set' \
-    '{"data": {"lsHqffnrfsGlfPaZ": {}, "KBwa3Ddb60ufPpzw": {}, "j1QGIFmlVf4jvaps": {}}, "enable_custom_match_function": false, "name": "iXZtLW87rGysryod"}' \
-    '3dNQrmsApRA6HX3R' \
+    '{"data": {"WdTYCfHkIySok5Di": {}, "XZtLW87rGysryod3": {}, "dNQrmsApRA6HX3Rw": {}}, "enable_custom_match_function": true, "name": "9gxo8SV38nEhoXmM"}' \
+    '2W7l6jHMA2rG3nak' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 35 'UpdateRuleSet' test.out
+eval_tap $? 36 'UpdateRuleSet' test.out
 
-#- 36 DeleteRuleSet
+#- 37 DeleteRuleSet
 $PYTHON -m $MODULE 'match2-delete-rule-set' \
-    'wrKt2ecozL0TOg54' \
+    'opAywelu01nryEJ0' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 36 'DeleteRuleSet' test.out
+eval_tap $? 37 'DeleteRuleSet' test.out
 
-#- 37 PublicGetPlayerMetric
+#- 38 PublicGetPlayerMetric
 $PYTHON -m $MODULE 'match2-public-get-player-metric' \
-    'vCE48L5oLF6M4lNa' \
+    'NqoTow0qiOiC4j0i' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 37 'PublicGetPlayerMetric' test.out
+eval_tap $? 38 'PublicGetPlayerMetric' test.out
 
-#- 38 VersionCheckHandler
+#- 39 VersionCheckHandler
 $PYTHON -m $MODULE 'match2-version-check-handler' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 38 'VersionCheckHandler' test.out
+eval_tap $? 39 'VersionCheckHandler' test.out
 
 
 fi

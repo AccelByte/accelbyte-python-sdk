@@ -47,6 +47,8 @@ class ModelsPublicConfigResponse(Model):
         spam_chat_duration: (spamChatDuration) REQUIRED int
 
         spam_mute_duration: (spamMuteDuration) REQUIRED int
+
+        enable_pm_send_platform_id: (enablePmSendPlatformId) OPTIONAL bool
     """
 
     # region fields
@@ -59,6 +61,7 @@ class ModelsPublicConfigResponse(Model):
     spam_chat_burst: int  # REQUIRED
     spam_chat_duration: int  # REQUIRED
     spam_mute_duration: int  # REQUIRED
+    enable_pm_send_platform_id: bool  # OPTIONAL
 
     # endregion fields
 
@@ -96,6 +99,12 @@ class ModelsPublicConfigResponse(Model):
 
     def with_spam_mute_duration(self, value: int) -> ModelsPublicConfigResponse:
         self.spam_mute_duration = value
+        return self
+
+    def with_enable_pm_send_platform_id(
+        self, value: bool
+    ) -> ModelsPublicConfigResponse:
+        self.enable_pm_send_platform_id = value
         return self
 
     # endregion with_x methods
@@ -136,6 +145,10 @@ class ModelsPublicConfigResponse(Model):
             result["spamMuteDuration"] = int(self.spam_mute_duration)
         elif include_empty:
             result["spamMuteDuration"] = 0
+        if hasattr(self, "enable_pm_send_platform_id"):
+            result["enablePmSendPlatformId"] = bool(self.enable_pm_send_platform_id)
+        elif include_empty:
+            result["enablePmSendPlatformId"] = False
         return result
 
     # endregion to methods
@@ -153,6 +166,7 @@ class ModelsPublicConfigResponse(Model):
         spam_chat_burst: int,
         spam_chat_duration: int,
         spam_mute_duration: int,
+        enable_pm_send_platform_id: Optional[bool] = None,
         **kwargs,
     ) -> ModelsPublicConfigResponse:
         instance = cls()
@@ -164,6 +178,8 @@ class ModelsPublicConfigResponse(Model):
         instance.spam_chat_burst = spam_chat_burst
         instance.spam_chat_duration = spam_chat_duration
         instance.spam_mute_duration = spam_mute_duration
+        if enable_pm_send_platform_id is not None:
+            instance.enable_pm_send_platform_id = enable_pm_send_platform_id
         return instance
 
     @classmethod
@@ -219,6 +235,13 @@ class ModelsPublicConfigResponse(Model):
             instance.spam_mute_duration = int(dict_["spamMuteDuration"])
         elif include_empty:
             instance.spam_mute_duration = 0
+        if (
+            "enablePmSendPlatformId" in dict_
+            and dict_["enablePmSendPlatformId"] is not None
+        ):
+            instance.enable_pm_send_platform_id = bool(dict_["enablePmSendPlatformId"])
+        elif include_empty:
+            instance.enable_pm_send_platform_id = False
         return instance
 
     @classmethod
@@ -270,6 +293,7 @@ class ModelsPublicConfigResponse(Model):
             "spamChatBurst": "spam_chat_burst",
             "spamChatDuration": "spam_chat_duration",
             "spamMuteDuration": "spam_mute_duration",
+            "enablePmSendPlatformId": "enable_pm_send_platform_id",
         }
 
     @staticmethod
@@ -283,6 +307,7 @@ class ModelsPublicConfigResponse(Model):
             "spamChatBurst": True,
             "spamChatDuration": True,
             "spamMuteDuration": True,
+            "enablePmSendPlatformId": False,
         }
 
     # endregion static methods

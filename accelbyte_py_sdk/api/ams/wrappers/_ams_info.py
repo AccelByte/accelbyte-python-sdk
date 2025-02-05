@@ -30,7 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ApiAMSRegionsResponse
-from ..models import ApiInstanceTypesForNamespaceResponse
+from ..models import ApiInstanceTypesResponse
 from ..models import ResponseErrorResponse
 
 from ..operations.ams_info import InfoRegions
@@ -134,7 +134,7 @@ def info_supported_instances(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get a list of available VM configurations (InfoSupportedInstances)
+    """get a list of available instance types for the current account (InfoSupportedInstances)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
 
@@ -154,7 +154,7 @@ def info_supported_instances(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ApiInstanceTypesForNamespaceResponse (success)
+        200: OK - ApiInstanceTypesResponse (success)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 
@@ -178,7 +178,7 @@ async def info_supported_instances_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """get a list of available VM configurations (InfoSupportedInstances)
+    """get a list of available instance types for the current account (InfoSupportedInstances)
 
     Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA [READ]
 
@@ -198,7 +198,7 @@ async def info_supported_instances_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        200: OK - ApiInstanceTypesForNamespaceResponse (success)
+        200: OK - ApiInstanceTypesResponse (success)
 
         401: Unauthorized - ResponseErrorResponse (no authorization provided)
 

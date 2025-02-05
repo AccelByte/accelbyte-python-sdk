@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.1.1"
+__version__ = "6.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -31,6 +31,7 @@ from .get_platform_wallet_config import (
 )
 from .get_user_wallet import GetUserWallet
 from .get_wallet import GetWallet
+from .get_wallet_config import GetWalletConfig
 from .list_user_currency_tran_bb67cf import ListUserCurrencyTransactions
 from .list_user_wallet_transactions import ListUserWalletTransactions
 from .pay_with_user_wallet import PayWithUserWallet
@@ -48,3 +49,4 @@ from .update_platform_wallet_config import UpdatePlatformWalletConfig
 from .update_platform_wallet_config import (
     PlatformEnum as UpdatePlatformWalletConfigPlatformEnum,
 )
+from .update_wallet_config import UpdateWalletConfig

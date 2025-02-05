@@ -53,6 +53,8 @@ class LogconfigConfiguration(Model):
     """Logconfig configuration (logconfig.Configuration)
 
     Properties:
+        internal_access_log_enabled: (internalAccessLogEnabled) OPTIONAL bool
+
         log_level: (logLevel) OPTIONAL Union[str, LogLevelEnum]
 
         log_level_db: (logLevelDB) OPTIONAL Union[str, LogLevelDBEnum]
@@ -64,6 +66,7 @@ class LogconfigConfiguration(Model):
 
     # region fields
 
+    internal_access_log_enabled: bool  # OPTIONAL
     log_level: Union[str, LogLevelEnum]  # OPTIONAL
     log_level_db: Union[str, LogLevelDBEnum]  # OPTIONAL
     slow_query_threshold: int  # OPTIONAL
@@ -72,6 +75,10 @@ class LogconfigConfiguration(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_internal_access_log_enabled(self, value: bool) -> LogconfigConfiguration:
+        self.internal_access_log_enabled = value
+        return self
 
     def with_log_level(self, value: Union[str, LogLevelEnum]) -> LogconfigConfiguration:
         self.log_level = value
@@ -97,6 +104,10 @@ class LogconfigConfiguration(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "internal_access_log_enabled"):
+            result["internalAccessLogEnabled"] = bool(self.internal_access_log_enabled)
+        elif include_empty:
+            result["internalAccessLogEnabled"] = False
         if hasattr(self, "log_level"):
             result["logLevel"] = str(self.log_level)
         elif include_empty:
@@ -122,6 +133,7 @@ class LogconfigConfiguration(Model):
     @classmethod
     def create(
         cls,
+        internal_access_log_enabled: Optional[bool] = None,
         log_level: Optional[Union[str, LogLevelEnum]] = None,
         log_level_db: Optional[Union[str, LogLevelDBEnum]] = None,
         slow_query_threshold: Optional[int] = None,
@@ -129,6 +141,8 @@ class LogconfigConfiguration(Model):
         **kwargs,
     ) -> LogconfigConfiguration:
         instance = cls()
+        if internal_access_log_enabled is not None:
+            instance.internal_access_log_enabled = internal_access_log_enabled
         if log_level is not None:
             instance.log_level = log_level
         if log_level_db is not None:
@@ -146,6 +160,15 @@ class LogconfigConfiguration(Model):
         instance = cls()
         if not dict_:
             return instance
+        if (
+            "internalAccessLogEnabled" in dict_
+            and dict_["internalAccessLogEnabled"] is not None
+        ):
+            instance.internal_access_log_enabled = bool(
+                dict_["internalAccessLogEnabled"]
+            )
+        elif include_empty:
+            instance.internal_access_log_enabled = False
         if "logLevel" in dict_ and dict_["logLevel"] is not None:
             instance.log_level = str(dict_["logLevel"])
         elif include_empty:
@@ -205,6 +228,7 @@ class LogconfigConfiguration(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "internalAccessLogEnabled": "internal_access_log_enabled",
             "logLevel": "log_level",
             "logLevelDB": "log_level_db",
             "slowQueryThreshold": "slow_query_threshold",
@@ -214,6 +238,7 @@ class LogconfigConfiguration(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "internalAccessLogEnabled": False,
             "logLevel": False,
             "logLevelDB": False,
             "slowQueryThreshold": False,

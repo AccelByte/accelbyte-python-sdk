@@ -26,9 +26,16 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.apimodels_session_storage_request import ApimodelsSessionStorageRequest
 from ..models.models_team import ModelsTeam
+
+
+class TextChatModeEnum(StrEnum):
+    GAME = "GAME"
+    NONE = "NONE"
+    TEAM = "TEAM"
 
 
 class ApimodelsCreateGameSessionRequest(Model):
@@ -83,6 +90,8 @@ class ApimodelsCreateGameSessionRequest(Model):
 
         storage: (storage) OPTIONAL ApimodelsSessionStorageRequest
 
+        text_chat_mode: (textChatMode) OPTIONAL Union[str, TextChatModeEnum]
+
         tie_teams_session_lifetime: (tieTeamsSessionLifetime) OPTIONAL bool
     """
 
@@ -112,6 +121,7 @@ class ApimodelsCreateGameSessionRequest(Model):
     fallback_claim_keys: List[str]  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
     storage: ApimodelsSessionStorageRequest  # OPTIONAL
+    text_chat_mode: Union[str, TextChatModeEnum]  # OPTIONAL
     tie_teams_session_lifetime: bool  # OPTIONAL
 
     # endregion fields
@@ -224,6 +234,12 @@ class ApimodelsCreateGameSessionRequest(Model):
         self.storage = value
         return self
 
+    def with_text_chat_mode(
+        self, value: Union[str, TextChatModeEnum]
+    ) -> ApimodelsCreateGameSessionRequest:
+        self.text_chat_mode = value
+        return self
+
     def with_tie_teams_session_lifetime(
         self, value: bool
     ) -> ApimodelsCreateGameSessionRequest:
@@ -334,6 +350,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             result["storage"] = self.storage.to_dict(include_empty=include_empty)
         elif include_empty:
             result["storage"] = ApimodelsSessionStorageRequest()
+        if hasattr(self, "text_chat_mode"):
+            result["textChatMode"] = str(self.text_chat_mode)
+        elif include_empty:
+            result["textChatMode"] = Union[str, TextChatModeEnum]()
         if hasattr(self, "tie_teams_session_lifetime"):
             result["tieTeamsSessionLifetime"] = bool(self.tie_teams_session_lifetime)
         elif include_empty:
@@ -371,6 +391,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         fallback_claim_keys: Optional[List[str]] = None,
         preferred_claim_keys: Optional[List[str]] = None,
         storage: Optional[ApimodelsSessionStorageRequest] = None,
+        text_chat_mode: Optional[Union[str, TextChatModeEnum]] = None,
         tie_teams_session_lifetime: Optional[bool] = None,
         **kwargs,
     ) -> ApimodelsCreateGameSessionRequest:
@@ -406,6 +427,8 @@ class ApimodelsCreateGameSessionRequest(Model):
             instance.preferred_claim_keys = preferred_claim_keys
         if storage is not None:
             instance.storage = storage
+        if text_chat_mode is not None:
+            instance.text_chat_mode = text_chat_mode
         if tie_teams_session_lifetime is not None:
             instance.tie_teams_session_lifetime = tie_teams_session_lifetime
         return instance
@@ -524,6 +547,10 @@ class ApimodelsCreateGameSessionRequest(Model):
             )
         elif include_empty:
             instance.storage = ApimodelsSessionStorageRequest()
+        if "textChatMode" in dict_ and dict_["textChatMode"] is not None:
+            instance.text_chat_mode = str(dict_["textChatMode"])
+        elif include_empty:
+            instance.text_chat_mode = Union[str, TextChatModeEnum]()
         if (
             "tieTeamsSessionLifetime" in dict_
             and dict_["tieTeamsSessionLifetime"] is not None
@@ -598,6 +625,7 @@ class ApimodelsCreateGameSessionRequest(Model):
             "fallbackClaimKeys": "fallback_claim_keys",
             "preferredClaimKeys": "preferred_claim_keys",
             "storage": "storage",
+            "textChatMode": "text_chat_mode",
             "tieTeamsSessionLifetime": "tie_teams_session_lifetime",
         }
 
@@ -628,7 +656,14 @@ class ApimodelsCreateGameSessionRequest(Model):
             "fallbackClaimKeys": False,
             "preferredClaimKeys": False,
             "storage": False,
+            "textChatMode": False,
             "tieTeamsSessionLifetime": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "textChatMode": ["GAME", "NONE", "TEAM"],
         }
 
     # endregion static methods

@@ -60,6 +60,8 @@ class StatCreate(Model):
 
         stat_code: (statCode) REQUIRED str
 
+        cap_cycle_override: (capCycleOverride) OPTIONAL bool
+
         cycle_ids: (cycleIds) OPTIONAL List[str]
 
         cycle_overrides: (cycleOverrides) OPTIONAL List[CycleOverrideRequest]
@@ -91,6 +93,7 @@ class StatCreate(Model):
     name: str  # REQUIRED
     set_by: Union[str, SetByEnum]  # REQUIRED
     stat_code: str  # REQUIRED
+    cap_cycle_override: bool  # OPTIONAL
     cycle_ids: List[str]  # OPTIONAL
     cycle_overrides: List[CycleOverrideRequest]  # OPTIONAL
     description: str  # OPTIONAL
@@ -122,6 +125,10 @@ class StatCreate(Model):
 
     def with_stat_code(self, value: str) -> StatCreate:
         self.stat_code = value
+        return self
+
+    def with_cap_cycle_override(self, value: bool) -> StatCreate:
+        self.cap_cycle_override = value
         return self
 
     def with_cycle_ids(self, value: List[str]) -> StatCreate:
@@ -196,6 +203,10 @@ class StatCreate(Model):
             result["statCode"] = str(self.stat_code)
         elif include_empty:
             result["statCode"] = ""
+        if hasattr(self, "cap_cycle_override"):
+            result["capCycleOverride"] = bool(self.cap_cycle_override)
+        elif include_empty:
+            result["capCycleOverride"] = False
         if hasattr(self, "cycle_ids"):
             result["cycleIds"] = [str(i0) for i0 in self.cycle_ids]
         elif include_empty:
@@ -263,6 +274,7 @@ class StatCreate(Model):
         name: str,
         set_by: Union[str, SetByEnum],
         stat_code: str,
+        cap_cycle_override: Optional[bool] = None,
         cycle_ids: Optional[List[str]] = None,
         cycle_overrides: Optional[List[CycleOverrideRequest]] = None,
         description: Optional[str] = None,
@@ -284,6 +296,8 @@ class StatCreate(Model):
         instance.name = name
         instance.set_by = set_by
         instance.stat_code = stat_code
+        if cap_cycle_override is not None:
+            instance.cap_cycle_override = cap_cycle_override
         if cycle_ids is not None:
             instance.cycle_ids = cycle_ids
         if cycle_overrides is not None:
@@ -333,6 +347,10 @@ class StatCreate(Model):
             instance.stat_code = str(dict_["statCode"])
         elif include_empty:
             instance.stat_code = ""
+        if "capCycleOverride" in dict_ and dict_["capCycleOverride"] is not None:
+            instance.cap_cycle_override = bool(dict_["capCycleOverride"])
+        elif include_empty:
+            instance.cap_cycle_override = False
         if "cycleIds" in dict_ and dict_["cycleIds"] is not None:
             instance.cycle_ids = [str(i0) for i0 in dict_["cycleIds"]]
         elif include_empty:
@@ -437,6 +455,7 @@ class StatCreate(Model):
             "name": "name",
             "setBy": "set_by",
             "statCode": "stat_code",
+            "capCycleOverride": "cap_cycle_override",
             "cycleIds": "cycle_ids",
             "cycleOverrides": "cycle_overrides",
             "description": "description",
@@ -458,6 +477,7 @@ class StatCreate(Model):
             "name": True,
             "setBy": True,
             "statCode": True,
+            "capCycleOverride": False,
             "cycleIds": False,
             "cycleOverrides": False,
             "description": False,

@@ -375,6 +375,8 @@ from ._create_view import create_view
 from ._get_view import get_view
 from ._update_view import update_view
 from ._delete_view import delete_view
+from ._get_wallet_config import get_wallet_config
+from ._update_wallet_config import update_wallet_config
 from ._query_wallets import query_wallets
 from ._bulk_credit import bulk_credit
 from ._bulk_debit import bulk_debit
@@ -907,6 +909,8 @@ commands = [
     get_view,
     update_view,
     delete_view,
+    get_wallet_config,
+    update_wallet_config,
     query_wallets,
     bulk_credit,
     bulk_debit,

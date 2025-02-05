@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.1.1"
+__version__ = "6.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -1039,6 +1039,8 @@ from .wrappers import get_user_wallet
 from .wrappers import get_user_wallet_async
 from .wrappers import get_wallet
 from .wrappers import get_wallet_async
+from .wrappers import get_wallet_config
+from .wrappers import get_wallet_config_async
 from .wrappers import list_user_currency_transactions
 from .wrappers import list_user_currency_transactions_async
 from .wrappers import list_user_wallet_transactions
@@ -1059,3 +1061,5 @@ from .wrappers import reset_platform_wallet_config
 from .wrappers import reset_platform_wallet_config_async
 from .wrappers import update_platform_wallet_config
 from .wrappers import update_platform_wallet_config_async
+from .wrappers import update_wallet_config
+from .wrappers import update_wallet_config_async

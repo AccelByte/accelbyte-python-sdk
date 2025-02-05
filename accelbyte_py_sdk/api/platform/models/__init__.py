@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.1.1"
+__version__ = "6.3.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -1010,6 +1010,8 @@ from .validation_error_entity import ValidationErrorEntity
 from .view_create import ViewCreate
 from .view_info import ViewInfo
 from .view_update import ViewUpdate
+from .wallet_config_info import WalletConfigInfo
+from .wallet_config_update import WalletConfigUpdate
 from .wallet_info import WalletInfo
 from .wallet_info import StatusEnum as WalletInfoStatusEnum
 from .wallet_paging_sliced_result import WalletPagingSlicedResult

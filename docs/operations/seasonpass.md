@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Seasonpass Service Index (1.23.1)
+# AccelByte Gaming Services Seasonpass Service Index (1.23.2)
 
 
 ## Operations

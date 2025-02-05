@@ -46,6 +46,8 @@ from ..models import PlatformWallet
 from ..models import PlatformWalletConfigInfo
 from ..models import PlatformWalletConfigUpdate
 from ..models import ValidationErrorEntity
+from ..models import WalletConfigInfo
+from ..models import WalletConfigUpdate
 from ..models import WalletInfo
 from ..models import WalletPagingSlicedResult
 from ..models import WalletTransactionPagingSlicedResult
@@ -65,6 +67,7 @@ from ..operations.wallet import GetPlatformWalletConfig
 from ..operations.wallet import GetPlatformWalletConfigPlatformEnum
 from ..operations.wallet import GetUserWallet
 from ..operations.wallet import GetWallet
+from ..operations.wallet import GetWalletConfig
 from ..operations.wallet import ListUserCurrencyTransactions
 from ..operations.wallet import ListUserWalletTransactions
 from ..operations.wallet import PayWithUserWallet
@@ -78,6 +81,7 @@ from ..operations.wallet import ResetPlatformWalletConfig
 from ..operations.wallet import ResetPlatformWalletConfigPlatformEnum
 from ..operations.wallet import UpdatePlatformWalletConfig
 from ..operations.wallet import UpdatePlatformWalletConfigPlatformEnum
+from ..operations.wallet import UpdateWalletConfig
 from ..models import BulkCreditResultStatusEnum
 from ..models import BulkDebitResultStatusEnum
 from ..models import CreditRequestOriginEnum, CreditRequestSourceEnum
@@ -1520,6 +1524,84 @@ async def get_wallet_async(
     )
 
 
+@same_doc_as(GetWalletConfig)
+def get_wallet_config(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get wallet config of a namespace (getWalletConfig)
+
+    get wallet config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallet/config
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetWalletConfig.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetWalletConfig)
+async def get_wallet_config_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get wallet config of a namespace (getWalletConfig)
+
+    get wallet config
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallet/config
+
+        method: GET
+
+        tags: ["Wallet"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = GetWalletConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(ListUserCurrencyTransactions)
 def list_user_currency_transactions(
     currency_code: str,
@@ -2591,6 +2673,92 @@ async def update_platform_wallet_config_async(
     request = UpdatePlatformWalletConfig.create(
         body=body,
         platform=platform,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(UpdateWalletConfig)
+def update_wallet_config(
+    body: WalletConfigUpdate,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update wallet config (updateWalletConfig)
+
+    Update wallet config of a namespace
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallet/config
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED WalletConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateWalletConfig.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(UpdateWalletConfig)
+async def update_wallet_config_async(
+    body: WalletConfigUpdate,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Update wallet config (updateWalletConfig)
+
+    Update wallet config of a namespace
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/wallet/config
+
+        method: PUT
+
+        tags: ["Wallet"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED WalletConfigUpdate in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - WalletConfigInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace()
+        if error:
+            return None, error
+    request = UpdateWalletConfig.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(

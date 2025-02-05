@@ -68,16 +68,24 @@ class CachingTokenValidator:
             )
 
         self.jwks_cache = JWKSCache(
-            sdk, jwks_refresh_interval, raise_on_error=raise_on_error,
+            sdk,
+            jwks_refresh_interval,
+            raise_on_error=raise_on_error,
         )
         self.revocation_list_cache = RevocationListCache(
-            sdk, revocation_list_refresh_interval, raise_on_error=raise_on_error,
+            sdk,
+            revocation_list_refresh_interval,
+            raise_on_error=raise_on_error,
         )
         self.roles_cache = RolesCache(
-            sdk, role_cache_time, raise_on_error=raise_on_error,
+            sdk,
+            role_cache_time,
+            raise_on_error=raise_on_error,
         )
         self.namespace_context_cache = NamespaceContextCache(
-            sdk, namespace_context_cache_time, raise_on_error=raise_on_error,
+            sdk,
+            namespace_context_cache_time,
+            raise_on_error=raise_on_error,
         )
 
         self.jwks_cache.update()

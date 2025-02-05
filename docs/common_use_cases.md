@@ -281,6 +281,167 @@ def test_public_update_user_profile(self):
     self.assertEqual("Pertama", result.first_name)
     self.assertEqual("Terakhir", result.last_name)
 ```
+## Challenge
+
+Source: [challenge.py](../tests/integration/api/challenge.py)
+
+### Get Challenges
+
+```python
+def test_get_challenges(self):
+    from accelbyte_py_sdk.api.challenge import get_challenges
+
+    # arrange
+
+    # act
+    response, error = get_challenges()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Public Get User Rewards
+
+```python
+def test_public_get_user_rewards(self):
+    from accelbyte_py_sdk.api.challenge import public_get_user_rewards
+
+    # arrange
+
+    # act
+    response, error = public_get_user_rewards()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Challenge And Goal
+
+```python
+def test_challenge_and_goal(self):
+    from accelbyte_py_sdk.core import generate_id
+    from accelbyte_py_sdk.api.challenge import (
+        admin_get_challenge,
+        admin_delete_challenge,
+        admin_delete_goal,
+    )
+
+    challenge_code = f"python-{generate_id(6)}-challenge"
+    challenge_name = "Python Challenge Test"
+    goal_code = f"python-{generate_id(6)}-goal"
+    goal_name = "Python Goal Test"
+    new_challenge_name = "Python Challenge Test UPDATED"
+
+    new_challenge, error = self.do_create_challenge(challenge_code, challenge_name)
+    self.assertIsNone(error)
+    self.assertEqual(challenge_name, new_challenge.name)
+
+    challenge_data, error = admin_get_challenge(challenge_code=challenge_code)
+    self.assertIsNone(error)
+    self.assertEqual(challenge_name, challenge_data.name)
+
+    updated_challenge, error = self.do_update_challenge_name(
+        challenge_code, new_challenge_name
+    )
+    self.assertIsNone(error)
+    self.assertEqual(new_challenge_name, updated_challenge.name)
+
+    new_goal, error = self.do_create_goal(goal_code, goal_name, challenge_code)
+    self.assertIsNone(error)
+
+    _, error = admin_delete_goal(challenge_code=challenge_code, code=goal_code)
+    self.assertIsNone(error)
+
+    _, error = admin_delete_challenge(challenge_code=challenge_code)
+    self.assertIsNone(error)
+```
+## Chat
+
+Source: [chat.py](../tests/integration/api/chat.py)
+
+### Admin Profanity Create
+
+```python
+def test_admin_profanity_create(self):
+    # arrange
+
+    # act
+    _, error, profanity_id = self.do_create_profanity(body=self.dict_insert_request)
+    self.profanity_id = profanity_id
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Admin Profanity Query
+
+```python
+def test_admin_profanity_query(self):
+    from accelbyte_py_sdk.api.chat import admin_profanity_query
+
+    # arrange
+    result, error, profanity_id = self.do_create_profanity(
+        body=self.dict_insert_request
+    )
+    if error:
+        self.skipTest(reason=f"Failed to set up profanity. {error}")
+    self.profanity_id = profanity_id
+
+    # act
+    _, error = admin_profanity_query(start_with=self.profanity_prefix)
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Admin Profanity Delete
+
+```python
+def test_admin_profanity_delete(self):
+    from accelbyte_py_sdk.api.chat import admin_profanity_delete
+
+    # arrange
+    result, error, profanity_id = self.do_create_profanity(
+        body=self.dict_insert_request
+    )
+    if error:
+        self.skipTest(reason=f"Failed to set up profanity. {error}")
+    self.profanity_id = profanity_id
+
+    # act
+    _, error = admin_profanity_delete(id_=self.profanity_id)
+
+    # assert
+    self.assertIsNone(error, error)
+    self.profanity_id = None
+```
+### Admin Profanity Update
+
+```python
+def test_admin_profanity_update(self):
+    from accelbyte_py_sdk.api.chat import admin_profanity_update
+    from accelbyte_py_sdk.api.chat.models import ModelsDictionaryUpdateRequest
+
+    # arrange
+    result, error, profanity_id = self.do_create_profanity(
+        body=self.dict_insert_request
+    )
+    if error:
+        self.skipTest(reason=f"Failed to set up profanity. {error}")
+    self.profanity_id = profanity_id
+
+    # act
+    _, error = admin_profanity_update(
+        body=ModelsDictionaryUpdateRequest.create_from_dict(
+            {
+                "falseNegative": [],
+                "falsePositive": [],
+                "word": f"{self.profanity_prefix}{uuid4().hex}",
+                "wordType": "FALSEPOSITIVE",
+            }
+        ),
+        id_=self.profanity_id,
+    )
+
+    # assert
+    self.assertIsNone(error, error)
+```
 ## Cloud Save
 
 Source: [cloudsave.py](../tests/integration/api/cloudsave.py)
@@ -503,6 +664,178 @@ def test_put_player_record_handler_v1(self):
     self.assertIsNotNone(result.value)
     self.assertIn("foo", result.value)
     self.assertEqual("baz", result.value["foo"])
+```
+## Custom Service Manager
+
+Source: [csm.py](../tests/integration/api/csm.py)
+
+### Csm
+
+```python
+def test_csm(self):
+    from accelbyte_py_sdk.core import generate_id
+    import accelbyte_py_sdk.api.csm as csm_service
+    import accelbyte_py_sdk.api.csm.models as csm_models
+
+    app_name = f"pythonsdk-test-{generate_id(8)}"
+
+    check_retry = 60
+    check_interval = 5.0
+
+    env_sec_key = "AB_PY_SEC_TEST_" + "".join(choices(ascii_uppercase, k=4))
+    env_sec_value = generate_id(32)
+    env_sec_value_new = generate_id(32)
+    env_sec_value_masked = env_sec_value[0:5] + ("*" * 6)
+    env_sec_value_new_masked = env_sec_value_new[0:5] + ("*" * 6)
+
+    env_var_key = "AB_PY_KEY_TEST_" + "".join(choices(ascii_uppercase, k=4))
+    env_var_value = generate_id(32)
+    env_var_value_new = generate_id(32)
+
+    try:
+        result, error = csm_service.create_app_v2(
+            app=app_name,
+            body=csm_models.ApimodelCreateAppV2Request.create(
+                scenario="function-override",
+                description="Python Extend SDK integration test app.",
+            ),
+        )
+        self.assertIsNone(error, str(error))
+        self.assertEqual(result.app_name, app_name)
+
+        is_app_ready = False
+        last_app_status = ""
+
+        for i in range(check_retry):
+            result, error = csm_service.get_app_v2(app=app_name)
+            self.assertIsNone(error, str(error))
+
+            last_app_status = result.app_status
+
+            print(
+                f"[{i + 1}/{check_retry}] Checking status [{result.app_name}]: {last_app_status}"
+            )
+
+            if last_app_status == "app-undeployed":
+                is_app_ready = True
+                break
+
+            sleep(check_interval)
+
+        self.assertTrue(
+            is_app_ready,
+            (
+                f"After waiting for {check_interval * check_retry}s, "
+                f"app {app_name} is not ready. Last status: {last_app_status}"
+            ),
+        )
+
+        # secrets
+
+        result, error = csm_service.save_secret_v2(
+            app=app_name,
+            body=csm_models.ApimodelSaveConfigurationV2Request.create(
+                config_name=env_sec_key,
+                value=env_sec_value,
+                source="plaintext",
+                apply_mask=True,
+            ),
+        )
+        self.assertIsNone(error, str(error))
+        self.assertEqual(result.config_name, env_sec_key)
+
+        result, error = csm_service.get_list_of_secrets_v2(
+            app=app_name, limit=100, offset=0
+        )
+        self.assertIsNone(error, str(error))
+        self.assertTrue(result.data)
+
+        found_env_sec_key = False
+        found_env_sec_id = ""
+        found_env_sec_value = ""
+        for secret in result.data:
+            if secret.config_name == env_sec_key:
+                found_env_sec_key = True
+                found_env_sec_id = secret.config_id
+                found_env_sec_value = secret.value
+                break
+
+        self.assertTrue(found_env_sec_key, f"Env secret {env_sec_key} not found.")
+        self.assertTrue(found_env_sec_id)
+        self.assertEqual(found_env_sec_value, env_sec_value_masked)
+
+        result, error = csm_service.update_secret_v2(
+            app=app_name,
+            body=csm_models.ApimodelUpdateConfigurationV2Request.create(
+                value=env_sec_value_new
+            ),
+            config_id=found_env_sec_id,
+        )
+        self.assertIsNone(error, str(error))
+        self.assertEqual(result.value, env_sec_value_new_masked)
+
+        result, error = csm_service.delete_secret_v2(
+            app=app_name,
+            config_id=found_env_sec_id,
+        )
+        self.assertIsNone(error, str(error))
+
+        # variables
+
+        result, error = csm_service.save_variable_v2(
+            app=app_name,
+            body=csm_models.ApimodelSaveConfigurationV2Request.create(
+                config_name=env_var_key,
+                value=env_var_value,
+                source="plaintext",
+            ),
+        )
+        self.assertIsNone(error, str(error))
+        self.assertEqual(result.config_name, env_var_key)
+
+        result, error = csm_service.get_list_of_variables_v2(
+            app=app_name, limit=100, offset=0
+        )
+        self.assertIsNone(error, str(error))
+        self.assertTrue(result.data)
+
+        found_env_var_key = False
+        found_env_var_id = ""
+        found_env_var_value = ""
+        for variable in result.data:
+            if variable.config_name == env_var_key:
+                found_env_var_key = True
+                found_env_var_id = variable.config_id
+                found_env_var_value = variable.value
+                break
+
+        self.assertTrue(found_env_var_key, f"Env variable {env_var_key} not found.")
+        self.assertTrue(found_env_var_id)
+        self.assertEqual(found_env_var_value, env_var_value)
+
+        result, error = csm_service.update_variable_v2(
+            app=app_name,
+            body=csm_models.ApimodelUpdateConfigurationV2Request.create(
+                value=env_var_value_new
+            ),
+            config_id=found_env_var_id,
+        )
+        self.assertIsNone(error, str(error))
+        self.assertEqual(result.value, env_var_value_new)
+
+        result, error = csm_service.delete_variable_v2(
+            app=app_name,
+            config_id=found_env_var_id,
+        )
+        self.assertIsNone(error, str(error))
+    except AssertionError as e:
+        result, error = csm_service.delete_app_v2(
+            app=app_name,
+            forced="true",
+        )
+        self.assertIsNone(error, str(error))
+
+        raise e from None
 ```
 ## Game Telemetry
 
@@ -1187,8 +1520,12 @@ def test_role_override(self):
     check_count: int = 20
     check_interval: float = 1.0
 
-    def find_and_check_resource_action_from_role(role_id_: str, resource_to_check_: str) -> int:
-        result_, error_ = iam_service.admin_get_role_namespace_permission_v3(role_id=role_id_)
+    def find_and_check_resource_action_from_role(
+        role_id_: str, resource_to_check_: str
+    ) -> int:
+        result_, error_ = iam_service.admin_get_role_namespace_permission_v3(
+            role_id=role_id_
+        )
         self.assertIsNone(error_, error_)
 
         result_action_: int = -1
@@ -1211,7 +1548,9 @@ def test_role_override(self):
             break
     self.assertTrue(user_role_id)
 
-    action = find_and_check_resource_action_from_role(user_role_id, resource_to_check)
+    action = find_and_check_resource_action_from_role(
+        user_role_id, resource_to_check
+    )
     self.assertEqual(action_to_check, action)
 
     # configure role override
@@ -1247,7 +1586,9 @@ def test_role_override(self):
         current_count: int = 0
         while current_count < check_count:
             self.log_info(f"checking updated permissions [{current_count+1}]")
-            action = find_and_check_resource_action_from_role(user_role_id, resource_to_check)
+            action = find_and_check_resource_action_from_role(
+                user_role_id, resource_to_check
+            )
             if action == updated_action_to_check:
                 valid = True
                 break
@@ -1264,6 +1605,77 @@ def test_role_override(self):
         )
         if error:
             self.log_warning(msg=f"failed to deactivate role override: {error}")
+```
+## Inventory
+
+Source: [inventory.py](../tests/integration/api/inventory.py)
+
+### Inventory Crud
+
+```python
+def test_inventory_crud(self):
+    # arrange - inventory configuration
+
+    inventory_config = self.do_create_inventory_config()
+
+    _, error, user_id = self.do_create_user(body=self.model_user_create_request)
+    self.log_warning(
+        msg=f"Failed to set up user. {str(error)}", condition=error is not None
+    )
+    self.user_id = user_id
+
+    # act - create inventory
+
+    body = (
+        ApimodelsCreateInventoryReq()
+        .with_inventory_configuration_code(inventory_config.code)
+        .with_user_id(self.user_id)
+    )
+    result, error = admin_create_inventory(body=body, namespace=self.namespace)
+
+    # assert - create inventory
+
+    self.assertIsNone(error, error)
+    self.assertIsNotNone(result)
+
+    # act - update inventory
+
+    inventory_id = result.id_
+    body = ApimodelsUpdateInventoryReq().with_inc_max_slots(2)
+    result, error = admin_update_inventory(
+        body=body, inventory_id=inventory_id, namespace=self.namespace
+    )
+
+    # assert - update inventory
+
+    self.assertIsNone(error, error)
+    self.assertIsNotNone(result)
+
+    # act - get inventory
+
+    result, error = admin_get_inventory(
+        inventory_id=inventory_id, namespace=self.namespace
+    )
+
+    # assert - get inventory
+
+    self.assertIsNone(error, error)
+    self.assertIsNotNone(result)
+
+    # act - delete inventory
+
+    _, error = delete_inventory(
+        body=ApimodelsDeleteInventoryReq.create(message="deleting"),
+        inventory_id=inventory_id,
+        namespace=self.namespace,
+    )
+
+    # assert - delete inventory
+
+    self.assertIsNone(error, error)
+
+def tearDown(self) -> None:
+    self.do_delete_inventory_config()
 ```
 ## Leaderboard
 
@@ -1543,10 +1955,7 @@ def test_create_policy(self):
     target_policy_id: str = ""
 
     for policy in result:
-        if (
-            policy.base_policy_name == base_policy_name and
-            len(policy.policies) > 0
-        ):
+        if policy.base_policy_name == base_policy_name and len(policy.policies) > 0:
             target_policy_id = policy.policies[0].id_
             break
 
@@ -1561,7 +1970,10 @@ def test_create_policy(self):
         marketing_pref_policy_type_id: str = ""
 
         for policy_type in result:
-            if policy_type.policy_type_name.strip().lower() == "marketing preference":
+            if (
+                policy_type.policy_type_name.strip().lower()
+                == "marketing preference"
+            ):
                 marketing_pref_policy_type_id = policy_type.id_
                 break
 
@@ -1629,11 +2041,13 @@ def test_create_policy(self):
                 content_type="Python Extend SDK Legal Content for ID.",
                 description="Testing Python Extend SDK Legal Endpoints.",
                 locale_code="ID",
-            )
+            ),
         )
 
         if error:
-            self.skipTest(reason=f"Failed to create localized policy version: {error}")
+            self.skipTest(
+                reason=f"Failed to create localized policy version: {error}"
+            )
             return
 
         target_localized_policy_version_id = result.id_
@@ -1642,7 +2056,9 @@ def test_create_policy(self):
 
     self.assertTrue(target_policy_id, target_policy_id)
     self.assertTrue(target_policy_version_id, target_policy_version_id)
-    self.assertTrue(target_localized_policy_version_id, target_localized_policy_version_id)
+    self.assertTrue(
+        target_localized_policy_version_id, target_localized_policy_version_id
+    )
 ```
 ## Lobby
 
@@ -1801,6 +2217,43 @@ async def test_refresh_token_request(self):
 
     # clean up
     token_repo.unregister_observer(self.ws_client)
+```
+## Login Queue
+
+Source: [loginqueue.py](../tests/integration/api/loginqueue.py)
+
+### Admin Get Configuration
+
+```python
+def test_admin_get_configuration(self):
+    from accelbyte_py_sdk.api.loginqueue import admin_get_configuration
+
+    # arrange
+
+    # act
+    config, error = admin_get_configuration()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Admin Update Configuration
+
+```python
+def test_admin_update_configuration(self):
+    from accelbyte_py_sdk.api.loginqueue import admin_update_configuration
+    from accelbyte_py_sdk.api.loginqueue.models import ApimodelsConfigurationRequest
+
+    # arrange
+
+    # act
+    config, error = admin_update_configuration(
+        body=ApimodelsConfigurationRequest.create_from_dict({
+            "maxLoginRate": 100,
+        })
+    )
+
+    # assert
+    self.assertIsNone(error, error)
 ```
 ## Match V2
 
@@ -2388,7 +2841,9 @@ def test_game_session_flow(self):
         template_name = f"python_sdk_template_{rid}"
         error = self.do_create_configuration_template(template_name=template_name)
         if error:
-            self.skipTest(reason=f"unable to create configuration template: {error}")
+            self.skipTest(
+                reason=f"unable to create configuration template: {error}"
+            )
         else:
             self.template_name = template_name
 
@@ -2483,7 +2938,9 @@ def test_party_flow(self):
         template_name = f"python_sdk_template_{rid}"
         error = self.do_create_configuration_template(template_name=template_name)
         if error:
-            self.skipTest(reason=f"unable to create configuration template: {error}")
+            self.skipTest(
+                reason=f"unable to create configuration template: {error}"
+            )
         else:
             self.template_name = template_name
 
@@ -2586,6 +3043,74 @@ def test_party_flow(self):
                 msg=f"Failed to leave party: {error}",
                 condition=error is not None,
             )
+```
+## Session History
+
+Source: [sessionhistory.py](../tests/integration/api/sessionhistory.py)
+
+### Admin Query Game Session Detail
+
+```python
+def test_admin_query_game_session_detail(self):
+    from accelbyte_py_sdk.api.sessionhistory import admin_query_game_session_detail
+
+    # arrange
+
+    # act
+    response, error = admin_query_game_session_detail()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Admin Query Matchmaking Detail
+
+```python
+def test_admin_query_matchmaking_detail(self):
+    from accelbyte_py_sdk.api.sessionhistory import admin_query_matchmaking_detail
+
+    # arrange
+
+    # act
+    response, error = admin_query_matchmaking_detail()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Admin Query Party Detail
+
+```python
+def test_admin_query_party_detail(self):
+    from accelbyte_py_sdk.api.sessionhistory import admin_query_party_detail
+
+    # arrange
+
+    # act
+    response, error = admin_query_party_detail()
+
+    # assert
+    self.assertIsNone(error, error)
+```
+### Query Total Matchmaking Match
+
+```python
+def test_query_total_matchmaking_match(self):
+    self.skipTest(reason="Disabled")
+
+    from accelbyte_py_sdk.api.sessionhistory import query_total_matchmaking_match
+
+    # arrange
+
+    # act
+    fmt = "%Y-%m-%dT%H:%M:%SZ"
+    now = datetime.utcnow()
+    end_date = now.strftime(fmt)
+    start_date = (now - timedelta(days=10)).strftime(fmt)
+    response, error = query_total_matchmaking_match(
+        end_date=end_date, start_date=start_date
+    )
+
+    # assert
+    self.assertIsNone(error, error)
 ```
 ## Social
 
@@ -2791,7 +3316,9 @@ def test_user_stat(self):
     # assert (get_user_stat_items)
     self.assertIsNone(error, error)
     self.assertGreater(len(result.data), 0)
-    self.assertTrue(any(item.stat_code == self.stat_create.stat_code for item in result.data))
+    self.assertTrue(
+        any(item.stat_code == self.stat_create.stat_code for item in result.data)
+    )
 
     # act (inc_user_stat_item_value)
     result, error = inc_user_stat_item_value(
@@ -2901,4 +3428,3 @@ def test_admin_update_tag(self):
     self.assertIsNotNone(result.tag)
     self.assertEqual("MENANDAI", result.tag)
 ```
-

@@ -42,6 +42,7 @@ from ..api.challenge.models import ModelGoalOrder
 from ..api.challenge.models import ModelGoalProgressionResponse
 from ..api.challenge.models import ModelGoalResponse
 from ..api.challenge.models import ModelGoalSchedule
+from ..api.challenge.models import ModelGoalScheduleRequest
 from ..api.challenge.models import ModelListChallengeResponse
 from ..api.challenge.models import ModelListPeriodsResponse
 from ..api.challenge.models import ModelListScheduleByGoalResponse
@@ -104,6 +105,7 @@ def create_model_challenge_response_example() -> ModelChallengeResponse:
     instance.end_after = randomize("int", min_val=1, max_val=1000)
     instance.end_date = randomize()
     instance.repeat_after = randomize("int", min_val=1, max_val=1000)
+    instance.tags = [randomize()]
     return instance
 
 
@@ -166,6 +168,7 @@ def create_model_create_challenge_request_example() -> ModelCreateChallengeReque
     instance.randomized_per_rotation = randomize("bool")
     instance.repeat_after = randomize("int", min_val=1, max_val=1000)
     instance.reset_config = create_model_reset_config_example()
+    instance.tags = [randomize()]
     return instance
 
 
@@ -177,7 +180,7 @@ def create_model_create_goal_request_example() -> ModelCreateGoalRequest:
     instance.description = randomize()
     instance.requirement_groups = [create_model_requirement_example()]
     instance.rewards = [create_model_reward_example()]
-    instance.schedule = create_model_goal_schedule_example()
+    instance.schedule = create_model_goal_schedule_request_example()
     instance.tags = [randomize()]
     return instance
 
@@ -266,6 +269,14 @@ def create_model_goal_response_example() -> ModelGoalResponse:
 
 def create_model_goal_schedule_example() -> ModelGoalSchedule:
     instance = ModelGoalSchedule()
+    instance.order = randomize("int", min_val=1, max_val=1000)
+    instance.start_time = randomize("date")
+    instance.end_time = randomize("date")
+    return instance
+
+
+def create_model_goal_schedule_request_example() -> ModelGoalScheduleRequest:
+    instance = ModelGoalScheduleRequest()
     instance.order = randomize("int", min_val=1, max_val=1000)
     instance.start_time = randomize("date")
     instance.end_time = randomize("date")
@@ -438,6 +449,7 @@ def create_model_update_challenge_request_example() -> ModelUpdateChallengeReque
     instance.reset_config = create_model_reset_config_example()
     instance.rotation = randomize()
     instance.start_date = randomize("date")
+    instance.tags = [randomize()]
     return instance
 
 
@@ -457,7 +469,7 @@ def create_model_update_goal_request_example() -> ModelUpdateGoalRequest:
     instance.is_active = randomize("bool")
     instance.requirement_groups = [create_model_requirement_example()]
     instance.rewards = [create_model_reward_example()]
-    instance.schedule = create_model_goal_schedule_example()
+    instance.schedule = create_model_goal_schedule_request_example()
     instance.tags = [randomize()]
     return instance
 

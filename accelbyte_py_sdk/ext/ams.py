@@ -69,8 +69,8 @@ from ..api.ams.models import ApiImageList
 from ..api.ams.models import ApiImageListItem
 from ..api.ams.models import ApiImageStorage
 from ..api.ams.models import ApiImageUpdate
-from ..api.ams.models import ApiInstanceTypeForNamespaceResponse
-from ..api.ams.models import ApiInstanceTypesForNamespaceResponse
+from ..api.ams.models import ApiInstanceType
+from ..api.ams.models import ApiInstanceTypesResponse
 from ..api.ams.models import ApiPagingInfo
 from ..api.ams.models import ApiPortConfiguration
 from ..api.ams.models import ApiQoSEndpointResponse
@@ -461,7 +461,7 @@ def create_api_image_deployment_profile_example() -> ApiImageDeploymentProfile:
 def create_api_image_details_example() -> ApiImageDetails:
     instance = ApiImageDetails()
     instance.created_at = randomize("date")
-    instance.delete_at = create_api_time_example()
+    instance.delete_at = randomize()
     instance.executable = randomize()
     instance.id_ = randomize()
     instance.is_protected = randomize("bool")
@@ -485,7 +485,7 @@ def create_api_image_list_example() -> ApiImageList:
 def create_api_image_list_item_example() -> ApiImageListItem:
     instance = ApiImageListItem()
     instance.created_at = randomize("date")
-    instance.delete_at = create_api_time_example()
+    instance.delete_at = randomize()
     instance.executable = randomize()
     instance.id_ = randomize()
     instance.is_protected = randomize("bool")
@@ -519,13 +519,12 @@ def create_api_image_update_example() -> ApiImageUpdate:
     return instance
 
 
-def create_api_instance_type_for_namespace_response_example() -> (
-    ApiInstanceTypeForNamespaceResponse
-):
-    instance = ApiInstanceTypeForNamespaceResponse()
+def create_api_instance_type_example() -> ApiInstanceType:
+    instance = ApiInstanceType()
     instance.capacity = [create_api_capacity_example()]
     instance.description = randomize()
     instance.id_ = randomize()
+    instance.is_baremetal = randomize("bool")
     instance.memory_gi_b = randomize("int", min_val=1, max_val=1000)
     instance.min_speed = randomize()
     instance.name = randomize()
@@ -535,13 +534,9 @@ def create_api_instance_type_for_namespace_response_example() -> (
     return instance
 
 
-def create_api_instance_types_for_namespace_response_example() -> (
-    ApiInstanceTypesForNamespaceResponse
-):
-    instance = ApiInstanceTypesForNamespaceResponse()
-    instance.available_instance_types = [
-        create_api_instance_type_for_namespace_response_example()
-    ]
+def create_api_instance_types_response_example() -> ApiInstanceTypesResponse:
+    instance = ApiInstanceTypesResponse()
+    instance.available_instance_types = [create_api_instance_type_example()]
     return instance
 
 

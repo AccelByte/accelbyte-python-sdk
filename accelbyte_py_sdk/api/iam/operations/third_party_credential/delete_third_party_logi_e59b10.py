@@ -37,6 +37,7 @@ class DeleteThirdPartyLoginPlatformDomainV3(Operation):
     """Unregister Third Party Platform Credential's domain (DeleteThirdPartyLoginPlatformDomainV3)
 
     This is the API to unregister 3rd Platform domain.
+    If there is a ssoGroups in request body, then this request wil only delete the sso group from the target domain, it will not delete domain.
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/clients/domain

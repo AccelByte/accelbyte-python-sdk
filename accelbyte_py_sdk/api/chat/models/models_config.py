@@ -70,6 +70,8 @@ class ModelsConfig(Model):
 
         enable_manual_topic_creation: (EnableManualTopicCreation) OPTIONAL bool
 
+        enable_pm_send_platform_id: (enablePmSendPlatformId) OPTIONAL bool
+
         max_chat_message_length: (maxChatMessageLength) OPTIONAL int
 
         use_default_dictionary: (useDefaultDictionary) OPTIONAL bool
@@ -96,6 +98,7 @@ class ModelsConfig(Model):
     default_dictionary_loaded: bool  # OPTIONAL
     enable_clan_chat: bool  # OPTIONAL
     enable_manual_topic_creation: bool  # OPTIONAL
+    enable_pm_send_platform_id: bool  # OPTIONAL
     max_chat_message_length: int  # OPTIONAL
     use_default_dictionary: bool  # OPTIONAL
 
@@ -177,6 +180,10 @@ class ModelsConfig(Model):
 
     def with_enable_manual_topic_creation(self, value: bool) -> ModelsConfig:
         self.enable_manual_topic_creation = value
+        return self
+
+    def with_enable_pm_send_platform_id(self, value: bool) -> ModelsConfig:
+        self.enable_pm_send_platform_id = value
         return self
 
     def with_max_chat_message_length(self, value: int) -> ModelsConfig:
@@ -271,6 +278,10 @@ class ModelsConfig(Model):
             )
         elif include_empty:
             result["EnableManualTopicCreation"] = False
+        if hasattr(self, "enable_pm_send_platform_id"):
+            result["enablePmSendPlatformId"] = bool(self.enable_pm_send_platform_id)
+        elif include_empty:
+            result["enablePmSendPlatformId"] = False
         if hasattr(self, "max_chat_message_length"):
             result["maxChatMessageLength"] = int(self.max_chat_message_length)
         elif include_empty:
@@ -307,6 +318,7 @@ class ModelsConfig(Model):
         default_dictionary_loaded: Optional[bool] = None,
         enable_clan_chat: Optional[bool] = None,
         enable_manual_topic_creation: Optional[bool] = None,
+        enable_pm_send_platform_id: Optional[bool] = None,
         max_chat_message_length: Optional[int] = None,
         use_default_dictionary: Optional[bool] = None,
         **kwargs,
@@ -334,6 +346,8 @@ class ModelsConfig(Model):
             instance.enable_clan_chat = enable_clan_chat
         if enable_manual_topic_creation is not None:
             instance.enable_manual_topic_creation = enable_manual_topic_creation
+        if enable_pm_send_platform_id is not None:
+            instance.enable_pm_send_platform_id = enable_pm_send_platform_id
         if max_chat_message_length is not None:
             instance.max_chat_message_length = max_chat_message_length
         if use_default_dictionary is not None:
@@ -447,6 +461,13 @@ class ModelsConfig(Model):
         elif include_empty:
             instance.enable_manual_topic_creation = False
         if (
+            "enablePmSendPlatformId" in dict_
+            and dict_["enablePmSendPlatformId"] is not None
+        ):
+            instance.enable_pm_send_platform_id = bool(dict_["enablePmSendPlatformId"])
+        elif include_empty:
+            instance.enable_pm_send_platform_id = False
+        if (
             "maxChatMessageLength" in dict_
             and dict_["maxChatMessageLength"] is not None
         ):
@@ -518,6 +539,7 @@ class ModelsConfig(Model):
             "defaultDictionaryLoaded": "default_dictionary_loaded",
             "enableClanChat": "enable_clan_chat",
             "EnableManualTopicCreation": "enable_manual_topic_creation",
+            "enablePmSendPlatformId": "enable_pm_send_platform_id",
             "maxChatMessageLength": "max_chat_message_length",
             "useDefaultDictionary": "use_default_dictionary",
         }
@@ -544,6 +566,7 @@ class ModelsConfig(Model):
             "defaultDictionaryLoaded": False,
             "enableClanChat": False,
             "EnableManualTopicCreation": False,
+            "enablePmSendPlatformId": False,
             "maxChatMessageLength": False,
             "useDefaultDictionary": False,
         }

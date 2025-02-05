@@ -91,6 +91,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         enable_server_license_validation: (EnableServerLicenseValidation) OPTIONAL bool
 
+        google_admin_console_key: (googleAdminConsoleKey) OPTIONAL str
+
         include_puid: (IncludePUID) OPTIONAL bool
 
         logo_url: (LogoURL) OPTIONAL str
@@ -128,6 +130,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     allowed_clients: List[str]  # OPTIONAL
     empty_str_field_list: List[str]  # OPTIONAL
     enable_server_license_validation: bool  # OPTIONAL
+    google_admin_console_key: str  # OPTIONAL
     include_puid: bool  # OPTIONAL
     logo_url: str  # OPTIONAL
     token_claims_mapping: Dict[str, str]  # OPTIONAL
@@ -292,6 +295,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.enable_server_license_validation = value
         return self
 
+    def with_google_admin_console_key(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.google_admin_console_key = value
+        return self
+
     def with_include_puid(
         self, value: bool
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -435,6 +444,10 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             )
         elif include_empty:
             result["EnableServerLicenseValidation"] = False
+        if hasattr(self, "google_admin_console_key"):
+            result["googleAdminConsoleKey"] = str(self.google_admin_console_key)
+        elif include_empty:
+            result["googleAdminConsoleKey"] = ""
         if hasattr(self, "include_puid"):
             result["IncludePUID"] = bool(self.include_puid)
         elif include_empty:
@@ -486,6 +499,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         allowed_clients: Optional[List[str]] = None,
         empty_str_field_list: Optional[List[str]] = None,
         enable_server_license_validation: Optional[bool] = None,
+        google_admin_console_key: Optional[str] = None,
         include_puid: Optional[bool] = None,
         logo_url: Optional[str] = None,
         token_claims_mapping: Optional[Dict[str, str]] = None,
@@ -523,6 +537,8 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.empty_str_field_list = empty_str_field_list
         if enable_server_license_validation is not None:
             instance.enable_server_license_validation = enable_server_license_validation
+        if google_admin_console_key is not None:
+            instance.google_admin_console_key = google_admin_console_key
         if include_puid is not None:
             instance.include_puid = include_puid
         if logo_url is not None:
@@ -675,6 +691,13 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             )
         elif include_empty:
             instance.enable_server_license_validation = False
+        if (
+            "googleAdminConsoleKey" in dict_
+            and dict_["googleAdminConsoleKey"] is not None
+        ):
+            instance.google_admin_console_key = str(dict_["googleAdminConsoleKey"])
+        elif include_empty:
+            instance.google_admin_console_key = ""
         if "IncludePUID" in dict_ and dict_["IncludePUID"] is not None:
             instance.include_puid = bool(dict_["IncludePUID"])
         elif include_empty:
@@ -760,6 +783,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "AllowedClients": "allowed_clients",
             "EmptyStrFieldList": "empty_str_field_list",
             "EnableServerLicenseValidation": "enable_server_license_validation",
+            "googleAdminConsoleKey": "google_admin_console_key",
             "IncludePUID": "include_puid",
             "LogoURL": "logo_url",
             "TokenClaimsMapping": "token_claims_mapping",
@@ -796,6 +820,7 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "AllowedClients": False,
             "EmptyStrFieldList": False,
             "EnableServerLicenseValidation": False,
+            "googleAdminConsoleKey": False,
             "IncludePUID": False,
             "LogoURL": False,
             "TokenClaimsMapping": False,

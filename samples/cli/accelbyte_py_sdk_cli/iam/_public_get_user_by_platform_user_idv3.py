@@ -72,4 +72,4 @@ def public_get_user_by_platform_user_idv3(
 
 
 public_get_user_by_platform_user_idv3.operation_id = "PublicGetUserByPlatformUserIDV3"
-public_get_user_by_platform_user_idv3.is_deprecated = False
+public_get_user_by_platform_user_idv3.is_deprecated = True

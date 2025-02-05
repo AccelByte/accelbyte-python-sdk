@@ -34,7 +34,7 @@ from accelbyte_py_sdk.api.iam import (
     public_upgrade_headless_with_code_v4_forward as public_upgrade_headless_with_code_v4_forward_internal,
 )
 from accelbyte_py_sdk.api.iam.models import (
-    AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4,
+    AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4,
 )
 
 
@@ -60,7 +60,7 @@ def public_upgrade_headless_with_code_v4_forward(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = AccountUpgradeHeadlessAccountWithVerificationCodeRequestV4.create_from_dict(
+            body = AccountUpgradeHeadlessAccountWithVerificationCodeForwardRequestV4.create_from_dict(
                 body_json
             )
         except ValueError as e:

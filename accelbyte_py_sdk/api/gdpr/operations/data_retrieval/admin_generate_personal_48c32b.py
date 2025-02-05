@@ -36,11 +36,12 @@ from ...models import ResponseError
 class AdminGeneratePersonalDataURL(Operation):
     """Generate personal data download url (AdminGeneratePersonalDataURL)
 
-    Generate personal data download url.
-    Scope: account
+    Required permission `ADMIN:NAMESPACE:{namespace}:INFORMATION:USER:{userId} [READ]` and scope `account`
 
-    ### Request Header:
-    - **Content-Type: application/x-www-form-urlencoded**
+
+
+
+    If admin request data for themselves, password is need to be set
 
     Properties:
         url: /gdpr/admin/namespaces/{namespace}/users/{userId}/requests/{requestDate}/generate
@@ -55,7 +56,7 @@ class AdminGeneratePersonalDataURL(Operation):
 
         securities: [BEARER_AUTH]
 
-        password: (password) REQUIRED str in form_data
+        password: (password) OPTIONAL str in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -84,7 +85,7 @@ class AdminGeneratePersonalDataURL(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    password: str  # REQUIRED in [form_data]
+    password: str  # OPTIONAL in [form_data]
     namespace: str  # REQUIRED in [path]
     request_date: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
@@ -251,13 +252,19 @@ class AdminGeneratePersonalDataURL(Operation):
 
     @classmethod
     def create(
-        cls, password: str, namespace: str, request_date: str, user_id: str, **kwargs
+        cls,
+        namespace: str,
+        request_date: str,
+        user_id: str,
+        password: Optional[str] = None,
+        **kwargs,
     ) -> AdminGeneratePersonalDataURL:
         instance = cls()
-        instance.password = password
         instance.namespace = namespace
         instance.request_date = request_date
         instance.user_id = user_id
+        if password is not None:
+            instance.password = password
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -297,7 +304,7 @@ class AdminGeneratePersonalDataURL(Operation):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "password": True,
+            "password": False,
             "namespace": True,
             "requestDate": True,
             "userId": True,

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.25.3"
+__version__ = "7.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,6 +20,7 @@ from .admin_check_third_party_1ad946 import (
 )
 from .delete_third_party_logi_e29526 import DeleteThirdPartyLoginPlatformCredentialV3
 from .delete_third_party_logi_e59b10 import DeleteThirdPartyLoginPlatformDomainV3
+from .partial_update_third_pa_2a5ba9 import PartialUpdateThirdPartyLoginPlatformDomainV3
 from .retrieve_active_oidc_cl_08c243 import RetrieveActiveOIDCClientsPublicV3
 from .retrieve_all_active_thi_cf6883 import (
     RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3,

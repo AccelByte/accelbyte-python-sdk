@@ -107,6 +107,9 @@ from ._retrieve_latest_policies_by_namespace_and_country_public import (
     retrieve_latest_policies_by_namespace_and_country_public,
 )
 from ._check_readiness import check_readiness
+from ._retrieve_latest_policies_by_namespace_and_country_public_1 import (
+    retrieve_latest_policies_by_namespace_and_country_public_1,
+)
 
 
 commands = [
@@ -183,4 +186,5 @@ commands = [
     retrieve_latest_policies_public,
     retrieve_latest_policies_by_namespace_and_country_public,
     check_readiness,
+    retrieve_latest_policies_by_namespace_and_country_public_1,
 ]

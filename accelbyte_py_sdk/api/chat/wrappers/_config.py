@@ -238,6 +238,7 @@ def admin_get_log_config(
     Get Log Configuration
     logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
     socketLogEnabled is use for enable socket log
+    internalAccessLogEnabled is for enabling access log for internal endpoint
     logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
     slowQueryThreshold use for logging slow threshold in time measure is nano second
 
@@ -271,6 +272,7 @@ async def admin_get_log_config_async(
     Get Log Configuration
     logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
     socketLogEnabled is use for enable socket log
+    internalAccessLogEnabled is for enabling access log for internal endpoint
     logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
     slowQueryThreshold use for logging slow threshold in time measure is nano second
 
@@ -308,6 +310,7 @@ def admin_patch_update_log_config(
     Update Log Configuration
     logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
     socketLogEnabled is use for enable socket log
+    internalAccessLogEnabled is for enabling access log for internal endpoint
     logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
     slowQueryThreshold use for logging slow threshold in time measure is nano second
 
@@ -347,6 +350,7 @@ async def admin_patch_update_log_config_async(
     Update Log Configuration
     logLevel use for logging in service, the value can use is trace|debug|info|warning|error|fatal|panic
     socketLogEnabled is use for enable socket log
+    internalAccessLogEnabled is for enabling access log for internal endpoint
     logLevelDB use for logging in DB, the value can use is trace|debug|info|warning|error|fatal|panic
     slowQueryThreshold use for logging slow threshold in time measure is nano second
 

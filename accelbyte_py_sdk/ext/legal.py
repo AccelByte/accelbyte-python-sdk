@@ -56,10 +56,13 @@ from ..api.legal.models import RetrievePolicyPublicResponse
 from ..api.legal.models import RetrievePolicyResponse
 from ..api.legal.models import RetrievePolicyTypeResponse
 from ..api.legal.models import RetrievePolicyVersionResponse
+from ..api.legal.models import RetrieveSimplePolicyPublicResponseV2
 from ..api.legal.models import RetrieveUserAcceptedAgreementResponse
 from ..api.legal.models import RetrieveUserEligibilitiesIndirectResponse
 from ..api.legal.models import RetrieveUserEligibilitiesResponse
 from ..api.legal.models import RetrieveUserInfoCacheStatusResponse
+from ..api.legal.models import SimpleLocalizedPolicyVersionObject
+from ..api.legal.models import SimplePolicyVersionWithLocalizedVersionObject
 from ..api.legal.models import UpdateBasePolicyRequest
 from ..api.legal.models import UpdateBasePolicyRequestV2
 from ..api.legal.models import UpdateBasePolicyResponse
@@ -535,6 +538,29 @@ def create_retrieve_policy_version_response_example() -> RetrievePolicyVersionRe
     return instance
 
 
+def create_retrieve_simple_policy_public_response_v2_example() -> (
+    RetrieveSimplePolicyPublicResponseV2
+):
+    instance = RetrieveSimplePolicyPublicResponseV2()
+    instance.base_policy_id = randomize()
+    instance.country_code = randomize()
+    instance.id_ = randomize()
+    instance.is_default_selection = randomize("bool")
+    instance.is_mandatory = randomize("bool")
+    instance.namespace = randomize("slug")
+    instance.policy_name = randomize()
+    instance.policy_type = randomize()
+    instance.country_group_code = randomize()
+    instance.created_at = randomize("date")
+    instance.description = randomize()
+    instance.policy_versions = [
+        create_simple_policy_version_with_localized_version_object_example()
+    ]
+    instance.tags = [randomize()]
+    instance.updated_at = randomize("date")
+    return instance
+
+
 def create_retrieve_user_accepted_agreement_response_example() -> (
     RetrieveUserAcceptedAgreementResponse
 ):
@@ -592,6 +618,37 @@ def create_retrieve_user_info_cache_status_response_example() -> (
     instance = RetrieveUserInfoCacheStatusResponse()
     instance.last_updated_at = randomize("date")
     instance.namespace = randomize("slug")
+    return instance
+
+
+def create_simple_localized_policy_version_object_example() -> (
+    SimpleLocalizedPolicyVersionObject
+):
+    instance = SimpleLocalizedPolicyVersionObject()
+    instance.id_ = randomize()
+    instance.is_default_selection = randomize("bool")
+    instance.locale_code = randomize()
+    instance.created_at = randomize("date")
+    instance.description = randomize()
+    instance.published_date = randomize("date")
+    instance.status = randomize()
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_simple_policy_version_with_localized_version_object_example() -> (
+    SimplePolicyVersionWithLocalizedVersionObject
+):
+    instance = SimplePolicyVersionWithLocalizedVersionObject()
+    instance.id_ = randomize()
+    instance.created_at = randomize("date")
+    instance.description = randomize()
+    instance.localized_policy_versions = [
+        create_simple_localized_policy_version_object_example()
+    ]
+    instance.published_date = randomize("date")
+    instance.status = randomize()
+    instance.updated_at = randomize("date")
     return instance
 
 

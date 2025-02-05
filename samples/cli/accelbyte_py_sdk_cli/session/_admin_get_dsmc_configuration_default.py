@@ -63,4 +63,4 @@ def admin_get_dsmc_configuration_default(
 
 
 admin_get_dsmc_configuration_default.operation_id = "adminGetDSMCConfigurationDefault"
-admin_get_dsmc_configuration_default.is_deprecated = False
+admin_get_dsmc_configuration_default.is_deprecated = True

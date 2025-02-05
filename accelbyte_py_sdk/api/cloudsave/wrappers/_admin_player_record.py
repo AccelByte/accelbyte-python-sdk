@@ -191,6 +191,15 @@ def admin_bulk_put_player_records_by_key_handler_v1(
     Maximum number of user ids per request is 10.
     Maximum total size of the request payload is 5 MB.
 
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body for this endpoint does not exceed 10 update request or 250 KB of whole request body.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/records/{key}/bulk
 
@@ -246,6 +255,15 @@ async def admin_bulk_put_player_records_by_key_handler_v1_async(
     This endpoints will create new player record or replace the existing player record in bulk.
     Maximum number of user ids per request is 10.
     Maximum total size of the request payload is 5 MB.
+
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body for this endpoint does not exceed 10 update request or 250 KB of whole request body.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/records/{key}/bulk
@@ -1022,14 +1040,6 @@ def admin_post_player_public_record_handler_v1(
     `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Warning: This endpoint is going to deprecate
 
     This endpoint is going to deprecate in the future please don't use it.
@@ -1127,14 +1137,6 @@ async def admin_post_player_public_record_handler_v1_async(
     - Result:
 
     `{ "data1": { "data2": "value", "data3": "new value" }`
-
-
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
@@ -1238,14 +1240,6 @@ def admin_post_player_record_handler_v1(
     `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1274,6 +1268,14 @@ def admin_post_player_record_handler_v1(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -1365,14 +1367,6 @@ async def admin_post_player_record_handler_v1_async(
     `{ "data1": { "data2": "value", "data3": "new value" }`
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1401,6 +1395,14 @@ async def admin_post_player_record_handler_v1_async(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -1480,14 +1482,6 @@ def admin_put_player_public_record_handler_v1(
 
     `{ "data2": "new value" }`
 
-
-
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
@@ -1575,14 +1569,6 @@ async def admin_put_player_public_record_handler_v1_async(
 
     `{ "data2": "new value" }`
 
-
-
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
 
 
     ## Warning: This endpoint is going to deprecate
@@ -1674,14 +1660,6 @@ def admin_put_player_record_handler_v1(
 
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1710,6 +1688,14 @@ def admin_put_player_record_handler_v1(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -1789,14 +1775,6 @@ async def admin_put_player_record_handler_v1_async(
 
 
 
-    ## Restriction
-    This is the restriction of Key Naming for the record:
-    1. Cannot use **"."** as the key name
-    - `{ "data.2": "value" }`
-    2. Cannot use **"$"** as the prefix in key names
-    - `{ "$data": "value" }`
-
-
     ## Record Metadata
 
     Metadata allows user to define the behaviour of the record.
@@ -1825,6 +1803,14 @@ async def admin_put_player_record_handler_v1_async(
     ...
     }
     ```
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body size for this endpoint does not exceed 250 KB.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/{key}
@@ -1887,6 +1873,15 @@ def admin_put_player_records_handler_v1(
     Maximum bulk key limit per request 10.
     Maximum total size of the request payload is 5 MB.
 
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body for this endpoint does not exceed 10 update request or 250 KB of whole request body.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
+
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
 
@@ -1940,6 +1935,15 @@ async def admin_put_player_records_handler_v1_async(
     This endpoints will create new player record or replace the existing player record in bulk.
     Maximum bulk key limit per request 10.
     Maximum total size of the request payload is 5 MB.
+
+
+    ## Recommended Request Body Size
+
+    To ensure optimal performance and efficient resource utilization, it is recommended that the request body for this endpoint does not exceed 10 update request or 250 KB of whole request body.
+
+    ## Exceeding the recommended limit
+
+    While it's possible to handle larger request, exceeding this limit may lead to increased processing time, potential performance degradation, and potential timeout issues.
 
     Properties:
         url: /cloudsave/v1/admin/namespaces/{namespace}/users/{userId}/records/bulk
