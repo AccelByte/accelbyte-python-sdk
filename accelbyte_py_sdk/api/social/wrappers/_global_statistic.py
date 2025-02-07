@@ -83,7 +83,7 @@ def get_global_stat_item_by_stat_code(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGlobalStatItemByStatCode.create(
@@ -136,7 +136,7 @@ async def get_global_stat_item_by_stat_code_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGlobalStatItemByStatCode.create(
@@ -191,7 +191,7 @@ def get_global_stat_item_by_stat_code_1(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGlobalStatItemByStatCode1.create(
@@ -244,7 +244,7 @@ async def get_global_stat_item_by_stat_code_1_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGlobalStatItemByStatCode1.create(
@@ -300,7 +300,7 @@ def get_global_stat_items(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGlobalStatItems.create(
@@ -356,7 +356,7 @@ async def get_global_stat_items_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGlobalStatItems.create(
@@ -417,7 +417,7 @@ def get_global_stat_items_1(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGlobalStatItems1.create(
@@ -476,7 +476,7 @@ async def get_global_stat_items_1_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGlobalStatItems1.create(

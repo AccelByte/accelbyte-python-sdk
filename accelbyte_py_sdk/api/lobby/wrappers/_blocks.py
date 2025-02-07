@@ -79,7 +79,7 @@ def sync_native_blocked_user(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncNativeBlockedUser.create(
@@ -132,7 +132,7 @@ async def sync_native_blocked_user_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncNativeBlockedUser.create(

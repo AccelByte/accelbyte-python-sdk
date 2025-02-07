@@ -93,7 +93,7 @@ def admin_ban_user_bulk_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBanUserBulkV3.create(
@@ -146,7 +146,7 @@ async def admin_ban_user_bulk_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBanUserBulkV3.create(
@@ -207,7 +207,7 @@ def admin_get_banned_users_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetBannedUsersV3.create(
@@ -269,7 +269,7 @@ async def admin_get_banned_users_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetBannedUsersV3.create(
@@ -395,7 +395,7 @@ def admin_get_bans_type_with_namespace_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetBansTypeWithNamespaceV3.create(
@@ -441,7 +441,7 @@ async def admin_get_bans_type_with_namespace_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetBansTypeWithNamespaceV3.create(
@@ -567,7 +567,7 @@ def admin_unban_user_bulk_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUnbanUserBulkV3.create(
@@ -620,7 +620,7 @@ async def admin_unban_user_bulk_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUnbanUserBulkV3.create(

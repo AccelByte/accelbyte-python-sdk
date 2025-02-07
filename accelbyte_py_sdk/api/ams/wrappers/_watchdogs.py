@@ -68,7 +68,7 @@ def local_watchdog_connect(
         200: OK - (OK)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = LocalWatchdogConnect.create(
@@ -112,7 +112,7 @@ async def local_watchdog_connect_async(
         200: OK - (OK)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = LocalWatchdogConnect.create(
@@ -156,7 +156,7 @@ def watchdog_connect(
         200: OK - (OK)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = WatchdogConnect.create(
@@ -198,7 +198,7 @@ async def watchdog_connect_async(
         200: OK - (OK)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = WatchdogConnect.create(

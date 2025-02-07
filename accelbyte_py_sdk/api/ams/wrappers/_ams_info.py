@@ -73,7 +73,7 @@ def info_regions(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = InfoRegions.create(
@@ -117,7 +117,7 @@ async def info_regions_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = InfoRegions.create(
@@ -163,7 +163,7 @@ def info_supported_instances(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = InfoSupportedInstances.create(
@@ -207,7 +207,7 @@ async def info_supported_instances_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = InfoSupportedInstances.create(

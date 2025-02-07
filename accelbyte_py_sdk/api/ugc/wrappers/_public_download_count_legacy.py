@@ -73,7 +73,7 @@ def add_download_count(
         500: Internal Server Error - ResponseError (772902: Unable to add content download: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AddDownloadCount.create(
@@ -121,7 +121,7 @@ async def add_download_count_async(
         500: Internal Server Error - ResponseError (772902: Unable to add content download: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AddDownloadCount.create(

@@ -85,7 +85,7 @@ def create_plugin_config(
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreatePluginConfig.create(
@@ -139,7 +139,7 @@ async def create_plugin_config_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreatePluginConfig.create(
@@ -190,7 +190,7 @@ def delete_plugin_config(
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePluginConfig.create(
@@ -238,7 +238,7 @@ async def delete_plugin_config_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePluginConfig.create(
@@ -288,7 +288,7 @@ def get_plugin_config(
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPluginConfig.create(
@@ -336,7 +336,7 @@ async def get_plugin_config_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPluginConfig.create(
@@ -391,7 +391,7 @@ def update_plugin_config(
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePluginConfig.create(
@@ -445,7 +445,7 @@ async def update_plugin_config_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePluginConfig.create(

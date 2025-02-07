@@ -75,7 +75,7 @@ def get_payment_callback_config(
         404: Not Found - ErrorEntity (33243: Payment callback config for [{namespace}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPaymentCallbackConfig.create(
@@ -121,7 +121,7 @@ async def get_payment_callback_config_async(
         404: Not Found - ErrorEntity (33243: Payment callback config for [{namespace}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPaymentCallbackConfig.create(
@@ -170,7 +170,7 @@ def update_payment_callback_config(
         200: OK - PaymentCallbackConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePaymentCallbackConfig.create(
@@ -218,7 +218,7 @@ async def update_payment_callback_config_async(
         200: OK - PaymentCallbackConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePaymentCallbackConfig.create(

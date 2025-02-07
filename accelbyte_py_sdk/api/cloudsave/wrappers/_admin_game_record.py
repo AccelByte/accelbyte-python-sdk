@@ -82,7 +82,7 @@ def admin_delete_game_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18040: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteGameRecordHandlerV1.create(
@@ -132,7 +132,7 @@ async def admin_delete_game_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18040: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteGameRecordHandlerV1.create(
@@ -184,7 +184,7 @@ def admin_get_game_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (18001: unable to get record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetGameRecordHandlerV1.create(
@@ -234,7 +234,7 @@ async def admin_get_game_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18001: unable to get record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetGameRecordHandlerV1.create(
@@ -363,7 +363,7 @@ def admin_post_game_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (18012: unable to marshal request body | 20000: internal server error | 18013: unable to save record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostGameRecordHandlerV1.create(
@@ -491,7 +491,7 @@ async def admin_post_game_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18012: unable to marshal request body | 20000: internal server error | 18013: unable to save record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostGameRecordHandlerV1.create(
@@ -609,7 +609,7 @@ def admin_put_game_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (18051: unable to marshal request body | 20000: internal server error | 18053: unable to update record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutGameRecordHandlerV1.create(
@@ -725,7 +725,7 @@ async def admin_put_game_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18051: unable to marshal request body | 20000: internal server error | 18053: unable to update record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutGameRecordHandlerV1.create(
@@ -787,7 +787,7 @@ def list_game_records_handler_v1(
         500: Internal Server Error - ModelsResponseError (18001: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListGameRecordsHandlerV1.create(
@@ -849,7 +849,7 @@ async def list_game_records_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18001: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListGameRecordsHandlerV1.create(

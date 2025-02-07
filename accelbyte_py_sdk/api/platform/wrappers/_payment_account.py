@@ -78,7 +78,7 @@ def public_delete_payment_account(
         204: No Content - (delete a payment account successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDeletePaymentAccount.create(
@@ -131,7 +131,7 @@ async def public_delete_payment_account_async(
         204: No Content - (delete a payment account successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDeletePaymentAccount.create(
@@ -180,7 +180,7 @@ def public_get_payment_accounts(
         200: OK - List[PaymentAccount] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetPaymentAccounts.create(
@@ -225,7 +225,7 @@ async def public_get_payment_accounts_async(
         200: OK - List[PaymentAccount] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetPaymentAccounts.create(

@@ -118,7 +118,7 @@ def fulfill_item(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FulfillItem.create(
@@ -173,7 +173,7 @@ async def fulfill_item_async(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FulfillItem.create(
@@ -242,7 +242,7 @@ def fulfill_items(
         409: Conflict - FulfillmentV2Result ()
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FulfillItems.create(
@@ -310,7 +310,7 @@ async def fulfill_items_async(
         409: Conflict - FulfillmentV2Result ()
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FulfillItems.create(
@@ -370,7 +370,7 @@ def fulfill_items_v3(
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FulfillItemsV3.create(
@@ -428,7 +428,7 @@ async def fulfill_items_v3_async(
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30343: Item of sku [{sku}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FulfillItemsV3.create(
@@ -486,7 +486,7 @@ def fulfill_rewards(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FulfillRewards.create(
@@ -541,7 +541,7 @@ async def fulfill_rewards_async(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FulfillRewards.create(
@@ -599,7 +599,7 @@ def fulfill_rewards_v2(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FulfillRewardsV2.create(
@@ -655,7 +655,7 @@ async def fulfill_rewards_v2_async(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FulfillRewardsV2.create(
@@ -710,7 +710,7 @@ def pre_check_fulfill_item(
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PreCheckFulfillItem.create(
@@ -763,7 +763,7 @@ async def pre_check_fulfill_item_async(
         404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PreCheckFulfillItem.create(
@@ -822,7 +822,7 @@ def public_redeem_code(
         429: Too Many Requests - ErrorEntity (20007: too many requests)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicRedeemCode.create(
@@ -879,7 +879,7 @@ async def public_redeem_code_async(
         429: Too Many Requests - ErrorEntity (20007: too many requests)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicRedeemCode.create(
@@ -936,7 +936,7 @@ def query_fulfillment_histories(
         200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryFulfillmentHistories.create(
@@ -993,7 +993,7 @@ async def query_fulfillment_histories_async(
         200: OK - FulfillmentHistoryPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryFulfillmentHistories.create(
@@ -1063,7 +1063,7 @@ def query_fulfillments(
         200: OK - FulfillmentPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryFulfillments.create(
@@ -1134,7 +1134,7 @@ async def query_fulfillments_async(
         200: OK - FulfillmentPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryFulfillments.create(
@@ -1196,7 +1196,7 @@ def redeem_code(
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 20006: optimistic lock | 31177: Permanent item already owned)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RedeemCode.create(
@@ -1251,7 +1251,7 @@ async def redeem_code_async(
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37175: Exceeded max redeem count per code per user [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended | 20006: optimistic lock | 31177: Permanent item already owned)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RedeemCode.create(
@@ -1315,7 +1315,7 @@ def retry_fulfill_items(
         409: Conflict - FulfillmentV2Result ()
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetryFulfillItems.create(
@@ -1377,7 +1377,7 @@ async def retry_fulfill_items_async(
         409: Conflict - FulfillmentV2Result ()
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetryFulfillItems.create(
@@ -1430,7 +1430,7 @@ def retry_fulfill_items_v3(
         404: Not Found - ErrorEntity (38145: Fulfillment with transactionId [{transactionId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetryFulfillItemsV3.create(
@@ -1481,7 +1481,7 @@ async def retry_fulfill_items_v3_async(
         404: Not Found - ErrorEntity (38145: Fulfillment with transactionId [{transactionId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetryFulfillItemsV3.create(
@@ -1545,7 +1545,7 @@ def revoke_items(
         409: Conflict - RevokeFulfillmentV2Result ()
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RevokeItems.create(
@@ -1607,7 +1607,7 @@ async def revoke_items_async(
         409: Conflict - RevokeFulfillmentV2Result ()
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RevokeItems.create(
@@ -1660,7 +1660,7 @@ def revoke_items_v3(
         404: Not Found - ErrorEntity (38145: Fulfillment with transactionId [{transactionId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RevokeItemsV3.create(
@@ -1711,7 +1711,7 @@ async def revoke_items_v3_async(
         404: Not Found - ErrorEntity (38145: Fulfillment with transactionId [{transactionId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RevokeItemsV3.create(

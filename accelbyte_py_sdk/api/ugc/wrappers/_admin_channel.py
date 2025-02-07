@@ -84,7 +84,7 @@ def admin_create_channel(
         500: Internal Server Error - ResponseError (770502: Unable to save channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateChannel.create(
@@ -134,7 +134,7 @@ async def admin_create_channel_async(
         500: Internal Server Error - ResponseError (770502: Unable to save channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateChannel.create(
@@ -187,7 +187,7 @@ def admin_delete_channel(
         500: Internal Server Error - ResponseError (772501: Unable to delete channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteChannel.create(
@@ -239,7 +239,7 @@ async def admin_delete_channel_async(
         500: Internal Server Error - ResponseError (772501: Unable to delete channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteChannel.create(
@@ -299,7 +299,7 @@ def admin_get_channel(
         500: Internal Server Error - ResponseError (770700: Unable get user channels)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetChannel.create(
@@ -359,7 +359,7 @@ async def admin_get_channel_async(
         500: Internal Server Error - ResponseError (770700: Unable get user channels)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetChannel.create(
@@ -420,7 +420,7 @@ def admin_update_channel(
         500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateChannel.create(
@@ -478,7 +478,7 @@ async def admin_update_channel_async(
         500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateChannel.create(
@@ -530,7 +530,7 @@ def single_admin_delete_channel(
         500: Internal Server Error - ResponseError (772501: Unable to delete channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SingleAdminDeleteChannel.create(
@@ -578,7 +578,7 @@ async def single_admin_delete_channel_async(
         500: Internal Server Error - ResponseError (772501: Unable to delete channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SingleAdminDeleteChannel.create(
@@ -631,7 +631,7 @@ def single_admin_get_channel(
         500: Internal Server Error - ResponseError (770700: Unable get user channels)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SingleAdminGetChannel.create(
@@ -683,7 +683,7 @@ async def single_admin_get_channel_async(
         500: Internal Server Error - ResponseError (770700: Unable get user channels)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SingleAdminGetChannel.create(
@@ -739,7 +739,7 @@ def single_admin_update_channel(
         500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SingleAdminUpdateChannel.create(
@@ -793,7 +793,7 @@ async def single_admin_update_channel_async(
         500: Internal Server Error - ResponseError (770602: Unable to save channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SingleAdminUpdateChannel.create(

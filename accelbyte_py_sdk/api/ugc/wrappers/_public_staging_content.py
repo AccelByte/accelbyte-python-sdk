@@ -84,7 +84,7 @@ def delete_user_staging_content_by_id(
         500: Internal Server Error - ResponseError (774418: unable to delete staging content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserStagingContentByID.create(
@@ -138,7 +138,7 @@ async def delete_user_staging_content_by_id_async(
         500: Internal Server Error - ResponseError (774418: unable to delete staging content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserStagingContentByID.create(
@@ -194,7 +194,7 @@ def get_user_staging_content_by_id(
         500: Internal Server Error - ResponseError (774402: unable to get staging content | 774403: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserStagingContentByID.create(
@@ -248,7 +248,7 @@ async def get_user_staging_content_by_id_async(
         500: Internal Server Error - ResponseError (774402: unable to get staging content | 774403: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserStagingContentByID.create(
@@ -313,7 +313,7 @@ def list_user_staging_contents(
         500: Internal Server Error - ResponseError (774302: unable to get staging content | 774303: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListUserStagingContents.create(
@@ -379,7 +379,7 @@ async def list_user_staging_contents_async(
         500: Internal Server Error - ResponseError (774302: unable to get staging content | 774303: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListUserStagingContents.create(
@@ -443,7 +443,7 @@ def update_staging_content(
         500: Internal Server Error - ResponseError (774414: unable to update staging content | 774415: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateStagingContent.create(
@@ -503,7 +503,7 @@ async def update_staging_content_async(
         500: Internal Server Error - ResponseError (774414: unable to update staging content | 774415: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateStagingContent.create(

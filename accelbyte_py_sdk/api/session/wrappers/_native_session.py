@@ -77,7 +77,7 @@ def admin_get_list_native_session(
         403: Forbidden - ResponseError (Forbidden)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetListNativeSession.create(
@@ -131,7 +131,7 @@ async def admin_get_list_native_session_async(
         403: Forbidden - ResponseError (Forbidden)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetListNativeSession.create(

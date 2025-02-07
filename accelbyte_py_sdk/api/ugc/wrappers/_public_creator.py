@@ -75,7 +75,7 @@ def public_get_creator(
         500: Internal Server Error - ResponseError (771103: Unable to get total liked content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetCreator.create(
@@ -123,7 +123,7 @@ async def public_get_creator_async(
         500: Internal Server Error - ResponseError (771103: Unable to get total liked content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetCreator.create(
@@ -182,7 +182,7 @@ def public_search_creator(
         500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSearchCreator.create(
@@ -242,7 +242,7 @@ async def public_search_creator_async(
         500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSearchCreator.create(

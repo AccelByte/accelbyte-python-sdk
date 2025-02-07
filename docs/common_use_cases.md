@@ -2226,6 +2226,9 @@ Source: [loginqueue.py](../tests/integration/api/loginqueue.py)
 
 ```python
 def test_admin_get_configuration(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test not applicable to AGS Starter.")
+
     from accelbyte_py_sdk.api.loginqueue import admin_get_configuration
 
     # arrange
@@ -2240,6 +2243,9 @@ def test_admin_get_configuration(self):
 
 ```python
 def test_admin_update_configuration(self):
+    if self.using_ags_starter:
+        self.skipTest(reason="Test not applicable to AGS Starter.")
+
     from accelbyte_py_sdk.api.loginqueue import admin_update_configuration
     from accelbyte_py_sdk.api.loginqueue.models import ApimodelsConfigurationRequest
 
@@ -3428,3 +3434,4 @@ def test_admin_update_tag(self):
     self.assertIsNotNone(result.tag)
     self.assertEqual("MENANDAI", result.tag)
 ```
+

@@ -76,7 +76,7 @@ def admin_anonymize_user_achievement(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAnonymizeUserAchievement.create(
@@ -128,7 +128,7 @@ async def admin_anonymize_user_achievement_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAnonymizeUserAchievement.create(

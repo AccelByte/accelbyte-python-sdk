@@ -86,7 +86,7 @@ def create_group(
         500: Internal Server Error - ResponseError (772102: Unable to create group)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateGroup.create(
@@ -138,7 +138,7 @@ async def create_group_async(
         500: Internal Server Error - ResponseError (772102: Unable to create group)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateGroup.create(
@@ -192,7 +192,7 @@ def delete_group(
         500: Internal Server Error - ResponseError (772402: Unable delete groups)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteGroup.create(
@@ -244,7 +244,7 @@ async def delete_group_async(
         500: Internal Server Error - ResponseError (772402: Unable delete groups)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteGroup.create(
@@ -298,7 +298,7 @@ def get_group(
         500: Internal Server Error - ResponseError (773001: Unable get group)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGroup.create(
@@ -350,7 +350,7 @@ async def get_group_async(
         500: Internal Server Error - ResponseError (773001: Unable get group)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGroup.create(
@@ -412,7 +412,7 @@ def get_group_content(
         500: Internal Server Error - ResponseError (773102: Unable to get ugc content: database error | 770901: Unable to get ugc content: database error/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGroupContent.create(
@@ -474,7 +474,7 @@ async def get_group_content_async(
         500: Internal Server Error - ResponseError (773102: Unable to get ugc content: database error | 770901: Unable to get ugc content: database error/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGroupContent.create(
@@ -533,7 +533,7 @@ def get_groups(
         500: Internal Server Error - ResponseError (772302: Unable get groups)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGroups.create(
@@ -589,7 +589,7 @@ async def get_groups_async(
         500: Internal Server Error - ResponseError (772302: Unable get groups)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGroups.create(
@@ -652,7 +652,7 @@ def public_get_group_contents_v2(
         500: Internal Server Error - ResponseError (773102: Unable to get ugc content: database error | 770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetGroupContentsV2.create(
@@ -714,7 +714,7 @@ async def public_get_group_contents_v2_async(
         500: Internal Server Error - ResponseError (773102: Unable to get ugc content: database error | 770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetGroupContentsV2.create(
@@ -775,7 +775,7 @@ def update_group(
         500: Internal Server Error - ResponseError (772202: Unable to update group)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateGroup.create(
@@ -833,7 +833,7 @@ async def update_group_async(
         500: Internal Server Error - ResponseError (772202: Unable to update group)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateGroup.create(

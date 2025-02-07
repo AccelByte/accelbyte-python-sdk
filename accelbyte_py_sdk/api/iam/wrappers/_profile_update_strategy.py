@@ -89,7 +89,7 @@ def admin_get_profile_update_strategy_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetProfileUpdateStrategyV3.create(
@@ -140,7 +140,7 @@ async def admin_get_profile_update_strategy_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetProfileUpdateStrategyV3.create(
@@ -197,7 +197,7 @@ def admin_update_profile_update_strategy_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateProfileUpdateStrategyV3.create(
@@ -253,7 +253,7 @@ async def admin_update_profile_update_strategy_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateProfileUpdateStrategyV3.create(
@@ -307,7 +307,7 @@ def public_get_profile_update_strategy_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetProfileUpdateStrategyV3.create(
@@ -358,7 +358,7 @@ async def public_get_profile_update_strategy_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetProfileUpdateStrategyV3.create(

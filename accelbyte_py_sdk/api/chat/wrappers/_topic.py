@@ -141,7 +141,7 @@ def admin_add_topic_member(
         200: OK - MessageActionAddUserToTopicResult
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAddTopicMember.create(
@@ -191,7 +191,7 @@ async def admin_add_topic_member_async(
         200: OK - MessageActionAddUserToTopicResult
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAddTopicMember.create(
@@ -248,7 +248,7 @@ def admin_ban_topic_members(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBanTopicMembers.create(
@@ -302,7 +302,7 @@ async def admin_ban_topic_members_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBanTopicMembers.create(
@@ -357,7 +357,7 @@ def admin_channel_topic_info(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminChannelTopicInfo.create(
@@ -409,7 +409,7 @@ async def admin_channel_topic_info_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminChannelTopicInfo.create(
@@ -467,7 +467,7 @@ def admin_channel_topic_list(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminChannelTopicList.create(
@@ -525,7 +525,7 @@ async def admin_channel_topic_list_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminChannelTopicList.create(
@@ -576,7 +576,7 @@ def admin_channel_topic_summary(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminChannelTopicSummary.create(
@@ -622,7 +622,7 @@ async def admin_channel_topic_summary_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminChannelTopicSummary.create(
@@ -703,7 +703,7 @@ def admin_chat_history(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminChatHistory.create(
@@ -793,7 +793,7 @@ async def admin_chat_history_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminChatHistory.create(
@@ -847,7 +847,7 @@ def admin_create_namespace_topic(
         200: OK - ApiCreateTopicResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateNamespaceTopic.create(
@@ -889,7 +889,7 @@ async def admin_create_namespace_topic_async(
         200: OK - ApiCreateTopicResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateNamespaceTopic.create(
@@ -933,7 +933,7 @@ def admin_create_topic(
         200: OK - ApiCreateTopicResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateTopic.create(
@@ -975,7 +975,7 @@ async def admin_create_topic_async(
         200: OK - ApiCreateTopicResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateTopic.create(
@@ -1030,7 +1030,7 @@ def admin_delete_chat(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteChat.create(
@@ -1084,7 +1084,7 @@ async def admin_delete_chat_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteChat.create(
@@ -1129,7 +1129,7 @@ def admin_delete_topic(
         200: OK - MessageActionDeleteTopicResult
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteTopic.create(
@@ -1171,7 +1171,7 @@ async def admin_delete_topic_async(
         200: OK - MessageActionDeleteTopicResult
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteTopic.create(
@@ -1226,7 +1226,7 @@ def admin_filter_chat_message(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminFilterChatMessage.create(
@@ -1280,7 +1280,7 @@ async def admin_filter_chat_message_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminFilterChatMessage.create(
@@ -1357,7 +1357,7 @@ def admin_query_topic(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminQueryTopic.create(
@@ -1439,7 +1439,7 @@ async def admin_query_topic_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminQueryTopic.create(
@@ -1520,7 +1520,7 @@ def admin_query_topic_log(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminQueryTopicLog.create(
@@ -1598,7 +1598,7 @@ async def admin_query_topic_log_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminQueryTopicLog.create(
@@ -1672,7 +1672,7 @@ def admin_query_users_topic(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminQueryUsersTopic.create(
@@ -1742,7 +1742,7 @@ async def admin_query_users_topic_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminQueryUsersTopic.create(
@@ -1794,7 +1794,7 @@ def admin_remove_topic_member(
         200: OK - MessageActionAddUserToTopicResult
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminRemoveTopicMember.create(
@@ -1840,7 +1840,7 @@ async def admin_remove_topic_member_async(
         200: OK - MessageActionAddUserToTopicResult
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminRemoveTopicMember.create(
@@ -1896,7 +1896,7 @@ def admin_send_chat(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSendChat.create(
@@ -1950,7 +1950,7 @@ async def admin_send_chat_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSendChat.create(
@@ -2031,7 +2031,7 @@ def admin_topic_chat_history(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminTopicChatHistory.create(
@@ -2118,7 +2118,7 @@ async def admin_topic_chat_history_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminTopicChatHistory.create(
@@ -2185,7 +2185,7 @@ def admin_topic_list(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminTopicList.create(
@@ -2243,7 +2243,7 @@ async def admin_topic_list_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminTopicList.create(
@@ -2312,7 +2312,7 @@ def admin_topic_members(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminTopicMembers.create(
@@ -2382,7 +2382,7 @@ async def admin_topic_members_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminTopicMembers.create(
@@ -2439,7 +2439,7 @@ def admin_topic_shards(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminTopicShards.create(
@@ -2489,7 +2489,7 @@ async def admin_topic_shards_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminTopicShards.create(
@@ -2544,7 +2544,7 @@ def admin_unban_topic_members(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUnbanTopicMembers.create(
@@ -2598,7 +2598,7 @@ async def admin_unban_topic_members_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUnbanTopicMembers.create(
@@ -2646,7 +2646,7 @@ def admin_update_topic(
         200: OK - ApiCreateTopicResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateTopic.create(
@@ -2692,7 +2692,7 @@ async def admin_update_topic_async(
         200: OK - ApiCreateTopicResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateTopic.create(
@@ -2748,7 +2748,7 @@ def public_ban_topic_members(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicBanTopicMembers.create(
@@ -2802,7 +2802,7 @@ async def public_ban_topic_members_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicBanTopicMembers.create(
@@ -2864,7 +2864,7 @@ def public_chat_history(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicChatHistory.create(
@@ -2926,7 +2926,7 @@ async def public_chat_history_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicChatHistory.create(
@@ -2984,7 +2984,7 @@ def public_delete_chat(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDeleteChat.create(
@@ -3038,7 +3038,7 @@ async def public_delete_chat_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDeleteChat.create(
@@ -3088,7 +3088,7 @@ def public_get_muted_topics(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMutedTopics.create(
@@ -3134,7 +3134,7 @@ async def public_get_muted_topics_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMutedTopics.create(
@@ -3188,7 +3188,7 @@ def public_mute_user(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicMuteUser.create(
@@ -3242,7 +3242,7 @@ async def public_mute_user_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicMuteUser.create(
@@ -3301,7 +3301,7 @@ def public_topic_list(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicTopicList.create(
@@ -3359,7 +3359,7 @@ async def public_topic_list_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicTopicList.create(
@@ -3416,7 +3416,7 @@ def public_unban_topic_members(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUnbanTopicMembers.create(
@@ -3470,7 +3470,7 @@ async def public_unban_topic_members_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUnbanTopicMembers.create(
@@ -3526,7 +3526,7 @@ def public_unmute_user(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUnmuteUser.create(
@@ -3580,7 +3580,7 @@ async def public_unmute_user_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUnmuteUser.create(

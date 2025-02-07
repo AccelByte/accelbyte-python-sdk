@@ -95,7 +95,7 @@ def bulk_create_mock_tickets(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkCreateMockTickets.create(
@@ -154,7 +154,7 @@ async def bulk_create_mock_tickets_async(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkCreateMockTickets.create(
@@ -211,7 +211,7 @@ def clean_all_mocks(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CleanAllMocks.create(
@@ -265,7 +265,7 @@ async def clean_all_mocks_async(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CleanAllMocks.create(
@@ -326,7 +326,7 @@ def create_mock_tickets(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateMockTickets.create(
@@ -386,7 +386,7 @@ async def create_mock_tickets_async(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateMockTickets.create(
@@ -443,7 +443,7 @@ def get_all_mock_matches(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllMockMatches.create(
@@ -497,7 +497,7 @@ async def get_all_mock_matches_async(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllMockMatches.create(
@@ -553,7 +553,7 @@ def get_all_mock_tickets(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllMockTickets.create(
@@ -607,7 +607,7 @@ async def get_all_mock_tickets_async(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllMockTickets.create(
@@ -666,7 +666,7 @@ def get_mock_matches_by_timestamp(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMockMatchesByTimestamp.create(
@@ -724,7 +724,7 @@ async def get_mock_matches_by_timestamp_async(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMockMatchesByTimestamp.create(
@@ -784,7 +784,7 @@ def get_mock_tickets_by_timestamp(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMockTicketsByTimestamp.create(
@@ -842,7 +842,7 @@ async def get_mock_tickets_by_timestamp_async(
         500: Internal Server Error - ResponseErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMockTicketsByTimestamp.create(

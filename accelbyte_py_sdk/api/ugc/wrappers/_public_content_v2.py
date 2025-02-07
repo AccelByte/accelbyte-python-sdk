@@ -117,7 +117,7 @@ def delete_content_screenshot_v2(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteContentScreenshotV2.create(
@@ -177,7 +177,7 @@ async def delete_content_screenshot_v2_async(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteContentScreenshotV2.create(
@@ -230,7 +230,7 @@ def public_bulk_get_content_by_idv2(
         500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator | 773902: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicBulkGetContentByIDV2.create(
@@ -279,7 +279,7 @@ async def public_bulk_get_content_by_idv2_async(
         500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator | 773902: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicBulkGetContentByIDV2.create(
@@ -337,7 +337,7 @@ def public_create_content_v2(
         500: Internal Server Error - ResponseError (770102: Unable to check user ban status/Unable to save ugc content: unable to get channel | 770105: Unable to save ugc content: failed generate upload URL | 770103: Unable to save ugc content: shareCode exceed the limit)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCreateContentV2.create(
@@ -395,7 +395,7 @@ async def public_create_content_v2_async(
         500: Internal Server Error - ResponseError (770102: Unable to check user ban status/Unable to save ugc content: unable to get channel | 770105: Unable to save ugc content: failed generate upload URL | 770103: Unable to save ugc content: shareCode exceed the limit)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCreateContentV2.create(
@@ -453,7 +453,7 @@ def public_delete_content_by_share_code_v2(
         500: Internal Server Error - ResponseError (772701: Unable to delete content/Unable to update user liked count/Unable to delete like state/Unable to delete like state)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDeleteContentByShareCodeV2.create(
@@ -509,7 +509,7 @@ async def public_delete_content_by_share_code_v2_async(
         500: Internal Server Error - ResponseError (772701: Unable to delete content/Unable to update user liked count/Unable to delete like state/Unable to delete like state)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDeleteContentByShareCodeV2.create(
@@ -567,7 +567,7 @@ def public_delete_content_v2(
         500: Internal Server Error - ResponseError (772701: Unable to delete content/Unable to update user liked count/Unable to delete like state/Unable to delete like state)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDeleteContentV2.create(
@@ -623,7 +623,7 @@ async def public_delete_content_v2_async(
         500: Internal Server Error - ResponseError (772701: Unable to delete content/Unable to update user liked count/Unable to delete like state/Unable to delete like state)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDeleteContentV2.create(
@@ -688,7 +688,7 @@ def public_generate_content_upload_urlv2(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 772605: Unable to save ugc content: failed generate upload URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGenerateContentUploadURLV2.create(
@@ -752,7 +752,7 @@ async def public_generate_content_upload_urlv2_async(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 772605: Unable to save ugc content: failed generate upload URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGenerateContentUploadURLV2.create(
@@ -808,7 +808,7 @@ def public_get_content_bulk_by_share_codes_v2(
         500: Internal Server Error - ResponseError (773901: Unable to get ugc content: database/Unable to get creator | 773902: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetContentBulkByShareCodesV2.create(
@@ -859,7 +859,7 @@ async def public_get_content_bulk_by_share_codes_v2_async(
         500: Internal Server Error - ResponseError (773901: Unable to get ugc content: database/Unable to get creator | 773902: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetContentBulkByShareCodesV2.create(
@@ -921,7 +921,7 @@ def public_get_content_by_channel_idv2(
         500: Internal Server Error - ResponseError (770805: Unable to get ugc content: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetContentByChannelIDV2.create(
@@ -985,7 +985,7 @@ async def public_get_content_by_channel_idv2_async(
         500: Internal Server Error - ResponseError (770805: Unable to get ugc content: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetContentByChannelIDV2.create(
@@ -1039,7 +1039,7 @@ def public_get_content_by_idv2(
         500: Internal Server Error - ResponseError (773201: Unable to get ugc content/Unable to get creator/Unable to get included group | 770301: Unable to get ugc content/Unable to get creator | 773203: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetContentByIDV2.create(
@@ -1087,7 +1087,7 @@ async def public_get_content_by_idv2_async(
         500: Internal Server Error - ResponseError (773201: Unable to get ugc content/Unable to get creator/Unable to get included group | 770301: Unable to get ugc content/Unable to get creator | 773203: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetContentByIDV2.create(
@@ -1137,7 +1137,7 @@ def public_get_content_by_share_code_v2(
         500: Internal Server Error - ResponseError (770301: Unable to get ugc content/Unable to get creator | 770303: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetContentByShareCodeV2.create(
@@ -1185,7 +1185,7 @@ async def public_get_content_by_share_code_v2_async(
         500: Internal Server Error - ResponseError (770301: Unable to get ugc content/Unable to get creator | 770303: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetContentByShareCodeV2.create(
@@ -1244,7 +1244,7 @@ def public_get_content_by_user_idv2(
         500: Internal Server Error - ResponseError (770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetContentByUserIDV2.create(
@@ -1304,7 +1304,7 @@ async def public_get_content_by_user_idv2_async(
         500: Internal Server Error - ResponseError (770901: Unable to get ugc content: database error/Unable to get creator | 770801: Unable to get ugc content: database/Unable to get creator | 770903: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetContentByUserIDV2.create(
@@ -1394,7 +1394,7 @@ def public_list_content_v2(
         500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListContentV2.create(
@@ -1486,7 +1486,7 @@ async def public_list_content_v2_async(
         500: Internal Server Error - ResponseError (770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListContentV2.create(
@@ -1558,7 +1558,7 @@ def public_update_content_by_share_code_v2(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateContentByShareCodeV2.create(
@@ -1624,7 +1624,7 @@ async def public_update_content_by_share_code_v2_async(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateContentByShareCodeV2.create(
@@ -1690,7 +1690,7 @@ def public_update_content_file_location(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 774003: unable to update content file location)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateContentFileLocation.create(
@@ -1754,7 +1754,7 @@ async def public_update_content_file_location_async(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 774003: unable to update content file location)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateContentFileLocation.create(
@@ -1820,7 +1820,7 @@ def public_update_content_v2(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateContentV2.create(
@@ -1884,7 +1884,7 @@ async def public_update_content_v2_async(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateContentV2.create(
@@ -1956,7 +1956,7 @@ def update_content_share_code_v2(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateContentShareCodeV2.create(
@@ -2026,7 +2026,7 @@ async def update_content_share_code_v2_async(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateContentShareCodeV2.create(
@@ -2089,7 +2089,7 @@ def update_screenshots_v2(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateScreenshotsV2.create(
@@ -2149,7 +2149,7 @@ async def update_screenshots_v2_async(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateScreenshotsV2.create(
@@ -2212,7 +2212,7 @@ def upload_content_screenshot_v2(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 772605: Unable to save ugc content: failed generate upload URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UploadContentScreenshotV2.create(
@@ -2273,7 +2273,7 @@ async def upload_content_screenshot_v2_async(
         500: Internal Server Error - ResponseError (772602: Unable to check user ban status/Unable to get updated ugc content | 772605: Unable to save ugc content: failed generate upload URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UploadContentScreenshotV2.create(

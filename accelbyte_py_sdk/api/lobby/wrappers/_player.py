@@ -102,7 +102,7 @@ def admin_bulk_block_players_v1(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkBlockPlayersV1.create(
@@ -156,7 +156,7 @@ async def admin_bulk_block_players_v1_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkBlockPlayersV1.create(
@@ -212,7 +212,7 @@ def admin_bulk_unblock_players_v1(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkUnblockPlayersV1.create(
@@ -266,7 +266,7 @@ async def admin_bulk_unblock_players_v1_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkUnblockPlayersV1.create(
@@ -318,7 +318,7 @@ def admin_get_all_player_session_attribute(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetAllPlayerSessionAttribute.create(
@@ -367,7 +367,7 @@ async def admin_get_all_player_session_attribute_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetAllPlayerSessionAttribute.create(
@@ -421,7 +421,7 @@ def admin_get_bulk_player_blocked_players_v1(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetBulkPlayerBlockedPlayersV1.create(
@@ -473,7 +473,7 @@ async def admin_get_bulk_player_blocked_players_v1_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetBulkPlayerBlockedPlayersV1.create(
@@ -524,7 +524,7 @@ def admin_get_lobby_ccu(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetLobbyCCU.create(
@@ -572,7 +572,7 @@ async def admin_get_lobby_ccu_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetLobbyCCU.create(
@@ -625,7 +625,7 @@ def admin_get_player_blocked_by_players_v1(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerBlockedByPlayersV1.create(
@@ -677,7 +677,7 @@ async def admin_get_player_blocked_by_players_v1_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerBlockedByPlayersV1.create(
@@ -731,7 +731,7 @@ def admin_get_player_blocked_players_v1(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerBlockedPlayersV1.create(
@@ -783,7 +783,7 @@ async def admin_get_player_blocked_players_v1_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerBlockedPlayersV1.create(
@@ -841,7 +841,7 @@ def admin_get_player_session_attribute(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerSessionAttribute.create(
@@ -898,7 +898,7 @@ async def admin_get_player_session_attribute_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerSessionAttribute.create(
@@ -957,7 +957,7 @@ def admin_set_player_session_attribute(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSetPlayerSessionAttribute.create(
@@ -1014,7 +1014,7 @@ async def admin_set_player_session_attribute_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSetPlayerSessionAttribute.create(
@@ -1071,7 +1071,7 @@ def public_get_player_blocked_by_players_v1(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetPlayerBlockedByPlayersV1.create(
@@ -1124,7 +1124,7 @@ async def public_get_player_blocked_by_players_v1_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetPlayerBlockedByPlayersV1.create(
@@ -1179,7 +1179,7 @@ def public_get_player_blocked_players_v1(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetPlayerBlockedPlayersV1.create(
@@ -1232,7 +1232,7 @@ async def public_get_player_blocked_players_v1_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetPlayerBlockedPlayersV1.create(
@@ -1288,7 +1288,7 @@ def public_player_block_players_v1(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicPlayerBlockPlayersV1.create(
@@ -1343,7 +1343,7 @@ async def public_player_block_players_v1_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicPlayerBlockPlayersV1.create(
@@ -1399,7 +1399,7 @@ def public_unblock_player_v1(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUnblockPlayerV1.create(
@@ -1453,7 +1453,7 @@ async def public_unblock_player_v1_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUnblockPlayerV1.create(

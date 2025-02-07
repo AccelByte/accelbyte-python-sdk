@@ -122,7 +122,7 @@ def create_app_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateAppV2.create(
@@ -206,7 +206,7 @@ async def create_app_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateAppV2.create(
@@ -269,7 +269,7 @@ def delete_app_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAppV2.create(
@@ -330,7 +330,7 @@ async def delete_app_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAppV2.create(
@@ -393,7 +393,7 @@ def get_app_list_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAppListV2.create(
@@ -455,7 +455,7 @@ async def get_app_list_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAppListV2.create(
@@ -535,7 +535,7 @@ def get_app_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAppV2.create(
@@ -611,7 +611,7 @@ async def get_app_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAppV2.create(
@@ -667,7 +667,7 @@ def start_app_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = StartAppV2.create(
@@ -721,7 +721,7 @@ async def start_app_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = StartAppV2.create(
@@ -777,7 +777,7 @@ def stop_app_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = StopAppV2.create(
@@ -831,7 +831,7 @@ async def stop_app_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = StopAppV2.create(
@@ -890,7 +890,7 @@ def update_app_resources_resource_limit_form_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateAppResourcesResourceLimitFormV2.create(
@@ -948,7 +948,7 @@ async def update_app_resources_resource_limit_form_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateAppResourcesResourceLimitFormV2.create(
@@ -1008,7 +1008,7 @@ def update_app_resources_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateAppResourcesV2.create(
@@ -1066,7 +1066,7 @@ async def update_app_resources_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateAppResourcesV2.create(
@@ -1126,7 +1126,7 @@ def update_app_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateAppV2.create(
@@ -1184,7 +1184,7 @@ async def update_app_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateAppV2.create(

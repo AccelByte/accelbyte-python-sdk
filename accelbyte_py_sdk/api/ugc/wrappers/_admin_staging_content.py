@@ -86,7 +86,7 @@ def admin_approve_staging_content(
         500: Internal Server Error - ResponseError (774407: unable to approve staging content | 774408: nable to save ugc content: shareCode exceed the limit)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminApproveStagingContent.create(
@@ -142,7 +142,7 @@ async def admin_approve_staging_content_async(
         500: Internal Server Error - ResponseError (774407: unable to approve staging content | 774408: nable to save ugc content: shareCode exceed the limit)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminApproveStagingContent.create(
@@ -195,7 +195,7 @@ def admin_get_staging_content_by_id(
         500: Internal Server Error - ResponseError (774402: unable to get staging content | 774403: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetStagingContentByID.create(
@@ -245,7 +245,7 @@ async def admin_get_staging_content_by_id_async(
         500: Internal Server Error - ResponseError (774402: unable to get staging content | 774403: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetStagingContentByID.create(
@@ -306,7 +306,7 @@ def admin_list_staging_contents(
         500: Internal Server Error - ResponseError (774302: unable to get staging content | 774303: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListStagingContents.create(
@@ -368,7 +368,7 @@ async def admin_list_staging_contents_async(
         500: Internal Server Error - ResponseError (774302: unable to get staging content | 774303: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListStagingContents.create(
@@ -435,7 +435,7 @@ def admin_list_user_staging_contents(
         500: Internal Server Error - ResponseError (774302: unable to get staging content | 774303: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListUserStagingContents.create(
@@ -501,7 +501,7 @@ async def admin_list_user_staging_contents_async(
         500: Internal Server Error - ResponseError (774302: unable to get staging content | 774303: unable to generate presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListUserStagingContents.create(

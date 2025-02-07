@@ -116,7 +116,7 @@ def get_statistic(
         200: OK - CatalogChangeStatistics (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetStatistic.create(
@@ -186,7 +186,7 @@ async def get_statistic_async(
         200: OK - CatalogChangeStatistics (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetStatistic.create(
@@ -244,7 +244,7 @@ def publish_all(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublishAll.create(
@@ -294,7 +294,7 @@ async def publish_all_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublishAll.create(
@@ -348,7 +348,7 @@ def publish_selected(
         409: Conflict - ErrorEntity (30375: Item id [{itemId}] of sku [{sku}] is duplicate with un-published deleted item in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublishSelected.create(
@@ -400,7 +400,7 @@ async def publish_selected_async(
         409: Conflict - ErrorEntity (30375: Item id [{itemId}] of sku [{sku}] is duplicate with un-published deleted item in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublishSelected.create(
@@ -484,7 +484,7 @@ def query_changes(
         200: OK - CatalogChangePagingResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryChanges.create(
@@ -578,7 +578,7 @@ async def query_changes_async(
         200: OK - CatalogChangePagingResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryChanges.create(
@@ -636,7 +636,7 @@ def select_all_records(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SelectAllRecords.create(
@@ -680,7 +680,7 @@ async def select_all_records_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SelectAllRecords.create(
@@ -747,7 +747,7 @@ def select_all_records_by_criteria(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SelectAllRecordsByCriteria.create(
@@ -819,7 +819,7 @@ async def select_all_records_by_criteria_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SelectAllRecordsByCriteria.create(
@@ -875,7 +875,7 @@ def select_record(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30041: Changelog [{changelogId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SelectRecord.create(
@@ -923,7 +923,7 @@ async def select_record_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30041: Changelog [{changelogId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SelectRecord.create(
@@ -970,7 +970,7 @@ def unselect_all_records(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UnselectAllRecords.create(
@@ -1014,7 +1014,7 @@ async def unselect_all_records_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UnselectAllRecords.create(
@@ -1065,7 +1065,7 @@ def unselect_record(
         409: Conflict - ErrorEntity (30071: Can't unselect item [{itemId}] when the item which is bound to is already selected in namespace [{namespace}] | 30072: Can't unselect category [{categoryPath}] when item with this category is already selected in namespace [{namespace}] | 30073: Can't unselect store change | 30074: Can't unselect subscription's content [{itemId}] when subscription is already selected in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UnselectRecord.create(
@@ -1115,7 +1115,7 @@ async def unselect_record_async(
         409: Conflict - ErrorEntity (30071: Can't unselect item [{itemId}] when the item which is bound to is already selected in namespace [{namespace}] | 30072: Can't unselect category [{categoryPath}] when item with this category is already selected in namespace [{namespace}] | 30073: Can't unselect store change | 30074: Can't unselect subscription's content [{itemId}] when subscription is already selected in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UnselectRecord.create(

@@ -88,7 +88,7 @@ def admin_submit_report(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSubmitReport.create(
@@ -143,7 +143,7 @@ async def admin_submit_report_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSubmitReport.create(
@@ -204,7 +204,7 @@ def list_reports(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListReports.create(
@@ -267,7 +267,7 @@ async def list_reports_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListReports.create(

@@ -83,7 +83,7 @@ def public_list_inventories(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListInventories.create(
@@ -143,7 +143,7 @@ async def public_list_inventories_async(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListInventories.create(

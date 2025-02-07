@@ -79,7 +79,7 @@ def indirect_bulk_accept_versioned_policy(
         201: Created - AcceptAgreementResponse (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = IndirectBulkAcceptVersionedPolicy.create(
@@ -137,7 +137,7 @@ async def indirect_bulk_accept_versioned_policy_async(
         201: Created - AcceptAgreementResponse (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = IndirectBulkAcceptVersionedPolicy.create(

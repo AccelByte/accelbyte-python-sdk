@@ -99,7 +99,7 @@ def admin_bulk_get_admin_game_record_v1(
         500: Internal Server Error - ModelsResponseError (18170: unable to get record | 18172: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkGetAdminGameRecordV1.create(
@@ -151,7 +151,7 @@ async def admin_bulk_get_admin_game_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18170: unable to get record | 18172: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkGetAdminGameRecordV1.create(
@@ -208,7 +208,7 @@ def admin_bulk_get_admin_player_record_v1(
         500: Internal Server Error - ModelsResponseError (18176: unable to get record | 18178: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkGetAdminPlayerRecordV1.create(
@@ -264,7 +264,7 @@ async def admin_bulk_get_admin_player_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18176: unable to get record | 18178: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkGetAdminPlayerRecordV1.create(
@@ -317,7 +317,7 @@ def admin_delete_admin_game_record_v1(
         500: Internal Server Error - ModelsResponseError (18142: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAdminGameRecordV1.create(
@@ -367,7 +367,7 @@ async def admin_delete_admin_game_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18142: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAdminGameRecordV1.create(
@@ -422,7 +422,7 @@ def admin_delete_admin_player_record_v1(
         500: Internal Server Error - ModelsResponseError (18154: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAdminPlayerRecordV1.create(
@@ -476,7 +476,7 @@ async def admin_delete_admin_player_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18154: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAdminPlayerRecordV1.create(
@@ -529,7 +529,7 @@ def admin_get_admin_game_record_v1(
         500: Internal Server Error - ModelsResponseError (18139: unable to get record | 18138: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetAdminGameRecordV1.create(
@@ -579,7 +579,7 @@ async def admin_get_admin_game_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18139: unable to get record | 18138: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetAdminGameRecordV1.create(
@@ -634,7 +634,7 @@ def admin_get_admin_player_record_v1(
         500: Internal Server Error - ModelsResponseError (18151: unable to get record | 18157: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetAdminPlayerRecordV1.create(
@@ -688,7 +688,7 @@ async def admin_get_admin_player_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18151: unable to get record | 18157: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetAdminPlayerRecordV1.create(
@@ -750,7 +750,7 @@ def admin_list_admin_game_record_v1(
         500: Internal Server Error - ModelsResponseError (18139: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListAdminGameRecordV1.create(
@@ -812,7 +812,7 @@ async def admin_list_admin_game_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18139: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListAdminGameRecordV1.create(
@@ -879,7 +879,7 @@ def admin_list_admin_user_records_v1(
         500: Internal Server Error - ModelsResponseError (18160: unable to retrieve list of key records)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListAdminUserRecordsV1.create(
@@ -945,7 +945,7 @@ async def admin_list_admin_user_records_v1_async(
         500: Internal Server Error - ModelsResponseError (18160: unable to retrieve list of key records)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListAdminUserRecordsV1.create(
@@ -1073,7 +1073,7 @@ def admin_post_admin_game_record_v1(
         500: Internal Server Error - ModelsResponseError (18135: unable to marshal request body | 20000: internal server error | 18013: unable to save record | 18165: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostAdminGameRecordV1.create(
@@ -1196,7 +1196,7 @@ async def admin_post_admin_game_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18135: unable to marshal request body | 20000: internal server error | 18013: unable to save record | 18165: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostAdminGameRecordV1.create(
@@ -1324,7 +1324,7 @@ def admin_post_player_admin_record_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18033: unable to save record | 18163: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostPlayerAdminRecordV1.create(
@@ -1451,7 +1451,7 @@ async def admin_post_player_admin_record_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18033: unable to save record | 18163: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostPlayerAdminRecordV1.create(
@@ -1564,7 +1564,7 @@ def admin_put_admin_game_record_v1(
         500: Internal Server Error - ModelsResponseError (18145: unable to marshal request body | 20000: internal server error | 18164: unable to decode record | 18147: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutAdminGameRecordV1.create(
@@ -1674,7 +1674,7 @@ async def admin_put_admin_game_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18145: unable to marshal request body | 20000: internal server error | 18164: unable to decode record | 18147: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutAdminGameRecordV1.create(
@@ -1790,7 +1790,7 @@ def admin_put_admin_player_record_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record | 18162: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutAdminPlayerRecordV1.create(
@@ -1905,7 +1905,7 @@ async def admin_put_admin_player_record_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record | 18162: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutAdminPlayerRecordV1.create(
@@ -1964,7 +1964,7 @@ def bulk_get_admin_player_record_by_user_ids_v1(
         500: Internal Server Error - ModelsResponseError (18185: unable to get record | 18187: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetAdminPlayerRecordByUserIdsV1.create(
@@ -2020,7 +2020,7 @@ async def bulk_get_admin_player_record_by_user_ids_v1_async(
         500: Internal Server Error - ModelsResponseError (18185: unable to get record | 18187: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetAdminPlayerRecordByUserIdsV1.create(

@@ -77,7 +77,7 @@ def get_xbl_user_achievements(
         400: Bad Request - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetXblUserAchievements.create(
@@ -125,7 +125,7 @@ async def get_xbl_user_achievements_async(
         400: Bad Request - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetXblUserAchievements.create(
@@ -177,7 +177,7 @@ def unlock_steam_user_achievement(
         404: Not Found - ErrorEntity (39244: Steam config does not exist | 39245: Steam app id does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UnlockSteamUserAchievement.create(
@@ -227,7 +227,7 @@ async def unlock_steam_user_achievement_async(
         404: Not Found - ErrorEntity (39244: Steam config does not exist | 39245: Steam app id does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UnlockSteamUserAchievement.create(
@@ -277,7 +277,7 @@ def update_xbl_user_achievement(
         400: Bad Request - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateXblUserAchievement.create(
@@ -325,7 +325,7 @@ async def update_xbl_user_achievement_async(
         400: Bad Request - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateXblUserAchievement.create(

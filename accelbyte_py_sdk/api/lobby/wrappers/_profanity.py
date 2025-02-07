@@ -106,7 +106,7 @@ def admin_add_profanity_filter_into_list(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAddProfanityFilterIntoList.create(
@@ -163,7 +163,7 @@ async def admin_add_profanity_filter_into_list_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAddProfanityFilterIntoList.create(
@@ -222,7 +222,7 @@ def admin_add_profanity_filters(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAddProfanityFilters.create(
@@ -279,7 +279,7 @@ async def admin_add_profanity_filters_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAddProfanityFilters.create(
@@ -335,7 +335,7 @@ def admin_create_profanity_list(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateProfanityList.create(
@@ -388,7 +388,7 @@ async def admin_create_profanity_list_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateProfanityList.create(
@@ -443,7 +443,7 @@ def admin_debug_profanity_filters(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDebugProfanityFilters.create(
@@ -496,7 +496,7 @@ async def admin_debug_profanity_filters_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDebugProfanityFilters.create(
@@ -554,7 +554,7 @@ def admin_delete_profanity_filter(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteProfanityFilter.create(
@@ -611,7 +611,7 @@ async def admin_delete_profanity_filter_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteProfanityFilter.create(
@@ -667,7 +667,7 @@ def admin_delete_profanity_list(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteProfanityList.create(
@@ -720,7 +720,7 @@ async def admin_delete_profanity_list_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteProfanityList.create(
@@ -775,7 +775,7 @@ def admin_get_profanity_list_filters_v1(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetProfanityListFiltersV1.create(
@@ -828,7 +828,7 @@ async def admin_get_profanity_list_filters_v1_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetProfanityListFiltersV1.create(
@@ -880,7 +880,7 @@ def admin_get_profanity_lists(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetProfanityLists.create(
@@ -929,7 +929,7 @@ async def admin_get_profanity_lists_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetProfanityLists.create(
@@ -980,7 +980,7 @@ def admin_get_profanity_rule(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetProfanityRule.create(
@@ -1029,7 +1029,7 @@ async def admin_get_profanity_rule_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetProfanityRule.create(
@@ -1086,7 +1086,7 @@ def admin_import_profanity_filters_from_file(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminImportProfanityFiltersFromFile.create(
@@ -1143,7 +1143,7 @@ async def admin_import_profanity_filters_from_file_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminImportProfanityFiltersFromFile.create(
@@ -1199,7 +1199,7 @@ def admin_set_profanity_rule_for_namespace(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSetProfanityRuleForNamespace.create(
@@ -1252,7 +1252,7 @@ async def admin_set_profanity_rule_for_namespace_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSetProfanityRuleForNamespace.create(
@@ -1310,7 +1310,7 @@ def admin_update_profanity_list(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateProfanityList.create(
@@ -1367,7 +1367,7 @@ async def admin_update_profanity_list_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateProfanityList.create(
@@ -1423,7 +1423,7 @@ def admin_verify_message_profanity_response(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminVerifyMessageProfanityResponse.create(
@@ -1476,7 +1476,7 @@ async def admin_verify_message_profanity_response_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminVerifyMessageProfanityResponse.create(

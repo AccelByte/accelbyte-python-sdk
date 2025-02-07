@@ -98,7 +98,7 @@ def create_localized_policy_version_1(
         409: Conflict - ErrorEntity (40044: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateLocalizedPolicyVersion1.create(
@@ -148,7 +148,7 @@ async def create_localized_policy_version_1_async(
         409: Conflict - ErrorEntity (40044: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateLocalizedPolicyVersion1.create(
@@ -200,7 +200,7 @@ def delete_localized_policy(
         400: Bad Request - ErrorEntity (40075: errors.net.accelbyte.platform.legal.localized_policy_version_is_published_and_already_accepted_by_user | 40076: errors.net.accelbyte.platform.legal.localized_policy_version_is_active)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteLocalizedPolicy.create(
@@ -249,7 +249,7 @@ async def delete_localized_policy_async(
         400: Bad Request - ErrorEntity (40075: errors.net.accelbyte.platform.legal.localized_policy_version_is_published_and_already_accepted_by_user | 40076: errors.net.accelbyte.platform.legal.localized_policy_version_is_active)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteLocalizedPolicy.create(
@@ -298,7 +298,7 @@ def request_presigned_url_1(
         400: Bad Request - ErrorEntity (40034: errors.net.accelbyte.platform.legal.invalid_file_type | 40037: errors.net.accelbyte.platform.legal.invalid_localized_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RequestPresignedURL1.create(
@@ -346,7 +346,7 @@ async def request_presigned_url_1_async(
         400: Bad Request - ErrorEntity (40034: errors.net.accelbyte.platform.legal.invalid_file_type | 40037: errors.net.accelbyte.platform.legal.invalid_localized_policy_version | 40042: errors.net.accelbyte.platform.legal.policy_version_freezed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RequestPresignedURL1.create(
@@ -391,7 +391,7 @@ def retrieve_localized_policy_versions_1(
         200: OK - List[RetrieveLocalizedPolicyVersionResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveLocalizedPolicyVersions1.create(
@@ -433,7 +433,7 @@ async def retrieve_localized_policy_versions_1_async(
         200: OK - List[RetrieveLocalizedPolicyVersionResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveLocalizedPolicyVersions1.create(
@@ -479,7 +479,7 @@ def retrieve_single_localized_policy_version_1(
         404: Not Found - ErrorEntity (2912: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveSingleLocalizedPolicyVersion1.create(
@@ -523,7 +523,7 @@ async def retrieve_single_localized_policy_version_1_async(
         404: Not Found - ErrorEntity (2912: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveSingleLocalizedPolicyVersion1.create(
@@ -572,7 +572,7 @@ def retrieve_single_localized_policy_version_3(
         404: Not Found - ErrorEntity (40038: errors.net.accelbyte.platform.legal.localized_policy_version_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveSingleLocalizedPolicyVersion3.create(
@@ -619,7 +619,7 @@ async def retrieve_single_localized_policy_version_3_async(
         404: Not Found - ErrorEntity (40038: errors.net.accelbyte.platform.legal.localized_policy_version_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveSingleLocalizedPolicyVersion3.create(
@@ -663,7 +663,7 @@ def set_default_policy_1(
         200: OK - (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SetDefaultPolicy1.create(
@@ -705,7 +705,7 @@ async def set_default_policy_1_async(
         200: OK - (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SetDefaultPolicy1.create(
@@ -754,7 +754,7 @@ def update_localized_policy_version_1(
         400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateLocalizedPolicyVersion1.create(
@@ -802,7 +802,7 @@ async def update_localized_policy_version_1_async(
         400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateLocalizedPolicyVersion1.create(

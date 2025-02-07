@@ -81,7 +81,7 @@ def download_exported_agreements_in_csv(
         404: Not Found - ErrorEntity (40047: Exported agreements for exportId [{exportId}] not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DownloadExportedAgreementsInCSV.create(
@@ -126,7 +126,7 @@ async def download_exported_agreements_in_csv_async(
         404: Not Found - ErrorEntity (40047: Exported agreements for exportId [{exportId}] not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DownloadExportedAgreementsInCSV.create(
@@ -185,7 +185,7 @@ def initiate_export_agreements_to_csv(
         409: Conflict - ErrorEntity (40071: Previous export still running for namespace [{namespace}] with exportId [{exportId}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = InitiateExportAgreementsToCSV.create(
@@ -244,7 +244,7 @@ async def initiate_export_agreements_to_csv_async(
         409: Conflict - ErrorEntity (40071: Previous export still running for namespace [{namespace}] with exportId [{exportId}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = InitiateExportAgreementsToCSV.create(
@@ -293,7 +293,7 @@ def retrieve_accepted_agreements_1(
         200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAcceptedAgreements1.create(
@@ -339,7 +339,7 @@ async def retrieve_accepted_agreements_1_async(
         200: OK - List[RetrieveAcceptedAgreementResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAcceptedAgreements1.create(
@@ -384,7 +384,7 @@ def retrieve_accepted_agreements_for_multi_users(
         200: OK - List[UserAgreementsResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAcceptedAgreementsForMultiUsers.create(
@@ -426,7 +426,7 @@ async def retrieve_accepted_agreements_for_multi_users_async(
         200: OK - List[UserAgreementsResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAcceptedAgreementsForMultiUsers.create(
@@ -484,7 +484,7 @@ def retrieve_all_users_by_policy_version_1(
         404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllUsersByPolicyVersion1.create(
@@ -544,7 +544,7 @@ async def retrieve_all_users_by_policy_version_1_async(
         404: Not Found - ErrorEntity (40035: errors.net.accelbyte.platform.legal.policy_version_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllUsersByPolicyVersion1.create(

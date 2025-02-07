@@ -101,7 +101,7 @@ def admin_claim_user_rewards(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminClaimUserRewards.create(
@@ -157,7 +157,7 @@ async def admin_claim_user_rewards_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminClaimUserRewards.create(
@@ -220,7 +220,7 @@ def admin_claim_user_rewards_by_goal_code(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminClaimUserRewardsByGoalCode.create(
@@ -282,7 +282,7 @@ async def admin_claim_user_rewards_by_goal_code_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminClaimUserRewardsByGoalCode.create(
@@ -338,7 +338,7 @@ def admin_claim_users_rewards(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminClaimUsersRewards.create(
@@ -390,7 +390,7 @@ async def admin_claim_users_rewards_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminClaimUsersRewards.create(
@@ -458,7 +458,7 @@ def admin_get_user_rewards(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetUserRewards.create(
@@ -530,7 +530,7 @@ async def admin_get_user_rewards_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetUserRewards.create(
@@ -590,7 +590,7 @@ def public_claim_user_rewards(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicClaimUserRewards.create(
@@ -642,7 +642,7 @@ async def public_claim_user_rewards_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicClaimUserRewards.create(
@@ -701,7 +701,7 @@ def public_claim_user_rewards_by_goal_code(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicClaimUserRewardsByGoalCode.create(
@@ -759,7 +759,7 @@ async def public_claim_user_rewards_by_goal_code_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicClaimUserRewardsByGoalCode.create(
@@ -825,7 +825,7 @@ def public_get_user_rewards(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserRewards.create(
@@ -893,7 +893,7 @@ async def public_get_user_rewards_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserRewards.create(

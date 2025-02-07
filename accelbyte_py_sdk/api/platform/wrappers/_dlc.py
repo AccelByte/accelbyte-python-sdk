@@ -103,7 +103,7 @@ def delete_dlc_item_config(
         204: No Content - (Delete successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteDLCItemConfig.create(
@@ -141,7 +141,7 @@ async def delete_dlc_item_config_async(
         204: No Content - (Delete successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteDLCItemConfig.create(
@@ -181,7 +181,7 @@ def delete_platform_dlc_config(
         204: No Content - (Delete successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePlatformDLCConfig.create(
@@ -219,7 +219,7 @@ async def delete_platform_dlc_config_async(
         204: No Content - (Delete successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePlatformDLCConfig.create(
@@ -264,7 +264,7 @@ def ge_dlc_durable_reward_short_map(
         404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}] | 39441: Platform dlc config cannot be found in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GeDLCDurableRewardShortMap.create(
@@ -308,7 +308,7 @@ async def ge_dlc_durable_reward_short_map_async(
         404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}] | 39441: Platform dlc config cannot be found in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GeDLCDurableRewardShortMap.create(
@@ -351,7 +351,7 @@ def get_dlc_item_config(
         404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetDLCItemConfig.create(
@@ -391,7 +391,7 @@ async def get_dlc_item_config_async(
         404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetDLCItemConfig.create(
@@ -433,7 +433,7 @@ def get_platform_dlc_config(
         404: Not Found - ErrorEntity (39341: Platform DLC config cannot be found in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPlatformDLCConfig.create(
@@ -473,7 +473,7 @@ async def get_platform_dlc_config_async(
         404: Not Found - ErrorEntity (39341: Platform DLC config cannot be found in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPlatformDLCConfig.create(
@@ -529,7 +529,7 @@ def get_user_dlc(
         200: OK - List[UserDLCRecord] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserDLC.create(
@@ -587,7 +587,7 @@ async def get_user_dlc_async(
         200: OK - List[UserDLCRecord] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserDLC.create(
@@ -640,7 +640,7 @@ def get_user_dlc_by_platform(
         200: OK - UserDLC (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserDLCByPlatform.create(
@@ -689,7 +689,7 @@ async def get_user_dlc_by_platform_async(
         200: OK - UserDLC (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserDLCByPlatform.create(
@@ -827,7 +827,7 @@ def public_sync_psn_dlc_inventory(
         404: Not Found - ErrorEntity (39143: PlayStation IAP config not found in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSyncPsnDlcInventory.create(
@@ -879,7 +879,7 @@ async def public_sync_psn_dlc_inventory_async(
         404: Not Found - ErrorEntity (39143: PlayStation IAP config not found in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSyncPsnDlcInventory.create(
@@ -933,7 +933,7 @@ def public_sync_psn_dlc_inventory_with_multiple_service_labels(
         404: Not Found - ErrorEntity (39143: PlayStation IAP config not found in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSyncPsnDlcInventoryWithMultipleServiceLabels.create(
@@ -985,7 +985,7 @@ async def public_sync_psn_dlc_inventory_with_multiple_service_labels_async(
         404: Not Found - ErrorEntity (39143: PlayStation IAP config not found in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSyncPsnDlcInventoryWithMultipleServiceLabels.create(
@@ -1037,7 +1037,7 @@ def sync_epic_game_dlc(
         404: Not Found - ErrorEntity (39147: Epic IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncEpicGameDLC.create(
@@ -1087,7 +1087,7 @@ async def sync_epic_game_dlc_async(
         404: Not Found - ErrorEntity (39147: Epic IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncEpicGameDLC.create(
@@ -1136,7 +1136,7 @@ def sync_oculus_dlc(
         404: Not Found - ErrorEntity (39146: Oculus IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncOculusDLC.create(
@@ -1182,7 +1182,7 @@ async def sync_oculus_dlc_async(
         404: Not Found - ErrorEntity (39146: Oculus IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncOculusDLC.create(
@@ -1233,7 +1233,7 @@ def sync_steam_dlc(
         404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncSteamDLC.create(
@@ -1283,7 +1283,7 @@ async def sync_steam_dlc_async(
         404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncSteamDLC.create(
@@ -1335,7 +1335,7 @@ def sync_xbox_dlc(
         404: Not Found - ErrorEntity (39145: XBox IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncXboxDLC.create(
@@ -1385,7 +1385,7 @@ async def sync_xbox_dlc_async(
         404: Not Found - ErrorEntity (39145: XBox IAP config not found in namespace [{namespace}].)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncXboxDLC.create(
@@ -1438,7 +1438,7 @@ def update_dlc_item_config(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateDLCItemConfig.create(
@@ -1488,7 +1488,7 @@ async def update_dlc_item_config_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateDLCItemConfig.create(
@@ -1554,7 +1554,7 @@ def update_platform_dlc_config(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePlatformDLCConfig.create(
@@ -1618,7 +1618,7 @@ async def update_platform_dlc_config_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePlatformDLCConfig.create(

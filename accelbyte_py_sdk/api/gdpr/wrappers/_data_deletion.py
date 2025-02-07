@@ -90,7 +90,7 @@ def admin_cancel_user_account_deletion_request(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCancelUserAccountDeletionRequest.create(
@@ -143,7 +143,7 @@ async def admin_cancel_user_account_deletion_request_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCancelUserAccountDeletionRequest.create(
@@ -210,7 +210,7 @@ def admin_get_list_deletion_data_request(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetListDeletionDataRequest.create(
@@ -279,7 +279,7 @@ async def admin_get_list_deletion_data_request_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetListDeletionDataRequest.create(
@@ -336,7 +336,7 @@ def admin_get_user_account_deletion_request(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetUserAccountDeletionRequest.create(
@@ -387,7 +387,7 @@ async def admin_get_user_account_deletion_request_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetUserAccountDeletionRequest.create(
@@ -442,7 +442,7 @@ def admin_submit_user_account_deletion_request(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSubmitUserAccountDeletionRequest.create(
@@ -495,7 +495,7 @@ async def admin_submit_user_account_deletion_request_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSubmitUserAccountDeletionRequest.create(
@@ -625,7 +625,7 @@ def public_cancel_user_account_deletion_request(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCancelUserAccountDeletionRequest.create(
@@ -677,7 +677,7 @@ async def public_cancel_user_account_deletion_request_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCancelUserAccountDeletionRequest.create(
@@ -801,7 +801,7 @@ def public_get_user_account_deletion_status(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserAccountDeletionStatus.create(
@@ -851,7 +851,7 @@ async def public_get_user_account_deletion_status_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserAccountDeletionStatus.create(
@@ -1030,7 +1030,7 @@ def public_submit_user_account_deletion_request(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSubmitUserAccountDeletionRequest.create(
@@ -1097,7 +1097,7 @@ async def public_submit_user_account_deletion_request_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSubmitUserAccountDeletionRequest.create(

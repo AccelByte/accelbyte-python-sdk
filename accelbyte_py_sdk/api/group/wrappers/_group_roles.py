@@ -105,7 +105,7 @@ def create_member_role_admin_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateMemberRoleAdminV1.create(
@@ -167,7 +167,7 @@ async def create_member_role_admin_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateMemberRoleAdminV1.create(
@@ -223,7 +223,7 @@ def delete_member_role_admin_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteMemberRoleAdminV1.create(
@@ -277,7 +277,7 @@ async def delete_member_role_admin_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteMemberRoleAdminV1.create(
@@ -340,7 +340,7 @@ def delete_member_role_public_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteMemberRolePublicV1.create(
@@ -402,7 +402,7 @@ async def delete_member_role_public_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteMemberRolePublicV1.create(
@@ -469,7 +469,7 @@ def delete_member_role_public_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteMemberRolePublicV2.create(
@@ -535,7 +535,7 @@ async def delete_member_role_public_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteMemberRolePublicV2.create(
@@ -594,7 +594,7 @@ def get_member_roles_list_admin_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMemberRolesListAdminV1.create(
@@ -650,7 +650,7 @@ async def get_member_roles_list_admin_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMemberRolesListAdminV1.create(
@@ -710,7 +710,7 @@ def get_member_roles_list_public_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMemberRolesListPublicV1.create(
@@ -768,7 +768,7 @@ async def get_member_roles_list_public_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMemberRolesListPublicV1.create(
@@ -826,7 +826,7 @@ def get_member_roles_list_public_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMemberRolesListPublicV2.create(
@@ -882,7 +882,7 @@ async def get_member_roles_list_public_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMemberRolesListPublicV2.create(
@@ -939,7 +939,7 @@ def get_single_member_role_admin_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSingleMemberRoleAdminV1.create(
@@ -993,7 +993,7 @@ async def get_single_member_role_admin_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSingleMemberRoleAdminV1.create(
@@ -1052,7 +1052,7 @@ def update_member_role_admin_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateMemberRoleAdminV1.create(
@@ -1110,7 +1110,7 @@ async def update_member_role_admin_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateMemberRoleAdminV1.create(
@@ -1180,7 +1180,7 @@ def update_member_role_permission_admin_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateMemberRolePermissionAdminV1.create(
@@ -1248,7 +1248,7 @@ async def update_member_role_permission_admin_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateMemberRolePermissionAdminV1.create(
@@ -1310,7 +1310,7 @@ def update_member_role_public_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateMemberRolePublicV1.create(
@@ -1370,7 +1370,7 @@ async def update_member_role_public_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateMemberRolePublicV1.create(
@@ -1435,7 +1435,7 @@ def update_member_role_public_v2(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateMemberRolePublicV2.create(
@@ -1499,7 +1499,7 @@ async def update_member_role_public_v2_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateMemberRolePublicV2.create(

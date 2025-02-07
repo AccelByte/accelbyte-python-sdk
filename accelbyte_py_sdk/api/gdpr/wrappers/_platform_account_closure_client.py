@@ -103,7 +103,7 @@ def admin_delete_platform_account_closure_client(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeletePlatformAccountClosureClient.create(
@@ -161,7 +161,7 @@ async def admin_delete_platform_account_closure_client_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeletePlatformAccountClosureClient.create(
@@ -222,7 +222,7 @@ def admin_get_platform_account_closure_client(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlatformAccountClosureClient.create(
@@ -281,7 +281,7 @@ async def admin_get_platform_account_closure_client_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlatformAccountClosureClient.create(
@@ -338,7 +338,7 @@ def admin_get_platform_account_closure_clients(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlatformAccountClosureClients.create(
@@ -392,7 +392,7 @@ async def admin_get_platform_account_closure_clients_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlatformAccountClosureClients.create(
@@ -453,7 +453,7 @@ def admin_mock_platform_account_closure_data(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminMockPlatformAccountClosureData.create(
@@ -514,7 +514,7 @@ async def admin_mock_platform_account_closure_data_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminMockPlatformAccountClosureData.create(
@@ -577,7 +577,7 @@ def admin_update_platform_account_closure_client(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdatePlatformAccountClosureClient.create(
@@ -638,7 +638,7 @@ async def admin_update_platform_account_closure_client_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdatePlatformAccountClosureClient.create(
@@ -693,7 +693,7 @@ def admin_validate_xbox_bp_cert_file(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminValidateXboxBPCertFile.create(
@@ -745,7 +745,7 @@ async def admin_validate_xbox_bp_cert_file_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminValidateXboxBPCertFile.create(

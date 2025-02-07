@@ -80,7 +80,7 @@ def public_list_tags_handler_v1(
         500: Internal Server Error - ModelsResponseError (18502: unable to list tags)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListTagsHandlerV1.create(
@@ -136,7 +136,7 @@ async def public_list_tags_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18502: unable to list tags)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListTagsHandlerV1.create(

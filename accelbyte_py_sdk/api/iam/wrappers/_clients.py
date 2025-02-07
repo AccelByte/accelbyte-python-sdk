@@ -222,7 +222,7 @@ def admin_add_client_permissions_v3(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAddClientPermissionsV3.create(
@@ -278,7 +278,7 @@ async def admin_add_client_permissions_v3_async(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAddClientPermissionsV3.create(
@@ -362,7 +362,7 @@ def admin_bulk_update_clients_v3(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkUpdateClientsV3.create(
@@ -443,7 +443,7 @@ async def admin_bulk_update_clients_v3_async(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkUpdateClientsV3.create(
@@ -533,7 +533,7 @@ def admin_create_client_v3(
         409: Conflict - RestErrorResponse (10364: client exists)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateClientV3.create(
@@ -621,7 +621,7 @@ async def admin_create_client_v3_async(
         409: Conflict - RestErrorResponse (10364: client exists)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateClientV3.create(
@@ -681,7 +681,7 @@ def admin_delete_client_permission_v3(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteClientPermissionV3.create(
@@ -741,7 +741,7 @@ async def admin_delete_client_permission_v3_async(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteClientPermissionV3.create(
@@ -797,7 +797,7 @@ def admin_delete_client_v3(
         409: Conflict - RestErrorResponse (20009: request_conflict)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteClientV3.create(
@@ -849,7 +849,7 @@ async def admin_delete_client_v3_async(
         409: Conflict - RestErrorResponse (20009: request_conflict)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteClientV3.create(
@@ -914,7 +914,7 @@ def admin_get_clients_by_namespace_v3(
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetClientsByNamespaceV3.create(
@@ -982,7 +982,7 @@ async def admin_get_clients_by_namespace_v3_async(
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetClientsByNamespaceV3.create(
@@ -1039,7 +1039,7 @@ def admin_get_clientsby_namespaceby_idv3(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetClientsbyNamespacebyIDV3.create(
@@ -1089,7 +1089,7 @@ async def admin_get_clientsby_namespaceby_idv3_async(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetClientsbyNamespacebyIDV3.create(
@@ -1146,7 +1146,7 @@ def admin_update_client_permission_v3(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateClientPermissionV3.create(
@@ -1202,7 +1202,7 @@ async def admin_update_client_permission_v3_async(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateClientPermissionV3.create(
@@ -1258,7 +1258,7 @@ def admin_update_client_secret_v3(
         404: Not Found - (Data not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateClientSecretV3.create(
@@ -1312,7 +1312,7 @@ async def admin_update_client_secret_v3_async(
         404: Not Found - (Data not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateClientSecretV3.create(
@@ -1399,7 +1399,7 @@ def admin_update_client_v3(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateClientV3.create(
@@ -1484,7 +1484,7 @@ async def admin_update_client_v3_async(
         404: Not Found - RestErrorResponse (10365: client not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateClientV3.create(
@@ -1632,7 +1632,7 @@ def create_client_by_namespace(
         409: Conflict - (Client exists)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateClientByNamespace.create(
@@ -1685,7 +1685,7 @@ async def create_client_by_namespace_async(
         409: Conflict - (Client exists)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateClientByNamespace.create(
@@ -1822,7 +1822,7 @@ def delete_client_by_namespace(
         404: Not Found - (Data not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteClientByNamespace.create(
@@ -1873,7 +1873,7 @@ async def delete_client_by_namespace_async(
         404: Not Found - (Data not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteClientByNamespace.create(
@@ -2183,7 +2183,7 @@ def get_clientsby_namespace(
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetClientsbyNamespace.create(
@@ -2228,7 +2228,7 @@ async def get_clientsby_namespace_async(
         403: Forbidden - RestErrorResponse (20013: insufficient permissions)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetClientsbyNamespace.create(

@@ -76,7 +76,7 @@ def get_tag(
         500: Internal Server Error - ResponseError (771502: Unable get user tags)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTag.create(
@@ -128,7 +128,7 @@ async def get_tag_async(
         500: Internal Server Error - ResponseError (771502: Unable get user tags)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTag.create(

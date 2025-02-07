@@ -80,7 +80,7 @@ def admin_get_configs(
         500: Internal Server Error - ResponseError (774205: Unable to get configs)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetConfigs.create(
@@ -134,7 +134,7 @@ async def admin_get_configs_async(
         500: Internal Server Error - ResponseError (774205: Unable to get configs)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetConfigs.create(
@@ -193,7 +193,7 @@ def admin_update_config(
         500: Internal Server Error - ResponseError (774202: Unable to save config)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateConfig.create(
@@ -250,7 +250,7 @@ async def admin_update_config_async(
         500: Internal Server Error - ResponseError (774202: Unable to save config)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateConfig.create(

@@ -79,7 +79,7 @@ def admin_delete_all_user_channels(
         500: Internal Server Error - ResponseError (773501: Unable to delete channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAllUserChannels.create(
@@ -127,7 +127,7 @@ async def admin_delete_all_user_channels_async(
         500: Internal Server Error - ResponseError (773501: Unable to delete channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAllUserChannels.create(
@@ -177,7 +177,7 @@ def admin_delete_all_user_contents(
         500: Internal Server Error - ResponseError (773401: Unable to get all user content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAllUserContents.create(
@@ -225,7 +225,7 @@ async def admin_delete_all_user_contents_async(
         500: Internal Server Error - ResponseError (773401: Unable to get all user content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAllUserContents.create(
@@ -275,7 +275,7 @@ def admin_delete_all_user_group(
         500: Internal Server Error - ResponseError (773301: Unable to find all user group)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAllUserGroup.create(
@@ -323,7 +323,7 @@ async def admin_delete_all_user_group_async(
         500: Internal Server Error - ResponseError (773301: Unable to find all user group)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAllUserGroup.create(
@@ -373,7 +373,7 @@ def admin_delete_all_user_states(
         500: Internal Server Error - ResponseError (773601: Unable to get all user contents/Unable to delete user states)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAllUserStates.create(
@@ -421,7 +421,7 @@ async def admin_delete_all_user_states_async(
         500: Internal Server Error - ResponseError (773601: Unable to get all user contents/Unable to delete user states)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAllUserStates.create(
@@ -471,7 +471,7 @@ def delete_all_user_channel(
         500: Internal Server Error - ResponseError (773501: Unable to delete channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAllUserChannel.create(
@@ -519,7 +519,7 @@ async def delete_all_user_channel_async(
         500: Internal Server Error - ResponseError (773501: Unable to delete channel)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAllUserChannel.create(
@@ -569,7 +569,7 @@ def delete_all_user_contents(
         500: Internal Server Error - ResponseError (773401: Unable to get all user content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAllUserContents.create(
@@ -617,7 +617,7 @@ async def delete_all_user_contents_async(
         500: Internal Server Error - ResponseError (773401: Unable to get all user content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAllUserContents.create(
@@ -667,7 +667,7 @@ def delete_all_user_group(
         500: Internal Server Error - ResponseError (773301: Unable to find all user group)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAllUserGroup.create(
@@ -715,7 +715,7 @@ async def delete_all_user_group_async(
         500: Internal Server Error - ResponseError (773301: Unable to find all user group)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAllUserGroup.create(
@@ -765,7 +765,7 @@ def delete_all_user_states(
         500: Internal Server Error - ResponseError (773601: Unable to get all user contents/Unable to delete user states)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAllUserStates.create(
@@ -813,7 +813,7 @@ async def delete_all_user_states_async(
         500: Internal Server Error - ResponseError (773601: Unable to get all user contents/Unable to delete user states)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAllUserStates.create(

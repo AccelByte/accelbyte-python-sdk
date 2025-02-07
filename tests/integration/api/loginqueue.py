@@ -33,9 +33,11 @@ class LoginQueueTestCase(IntegrationTestCase):
 
         # act
         config, error = admin_update_configuration(
-            body=ApimodelsConfigurationRequest.create_from_dict({
-                "maxLoginRate": 100,
-            })
+            body=ApimodelsConfigurationRequest.create_from_dict(
+                {
+                    "maxLoginRate": 100,
+                }
+            )
         )
 
         # assert

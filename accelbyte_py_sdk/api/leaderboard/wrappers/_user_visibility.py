@@ -86,7 +86,7 @@ def get_hidden_users_v2(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetHiddenUsersV2.create(
@@ -144,7 +144,7 @@ async def get_hidden_users_v2_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetHiddenUsersV2.create(
@@ -201,7 +201,7 @@ def get_user_visibility_status_v2(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserVisibilityStatusV2.create(
@@ -255,7 +255,7 @@ async def get_user_visibility_status_v2_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserVisibilityStatusV2.create(
@@ -314,7 +314,7 @@ def set_user_leaderboard_visibility_status_v2(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SetUserLeaderboardVisibilityStatusV2.create(
@@ -372,7 +372,7 @@ async def set_user_leaderboard_visibility_status_v2_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SetUserLeaderboardVisibilityStatusV2.create(
@@ -429,7 +429,7 @@ def set_user_visibility_status_v2(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SetUserVisibilityStatusV2.create(
@@ -483,7 +483,7 @@ async def set_user_visibility_status_v2_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SetUserVisibilityStatusV2.create(

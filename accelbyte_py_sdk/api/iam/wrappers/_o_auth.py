@@ -431,7 +431,7 @@ def platform_token_request_handler(
         401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PlatformTokenRequestHandler.create(
@@ -501,7 +501,7 @@ async def platform_token_request_handler_async(
         401: Unauthorized - OauthmodelErrorResponse (Client authentication failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PlatformTokenRequestHandler.create(
@@ -730,7 +730,7 @@ def revoke_user(
         401: Unauthorized - (Invalid basic auth header)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RevokeUser.create(
@@ -780,7 +780,7 @@ async def revoke_user_async(
         401: Unauthorized - (Invalid basic auth header)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RevokeUser.create(

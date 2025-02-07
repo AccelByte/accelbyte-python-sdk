@@ -94,7 +94,7 @@ def admin_create_inventory_configuration(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateInventoryConfiguration.create(
@@ -146,7 +146,7 @@ async def admin_create_inventory_configuration_async(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateInventoryConfiguration.create(
@@ -200,7 +200,7 @@ def admin_delete_inventory_configuration(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteInventoryConfiguration.create(
@@ -252,7 +252,7 @@ async def admin_delete_inventory_configuration_async(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteInventoryConfiguration.create(
@@ -305,7 +305,7 @@ def admin_get_inventory_configuration(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetInventoryConfiguration.create(
@@ -356,7 +356,7 @@ async def admin_get_inventory_configuration_async(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetInventoryConfiguration.create(
@@ -417,7 +417,7 @@ def admin_list_inventory_configurations(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListInventoryConfigurations.create(
@@ -479,7 +479,7 @@ async def admin_list_inventory_configurations_async(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListInventoryConfigurations.create(
@@ -541,7 +541,7 @@ def admin_update_inventory_configuration(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateInventoryConfiguration.create(
@@ -599,7 +599,7 @@ async def admin_update_inventory_configuration_async(
         500: Internal Server Error - ApimodelsErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateInventoryConfiguration.create(

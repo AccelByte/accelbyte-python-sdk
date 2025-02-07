@@ -95,7 +95,7 @@ def get_profile(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetProfile.create(
@@ -152,7 +152,7 @@ async def get_profile_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetProfile.create(
@@ -206,7 +206,7 @@ def get_user_profiles(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserProfiles.create(
@@ -257,7 +257,7 @@ async def get_user_profiles_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserProfiles.create(
@@ -318,7 +318,7 @@ def public_create_profile(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCreateProfile.create(
@@ -378,7 +378,7 @@ async def public_create_profile_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCreateProfile.create(
@@ -434,7 +434,7 @@ def public_delete_profile(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDeleteProfile.create(
@@ -488,7 +488,7 @@ async def public_delete_profile_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDeleteProfile.create(
@@ -547,7 +547,7 @@ def public_get_profile(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetProfile.create(
@@ -604,7 +604,7 @@ async def public_get_profile_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetProfile.create(
@@ -666,7 +666,7 @@ def public_get_profile_attribute(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetProfileAttribute.create(
@@ -727,7 +727,7 @@ async def public_get_profile_attribute_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetProfileAttribute.create(
@@ -784,7 +784,7 @@ def public_get_user_game_profiles(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserGameProfiles.create(
@@ -837,7 +837,7 @@ async def public_get_user_game_profiles_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserGameProfiles.create(
@@ -890,7 +890,7 @@ def public_get_user_profiles(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserProfiles.create(
@@ -941,7 +941,7 @@ async def public_get_user_profiles_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserProfiles.create(
@@ -1009,7 +1009,7 @@ def public_update_attribute(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateAttribute.create(
@@ -1078,7 +1078,7 @@ async def public_update_attribute_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateAttribute.create(
@@ -1146,7 +1146,7 @@ def public_update_profile(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateProfile.create(
@@ -1211,7 +1211,7 @@ async def public_update_profile_async(
         500: Internal Server Error - ErrorEntity (20000: Internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateProfile.create(

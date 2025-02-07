@@ -84,7 +84,7 @@ def cancel_session(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CancelSession.create(
@@ -138,7 +138,7 @@ async def cancel_session_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CancelSession.create(
@@ -198,7 +198,7 @@ def claim_server(
         503: Service Unavailable - ResponseError (DS is unreachable)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ClaimServer.create(
@@ -256,7 +256,7 @@ async def claim_server_async(
         503: Service Unavailable - ResponseError (DS is unreachable)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ClaimServer.create(
@@ -322,7 +322,7 @@ def create_session(
         503: Service Unavailable - ResponseError (server count is at max)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateSession.create(
@@ -386,7 +386,7 @@ async def create_session_async(
         503: Service Unavailable - ResponseError (server count is at max)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateSession.create(
@@ -442,7 +442,7 @@ def get_session(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSession.create(
@@ -496,7 +496,7 @@ async def get_session_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSession.create(

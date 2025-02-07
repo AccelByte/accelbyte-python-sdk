@@ -94,7 +94,7 @@ def bulk_get_users_ranking_public_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetUsersRankingPublicV3.create(
@@ -150,7 +150,7 @@ async def bulk_get_users_ranking_public_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetUsersRankingPublicV3.create(
@@ -211,7 +211,7 @@ def delete_all_user_ranking_by_cycle_id_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAllUserRankingByCycleIdAdminV3.create(
@@ -270,7 +270,7 @@ async def delete_all_user_ranking_by_cycle_id_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAllUserRankingByCycleIdAdminV3.create(
@@ -330,7 +330,7 @@ def delete_user_ranking_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserRankingAdminV3.create(
@@ -388,7 +388,7 @@ async def delete_user_ranking_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserRankingAdminV3.create(
@@ -451,7 +451,7 @@ def delete_user_ranking_by_cycle_id_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserRankingByCycleIdAdminV3.create(
@@ -513,7 +513,7 @@ async def delete_user_ranking_by_cycle_id_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserRankingByCycleIdAdminV3.create(
@@ -572,7 +572,7 @@ def delete_user_ranking_by_leaderboard_code_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserRankingByLeaderboardCodeAdminV3.create(
@@ -627,7 +627,7 @@ async def delete_user_ranking_by_leaderboard_code_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserRankingByLeaderboardCodeAdminV3.create(
@@ -682,7 +682,7 @@ def delete_user_rankings_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserRankingsAdminV3.create(
@@ -736,7 +736,7 @@ async def delete_user_rankings_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserRankingsAdminV3.create(
@@ -797,7 +797,7 @@ def get_all_time_leaderboard_ranking_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllTimeLeaderboardRankingAdminV3.create(
@@ -857,7 +857,7 @@ async def get_all_time_leaderboard_ranking_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllTimeLeaderboardRankingAdminV3.create(
@@ -915,7 +915,7 @@ def get_all_time_leaderboard_ranking_public_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllTimeLeaderboardRankingPublicV3.create(
@@ -971,7 +971,7 @@ async def get_all_time_leaderboard_ranking_public_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllTimeLeaderboardRankingPublicV3.create(
@@ -1036,7 +1036,7 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCurrentCycleLeaderboardRankingAdminV3.create(
@@ -1100,7 +1100,7 @@ async def get_current_cycle_leaderboard_ranking_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCurrentCycleLeaderboardRankingAdminV3.create(
@@ -1162,7 +1162,7 @@ def get_current_cycle_leaderboard_ranking_public_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCurrentCycleLeaderboardRankingPublicV3.create(
@@ -1222,7 +1222,7 @@ async def get_current_cycle_leaderboard_ranking_public_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error | 71236: leaderboard ranking count failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCurrentCycleLeaderboardRankingPublicV3.create(
@@ -1280,7 +1280,7 @@ def get_user_ranking_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserRankingAdminV3.create(
@@ -1334,7 +1334,7 @@ async def get_user_ranking_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserRankingAdminV3.create(
@@ -1390,7 +1390,7 @@ def get_user_ranking_public_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserRankingPublicV3.create(
@@ -1444,7 +1444,7 @@ async def get_user_ranking_public_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserRankingPublicV3.create(

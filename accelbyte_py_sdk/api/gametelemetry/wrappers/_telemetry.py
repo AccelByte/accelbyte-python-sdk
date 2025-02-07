@@ -104,7 +104,7 @@ def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get(
         422: Unprocessable Entity - HTTPValidationError (Validation Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet.create(
@@ -187,7 +187,7 @@ async def get_events_game_telemetry_v1_admin_namespaces_namespace_events_get_asy
         422: Unprocessable Entity - HTTPValidationError (Validation Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetEventsGameTelemetryV1AdminNamespacesNamespaceEventsGet.create(

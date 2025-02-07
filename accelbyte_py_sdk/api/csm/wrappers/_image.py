@@ -84,7 +84,7 @@ def delete_app_images_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAppImagesV1.create(
@@ -141,7 +141,7 @@ async def delete_app_images_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAppImagesV1.create(
@@ -208,7 +208,7 @@ def get_app_image_list_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAppImageListV1.create(
@@ -275,7 +275,7 @@ async def get_app_image_list_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAppImageListV1.create(

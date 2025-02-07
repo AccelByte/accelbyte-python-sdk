@@ -72,7 +72,7 @@ def register_xbl_sessions(
         400: Bad Request - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RegisterXblSessions.create(
@@ -120,7 +120,7 @@ async def register_xbl_sessions_async(
         400: Bad Request - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RegisterXblSessions.create(

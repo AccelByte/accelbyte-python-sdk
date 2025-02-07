@@ -77,7 +77,7 @@ def public_add_download_count_v2(
         500: Internal Server Error - ResponseError (772902: Unable to add content download: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicAddDownloadCountV2.create(
@@ -127,7 +127,7 @@ async def public_add_download_count_v2_async(
         500: Internal Server Error - ResponseError (772902: Unable to add content download: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicAddDownloadCountV2.create(
@@ -189,7 +189,7 @@ def public_list_content_downloader_v2(
         500: Internal Server Error - ResponseError (772904: Unable to list content downloader: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListContentDownloaderV2.create(
@@ -253,7 +253,7 @@ async def public_list_content_downloader_v2_async(
         500: Internal Server Error - ResponseError (772904: Unable to list content downloader: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListContentDownloaderV2.create(

@@ -79,7 +79,7 @@ def admin_retrieve_eligibilities(
         400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminRetrieveEligibilities.create(
@@ -136,7 +136,7 @@ async def admin_retrieve_eligibilities_async(
         400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminRetrieveEligibilities.create(

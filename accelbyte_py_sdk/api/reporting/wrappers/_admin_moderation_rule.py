@@ -95,7 +95,7 @@ def create_moderation_rule(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateModerationRule.create(
@@ -153,7 +153,7 @@ async def create_moderation_rule_async(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateModerationRule.create(
@@ -201,7 +201,7 @@ def delete_moderation_rule(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteModerationRule.create(
@@ -247,7 +247,7 @@ async def delete_moderation_rule_async(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteModerationRule.create(
@@ -295,7 +295,7 @@ def get_moderation_rule_details(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetModerationRuleDetails.create(
@@ -341,7 +341,7 @@ async def get_moderation_rule_details_async(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetModerationRuleDetails.create(
@@ -400,7 +400,7 @@ def get_moderation_rules(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetModerationRules.create(
@@ -460,7 +460,7 @@ async def get_moderation_rules_async(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetModerationRules.create(
@@ -526,7 +526,7 @@ def update_moderation_rule(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateModerationRule.create(
@@ -588,7 +588,7 @@ async def update_moderation_rule_async(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateModerationRule.create(
@@ -642,7 +642,7 @@ def update_moderation_rule_status(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateModerationRuleStatus.create(
@@ -694,7 +694,7 @@ async def update_moderation_rule_status_async(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateModerationRuleStatus.create(

@@ -90,7 +90,7 @@ def add_sso_login_platform_credential(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AddSSOLoginPlatformCredential.create(
@@ -151,7 +151,7 @@ async def add_sso_login_platform_credential_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AddSSOLoginPlatformCredential.create(
@@ -206,7 +206,7 @@ def delete_sso_login_platform_credential_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteSSOLoginPlatformCredentialV3.create(
@@ -258,7 +258,7 @@ async def delete_sso_login_platform_credential_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteSSOLoginPlatformCredentialV3.create(
@@ -313,7 +313,7 @@ def retrieve_all_sso_login_platform_credential_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllSSOLoginPlatformCredentialV3.create(
@@ -367,7 +367,7 @@ async def retrieve_all_sso_login_platform_credential_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllSSOLoginPlatformCredentialV3.create(
@@ -422,7 +422,7 @@ def retrieve_sso_login_platform_credential(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveSSOLoginPlatformCredential.create(
@@ -474,7 +474,7 @@ async def retrieve_sso_login_platform_credential_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveSSOLoginPlatformCredential.create(
@@ -531,7 +531,7 @@ def update_sso_platform_credential(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateSSOPlatformCredential.create(
@@ -587,7 +587,7 @@ async def update_sso_platform_credential_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateSSOPlatformCredential.create(

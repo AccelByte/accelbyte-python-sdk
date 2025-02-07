@@ -1234,7 +1234,7 @@ def request_token_exchange_code_v3(
         200: OK - OauthmodelTargetTokenCodeResponse (Succeed to request token exchange code.)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RequestTokenExchangeCodeV3.create(
@@ -1291,7 +1291,7 @@ async def request_token_exchange_code_v3_async(
         200: OK - OauthmodelTargetTokenCodeResponse (Succeed to request token exchange code.)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RequestTokenExchangeCodeV3.create(

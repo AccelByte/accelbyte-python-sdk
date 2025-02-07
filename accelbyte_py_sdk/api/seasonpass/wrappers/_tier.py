@@ -94,7 +94,7 @@ def create_tier(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateTier.create(
@@ -148,7 +148,7 @@ async def create_tier_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateTier.create(
@@ -202,7 +202,7 @@ def delete_tier(
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteTier.create(
@@ -254,7 +254,7 @@ async def delete_tier_async(
         409: Conflict - ErrorEntity (49171: Invalid season status [{status}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteTier.create(
@@ -308,7 +308,7 @@ def grant_user_exp(
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GrantUserExp.create(
@@ -360,7 +360,7 @@ async def grant_user_exp_async(
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GrantUserExp.create(
@@ -416,7 +416,7 @@ def grant_user_tier(
         404: Not Found - ErrorEntity (49148: User season does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GrantUserTier.create(
@@ -470,7 +470,7 @@ async def grant_user_tier_async(
         404: Not Found - ErrorEntity (49148: User season does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GrantUserTier.create(
@@ -529,7 +529,7 @@ def query_tiers(
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryTiers.create(
@@ -587,7 +587,7 @@ async def query_tiers_async(
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryTiers.create(
@@ -647,7 +647,7 @@ def reorder_tier(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ReorderTier.create(
@@ -705,7 +705,7 @@ async def reorder_tier_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ReorderTier.create(
@@ -765,7 +765,7 @@ def update_tier(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateTier.create(
@@ -823,7 +823,7 @@ async def update_tier_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateTier.create(

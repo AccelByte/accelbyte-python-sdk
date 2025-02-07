@@ -75,7 +75,7 @@ def delete_policy(
         400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id | 40072: errors.net.accelbyte.platform.legal.policy_have_published_policy_version | 40073: errors.net.accelbyte.platform.legal.policy_have_published_policy_version_and_already_accepted_by_user | 40074: errors.net.accelbyte.platform.legal.policy_is_default_policy)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePolicy.create(
@@ -123,7 +123,7 @@ async def delete_policy_async(
         400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id | 40072: errors.net.accelbyte.platform.legal.policy_have_published_policy_version | 40073: errors.net.accelbyte.platform.legal.policy_have_published_policy_version_and_already_accepted_by_user | 40074: errors.net.accelbyte.platform.legal.policy_is_default_policy)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePolicy.create(
@@ -169,7 +169,7 @@ def set_default_policy_3(
         400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SetDefaultPolicy3.create(
@@ -213,7 +213,7 @@ async def set_default_policy_3_async(
         400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SetDefaultPolicy3.create(
@@ -262,7 +262,7 @@ def update_policy_1(
         400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePolicy1.create(
@@ -310,7 +310,7 @@ async def update_policy_1_async(
         400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy_id)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePolicy1.create(

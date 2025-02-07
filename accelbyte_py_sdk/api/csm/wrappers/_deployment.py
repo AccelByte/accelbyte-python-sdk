@@ -102,7 +102,7 @@ def create_deployment_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateDeploymentV1.create(
@@ -172,7 +172,7 @@ async def create_deployment_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateDeploymentV1.create(
@@ -232,7 +232,7 @@ def delete_deployment_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteDeploymentV1.create(
@@ -289,7 +289,7 @@ async def delete_deployment_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteDeploymentV1.create(
@@ -348,7 +348,7 @@ def get_deployment_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetDeploymentV1.create(
@@ -405,7 +405,7 @@ async def get_deployment_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetDeploymentV1.create(
@@ -470,7 +470,7 @@ def get_list_of_deployment_v1(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetListOfDeploymentV1.create(
@@ -535,7 +535,7 @@ async def get_list_of_deployment_v1_async(
         500: Internal Server Error - ResponseErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetListOfDeploymentV1.create(

@@ -137,7 +137,7 @@ def bulk_credit(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkCredit.create(
@@ -184,7 +184,7 @@ async def bulk_credit_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkCredit.create(
@@ -233,7 +233,7 @@ def bulk_debit(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkDebit.create(
@@ -280,7 +280,7 @@ async def bulk_debit_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkDebit.create(
@@ -335,7 +335,7 @@ def check_balance(
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CheckBalance.create(
@@ -390,7 +390,7 @@ async def check_balance_async(
         400: Bad Request - ErrorEntity (35123: Wallet [{walletId}] is inactive | 35124: Wallet [{currencyCode}] has insufficient balance)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CheckBalance.create(
@@ -449,7 +449,7 @@ def check_wallet(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CheckWallet.create(
@@ -506,7 +506,7 @@ async def check_wallet_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CheckWallet.create(
@@ -565,7 +565,7 @@ def credit_user_wallet(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreditUserWallet.create(
@@ -622,7 +622,7 @@ async def credit_user_wallet_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreditUserWallet.create(
@@ -698,7 +698,7 @@ def debit_by_wallet_platform(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DebitByWalletPlatform.create(
@@ -772,7 +772,7 @@ async def debit_by_wallet_platform_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DebitByWalletPlatform.create(
@@ -833,7 +833,7 @@ def debit_user_wallet(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DebitUserWallet.create(
@@ -892,7 +892,7 @@ async def debit_user_wallet_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DebitUserWallet.create(
@@ -950,7 +950,7 @@ def debit_user_wallet_by_currency_code(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DebitUserWalletByCurrencyCode.create(
@@ -1006,7 +1006,7 @@ async def debit_user_wallet_by_currency_code_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DebitUserWalletByCurrencyCode.create(
@@ -1060,7 +1060,7 @@ def disable_user_wallet(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DisableUserWallet.create(
@@ -1111,7 +1111,7 @@ async def disable_user_wallet_async(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DisableUserWallet.create(
@@ -1164,7 +1164,7 @@ def enable_user_wallet(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = EnableUserWallet.create(
@@ -1215,7 +1215,7 @@ async def enable_user_wallet_async(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = EnableUserWallet.create(
@@ -1263,7 +1263,7 @@ def get_platform_wallet_config(
         200: OK - PlatformWalletConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPlatformWalletConfig.create(
@@ -1308,7 +1308,7 @@ async def get_platform_wallet_config_async(
         200: OK - PlatformWalletConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPlatformWalletConfig.create(
@@ -1361,7 +1361,7 @@ def get_user_wallet(
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserWallet.create(
@@ -1413,7 +1413,7 @@ async def get_user_wallet_async(
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserWallet.create(
@@ -1464,7 +1464,7 @@ def get_wallet(
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetWallet.create(
@@ -1512,7 +1512,7 @@ async def get_wallet_async(
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetWallet.create(
@@ -1553,7 +1553,7 @@ def get_wallet_config(
         200: OK - WalletConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetWalletConfig.create(
@@ -1591,7 +1591,7 @@ async def get_wallet_config_async(
         200: OK - WalletConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetWalletConfig.create(
@@ -1648,7 +1648,7 @@ def list_user_currency_transactions(
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListUserCurrencyTransactions.create(
@@ -1707,7 +1707,7 @@ async def list_user_currency_transactions_async(
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListUserCurrencyTransactions.create(
@@ -1769,7 +1769,7 @@ def list_user_wallet_transactions(
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListUserWalletTransactions.create(
@@ -1829,7 +1829,7 @@ async def list_user_wallet_transactions_async(
         404: Not Found - ErrorEntity (35141: Wallet [{walletId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListUserWalletTransactions.create(
@@ -1886,7 +1886,7 @@ def pay_with_user_wallet(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PayWithUserWallet.create(
@@ -1940,7 +1940,7 @@ async def pay_with_user_wallet_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PayWithUserWallet.create(
@@ -1992,7 +1992,7 @@ def public_get_my_wallet(
         200: OK - PlatformWallet (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMyWallet.create(
@@ -2040,7 +2040,7 @@ async def public_get_my_wallet_async(
         200: OK - PlatformWallet (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMyWallet.create(
@@ -2090,7 +2090,7 @@ def public_get_wallet(
         200: OK - PlatformWallet (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetWallet.create(
@@ -2139,7 +2139,7 @@ async def public_get_wallet_async(
         200: OK - PlatformWallet (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetWallet.create(
@@ -2196,7 +2196,7 @@ def public_list_user_wallet_transactions(
         200: OK - WalletTransactionPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListUserWalletTransactions.create(
@@ -2253,7 +2253,7 @@ async def public_list_user_wallet_transactions_async(
         200: OK - WalletTransactionPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListUserWalletTransactions.create(
@@ -2304,7 +2304,7 @@ def query_user_currency_wallets(
         200: OK - List[CurrencyWallet] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryUserCurrencyWallets.create(
@@ -2350,7 +2350,7 @@ async def query_user_currency_wallets_async(
         200: OK - List[CurrencyWallet] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryUserCurrencyWallets.create(
@@ -2410,7 +2410,7 @@ def query_wallets(
         200: OK - WalletPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryWallets.create(
@@ -2472,7 +2472,7 @@ async def query_wallets_async(
         200: OK - WalletPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryWallets.create(
@@ -2523,7 +2523,7 @@ def reset_platform_wallet_config(
         200: OK - PlatformWalletConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ResetPlatformWalletConfig.create(
@@ -2568,7 +2568,7 @@ async def reset_platform_wallet_config_async(
         200: OK - PlatformWalletConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ResetPlatformWalletConfig.create(
@@ -2618,7 +2618,7 @@ def update_platform_wallet_config(
         200: OK - PlatformWalletConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePlatformWalletConfig.create(
@@ -2667,7 +2667,7 @@ async def update_platform_wallet_config_async(
         200: OK - PlatformWalletConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePlatformWalletConfig.create(
@@ -2712,7 +2712,7 @@ def update_wallet_config(
         200: OK - WalletConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateWalletConfig.create(
@@ -2754,7 +2754,7 @@ async def update_wallet_config_async(
         200: OK - WalletConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateWalletConfig.create(

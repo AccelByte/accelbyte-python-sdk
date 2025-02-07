@@ -73,7 +73,7 @@ def get(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = Get.create(
@@ -118,7 +118,7 @@ async def get_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = Get.create(
@@ -168,7 +168,7 @@ def upsert(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = Upsert.create(
@@ -216,7 +216,7 @@ async def upsert_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = Upsert.create(

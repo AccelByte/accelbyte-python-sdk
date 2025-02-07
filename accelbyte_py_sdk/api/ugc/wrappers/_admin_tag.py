@@ -80,7 +80,7 @@ def admin_create_tag(
         500: Internal Server Error - ResponseError (771402: Unable to save ugc tag)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateTag.create(
@@ -130,7 +130,7 @@ async def admin_create_tag_async(
         500: Internal Server Error - ResponseError (771402: Unable to save ugc tag)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateTag.create(
@@ -180,7 +180,7 @@ def admin_delete_tag(
         500: Internal Server Error - ResponseError (772002: Unable delete tag)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteTag.create(
@@ -228,7 +228,7 @@ async def admin_delete_tag_async(
         500: Internal Server Error - ResponseError (772002: Unable delete tag)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteTag.create(
@@ -281,7 +281,7 @@ def admin_get_tag(
         500: Internal Server Error - ResponseError (771402: Unable to save ugc tag)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetTag.create(
@@ -333,7 +333,7 @@ async def admin_get_tag_async(
         500: Internal Server Error - ResponseError (771402: Unable to save ugc tag)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetTag.create(
@@ -391,7 +391,7 @@ def admin_update_tag(
         500: Internal Server Error - ResponseError (772802: Unable update tags)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateTag.create(
@@ -447,7 +447,7 @@ async def admin_update_tag_async(
         500: Internal Server Error - ResponseError (772802: Unable update tags)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateTag.create(

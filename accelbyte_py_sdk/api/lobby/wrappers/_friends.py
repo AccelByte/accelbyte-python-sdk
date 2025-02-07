@@ -114,7 +114,7 @@ def add_friends_without_confirmation(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AddFriendsWithoutConfirmation.create(
@@ -168,7 +168,7 @@ async def add_friends_without_confirmation_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AddFriendsWithoutConfirmation.create(
@@ -233,7 +233,7 @@ def admin_list_friends_of_friends(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListFriendsOfFriends.create(
@@ -299,7 +299,7 @@ async def admin_list_friends_of_friends_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListFriendsOfFriends.create(
@@ -358,7 +358,7 @@ def bulk_delete_friends(
         500: Internal Server Error - ModelBulkFriendsResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkDeleteFriends.create(
@@ -412,7 +412,7 @@ async def bulk_delete_friends_async(
         500: Internal Server Error - ModelBulkFriendsResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkDeleteFriends.create(
@@ -474,7 +474,7 @@ def get_incoming_friend_requests(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetIncomingFriendRequests.create(
@@ -536,7 +536,7 @@ async def get_incoming_friend_requests_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetIncomingFriendRequests.create(
@@ -603,7 +603,7 @@ def get_list_of_friends(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetListOfFriends.create(
@@ -669,7 +669,7 @@ async def get_list_of_friends_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetListOfFriends.create(
@@ -731,7 +731,7 @@ def get_outgoing_friend_requests(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetOutgoingFriendRequests.create(
@@ -789,7 +789,7 @@ async def get_outgoing_friend_requests_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetOutgoingFriendRequests.create(
@@ -848,7 +848,7 @@ def get_user_friends_updated(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserFriendsUpdated.create(
@@ -904,7 +904,7 @@ async def get_user_friends_updated_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserFriendsUpdated.create(
@@ -962,7 +962,7 @@ def get_user_friends_with_platform(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserFriendsWithPlatform.create(
@@ -1018,7 +1018,7 @@ async def get_user_friends_with_platform_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserFriendsWithPlatform.create(
@@ -1076,7 +1076,7 @@ def get_user_incoming_friends(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserIncomingFriends.create(
@@ -1132,7 +1132,7 @@ async def get_user_incoming_friends_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserIncomingFriends.create(
@@ -1190,7 +1190,7 @@ def get_user_incoming_friends_with_time(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserIncomingFriendsWithTime.create(
@@ -1246,7 +1246,7 @@ async def get_user_incoming_friends_with_time_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserIncomingFriendsWithTime.create(
@@ -1304,7 +1304,7 @@ def get_user_outgoing_friends(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserOutgoingFriends.create(
@@ -1360,7 +1360,7 @@ async def get_user_outgoing_friends_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserOutgoingFriends.create(
@@ -1418,7 +1418,7 @@ def get_user_outgoing_friends_with_time(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserOutgoingFriendsWithTime.create(
@@ -1474,7 +1474,7 @@ async def get_user_outgoing_friends_with_time_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserOutgoingFriendsWithTime.create(
@@ -1534,7 +1534,7 @@ def sync_native_friends(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncNativeFriends.create(
@@ -1591,7 +1591,7 @@ async def sync_native_friends_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncNativeFriends.create(
@@ -1645,7 +1645,7 @@ def user_accept_friend_request(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserAcceptFriendRequest.create(
@@ -1697,7 +1697,7 @@ async def user_accept_friend_request_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserAcceptFriendRequest.create(
@@ -1751,7 +1751,7 @@ def user_cancel_friend_request(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserCancelFriendRequest.create(
@@ -1803,7 +1803,7 @@ async def user_cancel_friend_request_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserCancelFriendRequest.create(
@@ -1859,7 +1859,7 @@ def user_get_friendship_status(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserGetFriendshipStatus.create(
@@ -1913,7 +1913,7 @@ async def user_get_friendship_status_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserGetFriendshipStatus.create(
@@ -1967,7 +1967,7 @@ def user_reject_friend_request(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserRejectFriendRequest.create(
@@ -2019,7 +2019,7 @@ async def user_reject_friend_request_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserRejectFriendRequest.create(
@@ -2077,7 +2077,7 @@ def user_request_friend(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserRequestFriend.create(
@@ -2133,7 +2133,7 @@ async def user_request_friend_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserRequestFriend.create(
@@ -2187,7 +2187,7 @@ def user_unfriend_request(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserUnfriendRequest.create(
@@ -2239,7 +2239,7 @@ async def user_unfriend_request_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserUnfriendRequest.create(

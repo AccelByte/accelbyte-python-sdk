@@ -67,7 +67,7 @@ def get_user_platform_account_closure_histories(
         200: OK - List[PlatformAccountClosureHistoryInfo] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserPlatformAccountClosureHistories.create(
@@ -109,7 +109,7 @@ async def get_user_platform_account_closure_histories_async(
         200: OK - List[PlatformAccountClosureHistoryInfo] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserPlatformAccountClosureHistories.create(

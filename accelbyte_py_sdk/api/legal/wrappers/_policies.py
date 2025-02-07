@@ -279,7 +279,7 @@ def retrieve_latest_policies_by_namespace_and_country_public(
         200: OK - List[RetrievePolicyPublicResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveLatestPoliciesByNamespaceAndCountryPublic.create(
@@ -355,7 +355,7 @@ async def retrieve_latest_policies_by_namespace_and_country_public_async(
         200: OK - List[RetrievePolicyPublicResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveLatestPoliciesByNamespaceAndCountryPublic.create(
@@ -432,7 +432,7 @@ def retrieve_latest_policies_public(
         404: Not Found - ErrorEntity (40040: errors.net.accelbyte.platform.legal.user_has_no_country)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveLatestPoliciesPublic.create(
@@ -506,7 +506,7 @@ async def retrieve_latest_policies_public_async(
         404: Not Found - ErrorEntity (40040: errors.net.accelbyte.platform.legal.user_has_no_country)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveLatestPoliciesPublic.create(

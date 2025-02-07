@@ -93,7 +93,7 @@ def admin_delete_player_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18336: unable to delete record | 18338: record not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeletePlayerBinaryRecordV1.create(
@@ -147,7 +147,7 @@ async def admin_delete_player_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18336: unable to delete record | 18338: record not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeletePlayerBinaryRecordV1.create(
@@ -203,7 +203,7 @@ def admin_get_player_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18323: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerBinaryRecordV1.create(
@@ -257,7 +257,7 @@ async def admin_get_player_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18323: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerBinaryRecordV1.create(
@@ -322,7 +322,7 @@ def admin_list_player_binary_records_v1(
         500: Internal Server Error - ModelsResponseError (18323: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListPlayerBinaryRecordsV1.create(
@@ -388,7 +388,7 @@ async def admin_list_player_binary_records_v1_async(
         500: Internal Server Error - ModelsResponseError (18323: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListPlayerBinaryRecordsV1.create(
@@ -456,7 +456,7 @@ def admin_post_player_binary_presigned_urlv1(
         500: Internal Server Error - ModelsResponseError (18312: unable to get record | 18314: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostPlayerBinaryPresignedURLV1.create(
@@ -520,7 +520,7 @@ async def admin_post_player_binary_presigned_urlv1_async(
         500: Internal Server Error - ModelsResponseError (18312: unable to get record | 18314: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostPlayerBinaryPresignedURLV1.create(
@@ -590,7 +590,7 @@ def admin_post_player_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18323: unable to get record | 18328: unable to save record | 18331: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostPlayerBinaryRecordV1.create(
@@ -657,7 +657,7 @@ async def admin_post_player_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18323: unable to get record | 18328: unable to save record | 18331: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostPlayerBinaryRecordV1.create(
@@ -718,7 +718,7 @@ def admin_put_player_binary_recor_metadata_v1(
         500: Internal Server Error - ModelsResponseError (18334: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutPlayerBinaryRecorMetadataV1.create(
@@ -778,7 +778,7 @@ async def admin_put_player_binary_recor_metadata_v1_async(
         500: Internal Server Error - ModelsResponseError (18334: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutPlayerBinaryRecorMetadataV1.create(
@@ -840,7 +840,7 @@ def admin_put_player_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18334: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutPlayerBinaryRecordV1.create(
@@ -900,7 +900,7 @@ async def admin_put_player_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18334: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutPlayerBinaryRecordV1.create(

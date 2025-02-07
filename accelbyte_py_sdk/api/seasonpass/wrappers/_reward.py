@@ -96,7 +96,7 @@ def create_reward(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateReward.create(
@@ -154,7 +154,7 @@ async def create_reward_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateReward.create(
@@ -210,7 +210,7 @@ def delete_reward(
         409: Conflict - ErrorEntity (49171: Season is not updatable in status [{status}] | 49179: Reward [{code}] is in use)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteReward.create(
@@ -264,7 +264,7 @@ async def delete_reward_async(
         409: Conflict - ErrorEntity (49171: Season is not updatable in status [{status}] | 49179: Reward [{code}] is in use)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteReward.create(
@@ -320,7 +320,7 @@ def get_reward(
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetReward.create(
@@ -374,7 +374,7 @@ async def get_reward_async(
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49144: Reward [{code}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetReward.create(
@@ -427,7 +427,7 @@ def public_bulk_claim_user_rewards(
         404: Not Found - ErrorEntity (49148: User season does not exist | 49147: Published season does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicBulkClaimUserRewards.create(
@@ -477,7 +477,7 @@ async def public_bulk_claim_user_rewards_async(
         404: Not Found - ErrorEntity (49148: User season does not exist | 49147: Published season does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicBulkClaimUserRewards.create(
@@ -534,7 +534,7 @@ def public_claim_user_reward(
         409: Conflict - ErrorEntity (49182: Reward is already claimed | 49188: Reward is claiming)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicClaimUserReward.create(
@@ -590,7 +590,7 @@ async def public_claim_user_reward_async(
         409: Conflict - ErrorEntity (49182: Reward is already claimed | 49188: Reward is claiming)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicClaimUserReward.create(
@@ -646,7 +646,7 @@ def query_rewards(
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryRewards.create(
@@ -700,7 +700,7 @@ async def query_rewards_async(
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryRewards.create(
@@ -763,7 +763,7 @@ def update_reward(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateReward.create(
@@ -825,7 +825,7 @@ async def update_reward_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateReward.create(

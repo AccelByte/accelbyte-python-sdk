@@ -80,7 +80,7 @@ def delete_admin_game_record_ttl_config(
         500: Internal Server Error - ModelsResponseError
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAdminGameRecordTTLConfig.create(
@@ -134,7 +134,7 @@ async def delete_admin_game_record_ttl_config_async(
         500: Internal Server Error - ModelsResponseError
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteAdminGameRecordTTLConfig.create(
@@ -190,7 +190,7 @@ def delete_game_binary_record_ttl_config(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18318: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteGameBinaryRecordTTLConfig.create(
@@ -244,7 +244,7 @@ async def delete_game_binary_record_ttl_config_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18318: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteGameBinaryRecordTTLConfig.create(
@@ -300,7 +300,7 @@ def delete_game_record_ttl_config(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18053: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteGameRecordTTLConfig.create(
@@ -354,7 +354,7 @@ async def delete_game_record_ttl_config_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18053: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteGameRecordTTLConfig.create(

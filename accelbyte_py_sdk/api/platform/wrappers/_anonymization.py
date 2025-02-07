@@ -73,7 +73,7 @@ def anonymize_campaign(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeCampaign.create(
@@ -115,7 +115,7 @@ async def anonymize_campaign_async(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeCampaign.create(
@@ -159,7 +159,7 @@ def anonymize_entitlement(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeEntitlement.create(
@@ -201,7 +201,7 @@ async def anonymize_entitlement_async(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeEntitlement.create(
@@ -245,7 +245,7 @@ def anonymize_fulfillment(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeFulfillment.create(
@@ -287,7 +287,7 @@ async def anonymize_fulfillment_async(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeFulfillment.create(
@@ -331,7 +331,7 @@ def anonymize_integration(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeIntegration.create(
@@ -373,7 +373,7 @@ async def anonymize_integration_async(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeIntegration.create(
@@ -417,7 +417,7 @@ def anonymize_order(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeOrder.create(
@@ -459,7 +459,7 @@ async def anonymize_order_async(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeOrder.create(
@@ -503,7 +503,7 @@ def anonymize_payment(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizePayment.create(
@@ -545,7 +545,7 @@ async def anonymize_payment_async(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizePayment.create(
@@ -589,7 +589,7 @@ def anonymize_revocation(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeRevocation.create(
@@ -631,7 +631,7 @@ async def anonymize_revocation_async(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeRevocation.create(
@@ -675,7 +675,7 @@ def anonymize_subscription(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeSubscription.create(
@@ -717,7 +717,7 @@ async def anonymize_subscription_async(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeSubscription.create(
@@ -761,7 +761,7 @@ def anonymize_wallet(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeWallet.create(
@@ -803,7 +803,7 @@ async def anonymize_wallet_async(
         204: No Content - (Anonymize successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeWallet.create(

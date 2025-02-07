@@ -116,7 +116,7 @@ def get_liked_content(
         500: Internal Server Error - ResponseError (771101: Unable to get ugc content: database error | 770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLikedContent.create(
@@ -212,7 +212,7 @@ async def get_liked_content_async(
         500: Internal Server Error - ResponseError (771101: Unable to get ugc content: database error | 770801: Unable to get ugc content: database/Unable to get creator | 770803: Failed generate download URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLikedContent.create(
@@ -275,7 +275,7 @@ def update_content_like_status(
         500: Internal Server Error - ResponseError (771001: unable to like content/Unable to update like status: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateContentLikeStatus.create(
@@ -329,7 +329,7 @@ async def update_content_like_status_async(
         500: Internal Server Error - ResponseError (771001: unable to like content/Unable to update like status: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateContentLikeStatus.create(

@@ -92,7 +92,7 @@ def create_pass(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreatePass.create(
@@ -150,7 +150,7 @@ async def create_pass_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreatePass.create(
@@ -204,7 +204,7 @@ def delete_pass(
         409: Conflict - ErrorEntity (49171: Season is not updatable in status [{status}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePass.create(
@@ -256,7 +256,7 @@ async def delete_pass_async(
         409: Conflict - ErrorEntity (49171: Season is not updatable in status [{status}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePass.create(
@@ -312,7 +312,7 @@ def get_pass(
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49145: Pass [{code}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPass.create(
@@ -366,7 +366,7 @@ async def get_pass_async(
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}] | 49145: Pass [{code}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPass.create(
@@ -420,7 +420,7 @@ def grant_user_pass(
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GrantUserPass.create(
@@ -472,7 +472,7 @@ async def grant_user_pass_async(
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GrantUserPass.create(
@@ -525,7 +525,7 @@ def query_passes(
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryPasses.create(
@@ -575,7 +575,7 @@ async def query_passes_async(
         404: Not Found - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryPasses.create(
@@ -637,7 +637,7 @@ def update_pass(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePass.create(
@@ -699,7 +699,7 @@ async def update_pass_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePass.create(

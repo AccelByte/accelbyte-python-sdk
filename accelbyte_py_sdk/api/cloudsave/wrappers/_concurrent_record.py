@@ -127,7 +127,7 @@ def put_game_record_concurrent_handler_v1(
         500: Internal Server Error - ModelsResponseError (18051: unable to marshal request body | 20000: internal server error | 18053: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PutGameRecordConcurrentHandlerV1.create(
@@ -227,7 +227,7 @@ async def put_game_record_concurrent_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18051: unable to marshal request body | 20000: internal server error | 18053: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PutGameRecordConcurrentHandlerV1.create(
@@ -337,7 +337,7 @@ def put_player_public_record_concurrent_handler_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18101: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PutPlayerPublicRecordConcurrentHandlerV1.create(
@@ -447,7 +447,7 @@ async def put_player_public_record_concurrent_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18101: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PutPlayerPublicRecordConcurrentHandlerV1.create(
@@ -559,7 +559,7 @@ def put_player_record_concurrent_handler_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PutPlayerRecordConcurrentHandlerV1.create(
@@ -669,7 +669,7 @@ async def put_player_record_concurrent_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PutPlayerRecordConcurrentHandlerV1.create(

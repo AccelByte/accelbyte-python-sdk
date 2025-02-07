@@ -79,7 +79,7 @@ def get_user_leaderboard_rankings_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserLeaderboardRankingsAdminV3.create(
@@ -135,7 +135,7 @@ async def get_user_leaderboard_rankings_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserLeaderboardRankingsAdminV3.create(

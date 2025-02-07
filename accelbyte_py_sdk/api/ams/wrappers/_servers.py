@@ -81,7 +81,7 @@ def fleet_server_connection_info(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetServerConnectionInfo.create(
@@ -131,7 +131,7 @@ async def fleet_server_connection_info_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetServerConnectionInfo.create(
@@ -204,7 +204,7 @@ def fleet_server_history(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetServerHistory.create(
@@ -282,7 +282,7 @@ async def fleet_server_history_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetServerHistory.create(
@@ -341,7 +341,7 @@ def fleet_server_info(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetServerInfo.create(
@@ -391,7 +391,7 @@ async def fleet_server_info_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetServerInfo.create(
@@ -443,7 +443,7 @@ def server_history(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ServerHistory.create(
@@ -493,7 +493,7 @@ async def server_history_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ServerHistory.create(

@@ -101,7 +101,7 @@ def bulk_get_my_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18343: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetMyBinaryRecordV1.create(
@@ -152,7 +152,7 @@ async def bulk_get_my_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18343: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetMyBinaryRecordV1.create(
@@ -208,7 +208,7 @@ def bulk_get_other_player_public_binary_records_v1(
         500: Internal Server Error - ModelsResponseError (18343: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetOtherPlayerPublicBinaryRecordsV1.create(
@@ -263,7 +263,7 @@ async def bulk_get_other_player_public_binary_records_v1_async(
         500: Internal Server Error - ModelsResponseError (18343: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetOtherPlayerPublicBinaryRecordsV1.create(
@@ -320,7 +320,7 @@ def bulk_get_player_public_binary_records_v1(
         500: Internal Server Error - ModelsResponseError (18343: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetPlayerPublicBinaryRecordsV1.create(
@@ -375,7 +375,7 @@ async def bulk_get_player_public_binary_records_v1_async(
         500: Internal Server Error - ModelsResponseError (18343: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetPlayerPublicBinaryRecordsV1.create(
@@ -433,7 +433,7 @@ def delete_player_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18336: unable to delete record | 18338: record not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePlayerBinaryRecordV1.create(
@@ -489,7 +489,7 @@ async def delete_player_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18336: unable to delete record | 18338: record not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePlayerBinaryRecordV1.create(
@@ -546,7 +546,7 @@ def get_player_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18323: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPlayerBinaryRecordV1.create(
@@ -601,7 +601,7 @@ async def get_player_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18323: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPlayerBinaryRecordV1.create(
@@ -658,7 +658,7 @@ def get_player_public_binary_records_v1(
         500: Internal Server Error - ModelsResponseError (18339: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPlayerPublicBinaryRecordsV1.create(
@@ -713,7 +713,7 @@ async def get_player_public_binary_records_v1_async(
         500: Internal Server Error - ModelsResponseError (18339: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPlayerPublicBinaryRecordsV1.create(
@@ -775,7 +775,7 @@ def list_my_binary_records_v1(
         500: Internal Server Error - ModelsResponseError (18343: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListMyBinaryRecordsV1.create(
@@ -837,7 +837,7 @@ async def list_my_binary_records_v1_async(
         500: Internal Server Error - ModelsResponseError (18343: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListMyBinaryRecordsV1.create(
@@ -901,7 +901,7 @@ def list_other_player_public_binary_records_v1(
         500: Internal Server Error - ModelsResponseError (18345: unable to retrieve list of key records)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListOtherPlayerPublicBinaryRecordsV1.create(
@@ -963,7 +963,7 @@ async def list_other_player_public_binary_records_v1_async(
         500: Internal Server Error - ModelsResponseError (18345: unable to retrieve list of key records)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListOtherPlayerPublicBinaryRecordsV1.create(
@@ -1030,7 +1030,7 @@ def post_player_binary_presigned_urlv1(
         500: Internal Server Error - ModelsResponseError (18312: unable to get record | 18314: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PostPlayerBinaryPresignedURLV1.create(
@@ -1094,7 +1094,7 @@ async def post_player_binary_presigned_urlv1_async(
         500: Internal Server Error - ModelsResponseError (18312: unable to get record | 18314: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PostPlayerBinaryPresignedURLV1.create(
@@ -1164,7 +1164,7 @@ def post_player_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18323: unable to get record | 18328: unable to save record | 18331: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PostPlayerBinaryRecordV1.create(
@@ -1231,7 +1231,7 @@ async def post_player_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18323: unable to get record | 18328: unable to save record | 18331: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PostPlayerBinaryRecordV1.create(
@@ -1292,7 +1292,7 @@ def put_player_binary_recor_metadata_v1(
         500: Internal Server Error - ModelsResponseError (18334: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PutPlayerBinaryRecorMetadataV1.create(
@@ -1352,7 +1352,7 @@ async def put_player_binary_recor_metadata_v1_async(
         500: Internal Server Error - ModelsResponseError (18334: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PutPlayerBinaryRecorMetadataV1.create(
@@ -1414,7 +1414,7 @@ def put_player_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18334: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PutPlayerBinaryRecordV1.create(
@@ -1474,7 +1474,7 @@ async def put_player_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18334: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PutPlayerBinaryRecordV1.create(

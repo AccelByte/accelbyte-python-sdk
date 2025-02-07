@@ -65,7 +65,7 @@ def export_season(
         400: Bad Request - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ExportSeason.create(
@@ -105,7 +105,7 @@ async def export_season_async(
         400: Bad Request - ErrorEntity (49143: Season [{seasonId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ExportSeason.create(

@@ -133,7 +133,7 @@ def add_third_party_login_platform_credential_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AddThirdPartyLoginPlatformCredentialV3.create(
@@ -208,7 +208,7 @@ async def add_third_party_login_platform_credential_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AddThirdPartyLoginPlatformCredentialV3.create(
@@ -351,7 +351,7 @@ def delete_third_party_login_platform_credential_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteThirdPartyLoginPlatformCredentialV3.create(
@@ -401,7 +401,7 @@ async def delete_third_party_login_platform_credential_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteThirdPartyLoginPlatformCredentialV3.create(
@@ -459,7 +459,7 @@ def delete_third_party_login_platform_domain_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteThirdPartyLoginPlatformDomainV3.create(
@@ -516,7 +516,7 @@ async def delete_third_party_login_platform_domain_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteThirdPartyLoginPlatformDomainV3.create(
@@ -575,7 +575,7 @@ def partial_update_third_party_login_platform_domain_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PartialUpdateThirdPartyLoginPlatformDomainV3.create(
@@ -632,7 +632,7 @@ async def partial_update_third_party_login_platform_domain_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PartialUpdateThirdPartyLoginPlatformDomainV3.create(
@@ -681,7 +681,7 @@ def retrieve_active_oidc_clients_public_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveActiveOIDCClientsPublicV3.create(
@@ -727,7 +727,7 @@ async def retrieve_active_oidc_clients_public_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveActiveOIDCClientsPublicV3.create(
@@ -776,7 +776,7 @@ def retrieve_all_active_third_party_login_platform_credential_public_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3.create(
@@ -822,7 +822,7 @@ async def retrieve_all_active_third_party_login_platform_credential_public_v3_as
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllActiveThirdPartyLoginPlatformCredentialPublicV3.create(
@@ -870,7 +870,7 @@ def retrieve_all_active_third_party_login_platform_credential_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllActiveThirdPartyLoginPlatformCredentialV3.create(
@@ -916,7 +916,7 @@ async def retrieve_all_active_third_party_login_platform_credential_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllActiveThirdPartyLoginPlatformCredentialV3.create(
@@ -964,7 +964,7 @@ def retrieve_all_third_party_login_platform_credential_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllThirdPartyLoginPlatformCredentialV3.create(
@@ -1010,7 +1010,7 @@ async def retrieve_all_third_party_login_platform_credential_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllThirdPartyLoginPlatformCredentialV3.create(
@@ -1061,7 +1061,7 @@ def retrieve_third_party_login_platform_credential_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveThirdPartyLoginPlatformCredentialV3.create(
@@ -1111,7 +1111,7 @@ async def retrieve_third_party_login_platform_credential_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveThirdPartyLoginPlatformCredentialV3.create(
@@ -1189,7 +1189,7 @@ def update_third_party_login_platform_credential_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateThirdPartyLoginPlatformCredentialV3.create(
@@ -1266,7 +1266,7 @@ async def update_third_party_login_platform_credential_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateThirdPartyLoginPlatformCredentialV3.create(
@@ -1325,7 +1325,7 @@ def update_third_party_login_platform_domain_v3(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateThirdPartyLoginPlatformDomainV3.create(
@@ -1382,7 +1382,7 @@ async def update_third_party_login_platform_domain_v3_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateThirdPartyLoginPlatformDomainV3.create(

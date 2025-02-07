@@ -213,7 +213,7 @@ def sync_user_info(
         200: OK - (Successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncUserInfo.create(
@@ -252,7 +252,7 @@ async def sync_user_info_async(
         200: OK - (Successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SyncUserInfo.create(

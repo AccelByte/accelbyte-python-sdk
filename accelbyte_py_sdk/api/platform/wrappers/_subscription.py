@@ -135,7 +135,7 @@ def cancel_subscription(
         409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CancelSubscription.create(
@@ -198,7 +198,7 @@ async def cancel_subscription_async(
         409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CancelSubscription.create(
@@ -252,7 +252,7 @@ def check_user_subscription_subscribable_by_item_id(
         200: OK - Subscribable (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CheckUserSubscriptionSubscribableByItemId.create(
@@ -302,7 +302,7 @@ async def check_user_subscription_subscribable_by_item_id_async(
         200: OK - Subscribable (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CheckUserSubscriptionSubscribableByItemId.create(
@@ -350,7 +350,7 @@ def delete_user_subscription(
         204: No Content - (delete user subscription successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserSubscription.create(
@@ -396,7 +396,7 @@ async def delete_user_subscription_async(
         204: No Content - (delete user subscription successfully)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteUserSubscription.create(
@@ -449,7 +449,7 @@ def get_user_subscription(
         404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserSubscription.create(
@@ -500,7 +500,7 @@ async def get_user_subscription_async(
         404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserSubscription.create(
@@ -560,7 +560,7 @@ def get_user_subscription_activities(
         200: OK - SubscriptionActivityPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserSubscriptionActivities.create(
@@ -621,7 +621,7 @@ async def get_user_subscription_activities_async(
         200: OK - SubscriptionActivityPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserSubscriptionActivities.create(
@@ -684,7 +684,7 @@ def get_user_subscription_billing_histories(
         200: OK - BillingHistoryPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserSubscriptionBillingHistories.create(
@@ -745,7 +745,7 @@ async def get_user_subscription_billing_histories_async(
         200: OK - BillingHistoryPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetUserSubscriptionBillingHistories.create(
@@ -805,7 +805,7 @@ def grant_days_to_subscription(
         404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GrantDaysToSubscription.create(
@@ -861,7 +861,7 @@ async def grant_days_to_subscription_async(
         404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GrantDaysToSubscription.create(
@@ -921,7 +921,7 @@ def platform_subscribe_subscription(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PlatformSubscribeSubscription.create(
@@ -978,7 +978,7 @@ async def platform_subscribe_subscription_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PlatformSubscribeSubscription.create(
@@ -1034,7 +1034,7 @@ def process_user_subscription_notification(
         400: Bad Request - (process failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ProcessUserSubscriptionNotification.create(
@@ -1089,7 +1089,7 @@ async def process_user_subscription_notification_async(
         400: Bad Request - (process failed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ProcessUserSubscriptionNotification.create(
@@ -1149,7 +1149,7 @@ def public_cancel_subscription(
         409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCancelSubscription.create(
@@ -1207,7 +1207,7 @@ async def public_cancel_subscription_async(
         409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCancelSubscription.create(
@@ -1266,7 +1266,7 @@ def public_change_subscription_billing_account(
         409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicChangeSubscriptionBillingAccount.create(
@@ -1322,7 +1322,7 @@ async def public_change_subscription_billing_account_async(
         409: Conflict - ErrorEntity (40171: Subscription [{subscriptionId}] is not active | 40172: Subscription [{subscriptionId}] is charging, waiting for payment notification)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicChangeSubscriptionBillingAccount.create(
@@ -1374,7 +1374,7 @@ def public_check_user_subscription_subscribable_by_item_id(
         200: OK - Subscribable (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCheckUserSubscriptionSubscribableByItemId.create(
@@ -1424,7 +1424,7 @@ async def public_check_user_subscription_subscribable_by_item_id_async(
         200: OK - Subscribable (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCheckUserSubscriptionSubscribableByItemId.create(
@@ -1477,7 +1477,7 @@ def public_get_user_subscription(
         404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserSubscription.create(
@@ -1528,7 +1528,7 @@ async def public_get_user_subscription_async(
         404: Not Found - ErrorEntity (40141: Subscription [{subscriptionId}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserSubscription.create(
@@ -1588,7 +1588,7 @@ def public_get_user_subscription_billing_histories(
         200: OK - BillingHistoryPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserSubscriptionBillingHistories.create(
@@ -1649,7 +1649,7 @@ async def public_get_user_subscription_billing_histories_async(
         200: OK - BillingHistoryPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserSubscriptionBillingHistories.create(
@@ -1725,7 +1725,7 @@ def public_query_user_subscriptions(
         200: OK - SubscriptionPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicQueryUserSubscriptions.create(
@@ -1802,7 +1802,7 @@ async def public_query_user_subscriptions_async(
         200: OK - SubscriptionPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicQueryUserSubscriptions.create(
@@ -1874,7 +1874,7 @@ def public_subscribe_subscription(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSubscribeSubscription.create(
@@ -1938,7 +1938,7 @@ async def public_subscribe_subscription_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSubscribeSubscription.create(
@@ -2007,7 +2007,7 @@ def query_subscriptions(
         200: OK - SubscriptionPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QuerySubscriptions.create(
@@ -2080,7 +2080,7 @@ async def query_subscriptions_async(
         200: OK - SubscriptionPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QuerySubscriptions.create(
@@ -2155,7 +2155,7 @@ def query_user_subscriptions(
         200: OK - SubscriptionPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryUserSubscriptions.create(
@@ -2228,7 +2228,7 @@ async def query_user_subscriptions_async(
         200: OK - SubscriptionPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryUserSubscriptions.create(
@@ -2282,7 +2282,7 @@ def recurring_charge_subscription(
         200: OK - RecurringChargeResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RecurringChargeSubscription.create(
@@ -2327,7 +2327,7 @@ async def recurring_charge_subscription_async(
         200: OK - RecurringChargeResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RecurringChargeSubscription.create(

@@ -90,7 +90,7 @@ def s2s_get_list_finished_account_deletion_request(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SGetListFinishedAccountDeletionRequest.create(
@@ -154,7 +154,7 @@ async def s2s_get_list_finished_account_deletion_request_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SGetListFinishedAccountDeletionRequest.create(
@@ -221,7 +221,7 @@ def s2s_submit_user_account_deletion_request(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SSubmitUserAccountDeletionRequest.create(
@@ -285,7 +285,7 @@ async def s2s_submit_user_account_deletion_request_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SSubmitUserAccountDeletionRequest.create(

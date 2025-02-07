@@ -81,7 +81,7 @@ def create_policy_version_1(
         400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreatePolicyVersion1.create(
@@ -129,7 +129,7 @@ async def create_policy_version_1_async(
         400: Bad Request - ErrorEntity (40033: errors.net.accelbyte.platform.legal.invalid_policy)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreatePolicyVersion1.create(
@@ -180,7 +180,7 @@ def delete_policy_version(
         400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40070: errors.net.accelbyte.platform.legal.policy_version_is_published_and_already_accepted_by_user | 40071: errors.net.accelbyte.platform.legal.policy_version_is_active)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePolicyVersion.create(
@@ -228,7 +228,7 @@ async def delete_policy_version_async(
         400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40070: errors.net.accelbyte.platform.legal.policy_version_is_published_and_already_accepted_by_user | 40071: errors.net.accelbyte.platform.legal.policy_version_is_active)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePolicyVersion.create(
@@ -279,7 +279,7 @@ def publish_policy_version_1(
         409: Conflict - ErrorEntity (40039: errors.net.accelbyte.platform.legal.localized_policy_version_already_latest | 40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_publish)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublishPolicyVersion1.create(
@@ -329,7 +329,7 @@ async def publish_policy_version_1_async(
         409: Conflict - ErrorEntity (40039: errors.net.accelbyte.platform.legal.localized_policy_version_already_latest | 40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_publish)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublishPolicyVersion1.create(
@@ -379,7 +379,7 @@ def retrieve_single_policy_version_1(
         404: Not Found - ErrorEntity (40036: errors.net.accelbyte.platform.legal.policy_version_id_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveSinglePolicyVersion1.create(
@@ -427,7 +427,7 @@ async def retrieve_single_policy_version_1_async(
         404: Not Found - ErrorEntity (40036: errors.net.accelbyte.platform.legal.policy_version_id_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveSinglePolicyVersion1.create(
@@ -477,7 +477,7 @@ def unpublish_policy_version(
         400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40070: errors.net.accelbyte.platform.legal.policy_version_is_published_and_already_accepted_by_user)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UnpublishPolicyVersion.create(
@@ -524,7 +524,7 @@ async def unpublish_policy_version_async(
         400: Bad Request - ErrorEntity (40035: errors.net.accelbyte.platform.legal.invalid_policy_version | 40070: errors.net.accelbyte.platform.legal.policy_version_is_published_and_already_accepted_by_user)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UnpublishPolicyVersion.create(
@@ -575,7 +575,7 @@ def update_policy_version_1(
         409: Conflict - ErrorEntity (40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePolicyVersion1.create(
@@ -625,7 +625,7 @@ async def update_policy_version_1_async(
         409: Conflict - ErrorEntity (40043: errors.net.accelbyte.platform.legal.localized_policy_version_already_exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePolicyVersion1.create(

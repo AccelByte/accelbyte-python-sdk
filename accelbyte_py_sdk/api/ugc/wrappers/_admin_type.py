@@ -80,7 +80,7 @@ def admin_create_type(
         500: Internal Server Error - ResponseError (771702: Unable to save ugc type)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateType.create(
@@ -130,7 +130,7 @@ async def admin_create_type_async(
         500: Internal Server Error - ResponseError (771702: Unable to save ugc type)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateType.create(
@@ -180,7 +180,7 @@ def admin_delete_type(
         500: Internal Server Error - ResponseError (772004: Unable delete type)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteType.create(
@@ -228,7 +228,7 @@ async def admin_delete_type_async(
         500: Internal Server Error - ResponseError (772004: Unable delete type)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteType.create(
@@ -281,7 +281,7 @@ def admin_get_type(
         500: Internal Server Error - ResponseError (771802: Unable get types)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetType.create(
@@ -333,7 +333,7 @@ async def admin_get_type_async(
         500: Internal Server Error - ResponseError (771802: Unable get types)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetType.create(
@@ -391,7 +391,7 @@ def admin_update_type(
         500: Internal Server Error - ResponseError (771902: Unable update types)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateType.create(
@@ -447,7 +447,7 @@ async def admin_update_type_async(
         500: Internal Server Error - ResponseError (771902: Unable update types)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateType.create(

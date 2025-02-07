@@ -81,7 +81,7 @@ def account_get(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AccountGet.create(
@@ -127,7 +127,7 @@ async def account_get_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AccountGet.create(
@@ -176,7 +176,7 @@ def admin_account_create(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAccountCreate.create(
@@ -224,7 +224,7 @@ async def admin_account_create_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAccountCreate.create(
@@ -273,7 +273,7 @@ def admin_account_get(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAccountGet.create(
@@ -319,7 +319,7 @@ async def admin_account_get_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAccountGet.create(
@@ -370,7 +370,7 @@ def admin_account_link(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAccountLink.create(
@@ -420,7 +420,7 @@ async def admin_account_link_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAccountLink.create(
@@ -471,7 +471,7 @@ def admin_account_link_token_get(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAccountLinkTokenGet.create(
@@ -519,7 +519,7 @@ async def admin_account_link_token_get_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAccountLinkTokenGet.create(

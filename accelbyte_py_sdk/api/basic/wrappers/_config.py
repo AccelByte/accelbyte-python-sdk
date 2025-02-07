@@ -85,7 +85,7 @@ def create_config(
         409: Conflict - ErrorEntity (11771: Unable to {action}: Config already exists)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateConfig.create(
@@ -138,7 +138,7 @@ async def create_config_async(
         409: Conflict - ErrorEntity (11771: Unable to {action}: Config already exists)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateConfig.create(
@@ -193,7 +193,7 @@ def delete_config(
         404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteConfig.create(
@@ -246,7 +246,7 @@ async def delete_config_async(
         404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteConfig.create(
@@ -301,7 +301,7 @@ def get_config(
         404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetConfig.create(
@@ -354,7 +354,7 @@ async def get_config_async(
         404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetConfig.create(
@@ -410,7 +410,7 @@ def get_publisher_config(
         404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPublisherConfig.create(
@@ -464,7 +464,7 @@ async def get_publisher_config_async(
         404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPublisherConfig.create(
@@ -522,7 +522,7 @@ def update_config(
         404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateConfig.create(
@@ -579,7 +579,7 @@ async def update_config_async(
         404: Not Found - ErrorEntity (11741: Unable to {action}: Config not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateConfig.create(

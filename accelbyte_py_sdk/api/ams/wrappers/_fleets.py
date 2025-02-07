@@ -96,7 +96,7 @@ def fleet_claim_by_id(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetClaimByID.create(
@@ -152,7 +152,7 @@ async def fleet_claim_by_id_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetClaimByID.create(
@@ -211,7 +211,7 @@ def fleet_claim_by_keys(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetClaimByKeys.create(
@@ -267,7 +267,7 @@ async def fleet_claim_by_keys_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetClaimByKeys.create(
@@ -321,7 +321,7 @@ def fleet_create(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetCreate.create(
@@ -373,7 +373,7 @@ async def fleet_create_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetCreate.create(
@@ -427,7 +427,7 @@ def fleet_delete(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetDelete.create(
@@ -479,7 +479,7 @@ async def fleet_delete_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetDelete.create(
@@ -533,7 +533,7 @@ def fleet_get(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetGet.create(
@@ -585,7 +585,7 @@ async def fleet_get_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetGet.create(
@@ -649,7 +649,7 @@ def fleet_list(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetList.create(
@@ -717,7 +717,7 @@ async def fleet_list_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetList.create(
@@ -798,7 +798,7 @@ def fleet_servers(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetServers.create(
@@ -878,7 +878,7 @@ async def fleet_servers_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetServers.create(
@@ -944,7 +944,7 @@ def fleet_update(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetUpdate.create(
@@ -1002,7 +1002,7 @@ async def fleet_update_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetUpdate.create(

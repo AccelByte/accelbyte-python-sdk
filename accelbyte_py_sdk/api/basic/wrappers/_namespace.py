@@ -103,7 +103,7 @@ def change_namespace_status(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ChangeNamespaceStatus.create(
@@ -159,7 +159,7 @@ async def change_namespace_status_async(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ChangeNamespaceStatus.create(
@@ -330,7 +330,7 @@ def delete_namespace(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteNamespace.create(
@@ -382,7 +382,7 @@ async def delete_namespace_async(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteNamespace.create(
@@ -434,7 +434,7 @@ def get_child_namespaces(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetChildNamespaces.create(
@@ -485,7 +485,7 @@ async def get_child_namespaces_async(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetChildNamespaces.create(
@@ -538,7 +538,7 @@ def get_game_namespaces(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGameNamespaces.create(
@@ -589,7 +589,7 @@ async def get_game_namespaces_async(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGameNamespaces.create(
@@ -646,7 +646,7 @@ def get_namespace(
         404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetNamespace.create(
@@ -701,7 +701,7 @@ async def get_namespace_async(
         404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetNamespace.create(
@@ -747,7 +747,7 @@ def get_namespace_1(
         404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetNamespace1.create(
@@ -790,7 +790,7 @@ async def get_namespace_1_async(
         404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetNamespace1.create(
@@ -837,7 +837,7 @@ def get_namespace_context(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetNamespaceContext.create(
@@ -882,7 +882,7 @@ async def get_namespace_context_async(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetNamespaceContext.create(
@@ -934,7 +934,7 @@ def get_namespace_publisher(
         404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetNamespacePublisher.create(
@@ -984,7 +984,7 @@ async def get_namespace_publisher_async(
         404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetNamespacePublisher.create(
@@ -1122,7 +1122,7 @@ def public_get_namespace_publisher(
         404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetNamespacePublisher.create(
@@ -1172,7 +1172,7 @@ async def public_get_namespace_publisher_async(
         404: Not Found - ErrorEntity (11337: Unable to {action}: Namespace not found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetNamespacePublisher.create(
@@ -1320,7 +1320,7 @@ def update_namespace(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateNamespace.create(
@@ -1385,7 +1385,7 @@ async def update_namespace_async(
         409: Conflict - ErrorEntity (20006: optimistic lock)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateNamespace.create(

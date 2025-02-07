@@ -107,7 +107,7 @@ def create_policy_1(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreatePolicy1.create(
@@ -163,7 +163,7 @@ async def create_policy_1_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreatePolicy1.create(
@@ -220,7 +220,7 @@ def create_policy_under_base_policy(
         400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreatePolicyUnderBasePolicy.create(
@@ -276,7 +276,7 @@ async def create_policy_under_base_policy_async(
         400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreatePolicyUnderBasePolicy.create(
@@ -327,7 +327,7 @@ def delete_base_policy(
         400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy | 40068: errors.net.accelbyte.platform.legal.base_policy_have_published_policy_version_and_already_accepted_by_user | 40069: errors.net.accelbyte.platform.legal.base_policy_already_have_published_policy_version)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteBasePolicy.create(
@@ -375,7 +375,7 @@ async def delete_base_policy_async(
         400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy | 40068: errors.net.accelbyte.platform.legal.base_policy_have_published_policy_version_and_already_accepted_by_user | 40069: errors.net.accelbyte.platform.legal.base_policy_already_have_published_policy_version)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteBasePolicy.create(
@@ -432,7 +432,7 @@ def partial_update_policy_1(
         400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PartialUpdatePolicy1.create(
@@ -488,7 +488,7 @@ async def partial_update_policy_1_async(
         400: Bad Request - ErrorEntity (40032: errors.net.accelbyte.platform.legal.invalid_base_policy)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PartialUpdatePolicy1.create(
@@ -533,7 +533,7 @@ def retrieve_all_legal_policies_by_namespace(
         200: OK - List[RetrieveBasePolicyResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllLegalPoliciesByNamespace.create(
@@ -575,7 +575,7 @@ async def retrieve_all_legal_policies_by_namespace_async(
         200: OK - List[RetrieveBasePolicyResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllLegalPoliciesByNamespace.create(
@@ -621,7 +621,7 @@ def retrieve_all_policies_from_base_policy(
         404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllPoliciesFromBasePolicy.create(
@@ -665,7 +665,7 @@ async def retrieve_all_policies_from_base_policy_async(
         404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllPoliciesFromBasePolicy.create(
@@ -712,7 +712,7 @@ def retrieve_all_policy_types_1(
         200: OK - List[RetrievePolicyTypeResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllPolicyTypes1.create(
@@ -758,7 +758,7 @@ async def retrieve_all_policy_types_1_async(
         200: OK - List[RetrievePolicyTypeResponse] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveAllPolicyTypes1.create(
@@ -808,7 +808,7 @@ def retrieve_policy_country_1(
         404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrievePolicyCountry1.create(
@@ -856,7 +856,7 @@ async def retrieve_policy_country_1_async(
         404: Not Found - ErrorEntity (40031: errors.net.accelbyte.platform.legal.base_policy_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrievePolicyCountry1.create(
@@ -903,7 +903,7 @@ def retrieve_single_policy_1(
         404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveSinglePolicy1.create(
@@ -947,7 +947,7 @@ async def retrieve_single_policy_1_async(
         404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveSinglePolicy1.create(

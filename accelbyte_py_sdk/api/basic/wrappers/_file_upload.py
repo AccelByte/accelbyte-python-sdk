@@ -86,7 +86,7 @@ def generated_upload_url(
         500: Internal Server Error - ErrorEntity (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GeneratedUploadUrl.create(
@@ -144,7 +144,7 @@ async def generated_upload_url_async(
         500: Internal Server Error - ErrorEntity (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GeneratedUploadUrl.create(
@@ -211,7 +211,7 @@ def generated_user_upload_content_url(
         500: Internal Server Error - ErrorEntity (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GeneratedUserUploadContentUrl.create(
@@ -277,7 +277,7 @@ async def generated_user_upload_content_url_async(
         500: Internal Server Error - ErrorEntity (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GeneratedUserUploadContentUrl.create(
@@ -338,7 +338,7 @@ def public_generated_upload_url(
         500: Internal Server Error - ErrorEntity (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGeneratedUploadUrl.create(
@@ -396,7 +396,7 @@ async def public_generated_upload_url_async(
         500: Internal Server Error - ErrorEntity (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGeneratedUploadUrl.create(
@@ -465,7 +465,7 @@ def public_generated_user_upload_content_url(
         500: Internal Server Error - ErrorEntity (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGeneratedUserUploadContentUrl.create(
@@ -533,7 +533,7 @@ async def public_generated_user_upload_content_url_async(
         500: Internal Server Error - ErrorEntity (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGeneratedUserUploadContentUrl.create(

@@ -187,7 +187,7 @@ def admin_add_user_role_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAddUserRoleV4.create(
@@ -246,7 +246,7 @@ async def admin_add_user_role_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminAddUserRoleV4.create(
@@ -300,7 +300,7 @@ def admin_bulk_check_valid_user_idv4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkCheckValidUserIDV4.create(
@@ -351,7 +351,7 @@ async def admin_bulk_check_valid_user_idv4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkCheckValidUserIDV4.create(
@@ -407,7 +407,7 @@ def admin_bulk_update_user_account_type_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkUpdateUserAccountTypeV4.create(
@@ -461,7 +461,7 @@ async def admin_bulk_update_user_account_type_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkUpdateUserAccountTypeV4.create(
@@ -617,7 +617,7 @@ def admin_create_test_users_v4(
         501: Not Implemented - RestErrorResponse (20024: not implemented)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateTestUsersV4.create(
@@ -669,7 +669,7 @@ async def admin_create_test_users_v4_async(
         501: Not Implemented - RestErrorResponse (20024: not implemented)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateTestUsersV4.create(
@@ -737,7 +737,7 @@ def admin_create_user_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateUserV4.create(
@@ -803,7 +803,7 @@ async def admin_create_user_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateUserV4.create(
@@ -1162,7 +1162,7 @@ def admin_disable_user_mfav4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDisableUserMFAV4.create(
@@ -1220,7 +1220,7 @@ async def admin_disable_user_mfav4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDisableUserMFAV4.create(
@@ -2381,7 +2381,7 @@ def admin_get_namespace_invitation_history_v4(
         501: Not Implemented - RestErrorResponse (20024: not implemented)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetNamespaceInvitationHistoryV4.create(
@@ -2430,7 +2430,7 @@ async def admin_get_namespace_invitation_history_v4_async(
         501: Not Implemented - RestErrorResponse (20024: not implemented)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetNamespaceInvitationHistoryV4.create(
@@ -2490,7 +2490,7 @@ def admin_get_namespace_user_invitation_history_v4(
         501: Not Implemented - RestErrorResponse (20024: not implemented)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetNamespaceUserInvitationHistoryV4.create(
@@ -2550,7 +2550,7 @@ async def admin_get_namespace_user_invitation_history_v4_async(
         501: Not Implemented - RestErrorResponse (20024: not implemented)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetNamespaceUserInvitationHistoryV4.create(
@@ -2603,7 +2603,7 @@ def admin_get_user_mfa_status_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetUserMFAStatusV4.create(
@@ -2653,7 +2653,7 @@ async def admin_get_user_mfa_status_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetUserMFAStatusV4.create(
@@ -3071,7 +3071,7 @@ def admin_list_user_roles_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListUserRolesV4.create(
@@ -3121,7 +3121,7 @@ async def admin_list_user_roles_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListUserRolesV4.create(
@@ -3266,7 +3266,7 @@ def admin_remove_user_role_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminRemoveUserRoleV4.create(
@@ -3324,7 +3324,7 @@ async def admin_remove_user_role_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminRemoveUserRoleV4.create(
@@ -3589,7 +3589,7 @@ def admin_update_user_email_address_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateUserEmailAddressV4.create(
@@ -3646,7 +3646,7 @@ async def admin_update_user_email_address_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateUserEmailAddressV4.create(
@@ -3707,7 +3707,7 @@ def admin_update_user_role_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateUserRoleV4.create(
@@ -3766,7 +3766,7 @@ async def admin_update_user_role_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateUserRoleV4.create(
@@ -3836,7 +3836,7 @@ def admin_update_user_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateUserV4.create(
@@ -3904,7 +3904,7 @@ async def admin_update_user_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateUserV4.create(
@@ -3981,7 +3981,7 @@ def create_user_from_invitation_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateUserFromInvitationV4.create(
@@ -4056,7 +4056,7 @@ async def create_user_from_invitation_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateUserFromInvitationV4.create(
@@ -4116,7 +4116,7 @@ def public_challenge_my_mfav4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicChallengeMyMFAV4.create(
@@ -4174,7 +4174,7 @@ async def public_challenge_my_mfav4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicChallengeMyMFAV4.create(
@@ -4240,7 +4240,7 @@ def public_create_test_user_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCreateTestUserV4.create(
@@ -4303,7 +4303,7 @@ async def public_create_test_user_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCreateTestUserV4.create(
@@ -4372,7 +4372,7 @@ def public_create_user_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCreateUserV4.create(
@@ -4439,7 +4439,7 @@ async def public_create_user_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicCreateUserV4.create(
@@ -4498,7 +4498,7 @@ def public_disable_my_authenticator_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDisableMyAuthenticatorV4.create(
@@ -4555,7 +4555,7 @@ async def public_disable_my_authenticator_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDisableMyAuthenticatorV4.create(
@@ -4614,7 +4614,7 @@ def public_disable_my_backup_codes_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDisableMyBackupCodesV4.create(
@@ -4671,7 +4671,7 @@ async def public_disable_my_backup_codes_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDisableMyBackupCodesV4.create(
@@ -4730,7 +4730,7 @@ def public_disable_my_email_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDisableMyEmailV4.create(
@@ -4787,7 +4787,7 @@ async def public_disable_my_email_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDisableMyEmailV4.create(
@@ -4839,7 +4839,7 @@ def public_download_my_backup_codes_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDownloadMyBackupCodesV4.create(
@@ -4888,7 +4888,7 @@ async def public_download_my_backup_codes_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicDownloadMyBackupCodesV4.create(
@@ -4943,7 +4943,7 @@ def public_enable_backup_codes_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicEnableBackupCodesV4.create(
@@ -4997,7 +4997,7 @@ async def public_enable_backup_codes_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicEnableBackupCodesV4.create(
@@ -5058,7 +5058,7 @@ def public_enable_my_authenticator_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicEnableMyAuthenticatorV4.create(
@@ -5117,7 +5117,7 @@ async def public_enable_my_authenticator_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicEnableMyAuthenticatorV4.create(
@@ -5171,7 +5171,7 @@ def public_enable_my_backup_codes_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicEnableMyBackupCodesV4.create(
@@ -5222,7 +5222,7 @@ async def public_enable_my_backup_codes_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicEnableMyBackupCodesV4.create(
@@ -5277,7 +5277,7 @@ def public_enable_my_email_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicEnableMyEmailV4.create(
@@ -5331,7 +5331,7 @@ async def public_enable_my_email_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicEnableMyEmailV4.create(
@@ -5387,7 +5387,7 @@ def public_generate_backup_codes_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGenerateBackupCodesV4.create(
@@ -5441,7 +5441,7 @@ async def public_generate_backup_codes_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGenerateBackupCodesV4.create(
@@ -5493,7 +5493,7 @@ def public_generate_my_authenticator_key_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGenerateMyAuthenticatorKeyV4.create(
@@ -5542,7 +5542,7 @@ async def public_generate_my_authenticator_key_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGenerateMyAuthenticatorKeyV4.create(
@@ -5594,7 +5594,7 @@ def public_generate_my_backup_codes_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGenerateMyBackupCodesV4.create(
@@ -5644,7 +5644,7 @@ async def public_generate_my_backup_codes_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGenerateMyBackupCodesV4.create(
@@ -5699,7 +5699,7 @@ def public_get_backup_codes_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetBackupCodesV4.create(
@@ -5753,7 +5753,7 @@ async def public_get_backup_codes_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetBackupCodesV4.create(
@@ -5806,7 +5806,7 @@ def public_get_my_backup_codes_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMyBackupCodesV4.create(
@@ -5856,7 +5856,7 @@ async def public_get_my_backup_codes_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMyBackupCodesV4.create(
@@ -5906,7 +5906,7 @@ def public_get_my_enabled_factors_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMyEnabledFactorsV4.create(
@@ -5954,7 +5954,7 @@ async def public_get_my_enabled_factors_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMyEnabledFactorsV4.create(
@@ -6005,7 +6005,7 @@ def public_get_my_mfa_status_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMyMFAStatusV4.create(
@@ -6054,7 +6054,7 @@ async def public_get_my_mfa_status_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMyMFAStatusV4.create(
@@ -6102,7 +6102,7 @@ def public_get_my_own_mfa_status_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMyOwnMFAStatusV4.create(
@@ -6148,7 +6148,7 @@ async def public_get_my_own_mfa_status_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetMyOwnMFAStatusV4.create(
@@ -6243,7 +6243,7 @@ def public_get_user_by_platform_user_idv4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserByPlatformUserIDV4.create(
@@ -6338,7 +6338,7 @@ async def public_get_user_by_platform_user_idv4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserByPlatformUserIDV4.create(
@@ -6390,7 +6390,7 @@ def public_get_user_public_info_by_user_id_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserPublicInfoByUserIdV4.create(
@@ -6439,7 +6439,7 @@ async def public_get_user_public_info_by_user_id_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicGetUserPublicInfoByUserIdV4.create(
@@ -6638,7 +6638,7 @@ def public_list_user_id_by_platform_user_i_ds_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListUserIDByPlatformUserIDsV4.create(
@@ -6729,7 +6729,7 @@ async def public_list_user_id_by_platform_user_i_ds_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListUserIDByPlatformUserIDsV4.create(
@@ -6785,7 +6785,7 @@ def public_make_factor_my_default_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicMakeFactorMyDefaultV4.create(
@@ -6837,7 +6837,7 @@ async def public_make_factor_my_default_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicMakeFactorMyDefaultV4.create(
@@ -6892,7 +6892,7 @@ def public_remove_trusted_device_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicRemoveTrustedDeviceV4.create(
@@ -6945,7 +6945,7 @@ async def public_remove_trusted_device_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicRemoveTrustedDeviceV4.create(
@@ -7008,7 +7008,7 @@ def public_send_my_mfa_email_code_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSendMyMFAEmailCodeV4.create(
@@ -7070,7 +7070,7 @@ async def public_send_my_mfa_email_code_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicSendMyMFAEmailCodeV4.create(
@@ -7126,7 +7126,7 @@ def public_update_user_email_address_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateUserEmailAddressV4.create(
@@ -7179,7 +7179,7 @@ async def public_update_user_email_address_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateUserEmailAddressV4.create(
@@ -7243,7 +7243,7 @@ def public_update_user_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateUserV4.create(
@@ -7305,7 +7305,7 @@ async def public_update_user_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpdateUserV4.create(
@@ -7360,7 +7360,7 @@ def public_upgrade_headless_account_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpgradeHeadlessAccountV4.create(
@@ -7413,7 +7413,7 @@ async def public_upgrade_headless_account_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpgradeHeadlessAccountV4.create(
@@ -7481,7 +7481,7 @@ def public_upgrade_headless_account_with_verification_code_v4(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpgradeHeadlessAccountWithVerificationCodeV4.create(
@@ -7547,7 +7547,7 @@ async def public_upgrade_headless_account_with_verification_code_v4_async(
         500: Internal Server Error - RestErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicUpgradeHeadlessAccountWithVerificationCodeV4.create(

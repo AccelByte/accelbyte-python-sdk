@@ -132,7 +132,7 @@ def create_leaderboard_configuration_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateLeaderboardConfigurationAdminV3.create(
@@ -210,7 +210,7 @@ async def create_leaderboard_configuration_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateLeaderboardConfigurationAdminV3.create(
@@ -262,7 +262,7 @@ def delete_bulk_leaderboard_configuration_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteBulkLeaderboardConfigurationAdminV3.create(
@@ -312,7 +312,7 @@ async def delete_bulk_leaderboard_configuration_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteBulkLeaderboardConfigurationAdminV3.create(
@@ -366,7 +366,7 @@ def delete_leaderboard_configuration_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteLeaderboardConfigurationAdminV3.create(
@@ -418,7 +418,7 @@ async def delete_leaderboard_configuration_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteLeaderboardConfigurationAdminV3.create(
@@ -472,7 +472,7 @@ def get_leaderboard_configuration_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLeaderboardConfigurationAdminV3.create(
@@ -524,7 +524,7 @@ async def get_leaderboard_configuration_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLeaderboardConfigurationAdminV3.create(
@@ -578,7 +578,7 @@ def get_leaderboard_configuration_public_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLeaderboardConfigurationPublicV3.create(
@@ -630,7 +630,7 @@ async def get_leaderboard_configuration_public_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLeaderboardConfigurationPublicV3.create(
@@ -688,7 +688,7 @@ def get_leaderboard_configurations_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLeaderboardConfigurationsAdminV3.create(
@@ -746,7 +746,7 @@ async def get_leaderboard_configurations_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLeaderboardConfigurationsAdminV3.create(
@@ -806,7 +806,7 @@ def get_leaderboard_configurations_public_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLeaderboardConfigurationsPublicV3.create(
@@ -864,7 +864,7 @@ async def get_leaderboard_configurations_public_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLeaderboardConfigurationsPublicV3.create(
@@ -935,7 +935,7 @@ def hard_delete_leaderboard_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = HardDeleteLeaderboardAdminV3.create(
@@ -1002,7 +1002,7 @@ async def hard_delete_leaderboard_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = HardDeleteLeaderboardAdminV3.create(
@@ -1087,7 +1087,7 @@ def update_leaderboard_configuration_admin_v3(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateLeaderboardConfigurationAdminV3.create(
@@ -1171,7 +1171,7 @@ async def update_leaderboard_configuration_admin_v3_async(
         500: Internal Server Error - ResponseErrorResponse (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateLeaderboardConfigurationAdminV3.create(

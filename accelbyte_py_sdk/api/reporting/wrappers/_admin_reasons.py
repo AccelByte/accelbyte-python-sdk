@@ -85,7 +85,7 @@ def admin_get_all_reasons(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetAllReasons.create(
@@ -125,7 +125,7 @@ async def admin_get_all_reasons_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetAllReasons.create(
@@ -172,7 +172,7 @@ def admin_get_reason(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetReason.create(
@@ -218,7 +218,7 @@ async def admin_get_reason_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetReason.create(
@@ -275,7 +275,7 @@ def admin_get_reasons(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetReasons.create(
@@ -333,7 +333,7 @@ async def admin_get_reasons_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetReasons.create(
@@ -387,7 +387,7 @@ def admin_get_unused_reasons(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetUnusedReasons.create(
@@ -437,7 +437,7 @@ async def admin_get_unused_reasons_async(
         500: Internal Server Error - RestapiErrorResponse (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetUnusedReasons.create(
@@ -488,7 +488,7 @@ def admin_list_reason_groups(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListReasonGroups.create(
@@ -537,7 +537,7 @@ async def admin_list_reason_groups_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListReasonGroups.create(
@@ -588,7 +588,7 @@ def create_reason(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateReason.create(
@@ -636,7 +636,7 @@ async def create_reason_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateReason.create(
@@ -688,7 +688,7 @@ def create_reason_group(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateReasonGroup.create(
@@ -738,7 +738,7 @@ async def create_reason_group_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateReasonGroup.create(
@@ -784,7 +784,7 @@ def delete_reason(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteReason.create(
@@ -828,7 +828,7 @@ async def delete_reason_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteReason.create(
@@ -874,7 +874,7 @@ def delete_reason_group(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteReasonGroup.create(
@@ -918,7 +918,7 @@ async def delete_reason_group_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteReasonGroup.create(
@@ -964,7 +964,7 @@ def get_reason_group(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetReasonGroup.create(
@@ -1008,7 +1008,7 @@ async def get_reason_group_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetReasonGroup.create(
@@ -1061,7 +1061,7 @@ def update_reason(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateReason.create(
@@ -1113,7 +1113,7 @@ async def update_reason_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateReason.create(
@@ -1168,7 +1168,7 @@ def update_reason_group(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateReasonGroup.create(
@@ -1221,7 +1221,7 @@ async def update_reason_group_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateReasonGroup.create(

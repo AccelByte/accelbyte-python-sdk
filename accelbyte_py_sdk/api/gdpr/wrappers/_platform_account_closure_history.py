@@ -93,7 +93,7 @@ def admin_get_user_platform_account_closure_histories(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetUserPlatformAccountClosureHistories.create(
@@ -162,7 +162,7 @@ async def admin_get_user_platform_account_closure_histories_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetUserPlatformAccountClosureHistories.create(

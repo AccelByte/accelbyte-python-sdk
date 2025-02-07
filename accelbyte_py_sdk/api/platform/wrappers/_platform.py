@@ -73,7 +73,7 @@ def get_psn_entitlement_ownership(
         200: OK - Ownership (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPsnEntitlementOwnership.create(
@@ -119,7 +119,7 @@ async def get_psn_entitlement_ownership_async(
         200: OK - Ownership (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPsnEntitlementOwnership.create(
@@ -167,7 +167,7 @@ def get_xbox_entitlement_ownership(
         200: OK - PlatformOwnership (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetXboxEntitlementOwnership.create(
@@ -213,7 +213,7 @@ async def get_xbox_entitlement_ownership_async(
         200: OK - PlatformOwnership (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetXboxEntitlementOwnership.create(

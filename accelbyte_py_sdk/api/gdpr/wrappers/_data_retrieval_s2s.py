@@ -92,7 +92,7 @@ def s2s_generate_personal_data_url(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SGeneratePersonalDataURL.create(
@@ -153,7 +153,7 @@ async def s2s_generate_personal_data_url_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SGeneratePersonalDataURL.create(
@@ -210,7 +210,7 @@ def s2s_get_data_request_by_request_id(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SGetDataRequestByRequestID.create(
@@ -264,7 +264,7 @@ async def s2s_get_data_request_by_request_id_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SGetDataRequestByRequestID.create(
@@ -329,7 +329,7 @@ def s2s_get_list_finished_personal_data_request(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SGetListFinishedPersonalDataRequest.create(
@@ -393,7 +393,7 @@ async def s2s_get_list_finished_personal_data_request_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SGetListFinishedPersonalDataRequest.create(
@@ -457,7 +457,7 @@ def s2s_request_data_retrieval(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SRequestDataRetrieval.create(
@@ -518,7 +518,7 @@ async def s2s_request_data_retrieval_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = S2SRequestDataRetrieval.create(

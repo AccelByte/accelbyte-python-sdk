@@ -1,3 +1,8 @@
+<a name="v0.73.1"></a>
+## [v0.73.1]
+### fix
+- **all**: fix auto fill namespace not working when using `sdk` parameter
+
 <a name="v0.73.0"></a>
 ## [v0.73.0]
 ### test

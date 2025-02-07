@@ -71,7 +71,7 @@ def retrieve_eligibilities_public(
         404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveEligibilitiesPublic.create(
@@ -114,7 +114,7 @@ async def retrieve_eligibilities_public_async(
         404: Not Found - ErrorEntity (40041: errors.net.accelbyte.platform.legal.policy_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveEligibilitiesPublic.create(
@@ -166,7 +166,7 @@ def retrieve_eligibilities_public_indirect(
         400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveEligibilitiesPublicIndirect.create(
@@ -219,7 +219,7 @@ async def retrieve_eligibilities_public_indirect_async(
         400: Bad Request - ErrorEntity (40045: errors.net.accelbyte.platform.legal.user_id_needed)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RetrieveEligibilitiesPublicIndirect.create(

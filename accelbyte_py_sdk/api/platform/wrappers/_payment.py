@@ -118,7 +118,7 @@ def charge_payment_order(
         409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ChargePaymentOrder.create(
@@ -173,7 +173,7 @@ async def charge_payment_order_async(
         409: Conflict - ErrorEntity (33171: Invalid payment order status [{status}] for payment order [{paymentOrderNo}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ChargePaymentOrder.create(
@@ -253,7 +253,7 @@ def create_user_payment_order(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateUserPaymentOrder.create(
@@ -331,7 +331,7 @@ async def create_user_payment_order_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateUserPaymentOrder.create(
@@ -381,7 +381,7 @@ def get_payment_order(
         404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPaymentOrder.create(
@@ -428,7 +428,7 @@ async def get_payment_order_async(
         404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPaymentOrder.create(
@@ -477,7 +477,7 @@ def get_payment_order_charge_status(
         404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPaymentOrderChargeStatus.create(
@@ -524,7 +524,7 @@ async def get_payment_order_charge_status_async(
         404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPaymentOrderChargeStatus.create(
@@ -571,7 +571,7 @@ def list_ext_order_no_by_ext_tx_id(
         200: OK - List[str] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListExtOrderNoByExtTxId.create(
@@ -616,7 +616,7 @@ async def list_ext_order_no_by_ext_tx_id_async(
         200: OK - List[str] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListExtOrderNoByExtTxId.create(
@@ -689,7 +689,7 @@ def query_payment_notifications(
         200: OK - PaymentNotificationPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryPaymentNotifications.create(
@@ -768,7 +768,7 @@ async def query_payment_notifications_async(
         200: OK - PaymentNotificationPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryPaymentNotifications.create(
@@ -835,7 +835,7 @@ def query_payment_orders(
         200: OK - PaymentOrderPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryPaymentOrders.create(
@@ -896,7 +896,7 @@ async def query_payment_orders_async(
         200: OK - PaymentOrderPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryPaymentOrders.create(
@@ -956,7 +956,7 @@ def refund_user_payment_order(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RefundUserPaymentOrder.create(
@@ -1012,7 +1012,7 @@ async def refund_user_payment_order_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RefundUserPaymentOrder.create(
@@ -1068,7 +1068,7 @@ def simulate_payment_order_notification(
         404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SimulatePaymentOrderNotification.create(
@@ -1121,7 +1121,7 @@ async def simulate_payment_order_notification_async(
         404: Not Found - ErrorEntity (33141: Payment Order [{paymentOrderNo}] does not exist)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SimulatePaymentOrderNotification.create(

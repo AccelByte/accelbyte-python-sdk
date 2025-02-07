@@ -94,7 +94,7 @@ def query_third_party_notifications(
         200: OK - NotificationPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryThirdPartyNotifications.create(
@@ -167,7 +167,7 @@ async def query_third_party_notifications_async(
         200: OK - NotificationPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryThirdPartyNotifications.create(

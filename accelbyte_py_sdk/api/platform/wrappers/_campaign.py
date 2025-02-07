@@ -122,7 +122,7 @@ def apply_user_redemption(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ApplyUserRedemption.create(
@@ -177,7 +177,7 @@ async def apply_user_redemption_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ApplyUserRedemption.create(
@@ -233,7 +233,7 @@ def bulk_disable_codes(
         200: OK - BulkOperationResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkDisableCodes.create(
@@ -288,7 +288,7 @@ async def bulk_disable_codes_async(
         200: OK - BulkOperationResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkDisableCodes.create(
@@ -343,7 +343,7 @@ def bulk_enable_codes(
         200: OK - BulkOperationResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkEnableCodes.create(
@@ -396,7 +396,7 @@ async def bulk_enable_codes_async(
         200: OK - BulkOperationResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkEnableCodes.create(
@@ -451,7 +451,7 @@ def create_campaign(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateCampaign.create(
@@ -502,7 +502,7 @@ async def create_campaign_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateCampaign.create(
@@ -558,7 +558,7 @@ def create_codes(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateCodes.create(
@@ -613,7 +613,7 @@ async def create_codes_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateCodes.create(
@@ -665,7 +665,7 @@ def disable_code(
         404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}] | 37176: Code [{code}] has been redeemed in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DisableCode.create(
@@ -714,7 +714,7 @@ async def disable_code_async(
         404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}] | 37176: Code [{code}] has been redeemed in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DisableCode.create(
@@ -771,7 +771,7 @@ def download(
         200: OK - Any (Successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = Download.create(
@@ -829,7 +829,7 @@ async def download_async(
         200: OK - Any (Successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = Download.create(
@@ -881,7 +881,7 @@ def enable_code(
         404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = EnableCode.create(
@@ -928,7 +928,7 @@ async def enable_code_async(
         404: Not Found - ErrorEntity (37142: Code [{code}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = EnableCode.create(
@@ -977,7 +977,7 @@ def get_campaign(
         404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCampaign.create(
@@ -1024,7 +1024,7 @@ async def get_campaign_async(
         404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCampaign.create(
@@ -1073,7 +1073,7 @@ def get_campaign_dynamic(
         404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCampaignDynamic.create(
@@ -1120,7 +1120,7 @@ async def get_campaign_dynamic_async(
         404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCampaignDynamic.create(
@@ -1177,7 +1177,7 @@ def get_code(
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCode.create(
@@ -1234,7 +1234,7 @@ async def get_code_async(
         409: Conflict - ErrorEntity (37172: Campaign [{campaignId}] is inactive in namespace [{namespace}] | 37173: Code [{code}] is inactive in namespace [{namespace}] | 37174: Exceeded max redeem count per code [{maxCount}] | 37177: Code redemption not started | 37178: Code redemption already ended)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCode.create(
@@ -1289,7 +1289,7 @@ def query_campaign_batch_names(
         200: OK - List[CampaignBatchNameInfo] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryCampaignBatchNames.create(
@@ -1342,7 +1342,7 @@ async def query_campaign_batch_names_async(
         200: OK - List[CampaignBatchNameInfo] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryCampaignBatchNames.create(
@@ -1400,7 +1400,7 @@ def query_campaigns(
         200: OK - CampaignPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryCampaigns.create(
@@ -1457,7 +1457,7 @@ async def query_campaigns_async(
         200: OK - CampaignPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryCampaigns.create(
@@ -1529,7 +1529,7 @@ def query_codes(
         200: OK - CodeInfoPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryCodes.create(
@@ -1603,7 +1603,7 @@ async def query_codes_async(
         200: OK - CodeInfoPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryCodes.create(
@@ -1669,7 +1669,7 @@ def query_redeem_history(
         200: OK - RedeemHistoryPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryRedeemHistory.create(
@@ -1730,7 +1730,7 @@ async def query_redeem_history_async(
         200: OK - RedeemHistoryPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryRedeemHistory.create(
@@ -1784,7 +1784,7 @@ def rename_batch(
         404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}] | 37143: Batch name [{batchName}] does not exist for campaign [{campaignId}] in namespace [{namespace}].)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RenameBatch.create(
@@ -1833,7 +1833,7 @@ async def rename_batch_async(
         404: Not Found - ErrorEntity (37141: Campaign [{campaignId}] does not exist in namespace [{namespace}] | 37143: Batch name [{batchName}] does not exist for campaign [{campaignId}] in namespace [{namespace}].)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RenameBatch.create(
@@ -1890,7 +1890,7 @@ def update_campaign(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateCampaign.create(
@@ -1945,7 +1945,7 @@ async def update_campaign_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateCampaign.create(

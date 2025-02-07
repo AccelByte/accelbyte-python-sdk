@@ -76,7 +76,7 @@ def anonymize_user_profile(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeUserProfile.create(
@@ -127,7 +127,7 @@ async def anonymize_user_profile_async(
         403: Forbidden - ErrorEntity (20013: insufficient permission)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AnonymizeUserProfile.create(

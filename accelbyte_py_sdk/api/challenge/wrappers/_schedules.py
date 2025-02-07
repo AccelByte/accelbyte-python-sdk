@@ -96,7 +96,7 @@ def admin_list_schedules(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListSchedules.create(
@@ -166,7 +166,7 @@ async def admin_list_schedules_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListSchedules.create(
@@ -238,7 +238,7 @@ def admin_list_schedules_by_goal(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListSchedulesByGoal.create(
@@ -308,7 +308,7 @@ async def admin_list_schedules_by_goal_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListSchedulesByGoal.create(
@@ -377,7 +377,7 @@ def public_list_schedules(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListSchedules.create(
@@ -443,7 +443,7 @@ async def public_list_schedules_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListSchedules.create(
@@ -511,7 +511,7 @@ def public_list_schedules_by_goal(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListSchedulesByGoal.create(
@@ -577,7 +577,7 @@ async def public_list_schedules_by_goal_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListSchedulesByGoal.create(

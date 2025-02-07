@@ -92,7 +92,7 @@ def admin_delete_game_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18320: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteGameBinaryRecordV1.create(
@@ -144,7 +144,7 @@ async def admin_delete_game_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18320: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteGameBinaryRecordV1.create(
@@ -196,7 +196,7 @@ def admin_get_game_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18301: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetGameBinaryRecordV1.create(
@@ -246,7 +246,7 @@ async def admin_get_game_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18301: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetGameBinaryRecordV1.create(
@@ -307,7 +307,7 @@ def admin_list_game_binary_records_v1(
         500: Internal Server Error - ModelsResponseError (18301: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListGameBinaryRecordsV1.create(
@@ -369,7 +369,7 @@ async def admin_list_game_binary_records_v1_async(
         500: Internal Server Error - ModelsResponseError (18301: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListGameBinaryRecordsV1.create(
@@ -433,7 +433,7 @@ def admin_post_game_binary_presigned_urlv1(
         500: Internal Server Error - ModelsResponseError (18312: unable to get record | 18314: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostGameBinaryPresignedURLV1.create(
@@ -493,7 +493,7 @@ async def admin_post_game_binary_presigned_urlv1_async(
         500: Internal Server Error - ModelsResponseError (18312: unable to get record | 18314: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostGameBinaryPresignedURLV1.create(
@@ -559,7 +559,7 @@ def admin_post_game_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18301: unable to get record | 18307: unable to save record | 18310: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostGameBinaryRecordV1.create(
@@ -622,7 +622,7 @@ async def admin_post_game_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18301: unable to get record | 18307: unable to save record | 18310: unable to get presigned URL)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostGameBinaryRecordV1.create(
@@ -679,7 +679,7 @@ def admin_put_game_binary_recor_metadata_v1(
         500: Internal Server Error - ModelsResponseError (18318: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutGameBinaryRecorMetadataV1.create(
@@ -735,7 +735,7 @@ async def admin_put_game_binary_recor_metadata_v1_async(
         500: Internal Server Error - ModelsResponseError (18318: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutGameBinaryRecorMetadataV1.create(
@@ -793,7 +793,7 @@ def admin_put_game_binary_record_v1(
         500: Internal Server Error - ModelsResponseError (18318: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutGameBinaryRecordV1.create(
@@ -849,7 +849,7 @@ async def admin_put_game_binary_record_v1_async(
         500: Internal Server Error - ModelsResponseError (18318: unable to update record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutGameBinaryRecordV1.create(

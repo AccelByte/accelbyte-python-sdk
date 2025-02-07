@@ -95,7 +95,7 @@ def commit(
         200: OK - TradeChainActionHistoryInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = Commit.create(
@@ -160,7 +160,7 @@ async def commit_async(
         200: OK - TradeChainActionHistoryInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = Commit.create(
@@ -220,7 +220,7 @@ def get_trade_history_by_criteria(
         200: OK - TradeActionPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTradeHistoryByCriteria.create(
@@ -282,7 +282,7 @@ async def get_trade_history_by_criteria_async(
         200: OK - TradeActionPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTradeHistoryByCriteria.create(
@@ -334,7 +334,7 @@ def get_trade_history_by_transaction_id(
         200: OK - TradeChainActionHistoryInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTradeHistoryByTransactionId.create(
@@ -380,7 +380,7 @@ async def get_trade_history_by_transaction_id_async(
         200: OK - TradeChainActionHistoryInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTradeHistoryByTransactionId.create(

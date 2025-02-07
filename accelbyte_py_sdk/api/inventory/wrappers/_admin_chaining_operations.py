@@ -92,7 +92,7 @@ def admin_create_chaining_operations(
         500: Internal Server Error - ApimodelsChainingOperationResp (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateChainingOperations.create(
@@ -159,7 +159,7 @@ async def admin_create_chaining_operations_async(
         500: Internal Server Error - ApimodelsChainingOperationResp (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateChainingOperations.create(

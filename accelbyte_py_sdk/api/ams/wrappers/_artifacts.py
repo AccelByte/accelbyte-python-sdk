@@ -91,7 +91,7 @@ def artifact_bulk_delete(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ArtifactBulkDelete.create(
@@ -149,7 +149,7 @@ async def artifact_bulk_delete_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ArtifactBulkDelete.create(
@@ -205,7 +205,7 @@ def artifact_delete(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ArtifactDelete.create(
@@ -257,7 +257,7 @@ async def artifact_delete_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ArtifactDelete.create(
@@ -350,7 +350,7 @@ def artifact_get(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ArtifactGet.create(
@@ -454,7 +454,7 @@ async def artifact_get_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ArtifactGet.create(
@@ -521,7 +521,7 @@ def artifact_get_url(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ArtifactGetURL.create(
@@ -573,7 +573,7 @@ async def artifact_get_url_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ArtifactGetURL.create(
@@ -620,7 +620,7 @@ def artifact_usage_get(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ArtifactUsageGet.create(
@@ -664,7 +664,7 @@ async def artifact_usage_get_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ArtifactUsageGet.create(
@@ -717,7 +717,7 @@ def fleet_artifact_sampling_rules_get(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetArtifactSamplingRulesGet.create(
@@ -769,7 +769,7 @@ async def fleet_artifact_sampling_rules_get_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetArtifactSamplingRulesGet.create(
@@ -826,7 +826,7 @@ def fleet_artifact_sampling_rules_set(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetArtifactSamplingRulesSet.create(
@@ -882,7 +882,7 @@ async def fleet_artifact_sampling_rules_set_async(
         500: Internal Server Error - ResponseErrorResponse (internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FleetArtifactSamplingRulesSet.create(

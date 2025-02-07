@@ -328,7 +328,7 @@ def create_template(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateTemplate.create(
@@ -382,7 +382,7 @@ async def create_template_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateTemplate.create(
@@ -437,7 +437,7 @@ def delete_template_localization(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteTemplateLocalization.create(
@@ -491,7 +491,7 @@ async def delete_template_localization_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteTemplateLocalization.create(
@@ -544,7 +544,7 @@ def delete_template_slug(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteTemplateSlug.create(
@@ -594,7 +594,7 @@ async def delete_template_slug_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteTemplateSlug.create(
@@ -646,7 +646,7 @@ def free_form_notification(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FreeFormNotification.create(
@@ -696,7 +696,7 @@ async def free_form_notification_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FreeFormNotification.create(
@@ -745,7 +745,7 @@ def get_game_template(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGameTemplate.create(
@@ -791,7 +791,7 @@ async def get_game_template_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetGameTemplate.create(
@@ -845,7 +845,7 @@ def get_localization_template(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLocalizationTemplate.create(
@@ -899,7 +899,7 @@ async def get_localization_template_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetLocalizationTemplate.create(
@@ -961,7 +961,7 @@ def get_slug_template(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSlugTemplate.create(
@@ -1023,7 +1023,7 @@ async def get_slug_template_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSlugTemplate.create(
@@ -1083,7 +1083,7 @@ def notification_with_template(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = NotificationWithTemplate.create(
@@ -1138,7 +1138,7 @@ async def notification_with_template_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = NotificationWithTemplate.create(
@@ -1193,7 +1193,7 @@ def publish_template(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublishTemplate.create(
@@ -1247,7 +1247,7 @@ async def publish_template_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublishTemplate.create(
@@ -1306,7 +1306,7 @@ def update_localization_template(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateLocalizationTemplate.create(
@@ -1364,7 +1364,7 @@ async def update_localization_template_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateLocalizationTemplate.create(

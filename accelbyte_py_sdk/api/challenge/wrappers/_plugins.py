@@ -82,7 +82,7 @@ def admin_create_assignment_plugin(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateAssignmentPlugin.create(
@@ -132,7 +132,7 @@ async def admin_create_assignment_plugin_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateAssignmentPlugin.create(
@@ -183,7 +183,7 @@ def admin_delete_assignment_plugin(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAssignmentPlugin.create(
@@ -231,7 +231,7 @@ async def admin_delete_assignment_plugin_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteAssignmentPlugin.create(
@@ -281,7 +281,7 @@ def admin_get_assignment_plugin(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetAssignmentPlugin.create(
@@ -329,7 +329,7 @@ async def admin_get_assignment_plugin_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetAssignmentPlugin.create(
@@ -382,7 +382,7 @@ def admin_update_assignment_plugin(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateAssignmentPlugin.create(
@@ -434,7 +434,7 @@ async def admin_update_assignment_plugin_async(
         500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateAssignmentPlugin.create(

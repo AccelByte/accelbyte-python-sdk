@@ -114,7 +114,7 @@ def add_player_to_session(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AddPlayerToSession.create(
@@ -167,7 +167,7 @@ async def add_player_to_session_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AddPlayerToSession.create(
@@ -219,7 +219,7 @@ def admin_delete_session(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteSession.create(
@@ -268,7 +268,7 @@ async def admin_delete_session_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteSession.create(
@@ -317,7 +317,7 @@ def admin_get_session(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetSession.create(
@@ -364,7 +364,7 @@ async def admin_get_session_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetSession.create(
@@ -440,7 +440,7 @@ def admin_query_session(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminQuerySession.create(
@@ -523,7 +523,7 @@ async def admin_query_session_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminQuerySession.create(
@@ -610,7 +610,7 @@ def admin_search_sessions_v2(
         500: Internal Server Error - ResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSearchSessionsV2.create(
@@ -694,7 +694,7 @@ async def admin_search_sessions_v2_async(
         500: Internal Server Error - ResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminSearchSessionsV2.create(
@@ -755,7 +755,7 @@ def create_session(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateSession.create(
@@ -806,7 +806,7 @@ async def create_session_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateSession.create(
@@ -857,7 +857,7 @@ def delete_session(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteSession.create(
@@ -906,7 +906,7 @@ async def delete_session_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteSession.create(
@@ -957,7 +957,7 @@ def delete_session_local_ds(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteSessionLocalDS.create(
@@ -1006,7 +1006,7 @@ async def delete_session_local_ds_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteSessionLocalDS.create(
@@ -1064,7 +1064,7 @@ def get_active_custom_game_sessions(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetActiveCustomGameSessions.create(
@@ -1123,7 +1123,7 @@ async def get_active_custom_game_sessions_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetActiveCustomGameSessions.create(
@@ -1187,7 +1187,7 @@ def get_active_matchmaking_game_sessions(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetActiveMatchmakingGameSessions.create(
@@ -1250,7 +1250,7 @@ async def get_active_matchmaking_game_sessions_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetActiveMatchmakingGameSessions.create(
@@ -1303,7 +1303,7 @@ def get_recent_player(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetRecentPlayer.create(
@@ -1350,7 +1350,7 @@ async def get_recent_player_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetRecentPlayer.create(
@@ -1399,7 +1399,7 @@ def get_session(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSession.create(
@@ -1446,7 +1446,7 @@ async def get_session_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSession.create(
@@ -1495,7 +1495,7 @@ def get_session_by_user_i_ds(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSessionByUserIDs.create(
@@ -1542,7 +1542,7 @@ async def get_session_by_user_i_ds_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSessionByUserIDs.create(
@@ -1597,7 +1597,7 @@ def get_session_history_detailed(
         500: Internal Server Error - RestapiErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSessionHistoryDetailed.create(
@@ -1650,7 +1650,7 @@ async def get_session_history_detailed_async(
         500: Internal Server Error - RestapiErrorV1 (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSessionHistoryDetailed.create(
@@ -1699,7 +1699,7 @@ def get_total_active_session(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTotalActiveSession.create(
@@ -1746,7 +1746,7 @@ async def get_total_active_session_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTotalActiveSession.create(
@@ -1802,7 +1802,7 @@ def join_session(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = JoinSession.create(
@@ -1857,7 +1857,7 @@ async def join_session_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = JoinSession.create(
@@ -1912,7 +1912,7 @@ def remove_player_from_session(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RemovePlayerFromSession.create(
@@ -1965,7 +1965,7 @@ async def remove_player_from_session_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RemovePlayerFromSession.create(
@@ -2020,7 +2020,7 @@ def update_session(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateSession.create(
@@ -2073,7 +2073,7 @@ async def update_session_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateSession.create(
@@ -2128,7 +2128,7 @@ def update_settings(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateSettings.create(
@@ -2181,7 +2181,7 @@ async def update_settings_async(
         500: Internal Server Error - RestapiErrorResponseV2 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateSettings.create(
@@ -2258,7 +2258,7 @@ def user_query_session(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserQuerySession.create(
@@ -2341,7 +2341,7 @@ async def user_query_session_async(
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UserQuerySession.create(

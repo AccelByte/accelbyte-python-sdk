@@ -109,7 +109,7 @@ def admin_bulk_get_player_records_by_user_i_ds_handler_v1(
         500: Internal Server Error - ModelsResponseError (18124: unable to get record | 18006: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkGetPlayerRecordsByUserIDsHandlerV1.create(
@@ -164,7 +164,7 @@ async def admin_bulk_get_player_records_by_user_i_ds_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18124: unable to get record | 18006: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkGetPlayerRecordsByUserIDsHandlerV1.create(
@@ -231,7 +231,7 @@ def admin_bulk_put_player_records_by_key_handler_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkPutPlayerRecordsByKeyHandlerV1.create(
@@ -296,7 +296,7 @@ async def admin_bulk_put_player_records_by_key_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminBulkPutPlayerRecordsByKeyHandlerV1.create(
@@ -364,7 +364,7 @@ def admin_delete_player_public_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (18120: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeletePlayerPublicRecordHandlerV1.create(
@@ -430,7 +430,7 @@ async def admin_delete_player_public_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18120: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeletePlayerPublicRecordHandlerV1.create(
@@ -484,7 +484,7 @@ def admin_delete_player_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (18070: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeletePlayerRecordHandlerV1.create(
@@ -536,7 +536,7 @@ async def admin_delete_player_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18070: unable to delete record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeletePlayerRecordHandlerV1.create(
@@ -592,7 +592,7 @@ def admin_get_player_public_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (18080: unable to get record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerPublicRecordHandlerV1.create(
@@ -646,7 +646,7 @@ async def admin_get_player_public_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18080: unable to get record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerPublicRecordHandlerV1.create(
@@ -702,7 +702,7 @@ def admin_get_player_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (18020: unable to get record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerRecordHandlerV1.create(
@@ -756,7 +756,7 @@ async def admin_get_player_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18020: unable to get record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerRecordHandlerV1.create(
@@ -812,7 +812,7 @@ def admin_get_player_record_size_handler_v1(
         500: Internal Server Error - ModelsResponseError (18020: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerRecordSizeHandlerV1.create(
@@ -866,7 +866,7 @@ async def admin_get_player_record_size_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18020: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerRecordSizeHandlerV1.create(
@@ -925,7 +925,7 @@ def admin_get_player_records_handler_v1(
         500: Internal Server Error - ModelsResponseError (18124: unable to get record | 18006: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerRecordsHandlerV1.create(
@@ -982,7 +982,7 @@ async def admin_get_player_records_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18124: unable to get record | 18006: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetPlayerRecordsHandlerV1.create(
@@ -1082,7 +1082,7 @@ def admin_post_player_public_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18033: unable to save record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostPlayerPublicRecordHandlerV1.create(
@@ -1181,7 +1181,7 @@ async def admin_post_player_public_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18033: unable to save record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostPlayerPublicRecordHandlerV1.create(
@@ -1310,7 +1310,7 @@ def admin_post_player_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18033: unable to save record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostPlayerRecordHandlerV1.create(
@@ -1437,7 +1437,7 @@ async def admin_post_player_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18033: unable to save record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostPlayerRecordHandlerV1.create(
@@ -1526,7 +1526,7 @@ def admin_put_player_public_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutPlayerPublicRecordHandlerV1.create(
@@ -1613,7 +1613,7 @@ async def admin_put_player_public_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutPlayerPublicRecordHandlerV1.create(
@@ -1730,7 +1730,7 @@ def admin_put_player_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutPlayerRecordHandlerV1.create(
@@ -1845,7 +1845,7 @@ async def admin_put_player_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18061: unable to update record | 18005: unable to decode record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutPlayerRecordHandlerV1.create(
@@ -1911,7 +1911,7 @@ def admin_put_player_records_handler_v1(
         403: Forbidden - ModelsResponseError (20013: insufficient permission)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutPlayerRecordsHandlerV1.create(
@@ -1974,7 +1974,7 @@ async def admin_put_player_records_handler_v1_async(
         403: Forbidden - ModelsResponseError (20013: insufficient permission)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPutPlayerRecordsHandlerV1.create(
@@ -2039,7 +2039,7 @@ def admin_retrieve_player_records(
         500: Internal Server Error - ModelsResponseError (18114: unable to retrieve list of key records)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminRetrievePlayerRecords.create(
@@ -2105,7 +2105,7 @@ async def admin_retrieve_player_records_async(
         500: Internal Server Error - ModelsResponseError (18114: unable to retrieve list of key records)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminRetrievePlayerRecords.create(
@@ -2162,7 +2162,7 @@ def bulk_get_player_record_size_handler_v1(
         500: Internal Server Error - ModelsResponseError (18124: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetPlayerRecordSizeHandlerV1.create(
@@ -2213,7 +2213,7 @@ async def bulk_get_player_record_size_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18124: unable to get record)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = BulkGetPlayerRecordSizeHandlerV1.create(
@@ -2272,7 +2272,7 @@ def list_player_record_handler_v1(
         500: Internal Server Error - ModelsResponseError (18114: unable to retrieve list of key records)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListPlayerRecordHandlerV1.create(
@@ -2331,7 +2331,7 @@ async def list_player_record_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18114: unable to retrieve list of key records)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListPlayerRecordHandlerV1.create(

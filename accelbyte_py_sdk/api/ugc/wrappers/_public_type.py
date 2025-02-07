@@ -76,7 +76,7 @@ def get_type(
         500: Internal Server Error - ResponseError (771802: Unable get types)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetType.create(
@@ -128,7 +128,7 @@ async def get_type_async(
         500: Internal Server Error - ResponseError (771802: Unable get types)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetType.create(

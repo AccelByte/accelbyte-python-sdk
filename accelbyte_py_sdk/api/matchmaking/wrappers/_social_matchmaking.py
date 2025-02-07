@@ -83,7 +83,7 @@ def update_play_time_weight(
         500: Internal Server Error - ResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePlayTimeWeight.create(
@@ -138,7 +138,7 @@ async def update_play_time_weight_async(
         500: Internal Server Error - ResponseError (20000: internal server error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdatePlayTimeWeight.create(

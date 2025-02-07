@@ -232,7 +232,7 @@ def change_preference_consent(
         404: Not Found - ErrorEntity (40047: errors.net.accelbyte.platform.legal.user_agreement_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ChangePreferenceConsent.create(
@@ -280,7 +280,7 @@ async def change_preference_consent_async(
         404: Not Found - ErrorEntity (40047: errors.net.accelbyte.platform.legal.user_agreement_not_found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ChangePreferenceConsent.create(
@@ -493,7 +493,7 @@ def indirect_bulk_accept_versioned_policy_v2(
         201: Created - AcceptAgreementResponse (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = IndirectBulkAcceptVersionedPolicyV2.create(
@@ -548,7 +548,7 @@ async def indirect_bulk_accept_versioned_policy_v2_async(
         201: Created - AcceptAgreementResponse (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = IndirectBulkAcceptVersionedPolicyV2.create(

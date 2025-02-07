@@ -114,7 +114,7 @@ def clone_store(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CloneStore.create(
@@ -168,7 +168,7 @@ async def clone_store_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CloneStore.create(
@@ -221,7 +221,7 @@ def create_store(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateStore.create(
@@ -271,7 +271,7 @@ async def create_store_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateStore.create(
@@ -316,7 +316,7 @@ def delete_published_store(
         404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePublishedStore.create(
@@ -358,7 +358,7 @@ async def delete_published_store_async(
         404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeletePublishedStore.create(
@@ -408,7 +408,7 @@ def delete_store(
         409: Conflict - ErrorEntity (30173: Published store can't modify content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteStore.create(
@@ -457,7 +457,7 @@ async def delete_store_async(
         409: Conflict - ErrorEntity (30173: Published store can't modify content)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteStore.create(
@@ -498,7 +498,7 @@ def download_csv_templates(
         200: OK - Any (Successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DownloadCSVTemplates.create(
@@ -536,7 +536,7 @@ async def download_csv_templates_async(
         200: OK - Any (Successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DownloadCSVTemplates.create(
@@ -584,7 +584,7 @@ def export_store(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ExportStore.create(
@@ -631,7 +631,7 @@ async def export_store_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ExportStore.create(
@@ -680,7 +680,7 @@ def export_store_1(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ExportStore1.create(
@@ -728,7 +728,7 @@ async def export_store_1_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ExportStore1.create(
@@ -779,7 +779,7 @@ def export_store_by_csv(
         409: Conflict - ErrorEntity (30076: CSV header [{headerName}] is not supported for CatalogType [{catalogType}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ExportStoreByCSV.create(
@@ -827,7 +827,7 @@ async def export_store_by_csv_async(
         409: Conflict - ErrorEntity (30076: CSV header [{headerName}] is not supported for CatalogType [{catalogType}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ExportStoreByCSV.create(
@@ -868,7 +868,7 @@ def get_catalog_config(
         200: OK - CatalogConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCatalogConfig.create(
@@ -906,7 +906,7 @@ async def get_catalog_config_async(
         200: OK - CatalogConfigInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCatalogConfig.create(
@@ -953,7 +953,7 @@ def get_catalog_definition(
         200: OK - List[CatalogDefinitionInfo] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCatalogDefinition.create(
@@ -999,7 +999,7 @@ async def get_catalog_definition_async(
         200: OK - List[CatalogDefinitionInfo] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetCatalogDefinition.create(
@@ -1046,7 +1046,7 @@ def get_published_store(
         404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPublishedStore.create(
@@ -1090,7 +1090,7 @@ async def get_published_store_async(
         404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPublishedStore.create(
@@ -1136,7 +1136,7 @@ def get_published_store_backup(
         404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}] | 30143: Published store [{storeId}] backup does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPublishedStoreBackup.create(
@@ -1180,7 +1180,7 @@ async def get_published_store_backup_async(
         404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}] | 30143: Published store [{storeId}] backup does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetPublishedStoreBackup.create(
@@ -1229,7 +1229,7 @@ def get_store(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetStore.create(
@@ -1277,7 +1277,7 @@ async def get_store_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetStore.create(
@@ -1331,7 +1331,7 @@ def import_store(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ImportStore.create(
@@ -1384,7 +1384,7 @@ async def import_store_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ImportStore.create(
@@ -1439,7 +1439,7 @@ def import_store_1(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ImportStore1.create(
@@ -1493,7 +1493,7 @@ async def import_store_1_async(
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ImportStore1.create(
@@ -1560,7 +1560,7 @@ def import_store_by_csv(
         409: Conflict - ErrorEntity (30076: CSV header [{headerName}] is not supported for CatalogType [{catalogType}] | 30382: Duplicated Item sku [{sku}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ImportStoreByCSV.create(
@@ -1628,7 +1628,7 @@ async def import_store_by_csv_async(
         409: Conflict - ErrorEntity (30076: CSV header [{headerName}] is not supported for CatalogType [{catalogType}] | 30382: Duplicated Item sku [{sku}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ImportStoreByCSV.create(
@@ -1678,7 +1678,7 @@ def list_stores(
         200: OK - List[StoreInfo] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListStores.create(
@@ -1720,7 +1720,7 @@ async def list_stores_async(
         200: OK - List[StoreInfo] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = ListStores.create(
@@ -1766,7 +1766,7 @@ def public_list_stores(
         200: OK - List[StoreInfo] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListStores.create(
@@ -1810,7 +1810,7 @@ async def public_list_stores_async(
         200: OK - List[StoreInfo] (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListStores.create(
@@ -1873,7 +1873,7 @@ def query_import_history(
         400: Bad Request - ErrorEntity (20027: Invalid time range)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryImportHistory.create(
@@ -1941,7 +1941,7 @@ async def query_import_history_async(
         400: Bad Request - ErrorEntity (20027: Invalid time range)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryImportHistory.create(
@@ -1994,7 +1994,7 @@ def rollback_published_store(
         404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}] | 30143: Published store [{storeId}] backup does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RollbackPublishedStore.create(
@@ -2038,7 +2038,7 @@ async def rollback_published_store_async(
         404: Not Found - ErrorEntity (30142: Published store does not exist in namespace [{namespace}] | 30143: Published store [{storeId}] backup does not exist in namespace [{namespace}])
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = RollbackPublishedStore.create(
@@ -2085,7 +2085,7 @@ def update_catalog_config(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateCatalogConfig.create(
@@ -2131,7 +2131,7 @@ async def update_catalog_config_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateCatalogConfig.create(
@@ -2188,7 +2188,7 @@ def update_store(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateStore.create(
@@ -2244,7 +2244,7 @@ async def update_store_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateStore.create(

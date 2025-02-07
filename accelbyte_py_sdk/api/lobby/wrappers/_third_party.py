@@ -86,7 +86,7 @@ def admin_create_third_party_config(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateThirdPartyConfig.create(
@@ -139,7 +139,7 @@ async def admin_create_third_party_config_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminCreateThirdPartyConfig.create(
@@ -191,7 +191,7 @@ def admin_delete_third_party_config(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteThirdPartyConfig.create(
@@ -240,7 +240,7 @@ async def admin_delete_third_party_config_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteThirdPartyConfig.create(
@@ -289,7 +289,7 @@ def admin_get_third_party_config(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetThirdPartyConfig.create(
@@ -336,7 +336,7 @@ async def admin_get_third_party_config_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminGetThirdPartyConfig.create(
@@ -388,7 +388,7 @@ def admin_update_third_party_config(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateThirdPartyConfig.create(
@@ -439,7 +439,7 @@ async def admin_update_third_party_config_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminUpdateThirdPartyConfig.create(

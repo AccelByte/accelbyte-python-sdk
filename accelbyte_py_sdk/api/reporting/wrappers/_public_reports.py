@@ -89,7 +89,7 @@ def submit_report(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SubmitReport.create(
@@ -147,7 +147,7 @@ async def submit_report_async(
         500: Internal Server Error - RestapiErrorResponse
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SubmitReport.create(

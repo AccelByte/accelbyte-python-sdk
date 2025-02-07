@@ -85,7 +85,7 @@ def public_list_content_like_v2(
         500: Internal Server Error - ResponseError (771006: unable to get list of content like: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListContentLikeV2.create(
@@ -145,7 +145,7 @@ async def public_list_content_like_v2_async(
         500: Internal Server Error - ResponseError (771006: unable to get list of content like: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublicListContentLikeV2.create(
@@ -205,7 +205,7 @@ def update_content_like_status_v2(
         500: Internal Server Error - ResponseError (771001: unable to like content/Unable to update like status: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateContentLikeStatusV2.create(
@@ -261,7 +261,7 @@ async def update_content_like_status_v2_async(
         500: Internal Server Error - ResponseError (771001: unable to like content/Unable to update like status: database error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateContentLikeStatusV2.create(

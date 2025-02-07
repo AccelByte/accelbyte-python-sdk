@@ -129,7 +129,7 @@ def create_notification_template_v1_admin(
         409: Conflict - RestapiErrorResponseV1 (Conflict)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateNotificationTemplateV1Admin.create(
@@ -187,7 +187,7 @@ async def create_notification_template_v1_admin_async(
         409: Conflict - RestapiErrorResponseV1 (Conflict)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateNotificationTemplateV1Admin.create(
@@ -242,7 +242,7 @@ def create_notification_topic_v1_admin(
         403: Forbidden - RestapiErrorResponseV1 (Forbidden)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateNotificationTopicV1Admin.create(
@@ -295,7 +295,7 @@ async def create_notification_topic_v1_admin_async(
         403: Forbidden - RestapiErrorResponseV1 (Forbidden)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateNotificationTopicV1Admin.create(
@@ -350,7 +350,7 @@ def create_topic(
         409: Conflict - RestapiErrorResponseBody (Conflict)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateTopic.create(
@@ -403,7 +403,7 @@ async def create_topic_async(
         409: Conflict - RestapiErrorResponseBody (Conflict)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = CreateTopic.create(
@@ -457,7 +457,7 @@ def delete_notification_template_slug_v1_admin(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteNotificationTemplateSlugV1Admin.create(
@@ -509,7 +509,7 @@ async def delete_notification_template_slug_v1_admin_async(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteNotificationTemplateSlugV1Admin.create(
@@ -566,7 +566,7 @@ def delete_notification_topic_v1_admin(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteNotificationTopicV1Admin.create(
@@ -621,7 +621,7 @@ async def delete_notification_topic_v1_admin_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteNotificationTopicV1Admin.create(
@@ -678,7 +678,7 @@ def delete_template_localization_v1_admin(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteTemplateLocalizationV1Admin.create(
@@ -734,7 +734,7 @@ async def delete_template_localization_v1_admin_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteTemplateLocalizationV1Admin.create(
@@ -790,7 +790,7 @@ def delete_topic_by_topic_name(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteTopicByTopicName.create(
@@ -843,7 +843,7 @@ async def delete_topic_by_topic_name_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DeleteTopicByTopicName.create(
@@ -898,7 +898,7 @@ def free_form_notification_by_user_id(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FreeFormNotificationByUserID.create(
@@ -952,7 +952,7 @@ async def free_form_notification_by_user_id_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = FreeFormNotificationByUserID.create(
@@ -1006,7 +1006,7 @@ def get_all_notification_templates_v1_admin(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllNotificationTemplatesV1Admin.create(
@@ -1056,7 +1056,7 @@ async def get_all_notification_templates_v1_admin_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllNotificationTemplatesV1Admin.create(
@@ -1115,7 +1115,7 @@ def get_all_notification_topics_v1_admin(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllNotificationTopicsV1Admin.create(
@@ -1175,7 +1175,7 @@ async def get_all_notification_topics_v1_admin_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetAllNotificationTopicsV1Admin.create(
@@ -1242,7 +1242,7 @@ def get_my_notifications(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMyNotifications.create(
@@ -1308,7 +1308,7 @@ async def get_my_notifications_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetMyNotifications.create(
@@ -1365,7 +1365,7 @@ def get_notification_topic_v1_admin(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetNotificationTopicV1Admin.create(
@@ -1417,7 +1417,7 @@ async def get_notification_topic_v1_admin_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetNotificationTopicV1Admin.create(
@@ -1474,7 +1474,7 @@ def get_single_template_localization_v1_admin(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSingleTemplateLocalizationV1Admin.create(
@@ -1530,7 +1530,7 @@ async def get_single_template_localization_v1_admin_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetSingleTemplateLocalizationV1Admin.create(
@@ -1594,7 +1594,7 @@ def get_template_slug_localizations_template_v1_admin(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTemplateSlugLocalizationsTemplateV1Admin.create(
@@ -1658,7 +1658,7 @@ async def get_template_slug_localizations_template_v1_admin_async(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTemplateSlugLocalizationsTemplateV1Admin.create(
@@ -1719,7 +1719,7 @@ def get_topic_by_namespace(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTopicByNamespace.create(
@@ -1777,7 +1777,7 @@ async def get_topic_by_namespace_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTopicByNamespace.create(
@@ -1831,7 +1831,7 @@ def get_topic_by_topic_name(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTopicByTopicName.create(
@@ -1881,7 +1881,7 @@ async def get_topic_by_topic_name_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GetTopicByTopicName.create(
@@ -1941,7 +1941,7 @@ def notification_with_template_by_user_id(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = NotificationWithTemplateByUserID.create(
@@ -2000,7 +2000,7 @@ async def notification_with_template_by_user_id_async(
         404: Not Found - RestapiErrorResponseBody (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = NotificationWithTemplateByUserID.create(
@@ -2058,7 +2058,7 @@ def publish_template_localization_v1_admin(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublishTemplateLocalizationV1Admin.create(
@@ -2114,7 +2114,7 @@ async def publish_template_localization_v1_admin_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = PublishTemplateLocalizationV1Admin.create(
@@ -2166,7 +2166,7 @@ def send_multiple_users_freeform_notification_v1_admin(
         403: Forbidden - RestapiErrorResponseV1 (Forbidden)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendMultipleUsersFreeformNotificationV1Admin.create(
@@ -2215,7 +2215,7 @@ async def send_multiple_users_freeform_notification_v1_admin_async(
         403: Forbidden - RestapiErrorResponseV1 (Forbidden)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendMultipleUsersFreeformNotificationV1Admin.create(
@@ -2271,7 +2271,7 @@ def send_party_freeform_notification_v1_admin(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendPartyFreeformNotificationV1Admin.create(
@@ -2326,7 +2326,7 @@ async def send_party_freeform_notification_v1_admin_async(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendPartyFreeformNotificationV1Admin.create(
@@ -2388,7 +2388,7 @@ def send_party_templated_notification_v1_admin(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendPartyTemplatedNotificationV1Admin.create(
@@ -2448,7 +2448,7 @@ async def send_party_templated_notification_v1_admin_async(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendPartyTemplatedNotificationV1Admin.create(
@@ -2505,7 +2505,7 @@ def send_specific_user_freeform_notification_v1_admin(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendSpecificUserFreeformNotificationV1Admin.create(
@@ -2560,7 +2560,7 @@ async def send_specific_user_freeform_notification_v1_admin_async(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendSpecificUserFreeformNotificationV1Admin.create(
@@ -2623,7 +2623,7 @@ def send_specific_user_templated_notification_v1_admin(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendSpecificUserTemplatedNotificationV1Admin.create(
@@ -2684,7 +2684,7 @@ async def send_specific_user_templated_notification_v1_admin_async(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendSpecificUserTemplatedNotificationV1Admin.create(
@@ -2739,7 +2739,7 @@ def send_users_freeform_notification_v1_admin(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendUsersFreeformNotificationV1Admin.create(
@@ -2791,7 +2791,7 @@ async def send_users_freeform_notification_v1_admin_async(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendUsersFreeformNotificationV1Admin.create(
@@ -2850,7 +2850,7 @@ def send_users_templated_notification_v1_admin(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendUsersTemplatedNotificationV1Admin.create(
@@ -2907,7 +2907,7 @@ async def send_users_templated_notification_v1_admin_async(
         404: Not Found - RestapiErrorResponseV1 (Not Found)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = SendUsersTemplatedNotificationV1Admin.create(
@@ -2969,7 +2969,7 @@ def update_notification_topic_v1_admin(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateNotificationTopicV1Admin.create(
@@ -3030,7 +3030,7 @@ async def update_notification_topic_v1_admin_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateNotificationTopicV1Admin.create(
@@ -3093,7 +3093,7 @@ def update_template_localization_v1_admin(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateTemplateLocalizationV1Admin.create(
@@ -3155,7 +3155,7 @@ async def update_template_localization_v1_admin_async(
         500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateTemplateLocalizationV1Admin.create(
@@ -3215,7 +3215,7 @@ def update_topic_by_topic_name(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateTopicByTopicName.create(
@@ -3272,7 +3272,7 @@ async def update_topic_by_topic_name_async(
         500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = UpdateTopicByTopicName.create(

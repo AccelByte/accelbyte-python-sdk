@@ -76,7 +76,7 @@ def mock_play_station_stream_event(
         200: OK - ClawbackInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = MockPlayStationStreamEvent.create(
@@ -118,7 +118,7 @@ async def mock_play_station_stream_event_async(
         200: OK - ClawbackInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = MockPlayStationStreamEvent.create(
@@ -162,7 +162,7 @@ def mock_xbl_clawback_event(
         200: OK - ClawbackInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = MockXblClawbackEvent.create(
@@ -204,7 +204,7 @@ async def mock_xbl_clawback_event_async(
         200: OK - ClawbackInfo (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = MockXblClawbackEvent.create(
@@ -272,7 +272,7 @@ def query_iap_clawback_history(
         200: OK - IAPClawbackPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryIAPClawbackHistory.create(
@@ -345,7 +345,7 @@ async def query_iap_clawback_history_async(
         200: OK - IAPClawbackPagingSlicedResult (successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = QueryIAPClawbackHistory.create(

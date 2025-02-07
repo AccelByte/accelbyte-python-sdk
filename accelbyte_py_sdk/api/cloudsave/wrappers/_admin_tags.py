@@ -80,7 +80,7 @@ def admin_delete_tag_handler_v1(
         500: Internal Server Error - ModelsResponseError (18509: unable to delete tag)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteTagHandlerV1.create(
@@ -132,7 +132,7 @@ async def admin_delete_tag_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18509: unable to delete tag)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminDeleteTagHandlerV1.create(
@@ -189,7 +189,7 @@ def admin_list_tags_handler_v1(
         500: Internal Server Error - ModelsResponseError (18502: unable to list tags)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListTagsHandlerV1.create(
@@ -245,7 +245,7 @@ async def admin_list_tags_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (18502: unable to list tags)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminListTagsHandlerV1.create(
@@ -302,7 +302,7 @@ def admin_post_tag_handler_v1(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18507: unable to create tag)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostTagHandlerV1.create(
@@ -356,7 +356,7 @@ async def admin_post_tag_handler_v1_async(
         500: Internal Server Error - ModelsResponseError (20000: internal server error | 18507: unable to create tag)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = AdminPostTagHandlerV1.create(

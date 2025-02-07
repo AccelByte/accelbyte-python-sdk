@@ -55,7 +55,9 @@ class ChallengeTestCase(IntegrationTestCase):
                 name=goal_name,
                 description="",
                 is_active=True,
-                schedule=ModelGoalScheduleRequest.create(start_time=start_time, order=1),
+                schedule=ModelGoalScheduleRequest.create(
+                    start_time=start_time, order=1
+                ),
                 requirement_groups=[
                     ModelRequirement.create(
                         operator="AND",

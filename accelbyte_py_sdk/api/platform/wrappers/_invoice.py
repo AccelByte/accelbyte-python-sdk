@@ -85,7 +85,7 @@ def download_invoice_details(
         200: OK - Any (Successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DownloadInvoiceDetails.create(
@@ -146,7 +146,7 @@ async def download_invoice_details_async(
         200: OK - Any (Successful operation)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = DownloadInvoiceDetails.create(
@@ -211,7 +211,7 @@ def generate_invoice_summary(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GenerateInvoiceSummary.create(
@@ -274,7 +274,7 @@ async def generate_invoice_summary_async(
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
     """
     if namespace is None:
-        namespace, error = get_services_namespace()
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
         if error:
             return None, error
     request = GenerateInvoiceSummary.create(
