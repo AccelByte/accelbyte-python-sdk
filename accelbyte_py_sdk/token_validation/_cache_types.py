@@ -34,6 +34,7 @@ class JWKSCache(Timer):
         sdk: AccelByteSDK,
         interval: Optional[Union[int, float]] = None,
         raise_on_error: bool = False,
+        **kwargs,
     ):
         self.sdk = sdk
         self._jwks: Dict[str, PublicPrivateKey] = {}
@@ -50,8 +51,11 @@ class JWKSCache(Timer):
                 repeat_on_exception=True,
             )
 
-    def update(self):
-        result, error = iam_service.get_jwksv3(sdk=self.sdk)
+    def update(self, **kwargs):
+        result, error = iam_service.get_jwksv3(
+            x_additional_headers=kwargs.get("x_additional_headers", None),
+            sdk=self.sdk,
+        )
         if error:
             if self._raise_on_error:
                 raise Exception(error)
@@ -63,16 +67,16 @@ class JWKSCache(Timer):
             for jwk in jwks.keys:
                 self._jwks[jwk.key_id] = jwk.key
 
-    def get_key_from_cache(self, key_id: str) -> Optional[PublicPrivateKey]:
+    def get_key_from_cache(self, key_id: str, **kwargs) -> Optional[PublicPrivateKey]:
         with self._lock:
             return self._jwks.get(key_id, None)
 
-    def get_key(self, key_id: str) -> Optional[PublicPrivateKey]:
+    def get_key(self, key_id: str, **kwargs) -> Optional[PublicPrivateKey]:
         key = self.get_key_from_cache(key_id)
         if key is not None:
             return key
 
-        self.update()
+        self.update(**kwargs)
 
         return self.get_key_from_cache(key_id)
 
@@ -83,6 +87,7 @@ class NamespaceContextCache(Timer):
         sdk: AccelByteSDK,
         interval: Union[int, float],
         raise_on_error: bool = True,
+        **kwargs,
     ):
         self.sdk = sdk
         self._namespace_contexts: Dict[str, Any] = {}
@@ -102,12 +107,14 @@ class NamespaceContextCache(Timer):
         with self._lock:
             self._namespace_contexts = {}
 
-    def update(self):
+    def update(self, **kwargs):
         pass
 
-    def cache_namespace_context(self, namespace: str) -> Any:
+    def cache_namespace_context(self, namespace: str, **kwargs) -> Any:
         namespace_context, error = basic_service.get_namespace_context(
-            namespace=namespace, sdk=self.sdk
+            namespace=namespace,
+            x_additional_headers=kwargs.get("x_additional_headers", None),
+            sdk=self.sdk,
         )
         if error:
             return error
@@ -115,13 +122,13 @@ class NamespaceContextCache(Timer):
             self._namespace_contexts[namespace] = namespace_context
         return None
 
-    def get_namespace_context(self, namespace: str) -> Optional[NamespaceContext]:
+    def get_namespace_context(self, namespace: str, **kwargs) -> Optional[NamespaceContext]:
         with self._lock:
             namespace_context = self._namespace_contexts.get(namespace, None)
             if namespace_context:
                 return namespace_context
 
-        error = self.cache_namespace_context(namespace=namespace)
+        error = self.cache_namespace_context(namespace=namespace, **kwargs)
         if error:
             if self._raise_on_error:
                 raise FetchNamespaceContextError(f"namespace context: {namespace}")
@@ -136,6 +143,7 @@ class RevocationListCache(Timer):
         sdk: AccelByteSDK,
         interval: Union[int, float],
         raise_on_error: bool = True,
+        **kwargs,
     ):
         self.sdk = sdk
         self._revoked_token_filter: Optional[BloomFilter] = None
@@ -152,8 +160,11 @@ class RevocationListCache(Timer):
             repeat_on_exception=True,
         )
 
-    def update(self):
-        result, error = iam_service.get_revocation_list_v3(sdk=self.sdk)
+    def update(self, **kwargs):
+        result, error = iam_service.get_revocation_list_v3(
+            x_additional_headers=kwargs.get("x_additional_headers", None),
+            sdk=self.sdk,
+        )
         if error:
             return
 
@@ -171,14 +182,14 @@ class RevocationListCache(Timer):
                     revoked_at = str2datetime(user.revoked_at).timestamp()
                     self._revoked_users[user.id_] = revoked_at
 
-    def is_token_revoked(self, token: str) -> bool:
+    def is_token_revoked(self, token: str, **kwargs) -> bool:
         with self._lock:
             if self._revoked_token_filter:
                 return self._revoked_token_filter.might_contains(key=token)
             else:
                 return False
 
-    def is_user_revoked(self, user_id: str, issued_at: int) -> bool:
+    def is_user_revoked(self, user_id: str, issued_at: int, **kwargs) -> bool:
         with self._lock:
             revoked_at = self._revoked_users.get(user_id)
             if revoked_at:
@@ -192,6 +203,7 @@ class RolesCache(Timer):
         sdk: AccelByteSDK,
         interval: Union[int, float],
         raise_on_error: bool = True,
+        **kwargs,
     ):
         self.sdk = sdk
         self._roles: Dict[str, Any] = {}
@@ -211,12 +223,14 @@ class RolesCache(Timer):
         with self._lock:
             self._roles = {}
 
-    def update(self):
+    def update(self, **kwargs):
         pass
 
-    def cache_role(self, role_id: str) -> Any:
+    def cache_role(self, role_id: str, **kwargs) -> Any:
         role, error = iam_service.admin_get_role_namespace_permission_v3(
-            role_id=role_id, sdk=self.sdk
+            role_id=role_id,
+            x_additional_headers=kwargs.get("x_additional_headers", None),
+            sdk=self.sdk
         )
         if error:
             return error
@@ -224,13 +238,13 @@ class RolesCache(Timer):
             self._roles[role_id] = role
         return None
 
-    def get_role(self, role_id: str) -> Optional[Role]:
+    def get_role(self, role_id: str, **kwargs) -> Optional[Role]:
         with self._lock:
             role = self._roles.get(role_id, None)
             if role:
                 return role
 
-        error = self.cache_role(role_id=role_id)
+        error = self.cache_role(role_id=role_id, **kwargs)
         if error:
             if self._raise_on_error:
                 raise FetchRoleError(f"role ID: {role_id}")
@@ -238,14 +252,14 @@ class RolesCache(Timer):
 
         return self._roles.get(role_id)
 
-    def get_role_permissions(self, role_id: str) -> List[PermissionStruct]:
-        role = self.get_role(role_id=role_id)
-        return role.permissions
+    def get_role_permissions(self, role_id: str, **kwargs) -> List[PermissionStruct]:
+        role = self.get_role(role_id=role_id, **kwargs)
+        return role.permissions if role else []
 
     def get_modified_role_permissions(
-        self, role_id: str, namespace: str, user_id: Optional[str] = None
+        self, role_id: str, namespace: str, user_id: Optional[str] = None, **kwargs,
     ) -> List[PermissionStruct]:
-        permissions = self.get_role_permissions(role_id=role_id)
+        permissions = self.get_role_permissions(role_id=role_id, **kwargs)
         return [
             create_permission_struct(
                 action=p.action,
@@ -259,12 +273,13 @@ class RolesCache(Timer):
         ]
 
     def get_modified_role_permissions2(
-        self, namespace_role: NamespaceRole, user_id: Optional[str] = None
+        self, namespace_role: NamespaceRole, user_id: Optional[str] = None, **kwargs,
     ) -> List[PermissionStruct]:
         return self.get_modified_role_permissions(
             role_id=namespace_role.get("roleId"),
             namespace=namespace_role.get("namespace"),
             user_id=user_id,
+            **kwargs,
         )
 
 

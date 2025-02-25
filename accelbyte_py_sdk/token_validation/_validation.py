@@ -15,6 +15,7 @@ def validate_resource(
     resource: str,
     expected_resource: str,
     namespace_context_cache: Optional[NamespaceContextCache] = None,
+    **kwargs,
 ) -> bool:
     # Split both the resource and the expected resource into tokens with ':' as delimiter.
     r_items = resource.split(":")
@@ -47,7 +48,8 @@ def validate_resource(
                         continue
                     if namespace_context_cache:
                         context = namespace_context_cache.get_namespace_context(
-                            namespace=e_token
+                            namespace=e_token,
+                            **kwargs,
                         )
                         if (
                             context is not None
@@ -93,10 +95,11 @@ def validate_permission(
     target: PermissionStruct,
     permissions: List[PermissionStruct],
     namespace_context_cache: Optional[NamespaceContextCache] = None,
+    **kwargs,
 ) -> bool:
     for permission in permissions:
         if validate_action(permission.action, target.action) and validate_resource(
-            permission.resource, target.resource, namespace_context_cache
+            permission.resource, target.resource, namespace_context_cache, **kwargs
         ):
             return True
 

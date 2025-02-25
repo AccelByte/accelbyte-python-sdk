@@ -45,6 +45,7 @@ class CachingTokenValidator:
         role_cache_time: Union[int, float] = 3600,
         namespace_context_cache_time: Union[int, float] = 3600,
         raise_on_error: bool = False,
+        **kwargs,
     ) -> None:
         self.algorithms = (
             algorithms
@@ -99,6 +100,7 @@ class CachingTokenValidator:
         permission: PermissionStruct,
         namespace: Optional[str] = None,
         user_id: Optional[str] = None,
+        **kwargs,
     ) -> bool:
         claims_namespace = claims.get("namespace", None)
         user_id = claims.get("user_id", user_id)
@@ -123,6 +125,7 @@ class CachingTokenValidator:
             target=target,
             permissions=claims_permissions,
             namespace_context_cache=self.namespace_context_cache,
+            **kwargs,
         ):
             return True
 
@@ -133,13 +136,14 @@ class CachingTokenValidator:
             for nr in claims_namespace_roles:
                 nr_permissions.extend(
                     self.roles_cache.get_modified_role_permissions2(
-                        namespace_role=nr, user_id=user_id
+                        namespace_role=nr, user_id=user_id, **kwargs
                     )
                 )
             if nr_permissions and validate_permission(
                 target=target,
                 permissions=nr_permissions,
                 namespace_context_cache=self.namespace_context_cache,
+                **kwargs,
             ):
                 return True
 
@@ -150,13 +154,14 @@ class CachingTokenValidator:
             for r in claims_roles:
                 r_permissions.extend(
                     self.roles_cache.get_modified_role_permissions(
-                        role_id=r, namespace=namespace, user_id=user_id
+                        role_id=r, namespace=namespace, user_id=user_id, **kwargs
                     )
                 )
             if r_permissions and validate_permission(
                 target=target,
                 permissions=r_permissions,
                 namespace_context_cache=self.namespace_context_cache,
+                **kwargs,
             ):
                 return True
 
@@ -173,7 +178,7 @@ class CachingTokenValidator:
     ) -> Optional[Exception]:
         # Check if token was revoked.
         if self.revocation_list_cache.is_token_revoked(token=token):
-            return TokenRevokedError()
+            return TokenRevokedError("token was already revoked")
 
         claims, error = self._decode(token=token, **kwargs)
         if error:
@@ -184,7 +189,7 @@ class CachingTokenValidator:
             if self.revocation_list_cache.is_user_revoked(
                 user_id=claims_user_id, issued_at=claims.get("iat")
             ):
-                return UserRevokedError()
+                return UserRevokedError("user was already revoked")
 
         # Check if the claims has valid permissions.
         if (
@@ -195,9 +200,10 @@ class CachingTokenValidator:
                 permission=create_permission_struct(action, resource),
                 namespace=namespace,
                 user_id=user_id,
+                **kwargs,
             )
         ):
-            return InsufficientPermissionsError()
+            return InsufficientPermissionsError(f"insufficient permission: resource: {resource}, action: {action}")
 
         return None
 
@@ -217,7 +223,7 @@ class CachingTokenValidator:
         ):
             return None, KeyError(CachingTokenValidator.JWS_HEADER_PARAM_KEY_ID_KEY)
 
-        if not (key := self.jwks_cache.get_key(kid)):
+        if not (key := self.jwks_cache.get_key(kid, **kwargs)):
             return None, KeyError(kid)
 
         claims = jwt.decode(
