@@ -117,9 +117,10 @@ class CachingTokenValidator:
         )
 
         # Check claims.permissions
+        claims_permissions = claims.get("permissions", None) or []
         claims_permissions = [
             create_permission_struct(action=p.get("Action"), resource=p.get("Resource"))
-            for p in claims.get("permissions", [])
+            for p in claims_permissions
         ]
         if claims_permissions and validate_permission(
             target=target,
@@ -130,7 +131,7 @@ class CachingTokenValidator:
             return True
 
         # Check claim.namespace_roles
-        claims_namespace_roles = claims.get("namespace_roles", [])
+        claims_namespace_roles = claims.get("namespace_roles", None) or []
         if user_id and claims_namespace_roles:
             nr_permissions = []
             for nr in claims_namespace_roles:
@@ -148,7 +149,7 @@ class CachingTokenValidator:
                 return True
 
         # Check claim.roles
-        claims_roles = claims.get("roles", [])
+        claims_roles = claims.get("roles", None) or []
         if claims_roles:
             r_permissions = []
             for r in claims_roles:
