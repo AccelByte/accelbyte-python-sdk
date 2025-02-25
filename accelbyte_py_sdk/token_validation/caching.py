@@ -45,6 +45,7 @@ class CachingTokenValidator:
         role_cache_time: Union[int, float] = 3600,
         namespace_context_cache_time: Union[int, float] = 3600,
         raise_on_error: bool = False,
+        update_on_init: bool = False,
         **kwargs,
     ) -> None:
         self.algorithms = (
@@ -89,10 +90,11 @@ class CachingTokenValidator:
             raise_on_error=raise_on_error,
         )
 
-        self.jwks_cache.update()
-        self.revocation_list_cache.update()
-        self.roles_cache.update()
-        self.namespace_context_cache.update()
+        if update_on_init:
+            self.jwks_cache.update()
+            self.revocation_list_cache.update()
+            self.roles_cache.update()
+            self.namespace_context_cache.update()
 
     def has_valid_permissions(
         self,
