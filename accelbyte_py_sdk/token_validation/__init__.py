@@ -1,7 +1,15 @@
 from typing import Optional, Protocol
 
 from ._ctypes import (
+    FetchValidationDataError,
+    FetchNamespaceContextError,
+    FetchRoleError,
+    TokenValidationError,
+    InsufficientPermissionsError,
+    TokenRevokedError,
+    UserRevokedError,
     PermissionAction,
+    PermissionActionFlag,
     PermissionStruct,
     create_permission_struct,
 )
@@ -27,7 +35,15 @@ class TokenValidatorProtocol(Protocol):
 
 
 __all__ = [
+    "FetchValidationDataError",
+    "FetchNamespaceContextError",
+    "FetchRoleError",
+    "TokenValidationError",
+    "InsufficientPermissionsError",
+    "TokenRevokedError",
+    "UserRevokedError",
     "PermissionAction",
+    "PermissionActionFlag",
     "PermissionStruct",
     "TokenValidatorProtocol",
     "create_permission_struct",
