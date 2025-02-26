@@ -134,7 +134,7 @@ class NamespaceContextCache(Timer):
                 raise FetchNamespaceContextError(f"namespace context: {namespace}")
             return None
 
-        return self._namespace_contexts.get(namespace)
+        return self._namespace_contexts.get(namespace, None)
 
 
 class RevocationListCache(Timer):
@@ -191,8 +191,8 @@ class RevocationListCache(Timer):
 
     def is_user_revoked(self, user_id: str, issued_at: int, **kwargs) -> bool:
         with self._lock:
-            revoked_at = self._revoked_users.get(user_id)
-            if revoked_at:
+            revoked_at = self._revoked_users.get(user_id, None)
+            if revoked_at is not None:
                 return revoked_at >= issued_at
         return False
 
@@ -247,40 +247,46 @@ class RolesCache(Timer):
         error = self.cache_role(role_id=role_id, **kwargs)
         if error:
             if self._raise_on_error:
-                raise FetchRoleError(f"role ID: {role_id}")
+                raise FetchRoleError(f"failed to get role with ID: {role_id}")
             return None
 
-        return self._roles.get(role_id)
+        return self._roles.get(role_id, None)
 
     def get_role_permissions(self, role_id: str, **kwargs) -> List[PermissionStruct]:
         role = self.get_role(role_id=role_id, **kwargs)
-        return role.permissions if role else []
+        role_permissions = getattr(role, "permissions", []) if role is not None else []
+        return role_permissions
 
     def get_modified_role_permissions(
         self, role_id: str, namespace: str, user_id: Optional[str] = None, **kwargs,
     ) -> List[PermissionStruct]:
-        permissions = self.get_role_permissions(role_id=role_id, **kwargs)
-        return [
-            create_permission_struct(
-                action=p.action,
-                resource=replace_resource(
-                    resource=p.resource,
-                    namespace=namespace,
-                    user_id=user_id,
-                ),
-            )
-            for p in permissions
-        ]
+        role_permissions = self.get_role_permissions(role_id=role_id, **kwargs)
+        modified_role_permissions = []
+        for permission in role_permissions:
+            action = getattr(permission, "action", None)
+            resource = getattr(permission, "resource", None)
+            if action is not None and resource is not None:
+                permission_struct = create_permission_struct(
+                    action=action,
+                    resource=replace_resource(
+                        resource=resource,
+                        namespace=namespace,
+                        user_id=user_id,
+                    )
+                )
+                modified_role_permissions.append(permission_struct)
+        return modified_role_permissions
 
     def get_modified_role_permissions2(
         self, namespace_role: NamespaceRole, user_id: Optional[str] = None, **kwargs,
     ) -> List[PermissionStruct]:
+        role_id = namespace_role.get("roleId", None)
         return self.get_modified_role_permissions(
-            role_id=namespace_role.get("roleId"),
-            namespace=namespace_role.get("namespace"),
+            role_id=role_id,
+            namespace=namespace_role.get("namespace", None),
             user_id=user_id,
             **kwargs,
-        )
+        ) if role_id is not None else []
 
 
 __all__ = [
