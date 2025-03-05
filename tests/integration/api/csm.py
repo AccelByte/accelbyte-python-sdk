@@ -172,5 +172,10 @@ class CSMTestCase(IntegrationTestCase):
             self.assertIsNone(error, str(error))
 
             raise e from None
+        finally:
+            _, _ = csm_service.delete_app_v2(
+                app=app_name,
+                forced="true",
+            )
 
     # endregion test:csm
