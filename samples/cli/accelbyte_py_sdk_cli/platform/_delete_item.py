@@ -36,6 +36,7 @@ from accelbyte_py_sdk.api.platform.models import ErrorEntity
 
 @click.command()
 @click.argument("item_id", type=str)
+@click.option("--features_to_check", "features_to_check", type=str)
 @click.option("--force", "force", type=bool)
 @click.option("--store_id", "store_id", type=str)
 @click.option("--namespace", type=str)
@@ -44,6 +45,7 @@ from accelbyte_py_sdk.api.platform.models import ErrorEntity
 @click.option("--doc", type=bool)
 def delete_item(
     item_id: str,
+    features_to_check: Optional[str] = None,
     force: Optional[bool] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -59,8 +61,15 @@ def delete_item(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if features_to_check is not None:
+        try:
+            features_to_check_json = json.loads(features_to_check)
+            features_to_check = [str(i0) for i0 in features_to_check_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'featuresToCheck'. {str(e)}") from e
     result, error = delete_item_internal(
         item_id=item_id,
+        features_to_check=features_to_check,
         force=force,
         store_id=store_id,
         namespace=namespace,

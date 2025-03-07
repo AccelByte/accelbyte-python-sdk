@@ -122,7 +122,9 @@ class NamespaceContextCache(Timer):
             self._namespace_contexts[namespace] = namespace_context
         return None
 
-    def get_namespace_context(self, namespace: str, **kwargs) -> Optional[NamespaceContext]:
+    def get_namespace_context(
+        self, namespace: str, **kwargs
+    ) -> Optional[NamespaceContext]:
         with self._lock:
             namespace_context = self._namespace_contexts.get(namespace, None)
             if namespace_context:
@@ -230,7 +232,7 @@ class RolesCache(Timer):
         role, error = iam_service.admin_get_role_namespace_permission_v3(
             role_id=role_id,
             x_additional_headers=kwargs.get("x_additional_headers", None),
-            sdk=self.sdk
+            sdk=self.sdk,
         )
         if error:
             return error
@@ -258,7 +260,11 @@ class RolesCache(Timer):
         return role_permissions
 
     def get_modified_role_permissions(
-        self, role_id: str, namespace: str, user_id: Optional[str] = None, **kwargs,
+        self,
+        role_id: str,
+        namespace: str,
+        user_id: Optional[str] = None,
+        **kwargs,
     ) -> List[PermissionStruct]:
         role_permissions = self.get_role_permissions(role_id=role_id, **kwargs)
         modified_role_permissions = []
@@ -272,21 +278,28 @@ class RolesCache(Timer):
                         resource=resource,
                         namespace=namespace,
                         user_id=user_id,
-                    )
+                    ),
                 )
                 modified_role_permissions.append(permission_struct)
         return modified_role_permissions
 
     def get_modified_role_permissions2(
-        self, namespace_role: NamespaceRole, user_id: Optional[str] = None, **kwargs,
+        self,
+        namespace_role: NamespaceRole,
+        user_id: Optional[str] = None,
+        **kwargs,
     ) -> List[PermissionStruct]:
         role_id = namespace_role.get("roleId", None)
-        return self.get_modified_role_permissions(
-            role_id=role_id,
-            namespace=namespace_role.get("namespace", None),
-            user_id=user_id,
-            **kwargs,
-        ) if role_id is not None else []
+        return (
+            self.get_modified_role_permissions(
+                role_id=role_id,
+                namespace=namespace_role.get("namespace", None),
+                user_id=user_id,
+                **kwargs,
+            )
+            if role_id is not None
+            else []
+        )
 
 
 __all__ = [

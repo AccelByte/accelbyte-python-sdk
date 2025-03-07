@@ -34,6 +34,7 @@ class IapOrderStatusEnum(StrEnum):
     FULFILLED = "FULFILLED"
     PARTIAL_REVOKED = "PARTIAL_REVOKED"
     REVOKED = "REVOKED"
+    REVOKE_FAILED = "REVOKE_FAILED"
     VERIFIED = "VERIFIED"
 
 
@@ -234,6 +235,7 @@ class XblReconcileResult(Model):
                 "FULFILLED",
                 "PARTIAL_REVOKED",
                 "REVOKED",
+                "REVOKE_FAILED",
                 "VERIFIED",
             ],
         }

@@ -34,6 +34,8 @@ from ..api.seasonpass.models import ExpGrantHistoryPagingSlicedResult
 from ..api.seasonpass.models import FieldValidationError
 from ..api.seasonpass.models import FullSeasonInfo
 from ..api.seasonpass.models import Image
+from ..api.seasonpass.models import ItemReference
+from ..api.seasonpass.models import ItemReferenceInfo
 from ..api.seasonpass.models import ListSeasonInfo
 from ..api.seasonpass.models import ListSeasonInfoPagingSlicedResult
 from ..api.seasonpass.models import ListUserSeasonInfo
@@ -180,6 +182,19 @@ def create_image_example() -> Image:
     instance.as_ = randomize()
     instance.caption = randomize()
     instance.small_image_url = randomize("url")
+    return instance
+
+
+def create_item_reference_example() -> ItemReference:
+    instance = ItemReference()
+    instance.module = randomize()
+    instance.references = [{randomize(): randomize()}]
+    return instance
+
+
+def create_item_reference_info_example() -> ItemReferenceInfo:
+    instance = ItemReferenceInfo()
+    instance.references = [create_item_reference_example()]
     return instance
 
 

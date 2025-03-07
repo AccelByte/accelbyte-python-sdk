@@ -219,6 +219,10 @@ from ._admin_get_role_namespace_permission_v3 import (
     admin_get_role_namespace_permission_v3,
 )
 from ._get_admin_users_by_role_id_v3 import get_admin_users_by_role_id_v3
+from ._admin_query_tag_v3 import admin_query_tag_v3
+from ._admin_create_tag_v3 import admin_create_tag_v3
+from ._admin_update_tag_v3 import admin_update_tag_v3
+from ._admin_delete_tag_v3 import admin_delete_tag_v3
 from ._admin_get_user_by_email_address_v3 import admin_get_user_by_email_address_v3
 from ._admin_bulk_update_users_v3 import admin_bulk_update_users_v3
 from ._admin_get_bulk_user_ban_v3 import admin_get_bulk_user_ban_v3
@@ -729,6 +733,10 @@ commands = [
     admin_change_role_override_config_status_v3,
     admin_get_role_namespace_permission_v3,
     get_admin_users_by_role_id_v3,
+    admin_query_tag_v3,
+    admin_create_tag_v3,
+    admin_update_tag_v3,
+    admin_delete_tag_v3,
     admin_get_user_by_email_address_v3,
     admin_bulk_update_users_v3,
     admin_get_bulk_user_ban_v3,

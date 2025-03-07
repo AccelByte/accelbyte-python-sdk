@@ -206,9 +206,20 @@ class CachingTokenValidator:
                 **kwargs,
             )
         ):
-            return InsufficientPermissionsError(f"insufficient permission: resource: {resource}, action: {action}")
+            return InsufficientPermissionsError(
+                f"insufficient permission: resource: {resource}, action: {action}"
+            )
 
         return None
+
+    def decode(
+        self,
+        token: str,
+        algorithms: Optional[List[str]] = None,
+        options: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ) -> Tuple[Optional[JWTClaims], Optional[Exception]]:
+        return self._decode(token, algorithms=algorithms, options=options, **kwargs)
 
     def _decode(
         self,

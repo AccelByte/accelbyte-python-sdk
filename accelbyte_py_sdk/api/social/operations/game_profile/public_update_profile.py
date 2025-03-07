@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import ErrorEntity
 from ...models import GameProfileInfo
@@ -37,6 +38,9 @@ from ...models import ValidationErrorEntity
 
 class PublicUpdateProfile(Operation):
     """Updates user game profile (publicUpdateProfile)
+
+    ## The endpoint is going to be deprecated
+
 
     Updates user game profile, returns updated profile.
     Other detail info:

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Platform Service Index (6.3.0)
+# AccelByte Gaming Services Platform Service Index (6.4.0)
 
 
 ## Operations
@@ -208,6 +208,12 @@
 ### IAP
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
+| /platform/admin/namespaces/{namespace}/users/{userId}/iap/orders/{iapOrderNo}/line_items | GET | adminGetIAPOrderLineItems | `false` | [AdminGetIAPOrderLineItems](../../accelbyte_py_sdk/api/platform/operations/iap/admin_get_iap_order_line_items.py) | [admin_get_iap_order_line_items](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-admin-get-iap-order-line-items](../../samples/cli/accelbyte_py_sdk_cli/platform/_admin_get_iap_order_line_items.py) |
+| /platform/admin/namespaces/{namespace}/iap/steam/job | GET | adminGetSteamJobInfo | `false` | [AdminGetSteamJobInfo](../../accelbyte_py_sdk/api/platform/operations/iap/admin_get_steam_job_info.py) | [admin_get_steam_job_info](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-admin-get-steam-job-info](../../samples/cli/accelbyte_py_sdk_cli/platform/_admin_get_steam_job_info.py) |
+| /platform/admin/namespaces/{namespace}/iap/steam/orders/{iapOrderNo}/refund | PUT | adminRefundIAPOrder | `false` | [AdminRefundIAPOrder](../../accelbyte_py_sdk/api/platform/operations/iap/admin_refund_iap_order.py) | [admin_refund_iap_order](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-admin-refund-iap-order](../../samples/cli/accelbyte_py_sdk_cli/platform/_admin_refund_iap_order.py) |
+| /platform/admin/namespaces/{namespace}/iap/steam/job/reset | PUT | adminResetSteamJobTime | `false` | [AdminResetSteamJobTime](../../accelbyte_py_sdk/api/platform/operations/iap/admin_reset_steam_job_time.py) | [admin_reset_steam_job_time](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-admin-reset-steam-job-time](../../samples/cli/accelbyte_py_sdk_cli/platform/_admin_reset_steam_job_time.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/iap/steam/syncAbnormalTransaction | PUT | adminSyncSteamAbnormalTransaction | `false` | [AdminSyncSteamAbnormalTransaction](../../accelbyte_py_sdk/api/platform/operations/iap/admin_sync_steam_abnorm_be4791.py) | [admin_sync_steam_abnormal_transaction](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-admin-sync-steam-abnormal-transaction](../../samples/cli/accelbyte_py_sdk_cli/platform/_admin_sync_steam_abnormal_transaction.py) |
+| /platform/admin/namespaces/{namespace}/users/{userId}/iap/steam/syncByTransaction | PUT | adminSyncSteamIAPByTransaction | `false` | [AdminSyncSteamIAPByTransaction](../../accelbyte_py_sdk/api/platform/operations/iap/admin_sync_steam_iap_by_48029c.py) | [admin_sync_steam_iap_by_transaction](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-admin-sync-steam-iap-by-transaction](../../samples/cli/accelbyte_py_sdk_cli/platform/_admin_sync_steam_iap_by_transaction.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/apple | DELETE | deleteAppleIAPConfig | `false` | [DeleteAppleIAPConfig](../../accelbyte_py_sdk/api/platform/operations/iap/delete_apple_iap_config.py) | [delete_apple_iap_config](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-delete-apple-iap-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_apple_iap_config.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/epicgames | DELETE | deleteEpicGamesIAPConfig | `false` | [DeleteEpicGamesIAPConfig](../../accelbyte_py_sdk/api/platform/operations/iap/delete_epic_games_iap_config.py) | [delete_epic_games_iap_config](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-delete-epic-games-iap-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_epic_games_iap_config.py) |
 | /platform/admin/namespaces/{namespace}/iap/config/google | DELETE | deleteGoogleIAPConfig | `false` | [DeleteGoogleIAPConfig](../../accelbyte_py_sdk/api/platform/operations/iap/delete_google_iap_config.py) | [delete_google_iap_config](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-delete-google-iap-config](../../samples/cli/accelbyte_py_sdk_cli/platform/_delete_google_iap_config.py) |
@@ -234,11 +240,15 @@
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/google/receipt | PUT | publicFulfillGoogleIAPItem | `false` | [PublicFulfillGoogleIAPItem](../../accelbyte_py_sdk/api/platform/operations/iap/public_fulfill_google_iap_item.py) | [public_fulfill_google_iap_item](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-public-fulfill-google-iap-item](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_fulfill_google_iap_item.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync | PUT | publicReconcilePlayStationStore | `false` | [PublicReconcilePlayStationStore](../../accelbyte_py_sdk/api/platform/operations/iap/public_reconcile_play_s_7ac4de.py) | [public_reconcile_play_station_store](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-public-reconcile-play-station-store](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_reconcile_play_station_store.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/psn/sync/multiServiceLabels | PUT | publicReconcilePlayStationStoreWithMultipleServiceLabels | `false` | [PublicReconcilePlayStationStoreWithMultipleServiceLabels](../../accelbyte_py_sdk/api/platform/operations/iap/public_reconcile_play_s_6be6c0.py) | [public_reconcile_play_station_store_with_multiple_service_labels](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-public-reconcile-play-station-store-with-multiple-service-labels](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_reconcile_play_station_store_with_multiple_service_labels.py) |
+| /platform/admin/namespaces/{namespace}/iap/steam/abnormal_transactions | GET | queryAbnormalTransactions | `false` | [QueryAbnormalTransactions](../../accelbyte_py_sdk/api/platform/operations/iap/query_abnormal_transactions.py) | [query_abnormal_transactions](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-abnormal-transactions](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_abnormal_transactions.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap/all | GET | queryAllUserIAPOrders | `false` | [QueryAllUserIAPOrders](../../accelbyte_py_sdk/api/platform/operations/iap/query_all_user_iap_orders.py) | [query_all_user_iap_orders](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-all-user-iap-orders](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_all_user_iap_orders.py) |
+| /platform/admin/namespaces/{namespace}/iap/steam/report/histories | GET | querySteamReportHistories | `false` | [QuerySteamReportHistories](../../accelbyte_py_sdk/api/platform/operations/iap/query_steam_report_histories.py) | [query_steam_report_histories](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-steam-report-histories](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_steam_report_histories.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap/consume/history | GET | queryUserIAPConsumeHistory | `false` | [QueryUserIAPConsumeHistory](../../accelbyte_py_sdk/api/platform/operations/iap/query_user_iap_consume_history.py) | [query_user_iap_consume_history](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-user-iap-consume-history](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_iap_consume_history.py) |
 | /platform/admin/namespaces/{namespace}/users/{userId}/iap | GET | queryUserIAPOrders | `false` | [QueryUserIAPOrders](../../accelbyte_py_sdk/api/platform/operations/iap/query_user_iap_orders.py) | [query_user_iap_orders](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-query-user-iap-orders](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_user_iap_orders.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/epicgames/sync | PUT | syncEpicGamesInventory | `false` | [SyncEpicGamesInventory](../../accelbyte_py_sdk/api/platform/operations/iap/sync_epic_games_inventory.py) | [sync_epic_games_inventory](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-sync-epic-games-inventory](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_epic_games_inventory.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/oculus/sync | PUT | syncOculusConsumableEntitlements | `false` | [SyncOculusConsumableEntitlements](../../accelbyte_py_sdk/api/platform/operations/iap/sync_oculus_consumable__f6c91d.py) | [sync_oculus_consumable_entitlements](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-sync-oculus-consumable-entitlements](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_oculus_consumable_entitlements.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/iap/steam/syncAbnormalTransaction | PUT | syncSteamAbnormalTransaction | `false` | [SyncSteamAbnormalTransaction](../../accelbyte_py_sdk/api/platform/operations/iap/sync_steam_abnormal_tra_4db4c2.py) | [sync_steam_abnormal_transaction](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-sync-steam-abnormal-transaction](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_steam_abnormal_transaction.py) |
+| /platform/public/namespaces/{namespace}/users/{userId}/iap/steam/syncByTransaction | PUT | syncSteamIAPByTransaction | `false` | [SyncSteamIAPByTransaction](../../accelbyte_py_sdk/api/platform/operations/iap/sync_steam_iap_by_transaction.py) | [sync_steam_iap_by_transaction](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-sync-steam-iap-by-transaction](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_steam_iap_by_transaction.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/steam/sync | PUT | syncSteamInventory | `false` | [SyncSteamInventory](../../accelbyte_py_sdk/api/platform/operations/iap/sync_steam_inventory.py) | [sync_steam_inventory](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-sync-steam-inventory](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_steam_inventory.py) |
 | /platform/public/namespaces/{namespace}/users/me/iap/twitch/sync | PUT | syncTwitchDropsEntitlement | `false` | [SyncTwitchDropsEntitlement](../../accelbyte_py_sdk/api/platform/operations/iap/sync_twitch_drops_entitlement.py) | [sync_twitch_drops_entitlement](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-sync-twitch-drops-entitlement](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_twitch_drops_entitlement.py) |
 | /platform/public/namespaces/{namespace}/users/{userId}/iap/twitch/sync | PUT | syncTwitchDropsEntitlement_1 | `false` | [SyncTwitchDropsEntitlement1](../../accelbyte_py_sdk/api/platform/operations/iap/sync_twitch_drops_entit_0c09ca.py) | [sync_twitch_drops_entitlement_1](../../accelbyte_py_sdk/api/platform/wrappers/_iap.py) | [accelbyte_py_sdk_cli platform-sync-twitch-drops-entitlement-1](../../samples/cli/accelbyte_py_sdk_cli/platform/_sync_twitch_drops_entitlement_1.py) |
@@ -324,6 +334,7 @@
 | /platform/public/namespaces/{namespace}/items/byCriteria | GET | publicQueryItems | `false` | [PublicQueryItems](../../accelbyte_py_sdk/api/platform/operations/item/public_query_items.py) | [public_query_items](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-public-query-items](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_query_items.py) |
 | /platform/public/namespaces/{namespace}/items/search | GET | publicSearchItems | `false` | [PublicSearchItems](../../accelbyte_py_sdk/api/platform/operations/item/public_search_items.py) | [public_search_items](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-public-search-items](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_search_items.py) |
 | /platform/public/namespaces/{namespace}/items/purchase/conditions/validate | POST | publicValidateItemPurchaseCondition | `false` | [PublicValidateItemPurchaseCondition](../../accelbyte_py_sdk/api/platform/operations/item/public_validate_item_pu_bd546e.py) | [public_validate_item_purchase_condition](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-public-validate-item-purchase-condition](../../samples/cli/accelbyte_py_sdk_cli/platform/_public_validate_item_purchase_condition.py) |
+| /platform/admin/namespaces/{namespace}/items/{itemId}/references | GET | queryItemReferences | `false` | [QueryItemReferences](../../accelbyte_py_sdk/api/platform/operations/item/query_item_references.py) | [query_item_references](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-query-item-references](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_item_references.py) |
 | /platform/admin/namespaces/{namespace}/items/byCriteria | GET | queryItems | `false` | [QueryItems](../../accelbyte_py_sdk/api/platform/operations/item/query_items.py) | [query_items](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-query-items](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_items.py) |
 | /platform/v2/admin/namespaces/{namespace}/items/byCriteria | GET | queryItemsV2 | `false` | [QueryItemsV2](../../accelbyte_py_sdk/api/platform/operations/item/query_items_v2.py) | [query_items_v2](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-query-items-v2](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_items_v2.py) |
 | /platform/admin/namespaces/{namespace}/items/uncategorized | GET | queryUncategorizedItems | `false` | [QueryUncategorizedItems](../../accelbyte_py_sdk/api/platform/operations/item/query_uncategorized_items.py) | [query_uncategorized_items](../../accelbyte_py_sdk/api/platform/wrappers/_item.py) | [accelbyte_py_sdk_cli platform-query-uncategorized-items](../../samples/cli/accelbyte_py_sdk_cli/platform/_query_uncategorized_items.py) |
@@ -709,6 +720,7 @@
 | CategoryCreate | [CategoryCreate](../../accelbyte_py_sdk/api/platform/models/category_create.py) |
 | CategoryInfo | [CategoryInfo](../../accelbyte_py_sdk/api/platform/models/category_info.py) |
 | CategoryUpdate | [CategoryUpdate](../../accelbyte_py_sdk/api/platform/models/category_update.py) |
+| ChangeStatusItemRequest | [ChangeStatusItemRequest](../../accelbyte_py_sdk/api/platform/models/change_status_item_request.py) |
 | CheckoutConfig | [CheckoutConfig](../../accelbyte_py_sdk/api/platform/models/checkout_config.py) |
 | ClawbackInfo | [ClawbackInfo](../../accelbyte_py_sdk/api/platform/models/clawback_info.py) |
 | ClientRequestParameter | [ClientRequestParameter](../../accelbyte_py_sdk/api/platform/models/client_request_parameter.py) |
@@ -793,6 +805,7 @@
 | ExportStoreToCSVRequest | [ExportStoreToCSVRequest](../../accelbyte_py_sdk/api/platform/models/export_store_to_csv_request.py) |
 | ExtensionFulfillmentSummary | [ExtensionFulfillmentSummary](../../accelbyte_py_sdk/api/platform/models/extension_fulfillment_summary.py) |
 | ExternalPaymentOrderCreate | [ExternalPaymentOrderCreate](../../accelbyte_py_sdk/api/platform/models/external_payment_order_create.py) |
+| FeatureReference | [FeatureReference](../../accelbyte_py_sdk/api/platform/models/feature_reference.py) |
 | FieldValidationError | [FieldValidationError](../../accelbyte_py_sdk/api/platform/models/field_validation_error.py) |
 | FixedPeriodRotationConfig | [FixedPeriodRotationConfig](../../accelbyte_py_sdk/api/platform/models/fixed_period_rotation_config.py) |
 | FulFillItemPayload | [FulFillItemPayload](../../accelbyte_py_sdk/api/platform/models/ful_fill_item_payload.py) |
@@ -839,7 +852,9 @@
 | IAPItemMappingInfo | [IAPItemMappingInfo](../../accelbyte_py_sdk/api/platform/models/iap_item_mapping_info.py) |
 | IAPOrderConsumeDetailInfo | [IAPOrderConsumeDetailInfo](../../accelbyte_py_sdk/api/platform/models/iap_order_consume_detail_info.py) |
 | IAPOrderInfo | [IAPOrderInfo](../../accelbyte_py_sdk/api/platform/models/iap_order_info.py) |
+| IAPOrderLineItemInfo | [IAPOrderLineItemInfo](../../accelbyte_py_sdk/api/platform/models/iap_order_line_item_info.py) |
 | IAPOrderPagingSlicedResult | [IAPOrderPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/iap_order_paging_sliced_result.py) |
+| IAPOrderShortInfo | [IAPOrderShortInfo](../../accelbyte_py_sdk/api/platform/models/iap_order_short_info.py) |
 | Image | [Image](../../accelbyte_py_sdk/api/platform/models/image.py) |
 | ImportErrorDetails | [ImportErrorDetails](../../accelbyte_py_sdk/api/platform/models/import_error_details.py) |
 | ImportStoreAppInfo | [ImportStoreAppInfo](../../accelbyte_py_sdk/api/platform/models/import_store_app_info.py) |
@@ -858,6 +873,7 @@
 | ItemAcquireRequest | [ItemAcquireRequest](../../accelbyte_py_sdk/api/platform/models/item_acquire_request.py) |
 | ItemAcquireResult | [ItemAcquireResult](../../accelbyte_py_sdk/api/platform/models/item_acquire_result.py) |
 | ItemCreate | [ItemCreate](../../accelbyte_py_sdk/api/platform/models/item_create.py) |
+| ItemDependency | [ItemDependency](../../accelbyte_py_sdk/api/platform/models/item_dependency.py) |
 | ItemDynamicDataInfo | [ItemDynamicDataInfo](../../accelbyte_py_sdk/api/platform/models/item_dynamic_data_info.py) |
 | ItemId | [ItemId](../../accelbyte_py_sdk/api/platform/models/item_id.py) |
 | ItemInfo | [ItemInfo](../../accelbyte_py_sdk/api/platform/models/item_info.py) |
@@ -865,6 +881,7 @@
 | ItemPagingSlicedResult | [ItemPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/item_paging_sliced_result.py) |
 | ItemPurchaseConditionValidateRequest | [ItemPurchaseConditionValidateRequest](../../accelbyte_py_sdk/api/platform/models/item_purchase_condition_validate_request.py) |
 | ItemPurchaseConditionValidateResult | [ItemPurchaseConditionValidateResult](../../accelbyte_py_sdk/api/platform/models/item_purchase_condition_validate_result.py) |
+| ItemReference | [ItemReference](../../accelbyte_py_sdk/api/platform/models/item_reference.py) |
 | ItemReturnRequest | [ItemReturnRequest](../../accelbyte_py_sdk/api/platform/models/item_return_request.py) |
 | ItemRevocation | [ItemRevocation](../../accelbyte_py_sdk/api/platform/models/item_revocation.py) |
 | ItemSnapshot | [ItemSnapshot](../../accelbyte_py_sdk/api/platform/models/item_snapshot.py) |
@@ -886,6 +903,7 @@
 | LootBoxPluginConfigUpdate | [LootBoxPluginConfigUpdate](../../accelbyte_py_sdk/api/platform/models/loot_box_plugin_config_update.py) |
 | LootBoxReward | [LootBoxReward](../../accelbyte_py_sdk/api/platform/models/loot_box_reward.py) |
 | MockIAPReceipt | [MockIAPReceipt](../../accelbyte_py_sdk/api/platform/models/mock_iap_receipt.py) |
+| ModuleReference | [ModuleReference](../../accelbyte_py_sdk/api/platform/models/module_reference.py) |
 | NeonPayConfig | [NeonPayConfig](../../accelbyte_py_sdk/api/platform/models/neon_pay_config.py) |
 | NotificationPagingSlicedResult | [NotificationPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/notification_paging_sliced_result.py) |
 | NotificationProcessResult | [NotificationProcessResult](../../accelbyte_py_sdk/api/platform/models/notification_process_result.py) |
@@ -993,6 +1011,7 @@
 | RegionDataItemDTO | [RegionDataItemDTO](../../accelbyte_py_sdk/api/platform/models/region_data_item_dto.py) |
 | RequestHistory | [RequestHistory](../../accelbyte_py_sdk/api/platform/models/request_history.py) |
 | Requirement | [Requirement](../../accelbyte_py_sdk/api/platform/models/requirement.py) |
+| ResetJobRequest | [ResetJobRequest](../../accelbyte_py_sdk/api/platform/models/reset_job_request.py) |
 | RevocationConfigInfo | [RevocationConfigInfo](../../accelbyte_py_sdk/api/platform/models/revocation_config_info.py) |
 | RevocationConfigUpdate | [RevocationConfigUpdate](../../accelbyte_py_sdk/api/platform/models/revocation_config_update.py) |
 | RevocationError | [RevocationError](../../accelbyte_py_sdk/api/platform/models/revocation_error.py) |
@@ -1037,12 +1056,16 @@
 | SimpleWallet | [SimpleWallet](../../accelbyte_py_sdk/api/platform/models/simple_wallet.py) |
 | Slide | [Slide](../../accelbyte_py_sdk/api/platform/models/slide.py) |
 | StackableEntitlementInfo | [StackableEntitlementInfo](../../accelbyte_py_sdk/api/platform/models/stackable_entitlement_info.py) |
+| SteamAbnormalTransactionPagingSlicedResult | [SteamAbnormalTransactionPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/steam_abnormal_transaction_paging_sliced_result.py) |
 | SteamAchievement | [SteamAchievement](../../accelbyte_py_sdk/api/platform/models/steam_achievement.py) |
 | SteamAchievementUpdateRequest | [SteamAchievementUpdateRequest](../../accelbyte_py_sdk/api/platform/models/steam_achievement_update_request.py) |
 | SteamDLCSyncRequest | [SteamDLCSyncRequest](../../accelbyte_py_sdk/api/platform/models/steam_dlc_sync_request.py) |
 | SteamIAPConfig | [SteamIAPConfig](../../accelbyte_py_sdk/api/platform/models/steam_iap_config.py) |
 | SteamIAPConfigInfo | [SteamIAPConfigInfo](../../accelbyte_py_sdk/api/platform/models/steam_iap_config_info.py) |
 | SteamIAPConfigRequest | [SteamIAPConfigRequest](../../accelbyte_py_sdk/api/platform/models/steam_iap_config_request.py) |
+| SteamReportInfoPagingSlicedResult | [SteamReportInfoPagingSlicedResult](../../accelbyte_py_sdk/api/platform/models/steam_report_info_paging_sliced_result.py) |
+| SteamReportJobInfo | [SteamReportJobInfo](../../accelbyte_py_sdk/api/platform/models/steam_report_job_info.py) |
+| SteamSyncByTransactionRequest | [SteamSyncByTransactionRequest](../../accelbyte_py_sdk/api/platform/models/steam_sync_by_transaction_request.py) |
 | SteamSyncRequest | [SteamSyncRequest](../../accelbyte_py_sdk/api/platform/models/steam_sync_request.py) |
 | StoreBackupInfo | [StoreBackupInfo](../../accelbyte_py_sdk/api/platform/models/store_backup_info.py) |
 | StoreCreate | [StoreCreate](../../accelbyte_py_sdk/api/platform/models/store_create.py) |

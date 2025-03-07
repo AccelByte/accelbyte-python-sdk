@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session History Service."""
 
-__version__ = "1.12.7"
+__version__ = "1.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -111,6 +111,7 @@ from .apimodels_x_ray_total_active_session_query_response import (
 from .apimodels_x_ray_total_player_persession_avg_query_response import (
     ApimodelsXRayTotalPlayerPersessionAVGQueryResponse,
 )
+from .envconfig_configuration import EnvconfigConfiguration
 from .logconfig_configuration import LogconfigConfiguration
 from .logconfig_configuration import LogLevelEnum as LogconfigConfigurationLogLevelEnum
 from .models_alliance_rule import ModelsAllianceRule

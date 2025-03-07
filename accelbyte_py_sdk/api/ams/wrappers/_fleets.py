@@ -45,7 +45,7 @@ from ..operations.fleets import FleetCreate
 from ..operations.fleets import FleetDelete
 from ..operations.fleets import FleetGet
 from ..operations.fleets import FleetList
-from ..operations.fleets import FleetListDescEnum, FleetListSortByEnum
+from ..operations.fleets import FleetListSortByEnum, FleetListSortDirectionEnum
 from ..operations.fleets import FleetServers
 from ..operations.fleets import FleetServersSortDirectionEnum, FleetServersStatusEnum
 from ..operations.fleets import FleetUpdate
@@ -601,11 +601,11 @@ async def fleet_get_async(
 def fleet_list(
     active: Optional[bool] = None,
     count: Optional[int] = None,
-    desc: Optional[Union[str, FleetListDescEnum]] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
     sort_by: Optional[Union[str, FleetListSortByEnum]] = None,
+    sort_direction: Optional[Union[str, FleetListSortDirectionEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -633,8 +633,6 @@ def fleet_list(
 
         count: (count) OPTIONAL int in query
 
-        desc: (desc) OPTIONAL Union[str, DescEnum] in query
-
         name: (name) OPTIONAL str in query
 
         offset: (offset) OPTIONAL int in query
@@ -642,6 +640,8 @@ def fleet_list(
         region: (region) OPTIONAL str in query
 
         sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
 
     Responses:
         200: OK - ApiFleetListResponse (success)
@@ -655,11 +655,11 @@ def fleet_list(
     request = FleetList.create(
         active=active,
         count=count,
-        desc=desc,
         name=name,
         offset=offset,
         region=region,
         sort_by=sort_by,
+        sort_direction=sort_direction,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -669,11 +669,11 @@ def fleet_list(
 async def fleet_list_async(
     active: Optional[bool] = None,
     count: Optional[int] = None,
-    desc: Optional[Union[str, FleetListDescEnum]] = None,
     name: Optional[str] = None,
     offset: Optional[int] = None,
     region: Optional[str] = None,
     sort_by: Optional[Union[str, FleetListSortByEnum]] = None,
+    sort_direction: Optional[Union[str, FleetListSortDirectionEnum]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -701,8 +701,6 @@ async def fleet_list_async(
 
         count: (count) OPTIONAL int in query
 
-        desc: (desc) OPTIONAL Union[str, DescEnum] in query
-
         name: (name) OPTIONAL str in query
 
         offset: (offset) OPTIONAL int in query
@@ -710,6 +708,8 @@ async def fleet_list_async(
         region: (region) OPTIONAL str in query
 
         sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
 
     Responses:
         200: OK - ApiFleetListResponse (success)
@@ -723,11 +723,11 @@ async def fleet_list_async(
     request = FleetList.create(
         active=active,
         count=count,
-        desc=desc,
         name=name,
         offset=offset,
         region=region,
         sort_by=sort_by,
+        sort_direction=sort_direction,
         namespace=namespace,
     )
     return await run_request_async(

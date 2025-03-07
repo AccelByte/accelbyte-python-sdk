@@ -27,6 +27,8 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
+from ..models.redeemable_item import RedeemableItem
+
 
 class CampaignIfc(Model):
     """Campaign ifc (CampaignIfc)
@@ -34,13 +36,19 @@ class CampaignIfc(Model):
     Properties:
         id_: (id) OPTIONAL str
 
+        items: (items) OPTIONAL List[RedeemableItem]
+
         name: (name) OPTIONAL str
+
+        namespace: (namespace) OPTIONAL str
     """
 
     # region fields
 
     id_: str  # OPTIONAL
+    items: List[RedeemableItem]  # OPTIONAL
     name: str  # OPTIONAL
+    namespace: str  # OPTIONAL
 
     # endregion fields
 
@@ -50,8 +58,16 @@ class CampaignIfc(Model):
         self.id_ = value
         return self
 
+    def with_items(self, value: List[RedeemableItem]) -> CampaignIfc:
+        self.items = value
+        return self
+
     def with_name(self, value: str) -> CampaignIfc:
         self.name = value
+        return self
+
+    def with_namespace(self, value: str) -> CampaignIfc:
+        self.namespace = value
         return self
 
     # endregion with_x methods
@@ -64,10 +80,20 @@ class CampaignIfc(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
+        if hasattr(self, "items"):
+            result["items"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.items
+            ]
+        elif include_empty:
+            result["items"] = []
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "namespace"):
+            result["namespace"] = str(self.namespace)
+        elif include_empty:
+            result["namespace"] = ""
         return result
 
     # endregion to methods
@@ -76,13 +102,22 @@ class CampaignIfc(Model):
 
     @classmethod
     def create(
-        cls, id_: Optional[str] = None, name: Optional[str] = None, **kwargs
+        cls,
+        id_: Optional[str] = None,
+        items: Optional[List[RedeemableItem]] = None,
+        name: Optional[str] = None,
+        namespace: Optional[str] = None,
+        **kwargs,
     ) -> CampaignIfc:
         instance = cls()
         if id_ is not None:
             instance.id_ = id_
+        if items is not None:
+            instance.items = items
         if name is not None:
             instance.name = name
+        if namespace is not None:
+            instance.namespace = namespace
         return instance
 
     @classmethod
@@ -94,10 +129,21 @@ class CampaignIfc(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
+        if "items" in dict_ and dict_["items"] is not None:
+            instance.items = [
+                RedeemableItem.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["items"]
+            ]
+        elif include_empty:
+            instance.items = []
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "namespace" in dict_ and dict_["namespace"] is not None:
+            instance.namespace = str(dict_["namespace"])
+        elif include_empty:
+            instance.namespace = ""
         return instance
 
     @classmethod
@@ -138,14 +184,18 @@ class CampaignIfc(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "id": "id_",
+            "items": "items",
             "name": "name",
+            "namespace": "namespace",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "id": False,
+            "items": False,
             "name": False,
+            "namespace": False,
         }
 
     # endregion static methods

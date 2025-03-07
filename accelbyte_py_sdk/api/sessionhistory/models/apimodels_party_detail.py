@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.apimodels_party_history import ApimodelsPartyHistory
+from ..models.models_party import ModelsParty
 
 
 class ApimodelsPartyDetail(Model):
@@ -38,20 +39,32 @@ class ApimodelsPartyDetail(Model):
 
         histories: (histories) REQUIRED List[ApimodelsPartyHistory]
 
+        joinability: (joinability) REQUIRED str
+
+        last_data: (last_data) REQUIRED ModelsParty
+
+        leader_id: (leader_id) REQUIRED str
+
         namespace: (namespace) REQUIRED str
 
         party_session_id: (partySessionID) REQUIRED str
 
         session_template: (session_template) REQUIRED str
+
+        updated_at: (updated_at) REQUIRED str
     """
 
     # region fields
 
     created_at: str  # REQUIRED
     histories: List[ApimodelsPartyHistory]  # REQUIRED
+    joinability: str  # REQUIRED
+    last_data: ModelsParty  # REQUIRED
+    leader_id: str  # REQUIRED
     namespace: str  # REQUIRED
     party_session_id: str  # REQUIRED
     session_template: str  # REQUIRED
+    updated_at: str  # REQUIRED
 
     # endregion fields
 
@@ -67,6 +80,18 @@ class ApimodelsPartyDetail(Model):
         self.histories = value
         return self
 
+    def with_joinability(self, value: str) -> ApimodelsPartyDetail:
+        self.joinability = value
+        return self
+
+    def with_last_data(self, value: ModelsParty) -> ApimodelsPartyDetail:
+        self.last_data = value
+        return self
+
+    def with_leader_id(self, value: str) -> ApimodelsPartyDetail:
+        self.leader_id = value
+        return self
+
     def with_namespace(self, value: str) -> ApimodelsPartyDetail:
         self.namespace = value
         return self
@@ -77,6 +102,10 @@ class ApimodelsPartyDetail(Model):
 
     def with_session_template(self, value: str) -> ApimodelsPartyDetail:
         self.session_template = value
+        return self
+
+    def with_updated_at(self, value: str) -> ApimodelsPartyDetail:
+        self.updated_at = value
         return self
 
     # endregion with_x methods
@@ -95,6 +124,18 @@ class ApimodelsPartyDetail(Model):
             ]
         elif include_empty:
             result["histories"] = []
+        if hasattr(self, "joinability"):
+            result["joinability"] = str(self.joinability)
+        elif include_empty:
+            result["joinability"] = ""
+        if hasattr(self, "last_data"):
+            result["last_data"] = self.last_data.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["last_data"] = ModelsParty()
+        if hasattr(self, "leader_id"):
+            result["leader_id"] = str(self.leader_id)
+        elif include_empty:
+            result["leader_id"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -107,6 +148,10 @@ class ApimodelsPartyDetail(Model):
             result["session_template"] = str(self.session_template)
         elif include_empty:
             result["session_template"] = ""
+        if hasattr(self, "updated_at"):
+            result["updated_at"] = str(self.updated_at)
+        elif include_empty:
+            result["updated_at"] = ""
         return result
 
     # endregion to methods
@@ -118,17 +163,25 @@ class ApimodelsPartyDetail(Model):
         cls,
         created_at: str,
         histories: List[ApimodelsPartyHistory],
+        joinability: str,
+        last_data: ModelsParty,
+        leader_id: str,
         namespace: str,
         party_session_id: str,
         session_template: str,
+        updated_at: str,
         **kwargs,
     ) -> ApimodelsPartyDetail:
         instance = cls()
         instance.created_at = created_at
         instance.histories = histories
+        instance.joinability = joinability
+        instance.last_data = last_data
+        instance.leader_id = leader_id
         instance.namespace = namespace
         instance.party_session_id = party_session_id
         instance.session_template = session_template
+        instance.updated_at = updated_at
         return instance
 
     @classmethod
@@ -149,6 +202,20 @@ class ApimodelsPartyDetail(Model):
             ]
         elif include_empty:
             instance.histories = []
+        if "joinability" in dict_ and dict_["joinability"] is not None:
+            instance.joinability = str(dict_["joinability"])
+        elif include_empty:
+            instance.joinability = ""
+        if "last_data" in dict_ and dict_["last_data"] is not None:
+            instance.last_data = ModelsParty.create_from_dict(
+                dict_["last_data"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.last_data = ModelsParty()
+        if "leader_id" in dict_ and dict_["leader_id"] is not None:
+            instance.leader_id = str(dict_["leader_id"])
+        elif include_empty:
+            instance.leader_id = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -161,6 +228,10 @@ class ApimodelsPartyDetail(Model):
             instance.session_template = str(dict_["session_template"])
         elif include_empty:
             instance.session_template = ""
+        if "updated_at" in dict_ and dict_["updated_at"] is not None:
+            instance.updated_at = str(dict_["updated_at"])
+        elif include_empty:
+            instance.updated_at = ""
         return instance
 
     @classmethod
@@ -206,9 +277,13 @@ class ApimodelsPartyDetail(Model):
         return {
             "created_at": "created_at",
             "histories": "histories",
+            "joinability": "joinability",
+            "last_data": "last_data",
+            "leader_id": "leader_id",
             "namespace": "namespace",
             "partySessionID": "party_session_id",
             "session_template": "session_template",
+            "updated_at": "updated_at",
         }
 
     @staticmethod
@@ -216,9 +291,13 @@ class ApimodelsPartyDetail(Model):
         return {
             "created_at": True,
             "histories": True,
+            "joinability": True,
+            "last_data": True,
+            "leader_id": True,
             "namespace": True,
             "partySessionID": True,
             "session_template": True,
+            "updated_at": True,
         }
 
     # endregion static methods

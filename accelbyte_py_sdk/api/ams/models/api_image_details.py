@@ -36,8 +36,6 @@ class ApiImageDetails(Model):
     Properties:
         created_at: (createdAt) REQUIRED str
 
-        delete_at: (deleteAt) REQUIRED str
-
         executable: (executable) REQUIRED str
 
         id_: (id) REQUIRED str
@@ -57,12 +55,13 @@ class ApiImageDetails(Model):
         uploaded_at: (uploadedAt) REQUIRED str
 
         uploaded_by: (uploadedBy) REQUIRED str
+
+        delete_at: (deleteAt) OPTIONAL str
     """
 
     # region fields
 
     created_at: str  # REQUIRED
-    delete_at: str  # REQUIRED
     executable: str  # REQUIRED
     id_: str  # REQUIRED
     is_protected: bool  # REQUIRED
@@ -73,6 +72,7 @@ class ApiImageDetails(Model):
     tags: List[str]  # REQUIRED
     uploaded_at: str  # REQUIRED
     uploaded_by: str  # REQUIRED
+    delete_at: str  # OPTIONAL
 
     # endregion fields
 
@@ -80,10 +80,6 @@ class ApiImageDetails(Model):
 
     def with_created_at(self, value: str) -> ApiImageDetails:
         self.created_at = value
-        return self
-
-    def with_delete_at(self, value: str) -> ApiImageDetails:
-        self.delete_at = value
         return self
 
     def with_executable(self, value: str) -> ApiImageDetails:
@@ -128,6 +124,10 @@ class ApiImageDetails(Model):
         self.uploaded_by = value
         return self
 
+    def with_delete_at(self, value: str) -> ApiImageDetails:
+        self.delete_at = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -138,10 +138,6 @@ class ApiImageDetails(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
-        if hasattr(self, "delete_at"):
-            result["deleteAt"] = str(self.delete_at)
-        elif include_empty:
-            result["deleteAt"] = ""
         if hasattr(self, "executable"):
             result["executable"] = str(self.executable)
         elif include_empty:
@@ -185,6 +181,10 @@ class ApiImageDetails(Model):
             result["uploadedBy"] = str(self.uploaded_by)
         elif include_empty:
             result["uploadedBy"] = ""
+        if hasattr(self, "delete_at"):
+            result["deleteAt"] = str(self.delete_at)
+        elif include_empty:
+            result["deleteAt"] = ""
         return result
 
     # endregion to methods
@@ -195,7 +195,6 @@ class ApiImageDetails(Model):
     def create(
         cls,
         created_at: str,
-        delete_at: str,
         executable: str,
         id_: str,
         is_protected: bool,
@@ -206,11 +205,11 @@ class ApiImageDetails(Model):
         tags: List[str],
         uploaded_at: str,
         uploaded_by: str,
+        delete_at: Optional[str] = None,
         **kwargs,
     ) -> ApiImageDetails:
         instance = cls()
         instance.created_at = created_at
-        instance.delete_at = delete_at
         instance.executable = executable
         instance.id_ = id_
         instance.is_protected = is_protected
@@ -221,6 +220,8 @@ class ApiImageDetails(Model):
         instance.tags = tags
         instance.uploaded_at = uploaded_at
         instance.uploaded_by = uploaded_by
+        if delete_at is not None:
+            instance.delete_at = delete_at
         return instance
 
     @classmethod
@@ -234,10 +235,6 @@ class ApiImageDetails(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
-        if "deleteAt" in dict_ and dict_["deleteAt"] is not None:
-            instance.delete_at = str(dict_["deleteAt"])
-        elif include_empty:
-            instance.delete_at = ""
         if "executable" in dict_ and dict_["executable"] is not None:
             instance.executable = str(dict_["executable"])
         elif include_empty:
@@ -281,6 +278,10 @@ class ApiImageDetails(Model):
             instance.uploaded_by = str(dict_["uploadedBy"])
         elif include_empty:
             instance.uploaded_by = ""
+        if "deleteAt" in dict_ and dict_["deleteAt"] is not None:
+            instance.delete_at = str(dict_["deleteAt"])
+        elif include_empty:
+            instance.delete_at = ""
         return instance
 
     @classmethod
@@ -321,7 +322,6 @@ class ApiImageDetails(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "createdAt": "created_at",
-            "deleteAt": "delete_at",
             "executable": "executable",
             "id": "id_",
             "isProtected": "is_protected",
@@ -332,13 +332,13 @@ class ApiImageDetails(Model):
             "tags": "tags",
             "uploadedAt": "uploaded_at",
             "uploadedBy": "uploaded_by",
+            "deleteAt": "delete_at",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "createdAt": True,
-            "deleteAt": True,
             "executable": True,
             "id": True,
             "isProtected": True,
@@ -349,6 +349,7 @@ class ApiImageDetails(Model):
             "tags": True,
             "uploadedAt": True,
             "uploadedBy": True,
+            "deleteAt": False,
         }
 
     # endregion static methods

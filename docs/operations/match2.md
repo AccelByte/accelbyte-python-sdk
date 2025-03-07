@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Match Service V2 Index (2.31.0)
+# AccelByte Gaming Services Match Service V2 Index (2.32.0)
 
 
 ## Operations
@@ -11,6 +11,7 @@
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
 | /match2/v1/namespaces/{namespace}/backfill/{backfillID}/proposal/accept | PUT | AcceptBackfill | `false` | [AcceptBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/accept_backfill.py) | [accept_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-accept-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_accept_backfill.py) |
+| /match2/v1/namespaces/{namespace}/backfill | GET | AdminQueryBackfill | `false` | [AdminQueryBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/admin_query_backfill.py) | [admin_query_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-admin-query-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_admin_query_backfill.py) |
 | /match2/v1/namespaces/{namespace}/backfill | POST | CreateBackfill | `false` | [CreateBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/create_backfill.py) | [create_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-create-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_create_backfill.py) |
 | /match2/v1/namespaces/{namespace}/backfill/{backfillID} | DELETE | DeleteBackfill | `false` | [DeleteBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/delete_backfill.py) | [delete_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-delete-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_delete_backfill.py) |
 | /match2/v1/namespaces/{namespace}/backfill/{backfillID} | GET | GetBackfill | `false` | [GetBackfill](../../accelbyte_py_sdk/api/match2/operations/backfill/get_backfill.py) | [get_backfill](../../accelbyte_py_sdk/api/match2/wrappers/_backfill.py) | [accelbyte_py_sdk_cli match2-get-backfill](../../samples/cli/accelbyte_py_sdk_cli/match2/_get_backfill.py) |
@@ -88,6 +89,7 @@
 | api.BackfillGetResponse | [ApiBackfillGetResponse](../../accelbyte_py_sdk/api/match2/models/api_backfill_get_response.py) |
 | api.BackfillProposalResponse | [ApiBackfillProposalResponse](../../accelbyte_py_sdk/api/match2/models/api_backfill_proposal_response.py) |
 | api.ExternalFailureMetricRecord | [ApiExternalFailureMetricRecord](../../accelbyte_py_sdk/api/match2/models/api_external_failure_metric_record.py) |
+| api.ListBackfillQueryResponse | [ApiListBackfillQueryResponse](../../accelbyte_py_sdk/api/match2/models/api_list_backfill_query_response.py) |
 | api.ListEnvironmentVariablesResponse | [ApiListEnvironmentVariablesResponse](../../accelbyte_py_sdk/api/match2/models/api_list_environment_variables_response.py) |
 | api.ListMatchFunctionsResponse | [ApiListMatchFunctionsResponse](../../accelbyte_py_sdk/api/match2/models/api_list_match_functions_response.py) |
 | api.ListMatchPoolTicketsResponse | [ApiListMatchPoolTicketsResponse](../../accelbyte_py_sdk/api/match2/models/api_list_match_pool_tickets_response.py) |

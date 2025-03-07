@@ -34,6 +34,7 @@ class IapOrderStatusEnum(StrEnum):
     FULFILLED = "FULFILLED"
     PARTIAL_REVOKED = "PARTIAL_REVOKED"
     REVOKED = "REVOKED"
+    REVOKE_FAILED = "REVOKE_FAILED"
     VERIFIED = "VERIFIED"
 
 
@@ -243,6 +244,7 @@ class OculusReconcileResult(Model):
                 "FULFILLED",
                 "PARTIAL_REVOKED",
                 "REVOKED",
+                "REVOKE_FAILED",
                 "VERIFIED",
             ],
             "itemIdentityType": ["ITEM_ID", "ITEM_SKU"],

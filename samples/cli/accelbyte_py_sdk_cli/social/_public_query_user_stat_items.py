@@ -33,16 +33,14 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.social import (
     public_query_user_stat_items as public_query_user_stat_items_internal,
 )
+from accelbyte_py_sdk.api.social.models import ADTOObjectForUserStatItemValue
 from accelbyte_py_sdk.api.social.models import ErrorEntity
-from accelbyte_py_sdk.api.social.models import UserStatItemPagingSlicedResult
 from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 
 
 @click.command()
 @click.argument("user_id", type=str)
-@click.option("--limit", "limit", type=int)
-@click.option("--offset", "offset", type=int)
-@click.option("--sort_by", "sort_by", type=str)
+@click.option("--additional_key", "additional_key", type=str)
 @click.option("--stat_codes", "stat_codes", type=str)
 @click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
@@ -51,9 +49,7 @@ from accelbyte_py_sdk.api.social.models import ValidationErrorEntity
 @click.option("--doc", type=bool)
 def public_query_user_stat_items(
     user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
+    additional_key: Optional[str] = None,
     stat_codes: Optional[str] = None,
     tags: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -69,11 +65,21 @@ def public_query_user_stat_items(
         x_additional_headers = {"Authorization": login_with_auth}
     else:
         login_as_internal(login_as)
+    if stat_codes is not None:
+        try:
+            stat_codes_json = json.loads(stat_codes)
+            stat_codes = [str(i0) for i0 in stat_codes_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'statCodes'. {str(e)}") from e
+    if tags is not None:
+        try:
+            tags_json = json.loads(tags)
+            tags = [str(i0) for i0 in tags_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'tags'. {str(e)}") from e
     result, error = public_query_user_stat_items_internal(
         user_id=user_id,
-        limit=limit,
-        offset=offset,
-        sort_by=sort_by,
+        additional_key=additional_key,
         stat_codes=stat_codes,
         tags=tags,
         namespace=namespace,

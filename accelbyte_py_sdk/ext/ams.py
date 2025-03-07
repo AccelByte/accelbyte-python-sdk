@@ -77,14 +77,10 @@ from ..api.ams.models import ApiQoSEndpointResponse
 from ..api.ams.models import ApiQoSServer
 from ..api.ams.models import ApiReferencingFleet
 from ..api.ams.models import ApiRegionConfig
-from ..api.ams.models import ApiTime
 from ..api.ams.models import ApiTimeout
 from ..api.ams.models import ApiUpdateServerRequest
 from ..api.ams.models import PaginationPaginationInfo
 from ..api.ams.models import ResponseErrorResponse
-from ..api.ams.models import TimeLocation
-from ..api.ams.models import TimeZone
-from ..api.ams.models import TimeZoneTrans
 
 
 def create_api_account_create_request_example() -> ApiAccountCreateRequest:
@@ -169,6 +165,7 @@ def create_api_artifact_response_example() -> ApiArtifactResponse:
     instance.region = randomize()
     instance.size_bytes = randomize("int", min_val=1, max_val=1000)
     instance.status = randomize()
+    instance.reason = randomize()
     return instance
 
 
@@ -219,9 +216,9 @@ def create_api_development_server_configuration_create_request_example() -> (
 ):
     instance = ApiDevelopmentServerConfigurationCreateRequest()
     instance.command_line_arguments = randomize()
-    instance.expires_at = randomize("date")
     instance.image_id = randomize()
     instance.name = randomize()
+    instance.expires_at = randomize("date")
     return instance
 
 
@@ -334,11 +331,13 @@ def create_api_fleet_get_response_example() -> ApiFleetGetResponse:
     instance.active = randomize("bool")
     instance.claim_keys = [randomize()]
     instance.ds_host_configuration = create_api_ds_host_configuration_example()
+    instance.fallback_fleet = randomize()
     instance.id_ = randomize()
     instance.image_deployment_profile = create_api_image_deployment_profile_example()
     instance.is_local = randomize("bool")
     instance.name = randomize()
     instance.on_demand = randomize("bool")
+    instance.primary_fleet = randomize()
     instance.regions = [create_api_region_config_example()]
     instance.sampling_rules = create_api_fleet_artifacts_sample_rules_example()
     return instance
@@ -348,12 +347,14 @@ def create_api_fleet_list_item_response_example() -> ApiFleetListItemResponse:
     instance = ApiFleetListItemResponse()
     instance.active = randomize("bool")
     instance.counts = [create_api_fleet_regional_server_counts_example()]
+    instance.fallback_fleet = randomize()
     instance.id_ = randomize()
     instance.image = randomize()
     instance.instance_provider = randomize()
     instance.is_local = randomize("bool")
     instance.name = randomize()
     instance.on_demand = randomize("bool")
+    instance.primary_fleet = randomize()
     instance.regions = [randomize()]
     return instance
 
@@ -376,6 +377,7 @@ def create_api_fleet_parameters_example() -> ApiFleetParameters:
     instance.on_demand = randomize("bool")
     instance.regions = [create_api_region_config_example()]
     instance.claim_keys = [randomize()]
+    instance.fallback_fleet = randomize()
     instance.sampling_rules = create_api_fleet_artifacts_sample_rules_example()
     return instance
 
@@ -395,7 +397,7 @@ def create_api_fleet_server_connection_info_response_example() -> (
     ApiFleetServerConnectionInfoResponse
 ):
     instance = ApiFleetServerConnectionInfoResponse()
-    instance.expires_at = create_api_time_example()
+    instance.expires_at = randomize("date")
     instance.host = randomize()
     instance.logstream_port = randomize("int", min_val=1, max_val=1000)
     instance.secret = randomize()
@@ -461,7 +463,6 @@ def create_api_image_deployment_profile_example() -> ApiImageDeploymentProfile:
 def create_api_image_details_example() -> ApiImageDetails:
     instance = ApiImageDetails()
     instance.created_at = randomize("date")
-    instance.delete_at = randomize()
     instance.executable = randomize()
     instance.id_ = randomize()
     instance.is_protected = randomize("bool")
@@ -472,6 +473,7 @@ def create_api_image_details_example() -> ApiImageDetails:
     instance.tags = [randomize()]
     instance.uploaded_at = randomize("date")
     instance.uploaded_by = randomize()
+    instance.delete_at = randomize()
     return instance
 
 
@@ -485,7 +487,6 @@ def create_api_image_list_example() -> ApiImageList:
 def create_api_image_list_item_example() -> ApiImageListItem:
     instance = ApiImageListItem()
     instance.created_at = randomize("date")
-    instance.delete_at = randomize()
     instance.executable = randomize()
     instance.id_ = randomize()
     instance.is_protected = randomize("bool")
@@ -497,6 +498,7 @@ def create_api_image_list_item_example() -> ApiImageListItem:
     instance.tags = [randomize()]
     instance.uploaded_at = randomize("date")
     instance.uploaded_by = randomize()
+    instance.delete_at = randomize()
     return instance
 
 
@@ -513,9 +515,9 @@ def create_api_image_storage_example() -> ApiImageStorage:
 def create_api_image_update_example() -> ApiImageUpdate:
     instance = ApiImageUpdate()
     instance.added_tags = [randomize()]
+    instance.removed_tags = [randomize()]
     instance.is_protected = randomize("bool")
     instance.name = randomize()
-    instance.removed_tags = [randomize()]
     return instance
 
 
@@ -595,14 +597,6 @@ def create_api_region_config_example() -> ApiRegionConfig:
     return instance
 
 
-def create_api_time_example() -> ApiTime:
-    instance = ApiTime()
-    instance.ext = randomize("int", min_val=1, max_val=1000)
-    instance.loc = create_time_location_example()
-    instance.wall = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
 def create_api_timeout_example() -> ApiTimeout:
     instance = ApiTimeout()
     instance.claim = randomize("int", min_val=1, max_val=1000)
@@ -634,33 +628,4 @@ def create_response_error_response_example() -> ResponseErrorResponse:
     instance.error_message = randomize()
     instance.error_type = randomize()
     instance.trace_id = randomize()
-    return instance
-
-
-def create_time_location_example() -> TimeLocation:
-    instance = TimeLocation()
-    instance.cache_end = randomize("int", min_val=1, max_val=1000)
-    instance.cache_start = randomize("int", min_val=1, max_val=1000)
-    instance.cache_zone = create_time_zone_example()
-    instance.extend = randomize()
-    instance.name = randomize()
-    instance.tx = [create_time_zone_trans_example()]
-    instance.zone = [create_time_zone_example()]
-    return instance
-
-
-def create_time_zone_example() -> TimeZone:
-    instance = TimeZone()
-    instance.is_dst = randomize("bool")
-    instance.name = randomize()
-    instance.offset = randomize("int", min_val=1, max_val=1000)
-    return instance
-
-
-def create_time_zone_trans_example() -> TimeZoneTrans:
-    instance = TimeZoneTrans()
-    instance.index = randomize("int", min_val=1, max_val=1000)
-    instance.isstd = randomize("bool")
-    instance.isutc = randomize("bool")
-    instance.when = randomize("int", min_val=1, max_val=1000)
     return instance

@@ -64,6 +64,8 @@ class UpdateDLCItemConfig(Operation):
 
         400: Bad Request - ErrorEntity (394721: Invalid platform DLC config namespace [{namespace}]: [{message}])
 
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30343: Item of sku [{itemSku}] does not exist )
+
         409: Conflict - ErrorEntity (39471: Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] )
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
@@ -183,6 +185,8 @@ class UpdateDLCItemConfig(Operation):
 
         400: Bad Request - ErrorEntity (394721: Invalid platform DLC config namespace [{namespace}]: [{message}])
 
+        404: Not Found - ErrorEntity (30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30343: Item of sku [{itemSku}] does not exist )
+
         409: Conflict - ErrorEntity (39471: Duplicated dlc reward id [{dlcRewardId}] in namespace [{namespace}] )
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
@@ -203,6 +207,8 @@ class UpdateDLCItemConfig(Operation):
         if code == 200:
             return DLCItemConfigInfo.create_from_dict(content), None
         if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 409:
             return None, ErrorEntity.create_from_dict(content)

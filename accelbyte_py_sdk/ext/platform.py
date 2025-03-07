@@ -85,6 +85,7 @@ from ..api.platform.models import CatalogDefinitionInfo
 from ..api.platform.models import CategoryCreate
 from ..api.platform.models import CategoryInfo
 from ..api.platform.models import CategoryUpdate
+from ..api.platform.models import ChangeStatusItemRequest
 from ..api.platform.models import CheckoutConfig
 from ..api.platform.models import ClawbackInfo
 from ..api.platform.models import ClientRequestParameter
@@ -169,6 +170,7 @@ from ..api.platform.models import ExportStoreRequest
 from ..api.platform.models import ExportStoreToCSVRequest
 from ..api.platform.models import ExtensionFulfillmentSummary
 from ..api.platform.models import ExternalPaymentOrderCreate
+from ..api.platform.models import FeatureReference
 from ..api.platform.models import FieldValidationError
 from ..api.platform.models import FixedPeriodRotationConfig
 from ..api.platform.models import FulFillItemPayload
@@ -215,7 +217,9 @@ from ..api.platform.models import IAPItemFlatEntry
 from ..api.platform.models import IAPItemMappingInfo
 from ..api.platform.models import IAPOrderConsumeDetailInfo
 from ..api.platform.models import IAPOrderInfo
+from ..api.platform.models import IAPOrderLineItemInfo
 from ..api.platform.models import IAPOrderPagingSlicedResult
+from ..api.platform.models import IAPOrderShortInfo
 from ..api.platform.models import Image
 from ..api.platform.models import ImportErrorDetails
 from ..api.platform.models import ImportStoreAppInfo
@@ -234,6 +238,7 @@ from ..api.platform.models import InvoiceSummary
 from ..api.platform.models import ItemAcquireRequest
 from ..api.platform.models import ItemAcquireResult
 from ..api.platform.models import ItemCreate
+from ..api.platform.models import ItemDependency
 from ..api.platform.models import ItemDynamicDataInfo
 from ..api.platform.models import ItemId
 from ..api.platform.models import ItemInfo
@@ -241,6 +246,7 @@ from ..api.platform.models import ItemNaming
 from ..api.platform.models import ItemPagingSlicedResult
 from ..api.platform.models import ItemPurchaseConditionValidateRequest
 from ..api.platform.models import ItemPurchaseConditionValidateResult
+from ..api.platform.models import ItemReference
 from ..api.platform.models import ItemReturnRequest
 from ..api.platform.models import ItemRevocation
 from ..api.platform.models import ItemSnapshot
@@ -262,6 +268,7 @@ from ..api.platform.models import LootBoxPluginConfigInfo
 from ..api.platform.models import LootBoxPluginConfigUpdate
 from ..api.platform.models import LootBoxReward
 from ..api.platform.models import MockIAPReceipt
+from ..api.platform.models import ModuleReference
 from ..api.platform.models import NeonPayConfig
 from ..api.platform.models import NotificationPagingSlicedResult
 from ..api.platform.models import NotificationProcessResult
@@ -369,6 +376,7 @@ from ..api.platform.models import RegionDataItem
 from ..api.platform.models import RegionDataItemDTO
 from ..api.platform.models import RequestHistory
 from ..api.platform.models import Requirement
+from ..api.platform.models import ResetJobRequest
 from ..api.platform.models import RevocationConfigInfo
 from ..api.platform.models import RevocationConfigUpdate
 from ..api.platform.models import RevocationError
@@ -413,12 +421,16 @@ from ..api.platform.models import SimpleUserDLCRewardContentsResponse
 from ..api.platform.models import SimpleWallet
 from ..api.platform.models import Slide
 from ..api.platform.models import StackableEntitlementInfo
+from ..api.platform.models import SteamAbnormalTransactionPagingSlicedResult
 from ..api.platform.models import SteamAchievement
 from ..api.platform.models import SteamAchievementUpdateRequest
 from ..api.platform.models import SteamDLCSyncRequest
 from ..api.platform.models import SteamIAPConfig
 from ..api.platform.models import SteamIAPConfigInfo
 from ..api.platform.models import SteamIAPConfigRequest
+from ..api.platform.models import SteamReportInfoPagingSlicedResult
+from ..api.platform.models import SteamReportJobInfo
+from ..api.platform.models import SteamSyncByTransactionRequest
 from ..api.platform.models import SteamSyncRequest
 from ..api.platform.models import StoreBackupInfo
 from ..api.platform.models import StoreCreate
@@ -1045,7 +1057,9 @@ def create_campaign_dynamic_info_example() -> CampaignDynamicInfo:
 def create_campaign_ifc_example() -> CampaignIfc:
     instance = CampaignIfc()
     instance.id_ = randomize()
+    instance.items = [create_redeemable_item_example()]
     instance.name = randomize()
+    instance.namespace = randomize("slug")
     return instance
 
 
@@ -1154,12 +1168,14 @@ def create_catalog_change_statistics_example() -> CatalogChangeStatistics:
 def create_catalog_config_info_example() -> CatalogConfigInfo:
     instance = CatalogConfigInfo()
     instance.enable_inventory_check = randomize("bool")
+    instance.item_deletion_check_config = [randomize()]
     return instance
 
 
 def create_catalog_config_update_example() -> CatalogConfigUpdate:
     instance = CatalogConfigUpdate()
     instance.enable_inventory_check = randomize("bool")
+    instance.item_deletion_check_config = [randomize()]
     return instance
 
 
@@ -1194,6 +1210,12 @@ def create_category_info_example() -> CategoryInfo:
 def create_category_update_example() -> CategoryUpdate:
     instance = CategoryUpdate()
     instance.localization_display_names = {randomize(): randomize()}
+    return instance
+
+
+def create_change_status_item_request_example() -> ChangeStatusItemRequest:
+    instance = ChangeStatusItemRequest()
+    instance.features_to_check = [randomize()]
     return instance
 
 
@@ -2085,6 +2107,13 @@ def create_external_payment_order_create_example() -> ExternalPaymentOrderCreate
     return instance
 
 
+def create_feature_reference_example() -> FeatureReference:
+    instance = FeatureReference()
+    instance.feature = randomize()
+    instance.references = [create_module_reference_example()]
+    return instance
+
+
 def create_field_validation_error_example() -> FieldValidationError:
     instance = FieldValidationError()
     instance.error_code = randomize()
@@ -2634,7 +2663,33 @@ def create_iap_order_info_example() -> IAPOrderInfo:
     instance.retry_count = randomize("int", min_val=1, max_val=1000)
     instance.sandbox = randomize("bool")
     instance.status_reason = randomize()
+    instance.sync_mode = randomize()
     instance.transaction_id = randomize("uid")
+    return instance
+
+
+def create_iap_order_line_item_info_example() -> IAPOrderLineItemInfo:
+    instance = IAPOrderLineItemInfo()
+    instance.amount = randomize("int", min_val=1, max_val=1000)
+    instance.iap_order_no = randomize()
+    instance.id_ = randomize()
+    instance.item_identity = randomize()
+    instance.item_identity_type = randomize()
+    instance.last_fulfillment_v2_result = create_fulfillment_v2_result_example()
+    instance.last_revoke_fulfillment_v2_result = (
+        create_revoke_fulfillment_v2_result_example()
+    )
+    instance.line_item_id = randomize()
+    instance.namespace = randomize("slug")
+    instance.platform = randomize()
+    instance.qty = randomize("int", min_val=1, max_val=1000)
+    instance.sandbox = randomize("bool")
+    instance.status = randomize()
+    instance.status_reason = randomize()
+    instance.third_party_item_id = randomize()
+    instance.third_party_order_id = randomize()
+    instance.user_id = randomize("uid")
+    instance.vat = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2642,6 +2697,13 @@ def create_iap_order_paging_sliced_result_example() -> IAPOrderPagingSlicedResul
     instance = IAPOrderPagingSlicedResult()
     instance.data = [create_iap_order_info_example()]
     instance.paging = create_paging_example()
+    return instance
+
+
+def create_iap_order_short_info_example() -> IAPOrderShortInfo:
+    instance = IAPOrderShortInfo()
+    instance.iap_order_no = randomize()
+    instance.status = randomize()
     return instance
 
 
@@ -2839,6 +2901,12 @@ def create_item_create_example() -> ItemCreate:
     return instance
 
 
+def create_item_dependency_example() -> ItemDependency:
+    instance = ItemDependency()
+    instance.references = [create_feature_reference_example()]
+    return instance
+
+
 def create_item_dynamic_data_info_example() -> ItemDynamicDataInfo:
     instance = ItemDynamicDataInfo()
     instance.available_count = randomize("int", min_val=1, max_val=1000)
@@ -2949,6 +3017,21 @@ def create_item_purchase_condition_validate_result_example() -> (
     instance.purchasable = randomize("bool")
     instance.sku = randomize("slug")
     instance.validate_details = [create_condition_group_validate_result_example()]
+    return instance
+
+
+def create_item_reference_example() -> ItemReference:
+    instance = ItemReference()
+    instance.code_redemption_id = randomize()
+    instance.condition_name = randomize()
+    instance.dlc_id = randomize()
+    instance.item_id = randomize()
+    instance.namespace = randomize("slug")
+    instance.platform = randomize()
+    instance.platform_product_id = randomize()
+    instance.reference_id = randomize()
+    instance.reward_code = randomize()
+    instance.store_id = randomize()
     return instance
 
 
@@ -3227,6 +3310,13 @@ def create_mock_iap_receipt_example() -> MockIAPReceipt:
     instance.language = randomize()
     instance.region = randomize()
     instance.transaction_id = randomize("uid")
+    return instance
+
+
+def create_module_reference_example() -> ModuleReference:
+    instance = ModuleReference()
+    instance.module = randomize()
+    instance.references = [create_item_reference_example()]
     return instance
 
 
@@ -4471,6 +4561,13 @@ def create_requirement_example() -> Requirement:
     return instance
 
 
+def create_reset_job_request_example() -> ResetJobRequest:
+    instance = ResetJobRequest()
+    instance.env = randomize()
+    instance.last_time = randomize("date")
+    return instance
+
+
 def create_revocation_config_info_example() -> RevocationConfigInfo:
     instance = RevocationConfigInfo()
     instance.entitlement = create_entitlement_revocation_config_example()
@@ -4943,6 +5040,13 @@ def create_stackable_entitlement_info_example() -> StackableEntitlementInfo:
     return instance
 
 
+def create_steam_abnormal_transaction_paging_sliced_result_example() -> (
+    SteamAbnormalTransactionPagingSlicedResult
+):
+    instance = SteamAbnormalTransactionPagingSlicedResult()
+    return instance
+
+
 def create_steam_achievement_example() -> SteamAchievement:
     instance = SteamAchievement()
     instance.id_ = randomize()
@@ -4968,9 +5072,11 @@ def create_steam_iap_config_example() -> SteamIAPConfig:
     instance = SteamIAPConfig()
     instance.app_id = randomize("uid")
     instance.created_at = randomize("date")
+    instance.env = randomize()
     instance.namespace = randomize("slug")
     instance.publisher_authentication_key = randomize()
     instance.rvn = randomize("int", min_val=1, max_val=1000)
+    instance.sync_mode = randomize()
     instance.updated_at = randomize("date")
     return instance
 
@@ -4980,13 +5086,39 @@ def create_steam_iap_config_info_example() -> SteamIAPConfigInfo:
     instance.namespace = randomize("slug")
     instance.publisher_authentication_key = randomize()
     instance.app_id = randomize("uid")
+    instance.env = randomize()
+    instance.sync_mode = randomize()
     return instance
 
 
 def create_steam_iap_config_request_example() -> SteamIAPConfigRequest:
     instance = SteamIAPConfigRequest()
     instance.app_id = randomize("uid")
+    instance.env = randomize()
     instance.publisher_authentication_key = randomize()
+    instance.sync_mode = randomize()
+    return instance
+
+
+def create_steam_report_info_paging_sliced_result_example() -> (
+    SteamReportInfoPagingSlicedResult
+):
+    instance = SteamReportInfoPagingSlicedResult()
+    return instance
+
+
+def create_steam_report_job_info_example() -> SteamReportJobInfo:
+    instance = SteamReportJobInfo()
+    instance.env = randomize()
+    instance.id_ = randomize()
+    instance.last_time = randomize("date")
+    instance.namespace = randomize("slug")
+    return instance
+
+
+def create_steam_sync_by_transaction_request_example() -> SteamSyncByTransactionRequest:
+    instance = SteamSyncByTransactionRequest()
+    instance.order_id = randomize()
     return instance
 
 

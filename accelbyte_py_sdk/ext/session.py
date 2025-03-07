@@ -166,6 +166,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat_mode = randomize()
     instance.tie_teams_session_lifetime = randomize("bool")
+    instance.ttl_hours = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -216,6 +217,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.psn_base_url = randomize("url")
     instance.text_chat_mode = randomize()
     instance.tie_teams_session_lifetime = randomize("bool")
+    instance.ttl_hours = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -540,6 +542,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.requested_regions = [randomize()]
     instance.text_chat_mode = randomize()
     instance.tie_teams_session_lifetime = randomize("bool")
+    instance.ttl_hours = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -664,6 +667,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.psn_base_url = randomize("url")
     instance.text_chat_mode = randomize()
     instance.tie_teams_session_lifetime = randomize("bool")
+    instance.ttl_hours = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -713,11 +717,9 @@ def create_apimodels_update_gamesession_ds_information_request_example() -> (
     ApimodelsUpdateGamesessionDSInformationRequest
 ):
     instance = ApimodelsUpdateGamesessionDSInformationRequest()
-    instance.client_version = randomize()
     instance.created_region = randomize()
     instance.deployment = randomize()
     instance.description = randomize()
-    instance.game_mode = randomize()
     instance.ip = randomize()
     instance.port = randomize("int", min_val=1, max_val=1000)
     instance.region = randomize()
@@ -836,6 +838,7 @@ def create_models_game_server_example() -> ModelsGameServer:
     instance.alternate_ips = [randomize()]
     instance.ams_protocol = [create_models_port_configuration_ams_example()]
     instance.deployment = randomize()
+    instance.description = randomize()
     instance.extend_region = randomize()
     instance.game_version = randomize("version")
     instance.image_version = randomize()

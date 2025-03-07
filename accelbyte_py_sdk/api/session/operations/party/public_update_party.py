@@ -48,6 +48,7 @@ class PublicUpdateParty(Operation):
     1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
     the session regardless the leader changes.
     2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
+    - ttlHours is how long the session will active, max value is 168 hours
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}

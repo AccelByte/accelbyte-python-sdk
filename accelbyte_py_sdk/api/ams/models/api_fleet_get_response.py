@@ -43,6 +43,8 @@ class ApiFleetGetResponse(Model):
 
         ds_host_configuration: (dsHostConfiguration) REQUIRED ApiDSHostConfiguration
 
+        fallback_fleet: (fallbackFleet) REQUIRED str
+
         id_: (id) REQUIRED str
 
         image_deployment_profile: (imageDeploymentProfile) REQUIRED ApiImageDeploymentProfile
@@ -52,6 +54,8 @@ class ApiFleetGetResponse(Model):
         name: (name) REQUIRED str
 
         on_demand: (onDemand) REQUIRED bool
+
+        primary_fleet: (primaryFleet) REQUIRED str
 
         regions: (regions) REQUIRED List[ApiRegionConfig]
 
@@ -63,11 +67,13 @@ class ApiFleetGetResponse(Model):
     active: bool  # REQUIRED
     claim_keys: List[str]  # REQUIRED
     ds_host_configuration: ApiDSHostConfiguration  # REQUIRED
+    fallback_fleet: str  # REQUIRED
     id_: str  # REQUIRED
     image_deployment_profile: ApiImageDeploymentProfile  # REQUIRED
     is_local: bool  # REQUIRED
     name: str  # REQUIRED
     on_demand: bool  # REQUIRED
+    primary_fleet: str  # REQUIRED
     regions: List[ApiRegionConfig]  # REQUIRED
     sampling_rules: ApiFleetArtifactsSampleRules  # REQUIRED
 
@@ -87,6 +93,10 @@ class ApiFleetGetResponse(Model):
         self, value: ApiDSHostConfiguration
     ) -> ApiFleetGetResponse:
         self.ds_host_configuration = value
+        return self
+
+    def with_fallback_fleet(self, value: str) -> ApiFleetGetResponse:
+        self.fallback_fleet = value
         return self
 
     def with_id(self, value: str) -> ApiFleetGetResponse:
@@ -109,6 +119,10 @@ class ApiFleetGetResponse(Model):
 
     def with_on_demand(self, value: bool) -> ApiFleetGetResponse:
         self.on_demand = value
+        return self
+
+    def with_primary_fleet(self, value: str) -> ApiFleetGetResponse:
+        self.primary_fleet = value
         return self
 
     def with_regions(self, value: List[ApiRegionConfig]) -> ApiFleetGetResponse:
@@ -141,6 +155,10 @@ class ApiFleetGetResponse(Model):
             )
         elif include_empty:
             result["dsHostConfiguration"] = ApiDSHostConfiguration()
+        if hasattr(self, "fallback_fleet"):
+            result["fallbackFleet"] = str(self.fallback_fleet)
+        elif include_empty:
+            result["fallbackFleet"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -163,6 +181,10 @@ class ApiFleetGetResponse(Model):
             result["onDemand"] = bool(self.on_demand)
         elif include_empty:
             result["onDemand"] = False
+        if hasattr(self, "primary_fleet"):
+            result["primaryFleet"] = str(self.primary_fleet)
+        elif include_empty:
+            result["primaryFleet"] = ""
         if hasattr(self, "regions"):
             result["regions"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.regions
@@ -187,11 +209,13 @@ class ApiFleetGetResponse(Model):
         active: bool,
         claim_keys: List[str],
         ds_host_configuration: ApiDSHostConfiguration,
+        fallback_fleet: str,
         id_: str,
         image_deployment_profile: ApiImageDeploymentProfile,
         is_local: bool,
         name: str,
         on_demand: bool,
+        primary_fleet: str,
         regions: List[ApiRegionConfig],
         sampling_rules: ApiFleetArtifactsSampleRules,
         **kwargs,
@@ -200,11 +224,13 @@ class ApiFleetGetResponse(Model):
         instance.active = active
         instance.claim_keys = claim_keys
         instance.ds_host_configuration = ds_host_configuration
+        instance.fallback_fleet = fallback_fleet
         instance.id_ = id_
         instance.image_deployment_profile = image_deployment_profile
         instance.is_local = is_local
         instance.name = name
         instance.on_demand = on_demand
+        instance.primary_fleet = primary_fleet
         instance.regions = regions
         instance.sampling_rules = sampling_rules
         return instance
@@ -230,6 +256,10 @@ class ApiFleetGetResponse(Model):
             )
         elif include_empty:
             instance.ds_host_configuration = ApiDSHostConfiguration()
+        if "fallbackFleet" in dict_ and dict_["fallbackFleet"] is not None:
+            instance.fallback_fleet = str(dict_["fallbackFleet"])
+        elif include_empty:
+            instance.fallback_fleet = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -257,6 +287,10 @@ class ApiFleetGetResponse(Model):
             instance.on_demand = bool(dict_["onDemand"])
         elif include_empty:
             instance.on_demand = False
+        if "primaryFleet" in dict_ and dict_["primaryFleet"] is not None:
+            instance.primary_fleet = str(dict_["primaryFleet"])
+        elif include_empty:
+            instance.primary_fleet = ""
         if "regions" in dict_ and dict_["regions"] is not None:
             instance.regions = [
                 ApiRegionConfig.create_from_dict(i0, include_empty=include_empty)
@@ -314,11 +348,13 @@ class ApiFleetGetResponse(Model):
             "active": "active",
             "claimKeys": "claim_keys",
             "dsHostConfiguration": "ds_host_configuration",
+            "fallbackFleet": "fallback_fleet",
             "id": "id_",
             "imageDeploymentProfile": "image_deployment_profile",
             "isLocal": "is_local",
             "name": "name",
             "onDemand": "on_demand",
+            "primaryFleet": "primary_fleet",
             "regions": "regions",
             "samplingRules": "sampling_rules",
         }
@@ -329,11 +365,13 @@ class ApiFleetGetResponse(Model):
             "active": True,
             "claimKeys": True,
             "dsHostConfiguration": True,
+            "fallbackFleet": True,
             "id": True,
             "imageDeploymentProfile": True,
             "isLocal": True,
             "name": True,
             "onDemand": True,
+            "primaryFleet": True,
             "regions": True,
             "samplingRules": True,
         }

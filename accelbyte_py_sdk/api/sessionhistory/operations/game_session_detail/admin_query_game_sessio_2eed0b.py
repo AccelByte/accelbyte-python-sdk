@@ -53,11 +53,23 @@ class AdminQueryGameSessionDetail(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        completed_only: (completedOnly) OPTIONAL str in query
+
+        configuration_name: (configurationName) OPTIONAL str in query
+
+        ds_pod_name: (dsPodName) OPTIONAL str in query
+
         end_date: (endDate) OPTIONAL str in query
 
         game_session_id: (gameSessionID) OPTIONAL str in query
 
+        is_persistent: (isPersistent) OPTIONAL str in query
+
+        joinability: (joinability) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
+
+        match_pool: (matchPool) OPTIONAL str in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -66,6 +78,8 @@ class AdminQueryGameSessionDetail(Operation):
         order_by: (orderBy) OPTIONAL str in query
 
         start_date: (startDate) OPTIONAL str in query
+
+        status_v2: (statusV2) OPTIONAL str in query
 
         user_id: (userID) OPTIONAL str in query
 
@@ -91,13 +105,20 @@ class AdminQueryGameSessionDetail(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    completed_only: str  # OPTIONAL in [query]
+    configuration_name: str  # OPTIONAL in [query]
+    ds_pod_name: str  # OPTIONAL in [query]
     end_date: str  # OPTIONAL in [query]
     game_session_id: str  # OPTIONAL in [query]
+    is_persistent: str  # OPTIONAL in [query]
+    joinability: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
+    match_pool: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     order: str  # OPTIONAL in [query]
     order_by: str  # OPTIONAL in [query]
     start_date: str  # OPTIONAL in [query]
+    status_v2: str  # OPTIONAL in [query]
     user_id: str  # OPTIONAL in [query]
 
     # endregion fields
@@ -150,12 +171,24 @@ class AdminQueryGameSessionDetail(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "completed_only"):
+            result["completedOnly"] = self.completed_only
+        if hasattr(self, "configuration_name"):
+            result["configurationName"] = self.configuration_name
+        if hasattr(self, "ds_pod_name"):
+            result["dsPodName"] = self.ds_pod_name
         if hasattr(self, "end_date"):
             result["endDate"] = self.end_date
         if hasattr(self, "game_session_id"):
             result["gameSessionID"] = self.game_session_id
+        if hasattr(self, "is_persistent"):
+            result["isPersistent"] = self.is_persistent
+        if hasattr(self, "joinability"):
+            result["joinability"] = self.joinability
         if hasattr(self, "limit"):
             result["limit"] = self.limit
+        if hasattr(self, "match_pool"):
+            result["matchPool"] = self.match_pool
         if hasattr(self, "offset"):
             result["offset"] = self.offset
         if hasattr(self, "order"):
@@ -164,6 +197,8 @@ class AdminQueryGameSessionDetail(Operation):
             result["orderBy"] = self.order_by
         if hasattr(self, "start_date"):
             result["startDate"] = self.start_date
+        if hasattr(self, "status_v2"):
+            result["statusV2"] = self.status_v2
         if hasattr(self, "user_id"):
             result["userID"] = self.user_id
         return result
@@ -180,6 +215,18 @@ class AdminQueryGameSessionDetail(Operation):
         self.namespace = value
         return self
 
+    def with_completed_only(self, value: str) -> AdminQueryGameSessionDetail:
+        self.completed_only = value
+        return self
+
+    def with_configuration_name(self, value: str) -> AdminQueryGameSessionDetail:
+        self.configuration_name = value
+        return self
+
+    def with_ds_pod_name(self, value: str) -> AdminQueryGameSessionDetail:
+        self.ds_pod_name = value
+        return self
+
     def with_end_date(self, value: str) -> AdminQueryGameSessionDetail:
         self.end_date = value
         return self
@@ -188,8 +235,20 @@ class AdminQueryGameSessionDetail(Operation):
         self.game_session_id = value
         return self
 
+    def with_is_persistent(self, value: str) -> AdminQueryGameSessionDetail:
+        self.is_persistent = value
+        return self
+
+    def with_joinability(self, value: str) -> AdminQueryGameSessionDetail:
+        self.joinability = value
+        return self
+
     def with_limit(self, value: int) -> AdminQueryGameSessionDetail:
         self.limit = value
+        return self
+
+    def with_match_pool(self, value: str) -> AdminQueryGameSessionDetail:
+        self.match_pool = value
         return self
 
     def with_offset(self, value: int) -> AdminQueryGameSessionDetail:
@@ -208,6 +267,10 @@ class AdminQueryGameSessionDetail(Operation):
         self.start_date = value
         return self
 
+    def with_status_v2(self, value: str) -> AdminQueryGameSessionDetail:
+        self.status_v2 = value
+        return self
+
     def with_user_id(self, value: str) -> AdminQueryGameSessionDetail:
         self.user_id = value
         return self
@@ -222,6 +285,18 @@ class AdminQueryGameSessionDetail(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "completed_only") and self.completed_only:
+            result["completedOnly"] = str(self.completed_only)
+        elif include_empty:
+            result["completedOnly"] = ""
+        if hasattr(self, "configuration_name") and self.configuration_name:
+            result["configurationName"] = str(self.configuration_name)
+        elif include_empty:
+            result["configurationName"] = ""
+        if hasattr(self, "ds_pod_name") and self.ds_pod_name:
+            result["dsPodName"] = str(self.ds_pod_name)
+        elif include_empty:
+            result["dsPodName"] = ""
         if hasattr(self, "end_date") and self.end_date:
             result["endDate"] = str(self.end_date)
         elif include_empty:
@@ -230,10 +305,22 @@ class AdminQueryGameSessionDetail(Operation):
             result["gameSessionID"] = str(self.game_session_id)
         elif include_empty:
             result["gameSessionID"] = ""
+        if hasattr(self, "is_persistent") and self.is_persistent:
+            result["isPersistent"] = str(self.is_persistent)
+        elif include_empty:
+            result["isPersistent"] = ""
+        if hasattr(self, "joinability") and self.joinability:
+            result["joinability"] = str(self.joinability)
+        elif include_empty:
+            result["joinability"] = ""
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
             result["limit"] = 0
+        if hasattr(self, "match_pool") and self.match_pool:
+            result["matchPool"] = str(self.match_pool)
+        elif include_empty:
+            result["matchPool"] = ""
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
@@ -250,6 +337,10 @@ class AdminQueryGameSessionDetail(Operation):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = ""
+        if hasattr(self, "status_v2") and self.status_v2:
+            result["statusV2"] = str(self.status_v2)
+        elif include_empty:
+            result["statusV2"] = ""
         if hasattr(self, "user_id") and self.user_id:
             result["userID"] = str(self.user_id)
         elif include_empty:
@@ -318,24 +409,43 @@ class AdminQueryGameSessionDetail(Operation):
     def create(
         cls,
         namespace: str,
+        completed_only: Optional[str] = None,
+        configuration_name: Optional[str] = None,
+        ds_pod_name: Optional[str] = None,
         end_date: Optional[str] = None,
         game_session_id: Optional[str] = None,
+        is_persistent: Optional[str] = None,
+        joinability: Optional[str] = None,
         limit: Optional[int] = None,
+        match_pool: Optional[str] = None,
         offset: Optional[int] = None,
         order: Optional[str] = None,
         order_by: Optional[str] = None,
         start_date: Optional[str] = None,
+        status_v2: Optional[str] = None,
         user_id: Optional[str] = None,
         **kwargs,
     ) -> AdminQueryGameSessionDetail:
         instance = cls()
         instance.namespace = namespace
+        if completed_only is not None:
+            instance.completed_only = completed_only
+        if configuration_name is not None:
+            instance.configuration_name = configuration_name
+        if ds_pod_name is not None:
+            instance.ds_pod_name = ds_pod_name
         if end_date is not None:
             instance.end_date = end_date
         if game_session_id is not None:
             instance.game_session_id = game_session_id
+        if is_persistent is not None:
+            instance.is_persistent = is_persistent
+        if joinability is not None:
+            instance.joinability = joinability
         if limit is not None:
             instance.limit = limit
+        if match_pool is not None:
+            instance.match_pool = match_pool
         if offset is not None:
             instance.offset = offset
         if order is not None:
@@ -344,6 +454,8 @@ class AdminQueryGameSessionDetail(Operation):
             instance.order_by = order_by
         if start_date is not None:
             instance.start_date = start_date
+        if status_v2 is not None:
+            instance.status_v2 = status_v2
         if user_id is not None:
             instance.user_id = user_id
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -359,6 +471,18 @@ class AdminQueryGameSessionDetail(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "completedOnly" in dict_ and dict_["completedOnly"] is not None:
+            instance.completed_only = str(dict_["completedOnly"])
+        elif include_empty:
+            instance.completed_only = ""
+        if "configurationName" in dict_ and dict_["configurationName"] is not None:
+            instance.configuration_name = str(dict_["configurationName"])
+        elif include_empty:
+            instance.configuration_name = ""
+        if "dsPodName" in dict_ and dict_["dsPodName"] is not None:
+            instance.ds_pod_name = str(dict_["dsPodName"])
+        elif include_empty:
+            instance.ds_pod_name = ""
         if "endDate" in dict_ and dict_["endDate"] is not None:
             instance.end_date = str(dict_["endDate"])
         elif include_empty:
@@ -367,10 +491,22 @@ class AdminQueryGameSessionDetail(Operation):
             instance.game_session_id = str(dict_["gameSessionID"])
         elif include_empty:
             instance.game_session_id = ""
+        if "isPersistent" in dict_ and dict_["isPersistent"] is not None:
+            instance.is_persistent = str(dict_["isPersistent"])
+        elif include_empty:
+            instance.is_persistent = ""
+        if "joinability" in dict_ and dict_["joinability"] is not None:
+            instance.joinability = str(dict_["joinability"])
+        elif include_empty:
+            instance.joinability = ""
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
             instance.limit = 0
+        if "matchPool" in dict_ and dict_["matchPool"] is not None:
+            instance.match_pool = str(dict_["matchPool"])
+        elif include_empty:
+            instance.match_pool = ""
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
@@ -387,6 +523,10 @@ class AdminQueryGameSessionDetail(Operation):
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
             instance.start_date = ""
+        if "statusV2" in dict_ and dict_["statusV2"] is not None:
+            instance.status_v2 = str(dict_["statusV2"])
+        elif include_empty:
+            instance.status_v2 = ""
         if "userID" in dict_ and dict_["userID"] is not None:
             instance.user_id = str(dict_["userID"])
         elif include_empty:
@@ -397,13 +537,20 @@ class AdminQueryGameSessionDetail(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "completedOnly": "completed_only",
+            "configurationName": "configuration_name",
+            "dsPodName": "ds_pod_name",
             "endDate": "end_date",
             "gameSessionID": "game_session_id",
+            "isPersistent": "is_persistent",
+            "joinability": "joinability",
             "limit": "limit",
+            "matchPool": "match_pool",
             "offset": "offset",
             "order": "order",
             "orderBy": "order_by",
             "startDate": "start_date",
+            "statusV2": "status_v2",
             "userID": "user_id",
         }
 
@@ -411,13 +558,20 @@ class AdminQueryGameSessionDetail(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "completedOnly": False,
+            "configurationName": False,
+            "dsPodName": False,
             "endDate": False,
             "gameSessionID": False,
+            "isPersistent": False,
+            "joinability": False,
             "limit": False,
+            "matchPool": False,
             "offset": False,
             "order": False,
             "orderBy": False,
             "startDate": False,
+            "statusV2": False,
             "userID": False,
         }
 

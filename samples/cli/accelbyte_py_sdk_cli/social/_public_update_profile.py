@@ -83,4 +83,4 @@ def public_update_profile(
 
 
 public_update_profile.operation_id = "publicUpdateProfile"
-public_update_profile.is_deprecated = False
+public_update_profile.is_deprecated = True

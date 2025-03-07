@@ -26,6 +26,16 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class ItemDeletionCheckConfigEnum(StrEnum):
+    CAMPAIGN = "CAMPAIGN"
+    CATALOG = "CATALOG"
+    DLC = "DLC"
+    ENTITLEMENT = "ENTITLEMENT"
+    IAP = "IAP"
+    REWARD = "REWARD"
 
 
 class CatalogConfigInfo(Model):
@@ -33,11 +43,16 @@ class CatalogConfigInfo(Model):
 
     Properties:
         enable_inventory_check: (enableInventoryCheck) REQUIRED bool
+
+        item_deletion_check_config: (itemDeletionCheckConfig) OPTIONAL List[Union[str, ItemDeletionCheckConfigEnum]]
     """
 
     # region fields
 
     enable_inventory_check: bool  # REQUIRED
+    item_deletion_check_config: List[
+        Union[str, ItemDeletionCheckConfigEnum]
+    ]  # OPTIONAL
 
     # endregion fields
 
@@ -45,6 +60,12 @@ class CatalogConfigInfo(Model):
 
     def with_enable_inventory_check(self, value: bool) -> CatalogConfigInfo:
         self.enable_inventory_check = value
+        return self
+
+    def with_item_deletion_check_config(
+        self, value: List[Union[str, ItemDeletionCheckConfigEnum]]
+    ) -> CatalogConfigInfo:
+        self.item_deletion_check_config = value
         return self
 
     # endregion with_x methods
@@ -57,6 +78,12 @@ class CatalogConfigInfo(Model):
             result["enableInventoryCheck"] = bool(self.enable_inventory_check)
         elif include_empty:
             result["enableInventoryCheck"] = False
+        if hasattr(self, "item_deletion_check_config"):
+            result["itemDeletionCheckConfig"] = [
+                str(i0) for i0 in self.item_deletion_check_config
+            ]
+        elif include_empty:
+            result["itemDeletionCheckConfig"] = []
         return result
 
     # endregion to methods
@@ -64,9 +91,18 @@ class CatalogConfigInfo(Model):
     # region static methods
 
     @classmethod
-    def create(cls, enable_inventory_check: bool, **kwargs) -> CatalogConfigInfo:
+    def create(
+        cls,
+        enable_inventory_check: bool,
+        item_deletion_check_config: Optional[
+            List[Union[str, ItemDeletionCheckConfigEnum]]
+        ] = None,
+        **kwargs,
+    ) -> CatalogConfigInfo:
         instance = cls()
         instance.enable_inventory_check = enable_inventory_check
+        if item_deletion_check_config is not None:
+            instance.item_deletion_check_config = item_deletion_check_config
         return instance
 
     @classmethod
@@ -83,6 +119,15 @@ class CatalogConfigInfo(Model):
             instance.enable_inventory_check = bool(dict_["enableInventoryCheck"])
         elif include_empty:
             instance.enable_inventory_check = False
+        if (
+            "itemDeletionCheckConfig" in dict_
+            and dict_["itemDeletionCheckConfig"] is not None
+        ):
+            instance.item_deletion_check_config = [
+                str(i0) for i0 in dict_["itemDeletionCheckConfig"]
+            ]
+        elif include_empty:
+            instance.item_deletion_check_config = []
         return instance
 
     @classmethod
@@ -125,12 +170,27 @@ class CatalogConfigInfo(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "enableInventoryCheck": "enable_inventory_check",
+            "itemDeletionCheckConfig": "item_deletion_check_config",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "enableInventoryCheck": True,
+            "itemDeletionCheckConfig": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "itemDeletionCheckConfig": [
+                "CAMPAIGN",
+                "CATALOG",
+                "DLC",
+                "ENTITLEMENT",
+                "IAP",
+                "REWARD",
+            ],
         }
 
     # endregion static methods

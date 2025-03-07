@@ -1,3 +1,20 @@
+<a name="v0.74.0"></a>
+## [v0.74.0]
+### chore
+- **sdk:** generated from openapi spec commit: 79683a20ff945862cdc0c4aef8d903a0f30bf2f5
+- **token-validation:** add update_on_init argument
+- **token-validator:** improved handling of None values
+- **token-validation:** export error types
+### ci
+- **coverity:** update coverity tool
+### feat
+- **token-validation:** allow passing of kwargs
+### fix
+- **token-validator:** handle null values in claims
+### test
+- **integration:** clean up extend app
+
+
 <a name="v0.73.1"></a>
 ## [v0.73.1]
 ### fix

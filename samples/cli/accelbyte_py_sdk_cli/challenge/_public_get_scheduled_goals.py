@@ -42,6 +42,7 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 @click.argument("challenge_code", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--sort_by", "sort_by", type=str)
 @click.option("--tags", "tags", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -51,6 +52,7 @@ def public_get_scheduled_goals(
     challenge_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
     tags: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -75,6 +77,7 @@ def public_get_scheduled_goals(
         challenge_code=challenge_code,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         tags=tags,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

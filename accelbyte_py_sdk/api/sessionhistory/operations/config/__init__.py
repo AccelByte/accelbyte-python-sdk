@@ -8,11 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session History Service."""
 
-__version__ = "1.12.7"
+__version__ = "1.13.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .admin_get_env_config import AdminGetEnvConfig
 from .admin_get_log_config import AdminGetLogConfig
+from .admin_patch_update_env_config import AdminPatchUpdateEnvConfig
 from .admin_patch_update_log_config import AdminPatchUpdateLogConfig

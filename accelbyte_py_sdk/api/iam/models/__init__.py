@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.26.0"
+__version__ = "7.28.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -111,6 +111,8 @@ from .accountcommon_simple_user_platform_info_v3 import (
 )
 from .accountcommon_sso_config import AccountcommonSsoConfig
 from .accountcommon_sso_config_patch_req import AccountcommonSsoConfigPatchReq
+from .accountcommon_tag_response import AccountcommonTagResponse
+from .accountcommon_tags_get_response_v3 import AccountcommonTagsGetResponseV3
 from .accountcommon_user_information_v3 import AccountcommonUserInformationV3
 from .accountcommon_user_linked_platform import AccountcommonUserLinkedPlatform
 from .accountcommon_user_linked_platform_v3 import AccountcommonUserLinkedPlatformV3
@@ -343,6 +345,8 @@ from .model_simple_profile_update_strategy_configs import (
 from .model_simple_user_ban import ModelSimpleUserBan
 from .model_sso_platform_credential_request import ModelSSOPlatformCredentialRequest
 from .model_sso_platform_credential_response import ModelSSOPlatformCredentialResponse
+from .model_tag_create_request_v3 import ModelTagCreateRequestV3
+from .model_tag_update_request_v3 import ModelTagUpdateRequestV3
 from .model_third_party_login_platform_credential_request import (
     ModelThirdPartyLoginPlatformCredentialRequest,
 )

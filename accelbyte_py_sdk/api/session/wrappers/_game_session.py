@@ -784,7 +784,7 @@ def admin_update_ds_information(
 ):
     """Update Game Session DS Information for Asynchronous Process. (adminUpdateDSInformation)
 
-    Update Game Session DS Information for Asynchronous Process
+    This API is used for create custom DS asynchronously flow and is expected to be called after the service receives response from the Async RPC.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/dsinformation
@@ -840,7 +840,7 @@ async def admin_update_ds_information_async(
 ):
     """Update Game Session DS Information for Asynchronous Process. (adminUpdateDSInformation)
 
-    Update Game Session DS Information for Asynchronous Process
+    This API is used for create custom DS asynchronously flow and is expected to be called after the service receives response from the Async RPC.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/dsinformation
@@ -1201,6 +1201,7 @@ def create_game_session(
     - The server will be chosen based on a set of claim keys, in order of preference, to match with fleets.
     - The claim key list is built build from the preferredClaimKeys, fallbackClaimKeys, and clientVersion as follows:
     [preferredClaimKeys.., clientVersion, fallbackClaimKeys...]
+    - ttlHours is how long the session will active, only non persistent can use this, max value is 168 hours
     for session override can follow guideline in here https://docs.accelbyte.io/gaming-services/services/extend/override-ags-feature/getting-started-with-session-customization-server-dsm/
 
     Properties:
@@ -1321,6 +1322,7 @@ async def create_game_session_async(
     - The server will be chosen based on a set of claim keys, in order of preference, to match with fleets.
     - The claim key list is built build from the preferredClaimKeys, fallbackClaimKeys, and clientVersion as follows:
     [preferredClaimKeys.., clientVersion, fallbackClaimKeys...]
+    - ttlHours is how long the session will active, only non persistent can use this, max value is 168 hours
     for session override can follow guideline in here https://docs.accelbyte.io/gaming-services/services/extend/override-ags-feature/getting-started-with-session-customization-server-dsm/
 
     Properties:
@@ -3408,7 +3410,7 @@ def update_game_session(
     To update only specified fields, please use following endpoint:
     method : PATCH
     API : /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
-
+    - ttlHours is how long the session will active, only non persistent can use this, max value is 168 hours
     To update DS attributes (clientVersion, deployment, requestedRegions) it will only be applied only as long as no DS has been requested, otherwise ignored.
 
     Properties:
@@ -3471,7 +3473,7 @@ async def update_game_session_async(
     To update only specified fields, please use following endpoint:
     method : PATCH
     API : /session/v1/public/namespaces/{namespace}/gamesessions/{sessionId}
-
+    - ttlHours is how long the session will active, only non persistent can use this, max value is 168 hours
     To update DS attributes (clientVersion, deployment, requestedRegions) it will only be applied only as long as no DS has been requested, otherwise ignored.
 
     Properties:

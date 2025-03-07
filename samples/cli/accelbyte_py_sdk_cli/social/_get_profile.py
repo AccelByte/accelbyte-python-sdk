@@ -70,4 +70,4 @@ def get_profile(
 
 
 get_profile.operation_id = "getProfile"
-get_profile.is_deprecated = False
+get_profile.is_deprecated = True

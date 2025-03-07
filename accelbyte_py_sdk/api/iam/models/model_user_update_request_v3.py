@@ -44,6 +44,8 @@ class ModelUserUpdateRequestV3(Model):
 
         skip_login_queue: (skipLoginQueue) OPTIONAL bool
 
+        tags: (tags) OPTIONAL List[str]
+
         unique_display_name: (uniqueDisplayName) OPTIONAL str
 
         user_name: (userName) OPTIONAL str
@@ -57,6 +59,7 @@ class ModelUserUpdateRequestV3(Model):
     display_name: str  # OPTIONAL
     language_tag: str  # OPTIONAL
     skip_login_queue: bool  # OPTIONAL
+    tags: List[str]  # OPTIONAL
     unique_display_name: str  # OPTIONAL
     user_name: str  # OPTIONAL
 
@@ -86,6 +89,10 @@ class ModelUserUpdateRequestV3(Model):
 
     def with_skip_login_queue(self, value: bool) -> ModelUserUpdateRequestV3:
         self.skip_login_queue = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelUserUpdateRequestV3:
+        self.tags = value
         return self
 
     def with_unique_display_name(self, value: str) -> ModelUserUpdateRequestV3:
@@ -126,6 +133,10 @@ class ModelUserUpdateRequestV3(Model):
             result["skipLoginQueue"] = bool(self.skip_login_queue)
         elif include_empty:
             result["skipLoginQueue"] = False
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         if hasattr(self, "unique_display_name"):
             result["uniqueDisplayName"] = str(self.unique_display_name)
         elif include_empty:
@@ -149,6 +160,7 @@ class ModelUserUpdateRequestV3(Model):
         display_name: Optional[str] = None,
         language_tag: Optional[str] = None,
         skip_login_queue: Optional[bool] = None,
+        tags: Optional[List[str]] = None,
         unique_display_name: Optional[str] = None,
         user_name: Optional[str] = None,
         **kwargs,
@@ -166,6 +178,8 @@ class ModelUserUpdateRequestV3(Model):
             instance.language_tag = language_tag
         if skip_login_queue is not None:
             instance.skip_login_queue = skip_login_queue
+        if tags is not None:
+            instance.tags = tags
         if unique_display_name is not None:
             instance.unique_display_name = unique_display_name
         if user_name is not None:
@@ -203,6 +217,10 @@ class ModelUserUpdateRequestV3(Model):
             instance.skip_login_queue = bool(dict_["skipLoginQueue"])
         elif include_empty:
             instance.skip_login_queue = False
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
             instance.unique_display_name = str(dict_["uniqueDisplayName"])
         elif include_empty:
@@ -260,6 +278,7 @@ class ModelUserUpdateRequestV3(Model):
             "displayName": "display_name",
             "languageTag": "language_tag",
             "skipLoginQueue": "skip_login_queue",
+            "tags": "tags",
             "uniqueDisplayName": "unique_display_name",
             "userName": "user_name",
         }
@@ -273,6 +292,7 @@ class ModelUserUpdateRequestV3(Model):
             "displayName": False,
             "languageTag": False,
             "skipLoginQueue": False,
+            "tags": False,
             "uniqueDisplayName": False,
             "userName": False,
         }

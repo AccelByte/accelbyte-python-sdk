@@ -836,6 +836,11 @@ def test_csm(self):
         self.assertIsNone(error, str(error))
 
         raise e from None
+    finally:
+        _, _ = csm_service.delete_app_v2(
+            app=app_name,
+            forced="true",
+        )
 ```
 ## Game Telemetry
 
@@ -2253,9 +2258,11 @@ def test_admin_update_configuration(self):
 
     # act
     config, error = admin_update_configuration(
-        body=ApimodelsConfigurationRequest.create_from_dict({
-            "maxLoginRate": 100,
-        })
+        body=ApimodelsConfigurationRequest.create_from_dict(
+            {
+                "maxLoginRate": 100,
+            }
+        )
     )
 
     # assert

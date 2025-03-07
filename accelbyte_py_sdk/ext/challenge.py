@@ -26,6 +26,7 @@ from .utils import randomize
 
 from ..api.challenge.models import IamErrorResponse
 from ..api.challenge.models import IamPermission
+from ..api.challenge.models import ModelChallengeReference
 from ..api.challenge.models import ModelChallengeResponse
 from ..api.challenge.models import ModelClaimUserRewardsByGoalCodeRequest
 from ..api.challenge.models import ModelClaimUserRewardsReq
@@ -43,6 +44,8 @@ from ..api.challenge.models import ModelGoalProgressionResponse
 from ..api.challenge.models import ModelGoalResponse
 from ..api.challenge.models import ModelGoalSchedule
 from ..api.challenge.models import ModelGoalScheduleRequest
+from ..api.challenge.models import ModelItemReference
+from ..api.challenge.models import ModelItemReferenceResponse
 from ..api.challenge.models import ModelListChallengeResponse
 from ..api.challenge.models import ModelListPeriodsResponse
 from ..api.challenge.models import ModelListScheduleByGoalResponse
@@ -84,6 +87,13 @@ def create_iam_permission_example() -> IamPermission:
     instance = IamPermission()
     instance.action = randomize("int", min_val=1, max_val=1000)
     instance.resource = randomize()
+    return instance
+
+
+def create_model_challenge_reference_example() -> ModelChallengeReference:
+    instance = ModelChallengeReference()
+    instance.challenge_code = randomize()
+    instance.goal_code = randomize()
     return instance
 
 
@@ -280,6 +290,19 @@ def create_model_goal_schedule_request_example() -> ModelGoalScheduleRequest:
     instance.order = randomize("int", min_val=1, max_val=1000)
     instance.start_time = randomize("date")
     instance.end_time = randomize("date")
+    return instance
+
+
+def create_model_item_reference_example() -> ModelItemReference:
+    instance = ModelItemReference()
+    instance.module = randomize()
+    instance.references = [create_model_challenge_reference_example()]
+    return instance
+
+
+def create_model_item_reference_response_example() -> ModelItemReferenceResponse:
+    instance = ModelItemReferenceResponse()
+    instance.references = [create_model_item_reference_example()]
     return instance
 
 

@@ -67,6 +67,8 @@ from ..operations.store import QueryImportHistory
 from ..operations.store import RollbackPublishedStore
 from ..operations.store import UpdateCatalogConfig
 from ..operations.store import UpdateStore
+from ..models import CatalogConfigInfoItemDeletionCheckConfigEnum
+from ..models import CatalogConfigUpdateItemDeletionCheckConfigEnum
 from ..models import CatalogDefinitionInfoItemTypeEnum
 from ..models import ExportStoreToCSVRequestCatalogTypeEnum
 

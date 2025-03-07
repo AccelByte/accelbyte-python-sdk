@@ -79,4 +79,4 @@ def public_create_profile(
 
 
 public_create_profile.operation_id = "publicCreateProfile"
-public_create_profile.is_deprecated = False
+public_create_profile.is_deprecated = True

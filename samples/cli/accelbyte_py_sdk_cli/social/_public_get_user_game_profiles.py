@@ -75,4 +75,4 @@ def public_get_user_game_profiles(
 
 
 public_get_user_game_profiles.operation_id = "publicGetUserGameProfiles"
-public_get_user_game_profiles.is_deprecated = False
+public_get_user_game_profiles.is_deprecated = True

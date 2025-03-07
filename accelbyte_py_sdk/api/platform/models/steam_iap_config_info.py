@@ -26,6 +26,17 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class EnvEnum(StrEnum):
+    LIVE = "LIVE"
+    SANDBOX = "SANDBOX"
+
+
+class SyncModeEnum(StrEnum):
+    INVENTORY = "INVENTORY"
+    TRANSACTION = "TRANSACTION"
 
 
 class SteamIAPConfigInfo(Model):
@@ -37,6 +48,10 @@ class SteamIAPConfigInfo(Model):
         publisher_authentication_key: (publisherAuthenticationKey) REQUIRED str
 
         app_id: (appId) OPTIONAL str
+
+        env: (env) OPTIONAL Union[str, EnvEnum]
+
+        sync_mode: (syncMode) OPTIONAL Union[str, SyncModeEnum]
     """
 
     # region fields
@@ -44,6 +59,8 @@ class SteamIAPConfigInfo(Model):
     namespace: str  # REQUIRED
     publisher_authentication_key: str  # REQUIRED
     app_id: str  # OPTIONAL
+    env: Union[str, EnvEnum]  # OPTIONAL
+    sync_mode: Union[str, SyncModeEnum]  # OPTIONAL
 
     # endregion fields
 
@@ -59,6 +76,14 @@ class SteamIAPConfigInfo(Model):
 
     def with_app_id(self, value: str) -> SteamIAPConfigInfo:
         self.app_id = value
+        return self
+
+    def with_env(self, value: Union[str, EnvEnum]) -> SteamIAPConfigInfo:
+        self.env = value
+        return self
+
+    def with_sync_mode(self, value: Union[str, SyncModeEnum]) -> SteamIAPConfigInfo:
+        self.sync_mode = value
         return self
 
     # endregion with_x methods
@@ -81,6 +106,14 @@ class SteamIAPConfigInfo(Model):
             result["appId"] = str(self.app_id)
         elif include_empty:
             result["appId"] = ""
+        if hasattr(self, "env"):
+            result["env"] = str(self.env)
+        elif include_empty:
+            result["env"] = Union[str, EnvEnum]()
+        if hasattr(self, "sync_mode"):
+            result["syncMode"] = str(self.sync_mode)
+        elif include_empty:
+            result["syncMode"] = Union[str, SyncModeEnum]()
         return result
 
     # endregion to methods
@@ -93,6 +126,8 @@ class SteamIAPConfigInfo(Model):
         namespace: str,
         publisher_authentication_key: str,
         app_id: Optional[str] = None,
+        env: Optional[Union[str, EnvEnum]] = None,
+        sync_mode: Optional[Union[str, SyncModeEnum]] = None,
         **kwargs,
     ) -> SteamIAPConfigInfo:
         instance = cls()
@@ -100,6 +135,10 @@ class SteamIAPConfigInfo(Model):
         instance.publisher_authentication_key = publisher_authentication_key
         if app_id is not None:
             instance.app_id = app_id
+        if env is not None:
+            instance.env = env
+        if sync_mode is not None:
+            instance.sync_mode = sync_mode
         return instance
 
     @classmethod
@@ -126,6 +165,14 @@ class SteamIAPConfigInfo(Model):
             instance.app_id = str(dict_["appId"])
         elif include_empty:
             instance.app_id = ""
+        if "env" in dict_ and dict_["env"] is not None:
+            instance.env = str(dict_["env"])
+        elif include_empty:
+            instance.env = Union[str, EnvEnum]()
+        if "syncMode" in dict_ and dict_["syncMode"] is not None:
+            instance.sync_mode = str(dict_["syncMode"])
+        elif include_empty:
+            instance.sync_mode = Union[str, SyncModeEnum]()
         return instance
 
     @classmethod
@@ -170,6 +217,8 @@ class SteamIAPConfigInfo(Model):
             "namespace": "namespace",
             "publisherAuthenticationKey": "publisher_authentication_key",
             "appId": "app_id",
+            "env": "env",
+            "syncMode": "sync_mode",
         }
 
     @staticmethod
@@ -178,6 +227,15 @@ class SteamIAPConfigInfo(Model):
             "namespace": True,
             "publisherAuthenticationKey": True,
             "appId": False,
+            "env": False,
+            "syncMode": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "env": ["LIVE", "SANDBOX"],
+            "syncMode": ["INVENTORY", "TRANSACTION"],
         }
 
     # endregion static methods

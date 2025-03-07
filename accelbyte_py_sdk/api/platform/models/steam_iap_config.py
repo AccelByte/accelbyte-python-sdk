@@ -26,6 +26,17 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class EnvEnum(StrEnum):
+    LIVE = "LIVE"
+    SANDBOX = "SANDBOX"
+
+
+class SyncModeEnum(StrEnum):
+    INVENTORY = "INVENTORY"
+    TRANSACTION = "TRANSACTION"
 
 
 class SteamIAPConfig(Model):
@@ -36,11 +47,15 @@ class SteamIAPConfig(Model):
 
         created_at: (createdAt) OPTIONAL str
 
+        env: (env) OPTIONAL Union[str, EnvEnum]
+
         namespace: (namespace) OPTIONAL str
 
         publisher_authentication_key: (publisherAuthenticationKey) OPTIONAL str
 
         rvn: (rvn) OPTIONAL int
+
+        sync_mode: (syncMode) OPTIONAL Union[str, SyncModeEnum]
 
         updated_at: (updatedAt) OPTIONAL str
     """
@@ -49,9 +64,11 @@ class SteamIAPConfig(Model):
 
     app_id: str  # OPTIONAL
     created_at: str  # OPTIONAL
+    env: Union[str, EnvEnum]  # OPTIONAL
     namespace: str  # OPTIONAL
     publisher_authentication_key: str  # OPTIONAL
     rvn: int  # OPTIONAL
+    sync_mode: Union[str, SyncModeEnum]  # OPTIONAL
     updated_at: str  # OPTIONAL
 
     # endregion fields
@@ -66,6 +83,10 @@ class SteamIAPConfig(Model):
         self.created_at = value
         return self
 
+    def with_env(self, value: Union[str, EnvEnum]) -> SteamIAPConfig:
+        self.env = value
+        return self
+
     def with_namespace(self, value: str) -> SteamIAPConfig:
         self.namespace = value
         return self
@@ -76,6 +97,10 @@ class SteamIAPConfig(Model):
 
     def with_rvn(self, value: int) -> SteamIAPConfig:
         self.rvn = value
+        return self
+
+    def with_sync_mode(self, value: Union[str, SyncModeEnum]) -> SteamIAPConfig:
+        self.sync_mode = value
         return self
 
     def with_updated_at(self, value: str) -> SteamIAPConfig:
@@ -96,6 +121,10 @@ class SteamIAPConfig(Model):
             result["createdAt"] = str(self.created_at)
         elif include_empty:
             result["createdAt"] = ""
+        if hasattr(self, "env"):
+            result["env"] = str(self.env)
+        elif include_empty:
+            result["env"] = Union[str, EnvEnum]()
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -110,6 +139,10 @@ class SteamIAPConfig(Model):
             result["rvn"] = int(self.rvn)
         elif include_empty:
             result["rvn"] = 0
+        if hasattr(self, "sync_mode"):
+            result["syncMode"] = str(self.sync_mode)
+        elif include_empty:
+            result["syncMode"] = Union[str, SyncModeEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -125,9 +158,11 @@ class SteamIAPConfig(Model):
         cls,
         app_id: Optional[str] = None,
         created_at: Optional[str] = None,
+        env: Optional[Union[str, EnvEnum]] = None,
         namespace: Optional[str] = None,
         publisher_authentication_key: Optional[str] = None,
         rvn: Optional[int] = None,
+        sync_mode: Optional[Union[str, SyncModeEnum]] = None,
         updated_at: Optional[str] = None,
         **kwargs,
     ) -> SteamIAPConfig:
@@ -136,12 +171,16 @@ class SteamIAPConfig(Model):
             instance.app_id = app_id
         if created_at is not None:
             instance.created_at = created_at
+        if env is not None:
+            instance.env = env
         if namespace is not None:
             instance.namespace = namespace
         if publisher_authentication_key is not None:
             instance.publisher_authentication_key = publisher_authentication_key
         if rvn is not None:
             instance.rvn = rvn
+        if sync_mode is not None:
+            instance.sync_mode = sync_mode
         if updated_at is not None:
             instance.updated_at = updated_at
         return instance
@@ -161,6 +200,10 @@ class SteamIAPConfig(Model):
             instance.created_at = str(dict_["createdAt"])
         elif include_empty:
             instance.created_at = ""
+        if "env" in dict_ and dict_["env"] is not None:
+            instance.env = str(dict_["env"])
+        elif include_empty:
+            instance.env = Union[str, EnvEnum]()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -178,6 +221,10 @@ class SteamIAPConfig(Model):
             instance.rvn = int(dict_["rvn"])
         elif include_empty:
             instance.rvn = 0
+        if "syncMode" in dict_ and dict_["syncMode"] is not None:
+            instance.sync_mode = str(dict_["syncMode"])
+        elif include_empty:
+            instance.sync_mode = Union[str, SyncModeEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -223,9 +270,11 @@ class SteamIAPConfig(Model):
         return {
             "appId": "app_id",
             "createdAt": "created_at",
+            "env": "env",
             "namespace": "namespace",
             "publisherAuthenticationKey": "publisher_authentication_key",
             "rvn": "rvn",
+            "syncMode": "sync_mode",
             "updatedAt": "updated_at",
         }
 
@@ -234,10 +283,19 @@ class SteamIAPConfig(Model):
         return {
             "appId": False,
             "createdAt": False,
+            "env": False,
             "namespace": False,
             "publisherAuthenticationKey": False,
             "rvn": False,
+            "syncMode": False,
             "updatedAt": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "env": ["LIVE", "SANDBOX"],
+            "syncMode": ["INVENTORY", "TRANSACTION"],
         }
 
     # endregion static methods

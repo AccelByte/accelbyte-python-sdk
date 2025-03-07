@@ -72,4 +72,4 @@ def public_get_profile(
 
 
 public_get_profile.operation_id = "publicGetProfile"
-public_get_profile.is_deprecated = False
+public_get_profile.is_deprecated = True

@@ -139,6 +139,8 @@ class TokenGrantV3(Operation):
 
         refresh_token: (refresh_token) OPTIONAL str in form_data
 
+        scope: (scope) OPTIONAL str in form_data
+
         username: (username) OPTIONAL str in form_data
 
         grant_type: (grant_type) REQUIRED Union[str, GrantTypeEnum] in form_data
@@ -176,6 +178,7 @@ class TokenGrantV3(Operation):
     password: str  # OPTIONAL in [form_data]
     redirect_uri: str  # OPTIONAL in [form_data]
     refresh_token: str  # OPTIONAL in [form_data]
+    scope: str  # OPTIONAL in [form_data]
     username: str  # OPTIONAL in [form_data]
     grant_type: Union[str, GrantTypeEnum]  # REQUIRED in [form_data]
 
@@ -251,6 +254,8 @@ class TokenGrantV3(Operation):
             result["redirect_uri"] = self.redirect_uri
         if hasattr(self, "refresh_token"):
             result["refresh_token"] = self.refresh_token
+        if hasattr(self, "scope"):
+            result["scope"] = self.scope
         if hasattr(self, "username"):
             result["username"] = self.username
         if hasattr(self, "grant_type"):
@@ -311,6 +316,10 @@ class TokenGrantV3(Operation):
 
     def with_refresh_token(self, value: str) -> TokenGrantV3:
         self.refresh_token = value
+        return self
+
+    def with_scope(self, value: str) -> TokenGrantV3:
+        self.scope = value
         return self
 
     def with_username(self, value: str) -> TokenGrantV3:
@@ -375,6 +384,10 @@ class TokenGrantV3(Operation):
             result["refresh_token"] = str(self.refresh_token)
         elif include_empty:
             result["refresh_token"] = ""
+        if hasattr(self, "scope") and self.scope:
+            result["scope"] = str(self.scope)
+        elif include_empty:
+            result["scope"] = ""
         if hasattr(self, "username") and self.username:
             result["username"] = str(self.username)
         elif include_empty:
@@ -459,6 +472,7 @@ class TokenGrantV3(Operation):
         password: Optional[str] = None,
         redirect_uri: Optional[str] = None,
         refresh_token: Optional[str] = None,
+        scope: Optional[str] = None,
         username: Optional[str] = None,
         **kwargs,
     ) -> TokenGrantV3:
@@ -488,6 +502,8 @@ class TokenGrantV3(Operation):
             instance.redirect_uri = redirect_uri
         if refresh_token is not None:
             instance.refresh_token = refresh_token
+        if scope is not None:
+            instance.scope = scope
         if username is not None:
             instance.username = username
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -545,6 +561,10 @@ class TokenGrantV3(Operation):
             instance.refresh_token = str(dict_["refresh_token"])
         elif include_empty:
             instance.refresh_token = ""
+        if "scope" in dict_ and dict_["scope"] is not None:
+            instance.scope = str(dict_["scope"])
+        elif include_empty:
+            instance.scope = ""
         if "username" in dict_ and dict_["username"] is not None:
             instance.username = str(dict_["username"])
         elif include_empty:
@@ -570,6 +590,7 @@ class TokenGrantV3(Operation):
             "password": "password",
             "redirect_uri": "redirect_uri",
             "refresh_token": "refresh_token",
+            "scope": "scope",
             "username": "username",
             "grant_type": "grant_type",
         }
@@ -589,6 +610,7 @@ class TokenGrantV3(Operation):
             "password": False,
             "redirect_uri": False,
             "refresh_token": False,
+            "scope": False,
             "username": False,
             "grant_type": True,
         }

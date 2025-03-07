@@ -53,6 +53,8 @@ class AdminQueryParties(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        from_time: (fromTime) OPTIONAL str in query
+
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
         joinability: (joinability) OPTIONAL str in query
@@ -74,6 +76,8 @@ class AdminQueryParties(Operation):
         order_by: (orderBy) OPTIONAL str in query
 
         party_id: (partyID) OPTIONAL str in query
+
+        to_time: (toTime) OPTIONAL str in query
 
         value: (value) OPTIONAL str in query
 
@@ -97,6 +101,7 @@ class AdminQueryParties(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    from_time: str  # OPTIONAL in [query]
     is_soft_deleted: str  # OPTIONAL in [query]
     joinability: str  # OPTIONAL in [query]
     key: str  # OPTIONAL in [query]
@@ -108,6 +113,7 @@ class AdminQueryParties(Operation):
     order: str  # OPTIONAL in [query]
     order_by: str  # OPTIONAL in [query]
     party_id: str  # OPTIONAL in [query]
+    to_time: str  # OPTIONAL in [query]
     value: str  # OPTIONAL in [query]
 
     # endregion fields
@@ -160,6 +166,8 @@ class AdminQueryParties(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "from_time"):
+            result["fromTime"] = self.from_time
         if hasattr(self, "is_soft_deleted"):
             result["isSoftDeleted"] = self.is_soft_deleted
         if hasattr(self, "joinability"):
@@ -182,6 +190,8 @@ class AdminQueryParties(Operation):
             result["orderBy"] = self.order_by
         if hasattr(self, "party_id"):
             result["partyID"] = self.party_id
+        if hasattr(self, "to_time"):
+            result["toTime"] = self.to_time
         if hasattr(self, "value"):
             result["value"] = self.value
         return result
@@ -196,6 +206,10 @@ class AdminQueryParties(Operation):
 
     def with_namespace(self, value: str) -> AdminQueryParties:
         self.namespace = value
+        return self
+
+    def with_from_time(self, value: str) -> AdminQueryParties:
+        self.from_time = value
         return self
 
     def with_is_soft_deleted(self, value: str) -> AdminQueryParties:
@@ -242,6 +256,10 @@ class AdminQueryParties(Operation):
         self.party_id = value
         return self
 
+    def with_to_time(self, value: str) -> AdminQueryParties:
+        self.to_time = value
+        return self
+
     def with_value(self, value: str) -> AdminQueryParties:
         self.value = value
         return self
@@ -256,6 +274,10 @@ class AdminQueryParties(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "from_time") and self.from_time:
+            result["fromTime"] = str(self.from_time)
+        elif include_empty:
+            result["fromTime"] = ""
         if hasattr(self, "is_soft_deleted") and self.is_soft_deleted:
             result["isSoftDeleted"] = str(self.is_soft_deleted)
         elif include_empty:
@@ -300,6 +322,10 @@ class AdminQueryParties(Operation):
             result["partyID"] = str(self.party_id)
         elif include_empty:
             result["partyID"] = ""
+        if hasattr(self, "to_time") and self.to_time:
+            result["toTime"] = str(self.to_time)
+        elif include_empty:
+            result["toTime"] = ""
         if hasattr(self, "value") and self.value:
             result["value"] = str(self.value)
         elif include_empty:
@@ -361,6 +387,7 @@ class AdminQueryParties(Operation):
     def create(
         cls,
         namespace: str,
+        from_time: Optional[str] = None,
         is_soft_deleted: Optional[str] = None,
         joinability: Optional[str] = None,
         key: Optional[str] = None,
@@ -372,11 +399,14 @@ class AdminQueryParties(Operation):
         order: Optional[str] = None,
         order_by: Optional[str] = None,
         party_id: Optional[str] = None,
+        to_time: Optional[str] = None,
         value: Optional[str] = None,
         **kwargs,
     ) -> AdminQueryParties:
         instance = cls()
         instance.namespace = namespace
+        if from_time is not None:
+            instance.from_time = from_time
         if is_soft_deleted is not None:
             instance.is_soft_deleted = is_soft_deleted
         if joinability is not None:
@@ -399,6 +429,8 @@ class AdminQueryParties(Operation):
             instance.order_by = order_by
         if party_id is not None:
             instance.party_id = party_id
+        if to_time is not None:
+            instance.to_time = to_time
         if value is not None:
             instance.value = value
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -414,6 +446,10 @@ class AdminQueryParties(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "fromTime" in dict_ and dict_["fromTime"] is not None:
+            instance.from_time = str(dict_["fromTime"])
+        elif include_empty:
+            instance.from_time = ""
         if "isSoftDeleted" in dict_ and dict_["isSoftDeleted"] is not None:
             instance.is_soft_deleted = str(dict_["isSoftDeleted"])
         elif include_empty:
@@ -458,6 +494,10 @@ class AdminQueryParties(Operation):
             instance.party_id = str(dict_["partyID"])
         elif include_empty:
             instance.party_id = ""
+        if "toTime" in dict_ and dict_["toTime"] is not None:
+            instance.to_time = str(dict_["toTime"])
+        elif include_empty:
+            instance.to_time = ""
         if "value" in dict_ and dict_["value"] is not None:
             instance.value = str(dict_["value"])
         elif include_empty:
@@ -468,6 +508,7 @@ class AdminQueryParties(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "fromTime": "from_time",
             "isSoftDeleted": "is_soft_deleted",
             "joinability": "joinability",
             "key": "key",
@@ -479,6 +520,7 @@ class AdminQueryParties(Operation):
             "order": "order",
             "orderBy": "order_by",
             "partyID": "party_id",
+            "toTime": "to_time",
             "value": "value",
         }
 
@@ -486,6 +528,7 @@ class AdminQueryParties(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "fromTime": False,
             "isSoftDeleted": False,
             "joinability": False,
             "key": False,
@@ -497,6 +540,7 @@ class AdminQueryParties(Operation):
             "order": False,
             "orderBy": False,
             "partyID": False,
+            "toTime": False,
             "value": False,
         }
 

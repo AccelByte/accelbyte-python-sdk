@@ -75,4 +75,4 @@ def public_get_profile_attribute(
 
 
 public_get_profile_attribute.operation_id = "publicGetProfileAttribute"
-public_get_profile_attribute.is_deprecated = False
+public_get_profile_attribute.is_deprecated = True

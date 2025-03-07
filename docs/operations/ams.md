@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.32.0)
+# Fleet Commander Index (1.34.0)
 
 
 ## Operations
@@ -153,11 +153,7 @@
 | api.QoSServer | [ApiQoSServer](../../accelbyte_py_sdk/api/ams/models/api_qo_s_server.py) |
 | api.ReferencingFleet | [ApiReferencingFleet](../../accelbyte_py_sdk/api/ams/models/api_referencing_fleet.py) |
 | api.RegionConfig | [ApiRegionConfig](../../accelbyte_py_sdk/api/ams/models/api_region_config.py) |
-| api.Time | [ApiTime](../../accelbyte_py_sdk/api/ams/models/api_time.py) |
 | api.Timeout | [ApiTimeout](../../accelbyte_py_sdk/api/ams/models/api_timeout.py) |
 | api.UpdateServerRequest | [ApiUpdateServerRequest](../../accelbyte_py_sdk/api/ams/models/api_update_server_request.py) |
 | pagination.PaginationInfo | [PaginationPaginationInfo](../../accelbyte_py_sdk/api/ams/models/pagination_pagination_info.py) |
 | response.ErrorResponse | [ResponseErrorResponse](../../accelbyte_py_sdk/api/ams/models/response_error_response.py) |
-| time.Location | [TimeLocation](../../accelbyte_py_sdk/api/ams/models/time_location.py) |
-| time.zone | [TimeZone](../../accelbyte_py_sdk/api/ams/models/time_zone.py) |
-| time.zoneTrans | [TimeZoneTrans](../../accelbyte_py_sdk/api/ams/models/time_zone_trans.py) |

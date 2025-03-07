@@ -32,15 +32,11 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
     """Apimodels update gamesession DS information request (apimodels.UpdateGamesessionDSInformationRequest)
 
     Properties:
-        client_version: (clientVersion) REQUIRED str
-
         created_region: (createdRegion) REQUIRED str
 
         deployment: (deployment) REQUIRED str
 
         description: (description) REQUIRED str
-
-        game_mode: (gameMode) REQUIRED str
 
         ip: (ip) REQUIRED str
 
@@ -57,11 +53,9 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
 
     # region fields
 
-    client_version: str  # REQUIRED
     created_region: str  # REQUIRED
     deployment: str  # REQUIRED
     description: str  # REQUIRED
-    game_mode: str  # REQUIRED
     ip: str  # REQUIRED
     port: int  # REQUIRED
     region: str  # REQUIRED
@@ -72,12 +66,6 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
     # endregion fields
 
     # region with_x methods
-
-    def with_client_version(
-        self, value: str
-    ) -> ApimodelsUpdateGamesessionDSInformationRequest:
-        self.client_version = value
-        return self
 
     def with_created_region(
         self, value: str
@@ -95,12 +83,6 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
         self, value: str
     ) -> ApimodelsUpdateGamesessionDSInformationRequest:
         self.description = value
-        return self
-
-    def with_game_mode(
-        self, value: str
-    ) -> ApimodelsUpdateGamesessionDSInformationRequest:
-        self.game_mode = value
         return self
 
     def with_ip(self, value: str) -> ApimodelsUpdateGamesessionDSInformationRequest:
@@ -135,10 +117,6 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "client_version"):
-            result["clientVersion"] = str(self.client_version)
-        elif include_empty:
-            result["clientVersion"] = ""
         if hasattr(self, "created_region"):
             result["createdRegion"] = str(self.created_region)
         elif include_empty:
@@ -151,10 +129,6 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
             result["description"] = str(self.description)
         elif include_empty:
             result["description"] = ""
-        if hasattr(self, "game_mode"):
-            result["gameMode"] = str(self.game_mode)
-        elif include_empty:
-            result["gameMode"] = ""
         if hasattr(self, "ip"):
             result["ip"] = str(self.ip)
         elif include_empty:
@@ -188,11 +162,9 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
     @classmethod
     def create(
         cls,
-        client_version: str,
         created_region: str,
         deployment: str,
         description: str,
-        game_mode: str,
         ip: str,
         port: int,
         region: str,
@@ -202,11 +174,9 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
         **kwargs,
     ) -> ApimodelsUpdateGamesessionDSInformationRequest:
         instance = cls()
-        instance.client_version = client_version
         instance.created_region = created_region
         instance.deployment = deployment
         instance.description = description
-        instance.game_mode = game_mode
         instance.ip = ip
         instance.port = port
         instance.region = region
@@ -222,10 +192,6 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "clientVersion" in dict_ and dict_["clientVersion"] is not None:
-            instance.client_version = str(dict_["clientVersion"])
-        elif include_empty:
-            instance.client_version = ""
         if "createdRegion" in dict_ and dict_["createdRegion"] is not None:
             instance.created_region = str(dict_["createdRegion"])
         elif include_empty:
@@ -238,10 +204,6 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
             instance.description = str(dict_["description"])
         elif include_empty:
             instance.description = ""
-        if "gameMode" in dict_ and dict_["gameMode"] is not None:
-            instance.game_mode = str(dict_["gameMode"])
-        elif include_empty:
-            instance.game_mode = ""
         if "ip" in dict_ and dict_["ip"] is not None:
             instance.ip = str(dict_["ip"])
         elif include_empty:
@@ -309,11 +271,9 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "clientVersion": "client_version",
             "createdRegion": "created_region",
             "deployment": "deployment",
             "description": "description",
-            "gameMode": "game_mode",
             "ip": "ip",
             "port": "port",
             "region": "region",
@@ -325,11 +285,9 @@ class ApimodelsUpdateGamesessionDSInformationRequest(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "clientVersion": True,
             "createdRegion": True,
             "deployment": True,
             "description": True,
-            "gameMode": True,
             "ip": True,
             "port": True,
             "region": True,

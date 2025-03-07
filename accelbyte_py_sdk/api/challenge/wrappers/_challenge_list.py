@@ -37,6 +37,7 @@ from ..models import ResponseError
 from ..operations.challenge_list import GetChallenges
 from ..operations.challenge_list import GetChallengesSortByEnum, GetChallengesStatusEnum
 from ..operations.challenge_list import PublicGetScheduledGoals
+from ..operations.challenge_list import PublicGetScheduledGoalsSortByEnum
 
 
 @same_doc_as(GetChallenges)
@@ -186,6 +187,7 @@ def public_get_scheduled_goals(
     challenge_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[Union[str, PublicGetScheduledGoalsSortByEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -216,6 +218,8 @@ def public_get_scheduled_goals(
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
         tags: (tags) OPTIONAL List[str] in query
 
     Responses:
@@ -237,6 +241,7 @@ def public_get_scheduled_goals(
         challenge_code=challenge_code,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         tags=tags,
         namespace=namespace,
     )
@@ -248,6 +253,7 @@ async def public_get_scheduled_goals_async(
     challenge_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[Union[str, PublicGetScheduledGoalsSortByEnum]] = None,
     tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -278,6 +284,8 @@ async def public_get_scheduled_goals_async(
 
         offset: (offset) OPTIONAL int in query
 
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
         tags: (tags) OPTIONAL List[str] in query
 
     Responses:
@@ -299,6 +307,7 @@ async def public_get_scheduled_goals_async(
         challenge_code=challenge_code,
         limit=limit,
         offset=offset,
+        sort_by=sort_by,
         tags=tags,
         namespace=namespace,
     )

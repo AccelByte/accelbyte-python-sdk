@@ -85,9 +85,9 @@ from ._public_list_my_stat_cycle_items import public_list_my_stat_cycle_items
 from ._public_list_my_stat_items import public_list_my_stat_items
 from ._public_list_all_my_stat_items import public_list_all_my_stat_items
 from ._get_user_stat_cycle_items_1 import get_user_stat_cycle_items_1
-from ._public_query_user_stat_items import public_query_user_stat_items
-from ._public_bulk_create_user_stat_items import public_bulk_create_user_stat_items
 from ._public_query_user_stat_items_1 import public_query_user_stat_items_1
+from ._public_bulk_create_user_stat_items import public_bulk_create_user_stat_items
+from ._public_query_user_stat_items import public_query_user_stat_items
 from ._public_bulk_inc_user_stat_item_1 import public_bulk_inc_user_stat_item_1
 from ._bulk_inc_user_stat_item_value_2 import bulk_inc_user_stat_item_value_2
 from ._bulk_reset_user_stat_item_3 import bulk_reset_user_stat_item_3
@@ -186,9 +186,9 @@ commands = [
     public_list_my_stat_items,
     public_list_all_my_stat_items,
     get_user_stat_cycle_items_1,
-    public_query_user_stat_items,
-    public_bulk_create_user_stat_items,
     public_query_user_stat_items_1,
+    public_bulk_create_user_stat_items,
+    public_query_user_stat_items,
     public_bulk_inc_user_stat_item_1,
     bulk_inc_user_stat_item_value_2,
     bulk_reset_user_stat_item_3,

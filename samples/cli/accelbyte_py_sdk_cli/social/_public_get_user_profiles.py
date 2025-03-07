@@ -69,4 +69,4 @@ def public_get_user_profiles(
 
 
 public_get_user_profiles.operation_id = "publicGetUserProfiles"
-public_get_user_profiles.is_deprecated = False
+public_get_user_profiles.is_deprecated = True

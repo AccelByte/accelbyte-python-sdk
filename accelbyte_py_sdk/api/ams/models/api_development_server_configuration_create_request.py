@@ -34,19 +34,19 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
     Properties:
         command_line_arguments: (commandLineArguments) REQUIRED str
 
-        expires_at: (expiresAt) REQUIRED str
-
         image_id: (imageId) REQUIRED str
 
         name: (name) REQUIRED str
+
+        expires_at: (expiresAt) OPTIONAL str
     """
 
     # region fields
 
     command_line_arguments: str  # REQUIRED
-    expires_at: str  # REQUIRED
     image_id: str  # REQUIRED
     name: str  # REQUIRED
+    expires_at: str  # OPTIONAL
 
     # endregion fields
 
@@ -56,12 +56,6 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
         self, value: str
     ) -> ApiDevelopmentServerConfigurationCreateRequest:
         self.command_line_arguments = value
-        return self
-
-    def with_expires_at(
-        self, value: str
-    ) -> ApiDevelopmentServerConfigurationCreateRequest:
-        self.expires_at = value
         return self
 
     def with_image_id(
@@ -74,6 +68,12 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
         self.name = value
         return self
 
+    def with_expires_at(
+        self, value: str
+    ) -> ApiDevelopmentServerConfigurationCreateRequest:
+        self.expires_at = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -84,10 +84,6 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
             result["commandLineArguments"] = str(self.command_line_arguments)
         elif include_empty:
             result["commandLineArguments"] = ""
-        if hasattr(self, "expires_at"):
-            result["expiresAt"] = str(self.expires_at)
-        elif include_empty:
-            result["expiresAt"] = ""
         if hasattr(self, "image_id"):
             result["imageId"] = str(self.image_id)
         elif include_empty:
@@ -96,6 +92,10 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "expires_at"):
+            result["expiresAt"] = str(self.expires_at)
+        elif include_empty:
+            result["expiresAt"] = ""
         return result
 
     # endregion to methods
@@ -106,16 +106,17 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
     def create(
         cls,
         command_line_arguments: str,
-        expires_at: str,
         image_id: str,
         name: str,
+        expires_at: Optional[str] = None,
         **kwargs,
     ) -> ApiDevelopmentServerConfigurationCreateRequest:
         instance = cls()
         instance.command_line_arguments = command_line_arguments
-        instance.expires_at = expires_at
         instance.image_id = image_id
         instance.name = name
+        if expires_at is not None:
+            instance.expires_at = expires_at
         return instance
 
     @classmethod
@@ -132,10 +133,6 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
             instance.command_line_arguments = str(dict_["commandLineArguments"])
         elif include_empty:
             instance.command_line_arguments = ""
-        if "expiresAt" in dict_ and dict_["expiresAt"] is not None:
-            instance.expires_at = str(dict_["expiresAt"])
-        elif include_empty:
-            instance.expires_at = ""
         if "imageId" in dict_ and dict_["imageId"] is not None:
             instance.image_id = str(dict_["imageId"])
         elif include_empty:
@@ -144,6 +141,10 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "expiresAt" in dict_ and dict_["expiresAt"] is not None:
+            instance.expires_at = str(dict_["expiresAt"])
+        elif include_empty:
+            instance.expires_at = ""
         return instance
 
     @classmethod
@@ -188,18 +189,18 @@ class ApiDevelopmentServerConfigurationCreateRequest(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "commandLineArguments": "command_line_arguments",
-            "expiresAt": "expires_at",
             "imageId": "image_id",
             "name": "name",
+            "expiresAt": "expires_at",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "commandLineArguments": True,
-            "expiresAt": True,
             "imageId": True,
             "name": True,
+            "expiresAt": False,
         }
 
     # endregion static methods

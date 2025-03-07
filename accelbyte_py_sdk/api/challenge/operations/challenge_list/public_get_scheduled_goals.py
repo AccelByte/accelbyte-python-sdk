@@ -28,10 +28,20 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import IamErrorResponse
 from ...models import ModelGetGoalsResponse
 from ...models import ResponseError
+
+
+class SortByEnum(StrEnum):
+    CREATEDAT = "createdAt"
+    CREATEDAT_ASC = "createdAt:asc"
+    CREATEDAT_DESC = "createdAt:desc"
+    UPDATEDAT = "updatedAt"
+    UPDATEDAT_ASC = "updatedAt:asc"
+    UPDATEDAT_DESC = "updatedAt:desc"
 
 
 class PublicGetScheduledGoals(Operation):
@@ -59,6 +69,8 @@ class PublicGetScheduledGoals(Operation):
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
         tags: (tags) OPTIONAL List[str] in query
 
@@ -89,6 +101,7 @@ class PublicGetScheduledGoals(Operation):
     namespace: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
     tags: List[str]  # OPTIONAL in [query]
 
     # endregion fields
@@ -147,6 +160,8 @@ class PublicGetScheduledGoals(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
         if hasattr(self, "tags"):
             result["tags"] = self.tags
         return result
@@ -175,6 +190,10 @@ class PublicGetScheduledGoals(Operation):
         self.offset = value
         return self
 
+    def with_sort_by(self, value: Union[str, SortByEnum]) -> PublicGetScheduledGoals:
+        self.sort_by = value
+        return self
+
     def with_tags(self, value: List[str]) -> PublicGetScheduledGoals:
         self.tags = value
         return self
@@ -201,6 +220,10 @@ class PublicGetScheduledGoals(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = Union[str, SortByEnum]()
         if hasattr(self, "tags") and self.tags:
             result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
@@ -269,6 +292,7 @@ class PublicGetScheduledGoals(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        sort_by: Optional[Union[str, SortByEnum]] = None,
         tags: Optional[List[str]] = None,
         **kwargs,
     ) -> PublicGetScheduledGoals:
@@ -279,6 +303,8 @@ class PublicGetScheduledGoals(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if sort_by is not None:
+            instance.sort_by = sort_by
         if tags is not None:
             instance.tags = tags
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -306,6 +332,10 @@ class PublicGetScheduledGoals(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = Union[str, SortByEnum]()
         if "tags" in dict_ and dict_["tags"] is not None:
             instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
@@ -319,6 +349,7 @@ class PublicGetScheduledGoals(Operation):
             "namespace": "namespace",
             "limit": "limit",
             "offset": "offset",
+            "sortBy": "sort_by",
             "tags": "tags",
         }
 
@@ -329,6 +360,7 @@ class PublicGetScheduledGoals(Operation):
             "namespace": True,
             "limit": False,
             "offset": False,
+            "sortBy": False,
             "tags": False,
         }
 
@@ -336,6 +368,19 @@ class PublicGetScheduledGoals(Operation):
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
             "tags": "csv",  # in query
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortBy": [
+                "createdAt",
+                "createdAt:asc",
+                "createdAt:desc",
+                "updatedAt",
+                "updatedAt:asc",
+                "updatedAt:desc",
+            ],  # in query
         }
 
     # endregion static methods

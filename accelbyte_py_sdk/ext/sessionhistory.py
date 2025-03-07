@@ -83,6 +83,7 @@ from ..api.sessionhistory.models import ApimodelsXRayTotalActiveSessionQueryResp
 from ..api.sessionhistory.models import (
     ApimodelsXRayTotalPlayerPersessionAVGQueryResponse,
 )
+from ..api.sessionhistory.models import EnvconfigConfiguration
 from ..api.sessionhistory.models import LogconfigConfiguration
 from ..api.sessionhistory.models import ModelsAllianceRule
 from ..api.sessionhistory.models import ModelsBackfillProposal
@@ -183,11 +184,19 @@ def create_apimodels_expired_matchmaking_ticket_example() -> (
 
 def create_apimodels_game_session_detail_example() -> ApimodelsGameSessionDetail:
     instance = ApimodelsGameSessionDetail()
+    instance.active = randomize("bool")
     instance.created_at = randomize()
+    instance.ended = randomize("bool")
     instance.histories = [create_apimodels_history_example()]
+    instance.joinability = randomize()
+    instance.last_data = create_models_game_session_example()
+    instance.match_pool = randomize()
     instance.namespace = randomize("slug")
+    instance.persistent = randomize("bool")
+    instance.pod_name = randomize()
     instance.session_id = randomize("uid")
     instance.session_template = randomize()
+    instance.updated_at = randomize("date")
     return instance
 
 
@@ -287,9 +296,13 @@ def create_apimodels_party_detail_example() -> ApimodelsPartyDetail:
     instance = ApimodelsPartyDetail()
     instance.created_at = randomize("date")
     instance.histories = [create_apimodels_party_history_example()]
+    instance.joinability = randomize()
+    instance.last_data = create_models_party_example()
+    instance.leader_id = randomize()
     instance.namespace = randomize("slug")
     instance.party_session_id = randomize()
     instance.session_template = randomize()
+    instance.updated_at = randomize("date")
     return instance
 
 
@@ -655,6 +668,12 @@ def create_apimodels_x_ray_total_player_persession_avg_query_response_example() 
 ):
     instance = ApimodelsXRayTotalPlayerPersessionAVGQueryResponse()
     instance.data = [create_apimodels_total_player_persession_example()]
+    return instance
+
+
+def create_envconfig_configuration_example() -> EnvconfigConfiguration:
+    instance = EnvconfigConfiguration()
+    instance.session_deletion_grace_period = randomize("int", min_val=1, max_val=1000)
     return instance
 
 

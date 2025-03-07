@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Cloudsave Service Index (3.24.2)
+# AccelByte Gaming Services Cloudsave Service Index (3.25.0)
 
 
 ## Operations

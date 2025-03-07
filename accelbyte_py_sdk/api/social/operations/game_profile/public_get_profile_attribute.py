@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import deprecated
 
 from ...models import Attribute
 from ...models import ErrorEntity
@@ -35,6 +36,9 @@ from ...models import ErrorEntity
 
 class PublicGetProfileAttribute(Operation):
     """Returns game profile attribute (publicGetProfileAttribute)
+
+    ## The endpoint is going to be deprecated
+
 
     Returns game profile attribute.
     Other detail info:

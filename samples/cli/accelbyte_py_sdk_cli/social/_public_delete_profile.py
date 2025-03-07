@@ -71,4 +71,4 @@ def public_delete_profile(
 
 
 public_delete_profile.operation_id = "publicDeleteProfile"
-public_delete_profile.is_deprecated = False
+public_delete_profile.is_deprecated = True

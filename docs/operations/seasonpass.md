@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Seasonpass Service Index (1.23.2)
+# AccelByte Gaming Services Seasonpass Service Index (1.24.0)
 
 
 ## Operations
@@ -71,6 +71,11 @@
 | /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id}/reorder | PUT | reorderTier | `false` | [ReorderTier](../../accelbyte_py_sdk/api/seasonpass/operations/tier/reorder_tier.py) | [reorder_tier](../../accelbyte_py_sdk/api/seasonpass/wrappers/_tier.py) | [accelbyte_py_sdk_cli seasonpass-reorder-tier](../../samples/cli/accelbyte_py_sdk_cli/seasonpass/_reorder_tier.py) |
 | /seasonpass/admin/namespaces/{namespace}/seasons/{seasonId}/tiers/{id} | PUT | updateTier | `false` | [UpdateTier](../../accelbyte_py_sdk/api/seasonpass/operations/tier/update_tier.py) | [update_tier](../../accelbyte_py_sdk/api/seasonpass/wrappers/_tier.py) | [accelbyte_py_sdk_cli seasonpass-update-tier](../../samples/cli/accelbyte_py_sdk_cli/seasonpass/_update_tier.py) |
 
+### Utilities
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /seasonpass/admin/namespaces/{namespace}/seasons/item/references | GET | getItemReferences | `false` | [GetItemReferences](../../accelbyte_py_sdk/api/seasonpass/operations/utilities/get_item_references.py) | [get_item_references](../../accelbyte_py_sdk/api/seasonpass/wrappers/_utilities.py) | [accelbyte_py_sdk_cli seasonpass-get-item-references](../../samples/cli/accelbyte_py_sdk_cli/seasonpass/_get_item_references.py) |
+
 
 ## Models
 | Model | Class |
@@ -85,6 +90,8 @@
 | FieldValidationError | [FieldValidationError](../../accelbyte_py_sdk/api/seasonpass/models/field_validation_error.py) |
 | FullSeasonInfo | [FullSeasonInfo](../../accelbyte_py_sdk/api/seasonpass/models/full_season_info.py) |
 | Image | [Image](../../accelbyte_py_sdk/api/seasonpass/models/image.py) |
+| ItemReference | [ItemReference](../../accelbyte_py_sdk/api/seasonpass/models/item_reference.py) |
+| ItemReferenceInfo | [ItemReferenceInfo](../../accelbyte_py_sdk/api/seasonpass/models/item_reference_info.py) |
 | ListSeasonInfo | [ListSeasonInfo](../../accelbyte_py_sdk/api/seasonpass/models/list_season_info.py) |
 | ListSeasonInfoPagingSlicedResult | [ListSeasonInfoPagingSlicedResult](../../accelbyte_py_sdk/api/seasonpass/models/list_season_info_paging_sliced_result.py) |
 | ListUserSeasonInfo | [ListUserSeasonInfo](../../accelbyte_py_sdk/api/seasonpass/models/list_user_season_info.py) |

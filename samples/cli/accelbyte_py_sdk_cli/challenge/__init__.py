@@ -10,6 +10,7 @@
 
 from ._admin_get_challenges import admin_get_challenges
 from ._admin_create_challenge import admin_create_challenge
+from ._admin_get_item_references import admin_get_item_references
 from ._admin_get_active_challenges import admin_get_active_challenges
 from ._admin_get_challenge import admin_get_challenge
 from ._admin_update_challenge import admin_update_challenge
@@ -54,6 +55,7 @@ from ._public_claim_user_rewards import public_claim_user_rewards
 commands = [
     admin_get_challenges,
     admin_create_challenge,
+    admin_get_item_references,
     admin_get_active_challenges,
     admin_get_challenge,
     admin_update_challenge,

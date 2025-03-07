@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Seasonpass Service."""
 
-__version__ = "1.23.2"
+__version__ = "1.24.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -106,3 +106,6 @@ from ._tier import reorder_tier
 from ._tier import reorder_tier_async
 from ._tier import update_tier
 from ._tier import update_tier_async
+
+from ._utilities import get_item_references
+from ._utilities import get_item_references_async

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.3.0"
+__version__ = "6.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,6 +21,7 @@ from .create_item import CreateItem
 from .create_item_type_config import CreateItemTypeConfig
 from .defeature_item import DefeatureItem
 from .delete_item import DeleteItem
+from .delete_item import FeaturesToCheckEnum as DeleteItemFeaturesToCheckEnum
 from .delete_item_type_config import DeleteItemTypeConfig
 from .disable_item import DisableItem
 from .enable_item import EnableItem
@@ -56,6 +57,10 @@ from .public_query_items import (
 from .public_search_items import PublicSearchItems
 from .public_search_items import ItemTypeEnum as PublicSearchItemsItemTypeEnum
 from .public_validate_item_pu_bd546e import PublicValidateItemPurchaseCondition
+from .query_item_references import QueryItemReferences
+from .query_item_references import (
+    FeaturesToCheckEnum as QueryItemReferencesFeaturesToCheckEnum,
+)
 from .query_items import QueryItems
 from .query_items import (
     AppTypeEnum as QueryItemsAppTypeEnum,

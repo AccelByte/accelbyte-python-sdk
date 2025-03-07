@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Challenge Service."""
 
-__version__ = "1.13.0"
+__version__ = "1.15.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -20,3 +20,4 @@ from .get_challenges import (
     StatusEnum as GetChallengesStatusEnum,
 )
 from .public_get_scheduled_goals import PublicGetScheduledGoals
+from .public_get_scheduled_goals import SortByEnum as PublicGetScheduledGoalsSortByEnum

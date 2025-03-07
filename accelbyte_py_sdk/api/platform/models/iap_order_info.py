@@ -37,6 +37,7 @@ class StatusEnum(StrEnum):
     FULFILLED = "FULFILLED"
     PARTIAL_REVOKED = "PARTIAL_REVOKED"
     REVOKED = "REVOKED"
+    REVOKE_FAILED = "REVOKE_FAILED"
     VERIFIED = "VERIFIED"
 
 
@@ -50,6 +51,11 @@ class TypeEnum(StrEnum):
     STEAM = "STEAM"
     TWITCH = "TWITCH"
     XBOX = "XBOX"
+
+
+class SyncModeEnum(StrEnum):
+    INVENTORY = "INVENTORY"
+    TRANSACTION = "TRANSACTION"
 
 
 class IAPOrderInfo(Model):
@@ -96,6 +102,8 @@ class IAPOrderInfo(Model):
 
         status_reason: (statusReason) OPTIONAL str
 
+        sync_mode: (syncMode) OPTIONAL Union[str, SyncModeEnum]
+
         transaction_id: (transactionId) OPTIONAL str
     """
 
@@ -121,6 +129,7 @@ class IAPOrderInfo(Model):
     retry_count: int  # OPTIONAL
     sandbox: bool  # OPTIONAL
     status_reason: str  # OPTIONAL
+    sync_mode: Union[str, SyncModeEnum]  # OPTIONAL
     transaction_id: str  # OPTIONAL
 
     # endregion fields
@@ -205,6 +214,10 @@ class IAPOrderInfo(Model):
 
     def with_status_reason(self, value: str) -> IAPOrderInfo:
         self.status_reason = value
+        return self
+
+    def with_sync_mode(self, value: Union[str, SyncModeEnum]) -> IAPOrderInfo:
+        self.sync_mode = value
         return self
 
     def with_transaction_id(self, value: str) -> IAPOrderInfo:
@@ -301,6 +314,10 @@ class IAPOrderInfo(Model):
             result["statusReason"] = str(self.status_reason)
         elif include_empty:
             result["statusReason"] = ""
+        if hasattr(self, "sync_mode"):
+            result["syncMode"] = str(self.sync_mode)
+        elif include_empty:
+            result["syncMode"] = Union[str, SyncModeEnum]()
         if hasattr(self, "transaction_id"):
             result["transactionId"] = str(self.transaction_id)
         elif include_empty:
@@ -334,6 +351,7 @@ class IAPOrderInfo(Model):
         retry_count: Optional[int] = None,
         sandbox: Optional[bool] = None,
         status_reason: Optional[str] = None,
+        sync_mode: Optional[Union[str, SyncModeEnum]] = None,
         transaction_id: Optional[str] = None,
         **kwargs,
     ) -> IAPOrderInfo:
@@ -371,6 +389,8 @@ class IAPOrderInfo(Model):
             instance.sandbox = sandbox
         if status_reason is not None:
             instance.status_reason = status_reason
+        if sync_mode is not None:
+            instance.sync_mode = sync_mode
         if transaction_id is not None:
             instance.transaction_id = transaction_id
         return instance
@@ -466,6 +486,10 @@ class IAPOrderInfo(Model):
             instance.status_reason = str(dict_["statusReason"])
         elif include_empty:
             instance.status_reason = ""
+        if "syncMode" in dict_ and dict_["syncMode"] is not None:
+            instance.sync_mode = str(dict_["syncMode"])
+        elif include_empty:
+            instance.sync_mode = Union[str, SyncModeEnum]()
         if "transactionId" in dict_ and dict_["transactionId"] is not None:
             instance.transaction_id = str(dict_["transactionId"])
         elif include_empty:
@@ -529,6 +553,7 @@ class IAPOrderInfo(Model):
             "retryCount": "retry_count",
             "sandbox": "sandbox",
             "statusReason": "status_reason",
+            "syncMode": "sync_mode",
             "transactionId": "transaction_id",
         }
 
@@ -555,13 +580,21 @@ class IAPOrderInfo(Model):
             "retryCount": False,
             "sandbox": False,
             "statusReason": False,
+            "syncMode": False,
             "transactionId": False,
         }
 
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
-            "status": ["FAILED", "FULFILLED", "PARTIAL_REVOKED", "REVOKED", "VERIFIED"],
+            "status": [
+                "FAILED",
+                "FULFILLED",
+                "PARTIAL_REVOKED",
+                "REVOKED",
+                "REVOKE_FAILED",
+                "VERIFIED",
+            ],
             "type": [
                 "APPLE",
                 "EPICGAMES",
@@ -573,6 +606,7 @@ class IAPOrderInfo(Model):
                 "TWITCH",
                 "XBOX",
             ],
+            "syncMode": ["INVENTORY", "TRANSACTION"],
         }
 
     # endregion static methods

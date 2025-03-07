@@ -93,6 +93,8 @@ from ..api.iam.models import AccountcommonRoleV3
 from ..api.iam.models import AccountcommonSimpleUserPlatformInfoV3
 from ..api.iam.models import AccountcommonSsoConfig
 from ..api.iam.models import AccountcommonSsoConfigPatchReq
+from ..api.iam.models import AccountcommonTagResponse
+from ..api.iam.models import AccountcommonTagsGetResponseV3
 from ..api.iam.models import AccountcommonUserInformationV3
 from ..api.iam.models import AccountcommonUserLinkedPlatform
 from ..api.iam.models import AccountcommonUserLinkedPlatformV3
@@ -273,6 +275,8 @@ from ..api.iam.models import ModelSendVerificationCodeRequestV3
 from ..api.iam.models import ModelSendVerificationLinkRequest
 from ..api.iam.models import ModelSimpleProfileUpdateStrategyConfigs
 from ..api.iam.models import ModelSimpleUserBan
+from ..api.iam.models import ModelTagCreateRequestV3
+from ..api.iam.models import ModelTagUpdateRequestV3
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialRequest
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialResponse
 from ..api.iam.models import ModelTokenThirdPartyLinkStatusResponse
@@ -1031,6 +1035,25 @@ def create_accountcommon_sso_config_patch_req_example() -> (
     instance.group_configs = [
         create_accountcommon_group_and_role_mapping_for_patch_example()
     ]
+    return instance
+
+
+def create_accountcommon_tag_response_example() -> AccountcommonTagResponse:
+    instance = AccountcommonTagResponse()
+    instance.created_at = randomize("date")
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.tag_name = randomize()
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_accountcommon_tags_get_response_v3_example() -> (
+    AccountcommonTagsGetResponseV3
+):
+    instance = AccountcommonTagsGetResponseV3()
+    instance.data = [create_accountcommon_tag_response_example()]
+    instance.paging = create_accountcommon_pagination_v3_example()
     return instance
 
 
@@ -2749,6 +2772,18 @@ def create_model_sso_platform_credential_response_example() -> (
     return instance
 
 
+def create_model_tag_create_request_v3_example() -> ModelTagCreateRequestV3:
+    instance = ModelTagCreateRequestV3()
+    instance.tag_name = randomize()
+    return instance
+
+
+def create_model_tag_update_request_v3_example() -> ModelTagUpdateRequestV3:
+    instance = ModelTagUpdateRequestV3()
+    instance.tag_name = randomize()
+    return instance
+
+
 def create_model_third_party_login_platform_credential_request_example() -> (
     ModelThirdPartyLoginPlatformCredentialRequest
 ):
@@ -3340,6 +3375,7 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.platform_infos = [create_model_user_platform_info_example()]
     instance.platform_user_id = randomize()
     instance.skip_login_queue = randomize("bool")
+    instance.tags = [randomize()]
     instance.test_account = randomize("bool")
     instance.unique_display_name = randomize()
     instance.user_name = randomize("slug")
@@ -3389,6 +3425,7 @@ def create_model_user_update_request_v3_example() -> ModelUserUpdateRequestV3:
     instance.display_name = randomize("slug")
     instance.language_tag = randomize()
     instance.skip_login_queue = randomize("bool")
+    instance.tags = [randomize()]
     instance.unique_display_name = randomize()
     instance.user_name = randomize("slug")
     return instance

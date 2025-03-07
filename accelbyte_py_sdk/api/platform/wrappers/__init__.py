@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.3.0"
+__version__ = "6.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -333,6 +333,18 @@ from ._fulfillment_script import list_fulfillment_scripts_async
 from ._fulfillment_script import update_fulfillment_script
 from ._fulfillment_script import update_fulfillment_script_async
 
+from ._iap import admin_get_iap_order_line_items
+from ._iap import admin_get_iap_order_line_items_async
+from ._iap import admin_get_steam_job_info
+from ._iap import admin_get_steam_job_info_async
+from ._iap import admin_refund_iap_order
+from ._iap import admin_refund_iap_order_async
+from ._iap import admin_reset_steam_job_time
+from ._iap import admin_reset_steam_job_time_async
+from ._iap import admin_sync_steam_abnormal_transaction
+from ._iap import admin_sync_steam_abnormal_transaction_async
+from ._iap import admin_sync_steam_iap_by_transaction
+from ._iap import admin_sync_steam_iap_by_transaction_async
 from ._iap import delete_apple_iap_config
 from ._iap import delete_apple_iap_config_async
 from ._iap import delete_epic_games_iap_config
@@ -385,8 +397,12 @@ from ._iap import public_reconcile_play_station_store
 from ._iap import public_reconcile_play_station_store_async
 from ._iap import public_reconcile_play_station_store_with_multiple_service_labels
 from ._iap import public_reconcile_play_station_store_with_multiple_service_labels_async
+from ._iap import query_abnormal_transactions
+from ._iap import query_abnormal_transactions_async
 from ._iap import query_all_user_iap_orders
 from ._iap import query_all_user_iap_orders_async
+from ._iap import query_steam_report_histories
+from ._iap import query_steam_report_histories_async
 from ._iap import query_user_iap_consume_history
 from ._iap import query_user_iap_consume_history_async
 from ._iap import query_user_iap_orders
@@ -395,6 +411,10 @@ from ._iap import sync_epic_games_inventory
 from ._iap import sync_epic_games_inventory_async
 from ._iap import sync_oculus_consumable_entitlements
 from ._iap import sync_oculus_consumable_entitlements_async
+from ._iap import sync_steam_abnormal_transaction
+from ._iap import sync_steam_abnormal_transaction_async
+from ._iap import sync_steam_iap_by_transaction
+from ._iap import sync_steam_iap_by_transaction_async
 from ._iap import sync_steam_inventory
 from ._iap import sync_steam_inventory_async
 from ._iap import sync_twitch_drops_entitlement
@@ -545,6 +565,8 @@ from ._item import public_search_items
 from ._item import public_search_items_async
 from ._item import public_validate_item_purchase_condition
 from ._item import public_validate_item_purchase_condition_async
+from ._item import query_item_references
+from ._item import query_item_references_async
 from ._item import query_items
 from ._item import query_items_async
 from ._item import query_items_v2

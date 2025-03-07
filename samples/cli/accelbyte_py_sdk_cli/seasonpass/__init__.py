@@ -13,6 +13,7 @@ from ._query_seasons import query_seasons
 from ._create_season import create_season
 from ._get_current_season import get_current_season
 from ._bulk_get_user_season_progression import bulk_get_user_season_progression
+from ._get_item_references import get_item_references
 from ._get_season import get_season
 from ._delete_season import delete_season
 from ._update_season import update_season
@@ -60,6 +61,7 @@ commands = [
     create_season,
     get_current_season,
     bulk_get_user_season_progression,
+    get_item_references,
     get_season,
     delete_season,
     update_season,

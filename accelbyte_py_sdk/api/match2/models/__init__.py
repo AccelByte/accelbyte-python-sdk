@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.31.0"
+__version__ = "2.32.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -24,6 +24,7 @@ from .api_external_failure_metric_record import ApiExternalFailureMetricRecord
 from .api_external_failure_metric_record import (
     TypeEnum as ApiExternalFailureMetricRecordTypeEnum,
 )
+from .api_list_backfill_query_response import ApiListBackfillQueryResponse
 from .api_list_environment_variables_response import ApiListEnvironmentVariablesResponse
 from .api_list_match_functions_response import ApiListMatchFunctionsResponse
 from .api_list_match_pool_tickets_response import ApiListMatchPoolTicketsResponse

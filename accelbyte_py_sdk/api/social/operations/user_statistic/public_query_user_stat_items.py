@@ -29,21 +29,24 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ADTOObjectForUserStatItemValue
 from ...models import ErrorEntity
-from ...models import UserStatItemPagingSlicedResult
 from ...models import ValidationErrorEntity
 
 
 class PublicQueryUserStatItems(Operation):
     """Public list user's statItems (publicQueryUserStatItems)
 
-    Public list all statItems by pagination.
-    Other detail info:
+    Public list all statItems of user.
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
 
+    Other detail info:
       *  Returns : stat items
 
     Properties:
-        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
 
         method: GET
 
@@ -59,22 +62,22 @@ class PublicQueryUserStatItems(Operation):
 
         user_id: (userId) REQUIRED str in path
 
-        limit: (limit) OPTIONAL int in query
+        additional_key: (additionalKey) OPTIONAL str in query
 
-        offset: (offset) OPTIONAL int in query
+        stat_codes: (statCodes) OPTIONAL List[str] in query
 
-        sort_by: (sortBy) OPTIONAL str in query
-
-        stat_codes: (statCodes) OPTIONAL str in query
-
-        tags: (tags) OPTIONAL str in query
+        tags: (tags) OPTIONAL List[str] in query
 
     Responses:
-        200: OK - UserStatItemPagingSlicedResult (successful operation)
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
 
         401: Unauthorized - ErrorEntity (20001: Unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -83,7 +86,9 @@ class PublicQueryUserStatItems(Operation):
 
     # region fields
 
-    _url: str = "/social/v1/public/namespaces/{namespace}/users/{userId}/statitems"
+    _url: str = (
+        "/social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk"
+    )
     _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
@@ -92,11 +97,9 @@ class PublicQueryUserStatItems(Operation):
 
     namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
-    limit: int  # OPTIONAL in [query]
-    offset: int  # OPTIONAL in [query]
-    sort_by: str  # OPTIONAL in [query]
-    stat_codes: str  # OPTIONAL in [query]
-    tags: str  # OPTIONAL in [query]
+    additional_key: str  # OPTIONAL in [query]
+    stat_codes: List[str]  # OPTIONAL in [query]
+    tags: List[str]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -150,12 +153,8 @@ class PublicQueryUserStatItems(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "limit"):
-            result["limit"] = self.limit
-        if hasattr(self, "offset"):
-            result["offset"] = self.offset
-        if hasattr(self, "sort_by"):
-            result["sortBy"] = self.sort_by
+        if hasattr(self, "additional_key"):
+            result["additionalKey"] = self.additional_key
         if hasattr(self, "stat_codes"):
             result["statCodes"] = self.stat_codes
         if hasattr(self, "tags"):
@@ -178,23 +177,15 @@ class PublicQueryUserStatItems(Operation):
         self.user_id = value
         return self
 
-    def with_limit(self, value: int) -> PublicQueryUserStatItems:
-        self.limit = value
+    def with_additional_key(self, value: str) -> PublicQueryUserStatItems:
+        self.additional_key = value
         return self
 
-    def with_offset(self, value: int) -> PublicQueryUserStatItems:
-        self.offset = value
-        return self
-
-    def with_sort_by(self, value: str) -> PublicQueryUserStatItems:
-        self.sort_by = value
-        return self
-
-    def with_stat_codes(self, value: str) -> PublicQueryUserStatItems:
+    def with_stat_codes(self, value: List[str]) -> PublicQueryUserStatItems:
         self.stat_codes = value
         return self
 
-    def with_tags(self, value: str) -> PublicQueryUserStatItems:
+    def with_tags(self, value: List[str]) -> PublicQueryUserStatItems:
         self.tags = value
         return self
 
@@ -212,26 +203,18 @@ class PublicQueryUserStatItems(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
-        if hasattr(self, "limit") and self.limit:
-            result["limit"] = int(self.limit)
+        if hasattr(self, "additional_key") and self.additional_key:
+            result["additionalKey"] = str(self.additional_key)
         elif include_empty:
-            result["limit"] = 0
-        if hasattr(self, "offset") and self.offset:
-            result["offset"] = int(self.offset)
-        elif include_empty:
-            result["offset"] = 0
-        if hasattr(self, "sort_by") and self.sort_by:
-            result["sortBy"] = str(self.sort_by)
-        elif include_empty:
-            result["sortBy"] = ""
+            result["additionalKey"] = ""
         if hasattr(self, "stat_codes") and self.stat_codes:
-            result["statCodes"] = str(self.stat_codes)
+            result["statCodes"] = [str(i0) for i0 in self.stat_codes]
         elif include_empty:
-            result["statCodes"] = ""
+            result["statCodes"] = []
         if hasattr(self, "tags") and self.tags:
-            result["tags"] = str(self.tags)
+            result["tags"] = [str(i0) for i0 in self.tags]
         elif include_empty:
-            result["tags"] = ""
+            result["tags"] = []
         return result
 
     # endregion to methods
@@ -242,16 +225,20 @@ class PublicQueryUserStatItems(Operation):
     def parse_response(
         self, code: int, content_type: str, content: Any
     ) -> Tuple[
-        Union[None, UserStatItemPagingSlicedResult],
+        Union[None, List[ADTOObjectForUserStatItemValue]],
         Union[None, ErrorEntity, HttpResponse, ValidationErrorEntity],
     ]:
         """Parse the given response.
 
-        200: OK - UserStatItemPagingSlicedResult (successful operation)
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
 
         401: Unauthorized - ErrorEntity (20001: Unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -271,10 +258,16 @@ class PublicQueryUserStatItems(Operation):
         code, content_type, content = pre_processed_response
 
         if code == 200:
-            return UserStatItemPagingSlicedResult.create_from_dict(content), None
+            return [
+                ADTOObjectForUserStatItemValue.create_from_dict(i) for i in content
+            ], None
+        if code == 400:
+            return None, ErrorEntity.create_from_dict(content)
         if code == 401:
             return None, ErrorEntity.create_from_dict(content)
         if code == 403:
+            return None, ErrorEntity.create_from_dict(content)
+        if code == 404:
             return None, ErrorEntity.create_from_dict(content)
         if code == 422:
             return None, ValidationErrorEntity.create_from_dict(content)
@@ -294,22 +287,16 @@ class PublicQueryUserStatItems(Operation):
         cls,
         namespace: str,
         user_id: str,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
-        sort_by: Optional[str] = None,
-        stat_codes: Optional[str] = None,
-        tags: Optional[str] = None,
+        additional_key: Optional[str] = None,
+        stat_codes: Optional[List[str]] = None,
+        tags: Optional[List[str]] = None,
         **kwargs,
     ) -> PublicQueryUserStatItems:
         instance = cls()
         instance.namespace = namespace
         instance.user_id = user_id
-        if limit is not None:
-            instance.limit = limit
-        if offset is not None:
-            instance.offset = offset
-        if sort_by is not None:
-            instance.sort_by = sort_by
+        if additional_key is not None:
+            instance.additional_key = additional_key
         if stat_codes is not None:
             instance.stat_codes = stat_codes
         if tags is not None:
@@ -331,26 +318,18 @@ class PublicQueryUserStatItems(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
-        if "limit" in dict_ and dict_["limit"] is not None:
-            instance.limit = int(dict_["limit"])
+        if "additionalKey" in dict_ and dict_["additionalKey"] is not None:
+            instance.additional_key = str(dict_["additionalKey"])
         elif include_empty:
-            instance.limit = 0
-        if "offset" in dict_ and dict_["offset"] is not None:
-            instance.offset = int(dict_["offset"])
-        elif include_empty:
-            instance.offset = 0
-        if "sortBy" in dict_ and dict_["sortBy"] is not None:
-            instance.sort_by = str(dict_["sortBy"])
-        elif include_empty:
-            instance.sort_by = ""
+            instance.additional_key = ""
         if "statCodes" in dict_ and dict_["statCodes"] is not None:
-            instance.stat_codes = str(dict_["statCodes"])
+            instance.stat_codes = [str(i0) for i0 in dict_["statCodes"]]
         elif include_empty:
-            instance.stat_codes = ""
+            instance.stat_codes = []
         if "tags" in dict_ and dict_["tags"] is not None:
-            instance.tags = str(dict_["tags"])
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
         elif include_empty:
-            instance.tags = ""
+            instance.tags = []
         return instance
 
     @staticmethod
@@ -358,9 +337,7 @@ class PublicQueryUserStatItems(Operation):
         return {
             "namespace": "namespace",
             "userId": "user_id",
-            "limit": "limit",
-            "offset": "offset",
-            "sortBy": "sort_by",
+            "additionalKey": "additional_key",
             "statCodes": "stat_codes",
             "tags": "tags",
         }
@@ -370,11 +347,16 @@ class PublicQueryUserStatItems(Operation):
         return {
             "namespace": True,
             "userId": True,
-            "limit": False,
-            "offset": False,
-            "sortBy": False,
+            "additionalKey": False,
             "statCodes": False,
             "tags": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "statCodes": "multi",  # in query
+            "tags": "multi",  # in query
         }
 
     # endregion static methods

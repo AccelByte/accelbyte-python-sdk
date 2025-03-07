@@ -118,6 +118,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
         text_chat_mode: (textChatMode) OPTIONAL Union[str, TextChatModeEnum]
 
         tie_teams_session_lifetime: (tieTeamsSessionLifetime) OPTIONAL bool
+
+        ttl_hours: (ttlHours) OPTIONAL int
     """
 
     # region fields
@@ -160,6 +162,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     requested_regions: List[str]  # OPTIONAL
     text_chat_mode: Union[str, TextChatModeEnum]  # OPTIONAL
     tie_teams_session_lifetime: bool  # OPTIONAL
+    ttl_hours: int  # OPTIONAL
 
     # endregion fields
 
@@ -351,6 +354,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self.tie_teams_session_lifetime = value
         return self
 
+    def with_ttl_hours(self, value: int) -> ApimodelsConfigurationTemplateResponse:
+        self.ttl_hours = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -515,6 +522,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             result["tieTeamsSessionLifetime"] = bool(self.tie_teams_session_lifetime)
         elif include_empty:
             result["tieTeamsSessionLifetime"] = False
+        if hasattr(self, "ttl_hours"):
+            result["ttlHours"] = int(self.ttl_hours)
+        elif include_empty:
+            result["ttlHours"] = 0
         return result
 
     # endregion to methods
@@ -562,6 +573,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         requested_regions: Optional[List[str]] = None,
         text_chat_mode: Optional[Union[str, TextChatModeEnum]] = None,
         tie_teams_session_lifetime: Optional[bool] = None,
+        ttl_hours: Optional[int] = None,
         **kwargs,
     ) -> ApimodelsConfigurationTemplateResponse:
         instance = cls()
@@ -626,6 +638,8 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.text_chat_mode = text_chat_mode
         if tie_teams_session_lifetime is not None:
             instance.tie_teams_session_lifetime = tie_teams_session_lifetime
+        if ttl_hours is not None:
+            instance.ttl_hours = ttl_hours
         return instance
 
     @classmethod
@@ -820,6 +834,10 @@ class ApimodelsConfigurationTemplateResponse(Model):
             instance.tie_teams_session_lifetime = bool(dict_["tieTeamsSessionLifetime"])
         elif include_empty:
             instance.tie_teams_session_lifetime = False
+        if "ttlHours" in dict_ and dict_["ttlHours"] is not None:
+            instance.ttl_hours = int(dict_["ttlHours"])
+        elif include_empty:
+            instance.ttl_hours = 0
         return instance
 
     @classmethod
@@ -901,6 +919,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "requestedRegions": "requested_regions",
             "textChatMode": "text_chat_mode",
             "tieTeamsSessionLifetime": "tie_teams_session_lifetime",
+            "ttlHours": "ttl_hours",
         }
 
     @staticmethod
@@ -944,6 +963,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
             "requestedRegions": False,
             "textChatMode": False,
             "tieTeamsSessionLifetime": False,
+            "ttlHours": False,
         }
 
     @staticmethod

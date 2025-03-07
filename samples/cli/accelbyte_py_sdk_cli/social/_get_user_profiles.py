@@ -67,4 +67,4 @@ def get_user_profiles(
 
 
 get_user_profiles.operation_id = "getUserProfiles"
-get_user_profiles.is_deprecated = False
+get_user_profiles.is_deprecated = True

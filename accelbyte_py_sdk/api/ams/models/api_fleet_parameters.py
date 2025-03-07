@@ -53,6 +53,8 @@ class ApiFleetParameters(Model):
 
         claim_keys: (claimKeys) OPTIONAL List[str]
 
+        fallback_fleet: (fallbackFleet) OPTIONAL str
+
         sampling_rules: (samplingRules) OPTIONAL ApiFleetArtifactsSampleRules
     """
 
@@ -65,6 +67,7 @@ class ApiFleetParameters(Model):
     on_demand: bool  # REQUIRED
     regions: List[ApiRegionConfig]  # REQUIRED
     claim_keys: List[str]  # OPTIONAL
+    fallback_fleet: str  # OPTIONAL
     sampling_rules: ApiFleetArtifactsSampleRules  # OPTIONAL
 
     # endregion fields
@@ -101,6 +104,10 @@ class ApiFleetParameters(Model):
 
     def with_claim_keys(self, value: List[str]) -> ApiFleetParameters:
         self.claim_keys = value
+        return self
+
+    def with_fallback_fleet(self, value: str) -> ApiFleetParameters:
+        self.fallback_fleet = value
         return self
 
     def with_sampling_rules(
@@ -149,6 +156,10 @@ class ApiFleetParameters(Model):
             result["claimKeys"] = [str(i0) for i0 in self.claim_keys]
         elif include_empty:
             result["claimKeys"] = []
+        if hasattr(self, "fallback_fleet"):
+            result["fallbackFleet"] = str(self.fallback_fleet)
+        elif include_empty:
+            result["fallbackFleet"] = ""
         if hasattr(self, "sampling_rules"):
             result["samplingRules"] = self.sampling_rules.to_dict(
                 include_empty=include_empty
@@ -171,6 +182,7 @@ class ApiFleetParameters(Model):
         on_demand: bool,
         regions: List[ApiRegionConfig],
         claim_keys: Optional[List[str]] = None,
+        fallback_fleet: Optional[str] = None,
         sampling_rules: Optional[ApiFleetArtifactsSampleRules] = None,
         **kwargs,
     ) -> ApiFleetParameters:
@@ -183,6 +195,8 @@ class ApiFleetParameters(Model):
         instance.regions = regions
         if claim_keys is not None:
             instance.claim_keys = claim_keys
+        if fallback_fleet is not None:
+            instance.fallback_fleet = fallback_fleet
         if sampling_rules is not None:
             instance.sampling_rules = sampling_rules
         return instance
@@ -236,6 +250,10 @@ class ApiFleetParameters(Model):
             instance.claim_keys = [str(i0) for i0 in dict_["claimKeys"]]
         elif include_empty:
             instance.claim_keys = []
+        if "fallbackFleet" in dict_ and dict_["fallbackFleet"] is not None:
+            instance.fallback_fleet = str(dict_["fallbackFleet"])
+        elif include_empty:
+            instance.fallback_fleet = ""
         if "samplingRules" in dict_ and dict_["samplingRules"] is not None:
             instance.sampling_rules = ApiFleetArtifactsSampleRules.create_from_dict(
                 dict_["samplingRules"], include_empty=include_empty
@@ -290,6 +308,7 @@ class ApiFleetParameters(Model):
             "onDemand": "on_demand",
             "regions": "regions",
             "claimKeys": "claim_keys",
+            "fallbackFleet": "fallback_fleet",
             "samplingRules": "sampling_rules",
         }
 
@@ -303,6 +322,7 @@ class ApiFleetParameters(Model):
             "onDemand": True,
             "regions": True,
             "claimKeys": False,
+            "fallbackFleet": False,
             "samplingRules": False,
         }
 

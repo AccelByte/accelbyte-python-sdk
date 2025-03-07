@@ -29,12 +29,81 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import EnvconfigConfiguration
 from ..models import LogconfigConfiguration
 from ..models import ResponseError
 
+from ..operations.config import AdminGetEnvConfig
 from ..operations.config import AdminGetLogConfig
+from ..operations.config import AdminPatchUpdateEnvConfig
 from ..operations.config import AdminPatchUpdateLogConfig
 from ..models import LogconfigConfigurationLogLevelEnum
+
+
+@same_doc_as(AdminGetEnvConfig)
+def admin_get_env_config(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Runtime Environment Variable Configuration (adminGetEnvConfig)
+
+    Get Runtime Environment Configuration.
+
+    Properties:
+        url: /sessionhistory/v1/admin/config/env
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - EnvconfigConfiguration (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+    """
+    request = AdminGetEnvConfig.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetEnvConfig)
+async def admin_get_env_config_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Runtime Environment Variable Configuration (adminGetEnvConfig)
+
+    Get Runtime Environment Configuration.
+
+    Properties:
+        url: /sessionhistory/v1/admin/config/env
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - EnvconfigConfiguration (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+    """
+    request = AdminGetEnvConfig.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminGetLogConfig)
@@ -98,6 +167,84 @@ async def admin_get_log_config_async(
         403: Forbidden - ResponseError (Forbidden)
     """
     request = AdminGetLogConfig.create()
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminPatchUpdateEnvConfig)
+def admin_patch_update_env_config(
+    body: EnvconfigConfiguration,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Patch Update Runtime Environment Variable Configuration (adminPatchUpdateEnvConfig)
+
+    Update Runtime Environment Variable Configuration.
+
+    Properties:
+        url: /sessionhistory/v1/admin/config/env
+
+        method: PATCH
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED EnvconfigConfiguration in body
+
+    Responses:
+        200: OK - EnvconfigConfiguration (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+    """
+    request = AdminPatchUpdateEnvConfig.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminPatchUpdateEnvConfig)
+async def admin_patch_update_env_config_async(
+    body: EnvconfigConfiguration,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Patch Update Runtime Environment Variable Configuration (adminPatchUpdateEnvConfig)
+
+    Update Runtime Environment Variable Configuration.
+
+    Properties:
+        url: /sessionhistory/v1/admin/config/env
+
+        method: PATCH
+
+        tags: ["Config"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED EnvconfigConfiguration in body
+
+    Responses:
+        200: OK - EnvconfigConfiguration (OK)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+    """
+    request = AdminPatchUpdateEnvConfig.create(
+        body=body,
+    )
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Challenge Service Index (1.13.0)
+# AccelByte Gaming Services Challenge Service Index (1.15.0)
 
 
 ## Operations
@@ -72,12 +72,18 @@
 | /challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/schedules | GET | publicListSchedules | `false` | [PublicListSchedules](../../accelbyte_py_sdk/api/challenge/operations/schedules/public_list_schedules.py) | [public_list_schedules](../../accelbyte_py_sdk/api/challenge/wrappers/_schedules.py) | [accelbyte_py_sdk_cli challenge-public-list-schedules](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_list_schedules.py) |
 | /challenge/v1/public/namespaces/{namespace}/challenges/{challengeCode}/goals/{code}/schedules | GET | publicListSchedulesByGoal | `false` | [PublicListSchedulesByGoal](../../accelbyte_py_sdk/api/challenge/operations/schedules/public_list_schedules_by_goal.py) | [public_list_schedules_by_goal](../../accelbyte_py_sdk/api/challenge/wrappers/_schedules.py) | [accelbyte_py_sdk_cli challenge-public-list-schedules-by-goal](../../samples/cli/accelbyte_py_sdk_cli/challenge/_public_list_schedules_by_goal.py) |
 
+### Utilities
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /challenge/v1/admin/namespaces/{namespace}/challenges/item/references | GET | adminGetItemReferences | `false` | [AdminGetItemReferences](../../accelbyte_py_sdk/api/challenge/operations/utilities/admin_get_item_references.py) | [admin_get_item_references](../../accelbyte_py_sdk/api/challenge/wrappers/_utilities.py) | [accelbyte_py_sdk_cli challenge-admin-get-item-references](../../samples/cli/accelbyte_py_sdk_cli/challenge/_admin_get_item_references.py) |
+
 
 ## Models
 | Model | Class |
 |---|---|
 | iam.ErrorResponse | [IamErrorResponse](../../accelbyte_py_sdk/api/challenge/models/iam_error_response.py) |
 | iam.Permission | [IamPermission](../../accelbyte_py_sdk/api/challenge/models/iam_permission.py) |
+| model.ChallengeReference | [ModelChallengeReference](../../accelbyte_py_sdk/api/challenge/models/model_challenge_reference.py) |
 | model.ChallengeResponse | [ModelChallengeResponse](../../accelbyte_py_sdk/api/challenge/models/model_challenge_response.py) |
 | model.ClaimUserRewardsByGoalCodeRequest | [ModelClaimUserRewardsByGoalCodeRequest](../../accelbyte_py_sdk/api/challenge/models/model_claim_user_rewards_by_goal_code_request.py) |
 | model.ClaimUserRewardsReq | [ModelClaimUserRewardsReq](../../accelbyte_py_sdk/api/challenge/models/model_claim_user_rewards_req.py) |
@@ -95,6 +101,8 @@
 | model.GoalResponse | [ModelGoalResponse](../../accelbyte_py_sdk/api/challenge/models/model_goal_response.py) |
 | model.GoalSchedule | [ModelGoalSchedule](../../accelbyte_py_sdk/api/challenge/models/model_goal_schedule.py) |
 | model.GoalScheduleRequest | [ModelGoalScheduleRequest](../../accelbyte_py_sdk/api/challenge/models/model_goal_schedule_request.py) |
+| model.ItemReference | [ModelItemReference](../../accelbyte_py_sdk/api/challenge/models/model_item_reference.py) |
+| model.ItemReferenceResponse | [ModelItemReferenceResponse](../../accelbyte_py_sdk/api/challenge/models/model_item_reference_response.py) |
 | model.ListChallengeResponse | [ModelListChallengeResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_challenge_response.py) |
 | model.ListPeriodsResponse | [ModelListPeriodsResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_periods_response.py) |
 | model.ListScheduleByGoalResponse | [ModelListScheduleByGoalResponse](../../accelbyte_py_sdk/api/challenge/models/model_list_schedule_by_goal_response.py) |

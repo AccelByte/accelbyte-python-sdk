@@ -34,6 +34,7 @@ from ..models import AppUpdate
 from ..models import AvailablePredicate
 from ..models import BasicItem
 from ..models import BulkRegionDataChangeRequest
+from ..models import ChangeStatusItemRequest
 from ..models import ErrorEntity
 from ..models import EstimatedPriceInfo
 from ..models import FullAppInfo
@@ -44,6 +45,7 @@ from ..models import InGameItemSync
 from ..models import ItemAcquireRequest
 from ..models import ItemAcquireResult
 from ..models import ItemCreate
+from ..models import ItemDependency
 from ..models import ItemDynamicDataInfo
 from ..models import ItemId
 from ..models import ItemInfo
@@ -66,6 +68,7 @@ from ..operations.item import CreateItem
 from ..operations.item import CreateItemTypeConfig
 from ..operations.item import DefeatureItem
 from ..operations.item import DeleteItem
+from ..operations.item import DeleteItemFeaturesToCheckEnum
 from ..operations.item import DeleteItemTypeConfig
 from ..operations.item import DisableItem
 from ..operations.item import EnableItem
@@ -101,6 +104,8 @@ from ..operations.item import (
 from ..operations.item import PublicSearchItems
 from ..operations.item import PublicSearchItemsItemTypeEnum
 from ..operations.item import PublicValidateItemPurchaseCondition
+from ..operations.item import QueryItemReferences
+from ..operations.item import QueryItemReferencesFeaturesToCheckEnum
 from ..operations.item import QueryItems
 from ..operations.item import (
     QueryItemsAppTypeEnum,
@@ -150,6 +155,7 @@ from ..models import (
     BasicItemSeasonTypeEnum,
     BasicItemStatusEnum,
 )
+from ..models import ChangeStatusItemRequestFeaturesToCheckEnum
 from ..models import (
     FullAppInfoGenresEnum,
     FullAppInfoPlatformsEnum,
@@ -1325,6 +1331,7 @@ async def defeature_item_async(
 @same_doc_as(DeleteItem)
 def delete_item(
     item_id: str,
+    features_to_check: Optional[List[Union[str, DeleteItemFeaturesToCheckEnum]]] = None,
     force: Optional[bool] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -1356,6 +1363,8 @@ def delete_item(
 
         namespace: (namespace) REQUIRED str in path
 
+        features_to_check: (featuresToCheck) OPTIONAL List[Union[str, FeaturesToCheckEnum]] in query
+
         force: (force) OPTIONAL bool in query
 
         store_id: (storeId) OPTIONAL str in query
@@ -1364,6 +1373,8 @@ def delete_item(
         204: No Content - (Delete item successfully)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30335: Item [{itemId}] can't be deleted in non-forced mode if item has been published)
+
+        409: Conflict - ErrorEntity (30386: The item [{itemId}] is currently associated and cannot be deleted in namespace [{namespace}], Feature {featureName}, Module {moduleName}, and Reference ID {referenceId} are using this item ID)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -1371,6 +1382,7 @@ def delete_item(
             return None, error
     request = DeleteItem.create(
         item_id=item_id,
+        features_to_check=features_to_check,
         force=force,
         store_id=store_id,
         namespace=namespace,
@@ -1381,6 +1393,7 @@ def delete_item(
 @same_doc_as(DeleteItem)
 async def delete_item_async(
     item_id: str,
+    features_to_check: Optional[List[Union[str, DeleteItemFeaturesToCheckEnum]]] = None,
     force: Optional[bool] = None,
     store_id: Optional[str] = None,
     namespace: Optional[str] = None,
@@ -1412,6 +1425,8 @@ async def delete_item_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        features_to_check: (featuresToCheck) OPTIONAL List[Union[str, FeaturesToCheckEnum]] in query
+
         force: (force) OPTIONAL bool in query
 
         store_id: (storeId) OPTIONAL str in query
@@ -1420,6 +1435,8 @@ async def delete_item_async(
         204: No Content - (Delete item successfully)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30335: Item [{itemId}] can't be deleted in non-forced mode if item has been published)
+
+        409: Conflict - ErrorEntity (30386: The item [{itemId}] is currently associated and cannot be deleted in namespace [{namespace}], Feature {featureName}, Module {moduleName}, and Reference ID {referenceId} are using this item ID)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -1427,6 +1444,7 @@ async def delete_item_async(
             return None, error
     request = DeleteItem.create(
         item_id=item_id,
+        features_to_check=features_to_check,
         force=force,
         store_id=store_id,
         namespace=namespace,
@@ -1510,6 +1528,7 @@ async def delete_item_type_config_async(
 def disable_item(
     item_id: str,
     store_id: str,
+    body: Optional[ChangeStatusItemRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1534,6 +1553,8 @@ def disable_item(
 
         securities: [BEARER_AUTH]
 
+        body: (body) OPTIONAL ChangeStatusItemRequest in body
+
         item_id: (itemId) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
@@ -1545,7 +1566,7 @@ def disable_item(
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30387: The item [{itemId}] is currently associated and cannot be disabled in namespace [{namespace}], Feature {featureName}, Module {moduleName}, and Reference ID {referenceId} are using this item ID)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -1554,6 +1575,7 @@ def disable_item(
     request = DisableItem.create(
         item_id=item_id,
         store_id=store_id,
+        body=body,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1563,6 +1585,7 @@ def disable_item(
 async def disable_item_async(
     item_id: str,
     store_id: str,
+    body: Optional[ChangeStatusItemRequest] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1587,6 +1610,8 @@ async def disable_item_async(
 
         securities: [BEARER_AUTH]
 
+        body: (body) OPTIONAL ChangeStatusItemRequest in body
+
         item_id: (itemId) REQUIRED str in path
 
         namespace: (namespace) REQUIRED str in path
@@ -1598,7 +1623,7 @@ async def disable_item_async(
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
 
-        409: Conflict - ErrorEntity (30173: Published store can't modify content)
+        409: Conflict - ErrorEntity (30173: Published store can't modify content | 30387: The item [{itemId}] is currently associated and cannot be disabled in namespace [{namespace}], Feature {featureName}, Module {moduleName}, and Reference ID {referenceId} are using this item ID)
     """
     if namespace is None:
         namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
@@ -1607,6 +1632,7 @@ async def disable_item_async(
     request = DisableItem.create(
         item_id=item_id,
         store_id=store_id,
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -4763,6 +4789,116 @@ async def public_validate_item_purchase_condition_async(
             return None, error
     request = PublicValidateItemPurchaseCondition.create(
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(QueryItemReferences)
+def query_item_references(
+    item_id: str,
+    features_to_check: Optional[
+        List[Union[str, QueryItemReferencesFeaturesToCheckEnum]]
+    ] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get item references (queryItemReferences)
+
+    This API is used to get references for an item
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/references
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        features_to_check: (featuresToCheck) OPTIONAL List[Union[str, FeaturesToCheckEnum]] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ItemDependency (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = QueryItemReferences.create(
+        item_id=item_id,
+        features_to_check=features_to_check,
+        store_id=store_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryItemReferences)
+async def query_item_references_async(
+    item_id: str,
+    features_to_check: Optional[
+        List[Union[str, QueryItemReferencesFeaturesToCheckEnum]]
+    ] = None,
+    store_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get item references (queryItemReferences)
+
+    This API is used to get references for an item
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/items/{itemId}/references
+
+        method: GET
+
+        tags: ["Item"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        item_id: (itemId) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        features_to_check: (featuresToCheck) OPTIONAL List[Union[str, FeaturesToCheckEnum]] in query
+
+        store_id: (storeId) OPTIONAL str in query
+
+    Responses:
+        200: OK - ItemDependency (successful operation)
+
+        404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = QueryItemReferences.create(
+        item_id=item_id,
+        features_to_check=features_to_check,
+        store_id=store_id,
         namespace=namespace,
     )
     return await run_request_async(

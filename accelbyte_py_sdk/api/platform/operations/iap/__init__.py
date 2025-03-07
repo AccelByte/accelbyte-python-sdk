@@ -8,12 +8,18 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.3.0"
+__version__ = "6.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
+from .admin_get_iap_order_line_items import AdminGetIAPOrderLineItems
+from .admin_get_steam_job_info import AdminGetSteamJobInfo
+from .admin_refund_iap_order import AdminRefundIAPOrder
+from .admin_reset_steam_job_time import AdminResetSteamJobTime
+from .admin_sync_steam_abnorm_be4791 import AdminSyncSteamAbnormalTransaction
+from .admin_sync_steam_iap_by_48029c import AdminSyncSteamIAPByTransaction
 from .delete_apple_iap_config import DeleteAppleIAPConfig
 from .delete_epic_games_iap_config import DeleteEpicGamesIAPConfig
 from .delete_google_iap_config import DeleteGoogleIAPConfig
@@ -43,7 +49,12 @@ from .public_reconcile_play_s_7ac4de import PublicReconcilePlayStationStore
 from .public_reconcile_play_s_6be6c0 import (
     PublicReconcilePlayStationStoreWithMultipleServiceLabels,
 )
+from .query_abnormal_transactions import QueryAbnormalTransactions
 from .query_all_user_iap_orders import QueryAllUserIAPOrders
+from .query_steam_report_histories import QuerySteamReportHistories
+from .query_steam_report_histories import (
+    ProcessStatusEnum as QuerySteamReportHistoriesProcessStatusEnum,
+)
 from .query_user_iap_consume_history import QueryUserIAPConsumeHistory
 from .query_user_iap_consume_history import (
     StatusEnum as QueryUserIAPConsumeHistoryStatusEnum,
@@ -56,6 +67,8 @@ from .query_user_iap_orders import (
 )
 from .sync_epic_games_inventory import SyncEpicGamesInventory
 from .sync_oculus_consumable__f6c91d import SyncOculusConsumableEntitlements
+from .sync_steam_abnormal_tra_4db4c2 import SyncSteamAbnormalTransaction
+from .sync_steam_iap_by_transaction import SyncSteamIAPByTransaction
 from .sync_steam_inventory import SyncSteamInventory
 from .sync_twitch_drops_entitlement import SyncTwitchDropsEntitlement
 from .sync_twitch_drops_entit_0c09ca import SyncTwitchDropsEntitlement1

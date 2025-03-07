@@ -95,6 +95,8 @@ class ModelUserResponseV3(Model):
 
         skip_login_queue: (skipLoginQueue) OPTIONAL bool
 
+        tags: (tags) OPTIONAL List[str]
+
         test_account: (testAccount) OPTIONAL bool
 
         unique_display_name: (uniqueDisplayName) OPTIONAL str
@@ -133,6 +135,7 @@ class ModelUserResponseV3(Model):
     platform_infos: List[ModelUserPlatformInfo]  # OPTIONAL
     platform_user_id: str  # OPTIONAL
     skip_login_queue: bool  # OPTIONAL
+    tags: List[str]  # OPTIONAL
     test_account: bool  # OPTIONAL
     unique_display_name: str  # OPTIONAL
     user_name: str  # OPTIONAL
@@ -263,6 +266,10 @@ class ModelUserResponseV3(Model):
 
     def with_skip_login_queue(self, value: bool) -> ModelUserResponseV3:
         self.skip_login_queue = value
+        return self
+
+    def with_tags(self, value: List[str]) -> ModelUserResponseV3:
+        self.tags = value
         return self
 
     def with_test_account(self, value: bool) -> ModelUserResponseV3:
@@ -409,6 +416,10 @@ class ModelUserResponseV3(Model):
             result["skipLoginQueue"] = bool(self.skip_login_queue)
         elif include_empty:
             result["skipLoginQueue"] = False
+        if hasattr(self, "tags"):
+            result["tags"] = [str(i0) for i0 in self.tags]
+        elif include_empty:
+            result["tags"] = []
         if hasattr(self, "test_account"):
             result["testAccount"] = bool(self.test_account)
         elif include_empty:
@@ -459,6 +470,7 @@ class ModelUserResponseV3(Model):
         platform_infos: Optional[List[ModelUserPlatformInfo]] = None,
         platform_user_id: Optional[str] = None,
         skip_login_queue: Optional[bool] = None,
+        tags: Optional[List[str]] = None,
         test_account: Optional[bool] = None,
         unique_display_name: Optional[str] = None,
         user_name: Optional[str] = None,
@@ -506,6 +518,8 @@ class ModelUserResponseV3(Model):
             instance.platform_user_id = platform_user_id
         if skip_login_queue is not None:
             instance.skip_login_queue = skip_login_queue
+        if tags is not None:
+            instance.tags = tags
         if test_account is not None:
             instance.test_account = test_account
         if unique_display_name is not None:
@@ -663,6 +677,10 @@ class ModelUserResponseV3(Model):
             instance.skip_login_queue = bool(dict_["skipLoginQueue"])
         elif include_empty:
             instance.skip_login_queue = False
+        if "tags" in dict_ and dict_["tags"] is not None:
+            instance.tags = [str(i0) for i0 in dict_["tags"]]
+        elif include_empty:
+            instance.tags = []
         if "testAccount" in dict_ and dict_["testAccount"] is not None:
             instance.test_account = bool(dict_["testAccount"])
         elif include_empty:
@@ -745,6 +763,7 @@ class ModelUserResponseV3(Model):
             "platformInfos": "platform_infos",
             "platformUserId": "platform_user_id",
             "skipLoginQueue": "skip_login_queue",
+            "tags": "tags",
             "testAccount": "test_account",
             "uniqueDisplayName": "unique_display_name",
             "userName": "user_name",
@@ -782,6 +801,7 @@ class ModelUserResponseV3(Model):
             "platformInfos": False,
             "platformUserId": False,
             "skipLoginQueue": False,
+            "tags": False,
             "testAccount": False,
             "uniqueDisplayName": False,
             "userName": False,

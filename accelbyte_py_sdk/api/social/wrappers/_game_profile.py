@@ -27,6 +27,7 @@ from ....core import HeaderStr
 from ....core import get_namespace as get_services_namespace
 from ....core import run_request
 from ....core import run_request_async
+from ....core import deprecated
 from ....core import same_doc_as
 
 from ..models import Attribute
@@ -49,6 +50,7 @@ from ..operations.game_profile import PublicUpdateAttribute
 from ..operations.game_profile import PublicUpdateProfile
 
 
+@deprecated
 @same_doc_as(GetProfile)
 def get_profile(
     profile_id: str,
@@ -59,6 +61,9 @@ def get_profile(
 ):
     """Returns profile for a user (getProfile)
 
+    ## The endpoint is going to be deprecated
+
+
     Returns profile for a user.
     Other detail info:
 
@@ -106,6 +111,7 @@ def get_profile(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetProfile)
 async def get_profile_async(
     profile_id: str,
@@ -116,6 +122,9 @@ async def get_profile_async(
 ):
     """Returns profile for a user (getProfile)
 
+    ## The endpoint is going to be deprecated
+
+
     Returns profile for a user.
     Other detail info:
 
@@ -165,6 +174,7 @@ async def get_profile_async(
     )
 
 
+@deprecated
 @same_doc_as(GetUserProfiles)
 def get_user_profiles(
     user_id: str,
@@ -173,6 +183,9 @@ def get_user_profiles(
     **kwargs
 ):
     """Returns all profiles' header for a user (getUserProfiles)
+
+    ## The endpoint is going to be deprecated
+
 
     Returns all profiles' header for a user.
     Other detail info:
@@ -216,6 +229,7 @@ def get_user_profiles(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(GetUserProfiles)
 async def get_user_profiles_async(
     user_id: str,
@@ -224,6 +238,9 @@ async def get_user_profiles_async(
     **kwargs
 ):
     """Returns all profiles' header for a user (getUserProfiles)
+
+    ## The endpoint is going to be deprecated
+
 
     Returns all profiles' header for a user.
     Other detail info:
@@ -269,6 +286,7 @@ async def get_user_profiles_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicCreateProfile)
 def public_create_profile(
     user_id: str,
@@ -279,6 +297,9 @@ def public_create_profile(
 ):
     """Create a new profile for user (publicCreateProfile)
 
+    ## The endpoint is going to be deprecated
+
+
     Create new profile for user.
     Other detail info:
 
@@ -329,6 +350,7 @@ def public_create_profile(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicCreateProfile)
 async def public_create_profile_async(
     user_id: str,
@@ -339,6 +361,9 @@ async def public_create_profile_async(
 ):
     """Create a new profile for user (publicCreateProfile)
 
+    ## The endpoint is going to be deprecated
+
+
     Create new profile for user.
     Other detail info:
 
@@ -391,6 +416,7 @@ async def public_create_profile_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicDeleteProfile)
 def public_delete_profile(
     profile_id: str,
@@ -401,6 +427,9 @@ def public_delete_profile(
 ):
     """Deletes game profile (publicDeleteProfile)
 
+    ## The endpoint is going to be deprecated
+
+
     Deletes game profile.
 
     Properties:
@@ -445,6 +474,7 @@ def public_delete_profile(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicDeleteProfile)
 async def public_delete_profile_async(
     profile_id: str,
@@ -455,6 +485,9 @@ async def public_delete_profile_async(
 ):
     """Deletes game profile (publicDeleteProfile)
 
+    ## The endpoint is going to be deprecated
+
+
     Deletes game profile.
 
     Properties:
@@ -501,6 +534,7 @@ async def public_delete_profile_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetProfile)
 def public_get_profile(
     profile_id: str,
@@ -510,6 +544,9 @@ def public_get_profile(
     **kwargs
 ):
     """Returns profile for a user (publicGetProfile)
+
+    ## The endpoint is going to be deprecated
+
 
     Returns profile for a user.
     Other detail info:
@@ -558,6 +595,7 @@ def public_get_profile(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetProfile)
 async def public_get_profile_async(
     profile_id: str,
@@ -567,6 +605,9 @@ async def public_get_profile_async(
     **kwargs
 ):
     """Returns profile for a user (publicGetProfile)
+
+    ## The endpoint is going to be deprecated
+
 
     Returns profile for a user.
     Other detail info:
@@ -617,6 +658,7 @@ async def public_get_profile_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetProfileAttribute)
 def public_get_profile_attribute(
     attribute_name: str,
@@ -628,6 +670,9 @@ def public_get_profile_attribute(
 ):
     """Returns game profile attribute (publicGetProfileAttribute)
 
+    ## The endpoint is going to be deprecated
+
+
     Returns game profile attribute.
     Other detail info:
 
@@ -678,6 +723,7 @@ def public_get_profile_attribute(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetProfileAttribute)
 async def public_get_profile_attribute_async(
     attribute_name: str,
@@ -689,6 +735,9 @@ async def public_get_profile_attribute_async(
 ):
     """Returns game profile attribute (publicGetProfileAttribute)
 
+    ## The endpoint is going to be deprecated
+
+
     Returns game profile attribute.
     Other detail info:
 
@@ -741,6 +790,7 @@ async def public_get_profile_attribute_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetUserGameProfiles)
 def public_get_user_game_profiles(
     user_ids: List[str],
@@ -750,6 +800,9 @@ def public_get_user_game_profiles(
 ):
     """Returns all profiles for specified users (publicGetUserGameProfiles)
 
+    ## The endpoint is going to be deprecated
+
+
     Returns all profiles for specified users.
     Other detail info:
 
@@ -794,6 +847,7 @@ def public_get_user_game_profiles(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetUserGameProfiles)
 async def public_get_user_game_profiles_async(
     user_ids: List[str],
@@ -803,6 +857,9 @@ async def public_get_user_game_profiles_async(
 ):
     """Returns all profiles for specified users (publicGetUserGameProfiles)
 
+    ## The endpoint is going to be deprecated
+
+
     Returns all profiles for specified users.
     Other detail info:
 
@@ -849,6 +906,7 @@ async def public_get_user_game_profiles_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicGetUserProfiles)
 def public_get_user_profiles(
     user_id: str,
@@ -857,6 +915,9 @@ def public_get_user_profiles(
     **kwargs
 ):
     """Returns all profiles' header for a user (publicGetUserProfiles)
+
+    ## The endpoint is going to be deprecated
+
 
     Returns all profiles' header for a user.
     Other detail info:
@@ -900,6 +961,7 @@ def public_get_user_profiles(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicGetUserProfiles)
 async def public_get_user_profiles_async(
     user_id: str,
@@ -908,6 +970,9 @@ async def public_get_user_profiles_async(
     **kwargs
 ):
     """Returns all profiles' header for a user (publicGetUserProfiles)
+
+    ## The endpoint is going to be deprecated
+
 
     Returns all profiles' header for a user.
     Other detail info:
@@ -953,6 +1018,7 @@ async def public_get_user_profiles_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicUpdateAttribute)
 def public_update_attribute(
     attribute_name: str,
@@ -965,6 +1031,9 @@ def public_update_attribute(
 ):
     """Updates game profile attribute (publicUpdateAttribute)
 
+    ## The endpoint is going to be deprecated
+
+
     Updates game profile attribute, returns updated profile.
     Other detail info:
 
@@ -1022,6 +1091,7 @@ def public_update_attribute(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicUpdateAttribute)
 async def public_update_attribute_async(
     attribute_name: str,
@@ -1033,6 +1103,9 @@ async def public_update_attribute_async(
     **kwargs
 ):
     """Updates game profile attribute (publicUpdateAttribute)
+
+    ## The endpoint is going to be deprecated
+
 
     Updates game profile attribute, returns updated profile.
     Other detail info:
@@ -1093,6 +1166,7 @@ async def public_update_attribute_async(
     )
 
 
+@deprecated
 @same_doc_as(PublicUpdateProfile)
 def public_update_profile(
     profile_id: str,
@@ -1103,6 +1177,9 @@ def public_update_profile(
     **kwargs
 ):
     """Updates user game profile (publicUpdateProfile)
+
+    ## The endpoint is going to be deprecated
+
 
     Updates user game profile, returns updated profile.
     Other detail info:
@@ -1158,6 +1235,7 @@ def public_update_profile(
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
 
 
+@deprecated
 @same_doc_as(PublicUpdateProfile)
 async def public_update_profile_async(
     profile_id: str,
@@ -1168,6 +1246,9 @@ async def public_update_profile_async(
     **kwargs
 ):
     """Updates user game profile (publicUpdateProfile)
+
+    ## The endpoint is going to be deprecated
+
 
     Updates user game profile, returns updated profile.
     Other detail info:

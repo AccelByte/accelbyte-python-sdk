@@ -31,6 +31,7 @@ from ..api.match2.models import ApiBackfillCreateResponse
 from ..api.match2.models import ApiBackfillGetResponse
 from ..api.match2.models import ApiBackfillProposalResponse
 from ..api.match2.models import ApiExternalFailureMetricRecord
+from ..api.match2.models import ApiListBackfillQueryResponse
 from ..api.match2.models import ApiListEnvironmentVariablesResponse
 from ..api.match2.models import ApiListMatchFunctionsResponse
 from ..api.match2.models import ApiListMatchPoolTicketsResponse
@@ -130,6 +131,13 @@ def create_api_external_failure_metric_record_example() -> (
 ):
     instance = ApiExternalFailureMetricRecord()
     instance.type_ = randomize()
+    return instance
+
+
+def create_api_list_backfill_query_response_example() -> ApiListBackfillQueryResponse:
+    instance = ApiListBackfillQueryResponse()
+    instance.data = [create_api_backfill_get_response_example()]
+    instance.pagination = create_models_pagination_example()
     return instance
 
 

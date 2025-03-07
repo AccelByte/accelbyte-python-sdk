@@ -55,6 +55,8 @@ class ApiArtifactResponse(Model):
         size_bytes: (sizeBytes) REQUIRED int
 
         status: (status) REQUIRED str
+
+        reason: (reason) OPTIONAL str
     """
 
     # region fields
@@ -71,6 +73,7 @@ class ApiArtifactResponse(Model):
     region: str  # REQUIRED
     size_bytes: int  # REQUIRED
     status: str  # REQUIRED
+    reason: str  # OPTIONAL
 
     # endregion fields
 
@@ -122,6 +125,10 @@ class ApiArtifactResponse(Model):
 
     def with_status(self, value: str) -> ApiArtifactResponse:
         self.status = value
+        return self
+
+    def with_reason(self, value: str) -> ApiArtifactResponse:
+        self.reason = value
         return self
 
     # endregion with_x methods
@@ -178,6 +185,10 @@ class ApiArtifactResponse(Model):
             result["status"] = str(self.status)
         elif include_empty:
             result["status"] = ""
+        if hasattr(self, "reason"):
+            result["reason"] = str(self.reason)
+        elif include_empty:
+            result["reason"] = ""
         return result
 
     # endregion to methods
@@ -199,6 +210,7 @@ class ApiArtifactResponse(Model):
         region: str,
         size_bytes: int,
         status: str,
+        reason: Optional[str] = None,
         **kwargs,
     ) -> ApiArtifactResponse:
         instance = cls()
@@ -214,6 +226,8 @@ class ApiArtifactResponse(Model):
         instance.region = region
         instance.size_bytes = size_bytes
         instance.status = status
+        if reason is not None:
+            instance.reason = reason
         return instance
 
     @classmethod
@@ -271,6 +285,10 @@ class ApiArtifactResponse(Model):
             instance.status = str(dict_["status"])
         elif include_empty:
             instance.status = ""
+        if "reason" in dict_ and dict_["reason"] is not None:
+            instance.reason = str(dict_["reason"])
+        elif include_empty:
+            instance.reason = ""
         return instance
 
     @classmethod
@@ -324,6 +342,7 @@ class ApiArtifactResponse(Model):
             "region": "region",
             "sizeBytes": "size_bytes",
             "status": "status",
+            "reason": "reason",
         }
 
     @staticmethod
@@ -341,6 +360,7 @@ class ApiArtifactResponse(Model):
             "region": True,
             "sizeBytes": True,
             "status": True,
+            "reason": False,
         }
 
     # endregion static methods

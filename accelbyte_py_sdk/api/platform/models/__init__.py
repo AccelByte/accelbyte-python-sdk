@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.3.0"
+__version__ = "6.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -147,12 +147,22 @@ from .catalog_change_info import (
 from .catalog_change_paging_result import CatalogChangePagingResult
 from .catalog_change_statistics import CatalogChangeStatistics
 from .catalog_config_info import CatalogConfigInfo
+from .catalog_config_info import (
+    ItemDeletionCheckConfigEnum as CatalogConfigInfoItemDeletionCheckConfigEnum,
+)
 from .catalog_config_update import CatalogConfigUpdate
+from .catalog_config_update import (
+    ItemDeletionCheckConfigEnum as CatalogConfigUpdateItemDeletionCheckConfigEnum,
+)
 from .catalog_definition_info import CatalogDefinitionInfo
 from .catalog_definition_info import ItemTypeEnum as CatalogDefinitionInfoItemTypeEnum
 from .category_create import CategoryCreate
 from .category_info import CategoryInfo
 from .category_update import CategoryUpdate
+from .change_status_item_request import ChangeStatusItemRequest
+from .change_status_item_request import (
+    FeaturesToCheckEnum as ChangeStatusItemRequestFeaturesToCheckEnum,
+)
 from .checkout_config import CheckoutConfig
 from .clawback_info import ClawbackInfo
 from .clawback_info import (
@@ -349,6 +359,8 @@ from .external_payment_order_create import ExternalPaymentOrderCreate
 from .external_payment_order_create import (
     ItemTypeEnum as ExternalPaymentOrderCreateItemTypeEnum,
 )
+from .feature_reference import FeatureReference
+from .feature_reference import FeatureEnum as FeatureReferenceFeatureEnum
 from .field_validation_error import FieldValidationError
 from .fixed_period_rotation_config import FixedPeriodRotationConfig
 from .fixed_period_rotation_config import (
@@ -459,9 +471,18 @@ from .iap_order_consume_detail_info import (
 from .iap_order_info import IAPOrderInfo
 from .iap_order_info import (
     StatusEnum as IAPOrderInfoStatusEnum,
+    SyncModeEnum as IAPOrderInfoSyncModeEnum,
     TypeEnum as IAPOrderInfoTypeEnum,
 )
+from .iap_order_line_item_info import IAPOrderLineItemInfo
+from .iap_order_line_item_info import (
+    ItemIdentityTypeEnum as IAPOrderLineItemInfoItemIdentityTypeEnum,
+    PlatformEnum as IAPOrderLineItemInfoPlatformEnum,
+    StatusEnum as IAPOrderLineItemInfoStatusEnum,
+)
 from .iap_order_paging_sliced_result import IAPOrderPagingSlicedResult
+from .iap_order_short_info import IAPOrderShortInfo
+from .iap_order_short_info import StatusEnum as IAPOrderShortInfoStatusEnum
 from .image import Image
 from .import_error_details import ImportErrorDetails
 from .import_store_app_info import ImportStoreAppInfo
@@ -492,6 +513,7 @@ from .item_create import (
     SeasonTypeEnum as ItemCreateSeasonTypeEnum,
     StatusEnum as ItemCreateStatusEnum,
 )
+from .item_dependency import ItemDependency
 from .item_dynamic_data_info import ItemDynamicDataInfo
 from .item_id import ItemId
 from .item_id import StatusEnum as ItemIdStatusEnum
@@ -514,6 +536,7 @@ from .item_purchase_condition_validate_request import (
     ItemPurchaseConditionValidateRequest,
 )
 from .item_purchase_condition_validate_result import ItemPurchaseConditionValidateResult
+from .item_reference import ItemReference
 from .item_return_request import ItemReturnRequest
 from .item_revocation import ItemRevocation
 from .item_revocation import (
@@ -571,6 +594,8 @@ from .mock_iap_receipt import (
     ItemIdentityTypeEnum as MockIAPReceiptItemIdentityTypeEnum,
     TypeEnum as MockIAPReceiptTypeEnum,
 )
+from .module_reference import ModuleReference
+from .module_reference import ModuleEnum as ModuleReferenceModuleEnum
 from .neon_pay_config import NeonPayConfig
 from .notification_paging_sliced_result import NotificationPagingSlicedResult
 from .notification_process_result import NotificationProcessResult
@@ -800,6 +825,8 @@ from .region_data_item_dto import CurrencyTypeEnum as RegionDataItemDTOCurrencyT
 from .request_history import RequestHistory
 from .request_history import StatusEnum as RequestHistoryStatusEnum
 from .requirement import Requirement
+from .reset_job_request import ResetJobRequest
+from .reset_job_request import EnvEnum as ResetJobRequestEnvEnum
 from .revocation_config_info import RevocationConfigInfo
 from .revocation_config_update import RevocationConfigUpdate
 from .revocation_error import RevocationError
@@ -894,12 +921,31 @@ from .stackable_entitlement_info import (
     StatusEnum as StackableEntitlementInfoStatusEnum,
     TypeEnum as StackableEntitlementInfoTypeEnum,
 )
+from .steam_abnormal_transaction_paging_sliced_result import (
+    SteamAbnormalTransactionPagingSlicedResult,
+)
 from .steam_achievement import SteamAchievement
 from .steam_achievement_update_request import SteamAchievementUpdateRequest
 from .steam_dlc_sync_request import SteamDLCSyncRequest
 from .steam_iap_config import SteamIAPConfig
+from .steam_iap_config import (
+    EnvEnum as SteamIAPConfigEnvEnum,
+    SyncModeEnum as SteamIAPConfigSyncModeEnum,
+)
 from .steam_iap_config_info import SteamIAPConfigInfo
+from .steam_iap_config_info import (
+    EnvEnum as SteamIAPConfigInfoEnvEnum,
+    SyncModeEnum as SteamIAPConfigInfoSyncModeEnum,
+)
 from .steam_iap_config_request import SteamIAPConfigRequest
+from .steam_iap_config_request import (
+    EnvEnum as SteamIAPConfigRequestEnvEnum,
+    SyncModeEnum as SteamIAPConfigRequestSyncModeEnum,
+)
+from .steam_report_info_paging_sliced_result import SteamReportInfoPagingSlicedResult
+from .steam_report_job_info import SteamReportJobInfo
+from .steam_report_job_info import EnvEnum as SteamReportJobInfoEnvEnum
+from .steam_sync_by_transaction_request import SteamSyncByTransactionRequest
 from .steam_sync_request import SteamSyncRequest
 from .store_backup_info import StoreBackupInfo
 from .store_create import StoreCreate

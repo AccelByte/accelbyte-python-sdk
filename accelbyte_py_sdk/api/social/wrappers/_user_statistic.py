@@ -4720,24 +4720,25 @@ async def public_list_my_stat_items_async(
 @same_doc_as(PublicQueryUserStatItems)
 def public_query_user_stat_items(
     user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
-    stat_codes: Optional[str] = None,
-    tags: Optional[str] = None,
+    additional_key: Optional[str] = None,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Public list user's statItems (publicQueryUserStatItems)
 
-    Public list all statItems by pagination.
-    Other detail info:
+    Public list all statItems of user.
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
 
+    Other detail info:
       *  Returns : stat items
 
     Properties:
-        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
 
         method: GET
 
@@ -4753,22 +4754,22 @@ def public_query_user_stat_items(
 
         user_id: (userId) REQUIRED str in path
 
-        limit: (limit) OPTIONAL int in query
+        additional_key: (additionalKey) OPTIONAL str in query
 
-        offset: (offset) OPTIONAL int in query
+        stat_codes: (statCodes) OPTIONAL List[str] in query
 
-        sort_by: (sortBy) OPTIONAL str in query
-
-        stat_codes: (statCodes) OPTIONAL str in query
-
-        tags: (tags) OPTIONAL str in query
+        tags: (tags) OPTIONAL List[str] in query
 
     Responses:
-        200: OK - UserStatItemPagingSlicedResult (successful operation)
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
 
         401: Unauthorized - ErrorEntity (20001: Unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -4780,9 +4781,7 @@ def public_query_user_stat_items(
             return None, error
     request = PublicQueryUserStatItems.create(
         user_id=user_id,
-        limit=limit,
-        offset=offset,
-        sort_by=sort_by,
+        additional_key=additional_key,
         stat_codes=stat_codes,
         tags=tags,
         namespace=namespace,
@@ -4793,24 +4792,25 @@ def public_query_user_stat_items(
 @same_doc_as(PublicQueryUserStatItems)
 async def public_query_user_stat_items_async(
     user_id: str,
-    limit: Optional[int] = None,
-    offset: Optional[int] = None,
-    sort_by: Optional[str] = None,
-    stat_codes: Optional[str] = None,
-    tags: Optional[str] = None,
+    additional_key: Optional[str] = None,
+    stat_codes: Optional[List[str]] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Public list user's statItems (publicQueryUserStatItems)
 
-    Public list all statItems by pagination.
-    Other detail info:
+    Public list all statItems of user.
+    NOTE:
+    * If stat code does not exist, will ignore this stat code.
+    * If stat item does not exist, will return default value
 
+    Other detail info:
       *  Returns : stat items
 
     Properties:
-        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
 
         method: GET
 
@@ -4826,22 +4826,22 @@ async def public_query_user_stat_items_async(
 
         user_id: (userId) REQUIRED str in path
 
-        limit: (limit) OPTIONAL int in query
+        additional_key: (additionalKey) OPTIONAL str in query
 
-        offset: (offset) OPTIONAL int in query
+        stat_codes: (statCodes) OPTIONAL List[str] in query
 
-        sort_by: (sortBy) OPTIONAL str in query
-
-        stat_codes: (statCodes) OPTIONAL str in query
-
-        tags: (tags) OPTIONAL str in query
+        tags: (tags) OPTIONAL List[str] in query
 
     Responses:
-        200: OK - UserStatItemPagingSlicedResult (successful operation)
+        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
+
+        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
 
         401: Unauthorized - ErrorEntity (20001: Unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
+
+        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -4853,9 +4853,7 @@ async def public_query_user_stat_items_async(
             return None, error
     request = PublicQueryUserStatItems.create(
         user_id=user_id,
-        limit=limit,
-        offset=offset,
-        sort_by=sort_by,
+        additional_key=additional_key,
         stat_codes=stat_codes,
         tags=tags,
         namespace=namespace,
@@ -4868,25 +4866,24 @@ async def public_query_user_stat_items_async(
 @same_doc_as(PublicQueryUserStatItems1)
 def public_query_user_stat_items_1(
     user_id: str,
-    additional_key: Optional[str] = None,
-    stat_codes: Optional[List[str]] = None,
-    tags: Optional[List[str]] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    stat_codes: Optional[str] = None,
+    tags: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Public list user's statItems (publicQueryUserStatItems_1)
 
-    Public list all statItems of user.
-    NOTE:
-    * If stat code does not exist, will ignore this stat code.
-    * If stat item does not exist, will return default value
-
+    Public list all statItems by pagination.
     Other detail info:
+
       *  Returns : stat items
 
     Properties:
-        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems
 
         method: GET
 
@@ -4902,22 +4899,22 @@ def public_query_user_stat_items_1(
 
         user_id: (userId) REQUIRED str in path
 
-        additional_key: (additionalKey) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
-        stat_codes: (statCodes) OPTIONAL List[str] in query
+        offset: (offset) OPTIONAL int in query
 
-        tags: (tags) OPTIONAL List[str] in query
+        sort_by: (sortBy) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
 
     Responses:
-        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
-
-        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+        200: OK - UserStatItemPagingSlicedResult (successful operation)
 
         401: Unauthorized - ErrorEntity (20001: Unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
-
-        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -4929,7 +4926,9 @@ def public_query_user_stat_items_1(
             return None, error
     request = PublicQueryUserStatItems1.create(
         user_id=user_id,
-        additional_key=additional_key,
+        limit=limit,
+        offset=offset,
+        sort_by=sort_by,
         stat_codes=stat_codes,
         tags=tags,
         namespace=namespace,
@@ -4940,25 +4939,24 @@ def public_query_user_stat_items_1(
 @same_doc_as(PublicQueryUserStatItems1)
 async def public_query_user_stat_items_1_async(
     user_id: str,
-    additional_key: Optional[str] = None,
-    stat_codes: Optional[List[str]] = None,
-    tags: Optional[List[str]] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    sort_by: Optional[str] = None,
+    stat_codes: Optional[str] = None,
+    tags: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Public list user's statItems (publicQueryUserStatItems_1)
 
-    Public list all statItems of user.
-    NOTE:
-    * If stat code does not exist, will ignore this stat code.
-    * If stat item does not exist, will return default value
-
+    Public list all statItems by pagination.
     Other detail info:
+
       *  Returns : stat items
 
     Properties:
-        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+        url: /social/v1/public/namespaces/{namespace}/users/{userId}/statitems
 
         method: GET
 
@@ -4974,22 +4972,22 @@ async def public_query_user_stat_items_1_async(
 
         user_id: (userId) REQUIRED str in path
 
-        additional_key: (additionalKey) OPTIONAL str in query
+        limit: (limit) OPTIONAL int in query
 
-        stat_codes: (statCodes) OPTIONAL List[str] in query
+        offset: (offset) OPTIONAL int in query
 
-        tags: (tags) OPTIONAL List[str] in query
+        sort_by: (sortBy) OPTIONAL str in query
+
+        stat_codes: (statCodes) OPTIONAL str in query
+
+        tags: (tags) OPTIONAL str in query
 
     Responses:
-        200: OK - List[ADTOObjectForUserStatItemValue] (successful operation)
-
-        400: Bad Request - ErrorEntity (12223: Invalid stat codes in namespace [{namespace}]: [{statCodes}])
+        200: OK - UserStatItemPagingSlicedResult (successful operation)
 
         401: Unauthorized - ErrorEntity (20001: Unauthorized)
 
         403: Forbidden - ErrorEntity (20013: insufficient permission)
-
-        404: Not Found - ErrorEntity (12243: Stats cannot be found in namespace [{namespace}])
 
         422: Unprocessable Entity - ValidationErrorEntity (20002: validation error)
 
@@ -5001,7 +4999,9 @@ async def public_query_user_stat_items_1_async(
             return None, error
     request = PublicQueryUserStatItems1.create(
         user_id=user_id,
-        additional_key=additional_key,
+        limit=limit,
+        offset=offset,
+        sort_by=sort_by,
         stat_codes=stat_codes,
         tags=tags,
         namespace=namespace,

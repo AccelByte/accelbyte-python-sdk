@@ -257,13 +257,20 @@ async def admin_get_matchmaking_detail_by_ticket_id_async(
 
 @same_doc_as(AdminQueryGameSessionDetail)
 def admin_query_game_session_detail(
+    completed_only: Optional[str] = None,
+    configuration_name: Optional[str] = None,
+    ds_pod_name: Optional[str] = None,
     end_date: Optional[str] = None,
     game_session_id: Optional[str] = None,
+    is_persistent: Optional[str] = None,
+    joinability: Optional[str] = None,
     limit: Optional[int] = None,
+    match_pool: Optional[str] = None,
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
     start_date: Optional[str] = None,
+    status_v2: Optional[str] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -288,11 +295,23 @@ def admin_query_game_session_detail(
 
         namespace: (namespace) REQUIRED str in path
 
+        completed_only: (completedOnly) OPTIONAL str in query
+
+        configuration_name: (configurationName) OPTIONAL str in query
+
+        ds_pod_name: (dsPodName) OPTIONAL str in query
+
         end_date: (endDate) OPTIONAL str in query
 
         game_session_id: (gameSessionID) OPTIONAL str in query
 
+        is_persistent: (isPersistent) OPTIONAL str in query
+
+        joinability: (joinability) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
+
+        match_pool: (matchPool) OPTIONAL str in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -301,6 +320,8 @@ def admin_query_game_session_detail(
         order_by: (orderBy) OPTIONAL str in query
 
         start_date: (startDate) OPTIONAL str in query
+
+        status_v2: (statusV2) OPTIONAL str in query
 
         user_id: (userID) OPTIONAL str in query
 
@@ -320,13 +341,20 @@ def admin_query_game_session_detail(
         if error:
             return None, error
     request = AdminQueryGameSessionDetail.create(
+        completed_only=completed_only,
+        configuration_name=configuration_name,
+        ds_pod_name=ds_pod_name,
         end_date=end_date,
         game_session_id=game_session_id,
+        is_persistent=is_persistent,
+        joinability=joinability,
         limit=limit,
+        match_pool=match_pool,
         offset=offset,
         order=order,
         order_by=order_by,
         start_date=start_date,
+        status_v2=status_v2,
         user_id=user_id,
         namespace=namespace,
     )
@@ -335,13 +363,20 @@ def admin_query_game_session_detail(
 
 @same_doc_as(AdminQueryGameSessionDetail)
 async def admin_query_game_session_detail_async(
+    completed_only: Optional[str] = None,
+    configuration_name: Optional[str] = None,
+    ds_pod_name: Optional[str] = None,
     end_date: Optional[str] = None,
     game_session_id: Optional[str] = None,
+    is_persistent: Optional[str] = None,
+    joinability: Optional[str] = None,
     limit: Optional[int] = None,
+    match_pool: Optional[str] = None,
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
     start_date: Optional[str] = None,
+    status_v2: Optional[str] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -366,11 +401,23 @@ async def admin_query_game_session_detail_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        completed_only: (completedOnly) OPTIONAL str in query
+
+        configuration_name: (configurationName) OPTIONAL str in query
+
+        ds_pod_name: (dsPodName) OPTIONAL str in query
+
         end_date: (endDate) OPTIONAL str in query
 
         game_session_id: (gameSessionID) OPTIONAL str in query
 
+        is_persistent: (isPersistent) OPTIONAL str in query
+
+        joinability: (joinability) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
+
+        match_pool: (matchPool) OPTIONAL str in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -379,6 +426,8 @@ async def admin_query_game_session_detail_async(
         order_by: (orderBy) OPTIONAL str in query
 
         start_date: (startDate) OPTIONAL str in query
+
+        status_v2: (statusV2) OPTIONAL str in query
 
         user_id: (userID) OPTIONAL str in query
 
@@ -398,13 +447,20 @@ async def admin_query_game_session_detail_async(
         if error:
             return None, error
     request = AdminQueryGameSessionDetail.create(
+        completed_only=completed_only,
+        configuration_name=configuration_name,
+        ds_pod_name=ds_pod_name,
         end_date=end_date,
         game_session_id=game_session_id,
+        is_persistent=is_persistent,
+        joinability=joinability,
         limit=limit,
+        match_pool=match_pool,
         offset=offset,
         order=order,
         order_by=order_by,
         start_date=start_date,
+        status_v2=status_v2,
         user_id=user_id,
         namespace=namespace,
     )
@@ -565,11 +621,15 @@ async def admin_query_matchmaking_detail_async(
 
 @same_doc_as(AdminQueryPartyDetail)
 def admin_query_party_detail(
+    end_date: Optional[str] = None,
+    joinability: Optional[str] = None,
+    leader_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
     party_id: Optional[str] = None,
+    start_date: Optional[str] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -594,6 +654,12 @@ def admin_query_party_detail(
 
         namespace: (namespace) REQUIRED str in path
 
+        end_date: (endDate) OPTIONAL str in query
+
+        joinability: (joinability) OPTIONAL str in query
+
+        leader_id: (leaderID) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -603,6 +669,8 @@ def admin_query_party_detail(
         order_by: (orderBy) OPTIONAL str in query
 
         party_id: (partyID) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
 
         user_id: (userID) OPTIONAL str in query
 
@@ -622,11 +690,15 @@ def admin_query_party_detail(
         if error:
             return None, error
     request = AdminQueryPartyDetail.create(
+        end_date=end_date,
+        joinability=joinability,
+        leader_id=leader_id,
         limit=limit,
         offset=offset,
         order=order,
         order_by=order_by,
         party_id=party_id,
+        start_date=start_date,
         user_id=user_id,
         namespace=namespace,
     )
@@ -635,11 +707,15 @@ def admin_query_party_detail(
 
 @same_doc_as(AdminQueryPartyDetail)
 async def admin_query_party_detail_async(
+    end_date: Optional[str] = None,
+    joinability: Optional[str] = None,
+    leader_id: Optional[str] = None,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
     party_id: Optional[str] = None,
+    start_date: Optional[str] = None,
     user_id: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -664,6 +740,12 @@ async def admin_query_party_detail_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        end_date: (endDate) OPTIONAL str in query
+
+        joinability: (joinability) OPTIONAL str in query
+
+        leader_id: (leaderID) OPTIONAL str in query
+
         limit: (limit) OPTIONAL int in query
 
         offset: (offset) OPTIONAL int in query
@@ -673,6 +755,8 @@ async def admin_query_party_detail_async(
         order_by: (orderBy) OPTIONAL str in query
 
         party_id: (partyID) OPTIONAL str in query
+
+        start_date: (startDate) OPTIONAL str in query
 
         user_id: (userID) OPTIONAL str in query
 
@@ -692,11 +776,15 @@ async def admin_query_party_detail_async(
         if error:
             return None, error
     request = AdminQueryPartyDetail.create(
+        end_date=end_date,
+        joinability=joinability,
+        leader_id=leader_id,
         limit=limit,
         offset=offset,
         order=order,
         order_by=order_by,
         party_id=party_id,
+        start_date=start_date,
         user_id=user_id,
         namespace=namespace,
     )

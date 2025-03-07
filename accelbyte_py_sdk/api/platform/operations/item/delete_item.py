@@ -28,8 +28,18 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ErrorEntity
+
+
+class FeaturesToCheckEnum(StrEnum):
+    CAMPAIGN = "CAMPAIGN"
+    CATALOG = "CATALOG"
+    DLC = "DLC"
+    ENTITLEMENT = "ENTITLEMENT"
+    IAP = "IAP"
+    REWARD = "REWARD"
 
 
 class DeleteItem(Operation):
@@ -58,6 +68,8 @@ class DeleteItem(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        features_to_check: (featuresToCheck) OPTIONAL List[Union[str, FeaturesToCheckEnum]] in query
+
         force: (force) OPTIONAL bool in query
 
         store_id: (storeId) OPTIONAL str in query
@@ -66,6 +78,8 @@ class DeleteItem(Operation):
         204: No Content - (Delete item successfully)
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30335: Item [{itemId}] can't be deleted in non-forced mode if item has been published)
+
+        409: Conflict - ErrorEntity (30386: The item [{itemId}] is currently associated and cannot be deleted in namespace [{namespace}], Feature {featureName}, Module {moduleName}, and Reference ID {referenceId} are using this item ID)
     """
 
     # region fields
@@ -79,6 +93,7 @@ class DeleteItem(Operation):
 
     item_id: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
+    features_to_check: List[Union[str, FeaturesToCheckEnum]]  # OPTIONAL in [query]
     force: bool  # OPTIONAL in [query]
     store_id: str  # OPTIONAL in [query]
 
@@ -134,6 +149,8 @@ class DeleteItem(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "features_to_check"):
+            result["featuresToCheck"] = self.features_to_check
         if hasattr(self, "force"):
             result["force"] = self.force
         if hasattr(self, "store_id"):
@@ -154,6 +171,12 @@ class DeleteItem(Operation):
 
     def with_namespace(self, value: str) -> DeleteItem:
         self.namespace = value
+        return self
+
+    def with_features_to_check(
+        self, value: List[Union[str, FeaturesToCheckEnum]]
+    ) -> DeleteItem:
+        self.features_to_check = value
         return self
 
     def with_force(self, value: bool) -> DeleteItem:
@@ -178,6 +201,10 @@ class DeleteItem(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "features_to_check") and self.features_to_check:
+            result["featuresToCheck"] = [str(i0) for i0 in self.features_to_check]
+        elif include_empty:
+            result["featuresToCheck"] = []
         if hasattr(self, "force") and self.force:
             result["force"] = bool(self.force)
         elif include_empty:
@@ -202,6 +229,8 @@ class DeleteItem(Operation):
 
         404: Not Found - ErrorEntity (30141: Store [{storeId}] does not exist in namespace [{namespace}] | 30142: Published store does not exist in namespace [{namespace}] | 30341: Item [{itemId}] does not exist in namespace [{namespace}] | 30335: Item [{itemId}] can't be deleted in non-forced mode if item has been published)
 
+        409: Conflict - ErrorEntity (30386: The item [{itemId}] is currently associated and cannot be deleted in namespace [{namespace}], Feature {featureName}, Module {moduleName}, and Reference ID {referenceId} are using this item ID)
+
         ---: HttpResponse (Undocumented Response)
 
         ---: HttpResponse (Unexpected Content-Type Error)
@@ -219,6 +248,8 @@ class DeleteItem(Operation):
             return None, None
         if code == 404:
             return None, ErrorEntity.create_from_dict(content)
+        if code == 409:
+            return None, ErrorEntity.create_from_dict(content)
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -233,6 +264,7 @@ class DeleteItem(Operation):
         cls,
         item_id: str,
         namespace: str,
+        features_to_check: Optional[List[Union[str, FeaturesToCheckEnum]]] = None,
         force: Optional[bool] = None,
         store_id: Optional[str] = None,
         **kwargs,
@@ -240,6 +272,8 @@ class DeleteItem(Operation):
         instance = cls()
         instance.item_id = item_id
         instance.namespace = namespace
+        if features_to_check is not None:
+            instance.features_to_check = features_to_check
         if force is not None:
             instance.force = force
         if store_id is not None:
@@ -259,6 +293,10 @@ class DeleteItem(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "featuresToCheck" in dict_ and dict_["featuresToCheck"] is not None:
+            instance.features_to_check = [str(i0) for i0 in dict_["featuresToCheck"]]
+        elif include_empty:
+            instance.features_to_check = []
         if "force" in dict_ and dict_["force"] is not None:
             instance.force = bool(dict_["force"])
         elif include_empty:
@@ -274,6 +312,7 @@ class DeleteItem(Operation):
         return {
             "itemId": "item_id",
             "namespace": "namespace",
+            "featuresToCheck": "features_to_check",
             "force": "force",
             "storeId": "store_id",
         }
@@ -283,8 +322,28 @@ class DeleteItem(Operation):
         return {
             "itemId": True,
             "namespace": True,
+            "featuresToCheck": False,
             "force": False,
             "storeId": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "featuresToCheck": "multi",  # in query
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "featuresToCheck": [
+                "CAMPAIGN",
+                "CATALOG",
+                "DLC",
+                "ENTITLEMENT",
+                "IAP",
+                "REWARD",
+            ],  # in query
         }
 
     # endregion static methods

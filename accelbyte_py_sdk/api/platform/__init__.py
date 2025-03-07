@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.3.0"
+__version__ = "6.4.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -345,6 +345,18 @@ from .wrappers import update_fulfillment_script
 from .wrappers import update_fulfillment_script_async
 
 # iap
+from .wrappers import admin_get_iap_order_line_items
+from .wrappers import admin_get_iap_order_line_items_async
+from .wrappers import admin_get_steam_job_info
+from .wrappers import admin_get_steam_job_info_async
+from .wrappers import admin_refund_iap_order
+from .wrappers import admin_refund_iap_order_async
+from .wrappers import admin_reset_steam_job_time
+from .wrappers import admin_reset_steam_job_time_async
+from .wrappers import admin_sync_steam_abnormal_transaction
+from .wrappers import admin_sync_steam_abnormal_transaction_async
+from .wrappers import admin_sync_steam_iap_by_transaction
+from .wrappers import admin_sync_steam_iap_by_transaction_async
 from .wrappers import delete_apple_iap_config
 from .wrappers import delete_apple_iap_config_async
 from .wrappers import delete_epic_games_iap_config
@@ -399,8 +411,12 @@ from .wrappers import public_reconcile_play_station_store_with_multiple_service_
 from .wrappers import (
     public_reconcile_play_station_store_with_multiple_service_labels_async,
 )
+from .wrappers import query_abnormal_transactions
+from .wrappers import query_abnormal_transactions_async
 from .wrappers import query_all_user_iap_orders
 from .wrappers import query_all_user_iap_orders_async
+from .wrappers import query_steam_report_histories
+from .wrappers import query_steam_report_histories_async
 from .wrappers import query_user_iap_consume_history
 from .wrappers import query_user_iap_consume_history_async
 from .wrappers import query_user_iap_orders
@@ -409,6 +425,10 @@ from .wrappers import sync_epic_games_inventory
 from .wrappers import sync_epic_games_inventory_async
 from .wrappers import sync_oculus_consumable_entitlements
 from .wrappers import sync_oculus_consumable_entitlements_async
+from .wrappers import sync_steam_abnormal_transaction
+from .wrappers import sync_steam_abnormal_transaction_async
+from .wrappers import sync_steam_iap_by_transaction
+from .wrappers import sync_steam_iap_by_transaction_async
 from .wrappers import sync_steam_inventory
 from .wrappers import sync_steam_inventory_async
 from .wrappers import sync_twitch_drops_entitlement
@@ -557,6 +577,8 @@ from .wrappers import public_search_items
 from .wrappers import public_search_items_async
 from .wrappers import public_validate_item_purchase_condition
 from .wrappers import public_validate_item_purchase_condition_async
+from .wrappers import query_item_references
+from .wrappers import query_item_references_async
 from .wrappers import query_items
 from .wrappers import query_items_async
 from .wrappers import query_items_v2

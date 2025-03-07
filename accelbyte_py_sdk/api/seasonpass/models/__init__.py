@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Seasonpass Service."""
 
-__version__ = "1.23.2"
+__version__ = "1.24.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -26,6 +26,8 @@ from .exp_grant_history_paging_sliced_result import ExpGrantHistoryPagingSlicedR
 from .field_validation_error import FieldValidationError
 from .full_season_info import FullSeasonInfo
 from .image import Image
+from .item_reference import ItemReference
+from .item_reference_info import ItemReferenceInfo
 from .list_season_info import ListSeasonInfo
 from .list_season_info import StatusEnum as ListSeasonInfoStatusEnum
 from .list_season_info_paging_sliced_result import ListSeasonInfoPagingSlicedResult

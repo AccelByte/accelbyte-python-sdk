@@ -38,6 +38,8 @@ class ApiFleetListItemResponse(Model):
 
         counts: (counts) REQUIRED List[ApiFleetRegionalServerCounts]
 
+        fallback_fleet: (fallbackFleet) REQUIRED str
+
         id_: (id) REQUIRED str
 
         image: (image) REQUIRED str
@@ -50,6 +52,8 @@ class ApiFleetListItemResponse(Model):
 
         on_demand: (onDemand) REQUIRED bool
 
+        primary_fleet: (primaryFleet) REQUIRED str
+
         regions: (regions) REQUIRED List[str]
     """
 
@@ -57,12 +61,14 @@ class ApiFleetListItemResponse(Model):
 
     active: bool  # REQUIRED
     counts: List[ApiFleetRegionalServerCounts]  # REQUIRED
+    fallback_fleet: str  # REQUIRED
     id_: str  # REQUIRED
     image: str  # REQUIRED
     instance_provider: str  # REQUIRED
     is_local: bool  # REQUIRED
     name: str  # REQUIRED
     on_demand: bool  # REQUIRED
+    primary_fleet: str  # REQUIRED
     regions: List[str]  # REQUIRED
 
     # endregion fields
@@ -77,6 +83,10 @@ class ApiFleetListItemResponse(Model):
         self, value: List[ApiFleetRegionalServerCounts]
     ) -> ApiFleetListItemResponse:
         self.counts = value
+        return self
+
+    def with_fallback_fleet(self, value: str) -> ApiFleetListItemResponse:
+        self.fallback_fleet = value
         return self
 
     def with_id(self, value: str) -> ApiFleetListItemResponse:
@@ -103,6 +113,10 @@ class ApiFleetListItemResponse(Model):
         self.on_demand = value
         return self
 
+    def with_primary_fleet(self, value: str) -> ApiFleetListItemResponse:
+        self.primary_fleet = value
+        return self
+
     def with_regions(self, value: List[str]) -> ApiFleetListItemResponse:
         self.regions = value
         return self
@@ -123,6 +137,10 @@ class ApiFleetListItemResponse(Model):
             ]
         elif include_empty:
             result["counts"] = []
+        if hasattr(self, "fallback_fleet"):
+            result["fallbackFleet"] = str(self.fallback_fleet)
+        elif include_empty:
+            result["fallbackFleet"] = ""
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -147,6 +165,10 @@ class ApiFleetListItemResponse(Model):
             result["onDemand"] = bool(self.on_demand)
         elif include_empty:
             result["onDemand"] = False
+        if hasattr(self, "primary_fleet"):
+            result["primaryFleet"] = str(self.primary_fleet)
+        elif include_empty:
+            result["primaryFleet"] = ""
         if hasattr(self, "regions"):
             result["regions"] = [str(i0) for i0 in self.regions]
         elif include_empty:
@@ -162,24 +184,28 @@ class ApiFleetListItemResponse(Model):
         cls,
         active: bool,
         counts: List[ApiFleetRegionalServerCounts],
+        fallback_fleet: str,
         id_: str,
         image: str,
         instance_provider: str,
         is_local: bool,
         name: str,
         on_demand: bool,
+        primary_fleet: str,
         regions: List[str],
         **kwargs,
     ) -> ApiFleetListItemResponse:
         instance = cls()
         instance.active = active
         instance.counts = counts
+        instance.fallback_fleet = fallback_fleet
         instance.id_ = id_
         instance.image = image
         instance.instance_provider = instance_provider
         instance.is_local = is_local
         instance.name = name
         instance.on_demand = on_demand
+        instance.primary_fleet = primary_fleet
         instance.regions = regions
         return instance
 
@@ -203,6 +229,10 @@ class ApiFleetListItemResponse(Model):
             ]
         elif include_empty:
             instance.counts = []
+        if "fallbackFleet" in dict_ and dict_["fallbackFleet"] is not None:
+            instance.fallback_fleet = str(dict_["fallbackFleet"])
+        elif include_empty:
+            instance.fallback_fleet = ""
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -227,6 +257,10 @@ class ApiFleetListItemResponse(Model):
             instance.on_demand = bool(dict_["onDemand"])
         elif include_empty:
             instance.on_demand = False
+        if "primaryFleet" in dict_ and dict_["primaryFleet"] is not None:
+            instance.primary_fleet = str(dict_["primaryFleet"])
+        elif include_empty:
+            instance.primary_fleet = ""
         if "regions" in dict_ and dict_["regions"] is not None:
             instance.regions = [str(i0) for i0 in dict_["regions"]]
         elif include_empty:
@@ -276,12 +310,14 @@ class ApiFleetListItemResponse(Model):
         return {
             "active": "active",
             "counts": "counts",
+            "fallbackFleet": "fallback_fleet",
             "id": "id_",
             "image": "image",
             "instanceProvider": "instance_provider",
             "isLocal": "is_local",
             "name": "name",
             "onDemand": "on_demand",
+            "primaryFleet": "primary_fleet",
             "regions": "regions",
         }
 
@@ -290,12 +326,14 @@ class ApiFleetListItemResponse(Model):
         return {
             "active": True,
             "counts": True,
+            "fallbackFleet": True,
             "id": True,
             "image": True,
             "instanceProvider": True,
             "isLocal": True,
             "name": True,
             "onDemand": True,
+            "primaryFleet": True,
             "regions": True,
         }
 

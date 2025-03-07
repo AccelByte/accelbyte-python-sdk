@@ -166,6 +166,7 @@ async def admin_delete_bulk_parties_async(
 
 @same_doc_as(AdminQueryParties)
 def admin_query_parties(
+    from_time: Optional[str] = None,
     is_soft_deleted: Optional[str] = None,
     joinability: Optional[str] = None,
     key: Optional[str] = None,
@@ -177,6 +178,7 @@ def admin_query_parties(
     order: Optional[str] = None,
     order_by: Optional[str] = None,
     party_id: Optional[str] = None,
+    to_time: Optional[str] = None,
     value: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -201,6 +203,8 @@ def admin_query_parties(
 
         namespace: (namespace) REQUIRED str in path
 
+        from_time: (fromTime) OPTIONAL str in query
+
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
         joinability: (joinability) OPTIONAL str in query
@@ -223,6 +227,8 @@ def admin_query_parties(
 
         party_id: (partyID) OPTIONAL str in query
 
+        to_time: (toTime) OPTIONAL str in query
+
         value: (value) OPTIONAL str in query
 
     Responses:
@@ -239,6 +245,7 @@ def admin_query_parties(
         if error:
             return None, error
     request = AdminQueryParties.create(
+        from_time=from_time,
         is_soft_deleted=is_soft_deleted,
         joinability=joinability,
         key=key,
@@ -250,6 +257,7 @@ def admin_query_parties(
         order=order,
         order_by=order_by,
         party_id=party_id,
+        to_time=to_time,
         value=value,
         namespace=namespace,
     )
@@ -258,6 +266,7 @@ def admin_query_parties(
 
 @same_doc_as(AdminQueryParties)
 async def admin_query_parties_async(
+    from_time: Optional[str] = None,
     is_soft_deleted: Optional[str] = None,
     joinability: Optional[str] = None,
     key: Optional[str] = None,
@@ -269,6 +278,7 @@ async def admin_query_parties_async(
     order: Optional[str] = None,
     order_by: Optional[str] = None,
     party_id: Optional[str] = None,
+    to_time: Optional[str] = None,
     value: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -293,6 +303,8 @@ async def admin_query_parties_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        from_time: (fromTime) OPTIONAL str in query
+
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
         joinability: (joinability) OPTIONAL str in query
@@ -315,6 +327,8 @@ async def admin_query_parties_async(
 
         party_id: (partyID) OPTIONAL str in query
 
+        to_time: (toTime) OPTIONAL str in query
+
         value: (value) OPTIONAL str in query
 
     Responses:
@@ -331,6 +345,7 @@ async def admin_query_parties_async(
         if error:
             return None, error
     request = AdminQueryParties.create(
+        from_time=from_time,
         is_soft_deleted=is_soft_deleted,
         joinability=joinability,
         key=key,
@@ -342,6 +357,7 @@ async def admin_query_parties_async(
         order=order,
         order_by=order_by,
         party_id=party_id,
+        to_time=to_time,
         value=value,
         namespace=namespace,
     )
@@ -523,6 +539,7 @@ def public_create_party(
     - The user will be given chance to reconnect within "inactiveTimeout" which you can configure through session configuration. If until "inactiveTimeout" is due and the user doesn't reconnect their websocket, they will be removed from session and their status will change to DROPPED. If the dropped user was the leader of the session, we will promote the next oldest member as leader.
     - By default, we will update user's status to what it was before disconnect, when the user reconnects lobby websocket, unless "manualRejoin" sets to True in the session configuration. When "manualRejoin" is enabled, after lobby websocket reconnect, the game client will need to manually invoke join session again to rejoin the session.
     - If the user was on INVITED state before the disconnect happened, the user's status will return back to INVITED after they reconnect.
+    - ttlHours is how long the session will active, max value is 168 hours
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/party
@@ -632,6 +649,7 @@ async def public_create_party_async(
     - The user will be given chance to reconnect within "inactiveTimeout" which you can configure through session configuration. If until "inactiveTimeout" is due and the user doesn't reconnect their websocket, they will be removed from session and their status will change to DROPPED. If the dropped user was the leader of the session, we will promote the next oldest member as leader.
     - By default, we will update user's status to what it was before disconnect, when the user reconnects lobby websocket, unless "manualRejoin" sets to True in the session configuration. When "manualRejoin" is enabled, after lobby websocket reconnect, the game client will need to manually invoke join session again to rejoin the session.
     - If the user was on INVITED state before the disconnect happened, the user's status will return back to INVITED after they reconnect.
+    - ttlHours is how long the session will active, max value is 168 hours
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/party
@@ -2129,6 +2147,7 @@ def public_update_party(
     1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
     the session regardless the leader changes.
     2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
+    - ttlHours is how long the session will active, max value is 168 hours
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}
@@ -2197,6 +2216,7 @@ async def public_update_party_async(
     1. preference: used to store preference of the leader and it is non-replaceable to keep the initial behavior of
     the session regardless the leader changes.
     2. NATIVESESSIONTITLE: used for session sync, to define name of session displayed on PlayStation system UI.
+    - ttlHours is how long the session will active, max value is 168 hours
 
     Properties:
         url: /session/v1/public/namespaces/{namespace}/parties/{partyId}

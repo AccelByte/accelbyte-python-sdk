@@ -86,4 +86,4 @@ def public_update_attribute(
 
 
 public_update_attribute.operation_id = "publicUpdateAttribute"
-public_update_attribute.is_deprecated = False
+public_update_attribute.is_deprecated = True

@@ -48,7 +48,10 @@ from ..models import IAPItemConfigInfo
 from ..models import IAPItemConfigUpdate
 from ..models import IAPItemMappingInfo
 from ..models import IAPOrderConsumeDetailInfo
+from ..models import IAPOrderInfo
+from ..models import IAPOrderLineItemInfo
 from ..models import IAPOrderPagingSlicedResult
+from ..models import IAPOrderShortInfo
 from ..models import MockIAPReceipt
 from ..models import OculusIAPConfigInfo
 from ..models import OculusIAPConfigRequest
@@ -58,9 +61,14 @@ from ..models import PlayStationMultiServiceLabelsReconcileRequest
 from ..models import PlayStationReconcileRequest
 from ..models import PlayStationReconcileResult
 from ..models import PlaystationIAPConfigRequest
+from ..models import ResetJobRequest
+from ..models import SteamAbnormalTransactionPagingSlicedResult
 from ..models import SteamIAPConfig
 from ..models import SteamIAPConfigInfo
 from ..models import SteamIAPConfigRequest
+from ..models import SteamReportInfoPagingSlicedResult
+from ..models import SteamReportJobInfo
+from ..models import SteamSyncByTransactionRequest
 from ..models import SteamSyncRequest
 from ..models import TestResult
 from ..models import TwitchIAPConfigInfo
@@ -73,6 +81,12 @@ from ..models import XblIAPConfigRequest
 from ..models import XblReconcileRequest
 from ..models import XblReconcileResult
 
+from ..operations.iap import AdminGetIAPOrderLineItems
+from ..operations.iap import AdminGetSteamJobInfo
+from ..operations.iap import AdminRefundIAPOrder
+from ..operations.iap import AdminResetSteamJobTime
+from ..operations.iap import AdminSyncSteamAbnormalTransaction
+from ..operations.iap import AdminSyncSteamIAPByTransaction
 from ..operations.iap import DeleteAppleIAPConfig
 from ..operations.iap import DeleteEpicGamesIAPConfig
 from ..operations.iap import DeleteGoogleIAPConfig
@@ -100,7 +114,10 @@ from ..operations.iap import PublicFulfillAppleIAPItem
 from ..operations.iap import PublicFulfillGoogleIAPItem
 from ..operations.iap import PublicReconcilePlayStationStore
 from ..operations.iap import PublicReconcilePlayStationStoreWithMultipleServiceLabels
+from ..operations.iap import QueryAbnormalTransactions
 from ..operations.iap import QueryAllUserIAPOrders
+from ..operations.iap import QuerySteamReportHistories
+from ..operations.iap import QuerySteamReportHistoriesProcessStatusEnum
 from ..operations.iap import QueryUserIAPConsumeHistory
 from ..operations.iap import (
     QueryUserIAPConsumeHistoryStatusEnum,
@@ -110,6 +127,8 @@ from ..operations.iap import QueryUserIAPOrders
 from ..operations.iap import QueryUserIAPOrdersStatusEnum, QueryUserIAPOrdersTypeEnum
 from ..operations.iap import SyncEpicGamesInventory
 from ..operations.iap import SyncOculusConsumableEntitlements
+from ..operations.iap import SyncSteamAbnormalTransaction
+from ..operations.iap import SyncSteamIAPByTransaction
 from ..operations.iap import SyncSteamInventory
 from ..operations.iap import SyncTwitchDropsEntitlement
 from ..operations.iap import SyncTwitchDropsEntitlement1
@@ -134,14 +153,588 @@ from ..models import AppleIAPConfigRequestVersionEnum
 from ..models import AppleIAPConfigVersionInfoVersionEnum
 from ..models import EpicGamesReconcileResultStatusEnum
 from ..models import IAPOrderConsumeDetailInfoStatusEnum
+from ..models import (
+    IAPOrderInfoStatusEnum,
+    IAPOrderInfoSyncModeEnum,
+    IAPOrderInfoTypeEnum,
+)
+from ..models import (
+    IAPOrderLineItemInfoItemIdentityTypeEnum,
+    IAPOrderLineItemInfoPlatformEnum,
+    IAPOrderLineItemInfoStatusEnum,
+)
+from ..models import IAPOrderShortInfoStatusEnum
 from ..models import MockIAPReceiptItemIdentityTypeEnum, MockIAPReceiptTypeEnum
 from ..models import (
     OculusReconcileResultIapOrderStatusEnum,
     OculusReconcileResultItemIdentityTypeEnum,
 )
 from ..models import PlayStationReconcileResultStatusEnum
+from ..models import ResetJobRequestEnvEnum
+from ..models import SteamIAPConfigEnvEnum, SteamIAPConfigSyncModeEnum
+from ..models import SteamIAPConfigInfoEnvEnum, SteamIAPConfigInfoSyncModeEnum
+from ..models import SteamIAPConfigRequestEnvEnum, SteamIAPConfigRequestSyncModeEnum
+from ..models import SteamReportJobInfoEnvEnum
 from ..models import TwitchSyncResultIapOrderStatusEnum
 from ..models import XblReconcileResultIapOrderStatusEnum
+
+
+@same_doc_as(AdminGetIAPOrderLineItems)
+def admin_get_iap_order_line_items(
+    iap_order_no: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query IAP order line items (adminGetIAPOrderLineItems)
+
+    Query IAP order ine items.
+    Other detail info:
+
+      * Returns : paginated iap orders
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/orders/{iapOrderNo}/line_items
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        iap_order_no: (iapOrderNo) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[IAPOrderLineItemInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminGetIAPOrderLineItems.create(
+        iap_order_no=iap_order_no,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetIAPOrderLineItems)
+async def admin_get_iap_order_line_items_async(
+    iap_order_no: str,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query IAP order line items (adminGetIAPOrderLineItems)
+
+    Query IAP order ine items.
+    Other detail info:
+
+      * Returns : paginated iap orders
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/orders/{iapOrderNo}/line_items
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        iap_order_no: (iapOrderNo) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[IAPOrderLineItemInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminGetIAPOrderLineItems.create(
+        iap_order_no=iap_order_no,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminGetSteamJobInfo)
+def admin_get_steam_job_info(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query steam report job info (adminGetSteamJobInfo)
+
+    Query steam report info
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/steam/job
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[SteamReportJobInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminGetSteamJobInfo.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminGetSteamJobInfo)
+async def admin_get_steam_job_info_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query steam report job info (adminGetSteamJobInfo)
+
+    Query steam report info
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/steam/job
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - List[SteamReportJobInfo] (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminGetSteamJobInfo.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminRefundIAPOrder)
+def admin_refund_iap_order(
+    iap_order_no: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Refund IAP Order (adminRefundIAPOrder)
+
+    Only support steam transaction mode
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/steam/orders/{iapOrderNo}/refund
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        iap_order_no: (iapOrderNo) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - IAPOrderInfo (successful operation)
+
+        204: No Content - (Refund IAP Order successfully)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}]. | 39151: IAP order no [{iapOrderNo}] not found in namespace [{namespace}].)
+
+        409: Conflict - ErrorEntity (39184: Steam api exception with status code [{statusCode}] and error message [{message}] | 39185: This endpoint only works on sync mode [{workSyncMode}], but current steam iap config sync mode is [{currentSyncMode}] under namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminRefundIAPOrder.create(
+        iap_order_no=iap_order_no,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminRefundIAPOrder)
+async def admin_refund_iap_order_async(
+    iap_order_no: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Refund IAP Order (adminRefundIAPOrder)
+
+    Only support steam transaction mode
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/steam/orders/{iapOrderNo}/refund
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        iap_order_no: (iapOrderNo) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - IAPOrderInfo (successful operation)
+
+        204: No Content - (Refund IAP Order successfully)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user)
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}]. | 39151: IAP order no [{iapOrderNo}] not found in namespace [{namespace}].)
+
+        409: Conflict - ErrorEntity (39184: Steam api exception with status code [{statusCode}] and error message [{message}] | 39185: This endpoint only works on sync mode [{workSyncMode}], but current steam iap config sync mode is [{currentSyncMode}] under namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminRefundIAPOrder.create(
+        iap_order_no=iap_order_no,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminResetSteamJobTime)
+def admin_reset_steam_job_time(
+    body: ResetJobRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Reset steam report job with a special time (adminResetSteamJobTime)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/steam/job/reset
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ResetJobRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - SteamReportJobInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminResetSteamJobTime.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminResetSteamJobTime)
+async def admin_reset_steam_job_time_async(
+    body: ResetJobRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Reset steam report job with a special time (adminResetSteamJobTime)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/steam/job/reset
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ResetJobRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - SteamReportJobInfo (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminResetSteamJobTime.create(
+        body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminSyncSteamAbnormalTransaction)
+def admin_sync_steam_abnormal_transaction(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync Abnormal transaction, Sync steam order by transaction. only works when steam sync mode is TRANSACTION. (adminSyncSteamAbnormalTransaction)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/steam/syncAbnormalTransaction
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - IAPOrderShortInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user | 39621: Steam api common exception with status code [statusCode] details: [details])
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
+
+        409: Conflict - ErrorEntity (39184: Steam api exception  with status code [{statusCode}] and error message [{message}] | 39185: This endpoint only works on sync mode [{workSyncMode}], but current steam iap config sync mode is [{currentSyncMode}] under namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminSyncSteamAbnormalTransaction.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminSyncSteamAbnormalTransaction)
+async def admin_sync_steam_abnormal_transaction_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync Abnormal transaction, Sync steam order by transaction. only works when steam sync mode is TRANSACTION. (adminSyncSteamAbnormalTransaction)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/steam/syncAbnormalTransaction
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - IAPOrderShortInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user | 39621: Steam api common exception with status code [statusCode] details: [details])
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
+
+        409: Conflict - ErrorEntity (39184: Steam api exception  with status code [{statusCode}] and error message [{message}] | 39185: This endpoint only works on sync mode [{workSyncMode}], but current steam iap config sync mode is [{currentSyncMode}] under namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminSyncSteamAbnormalTransaction.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminSyncSteamIAPByTransaction)
+def admin_sync_steam_iap_by_transaction(
+    body: SteamSyncByTransactionRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Manual sync steam transaction. only works when steam sync mode is TRANSACTION. (adminSyncSteamIAPByTransaction)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/steam/syncByTransaction
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED SteamSyncByTransactionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - IAPOrderShortInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user | 39621: Steam api common exception with status code [statusCode] details: [details])
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
+
+        409: Conflict - ErrorEntity (39184: Steam api exception with error code [{errorCode}] and error message [{message}] | 39185: This endpoint only works on sync mode [{workSyncMode}], but current steam iap config sync mode is [{currentSyncMode}] under namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminSyncSteamIAPByTransaction.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminSyncSteamIAPByTransaction)
+async def admin_sync_steam_iap_by_transaction_async(
+    body: SteamSyncByTransactionRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Manual sync steam transaction. only works when steam sync mode is TRANSACTION. (adminSyncSteamIAPByTransaction)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/users/{userId}/iap/steam/syncByTransaction
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED SteamSyncByTransactionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - IAPOrderShortInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user | 39621: Steam api common exception with status code [statusCode] details: [details])
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
+
+        409: Conflict - ErrorEntity (39184: Steam api exception with error code [{errorCode}] and error message [{message}] | 39185: This endpoint only works on sync mode [{workSyncMode}], but current steam iap config sync mode is [{currentSyncMode}] under namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminSyncSteamIAPByTransaction.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(DeleteAppleIAPConfig)
@@ -2400,6 +2993,112 @@ async def public_reconcile_play_station_store_with_multiple_service_labels_async
     )
 
 
+@same_doc_as(QueryAbnormalTransactions)
+def query_abnormal_transactions(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order_id: Optional[str] = None,
+    steam_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query steam abnormal transactions (queryAbnormalTransactions)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/steam/abnormal_transactions
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order_id: (orderId) OPTIONAL str in query
+
+        steam_id: (steamId) OPTIONAL str in query
+
+    Responses:
+        200: OK - SteamAbnormalTransactionPagingSlicedResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = QueryAbnormalTransactions.create(
+        limit=limit,
+        offset=offset,
+        order_id=order_id,
+        steam_id=steam_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QueryAbnormalTransactions)
+async def query_abnormal_transactions_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order_id: Optional[str] = None,
+    steam_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Query steam abnormal transactions (queryAbnormalTransactions)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/steam/abnormal_transactions
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order_id: (orderId) OPTIONAL str in query
+
+        steam_id: (steamId) OPTIONAL str in query
+
+    Responses:
+        200: OK - SteamAbnormalTransactionPagingSlicedResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = QueryAbnormalTransactions.create(
+        limit=limit,
+        offset=offset,
+        order_id=order_id,
+        steam_id=steam_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(QueryAllUserIAPOrders)
 def query_all_user_iap_orders(
     user_id: str,
@@ -2485,6 +3184,124 @@ async def query_all_user_iap_orders_async(
             return None, error
     request = QueryAllUserIAPOrders.create(
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(QuerySteamReportHistories)
+def query_steam_report_histories(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order_id: Optional[str] = None,
+    process_status: Optional[
+        Union[str, QuerySteamReportHistoriesProcessStatusEnum]
+    ] = None,
+    steam_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get IAP steam report process histories, default sort by created at (querySteamReportHistories)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/steam/report/histories
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order_id: (orderId) OPTIONAL str in query
+
+        process_status: (processStatus) OPTIONAL Union[str, ProcessStatusEnum] in query
+
+        steam_id: (steamId) OPTIONAL str in query
+
+    Responses:
+        200: OK - SteamReportInfoPagingSlicedResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = QuerySteamReportHistories.create(
+        limit=limit,
+        offset=offset,
+        order_id=order_id,
+        process_status=process_status,
+        steam_id=steam_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(QuerySteamReportHistories)
+async def query_steam_report_histories_async(
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    order_id: Optional[str] = None,
+    process_status: Optional[
+        Union[str, QuerySteamReportHistoriesProcessStatusEnum]
+    ] = None,
+    steam_id: Optional[str] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get IAP steam report process histories, default sort by created at (querySteamReportHistories)
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/iap/steam/report/histories
+
+        method: GET
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        order_id: (orderId) OPTIONAL str in query
+
+        process_status: (processStatus) OPTIONAL Union[str, ProcessStatusEnum] in query
+
+        steam_id: (steamId) OPTIONAL str in query
+
+    Responses:
+        200: OK - SteamReportInfoPagingSlicedResult (successful operation)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = QuerySteamReportHistories.create(
+        limit=limit,
+        offset=offset,
+        order_id=order_id,
+        process_status=process_status,
+        steam_id=steam_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -2976,6 +3793,210 @@ async def sync_oculus_consumable_entitlements_async(
         if error:
             return None, error
     request = SyncOculusConsumableEntitlements.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(SyncSteamAbnormalTransaction)
+def sync_steam_abnormal_transaction(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync Abnormal transaction, Sync steam order by transaction. only works when steam sync mode is TRANSACTION. (syncSteamAbnormalTransaction)
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/iap/steam/syncAbnormalTransaction
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - IAPOrderShortInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user | 39621: Steam api common exception with status code [statusCode] details: [details])
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
+
+        409: Conflict - ErrorEntity (39184: Steam api exception with error code [{statusCode}] and error message [{message}] | 39185: This endpoint only works on sync mode [{workSyncMode}], but current steam iap config sync mode is [{currentSyncMode}] under namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = SyncSteamAbnormalTransaction.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(SyncSteamAbnormalTransaction)
+async def sync_steam_abnormal_transaction_async(
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync Abnormal transaction, Sync steam order by transaction. only works when steam sync mode is TRANSACTION. (syncSteamAbnormalTransaction)
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/iap/steam/syncAbnormalTransaction
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - IAPOrderShortInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user | 39621: Steam api common exception with status code [statusCode] details: [details])
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
+
+        409: Conflict - ErrorEntity (39184: Steam api exception with error code [{statusCode}] and error message [{message}] | 39185: This endpoint only works on sync mode [{workSyncMode}], but current steam iap config sync mode is [{currentSyncMode}] under namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = SyncSteamAbnormalTransaction.create(
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(SyncSteamIAPByTransaction)
+def sync_steam_iap_by_transaction(
+    body: SteamSyncByTransactionRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync steam in app purchase by transaction. (syncSteamIAPByTransaction)
+
+    Sync steam in app purchase by transaction.Other detail info:
+
+      * Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/iap/steam/syncByTransaction
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED SteamSyncByTransactionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - IAPOrderShortInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user | 39621: Steam api common exception with status code [statusCode] details: [details])
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
+
+        409: Conflict - ErrorEntity (39183: Steam transaction [{orderId}] is still pending or failed, status [{status}], please try it later | 39184: Steam api exception with error code [{errorCode}] and error message [{message}] | 39185: This endpoint only works on sync mode [{workSyncMode}], but current steam iap config sync mode is [{currentSyncMode}] under namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = SyncSteamIAPByTransaction.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(SyncSteamIAPByTransaction)
+async def sync_steam_iap_by_transaction_async(
+    body: SteamSyncByTransactionRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Sync steam in app purchase by transaction. (syncSteamIAPByTransaction)
+
+    Sync steam in app purchase by transaction.Other detail info:
+
+      * Returns :
+
+    Properties:
+        url: /platform/public/namespaces/{namespace}/users/{userId}/iap/steam/syncByTransaction
+
+        method: PUT
+
+        tags: ["IAP"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED SteamSyncByTransactionRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - IAPOrderShortInfo (successful operation)
+
+        400: Bad Request - ErrorEntity (39124: IAP request platform [{platformId}] user id is not linked with current user | 39621: Steam api common exception with status code [statusCode] details: [details])
+
+        404: Not Found - ErrorEntity (39144: Steam IAP config not found in namespace [{namespace}].)
+
+        409: Conflict - ErrorEntity (39183: Steam transaction [{orderId}] is still pending or failed, status [{status}], please try it later | 39184: Steam api exception with error code [{errorCode}] and error message [{message}] | 39185: This endpoint only works on sync mode [{workSyncMode}], but current steam iap config sync mode is [{currentSyncMode}] under namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = SyncSteamIAPByTransaction.create(
+        body=body,
         user_id=user_id,
         namespace=namespace,
     )

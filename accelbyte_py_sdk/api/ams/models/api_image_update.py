@@ -34,19 +34,19 @@ class ApiImageUpdate(Model):
     Properties:
         added_tags: (addedTags) REQUIRED List[str]
 
-        is_protected: (isProtected) REQUIRED bool
-
-        name: (name) REQUIRED str
-
         removed_tags: (removedTags) REQUIRED List[str]
+
+        is_protected: (isProtected) OPTIONAL bool
+
+        name: (name) OPTIONAL str
     """
 
     # region fields
 
     added_tags: List[str]  # REQUIRED
-    is_protected: bool  # REQUIRED
-    name: str  # REQUIRED
     removed_tags: List[str]  # REQUIRED
+    is_protected: bool  # OPTIONAL
+    name: str  # OPTIONAL
 
     # endregion fields
 
@@ -56,16 +56,16 @@ class ApiImageUpdate(Model):
         self.added_tags = value
         return self
 
+    def with_removed_tags(self, value: List[str]) -> ApiImageUpdate:
+        self.removed_tags = value
+        return self
+
     def with_is_protected(self, value: bool) -> ApiImageUpdate:
         self.is_protected = value
         return self
 
     def with_name(self, value: str) -> ApiImageUpdate:
         self.name = value
-        return self
-
-    def with_removed_tags(self, value: List[str]) -> ApiImageUpdate:
-        self.removed_tags = value
         return self
 
     # endregion with_x methods
@@ -78,6 +78,10 @@ class ApiImageUpdate(Model):
             result["addedTags"] = [str(i0) for i0 in self.added_tags]
         elif include_empty:
             result["addedTags"] = []
+        if hasattr(self, "removed_tags"):
+            result["removedTags"] = [str(i0) for i0 in self.removed_tags]
+        elif include_empty:
+            result["removedTags"] = []
         if hasattr(self, "is_protected"):
             result["isProtected"] = bool(self.is_protected)
         elif include_empty:
@@ -86,10 +90,6 @@ class ApiImageUpdate(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
-        if hasattr(self, "removed_tags"):
-            result["removedTags"] = [str(i0) for i0 in self.removed_tags]
-        elif include_empty:
-            result["removedTags"] = []
         return result
 
     # endregion to methods
@@ -100,16 +100,18 @@ class ApiImageUpdate(Model):
     def create(
         cls,
         added_tags: List[str],
-        is_protected: bool,
-        name: str,
         removed_tags: List[str],
+        is_protected: Optional[bool] = None,
+        name: Optional[str] = None,
         **kwargs,
     ) -> ApiImageUpdate:
         instance = cls()
         instance.added_tags = added_tags
-        instance.is_protected = is_protected
-        instance.name = name
         instance.removed_tags = removed_tags
+        if is_protected is not None:
+            instance.is_protected = is_protected
+        if name is not None:
+            instance.name = name
         return instance
 
     @classmethod
@@ -123,6 +125,10 @@ class ApiImageUpdate(Model):
             instance.added_tags = [str(i0) for i0 in dict_["addedTags"]]
         elif include_empty:
             instance.added_tags = []
+        if "removedTags" in dict_ and dict_["removedTags"] is not None:
+            instance.removed_tags = [str(i0) for i0 in dict_["removedTags"]]
+        elif include_empty:
+            instance.removed_tags = []
         if "isProtected" in dict_ and dict_["isProtected"] is not None:
             instance.is_protected = bool(dict_["isProtected"])
         elif include_empty:
@@ -131,10 +137,6 @@ class ApiImageUpdate(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
-        if "removedTags" in dict_ and dict_["removedTags"] is not None:
-            instance.removed_tags = [str(i0) for i0 in dict_["removedTags"]]
-        elif include_empty:
-            instance.removed_tags = []
         return instance
 
     @classmethod
@@ -175,18 +177,18 @@ class ApiImageUpdate(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "addedTags": "added_tags",
+            "removedTags": "removed_tags",
             "isProtected": "is_protected",
             "name": "name",
-            "removedTags": "removed_tags",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "addedTags": True,
-            "isProtected": True,
-            "name": True,
             "removedTags": True,
+            "isProtected": False,
+            "name": False,
         }
 
     # endregion static methods

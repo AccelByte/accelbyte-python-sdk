@@ -38,6 +38,7 @@ class StatusEnum(StrEnum):
     FULFILLED = "FULFILLED"
     PARTIAL_REVOKED = "PARTIAL_REVOKED"
     REVOKED = "REVOKED"
+    REVOKE_FAILED = "REVOKE_FAILED"
     VERIFIED = "VERIFIED"
 
 
@@ -421,6 +422,7 @@ class QueryUserIAPOrders(Operation):
                 "FULFILLED",
                 "PARTIAL_REVOKED",
                 "REVOKED",
+                "REVOKE_FAILED",
                 "VERIFIED",
             ],  # in query
             "type": [

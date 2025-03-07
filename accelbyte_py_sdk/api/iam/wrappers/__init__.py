@@ -8,11 +8,20 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.26.0"
+__version__ = "7.28.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
+
+from ._account_idenfifier_tag import admin_create_tag_v3
+from ._account_idenfifier_tag import admin_create_tag_v3_async
+from ._account_idenfifier_tag import admin_delete_tag_v3
+from ._account_idenfifier_tag import admin_delete_tag_v3_async
+from ._account_idenfifier_tag import admin_query_tag_v3
+from ._account_idenfifier_tag import admin_query_tag_v3_async
+from ._account_idenfifier_tag import admin_update_tag_v3
+from ._account_idenfifier_tag import admin_update_tag_v3_async
 
 from ._bans import admin_ban_user_bulk_v3
 from ._bans import admin_ban_user_bulk_v3_async

@@ -10,6 +10,8 @@
 
 from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
+from ._admin_get_env_config import admin_get_env_config
+from ._admin_patch_update_env_config import admin_patch_update_env_config
 from ._admin_get_log_config import admin_get_log_config
 from ._admin_patch_update_log_config import admin_patch_update_log_config
 from ._admin_query_game_session_detail import admin_query_game_session_detail
@@ -55,6 +57,8 @@ from ._query_xray_timeline_by_user_id import query_xray_timeline_by_user_id
 commands = [
     get_healthcheck_info,
     get_healthcheck_info_v1,
+    admin_get_env_config,
+    admin_patch_update_env_config,
     admin_get_log_config,
     admin_patch_update_log_config,
     admin_query_game_session_detail,

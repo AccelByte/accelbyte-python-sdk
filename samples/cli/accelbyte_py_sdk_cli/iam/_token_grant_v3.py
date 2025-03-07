@@ -49,6 +49,7 @@ from accelbyte_py_sdk.api.iam.models import OauthmodelTokenWithDeviceCookieRespo
 @click.option("--password", "password", type=str)
 @click.option("--redirect_uri", "redirect_uri", type=str)
 @click.option("--refresh_token", "refresh_token", type=str)
+@click.option("--scope", "scope", type=str)
 @click.option("--username", "username", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -67,6 +68,7 @@ def token_grant_v3(
     password: Optional[str] = None,
     redirect_uri: Optional[str] = None,
     refresh_token: Optional[str] = None,
+    scope: Optional[str] = None,
     username: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -94,6 +96,7 @@ def token_grant_v3(
         password=password,
         redirect_uri=redirect_uri,
         refresh_token=refresh_token,
+        scope=scope,
         username=username,
         x_additional_headers=x_additional_headers,
     )

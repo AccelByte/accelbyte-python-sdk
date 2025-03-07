@@ -27,14 +27,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
 
-from ..models.api_time import ApiTime
-
 
 class ApiFleetServerConnectionInfoResponse(Model):
     """Api fleet server connection info response (api.FleetServerConnectionInfoResponse)
 
     Properties:
-        expires_at: (expiresAt) REQUIRED ApiTime
+        expires_at: (expiresAt) REQUIRED str
 
         host: (host) REQUIRED str
 
@@ -45,7 +43,7 @@ class ApiFleetServerConnectionInfoResponse(Model):
 
     # region fields
 
-    expires_at: ApiTime  # REQUIRED
+    expires_at: str  # REQUIRED
     host: str  # REQUIRED
     logstream_port: int  # REQUIRED
     secret: str  # REQUIRED
@@ -54,7 +52,7 @@ class ApiFleetServerConnectionInfoResponse(Model):
 
     # region with_x methods
 
-    def with_expires_at(self, value: ApiTime) -> ApiFleetServerConnectionInfoResponse:
+    def with_expires_at(self, value: str) -> ApiFleetServerConnectionInfoResponse:
         self.expires_at = value
         return self
 
@@ -77,9 +75,9 @@ class ApiFleetServerConnectionInfoResponse(Model):
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
         if hasattr(self, "expires_at"):
-            result["expiresAt"] = self.expires_at.to_dict(include_empty=include_empty)
+            result["expiresAt"] = str(self.expires_at)
         elif include_empty:
-            result["expiresAt"] = ApiTime()
+            result["expiresAt"] = ""
         if hasattr(self, "host"):
             result["host"] = str(self.host)
         elif include_empty:
@@ -100,7 +98,7 @@ class ApiFleetServerConnectionInfoResponse(Model):
 
     @classmethod
     def create(
-        cls, expires_at: ApiTime, host: str, logstream_port: int, secret: str, **kwargs
+        cls, expires_at: str, host: str, logstream_port: int, secret: str, **kwargs
     ) -> ApiFleetServerConnectionInfoResponse:
         instance = cls()
         instance.expires_at = expires_at
@@ -117,11 +115,9 @@ class ApiFleetServerConnectionInfoResponse(Model):
         if not dict_:
             return instance
         if "expiresAt" in dict_ and dict_["expiresAt"] is not None:
-            instance.expires_at = ApiTime.create_from_dict(
-                dict_["expiresAt"], include_empty=include_empty
-            )
+            instance.expires_at = str(dict_["expiresAt"])
         elif include_empty:
-            instance.expires_at = ApiTime()
+            instance.expires_at = ""
         if "host" in dict_ and dict_["host"] is not None:
             instance.host = str(dict_["host"])
         elif include_empty:

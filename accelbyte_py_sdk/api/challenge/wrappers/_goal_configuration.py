@@ -452,6 +452,7 @@ def admin_get_goals(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, AdminGetGoalsSortByEnum]] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -483,6 +484,8 @@ def admin_get_goals(
 
         sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelGetGoalsResponse (OK)
 
@@ -503,6 +506,7 @@ def admin_get_goals(
         limit=limit,
         offset=offset,
         sort_by=sort_by,
+        tags=tags,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -514,6 +518,7 @@ async def admin_get_goals_async(
     limit: Optional[int] = None,
     offset: Optional[int] = None,
     sort_by: Optional[Union[str, AdminGetGoalsSortByEnum]] = None,
+    tags: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -545,6 +550,8 @@ async def admin_get_goals_async(
 
         sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
 
+        tags: (tags) OPTIONAL List[str] in query
+
     Responses:
         200: OK - ModelGetGoalsResponse (OK)
 
@@ -565,6 +572,7 @@ async def admin_get_goals_async(
         limit=limit,
         offset=offset,
         sort_by=sort_by,
+        tags=tags,
         namespace=namespace,
     )
     return await run_request_async(

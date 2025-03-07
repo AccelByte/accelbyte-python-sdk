@@ -36,7 +36,7 @@ from ...models import ResponseError
 class AdminUpdateDSInformation(Operation):
     """Update Game Session DS Information for Asynchronous Process. (adminUpdateDSInformation)
 
-    Update Game Session DS Information for Asynchronous Process
+    This API is used for create custom DS asynchronously flow and is expected to be called after the service receives response from the Async RPC.
 
     Properties:
         url: /session/v1/admin/namespaces/{namespace}/gamesessions/{sessionId}/dsinformation

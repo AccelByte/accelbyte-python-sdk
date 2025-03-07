@@ -115,6 +115,11 @@ from ._update_xbl_iap_config import update_xbl_iap_config
 from ._delete_xbl_ap_config import delete_xbl_ap_config
 from ._update_xbl_bp_cert_file import update_xbl_bp_cert_file
 from ._query_third_party_notifications import query_third_party_notifications
+from ._query_abnormal_transactions import query_abnormal_transactions
+from ._admin_get_steam_job_info import admin_get_steam_job_info
+from ._admin_reset_steam_job_time import admin_reset_steam_job_time
+from ._admin_refund_iap_order import admin_refund_iap_order
+from ._query_steam_report_histories import query_steam_report_histories
 from ._query_third_party_subscription import query_third_party_subscription
 from ._get_iap_order_consume_details import get_iap_order_consume_details
 from ._download_invoice_details import download_invoice_details
@@ -149,6 +154,7 @@ from ._feature_item import feature_item
 from ._defeature_item import defeature_item
 from ._get_locale_item import get_locale_item
 from ._update_item_purchase_condition import update_item_purchase_condition
+from ._query_item_references import query_item_references
 from ._return_item import return_item
 from ._query_key_groups import query_key_groups
 from ._create_key_group import create_key_group
@@ -305,6 +311,11 @@ from ._query_user_iap_orders import query_user_iap_orders
 from ._query_all_user_iap_orders import query_all_user_iap_orders
 from ._query_user_iap_consume_history import query_user_iap_consume_history
 from ._mock_fulfill_iap_item import mock_fulfill_iap_item
+from ._admin_get_iap_order_line_items import admin_get_iap_order_line_items
+from ._admin_sync_steam_abnormal_transaction import (
+    admin_sync_steam_abnormal_transaction,
+)
+from ._admin_sync_steam_iap_by_transaction import admin_sync_steam_iap_by_transaction
 from ._query_user_third_party_subscription import query_user_third_party_subscription
 from ._get_third_party_platform_subscription_ownership_by_group_id import (
     get_third_party_platform_subscription_ownership_by_group_id,
@@ -529,6 +540,8 @@ from ._public_reconcile_play_station_store_with_multiple_service_labels import (
     public_reconcile_play_station_store_with_multiple_service_labels,
 )
 from ._sync_steam_inventory import sync_steam_inventory
+from ._sync_steam_abnormal_transaction import sync_steam_abnormal_transaction
+from ._sync_steam_iap_by_transaction import sync_steam_iap_by_transaction
 from ._public_query_user_third_party_subscription import (
     public_query_user_third_party_subscription,
 )
@@ -681,6 +694,11 @@ commands = [
     delete_xbl_ap_config,
     update_xbl_bp_cert_file,
     query_third_party_notifications,
+    query_abnormal_transactions,
+    admin_get_steam_job_info,
+    admin_reset_steam_job_time,
+    admin_refund_iap_order,
+    query_steam_report_histories,
     query_third_party_subscription,
     get_iap_order_consume_details,
     download_invoice_details,
@@ -715,6 +733,7 @@ commands = [
     defeature_item,
     get_locale_item,
     update_item_purchase_condition,
+    query_item_references,
     return_item,
     query_key_groups,
     create_key_group,
@@ -855,6 +874,9 @@ commands = [
     query_all_user_iap_orders,
     query_user_iap_consume_history,
     mock_fulfill_iap_item,
+    admin_get_iap_order_line_items,
+    admin_sync_steam_abnormal_transaction,
+    admin_sync_steam_iap_by_transaction,
     query_user_third_party_subscription,
     get_third_party_platform_subscription_ownership_by_group_id,
     get_third_party_platform_subscription_ownership_by_product_id,
@@ -1025,6 +1047,8 @@ commands = [
     public_reconcile_play_station_store,
     public_reconcile_play_station_store_with_multiple_service_labels,
     sync_steam_inventory,
+    sync_steam_abnormal_transaction,
+    sync_steam_iap_by_transaction,
     public_query_user_third_party_subscription,
     sync_twitch_drops_entitlement_1,
     sync_xbox_inventory,
