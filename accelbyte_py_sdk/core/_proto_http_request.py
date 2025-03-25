@@ -132,41 +132,62 @@ class SecuritiesResolver:
     ) -> Tuple[bool, Optional[str]]:
         if not securities:
             return True, None
+        fulfilled = False
         errors = []
         for security in securities:
-            fulfilled = True
+            fulfilled_security = True
+            fulfilled_requirements = set()
             s_errors = []
             for requirement in security:
                 if requirement == "BASIC_AUTH":
                     success, error = self._resolve_basic_auth(proto=proto)
                     if not success:
-                        fulfilled = False
+                        fulfilled_security = False
                         s_errors.append((requirement, error))
                         break
+                    else:
+                        fulfilled_requirements.add(requirement)
                 elif requirement == "BEARER_AUTH":
                     success, error = self._resolve_bearer_auth(proto=proto)
                     if not success:
-                        fulfilled = False
+                        fulfilled_security = False
                         s_errors.append((requirement, error))
                         break
+                    else:
+                        fulfilled_requirements.add(requirement)
                 elif requirement == "COOKIE_AUTH":
                     success, error = self._resolve_cookie_auth(proto=proto)
                     if not success:
-                        fulfilled = False
+                        fulfilled_security = False
                         s_errors.append((requirement, error))
                         break
+                    else:
+                        fulfilled_requirements.add(requirement)
                 else:
                     raise NotImplementedError()
-            if fulfilled:
-                return True, None
 
-            s_error = (
-                f"- tried to resolve security combination ({' && '.join(security)})"
-            )
-            for se in s_errors:
-                see = se[1] if se[1] else "*"
-                s_error += "\n" + f"  - {se[0]}: {see}"
-            errors.append(s_error)
+            if fulfilled_security:
+                if (
+                    "BASIC_AUTH" in fulfilled_requirements or
+                    "BEARER_AUTH" in fulfilled_requirements
+                ):
+                    return True, None  # exit early
+                else:
+                    # continue resolving other security requirements if we only resolved 'COOKIE_AUTH'
+                    fulfilled = True
+                    continue
+            else:
+                s_error = (
+                    f"- tried to resolve security combination ({' && '.join(security)})"
+                )
+                for se in s_errors:
+                    see = se[1] if se[1] else "*"
+                    s_error += "\n" + f"  - {se[0]}: {see}"
+                errors.append(s_error)
+
+        if fulfilled:
+            return True, None
+
         return False, "\n".join(errors)
 
 
