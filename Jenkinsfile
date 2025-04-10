@@ -16,7 +16,7 @@ bitbucketCommitHref = null
 
 pipeline {
   agent {
-    label "extend-builder-ci && !lima"
+    label "extend-builder-ci"
   }
   stages {
     stage('Prepare') {
