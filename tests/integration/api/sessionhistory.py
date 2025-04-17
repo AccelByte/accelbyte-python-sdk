@@ -52,9 +52,9 @@ class SessionHistoryTestCase(IntegrationTestCase):
     # region test:query_total_matchmaking_match
 
     def test_query_total_matchmaking_match(self):
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         self.skipTest(reason="Disabled")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         from accelbyte_py_sdk.api.sessionhistory import query_total_matchmaking_match
 

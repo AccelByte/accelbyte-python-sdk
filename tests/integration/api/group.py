@@ -50,22 +50,22 @@ class GroupTestCase(IntegrationTestCase):
         )
         if error:
             result, error = initiate_group_configuration_admin_v1()
-            # REDACT(start)
+            # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
             if error:
                 self.skipTest(reason="Failed to get and initiate group configuration.")
                 return
-            # REDACT(end)
+            # DOC-REDACT(end)
             self.group_admin_role_id = result.group_admin_role_id
             self.group_member_role_id = result.group_member_role_id
         else:
             self.group_admin_role_id = result.group_admin_role_id
             self.group_member_role_id = result.group_member_role_id
 
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if not self.group_admin_role_id or not self.group_member_role_id:
             self.skipTest(reason="Failed to get admin and member role IDs.")
             return
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         self.group_namespace = self.namespace
 
@@ -81,11 +81,11 @@ class GroupTestCase(IntegrationTestCase):
                 name="Python Extend SDK Configuration Code",
             )
         )
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"Failed to create group config. error: {str(error)}")
             return
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         result, error = get_user_group_information_public_v2(
             limit=10,

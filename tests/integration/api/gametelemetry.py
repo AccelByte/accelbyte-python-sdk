@@ -6,10 +6,10 @@ class GametelemetryTestCase(IntegrationTestCase):
     # region test:save_events_v1
 
     def test_save_events_v1(self):
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         from accelbyte_py_sdk.api.gametelemetry import (
             protected_save_events_game_telemetry_v1_protected_events_post,

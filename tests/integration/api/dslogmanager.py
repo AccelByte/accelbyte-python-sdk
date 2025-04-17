@@ -57,15 +57,15 @@ class DSLogManagerTestCase(IntegrationTestCase):
 
         # arrange
         pod_name = self.pre_fetch_pod_name()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if not pod_name:
             self.skipTest(reason="Can't get a pod name to use.")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if not self.pre_fetch_terminated_servers():
             self.skipTest(reason="No terminated servers to use.")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         # act
         _, error = check_server_logs(pod_name=self.pod_name)
@@ -80,15 +80,15 @@ class DSLogManagerTestCase(IntegrationTestCase):
         exported_file_path = Path(self.exported_filename)
         exported_file_path.unlink(missing_ok=True)
         pod_name = self.pre_fetch_pod_name()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if not pod_name:
             self.skipTest(reason="Can't get a pod name to use.")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if not self.pre_fetch_terminated_servers():
             self.skipTest(reason="No terminated servers to use.")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         # act
         result, error = download_server_logs(pod_name=self.pod_name)

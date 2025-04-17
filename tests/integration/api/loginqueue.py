@@ -5,10 +5,10 @@ class LoginQueueTestCase(IntegrationTestCase):
     # region test:admin_get_configuration
 
     def test_admin_get_configuration(self):
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         from accelbyte_py_sdk.api.loginqueue import admin_get_configuration
 
@@ -25,10 +25,10 @@ class LoginQueueTestCase(IntegrationTestCase):
     # region test:admin_update_configuration
 
     def test_admin_update_configuration(self):
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         from accelbyte_py_sdk.api.loginqueue import admin_update_configuration
         from accelbyte_py_sdk.api.loginqueue.models import ApimodelsConfigurationRequest

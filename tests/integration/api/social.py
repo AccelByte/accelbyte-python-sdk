@@ -207,10 +207,10 @@ class SocialTestCase(IntegrationTestCase):
         else:
             self.exist = True
 
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if not self.exist:
             self.skipTest(reason=f"Failed to set up stat.")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         user_id = self.get_user_id()
 

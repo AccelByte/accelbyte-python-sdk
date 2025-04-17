@@ -31,10 +31,10 @@ class TokenValidatorTestCase(IntegrationTestCase):
     def test_validate_token(self):
         # arrange
         generate_user_result, error = self.generate_user()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"unable to create user: {error}")
-        # REDACT(end)
+        # DOC-REDACT(end)
         username, password, user_id = generate_user_result
 
         self.user_id = user_id
@@ -44,22 +44,22 @@ class TokenValidatorTestCase(IntegrationTestCase):
             password=password,
             existing_sdk=SDK,
         )
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"unable to create user sdk: {error}")
         else:
             self.sdks.append(user_sdk)
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         namespace, error = user_sdk.get_namespace()
         if error:
             self.fail(msg="unable to get namespace")
 
         access_token = user_sdk.get_token_repository().get_access_token()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if access_token is None:
             self.skipTest(reason=f"unable to get access token")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         token_validator = CachingTokenValidator(sdk=SDK)
 
@@ -106,10 +106,10 @@ class TokenValidatorTestCase(IntegrationTestCase):
     def test_parse_access_token(self):
         # arrange
         generate_user_result, error = self.generate_user()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"unable to create user: {error}")
-        # REDACT(end)
+        # DOC-REDACT(end)
         username, password, user_id = generate_user_result
 
         self.user_id = user_id
@@ -119,18 +119,18 @@ class TokenValidatorTestCase(IntegrationTestCase):
             password=password,
             existing_sdk=SDK,
         )
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"unable to create user sdk: {error}")
         else:
             self.sdks.append(user_sdk)
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         access_token = user_sdk.get_token_repository().get_access_token()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if access_token is None:
             self.skipTest(reason=f"unable to get access token")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         claims, error = parse_access_token(access_token)
         self.assertIsNone(error)
@@ -142,10 +142,10 @@ class TokenValidatorTestCase(IntegrationTestCase):
     def test_parse_and_iam_validate_access_token(self):
         # arrange
         generate_user_result, error = self.generate_user()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"unable to create user: {error}")
-        # REDACT(end)
+        # DOC-REDACT(end)
         username, password, user_id = generate_user_result
 
         self.user_id = user_id
@@ -155,18 +155,18 @@ class TokenValidatorTestCase(IntegrationTestCase):
             password=password,
             existing_sdk=SDK,
         )
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"unable to create user sdk: {error}")
         else:
             self.sdks.append(user_sdk)
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         access_token = user_sdk.get_token_repository().get_access_token()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if access_token is None:
             self.skipTest(reason=f"unable to get access token")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         claims, error = parse_access_token(access_token, validator="iam")
         self.assertIsNone(error, error)
@@ -178,10 +178,10 @@ class TokenValidatorTestCase(IntegrationTestCase):
     def test_parse_and_local_validate_access_token(self):
         # arrange
         generate_user_result, error = self.generate_user()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"unable to create user: {error}")
-        # REDACT(end)
+        # DOC-REDACT(end)
         username, password, user_id = generate_user_result
 
         self.user_id = user_id
@@ -191,18 +191,18 @@ class TokenValidatorTestCase(IntegrationTestCase):
             password=password,
             existing_sdk=SDK,
         )
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"unable to create user sdk: {error}")
         else:
             self.sdks.append(user_sdk)
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         access_token = user_sdk.get_token_repository().get_access_token()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if access_token is None:
             self.skipTest(reason=f"unable to get access token")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         token_validator = CachingTokenValidator(sdk=SDK)
 

@@ -123,10 +123,10 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
 
         # arrange
         generate_user_result, error = self.generate_user()
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"unable to create user: {error}")
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         username, password, user_id = generate_user_result
         self.user_id = user_id
@@ -136,12 +136,12 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
             password=password,
             existing_sdk=SDK,
         )
-        # REDACT(start)
+        # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
         if error:
             self.skipTest(reason=f"unable to create user sdk: {error}")
         else:
             self.sdks.append(user_sdk)
-        # REDACT(end)
+        # DOC-REDACT(end)
 
         token_repo = user_sdk.get_token_repository()
 
@@ -177,13 +177,13 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
                     wsm_type = wsm.get_type()
                     if wsm_type == "refreshTokenResponse":
                         break
-            # REDACT(start)
+            # DOC-REDACT(start): this tag will remove this section from the common use cases markdown file
             if elapsed > timeout:
                 self.skipTest(
                     reason=f"did not get 'refreshTokenResponse' message within {timeout} seconds"
                 )
                 break
-            # REDACT(end)
+            # DOC-REDACT(end)
 
         # assert
         self.assertTrue(new_access_token)
