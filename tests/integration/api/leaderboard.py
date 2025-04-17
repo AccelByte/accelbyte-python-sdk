@@ -49,14 +49,18 @@ class LeaderboardTestCase(IntegrationTestCase):
         self.stat_create.stat_code = self.leaderboard_code
 
         _, error = create_stat(body=self.stat_create, namespace=self.namespace)
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"Failed to create stat: {error}")
+        # REDACT(end)
 
         self.stat_create.name = f"{self.leaderboard_code}2"
         self.stat_create.stat_code = f"{self.leaderboard_code}2"
         _, error = create_stat(body=self.stat_create, namespace=self.namespace)
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"Failed to create stat 2: {error}")
+        # REDACT(end)
 
     def tearDown(self) -> None:
         from accelbyte_py_sdk.api.leaderboard import (

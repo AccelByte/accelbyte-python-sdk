@@ -57,11 +57,15 @@ class DSLogManagerTestCase(IntegrationTestCase):
 
         # arrange
         pod_name = self.pre_fetch_pod_name()
+        # REDACT(start)
         if not pod_name:
             self.skipTest(reason="Can't get a pod name to use.")
+        # REDACT(end)
 
+        # REDACT(start)
         if not self.pre_fetch_terminated_servers():
             self.skipTest(reason="No terminated servers to use.")
+        # REDACT(end)
 
         # act
         _, error = check_server_logs(pod_name=self.pod_name)
@@ -76,11 +80,15 @@ class DSLogManagerTestCase(IntegrationTestCase):
         exported_file_path = Path(self.exported_filename)
         exported_file_path.unlink(missing_ok=True)
         pod_name = self.pre_fetch_pod_name()
+        # REDACT(start)
         if not pod_name:
             self.skipTest(reason="Can't get a pod name to use.")
+        # REDACT(end)
 
+        # REDACT(start)
         if not self.pre_fetch_terminated_servers():
             self.skipTest(reason="No terminated servers to use.")
+        # REDACT(end)
 
         # act
         result, error = download_server_logs(pod_name=self.pod_name)

@@ -30,6 +30,7 @@ class PlatformTestCase(IntegrationTestCase):
                     if not isinstance(store_info, StoreInfo) or store_info.published:
                         continue
                     _, delete_error = delete_store(store_id=store_info.store_id)
+                    # REDACT(start)
                     if delete_error is not None:
                         raise self.skipTest(
                             reason=f"Failed to delete unpublished (draft) store: {store_info.title} ({store_info.store_id})"
@@ -38,6 +39,8 @@ class PlatformTestCase(IntegrationTestCase):
                         self.log_info(
                             f"Deleted unpublished (draft) store: {store_info.title} ({store_info.store_id})"
                         )
+                    # REDACT(end)
+
             self.did_delete_drafts = True
 
         result, error = create_store(body=body)
@@ -149,8 +152,10 @@ class PlatformTestCase(IntegrationTestCase):
         exported_file_path.unlink(missing_ok=True)
 
         _, error, store_id = self.do_create_store(body=self.store_create)
+        # REDACT(start)
         if error is not None:
             self.skipTest(reason=f"Failed to create store. {str(error)}")
+        # REDACT(end)
         self.store_id = store_id
 
         # act
@@ -198,19 +203,25 @@ class PlatformTestCase(IntegrationTestCase):
         exported_file_path.unlink(missing_ok=True)
 
         _, error, store_id = self.do_create_store(body=self.store_create)
+        # REDACT(start)
         if error is not None:
             self.skipTest(reason=f"Failed to create store. {str(error)}")
+        # REDACT(end)
         self.store_id = store_id
 
         result, error = export_store_1(store_id=self.store_id)
+        # REDACT(start)
         if error is not None:
             self.skipTest(reason=f"Failed to export store. {str(error)}")
         if result is None:
             self.skipTest(reason="Exported store not found.")
+        # REDACT(end)
 
         exported_file_path.write_bytes(result)
+        # REDACT(start)
         if not exported_file_path.exists():
             self.skipTest(reason="Failed to save exported store.")
+        # REDACT(end)
 
         # act
         with exported_file_path.open("rb") as exported_file:

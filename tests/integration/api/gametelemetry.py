@@ -6,10 +6,11 @@ class GametelemetryTestCase(IntegrationTestCase):
     # region test:save_events_v1
 
     def test_save_events_v1(self):
+        # REDACT(start)
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
+        # REDACT(end)
 
-        from datetime import datetime
         from accelbyte_py_sdk.api.gametelemetry import (
             protected_save_events_game_telemetry_v1_protected_events_post,
         )

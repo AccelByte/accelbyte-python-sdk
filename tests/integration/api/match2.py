@@ -163,9 +163,11 @@ class Match2TestCase(IntegrationTestCase):
 
         # act
         error = Match2TestCase.do_create_rule_set(rule_set_name=rule_set_name)
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"Unable to create rule set: {error}")
             return
+        # REDACT(end)
         if error is None:
             self.rule_set_name = rule_set_name
 
@@ -195,8 +197,10 @@ class Match2TestCase(IntegrationTestCase):
             rule_set_name=rule_set_name,
             session_template_name=session_template_name,
         )
+        # REDACT(start)
         if pre_error:
             self.skipTest(reason=pre_error)
+        # REDACT(end)
         if error is None:
             self.match_pool_name = match_pool_name
             self.rule_set_name = rule_set_name
@@ -228,8 +232,10 @@ class Match2TestCase(IntegrationTestCase):
             rule_set_name=rule_set_name,
             session_template_name=session_template_name,
         )
+        # REDACT(start)
         if pre_error:
             self.skipTest(reason=pre_error)
+        # REDACT(end)
         if error is None:
             self.match_pool_name = match_pool_name
             self.rule_set_name = rule_set_name
@@ -259,14 +265,15 @@ class Match2TestCase(IntegrationTestCase):
             rule_set_name=rule_set_name,
             session_template_name=session_template_name,
         )
+        # REDACT(start)
         if pre_error:
             self.skipTest(reason=pre_error)
         if error:
             self.skipTest(reason=f"unable to create match pool: {error}")
-        else:
-            self.match_pool_name = match_pool_name
-            self.rule_set_name = rule_set_name
-            self.session_template_name = session_template_name
+        # REDACT(end)
+        self.match_pool_name = match_pool_name
+        self.rule_set_name = rule_set_name
+        self.session_template_name = session_template_name
 
         # act
         _, error = delete_match_pool(pool=match_pool_name)
@@ -298,18 +305,21 @@ class Match2TestCase(IntegrationTestCase):
             rule_set_name=rule_set_name,
             session_template_name=session_template_name,
         )
+        # REDACT(start)
         if pre_error:
             self.skipTest(reason=pre_error)
         if error:
             self.skipTest(reason=f"unable to create match pool: {error}")
-        else:
-            self.match_pool_name = match_pool_name
-            self.rule_set_name = rule_set_name
-            self.session_template_name = session_template_name
+        # REDACT(end)
+        self.match_pool_name = match_pool_name
+        self.rule_set_name = rule_set_name
+        self.session_template_name = session_template_name
 
         generate_user_result, error = self.generate_user()
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"unable to create user: {error}")
+        # REDACT(end)
 
         username, password, user_id = generate_user_result
         self.user_id = user_id
@@ -319,10 +329,12 @@ class Match2TestCase(IntegrationTestCase):
             password=password,
             existing_sdk=SDK,
         )
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"unable to create user sdk: {error}")
         else:
             self.sdks.append(user_sdk)
+        # REDACT(end)
 
         result, error = session_service.public_create_party(
             body=session_models.ApimodelsCreatePartyRequest.create_from_dict(
@@ -335,11 +347,13 @@ class Match2TestCase(IntegrationTestCase):
             ),
             sdk=user_sdk,
         )
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"unable to create party: {error}")
 
         if not (party_id := getattr(result, "id_", None)):
             self.skipTest(reason=f"unable to find party id: {error}")
+        # REDACT(end)
 
         # act & assert (create_match_ticket)
         result, error = match2_service.create_match_ticket(

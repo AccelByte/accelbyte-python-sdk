@@ -70,8 +70,10 @@ class ChatTestCase(IntegrationTestCase):
         result, error, profanity_id = self.do_create_profanity(
             body=self.dict_insert_request
         )
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"Failed to set up profanity. {error}")
+        # REDACT(end)
         self.profanity_id = profanity_id
 
         # act
@@ -91,8 +93,10 @@ class ChatTestCase(IntegrationTestCase):
         result, error, profanity_id = self.do_create_profanity(
             body=self.dict_insert_request
         )
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"Failed to set up profanity. {error}")
+        # REDACT(end)
         self.profanity_id = profanity_id
 
         # act
@@ -114,8 +118,10 @@ class ChatTestCase(IntegrationTestCase):
         result, error, profanity_id = self.do_create_profanity(
             body=self.dict_insert_request
         )
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"Failed to set up profanity. {error}")
+        # REDACT(end)
         self.profanity_id = profanity_id
 
         # act

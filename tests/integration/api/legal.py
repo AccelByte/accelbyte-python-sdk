@@ -60,8 +60,10 @@ class LegalTestCase(IntegrationTestCase):
         self.assertIsNotNone(result)
         self.assertIsInstance(result, list)
 
+        # REDACT(start)
         if len(result) == 0:
             self.skipTest(reason="No policy to accept found.")
+        # REDACT(end)
 
         accepted_agreement: RetrieveAcceptedAgreementResponse = result[0]
         self.assertIsInstance(accepted_agreement, RetrieveAcceptedAgreementResponse)
@@ -106,8 +108,10 @@ class LegalTestCase(IntegrationTestCase):
         self.assertIsNotNone(result)
         self.assertIsInstance(result, list)
 
+        # REDACT(start)
         if len(result) == 0:
             self.skipTest(reason="No policy with 'Marketing Preference' type found.")
+        # REDACT(end)
         accepted_agreement: RetrieveAcceptedAgreementResponse = next(
             (
                 agreement
@@ -117,8 +121,10 @@ class LegalTestCase(IntegrationTestCase):
             ),
             None,
         )
+        # REDACT(start)
         if accepted_agreement is None:
             self.skipTest(reason="No policy with 'Marketing Preference' type found.")
+        # REDACT(end)
 
         policy_id: str = accepted_agreement.policy_id
         self.assertIsNotNone(policy_id)
@@ -194,9 +200,11 @@ class LegalTestCase(IntegrationTestCase):
         base_policy_name: str = "Python Extend SDK Test Policy"
 
         result, error = retrieve_all_legal_policies()
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"Failed to get all legal policies: {error}")
             return
+        # REDACT(end)
 
         target_policy_id: str = ""
 
@@ -209,9 +217,11 @@ class LegalTestCase(IntegrationTestCase):
 
         if not target_policy_id:
             result, error = retrieve_all_policy_types(limit=100, offset=0)
+            # REDACT(start)
             if error:
                 self.skipTest(reason=f"Failed to get all policy types: {error}")
                 return
+            # REDACT(end)
 
             marketing_pref_policy_type_id: str = ""
 
@@ -223,9 +233,11 @@ class LegalTestCase(IntegrationTestCase):
                     marketing_pref_policy_type_id = policy_type.id_
                     break
 
+            # REDACT(start)
             if not marketing_pref_policy_type_id:
                 self.skipTest(reason=f"Failed to find marketing policy type.")
                 return
+            # REDACT(end)
 
             result, error = create_policy(
                 body=CreateBasePolicyRequest.create(
@@ -237,9 +249,11 @@ class LegalTestCase(IntegrationTestCase):
                     affected_countries=["ID"],
                 ),
             )
+            # REDACT(start)
             if error:
                 self.skipTest(reason=f"Failed to create policy: {error}")
                 return
+            # REDACT(end)
 
             target_policy_id = result.policy_id
 
@@ -248,9 +262,11 @@ class LegalTestCase(IntegrationTestCase):
         result, error = retrieve_single_policy_version(
             policy_id=target_policy_id,
         )
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"Failed to get policy versions: {error}")
             return
+        # REDACT(end)
 
         target_policy_version_id: str = ""
 

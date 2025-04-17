@@ -82,10 +82,12 @@ class SessionTestCase(IntegrationTestCase):
     # region test:admin_delete_configuration_template_v1
 
     def test_admin_delete_configuration_template_v1(self):
+        # REDACT(start)
         if self.using_ags_starter:
             self.skipTest(
                 reason="Test is temporarily disabled in AGS Starter due to issue in session service."
             )
+        # REDACT(end)
 
         from accelbyte_py_sdk.core import generate_id
         from accelbyte_py_sdk.api.session import admin_delete_configuration_template_v1
@@ -94,8 +96,10 @@ class SessionTestCase(IntegrationTestCase):
         rid = generate_id(8)
         template_name = f"python_sdk_template_{rid}"
         error = self.do_create_configuration_template(template_name=template_name)
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"unable to create configuration template: {error}")
+        # REDACT(end)
 
         # act
         _, error = admin_delete_configuration_template_v1(name=template_name)
@@ -136,22 +140,28 @@ class SessionTestCase(IntegrationTestCase):
             rid = generate_id(8)
             template_name = f"python_sdk_template_{rid}"
             error = self.do_create_configuration_template(template_name=template_name)
+            # REDACT(start)
             if error:
                 self.skipTest(
                     reason=f"unable to create configuration template: {error}"
                 )
             else:
                 self.template_name = template_name
+            # REDACT(end)
 
             generate_user1_result, error = self.generate_user()
+            # REDACT(start)
             if error:
                 self.skipTest(reason=f"unable to create user1: {error}")
+            # REDACT(end)
             username1, password1, user_id1 = generate_user1_result
             self.user_ids.append(user_id1)
 
             generate_user2_result, error = self.generate_user()
+            # REDACT(start)
             if error:
                 self.skipTest(reason=f"unable to create user2: {error}")
+            # REDACT(end)
             username2, password2, user_id2 = generate_user2_result
             self.user_ids.append(user_id2)
 
@@ -160,20 +170,24 @@ class SessionTestCase(IntegrationTestCase):
                 password=password1,
                 existing_sdk=SDK,
             )
+            # REDACT(start)
             if error:
                 self.skipTest(reason=f"unable to create user1 sdk: {error}")
             else:
                 self.sdks.append(user_sdk1)
+            # REDACT(end)
 
             user_sdk2, error = self.create_user_sdk(
                 username=username2,
                 password=password2,
                 existing_sdk=SDK,
             )
+            # REDACT(start)
             if error:
                 self.skipTest(reason=f"unable to create user2 sdk: {error}")
             else:
                 self.sdks.append(user_sdk2)
+            # REDACT(end)
 
             # act & assert (create_game_session)
             result, error = session_service.create_game_session(
@@ -222,8 +236,10 @@ class SessionTestCase(IntegrationTestCase):
     # region test:party_flow
 
     def test_party_flow(self):
+        # REDACT(start)
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
+        # REDACT(end)
 
         from accelbyte_py_sdk.core import SDK, generate_id
         import accelbyte_py_sdk.api.session as session_service
@@ -234,22 +250,28 @@ class SessionTestCase(IntegrationTestCase):
             rid = generate_id(8)
             template_name = f"python_sdk_template_{rid}"
             error = self.do_create_configuration_template(template_name=template_name)
+            # REDACT(start)
             if error:
                 self.skipTest(
                     reason=f"unable to create configuration template: {error}"
                 )
             else:
                 self.template_name = template_name
+            # REDACT(end)
 
             generate_user1_result, error = self.generate_user()
+            # REDACT(end)
             if error:
                 self.skipTest(reason=f"unable to create user1: {error}")
+            # REDACT(end)
             username1, password1, user_id1 = generate_user1_result
             self.user_ids.append(user_id1)
 
             generate_user2_result, error = self.generate_user()
+            # REDACT(start)
             if error:
                 self.skipTest(reason=f"unable to create user2: {error}")
+            # REDACT(end)
             username2, password2, user_id2 = generate_user2_result
             self.user_ids.append(user_id2)
 
@@ -258,20 +280,24 @@ class SessionTestCase(IntegrationTestCase):
                 password=password1,
                 existing_sdk=SDK,
             )
+            # REDACT(start)
             if error:
                 self.skipTest(reason=f"unable to create user1 sdk: {error}")
             else:
                 self.sdks.append(user_sdk1)
+            # REDACT(end)
 
             user_sdk2, error = self.create_user_sdk(
                 username=username2,
                 password=password2,
                 existing_sdk=SDK,
             )
+            # REDACT(start)
             if error:
                 self.skipTest(reason=f"unable to create user2 sdk: {error}")
             else:
                 self.sdks.append(user_sdk2)
+            # REDACT(end)
 
             # act & assert (public_create_party)
             result, error = session_service.public_create_party(

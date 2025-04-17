@@ -68,10 +68,12 @@ class ReportingTestCase(IntegrationTestCase):
         # arrange
         reason_title = generate_id(64)
         result, error, reason_id = self.do_create_reason(title=reason_title)
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"Failed to setup reason. {str(error)}")
         else:
             self.reason_id = reason_id
+        # REDACT(end)
 
         # act
         _, error = reporting_service.delete_reason(

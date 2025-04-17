@@ -41,8 +41,10 @@ class AuthServicesTestCase(IntegrationTestCase):
         self.logger.setLevel(logging.WARNING)
 
         client_id = os.environ.get("PUBLIC_AB_CLIENT_ID", None)
+        # REDACT(start)
         if client_id is None:
             self.skipTest(reason="Failed to get PUBLIC_AB_CLIENT_ID")
+        # REDACT(end)
 
         # act
         with self.assertLogs(logger=self.logger, level=logging.WARNING) as cm:
@@ -111,15 +113,19 @@ class AuthServicesTestCase(IntegrationTestCase):
     # region test:login_platform
 
     def test_login_platform(self):
+        # REDACT(start)
         if self.using_ags_starter:
             self.skipTest(reason="Invalid for AGS.")
+        # REDACT(end)
 
         import os
         import requests
         from accelbyte_py_sdk.services.auth import login_platform
 
         # arrange
-        phantauth_url = os.environ.get("AB_PHANTAUTH_BASE_URL")
+        phantauth_url = os.environ.get(
+            "AB_PHANTAUTH_BASE_URL", "https://phantauth.tools.accelbyte.net"
+        )
 
         client_id = "test.client"
         client_secret = "UTBcWwt5"
@@ -143,8 +149,10 @@ class AuthServicesTestCase(IntegrationTestCase):
                 }
             )
         )
+        # REDACT(start)
         if not response.ok:
             self.skipTest(reason=f"Failed to get PhantAuth Code ({phantauth_host}).")
+        # REDACT(end)
 
         phantauth_code = response.text
         self.assertTrue(phantauth_code)
@@ -163,8 +171,10 @@ class AuthServicesTestCase(IntegrationTestCase):
                 "code": phantauth_code,
             },
         )
+        # REDACT(start)
         if not response.ok:
             self.skipTest(reason=f"Failed to get PhantAuth Token ({phantauth_host}).")
+        # REDACT(end)
 
         phantauth_token = response.json()
         self.assertTrue(phantauth_token)

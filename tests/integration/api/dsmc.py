@@ -33,6 +33,7 @@ class DSMCTestCase(IntegrationTestCase):
         if result is not None:
             exported_file_path.write_bytes(result)
 
+        # REDACT(start)
         if (
             error
             and isinstance(error, ResponseError)
@@ -40,6 +41,7 @@ class DSMCTestCase(IntegrationTestCase):
             and "does not exist" in error.error_message
         ):
             self.skipTest(reason=f"No config to export. {str(error)}")
+        # REDACT(end)
 
         # assert
         self.assertIsNone(error, error)
@@ -56,9 +58,11 @@ class DSMCTestCase(IntegrationTestCase):
         result, error = get_deployment(
             deployment=deployment_name,
         )
+        # REDACT(start)
         if error:
             self.skipTest(reason="unable to get deployment")
             return
+        # REDACT(end)
 
         # act
         _, error = update_deployment(
@@ -92,9 +96,11 @@ class DSMCTestCase(IntegrationTestCase):
         result, error = get_deployment(
             deployment=deployment_name,
         )
+        # REDACT(start)
         if error:
             self.skipTest(reason="unable to get deployment")
             return
+        # REDACT(end)
 
         # act
         _, error = update_deployment(
@@ -164,8 +170,10 @@ class DSMCSessionTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.api.sessionbrowser.models import ModelsGameSessionSetting
 
         namespace, error = get_namespace()
+        # REDACT(start)
         if error:
             self.skipTest(reason="Failed to get namespace.")
+        # REDACT(end)
 
         current_player: int = 0
         max_player: int = 10
@@ -202,14 +210,18 @@ class DSMCSessionTestCase(IntegrationTestCase):
 
         super().setUp()
         _, error, session_id = self.do_session_browser_create_session()
+        # REDACT(start)
         if error is not None:
             self.skipTest(
                 reason=f"Failed to set up SessionBrowser session. {str(error)}"
             )
+        # REDACT(end)
 
         namespace, error = get_namespace()
+        # REDACT(start)
         if error:
             self.skipTest(reason="Failed to get namespace.")
+        # REDACT(end)
 
         self.session_id = session_id
         self.models_create_session_request.session_id = self.session_id
@@ -249,8 +261,10 @@ class DSMCSessionTestCase(IntegrationTestCase):
         super().tearDown()
 
     def test_claim_server(self):
+        # REDACT(start)
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
+        # REDACT(end)
 
         from accelbyte_py_sdk.api.dsmc import claim_server
         from accelbyte_py_sdk.api.dsmc import create_session
@@ -287,8 +301,10 @@ class DSMCSessionTestCase(IntegrationTestCase):
             self.assertIsNone(error, error)
 
     def test_create_session(self):
+        # REDACT(start)
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
+        # REDACT(end)
 
         from accelbyte_py_sdk.api.dsmc import create_session
         from accelbyte_py_sdk.api.dsmc import delete_session
@@ -307,8 +323,10 @@ class DSMCSessionTestCase(IntegrationTestCase):
         self.assertIsNone(error, error)
 
     def test_get_session(self):
+        # REDACT(start)
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
+        # REDACT(end)
 
         from accelbyte_py_sdk.api.dsmc import create_session
         from accelbyte_py_sdk.api.dsmc import get_session

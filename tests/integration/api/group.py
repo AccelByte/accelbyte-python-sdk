@@ -36,8 +36,8 @@ class GroupTestCase(IntegrationTestCase):
     def setUp(self) -> None:
         from accelbyte_py_sdk.api.group import get_group_configuration_admin_v1
         from accelbyte_py_sdk.api.group import initiate_group_configuration_admin_v1
-        from accelbyte_py_sdk.api.group import create_group_configuration_admin_v1
         from accelbyte_py_sdk.api.group import leave_group_public_v2
+        from accelbyte_py_sdk.api.group import create_group_configuration_admin_v1
         from accelbyte_py_sdk.api.group import get_user_group_information_public_v2
         from accelbyte_py_sdk.api.group.models import (
             ModelsCreateGroupConfigurationRequestV1,
@@ -50,19 +50,22 @@ class GroupTestCase(IntegrationTestCase):
         )
         if error:
             result, error = initiate_group_configuration_admin_v1()
+            # REDACT(start)
             if error:
                 self.skipTest(reason="Failed to get and initiate group configuration.")
                 return
-            else:
-                self.group_admin_role_id = result.group_admin_role_id
-                self.group_member_role_id = result.group_member_role_id
+            # REDACT(end)
+            self.group_admin_role_id = result.group_admin_role_id
+            self.group_member_role_id = result.group_member_role_id
         else:
             self.group_admin_role_id = result.group_admin_role_id
             self.group_member_role_id = result.group_member_role_id
 
+        # REDACT(start)
         if not self.group_admin_role_id or not self.group_member_role_id:
             self.skipTest(reason="Failed to get admin and member role IDs.")
             return
+        # REDACT(end)
 
         self.group_namespace = self.namespace
 
@@ -78,9 +81,11 @@ class GroupTestCase(IntegrationTestCase):
                 name="Python Extend SDK Configuration Code",
             )
         )
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"Failed to create group config. error: {str(error)}")
             return
+        # REDACT(end)
 
         result, error = get_user_group_information_public_v2(
             limit=10,

@@ -52,7 +52,9 @@ class SessionHistoryTestCase(IntegrationTestCase):
     # region test:query_total_matchmaking_match
 
     def test_query_total_matchmaking_match(self):
+        # REDACT(start)
         self.skipTest(reason="Disabled")
+        # REDACT(end)
 
         from accelbyte_py_sdk.api.sessionhistory import query_total_matchmaking_match
 

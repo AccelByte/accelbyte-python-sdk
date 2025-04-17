@@ -296,8 +296,10 @@ class IAMTestCase(IntegrationTestCase):
     # region test:admin_download_my_backup_codes_v4
 
     def test_admin_download_my_backup_codes_v4(self):
+        # REDACT(start)
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
+        # REDACT(end)
 
         from accelbyte_py_sdk.api.iam import admin_download_my_backup_codes_v4
         from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -308,11 +310,13 @@ class IAMTestCase(IntegrationTestCase):
 
         # act
         result, error = admin_download_my_backup_codes_v4()
+        # REDACT(start)
         if error and isinstance(error, RestErrorResponse):
             if error.error_code == 10191:  # email not verified
                 self.skipTest(reason=error.error_message)
             if error.error_code == 10192:  # factor not enabled
                 self.skipTest(reason=error.error_message)
+        # REDACT(end)
 
         if result is not None:
             exported_file_path.write_bytes(result)
@@ -327,8 +331,10 @@ class IAMTestCase(IntegrationTestCase):
     # region test:public_download_my_backup_codes_v4
 
     def test_public_download_my_backup_codes_v4(self):
+        # REDACT(start)
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
+        # REDACT(end)
 
         from accelbyte_py_sdk.api.iam import public_download_my_backup_codes_v4
         from accelbyte_py_sdk.api.iam.models import RestErrorResponse
@@ -339,11 +345,13 @@ class IAMTestCase(IntegrationTestCase):
 
         # act
         result, error = public_download_my_backup_codes_v4()
+        # REDACT(start)
         if error and isinstance(error, RestErrorResponse):
             if error.error_code == 10191:  # email not verified
                 self.skipTest(reason=error.error_message)
             if error.error_code == 10192:  # factor not enabled
                 self.skipTest(reason=error.error_message)
+        # REDACT(end)
 
         if result is not None:
             exported_file_path.write_bytes(result)
@@ -358,8 +366,10 @@ class IAMTestCase(IntegrationTestCase):
     # region test:role_override
 
     def test_role_override(self):
+        # REDACT(start)
         if self.using_ags_starter:
             self.skipTest(reason="Test not applicable to AGS Starter.")
+        # REDACT(end)
 
         from accelbyte_py_sdk.api import iam as iam_service
         from accelbyte_py_sdk.api.iam import models as iam_models

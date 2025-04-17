@@ -123,8 +123,10 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
 
         # arrange
         generate_user_result, error = self.generate_user()
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"unable to create user: {error}")
+        # REDACT(end)
 
         username, password, user_id = generate_user_result
         self.user_id = user_id
@@ -134,10 +136,12 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
             password=password,
             existing_sdk=SDK,
         )
+        # REDACT(start)
         if error:
             self.skipTest(reason=f"unable to create user sdk: {error}")
         else:
             self.sdks.append(user_sdk)
+        # REDACT(end)
 
         token_repo = user_sdk.get_token_repository()
 
@@ -173,11 +177,13 @@ class AsyncLobbyTestCase(AsyncIntegrationTestCase):
                     wsm_type = wsm.get_type()
                     if wsm_type == "refreshTokenResponse":
                         break
+            # REDACT(start)
             if elapsed > timeout:
                 self.skipTest(
                     reason=f"did not get 'refreshTokenResponse' message within {timeout} seconds"
                 )
                 break
+            # REDACT(end)
 
         # assert
         self.assertTrue(new_access_token)

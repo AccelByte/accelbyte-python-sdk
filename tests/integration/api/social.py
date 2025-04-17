@@ -207,8 +207,10 @@ class SocialTestCase(IntegrationTestCase):
         else:
             self.exist = True
 
+        # REDACT(start)
         if not self.exist:
             self.skipTest(reason=f"Failed to set up stat.")
+        # REDACT(end)
 
         user_id = self.get_user_id()
 
