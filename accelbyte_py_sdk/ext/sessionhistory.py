@@ -186,6 +186,7 @@ def create_apimodels_game_session_detail_example() -> ApimodelsGameSessionDetail
     instance = ApimodelsGameSessionDetail()
     instance.active = randomize("bool")
     instance.created_at = randomize()
+    instance.ds_status_v2 = randomize()
     instance.ended = randomize("bool")
     instance.histories = [create_apimodels_history_example()]
     instance.joinability = randomize()
@@ -258,6 +259,7 @@ def create_apimodels_matchmaking_detail_example() -> ApimodelsMatchmakingDetail:
     instance.match_rule = randomize()
     instance.namespace = randomize("slug")
     instance.party_session_id = randomize()
+    instance.rule_set = {randomize(): randomize()}
     instance.ticket_id = randomize()
     return instance
 

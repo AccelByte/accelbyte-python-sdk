@@ -1125,6 +1125,7 @@ async def append_team_game_session_async(
 @same_doc_as(CreateGameSession)
 def create_game_session(
     body: ApimodelsCreateGameSessionRequest,
+    resolve_max_active_session: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1221,6 +1222,8 @@ def create_game_session(
 
         namespace: (namespace) REQUIRED str in path
 
+        resolve_max_active_session: (resolveMaxActiveSession) OPTIONAL bool in query
+
     Responses:
         201: Created - ApimodelsGameSessionResponse (Created)
 
@@ -1238,6 +1241,7 @@ def create_game_session(
             return None, error
     request = CreateGameSession.create(
         body=body,
+        resolve_max_active_session=resolve_max_active_session,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1246,6 +1250,7 @@ def create_game_session(
 @same_doc_as(CreateGameSession)
 async def create_game_session_async(
     body: ApimodelsCreateGameSessionRequest,
+    resolve_max_active_session: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1342,6 +1347,8 @@ async def create_game_session_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        resolve_max_active_session: (resolveMaxActiveSession) OPTIONAL bool in query
+
     Responses:
         201: Created - ApimodelsGameSessionResponse (Created)
 
@@ -1359,6 +1366,7 @@ async def create_game_session_async(
             return None, error
     request = CreateGameSession.create(
         body=body,
+        resolve_max_active_session=resolve_max_active_session,
         namespace=namespace,
     )
     return await run_request_async(

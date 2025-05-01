@@ -82,6 +82,7 @@ from ..api.iam.models import AccountcommonPlatformAccount
 from ..api.iam.models import AccountcommonPlatformLinkingHistory
 from ..api.iam.models import AccountcommonPlatformUserInformationV3
 from ..api.iam.models import AccountcommonProfileUpdateConfig
+from ..api.iam.models import AccountcommonQueryCursor
 from ..api.iam.models import AccountcommonRegisteredDomain
 from ..api.iam.models import AccountcommonReplaceRolePermission
 from ..api.iam.models import AccountcommonRole
@@ -129,6 +130,7 @@ from ..api.iam.models import ClientmodelV3ClientUpdateSecretRequest
 from ..api.iam.models import LegalAcceptedPoliciesRequest
 from ..api.iam.models import ModelAccountProgressionInfo
 from ..api.iam.models import ModelAddUserRoleV4Request
+from ..api.iam.models import ModelAdminBulkUserRequest
 from ..api.iam.models import ModelAgeRestrictionRequest
 from ..api.iam.models import ModelAgeRestrictionRequestV3
 from ..api.iam.models import ModelAgeRestrictionResponse
@@ -153,6 +155,9 @@ from ..api.iam.models import ModelCountryBlacklistResponse
 from ..api.iam.models import ModelCountryResponse
 from ..api.iam.models import ModelCountryV3Response
 from ..api.iam.models import ModelCreateJusticeUserResponse
+from ..api.iam.models import ModelCursorGetUserRequest
+from ..api.iam.models import ModelCursorGetUserResponse
+from ..api.iam.models import ModelCursorGetUserResponseData
 from ..api.iam.models import ModelDeviceBanRequestV4
 from ..api.iam.models import ModelDeviceBanResponseV4
 from ..api.iam.models import ModelDeviceBanUpdateRequestV4
@@ -172,6 +177,8 @@ from ..api.iam.models import ModelEnabledFactorsResponseV4
 from ..api.iam.models import ModelFailedBanUnbanUserV3
 from ..api.iam.models import ModelFieldUpdateAllowStatus
 from ..api.iam.models import ModelForgotPasswordRequestV3
+from ..api.iam.models import ModelForgotPasswordResponseV3
+from ..api.iam.models import ModelForgotPasswordWithoutNamespaceRequestV3
 from ..api.iam.models import ModelGetAdminUsersResponse
 from ..api.iam.models import ModelGetBulkUserBansRequest
 from ..api.iam.models import ModelGetLinkHeadlessAccountConflictResponse
@@ -189,6 +196,7 @@ from ..api.iam.models import ModelInputValidationDataPublic
 from ..api.iam.models import ModelInputValidationUpdatePayload
 from ..api.iam.models import ModelInputValidationsPublicResponse
 from ..api.iam.models import ModelInputValidationsResponse
+from ..api.iam.models import ModelInternalConfigResponseV3
 from ..api.iam.models import ModelInvitationHistoryResponse
 from ..api.iam.models import ModelInviteUserRequestV3
 from ..api.iam.models import ModelInviteUserRequestV4
@@ -276,6 +284,7 @@ from ..api.iam.models import ModelSendVerificationLinkRequest
 from ..api.iam.models import ModelSimpleProfileUpdateStrategyConfigs
 from ..api.iam.models import ModelSimpleUserBan
 from ..api.iam.models import ModelTagCreateRequestV3
+from ..api.iam.models import ModelTagDetail
 from ..api.iam.models import ModelTagUpdateRequestV3
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialRequest
 from ..api.iam.models import ModelThirdPartyLoginPlatformCredentialResponse
@@ -930,6 +939,13 @@ def create_accountcommon_profile_update_config_example() -> (
     return instance
 
 
+def create_accountcommon_query_cursor_example() -> AccountcommonQueryCursor:
+    instance = AccountcommonQueryCursor()
+    instance.cursor_time = randomize()
+    instance.user_id = randomize("uid")
+    return instance
+
+
 def create_accountcommon_registered_domain_example() -> AccountcommonRegisteredDomain:
     instance = AccountcommonRegisteredDomain()
     instance.affected_client_i_ds = [randomize()]
@@ -1460,6 +1476,13 @@ def create_model_add_user_role_v4_request_example() -> ModelAddUserRoleV4Request
     return instance
 
 
+def create_model_admin_bulk_user_request_example() -> ModelAdminBulkUserRequest:
+    instance = ModelAdminBulkUserRequest()
+    instance.user_ids = [randomize()]
+    instance.find_by_publisher_namespace = randomize("bool")
+    return instance
+
+
 def create_model_age_restriction_request_example() -> ModelAgeRestrictionRequest:
     instance = ModelAgeRestrictionRequest()
     instance.age_restriction = randomize("int", min_val=1, max_val=1000)
@@ -1653,6 +1676,28 @@ def create_model_create_justice_user_response_example() -> (
     return instance
 
 
+def create_model_cursor_get_user_request_example() -> ModelCursorGetUserRequest:
+    instance = ModelCursorGetUserRequest()
+    instance.limit = randomize("int", min_val=1, max_val=1000)
+    instance.cursor = create_accountcommon_query_cursor_example()
+    instance.fields = [randomize()]
+    return instance
+
+
+def create_model_cursor_get_user_response_example() -> ModelCursorGetUserResponse:
+    instance = ModelCursorGetUserResponse()
+    instance.cursor = create_accountcommon_query_cursor_example()
+    instance.data = [create_model_cursor_get_user_response_data_example()]
+    return instance
+
+
+def create_model_cursor_get_user_response_data_example() -> (
+    ModelCursorGetUserResponseData
+):
+    instance = ModelCursorGetUserResponseData()
+    return instance
+
+
 def create_model_device_ban_request_v4_example() -> ModelDeviceBanRequestV4:
     instance = ModelDeviceBanRequestV4()
     instance.comment = randomize()
@@ -1803,6 +1848,22 @@ def create_model_field_update_allow_status_example() -> ModelFieldUpdateAllowSta
 def create_model_forgot_password_request_v3_example() -> ModelForgotPasswordRequestV3:
     instance = ModelForgotPasswordRequestV3()
     instance.email_address = randomize("email")
+    instance.language_tag = randomize()
+    return instance
+
+
+def create_model_forgot_password_response_v3_example() -> ModelForgotPasswordResponseV3:
+    instance = ModelForgotPasswordResponseV3()
+    instance.namespace = randomize("slug")
+    return instance
+
+
+def create_model_forgot_password_without_namespace_request_v3_example() -> (
+    ModelForgotPasswordWithoutNamespaceRequestV3
+):
+    instance = ModelForgotPasswordWithoutNamespaceRequestV3()
+    instance.email_address = randomize("email")
+    instance.client_id = randomize("uid")
     instance.language_tag = randomize()
     return instance
 
@@ -1959,6 +2020,16 @@ def create_model_input_validations_response_example() -> ModelInputValidationsRe
     instance = ModelInputValidationsResponse()
     instance.data = [create_model_input_validation_data_example()]
     instance.version = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_model_internal_config_response_v3_example() -> ModelInternalConfigResponseV3:
+    instance = ModelInternalConfigResponseV3()
+    instance.search_query_max_length = randomize("int", min_val=1, max_val=1000)
+    instance.search_query_max_length_for_email = randomize(
+        "int", min_val=1, max_val=1000
+    )
+    instance.search_query_min_length = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -2291,6 +2362,7 @@ def create_model_public_open_id_user_info_response_example() -> (
 ):
     instance = ModelPublicOpenIDUserInfoResponse()
     instance.email = randomize("email")
+    instance.email_verified = randomize("bool")
     instance.name = randomize()
     instance.picture = randomize()
     instance.sub = randomize()
@@ -2774,6 +2846,13 @@ def create_model_sso_platform_credential_response_example() -> (
 
 def create_model_tag_create_request_v3_example() -> ModelTagCreateRequestV3:
     instance = ModelTagCreateRequestV3()
+    instance.tag_name = randomize()
+    return instance
+
+
+def create_model_tag_detail_example() -> ModelTagDetail:
+    instance = ModelTagDetail()
+    instance.id_ = randomize()
     instance.tag_name = randomize()
     return instance
 
@@ -3307,6 +3386,7 @@ def create_model_user_public_info_response_v4_example() -> (
     instance = ModelUserPublicInfoResponseV4()
     instance.display_name = randomize("slug")
     instance.user_id = randomize("uid")
+    instance.avatar_url = randomize("url")
     instance.unique_display_name = randomize()
     return instance
 
@@ -3375,7 +3455,7 @@ def create_model_user_response_v3_example() -> ModelUserResponseV3:
     instance.platform_infos = [create_model_user_platform_info_example()]
     instance.platform_user_id = randomize()
     instance.skip_login_queue = randomize("bool")
-    instance.tags = [randomize()]
+    instance.tags = [create_model_tag_detail_example()]
     instance.test_account = randomize("bool")
     instance.unique_display_name = randomize()
     instance.user_name = randomize("slug")

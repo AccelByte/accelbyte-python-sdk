@@ -135,6 +135,14 @@ $ python -m accelbyte_py_sdk_cli 'match2-create-match-function' \
     > result.txt
 ```
 
+### Operation `match_function_get`
+```sh
+$ python -m accelbyte_py_sdk_cli 'match2-match-function-get' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `update_match_function`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'match2-update-match-function' \

@@ -1371,6 +1371,8 @@ def public_get_current_season(
 
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
 
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
+
         404: Not Found - ErrorEntity (49147: Published season does not exist)
     """
     if namespace is None:
@@ -1420,6 +1422,8 @@ async def public_get_current_season_async(
         200: OK - LocalizedSeasonInfo (successful operation)
 
         400: Bad Request - ErrorEntity (20026: publisher namespace not allowed)
+
+        401: Unauthorized - ErrorEntity (20001: Unauthorized)
 
         404: Not Found - ErrorEntity (49147: Published season does not exist)
     """

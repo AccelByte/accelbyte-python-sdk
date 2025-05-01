@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.28.0"
+__version__ = "7.31.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -16,3 +16,4 @@ __email__ = "dev@accelbyte.net"
 
 from .admin_get_config_value_v3 import AdminGetConfigValueV3
 from .public_get_config_value_v3 import PublicGetConfigValueV3
+from .public_get_system_config_v3 import PublicGetSystemConfigV3

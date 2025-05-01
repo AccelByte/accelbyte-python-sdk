@@ -26,6 +26,14 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class PSNDisableSystemUIMenuEnum(StrEnum):
+    KICK = "KICK"
+    PROMOTE_TO_LEADER = "PROMOTE_TO_LEADER"
+    UPDATE_INVITABLE_USER_TYPE = "UPDATE_INVITABLE_USER_TYPE"
+    UPDATE_JOINABLE_USER_TYPE = "UPDATE_JOINABLE_USER_TYPE"
 
 
 class ModelsNativeSessionSetting(Model):
@@ -48,6 +56,8 @@ class ModelsNativeSessionSetting(Model):
 
         localized_session_name: (localizedSessionName) OPTIONAL Dict[str, Any]
 
+        psn_disable_system_ui_menu: (PSNDisableSystemUIMenu) OPTIONAL List[Union[str, PSNDisableSystemUIMenuEnum]]
+
         psn_supported_platforms: (PSNSupportedPlatforms) OPTIONAL List[str]
 
         should_sync: (ShouldSync) OPTIONAL bool
@@ -63,6 +73,7 @@ class ModelsNativeSessionSetting(Model):
     xbox_session_template_name: str  # REQUIRED
     xbox_title_id: str  # REQUIRED
     localized_session_name: Dict[str, Any]  # OPTIONAL
+    psn_disable_system_ui_menu: List[Union[str, PSNDisableSystemUIMenuEnum]]  # OPTIONAL
     psn_supported_platforms: List[str]  # OPTIONAL
     should_sync: bool  # OPTIONAL
 
@@ -102,6 +113,12 @@ class ModelsNativeSessionSetting(Model):
         self, value: Dict[str, Any]
     ) -> ModelsNativeSessionSetting:
         self.localized_session_name = value
+        return self
+
+    def with_psn_disable_system_ui_menu(
+        self, value: List[Union[str, PSNDisableSystemUIMenuEnum]]
+    ) -> ModelsNativeSessionSetting:
+        self.psn_disable_system_ui_menu = value
         return self
 
     def with_psn_supported_platforms(
@@ -154,6 +171,12 @@ class ModelsNativeSessionSetting(Model):
             }
         elif include_empty:
             result["localizedSessionName"] = {}
+        if hasattr(self, "psn_disable_system_ui_menu"):
+            result["PSNDisableSystemUIMenu"] = [
+                str(i0) for i0 in self.psn_disable_system_ui_menu
+            ]
+        elif include_empty:
+            result["PSNDisableSystemUIMenu"] = []
         if hasattr(self, "psn_supported_platforms"):
             result["PSNSupportedPlatforms"] = [
                 str(i0) for i0 in self.psn_supported_platforms
@@ -181,6 +204,9 @@ class ModelsNativeSessionSetting(Model):
         xbox_session_template_name: str,
         xbox_title_id: str,
         localized_session_name: Optional[Dict[str, Any]] = None,
+        psn_disable_system_ui_menu: Optional[
+            List[Union[str, PSNDisableSystemUIMenuEnum]]
+        ] = None,
         psn_supported_platforms: Optional[List[str]] = None,
         should_sync: Optional[bool] = None,
         **kwargs,
@@ -195,6 +221,8 @@ class ModelsNativeSessionSetting(Model):
         instance.xbox_title_id = xbox_title_id
         if localized_session_name is not None:
             instance.localized_session_name = localized_session_name
+        if psn_disable_system_ui_menu is not None:
+            instance.psn_disable_system_ui_menu = psn_disable_system_ui_menu
         if psn_supported_platforms is not None:
             instance.psn_supported_platforms = psn_supported_platforms
         if should_sync is not None:
@@ -251,6 +279,15 @@ class ModelsNativeSessionSetting(Model):
             }
         elif include_empty:
             instance.localized_session_name = {}
+        if (
+            "PSNDisableSystemUIMenu" in dict_
+            and dict_["PSNDisableSystemUIMenu"] is not None
+        ):
+            instance.psn_disable_system_ui_menu = [
+                str(i0) for i0 in dict_["PSNDisableSystemUIMenu"]
+            ]
+        elif include_empty:
+            instance.psn_disable_system_ui_menu = []
         if (
             "PSNSupportedPlatforms" in dict_
             and dict_["PSNSupportedPlatforms"] is not None
@@ -315,6 +352,7 @@ class ModelsNativeSessionSetting(Model):
             "XboxSessionTemplateName": "xbox_session_template_name",
             "XboxTitleID": "xbox_title_id",
             "localizedSessionName": "localized_session_name",
+            "PSNDisableSystemUIMenu": "psn_disable_system_ui_menu",
             "PSNSupportedPlatforms": "psn_supported_platforms",
             "ShouldSync": "should_sync",
         }
@@ -330,8 +368,20 @@ class ModelsNativeSessionSetting(Model):
             "XboxSessionTemplateName": True,
             "XboxTitleID": True,
             "localizedSessionName": False,
+            "PSNDisableSystemUIMenu": False,
             "PSNSupportedPlatforms": False,
             "ShouldSync": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "PSNDisableSystemUIMenu": [
+                "KICK",
+                "PROMOTE_TO_LEADER",
+                "UPDATE_INVITABLE_USER_TYPE",
+                "UPDATE_JOINABLE_USER_TYPE",
+            ],
         }
 
     # endregion static methods

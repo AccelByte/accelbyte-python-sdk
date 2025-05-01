@@ -32,8 +32,10 @@ from ....core import same_doc_as
 from ..models import ApimodelGetListOfConfigurationsV2Response
 from ..models import ApimodelSaveConfigurationV2Request
 from ..models import ApimodelSaveConfigurationV2Response
+from ..models import ApimodelSaveSecretConfigurationV2Request
 from ..models import ApimodelUpdateConfigurationV2Request
 from ..models import ApimodelUpdateConfigurationV2Response
+from ..models import ApimodelUpdateSecretConfigurationV2Request
 from ..models import ResponseErrorResponse
 
 from ..operations.configuration_v2 import DeleteSecretV2
@@ -541,7 +543,7 @@ async def get_list_of_variables_v2_async(
 @same_doc_as(SaveSecretV2)
 def save_secret_v2(
     app: str,
-    body: ApimodelSaveConfigurationV2Request,
+    body: ApimodelSaveSecretConfigurationV2Request,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -551,12 +553,12 @@ def save_secret_v2(
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
 
     Save an environment secret.
+    Secret will always be masked.
     Request body:
     - configName : environment secret name - Required.
     - source : source of the configuration value (plaintext or ssm) - Required.
     - value : configuration value - Required.
     - description : description of the configuration - Optional.
-    - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/secrets
@@ -571,7 +573,7 @@ def save_secret_v2(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelSaveConfigurationV2Request in body
+        body: (body) REQUIRED ApimodelSaveSecretConfigurationV2Request in body
 
         app: (app) REQUIRED str in path
 
@@ -603,7 +605,7 @@ def save_secret_v2(
 @same_doc_as(SaveSecretV2)
 async def save_secret_v2_async(
     app: str,
-    body: ApimodelSaveConfigurationV2Request,
+    body: ApimodelSaveSecretConfigurationV2Request,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -613,12 +615,12 @@ async def save_secret_v2_async(
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
 
     Save an environment secret.
+    Secret will always be masked.
     Request body:
     - configName : environment secret name - Required.
     - source : source of the configuration value (plaintext or ssm) - Required.
     - value : configuration value - Required.
     - description : description of the configuration - Optional.
-    - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/secrets
@@ -633,7 +635,7 @@ async def save_secret_v2_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelSaveConfigurationV2Request in body
+        body: (body) REQUIRED ApimodelSaveSecretConfigurationV2Request in body
 
         app: (app) REQUIRED str in path
 
@@ -793,7 +795,7 @@ async def save_variable_v2_async(
 @same_doc_as(UpdateSecretV2)
 def update_secret_v2(
     app: str,
-    body: ApimodelUpdateConfigurationV2Request,
+    body: ApimodelUpdateSecretConfigurationV2Request,
     config_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -804,10 +806,10 @@ def update_secret_v2(
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
 
     Update an environment secret.
+    Secret will always be masked.
     Request body:
     - value : configuration value - Required.
     - description : description of the configuration - Optional.
-    - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/secrets/{configId}
@@ -822,7 +824,7 @@ def update_secret_v2(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelUpdateConfigurationV2Request in body
+        body: (body) REQUIRED ApimodelUpdateSecretConfigurationV2Request in body
 
         app: (app) REQUIRED str in path
 
@@ -857,7 +859,7 @@ def update_secret_v2(
 @same_doc_as(UpdateSecretV2)
 async def update_secret_v2_async(
     app: str,
-    body: ApimodelUpdateConfigurationV2Request,
+    body: ApimodelUpdateSecretConfigurationV2Request,
     config_id: str,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -868,10 +870,10 @@ async def update_secret_v2_async(
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [UPDATE]`
 
     Update an environment secret.
+    Secret will always be masked.
     Request body:
     - value : configuration value - Required.
     - description : description of the configuration - Optional.
-    - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/secrets/{configId}
@@ -886,7 +888,7 @@ async def update_secret_v2_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelUpdateConfigurationV2Request in body
+        body: (body) REQUIRED ApimodelUpdateSecretConfigurationV2Request in body
 
         app: (app) REQUIRED str in path
 

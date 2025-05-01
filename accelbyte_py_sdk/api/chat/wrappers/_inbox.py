@@ -35,6 +35,7 @@ from ..models import ModelsGetInboxCategoriesResponseItem
 from ..models import ModelsGetInboxMessagesResponse
 from ..models import ModelsGetInboxStatsResponse
 from ..models import ModelsGetInboxUsersResponse
+from ..models import ModelsGetListTopicKafkaResponse
 from ..models import ModelsJSONSchemaType
 from ..models import ModelsSaveInboxMessageRequest
 from ..models import ModelsSaveInboxMessageResponse
@@ -59,6 +60,7 @@ from ..operations.inbox import (
 from ..operations.inbox import AdminGetInboxStats
 from ..operations.inbox import AdminGetInboxUsers
 from ..operations.inbox import AdminGetInboxUsersStatusEnum
+from ..operations.inbox import AdminListKafkaTopic
 from ..operations.inbox import AdminSaveInboxMessage
 from ..operations.inbox import AdminSendInboxMessage
 from ..operations.inbox import AdminUnsendInboxMessage
@@ -992,6 +994,96 @@ async def admin_get_inbox_users_async(
         offset=offset,
         status=status,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminListKafkaTopic)
+def admin_list_kafka_topic(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """admin get list kafka topic (adminListKafkaTopic)
+
+    Get list kafka topic. example result chat,sessionNotification
+
+    Properties:
+        url: /chat/v1/admin/inbox/namespaces/{namespace}/list/topic/kafka
+
+        method: GET
+
+        tags: ["inbox"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetListTopicKafkaResponse (OK)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminListKafkaTopic.create(
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminListKafkaTopic)
+async def admin_list_kafka_topic_async(
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """admin get list kafka topic (adminListKafkaTopic)
+
+    Get list kafka topic. example result chat,sessionNotification
+
+    Properties:
+        url: /chat/v1/admin/inbox/namespaces/{namespace}/list/topic/kafka
+
+        method: GET
+
+        tags: ["inbox"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelsGetListTopicKafkaResponse (OK)
+
+        401: Unauthorized - RestapiErrorResponseBody (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseBody (Forbidden)
+
+        500: Internal Server Error - RestapiErrorResponseBody (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminListKafkaTopic.create(
         namespace=namespace,
     )
     return await run_request_async(

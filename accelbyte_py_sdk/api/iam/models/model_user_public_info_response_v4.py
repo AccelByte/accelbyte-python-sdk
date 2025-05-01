@@ -36,6 +36,8 @@ class ModelUserPublicInfoResponseV4(Model):
 
         user_id: (userId) REQUIRED str
 
+        avatar_url: (avatarUrl) OPTIONAL str
+
         unique_display_name: (uniqueDisplayName) OPTIONAL str
     """
 
@@ -43,6 +45,7 @@ class ModelUserPublicInfoResponseV4(Model):
 
     display_name: str  # REQUIRED
     user_id: str  # REQUIRED
+    avatar_url: str  # OPTIONAL
     unique_display_name: str  # OPTIONAL
 
     # endregion fields
@@ -55,6 +58,10 @@ class ModelUserPublicInfoResponseV4(Model):
 
     def with_user_id(self, value: str) -> ModelUserPublicInfoResponseV4:
         self.user_id = value
+        return self
+
+    def with_avatar_url(self, value: str) -> ModelUserPublicInfoResponseV4:
+        self.avatar_url = value
         return self
 
     def with_unique_display_name(self, value: str) -> ModelUserPublicInfoResponseV4:
@@ -75,6 +82,10 @@ class ModelUserPublicInfoResponseV4(Model):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "avatar_url"):
+            result["avatarUrl"] = str(self.avatar_url)
+        elif include_empty:
+            result["avatarUrl"] = ""
         if hasattr(self, "unique_display_name"):
             result["uniqueDisplayName"] = str(self.unique_display_name)
         elif include_empty:
@@ -90,12 +101,15 @@ class ModelUserPublicInfoResponseV4(Model):
         cls,
         display_name: str,
         user_id: str,
+        avatar_url: Optional[str] = None,
         unique_display_name: Optional[str] = None,
         **kwargs,
     ) -> ModelUserPublicInfoResponseV4:
         instance = cls()
         instance.display_name = display_name
         instance.user_id = user_id
+        if avatar_url is not None:
+            instance.avatar_url = avatar_url
         if unique_display_name is not None:
             instance.unique_display_name = unique_display_name
         return instance
@@ -115,6 +129,10 @@ class ModelUserPublicInfoResponseV4(Model):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "avatarUrl" in dict_ and dict_["avatarUrl"] is not None:
+            instance.avatar_url = str(dict_["avatarUrl"])
+        elif include_empty:
+            instance.avatar_url = ""
         if "uniqueDisplayName" in dict_ and dict_["uniqueDisplayName"] is not None:
             instance.unique_display_name = str(dict_["uniqueDisplayName"])
         elif include_empty:
@@ -164,6 +182,7 @@ class ModelUserPublicInfoResponseV4(Model):
         return {
             "displayName": "display_name",
             "userId": "user_id",
+            "avatarUrl": "avatar_url",
             "uniqueDisplayName": "unique_display_name",
         }
 
@@ -172,6 +191,7 @@ class ModelUserPublicInfoResponseV4(Model):
         return {
             "displayName": True,
             "userId": True,
+            "avatarUrl": False,
             "uniqueDisplayName": False,
         }
 

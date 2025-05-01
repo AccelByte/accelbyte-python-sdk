@@ -42,6 +42,7 @@ from accelbyte_py_sdk.api.leaderboard.models import ResponseErrorResponse
 @click.argument("leaderboard_code", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--previous_version", "previous_version", type=int)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -51,6 +52,7 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
     leaderboard_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -69,6 +71,7 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
         leaderboard_code=leaderboard_code,
         limit=limit,
         offset=offset,
+        previous_version=previous_version,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

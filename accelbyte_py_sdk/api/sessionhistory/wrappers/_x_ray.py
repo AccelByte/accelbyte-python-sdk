@@ -2724,6 +2724,8 @@ def query_xray_timeline_by_user_id(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    order: Optional[str] = None,
+    order_by: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2753,6 +2755,10 @@ def query_xray_timeline_by_user_id(
 
         offset: (offset) OPTIONAL int in query
 
+        order: (order) OPTIONAL str in query
+
+        order_by: (orderBy) OPTIONAL str in query
+
         end_date: (endDate) REQUIRED str in query
 
         start_date: (startDate) REQUIRED str in query
@@ -2780,6 +2786,8 @@ def query_xray_timeline_by_user_id(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        order=order,
+        order_by=order_by,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -2792,6 +2800,8 @@ async def query_xray_timeline_by_user_id_async(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    order: Optional[str] = None,
+    order_by: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -2821,6 +2831,10 @@ async def query_xray_timeline_by_user_id_async(
 
         offset: (offset) OPTIONAL int in query
 
+        order: (order) OPTIONAL str in query
+
+        order_by: (orderBy) OPTIONAL str in query
+
         end_date: (endDate) REQUIRED str in query
 
         start_date: (startDate) REQUIRED str in query
@@ -2848,6 +2862,8 @@ async def query_xray_timeline_by_user_id_async(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        order=order,
+        order_by=order_by,
         namespace=namespace,
     )
     return await run_request_async(

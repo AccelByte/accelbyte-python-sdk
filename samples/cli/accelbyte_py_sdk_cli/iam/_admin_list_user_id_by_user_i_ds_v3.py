@@ -33,8 +33,8 @@ from .._utils import to_dict
 from accelbyte_py_sdk.api.iam import (
     admin_list_user_id_by_user_i_ds_v3 as admin_list_user_id_by_user_i_ds_v3_internal,
 )
+from accelbyte_py_sdk.api.iam.models import ModelAdminBulkUserRequest
 from accelbyte_py_sdk.api.iam.models import ModelListUserInformationResult
-from accelbyte_py_sdk.api.iam.models import ModelUserIDsRequest
 from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 
 
@@ -62,7 +62,7 @@ def admin_list_user_id_by_user_i_ds_v3(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ModelUserIDsRequest.create_from_dict(body_json)
+            body = ModelAdminBulkUserRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = admin_list_user_id_by_user_i_ds_v3_internal(

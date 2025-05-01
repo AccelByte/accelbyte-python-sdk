@@ -143,6 +143,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
     instance.updated_at = randomize()
+    instance.ams_claim_timeout_minutes = randomize("int", min_val=1, max_val=1000)
     instance.app_name = randomize()
     instance.async_process_ds_request = create_models_async_process_ds_request_example()
     instance.attributes = {randomize(): randomize()}
@@ -195,6 +196,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.ams_claim_timeout_minutes = randomize("int", min_val=1, max_val=1000)
     instance.app_name = randomize()
     instance.async_process_ds_request = create_models_async_process_ds_request_example()
     instance.attributes = {randomize(): randomize()}
@@ -521,6 +523,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.persistent = randomize("bool")
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.ams_claim_timeout_minutes = randomize("int", min_val=1, max_val=1000)
     instance.app_name = randomize()
     instance.async_process_ds_request = create_models_async_process_ds_request_example()
     instance.attributes = {randomize(): randomize()}
@@ -645,6 +648,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.requested_regions = [randomize()]
     instance.text_chat = randomize("bool")
     instance.type_ = randomize()
+    instance.ams_claim_timeout_minutes = randomize("int", min_val=1, max_val=1000)
     instance.app_name = randomize()
     instance.async_process_ds_request = create_models_async_process_ds_request_example()
     instance.attributes = {randomize(): randomize()}
@@ -810,8 +814,8 @@ def create_models_default_dsmc_config_example() -> ModelsDefaultDSMCConfig:
 def create_models_dsm_config_record_example() -> ModelsDSMConfigRecord:
     instance = ModelsDSMConfigRecord()
     instance.claim_timeout = randomize("int", min_val=1, max_val=1000)
-    instance.created_at = randomize("date")
     instance.creation_timeout = randomize("int", min_val=1, max_val=1000)
+    instance.created_at = randomize("date")
     instance.namespace = randomize("slug")
     instance.updated_at = randomize("date")
     return instance
@@ -874,6 +878,7 @@ def create_models_native_session_setting_example() -> ModelsNativeSessionSetting
     instance.xbox_session_template_name = randomize()
     instance.xbox_title_id = randomize()
     instance.localized_session_name = {randomize(): randomize()}
+    instance.psn_disable_system_ui_menu = [randomize()]
     instance.psn_supported_platforms = [randomize()]
     instance.should_sync = randomize("bool")
     return instance

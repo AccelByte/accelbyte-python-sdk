@@ -37,23 +37,24 @@ class AdminSearchUserV3(Operation):
     """Search User (AdminSearchUserV3)
 
     Endpoint behavior :
-    - by default this endpoint searches all users on the specified namespace
-    - if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
-    - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
-    - if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
-    - if startDate parameter is defined, endpoint will search users that created start from the defined date
-    - if endDate parameter is defined, endpoint will search users that created until the defined date
-    - if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
-    - if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
-    - if limit is not defined, The default limit is 100
+    - By default this endpoint searches all users on the specified namespace.
+    - If query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query.
+    - The query parameter length must be between 3 and 30 characters. For email address queries (i.e., contains '@'), the allowed length is 3 to 40 characters. Otherwise, the database will not be queried.
+    - If startDate and endDate parameters is defined, endpoint will search users which created on the certain date range.
+    - If query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range.
+    - If startDate parameter is defined, endpoint will search users that created start from the defined date.
+    - If endDate parameter is defined, endpoint will search users that created until the defined date.
+    - If platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to.
+    - If platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName.
+    - If limit is not defined, The default limit is 100.
 
-    In multi tenant mode :
+    In Multi Tenant mode :
 
-    - if super admin search in super admin namespace, the result will be all game admin user
-    - if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
-    - if super admin search in game namespace, the result will be all game admin users and players under the game namespace
-    - if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
-    - if game admin search in their game namespace, the result will be all player in the game namespace
+    - If super admin search in super admin namespace, the result will be all game admin user
+    - If super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
+    - If super admin search in game namespace, the result will be all game admin users and players under the game namespace
+    - If game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
+    - If game admin search in their game namespace, the result will be all player in the game namespace
 
     action code : 10133
 
@@ -94,6 +95,8 @@ class AdminSearchUserV3(Operation):
 
         start_date: (startDate) OPTIONAL str in query
 
+        tag_ids: (tagIds) OPTIONAL str in query
+
         test_account: (testAccount) OPTIONAL bool in query
 
     Responses:
@@ -129,6 +132,7 @@ class AdminSearchUserV3(Operation):
     role_ids: str  # OPTIONAL in [query]
     skip_login_queue: bool  # OPTIONAL in [query]
     start_date: str  # OPTIONAL in [query]
+    tag_ids: str  # OPTIONAL in [query]
     test_account: bool  # OPTIONAL in [query]
 
     # endregion fields
@@ -203,6 +207,8 @@ class AdminSearchUserV3(Operation):
             result["skipLoginQueue"] = self.skip_login_queue
         if hasattr(self, "start_date"):
             result["startDate"] = self.start_date
+        if hasattr(self, "tag_ids"):
+            result["tagIds"] = self.tag_ids
         if hasattr(self, "test_account"):
             result["testAccount"] = self.test_account
         return result
@@ -263,6 +269,10 @@ class AdminSearchUserV3(Operation):
         self.start_date = value
         return self
 
+    def with_tag_ids(self, value: str) -> AdminSearchUserV3:
+        self.tag_ids = value
+        return self
+
     def with_test_account(self, value: bool) -> AdminSearchUserV3:
         self.test_account = value
         return self
@@ -321,6 +331,10 @@ class AdminSearchUserV3(Operation):
             result["startDate"] = str(self.start_date)
         elif include_empty:
             result["startDate"] = ""
+        if hasattr(self, "tag_ids") and self.tag_ids:
+            result["tagIds"] = str(self.tag_ids)
+        elif include_empty:
+            result["tagIds"] = ""
         if hasattr(self, "test_account") and self.test_account:
             result["testAccount"] = bool(self.test_account)
         elif include_empty:
@@ -400,6 +414,7 @@ class AdminSearchUserV3(Operation):
         role_ids: Optional[str] = None,
         skip_login_queue: Optional[bool] = None,
         start_date: Optional[str] = None,
+        tag_ids: Optional[str] = None,
         test_account: Optional[bool] = None,
         **kwargs,
     ) -> AdminSearchUserV3:
@@ -427,6 +442,8 @@ class AdminSearchUserV3(Operation):
             instance.skip_login_queue = skip_login_queue
         if start_date is not None:
             instance.start_date = start_date
+        if tag_ids is not None:
+            instance.tag_ids = tag_ids
         if test_account is not None:
             instance.test_account = test_account
         if x_flight_id := kwargs.get("x_flight_id", None):
@@ -486,6 +503,10 @@ class AdminSearchUserV3(Operation):
             instance.start_date = str(dict_["startDate"])
         elif include_empty:
             instance.start_date = ""
+        if "tagIds" in dict_ and dict_["tagIds"] is not None:
+            instance.tag_ids = str(dict_["tagIds"])
+        elif include_empty:
+            instance.tag_ids = ""
         if "testAccount" in dict_ and dict_["testAccount"] is not None:
             instance.test_account = bool(dict_["testAccount"])
         elif include_empty:
@@ -507,6 +528,7 @@ class AdminSearchUserV3(Operation):
             "roleIds": "role_ids",
             "skipLoginQueue": "skip_login_queue",
             "startDate": "start_date",
+            "tagIds": "tag_ids",
             "testAccount": "test_account",
         }
 
@@ -525,6 +547,7 @@ class AdminSearchUserV3(Operation):
             "roleIds": False,
             "skipLoginQueue": False,
             "startDate": False,
+            "tagIds": False,
             "testAccount": False,
         }
 

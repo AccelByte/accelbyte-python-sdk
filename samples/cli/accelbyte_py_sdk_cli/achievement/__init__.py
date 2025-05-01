@@ -24,6 +24,7 @@ from ._reset_global_achievement import reset_global_achievement
 from ._bulk_create_psn_event import bulk_create_psn_event
 from ._admin_list_tags import admin_list_tags
 from ._admin_list_user_achievements import admin_list_user_achievements
+from ._admin_bulk_unlock_achievement import admin_bulk_unlock_achievement
 from ._admin_reset_achievement import admin_reset_achievement
 from ._admin_unlock_achievement import admin_unlock_achievement
 from ._admin_anonymize_user_achievement import admin_anonymize_user_achievement
@@ -34,6 +35,7 @@ from ._public_list_global_achievements import public_list_global_achievements
 from ._list_global_achievement_contributors import list_global_achievement_contributors
 from ._public_list_tags import public_list_tags
 from ._public_list_user_achievements import public_list_user_achievements
+from ._public_bulk_unlock_achievement import public_bulk_unlock_achievement
 from ._public_unlock_achievement import public_unlock_achievement
 from ._list_user_contributions import list_user_contributions
 from ._claim_global_achievement_reward import claim_global_achievement_reward
@@ -54,6 +56,7 @@ commands = [
     bulk_create_psn_event,
     admin_list_tags,
     admin_list_user_achievements,
+    admin_bulk_unlock_achievement,
     admin_reset_achievement,
     admin_unlock_achievement,
     admin_anonymize_user_achievement,
@@ -64,6 +67,7 @@ commands = [
     list_global_achievement_contributors,
     public_list_tags,
     public_list_user_achievements,
+    public_bulk_unlock_achievement,
     public_unlock_achievement,
     list_user_contributions,
     claim_global_achievement_reward,

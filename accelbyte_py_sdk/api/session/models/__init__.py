@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.23.0"
+__version__ = "3.25.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -140,6 +140,9 @@ from .models_extend_configuration import ModelsExtendConfiguration
 from .models_game_server import ModelsGameServer
 from .models_member_active_session import ModelsMemberActiveSession
 from .models_native_session_setting import ModelsNativeSessionSetting
+from .models_native_session_setting import (
+    PSNDisableSystemUIMenuEnum as ModelsNativeSessionSettingPSNDisableSystemUIMenuEnum,
+)
 from .models_party_members import ModelsPartyMembers
 from .models_platform_credentials import ModelsPlatformCredentials
 from .models_port_configuration_ams import ModelsPortConfigurationAMS

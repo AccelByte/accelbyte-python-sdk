@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Chat Service."""
 
-__version__ = "0.4.42"
+__version__ = "0.4.45"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -47,6 +47,8 @@ from ._inbox import admin_get_inbox_stats
 from ._inbox import admin_get_inbox_stats_async
 from ._inbox import admin_get_inbox_users
 from ._inbox import admin_get_inbox_users_async
+from ._inbox import admin_list_kafka_topic
+from ._inbox import admin_list_kafka_topic_async
 from ._inbox import admin_save_inbox_message
 from ._inbox import admin_save_inbox_message_async
 from ._inbox import admin_send_inbox_message

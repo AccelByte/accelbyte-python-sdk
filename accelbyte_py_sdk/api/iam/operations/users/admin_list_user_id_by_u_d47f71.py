@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
+from ...models import ModelAdminBulkUserRequest
 from ...models import ModelListUserInformationResult
-from ...models import ModelUserIDsRequest
 from ...models import RestErrorResponse
 
 
@@ -53,7 +53,7 @@ class AdminListUserIDByUserIDsV3(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserIDsRequest in body
+        body: (body) REQUIRED ModelAdminBulkUserRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -78,7 +78,7 @@ class AdminListUserIDByUserIDsV3(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ModelUserIDsRequest  # REQUIRED in [body]
+    body: ModelAdminBulkUserRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
 
     # endregion fields
@@ -142,7 +142,7 @@ class AdminListUserIDByUserIDsV3(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ModelUserIDsRequest) -> AdminListUserIDByUserIDsV3:
+    def with_body(self, value: ModelAdminBulkUserRequest) -> AdminListUserIDByUserIDsV3:
         self.body = value
         return self
 
@@ -159,7 +159,7 @@ class AdminListUserIDByUserIDsV3(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ModelUserIDsRequest()
+            result["body"] = ModelAdminBulkUserRequest()
         if hasattr(self, "namespace") and self.namespace:
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -223,7 +223,7 @@ class AdminListUserIDByUserIDsV3(Operation):
 
     @classmethod
     def create(
-        cls, body: ModelUserIDsRequest, namespace: str, **kwargs
+        cls, body: ModelAdminBulkUserRequest, namespace: str, **kwargs
     ) -> AdminListUserIDByUserIDsV3:
         instance = cls()
         instance.body = body
@@ -238,11 +238,11 @@ class AdminListUserIDByUserIDsV3(Operation):
     ) -> AdminListUserIDByUserIDsV3:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ModelUserIDsRequest.create_from_dict(
+            instance.body = ModelAdminBulkUserRequest.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ModelUserIDsRequest()
+            instance.body = ModelAdminBulkUserRequest()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:

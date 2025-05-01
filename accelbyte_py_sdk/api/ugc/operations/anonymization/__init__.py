@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Ugc Service."""
 
-__version__ = "2.23.3"
+__version__ = "2.24.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

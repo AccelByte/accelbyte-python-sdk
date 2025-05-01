@@ -70,6 +70,7 @@ from ..api.chat.models import ModelsGetInboxMessagesResponse
 from ..api.chat.models import ModelsGetInboxMessagesResponseData
 from ..api.chat.models import ModelsGetInboxStatsResponse
 from ..api.chat.models import ModelsGetInboxUsersResponse
+from ..api.chat.models import ModelsGetListTopicKafkaResponse
 from ..api.chat.models import ModelsImportConfigResponse
 from ..api.chat.models import ModelsJSONSchemaType
 from ..api.chat.models import ModelsMessageRequest
@@ -574,6 +575,14 @@ def create_models_get_inbox_users_response_example() -> ModelsGetInboxUsersRespo
     instance.data = [create_models_user_inbox_example()]
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_models_get_list_topic_kafka_response_example() -> (
+    ModelsGetListTopicKafkaResponse
+):
+    instance = ModelsGetListTopicKafkaResponse()
+    instance.topic_name = [randomize()]
     return instance
 
 

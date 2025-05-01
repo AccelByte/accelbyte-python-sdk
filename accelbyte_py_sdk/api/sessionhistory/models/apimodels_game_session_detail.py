@@ -39,6 +39,8 @@ class ApimodelsGameSessionDetail(Model):
 
         created_at: (created_at) REQUIRED str
 
+        ds_status_v2: (ds_status_v2) REQUIRED str
+
         ended: (ended) REQUIRED bool
 
         histories: (histories) REQUIRED List[ApimodelsHistory]
@@ -66,6 +68,7 @@ class ApimodelsGameSessionDetail(Model):
 
     active: bool  # REQUIRED
     created_at: str  # REQUIRED
+    ds_status_v2: str  # REQUIRED
     ended: bool  # REQUIRED
     histories: List[ApimodelsHistory]  # REQUIRED
     joinability: str  # REQUIRED
@@ -88,6 +91,10 @@ class ApimodelsGameSessionDetail(Model):
 
     def with_created_at(self, value: str) -> ApimodelsGameSessionDetail:
         self.created_at = value
+        return self
+
+    def with_ds_status_v2(self, value: str) -> ApimodelsGameSessionDetail:
+        self.ds_status_v2 = value
         return self
 
     def with_ended(self, value: bool) -> ApimodelsGameSessionDetail:
@@ -150,6 +157,10 @@ class ApimodelsGameSessionDetail(Model):
             result["created_at"] = str(self.created_at)
         elif include_empty:
             result["created_at"] = ""
+        if hasattr(self, "ds_status_v2"):
+            result["ds_status_v2"] = str(self.ds_status_v2)
+        elif include_empty:
+            result["ds_status_v2"] = ""
         if hasattr(self, "ended"):
             result["ended"] = bool(self.ended)
         elif include_empty:
@@ -207,6 +218,7 @@ class ApimodelsGameSessionDetail(Model):
         cls,
         active: bool,
         created_at: str,
+        ds_status_v2: str,
         ended: bool,
         histories: List[ApimodelsHistory],
         joinability: str,
@@ -223,6 +235,7 @@ class ApimodelsGameSessionDetail(Model):
         instance = cls()
         instance.active = active
         instance.created_at = created_at
+        instance.ds_status_v2 = ds_status_v2
         instance.ended = ended
         instance.histories = histories
         instance.joinability = joinability
@@ -251,6 +264,10 @@ class ApimodelsGameSessionDetail(Model):
             instance.created_at = str(dict_["created_at"])
         elif include_empty:
             instance.created_at = ""
+        if "ds_status_v2" in dict_ and dict_["ds_status_v2"] is not None:
+            instance.ds_status_v2 = str(dict_["ds_status_v2"])
+        elif include_empty:
+            instance.ds_status_v2 = ""
         if "ended" in dict_ and dict_["ended"] is not None:
             instance.ended = bool(dict_["ended"])
         elif include_empty:
@@ -345,6 +362,7 @@ class ApimodelsGameSessionDetail(Model):
         return {
             "active": "active",
             "created_at": "created_at",
+            "ds_status_v2": "ds_status_v2",
             "ended": "ended",
             "histories": "histories",
             "joinability": "joinability",
@@ -363,6 +381,7 @@ class ApimodelsGameSessionDetail(Model):
         return {
             "active": True,
             "created_at": True,
+            "ds_status_v2": True,
             "ended": True,
             "histories": True,
             "joinability": True,

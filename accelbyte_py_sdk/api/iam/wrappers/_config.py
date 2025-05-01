@@ -30,10 +30,12 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import ModelConfigValueResponseV3
+from ..models import ModelInternalConfigResponseV3
 from ..models import RestErrorResponse
 
 from ..operations.config import AdminGetConfigValueV3
 from ..operations.config import PublicGetConfigValueV3
+from ..operations.config import PublicGetSystemConfigV3
 
 
 @same_doc_as(AdminGetConfigValueV3)
@@ -247,6 +249,64 @@ async def public_get_config_value_v3_async(
         config_key=config_key,
         namespace=namespace,
     )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicGetSystemConfigV3)
+def public_get_system_config_v3(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Public System Config Value (PublicGetSystemConfigV3)
+
+    Properties:
+        url: /iam/v3/config/public
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelInternalConfigResponseV3 (OK)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicGetSystemConfigV3.create()
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicGetSystemConfigV3)
+async def public_get_system_config_v3_async(
+    x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
+):
+    """Get Public System Config Value (PublicGetSystemConfigV3)
+
+    Properties:
+        url: /iam/v3/config/public
+
+        method: GET
+
+        tags: ["Config"]
+
+        consumes: []
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+    Responses:
+        200: OK - ModelInternalConfigResponseV3 (OK)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicGetSystemConfigV3.create()
     return await run_request_async(
         request, additional_headers=x_additional_headers, **kwargs
     )

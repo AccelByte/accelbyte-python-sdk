@@ -31,8 +31,8 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.csm import save_secret_v2 as save_secret_v2_internal
-from accelbyte_py_sdk.api.csm.models import ApimodelSaveConfigurationV2Request
 from accelbyte_py_sdk.api.csm.models import ApimodelSaveConfigurationV2Response
+from accelbyte_py_sdk.api.csm.models import ApimodelSaveSecretConfigurationV2Request
 from accelbyte_py_sdk.api.csm.models import ResponseErrorResponse
 
 
@@ -62,7 +62,7 @@ def save_secret_v2(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ApimodelSaveConfigurationV2Request.create_from_dict(body_json)
+            body = ApimodelSaveSecretConfigurationV2Request.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = save_secret_v2_internal(

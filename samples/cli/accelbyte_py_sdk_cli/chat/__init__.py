@@ -50,6 +50,7 @@ from ._admin_add_inbox_category import admin_add_inbox_category
 from ._admin_delete_inbox_category import admin_delete_inbox_category
 from ._admin_update_inbox_category import admin_update_inbox_category
 from ._admin_get_category_schema import admin_get_category_schema
+from ._admin_list_kafka_topic import admin_list_kafka_topic
 from ._admin_delete_inbox_message import admin_delete_inbox_message
 from ._admin_get_inbox_messages import admin_get_inbox_messages
 from ._admin_save_inbox_message import admin_save_inbox_message
@@ -116,6 +117,7 @@ commands = [
     admin_delete_inbox_category,
     admin_update_inbox_category,
     admin_get_category_schema,
+    admin_list_kafka_topic,
     admin_delete_inbox_message,
     admin_get_inbox_messages,
     admin_save_inbox_message,

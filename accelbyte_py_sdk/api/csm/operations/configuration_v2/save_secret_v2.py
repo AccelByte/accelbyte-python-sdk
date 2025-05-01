@@ -29,8 +29,8 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import ApimodelSaveConfigurationV2Request
 from ...models import ApimodelSaveConfigurationV2Response
+from ...models import ApimodelSaveSecretConfigurationV2Request
 from ...models import ResponseErrorResponse
 
 
@@ -40,12 +40,12 @@ class SaveSecretV2(Operation):
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:SECRET [CREATE]`
 
     Save an environment secret.
+    Secret will always be masked.
     Request body:
     - configName : environment secret name - Required.
     - source : source of the configuration value (plaintext or ssm) - Required.
     - value : configuration value - Required.
     - description : description of the configuration - Optional.
-    - applyMask : mask the value in the Helm manifest for sensitive information (true or false) - Optional.
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/secrets
@@ -60,7 +60,7 @@ class SaveSecretV2(Operation):
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ApimodelSaveConfigurationV2Request in body
+        body: (body) REQUIRED ApimodelSaveSecretConfigurationV2Request in body
 
         app: (app) REQUIRED str in path
 
@@ -87,7 +87,7 @@ class SaveSecretV2(Operation):
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
-    body: ApimodelSaveConfigurationV2Request  # REQUIRED in [body]
+    body: ApimodelSaveSecretConfigurationV2Request  # REQUIRED in [body]
     app: str  # REQUIRED in [path]
     namespace: str  # REQUIRED in [path]
 
@@ -154,7 +154,9 @@ class SaveSecretV2(Operation):
 
     # region with_x methods
 
-    def with_body(self, value: ApimodelSaveConfigurationV2Request) -> SaveSecretV2:
+    def with_body(
+        self, value: ApimodelSaveSecretConfigurationV2Request
+    ) -> SaveSecretV2:
         self.body = value
         return self
 
@@ -175,7 +177,7 @@ class SaveSecretV2(Operation):
         if hasattr(self, "body") and self.body:
             result["body"] = self.body.to_dict(include_empty=include_empty)
         elif include_empty:
-            result["body"] = ApimodelSaveConfigurationV2Request()
+            result["body"] = ApimodelSaveSecretConfigurationV2Request()
         if hasattr(self, "app") and self.app:
             result["app"] = str(self.app)
         elif include_empty:
@@ -244,7 +246,7 @@ class SaveSecretV2(Operation):
     @classmethod
     def create(
         cls,
-        body: ApimodelSaveConfigurationV2Request,
+        body: ApimodelSaveSecretConfigurationV2Request,
         app: str,
         namespace: str,
         **kwargs,
@@ -261,11 +263,11 @@ class SaveSecretV2(Operation):
     def create_from_dict(cls, dict_: dict, include_empty: bool = False) -> SaveSecretV2:
         instance = cls()
         if "body" in dict_ and dict_["body"] is not None:
-            instance.body = ApimodelSaveConfigurationV2Request.create_from_dict(
+            instance.body = ApimodelSaveSecretConfigurationV2Request.create_from_dict(
                 dict_["body"], include_empty=include_empty
             )
         elif include_empty:
-            instance.body = ApimodelSaveConfigurationV2Request()
+            instance.body = ApimodelSaveSecretConfigurationV2Request()
         if "app" in dict_ and dict_["app"] is not None:
             instance.app = str(dict_["app"])
         elif include_empty:

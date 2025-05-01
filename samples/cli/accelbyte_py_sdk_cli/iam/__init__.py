@@ -228,6 +228,7 @@ from ._admin_bulk_update_users_v3 import admin_bulk_update_users_v3
 from ._admin_get_bulk_user_ban_v3 import admin_get_bulk_user_ban_v3
 from ._admin_list_user_id_by_user_i_ds_v3 import admin_list_user_id_by_user_i_ds_v3
 from ._admin_bulk_get_users_platform import admin_bulk_get_users_platform
+from ._admin_cursor_get_user_v3 import admin_cursor_get_user_v3
 from ._admin_invite_user_v3 import admin_invite_user_v3
 from ._admin_query_third_platform_link_history_v3 import (
     admin_query_third_platform_link_history_v3,
@@ -321,6 +322,7 @@ from ._admin_get_my_user_v3 import admin_get_my_user_v3
 from ._user_authentication_v3 import user_authentication_v3
 from ._authentication_with_platform_link_v3 import authentication_with_platform_link_v3
 from ._authenticate_and_link_forward_v3 import authenticate_and_link_forward_v3
+from ._public_get_system_config_v3 import public_get_system_config_v3
 from ._generate_token_by_new_headless_account_v3 import (
     generate_token_by_new_headless_account_v3,
 )
@@ -426,6 +428,9 @@ from ._public_validate_user_by_user_id_and_password_v3 import (
 )
 from ._public_get_roles_v3 import public_get_roles_v3
 from ._public_get_role_v3 import public_get_role_v3
+from ._public_forgot_password_without_namespace_v3 import (
+    public_forgot_password_without_namespace_v3,
+)
 from ._public_get_my_user_v3 import public_get_my_user_v3
 from ._public_send_code_forward_v3 import public_send_code_forward_v3
 from ._public_get_link_headless_account_to_my_account_conflict_v3 import (
@@ -742,6 +747,7 @@ commands = [
     admin_get_bulk_user_ban_v3,
     admin_list_user_id_by_user_i_ds_v3,
     admin_bulk_get_users_platform,
+    admin_cursor_get_user_v3,
     admin_invite_user_v3,
     admin_query_third_platform_link_history_v3,
     admin_list_users_v3,
@@ -813,6 +819,7 @@ commands = [
     user_authentication_v3,
     authentication_with_platform_link_v3,
     authenticate_and_link_forward_v3,
+    public_get_system_config_v3,
     generate_token_by_new_headless_account_v3,
     request_one_time_linking_code_v3,
     validate_one_time_linking_code_v3,
@@ -890,6 +897,7 @@ commands = [
     public_validate_user_by_user_id_and_password_v3,
     public_get_roles_v3,
     public_get_role_v3,
+    public_forgot_password_without_namespace_v3,
     public_get_my_user_v3,
     public_send_code_forward_v3,
     public_get_link_headless_account_to_my_account_conflict_v3,

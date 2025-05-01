@@ -168,8 +168,8 @@ class SecuritiesResolver:
 
             if fulfilled_security:
                 if (
-                    "BASIC_AUTH" in fulfilled_requirements or
-                    "BEARER_AUTH" in fulfilled_requirements
+                    "BASIC_AUTH" in fulfilled_requirements
+                    or "BEARER_AUTH" in fulfilled_requirements
                 ):
                     return True, None  # exit early
                 else:

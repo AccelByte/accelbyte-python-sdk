@@ -377,6 +377,13 @@ $ python -m accelbyte_py_sdk_cli 'chat-admin-get-category-schema' \
     > result.txt
 ```
 
+### Operation `admin_list_kafka_topic`
+```sh
+$ python -m accelbyte_py_sdk_cli 'chat-admin-list-kafka-topic' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `admin_delete_inbox_message`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'chat-admin-delete-inbox-message' \

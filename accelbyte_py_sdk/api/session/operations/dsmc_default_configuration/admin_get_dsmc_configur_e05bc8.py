@@ -37,7 +37,7 @@ from ...models import ResponseError
 class AdminGetDSMCConfigurationDefault(Operation):
     """Get dsmc default configuration. (adminGetDSMCConfigurationDefault)
 
-    Get dsmc default configuration.
+    Get the DSMC default configuration from this service
 
     Properties:
         url: /session/v1/admin/dsconfigs/default

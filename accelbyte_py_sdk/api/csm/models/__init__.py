@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.22.0"
+__version__ = "1.23.1"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -64,6 +64,9 @@ from .apimodel_replica_request import ApimodelReplicaRequest
 from .apimodel_replica_response import ApimodelReplicaResponse
 from .apimodel_save_configuration_v2_request import ApimodelSaveConfigurationV2Request
 from .apimodel_save_configuration_v2_response import ApimodelSaveConfigurationV2Response
+from .apimodel_save_secret_configuration_v2_request import (
+    ApimodelSaveSecretConfigurationV2Request,
+)
 from .apimodel_self_subscribe_notification_request import (
     ApimodelSelfSubscribeNotificationRequest,
 )
@@ -82,6 +85,9 @@ from .apimodel_update_configuration_v2_request import (
 )
 from .apimodel_update_configuration_v2_response import (
     ApimodelUpdateConfigurationV2Response,
+)
+from .apimodel_update_secret_configuration_v2_request import (
+    ApimodelUpdateSecretConfigurationV2Request,
 )
 from .generated_create_app_v1_request import GeneratedCreateAppV1Request
 from .generated_create_app_v1_response import GeneratedCreateAppV1Response

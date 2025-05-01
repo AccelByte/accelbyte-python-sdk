@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Match Service V2 Index (2.32.0)
+# AccelByte Gaming Services Match Service V2 Index (2.33.0)
 
 
 ## Operations
@@ -37,6 +37,7 @@
 |---|---|---|---|---|---|---|
 | /match2/v1/namespaces/{namespace}/match-functions | POST | CreateMatchFunction | `false` | [CreateMatchFunction](../../accelbyte_py_sdk/api/match2/operations/match_functions/create_match_function.py) | [create_match_function](../../accelbyte_py_sdk/api/match2/wrappers/_match_functions.py) | [accelbyte_py_sdk_cli match2-create-match-function](../../samples/cli/accelbyte_py_sdk_cli/match2/_create_match_function.py) |
 | /match2/v1/namespaces/{namespace}/match-functions/{name} | DELETE | DeleteMatchFunction | `false` | [DeleteMatchFunction](../../accelbyte_py_sdk/api/match2/operations/match_functions/delete_match_function.py) | [delete_match_function](../../accelbyte_py_sdk/api/match2/wrappers/_match_functions.py) | [accelbyte_py_sdk_cli match2-delete-match-function](../../samples/cli/accelbyte_py_sdk_cli/match2/_delete_match_function.py) |
+| /match2/v1/namespaces/{namespace}/match-functions/{name} | GET | MatchFunctionGet | `false` | [MatchFunctionGet](../../accelbyte_py_sdk/api/match2/operations/match_functions/match_function_get.py) | [match_function_get](../../accelbyte_py_sdk/api/match2/wrappers/_match_functions.py) | [accelbyte_py_sdk_cli match2-match-function-get](../../samples/cli/accelbyte_py_sdk_cli/match2/_match_function_get.py) |
 | /match2/v1/namespaces/{namespace}/match-functions | GET | MatchFunctionList | `false` | [MatchFunctionList](../../accelbyte_py_sdk/api/match2/operations/match_functions/match_function_list.py) | [match_function_list](../../accelbyte_py_sdk/api/match2/wrappers/_match_functions.py) | [accelbyte_py_sdk_cli match2-match-function-list](../../samples/cli/accelbyte_py_sdk_cli/match2/_match_function_list.py) |
 | /match2/v1/namespaces/{namespace}/match-functions/{name} | PUT | UpdateMatchFunction | `false` | [UpdateMatchFunction](../../accelbyte_py_sdk/api/match2/operations/match_functions/update_match_function.py) | [update_match_function](../../accelbyte_py_sdk/api/match2/wrappers/_match_functions.py) | [accelbyte_py_sdk_cli match2-update-match-function](../../samples/cli/accelbyte_py_sdk_cli/match2/_update_match_function.py) |
 

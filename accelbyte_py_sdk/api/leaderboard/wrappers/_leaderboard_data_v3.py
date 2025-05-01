@@ -53,6 +53,7 @@ from ..operations.leaderboard_data_v3 import GetUserRankingPublicV3
 def bulk_get_users_ranking_public_v3(
     body: ModelsBulkUserIDsRequest,
     leaderboard_code: str,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -80,6 +81,8 @@ def bulk_get_users_ranking_public_v3(
 
         namespace: (namespace) REQUIRED str in path
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsBulkUserRankingResponseV3 (Users ranking retrieved)
 
@@ -100,6 +103,7 @@ def bulk_get_users_ranking_public_v3(
     request = BulkGetUsersRankingPublicV3.create(
         body=body,
         leaderboard_code=leaderboard_code,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -109,6 +113,7 @@ def bulk_get_users_ranking_public_v3(
 async def bulk_get_users_ranking_public_v3_async(
     body: ModelsBulkUserIDsRequest,
     leaderboard_code: str,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -136,6 +141,8 @@ async def bulk_get_users_ranking_public_v3_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsBulkUserRankingResponseV3 (Users ranking retrieved)
 
@@ -156,6 +163,7 @@ async def bulk_get_users_ranking_public_v3_async(
     request = BulkGetUsersRankingPublicV3.create(
         body=body,
         leaderboard_code=leaderboard_code,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return await run_request_async(
@@ -991,6 +999,7 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
     leaderboard_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1022,6 +1031,8 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
 
         offset: (offset) OPTIONAL int in query
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsGetLeaderboardRankingResp (Cycle leaderboard ranking data retrieved)
 
@@ -1044,6 +1055,7 @@ def get_current_cycle_leaderboard_ranking_admin_v3(
         leaderboard_code=leaderboard_code,
         limit=limit,
         offset=offset,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1055,6 +1067,7 @@ async def get_current_cycle_leaderboard_ranking_admin_v3_async(
     leaderboard_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1086,6 +1099,8 @@ async def get_current_cycle_leaderboard_ranking_admin_v3_async(
 
         offset: (offset) OPTIONAL int in query
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsGetLeaderboardRankingResp (Cycle leaderboard ranking data retrieved)
 
@@ -1108,6 +1123,7 @@ async def get_current_cycle_leaderboard_ranking_admin_v3_async(
         leaderboard_code=leaderboard_code,
         limit=limit,
         offset=offset,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1121,6 +1137,7 @@ def get_current_cycle_leaderboard_ranking_public_v3(
     leaderboard_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1152,6 +1169,8 @@ def get_current_cycle_leaderboard_ranking_public_v3(
 
         offset: (offset) OPTIONAL int in query
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsGetLeaderboardRankingResp (Cycle leaderboard ranking data retrieved)
 
@@ -1170,6 +1189,7 @@ def get_current_cycle_leaderboard_ranking_public_v3(
         leaderboard_code=leaderboard_code,
         limit=limit,
         offset=offset,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1181,6 +1201,7 @@ async def get_current_cycle_leaderboard_ranking_public_v3_async(
     leaderboard_code: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1212,6 +1233,8 @@ async def get_current_cycle_leaderboard_ranking_public_v3_async(
 
         offset: (offset) OPTIONAL int in query
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsGetLeaderboardRankingResp (Cycle leaderboard ranking data retrieved)
 
@@ -1230,6 +1253,7 @@ async def get_current_cycle_leaderboard_ranking_public_v3_async(
         leaderboard_code=leaderboard_code,
         limit=limit,
         offset=offset,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1241,6 +1265,7 @@ async def get_current_cycle_leaderboard_ranking_public_v3_async(
 def get_user_ranking_admin_v3(
     leaderboard_code: str,
     user_id: str,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1268,8 +1293,12 @@ def get_user_ranking_admin_v3(
 
         user_id: (userId) REQUIRED str in path
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsUserRankingResponseV3 (User ranking retrieved)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
         401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
@@ -1286,6 +1315,7 @@ def get_user_ranking_admin_v3(
     request = GetUserRankingAdminV3.create(
         leaderboard_code=leaderboard_code,
         user_id=user_id,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1295,6 +1325,7 @@ def get_user_ranking_admin_v3(
 async def get_user_ranking_admin_v3_async(
     leaderboard_code: str,
     user_id: str,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1322,8 +1353,12 @@ async def get_user_ranking_admin_v3_async(
 
         user_id: (userId) REQUIRED str in path
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsUserRankingResponseV3 (User ranking retrieved)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
         401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
@@ -1340,6 +1375,7 @@ async def get_user_ranking_admin_v3_async(
     request = GetUserRankingAdminV3.create(
         leaderboard_code=leaderboard_code,
         user_id=user_id,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return await run_request_async(
@@ -1351,6 +1387,7 @@ async def get_user_ranking_admin_v3_async(
 def get_user_ranking_public_v3(
     leaderboard_code: str,
     user_id: str,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1378,8 +1415,12 @@ def get_user_ranking_public_v3(
 
         user_id: (userId) REQUIRED str in path
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsUserRankingResponseV3 (User ranking retrieved)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
         401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
@@ -1396,6 +1437,7 @@ def get_user_ranking_public_v3(
     request = GetUserRankingPublicV3.create(
         leaderboard_code=leaderboard_code,
         user_id=user_id,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1405,6 +1447,7 @@ def get_user_ranking_public_v3(
 async def get_user_ranking_public_v3_async(
     leaderboard_code: str,
     user_id: str,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -1432,8 +1475,12 @@ async def get_user_ranking_public_v3_async(
 
         user_id: (userId) REQUIRED str in path
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsUserRankingResponseV3 (User ranking retrieved)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
         401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
@@ -1450,6 +1497,7 @@ async def get_user_ranking_public_v3_async(
     request = GetUserRankingPublicV3.create(
         leaderboard_code=leaderboard_code,
         user_id=user_id,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return await run_request_async(

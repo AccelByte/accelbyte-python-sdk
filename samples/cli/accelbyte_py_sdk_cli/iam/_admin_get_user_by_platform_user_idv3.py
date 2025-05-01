@@ -40,6 +40,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.command()
 @click.argument("platform_id", type=str)
 @click.argument("platform_user_id", type=str)
+@click.option("--pid_type", "pid_type", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -47,6 +48,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 def admin_get_user_by_platform_user_idv3(
     platform_id: str,
     platform_user_id: str,
+    pid_type: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -63,6 +65,7 @@ def admin_get_user_by_platform_user_idv3(
     result, error = admin_get_user_by_platform_user_idv3_internal(
         platform_id=platform_id,
         platform_user_id=platform_user_id,
+        pid_type=pid_type,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

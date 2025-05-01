@@ -31,8 +31,8 @@ import click
 from .._utils import login_as as login_as_internal
 from .._utils import to_dict
 from accelbyte_py_sdk.api.csm import update_secret_v2 as update_secret_v2_internal
-from accelbyte_py_sdk.api.csm.models import ApimodelUpdateConfigurationV2Request
 from accelbyte_py_sdk.api.csm.models import ApimodelUpdateConfigurationV2Response
+from accelbyte_py_sdk.api.csm.models import ApimodelUpdateSecretConfigurationV2Request
 from accelbyte_py_sdk.api.csm.models import ResponseErrorResponse
 
 
@@ -64,7 +64,9 @@ def update_secret_v2(
     if body is not None:
         try:
             body_json = json.loads(body)
-            body = ApimodelUpdateConfigurationV2Request.create_from_dict(body_json)
+            body = ApimodelUpdateSecretConfigurationV2Request.create_from_dict(
+                body_json
+            )
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = update_secret_v2_internal(

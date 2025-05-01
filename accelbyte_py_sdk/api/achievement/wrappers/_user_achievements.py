@@ -29,16 +29,136 @@ from ....core import run_request
 from ....core import run_request_async
 from ....core import same_doc_as
 
+from ..models import ModelsBulkUnlockAchievementRequest
+from ..models import ModelsBulkUnlockAchievementResponse
 from ..models import ModelsPaginatedUserAchievementResponse
 from ..models import ResponseError
 
+from ..operations.user_achievements import AdminBulkUnlockAchievement
 from ..operations.user_achievements import AdminListUserAchievements
 from ..operations.user_achievements import AdminListUserAchievementsSortByEnum
 from ..operations.user_achievements import AdminResetAchievement
 from ..operations.user_achievements import AdminUnlockAchievement
+from ..operations.user_achievements import PublicBulkUnlockAchievement
 from ..operations.user_achievements import PublicListUserAchievements
 from ..operations.user_achievements import PublicListUserAchievementsSortByEnum
 from ..operations.user_achievements import PublicUnlockAchievement
+
+
+@same_doc_as(AdminBulkUnlockAchievement)
+def admin_bulk_unlock_achievement(
+    body: ModelsBulkUnlockAchievementRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk unlock achievements (AdminBulkUnlockAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/bulkUnlock
+
+        method: PUT
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUnlockAchievementRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsBulkUnlockAchievementResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminBulkUnlockAchievement.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminBulkUnlockAchievement)
+async def admin_bulk_unlock_achievement_async(
+    body: ModelsBulkUnlockAchievementRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk unlock achievements (AdminBulkUnlockAchievement)
+
+    Required permission
+    `ADMIN:NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Properties:
+        url: /achievement/v1/admin/namespaces/{namespace}/users/{userId}/achievements/bulkUnlock
+
+        method: PUT
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUnlockAchievementRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsBulkUnlockAchievementResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminBulkUnlockAchievement.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
 
 
 @same_doc_as(AdminListUserAchievements)
@@ -376,6 +496,8 @@ def admin_unlock_achievement(
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (Not Found)
+
         422: Unprocessable Entity - ResponseError (Unprocessable Entity)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -431,6 +553,8 @@ async def admin_unlock_achievement_async(
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (Not Found)
+
         422: Unprocessable Entity - ResponseError (Unprocessable Entity)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -441,6 +565,122 @@ async def admin_unlock_achievement_async(
             return None, error
     request = AdminUnlockAchievement.create(
         achievement_code=achievement_code,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(PublicBulkUnlockAchievement)
+def public_bulk_unlock_achievement(
+    body: ModelsBulkUnlockAchievementRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk Unlock achievements (PublicBulkUnlockAchievement)
+
+    Required permission
+    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/bulkUnlock
+
+        method: PUT
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUnlockAchievementRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsBulkUnlockAchievementResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicBulkUnlockAchievement.create(
+        body=body,
+        user_id=user_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicBulkUnlockAchievement)
+async def public_bulk_unlock_achievement_async(
+    body: ModelsBulkUnlockAchievementRequest,
+    user_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Bulk Unlock achievements (PublicBulkUnlockAchievement)
+
+    Required permission
+    `NAMESPACE:{namespace}:USER:{userId}:ACHIEVEMENT [UPDATE]` and scope `social`
+
+    Properties:
+        url: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements/bulkUnlock
+
+        method: PUT
+
+        tags: ["User Achievements"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelsBulkUnlockAchievementRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+        user_id: (userId) REQUIRED str in path
+
+    Responses:
+        200: OK - List[ModelsBulkUnlockAchievementResponse] (OK)
+
+        400: Bad Request - ResponseError (Bad Request)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
+
+        422: Unprocessable Entity - ResponseError (Unprocessable Entity)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = PublicBulkUnlockAchievement.create(
+        body=body,
         user_id=user_id,
         namespace=namespace,
     )
@@ -662,6 +902,8 @@ def public_unlock_achievement(
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        404: Not Found - ResponseError (Not Found)
+
         422: Unprocessable Entity - ResponseError (Unprocessable Entity)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -716,6 +958,8 @@ async def public_unlock_achievement_async(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        404: Not Found - ResponseError (Not Found)
 
         422: Unprocessable Entity - ResponseError (Unprocessable Entity)
 

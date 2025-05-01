@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Achievement Service."""
 
-__version__ = "2.24.0"
+__version__ = "2.25.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -69,12 +69,16 @@ from .wrappers import public_list_tags
 from .wrappers import public_list_tags_async
 
 # user_achievements
+from .wrappers import admin_bulk_unlock_achievement
+from .wrappers import admin_bulk_unlock_achievement_async
 from .wrappers import admin_list_user_achievements
 from .wrappers import admin_list_user_achievements_async
 from .wrappers import admin_reset_achievement
 from .wrappers import admin_reset_achievement_async
 from .wrappers import admin_unlock_achievement
 from .wrappers import admin_unlock_achievement_async
+from .wrappers import public_bulk_unlock_achievement
+from .wrappers import public_bulk_unlock_achievement_async
 from .wrappers import public_list_user_achievements
 from .wrappers import public_list_user_achievements_async
 from .wrappers import public_unlock_achievement

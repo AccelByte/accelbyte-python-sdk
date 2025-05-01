@@ -135,6 +135,15 @@ $ python -m accelbyte_py_sdk_cli 'achievement-admin-list-user-achievements' \
     > result.txt
 ```
 
+### Operation `admin_bulk_unlock_achievement`
+```sh
+$ python -m accelbyte_py_sdk_cli 'achievement-admin-bulk-unlock-achievement' \
+    '{"achievementCodes": ["string"]}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `admin_reset_achievement`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'achievement-admin-reset-achievement' \
@@ -241,6 +250,15 @@ $ python -m accelbyte_py_sdk_cli 'achievement-public-list-user-achievements' \
     --prefer_unlocked false \
     --sort_by 'achievedAt' \
     --tags '["string"]' \
+    > result.txt
+```
+
+### Operation `public_bulk_unlock_achievement`
+```sh
+$ python -m accelbyte_py_sdk_cli 'achievement-public-bulk-unlock-achievement' \
+    '{"achievementCodes": ["string"]}' \
+    'string' \
+    'string' \
     > result.txt
 ```
 

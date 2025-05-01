@@ -50,6 +50,8 @@ class ApimodelsMatchmakingDetail(Model):
 
         party_session_id: (partySessionID) OPTIONAL str
 
+        rule_set: (ruleSet) OPTIONAL Dict[str, Any]
+
         ticket_id: (ticketID) OPTIONAL str
     """
 
@@ -63,6 +65,7 @@ class ApimodelsMatchmakingDetail(Model):
     match_rule: str  # OPTIONAL
     namespace: str  # OPTIONAL
     party_session_id: str  # OPTIONAL
+    rule_set: Dict[str, Any]  # OPTIONAL
     ticket_id: str  # OPTIONAL
 
     # endregion fields
@@ -101,6 +104,10 @@ class ApimodelsMatchmakingDetail(Model):
 
     def with_party_session_id(self, value: str) -> ApimodelsMatchmakingDetail:
         self.party_session_id = value
+        return self
+
+    def with_rule_set(self, value: Dict[str, Any]) -> ApimodelsMatchmakingDetail:
+        self.rule_set = value
         return self
 
     def with_ticket_id(self, value: str) -> ApimodelsMatchmakingDetail:
@@ -147,6 +154,10 @@ class ApimodelsMatchmakingDetail(Model):
             result["partySessionID"] = str(self.party_session_id)
         elif include_empty:
             result["partySessionID"] = ""
+        if hasattr(self, "rule_set"):
+            result["ruleSet"] = {str(k0): v0 for k0, v0 in self.rule_set.items()}
+        elif include_empty:
+            result["ruleSet"] = {}
         if hasattr(self, "ticket_id"):
             result["ticketID"] = str(self.ticket_id)
         elif include_empty:
@@ -168,6 +179,7 @@ class ApimodelsMatchmakingDetail(Model):
         match_rule: Optional[str] = None,
         namespace: Optional[str] = None,
         party_session_id: Optional[str] = None,
+        rule_set: Optional[Dict[str, Any]] = None,
         ticket_id: Optional[str] = None,
         **kwargs,
     ) -> ApimodelsMatchmakingDetail:
@@ -188,6 +200,8 @@ class ApimodelsMatchmakingDetail(Model):
             instance.namespace = namespace
         if party_session_id is not None:
             instance.party_session_id = party_session_id
+        if rule_set is not None:
+            instance.rule_set = rule_set
         if ticket_id is not None:
             instance.ticket_id = ticket_id
         return instance
@@ -236,6 +250,10 @@ class ApimodelsMatchmakingDetail(Model):
             instance.party_session_id = str(dict_["partySessionID"])
         elif include_empty:
             instance.party_session_id = ""
+        if "ruleSet" in dict_ and dict_["ruleSet"] is not None:
+            instance.rule_set = {str(k0): v0 for k0, v0 in dict_["ruleSet"].items()}
+        elif include_empty:
+            instance.rule_set = {}
         if "ticketID" in dict_ and dict_["ticketID"] is not None:
             instance.ticket_id = str(dict_["ticketID"])
         elif include_empty:
@@ -291,6 +309,7 @@ class ApimodelsMatchmakingDetail(Model):
             "matchRule": "match_rule",
             "namespace": "namespace",
             "partySessionID": "party_session_id",
+            "ruleSet": "rule_set",
             "ticketID": "ticket_id",
         }
 
@@ -305,6 +324,7 @@ class ApimodelsMatchmakingDetail(Model):
             "matchRule": False,
             "namespace": False,
             "partySessionID": False,
+            "ruleSet": False,
             "ticketID": False,
         }
 

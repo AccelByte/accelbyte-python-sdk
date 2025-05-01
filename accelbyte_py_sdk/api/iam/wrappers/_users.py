@@ -39,6 +39,7 @@ from ..models import AccountcommonUserInformationV3
 from ..models import AccountcommonUserLinkedPlatform
 from ..models import AccountcommonUserLinkedPlatformsResponseV3
 from ..models import AccountcommonUserPlatforms
+from ..models import ModelAdminBulkUserRequest
 from ..models import ModelAgeRestrictionRequest
 from ..models import ModelAgeRestrictionRequestV3
 from ..models import ModelAgeRestrictionResponse
@@ -50,8 +51,12 @@ from ..models import ModelCountryAgeRestrictionRequest
 from ..models import ModelCountryAgeRestrictionV3Request
 from ..models import ModelCountryV3Response
 from ..models import ModelCreateJusticeUserResponse
+from ..models import ModelCursorGetUserRequest
+from ..models import ModelCursorGetUserResponse
 from ..models import ModelDisableUserRequest
 from ..models import ModelForgotPasswordRequestV3
+from ..models import ModelForgotPasswordResponseV3
+from ..models import ModelForgotPasswordWithoutNamespaceRequestV3
 from ..models import ModelGetAdminUsersResponse
 from ..models import ModelGetBulkUserBansRequest
 from ..models import ModelGetLinkHeadlessAccountConflictResponse
@@ -146,6 +151,7 @@ from ..operations.users import AdminBulkGetUsersPlatform
 from ..operations.users import AdminBulkUpdateUsersV3
 from ..operations.users import AdminCreateJusticeUser
 from ..operations.users import AdminCreateUserRolesV2
+from ..operations.users import AdminCursorGetUserV3
 from ..operations.users import AdminDeletePlatformLinkV2
 from ..operations.users import AdminDeleteUserInformationV3
 from ..operations.users import AdminDeleteUserLinkingHistoryByPlatformIDV3
@@ -253,6 +259,7 @@ from ..operations.users import PublicForceLinkPlatformWithProgression
 from ..operations.users import PublicForcePlatformLinkV3
 from ..operations.users import PublicForgotPasswordV2
 from ..operations.users import PublicForgotPasswordV3
+from ..operations.users import PublicForgotPasswordWithoutNamespaceV3
 from ..operations.users import PublicGetAsyncStatus
 from ..operations.users import PublicGetCountryAgeRestriction
 from ..operations.users import PublicGetCountryAgeRestrictionV3
@@ -1561,6 +1568,144 @@ async def admin_create_user_roles_v2_async(
     request = AdminCreateUserRolesV2.create(
         body=body,
         user_id=user_id,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(AdminCursorGetUserV3)
+def admin_cursor_get_user_v3(
+    body: ModelCursorGetUserRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin Cursor-Based User Retrieval (AdminCursorGetUserV3)
+
+    1. **Cursor-Based User Retrieval**
+    This API fetches user records ordered by created_at ASC, user_id ASC to ensure a stable pagination order.
+    Pagination is handled using a cursor, which consists of created_at and user_id.
+    2. **GraphQL-Like Querying**
+    By default, the API only returns the user ID.
+    To include additional fields in the response, specify them in the request body under the fields parameter.
+    ***Supported fields***:
+    ['created_at', 'email_address']
+    ***Note***: If a value is not in the allowed list, the API will ignore it.
+    3. **Cursor Mechanics**
+    The cursor consists of created_at and user_id from the last retrieved record.
+    The next query fetches records strictly after the provided cursor.
+    ***The query applies the following ordering logic***:
+    Records with a later created_at timestamp are included.
+    If multiple records have the same created_at, only records with a higher user_id are included.
+    This ensures that records with the exact same created_at as the cursor are excluded from the next page to prevent duplication.
+    4. **Usage**
+    For the first-time query, the request body does not require a cursor.
+    If the data array is empty, it indicates that the cursor has reached the end of the available records.
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/cursor
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCursorGetUserRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelCursorGetUserResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminCursorGetUserV3.create(
+        body=body,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(AdminCursorGetUserV3)
+async def admin_cursor_get_user_v3_async(
+    body: ModelCursorGetUserRequest,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Admin Cursor-Based User Retrieval (AdminCursorGetUserV3)
+
+    1. **Cursor-Based User Retrieval**
+    This API fetches user records ordered by created_at ASC, user_id ASC to ensure a stable pagination order.
+    Pagination is handled using a cursor, which consists of created_at and user_id.
+    2. **GraphQL-Like Querying**
+    By default, the API only returns the user ID.
+    To include additional fields in the response, specify them in the request body under the fields parameter.
+    ***Supported fields***:
+    ['created_at', 'email_address']
+    ***Note***: If a value is not in the allowed list, the API will ignore it.
+    3. **Cursor Mechanics**
+    The cursor consists of created_at and user_id from the last retrieved record.
+    The next query fetches records strictly after the provided cursor.
+    ***The query applies the following ordering logic***:
+    Records with a later created_at timestamp are included.
+    If multiple records have the same created_at, only records with a higher user_id are included.
+    This ensures that records with the exact same created_at as the cursor are excluded from the next page to prevent duplication.
+    4. **Usage**
+    For the first-time query, the request body does not require a cursor.
+    If the data array is empty, it indicates that the cursor has reached the end of the available records.
+
+    Properties:
+        url: /iam/v3/admin/namespaces/{namespace}/users/cursor
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelCursorGetUserRequest in body
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ModelCursorGetUserResponse (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        401: Unauthorized - RestErrorResponse (20001: unauthorized access)
+
+        403: Forbidden - RestErrorResponse (20013: insufficient permissions)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = AdminCursorGetUserV3.create(
+        body=body,
         namespace=namespace,
     )
     return await run_request_async(
@@ -4238,6 +4383,7 @@ async def admin_get_user_by_email_address_v3_async(
 def admin_get_user_by_platform_user_idv3(
     platform_id: str,
     platform_user_id: str,
+    pid_type: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4248,7 +4394,6 @@ def admin_get_user_by_platform_user_idv3(
     This endpoint return user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
-
 
     **Supported Platforms:**
     - Steam group (steamnetwork):
@@ -4285,6 +4430,7 @@ def admin_get_user_by_platform_user_idv3(
     Note:
     - You can use either platform id or platform group as **platformId** parameter.
     - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    - **oculus**: if query by app user id, please set the query param **pidType** to **OCULUS_APP_USER_ID** (support game namespace only)
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
@@ -4305,6 +4451,8 @@ def admin_get_user_by_platform_user_idv3(
 
         platform_user_id: (platformUserId) REQUIRED str in path
 
+        pid_type: (pidType) OPTIONAL str in query
+
     Responses:
         200: OK - ModelUserResponseV3 (OK)
 
@@ -4323,6 +4471,7 @@ def admin_get_user_by_platform_user_idv3(
     request = AdminGetUserByPlatformUserIDV3.create(
         platform_id=platform_id,
         platform_user_id=platform_user_id,
+        pid_type=pid_type,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -4332,6 +4481,7 @@ def admin_get_user_by_platform_user_idv3(
 async def admin_get_user_by_platform_user_idv3_async(
     platform_id: str,
     platform_user_id: str,
+    pid_type: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -4342,7 +4492,6 @@ async def admin_get_user_by_platform_user_idv3_async(
     This endpoint return user information by given platform ID and platform user ID.
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
-
 
     **Supported Platforms:**
     - Steam group (steamnetwork):
@@ -4379,6 +4528,7 @@ async def admin_get_user_by_platform_user_idv3_async(
     Note:
     - You can use either platform id or platform group as **platformId** parameter.
     - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    - **oculus**: if query by app user id, please set the query param **pidType** to **OCULUS_APP_USER_ID** (support game namespace only)
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
@@ -4399,6 +4549,8 @@ async def admin_get_user_by_platform_user_idv3_async(
 
         platform_user_id: (platformUserId) REQUIRED str in path
 
+        pid_type: (pidType) OPTIONAL str in query
+
     Responses:
         200: OK - ModelUserResponseV3 (OK)
 
@@ -4417,6 +4569,7 @@ async def admin_get_user_by_platform_user_idv3_async(
     request = AdminGetUserByPlatformUserIDV3.create(
         platform_id=platform_id,
         platform_user_id=platform_user_id,
+        pid_type=pid_type,
         namespace=namespace,
     )
     return await run_request_async(
@@ -6368,7 +6521,7 @@ async def admin_list_user_id_by_platform_user_i_ds_v3_async(
 
 @same_doc_as(AdminListUserIDByUserIDsV3)
 def admin_list_user_id_by_user_i_ds_v3(
-    body: ModelUserIDsRequest,
+    body: ModelAdminBulkUserRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6391,7 +6544,7 @@ def admin_list_user_id_by_user_i_ds_v3(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserIDsRequest in body
+        body: (body) REQUIRED ModelAdminBulkUserRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -6419,7 +6572,7 @@ def admin_list_user_id_by_user_i_ds_v3(
 
 @same_doc_as(AdminListUserIDByUserIDsV3)
 async def admin_list_user_id_by_user_i_ds_v3_async(
-    body: ModelUserIDsRequest,
+    body: ModelAdminBulkUserRequest,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -6442,7 +6595,7 @@ async def admin_list_user_id_by_user_i_ds_v3_async(
 
         securities: [BEARER_AUTH]
 
-        body: (body) REQUIRED ModelUserIDsRequest in body
+        body: (body) REQUIRED ModelAdminBulkUserRequest in body
 
         namespace: (namespace) REQUIRED str in path
 
@@ -7715,6 +7868,7 @@ def admin_search_user_v3(
     role_ids: Optional[str] = None,
     skip_login_queue: Optional[bool] = None,
     start_date: Optional[str] = None,
+    tag_ids: Optional[str] = None,
     test_account: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -7723,23 +7877,24 @@ def admin_search_user_v3(
     """Search User (AdminSearchUserV3)
 
     Endpoint behavior :
-    - by default this endpoint searches all users on the specified namespace
-    - if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
-    - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
-    - if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
-    - if startDate parameter is defined, endpoint will search users that created start from the defined date
-    - if endDate parameter is defined, endpoint will search users that created until the defined date
-    - if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
-    - if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
-    - if limit is not defined, The default limit is 100
+    - By default this endpoint searches all users on the specified namespace.
+    - If query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query.
+    - The query parameter length must be between 3 and 30 characters. For email address queries (i.e., contains '@'), the allowed length is 3 to 40 characters. Otherwise, the database will not be queried.
+    - If startDate and endDate parameters is defined, endpoint will search users which created on the certain date range.
+    - If query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range.
+    - If startDate parameter is defined, endpoint will search users that created start from the defined date.
+    - If endDate parameter is defined, endpoint will search users that created until the defined date.
+    - If platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to.
+    - If platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName.
+    - If limit is not defined, The default limit is 100.
 
-    In multi tenant mode :
+    In Multi Tenant mode :
 
-    - if super admin search in super admin namespace, the result will be all game admin user
-    - if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
-    - if super admin search in game namespace, the result will be all game admin users and players under the game namespace
-    - if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
-    - if game admin search in their game namespace, the result will be all player in the game namespace
+    - If super admin search in super admin namespace, the result will be all game admin user
+    - If super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
+    - If super admin search in game namespace, the result will be all game admin users and players under the game namespace
+    - If game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
+    - If game admin search in their game namespace, the result will be all player in the game namespace
 
     action code : 10133
 
@@ -7780,6 +7935,8 @@ def admin_search_user_v3(
 
         start_date: (startDate) OPTIONAL str in query
 
+        tag_ids: (tagIds) OPTIONAL str in query
+
         test_account: (testAccount) OPTIONAL bool in query
 
     Responses:
@@ -7809,6 +7966,7 @@ def admin_search_user_v3(
         role_ids=role_ids,
         skip_login_queue=skip_login_queue,
         start_date=start_date,
+        tag_ids=tag_ids,
         test_account=test_account,
         namespace=namespace,
     )
@@ -7828,6 +7986,7 @@ async def admin_search_user_v3_async(
     role_ids: Optional[str] = None,
     skip_login_queue: Optional[bool] = None,
     start_date: Optional[str] = None,
+    tag_ids: Optional[str] = None,
     test_account: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -7836,23 +7995,24 @@ async def admin_search_user_v3_async(
     """Search User (AdminSearchUserV3)
 
     Endpoint behavior :
-    - by default this endpoint searches all users on the specified namespace
-    - if query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query
-    - if startDate and endDate parameters is defined, endpoint will search users which created on the certain date range
-    - if query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range
-    - if startDate parameter is defined, endpoint will search users that created start from the defined date
-    - if endDate parameter is defined, endpoint will search users that created until the defined date
-    - if platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to
-    - if platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName
-    - if limit is not defined, The default limit is 100
+    - By default this endpoint searches all users on the specified namespace.
+    - If query parameter is defined, endpoint will search users whose email address, display name, username, or third party partially match with the query.
+    - The query parameter length must be between 3 and 30 characters. For email address queries (i.e., contains '@'), the allowed length is 3 to 40 characters. Otherwise, the database will not be queried.
+    - If startDate and endDate parameters is defined, endpoint will search users which created on the certain date range.
+    - If query, startDate and endDate parameters are defined, endpoint will search users whose email address and display name match and created on the certain date range.
+    - If startDate parameter is defined, endpoint will search users that created start from the defined date.
+    - If endDate parameter is defined, endpoint will search users that created until the defined date.
+    - If platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to.
+    - If platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName.
+    - If limit is not defined, The default limit is 100.
 
-    In multi tenant mode :
+    In Multi Tenant mode :
 
-    - if super admin search in super admin namespace, the result will be all game admin user
-    - if super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
-    - if super admin search in game namespace, the result will be all game admin users and players under the game namespace
-    - if game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
-    - if game admin search in their game namespace, the result will be all player in the game namespace
+    - If super admin search in super admin namespace, the result will be all game admin user
+    - If super admin search in game studio namespace, the result will be all game admin user and players under the game studio namespace
+    - If super admin search in game namespace, the result will be all game admin users and players under the game namespace
+    - If game admin search in their game studio namespace, the result will be all game admin user in the studio namespace
+    - If game admin search in their game namespace, the result will be all player in the game namespace
 
     action code : 10133
 
@@ -7893,6 +8053,8 @@ async def admin_search_user_v3_async(
 
         start_date: (startDate) OPTIONAL str in query
 
+        tag_ids: (tagIds) OPTIONAL str in query
+
         test_account: (testAccount) OPTIONAL bool in query
 
     Responses:
@@ -7922,6 +8084,7 @@ async def admin_search_user_v3_async(
         role_ids=role_ids,
         skip_login_queue=skip_login_queue,
         start_date=start_date,
+        tag_ids=tag_ids,
         test_account=test_account,
         namespace=namespace,
     )
@@ -15252,6 +15415,102 @@ async def public_forgot_password_v3_async(
     )
 
 
+@same_doc_as(PublicForgotPasswordWithoutNamespaceV3)
+def public_forgot_password_without_namespace_v3(
+    body: ModelForgotPasswordWithoutNamespaceRequestV3,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Request Password Reset Code (PublicForgotPasswordWithoutNamespaceV3)
+
+    This endpoint does not need a namespace in the path, we will find the namespace based on:
+
+    - If this is premium environment, the namespace will be the publisher namespace.
+    - If this is shared cloud:
+    - If this is from Admin Portal, we will find the user by the email.
+    - If this is not from Admin Portal, we will find the namespace based on the client id.
+
+    **Note**:
+    - The param **clientId** is required in Shared Cloud
+    - The namespace in the response is publisher/studio namespace
+
+    Properties:
+        url: /iam/v3/public/users/forgot
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelForgotPasswordWithoutNamespaceRequestV3 in body
+
+    Responses:
+        200: OK - ModelForgotPasswordResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicForgotPasswordWithoutNamespaceV3.create(
+        body=body,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(PublicForgotPasswordWithoutNamespaceV3)
+async def public_forgot_password_without_namespace_v3_async(
+    body: ModelForgotPasswordWithoutNamespaceRequestV3,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Request Password Reset Code (PublicForgotPasswordWithoutNamespaceV3)
+
+    This endpoint does not need a namespace in the path, we will find the namespace based on:
+
+    - If this is premium environment, the namespace will be the publisher namespace.
+    - If this is shared cloud:
+    - If this is from Admin Portal, we will find the user by the email.
+    - If this is not from Admin Portal, we will find the namespace based on the client id.
+
+    **Note**:
+    - The param **clientId** is required in Shared Cloud
+    - The namespace in the response is publisher/studio namespace
+
+    Properties:
+        url: /iam/v3/public/users/forgot
+
+        method: POST
+
+        tags: ["Users"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ModelForgotPasswordWithoutNamespaceRequestV3 in body
+
+    Responses:
+        200: OK - ModelForgotPasswordResponseV3 (OK)
+
+        400: Bad Request - RestErrorResponse (20002: validation error)
+
+        500: Internal Server Error - RestErrorResponse (20000: internal server error)
+    """
+    request = PublicForgotPasswordWithoutNamespaceV3.create(
+        body=body,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
 @same_doc_as(PublicGetAsyncStatus)
 def public_get_async_status(
     request_id: str,
@@ -18961,7 +19220,7 @@ def public_search_user_v3(
     """Search User (PublicSearchUserV3)
 
     This endpoint search all users on the specified namespace that match the query on these fields: display name, unique display name, username or by 3rd party display name.
-    The query length should between 3-20, otherwise will not query the database.
+    The query length must be between 3 and 30 characters. For email address queries (i.e. contains '@'), the allowed length is 3 to 40 characters. Otherwise, the database will not be queried.
     The default limit value is 20.
 
     ## Searching by 3rd party platform
@@ -19090,7 +19349,7 @@ async def public_search_user_v3_async(
     """Search User (PublicSearchUserV3)
 
     This endpoint search all users on the specified namespace that match the query on these fields: display name, unique display name, username or by 3rd party display name.
-    The query length should between 3-20, otherwise will not query the database.
+    The query length must be between 3 and 30 characters. For email address queries (i.e. contains '@'), the allowed length is 3 to 40 characters. Otherwise, the database will not be queried.
     The default limit value is 20.
 
     ## Searching by 3rd party platform

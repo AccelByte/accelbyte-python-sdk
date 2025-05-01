@@ -70,11 +70,10 @@ class CSMTestCase(IntegrationTestCase):
 
             result, error = csm_service.save_secret_v2(
                 app=app_name,
-                body=csm_models.ApimodelSaveConfigurationV2Request.create(
+                body=csm_models.ApimodelSaveSecretConfigurationV2Request.create(
                     config_name=env_sec_key,
                     value=env_sec_value,
                     source="plaintext",
-                    apply_mask=True,
                 ),
             )
             self.assertIsNone(error, str(error))
@@ -102,7 +101,7 @@ class CSMTestCase(IntegrationTestCase):
 
             result, error = csm_service.update_secret_v2(
                 app=app_name,
-                body=csm_models.ApimodelUpdateConfigurationV2Request.create(
+                body=csm_models.ApimodelUpdateSecretConfigurationV2Request.create(
                     value=env_sec_value_new
                 ),
                 config_id=found_env_sec_id,

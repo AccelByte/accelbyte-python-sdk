@@ -424,6 +424,7 @@ $ python -m accelbyte_py_sdk_cli 'leaderboard-get-current-cycle-leaderboard-rank
     'string' \
     --limit 1 \
     --offset 1 \
+    --previous_version 1 \
     > result.txt
 ```
 
@@ -478,6 +479,7 @@ $ python -m accelbyte_py_sdk_cli 'leaderboard-get-user-ranking-admin-v3' \
     'string' \
     'string' \
     'string' \
+    --previous_version 1 \
     > result.txt
 ```
 
@@ -525,6 +527,7 @@ $ python -m accelbyte_py_sdk_cli 'leaderboard-get-user-leaderboard-rankings-admi
     'string' \
     --limit 1 \
     --offset 1 \
+    --previous_version 1 \
     > result.txt
 ```
 
@@ -573,6 +576,7 @@ $ python -m accelbyte_py_sdk_cli 'leaderboard-get-current-cycle-leaderboard-rank
     'string' \
     --limit 1 \
     --offset 1 \
+    --previous_version 1 \
     > result.txt
 ```
 
@@ -582,6 +586,7 @@ $ python -m accelbyte_py_sdk_cli 'leaderboard-bulk-get-users-ranking-public-v3' 
     '{"userIds": ["string"]}' \
     'string' \
     'string' \
+    --previous_version 1 \
     > result.txt
 ```
 
@@ -591,6 +596,7 @@ $ python -m accelbyte_py_sdk_cli 'leaderboard-get-user-ranking-public-v3' \
     'string' \
     'string' \
     'string' \
+    --previous_version 1 \
     > result.txt
 ```
 

@@ -1,3 +1,23 @@
+<a name="v0.75.0"></a>
+## [v0.75.0]
+### ci
+- **coverity:** add arm64 build machine support
+- **coverity:** this job often stuck in ec2 build machine for certain language
+- **coverity:** change coverity download path
+- **jenkinsfile:** use lima build machine too
+### test
+- **integration:** gametelemetry - remove deprecated endpoints
+### docs
+- **common use cases:** update
+### fix
+- **core:** fix security handling for cookie auth accepting requests
+### chore
+- **tests:** add redacted comments in tests
+- **docs:** regenerate common use cases file
+- **doc:** rename doc tag
+- **cli:** generate cli index files
+
+
 <a name="v0.74.0"></a>
 ## [v0.74.0]
 ### chore

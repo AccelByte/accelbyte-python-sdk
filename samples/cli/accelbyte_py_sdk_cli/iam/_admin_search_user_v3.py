@@ -49,6 +49,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--role_ids", "role_ids", type=str)
 @click.option("--skip_login_queue", "skip_login_queue", type=bool)
 @click.option("--start_date", "start_date", type=str)
+@click.option("--tag_ids", "tag_ids", type=str)
 @click.option("--test_account", "test_account", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
@@ -66,6 +67,7 @@ def admin_search_user_v3(
     role_ids: Optional[str] = None,
     skip_login_queue: Optional[bool] = None,
     start_date: Optional[str] = None,
+    tag_ids: Optional[str] = None,
     test_account: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
@@ -92,6 +94,7 @@ def admin_search_user_v3(
         role_ids=role_ids,
         skip_login_queue=skip_login_queue,
         start_date=start_date,
+        tag_ids=tag_ids,
         test_account=test_account,
         namespace=namespace,
         x_additional_headers=x_additional_headers,

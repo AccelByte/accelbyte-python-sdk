@@ -67,6 +67,8 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
 
         type_: (type) REQUIRED str
 
+        ams_claim_timeout_minutes: (amsClaimTimeoutMinutes) OPTIONAL int
+
         app_name: (appName) OPTIONAL str
 
         async_process_ds_request: (asyncProcessDSRequest) OPTIONAL ModelsAsyncProcessDSRequest
@@ -128,6 +130,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
     requested_regions: List[str]  # REQUIRED
     text_chat: bool  # REQUIRED
     type_: str  # REQUIRED
+    ams_claim_timeout_minutes: int  # OPTIONAL
     app_name: str  # OPTIONAL
     async_process_ds_request: ModelsAsyncProcessDSRequest  # OPTIONAL
     attributes: Dict[str, Any]  # OPTIONAL
@@ -222,6 +225,12 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
 
     def with_type(self, value: str) -> ApimodelsUpdateConfigurationTemplateRequest:
         self.type_ = value
+        return self
+
+    def with_ams_claim_timeout_minutes(
+        self, value: int
+    ) -> ApimodelsUpdateConfigurationTemplateRequest:
+        self.ams_claim_timeout_minutes = value
         return self
 
     def with_app_name(self, value: str) -> ApimodelsUpdateConfigurationTemplateRequest:
@@ -410,6 +419,10 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             result["type"] = str(self.type_)
         elif include_empty:
             result["type"] = ""
+        if hasattr(self, "ams_claim_timeout_minutes"):
+            result["amsClaimTimeoutMinutes"] = int(self.ams_claim_timeout_minutes)
+        elif include_empty:
+            result["amsClaimTimeoutMinutes"] = 0
         if hasattr(self, "app_name"):
             result["appName"] = str(self.app_name)
         elif include_empty:
@@ -529,6 +542,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         requested_regions: List[str],
         text_chat: bool,
         type_: str,
+        ams_claim_timeout_minutes: Optional[int] = None,
         app_name: Optional[str] = None,
         async_process_ds_request: Optional[ModelsAsyncProcessDSRequest] = None,
         attributes: Optional[Dict[str, Any]] = None,
@@ -567,6 +581,8 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
         instance.requested_regions = requested_regions
         instance.text_chat = text_chat
         instance.type_ = type_
+        if ams_claim_timeout_minutes is not None:
+            instance.ams_claim_timeout_minutes = ams_claim_timeout_minutes
         if app_name is not None:
             instance.app_name = app_name
         if async_process_ds_request is not None:
@@ -670,6 +686,13 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             instance.type_ = str(dict_["type"])
         elif include_empty:
             instance.type_ = ""
+        if (
+            "amsClaimTimeoutMinutes" in dict_
+            and dict_["amsClaimTimeoutMinutes"] is not None
+        ):
+            instance.ams_claim_timeout_minutes = int(dict_["amsClaimTimeoutMinutes"])
+        elif include_empty:
+            instance.ams_claim_timeout_minutes = 0
         if "appName" in dict_ and dict_["appName"] is not None:
             instance.app_name = str(dict_["appName"])
         elif include_empty:
@@ -850,6 +873,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             "requestedRegions": "requested_regions",
             "textChat": "text_chat",
             "type": "type_",
+            "amsClaimTimeoutMinutes": "ams_claim_timeout_minutes",
             "appName": "app_name",
             "asyncProcessDSRequest": "async_process_ds_request",
             "attributes": "attributes",
@@ -890,6 +914,7 @@ class ApimodelsUpdateConfigurationTemplateRequest(Model):
             "requestedRegions": True,
             "textChat": True,
             "type": True,
+            "amsClaimTimeoutMinutes": False,
             "appName": False,
             "asyncProcessDSRequest": False,
             "attributes": False,

@@ -34,22 +34,22 @@ class ModelsDSMConfigRecord(Model):
     Properties:
         claim_timeout: (claim_timeout) REQUIRED int
 
-        created_at: (createdAt) REQUIRED str
-
         creation_timeout: (creation_timeout) REQUIRED int
 
-        namespace: (namespace) REQUIRED str
+        created_at: (createdAt) OPTIONAL str
 
-        updated_at: (updatedAt) REQUIRED str
+        namespace: (namespace) OPTIONAL str
+
+        updated_at: (updatedAt) OPTIONAL str
     """
 
     # region fields
 
     claim_timeout: int  # REQUIRED
-    created_at: str  # REQUIRED
     creation_timeout: int  # REQUIRED
-    namespace: str  # REQUIRED
-    updated_at: str  # REQUIRED
+    created_at: str  # OPTIONAL
+    namespace: str  # OPTIONAL
+    updated_at: str  # OPTIONAL
 
     # endregion fields
 
@@ -59,12 +59,12 @@ class ModelsDSMConfigRecord(Model):
         self.claim_timeout = value
         return self
 
-    def with_created_at(self, value: str) -> ModelsDSMConfigRecord:
-        self.created_at = value
-        return self
-
     def with_creation_timeout(self, value: int) -> ModelsDSMConfigRecord:
         self.creation_timeout = value
+        return self
+
+    def with_created_at(self, value: str) -> ModelsDSMConfigRecord:
+        self.created_at = value
         return self
 
     def with_namespace(self, value: str) -> ModelsDSMConfigRecord:
@@ -85,14 +85,14 @@ class ModelsDSMConfigRecord(Model):
             result["claim_timeout"] = int(self.claim_timeout)
         elif include_empty:
             result["claim_timeout"] = 0
-        if hasattr(self, "created_at"):
-            result["createdAt"] = str(self.created_at)
-        elif include_empty:
-            result["createdAt"] = ""
         if hasattr(self, "creation_timeout"):
             result["creation_timeout"] = int(self.creation_timeout)
         elif include_empty:
             result["creation_timeout"] = 0
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -111,18 +111,21 @@ class ModelsDSMConfigRecord(Model):
     def create(
         cls,
         claim_timeout: int,
-        created_at: str,
         creation_timeout: int,
-        namespace: str,
-        updated_at: str,
+        created_at: Optional[str] = None,
+        namespace: Optional[str] = None,
+        updated_at: Optional[str] = None,
         **kwargs,
     ) -> ModelsDSMConfigRecord:
         instance = cls()
         instance.claim_timeout = claim_timeout
-        instance.created_at = created_at
         instance.creation_timeout = creation_timeout
-        instance.namespace = namespace
-        instance.updated_at = updated_at
+        if created_at is not None:
+            instance.created_at = created_at
+        if namespace is not None:
+            instance.namespace = namespace
+        if updated_at is not None:
+            instance.updated_at = updated_at
         return instance
 
     @classmethod
@@ -136,14 +139,14 @@ class ModelsDSMConfigRecord(Model):
             instance.claim_timeout = int(dict_["claim_timeout"])
         elif include_empty:
             instance.claim_timeout = 0
-        if "createdAt" in dict_ and dict_["createdAt"] is not None:
-            instance.created_at = str(dict_["createdAt"])
-        elif include_empty:
-            instance.created_at = ""
         if "creation_timeout" in dict_ and dict_["creation_timeout"] is not None:
             instance.creation_timeout = int(dict_["creation_timeout"])
         elif include_empty:
             instance.creation_timeout = 0
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -196,8 +199,8 @@ class ModelsDSMConfigRecord(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "claim_timeout": "claim_timeout",
-            "createdAt": "created_at",
             "creation_timeout": "creation_timeout",
+            "createdAt": "created_at",
             "namespace": "namespace",
             "updatedAt": "updated_at",
         }
@@ -206,10 +209,10 @@ class ModelsDSMConfigRecord(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "claim_timeout": True,
-            "createdAt": True,
             "creation_timeout": True,
-            "namespace": True,
-            "updatedAt": True,
+            "createdAt": False,
+            "namespace": False,
+            "updatedAt": False,
         }
 
     # endregion static methods

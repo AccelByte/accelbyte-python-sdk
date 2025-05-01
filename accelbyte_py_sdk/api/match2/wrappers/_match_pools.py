@@ -554,6 +554,8 @@ def match_pool_details(
 
         403: Forbidden - ResponseError (Forbidden)
 
+        404: Not Found - ResponseError (Not Found)
+
         500: Internal Server Error - ResponseError (Internal Server Error)
     """
     if namespace is None:
@@ -601,6 +603,8 @@ async def match_pool_details_async(
         401: Unauthorized - ResponseError (Unauthorized)
 
         403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
     """

@@ -117,7 +117,7 @@ $ python -m accelbyte_py_sdk_cli 'csm-get-list-of-secrets-v2' \
 ### Operation `save_secret_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-save-secret-v2' \
-    '{"applyMask": false, "configName": "string", "description": "string", "source": "string", "value": "string"}' \
+    '{"configName": "string", "description": "string", "source": "string", "value": "string"}' \
     'string' \
     'string' \
     > result.txt
@@ -126,7 +126,7 @@ $ python -m accelbyte_py_sdk_cli 'csm-save-secret-v2' \
 ### Operation `update_secret_v2`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'csm-update-secret-v2' \
-    '{"applyMask": false, "description": "string", "value": "string"}' \
+    '{"description": "string", "value": "string"}' \
     'string' \
     'string' \
     'string' \

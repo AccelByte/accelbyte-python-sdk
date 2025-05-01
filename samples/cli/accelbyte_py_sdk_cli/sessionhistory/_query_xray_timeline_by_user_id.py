@@ -43,6 +43,8 @@ from accelbyte_py_sdk.api.sessionhistory.models import ResponseError
 @click.argument("start_date", type=str)
 @click.option("--limit", "limit", type=int)
 @click.option("--offset", "offset", type=int)
+@click.option("--order", "order", type=str)
+@click.option("--order_by", "order_by", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
@@ -53,6 +55,8 @@ def query_xray_timeline_by_user_id(
     start_date: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    order: Optional[str] = None,
+    order_by: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -72,6 +76,8 @@ def query_xray_timeline_by_user_id(
         start_date=start_date,
         limit=limit,
         offset=offset,
+        order=order,
+        order_by=order_by,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

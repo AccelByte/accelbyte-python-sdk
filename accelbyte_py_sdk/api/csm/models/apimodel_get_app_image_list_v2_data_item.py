@@ -43,6 +43,8 @@ class ApimodelGetAppImageListV2DataItem(Model):
 
         image_tag: (imageTag) REQUIRED str
 
+        is_active: (IsActive) REQUIRED bool
+
         size: (size) REQUIRED int
 
         image_scan_result: (imageScanResult) OPTIONAL ApimodelGetAppImageListV2DataItemImageScanResult
@@ -56,6 +58,7 @@ class ApimodelGetAppImageListV2DataItem(Model):
 
     image_digest: str  # REQUIRED
     image_tag: str  # REQUIRED
+    is_active: bool  # REQUIRED
     size: int  # REQUIRED
     image_scan_result: ApimodelGetAppImageListV2DataItemImageScanResult  # OPTIONAL
     image_scan_status: ApimodelGetAppImageListV2DataItemImageScanStatus  # OPTIONAL
@@ -71,6 +74,10 @@ class ApimodelGetAppImageListV2DataItem(Model):
 
     def with_image_tag(self, value: str) -> ApimodelGetAppImageListV2DataItem:
         self.image_tag = value
+        return self
+
+    def with_is_active(self, value: bool) -> ApimodelGetAppImageListV2DataItem:
+        self.is_active = value
         return self
 
     def with_size(self, value: int) -> ApimodelGetAppImageListV2DataItem:
@@ -107,6 +114,10 @@ class ApimodelGetAppImageListV2DataItem(Model):
             result["imageTag"] = str(self.image_tag)
         elif include_empty:
             result["imageTag"] = ""
+        if hasattr(self, "is_active"):
+            result["IsActive"] = bool(self.is_active)
+        elif include_empty:
+            result["IsActive"] = False
         if hasattr(self, "size"):
             result["size"] = int(self.size)
         elif include_empty:
@@ -142,6 +153,7 @@ class ApimodelGetAppImageListV2DataItem(Model):
         cls,
         image_digest: str,
         image_tag: str,
+        is_active: bool,
         size: int,
         image_scan_result: Optional[
             ApimodelGetAppImageListV2DataItemImageScanResult
@@ -155,6 +167,7 @@ class ApimodelGetAppImageListV2DataItem(Model):
         instance = cls()
         instance.image_digest = image_digest
         instance.image_tag = image_tag
+        instance.is_active = is_active
         instance.size = size
         if image_scan_result is not None:
             instance.image_scan_result = image_scan_result
@@ -179,6 +192,10 @@ class ApimodelGetAppImageListV2DataItem(Model):
             instance.image_tag = str(dict_["imageTag"])
         elif include_empty:
             instance.image_tag = ""
+        if "IsActive" in dict_ and dict_["IsActive"] is not None:
+            instance.is_active = bool(dict_["IsActive"])
+        elif include_empty:
+            instance.is_active = False
         if "size" in dict_ and dict_["size"] is not None:
             instance.size = int(dict_["size"])
         elif include_empty:
@@ -252,6 +269,7 @@ class ApimodelGetAppImageListV2DataItem(Model):
         return {
             "imageDigest": "image_digest",
             "imageTag": "image_tag",
+            "IsActive": "is_active",
             "size": "size",
             "imageScanResult": "image_scan_result",
             "imageScanStatus": "image_scan_status",
@@ -263,6 +281,7 @@ class ApimodelGetAppImageListV2DataItem(Model):
         return {
             "imageDigest": True,
             "imageTag": True,
+            "IsActive": True,
             "size": True,
             "imageScanResult": False,
             "imageScanStatus": False,

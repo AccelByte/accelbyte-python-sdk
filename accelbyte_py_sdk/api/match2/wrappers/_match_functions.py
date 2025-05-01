@@ -36,6 +36,7 @@ from ..models import ResponseError
 
 from ..operations.match_functions import CreateMatchFunction
 from ..operations.match_functions import DeleteMatchFunction
+from ..operations.match_functions import MatchFunctionGet
 from ..operations.match_functions import MatchFunctionList
 from ..operations.match_functions import UpdateMatchFunction
 
@@ -240,6 +241,108 @@ async def delete_match_function_async(
         if error:
             return None, error
     request = DeleteMatchFunction.create(
+        name=name,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(MatchFunctionGet)
+def match_function_get(
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get custom match function by name (MatchFunctionGet)
+
+    Get custom match function by name.
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-functions/{name}
+
+        method: GET
+
+        tags: ["Match-Functions", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiMatchFunctionConfig (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = MatchFunctionGet.create(
+        name=name,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(MatchFunctionGet)
+async def match_function_get_async(
+    name: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get custom match function by name (MatchFunctionGet)
+
+    Get custom match function by name.
+
+    Properties:
+        url: /match2/v1/namespaces/{namespace}/match-functions/{name}
+
+        method: GET
+
+        tags: ["Match-Functions", "admin"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        name: (name) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        200: OK - ApiMatchFunctionConfig (Created)
+
+        401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
+
+        404: Not Found - ResponseError (Not Found)
+
+        500: Internal Server Error - ResponseError (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = MatchFunctionGet.create(
         name=name,
         namespace=namespace,
     )

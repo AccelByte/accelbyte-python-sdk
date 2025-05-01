@@ -41,7 +41,6 @@ class AdminGetUserByPlatformUserIDV3(Operation):
     Several platforms are grouped under account groups, you can use either platform ID or platform group as platformId path parameter.
     example: for steam network platform, you can use steamnetwork / steam / steamopenid as platformId path parameter.
 
-
     **Supported Platforms:**
     - Steam group (steamnetwork):
     - steam
@@ -77,6 +76,7 @@ class AdminGetUserByPlatformUserIDV3(Operation):
     Note:
     - You can use either platform id or platform group as **platformId** parameter.
     - **Nintendo platform user id**: NSA ID need to be appended with Environment ID using colon as separator. e.g kmzwa8awaa:dd1
+    - **oculus**: if query by app user id, please set the query param **pidType** to **OCULUS_APP_USER_ID** (support game namespace only)
 
     Properties:
         url: /iam/v3/admin/namespaces/{namespace}/platforms/{platformId}/users/{platformUserId}
@@ -96,6 +96,8 @@ class AdminGetUserByPlatformUserIDV3(Operation):
         platform_id: (platformId) REQUIRED str in path
 
         platform_user_id: (platformUserId) REQUIRED str in path
+
+        pid_type: (pidType) OPTIONAL str in query
 
     Responses:
         200: OK - ModelUserResponseV3 (OK)
@@ -121,6 +123,7 @@ class AdminGetUserByPlatformUserIDV3(Operation):
     namespace: str  # REQUIRED in [path]
     platform_id: str  # REQUIRED in [path]
     platform_user_id: str  # REQUIRED in [path]
+    pid_type: str  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -161,6 +164,7 @@ class AdminGetUserByPlatformUserIDV3(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -171,6 +175,12 @@ class AdminGetUserByPlatformUserIDV3(Operation):
             result["platformId"] = self.platform_id
         if hasattr(self, "platform_user_id"):
             result["platformUserId"] = self.platform_user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "pid_type"):
+            result["pidType"] = self.pid_type
         return result
 
     # endregion get_x_params methods
@@ -193,6 +203,10 @@ class AdminGetUserByPlatformUserIDV3(Operation):
         self.platform_user_id = value
         return self
 
+    def with_pid_type(self, value: str) -> AdminGetUserByPlatformUserIDV3:
+        self.pid_type = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -211,6 +225,10 @@ class AdminGetUserByPlatformUserIDV3(Operation):
             result["platformUserId"] = str(self.platform_user_id)
         elif include_empty:
             result["platformUserId"] = ""
+        if hasattr(self, "pid_type") and self.pid_type:
+            result["pidType"] = str(self.pid_type)
+        elif include_empty:
+            result["pidType"] = ""
         return result
 
     # endregion to methods
@@ -269,12 +287,19 @@ class AdminGetUserByPlatformUserIDV3(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, platform_id: str, platform_user_id: str, **kwargs
+        cls,
+        namespace: str,
+        platform_id: str,
+        platform_user_id: str,
+        pid_type: Optional[str] = None,
+        **kwargs,
     ) -> AdminGetUserByPlatformUserIDV3:
         instance = cls()
         instance.namespace = namespace
         instance.platform_id = platform_id
         instance.platform_user_id = platform_user_id
+        if pid_type is not None:
+            instance.pid_type = pid_type
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -296,6 +321,10 @@ class AdminGetUserByPlatformUserIDV3(Operation):
             instance.platform_user_id = str(dict_["platformUserId"])
         elif include_empty:
             instance.platform_user_id = ""
+        if "pidType" in dict_ and dict_["pidType"] is not None:
+            instance.pid_type = str(dict_["pidType"])
+        elif include_empty:
+            instance.pid_type = ""
         return instance
 
     @staticmethod
@@ -304,6 +333,7 @@ class AdminGetUserByPlatformUserIDV3(Operation):
             "namespace": "namespace",
             "platformId": "platform_id",
             "platformUserId": "platform_user_id",
+            "pidType": "pid_type",
         }
 
     @staticmethod
@@ -312,6 +342,7 @@ class AdminGetUserByPlatformUserIDV3(Operation):
             "namespace": True,
             "platformId": True,
             "platformUserId": True,
+            "pidType": False,
         }
 
     # endregion static methods

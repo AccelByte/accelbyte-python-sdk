@@ -375,6 +375,8 @@ $ python -m accelbyte_py_sdk_cli 'sessionhistory-query-xray-timeline-by-user-id'
     'string' \
     --limit 1 \
     --offset 1 \
+    --order 'string' \
+    --order_by 'string' \
     > result.txt
 ```
 

@@ -34,6 +34,8 @@ class ModelPublicOpenIDUserInfoResponse(Model):
     Properties:
         email: (email) REQUIRED str
 
+        email_verified: (email_verified) REQUIRED bool
+
         name: (name) REQUIRED str
 
         picture: (picture) REQUIRED str
@@ -44,6 +46,7 @@ class ModelPublicOpenIDUserInfoResponse(Model):
     # region fields
 
     email: str  # REQUIRED
+    email_verified: bool  # REQUIRED
     name: str  # REQUIRED
     picture: str  # REQUIRED
     sub: str  # REQUIRED
@@ -54,6 +57,10 @@ class ModelPublicOpenIDUserInfoResponse(Model):
 
     def with_email(self, value: str) -> ModelPublicOpenIDUserInfoResponse:
         self.email = value
+        return self
+
+    def with_email_verified(self, value: bool) -> ModelPublicOpenIDUserInfoResponse:
+        self.email_verified = value
         return self
 
     def with_name(self, value: str) -> ModelPublicOpenIDUserInfoResponse:
@@ -78,6 +85,10 @@ class ModelPublicOpenIDUserInfoResponse(Model):
             result["email"] = str(self.email)
         elif include_empty:
             result["email"] = ""
+        if hasattr(self, "email_verified"):
+            result["email_verified"] = bool(self.email_verified)
+        elif include_empty:
+            result["email_verified"] = False
         if hasattr(self, "name"):
             result["name"] = str(self.name)
         elif include_empty:
@@ -98,10 +109,17 @@ class ModelPublicOpenIDUserInfoResponse(Model):
 
     @classmethod
     def create(
-        cls, email: str, name: str, picture: str, sub: str, **kwargs
+        cls,
+        email: str,
+        email_verified: bool,
+        name: str,
+        picture: str,
+        sub: str,
+        **kwargs,
     ) -> ModelPublicOpenIDUserInfoResponse:
         instance = cls()
         instance.email = email
+        instance.email_verified = email_verified
         instance.name = name
         instance.picture = picture
         instance.sub = sub
@@ -118,6 +136,10 @@ class ModelPublicOpenIDUserInfoResponse(Model):
             instance.email = str(dict_["email"])
         elif include_empty:
             instance.email = ""
+        if "email_verified" in dict_ and dict_["email_verified"] is not None:
+            instance.email_verified = bool(dict_["email_verified"])
+        elif include_empty:
+            instance.email_verified = False
         if "name" in dict_ and dict_["name"] is not None:
             instance.name = str(dict_["name"])
         elif include_empty:
@@ -174,6 +196,7 @@ class ModelPublicOpenIDUserInfoResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "email": "email",
+            "email_verified": "email_verified",
             "name": "name",
             "picture": "picture",
             "sub": "sub",
@@ -183,6 +206,7 @@ class ModelPublicOpenIDUserInfoResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "email": True,
+            "email_verified": True,
             "name": True,
             "picture": True,
             "sub": True,

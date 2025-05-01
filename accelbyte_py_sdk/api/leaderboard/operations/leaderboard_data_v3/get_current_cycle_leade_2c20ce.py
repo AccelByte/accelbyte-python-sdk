@@ -61,6 +61,8 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
 
         offset: (offset) OPTIONAL int in query
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsGetLeaderboardRankingResp (Cycle leaderboard ranking data retrieved)
 
@@ -85,6 +87,7 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
     namespace: str  # REQUIRED in [path]
     limit: int  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    previous_version: int  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -144,6 +147,8 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
             result["limit"] = self.limit
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "previous_version"):
+            result["previousVersion"] = self.previous_version
         return result
 
     # endregion get_x_params methods
@@ -176,6 +181,12 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
         self.offset = value
         return self
 
+    def with_previous_version(
+        self, value: int
+    ) -> GetCurrentCycleLeaderboardRankingPublicV3:
+        self.previous_version = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -202,6 +213,10 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "previous_version") and self.previous_version:
+            result["previousVersion"] = int(self.previous_version)
+        elif include_empty:
+            result["previousVersion"] = 0
         return result
 
     # endregion to methods
@@ -263,6 +278,7 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
         namespace: str,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        previous_version: Optional[int] = None,
         **kwargs,
     ) -> GetCurrentCycleLeaderboardRankingPublicV3:
         instance = cls()
@@ -273,6 +289,8 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
             instance.limit = limit
         if offset is not None:
             instance.offset = offset
+        if previous_version is not None:
+            instance.previous_version = previous_version
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -302,6 +320,10 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "previousVersion" in dict_ and dict_["previousVersion"] is not None:
+            instance.previous_version = int(dict_["previousVersion"])
+        elif include_empty:
+            instance.previous_version = 0
         return instance
 
     @staticmethod
@@ -312,6 +334,7 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
             "namespace": "namespace",
             "limit": "limit",
             "offset": "offset",
+            "previousVersion": "previous_version",
         }
 
     @staticmethod
@@ -322,6 +345,7 @@ class GetCurrentCycleLeaderboardRankingPublicV3(Operation):
             "namespace": True,
             "limit": False,
             "offset": False,
+            "previousVersion": False,
         }
 
     # endregion static methods

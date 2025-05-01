@@ -42,7 +42,7 @@ class ApimodelsAdminUpdateItemReq(Model):
 
         tags: (tags) REQUIRED List[str]
 
-        type_: (type) REQUIRED str
+        type_: (type) OPTIONAL str
     """
 
     # region fields
@@ -52,7 +52,7 @@ class ApimodelsAdminUpdateItemReq(Model):
     slot_id: str  # REQUIRED
     source_item_id: str  # REQUIRED
     tags: List[str]  # REQUIRED
-    type_: str  # REQUIRED
+    type_: str  # OPTIONAL
 
     # endregion fields
 
@@ -134,7 +134,7 @@ class ApimodelsAdminUpdateItemReq(Model):
         slot_id: str,
         source_item_id: str,
         tags: List[str],
-        type_: str,
+        type_: Optional[str] = None,
         **kwargs,
     ) -> ApimodelsAdminUpdateItemReq:
         instance = cls()
@@ -143,7 +143,8 @@ class ApimodelsAdminUpdateItemReq(Model):
         instance.slot_id = slot_id
         instance.source_item_id = source_item_id
         instance.tags = tags
-        instance.type_ = type_
+        if type_ is not None:
+            instance.type_ = type_
         return instance
 
     @classmethod
@@ -243,7 +244,7 @@ class ApimodelsAdminUpdateItemReq(Model):
             "slotId": True,
             "sourceItemId": True,
             "tags": True,
-            "type": True,
+            "type": False,
         }
 
     # endregion static methods

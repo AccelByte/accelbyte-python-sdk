@@ -40,6 +40,7 @@ def get_user_leaderboard_rankings_admin_v3(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -69,8 +70,12 @@ def get_user_leaderboard_rankings_admin_v3(
 
         offset: (offset) OPTIONAL int in query
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsGetAllUserLeaderboardsRespV3 (User rankings retrieved)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
         401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
@@ -86,6 +91,7 @@ def get_user_leaderboard_rankings_admin_v3(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -96,6 +102,7 @@ async def get_user_leaderboard_rankings_admin_v3_async(
     user_id: str,
     limit: Optional[int] = None,
     offset: Optional[int] = None,
+    previous_version: Optional[int] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -125,8 +132,12 @@ async def get_user_leaderboard_rankings_admin_v3_async(
 
         offset: (offset) OPTIONAL int in query
 
+        previous_version: (previousVersion) OPTIONAL int in query
+
     Responses:
         200: OK - ModelsGetAllUserLeaderboardsRespV3 (User rankings retrieved)
+
+        400: Bad Request - ResponseErrorResponse (20002: validation error)
 
         401: Unauthorized - ResponseErrorResponse (20001: unauthorized access)
 
@@ -142,6 +153,7 @@ async def get_user_leaderboard_rankings_admin_v3_async(
         user_id=user_id,
         limit=limit,
         offset=offset,
+        previous_version=previous_version,
         namespace=namespace,
     )
     return await run_request_async(

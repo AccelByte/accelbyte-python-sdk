@@ -70,6 +70,7 @@ chat-admin-add-inbox-category '{"enabled": false, "expiresIn": 29, "hook": {"dri
 chat-admin-delete-inbox-category 'LdLsFzHkBMr1yrOM' --login_with_auth "Bearer foo"
 chat-admin-update-inbox-category '{"enabled": false, "expiresIn": 40, "hook": {"driver": "NFSrUEirnjX9fDmI", "params": {"beZxzfTcyiuATus9": {}, "hsfpFDcSDG8aMVGL": {}, "iBNrDjqoxcwgGLXp": {}}}, "jsonSchema": {"UL4pp2ncYAHdNzDm": {}, "eIP6rOvDz9KOsb39": {}, "2k6YmJFfRByjlBiu": {}}, "saveInbox": true, "sendNotification": false}' 'oVk8T3GpAnkCmBUq' --login_with_auth "Bearer foo"
 chat-admin-get-category-schema 'g2SCnqntX9y1aZSW' --login_with_auth "Bearer foo"
+chat-admin-list-kafka-topic --login_with_auth "Bearer foo"
 chat-admin-delete-inbox-message 'MiVi10sG6vxkfUcm' --login_with_auth "Bearer foo"
 chat-admin-get-inbox-messages --login_with_auth "Bearer foo"
 chat-admin-save-inbox-message '{"category": "qRRbceJ5i0EeDxOg", "expiredAt": 55, "message": {"eCSz9WEi8KlloeH0": {}, "JT1yduat2vQR3biB": {}, "fsu4jmsRE2w1yEkL": {}}, "scope": "NAMESPACE", "status": "DRAFT", "userIds": ["mqrxzTtuLl4XlbGL", "8QOxtjzm8y2wNhmw", "oYZyI4EFZKBcYrCE"]}' --login_with_auth "Bearer foo"
@@ -110,7 +111,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..64"
+echo "1..65"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -409,150 +410,156 @@ $PYTHON -m $MODULE 'chat-admin-get-category-schema' \
     > test.out 2>&1
 eval_tap $? 43 'AdminGetCategorySchema' test.out
 
-#- 44 AdminDeleteInboxMessage
+#- 44 AdminListKafkaTopic
+$PYTHON -m $MODULE 'chat-admin-list-kafka-topic' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 44 'AdminListKafkaTopic' test.out
+
+#- 45 AdminDeleteInboxMessage
 $PYTHON -m $MODULE 'chat-admin-delete-inbox-message' \
     'vSkVFWdsbYuVEGVx' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 44 'AdminDeleteInboxMessage' test.out
+eval_tap $? 45 'AdminDeleteInboxMessage' test.out
 
-#- 45 AdminGetInboxMessages
+#- 46 AdminGetInboxMessages
 $PYTHON -m $MODULE 'chat-admin-get-inbox-messages' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 45 'AdminGetInboxMessages' test.out
+eval_tap $? 46 'AdminGetInboxMessages' test.out
 
-#- 46 AdminSaveInboxMessage
+#- 47 AdminSaveInboxMessage
 $PYTHON -m $MODULE 'chat-admin-save-inbox-message' \
     '{"category": "YheR3j5mNZ6vwv7K", "expiredAt": 54, "message": {"8gxefTYKhuxaEc7M": {}, "4P7UckSC6ePeN8i4": {}, "GrFES9z7xueHpATH": {}}, "scope": "NAMESPACE", "status": "DRAFT", "userIds": ["q7akMpcmnnx6RVBr", "op9v7aZK3h65hbN1", "5zfQSfQrtfF3TQN0"]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 46 'AdminSaveInboxMessage' test.out
+eval_tap $? 47 'AdminSaveInboxMessage' test.out
 
-#- 47 AdminUnsendInboxMessage
+#- 48 AdminUnsendInboxMessage
 $PYTHON -m $MODULE 'chat-admin-unsend-inbox-message' \
     '{"userIds": ["OcNDLr36vzohZyjM", "QAg5mPYhrLTyU8Oh", "gfY9JQYGF4bYXEcE"]}' \
     'Nx9xZlAchob44lON' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 47 'AdminUnsendInboxMessage' test.out
+eval_tap $? 48 'AdminUnsendInboxMessage' test.out
 
-#- 48 AdminGetInboxUsers
+#- 49 AdminGetInboxUsers
 $PYTHON -m $MODULE 'chat-admin-get-inbox-users' \
     'DDwMvgI0HlyPR7wZ' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 48 'AdminGetInboxUsers' test.out
+eval_tap $? 49 'AdminGetInboxUsers' test.out
 
-#- 49 AdminUpdateInboxMessage
+#- 50 AdminUpdateInboxMessage
 $PYTHON -m $MODULE 'chat-admin-update-inbox-message' \
     '{"expiredAt": 82, "message": {"ByYqeKN0meGelYF5": {}, "wWaDhukU4khGG4vZ": {}, "FTYnPkmSu4PWam1j": {}}, "scope": "USER", "userIds": ["06MqQBErxgjVBycv", "U4PbmRDcrg0DjQjB", "ECXvea7H1m2lJFRZ"]}' \
     '3ZprZ60zMjhTHeh9' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 49 'AdminUpdateInboxMessage' test.out
+eval_tap $? 50 'AdminUpdateInboxMessage' test.out
 
-#- 50 AdminSendInboxMessage
+#- 51 AdminSendInboxMessage
 $PYTHON -m $MODULE 'chat-admin-send-inbox-message' \
     '{}' \
     '4TSenE5hCFkIf5we' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 50 'AdminSendInboxMessage' test.out
+eval_tap $? 51 'AdminSendInboxMessage' test.out
 
-#- 51 AdminGetInboxStats
+#- 52 AdminGetInboxStats
 $PYTHON -m $MODULE 'chat-admin-get-inbox-stats' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 51 'AdminGetInboxStats' test.out
+eval_tap $? 52 'AdminGetInboxStats' test.out
 
-#- 52 AdminGetChatSnapshot
+#- 53 AdminGetChatSnapshot
 $PYTHON -m $MODULE 'chat-admin-get-chat-snapshot' \
     'qZ18MH57l2Zsrh90' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 52 'AdminGetChatSnapshot' test.out
+eval_tap $? 53 'AdminGetChatSnapshot' test.out
 
-#- 53 AdminDeleteChatSnapshot
+#- 54 AdminDeleteChatSnapshot
 $PYTHON -m $MODULE 'chat-admin-delete-chat-snapshot' \
     'ETtYmGukz3Mnlrjc' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 53 'AdminDeleteChatSnapshot' test.out
+eval_tap $? 54 'AdminDeleteChatSnapshot' test.out
 
-#- 54 AdminProfanityQuery
+#- 55 AdminProfanityQuery
 $PYTHON -m $MODULE 'chat-admin-profanity-query' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 54 'AdminProfanityQuery' test.out
+eval_tap $? 55 'AdminProfanityQuery' test.out
 
-#- 55 AdminProfanityCreate
+#- 56 AdminProfanityCreate
 $PYTHON -m $MODULE 'chat-admin-profanity-create' \
     '{"falseNegative": ["Hp6B8Vj7rXFgDnDk", "dZ9bpjb1tdA3QhjC", "MW64f4XhIjSoTB2N"], "falsePositive": ["MKtezapPr2QEPx3z", "TxBGtEJIYppuUSsK", "oHw2hyd12uSE7BEv"], "word": "3aevq6iohU1cg4W1", "wordType": "IS3Uv1BpWoJBaqdg"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 55 'AdminProfanityCreate' test.out
+eval_tap $? 56 'AdminProfanityCreate' test.out
 
-#- 56 AdminProfanityCreateBulk
+#- 57 AdminProfanityCreateBulk
 $PYTHON -m $MODULE 'chat-admin-profanity-create-bulk' \
     '{"dictionaries": [{"falseNegative": ["2FHcunsS1lnaO2m9", "vqjhbeK2qN8g6x2P", "yYDo5R3hLiD5sf5y"], "falsePositive": ["1JsxJNGmyt0SQDUD", "oWBZVGLlkUetzCAW", "c9x1aMjgGim51T10"], "word": "7XIZRZ7tZdIs0xf4", "wordType": "czdt7zqmSKxOEQlV"}, {"falseNegative": ["cx6GqsBq8vdhWVnu", "YLgpZehK0G2nmyuV", "iB9kRTcSQdTnNYGe"], "falsePositive": ["AfYFG3wSkHKufBdS", "3ZOokZB4cXnAXyuG", "z6LlxHv8SwyagYvD"], "word": "J3w3UNgIGj2jZtEY", "wordType": "T8sIPSE1XXPzySa0"}, {"falseNegative": ["sZoFS6xCOWMpyh9p", "MsQgb64ELbzDMwyo", "4nIRysQdbufXjYnS"], "falsePositive": ["oIFeouC2m38kXrDZ", "WlGVE9sJ4NpUtKp6", "M9I6nEwnZhsjwJeG"], "word": "waPSDMZz95OYKiqa", "wordType": "ZD63xe5rruJVfLGe"}]}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 56 'AdminProfanityCreateBulk' test.out
+eval_tap $? 57 'AdminProfanityCreateBulk' test.out
 
-#- 57 AdminProfanityExport
+#- 58 AdminProfanityExport
 $PYTHON -m $MODULE 'chat-admin-profanity-export' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 57 'AdminProfanityExport' test.out
+eval_tap $? 58 'AdminProfanityExport' test.out
 
-#- 58 AdminProfanityGroup
+#- 59 AdminProfanityGroup
 $PYTHON -m $MODULE 'chat-admin-profanity-group' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 58 'AdminProfanityGroup' test.out
+eval_tap $? 59 'AdminProfanityGroup' test.out
 
-#- 59 AdminProfanityImport
+#- 60 AdminProfanityImport
 $PYTHON -m $MODULE 'chat-admin-profanity-import' \
     'tmp.dat' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 59 'AdminProfanityImport' test.out
+eval_tap $? 60 'AdminProfanityImport' test.out
 
-#- 60 AdminProfanityUpdate
+#- 61 AdminProfanityUpdate
 $PYTHON -m $MODULE 'chat-admin-profanity-update' \
     '{"falseNegative": ["a0ZtlzUcuHAXz0UV", "31MfuGaXsAuGsZaS", "HevO0TQNEI3kfabx"], "falsePositive": ["JWWSI1ECUo1NPpeF", "hUztXDgB7n4C97uA", "PP8PATLpUpxeJlsB"], "word": "JT6Hh3OMjAjq2mK8", "wordType": "lbSEEelxnb5QxWG2"}' \
     'HFnZlA6HKWW4fI1I' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 60 'AdminProfanityUpdate' test.out
+eval_tap $? 61 'AdminProfanityUpdate' test.out
 
-#- 61 AdminProfanityDelete
+#- 62 AdminProfanityDelete
 $PYTHON -m $MODULE 'chat-admin-profanity-delete' \
     'QcoBQELcNlZkqTZr' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 61 'AdminProfanityDelete' test.out
+eval_tap $? 62 'AdminProfanityDelete' test.out
 
-#- 62 PublicGetMessages
+#- 63 PublicGetMessages
 $PYTHON -m $MODULE 'chat-public-get-messages' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 62 'PublicGetMessages' test.out
+eval_tap $? 63 'PublicGetMessages' test.out
 
-#- 63 PublicGetConfigV1
+#- 64 PublicGetConfigV1
 $PYTHON -m $MODULE 'chat-public-get-config-v1' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 63 'PublicGetConfigV1' test.out
+eval_tap $? 64 'PublicGetConfigV1' test.out
 
-#- 64 PublicGetChatSnapshot
+#- 65 PublicGetChatSnapshot
 $PYTHON -m $MODULE 'chat-public-get-chat-snapshot' \
     'KgXNwvm4e5GX6H74' \
     '2OixhtAoKiVm6URT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 64 'PublicGetChatSnapshot' test.out
+eval_tap $? 65 'PublicGetChatSnapshot' test.out
 
 
 fi

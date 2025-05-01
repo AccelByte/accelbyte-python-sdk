@@ -40,12 +40,14 @@ from accelbyte_py_sdk.api.session.models import ResponseError
 
 @click.command()
 @click.argument("body", type=str)
+@click.option("--resolve_max_active_session", "resolve_max_active_session", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def create_game_session(
     body: str,
+    resolve_max_active_session: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -67,6 +69,7 @@ def create_game_session(
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
     result, error = create_game_session_internal(
         body=body,
+        resolve_max_active_session=resolve_max_active_session,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

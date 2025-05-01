@@ -403,6 +403,7 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-get-user-by-platform-user-idv3' \
     'string' \
     'string' \
     'string' \
+    --pid_type 'string' \
     > result.txt
 ```
 
@@ -540,7 +541,7 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-get-bulk-user-ban-v3' \
 ### Operation `admin_list_user_id_by_user_i_ds_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-admin-list-user-id-by-user-i-ds-v3' \
-    '{"userIds": ["string"]}' \
+    '{"findByPublisherNamespace": false, "userIds": ["string"]}' \
     'string' \
     > result.txt
 ```
@@ -549,6 +550,14 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-list-user-id-by-user-i-ds-v3' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-admin-bulk-get-users-platform' \
     '{"userIds": ["string"]}' \
+    'string' \
+    > result.txt
+```
+
+### Operation `admin_cursor_get_user_v3`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-admin-cursor-get-user-v3' \
+    '{"cursor": {}, "fields": ["string"], "limit": 1}' \
     'string' \
     > result.txt
 ```
@@ -596,6 +605,7 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-search-user-v3' \
     --role_ids 'string' \
     --skip_login_queue false \
     --start_date 'string' \
+    --tag_ids 'string' \
     --test_account false \
     > result.txt
 ```
@@ -1164,6 +1174,12 @@ $ python -m accelbyte_py_sdk_cli 'iam-authenticate-and-link-forward-v3' \
     'string' \
     'string' \
     --extend_exp false \
+    > result.txt
+```
+
+### Operation `public_get_system_config_v3`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-public-get-system-config-v3' \
     > result.txt
 ```
 
@@ -1823,6 +1839,13 @@ $ python -m accelbyte_py_sdk_cli 'iam-public-get-roles-v3' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-public-get-role-v3' \
     'string' \
+    > result.txt
+```
+
+### Operation `public_forgot_password_without_namespace_v3`
+```sh
+$ python -m accelbyte_py_sdk_cli 'iam-public-forgot-password-without-namespace-v3' \
+    '{"clientId": "string", "emailAddress": "string", "languageTag": "string"}' \
     > result.txt
 ```
 

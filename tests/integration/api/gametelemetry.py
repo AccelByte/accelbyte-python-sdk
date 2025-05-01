@@ -2,7 +2,6 @@ from tests.integration.test_case import IntegrationTestCase
 
 
 class GametelemetryTestCase(IntegrationTestCase):
-
     # region test:save_events_v1
 
     def test_save_events_v1(self):

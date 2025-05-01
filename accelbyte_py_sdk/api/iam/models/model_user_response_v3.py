@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.accountcommon_namespace_role import AccountcommonNamespaceRole
+from ..models.model_tag_detail import ModelTagDetail
 from ..models.model_user_active_ban_response_v3 import ModelUserActiveBanResponseV3
 from ..models.model_user_permissions_response_v3 import ModelUserPermissionsResponseV3
 from ..models.model_user_platform_info import ModelUserPlatformInfo
@@ -95,7 +96,7 @@ class ModelUserResponseV3(Model):
 
         skip_login_queue: (skipLoginQueue) OPTIONAL bool
 
-        tags: (tags) OPTIONAL List[str]
+        tags: (tags) OPTIONAL List[ModelTagDetail]
 
         test_account: (testAccount) OPTIONAL bool
 
@@ -135,7 +136,7 @@ class ModelUserResponseV3(Model):
     platform_infos: List[ModelUserPlatformInfo]  # OPTIONAL
     platform_user_id: str  # OPTIONAL
     skip_login_queue: bool  # OPTIONAL
-    tags: List[str]  # OPTIONAL
+    tags: List[ModelTagDetail]  # OPTIONAL
     test_account: bool  # OPTIONAL
     unique_display_name: str  # OPTIONAL
     user_name: str  # OPTIONAL
@@ -268,7 +269,7 @@ class ModelUserResponseV3(Model):
         self.skip_login_queue = value
         return self
 
-    def with_tags(self, value: List[str]) -> ModelUserResponseV3:
+    def with_tags(self, value: List[ModelTagDetail]) -> ModelUserResponseV3:
         self.tags = value
         return self
 
@@ -417,7 +418,9 @@ class ModelUserResponseV3(Model):
         elif include_empty:
             result["skipLoginQueue"] = False
         if hasattr(self, "tags"):
-            result["tags"] = [str(i0) for i0 in self.tags]
+            result["tags"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.tags
+            ]
         elif include_empty:
             result["tags"] = []
         if hasattr(self, "test_account"):
@@ -470,7 +473,7 @@ class ModelUserResponseV3(Model):
         platform_infos: Optional[List[ModelUserPlatformInfo]] = None,
         platform_user_id: Optional[str] = None,
         skip_login_queue: Optional[bool] = None,
-        tags: Optional[List[str]] = None,
+        tags: Optional[List[ModelTagDetail]] = None,
         test_account: Optional[bool] = None,
         unique_display_name: Optional[str] = None,
         user_name: Optional[str] = None,
@@ -678,7 +681,10 @@ class ModelUserResponseV3(Model):
         elif include_empty:
             instance.skip_login_queue = False
         if "tags" in dict_ and dict_["tags"] is not None:
-            instance.tags = [str(i0) for i0 in dict_["tags"]]
+            instance.tags = [
+                ModelTagDetail.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["tags"]
+            ]
         elif include_empty:
             instance.tags = []
         if "testAccount" in dict_ and dict_["testAccount"] is not None:

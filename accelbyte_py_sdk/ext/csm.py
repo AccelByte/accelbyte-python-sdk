@@ -56,6 +56,7 @@ from ..api.csm.models import ApimodelReplicaRequest
 from ..api.csm.models import ApimodelReplicaResponse
 from ..api.csm.models import ApimodelSaveConfigurationV2Request
 from ..api.csm.models import ApimodelSaveConfigurationV2Response
+from ..api.csm.models import ApimodelSaveSecretConfigurationV2Request
 from ..api.csm.models import ApimodelSelfSubscribeNotificationRequest
 from ..api.csm.models import ApimodelSubscribeNotificationRequest
 from ..api.csm.models import ApimodelSubscribeNotificationResponse
@@ -65,6 +66,7 @@ from ..api.csm.models import ApimodelUpdateAppResourceRequest
 from ..api.csm.models import ApimodelUpdateAppV2Request
 from ..api.csm.models import ApimodelUpdateConfigurationV2Request
 from ..api.csm.models import ApimodelUpdateConfigurationV2Response
+from ..api.csm.models import ApimodelUpdateSecretConfigurationV2Request
 from ..api.csm.models import GeneratedCreateAppV1Request
 from ..api.csm.models import GeneratedCreateAppV1Response
 from ..api.csm.models import GeneratedCreateDeploymentV1Request
@@ -218,6 +220,7 @@ def create_apimodel_get_app_image_list_v2_data_item_example() -> (
     instance = ApimodelGetAppImageListV2DataItem()
     instance.image_digest = randomize()
     instance.image_tag = randomize()
+    instance.is_active = randomize("bool")
     instance.size = randomize("int", min_val=1, max_val=1000)
     instance.image_scan_result = (
         create_apimodel_get_app_image_list_v2_data_item_image_scan_result_example()
@@ -428,6 +431,17 @@ def create_apimodel_save_configuration_v2_response_example() -> (
     return instance
 
 
+def create_apimodel_save_secret_configuration_v2_request_example() -> (
+    ApimodelSaveSecretConfigurationV2Request
+):
+    instance = ApimodelSaveSecretConfigurationV2Request()
+    instance.config_name = randomize()
+    instance.source = randomize()
+    instance.value = randomize()
+    instance.description = randomize()
+    return instance
+
+
 def create_apimodel_self_subscribe_notification_request_example() -> (
     ApimodelSelfSubscribeNotificationRequest
 ):
@@ -510,6 +524,15 @@ def create_apimodel_update_configuration_v2_response_example() -> (
     instance.apply_mask = randomize("bool")
     instance.description = randomize()
     instance.source = randomize()
+    return instance
+
+
+def create_apimodel_update_secret_configuration_v2_request_example() -> (
+    ApimodelUpdateSecretConfigurationV2Request
+):
+    instance = ApimodelUpdateSecretConfigurationV2Request()
+    instance.value = randomize()
+    instance.description = randomize()
     return instance
 
 

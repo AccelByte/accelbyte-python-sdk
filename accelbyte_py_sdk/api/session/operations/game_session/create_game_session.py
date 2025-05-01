@@ -127,6 +127,8 @@ class CreateGameSession(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        resolve_max_active_session: (resolveMaxActiveSession) OPTIONAL bool in query
+
     Responses:
         201: Created - ApimodelsGameSessionResponse (Created)
 
@@ -150,6 +152,7 @@ class CreateGameSession(Operation):
 
     body: ApimodelsCreateGameSessionRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
+    resolve_max_active_session: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -191,6 +194,7 @@ class CreateGameSession(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -202,6 +206,12 @@ class CreateGameSession(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "resolve_max_active_session"):
+            result["resolveMaxActiveSession"] = self.resolve_max_active_session
         return result
 
     # endregion get_x_params methods
@@ -220,6 +230,10 @@ class CreateGameSession(Operation):
         self.namespace = value
         return self
 
+    def with_resolve_max_active_session(self, value: bool) -> CreateGameSession:
+        self.resolve_max_active_session = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -234,6 +248,13 @@ class CreateGameSession(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if (
+            hasattr(self, "resolve_max_active_session")
+            and self.resolve_max_active_session
+        ):
+            result["resolveMaxActiveSession"] = bool(self.resolve_max_active_session)
+        elif include_empty:
+            result["resolveMaxActiveSession"] = False
         return result
 
     # endregion to methods
@@ -293,11 +314,17 @@ class CreateGameSession(Operation):
 
     @classmethod
     def create(
-        cls, body: ApimodelsCreateGameSessionRequest, namespace: str, **kwargs
+        cls,
+        body: ApimodelsCreateGameSessionRequest,
+        namespace: str,
+        resolve_max_active_session: Optional[bool] = None,
+        **kwargs,
     ) -> CreateGameSession:
         instance = cls()
         instance.body = body
         instance.namespace = namespace
+        if resolve_max_active_session is not None:
+            instance.resolve_max_active_session = resolve_max_active_session
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -317,6 +344,13 @@ class CreateGameSession(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if (
+            "resolveMaxActiveSession" in dict_
+            and dict_["resolveMaxActiveSession"] is not None
+        ):
+            instance.resolve_max_active_session = bool(dict_["resolveMaxActiveSession"])
+        elif include_empty:
+            instance.resolve_max_active_session = False
         return instance
 
     @staticmethod
@@ -324,6 +358,7 @@ class CreateGameSession(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
+            "resolveMaxActiveSession": "resolve_max_active_session",
         }
 
     @staticmethod
@@ -331,6 +366,7 @@ class CreateGameSession(Operation):
         return {
             "body": True,
             "namespace": True,
+            "resolveMaxActiveSession": False,
         }
 
     # endregion static methods

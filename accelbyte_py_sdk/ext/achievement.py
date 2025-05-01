@@ -31,6 +31,8 @@ from ..api.achievement.models import ModelsAchievementUpdateRequest
 from ..api.achievement.models import ModelsAdditionalInfo
 from ..api.achievement.models import ModelsBulkCreatePSNEventResponse
 from ..api.achievement.models import ModelsBulkCreatePSNEvents
+from ..api.achievement.models import ModelsBulkUnlockAchievementRequest
+from ..api.achievement.models import ModelsBulkUnlockAchievementResponse
 from ..api.achievement.models import ModelsContributorResponse
 from ..api.achievement.models import ModelsCreatePSNEvent
 from ..api.achievement.models import ModelsErrorDetails
@@ -142,6 +144,24 @@ def create_models_bulk_create_psn_event_response_example() -> (
 def create_models_bulk_create_psn_events_example() -> ModelsBulkCreatePSNEvents:
     instance = ModelsBulkCreatePSNEvents()
     instance.data = [create_models_create_psn_event_example()]
+    return instance
+
+
+def create_models_bulk_unlock_achievement_request_example() -> (
+    ModelsBulkUnlockAchievementRequest
+):
+    instance = ModelsBulkUnlockAchievementRequest()
+    instance.achievement_codes = [randomize()]
+    return instance
+
+
+def create_models_bulk_unlock_achievement_response_example() -> (
+    ModelsBulkUnlockAchievementResponse
+):
+    instance = ModelsBulkUnlockAchievementResponse()
+    instance.achievement_code = randomize()
+    instance.success = randomize("bool")
+    instance.error_detail = create_models_error_details_example()
     return instance
 
 
