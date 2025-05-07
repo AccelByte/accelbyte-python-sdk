@@ -5,7 +5,7 @@ from typing import Optional
 
 from tests.integration.test_case import IntegrationTestCase
 
-from accelbyte_py_sdk.api.iam.models import AccountCreateUserRequestV4
+from accelbyte_py_sdk.api.iam.models import AccountCreateTestUserRequestV4
 
 
 class IAMTestCase(IntegrationTestCase):
@@ -15,9 +15,9 @@ class IAMTestCase(IntegrationTestCase):
     scope: str = "commerce account social publishing analytics"
     unique_display_name = f"testPythonServerSDKUser_{uid}"
     username = f"testPythonServerSDKUser_{uid}"
-    model_user_create_request = AccountCreateUserRequestV4.create(
-        auth_type="EMAILPASSWD",
-        code="",
+    model_user_create_request = AccountCreateTestUserRequestV4.create(
+        verified=True,
+        auth_type="EMAILPASSWD",        
         country="US",
         date_of_birth="1990-01-01",
         display_name="Python Extend SDK Test",
@@ -25,16 +25,15 @@ class IAMTestCase(IntegrationTestCase):
         username=username,
         password="q!w@e#r$azsxdcfv1",
         password_md5_sum="",
-        reach_minimum_age=True,
         unique_display_name=unique_display_name,
     )
 
     # noinspection PyMethodMayBeStatic
-    def do_create_user(self, body: AccountCreateUserRequestV4):
+    def do_create_user(self, body: AccountCreateTestUserRequestV4):
         # pylint: disable=no-self-use
-        from accelbyte_py_sdk.api.iam import public_create_user_v4
+        from accelbyte_py_sdk.api.iam import public_create_test_user_v4
 
-        result, error = public_create_user_v4(body=body)
+        result, error = public_create_test_user_v4(body=body)
 
         if error is None:
             user_id = result.user_id
