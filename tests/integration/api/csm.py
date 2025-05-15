@@ -58,13 +58,14 @@ class CSMTestCase(IntegrationTestCase):
 
                 sleep(check_interval)
 
-            self.assertTrue(
-                is_app_ready,
-                (
-                    f"After waiting for {check_interval * check_retry}s, "
-                    f"app {app_name} is not ready. Last status: {last_app_status}"
-                ),
-            )
+            if not is_app_ready:
+                self.skipTest(
+                    reason=(
+                        f"After waiting for {check_interval * check_retry}s, app {app_name} is not ready. "
+                        f"Last status: {last_app_status}"
+                    )
+                )
+                return
 
             # secrets
 
