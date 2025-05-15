@@ -9,7 +9,7 @@ from accelbyte_py_sdk.api.achievement.models import ModelsAchievementRequest
 class AchievementTestCase(IntegrationTestCase):
     exist: bool = False
     exported_filename: str = "export_achievements"
-    stat_code: str = generate_id(8)
+    stat_code: str = f"python-sdk-test-{generate_id(4)}"
     models_achievement_request: ModelsAchievementRequest = (
         ModelsAchievementRequest.create(
             achievement_code=stat_code,
