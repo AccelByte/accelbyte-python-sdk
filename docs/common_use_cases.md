@@ -2566,61 +2566,7 @@ def test_party_flow(self):
                 condition=error is not None,
             )
 ```
-## Session History
 
-Source: [sessionhistory.py](../tests/integration/api/sessionhistory.py)
-
-### Admin Query Game Session Detail
-
-```python
-def test_admin_query_game_session_detail(self):
-    from accelbyte_py_sdk.api.sessionhistory import admin_query_game_session_detail
-
-
-    response, error = admin_query_game_session_detail()
-
-    self.assertIsNone(error, error)
-```
-### Admin Query Matchmaking Detail
-
-```python
-def test_admin_query_matchmaking_detail(self):
-    from accelbyte_py_sdk.api.sessionhistory import admin_query_matchmaking_detail
-
-
-    response, error = admin_query_matchmaking_detail()
-
-    self.assertIsNone(error, error)
-```
-### Admin Query Party Detail
-
-```python
-def test_admin_query_party_detail(self):
-    from accelbyte_py_sdk.api.sessionhistory import admin_query_party_detail
-
-
-    response, error = admin_query_party_detail()
-
-    self.assertIsNone(error, error)
-```
-### Query Total Matchmaking Match
-
-```python
-def test_query_total_matchmaking_match(self):
-
-    from accelbyte_py_sdk.api.sessionhistory import query_total_matchmaking_match
-
-
-    fmt = "%Y-%m-%dT%H:%M:%SZ"
-    now = datetime.utcnow()
-    end_date = now.strftime(fmt)
-    start_date = (now - timedelta(days=10)).strftime(fmt)
-    response, error = query_total_matchmaking_match(
-        end_date=end_date, start_date=start_date
-    )
-
-    self.assertIsNone(error, error)
-```
 ## Social
 
 Source: [social.py](../tests/integration/api/social.py)

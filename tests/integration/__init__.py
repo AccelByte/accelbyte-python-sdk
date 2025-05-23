@@ -10,7 +10,6 @@ from .api.csm import CSMTestCase
 
 # from .api.dsartifact import DSArtifactTestCase
 # from .api.dslogmanager import DSLogManagerTestCase
-# from .api.dsmc import DSMCTestCase, DSMCSessionTestCase
 from .api.gametelemetry import GametelemetryTestCase
 from .api.gdpr import GDPRTestCase
 from .api.group import GroupTestCase
@@ -27,7 +26,6 @@ from .api.platformx import PlatformTestCase
 from .api.reporting import ReportingTestCase
 from .api.seasonpass import SeasonPassTestCase
 from .api.session import SessionTestCase
-from .api.sessionhistory import SessionHistoryTestCase
 from .api.social import SocialTestCase
 from .api.ugc import UGCTestCase
 
