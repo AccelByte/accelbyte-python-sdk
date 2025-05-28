@@ -3,6 +3,7 @@
 # and restrictions contact your company contract manager.
 
 from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from datetime import datetime, timedelta
 from typing import Any, List, Optional
@@ -68,9 +69,10 @@ class TokenRepository(ABC):
         expires_in = self.get_expires_in()
         if expires_in is None:
             return False
-        threshold = expires_in * clamp(multiplier, 0.0, 1.0)
+        threshold = expires_in * (1.0 - clamp(multiplier, 0.0, 1.0))
         seconds_till_expiry = self.get_seconds_till_expiry()
-        return seconds_till_expiry <= threshold
+        has_token_expired = seconds_till_expiry <= threshold
+        return has_token_expired
 
     # noinspection PyMethodMayBeStatic
     def register_observer(self, observer: TokenRepositoryObserver) -> bool:
