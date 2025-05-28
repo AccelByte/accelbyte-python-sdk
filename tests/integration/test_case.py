@@ -193,22 +193,25 @@ class SDKTestCaseUtils:
         from accelbyte_py_sdk.core import generate_id
 
         uid = generate_id(8)
-        unique_display_name = f"{user_prefix}{uid}"
+        display_name = f"{user_prefix}{uid}"
+        display_name = "".join(c for c in display_name if c.isalnum())
         username = f"{user_prefix}{uid}"
         password = SDKTestCaseUtils.generate_password(16)
         email_address = f"{username}@{email_domain}"
 
-        result, error = iam_service.public_create_user_v4(
-            body=iam_models.AccountCreateUserRequestV4.create_from_dict(
+        result, error = iam_service.public_create_test_user_v4(
+            body=iam_models.AccountCreateTestUserRequestV4.create_from_dict(
                 {
                     "authType": "EMAILPASSWD",
                     "country": country,
-                    "emailAddress": email_address,
-                    "username": username,
-                    "password": password,
-                    "uniqueDisplayName": unique_display_name,
-                    # optional
                     "dateOfBirth": date_of_birth,
+                    "displayName": display_name,
+                    "emailAddress": email_address,
+                    "password": password,
+                    "passwordMD5Sum": "",
+                    "uniqueDisplayName": display_name,
+                    "username": username,
+                    "verified": True,
                 }
             ),
             namespace=namespace,
