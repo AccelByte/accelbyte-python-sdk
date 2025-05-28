@@ -657,11 +657,14 @@ class LoginClientTimer(LoginTimerBase):
         client_id: Optional[str] = None,
         client_secret: Optional[str] = None,
         x_additional_headers: Optional[Dict[str, str]] = None,
+        refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
         repeat_on_exception: bool = False,
         **kwargs,
     ) -> None:
+        self.refresh_rate = refresh_rate
+        self.sdk = kwargs.get("sdk", None)
         self.kwargs = {
             "client_id": client_id,
             "client_secret": client_secret,
@@ -679,9 +682,29 @@ class LoginClientTimer(LoginTimerBase):
         )
 
     def run(self):
+        if self.refresh_rate is not None:
+            sdk = self.sdk or SDK
+            if sdk is not None:
+                token_repository = sdk.get_token_repository(raise_when_none=False)
+                if token_repository is not None:
+                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    if not needs_refresh:
+                        token = token_repository.get_token()
+                        return token, None
+
         return login_client(**self.kwargs)
 
     async def run_async(self):
+        if self.refresh_rate is not None:
+            sdk = self.sdk or SDK
+            if sdk is not None:
+                token_repository = sdk.get_token_repository(raise_when_none=False)
+                if token_repository is not None:
+                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    if not needs_refresh:
+                        token = token_repository.get_token()
+                        return token, None
+
         return await login_client_async(**self.kwargs)
 
 
@@ -694,11 +717,14 @@ class LoginPlatformTimer(LoginTimerBase):
         platform_id: str,
         platform_token: str,
         x_additional_headers: Optional[Dict[str, str]] = None,
+        refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
         repeat_on_exception: bool = False,
         **kwargs,
     ) -> None:
+        self.refresh_rate = refresh_rate
+        self.sdk = kwargs.get("sdk", None)
         self.kwargs = {
             "platform_id": platform_id,
             "platform_token": platform_token,
@@ -716,9 +742,29 @@ class LoginPlatformTimer(LoginTimerBase):
         )
 
     def run(self):
+        if self.refresh_rate is not None:
+            sdk = self.sdk or SDK
+            if sdk is not None:
+                token_repository = sdk.get_token_repository(raise_when_none=False)
+                if token_repository is not None:
+                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    if not needs_refresh:
+                        token = token_repository.get_token()
+                        return token, None
+
         return login_platform(**self.kwargs)
 
     async def run_async(self):
+        if self.refresh_rate is not None:
+            sdk = self.sdk or SDK
+            if sdk is not None:
+                token_repository = sdk.get_token_repository(raise_when_none=False)
+                if token_repository is not None:
+                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    if not needs_refresh:
+                        token = token_repository.get_token()
+                        return token, None
+
         return await login_platform_async(**self.kwargs)
 
 
@@ -732,11 +778,14 @@ class LoginUserTimer(LoginTimerBase):
         password: str,
         scope: Optional[Union[str, List[str]]] = None,
         x_additional_headers: Optional[Dict[str, str]] = None,
+        refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
         repeat_on_exception: bool = False,
         **kwargs,
     ) -> None:
+        self.refresh_rate = refresh_rate
+        self.sdk = kwargs.get("sdk", None)
         self.kwargs = {
             "username": username,
             "password": password,
@@ -755,9 +804,29 @@ class LoginUserTimer(LoginTimerBase):
         )
 
     def run(self):
+        if self.refresh_rate is not None:
+            sdk = self.sdk or SDK
+            if sdk is not None:
+                token_repository = sdk.get_token_repository(raise_when_none=False)
+                if token_repository is not None:
+                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    if not needs_refresh:
+                        token = token_repository.get_token()
+                        return token, None
+
         return login_user(**self.kwargs)
 
     async def run_async(self):
+        if self.refresh_rate is not None:
+            sdk = self.sdk or SDK
+            if sdk is not None:
+                token_repository = sdk.get_token_repository(raise_when_none=False)
+                if token_repository is not None:
+                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    if not needs_refresh:
+                        token = token_repository.get_token()
+                        return token, None
+
         return await login_user_async(**self.kwargs)
 
 
@@ -769,11 +838,14 @@ class RefreshLoginTimer(LoginTimerBase):
         *,
         refresh_token: str,
         x_additional_headers: Optional[Dict[str, str]] = None,
+        refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
         repeat_on_exception: bool = False,
         **kwargs,
     ) -> None:
+        self.refresh_rate = refresh_rate
+        self.sdk = kwargs.get("sdk", None)
         self.kwargs = {
             "refresh_token": refresh_token,
             "x_additional_headers": x_additional_headers,
@@ -790,9 +862,29 @@ class RefreshLoginTimer(LoginTimerBase):
         )
 
     def run(self):
+        if self.refresh_rate is not None:
+            sdk = self.sdk or SDK
+            if sdk is not None:
+                token_repository = sdk.get_token_repository(raise_when_none=False)
+                if token_repository is not None:
+                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    if not needs_refresh:
+                        token = token_repository.get_token()
+                        return token, None
+
         return refresh_login(**self.kwargs)
 
     async def run_async(self):
+        if self.refresh_rate is not None:
+            sdk = self.sdk or SDK
+            if sdk is not None:
+                token_repository = sdk.get_token_repository(raise_when_none=False)
+                if token_repository is not None:
+                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    if not needs_refresh:
+                        token = token_repository.get_token()
+                        return token, None
+
         return await refresh_login_async(**self.kwargs)
 
 
