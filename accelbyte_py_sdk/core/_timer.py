@@ -3,6 +3,7 @@ from __future__ import annotations
 from threading import RLock
 from threading import Timer as ThreadingTimer
 from typing import Any, Callable, List, Optional, Union
+from uuid import uuid4
 
 from ._strenum import StrEnum
 
@@ -43,6 +44,7 @@ class Timer:
         autostart: bool = False,
         repeat_on_exception: bool = False,
     ) -> None:
+        self._uid = uuid4().hex
         self._interval = interval
         self._function = function
         self._args = args if args is not None else []
@@ -91,9 +93,10 @@ class Timer:
                 status += " daemon"
             if self._timer._ident is not None:
                 status += f" {self._timer._ident}"
-        return "<{class_container_name}:{class_name}({name}, {status})>[{counter}/{repeats}]".format(
+        return "<{class_container_name}:{class_name}({uid}, {name}, {status})>[{counter}/{repeats}]".format(
             class_container_name=self.__class__.__name__,
             class_name=class_name,
+            uid=self._uid,
             name=self.name,
             status=status,
             counter=self._counter,
