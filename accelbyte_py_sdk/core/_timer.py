@@ -65,9 +65,6 @@ class Timer:
         self._exception: Optional[Exception] = None
         self._result: Any = None
 
-        self._exceptions: List[Exception] = []
-        self._results: List[Any] = []
-
         if self._autostart:
             self.start()
 
@@ -107,10 +104,6 @@ class Timer:
     def exception(self) -> Optional[Exception]:
         return self._exception
 
-    @property
-    def exceptions(self) -> List[Exception]:
-        return self._exceptions
-
     # noinspection PyProtectedMember, PyUnresolvedReferences
     @property
     def name(self) -> str:
@@ -126,10 +119,6 @@ class Timer:
     @property
     def result(self) -> Any:
         return self._result
-
-    @property
-    def results(self) -> List[Any]:
-        return self._results
 
     @property
     def status(self) -> TimerStatus:
@@ -166,9 +155,6 @@ class Timer:
 
         self._result = None
         self._exception = None
-
-        self._results = []
-        self._exceptions = []
 
         return self
 
@@ -219,11 +205,9 @@ class Timer:
         try:
             result = self._function(*fargs, **fkwargs)
             self._result = result
-            self._results.append(result)
         except Exception as exception:
             has_exception = True
             self._exception = exception
-            self._exceptions.append(exception)
 
         if self._should_repeat(has_exception=has_exception):
             self.start()
