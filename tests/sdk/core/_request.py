@@ -1742,14 +1742,15 @@ class MockServerRequestTestCase(TestCase):
     def force_expiry_at(self, token_repo: TokenRepository, seconds: int):
         token = token_repo.get_token()
         expires_in = token_repo.get_expires_in()
-        now_utc = datetime.utcnow()
+        now = datetime.now().replace(microsecond=0)
+        utc_now = datetime.utcnow().replace(microsecond=0)
 
-        new_time_utc = now_utc + timedelta(seconds=seconds)
-        new_timestamp = int(new_time_utc.timestamp())
-        token.access_token = f"expiresAt:{new_timestamp}"
+        new_time = now + timedelta(seconds=seconds)
+        new_timestamp_utc = int(new_time.timestamp())
+        token.access_token = f"expiresAt:{new_timestamp_utc}"
 
         new_issued_time_utc = (
-            now_utc - timedelta(seconds=expires_in) + timedelta(seconds=seconds)
+            utc_now - timedelta(seconds=expires_in) + timedelta(seconds=seconds)
         )
         token_repo._token_issued_time = new_issued_time_utc
 
@@ -2050,6 +2051,9 @@ class MockServerRequestTestCase(TestCase):
         self.assertEqual(1, token_repo.counter)
         self.assertNotEqual(original_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(modified_access_token))
+        self.assertTrue(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
@@ -2061,6 +2065,9 @@ class MockServerRequestTestCase(TestCase):
         self.assertEqual(2, token_repo.counter)
         self.assertNotEqual(new_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(new_access_token))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
     def test_auto_refresh_token_login_user(self):
         import accelbyte_py_sdk.core as core
@@ -2096,6 +2103,9 @@ class MockServerRequestTestCase(TestCase):
         self.assertEqual(1, token_repo.counter)
         self.assertNotEqual(original_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(modified_access_token))
+        self.assertTrue(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
         result, error = iam.admin_get_bans_type_v3()
         self.assertIsNone(error)
@@ -2107,6 +2117,9 @@ class MockServerRequestTestCase(TestCase):
         self.assertEqual(2, token_repo.counter)
         self.assertNotEqual(new_access_token, modified_access_token)
         self.assertTrue(self.validate_bearer_token(new_access_token))
+        self.assertFalse(
+            token_repo.has_token_expired(multiplier=auth.DEFAULT_REFRESH_RATE)
+        )
 
     def test_download_upload_file(self):
         from io import BytesIO
