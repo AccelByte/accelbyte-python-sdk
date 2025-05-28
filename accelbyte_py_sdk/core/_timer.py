@@ -151,6 +151,9 @@ class Timer:
         return self
 
     def reset(self) -> Timer:
+        self.cancel()
+
+        self._timer = None
         self._status = TimerStatus.IDLE
 
         self._result = None
