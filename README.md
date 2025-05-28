@@ -179,13 +179,13 @@ if __name__ == "__main__":
 
 ```python
 # set the refresh rate for 'login_client'
-# 0.5 means refresh when we 50% of the expiration duration has passed
-res, err = login_client(client_id, client_secret, auto_refresh=True, refresh_rate=0.5)
+# 0.8 means refresh when we 80% of the expiration duration has passed
+res, err = login_client(client_id, client_secret, auto_refresh=True, refresh_rate=0.8)
 ```
 ```python
 # set the refresh rate for 'login_user'
-# 0.5 means refresh when we 50% of the expiration duration has passed
-res, err = login_user(username, password, auto_refresh=True, refresh_rate=0.5)
+# 0.8 means refresh when we 80% of the expiration duration has passed
+res, err = login_user(username, password, auto_refresh=True, refresh_rate=0.8)
 ```
 
 The auto refresh is only triggered when another request is fired. If you want to the refresh run automatically in the background. Use any of the `LoginXTimer` classes.
