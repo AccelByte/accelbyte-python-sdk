@@ -26,6 +26,9 @@ from accelbyte_py_sdk.core import create_basic_authentication
 from accelbyte_py_sdk.core import create_proto_from_operation
 from accelbyte_py_sdk.core import get_http_client, get_config_repository
 
+# noinspection PyProtectedMember
+from accelbyte_py_sdk.core._utils import clamp
+
 
 class TestConfigRepository(DictConfigRepository):
     def __init__(self, data: Optional[Dict[Any, Any]] = None):
@@ -800,6 +803,30 @@ class SdkTestCase(TestCase):
         self.assertEqual(
             wrapper_flight_id, proto_request.headers[HEADER_X_FLIGHT_ID_KEY]
         )  # but the wrapper flight id is used
+
+    def test_has_token_expired_calculation(self):
+        refresh_rate = 0.8
+        token_repo = MyTokenRepository(token=None)
+
+        # arrange 1
+        token_repo.get_seconds_till_expiry = lambda: 20
+        token_repo.store_token(token={"expires_in": 100})
+
+        # act 1
+        needs_refresh = token_repo.has_token_expired(multiplier=refresh_rate)
+
+        # assert 1
+        self.assertTrue(needs_refresh)
+
+        # arrange 2
+        token_repo.get_seconds_till_expiry = lambda: 80
+        token_repo.store_token(token={"expires_in": 100})
+
+        # act 2
+        needs_refresh = token_repo.has_token_expired(multiplier=refresh_rate)
+
+        # assert 2
+        self.assertFalse(needs_refresh)
 
 
 class HttpBinRequestTestCase(TestCase):
