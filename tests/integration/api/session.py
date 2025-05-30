@@ -135,6 +135,8 @@ class SessionTestCase(IntegrationTestCase):
         import accelbyte_py_sdk.api.session as session_service
         import accelbyte_py_sdk.api.session.models as session_models
 
+        game_session_id: Optional[str] = None
+
         try:
             # arrange
             rid = generate_id(8)
@@ -200,7 +202,8 @@ class SessionTestCase(IntegrationTestCase):
             )
             self.assertIsNone(error, error)
 
-            if not (game_session_id := getattr(result, "id_", None)):
+            game_session_id = getattr(result, "id_", None)
+            if not game_session_id:
                 self.fail(msg=f"unable to find game session id")
 
             # act & assert (join_game_sesion)
@@ -244,6 +247,10 @@ class SessionTestCase(IntegrationTestCase):
         from accelbyte_py_sdk.core import SDK, generate_id
         import accelbyte_py_sdk.api.session as session_service
         import accelbyte_py_sdk.api.session.models as session_models
+
+        party_id: Optional[str] = None
+        user_sdk1: Optional[AccelByteSDK] = None
+        user_sdk2: Optional[AccelByteSDK] = None
 
         try:
             # arrange
@@ -315,7 +322,8 @@ class SessionTestCase(IntegrationTestCase):
             )
             self.assertIsNone(error, error)
 
-            if not (party_id := getattr(result, "id_", None)):
+            party_id = getattr(result, "id_", None)
+            if not party_id:
                 self.fail(msg=f"unable to find party id")
 
             if not (party_code := getattr(result, "code", None)):
