@@ -7,6 +7,7 @@ from __future__ import annotations
 import threading
 
 from abc import ABC, abstractmethod
+from logging import Logger, getLogger
 from typing import Dict, List, Optional, Tuple, Union
 
 from ...core import SDK
@@ -48,6 +49,10 @@ from ...api.iam.operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
 DEFAULT_AUTO_REFRESH: bool = False
 DEFAULT_REFRESH_RATE: float = 0.8
 DEFAULT_SCOPE: str = "commerce account social publishing analytics"
+
+MODULE_NAME = "accelbyte_py_sdk"
+
+AUTH_SERVICE_LOGGER: Logger = getLogger(f"{MODULE_NAME}.services.auth")
 
 # endregion constants
 
@@ -660,10 +665,11 @@ class LoginClientTimer(LoginTimerBase):
         refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
-        repeat_on_exception: bool = False,
         repeat_on_exception: bool = True,
         **kwargs,
     ) -> None:
+        logger = kwargs.get("logger", AUTH_SERVICE_LOGGER)
+
         self.refresh_rate = refresh_rate
         self.sdk = kwargs.get("sdk", None)
         self.kwargs = {
@@ -673,6 +679,7 @@ class LoginClientTimer(LoginTimerBase):
             **kwargs,
             **TIMER_KWARGS,
         }
+
         super().__init__(
             interval,
             self.run,
@@ -680,6 +687,7 @@ class LoginClientTimer(LoginTimerBase):
             repeats=repeats,
             autostart=autostart,
             repeat_on_exception=repeat_on_exception,
+            logger=logger,
         )
 
     def run(self):
@@ -721,10 +729,11 @@ class LoginPlatformTimer(LoginTimerBase):
         refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
-        repeat_on_exception: bool = False,
         repeat_on_exception: bool = True,
         **kwargs,
     ) -> None:
+        logger = kwargs.get("logger", AUTH_SERVICE_LOGGER)
+
         self.refresh_rate = refresh_rate
         self.sdk = kwargs.get("sdk", None)
         self.kwargs = {
@@ -734,6 +743,7 @@ class LoginPlatformTimer(LoginTimerBase):
             **kwargs,
             **TIMER_KWARGS,
         }
+
         super().__init__(
             interval,
             self.run,
@@ -741,6 +751,7 @@ class LoginPlatformTimer(LoginTimerBase):
             repeats=repeats,
             autostart=autostart,
             repeat_on_exception=repeat_on_exception,
+            logger=logger,
         )
 
     def run(self):
@@ -783,10 +794,11 @@ class LoginUserTimer(LoginTimerBase):
         refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
-        repeat_on_exception: bool = False,
         repeat_on_exception: bool = True,
         **kwargs,
     ) -> None:
+        logger = kwargs.get("logger", AUTH_SERVICE_LOGGER)
+
         self.refresh_rate = refresh_rate
         self.sdk = kwargs.get("sdk", None)
         self.kwargs = {
@@ -797,6 +809,7 @@ class LoginUserTimer(LoginTimerBase):
             **kwargs,
             **TIMER_KWARGS,
         }
+
         super().__init__(
             interval,
             self.run,
@@ -804,6 +817,7 @@ class LoginUserTimer(LoginTimerBase):
             repeats=repeats,
             autostart=autostart,
             repeat_on_exception=repeat_on_exception,
+            logger=logger,
         )
 
     def run(self):
@@ -844,10 +858,11 @@ class RefreshLoginTimer(LoginTimerBase):
         refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
-        repeat_on_exception: bool = False,
         repeat_on_exception: bool = True,
         **kwargs,
     ) -> None:
+        logger = kwargs.get("logger", AUTH_SERVICE_LOGGER)
+
         self.refresh_rate = refresh_rate
         self.sdk = kwargs.get("sdk", None)
         self.kwargs = {
@@ -856,6 +871,7 @@ class RefreshLoginTimer(LoginTimerBase):
             **kwargs,
             **TIMER_KWARGS,
         }
+
         super().__init__(
             interval,
             self.run,
@@ -863,6 +879,7 @@ class RefreshLoginTimer(LoginTimerBase):
             repeats=repeats,
             autostart=autostart,
             repeat_on_exception=repeat_on_exception,
+            logger=logger,
         )
 
     def run(self):

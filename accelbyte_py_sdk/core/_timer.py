@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from logging import Logger
 from threading import RLock
 from threading import Timer as ThreadingTimer
-from typing import Any, Callable, List, Optional, Union
+from typing import Any, Callable, Optional, Tuple, Union
 from uuid import uuid4
 
 from ._strenum import StrEnum
@@ -43,7 +44,9 @@ class Timer:
         repeats: Optional[int] = None,
         autostart: bool = False,
         repeat_on_exception: bool = False,
+        logger: Optional[Logger] = None,
     ) -> None:
+
         self._uid = uuid4().hex
         self._interval = interval
         self._function = function
@@ -55,6 +58,7 @@ class Timer:
         self._repeats: Optional[int] = repeats
         self._autostart: bool = autostart
         self._repeat_on_exception: bool = repeat_on_exception
+        self._logger: Logger = logger
 
         self._lock: RLock = RLock()
         self._timer: Optional[ThreadingTimer] = None
@@ -211,19 +215,24 @@ class Timer:
         except Exception as exception:
             has_exception = True
             self._exception = exception
+            if self._logger:
+                self._logger.error(f"{repr(self)} caught an exception: {self._exception}")
 
-        if self._should_repeat(has_exception=has_exception):
+        repeat, reason = self._should_repeat(has_exception=has_exception)
+        if repeat:
             self.start()
         else:
             self._status = TimerStatus.FINISHED
+            if self._logger and reason:
+                self._logger.warning(f"{repr(self)} status set to FINISHED due to {reason}")
 
-    def _should_repeat(self, has_exception: bool) -> bool:
+    def _should_repeat(self, has_exception: bool) -> Tuple[bool, str]:
         if self._status == TimerStatus.CANCELLED:
-            return False
+            return False, "being cancelled"
         if has_exception and not self._repeat_on_exception:
-            return False
+            return False, f"exception: {self._exception}"
         if self._repeats is None or self._repeats == 0:
-            return False
+            return False, "repeats aren't allowed"
         if self._repeats < 0:
-            return True
-        return self._counter <= self._repeats
+            return True, ""
+        return self._counter <= self._repeats, ""
