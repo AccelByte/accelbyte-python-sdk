@@ -46,7 +46,6 @@ class Timer:
         repeat_on_exception: bool = False,
         logger: Optional[Logger] = None,
     ) -> None:
-
         self._uid = uuid4().hex
         self._interval = interval
         self._function = function
@@ -216,7 +215,9 @@ class Timer:
             has_exception = True
             self._exception = exception
             if self._logger:
-                self._logger.error(f"{repr(self)} caught an exception: {self._exception}")
+                self._logger.error(
+                    f"{repr(self)} caught an exception: {self._exception}"
+                )
 
         repeat, reason = self._should_repeat(has_exception=has_exception)
         if repeat:
@@ -224,7 +225,9 @@ class Timer:
         else:
             self._status = TimerStatus.FINISHED
             if self._logger and reason:
-                self._logger.warning(f"{repr(self)} status set to FINISHED due to {reason}")
+                self._logger.warning(
+                    f"{repr(self)} status set to FINISHED due to {reason}"
+                )
 
     def _should_repeat(self, has_exception: bool) -> Tuple[bool, str]:
         if self._status == TimerStatus.CANCELLED:

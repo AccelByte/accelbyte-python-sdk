@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.33.0"
+__version__ = "2.34.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -64,6 +64,7 @@ from .models_configuration import ModelsConfiguration
 from .models_ds_information import ModelsDSInformation
 from .models_game_session import ModelsGameSession
 from .models_pagination import ModelsPagination
+from .models_play_feature_flag import ModelsPlayFeatureFlag
 from .models_server import ModelsServer
 from .models_user import ModelsUser
 from .player_player_data import PlayerPlayerData

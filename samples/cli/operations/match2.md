@@ -25,6 +25,28 @@ $ python -m accelbyte_py_sdk_cli 'match2-admin-patch-update-log-config' \
     > result.txt
 ```
 
+### Operation `admin_get_play_feature_flag`
+```sh
+$ python -m accelbyte_py_sdk_cli 'match2-admin-get-play-feature-flag' \
+    'string' \
+    > result.txt
+```
+
+### Operation `admin_upsert_play_feature_flag`
+```sh
+$ python -m accelbyte_py_sdk_cli 'match2-admin-upsert-play-feature-flag' \
+    '{"ENABLE_AUTO_CANCEL_MATCH_USER_DISCONNECT": false, "ENABLE_AUTO_CANCEL_MATCH_USER_LEAVE": false}' \
+    'string' \
+    > result.txt
+```
+
+### Operation `admin_delete_play_feature_flag`
+```sh
+$ python -m accelbyte_py_sdk_cli 'match2-admin-delete-play-feature-flag' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `admin_get_all_config_v1`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'match2-admin-get-all-config-v1' \

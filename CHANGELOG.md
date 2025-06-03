@@ -1,3 +1,31 @@
+<a name="v0.76.0"></a>
+## [v0.76.0]
+### fix
+- **test:** use create test user endpoint for integration test
+- **auth:** fix kwargs not getting forwarded to login timer for on demand token refresher
+- **auth:** - this will allow for shorter intervals and for the refresh logic to only be executed only when the token is about to expire
+- **core:** reset existing timer before creating a new one
+- **core:** fix token expiry calculation
+- **integration:** fix reference before assignment error
+### test
+- **integration:** skip tests in csm if the app takes too long to create
+- **integration:** change achievement stat code randomization
+- **core:** fix test expiry assertion
+- **integration:** change generate_user to use public_create_test_user_v4
+- **core:** add test for token expiry calculation
+### chore
+- **core:** add uid for Timer instances
+- **:** bump version 0.75.0 → 0.75.1
+- **auth:** change repeat on exception default value for login timers
+- **auth:** add more logging for exceptions caught by timers
+- **!:** remove matchmaking, session browser and history services (breaking)
+### docs
+- **changelog:** update CHANGELOG.md
+- **:** improve refresh rate wording
+### refactor
+- **core!:** remove Timer results and exceptions caching
+
+
 <a name="v0.75.0"></a>
 ## [v0.75.1]
 ### fix

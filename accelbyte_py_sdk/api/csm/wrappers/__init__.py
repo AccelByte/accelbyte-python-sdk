@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.23.1"
+__version__ = "1.24.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

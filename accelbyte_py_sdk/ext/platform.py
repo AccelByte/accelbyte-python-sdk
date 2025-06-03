@@ -113,6 +113,8 @@ from ..api.platform.models import CurrencyWallet
 from ..api.platform.models import Customization
 from ..api.platform.models import DLCConfigRewardShortInfo
 from ..api.platform.models import DLCItem
+from ..api.platform.models import DLCItemConfigHistoryInfo
+from ..api.platform.models import DLCItemConfigHistoryResult
 from ..api.platform.models import DLCItemConfigInfo
 from ..api.platform.models import DLCItemConfigUpdate
 from ..api.platform.models import DLCRecord
@@ -1619,8 +1621,29 @@ def create_dlc_config_reward_short_info_example() -> DLCConfigRewardShortInfo:
 
 def create_dlc_item_example() -> DLCItem:
     instance = DLCItem()
+    instance.auto_update = randomize("bool")
     instance.id_ = randomize()
     instance.rewards = [create_platform_reward_example()]
+    instance.rvn = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_dlc_item_config_history_info_example() -> DLCItemConfigHistoryInfo:
+    instance = DLCItemConfigHistoryInfo()
+    instance.auto_update = randomize("bool")
+    instance.created_at = randomize("date")
+    instance.dlc_id = randomize()
+    instance.id_ = randomize()
+    instance.namespace = randomize("slug")
+    instance.rewards = [create_platform_reward_example()]
+    instance.rvn = randomize("int", min_val=1, max_val=1000)
+    instance.updated_at = randomize("date")
+    return instance
+
+
+def create_dlc_item_config_history_result_example() -> DLCItemConfigHistoryResult:
+    instance = DLCItemConfigHistoryResult()
+    instance.data = [create_dlc_item_config_history_info_example()]
     return instance
 
 
@@ -1638,6 +1661,7 @@ def create_dlc_item_config_update_example() -> DLCItemConfigUpdate:
 
 def create_dlc_record_example() -> DLCRecord:
     instance = DLCRecord()
+    instance.dlc_reward_version = randomize("int", min_val=1, max_val=1000)
     instance.entitlement_origin_sync_result = [
         create_entitlement_origin_sync_result_example()
     ]
@@ -5685,6 +5709,7 @@ def create_user_dlc_example() -> UserDLC:
 
 def create_user_dlc_record_example() -> UserDLCRecord:
     instance = UserDLCRecord()
+    instance.dlc_reward_version = randomize("int", min_val=1, max_val=1000)
     instance.entitlement_origin_sync_result = [
         create_entitlement_origin_sync_result_example()
     ]

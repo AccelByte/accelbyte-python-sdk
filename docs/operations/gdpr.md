@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Gdpr Service Index (2.19.0)
+# AccelByte Gaming Services Gdpr Service Index (2.20.0)
 
 
 ## Operations

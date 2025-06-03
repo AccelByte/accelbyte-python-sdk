@@ -3249,12 +3249,15 @@ def create_model_user_invitation_history_example() -> ModelUserInvitationHistory
 
 def create_model_user_invitation_v3_example() -> ModelUserInvitationV3:
     instance = ModelUserInvitationV3()
+    instance.created_at = randomize("date")
     instance.email = randomize("email")
     instance.expired_at = randomize("date")
     instance.roles = [create_accountcommon_namespace_role_example()]
+    instance.acceptance_link = randomize()
     instance.additional_data = randomize()
     instance.id_ = randomize()
     instance.is_new_studio = randomize("bool")
+    instance.language_tag = randomize()
     instance.namespace = randomize("slug")
     instance.namespace_display_name = randomize()
     instance.studio_namespace = randomize("slug")

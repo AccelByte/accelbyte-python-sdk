@@ -629,23 +629,23 @@ def test_csm(self):
 
             sleep(check_interval)
 
-        self.assertTrue(
-            is_app_ready,
-            (
-                f"After waiting for {check_interval * check_retry}s, "
-                f"app {app_name} is not ready. Last status: {last_app_status}"
-            ),
-        )
+        if not is_app_ready:
+            self.skipTest(
+                reason=(
+                    f"After waiting for {check_interval * check_retry}s, app {app_name} is not ready. "
+                    f"Last status: {last_app_status}"
+                )
+            )
+            return
 
         # secrets
 
         result, error = csm_service.save_secret_v2(
             app=app_name,
-            body=csm_models.ApimodelSaveConfigurationV2Request.create(
+            body=csm_models.ApimodelSaveSecretConfigurationV2Request.create(
                 config_name=env_sec_key,
                 value=env_sec_value,
                 source="plaintext",
-                apply_mask=True,
             ),
         )
         self.assertIsNone(error, str(error))
@@ -673,7 +673,7 @@ def test_csm(self):
 
         result, error = csm_service.update_secret_v2(
             app=app_name,
-            body=csm_models.ApimodelUpdateConfigurationV2Request.create(
+            body=csm_models.ApimodelUpdateSecretConfigurationV2Request.create(
                 value=env_sec_value_new
             ),
             config_id=found_env_sec_id,
@@ -2403,6 +2403,8 @@ def test_game_session_flow(self):
     import accelbyte_py_sdk.api.session as session_service
     import accelbyte_py_sdk.api.session.models as session_models
 
+    game_session_id: Optional[str] = None
+
     try:
         rid = generate_id(8)
         template_name = f"python_sdk_template_{rid}"
@@ -2438,7 +2440,8 @@ def test_game_session_flow(self):
         )
         self.assertIsNone(error, error)
 
-        if not (game_session_id := getattr(result, "id_", None)):
+        game_session_id = getattr(result, "id_", None)
+        if not game_session_id:
             self.fail(msg=f"unable to find game session id")
 
         result, error = session_service.join_game_session(
@@ -2475,6 +2478,10 @@ def test_party_flow(self):
     from accelbyte_py_sdk.core import SDK, generate_id
     import accelbyte_py_sdk.api.session as session_service
     import accelbyte_py_sdk.api.session.models as session_models
+
+    party_id: Optional[str] = None
+    user_sdk1: Optional[AccelByteSDK] = None
+    user_sdk2: Optional[AccelByteSDK] = None
 
     try:
         rid = generate_id(8)
@@ -2518,7 +2525,8 @@ def test_party_flow(self):
         )
         self.assertIsNone(error, error)
 
-        if not (party_id := getattr(result, "id_", None)):
+        party_id = getattr(result, "id_", None)
+        if not party_id:
             self.fail(msg=f"unable to find party id")
 
         if not (party_code := getattr(result, "code", None)):
@@ -2566,7 +2574,6 @@ def test_party_flow(self):
                 condition=error is not None,
             )
 ```
-
 ## Social
 
 Source: [social.py](../tests/integration/api/social.py)

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.4.2"
+__version__ = "6.5.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -159,6 +159,8 @@ from .wrappers import ge_dlc_durable_reward_short_map
 from .wrappers import ge_dlc_durable_reward_short_map_async
 from .wrappers import get_dlc_item_config
 from .wrappers import get_dlc_item_config_async
+from .wrappers import get_dlc_item_config_history
+from .wrappers import get_dlc_item_config_history_async
 from .wrappers import get_platform_dlc_config
 from .wrappers import get_platform_dlc_config_async
 from .wrappers import get_user_dlc
@@ -171,6 +173,8 @@ from .wrappers import public_sync_psn_dlc_inventory
 from .wrappers import public_sync_psn_dlc_inventory_async
 from .wrappers import public_sync_psn_dlc_inventory_with_multiple_service_labels
 from .wrappers import public_sync_psn_dlc_inventory_with_multiple_service_labels_async
+from .wrappers import restore_dlc_item_config_history
+from .wrappers import restore_dlc_item_config_history_async
 from .wrappers import sync_epic_game_dlc
 from .wrappers import sync_epic_game_dlc_async
 from .wrappers import sync_oculus_dlc

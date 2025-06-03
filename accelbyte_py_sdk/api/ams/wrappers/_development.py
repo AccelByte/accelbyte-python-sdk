@@ -33,12 +33,14 @@ from ..models import ApiDevelopmentServerConfigurationCreateRequest
 from ..models import ApiDevelopmentServerConfigurationCreateResponse
 from ..models import ApiDevelopmentServerConfigurationGetResponse
 from ..models import ApiDevelopmentServerConfigurationListResponse
+from ..models import ApiDevelopmentServerConfigurationUpdateRequest
 from ..models import ResponseErrorResponse
 
 from ..operations.development import DevelopmentServerConfigurationCreate
 from ..operations.development import DevelopmentServerConfigurationDelete
 from ..operations.development import DevelopmentServerConfigurationGet
 from ..operations.development import DevelopmentServerConfigurationList
+from ..operations.development import DevelopmentServerConfigurationPatch
 
 
 @same_doc_as(DevelopmentServerConfigurationCreate)
@@ -450,6 +452,116 @@ async def development_server_configuration_list_async(
     request = DevelopmentServerConfigurationList.create(
         count=count,
         offset=offset,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(DevelopmentServerConfigurationPatch)
+def development_server_configuration_patch(
+    body: ApiDevelopmentServerConfigurationUpdateRequest,
+    development_server_config_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """patch a development server configuration (DevelopmentServerConfigurationPatch)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}
+
+        method: PATCH
+
+        tags: ["Development"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiDevelopmentServerConfigurationUpdateRequest in body
+
+        development_server_config_id: (developmentServerConfigID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (development server configuration updated)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (development server configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = DevelopmentServerConfigurationPatch.create(
+        body=body,
+        development_server_config_id=development_server_config_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(DevelopmentServerConfigurationPatch)
+async def development_server_configuration_patch_async(
+    body: ApiDevelopmentServerConfigurationUpdateRequest,
+    development_server_config_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """patch a development server configuration (DevelopmentServerConfigurationPatch)
+
+    Required Permission: ADMIN:NAMESPACE:{namespace}:ARMADA:FLEET [UPDATE]
+
+    Properties:
+        url: /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID}
+
+        method: PATCH
+
+        tags: ["Development"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        body: (body) REQUIRED ApiDevelopmentServerConfigurationUpdateRequest in body
+
+        development_server_config_id: (developmentServerConfigID) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (development server configuration updated)
+
+        401: Unauthorized - ResponseErrorResponse (no authorization provided)
+
+        403: Forbidden - ResponseErrorResponse (insufficient permissions)
+
+        404: Not Found - ResponseErrorResponse (development server configuration not found)
+
+        500: Internal Server Error - ResponseErrorResponse (internal server error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = DevelopmentServerConfigurationPatch.create(
+        body=body,
+        development_server_config_id=development_server_config_id,
         namespace=namespace,
     )
     return await run_request_async(

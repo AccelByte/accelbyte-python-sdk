@@ -47,6 +47,7 @@ from accelbyte_py_sdk.api.iam.models import RestErrorResponse
 @click.option("--platform_id", "platform_id", type=str)
 @click.option("--query", "query", type=str)
 @click.option("--role_ids", "role_ids", type=str)
+@click.option("--selected_fields", "selected_fields", type=str)
 @click.option("--skip_login_queue", "skip_login_queue", type=bool)
 @click.option("--start_date", "start_date", type=str)
 @click.option("--tag_ids", "tag_ids", type=str)
@@ -65,6 +66,7 @@ def admin_search_user_v3(
     platform_id: Optional[str] = None,
     query: Optional[str] = None,
     role_ids: Optional[str] = None,
+    selected_fields: Optional[str] = None,
     skip_login_queue: Optional[bool] = None,
     start_date: Optional[str] = None,
     tag_ids: Optional[str] = None,
@@ -92,6 +94,7 @@ def admin_search_user_v3(
         platform_id=platform_id,
         query=query,
         role_ids=role_ids,
+        selected_fields=selected_fields,
         skip_login_queue=skip_login_queue,
         start_date=start_date,
         tag_ids=tag_ids,

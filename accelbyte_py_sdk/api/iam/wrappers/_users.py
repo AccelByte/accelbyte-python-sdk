@@ -7866,6 +7866,7 @@ def admin_search_user_v3(
     platform_id: Optional[str] = None,
     query: Optional[str] = None,
     role_ids: Optional[str] = None,
+    selected_fields: Optional[str] = None,
     skip_login_queue: Optional[bool] = None,
     start_date: Optional[str] = None,
     tag_ids: Optional[str] = None,
@@ -7887,6 +7888,12 @@ def admin_search_user_v3(
     - If platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to.
     - If platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName.
     - If limit is not defined, The default limit is 100.
+
+    GraphQL-Like Querying:
+    - By default, the API only returns the minimum fields -> [displayName, authType, createdAt, uniqueDisplayName, deletionStatus, enabled, emailAddress, skipLoginQueue, testAccount]
+    - To include additional fields in the response, specify them in the request params.
+    - Supported fields: [country, emailVerified, avatarUrl, enabled]
+    - Note: If a value is not in the allowed list, the API will ignore it.
 
     In Multi Tenant mode :
 
@@ -7931,6 +7938,8 @@ def admin_search_user_v3(
 
         role_ids: (roleIds) OPTIONAL str in query
 
+        selected_fields: (selectedFields) OPTIONAL str in query
+
         skip_login_queue: (skipLoginQueue) OPTIONAL bool in query
 
         start_date: (startDate) OPTIONAL str in query
@@ -7964,6 +7973,7 @@ def admin_search_user_v3(
         platform_id=platform_id,
         query=query,
         role_ids=role_ids,
+        selected_fields=selected_fields,
         skip_login_queue=skip_login_queue,
         start_date=start_date,
         tag_ids=tag_ids,
@@ -7984,6 +7994,7 @@ async def admin_search_user_v3_async(
     platform_id: Optional[str] = None,
     query: Optional[str] = None,
     role_ids: Optional[str] = None,
+    selected_fields: Optional[str] = None,
     skip_login_queue: Optional[bool] = None,
     start_date: Optional[str] = None,
     tag_ids: Optional[str] = None,
@@ -8005,6 +8016,12 @@ async def admin_search_user_v3_async(
     - If platformId parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformId they have linked to.
     - If platformBy parameter is defined and by parameter is using thirdparty, endpoint will search users based on the platformUserId or platformDisplayName they have linked to, example value: platformUserId or platformDisplayName.
     - If limit is not defined, The default limit is 100.
+
+    GraphQL-Like Querying:
+    - By default, the API only returns the minimum fields -> [displayName, authType, createdAt, uniqueDisplayName, deletionStatus, enabled, emailAddress, skipLoginQueue, testAccount]
+    - To include additional fields in the response, specify them in the request params.
+    - Supported fields: [country, emailVerified, avatarUrl, enabled]
+    - Note: If a value is not in the allowed list, the API will ignore it.
 
     In Multi Tenant mode :
 
@@ -8049,6 +8066,8 @@ async def admin_search_user_v3_async(
 
         role_ids: (roleIds) OPTIONAL str in query
 
+        selected_fields: (selectedFields) OPTIONAL str in query
+
         skip_login_queue: (skipLoginQueue) OPTIONAL bool in query
 
         start_date: (startDate) OPTIONAL str in query
@@ -8082,6 +8101,7 @@ async def admin_search_user_v3_async(
         platform_id=platform_id,
         query=query,
         role_ids=role_ids,
+        selected_fields=selected_fields,
         skip_login_queue=skip_login_queue,
         start_date=start_date,
         tag_ids=tag_ids,
@@ -14301,6 +14321,7 @@ def public_bulk_get_users(
     - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
     - If namespace is game, will search by game user Id, other wise will search by publisher namespace
     - **Result will include displayName(if it exists)**
+    - **Substitute endpoint:** /iam/v3/public/namespaces/{namespace}/users/platforms [POST]
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/bulk/basic
@@ -14351,6 +14372,7 @@ async def public_bulk_get_users_async(
     - This endpoint bulk get users' basic info by userId, max allowed 100 at a time
     - If namespace is game, will search by game user Id, other wise will search by publisher namespace
     - **Result will include displayName(if it exists)**
+    - **Substitute endpoint:** /iam/v3/public/namespaces/{namespace}/users/platforms [POST]
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/bulk/basic
@@ -16810,7 +16832,7 @@ def public_get_user_by_user_id_v3(
     """Get User By User ID (PublicGetUserByUserIdV3)
 
     This endpoint retrieve user attributes. action code: 10129
-    **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [READ]
+    **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [GET]
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}
@@ -16860,7 +16882,7 @@ async def public_get_user_by_user_id_v3_async(
     """Get User By User ID (PublicGetUserByUserIdV3)
 
     This endpoint retrieve user attributes. action code: 10129
-    **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [READ]
+    **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [GET]
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}

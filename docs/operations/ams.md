@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.35.1)
+# Fleet Commander Index (1.37.0)
 
 
 ## Operations
@@ -52,6 +52,7 @@
 | /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID} | DELETE | DevelopmentServerConfigurationDelete | `false` | [DevelopmentServerConfigurationDelete](../../accelbyte_py_sdk/api/ams/operations/development/development_server_conf_2194f5.py) | [development_server_configuration_delete](../../accelbyte_py_sdk/api/ams/wrappers/_development.py) | [accelbyte_py_sdk_cli ams-development-server-configuration-delete](../../samples/cli/accelbyte_py_sdk_cli/ams/_development_server_configuration_delete.py) |
 | /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID} | GET | DevelopmentServerConfigurationGet | `false` | [DevelopmentServerConfigurationGet](../../accelbyte_py_sdk/api/ams/operations/development/development_server_conf_282185.py) | [development_server_configuration_get](../../accelbyte_py_sdk/api/ams/wrappers/_development.py) | [accelbyte_py_sdk_cli ams-development-server-configuration-get](../../samples/cli/accelbyte_py_sdk_cli/ams/_development_server_configuration_get.py) |
 | /ams/v1/admin/namespaces/{namespace}/development/server-configurations | GET | DevelopmentServerConfigurationList | `false` | [DevelopmentServerConfigurationList](../../accelbyte_py_sdk/api/ams/operations/development/development_server_conf_7b687b.py) | [development_server_configuration_list](../../accelbyte_py_sdk/api/ams/wrappers/_development.py) | [accelbyte_py_sdk_cli ams-development-server-configuration-list](../../samples/cli/accelbyte_py_sdk_cli/ams/_development_server_configuration_list.py) |
+| /ams/v1/admin/namespaces/{namespace}/development/server-configurations/{developmentServerConfigID} | PATCH | DevelopmentServerConfigurationPatch | `false` | [DevelopmentServerConfigurationPatch](../../accelbyte_py_sdk/api/ams/operations/development/development_server_conf_a0c52c.py) | [development_server_configuration_patch](../../accelbyte_py_sdk/api/ams/wrappers/_development.py) | [accelbyte_py_sdk_cli ams-development-server-configuration-patch](../../samples/cli/accelbyte_py_sdk_cli/ams/_development_server_configuration_patch.py) |
 
 ### Fleet Commander
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
@@ -120,6 +121,7 @@
 | api.DevelopmentServerConfigurationCreateResponse | [ApiDevelopmentServerConfigurationCreateResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_create_response.py) |
 | api.DevelopmentServerConfigurationGetResponse | [ApiDevelopmentServerConfigurationGetResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_get_response.py) |
 | api.DevelopmentServerConfigurationListResponse | [ApiDevelopmentServerConfigurationListResponse](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_list_response.py) |
+| api.DevelopmentServerConfigurationUpdateRequest | [ApiDevelopmentServerConfigurationUpdateRequest](../../accelbyte_py_sdk/api/ams/models/api_development_server_configuration_update_request.py) |
 | api.DSHistoryEvent | [ApiDSHistoryEvent](../../accelbyte_py_sdk/api/ams/models/api_ds_history_event.py) |
 | api.DSHistoryList | [ApiDSHistoryList](../../accelbyte_py_sdk/api/ams/models/api_ds_history_list.py) |
 | api.DSHostConfiguration | [ApiDSHostConfiguration](../../accelbyte_py_sdk/api/ams/models/api_ds_host_configuration.py) |

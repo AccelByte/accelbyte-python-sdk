@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.33.0"
+__version__ = "2.34.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -90,6 +90,13 @@ from ._operations import get_healthcheck_info_v1
 from ._operations import get_healthcheck_info_v1_async
 from ._operations import version_check_handler
 from ._operations import version_check_handler_async
+
+from ._play_feature_flag import admin_delete_play_feature_flag
+from ._play_feature_flag import admin_delete_play_feature_flag_async
+from ._play_feature_flag import admin_get_play_feature_flag
+from ._play_feature_flag import admin_get_play_feature_flag_async
+from ._play_feature_flag import admin_upsert_play_feature_flag
+from ._play_feature_flag import admin_upsert_play_feature_flag_async
 
 from ._rule_sets import create_rule_set
 from ._rule_sets import create_rule_set_async

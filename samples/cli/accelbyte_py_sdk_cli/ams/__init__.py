@@ -29,6 +29,9 @@ from ._development_server_configuration_get import development_server_configurat
 from ._development_server_configuration_delete import (
     development_server_configuration_delete,
 )
+from ._development_server_configuration_patch import (
+    development_server_configuration_patch,
+)
 from ._fleet_list import fleet_list
 from ._fleet_create import fleet_create
 from ._fleet_get import fleet_get
@@ -77,6 +80,7 @@ commands = [
     development_server_configuration_create,
     development_server_configuration_get,
     development_server_configuration_delete,
+    development_server_configuration_patch,
     fleet_list,
     fleet_create,
     fleet_get,

@@ -603,6 +603,7 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-search-user-v3' \
     --platform_id 'string' \
     --query 'string' \
     --role_ids 'string' \
+    --selected_fields 'string' \
     --skip_login_queue false \
     --start_date 'string' \
     --tag_ids 'string' \

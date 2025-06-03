@@ -70,6 +70,7 @@ from ..api.match2.models import ModelsConfiguration
 from ..api.match2.models import ModelsDSInformation
 from ..api.match2.models import ModelsGameSession
 from ..api.match2.models import ModelsPagination
+from ..api.match2.models import ModelsPlayFeatureFlag
 from ..api.match2.models import ModelsServer
 from ..api.match2.models import ModelsUser
 from ..api.match2.models import PlayerPlayerData
@@ -411,6 +412,7 @@ def create_logconfig_configuration_example() -> LogconfigConfiguration:
 def create_matchmaker_match_ticket_record_example() -> MatchmakerMatchTicketRecord:
     instance = MatchmakerMatchTicketRecord()
     instance.created_at = randomize("date")
+    instance.expired_at = randomize("date")
     instance.is_active = randomize("bool")
     instance.party_session_id = randomize()
     instance.proposed_proposal = create_matchmaker_proposed_proposal_example()
@@ -516,6 +518,13 @@ def create_models_pagination_example() -> ModelsPagination:
     instance.last = randomize()
     instance.next_ = randomize()
     instance.previous = randomize()
+    return instance
+
+
+def create_models_play_feature_flag_example() -> ModelsPlayFeatureFlag:
+    instance = ModelsPlayFeatureFlag()
+    instance.enable_auto_cancel_match_user_disconnect = randomize("bool")
+    instance.enable_auto_cancel_match_user_leave = randomize("bool")
     return instance
 
 

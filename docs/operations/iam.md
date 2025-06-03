@@ -2,18 +2,18 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Iam Service Index (7.31.0)
+# AccelByte Gaming Services Iam Service Index (7.33.0)
 
 
 ## Operations
 
-### Account Idenfifier Tag
+### Account Identifier Tag
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
-| /iam/v3/admin/namespaces/{namespace}/tags | POST | AdminCreateTagV3 | `false` | [AdminCreateTagV3](../../accelbyte_py_sdk/api/iam/operations/account_idenfifier_tag/admin_create_tag_v3.py) | [admin_create_tag_v3](../../accelbyte_py_sdk/api/iam/wrappers/_account_idenfifier_tag.py) | [accelbyte_py_sdk_cli iam-admin-create-tag-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_create_tag_v3.py) |
-| /iam/v3/admin/namespaces/{namespace}/tags/{tagId} | DELETE | AdminDeleteTagV3 | `false` | [AdminDeleteTagV3](../../accelbyte_py_sdk/api/iam/operations/account_idenfifier_tag/admin_delete_tag_v3.py) | [admin_delete_tag_v3](../../accelbyte_py_sdk/api/iam/wrappers/_account_idenfifier_tag.py) | [accelbyte_py_sdk_cli iam-admin-delete-tag-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_delete_tag_v3.py) |
-| /iam/v3/admin/namespaces/{namespace}/tags | GET | AdminQueryTagV3 | `false` | [AdminQueryTagV3](../../accelbyte_py_sdk/api/iam/operations/account_idenfifier_tag/admin_query_tag_v3.py) | [admin_query_tag_v3](../../accelbyte_py_sdk/api/iam/wrappers/_account_idenfifier_tag.py) | [accelbyte_py_sdk_cli iam-admin-query-tag-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_query_tag_v3.py) |
-| /iam/v3/admin/namespaces/{namespace}/tags/{tagId} | PUT | AdminUpdateTagV3 | `false` | [AdminUpdateTagV3](../../accelbyte_py_sdk/api/iam/operations/account_idenfifier_tag/admin_update_tag_v3.py) | [admin_update_tag_v3](../../accelbyte_py_sdk/api/iam/wrappers/_account_idenfifier_tag.py) | [accelbyte_py_sdk_cli iam-admin-update-tag-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_update_tag_v3.py) |
+| /iam/v3/admin/namespaces/{namespace}/tags | POST | AdminCreateTagV3 | `false` | [AdminCreateTagV3](../../accelbyte_py_sdk/api/iam/operations/account_identifier_tag/admin_create_tag_v3.py) | [admin_create_tag_v3](../../accelbyte_py_sdk/api/iam/wrappers/_account_identifier_tag.py) | [accelbyte_py_sdk_cli iam-admin-create-tag-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_create_tag_v3.py) |
+| /iam/v3/admin/namespaces/{namespace}/tags/{tagId} | DELETE | AdminDeleteTagV3 | `false` | [AdminDeleteTagV3](../../accelbyte_py_sdk/api/iam/operations/account_identifier_tag/admin_delete_tag_v3.py) | [admin_delete_tag_v3](../../accelbyte_py_sdk/api/iam/wrappers/_account_identifier_tag.py) | [accelbyte_py_sdk_cli iam-admin-delete-tag-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_delete_tag_v3.py) |
+| /iam/v3/admin/namespaces/{namespace}/tags | GET | AdminQueryTagV3 | `false` | [AdminQueryTagV3](../../accelbyte_py_sdk/api/iam/operations/account_identifier_tag/admin_query_tag_v3.py) | [admin_query_tag_v3](../../accelbyte_py_sdk/api/iam/wrappers/_account_identifier_tag.py) | [accelbyte_py_sdk_cli iam-admin-query-tag-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_query_tag_v3.py) |
+| /iam/v3/admin/namespaces/{namespace}/tags/{tagId} | PUT | AdminUpdateTagV3 | `false` | [AdminUpdateTagV3](../../accelbyte_py_sdk/api/iam/operations/account_identifier_tag/admin_update_tag_v3.py) | [admin_update_tag_v3](../../accelbyte_py_sdk/api/iam/wrappers/_account_identifier_tag.py) | [accelbyte_py_sdk_cli iam-admin-update-tag-v3](../../samples/cli/accelbyte_py_sdk_cli/iam/_admin_update_tag_v3.py) |
 
 ### Bans
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |

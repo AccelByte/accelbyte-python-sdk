@@ -34,17 +34,23 @@ class ModelUserInvitationV3(Model):
     """Model user invitation V3 (model.UserInvitationV3)
 
     Properties:
+        created_at: (createdAt) REQUIRED str
+
         email: (email) REQUIRED str
 
         expired_at: (expiredAt) REQUIRED str
 
         roles: (roles) REQUIRED List[AccountcommonNamespaceRole]
 
+        acceptance_link: (acceptanceLink) OPTIONAL str
+
         additional_data: (additionalData) OPTIONAL str
 
         id_: (id) OPTIONAL str
 
         is_new_studio: (isNewStudio) OPTIONAL bool
+
+        language_tag: (languageTag) OPTIONAL str
 
         namespace: (namespace) OPTIONAL str
 
@@ -55,12 +61,15 @@ class ModelUserInvitationV3(Model):
 
     # region fields
 
+    created_at: str  # REQUIRED
     email: str  # REQUIRED
     expired_at: str  # REQUIRED
     roles: List[AccountcommonNamespaceRole]  # REQUIRED
+    acceptance_link: str  # OPTIONAL
     additional_data: str  # OPTIONAL
     id_: str  # OPTIONAL
     is_new_studio: bool  # OPTIONAL
+    language_tag: str  # OPTIONAL
     namespace: str  # OPTIONAL
     namespace_display_name: str  # OPTIONAL
     studio_namespace: str  # OPTIONAL
@@ -68,6 +77,10 @@ class ModelUserInvitationV3(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_created_at(self, value: str) -> ModelUserInvitationV3:
+        self.created_at = value
+        return self
 
     def with_email(self, value: str) -> ModelUserInvitationV3:
         self.email = value
@@ -83,6 +96,10 @@ class ModelUserInvitationV3(Model):
         self.roles = value
         return self
 
+    def with_acceptance_link(self, value: str) -> ModelUserInvitationV3:
+        self.acceptance_link = value
+        return self
+
     def with_additional_data(self, value: str) -> ModelUserInvitationV3:
         self.additional_data = value
         return self
@@ -93,6 +110,10 @@ class ModelUserInvitationV3(Model):
 
     def with_is_new_studio(self, value: bool) -> ModelUserInvitationV3:
         self.is_new_studio = value
+        return self
+
+    def with_language_tag(self, value: str) -> ModelUserInvitationV3:
+        self.language_tag = value
         return self
 
     def with_namespace(self, value: str) -> ModelUserInvitationV3:
@@ -113,6 +134,10 @@ class ModelUserInvitationV3(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = ""
         if hasattr(self, "email"):
             result["email"] = str(self.email)
         elif include_empty:
@@ -127,6 +152,10 @@ class ModelUserInvitationV3(Model):
             ]
         elif include_empty:
             result["roles"] = []
+        if hasattr(self, "acceptance_link"):
+            result["acceptanceLink"] = str(self.acceptance_link)
+        elif include_empty:
+            result["acceptanceLink"] = ""
         if hasattr(self, "additional_data"):
             result["additionalData"] = str(self.additional_data)
         elif include_empty:
@@ -139,6 +168,10 @@ class ModelUserInvitationV3(Model):
             result["isNewStudio"] = bool(self.is_new_studio)
         elif include_empty:
             result["isNewStudio"] = False
+        if hasattr(self, "language_tag"):
+            result["languageTag"] = str(self.language_tag)
+        elif include_empty:
+            result["languageTag"] = ""
         if hasattr(self, "namespace"):
             result["namespace"] = str(self.namespace)
         elif include_empty:
@@ -160,27 +193,35 @@ class ModelUserInvitationV3(Model):
     @classmethod
     def create(
         cls,
+        created_at: str,
         email: str,
         expired_at: str,
         roles: List[AccountcommonNamespaceRole],
+        acceptance_link: Optional[str] = None,
         additional_data: Optional[str] = None,
         id_: Optional[str] = None,
         is_new_studio: Optional[bool] = None,
+        language_tag: Optional[str] = None,
         namespace: Optional[str] = None,
         namespace_display_name: Optional[str] = None,
         studio_namespace: Optional[str] = None,
         **kwargs,
     ) -> ModelUserInvitationV3:
         instance = cls()
+        instance.created_at = created_at
         instance.email = email
         instance.expired_at = expired_at
         instance.roles = roles
+        if acceptance_link is not None:
+            instance.acceptance_link = acceptance_link
         if additional_data is not None:
             instance.additional_data = additional_data
         if id_ is not None:
             instance.id_ = id_
         if is_new_studio is not None:
             instance.is_new_studio = is_new_studio
+        if language_tag is not None:
+            instance.language_tag = language_tag
         if namespace is not None:
             instance.namespace = namespace
         if namespace_display_name is not None:
@@ -196,6 +237,10 @@ class ModelUserInvitationV3(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = ""
         if "email" in dict_ and dict_["email"] is not None:
             instance.email = str(dict_["email"])
         elif include_empty:
@@ -213,6 +258,10 @@ class ModelUserInvitationV3(Model):
             ]
         elif include_empty:
             instance.roles = []
+        if "acceptanceLink" in dict_ and dict_["acceptanceLink"] is not None:
+            instance.acceptance_link = str(dict_["acceptanceLink"])
+        elif include_empty:
+            instance.acceptance_link = ""
         if "additionalData" in dict_ and dict_["additionalData"] is not None:
             instance.additional_data = str(dict_["additionalData"])
         elif include_empty:
@@ -225,6 +274,10 @@ class ModelUserInvitationV3(Model):
             instance.is_new_studio = bool(dict_["isNewStudio"])
         elif include_empty:
             instance.is_new_studio = False
+        if "languageTag" in dict_ and dict_["languageTag"] is not None:
+            instance.language_tag = str(dict_["languageTag"])
+        elif include_empty:
+            instance.language_tag = ""
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
@@ -283,12 +336,15 @@ class ModelUserInvitationV3(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "createdAt": "created_at",
             "email": "email",
             "expiredAt": "expired_at",
             "roles": "roles",
+            "acceptanceLink": "acceptance_link",
             "additionalData": "additional_data",
             "id": "id_",
             "isNewStudio": "is_new_studio",
+            "languageTag": "language_tag",
             "namespace": "namespace",
             "namespaceDisplayName": "namespace_display_name",
             "studioNamespace": "studio_namespace",
@@ -297,12 +353,15 @@ class ModelUserInvitationV3(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "createdAt": True,
             "email": True,
             "expiredAt": True,
             "roles": True,
+            "acceptanceLink": False,
             "additionalData": False,
             "id": False,
             "isNewStudio": False,
+            "languageTag": False,
             "namespace": False,
             "namespaceDisplayName": False,
             "studioNamespace": False,

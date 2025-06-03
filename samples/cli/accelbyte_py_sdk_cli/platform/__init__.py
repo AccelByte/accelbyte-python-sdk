@@ -63,6 +63,8 @@ from ._update_currency import update_currency
 from ._delete_currency import delete_currency
 from ._get_currency_config import get_currency_config
 from ._get_currency_summary import get_currency_summary
+from ._get_dlc_item_config_history import get_dlc_item_config_history
+from ._restore_dlc_item_config_history import restore_dlc_item_config_history
 from ._get_dlc_item_config import get_dlc_item_config
 from ._update_dlc_item_config import update_dlc_item_config
 from ._delete_dlc_item_config import delete_dlc_item_config
@@ -644,6 +646,8 @@ commands = [
     delete_currency,
     get_currency_config,
     get_currency_summary,
+    get_dlc_item_config_history,
+    restore_dlc_item_config_history,
     get_dlc_item_config,
     update_dlc_item_config,
     delete_dlc_item_config,

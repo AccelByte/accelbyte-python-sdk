@@ -58,6 +58,8 @@ class UserDLCRecord(Model):
     """User DLC record (UserDLCRecord)
 
     Properties:
+        dlc_reward_version: (dlcRewardVersion) OPTIONAL int
+
         entitlement_origin_sync_result: (entitlementOriginSyncResult) OPTIONAL List[EntitlementOriginSyncResult]
 
         entitlement_origin_sync_status: (entitlementOriginSyncStatus) OPTIONAL Union[str, EntitlementOriginSyncStatusEnum]
@@ -93,6 +95,7 @@ class UserDLCRecord(Model):
 
     # region fields
 
+    dlc_reward_version: int  # OPTIONAL
     entitlement_origin_sync_result: List[EntitlementOriginSyncResult]  # OPTIONAL
     entitlement_origin_sync_status: Union[
         str, EntitlementOriginSyncStatusEnum
@@ -115,6 +118,10 @@ class UserDLCRecord(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_dlc_reward_version(self, value: int) -> UserDLCRecord:
+        self.dlc_reward_version = value
+        return self
 
     def with_entitlement_origin_sync_result(
         self, value: List[EntitlementOriginSyncResult]
@@ -190,6 +197,10 @@ class UserDLCRecord(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "dlc_reward_version"):
+            result["dlcRewardVersion"] = int(self.dlc_reward_version)
+        elif include_empty:
+            result["dlcRewardVersion"] = 0
         if hasattr(self, "entitlement_origin_sync_result"):
             result["entitlementOriginSyncResult"] = [
                 i0.to_dict(include_empty=include_empty)
@@ -276,6 +287,7 @@ class UserDLCRecord(Model):
     @classmethod
     def create(
         cls,
+        dlc_reward_version: Optional[int] = None,
         entitlement_origin_sync_result: Optional[
             List[EntitlementOriginSyncResult]
         ] = None,
@@ -299,6 +311,8 @@ class UserDLCRecord(Model):
         **kwargs,
     ) -> UserDLCRecord:
         instance = cls()
+        if dlc_reward_version is not None:
+            instance.dlc_reward_version = dlc_reward_version
         if entitlement_origin_sync_result is not None:
             instance.entitlement_origin_sync_result = entitlement_origin_sync_result
         if entitlement_origin_sync_status is not None:
@@ -340,6 +354,10 @@ class UserDLCRecord(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "dlcRewardVersion" in dict_ and dict_["dlcRewardVersion"] is not None:
+            instance.dlc_reward_version = int(dict_["dlcRewardVersion"])
+        elif include_empty:
+            instance.dlc_reward_version = 0
         if (
             "entitlementOriginSyncResult" in dict_
             and dict_["entitlementOriginSyncResult"] is not None
@@ -466,6 +484,7 @@ class UserDLCRecord(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "dlcRewardVersion": "dlc_reward_version",
             "entitlementOriginSyncResult": "entitlement_origin_sync_result",
             "entitlementOriginSyncStatus": "entitlement_origin_sync_status",
             "id": "id_",
@@ -487,6 +506,7 @@ class UserDLCRecord(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "dlcRewardVersion": False,
             "entitlementOriginSyncResult": False,
             "entitlementOriginSyncStatus": False,
             "id": False,

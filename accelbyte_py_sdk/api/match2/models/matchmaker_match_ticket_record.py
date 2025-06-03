@@ -37,6 +37,8 @@ class MatchmakerMatchTicketRecord(Model):
     Properties:
         created_at: (CreatedAt) REQUIRED str
 
+        expired_at: (ExpiredAt) REQUIRED str
+
         is_active: (IsActive) REQUIRED bool
 
         party_session_id: (PartySessionID) REQUIRED str
@@ -55,6 +57,7 @@ class MatchmakerMatchTicketRecord(Model):
     # region fields
 
     created_at: str  # REQUIRED
+    expired_at: str  # REQUIRED
     is_active: bool  # REQUIRED
     party_session_id: str  # REQUIRED
     proposed_proposal: MatchmakerProposedProposal  # REQUIRED
@@ -69,6 +72,10 @@ class MatchmakerMatchTicketRecord(Model):
 
     def with_created_at(self, value: str) -> MatchmakerMatchTicketRecord:
         self.created_at = value
+        return self
+
+    def with_expired_at(self, value: str) -> MatchmakerMatchTicketRecord:
+        self.expired_at = value
         return self
 
     def with_is_active(self, value: bool) -> MatchmakerMatchTicketRecord:
@@ -111,6 +118,10 @@ class MatchmakerMatchTicketRecord(Model):
             result["CreatedAt"] = str(self.created_at)
         elif include_empty:
             result["CreatedAt"] = ""
+        if hasattr(self, "expired_at"):
+            result["ExpiredAt"] = str(self.expired_at)
+        elif include_empty:
+            result["ExpiredAt"] = ""
         if hasattr(self, "is_active"):
             result["IsActive"] = bool(self.is_active)
         elif include_empty:
@@ -151,6 +162,7 @@ class MatchmakerMatchTicketRecord(Model):
     def create(
         cls,
         created_at: str,
+        expired_at: str,
         is_active: bool,
         party_session_id: str,
         proposed_proposal: MatchmakerProposedProposal,
@@ -162,6 +174,7 @@ class MatchmakerMatchTicketRecord(Model):
     ) -> MatchmakerMatchTicketRecord:
         instance = cls()
         instance.created_at = created_at
+        instance.expired_at = expired_at
         instance.is_active = is_active
         instance.party_session_id = party_session_id
         instance.proposed_proposal = proposed_proposal
@@ -182,6 +195,10 @@ class MatchmakerMatchTicketRecord(Model):
             instance.created_at = str(dict_["CreatedAt"])
         elif include_empty:
             instance.created_at = ""
+        if "ExpiredAt" in dict_ and dict_["ExpiredAt"] is not None:
+            instance.expired_at = str(dict_["ExpiredAt"])
+        elif include_empty:
+            instance.expired_at = ""
         if "IsActive" in dict_ and dict_["IsActive"] is not None:
             instance.is_active = bool(dict_["IsActive"])
         elif include_empty:
@@ -258,6 +275,7 @@ class MatchmakerMatchTicketRecord(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "CreatedAt": "created_at",
+            "ExpiredAt": "expired_at",
             "IsActive": "is_active",
             "PartySessionID": "party_session_id",
             "ProposedProposal": "proposed_proposal",
@@ -271,6 +289,7 @@ class MatchmakerMatchTicketRecord(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "CreatedAt": True,
+            "ExpiredAt": True,
             "IsActive": True,
             "PartySessionID": True,
             "ProposedProposal": True,

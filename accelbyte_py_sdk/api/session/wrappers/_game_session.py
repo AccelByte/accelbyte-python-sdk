@@ -908,7 +908,7 @@ def admin_update_game_session_member(
 
         tags: ["Game Session"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 
@@ -968,7 +968,7 @@ async def admin_update_game_session_member_async(
 
         tags: ["Game Session"]
 
-        consumes: ["application/json"]
+        consumes: []
 
         produces: ["application/json"]
 

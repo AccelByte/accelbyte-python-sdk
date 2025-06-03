@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Login Queue Service."""
 
-__version__ = "2.0.6"
+__version__ = "2.1.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

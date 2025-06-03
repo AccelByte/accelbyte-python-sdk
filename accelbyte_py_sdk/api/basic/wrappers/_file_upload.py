@@ -172,8 +172,6 @@ def generated_user_upload_content_url(
     Other detail info:
 
       * Action code : 11102
-      *  Default maximum file count per user : 10 files
-      *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
 
     Properties:
@@ -238,8 +236,6 @@ async def generated_user_upload_content_url_async(
     Other detail info:
 
       * Action code : 11102
-      *  Default maximum file count per user : 10 files
-      *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
 
     Properties:
@@ -421,13 +417,20 @@ def public_generated_user_upload_content_url(
     """Generate Upload URL For User Content (publicGeneratedUserUploadContentUrl)
 
     Generate an upload URL for user content. It's valid for 10 minutes.
-    There are 2 kinds of storage limitation per user : maximum file count and maximum file size.
-    The threshold of those limitations is different between upload category that is used.
+    There are two types of storage limits per user: maximum file count and maximum total file size.
+    These limits vary depending on the upload category used.
+
+     1. Default category:
+    - Maximum file count per user: 10 files
+    - Maximum total file size per user: 100MB
+     2. Reporting category:
+    - Maximum file count per user: 3 files every 1 hour
+    - Maximum total file size per user: 30MB every 1 hour
+
+
     Other detail info:
 
       * Action code : 11102
-      *  Default maximum file count per user : 10 files
-      *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
 
     Properties:
@@ -489,13 +492,20 @@ async def public_generated_user_upload_content_url_async(
     """Generate Upload URL For User Content (publicGeneratedUserUploadContentUrl)
 
     Generate an upload URL for user content. It's valid for 10 minutes.
-    There are 2 kinds of storage limitation per user : maximum file count and maximum file size.
-    The threshold of those limitations is different between upload category that is used.
+    There are two types of storage limits per user: maximum file count and maximum total file size.
+    These limits vary depending on the upload category used.
+
+     1. Default category:
+    - Maximum file count per user: 10 files
+    - Maximum total file size per user: 100MB
+     2. Reporting category:
+    - Maximum file count per user: 3 files every 1 hour
+    - Maximum total file size per user: 30MB every 1 hour
+
+
     Other detail info:
 
       * Action code : 11102
-      *  Default maximum file count per user : 10 files
-      *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
 
     Properties:

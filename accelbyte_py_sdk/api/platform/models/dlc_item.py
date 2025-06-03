@@ -34,19 +34,29 @@ class DLCItem(Model):
     """DLC item (DLCItem)
 
     Properties:
+        auto_update: (autoUpdate) OPTIONAL bool
+
         id_: (id) OPTIONAL str
 
         rewards: (rewards) OPTIONAL List[PlatformReward]
+
+        rvn: (rvn) OPTIONAL int
     """
 
     # region fields
 
+    auto_update: bool  # OPTIONAL
     id_: str  # OPTIONAL
     rewards: List[PlatformReward]  # OPTIONAL
+    rvn: int  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
+
+    def with_auto_update(self, value: bool) -> DLCItem:
+        self.auto_update = value
+        return self
 
     def with_id(self, value: str) -> DLCItem:
         self.id_ = value
@@ -56,12 +66,20 @@ class DLCItem(Model):
         self.rewards = value
         return self
 
+    def with_rvn(self, value: int) -> DLCItem:
+        self.rvn = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "auto_update"):
+            result["autoUpdate"] = bool(self.auto_update)
+        elif include_empty:
+            result["autoUpdate"] = False
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -72,6 +90,10 @@ class DLCItem(Model):
             ]
         elif include_empty:
             result["rewards"] = []
+        if hasattr(self, "rvn"):
+            result["rvn"] = int(self.rvn)
+        elif include_empty:
+            result["rvn"] = 0
         return result
 
     # endregion to methods
@@ -81,15 +103,21 @@ class DLCItem(Model):
     @classmethod
     def create(
         cls,
+        auto_update: Optional[bool] = None,
         id_: Optional[str] = None,
         rewards: Optional[List[PlatformReward]] = None,
+        rvn: Optional[int] = None,
         **kwargs,
     ) -> DLCItem:
         instance = cls()
+        if auto_update is not None:
+            instance.auto_update = auto_update
         if id_ is not None:
             instance.id_ = id_
         if rewards is not None:
             instance.rewards = rewards
+        if rvn is not None:
+            instance.rvn = rvn
         return instance
 
     @classmethod
@@ -97,6 +125,10 @@ class DLCItem(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "autoUpdate" in dict_ and dict_["autoUpdate"] is not None:
+            instance.auto_update = bool(dict_["autoUpdate"])
+        elif include_empty:
+            instance.auto_update = False
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -108,6 +140,10 @@ class DLCItem(Model):
             ]
         elif include_empty:
             instance.rewards = []
+        if "rvn" in dict_ and dict_["rvn"] is not None:
+            instance.rvn = int(dict_["rvn"])
+        elif include_empty:
+            instance.rvn = 0
         return instance
 
     @classmethod
@@ -147,15 +183,19 @@ class DLCItem(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "autoUpdate": "auto_update",
             "id": "id_",
             "rewards": "rewards",
+            "rvn": "rvn",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "autoUpdate": False,
             "id": False,
             "rewards": False,
+            "rvn": False,
         }
 
     # endregion static methods

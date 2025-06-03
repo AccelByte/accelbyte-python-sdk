@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Platform Service."""
 
-__version__ = "6.4.2"
+__version__ = "6.5.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -21,6 +21,7 @@ from .ge_dlc_durable_reward_s_f83f8a import (
     DlcTypeEnum as GeDLCDurableRewardShortMapDlcTypeEnum,
 )
 from .get_dlc_item_config import GetDLCItemConfig
+from .get_dlc_item_config_history import GetDLCItemConfigHistory
 from .get_platform_dlc_config import GetPlatformDLCConfig
 from .get_user_dlc import GetUserDLC
 from .get_user_dlc import (
@@ -35,6 +36,7 @@ from .public_sync_psn_dlc_inventory import PublicSyncPsnDlcInventory
 from .public_sync_psn_dlc_inv_429118 import (
     PublicSyncPsnDlcInventoryWithMultipleServiceLabels,
 )
+from .restore_dlc_item_config_0a6452 import RestoreDLCItemConfigHistory
 from .sync_epic_game_dlc import SyncEpicGameDLC
 from .sync_oculus_dlc import SyncOculusDLC
 from .sync_steam_dlc import SyncSteamDLC

@@ -8,13 +8,13 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Iam Service."""
 
-__version__ = "7.31.0"
+__version__ = "7.33.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
 # pylint: disable=line-too-long
 
-# account_idenfifier_tag
+# account_identifier_tag
 from .wrappers import admin_create_tag_v3
 from .wrappers import admin_create_tag_v3_async
 from .wrappers import admin_delete_tag_v3

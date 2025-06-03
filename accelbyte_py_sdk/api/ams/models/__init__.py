@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Fleet Commander."""
 
-__version__ = "1.35.1"
+__version__ = "1.37.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -41,6 +41,9 @@ from .api_development_server_configuration_get_response import (
 )
 from .api_development_server_configuration_list_response import (
     ApiDevelopmentServerConfigurationListResponse,
+)
+from .api_development_server_configuration_update_request import (
+    ApiDevelopmentServerConfigurationUpdateRequest,
 )
 from .api_ds_history_event import ApiDSHistoryEvent
 from .api_ds_history_list import ApiDSHistoryList

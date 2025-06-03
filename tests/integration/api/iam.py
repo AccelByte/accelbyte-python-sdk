@@ -17,7 +17,7 @@ class IAMTestCase(IntegrationTestCase):
     username = f"testPythonServerSDKUser_{uid}"
     model_user_create_request = AccountCreateTestUserRequestV4.create(
         verified=True,
-        auth_type="EMAILPASSWD",        
+        auth_type="EMAILPASSWD",
         country="US",
         date_of_birth="1990-01-01",
         display_name="Python Extend SDK Test",

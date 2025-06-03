@@ -438,6 +438,22 @@ $ python -m accelbyte_py_sdk_cli 'platform-get-currency-summary' \
     > result.txt
 ```
 
+### Operation `get_dlc_item_config_history`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-get-dlc-item-config-history' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `restore_dlc_item_config_history`
+```sh
+$ python -m accelbyte_py_sdk_cli 'platform-restore-dlc-item-config-history' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `get_dlc_item_config`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'platform-get-dlc-item-config' \

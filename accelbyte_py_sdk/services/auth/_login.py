@@ -699,7 +699,9 @@ class LoginClientTimer(LoginTimerBase):
             if sdk is not None:
                 token_repository = sdk.get_token_repository(raise_when_none=False)
                 if token_repository is not None:
-                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    needs_refresh = token_repository.has_token_expired(
+                        multiplier=self.refresh_rate
+                    )
                     if not needs_refresh:
                         token = token_repository.get_token()
                         return token, None
@@ -712,7 +714,9 @@ class LoginClientTimer(LoginTimerBase):
             if sdk is not None:
                 token_repository = sdk.get_token_repository(raise_when_none=False)
                 if token_repository is not None:
-                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    needs_refresh = token_repository.has_token_expired(
+                        multiplier=self.refresh_rate
+                    )
                     if not needs_refresh:
                         token = token_repository.get_token()
                         return token, None
@@ -763,7 +767,9 @@ class LoginPlatformTimer(LoginTimerBase):
             if sdk is not None:
                 token_repository = sdk.get_token_repository(raise_when_none=False)
                 if token_repository is not None:
-                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    needs_refresh = token_repository.has_token_expired(
+                        multiplier=self.refresh_rate
+                    )
                     if not needs_refresh:
                         token = token_repository.get_token()
                         return token, None
@@ -776,7 +782,9 @@ class LoginPlatformTimer(LoginTimerBase):
             if sdk is not None:
                 token_repository = sdk.get_token_repository(raise_when_none=False)
                 if token_repository is not None:
-                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    needs_refresh = token_repository.has_token_expired(
+                        multiplier=self.refresh_rate
+                    )
                     if not needs_refresh:
                         token = token_repository.get_token()
                         return token, None
@@ -829,7 +837,9 @@ class LoginUserTimer(LoginTimerBase):
             if sdk is not None:
                 token_repository = sdk.get_token_repository(raise_when_none=False)
                 if token_repository is not None:
-                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    needs_refresh = token_repository.has_token_expired(
+                        multiplier=self.refresh_rate
+                    )
                     if not needs_refresh:
                         token = token_repository.get_token()
                         return token, None
@@ -842,7 +852,9 @@ class LoginUserTimer(LoginTimerBase):
             if sdk is not None:
                 token_repository = sdk.get_token_repository(raise_when_none=False)
                 if token_repository is not None:
-                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    needs_refresh = token_repository.has_token_expired(
+                        multiplier=self.refresh_rate
+                    )
                     if not needs_refresh:
                         token = token_repository.get_token()
                         return token, None
@@ -891,7 +903,9 @@ class RefreshLoginTimer(LoginTimerBase):
             if sdk is not None:
                 token_repository = sdk.get_token_repository(raise_when_none=False)
                 if token_repository is not None:
-                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    needs_refresh = token_repository.has_token_expired(
+                        multiplier=self.refresh_rate
+                    )
                     if not needs_refresh:
                         token = token_repository.get_token()
                         return token, None
@@ -904,7 +918,9 @@ class RefreshLoginTimer(LoginTimerBase):
             if sdk is not None:
                 token_repository = sdk.get_token_repository(raise_when_none=False)
                 if token_repository is not None:
-                    needs_refresh = token_repository.has_token_expired(multiplier=self.refresh_rate)
+                    needs_refresh = token_repository.has_token_expired(
+                        multiplier=self.refresh_rate
+                    )
                     if not needs_refresh:
                         token = token_repository.get_token()
                         return token, None

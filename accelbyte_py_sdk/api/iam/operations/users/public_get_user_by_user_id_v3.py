@@ -38,7 +38,7 @@ class PublicGetUserByUserIdV3(Operation):
     """Get User By User ID (PublicGetUserByUserIdV3)
 
     This endpoint retrieve user attributes. action code: 10129
-    **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [READ]
+    **Substitute endpoint:** /v4/public/namespaces/{namespace}/users/{userId} [GET]
 
     Properties:
         url: /iam/v3/public/namespaces/{namespace}/users/{userId}

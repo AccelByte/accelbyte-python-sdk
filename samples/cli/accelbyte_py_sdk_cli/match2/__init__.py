@@ -12,6 +12,9 @@ from ._get_healthcheck_info import get_healthcheck_info
 from ._get_healthcheck_info_v1 import get_healthcheck_info_v1
 from ._admin_get_log_config import admin_get_log_config
 from ._admin_patch_update_log_config import admin_patch_update_log_config
+from ._admin_get_play_feature_flag import admin_get_play_feature_flag
+from ._admin_upsert_play_feature_flag import admin_upsert_play_feature_flag
+from ._admin_delete_play_feature_flag import admin_delete_play_feature_flag
 from ._admin_get_all_config_v1 import admin_get_all_config_v1
 from ._admin_get_config_v1 import admin_get_config_v1
 from ._admin_patch_config_v1 import admin_patch_config_v1
@@ -55,6 +58,9 @@ commands = [
     get_healthcheck_info_v1,
     admin_get_log_config,
     admin_patch_update_log_config,
+    admin_get_play_feature_flag,
+    admin_upsert_play_feature_flag,
+    admin_delete_play_feature_flag,
     admin_get_all_config_v1,
     admin_get_config_v1,
     admin_patch_config_v1,

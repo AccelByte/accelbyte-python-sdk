@@ -41,8 +41,6 @@ class GeneratedUserUploadContentUrl(Operation):
     Other detail info:
 
       * Action code : 11102
-      *  Default maximum file count per user : 10 files
-      *  Default maximum file size per user : 104857600 bytes
       *  Returns : URL data
 
     Properties:

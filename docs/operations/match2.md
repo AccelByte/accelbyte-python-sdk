@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Match Service V2 Index (2.33.0)
+# AccelByte Gaming Services Match Service V2 Index (2.34.0)
 
 
 ## Operations
@@ -70,6 +70,13 @@
 | /match2/healthz | GET | GetHealthcheckInfoV1 | `false` | [GetHealthcheckInfoV1](../../accelbyte_py_sdk/api/match2/operations/operations/get_healthcheck_info_v1.py) | [get_healthcheck_info_v1](../../accelbyte_py_sdk/api/match2/wrappers/_operations.py) | [accelbyte_py_sdk_cli match2-get-healthcheck-info-v1](../../samples/cli/accelbyte_py_sdk_cli/match2/_get_healthcheck_info_v1.py) |
 | /match2/version | GET | versionCheckHandler | `false` | [VersionCheckHandler](../../accelbyte_py_sdk/api/match2/operations/operations/version_check_handler.py) | [version_check_handler](../../accelbyte_py_sdk/api/match2/wrappers/_operations.py) | [accelbyte_py_sdk_cli match2-version-check-handler](../../samples/cli/accelbyte_py_sdk_cli/match2/_version_check_handler.py) |
 
+### PlayFeatureFlag
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /match2/v1/admin/namespaces/{namespace}/playfeatureflag | DELETE | adminDeletePlayFeatureFlag | `false` | [AdminDeletePlayFeatureFlag](../../accelbyte_py_sdk/api/match2/operations/play_feature_flag/admin_delete_play_feature_flag.py) | [admin_delete_play_feature_flag](../../accelbyte_py_sdk/api/match2/wrappers/_play_feature_flag.py) | [accelbyte_py_sdk_cli match2-admin-delete-play-feature-flag](../../samples/cli/accelbyte_py_sdk_cli/match2/_admin_delete_play_feature_flag.py) |
+| /match2/v1/admin/namespaces/{namespace}/playfeatureflag | GET | adminGetPlayFeatureFlag | `false` | [AdminGetPlayFeatureFlag](../../accelbyte_py_sdk/api/match2/operations/play_feature_flag/admin_get_play_feature_flag.py) | [admin_get_play_feature_flag](../../accelbyte_py_sdk/api/match2/wrappers/_play_feature_flag.py) | [accelbyte_py_sdk_cli match2-admin-get-play-feature-flag](../../samples/cli/accelbyte_py_sdk_cli/match2/_admin_get_play_feature_flag.py) |
+| /match2/v1/admin/namespaces/{namespace}/playfeatureflag | POST | adminUpsertPlayFeatureFlag | `false` | [AdminUpsertPlayFeatureFlag](../../accelbyte_py_sdk/api/match2/operations/play_feature_flag/admin_upsert_play_feature_flag.py) | [admin_upsert_play_feature_flag](../../accelbyte_py_sdk/api/match2/wrappers/_play_feature_flag.py) | [accelbyte_py_sdk_cli match2-admin-upsert-play-feature-flag](../../samples/cli/accelbyte_py_sdk_cli/match2/_admin_upsert_play_feature_flag.py) |
+
 ### Rule-Sets
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -129,6 +136,7 @@
 | models.DSInformation | [ModelsDSInformation](../../accelbyte_py_sdk/api/match2/models/models_ds_information.py) |
 | models.GameSession | [ModelsGameSession](../../accelbyte_py_sdk/api/match2/models/models_game_session.py) |
 | models.Pagination | [ModelsPagination](../../accelbyte_py_sdk/api/match2/models/models_pagination.py) |
+| models.PlayFeatureFlag | [ModelsPlayFeatureFlag](../../accelbyte_py_sdk/api/match2/models/models_play_feature_flag.py) |
 | models.Server | [ModelsServer](../../accelbyte_py_sdk/api/match2/models/models_server.py) |
 | models.User | [ModelsUser](../../accelbyte_py_sdk/api/match2/models/models_user.py) |
 | player.PlayerData | [PlayerPlayerData](../../accelbyte_py_sdk/api/match2/models/player_player_data.py) |

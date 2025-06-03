@@ -30,6 +30,7 @@ from ....core import run_request_async
 from ....core import same_doc_as
 
 from ..models import DLCConfigRewardShortInfo
+from ..models import DLCItemConfigHistoryResult
 from ..models import DLCItemConfigInfo
 from ..models import DLCItemConfigUpdate
 from ..models import EpicGamesDLCSyncRequest
@@ -50,6 +51,7 @@ from ..operations.dlc import DeletePlatformDLCConfig
 from ..operations.dlc import GeDLCDurableRewardShortMap
 from ..operations.dlc import GeDLCDurableRewardShortMapDlcTypeEnum
 from ..operations.dlc import GetDLCItemConfig
+from ..operations.dlc import GetDLCItemConfigHistory
 from ..operations.dlc import GetPlatformDLCConfig
 from ..operations.dlc import GetUserDLC
 from ..operations.dlc import GetUserDLCStatusEnum, GetUserDLCTypeEnum
@@ -59,6 +61,7 @@ from ..operations.dlc import PublicGetMyDLCContent
 from ..operations.dlc import PublicGetMyDLCContentTypeEnum
 from ..operations.dlc import PublicSyncPsnDlcInventory
 from ..operations.dlc import PublicSyncPsnDlcInventoryWithMultipleServiceLabels
+from ..operations.dlc import RestoreDLCItemConfigHistory
 from ..operations.dlc import SyncEpicGameDLC
 from ..operations.dlc import SyncOculusDLC
 from ..operations.dlc import SyncSteamDLC
@@ -395,6 +398,96 @@ async def get_dlc_item_config_async(
         if error:
             return None, error
     request = GetDLCItemConfig.create(
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetDLCItemConfigHistory)
+def get_dlc_item_config_history(
+    dlc_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get DLC item config history (getDLCItemConfigHistory)
+
+    Get DLC item config history.
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/history
+
+        method: GET
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        dlc_id: (dlcId) REQUIRED str in query
+
+    Responses:
+        200: OK - DLCItemConfigHistoryResult (successful operation)
+
+        404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = GetDLCItemConfigHistory.create(
+        dlc_id=dlc_id,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetDLCItemConfigHistory)
+async def get_dlc_item_config_history_async(
+    dlc_id: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get DLC item config history (getDLCItemConfigHistory)
+
+    Get DLC item config history.
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/history
+
+        method: GET
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        dlc_id: (dlcId) REQUIRED str in query
+
+    Responses:
+        200: OK - DLCItemConfigHistoryResult (successful operation)
+
+        404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = GetDLCItemConfigHistory.create(
+        dlc_id=dlc_id,
         namespace=namespace,
     )
     return await run_request_async(
@@ -991,6 +1084,96 @@ async def public_sync_psn_dlc_inventory_with_multiple_service_labels_async(
     request = PublicSyncPsnDlcInventoryWithMultipleServiceLabels.create(
         user_id=user_id,
         body=body,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(RestoreDLCItemConfigHistory)
+def restore_dlc_item_config_history(
+    id_: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Restore DLC item config history (restoreDLCItemConfigHistory)
+
+    Restore DLC item config history.
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/history/{id}/restore
+
+        method: POST
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Succesfully restore the revision)
+
+        404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = RestoreDLCItemConfigHistory.create(
+        id_=id_,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(RestoreDLCItemConfigHistory)
+async def restore_dlc_item_config_history_async(
+    id_: str,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Restore DLC item config history (restoreDLCItemConfigHistory)
+
+    Restore DLC item config history.
+
+    Properties:
+        url: /platform/admin/namespaces/{namespace}/dlc/config/history/{id}/restore
+
+        method: POST
+
+        tags: ["DLC"]
+
+        consumes: []
+
+        produces: []
+
+        securities: [BEARER_AUTH]
+
+        id_: (id) REQUIRED str in path
+
+        namespace: (namespace) REQUIRED str in path
+
+    Responses:
+        204: No Content - (Succesfully restore the revision)
+
+        404: Not Found - ErrorEntity (39442: DLC item config cannot be found in namespace [{namespace}])
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = RestoreDLCItemConfigHistory.create(
+        id_=id_,
         namespace=namespace,
     )
     return await run_request_async(

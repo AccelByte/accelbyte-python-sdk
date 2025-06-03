@@ -129,6 +129,15 @@ $ python -m accelbyte_py_sdk_cli 'ams-development-server-configuration-delete' \
     > result.txt
 ```
 
+### Operation `development_server_configuration_patch`
+```sh
+$ python -m accelbyte_py_sdk_cli 'ams-development-server-configuration-patch' \
+    '{"commandLineArguments": "string", "expiresAt": "2000-01-01T12:34:56Z"}' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `fleet_list`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'ams-fleet-list' \
