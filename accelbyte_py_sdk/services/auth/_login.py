@@ -49,6 +49,9 @@ from ...api.iam.operations.o_auth2_0 import TokenGrantV3GrantTypeEnum
 DEFAULT_AUTO_REFRESH: bool = False
 DEFAULT_REFRESH_RATE: float = 0.8
 DEFAULT_SCOPE: str = "commerce account social publishing analytics"
+DEFAULT_TIMER_INTERVAL: int = 60
+DEFAULT_TIMER_REFRESH_RATE: float = DEFAULT_REFRESH_RATE
+DEFAULT_TIMER_REPEAT_ON_EXCEPTION: bool = True
 
 MODULE_NAME = "accelbyte_py_sdk"
 
@@ -665,7 +668,7 @@ class LoginClientTimer(LoginTimerBase):
         refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
-        repeat_on_exception: bool = True,
+        repeat_on_exception: bool = DEFAULT_TIMER_REPEAT_ON_EXCEPTION,
         **kwargs,
     ) -> None:
         logger = kwargs.get("logger", AUTH_SERVICE_LOGGER)
@@ -729,7 +732,7 @@ class LoginPlatformTimer(LoginTimerBase):
         refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
-        repeat_on_exception: bool = True,
+        repeat_on_exception: bool = DEFAULT_TIMER_REPEAT_ON_EXCEPTION,
         **kwargs,
     ) -> None:
         logger = kwargs.get("logger", AUTH_SERVICE_LOGGER)
@@ -794,7 +797,7 @@ class LoginUserTimer(LoginTimerBase):
         refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
-        repeat_on_exception: bool = True,
+        repeat_on_exception: bool = DEFAULT_TIMER_REPEAT_ON_EXCEPTION,
         **kwargs,
     ) -> None:
         logger = kwargs.get("logger", AUTH_SERVICE_LOGGER)
@@ -858,7 +861,7 @@ class RefreshLoginTimer(LoginTimerBase):
         refresh_rate: Optional[float] = None,
         repeats: Optional[int] = None,
         autostart: bool = False,
-        repeat_on_exception: bool = True,
+        repeat_on_exception: bool = DEFAULT_TIMER_REPEAT_ON_EXCEPTION,
         **kwargs,
     ) -> None:
         logger = kwargs.get("logger", AUTH_SERVICE_LOGGER)
@@ -930,7 +933,7 @@ def unset_on_demand_token_refresher(reset: bool = True, **kwargs):
 
 
 class OnDemandTokenRefresher:
-    def __init__(self, refresher: LoginTimerBase, refresh_rate: float = 0.8):
+    def __init__(self, refresher: LoginTimerBase, refresh_rate: float = DEFAULT_REFRESH_RATE):
         self._refresher = refresher
         self._refresh_rate = refresh_rate
 
@@ -980,6 +983,116 @@ class OnDemandTokenRefresher:
     def reset(self):
         if self._active_refresher is not None:
             self._active_refresher.cancel()
+
+
+def enable_login_client_timer(
+    sdk: AccelByteSDK,
+    client_id: Optional[str] = None,
+    client_secret: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    cancel_existing: bool = True,
+    **kwargs,
+) -> bool:
+    interval: int = kwargs.pop("interval", DEFAULT_TIMER_INTERVAL)
+    refresh_rate: float = kwargs.pop("refresh_rate", DEFAULT_TIMER_REFRESH_RATE)
+    repeats: int = kwargs.pop("repeats", -1)
+    autostart: bool = kwargs.pop("autostart", True)
+    repeat_on_exception: bool = kwargs.pop("repeat_on_exception", DEFAULT_TIMER_REPEAT_ON_EXCEPTION)
+
+    if existing_timer := getattr(sdk, "timer", None):
+        if not cancel_existing:
+            return False
+        cancel_method = getattr(existing_timer, "cancel", None)
+        if callable(cancel_method):
+            cancel_method()
+
+    sdk.timer = LoginClientTimer(
+        interval,
+        client_id=client_id,
+        client_secret=client_secret,
+        x_additional_headers=x_additional_headers,
+        refresh_rate=refresh_rate,
+        repeats=repeats,
+        autostart=autostart,
+        repeat_on_exception=repeat_on_exception,
+        sdk=sdk,
+    )
+
+    return True
+
+
+def enable_login_platform_timer(
+    sdk: AccelByteSDK,
+    platform_id: str,
+    platform_token: str,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    cancel_existing: bool = True,
+    **kwargs,
+) -> bool:
+    interval: int = kwargs.pop("interval", DEFAULT_TIMER_INTERVAL)
+    refresh_rate: float = kwargs.pop("refresh_rate", DEFAULT_TIMER_REFRESH_RATE)
+    repeats: int = kwargs.pop("repeats", -1)
+    autostart: bool = kwargs.pop("autostart", True)
+    repeat_on_exception: bool = kwargs.pop("repeat_on_exception", DEFAULT_TIMER_REPEAT_ON_EXCEPTION)
+
+    if existing_timer := getattr(sdk, "timer", None):
+        if not cancel_existing:
+            return False
+        cancel_method = getattr(existing_timer, "cancel", None)
+        if callable(cancel_method):
+            cancel_method()
+
+    sdk.timer = LoginPlatformTimer(
+        interval,
+        platform_id=platform_id,
+        platform_token=platform_token,
+        x_additional_headers=x_additional_headers,
+        refresh_rate=refresh_rate,
+        repeats=repeats,
+        autostart=autostart,
+        repeat_on_exception=repeat_on_exception,
+        sdk=sdk,
+    )
+
+    return True
+
+
+def enable_login_user_timer(
+    sdk: AccelByteSDK,
+    username: str,
+    password: str,
+    scope: Optional[Union[str, List[str]]] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    cancel_existing: bool = True,
+    **kwargs,
+) -> bool:
+    interval: int = kwargs.pop("interval", DEFAULT_TIMER_INTERVAL)
+    refresh_rate: float = kwargs.pop("refresh_rate", DEFAULT_TIMER_REFRESH_RATE)
+    repeats: int = kwargs.pop("repeats", -1)
+    autostart: bool = kwargs.pop("autostart", True)
+    repeat_on_exception: bool = kwargs.pop("repeat_on_exception", DEFAULT_TIMER_REPEAT_ON_EXCEPTION)
+
+    if existing_timer := getattr(sdk, "timer", None):
+        if not cancel_existing:
+            return False
+        cancel_method = getattr(existing_timer, "cancel", None)
+        if callable(cancel_method):
+            cancel_method()
+
+    sdk.timer = LoginUserTimer(
+        interval,
+        username=username,
+        password=password,
+        scope=scope,
+        x_additional_headers=x_additional_headers,
+        refresh_rate=refresh_rate,
+        repeats=repeats,
+        autostart=autostart,
+        repeat_on_exception=repeat_on_exception,
+        sdk=sdk,
+    )
+
+    return True
 
 
 # endregion repeating
