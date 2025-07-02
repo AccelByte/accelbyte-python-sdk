@@ -10,6 +10,8 @@ class CSMTestCase(IntegrationTestCase):
 
     def test_csm(self):
         from accelbyte_py_sdk.core import generate_id
+
+        import accelbyte_py_sdk.api.iam as iam_service
         import accelbyte_py_sdk.api.csm as csm_service
         import accelbyte_py_sdk.api.csm.models as csm_models
 
@@ -27,6 +29,9 @@ class CSMTestCase(IntegrationTestCase):
         env_var_key = "AB_PY_KEY_TEST_" + "".join(choices(ascii_uppercase, k=4))
         env_var_value = generate_id(32)
         env_var_value_new = generate_id(32)
+
+        env_extend_app_client_id = "AB_CLIENT_ID"
+        env_extend_app_client_id_value = ""
 
         try:
             result, error = csm_service.create_app_v2(
@@ -100,6 +105,11 @@ class CSMTestCase(IntegrationTestCase):
             self.assertTrue(found_env_sec_id)
             self.assertEqual(found_env_sec_value, env_sec_value_masked)
 
+            for secret in result.data:
+                if secret.config_name == env_extend_app_client_id:
+                    env_extend_app_client_id_value = secret.value
+                    break
+
             result, error = csm_service.update_secret_v2(
                 app=app_name,
                 body=csm_models.ApimodelUpdateSecretConfigurationV2Request.create(
@@ -171,11 +181,16 @@ class CSMTestCase(IntegrationTestCase):
             )
             self.assertIsNone(error, str(error))
 
+            _, error = iam_service.admin_delete_client_v3(client_id=env_extend_app_client_id)
+            self.assertIsNone(error, str(error))
+
             raise e from None
         finally:
             _, _ = csm_service.delete_app_v2(
                 app=app_name,
                 forced="true",
             )
+            
+            _, _ = iam_service.admin_delete_client_v3(client_id=env_extend_app_client_id)
 
     # endregion test:csm
