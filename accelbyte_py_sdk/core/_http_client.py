@@ -95,6 +95,9 @@ class HttpClient(ABC):
     def put(self, url: str, **kwargs) -> Any:
         return self.send_raw_request(method="PUT", url=url, **kwargs)
 
+    def upload_binary_data(self, url: str, data: Any, **kwargs) -> Any:
+        return self.put(url=url, data=data, **kwargs)
+
     async def send_raw_request_async(self, method: str, url: str, **kwargs) -> Any:
         raise NotImplementedError
 
@@ -118,6 +121,9 @@ class HttpClient(ABC):
 
     async def put_async(self, url: str, **kwargs) -> Any:
         return self.send_raw_request_async(method="PUT", url=url, **kwargs)
+
+    async def upload_binary_data_async(self, url: str, data: Any, **kwargs) -> Any:
+        return self.put_async(url=url, data=data, **kwargs)
 
     def _log_request(self, request_dict: dict) -> None:
         req_fmt = self.request_log_formatter or format_request_log
