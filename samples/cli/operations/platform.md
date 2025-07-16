@@ -1972,13 +1972,13 @@ $ python -m accelbyte_py_sdk_cli 'platform-query-import-history' \
 ### Operation `import_store_by_csv`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'platform-import-store-by-csv' \
-    'tmp.dat' \
-    'tmp.dat' \
-    'tmp.dat' \
-    'string' \
-    'tmp.dat' \
     'string' \
     'string' \
+    --category 'tmp.dat' \
+    --display 'tmp.dat' \
+    --item 'tmp.dat' \
+    --notes 'string' \
+    --section 'tmp.dat' \
     > result.txt
 ```
 

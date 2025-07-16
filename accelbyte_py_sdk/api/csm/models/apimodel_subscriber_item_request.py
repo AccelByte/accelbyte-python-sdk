@@ -32,16 +32,23 @@ class ApimodelSubscriberItemRequest(Model):
     """Apimodel subscriber item request (apimodel.SubscriberItemRequest)
 
     Properties:
+        email_address: (emailAddress) REQUIRED str
+
         user_id: (userId) REQUIRED str
     """
 
     # region fields
 
+    email_address: str  # REQUIRED
     user_id: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
+
+    def with_email_address(self, value: str) -> ApimodelSubscriberItemRequest:
+        self.email_address = value
+        return self
 
     def with_user_id(self, value: str) -> ApimodelSubscriberItemRequest:
         self.user_id = value
@@ -53,6 +60,10 @@ class ApimodelSubscriberItemRequest(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "email_address"):
+            result["emailAddress"] = str(self.email_address)
+        elif include_empty:
+            result["emailAddress"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -64,8 +75,11 @@ class ApimodelSubscriberItemRequest(Model):
     # region static methods
 
     @classmethod
-    def create(cls, user_id: str, **kwargs) -> ApimodelSubscriberItemRequest:
+    def create(
+        cls, email_address: str, user_id: str, **kwargs
+    ) -> ApimodelSubscriberItemRequest:
         instance = cls()
+        instance.email_address = email_address
         instance.user_id = user_id
         return instance
 
@@ -76,6 +90,10 @@ class ApimodelSubscriberItemRequest(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
+            instance.email_address = str(dict_["emailAddress"])
+        elif include_empty:
+            instance.email_address = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -123,12 +141,14 @@ class ApimodelSubscriberItemRequest(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "emailAddress": "email_address",
             "userId": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "emailAddress": True,
             "userId": True,
         }
 

@@ -144,6 +144,7 @@ from ._users_presence_handler_v1 import users_presence_handler_v1
 from ._users_presence_handler_v2 import users_presence_handler_v2
 from ._free_form_notification import free_form_notification
 from ._get_my_notifications import get_my_notifications
+from ._get_my_offline_notifications import get_my_offline_notifications
 from ._notification_with_template import notification_with_template
 from ._get_game_template import get_game_template
 from ._create_template import create_template
@@ -257,6 +258,7 @@ commands = [
     users_presence_handler_v2,
     free_form_notification,
     get_my_notifications,
+    get_my_offline_notifications,
     notification_with_template,
     get_game_template,
     create_template,

@@ -83,7 +83,7 @@ $ python -m accelbyte_py_sdk_cli 'session-admin-delete-configuration-alert-v1' \
 ### Operation `admin_create_configuration_template_v1`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-admin-create-configuration-template-v1' \
-    '{"NativeSessionSetting": {}, "PSNBaseUrl": "string", "amsClaimTimeoutMinutes": 1, "appName": "string", "asyncProcessDSRequest": {}, "attributes": {"string": {}}, "autoJoin": false, "autoLeaveSession": false, "clientVersion": "string", "customURLGRPC": "string", "deployment": "string", "disableCodeGeneration": false, "disableResendInvite": false, "dsManualSetReady": false, "dsSource": "string", "enableSecret": false, "fallbackClaimKeys": ["string"], "grpcSessionConfig": {}, "immutableStorage": false, "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "string", "leaderElectionGracePeriod": 1, "manualRejoin": false, "maxActiveSessions": 1, "maxPlayers": 1, "minPlayers": 1, "name": "string", "persistent": false, "preferredClaimKeys": ["string"], "requestedRegions": ["string"], "textChat": false, "textChatMode": "GAME", "tieTeamsSessionLifetime": false, "ttlHours": 1, "type": "string"}' \
+    '{"NativeSessionSetting": {}, "PSNBaseUrl": "string", "amsClaimTimeoutMinutes": 1, "appName": "string", "asyncProcessDSRequest": {}, "attributes": {"string": {}}, "autoJoin": false, "autoLeaveSession": false, "clientVersion": "string", "customURLGRPC": "string", "deployment": "string", "disableCodeGeneration": false, "disableResendInvite": false, "dsManualSetReady": false, "dsSource": "string", "enableSecret": false, "fallbackClaimKeys": ["string"], "grpcSessionConfig": {}, "immutableStorage": false, "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "CLOSED", "leaderElectionGracePeriod": 1, "manualRejoin": false, "maxActiveSessions": 1, "maxPlayers": 1, "minPlayers": 1, "name": "string", "persistent": false, "preferredClaimKeys": ["string"], "requestedRegions": ["string"], "textChat": false, "textChatMode": "GAME", "tieTeamsSessionLifetime": false, "ttlHours": 1, "type": "DS"}' \
     'string' \
     > result.txt
 ```
@@ -111,7 +111,7 @@ $ python -m accelbyte_py_sdk_cli 'session-admin-get-configuration-template-v1' \
 ### Operation `admin_update_configuration_template_v1`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-admin-update-configuration-template-v1' \
-    '{"NativeSessionSetting": {}, "PSNBaseUrl": "string", "amsClaimTimeoutMinutes": 1, "appName": "string", "asyncProcessDSRequest": {}, "attributes": {"string": {}}, "autoJoin": false, "autoLeaveSession": false, "clientVersion": "string", "customURLGRPC": "string", "deployment": "string", "disableCodeGeneration": false, "disableResendInvite": false, "dsManualSetReady": false, "dsSource": "string", "enableSecret": false, "fallbackClaimKeys": ["string"], "grpcSessionConfig": {}, "immutableStorage": false, "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "string", "leaderElectionGracePeriod": 1, "manualRejoin": false, "maxActiveSessions": 1, "maxPlayers": 1, "minPlayers": 1, "name": "string", "persistent": false, "preferredClaimKeys": ["string"], "requestedRegions": ["string"], "textChat": false, "textChatMode": "GAME", "tieTeamsSessionLifetime": false, "ttlHours": 1, "type": "string"}' \
+    '{"NativeSessionSetting": {}, "PSNBaseUrl": "string", "amsClaimTimeoutMinutes": 1, "appName": "string", "asyncProcessDSRequest": {}, "attributes": {"string": {}}, "autoJoin": false, "autoLeaveSession": false, "clientVersion": "string", "customURLGRPC": "string", "deployment": "string", "disableCodeGeneration": false, "disableResendInvite": false, "dsManualSetReady": false, "dsSource": "string", "enableSecret": false, "fallbackClaimKeys": ["string"], "grpcSessionConfig": {}, "immutableStorage": false, "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "CLOSED", "leaderElectionGracePeriod": 1, "manualRejoin": false, "maxActiveSessions": 1, "maxPlayers": 1, "minPlayers": 1, "name": "string", "persistent": false, "preferredClaimKeys": ["string"], "requestedRegions": ["string"], "textChat": false, "textChatMode": "GAME", "tieTeamsSessionLifetime": false, "ttlHours": 1, "type": "DS"}' \
     'string' \
     'string' \
     > result.txt
@@ -153,7 +153,7 @@ $ python -m accelbyte_py_sdk_cli 'session-admin-query-game-sessions' \
     --game_mode 'string' \
     --is_persistent 'string' \
     --is_soft_deleted 'string' \
-    --joinability 'string' \
+    --joinability 'CLOSED' \
     --limit 1 \
     --match_pool 'string' \
     --member_id 'string' \
@@ -161,8 +161,8 @@ $ python -m accelbyte_py_sdk_cli 'session-admin-query-game-sessions' \
     --order 'string' \
     --order_by 'string' \
     --session_id 'string' \
-    --status 'string' \
-    --status_v2 'string' \
+    --status 'AVAILABLE' \
+    --status_v2 'AVAILABLE' \
     --to_time 'string' \
     > result.txt
 ```
@@ -234,14 +234,15 @@ $ python -m accelbyte_py_sdk_cli 'session-admin-get-list-native-session' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-admin-query-parties' \
     'string' \
+    --configuration_name 'string' \
     --from_time 'string' \
     --is_soft_deleted 'string' \
-    --joinability 'string' \
+    --joinability 'CLOSED' \
     --key 'string' \
     --leader_id 'string' \
     --limit 1 \
     --member_id 'string' \
-    --member_status 'string' \
+    --member_status 'CANCELLED' \
     --offset 1 \
     --order 'string' \
     --order_by 'string' \
@@ -375,7 +376,7 @@ $ python -m accelbyte_py_sdk_cli 'session-admin-sync-native-session' \
 ### Operation `create_game_session`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-create-game-session' \
-    '{"appName": "string", "attributes": {"string": {}}, "autoJoin": false, "backfillTicketID": "string", "clientVersion": "string", "configurationName": "string", "customURLGRPC": "string", "deployment": "string", "dsSource": "string", "fallbackClaimKeys": ["string"], "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "string", "matchPool": "string", "maxPlayers": 1, "minPlayers": 1, "preferredClaimKeys": ["string"], "requestedRegions": ["string"], "serverName": "string", "storage": {}, "teams": [{}], "textChat": false, "textChatMode": "GAME", "ticketIDs": ["string"], "tieTeamsSessionLifetime": false, "type": "string"}' \
+    '{"appName": "string", "attributes": {"string": {}}, "autoJoin": false, "backfillTicketID": "string", "clientVersion": "string", "configurationName": "string", "customURLGRPC": "string", "deployment": "string", "dsSource": "string", "fallbackClaimKeys": ["string"], "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "CLOSED", "matchPool": "string", "maxPlayers": 1, "minPlayers": 1, "preferredClaimKeys": ["string"], "requestedRegions": ["string"], "serverName": "string", "storage": {}, "teams": [{}], "textChat": false, "textChatMode": "GAME", "ticketIDs": ["string"], "tieTeamsSessionLifetime": false, "type": "DS"}' \
     'string' \
     --resolve_max_active_session false \
     > result.txt
@@ -416,7 +417,7 @@ $ python -m accelbyte_py_sdk_cli 'session-get-game-session' \
 ### Operation `update_game_session`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-update-game-session' \
-    '{"attributes": {"string": {}}, "backfillTicketID": "string", "clientVersion": "string", "deployment": "string", "fallbackClaimKeys": ["string"], "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "string", "matchPool": "string", "maxPlayers": 1, "minPlayers": 1, "preferredClaimKeys": ["string"], "requestedRegions": ["string"], "teams": [{}], "ticketIDs": ["string"], "tieTeamsSessionLifetime": false, "type": "string", "version": 1}' \
+    '{"attributes": {"string": {}}, "backfillTicketID": "string", "clientVersion": "string", "deployment": "string", "fallbackClaimKeys": ["string"], "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "CLOSED", "matchPool": "string", "maxPlayers": 1, "minPlayers": 1, "preferredClaimKeys": ["string"], "requestedRegions": ["string"], "teams": [{}], "ticketIDs": ["string"], "tieTeamsSessionLifetime": false, "type": "DS", "version": 1}' \
     'string' \
     'string' \
     > result.txt
@@ -433,7 +434,7 @@ $ python -m accelbyte_py_sdk_cli 'session-delete-game-session' \
 ### Operation `patch_update_game_session`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-patch-update-game-session' \
-    '{"attributes": {"string": {}}, "backfillTicketID": "string", "clientVersion": "string", "deployment": "string", "fallbackClaimKeys": ["string"], "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "string", "matchPool": "string", "maxPlayers": 1, "minPlayers": 1, "preferredClaimKeys": ["string"], "requestedRegions": ["string"], "teams": [{}], "ticketIDs": ["string"], "tieTeamsSessionLifetime": false, "type": "string", "version": 1}' \
+    '{"attributes": {"string": {}}, "backfillTicketID": "string", "clientVersion": "string", "deployment": "string", "fallbackClaimKeys": ["string"], "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "CLOSED", "matchPool": "string", "maxPlayers": 1, "minPlayers": 1, "preferredClaimKeys": ["string"], "requestedRegions": ["string"], "teams": [{}], "ticketIDs": ["string"], "tieTeamsSessionLifetime": false, "type": "DS", "version": 1}' \
     'string' \
     'string' \
     > result.txt
@@ -551,7 +552,7 @@ $ python -m accelbyte_py_sdk_cli 'session-public-get-party' \
 ### Operation `public_update_party`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-public-update-party' \
-    '{"attributes": {"string": {}}, "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "string", "maxPlayers": 1, "minPlayers": 1, "type": "string", "version": 1}' \
+    '{"attributes": {"string": {}}, "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "CLOSED", "maxPlayers": 1, "minPlayers": 1, "type": "DS", "version": 1}' \
     'string' \
     'string' \
     > result.txt
@@ -560,7 +561,7 @@ $ python -m accelbyte_py_sdk_cli 'session-public-update-party' \
 ### Operation `public_patch_update_party`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-public-patch-update-party' \
-    '{"attributes": {"string": {}}, "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "string", "maxPlayers": 1, "minPlayers": 1, "type": "string", "version": 1}' \
+    '{"attributes": {"string": {}}, "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "CLOSED", "maxPlayers": 1, "minPlayers": 1, "type": "DS", "version": 1}' \
     'string' \
     'string' \
     > result.txt
@@ -663,7 +664,7 @@ $ python -m accelbyte_py_sdk_cli 'session-public-party-kick' \
 ### Operation `public_create_party`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'session-public-create-party' \
-    '{"attributes": {"string": {}}, "configurationName": "string", "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "string", "maxPlayers": 1, "members": [{}], "minPlayers": 1, "textChat": false, "type": "string"}' \
+    '{"attributes": {"string": {}}, "configurationName": "string", "inactiveTimeout": 1, "inviteTimeout": 1, "joinability": "CLOSED", "maxPlayers": 1, "members": [{}], "minPlayers": 1, "textChat": false, "type": "DS"}' \
     'string' \
     > result.txt
 ```

@@ -32,6 +32,21 @@ from ..models.apimodels_session_storage_request import ApimodelsSessionStorageRe
 from ..models.models_team import ModelsTeam
 
 
+class JoinabilityEnum(StrEnum):
+    CLOSED = "CLOSED"
+    FRIENDS_OF_FRIENDS = "FRIENDS_OF_FRIENDS"
+    FRIENDS_OF_LEADER = "FRIENDS_OF_LEADER"
+    FRIENDS_OF_MEMBERS = "FRIENDS_OF_MEMBERS"
+    INVITE_ONLY = "INVITE_ONLY"
+    OPEN = "OPEN"
+
+
+class TypeEnum(StrEnum):
+    DS = "DS"
+    NONE = "NONE"
+    P2P = "P2P"
+
+
 class TextChatModeEnum(StrEnum):
     GAME = "GAME"
     NONE = "NONE"
@@ -56,7 +71,7 @@ class ApimodelsCreateGameSessionRequest(Model):
 
         invite_timeout: (inviteTimeout) REQUIRED int
 
-        joinability: (joinability) REQUIRED str
+        joinability: (joinability) REQUIRED Union[str, JoinabilityEnum]
 
         match_pool: (matchPool) REQUIRED str
 
@@ -74,7 +89,7 @@ class ApimodelsCreateGameSessionRequest(Model):
 
         ticket_i_ds: (ticketIDs) REQUIRED List[str]
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         app_name: (appName) OPTIONAL str
 
@@ -104,7 +119,7 @@ class ApimodelsCreateGameSessionRequest(Model):
     deployment: str  # REQUIRED
     inactive_timeout: int  # REQUIRED
     invite_timeout: int  # REQUIRED
-    joinability: str  # REQUIRED
+    joinability: Union[str, JoinabilityEnum]  # REQUIRED
     match_pool: str  # REQUIRED
     max_players: int  # REQUIRED
     min_players: int  # REQUIRED
@@ -113,7 +128,7 @@ class ApimodelsCreateGameSessionRequest(Model):
     teams: List[ModelsTeam]  # REQUIRED
     text_chat: bool  # REQUIRED
     ticket_i_ds: List[str]  # REQUIRED
-    type_: str  # REQUIRED
+    type_: Union[str, TypeEnum]  # REQUIRED
     app_name: str  # OPTIONAL
     auto_join: bool  # OPTIONAL
     custom_urlgrpc: str  # OPTIONAL
@@ -158,7 +173,9 @@ class ApimodelsCreateGameSessionRequest(Model):
         self.invite_timeout = value
         return self
 
-    def with_joinability(self, value: str) -> ApimodelsCreateGameSessionRequest:
+    def with_joinability(
+        self, value: Union[str, JoinabilityEnum]
+    ) -> ApimodelsCreateGameSessionRequest:
         self.joinability = value
         return self
 
@@ -196,7 +213,9 @@ class ApimodelsCreateGameSessionRequest(Model):
         self.ticket_i_ds = value
         return self
 
-    def with_type(self, value: str) -> ApimodelsCreateGameSessionRequest:
+    def with_type(
+        self, value: Union[str, TypeEnum]
+    ) -> ApimodelsCreateGameSessionRequest:
         self.type_ = value
         return self
 
@@ -283,7 +302,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         if hasattr(self, "joinability"):
             result["joinability"] = str(self.joinability)
         elif include_empty:
-            result["joinability"] = ""
+            result["joinability"] = Union[str, JoinabilityEnum]()
         if hasattr(self, "match_pool"):
             result["matchPool"] = str(self.match_pool)
         elif include_empty:
@@ -321,7 +340,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = ""
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "app_name"):
             result["appName"] = str(self.app_name)
         elif include_empty:
@@ -374,7 +393,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         deployment: str,
         inactive_timeout: int,
         invite_timeout: int,
-        joinability: str,
+        joinability: Union[str, JoinabilityEnum],
         match_pool: str,
         max_players: int,
         min_players: int,
@@ -383,7 +402,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         teams: List[ModelsTeam],
         text_chat: bool,
         ticket_i_ds: List[str],
-        type_: str,
+        type_: Union[str, TypeEnum],
         app_name: Optional[str] = None,
         auto_join: Optional[bool] = None,
         custom_urlgrpc: Optional[str] = None,
@@ -473,7 +492,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         if "joinability" in dict_ and dict_["joinability"] is not None:
             instance.joinability = str(dict_["joinability"])
         elif include_empty:
-            instance.joinability = ""
+            instance.joinability = Union[str, JoinabilityEnum]()
         if "matchPool" in dict_ and dict_["matchPool"] is not None:
             instance.match_pool = str(dict_["matchPool"])
         elif include_empty:
@@ -512,7 +531,7 @@ class ApimodelsCreateGameSessionRequest(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = ""
+            instance.type_ = Union[str, TypeEnum]()
         if "appName" in dict_ and dict_["appName"] is not None:
             instance.app_name = str(dict_["appName"])
         elif include_empty:
@@ -663,6 +682,15 @@ class ApimodelsCreateGameSessionRequest(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "joinability": [
+                "CLOSED",
+                "FRIENDS_OF_FRIENDS",
+                "FRIENDS_OF_LEADER",
+                "FRIENDS_OF_MEMBERS",
+                "INVITE_ONLY",
+                "OPEN",
+            ],
+            "type": ["DS", "NONE", "P2P"],
             "textChatMode": ["GAME", "NONE", "TEAM"],
         }
 

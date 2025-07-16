@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Fleet Commander Index (1.37.0)
+# Fleet Commander Index (1.38.1)
 
 
 ## Operations

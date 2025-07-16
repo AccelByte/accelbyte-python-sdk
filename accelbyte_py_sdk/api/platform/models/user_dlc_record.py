@@ -29,6 +29,7 @@ from ....core import Model
 from ....core import StrEnum
 
 from ..models.entitlement_origin_sync_result import EntitlementOriginSyncResult
+from ..models.entitlement_summary import EntitlementSummary
 from ..models.platform_reward import PlatformReward
 from ..models.revocation_result import RevocationResult
 from ..models.revoke_result import RevokeResult
@@ -63,6 +64,8 @@ class UserDLCRecord(Model):
         entitlement_origin_sync_result: (entitlementOriginSyncResult) OPTIONAL List[EntitlementOriginSyncResult]
 
         entitlement_origin_sync_status: (entitlementOriginSyncStatus) OPTIONAL Union[str, EntitlementOriginSyncStatusEnum]
+
+        entitlement_summaries: (entitlementSummaries) OPTIONAL List[EntitlementSummary]
 
         id_: (id) OPTIONAL str
 
@@ -100,6 +103,7 @@ class UserDLCRecord(Model):
     entitlement_origin_sync_status: Union[
         str, EntitlementOriginSyncStatusEnum
     ]  # OPTIONAL
+    entitlement_summaries: List[EntitlementSummary]  # OPTIONAL
     id_: str  # OPTIONAL
     metadata: Dict[str, Any]  # OPTIONAL
     namespace: str  # OPTIONAL
@@ -133,6 +137,12 @@ class UserDLCRecord(Model):
         self, value: Union[str, EntitlementOriginSyncStatusEnum]
     ) -> UserDLCRecord:
         self.entitlement_origin_sync_status = value
+        return self
+
+    def with_entitlement_summaries(
+        self, value: List[EntitlementSummary]
+    ) -> UserDLCRecord:
+        self.entitlement_summaries = value
         return self
 
     def with_id(self, value: str) -> UserDLCRecord:
@@ -216,6 +226,13 @@ class UserDLCRecord(Model):
             result["entitlementOriginSyncStatus"] = Union[
                 str, EntitlementOriginSyncStatusEnum
             ]()
+        if hasattr(self, "entitlement_summaries"):
+            result["entitlementSummaries"] = [
+                i0.to_dict(include_empty=include_empty)
+                for i0 in self.entitlement_summaries
+            ]
+        elif include_empty:
+            result["entitlementSummaries"] = []
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -294,6 +311,7 @@ class UserDLCRecord(Model):
         entitlement_origin_sync_status: Optional[
             Union[str, EntitlementOriginSyncStatusEnum]
         ] = None,
+        entitlement_summaries: Optional[List[EntitlementSummary]] = None,
         id_: Optional[str] = None,
         metadata: Optional[Dict[str, Any]] = None,
         namespace: Optional[str] = None,
@@ -317,6 +335,8 @@ class UserDLCRecord(Model):
             instance.entitlement_origin_sync_result = entitlement_origin_sync_result
         if entitlement_origin_sync_status is not None:
             instance.entitlement_origin_sync_status = entitlement_origin_sync_status
+        if entitlement_summaries is not None:
+            instance.entitlement_summaries = entitlement_summaries
         if id_ is not None:
             instance.id_ = id_
         if metadata is not None:
@@ -381,6 +401,16 @@ class UserDLCRecord(Model):
             instance.entitlement_origin_sync_status = Union[
                 str, EntitlementOriginSyncStatusEnum
             ]()
+        if (
+            "entitlementSummaries" in dict_
+            and dict_["entitlementSummaries"] is not None
+        ):
+            instance.entitlement_summaries = [
+                EntitlementSummary.create_from_dict(i0, include_empty=include_empty)
+                for i0 in dict_["entitlementSummaries"]
+            ]
+        elif include_empty:
+            instance.entitlement_summaries = []
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -487,6 +517,7 @@ class UserDLCRecord(Model):
             "dlcRewardVersion": "dlc_reward_version",
             "entitlementOriginSyncResult": "entitlement_origin_sync_result",
             "entitlementOriginSyncStatus": "entitlement_origin_sync_status",
+            "entitlementSummaries": "entitlement_summaries",
             "id": "id_",
             "metadata": "metadata",
             "namespace": "namespace",
@@ -509,6 +540,7 @@ class UserDLCRecord(Model):
             "dlcRewardVersion": False,
             "entitlementOriginSyncResult": False,
             "entitlementOriginSyncStatus": False,
+            "entitlementSummaries": False,
             "id": False,
             "metadata": False,
             "namespace": False,

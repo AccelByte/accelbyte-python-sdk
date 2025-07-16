@@ -32,6 +32,8 @@ class ApiFleetClaimResponse(Model):
     """Api fleet claim response (api.FleetClaimResponse)
 
     Properties:
+        fleet_id: (fleetId) REQUIRED str
+
         ip: (ip) REQUIRED str
 
         ports: (ports) REQUIRED Dict[str, int]
@@ -43,6 +45,7 @@ class ApiFleetClaimResponse(Model):
 
     # region fields
 
+    fleet_id: str  # REQUIRED
     ip: str  # REQUIRED
     ports: Dict[str, int]  # REQUIRED
     region: str  # REQUIRED
@@ -51,6 +54,10 @@ class ApiFleetClaimResponse(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_fleet_id(self, value: str) -> ApiFleetClaimResponse:
+        self.fleet_id = value
+        return self
 
     def with_ip(self, value: str) -> ApiFleetClaimResponse:
         self.ip = value
@@ -74,6 +81,10 @@ class ApiFleetClaimResponse(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "fleet_id"):
+            result["fleetId"] = str(self.fleet_id)
+        elif include_empty:
+            result["fleetId"] = ""
         if hasattr(self, "ip"):
             result["ip"] = str(self.ip)
         elif include_empty:
@@ -98,9 +109,16 @@ class ApiFleetClaimResponse(Model):
 
     @classmethod
     def create(
-        cls, ip: str, ports: Dict[str, int], region: str, server_id: str, **kwargs
+        cls,
+        fleet_id: str,
+        ip: str,
+        ports: Dict[str, int],
+        region: str,
+        server_id: str,
+        **kwargs,
     ) -> ApiFleetClaimResponse:
         instance = cls()
+        instance.fleet_id = fleet_id
         instance.ip = ip
         instance.ports = ports
         instance.region = region
@@ -114,6 +132,10 @@ class ApiFleetClaimResponse(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "fleetId" in dict_ and dict_["fleetId"] is not None:
+            instance.fleet_id = str(dict_["fleetId"])
+        elif include_empty:
+            instance.fleet_id = ""
         if "ip" in dict_ and dict_["ip"] is not None:
             instance.ip = str(dict_["ip"])
         elif include_empty:
@@ -173,6 +195,7 @@ class ApiFleetClaimResponse(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "fleetId": "fleet_id",
             "ip": "ip",
             "ports": "ports",
             "region": "region",
@@ -182,6 +205,7 @@ class ApiFleetClaimResponse(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "fleetId": True,
             "ip": True,
             "ports": True,
             "region": True,

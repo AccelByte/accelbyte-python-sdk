@@ -33,11 +33,11 @@ from ...models import ResponseErrorResponse
 
 
 class UnsubscribeV2Handler(Operation):
-    """Unsubscribe to app down notification (UnsubscribeV2Handler)
+    """Unsubscribe to app notification (UnsubscribeV2Handler)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
 
-    Unsubscribe to app down notification
+    Unsubscribe to app notification
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/subscriptions/me
@@ -57,7 +57,7 @@ class UnsubscribeV2Handler(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (successfully submitted request to unsubcribe from app down notification)
+        204: No Content - (successfully submitted request to unsubcribe from app notification)
 
         401: Unauthorized - ResponseErrorResponse (Unauthorized)
 
@@ -171,7 +171,7 @@ class UnsubscribeV2Handler(Operation):
     ) -> Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]:
         """Parse the given response.
 
-        204: No Content - (successfully submitted request to unsubcribe from app down notification)
+        204: No Content - (successfully submitted request to unsubcribe from app notification)
 
         401: Unauthorized - ResponseErrorResponse (Unauthorized)
 

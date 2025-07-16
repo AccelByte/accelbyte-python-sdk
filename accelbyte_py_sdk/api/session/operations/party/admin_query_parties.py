@@ -28,9 +28,32 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ApimodelsPartyQueryResponse
 from ...models import ResponseError
+
+
+class JoinabilityEnum(StrEnum):
+    CLOSED = "CLOSED"
+    FRIENDS_OF_FRIENDS = "FRIENDS_OF_FRIENDS"
+    FRIENDS_OF_LEADER = "FRIENDS_OF_LEADER"
+    FRIENDS_OF_MEMBERS = "FRIENDS_OF_MEMBERS"
+    INVITE_ONLY = "INVITE_ONLY"
+    OPEN = "OPEN"
+
+
+class MemberStatusEnum(StrEnum):
+    CANCELLED = "CANCELLED"
+    CONNECTED = "CONNECTED"
+    DISCONNECTED = "DISCONNECTED"
+    DROPPED = "DROPPED"
+    INVITED = "INVITED"
+    JOINED = "JOINED"
+    KICKED = "KICKED"
+    LEFT = "LEFT"
+    REJECTED = "REJECTED"
+    TIMEOUT = "TIMEOUT"
 
 
 class AdminQueryParties(Operation):
@@ -53,11 +76,13 @@ class AdminQueryParties(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        configuration_name: (configurationName) OPTIONAL str in query
+
         from_time: (fromTime) OPTIONAL str in query
 
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
-        joinability: (joinability) OPTIONAL str in query
+        joinability: (joinability) OPTIONAL Union[str, JoinabilityEnum] in query
 
         key: (key) OPTIONAL str in query
 
@@ -67,7 +92,7 @@ class AdminQueryParties(Operation):
 
         member_id: (memberID) OPTIONAL str in query
 
-        member_status: (memberStatus) OPTIONAL str in query
+        member_status: (memberStatus) OPTIONAL Union[str, MemberStatusEnum] in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -101,14 +126,15 @@ class AdminQueryParties(Operation):
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
+    configuration_name: str  # OPTIONAL in [query]
     from_time: str  # OPTIONAL in [query]
     is_soft_deleted: str  # OPTIONAL in [query]
-    joinability: str  # OPTIONAL in [query]
+    joinability: Union[str, JoinabilityEnum]  # OPTIONAL in [query]
     key: str  # OPTIONAL in [query]
     leader_id: str  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     member_id: str  # OPTIONAL in [query]
-    member_status: str  # OPTIONAL in [query]
+    member_status: Union[str, MemberStatusEnum]  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
     order: str  # OPTIONAL in [query]
     order_by: str  # OPTIONAL in [query]
@@ -166,6 +192,8 @@ class AdminQueryParties(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
+        if hasattr(self, "configuration_name"):
+            result["configurationName"] = self.configuration_name
         if hasattr(self, "from_time"):
             result["fromTime"] = self.from_time
         if hasattr(self, "is_soft_deleted"):
@@ -208,6 +236,10 @@ class AdminQueryParties(Operation):
         self.namespace = value
         return self
 
+    def with_configuration_name(self, value: str) -> AdminQueryParties:
+        self.configuration_name = value
+        return self
+
     def with_from_time(self, value: str) -> AdminQueryParties:
         self.from_time = value
         return self
@@ -216,7 +248,7 @@ class AdminQueryParties(Operation):
         self.is_soft_deleted = value
         return self
 
-    def with_joinability(self, value: str) -> AdminQueryParties:
+    def with_joinability(self, value: Union[str, JoinabilityEnum]) -> AdminQueryParties:
         self.joinability = value
         return self
 
@@ -236,7 +268,9 @@ class AdminQueryParties(Operation):
         self.member_id = value
         return self
 
-    def with_member_status(self, value: str) -> AdminQueryParties:
+    def with_member_status(
+        self, value: Union[str, MemberStatusEnum]
+    ) -> AdminQueryParties:
         self.member_status = value
         return self
 
@@ -274,6 +308,10 @@ class AdminQueryParties(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "configuration_name") and self.configuration_name:
+            result["configurationName"] = str(self.configuration_name)
+        elif include_empty:
+            result["configurationName"] = ""
         if hasattr(self, "from_time") and self.from_time:
             result["fromTime"] = str(self.from_time)
         elif include_empty:
@@ -285,7 +323,7 @@ class AdminQueryParties(Operation):
         if hasattr(self, "joinability") and self.joinability:
             result["joinability"] = str(self.joinability)
         elif include_empty:
-            result["joinability"] = ""
+            result["joinability"] = Union[str, JoinabilityEnum]()
         if hasattr(self, "key") and self.key:
             result["key"] = str(self.key)
         elif include_empty:
@@ -305,7 +343,7 @@ class AdminQueryParties(Operation):
         if hasattr(self, "member_status") and self.member_status:
             result["memberStatus"] = str(self.member_status)
         elif include_empty:
-            result["memberStatus"] = ""
+            result["memberStatus"] = Union[str, MemberStatusEnum]()
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
@@ -387,14 +425,15 @@ class AdminQueryParties(Operation):
     def create(
         cls,
         namespace: str,
+        configuration_name: Optional[str] = None,
         from_time: Optional[str] = None,
         is_soft_deleted: Optional[str] = None,
-        joinability: Optional[str] = None,
+        joinability: Optional[Union[str, JoinabilityEnum]] = None,
         key: Optional[str] = None,
         leader_id: Optional[str] = None,
         limit: Optional[int] = None,
         member_id: Optional[str] = None,
-        member_status: Optional[str] = None,
+        member_status: Optional[Union[str, MemberStatusEnum]] = None,
         offset: Optional[int] = None,
         order: Optional[str] = None,
         order_by: Optional[str] = None,
@@ -405,6 +444,8 @@ class AdminQueryParties(Operation):
     ) -> AdminQueryParties:
         instance = cls()
         instance.namespace = namespace
+        if configuration_name is not None:
+            instance.configuration_name = configuration_name
         if from_time is not None:
             instance.from_time = from_time
         if is_soft_deleted is not None:
@@ -446,6 +487,10 @@ class AdminQueryParties(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "configurationName" in dict_ and dict_["configurationName"] is not None:
+            instance.configuration_name = str(dict_["configurationName"])
+        elif include_empty:
+            instance.configuration_name = ""
         if "fromTime" in dict_ and dict_["fromTime"] is not None:
             instance.from_time = str(dict_["fromTime"])
         elif include_empty:
@@ -457,7 +502,7 @@ class AdminQueryParties(Operation):
         if "joinability" in dict_ and dict_["joinability"] is not None:
             instance.joinability = str(dict_["joinability"])
         elif include_empty:
-            instance.joinability = ""
+            instance.joinability = Union[str, JoinabilityEnum]()
         if "key" in dict_ and dict_["key"] is not None:
             instance.key = str(dict_["key"])
         elif include_empty:
@@ -477,7 +522,7 @@ class AdminQueryParties(Operation):
         if "memberStatus" in dict_ and dict_["memberStatus"] is not None:
             instance.member_status = str(dict_["memberStatus"])
         elif include_empty:
-            instance.member_status = ""
+            instance.member_status = Union[str, MemberStatusEnum]()
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
@@ -508,6 +553,7 @@ class AdminQueryParties(Operation):
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
+            "configurationName": "configuration_name",
             "fromTime": "from_time",
             "isSoftDeleted": "is_soft_deleted",
             "joinability": "joinability",
@@ -528,6 +574,7 @@ class AdminQueryParties(Operation):
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
+            "configurationName": False,
             "fromTime": False,
             "isSoftDeleted": False,
             "joinability": False,
@@ -542,6 +589,31 @@ class AdminQueryParties(Operation):
             "partyID": False,
             "toTime": False,
             "value": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "joinability": [
+                "CLOSED",
+                "FRIENDS_OF_FRIENDS",
+                "FRIENDS_OF_LEADER",
+                "FRIENDS_OF_MEMBERS",
+                "INVITE_ONLY",
+                "OPEN",
+            ],  # in query
+            "memberStatus": [
+                "CANCELLED",
+                "CONNECTED",
+                "DISCONNECTED",
+                "DROPPED",
+                "INVITED",
+                "JOINED",
+                "KICKED",
+                "LEFT",
+                "REJECTED",
+                "TIMEOUT",
+            ],  # in query
         }
 
     # endregion static methods

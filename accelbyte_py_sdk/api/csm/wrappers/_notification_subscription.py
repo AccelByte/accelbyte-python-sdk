@@ -58,11 +58,11 @@ def bulk_save_subscription_app_notification_v2(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Bulk update the subscription of the users (BulkSaveSubscriptionAppNotificationV2)
+    """Bulk update of users subscribed to an app's notifications (BulkSaveSubscriptionAppNotificationV2)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]`
 
-    Update the subscription the user(s) is an app notification.
+    Bulk update of users subscribed to an app's notifications.
 
     Request body:
     - notificationType : type of the app notification to be subscribed - Required.
@@ -122,11 +122,11 @@ async def bulk_save_subscription_app_notification_v2_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Bulk update the subscription of the users (BulkSaveSubscriptionAppNotificationV2)
+    """Bulk update of users subscribed to an app's notifications (BulkSaveSubscriptionAppNotificationV2)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SUBSCRIPTION [UPDATE]`
 
-    Update the subscription the user(s) is an app notification.
+    Bulk update of users subscribed to an app's notifications.
 
     Request body:
     - notificationType : type of the app notification to be subscribed - Required.
@@ -782,11 +782,11 @@ def subscribe_v2_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Subscribe to app down notification (SubscribeV2Handler)
+    """Subscribe to app notification (SubscribeV2Handler)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]`
 
-    Subscribe to app down notification
+    Subscribe to app notification
     Request body:
     - notificationType : type of the app notification to be subscribed - Required.
     - values:
@@ -814,7 +814,7 @@ def subscribe_v2_handler(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (successfully submitted request to subcribe from app down notification)
+        204: No Content - (successfully submitted request to subcribe from app notification)
 
         401: Unauthorized - ResponseErrorResponse (Unauthorized)
 
@@ -844,11 +844,11 @@ async def subscribe_v2_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Subscribe to app down notification (SubscribeV2Handler)
+    """Subscribe to app notification (SubscribeV2Handler)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]`
 
-    Subscribe to app down notification
+    Subscribe to app notification
     Request body:
     - notificationType : type of the app notification to be subscribed - Required.
     - values:
@@ -876,7 +876,7 @@ async def subscribe_v2_handler_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (successfully submitted request to subcribe from app down notification)
+        204: No Content - (successfully submitted request to subcribe from app notification)
 
         401: Unauthorized - ResponseErrorResponse (Unauthorized)
 
@@ -907,11 +907,11 @@ def unsubscribe_v2_handler(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Unsubscribe to app down notification (UnsubscribeV2Handler)
+    """Unsubscribe to app notification (UnsubscribeV2Handler)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
 
-    Unsubscribe to app down notification
+    Unsubscribe to app notification
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/subscriptions/me
@@ -931,7 +931,7 @@ def unsubscribe_v2_handler(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (successfully submitted request to unsubcribe from app down notification)
+        204: No Content - (successfully submitted request to unsubcribe from app notification)
 
         401: Unauthorized - ResponseErrorResponse (Unauthorized)
 
@@ -959,11 +959,11 @@ async def unsubscribe_v2_handler_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
-    """Unsubscribe to app down notification (UnsubscribeV2Handler)
+    """Unsubscribe to app notification (UnsubscribeV2Handler)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [DELETE]`
 
-    Unsubscribe to app down notification
+    Unsubscribe to app notification
 
     Properties:
         url: /csm/v2/admin/namespaces/{namespace}/apps/{app}/subscriptions/me
@@ -983,7 +983,7 @@ async def unsubscribe_v2_handler_async(
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (successfully submitted request to unsubcribe from app down notification)
+        204: No Content - (successfully submitted request to unsubcribe from app notification)
 
         401: Unauthorized - ResponseErrorResponse (Unauthorized)
 

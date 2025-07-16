@@ -26,6 +26,30 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class StatusEnum(StrEnum):
+    CONNECTED = "CONNECTED"
+    INVITED = "INVITED"
+    JOINED = "JOINED"
+    KICKED = "KICKED"
+    LEFT = "LEFT"
+    REJECTED = "REJECTED"
+
+
+class StatusV2Enum(StrEnum):
+    CANCELLED = "CANCELLED"
+    CONNECTED = "CONNECTED"
+    DISCONNECTED = "DISCONNECTED"
+    DROPPED = "DROPPED"
+    INVITED = "INVITED"
+    JOINED = "JOINED"
+    KICKED = "KICKED"
+    LEFT = "LEFT"
+    REJECTED = "REJECTED"
+    TERMINATED = "TERMINATED"
+    TIMEOUT = "TIMEOUT"
 
 
 class ApimodelsUserResponse(Model):
@@ -38,9 +62,9 @@ class ApimodelsUserResponse(Model):
 
         platform_user_id: (platformUserID) REQUIRED str
 
-        status: (status) REQUIRED str
+        status: (status) REQUIRED Union[str, StatusEnum]
 
-        status_v2: (statusV2) REQUIRED str
+        status_v2: (statusV2) REQUIRED Union[str, StatusV2Enum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -52,8 +76,8 @@ class ApimodelsUserResponse(Model):
     id_: str  # REQUIRED
     platform_id: str  # REQUIRED
     platform_user_id: str  # REQUIRED
-    status: str  # REQUIRED
-    status_v2: str  # REQUIRED
+    status: Union[str, StatusEnum]  # REQUIRED
+    status_v2: Union[str, StatusV2Enum]  # REQUIRED
     updated_at: str  # REQUIRED
     previous_status: str  # OPTIONAL
 
@@ -73,11 +97,11 @@ class ApimodelsUserResponse(Model):
         self.platform_user_id = value
         return self
 
-    def with_status(self, value: str) -> ApimodelsUserResponse:
+    def with_status(self, value: Union[str, StatusEnum]) -> ApimodelsUserResponse:
         self.status = value
         return self
 
-    def with_status_v2(self, value: str) -> ApimodelsUserResponse:
+    def with_status_v2(self, value: Union[str, StatusV2Enum]) -> ApimodelsUserResponse:
         self.status_v2 = value
         return self
 
@@ -110,11 +134,11 @@ class ApimodelsUserResponse(Model):
         if hasattr(self, "status"):
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = ""
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "status_v2"):
             result["statusV2"] = str(self.status_v2)
         elif include_empty:
-            result["statusV2"] = ""
+            result["statusV2"] = Union[str, StatusV2Enum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -135,8 +159,8 @@ class ApimodelsUserResponse(Model):
         id_: str,
         platform_id: str,
         platform_user_id: str,
-        status: str,
-        status_v2: str,
+        status: Union[str, StatusEnum],
+        status_v2: Union[str, StatusV2Enum],
         updated_at: str,
         previous_status: Optional[str] = None,
         **kwargs,
@@ -174,11 +198,11 @@ class ApimodelsUserResponse(Model):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = ""
+            instance.status = Union[str, StatusEnum]()
         if "statusV2" in dict_ and dict_["statusV2"] is not None:
             instance.status_v2 = str(dict_["statusV2"])
         elif include_empty:
-            instance.status_v2 = ""
+            instance.status_v2 = Union[str, StatusV2Enum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -249,6 +273,25 @@ class ApimodelsUserResponse(Model):
             "statusV2": True,
             "updatedAt": True,
             "previousStatus": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "status": ["CONNECTED", "INVITED", "JOINED", "KICKED", "LEFT", "REJECTED"],
+            "statusV2": [
+                "CANCELLED",
+                "CONNECTED",
+                "DISCONNECTED",
+                "DROPPED",
+                "INVITED",
+                "JOINED",
+                "KICKED",
+                "LEFT",
+                "REJECTED",
+                "TERMINATED",
+                "TIMEOUT",
+            ],
         }
 
     # endregion static methods

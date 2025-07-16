@@ -803,6 +803,7 @@ async def get_namespace_1_async(
 
 @same_doc_as(GetNamespaceContext)
 def get_namespace_context(
+    refresh_on_cache_miss: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -829,6 +830,8 @@ def get_namespace_context(
 
         namespace: (namespace) REQUIRED str in path
 
+        refresh_on_cache_miss: (refreshOnCacheMiss) OPTIONAL bool in query
+
     Responses:
         200: OK - NamespaceContext (Successful operation)
 
@@ -841,6 +844,7 @@ def get_namespace_context(
         if error:
             return None, error
     request = GetNamespaceContext.create(
+        refresh_on_cache_miss=refresh_on_cache_miss,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -848,6 +852,7 @@ def get_namespace_context(
 
 @same_doc_as(GetNamespaceContext)
 async def get_namespace_context_async(
+    refresh_on_cache_miss: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -874,6 +879,8 @@ async def get_namespace_context_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        refresh_on_cache_miss: (refreshOnCacheMiss) OPTIONAL bool in query
+
     Responses:
         200: OK - NamespaceContext (Successful operation)
 
@@ -886,6 +893,7 @@ async def get_namespace_context_async(
         if error:
             return None, error
     request = GetNamespaceContext.create(
+        refresh_on_cache_miss=refresh_on_cache_miss,
         namespace=namespace,
     )
     return await run_request_async(

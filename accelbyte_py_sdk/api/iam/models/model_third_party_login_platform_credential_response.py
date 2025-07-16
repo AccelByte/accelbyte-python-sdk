@@ -87,7 +87,13 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
 
         netflix_certificates: (NetflixCertificates) OPTIONAL AccountcommonNetflixCertificates
 
+        private_key: (PrivateKey) OPTIONAL str
+
         registered_domains: (registeredDomains) OPTIONAL List[AccountcommonRegisteredDomain]
+
+        relying_party: (RelyingParty) OPTIONAL str
+
+        sandbox_id: (SandboxId) OPTIONAL str
 
         scopes: (scopes) OPTIONAL List[str]
 
@@ -128,7 +134,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
     include_puid: bool  # OPTIONAL
     logo_url: str  # OPTIONAL
     netflix_certificates: AccountcommonNetflixCertificates  # OPTIONAL
+    private_key: str  # OPTIONAL
     registered_domains: List[AccountcommonRegisteredDomain]  # OPTIONAL
+    relying_party: str  # OPTIONAL
+    sandbox_id: str  # OPTIONAL
     scopes: List[str]  # OPTIONAL
     token_claims_mapping: Dict[str, str]  # OPTIONAL
     token_endpoint: str  # OPTIONAL
@@ -285,10 +294,28 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         self.netflix_certificates = value
         return self
 
+    def with_private_key(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.private_key = value
+        return self
+
     def with_registered_domains(
         self, value: List[AccountcommonRegisteredDomain]
     ) -> ModelThirdPartyLoginPlatformCredentialResponse:
         self.registered_domains = value
+        return self
+
+    def with_relying_party(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.relying_party = value
+        return self
+
+    def with_sandbox_id(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialResponse:
+        self.sandbox_id = value
         return self
 
     def with_scopes(
@@ -435,6 +462,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             )
         elif include_empty:
             result["NetflixCertificates"] = AccountcommonNetflixCertificates()
+        if hasattr(self, "private_key"):
+            result["PrivateKey"] = str(self.private_key)
+        elif include_empty:
+            result["PrivateKey"] = ""
         if hasattr(self, "registered_domains"):
             result["registeredDomains"] = [
                 i0.to_dict(include_empty=include_empty)
@@ -442,6 +473,14 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             ]
         elif include_empty:
             result["registeredDomains"] = []
+        if hasattr(self, "relying_party"):
+            result["RelyingParty"] = str(self.relying_party)
+        elif include_empty:
+            result["RelyingParty"] = ""
+        if hasattr(self, "sandbox_id"):
+            result["SandboxId"] = str(self.sandbox_id)
+        elif include_empty:
+            result["SandboxId"] = ""
         if hasattr(self, "scopes"):
             result["scopes"] = [str(i0) for i0 in self.scopes]
         elif include_empty:
@@ -499,7 +538,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
         include_puid: Optional[bool] = None,
         logo_url: Optional[str] = None,
         netflix_certificates: Optional[AccountcommonNetflixCertificates] = None,
+        private_key: Optional[str] = None,
         registered_domains: Optional[List[AccountcommonRegisteredDomain]] = None,
+        relying_party: Optional[str] = None,
+        sandbox_id: Optional[str] = None,
         scopes: Optional[List[str]] = None,
         token_claims_mapping: Optional[Dict[str, str]] = None,
         token_endpoint: Optional[str] = None,
@@ -539,8 +581,14 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             instance.logo_url = logo_url
         if netflix_certificates is not None:
             instance.netflix_certificates = netflix_certificates
+        if private_key is not None:
+            instance.private_key = private_key
         if registered_domains is not None:
             instance.registered_domains = registered_domains
+        if relying_party is not None:
+            instance.relying_party = relying_party
+        if sandbox_id is not None:
+            instance.sandbox_id = sandbox_id
         if scopes is not None:
             instance.scopes = scopes
         if token_claims_mapping is not None:
@@ -682,6 +730,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             )
         elif include_empty:
             instance.netflix_certificates = AccountcommonNetflixCertificates()
+        if "PrivateKey" in dict_ and dict_["PrivateKey"] is not None:
+            instance.private_key = str(dict_["PrivateKey"])
+        elif include_empty:
+            instance.private_key = ""
         if "registeredDomains" in dict_ and dict_["registeredDomains"] is not None:
             instance.registered_domains = [
                 AccountcommonRegisteredDomain.create_from_dict(
@@ -691,6 +743,14 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             ]
         elif include_empty:
             instance.registered_domains = []
+        if "RelyingParty" in dict_ and dict_["RelyingParty"] is not None:
+            instance.relying_party = str(dict_["RelyingParty"])
+        elif include_empty:
+            instance.relying_party = ""
+        if "SandboxId" in dict_ and dict_["SandboxId"] is not None:
+            instance.sandbox_id = str(dict_["SandboxId"])
+        elif include_empty:
+            instance.sandbox_id = ""
         if "scopes" in dict_ and dict_["scopes"] is not None:
             instance.scopes = [str(i0) for i0 in dict_["scopes"]]
         elif include_empty:
@@ -782,7 +842,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "IncludePUID": "include_puid",
             "LogoURL": "logo_url",
             "NetflixCertificates": "netflix_certificates",
+            "PrivateKey": "private_key",
             "registeredDomains": "registered_domains",
+            "RelyingParty": "relying_party",
+            "SandboxId": "sandbox_id",
             "scopes": "scopes",
             "TokenClaimsMapping": "token_claims_mapping",
             "TokenEndpoint": "token_endpoint",
@@ -819,7 +882,10 @@ class ModelThirdPartyLoginPlatformCredentialResponse(Model):
             "IncludePUID": False,
             "LogoURL": False,
             "NetflixCertificates": False,
+            "PrivateKey": False,
             "registeredDomains": False,
+            "RelyingParty": False,
+            "SandboxId": False,
             "scopes": False,
             "TokenClaimsMapping": False,
             "TokenEndpoint": False,

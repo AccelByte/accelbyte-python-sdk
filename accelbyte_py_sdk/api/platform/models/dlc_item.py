@@ -36,6 +36,8 @@ class DLCItem(Model):
     Properties:
         auto_update: (autoUpdate) OPTIONAL bool
 
+        enable_revocation: (enableRevocation) OPTIONAL bool
+
         id_: (id) OPTIONAL str
 
         rewards: (rewards) OPTIONAL List[PlatformReward]
@@ -46,6 +48,7 @@ class DLCItem(Model):
     # region fields
 
     auto_update: bool  # OPTIONAL
+    enable_revocation: bool  # OPTIONAL
     id_: str  # OPTIONAL
     rewards: List[PlatformReward]  # OPTIONAL
     rvn: int  # OPTIONAL
@@ -56,6 +59,10 @@ class DLCItem(Model):
 
     def with_auto_update(self, value: bool) -> DLCItem:
         self.auto_update = value
+        return self
+
+    def with_enable_revocation(self, value: bool) -> DLCItem:
+        self.enable_revocation = value
         return self
 
     def with_id(self, value: str) -> DLCItem:
@@ -80,6 +87,10 @@ class DLCItem(Model):
             result["autoUpdate"] = bool(self.auto_update)
         elif include_empty:
             result["autoUpdate"] = False
+        if hasattr(self, "enable_revocation"):
+            result["enableRevocation"] = bool(self.enable_revocation)
+        elif include_empty:
+            result["enableRevocation"] = False
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -104,6 +115,7 @@ class DLCItem(Model):
     def create(
         cls,
         auto_update: Optional[bool] = None,
+        enable_revocation: Optional[bool] = None,
         id_: Optional[str] = None,
         rewards: Optional[List[PlatformReward]] = None,
         rvn: Optional[int] = None,
@@ -112,6 +124,8 @@ class DLCItem(Model):
         instance = cls()
         if auto_update is not None:
             instance.auto_update = auto_update
+        if enable_revocation is not None:
+            instance.enable_revocation = enable_revocation
         if id_ is not None:
             instance.id_ = id_
         if rewards is not None:
@@ -129,6 +143,10 @@ class DLCItem(Model):
             instance.auto_update = bool(dict_["autoUpdate"])
         elif include_empty:
             instance.auto_update = False
+        if "enableRevocation" in dict_ and dict_["enableRevocation"] is not None:
+            instance.enable_revocation = bool(dict_["enableRevocation"])
+        elif include_empty:
+            instance.enable_revocation = False
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -184,6 +202,7 @@ class DLCItem(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "autoUpdate": "auto_update",
+            "enableRevocation": "enable_revocation",
             "id": "id_",
             "rewards": "rewards",
             "rvn": "rvn",
@@ -193,6 +212,7 @@ class DLCItem(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "autoUpdate": False,
+            "enableRevocation": False,
             "id": False,
             "rewards": False,
             "rvn": False,

@@ -109,7 +109,7 @@ class CSMTestCase(IntegrationTestCase):
                 if secret.config_name == env_extend_app_client_id:
                     env_extend_app_client_id_value = secret.value
                     break
-            
+
             self.assertIsNotNone(env_extend_app_client_id_value)
 
             result, error = csm_service.update_secret_v2(
@@ -183,7 +183,9 @@ class CSMTestCase(IntegrationTestCase):
             )
             self.assertIsNone(error, str(error))
 
-            _, error = iam_service.admin_delete_client_v3(client_id=env_extend_app_client_id)
+            _, error = iam_service.admin_delete_client_v3(
+                client_id=env_extend_app_client_id
+            )
             self.assertIsNone(error, str(error))
 
             raise e from None
@@ -193,6 +195,8 @@ class CSMTestCase(IntegrationTestCase):
                 forced="true",
             )
 
-            _, _ = iam_service.admin_delete_client_v3(client_id=env_extend_app_client_id)
+            _, _ = iam_service.admin_delete_client_v3(
+                client_id=env_extend_app_client_id
+            )
 
     # endregion test:csm

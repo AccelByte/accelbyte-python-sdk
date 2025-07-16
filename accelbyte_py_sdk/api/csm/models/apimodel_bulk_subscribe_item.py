@@ -32,6 +32,8 @@ class ApimodelBulkSubscribeItem(Model):
     """Apimodel bulk subscribe item (apimodel.BulkSubscribeItem)
 
     Properties:
+        email_address: (emailAddress) REQUIRED str
+
         notification_type: (notificationType) REQUIRED Dict[str, bool]
 
         user_id: (userId) REQUIRED str
@@ -39,12 +41,17 @@ class ApimodelBulkSubscribeItem(Model):
 
     # region fields
 
+    email_address: str  # REQUIRED
     notification_type: Dict[str, bool]  # REQUIRED
     user_id: str  # REQUIRED
 
     # endregion fields
 
     # region with_x methods
+
+    def with_email_address(self, value: str) -> ApimodelBulkSubscribeItem:
+        self.email_address = value
+        return self
 
     def with_notification_type(
         self, value: Dict[str, bool]
@@ -62,6 +69,10 @@ class ApimodelBulkSubscribeItem(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "email_address"):
+            result["emailAddress"] = str(self.email_address)
+        elif include_empty:
+            result["emailAddress"] = ""
         if hasattr(self, "notification_type"):
             result["notificationType"] = {
                 str(k0): bool(v0) for k0, v0 in self.notification_type.items()
@@ -80,9 +91,14 @@ class ApimodelBulkSubscribeItem(Model):
 
     @classmethod
     def create(
-        cls, notification_type: Dict[str, bool], user_id: str, **kwargs
+        cls,
+        email_address: str,
+        notification_type: Dict[str, bool],
+        user_id: str,
+        **kwargs,
     ) -> ApimodelBulkSubscribeItem:
         instance = cls()
+        instance.email_address = email_address
         instance.notification_type = notification_type
         instance.user_id = user_id
         return instance
@@ -94,6 +110,10 @@ class ApimodelBulkSubscribeItem(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
+            instance.email_address = str(dict_["emailAddress"])
+        elif include_empty:
+            instance.email_address = ""
         if "notificationType" in dict_ and dict_["notificationType"] is not None:
             instance.notification_type = {
                 str(k0): bool(v0) for k0, v0 in dict_["notificationType"].items()
@@ -147,6 +167,7 @@ class ApimodelBulkSubscribeItem(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "emailAddress": "email_address",
             "notificationType": "notification_type",
             "userId": "user_id",
         }
@@ -154,6 +175,7 @@ class ApimodelBulkSubscribeItem(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "emailAddress": True,
             "notificationType": True,
             "userId": True,
         }

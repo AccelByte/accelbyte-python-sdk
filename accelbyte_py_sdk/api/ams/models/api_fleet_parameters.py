@@ -55,6 +55,8 @@ class ApiFleetParameters(Model):
 
         fallback_fleet: (fallbackFleet) OPTIONAL str
 
+        hibernate_after_period: (hibernateAfterPeriod) OPTIONAL str
+
         sampling_rules: (samplingRules) OPTIONAL ApiFleetArtifactsSampleRules
     """
 
@@ -68,6 +70,7 @@ class ApiFleetParameters(Model):
     regions: List[ApiRegionConfig]  # REQUIRED
     claim_keys: List[str]  # OPTIONAL
     fallback_fleet: str  # OPTIONAL
+    hibernate_after_period: str  # OPTIONAL
     sampling_rules: ApiFleetArtifactsSampleRules  # OPTIONAL
 
     # endregion fields
@@ -108,6 +111,10 @@ class ApiFleetParameters(Model):
 
     def with_fallback_fleet(self, value: str) -> ApiFleetParameters:
         self.fallback_fleet = value
+        return self
+
+    def with_hibernate_after_period(self, value: str) -> ApiFleetParameters:
+        self.hibernate_after_period = value
         return self
 
     def with_sampling_rules(
@@ -160,6 +167,10 @@ class ApiFleetParameters(Model):
             result["fallbackFleet"] = str(self.fallback_fleet)
         elif include_empty:
             result["fallbackFleet"] = ""
+        if hasattr(self, "hibernate_after_period"):
+            result["hibernateAfterPeriod"] = str(self.hibernate_after_period)
+        elif include_empty:
+            result["hibernateAfterPeriod"] = ""
         if hasattr(self, "sampling_rules"):
             result["samplingRules"] = self.sampling_rules.to_dict(
                 include_empty=include_empty
@@ -183,6 +194,7 @@ class ApiFleetParameters(Model):
         regions: List[ApiRegionConfig],
         claim_keys: Optional[List[str]] = None,
         fallback_fleet: Optional[str] = None,
+        hibernate_after_period: Optional[str] = None,
         sampling_rules: Optional[ApiFleetArtifactsSampleRules] = None,
         **kwargs,
     ) -> ApiFleetParameters:
@@ -197,6 +209,8 @@ class ApiFleetParameters(Model):
             instance.claim_keys = claim_keys
         if fallback_fleet is not None:
             instance.fallback_fleet = fallback_fleet
+        if hibernate_after_period is not None:
+            instance.hibernate_after_period = hibernate_after_period
         if sampling_rules is not None:
             instance.sampling_rules = sampling_rules
         return instance
@@ -254,6 +268,13 @@ class ApiFleetParameters(Model):
             instance.fallback_fleet = str(dict_["fallbackFleet"])
         elif include_empty:
             instance.fallback_fleet = ""
+        if (
+            "hibernateAfterPeriod" in dict_
+            and dict_["hibernateAfterPeriod"] is not None
+        ):
+            instance.hibernate_after_period = str(dict_["hibernateAfterPeriod"])
+        elif include_empty:
+            instance.hibernate_after_period = ""
         if "samplingRules" in dict_ and dict_["samplingRules"] is not None:
             instance.sampling_rules = ApiFleetArtifactsSampleRules.create_from_dict(
                 dict_["samplingRules"], include_empty=include_empty
@@ -309,6 +330,7 @@ class ApiFleetParameters(Model):
             "regions": "regions",
             "claimKeys": "claim_keys",
             "fallbackFleet": "fallback_fleet",
+            "hibernateAfterPeriod": "hibernate_after_period",
             "samplingRules": "sampling_rules",
         }
 
@@ -323,6 +345,7 @@ class ApiFleetParameters(Model):
             "regions": True,
             "claimKeys": False,
             "fallbackFleet": False,
+            "hibernateAfterPeriod": False,
             "samplingRules": False,
         }
 

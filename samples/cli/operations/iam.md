@@ -302,7 +302,7 @@ $ python -m accelbyte_py_sdk_cli 'iam-retrieve-third-party-login-platform-creden
 ### Operation `add_third_party_login_platform_credential_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-add-third-party-login-platform-credential-v3' \
-    '{"ACSURL": "string", "AWSCognitoRegion": "string", "AWSCognitoUserPool": "string", "AllowedClients": ["string"], "AppId": "string", "AuthorizationEndpoint": "string", "ClientId": "string", "EmptyStrFieldList": ["string"], "EnableServerLicenseValidation": false, "Environment": "string", "FederationMetadataURL": "string", "GenericOauthFlow": false, "IncludePUID": false, "IsActive": false, "Issuer": "string", "JWKSEndpoint": "string", "KeyID": "string", "LogoURL": "string", "NetflixCertificates": {}, "OrganizationId": "string", "PlatformName": "string", "RedirectUri": "string", "RegisteredDomains": [{}], "Secret": "string", "TeamID": "string", "TokenAuthenticationType": "string", "TokenClaimsMapping": {"string": "string"}, "TokenEndpoint": "string", "UserInfoEndpoint": "string", "UserInfoHTTPMethod": "string", "googleAdminConsoleKey": "string", "scopes": ["string"]}' \
+    '{"ACSURL": "string", "AWSCognitoRegion": "string", "AWSCognitoUserPool": "string", "AllowedClients": ["string"], "AppId": "string", "AuthorizationEndpoint": "string", "ClientId": "string", "EmptyStrFieldList": ["string"], "EnableServerLicenseValidation": false, "Environment": "string", "FederationMetadataURL": "string", "GenericOauthFlow": false, "IncludePUID": false, "IsActive": false, "Issuer": "string", "JWKSEndpoint": "string", "KeyID": "string", "LogoURL": "string", "NetflixCertificates": {}, "OrganizationId": "string", "PlatformName": "string", "PrivateKey": "string", "RedirectUri": "string", "RegisteredDomains": [{}], "RelyingParty": "string", "SandboxId": "string", "Secret": "string", "TeamID": "string", "TokenAuthenticationType": "string", "TokenClaimsMapping": {"string": "string"}, "TokenEndpoint": "string", "UserInfoEndpoint": "string", "UserInfoHTTPMethod": "string", "googleAdminConsoleKey": "string", "scopes": ["string"]}' \
     'string' \
     'string' \
     > result.txt
@@ -319,7 +319,7 @@ $ python -m accelbyte_py_sdk_cli 'iam-delete-third-party-login-platform-credenti
 ### Operation `update_third_party_login_platform_credential_v3`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-update-third-party-login-platform-credential-v3' \
-    '{"ACSURL": "string", "AWSCognitoRegion": "string", "AWSCognitoUserPool": "string", "AllowedClients": ["string"], "AppId": "string", "AuthorizationEndpoint": "string", "ClientId": "string", "EmptyStrFieldList": ["string"], "EnableServerLicenseValidation": false, "Environment": "string", "FederationMetadataURL": "string", "GenericOauthFlow": false, "IncludePUID": false, "IsActive": false, "Issuer": "string", "JWKSEndpoint": "string", "KeyID": "string", "LogoURL": "string", "NetflixCertificates": {}, "OrganizationId": "string", "PlatformName": "string", "RedirectUri": "string", "RegisteredDomains": [{}], "Secret": "string", "TeamID": "string", "TokenAuthenticationType": "string", "TokenClaimsMapping": {"string": "string"}, "TokenEndpoint": "string", "UserInfoEndpoint": "string", "UserInfoHTTPMethod": "string", "googleAdminConsoleKey": "string", "scopes": ["string"]}' \
+    '{"ACSURL": "string", "AWSCognitoRegion": "string", "AWSCognitoUserPool": "string", "AllowedClients": ["string"], "AppId": "string", "AuthorizationEndpoint": "string", "ClientId": "string", "EmptyStrFieldList": ["string"], "EnableServerLicenseValidation": false, "Environment": "string", "FederationMetadataURL": "string", "GenericOauthFlow": false, "IncludePUID": false, "IsActive": false, "Issuer": "string", "JWKSEndpoint": "string", "KeyID": "string", "LogoURL": "string", "NetflixCertificates": {}, "OrganizationId": "string", "PlatformName": "string", "PrivateKey": "string", "RedirectUri": "string", "RegisteredDomains": [{}], "RelyingParty": "string", "SandboxId": "string", "Secret": "string", "TeamID": "string", "TokenAuthenticationType": "string", "TokenClaimsMapping": {"string": "string"}, "TokenEndpoint": "string", "UserInfoEndpoint": "string", "UserInfoHTTPMethod": "string", "googleAdminConsoleKey": "string", "scopes": ["string"]}' \
     'string' \
     'string' \
     > result.txt
@@ -836,6 +836,7 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-get-user-mapping' \
     'string' \
     'string' \
     'string' \
+    --create_if_not_found false \
     > result.txt
 ```
 

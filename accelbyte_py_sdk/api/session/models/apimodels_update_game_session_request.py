@@ -26,8 +26,24 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_team import ModelsTeam
+
+
+class JoinabilityEnum(StrEnum):
+    CLOSED = "CLOSED"
+    FRIENDS_OF_FRIENDS = "FRIENDS_OF_FRIENDS"
+    FRIENDS_OF_LEADER = "FRIENDS_OF_LEADER"
+    FRIENDS_OF_MEMBERS = "FRIENDS_OF_MEMBERS"
+    INVITE_ONLY = "INVITE_ONLY"
+    OPEN = "OPEN"
+
+
+class TypeEnum(StrEnum):
+    DS = "DS"
+    NONE = "NONE"
+    P2P = "P2P"
 
 
 class ApimodelsUpdateGameSessionRequest(Model):
@@ -46,7 +62,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
 
         invite_timeout: (inviteTimeout) REQUIRED int
 
-        joinability: (joinability) REQUIRED str
+        joinability: (joinability) REQUIRED Union[str, JoinabilityEnum]
 
         match_pool: (matchPool) REQUIRED str
 
@@ -60,7 +76,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
 
         ticket_i_ds: (ticketIDs) REQUIRED List[str]
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         version: (version) REQUIRED int
 
@@ -79,14 +95,14 @@ class ApimodelsUpdateGameSessionRequest(Model):
     deployment: str  # REQUIRED
     inactive_timeout: int  # REQUIRED
     invite_timeout: int  # REQUIRED
-    joinability: str  # REQUIRED
+    joinability: Union[str, JoinabilityEnum]  # REQUIRED
     match_pool: str  # REQUIRED
     max_players: int  # REQUIRED
     min_players: int  # REQUIRED
     requested_regions: List[str]  # REQUIRED
     teams: List[ModelsTeam]  # REQUIRED
     ticket_i_ds: List[str]  # REQUIRED
-    type_: str  # REQUIRED
+    type_: Union[str, TypeEnum]  # REQUIRED
     version: int  # REQUIRED
     fallback_claim_keys: List[str]  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
@@ -122,7 +138,9 @@ class ApimodelsUpdateGameSessionRequest(Model):
         self.invite_timeout = value
         return self
 
-    def with_joinability(self, value: str) -> ApimodelsUpdateGameSessionRequest:
+    def with_joinability(
+        self, value: Union[str, JoinabilityEnum]
+    ) -> ApimodelsUpdateGameSessionRequest:
         self.joinability = value
         return self
 
@@ -152,7 +170,9 @@ class ApimodelsUpdateGameSessionRequest(Model):
         self.ticket_i_ds = value
         return self
 
-    def with_type(self, value: str) -> ApimodelsUpdateGameSessionRequest:
+    def with_type(
+        self, value: Union[str, TypeEnum]
+    ) -> ApimodelsUpdateGameSessionRequest:
         self.type_ = value
         return self
 
@@ -211,7 +231,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
         if hasattr(self, "joinability"):
             result["joinability"] = str(self.joinability)
         elif include_empty:
-            result["joinability"] = ""
+            result["joinability"] = Union[str, JoinabilityEnum]()
         if hasattr(self, "match_pool"):
             result["matchPool"] = str(self.match_pool)
         elif include_empty:
@@ -241,7 +261,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = ""
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "version"):
             result["version"] = int(self.version)
         elif include_empty:
@@ -273,14 +293,14 @@ class ApimodelsUpdateGameSessionRequest(Model):
         deployment: str,
         inactive_timeout: int,
         invite_timeout: int,
-        joinability: str,
+        joinability: Union[str, JoinabilityEnum],
         match_pool: str,
         max_players: int,
         min_players: int,
         requested_regions: List[str],
         teams: List[ModelsTeam],
         ticket_i_ds: List[str],
-        type_: str,
+        type_: Union[str, TypeEnum],
         version: int,
         fallback_claim_keys: Optional[List[str]] = None,
         preferred_claim_keys: Optional[List[str]] = None,
@@ -347,7 +367,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
         if "joinability" in dict_ and dict_["joinability"] is not None:
             instance.joinability = str(dict_["joinability"])
         elif include_empty:
-            instance.joinability = ""
+            instance.joinability = Union[str, JoinabilityEnum]()
         if "matchPool" in dict_ and dict_["matchPool"] is not None:
             instance.match_pool = str(dict_["matchPool"])
         elif include_empty:
@@ -378,7 +398,7 @@ class ApimodelsUpdateGameSessionRequest(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = ""
+            instance.type_ = Union[str, TypeEnum]()
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = int(dict_["version"])
         elif include_empty:
@@ -486,6 +506,20 @@ class ApimodelsUpdateGameSessionRequest(Model):
             "fallbackClaimKeys": False,
             "preferredClaimKeys": False,
             "tieTeamsSessionLifetime": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "joinability": [
+                "CLOSED",
+                "FRIENDS_OF_FRIENDS",
+                "FRIENDS_OF_LEADER",
+                "FRIENDS_OF_MEMBERS",
+                "INVITE_ONLY",
+                "OPEN",
+            ],
+            "type": ["DS", "NONE", "P2P"],
         }
 
     # endregion static methods

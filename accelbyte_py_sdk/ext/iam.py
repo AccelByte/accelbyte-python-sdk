@@ -2898,6 +2898,9 @@ def create_model_third_party_login_platform_credential_request_example() -> (
     instance.google_admin_console_key = randomize()
     instance.include_puid = randomize("bool")
     instance.logo_url = randomize("url")
+    instance.private_key = randomize()
+    instance.relying_party = randomize()
+    instance.sandbox_id = randomize()
     instance.token_claims_mapping = {randomize(): randomize()}
     return instance
 
@@ -2932,7 +2935,10 @@ def create_model_third_party_login_platform_credential_response_example() -> (
     instance.include_puid = randomize("bool")
     instance.logo_url = randomize("url")
     instance.netflix_certificates = create_accountcommon_netflix_certificates_example()
+    instance.private_key = randomize()
     instance.registered_domains = [create_accountcommon_registered_domain_example()]
+    instance.relying_party = randomize()
+    instance.sandbox_id = randomize()
     instance.scopes = [randomize()]
     instance.token_claims_mapping = {randomize(): randomize()}
     instance.token_endpoint = randomize()

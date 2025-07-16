@@ -26,6 +26,22 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
+
+
+class JoinabilityEnum(StrEnum):
+    CLOSED = "CLOSED"
+    FRIENDS_OF_FRIENDS = "FRIENDS_OF_FRIENDS"
+    FRIENDS_OF_LEADER = "FRIENDS_OF_LEADER"
+    FRIENDS_OF_MEMBERS = "FRIENDS_OF_MEMBERS"
+    INVITE_ONLY = "INVITE_ONLY"
+    OPEN = "OPEN"
+
+
+class TypeEnum(StrEnum):
+    DS = "DS"
+    NONE = "NONE"
+    P2P = "P2P"
 
 
 class ApimodelsUpdatePartyRequest(Model):
@@ -38,13 +54,13 @@ class ApimodelsUpdatePartyRequest(Model):
 
         invite_timeout: (inviteTimeout) REQUIRED int
 
-        joinability: (joinability) REQUIRED str
+        joinability: (joinability) REQUIRED Union[str, JoinabilityEnum]
 
         max_players: (maxPlayers) REQUIRED int
 
         min_players: (minPlayers) REQUIRED int
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         version: (version) REQUIRED int
     """
@@ -54,10 +70,10 @@ class ApimodelsUpdatePartyRequest(Model):
     attributes: Dict[str, Any]  # REQUIRED
     inactive_timeout: int  # REQUIRED
     invite_timeout: int  # REQUIRED
-    joinability: str  # REQUIRED
+    joinability: Union[str, JoinabilityEnum]  # REQUIRED
     max_players: int  # REQUIRED
     min_players: int  # REQUIRED
-    type_: str  # REQUIRED
+    type_: Union[str, TypeEnum]  # REQUIRED
     version: int  # REQUIRED
 
     # endregion fields
@@ -76,7 +92,9 @@ class ApimodelsUpdatePartyRequest(Model):
         self.invite_timeout = value
         return self
 
-    def with_joinability(self, value: str) -> ApimodelsUpdatePartyRequest:
+    def with_joinability(
+        self, value: Union[str, JoinabilityEnum]
+    ) -> ApimodelsUpdatePartyRequest:
         self.joinability = value
         return self
 
@@ -88,7 +106,7 @@ class ApimodelsUpdatePartyRequest(Model):
         self.min_players = value
         return self
 
-    def with_type(self, value: str) -> ApimodelsUpdatePartyRequest:
+    def with_type(self, value: Union[str, TypeEnum]) -> ApimodelsUpdatePartyRequest:
         self.type_ = value
         return self
 
@@ -117,7 +135,7 @@ class ApimodelsUpdatePartyRequest(Model):
         if hasattr(self, "joinability"):
             result["joinability"] = str(self.joinability)
         elif include_empty:
-            result["joinability"] = ""
+            result["joinability"] = Union[str, JoinabilityEnum]()
         if hasattr(self, "max_players"):
             result["maxPlayers"] = int(self.max_players)
         elif include_empty:
@@ -129,7 +147,7 @@ class ApimodelsUpdatePartyRequest(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = ""
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "version"):
             result["version"] = int(self.version)
         elif include_empty:
@@ -146,10 +164,10 @@ class ApimodelsUpdatePartyRequest(Model):
         attributes: Dict[str, Any],
         inactive_timeout: int,
         invite_timeout: int,
-        joinability: str,
+        joinability: Union[str, JoinabilityEnum],
         max_players: int,
         min_players: int,
-        type_: str,
+        type_: Union[str, TypeEnum],
         version: int,
         **kwargs,
     ) -> ApimodelsUpdatePartyRequest:
@@ -188,7 +206,7 @@ class ApimodelsUpdatePartyRequest(Model):
         if "joinability" in dict_ and dict_["joinability"] is not None:
             instance.joinability = str(dict_["joinability"])
         elif include_empty:
-            instance.joinability = ""
+            instance.joinability = Union[str, JoinabilityEnum]()
         if "maxPlayers" in dict_ and dict_["maxPlayers"] is not None:
             instance.max_players = int(dict_["maxPlayers"])
         elif include_empty:
@@ -200,7 +218,7 @@ class ApimodelsUpdatePartyRequest(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = ""
+            instance.type_ = Union[str, TypeEnum]()
         if "version" in dict_ and dict_["version"] is not None:
             instance.version = int(dict_["version"])
         elif include_empty:
@@ -269,6 +287,20 @@ class ApimodelsUpdatePartyRequest(Model):
             "minPlayers": True,
             "type": True,
             "version": True,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "joinability": [
+                "CLOSED",
+                "FRIENDS_OF_FRIENDS",
+                "FRIENDS_OF_LEADER",
+                "FRIENDS_OF_MEMBERS",
+                "INVITE_ONLY",
+                "OPEN",
+            ],
+            "type": ["DS", "NONE", "P2P"],
         }
 
     # endregion static methods

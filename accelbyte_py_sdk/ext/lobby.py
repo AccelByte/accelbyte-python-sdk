@@ -55,12 +55,14 @@ from ..api.lobby.models import ModelNativeFriendRequest
 from ..api.lobby.models import ModelNativeFriendSyncResponse
 from ..api.lobby.models import ModelNativeUserBlockRequest
 from ..api.lobby.models import ModelNativeUserBlockResponse
+from ..api.lobby.models import ModelNotification
 from ..api.lobby.models import ModelNotificationResponse
 from ..api.lobby.models import ModelNotificationTemplateResponse
 from ..api.lobby.models import ModelNotificationTopicResponse
 from ..api.lobby.models import ModelNotificationTopicResponseV1
 from ..api.lobby.models import ModelNotificationWithTemplateRequest
 from ..api.lobby.models import ModelNotificationWithTemplateRequestV1
+from ..api.lobby.models import ModelNotificationsResponse
 from ..api.lobby.models import ModelOutgoingFriendsWithTimeData
 from ..api.lobby.models import ModelPagination
 from ..api.lobby.models import ModelPutGlobalConfigurationRequest
@@ -394,6 +396,17 @@ def create_model_native_user_block_response_example() -> ModelNativeUserBlockRes
     return instance
 
 
+def create_model_notification_example() -> ModelNotification:
+    instance = ModelNotification()
+    instance.type_ = randomize()
+    instance.from_ = randomize()
+    instance.payload = randomize()
+    instance.sent_at_ms = randomize("int", min_val=1, max_val=1000)
+    instance.to = randomize()
+    instance.topic = randomize()
+    return instance
+
+
 def create_model_notification_response_example() -> ModelNotificationResponse:
     instance = ModelNotificationResponse()
     instance.sequence_id = randomize("int", min_val=1, max_val=1000)
@@ -461,6 +474,12 @@ def create_model_notification_with_template_request_v1_example() -> (
     instance.template_language = randomize()
     instance.template_slug = randomize()
     instance.topic_name = randomize()
+    return instance
+
+
+def create_model_notifications_response_example() -> ModelNotificationsResponse:
+    instance = ModelNotificationsResponse()
+    instance.data = [create_model_notification_example()]
     return instance
 
 

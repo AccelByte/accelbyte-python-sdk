@@ -89,6 +89,7 @@ lobby-users-presence-handler-v1 'ZtfNWql4nmwAft4g' --login_with_auth "Bearer foo
 lobby-users-presence-handler-v2 '{"userIDs": ["qkNNlWkD9eOziYRF", "On0jJLHC9LxhvNXT", "wGBCtohLtl9Zuhyt"]}' --login_with_auth "Bearer foo"
 lobby-free-form-notification '{"message": "m5UDrT6QXCs5SPBb", "topic": "RPZTF6oQAXVG7tns"}' --login_with_auth "Bearer foo"
 lobby-get-my-notifications --login_with_auth "Bearer foo"
+lobby-get-my-offline-notifications --login_with_auth "Bearer foo"
 lobby-notification-with-template '{"templateContext": {"Zg5QgXjvyGJPN4eX": "bJE5Vs2GcyomQoIX", "imBJehyxlNsjUgxB": "kF6wFPoJeQediogE", "hhM2rIizGdKvOPdq": "5xrgxSmy1DN9LFkY"}, "templateLanguage": "W5DQyj4bj5Ro2oga", "templateSlug": "Kt2ujQSa3Zdb65UX", "topic": "my0Zp6iIaTIKUkmk"}' --login_with_auth "Bearer foo"
 lobby-get-game-template --login_with_auth "Bearer foo"
 lobby-create-template '{"templateContent": "k9QM0NBMA9ORxpzw", "templateLanguage": "LR2AK6eXUGPJsw1f", "templateSlug": "iP80G9Pclxcft2ul"}' --login_with_auth "Bearer foo"
@@ -124,7 +125,7 @@ eval_tap() {
 }
 
 echo "TAP version 13"
-echo "1..109"
+echo "1..110"
 
 #- 1 Login
 eval_tap 0 1 'Login # SKIP not tested' test.out
@@ -643,123 +644,129 @@ $PYTHON -m $MODULE 'lobby-get-my-notifications' \
     > test.out 2>&1
 eval_tap $? 93 'GetMyNotifications' test.out
 
-#- 94 NotificationWithTemplate
+#- 94 GetMyOfflineNotifications
+$PYTHON -m $MODULE 'lobby-get-my-offline-notifications' \
+    --login_with_auth "Bearer foo" \
+    > test.out 2>&1
+eval_tap $? 94 'GetMyOfflineNotifications' test.out
+
+#- 95 NotificationWithTemplate
 $PYTHON -m $MODULE 'lobby-notification-with-template' \
     '{"templateContext": {"oFS6xCOWMpyh9pMs": "Qgb64ELbzDMwyo4n", "IRysQdbufXjYnSoI": "FeouC2m38kXrDZWl", "GVE9sJ4NpUtKp6M9": "I6nEwnZhsjwJeGwa"}, "templateLanguage": "PSDMZz95OYKiqaZD", "templateSlug": "63xe5rruJVfLGea0", "topic": "ZtlzUcuHAXz0UV31"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 94 'NotificationWithTemplate' test.out
+eval_tap $? 95 'NotificationWithTemplate' test.out
 
-#- 95 GetGameTemplate
+#- 96 GetGameTemplate
 $PYTHON -m $MODULE 'lobby-get-game-template' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 95 'GetGameTemplate' test.out
+eval_tap $? 96 'GetGameTemplate' test.out
 
-#- 96 CreateTemplate
+#- 97 CreateTemplate
 $PYTHON -m $MODULE 'lobby-create-template' \
     '{"templateContent": "MfuGaXsAuGsZaSHe", "templateLanguage": "vO0TQNEI3kfabxJW", "templateSlug": "WSI1ECUo1NPpeFhU"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 96 'CreateTemplate' test.out
+eval_tap $? 97 'CreateTemplate' test.out
 
-#- 97 GetSlugTemplate
+#- 98 GetSlugTemplate
 $PYTHON -m $MODULE 'lobby-get-slug-template' \
     'ztXDgB7n4C97uAPP' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 97 'GetSlugTemplate' test.out
+eval_tap $? 98 'GetSlugTemplate' test.out
 
-#- 98 DeleteTemplateSlug
+#- 99 DeleteTemplateSlug
 $PYTHON -m $MODULE 'lobby-delete-template-slug' \
     '8PATLpUpxeJlsBJT' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 98 'DeleteTemplateSlug' test.out
+eval_tap $? 99 'DeleteTemplateSlug' test.out
 
-#- 99 GetLocalizationTemplate
+#- 100 GetLocalizationTemplate
 $PYTHON -m $MODULE 'lobby-get-localization-template' \
     '6Hh3OMjAjq2mK8lb' \
     'SEEelxnb5QxWG2HF' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 99 'GetLocalizationTemplate' test.out
+eval_tap $? 100 'GetLocalizationTemplate' test.out
 
-#- 100 UpdateLocalizationTemplate
+#- 101 UpdateLocalizationTemplate
 $PYTHON -m $MODULE 'lobby-update-localization-template' \
     '{"templateContent": "nZlA6HKWW4fI1IQc"}' \
     'oBQELcNlZkqTZrKg' \
     'XNwvm4e5GX6H742O' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 100 'UpdateLocalizationTemplate' test.out
+eval_tap $? 101 'UpdateLocalizationTemplate' test.out
 
-#- 101 DeleteTemplateLocalization
+#- 102 DeleteTemplateLocalization
 $PYTHON -m $MODULE 'lobby-delete-template-localization' \
     'ixhtAoKiVm6URT95' \
     'XhnUcvWB28Mpusuh' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 101 'DeleteTemplateLocalization' test.out
+eval_tap $? 102 'DeleteTemplateLocalization' test.out
 
-#- 102 PublishTemplate
+#- 103 PublishTemplate
 $PYTHON -m $MODULE 'lobby-publish-template' \
     'hDJ5slzgiWZEtyd5' \
     '6LfxnbY97jjYgXch' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 102 'PublishTemplate' test.out
+eval_tap $? 103 'PublishTemplate' test.out
 
-#- 103 GetTopicByNamespace
+#- 104 GetTopicByNamespace
 $PYTHON -m $MODULE 'lobby-get-topic-by-namespace' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 103 'GetTopicByNamespace' test.out
+eval_tap $? 104 'GetTopicByNamespace' test.out
 
-#- 104 CreateTopic
+#- 105 CreateTopic
 $PYTHON -m $MODULE 'lobby-create-topic' \
     '{"description": "CbkXX26uEdCfQaMA", "topic": "QuTKfC0I2kNjCMDt"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 104 'CreateTopic' test.out
+eval_tap $? 105 'CreateTopic' test.out
 
-#- 105 GetTopicByTopicName
+#- 106 GetTopicByTopicName
 $PYTHON -m $MODULE 'lobby-get-topic-by-topic-name' \
     'DMrentgn3DhqciwI' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 105 'GetTopicByTopicName' test.out
+eval_tap $? 106 'GetTopicByTopicName' test.out
 
-#- 106 UpdateTopicByTopicName
+#- 107 UpdateTopicByTopicName
 $PYTHON -m $MODULE 'lobby-update-topic-by-topic-name' \
     '{"description": "eShF9RKb9vvxuJlh"}' \
     'XbWhbwPwToC6knjV' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 106 'UpdateTopicByTopicName' test.out
+eval_tap $? 107 'UpdateTopicByTopicName' test.out
 
-#- 107 DeleteTopicByTopicName
+#- 108 DeleteTopicByTopicName
 $PYTHON -m $MODULE 'lobby-delete-topic-by-topic-name' \
     'wVnzaqSfJiQFC2gX' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 107 'DeleteTopicByTopicName' test.out
+eval_tap $? 108 'DeleteTopicByTopicName' test.out
 
-#- 108 FreeFormNotificationByUserID
+#- 109 FreeFormNotificationByUserID
 $PYTHON -m $MODULE 'lobby-free-form-notification-by-user-id' \
     '{"message": "oda0kg16yUSpSOAj", "topic": "HJWwfCjYwWkLob9g"}' \
     'KLqs2nEZhpByfHZi' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 108 'FreeFormNotificationByUserID' test.out
+eval_tap $? 109 'FreeFormNotificationByUserID' test.out
 
-#- 109 NotificationWithTemplateByUserID
+#- 110 NotificationWithTemplateByUserID
 $PYTHON -m $MODULE 'lobby-notification-with-template-by-user-id' \
     '{"templateContext": {"nxNfgPAwkMBsznlB": "UqnLT4AbGptKaWNv", "Pbpg7yrRvXfZ6rvg": "vEY3Hht1SwqTsKKK", "o37NHDOQe91Ps3zt": "UIV0dS6hIH9c4Vfk"}, "templateLanguage": "yrwpuXxbaERbfgPm", "templateSlug": "i0eHkt1mr9EOIFg0", "topic": "dnWIYN2NVL70Iw15"}' \
     '7g00jr9b8MuYmmeK' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
-eval_tap $? 109 'NotificationWithTemplateByUserID' test.out
+eval_tap $? 110 'NotificationWithTemplateByUserID' test.out
 
 
 fi

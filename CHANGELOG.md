@@ -1,3 +1,22 @@
+<a name="v0.77.0"></a>
+## [v0.77.0]
+### ci
+- **:** consolidate builder label lima
+- **:** consolidate extend-builder-batch linux-amd64
+- **github:** change label to extend-builder-ci
+- **generate:** remove cli and integration test stage
+- **nightly:** add params for cli and integration test
+- **nightly-starter:** remove redundant Jenkinsfile.nightly-starter
+### feat
+- **core:** add get_version
+- **:** add delete iam client after finish integration
+- **:** assert value not none
+### docs
+- **:** fix url
+### chore
+- **core:** add upload binary data method
+
+
 <a name="v0.76.0"></a>
 ## [v0.76.0]
 ### fix

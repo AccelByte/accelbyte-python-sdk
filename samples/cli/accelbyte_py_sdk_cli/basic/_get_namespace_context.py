@@ -38,11 +38,13 @@ from accelbyte_py_sdk.api.basic.models import NamespaceContext
 
 
 @click.command()
+@click.option("--refresh_on_cache_miss", "refresh_on_cache_miss", type=bool)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def get_namespace_context(
+    refresh_on_cache_miss: Optional[bool] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -57,6 +59,7 @@ def get_namespace_context(
     else:
         login_as_internal(login_as)
     result, error = get_namespace_context_internal(
+        refresh_on_cache_miss=refresh_on_cache_miss,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

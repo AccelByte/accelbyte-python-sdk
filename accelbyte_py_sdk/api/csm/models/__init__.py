@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.24.0"
+__version__ = "1.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -51,8 +51,14 @@ from .apimodel_get_list_of_configurations_v2_response import (
 from .apimodel_get_notification_subscriber_item import (
     ApimodelGetNotificationSubscriberItem,
 )
+from .apimodel_get_notification_subscriber_item_v2 import (
+    ApimodelGetNotificationSubscriberItemV2,
+)
 from .apimodel_get_notification_subscriber_list_response import (
     ApimodelGetNotificationSubscriberListResponse,
+)
+from .apimodel_get_notification_subscriber_list_response_v2 import (
+    ApimodelGetNotificationSubscriberListResponseV2,
 )
 from .apimodel_get_notification_subscriber_status_response import (
     ApimodelGetNotificationSubscriberStatusResponse,
@@ -60,6 +66,7 @@ from .apimodel_get_notification_subscriber_status_response import (
 from .apimodel_increase_limit_form_request import ApimodelIncreaseLimitFormRequest
 from .apimodel_memory_request import ApimodelMemoryRequest
 from .apimodel_memory_response import ApimodelMemoryResponse
+from .apimodel_notification_type import ApimodelNotificationType
 from .apimodel_replica_request import ApimodelReplicaRequest
 from .apimodel_replica_response import ApimodelReplicaResponse
 from .apimodel_save_configuration_v2_request import ApimodelSaveConfigurationV2Request

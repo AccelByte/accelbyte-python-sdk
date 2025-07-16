@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# AccelByte Gaming Services Lobby Server Index (3.38.3)
+# AccelByte Gaming Services Lobby Server Index (3.39.0)
 
 
 ## Operations
@@ -84,6 +84,7 @@
 | /lobby/v1/admin/notification/namespaces/{namespace}/templates | GET | getAllNotificationTemplatesV1Admin | `false` | [GetAllNotificationTemplatesV1Admin](../../accelbyte_py_sdk/api/lobby/operations/notification/get_all_notification_te_0053f8.py) | [get_all_notification_templates_v1_admin](../../accelbyte_py_sdk/api/lobby/wrappers/_notification.py) | [accelbyte_py_sdk_cli lobby-get-all-notification-templates-v1-admin](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_all_notification_templates_v1_admin.py) |
 | /lobby/v1/admin/notification/namespaces/{namespace}/topics | GET | getAllNotificationTopicsV1Admin | `false` | [GetAllNotificationTopicsV1Admin](../../accelbyte_py_sdk/api/lobby/operations/notification/get_all_notification_to_761be1.py) | [get_all_notification_topics_v1_admin](../../accelbyte_py_sdk/api/lobby/wrappers/_notification.py) | [accelbyte_py_sdk_cli lobby-get-all-notification-topics-v1-admin](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_all_notification_topics_v1_admin.py) |
 | /notification/namespaces/{namespace}/me | GET | getMyNotifications | `false` | [GetMyNotifications](../../accelbyte_py_sdk/api/lobby/operations/notification/get_my_notifications.py) | [get_my_notifications](../../accelbyte_py_sdk/api/lobby/wrappers/_notification.py) | [accelbyte_py_sdk_cli lobby-get-my-notifications](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_my_notifications.py) |
+| /notification/namespaces/{namespace}/notification/offline/me | GET | getMyOfflineNotifications | `false` | [GetMyOfflineNotifications](../../accelbyte_py_sdk/api/lobby/operations/notification/get_my_offline_notifications.py) | [get_my_offline_notifications](../../accelbyte_py_sdk/api/lobby/wrappers/_notification.py) | [accelbyte_py_sdk_cli lobby-get-my-offline-notifications](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_my_offline_notifications.py) |
 | /lobby/v1/admin/notification/namespaces/{namespace}/topics/{topicName} | GET | getNotificationTopicV1Admin | `false` | [GetNotificationTopicV1Admin](../../accelbyte_py_sdk/api/lobby/operations/notification/get_notification_topic__b8a441.py) | [get_notification_topic_v1_admin](../../accelbyte_py_sdk/api/lobby/wrappers/_notification.py) | [accelbyte_py_sdk_cli lobby-get-notification-topic-v1-admin](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_notification_topic_v1_admin.py) |
 | /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug}/languages/{templateLanguage} | GET | getSingleTemplateLocalizationV1Admin | `false` | [GetSingleTemplateLocalizationV1Admin](../../accelbyte_py_sdk/api/lobby/operations/notification/get_single_template_loc_d01d4b.py) | [get_single_template_localization_v1_admin](../../accelbyte_py_sdk/api/lobby/wrappers/_notification.py) | [accelbyte_py_sdk_cli lobby-get-single-template-localization-v1-admin](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_single_template_localization_v1_admin.py) |
 | /lobby/v1/admin/notification/namespaces/{namespace}/templates/{templateSlug} | GET | getTemplateSlugLocalizationsTemplateV1Admin | `false` | [GetTemplateSlugLocalizationsTemplateV1Admin](../../accelbyte_py_sdk/api/lobby/operations/notification/get_template_slug_local_385ba4.py) | [get_template_slug_localizations_template_v1_admin](../../accelbyte_py_sdk/api/lobby/wrappers/_notification.py) | [accelbyte_py_sdk_cli lobby-get-template-slug-localizations-template-v1-admin](../../samples/cli/accelbyte_py_sdk_cli/lobby/_get_template_slug_localizations_template_v1_admin.py) |
@@ -194,12 +195,14 @@
 | model.NativeFriendSyncResponse | [ModelNativeFriendSyncResponse](../../accelbyte_py_sdk/api/lobby/models/model_native_friend_sync_response.py) |
 | model.NativeUserBlockRequest | [ModelNativeUserBlockRequest](../../accelbyte_py_sdk/api/lobby/models/model_native_user_block_request.py) |
 | model.NativeUserBlockResponse | [ModelNativeUserBlockResponse](../../accelbyte_py_sdk/api/lobby/models/model_native_user_block_response.py) |
+| model.Notification | [ModelNotification](../../accelbyte_py_sdk/api/lobby/models/model_notification.py) |
 | model.NotificationResponse | [ModelNotificationResponse](../../accelbyte_py_sdk/api/lobby/models/model_notification_response.py) |
 | model.NotificationTemplateResponse | [ModelNotificationTemplateResponse](../../accelbyte_py_sdk/api/lobby/models/model_notification_template_response.py) |
 | model.NotificationTopicResponse | [ModelNotificationTopicResponse](../../accelbyte_py_sdk/api/lobby/models/model_notification_topic_response.py) |
 | model.NotificationTopicResponseV1 | [ModelNotificationTopicResponseV1](../../accelbyte_py_sdk/api/lobby/models/model_notification_topic_response_v1.py) |
 | model.NotificationWithTemplateRequest | [ModelNotificationWithTemplateRequest](../../accelbyte_py_sdk/api/lobby/models/model_notification_with_template_request.py) |
 | model.NotificationWithTemplateRequestV1 | [ModelNotificationWithTemplateRequestV1](../../accelbyte_py_sdk/api/lobby/models/model_notification_with_template_request_v1.py) |
+| model.NotificationsResponse | [ModelNotificationsResponse](../../accelbyte_py_sdk/api/lobby/models/model_notifications_response.py) |
 | model.OutgoingFriendsWithTimeData | [ModelOutgoingFriendsWithTimeData](../../accelbyte_py_sdk/api/lobby/models/model_outgoing_friends_with_time_data.py) |
 | model.Pagination | [ModelPagination](../../accelbyte_py_sdk/api/lobby/models/model_pagination.py) |
 | model.PutGlobalConfigurationRequest | [ModelPutGlobalConfigurationRequest](../../accelbyte_py_sdk/api/lobby/models/model_put_global_configuration_request.py) |

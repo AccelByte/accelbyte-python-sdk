@@ -33,6 +33,21 @@ from ..models.models_extend_configuration import ModelsExtendConfiguration
 from ..models.models_native_session_setting import ModelsNativeSessionSetting
 
 
+class JoinabilityEnum(StrEnum):
+    CLOSED = "CLOSED"
+    FRIENDS_OF_FRIENDS = "FRIENDS_OF_FRIENDS"
+    FRIENDS_OF_LEADER = "FRIENDS_OF_LEADER"
+    FRIENDS_OF_MEMBERS = "FRIENDS_OF_MEMBERS"
+    INVITE_ONLY = "INVITE_ONLY"
+    OPEN = "OPEN"
+
+
+class TypeEnum(StrEnum):
+    DS = "DS"
+    NONE = "NONE"
+    P2P = "P2P"
+
+
 class TextChatModeEnum(StrEnum):
     GAME = "GAME"
     NONE = "NONE"
@@ -53,7 +68,7 @@ class ApimodelsPublicConfiguration(Model):
 
         invite_timeout: (inviteTimeout) REQUIRED int
 
-        joinability: (joinability) REQUIRED str
+        joinability: (joinability) REQUIRED Union[str, JoinabilityEnum]
 
         max_players: (maxPlayers) REQUIRED int
 
@@ -65,7 +80,7 @@ class ApimodelsPublicConfiguration(Model):
 
         text_chat: (textChat) REQUIRED bool
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         ams_claim_timeout_minutes: (amsClaimTimeoutMinutes) OPTIONAL int
 
@@ -121,13 +136,13 @@ class ApimodelsPublicConfiguration(Model):
     deployment: str  # REQUIRED
     inactive_timeout: int  # REQUIRED
     invite_timeout: int  # REQUIRED
-    joinability: str  # REQUIRED
+    joinability: Union[str, JoinabilityEnum]  # REQUIRED
     max_players: int  # REQUIRED
     min_players: int  # REQUIRED
     name: str  # REQUIRED
     persistent: bool  # REQUIRED
     text_chat: bool  # REQUIRED
-    type_: str  # REQUIRED
+    type_: Union[str, TypeEnum]  # REQUIRED
     ams_claim_timeout_minutes: int  # OPTIONAL
     app_name: str  # OPTIONAL
     async_process_ds_request: ModelsAsyncProcessDSRequest  # OPTIONAL
@@ -176,7 +191,9 @@ class ApimodelsPublicConfiguration(Model):
         self.invite_timeout = value
         return self
 
-    def with_joinability(self, value: str) -> ApimodelsPublicConfiguration:
+    def with_joinability(
+        self, value: Union[str, JoinabilityEnum]
+    ) -> ApimodelsPublicConfiguration:
         self.joinability = value
         return self
 
@@ -200,7 +217,7 @@ class ApimodelsPublicConfiguration(Model):
         self.text_chat = value
         return self
 
-    def with_type(self, value: str) -> ApimodelsPublicConfiguration:
+    def with_type(self, value: Union[str, TypeEnum]) -> ApimodelsPublicConfiguration:
         self.type_ = value
         return self
 
@@ -343,7 +360,7 @@ class ApimodelsPublicConfiguration(Model):
         if hasattr(self, "joinability"):
             result["joinability"] = str(self.joinability)
         elif include_empty:
-            result["joinability"] = ""
+            result["joinability"] = Union[str, JoinabilityEnum]()
         if hasattr(self, "max_players"):
             result["maxPlayers"] = int(self.max_players)
         elif include_empty:
@@ -367,7 +384,7 @@ class ApimodelsPublicConfiguration(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = ""
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "ams_claim_timeout_minutes"):
             result["amsClaimTimeoutMinutes"] = int(self.ams_claim_timeout_minutes)
         elif include_empty:
@@ -480,13 +497,13 @@ class ApimodelsPublicConfiguration(Model):
         deployment: str,
         inactive_timeout: int,
         invite_timeout: int,
-        joinability: str,
+        joinability: Union[str, JoinabilityEnum],
         max_players: int,
         min_players: int,
         name: str,
         persistent: bool,
         text_chat: bool,
-        type_: str,
+        type_: Union[str, TypeEnum],
         ams_claim_timeout_minutes: Optional[int] = None,
         app_name: Optional[str] = None,
         async_process_ds_request: Optional[ModelsAsyncProcessDSRequest] = None,
@@ -603,7 +620,7 @@ class ApimodelsPublicConfiguration(Model):
         if "joinability" in dict_ and dict_["joinability"] is not None:
             instance.joinability = str(dict_["joinability"])
         elif include_empty:
-            instance.joinability = ""
+            instance.joinability = Union[str, JoinabilityEnum]()
         if "maxPlayers" in dict_ and dict_["maxPlayers"] is not None:
             instance.max_players = int(dict_["maxPlayers"])
         elif include_empty:
@@ -627,7 +644,7 @@ class ApimodelsPublicConfiguration(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = ""
+            instance.type_ = Union[str, TypeEnum]()
         if (
             "amsClaimTimeoutMinutes" in dict_
             and dict_["amsClaimTimeoutMinutes"] is not None
@@ -879,6 +896,15 @@ class ApimodelsPublicConfiguration(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "joinability": [
+                "CLOSED",
+                "FRIENDS_OF_FRIENDS",
+                "FRIENDS_OF_LEADER",
+                "FRIENDS_OF_MEMBERS",
+                "INVITE_ONLY",
+                "OPEN",
+            ],
+            "type": ["DS", "NONE", "P2P"],
             "textChatMode": ["GAME", "NONE", "TEAM"],
         }
 

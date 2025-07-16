@@ -97,6 +97,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
 
         logo_url: (LogoURL) OPTIONAL str
 
+        private_key: (PrivateKey) OPTIONAL str
+
+        relying_party: (RelyingParty) OPTIONAL str
+
+        sandbox_id: (SandboxId) OPTIONAL str
+
         token_claims_mapping: (TokenClaimsMapping) OPTIONAL Dict[str, str]
     """
 
@@ -133,6 +139,9 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
     google_admin_console_key: str  # OPTIONAL
     include_puid: bool  # OPTIONAL
     logo_url: str  # OPTIONAL
+    private_key: str  # OPTIONAL
+    relying_party: str  # OPTIONAL
+    sandbox_id: str  # OPTIONAL
     token_claims_mapping: Dict[str, str]  # OPTIONAL
 
     # endregion fields
@@ -313,6 +322,24 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         self.logo_url = value
         return self
 
+    def with_private_key(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.private_key = value
+        return self
+
+    def with_relying_party(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.relying_party = value
+        return self
+
+    def with_sandbox_id(
+        self, value: str
+    ) -> ModelThirdPartyLoginPlatformCredentialRequest:
+        self.sandbox_id = value
+        return self
+
     def with_token_claims_mapping(
         self, value: Dict[str, str]
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -456,6 +483,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             result["LogoURL"] = str(self.logo_url)
         elif include_empty:
             result["LogoURL"] = ""
+        if hasattr(self, "private_key"):
+            result["PrivateKey"] = str(self.private_key)
+        elif include_empty:
+            result["PrivateKey"] = ""
+        if hasattr(self, "relying_party"):
+            result["RelyingParty"] = str(self.relying_party)
+        elif include_empty:
+            result["RelyingParty"] = ""
+        if hasattr(self, "sandbox_id"):
+            result["SandboxId"] = str(self.sandbox_id)
+        elif include_empty:
+            result["SandboxId"] = ""
         if hasattr(self, "token_claims_mapping"):
             result["TokenClaimsMapping"] = {
                 str(k0): str(v0) for k0, v0 in self.token_claims_mapping.items()
@@ -502,6 +541,9 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
         google_admin_console_key: Optional[str] = None,
         include_puid: Optional[bool] = None,
         logo_url: Optional[str] = None,
+        private_key: Optional[str] = None,
+        relying_party: Optional[str] = None,
+        sandbox_id: Optional[str] = None,
         token_claims_mapping: Optional[Dict[str, str]] = None,
         **kwargs,
     ) -> ModelThirdPartyLoginPlatformCredentialRequest:
@@ -543,6 +585,12 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.include_puid = include_puid
         if logo_url is not None:
             instance.logo_url = logo_url
+        if private_key is not None:
+            instance.private_key = private_key
+        if relying_party is not None:
+            instance.relying_party = relying_party
+        if sandbox_id is not None:
+            instance.sandbox_id = sandbox_id
         if token_claims_mapping is not None:
             instance.token_claims_mapping = token_claims_mapping
         return instance
@@ -706,6 +754,18 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             instance.logo_url = str(dict_["LogoURL"])
         elif include_empty:
             instance.logo_url = ""
+        if "PrivateKey" in dict_ and dict_["PrivateKey"] is not None:
+            instance.private_key = str(dict_["PrivateKey"])
+        elif include_empty:
+            instance.private_key = ""
+        if "RelyingParty" in dict_ and dict_["RelyingParty"] is not None:
+            instance.relying_party = str(dict_["RelyingParty"])
+        elif include_empty:
+            instance.relying_party = ""
+        if "SandboxId" in dict_ and dict_["SandboxId"] is not None:
+            instance.sandbox_id = str(dict_["SandboxId"])
+        elif include_empty:
+            instance.sandbox_id = ""
         if "TokenClaimsMapping" in dict_ and dict_["TokenClaimsMapping"] is not None:
             instance.token_claims_mapping = {
                 str(k0): str(v0) for k0, v0 in dict_["TokenClaimsMapping"].items()
@@ -786,6 +846,9 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "googleAdminConsoleKey": "google_admin_console_key",
             "IncludePUID": "include_puid",
             "LogoURL": "logo_url",
+            "PrivateKey": "private_key",
+            "RelyingParty": "relying_party",
+            "SandboxId": "sandbox_id",
             "TokenClaimsMapping": "token_claims_mapping",
         }
 
@@ -823,6 +886,9 @@ class ModelThirdPartyLoginPlatformCredentialRequest(Model):
             "googleAdminConsoleKey": False,
             "IncludePUID": False,
             "LogoURL": False,
+            "PrivateKey": False,
+            "RelyingParty": False,
+            "SandboxId": False,
             "TokenClaimsMapping": False,
         }
 

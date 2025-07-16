@@ -71,6 +71,10 @@ from ._get_list_of_deployment_v2 import get_list_of_deployment_v2
 from ._get_deployment_v2 import get_deployment_v2
 from ._delete_deployment_v2 import delete_deployment_v2
 from ._get_resources_limits import get_resources_limits
+from ._get_notification_subscriber_list_v3 import get_notification_subscriber_list_v3
+from ._delete_subscription_app_notification_v3 import (
+    delete_subscription_app_notification_v3,
+)
 
 
 commands = [
@@ -129,4 +133,6 @@ commands = [
     get_deployment_v2,
     delete_deployment_v2,
     get_resources_limits,
+    get_notification_subscriber_list_v3,
+    delete_subscription_app_notification_v3,
 ]

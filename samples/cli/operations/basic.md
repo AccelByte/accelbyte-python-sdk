@@ -82,6 +82,7 @@ $ python -m accelbyte_py_sdk_cli 'basic-update-config' \
 ```sh
 $ python -m accelbyte_py_sdk_cli 'basic-get-namespace-context' \
     'string' \
+    --refresh_on_cache_miss false \
     > result.txt
 ```
 

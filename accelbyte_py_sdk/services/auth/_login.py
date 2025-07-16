@@ -949,7 +949,9 @@ def unset_on_demand_token_refresher(reset: bool = True, **kwargs):
 
 
 class OnDemandTokenRefresher:
-    def __init__(self, refresher: LoginTimerBase, refresh_rate: float = DEFAULT_REFRESH_RATE):
+    def __init__(
+        self, refresher: LoginTimerBase, refresh_rate: float = DEFAULT_REFRESH_RATE
+    ):
         self._refresher = refresher
         self._refresh_rate = refresh_rate
 
@@ -1013,7 +1015,9 @@ def enable_login_client_timer(
     refresh_rate: float = kwargs.pop("refresh_rate", DEFAULT_TIMER_REFRESH_RATE)
     repeats: int = kwargs.pop("repeats", -1)
     autostart: bool = kwargs.pop("autostart", True)
-    repeat_on_exception: bool = kwargs.pop("repeat_on_exception", DEFAULT_TIMER_REPEAT_ON_EXCEPTION)
+    repeat_on_exception: bool = kwargs.pop(
+        "repeat_on_exception", DEFAULT_TIMER_REPEAT_ON_EXCEPTION
+    )
 
     if existing_timer := getattr(sdk, "timer", None):
         if not cancel_existing:
@@ -1049,7 +1053,9 @@ def enable_login_platform_timer(
     refresh_rate: float = kwargs.pop("refresh_rate", DEFAULT_TIMER_REFRESH_RATE)
     repeats: int = kwargs.pop("repeats", -1)
     autostart: bool = kwargs.pop("autostart", True)
-    repeat_on_exception: bool = kwargs.pop("repeat_on_exception", DEFAULT_TIMER_REPEAT_ON_EXCEPTION)
+    repeat_on_exception: bool = kwargs.pop(
+        "repeat_on_exception", DEFAULT_TIMER_REPEAT_ON_EXCEPTION
+    )
 
     if existing_timer := getattr(sdk, "timer", None):
         if not cancel_existing:
@@ -1086,7 +1092,9 @@ def enable_login_user_timer(
     refresh_rate: float = kwargs.pop("refresh_rate", DEFAULT_TIMER_REFRESH_RATE)
     repeats: int = kwargs.pop("repeats", -1)
     autostart: bool = kwargs.pop("autostart", True)
-    repeat_on_exception: bool = kwargs.pop("repeat_on_exception", DEFAULT_TIMER_REPEAT_ON_EXCEPTION)
+    repeat_on_exception: bool = kwargs.pop(
+        "repeat_on_exception", DEFAULT_TIMER_REPEAT_ON_EXCEPTION
+    )
 
     if existing_timer := getattr(sdk, "timer", None):
         if not cancel_existing:

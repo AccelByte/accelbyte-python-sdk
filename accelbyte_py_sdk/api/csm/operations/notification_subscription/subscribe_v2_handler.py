@@ -34,11 +34,11 @@ from ...models import ResponseErrorResponse
 
 
 class SubscribeV2Handler(Operation):
-    """Subscribe to app down notification (SubscribeV2Handler)
+    """Subscribe to app notification (SubscribeV2Handler)
 
     Required permission : `ADMIN:NAMESPACE:{namespace}:EXTEND:APP:ALERT:SELF:SUBSCRIPTION [CREATE]`
 
-    Subscribe to app down notification
+    Subscribe to app notification
     Request body:
     - notificationType : type of the app notification to be subscribed - Required.
     - values:
@@ -66,7 +66,7 @@ class SubscribeV2Handler(Operation):
         namespace: (namespace) REQUIRED str in path
 
     Responses:
-        204: No Content - (successfully submitted request to subcribe from app down notification)
+        204: No Content - (successfully submitted request to subcribe from app notification)
 
         401: Unauthorized - ResponseErrorResponse (Unauthorized)
 
@@ -197,7 +197,7 @@ class SubscribeV2Handler(Operation):
     ) -> Tuple[None, Union[None, HttpResponse, ResponseErrorResponse]]:
         """Parse the given response.
 
-        204: No Content - (successfully submitted request to subcribe from app down notification)
+        204: No Content - (successfully submitted request to subcribe from app notification)
 
         401: Unauthorized - ResponseErrorResponse (Unauthorized)
 

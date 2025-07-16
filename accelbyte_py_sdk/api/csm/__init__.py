@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the Custom Service Manager."""
 
-__version__ = "1.24.0"
+__version__ = "1.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -141,6 +141,12 @@ from .wrappers import subscribe_v2_handler
 from .wrappers import subscribe_v2_handler_async
 from .wrappers import unsubscribe_v2_handler
 from .wrappers import unsubscribe_v2_handler_async
+
+# notification_subscription_v3
+from .wrappers import delete_subscription_app_notification_v3
+from .wrappers import delete_subscription_app_notification_v3_async
+from .wrappers import get_notification_subscriber_list_v3
+from .wrappers import get_notification_subscriber_list_v3_async
 
 # resources_limits
 from .wrappers import get_resources_limits

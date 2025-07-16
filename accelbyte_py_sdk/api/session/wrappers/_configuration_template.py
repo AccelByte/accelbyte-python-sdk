@@ -50,9 +50,21 @@ from ..operations.configuration_template import AdminGetDSMCConfiguration
 from ..operations.configuration_template import AdminSyncDSMCConfiguration
 from ..operations.configuration_template import AdminUpdateConfigurationAlertV1
 from ..operations.configuration_template import AdminUpdateConfigurationTemplateV1
-from ..models import ApimodelsConfigurationTemplateResponseTextChatModeEnum
-from ..models import ApimodelsCreateConfigurationTemplateRequestTextChatModeEnum
-from ..models import ApimodelsUpdateConfigurationTemplateRequestTextChatModeEnum
+from ..models import (
+    ApimodelsConfigurationTemplateResponseJoinabilityEnum,
+    ApimodelsConfigurationTemplateResponseTextChatModeEnum,
+    ApimodelsConfigurationTemplateResponseTypeEnum,
+)
+from ..models import (
+    ApimodelsCreateConfigurationTemplateRequestJoinabilityEnum,
+    ApimodelsCreateConfigurationTemplateRequestTextChatModeEnum,
+    ApimodelsCreateConfigurationTemplateRequestTypeEnum,
+)
+from ..models import (
+    ApimodelsUpdateConfigurationTemplateRequestJoinabilityEnum,
+    ApimodelsUpdateConfigurationTemplateRequestTextChatModeEnum,
+    ApimodelsUpdateConfigurationTemplateRequestTypeEnum,
+)
 
 
 @same_doc_as(AdminCreateConfigurationAlertV1)

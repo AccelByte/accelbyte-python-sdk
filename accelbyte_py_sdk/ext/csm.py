@@ -47,11 +47,14 @@ from ..api.csm.models import ApimodelGetDeploymentListV2Response
 from ..api.csm.models import ApimodelGetListOfConfigurationsV2DataItem
 from ..api.csm.models import ApimodelGetListOfConfigurationsV2Response
 from ..api.csm.models import ApimodelGetNotificationSubscriberItem
+from ..api.csm.models import ApimodelGetNotificationSubscriberItemV2
 from ..api.csm.models import ApimodelGetNotificationSubscriberListResponse
+from ..api.csm.models import ApimodelGetNotificationSubscriberListResponseV2
 from ..api.csm.models import ApimodelGetNotificationSubscriberStatusResponse
 from ..api.csm.models import ApimodelIncreaseLimitFormRequest
 from ..api.csm.models import ApimodelMemoryRequest
 from ..api.csm.models import ApimodelMemoryResponse
+from ..api.csm.models import ApimodelNotificationType
 from ..api.csm.models import ApimodelReplicaRequest
 from ..api.csm.models import ApimodelReplicaResponse
 from ..api.csm.models import ApimodelSaveConfigurationV2Request
@@ -146,6 +149,7 @@ def create_apimodel_autoscaling_response_example() -> ApimodelAutoscalingRespons
 
 def create_apimodel_bulk_subscribe_item_example() -> ApimodelBulkSubscribeItem:
     instance = ApimodelBulkSubscribeItem()
+    instance.email_address = randomize("email")
     instance.notification_type = {}
     instance.user_id = randomize("uid")
     return instance
@@ -340,9 +344,20 @@ def create_apimodel_get_notification_subscriber_item_example() -> (
     instance = ApimodelGetNotificationSubscriberItem()
     instance.notification_type = {}
     instance.subscription_id = randomize()
-    instance.user_id = randomize("uid")
     instance.display_name = randomize("slug")
     instance.email_address = randomize("email")
+    instance.user_id = randomize("uid")
+    return instance
+
+
+def create_apimodel_get_notification_subscriber_item_v2_example() -> (
+    ApimodelGetNotificationSubscriberItemV2
+):
+    instance = ApimodelGetNotificationSubscriberItemV2()
+    instance.notification_types = [create_apimodel_notification_type_example()]
+    instance.display_name = randomize("slug")
+    instance.email_address = randomize("email")
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -357,6 +372,17 @@ def create_apimodel_get_notification_subscriber_list_response_example() -> (
     return instance
 
 
+def create_apimodel_get_notification_subscriber_list_response_v2_example() -> (
+    ApimodelGetNotificationSubscriberListResponseV2
+):
+    instance = ApimodelGetNotificationSubscriberListResponseV2()
+    instance.max_subscriptions = randomize("int", min_val=1, max_val=1000)
+    instance.subscriptions = [
+        create_apimodel_get_notification_subscriber_item_v2_example()
+    ]
+    return instance
+
+
 def create_apimodel_get_notification_subscriber_status_response_example() -> (
     ApimodelGetNotificationSubscriberStatusResponse
 ):
@@ -365,9 +391,9 @@ def create_apimodel_get_notification_subscriber_status_response_example() -> (
     instance.notification_type = randomize()
     instance.subscribed = randomize("bool")
     instance.subscriptions_count = randomize("int", min_val=1, max_val=1000)
-    instance.user_id = randomize("uid")
     instance.display_name = randomize("slug")
     instance.email_address = randomize("email")
+    instance.user_id = randomize("uid")
     return instance
 
 
@@ -391,6 +417,13 @@ def create_apimodel_memory_response_example() -> ApimodelMemoryResponse:
     instance = ApimodelMemoryResponse()
     instance.memory_limit = randomize("int", min_val=1, max_val=1000)
     instance.request_memory = randomize("int", min_val=1, max_val=1000)
+    return instance
+
+
+def create_apimodel_notification_type_example() -> ApimodelNotificationType:
+    instance = ApimodelNotificationType()
+    instance.subcription_id = randomize()
+    instance.type_ = randomize()
     return instance
 
 
@@ -470,6 +503,7 @@ def create_apimodel_subscribe_notification_response_example() -> (
 
 def create_apimodel_subscriber_item_request_example() -> ApimodelSubscriberItemRequest:
     instance = ApimodelSubscriberItemRequest()
+    instance.email_address = randomize("email")
     instance.user_id = randomize("uid")
     return instance
 
@@ -479,10 +513,10 @@ def create_apimodel_subscriber_item_response_example() -> (
 ):
     instance = ApimodelSubscriberItemResponse()
     instance.id_ = randomize()
-    instance.user_id = randomize("uid")
     instance.display_name = randomize("slug")
     instance.email_address = randomize("email")
     instance.notification_type = randomize()
+    instance.user_id = randomize("uid")
     return instance
 
 

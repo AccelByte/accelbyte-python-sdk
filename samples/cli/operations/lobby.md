@@ -508,6 +508,17 @@ $ python -m accelbyte_py_sdk_cli 'lobby-get-my-notifications' \
     > result.txt
 ```
 
+### Operation `get_my_offline_notifications`
+```sh
+$ python -m accelbyte_py_sdk_cli 'lobby-get-my-offline-notifications' \
+    'string' \
+    --end_time 1 \
+    --limit 1 \
+    --offset 1 \
+    --start_time 1 \
+    > result.txt
+```
+
 ### Operation `notification_with_template`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'lobby-notification-with-template' \

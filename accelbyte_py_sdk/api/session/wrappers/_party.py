@@ -44,6 +44,10 @@ from ..models import ResponseError
 
 from ..operations.party import AdminDeleteBulkParties
 from ..operations.party import AdminQueryParties
+from ..operations.party import (
+    AdminQueryPartiesJoinabilityEnum,
+    AdminQueryPartiesMemberStatusEnum,
+)
 from ..operations.party import AdminSyncNativeSession
 from ..operations.party import PublicCreateParty
 from ..operations.party import PublicGeneratePartyCode
@@ -60,6 +64,14 @@ from ..operations.party import PublicPromotePartyLeader
 from ..operations.party import PublicQueryMyParties
 from ..operations.party import PublicRevokePartyCode
 from ..operations.party import PublicUpdateParty
+from ..models import (
+    ApimodelsCreatePartyRequestJoinabilityEnum,
+    ApimodelsCreatePartyRequestTypeEnum,
+)
+from ..models import (
+    ApimodelsUpdatePartyRequestJoinabilityEnum,
+    ApimodelsUpdatePartyRequestTypeEnum,
+)
 
 
 @same_doc_as(AdminDeleteBulkParties)
@@ -166,14 +178,15 @@ async def admin_delete_bulk_parties_async(
 
 @same_doc_as(AdminQueryParties)
 def admin_query_parties(
+    configuration_name: Optional[str] = None,
     from_time: Optional[str] = None,
     is_soft_deleted: Optional[str] = None,
-    joinability: Optional[str] = None,
+    joinability: Optional[Union[str, AdminQueryPartiesJoinabilityEnum]] = None,
     key: Optional[str] = None,
     leader_id: Optional[str] = None,
     limit: Optional[int] = None,
     member_id: Optional[str] = None,
-    member_status: Optional[str] = None,
+    member_status: Optional[Union[str, AdminQueryPartiesMemberStatusEnum]] = None,
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
@@ -203,11 +216,13 @@ def admin_query_parties(
 
         namespace: (namespace) REQUIRED str in path
 
+        configuration_name: (configurationName) OPTIONAL str in query
+
         from_time: (fromTime) OPTIONAL str in query
 
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
-        joinability: (joinability) OPTIONAL str in query
+        joinability: (joinability) OPTIONAL Union[str, JoinabilityEnum] in query
 
         key: (key) OPTIONAL str in query
 
@@ -217,7 +232,7 @@ def admin_query_parties(
 
         member_id: (memberID) OPTIONAL str in query
 
-        member_status: (memberStatus) OPTIONAL str in query
+        member_status: (memberStatus) OPTIONAL Union[str, MemberStatusEnum] in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -245,6 +260,7 @@ def admin_query_parties(
         if error:
             return None, error
     request = AdminQueryParties.create(
+        configuration_name=configuration_name,
         from_time=from_time,
         is_soft_deleted=is_soft_deleted,
         joinability=joinability,
@@ -266,14 +282,15 @@ def admin_query_parties(
 
 @same_doc_as(AdminQueryParties)
 async def admin_query_parties_async(
+    configuration_name: Optional[str] = None,
     from_time: Optional[str] = None,
     is_soft_deleted: Optional[str] = None,
-    joinability: Optional[str] = None,
+    joinability: Optional[Union[str, AdminQueryPartiesJoinabilityEnum]] = None,
     key: Optional[str] = None,
     leader_id: Optional[str] = None,
     limit: Optional[int] = None,
     member_id: Optional[str] = None,
-    member_status: Optional[str] = None,
+    member_status: Optional[Union[str, AdminQueryPartiesMemberStatusEnum]] = None,
     offset: Optional[int] = None,
     order: Optional[str] = None,
     order_by: Optional[str] = None,
@@ -303,11 +320,13 @@ async def admin_query_parties_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        configuration_name: (configurationName) OPTIONAL str in query
+
         from_time: (fromTime) OPTIONAL str in query
 
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
-        joinability: (joinability) OPTIONAL str in query
+        joinability: (joinability) OPTIONAL Union[str, JoinabilityEnum] in query
 
         key: (key) OPTIONAL str in query
 
@@ -317,7 +336,7 @@ async def admin_query_parties_async(
 
         member_id: (memberID) OPTIONAL str in query
 
-        member_status: (memberStatus) OPTIONAL str in query
+        member_status: (memberStatus) OPTIONAL Union[str, MemberStatusEnum] in query
 
         offset: (offset) OPTIONAL int in query
 
@@ -345,6 +364,7 @@ async def admin_query_parties_async(
         if error:
             return None, error
     request = AdminQueryParties.create(
+        configuration_name=configuration_name,
         from_time=from_time,
         is_soft_deleted=is_soft_deleted,
         joinability=joinability,

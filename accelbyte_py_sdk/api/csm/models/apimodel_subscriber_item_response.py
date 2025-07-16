@@ -34,22 +34,22 @@ class ApimodelSubscriberItemResponse(Model):
     Properties:
         id_: (id) REQUIRED str
 
-        user_id: (userId) REQUIRED str
-
         display_name: (displayName) OPTIONAL str
 
         email_address: (emailAddress) OPTIONAL str
 
         notification_type: (notificationType) OPTIONAL str
+
+        user_id: (userId) OPTIONAL str
     """
 
     # region fields
 
     id_: str  # REQUIRED
-    user_id: str  # REQUIRED
     display_name: str  # OPTIONAL
     email_address: str  # OPTIONAL
     notification_type: str  # OPTIONAL
+    user_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -57,10 +57,6 @@ class ApimodelSubscriberItemResponse(Model):
 
     def with_id(self, value: str) -> ApimodelSubscriberItemResponse:
         self.id_ = value
-        return self
-
-    def with_user_id(self, value: str) -> ApimodelSubscriberItemResponse:
-        self.user_id = value
         return self
 
     def with_display_name(self, value: str) -> ApimodelSubscriberItemResponse:
@@ -75,6 +71,10 @@ class ApimodelSubscriberItemResponse(Model):
         self.notification_type = value
         return self
 
+    def with_user_id(self, value: str) -> ApimodelSubscriberItemResponse:
+        self.user_id = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -85,10 +85,6 @@ class ApimodelSubscriberItemResponse(Model):
             result["id"] = str(self.id_)
         elif include_empty:
             result["id"] = ""
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
@@ -101,6 +97,10 @@ class ApimodelSubscriberItemResponse(Model):
             result["notificationType"] = str(self.notification_type)
         elif include_empty:
             result["notificationType"] = ""
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -111,21 +111,22 @@ class ApimodelSubscriberItemResponse(Model):
     def create(
         cls,
         id_: str,
-        user_id: str,
         display_name: Optional[str] = None,
         email_address: Optional[str] = None,
         notification_type: Optional[str] = None,
+        user_id: Optional[str] = None,
         **kwargs,
     ) -> ApimodelSubscriberItemResponse:
         instance = cls()
         instance.id_ = id_
-        instance.user_id = user_id
         if display_name is not None:
             instance.display_name = display_name
         if email_address is not None:
             instance.email_address = email_address
         if notification_type is not None:
             instance.notification_type = notification_type
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -139,10 +140,6 @@ class ApimodelSubscriberItemResponse(Model):
             instance.id_ = str(dict_["id"])
         elif include_empty:
             instance.id_ = ""
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
@@ -155,6 +152,10 @@ class ApimodelSubscriberItemResponse(Model):
             instance.notification_type = str(dict_["notificationType"])
         elif include_empty:
             instance.notification_type = ""
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @classmethod
@@ -199,20 +200,20 @@ class ApimodelSubscriberItemResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "id": "id_",
-            "userId": "user_id",
             "displayName": "display_name",
             "emailAddress": "email_address",
             "notificationType": "notification_type",
+            "userId": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "id": True,
-            "userId": True,
             "displayName": False,
             "emailAddress": False,
             "notificationType": False,
+            "userId": False,
         }
 
     # endregion static methods

@@ -60,6 +60,8 @@ class ApiFleetGetResponse(Model):
         regions: (regions) REQUIRED List[ApiRegionConfig]
 
         sampling_rules: (samplingRules) REQUIRED ApiFleetArtifactsSampleRules
+
+        hibernate_after_period: (hibernateAfterPeriod) OPTIONAL str
     """
 
     # region fields
@@ -76,6 +78,7 @@ class ApiFleetGetResponse(Model):
     primary_fleet: str  # REQUIRED
     regions: List[ApiRegionConfig]  # REQUIRED
     sampling_rules: ApiFleetArtifactsSampleRules  # REQUIRED
+    hibernate_after_period: str  # OPTIONAL
 
     # endregion fields
 
@@ -133,6 +136,10 @@ class ApiFleetGetResponse(Model):
         self, value: ApiFleetArtifactsSampleRules
     ) -> ApiFleetGetResponse:
         self.sampling_rules = value
+        return self
+
+    def with_hibernate_after_period(self, value: str) -> ApiFleetGetResponse:
+        self.hibernate_after_period = value
         return self
 
     # endregion with_x methods
@@ -197,6 +204,10 @@ class ApiFleetGetResponse(Model):
             )
         elif include_empty:
             result["samplingRules"] = ApiFleetArtifactsSampleRules()
+        if hasattr(self, "hibernate_after_period"):
+            result["hibernateAfterPeriod"] = str(self.hibernate_after_period)
+        elif include_empty:
+            result["hibernateAfterPeriod"] = ""
         return result
 
     # endregion to methods
@@ -218,6 +229,7 @@ class ApiFleetGetResponse(Model):
         primary_fleet: str,
         regions: List[ApiRegionConfig],
         sampling_rules: ApiFleetArtifactsSampleRules,
+        hibernate_after_period: Optional[str] = None,
         **kwargs,
     ) -> ApiFleetGetResponse:
         instance = cls()
@@ -233,6 +245,8 @@ class ApiFleetGetResponse(Model):
         instance.primary_fleet = primary_fleet
         instance.regions = regions
         instance.sampling_rules = sampling_rules
+        if hibernate_after_period is not None:
+            instance.hibernate_after_period = hibernate_after_period
         return instance
 
     @classmethod
@@ -304,6 +318,13 @@ class ApiFleetGetResponse(Model):
             )
         elif include_empty:
             instance.sampling_rules = ApiFleetArtifactsSampleRules()
+        if (
+            "hibernateAfterPeriod" in dict_
+            and dict_["hibernateAfterPeriod"] is not None
+        ):
+            instance.hibernate_after_period = str(dict_["hibernateAfterPeriod"])
+        elif include_empty:
+            instance.hibernate_after_period = ""
         return instance
 
     @classmethod
@@ -357,6 +378,7 @@ class ApiFleetGetResponse(Model):
             "primaryFleet": "primary_fleet",
             "regions": "regions",
             "samplingRules": "sampling_rules",
+            "hibernateAfterPeriod": "hibernate_after_period",
         }
 
     @staticmethod
@@ -374,6 +396,7 @@ class ApiFleetGetResponse(Model):
             "primaryFleet": True,
             "regions": True,
             "samplingRules": True,
+            "hibernateAfterPeriod": False,
         }
 
     # endregion static methods

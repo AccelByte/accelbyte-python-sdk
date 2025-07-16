@@ -26,8 +26,30 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from ....core import Model
+from ....core import StrEnum
 
 from ..models.models_game_server import ModelsGameServer
+
+
+class StatusEnum(StrEnum):
+    AVAILABLE = "AVAILABLE"
+    DS_ERROR = "DS_ERROR"
+    FAILED_TO_REQUEST = "FAILED_TO_REQUEST"
+    NEED_TO_REQUEST = "NEED_TO_REQUEST"
+    PREPARING = "PREPARING"
+    REQUESTED = "REQUESTED"
+
+
+class StatusV2Enum(StrEnum):
+    AVAILABLE = "AVAILABLE"
+    DS_CANCELLED = "DS_CANCELLED"
+    DS_ERROR = "DS_ERROR"
+    ENDED = "ENDED"
+    FAILED_TO_REQUEST = "FAILED_TO_REQUEST"
+    NEED_TO_REQUEST = "NEED_TO_REQUEST"
+    PREPARING = "PREPARING"
+    REQUESTED = "REQUESTED"
+    UNKNOWN = "UNKNOWN"
 
 
 class ApimodelsDSInformationResponse(Model):
@@ -40,9 +62,9 @@ class ApimodelsDSInformationResponse(Model):
 
         server: (Server) OPTIONAL ModelsGameServer
 
-        status: (Status) OPTIONAL str
+        status: (Status) OPTIONAL Union[str, StatusEnum]
 
-        status_v2: (StatusV2) OPTIONAL str
+        status_v2: (StatusV2) OPTIONAL Union[str, StatusV2Enum]
     """
 
     # region fields
@@ -50,8 +72,8 @@ class ApimodelsDSInformationResponse(Model):
     created_at: str  # REQUIRED
     requested_at: str  # REQUIRED
     server: ModelsGameServer  # OPTIONAL
-    status: str  # OPTIONAL
-    status_v2: str  # OPTIONAL
+    status: Union[str, StatusEnum]  # OPTIONAL
+    status_v2: Union[str, StatusV2Enum]  # OPTIONAL
 
     # endregion fields
 
@@ -69,11 +91,15 @@ class ApimodelsDSInformationResponse(Model):
         self.server = value
         return self
 
-    def with_status(self, value: str) -> ApimodelsDSInformationResponse:
+    def with_status(
+        self, value: Union[str, StatusEnum]
+    ) -> ApimodelsDSInformationResponse:
         self.status = value
         return self
 
-    def with_status_v2(self, value: str) -> ApimodelsDSInformationResponse:
+    def with_status_v2(
+        self, value: Union[str, StatusV2Enum]
+    ) -> ApimodelsDSInformationResponse:
         self.status_v2 = value
         return self
 
@@ -98,11 +124,11 @@ class ApimodelsDSInformationResponse(Model):
         if hasattr(self, "status"):
             result["Status"] = str(self.status)
         elif include_empty:
-            result["Status"] = ""
+            result["Status"] = Union[str, StatusEnum]()
         if hasattr(self, "status_v2"):
             result["StatusV2"] = str(self.status_v2)
         elif include_empty:
-            result["StatusV2"] = ""
+            result["StatusV2"] = Union[str, StatusV2Enum]()
         return result
 
     # endregion to methods
@@ -115,8 +141,8 @@ class ApimodelsDSInformationResponse(Model):
         created_at: str,
         requested_at: str,
         server: Optional[ModelsGameServer] = None,
-        status: Optional[str] = None,
-        status_v2: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
+        status_v2: Optional[Union[str, StatusV2Enum]] = None,
         **kwargs,
     ) -> ApimodelsDSInformationResponse:
         instance = cls()
@@ -154,11 +180,11 @@ class ApimodelsDSInformationResponse(Model):
         if "Status" in dict_ and dict_["Status"] is not None:
             instance.status = str(dict_["Status"])
         elif include_empty:
-            instance.status = ""
+            instance.status = Union[str, StatusEnum]()
         if "StatusV2" in dict_ and dict_["StatusV2"] is not None:
             instance.status_v2 = str(dict_["StatusV2"])
         elif include_empty:
-            instance.status_v2 = ""
+            instance.status_v2 = Union[str, StatusV2Enum]()
         return instance
 
     @classmethod
@@ -217,6 +243,30 @@ class ApimodelsDSInformationResponse(Model):
             "Server": False,
             "Status": False,
             "StatusV2": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "Status": [
+                "AVAILABLE",
+                "DS_ERROR",
+                "FAILED_TO_REQUEST",
+                "NEED_TO_REQUEST",
+                "PREPARING",
+                "REQUESTED",
+            ],
+            "StatusV2": [
+                "AVAILABLE",
+                "DS_CANCELLED",
+                "DS_ERROR",
+                "ENDED",
+                "FAILED_TO_REQUEST",
+                "NEED_TO_REQUEST",
+                "PREPARING",
+                "REQUESTED",
+                "UNKNOWN",
+            ],
         }
 
     # endregion static methods

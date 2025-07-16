@@ -45,6 +45,7 @@ from ..models import ModelNotificationTopicResponse
 from ..models import ModelNotificationTopicResponseV1
 from ..models import ModelNotificationWithTemplateRequest
 from ..models import ModelNotificationWithTemplateRequestV1
+from ..models import ModelNotificationsResponse
 from ..models import ModelTopicByNamespacesResponse
 from ..models import ModelUpdateTemplateRequest
 from ..models import ModelUpdateTopicRequest
@@ -62,6 +63,7 @@ from ..operations.notification import FreeFormNotificationByUserID
 from ..operations.notification import GetAllNotificationTemplatesV1Admin
 from ..operations.notification import GetAllNotificationTopicsV1Admin
 from ..operations.notification import GetMyNotifications
+from ..operations.notification import GetMyOfflineNotifications
 from ..operations.notification import GetNotificationTopicV1Admin
 from ..operations.notification import GetSingleTemplateLocalizationV1Admin
 from ..operations.notification import GetTemplateSlugLocalizationsTemplateV1Admin
@@ -1312,6 +1314,136 @@ async def get_my_notifications_async(
         if error:
             return None, error
     request = GetMyNotifications.create(
+        end_time=end_time,
+        limit=limit,
+        offset=offset,
+        start_time=start_time,
+        namespace=namespace,
+    )
+    return await run_request_async(
+        request, additional_headers=x_additional_headers, **kwargs
+    )
+
+
+@same_doc_as(GetMyOfflineNotifications)
+def get_my_offline_notifications(
+    end_time: Optional[int] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_time: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get list of offline notifications (getMyOfflineNotifications)
+
+    Get list of user's offline notifications in a namespace.
+
+    Properties:
+        url: /notification/namespaces/{namespace}/notification/offline/me
+
+        method: GET
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL int in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_time: (startTime) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelNotificationsResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = GetMyOfflineNotifications.create(
+        end_time=end_time,
+        limit=limit,
+        offset=offset,
+        start_time=start_time,
+        namespace=namespace,
+    )
+    return run_request(request, additional_headers=x_additional_headers, **kwargs)
+
+
+@same_doc_as(GetMyOfflineNotifications)
+async def get_my_offline_notifications_async(
+    end_time: Optional[int] = None,
+    limit: Optional[int] = None,
+    offset: Optional[int] = None,
+    start_time: Optional[int] = None,
+    namespace: Optional[str] = None,
+    x_additional_headers: Optional[Dict[str, str]] = None,
+    **kwargs
+):
+    """Get list of offline notifications (getMyOfflineNotifications)
+
+    Get list of user's offline notifications in a namespace.
+
+    Properties:
+        url: /notification/namespaces/{namespace}/notification/offline/me
+
+        method: GET
+
+        tags: ["notification", "public"]
+
+        consumes: ["application/json"]
+
+        produces: ["application/json"]
+
+        securities: [BEARER_AUTH]
+
+        namespace: (namespace) REQUIRED str in path
+
+        end_time: (endTime) OPTIONAL int in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
+
+        start_time: (startTime) OPTIONAL int in query
+
+    Responses:
+        200: OK - ModelNotificationsResponse (OK)
+
+        400: Bad Request - RestapiErrorResponseV1 (Bad Request)
+
+        401: Unauthorized - RestapiErrorResponseV1 (Unauthorized)
+
+        403: Forbidden - RestapiErrorResponseV1 (Forbidden)
+
+        404: Not Found - RestapiErrorResponseV1 (Not Found)
+
+        500: Internal Server Error - RestapiErrorResponseV1 (Internal Server Error)
+    """
+    if namespace is None:
+        namespace, error = get_services_namespace(sdk=kwargs.get("sdk"))
+        if error:
+            return None, error
+    request = GetMyOfflineNotifications.create(
         end_time=end_time,
         limit=limit,
         offset=offset,

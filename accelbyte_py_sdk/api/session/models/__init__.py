@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Session Service."""
 
-__version__ = "3.25.3"
+__version__ = "3.26.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -23,7 +23,9 @@ from .apimodels_configuration_template_response import (
     ApimodelsConfigurationTemplateResponse,
 )
 from .apimodels_configuration_template_response import (
+    JoinabilityEnum as ApimodelsConfigurationTemplateResponseJoinabilityEnum,
     TextChatModeEnum as ApimodelsConfigurationTemplateResponseTextChatModeEnum,
+    TypeEnum as ApimodelsConfigurationTemplateResponseTypeEnum,
 )
 from .apimodels_configuration_templates_response import (
     ApimodelsConfigurationTemplatesResponse,
@@ -32,13 +34,21 @@ from .apimodels_create_configuration_template_request import (
     ApimodelsCreateConfigurationTemplateRequest,
 )
 from .apimodels_create_configuration_template_request import (
+    JoinabilityEnum as ApimodelsCreateConfigurationTemplateRequestJoinabilityEnum,
     TextChatModeEnum as ApimodelsCreateConfigurationTemplateRequestTextChatModeEnum,
+    TypeEnum as ApimodelsCreateConfigurationTemplateRequestTypeEnum,
 )
 from .apimodels_create_game_session_request import ApimodelsCreateGameSessionRequest
 from .apimodels_create_game_session_request import (
+    JoinabilityEnum as ApimodelsCreateGameSessionRequestJoinabilityEnum,
     TextChatModeEnum as ApimodelsCreateGameSessionRequestTextChatModeEnum,
+    TypeEnum as ApimodelsCreateGameSessionRequestTypeEnum,
 )
 from .apimodels_create_party_request import ApimodelsCreatePartyRequest
+from .apimodels_create_party_request import (
+    JoinabilityEnum as ApimodelsCreatePartyRequestJoinabilityEnum,
+    TypeEnum as ApimodelsCreatePartyRequestTypeEnum,
+)
 from .apimodels_delete_bulk_game_session_request import (
     ApimodelsDeleteBulkGameSessionRequest,
 )
@@ -52,6 +62,10 @@ from .apimodels_delete_bulk_party_sessions_api_response import (
     ApimodelsDeleteBulkPartySessionsAPIResponse,
 )
 from .apimodels_ds_information_response import ApimodelsDSInformationResponse
+from .apimodels_ds_information_response import (
+    StatusEnum as ApimodelsDSInformationResponseStatusEnum,
+    StatusV2Enum as ApimodelsDSInformationResponseStatusV2Enum,
+)
 from .apimodels_environment_variable_list_response import (
     ApimodelsEnvironmentVariableListResponse,
 )
@@ -90,7 +104,9 @@ from .apimodels_psn_app_server_credential_record import (
 )
 from .apimodels_public_configuration import ApimodelsPublicConfiguration
 from .apimodels_public_configuration import (
+    JoinabilityEnum as ApimodelsPublicConfigurationJoinabilityEnum,
     TextChatModeEnum as ApimodelsPublicConfigurationTextChatModeEnum,
+    TypeEnum as ApimodelsPublicConfigurationTypeEnum,
 )
 from .apimodels_put_global_configuration_request import (
     ApimodelsPutGlobalConfigurationRequest,
@@ -114,7 +130,9 @@ from .apimodels_update_configuration_template_request import (
     ApimodelsUpdateConfigurationTemplateRequest,
 )
 from .apimodels_update_configuration_template_request import (
+    JoinabilityEnum as ApimodelsUpdateConfigurationTemplateRequestJoinabilityEnum,
     TextChatModeEnum as ApimodelsUpdateConfigurationTemplateRequestTextChatModeEnum,
+    TypeEnum as ApimodelsUpdateConfigurationTemplateRequestTypeEnum,
 )
 from .apimodels_update_game_session_backfill_request import (
     ApimodelsUpdateGameSessionBackfillRequest,
@@ -123,11 +141,23 @@ from .apimodels_update_game_session_member_status_response import (
     ApimodelsUpdateGameSessionMemberStatusResponse,
 )
 from .apimodels_update_game_session_request import ApimodelsUpdateGameSessionRequest
+from .apimodels_update_game_session_request import (
+    JoinabilityEnum as ApimodelsUpdateGameSessionRequestJoinabilityEnum,
+    TypeEnum as ApimodelsUpdateGameSessionRequestTypeEnum,
+)
 from .apimodels_update_gamesession_ds_information_request import (
     ApimodelsUpdateGamesessionDSInformationRequest,
 )
 from .apimodels_update_party_request import ApimodelsUpdatePartyRequest
+from .apimodels_update_party_request import (
+    JoinabilityEnum as ApimodelsUpdatePartyRequestJoinabilityEnum,
+    TypeEnum as ApimodelsUpdatePartyRequestTypeEnum,
+)
 from .apimodels_user_response import ApimodelsUserResponse
+from .apimodels_user_response import (
+    StatusEnum as ApimodelsUserResponseStatusEnum,
+    StatusV2Enum as ApimodelsUserResponseStatusV2Enum,
+)
 from .apimodels_xbl_certificate_response_body import ApimodelsXblCertificateResponseBody
 from .logconfig_configuration import LogconfigConfiguration
 from .logconfig_configuration import LogLevelEnum as LogconfigConfigurationLogLevelEnum

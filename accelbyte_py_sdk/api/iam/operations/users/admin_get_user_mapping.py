@@ -59,6 +59,8 @@ class AdminGetUserMapping(Operation):
 
         user_id: (userId) REQUIRED str in path
 
+        create_if_not_found: (createIfNotFound) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelGetUserMappingV3 (OK)
 
@@ -83,6 +85,7 @@ class AdminGetUserMapping(Operation):
     namespace: str  # REQUIRED in [path]
     target_namespace: str  # REQUIRED in [path]
     user_id: str  # REQUIRED in [path]
+    create_if_not_found: bool  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -123,6 +126,7 @@ class AdminGetUserMapping(Operation):
     def get_all_params(self) -> dict:
         return {
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_path_params(self) -> dict:
@@ -133,6 +137,12 @@ class AdminGetUserMapping(Operation):
             result["targetNamespace"] = self.target_namespace
         if hasattr(self, "user_id"):
             result["userId"] = self.user_id
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "create_if_not_found"):
+            result["createIfNotFound"] = self.create_if_not_found
         return result
 
     # endregion get_x_params methods
@@ -155,6 +165,10 @@ class AdminGetUserMapping(Operation):
         self.user_id = value
         return self
 
+    def with_create_if_not_found(self, value: bool) -> AdminGetUserMapping:
+        self.create_if_not_found = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -173,6 +187,10 @@ class AdminGetUserMapping(Operation):
             result["userId"] = str(self.user_id)
         elif include_empty:
             result["userId"] = ""
+        if hasattr(self, "create_if_not_found") and self.create_if_not_found:
+            result["createIfNotFound"] = bool(self.create_if_not_found)
+        elif include_empty:
+            result["createIfNotFound"] = False
         return result
 
     # endregion to methods
@@ -231,12 +249,19 @@ class AdminGetUserMapping(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, target_namespace: str, user_id: str, **kwargs
+        cls,
+        namespace: str,
+        target_namespace: str,
+        user_id: str,
+        create_if_not_found: Optional[bool] = None,
+        **kwargs,
     ) -> AdminGetUserMapping:
         instance = cls()
         instance.namespace = namespace
         instance.target_namespace = target_namespace
         instance.user_id = user_id
+        if create_if_not_found is not None:
+            instance.create_if_not_found = create_if_not_found
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -258,6 +283,10 @@ class AdminGetUserMapping(Operation):
             instance.user_id = str(dict_["userId"])
         elif include_empty:
             instance.user_id = ""
+        if "createIfNotFound" in dict_ and dict_["createIfNotFound"] is not None:
+            instance.create_if_not_found = bool(dict_["createIfNotFound"])
+        elif include_empty:
+            instance.create_if_not_found = False
         return instance
 
     @staticmethod
@@ -266,6 +295,7 @@ class AdminGetUserMapping(Operation):
             "namespace": "namespace",
             "targetNamespace": "target_namespace",
             "userId": "user_id",
+            "createIfNotFound": "create_if_not_found",
         }
 
     @staticmethod
@@ -274,6 +304,7 @@ class AdminGetUserMapping(Operation):
             "namespace": True,
             "targetNamespace": True,
             "userId": True,
+            "createIfNotFound": False,
         }
 
     # endregion static methods

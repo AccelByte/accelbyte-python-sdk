@@ -40,6 +40,8 @@ class DLCItemConfigHistoryInfo(Model):
 
         dlc_id: (dlcId) OPTIONAL str
 
+        enable_revocation: (enableRevocation) OPTIONAL bool
+
         id_: (id) OPTIONAL str
 
         namespace: (namespace) OPTIONAL str
@@ -56,6 +58,7 @@ class DLCItemConfigHistoryInfo(Model):
     auto_update: bool  # OPTIONAL
     created_at: str  # OPTIONAL
     dlc_id: str  # OPTIONAL
+    enable_revocation: bool  # OPTIONAL
     id_: str  # OPTIONAL
     namespace: str  # OPTIONAL
     rewards: List[PlatformReward]  # OPTIONAL
@@ -76,6 +79,10 @@ class DLCItemConfigHistoryInfo(Model):
 
     def with_dlc_id(self, value: str) -> DLCItemConfigHistoryInfo:
         self.dlc_id = value
+        return self
+
+    def with_enable_revocation(self, value: bool) -> DLCItemConfigHistoryInfo:
+        self.enable_revocation = value
         return self
 
     def with_id(self, value: str) -> DLCItemConfigHistoryInfo:
@@ -116,6 +123,10 @@ class DLCItemConfigHistoryInfo(Model):
             result["dlcId"] = str(self.dlc_id)
         elif include_empty:
             result["dlcId"] = ""
+        if hasattr(self, "enable_revocation"):
+            result["enableRevocation"] = bool(self.enable_revocation)
+        elif include_empty:
+            result["enableRevocation"] = False
         if hasattr(self, "id_"):
             result["id"] = str(self.id_)
         elif include_empty:
@@ -150,6 +161,7 @@ class DLCItemConfigHistoryInfo(Model):
         auto_update: Optional[bool] = None,
         created_at: Optional[str] = None,
         dlc_id: Optional[str] = None,
+        enable_revocation: Optional[bool] = None,
         id_: Optional[str] = None,
         namespace: Optional[str] = None,
         rewards: Optional[List[PlatformReward]] = None,
@@ -164,6 +176,8 @@ class DLCItemConfigHistoryInfo(Model):
             instance.created_at = created_at
         if dlc_id is not None:
             instance.dlc_id = dlc_id
+        if enable_revocation is not None:
+            instance.enable_revocation = enable_revocation
         if id_ is not None:
             instance.id_ = id_
         if namespace is not None:
@@ -195,6 +209,10 @@ class DLCItemConfigHistoryInfo(Model):
             instance.dlc_id = str(dict_["dlcId"])
         elif include_empty:
             instance.dlc_id = ""
+        if "enableRevocation" in dict_ and dict_["enableRevocation"] is not None:
+            instance.enable_revocation = bool(dict_["enableRevocation"])
+        elif include_empty:
+            instance.enable_revocation = False
         if "id" in dict_ and dict_["id"] is not None:
             instance.id_ = str(dict_["id"])
         elif include_empty:
@@ -264,6 +282,7 @@ class DLCItemConfigHistoryInfo(Model):
             "autoUpdate": "auto_update",
             "createdAt": "created_at",
             "dlcId": "dlc_id",
+            "enableRevocation": "enable_revocation",
             "id": "id_",
             "namespace": "namespace",
             "rewards": "rewards",
@@ -277,6 +296,7 @@ class DLCItemConfigHistoryInfo(Model):
             "autoUpdate": False,
             "createdAt": False,
             "dlcId": False,
+            "enableRevocation": False,
             "id": False,
             "namespace": False,
             "rewards": False,

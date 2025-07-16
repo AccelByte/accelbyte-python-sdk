@@ -50,6 +50,11 @@ from ..models import ResponseError
 from ..operations.game_session import AdminDeleteBulkGameSessions
 from ..operations.game_session import AdminKickGameSessionMember
 from ..operations.game_session import AdminQueryGameSessions
+from ..operations.game_session import (
+    AdminQueryGameSessionsJoinabilityEnum,
+    AdminQueryGameSessionsStatusEnum,
+    AdminQueryGameSessionsStatusV2Enum,
+)
 from ..operations.game_session import AdminQueryGameSessionsByAttributes
 from ..operations.game_session import AdminSetDSReady
 from ..operations.game_session import AdminUpdateDSInformation
@@ -75,7 +80,15 @@ from ..operations.game_session import PublicRevokeGameSessionCode
 from ..operations.game_session import PublicSessionJoinCode
 from ..operations.game_session import UpdateGameSession
 from ..operations.game_session import UpdateGameSessionBackfillTicketID
-from ..models import ApimodelsCreateGameSessionRequestTextChatModeEnum
+from ..models import (
+    ApimodelsCreateGameSessionRequestJoinabilityEnum,
+    ApimodelsCreateGameSessionRequestTextChatModeEnum,
+    ApimodelsCreateGameSessionRequestTypeEnum,
+)
+from ..models import (
+    ApimodelsUpdateGameSessionRequestJoinabilityEnum,
+    ApimodelsUpdateGameSessionRequestTypeEnum,
+)
 
 
 @same_doc_as(AdminDeleteBulkGameSessions)
@@ -302,7 +315,7 @@ def admin_query_game_sessions(
     game_mode: Optional[str] = None,
     is_persistent: Optional[str] = None,
     is_soft_deleted: Optional[str] = None,
-    joinability: Optional[str] = None,
+    joinability: Optional[Union[str, AdminQueryGameSessionsJoinabilityEnum]] = None,
     limit: Optional[int] = None,
     match_pool: Optional[str] = None,
     member_id: Optional[str] = None,
@@ -310,8 +323,8 @@ def admin_query_game_sessions(
     order: Optional[str] = None,
     order_by: Optional[str] = None,
     session_id: Optional[str] = None,
-    status: Optional[str] = None,
-    status_v2: Optional[str] = None,
+    status: Optional[Union[str, AdminQueryGameSessionsStatusEnum]] = None,
+    status_v2: Optional[Union[str, AdminQueryGameSessionsStatusV2Enum]] = None,
     to_time: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -348,7 +361,7 @@ def admin_query_game_sessions(
 
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
-        joinability: (joinability) OPTIONAL str in query
+        joinability: (joinability) OPTIONAL Union[str, JoinabilityEnum] in query
 
         limit: (limit) OPTIONAL int in query
 
@@ -364,9 +377,9 @@ def admin_query_game_sessions(
 
         session_id: (sessionID) OPTIONAL str in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
-        status_v2: (statusV2) OPTIONAL str in query
+        status_v2: (statusV2) OPTIONAL Union[str, StatusV2Enum] in query
 
         to_time: (toTime) OPTIONAL str in query
 
@@ -416,7 +429,7 @@ async def admin_query_game_sessions_async(
     game_mode: Optional[str] = None,
     is_persistent: Optional[str] = None,
     is_soft_deleted: Optional[str] = None,
-    joinability: Optional[str] = None,
+    joinability: Optional[Union[str, AdminQueryGameSessionsJoinabilityEnum]] = None,
     limit: Optional[int] = None,
     match_pool: Optional[str] = None,
     member_id: Optional[str] = None,
@@ -424,8 +437,8 @@ async def admin_query_game_sessions_async(
     order: Optional[str] = None,
     order_by: Optional[str] = None,
     session_id: Optional[str] = None,
-    status: Optional[str] = None,
-    status_v2: Optional[str] = None,
+    status: Optional[Union[str, AdminQueryGameSessionsStatusEnum]] = None,
+    status_v2: Optional[Union[str, AdminQueryGameSessionsStatusV2Enum]] = None,
     to_time: Optional[str] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
@@ -462,7 +475,7 @@ async def admin_query_game_sessions_async(
 
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
-        joinability: (joinability) OPTIONAL str in query
+        joinability: (joinability) OPTIONAL Union[str, JoinabilityEnum] in query
 
         limit: (limit) OPTIONAL int in query
 
@@ -478,9 +491,9 @@ async def admin_query_game_sessions_async(
 
         session_id: (sessionID) OPTIONAL str in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
-        status_v2: (statusV2) OPTIONAL str in query
+        status_v2: (statusV2) OPTIONAL Union[str, StatusV2Enum] in query
 
         to_time: (toTime) OPTIONAL str in query
 

@@ -40,11 +40,11 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
 
         subscriptions_count: (subscriptionsCount) REQUIRED int
 
-        user_id: (userId) REQUIRED str
-
         display_name: (displayName) OPTIONAL str
 
         email_address: (emailAddress) OPTIONAL str
+
+        user_id: (userId) OPTIONAL str
     """
 
     # region fields
@@ -53,9 +53,9 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
     notification_type: str  # REQUIRED
     subscribed: bool  # REQUIRED
     subscriptions_count: int  # REQUIRED
-    user_id: str  # REQUIRED
     display_name: str  # OPTIONAL
     email_address: str  # OPTIONAL
+    user_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -85,12 +85,6 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
         self.subscriptions_count = value
         return self
 
-    def with_user_id(
-        self, value: str
-    ) -> ApimodelGetNotificationSubscriberStatusResponse:
-        self.user_id = value
-        return self
-
     def with_display_name(
         self, value: str
     ) -> ApimodelGetNotificationSubscriberStatusResponse:
@@ -101,6 +95,12 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
         self, value: str
     ) -> ApimodelGetNotificationSubscriberStatusResponse:
         self.email_address = value
+        return self
+
+    def with_user_id(
+        self, value: str
+    ) -> ApimodelGetNotificationSubscriberStatusResponse:
+        self.user_id = value
         return self
 
     # endregion with_x methods
@@ -125,10 +125,6 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
             result["subscriptionsCount"] = int(self.subscriptions_count)
         elif include_empty:
             result["subscriptionsCount"] = 0
-        if hasattr(self, "user_id"):
-            result["userId"] = str(self.user_id)
-        elif include_empty:
-            result["userId"] = ""
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
@@ -137,6 +133,10 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
             result["emailAddress"] = str(self.email_address)
         elif include_empty:
             result["emailAddress"] = ""
+        if hasattr(self, "user_id"):
+            result["userId"] = str(self.user_id)
+        elif include_empty:
+            result["userId"] = ""
         return result
 
     # endregion to methods
@@ -150,9 +150,9 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
         notification_type: str,
         subscribed: bool,
         subscriptions_count: int,
-        user_id: str,
         display_name: Optional[str] = None,
         email_address: Optional[str] = None,
+        user_id: Optional[str] = None,
         **kwargs,
     ) -> ApimodelGetNotificationSubscriberStatusResponse:
         instance = cls()
@@ -160,11 +160,12 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
         instance.notification_type = notification_type
         instance.subscribed = subscribed
         instance.subscriptions_count = subscriptions_count
-        instance.user_id = user_id
         if display_name is not None:
             instance.display_name = display_name
         if email_address is not None:
             instance.email_address = email_address
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -190,10 +191,6 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
             instance.subscriptions_count = int(dict_["subscriptionsCount"])
         elif include_empty:
             instance.subscriptions_count = 0
-        if "userId" in dict_ and dict_["userId"] is not None:
-            instance.user_id = str(dict_["userId"])
-        elif include_empty:
-            instance.user_id = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
@@ -202,6 +199,10 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
             instance.email_address = str(dict_["emailAddress"])
         elif include_empty:
             instance.email_address = ""
+        if "userId" in dict_ and dict_["userId"] is not None:
+            instance.user_id = str(dict_["userId"])
+        elif include_empty:
+            instance.user_id = ""
         return instance
 
     @classmethod
@@ -249,9 +250,9 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
             "notificationType": "notification_type",
             "subscribed": "subscribed",
             "subscriptionsCount": "subscriptions_count",
-            "userId": "user_id",
             "displayName": "display_name",
             "emailAddress": "email_address",
+            "userId": "user_id",
         }
 
     @staticmethod
@@ -261,9 +262,9 @@ class ApimodelGetNotificationSubscriberStatusResponse(Model):
             "notificationType": True,
             "subscribed": True,
             "subscriptionsCount": True,
-            "userId": True,
             "displayName": False,
             "emailAddress": False,
+            "userId": False,
         }
 
     # endregion static methods

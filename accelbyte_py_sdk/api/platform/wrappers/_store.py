@@ -1511,19 +1511,19 @@ async def import_store_1_async(
 
 @same_doc_as(ImportStoreByCSV)
 def import_store_by_csv(
-    category: Any,
-    display: Any,
-    item: Any,
-    notes: str,
-    section: Any,
     store_id: str,
+    category: Optional[Any] = None,
+    display: Optional[Any] = None,
+    item: Optional[Any] = None,
+    notes: Optional[str] = None,
+    section: Optional[Any] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Import store using CSV format (importStoreByCSV)
 
-    This API is used to import a store by CSV format.
+    This API is used to import a store by CSV format, You must select at least one of item/section/display/category for uploading
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/importByCSV
@@ -1538,15 +1538,15 @@ def import_store_by_csv(
 
         securities: [BEARER_AUTH]
 
-        category: (category) REQUIRED Any in form_data
+        category: (category) OPTIONAL Any in form_data
 
-        display: (display) REQUIRED Any in form_data
+        display: (display) OPTIONAL Any in form_data
 
-        item: (item) REQUIRED Any in form_data
+        item: (item) OPTIONAL Any in form_data
 
-        notes: (notes) REQUIRED str in form_data
+        notes: (notes) OPTIONAL str in form_data
 
-        section: (section) REQUIRED Any in form_data
+        section: (section) OPTIONAL Any in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1566,12 +1566,12 @@ def import_store_by_csv(
         if error:
             return None, error
     request = ImportStoreByCSV.create(
+        store_id=store_id,
         category=category,
         display=display,
         item=item,
         notes=notes,
         section=section,
-        store_id=store_id,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -1579,19 +1579,19 @@ def import_store_by_csv(
 
 @same_doc_as(ImportStoreByCSV)
 async def import_store_by_csv_async(
-    category: Any,
-    display: Any,
-    item: Any,
-    notes: str,
-    section: Any,
     store_id: str,
+    category: Optional[Any] = None,
+    display: Optional[Any] = None,
+    item: Optional[Any] = None,
+    notes: Optional[str] = None,
+    section: Optional[Any] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
 ):
     """Import store using CSV format (importStoreByCSV)
 
-    This API is used to import a store by CSV format.
+    This API is used to import a store by CSV format, You must select at least one of item/section/display/category for uploading
 
     Properties:
         url: /platform/admin/namespaces/{namespace}/stores/{storeId}/importByCSV
@@ -1606,15 +1606,15 @@ async def import_store_by_csv_async(
 
         securities: [BEARER_AUTH]
 
-        category: (category) REQUIRED Any in form_data
+        category: (category) OPTIONAL Any in form_data
 
-        display: (display) REQUIRED Any in form_data
+        display: (display) OPTIONAL Any in form_data
 
-        item: (item) REQUIRED Any in form_data
+        item: (item) OPTIONAL Any in form_data
 
-        notes: (notes) REQUIRED str in form_data
+        notes: (notes) OPTIONAL str in form_data
 
-        section: (section) REQUIRED Any in form_data
+        section: (section) OPTIONAL Any in form_data
 
         namespace: (namespace) REQUIRED str in path
 
@@ -1634,12 +1634,12 @@ async def import_store_by_csv_async(
         if error:
             return None, error
     request = ImportStoreByCSV.create(
+        store_id=store_id,
         category=category,
         display=display,
         item=item,
         notes=notes,
         section=section,
-        store_id=store_id,
         namespace=namespace,
     )
     return await run_request_async(

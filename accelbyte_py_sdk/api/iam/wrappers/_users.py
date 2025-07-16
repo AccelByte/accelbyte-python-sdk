@@ -5201,6 +5201,7 @@ async def admin_get_user_login_histories_v3_async(
 def admin_get_user_mapping(
     target_namespace: str,
     user_id: str,
+    create_if_not_found: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5230,6 +5231,8 @@ def admin_get_user_mapping(
 
         user_id: (userId) REQUIRED str in path
 
+        create_if_not_found: (createIfNotFound) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelGetUserMappingV3 (OK)
 
@@ -5248,6 +5251,7 @@ def admin_get_user_mapping(
     request = AdminGetUserMapping.create(
         target_namespace=target_namespace,
         user_id=user_id,
+        create_if_not_found=create_if_not_found,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -5257,6 +5261,7 @@ def admin_get_user_mapping(
 async def admin_get_user_mapping_async(
     target_namespace: str,
     user_id: str,
+    create_if_not_found: Optional[bool] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -5286,6 +5291,8 @@ async def admin_get_user_mapping_async(
 
         user_id: (userId) REQUIRED str in path
 
+        create_if_not_found: (createIfNotFound) OPTIONAL bool in query
+
     Responses:
         200: OK - ModelGetUserMappingV3 (OK)
 
@@ -5304,6 +5311,7 @@ async def admin_get_user_mapping_async(
     request = AdminGetUserMapping.create(
         target_namespace=target_namespace,
         user_id=user_id,
+        create_if_not_found=create_if_not_found,
         namespace=namespace,
     )
     return await run_request_async(

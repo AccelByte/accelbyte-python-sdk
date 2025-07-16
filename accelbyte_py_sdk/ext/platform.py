@@ -1622,6 +1622,7 @@ def create_dlc_config_reward_short_info_example() -> DLCConfigRewardShortInfo:
 def create_dlc_item_example() -> DLCItem:
     instance = DLCItem()
     instance.auto_update = randomize("bool")
+    instance.enable_revocation = randomize("bool")
     instance.id_ = randomize()
     instance.rewards = [create_platform_reward_example()]
     instance.rvn = randomize("int", min_val=1, max_val=1000)
@@ -1633,6 +1634,7 @@ def create_dlc_item_config_history_info_example() -> DLCItemConfigHistoryInfo:
     instance.auto_update = randomize("bool")
     instance.created_at = randomize("date")
     instance.dlc_id = randomize()
+    instance.enable_revocation = randomize("bool")
     instance.id_ = randomize()
     instance.namespace = randomize("slug")
     instance.rewards = [create_platform_reward_example()]
@@ -1666,6 +1668,7 @@ def create_dlc_record_example() -> DLCRecord:
         create_entitlement_origin_sync_result_example()
     ]
     instance.entitlement_origin_sync_status = randomize()
+    instance.entitlement_summaries = [create_entitlement_summary_example()]
     instance.id_ = randomize()
     instance.metadata = {randomize(): randomize()}
     instance.obtained_at = randomize("date")
@@ -5714,6 +5717,7 @@ def create_user_dlc_record_example() -> UserDLCRecord:
         create_entitlement_origin_sync_result_example()
     ]
     instance.entitlement_origin_sync_status = randomize()
+    instance.entitlement_summaries = [create_entitlement_summary_example()]
     instance.id_ = randomize()
     instance.metadata = {randomize(): randomize()}
     instance.namespace = randomize("slug")

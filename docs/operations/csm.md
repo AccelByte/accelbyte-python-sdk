@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Custom Service Manager Index (1.24.0)
+# Custom Service Manager Index (1.26.0)
 
 
 ## Operations
@@ -101,6 +101,12 @@
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/subscriptions/me | POST | SubscribeV2Handler | `false` | [SubscribeV2Handler](../../accelbyte_py_sdk/api/csm/operations/notification_subscription/subscribe_v2_handler.py) | [subscribe_v2_handler](../../accelbyte_py_sdk/api/csm/wrappers/_notification_subscription.py) | [accelbyte_py_sdk_cli csm-subscribe-v2-handler](../../samples/cli/accelbyte_py_sdk_cli/csm/_subscribe_v2_handler.py) |
 | /csm/v2/admin/namespaces/{namespace}/apps/{app}/subscriptions/me | DELETE | UnsubscribeV2Handler | `false` | [UnsubscribeV2Handler](../../accelbyte_py_sdk/api/csm/operations/notification_subscription/unsubscribe_v2_handler.py) | [unsubscribe_v2_handler](../../accelbyte_py_sdk/api/csm/wrappers/_notification_subscription.py) | [accelbyte_py_sdk_cli csm-unsubscribe-v2-handler](../../samples/cli/accelbyte_py_sdk_cli/csm/_unsubscribe_v2_handler.py) |
 
+### Notification Subscription V3
+| Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
+|---|---|---|---|---|---|---|
+| /csm/v3/admin/namespaces/{namespace}/apps/{app}/subscriptions | DELETE | DeleteSubscriptionAppNotificationV3 | `false` | [DeleteSubscriptionAppNotificationV3](../../accelbyte_py_sdk/api/csm/operations/notification_subscription_v3/delete_subscription_app_2aa6c7.py) | [delete_subscription_app_notification_v3](../../accelbyte_py_sdk/api/csm/wrappers/_notification_subscription_v3.py) | [accelbyte_py_sdk_cli csm-delete-subscription-app-notification-v3](../../samples/cli/accelbyte_py_sdk_cli/csm/_delete_subscription_app_notification_v3.py) |
+| /csm/v3/admin/namespaces/{namespace}/apps/{app}/subscriptions | GET | GetNotificationSubscriberListV3 | `false` | [GetNotificationSubscriberListV3](../../accelbyte_py_sdk/api/csm/operations/notification_subscription_v3/get_notification_subscr_6c8308.py) | [get_notification_subscriber_list_v3](../../accelbyte_py_sdk/api/csm/wrappers/_notification_subscription_v3.py) | [accelbyte_py_sdk_cli csm-get-notification-subscriber-list-v3](../../samples/cli/accelbyte_py_sdk_cli/csm/_get_notification_subscriber_list_v3.py) |
+
 ### Resources Limits
 | Endpoint | Method | ID | Deprecated | Class | Wrapper | Example |
 |---|---|---|---|---|---|---|
@@ -133,11 +139,14 @@
 | apimodel.GetListOfConfigurationsV2DataItem | [ApimodelGetListOfConfigurationsV2DataItem](../../accelbyte_py_sdk/api/csm/models/apimodel_get_list_of_configurations_v2_data_item.py) |
 | apimodel.GetListOfConfigurationsV2Response | [ApimodelGetListOfConfigurationsV2Response](../../accelbyte_py_sdk/api/csm/models/apimodel_get_list_of_configurations_v2_response.py) |
 | apimodel.GetNotificationSubscriberItem | [ApimodelGetNotificationSubscriberItem](../../accelbyte_py_sdk/api/csm/models/apimodel_get_notification_subscriber_item.py) |
+| apimodel.GetNotificationSubscriberItemV2 | [ApimodelGetNotificationSubscriberItemV2](../../accelbyte_py_sdk/api/csm/models/apimodel_get_notification_subscriber_item_v2.py) |
 | apimodel.GetNotificationSubscriberListResponse | [ApimodelGetNotificationSubscriberListResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_get_notification_subscriber_list_response.py) |
+| apimodel.GetNotificationSubscriberListResponseV2 | [ApimodelGetNotificationSubscriberListResponseV2](../../accelbyte_py_sdk/api/csm/models/apimodel_get_notification_subscriber_list_response_v2.py) |
 | apimodel.GetNotificationSubscriberStatusResponse | [ApimodelGetNotificationSubscriberStatusResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_get_notification_subscriber_status_response.py) |
 | apimodel.IncreaseLimitFormRequest | [ApimodelIncreaseLimitFormRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_increase_limit_form_request.py) |
 | apimodel.MemoryRequest | [ApimodelMemoryRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_memory_request.py) |
 | apimodel.MemoryResponse | [ApimodelMemoryResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_memory_response.py) |
+| apimodel.NotificationType | [ApimodelNotificationType](../../accelbyte_py_sdk/api/csm/models/apimodel_notification_type.py) |
 | apimodel.ReplicaRequest | [ApimodelReplicaRequest](../../accelbyte_py_sdk/api/csm/models/apimodel_replica_request.py) |
 | apimodel.ReplicaResponse | [ApimodelReplicaResponse](../../accelbyte_py_sdk/api/csm/models/apimodel_replica_response.py) |
 | apimodel.SaveConfigurationV2Request | [ApimodelSaveConfigurationV2Request](../../accelbyte_py_sdk/api/csm/models/apimodel_save_configuration_v2_request.py) |

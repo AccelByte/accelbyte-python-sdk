@@ -155,7 +155,7 @@ $ python -m accelbyte_py_sdk_cli 'ams-fleet-list' \
 ### Operation `fleet_create`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'ams-fleet-create' \
-    '{"active": false, "claimKeys": ["string"], "dsHostConfiguration": {}, "fallbackFleet": "string", "imageDeploymentProfile": {}, "name": "string", "onDemand": false, "regions": [{}], "samplingRules": {}}' \
+    '{"active": false, "claimKeys": ["string"], "dsHostConfiguration": {}, "fallbackFleet": "string", "hibernateAfterPeriod": "string", "imageDeploymentProfile": {}, "name": "string", "onDemand": false, "regions": [{}], "samplingRules": {}}' \
     'string' \
     > result.txt
 ```
@@ -171,7 +171,7 @@ $ python -m accelbyte_py_sdk_cli 'ams-fleet-get' \
 ### Operation `fleet_update`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'ams-fleet-update' \
-    '{"active": false, "claimKeys": ["string"], "dsHostConfiguration": {}, "fallbackFleet": "string", "imageDeploymentProfile": {}, "name": "string", "onDemand": false, "regions": [{}], "samplingRules": {}}' \
+    '{"active": false, "claimKeys": ["string"], "dsHostConfiguration": {}, "fallbackFleet": "string", "hibernateAfterPeriod": "string", "imageDeploymentProfile": {}, "name": "string", "onDemand": false, "regions": [{}], "samplingRules": {}}' \
     'string' \
     'string' \
     > result.txt

@@ -33,6 +33,21 @@ from ..models.models_extend_configuration import ModelsExtendConfiguration
 from ..models.models_native_session_setting import ModelsNativeSessionSetting
 
 
+class JoinabilityEnum(StrEnum):
+    CLOSED = "CLOSED"
+    FRIENDS_OF_FRIENDS = "FRIENDS_OF_FRIENDS"
+    FRIENDS_OF_LEADER = "FRIENDS_OF_LEADER"
+    FRIENDS_OF_MEMBERS = "FRIENDS_OF_MEMBERS"
+    INVITE_ONLY = "INVITE_ONLY"
+    OPEN = "OPEN"
+
+
+class TypeEnum(StrEnum):
+    DS = "DS"
+    NONE = "NONE"
+    P2P = "P2P"
+
+
 class TextChatModeEnum(StrEnum):
     GAME = "GAME"
     NONE = "NONE"
@@ -53,7 +68,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         invite_timeout: (inviteTimeout) REQUIRED int
 
-        joinability: (joinability) REQUIRED str
+        joinability: (joinability) REQUIRED Union[str, JoinabilityEnum]
 
         last: (last) REQUIRED str
 
@@ -69,7 +84,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
 
         text_chat: (textChat) REQUIRED bool
 
-        type_: (type) REQUIRED str
+        type_: (type) REQUIRED Union[str, TypeEnum]
 
         updated_at: (updatedAt) REQUIRED str
 
@@ -131,7 +146,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     deployment: str  # REQUIRED
     inactive_timeout: int  # REQUIRED
     invite_timeout: int  # REQUIRED
-    joinability: str  # REQUIRED
+    joinability: Union[str, JoinabilityEnum]  # REQUIRED
     last: str  # REQUIRED
     max_players: int  # REQUIRED
     min_players: int  # REQUIRED
@@ -139,7 +154,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
     namespace: str  # REQUIRED
     persistent: bool  # REQUIRED
     text_chat: bool  # REQUIRED
-    type_: str  # REQUIRED
+    type_: Union[str, TypeEnum]  # REQUIRED
     updated_at: str  # REQUIRED
     ams_claim_timeout_minutes: int  # OPTIONAL
     app_name: str  # OPTIONAL
@@ -193,7 +208,9 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self.invite_timeout = value
         return self
 
-    def with_joinability(self, value: str) -> ApimodelsConfigurationTemplateResponse:
+    def with_joinability(
+        self, value: Union[str, JoinabilityEnum]
+    ) -> ApimodelsConfigurationTemplateResponse:
         self.joinability = value
         return self
 
@@ -225,7 +242,9 @@ class ApimodelsConfigurationTemplateResponse(Model):
         self.text_chat = value
         return self
 
-    def with_type(self, value: str) -> ApimodelsConfigurationTemplateResponse:
+    def with_type(
+        self, value: Union[str, TypeEnum]
+    ) -> ApimodelsConfigurationTemplateResponse:
         self.type_ = value
         return self
 
@@ -396,7 +415,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         if hasattr(self, "joinability"):
             result["joinability"] = str(self.joinability)
         elif include_empty:
-            result["joinability"] = ""
+            result["joinability"] = Union[str, JoinabilityEnum]()
         if hasattr(self, "last"):
             result["last"] = str(self.last)
         elif include_empty:
@@ -428,7 +447,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         if hasattr(self, "type_"):
             result["type"] = str(self.type_)
         elif include_empty:
-            result["type"] = ""
+            result["type"] = Union[str, TypeEnum]()
         if hasattr(self, "updated_at"):
             result["updatedAt"] = str(self.updated_at)
         elif include_empty:
@@ -553,7 +572,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         deployment: str,
         inactive_timeout: int,
         invite_timeout: int,
-        joinability: str,
+        joinability: Union[str, JoinabilityEnum],
         last: str,
         max_players: int,
         min_players: int,
@@ -561,7 +580,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         namespace: str,
         persistent: bool,
         text_chat: bool,
-        type_: str,
+        type_: Union[str, TypeEnum],
         updated_at: str,
         ams_claim_timeout_minutes: Optional[int] = None,
         app_name: Optional[str] = None,
@@ -688,7 +707,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         if "joinability" in dict_ and dict_["joinability"] is not None:
             instance.joinability = str(dict_["joinability"])
         elif include_empty:
-            instance.joinability = ""
+            instance.joinability = Union[str, JoinabilityEnum]()
         if "last" in dict_ and dict_["last"] is not None:
             instance.last = str(dict_["last"])
         elif include_empty:
@@ -720,7 +739,7 @@ class ApimodelsConfigurationTemplateResponse(Model):
         if "type" in dict_ and dict_["type"] is not None:
             instance.type_ = str(dict_["type"])
         elif include_empty:
-            instance.type_ = ""
+            instance.type_ = Union[str, TypeEnum]()
         if "updatedAt" in dict_ and dict_["updatedAt"] is not None:
             instance.updated_at = str(dict_["updatedAt"])
         elif include_empty:
@@ -994,6 +1013,15 @@ class ApimodelsConfigurationTemplateResponse(Model):
     @staticmethod
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
+            "joinability": [
+                "CLOSED",
+                "FRIENDS_OF_FRIENDS",
+                "FRIENDS_OF_LEADER",
+                "FRIENDS_OF_MEMBERS",
+                "INVITE_ONLY",
+                "OPEN",
+            ],
+            "type": ["DS", "NONE", "P2P"],
             "textChatMode": ["GAME", "NONE", "TEAM"],
         }
 

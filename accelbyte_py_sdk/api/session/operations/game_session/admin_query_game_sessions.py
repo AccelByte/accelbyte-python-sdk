@@ -28,9 +28,40 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ApimodelsGameSessionQueryResponse
 from ...models import ResponseError
+
+
+class JoinabilityEnum(StrEnum):
+    CLOSED = "CLOSED"
+    FRIENDS_OF_FRIENDS = "FRIENDS_OF_FRIENDS"
+    FRIENDS_OF_LEADER = "FRIENDS_OF_LEADER"
+    FRIENDS_OF_MEMBERS = "FRIENDS_OF_MEMBERS"
+    INVITE_ONLY = "INVITE_ONLY"
+    OPEN = "OPEN"
+
+
+class StatusEnum(StrEnum):
+    AVAILABLE = "AVAILABLE"
+    DS_ERROR = "DS_ERROR"
+    FAILED_TO_REQUEST = "FAILED_TO_REQUEST"
+    NEED_TO_REQUEST = "NEED_TO_REQUEST"
+    PREPARING = "PREPARING"
+    REQUESTED = "REQUESTED"
+
+
+class StatusV2Enum(StrEnum):
+    AVAILABLE = "AVAILABLE"
+    DS_CANCELLED = "DS_CANCELLED"
+    DS_ERROR = "DS_ERROR"
+    ENDED = "ENDED"
+    FAILED_TO_REQUEST = "FAILED_TO_REQUEST"
+    NEED_TO_REQUEST = "NEED_TO_REQUEST"
+    PREPARING = "PREPARING"
+    REQUESTED = "REQUESTED"
+    UNKNOWN = "UNKNOWN"
 
 
 class AdminQueryGameSessions(Operation):
@@ -65,7 +96,7 @@ class AdminQueryGameSessions(Operation):
 
         is_soft_deleted: (isSoftDeleted) OPTIONAL str in query
 
-        joinability: (joinability) OPTIONAL str in query
+        joinability: (joinability) OPTIONAL Union[str, JoinabilityEnum] in query
 
         limit: (limit) OPTIONAL int in query
 
@@ -81,9 +112,9 @@ class AdminQueryGameSessions(Operation):
 
         session_id: (sessionID) OPTIONAL str in query
 
-        status: (status) OPTIONAL str in query
+        status: (status) OPTIONAL Union[str, StatusEnum] in query
 
-        status_v2: (statusV2) OPTIONAL str in query
+        status_v2: (statusV2) OPTIONAL Union[str, StatusV2Enum] in query
 
         to_time: (toTime) OPTIONAL str in query
 
@@ -115,7 +146,7 @@ class AdminQueryGameSessions(Operation):
     game_mode: str  # OPTIONAL in [query]
     is_persistent: str  # OPTIONAL in [query]
     is_soft_deleted: str  # OPTIONAL in [query]
-    joinability: str  # OPTIONAL in [query]
+    joinability: Union[str, JoinabilityEnum]  # OPTIONAL in [query]
     limit: int  # OPTIONAL in [query]
     match_pool: str  # OPTIONAL in [query]
     member_id: str  # OPTIONAL in [query]
@@ -123,8 +154,8 @@ class AdminQueryGameSessions(Operation):
     order: str  # OPTIONAL in [query]
     order_by: str  # OPTIONAL in [query]
     session_id: str  # OPTIONAL in [query]
-    status: str  # OPTIONAL in [query]
-    status_v2: str  # OPTIONAL in [query]
+    status: Union[str, StatusEnum]  # OPTIONAL in [query]
+    status_v2: Union[str, StatusV2Enum]  # OPTIONAL in [query]
     to_time: str  # OPTIONAL in [query]
 
     # endregion fields
@@ -249,7 +280,9 @@ class AdminQueryGameSessions(Operation):
         self.is_soft_deleted = value
         return self
 
-    def with_joinability(self, value: str) -> AdminQueryGameSessions:
+    def with_joinability(
+        self, value: Union[str, JoinabilityEnum]
+    ) -> AdminQueryGameSessions:
         self.joinability = value
         return self
 
@@ -281,11 +314,11 @@ class AdminQueryGameSessions(Operation):
         self.session_id = value
         return self
 
-    def with_status(self, value: str) -> AdminQueryGameSessions:
+    def with_status(self, value: Union[str, StatusEnum]) -> AdminQueryGameSessions:
         self.status = value
         return self
 
-    def with_status_v2(self, value: str) -> AdminQueryGameSessions:
+    def with_status_v2(self, value: Union[str, StatusV2Enum]) -> AdminQueryGameSessions:
         self.status_v2 = value
         return self
 
@@ -330,7 +363,7 @@ class AdminQueryGameSessions(Operation):
         if hasattr(self, "joinability") and self.joinability:
             result["joinability"] = str(self.joinability)
         elif include_empty:
-            result["joinability"] = ""
+            result["joinability"] = Union[str, JoinabilityEnum]()
         if hasattr(self, "limit") and self.limit:
             result["limit"] = int(self.limit)
         elif include_empty:
@@ -362,11 +395,11 @@ class AdminQueryGameSessions(Operation):
         if hasattr(self, "status") and self.status:
             result["status"] = str(self.status)
         elif include_empty:
-            result["status"] = ""
+            result["status"] = Union[str, StatusEnum]()
         if hasattr(self, "status_v2") and self.status_v2:
             result["statusV2"] = str(self.status_v2)
         elif include_empty:
-            result["statusV2"] = ""
+            result["statusV2"] = Union[str, StatusV2Enum]()
         if hasattr(self, "to_time") and self.to_time:
             result["toTime"] = str(self.to_time)
         elif include_empty:
@@ -438,7 +471,7 @@ class AdminQueryGameSessions(Operation):
         game_mode: Optional[str] = None,
         is_persistent: Optional[str] = None,
         is_soft_deleted: Optional[str] = None,
-        joinability: Optional[str] = None,
+        joinability: Optional[Union[str, JoinabilityEnum]] = None,
         limit: Optional[int] = None,
         match_pool: Optional[str] = None,
         member_id: Optional[str] = None,
@@ -446,8 +479,8 @@ class AdminQueryGameSessions(Operation):
         order: Optional[str] = None,
         order_by: Optional[str] = None,
         session_id: Optional[str] = None,
-        status: Optional[str] = None,
-        status_v2: Optional[str] = None,
+        status: Optional[Union[str, StatusEnum]] = None,
+        status_v2: Optional[Union[str, StatusV2Enum]] = None,
         to_time: Optional[str] = None,
         **kwargs,
     ) -> AdminQueryGameSessions:
@@ -527,7 +560,7 @@ class AdminQueryGameSessions(Operation):
         if "joinability" in dict_ and dict_["joinability"] is not None:
             instance.joinability = str(dict_["joinability"])
         elif include_empty:
-            instance.joinability = ""
+            instance.joinability = Union[str, JoinabilityEnum]()
         if "limit" in dict_ and dict_["limit"] is not None:
             instance.limit = int(dict_["limit"])
         elif include_empty:
@@ -559,11 +592,11 @@ class AdminQueryGameSessions(Operation):
         if "status" in dict_ and dict_["status"] is not None:
             instance.status = str(dict_["status"])
         elif include_empty:
-            instance.status = ""
+            instance.status = Union[str, StatusEnum]()
         if "statusV2" in dict_ and dict_["statusV2"] is not None:
             instance.status_v2 = str(dict_["statusV2"])
         elif include_empty:
-            instance.status_v2 = ""
+            instance.status_v2 = Union[str, StatusV2Enum]()
         if "toTime" in dict_ and dict_["toTime"] is not None:
             instance.to_time = str(dict_["toTime"])
         elif include_empty:
@@ -614,6 +647,38 @@ class AdminQueryGameSessions(Operation):
             "status": False,
             "statusV2": False,
             "toTime": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "joinability": [
+                "CLOSED",
+                "FRIENDS_OF_FRIENDS",
+                "FRIENDS_OF_LEADER",
+                "FRIENDS_OF_MEMBERS",
+                "INVITE_ONLY",
+                "OPEN",
+            ],  # in query
+            "status": [
+                "AVAILABLE",
+                "DS_ERROR",
+                "FAILED_TO_REQUEST",
+                "NEED_TO_REQUEST",
+                "PREPARING",
+                "REQUESTED",
+            ],  # in query
+            "statusV2": [
+                "AVAILABLE",
+                "DS_CANCELLED",
+                "DS_ERROR",
+                "ENDED",
+                "FAILED_TO_REQUEST",
+                "NEED_TO_REQUEST",
+                "PREPARING",
+                "REQUESTED",
+                "UNKNOWN",
+            ],  # in query
         }
 
     # endregion static methods

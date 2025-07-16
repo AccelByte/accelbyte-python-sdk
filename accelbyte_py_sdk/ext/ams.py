@@ -323,6 +323,7 @@ def create_api_fleet_claim_req_example() -> ApiFleetClaimReq:
 
 def create_api_fleet_claim_response_example() -> ApiFleetClaimResponse:
     instance = ApiFleetClaimResponse()
+    instance.fleet_id = randomize()
     instance.ip = randomize()
     instance.ports = {}
     instance.region = randomize()
@@ -350,6 +351,7 @@ def create_api_fleet_get_response_example() -> ApiFleetGetResponse:
     instance.primary_fleet = randomize()
     instance.regions = [create_api_region_config_example()]
     instance.sampling_rules = create_api_fleet_artifacts_sample_rules_example()
+    instance.hibernate_after_period = randomize()
     return instance
 
 
@@ -388,6 +390,7 @@ def create_api_fleet_parameters_example() -> ApiFleetParameters:
     instance.regions = [create_api_region_config_example()]
     instance.claim_keys = [randomize()]
     instance.fallback_fleet = randomize()
+    instance.hibernate_after_period = randomize()
     instance.sampling_rules = create_api_fleet_artifacts_sample_rules_example()
     return instance
 

@@ -290,3 +290,22 @@ $ python -m accelbyte_py_sdk_cli 'csm-get-resources-limits' \
     > result.txt
 ```
 
+### Operation `get_notification_subscriber_list_v3`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-get-notification-subscriber-list-v3' \
+    'string' \
+    'string' \
+    'string' \
+    > result.txt
+```
+
+### Operation `delete_subscription_app_notification_v3`
+```sh
+$ python -m accelbyte_py_sdk_cli 'csm-delete-subscription-app-notification-v3' \
+    'string' \
+    'string' \
+    --email_address 'string' \
+    --user_id 'string' \
+    > result.txt
+```
+
