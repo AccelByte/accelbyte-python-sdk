@@ -6,7 +6,7 @@ import logging
 import logging.handlers
 import os
 
-from typing import Any, Tuple, Union
+from typing import Any, Optional, Sequence, Tuple, Union
 from uuid import uuid4
 
 
@@ -122,6 +122,25 @@ def get_member(obj: Any, member_name: str, default: Any = None) -> Any:
         return obj[member_name]
     else:
         return default
+
+
+def get_value_from_dict_with_keys(
+    dict_: dict, keys: Union[str, Sequence[str]], default: Optional[Any] = None, case_insensitive: bool = False
+) -> Optional[Any]:
+    if isinstance(keys, str):
+        keys = [keys]
+
+    if case_insensitive:
+        lut = {str(k).casefold(): v for k, v in dict_.items()}
+        keys = [k.casefold() for k in keys]
+    else:
+        lut = dict_
+
+    for k in keys:
+        if k in lut:
+            return lut[k]
+
+    return default
 
 
 def set_env_config(

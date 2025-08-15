@@ -84,7 +84,7 @@ def lambda_handler(event, context):
     )
 
     # 06. Store extracted and converted OAuth token object.
-    player_token_repo.store_token(oauth_token)
+    player_token_repo.store_token(oauth_token, type="user")
     if issued_at := web_token.get("issued_at"):
         player_token_repo._token_issued_time = issued_at
     log_done("store player AccelByte token")

@@ -7,7 +7,7 @@ from __future__ import annotations
 import logging
 
 from os import PathLike as OSPathLike
-from typing import Any, Dict, Iterable, Optional, Protocol, Set, Tuple
+from typing import Any, Dict, Iterable, Optional, Protocol, Set, Tuple, runtime_checkable
 
 from ._config_repository import ConfigRepository, CONFIG_REPOS, DEFAULT_CONFIG_REPO
 from ._flight_id import add_flight_id
@@ -20,6 +20,7 @@ from ._token_repository import TokenRepository, TOKEN_REPOS, DEFAULT_TOKEN_REPO
 from ._utils import add_buffered_file_handler_to_logger
 
 
+@runtime_checkable
 class OperationPreprocessor(Protocol):
     def __call__(
         self, operation: Operation, sdk: AccelByteSDK, *args, **kwargs
@@ -27,6 +28,7 @@ class OperationPreprocessor(Protocol):
         ...
 
 
+@runtime_checkable
 class RequestPreprocessor(Protocol):
     def __call__(
         self,
@@ -39,6 +41,7 @@ class RequestPreprocessor(Protocol):
         ...
 
 
+@runtime_checkable
 class ResponsePreprocessor(Protocol):
     def __call__(
         self, response: Any, operation: Operation, sdk: AccelByteSDK, *args, **kwargs
@@ -369,9 +372,9 @@ class AccelByteSDK:
             return None, None
         return None, HttpResponse.create_token_repo_not_found_error()
 
-    def set_token(self, token: Any) -> Tuple[None, Optional[HttpResponse]]:
+    def set_token(self, token: Any, **kwargs) -> Tuple[None, Optional[HttpResponse]]:
         if token_repo := self.get_token_repository(raise_when_none=False):
-            success = token_repo.store_token(token)
+            success = token_repo.store_token(token, **kwargs)
             if not success:
                 return None, HttpResponse.create_failed_to_set_token_error()
             return None, None
@@ -605,9 +608,9 @@ def s_remove_token(sdk: Optional[AccelByteSDK] = None):
     return sdk.remove_token()
 
 
-def s_set_token(token, sdk: Optional[AccelByteSDK] = None):
+def s_set_token(token, sdk: Optional[AccelByteSDK] = None, **kwargs):
     sdk = sdk if sdk is not None else SDK
-    return sdk.set_token(token)
+    return sdk.set_token(token, **kwargs)
 
 
 def s_run_request(operation, sdk: Optional[AccelByteSDK] = None, **kwargs):

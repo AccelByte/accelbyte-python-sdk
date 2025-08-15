@@ -42,9 +42,9 @@ class TestTokenRepository(MyTokenRepository):
         self.counter = 0
         super().__init__(token)
 
-    def store_token(self, token: Any) -> bool:
+    def store_token(self, token: Any, **kwargs) -> bool:
         if token is not None:
-            super().store_token(token=token)
+            super().store_token(token=token, **kwargs)
             self.counter += 1
             return True
         return False
@@ -810,7 +810,7 @@ class SdkTestCase(TestCase):
 
         # arrange 1
         token_repo.get_seconds_till_expiry = lambda: 20
-        token_repo.store_token(token={"expires_in": 100})
+        token_repo.store_token(token={"expires_in": 100}, type="user")
 
         # act 1
         needs_refresh = token_repo.has_token_expired(multiplier=refresh_rate)
@@ -820,7 +820,7 @@ class SdkTestCase(TestCase):
 
         # arrange 2
         token_repo.get_seconds_till_expiry = lambda: 80
-        token_repo.store_token(token={"expires_in": 100})
+        token_repo.store_token(token={"expires_in": 100}, type="user")
 
         # act 2
         needs_refresh = token_repo.has_token_expired(multiplier=refresh_rate)

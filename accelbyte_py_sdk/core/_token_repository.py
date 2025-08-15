@@ -33,7 +33,7 @@ class TokenRepository(ABC):
         pass
 
     @abstractmethod
-    def store_token(self, token: Any) -> bool:
+    def store_token(self, token: Any, **kwargs) -> bool:
         pass
 
     def get_access_token(self, default: Any = None) -> Any:
@@ -75,6 +75,10 @@ class TokenRepository(ABC):
         return has_token_expired
 
     # noinspection PyMethodMayBeStatic
+    def get_token_type(self) -> Optional[str]:
+        return None
+
+    # noinspection PyMethodMayBeStatic
     def register_observer(self, observer: TokenRepositoryObserver) -> bool:
         return True
 
@@ -84,12 +88,13 @@ class TokenRepository(ABC):
 
 
 class MyTokenRepository(TokenRepository):
-    def __init__(self, token: Any):
+    def __init__(self, token: Any, **kwargs):
         self._token: Any = None
         self._token_issued_time: Optional[datetime] = None
+        self._token_type: Optional[str] = None
         self._observers: List[TokenRepositoryObserver] = []
 
-        self.store_token(token)
+        self.store_token(token, **kwargs)
 
     def get_token(self) -> Any:
         return self._token
@@ -101,19 +106,24 @@ class MyTokenRepository(TokenRepository):
         if self._token is not None:
             self._token = None
             self._token_issued_time = None
+            self._token_type = None
             access_token = self.get_access_token()
             for observer in self._observers:
                 observer.on_access_token_changed(access_token)
             return True
         return True
 
-    def store_token(self, token: Any) -> bool:
+    def store_token(self, token: Any, **kwargs) -> bool:
         self._token = token
         self._token_issued_time = datetime.utcnow()
+        self._token_type = str(kwargs["type"]).lower() if "type" in kwargs else None
         access_token = self.get_access_token()
         for observer in self._observers:
             observer.on_access_token_changed(access_token)
         return True
+
+    def get_token_type(self) -> Optional[str]:
+        return self._token_type
 
     def register_observer(self, observer: TokenRepositoryObserver) -> bool:
         if observer in self._observers:
@@ -132,6 +142,7 @@ class InMemoryTokenRepository(TokenRepository):
     def __init__(self):
         self._token: Any = None
         self._token_issued_time: Optional[datetime] = None
+        self._token_type: Optional[str] = None
         self._observers: List[TokenRepositoryObserver] = []
 
     def get_token(self) -> Any:
@@ -144,19 +155,24 @@ class InMemoryTokenRepository(TokenRepository):
         if self._token is not None:
             self._token = None
             self._token_issued_time = None
+            self._token_type = None
             access_token = self.get_access_token()
             for observer in self._observers:
                 observer.on_access_token_changed(access_token)
             return True
         return True
 
-    def store_token(self, token: Any) -> bool:
+    def store_token(self, token: Any, **kwargs) -> bool:
         self._token = token
         self._token_issued_time = datetime.utcnow()
+        self._token_type = str(kwargs["type"]).lower() if "type" in kwargs else None
         access_token = self.get_access_token()
         for observer in self._observers:
             observer.on_access_token_changed(access_token)
         return True
+
+    def get_token_type(self) -> Optional[str]:
+        return self._token_type
 
     def register_observer(self, observer: TokenRepositoryObserver) -> bool:
         if observer in self._observers:

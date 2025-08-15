@@ -123,7 +123,7 @@ if __name__ == "__main__":
 from os import environ
 
 import accelbyte_py_sdk
-from accelbyte_py_sdk.services.auth import login_user, logout
+from accelbyte_py_sdk.services.auth.v2 import login_user, logout
 
 
 if __name__ == "__main__":
@@ -155,7 +155,7 @@ login_user(username, password, scope="scopeA")
 ```python
 from os import environ
 import accelbyte_py_sdk
-from accelbyte_py_sdk.services.auth import login_client
+from accelbyte_py_sdk.services.auth.v2 import login_client
 
 
 if __name__ == "__main__":
@@ -174,6 +174,62 @@ if __name__ == "__main__":
 :bulb: The use of a Public OAuth Client is highly discouraged for this use case. Please ensure that you both set the Client ID and Client Secret.
 
 #### Refreshing Tokens
+
+##### Background Token Refresh
+
+To use background token refresh, use the `accelbyte_py_sdk.services.auth.v2.enable_background_refresh(...)`.
+
+```python
+from accelbyte_py_sdk import AccelByteSDK
+from accelbyte_py_sdk.services.auth.v2 import BackgroundOptions, enable_background_refresh 
+
+
+sdk = AccelByteSDK()
+
+enable_background_refresh(
+   sdk=sdk,
+   options=BackgroundOptions(enabled=True, max_retry=2, refresh_rate=0.8, interval=10),
+)
+```
+
+##### On-demand Token Refresh
+
+To use on-demand token refresh, use the `accelbyte_py_sdk.services.auth.v2.enable_on_demand_refresh(...)`.
+
+```python
+from accelbyte_py_sdk import AccelByteSDK
+from accelbyte_py_sdk.services.auth.v2 import OnDemandOptions, enable_on_demand_refresh 
+
+
+sdk = AccelByteSDK()
+
+enable_on_demand_refresh(
+   sdk=sdk,
+   options=OnDemandOptions(enabled=True, max_retry=2, refresh_rate=0.8),
+)
+```
+
+This configuration involves checking for the presence of an existing token, verifying its expiration status.
+If the token has expired, the SDK will then examine whether a refresh token exists.
+If a refresh token is available, it will be utilized to obtain a new token.
+
+##### Manual Token Refresh
+
+To manually refresh the token:
+
+```python
+from accelbyte_py_sdk.core import get_token_repository
+from accelbyte_py_sdk.services.auth.v2 import refresh_login
+
+token_repo = get_token_repository()
+refresh_token = token_repo.get_refresh_token()
+
+token, error = refresh_login(refresh_token)
+assert error is None
+```
+
+<details>
+<summary>v1 (deprecated)</summary>
 
 :bulb: Using `login_x(..., auto_refresh=True)` automatically refreshes the token once the expiration draws near.
 
@@ -208,19 +264,6 @@ timer = LoginUserTimer(
 )
 ```
 
-To manually refresh the token:
-
-```python
-from accelbyte_py_sdk.core import get_token_repository
-from accelbyte_py_sdk.services.auth import refresh_login
-
-token_repo = get_token_repository()
-refresh_token = token_repo.get_refresh_token()
-
-token, error = refresh_login(refresh_token)
-assert error is None
-```
-
 To use on-demand token refresh, enable the `refresh_if_possible` option by setting it to True.
 This configuration involves checking for the presence of an existing token, verifying its expiration status.
 If the token has expired, the SDK will then examine whether a refresh token exists.
@@ -230,12 +273,14 @@ If a refresh token is available, it will be utilized to obtain a new token.
 res, error = login_user(username, password, refresh_if_possible=True)
 ```
 
+</details>
+
 ## Using multiple SDK instances
 
 The examples above demonstrates using just one instance of the Python SDK (the default which is also global), but you could also instantiate multiple instances of the SDK and use them at the same time.
 
 ```python
-import accelbyte_py_sdk.services.auth as auth_service
+import accelbyte_py_sdk.services.auth.v2 as auth_service
 import accelbyte_py_sdk.api.iam as iam_service
 import accelbyte_py_sdk.api.iam.models as iam_models
 
@@ -363,7 +408,7 @@ In this example we will create a new user using the `POST` endpoint `/iam/v3/pub
 import json
 
 import accelbyte_py_sdk
-from accelbyte_py_sdk.services.auth import login_client
+from accelbyte_py_sdk.services.auth.v2 import login_client
 
 # Import the wrapper 'public_create_user_v3'
 # to know which wrapper to use open the docs/<service-name>-index.md and
@@ -485,7 +530,7 @@ import asyncio
 import json
 
 import accelbyte_py_sdk
-from accelbyte_py_sdk.services.auth import login_client
+from accelbyte_py_sdk.services.auth.v2 import login_client
 
 # Import the wrapper 'public_create_user_v3_async'
 # to know which wrapper to use open the docs/<service-name>-index.md and
@@ -622,10 +667,10 @@ if error:
 
 ## Parsing Tokens
 
-You can use `parse_access_token` from `accelbyte_py_sdk.services.auth`.
+You can use `parse_access_token` from `accelbyte_py_sdk.services.auth.v2`.
 
 ```python
-from accelbyte_py_sdk.services.auth import parse_access_token
+from accelbyte_py_sdk.services.auth.v2 import parse_access_token
 
 # access_token = ...
 claims, error = parse_access_token(access_token)
@@ -636,7 +681,7 @@ if error:
 You can also do validation in the same call. By default, it uses `CachingTokenValidator`.
 
 ```python
-from accelbyte_py_sdk.services.auth import parse_access_token
+from accelbyte_py_sdk.services.auth.v2 import parse_access_token
 
 # access_token = ...
 claims, error = parse_access_token(access_token, validate=True)
@@ -647,7 +692,7 @@ if error:
 You can specify what kind (or which) of validator you want to use.
 
 ```python
-from accelbyte_py_sdk.services.auth import parse_access_token
+from accelbyte_py_sdk.services.auth.v2 import parse_access_token
 
 # access_token = ...
 claims, error = parse_access_token(access_token, validator="iam")  # or validator="caching"
@@ -656,7 +701,7 @@ if error:
 ```
 
 ```python
-from accelbyte_py_sdk.services.auth import parse_access_token
+from accelbyte_py_sdk.services.auth.v2 import parse_access_token
 
 token_validator = CachingTokenValidator(sdk)  # or IAMTokenValidator(sdk)
 

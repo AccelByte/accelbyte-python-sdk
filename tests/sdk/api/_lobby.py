@@ -209,7 +209,7 @@ class AsyncMockLobbyServerWebSocketTestCase(IsolatedAsyncioTestCase):
         self.messages = []
 
         access_token = "bar"
-        self.token_repo.store_token(token={"access_token": access_token})
+        self.token_repo.store_token(token={"access_token": access_token}, type="user")
 
         refresh_token_request_message = await self.wait_for_message_type(
             message_type="refreshTokenRequest",

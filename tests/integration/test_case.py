@@ -106,7 +106,7 @@ class SDKTestCaseUtils:
         from accelbyte_py_sdk.core import get_env_user_credentials
         from accelbyte_py_sdk.core import get_http_client
         from accelbyte_py_sdk.core import get_namespace
-        from accelbyte_py_sdk.services.auth import login_user
+        from accelbyte_py_sdk.services.auth.v2 import login_user
 
         if not is_initialized():
             accelbyte_py_sdk.initialize(options=get_init_options())

@@ -380,38 +380,14 @@ def remove_token() -> Tuple[None, Union[None, HttpResponse]]:
     return None, None
 
 
-def set_token(token: Any) -> Tuple[None, Union[None, HttpResponse]]:
+def set_token(token: Any, **kwargs) -> Tuple[None, Union[None, HttpResponse]]:
     token_repo = _TOKEN_REPOSITORY
     if not token_repo:
         return None, HttpResponse.create_token_repo_not_found_error()
-    success = token_repo.store_token(token)
+    success = token_repo.store_token(token, **kwargs)
     if not success:
         return None, HttpResponse.create_error(400, "Failed to set token.")
     return None, None
-
-
-def _is_valid_token(token: Any) -> bool:
-    if token is None:
-        return False
-    access_token_key = "access_token"
-    if hasattr(token, access_token_key):  # in attr
-        return True
-    if isinstance(token, dict) and access_token_key in token:  # in dict
-        return True
-    return False
-
-
-def _try_set_token(token: Any) -> Tuple[bool, Union[None, HttpResponse]]:
-    if token is None:
-        return False, HttpResponse.create_error(400, "Empty token.")
-    if not _is_valid_token(token):
-        return False, HttpResponse.create_error(
-            400, "Failed to set token. The token is not valid."
-        )
-    _, error = set_token(token)
-    if error:
-        return True, error
-    return True, None
 
 
 # endregion TokenRepository
@@ -480,11 +456,6 @@ def _post_run_request(
             return None, error
         else:
             return query, None
-
-    # TODO(elmer): still not a fan of this bit
-    is_valid_token, error = _try_set_token(success)
-    if error and is_valid_token:
-        return None, error
 
     return success, None
 
