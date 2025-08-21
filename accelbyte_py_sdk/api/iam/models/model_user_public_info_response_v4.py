@@ -32,6 +32,8 @@ class ModelUserPublicInfoResponseV4(Model):
     """Model user public info response V4 (model.UserPublicInfoResponseV4)
 
     Properties:
+        created_at: (createdAt) REQUIRED str
+
         display_name: (displayName) REQUIRED str
 
         user_id: (userId) REQUIRED str
@@ -43,6 +45,7 @@ class ModelUserPublicInfoResponseV4(Model):
 
     # region fields
 
+    created_at: str  # REQUIRED
     display_name: str  # REQUIRED
     user_id: str  # REQUIRED
     avatar_url: str  # OPTIONAL
@@ -51,6 +54,10 @@ class ModelUserPublicInfoResponseV4(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_created_at(self, value: str) -> ModelUserPublicInfoResponseV4:
+        self.created_at = value
+        return self
 
     def with_display_name(self, value: str) -> ModelUserPublicInfoResponseV4:
         self.display_name = value
@@ -74,6 +81,10 @@ class ModelUserPublicInfoResponseV4(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = ""
         if hasattr(self, "display_name"):
             result["displayName"] = str(self.display_name)
         elif include_empty:
@@ -99,6 +110,7 @@ class ModelUserPublicInfoResponseV4(Model):
     @classmethod
     def create(
         cls,
+        created_at: str,
         display_name: str,
         user_id: str,
         avatar_url: Optional[str] = None,
@@ -106,6 +118,7 @@ class ModelUserPublicInfoResponseV4(Model):
         **kwargs,
     ) -> ModelUserPublicInfoResponseV4:
         instance = cls()
+        instance.created_at = created_at
         instance.display_name = display_name
         instance.user_id = user_id
         if avatar_url is not None:
@@ -121,6 +134,10 @@ class ModelUserPublicInfoResponseV4(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = ""
         if "displayName" in dict_ and dict_["displayName"] is not None:
             instance.display_name = str(dict_["displayName"])
         elif include_empty:
@@ -180,6 +197,7 @@ class ModelUserPublicInfoResponseV4(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "createdAt": "created_at",
             "displayName": "display_name",
             "userId": "user_id",
             "avatarUrl": "avatar_url",
@@ -189,6 +207,7 @@ class ModelUserPublicInfoResponseV4(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "createdAt": True,
             "displayName": True,
             "userId": True,
             "avatarUrl": False,

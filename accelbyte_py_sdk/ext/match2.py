@@ -73,6 +73,8 @@ from ..api.match2.models import ModelsPagination
 from ..api.match2.models import ModelsPlayFeatureFlag
 from ..api.match2.models import ModelsServer
 from ..api.match2.models import ModelsUser
+from ..api.match2.models import ModelsXRayConfigHttpResponse
+from ..api.match2.models import ModelsXRayConfigHttpUpdateRequest
 from ..api.match2.models import PlayerPlayerData
 from ..api.match2.models import ResponseError
 
@@ -559,6 +561,20 @@ def create_models_user_example() -> ModelsUser:
     instance.status_v2 = randomize()
     instance.updated_at = randomize("date")
     instance.previous_status = randomize()
+    return instance
+
+
+def create_models_x_ray_config_http_response_example() -> ModelsXRayConfigHttpResponse:
+    instance = ModelsXRayConfigHttpResponse()
+    instance.whitelisted_users = [randomize()]
+    return instance
+
+
+def create_models_x_ray_config_http_update_request_example() -> (
+    ModelsXRayConfigHttpUpdateRequest
+):
+    instance = ModelsXRayConfigHttpUpdateRequest()
+    instance.whitelisted_users = [randomize()]
     return instance
 
 

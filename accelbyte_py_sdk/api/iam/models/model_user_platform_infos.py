@@ -34,6 +34,8 @@ class ModelUserPlatformInfos(Model):
     """Model user platform infos (model.UserPlatformInfos)
 
     Properties:
+        created_at: (createdAt) REQUIRED str
+
         platform_infos: (platformInfos) REQUIRED List[ModelUserPlatformInfo]
 
         user_id: (userId) REQUIRED str
@@ -47,6 +49,7 @@ class ModelUserPlatformInfos(Model):
 
     # region fields
 
+    created_at: str  # REQUIRED
     platform_infos: List[ModelUserPlatformInfo]  # REQUIRED
     user_id: str  # REQUIRED
     avatar_url: str  # OPTIONAL
@@ -56,6 +59,10 @@ class ModelUserPlatformInfos(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_created_at(self, value: str) -> ModelUserPlatformInfos:
+        self.created_at = value
+        return self
 
     def with_platform_infos(
         self, value: List[ModelUserPlatformInfo]
@@ -85,6 +92,10 @@ class ModelUserPlatformInfos(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "created_at"):
+            result["createdAt"] = str(self.created_at)
+        elif include_empty:
+            result["createdAt"] = ""
         if hasattr(self, "platform_infos"):
             result["platformInfos"] = [
                 i0.to_dict(include_empty=include_empty) for i0 in self.platform_infos
@@ -116,6 +127,7 @@ class ModelUserPlatformInfos(Model):
     @classmethod
     def create(
         cls,
+        created_at: str,
         platform_infos: List[ModelUserPlatformInfo],
         user_id: str,
         avatar_url: Optional[str] = None,
@@ -124,6 +136,7 @@ class ModelUserPlatformInfos(Model):
         **kwargs,
     ) -> ModelUserPlatformInfos:
         instance = cls()
+        instance.created_at = created_at
         instance.platform_infos = platform_infos
         instance.user_id = user_id
         if avatar_url is not None:
@@ -141,6 +154,10 @@ class ModelUserPlatformInfos(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "createdAt" in dict_ and dict_["createdAt"] is not None:
+            instance.created_at = str(dict_["createdAt"])
+        elif include_empty:
+            instance.created_at = ""
         if "platformInfos" in dict_ and dict_["platformInfos"] is not None:
             instance.platform_infos = [
                 ModelUserPlatformInfo.create_from_dict(i0, include_empty=include_empty)
@@ -207,6 +224,7 @@ class ModelUserPlatformInfos(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "createdAt": "created_at",
             "platformInfos": "platform_infos",
             "userId": "user_id",
             "avatarUrl": "avatar_url",
@@ -217,6 +235,7 @@ class ModelUserPlatformInfos(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "createdAt": True,
             "platformInfos": True,
             "userId": True,
             "avatarUrl": False,

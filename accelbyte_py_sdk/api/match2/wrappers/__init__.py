@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Match Service V2."""
 
-__version__ = "2.35.0"
+__version__ = "2.35.2"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
@@ -108,3 +108,8 @@ from ._rule_sets import rule_set_list
 from ._rule_sets import rule_set_list_async
 from ._rule_sets import update_rule_set
 from ._rule_sets import update_rule_set_async
+
+from ._x_ray_config import admin_get_x_ray_config
+from ._x_ray_config import admin_get_x_ray_config_async
+from ._x_ray_config import admin_update_x_ray_config
+from ._x_ray_config import admin_update_x_ray_config_async

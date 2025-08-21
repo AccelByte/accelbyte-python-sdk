@@ -32,15 +32,15 @@ class ApimodelSubscriberItemRequest(Model):
     """Apimodel subscriber item request (apimodel.SubscriberItemRequest)
 
     Properties:
-        email_address: (emailAddress) REQUIRED str
+        email_address: (emailAddress) OPTIONAL str
 
-        user_id: (userId) REQUIRED str
+        user_id: (userId) OPTIONAL str
     """
 
     # region fields
 
-    email_address: str  # REQUIRED
-    user_id: str  # REQUIRED
+    email_address: str  # OPTIONAL
+    user_id: str  # OPTIONAL
 
     # endregion fields
 
@@ -76,11 +76,16 @@ class ApimodelSubscriberItemRequest(Model):
 
     @classmethod
     def create(
-        cls, email_address: str, user_id: str, **kwargs
+        cls,
+        email_address: Optional[str] = None,
+        user_id: Optional[str] = None,
+        **kwargs,
     ) -> ApimodelSubscriberItemRequest:
         instance = cls()
-        instance.email_address = email_address
-        instance.user_id = user_id
+        if email_address is not None:
+            instance.email_address = email_address
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -148,8 +153,8 @@ class ApimodelSubscriberItemRequest(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "emailAddress": True,
-            "userId": True,
+            "emailAddress": False,
+            "userId": False,
         }
 
     # endregion static methods

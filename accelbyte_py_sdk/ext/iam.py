@@ -3341,6 +3341,7 @@ def create_model_user_platform_info_example() -> ModelUserPlatformInfo:
 
 def create_model_user_platform_infos_example() -> ModelUserPlatformInfos:
     instance = ModelUserPlatformInfos()
+    instance.created_at = randomize("date")
     instance.platform_infos = [create_model_user_platform_info_example()]
     instance.user_id = randomize("uid")
     instance.avatar_url = randomize("url")
@@ -3393,6 +3394,7 @@ def create_model_user_public_info_response_v4_example() -> (
     ModelUserPublicInfoResponseV4
 ):
     instance = ModelUserPublicInfoResponseV4()
+    instance.created_at = randomize("date")
     instance.display_name = randomize("slug")
     instance.user_id = randomize("uid")
     instance.avatar_url = randomize("url")

@@ -490,6 +490,7 @@ def create_apimodels_trade_item_example() -> ApimodelsTradeItem:
 
 def create_apimodels_trade_item_resp_example() -> ApimodelsTradeItemResp:
     instance = ApimodelsTradeItemResp()
+    instance.id_ = randomize()
     instance.qty = randomize("int", min_val=1, max_val=1000)
     instance.slot_id = randomize()
     instance.source_item_id = randomize()

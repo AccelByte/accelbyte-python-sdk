@@ -661,7 +661,7 @@ def subscribe_app_notification_v2(
     Request body:
     - notificationType : type of the app notification to be subscribed - Required.
     - values:
-    -"all"
+    - "all"
     - "app-down"
     - "critical-vulnerability"
     - subscribers : user(s) to subscribe the app notification - Required.
@@ -725,7 +725,7 @@ async def subscribe_app_notification_v2_async(
     Request body:
     - notificationType : type of the app notification to be subscribed - Required.
     - values:
-    -"all"
+    - "all"
     - "app-down"
     - "critical-vulnerability"
     - subscribers : user(s) to subscribe the app notification - Required.

@@ -32,31 +32,31 @@ class ApimodelBulkSubscribeItem(Model):
     """Apimodel bulk subscribe item (apimodel.BulkSubscribeItem)
 
     Properties:
-        email_address: (emailAddress) REQUIRED str
-
         notification_type: (notificationType) REQUIRED Dict[str, bool]
 
-        user_id: (userId) REQUIRED str
+        email_address: (emailAddress) OPTIONAL str
+
+        user_id: (userId) OPTIONAL str
     """
 
     # region fields
 
-    email_address: str  # REQUIRED
     notification_type: Dict[str, bool]  # REQUIRED
-    user_id: str  # REQUIRED
+    email_address: str  # OPTIONAL
+    user_id: str  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
 
-    def with_email_address(self, value: str) -> ApimodelBulkSubscribeItem:
-        self.email_address = value
-        return self
-
     def with_notification_type(
         self, value: Dict[str, bool]
     ) -> ApimodelBulkSubscribeItem:
         self.notification_type = value
+        return self
+
+    def with_email_address(self, value: str) -> ApimodelBulkSubscribeItem:
+        self.email_address = value
         return self
 
     def with_user_id(self, value: str) -> ApimodelBulkSubscribeItem:
@@ -69,16 +69,16 @@ class ApimodelBulkSubscribeItem(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "email_address"):
-            result["emailAddress"] = str(self.email_address)
-        elif include_empty:
-            result["emailAddress"] = ""
         if hasattr(self, "notification_type"):
             result["notificationType"] = {
                 str(k0): bool(v0) for k0, v0 in self.notification_type.items()
             }
         elif include_empty:
             result["notificationType"] = {}
+        if hasattr(self, "email_address"):
+            result["emailAddress"] = str(self.email_address)
+        elif include_empty:
+            result["emailAddress"] = ""
         if hasattr(self, "user_id"):
             result["userId"] = str(self.user_id)
         elif include_empty:
@@ -92,15 +92,17 @@ class ApimodelBulkSubscribeItem(Model):
     @classmethod
     def create(
         cls,
-        email_address: str,
         notification_type: Dict[str, bool],
-        user_id: str,
+        email_address: Optional[str] = None,
+        user_id: Optional[str] = None,
         **kwargs,
     ) -> ApimodelBulkSubscribeItem:
         instance = cls()
-        instance.email_address = email_address
         instance.notification_type = notification_type
-        instance.user_id = user_id
+        if email_address is not None:
+            instance.email_address = email_address
+        if user_id is not None:
+            instance.user_id = user_id
         return instance
 
     @classmethod
@@ -110,16 +112,16 @@ class ApimodelBulkSubscribeItem(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
-            instance.email_address = str(dict_["emailAddress"])
-        elif include_empty:
-            instance.email_address = ""
         if "notificationType" in dict_ and dict_["notificationType"] is not None:
             instance.notification_type = {
                 str(k0): bool(v0) for k0, v0 in dict_["notificationType"].items()
             }
         elif include_empty:
             instance.notification_type = {}
+        if "emailAddress" in dict_ and dict_["emailAddress"] is not None:
+            instance.email_address = str(dict_["emailAddress"])
+        elif include_empty:
+            instance.email_address = ""
         if "userId" in dict_ and dict_["userId"] is not None:
             instance.user_id = str(dict_["userId"])
         elif include_empty:
@@ -167,17 +169,17 @@ class ApimodelBulkSubscribeItem(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "emailAddress": "email_address",
             "notificationType": "notification_type",
+            "emailAddress": "email_address",
             "userId": "user_id",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "emailAddress": True,
             "notificationType": True,
-            "userId": True,
+            "emailAddress": False,
+            "userId": False,
         }
 
     # endregion static methods

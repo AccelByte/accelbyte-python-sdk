@@ -47,6 +47,21 @@ $ python -m accelbyte_py_sdk_cli 'match2-admin-delete-play-feature-flag' \
     > result.txt
 ```
 
+### Operation `admin_get_x_ray_config`
+```sh
+$ python -m accelbyte_py_sdk_cli 'match2-admin-get-x-ray-config' \
+    'string' \
+    > result.txt
+```
+
+### Operation `admin_update_x_ray_config`
+```sh
+$ python -m accelbyte_py_sdk_cli 'match2-admin-update-x-ray-config' \
+    '{"whitelistedUsers": ["string"]}' \
+    'string' \
+    > result.txt
+```
+
 ### Operation `admin_get_all_config_v1`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'match2-admin-get-all-config-v1' \

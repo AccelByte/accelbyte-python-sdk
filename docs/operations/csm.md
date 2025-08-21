@@ -2,7 +2,7 @@
 
 [//]: # (<< template file: ags_py_codegen)
 
-# Custom Service Manager Index (1.26.0)
+# Custom Service Manager Index (1.26.1)
 
 
 ## Operations

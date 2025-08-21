@@ -40,6 +40,10 @@ from ..operations.development import DevelopmentServerConfigurationCreate
 from ..operations.development import DevelopmentServerConfigurationDelete
 from ..operations.development import DevelopmentServerConfigurationGet
 from ..operations.development import DevelopmentServerConfigurationList
+from ..operations.development import (
+    DevelopmentServerConfigurationListSortByEnum,
+    DevelopmentServerConfigurationListSortDirectionEnum,
+)
 from ..operations.development import DevelopmentServerConfigurationPatch
 
 
@@ -356,7 +360,13 @@ async def development_server_configuration_get_async(
 @same_doc_as(DevelopmentServerConfigurationList)
 def development_server_configuration_list(
     count: Optional[int] = None,
+    image_id: Optional[str] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[Union[str, DevelopmentServerConfigurationListSortByEnum]] = None,
+    sort_direction: Optional[
+        Union[str, DevelopmentServerConfigurationListSortDirectionEnum]
+    ] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -382,7 +392,15 @@ def development_server_configuration_list(
 
         count: (count) OPTIONAL int in query
 
+        image_id: (imageId) OPTIONAL str in query
+
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
 
     Responses:
         200: OK - ApiDevelopmentServerConfigurationListResponse (development server configurations)
@@ -399,7 +417,11 @@ def development_server_configuration_list(
             return None, error
     request = DevelopmentServerConfigurationList.create(
         count=count,
+        image_id=image_id,
+        name=name,
         offset=offset,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -408,7 +430,13 @@ def development_server_configuration_list(
 @same_doc_as(DevelopmentServerConfigurationList)
 async def development_server_configuration_list_async(
     count: Optional[int] = None,
+    image_id: Optional[str] = None,
+    name: Optional[str] = None,
     offset: Optional[int] = None,
+    sort_by: Optional[Union[str, DevelopmentServerConfigurationListSortByEnum]] = None,
+    sort_direction: Optional[
+        Union[str, DevelopmentServerConfigurationListSortDirectionEnum]
+    ] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -434,7 +462,15 @@ async def development_server_configuration_list_async(
 
         count: (count) OPTIONAL int in query
 
+        image_id: (imageId) OPTIONAL str in query
+
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
 
     Responses:
         200: OK - ApiDevelopmentServerConfigurationListResponse (development server configurations)
@@ -451,7 +487,11 @@ async def development_server_configuration_list_async(
             return None, error
     request = DevelopmentServerConfigurationList.create(
         count=count,
+        image_id=image_id,
+        name=name,
         offset=offset,
+        sort_by=sort_by,
+        sort_direction=sort_direction,
         namespace=namespace,
     )
     return await run_request_async(

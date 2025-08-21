@@ -101,9 +101,9 @@ def create_apimodels_refresh_ticket_response_example() -> (
 
 def create_response_error_example() -> ResponseError:
     instance = ResponseError()
-    instance.attributes = {randomize(): randomize()}
     instance.error_code = randomize("int", min_val=1, max_val=1000)
     instance.error_message = randomize()
     instance.message = randomize()
     instance.name = randomize()
+    instance.attributes = {randomize(): randomize()}
     return instance

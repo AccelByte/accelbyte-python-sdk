@@ -248,6 +248,7 @@ def create_api_development_server_configuration_list_response_example() -> (
 ):
     instance = ApiDevelopmentServerConfigurationListResponse()
     instance.data = [create_api_development_server_configuration_get_response_example()]
+    instance.paging = create_pagination_pagination_info_example()
     instance.total_data = randomize("int", min_val=1, max_val=1000)
     return instance
 

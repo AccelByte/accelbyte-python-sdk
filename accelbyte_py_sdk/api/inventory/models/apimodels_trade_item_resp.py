@@ -32,6 +32,8 @@ class ApimodelsTradeItemResp(Model):
     """Apimodels trade item resp (apimodels.TradeItemResp)
 
     Properties:
+        id_: (id) REQUIRED str
+
         qty: (qty) REQUIRED int
 
         slot_id: (slotId) REQUIRED str
@@ -41,6 +43,7 @@ class ApimodelsTradeItemResp(Model):
 
     # region fields
 
+    id_: str  # REQUIRED
     qty: int  # REQUIRED
     slot_id: str  # REQUIRED
     source_item_id: str  # REQUIRED
@@ -48,6 +51,10 @@ class ApimodelsTradeItemResp(Model):
     # endregion fields
 
     # region with_x methods
+
+    def with_id(self, value: str) -> ApimodelsTradeItemResp:
+        self.id_ = value
+        return self
 
     def with_qty(self, value: int) -> ApimodelsTradeItemResp:
         self.qty = value
@@ -67,6 +74,10 @@ class ApimodelsTradeItemResp(Model):
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
+        if hasattr(self, "id_"):
+            result["id"] = str(self.id_)
+        elif include_empty:
+            result["id"] = ""
         if hasattr(self, "qty"):
             result["qty"] = int(self.qty)
         elif include_empty:
@@ -87,9 +98,10 @@ class ApimodelsTradeItemResp(Model):
 
     @classmethod
     def create(
-        cls, qty: int, slot_id: str, source_item_id: str, **kwargs
+        cls, id_: str, qty: int, slot_id: str, source_item_id: str, **kwargs
     ) -> ApimodelsTradeItemResp:
         instance = cls()
+        instance.id_ = id_
         instance.qty = qty
         instance.slot_id = slot_id
         instance.source_item_id = source_item_id
@@ -102,6 +114,10 @@ class ApimodelsTradeItemResp(Model):
         instance = cls()
         if not dict_:
             return instance
+        if "id" in dict_ and dict_["id"] is not None:
+            instance.id_ = str(dict_["id"])
+        elif include_empty:
+            instance.id_ = ""
         if "qty" in dict_ and dict_["qty"] is not None:
             instance.qty = int(dict_["qty"])
         elif include_empty:
@@ -157,6 +173,7 @@ class ApimodelsTradeItemResp(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
+            "id": "id_",
             "qty": "qty",
             "slotId": "slot_id",
             "sourceItemId": "source_item_id",
@@ -165,6 +182,7 @@ class ApimodelsTradeItemResp(Model):
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
+            "id": True,
             "qty": True,
             "slotId": True,
             "sourceItemId": True,

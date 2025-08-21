@@ -149,8 +149,8 @@ def create_apimodel_autoscaling_response_example() -> ApimodelAutoscalingRespons
 
 def create_apimodel_bulk_subscribe_item_example() -> ApimodelBulkSubscribeItem:
     instance = ApimodelBulkSubscribeItem()
-    instance.email_address = randomize("email")
     instance.notification_type = {}
+    instance.email_address = randomize("email")
     instance.user_id = randomize("uid")
     return instance
 

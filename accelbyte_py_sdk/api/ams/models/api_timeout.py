@@ -29,7 +29,7 @@ from ....core import Model
 
 
 class ApiTimeout(Model):
-    """Api timeout (api.Timeout)
+    """Contains fleet timeout configuration.  Fields accept duration strings (e.g. '30s', '1h30m'), an integer number of seconds. (api.Timeout)
 
     Properties:
         claim: (claim) OPTIONAL int

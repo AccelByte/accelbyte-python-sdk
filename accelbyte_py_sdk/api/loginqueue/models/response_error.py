@@ -32,8 +32,6 @@ class ResponseError(Model):
     """Response error (response.Error)
 
     Properties:
-        attributes: (attributes) REQUIRED Dict[str, str]
-
         error_code: (errorCode) REQUIRED int
 
         error_message: (errorMessage) REQUIRED str
@@ -41,23 +39,21 @@ class ResponseError(Model):
         message: (message) REQUIRED str
 
         name: (name) REQUIRED str
+
+        attributes: (attributes) OPTIONAL Dict[str, str]
     """
 
     # region fields
 
-    attributes: Dict[str, str]  # REQUIRED
     error_code: int  # REQUIRED
     error_message: str  # REQUIRED
     message: str  # REQUIRED
     name: str  # REQUIRED
+    attributes: Dict[str, str]  # OPTIONAL
 
     # endregion fields
 
     # region with_x methods
-
-    def with_attributes(self, value: Dict[str, str]) -> ResponseError:
-        self.attributes = value
-        return self
 
     def with_error_code(self, value: int) -> ResponseError:
         self.error_code = value
@@ -75,18 +71,16 @@ class ResponseError(Model):
         self.name = value
         return self
 
+    def with_attributes(self, value: Dict[str, str]) -> ResponseError:
+        self.attributes = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
 
     def to_dict(self, include_empty: bool = False) -> dict:
         result: dict = {}
-        if hasattr(self, "attributes"):
-            result["attributes"] = {
-                str(k0): str(v0) for k0, v0 in self.attributes.items()
-            }
-        elif include_empty:
-            result["attributes"] = {}
         if hasattr(self, "error_code"):
             result["errorCode"] = int(self.error_code)
         elif include_empty:
@@ -103,6 +97,12 @@ class ResponseError(Model):
             result["name"] = str(self.name)
         elif include_empty:
             result["name"] = ""
+        if hasattr(self, "attributes"):
+            result["attributes"] = {
+                str(k0): str(v0) for k0, v0 in self.attributes.items()
+            }
+        elif include_empty:
+            result["attributes"] = {}
         return result
 
     # endregion to methods
@@ -112,19 +112,20 @@ class ResponseError(Model):
     @classmethod
     def create(
         cls,
-        attributes: Dict[str, str],
         error_code: int,
         error_message: str,
         message: str,
         name: str,
+        attributes: Optional[Dict[str, str]] = None,
         **kwargs,
     ) -> ResponseError:
         instance = cls()
-        instance.attributes = attributes
         instance.error_code = error_code
         instance.error_message = error_message
         instance.message = message
         instance.name = name
+        if attributes is not None:
+            instance.attributes = attributes
         return instance
 
     @classmethod
@@ -134,12 +135,6 @@ class ResponseError(Model):
         instance = cls()
         if not dict_:
             return instance
-        if "attributes" in dict_ and dict_["attributes"] is not None:
-            instance.attributes = {
-                str(k0): str(v0) for k0, v0 in dict_["attributes"].items()
-            }
-        elif include_empty:
-            instance.attributes = {}
         if "errorCode" in dict_ and dict_["errorCode"] is not None:
             instance.error_code = int(dict_["errorCode"])
         elif include_empty:
@@ -156,6 +151,12 @@ class ResponseError(Model):
             instance.name = str(dict_["name"])
         elif include_empty:
             instance.name = ""
+        if "attributes" in dict_ and dict_["attributes"] is not None:
+            instance.attributes = {
+                str(k0): str(v0) for k0, v0 in dict_["attributes"].items()
+            }
+        elif include_empty:
+            instance.attributes = {}
         return instance
 
     @classmethod
@@ -195,21 +196,21 @@ class ResponseError(Model):
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
-            "attributes": "attributes",
             "errorCode": "error_code",
             "errorMessage": "error_message",
             "message": "message",
             "name": "name",
+            "attributes": "attributes",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
-            "attributes": True,
             "errorCode": True,
             "errorMessage": True,
             "message": True,
             "name": True,
+            "attributes": False,
         }
 
     # endregion static methods

@@ -28,9 +28,21 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
+from .....core import StrEnum
 
 from ...models import ApiDevelopmentServerConfigurationListResponse
 from ...models import ResponseErrorResponse
+
+
+class SortByEnum(StrEnum):
+    CREATED_AT = "created_at"
+    EXPIRES_AT = "expires_at"
+    NAME = "name"
+
+
+class SortDirectionEnum(StrEnum):
+    ASC = "asc"
+    DESC = "desc"
 
 
 class DevelopmentServerConfigurationList(Operation):
@@ -55,7 +67,15 @@ class DevelopmentServerConfigurationList(Operation):
 
         count: (count) OPTIONAL int in query
 
+        image_id: (imageId) OPTIONAL str in query
+
+        name: (name) OPTIONAL str in query
+
         offset: (offset) OPTIONAL int in query
+
+        sort_by: (sortBy) OPTIONAL Union[str, SortByEnum] in query
+
+        sort_direction: (sortDirection) OPTIONAL Union[str, SortDirectionEnum] in query
 
     Responses:
         200: OK - ApiDevelopmentServerConfigurationListResponse (development server configurations)
@@ -78,7 +98,11 @@ class DevelopmentServerConfigurationList(Operation):
 
     namespace: str  # REQUIRED in [path]
     count: int  # OPTIONAL in [query]
+    image_id: str  # OPTIONAL in [query]
+    name: str  # OPTIONAL in [query]
     offset: int  # OPTIONAL in [query]
+    sort_by: Union[str, SortByEnum]  # OPTIONAL in [query]
+    sort_direction: Union[str, SortDirectionEnum]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -132,8 +156,16 @@ class DevelopmentServerConfigurationList(Operation):
         result = {}
         if hasattr(self, "count"):
             result["count"] = self.count
+        if hasattr(self, "image_id"):
+            result["imageId"] = self.image_id
+        if hasattr(self, "name"):
+            result["name"] = self.name
         if hasattr(self, "offset"):
             result["offset"] = self.offset
+        if hasattr(self, "sort_by"):
+            result["sortBy"] = self.sort_by
+        if hasattr(self, "sort_direction"):
+            result["sortDirection"] = self.sort_direction
         return result
 
     # endregion get_x_params methods
@@ -152,8 +184,28 @@ class DevelopmentServerConfigurationList(Operation):
         self.count = value
         return self
 
+    def with_image_id(self, value: str) -> DevelopmentServerConfigurationList:
+        self.image_id = value
+        return self
+
+    def with_name(self, value: str) -> DevelopmentServerConfigurationList:
+        self.name = value
+        return self
+
     def with_offset(self, value: int) -> DevelopmentServerConfigurationList:
         self.offset = value
+        return self
+
+    def with_sort_by(
+        self, value: Union[str, SortByEnum]
+    ) -> DevelopmentServerConfigurationList:
+        self.sort_by = value
+        return self
+
+    def with_sort_direction(
+        self, value: Union[str, SortDirectionEnum]
+    ) -> DevelopmentServerConfigurationList:
+        self.sort_direction = value
         return self
 
     # endregion with_x methods
@@ -170,10 +222,26 @@ class DevelopmentServerConfigurationList(Operation):
             result["count"] = int(self.count)
         elif include_empty:
             result["count"] = 0
+        if hasattr(self, "image_id") and self.image_id:
+            result["imageId"] = str(self.image_id)
+        elif include_empty:
+            result["imageId"] = ""
+        if hasattr(self, "name") and self.name:
+            result["name"] = str(self.name)
+        elif include_empty:
+            result["name"] = ""
         if hasattr(self, "offset") and self.offset:
             result["offset"] = int(self.offset)
         elif include_empty:
             result["offset"] = 0
+        if hasattr(self, "sort_by") and self.sort_by:
+            result["sortBy"] = str(self.sort_by)
+        elif include_empty:
+            result["sortBy"] = Union[str, SortByEnum]()
+        if hasattr(self, "sort_direction") and self.sort_direction:
+            result["sortDirection"] = str(self.sort_direction)
+        elif include_empty:
+            result["sortDirection"] = Union[str, SortDirectionEnum]()
         return result
 
     # endregion to methods
@@ -235,15 +303,27 @@ class DevelopmentServerConfigurationList(Operation):
         cls,
         namespace: str,
         count: Optional[int] = None,
+        image_id: Optional[str] = None,
+        name: Optional[str] = None,
         offset: Optional[int] = None,
+        sort_by: Optional[Union[str, SortByEnum]] = None,
+        sort_direction: Optional[Union[str, SortDirectionEnum]] = None,
         **kwargs,
     ) -> DevelopmentServerConfigurationList:
         instance = cls()
         instance.namespace = namespace
         if count is not None:
             instance.count = count
+        if image_id is not None:
+            instance.image_id = image_id
+        if name is not None:
+            instance.name = name
         if offset is not None:
             instance.offset = offset
+        if sort_by is not None:
+            instance.sort_by = sort_by
+        if sort_direction is not None:
+            instance.sort_direction = sort_direction
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -261,10 +341,26 @@ class DevelopmentServerConfigurationList(Operation):
             instance.count = int(dict_["count"])
         elif include_empty:
             instance.count = 0
+        if "imageId" in dict_ and dict_["imageId"] is not None:
+            instance.image_id = str(dict_["imageId"])
+        elif include_empty:
+            instance.image_id = ""
+        if "name" in dict_ and dict_["name"] is not None:
+            instance.name = str(dict_["name"])
+        elif include_empty:
+            instance.name = ""
         if "offset" in dict_ and dict_["offset"] is not None:
             instance.offset = int(dict_["offset"])
         elif include_empty:
             instance.offset = 0
+        if "sortBy" in dict_ and dict_["sortBy"] is not None:
+            instance.sort_by = str(dict_["sortBy"])
+        elif include_empty:
+            instance.sort_by = Union[str, SortByEnum]()
+        if "sortDirection" in dict_ and dict_["sortDirection"] is not None:
+            instance.sort_direction = str(dict_["sortDirection"])
+        elif include_empty:
+            instance.sort_direction = Union[str, SortDirectionEnum]()
         return instance
 
     @staticmethod
@@ -272,7 +368,11 @@ class DevelopmentServerConfigurationList(Operation):
         return {
             "namespace": "namespace",
             "count": "count",
+            "imageId": "image_id",
+            "name": "name",
             "offset": "offset",
+            "sortBy": "sort_by",
+            "sortDirection": "sort_direction",
         }
 
     @staticmethod
@@ -280,7 +380,18 @@ class DevelopmentServerConfigurationList(Operation):
         return {
             "namespace": True,
             "count": False,
+            "imageId": False,
+            "name": False,
             "offset": False,
+            "sortBy": False,
+            "sortDirection": False,
+        }
+
+    @staticmethod
+    def get_enum_map() -> Dict[str, List[Any]]:
+        return {
+            "sortBy": ["created_at", "expires_at", "name"],  # in query
+            "sortDirection": ["asc", "desc"],  # in query
         }
 
     # endregion static methods

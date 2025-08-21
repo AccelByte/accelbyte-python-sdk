@@ -1,3 +1,14 @@
+<a name="v0.78.0"></a>
+## [v0.78.0]
+### test
+- **integration:** fix csm IAM client clean up logic
+### ci
+- **github:** better utilize all available build machines
+- **:** consolidate job channel
+### chore
+- **:** refresh gitignore
+
+
 <a name="v0.77.0"></a>
 ## [v0.77.0]
 ### ci

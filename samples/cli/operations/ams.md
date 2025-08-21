@@ -101,7 +101,11 @@ $ python -m accelbyte_py_sdk_cli 'ams-artifact-get-url' \
 $ python -m accelbyte_py_sdk_cli 'ams-development-server-configuration-list' \
     'string' \
     --count 1 \
+    --image_id 'string' \
+    --name 'string' \
     --offset 1 \
+    --sort_by 'created_at' \
+    --sort_direction 'asc' \
     > result.txt
 ```
 

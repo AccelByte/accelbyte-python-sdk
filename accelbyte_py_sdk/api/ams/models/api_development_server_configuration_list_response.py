@@ -30,6 +30,7 @@ from ....core import Model
 from ..models.api_development_server_configuration_get_response import (
     ApiDevelopmentServerConfigurationGetResponse,
 )
+from ..models.pagination_pagination_info import PaginationPaginationInfo
 
 
 class ApiDevelopmentServerConfigurationListResponse(Model):
@@ -38,12 +39,15 @@ class ApiDevelopmentServerConfigurationListResponse(Model):
     Properties:
         data: (data) REQUIRED List[ApiDevelopmentServerConfigurationGetResponse]
 
+        paging: (paging) REQUIRED PaginationPaginationInfo
+
         total_data: (totalData) REQUIRED int
     """
 
     # region fields
 
     data: List[ApiDevelopmentServerConfigurationGetResponse]  # REQUIRED
+    paging: PaginationPaginationInfo  # REQUIRED
     total_data: int  # REQUIRED
 
     # endregion fields
@@ -54,6 +58,12 @@ class ApiDevelopmentServerConfigurationListResponse(Model):
         self, value: List[ApiDevelopmentServerConfigurationGetResponse]
     ) -> ApiDevelopmentServerConfigurationListResponse:
         self.data = value
+        return self
+
+    def with_paging(
+        self, value: PaginationPaginationInfo
+    ) -> ApiDevelopmentServerConfigurationListResponse:
+        self.paging = value
         return self
 
     def with_total_data(
@@ -74,6 +84,10 @@ class ApiDevelopmentServerConfigurationListResponse(Model):
             ]
         elif include_empty:
             result["data"] = []
+        if hasattr(self, "paging"):
+            result["paging"] = self.paging.to_dict(include_empty=include_empty)
+        elif include_empty:
+            result["paging"] = PaginationPaginationInfo()
         if hasattr(self, "total_data"):
             result["totalData"] = int(self.total_data)
         elif include_empty:
@@ -88,11 +102,13 @@ class ApiDevelopmentServerConfigurationListResponse(Model):
     def create(
         cls,
         data: List[ApiDevelopmentServerConfigurationGetResponse],
+        paging: PaginationPaginationInfo,
         total_data: int,
         **kwargs,
     ) -> ApiDevelopmentServerConfigurationListResponse:
         instance = cls()
         instance.data = data
+        instance.paging = paging
         instance.total_data = total_data
         return instance
 
@@ -112,6 +128,12 @@ class ApiDevelopmentServerConfigurationListResponse(Model):
             ]
         elif include_empty:
             instance.data = []
+        if "paging" in dict_ and dict_["paging"] is not None:
+            instance.paging = PaginationPaginationInfo.create_from_dict(
+                dict_["paging"], include_empty=include_empty
+            )
+        elif include_empty:
+            instance.paging = PaginationPaginationInfo()
         if "totalData" in dict_ and dict_["totalData"] is not None:
             instance.total_data = int(dict_["totalData"])
         elif include_empty:
@@ -160,6 +182,7 @@ class ApiDevelopmentServerConfigurationListResponse(Model):
     def get_field_info() -> Dict[str, str]:
         return {
             "data": "data",
+            "paging": "paging",
             "totalData": "total_data",
         }
 
@@ -167,6 +190,7 @@ class ApiDevelopmentServerConfigurationListResponse(Model):
     def get_required_map() -> Dict[str, bool]:
         return {
             "data": True,
+            "paging": True,
             "totalData": True,
         }
 

@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Chat Service."""
 
-__version__ = "0.4.47"
+__version__ = "0.4.48"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 
