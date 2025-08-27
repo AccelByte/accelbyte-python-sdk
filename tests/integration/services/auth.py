@@ -245,20 +245,20 @@ class AuthServicesTestCase(IntegrationTestCase):
     # region test:login_user_refresh_if_possible
 
     def test_login_user_refresh_if_possible(self):
-        import accelbyte_py_sdk.services.auth
+        import accelbyte_py_sdk.services.auth._login_refresh
         from accelbyte_py_sdk.core import get_env_user_credentials
         from accelbyte_py_sdk.services.auth import login_user, refresh_login
 
         # arrange
         counter: int = 0
 
-        def refresh_login_(*args, **kwargs):
+        def login_refresh_internal_(*args, **kwargs):
             nonlocal counter
             counter += 1
             return refresh_login(*args, **kwargs)
 
-        accelbyte_py_sdk.services.auth._login.refresh_login = (
-            refresh_login_  # monkey-patch
+        accelbyte_py_sdk.services.auth._login_refresh.login_refresh_internal = (
+            login_refresh_internal_  # monkey-patch
         )
 
         username, password = get_env_user_credentials()
