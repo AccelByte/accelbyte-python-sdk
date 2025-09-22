@@ -65,9 +65,9 @@ class DeleteAdminGameRecordTTLConfig(Operation):
 
         403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        404: Not Found - ModelsResponseError
+        404: Not Found - ModelsResponseError (18361: record not found)
 
-        500: Internal Server Error - ModelsResponseError
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18362: unable to update record)
     """
 
     # region fields
@@ -181,9 +181,9 @@ class DeleteAdminGameRecordTTLConfig(Operation):
 
         403: Forbidden - ModelsResponseError (20013: insufficient permission)
 
-        404: Not Found - ModelsResponseError
+        404: Not Found - ModelsResponseError (18361: record not found)
 
-        500: Internal Server Error - ModelsResponseError
+        500: Internal Server Error - ModelsResponseError (20000: internal server error | 18362: unable to update record)
 
         ---: HttpResponse (Undocumented Response)
 

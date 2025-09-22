@@ -326,6 +326,7 @@ def create_api_patch_namespace_config_request_example() -> (
     instance.extra_platforms = [randomize()]
     instance.match_any_common = randomize("bool")
     instance.platform_group = {}
+    instance.xray_max_whitelisted_user_count = randomize("int", min_val=1, max_val=1000)
     return instance
 
 
@@ -398,6 +399,7 @@ def create_config_environment_variable_example() -> ConfigEnvironmentVariable:
 def create_configmodels_namespace_config_example() -> ConfigmodelsNamespaceConfig:
     instance = ConfigmodelsNamespaceConfig()
     instance.namespace = randomize("slug")
+    instance.xray_max_whitelisted_user_count = randomize("int", min_val=1, max_val=1000)
     instance.cross_platform_no_current_platform = randomize("bool")
     instance.extra_platforms = [randomize()]
     instance.match_any_common = randomize("bool")

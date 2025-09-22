@@ -44,7 +44,10 @@ from ._logout import logout_internal, logout_async_internal
 # region v1
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.login_client")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.login_client",
+)
 def login_client(
     client_id: Optional[str] = None,
     client_secret: Optional[str] = None,
@@ -55,7 +58,7 @@ def login_client(
         client_id=client_id,
         client_secret=client_secret,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -80,7 +83,10 @@ def login_client(
     return token, error
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.login_client_async")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.login_client_async",
+)
 async def login_client_async(
     client_id: Optional[str] = None,
     client_secret: Optional[str] = None,
@@ -91,7 +97,7 @@ async def login_client_async(
         client_id=client_id,
         client_secret=client_secret,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -116,7 +122,10 @@ async def login_client_async(
     return token, error
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.login_platform")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.login_platform",
+)
 def login_platform(
     platform_id: str,
     platform_token: str,
@@ -154,7 +163,10 @@ def login_platform(
     return token, None
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.login_platform_async")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.login_platform_async",
+)
 async def login_platform_async(
     platform_id: str,
     platform_token: str,
@@ -192,7 +204,10 @@ async def login_platform_async(
     return token, None
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.login_user")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.login_user",
+)
 def login_user(
     username: str,
     password: str,
@@ -207,7 +222,7 @@ def login_user(
         scope=scope,
         refresh_if_possible=refresh_if_possible,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -233,7 +248,10 @@ def login_user(
     return token, None
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.login_user_async")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.login_user_async",
+)
 async def login_user_async(
     username: str,
     password: str,
@@ -248,7 +266,7 @@ async def login_user_async(
         scope=scope,
         refresh_if_possible=refresh_if_possible,
         x_additional_headers=x_additional_headers,
-        **kwargs
+        **kwargs,
     )
     if error:
         return None, error
@@ -274,7 +292,10 @@ async def login_user_async(
     return token, None
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.logout")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.logout",
+)
 def logout(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
@@ -291,7 +312,10 @@ def logout(
     return None, None
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.logout_async")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.logout_async",
+)
 async def logout_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
@@ -308,34 +332,54 @@ async def logout_async(
     return None, None
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.refresh_login")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.refresh_login",
+)
 def refresh_login(
     refresh_token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    return login_refresh_internal(refresh_token=refresh_token, x_additional_headers=x_additional_headers, **kwargs)
+    return login_refresh_internal(
+        refresh_token=refresh_token, x_additional_headers=x_additional_headers, **kwargs
+    )
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.refresh_login_async")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.refresh_login_async",
+)
 async def refresh_login_async(
     refresh_token: str, x_additional_headers: Optional[Dict[str, str]] = None, **kwargs
 ):
-    return await login_refresh_async_internal(refresh_token=refresh_token, x_additional_headers=x_additional_headers, **kwargs)
+    return await login_refresh_async_internal(
+        refresh_token=refresh_token, x_additional_headers=x_additional_headers, **kwargs
+    )
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.try_refresh_login")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.try_refresh_login",
+)
 def try_refresh_login(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
 ) -> Optional[str]:
-    return try_refresh_login_internal(x_additional_headers=x_additional_headers, **kwargs)
+    return try_refresh_login_internal(
+        x_additional_headers=x_additional_headers, **kwargs
+    )
 
 
-@deprecated(message="2025-08-15 - This method is obsolete.", replacement="accelbyte_py_sdk.services.auth.v2.try_refresh_login_async")
+@deprecated(
+    message="2025-08-15 - This method is obsolete.",
+    replacement="accelbyte_py_sdk.services.auth.v2.try_refresh_login_async",
+)
 async def try_refresh_login_async(
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs,
 ) -> Optional[str]:
-    return await try_refresh_login_async_internal(x_additional_headers=x_additional_headers, **kwargs)
+    return await try_refresh_login_async_internal(
+        x_additional_headers=x_additional_headers, **kwargs
+    )
 
 
 login = login_user
@@ -345,6 +389,7 @@ login_async = login_user_async
 
 
 # region repeating
+
 
 class LoginTimerBase(ABC, Timer):
     @abstractmethod

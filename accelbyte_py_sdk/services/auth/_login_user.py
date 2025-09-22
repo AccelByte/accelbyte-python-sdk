@@ -43,7 +43,7 @@ def login_user_internal(
             refresh_rate=refresh_rate,
             x_additional_headers=x_additional_headers,
             sdk=sdk,
-            **kwargs
+            **kwargs,
         )
 
     if not token:
@@ -125,7 +125,7 @@ async def login_user_async_internal(
             refresh_rate=refresh_rate,
             x_additional_headers=x_additional_headers,
             sdk=sdk,
-            **kwargs
+            **kwargs,
         )
 
     if not token:

@@ -116,6 +116,8 @@ class ApimodelsPublicConfiguration(Model):
 
         native_session_setting: (nativeSessionSetting) OPTIONAL ModelsNativeSessionSetting
 
+        party_code_length: (partyCodeLength) OPTIONAL int
+
         preferred_claim_keys: (preferredClaimKeys) OPTIONAL List[str]
 
         psn_base_url: (PSNBaseURL) OPTIONAL str
@@ -160,6 +162,7 @@ class ApimodelsPublicConfiguration(Model):
     manual_rejoin: bool  # OPTIONAL
     max_active_session: int  # OPTIONAL
     native_session_setting: ModelsNativeSessionSetting  # OPTIONAL
+    party_code_length: int  # OPTIONAL
     preferred_claim_keys: List[str]  # OPTIONAL
     psn_base_url: str  # OPTIONAL
     requested_regions: List[str]  # OPTIONAL
@@ -299,6 +302,10 @@ class ApimodelsPublicConfiguration(Model):
         self, value: ModelsNativeSessionSetting
     ) -> ApimodelsPublicConfiguration:
         self.native_session_setting = value
+        return self
+
+    def with_party_code_length(self, value: int) -> ApimodelsPublicConfiguration:
+        self.party_code_length = value
         return self
 
     def with_preferred_claim_keys(
@@ -459,6 +466,10 @@ class ApimodelsPublicConfiguration(Model):
             )
         elif include_empty:
             result["nativeSessionSetting"] = ModelsNativeSessionSetting()
+        if hasattr(self, "party_code_length"):
+            result["partyCodeLength"] = int(self.party_code_length)
+        elif include_empty:
+            result["partyCodeLength"] = 0
         if hasattr(self, "preferred_claim_keys"):
             result["preferredClaimKeys"] = [str(i0) for i0 in self.preferred_claim_keys]
         elif include_empty:
@@ -521,6 +532,7 @@ class ApimodelsPublicConfiguration(Model):
         manual_rejoin: Optional[bool] = None,
         max_active_session: Optional[int] = None,
         native_session_setting: Optional[ModelsNativeSessionSetting] = None,
+        party_code_length: Optional[int] = None,
         preferred_claim_keys: Optional[List[str]] = None,
         psn_base_url: Optional[str] = None,
         requested_regions: Optional[List[str]] = None,
@@ -576,6 +588,8 @@ class ApimodelsPublicConfiguration(Model):
             instance.max_active_session = max_active_session
         if native_session_setting is not None:
             instance.native_session_setting = native_session_setting
+        if party_code_length is not None:
+            instance.party_code_length = party_code_length
         if preferred_claim_keys is not None:
             instance.preferred_claim_keys = preferred_claim_keys
         if psn_base_url is not None:
@@ -744,6 +758,10 @@ class ApimodelsPublicConfiguration(Model):
             )
         elif include_empty:
             instance.native_session_setting = ModelsNativeSessionSetting()
+        if "partyCodeLength" in dict_ and dict_["partyCodeLength"] is not None:
+            instance.party_code_length = int(dict_["partyCodeLength"])
+        elif include_empty:
+            instance.party_code_length = 0
         if "preferredClaimKeys" in dict_ and dict_["preferredClaimKeys"] is not None:
             instance.preferred_claim_keys = [
                 str(i0) for i0 in dict_["preferredClaimKeys"]
@@ -845,6 +863,7 @@ class ApimodelsPublicConfiguration(Model):
             "manualRejoin": "manual_rejoin",
             "maxActiveSession": "max_active_session",
             "nativeSessionSetting": "native_session_setting",
+            "partyCodeLength": "party_code_length",
             "preferredClaimKeys": "preferred_claim_keys",
             "PSNBaseURL": "psn_base_url",
             "requestedRegions": "requested_regions",
@@ -885,6 +904,7 @@ class ApimodelsPublicConfiguration(Model):
             "manualRejoin": False,
             "maxActiveSession": False,
             "nativeSessionSetting": False,
+            "partyCodeLength": False,
             "preferredClaimKeys": False,
             "PSNBaseURL": False,
             "requestedRegions": False,

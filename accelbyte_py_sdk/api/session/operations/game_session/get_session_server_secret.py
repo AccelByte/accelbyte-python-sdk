@@ -55,6 +55,7 @@ class GetSessionServerSecret(Operation):
     If there is error:
     - 400 Invalid path parameters
     - 401 unauthorized
+    - 403 status forbidden, The User is not active in session
     - 404 StatusNotFound
     - 500 Internal server error
 
@@ -81,6 +82,8 @@ class GetSessionServerSecret(Operation):
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
 
         404: Not Found - ResponseError (Not Found)
 
@@ -200,6 +203,8 @@ class GetSessionServerSecret(Operation):
 
         401: Unauthorized - ResponseError (Unauthorized)
 
+        403: Forbidden - ResponseError (Forbidden)
+
         404: Not Found - ResponseError (Not Found)
 
         500: Internal Server Error - ResponseError (Internal Server Error)
@@ -222,6 +227,8 @@ class GetSessionServerSecret(Operation):
         if code == 400:
             return None, ResponseError.create_from_dict(content)
         if code == 401:
+            return None, ResponseError.create_from_dict(content)
+        if code == 403:
             return None, ResponseError.create_from_dict(content)
         if code == 404:
             return None, ResponseError.create_from_dict(content)

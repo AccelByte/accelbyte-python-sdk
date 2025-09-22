@@ -29,6 +29,7 @@ def deprecated(
             )
             warnings.simplefilter("default", DeprecationWarning)
             return f(*args, **kwargs)
+
         return new_func
 
     # case: @deprecated used directly

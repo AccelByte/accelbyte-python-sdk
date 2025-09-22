@@ -40,39 +40,39 @@ match2-admin-get-x-ray-config --login_with_auth "Bearer foo"
 match2-admin-update-x-ray-config '{"whitelistedUsers": ["wYCA9kPI6LZrkq6D", "c09nIW0Oaiw9B0D7", "eHpzSn3ZPUdc0qh4"]}' --login_with_auth "Bearer foo"
 match2-admin-get-all-config-v1 --login_with_auth "Bearer foo"
 match2-admin-get-config-v1 --login_with_auth "Bearer foo"
-match2-admin-patch-config-v1 '{"crossPlatformNoCurrentPlatform": false, "extraPlatforms": ["2WopBJHPtcDs8bBZ", "LCXLx8bbgorQeFbQ", "1g7qbPngUNB1vRod"], "matchAnyCommon": true, "platformGroup": {"ElFHHdgs21Jub74C": ["UkNmKJfh5pUkHODp", "oMF78NY4YkHs1cnz", "1JSDgY1TXp38zsCT"], "CrbCbPOyNQkT7Nvy": ["E3cwyALczNIicXm7", "agSrjJW2OQNOs1PX", "hT5FvdiRilZ7oFgx"], "4c8OumKtPDKJDXn7": ["Z4U68su8XfqlqNiT", "vB6SdAdIhUDrwoZ5", "MecdKi5r6QEa1ysL"]}}' --login_with_auth "Bearer foo"
+match2-admin-patch-config-v1 '{"crossPlatformNoCurrentPlatform": false, "extraPlatforms": ["2WopBJHPtcDs8bBZ", "LCXLx8bbgorQeFbQ", "1g7qbPngUNB1vRod"], "matchAnyCommon": true, "platformGroup": {"ElFHHdgs21Jub74C": ["UkNmKJfh5pUkHODp", "oMF78NY4YkHs1cnz", "1JSDgY1TXp38zsCT"], "CrbCbPOyNQkT7Nvy": ["E3cwyALczNIicXm7", "agSrjJW2OQNOs1PX", "hT5FvdiRilZ7oFgx"], "4c8OumKtPDKJDXn7": ["Z4U68su8XfqlqNiT", "vB6SdAdIhUDrwoZ5", "MecdKi5r6QEa1ysL"]}, "xrayMaxWhitelistedUserCount": 62}' --login_with_auth "Bearer foo"
 match2-environment-variable-list --login_with_auth "Bearer foo"
 match2-admin-query-backfill --login_with_auth "Bearer foo"
-match2-create-backfill '{"matchPool": "Ezth6mXhzkzWkFeZ", "sessionId": "SoEAcBdW19m4eu6d"}' --login_with_auth "Bearer foo"
-match2-get-backfill-proposal '5tA5jUmiTqpyhPFd' --login_with_auth "Bearer foo"
-match2-get-backfill 'xLzFQN05MYzYiKWe' --login_with_auth "Bearer foo"
-match2-delete-backfill '5dNRljv7IPrDQQRg' --login_with_auth "Bearer foo"
-match2-accept-backfill '{"acceptedTicketIds": ["at0SevkLGMS0lyuI", "9a2I9u6Vpbsx5w8h", "qUI06UpOXGSLmCVu"], "proposalId": "HOPlLlkvR8sKgnuR", "stop": false}' 'Iv53HGCiljvjKoyD' --login_with_auth "Bearer foo"
-match2-reject-backfill '{"proposalId": "6SCwGrncqmLtjQHA", "stop": false}' 't1d67FXGk2s9Q0mP' --login_with_auth "Bearer foo"
+match2-create-backfill '{"matchPool": "9l3rGN9A3sNm84hd", "sessionId": "dSpHt0P7MIIR7Cky"}' --login_with_auth "Bearer foo"
+match2-get-backfill-proposal 'F6C7duuyZ0GhDogq' --login_with_auth "Bearer foo"
+match2-get-backfill 'rhBRd8lDR6qVNPRZ' --login_with_auth "Bearer foo"
+match2-delete-backfill 'YdFLIAjGGJddVCvu' --login_with_auth "Bearer foo"
+match2-accept-backfill '{"acceptedTicketIds": ["9vx5KQ7KYnIuMBva", "O35llzQRaT5kPxUf", "ofvnnSuB0y5WUlrM"], "proposalId": "dI4sNveabntBSxTe", "stop": false}' 'v53HGCiljvjKoyD6' --login_with_auth "Bearer foo"
+match2-reject-backfill '{"proposalId": "SCwGrncqmLtjQHAf", "stop": false}' 'goNm03VLisV6zwPu' --login_with_auth "Bearer foo"
 match2-match-function-list --login_with_auth "Bearer foo"
-match2-create-match-function '{"match_function": "Vo3twu0MesTCf9x4", "serviceAppName": "rt69lna7qxNeIxPz", "url": "6MbwL6IY69z1UaLq"}' --login_with_auth "Bearer foo"
-match2-match-function-get 'YSYWytLPziZMdjxc' --login_with_auth "Bearer foo"
-match2-update-match-function '{"match_function": "BZufQxGiHPllG4cY", "serviceAppName": "EzfTD1ZBm3MqHcUm", "url": "LZZbSqb8RwNmn9Hr"}' 'NQy4uZAAiE0mit9R' --login_with_auth "Bearer foo"
-match2-delete-match-function 'GCCHYzUOcEdscKHP' --login_with_auth "Bearer foo"
+match2-create-match-function '{"match_function": "o3td6TC6I3lMjGSW", "serviceAppName": "N2laRlxfcjHfYakU", "url": "CTqGkE7wcWfDslpJ"}' --login_with_auth "Bearer foo"
+match2-match-function-get 'SqGAXQ0yYoNRKd3I' --login_with_auth "Bearer foo"
+match2-update-match-function '{"match_function": "L5TAQ6iiPlSC2uE4", "serviceAppName": "o5Vwdo3fePqIJA8I", "url": "Htrkmu0hpDDWVAla"}' '2l5BYNtIuS5S5XUd' --login_with_auth "Bearer foo"
+match2-delete-match-function 'jsoqwGyzzWi9gwQY' --login_with_auth "Bearer foo"
 match2-match-pool-list --login_with_auth "Bearer foo"
-match2-create-match-pool '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 87, "backfill_ticket_expiration_seconds": 35, "best_latency_calculation_method": "Yv7t1o7TTr1DmrhZ", "crossplay_disabled": true, "match_function": "9Jcdos4fYcTVU6RB", "match_function_override": {"backfill_matches": "t0zYoMcHyCUEXlAv", "enrichment": ["xJMdalwSyliWMNW5", "NyLu0M3VHh2EI8Jl", "DbPWbQ6Q9lNmqRBa"], "make_matches": "AkLnvxkT1X68cmDc", "stat_codes": ["3fxU8MyKrQpM4hkk", "K6KKXNB3Gv0IqmF5", "1TkhjYnaq6foWvXa"], "validation": ["3bMrXsDr6kILsSSy", "DdmykmoPYgc2L4jk", "4Lo0LSP0pf4IxjUk"]}, "name": "l535X3ateEKDpADz", "platform_group_enabled": false, "rule_set": "x3poD3Qgb3boLQQ1", "session_template": "MzH7Qm8bwbmXgdAP", "ticket_expiration_seconds": 16}' --login_with_auth "Bearer foo"
-match2-match-pool-details 'VJf6c2Z0QZxfgPub' --login_with_auth "Bearer foo"
-match2-update-match-pool '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 61, "backfill_ticket_expiration_seconds": 4, "best_latency_calculation_method": "IHrvqAThuwjRHpKK", "crossplay_disabled": false, "match_function": "oF7VSZ6pf3vneSD2", "match_function_override": {"backfill_matches": "Tb3g7mSQUhAEtrmj", "enrichment": ["qU6YE3p4lSck0ZHn", "5GI39YBHqaTHeKtW", "18iGeUlc9d9sogWa"], "make_matches": "24CKNS0GqVvUfHQv", "stat_codes": ["sHXNUNe4mhgo5QB6", "5lSAiYnNjkfZrQvG", "gbLdLsFzHkBMr1yr"], "validation": ["OMlNFSrUEirnjX9f", "DmIbeZxzfTcyiuAT", "us9hsfpFDcSDG8aM"]}, "platform_group_enabled": true, "rule_set": "LiBNrDjqoxcwgGLX", "session_template": "pUL4pp2ncYAHdNzD", "ticket_expiration_seconds": 25}' 'vmv9gsR5cJcHm3SZ' --login_with_auth "Bearer foo"
-match2-delete-match-pool 'LxoRDFuuuySj29a9' --login_with_auth "Bearer foo"
-match2-match-pool-metric 'LJE8HoRS1X2PFAAM' --login_with_auth "Bearer foo"
-match2-post-match-error-metric '{"type": "getExternalDS"}' 'CmBUqg2SCnqntX9y' --login_with_auth "Bearer foo"
-match2-get-player-metric '1aZSWMiVi10sG6vx' --login_with_auth "Bearer foo"
-match2-admin-get-match-pool-tickets 'kfUcmqRRbceJ5i0E' --login_with_auth "Bearer foo"
-match2-create-match-ticket '{"attributes": {"eDxOgBnhhqElIaDm": {}, "l48wdNFLTm5T50x9": {}, "WT0GfH2rtOa4EXsX": {}}, "excludedSessions": ["zOXQAk4mqrxzTtuL", "l4XlbGL8QOxtjzm8", "y2wNhmwoYZyI4EFZ"], "latencies": {"KBcYrCEAE7WIsfmx": 70, "0NLRc6m8heKnWhzf": 9, "z3LNUj7fdgLA84Z8": 60}, "matchPool": "Yk6QEgJjBbEDoNf3", "sessionID": "n0hEoRCAcf80zfFy", "storage": {"abWAgIUXiI07A68e": {}, "aqC2J9jyEW6GLbc0": {}, "NaKDUL3sa13lk1dQ": {}}}' --login_with_auth "Bearer foo"
+match2-create-match-pool '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 54, "backfill_ticket_expiration_seconds": 39, "best_latency_calculation_method": "yu7Vk6Jt4Ymos9Jc", "crossplay_disabled": false, "match_function": "7quIOvBMcaYmvCkG", "match_function_override": {"backfill_matches": "Z5dAgqxpBFmaLoxo", "enrichment": ["zr6wfNPX2bOItRMv", "qtlB2jJCSQT279ZZ", "PYGu0rdlgdWyOtXi"], "make_matches": "3choQrpOsDBU5Sep", "stat_codes": ["jChB3V0v52Dlym6p", "uQ23xoJ8aeCnaLpU", "Kp44YUDjasWIPUvm"], "validation": ["EejtGeoyIPa8ZRrv", "jj7il35MXbN9oCMN", "qq98SjTvhZNkSQ70"]}, "name": "D0H6BXksUC9b6i5l", "platform_group_enabled": false, "rule_set": "C9xv32e8c5csSovo", "session_template": "qsZNBdte9NDUPVJf", "ticket_expiration_seconds": 16}' --login_with_auth "Bearer foo"
+match2-match-pool-details 'c2Z0QZxfgPubTDIH' --login_with_auth "Bearer foo"
+match2-update-match-pool '{"auto_accept_backfill_proposal": true, "backfill_proposal_expiration_seconds": 83, "backfill_ticket_expiration_seconds": 44, "best_latency_calculation_method": "NZm3EeERmDnyeFoF", "crossplay_disabled": true, "match_function": "VSZ6pf3vneSD2Tb3", "match_function_override": {"backfill_matches": "g7mSQUhAEtrmjqU6", "enrichment": ["YE3p4lSck0ZHn5GI", "39YBHqaTHeKtW18i", "GeUlc9d9sogWa24C"], "make_matches": "KNS0GqVvUfHQvsHX", "stat_codes": ["NUNe4mhgo5QB65lS", "AiYnNjkfZrQvGgbL", "dLsFzHkBMr1yrOMl"], "validation": ["NFSrUEirnjX9fDmI", "beZxzfTcyiuATus9", "hsfpFDcSDG8aMVGL"]}, "platform_group_enabled": false, "rule_set": "LtI8ilbyDPUIj88c", "session_template": "ekdqCt81P1ktfIov", "ticket_expiration_seconds": 26}' 'IP6rOvDz9KOsb392' --login_with_auth "Bearer foo"
+match2-delete-match-pool 'k6YmJFfRByjlBiuF' --login_with_auth "Bearer foo"
+match2-match-pool-metric 'M3FIoVk8T3GpAnkC' --login_with_auth "Bearer foo"
+match2-post-match-error-metric '{"type": "connectDS"}' 'HPxB1UskYs4Yw20D' --login_with_auth "Bearer foo"
+match2-get-player-metric 'OqOBSC2DKHRuPMMW' --login_with_auth "Bearer foo"
+match2-admin-get-match-pool-tickets 'H8Yb33T5UBJCjfcn' --login_with_auth "Bearer foo"
+match2-create-match-ticket '{"attributes": {"LRfxeCSz9WEi8Kll": {}, "oeH0JT1yduat2vQR": {}, "3biBfsu4jmsRE2w1": {}}, "excludedSessions": ["yEkLgh3tIYt4SqYU", "TLDx9gIiDandpGT2", "t24aOMh5eC3IHeHS"], "latencies": {"KLCa3xreNDUWehwH": 82, "q31A806DJgas4b6z": 80, "LNUj7fdgLA84Z8YY": 21}, "matchPool": "ICpnduEEQlULdJz4", "sessionID": "mnRBkMNxvvKgAT8m", "storage": {"JrYq6hRkloqxM3gp": {}, "wxcfMy9XzjjI5Ybs": {}, "KoADkzJEN2VHzih3": {}}}' --login_with_auth "Bearer foo"
 match2-get-my-match-tickets --login_with_auth "Bearer foo"
-match2-match-ticket-details 'BHO86IlBhnetU4Rw' --login_with_auth "Bearer foo"
-match2-delete-match-ticket 'TqUXlTDBzOuYsaZA' --login_with_auth "Bearer foo"
+match2-match-ticket-details 'bit0VWn3CO39PXDN' --login_with_auth "Bearer foo"
+match2-delete-match-ticket 'xtXgeO3FgkXhjDza' --login_with_auth "Bearer foo"
 match2-rule-set-list --login_with_auth "Bearer foo"
-match2-create-rule-set '{"data": {"2yyd4mbqoOfADMMA": {}, "XFaY9eKa699bRVhy": {}, "aKwwrAP2aMlu7Wtj": {}}, "enable_custom_match_function": true, "name": "enSrUTvfqU0bfoMm"}' --login_with_auth "Bearer foo"
-match2-rule-set-details '5cTtFWbotQyXJRcQ' --login_with_auth "Bearer foo"
-match2-update-rule-set '{"data": {"WsmqPNs92epxk0i8": {}, "VxsZNereSvf9699m": {}, "CEHThUJkETAsSp7g": {}}, "enable_custom_match_function": false, "name": "imdb4rbkXj0ZwsVC"}' '0gL97ZVJSPqJiwv1' --login_with_auth "Bearer foo"
-match2-delete-rule-set 'qlYB1RSKs6gQxC3G' --login_with_auth "Bearer foo"
-match2-public-get-player-metric 'b7S0o4zGYY7KQI1A' --login_with_auth "Bearer foo"
+match2-create-rule-set '{"data": {"QY3snn2ZkP7cFdP4": {}, "3e5dC9XIBudfZgrb": {}, "HDIDm4hMzF4Txode": {}}, "enable_custom_match_function": false, "name": "oYetOO847g8OudOf"}' --login_with_auth "Bearer foo"
+match2-rule-set-details 'jnCuHZ3c46IjGa23' --login_with_auth "Bearer foo"
+match2-update-rule-set '{"data": {"YvYmmDg7VYPXIuvU": {}, "YTZBRujIUE1Tq5jy": {}, "AZvkRCMNFIurjh2i": {}}, "enable_custom_match_function": false, "name": "TeUTkOkAYfJB8AT9"}' 't4Tv207Y2QD3oD5f' --login_with_auth "Bearer foo"
+match2-delete-rule-set 'LCr3OOlXVv8ZGF7u' --login_with_auth "Bearer foo"
+match2-public-get-player-metric 'YnGzpipNDigNJma1' --login_with_auth "Bearer foo"
 match2-version-check-handler --login_with_auth "Bearer foo"
 exit()
 END
@@ -122,7 +122,7 @@ eval_tap $? 4 'AdminGetLogConfig' test.out
 
 #- 5 AdminPatchUpdateLogConfig
 $PYTHON -m $MODULE 'match2-admin-patch-update-log-config' \
-    '{"logLevel": "debug"}' \
+    '{"logLevel": "trace"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 5 'AdminPatchUpdateLogConfig' test.out
@@ -173,7 +173,7 @@ eval_tap $? 12 'AdminGetConfigV1' test.out
 
 #- 13 AdminPatchConfigV1
 $PYTHON -m $MODULE 'match2-admin-patch-config-v1' \
-    '{"crossPlatformNoCurrentPlatform": true, "extraPlatforms": ["wGBCtohLtl9Zuhyt", "m5UDrT6QXCs5SPBb", "RPZTF6oQAXVG7tns"], "matchAnyCommon": false, "platformGroup": {"fSiM9331m7Ta1PsK": ["c50Kv6ecnEevcAx2", "K2zkRenmPZnGBt4P", "7WnbdSJtjX7ZshZy"], "Zl5x4bRXBHUTrDzZ": ["SKscfOcYu3dpCROY", "qUiGKXVFCmpo6sPw", "VOEDSJsEK5QpNhlI"], "2iS5EpGhhvXYck0u": ["pMzUYnb76tFkEORV", "3bu1bNCtX7W40V6D", "o5sYadCCFrHHC3Dp"]}}' \
+    '{"crossPlatformNoCurrentPlatform": true, "extraPlatforms": ["wGBCtohLtl9Zuhyt", "m5UDrT6QXCs5SPBb", "RPZTF6oQAXVG7tns"], "matchAnyCommon": false, "platformGroup": {"fSiM9331m7Ta1PsK": ["c50Kv6ecnEevcAx2", "K2zkRenmPZnGBt4P", "7WnbdSJtjX7ZshZy"], "Zl5x4bRXBHUTrDzZ": ["SKscfOcYu3dpCROY", "qUiGKXVFCmpo6sPw", "VOEDSJsEK5QpNhlI"], "2iS5EpGhhvXYck0u": ["pMzUYnb76tFkEORV", "3bu1bNCtX7W40V6D", "o5sYadCCFrHHC3Dp"]}, "xrayMaxWhitelistedUserCount": 53}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 13 'AdminPatchConfigV1' test.out
@@ -192,35 +192,35 @@ eval_tap $? 15 'AdminQueryBackfill' test.out
 
 #- 16 CreateBackfill
 $PYTHON -m $MODULE 'match2-create-backfill' \
-    '{"matchPool": "ZxkrQDXuNFviMarv", "sessionId": "8mnfHK8CCmE2lPns"}' \
+    '{"matchPool": "xkrQDXuNFviMarv8", "sessionId": "mnfHK8CCmE2lPnsb"}' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 16 'CreateBackfill' test.out
 
 #- 17 GetBackfillProposal
 $PYTHON -m $MODULE 'match2-get-backfill-proposal' \
-    'bD3SGEdlwuUccE53' \
+    'D3SGEdlwuUccE536' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 17 'GetBackfillProposal' test.out
 
 #- 18 GetBackfill
 $PYTHON -m $MODULE 'match2-get-backfill' \
-    '6ugBp3HBvepnDCjg' \
+    'ugBp3HBvepnDCjgy' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 18 'GetBackfill' test.out
 
 #- 19 DeleteBackfill
 $PYTHON -m $MODULE 'match2-delete-backfill' \
-    'yJlXe36mgWjLfFmt' \
+    'JlXe36mgWjLfFmte' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1
 eval_tap $? 19 'DeleteBackfill' test.out
 
 #- 20 AcceptBackfill
 $PYTHON -m $MODULE 'match2-accept-backfill' \
-    '{"acceptedTicketIds": ["eue9nzJ6fH24T805", "tVg8JqU0jZpjvsug", "AOS7u8RiWyerCSa8"], "proposalId": "SRgwsAj1ik1jglaD", "stop": false}' \
+    '{"acceptedTicketIds": ["ue9nzJ6fH24T805t", "Vg8JqU0jZpjvsugA", "OS7u8RiWyerCSa8S"], "proposalId": "RgwsAj1ik1jglaDX", "stop": false}' \
     'vKCWwNTAhd2wrS0u' \
     --login_with_auth "Bearer foo" \
     > test.out 2>&1

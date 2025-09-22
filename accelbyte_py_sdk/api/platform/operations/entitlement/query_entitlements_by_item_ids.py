@@ -20,7 +20,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-import
 
-# AccelByte Gaming Services Challenge Service
+# AccelByte Gaming Services Platform Service
 
 from __future__ import annotations
 from typing import Any, Dict, List, Optional, Tuple, Union
@@ -29,21 +29,24 @@ from .....core import Operation
 from .....core import HeaderStr
 from .....core import HttpResponse
 
-from ...models import IamErrorResponse
-from ...models import ResponseError
+from ...models import EntitlementPagingSlicedResult
 
 
-class EvaluateMyProgress(Operation):
-    """Evaluate User's Challenge Progressions (EvaluateMyProgress)
+class QueryEntitlementsByItemIds(Operation):
+    """Query entitlements by Item Ids (queryEntitlementsByItemIds)
 
-    - Required permission: NAMESPACE:{namespace}:CHALLENGE:PROGRESSION [UPDATE]
+    Query entitlements by Item Ids.
+
+    Other detail info:
+
+      * Returns : entitlement list
 
     Properties:
-        url: /challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate
+        url: /platform/admin/namespaces/{namespace}/entitlements/byItemIds
 
-        method: POST
+        method: GET
 
-        tags: ["Challenge Progression"]
+        tags: ["Entitlement"]
 
         consumes: []
 
@@ -53,29 +56,32 @@ class EvaluateMyProgress(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
-        challenge_code: (challengeCode) OPTIONAL List[str] in query
+        active_only: (activeOnly) OPTIONAL bool in query
+
+        item_ids: (itemIds) OPTIONAL List[str] in query
+
+        limit: (limit) OPTIONAL int in query
+
+        offset: (offset) OPTIONAL int in query
 
     Responses:
-        204: No Content - (No Content)
-
-        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
-
-        403: Forbidden - IamErrorResponse (20013: insufficient permission)
-
-        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+        200: OK - EntitlementPagingSlicedResult (successful operation)
     """
 
     # region fields
 
-    _url: str = "/challenge/v1/public/namespaces/{namespace}/users/me/progress/evaluate"
-    _method: str = "POST"
+    _url: str = "/platform/admin/namespaces/{namespace}/entitlements/byItemIds"
+    _method: str = "GET"
     _consumes: List[str] = []
     _produces: List[str] = ["application/json"]
     _securities: List[List[str]] = [["BEARER_AUTH"]]
     _location_query: str = None
 
     namespace: str  # REQUIRED in [path]
-    challenge_code: List[str]  # OPTIONAL in [query]
+    active_only: bool  # OPTIONAL in [query]
+    item_ids: List[str]  # OPTIONAL in [query]
+    limit: int  # OPTIONAL in [query]
+    offset: int  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -127,8 +133,14 @@ class EvaluateMyProgress(Operation):
 
     def get_query_params(self) -> dict:
         result = {}
-        if hasattr(self, "challenge_code"):
-            result["challengeCode"] = self.challenge_code
+        if hasattr(self, "active_only"):
+            result["activeOnly"] = self.active_only
+        if hasattr(self, "item_ids"):
+            result["itemIds"] = self.item_ids
+        if hasattr(self, "limit"):
+            result["limit"] = self.limit
+        if hasattr(self, "offset"):
+            result["offset"] = self.offset
         return result
 
     # endregion get_x_params methods
@@ -139,12 +151,24 @@ class EvaluateMyProgress(Operation):
 
     # region with_x methods
 
-    def with_namespace(self, value: str) -> EvaluateMyProgress:
+    def with_namespace(self, value: str) -> QueryEntitlementsByItemIds:
         self.namespace = value
         return self
 
-    def with_challenge_code(self, value: List[str]) -> EvaluateMyProgress:
-        self.challenge_code = value
+    def with_active_only(self, value: bool) -> QueryEntitlementsByItemIds:
+        self.active_only = value
+        return self
+
+    def with_item_ids(self, value: List[str]) -> QueryEntitlementsByItemIds:
+        self.item_ids = value
+        return self
+
+    def with_limit(self, value: int) -> QueryEntitlementsByItemIds:
+        self.limit = value
+        return self
+
+    def with_offset(self, value: int) -> QueryEntitlementsByItemIds:
+        self.offset = value
         return self
 
     # endregion with_x methods
@@ -157,10 +181,22 @@ class EvaluateMyProgress(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
-        if hasattr(self, "challenge_code") and self.challenge_code:
-            result["challengeCode"] = [str(i0) for i0 in self.challenge_code]
+        if hasattr(self, "active_only") and self.active_only:
+            result["activeOnly"] = bool(self.active_only)
         elif include_empty:
-            result["challengeCode"] = []
+            result["activeOnly"] = False
+        if hasattr(self, "item_ids") and self.item_ids:
+            result["itemIds"] = [str(i0) for i0 in self.item_ids]
+        elif include_empty:
+            result["itemIds"] = []
+        if hasattr(self, "limit") and self.limit:
+            result["limit"] = int(self.limit)
+        elif include_empty:
+            result["limit"] = 0
+        if hasattr(self, "offset") and self.offset:
+            result["offset"] = int(self.offset)
+        elif include_empty:
+            result["offset"] = 0
         return result
 
     # endregion to methods
@@ -170,16 +206,10 @@ class EvaluateMyProgress(Operation):
     # noinspection PyMethodMayBeStatic
     def parse_response(
         self, code: int, content_type: str, content: Any
-    ) -> Tuple[None, Union[None, HttpResponse, IamErrorResponse, ResponseError]]:
+    ) -> Tuple[Union[None, EntitlementPagingSlicedResult], Union[None, HttpResponse]]:
         """Parse the given response.
 
-        204: No Content - (No Content)
-
-        401: Unauthorized - IamErrorResponse (20001: unauthorized access)
-
-        403: Forbidden - IamErrorResponse (20013: insufficient permission)
-
-        500: Internal Server Error - ResponseError (20000: internal server error: {{message}})
+        200: OK - EntitlementPagingSlicedResult (successful operation)
 
         ---: HttpResponse (Undocumented Response)
 
@@ -194,14 +224,8 @@ class EvaluateMyProgress(Operation):
             return None, None if error.is_no_content() else error
         code, content_type, content = pre_processed_response
 
-        if code == 204:
-            return None, None
-        if code == 401:
-            return None, IamErrorResponse.create_from_dict(content)
-        if code == 403:
-            return None, IamErrorResponse.create_from_dict(content)
-        if code == 500:
-            return None, ResponseError.create_from_dict(content)
+        if code == 200:
+            return EntitlementPagingSlicedResult.create_from_dict(content), None
 
         return self.handle_undocumented_response(
             code=code, content_type=content_type, content=content
@@ -213,12 +237,24 @@ class EvaluateMyProgress(Operation):
 
     @classmethod
     def create(
-        cls, namespace: str, challenge_code: Optional[List[str]] = None, **kwargs
-    ) -> EvaluateMyProgress:
+        cls,
+        namespace: str,
+        active_only: Optional[bool] = None,
+        item_ids: Optional[List[str]] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+        **kwargs,
+    ) -> QueryEntitlementsByItemIds:
         instance = cls()
         instance.namespace = namespace
-        if challenge_code is not None:
-            instance.challenge_code = challenge_code
+        if active_only is not None:
+            instance.active_only = active_only
+        if item_ids is not None:
+            instance.item_ids = item_ids
+        if limit is not None:
+            instance.limit = limit
+        if offset is not None:
+            instance.offset = offset
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -226,36 +262,54 @@ class EvaluateMyProgress(Operation):
     @classmethod
     def create_from_dict(
         cls, dict_: dict, include_empty: bool = False
-    ) -> EvaluateMyProgress:
+    ) -> QueryEntitlementsByItemIds:
         instance = cls()
         if "namespace" in dict_ and dict_["namespace"] is not None:
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
-        if "challengeCode" in dict_ and dict_["challengeCode"] is not None:
-            instance.challenge_code = [str(i0) for i0 in dict_["challengeCode"]]
+        if "activeOnly" in dict_ and dict_["activeOnly"] is not None:
+            instance.active_only = bool(dict_["activeOnly"])
         elif include_empty:
-            instance.challenge_code = []
+            instance.active_only = False
+        if "itemIds" in dict_ and dict_["itemIds"] is not None:
+            instance.item_ids = [str(i0) for i0 in dict_["itemIds"]]
+        elif include_empty:
+            instance.item_ids = []
+        if "limit" in dict_ and dict_["limit"] is not None:
+            instance.limit = int(dict_["limit"])
+        elif include_empty:
+            instance.limit = 0
+        if "offset" in dict_ and dict_["offset"] is not None:
+            instance.offset = int(dict_["offset"])
+        elif include_empty:
+            instance.offset = 0
         return instance
 
     @staticmethod
     def get_field_info() -> Dict[str, str]:
         return {
             "namespace": "namespace",
-            "challengeCode": "challenge_code",
+            "activeOnly": "active_only",
+            "itemIds": "item_ids",
+            "limit": "limit",
+            "offset": "offset",
         }
 
     @staticmethod
     def get_required_map() -> Dict[str, bool]:
         return {
             "namespace": True,
-            "challengeCode": False,
+            "activeOnly": False,
+            "itemIds": False,
+            "limit": False,
+            "offset": False,
         }
 
     @staticmethod
     def get_collection_format_map() -> Dict[str, Union[None, str]]:
         return {
-            "challengeCode": "csv",  # in query
+            "itemIds": "multi",  # in query
         }
 
     # endregion static methods

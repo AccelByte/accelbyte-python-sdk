@@ -207,6 +207,7 @@ $ python -m accelbyte_py_sdk_cli 'challenge-admin-delete-assignment-plugin' \
 $ python -m accelbyte_py_sdk_cli 'challenge-admin-evaluate-progress' \
     '{"userIds": ["string"]}' \
     'string' \
+    --challenge_code '["string"]' \
     > result.txt
 ```
 
@@ -325,6 +326,7 @@ $ python -m accelbyte_py_sdk_cli 'challenge-public-claim-user-rewards-by-goal-co
 ```sh
 $ python -m accelbyte_py_sdk_cli 'challenge-evaluate-my-progress' \
     'string' \
+    --challenge_code '["string"]' \
     > result.txt
 ```
 

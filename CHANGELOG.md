@@ -1,3 +1,13 @@
+<a name="v0.79.0"></a>
+## [v0.79.0]
+### feat
+- **auth:** add in v2 login methods
+### chore
+- **:** remove irrelevant sample apps
+### test
+- **auth:** fix login refresh test
+
+
 <a name="v0.78.0"></a>
 ## [v0.78.0]
 ### test

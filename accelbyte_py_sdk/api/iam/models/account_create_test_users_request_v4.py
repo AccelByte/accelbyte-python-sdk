@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ....core import Model
 
 from ..models.account_user_info import AccountUserInfo
+from ..models.legal_accepted_policies_request import LegalAcceptedPoliciesRequest
 
 
 class AccountCreateTestUsersRequestV4(Model):
@@ -37,12 +38,15 @@ class AccountCreateTestUsersRequestV4(Model):
         count: (count) REQUIRED int
 
         user_info: (userInfo) REQUIRED AccountUserInfo
+
+        accepted_policies: (acceptedPolicies) OPTIONAL List[LegalAcceptedPoliciesRequest]
     """
 
     # region fields
 
     count: int  # REQUIRED
     user_info: AccountUserInfo  # REQUIRED
+    accepted_policies: List[LegalAcceptedPoliciesRequest]  # OPTIONAL
 
     # endregion fields
 
@@ -54,6 +58,12 @@ class AccountCreateTestUsersRequestV4(Model):
 
     def with_user_info(self, value: AccountUserInfo) -> AccountCreateTestUsersRequestV4:
         self.user_info = value
+        return self
+
+    def with_accepted_policies(
+        self, value: List[LegalAcceptedPoliciesRequest]
+    ) -> AccountCreateTestUsersRequestV4:
+        self.accepted_policies = value
         return self
 
     # endregion with_x methods
@@ -70,6 +80,12 @@ class AccountCreateTestUsersRequestV4(Model):
             result["userInfo"] = self.user_info.to_dict(include_empty=include_empty)
         elif include_empty:
             result["userInfo"] = AccountUserInfo()
+        if hasattr(self, "accepted_policies"):
+            result["acceptedPolicies"] = [
+                i0.to_dict(include_empty=include_empty) for i0 in self.accepted_policies
+            ]
+        elif include_empty:
+            result["acceptedPolicies"] = []
         return result
 
     # endregion to methods
@@ -78,11 +94,17 @@ class AccountCreateTestUsersRequestV4(Model):
 
     @classmethod
     def create(
-        cls, count: int, user_info: AccountUserInfo, **kwargs
+        cls,
+        count: int,
+        user_info: AccountUserInfo,
+        accepted_policies: Optional[List[LegalAcceptedPoliciesRequest]] = None,
+        **kwargs,
     ) -> AccountCreateTestUsersRequestV4:
         instance = cls()
         instance.count = count
         instance.user_info = user_info
+        if accepted_policies is not None:
+            instance.accepted_policies = accepted_policies
         return instance
 
     @classmethod
@@ -102,6 +124,15 @@ class AccountCreateTestUsersRequestV4(Model):
             )
         elif include_empty:
             instance.user_info = AccountUserInfo()
+        if "acceptedPolicies" in dict_ and dict_["acceptedPolicies"] is not None:
+            instance.accepted_policies = [
+                LegalAcceptedPoliciesRequest.create_from_dict(
+                    i0, include_empty=include_empty
+                )
+                for i0 in dict_["acceptedPolicies"]
+            ]
+        elif include_empty:
+            instance.accepted_policies = []
         return instance
 
     @classmethod
@@ -147,6 +178,7 @@ class AccountCreateTestUsersRequestV4(Model):
         return {
             "count": "count",
             "userInfo": "user_info",
+            "acceptedPolicies": "accepted_policies",
         }
 
     @staticmethod
@@ -154,6 +186,7 @@ class AccountCreateTestUsersRequestV4(Model):
         return {
             "count": True,
             "userInfo": True,
+            "acceptedPolicies": False,
         }
 
     # endregion static methods

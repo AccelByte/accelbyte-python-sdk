@@ -35,6 +35,7 @@ class BackfillTypeEnum(StrEnum):
 
 
 class RuleEnum(StrEnum):
+    LOOP = "LOOP"
     SEQUENCE = "SEQUENCE"
 
 
@@ -213,7 +214,7 @@ class FixedPeriodRotationConfig(Model):
     def get_enum_map() -> Dict[str, List[Any]]:
         return {
             "backfillType": ["CUSTOM", "NONE"],
-            "rule": ["SEQUENCE"],
+            "rule": ["LOOP", "SEQUENCE"],
         }
 
     # endregion static methods

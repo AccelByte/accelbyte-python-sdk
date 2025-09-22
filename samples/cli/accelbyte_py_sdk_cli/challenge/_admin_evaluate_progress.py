@@ -40,12 +40,14 @@ from accelbyte_py_sdk.api.challenge.models import ResponseError
 
 @click.command()
 @click.argument("body", type=str)
+@click.option("--challenge_code", "challenge_code", type=str)
 @click.option("--namespace", type=str)
 @click.option("--login_as", type=click.Choice(["client", "user"], case_sensitive=False))
 @click.option("--login_with_auth", type=str)
 @click.option("--doc", type=bool)
 def admin_evaluate_progress(
     body: str,
+    challenge_code: Optional[str] = None,
     namespace: Optional[str] = None,
     login_as: Optional[str] = None,
     login_with_auth: Optional[str] = None,
@@ -65,8 +67,15 @@ def admin_evaluate_progress(
             body = ModelEvaluatePlayerProgressionRequest.create_from_dict(body_json)
         except ValueError as e:
             raise Exception(f"Invalid JSON for 'body'. {str(e)}") from e
+    if challenge_code is not None:
+        try:
+            challenge_code_json = json.loads(challenge_code)
+            challenge_code = [str(i0) for i0 in challenge_code_json]
+        except ValueError as e:
+            raise Exception(f"Invalid JSON for 'challengeCode'. {str(e)}") from e
     result, error = admin_evaluate_progress_internal(
         body=body,
+        challenge_code=challenge_code,
         namespace=namespace,
         x_additional_headers=x_additional_headers,
     )

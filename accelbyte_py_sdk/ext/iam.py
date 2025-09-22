@@ -419,6 +419,7 @@ def create_account_create_test_users_request_v4_example() -> (
     instance = AccountCreateTestUsersRequestV4()
     instance.count = randomize("int", min_val=1, max_val=1000)
     instance.user_info = create_account_user_info_example()
+    instance.accepted_policies = [create_legal_accepted_policies_request_example()]
     return instance
 
 

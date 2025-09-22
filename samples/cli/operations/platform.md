@@ -498,9 +498,9 @@ $ python -m accelbyte_py_sdk_cli 'platform-delete-platform-dlc-config' \
     > result.txt
 ```
 
-### Operation `query_entitlements_1`
+### Operation `query_entitlements`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'platform-query-entitlements-1' \
+$ python -m accelbyte_py_sdk_cli 'platform-query-entitlements' \
     'string' \
     --active_only false \
     --app_type 'DEMO' \
@@ -514,9 +514,9 @@ $ python -m accelbyte_py_sdk_cli 'platform-query-entitlements-1' \
     > result.txt
 ```
 
-### Operation `query_entitlements`
+### Operation `query_entitlements_by_item_ids`
 ```sh
-$ python -m accelbyte_py_sdk_cli 'platform-query-entitlements' \
+$ python -m accelbyte_py_sdk_cli 'platform-query-entitlements-by-item-ids' \
     'string' \
     --active_only false \
     --item_ids '["string"]' \

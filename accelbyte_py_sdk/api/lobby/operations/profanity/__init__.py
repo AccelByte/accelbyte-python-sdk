@@ -8,7 +8,7 @@
 
 """Auto-generated package that contains models used by the AccelByte Gaming Services Lobby Server."""
 
-__version__ = "3.39.2"
+__version__ = "3.40.0"
 __author__ = "AccelByte"
 __email__ = "dev@accelbyte.net"
 

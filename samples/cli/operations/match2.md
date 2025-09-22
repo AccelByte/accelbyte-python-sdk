@@ -78,7 +78,7 @@ $ python -m accelbyte_py_sdk_cli 'match2-admin-get-config-v1' \
 ### Operation `admin_patch_config_v1`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'match2-admin-patch-config-v1' \
-    '{"crossPlatformNoCurrentPlatform": false, "extraPlatforms": ["string"], "matchAnyCommon": false, "platformGroup": {"string": []}}' \
+    '{"crossPlatformNoCurrentPlatform": false, "extraPlatforms": ["string"], "matchAnyCommon": false, "platformGroup": {"string": []}, "xrayMaxWhitelistedUserCount": 1}' \
     'string' \
     > result.txt
 ```

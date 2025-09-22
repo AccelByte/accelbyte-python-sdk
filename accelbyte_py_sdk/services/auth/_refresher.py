@@ -45,7 +45,9 @@ class TokenRefresherOptions:
 
 
 class TokenRefresherBase(ABC):
-    def __init__(self, *args, options: Optional[TokenRefresherOptions] = None, **kwargs) -> None:
+    def __init__(
+        self, *args, options: Optional[TokenRefresherOptions] = None, **kwargs
+    ) -> None:
         self._lock: RLock = RLock()
         self._options: TokenRefresherOptions = options or TokenRefresherOptions()
         self._on_failure: TokenRefresherFailureFunc = None
@@ -75,7 +77,9 @@ class TokenRefresher(TokenRefresherBase):
             token_type = token_repo.get_token_type()
             refresh_token = token_repo.get_refresh_token()
             refresh_rate: float = self._options.refresh_rate
-            is_token_expired: bool = token_repo.has_token_expired(multiplier=refresh_rate)
+            is_token_expired: bool = token_repo.has_token_expired(
+                multiplier=refresh_rate
+            )
             if not is_token_expired:
                 return False, None
 
@@ -90,8 +94,14 @@ class TokenRefresher(TokenRefresherBase):
                         _, error = login_client(sdk=sdk, **REFRESH_KWARGS)
                         if not error:
                             return True, None
-                    elif token_type in (LOGIN_TYPE_PLATFORM, LOGIN_TYPE_USER, LOGIN_TYPE_REFRESHABLE):
-                        _, error = try_refresh_login_internal(refresh_rate=refresh_rate, sdk=sdk, **REFRESH_KWARGS)
+                    elif token_type in (
+                        LOGIN_TYPE_PLATFORM,
+                        LOGIN_TYPE_USER,
+                        LOGIN_TYPE_REFRESHABLE,
+                    ):
+                        _, error = try_refresh_login_internal(
+                            refresh_rate=refresh_rate, sdk=sdk, **REFRESH_KWARGS
+                        )
                         if not error:
                             return True, None
                 except Exception as exception:
@@ -122,7 +132,9 @@ class TokenRefresher(TokenRefresherBase):
             token_type = token_repo.get_token_type()
             refresh_token = token_repo.get_refresh_token()
             refresh_rate: float = self._options.refresh_rate
-            is_token_expired: bool = token_repo.has_token_expired(multiplier=refresh_rate)
+            is_token_expired: bool = token_repo.has_token_expired(
+                multiplier=refresh_rate
+            )
             if not is_token_expired:
                 return False, None
 
@@ -137,9 +149,15 @@ class TokenRefresher(TokenRefresherBase):
                         _, error = await login_client_async(sdk=sdk, **REFRESH_KWARGS)
                         if not error:
                             return True, None
-                    elif token_type in (LOGIN_TYPE_PLATFORM, LOGIN_TYPE_USER, LOGIN_TYPE_REFRESHABLE):
+                    elif token_type in (
+                        LOGIN_TYPE_PLATFORM,
+                        LOGIN_TYPE_USER,
+                        LOGIN_TYPE_REFRESHABLE,
+                    ):
                         _, error = await try_refresh_login_async_internal(
-                            refresh_rate=refresh_rate, sdk=sdk, **REFRESH_KWARGS,
+                            refresh_rate=refresh_rate,
+                            sdk=sdk,
+                            **REFRESH_KWARGS,
                         )
                         if not error:
                             return True, None

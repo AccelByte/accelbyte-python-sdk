@@ -125,7 +125,10 @@ def get_member(obj: Any, member_name: str, default: Any = None) -> Any:
 
 
 def get_value_from_dict_with_keys(
-    dict_: dict, keys: Union[str, Sequence[str]], default: Optional[Any] = None, case_insensitive: bool = False
+    dict_: dict,
+    keys: Union[str, Sequence[str]],
+    default: Optional[Any] = None,
+    case_insensitive: bool = False,
 ) -> Optional[Any]:
     if isinstance(keys, str):
         keys = [keys]

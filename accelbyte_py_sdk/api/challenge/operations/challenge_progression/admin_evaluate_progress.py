@@ -57,6 +57,8 @@ class AdminEvaluateProgress(Operation):
 
         namespace: (namespace) REQUIRED str in path
 
+        challenge_code: (challengeCode) OPTIONAL List[str] in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -82,6 +84,7 @@ class AdminEvaluateProgress(Operation):
 
     body: ModelEvaluatePlayerProgressionRequest  # REQUIRED in [body]
     namespace: str  # REQUIRED in [path]
+    challenge_code: List[str]  # OPTIONAL in [query]
 
     # endregion fields
 
@@ -123,6 +126,7 @@ class AdminEvaluateProgress(Operation):
         return {
             "body": self.get_body_params(),
             "path": self.get_path_params(),
+            "query": self.get_query_params(),
         }
 
     def get_body_params(self) -> Any:
@@ -134,6 +138,12 @@ class AdminEvaluateProgress(Operation):
         result = {}
         if hasattr(self, "namespace"):
             result["namespace"] = self.namespace
+        return result
+
+    def get_query_params(self) -> dict:
+        result = {}
+        if hasattr(self, "challenge_code"):
+            result["challengeCode"] = self.challenge_code
         return result
 
     # endregion get_x_params methods
@@ -154,6 +164,10 @@ class AdminEvaluateProgress(Operation):
         self.namespace = value
         return self
 
+    def with_challenge_code(self, value: List[str]) -> AdminEvaluateProgress:
+        self.challenge_code = value
+        return self
+
     # endregion with_x methods
 
     # region to methods
@@ -168,6 +182,10 @@ class AdminEvaluateProgress(Operation):
             result["namespace"] = str(self.namespace)
         elif include_empty:
             result["namespace"] = ""
+        if hasattr(self, "challenge_code") and self.challenge_code:
+            result["challengeCode"] = [str(i0) for i0 in self.challenge_code]
+        elif include_empty:
+            result["challengeCode"] = []
         return result
 
     # endregion to methods
@@ -228,11 +246,17 @@ class AdminEvaluateProgress(Operation):
 
     @classmethod
     def create(
-        cls, body: ModelEvaluatePlayerProgressionRequest, namespace: str, **kwargs
+        cls,
+        body: ModelEvaluatePlayerProgressionRequest,
+        namespace: str,
+        challenge_code: Optional[List[str]] = None,
+        **kwargs,
     ) -> AdminEvaluateProgress:
         instance = cls()
         instance.body = body
         instance.namespace = namespace
+        if challenge_code is not None:
+            instance.challenge_code = challenge_code
         if x_flight_id := kwargs.get("x_flight_id", None):
             instance.x_flight_id = x_flight_id
         return instance
@@ -252,6 +276,10 @@ class AdminEvaluateProgress(Operation):
             instance.namespace = str(dict_["namespace"])
         elif include_empty:
             instance.namespace = ""
+        if "challengeCode" in dict_ and dict_["challengeCode"] is not None:
+            instance.challenge_code = [str(i0) for i0 in dict_["challengeCode"]]
+        elif include_empty:
+            instance.challenge_code = []
         return instance
 
     @staticmethod
@@ -259,6 +287,7 @@ class AdminEvaluateProgress(Operation):
         return {
             "body": "body",
             "namespace": "namespace",
+            "challengeCode": "challenge_code",
         }
 
     @staticmethod
@@ -266,6 +295,13 @@ class AdminEvaluateProgress(Operation):
         return {
             "body": True,
             "namespace": True,
+            "challengeCode": False,
+        }
+
+    @staticmethod
+    def get_collection_format_map() -> Dict[str, Union[None, str]]:
+        return {
+            "challengeCode": "csv",  # in query
         }
 
     # endregion static methods

@@ -44,6 +44,7 @@ from ..operations.challenge_progression import PublicGetUserProgression
 @same_doc_as(AdminEvaluateProgress)
 def admin_evaluate_progress(
     body: ModelEvaluatePlayerProgressionRequest,
+    challenge_code: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -70,6 +71,8 @@ def admin_evaluate_progress(
 
         namespace: (namespace) REQUIRED str in path
 
+        challenge_code: (challengeCode) OPTIONAL List[str] in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -89,6 +92,7 @@ def admin_evaluate_progress(
             return None, error
     request = AdminEvaluateProgress.create(
         body=body,
+        challenge_code=challenge_code,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -97,6 +101,7 @@ def admin_evaluate_progress(
 @same_doc_as(AdminEvaluateProgress)
 async def admin_evaluate_progress_async(
     body: ModelEvaluatePlayerProgressionRequest,
+    challenge_code: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -123,6 +128,8 @@ async def admin_evaluate_progress_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        challenge_code: (challengeCode) OPTIONAL List[str] in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -142,6 +149,7 @@ async def admin_evaluate_progress_async(
             return None, error
     request = AdminEvaluateProgress.create(
         body=body,
+        challenge_code=challenge_code,
         namespace=namespace,
     )
     return await run_request_async(
@@ -309,6 +317,7 @@ async def admin_get_user_progression_async(
 
 @same_doc_as(EvaluateMyProgress)
 def evaluate_my_progress(
+    challenge_code: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -332,6 +341,8 @@ def evaluate_my_progress(
 
         namespace: (namespace) REQUIRED str in path
 
+        challenge_code: (challengeCode) OPTIONAL List[str] in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -346,6 +357,7 @@ def evaluate_my_progress(
         if error:
             return None, error
     request = EvaluateMyProgress.create(
+        challenge_code=challenge_code,
         namespace=namespace,
     )
     return run_request(request, additional_headers=x_additional_headers, **kwargs)
@@ -353,6 +365,7 @@ def evaluate_my_progress(
 
 @same_doc_as(EvaluateMyProgress)
 async def evaluate_my_progress_async(
+    challenge_code: Optional[List[str]] = None,
     namespace: Optional[str] = None,
     x_additional_headers: Optional[Dict[str, str]] = None,
     **kwargs
@@ -376,6 +389,8 @@ async def evaluate_my_progress_async(
 
         namespace: (namespace) REQUIRED str in path
 
+        challenge_code: (challengeCode) OPTIONAL List[str] in query
+
     Responses:
         204: No Content - (No Content)
 
@@ -390,6 +405,7 @@ async def evaluate_my_progress_async(
         if error:
             return None, error
     request = EvaluateMyProgress.create(
+        challenge_code=challenge_code,
         namespace=namespace,
     )
     return await run_request_async(

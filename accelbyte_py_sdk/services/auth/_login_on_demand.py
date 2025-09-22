@@ -78,7 +78,9 @@ def enable_on_demand_refresh(
     sdk.request_preprocessors[key] = on_demand
 
 
-def disable_on_demand_refresh(sdk: AccelByteSDK, key: str = DEFAULT_ON_DEMAND_KEY, **kwargs) -> None:
+def disable_on_demand_refresh(
+    sdk: AccelByteSDK, key: str = DEFAULT_ON_DEMAND_KEY, **kwargs
+) -> None:
     sdk.request_preprocessors.pop(key, None)
 
 

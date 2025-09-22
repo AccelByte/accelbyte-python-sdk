@@ -162,6 +162,7 @@ def create_apimodels_configuration_template_response_example() -> (
     instance.manual_rejoin = randomize("bool")
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
+    instance.party_code_length = randomize("int", min_val=1, max_val=1000)
     instance.preferred_claim_keys = [randomize()]
     instance.psn_base_url = randomize("url")
     instance.requested_regions = [randomize()]
@@ -215,6 +216,7 @@ def create_apimodels_create_configuration_template_request_example() -> (
     instance.manual_rejoin = randomize("bool")
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
+    instance.party_code_length = randomize("int", min_val=1, max_val=1000)
     instance.preferred_claim_keys = [randomize()]
     instance.psn_base_url = randomize("url")
     instance.text_chat_mode = randomize()
@@ -540,6 +542,7 @@ def create_apimodels_public_configuration_example() -> ApimodelsPublicConfigurat
     instance.manual_rejoin = randomize("bool")
     instance.max_active_session = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
+    instance.party_code_length = randomize("int", min_val=1, max_val=1000)
     instance.preferred_claim_keys = [randomize()]
     instance.psn_base_url = randomize("url")
     instance.requested_regions = [randomize()]
@@ -667,6 +670,7 @@ def create_apimodels_update_configuration_template_request_example() -> (
     instance.manual_rejoin = randomize("bool")
     instance.max_active_sessions = randomize("int", min_val=1, max_val=1000)
     instance.native_session_setting = create_models_native_session_setting_example()
+    instance.party_code_length = randomize("int", min_val=1, max_val=1000)
     instance.preferred_claim_keys = [randomize()]
     instance.psn_base_url = randomize("url")
     instance.text_chat_mode = randomize()

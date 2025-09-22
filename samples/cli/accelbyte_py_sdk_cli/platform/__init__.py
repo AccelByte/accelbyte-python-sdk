@@ -71,8 +71,8 @@ from ._delete_dlc_item_config import delete_dlc_item_config
 from ._get_platform_dlc_config import get_platform_dlc_config
 from ._update_platform_dlc_config import update_platform_dlc_config
 from ._delete_platform_dlc_config import delete_platform_dlc_config
-from ._query_entitlements_1 import query_entitlements_1
 from ._query_entitlements import query_entitlements
+from ._query_entitlements_by_item_ids import query_entitlements_by_item_ids
 from ._enable_entitlement_origin_feature import enable_entitlement_origin_feature
 from ._get_entitlement_config_info import get_entitlement_config_info
 from ._grant_entitlements import grant_entitlements
@@ -654,8 +654,8 @@ commands = [
     get_platform_dlc_config,
     update_platform_dlc_config,
     delete_platform_dlc_config,
-    query_entitlements_1,
     query_entitlements,
+    query_entitlements_by_item_ids,
     enable_entitlement_origin_feature,
     get_entitlement_config_info,
     grant_entitlements,

@@ -588,7 +588,9 @@ class AuthRefreshServicesTestCase(TestCase):
         # act
         auth.enable_background_refresh(
             sdk=sdk,
-            options=auth.BackgroundOptions(enabled=True, max_retry=1, refresh_rate=0.0, interval=1)
+            options=auth.BackgroundOptions(
+                enabled=True, max_retry=1, refresh_rate=0.0, interval=1
+            ),
         )
 
         # wait

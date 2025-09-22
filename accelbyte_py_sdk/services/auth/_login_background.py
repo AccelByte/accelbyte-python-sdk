@@ -49,7 +49,11 @@ class BackgroundLogin(Timer):
     ) -> None:
         interval = interval if interval is not None else DEFAULT_TIMER_INTERVAL
         repeats = repeats if repeats is not None else DEFAULT_TIMER_REPEATS
-        repeat_on_exception = repeat_on_exception if repeat_on_exception is not None else DEFAULT_TIMER_REPEAT_ON_EXCEPTION
+        repeat_on_exception = (
+            repeat_on_exception
+            if repeat_on_exception is not None
+            else DEFAULT_TIMER_REPEAT_ON_EXCEPTION
+        )
         autostart = autostart if autostart is not None else DEFAULT_TIMER_AUTOSTART
 
         sdk = sdk or SDK
@@ -98,7 +102,9 @@ def enable_background_refresh(
     setattr(sdk, key, background)
 
 
-def disable_background_refresh(sdk: AccelByteSDK, key: str = DEFAULT_BACKGROUND_KEY, **kwargs) -> None:
+def disable_background_refresh(
+    sdk: AccelByteSDK, key: str = DEFAULT_BACKGROUND_KEY, **kwargs
+) -> None:
     if existing := getattr(sdk, key, None):
         if existing_cancel := getattr(existing, "cancel", None):
             if callable(existing_cancel):

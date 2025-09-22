@@ -39,6 +39,8 @@ class ApiPatchNamespaceConfigRequest(Model):
         match_any_common: (matchAnyCommon) OPTIONAL bool
 
         platform_group: (platformGroup) OPTIONAL Dict[str, List[str]]
+
+        xray_max_whitelisted_user_count: (xrayMaxWhitelistedUserCount) OPTIONAL int
     """
 
     # region fields
@@ -47,6 +49,7 @@ class ApiPatchNamespaceConfigRequest(Model):
     extra_platforms: List[str]  # OPTIONAL
     match_any_common: bool  # OPTIONAL
     platform_group: Dict[str, List[str]]  # OPTIONAL
+    xray_max_whitelisted_user_count: int  # OPTIONAL
 
     # endregion fields
 
@@ -70,6 +73,12 @@ class ApiPatchNamespaceConfigRequest(Model):
         self, value: Dict[str, List[str]]
     ) -> ApiPatchNamespaceConfigRequest:
         self.platform_group = value
+        return self
+
+    def with_xray_max_whitelisted_user_count(
+        self, value: int
+    ) -> ApiPatchNamespaceConfigRequest:
+        self.xray_max_whitelisted_user_count = value
         return self
 
     # endregion with_x methods
@@ -99,6 +108,12 @@ class ApiPatchNamespaceConfigRequest(Model):
             }
         elif include_empty:
             result["platformGroup"] = {}
+        if hasattr(self, "xray_max_whitelisted_user_count"):
+            result["xrayMaxWhitelistedUserCount"] = int(
+                self.xray_max_whitelisted_user_count
+            )
+        elif include_empty:
+            result["xrayMaxWhitelistedUserCount"] = 0
         return result
 
     # endregion to methods
@@ -112,6 +127,7 @@ class ApiPatchNamespaceConfigRequest(Model):
         extra_platforms: Optional[List[str]] = None,
         match_any_common: Optional[bool] = None,
         platform_group: Optional[Dict[str, List[str]]] = None,
+        xray_max_whitelisted_user_count: Optional[int] = None,
         **kwargs,
     ) -> ApiPatchNamespaceConfigRequest:
         instance = cls()
@@ -125,6 +141,8 @@ class ApiPatchNamespaceConfigRequest(Model):
             instance.match_any_common = match_any_common
         if platform_group is not None:
             instance.platform_group = platform_group
+        if xray_max_whitelisted_user_count is not None:
+            instance.xray_max_whitelisted_user_count = xray_max_whitelisted_user_count
         return instance
 
     @classmethod
@@ -158,6 +176,15 @@ class ApiPatchNamespaceConfigRequest(Model):
             }
         elif include_empty:
             instance.platform_group = {}
+        if (
+            "xrayMaxWhitelistedUserCount" in dict_
+            and dict_["xrayMaxWhitelistedUserCount"] is not None
+        ):
+            instance.xray_max_whitelisted_user_count = int(
+                dict_["xrayMaxWhitelistedUserCount"]
+            )
+        elif include_empty:
+            instance.xray_max_whitelisted_user_count = 0
         return instance
 
     @classmethod
@@ -205,6 +232,7 @@ class ApiPatchNamespaceConfigRequest(Model):
             "extraPlatforms": "extra_platforms",
             "matchAnyCommon": "match_any_common",
             "platformGroup": "platform_group",
+            "xrayMaxWhitelistedUserCount": "xray_max_whitelisted_user_count",
         }
 
     @staticmethod
@@ -214,6 +242,7 @@ class ApiPatchNamespaceConfigRequest(Model):
             "extraPlatforms": False,
             "matchAnyCommon": False,
             "platformGroup": False,
+            "xrayMaxWhitelistedUserCount": False,
         }
 
     # endregion static methods

@@ -1881,6 +1881,7 @@ def get_session_server_secret(
     If there is error:
     - 400 Invalid path parameters
     - 401 unauthorized
+    - 403 status forbidden, The User is not active in session
     - 404 StatusNotFound
     - 500 Internal server error
 
@@ -1907,6 +1908,8 @@ def get_session_server_secret(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
 
         404: Not Found - ResponseError (Not Found)
 
@@ -1951,6 +1954,7 @@ async def get_session_server_secret_async(
     If there is error:
     - 400 Invalid path parameters
     - 401 unauthorized
+    - 403 status forbidden, The User is not active in session
     - 404 StatusNotFound
     - 500 Internal server error
 
@@ -1977,6 +1981,8 @@ async def get_session_server_secret_async(
         400: Bad Request - ResponseError (Bad Request)
 
         401: Unauthorized - ResponseError (Unauthorized)
+
+        403: Forbidden - ResponseError (Forbidden)
 
         404: Not Found - ResponseError (Not Found)
 

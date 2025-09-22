@@ -2075,7 +2075,7 @@ $ python -m accelbyte_py_sdk_cli 'iam-admin-get-namespace-user-invitation-histor
 ### Operation `admin_create_test_users_v4`
 ```sh
 $ python -m accelbyte_py_sdk_cli 'iam-admin-create-test-users-v4' \
-    '{"count": 1, "userInfo": {}}' \
+    '{"acceptedPolicies": [{}], "count": 1, "userInfo": {}}' \
     'string' \
     > result.txt
 ```

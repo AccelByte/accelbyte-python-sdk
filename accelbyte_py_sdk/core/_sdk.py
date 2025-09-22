@@ -7,7 +7,16 @@ from __future__ import annotations
 import logging
 
 from os import PathLike as OSPathLike
-from typing import Any, Dict, Iterable, Optional, Protocol, Set, Tuple, runtime_checkable
+from typing import (
+    Any,
+    Dict,
+    Iterable,
+    Optional,
+    Protocol,
+    Set,
+    Tuple,
+    runtime_checkable,
+)
 
 from ._config_repository import ConfigRepository, CONFIG_REPOS, DEFAULT_CONFIG_REPO
 from ._flight_id import add_flight_id
