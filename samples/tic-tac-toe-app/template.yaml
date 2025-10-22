@@ -55,6 +55,7 @@ Resources:
           # Use 'host.docker.internal' when running locally
           REDIS_HOST: ''
           REDIS_PORT: ''
+      Tracing: 'Active'
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function

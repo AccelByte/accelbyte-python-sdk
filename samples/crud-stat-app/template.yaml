@@ -26,7 +26,7 @@ Resources:
         - x86_64
       MemorySize: 512
       FunctionUrlConfig: # https://docs.aws.amazon.com/lambda/latest/dg/urls-tutorial.html
-        AuthType: NONE # Change to "AWS_IAM" based on your needs https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html
+        AuthType: AWS_IAM  # Change to other auth types based on your needs https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html
         Cors:
           AllowOrigins:
             - "*"
@@ -34,6 +34,7 @@ Resources:
             - "*"
           AllowMethods:
             - "*"
+      Tracing: 'Active'
 
 Outputs:
   UserStatsFunction:
